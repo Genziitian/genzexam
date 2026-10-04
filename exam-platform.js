@@ -103,7 +103,7 @@
     modal.style.display = "flex";
     modal.innerHTML = `
       <div class="ep-onboarding-card" style="max-width:480px;text-align:center;">
-        <img src="/assets/genz-logo.png" alt="GenZ IITIAN" style="height:28px;object-fit:contain;margin-bottom:12px;">
+        <img src="/assets/genz-logo.png" alt="Quiz Lab" style="height:28px;object-fit:contain;margin-bottom:12px;">
         <div class="ep-shield-badge" style="background:#fee2e2;">
           ${I("slash", 36, "#dc2626")}
         </div>
@@ -137,7 +137,7 @@
     },
     exam: {
       id: "iitm-python-endterm",
-      title: "GenZ IITian — Python & Computational Thinking Endterm",
+      title: "Quiz Lab — Python & Computational Thinking Endterm",
       subject: "Python Programming & Data Structures",
       type: "final", // 'final' | 'general'
       status: "live", // 'live' | 'paused' | 'ended'
@@ -464,7 +464,7 @@
 
     el.innerHTML = `
       <div class="brand-logo">
-        <img src="/assets/genz-logo.png" alt="GenZ IITIAN" style="height:24px;object-fit:contain;margin-right:2px;">
+        <img src="/assets/genz-logo.png" alt="Quiz Lab" style="height:24px;object-fit:contain;margin-right:2px;">
         <span>Exam Portal</span>
         <span class="role-badge manager">
           ${I("shield", 13, "#38bdf8")}
@@ -562,7 +562,7 @@
 
     modal.innerHTML = `
       <div class="ep-onboarding-card" style="max-width:440px;text-align:center;box-shadow:0 25px 50px -12px rgba(220,38,38,0.25);border:1.5px solid #fca5a5;">
-        <img src="/assets/genz-logo.png" alt="GenZ IITIAN" style="height:28px;object-fit:contain;margin-bottom:12px;">
+        <img src="/assets/genz-logo.png" alt="Quiz Lab" style="height:28px;object-fit:contain;margin-bottom:12px;">
         <div class="ep-shield-badge" style="background:#fee2e2;">
           ${I("alert", 36, "#dc2626")}
         </div>
@@ -766,7 +766,7 @@
     }
     modal.innerHTML = `
       <div class="ep-onboarding-card" style="max-width:460px;text-align:center;box-shadow:0 25px 50px -12px rgba(15,23,42,0.35);border:1.5px solid #cbd5e1;">
-        <img src="/assets/genz-logo.png" alt="GenZ IITIAN" style="height:28px;object-fit:contain;margin-bottom:12px;">
+        <img src="/assets/genz-logo.png" alt="Quiz Lab" style="height:28px;object-fit:contain;margin-bottom:12px;">
         <div class="ep-shield-badge" style="background:#fee2e2;">
           ${I("lock", 36, "#dc2626")}
         </div>
@@ -804,7 +804,7 @@
     }
     modal.innerHTML = `
       <div class="ep-onboarding-card" style="max-width:440px;text-align:center;box-shadow:0 25px 50px -12px rgba(15,23,42,0.35);border:1.5px solid #cbd5e1;">
-        <img src="/assets/genz-logo.png" alt="GenZ IITIAN" style="height:28px;object-fit:contain;margin-bottom:12px;">
+        <img src="/assets/genz-logo.png" alt="Quiz Lab" style="height:28px;object-fit:contain;margin-bottom:12px;">
         <div class="ep-shield-badge" style="background:#fee2e2;">
           ${I("slash", 36, "#dc2626")}
         </div>
@@ -983,7 +983,7 @@
 
     modal.innerHTML = `
       <div class="ep-onboarding-card" style="max-width:460px;width:100%;text-align:center;background:#ffffff;border-radius:20px;box-shadow:0 25px 60px -15px rgba(0,0,0,0.3);padding:30px 24px;color:#0f172a;animation:ep-card-pop 0.2s cubic-bezier(0.16, 1, 0.3, 1);">
-        <img src="/assets/genz-logo.png" alt="GenZ IITIAN" style="height:28px;object-fit:contain;margin-bottom:12px;">
+        <img src="/assets/genz-logo.png" alt="Quiz Lab" style="height:28px;object-fit:contain;margin-bottom:12px;">
         <div class="ep-shield-badge" style="background:#dcfce7;margin:0 auto 16px auto;">
           ${I("checkCircle", 36, "#059669")}
         </div>
@@ -1381,7 +1381,7 @@
               <div class="saas-breadcrumb">
                 <span>Assessments</span>
                 <span style="color:#4b5563;">/</span>
-                <span>GenZ IITian</span>
+                <span>Quiz Lab</span>
                 <span style="color:#4b5563;">/</span>
                 <span class="active">Python Endterm 2026</span>
               </div>
@@ -2476,7 +2476,7 @@
         <div class="ep-student-hub">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;flex-wrap:wrap;gap:12px;">
             <div style="display:flex;align-items:center;gap:14px;">
-              <img src="/assets/genz-logo.png" alt="GenZ IITIAN" style="height:36px;object-fit:contain;">
+              <img src="/assets/genz-logo.png" alt="Quiz Lab" style="height:36px;object-fit:contain;">
               <div>
                 <h1 style="font-size:24px;font-weight:800;color:#0f172a;margin:0 0 4px 0;">Student Assessment Portal</h1>
                 <div style="font-size:13px;color:#64748b;">
@@ -2627,7 +2627,7 @@
         <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:16px;">
           <div>
             <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
-              <img src="/assets/genz-logo.png" alt="GenZ IITIAN" style="height:28px;object-fit:contain;">
+              <img src="/assets/genz-logo.png" alt="Quiz Lab" style="height:28px;object-fit:contain;">
               ${I("shield", 22, "#059669")}
               <h2 style="font-size:20px;font-weight:800;color:#0f172a;margin:0;">Candidate Code of Conduct</h2>
             </div>
@@ -2701,7 +2701,7 @@
 
           <h2 class="ep-onboarding-title">Exam Environment Check</h2>
           <p class="ep-onboarding-text">
-          Please confirm your testing workspace meets GenZ IITian academic integrity standards:
+          Please confirm your testing workspace meets Quiz Lab academic integrity standards:
           </p>
 
           <div class="ep-checklist-box">
@@ -3025,7 +3025,7 @@
         <!-- Top Header Bar -->
         <header style="height:clamp(62px, 5.4vw, 82px);background:#ffffff;border-bottom:1px solid #e2e8f0;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(18px, 2vw, 34px);flex-shrink:0;">
           <div style="display:flex;align-items:center;gap:12px;">
-            <img src="/assets/genz-logo.png" alt="GenZ IITIAN" style="height:30px;max-width:90px;object-fit:contain;">
+            <img src="/assets/genz-logo.png" alt="Quiz Lab" style="height:30px;max-width:90px;object-fit:contain;">
             <div>
               <h1 style="font-size:clamp(14px, 1.15vw, 21px);font-weight:800;color:#0f172a;margin:0;">${exam.title}</h1>
               <div style="font-size:clamp(11px, 0.9vw, 15px);color:#64748b;">
@@ -3157,7 +3157,7 @@
                 <!-- Code of Conduct (COC) Full View -->
                 <div style="flex:1;overflow-y:auto;max-width:880px;">
                   <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid #e2e8f0;">
-                    <img src="/assets/genz-logo.png" alt="GenZ IITIAN" style="height:28px;object-fit:contain;">
+                    <img src="/assets/genz-logo.png" alt="Quiz Lab" style="height:28px;object-fit:contain;">
                     <div style="font-size:16px;font-weight:800;color:#0f172a;">Candidate Code of Conduct & Remote Proctoring Rules</div>
                   </div>
 
@@ -3165,7 +3165,7 @@
                     Online Remote Proctored Exams
                   </h2>
                   <p style="font-size:13.5px;color:#334155;line-height:1.7;margin-bottom:18px;">
-                    This exam is conducted online from the examinee's place of residence and proctored remotely by the GenZ IITian team. Due date for this assignment is binding. The following guidelines must be followed by all examinees.
+                    This exam is conducted online from the examinee's place of residence and proctored remotely by the Quiz Lab team. Due date for this assignment is binding. The following guidelines must be followed by all examinees.
                   </p>
 
                   <ol style="font-size:13px;color:#334155;line-height:1.75;padding-left:22px;display:flex;flex-direction:column;gap:10px;margin-bottom:28px;">

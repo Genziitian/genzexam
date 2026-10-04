@@ -1,7 +1,7 @@
 {
-  "name": "genzexam",
+  "name": "quizlab",
   "version": "1.0.0",
-  "description": "GenZ IITian Examination Platform Backend and Frontend",
+  "description": "Quiz Lab Examination Platform Backend and Frontend",
   "main": "server.js",
   "scripts": {
     "start": "python3 serve.py",
@@ -14,10 +14,10 @@
     "exam",
     "proctoring",
     "assessment",
-    "genz-iitian",
+    "quiz-lab",
     "frontend",
     "laravel"
   ],
-  "author": "GenZIITian",
+  "author": "Quiz Lab",
   "license": "ISC"
 }

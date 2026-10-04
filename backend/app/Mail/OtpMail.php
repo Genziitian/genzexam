@@ -19,7 +19,7 @@ class OtpMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Your LAB by GenZIITian verification code',
+            subject: 'Your Quiz Lab verification code',
         );
     }
 

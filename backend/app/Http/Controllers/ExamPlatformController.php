@@ -135,7 +135,7 @@ class ExamPlatformController extends Controller
             ],
             'exam' => [
                 'id' => 'iitm-python-endterm',
-                'title' => 'GenZ IITian — Python & Computational Thinking Endterm',
+                'title' => 'Quiz Lab — Python & Computational Thinking Endterm',
                 'subject' => 'Python Programming & Data Structures',
                 'type' => 'final',
                 'status' => 'live',
