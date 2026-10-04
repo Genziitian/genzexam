@@ -1,9 +1,13 @@
 {
-  "name": "genzexam-frontend",
+  "name": "genzexam",
   "version": "1.0.0",
-  "description": "GenZ IITian Examination Platform Frontend SPA",
+  "description": "GenZ IITian Examination Platform Backend and Frontend",
+  "main": "server.js",
   "scripts": {
-    "start": "python3 serve.py"
+    "start": "python3 serve.py",
+    "start:laravel": "cd backend && php artisan serve",
+    "start:node": "node server.js",
+    "start:python": "python3 serve.py"
   },
   "keywords": [
     "iitm",
@@ -11,7 +15,8 @@
     "proctoring",
     "assessment",
     "genz-iitian",
-    "frontend"
+    "frontend",
+    "laravel"
   ],
   "author": "GenZIITian",
   "license": "ISC"
