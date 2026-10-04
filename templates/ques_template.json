@@ -1,0 +1,255 @@
+{
+  "template_info": {
+    "purpose": "Give this file to AI to convert question papers into the required JSON for bulk quiz import.",
+    "how_to_use": [
+      "AI should follow generic_format for structure and required keys.",
+      "AI should use example_payload as style reference.",
+      "After AI conversion, copy only example_payload-like output for final import (schema_version + quiz details + questions)."
+    ],
+    "rich_text_syntax": {
+      "bold": "Use **text** for bold emphasis.",
+      "italic": "Use *text* for italic emphasis.",
+      "inline_math": "Use $...$ for inline math, for example $a^2+b^2=c^2$.",
+      "block_math": "Use $$...$$ for block math, for example $$\\int_0^1 x^2 dx$$.",
+      "inline_code": "Use `code` for short inline code fragments.",
+      "code_fence": "Use triple backticks for multiline code blocks, optionally with language (for example ```python ... ```)."
+    },
+    "import_notes": [
+      "Keep questions array non-empty.",
+      "For mcq_single, provide correct_answer as 0-based option index.",
+      "For mcq_multi, provide correct_answers as 0-based option indices.",
+      "For short_answer, provide acceptable_answers with at least one value.",
+      "For numerical, provide numerical_answer and optional numerical_tolerance.",
+      "Image blocks are allowed in JSON, but images can be added later from admin edit screen if files are not available now."
+    ],
+    "supported_question_types": ["mcq_single", "mcq_multi", "true_false", "short_answer", "numerical"],
+    "supported_block_kinds": ["text", "code", "image"]
+  },
+  "generic_format": {
+    "schema_version": "1.1",
+    "quiz_title": "<quiz title>",
+    "subject": "<subject name>",
+    "questions": [
+      {
+        "type": "mcq_single",
+        "prompt": [
+          { "kind": "text", "value": "<question text>" },
+          { "kind": "code", "language": "python", "value": "<optional code block>" }
+        ],
+        "options": [
+          [{ "kind": "text", "value": "<option 1>" }],
+          [{ "kind": "text", "value": "<option 2>" }],
+          [{ "kind": "text", "value": "<option 3>" }],
+          [{ "kind": "text", "value": "<option 4>" }]
+        ],
+        "correct_answer": 0,
+        "marks": 1,
+        "difficulty": "easy",
+        "explanation": [
+          { "kind": "text", "value": "<optional explanation>" }
+        ]
+      },
+      {
+        "type": "mcq_multi",
+        "prompt": [
+          { "kind": "text", "value": "<question text>" }
+        ],
+        "options": [
+          [{ "kind": "text", "value": "<option 1>" }],
+          [{ "kind": "text", "value": "<option 2>" }],
+          [{ "kind": "code", "language": "python", "value": "<option 3 code>" }],
+          [{ "kind": "text", "value": "<option 4>" }]
+        ],
+        "correct_answers": [0, 2],
+        "marks": 2,
+        "difficulty": "medium"
+      },
+      {
+        "type": "true_false",
+        "prompt": [
+          { "kind": "text", "value": "<statement>" }
+        ],
+        "correct_answer": true,
+        "marks": 1,
+        "difficulty": "easy"
+      },
+      {
+        "type": "short_answer",
+        "prompt": [
+          { "kind": "text", "value": "<short answer question>" },
+          { "kind": "image", "asset": "<optional-image-file.png>", "alt": "<optional alt text>" }
+        ],
+        "acceptable_answers": ["<answer1>", "<answer2>"],
+        "marks": 2,
+        "difficulty": "easy"
+      },
+      {
+        "type": "numerical",
+        "prompt": [
+          { "kind": "text", "value": "<numerical question>" },
+          { "kind": "code", "language": "python", "value": "<optional code block>" }
+        ],
+        "numerical_answer": 42,
+        "numerical_tolerance": 0,
+        "marks": 2,
+        "difficulty": "medium"
+      }
+    ]
+  },
+  "example_payload": {
+    "schema_version": "1.1",
+    "quiz_title": "Python Fundamentals Mixed Quiz",
+    "subject": "Python",
+    "questions": [
+      {
+        "type": "mcq_single",
+        "prompt": [
+          { "kind": "text", "value": "What is the output of this code?" },
+          { "kind": "code", "language": "python", "value": "x = [1, 2, 3]\nprint(x[::-1])" }
+        ],
+        "options": [
+          [{ "kind": "text", "value": "[1, 2, 3]" }],
+          [{ "kind": "text", "value": "[3, 2, 1]" }],
+          [{ "kind": "text", "value": "(3, 2, 1)" }],
+          [{ "kind": "text", "value": "Error" }]
+        ],
+        "correct_answer": 1,
+        "marks": 2,
+        "difficulty": "easy",
+        "explanation": [
+          { "kind": "text", "value": "Negative step slices the list in reverse order." }
+        ]
+      },
+      {
+        "type": "mcq_multi",
+        "prompt": [
+          { "kind": "text", "value": "Which snippets correctly define a Python dictionary?" },
+          { "kind": "code", "language": "python", "value": "# Choose all valid dictionary declarations" }
+        ],
+        "options": [
+          [{ "kind": "code", "language": "python", "value": "d = {'a': 1, 'b': 2}" }],
+          [{ "kind": "code", "language": "python", "value": "d = dict(a=1, b=2)" }],
+          [{ "kind": "code", "language": "python", "value": "d = [('a', 1), ('b', 2)]" }],
+          [{ "kind": "code", "language": "python", "value": "d = {a: 1, b: 2}" }]
+        ],
+        "correct_answers": [0, 1],
+        "marks": 3,
+        "difficulty": "medium",
+        "explanation": [
+          { "kind": "text", "value": "Options 1 and 2 are valid dictionary creations. Option 3 is a list; option 4 raises NameError unless a and b are defined." }
+        ]
+      },
+      {
+        "type": "true_false",
+        "prompt": [
+          { "kind": "text", "value": "In Python, list comprehensions can include an if condition." },
+          { "kind": "code", "language": "python", "value": "evens = [n for n in range(10) if n % 2 == 0]" }
+        ],
+        "correct_answer": true,
+        "marks": 1,
+        "difficulty": "easy",
+        "explanation": [
+          { "kind": "text", "value": "The if clause filters elements in the comprehension." }
+        ]
+      },
+      {
+        "type": "short_answer",
+        "prompt": [
+          { "kind": "text", "value": "Name the built-in Python function used to get the number of items in a list." },
+          { "kind": "image", "asset": "python-list-memory-diagram.png", "alt": "Illustration of list elements in memory" }
+        ],
+        "acceptable_answers": ["len", "len()"],
+        "marks": 2,
+        "difficulty": "easy",
+        "explanation": [
+          { "kind": "text", "value": "len(obj) returns the number of elements in containers like lists, tuples, sets, and strings." }
+        ]
+      },
+      {
+        "type": "numerical",
+        "prompt": [
+          { "kind": "text", "value": "What value will be printed?" },
+          { "kind": "code", "language": "python", "value": "total = 0\nfor i in range(1, 6):\n    total += i\nprint(total)" }
+        ],
+        "numerical_answer": 15,
+        "numerical_tolerance": 0,
+        "marks": 2,
+        "difficulty": "medium",
+        "explanation": [
+          { "kind": "text", "value": "range(1, 6) includes 1 to 5, and their sum is 15." }
+        ]
+      }
+    ]
+  },
+  "schema_version": "1.1",
+  "quiz_title": "Python Fundamentals Mixed Quiz",
+  "subject": "Python",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        { "kind": "text", "value": "What is the output of this code?" },
+        { "kind": "code", "language": "python", "value": "x = [1, 2, 3]\nprint(x[::-1])" }
+      ],
+      "options": [
+        [{ "kind": "text", "value": "[1, 2, 3]" }],
+        [{ "kind": "text", "value": "[3, 2, 1]" }],
+        [{ "kind": "text", "value": "(3, 2, 1)" }],
+        [{ "kind": "text", "value": "Error" }]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        { "kind": "text", "value": "Negative step slices the list in reverse order." }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        { "kind": "text", "value": "Which snippets correctly define a Python dictionary?" },
+        { "kind": "code", "language": "python", "value": "# Choose all valid dictionary declarations" }
+      ],
+      "options": [
+        [{ "kind": "code", "language": "python", "value": "d = {'a': 1, 'b': 2}" }],
+        [{ "kind": "code", "language": "python", "value": "d = dict(a=1, b=2)" }],
+        [{ "kind": "code", "language": "python", "value": "d = [('a', 1), ('b', 2)]" }],
+        [{ "kind": "code", "language": "python", "value": "d = {a: 1, b: 2}" }]
+      ],
+      "correct_answers": [0, 1],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "true_false",
+      "prompt": [
+        { "kind": "text", "value": "In Python, list comprehensions can include an if condition." },
+        { "kind": "code", "language": "python", "value": "evens = [n for n in range(10) if n % 2 == 0]" }
+      ],
+      "correct_answer": true,
+      "marks": 1,
+      "difficulty": "easy"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        { "kind": "text", "value": "Name the built-in Python function used to get the number of items in a list." },
+        { "kind": "image", "asset": "python-list-memory-diagram.png", "alt": "Illustration of list elements in memory" }
+      ],
+      "acceptable_answers": ["len", "len()"],
+      "marks": 2,
+      "difficulty": "easy"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        { "kind": "text", "value": "What value will be printed?" },
+        { "kind": "code", "language": "python", "value": "total = 0\nfor i in range(1, 6):\n    total += i\nprint(total)" }
+      ],
+      "numerical_answer": 15,
+      "numerical_tolerance": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ]
+}
