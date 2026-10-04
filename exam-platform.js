@@ -103,6 +103,7 @@
     modal.style.display = "flex";
     modal.innerHTML = `
       <div class="ep-onboarding-card" style="max-width:480px;text-align:center;">
+        <img src="/assets/genz-logo.png" alt="GenZ IITIAN" style="height:28px;object-fit:contain;margin-bottom:12px;">
         <div class="ep-shield-badge" style="background:#fee2e2;">
           ${I("slash", 36, "#dc2626")}
         </div>
@@ -316,15 +317,135 @@
     return defaultState;
   }
 
+  let syncDebounceTimer = null;
+  let isBackendConnected = false;
+  let isSyncing = false;
+
+  function updateBackendBadge(connected) {
+    const badge = document.getElementById("ep-backend-badge");
+    if (!badge) return;
+    if (connected) {
+      badge.style.background = "#dcfce7";
+      badge.style.color = "#166534";
+      badge.innerHTML = `<span style="width:6px;height:6px;border-radius:50%;background:#16a34a;display:inline-block;"></span> Backend Live`;
+    } else {
+      badge.style.background = "#f1f5f9";
+      badge.style.color = "#64748b";
+      badge.innerHTML = `<span style="width:6px;height:6px;border-radius:50%;background:#94a3b8;display:inline-block;"></span> Local Mode`;
+    }
+  }
+
+  function pushStateToBackend(state) {
+    fetch("/api/state", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(state)
+    })
+      .then((res) => {
+        if (res.ok) {
+          isBackendConnected = true;
+          updateBackendBadge(true);
+        }
+      })
+      .catch(() => {
+        isBackendConnected = false;
+        updateBackendBadge(false);
+      });
+  }
+
   function saveState(state) {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
     window.dispatchEvent(new Event("ep_state_changed"));
+
+    clearTimeout(syncDebounceTimer);
+    syncDebounceTimer = setTimeout(() => {
+      pushStateToBackend(state);
+    }, 150);
+  }
+
+  async function syncFromBackend() {
+    if (isSyncing) return;
+    try {
+      isSyncing = true;
+      const res = await fetch("/api/state");
+      if (!res.ok) return;
+      const remoteState = await res.json();
+      isBackendConnected = true;
+      updateBackendBadge(true);
+
+      const localState = getState();
+      let hasChanges = false;
+
+      if (
+        remoteState.exam &&
+        (localState.exam.status !== remoteState.exam.status ||
+          localState.exam.extendedMinutes !== remoteState.exam.extendedMinutes ||
+          localState.exam.type !== remoteState.exam.type ||
+          localState.exam.resultsPublished !== remoteState.exam.resultsPublished)
+      ) {
+        localState.exam.status = remoteState.exam.status;
+        localState.exam.extendedMinutes = remoteState.exam.extendedMinutes;
+        localState.exam.type = remoteState.exam.type;
+        localState.exam.resultsPublished = remoteState.exam.resultsPublished;
+        hasChanges = true;
+      }
+
+      if (
+        remoteState.chatMessages &&
+        remoteState.chatMessages.length !== localState.chatMessages.length
+      ) {
+        localState.chatMessages = remoteState.chatMessages;
+        hasChanges = true;
+      }
+
+      if (
+        remoteState.reentryRequests &&
+        JSON.stringify(remoteState.reentryRequests) !== JSON.stringify(localState.reentryRequests)
+      ) {
+        localState.reentryRequests = remoteState.reentryRequests;
+        hasChanges = true;
+      }
+
+      if (localState.currentUser.role === "manager" && remoteState.studentSessions) {
+        localState.studentSessions = {
+          ...localState.studentSessions,
+          ...remoteState.studentSessions
+        };
+        hasChanges = true;
+      } else if (localState.currentUser.role === "student" && remoteState.studentSessions) {
+        const myEmail = localState.currentUser.email;
+        if (remoteState.studentSessions[myEmail]) {
+          const remoteMySession = remoteState.studentSessions[myEmail];
+          const localMySession = localState.studentSessions[myEmail] || {};
+          if (
+            remoteMySession.status !== localMySession.status &&
+            remoteMySession.status !== undefined
+          ) {
+            localMySession.status = remoteMySession.status;
+            hasChanges = true;
+          }
+        }
+      }
+
+      if (hasChanges) {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(localState));
+        render();
+      }
+    } catch (e) {
+      isBackendConnected = false;
+      updateBackendBadge(false);
+    } finally {
+      isSyncing = false;
+    }
   }
 
   window.addEventListener("storage", (e) => {
     if (e.key === STORAGE_KEY) render();
   });
   window.addEventListener("ep_state_changed", () => render());
+
+  setInterval(syncFromBackend, 2500);
+  syncFromBackend();
 
   // ==========================================
   // TOP PERSISTENT WORKSPACE BAR
@@ -351,6 +472,10 @@
         </span>
         <span style="font-size:11px;color:#9ca3af;font-weight:600;margin-left:4px;">
           Type: <b style="color:${state.exam.type === "final" ? "#fb7185" : "#38bdf8"};">${state.exam.type.toUpperCase()}</b> | Status: <b style="color:${state.exam.status === "ended" ? "#fb7185" : "#34d399"};">${state.exam.status.toUpperCase()}</b>
+        </span>
+        <span id="ep-backend-badge" style="font-size:11px;font-weight:700;display:inline-flex;align-items:center;gap:5px;padding:3px 8px;border-radius:9999px;background:${isBackendConnected ? "#dcfce7" : "#f1f5f9"};color:${isBackendConnected ? "#166534" : "#64748b"};margin-left:6px;">
+          <span style="width:6px;height:6px;border-radius:50%;background:${isBackendConnected ? "#16a34a" : "#94a3b8"};display:inline-block;"></span>
+          ${isBackendConnected ? "Backend Live" : "Local Mode"}
         </span>
       </div>
       <div class="btn-group">
@@ -550,6 +675,8 @@
   }
 
   function showTabSwitchWarningModal(warningCount, state, session) {
+    if (!state) state = getState();
+    if (!session) session = state.studentSessions[state.currentUser.email] || {};
     isTabWarningModalOpen = true;
     const floatingPanels = ["ep-doubts-modal", "ep-calc-widget"]
       .map((id) => document.getElementById(id))
@@ -572,6 +699,7 @@
 
     modal.innerHTML = `
       <div class="ep-onboarding-card" style="max-width:440px;text-align:center;box-shadow:0 25px 50px -12px rgba(220,38,38,0.25);border:1.5px solid #fca5a5;">
+        <img src="/assets/genz-logo.png" alt="GenZ IITIAN" style="height:28px;object-fit:contain;margin-bottom:12px;">
         <div class="ep-shield-badge" style="background:#fee2e2;">
           ${I("alert", 36, "#dc2626")}
         </div>
@@ -675,7 +803,7 @@
     const warnChip = document.getElementById("ep-warning-chip");
     if (warnChip) warnChip.classList.add("warning-active");
 
-    showTabSwitchWarningModal(session.warnings, state, session);
+    showTabSwitchWarningModal(session.warnings);
   }
 
   function initAntiCheatListeners() {
@@ -775,6 +903,7 @@
     }
     modal.innerHTML = `
       <div class="ep-onboarding-card" style="max-width:460px;text-align:center;box-shadow:0 25px 50px -12px rgba(15,23,42,0.35);border:1.5px solid #cbd5e1;">
+        <img src="/assets/genz-logo.png" alt="GenZ IITIAN" style="height:28px;object-fit:contain;margin-bottom:12px;">
         <div class="ep-shield-badge" style="background:#fee2e2;">
           ${I("lock", 36, "#dc2626")}
         </div>
@@ -812,6 +941,7 @@
     }
     modal.innerHTML = `
       <div class="ep-onboarding-card" style="max-width:440px;text-align:center;box-shadow:0 25px 50px -12px rgba(15,23,42,0.35);border:1.5px solid #cbd5e1;">
+        <img src="/assets/genz-logo.png" alt="GenZ IITIAN" style="height:28px;object-fit:contain;margin-bottom:12px;">
         <div class="ep-shield-badge" style="background:#fee2e2;">
           ${I("slash", 36, "#dc2626")}
         </div>
@@ -990,6 +1120,7 @@
 
     modal.innerHTML = `
       <div class="ep-onboarding-card" style="max-width:460px;width:100%;text-align:center;background:#ffffff;border-radius:20px;box-shadow:0 25px 60px -15px rgba(0,0,0,0.3);padding:30px 24px;color:#0f172a;animation:ep-card-pop 0.2s cubic-bezier(0.16, 1, 0.3, 1);">
+        <img src="/assets/genz-logo.png" alt="GenZ IITIAN" style="height:28px;object-fit:contain;margin-bottom:12px;">
         <div class="ep-shield-badge" style="background:#dcfce7;margin:0 auto 16px auto;">
           ${I("checkCircle", 36, "#059669")}
         </div>
@@ -2632,6 +2763,7 @@
         <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:16px;">
           <div>
             <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+              <img src="/assets/genz-logo.png" alt="GenZ IITIAN" style="height:28px;object-fit:contain;">
               ${I("shield", 22, "#059669")}
               <h2 style="font-size:20px;font-weight:800;color:#0f172a;margin:0;">Candidate Code of Conduct</h2>
             </div>
@@ -3120,10 +3252,15 @@
 
             <div style="padding:12px 16px;border-top:1px solid #e2e8f0;background:#ffffff;">
               <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
-                <button id="ep-btn-calc" title="Open Calculator" style="background:#f0fdf4;border:1px solid #86efac;color:#047857;padding:9px 10px;border-radius:8px;font-size:12px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px;">
-                  ${I("calculator", 13, "#047857")} Calculator
+                <button id="ep-btn-calc-basic" title="Open Basic Calculator" style="background:#f0fdf4;border:1px solid #86efac;color:#047857;padding:9px 10px;border-radius:8px;font-size:12px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px;">
+                  ${I("calculator", 13, "#047857")} Basic
                 </button>
-                <button id="ep-btn-header-chat" style="background:#0f172a;color:#fff;border:none;padding:9px 10px;border-radius:8px;font-size:12px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px;">
+                <button id="ep-btn-calc-pro" title="Open Scientific Calculator" style="background:#f0fdf4;border:1px solid #86efac;color:#047857;padding:9px 10px;border-radius:8px;font-size:12px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px;">
+                  ${I("calculator", 13, "#047857")} Pro
+                </button>
+              </div>
+              <div style="margin-top:8px;">
+                <button id="ep-btn-header-chat" style="width:100%;background:#0f172a;color:#fff;border:none;padding:9px 10px;border-radius:8px;font-size:12px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px;">
                   ${I("message", 13, "#ffffff")} Doubts ${state.chatMessages.length > 0 ? `<span style="background:#059669;color:#fff;font-size:10px;padding:1px 6px;border-radius:9999px;">${state.chatMessages.length}</span>` : ""}
                 </button>
               </div>
@@ -3157,20 +3294,20 @@
                 <div style="flex:1;overflow-y:auto;max-width:880px;">
                   <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid #e2e8f0;">
                     <img src="/assets/genz-logo.png" alt="GenZ IITIAN" style="height:28px;object-fit:contain;">
-                    <div style="font-size:16px;font-weight:800;color:#0f172a;">Candidate Code of Conduct</div>
+                    <div style="font-size:16px;font-weight:800;color:#0f172a;">Candidate Code of Conduct & Remote Proctoring Rules</div>
                   </div>
 
                   <h2 style="font-size:16px;font-weight:800;color:#1e3a8a;margin:0 0 12px 0;">
                     Online Remote Proctored Exams
                   </h2>
                   <p style="font-size:13.5px;color:#334155;line-height:1.7;margin-bottom:18px;">
-                    This exam is conducted online from the examinee's place of residence and proctored remotely by the GenZ IITian team. The following guidelines must be followed by all examinees.
+                    This exam is conducted online from the examinee's place of residence and proctored remotely by the GenZ IITian team. Due date for this assignment is binding. The following guidelines must be followed by all examinees.
                   </p>
 
                   <ol style="font-size:13px;color:#334155;line-height:1.75;padding-left:22px;display:flex;flex-direction:column;gap:10px;margin-bottom:28px;">
-                    <li><b>Personal details:</b> No examinee shall share personal details with proctors, including but not limited to phone number or address, during or after the exam.</li>
+                    <li><b>Personal details:</b> No examinee shall share their personal details with the proctors, including but not limited to phone number or address, during or after the exam.</li>
                     <li><b>Clean desk:</b> The table or desk where the examinee takes this exam shall not have any items kept that may have sensitive information, including but not limited to phone numbers and address.</li>
-                    <li><b>No assistance:</b> No examinee shall aid, or attempt to aid, another candidate by discussing answers via email, text, chat, call, or any other method.</li>
+                    <li><b>No assistance:</b> No examinee shall aid, or attempt to aid another candidate by discussing answers via email, text, chat, call, or any other method.</li>
                     <li><b>Confidential exam:</b> No examinee will disclose any details of what happened during the exam or examination trials to anyone outside.</li>
                     <li><b>Ask inside exam:</b> If an examinee wishes to ask a question during the exam, they should post the query in the exam room chat window and the proctor will clarify the issue.</li>
                     <li><b>Violation action:</b> If any examinee is found to have violated the Code of Conduct for Online Examinations, or to have acted improperly, they will be liable to disciplinary procedures. This can include withholding exam results, suspension, or termination from the program.</li>
@@ -3456,6 +3593,18 @@
         }
         saveState(state);
       };
+    }
+
+    const btnCalcBasic = document.getElementById("ep-btn-calc-basic");
+    if (btnCalcBasic) {
+      btnCalcBasic.onmousedown = markInternalExamAction;
+      btnCalcBasic.onclick = () => toggleCalculator("basic");
+    }
+
+    const btnCalcPro = document.getElementById("ep-btn-calc-pro");
+    if (btnCalcPro) {
+      btnCalcPro.onmousedown = markInternalExamAction;
+      btnCalcPro.onclick = () => toggleCalculator("pro");
     }
 
     const btnCalc = document.getElementById("ep-btn-calc");

@@ -1,0 +1,21 @@
+{
+  "name": "genzexam",
+  "version": "1.0.0",
+  "description": "GenZ IITian Examination Platform Backend and Frontend",
+  "main": "server.js",
+  "scripts": {
+    "start": "python3 serve.py",
+    "start:node": "node server.js",
+    "start:python": "python3 serve.py",
+    "test": "node test_student_workspace_assertions.js && node test_platform_features.js"
+  },
+  "keywords": [
+    "iitm",
+    "exam",
+    "proctoring",
+    "assessment",
+    "genz-iitian"
+  ],
+  "author": "GenZIITian",
+  "license": "ISC"
+}
