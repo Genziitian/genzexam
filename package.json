@@ -1,0 +1,18 @@
+{
+  "name": "genzexam-frontend",
+  "version": "1.0.0",
+  "description": "GenZ IITian Examination Platform Frontend SPA",
+  "scripts": {
+    "start": "python3 serve.py"
+  },
+  "keywords": [
+    "iitm",
+    "exam",
+    "proctoring",
+    "assessment",
+    "genz-iitian",
+    "frontend"
+  ],
+  "author": "GenZIITian",
+  "license": "ISC"
+}

@@ -2,3 +2,7 @@
 Thumbs.db
 assets.*
 templates.*
+data/
+*.tmp
+node_modules/
+backend/
