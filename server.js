@@ -21,7 +21,7 @@ function getDefaultState() {
     currentUser: {
       id: "manager",
       name: "Exam Manager",
-      email: "manager@iitm.ac.in",
+      email: "",
       role: "manager"
     },
     exam: {
@@ -37,7 +37,7 @@ function getDefaultState() {
       instructions: "No outside aids permitted. Exiting the exam window requires manager approval to re-enter.",
       chatEnabled: true,
       allowedEmails: [
-        "student@iitm.ac.in",
+        "",
         "tushar@iitm.ac.in",
         ...Array.from({ length: 50 }, (_, i) => `student${i + 1}@iitm.ac.in`)
       ],
@@ -149,9 +149,9 @@ function getDefaultState() {
     },
     reentryRequests: [],
     studentSessions: {
-      "student@iitm.ac.in": {
-        email: "student@iitm.ac.in",
-        name: "Student Demo",
+      "": {
+        email: "",
+        name: "Candidate",
         studentId: "22F3001840",
         status: "not_started",
         onboardingStep: 0,

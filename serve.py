@@ -29,7 +29,7 @@ def get_default_state():
         "currentUser": {
             "id": "manager",
             "name": "Exam Manager",
-            "email": "manager@iitm.ac.in",
+            "email": "",
             "role": "manager"
         },
         "exam": {
@@ -45,7 +45,7 @@ def get_default_state():
             "instructions": "No outside aids permitted. Exiting the exam window requires manager approval to re-enter.",
             "chatEnabled": True,
             "allowedEmails": [
-                "student@iitm.ac.in",
+                "",
                 "tushar@iitm.ac.in"
             ] + [f"student{i}@iitm.ac.in" for i in range(1, 51)],
             "sections": [
@@ -156,9 +156,9 @@ def get_default_state():
         },
         "reentryRequests": [],
         "studentSessions": {
-            "student@iitm.ac.in": {
-                "email": "student@iitm.ac.in",
-                "name": "Student Demo",
+            "": {
+                "email": "",
+                "name": "Candidate",
                 "studentId": "22F3001840",
                 "status": "not_started",
                 "onboardingStep": 0,

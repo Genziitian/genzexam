@@ -130,10 +130,10 @@
     studentActiveTab: "scheduled_exams", // 'courses' | 'scheduled_exams' | 'results'
     activeOnboardingModal: null, // null | 1 | 2 | 3 | 4
     currentUser: {
-      id: "manager",
-      name: "Exam Manager",
-      email: "manager@iitm.ac.in",
-      role: "manager"
+      id: "candidate",
+      name: "Candidate",
+      email: "",
+      role: "student"
     },
     exam: {
       id: "iitm-python-endterm",
@@ -147,11 +147,7 @@
       startedAt: Date.now() - 15 * 60 * 1000,
       instructions: "No outside aids permitted. Exiting the exam window requires manager approval to re-enter.",
       chatEnabled: true,
-      allowedEmails: [
-        "student@iitm.ac.in",
-        "tushar@iitm.ac.in",
-        ...Array.from({ length: 50 }, (_, i) => `student${i + 1}@iitm.ac.in`)
-      ],
+      allowedEmails: [],
       sections: [
         { id: "sec-coc", title: "Code of Conduct (COC)", isCoc: true },
         { id: "sec-a", title: "Section A: Core Concepts", marksEach: 2, negativeEach: 0.5 },
@@ -259,31 +255,7 @@
       ]
     },
     reentryRequests: [],
-    studentSessions: {
-      "student@iitm.ac.in": {
-        email: "student@iitm.ac.in",
-        name: "Student Demo",
-        studentId: "22F3001840",
-        status: "not_started",
-        onboardingStep: 0,
-        attendanceRecordedAt: null,
-        attendanceTimestamp: null,
-        photoDataUrl: null,
-        warnings: 0,
-        warningLogs: [],
-        outsideExamSeconds: 0,
-        outsideSince: null,
-        outsideReason: null,
-        cocAgreedAt: null,
-        cocAgreedAtFormatted: null,
-        currentQuestionIndex: 0,
-        currentSectionId: "sec-a",
-        answers: {},
-        reviewFlags: [],
-        startedAt: null,
-        lastActive: Date.now()
-      }
-    },
+    studentSessions: {},
     chatMessages: [
       {
         id: "msg-1",
@@ -299,17 +271,40 @@
   function getState() {
     try {
       const data = localStorage.getItem(STORAGE_KEY);
-      if (data) {
-        const parsed = JSON.parse(data);
-        if (!parsed.studentActiveTab) parsed.studentActiveTab = "scheduled_exams";
-        if (!parsed.exam.type) parsed.exam.type = "final";
-        if (parsed.exam.resultsPublished === undefined) parsed.exam.resultsPublished = false;
-        parsed.chatMessages = (parsed.chatMessages || []).map((m, idx) => ({ ...m, id: m.id || `msg-old-${idx}` }));
-        if (parsed.exam && parsed.exam.sections && !parsed.exam.sections.some((s) => s.id === "sec-coc")) {
-          parsed.exam.sections.unshift({ id: "sec-coc", title: "Code of Conduct (COC)", isCoc: true });
+      let parsed = data ? JSON.parse(data) : JSON.parse(JSON.stringify(defaultState));
+
+      // Sync with real authenticated user if available
+      try {
+        const labUserStr = localStorage.getItem("lab_user");
+        if (labUserStr) {
+          const labUser = JSON.parse(labUserStr);
+          if (labUser && labUser.email) {
+            const isAdmin = !!(labUser.is_admin || labUser.role === "admin" || labUser.role === "manager");
+            parsed.currentUser = {
+              id: String(labUser.id || labUser.email),
+              name: labUser.name || (labUser.email ? labUser.email.split("@")[0] : "Candidate"),
+              email: labUser.email,
+              role: isAdmin ? "manager" : "student"
+            };
+          }
         }
-        return parsed;
+      } catch (err) {}
+
+      // Route detection: if on /login page, enforce login view
+      if (window.location.pathname === "/login") {
+        parsed.activeView = "login";
+      } else if (window.location.pathname.startsWith("/exams") || window.location.pathname === "/exam" || window.location.hash.includes("exam")) {
+        parsed.activeView = "exam_platform";
       }
+
+      if (!parsed.studentActiveTab) parsed.studentActiveTab = "scheduled_exams";
+      if (!parsed.exam.type) parsed.exam.type = "final";
+      if (parsed.exam.resultsPublished === undefined) parsed.exam.resultsPublished = false;
+      parsed.chatMessages = (parsed.chatMessages || []).map((m, idx) => ({ ...m, id: m.id || `msg-old-${idx}` }));
+      if (parsed.exam && parsed.exam.sections && !parsed.exam.sections.some((s) => s.id === "sec-coc")) {
+        parsed.exam.sections.unshift({ id: "sec-coc", title: "Code of Conduct (COC)", isCoc: true });
+      }
+      return parsed;
     } catch (e) {
       console.error(e);
     }
@@ -448,10 +443,18 @@
   syncFromBackend();
 
   // ==========================================
-  // TOP PERSISTENT WORKSPACE BAR
+  // TOP WORKSPACE BAR (ADMIN / MANAGER ONLY)
   // ==========================================
   function renderRoleSwitcher(state) {
     let el = document.getElementById("ep-role-switcher");
+
+    // Hide role switcher completely on login page, outside exam platform, or for students
+    if (state.activeView !== "exam_platform" || state.currentUser?.role !== "manager") {
+      if (el) el.remove();
+      document.body.classList.remove("with-ep-switcher");
+      return;
+    }
+
     if (!el) {
       el = document.createElement("div");
       el.id = "ep-role-switcher";
@@ -459,16 +462,13 @@
       document.body.classList.add("with-ep-switcher");
     }
 
-    const isManager = state.currentUser.role === "manager";
-    const inPlatform = state.activeView === "exam_platform";
-
     el.innerHTML = `
       <div class="brand-logo">
         <img src="/assets/genz-logo.png" alt="GenZ IITIAN" style="height:24px;object-fit:contain;margin-right:2px;">
         <span>Exam Portal</span>
-        <span class="role-badge ${isManager ? "manager" : "student"}">
-          ${isManager ? I("shield", 13, "#38bdf8") : I("cap", 13, "#34d399")}
-          ${isManager ? "Manager" : "Student"}: ${state.currentUser.email}
+        <span class="role-badge manager">
+          ${I("shield", 13, "#38bdf8")}
+          Manager: ${state.currentUser.email || "Admin"}
         </span>
         <span style="font-size:11px;color:#9ca3af;font-weight:600;margin-left:4px;">
           Type: <b style="color:${state.exam.type === "final" ? "#fb7185" : "#38bdf8"};">${state.exam.type.toUpperCase()}</b> | Status: <b style="color:${state.exam.status === "ended" ? "#fb7185" : "#34d399"};">${state.exam.status.toUpperCase()}</b>
@@ -479,161 +479,24 @@
         </span>
       </div>
       <div class="btn-group">
-        ${
-          inPlatform
-            ? `<button id="ep-btn-switch-role" class="btn-active">
-                 ${isManager ? I("cap", 13, "#ffffff") : I("shield", 13, "#ffffff")}
-                 Switch to ${isManager ? "Student View" : "Manager View"}
-               </button>
-               <button id="ep-btn-back-login">
-                 Sign In Screen
-               </button>`
-            : `<button id="ep-btn-enter-platform" class="btn-active">
-                 Open Exam Platform (${isManager ? "Manager" : "Student"})
-               </button>`
-        }
-        <button id="ep-btn-open-tab" title="Open in a new tab for simultaneous manager & student testing">
-          + New Tab
-        </button>
-        <button id="ep-btn-reset-demo" style="background:#450a0a;border-color:#7f1d1d;color:#fca5a5;">
-          Reset
+        <button id="ep-btn-back-login">
+          Exit to Dashboard
         </button>
       </div>
     `;
 
-    const btnSwitch = document.getElementById("ep-btn-switch-role");
-    if (btnSwitch) {
-      btnSwitch.onclick = () => {
-        if (isManager) {
-          showManagerConfirmModal({
-            title: "Switch to Student View",
-            subtitle: "Role Switcher",
-            description: "You are currently viewing the Proctor Dashboard. Switching to Student View will open the candidate assessment interface. You can return at any time.",
-            confirmText: "Switch View",
-            confirmType: "info",
-            icon: "users",
-            onConfirm: () => {
-              state.currentUser = { id: "student", name: "Student Demo", email: "student@iitm.ac.in", role: "student" };
-              state.activeView = "exam_platform";
-              saveState(state);
-            }
-          });
-        } else {
-          state.currentUser = { id: "manager", name: "Exam Manager", email: "manager@iitm.ac.in", role: "manager" };
-          state.activeView = "exam_platform";
-          saveState(state);
-        }
-      };
-    }
-
-    const btnEnter = document.getElementById("ep-btn-enter-platform");
-    if (btnEnter) {
-      btnEnter.onclick = () => {
-        state.activeView = "exam_platform";
-        saveState(state);
-      };
-    }
-
     const btnBackLogin = document.getElementById("ep-btn-back-login");
     if (btnBackLogin) {
       btnBackLogin.onclick = () => {
-        if (isManager) {
-          showManagerConfirmModal({
-            title: "Return to Sign In Portal",
-            subtitle: "Session Navigation",
-            description: "Exit the Proctor Dashboard and return to the main login portal?",
-            confirmText: "Go to Sign In",
-            confirmType: "info",
-            icon: "logOut",
-            onConfirm: () => {
-              state.activeView = "login";
-              saveState(state);
-            }
-          });
-        } else {
-          state.activeView = "login";
-          saveState(state);
-        }
-      };
-    }
-
-    const btnOpenTab = document.getElementById("ep-btn-open-tab");
-    if (btnOpenTab) {
-      btnOpenTab.onclick = () => {
-        window.open(window.location.href, "_blank");
-      };
-    }
-
-    const btnReset = document.getElementById("ep-btn-reset-demo");
-    if (btnReset) {
-      btnReset.onclick = () => {
-        showManagerConfirmModal({
-          title: "Reset Examination Platform",
-          subtitle: "Critical System Reset",
-          description: "This will wipe all active student sessions, submitted answers, telemetry violation logs, and re-entry requests, reverting the entire portal to initial defaults.",
-          confirmText: "Yes, Reset Platform",
-          confirmType: "danger",
-          icon: "refresh",
-          requireCheckbox: true,
-          checkboxLabel: "I confirm wiping all candidate sessions and restoring defaults",
-          onConfirm: () => {
-            localStorage.removeItem(STORAGE_KEY);
-            saveState(defaultState);
-          }
-        });
-      };
-    }
-  }
-
-  // Inject quick login buttons inside React login card
-  function injectLoginButtons(state) {
-    const googleBtn = document.querySelector('button[type="button"]');
-    if (googleBtn && googleBtn.textContent.includes("Continue with Google")) {
-      let quickBox = document.getElementById("ep-quick-login-container");
-      if (!quickBox) {
-        quickBox = document.createElement("div");
-        quickBox.id = "ep-quick-login-container";
-        quickBox.style.cssText =
-          "margin-bottom:16px;padding:12px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;display:flex;flex-direction:column;gap:8px;";
-        googleBtn.parentNode.insertBefore(quickBox, googleBtn);
-      }
-
-      quickBox.innerHTML = `
-        <img src="/assets/genz-logo.png" alt="GenZ IITIAN" style="height:36px;margin:0 auto 10px auto;display:block;object-fit:contain;">
-        <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.06em;color:#475569;margin-bottom:2px;text-align:center;">
-          Select Test Account
-        </div>
-        <button type="button" id="ep-quick-mgr" style="background:#0f172a;color:#fff;border:none;padding:10px 14px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;">
-          ${I("shield", 15, "#38bdf8")}
-          Login as Test Manager (manager@iitm.ac.in)
-        </button>
-        <button type="button" id="ep-quick-std" style="background:#059669;color:#fff;border:none;padding:10px 14px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;">
-          ${I("cap", 15, "#ffffff")}
-          Login as Student (student@iitm.ac.in)
-        </button>
-      `;
-
-      document.getElementById("ep-quick-mgr").onclick = () => {
-        state.currentUser = { id: "manager", name: "Exam Manager", email: "manager@iitm.ac.in", role: "manager" };
-        state.activeView = "exam_platform";
-        saveState(state);
-      };
-
-      document.getElementById("ep-quick-std").onclick = () => {
-        state.currentUser = { id: "student", name: "Student Demo", email: "student@iitm.ac.in", role: "student" };
-        state.activeView = "exam_platform";
+        state.activeView = "login";
         saveState(state);
       };
     }
   }
 
-  const observer = new MutationObserver(() => {
-    const state = getState();
-    if (state.activeView === "login") {
-      injectLoginButtons(state);
-    }
-  });
-  observer.observe(document.body, { childList: true, subtree: true });
+  // Clean up any legacy test injection container if present
+  const legacyQuick = document.getElementById("ep-quick-login-container");
+  if (legacyQuick) legacyQuick.remove();
 
   // ==========================================
   // ANTI-CHEAT ENFORCEMENT & WARNING ENGINE
@@ -1478,7 +1341,8 @@
     if (state.activeView === "login") {
       if (originalRoot) originalRoot.style.display = "block";
       container.style.display = "none";
-      injectLoginButtons(state);
+      const q = document.getElementById("ep-quick-login-container");
+      if (q) q.remove();
     } else {
       if (originalRoot) originalRoot.style.display = "none";
       container.style.display = "block";
@@ -2531,7 +2395,7 @@
   function renderStudentInterface(container, state) {
     const student = state.currentUser;
     const exam = state.exam;
-    const isWhitelisted = exam.allowedEmails.includes(student.email);
+    const isWhitelisted = !exam.allowedEmails || exam.allowedEmails.length === 0 || exam.allowedEmails.includes(student.email);
 
     if (!state.studentSessions[student.email]) {
       state.studentSessions[student.email] = {

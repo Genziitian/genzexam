@@ -121,23 +121,17 @@ class ExamPlatformController extends Controller
             ]
         ];
 
-        $allowedEmails = [
-            'student@iitm.ac.in',
-            'tushar@iitm.ac.in',
-        ];
-        for ($i = 1; $i <= 50; $i++) {
-            $allowedEmails[] = "student{$i}@iitm.ac.in";
-        }
+        $allowedEmails = [];
 
         return [
             'activeView' => 'login',
             'studentActiveTab' => 'scheduled_exams',
             'activeOnboardingModal' => null,
             'currentUser' => [
-                'id' => 'manager',
-                'name' => 'Exam Manager',
-                'email' => 'manager@iitm.ac.in',
-                'role' => 'manager',
+                'id' => 'candidate',
+                'name' => 'Candidate',
+                'email' => '',
+                'role' => 'student',
             ],
             'exam' => [
                 'id' => 'iitm-python-endterm',
@@ -160,31 +154,7 @@ class ExamPlatformController extends Controller
                 'questions' => $questions,
             ],
             'reentryRequests' => [],
-            'studentSessions' => [
-                'student@iitm.ac.in' => [
-                    'email' => 'student@iitm.ac.in',
-                    'name' => 'Student Demo',
-                    'studentId' => '22F3001840',
-                    'status' => 'not_started',
-                    'onboardingStep' => 0,
-                    'attendanceRecordedAt' => null,
-                    'attendanceTimestamp' => null,
-                    'photoDataUrl' => null,
-                    'warnings' => 0,
-                    'warningLogs' => [],
-                    'outsideExamSeconds' => 0,
-                    'outsideSince' => null,
-                    'outsideReason' => null,
-                    'cocAgreedAt' => null,
-                    'cocAgreedAtFormatted' => null,
-                    'currentQuestionIndex' => 0,
-                    'currentSectionId' => 'sec-a',
-                    'answers' => (object)[],
-                    'reviewFlags' => [],
-                    'startedAt' => null,
-                    'lastActive' => (int)(microtime(true) * 1000),
-                ],
-            ],
+            'studentSessions' => (object)[],
             'chatMessages' => [
                 [
                     'id' => 'msg-1',
