@@ -5,3 +5,19 @@ templates.*
 data/
 *.tmp
 node_modules/
+
+# Laravel Backend
+/backend/vendor/
+/backend/node_modules/
+/backend/.env
+/backend/.env.backup
+/backend/.env.production
+/backend/storage/*.key
+/backend/storage/logs/*.log
+/backend/storage/framework/cache/data/*
+/backend/storage/framework/sessions/*
+/backend/storage/framework/views/*
+/backend/.phpunit.cache
+/backend/public/storage
+/backend/public/build
+/backend/public/hot

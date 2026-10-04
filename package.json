@@ -5,16 +5,18 @@
   "main": "server.js",
   "scripts": {
     "start": "python3 serve.py",
+    "start:laravel": "cd backend && php artisan serve",
     "start:node": "node server.js",
     "start:python": "python3 serve.py",
-    "test": "node test_student_workspace_assertions.js && node test_platform_features.js"
+    "test": "node test_student_workspace_assertions.js && node test_platform_features.js && node test_backend_api.js"
   },
   "keywords": [
     "iitm",
     "exam",
     "proctoring",
     "assessment",
-    "genz-iitian"
+    "genz-iitian",
+    "laravel"
   ],
   "author": "GenZIITian",
   "license": "ISC"
