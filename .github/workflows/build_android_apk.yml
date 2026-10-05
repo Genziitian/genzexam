@@ -2,6 +2,9 @@ name: Build Quiz Lab Android APK
 
 on:
   push:
+    paths:
+      - 'mobile/**'
+      - '.github/workflows/build_android_apk.yml'
     branches: [ main, backend ]
   workflow_dispatch:
 
@@ -29,7 +32,12 @@ jobs:
 
       - name: Ensure Android Platform Scaffolding
         working-directory: mobile
-        run: flutter create . --platforms=android --org in.genziitian
+        run: |
+          mkdir -p /tmp/res_backup
+          cp -r android/app/src/main/res /tmp/res_backup/ 2>/dev/null || true
+          rm -rf android
+          flutter create --platforms=android --org in.genziitian .
+          cp -r /tmp/res_backup/res/* android/app/src/main/res/ 2>/dev/null || true
 
       - name: Install Mobile Dependencies
         working-directory: mobile
