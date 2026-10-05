@@ -38,11 +38,7 @@ jobs:
           rm -rf android
           flutter create --platforms=android --org in.genziitian .
           cp -r /tmp/res_backup/res/* android/app/src/main/res/ 2>/dev/null || true
-          # Patch manifest for flutter_secure_storage allowBackup conflict
-          sed -i 's|<manifest xmlns:android="http://schemas.android.com/apk/res/android"|<manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"|' android/app/src/main/AndroidManifest.xml
-          sed -i 's|<application|<application tools:replace="android:allowBackup" android:allowBackup="false"|' android/app/src/main/AndroidManifest.xml
-          # Ensure minSdk >= 21 for secure storage
-          sed -i 's|minSdkVersion .*|minSdkVersion 21|' android/app/build.gradle || true
+          python3 patch_android_ci.py
 
       - name: Install Mobile Dependencies
         working-directory: mobile

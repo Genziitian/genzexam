@@ -1,4 +1,4 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
     package="in.genziitian.quizlab">
 
     <!-- Permissions for cloud API synchronization & secure tokens -->
@@ -8,7 +8,7 @@
     <uses-permission android:name="android.permission.USE_BIOMETRIC"/>
     <uses-permission android:name="android.permission.VIBRATE"/>
 
-    <application
+    <application tools:replace="android:allowBackup" android:allowBackup="false"
         android:label="Quiz Lab"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher"
