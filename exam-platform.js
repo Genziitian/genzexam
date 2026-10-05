@@ -268,6 +268,10 @@
     ]
   };
 
+  // Server-confirmed role for the signed-in user: null until /auth/me answers.
+  // Never populated from localStorage - that is forgeable by the viewer.
+  let verifiedRole = null;
+
   function getState() {
     try {
       const data = localStorage.getItem(STORAGE_KEY);
@@ -279,12 +283,15 @@
         if (labUserStr) {
           const labUser = JSON.parse(labUserStr);
           if (labUser && labUser.email) {
-            const isAdmin = !!(labUser.is_admin || labUser.role === "admin" || labUser.role === "manager");
+            // Identity may come from localStorage, but elevation must not:
+            // only a role confirmed by the server opens the manager portal.
+            // Until that check returns we deliberately fail closed to student.
+            const elevated = verifiedRole === "manager" || verifiedRole === "admin";
             parsed.currentUser = {
               id: String(labUser.id || labUser.email),
               name: labUser.name || (labUser.email ? labUser.email.split("@")[0] : "Candidate"),
               email: labUser.email,
-              role: isAdmin ? "manager" : "student"
+              role: elevated ? "manager" : "student"
             };
           }
         }
@@ -1784,6 +1791,63 @@
   // USER MANAGEMENT (manager panel only)
   // ==========================================
   const ADMIN_API_BASE = "https://labapi.genziitian.in/public/api";
+
+  const ROLE_LABELS = { manager: "Manager panel", admin: "Admin panel" };
+
+  async function verifyRole() {
+    const token = adminToken();
+    if (!token) {
+      verifiedRole = null;
+      renderRoleEntryButton();
+      return;
+    }
+    try {
+      const res = await fetch(`${ADMIN_API_BASE}/auth/me`, {
+        headers: { Accept: "application/json", Authorization: `Bearer ${token}` }
+      });
+      if (!res.ok) throw new Error("unauthorised");
+      const data = await res.json();
+      verifiedRole = (data && data.user && data.user.role) || "student";
+    } catch (err) {
+      // Offline or rejected: stay closed rather than guessing.
+      verifiedRole = null;
+    }
+    renderRoleEntryButton();
+    render();
+  }
+
+  function renderRoleEntryButton() {
+    const existing = document.getElementById("ep-role-entry");
+    const label = ROLE_LABELS[verifiedRole];
+    const path = window.location.pathname;
+    const insidePortal = path.startsWith("/exams") || path === "/exam";
+
+    if (!label || insidePortal || path === "/login") {
+      if (existing) existing.remove();
+      return;
+    }
+    if (existing) {
+      if (existing.dataset.role !== verifiedRole) existing.remove();
+      else return;
+    }
+
+    const el = document.createElement("a");
+    el.id = "ep-role-entry";
+    el.dataset.role = verifiedRole;
+    el.href = "/exams";
+    el.title = `Open the ${verifiedRole} portal`;
+    el.style.cssText =
+      "position:fixed;right:20px;bottom:20px;z-index:99998;display:inline-flex;align-items:center;gap:9px;" +
+      "background:#14301a;color:#eaf6ec;padding:12px 17px;border-radius:12px;text-decoration:none;" +
+      "font:600 13px/1 Inter,system-ui,-apple-system,sans-serif;letter-spacing:.01em;" +
+      "box-shadow:0 10px 30px rgba(10,20,12,.3);transition:transform .15s ease,background .2s ease;";
+    el.onmouseenter = () => { el.style.transform = "translateY(-2px)"; el.style.background = "#1d4426"; };
+    el.onmouseleave = () => { el.style.transform = "none"; el.style.background = "#14301a"; };
+    el.innerHTML =
+      `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#86c46f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>` +
+      label;
+    document.body.appendChild(el);
+  }
 
   let mgrUsers = {
     status: "idle", // idle | loading | ready | error
@@ -4086,4 +4150,20 @@
   } else {
     render();
   }
+
+  // Confirm the role with the server, then keep the entry button in step with
+  // client-side navigation (the React app changes routes without a reload).
+  verifyRole();
+  let lastPath = window.location.pathname;
+  setInterval(() => {
+    if (window.location.pathname !== lastPath) {
+      lastPath = window.location.pathname;
+      renderRoleEntryButton();
+      render();
+    }
+  }, 600);
+  window.addEventListener("popstate", () => {
+    renderRoleEntryButton();
+    render();
+  });
 })();
