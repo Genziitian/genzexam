@@ -67,10 +67,10 @@
 .ql-qa .ql-btn{text-align:left;padding:14px}
 
 /* Login dashboard preview brand treatment */
-.ql-preview-brand{display:flex;width:100%;align-items:center;justify-content:center;gap:12px}
-.ql-preview-brand-mark{width:56px;height:56px;border-radius:15px}
-.ql-preview-brand-mark svg{width:28px;height:28px}
+.ql-preview-brand{display:flex;width:100%;align-items:center;justify-content:center;gap:10px}
+.ql-preview-brand-mark{width:34px;height:34px;border-radius:10px}
+.ql-preview-brand-mark svg{width:18px;height:18px}
 .ql-preview-brand-text{text-align:center}
-.ql-preview-brand-text span:first-child{font-size:20px;letter-spacing:-.02em}
-.ql-preview-brand-text span:last-child{margin-top:4px;font-size:13px;color:#9aa4b8}
+.ql-preview-brand-text span:first-child{font-size:15px;letter-spacing:-.01em}
+.ql-preview-brand-text span:last-child{margin-top:3px;font-size:10.5px;color:#9aa4b8}
 .login-preview-diffuser{background:rgba(15,23,42,.075)}
