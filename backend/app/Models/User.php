@@ -91,16 +91,30 @@ class User extends Authenticatable
         return $this->hasMany(IDESubmission::class);
     }
 
+    /**
+     * The effective role. Falls back to the legacy is_admin flag when the role
+     * column has not been migrated yet, so a pending migration can never lock
+     * existing admins out of the panel.
+     */
+    public function effectiveRole(): string
+    {
+        if ($this->role !== null) {
+            return $this->role;
+        }
+
+        return $this->is_admin ? self::ROLE_ADMIN : self::ROLE_STUDENT;
+    }
+
     /** Managers have total control. */
     public function isManager(): bool
     {
-        return $this->role === self::ROLE_MANAGER;
+        return $this->effectiveRole() === self::ROLE_MANAGER;
     }
 
     /** Admins have limited control; managers inherit everything admins can do. */
     public function isAdmin(): bool
     {
-        return $this->role === self::ROLE_ADMIN;
+        return $this->effectiveRole() === self::ROLE_ADMIN;
     }
 
     public function hasAdminAccess(): bool
@@ -115,7 +129,7 @@ class User extends Authenticatable
 
     public function roleRank(): int
     {
-        return self::ROLE_RANK[$this->role] ?? 0;
+        return self::ROLE_RANK[$this->effectiveRole()] ?? 0;
     }
 
     /**
