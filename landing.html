@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Quiz Lab — Every past paper, practised the way the exam feels.</title>
+<title>Quiz LAB by GenZ IITian — Every past paper, practised the way the exam feels.</title>
 <meta name="description" content="Quiz 1, Quiz 2 and End Term papers from Qualifier to Degree. Practise IITM BS past papers on a real timer, or in practice mode with instant solutions. Free for every student." />
 <meta name="theme-color" content="#1f3d22" />
 <link rel="icon" type="image/x-icon" href="/favicon.ico" />
@@ -195,7 +195,7 @@
   <div class="wrap nav">
     <a class="brand" href="/">
       <span class="mark">Q</span>
-      <span class="brand-text"><strong>Quiz Lab</strong><small>by GenZ IITian</small></span>
+      <span class="brand-text"><strong>Quiz LAB</strong><small>by GenZ IITian</small></span>
     </a>
     <nav class="links">
       <a href="#programmes">Papers</a>
@@ -311,7 +311,7 @@
 </main>
 
 <footer><div class="wrap foot">
-  <span>Quiz Lab by GenZ IITian · Built by students, for students</span>
+  <span>Quiz LAB by GenZ IITian · Built by students, for students</span>
   <span>Not affiliated with IIT Madras</span>
 </div></footer>
 
@@ -341,7 +341,7 @@
   try{
     var token=localStorage.getItem('lab_token');
     if(token){
-      var dest='/home';
+      var dest='/dashboard';
       try{var u=JSON.parse(localStorage.getItem('lab_user')||'{}'); if(u&&u.is_admin)dest='/admin';}catch(e){}
       var auth=document.getElementById('auth-btn');
       auth.textContent='Dashboard'; auth.href=dest;

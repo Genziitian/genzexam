@@ -692,6 +692,58 @@ body.with-ep-switcher {
   height: 10px;
 }
 
+/* Keep the light React admin workspace readable alongside the exam portal. */
+body.ep-admin-layout {
+  color: #0f172a;
+}
+
+/* Admin forms use a centered, viewport-bounded dialog instead of a full-height drawer. */
+body.ep-admin-layout #root .fixed.inset-0.z-50:has(> aside[class*="max-w-[100vw]"]) {
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+}
+
+body.ep-admin-layout #root .fixed.inset-0.z-50:has(> aside[class*="max-w-[100vw]"]) > aside.translate-x-0 {
+  position: relative;
+  inset: auto;
+  height: auto;
+  max-height: calc(100dvh - 48px);
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  color: #0f172a;
+  box-shadow: 0 24px 64px rgba(15, 23, 42, 0.24);
+}
+
+/* Center the video editor form and keep it inside the viewport. */
+body.ep-admin-layout #root .fixed.inset-0.z-40.bg-black\/30 {
+  z-index: 1000;
+}
+
+body.ep-admin-layout #root .fixed.right-0.top-0.z-50[class*="max-w-lg"] {
+  z-index: 1001;
+  top: 50%;
+  right: auto;
+  left: 50%;
+  width: min(760px, calc(100vw - 32px));
+  max-width: 760px;
+  height: auto;
+  max-height: calc(100dvh - 40px);
+  transform: translate(-50%, -50%);
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  box-shadow: 0 24px 64px rgba(15, 23, 42, 0.28);
+}
+
+body.ep-admin-layout #root .fixed.right-0.top-0.z-50[class*="max-w-lg"] > div:first-child {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: #fff;
+}
+
 /* Live Camera Viewfinder */
 .ep-cam-viewfinder {
   width: 100%;

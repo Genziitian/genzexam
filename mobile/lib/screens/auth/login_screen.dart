@@ -81,7 +81,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   const SizedBox(height: 20),
                   const Text(
-                    'GenZ IITian',
+                    'QUIZ- LAB',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 26,
@@ -90,7 +90,17 @@ class _LoginScreenState extends State<LoginScreen> {
                       color: Color(0xFF0F172A),
                     ),
                   ),
-                  const SizedBox(height: 6),
+                  const SizedBox(height: 2),
+                  const Text(
+                    'by GenZ IITian',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 13,
+                      fontWeight: FontWeight.w600,
+                      color: Color(0xFF64748B),
+                    ),
+                  ),
+                  const SizedBox(height: 8),
                   const Text(
                     'Sign in to access your dashboard, exams, or cockpit',
                     textAlign: TextAlign.center,

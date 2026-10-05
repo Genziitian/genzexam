@@ -17,7 +17,7 @@ class GenZExamApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'GenZ IITian',
+      title: 'QUIZ- LAB by GenZ IITian',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         useMaterial3: true,

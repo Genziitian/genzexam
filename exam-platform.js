@@ -137,7 +137,7 @@
     },
     exam: {
       id: "iitm-python-endterm",
-      title: "Quiz Lab — Python & Computational Thinking Endterm",
+      title: "QUIZ- LAB — Python & Computational Thinking Endterm",
       subject: "Python Programming & Data Structures",
       type: "final", // 'final' | 'general'
       status: "live", // 'live' | 'paused' | 'ended'
@@ -471,8 +471,11 @@
 
     el.innerHTML = `
       <div class="brand-logo">
-        <img src="/assets/genz-logo.png" alt="Quiz Lab" style="height:24px;object-fit:contain;margin-right:2px;">
-        <span>Exam Portal</span>
+        <img src="/assets/genz-logo.png" alt="QUIZ- LAB" style="height:24px;object-fit:contain;margin-right:2px;">
+        <div style="display:inline-flex;flex-direction:column;line-height:1.15;vertical-align:middle;">
+          <span style="font-size:14px;font-weight:800;color:#ffffff;letter-spacing:-0.01em;">QUIZ- LAB</span>
+          <span style="font-size:10px;color:#94a3b8;font-weight:500;">by GenZ <span style="color:#22c55e;font-style:italic;font-weight:700;">IITian</span></span>
+        </div>
         <span class="role-badge manager">
           ${I("shield", 13, "#38bdf8")}
           Manager: ${state.currentUser.email || "Admin"}
@@ -1393,7 +1396,7 @@
               <div class="saas-breadcrumb">
                 <span>Assessments</span>
                 <span style="color:#4b5563;">/</span>
-                <span>Quiz Lab</span>
+                <span>QUIZ- LAB</span>
                 <span style="color:#4b5563;">/</span>
                 <span class="active">Python Endterm 2026</span>
               </div>
@@ -1818,6 +1821,10 @@
 
   function renderRoleEntryButton() {
     const existing = document.getElementById("ep-role-entry");
+    const roleValue = verifiedRole || "";
+    if (document.body.dataset.epVerifiedRole !== roleValue) {
+      document.body.dataset.epVerifiedRole = roleValue;
+    }
     const label = ROLE_LABELS[verifiedRole];
     const path = window.location.pathname;
     const insidePortal = path.startsWith("/exams") || path === "/exam";
@@ -1837,7 +1844,7 @@
     el.href = "/exams";
     el.title = `Open the ${verifiedRole} portal`;
     el.style.cssText =
-      "position:fixed;right:20px;bottom:20px;z-index:99998;display:inline-flex;align-items:center;gap:9px;" +
+      "position:fixed;right:20px;bottom:20px;z-index:45;display:inline-flex;align-items:center;gap:9px;" +
       "background:#14301a;color:#eaf6ec;padding:12px 17px;border-radius:12px;text-decoration:none;" +
       "font:600 13px/1 Inter,system-ui,-apple-system,sans-serif;letter-spacing:.01em;" +
       "box-shadow:0 10px 30px rgba(10,20,12,.3);transition:transform .15s ease,background .2s ease;";

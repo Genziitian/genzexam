@@ -26,7 +26,7 @@ function getDefaultState() {
     },
     exam: {
       id: "iitm-python-endterm",
-      title: "GenZ IITian — Python & Computational Thinking Endterm",
+      title: "QUIZ- LAB — Python & Computational Thinking Endterm",
       subject: "Python Programming & Data Structures",
       type: "final",
       status: "live",
@@ -394,11 +394,10 @@ const server = http.createServer((req, res) => {
 
   // Static File Serving & SPA Fallback
   let filePath = path.join(DIRECTORY, cleanPath);
-  if (cleanPath === "/" || !fs.existsSync(filePath) || fs.statSync(filePath).isDirectory()) {
-    const indexPath = path.join(DIRECTORY, "index.html");
-    if (!fs.existsSync(filePath) || fs.statSync(filePath).isDirectory()) {
-      filePath = indexPath;
-    }
+  if (cleanPath === "/") {
+    filePath = path.join(DIRECTORY, "landing.html");
+  } else if (!fs.existsSync(filePath) || fs.statSync(filePath).isDirectory()) {
+    filePath = path.join(DIRECTORY, "index.html");
   }
 
   fs.stat(filePath, (err, stats) => {

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz Lab OTP</title>
+    <title>QUIZ- LAB OTP</title>
 </head>
 <body style="margin:0;padding:24px;background:#0e1117;font-family:Arial,sans-serif;">
     <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
@@ -11,7 +11,7 @@
             <td align="center">
                 <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="max-width:480px;background:#ffffff;border-radius:14px;padding:32px 28px;">
                     <tr>
-                        <td style="font-size:24px;font-weight:700;color:#4f8ef7;padding-bottom:20px;">Quiz Lab</td>
+                        <td style="font-size:24px;font-weight:700;color:#16a34a;padding-bottom:20px;">QUIZ- LAB <span style="font-size:14px;color:#6b7280;font-weight:500;">by GenZ IITian</span></td>
                     </tr>
                     <tr>
                         <td style="font-size:22px;font-weight:700;color:#111827;padding-bottom:12px;">Hi {{ $name }},</td>

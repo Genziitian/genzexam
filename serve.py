@@ -34,7 +34,7 @@ def get_default_state():
         },
         "exam": {
             "id": "iitm-python-endterm",
-            "title": "GenZ IITian — Python & Computational Thinking Endterm",
+            "title": "QUIZ- LAB — Python & Computational Thinking Endterm",
             "subject": "Python Programming & Data Structures",
             "type": "final",
             "status": "live",
@@ -241,6 +241,9 @@ class ExamPlatformHandler(http.server.SimpleHTTPRequestHandler):
         self.wfile.write(body)
 
     def _fallback_if_needed(self):
+        if self.path.split("?", 1)[0] == "/":
+            self.path = "/landing.html"
+            return
         path = self.translate_path(self.path)
         if not os.path.exists(path) or (os.path.isdir(path) and not os.path.exists(os.path.join(path, "index.html"))):
             self.path = "/index.html"

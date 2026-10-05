@@ -97,12 +97,21 @@ class _SplashScreen extends StatelessWidget {
             Icon(Icons.school_rounded, color: Color(0xFF16A34A), size: 48),
             SizedBox(height: 16),
             Text(
-              'GenZ IITian',
+              'QUIZ- LAB',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
                 letterSpacing: -0.5,
+              ),
+            ),
+            SizedBox(height: 2),
+            Text(
+              'by GenZ IITian',
+              style: TextStyle(
+                color: Color(0xFF94A3B8),
+                fontSize: 12,
+                fontWeight: FontWeight.w600,
               ),
             ),
             SizedBox(height: 8),
