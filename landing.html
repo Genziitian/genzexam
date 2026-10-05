@@ -56,9 +56,12 @@
     backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid transparent;transition:border-color .2s}
   header.stuck{border-bottom-color:var(--border)}
   .nav{display:flex;align-items:center;gap:14px;height:68px}
-  .brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:16px;letter-spacing:-.01em;flex-shrink:0}
-  .mark{width:30px;height:30px;border-radius:9px;background:var(--deep);color:var(--soft);
-    display:grid;place-items:center;font-family:Lora,serif;font-style:italic;font-size:17px;font-weight:600}
+  .brand{display:flex;align-items:center;gap:10px;flex-shrink:0}
+  .brand-text{display:flex;flex-direction:column;line-height:1.12}
+  .brand-text strong{font-size:16px;font-weight:700;letter-spacing:-.012em}
+  .brand-text small{font-size:10.5px;font-weight:500;color:var(--muted);letter-spacing:.015em}
+  .mark{width:34px;height:34px;border-radius:10px;background:var(--deep);color:var(--soft);
+    display:grid;place-items:center;font-family:Lora,serif;font-style:italic;font-size:19px;font-weight:600;flex-shrink:0}
   .links{display:flex;gap:26px;margin-left:26px;font-size:14px;color:var(--muted);font-weight:500}
   .links a:hover{color:var(--ink)}
   .nav-end{display:flex;align-items:center;gap:10px;margin-left:auto}
@@ -150,7 +153,10 @@
 
 <header id="hdr">
   <div class="wrap nav">
-    <a class="brand" href="/"><span class="mark">g</span> genziitian</a>
+    <a class="brand" href="/">
+      <span class="mark">Q</span>
+      <span class="brand-text"><strong>Quiz Lab</strong><small>by GenZ IITian</small></span>
+    </a>
     <nav class="links">
       <a href="#programmes">Papers</a>
       <a href="#modes">How it works</a>
@@ -230,7 +236,7 @@
 </main>
 
 <footer><div class="wrap foot">
-  <span>genziitian.in · Built by students, for students</span>
+  <span>Quiz Lab by GenZ IITian · Built by students, for students</span>
   <span>Not affiliated with IIT Madras</span>
 </div></footer>
 
