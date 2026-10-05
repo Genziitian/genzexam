@@ -66,11 +66,11 @@
 .ql-qa{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .ql-qa .ql-btn{text-align:left;padding:14px}
 
-/* Login dashboard preview brand treatment */
-.ql-preview-brand{display:flex;width:100%;align-items:center;justify-content:center;gap:10px}
-.ql-preview-brand-mark{width:34px;height:34px;border-radius:10px}
-.ql-preview-brand-mark svg{width:18px;height:18px}
-.ql-preview-brand-text{text-align:center}
-.ql-preview-brand-text span:first-child{font-size:15px;letter-spacing:-.01em}
-.ql-preview-brand-text span:last-child{margin-top:3px;font-size:10.5px;color:#9aa4b8}
+/* Login form branding centered above the sign-in options */
+.ql-auth-brand{display:flex;align-items:center;justify-content:center;gap:12px}
+.ql-auth-brand-mark{width:52px;height:52px;border-radius:14px}
+.ql-auth-brand-mark svg{width:26px;height:26px}
+.ql-auth-brand-text{text-align:left}
+.ql-auth-brand-text span:first-child{font-size:20px;letter-spacing:-.02em}
+.ql-auth-brand-text span:last-child{margin-top:4px;font-size:13px;color:#64748b}
 .login-preview-diffuser{background:rgba(15,23,42,.075)}
