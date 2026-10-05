@@ -58,3 +58,10 @@
 .ql-modal{position:fixed;inset:0;z-index:60;background:rgba(11,15,36,.6);display:flex;align-items:center;justify-content:center;padding:16px}
 .ql-modal-box{background:#fff;border-radius:16px;padding:24px;max-width:420px;width:100%;color:#0f172a}
 .ql-modal-box .ql-actions{margin-top:18px}
+.ql-tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px}
+.ql-tile{display:flex;flex-direction:column;gap:4px;text-align:left;border:1px solid #e2e8f0;background:#f8fafc;border-radius:12px;padding:14px;cursor:pointer;color:#0f172a}
+.ql-tile:hover{border-color:#0B0F24;background:#fff}
+.ql-tile b{font-size:24px;font-weight:700;line-height:1}
+.ql-tile span{font-size:12px;color:#64748b}
+.ql-qa{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.ql-qa .ql-btn{text-align:left;padding:14px}
