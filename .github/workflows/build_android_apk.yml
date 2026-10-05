@@ -27,6 +27,10 @@ jobs:
           channel: 'stable'
           cache: true
 
+      - name: Ensure Android Platform Scaffolding
+        working-directory: mobile
+        run: flutter create . --platforms=android --org in.genziitian
+
       - name: Install Mobile Dependencies
         working-directory: mobile
         run: flutter pub get
@@ -34,6 +38,7 @@ jobs:
       - name: Build Release APK
         working-directory: mobile
         run: flutter build apk --release
+
 
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
