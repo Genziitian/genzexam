@@ -840,7 +840,8 @@
     icon = "alert",
     requireCheckbox = false,
     checkboxLabel = "I confirm and understand this action",
-    onConfirm
+    onConfirm,
+    onCancel
   }) {
     const oldModal = document.getElementById("ep-manager-confirm-modal");
     if (oldModal) oldModal.remove();
@@ -923,9 +924,12 @@
 
     document.body.appendChild(modal);
 
+    let confirmed = false;
+
     const cleanup = () => {
       modal.remove();
       document.removeEventListener("keydown", keyHandler);
+      if (!confirmed && typeof onCancel === "function") onCancel();
     };
 
     const keyHandler = (e) => {
@@ -965,6 +969,7 @@
 
     confirmBtn.onclick = () => {
       if (!canConfirm || confirmBtn.disabled) return;
+      confirmed = true;
       cleanup();
       if (typeof onConfirm === "function") {
         onConfirm();
@@ -1785,6 +1790,7 @@
     items: [],
     counts: null,
     meta: null,
+    viewer: null,
     error: "",
     search: "",
     filter: "all",
@@ -1843,6 +1849,7 @@
       const data = await adminFetch(`/admin/users?${qs.toString()}`);
       mgrUsers.items = (data && data.data) || [];
       mgrUsers.counts = (data && data.counts) || null;
+      mgrUsers.viewer = (data && data.viewer) || null;
       mgrUsers.meta = (data && data.meta) || null;
       mgrUsers.status = "ready";
     } catch (err) {
@@ -1852,11 +1859,11 @@
     render();
   }
 
-  async function mgrUserAction(id, path, method) {
+  async function mgrUserAction(id, path, method, body) {
     mgrUsers.busyId = id;
     render();
     try {
-      const data = await adminFetch(path, { method: method });
+      const data = await adminFetch(path, { method: method, body: body });
       if (data && data.user) {
         mgrUsers.items = mgrUsers.items.map((u) => (u.id === data.user.id ? data.user : u));
       } else {
@@ -2271,23 +2278,35 @@
       }
 
       const counts = mgrUsers.counts;
+      const viewer = mgrUsers.viewer || {};
       const filters = [
         ["all", "All"],
-        ["active", "Active"],
-        ["inactive", "Deactivated"],
+        ["managers", "Managers"],
+        ["admins", "Admins"],
+        ["students", "Students"],
         ["pro", "Pro"],
-        ["admins", "Admins"]
+        ["inactive", "Deactivated"]
       ];
 
+      const stat = (value, label, color) =>
+        `<div><span style="font-size:20px;font-weight:800;color:${color};">${value}</span> <span style="font-size:12px;color:#9ca3af;">${label}</span></div>`;
+
       const summary = counts
-        ? `
-          <div style="display:flex;gap:18px;flex-wrap:wrap;margin-bottom:18px;">
-            <div><span style="font-size:20px;font-weight:800;color:#f9fafb;">${counts.total}</span> <span style="font-size:12px;color:#9ca3af;">total users</span></div>
-            <div><span style="font-size:20px;font-weight:800;color:#38bdf8;">${counts.admins}</span> <span style="font-size:12px;color:#9ca3af;">admins</span></div>
-            <div><span style="font-size:20px;font-weight:800;color:#fbbf24;">${counts.pro}</span> <span style="font-size:12px;color:#9ca3af;">pro</span></div>
-            <div><span style="font-size:20px;font-weight:800;color:#fb7185;">${counts.inactive}</span> <span style="font-size:12px;color:#9ca3af;">deactivated</span></div>
-          </div>`
+        ? `<div style="display:flex;gap:18px;flex-wrap:wrap;margin-bottom:18px;">
+             ${stat(counts.total, "total", "#f9fafb")}
+             ${stat(counts.managers, "managers", "#c084fc")}
+             ${stat(counts.admins, "admins", "#38bdf8")}
+             ${stat(counts.students, "students", "#9ca3af")}
+             ${stat(counts.pro, "pro", "#fbbf24")}
+             ${stat(counts.inactive, "deactivated", "#fb7185")}
+           </div>`
         : "";
+
+      const roleBadge = (role) => {
+        if (role === "manager") return pill("Manager", "#c084fc", "rgba(192,132,252,0.15)");
+        if (role === "admin") return pill("Admin", "#38bdf8", "rgba(56,189,248,0.15)");
+        return pill("Student", "#9ca3af", "rgba(156,163,175,0.12)");
+      };
 
       let body = "";
       if (mgrUsers.status === "loading") {
@@ -2303,21 +2322,23 @@
       } else {
         body = `
           <div style="overflow-x:auto;">
-            <table style="width:100%;border-collapse:collapse;font-size:13px;">
+            <table style="width:100%;border-collapse:collapse;font-size:13px;min-width:720px;">
               <thead>
                 <tr style="text-align:left;color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.05em;">
                   <th style="padding:10px 12px;border-bottom:1px solid #1c1c1c;">User</th>
+                  <th style="padding:10px 12px;border-bottom:1px solid #1c1c1c;">Role</th>
                   <th style="padding:10px 12px;border-bottom:1px solid #1c1c1c;">Status</th>
-                  <th style="padding:10px 12px;border-bottom:1px solid #1c1c1c;">XP</th>
                   <th style="padding:10px 12px;border-bottom:1px solid #1c1c1c;text-align:right;">Actions</th>
                 </tr>
               </thead>
               <tbody>
                 ${mgrUsers.items
                   .map((u) => {
+                    const can = u.can || {};
                     const busy = mgrUsers.busyId === u.id;
-                    const badges = [
-                      u.is_admin ? pill("Admin", "#38bdf8", "rgba(56,189,248,0.15)") : "",
+                    const isSelf = viewer.id === u.id;
+
+                    const status = [
                       u.is_pro ? pill("Pro", "#fbbf24", "rgba(251,191,36,0.15)") : "",
                       u.is_active
                         ? pill("Active", "#34d399", "rgba(52,211,153,0.15)")
@@ -2327,29 +2348,46 @@
                       .filter(Boolean)
                       .join(" ");
 
-                    const btn = (cls, label, color) =>
-                      `<button class="${cls}" data-id="${u.id}" data-name="${escapeHTML(u.name)}" ${busy ? "disabled" : ""} style="background:#141414;border:1px solid #262626;color:${color};padding:5px 10px;border-radius:6px;font-size:11px;font-weight:700;cursor:${busy ? "wait" : "pointer"};opacity:${busy ? "0.5" : "1"};">${label}</button>`;
+                    const btn = (cls, label, color, enabled) =>
+                      enabled
+                        ? `<button class="${cls}" data-id="${u.id}" ${busy ? "disabled" : ""} style="background:#141414;border:1px solid #262626;color:${color};padding:5px 10px;border-radius:6px;font-size:11px;font-weight:700;cursor:${busy ? "wait" : "pointer"};opacity:${busy ? "0.5" : "1"};">${label}</button>`
+                        : "";
+
+                    const roleControl = can.set_role
+                      ? `<select class="select-user-role" data-id="${u.id}" ${busy ? "disabled" : ""} style="background:#0d0d0d;border:1px solid #262626;color:#f9fafb;padding:4px 8px;border-radius:6px;font-size:11px;margin-top:6px;">
+                           ${["student", "admin", "manager"]
+                             .map((r) => `<option value="${r}" ${u.role === r ? "selected" : ""}>${r.charAt(0).toUpperCase() + r.slice(1)}</option>`)
+                             .join("")}
+                         </select>`
+                      : "";
+
+                    const actions = [
+                      btn("btn-user-active", u.is_active ? "Deactivate" : "Activate", u.is_active ? "#fbbf24" : "#34d399", can.toggle_active),
+                      btn("btn-user-pro", u.is_pro ? "Remove Pro" : "Make Pro", "#fbbf24", can.toggle_pro),
+                      btn("btn-user-delete", "Delete", "#fb7185", can.delete)
+                    ]
+                      .filter(Boolean)
+                      .join("");
+
+                    const noActions = !actions
+                      ? `<span style="font-size:11px;color:#4b5563;">${isSelf ? "Your account" : "No permission"}</span>`
+                      : "";
 
                     return `
-                      <tr style="border-bottom:1px solid #141414;">
+                      <tr style="border-bottom:1px solid #141414;${u.is_active ? "" : "opacity:0.65;"}">
                         <td style="padding:12px;">
                           <div style="display:flex;align-items:center;gap:10px;">
                             <div style="width:32px;height:32px;border-radius:50%;background:#1f2937;color:#9ca3af;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0;">${userInitials(u.name)}</div>
                             <div style="min-width:0;">
-                              <div style="color:#f9fafb;font-weight:700;">${escapeHTML(u.name)}</div>
+                              <div style="color:#f9fafb;font-weight:700;">${escapeHTML(u.name)}${isSelf ? ` <span style="color:#6b7280;font-weight:600;font-size:11px;">(you)</span>` : ""}</div>
                               <div style="color:#6b7280;font-size:11px;font-family:ui-monospace,monospace;">${escapeHTML(u.email)}</div>
                             </div>
                           </div>
                         </td>
-                        <td style="padding:12px;"><div style="display:flex;gap:5px;flex-wrap:wrap;">${badges}</div></td>
-                        <td style="padding:12px;color:#d1d5db;">${u.xp}</td>
+                        <td style="padding:12px;">${roleBadge(u.role)}${roleControl}</td>
+                        <td style="padding:12px;"><div style="display:flex;gap:5px;flex-wrap:wrap;">${status}</div></td>
                         <td style="padding:12px;text-align:right;">
-                          <div style="display:inline-flex;gap:6px;flex-wrap:wrap;justify-content:flex-end;">
-                            ${btn("btn-user-active", u.is_active ? "Deactivate" : "Activate", u.is_active ? "#fbbf24" : "#34d399")}
-                            ${btn("btn-user-pro", u.is_pro ? "Remove Pro" : "Make Pro", "#fbbf24")}
-                            ${btn("btn-user-admin", u.is_admin ? "Revoke Admin" : "Make Admin", "#38bdf8")}
-                            ${btn("btn-user-delete", "Delete", "#fb7185")}
-                          </div>
+                          <div style="display:inline-flex;gap:6px;flex-wrap:wrap;justify-content:flex-end;">${actions}${noActions}</div>
                         </td>
                       </tr>`;
                   })
@@ -2359,23 +2397,23 @@
           </div>`;
       }
 
+      const scopeNote = viewer.is_manager
+        ? "You are a manager: full control over every account."
+        : "You are an admin: you can activate accounts and grant Pro to students. Role changes and deletions are manager-only.";
+
       return `
         <div class="saas-card" style="padding:24px;">
           <div style="font-size:16px;font-weight:800;color:#f9fafb;margin-bottom:4px;display:flex;align-items:center;gap:8px;">
             ${I("users", 18, "#38bdf8")} User Management
           </div>
-          <p style="color:#9ca3af;font-size:13px;margin-bottom:18px;">
-            Deactivate accounts, grant Pro or admin rights, or permanently delete users.
-          </p>
+          <p style="color:#9ca3af;font-size:13px;margin-bottom:18px;">${scopeNote}</p>
 
           ${summary}
 
           <div style="display:flex;gap:10px;margin-bottom:18px;flex-wrap:wrap;">
-            <input type="text" id="input-user-search" value="${escapeHTML(mgrUsers.search)}" placeholder="Search name or email…" style="flex:1;min-width:220px;background:#0e0e0e;border:1px solid #262626;color:#f9fafb;padding:9px 14px;border-radius:8px;font-size:13px;" />
+            <input type="text" id="input-user-search" value="${escapeHTML(mgrUsers.search)}" placeholder="Search name or email…" style="flex:1;min-width:200px;background:#0e0e0e;border:1px solid #262626;color:#f9fafb;padding:9px 14px;border-radius:8px;font-size:13px;" />
             <select id="select-user-filter" style="background:#0d0d0d;border:1px solid #262626;color:#f9fafb;padding:9px 12px;border-radius:8px;font-size:12px;">
-              ${filters
-                .map(([v, label]) => `<option value="${v}" ${mgrUsers.filter === v ? "selected" : ""}>${label}</option>`)
-                .join("")}
+              ${filters.map(([v, label]) => `<option value="${v}" ${mgrUsers.filter === v ? "selected" : ""}>${label}</option>`).join("")}
             </select>
             <button id="btn-users-refresh" style="background:#059669;color:#fff;border:none;padding:9px 18px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;">Search</button>
           </div>
@@ -2643,76 +2681,89 @@
       }
       if (filterSelect) filterSelect.onchange = applyQuery;
 
-      const findUser = (btn) => {
+      const pick = (btn) => {
         const id = Number(btn.getAttribute("data-id"));
-        return { id: id, user: mgrUsers.items.find((u) => u.id === id) || { name: btn.getAttribute("data-name") } };
+        return { id: id, user: mgrUsers.items.find((u) => u.id === id) || {} };
       };
 
       document.querySelectorAll(".btn-user-active").forEach((btn) => {
         btn.onclick = () => {
-          const picked = findUser(btn);
-          const deactivating = picked.user.is_active;
+          const { id, user } = pick(btn);
+          const deactivating = user.is_active;
           showManagerConfirmModal({
-            title: `${deactivating ? "Deactivate" : "Reactivate"} ${picked.user.name}`,
+            title: `${deactivating ? "Deactivate" : "Reactivate"} ${user.name}`,
             subtitle: "User Management",
             description: deactivating
-              ? `<b>${escapeHTML(picked.user.name)}</b> will be signed out immediately and blocked from signing in again until reactivated.`
-              : `Restore sign-in access for <b>${escapeHTML(picked.user.name)}</b>.`,
+              ? `<b>${escapeHTML(user.name)}</b> will be signed out immediately and blocked from signing in until reactivated.`
+              : `Restore sign-in access for <b>${escapeHTML(user.name)}</b>.`,
             confirmText: deactivating ? "Deactivate Account" : "Reactivate Account",
             confirmType: deactivating ? "warning" : "success",
             icon: "users",
-            onConfirm: () => mgrUserAction(picked.id, `/admin/users/${picked.id}/toggle-active`, "PATCH")
+            onConfirm: () => mgrUserAction(id, `/admin/users/${id}/toggle-active`, "PATCH")
           });
         };
       });
 
       document.querySelectorAll(".btn-user-pro").forEach((btn) => {
         btn.onclick = () => {
-          const picked = findUser(btn);
-          const granting = !picked.user.is_pro;
+          const { id, user } = pick(btn);
+          const granting = !user.is_pro;
           showManagerConfirmModal({
-            title: `${granting ? "Grant" : "Remove"} Pro — ${picked.user.name}`,
+            title: `${granting ? "Grant" : "Remove"} Pro — ${user.name}`,
             subtitle: "User Management",
             description: granting
-              ? `Give <b>${escapeHTML(picked.user.name)}</b> Pro access to video solutions and premium content.`
-              : `Remove Pro access from <b>${escapeHTML(picked.user.name)}</b>.`,
+              ? `Give <b>${escapeHTML(user.name)}</b> Pro access to video solutions and premium content.`
+              : `Remove Pro access from <b>${escapeHTML(user.name)}</b>.`,
             confirmText: granting ? "Make Pro" : "Remove Pro",
             confirmType: granting ? "success" : "warning",
             icon: "users",
-            onConfirm: () => mgrUserAction(picked.id, `/admin/users/${picked.id}/toggle-pro`, "PATCH")
+            onConfirm: () => mgrUserAction(id, `/admin/users/${id}/toggle-pro`, "PATCH")
           });
         };
       });
 
-      document.querySelectorAll(".btn-user-admin").forEach((btn) => {
-        btn.onclick = () => {
-          const picked = findUser(btn);
-          const granting = !picked.user.is_admin;
+      document.querySelectorAll(".select-user-role").forEach((sel) => {
+        sel.onchange = () => {
+          const id = Number(sel.getAttribute("data-id"));
+          const user = mgrUsers.items.find((u) => u.id === id) || {};
+          const nextRole = sel.value;
+          const previousRole = user.role;
+
+          if (nextRole === previousRole) return;
+
+          const blurb =
+            nextRole === "manager"
+              ? "Managers have <b>total control</b>, including changing roles and deleting accounts."
+              : nextRole === "admin"
+                ? "Admins get limited control: they can activate accounts and grant Pro to students, but cannot change roles or delete accounts."
+                : "Students have no administrative access.";
+
           showManagerConfirmModal({
-            title: `${granting ? "Grant" : "Revoke"} Admin — ${picked.user.name}`,
+            title: `Change role — ${user.name}`,
             subtitle: "User Management",
-            description: granting
-              ? `<b>${escapeHTML(picked.user.name)}</b> will get full admin access, including this user management panel.`
-              : `Revoke admin access from <b>${escapeHTML(picked.user.name)}</b>. They will be signed out.`,
-            confirmText: granting ? "Make Admin" : "Revoke Admin",
-            confirmType: granting ? "purple" : "warning",
+            description: `Change <b>${escapeHTML(user.name)}</b> from <b>${previousRole}</b> to <b>${nextRole}</b>.<br><br>${blurb}`,
+            confirmText: `Make ${nextRole.charAt(0).toUpperCase() + nextRole.slice(1)}`,
+            confirmType: nextRole === "manager" ? "purple" : nextRole === "admin" ? "info" : "warning",
             icon: "settings",
-            onConfirm: () => mgrUserAction(picked.id, `/admin/users/${picked.id}/toggle-admin`, "PATCH")
+            onConfirm: () => mgrUserAction(id, `/admin/users/${id}/role`, "PATCH", { role: nextRole }),
+            onCancel: () => {
+              sel.value = previousRole;
+            }
           });
         };
       });
 
       document.querySelectorAll(".btn-user-delete").forEach((btn) => {
         btn.onclick = () => {
-          const picked = findUser(btn);
+          const { id, user } = pick(btn);
           showManagerConfirmModal({
-            title: `Delete ${picked.user.name}`,
+            title: `Delete ${user.name}`,
             subtitle: "User Management",
-            description: `Permanently delete <b>${escapeHTML(picked.user.name)}</b> and all of their account data. <b>This cannot be undone.</b>`,
+            description: `Permanently delete <b>${escapeHTML(user.name)}</b> and all of their account data. <b>This cannot be undone.</b>`,
             confirmText: "Delete Permanently",
             confirmType: "danger",
             icon: "x",
-            onConfirm: () => mgrUserAction(picked.id, `/admin/users/${picked.id}`, "DELETE")
+            onConfirm: () => mgrUserAction(id, `/admin/users/${id}`, "DELETE")
           });
         };
       });

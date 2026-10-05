@@ -150,15 +150,16 @@ Route::middleware(['auth:sanctum', 'is_admin', 'track.seen'])->prefix('admin')->
     Route::put('/video-solutions/{id}', [AdminVideoSolutionController::class, 'update']);
     Route::delete('/video-solutions/{id}', [AdminVideoSolutionController::class, 'destroy']);
 
-    // User management
+    // User management - admins get limited control (students only)
     Route::get('/users', [AdminUserController::class, 'index']);
     Route::patch('/users/{userId}/toggle-active', [AdminUserController::class, 'toggleActive']);
     Route::patch('/users/{userId}/toggle-pro', [AdminUserController::class, 'togglePro']);
-    Route::patch('/users/{userId}/toggle-admin', [AdminUserController::class, 'toggleAdmin']);
-    Route::delete('/users/{userId}', [AdminUserController::class, 'destroy']);
 
-    // Legacy aliases (kept so existing clients keep working)
-    Route::post('/users/{userId}/grant-admin', [AdminDashboardController::class, 'grantAdmin']);
+    // Manager-only: role changes and deletion
+    Route::middleware('is_manager')->group(function () {
+        Route::patch('/users/{userId}/role', [AdminUserController::class, 'setRole']);
+        Route::delete('/users/{userId}', [AdminUserController::class, 'destroy']);
+    });
 });
 
 // =========================================================================

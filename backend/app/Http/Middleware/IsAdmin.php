@@ -9,9 +9,13 @@ use Symfony\Component\HttpFoundation\Response;
 
 class IsAdmin
 {
+    /**
+     * Allows admins and managers. Managers sit above admins, so anything an
+     * admin may do, a manager may do too.
+     */
     public function handle(Request $request, Closure $next): Response|JsonResponse
     {
-        if (! $request->user() || ! $request->user()->is_admin) {
+        if (! $request->user() || ! $request->user()->hasAdminAccess()) {
             return response()->json(['error' => 'Forbidden. Admin access required.'], 403);
         }
 

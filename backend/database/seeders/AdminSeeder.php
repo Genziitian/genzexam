@@ -12,9 +12,9 @@ class AdminSeeder extends Seeder
         User::updateOrCreate(
             ['email' => 'admin@labbygenziitian.com'],
             [
-                'name' => 'LAB Admin',
+                'name' => 'Quiz Lab Manager',
                 'password' => bcrypt('Admin@123'),
-                'is_admin' => true,
+                'role' => \App\Models\User::ROLE_MANAGER,
                 'email_verified_at' => now(),
                 'is_active' => true,
             ]

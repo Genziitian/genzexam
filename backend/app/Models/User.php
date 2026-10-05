@@ -12,6 +12,19 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    public const ROLE_STUDENT = 'student';
+    public const ROLE_ADMIN   = 'admin';
+    public const ROLE_MANAGER = 'manager';
+
+    public const ROLES = [self::ROLE_STUDENT, self::ROLE_ADMIN, self::ROLE_MANAGER];
+
+    /** Higher number wins. Used to stop a lower tier acting on a higher one. */
+    public const ROLE_RANK = [
+        self::ROLE_STUDENT => 0,
+        self::ROLE_ADMIN   => 1,
+        self::ROLE_MANAGER => 2,
+    ];
+
     /**
      * The attributes that are mass assignable.
      *
@@ -26,6 +39,7 @@ class User extends Authenticatable
         'is_admin',
         'is_pro',
         'is_active',
+        'role',
         'email_verified_at',
         'otp',
         'otp_expires_at',
@@ -75,5 +89,58 @@ class User extends Authenticatable
     public function ideSubmissions(): HasMany
     {
         return $this->hasMany(IDESubmission::class);
+    }
+
+    /** Managers have total control. */
+    public function isManager(): bool
+    {
+        return $this->role === self::ROLE_MANAGER;
+    }
+
+    /** Admins have limited control; managers inherit everything admins can do. */
+    public function isAdmin(): bool
+    {
+        return $this->role === self::ROLE_ADMIN;
+    }
+
+    public function hasAdminAccess(): bool
+    {
+        return $this->isAdmin() || $this->isManager();
+    }
+
+    public function isStudent(): bool
+    {
+        return ! $this->hasAdminAccess();
+    }
+
+    public function roleRank(): int
+    {
+        return self::ROLE_RANK[$this->role] ?? 0;
+    }
+
+    /**
+     * May this user act on $target? A user can never act on their own account,
+     * and may only act on accounts strictly below their own tier.
+     */
+    public function outranks(User $target): bool
+    {
+        if ($this->is($target)) {
+            return false;
+        }
+
+        return $this->roleRank() > $target->roleRank();
+    }
+
+    protected static function booted(): void
+    {
+        // Keep the legacy is_admin flag in step with the role so older code
+        // and existing clients keep working.
+        static::saving(function (User $user) {
+            if ($user->role === null) {
+                $user->role = $user->is_admin ? self::ROLE_ADMIN : self::ROLE_STUDENT;
+            }
+
+            $user->is_admin = in_array($user->role, [self::ROLE_ADMIN, self::ROLE_MANAGER], true);
+        });
     }
 }

@@ -6,20 +6,29 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
+/**
+ * User management for the manager panel.
+ *
+ * Tiers: manager > admin > student.
+ *  - Managers have total control: any role change, deletion, anything below them.
+ *  - Admins have limited control: they may view users and activate/deactivate or
+ *    grant Pro to students only. They cannot touch other admins or managers,
+ *    cannot change roles, and cannot delete accounts.
+ */
 class AdminUserController extends Controller
 {
-    /**
-     * Paginated, searchable list of users for the manager panel.
-     */
     public function index(Request $request): JsonResponse
     {
         $search = trim((string) $request->query('search', ''));
         $filter = (string) $request->query('filter', 'all');
         $perPage = min(max((int) $request->query('per_page', 25), 1), 100);
 
-        $query = User::query()
-            ->select(['id', 'name', 'email', 'avatar', 'is_admin', 'is_pro', 'is_active', 'xp', 'email_verified_at', 'last_seen_at', 'created_at']);
+        $query = User::query()->select([
+            'id', 'name', 'email', 'avatar', 'role', 'is_admin', 'is_pro',
+            'is_active', 'xp', 'email_verified_at', 'last_seen_at', 'created_at',
+        ]);
 
         if ($search !== '') {
             $query->where(function ($q) use ($search) {
@@ -29,17 +38,23 @@ class AdminUserController extends Controller
         }
 
         match ($filter) {
-            'admins'    => $query->where('is_admin', true),
-            'pro'       => $query->where('is_pro', true),
-            'inactive'  => $query->where('is_active', false),
-            'active'    => $query->where('is_active', true),
-            default     => null,
+            'managers' => $query->where('role', User::ROLE_MANAGER),
+            'admins'   => $query->where('role', User::ROLE_ADMIN),
+            'students' => $query->where('role', User::ROLE_STUDENT),
+            'pro'      => $query->where('is_pro', true),
+            'inactive' => $query->where('is_active', false),
+            'active'   => $query->where('is_active', true),
+            default    => null,
         };
 
-        $users = $query->orderByDesc('created_at')->paginate($perPage);
+        $users = $query->orderByRaw("FIELD(role, 'manager', 'admin', 'student')")
+            ->orderByDesc('created_at')
+            ->paginate($perPage);
+
+        $actor = $request->user();
 
         return response()->json([
-            'data' => collect($users->items())->map(fn (User $u) => $this->present($u))->values(),
+            'data' => collect($users->items())->map(fn (User $u) => $this->present($u, $actor))->values(),
             'meta' => [
                 'current_page' => $users->currentPage(),
                 'last_page'    => $users->lastPage(),
@@ -48,22 +63,29 @@ class AdminUserController extends Controller
             ],
             'counts' => [
                 'total'    => User::count(),
-                'admins'   => User::where('is_admin', true)->count(),
+                'managers' => User::where('role', User::ROLE_MANAGER)->count(),
+                'admins'   => User::where('role', User::ROLE_ADMIN)->count(),
+                'students' => User::where('role', User::ROLE_STUDENT)->count(),
                 'pro'      => User::where('is_pro', true)->count(),
                 'inactive' => User::where('is_active', false)->count(),
+            ],
+            'viewer' => [
+                'id'          => $actor->id,
+                'role'        => $actor->role,
+                'is_manager'  => $actor->isManager(),
+                'can_manage_roles'  => $actor->isManager(),
+                'can_delete_users'  => $actor->isManager(),
             ],
         ]);
     }
 
-    /**
-     * Activate / deactivate an account. A deactivated user cannot sign in.
-     */
+    /** Activate / deactivate. Admins may only do this to students. */
     public function toggleActive(Request $request, int $userId): JsonResponse
     {
         $target = User::findOrFail($userId);
 
-        if ($guard = $this->guardSelf($request, $target, 'deactivate')) {
-            return $guard;
+        if ($denied = $this->denyUnlessOutranks($request, $target, 'deactivate')) {
+            return $denied;
         }
 
         $target->update(['is_active' => ! $target->is_active]);
@@ -76,60 +98,79 @@ class AdminUserController extends Controller
             'message' => $target->is_active
                 ? "{$target->name}'s account was reactivated."
                 : "{$target->name}'s account was deactivated and signed out.",
-            'user' => $this->present($target),
+            'user' => $this->present($target, $request->user()),
         ]);
     }
 
-    /**
-     * Grant / revoke Pro membership.
-     */
-    public function togglePro(int $userId): JsonResponse
+    /** Grant / remove Pro. Admins may only do this to students. */
+    public function togglePro(Request $request, int $userId): JsonResponse
     {
         $target = User::findOrFail($userId);
+
+        if ($denied = $this->denyUnlessOutranks($request, $target, 'change Pro access for')) {
+            return $denied;
+        }
+
         $target->update(['is_pro' => ! $target->is_pro]);
 
         return response()->json([
             'message' => $target->is_pro
                 ? "{$target->name} is now a Pro member."
                 : "{$target->name}'s Pro access was removed.",
-            'user' => $this->present($target),
+            'user' => $this->present($target, $request->user()),
         ]);
     }
 
-    /**
-     * Grant / revoke admin rights.
-     */
-    public function toggleAdmin(Request $request, int $userId): JsonResponse
+    /** Set a user's role. Manager only. */
+    public function setRole(Request $request, int $userId): JsonResponse
     {
-        $target = User::findOrFail($userId);
+        $validated = $request->validate([
+            'role' => ['required', Rule::in(User::ROLES)],
+        ]);
 
-        if ($guard = $this->guardSelf($request, $target, 'change the admin rights of')) {
-            return $guard;
+        $target = User::findOrFail($userId);
+        $actor = $request->user();
+
+        if ($target->is($actor)) {
+            return response()->json(['error' => 'You cannot change your own role.'], 422);
         }
 
-        $target->update(['is_admin' => ! $target->is_admin]);
+        // Never leave the platform without a manager.
+        if ($target->isManager() && $validated['role'] !== User::ROLE_MANAGER
+            && User::where('role', User::ROLE_MANAGER)->count() <= 1) {
+            return response()->json([
+                'error' => 'This is the only manager account. Promote another manager first.',
+            ], 422);
+        }
 
-        if (! $target->is_admin) {
+        $previous = $target->role;
+        $target->update(['role' => $validated['role']]);
+
+        // Losing privileges takes effect immediately.
+        if (User::ROLE_RANK[$validated['role']] < User::ROLE_RANK[$previous]) {
             $target->tokens()->delete();
         }
 
         return response()->json([
-            'message' => $target->is_admin
-                ? "{$target->name} has been granted admin access."
-                : "{$target->name}'s admin access was revoked.",
-            'user' => $this->present($target),
+            'message' => "{$target->name} is now a " . ucfirst($validated['role']) . '.',
+            'user' => $this->present($target->fresh(), $actor),
         ]);
     }
 
-    /**
-     * Permanently delete a user account.
-     */
+    /** Permanently delete an account. Manager only. */
     public function destroy(Request $request, int $userId): JsonResponse
     {
         $target = User::findOrFail($userId);
+        $actor = $request->user();
 
-        if ($guard = $this->guardSelf($request, $target, 'delete')) {
-            return $guard;
+        if ($target->is($actor)) {
+            return response()->json(['error' => 'You cannot delete your own account.'], 422);
+        }
+
+        if ($target->isManager() && User::where('role', User::ROLE_MANAGER)->count() <= 1) {
+            return response()->json([
+                'error' => 'This is the only manager account and cannot be deleted.',
+            ], 422);
         }
 
         $name = $target->name;
@@ -142,31 +183,46 @@ class AdminUserController extends Controller
         ]);
     }
 
-    private function guardSelf(Request $request, User $target, string $action): ?JsonResponse
+    private function denyUnlessOutranks(Request $request, User $target, string $action): ?JsonResponse
     {
-        if ($target->is($request->user())) {
+        $actor = $request->user();
+
+        if ($target->is($actor)) {
+            return response()->json(['error' => "You cannot {$action} your own account."], 422);
+        }
+
+        if (! $actor->outranks($target)) {
             return response()->json([
-                'error' => "You cannot {$action} your own account.",
-            ], 422);
+                'error' => "You do not have permission to {$action} a " . ucfirst($target->role) . ' account.',
+            ], 403);
         }
 
         return null;
     }
 
-    private function present(User $u): array
+    private function present(User $u, User $actor): array
     {
+        $canManage = $actor->outranks($u);
+
         return [
-            'id'         => $u->id,
-            'name'       => $u->name,
-            'email'      => $u->email,
-            'avatar'     => $u->avatar,
-            'is_admin'   => (bool) $u->is_admin,
-            'is_pro'     => (bool) $u->is_pro,
-            'is_active'  => (bool) $u->is_active,
-            'xp'         => (int) ($u->xp ?? 0),
-            'verified'   => $u->email_verified_at !== null,
+            'id'           => $u->id,
+            'name'         => $u->name,
+            'email'        => $u->email,
+            'avatar'       => $u->avatar,
+            'role'         => $u->role,
+            'is_admin'     => (bool) $u->is_admin,
+            'is_pro'       => (bool) $u->is_pro,
+            'is_active'    => (bool) $u->is_active,
+            'xp'           => (int) ($u->xp ?? 0),
+            'verified'     => $u->email_verified_at !== null,
             'last_seen_at' => $u->last_seen_at,
-            'created_at' => $u->created_at,
+            'created_at'   => $u->created_at,
+            'can' => [
+                'toggle_active' => $canManage,
+                'toggle_pro'    => $canManage,
+                'set_role'      => $actor->isManager() && ! $actor->is($u),
+                'delete'        => $actor->isManager() && ! $actor->is($u),
+            ],
         ];
     }
 }
