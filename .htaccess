@@ -1,5 +1,11 @@
 Options -MultiViews
 RewriteEngine On
+
+# Backend API: Laravel lives in backend/, reached as /public/api/...
+RewriteRule ^public/(.*)$ backend/public/$1 [L]
+
+# Frontend SPA fallback (skipped for backend API paths)
+RewriteCond %{REQUEST_URI} !^/public/
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^ index.html [QSA,L]
