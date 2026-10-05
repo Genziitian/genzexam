@@ -207,27 +207,63 @@ class ExamPlatformController extends Controller
     {
         $payload = $request->all();
         $state = $this->loadState();
+        $user = $request->user();
 
-        if (isset($payload['exam']) && is_array($payload['exam'])) {
-            $state['exam'] = array_merge($state['exam'] ?? [], $payload['exam']);
+        // Students share this endpoint with proctors, so what each may write
+        // differs. Without this split any candidate could post
+        // {"exam":{"status":"ended"}} and end the exam for everyone.
+        if ($user->hasAdminAccess()) {
+            if (isset($payload['exam']) && is_array($payload['exam'])) {
+                $state['exam'] = array_merge($state['exam'] ?? [], $payload['exam']);
+            }
+            if (isset($payload['studentSessions']) && is_array($payload['studentSessions'])) {
+                $state['studentSessions'] = array_merge($state['studentSessions'] ?? [], $payload['studentSessions']);
+            }
+            if (isset($payload['chatMessages']) && is_array($payload['chatMessages'])) {
+                $state['chatMessages'] = $payload['chatMessages'];
+            }
+            if (isset($payload['reentryRequests']) && is_array($payload['reentryRequests'])) {
+                $state['reentryRequests'] = $payload['reentryRequests'];
+            }
+            if (isset($payload['activeView'])) {
+                $state['activeView'] = $payload['activeView'];
+            }
+            if (isset($payload['studentActiveTab'])) {
+                $state['studentActiveTab'] = $payload['studentActiveTab'];
+            }
+
+            $this->saveState($state);
+
+            return response()->json(['success' => true, 'state' => $state]);
         }
-        if (isset($payload['studentSessions']) && is_array($payload['studentSessions'])) {
-            $state['studentSessions'] = array_merge($state['studentSessions'] ?? [], $payload['studentSessions']);
+
+        // Candidate: may only advance their own session, and may raise a
+        // re-entry request for themselves. Everything else is ignored.
+        $email = $user->email;
+
+        if (isset($payload['studentSessions'][$email]) && is_array($payload['studentSessions'][$email])) {
+            $incoming = $payload['studentSessions'][$email];
+            unset($incoming['status']);                 // only a proctor action may change this
+            $state['studentSessions'][$email] = array_merge(
+                $state['studentSessions'][$email] ?? [],
+                $incoming
+            );
         }
-        if (isset($payload['chatMessages']) && is_array($payload['chatMessages'])) {
-            $state['chatMessages'] = $payload['chatMessages'];
-        }
+
         if (isset($payload['reentryRequests']) && is_array($payload['reentryRequests'])) {
-            $state['reentryRequests'] = $payload['reentryRequests'];
-        }
-        if (isset($payload['activeView'])) {
-            $state['activeView'] = $payload['activeView'];
-        }
-        if (isset($payload['studentActiveTab'])) {
-            $state['studentActiveTab'] = $payload['studentActiveTab'];
+            $mine = array_values(array_filter(
+                $payload['reentryRequests'],
+                fn ($r) => is_array($r) && ($r['email'] ?? null) === $email && ($r['status'] ?? 'pending') === 'pending'
+            ));
+            $others = array_values(array_filter(
+                $state['reentryRequests'] ?? [],
+                fn ($r) => ($r['email'] ?? null) !== $email
+            ));
+            $state['reentryRequests'] = array_merge($others, $mine);
         }
 
         $this->saveState($state);
+
         return response()->json(['success' => true, 'state' => $state]);
     }
 
@@ -363,6 +399,16 @@ class ExamPlatformController extends Controller
         }
         if (empty($msg['timestamp'])) {
             $msg['timestamp'] = (int)(microtime(true) * 1000);
+        }
+
+        // Stamp the sender from the session. A candidate must not be able to
+        // post as "Exam Manager" or flag their message as an announcement.
+        $user = $request->user();
+        if (! $user->hasAdminAccess()) {
+            $msg['senderName'] = $user->name;
+            $msg['senderEmail'] = $user->email;
+            $msg['role'] = 'student';
+            $msg['isAnnouncement'] = false;
         }
 
         $state = $this->loadState();

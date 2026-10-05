@@ -165,24 +165,30 @@ Route::middleware(['auth:sanctum', 'is_admin', 'track.seen'])->prefix('admin')->
 // =========================================================================
 // GenZ IITian Examination Platform (Proctored B2B SaaS Engine) Routes
 // =========================================================================
-Route::prefix('exam-platform')->group(function () {
+// Exam platform. Everything but the health probe requires a session: these
+// endpoints drive live exam state, so they must not be callable by anyone who
+// knows the URL. Exam control is admin-and-above, a full reset is manager-only,
+// and syncState itself narrows what a candidate may write.
+$examPlatformRoutes = function () {
     Route::get('/health', [ExamPlatformController::class, 'health']);
-    Route::get('/state', [ExamPlatformController::class, 'state']);
-    Route::post('/state', [ExamPlatformController::class, 'syncState']);
-    Route::post('/action', [ExamPlatformController::class, 'action']);
-    Route::get('/chat', [ExamPlatformController::class, 'getChat']);
-    Route::post('/chat', [ExamPlatformController::class, 'sendChat']);
-    Route::get('/reentry', [ExamPlatformController::class, 'getReentry']);
-    Route::post('/reset', [ExamPlatformController::class, 'resetState']);
-});
 
-// Top-level REST endpoints for direct frontend integration
-Route::get('/health', [ExamPlatformController::class, 'health']);
-Route::get('/state', [ExamPlatformController::class, 'state']);
-Route::post('/state', [ExamPlatformController::class, 'syncState']);
-Route::post('/action', [ExamPlatformController::class, 'action']);
-Route::get('/chat', [ExamPlatformController::class, 'getChat']);
-Route::post('/chat', [ExamPlatformController::class, 'sendChat']);
-Route::get('/reentry', [ExamPlatformController::class, 'getReentry']);
-Route::post('/reset', [ExamPlatformController::class, 'resetState']);
+    Route::middleware('auth:sanctum')->group(function () {
+        Route::get('/state', [ExamPlatformController::class, 'state']);
+        Route::post('/state', [ExamPlatformController::class, 'syncState']);
+        Route::get('/chat', [ExamPlatformController::class, 'getChat']);
+        Route::post('/chat', [ExamPlatformController::class, 'sendChat']);
+        Route::get('/reentry', [ExamPlatformController::class, 'getReentry']);
+
+        Route::middleware('is_admin')->group(function () {
+            Route::post('/action', [ExamPlatformController::class, 'action']);
+        });
+
+        Route::middleware('is_manager')->group(function () {
+            Route::post('/reset', [ExamPlatformController::class, 'resetState']);
+        });
+    });
+};
+
+Route::prefix('exam-platform')->group($examPlatformRoutes);
+Route::group([], $examPlatformRoutes);
 
