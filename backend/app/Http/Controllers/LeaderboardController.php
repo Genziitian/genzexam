@@ -11,6 +11,7 @@ class LeaderboardController extends Controller
 {
     public function index(Request $request): JsonResponse
     {
+        abort_if($request->user()->isAdmin(), 403, 'Leaderboards are not available in teacher content management.');
         $viewer = $request->user();
 
         $rows = User::query()

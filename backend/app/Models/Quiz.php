@@ -22,8 +22,23 @@ class Quiz extends Model
         'title',
         'description',
         'time_limit_minutes',
+        'price_paise',
+        'access_days',
         'is_active',
+        'approval_status',
+        'created_by',
+        'reviewed_by',
+        'reviewed_at',
     ];
+
+    protected function casts(): array
+    {
+        return [
+            'is_active' => 'boolean',
+            'price_paise' => 'integer',
+            'access_days' => 'integer',
+        ];
+    }
 
     public function course(): BelongsTo
     {

@@ -198,8 +198,9 @@ class ExamPlatformController extends Controller
         ]);
     }
 
-    public function state(): JsonResponse
+    public function state(Request $request): JsonResponse
     {
+        abort_if($request->user()->isAdmin(), 403, 'Exam operations are manager-only.');
         return response()->json($this->loadState());
     }
 
@@ -208,6 +209,7 @@ class ExamPlatformController extends Controller
         $payload = $request->all();
         $state = $this->loadState();
         $user = $request->user();
+        abort_if($user->isAdmin(), 403, 'Exam operations are manager-only.');
 
         // Students share this endpoint with proctors, so what each may write
         // differs. Without this split any candidate could post
@@ -269,6 +271,7 @@ class ExamPlatformController extends Controller
 
     public function action(Request $request): JsonResponse
     {
+        abort_unless($request->user()->isManager(), 403, 'Exam operations are manager-only.');
         $action = $request->input('action');
         $state = $this->loadState();
 
@@ -381,8 +384,9 @@ class ExamPlatformController extends Controller
         return response()->json(['success' => true, 'action' => $action, 'state' => $state]);
     }
 
-    public function getChat(): JsonResponse
+    public function getChat(Request $request): JsonResponse
     {
+        abort_if($request->user()->isAdmin(), 403, 'Exam operations are manager-only.');
         $state = $this->loadState();
         return response()->json($state['chatMessages'] ?? []);
     }
@@ -404,6 +408,7 @@ class ExamPlatformController extends Controller
         // Stamp the sender from the session. A candidate must not be able to
         // post as "Exam Manager" or flag their message as an announcement.
         $user = $request->user();
+        abort_if($user->isAdmin(), 403, 'Exam operations are manager-only.');
         if (! $user->hasAdminAccess()) {
             $msg['senderName'] = $user->name;
             $msg['senderEmail'] = $user->email;
@@ -418,8 +423,9 @@ class ExamPlatformController extends Controller
         return response()->json(['success' => true, 'message' => $msg]);
     }
 
-    public function getReentry(): JsonResponse
+    public function getReentry(Request $request): JsonResponse
     {
+        abort_if($request->user()->isAdmin(), 403, 'Exam operations are manager-only.');
         $state = $this->loadState();
         return response()->json($state['reentryRequests'] ?? []);
     }

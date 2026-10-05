@@ -182,10 +182,31 @@
     if (!isAdminRoute) return;
     var role = document.body.dataset.epVerifiedRole;
     if (role !== "admin" && role !== "manager") return;
+    hideAdminStudentTotal();
+    if (role === "admin" && (/^\/admin\/?$/i.test(window.location.pathname) || /^\/admin\/analytics\/?$/i.test(window.location.pathname))) {
+      window.location.replace("/admin/quizzes");
+      return;
+    }
     var badgeText = role === "manager" ? "Manager" : "Admin";
     document.querySelectorAll("#root aside h1 > span:last-child, #root header h1 > span:last-child").forEach(function (badge) {
       if (badge.textContent.trim() !== badgeText) badge.textContent = badgeText;
     });
+
+    if (role === "admin") {
+      document.querySelectorAll('#root a[href="/admin"], #root a[href="/admin/analytics"], #root a[href="/admin/users"]').forEach(function (link) {
+        var item = link.closest("li") || link;
+        item.style.display = "none";
+      });
+      document.querySelectorAll("#root aside a, #root nav a").forEach(function (link) {
+        if (/^users$/i.test(link.textContent.trim())) (link.closest("li") || link).style.display = "none";
+      });
+      if (/^\/admin\/courses\/?$/i.test(window.location.pathname)) {
+        document.querySelectorAll("#root button").forEach(function (button) {
+          if (/^(\+\s*)?(add|new) course$/i.test(button.textContent.trim()) || /^(edit|delete)$/i.test(button.textContent.trim())) button.style.display = "none";
+        });
+      }
+      addQuizReviewState(role);
+    }
 
     if (role === "manager" && /^\/admin\/settings\/?$/i.test(window.location.pathname)) {
       document.querySelectorAll("#root h1").forEach(function (heading) {
@@ -197,7 +218,221 @@
         }
       });
       ensureManagerProfile();
+      ensureManagerCourseAssignments();
     }
+    if (role === "manager" && /^\/admin\/quizzes\/?$/i.test(window.location.pathname)) addQuizReviewState(role);
+  }
+
+  function hideAdminStudentTotal() {
+    var nodes = document.querySelectorAll("#root p, #root span, #root div");
+    for (var i = 0; i < nodes.length; i++) {
+      var label = nodes[i];
+      if (label.children.length || label.textContent.trim() !== "Total Students") continue;
+      var card = label.closest(".rounded-2xl");
+      if (card) card.style.display = "none";
+    }
+  }
+
+  function apiUrl(path) {
+    return (/^(localhost|127\.0\.0\.1|0\.0\.0\.0)$/.test(window.location.hostname)
+      ? window.location.origin + "/api" : "https://labapi.genziitian.in/public/api") + path;
+  }
+
+  function apiFetch(path, options) {
+    var token = "";
+    try { token = localStorage.getItem("lab_token") || ""; } catch (_) {}
+    options = options || {};
+    options.headers = Object.assign({ Accept: "application/json", Authorization: "Bearer " + token }, options.headers || {});
+    return fetch(apiUrl(path), options).then(function (response) {
+      if (!response.ok) throw new Error("Request failed");
+      return response.status === 204 ? null : response.json();
+    });
+  }
+
+  function syncStudentPaperLibrary() {
+    var existing = document.getElementById("ql-student-paper-library");
+    var role = document.body.dataset.epVerifiedRole;
+    if (!/^\/dashboard\/?$/i.test(window.location.pathname) || (role && role !== "student")) {
+      if (existing) existing.remove();
+      return;
+    }
+    var host = document.querySelector("#root main");
+    var runtime = window.QLStorefront;
+    if (!host || !runtime || !runtime.token() || existing) return;
+
+    var panel = document.createElement("section");
+    panel.id = "ql-student-paper-library";
+    panel.className = "ql-paper-library";
+    panel.setAttribute("aria-labelledby", "ql-paper-library-title");
+    panel.innerHTML = '<div class="ql-paper-library-header"><div><h2 id="ql-paper-library-title">My Papers</h2><p>Free claims and purchases, all in one place.</p></div><div class="ql-paper-library-actions"><a href="/papers?library=1">View library</a><a href="/papers">Browse papers</a></div></div><div class="ql-paper-library-items" aria-live="polite"><p class="ql-paper-library-empty">Loading your papers…</p></div>';
+    host.insertBefore(panel, host.firstChild);
+    var list = panel.querySelector(".ql-paper-library-items");
+    fetch(runtime.apiBase + "/storefront/my-papers", {
+      headers: { Accept: "application/json", Authorization: "Bearer " + runtime.token() }
+    }).then(function (response) {
+      if (!response.ok) throw new Error("Library unavailable");
+      return response.json();
+    }).then(function (data) {
+      if (!panel.isConnected) return;
+      list.replaceChildren();
+      var papers = Array.isArray(data.papers) ? data.papers : [];
+      if (!papers.length) {
+        var empty = document.createElement("p");
+        empty.className = "ql-paper-library-empty";
+        empty.textContent = "Your library is empty. Claim a free paper or browse the catalog.";
+        list.appendChild(empty);
+      }
+      papers.slice(0, 6).forEach(function (paper) {
+        var card = document.createElement("a");
+        card.className = "ql-paper-library-item";
+        var available = paper.available !== false && paper.has_access !== false;
+        card.href = available ? "/quiz/" + encodeURIComponent(paper.id) : "/papers?library=1";
+        var title = document.createElement("strong");
+        title.textContent = paper.title || "Paper";
+        var details = document.createElement("span");
+        var state = paper.available === false ? "Currently unavailable" : paper.expired ? "Access expired" : paper.source === "purchase" ? "Purchased" : "Free";
+        details.textContent = [(paper.course || {}).name, paper.year, state].filter(Boolean).join(" · ");
+        card.append(title, details);
+        list.appendChild(card);
+      });
+    }).catch(function () {
+      if (!panel.isConnected) return;
+      list.innerHTML = '<p class="ql-paper-library-empty">Your library could not load. <a href="/papers?library=1">Try opening My papers</a>.</p>';
+    });
+  }
+
+  function syncPaperPricingLink() {
+    var existing = document.getElementById("ql-paper-pricing-link");
+    if (document.body.dataset.epVerifiedRole !== "manager" || !/^\/admin\/quizzes\/?$/.test(location.pathname)) {
+      if (existing) existing.remove();
+      return;
+    }
+    var host = document.querySelector("#root main");
+    if (!host || existing) return;
+    var link = document.createElement("a");
+    link.id = "ql-paper-pricing-link";
+    link.className = "ql-storefront-manager-link";
+    link.href = "/paper-pricing";
+    link.textContent = "Manage free and paid paper prices →";
+    host.insertBefore(link, host.firstChild);
+  }
+
+  var quizListCache = null;
+  var quizListCacheAt = 0;
+  var quizListPending = null;
+
+  function addQuizReviewState(role) {
+    if (quizListPending) return;
+    if (quizListCache && Date.now() - quizListCacheAt < 4000) {
+      paintQuizReviewState(role, quizListCache);
+      return;
+    }
+    quizListPending = apiFetch("/admin/quizzes").then(function (rows) {
+      quizListCache = Array.isArray(rows) ? rows : [];
+      quizListCacheAt = Date.now();
+      paintQuizReviewState(role, quizListCache);
+    }).catch(function () {}).finally(function () { quizListPending = null; });
+  }
+
+  function paintQuizReviewState(role, quizzes) {
+    var table = document.querySelector("#root table");
+    if (!table) return;
+    var headers = table.querySelectorAll("thead th");
+    Array.prototype.forEach.call(headers, function (th) {
+      if (/^active$/i.test(th.textContent.trim())) th.textContent = role === "manager" ? "Active / disabled" : "Review status";
+    });
+    table.querySelectorAll("tbody tr").forEach(function (row) {
+      var manage = row.querySelector('a[href*="/admin/quizzes/"]');
+      var match = manage && manage.getAttribute("href").match(/\/admin\/quizzes\/(\d+)/);
+      if (!match) return;
+      var paper = quizzes.find(function (quiz) { return String(quiz.id) === match[1]; });
+      if (!paper) return;
+      var firstCell = row.querySelector("td");
+      if (firstCell && !firstCell.querySelector(".ql-paper-review-state")) {
+        var badge = document.createElement("span");
+        badge.className = "ql-paper-review-state";
+        badge.textContent = paper.approval_status === "pending" ? "Pending manager approval" : (paper.is_active ? "Approved · active" : "Approved · disabled");
+        badge.style.cssText = "display:inline-block;margin:4px 0 0 8px;padding:3px 8px;border-radius:999px;font-size:11px;font-weight:600;background:" + (paper.approval_status === "pending" ? "#fff7ed;color:#c2410c" : paper.is_active ? "#ecfdf5;color:#047857" : "#f1f5f9;color:#475569");
+        firstCell.appendChild(badge);
+      }
+      var activeCell = row.children.length > 5 ? row.children[5] : null;
+      if (activeCell) {
+        var toggle = activeCell.querySelector('input[type="checkbox"]');
+        if (role === "admin" && toggle) {
+          toggle.style.display = "none";
+          toggle.disabled = true;
+        }
+        if (role === "manager" && toggle) {
+          toggle.style.display = "none";
+          var statusButton = activeCell.querySelector(".ql-active-toggle");
+          if (!statusButton) {
+            statusButton = document.createElement("button");
+            statusButton.type = "button";
+            statusButton.className = "ql-active-toggle";
+        statusButton.style.cssText = "border:1px solid #cbd5e1;border-radius:8px;background:white;color:#334155;padding:6px 9px;font-family:inherit;font-weight:600;font-size:12px;line-height:1.2;cursor:pointer";
+            activeCell.appendChild(statusButton);
+            statusButton.addEventListener("click", function () {
+              statusButton.disabled = true;
+              statusButton.textContent = "Updating…";
+              apiFetch("/admin/quizzes/" + paper.id + "/toggle", { method: "PATCH" }).then(function () { window.location.reload(); }).catch(function () { statusButton.disabled = false; statusButton.textContent = paper.is_active ? "Disable" : "Activate"; });
+            });
+          }
+          statusButton.disabled = paper.approval_status !== "approved";
+          statusButton.textContent = paper.approval_status !== "approved" ? "Awaiting approval" : (paper.is_active ? "Disable" : "Activate");
+        }
+      }
+      if (role === "manager" && paper.approval_status === "pending" && !row.querySelector(".ql-approve-paper")) {
+        var actions = row.querySelector("td:last-child > div");
+        if (!actions) return;
+        var approve = document.createElement("button");
+        approve.type = "button";
+        approve.className = "ql-approve-paper";
+        approve.textContent = "Approve";
+        approve.style.cssText = "border:0;border-radius:8px;background:#16a34a;color:white;padding:6px 10px;font:600 12px/1.2 inherit;cursor:pointer";
+        approve.addEventListener("click", function () {
+          approve.disabled = true;
+          approve.textContent = "Approving…";
+          apiFetch("/admin/quizzes/" + paper.id + "/approve", { method: "PATCH" }).then(function () { window.location.reload(); }).catch(function () { approve.disabled = false; approve.textContent = "Approve"; });
+        });
+        actions.insertBefore(approve, actions.firstChild);
+      }
+      row.dataset.qlPaperReviewReady = String(paper.approval_status) + ":" + String(paper.is_active);
+    });
+  }
+
+  function ensureManagerCourseAssignments() {
+    var page = document.querySelector("#root main .page-enter > div");
+    if (!page || document.getElementById("ql-manager-course-assignments")) return;
+    var card = document.createElement("section");
+    card.id = "ql-manager-course-assignments";
+    card.style.cssText = "margin-top:20px;background:#fff;border:1px solid #e2e8f0;border-radius:18px;padding:24px;box-shadow:0 2px 5px rgba(15,23,42,.08)";
+    card.innerHTML = '<h2 style="margin:0;color:#0f172a;font-size:20px;font-weight:700">Teacher course access</h2><p style="margin:6px 0 16px;color:#64748b;font-size:14px">Choose an admin teacher, then assign the courses they can manage.</p><select id="ql-teacher-select" style="width:100%;max-width:440px;padding:10px;border:1px solid #cbd5e1;border-radius:10px"><option>Loading teachers…</option></select><div id="ql-teacher-courses" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px;margin:16px 0"></div><div style="display:flex;align-items:center;gap:12px"><button id="ql-save-teacher-courses" type="button" style="border:0;border-radius:10px;background:#16a34a;color:white;padding:10px 16px;font-weight:700;cursor:pointer">Save course access</button><span id="ql-teacher-course-message" role="status" style="font-size:13px;color:#64748b"></span></div>';
+    page.appendChild(card);
+    Promise.all([apiFetch("/admin/users?filter=admins&per_page=100"), apiFetch("/admin/courses")]).then(function (results) {
+      var users = results[0].data || [];
+      var courses = results[1] || [];
+      var select = card.querySelector("#ql-teacher-select");
+      select.innerHTML = '<option value="">Select a teacher</option>' + users.map(function (user) { return '<option value="' + user.id + '">' + escapeHtml(user.name) + ' · ' + escapeHtml(user.email) + '</option>'; }).join("");
+      function showAssignments() {
+        var user = users.find(function (item) { return String(item.id) === select.value; });
+        var assigned = user && user.assigned_course_ids || [];
+        card.querySelector("#ql-teacher-courses").innerHTML = courses.map(function (course) {
+          return '<label style="display:flex;align-items:center;gap:8px;padding:10px;border:1px solid #e2e8f0;border-radius:10px;color:#334155"><input type="checkbox" value="' + course.id + '" ' + (assigned.map(String).includes(String(course.id)) ? 'checked' : '') + '> ' + escapeHtml(course.name) + '</label>';
+        }).join("");
+      }
+      select.addEventListener("change", showAssignments);
+      card.querySelector("#ql-save-teacher-courses").addEventListener("click", function () {
+        if (!select.value) return;
+        var ids = Array.prototype.map.call(card.querySelectorAll("#ql-teacher-courses input:checked"), function (input) { return Number(input.value); });
+        var message = card.querySelector("#ql-teacher-course-message");
+        message.textContent = "Saving…";
+        apiFetch("/admin/users/" + select.value + "/courses", { method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ course_ids: ids }) }).then(function () { message.textContent = "Course access saved."; }).catch(function () { message.textContent = "Could not save course access."; });
+      });
+    }).catch(function () { card.querySelector("#ql-teacher-course-message").textContent = "Could not load teacher or course data."; });
+  }
+
+  function escapeHtml(value) {
+    return String(value || "").replace(/[&<>"']/g, function (character) { return ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[character]; });
   }
 
   var managerProfileLoad = null;
@@ -406,6 +641,8 @@
   function run() {
     syncBrandName();
     syncAdminShell();
+    syncStudentPaperLibrary();
+    syncPaperPricingLink();
     removeStudentWeakSpotCard();
     if (!/\/discussions/i.test(window.location.pathname)) return;
     injectStyles();

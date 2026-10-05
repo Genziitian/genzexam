@@ -34,6 +34,7 @@ class PdfQuizImportController extends Controller
             'week_id' => ['nullable', 'integer', 'exists:weeks,id'],
             'title_override' => ['nullable', 'string', 'max:200'],
         ]);
+        abort_if(! $request->user()->isManager() && ! $request->user()->assignedCourses()->whereKey($validated['course_id'])->exists(), 403, 'You can only create papers for courses assigned to you.');
 
         $needsWeek = in_array($validated['section'], Quiz::WEEKLY_SECTIONS, true);
         if ($needsWeek && empty($validated['week_id'])) {
@@ -77,7 +78,8 @@ class PdfQuizImportController extends Controller
             $titleOverride = trim((string) ($validated['title_override'] ?? ''));
             $finalTitle = $titleOverride !== '' ? $titleOverride : trim((string) $generated['quiz_title']);
 
-            $quiz = DB::transaction(function () use ($validated, $needsWeek, $finalTitle, $normalizedRows, $importer) {
+            $actor = $request->user();
+            $quiz = DB::transaction(function () use ($validated, $needsWeek, $finalTitle, $normalizedRows, $importer, $actor) {
                 $quiz = Quiz::query()->create([
                     'course_id' => (int) $validated['course_id'],
                     'week_id' => $needsWeek ? (int) $validated['week_id'] : null,
@@ -85,7 +87,11 @@ class PdfQuizImportController extends Controller
                     'title' => $finalTitle,
                     'description' => null,
                     'time_limit_minutes' => null,
-                    'is_active' => true,
+                    'is_active' => $actor->isManager(),
+                    'approval_status' => $actor->isManager() ? 'approved' : 'pending',
+                    'created_by' => $actor->id,
+                    'reviewed_by' => $actor->isManager() ? $actor->id : null,
+                    'reviewed_at' => $actor->isManager() ? now() : null,
                 ]);
 
                 $importer->persist($quiz->id, $normalizedRows);

@@ -15,6 +15,7 @@ class StudentProgressController extends Controller
     public function index(Request $request): JsonResponse
     {
         $user = $request->user();
+        abort_if($user->isAdmin(), 403, 'Student progress is not available to teacher accounts.');
 
         $completedAttempts = Attempt::query()
             ->where('user_id', $user->id)
@@ -58,6 +59,7 @@ class StudentProgressController extends Controller
                     ->orderBy('week_number'),
                 'quizzes' => fn ($query) => $query
                     ->where('is_active', true)
+                    ->where('approval_status', 'approved')
                     ->whereNotNull('week_id')
                     ->where('section', 'practice')
                     ->with(['week:id,week_number']),

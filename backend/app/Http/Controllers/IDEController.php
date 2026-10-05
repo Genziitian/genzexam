@@ -18,9 +18,13 @@ class IDEController extends Controller
     ) {
     }
 
-    public function bySlug(string $slug): JsonResponse
+    public function bySlug(Request $request, string $slug): JsonResponse
     {
-        $course = Course::query()
+        $courseQuery = Course::query();
+        if ($request->user()->isAdmin()) {
+            $courseQuery->whereIn('id', $request->user()->assignedCourses()->select('courses.id'));
+        }
+        $course = $courseQuery
             ->where('slug', $slug)
             ->where('is_active', true)
             ->firstOrFail();
@@ -68,6 +72,7 @@ class IDEController extends Controller
                     ->getQuery(),
             ])
             ->findOrFail($id);
+        $this->assertAssignedCourse($request, (int) $problem->course_id);
 
         $response = [
             'problem' => $problem,
@@ -102,6 +107,7 @@ class IDEController extends Controller
                 ->orderBy('position')
                 ->getQuery()])
             ->findOrFail($id);
+        $this->assertAssignedCourse($request, (int) $problem->course_id);
 
         $validated = $request->validate([
             'language' => ['required', 'in:python,java,cpp,c++'],
@@ -142,6 +148,7 @@ class IDEController extends Controller
         $problem = IDEProblem::query()
             ->with(['testCases' => fn ($query) => $query->orderBy('position')])
             ->findOrFail($id);
+        $this->assertAssignedCourse($request, (int) $problem->course_id);
 
         $validated = $request->validate([
             'language' => ['required', 'in:python,java,cpp,c++'],
@@ -243,7 +250,8 @@ class IDEController extends Controller
 
     public function mySubmissions(Request $request, int $id): JsonResponse
     {
-        IDEProblem::query()->findOrFail($id);
+        $problem = IDEProblem::query()->findOrFail($id);
+        $this->assertAssignedCourse($request, (int) $problem->course_id);
 
         $submissions = IDESubmission::query()
             ->where('ide_problem_id', $id)
@@ -258,6 +266,15 @@ class IDEController extends Controller
             ]);
 
         return response()->json($submissions);
+    }
+
+    private function assertAssignedCourse(Request $request, int $courseId): void
+    {
+        abort_unless(
+            $request->user()->isManager() || ! $request->user()->isAdmin() || $request->user()->assignedCourses()->whereKey($courseId)->exists(),
+            403,
+            'This course is not assigned to you.'
+        );
     }
 
     private function normalizeProblemText(string $value): string

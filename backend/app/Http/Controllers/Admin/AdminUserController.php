@@ -9,13 +9,8 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
 /**
- * User management for the manager panel.
- *
- * Tiers: manager > admin > student.
- *  - Managers have total control: any role change, deletion, anything below them.
- *  - Admins have limited control: they may view users and activate/deactivate or
- *    grant Pro to students only. They cannot touch other admins or managers,
- *    cannot change roles, and cannot delete accounts.
+ * Manager-only user management and teacher course assignments.
+ * Admin teacher accounts do not have access to user records or these endpoints.
  */
 class AdminUserController extends Controller
 {
@@ -79,7 +74,7 @@ class AdminUserController extends Controller
         ]);
     }
 
-    /** Activate / deactivate. Admins may only do this to students. */
+    /** Activate or deactivate a user. Manager only. */
     public function toggleActive(Request $request, int $userId): JsonResponse
     {
         $target = User::findOrFail($userId);
@@ -102,7 +97,7 @@ class AdminUserController extends Controller
         ]);
     }
 
-    /** Grant / remove Pro. Admins may only do this to students. */
+    /** Grant or remove Pro. Manager only. */
     public function togglePro(Request $request, int $userId): JsonResponse
     {
         $target = User::findOrFail($userId);
@@ -145,6 +140,9 @@ class AdminUserController extends Controller
 
         $previous = $target->role;
         $target->update(['role' => $validated['role']]);
+        if ($validated['role'] !== User::ROLE_ADMIN) {
+            $target->assignedCourses()->detach();
+        }
 
         // Losing privileges takes effect immediately.
         if (User::ROLE_RANK[$validated['role']] < User::ROLE_RANK[$previous]) {
@@ -154,6 +152,34 @@ class AdminUserController extends Controller
         return response()->json([
             'message' => "{$target->name} is now a " . ucfirst($validated['role']) . '.',
             'user' => $this->present($target->fresh(), $actor),
+        ]);
+    }
+
+    /** Assign the courses an admin teacher is allowed to manage. Manager only. */
+    public function assignCourses(Request $request, int $userId): JsonResponse
+    {
+        $validated = $request->validate([
+            'course_ids' => ['present', 'array'],
+            'course_ids.*' => ['integer', 'distinct', 'exists:courses,id'],
+        ]);
+
+        $target = User::findOrFail($userId);
+        if ($target->is($request->user())) {
+            return response()->json(['error' => 'You cannot assign courses to your own account.'], 422);
+        }
+        if ($target->role !== User::ROLE_ADMIN) {
+            return response()->json(['error' => 'Course assignments are for admin teacher accounts.'], 422);
+        }
+
+        $sync = [];
+        foreach ($validated['course_ids'] as $courseId) {
+            $sync[$courseId] = ['assigned_by' => $request->user()->id];
+        }
+        $target->assignedCourses()->sync($sync);
+
+        return response()->json([
+            'message' => "Course access updated for {$target->name}.",
+            'course_ids' => $target->assignedCourses()->pluck('courses.id')->map(fn ($id) => (int) $id),
         ]);
     }
 
@@ -174,6 +200,9 @@ class AdminUserController extends Controller
         }
 
         $name = $target->name;
+        if (\App\Models\QuizStorefrontOrder::query()->where('user_id', $target->id)->exists()) {
+            return response()->json(['error' => 'This account has checkout records. Deactivate the account to retain its purchase history.'], 409);
+        }
         $target->tokens()->delete();
         $target->delete();
 
@@ -217,6 +246,9 @@ class AdminUserController extends Controller
             'verified'     => $u->email_verified_at !== null,
             'last_seen_at' => $u->last_seen_at,
             'created_at'   => $u->created_at,
+            'assigned_course_ids' => $u->role === User::ROLE_ADMIN
+                ? $u->assignedCourses()->pluck('courses.id')->map(fn ($id) => (int) $id)->values()
+                : [],
             'can' => [
                 'toggle_active' => $canManage,
                 'toggle_pro'    => $canManage,

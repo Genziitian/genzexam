@@ -23,6 +23,7 @@ use App\Http\Controllers\QuizController;
 use App\Http\Controllers\StudentProgressController;
 use App\Http\Controllers\VideoSolutionController;
 use App\Http\Controllers\ExamPlatformController;
+use App\Http\Controllers\StorefrontController;
 use Illuminate\Support\Facades\Route;
 
 // Public auth routes
@@ -41,6 +42,10 @@ Route::get('/video-solutions/embed/{id}', [VideoSolutionController::class, 'embe
     ->whereNumber('id')
     ->middleware('signed')
     ->name('video.embed');
+
+// Public metadata only; quiz questions stay behind the authenticated quiz API.
+Route::get('/storefront/papers', [StorefrontController::class, 'papers'])->middleware('throttle:120,1');
+Route::post('/storefront/razorpay/webhook', [StorefrontController::class, 'webhook'])->middleware('throttle:120,1');
 
 // Authenticated student routes
 Route::middleware(['auth:sanctum', 'track.seen'])->group(function () {
@@ -77,6 +82,12 @@ Route::middleware(['auth:sanctum', 'track.seen'])->group(function () {
     Route::patch('/student/profile', [StudentProgressController::class, 'updateProfile']);
     Route::get('/student/dashboard', [DashboardController::class, 'index']);
 
+    // Self-serve paper access and Razorpay checkout.
+    Route::get('/storefront/my-papers', [StorefrontController::class, 'myPapers']);
+    Route::post('/storefront/papers/{quizId}/claim', [StorefrontController::class, 'claimFree'])->whereNumber('quizId');
+    Route::post('/storefront/papers/{quizId}/orders', [StorefrontController::class, 'createOrder'])->whereNumber('quizId')->middleware('throttle:10,1');
+    Route::post('/storefront/payments/verify', [StorefrontController::class, 'verifyPayment'])->middleware('throttle:20,1');
+
     // Video solutions
     Route::get('/video-solutions', [VideoSolutionController::class, 'index']);
     Route::get('/video-solutions/{id}/play', [VideoSolutionController::class, 'play'])
@@ -86,25 +97,29 @@ Route::middleware(['auth:sanctum', 'track.seen'])->group(function () {
     // Leaderboard
     Route::get('/leaderboard', [LeaderboardController::class, 'index']);
 
-    // Discussions
-    Route::get('/discussions/subjects', [DiscussionController::class, 'subjects']);
-    Route::get('/discussions', [DiscussionController::class, 'index']);
-    Route::post('/discussions', [DiscussionController::class, 'store'])->middleware('throttle:10,1');
-    Route::get('/discussions/{id}', [DiscussionController::class, 'show'])->whereNumber('id');
-    Route::delete('/discussions/{id}', [DiscussionController::class, 'destroy'])->whereNumber('id');
-    Route::post('/discussions/{id}/replies', [DiscussionController::class, 'reply'])->whereNumber('id')->middleware('throttle:20,1');
-    Route::delete('/discussions/replies/{id}', [DiscussionController::class, 'destroyReply'])->whereNumber('id');
-    Route::post('/discussions/{id}/vote', [DiscussionController::class, 'voteDiscussion'])->whereNumber('id');
-    Route::post('/discussions/replies/{id}/vote', [DiscussionController::class, 'voteReply'])->whereNumber('id');
-    Route::post('/discussions/{id}/accept', [DiscussionController::class, 'accept'])->whereNumber('id');
-    Route::post('/discussions/{id}/unaccept', [DiscussionController::class, 'unaccept'])->whereNumber('id');
-    Route::post('/discussions/replies/{id}/endorse', [DiscussionController::class, 'endorse'])->whereNumber('id');
+    // Discussions include student identities, so teacher admins cannot browse them.
+    Route::middleware('teacher.content_only')->group(function () {
+        Route::get('/discussions/subjects', [DiscussionController::class, 'subjects']);
+        Route::get('/discussions', [DiscussionController::class, 'index']);
+        Route::post('/discussions', [DiscussionController::class, 'store'])->middleware('throttle:10,1');
+        Route::get('/discussions/{id}', [DiscussionController::class, 'show'])->whereNumber('id');
+        Route::delete('/discussions/{id}', [DiscussionController::class, 'destroy'])->whereNumber('id');
+        Route::post('/discussions/{id}/replies', [DiscussionController::class, 'reply'])->whereNumber('id')->middleware('throttle:20,1');
+        Route::delete('/discussions/replies/{id}', [DiscussionController::class, 'destroyReply'])->whereNumber('id');
+        Route::post('/discussions/{id}/vote', [DiscussionController::class, 'voteDiscussion'])->whereNumber('id');
+        Route::post('/discussions/replies/{id}/vote', [DiscussionController::class, 'voteReply'])->whereNumber('id');
+        Route::post('/discussions/{id}/accept', [DiscussionController::class, 'accept'])->whereNumber('id');
+        Route::post('/discussions/{id}/unaccept', [DiscussionController::class, 'unaccept'])->whereNumber('id');
+        Route::post('/discussions/replies/{id}/endorse', [DiscussionController::class, 'endorse'])->whereNumber('id');
+    });
 });
 
 // Admin routes
 Route::middleware(['auth:sanctum', 'is_admin', 'track.seen'])->prefix('admin')->group(function () {
-    Route::get('/stats', [AdminDashboardController::class, 'stats']);
-    Route::get('/analytics', [AdminDashboardController::class, 'analytics']);
+    Route::middleware('is_manager')->group(function () {
+        Route::get('/stats', [AdminDashboardController::class, 'stats']);
+        Route::get('/analytics', [AdminDashboardController::class, 'analytics']);
+    });
 
     // Course management
     Route::get('/courses', [AdminCourseController::class, 'index']);
@@ -123,6 +138,11 @@ Route::middleware(['auth:sanctum', 'is_admin', 'track.seen'])->prefix('admin')->
     Route::put('/quizzes/{id}', [AdminQuizController::class, 'update']);
     Route::delete('/quizzes/{id}', [AdminQuizController::class, 'destroy']);
     Route::patch('/quizzes/{id}/toggle', [AdminQuizController::class, 'toggle']);
+
+    // Managers review submitted papers and control publication.
+    Route::middleware('is_manager')->group(function () {
+        Route::patch('/quizzes/{id}/approve', [AdminQuizController::class, 'approve']);
+    });
 
     // Question management (inside a quiz)
     Route::get('/quizzes/{quizId}/questions', [AdminQuestionController::class, 'index']);
@@ -146,19 +166,19 @@ Route::middleware(['auth:sanctum', 'is_admin', 'track.seen'])->prefix('admin')->
     // Video solution management
     Route::get('/video-solutions', [AdminVideoSolutionController::class, 'index']);
     Route::post('/video-solutions', [AdminVideoSolutionController::class, 'store']);
-    Route::post('/video-solutions/import-json', JsonVideoImportController::class)->middleware('throttle:10,1');
     Route::put('/video-solutions/{id}', [AdminVideoSolutionController::class, 'update']);
     Route::delete('/video-solutions/{id}', [AdminVideoSolutionController::class, 'destroy']);
 
-    // User management - admins get limited control (students only)
-    Route::get('/users', [AdminUserController::class, 'index']);
-    Route::patch('/users/{userId}/toggle-active', [AdminUserController::class, 'toggleActive']);
-    Route::patch('/users/{userId}/toggle-pro', [AdminUserController::class, 'togglePro']);
-
-    // Manager-only: role changes and deletion
+    // User records and course assignments are manager-only. Admins never see student accounts.
     Route::middleware('is_manager')->group(function () {
+        Route::post('/video-solutions/import-json', JsonVideoImportController::class)->middleware('throttle:10,1');
+        Route::get('/users', [AdminUserController::class, 'index']);
+        Route::patch('/users/{userId}/toggle-active', [AdminUserController::class, 'toggleActive']);
+        Route::patch('/users/{userId}/toggle-pro', [AdminUserController::class, 'togglePro']);
         Route::patch('/users/{userId}/role', [AdminUserController::class, 'setRole']);
+        Route::put('/users/{userId}/courses', [AdminUserController::class, 'assignCourses']);
         Route::delete('/users/{userId}', [AdminUserController::class, 'destroy']);
+        Route::patch('/storefront/papers/{quizId}', [StorefrontController::class, 'updatePrice'])->whereNumber('quizId');
     });
 });
 
@@ -179,7 +199,7 @@ $examPlatformRoutes = function () {
         Route::post('/chat', [ExamPlatformController::class, 'sendChat']);
         Route::get('/reentry', [ExamPlatformController::class, 'getReentry']);
 
-        Route::middleware('is_admin')->group(function () {
+        Route::middleware('is_manager')->group(function () {
             Route::post('/action', [ExamPlatformController::class, 'action']);
         });
 
@@ -191,4 +211,3 @@ $examPlatformRoutes = function () {
 
 Route::prefix('exam-platform')->group($examPlatformRoutes);
 Route::group([], $examPlatformRoutes);
-

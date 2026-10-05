@@ -11,9 +11,9 @@ use Illuminate\Http\Request;
 
 class CourseController extends Controller
 {
-    public function index(): JsonResponse
+    public function index(Request $request): JsonResponse
     {
-        $courses = Course::query()
+        $courses = $this->courseQuery($request)
             ->where('is_active', true)
             ->orderBy('sort_order')
             ->get([
@@ -29,9 +29,9 @@ class CourseController extends Controller
         return response()->json($courses);
     }
 
-    public function show(string $slug): JsonResponse
+    public function show(Request $request, string $slug): JsonResponse
     {
-        $course = Course::query()
+        $course = $this->courseQuery($request)
             ->where('slug', $slug)
             ->where('is_active', true)
             ->with([
@@ -59,9 +59,9 @@ class CourseController extends Controller
         ]);
     }
 
-    public function weeks(string $slug): JsonResponse
+    public function weeks(Request $request, string $slug): JsonResponse
     {
-        $course = Course::query()
+        $course = $this->courseQuery($request)
             ->where('slug', $slug)
             ->where('is_active', true)
             ->firstOrFail();
@@ -78,7 +78,7 @@ class CourseController extends Controller
     {
         $user = $request->user();
 
-        $course = Course::query()
+        $course = $this->courseQuery($request)
             ->where('slug', $slug)
             ->where('is_active', true)
             ->firstOrFail();
@@ -93,6 +93,7 @@ class CourseController extends Controller
             ->where('week_id', $week->id)
             ->whereIn('section', Quiz::WEEKLY_SECTIONS)
             ->where('is_active', true)
+            ->where('approval_status', 'approved')
             ->withCount('questions')
             ->orderBy('id')
             ->get([
@@ -141,7 +142,7 @@ class CourseController extends Controller
     {
         $user = $request->user();
 
-        $course = Course::query()
+        $course = $this->courseQuery($request)
             ->where('slug', $slug)
             ->where('is_active', true)
             ->withCount('ideProblems')
@@ -157,6 +158,7 @@ class CourseController extends Controller
             ->whereIn('week_id', $weeks->keys())
             ->whereIn('section', Quiz::WEEKLY_SECTIONS)
             ->where('is_active', true)
+            ->where('approval_status', 'approved')
             ->withCount('questions')
             ->orderBy('week_id')
             ->orderBy('id')
@@ -211,7 +213,7 @@ class CourseController extends Controller
     {
         $user = $request->user();
 
-        $course = Course::query()
+        $course = $this->courseQuery($request)
             ->where('slug', $slug)
             ->where('is_active', true)
             ->firstOrFail();
@@ -219,6 +221,7 @@ class CourseController extends Controller
         $allQuizzes = $course->quizzes()
             ->whereIn('section', ['quiz1', 'quiz2', 'endterm', 'mock_test'])
             ->where('is_active', true)
+            ->where('approval_status', 'approved')
             ->withCount('questions')
             ->orderByDesc('year')
             ->orderBy('id')
@@ -262,5 +265,14 @@ class CourseController extends Controller
             'endterm' => $bySection('endterm'),
             'mock_test' => $bySection('mock_test'),
         ]);
+    }
+
+    private function courseQuery(Request $request)
+    {
+        $query = Course::query();
+        if ($request->user()->isAdmin()) {
+            $query->whereIn('id', $request->user()->assignedCourses()->select('courses.id'));
+        }
+        return $query;
     }
 }

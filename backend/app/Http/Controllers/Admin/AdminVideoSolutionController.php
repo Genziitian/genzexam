@@ -10,9 +10,10 @@ use Illuminate\Http\Request;
 
 class AdminVideoSolutionController extends Controller
 {
-    public function index(): JsonResponse
+    public function index(Request $request): JsonResponse
     {
         $videos = VideoSolution::query()
+            ->when(! $request->user()->isManager(), fn ($query) => $query->whereIn('course_id', $request->user()->assignedCourses()->select('courses.id')))
             ->with('course:id,name,slug')
             ->orderBy('sort_order')
             ->orderBy('id')
@@ -24,6 +25,7 @@ class AdminVideoSolutionController extends Controller
     public function store(Request $request, VideoImporter $importer): JsonResponse
     {
         $validated = $this->validatePayload($request);
+        $this->assertAssignedCourse($request, $validated['course_id'] ?? null);
 
         $source = $this->resolveSource($request, $importer);
         if ($source === null) {
@@ -40,8 +42,10 @@ class AdminVideoSolutionController extends Controller
     public function update(Request $request, int $id, VideoImporter $importer): JsonResponse
     {
         $video = VideoSolution::query()->findOrFail($id);
+        $this->assertAssignedCourse($request, $video->course_id);
 
         $validated = $this->validatePayload($request);
+        $this->assertAssignedCourse($request, $validated['course_id'] ?? $video->course_id);
 
         // Only re-resolve the video source if a link/id was supplied.
         if ($this->hasSourceInput($request)) {
@@ -59,9 +63,11 @@ class AdminVideoSolutionController extends Controller
         return response()->json($video->fresh()->load('course:id,name,slug'));
     }
 
-    public function destroy(int $id): JsonResponse
+    public function destroy(Request $request, int $id): JsonResponse
     {
-        VideoSolution::query()->findOrFail($id)->delete();
+        $video = VideoSolution::query()->findOrFail($id);
+        $this->assertAssignedCourse($request, $video->course_id);
+        $video->delete();
 
         return response()->json(['message' => 'Deleted']);
     }
@@ -87,6 +93,13 @@ class AdminVideoSolutionController extends Controller
         return filled($request->input('link'))
             || filled($request->input('drive_file_id'))
             || filled($request->input('youtube_id'));
+    }
+
+    private function assertAssignedCourse(Request $request, ?int $courseId): void
+    {
+        if ($request->user()->isManager()) return;
+        abort_if($courseId === null, 403, 'Assign this video to one of your courses.');
+        abort_unless($request->user()->assignedCourses()->whereKey($courseId)->exists(), 403, 'This course is not assigned to you.');
     }
 
     /**

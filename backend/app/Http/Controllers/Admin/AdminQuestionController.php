@@ -17,9 +17,9 @@ use Illuminate\Validation\Rule;
 
 class AdminQuestionController extends Controller
 {
-    public function index(int $quizId): JsonResponse
+    public function index(Request $request, int $quizId): JsonResponse
     {
-        Quiz::query()->findOrFail($quizId);
+        $this->accessibleQuiz($request, $quizId);
 
         $questions = Question::query()
             ->where('quiz_id', $quizId)
@@ -35,7 +35,7 @@ class AdminQuestionController extends Controller
 
     public function store(Request $request, int $quizId): JsonResponse
     {
-        Quiz::query()->findOrFail($quizId);
+        $this->accessibleQuiz($request, $quizId, true);
 
         $validated = $this->validateQuestionPayload($request, true);
         $options = $this->parseOptions($request);
@@ -71,6 +71,7 @@ class AdminQuestionController extends Controller
 
             return $question;
         });
+        $this->requestReviewIfEdited($request, $quizId);
 
         return response()->json(
             $created->load([
@@ -89,6 +90,7 @@ class AdminQuestionController extends Controller
     public function update(Request $request, int $id): JsonResponse
     {
         $question = Question::query()->with(['questionOptions', 'shortAnswerAcceptables'])->findOrFail($id);
+        $this->accessibleQuiz($request, (int) $question->quiz_id, true);
         $validated = $this->validateQuestionPayload($request, false);
         $options = $this->parseOptions($request);
         $acceptableAnswers = $this->parseAcceptableAnswers($request);
@@ -138,6 +140,7 @@ class AdminQuestionController extends Controller
 
             return $question;
         });
+        $this->requestReviewIfEdited($request, (int) $question->quiz_id);
 
         return response()->json($updated->fresh()->load([
             'questionOptions' => fn ($query) => $query->orderBy('position'),
@@ -145,10 +148,13 @@ class AdminQuestionController extends Controller
         ]));
     }
 
-    public function destroy(int $id): JsonResponse
+    public function destroy(Request $request, int $id): JsonResponse
     {
         $question = Question::query()->findOrFail($id);
+        $quizId = (int) $question->quiz_id;
+        $this->accessibleQuiz($request, $quizId, true);
         $question->delete();
+        $this->requestReviewIfEdited($request, $quizId);
 
         return response()->json([
             'message' => 'Question deleted successfully.',
@@ -157,7 +163,7 @@ class AdminQuestionController extends Controller
 
     public function reorder(Request $request, int $quizId): JsonResponse
     {
-        Quiz::query()->findOrFail($quizId);
+        $this->accessibleQuiz($request, $quizId, true);
 
         $validated = $request->validate([
             'question_ids' => ['required', 'array', 'min:1'],
@@ -172,6 +178,7 @@ class AdminQuestionController extends Controller
                     ->update(['position' => $index]);
             }
         });
+        $this->requestReviewIfEdited($request, $quizId);
 
         return response()->json([
             'message' => 'Question order updated successfully.',
@@ -180,7 +187,7 @@ class AdminQuestionController extends Controller
 
     public function importJson(Request $request, int $quizId, QuestionImporter $importer): JsonResponse
     {
-        Quiz::query()->findOrFail($quizId);
+        $this->accessibleQuiz($request, $quizId, true);
 
         $validated = $request->validate([
             'schema_version' => ['nullable', 'string', 'max:20'],
@@ -210,6 +217,7 @@ class AdminQuestionController extends Controller
         }
 
         $importedIds = $importer->persist($quizId, $normalizedRows);
+        $this->requestReviewIfEdited($request, $quizId);
 
         return response()->json([
             'message' => empty($errors)
@@ -218,6 +226,35 @@ class AdminQuestionController extends Controller
             'imported_count' => count($importedIds),
             'imported_ids' => $importedIds,
             'errors' => $errors,
+        ]);
+    }
+
+    private function accessibleQuiz(Request $request, int $quizId, bool $forEdit = false): Quiz
+    {
+        $quiz = Quiz::query()->findOrFail($quizId);
+        abort_unless(
+            $request->user()->isManager() || $request->user()->assignedCourses()->whereKey($quiz->course_id)->exists(),
+            403,
+            'This paper belongs to a course that is not assigned to you.'
+        );
+        if ($forEdit) {
+            abort_unless(
+                $request->user()->isManager() || (int) $quiz->created_by === (int) $request->user()->id,
+                403,
+                'You can only edit papers you created. A manager can edit any paper.'
+            );
+        }
+        return $quiz;
+    }
+
+    private function requestReviewIfEdited(Request $request, int $quizId): void
+    {
+        if ($request->user()->isManager()) return;
+        Quiz::query()->whereKey($quizId)->where('approval_status', 'approved')->update([
+            'approval_status' => 'pending',
+            'is_active' => false,
+            'reviewed_by' => null,
+            'reviewed_at' => null,
         ]);
     }
 

@@ -16,6 +16,7 @@ class DashboardController extends Controller
     public function index(Request $request): JsonResponse
     {
         $user = $request->user();
+        abort_if($user->isAdmin(), 403, 'Student dashboards are not available to teacher accounts.');
         $now  = now();
 
         return response()->json([
@@ -288,6 +289,7 @@ class DashboardController extends Controller
             ->with([
                 'quizzes' => fn ($q) => $q
                     ->where('is_active', true)
+                    ->where('approval_status', 'approved')
                     ->where('section', 'practice')
                     ->orderBy('id'),
             ])
@@ -314,6 +316,7 @@ class DashboardController extends Controller
         // Final fallback: very first quiz
         $first = Quiz::query()
             ->where('is_active', true)
+            ->where('approval_status', 'approved')
             ->where('section', 'practice')
             ->with('course:id,name,slug')
             ->orderBy('id')

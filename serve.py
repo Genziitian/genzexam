@@ -244,6 +244,12 @@ class ExamPlatformHandler(http.server.SimpleHTTPRequestHandler):
         if self.path.split("?", 1)[0] == "/":
             self.path = "/landing.html"
             return
+        if self.path.split("?", 1)[0] in ("/papers", "/papers/"):
+            self.path = "/papers.html"
+            return
+        if self.path.split("?", 1)[0] in ("/paper-pricing", "/paper-pricing/"):
+            self.path = "/paper-pricing.html"
+            return
         path = self.translate_path(self.path)
         if not os.path.exists(path) or (os.path.isdir(path) and not os.path.exists(os.path.join(path, "index.html"))):
             self.path = "/index.html"

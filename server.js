@@ -396,6 +396,10 @@ const server = http.createServer((req, res) => {
   let filePath = path.join(DIRECTORY, cleanPath);
   if (cleanPath === "/") {
     filePath = path.join(DIRECTORY, "landing.html");
+  } else if (cleanPath === "/papers" || cleanPath === "/papers/") {
+    filePath = path.join(DIRECTORY, "papers.html");
+  } else if (cleanPath === "/paper-pricing" || cleanPath === "/paper-pricing/") {
+    filePath = path.join(DIRECTORY, "paper-pricing.html");
   } else if (!fs.existsSync(filePath) || fs.statSync(filePath).isDirectory()) {
     filePath = path.join(DIRECTORY, "index.html");
   }

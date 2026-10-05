@@ -64,6 +64,7 @@ class BulkJsonQuizImportController extends Controller
         ]);
 
         $courseId = (int) $validated['course_id'];
+        abort_if(! $request->user()->isManager() && ! $request->user()->assignedCourses()->whereKey($courseId)->exists(), 403, 'You can only create papers for courses assigned to you.');
         /** @var UploadedFile[] $files */
         $files = $request->file('json_files');
 
@@ -74,7 +75,7 @@ class BulkJsonQuizImportController extends Controller
         foreach ($files as $file) {
             $name = $file->getClientOriginalName() ?: 'file.json';
             try {
-                $result = $this->importOneFile($file, $courseId, $importer);
+                $result = $this->importOneFile($file, $courseId, $importer, $request->user());
                 $results[] = [
                     'file'           => $name,
                     'status'         => 'created',
@@ -121,7 +122,7 @@ class BulkJsonQuizImportController extends Controller
      *
      * @throws ImportFileException for any user-facing, per-file validation failure.
      */
-    private function importOneFile(UploadedFile $file, int $courseId, QuestionImporter $importer): array
+    private function importOneFile(UploadedFile $file, int $courseId, QuestionImporter $importer, \App\Models\User $actor): array
     {
         $raw = trim((string) file_get_contents($file->getRealPath()));
         if ($raw === '') {
@@ -181,7 +182,7 @@ class BulkJsonQuizImportController extends Controller
         $timeLimit = $decoded['time_limit_minutes'] ?? null;
         $timeLimit = (is_numeric($timeLimit) && (int) $timeLimit > 0) ? (int) $timeLimit : null;
 
-        $quiz = DB::transaction(function () use ($courseId, $weekId, $section, $title, $description, $timeLimit, $normalizedRows, $importer) {
+        $quiz = DB::transaction(function () use ($courseId, $weekId, $section, $title, $description, $timeLimit, $normalizedRows, $importer, $actor) {
             $quiz = Quiz::query()->create([
                 'course_id'          => $courseId,
                 'week_id'            => $weekId,
@@ -189,7 +190,11 @@ class BulkJsonQuizImportController extends Controller
                 'title'              => $title,
                 'description'        => $description !== '' ? $description : null,
                 'time_limit_minutes' => $timeLimit,
-                'is_active'          => true,
+                'is_active'          => $actor->isManager(),
+                'approval_status'    => $actor->isManager() ? 'approved' : 'pending',
+                'created_by'         => $actor->id,
+                'reviewed_by'        => $actor->isManager() ? $actor->id : null,
+                'reviewed_at'        => $actor->isManager() ? now() : null,
             ]);
 
             $importer->persist($quiz->id, $normalizedRows);

@@ -11,9 +11,10 @@ use Illuminate\Validation\Rule;
 
 class AdminIDEController extends Controller
 {
-    public function index(): JsonResponse
+    public function index(Request $request): JsonResponse
     {
         $problems = IDEProblem::query()
+            ->when(! $request->user()->isManager(), fn ($query) => $query->whereIn('course_id', $request->user()->assignedCourses()->select('courses.id')))
             ->with('course:id,name')
             ->withCount([
                 'testCases as test_cases_count',
@@ -60,6 +61,7 @@ class AdminIDEController extends Controller
             'test_cases.*.expected_output' => ['required_with:test_cases', 'string'],
             'test_cases.*.is_hidden' => ['nullable', 'boolean'],
         ]);
+        $this->assertAssignedCourse($request, (int) $validated['course_id']);
 
         $problem = IDEProblem::query()->create([
             ...$validated,
@@ -87,6 +89,7 @@ class AdminIDEController extends Controller
                 'testCases' => fn ($query) => $query->orderBy('position'),
             ])
             ->findOrFail($id);
+        $this->assertAssignedCourse(request(), (int) $problem->course_id);
 
         return response()->json($problem);
     }
@@ -94,6 +97,7 @@ class AdminIDEController extends Controller
     public function update(Request $request, int $id): JsonResponse
     {
         $problem = IDEProblem::query()->findOrFail($id);
+        $this->assertAssignedCourse($request, (int) $problem->course_id);
 
         $validated = $request->validate([
             'course_id' => ['sometimes', 'required', 'exists:courses,id'],
@@ -113,14 +117,19 @@ class AdminIDEController extends Controller
             'sort_order' => ['nullable', 'integer', 'min:0'],
         ]);
 
+        if (isset($validated['course_id'])) {
+            $this->assertAssignedCourse($request, (int) $validated['course_id']);
+        }
+
         $problem->update($validated);
 
         return response()->json($problem->fresh()->load('testCases'));
     }
 
-    public function destroy(int $id): JsonResponse
+    public function destroy(Request $request, int $id): JsonResponse
     {
         $problem = IDEProblem::query()->findOrFail($id);
+        $this->assertAssignedCourse($request, (int) $problem->course_id);
         $problem->delete();
 
         return response()->json([
@@ -131,6 +140,7 @@ class AdminIDEController extends Controller
     public function addTestCase(Request $request, int $id): JsonResponse
     {
         $problem = IDEProblem::query()->findOrFail($id);
+        $this->assertAssignedCourse($request, (int) $problem->course_id);
 
         $validated = $request->validate([
             'input' => ['required', 'string'],
@@ -153,6 +163,7 @@ class AdminIDEController extends Controller
     public function updateTestCase(Request $request, int $id): JsonResponse
     {
         $testCase = IDETestCase::query()->findOrFail($id);
+        $this->assertAssignedCourse($request, (int) $testCase->ideProblem->course_id);
 
         $validated = $request->validate([
             'input' => ['sometimes', 'required', 'string'],
@@ -166,13 +177,19 @@ class AdminIDEController extends Controller
         return response()->json($testCase->fresh());
     }
 
-    public function deleteTestCase(int $id): JsonResponse
+    public function deleteTestCase(Request $request, int $id): JsonResponse
     {
         $testCase = IDETestCase::query()->findOrFail($id);
+        $this->assertAssignedCourse($request, (int) $testCase->ideProblem->course_id);
         $testCase->delete();
 
         return response()->json([
             'message' => 'Test case deleted successfully.',
         ]);
+    }
+
+    private function assertAssignedCourse(Request $request, int $courseId): void
+    {
+        abort_unless($request->user()->isManager() || $request->user()->assignedCourses()->whereKey($courseId)->exists(), 403, 'This course is not assigned to you.');
     }
 }

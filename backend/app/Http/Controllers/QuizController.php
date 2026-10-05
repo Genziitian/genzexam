@@ -6,13 +6,16 @@ use App\Models\Attempt;
 use App\Models\Quiz;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class QuizController extends Controller
 {
-    public function show(int $id): JsonResponse
+    public function show(Request $request, int $id): JsonResponse
     {
         $quiz = Quiz::query()
             ->where('is_active', true)
+            ->where('approval_status', 'approved')
+            ->whereHas('course', fn ($query) => $query->where('is_active', true))
             ->with([
                 'course:id,name,slug',
                 'questions' => fn ($query) => $query
@@ -24,6 +27,26 @@ class QuizController extends Controller
                     ]),
             ])
             ->findOrFail($id);
+
+        if ($request->user()->isAdmin() && ! $request->user()->assignedCourses()->whereKey($quiz->course_id)->exists()) {
+            throw new HttpResponseException(response()->json(['error' => 'This course is not assigned to you.'], 403));
+        }
+
+        if ($request->user()->isStudent() && (int) $quiz->price_paise > 0) {
+            $hasAccess = \App\Models\QuizEntitlement::query()
+                ->where('user_id', $request->user()->id)
+                ->where('quiz_id', $quiz->id)
+                ->where(fn ($query) => $query->whereNull('expires_at')->orWhere('expires_at', '>', now()))
+                ->exists();
+
+            if (! $hasAccess) {
+                return response()->json([
+                    'error' => 'purchase_required',
+                    'message' => 'Purchase this paper to open it.',
+                    'price_paise' => (int) $quiz->price_paise,
+                ], 402);
+            }
+        }
 
         return response()->json([
             'id' => $quiz->id,
@@ -61,6 +84,7 @@ class QuizController extends Controller
     public function leaderboard(Request $request, int $id): JsonResponse
     {
         $user = $request->user();
+        abort_if($user->isAdmin(), 403, 'Leaderboards are not available in teacher content management.');
 
         $attempts = Attempt::query()
             ->where('quiz_id', $id)

@@ -24,8 +24,28 @@ class AttemptController extends Controller
     {
         $quiz = Quiz::query()->findOrFail($id);
 
-        if (! $quiz->is_active) {
+        if ($request->user()->isAdmin() && ! $request->user()->assignedCourses()->whereKey($quiz->course_id)->exists()) {
+            abort(403, 'This course is not assigned to you.');
+        }
+
+        if (! $quiz->is_active || $quiz->approval_status !== 'approved' || ! $quiz->course?->is_active) {
             abort(403, 'Quiz not available');
+        }
+
+        if ($request->user()->isStudent() && (int) $quiz->price_paise > 0) {
+            $hasAccess = \App\Models\QuizEntitlement::query()
+                ->where('user_id', $request->user()->id)
+                ->where('quiz_id', $quiz->id)
+                ->where(fn ($query) => $query->whereNull('expires_at')->orWhere('expires_at', '>', now()))
+                ->exists();
+
+            if (! $hasAccess) {
+                return response()->json([
+                    'error' => 'purchase_required',
+                    'message' => 'Purchase this paper to start it.',
+                    'price_paise' => (int) $quiz->price_paise,
+                ], 402);
+            }
         }
 
         $existing = Attempt::query()
@@ -83,6 +103,7 @@ class AttemptController extends Controller
         ]);
 
         $quiz = $attempt->quiz;
+        $this->requirePaperAccess($request, $quiz);
         $questionsById = $quiz->questions->keyBy('id');
         $totalMarks = (float) $quiz->questions->sum(fn ($q) => (float) $q->marks);
         $sumAwarded = 0;
@@ -136,6 +157,23 @@ class AttemptController extends Controller
             'percentage' => $percentage,
             'xp_award' => $xpEnvelope,
         ]);
+    }
+
+    private function requirePaperAccess(Request $request, Quiz $quiz): void
+    {
+        if (! $request->user()->isStudent()) {
+            return;
+        }
+        abort_unless($quiz->is_active && $quiz->approval_status === 'approved' && $quiz->course?->is_active, 403, 'Paper is unavailable.');
+        if ((int) $quiz->price_paise > 0 && ! \App\Models\QuizEntitlement::query()
+            ->where('user_id', $request->user()->id)->where('quiz_id', $quiz->id)
+            ->where(fn ($query) => $query->whereNull('expires_at')->orWhere('expires_at', '>', now()))->exists()) {
+            throw new HttpResponseException(response()->json([
+                'error' => 'purchase_required',
+                'message' => 'Purchase or renew access to this paper.',
+                'price_paise' => (int) $quiz->price_paise,
+            ], 402));
+        }
     }
 
     private function awardQuizXp($user, int $quizId, float $percentage): array

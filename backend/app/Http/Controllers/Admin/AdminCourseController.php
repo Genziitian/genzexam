@@ -11,9 +11,10 @@ use Illuminate\Support\Str;
 
 class AdminCourseController extends Controller
 {
-    public function index(): JsonResponse
+    public function index(Request $request): JsonResponse
     {
         $courses = Course::query()
+            ->when(! $request->user()->isManager(), fn ($query) => $query->whereIn('id', $request->user()->assignedCourses()->select('courses.id')))
             ->orderBy('sort_order')
             ->get([
                 'id',
@@ -32,6 +33,7 @@ class AdminCourseController extends Controller
 
     public function store(Request $request): JsonResponse
     {
+        abort_unless($request->user()->isManager(), 403, 'Only a manager can create courses.');
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:120'],
             'slug' => ['nullable', 'string', 'max:120', 'unique:courses,slug'],
@@ -97,6 +99,7 @@ class AdminCourseController extends Controller
 
     public function update(Request $request, int $id): JsonResponse
     {
+        abort_unless($request->user()->isManager(), 403, 'Only a manager can edit course settings.');
         $course = Course::query()->findOrFail($id);
 
         $validated = $request->validate([
@@ -116,8 +119,13 @@ class AdminCourseController extends Controller
 
     public function destroy(int $id): JsonResponse
     {
+        abort_unless(request()->user()->isManager(), 403, 'Only a manager can delete courses.');
         $course = Course::query()->findOrFail($id);
         $name = $course->name;
+
+        if (\App\Models\QuizStorefrontOrder::query()->whereIn('quiz_id', $course->quizzes()->select('id'))->exists()) {
+            return response()->json(['error' => 'This course contains papers with checkout records. Disable the course to preserve purchase history.'], 409);
+        }
 
         // Weeks and quizzes cascade via foreign keys; questions/attempts cascade
         // off their quizzes. Wrapped so a partial delete never leaves orphans.
@@ -128,8 +136,9 @@ class AdminCourseController extends Controller
         ]);
     }
 
-    public function toggle(int $id): JsonResponse
+    public function toggle(Request $request, int $id): JsonResponse
     {
+        abort_unless($request->user()->isManager(), 403, 'Only a manager can enable or disable courses.');
         $course = Course::query()->findOrFail($id);
         $course->update([
             'is_active' => ! $course->is_active,

@@ -20,6 +20,7 @@ class VideoSolutionController extends Controller
 
         $videos = VideoSolution::query()
             ->where('is_published', true)
+            ->when($user->isAdmin(), fn ($query) => $query->whereIn('course_id', $user->assignedCourses()->select('courses.id')))
             ->with('course:id,name,slug')
             ->orderBy('sort_order')
             ->orderBy('id')
@@ -54,6 +55,10 @@ class VideoSolutionController extends Controller
     public function play(Request $request, int $id): JsonResponse
     {
         $video = VideoSolution::query()->where('is_published', true)->findOrFail($id);
+
+        if ($request->user()->isAdmin() && ! $request->user()->assignedCourses()->whereKey($video->course_id)->exists()) {
+            return response()->json(['error' => 'This course is not assigned to you.'], 403);
+        }
 
         if (! $video->isAccessibleBy($request->user())) {
             return response()->json(['error' => 'This video requires a Pro subscription.'], 403);
