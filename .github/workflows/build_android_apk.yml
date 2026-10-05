@@ -38,6 +38,11 @@ jobs:
           rm -rf android
           flutter create --platforms=android --org in.genziitian .
           cp -r /tmp/res_backup/res/* android/app/src/main/res/ 2>/dev/null || true
+          # Patch manifest for flutter_secure_storage allowBackup conflict
+          sed -i 's|<manifest xmlns:android="http://schemas.android.com/apk/res/android"|<manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"|' android/app/src/main/AndroidManifest.xml
+          sed -i 's|<application|<application tools:replace="android:allowBackup" android:allowBackup="false"|' android/app/src/main/AndroidManifest.xml
+          # Ensure minSdk >= 21 for secure storage
+          sed -i 's|minSdkVersion .*|minSdkVersion 21|' android/app/build.gradle || true
 
       - name: Install Mobile Dependencies
         working-directory: mobile
@@ -45,11 +50,20 @@ jobs:
 
       - name: Build Release APK
         working-directory: mobile
-        run: flutter build apk --release
+        run: |
+          set -o pipefail
+          flutter build apk --release --no-shrink 2>&1 | tee /tmp/flutter_build.log
 
+      - name: Upload Build Log on Failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-failure-log
+          path: /tmp/flutter_build.log
 
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
+        if: success()
         with:
           name: quiz-lab-release-apk
           path: mobile/build/app/outputs/**/*.apk
