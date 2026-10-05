@@ -67,7 +67,7 @@
 .ql-qa .ql-btn{text-align:left;padding:14px}
 
 /* Login form branding centered above the sign-in options */
-.ql-auth-brand{display:flex;align-items:center;justify-content:center;gap:12px}
+.ql-auth-brand{display:flex;align-items:center;justify-content:flex-start;gap:12px}
 .ql-auth-brand-mark{width:52px;height:52px;border-radius:14px}
 .ql-auth-brand-mark svg{width:26px;height:26px}
 .ql-auth-brand-text{text-align:left}
