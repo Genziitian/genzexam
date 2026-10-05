@@ -65,3 +65,12 @@
 .ql-tile span{font-size:12px;color:#64748b}
 .ql-qa{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .ql-qa .ql-btn{text-align:left;padding:14px}
+
+/* Login dashboard preview brand treatment */
+.ql-preview-brand{display:flex;width:100%;align-items:center;justify-content:center;gap:12px}
+.ql-preview-brand-mark{width:56px;height:56px;border-radius:15px}
+.ql-preview-brand-mark svg{width:28px;height:28px}
+.ql-preview-brand-text{text-align:center}
+.ql-preview-brand-text span:first-child{font-size:20px;letter-spacing:-.02em}
+.ql-preview-brand-text span:last-child{margin-top:4px;font-size:13px;color:#9aa4b8}
+.login-preview-diffuser{background:rgba(15,23,42,.075)}
