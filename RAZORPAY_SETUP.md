@@ -26,10 +26,12 @@ The webhook signature is checked over the raw request body. The handler also che
 
 ## Pricing
 
-Open `/paper-pricing` with a manager account. Prices are entered in whole rupees and stored in paise. Set a price of `0` for a free paper; optionally set an access duration in days. The migration gives existing papers a price of zero, so current free practice stays available until a manager changes a paper's price.
+Open `/paper-pricing` with a manager account. Prices are entered in rupees, with up to two decimal places, and stored in paise. Set a price of `0` for a free paper; paid papers must cost at least ₹1. Optionally set an access duration in days. The migration gives existing papers a price of zero, so current free practice stays available until a manager changes a paper's price.
 
 ## Deployment note
 
 Checkout is unavailable until the Razorpay key ID and key secret are configured on the Laravel API server. Configure the webhook secret and automatic capture as well for the complete purchase flow. Use the same key pair's mode consistently in Razorpay Checkout and the server environment. Configure and verify the webhook in Test Mode before switching to Live Mode.
 
-For local development, serve this site's static files on port `3000` and the Laravel API on port `8000`; the paper pages use that local API address. If a custom `CORS_ALLOWED_ORIGINS` list is configured, include the local site origin there too.
+Deploy the API changes and run `php artisan migrate --force` before enabling checkout. Refresh cached configuration after setting the environment values.
+
+The storefront uses the existing app's API at `https://labapi.genziitian.in/public/api`, including when the static site is served locally. To develop against a local Laravel server, align both the main app and storefront API configuration with that server's `/public/api` prefix. If a custom `CORS_ALLOWED_ORIGINS` list is configured, include the local site origin there too.
