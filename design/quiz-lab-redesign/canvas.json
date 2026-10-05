@@ -1,0 +1,18 @@
+{
+  "v": 3,
+  "createdOnFiles": { "v": 1, "at": "2026-10-05T07:55:00Z" },
+  "title": "Quiz Lab Redesign",
+  "launch": { "view": "canvas" },
+  "pages": [],
+  "boards": {
+    "Main.dc.html": { "x": 0, "y": 0, "w": 1440, "h": 1560, "title": "Student dashboard", "expand": "fill" },
+    "Exam.dc.html": { "x": 1520, "y": 0, "w": 1440, "h": 940, "title": "Exam interface", "expand": "fill", "is_interactive": true },
+    "Manager.dc.html": { "x": 0, "y": 1680, "w": 1440, "h": 1420, "title": "Manager dashboard", "expand": "fill" },
+    "Admin.dc.html": { "x": 1520, "y": 1680, "w": 1440, "h": 1720, "title": "Admin dashboard", "expand": "fill" }
+  },
+  "order": ["Main.dc.html", "Exam.dc.html", "Manager.dc.html", "Admin.dc.html"],
+  "notes": {
+    "t1": { "x": 0, "y": -300, "text": "Quiz Lab by GenZ IITian: student, exam, manager and admin screens", "kind": "title1", "maxW": 2960 }
+  },
+  "designSystems": []
+}

@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Exam Interface</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<style>
+body{margin:0;background:#F4F5F9}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit}
+button:focus-visible,a:focus-visible{outline:2px solid #3B47F0;outline-offset:2px}
+sc-for,sc-if{display:contents}
+</style>
+</helmet>
+<div style="display:flex;flex-direction:column;min-height:100vh;background:#F4F5F9;color:#0D1226;font-family:'Plus Jakarta Sans',system-ui,sans-serif;font-size:14px;line-height:1.45">
+
+<header style="display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;padding:14px 32px;background:#FFFFFF">
+<div style="display:flex;align-items:center;gap:12px">
+<div style="width:40px;height:40px;border-radius:12px;background:#0B0F24;color:#C8F03C;display:flex;align-items:center;justify-content:center">
+<svg width="22" height="22" viewBox="0 0 24 24" style="fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M9 3h6 M10 3v6L4.5 19a1.5 1.5 0 0 0 1.3 2.2h12.4a1.5 1.5 0 0 0 1.3-2.2L14 9V3 M7.5 15h9"></path></svg>
+</div>
+<div style="display:flex;flex-direction:column;line-height:1.15">
+<span style="font-weight:800;font-size:17px;letter-spacing:-0.01em">Quiz Lab</span>
+<span style="font-size:12px;color:#636A87;font-weight:500">by GenZ IITian</span>
+</div>
+</div>
+<div style="width:1px;height:32px;background:#E6E8F0"></div>
+<div style="display:flex;flex-direction:column;line-height:1.25">
+<h1 style="margin:0;font-size:17px;font-weight:800;letter-spacing:-0.01em">JEE Main Mock Test 07</h1>
+<span style="color:#636A87;font-size:13px;font-weight:500">Full syllabus · 90 questions · +4 / −1</span>
+</div>
+<div style="flex:1"></div>
+<div style="display:flex;align-items:center;gap:12px;height:48px;padding:0 18px;border-radius:14px;background:#0D1226;color:#FFFFFF" role="timer" aria-label="Time left 2 hours 14 minutes 36 seconds">
+<svg width="20" height="20" viewBox="0 0 24 24" style="color:#C8F03C;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18z M12 7v5l3 2"></path></svg>
+<div style="display:flex;flex-direction:column;line-height:1.1">
+<span style="font-size:11px;color:#B8BED8;font-weight:600;letter-spacing:0.06em;text-transform:uppercase">Time left</span>
+<span style="font-family:'JetBrains Mono',ui-monospace,monospace;font-weight:600;font-size:20px">02:14:36</span>
+</div>
+</div>
+<button type="button" style="height:48px;padding:0 22px;border-radius:14px;border:1.5px solid #B42A36;background:#FFFFFF;color:#B42A36;font-weight:800;font-size:14px;cursor:pointer">Submit test</button>
+</header>
+
+<div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;padding:0 32px;background:#FFFFFF;border-top:1px solid #EEF0F6">
+<sc-for list="{{tabs}}" as="t" hint-placeholder-count="3">
+<div style="display:flex;flex-direction:column">
+<sc-if value="{{t.active}}" hint-placeholder-val="{{ true }}">
+<button type="button" aria-current="true" style="display:flex;align-items:center;gap:10px;height:52px;padding:0 4px;margin-right:16px;border:0;border-bottom:3px solid #3B47F0;background:transparent;color:#0D1226;font-weight:800;font-size:15px;cursor:pointer">{{t.name}}
+<span style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;font-weight:600;padding:2px 8px;border-radius:10px;background:#ECEEFF;color:#2A35C9">{{t.count}}</span></button>
+</sc-if>
+<sc-if value="{{t.idle}}" hint-placeholder-val="{{ false }}">
+<button type="button" style="display:flex;align-items:center;gap:10px;height:52px;padding:0 4px;margin-right:16px;border:0;border-bottom:3px solid transparent;background:transparent;color:#4A5170;font-weight:700;font-size:15px;cursor:pointer">{{t.name}}
+<span style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;font-weight:600;padding:2px 8px;border-radius:10px;background:#EEF0F7;color:#4A5170">{{t.count}}</span></button>
+</sc-if>
+</div>
+</sc-for>
+<div style="flex:1"></div>
+<button type="button" style="display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 14px;border-radius:10px;border:1px solid #D9DCE8;background:#FFFFFF;color:#0D1226;font-weight:700;font-size:13px;cursor:pointer">
+<svg width="16" height="16" viewBox="0 0 24 24" style="fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z M14 3v5h5 M9 13h6 M9 17h6"></path></svg>
+Question paper</button>
+<button type="button" style="display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 14px;border-radius:10px;border:1px solid #D9DCE8;background:#FFFFFF;color:#0D1226;font-weight:700;font-size:13px;cursor:pointer">
+<svg width="16" height="16" viewBox="0 0 24 24" style="fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round"><path d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18z M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.4-1 .9-1 1.7 M12 17h.01"></path></svg>
+Instructions</button>
+</div>
+<svg width="100%" height="4" style="display:block" aria-hidden="true"><rect width="100%" height="4" fill="#E3E6F0"></rect><rect width="15.5%" height="4" fill="#3B47F0"></rect></svg>
+
+<div style="display:flex;flex-wrap:wrap;gap:24px;align-items:flex-start;padding:24px 32px 32px">
+
+<section aria-label="Question" style="flex:999 1 560px;min-width:0;background:#FFFFFF;border:1px solid #E6E8F0;border-radius:24px;box-shadow:0 1px 2px rgba(13,18,38,0.04);display:flex;flex-direction:column">
+<div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px;padding:24px 32px;border-bottom:1px solid #EEF0F6">
+<h2 style="margin:0;font-size:22px;font-weight:800;letter-spacing:-0.02em">Question 14</h2>
+<span style="color:#636A87;font-weight:600">of 30 · Physics</span>
+<span style="display:inline-flex;align-items:center;height:26px;padding:0 10px;border-radius:13px;background:#EEF0F7;color:#4A5170;font-size:12px;font-weight:700">Single correct</span>
+<span style="display:inline-flex;align-items:center;height:26px;padding:0 10px;border-radius:13px;background:#E3F6EE;color:#0B6B4A;font-size:12px;font-weight:700">+4</span>
+<span style="display:inline-flex;align-items:center;height:26px;padding:0 10px;border-radius:13px;background:#FDE9EB;color:#B42A36;font-size:12px;font-weight:700">−1</span>
+<div style="flex:1"></div>
+<sc-if value="{{isMarked}}" hint-placeholder-val="{{ false }}">
+<button type="button" onClick="{{toggleMark}}" aria-pressed="true" style="display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 14px;border-radius:10px;border:1.5px solid #6D3FD6;background:#F1EBFD;color:#5A2FC0;font-weight:700;font-size:13px;cursor:pointer">
+<svg width="16" height="16" viewBox="0 0 24 24" style="fill:currentColor;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round"><path d="M7 3h10v18l-5-4-5 4z"></path></svg>
+Marked for review</button>
+</sc-if>
+<sc-if value="{{notMarked}}" hint-placeholder-val="{{ true }}">
+<button type="button" onClick="{{toggleMark}}" aria-pressed="false" style="display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 14px;border-radius:10px;border:1.5px solid #D9DCE8;background:#FFFFFF;color:#0D1226;font-weight:700;font-size:13px;cursor:pointer">
+<svg width="16" height="16" viewBox="0 0 24 24" style="fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round"><path d="M7 3h10v18l-5-4-5 4z"></path></svg>
+Mark for review</button>
+</sc-if>
+</div>
+
+<div style="padding:32px;display:flex;flex-direction:column;gap:24px">
+<p style="margin:0;font-size:20px;line-height:1.6;font-weight:500;letter-spacing:-0.005em;max-width:760px">A particle of mass 2 kg starts from rest at t = 0 and moves along the x-axis under a time-varying force F(t) = (6t − 4) N. What is the speed of the particle at t = 3 s?</p>
+<div style="display:flex;flex-wrap:wrap;gap:12px 32px;padding:16px 20px;border-radius:14px;background:#F4F5F9;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:14px;font-weight:500;color:#4A5170">
+<span>m = 2 kg</span>
+<span>v(0) = 0</span>
+<span>F(t) = 6t − 4 (N)</span>
+<span>t = 3 s</span>
+</div>
+
+<div role="radiogroup" aria-label="Answer options" style="display:flex;flex-direction:column;gap:12px">
+<sc-for list="{{options}}" as="o" hint-placeholder-count="4">
+<div style="display:flex;flex-direction:column">
+<sc-if value="{{o.isSelected}}" hint-placeholder-val="{{ false }}">
+<button type="button" role="radio" aria-checked="true" onClick="{{o.pick}}" style="display:flex;align-items:center;gap:16px;width:100%;min-height:64px;padding:12px 20px;border-radius:16px;border:2px solid #3B47F0;background:#F3F4FF;color:#0D1226;font-size:17px;font-weight:700;text-align:left;cursor:pointer">
+<span style="width:36px;height:36px;border-radius:10px;background:#3B47F0;color:#FFFFFF;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;flex:none">{{o.key}}</span>
+<span style="flex:1">{{o.text}}</span>
+<svg width="22" height="22" viewBox="0 0 24 24" style="flex:none;color:#3B47F0;fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"><path d="M5 12l5 5 9-10"></path></svg>
+</button>
+</sc-if>
+<sc-if value="{{o.isPlain}}" hint-placeholder-val="{{ true }}">
+<button type="button" role="radio" aria-checked="false" onClick="{{o.pick}}" style="display:flex;align-items:center;gap:16px;width:100%;min-height:64px;padding:12px 20px;border-radius:16px;border:2px solid #E1E4EE;background:#FFFFFF;color:#0D1226;font-size:17px;font-weight:600;text-align:left;cursor:pointer">
+<span style="width:36px;height:36px;border-radius:10px;background:#F4F5F9;color:#4A5170;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;flex:none">{{o.key}}</span>
+<span style="flex:1">{{o.text}}</span>
+</button>
+</sc-if>
+</div>
+</sc-for>
+</div>
+</div>
+
+<div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px;padding:20px 32px;border-top:1px solid #EEF0F6;background:#FBFBFD;border-radius:0 0 24px 24px">
+<button type="button" style="display:inline-flex;align-items:center;gap:8px;height:46px;padding:0 18px;border-radius:12px;border:1px solid #D9DCE8;background:#FFFFFF;color:#0D1226;font-weight:700;font-size:14px;cursor:pointer">
+<svg width="16" height="16" viewBox="0 0 24 24" style="fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M15 6l-6 6 6 6"></path></svg>
+Previous</button>
+<button type="button" onClick="{{clearResponse}}" style="height:46px;padding:0 14px;border-radius:12px;border:0;background:transparent;color:#4A5170;font-weight:700;font-size:14px;cursor:pointer;text-decoration:underline">Clear response</button>
+<div style="flex:1"></div>
+<button type="button" style="height:46px;padding:0 18px;border-radius:12px;border:1.5px solid #6D3FD6;background:#FFFFFF;color:#5A2FC0;font-weight:700;font-size:14px;cursor:pointer">Mark for review &amp; next</button>
+<button type="button" style="display:inline-flex;align-items:center;gap:8px;height:46px;padding:0 22px;border-radius:12px;border:0;background:#3B47F0;color:#FFFFFF;font-weight:800;font-size:14px;cursor:pointer">Save &amp; next
+<svg width="16" height="16" viewBox="0 0 24 24" style="fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M9 6l6 6-6 6"></path></svg></button>
+</div>
+</section>
+
+<aside aria-label="Question palette" style="flex:1 1 360px;min-width:0;display:flex;flex-direction:column;gap:16px">
+<div style="display:flex;align-items:center;gap:12px;padding:16px 20px;border-radius:20px;background:#FFFFFF;border:1px solid #E6E8F0;box-shadow:0 1px 2px rgba(13,18,38,0.04)">
+<div style="width:44px;height:44px;border-radius:50%;background:#3B47F0;color:#FFFFFF;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;flex:none">TS</div>
+<div style="display:flex;flex-direction:column;line-height:1.3;min-width:0">
+<span style="font-weight:800">Tushar Singh</span>
+<span style="color:#636A87;font-size:13px;font-family:'JetBrains Mono',ui-monospace,monospace">QL-2027-0142</span>
+</div>
+</div>
+
+<div style="padding:20px;border-radius:20px;background:#FFFFFF;border:1px solid #E6E8F0;box-shadow:0 1px 2px rgba(13,18,38,0.04);display:flex;flex-direction:column;gap:16px">
+<div style="display:flex;align-items:baseline;justify-content:space-between">
+<h2 style="margin:0;font-size:16px;font-weight:800">Physics</h2>
+<span style="color:#636A87;font-size:13px;font-weight:600">30 questions</span>
+</div>
+<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px">
+<div style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:12px;background:#F4F5F9">
+<span style="width:12px;height:12px;border-radius:4px;background:#0B7A55;flex:none"></span>
+<span style="color:#4A5170;font-weight:600;font-size:13px;flex:1">Answered</span>
+<span style="font-family:'JetBrains Mono',ui-monospace,monospace;font-weight:600">{{answeredCount}}</span>
+</div>
+<div style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:12px;background:#F4F5F9">
+<span style="width:12px;height:12px;border-radius:6px;background:#6D3FD6;flex:none"></span>
+<span style="color:#4A5170;font-weight:600;font-size:13px;flex:1">For review</span>
+<span style="font-family:'JetBrains Mono',ui-monospace,monospace;font-weight:600">{{markedCount}}</span>
+</div>
+<div style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:12px;background:#F4F5F9">
+<span style="width:12px;height:12px;border-radius:4px;background:#FDE9EB;border:1.5px solid #E9A0A7;box-sizing:border-box;flex:none"></span>
+<span style="color:#4A5170;font-weight:600;font-size:13px;flex:1">Skipped</span>
+<span style="font-family:'JetBrains Mono',ui-monospace,monospace;font-weight:600">1</span>
+</div>
+<div style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:12px;background:#F4F5F9">
+<span style="width:12px;height:12px;border-radius:4px;background:#FFFFFF;border:1.5px solid #B9BFD3;box-sizing:border-box;flex:none"></span>
+<span style="color:#4A5170;font-weight:600;font-size:13px;flex:1">Not visited</span>
+<span style="font-family:'JetBrains Mono',ui-monospace,monospace;font-weight:600">16</span>
+</div>
+</div>
+
+<div style="display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px">
+<sc-for list="{{cells}}" as="c" hint-placeholder-count="30">
+<div style="display:flex;flex-direction:column">
+<sc-if value="{{c.isAns}}" hint-placeholder-val="{{ false }}">
+<button type="button" aria-label="{{c.label}}" style="width:100%;height:44px;border-radius:12px;border:0;background:#0B7A55;color:#FFFFFF;font-family:'JetBrains Mono',ui-monospace,monospace;font-weight:600;font-size:14px;cursor:pointer">{{c.n}}</button>
+</sc-if>
+<sc-if value="{{c.isMrk}}" hint-placeholder-val="{{ false }}">
+<button type="button" aria-label="{{c.label}}" style="width:100%;height:44px;border-radius:22px;border:0;background:#6D3FD6;color:#FFFFFF;font-family:'JetBrains Mono',ui-monospace,monospace;font-weight:600;font-size:14px;cursor:pointer">{{c.n}}</button>
+</sc-if>
+<sc-if value="{{c.isSkp}}" hint-placeholder-val="{{ false }}">
+<button type="button" aria-label="{{c.label}}" style="width:100%;height:44px;border-radius:12px;border:1.5px solid #E9A0A7;background:#FDE9EB;color:#B42A36;font-family:'JetBrains Mono',ui-monospace,monospace;font-weight:600;font-size:14px;cursor:pointer">{{c.n}}</button>
+</sc-if>
+<sc-if value="{{c.isCur}}" hint-placeholder-val="{{ false }}">
+<button type="button" aria-label="{{c.label}}" aria-current="true" style="width:100%;height:44px;border-radius:12px;border:0;background:#0D1226;color:#FFFFFF;box-shadow:0 0 0 3px #C9CEFF;font-family:'JetBrains Mono',ui-monospace,monospace;font-weight:700;font-size:14px;cursor:pointer">{{c.n}}</button>
+</sc-if>
+<sc-if value="{{c.isNv}}" hint-placeholder-val="{{ true }}">
+<button type="button" aria-label="{{c.label}}" style="width:100%;height:44px;border-radius:12px;border:1.5px solid #D3D7E4;background:#FFFFFF;color:#4A5170;font-family:'JetBrains Mono',ui-monospace,monospace;font-weight:600;font-size:14px;cursor:pointer">{{c.n}}</button>
+</sc-if>
+</div>
+</sc-for>
+</div>
+
+<div style="display:flex;align-items:center;gap:8px;color:#636A87;font-size:12px;font-weight:600">
+<span style="width:12px;height:12px;border-radius:4px;background:#0D1226;flex:none"></span>
+Current question
+</div>
+</div>
+</aside>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":940}}'>
+class Component extends DCLogic {
+  constructor(...args) {
+    super(...args);
+    this.state = { selected: 'B', marked: false };
+  }
+  renderVals() {
+    const sel = this.state.selected;
+    const marked = this.state.marked;
+    const opts = [
+      { key: 'A', text: '4.5 m/s' },
+      { key: 'B', text: '6.0 m/s' },
+      { key: 'C', text: '7.5 m/s' },
+      { key: 'D', text: '9.0 m/s' }
+    ];
+    const options = opts.map((o) => ({
+      key: o.key,
+      text: o.text,
+      isSelected: sel === o.key,
+      isPlain: sel !== o.key,
+      pick: () => this.setState({ selected: o.key })
+    }));
+    const answered = [1, 2, 3, 4, 5, 7, 8, 9, 11, 12];
+    const review = [6, 10];
+    const skipped = [13];
+    const cur = 14;
+    const cells = [];
+    for (let n = 1; n <= 30; n++) {
+      const isAns = answered.indexOf(n) >= 0;
+      const isMrk = review.indexOf(n) >= 0;
+      const isSkp = skipped.indexOf(n) >= 0;
+      const isCur = n === cur;
+      const isNv = !isAns && !isMrk && !isSkp && !isCur;
+      let word = 'not visited';
+      if (isAns) word = 'answered';
+      else if (isMrk) word = 'marked for review';
+      else if (isSkp) word = 'skipped';
+      else if (isCur) word = 'current';
+      cells.push({ n: String(n), isAns, isMrk, isSkp, isCur, isNv, label: 'Question ' + n + ', ' + word });
+    }
+    const tabs = [
+      { name: 'Physics', count: '12 / 30', active: true, idle: false },
+      { name: 'Chemistry', count: '0 / 30', active: false, idle: true },
+      { name: 'Mathematics', count: '0 / 30', active: false, idle: true }
+    ];
+    return {
+      tabs,
+      options,
+      cells,
+      isMarked: marked,
+      notMarked: !marked,
+      toggleMark: () => this.setState({ marked: !this.state.marked }),
+      clearResponse: () => this.setState({ selected: null }),
+      answeredCount: String(answered.length + (sel ? 1 : 0)),
+      markedCount: String(review.length + (marked ? 1 : 0))
+    };
+  }
+}
+</script>
+</body>
+</html>
