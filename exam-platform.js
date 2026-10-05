@@ -162,9 +162,7 @@
           negative: 0.5,
           prompt: "What is the output of the following Python slice operation on a list?",
           code: "x = [1, 2, 3, 4, 5]\nprint(x[::-1])",
-          options: ["[1, 2, 3, 4, 5]", "[5, 4, 3, 2, 1]", "(5, 4, 3, 2, 1)", "SyntaxError"],
-          correct: 1,
-          explanation: "Slice x[::-1] steps backward through list x from end to start, reversing it to [5, 4, 3, 2, 1]."
+          options: ["[1, 2, 3, 4, 5]", "[5, 4, 3, 2, 1]", "(5, 4, 3, 2, 1)", "SyntaxError"]
         },
         {
           id: "q2",
@@ -179,9 +177,7 @@
             "d = dict(roll=101, name='Aditi')",
             "d = { ('id', 1): 'admin' }",
             "d = { ['id']: 'admin' }"
-          ],
-          correct: [0, 1, 2],
-          explanation: "Tuples are immutable and hashable, so ('id', 1) is a valid dict key. Lists are mutable and cannot be dict keys."
+          ]
         },
         {
           id: "q3",
@@ -191,9 +187,7 @@
           negative: 0.5,
           prompt: "In Python, a standard dictionary preserves insertion order of keys starting from Python 3.7+.",
           code: null,
-          options: ["True", "False"],
-          correct: 0,
-          explanation: "Starting in Python 3.7, dict insertion order is an official part of the Python language specification."
+          options: ["True", "False"]
         },
         {
           id: "q4",
@@ -202,9 +196,7 @@
           marks: 2,
           negative: 0,
           prompt: "What is the returned integer value of the following set length expression?",
-          code: "len(set([10, 20, 20, 30, 10, 40, 50]))",
-          correct: 5,
-          explanation: "Unique values in [10, 20, 20, 30, 10, 40, 50] are {10, 20, 30, 40, 50}, which has 5 elements."
+          code: "len(set([10, 20, 20, 30, 10, 40, 50]))"
         },
         {
           id: "q5",
@@ -214,9 +206,7 @@
           negative: 1.0,
           prompt: "What is the worst-case time complexity of searching in a balanced Binary Search Tree (AVL tree) of N nodes?",
           code: null,
-          options: ["O(1)", "O(log N)", "O(N)", "O(N log N)"],
-          correct: 1,
-          explanation: "Balanced BSTs (AVL / Red-Black) maintain height of O(log N), so search is guaranteed O(log N) in worst case."
+          options: ["O(1)", "O(log N)", "O(N)", "O(N log N)"]
         },
         {
           id: "q6",
@@ -225,9 +215,7 @@
           marks: 3,
           negative: 0,
           prompt: "What keyword is used in Python inside an inner function to modify a variable defined in the enclosing (non-global) scope?",
-          code: null,
-          correct: "nonlocal",
-          explanation: "The 'nonlocal' keyword binds an inner function variable to its closest enclosing non-global scope."
+          code: null
         },
         {
           id: "q7",
@@ -237,9 +225,7 @@
           negative: 1.0,
           prompt: "What will be printed when running this generator function?",
           code: "def gen():\n    yield 1\n    yield 2\n\ng = gen()\nnext(g)\nprint(next(g))",
-          options: ["1", "2", "StopIteration", "None"],
-          correct: 1,
-          explanation: "First next(g) yields 1. Second next(g) yields 2 and print() outputs 2."
+          options: ["1", "2", "StopIteration", "None"]
         },
         {
           id: "q8",
@@ -248,9 +234,7 @@
           marks: 3,
           negative: 0,
           prompt: "Calculate the exact output value of the arithmetic precedence expression:",
-          code: "res = 2 ** 3 * 2 + 10 // 3\nprint(res)",
-          correct: 19,
-          explanation: "2**3 = 8; 8*2 = 16; 10//3 = 3; 16 + 3 = 19."
+          code: "res = 2 ** 3 * 2 + 10 // 3\nprint(res)"
         }
       ]
     },
