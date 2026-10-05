@@ -2,6 +2,11 @@ import 'api_client.dart';
 import 'models/exam_platform_model.dart';
 
 /// Real Exam Platform service communicating with backend/app/Http/Controllers/ExamPlatformController.php.
+///
+/// Supports candidate session synchronization and proctor/manager live exam control actions:
+/// - State retrieval & candidate progress syncing
+/// - Proctor live exam actions (start, pause, resume, end, extend_time, lock_session, approve_reentry)
+/// - Full exam state reset (Manager only)
 class ExamPlatformService {
   final ApiClient _client;
 
@@ -44,6 +49,35 @@ class ExamPlatformService {
       data: payload,
     );
 
+    return (response.data?['state'] as Map<String, dynamic>?) ?? {};
+  }
+
+  /// Dispatches a proctor or manager action to control the live exam.
+  /// Supported actions: 'start_exam', 'pause_exam', 'resume_exam', 'end_exam',
+  /// 'extend_time', 'toggle_type', 'publish_results', 'add_whitelist',
+  /// 'remove_whitelist', 'approve_reentry', 'reject_reentry', 'lock_session'.
+  /// Endpoint: POST /api/exam-platform/action (Admin & Manager only)
+  Future<Map<String, dynamic>> dispatchAction(
+    String action, [
+    Map<String, dynamic>? parameters,
+  ]) async {
+    final data = <String, dynamic>{'action': action};
+    if (parameters != null) {
+      data.addAll(parameters);
+    }
+
+    final response = await _client.post<Map<String, dynamic>>(
+      '/exam-platform/action',
+      data: data,
+    );
+
+    return response.data ?? {};
+  }
+
+  /// Resets the live exam state back to defaults.
+  /// Endpoint: POST /api/exam-platform/reset (Manager only)
+  Future<Map<String, dynamic>> resetState() async {
+    final response = await _client.post<Map<String, dynamic>>('/exam-platform/reset');
     return (response.data?['state'] as Map<String, dynamic>?) ?? {};
   }
 
