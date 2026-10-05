@@ -54,11 +54,11 @@ def patch_app_build(path: str):
     with open(path, "r", encoding="utf-8") as f:
         content = f.read()
 
-    # Ensure minSdk is at least 21
-    content = re.sub(r'minSdkVersion\s+.*', 'minSdkVersion 21', content)
-    content = re.sub(r'minSdk\s*=\s*flutter\.minSdkVersion', 'minSdk = 21', content)
+    # Safely ensure minSdk is at least 21 without corrupting flutter.minSdkVersion
+    content = re.sub(r'minSdkVersion\s+([0-9]+)', lambda m: f'minSdkVersion {max(21, int(m.group(1)))}', content)
+    content = re.sub(r'minSdk\s*=\s*([0-9]+)', lambda m: f'minSdk = {max(21, int(m.group(1)))}', content)
 
-    # Ensure release signing uses debug key for CI release APK build
+    # Ensure release signing uses debug key for CI release APK build if not already specified
     if "signingConfigs.debug" not in content and "buildTypes {" in content:
         content = re.sub(
             r'buildTypes\s*\{\s*release\s*\{',
