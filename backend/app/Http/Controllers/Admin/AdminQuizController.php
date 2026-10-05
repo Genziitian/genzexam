@@ -37,6 +37,8 @@ class AdminQuizController extends Controller
                 'week_number' => $quiz->week?->week_number,
                 'time_limit_minutes' => $quiz->time_limit_minutes,
                 'is_active' => (bool) $quiz->is_active,
+                'price_paise' => (int) $quiz->price_paise,
+                'access_days' => $quiz->access_days,
                 'approval_status' => $quiz->approval_status,
                 'created_by' => $quiz->created_by,
                 'reviewed_by' => $quiz->reviewed_by,

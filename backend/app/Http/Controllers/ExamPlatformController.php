@@ -186,7 +186,60 @@ class ExamPlatformController extends Controller
     protected function saveState(array $state): void
     {
         $path = $this->getStateFilePath();
-        File::put($path, json_encode($state, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
+        $json = json_encode($state, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
+        $tempPath = $path . '.' . uniqid('tmp_', true);
+        file_put_contents($tempPath, $json, LOCK_EX);
+        rename($tempPath, $path);
+    }
+
+    /**
+     * Sanitizes state so candidates never receive answer keys, explanations,
+     * or other candidates' sessions and submissions.
+     */
+    protected function sanitizeStateForUser(array $state, $user): array
+    {
+        if ($user->hasAdminAccess()) {
+            return $state;
+        }
+
+        $isEndedAndPublished = ($state['exam']['status'] ?? '') === 'ended' && !empty($state['exam']['resultsPublished']);
+
+        // 1. Strip answer keys and explanations from questions for candidates
+        if (isset($state['exam']['questions']) && is_array($state['exam']['questions'])) {
+            $sanitizedQuestions = [];
+            foreach ($state['exam']['questions'] as $q) {
+                $copy = $q;
+                if (!$isEndedAndPublished) {
+                    unset($copy['correct']);
+                    unset($copy['explanation']);
+                }
+                $sanitizedQuestions[] = $copy;
+            }
+            $state['exam']['questions'] = $sanitizedQuestions;
+        }
+
+        // 2. Candidate only sees their own session
+        $email = $user->email;
+        $mySession = $state['studentSessions'][$email] ?? null;
+        $state['studentSessions'] = $mySession ? [$email => $mySession] : [];
+
+        // 3. Candidate only sees their own re-entry requests
+        if (isset($state['reentryRequests']) && is_array($state['reentryRequests'])) {
+            $state['reentryRequests'] = array_values(array_filter(
+                $state['reentryRequests'],
+                fn($r) => is_array($r) && ($r['email'] ?? null) === $email
+            ));
+        }
+
+        // 4. Chat: announcements and candidate's own messages
+        if (isset($state['chatMessages']) && is_array($state['chatMessages'])) {
+            $state['chatMessages'] = array_values(array_filter(
+                $state['chatMessages'],
+                fn($m) => is_array($m) && (!empty($m['isAnnouncement']) || ($m['senderEmail'] ?? null) === $email || ($m['role'] ?? '') === 'manager')
+            ));
+        }
+
+        return $state;
     }
 
     public function health(): JsonResponse
@@ -201,7 +254,8 @@ class ExamPlatformController extends Controller
     public function state(Request $request): JsonResponse
     {
         abort_if($request->user()->isAdmin(), 403, 'Exam operations are manager-only.');
-        return response()->json($this->loadState());
+        $state = $this->loadState();
+        return response()->json($this->sanitizeStateForUser($state, $request->user()));
     }
 
     public function syncState(Request $request): JsonResponse
@@ -211,9 +265,6 @@ class ExamPlatformController extends Controller
         $user = $request->user();
         abort_if($user->isAdmin(), 403, 'Exam operations are manager-only.');
 
-        // Students share this endpoint with proctors, so what each may write
-        // differs. Without this split any candidate could post
-        // {"exam":{"status":"ended"}} and end the exam for everyone.
         if ($user->hasAdminAccess()) {
             if (isset($payload['exam']) && is_array($payload['exam'])) {
                 $state['exam'] = array_merge($state['exam'] ?? [], $payload['exam']);
@@ -239,17 +290,53 @@ class ExamPlatformController extends Controller
             return response()->json(['success' => true, 'state' => $state]);
         }
 
-        // Candidate: may only advance their own session, and may raise a
-        // re-entry request for themselves. Everything else is ignored.
+        // Candidate sync
         $email = $user->email;
+        $maxTabSwitches = (int)($state['exam']['maxTabSwitches'] ?? 3);
 
         if (isset($payload['studentSessions'][$email]) && is_array($payload['studentSessions'][$email])) {
             $incoming = $payload['studentSessions'][$email];
-            unset($incoming['status']);                 // only a proctor action may change this
-            $state['studentSessions'][$email] = array_merge(
-                $state['studentSessions'][$email] ?? [],
-                $incoming
-            );
+            $currentSession = $state['studentSessions'][$email] ?? [];
+            $currentStatus = $currentSession['status'] ?? 'not_started';
+
+            // If session is already submitted or locked, disallow modifying answers
+            if ($currentStatus === 'submitted') {
+                return response()->json(['success' => true, 'state' => $this->sanitizeStateForUser($state, $user)]);
+            }
+
+            unset($incoming['status']); // Candidate cannot self-elevate or change status directly
+            unset($incoming['score']);  // Candidate cannot forge their own score
+
+            $warnings = (int)($incoming['warnings'] ?? ($currentSession['warnings'] ?? 0));
+            $isLocked = $currentStatus === 'reentry_required' || $currentStatus === 'exited' || $warnings >= $maxTabSwitches;
+
+            $mergedSession = array_merge($currentSession, $incoming);
+            if ($isLocked) {
+                $mergedSession['status'] = 'reentry_required';
+            }
+
+            $state['studentSessions'][$email] = $mergedSession;
+
+            // Auto-queue re-entry request if locked and not already queued
+            if ($isLocked) {
+                $hasPending = false;
+                foreach ($state['reentryRequests'] ?? [] as $r) {
+                    if (($r['email'] ?? '') === $email && ($r['status'] ?? '') === 'pending') {
+                        $hasPending = true;
+                        break;
+                    }
+                }
+                if (!$hasPending) {
+                    $state['reentryRequests'][] = [
+                        'id' => 'req-' . (int)(microtime(true) * 1000),
+                        'email' => $email,
+                        'name' => $user->name,
+                        'reason' => 'Proctoring violation threshold reached (' . $warnings . '/' . $maxTabSwitches . ' warnings)',
+                        'status' => 'pending',
+                        'timestamp' => (int)(microtime(true) * 1000),
+                    ];
+                }
+            }
         }
 
         if (isset($payload['reentryRequests']) && is_array($payload['reentryRequests'])) {
@@ -266,7 +353,155 @@ class ExamPlatformController extends Controller
 
         $this->saveState($state);
 
-        return response()->json(['success' => true, 'state' => $state]);
+        return response()->json(['success' => true, 'state' => $this->sanitizeStateForUser($state, $user)]);
+    }
+
+    /**
+     * Authoritative endpoint for candidates to record proctoring events
+     * (tab_switch, fullscreen_exit, devtools_open, window_blur).
+     */
+    public function recordViolation(Request $request): JsonResponse
+    {
+        $user = $request->user();
+        abort_if($user->isAdmin(), 403, 'Exam operations are manager-only.');
+        $email = $user->email;
+        $type = (string)$request->input('type', 'window_switch');
+        $outsideSec = (int)$request->input('outsideSeconds', 0);
+        $state = $this->loadState();
+
+        if (!isset($state['studentSessions'][$email])) {
+            $state['studentSessions'][$email] = [
+                'email' => $email,
+                'name' => $user->name,
+                'status' => 'in_exam',
+                'warnings' => 0,
+                'warningLogs' => [],
+                'outsideExamSeconds' => 0,
+            ];
+        }
+
+        $session = &$state['studentSessions'][$email];
+        $session['warnings'] = ($session['warnings'] ?? 0) + 1;
+        $session['outsideExamSeconds'] = ($session['outsideExamSeconds'] ?? 0) + $outsideSec;
+        $session['warningLogs'] = $session['warningLogs'] ?? [];
+
+        $timestamp = (int)(microtime(true) * 1000);
+        $session['warningLogs'][] = [
+            'type' => $type,
+            'timestamp' => $timestamp,
+            'timeFormatted' => date('H:i:s'),
+            'outsideSeconds' => $outsideSec,
+        ];
+
+        $maxTabSwitches = (int)($state['exam']['maxTabSwitches'] ?? 3);
+        if ($session['warnings'] >= $maxTabSwitches) {
+            $session['status'] = 'reentry_required';
+
+            $hasPending = false;
+            foreach ($state['reentryRequests'] ?? [] as $r) {
+                if (($r['email'] ?? '') === $email && ($r['status'] ?? '') === 'pending') {
+                    $hasPending = true;
+                    break;
+                }
+            }
+            if (!$hasPending) {
+                $state['reentryRequests'][] = [
+                    'id' => 'req-' . $timestamp,
+                    'email' => $email,
+                    'name' => $user->name,
+                    'reason' => "Proctoring violation ({$type}) - threshold reached ({$session['warnings']}/{$maxTabSwitches})",
+                    'status' => 'pending',
+                    'timestamp' => $timestamp,
+                ];
+            }
+        }
+
+        $this->saveState($state);
+
+        return response()->json([
+            'success' => true,
+            'warnings' => $session['warnings'],
+            'status' => $session['status'],
+            'session' => $session,
+        ]);
+    }
+
+    /**
+     * Authoritative submission and server-side scoring for candidates.
+     */
+    public function submitExam(Request $request): JsonResponse
+    {
+        $user = $request->user();
+        abort_if($user->isAdmin(), 403, 'Exam operations are manager-only.');
+        $email = $user->email;
+        $answers = $request->input('answers', []);
+        $state = $this->loadState();
+
+        if (($state['exam']['status'] ?? '') === 'paused') {
+            return response()->json(['error' => 'Examination is paused by manager.'], 400);
+        }
+
+        $score = 0;
+        $totalMarks = 0;
+        $questions = $state['exam']['questions'] ?? [];
+
+        foreach ($questions as $q) {
+            $qMarks = (float)($q['marks'] ?? 0);
+            $totalMarks += $qMarks;
+            $qId = $q['id'] ?? null;
+            if (!$qId || !array_key_exists($qId, $answers)) {
+                continue;
+            }
+
+            $studentAns = $answers[$qId];
+            $correct = $q['correct'] ?? null;
+            $isCorrect = false;
+
+            if ($correct !== null) {
+                if (is_array($correct)) {
+                    $cArr = $correct;
+                    sort($cArr);
+                    $sArr = is_array($studentAns) ? $studentAns : [$studentAns];
+                    sort($sArr);
+                    $isCorrect = ($cArr == $sArr);
+                } else {
+                    $isCorrect = (trim(strtolower((string)$studentAns)) === trim(strtolower((string)$correct)));
+                }
+            }
+
+            if ($isCorrect) {
+                $score += $qMarks;
+            } else if (!empty($q['negative'])) {
+                $score -= (float)$q['negative'];
+            }
+        }
+
+        $finalScore = max(0, $score);
+        $submittedAt = (int)(microtime(true) * 1000);
+
+        if (!isset($state['studentSessions'][$email])) {
+            $state['studentSessions'][$email] = [
+                'email' => $email,
+                'name' => $user->name,
+            ];
+        }
+
+        $session = &$state['studentSessions'][$email];
+        $session['status'] = 'submitted';
+        $session['submittedAt'] = $submittedAt;
+        $session['score'] = $finalScore;
+        $session['totalMarks'] = $totalMarks;
+        $session['answers'] = $answers;
+
+        $this->saveState($state);
+
+        return response()->json([
+            'success' => true,
+            'score' => $finalScore,
+            'totalMarks' => $totalMarks,
+            'status' => 'submitted',
+            'submittedAt' => $submittedAt,
+        ]);
     }
 
     public function action(Request $request): JsonResponse
@@ -292,7 +527,7 @@ class ExamPlatformController extends Controller
             case 'end_exam':
                 $state['exam']['status'] = 'ended';
                 foreach ($state['studentSessions'] as $email => &$sess) {
-                    if (in_array($sess['status'] ?? '', ['in_progress', 'not_started'])) {
+                    if (in_array($sess['status'] ?? '', ['in_progress', 'in_exam', 'not_started', 'reentry_required'])) {
                         $sess['status'] = 'submitted';
                         $sess['submittedAt'] = (int)(microtime(true) * 1000);
                     }
@@ -340,13 +575,6 @@ class ExamPlatformController extends Controller
                 }
                 break;
 
-            case 'request_reentry':
-                $req = $request->input('request');
-                if ($req && is_array($req)) {
-                    $state['reentryRequests'][] = $req;
-                }
-                break;
-
             case 'approve_reentry':
                 $reqId = $request->input('requestId');
                 $email = $request->input('email');
@@ -356,7 +584,7 @@ class ExamPlatformController extends Controller
                     }
                 }
                 if ($email && isset($state['studentSessions'][$email])) {
-                    $state['studentSessions'][$email]['status'] = 'in_progress';
+                    $state['studentSessions'][$email]['status'] = 'in_exam';
                 }
                 break;
 
@@ -388,7 +616,16 @@ class ExamPlatformController extends Controller
     {
         abort_if($request->user()->isAdmin(), 403, 'Exam operations are manager-only.');
         $state = $this->loadState();
-        return response()->json($state['chatMessages'] ?? []);
+        $user = $request->user();
+        if ($user->hasAdminAccess()) {
+            return response()->json($state['chatMessages'] ?? []);
+        }
+        $email = $user->email;
+        $chat = array_values(array_filter(
+            $state['chatMessages'] ?? [],
+            fn($m) => is_array($m) && (!empty($m['isAnnouncement']) || ($m['senderEmail'] ?? null) === $email || ($m['role'] ?? '') === 'manager')
+        ));
+        return response()->json($chat);
     }
 
     public function sendChat(Request $request): JsonResponse
@@ -405,8 +642,6 @@ class ExamPlatformController extends Controller
             $msg['timestamp'] = (int)(microtime(true) * 1000);
         }
 
-        // Stamp the sender from the session. A candidate must not be able to
-        // post as "Exam Manager" or flag their message as an announcement.
         $user = $request->user();
         abort_if($user->isAdmin(), 403, 'Exam operations are manager-only.');
         if (! $user->hasAdminAccess()) {
@@ -427,7 +662,15 @@ class ExamPlatformController extends Controller
     {
         abort_if($request->user()->isAdmin(), 403, 'Exam operations are manager-only.');
         $state = $this->loadState();
-        return response()->json($state['reentryRequests'] ?? []);
+        $user = $request->user();
+        if ($user->hasAdminAccess()) {
+            return response()->json($state['reentryRequests'] ?? []);
+        }
+        $reentry = array_values(array_filter(
+            $state['reentryRequests'] ?? [],
+            fn($r) => is_array($r) && ($r['email'] ?? null) === $user->email
+        ));
+        return response()->json($reentry);
     }
 
     public function resetState(): JsonResponse

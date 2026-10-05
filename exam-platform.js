@@ -322,6 +322,33 @@
   let syncDebounceTimer = null;
   let isBackendConnected = false;
   let isSyncing = false;
+  let activeApiBase = null;
+
+  function getExamApiUrls(subPath) {
+    const cleanSub = subPath.startsWith("/") ? subPath : `/${subPath}`;
+    const bases = [];
+    if (typeof ADMIN_API_BASE !== "undefined") {
+      bases.push(`${ADMIN_API_BASE}/exam-platform${cleanSub}`);
+      bases.push(`${ADMIN_API_BASE}${cleanSub}`);
+    }
+    bases.push(`/public/api/exam-platform${cleanSub}`);
+    bases.push(`/public/api${cleanSub}`);
+    bases.push(`/api/exam-platform${cleanSub}`);
+    bases.push(`/api${cleanSub}`);
+    return bases;
+  }
+
+  function getExamAuthHeaders() {
+    const token = typeof adminToken === "function" ? adminToken() : (localStorage.getItem("lab_token") || "");
+    const h = {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    };
+    if (token) {
+      h["Authorization"] = `Bearer ${token}`;
+    }
+    return h;
+  }
 
   function updateBackendBadge(connected) {
     const badge = document.getElementById("ep-backend-badge");
@@ -337,22 +364,107 @@
     }
   }
 
-  function pushStateToBackend(state) {
-    fetch("/api/state", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(state)
-    })
-      .then((res) => {
+  function applyRemoteStatePartial(remoteState) {
+    if (!remoteState || typeof remoteState !== "object") return;
+    const localState = getState();
+    let hasChanges = false;
+
+    if (remoteState.exam) {
+      if (
+        localState.exam.status !== remoteState.exam.status ||
+        localState.exam.extendedMinutes !== remoteState.exam.extendedMinutes ||
+        localState.exam.type !== remoteState.exam.type ||
+        localState.exam.resultsPublished !== remoteState.exam.resultsPublished
+      ) {
+        localState.exam.status = remoteState.exam.status;
+        localState.exam.extendedMinutes = remoteState.exam.extendedMinutes;
+        localState.exam.type = remoteState.exam.type;
+        localState.exam.resultsPublished = remoteState.exam.resultsPublished;
+        hasChanges = true;
+      }
+      if (Array.isArray(remoteState.exam.questions) && remoteState.exam.questions.length > 0) {
+        localState.exam.questions = remoteState.exam.questions;
+        hasChanges = true;
+      }
+    }
+
+    if (remoteState.chatMessages && Array.isArray(remoteState.chatMessages)) {
+      if (remoteState.chatMessages.length !== (localState.chatMessages || []).length) {
+        localState.chatMessages = remoteState.chatMessages;
+        hasChanges = true;
+      }
+    }
+
+    if (remoteState.reentryRequests && Array.isArray(remoteState.reentryRequests)) {
+      if (JSON.stringify(remoteState.reentryRequests) !== JSON.stringify(localState.reentryRequests)) {
+        localState.reentryRequests = remoteState.reentryRequests;
+        hasChanges = true;
+      }
+    }
+
+    if (localState.currentUser.role === "manager" && remoteState.studentSessions) {
+      localState.studentSessions = {
+        ...localState.studentSessions,
+        ...remoteState.studentSessions
+      };
+      hasChanges = true;
+    } else if (localState.currentUser.role === "student" && remoteState.studentSessions) {
+      const myEmail = localState.currentUser.email;
+      if (remoteState.studentSessions[myEmail]) {
+        const remoteMySession = remoteState.studentSessions[myEmail];
+        const localMySession = localState.studentSessions[myEmail] || {};
+        if (
+          remoteMySession.status !== localMySession.status &&
+          remoteMySession.status !== undefined
+        ) {
+          localMySession.status = remoteMySession.status;
+          hasChanges = true;
+        }
+        if (remoteMySession.score !== undefined && remoteMySession.score !== localMySession.score) {
+          localMySession.score = remoteMySession.score;
+          localMySession.totalMarks = remoteMySession.totalMarks;
+          hasChanges = true;
+        }
+        if (remoteMySession.warnings !== undefined && remoteMySession.warnings !== localMySession.warnings) {
+          localMySession.warnings = remoteMySession.warnings;
+          hasChanges = true;
+        }
+      }
+    }
+
+    if (hasChanges) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(localState));
+      render();
+    }
+  }
+
+  async function pushStateToBackend(state) {
+    const urls = activeApiBase ? [`${activeApiBase}/state`] : getExamApiUrls("/state");
+    let ok = false;
+    for (const url of urls) {
+      try {
+        const res = await fetch(url, {
+          method: "POST",
+          headers: getExamAuthHeaders(),
+          body: JSON.stringify(state)
+        });
         if (res.ok) {
+          activeApiBase = url.replace(/\/state$/, "");
           isBackendConnected = true;
           updateBackendBadge(true);
+          const data = await res.json().catch(() => null);
+          if (data && data.state) {
+            applyRemoteStatePartial(data.state);
+          }
+          ok = true;
+          break;
         }
-      })
-      .catch(() => {
-        isBackendConnected = false;
-        updateBackendBadge(false);
-      });
+      } catch (_) {}
+    }
+    if (!ok && !activeApiBase) {
+      isBackendConnected = false;
+      updateBackendBadge(false);
+    }
   }
 
   function saveState(state) {
@@ -369,76 +481,102 @@
     if (isSyncing) return;
     try {
       isSyncing = true;
-      const res = await fetch("/api/state");
-      if (!res.ok) return;
-      const remoteState = await res.json();
+      const urls = activeApiBase ? [`${activeApiBase}/state`] : getExamApiUrls("/state");
+      let remoteState = null;
+      for (const url of urls) {
+        try {
+          const res = await fetch(url, {
+            headers: getExamAuthHeaders()
+          });
+          if (res.ok) {
+            const data = await res.json().catch(() => null);
+            if (data && typeof data === "object") {
+              remoteState = data;
+              activeApiBase = url.replace(/\/state$/, "");
+              break;
+            }
+          }
+        } catch (_) {}
+      }
+
+      if (!remoteState) {
+        isBackendConnected = false;
+        updateBackendBadge(false);
+        return;
+      }
+
       isBackendConnected = true;
       updateBackendBadge(true);
-
-      const localState = getState();
-      let hasChanges = false;
-
-      if (
-        remoteState.exam &&
-        (localState.exam.status !== remoteState.exam.status ||
-          localState.exam.extendedMinutes !== remoteState.exam.extendedMinutes ||
-          localState.exam.type !== remoteState.exam.type ||
-          localState.exam.resultsPublished !== remoteState.exam.resultsPublished)
-      ) {
-        localState.exam.status = remoteState.exam.status;
-        localState.exam.extendedMinutes = remoteState.exam.extendedMinutes;
-        localState.exam.type = remoteState.exam.type;
-        localState.exam.resultsPublished = remoteState.exam.resultsPublished;
-        hasChanges = true;
-      }
-
-      if (
-        remoteState.chatMessages &&
-        remoteState.chatMessages.length !== localState.chatMessages.length
-      ) {
-        localState.chatMessages = remoteState.chatMessages;
-        hasChanges = true;
-      }
-
-      if (
-        remoteState.reentryRequests &&
-        JSON.stringify(remoteState.reentryRequests) !== JSON.stringify(localState.reentryRequests)
-      ) {
-        localState.reentryRequests = remoteState.reentryRequests;
-        hasChanges = true;
-      }
-
-      if (localState.currentUser.role === "manager" && remoteState.studentSessions) {
-        localState.studentSessions = {
-          ...localState.studentSessions,
-          ...remoteState.studentSessions
-        };
-        hasChanges = true;
-      } else if (localState.currentUser.role === "student" && remoteState.studentSessions) {
-        const myEmail = localState.currentUser.email;
-        if (remoteState.studentSessions[myEmail]) {
-          const remoteMySession = remoteState.studentSessions[myEmail];
-          const localMySession = localState.studentSessions[myEmail] || {};
-          if (
-            remoteMySession.status !== localMySession.status &&
-            remoteMySession.status !== undefined
-          ) {
-            localMySession.status = remoteMySession.status;
-            hasChanges = true;
-          }
-        }
-      }
-
-      if (hasChanges) {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(localState));
-        render();
-      }
+      applyRemoteStatePartial(remoteState);
     } catch (e) {
       isBackendConnected = false;
       updateBackendBadge(false);
     } finally {
       isSyncing = false;
     }
+  }
+
+  async function recordViolationToServer(type, outsideSec = 0) {
+    const urls = activeApiBase ? [`${activeApiBase}/violation`] : getExamApiUrls("/violation");
+    for (const url of urls) {
+      try {
+        const res = await fetch(url, {
+          method: "POST",
+          headers: getExamAuthHeaders(),
+          body: JSON.stringify({ type, outsideSeconds: outsideSec })
+        });
+        if (res.ok) {
+          const data = await res.json().catch(() => null);
+          if (data && data.session) {
+            const state = getState();
+            state.studentSessions[state.currentUser.email] = data.session;
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+            render();
+          }
+          return true;
+        }
+      } catch (_) {}
+    }
+    return false;
+  }
+
+  async function submitExamToServer(answers) {
+    const urls = activeApiBase ? [`${activeApiBase}/submit`] : getExamApiUrls("/submit");
+    for (const url of urls) {
+      try {
+        const res = await fetch(url, {
+          method: "POST",
+          headers: getExamAuthHeaders(),
+          body: JSON.stringify({ answers })
+        });
+        if (res.ok) {
+          const data = await res.json().catch(() => null);
+          return data;
+        }
+      } catch (_) {}
+    }
+    return null;
+  }
+
+  async function dispatchManagerAction(action, extra = {}) {
+    const urls = activeApiBase ? [`${activeApiBase}/action`] : getExamApiUrls("/action");
+    for (const url of urls) {
+      try {
+        const res = await fetch(url, {
+          method: "POST",
+          headers: getExamAuthHeaders(),
+          body: JSON.stringify({ action, ...extra })
+        });
+        if (res.ok) {
+          const data = await res.json().catch(() => null);
+          if (data && data.state) {
+            applyRemoteStatePartial(data.state);
+          }
+          return true;
+        }
+      } catch (_) {}
+    }
+    return false;
   }
 
   window.addEventListener("storage", (e) => {
@@ -569,6 +707,7 @@
 
     const liveStart = session.outsideSince || Date.now();
     const baseOutsideSeconds = session.outsideExamSeconds || 0;
+    const maxAllowed = state.exam.maxTabSwitches || 3;
 
     modal.innerHTML = `
       <div class="ep-onboarding-card" style="max-width:440px;text-align:center;box-shadow:0 25px 50px -12px rgba(220,38,38,0.25);border:1.5px solid #fca5a5;">
@@ -577,21 +716,21 @@
           ${I("alert", 36, "#dc2626")}
         </div>
         <h2 class="ep-onboarding-title" style="color:#b91c1c;margin-bottom:8px;">
-          You Changed Your Tab!
+          Security Infraction Detected!
         </h2>
         <p class="ep-onboarding-text" style="color:#334155;margin-bottom:18px;font-size:13px;line-height:1.6;">
-          Leaving the examination window or switching tabs is strictly monitored. This security infraction has been recorded.
+          Exiting the exam screen, changing windows, leaving fullscreen, or opening developer tools is strictly prohibited and logged to the proctoring server.
         </p>
         <div style="background:#fef2f2;border:1px solid #fecaca;border-radius:10px;padding:12px 16px;margin-bottom:20px;display:flex;align-items:center;justify-content:center;gap:10px;color:#991b1b;font-weight:800;font-size:15px;">
           ${I("alert", 18, "#dc2626")}
-          Warning ${warningCount}
+          Violation ${warningCount} of ${maxAllowed}
         </div>
         <div style="background:#fff7ed;border:1px solid #fed7aa;border-radius:10px;padding:10px 14px;margin-bottom:20px;color:#9a3412;font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center;gap:8px;">
           ${I("clock", 15, "#ea580c")}
-          Outside time: <span id="ep-tab-away-time">${formatOutsideTime(baseOutsideSeconds)}</span>
+          Outside duration: <span id="ep-tab-away-time">${formatOutsideTime(baseOutsideSeconds)}</span>
         </div>
         <button id="ep-btn-dismiss-warning" class="ep-modal-btn" style="background:#dc2626;color:#ffffff;box-shadow:0 4px 14px rgba(220,38,38,0.3);">
-          I Understand & Resume Exam
+          I Understand & Resume Exam (Return to Fullscreen)
         </button>
       </div>
     `;
@@ -622,6 +761,7 @@
             latestLog.returnedAtFormatted = new Date().toLocaleTimeString();
           }
           saveState(freshState);
+          recordViolationToServer(latestLog?.type || "window_switch", outsideSeconds);
         }
         modal.style.display = "none";
         floatingPanels.forEach(({ el, display }) => {
@@ -629,15 +769,40 @@
         });
         isTabWarningModalOpen = false;
         hasUserSwitchedAway = false;
+        enterExamFullscreen();
       };
     }
+  }
+
+  function enterExamFullscreen() {
+    try {
+      const el = document.documentElement;
+      if (el.requestFullscreen) {
+        el.requestFullscreen().catch(() => {});
+      } else if (el.webkitRequestFullscreen) {
+        el.webkitRequestFullscreen();
+      } else if (el.mozRequestFullScreen) {
+        el.mozRequestFullScreen();
+      } else if (el.msRequestFullscreen) {
+        el.msRequestFullscreen();
+      }
+    } catch (_) {}
+  }
+
+  function isExamInFullscreen() {
+    return !!(
+      document.fullscreenElement ||
+      document.webkitFullscreenElement ||
+      document.mozFullScreenElement ||
+      document.msFullscreenElement
+    );
   }
 
   function handleTabLeave(reason = "window_switch") {
     const state = getState();
     if (state.activeView !== "exam_platform" || state.currentUser.role !== "student") return;
     const session = state.studentSessions[state.currentUser.email];
-    if (!session || session.status !== "in_exam") return;
+    if (!session || (session.status !== "in_exam" && session.status !== "in_progress")) return;
     if (reason === "window_blur" && Date.now() < ignoreBlurUntil) return;
     if (hasUserSwitchedAway || isTabWarningModalOpen) return;
     if (!session.outsideSince) {
@@ -655,28 +820,45 @@
     const state = getState();
     if (state.activeView !== "exam_platform" || state.currentUser.role !== "student") return;
     const session = state.studentSessions[state.currentUser.email];
-    if (!session || session.status !== "in_exam") return;
+    if (!session || (session.status !== "in_exam" && session.status !== "in_progress")) return;
 
     session.warnings = (session.warnings || 0) + 1;
     session.warningLogs = session.warningLogs || [];
+    const reason = session.outsideReason || "window_switch";
+    const outsideSeconds = session.outsideSince ? Math.max(1, Math.round((Date.now() - session.outsideSince) / 1000)) : 1;
+    session.outsideExamSeconds = (session.outsideExamSeconds || 0) + outsideSeconds;
+
     session.warningLogs.push({
-      type: session.outsideReason || "window_switch",
+      type: reason,
       timestamp: Date.now(),
       timeFormatted: new Date().toLocaleTimeString(),
       leftAt: session.outsideSince || Date.now(),
       leftAtFormatted: new Date(session.outsideSince || Date.now()).toLocaleTimeString(),
-      returnedAt: null,
-      returnedAtFormatted: null,
-      outsideSeconds: 0
+      returnedAt: Date.now(),
+      returnedAtFormatted: new Date().toLocaleTimeString(),
+      outsideSeconds: outsideSeconds
     });
+
+    const maxAllowed = state.exam.maxTabSwitches || 3;
+    if (session.warnings >= maxAllowed) {
+      session.status = "reentry_required";
+      session.outsideSince = null;
+      session.outsideReason = null;
+      saveState(state);
+      recordViolationToServer(reason, outsideSeconds);
+      render();
+      return;
+    }
+
     saveState(state);
+    recordViolationToServer(reason, outsideSeconds);
 
     const warnVal = document.getElementById("ep-warning-val");
     if (warnVal) warnVal.textContent = session.warnings;
     const warnChip = document.getElementById("ep-warning-chip");
     if (warnChip) warnChip.classList.add("warning-active");
 
-    showTabSwitchWarningModal(session.warnings);
+    showTabSwitchWarningModal(session.warnings, state, session);
   }
 
   function initAntiCheatListeners() {
@@ -707,60 +889,93 @@
       handleTabReturn();
     });
 
+    function onFullscreenChange() {
+      const isFull = isExamInFullscreen();
+      const state = getState();
+      if (state.activeView === "exam_platform" && state.currentUser.role === "student") {
+        const session = state.studentSessions[state.currentUser.email];
+        if (session && (session.status === "in_exam" || session.status === "in_progress")) {
+          if (!isFull) {
+            handleTabLeave("fullscreen_exit");
+            handleTabReturn();
+          }
+        }
+      }
+    }
+    document.addEventListener("fullscreenchange", onFullscreenChange);
+    document.addEventListener("webkitfullscreenchange", onFullscreenChange);
+    document.addEventListener("mozfullscreenchange", onFullscreenChange);
+    document.addEventListener("MSFullscreenChange", onFullscreenChange);
+
     function blockClipboard(e) {
       const state = getState();
       if (state.activeView === "exam_platform" && state.currentUser.role === "student") {
         const session = state.studentSessions[state.currentUser.email];
-        if (session && session.status === "in_exam") {
+        if (session && (session.status === "in_exam" || session.status === "in_progress")) {
           e.preventDefault();
+          e.stopPropagation();
           showAntiCheatToast("Clipboard actions (Copy/Cut/Paste) are blocked during exams.");
         }
       }
     }
-    document.addEventListener("copy", blockClipboard);
-    document.addEventListener("cut", blockClipboard);
-    document.addEventListener("paste", blockClipboard);
+    document.addEventListener("copy", blockClipboard, true);
+    document.addEventListener("cut", blockClipboard, true);
+    document.addEventListener("paste", blockClipboard, true);
 
     document.addEventListener("dblclick", (e) => {
       const state = getState();
       if (state.activeView === "exam_platform" && state.currentUser.role === "student") {
         const session = state.studentSessions[state.currentUser.email];
-        if (session && session.status === "in_exam") {
+        if (session && (session.status === "in_exam" || session.status === "in_progress")) {
           e.preventDefault();
           showAntiCheatToast("Double-click text selection is disabled during exams.");
         }
       }
-    });
+    }, true);
 
     document.addEventListener("contextmenu", (e) => {
       const state = getState();
       if (state.activeView === "exam_platform" && state.currentUser.role === "student") {
         const session = state.studentSessions[state.currentUser.email];
-        if (session && session.status === "in_exam") {
+        if (session && (session.status === "in_exam" || session.status === "in_progress")) {
           e.preventDefault();
+          e.stopPropagation();
           showAntiCheatToast("Right-click inspection is disabled during exams.");
         }
       }
-    });
+    }, true);
 
     document.addEventListener("keydown", (e) => {
       const state = getState();
       if (state.activeView === "exam_platform" && state.currentUser.role === "student") {
         const session = state.studentSessions[state.currentUser.email];
-        if (session && session.status === "in_exam") {
+        if (session && (session.status === "in_exam" || session.status === "in_progress")) {
           const isCmdOrCtrl = e.metaKey || e.ctrlKey;
-          const k = e.key.toLowerCase();
-          if (
-            (isCmdOrCtrl && (k === "c" || k === "v" || k === "x" || k === "p" || k === "u" || k === "s")) ||
+          const k = (e.key || "").toLowerCase();
+          const isDevTools =
             e.key === "F12" ||
-            (isCmdOrCtrl && e.shiftKey && (k === "i" || k === "j" || k === "c"))
-          ) {
+            (isCmdOrCtrl && e.shiftKey && (k === "i" || k === "j" || k === "c")) ||
+            (e.metaKey && e.altKey && (k === "i" || k === "j" || k === "c")) ||
+            (isCmdOrCtrl && (k === "u" || k === "s" || k === "p"));
+
+          if (isDevTools) {
             e.preventDefault();
-            showAntiCheatToast("Shortcut action disabled by Examination Guard.");
+            e.stopPropagation();
+            showAntiCheatToast("Inspection and source shortcut blocked by Exam Guard.");
+            handleTabLeave("devtools_attempt");
+            handleTabReturn();
+            return false;
+          }
+
+          if (isCmdOrCtrl && (k === "c" || k === "v" || k === "x")) {
+            e.preventDefault();
+            e.stopPropagation();
+            showAntiCheatToast("Clipboard shortcut disabled by Examination Guard.");
+            return false;
           }
         }
       }
-    });
+    }, true);
   }
 
   // ==========================================
@@ -1690,7 +1905,14 @@
           checkboxLabel: "I understand this forcefully concludes the exam for all candidates",
           onConfirm: () => {
             state.exam.status = "ended";
+            Object.values(state.studentSessions || {}).forEach((s) => {
+              if (s && (s.status === "in_exam" || s.status === "in_progress" || s.status === "not_started" || s.status === "reentry_required")) {
+                s.status = "submitted";
+                s.submittedAt = Date.now();
+              }
+            });
             saveState(state);
+            dispatchManagerAction("end_exam");
           }
         });
       };
@@ -1708,8 +1930,9 @@
             confirmType: "teal",
             icon: "clock",
             onConfirm: () => {
-              state.exam.extendedMinutes += mins;
+              state.exam.extendedMinutes = (state.exam.extendedMinutes || 0) + mins;
               saveState(state);
+              dispatchManagerAction("extend_time", { minutes: mins });
             }
           });
         };
@@ -2886,28 +3109,44 @@
       return;
     }
 
-    if (session.status === "exited") {
+    if (session.status === "exited" || session.status === "reentry_required") {
       container.innerHTML = `
         <div id="ep-root" style="display:flex;align-items:center;justify-content:center;min-height:80vh;padding:20px;background:#f8fafc;">
-          <div class="ep-onboarding-card" style="max-width:480px;">
-            <div class="ep-shield-badge" style="background:#fee2e2;">
+          <div class="ep-onboarding-card" style="max-width:480px;text-align:center;">
+            <div class="ep-shield-badge" style="background:#fee2e2;margin:0 auto 16px auto;">
               ${I("lock", 36, "#dc2626")}
             </div>
-            <h2 class="ep-onboarding-title" style="color:#0f172a;">
-              Your exam access is waiting for manager approval.
+            <h2 class="ep-onboarding-title" style="color:#0f172a;margin-bottom:8px;">
+              Examination Window Locked
             </h2>
-            <p class="ep-onboarding-text">
-              You exited the examination window. Security policy requires the course manager to review and approve your re-entry request before you can resume.
+            <p class="ep-onboarding-text" style="color:#475569;margin-bottom:18px;">
+              Security policy locked your session because the window was exited or the security infraction threshold was reached. An official re-entry request has been queued with the exam invigilator.
             </p>
-            <div style="background:#fef3c7;border:1px solid #fde68a;border-radius:10px;padding:12px;color:#92400e;font-size:13px;font-weight:700;margin-bottom:20px;width:100%;display:flex;align-items:center;justify-content:center;gap:8px;">
-              ${I("clock", 15, "#92400e")} Request submitted. Waiting for manager approval...
+            <div style="background:#fef3c7;border:1px solid #fde68a;border-radius:10px;padding:12px;color:#92400e;font-size:13px;font-weight:700;margin-bottom:18px;width:100%;display:flex;align-items:center;justify-content:center;gap:8px;">
+              ${I("clock", 15, "#92400e")} Re-entry request pending manager approval...
             </div>
-            <div style="font-size:12px;color:#64748b;">
-              Tip: Switch to <b>Manager View</b> tab above to approve this request in 1 click!
+            <div style="display:flex;gap:10px;justify-content:center;margin-bottom:16px;">
+              <button id="ep-btn-check-reentry" class="ep-modal-btn" style="background:#0f172a;color:#fff;padding:10px 18px;font-size:13px;border-radius:8px;border:none;cursor:pointer;">
+                ${I("refresh", 13, "#fff")} Check Approval Status
+              </button>
+            </div>
+            <div style="font-size:12px;color:#64748b;line-height:1.5;">
+              This screen automatically checks every few seconds and will restore your exam session immediately once approved by the supervisor.
             </div>
           </div>
         </div>
       `;
+      const btnCheck = document.getElementById("ep-btn-check-reentry");
+      if (btnCheck) {
+        btnCheck.onclick = () => {
+          btnCheck.disabled = true;
+          btnCheck.innerHTML = `${I("refresh", 13, "#fff")} Checking...`;
+          syncFromBackend().finally(() => {
+            btnCheck.disabled = false;
+            btnCheck.innerHTML = `${I("refresh", 13, "#fff")} Check Approval Status`;
+          });
+        };
+      }
       return;
     }
 
@@ -3439,6 +3678,7 @@
           showLaptopOnlyModal();
           return;
         }
+        enterExamFullscreen();
         session.status = "in_exam";
         session.startedAt = Date.now();
         session.cocAgreedAt = null;
@@ -3972,6 +4212,19 @@
             session.status = "submitted";
             session.submittedAt = Date.now();
             saveState(state);
+            submitExamToServer(session.answers).then((res) => {
+              if (res && res.score !== undefined) {
+                const fresh = getState();
+                const freshSess = fresh.studentSessions[fresh.currentUser.email];
+                if (freshSess) {
+                  freshSess.score = res.score;
+                  freshSess.totalMarks = res.totalMarks;
+                  freshSess.status = "submitted";
+                  freshSess.submittedAt = res.submittedAt || Date.now();
+                  saveState(fresh);
+                }
+              }
+            });
           }
         });
       };
@@ -3986,14 +4239,15 @@
     const isFinal = exam.type === "final";
     const isPublished = isFinal ? exam.resultsPublished : true;
 
-    let score = 0;
-    let totalMarks = 0;
+    let score = session.score !== undefined ? session.score : 0;
+    let totalMarks = session.totalMarks !== undefined ? session.totalMarks : 0;
+
     const breakdown = exam.questions.map((q) => {
-      totalMarks += q.marks;
-      const studentAns = session.answers[q.id];
+      if (session.totalMarks === undefined) totalMarks += (q.marks || 0);
+      const studentAns = session.answers ? session.answers[q.id] : undefined;
       let isCorrect = false;
 
-      if (studentAns !== undefined) {
+      if (q.correct !== undefined && studentAns !== undefined) {
         if (Array.isArray(q.correct)) {
           if (Array.isArray(studentAns) && JSON.stringify(studentAns.sort()) === JSON.stringify(q.correct.sort())) {
             isCorrect = true;
@@ -4003,7 +4257,7 @@
         }
       }
 
-      if (isCorrect) score += q.marks;
+      if (session.score === undefined && isCorrect) score += (q.marks || 0);
       return { q, studentAns, isCorrect };
     });
 
@@ -4022,7 +4276,11 @@
 
             ${
               isFinal && !isPublished
-                ? ""
+                ? `
+                <div style="background:#f0f9ff;border:1px solid #bae6fd;border-radius:12px;padding:18px 20px;max-width:560px;margin:0 auto 24px auto;color:#0369a1;font-size:13px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:10px;">
+                  ${I("clock", 16, "#0284c7")} Official scores and solution keys will be displayed once the exam manager publishes results.
+                </div>
+                `
                 : `
                 <div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:14px;max-width:560px;margin:0 auto 24px auto;">
                   <div style="background:#f0fdf4;border:1.5px solid #86efac;border-radius:12px;padding:16px;">
@@ -4039,12 +4297,12 @@
                   </div>
                   <div style="background:#faf5ff;border:1.5px solid #e9d5ff;border-radius:12px;padding:16px;">
                     <div style="font-size:28px;font-weight:900;color:#7e22ce;font-family:ui-monospace,monospace;">
-                      ${Object.keys(session.answers).length} / ${exam.questions.length}
+                      ${Object.keys(session.answers || {}).length} / ${exam.questions.length}
                     </div>
                     <div style="font-size:12px;color:#6b21a8;font-weight:700;">Answered</div>
                   </div>
                 </div>
-              `
+                `
             }
 
             <button id="ep-btn-retest" style="background:#0f172a;color:#fff;border:none;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;">

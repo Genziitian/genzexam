@@ -137,7 +137,7 @@ Route::middleware(['auth:sanctum', 'is_admin', 'track.seen'])->prefix('admin')->
     Route::get('/quizzes/{id}', [AdminQuizController::class, 'show']);
     Route::put('/quizzes/{id}', [AdminQuizController::class, 'update']);
     Route::delete('/quizzes/{id}', [AdminQuizController::class, 'destroy']);
-    Route::patch('/quizzes/{id}/toggle', [AdminQuizController::class, 'toggle']);
+    Route::patch('/quizzes/{id}/toggle', [AdminQuizController::class, 'toggle'])->middleware('is_manager');
 
     // Managers review submitted papers and control publication.
     Route::middleware('is_manager')->group(function () {
@@ -198,6 +198,8 @@ $examPlatformRoutes = function () {
         Route::get('/chat', [ExamPlatformController::class, 'getChat']);
         Route::post('/chat', [ExamPlatformController::class, 'sendChat']);
         Route::get('/reentry', [ExamPlatformController::class, 'getReentry']);
+        Route::post('/violation', [ExamPlatformController::class, 'recordViolation']);
+        Route::post('/submit', [ExamPlatformController::class, 'submitExam']);
 
         Route::middleware('is_manager')->group(function () {
             Route::post('/action', [ExamPlatformController::class, 'action']);

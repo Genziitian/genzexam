@@ -2,8 +2,9 @@ Options -MultiViews
 DirectoryIndex landing.html index.html
 RewriteEngine On
 
-# Backend API: Laravel lives in backend/, reached as /public/api/...
+# Backend API: Laravel lives in backend/, reached as /public/api/... or /api/...
 RewriteRule ^public/(.*)$ backend/public/$1 [L]
+RewriteRule ^api/(.*)$ backend/public/api/$1 [L]
 
 # Public landing page at the root only
 RewriteRule ^$ landing.html [L]
@@ -11,7 +12,7 @@ RewriteRule ^papers/?$ papers.html [L]
 RewriteRule ^paper-pricing/?$ paper-pricing.html [L]
 
 # Everything else falls through to the SPA
-RewriteCond %{REQUEST_URI} !^/public/
+RewriteCond %{REQUEST_URI} !^/(public|api)/
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^ index.html [QSA,L]

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Validation\Rule;
 
 /**
@@ -20,10 +21,15 @@ class AdminUserController extends Controller
         $filter = (string) $request->query('filter', 'all');
         $perPage = min(max((int) $request->query('per_page', 25), 1), 100);
 
-        $query = User::query()->select([
+        // Only select columns that exist, so a pending migration on the server
+        // cannot turn this page into a 500 "Server Error".
+        $wanted = [
             'id', 'name', 'email', 'avatar', 'role', 'is_admin', 'is_pro',
             'is_active', 'xp', 'email_verified_at', 'last_seen_at', 'created_at',
-        ]);
+        ];
+        $existing = Schema::getColumnListing('users');
+        $query = User::query()->select(array_values(array_intersect($wanted, $existing)));
+        $hasRole = in_array('role', $existing, true);
 
         if ($search !== '') {
             $query->where(function ($q) use ($search) {
@@ -42,8 +48,11 @@ class AdminUserController extends Controller
             default    => null,
         };
 
-        $users = $query->orderByRaw("FIELD(role, 'manager', 'admin', 'student')")
-            ->orderByDesc('created_at')
+        if ($hasRole) {
+            $query->orderByRaw("FIELD(role, 'manager', 'admin', 'student')");
+        }
+
+        $users = $query->orderByDesc('created_at')
             ->paginate($perPage);
 
         $actor = $request->user();
@@ -229,6 +238,13 @@ class AdminUserController extends Controller
         return null;
     }
 
+    private ?bool $assignmentsTableExists = null;
+
+    private function hasAssignmentsTable(): bool
+    {
+        return $this->assignmentsTableExists ??= Schema::hasTable('course_user');
+    }
+
     private function present(User $u, User $actor): array
     {
         $canManage = $actor->outranks($u);
@@ -246,7 +262,7 @@ class AdminUserController extends Controller
             'verified'     => $u->email_verified_at !== null,
             'last_seen_at' => $u->last_seen_at,
             'created_at'   => $u->created_at,
-            'assigned_course_ids' => $u->role === User::ROLE_ADMIN
+            'assigned_course_ids' => ($u->role === User::ROLE_ADMIN && $this->hasAssignmentsTable())
                 ? $u->assignedCourses()->pluck('courses.id')->map(fn ($id) => (int) $id)->values()
                 : [],
             'can' => [
