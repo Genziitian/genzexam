@@ -137,7 +137,7 @@ class _AdminConsoleScreenState extends State<AdminConsoleScreen> {
 
             // User Management Section
             Row(
-              mainAxisAlignment: MainAxisAlignment.between,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const Text('USER MANAGEMENT', style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Color(0xFF0F172A))),
                 Text('Filter: ${_filter.toUpperCase()}', style: const TextStyle(fontSize: 11, fontWeight: FontWeight.w600, color: Color(0xFF64748B))),
