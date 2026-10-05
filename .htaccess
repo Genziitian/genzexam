@@ -1,16 +1,20 @@
 Options -MultiViews
+DirectoryIndex landing.html index.html
 RewriteEngine On
 
 # Backend API: Laravel lives in backend/, reached as /public/api/...
 RewriteRule ^public/(.*)$ backend/public/$1 [L]
 
-# Frontend SPA fallback (skipped for backend API paths)
+# Public landing page at the root only
+RewriteRule ^$ landing.html [L]
+
+# Everything else falls through to the SPA
 RewriteCond %{REQUEST_URI} !^/public/
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^ index.html [QSA,L]
 
-# Caching: never cache the HTML entry point, cache hashed assets forever.
+# Caching: never cache HTML entry points, cache hashed assets forever.
 <IfModule mod_headers.c>
   <FilesMatch "\.(html)$">
     Header set Cache-Control "no-cache, no-store, must-revalidate"
