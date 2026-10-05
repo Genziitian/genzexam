@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminCourseController;
 use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\AdminIDEController;
 use App\Http\Controllers\Admin\AdminQuestionController;
 use App\Http\Controllers\Admin\AdminQuizController;
@@ -150,8 +151,14 @@ Route::middleware(['auth:sanctum', 'is_admin', 'track.seen'])->prefix('admin')->
     Route::delete('/video-solutions/{id}', [AdminVideoSolutionController::class, 'destroy']);
 
     // User management
+    Route::get('/users', [AdminUserController::class, 'index']);
+    Route::patch('/users/{userId}/toggle-active', [AdminUserController::class, 'toggleActive']);
+    Route::patch('/users/{userId}/toggle-pro', [AdminUserController::class, 'togglePro']);
+    Route::patch('/users/{userId}/toggle-admin', [AdminUserController::class, 'toggleAdmin']);
+    Route::delete('/users/{userId}', [AdminUserController::class, 'destroy']);
+
+    // Legacy aliases (kept so existing clients keep working)
     Route::post('/users/{userId}/grant-admin', [AdminDashboardController::class, 'grantAdmin']);
-    Route::patch('/users/{userId}/toggle-pro', [AdminDashboardController::class, 'togglePro']);
 });
 
 // =========================================================================

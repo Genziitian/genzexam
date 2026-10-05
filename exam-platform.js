@@ -1526,6 +1526,9 @@
             <button class="saas-tab-btn ${currentMgrTab === "whitelist" ? "active" : ""}" data-tab="whitelist">
               ${I("users", 14)} Whitelist & Access <span class="saas-tab-badge">${enrolledCount}</span>
             </button>
+            <button class="saas-tab-btn ${currentMgrTab === "users" ? "active" : ""}" data-tab="users">
+              ${I("users", 14)} User Management
+            </button>
             <button class="saas-tab-btn ${currentMgrTab === "chat" ? "active" : ""}" data-tab="chat">
               ${I("message", 14)} Chat & Announcements
             </button>
@@ -1769,6 +1772,118 @@
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+  }
+
+
+  // ==========================================
+  // USER MANAGEMENT (manager panel only)
+  // ==========================================
+  const ADMIN_API_BASE = "https://labapi.genziitian.in/public/api";
+
+  let mgrUsers = {
+    status: "idle", // idle | loading | ready | error
+    items: [],
+    counts: null,
+    meta: null,
+    error: "",
+    search: "",
+    filter: "all",
+    busyId: null
+  };
+
+  function adminToken() {
+    try {
+      return localStorage.getItem("lab_token") || "";
+    } catch (e) {
+      return "";
+    }
+  }
+
+  async function adminFetch(path, options) {
+    const opts = options || {};
+    const token = adminToken();
+    if (!token) {
+      throw new Error("You are not signed in as an admin. Sign in first, then reopen this tab.");
+    }
+    const res = await fetch(`${ADMIN_API_BASE}${path}`, {
+      method: opts.method || "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`
+      },
+      body: opts.body ? JSON.stringify(opts.body) : undefined
+    });
+
+    let payload = null;
+    try {
+      payload = await res.json();
+    } catch (e) {
+      payload = null;
+    }
+
+    if (!res.ok) {
+      if (res.status === 401) throw new Error("Session expired. Sign in again to manage users.");
+      if (res.status === 403) throw new Error("Your account does not have admin rights.");
+      throw new Error((payload && (payload.error || payload.message)) || `Request failed (${res.status}).`);
+    }
+    return payload;
+  }
+
+  async function loadMgrUsers() {
+    mgrUsers.status = "loading";
+    mgrUsers.error = "";
+    render();
+    try {
+      const qs = new URLSearchParams({
+        search: mgrUsers.search || "",
+        filter: mgrUsers.filter || "all",
+        per_page: "50"
+      });
+      const data = await adminFetch(`/admin/users?${qs.toString()}`);
+      mgrUsers.items = (data && data.data) || [];
+      mgrUsers.counts = (data && data.counts) || null;
+      mgrUsers.meta = (data && data.meta) || null;
+      mgrUsers.status = "ready";
+    } catch (err) {
+      mgrUsers.status = "error";
+      mgrUsers.error = err.message || "Could not load users.";
+    }
+    render();
+  }
+
+  async function mgrUserAction(id, path, method) {
+    mgrUsers.busyId = id;
+    render();
+    try {
+      const data = await adminFetch(path, { method: method });
+      if (data && data.user) {
+        mgrUsers.items = mgrUsers.items.map((u) => (u.id === data.user.id ? data.user : u));
+      } else {
+        mgrUsers.items = mgrUsers.items.filter((u) => u.id !== id);
+      }
+      mgrUsers.busyId = null;
+      render();
+      await loadMgrUsers();
+    } catch (err) {
+      mgrUsers.busyId = null;
+      mgrUsers.error = err.message || "Action failed.";
+      mgrUsers.status = "ready";
+      render();
+    }
+  }
+
+  function userInitials(name) {
+    return String(name || "?")
+      .trim()
+      .split(/\s+/)
+      .slice(0, 2)
+      .map((w) => w.charAt(0).toUpperCase())
+      .join("");
+  }
+
+  function pill(label, color, bg) {
+    return `<span style="font-size:10px;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;padding:3px 7px;border-radius:5px;color:${color};background:${bg};">${label}</span>`;
   }
 
   function renderMgrTabContent(tab, state) {
@@ -2149,6 +2264,127 @@
       `;
     }
 
+
+    if (tab === "users") {
+      if (mgrUsers.status === "idle") {
+        setTimeout(loadMgrUsers, 0);
+      }
+
+      const counts = mgrUsers.counts;
+      const filters = [
+        ["all", "All"],
+        ["active", "Active"],
+        ["inactive", "Deactivated"],
+        ["pro", "Pro"],
+        ["admins", "Admins"]
+      ];
+
+      const summary = counts
+        ? `
+          <div style="display:flex;gap:18px;flex-wrap:wrap;margin-bottom:18px;">
+            <div><span style="font-size:20px;font-weight:800;color:#f9fafb;">${counts.total}</span> <span style="font-size:12px;color:#9ca3af;">total users</span></div>
+            <div><span style="font-size:20px;font-weight:800;color:#38bdf8;">${counts.admins}</span> <span style="font-size:12px;color:#9ca3af;">admins</span></div>
+            <div><span style="font-size:20px;font-weight:800;color:#fbbf24;">${counts.pro}</span> <span style="font-size:12px;color:#9ca3af;">pro</span></div>
+            <div><span style="font-size:20px;font-weight:800;color:#fb7185;">${counts.inactive}</span> <span style="font-size:12px;color:#9ca3af;">deactivated</span></div>
+          </div>`
+        : "";
+
+      let body = "";
+      if (mgrUsers.status === "loading") {
+        body = `<div style="padding:40px;text-align:center;color:#9ca3af;font-size:13px;">Loading users…</div>`;
+      } else if (mgrUsers.status === "error") {
+        body = `
+          <div style="padding:28px;text-align:center;">
+            <div style="color:#fb7185;font-size:13px;font-weight:600;margin-bottom:12px;">${escapeHTML(mgrUsers.error)}</div>
+            <button id="btn-users-retry" style="background:#059669;color:#fff;border:none;padding:8px 18px;border-radius:7px;font-size:12px;font-weight:700;cursor:pointer;">Retry</button>
+          </div>`;
+      } else if (!mgrUsers.items.length) {
+        body = `<div style="padding:40px;text-align:center;color:#9ca3af;font-size:13px;">No users match this view.</div>`;
+      } else {
+        body = `
+          <div style="overflow-x:auto;">
+            <table style="width:100%;border-collapse:collapse;font-size:13px;">
+              <thead>
+                <tr style="text-align:left;color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.05em;">
+                  <th style="padding:10px 12px;border-bottom:1px solid #1c1c1c;">User</th>
+                  <th style="padding:10px 12px;border-bottom:1px solid #1c1c1c;">Status</th>
+                  <th style="padding:10px 12px;border-bottom:1px solid #1c1c1c;">XP</th>
+                  <th style="padding:10px 12px;border-bottom:1px solid #1c1c1c;text-align:right;">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${mgrUsers.items
+                  .map((u) => {
+                    const busy = mgrUsers.busyId === u.id;
+                    const badges = [
+                      u.is_admin ? pill("Admin", "#38bdf8", "rgba(56,189,248,0.15)") : "",
+                      u.is_pro ? pill("Pro", "#fbbf24", "rgba(251,191,36,0.15)") : "",
+                      u.is_active
+                        ? pill("Active", "#34d399", "rgba(52,211,153,0.15)")
+                        : pill("Deactivated", "#fb7185", "rgba(244,63,94,0.15)"),
+                      u.verified ? "" : pill("Unverified", "#9ca3af", "rgba(156,163,175,0.15)")
+                    ]
+                      .filter(Boolean)
+                      .join(" ");
+
+                    const btn = (cls, label, color) =>
+                      `<button class="${cls}" data-id="${u.id}" data-name="${escapeHTML(u.name)}" ${busy ? "disabled" : ""} style="background:#141414;border:1px solid #262626;color:${color};padding:5px 10px;border-radius:6px;font-size:11px;font-weight:700;cursor:${busy ? "wait" : "pointer"};opacity:${busy ? "0.5" : "1"};">${label}</button>`;
+
+                    return `
+                      <tr style="border-bottom:1px solid #141414;">
+                        <td style="padding:12px;">
+                          <div style="display:flex;align-items:center;gap:10px;">
+                            <div style="width:32px;height:32px;border-radius:50%;background:#1f2937;color:#9ca3af;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0;">${userInitials(u.name)}</div>
+                            <div style="min-width:0;">
+                              <div style="color:#f9fafb;font-weight:700;">${escapeHTML(u.name)}</div>
+                              <div style="color:#6b7280;font-size:11px;font-family:ui-monospace,monospace;">${escapeHTML(u.email)}</div>
+                            </div>
+                          </div>
+                        </td>
+                        <td style="padding:12px;"><div style="display:flex;gap:5px;flex-wrap:wrap;">${badges}</div></td>
+                        <td style="padding:12px;color:#d1d5db;">${u.xp}</td>
+                        <td style="padding:12px;text-align:right;">
+                          <div style="display:inline-flex;gap:6px;flex-wrap:wrap;justify-content:flex-end;">
+                            ${btn("btn-user-active", u.is_active ? "Deactivate" : "Activate", u.is_active ? "#fbbf24" : "#34d399")}
+                            ${btn("btn-user-pro", u.is_pro ? "Remove Pro" : "Make Pro", "#fbbf24")}
+                            ${btn("btn-user-admin", u.is_admin ? "Revoke Admin" : "Make Admin", "#38bdf8")}
+                            ${btn("btn-user-delete", "Delete", "#fb7185")}
+                          </div>
+                        </td>
+                      </tr>`;
+                  })
+                  .join("")}
+              </tbody>
+            </table>
+          </div>`;
+      }
+
+      return `
+        <div class="saas-card" style="padding:24px;">
+          <div style="font-size:16px;font-weight:800;color:#f9fafb;margin-bottom:4px;display:flex;align-items:center;gap:8px;">
+            ${I("users", 18, "#38bdf8")} User Management
+          </div>
+          <p style="color:#9ca3af;font-size:13px;margin-bottom:18px;">
+            Deactivate accounts, grant Pro or admin rights, or permanently delete users.
+          </p>
+
+          ${summary}
+
+          <div style="display:flex;gap:10px;margin-bottom:18px;flex-wrap:wrap;">
+            <input type="text" id="input-user-search" value="${escapeHTML(mgrUsers.search)}" placeholder="Search name or email…" style="flex:1;min-width:220px;background:#0e0e0e;border:1px solid #262626;color:#f9fafb;padding:9px 14px;border-radius:8px;font-size:13px;" />
+            <select id="select-user-filter" style="background:#0d0d0d;border:1px solid #262626;color:#f9fafb;padding:9px 12px;border-radius:8px;font-size:12px;">
+              ${filters
+                .map(([v, label]) => `<option value="${v}" ${mgrUsers.filter === v ? "selected" : ""}>${label}</option>`)
+                .join("")}
+            </select>
+            <button id="btn-users-refresh" style="background:#059669;color:#fff;border:none;padding:9px 18px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;">Search</button>
+          </div>
+
+          ${body}
+        </div>
+      `;
+    }
+
     return "";
   }
 
@@ -2383,6 +2619,103 @@
           if (e.key === "Enter") btnSend.click();
         };
       }
+    }
+
+    if (tab === "users") {
+      const retry = document.getElementById("btn-users-retry");
+      if (retry) retry.onclick = () => loadMgrUsers();
+
+      const refresh = document.getElementById("btn-users-refresh");
+      const searchInput = document.getElementById("input-user-search");
+      const filterSelect = document.getElementById("select-user-filter");
+
+      const applyQuery = () => {
+        mgrUsers.search = searchInput ? searchInput.value.trim() : "";
+        mgrUsers.filter = filterSelect ? filterSelect.value : "all";
+        loadMgrUsers();
+      };
+
+      if (refresh) refresh.onclick = applyQuery;
+      if (searchInput) {
+        searchInput.onkeydown = (e) => {
+          if (e.key === "Enter") applyQuery();
+        };
+      }
+      if (filterSelect) filterSelect.onchange = applyQuery;
+
+      const findUser = (btn) => {
+        const id = Number(btn.getAttribute("data-id"));
+        return { id: id, user: mgrUsers.items.find((u) => u.id === id) || { name: btn.getAttribute("data-name") } };
+      };
+
+      document.querySelectorAll(".btn-user-active").forEach((btn) => {
+        btn.onclick = () => {
+          const picked = findUser(btn);
+          const deactivating = picked.user.is_active;
+          showManagerConfirmModal({
+            title: `${deactivating ? "Deactivate" : "Reactivate"} ${picked.user.name}`,
+            subtitle: "User Management",
+            description: deactivating
+              ? `<b>${escapeHTML(picked.user.name)}</b> will be signed out immediately and blocked from signing in again until reactivated.`
+              : `Restore sign-in access for <b>${escapeHTML(picked.user.name)}</b>.`,
+            confirmText: deactivating ? "Deactivate Account" : "Reactivate Account",
+            confirmType: deactivating ? "warning" : "success",
+            icon: "users",
+            onConfirm: () => mgrUserAction(picked.id, `/admin/users/${picked.id}/toggle-active`, "PATCH")
+          });
+        };
+      });
+
+      document.querySelectorAll(".btn-user-pro").forEach((btn) => {
+        btn.onclick = () => {
+          const picked = findUser(btn);
+          const granting = !picked.user.is_pro;
+          showManagerConfirmModal({
+            title: `${granting ? "Grant" : "Remove"} Pro — ${picked.user.name}`,
+            subtitle: "User Management",
+            description: granting
+              ? `Give <b>${escapeHTML(picked.user.name)}</b> Pro access to video solutions and premium content.`
+              : `Remove Pro access from <b>${escapeHTML(picked.user.name)}</b>.`,
+            confirmText: granting ? "Make Pro" : "Remove Pro",
+            confirmType: granting ? "success" : "warning",
+            icon: "users",
+            onConfirm: () => mgrUserAction(picked.id, `/admin/users/${picked.id}/toggle-pro`, "PATCH")
+          });
+        };
+      });
+
+      document.querySelectorAll(".btn-user-admin").forEach((btn) => {
+        btn.onclick = () => {
+          const picked = findUser(btn);
+          const granting = !picked.user.is_admin;
+          showManagerConfirmModal({
+            title: `${granting ? "Grant" : "Revoke"} Admin — ${picked.user.name}`,
+            subtitle: "User Management",
+            description: granting
+              ? `<b>${escapeHTML(picked.user.name)}</b> will get full admin access, including this user management panel.`
+              : `Revoke admin access from <b>${escapeHTML(picked.user.name)}</b>. They will be signed out.`,
+            confirmText: granting ? "Make Admin" : "Revoke Admin",
+            confirmType: granting ? "purple" : "warning",
+            icon: "settings",
+            onConfirm: () => mgrUserAction(picked.id, `/admin/users/${picked.id}/toggle-admin`, "PATCH")
+          });
+        };
+      });
+
+      document.querySelectorAll(".btn-user-delete").forEach((btn) => {
+        btn.onclick = () => {
+          const picked = findUser(btn);
+          showManagerConfirmModal({
+            title: `Delete ${picked.user.name}`,
+            subtitle: "User Management",
+            description: `Permanently delete <b>${escapeHTML(picked.user.name)}</b> and all of their account data. <b>This cannot be undone.</b>`,
+            confirmText: "Delete Permanently",
+            confirmType: "danger",
+            icon: "x",
+            onConfirm: () => mgrUserAction(picked.id, `/admin/users/${picked.id}`, "DELETE")
+          });
+        };
+      });
     }
   }
 

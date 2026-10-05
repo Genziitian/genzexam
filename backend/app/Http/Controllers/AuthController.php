@@ -139,7 +139,6 @@ class AuthController extends Controller
 
         LoginLog::create([
             'user_id'      => $user->id,
-            'ip_address'   => request()->ip(),
             'user_agent'   => substr((string) request()->userAgent(), 0, 300),
             'auth_method'  => 'email',
             'logged_in_at' => now(),
@@ -328,8 +327,7 @@ class AuthController extends Controller
 
             LoginLog::create([
                 'user_id'      => $user->id,
-                'ip_address'   => request()->ip(),
-                'user_agent'   => substr((string) request()->userAgent(), 0, 300),
+                    'user_agent'   => substr((string) request()->userAgent(), 0, 300),
                 'auth_method'  => 'google',
                 'logged_in_at' => now(),
             ]);

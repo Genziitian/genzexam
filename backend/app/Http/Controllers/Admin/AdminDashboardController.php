@@ -50,7 +50,6 @@ class AdminDashboardController extends Controller
                 'email'       => $log->user?->email ?? '—',
                 'is_admin'    => (bool) ($log->user?->is_admin ?? false),
                 'is_pro'      => (bool) ($log->user?->is_pro ?? false),
-                'ip_address'  => $log->ip_address,
                 'auth_method' => $log->auth_method,
                 'logged_in_at' => $log->logged_in_at,
             ])

@@ -25,6 +25,7 @@ class User extends Authenticatable
         'avatar',
         'is_admin',
         'is_pro',
+        'is_active',
         'email_verified_at',
         'otp',
         'otp_expires_at',
@@ -55,6 +56,7 @@ class User extends Authenticatable
         return [
             'is_admin' => 'boolean',
             'is_pro' => 'boolean',
+            'is_active' => 'boolean',
             'email_verified_at' => 'datetime',
             'otp_expires_at' => 'datetime',
             'last_xp_action_date' => 'date',
