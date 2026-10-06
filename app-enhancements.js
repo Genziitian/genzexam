@@ -286,7 +286,7 @@
         var card = document.createElement("a");
         card.className = "ql-paper-library-item";
         var available = paper.available !== false && paper.has_access !== false;
-        card.href = available ? "/quiz/" + encodeURIComponent(paper.id) : "/papers?library=1";
+        card.href = available ? "/paper/" + encodeURIComponent(paper.id) : "/papers?library=1";
         var title = document.createElement("strong");
         title.textContent = paper.title || "Paper";
         var details = document.createElement("span");
@@ -586,6 +586,54 @@
   }
 
   /* ---------------------------------------------------------------
+   * Student dashboard: tag the cards so storefront-dashboard.css can
+   * give them colour and motion. Only attributes are added, so React
+   * keeps full ownership of the markup and its state.
+   * ------------------------------------------------------------- */
+  var DASH_STATS = { "CURRENT STREAK": "streak", "ACCURACY": "accuracy", "THIS WEEK": "week", "RANK": "rank" };
+
+  function tag(el, name, value) {
+    if (el && el.getAttribute(name) !== value) el.setAttribute(name, value);
+  }
+
+  function decorateDashboard() {
+    if (!/^\/dashboard\/?$/i.test(window.location.pathname)) return;
+    var hello = null;
+    document.querySelectorAll("#root h1").forEach(function (h) {
+      if (!hello && /^Welcome back/i.test(h.textContent.trim())) hello = h;
+    });
+    if (!hello) return;
+
+    var root = hello.parentElement;
+    while (root && root.id !== "root" && !/CURRENT STREAK/.test(root.textContent)) root = root.parentElement;
+    if (!root || root.id === "root") return;
+    tag(root, "data-ql-dash", "root");
+    tag(hello, "data-ql-hello", "");
+
+    root.querySelectorAll("div").forEach(function (label) {
+      if (label.children.length) return;
+      var text = label.textContent.trim().toUpperCase();
+      var card = label.closest(".rounded-2xl");
+      if (!card) return;
+      if (DASH_STATS[text]) tag(card, "data-ql-stat", DASH_STATS[text]);
+      else if (/^PERFORMANCE\b/.test(text)) tag(card, "data-ql-card", "perf");
+      else if (text === "WEEKLY GOAL") tag(card, "data-ql-card", "goal");
+    });
+
+    root.querySelectorAll("a.rounded-2xl").forEach(function (card) {
+      var text = card.textContent.toUpperCase();
+      var kind = /CONTINUE WHERE/.test(text) ? "continue" : /DAILY CHALLENGE/.test(text) ? "daily" : /REVIEW/.test(text) ? "review" : "";
+      if (kind) tag(card, "data-ql-next", kind);
+    });
+
+    /* Normalise line lengths so the charts can draw themselves in with CSS. */
+    root.querySelectorAll('[data-ql-stat] svg path[fill="none"], [data-ql-card="perf"] svg path[fill="none"]').forEach(function (path) {
+      tag(path, "pathLength", "1");
+      tag(path, "data-ql-draw", "");
+    });
+  }
+
+  /* ---------------------------------------------------------------
    * Brand: Ensure Quiz LAB by GenZ IITian is displayed everywhere.
    * ------------------------------------------------------------- */
   function syncBrandName() {
@@ -638,12 +686,39 @@
     }
   }
 
+  /* ---------------------------------------------------------------
+   * Papers open in the self-paced paper room (/paper/{id}) and the Exam
+   * tab opens the online exam platform. Both are separate pages, so
+   * these links must load a page instead of routing inside the app.
+   * ------------------------------------------------------------- */
+  function paperRoomPath(pathname) {
+    var m = /^\/quiz\/(\d+)\/?$/.exec(pathname || "");
+    return m ? "/paper/" + m[1] : "";
+  }
+
+  document.addEventListener("click", function (event) {
+    if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    var link = event.target && event.target.closest ? event.target.closest("a[href]") : null;
+    if (!link || link.target === "_blank" || link.origin !== window.location.origin) return;
+    var paper = paperRoomPath(link.pathname);
+    if (paper) {
+      event.preventDefault();
+      event.stopPropagation();
+      window.location.assign(paper);
+    } else if (/^\/exams?(\/|$)/.test(link.pathname)) {
+      event.stopPropagation();
+    }
+  }, true);
+
   function run() {
+    var paper = paperRoomPath(window.location.pathname);
+    if (paper) { window.location.replace(paper); return; }
     syncBrandName();
     syncAdminShell();
     syncStudentPaperLibrary();
     syncPaperPricingLink();
     removeStudentWeakSpotCard();
+    decorateDashboard();
     if (!/\/discussions/i.test(window.location.pathname)) return;
     injectStyles();
     ROWS.forEach(convertRow);

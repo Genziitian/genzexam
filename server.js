@@ -23,7 +23,7 @@ const types = {
   ".webmanifest": "application/manifest+json",
 };
 const rootFiles = new Set(
-  "index.html exams.html landing.html papers.html paper-pricing.html manager-sales.html manager-sales.js manager-sales.css exam-platform.js exam-rich-content.js exam-platform.css app-enhancements.js storefront-runtime.js storefront-dashboard.css papers.js papers.css paper-pricing.js paper-pricing.css icons.svg site.webmanifest favicon.ico favicon-16x16.png favicon-32x32.png apple-touch-icon.png android-chrome-192x192.png android-chrome-512x512.png".split(
+  "index.html exams.html paper-room.html paper-room.js paper-room.css landing.html papers.html paper-pricing.html manager-sales.html manager-sales.js manager-sales.css exam-platform.js exam-rich-content.js exam-platform.css app-enhancements.js storefront-runtime.js storefront-dashboard.css papers.js papers.css paper-pricing.js paper-pricing.css icons.svg site.webmanifest favicon.ico favicon-16x16.png favicon-32x32.png apple-touch-icon.png android-chrome-192x192.png android-chrome-512x512.png".split(
     " ",
   ),
 );
@@ -68,6 +68,7 @@ function handler(req, res) {
   else if (/^\/papers\/?$/.test(url)) file = "papers.html";
   else if (/^\/manager\/sales\/?$/.test(url)) file = "manager-sales.html";
   else if (/^\/paper-pricing\/?$/.test(url)) file = "paper-pricing.html";
+  else if (/^\/paper\/\d+\/?$/.test(url)) file = "paper-room.html";
   else if (/^\/exams?(\/[^.]*)?\/?$/.test(url)) file = "exams.html";
   else if (appRoutes.test(url)) file = "index.html";
   const ext = path.extname(file).toLowerCase();

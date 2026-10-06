@@ -23,6 +23,10 @@ RewriteRule ^paper-pricing/?$ paper-pricing.html [L]
 
 RewriteRule ^exams?(/.*)?$ exams.html [L]
 
+# Papers open in the self-paced paper room; old quiz links are sent there.
+RewriteRule ^paper/[0-9]+/?$ paper-room.html [L]
+RewriteRule ^quiz/([0-9]+)/?$ /paper/$1 [R=302,L]
+
 # Everything else falls through to the SPA
 RewriteCond %{REQUEST_URI} !^/(public|api)/
 RewriteCond %{REQUEST_FILENAME} !-f
@@ -42,7 +46,7 @@ RewriteRule ^ index.html [QSA,L]
   <FilesMatch "^index-[A-Za-z0-9]+\.(js|css)$">
     Header set Cache-Control "public, max-age=31536000, immutable"
   </FilesMatch>
-  <FilesMatch "^(exam-platform|exam-rich-content|app-enhancements|papers|paper-pricing|manager-sales|storefront-runtime|storefront-dashboard)\.(js|css)$">
+  <FilesMatch "^(exam-platform|exam-rich-content|app-enhancements|paper-room|papers|paper-pricing|manager-sales|storefront-runtime|storefront-dashboard)\.(js|css)$">
     Header set Cache-Control "no-cache, must-revalidate"
   </FilesMatch>
 </IfModule>

@@ -23,7 +23,7 @@
   function sectionLabel(section) { return ({quiz1:'Quiz 1',quiz2:'Quiz 2',endterm:'End Term',mock_test:'Mock test',practice:'Practice',practice_graded:'Graded practice'})[section] || section || 'Practice paper'; }
   function card(p, owned) {
     const free = Number(p.price_paise || 0) === 0;
-    return `<article class="card"><div class="cardtop"><span class="pill ${free ? '' : 'paid'}">${p.available === false ? 'UNAVAILABLE' : p.expired ? 'ACCESS EXPIRED' : owned ? 'IN YOUR LIBRARY' : free ? 'FREE' : 'PAID'}</span><span class="price">${esc(money(p.price_paise))}</span></div><h3>${esc(p.title)}</h3><div class="sub">${esc(p.course?.name || 'Course')}${p.year ? ' · '+esc(p.year) : ''}</div><p class="card-description">${esc(p.description || 'View the paper details and access options before you start.')}</p><div class="meta"><span>${esc(sectionLabel(p.section))}</span>${p.question_count != null ? `<span>${esc(p.question_count)} questions</span>` : ''}${p.time_limit_minutes ? `<span>${esc(p.time_limit_minutes)} min</span>` : ''}</div><button class="btn ${free ? '' : 'primary'}" data-paper="${esc(p.id)}">${p.available === false ? 'View details' : p.expired ? 'Renew access' : owned ? 'View / open paper' : 'View paper details'}</button></article>`;
+    return `<article class="card"><div class="cardtop"><span class="pill ${free ? '' : 'paid'}">${p.available === false ? 'UNAVAILABLE' : p.expired ? 'ACCESS EXPIRED' : owned ? 'IN YOUR LIBRARY' : free ? 'FREE' : 'PAID'}</span><span class="price">${esc(money(p.price_paise))}</span></div><h3>${esc(p.title)}</h3><div class="sub">${esc(p.course?.name || 'Course')}${p.year ? ' · '+esc(p.year) : ''}</div><p class="card-description">${esc(p.description || 'View the paper details and access options before you start.')}</p><div class="meta"><span>${esc(sectionLabel(p.section))}</span>${p.question_count != null ? `<span>${esc(p.question_count)} questions</span>` : ''}${p.time_limit_minutes ? `<span>${esc(p.time_limit_minutes)} min</span>` : ''}</div><button class="btn ${free ? '' : 'primary'}" data-paper="${esc(p.id)}">${p.available === false ? 'View details' : p.expired ? 'Renew access' : owned ? 'View / open paper' : free ? 'View details · Free' : esc('View details · Buy '+money(p.price_paise).replace(/\.00$/, ''))}</button></article>`;
   }
   function renderCatalog() {
     const query = search.value.trim().toLowerCase();
@@ -52,7 +52,7 @@
   async function takeAction() {
     if (!selected || busy || selected.available === false) return;
     const paper = selected;
-    if (ownedIds.has(String(paper.id))) { location.assign('/quiz/'+encodeURIComponent(paper.id)); return; }
+    if (ownedIds.has(String(paper.id))) { location.assign('/paper/'+encodeURIComponent(paper.id)); return; }
     if (!token()) { signIn(paper.id); return; }
     busy = true; updateAction(); byId('details-status').textContent = '';
     if (Number(paper.price_paise || 0) > 0) { await checkout(paper); return; }

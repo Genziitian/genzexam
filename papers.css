@@ -9,3 +9,7 @@
 @media(max-width:520px){.navlinks{display:flex;font-size:12px;gap:14px}.brand{font-size:14px}.navend{width:100%;margin:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.navend .btn:last-child:nth-child(3){grid-column:1/-1}.section-head{align-items:center;flex-wrap:wrap}.hero{padding-top:28px}.hero h1{font-size:clamp(30px,9vw,38px)}.hero-actions .btn{flex:1 1 190px}.filters{grid-template-columns:1fr}.filters input{grid-column:auto}.filters input,.filters select{min-height:46px;font-size:16px}dialog{padding:18px}.detail-facts{gap:14px;padding:13px}dialog h2{font-size:25px}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
 .detail-facts>div{min-width:0}.grid>.card,.library-grid>.card{min-width:0}.cardtop{flex-wrap:wrap}.brand{flex-shrink:0}.navlinks{flex-wrap:wrap}.filters select{width:100%}
+/* Active nav link, and hero headline with actions on one row. */
+.navlinks a{padding:6px 0;border-bottom:2px solid transparent}.navlinks a:hover{color:var(--ink)}.navlinks a.active,.navlinks a[aria-current=page]{color:var(--ink);font-weight:600;border-bottom-color:var(--green)}
+.hero-row{display:flex;align-items:center;justify-content:space-between;gap:20px 32px;flex-wrap:wrap}.hero-row h1{margin-bottom:0}.hero-row .hero-actions{margin-top:0;flex-wrap:nowrap}
+@media(max-width:780px){.navlinks a{padding:6px}.hero-row .hero-actions{flex-wrap:wrap;width:100%}}

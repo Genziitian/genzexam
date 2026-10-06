@@ -36,6 +36,10 @@
   }
 
   window.QLStorefront = { apiBase: apiBase, token: token, signIn: signIn };
+
+  // Papers open in the self-paced paper room, not the old in-app quiz player.
+  var oldQuiz = /^\/quiz\/(\d+)\/?$/.exec(location.pathname);
+  if (oldQuiz) { location.replace('/paper/' + oldQuiz[1]); return; }
   if (!/^\/(papers|paper-pricing)(\/|\.html|$)/.test(location.pathname)) {
     resumeAfterLogin();
     window.addEventListener('pageshow', resumeAfterLogin);
