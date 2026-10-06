@@ -209,6 +209,12 @@ class AdminUserController extends Controller
         }
 
         $name = $target->name;
+        if (Schema::hasTable('proctored_exams') && (
+            \App\Models\ProctoredExam::query()->where('owner_id', $target->id)->exists()
+            || \App\Models\ProctoredExamSession::query()->where('user_id', $target->id)->exists()
+        )) {
+            return response()->json(['error' => 'This account has exam records. Deactivate it to preserve assessment results and the audit history.'], 409);
+        }
         if (\App\Models\QuizStorefrontOrder::query()->where('user_id', $target->id)->exists()) {
             return response()->json(['error' => 'This account has checkout records. Deactivate the account to retain its purchase history.'], 409);
         }

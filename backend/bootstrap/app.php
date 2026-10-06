@@ -20,6 +20,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'is_manager' => \App\Http\Middleware\IsManager::class,
             'teacher.content_only' => \App\Http\Middleware\TeacherContentOnly::class,
             'track.seen' => \App\Http\Middleware\TrackLastSeen::class,
+            'exam.account' => \App\Http\Middleware\RequireActiveVerifiedAccount::class,
         ]);
 
         $middleware->redirectGuestsTo(fn (Request $request) => null);

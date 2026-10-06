@@ -2,6 +2,15 @@ Options -MultiViews
 DirectoryIndex landing.html index.html
 RewriteEngine On
 
+# Never serve private application state, source, backup folders or hidden files.
+RewriteRule (^|/)\. - [F,L]
+RewriteRule ^(data|mobile|tests|docs|design|templates\.[^/]+|assets\.[^/]+)(/|$) - [F,L,NC]
+RewriteCond %{THE_REQUEST} \s/+backend[/?\s] [NC]
+RewriteRule ^ - [F,L]
+<FilesMatch "\.(env|log|sqlite|sql|bak|lock|py|md|toml|ya?ml)$|^(composer|package)(-lock)?\.json$|^server\.js$">
+  Require all denied
+</FilesMatch>
+
 # Backend API: Laravel lives in backend/, reached as /public/api/... or /api/...
 RewriteRule ^public/(.*)$ backend/public/$1 [L]
 RewriteRule ^api/(.*)$ backend/public/api/$1 [L]
@@ -11,6 +20,8 @@ RewriteRule ^$ landing.html [L]
 RewriteRule ^papers/?$ papers.html [L]
 RewriteRule ^paper-pricing/?$ paper-pricing.html [L]
 
+RewriteRule ^exams?(/.*)?$ exams.html [L]
+
 # Everything else falls through to the SPA
 RewriteCond %{REQUEST_URI} !^/(public|api)/
 RewriteCond %{REQUEST_FILENAME} !-f
@@ -19,6 +30,9 @@ RewriteRule ^ index.html [QSA,L]
 
 # Caching: never cache HTML entry points, cache hashed assets forever.
 <IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Frame-Options "SAMEORIGIN"
   <FilesMatch "\.(html)$">
     Header set Cache-Control "no-cache, no-store, must-revalidate"
     Header set Pragma "no-cache"
@@ -27,7 +41,7 @@ RewriteRule ^ index.html [QSA,L]
   <FilesMatch "^index-[A-Za-z0-9]+\.(js|css)$">
     Header set Cache-Control "public, max-age=31536000, immutable"
   </FilesMatch>
-  <FilesMatch "^(exam-platform|app-enhancements|papers|paper-pricing|storefront-runtime|storefront-dashboard)\.(js|css)$">
+  <FilesMatch "^(exam-platform|exam-rich-content|app-enhancements|papers|paper-pricing|storefront-runtime|storefront-dashboard)\.(js|css)$">
     Header set Cache-Control "no-cache, must-revalidate"
   </FilesMatch>
 </IfModule>

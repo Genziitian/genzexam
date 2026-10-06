@@ -26,7 +26,7 @@ class StorefrontSecurityTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        if (! extension_loaded('pdo_sqlite')) {
+        if (! in_array('sqlite', \PDO::getAvailableDrivers(), true)) {
             $this->markTestSkipped('pdo_sqlite is required for isolated storefront security tests.');
         }
         config([
@@ -52,7 +52,7 @@ class StorefrontSecurityTest extends TestCase
             $table->boolean('is_active')->default(true); $table->string('approval_status')->default('approved'); $table->timestamps();
         });
         Schema::create('questions', function (Blueprint $table) {
-            $table->id(); $table->unsignedBigInteger('quiz_id'); $table->integer('position')->default(0);
+            $table->id(); $table->unsignedBigInteger('quiz_id'); $table->integer('position')->default(0); $table->softDeletes();
         });
         (require database_path('migrations/2026_10_05_000004_add_quiz_storefront_and_orders.php'))->up();
         DB::table('courses')->insert(['id' => 1, 'name' => 'Math', 'slug' => 'math', 'is_active' => true]);

@@ -1,0 +1,133 @@
+{
+  "schema_version": "1.0",
+  "title": "Example: Mathematics and Statistics Exam",
+  "duration_minutes": 60,
+  "instructions": "Answer each question. A calculator is allowed only where stated.",
+  "questions": [
+    {
+      "id": "algebra-single",
+      "type": "mcq_single",
+      "section": "Algebra",
+      "difficulty": "easy",
+      "prompt": [
+        { "kind": "text", "value": "Solve for $x$:\n\n$$\\frac{x-2}{3}=4$$" }
+      ],
+      "options": [
+        [{ "kind": "text", "value": "$x=10$" }],
+        [{ "kind": "text", "value": "$x=12$" }],
+        [{ "kind": "text", "value": "$x=14$" }],
+        [{ "kind": "text", "value": "$x=16$" }]
+      ],
+      "correct_answer": 2,
+      "marks": 2,
+      "negative": 0.5,
+      "explanation": [
+        { "kind": "text", "value": "Multiply both sides by $3$: $x-2=12$, so $x=14$." }
+      ]
+    },
+    {
+      "id": "probability-multi",
+      "type": "mcq_multi",
+      "section": "Probability",
+      "prompt": [
+        { "kind": "text", "value": "For a discrete random variable $X$, which statements are always true? Select all that apply." }
+      ],
+      "options": [
+        [{ "kind": "text", "value": "$\\sum_x P(X=x)=1$" }],
+        [{ "kind": "text", "value": "$P(X=x) < 0$ for every $x$" }],
+        [{ "kind": "text", "value": "$P(X=x) \\geq 0$ for every $x$" }],
+        [{ "kind": "text", "value": "$E[X]=\\sum_x xP(X=x)$ when the sum exists" }]
+      ],
+      "correct_answers": [0, 2, 3],
+      "marks": 3,
+      "negative": 0
+    },
+    {
+      "id": "statistics-data",
+      "type": "comprehension",
+      "section": "Statistics",
+      "prompt": [
+        { "kind": "text", "value": "Use the following sample to answer the next question. The observations are $x_1,\\ldots,x_5$." },
+        {
+          "kind": "table",
+          "caption": "Observed values",
+          "headers": ["Observation", "$x_i$", "Group"],
+          "rows": [
+            ["1", "4", "A"],
+            ["2", "6", "A"],
+            ["3", "7", "B"],
+            ["4", "7", "B"],
+            ["5", "11", "B"]
+          ]
+        },
+        { "kind": "math", "display": true, "value": "\\bar{x}=\\frac{1}{n}\\sum_{i=1}^{n}x_i" }
+      ]
+    },
+    {
+      "id": "mean-number",
+      "type": "numerical",
+      "section": "Statistics",
+      "prompt": [
+        { "kind": "text", "value": "Using the table above, calculate the sample mean $\\bar{x}$." }
+      ],
+      "numerical_answer": 7,
+      "numerical_tolerance": 0,
+      "marks": 2,
+      "negative": 0
+    },
+    {
+      "id": "matrix-short",
+      "type": "short_answer",
+      "section": "Linear Algebra",
+      "prompt": [
+        { "kind": "text", "value": "Name the matrix shown below.\n\n$$A=\\begin{bmatrix}1&0\\\\0&1\\end{bmatrix}$$" }
+      ],
+      "acceptable_answers": ["identity matrix", "identity", "I_2"],
+      "marks": 2,
+      "negative": 0,
+      "explanation": [
+        { "kind": "text", "value": "The diagonal entries are $1$ and all off-diagonal entries are $0$." }
+      ]
+    },
+    {
+      "id": "derivative-true-false",
+      "type": "true_false",
+      "section": "Calculus",
+      "prompt": [
+        { "kind": "text", "value": "If $f(x)=x^2$, then $f'(x)=2x$." }
+      ],
+      "correct_answer": true,
+      "marks": 1,
+      "negative": 0
+    },
+    {
+      "id": "code-output",
+      "type": "mcq_single",
+      "section": "Computing",
+      "prompt": [
+        { "kind": "text", "value": "What does this Python program print?" },
+        { "kind": "code", "language": "python", "value": "values = [2, 4, 6]\nprint(sum(values) / len(values))" }
+      ],
+      "options": [
+        [{ "kind": "text", "value": "4" }],
+        [{ "kind": "text", "value": "6" }],
+        [{ "kind": "text", "value": "12" }]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "negative": 0
+    },
+    {
+      "id": "diagram-identification",
+      "type": "short_answer",
+      "section": "Diagrams",
+      "prompt": [
+        { "kind": "text", "value": "Which distribution is shown?" },
+        { "kind": "image", "url": "/assets/exam-examples/normal-curve.png", "alt": "Bell-shaped density curve centered at the mean", "caption": "The horizontal axis marks $\\mu-\\sigma$, $\\mu$, and $\\mu+\\sigma$." }
+      ],
+      "acceptable_answers": ["normal distribution", "gaussian distribution", "gaussian"],
+      "marks": 1,
+      "negative": 0
+    }
+  ]
+}

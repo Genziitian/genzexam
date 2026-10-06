@@ -182,34 +182,45 @@ Route::middleware(['auth:sanctum', 'is_admin', 'track.seen'])->prefix('admin')->
     });
 });
 
-// =========================================================================
-// GenZ IITian Examination Platform (Proctored B2B SaaS Engine) Routes
-// =========================================================================
-// Exam platform. Everything but the health probe requires a session: these
-// endpoints drive live exam state, so they must not be callable by anyone who
-// knows the URL. Exam control is admin-and-above, a full reset is manager-only,
-// and syncState itself narrows what a candidate may write.
-$examPlatformRoutes = function () {
+// Per-exam proctoring API. Exam content and all candidate writes are bound to
+// an owned exam, a verified account, and (for candidates) an enrollment.
+Route::prefix('exam-platform')->group(function () {
     Route::get('/health', [ExamPlatformController::class, 'health']);
 
-    Route::middleware('auth:sanctum')->group(function () {
-        Route::get('/state', [ExamPlatformController::class, 'state']);
-        Route::post('/state', [ExamPlatformController::class, 'syncState']);
-        Route::get('/chat', [ExamPlatformController::class, 'getChat']);
-        Route::post('/chat', [ExamPlatformController::class, 'sendChat']);
-        Route::get('/reentry', [ExamPlatformController::class, 'getReentry']);
-        Route::post('/violation', [ExamPlatformController::class, 'recordViolation']);
-        Route::post('/submit', [ExamPlatformController::class, 'submitExam']);
+    // Explicit fail-closed responses for old clients calling the singleton API.
+    foreach (['state', 'chat', 'reentry', 'violation', 'submit', 'action', 'reset'] as $legacyPath) {
+        Route::match(['GET', 'POST', 'PUT', 'PATCH', 'DELETE'], '/'.$legacyPath, [ExamPlatformController::class, 'legacyGone']);
+    }
+
+    Route::middleware(['auth:sanctum', 'exam.account'])->group(function () {
+        Route::get('/exams', [ExamPlatformController::class, 'index'])->middleware('throttle:60,1,exam-get-exams-');
+        Route::get('/exams/{exam}', [ExamPlatformController::class, 'show'])->whereUuid('exam')->middleware('throttle:60,1,exam-get-exams-exam-');
+        Route::get('/exams/{exam}/state', [ExamPlatformController::class, 'state'])->whereUuid('exam')->middleware('throttle:60,1,exam-get-exams-exam-state-');
+        Route::get('/exams/{exam}/messages', [ExamPlatformController::class, 'messages'])->whereUuid('exam')->middleware('throttle:60,1,exam-get-exams-exam-messages-');
+        Route::post('/exams/{exam}/messages', [ExamPlatformController::class, 'sendMessage'])->whereUuid('exam')->middleware('throttle:20,1,exam-post-exams-exam-messages-');
 
         Route::middleware('is_manager')->group(function () {
-            Route::post('/action', [ExamPlatformController::class, 'action']);
+            Route::post('/exams', [ExamPlatformController::class, 'store'])->middleware('throttle:10,1,exam-post-exams-');
+            Route::patch('/exams/{exam}', [ExamPlatformController::class, 'update'])->whereUuid('exam')->middleware('throttle:30,1,exam-patch-exams-exam-');
+            Route::post('/exams/{exam}/import', [ExamPlatformController::class, 'importQuestions'])->whereUuid('exam')->middleware('throttle:10,1,exam-post-exams-exam-import-');
+            Route::put('/exams/{exam}/enrollments', [ExamPlatformController::class, 'replaceEnrollments'])->whereUuid('exam')->middleware('throttle:10,1,exam-put-exams-exam-enrollments-');
+            Route::post('/exams/{exam}/actions', [ExamPlatformController::class, 'action'])->whereUuid('exam')->middleware('throttle:30,1,exam-post-exams-exam-actions-');
+            Route::post('/exams/{exam}/sessions/{user}/action', [ExamPlatformController::class, 'sessionAction'])->whereUuid('exam')->whereNumber('user')->middleware('throttle:30,1,exam-post-exams-exam-sessions-user-action-');
+            Route::get('/exams/{exam}/export', [ExamPlatformController::class, 'export'])->whereUuid('exam')->middleware('throttle:10,1,exam-get-exams-exam-export-');
+            Route::get('/exams/{exam}/audit', [ExamPlatformController::class, 'audit'])->whereUuid('exam')->middleware('throttle:30,1,exam-get-exams-exam-audit-');
         });
 
-        Route::middleware('is_manager')->group(function () {
-            Route::post('/reset', [ExamPlatformController::class, 'resetState']);
-        });
+        Route::post('/exams/{exam}/join', [ExamPlatformController::class, 'join'])->whereUuid('exam')->middleware('throttle:10,1,exam-post-exams-exam-join-');
+        Route::patch('/exams/{exam}/answers', [ExamPlatformController::class, 'saveAnswers'])->whereUuid('exam')->middleware('throttle:60,1,exam-patch-exams-exam-answers-');
+        Route::post('/exams/{exam}/submit', [ExamPlatformController::class, 'submit'])->whereUuid('exam')->middleware('throttle:10,1,exam-post-exams-exam-submit-');
+        Route::post('/exams/{exam}/events', [ExamPlatformController::class, 'events'])->whereUuid('exam')->middleware('throttle:30,1,exam-post-exams-exam-events-');
     });
-};
+});
 
-Route::prefix('exam-platform')->group($examPlatformRoutes);
-Route::group([], $examPlatformRoutes);
+Route::get('/health', [ExamPlatformController::class, 'health']);
+
+// Older deployments also exposed bare /state-style endpoints. Retire them with
+// a clear 410 so an outdated client can never fall back to demo state.
+foreach (['state', 'chat', 'reentry', 'violation', 'submit', 'action', 'reset'] as $legacyPath) {
+    Route::match(['GET', 'POST', 'PUT', 'PATCH', 'DELETE'], '/'.$legacyPath, [ExamPlatformController::class, 'legacyGone']);
+}

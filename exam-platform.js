@@ -1,4418 +1,1397 @@
-// Exam Platform - Academic Focus & Obsidian Proctor B2B SaaS Engine
-// Zero DB Localhost Engine - Client-Side Synchronized via localStorage
+/* Server-owned exam management and candidate room. No local exam state or answer keys. */
 (function () {
-  const STORAGE_KEY = "ep_exam_state_v1";
-
-  // Clean Vector Icon Generator (Enterprise B2B SaaS Style - No Emojis)
-  function I(name, size = 16, color = "currentColor", extraStyle = "") {
-    const s = `width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="${color}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;flex-shrink:0;${extraStyle}"`;
-    switch (name) {
-      case "shield":
-        return `<svg ${s}><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`;
-      case "cap":
-        return `<svg ${s}><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>`;
-      case "camera":
-        return `<svg ${s}><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>`;
-      case "lock":
-        return `<svg ${s}><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>`;
-      case "unlock":
-        return `<svg ${s}><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg>`;
-      case "alert":
-        return `<svg ${s}><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>`;
-      case "check":
-        return `<svg ${s}><polyline points="20 6 9 17 4 12"/></svg>`;
-      case "checkCircle":
-        return `<svg ${s}><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>`;
-      case "wifi":
-        return `<svg ${s}><path d="M5 12.55a11 11 0 0 1 14.08 0M1.42 9a16 16 0 0 1 21.16 0M8.53 16.11a6 6 0 0 1 6.95 0M12 20h.01"/></svg>`;
-      case "volumeX":
-        return `<svg ${s}><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>`;
-      case "fileText":
-        return `<svg ${s}><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>`;
-      case "clock":
-        return `<svg ${s}><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`;
-      case "logOut":
-        return `<svg ${s}><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>`;
-      case "message":
-        return `<svg ${s}><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>`;
-      case "broadcast":
-        return `<svg ${s}><circle cx="12" cy="12" r="2"/><path d="M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-.01a6 6 0 0 1 0-8.49m11.31-2.82a10 10 0 0 1 0 14.14m-14.14 0a10 10 0 0 1 0-14.14"/></svg>`;
-      case "download":
-        return `<svg ${s}><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>`;
-      case "pause":
-        return `<svg ${s}><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>`;
-      case "play":
-        return `<svg ${s}><polygon points="5 3 19 12 5 21 5 3"/></svg>`;
-      case "square":
-        return `<svg ${s}><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/></svg>`;
-      case "settings":
-        return `<svg ${s}><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>`;
-      case "users":
-        return `<svg ${s}><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`;
-      case "book":
-        return `<svg ${s}><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>`;
-      case "zap":
-        return `<svg ${s}><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>`;
-      case "slash":
-        return `<svg ${s}><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>`;
-      case "door":
-        return `<svg ${s}><path d="M18 20V6a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v14"/><path d="M2 20h20"/><circle cx="14" cy="12" r="1"/></svg>`;
-      case "code":
-        return `<svg ${s}><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>`;
-      case "barChart":
-        return `<svg ${s}><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>`;
-      case "refresh":
-        return `<svg ${s}><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>`;
-      case "calculator":
-        return `<svg ${s}><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="16" y1="14" x2="16" y2="18"/><path d="M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M8 18h.01M12 18h.01"/></svg>`;
-      case "search":
-        return `<svg ${s}><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>`;
-      case "x":
-        return `<svg ${s}><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>`;
-      case "menu":
-        return `<svg ${s}><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>`;
-      case "command":
-        return `<svg ${s}><path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3H6a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></svg>`;
-      default:
-        return "";
-    }
-  }
-
-  function getExamDeviceInfo() {
-    const ua = navigator.userAgent || "";
-    const isPhone =
-      /Android.+Mobile|iPhone|iPod|Windows Phone|BlackBerry|IEMobile|Opera Mini/i.test(ua) ||
-      (navigator.maxTouchPoints > 1 && Math.min(window.screen.width || 0, window.screen.height || 0) <= 480);
-    const platform = navigator.userAgentData?.platform || navigator.platform || "Unknown";
-    return {
-      isPhone,
-      platform,
-      width: window.innerWidth,
-      height: window.innerHeight,
-      touch: navigator.maxTouchPoints || 0
-    };
-  }
-
-  function showLaptopOnlyModal() {
-    const info = getExamDeviceInfo();
-    const oldModal = document.getElementById("ep-device-block-modal");
-    if (oldModal) oldModal.remove();
-    const modal = document.createElement("div");
-    modal.id = "ep-device-block-modal";
-    modal.className = "ep-modal-backdrop";
-    modal.style.display = "flex";
-    modal.innerHTML = `
-      <div class="ep-onboarding-card" style="max-width:480px;text-align:center;">
-        <img src="/assets/genz-logo.png" alt="Quiz Lab" style="height:28px;object-fit:contain;margin-bottom:12px;">
-        <div class="ep-shield-badge" style="background:#fee2e2;">
-          ${I("slash", 36, "#dc2626")}
-        </div>
-        <h2 class="ep-onboarding-title" style="color:#0f172a;">Laptop Required</h2>
-        <p class="ep-onboarding-text">
-          This platform is designed for laptop only. Please use a laptop to join the exam.
-        </p>
-        <div style="width:100%;background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:12px;text-align:left;font-size:12px;color:#475569;margin-bottom:20px;">
-          <div><b>Detected device:</b> ${info.platform}</div>
-          <div><b>Screen:</b> ${info.width} × ${info.height}</div>
-          <div><b>Touch points:</b> ${info.touch}</div>
-        </div>
-        <button id="ep-device-block-close" class="ep-modal-btn" style="background:#0f172a;">
-          I Understand
-        </button>
-      </div>
-    `;
-    document.body.appendChild(modal);
-    document.getElementById("ep-device-block-close").onclick = () => modal.remove();
-  }
-
-  const defaultState = {
-    activeView: "login", // 'login' | 'exam_platform'
-    studentActiveTab: "scheduled_exams", // 'courses' | 'scheduled_exams' | 'results'
-    activeOnboardingModal: null, // null | 1 | 2 | 3 | 4
-    currentUser: {
-      id: "candidate",
-      name: "Candidate",
-      email: "",
-      role: "student"
-    },
-    exam: {
-      id: "iitm-python-endterm",
-      title: "QUIZ- LAB — Python & Computational Thinking Endterm",
-      subject: "Python Programming & Data Structures",
-      type: "final", // 'final' | 'general'
-      status: "live", // 'live' | 'paused' | 'ended'
-      resultsPublished: false,
-      durationMinutes: 60,
-      extendedMinutes: 0,
-      startedAt: Date.now() - 15 * 60 * 1000,
-      instructions: "No outside aids permitted. Exiting the exam window requires manager approval to re-enter.",
-      chatEnabled: true,
-      allowedEmails: [],
-      sections: [
-        { id: "sec-coc", title: "Code of Conduct (COC)", isCoc: true },
-        { id: "sec-a", title: "Section A: Core Concepts", marksEach: 2, negativeEach: 0.5 },
-        { id: "sec-b", title: "Section B: Algorithmic Logic & Output", marksEach: 3, negativeEach: 1.0 }
-      ],
-      questions: [
-        {
-          id: "q1",
-          sectionId: "sec-a",
-          type: "mcq_single",
-          marks: 2,
-          negative: 0.5,
-          prompt: "What is the output of the following Python slice operation on a list?",
-          code: "x = [1, 2, 3, 4, 5]\nprint(x[::-1])",
-          options: ["[1, 2, 3, 4, 5]", "[5, 4, 3, 2, 1]", "(5, 4, 3, 2, 1)", "SyntaxError"]
-        },
-        {
-          id: "q2",
-          sectionId: "sec-a",
-          type: "mcq_multi",
-          marks: 2,
-          negative: 0.5,
-          prompt: "Which of the following statements correctly create a Python dictionary? (Select all that apply)",
-          code: null,
-          options: [
-            "d = {'roll': 101, 'name': 'Aditi'}",
-            "d = dict(roll=101, name='Aditi')",
-            "d = { ('id', 1): 'admin' }",
-            "d = { ['id']: 'admin' }"
-          ]
-        },
-        {
-          id: "q3",
-          sectionId: "sec-a",
-          type: "true_false",
-          marks: 2,
-          negative: 0.5,
-          prompt: "In Python, a standard dictionary preserves insertion order of keys starting from Python 3.7+.",
-          code: null,
-          options: ["True", "False"]
-        },
-        {
-          id: "q4",
-          sectionId: "sec-a",
-          type: "numerical",
-          marks: 2,
-          negative: 0,
-          prompt: "What is the returned integer value of the following set length expression?",
-          code: "len(set([10, 20, 20, 30, 10, 40, 50]))"
-        },
-        {
-          id: "q5",
-          sectionId: "sec-b",
-          type: "mcq_single",
-          marks: 3,
-          negative: 1.0,
-          prompt: "What is the worst-case time complexity of searching in a balanced Binary Search Tree (AVL tree) of N nodes?",
-          code: null,
-          options: ["O(1)", "O(log N)", "O(N)", "O(N log N)"]
-        },
-        {
-          id: "q6",
-          sectionId: "sec-b",
-          type: "short_answer",
-          marks: 3,
-          negative: 0,
-          prompt: "What keyword is used in Python inside an inner function to modify a variable defined in the enclosing (non-global) scope?",
-          code: null
-        },
-        {
-          id: "q7",
-          sectionId: "sec-b",
-          type: "mcq_single",
-          marks: 3,
-          negative: 1.0,
-          prompt: "What will be printed when running this generator function?",
-          code: "def gen():\n    yield 1\n    yield 2\n\ng = gen()\nnext(g)\nprint(next(g))",
-          options: ["1", "2", "StopIteration", "None"]
-        },
-        {
-          id: "q8",
-          sectionId: "sec-b",
-          type: "numerical",
-          marks: 3,
-          negative: 0,
-          prompt: "Calculate the exact output value of the arithmetic precedence expression:",
-          code: "res = 2 ** 3 * 2 + 10 // 3\nprint(res)"
-        }
-      ]
-    },
-    reentryRequests: [],
-    studentSessions: {},
-    chatMessages: [
-      {
-        id: "msg-1",
-        senderName: "Exam Manager",
-        role: "manager",
-        text: "Welcome students. Ensure your internet connection is stable. Leaving the window triggers re-entry lock.",
-        timestamp: Date.now() - 14 * 60 * 1000,
-        isAnnouncement: true
-      }
-    ]
-  };
-
-  // Server-confirmed role for the signed-in user: null until /auth/me answers.
-  // Never populated from localStorage - that is forgeable by the viewer.
-  let verifiedRole = null;
-
-  function getState() {
-    try {
-      const data = localStorage.getItem(STORAGE_KEY);
-      let parsed = data ? JSON.parse(data) : JSON.parse(JSON.stringify(defaultState));
-
-      // Sync with real authenticated user if available
-      try {
-        const labUserStr = localStorage.getItem("lab_user");
-        if (labUserStr) {
-          const labUser = JSON.parse(labUserStr);
-          if (labUser && labUser.email) {
-            // Identity may come from localStorage, but elevation must not:
-            // only a role confirmed by the server opens the manager portal.
-            // Until that check returns we deliberately fail closed to student.
-            const elevated = verifiedRole === "manager" || verifiedRole === "admin";
-            parsed.currentUser = {
-              id: String(labUser.id || labUser.email),
-              name: labUser.name || (labUser.email ? labUser.email.split("@")[0] : "Candidate"),
-              email: labUser.email,
-              role: elevated ? "manager" : "student"
-            };
-          }
-        }
-      } catch (err) {}
-
-      // Route detection: if on /login page, enforce login view
-      if (window.location.pathname === "/login") {
-        parsed.activeView = "login";
-      } else if (window.location.pathname.startsWith("/exams") || window.location.pathname === "/exam" || window.location.hash.includes("exam")) {
-        parsed.activeView = "exam_platform";
-      }
-
-      if (!parsed.studentActiveTab) parsed.studentActiveTab = "scheduled_exams";
-      if (!parsed.exam.type) parsed.exam.type = "final";
-      if (parsed.exam.resultsPublished === undefined) parsed.exam.resultsPublished = false;
-      parsed.chatMessages = (parsed.chatMessages || []).map((m, idx) => ({ ...m, id: m.id || `msg-old-${idx}` }));
-      if (parsed.exam && parsed.exam.sections && !parsed.exam.sections.some((s) => s.id === "sec-coc")) {
-        parsed.exam.sections.unshift({ id: "sec-coc", title: "Code of Conduct (COC)", isCoc: true });
-      }
-      return parsed;
-    } catch (e) {
-      console.error(e);
-    }
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(defaultState));
-    return defaultState;
-  }
-
-  let syncDebounceTimer = null;
-  let isBackendConnected = false;
-  let isSyncing = false;
-  let activeApiBase = null;
-
-  function getExamApiUrls(subPath) {
-    const cleanSub = subPath.startsWith("/") ? subPath : `/${subPath}`;
-    const bases = [];
-    if (typeof ADMIN_API_BASE !== "undefined") {
-      bases.push(`${ADMIN_API_BASE}/exam-platform${cleanSub}`);
-      bases.push(`${ADMIN_API_BASE}${cleanSub}`);
-    }
-    bases.push(`/public/api/exam-platform${cleanSub}`);
-    bases.push(`/public/api${cleanSub}`);
-    bases.push(`/api/exam-platform${cleanSub}`);
-    bases.push(`/api${cleanSub}`);
-    return bases;
-  }
-
-  function getExamAuthHeaders() {
-    const token = typeof adminToken === "function" ? adminToken() : (localStorage.getItem("lab_token") || "");
-    const h = {
-      "Content-Type": "application/json",
-      "Accept": "application/json"
-    };
-    if (token) {
-      h["Authorization"] = `Bearer ${token}`;
-    }
-    return h;
-  }
-
-  function updateBackendBadge(connected) {
-    const badge = document.getElementById("ep-backend-badge");
-    if (!badge) return;
-    if (connected) {
-      badge.style.background = "#dcfce7";
-      badge.style.color = "#166534";
-      badge.innerHTML = `<span style="width:6px;height:6px;border-radius:50%;background:#16a34a;display:inline-block;"></span> Backend Live`;
-    } else {
-      badge.style.background = "#f1f5f9";
-      badge.style.color = "#64748b";
-      badge.innerHTML = `<span style="width:6px;height:6px;border-radius:50%;background:#94a3b8;display:inline-block;"></span> Local Mode`;
-    }
-  }
-
-  function applyRemoteStatePartial(remoteState) {
-    if (!remoteState || typeof remoteState !== "object") return;
-    const localState = getState();
-    let hasChanges = false;
-
-    if (remoteState.exam) {
-      if (
-        localState.exam.status !== remoteState.exam.status ||
-        localState.exam.extendedMinutes !== remoteState.exam.extendedMinutes ||
-        localState.exam.type !== remoteState.exam.type ||
-        localState.exam.resultsPublished !== remoteState.exam.resultsPublished
-      ) {
-        localState.exam.status = remoteState.exam.status;
-        localState.exam.extendedMinutes = remoteState.exam.extendedMinutes;
-        localState.exam.type = remoteState.exam.type;
-        localState.exam.resultsPublished = remoteState.exam.resultsPublished;
-        hasChanges = true;
-      }
-      if (Array.isArray(remoteState.exam.questions) && remoteState.exam.questions.length > 0) {
-        localState.exam.questions = remoteState.exam.questions;
-        hasChanges = true;
-      }
-    }
-
-    if (remoteState.chatMessages && Array.isArray(remoteState.chatMessages)) {
-      if (remoteState.chatMessages.length !== (localState.chatMessages || []).length) {
-        localState.chatMessages = remoteState.chatMessages;
-        hasChanges = true;
-      }
-    }
-
-    if (remoteState.reentryRequests && Array.isArray(remoteState.reentryRequests)) {
-      if (JSON.stringify(remoteState.reentryRequests) !== JSON.stringify(localState.reentryRequests)) {
-        localState.reentryRequests = remoteState.reentryRequests;
-        hasChanges = true;
-      }
-    }
-
-    if (localState.currentUser.role === "manager" && remoteState.studentSessions) {
-      localState.studentSessions = {
-        ...localState.studentSessions,
-        ...remoteState.studentSessions
-      };
-      hasChanges = true;
-    } else if (localState.currentUser.role === "student" && remoteState.studentSessions) {
-      const myEmail = localState.currentUser.email;
-      if (remoteState.studentSessions[myEmail]) {
-        const remoteMySession = remoteState.studentSessions[myEmail];
-        const localMySession = localState.studentSessions[myEmail] || {};
-        if (
-          remoteMySession.status !== localMySession.status &&
-          remoteMySession.status !== undefined
-        ) {
-          localMySession.status = remoteMySession.status;
-          hasChanges = true;
-        }
-        if (remoteMySession.score !== undefined && remoteMySession.score !== localMySession.score) {
-          localMySession.score = remoteMySession.score;
-          localMySession.totalMarks = remoteMySession.totalMarks;
-          hasChanges = true;
-        }
-        if (remoteMySession.warnings !== undefined && remoteMySession.warnings !== localMySession.warnings) {
-          localMySession.warnings = remoteMySession.warnings;
-          hasChanges = true;
-        }
-      }
-    }
-
-    if (hasChanges) {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(localState));
-      render();
-    }
-  }
-
-  async function pushStateToBackend(state) {
-    const urls = activeApiBase ? [`${activeApiBase}/state`] : getExamApiUrls("/state");
-    let ok = false;
-    for (const url of urls) {
-      try {
-        const res = await fetch(url, {
-          method: "POST",
-          headers: getExamAuthHeaders(),
-          body: JSON.stringify(state)
-        });
-        if (res.ok) {
-          activeApiBase = url.replace(/\/state$/, "");
-          isBackendConnected = true;
-          updateBackendBadge(true);
-          const data = await res.json().catch(() => null);
-          if (data && data.state) {
-            applyRemoteStatePartial(data.state);
-          }
-          ok = true;
-          break;
-        }
-      } catch (_) {}
-    }
-    if (!ok && !activeApiBase) {
-      isBackendConnected = false;
-      updateBackendBadge(false);
-    }
-  }
-
-  function saveState(state) {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-    window.dispatchEvent(new Event("ep_state_changed"));
-
-    clearTimeout(syncDebounceTimer);
-    syncDebounceTimer = setTimeout(() => {
-      pushStateToBackend(state);
-    }, 150);
-  }
-
-  async function syncFromBackend() {
-    if (isSyncing) return;
-    try {
-      isSyncing = true;
-      const urls = activeApiBase ? [`${activeApiBase}/state`] : getExamApiUrls("/state");
-      let remoteState = null;
-      for (const url of urls) {
-        try {
-          const res = await fetch(url, {
-            headers: getExamAuthHeaders()
-          });
-          if (res.ok) {
-            const data = await res.json().catch(() => null);
-            if (data && typeof data === "object") {
-              remoteState = data;
-              activeApiBase = url.replace(/\/state$/, "");
-              break;
-            }
-          }
-        } catch (_) {}
-      }
-
-      if (!remoteState) {
-        isBackendConnected = false;
-        updateBackendBadge(false);
-        return;
-      }
-
-      isBackendConnected = true;
-      updateBackendBadge(true);
-      applyRemoteStatePartial(remoteState);
-    } catch (e) {
-      isBackendConnected = false;
-      updateBackendBadge(false);
-    } finally {
-      isSyncing = false;
-    }
-  }
-
-  async function recordViolationToServer(type, outsideSec = 0) {
-    const urls = activeApiBase ? [`${activeApiBase}/violation`] : getExamApiUrls("/violation");
-    for (const url of urls) {
-      try {
-        const res = await fetch(url, {
-          method: "POST",
-          headers: getExamAuthHeaders(),
-          body: JSON.stringify({ type, outsideSeconds: outsideSec })
-        });
-        if (res.ok) {
-          const data = await res.json().catch(() => null);
-          if (data && data.session) {
-            const state = getState();
-            state.studentSessions[state.currentUser.email] = data.session;
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-            render();
-          }
-          return true;
-        }
-      } catch (_) {}
-    }
-    return false;
-  }
-
-  async function submitExamToServer(answers) {
-    const urls = activeApiBase ? [`${activeApiBase}/submit`] : getExamApiUrls("/submit");
-    for (const url of urls) {
-      try {
-        const res = await fetch(url, {
-          method: "POST",
-          headers: getExamAuthHeaders(),
-          body: JSON.stringify({ answers })
-        });
-        if (res.ok) {
-          const data = await res.json().catch(() => null);
-          return data;
-        }
-      } catch (_) {}
-    }
-    return null;
-  }
-
-  async function dispatchManagerAction(action, extra = {}) {
-    const urls = activeApiBase ? [`${activeApiBase}/action`] : getExamApiUrls("/action");
-    for (const url of urls) {
-      try {
-        const res = await fetch(url, {
-          method: "POST",
-          headers: getExamAuthHeaders(),
-          body: JSON.stringify({ action, ...extra })
-        });
-        if (res.ok) {
-          const data = await res.json().catch(() => null);
-          if (data && data.state) {
-            applyRemoteStatePartial(data.state);
-          }
-          return true;
-        }
-      } catch (_) {}
-    }
-    return false;
-  }
-
-  window.addEventListener("storage", (e) => {
-    if (e.key === STORAGE_KEY) render();
-  });
-  window.addEventListener("ep_state_changed", () => render());
-
-  setInterval(syncFromBackend, 2500);
-  syncFromBackend();
-
-  // ==========================================
-  // TOP WORKSPACE BAR (ADMIN / MANAGER ONLY)
-  // ==========================================
-  function renderRoleSwitcher(state) {
-    let el = document.getElementById("ep-role-switcher");
-
-    // Hide role switcher completely on login page, outside exam platform, or for students
-    if (state.activeView !== "exam_platform" || state.currentUser?.role !== "manager") {
-      if (el) el.remove();
-      document.body.classList.remove("with-ep-switcher");
-      return;
-    }
-
-    if (!el) {
-      el = document.createElement("div");
-      el.id = "ep-role-switcher";
-      document.body.prepend(el);
-      document.body.classList.add("with-ep-switcher");
-    }
-
-    el.innerHTML = `
-      <div class="brand-logo">
-        <img src="/assets/genz-logo.png" alt="QUIZ- LAB" style="height:24px;object-fit:contain;margin-right:2px;">
-        <div style="display:inline-flex;flex-direction:column;line-height:1.15;vertical-align:middle;">
-          <span style="font-size:14px;font-weight:800;color:#ffffff;letter-spacing:-0.01em;">QUIZ- LAB</span>
-          <span style="font-size:10px;color:#94a3b8;font-weight:500;">by GenZ <span style="color:#22c55e;font-style:italic;font-weight:700;">IITian</span></span>
-        </div>
-        <span class="role-badge manager">
-          ${I("shield", 13, "#38bdf8")}
-          Manager: ${state.currentUser.email || "Admin"}
-        </span>
-        <span style="font-size:11px;color:#9ca3af;font-weight:600;margin-left:4px;">
-          Type: <b style="color:${state.exam.type === "final" ? "#fb7185" : "#38bdf8"};">${state.exam.type.toUpperCase()}</b> | Status: <b style="color:${state.exam.status === "ended" ? "#fb7185" : "#34d399"};">${state.exam.status.toUpperCase()}</b>
-        </span>
-        <span id="ep-backend-badge" style="font-size:11px;font-weight:700;display:inline-flex;align-items:center;gap:5px;padding:3px 8px;border-radius:9999px;background:${isBackendConnected ? "#dcfce7" : "#f1f5f9"};color:${isBackendConnected ? "#166534" : "#64748b"};margin-left:6px;">
-          <span style="width:6px;height:6px;border-radius:50%;background:${isBackendConnected ? "#16a34a" : "#94a3b8"};display:inline-block;"></span>
-          ${isBackendConnected ? "Backend Live" : "Local Mode"}
-        </span>
-      </div>
-      <div class="btn-group">
-        <button id="ep-btn-back-login">
-          Exit to Dashboard
-        </button>
-      </div>
-    `;
-
-    const btnBackLogin = document.getElementById("ep-btn-back-login");
-    if (btnBackLogin) {
-      btnBackLogin.onclick = () => {
-        state.activeView = "login";
-        saveState(state);
-      };
-    }
-  }
-
-  // Clean up any legacy test injection container if present
-  const legacyQuick = document.getElementById("ep-quick-login-container");
-  if (legacyQuick) legacyQuick.remove();
-
-  // ==========================================
-  // ANTI-CHEAT ENFORCEMENT & WARNING ENGINE
-  // ==========================================
-  let isAntiCheatInitialized = false;
-  let hasUserSwitchedAway = false;
-  let isTabWarningModalOpen = false;
-  let tabWarningTimerId = null;
-  let ignoreBlurUntil = 0;
-
-  function markInternalExamAction() {
-    ignoreBlurUntil = Date.now() + 800;
-  }
-
-  function formatOutsideTime(seconds) {
-    const safeSeconds = Math.max(0, Math.floor(seconds || 0));
-    const mins = Math.floor(safeSeconds / 60);
-    const secs = safeSeconds % 60;
-    return `${String(mins).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
-  }
-
-  function escapeHTML(value) {
-    return String(value ?? "").replace(/[&<>"']/g, (ch) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[ch]);
-  }
-
-  function showAntiCheatToast(msg) {
-    let toast = document.getElementById("ep-cheat-toast");
-    if (!toast) {
-      toast = document.createElement("div");
-      toast.id = "ep-cheat-toast";
-      document.body.appendChild(toast);
-    }
-    toast.innerHTML = `${I("alert", 18, "#ffffff")} <span>${msg}</span>`;
-    toast.style.display = "flex";
-    if (window._epToastTimer) clearTimeout(window._epToastTimer);
-    window._epToastTimer = setTimeout(() => {
-      if (toast) toast.style.display = "none";
-    }, 2800);
-  }
-
-  function showTabSwitchWarningModal(warningCount, state, session) {
-    if (!state) state = getState();
-    if (!session) session = state.studentSessions[state.currentUser.email] || {};
-    isTabWarningModalOpen = true;
-    const floatingPanels = ["ep-doubts-modal", "ep-calc-widget"]
-      .map((id) => document.getElementById(id))
-      .filter((el) => el && el.style.display !== "none")
-      .map((el) => {
-        const display = el.style.display || "";
-        el.style.display = "none";
-        return { el, display };
-      });
-    let modal = document.getElementById("ep-tab-warning-modal");
-    if (!modal) {
-      modal = document.createElement("div");
-      modal.id = "ep-tab-warning-modal";
-      modal.className = "ep-modal-backdrop";
-      document.body.appendChild(modal);
-    }
-
-    const liveStart = session.outsideSince || Date.now();
-    const baseOutsideSeconds = session.outsideExamSeconds || 0;
-    const maxAllowed = state.exam.maxTabSwitches || 3;
-
-    modal.innerHTML = `
-      <div class="ep-onboarding-card" style="max-width:440px;text-align:center;box-shadow:0 25px 50px -12px rgba(220,38,38,0.25);border:1.5px solid #fca5a5;">
-        <img src="/assets/genz-logo.png" alt="Quiz Lab" style="height:28px;object-fit:contain;margin-bottom:12px;">
-        <div class="ep-shield-badge" style="background:#fee2e2;">
-          ${I("alert", 36, "#dc2626")}
-        </div>
-        <h2 class="ep-onboarding-title" style="color:#b91c1c;margin-bottom:8px;">
-          Security Infraction Detected!
-        </h2>
-        <p class="ep-onboarding-text" style="color:#334155;margin-bottom:18px;font-size:13px;line-height:1.6;">
-          Exiting the exam screen, changing windows, leaving fullscreen, or opening developer tools is strictly prohibited and logged to the proctoring server.
-        </p>
-        <div style="background:#fef2f2;border:1px solid #fecaca;border-radius:10px;padding:12px 16px;margin-bottom:20px;display:flex;align-items:center;justify-content:center;gap:10px;color:#991b1b;font-weight:800;font-size:15px;">
-          ${I("alert", 18, "#dc2626")}
-          Violation ${warningCount} of ${maxAllowed}
-        </div>
-        <div style="background:#fff7ed;border:1px solid #fed7aa;border-radius:10px;padding:10px 14px;margin-bottom:20px;color:#9a3412;font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center;gap:8px;">
-          ${I("clock", 15, "#ea580c")}
-          Outside duration: <span id="ep-tab-away-time">${formatOutsideTime(baseOutsideSeconds)}</span>
-        </div>
-        <button id="ep-btn-dismiss-warning" class="ep-modal-btn" style="background:#dc2626;color:#ffffff;box-shadow:0 4px 14px rgba(220,38,38,0.3);">
-          I Understand & Resume Exam (Return to Fullscreen)
-        </button>
-      </div>
-    `;
-
-    modal.style.display = "flex";
-    if (tabWarningTimerId) clearInterval(tabWarningTimerId);
-    tabWarningTimerId = setInterval(() => {
-      const timeEl = document.getElementById("ep-tab-away-time");
-      if (timeEl) timeEl.textContent = formatOutsideTime(baseOutsideSeconds + (Date.now() - liveStart) / 1000);
-    }, 1000);
-
-    const btnDismiss = document.getElementById("ep-btn-dismiss-warning");
-    if (btnDismiss) {
-      btnDismiss.onclick = () => {
-        if (tabWarningTimerId) clearInterval(tabWarningTimerId);
-        tabWarningTimerId = null;
-        const freshState = getState();
-        const freshSession = freshState.studentSessions[freshState.currentUser.email];
-        if (freshSession) {
-          const outsideSeconds = Math.max(1, Math.round((Date.now() - liveStart) / 1000));
-          freshSession.outsideExamSeconds = (freshSession.outsideExamSeconds || 0) + outsideSeconds;
-          freshSession.outsideSince = null;
-          freshSession.outsideReason = null;
-          const latestLog = freshSession.warningLogs?.[freshSession.warningLogs.length - 1];
-          if (latestLog && !latestLog.outsideSeconds) {
-            latestLog.outsideSeconds = outsideSeconds;
-            latestLog.returnedAt = Date.now();
-            latestLog.returnedAtFormatted = new Date().toLocaleTimeString();
-          }
-          saveState(freshState);
-          recordViolationToServer(latestLog?.type || "window_switch", outsideSeconds);
-        }
-        modal.style.display = "none";
-        floatingPanels.forEach(({ el, display }) => {
-          el.style.display = display;
-        });
-        isTabWarningModalOpen = false;
-        hasUserSwitchedAway = false;
-        enterExamFullscreen();
-      };
-    }
-  }
-
-  function enterExamFullscreen() {
-    try {
-      const el = document.documentElement;
-      if (el.requestFullscreen) {
-        el.requestFullscreen().catch(() => {});
-      } else if (el.webkitRequestFullscreen) {
-        el.webkitRequestFullscreen();
-      } else if (el.mozRequestFullScreen) {
-        el.mozRequestFullScreen();
-      } else if (el.msRequestFullscreen) {
-        el.msRequestFullscreen();
-      }
-    } catch (_) {}
-  }
-
-  function isExamInFullscreen() {
-    return !!(
-      document.fullscreenElement ||
-      document.webkitFullscreenElement ||
-      document.mozFullScreenElement ||
-      document.msFullscreenElement
-    );
-  }
-
-  function handleTabLeave(reason = "window_switch") {
-    const state = getState();
-    if (state.activeView !== "exam_platform" || state.currentUser.role !== "student") return;
-    const session = state.studentSessions[state.currentUser.email];
-    if (!session || (session.status !== "in_exam" && session.status !== "in_progress")) return;
-    if (reason === "window_blur" && Date.now() < ignoreBlurUntil) return;
-    if (hasUserSwitchedAway || isTabWarningModalOpen) return;
-    if (!session.outsideSince) {
-      session.outsideSince = Date.now();
-      session.outsideReason = reason;
-      saveState(state);
-    }
-    hasUserSwitchedAway = true;
-  }
-
-  function handleTabReturn() {
-    if (!hasUserSwitchedAway || isTabWarningModalOpen) return;
-    hasUserSwitchedAway = false;
-
-    const state = getState();
-    if (state.activeView !== "exam_platform" || state.currentUser.role !== "student") return;
-    const session = state.studentSessions[state.currentUser.email];
-    if (!session || (session.status !== "in_exam" && session.status !== "in_progress")) return;
-
-    session.warnings = (session.warnings || 0) + 1;
-    session.warningLogs = session.warningLogs || [];
-    const reason = session.outsideReason || "window_switch";
-    const outsideSeconds = session.outsideSince ? Math.max(1, Math.round((Date.now() - session.outsideSince) / 1000)) : 1;
-    session.outsideExamSeconds = (session.outsideExamSeconds || 0) + outsideSeconds;
-
-    session.warningLogs.push({
-      type: reason,
-      timestamp: Date.now(),
-      timeFormatted: new Date().toLocaleTimeString(),
-      leftAt: session.outsideSince || Date.now(),
-      leftAtFormatted: new Date(session.outsideSince || Date.now()).toLocaleTimeString(),
-      returnedAt: Date.now(),
-      returnedAtFormatted: new Date().toLocaleTimeString(),
-      outsideSeconds: outsideSeconds
-    });
-
-    const maxAllowed = state.exam.maxTabSwitches || 3;
-    if (session.warnings >= maxAllowed) {
-      session.status = "reentry_required";
-      session.outsideSince = null;
-      session.outsideReason = null;
-      saveState(state);
-      recordViolationToServer(reason, outsideSeconds);
-      render();
-      return;
-    }
-
-    saveState(state);
-    recordViolationToServer(reason, outsideSeconds);
-
-    const warnVal = document.getElementById("ep-warning-val");
-    if (warnVal) warnVal.textContent = session.warnings;
-    const warnChip = document.getElementById("ep-warning-chip");
-    if (warnChip) warnChip.classList.add("warning-active");
-
-    showTabSwitchWarningModal(session.warnings, state, session);
-  }
-
-  function initAntiCheatListeners() {
-    if (isAntiCheatInitialized) return;
-    isAntiCheatInitialized = true;
-
-    document.addEventListener("visibilitychange", () => {
-      if (document.hidden) {
-        handleTabLeave("tab_hidden");
-      } else {
-        handleTabReturn();
-      }
-    });
-
-    window.addEventListener("blur", () => {
-      handleTabLeave("window_blur");
-    });
-
-    window.addEventListener("focus", () => {
-      handleTabReturn();
-    });
-
-    window.addEventListener("pagehide", () => {
-      handleTabLeave("page_hidden");
-    });
-
-    window.addEventListener("pageshow", () => {
-      handleTabReturn();
-    });
-
-    function onFullscreenChange() {
-      const isFull = isExamInFullscreen();
-      const state = getState();
-      if (state.activeView === "exam_platform" && state.currentUser.role === "student") {
-        const session = state.studentSessions[state.currentUser.email];
-        if (session && (session.status === "in_exam" || session.status === "in_progress")) {
-          if (!isFull) {
-            handleTabLeave("fullscreen_exit");
-            handleTabReturn();
-          }
-        }
-      }
-    }
-    document.addEventListener("fullscreenchange", onFullscreenChange);
-    document.addEventListener("webkitfullscreenchange", onFullscreenChange);
-    document.addEventListener("mozfullscreenchange", onFullscreenChange);
-    document.addEventListener("MSFullscreenChange", onFullscreenChange);
-
-    function blockClipboard(e) {
-      const state = getState();
-      if (state.activeView === "exam_platform" && state.currentUser.role === "student") {
-        const session = state.studentSessions[state.currentUser.email];
-        if (session && (session.status === "in_exam" || session.status === "in_progress")) {
-          e.preventDefault();
-          e.stopPropagation();
-          showAntiCheatToast("Clipboard actions (Copy/Cut/Paste) are blocked during exams.");
-        }
-      }
-    }
-    document.addEventListener("copy", blockClipboard, true);
-    document.addEventListener("cut", blockClipboard, true);
-    document.addEventListener("paste", blockClipboard, true);
-
-    document.addEventListener("dblclick", (e) => {
-      const state = getState();
-      if (state.activeView === "exam_platform" && state.currentUser.role === "student") {
-        const session = state.studentSessions[state.currentUser.email];
-        if (session && (session.status === "in_exam" || session.status === "in_progress")) {
-          e.preventDefault();
-          showAntiCheatToast("Double-click text selection is disabled during exams.");
-        }
-      }
-    }, true);
-
-    document.addEventListener("contextmenu", (e) => {
-      const state = getState();
-      if (state.activeView === "exam_platform" && state.currentUser.role === "student") {
-        const session = state.studentSessions[state.currentUser.email];
-        if (session && (session.status === "in_exam" || session.status === "in_progress")) {
-          e.preventDefault();
-          e.stopPropagation();
-          showAntiCheatToast("Right-click inspection is disabled during exams.");
-        }
-      }
-    }, true);
-
-    document.addEventListener("keydown", (e) => {
-      const state = getState();
-      if (state.activeView === "exam_platform" && state.currentUser.role === "student") {
-        const session = state.studentSessions[state.currentUser.email];
-        if (session && (session.status === "in_exam" || session.status === "in_progress")) {
-          const isCmdOrCtrl = e.metaKey || e.ctrlKey;
-          const k = (e.key || "").toLowerCase();
-          const isDevTools =
-            e.key === "F12" ||
-            (isCmdOrCtrl && e.shiftKey && (k === "i" || k === "j" || k === "c")) ||
-            (e.metaKey && e.altKey && (k === "i" || k === "j" || k === "c")) ||
-            (isCmdOrCtrl && (k === "u" || k === "s" || k === "p"));
-
-          if (isDevTools) {
-            e.preventDefault();
-            e.stopPropagation();
-            showAntiCheatToast("Inspection and source shortcut blocked by Exam Guard.");
-            handleTabLeave("devtools_attempt");
-            handleTabReturn();
-            return false;
-          }
-
-          if (isCmdOrCtrl && (k === "c" || k === "v" || k === "x")) {
-            e.preventDefault();
-            e.stopPropagation();
-            showAntiCheatToast("Clipboard shortcut disabled by Examination Guard.");
-            return false;
-          }
-        }
-      }
-    }, true);
-  }
-
-  // ==========================================
-  // EXAM ENDED MODALS
-  // ==========================================
-  function showExamEndedForceModal(state, session) {
-    let modal = document.getElementById("ep-exam-ended-force-modal");
-    if (!modal) {
-      modal = document.createElement("div");
-      modal.id = "ep-exam-ended-force-modal";
-      modal.className = "ep-modal-backdrop";
-      document.body.appendChild(modal);
-    }
-    modal.innerHTML = `
-      <div class="ep-onboarding-card" style="max-width:460px;text-align:center;box-shadow:0 25px 50px -12px rgba(15,23,42,0.35);border:1.5px solid #cbd5e1;">
-        <img src="/assets/genz-logo.png" alt="Quiz Lab" style="height:28px;object-fit:contain;margin-bottom:12px;">
-        <div class="ep-shield-badge" style="background:#fee2e2;">
-          ${I("lock", 36, "#dc2626")}
-        </div>
-        <h2 class="ep-onboarding-title" style="color:#0f172a;margin-bottom:8px;">
-          Examination Ended
-        </h2>
-        <p class="ep-onboarding-text" style="color:#475569;margin-bottom:20px;font-size:13.5px;line-height:1.6;">
-          The examination has been officially ended by the proctor. All active student sessions are now closed and your recorded answers have been submitted.
-        </p>
-        <button id="ep-btn-force-quit-exam" class="ep-modal-btn" style="background:#dc2626;color:#ffffff;box-shadow:0 4px 14px rgba(220,38,38,0.3);font-size:14px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;gap:8px;">
-          ${I("logOut", 15, "#ffffff")} Force Quit Examination
-        </button>
-      </div>
-    `;
-    modal.style.display = "flex";
-    const btnForce = document.getElementById("ep-btn-force-quit-exam");
-    if (btnForce) {
-      btnForce.onclick = () => {
-        modal.remove();
-        session.status = "submitted";
-        session.submittedAt = Date.now();
-        saveState(state);
-        render();
-      };
-    }
-  }
-
-  function showExamEndedRejoinModal() {
-    let modal = document.getElementById("ep-exam-ended-rejoin-modal");
-    if (!modal) {
-      modal = document.createElement("div");
-      modal.id = "ep-exam-ended-rejoin-modal";
-      modal.className = "ep-modal-backdrop";
-      document.body.appendChild(modal);
-    }
-    modal.innerHTML = `
-      <div class="ep-onboarding-card" style="max-width:440px;text-align:center;box-shadow:0 25px 50px -12px rgba(15,23,42,0.35);border:1.5px solid #cbd5e1;">
-        <img src="/assets/genz-logo.png" alt="Quiz Lab" style="height:28px;object-fit:contain;margin-bottom:12px;">
-        <div class="ep-shield-badge" style="background:#fee2e2;">
-          ${I("slash", 36, "#dc2626")}
-        </div>
-        <h2 class="ep-onboarding-title" style="color:#0f172a;margin-bottom:8px;">
-          Examination Has Ended
-        </h2>
-        <p class="ep-onboarding-text" style="color:#475569;margin-bottom:20px;font-size:13.5px;line-height:1.6;">
-          This examination was officially concluded and closed. You cannot join or re-join an exam session that has ended.
-        </p>
-        <button id="ep-btn-close-ended-rejoin" class="ep-modal-btn" style="background:#0f172a;color:#ffffff;font-size:13.5px;font-weight:700;">
-          Return to Dashboard
-        </button>
-      </div>
-    `;
-    modal.style.display = "flex";
-    const btnClose = document.getElementById("ep-btn-close-ended-rejoin");
-    if (btnClose) {
-      btnClose.onclick = () => {
-        modal.style.display = "none";
-      };
-    }
-  }
-
-  // ==========================================
-  // MANAGER DOUBLE CONFIRMATION MODAL (ACCIDENTAL TOUCH GUARD)
-  // ==========================================
-  function showManagerConfirmModal({
-    title,
-    subtitle = "Manager Action Confirmation",
-    description,
-    confirmText = "Confirm Action",
-    confirmType = "primary", // "danger", "success", "warning", "purple", "teal", "info"
-    icon = "alert",
-    requireCheckbox = false,
-    checkboxLabel = "I confirm and understand this action",
-    onConfirm,
-    onCancel
-  }) {
-    const oldModal = document.getElementById("ep-manager-confirm-modal");
-    if (oldModal) oldModal.remove();
-
-    const colorMap = {
-      danger: { badgeBg: "#450a0a", badgeBorder: "#7f1d1d", iconColor: "#f87171", btnBg: "#dc2626", btnColor: "#ffffff" },
-      warning: { badgeBg: "#451a03", badgeBorder: "#78350f", iconColor: "#fbbf24", btnBg: "#d97706", btnColor: "#ffffff" },
-      success: { badgeBg: "#052e16", badgeBorder: "#14532d", iconColor: "#34d399", btnBg: "#059669", btnColor: "#ffffff" },
-      purple: { badgeBg: "#2e1065", badgeBorder: "#581c87", iconColor: "#c084fc", btnBg: "#7c3aed", btnColor: "#ffffff" },
-      teal: { badgeBg: "#042f2e", badgeBorder: "#115e59", iconColor: "#2dd4bf", btnBg: "#0d9488", btnColor: "#ffffff" },
-      info: { badgeBg: "#082f49", badgeBorder: "#075985", iconColor: "#38bdf8", btnBg: "#0284c7", btnColor: "#ffffff" }
-    };
-    const theme = colorMap[confirmType] || colorMap.info;
-
-    const modal = document.createElement("div");
-    modal.id = "ep-manager-confirm-modal";
-    modal.className = "ep-modal-backdrop";
-    modal.style.cssText = "display:flex;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.88);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);z-index:999999;align-items:center;justify-content:center;padding:20px;";
-
-    modal.innerHTML = `
-      <div class="ep-mgr-confirm-card" style="max-width:500px;width:100%;text-align:left;background:#0a0a0a;border:1.5px solid #222222;border-radius:18px;box-shadow:0 25px 60px -15px rgba(0,0,0,0.95);padding:26px 24px;color:#f9fafb;position:relative;animation:ep-card-pop 0.2s cubic-bezier(0.16, 1, 0.3, 1);">
-        <!-- Top bar with Logo & Accidental Touch Guard indicator -->
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;border-bottom:1px solid #1a1a1a;padding-bottom:12px;">
-          <div style="display:flex;align-items:center;gap:10px;">
-            <span style="font-size:11px;font-weight:800;color:#94a3b8;letter-spacing:0.06em;text-transform:uppercase;">Accidental Touch Guard</span>
-          </div>
-          <button id="ep-mgr-modal-close" style="background:transparent;border:none;color:#64748b;cursor:pointer;display:inline-flex;align-items:center;padding:4px;border-radius:6px;" title="Dismiss (Esc)">
-            ${I("x", 16, "#94a3b8")}
-          </button>
-        </div>
-
-        <!-- Action Icon + Titles -->
-        <div style="display:flex;align-items:flex-start;gap:14px;margin-bottom:16px;">
-          <div style="width:46px;height:46px;border-radius:12px;background:${theme.badgeBg};border:1.5px solid ${theme.badgeBorder};display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-            ${I(icon, 22, theme.iconColor)}
-          </div>
-          <div>
-            <div style="font-size:11px;font-weight:800;color:${theme.iconColor};text-transform:uppercase;letter-spacing:0.06em;margin-bottom:3px;">
-              ${subtitle}
-            </div>
-            <div style="font-size:16px;font-weight:800;color:#f8fafc;line-height:1.35;">
-              ${title}
-            </div>
-          </div>
-        </div>
-
-        <!-- Action details description box -->
-        <div style="background:#111111;border:1px solid #1e1e1e;border-radius:10px;padding:14px 16px;margin-bottom:16px;font-size:13px;color:#cbd5e1;line-height:1.55;">
-          ${description}
-        </div>
-
-        <!-- Double confirmation badge note -->
-        <div style="display:flex;align-items:center;gap:8px;font-size:11.5px;color:#94a3b8;margin-bottom:${requireCheckbox ? "14px" : "20px"};padding:8px 12px;background:rgba(255,255,255,0.03);border-radius:8px;border:1px dashed #2a2a2a;">
-          ${I("shield", 14, "#38bdf8")}
-          <span><b>Double Confirmation:</b> Second confirmation click is required to execute this manager command.</span>
-        </div>
-
-        ${
-          requireCheckbox
-            ? `
-          <label style="display:flex;align-items:center;gap:10px;font-size:12.5px;color:#fca5a5;background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.25);border-radius:8px;padding:10px 12px;margin-bottom:20px;cursor:pointer;">
-            <input type="checkbox" id="ep-mgr-modal-check" style="width:16px;height:16px;cursor:pointer;accent-color:#ef4444;" />
-            <span style="font-weight:600;">${checkboxLabel}</span>
-          </label>
-        `
-            : ""
-        }
-
-        <!-- Dual Action Buttons -->
-        <div style="display:flex;align-items:center;justify-content:flex-end;gap:10px;">
-          <button id="ep-mgr-modal-cancel" style="background:#141414;border:1px solid #262626;color:#e2e8f0;padding:10px 18px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:6px;">
-            ${I("x", 13, "#94a3b8")} Cancel
-          </button>
-          <button id="ep-mgr-modal-confirm" ${requireCheckbox ? "disabled" : ""} style="background:${theme.btnBg};border:none;color:${theme.btnColor};padding:10px 22px;border-radius:8px;font-size:13px;font-weight:700;cursor:${requireCheckbox ? "not-allowed" : "pointer"};display:inline-flex;align-items:center;gap:8px;box-shadow:0 4px 14px rgba(0,0,0,0.35);opacity:${requireCheckbox ? "0.45" : "1"};transition:opacity 0.15s ease;">
-            ${I("check", 14, theme.btnColor)} ${confirmText}
-          </button>
-        </div>
-      </div>
-    `;
-
-    document.body.appendChild(modal);
-
-    let confirmed = false;
-
-    const cleanup = () => {
-      modal.remove();
-      document.removeEventListener("keydown", keyHandler);
-      if (!confirmed && typeof onCancel === "function") onCancel();
-    };
-
-    const keyHandler = (e) => {
-      if (e.key === "Escape") cleanup();
-    };
-    document.addEventListener("keydown", keyHandler);
-
-    modal.addEventListener("click", (e) => {
-      if (e.target === modal) cleanup();
-    });
-
-    document.getElementById("ep-mgr-modal-close").onclick = cleanup;
-    document.getElementById("ep-mgr-modal-cancel").onclick = cleanup;
-
-    const confirmBtn = document.getElementById("ep-mgr-modal-confirm");
-    const checkEl = document.getElementById("ep-mgr-modal-check");
-
-    if (checkEl) {
-      checkEl.onchange = () => {
-        if (checkEl.checked) {
-          confirmBtn.disabled = false;
-          confirmBtn.style.cursor = "pointer";
-          confirmBtn.style.opacity = "1";
-        } else {
-          confirmBtn.disabled = true;
-          confirmBtn.style.cursor = "not-allowed";
-          confirmBtn.style.opacity = "0.45";
-        }
-      };
-    }
-
-    // Accidental double-touch debounce (200ms lock)
-    let canConfirm = false;
-    setTimeout(() => {
-      canConfirm = true;
-    }, 200);
-
-    confirmBtn.onclick = () => {
-      if (!canConfirm || confirmBtn.disabled) return;
-      confirmed = true;
-      cleanup();
-      if (typeof onConfirm === "function") {
-        onConfirm();
-      }
-    };
-  }
-
-  function showStudentSubmitConfirmModal({ answeredCount, totalCount, onConfirm }) {
-    const oldModal = document.getElementById("ep-student-submit-modal");
-    if (oldModal) oldModal.remove();
-
-    const modal = document.createElement("div");
-    modal.id = "ep-student-submit-modal";
-    modal.className = "ep-modal-backdrop";
-    modal.style.cssText = "display:flex;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(15,23,42,0.8);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);z-index:999999;align-items:center;justify-content:center;padding:20px;";
-
-    modal.innerHTML = `
-      <div class="ep-onboarding-card" style="max-width:460px;width:100%;text-align:center;background:#ffffff;border-radius:20px;box-shadow:0 25px 60px -15px rgba(0,0,0,0.3);padding:30px 24px;color:#0f172a;animation:ep-card-pop 0.2s cubic-bezier(0.16, 1, 0.3, 1);">
-        <img src="/assets/genz-logo.png" alt="Quiz Lab" style="height:28px;object-fit:contain;margin-bottom:12px;">
-        <div class="ep-shield-badge" style="background:#dcfce7;margin:0 auto 16px auto;">
-          ${I("checkCircle", 36, "#059669")}
-        </div>
-        <h2 style="font-size:20px;font-weight:800;color:#0f172a;margin:0 0 8px 0;">
-          Exit Examination
-        </h2>
-        <p style="font-size:13.5px;color:#475569;margin:0 0 18px 0;line-height:1.55;">
-          You have recorded answers for <b>${answeredCount} of ${totalCount}</b> questions. Once submitted, your answers will be sealed and your exam session will end.
-        </p>
-        <div style="display:flex;gap:10px;">
-          <button id="ep-btn-cancel-submit" style="flex:1;background:#f1f5f9;color:#334155;border:1px solid #cbd5e1;padding:11px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;">
-            Return to Exam
-          </button>
-          <button id="ep-btn-confirm-submit" style="flex:1.2;background:#059669;color:#ffffff;border:none;padding:11px;border-radius:8px;font-size:13px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px;box-shadow:0 4px 14px rgba(5,150,105,0.3);">
-            ${I("check", 14, "#ffffff")} Submit
-          </button>
-        </div>
-      </div>
-    `;
-
-    document.body.appendChild(modal);
-
-    const cleanup = () => modal.remove();
-    document.getElementById("ep-btn-cancel-submit").onclick = cleanup;
-    document.getElementById("ep-btn-confirm-submit").onclick = () => {
-      cleanup();
-      if (typeof onConfirm === "function") onConfirm();
-    };
-  }
-
-  // ==========================================
-  // EMBEDDED CALCULATOR ENGINE (BASIC & PRO)
-  // ==========================================
-  let calcMode = "basic"; // 'basic' | 'pro'
-  let calcExpression = "";
-  let calcCurrentVal = "0";
-  let calcHistory = "";
-  let isCalcOpen = false;
-
-  function toggleCalculator(initialMode = null) {
-    markInternalExamAction();
-    if (initialMode) calcMode = initialMode;
-    let panel = document.getElementById("ep-calc-widget");
-    if (!panel) {
-      panel = document.createElement("div");
-      panel.id = "ep-calc-widget";
-      document.body.appendChild(panel);
-    }
-
-    if (isCalcOpen && (!initialMode || panel.dataset.mode === initialMode)) {
-      panel.style.display = "none";
-      isCalcOpen = false;
-      return;
-    }
-
-    isCalcOpen = true;
-    panel.style.display = "flex";
-    panel.dataset.mode = calcMode;
-    renderCalculatorDOM(panel);
-  }
-
-  function showDoubtsModal(state) {
-    markInternalExamAction();
-    const oldModal = document.getElementById("ep-doubts-modal");
-    if (oldModal) oldModal.remove();
-    const modal = document.createElement("div");
-    modal.id = "ep-doubts-modal";
-    modal.style.cssText = "position:fixed;left:16px;bottom:94px;width:360px;height:430px;background:#ffffff;border:1px solid #cbd5e1;border-radius:14px;box-shadow:0 18px 45px rgba(15,23,42,0.22);z-index:999999;display:flex;flex-direction:column;overflow:hidden;";
-    modal.innerHTML = `
-        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;border-bottom:1px solid #e2e8f0;background:#f8fafc;">
-          <div style="display:flex;align-items:center;gap:10px;">
-            ${I("message", 18, "#059669")}
-            <h2 style="font-size:15px;font-weight:800;color:#0f172a;margin:0;">Doubts</h2>
-          </div>
-          <button id="ep-doubts-close" style="background:#ffffff;border:1px solid #cbd5e1;color:#334155;border-radius:8px;padding:6px 8px;cursor:pointer;font-weight:800;">
-            ${I("x", 14, "#334155")}
-          </button>
-        </div>
-        <div id="ep-doubts-stream" style="flex:1;min-height:0;overflow-y:auto;background:#ffffff;padding:12px;display:flex;flex-direction:column;gap:10px;">
-          ${
-            state.chatMessages.length
-              ? state.chatMessages
-                  .map(
-                    (m) => {
-                      const role = m.role || (m.from === "Student" ? "student" : "manager");
-                      const isMe = role === "student";
-                      const sender = escapeHTML(m.senderName || m.from || (isMe ? "Student" : "Manager"));
-                      const time = m.timestamp ? new Date(m.timestamp).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }) : escapeHTML(m.time || "");
-                      const text = escapeHTML(m.text || m.message || "");
-                      return `
-                    <div style="align-self:${isMe ? "flex-end" : "flex-start"};max-width:82%;background:${isMe ? "#ecfdf5" : "#ffffff"};border:1px solid ${isMe ? "#86efac" : "#e2e8f0"};border-radius:10px;padding:10px;">
-                      <div style="font-size:11px;font-weight:800;color:${isMe ? "#059669" : "#2563eb"};margin-bottom:4px;">${sender}${time ? ` · ${time}` : ""}</div>
-                      <div style="font-size:13px;color:#334155;line-height:1.5;white-space:pre-wrap;overflow-wrap:anywhere;">${text}</div>
-                    </div>
-                  `;
-                    }
-                  )
-                  .join("")
-              : `<div style="font-size:13px;color:#64748b;text-align:center;padding:20px;">No messages yet.</div>`
-          }
-        </div>
-        <div style="padding:10px 12px;border-top:1px solid #e2e8f0;background:#f8fafc;">
-          <div style="display:flex;gap:8px;">
-            <input id="ep-doubts-input" type="text" maxlength="240" placeholder="Type your doubt..." style="flex:1;min-width:0;border:1px solid #cbd5e1;border-radius:8px;padding:9px 10px;font-size:13px;outline:none;color:#0f172a;" />
-            <button id="ep-doubts-send" style="background:#059669;color:#fff;border:none;border-radius:8px;padding:9px 12px;font-size:12px;font-weight:800;cursor:pointer;">Send</button>
-          </div>
-          <div id="ep-doubts-error" style="min-height:14px;margin-top:5px;font-size:11px;color:#dc2626;font-weight:700;"></div>
-        </div>
-    `;
-    document.body.appendChild(modal);
-    const close = () => modal.remove();
-    document.getElementById("ep-doubts-close").onclick = close;
-    const input = document.getElementById("ep-doubts-input");
-    const send = document.getElementById("ep-doubts-send");
-    const error = document.getElementById("ep-doubts-error");
-    const stream = document.getElementById("ep-doubts-stream");
-    if (stream) stream.scrollTop = stream.scrollHeight;
-    const sendDoubt = () => {
-      const text = input.value.trim().slice(0, 240);
-      const now = Date.now();
-      if (!text) return;
-      if (now - (state.lastDoubtSentAt || 0) < 5000) {
-        error.textContent = "Please wait a few seconds before sending again.";
-        return;
-      }
-      state.lastDoubtSentAt = now;
-      state.chatMessages.push({
-        id: "msg-" + now,
-        senderName: "Student",
-        role: "student",
-        text,
-        timestamp: now,
-        isAnnouncement: false
-      });
-      saveState(state);
-      showDoubtsModal(state);
-    };
-    send.onclick = sendDoubt;
-    input.onkeydown = (e) => {
-      if (e.key === "Enter") sendDoubt();
-    };
-  }
-
-  function renderCalculatorDOM(panel) {
-    panel.className = `ep-calc-panel ${calcMode === "pro" ? "pro-mode" : ""}`;
-    panel.innerHTML = `
-      <div class="ep-calc-header">
-        <div style="display:flex;align-items:center;gap:6px;color:#0f172a;font-weight:700;font-size:12px;">
-          ${I("calculator", 14, "#10b981")}
-          <span>${calcMode === "pro" ? "Scientific (Pro)" : "Basic"} Calculator</span>
-        </div>
-        <div style="display:flex;align-items:center;gap:8px;">
-          <div class="ep-calc-tabs">
-            <button class="ep-calc-tab-btn ${calcMode === "basic" ? "active" : ""}" id="ep-calc-tab-basic">Basic</button>
-            <button class="ep-calc-tab-btn ${calcMode === "pro" ? "active" : ""}" id="ep-calc-tab-pro">Pro</button>
-          </div>
-          <button id="ep-calc-btn-close" style="background:transparent;border:none;color:#64748b;cursor:pointer;padding:4px;display:flex;">
-            ${I("x", 14, "#64748b")}
-          </button>
-        </div>
-      </div>
-
-      <div class="ep-calc-screen">
-        <div class="ep-calc-history" id="ep-calc-hist-text">${calcHistory}</div>
-        <div class="ep-calc-display" id="ep-calc-disp-text">${calcCurrentVal}</div>
-      </div>
-
-      <div class="ep-calc-body">
-        ${
-          calcMode === "basic"
-            ? `
-          <div class="ep-calc-grid-basic">
-            <button class="ep-calc-key action-clear" data-k="C">C</button>
-            <button class="ep-calc-key action-clear" data-k="DEL">DEL</button>
-            <button class="ep-calc-key op" data-k="±">±</button>
-            <button class="ep-calc-key op" data-k="/">÷</button>
-
-            <button class="ep-calc-key" data-k="7">7</button>
-            <button class="ep-calc-key" data-k="8">8</button>
-            <button class="ep-calc-key" data-k="9">9</button>
-            <button class="ep-calc-key op" data-k="*">×</button>
-
-            <button class="ep-calc-key" data-k="4">4</button>
-            <button class="ep-calc-key" data-k="5">5</button>
-            <button class="ep-calc-key" data-k="6">6</button>
-            <button class="ep-calc-key op" data-k="-">−</button>
-
-            <button class="ep-calc-key" data-k="1">1</button>
-            <button class="ep-calc-key" data-k="2">2</button>
-            <button class="ep-calc-key" data-k="3">3</button>
-            <button class="ep-calc-key op" data-k="+">+</button>
-
-            <button class="ep-calc-key" data-k="0" style="grid-column: span 2;">0</button>
-            <button class="ep-calc-key" data-k=".">.</button>
-            <button class="ep-calc-key action-equals" data-k="=">=</button>
-          </div>
-        `
-            : `
-          <div class="ep-calc-grid-pro">
-            <button class="ep-calc-key fn" data-k="sin">sin</button>
-            <button class="ep-calc-key fn" data-k="cos">cos</button>
-            <button class="ep-calc-key fn" data-k="tan">tan</button>
-            <button class="ep-calc-key fn" data-k="log">log</button>
-            <button class="ep-calc-key fn" data-k="ln">ln</button>
-
-            <button class="ep-calc-key fn" data-k="sqrt">√</button>
-            <button class="ep-calc-key fn" data-k="sqr">x²</button>
-            <button class="ep-calc-key fn" data-k="pow">^</button>
-            <button class="ep-calc-key fn" data-k="pi">π</button>
-            <button class="ep-calc-key fn" data-k="e">e</button>
-
-            <button class="ep-calc-key fn" data-k="(">(</button>
-            <button class="ep-calc-key fn" data-k=")">)</button>
-            <button class="ep-calc-key fn" data-k="inv">1/x</button>
-            <button class="ep-calc-key fn" data-k="abs">abs</button>
-            <button class="ep-calc-key fn" data-k="%">%</button>
-
-            <button class="ep-calc-key action-clear" data-k="C">C</button>
-            <button class="ep-calc-key action-clear" data-k="DEL">DEL</button>
-            <button class="ep-calc-key op" data-k="±">±</button>
-            <button class="ep-calc-key op" data-k="/">÷</button>
-            <button class="ep-calc-key op" data-k="*">×</button>
-
-            <button class="ep-calc-key" data-k="7">7</button>
-            <button class="ep-calc-key" data-k="8">8</button>
-            <button class="ep-calc-key" data-k="9">9</button>
-            <button class="ep-calc-key op" data-k="-">−</button>
-            <button class="ep-calc-key op" data-k="+">+</button>
-
-            <button class="ep-calc-key" data-k="4">4</button>
-            <button class="ep-calc-key" data-k="5">5</button>
-            <button class="ep-calc-key" data-k="6">6</button>
-            <button class="ep-calc-key" data-k="0">0</button>
-            <button class="ep-calc-key" data-k=".">.</button>
-
-            <button class="ep-calc-key" data-k="1">1</button>
-            <button class="ep-calc-key" data-k="2">2</button>
-            <button class="ep-calc-key" data-k="3">3</button>
-            <button class="ep-calc-key action-equals" data-k="=" style="grid-column: span 2;">=</button>
-          </div>
-        `
-        }
-      </div>
-    `;
-
-    const btnClose = document.getElementById("ep-calc-btn-close");
-    if (btnClose) {
-      btnClose.onclick = () => {
-        panel.style.display = "none";
-        isCalcOpen = false;
-      };
-    }
-
-    const tabBasic = document.getElementById("ep-calc-tab-basic");
-    if (tabBasic) {
-      tabBasic.onclick = () => {
-        calcMode = "basic";
-        renderCalculatorDOM(panel);
-      };
-    }
-
-    const tabPro = document.getElementById("ep-calc-tab-pro");
-    if (tabPro) {
-      tabPro.onclick = () => {
-        calcMode = "pro";
-        renderCalculatorDOM(panel);
-      };
-    }
-
-    panel.querySelectorAll(".ep-calc-key").forEach((btn) => {
-      btn.onclick = () => handleCalcKey(btn.dataset.k, panel);
-    });
-  }
-
-  function handleCalcKey(key, panel) {
-    if (key === "C") {
-      calcCurrentVal = "0";
-      calcExpression = "";
-      calcHistory = "";
-    } else if (key === "DEL") {
-      calcCurrentVal = calcCurrentVal.length > 1 ? calcCurrentVal.slice(0, -1) : "0";
-    } else if (key === "±") {
-      if (calcCurrentVal !== "0") {
-        calcCurrentVal = calcCurrentVal.startsWith("-") ? calcCurrentVal.slice(1) : "-" + calcCurrentVal;
-      }
-    } else if (key === "pi") {
-      calcCurrentVal = String(Math.PI.toFixed(6));
-    } else if (key === "e") {
-      calcCurrentVal = String(Math.E.toFixed(6));
-    } else if (["sin", "cos", "tan", "log", "ln", "sqrt", "sqr", "inv", "abs"].includes(key)) {
-      const v = parseFloat(calcCurrentVal) || 0;
-      let res = 0;
-      if (key === "sin") res = Math.sin((v * Math.PI) / 180);
-      else if (key === "cos") res = Math.cos((v * Math.PI) / 180);
-      else if (key === "tan") res = Math.tan((v * Math.PI) / 180);
-      else if (key === "log") res = Math.log10(v);
-      else if (key === "ln") res = Math.log(v);
-      else if (key === "sqrt") res = Math.sqrt(v);
-      else if (key === "sqr") res = v * v;
-      else if (key === "inv") res = v !== 0 ? 1 / v : 0;
-      else if (key === "abs") res = Math.abs(v);
-      calcHistory = `${key}(${v}) =`;
-      calcCurrentVal = String(Number.isInteger(res) ? res : Number(res.toFixed(6)));
-    } else if (["+", "-", "*", "/", "%", "pow"].includes(key)) {
-      const sym = key === "pow" ? "^" : key;
-      calcExpression += calcCurrentVal + " " + sym + " ";
-      calcHistory = calcExpression;
-      calcCurrentVal = "0";
-    } else if (key === "(" || key === ")") {
-      calcExpression += " " + key + " ";
-      calcHistory = calcExpression;
-    } else if (key === "=") {
-      const full = calcExpression + calcCurrentVal;
-      calcHistory = full + " =";
-      try {
-        const sanitized = full.replace(/\^/g, "**").replace(/×/g, "*").replace(/÷/g, "/");
-        const res = Function(`"use strict"; return (${sanitized});`)();
-        calcCurrentVal = String(Number.isInteger(res) ? res : Number(res.toFixed(6)));
-      } catch (e) {
-        calcCurrentVal = "Error";
-      }
-      calcExpression = "";
-    } else {
-      if (key === "." && calcCurrentVal.includes(".")) return;
-      if (calcCurrentVal === "0" && key !== ".") {
-        calcCurrentVal = key;
-      } else {
-        calcCurrentVal += key;
-      }
-    }
-
-    const d = document.getElementById("ep-calc-disp-text");
-    if (d) d.textContent = calcCurrentVal;
-    const h = document.getElementById("ep-calc-hist-text");
-    if (h) h.textContent = calcHistory;
-  }
-
-  // ==========================================
-  // MAIN RENDER DISPATCHER
-  // ==========================================
-  function render() {
-    initAntiCheatListeners();
-    const state = getState();
-    renderRoleSwitcher(state);
-
-    let container = document.getElementById("ep-main-app");
-    if (!container) {
-      container = document.createElement("div");
-      container.id = "ep-main-app";
-      document.body.appendChild(container);
-    }
-
-    const originalRoot = document.getElementById("root");
-
-    if (state.activeView === "login") {
-      if (originalRoot) originalRoot.style.display = "block";
-      container.style.display = "none";
-      const q = document.getElementById("ep-quick-login-container");
-      if (q) q.remove();
-    } else {
-      if (originalRoot) originalRoot.style.display = "none";
-      container.style.display = "block";
-
-      if (state.currentUser.role === "manager") {
-        renderManagerPortal(container, state);
-      } else {
-        renderStudentInterface(container, state);
-      }
-    }
-  }
-
-  // ==========================================
-  // 1. EXAM MANAGER PORTAL (Obsidian Proctor)
-  // ==========================================
-  let currentMgrTab = "monitor";
-
-  function renderManagerPortal(container, state) {
-    const exam = state.exam;
-    const enrolledCount = exam.allowedEmails.length;
-    const sessionList = Object.values(state.studentSessions);
-    const activeCount = sessionList.filter((s) => s.status === "in_exam").length;
-    const leaveLogCount = sessionList.reduce((sum, s) => sum + (s.warningLogs || []).length, 0);
-    const pendingReentry = state.reentryRequests.filter((r) => r.status === "pending");
-
-    const totalQ = exam.questions.length;
-    const totalAnswered = sessionList.reduce((acc, s) => acc + Object.keys(s.answers || {}).length, 0);
-    const avgProgress = sessionList.length ? Math.round((totalAnswered / (sessionList.length * totalQ)) * 100) : 0;
-
-    container.innerHTML = `
-      <div id="ep-root" style="background:#000000;min-height:calc(100vh - 48px);color:#f9fafb;">
-        <div class="saas-container">
-          <!-- Top Executive Control Bar -->
-          <div class="saas-header">
-            <div>
-              <div class="saas-breadcrumb">
-                <span>Assessments</span>
-                <span style="color:#4b5563;">/</span>
-                <span>QUIZ- LAB</span>
-                <span style="color:#4b5563;">/</span>
-                <span class="active">Python Endterm 2026</span>
-              </div>
-              <div class="saas-title">
-                ${exam.title}
-                <span class="saas-status-pill ${exam.status}">
-                  <span class="saas-pulse-dot"></span>
-                  ${exam.status}
-                </span>
-                <span style="font-size:12px;padding:3px 8px;border-radius:6px;background:${exam.type === "final" ? "rgba(244,63,94,0.15)" : "rgba(56,189,248,0.15)"};color:${exam.type === "final" ? "#fb7185" : "#38bdf8"};border:1px solid ${exam.type === "final" ? "rgba(244,63,94,0.3)" : "rgba(56,189,248,0.3)"};">
-                  ${exam.type === "final" ? "FINAL TEST" : "GENERAL TEST"}
-                </span>
-              </div>
-            </div>
-
-            <!-- Action Toolbar -->
-            <div class="saas-control-group">
-              <button id="ep-mgr-toggle-type" class="saas-btn" style="background:#141414;border-color:#262626;color:#f9fafb;" title="Switch between Final and General exam">
-                ${I("settings", 13, "#9ca3af")}
-                Type: <b>${exam.type.toUpperCase()}</b>
-              </button>
-
-              ${
-                exam.type === "final"
-                  ? `<button id="ep-mgr-publish-results" class="saas-btn ${exam.resultsPublished ? "saas-btn-primary" : "saas-btn-purple"}">
-                       ${I("broadcast", 13, "currentColor")}
-                       ${exam.resultsPublished ? "Results Published" : "Publish Results"}
-                     </button>`
-                  : ""
-              }
-
-              <button id="ep-mgr-export-csv" class="saas-btn" style="background:#042f2e;color:#2dd4bf;border-color:#0d9488;" title="Export marks & records as CSV">
-                ${I("download", 13, "#2dd4bf")}
-                Export Marks (CSV)
-              </button>
-
-              ${
-                exam.status === "live"
-                  ? `<button id="ep-mgr-pause" class="saas-btn saas-btn-warning">
-                       ${I("pause", 13, "#fbbf24")} Pause
-                     </button>`
-                  : exam.status === "paused"
-                  ? `<button id="ep-mgr-resume" class="saas-btn saas-btn-primary">
-                       ${I("play", 13, "#34d399")} Resume
-                     </button>`
-                  : `<button id="ep-mgr-start" class="saas-btn saas-btn-primary">
-                       ${I("play", 13, "#34d399")} Start
-                     </button>`
-              }
-
-              <div class="saas-extend-dock">
-                <span class="saas-extend-label">Extend:</span>
-                <button id="ep-mgr-ext-5" class="saas-extend-btn">+5m</button>
-                <button id="ep-mgr-ext-10" class="saas-extend-btn">+10m</button>
-                <button id="ep-mgr-ext-15" class="saas-extend-btn">+15m</button>
-              </div>
-
-              <button id="ep-mgr-end" class="saas-btn saas-btn-danger">
-                ${I("square", 13, "#fb7185")} End Exam
-              </button>
-            </div>
-          </div>
-
-          <!-- 4 KPI Metric Cards -->
-          <div class="saas-kpi-grid">
-            <div class="saas-kpi-card">
-              <div class="saas-kpi-title">
-                <span>Active Test Takers</span>
-                <span style="color:#34d399;font-size:11px;">LIVE</span>
-              </div>
-              <div class="saas-kpi-value-row">
-                <span class="saas-kpi-value">${activeCount}</span>
-                <span style="color:#6b7280;font-size:14px;font-weight:600;">/ ${enrolledCount} in session</span>
-              </div>
-              <div class="saas-kpi-subtext">
-                <span style="color:#10b981;font-weight:700;">100%</span> telemetry uptime
-              </div>
-            </div>
-
-            <div class="saas-kpi-card">
-              <div class="saas-kpi-title">
-                <span>Total Enrolled</span>
-                <span style="color:#6b7280;font-size:11px;">WHITELIST</span>
-              </div>
-              <div class="saas-kpi-value-row">
-                <span class="saas-kpi-value">${enrolledCount}</span>
-                <span style="color:#6b7280;font-size:14px;font-weight:600;">students</span>
-              </div>
-              <div class="saas-kpi-subtext">
-                Cohort: <b>GENZ-2026-TERM2</b>
-              </div>
-            </div>
-
-            <div class="saas-kpi-card">
-              <div class="saas-kpi-title">
-                <span>Cohort Progress</span>
-                <span style="color:#6b7280;font-size:11px;">COMPLETION</span>
-              </div>
-              <div class="saas-kpi-value-row">
-                <span class="saas-kpi-value">${avgProgress}%</span>
-                <span style="color:#6b7280;font-size:12px;font-weight:600;">avg pace</span>
-              </div>
-              <div style="width:100%;height:4px;background:#1f1f1f;border-radius:9999px;overflow:hidden;margin-top:8px;">
-                <div style="height:100%;background:#10b981;width:${avgProgress}%;"></div>
-              </div>
-            </div>
-
-            <div class="saas-kpi-card" style="${pendingReentry.length > 0 ? "border-color:#f59e0b;background:#1c170d;" : ""}">
-              <div class="saas-kpi-title">
-                <span>Re-entry Approval Queue</span>
-                <span style="color:${pendingReentry.length > 0 ? "#f59e0b" : "#6b7280"};font-size:11px;">
-                  ${pendingReentry.length > 0 ? "ATTENTION" : "NORMAL"}
-                </span>
-              </div>
-              <div class="saas-kpi-value-row">
-                <span class="saas-kpi-value" style="color:${pendingReentry.length > 0 ? "#fbbf24" : "#f9fafb"};">
-                  ${pendingReentry.length}
-                </span>
-                <span style="color:#6b7280;font-size:14px;font-weight:600;">pending review</span>
-              </div>
-              <div class="saas-kpi-subtext">
-                ${pendingReentry.length > 0 ? `<b style="color:#fbbf24;">Candidates waiting</b>` : "No locked candidates"}
-              </div>
-            </div>
-          </div>
-
-          <!-- Tabs Navigation -->
-          <div class="saas-tab-bar">
-            <button class="saas-tab-btn ${currentMgrTab === "monitor" ? "active" : ""}" data-tab="monitor">
-              ${I("barChart", 14)} Live Monitor <span class="saas-tab-badge">${activeCount}</span>
-            </button>
-            <button class="saas-tab-btn ${currentMgrTab === "leave_log" ? "active" : ""}" data-tab="leave_log">
-              ${I("clock", 14)} Leave Log <span class="saas-tab-badge">${leaveLogCount}</span>
-            </button>
-            <button class="saas-tab-btn ${currentMgrTab === "reentry" ? "active" : ""}" data-tab="reentry">
-              ${I("door", 14)} Re-entry Approval Queue
-              ${pendingReentry.length > 0 ? `<span class="saas-tab-badge" style="background:#78350f;color:#fbbf24;">${pendingReentry.length}</span>` : ""}
-            </button>
-            <button class="saas-tab-btn ${currentMgrTab === "builder" ? "active" : ""}" data-tab="builder">
-              ${I("fileText", 14)} Exam Builder & Questions <span class="saas-tab-badge">${exam.questions.length}</span>
-            </button>
-            <button class="saas-tab-btn ${currentMgrTab === "whitelist" ? "active" : ""}" data-tab="whitelist">
-              ${I("users", 14)} Whitelist & Access <span class="saas-tab-badge">${enrolledCount}</span>
-            </button>
-            <button class="saas-tab-btn ${currentMgrTab === "users" ? "active" : ""}" data-tab="users">
-              ${I("users", 14)} User Management
-            </button>
-            <button class="saas-tab-btn ${currentMgrTab === "chat" ? "active" : ""}" data-tab="chat">
-              ${I("message", 14)} Chat & Announcements
-            </button>
-          </div>
-
-          <!-- Tab Content Container -->
-          <div id="ep-mgr-tab-body">
-            ${renderMgrTabContent(currentMgrTab, state)}
-          </div>
-        </div>
-      </div>
-    `;
-
-    document.querySelectorAll(".saas-tab-btn").forEach((btn) => {
-      btn.onclick = () => {
-        currentMgrTab = btn.getAttribute("data-tab");
-        render();
-      };
-    });
-
-    const btnToggleType = document.getElementById("ep-mgr-toggle-type");
-    if (btnToggleType) {
-      btnToggleType.onclick = () => {
-        const nextType = state.exam.type === "final" ? "general" : "final";
-        showManagerConfirmModal({
-          title: `Switch Mode to ${nextType === "final" ? "Official Final Test" : "General (Practice)"}`,
-          subtitle: "Exam Configuration",
-          description: `Change exam mode from <b>${state.exam.type.toUpperCase()}</b> to <b>${nextType.toUpperCase()}</b>. In Final mode, scores and question answers are protected until proctor publication.`,
-          confirmText: "Confirm Switch Mode",
-          confirmType: "purple",
-          icon: "settings",
-          onConfirm: () => {
-            state.exam.type = nextType;
-            saveState(state);
-          }
-        });
-      };
-    }
-
-    const btnPublish = document.getElementById("ep-mgr-publish-results");
-    if (btnPublish) {
-      btnPublish.onclick = () => {
-        const willPublish = !state.exam.resultsPublished;
-        showManagerConfirmModal({
-          title: willPublish ? "Publish Official Cohort Results" : "Unpublish Cohort Results",
-          subtitle: "Score Release Gate",
-          description: willPublish
-            ? "Scores, percentages, correct answers, and faculty explanations will become visible to all students immediately."
-            : "Scores and detailed answer explanations will be hidden from student screens.",
-          confirmText: willPublish ? "Publish Results" : "Unpublish Results",
-          confirmType: "purple",
-          icon: "broadcast",
-          onConfirm: () => {
-            state.exam.resultsPublished = willPublish;
-            saveState(state);
-          }
-        });
-      };
-    }
-
-    const btnExportCSV = document.getElementById("ep-mgr-export-csv");
-    if (btnExportCSV) {
-      btnExportCSV.onclick = () => {
-        showManagerConfirmModal({
-          title: "Export Candidate Records as CSV",
-          subtitle: "Telemetry & Score Export",
-          description: "Generate and download a CSV file containing marks, attendance timestamps, tab switch violations, and completion statuses for all enrolled students.",
-          confirmText: "Download CSV",
-          confirmType: "teal",
-          icon: "download",
-          onConfirm: () => {
-            exportMarksAsCSV(state);
-          }
-        });
-      };
-    }
-
-    const btnPause = document.getElementById("ep-mgr-pause");
-    if (btnPause) {
-      btnPause.onclick = () => {
-        showManagerConfirmModal({
-          title: "Pause Examination",
-          subtitle: "Session Suspension",
-          description: "All candidate test screens will temporarily pause and countdown timers will halt until resumed.",
-          confirmText: "Pause Exam",
-          confirmType: "warning",
-          icon: "pause",
-          onConfirm: () => {
-            state.exam.status = "paused";
-            saveState(state);
-          }
-        });
-      };
-    }
-
-    const btnResume = document.getElementById("ep-mgr-resume");
-    if (btnResume) {
-      btnResume.onclick = () => {
-        showManagerConfirmModal({
-          title: "Resume Examination",
-          subtitle: "Session Resumption",
-          description: "Unpause the examination and restore test screens and clocks for all active candidates.",
-          confirmText: "Resume Exam",
-          confirmType: "success",
-          icon: "play",
-          onConfirm: () => {
-            state.exam.status = "live";
-            saveState(state);
-          }
-        });
-      };
-    }
-
-    const btnStart = document.getElementById("ep-mgr-start");
-    if (btnStart) {
-      btnStart.onclick = () => {
-        showManagerConfirmModal({
-          title: "Start Live Examination",
-          subtitle: "Session Launch",
-          description: "Change exam status to LIVE. Enrolled candidates will immediately be permitted to pass onboarding and begin answering questions.",
-          confirmText: "Start Exam",
-          confirmType: "success",
-          icon: "play",
-          onConfirm: () => {
-            state.exam.status = "live";
-            state.exam.startedAt = Date.now();
-            saveState(state);
-          }
-        });
-      };
-    }
-
-    const btnEnd = document.getElementById("ep-mgr-end");
-    if (btnEnd) {
-      btnEnd.onclick = () => {
-        showManagerConfirmModal({
-          title: "End Live Examination",
-          subtitle: "Critical Proctor Action",
-          description: "This will officially conclude the exam session for all 52 candidates. Active sessions will be locked and current answers forcefully submitted. This action cannot be reversed.",
-          confirmText: "Yes, End Examination",
-          confirmType: "danger",
-          icon: "square",
-          requireCheckbox: true,
-          checkboxLabel: "I understand this forcefully concludes the exam for all candidates",
-          onConfirm: () => {
-            state.exam.status = "ended";
-            Object.values(state.studentSessions || {}).forEach((s) => {
-              if (s && (s.status === "in_exam" || s.status === "in_progress" || s.status === "not_started" || s.status === "reentry_required")) {
-                s.status = "submitted";
-                s.submittedAt = Date.now();
-              }
-            });
-            saveState(state);
-            dispatchManagerAction("end_exam");
-          }
-        });
-      };
-    }
-
-    [5, 10, 15].forEach((mins) => {
-      const el = document.getElementById(`ep-mgr-ext-${mins}`);
-      if (el) {
-        el.onclick = () => {
-          showManagerConfirmModal({
-            title: `Extend Exam Time (+${mins} Minutes)`,
-            subtitle: "Clock Extension",
-            description: `Add <b>${mins} additional minutes</b> to the examination timer for all active students.`,
-            confirmText: `Add +${mins}m`,
-            confirmType: "teal",
-            icon: "clock",
-            onConfirm: () => {
-              state.exam.extendedMinutes = (state.exam.extendedMinutes || 0) + mins;
-              saveState(state);
-              dispatchManagerAction("extend_time", { minutes: mins });
-            }
-          });
-        };
-      }
-    });
-
-    bindMgrTabEvents(currentMgrTab, state);
-  }
-
-  function exportMarksAsCSV(state) {
-    const exam = state.exam;
-    const sessions = Object.values(state.studentSessions);
-    const totalPossibleMarks = exam.questions.reduce((sum, q) => sum + (q.marks || 0), 0);
-
-    const headers = [
-      "Email",
-      "Candidate Name",
-      "Student ID",
-      "Exam Type",
-      "Attendance Recorded At",
-      "Tab Switch Warnings",
-      "Leave Log",
-      "Questions Answered",
-      "Total Marks Scored",
-      "Total Maximum Marks",
-      "Percentage",
-      "Status"
-    ];
-
-    const rows = sessions.map((s, idx) => {
-      let score = 0;
-      exam.questions.forEach((q) => {
-        const studentAns = s.answers ? s.answers[q.id] : undefined;
-        if (studentAns !== undefined) {
-          if (Array.isArray(q.correct)) {
-            if (Array.isArray(studentAns) && JSON.stringify(studentAns.sort()) === JSON.stringify(q.correct.sort())) {
-              score += q.marks;
-            }
-          } else if (String(studentAns).trim().toLowerCase() === String(q.correct).trim().toLowerCase()) {
-            score += q.marks;
-          }
-        }
-      });
-
-      const answeredCount = Object.keys(s.answers || {}).length;
-      const pct = totalPossibleMarks > 0 ? ((score / totalPossibleMarks) * 100).toFixed(1) : "0.0";
-
-      return [
-        `"${s.email}"`,
-        `"${s.name}"`,
-        `"${s.studentId || "22F30018" + (40 + idx)}"`,
-        `"${exam.type.toUpperCase()}"`,
-        `"${s.attendanceRecordedAt || "Not Marked"}"`,
-        s.warnings || 0,
-        `"${(s.warningLogs || [])
-          .map((log, logIdx) => {
-            const isLive = !log.outsideSeconds && s.outsideSince && logIdx === (s.warningLogs || []).length - 1;
-            const seconds = (log.outsideSeconds || 0) + (isLive ? (Date.now() - s.outsideSince) / 1000 : 0);
-            return `#${logIdx + 1} ${log.leftAtFormatted || log.timeFormatted || "--"} to ${isLive ? "Still outside" : log.returnedAtFormatted || "--"} (${formatOutsideTime(seconds)})`;
-          })
-          .join(" | ")}"`,
-        `${answeredCount}/${exam.questions.length}`,
-        score,
-        totalPossibleMarks,
-        `${pct}%`,
-        `"${s.status}"`
-      ].join(",");
-    });
-
-    const csvContent = "data:text/csv;charset=utf-8," + [headers.join(","), ...rows].join("\n");
-    const encodedUri = encodeURI(csvContent);
-    const link = document.createElement("a");
-    link.setAttribute("href", encodedUri);
-    link.setAttribute("download", `GenZ_IITian_Exam_Marks_${exam.id}_${Date.now()}.csv`);
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  }
-
-
-  // ==========================================
-  // USER MANAGEMENT (manager panel only)
-  // ==========================================
-  const ADMIN_API_BASE = "https://labapi.genziitian.in/public/api";
-
-  const ROLE_LABELS = { manager: "Manager panel", admin: "Admin panel" };
-
-  async function verifyRole() {
-    const token = adminToken();
-    if (!token) {
-      verifiedRole = null;
-      renderRoleEntryButton();
-      return;
-    }
-    try {
-      const res = await fetch(`${ADMIN_API_BASE}/auth/me`, {
-        headers: { Accept: "application/json", Authorization: `Bearer ${token}` }
-      });
-      if (!res.ok) throw new Error("unauthorised");
-      const data = await res.json();
-      verifiedRole = (data && data.user && data.user.role) || "student";
-    } catch (err) {
-      // Offline or rejected: stay closed rather than guessing.
-      verifiedRole = null;
-    }
-    renderRoleEntryButton();
-    render();
-  }
-
-  function renderRoleEntryButton() {
-    const existing = document.getElementById("ep-role-entry");
-    const roleValue = verifiedRole || "";
-    if (document.body.dataset.epVerifiedRole !== roleValue) {
-      document.body.dataset.epVerifiedRole = roleValue;
-    }
-    const label = ROLE_LABELS[verifiedRole];
-    const path = window.location.pathname;
-    const insidePortal = path.startsWith("/exams") || path === "/exam";
-
-    if (!label || insidePortal || path === "/login") {
-      if (existing) existing.remove();
-      return;
-    }
-    if (existing) {
-      if (existing.dataset.role !== verifiedRole) existing.remove();
-      else return;
-    }
-
-    const el = document.createElement("a");
-    el.id = "ep-role-entry";
-    el.dataset.role = verifiedRole;
-    el.href = "/exams";
-    el.title = `Open the ${verifiedRole} portal`;
-    el.style.cssText =
-      "position:fixed;right:20px;bottom:20px;z-index:45;display:inline-flex;align-items:center;gap:9px;" +
-      "background:#14301a;color:#eaf6ec;padding:12px 17px;border-radius:12px;text-decoration:none;" +
-      "font:600 13px/1 Inter,system-ui,-apple-system,sans-serif;letter-spacing:.01em;" +
-      "box-shadow:0 10px 30px rgba(10,20,12,.3);transition:transform .15s ease,background .2s ease;";
-    el.onmouseenter = () => { el.style.transform = "translateY(-2px)"; el.style.background = "#1d4426"; };
-    el.onmouseleave = () => { el.style.transform = "none"; el.style.background = "#14301a"; };
-    el.innerHTML =
-      `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#86c46f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>` +
-      label;
-    document.body.appendChild(el);
-  }
-
-  let mgrUsers = {
-    status: "idle", // idle | loading | ready | error
-    items: [],
-    counts: null,
-    meta: null,
-    viewer: null,
+  "use strict";
+
+  let path = location.pathname.replace(/\/+$/, "") || "/";
+  const inExamArea =
+    path === "/exam" || path === "/exams" || path.startsWith("/exams/");
+  const API = (
+    (window.QLStorefront && window.QLStorefront.apiBase) ||
+    "https://labapi.genziitian.in/public/api"
+  ).replace(/\/+$/, "");
+  const ROLE_LABEL = { manager: "Manager", student: "Your exams" };
+  const TYPES = [
+    "mcq_single",
+    "mcq_multi",
+    "true_false",
+    "numerical",
+    "short_answer",
+    "comprehension",
+  ];
+  const app = {
+    user: null,
+    exams: [],
+    exam: null,
+    state: null,
+    screen: "list",
+    busy: false,
     error: "",
-    search: "",
-    filter: "all",
-    busyId: null
+    notice: "",
+    poll: null,
+    ticker: null,
+    serverOffset: 0,
+    stateFetchedAt: 0,
+    draftAnswers: {},
+    revision: 0,
+    answerEditVersion: 0,
+    saveTimer: null,
+    savePromise: null,
+    importQuestions: null,
+    selected: null,
+    dirty: false,
+    pending: {},
+    saveError: "",
+    epoch: 0,
+    eventQueue: [],
+    lastEventAt: 0,
   };
-
-  function adminToken() {
+  const $ = (s, root = document) => root.querySelector(s);
+  const esc = (v) =>
+    String(v == null ? "" : v).replace(
+      /[&<>"']/g,
+      (c) =>
+        ({
+          "&": "&amp;",
+          "<": "&lt;",
+          ">": "&gt;",
+          '"': "&quot;",
+          "'": "&#39;",
+        })[c],
+    );
+  const token = () => {
     try {
       return localStorage.getItem("lab_token") || "";
-    } catch (e) {
+    } catch (_) {
       return "";
     }
+  };
+  function desktopEligible() {
+    const agent = navigator.userAgent || "";
+    if (/Android|iPhone|iPad|iPod|Tablet|Kindle|Silk|Mobile/i.test(agent)) return false;
+    if (navigator.userAgentData?.mobile) return false;
+    if (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1) return false;
+    return !window.matchMedia || window.matchMedia("(hover: hover) and (pointer: fine)").matches;
   }
-
-  async function adminFetch(path, options) {
-    const opts = options || {};
-    const token = adminToken();
-    if (!token) {
-      throw new Error("You are not signed in as an admin. Sign in first, then reopen this tab.");
+  function showDesktopOnly() {
+    const reactRoot = document.getElementById("root");
+    if (reactRoot) reactRoot.style.display = "none";
+    let root = document.getElementById("ep-app");
+    if (!root) { root = document.createElement("main"); root.id = "ep-app"; document.body.appendChild(root); }
+    root.innerHTML = '<section class="ep-page ep-narrow"><div class="ep-card"><p class="ep-eyebrow">ONLINE EXAMS</p><h1>Use a laptop or desktop</h1><p>Online proctored exams are available in a desktop browser with a keyboard and mouse. Open this page on your laptop or desktop to manage or take an exam.</p><p>Your exam access and saved answers stay with your account.</p><a class="ep-link" href="/dashboard">Back to Quiz LAB</a></div></section>';
+  }
+  const isManager = () => app.user && app.user.role === "manager";
+  const isAdmin = () => app.user && app.user.role === "admin";
+  const contentHtml = (content) => {
+    if (
+      window.ExamRichContent &&
+      typeof window.ExamRichContent.render === "function"
+    )
+      return window.ExamRichContent.render(content);
+    if (Array.isArray(content)) return content.map(contentHtml).join("");
+    if (content && typeof content === "object") {
+      if (typeof content.text === "string")
+        return esc(content.text).replace(/\n/g, "<br>");
+      if (typeof content.value === "string")
+        return esc(content.value).replace(/\n/g, "<br>");
+      if (Array.isArray(content.blocks))
+        return content.blocks.map(contentHtml).join("");
+      return "";
     }
-    const res = await fetch(`${ADMIN_API_BASE}${path}`, {
-      method: opts.method || "GET",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`
-      },
-      body: opts.body ? JSON.stringify(opts.body) : undefined
+    return esc(content).replace(/\n/g, "<br>");
+  };
+  function typeset(root) {
+    if (window.ExamRichContent && window.ExamRichContent.typeset)
+      window.ExamRichContent.typeset(root);
+  }
+  async function request(url, options = {}) {
+    const headers = {
+      Accept: "application/json",
+      ...(options.body ? { "Content-Type": "application/json" } : {}),
+      ...(token() ? { Authorization: `Bearer ${token()}` } : {}),
+      ...(options.headers || {}),
+    };
+    const response = await fetch(`${API}${url}`, {
+      signal: AbortSignal.timeout(20000),
+      ...options,
+      headers,
+      body:
+        options.body && typeof options.body !== "string"
+          ? JSON.stringify(options.body)
+          : options.body,
     });
-
-    let payload = null;
+    let data = null;
     try {
-      payload = await res.json();
-    } catch (e) {
-      payload = null;
+      data = await response.json();
+    } catch (_) {
+      data = null;
     }
-
-    if (!res.ok) {
-      if (res.status === 401) throw new Error("Session expired. Sign in again to manage users.");
-      if (res.status === 403) throw new Error("Your account does not have admin rights.");
-      throw new Error((payload && (payload.error || payload.message)) || `Request failed (${res.status}).`);
+    if (response.status === 401) {
+      if (inExamArea) location.assign("/login");
+      throw new Error("Your session expired. Please sign in again.");
     }
-    return payload;
-  }
-
-  async function loadMgrUsers() {
-    mgrUsers.status = "loading";
-    mgrUsers.error = "";
-    render();
-    try {
-      const qs = new URLSearchParams({
-        search: mgrUsers.search || "",
-        filter: mgrUsers.filter || "all",
-        per_page: "50"
-      });
-      const data = await adminFetch(`/admin/users?${qs.toString()}`);
-      mgrUsers.items = (data && data.data) || [];
-      mgrUsers.counts = (data && data.counts) || null;
-      mgrUsers.viewer = (data && data.viewer) || null;
-      mgrUsers.meta = (data && data.meta) || null;
-      mgrUsers.status = "ready";
-    } catch (err) {
-      mgrUsers.status = "error";
-      mgrUsers.error = err.message || "Could not load users.";
-    }
-    render();
-  }
-
-  async function mgrUserAction(id, path, method, body) {
-    mgrUsers.busyId = id;
-    render();
-    try {
-      const data = await adminFetch(path, { method: method, body: body });
-      if (data && data.user) {
-        mgrUsers.items = mgrUsers.items.map((u) => (u.id === data.user.id ? data.user : u));
-      } else {
-        mgrUsers.items = mgrUsers.items.filter((u) => u.id !== id);
-      }
-      mgrUsers.busyId = null;
-      render();
-      await loadMgrUsers();
-    } catch (err) {
-      mgrUsers.busyId = null;
-      mgrUsers.error = err.message || "Action failed.";
-      mgrUsers.status = "ready";
-      render();
-    }
-  }
-
-  function userInitials(name) {
-    return String(name || "?")
-      .trim()
-      .split(/\s+/)
-      .slice(0, 2)
-      .map((w) => w.charAt(0).toUpperCase())
-      .join("");
-  }
-
-  function pill(label, color, bg) {
-    return `<span style="font-size:10px;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;padding:3px 7px;border-radius:5px;color:${color};background:${bg};">${label}</span>`;
-  }
-
-  function renderMgrTabContent(tab, state) {
-    const exam = state.exam;
-
-    if (tab === "monitor") {
-      const sessions = Object.values(state.studentSessions);
-      return `
-        <div class="saas-card">
-          <div class="saas-table-toolbar">
-            <div class="saas-search-box">
-              <span style="color:#6b7280;display:flex;align-items:center;">${I("search", 14, "#6b7280")}</span>
-              <input type="text" placeholder="Search candidate name or email (Ctrl/Cmd+K)...">
-            </div>
-
-            <div style="display:flex;align-items:center;gap:10px;">
-              <span style="font-size:12px;color:#9ca3af;">Filter:</span>
-              <select style="background:#0d0d0d;border:1px solid #262626;color:#f9fafb;padding:6px 12px;border-radius:6px;font-size:12px;">
-                <option>All Candidates</option>
-                <option>Active in Session</option>
-                <option>Locked / Exit Pending</option>
-                <option>Submitted</option>
-              </select>
-              <button id="ep-mgr-btn-broadcast-nav" style="background:#141414;border:1px solid #262626;color:#f9fafb;padding:6px 12px;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:6px;">
-                ${I("broadcast", 13, "#9ca3af")} Broadcast
-              </button>
-            </div>
-          </div>
-
-          <div style="overflow-x:auto;">
-            <table class="saas-table">
-              <thead>
-                <tr>
-                  <th>Candidate</th>
-                  <th>Attendance Time</th>
-                  <th>Tab Warnings</th>
-                  <th>Session Status</th>
-                  <th>Progress</th>
-                  <th>Time Elapsed</th>
-                  <th>Re-entry Gate</th>
-                  <th style="text-align:right;">Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                ${
-                  sessions.length === 0
-                    ? `<tr><td colspan="8" style="padding:40px;text-align:center;color:#6b7280;">No active candidate sessions recorded.</td></tr>`
-                    : sessions
-                        .map((s, idx) => {
-                          const ansCount = Object.keys(s.answers || {}).length;
-                          const percent = Math.round((ansCount / exam.questions.length) * 100);
-                          const isExited = s.status === "exited";
-                          const isSubmitted = s.status === "submitted";
-                          const dotClass = isExited ? "exited" : isSubmitted ? "submitted" : "active";
-                          const warnings = s.warnings || 0;
-
-                          return `
-                          <tr>
-                            <td>
-                              <div class="saas-candidate-cell">
-                                <div class="saas-avatar" title="Candidate profile">
-                                  ${
-                                    s.photoDataUrl
-                                      ? `<img src="${s.photoDataUrl}" alt="Webcam Photo" />`
-                                      : s.name.split(" ").map((n) => n[0]).join("").slice(0, 2)
-                                  }
-                                  <span class="saas-avatar-dot ${dotClass}"></span>
-                                </div>
-                                <div>
-                                  <div style="font-weight:700;color:#f9fafb;font-size:13px;display:flex;align-items:center;gap:6px;">
-                                    ${s.name}
-                                    ${s.photoDataUrl ? `<span style="font-size:10px;padding:1px 5px;border-radius:4px;background:#064e3b;color:#34d399;display:inline-flex;align-items:center;gap:4px;">${I("camera", 10, "#34d399")} Verified</span>` : ""}
-                                  </div>
-                                  <div style="color:#6b7280;font-size:11px;">${s.email}</div>
-                                </div>
-                              </div>
-                            </td>
-
-                            <td>
-                              ${
-                                s.attendanceRecordedAt
-                                  ? `<span class="saas-badge-success">${I("check", 11, "#34d399")} ${s.attendanceRecordedAt}</span>`
-                                  : `<span class="saas-badge-muted">${I("clock", 11, "#9ca3af")} Not Marked</span>`
-                              }
-                            </td>
-
-                            <td>
-                              ${
-                                warnings > 0
-                                  ? `<span class="saas-badge-danger">${I("alert", 11, "#fb7185")} ${warnings} Tab Switches</span>`
-                                  : `<span class="saas-badge-muted" style="color:#34d399;border-color:rgba(16,185,129,0.3);">${I("check", 11, "#34d399")} 0 Warnings</span>`
-                              }
-                            </td>
-
-                            <td>
-                              <span style="display:inline-flex;align-items:center;gap:6px;padding:3px 8px;border-radius:6px;font-size:11px;font-weight:700;
-                                background:${isExited ? "rgba(244,63,94,0.12)" : isSubmitted ? "rgba(56,189,248,0.12)" : "rgba(16,185,129,0.12)"};
-                                color:${isExited ? "#fb7185" : isSubmitted ? "#38bdf8" : "#34d399"};
-                                border:1px solid ${isExited ? "rgba(244,63,94,0.25)" : isSubmitted ? "rgba(56,189,248,0.25)" : "rgba(16,185,129,0.25)"};">
-                                ${isExited ? "Exited (Locked)" : isSubmitted ? "Submitted" : "In Session"}
-                              </span>
-                            </td>
-
-                            <td>
-                              <div style="display:flex;align-items:center;gap:10px;min-width:130px;">
-                                <div style="flex:1;height:6px;background:#1f1f1f;border-radius:9999px;overflow:hidden;">
-                                  <div style="height:100%;background:${percent === 100 ? "#10b981" : "#38bdf8"};width:${percent}%;"></div>
-                                </div>
-                                <span style="font-size:11px;font-weight:700;color:#9ca3af;font-family:ui-monospace,monospace;">
-                                  ${ansCount}/${exam.questions.length}
-                                </span>
-                              </div>
-                            </td>
-
-                            <td style="font-family:ui-monospace,SFMono-Regular,monospace;color:#9ca3af;font-size:12px;">
-                              ${s.startedAt ? Math.floor((Date.now() - s.startedAt) / 60000) + "m" : "--"}
-                            </td>
-
-                            <td>
-                              ${
-                                isExited
-                                  ? `<span style="color:#fbbf24;font-size:12px;font-weight:700;display:flex;align-items:center;gap:4px;">
-                                       ${I("alert", 12, "#fbbf24")} Approval Required
-                                     </span>`
-                                  : `<span style="color:#10b981;font-size:12px;font-weight:600;display:flex;align-items:center;gap:4px;">
-                                       ${I("check", 12, "#10b981")} Normal
-                                     </span>`
-                              }
-                            </td>
-
-                            <td style="text-align:right;">
-                              <div style="display:inline-flex;gap:6px;">
-                                ${
-                                  isExited
-                                    ? `<button class="btn-mgr-approve-reentry" data-email="${s.email}" style="background:#064e3b;border:1px solid #047857;color:#34d399;padding:5px 10px;border-radius:6px;font-size:11px;font-weight:700;cursor:pointer;">
-                                         Approve Re-entry
-                                       </button>`
-                                    : `<button class="btn-mgr-lock-session" data-email="${s.email}" style="background:#141414;border:1px solid #262626;color:#f9fafb;padding:5px 10px;border-radius:6px;font-size:11px;font-weight:600;cursor:pointer;">
-                                         Lock Session
-                                       </button>`
-                                }
-                              </div>
-                            </td>
-                          </tr>
-                        `;
-                        })
-                        .join("")
-                }
-              </tbody>
-            </table>
-          </div>
-        </div>
-      `;
-    }
-
-    if (tab === "leave_log") {
-      const rows = Object.values(state.studentSessions).flatMap((s) =>
-        (s.warningLogs || []).map((log, idx) => {
-          const isLive = !log.outsideSeconds && s.outsideSince && idx === (s.warningLogs || []).length - 1;
-          const seconds = (log.outsideSeconds || 0) + (isLive ? (Date.now() - s.outsideSince) / 1000 : 0);
-          return { s, log, idx, isLive, seconds };
-        })
+    if (!response.ok) {
+      const details =
+        data &&
+        ((data.errors && Object.values(data.errors).flat().join(" ")) ||
+          data.message ||
+          data.error);
+      const error = new Error(
+        typeof details === "string"
+          ? details
+          : details
+            ? JSON.stringify(details)
+            : `Request failed (${response.status})`,
       );
-
-      return `
-        <div class="saas-card">
-          <div class="saas-table-toolbar">
-            <div style="font-size:16px;font-weight:800;color:#f9fafb;display:flex;align-items:center;gap:8px;">
-              ${I("clock", 18, "#fb7185")} Leave Log
-            </div>
-            <div style="font-size:12px;color:#9ca3af;">Each tab/window leave is recorded separately.</div>
-          </div>
-          <div style="overflow-x:auto;">
-            <table class="saas-table">
-              <thead>
-                <tr>
-                  <th>Student</th>
-                  <th>Counter</th>
-                  <th>Left Site At</th>
-                  <th>Returned At</th>
-                  <th>Count Time</th>
-                  <th>Reason</th>
-                </tr>
-              </thead>
-              <tbody>
-                ${
-                  rows.length === 0
-                    ? `<tr><td colspan="6" style="padding:40px;text-align:center;color:#6b7280;">No leave events recorded.</td></tr>`
-                    : rows
-                        .map(
-                          ({ s, log, idx, isLive, seconds }) => `
-                          <tr>
-                            <td>
-                              <div style="font-weight:700;color:#f9fafb;font-size:13px;">${s.name}</div>
-                              <div style="color:#6b7280;font-size:11px;">${s.email}</div>
-                            </td>
-                            <td><span class="saas-badge-danger">#${idx + 1}</span></td>
-                            <td style="font-family:ui-monospace,SFMono-Regular,monospace;color:#e5e7eb;font-size:12px;">${log.leftAtFormatted || log.timeFormatted || "--"}</td>
-                            <td>
-                              ${
-                                isLive
-                                  ? `<span class="saas-badge-danger">${I("clock", 11, "#fb7185")} Still outside</span>`
-                                  : `<span style="font-family:ui-monospace,SFMono-Regular,monospace;color:#e5e7eb;font-size:12px;">${log.returnedAtFormatted || "--"}</span>`
-                              }
-                            </td>
-                            <td><span class="saas-badge-danger">${I("clock", 11, "#fb7185")} ${formatOutsideTime(seconds)}</span></td>
-                            <td style="color:#9ca3af;font-size:12px;">${(log.type || "window_switch").replaceAll("_", " ")}</td>
-                          </tr>
-                        `
-                        )
-                        .join("")
-                }
-              </tbody>
-            </table>
-          </div>
-        </div>
-      `;
+      error.status = response.status;
+      throw error;
     }
-
-    if (tab === "reentry") {
-      const requests = state.reentryRequests;
-      return `
-        <div class="saas-card" style="padding:24px;">
-          <div style="font-size:16px;font-weight:800;color:#f9fafb;margin-bottom:6px;display:flex;align-items:center;gap:8px;">
-            ${I("door", 18, "#38bdf8")} Candidate Re-entry Approvals
-          </div>
-          <p style="color:#9ca3af;font-size:13px;margin-bottom:20px;">
-            Security lockdown is triggered whenever a student exits the assessment window. Review and grant re-entry below:
-          </p>
-
-          ${
-            requests.length === 0
-              ? `<div style="text-align:center;padding:40px;background:#080808;border:1px dashed #222222;border-radius:10px;color:#6b7280;font-size:13px;">
-                   ${I("checkCircle", 20, "#10b981")} No students currently locked out. Re-entry queue is clear.
-                 </div>`
-              : `<div style="display:flex;flex-direction:column;gap:12px;">
-                   ${requests
-                     .map(
-                       (r) => `
-                     <div style="background:#080808;border:1px solid #1c1c1c;border-radius:10px;padding:16px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
-                       <div>
-                         <div style="font-weight:700;color:#f9fafb;font-size:14px;">${r.studentName} (${r.studentEmail})</div>
-                         <div style="color:#9ca3af;font-size:12px;margin-top:2px;">
-                           Exited at: <b>${new Date(r.timestamp).toLocaleTimeString()}</b> | Reason: "${r.reason || "Window left or minimized"}"
-                         </div>
-                       </div>
-                       <div style="display:flex;gap:8px;">
-                         <button class="btn-approve-request" data-id="${r.id}" style="background:#059669;color:#fff;border:none;padding:7px 14px;border-radius:6px;font-size:12px;font-weight:700;cursor:pointer;">
-                           Approve & Unlock
-                         </button>
-                         <button class="btn-reject-request" data-id="${r.id}" style="background:#141414;color:#fb7185;border:1px solid #262626;padding:7px 12px;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;">
-                           Reject
-                         </button>
-                       </div>
-                     </div>
-                   `
-                     )
-                     .join("")}
-                 </div>`
-          }
-        </div>
-      `;
+    return data || {};
+  }
+  const examFrom = (d) =>
+    d && (d.exam || (d.data && d.data.exam) || d.data || d);
+  async function verify() {
+    if (!token()) {
+      try {
+        sessionStorage.setItem("ep_return", location.pathname);
+      } catch (_) {}
+      location.assign("/login");
+      return;
     }
-
-    if (tab === "builder") {
-      return `
-        <div class="saas-card" style="padding:24px;">
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
-            <div>
-              <div style="font-size:16px;font-weight:800;color:#f9fafb;display:flex;align-items:center;gap:8px;">
-                ${I("fileText", 18, "#38bdf8")} Questions Configuration (${exam.questions.length})
-              </div>
-              <div style="font-size:12px;color:#9ca3af;">Manage sections, marks, negative marking, and code blocks.</div>
-            </div>
-          </div>
-
-          <div style="display:flex;flex-direction:column;gap:14px;">
-            ${exam.questions
-              .map(
-                (q, idx) => `
-              <div style="background:#080808;border:1px solid #1c1c1c;border-radius:10px;padding:16px;">
-                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-                  <span style="font-weight:800;color:#38bdf8;font-size:13px;">Q${idx + 1} • ${q.type.toUpperCase().replace("_", " ")}</span>
-                  <span style="font-size:12px;color:#34d399;font-weight:700;">+${q.marks} Marks ${q.negative ? `| -${q.negative} Neg` : ""}</span>
-                </div>
-                <div style="font-size:13px;color:#e5e7eb;margin-bottom:8px;">${q.prompt}</div>
-                ${q.code ? `<pre style="background:#000000;border:1px solid #1c1c1c;padding:10px;border-radius:6px;font-size:12px;color:#a7f3d0;margin:6px 0;"><code>${q.code}</code></pre>` : ""}
-              </div>
-            `
-              )
-              .join("")}
-          </div>
-        </div>
-      `;
+    const d = await request("/auth/me");
+    app.user = d.user || d;
+    if (!app.user || !app.user.id || !app.user.role)
+      throw new Error(
+        "Could not verify your account. Sign out and sign in again.",
+      );
+    if (!["manager", "admin", "student"].includes(app.user.role))
+      throw new Error("This account cannot access the exam platform.");
+  }
+  function notice(text, error = false) {
+    app.notice = error ? "" : text;
+    app.error = error ? text : "";
+    render();
+  }
+  function setBusy(v) {
+    app.busy = v;
+    render();
+  }
+  function mount() {
+    const reactRoot = document.getElementById("root");
+    if (reactRoot) reactRoot.style.display = "none";
+    let root = document.getElementById("ep-app");
+    if (!root) {
+      root = document.createElement("main");
+      root.id = "ep-app";
+      document.body.appendChild(root);
     }
-
-    if (tab === "whitelist") {
-      return `
-        <div class="saas-card" style="padding:24px;">
-          <div style="font-size:16px;font-weight:800;color:#f9fafb;margin-bottom:4px;display:flex;align-items:center;gap:8px;">
-            ${I("users", 18, "#38bdf8")} Whitelist Access Control (${exam.allowedEmails.length} Students)
-          </div>
-          <p style="color:#9ca3af;font-size:13px;margin-bottom:18px;">
-            Only students whose email addresses are whitelisted can access this examination.
-          </p>
-
-          <div style="display:flex;gap:10px;margin-bottom:20px;">
-            <input type="email" id="input-new-whitelist" placeholder="Enter student email (e.g. roll@iitm.ac.in)..." style="flex:1;background:#0e0e0e;border:1px solid #262626;color:#f9fafb;padding:9px 14px;border-radius:8px;font-size:13px;" />
-            <button id="btn-add-whitelist" style="background:#059669;color:#fff;border:none;padding:9px 18px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;">
-              + Add Email
-            </button>
-          </div>
-
-          <div style="display:grid;grid-template-columns:repeat(auto-fill, minmax(240px, 1fr));gap:10px;max-height:360px;overflow-y:auto;padding-right:4px;">
-            ${exam.allowedEmails
-              .map(
-                (email) => `
-              <div style="background:#0e0e0e;border:1px solid #1c1c1c;border-radius:8px;padding:8px 12px;display:flex;justify-content:space-between;align-items:center;">
-                <span style="font-size:12px;color:#d1d5db;font-family:ui-monospace,monospace;">${email}</span>
-                <button class="btn-remove-whitelist" data-email="${email}" style="background:transparent;border:none;color:#fb7185;cursor:pointer;display:inline-flex;align-items:padding:2px 4px;">${I("x", 13, "#fb7185")}</button>
-              </div>
-            `
-              )
-              .join("")}
-          </div>
-        </div>
-      `;
+    root.innerHTML = `<div class="ep-shell"><header class="ep-top"><a class="ep-brand" href="/exams"><span class="ep-mark">QL</span><span><b>Quiz LAB</b><small>Secure exam room</small></span></a><div class="ep-user"><span>${esc(app.user?.name || app.user?.email || "")}</span><a class="ep-link" href="/dashboard">Back to app</a><button class="ep-btn ep-btn-quiet" data-action="logout">Sign out</button></div></header><div id="ep-content"></div><div id="ep-toast" role="status" aria-live="polite"></div></div>`;
+    root.addEventListener("click", onClick);
+    root.addEventListener("input", onInput);
+    root.addEventListener("change", onChange);
+    root.addEventListener("submit", onSubmit);
+  }
+  function showEntry() {
+    const current = document.getElementById("ep-role-entry");
+    const onLogin = path === "/login";
+    if (!desktopEligible() || !ROLE_LABEL[app.user?.role] || inExamArea || onLogin) {
+      current?.remove();
+      return;
     }
-
-    if (tab === "chat") {
-      return `
-        <div class="saas-card" style="padding:24px;display:flex;flex-direction:column;height:500px;">
-          <div style="font-size:16px;font-weight:800;color:#f9fafb;margin-bottom:4px;display:flex;align-items:center;gap:8px;">
-            ${I("message", 18, "#38bdf8")} Exam Support Chat & Announcements
-          </div>
-          <div style="font-size:12px;color:#9ca3af;margin-bottom:14px;">
-            Broadcast updates or address candidate inquiries in real-time.
-          </div>
-
-          <div id="ep-mgr-chat-stream" style="flex:1;overflow-y:auto;background:#080808;border:1px solid #1c1c1c;border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:10px;margin-bottom:14px;">
-            ${
-              state.chatMessages.length === 0
-                ? `<div style="text-align:center;color:#6b7280;padding:40px;">No messages yet.</div>`
-                : state.chatMessages
-                    .map(
-                      (m) => {
-                        const role = m.role || (m.from === "Student" ? "student" : "manager");
-                        const isMe = role === "manager";
-                        const id = escapeHTML(m.id || "");
-                        const sender = escapeHTML(m.senderName || m.from || (isMe ? "Exam Manager" : "Student"));
-                        const text = escapeHTML(m.text || m.message || "");
-                        return `
-                  <div style="align-self:${isMe ? "flex-end" : "flex-start"};max-width:80%;background:${m.isAnnouncement ? "rgba(245,158,11,0.15)" : isMe ? "#064e3b" : "#141414"};border:1px solid ${m.isAnnouncement ? "#b45309" : isMe ? "#047857" : "#262626"};border-radius:10px;padding:10px 14px;">
-                    <div style="display:flex;justify-content:space-between;gap:12px;font-size:11px;margin-bottom:4px;color:${isMe ? "#34d399" : "#93c5fd"};font-weight:700;">
-                      <span>${sender} ${m.isAnnouncement ? "ANNOUNCEMENT" : ""}</span>
-                      <span style="color:#6b7280;">${m.timestamp ? new Date(m.timestamp).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }) : escapeHTML(m.time || "")}</span>
-                    </div>
-                    <div style="font-size:13px;color:#f9fafb;line-height:1.4;white-space:pre-wrap;overflow-wrap:anywhere;">${text}</div>
-                    <div style="display:flex;gap:6px;justify-content:flex-end;margin-top:8px;">
-                      ${isMe ? `<button class="btn-mgr-chat-edit" data-id="${id}" style="background:#111827;border:1px solid #374151;color:#d1d5db;border-radius:6px;padding:3px 7px;font-size:10px;font-weight:700;cursor:pointer;">Edit</button>` : ""}
-                      <button class="btn-mgr-chat-delete" data-id="${id}" style="background:#2a0f13;border:1px solid #7f1d1d;color:#fecaca;border-radius:6px;padding:3px 7px;font-size:10px;font-weight:700;cursor:pointer;">Delete</button>
-                    </div>
-                  </div>
-                `;
-                      }
-                    )
-                    .join("")
-            }
-          </div>
-
-          <div style="display:flex;gap:10px;">
-            <input type="text" id="ep-mgr-chat-input" placeholder="Type announcement or message to candidates..." style="flex:1;background:#080808;border:1px solid #262626;color:#f9fafb;padding:10px 14px;border-radius:8px;font-size:13px;" />
-            <button id="ep-mgr-chat-send" style="background:#059669;color:#fff;border:none;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;">
-              Send
-            </button>
-          </div>
-        </div>
-      `;
+    if (current) return;
+    const link = document.createElement("a");
+    link.id = "ep-role-entry";
+    link.href = "/exams";
+    link.textContent = `${ROLE_LABEL[app.user.role]} • Online exams`;
+    document.body.appendChild(link);
+  }
+  function rows(d) {
+    return Array.isArray(d)
+      ? d
+      : Array.isArray(d.exams)
+        ? d.exams
+        : Array.isArray(d.data)
+          ? d.data
+          : [];
+  }
+  async function loadList() {
+    clearTimeout(app.saveTimer);
+    clearInterval(app.poll);
+    clearInterval(app.ticker);
+    app.epoch++;
+    app.selected = null;
+    app.setupDraft = null;
+    app.pending = {};
+    app.dirty = false;
+    app.importQuestions = null;
+    app.importText = "";
+    const d = await request("/exam-platform/exams");
+    app.exams = rows(d);
+    app.nextPage = d.next_page;
+    app.screen = "list";
+    app.exam = null;
+    app.state = null;
+    render();
+  }
+  async function loadExam(id) {
+    if (app.selected !== id) {
+      app.setupDraft = null;
+      app.auditEvents = null;
+      clearTimeout(app.saveTimer);
+      app.epoch++;
+      app.pending = {};
+      app.saveError = "";
+      app.importQuestions = null;
+      app.importText = "";
+      app.state = null;
+      app.draftAnswers = {};
+      app.revision = 0;
+      app.dirty = false;
+      app.answerEditVersion = 0;
     }
-
-
-    if (tab === "users") {
-      if (mgrUsers.status === "idle") {
-        setTimeout(loadMgrUsers, 0);
+    app.selected = id;
+    const d = await request(`/exam-platform/exams/${encodeURIComponent(id)}`);
+    app.exam = examFrom(d);
+    app.screen = app.exam?.status === "draft" ? "edit" : "detail";
+    render();
+  }
+  function applyState(d) {
+    app.state = d;
+    if (d.exam) app.exam = { ...app.exam, ...d.exam };
+    app.stateFetchedAt = Date.now();
+    app.draftAnswers = { ...(d.session?.answers || {}), ...app.pending };
+    app.revision = Number(d.session?.revision || 0);
+    if (!isManager() && d.session?.status === "submitted") {
+      app.pending = {};
+      app.dirty = false;
+      app.screen = "result";
+    }
+  }
+  async function loadState() {
+    if (!app.exam) return;
+    const epoch = app.epoch,
+      id = app.exam.id;
+    const d = await request(
+      `/exam-platform/exams/${encodeURIComponent(id)}/state`,
+    );
+    if (epoch !== app.epoch) return;
+    applyState(d);
+    render();
+    startPolling();
+  }
+  async function updateList(quiet = false) {
+    try {
+      const d = await request("/exam-platform/exams");
+      app.exams = rows(d);
+      app.nextPage = d.next_page;
+      if (app.screen === "list") render();
+    } catch (e) {
+      if (!quiet) notice(e.message, true);
+    }
+  }
+  function flash(text, error = false) {
+    const toast = $("#ep-toast");
+    if (!toast) return;
+    toast.textContent = text;
+    toast.className = error ? "show error" : "show";
+    clearTimeout(flash.timer);
+    flash.timer = setTimeout(() => {
+      toast.className = "";
+    }, 3600);
+  }
+  function listView() {
+    const manager = isManager();
+    return `<section class="ep-page"><div class="ep-heading"><div><p class="ep-eyebrow">${manager ? "EXAM MANAGEMENT" : "CANDIDATE PORTAL"}</p><h1>${manager ? "Online proctoring" : "Your exams"}</h1><p>${manager ? "Create an exam, import questions, enroll candidates, publish, and monitor the session." : "Select an exam you are enrolled in to read its instructions and check its status."}</p></div>${manager ? '<button class="ep-btn ep-btn-primary" data-action="new">Create exam</button>' : ""}</div>${app.error ? `<div class="ep-alert error">${esc(app.error)}</div>` : ""}${app.notice ? `<div class="ep-alert">${esc(app.notice)}</div>` : ""}<div class="ep-card"><div class="ep-card-head"><h2>${manager ? "Exams" : "Available exams"}</h2><button class="ep-btn ep-btn-quiet" data-action="refresh-list">Refresh</button></div>${app.exams.length ? `<div class="ep-table-wrap"><table><thead><tr><th>Exam</th><th>Status</th><th>Schedule</th><th>Questions</th><th></th></tr></thead><tbody>${app.exams.map((e) => `<tr><td><b>${esc(e.title)}</b><small>${esc(e.subject || "—")}</small></td><td><span class="ep-status ${esc(e.status)}">${esc(e.status || "draft")}</span></td><td>${esc(formatDate(e.scheduled_at))}</td><td>${Number(e.question_count ?? e.questions_count ?? e.questions?.length ?? 0)}</td><td><button class="ep-btn ep-btn-small" data-action="open" data-id="${esc(e.id)}">${manager ? "Manage" : "Open"}</button></td></tr>`).join("")}</tbody></table></div>` : `<div class="ep-empty"><div class="ep-empty-icon">${manager ? "＋" : "◷"}</div><h3>${manager ? "No exams yet" : "No exams available"}</h3><p>${manager ? "Create a draft exam to begin setting up questions and enrollment." : "Ask your exam manager to enroll your account."}</p></div>`}${app.nextPage ? '<div class="ep-actions"><button class="ep-btn" data-action="more-exams">Load more exams</button></div>' : ""}</div></section>`;
+  }
+  function formatDate(v) {
+    if (!v) return "—";
+    const d = new Date(v);
+    return Number.isNaN(d.valueOf()) ? esc(v) : d.toLocaleString();
+  }
+  function formView() {
+    const e = { ...app.exam, ...app.setupDraft };
+    const qn = e.questions?.length || 0;
+    return `<section class="ep-page"><div class="ep-back"><button class="ep-btn ep-btn-quiet" data-action="back">← Exams</button></div><div class="ep-heading"><div><p class="ep-eyebrow">DRAFT SETUP</p><h1>${e.id ? "Configure exam" : "Create an exam"}</h1><p>Save a draft, import and review questions, enroll candidates, then publish when ready.</p></div></div>${app.error ? `<div class="ep-alert error">${esc(app.error)}</div>` : ""}<form class="ep-card ep-form" data-form="exam"><div class="ep-grid"><label>Exam title<input required name="title" maxlength="180" value="${esc(e.title || "")}" placeholder="e.g. Statistics Midterm" /></label><label>Subject<input name="subject" maxlength="180" value="${esc(e.subject || "")}" placeholder="Statistics" /></label><label>Duration (minutes)<input required type="number" name="duration_minutes" min="1" max="600" value="${Number(e.duration_minutes || 60)}" /></label><label>Violation warning limit<input required type="number" name="max_warnings" min="1" max="100" value="${Number(e.max_warnings || 3)}" /></label><label>Scheduled start<input type="datetime-local" name="scheduled_at" value="${esc(toLocalInput(e.scheduled_at))}" /></label><label class="ep-span">Instructions<textarea name="instructions" rows="4" maxlength="10000" placeholder="Exam instructions and permitted materials">${esc(e.instructions || "")}</textarea></label></div><div class="ep-actions"><button class="ep-btn ep-btn-primary" type="submit" ${app.busy ? "disabled" : ""}>Save draft</button><span class="ep-muted">${qn} question${qn === 1 ? "" : "s"} imported</span></div></form><div class="ep-card"><div class="ep-card-head"><div><h2>Import questions</h2><p>Save your draft first, then upload or paste JSON. Math can be included in prompts, options, tables, and explanations. Import replaces the draft’s entire question set.</p></div><div class="ep-actions">${e.questions?.length ? '<button class="ep-btn ep-btn-quiet" data-action="edit-json">Edit imported JSON</button>' : ""}<button class="ep-btn ep-btn-quiet" data-action="download-template">Download JSON template</button></div></div><div class="ep-import-tools"><label class="ep-file">Choose JSON file<input type="file" accept="application/json,.json" data-import-file /></label><span class="ep-muted">or paste JSON</span></div><textarea id="ep-import-json" class="ep-codearea" spellcheck="false" placeholder='{"questions":[{"id":"q1","type":"mcq_single","prompt":"Solve $x^2=4$","options":["$x=2$","$x=±2$"],"correct":1,"marks":2,"negative":0}]}'>${esc(app.importText || "")}</textarea><div class="ep-actions"><button class="ep-btn" data-action="preview-import">Preview JSON</button><button class="ep-btn ep-btn-primary" data-action="import" ${!e.id || !app.importQuestions ? "disabled" : ""}>Import all questions</button><span class="ep-muted">All-or-nothing: any invalid question prevents import.</span></div>${app.importQuestions ? `<div class="ep-preview"><h3>Preview · ${app.importQuestions.length} questions</h3>${app.importQuestions.map((q, i) => `<article class="ep-preview-q"><b>${i + 1}. ${esc(q.type)} · ${Number(q.marks || 0)} marks</b><div>${contentHtml(q.prompt)}</div>${(q.options || []).map((o, j) => `<div class="ep-preview-option">${String.fromCharCode(65 + j)}. ${contentHtml(o)}</div>`).join("")}</article>`).join("")}</div>` : ""}</div><div class="ep-card"><div class="ep-card-head"><div><h2>Candidate enrollment</h2><p>One email per line. Enrollment takes effect when saved.</p></div><button class="ep-btn ep-btn-primary" data-action="save-enrollments" ${!e.id ? "disabled" : ""}>Save enrollment</button></div><textarea class="ep-textarea" id="ep-enrollment-list" rows="7" placeholder="candidate@example.edu">${esc((e.enrollments || e.enrolled_emails || []).map((x) => (typeof x === "string" ? x : x.email)).join("\n"))}</textarea></div>${qn ? managerQuestions(e.questions) : ""}<div class="ep-card ep-publish-card"><div><h2>Publish this exam?</h2><p>Publishing makes this exam available to enrolled candidates. Start the exam from the manager controls at its scheduled time.</p></div><button class="ep-btn ep-btn-primary" data-action="publish" ${!e.id || !qn || app.busy ? "disabled" : ""}>Publish exam</button></div></section>`;
+  }
+  function toLocalInput(v) {
+    if (!v) return "";
+    const d = new Date(v);
+    if (Number.isNaN(d.valueOf())) return "";
+    return new Date(d.getTime() - d.getTimezoneOffset() * 60000)
+      .toISOString()
+      .slice(0, 16);
+  }
+  function detailView() {
+    const e = app.exam || {},
+      state = app.state || {},
+      manager = isManager();
+    return `<section class="ep-page"><div class="ep-back"><button class="ep-btn ep-btn-quiet" data-action="back">← Exams</button></div><div class="ep-heading"><div><p class="ep-eyebrow">${manager ? "MANAGER CONSOLE" : "EXAM DETAILS"}</p><h1>${esc(e.title)}</h1><p>${esc(e.subject || "")}</p></div><span class="ep-status ${esc(e.status)}">${esc(e.status || "draft")}</span></div>${app.error ? `<div class="ep-alert error">${esc(app.error)}</div>` : ""}<div class="ep-detail-grid"><div class="ep-card"><h2>Exam setup</h2><dl class="ep-facts"><div><dt>Duration</dt><dd>${Number(e.duration_minutes || 0)} minutes</dd></div><div><dt>Scheduled</dt><dd>${esc(formatDate(e.scheduled_at))}</dd></div><div><dt>Questions</dt><dd>${Number(e.questions?.length || e.question_count || 0)}</dd></div><div><dt>Results</dt><dd>${e.results_published ? "Published" : "Not published"}</dd></div></dl><h3>Instructions</h3><p class="ep-instructions">${contentHtml(e.instructions || "No additional instructions.")}</p><div class="ep-actions">${manager ? `${e.status === "draft" ? '<button class="ep-btn" data-action="edit">Edit draft</button>' : ""}${e.status === "published" ? '<button class="ep-btn" data-action="edit-enrollments">Edit enrollment</button><button class="ep-btn ep-btn-primary" data-action="start">Start exam</button>' : ""}${["live", "paused"].includes(e.status) ? `<button class="ep-btn" data-action="${e.status === "live" ? "pause" : "resume"}">${e.status === "live" ? "Pause" : "Resume"}</button><button class="ep-btn ep-btn-danger" data-action="end">End exam</button><button class="ep-btn" data-action="extend">Add 5 minutes</button>` : ""}${e.status === "ended" && !e.results_published ? '<button class="ep-btn ep-btn-primary" data-action="publish-results">Publish results</button>' : ""}${e.status === "ended" ? '<button class="ep-btn" data-action="archive">Archive</button>' : ""}${e.results_published ? '<button class="ep-btn" data-action="export">Export results CSV</button>' : ""}<button class="ep-btn ep-btn-quiet" data-action="audit">Audit log</button><button class="ep-btn ep-btn-quiet" data-action="copy-link">Copy candidate link</button>` : `<button class="ep-btn ep-btn-primary" data-action="join" ${e.status === "live" ? "" : "disabled"}>Review rules and join</button>`}</div></div>${manager ? `<div class="ep-card"><div class="ep-card-head"><h2>Live monitoring</h2><span class="ep-live-dot">${Array.isArray(state.sessions) ? state.sessions.length : Object.keys(state.sessions || {}).length} candidates</span></div><div class="ep-actions"><button class="ep-btn ep-btn-quiet" data-action="refresh-state">Refresh now</button><button class="ep-btn" data-action="messages">Messages</button></div><div id="ep-sessions">${sessionTable(state.sessions || [])}</div><div id="ep-audit">${app.auditEvents ? auditHtml() : ""}</div></div>` : candidateSummary(state)}</div>${manager ? managerQuestions(e.questions || []) : ""}</section>`;
+  }
+  function candidateSummary(s) {
+    const sess = s.session || {};
+    return `<div class="ep-card"><h2>Your session</h2><p>Status: <b>${esc(sess.status || "Not joined")}</b></p>${sess.score != null && s.exam?.results_published ? `<p>Score: <b>${Number(sess.score)} / ${Number(sess.total_marks || 0)}</b></p>` : ""}${sess.status === "submitted" ? "<p>Your submission is recorded.</p>" : ""}</div>`;
+  }
+  function answerHtml(q, value) {
+    if (
+      value == null ||
+      value === "" ||
+      (Array.isArray(value) && !value.length)
+    )
+      return '<span class="ep-muted">No answer</span>';
+    if (q.type === "mcq_single")
+      return contentHtml(q.options?.[Number(value)] || "—");
+    if (q.type === "mcq_multi")
+      return (Array.isArray(value) ? value : [])
+        .map(
+          (v) =>
+            `<div>${String.fromCharCode(65 + Number(v))}. ${contentHtml(q.options?.[Number(v)] || "—")}</div>`,
+        )
+        .join("");
+    return contentHtml(
+      Array.isArray(value) ? value.join(" · ") : String(value),
+    );
+  }
+  function resultView() {
+    const e = app.exam || {},
+      sess = app.state?.session || {},
+      published = !!e.results_published;
+    return `<section class="ep-page"><div class="ep-back"><button class="ep-btn ep-btn-quiet" data-action="back">← Exams</button></div><div class="ep-card ep-result-card"><p class="ep-eyebrow">SUBMISSION RECEIVED</p><h1>${esc(e.title)}</h1><p>Your submission was recorded at ${esc(formatDate(sess.submitted_at))}.</p>${published && sess.score != null ? `<div class="ep-result-score"><b>${Number(sess.score)}</b><span>/ ${Number(sess.total_marks || 0)} marks</span></div>` : '<div class="ep-alert">Your score and answer review will appear here after the exam manager publishes results.</div>'}</div>${published ? `<div class="ep-card"><h2>Answer review</h2>${(e.questions || []).map((q, i) => `<article class="ep-preview-q"><b>${i + 1}. ${esc(q.type)} · ${Number(q.marks || 0)} marks</b><div>${contentHtml(q.prompt)}</div>${q.type === "comprehension" ? "" : `<p class="ep-muted">Your answer</p><div>${answerHtml(q, sess.answers?.[q.id])}</div><p class="ep-muted">Accepted answer</p><div>${answerHtml(q, q.correct_answer ?? q.correct_answers ?? q.numerical_answer ?? q.acceptable_answers)}</div>`}${q.explanation ? `<div>${contentHtml(q.explanation)}</div>` : ""}</article>`).join("")}</div>` : ""}</section>`;
+  }
+  function sessionTable(sessions) {
+    const list = Array.isArray(sessions)
+      ? sessions
+      : Object.values(sessions || {});
+    return list.length
+      ? `<div class="ep-table-wrap"><table><thead><tr><th>Candidate</th><th>Status</th><th>Warnings</th><th>Answered</th><th>Last activity</th><th></th></tr></thead><tbody>${list.map((s) => `<tr><td><b>${esc(s.name || s.email || s.user_id)}</b><small>${esc(s.email || "")}</small></td><td><span class="ep-status ${esc(s.status)}">${esc(s.status)}</span></td><td>${Number(s.warnings || 0)}</td><td>${Number(s.answered_count || Object.keys(s.answers || {}).length || 0)}</td><td>${esc(formatDate(s.updated_at || s.last_active))}</td><td>${["in_exam", "locked"].includes(s.status) ? `<button class="ep-btn ep-btn-small" data-action="${s.status === "locked" ? "unlock" : "lock"}" data-user="${esc(s.user_id)}">${s.status === "locked" ? "Unlock" : "Lock"}</button>` : ""}</td></tr>`).join("")}</tbody></table></div>`
+      : '<div class="ep-empty compact"><p>No candidate sessions yet.</p></div>';
+  }
+  function managerQuestions(qs) {
+    return `<div class="ep-card"><h2>Questions · ${qs.length}</h2>${qs.length ? qs.map((q, i) => `<article class="ep-preview-q"><b>${i + 1}. ${esc(q.type)} · ${Number(q.marks || 0)} marks · ${Number(q.negative || 0)} penalty for a wrong answer</b><div>${contentHtml(q.prompt)}</div>${(q.options || []).map((o, j) => `<div class="ep-preview-option">${String.fromCharCode(65 + j)}. ${contentHtml(o)}</div>`).join("")}${q.type === "comprehension" ? "" : `<p class="ep-muted">Accepted answer</p><div>${answerHtml(q, q.correct_answer ?? q.correct_answers ?? q.numerical_answer ?? q.acceptable_answers)}</div>`}${q.explanation ? `<div>${contentHtml(q.explanation)}</div>` : ""}</article>`).join("") : '<p class="ep-muted">No questions imported.</p>'}</div>`;
+  }
+  function rulesView() {
+    const e = app.exam || {};
+    return `<section class="ep-page ep-narrow"><div class="ep-card"><p class="ep-eyebrow">BEFORE YOU BEGIN</p><h1>${esc(e.title)}</h1><p class="ep-instructions">${contentHtml(e.instructions || "Read each question carefully and submit before time expires.")}</p><p>The timer is shared by all candidates. Joining late does not add time. ${Number(e.max_warnings || 3)} warnings lock your session until the manager reviews it.</p><div class="ep-alert">This platform records limited browser focus and fullscreen events. It does not verify identity or monitor video/audio.</div><label class="ep-check"><input type="checkbox" id="ep-rules-check" /> I have read and agree to follow the exam instructions.</label><div class="ep-actions"><button class="ep-btn" data-action="back">Cancel</button><button class="ep-btn ep-btn-primary" data-action="join-confirm">Accept and continue</button></div></div></section>`;
+  }
+  function examRoom() {
+    const e = app.exam || {},
+      s = app.state || {},
+      sess = s.session || {};
+    const secs =
+      s.remaining_seconds == null
+        ? null
+        : Math.max(
+            0,
+            Number(s.remaining_seconds) -
+              (e.status === "paused"
+                ? 0
+                : Math.floor((Date.now() - app.stateFetchedAt) / 1000)),
+          );
+    return `<section class="ep-room"><header class="ep-room-head"><div><p class="ep-eyebrow">EXAM IN PROGRESS</p><h1>${esc(e.title)}</h1></div><div class="ep-room-meta"><span class="ep-status ${esc(e.status)}">${esc(e.status)}</span><span>Warnings: ${Number(sess.warnings || 0)}</span><button class="ep-btn ep-btn-quiet" data-action="fullscreen">Fullscreen</button><strong id="ep-countdown">${secs == null ? "—" : formatClock(secs)}</strong><button class="ep-btn ep-btn-quiet" data-action="messages">Messages</button></div></header>${e.status === "paused" ? '<div class="ep-alert">The manager has paused this exam. Answers remain saved. You can continue when it resumes.</div>' : ""}${sess.status === "locked" ? '<div class="ep-alert error">Your session is locked. Contact the exam manager for help.</div>' : ""}<div class="ep-questions">${(e.questions || []).map((q, i) => questionCard(q, i)).join("")}</div><div class="ep-submit-bar"><span class="ep-save-state" id="ep-save-state">${esc(app.saveError || (app.dirty ? "Unsaved changes…" : "Answers saved on server"))}</span><button class="ep-btn" data-action="retry-save">Save now</button><button class="ep-btn ep-btn-primary" data-action="submit-exam" ${e.status !== "live" || sess.status !== "in_exam" ? "disabled" : ""}>Submit exam</button></div></section>`;
+  }
+  function questionCard(q, i) {
+    const val = app.draftAnswers[q.id];
+    const locked =
+      !["live"].includes(app.exam.status) ||
+      ["locked", "submitted"].includes(app.state?.session?.status);
+    let input = "";
+    if (["mcq_single", "true_false"].includes(q.type))
+      input = (q.options || (q.type === "true_false" ? ["True", "False"] : []))
+        .map((o, j) => {
+          const ans = q.type === "true_false" ? j === 0 : j;
+          return `<label class="ep-answer"><input type="radio" name="answer-${esc(q.id)}" data-answer="${esc(q.id)}" value="${q.type === "true_false" ? String(ans) : j}" ${String(val) === String(ans) ? "checked" : ""} ${locked ? "disabled" : ""}/><span>${contentHtml(o)}</span></label>`;
+        })
+        .join("");
+    else if (q.type === "mcq_multi")
+      input = (q.options || [])
+        .map(
+          (o, j) =>
+            `<label class="ep-answer"><input type="checkbox" data-answer-multi="${esc(q.id)}" value="${j}" ${Array.isArray(val) && val.map(String).includes(String(j)) ? "checked" : ""} ${locked ? "disabled" : ""}/><span>${contentHtml(o)}</span></label>`,
+        )
+        .join("");
+    else if (q.type === "comprehension")
+      input =
+        '<p class="ep-muted">This reading passage is provided for the questions that follow.</p>';
+    else
+      input = `<label class="ep-answer ep-answer-text"><span>${q.type === "numerical" ? "Your answer" : "Your response"}</span><textarea data-answer-text="${esc(q.id)}" rows="2" maxlength="2000" ${locked ? "disabled" : ""}>${esc(val ?? "")}</textarea></label>`;
+    return `<article class="ep-question"><header><span>Question ${i + 1}</span><span>${Number(q.marks || 0)} marks</span></header><div class="ep-question-prompt">${contentHtml(q.prompt)}</div>${input}${q.type !== "comprehension" ? `<button class="ep-btn ep-btn-quiet" data-action="clear-answer" data-id="${esc(q.id)}" ${locked ? "disabled" : ""}>Clear answer</button>` : ""}</article>`;
+  }
+  function formatClock(s) {
+    s = Math.max(0, Math.floor(s));
+    return `${String(Math.floor(s / 3600)).padStart(2, "0")}:${String(Math.floor((s % 3600) / 60)).padStart(2, "0")}:${String(s % 60).padStart(2, "0")}`;
+  }
+  function render() {
+    const root = $("#ep-content");
+    if (!root) return;
+    const focused = document.activeElement;
+    const focusSelector = focused?.dataset?.answerText
+      ? `[data-answer-text="${CSS.escape(focused.dataset.answerText)}"]`
+      : null;
+    const selection = focusSelector
+      ? [focused.selectionStart, focused.selectionEnd]
+      : null;
+    root.innerHTML =
+      app.screen === "list"
+        ? listView()
+        : app.screen === "edit"
+          ? formView()
+          : app.screen === "detail"
+            ? detailView()
+            : app.screen === "rules"
+              ? rulesView()
+              : app.screen === "room"
+                ? examRoom()
+                : app.screen === "result"
+                  ? resultView()
+                  : '<section class="ep-page"><div class="ep-card"><p>Loading exam…</p></div></section>';
+    typeset(root);
+    if (focusSelector) {
+      const input = $(focusSelector);
+      if (input && !input.disabled) {
+        input.focus({ preventScroll: true });
+        if (selection[0] != null) input.setSelectionRange(...selection);
       }
-
-      const counts = mgrUsers.counts;
-      const viewer = mgrUsers.viewer || {};
-      const filters = [
-        ["all", "All"],
-        ["managers", "Managers"],
-        ["admins", "Admins"],
-        ["students", "Students"],
-        ["pro", "Pro"],
-        ["inactive", "Deactivated"]
-      ];
-
-      const stat = (value, label, color) =>
-        `<div><span style="font-size:20px;font-weight:800;color:${color};">${value}</span> <span style="font-size:12px;color:#9ca3af;">${label}</span></div>`;
-
-      const summary = counts
-        ? `<div style="display:flex;gap:18px;flex-wrap:wrap;margin-bottom:18px;">
-             ${stat(counts.total, "total", "#f9fafb")}
-             ${stat(counts.managers, "managers", "#c084fc")}
-             ${stat(counts.admins, "admins", "#38bdf8")}
-             ${stat(counts.students, "students", "#9ca3af")}
-             ${stat(counts.pro, "pro", "#fbbf24")}
-             ${stat(counts.inactive, "deactivated", "#fb7185")}
-           </div>`
-        : "";
-
-      const roleBadge = (role) => {
-        if (role === "manager") return pill("Manager", "#c084fc", "rgba(192,132,252,0.15)");
-        if (role === "admin") return pill("Admin", "#38bdf8", "rgba(56,189,248,0.15)");
-        return pill("Student", "#9ca3af", "rgba(156,163,175,0.12)");
-      };
-
-      let body = "";
-      if (mgrUsers.status === "loading") {
-        body = `<div style="padding:40px;text-align:center;color:#9ca3af;font-size:13px;">Loading users…</div>`;
-      } else if (mgrUsers.status === "error") {
-        body = `
-          <div style="padding:28px;text-align:center;">
-            <div style="color:#fb7185;font-size:13px;font-weight:600;margin-bottom:12px;">${escapeHTML(mgrUsers.error)}</div>
-            <button id="btn-users-retry" style="background:#059669;color:#fff;border:none;padding:8px 18px;border-radius:7px;font-size:12px;font-weight:700;cursor:pointer;">Retry</button>
-          </div>`;
-      } else if (!mgrUsers.items.length) {
-        body = `<div style="padding:40px;text-align:center;color:#9ca3af;font-size:13px;">No users match this view.</div>`;
+    }
+    const toast = $("#ep-toast");
+    if (toast && (app.notice || app.error))
+      flash(app.error || app.notice, !!app.error);
+  }
+  function formData(form) {
+    const d = Object.fromEntries(new FormData(form).entries());
+    d.duration_minutes = Number(d.duration_minutes);
+    d.max_warnings = Number(d.max_warnings);
+    d.scheduled_at = d.scheduled_at
+      ? new Date(d.scheduled_at).toISOString()
+      : null;
+    return d;
+  }
+  function normalizeQuestion(q, i) {
+    if (!q || typeof q !== "object" || Array.isArray(q))
+      throw new Error(`Question ${i + 1} must be an object.`);
+    const aliases = {
+      mcq: "mcq_single",
+      multi_select: "mcq_multi",
+      single_choice: "mcq_single",
+      multiple_choice: "mcq_multi",
+      multi_choice: "mcq_multi",
+      boolean: "true_false",
+      numeric: "numerical",
+      free_text: "short_answer",
+      passage: "comprehension",
+    };
+    q.type = aliases[q.type] || q.type;
+    if (q.prompt == null) {
+      q.prompt = q.passage ?? q.stem;
+      if (q.stem_code || q.stem_table) {
+        q.prompt = [
+          ...(q.prompt ? [{ kind: "text", value: q.prompt }] : []),
+          ...(q.stem_code
+            ? [
+                {
+                  kind: "code",
+                  value: q.stem_code,
+                  language: q.stem_code_language || "text",
+                },
+              ]
+            : []),
+          ...(q.stem_table ? [{ kind: "table", ...q.stem_table }] : []),
+        ];
+      }
+    }
+    if (!TYPES.includes(q.type))
+      throw new Error(`Question ${i + 1} has unsupported type “${q.type}”.`);
+    if (
+      q.prompt == null ||
+      (typeof q.prompt === "string" && !q.prompt.trim()) ||
+      (Array.isArray(q.prompt) && !q.prompt.length)
+    )
+      throw new Error(`Question ${i + 1} needs a prompt.`);
+    q.id = String(q.id || `q${i + 1}`);
+    q.marks = q.type === "comprehension" ? 0 : Number(q.marks ?? 1);
+    q.negative = Number(q.negative ?? q.negative_marks ?? 0);
+    if (
+      !Number.isFinite(q.marks) ||
+      (q.type !== "comprehension" && q.marks <= 0)
+    )
+      throw new Error(`Question ${i + 1} marks must be greater than zero.`);
+    if (!Number.isFinite(q.negative) || q.negative < 0)
+      throw new Error(`Question ${i + 1} negative marks cannot be below zero.`);
+    if (["mcq_single", "mcq_multi", "true_false"].includes(q.type)) {
+      if (q.type === "true_false" && !q.options) q.options = ["True", "False"];
+      if (
+        !Array.isArray(q.options) ||
+        q.options.length < 2 ||
+        q.options.some((x) => x == null || x === "")
+      )
+        throw new Error(
+          `Question ${i + 1} needs at least two non-empty options.`,
+        );
+      const raw = q.correct_answer ?? q.correct_answers ?? q.correct;
+      if (raw == null)
+        throw new Error(`Question ${i + 1} needs an answer key.`);
+      if (q.type === "true_false") {
+        const v = Array.isArray(raw) ? raw[0] : raw;
+        if (typeof v === "boolean") q.correct_answer = v;
+        else if (/^(true|false)$/i.test(String(v)))
+          q.correct_answer = String(v).toLowerCase() === "true";
+        else if (Number.isInteger(Number(v)) && [0, 1].includes(Number(v)))
+          q.correct_answer = Number(v) === 0;
+        else
+          throw new Error(
+            `Question ${i + 1} true/false answer must be true or false.`,
+          );
       } else {
-        body = `
-          <div style="overflow-x:auto;">
-            <table style="width:100%;border-collapse:collapse;font-size:13px;min-width:720px;">
-              <thead>
-                <tr style="text-align:left;color:#6b7280;font-size:11px;text-transform:uppercase;letter-spacing:0.05em;">
-                  <th style="padding:10px 12px;border-bottom:1px solid #1c1c1c;">User</th>
-                  <th style="padding:10px 12px;border-bottom:1px solid #1c1c1c;">Role</th>
-                  <th style="padding:10px 12px;border-bottom:1px solid #1c1c1c;">Status</th>
-                  <th style="padding:10px 12px;border-bottom:1px solid #1c1c1c;text-align:right;">Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                ${mgrUsers.items
-                  .map((u) => {
-                    const can = u.can || {};
-                    const busy = mgrUsers.busyId === u.id;
-                    const isSelf = viewer.id === u.id;
-
-                    const status = [
-                      u.is_pro ? pill("Pro", "#fbbf24", "rgba(251,191,36,0.15)") : "",
-                      u.is_active
-                        ? pill("Active", "#34d399", "rgba(52,211,153,0.15)")
-                        : pill("Deactivated", "#fb7185", "rgba(244,63,94,0.15)"),
-                      u.verified ? "" : pill("Unverified", "#9ca3af", "rgba(156,163,175,0.15)")
-                    ]
-                      .filter(Boolean)
-                      .join(" ");
-
-                    const btn = (cls, label, color, enabled) =>
-                      enabled
-                        ? `<button class="${cls}" data-id="${u.id}" ${busy ? "disabled" : ""} style="background:#141414;border:1px solid #262626;color:${color};padding:5px 10px;border-radius:6px;font-size:11px;font-weight:700;cursor:${busy ? "wait" : "pointer"};opacity:${busy ? "0.5" : "1"};">${label}</button>`
-                        : "";
-
-                    const roleControl = can.set_role
-                      ? `<select class="select-user-role" data-id="${u.id}" ${busy ? "disabled" : ""} style="background:#0d0d0d;border:1px solid #262626;color:#f9fafb;padding:4px 8px;border-radius:6px;font-size:11px;margin-top:6px;">
-                           ${["student", "admin", "manager"]
-                             .map((r) => `<option value="${r}" ${u.role === r ? "selected" : ""}>${r.charAt(0).toUpperCase() + r.slice(1)}</option>`)
-                             .join("")}
-                         </select>`
-                      : "";
-
-                    const actions = [
-                      btn("btn-user-active", u.is_active ? "Deactivate" : "Activate", u.is_active ? "#fbbf24" : "#34d399", can.toggle_active),
-                      btn("btn-user-pro", u.is_pro ? "Remove Pro" : "Make Pro", "#fbbf24", can.toggle_pro),
-                      btn("btn-user-delete", "Delete", "#fb7185", can.delete)
-                    ]
-                      .filter(Boolean)
-                      .join("");
-
-                    const noActions = !actions
-                      ? `<span style="font-size:11px;color:#4b5563;">${isSelf ? "Your account" : "No permission"}</span>`
-                      : "";
-
-                    return `
-                      <tr style="border-bottom:1px solid #141414;${u.is_active ? "" : "opacity:0.65;"}">
-                        <td style="padding:12px;">
-                          <div style="display:flex;align-items:center;gap:10px;">
-                            <div style="width:32px;height:32px;border-radius:50%;background:#1f2937;color:#9ca3af;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0;">${userInitials(u.name)}</div>
-                            <div style="min-width:0;">
-                              <div style="color:#f9fafb;font-weight:700;">${escapeHTML(u.name)}${isSelf ? ` <span style="color:#6b7280;font-weight:600;font-size:11px;">(you)</span>` : ""}</div>
-                              <div style="color:#6b7280;font-size:11px;font-family:ui-monospace,monospace;">${escapeHTML(u.email)}</div>
-                            </div>
-                          </div>
-                        </td>
-                        <td style="padding:12px;">${roleBadge(u.role)}${roleControl}</td>
-                        <td style="padding:12px;"><div style="display:flex;gap:5px;flex-wrap:wrap;">${status}</div></td>
-                        <td style="padding:12px;text-align:right;">
-                          <div style="display:inline-flex;gap:6px;flex-wrap:wrap;justify-content:flex-end;">${actions}${noActions}</div>
-                        </td>
-                      </tr>`;
-                  })
-                  .join("")}
-              </tbody>
-            </table>
-          </div>`;
+        const answers = Array.isArray(raw) ? raw : [raw];
+        for (const a of answers)
+          if (
+            !Number.isInteger(Number(a)) ||
+            Number(a) < 0 ||
+            Number(a) >= q.options.length
+          )
+            throw new Error(
+              `Question ${i + 1} answer key must use option indexes (0–${q.options.length - 1}).`,
+            );
+        if (q.type === "mcq_multi") q.correct_answers = answers.map(Number);
+        else q.correct_answer = Number(answers[0]);
       }
-
-      const scopeNote = viewer.is_manager
-        ? "You are a manager: full control over every account."
-        : "You are an admin: you can activate accounts and grant Pro to students. Role changes and deletions are manager-only.";
-
-      return `
-        <div class="saas-card" style="padding:24px;">
-          <div style="font-size:16px;font-weight:800;color:#f9fafb;margin-bottom:4px;display:flex;align-items:center;gap:8px;">
-            ${I("users", 18, "#38bdf8")} User Management
-          </div>
-          <p style="color:#9ca3af;font-size:13px;margin-bottom:18px;">${scopeNote}</p>
-
-          ${summary}
-
-          <div style="display:flex;gap:10px;margin-bottom:18px;flex-wrap:wrap;">
-            <input type="text" id="input-user-search" value="${escapeHTML(mgrUsers.search)}" placeholder="Search name or email…" style="flex:1;min-width:200px;background:#0e0e0e;border:1px solid #262626;color:#f9fafb;padding:9px 14px;border-radius:8px;font-size:13px;" />
-            <select id="select-user-filter" style="background:#0d0d0d;border:1px solid #262626;color:#f9fafb;padding:9px 12px;border-radius:8px;font-size:12px;">
-              ${filters.map(([v, label]) => `<option value="${v}" ${mgrUsers.filter === v ? "selected" : ""}>${label}</option>`).join("")}
-            </select>
-            <button id="btn-users-refresh" style="background:#059669;color:#fff;border:none;padding:9px 18px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;">Search</button>
-          </div>
-
-          ${body}
-        </div>
-      `;
+      delete q.correct;
+    } else if (q.type === "numerical") {
+      const raw = q.numerical_answer ?? q.correct_answer ?? q.correct;
+      if (raw == null || raw === "" || !Number.isFinite(Number(raw)))
+        throw new Error(`Question ${i + 1} needs a numeric answer.`);
+      q.numerical_answer = Number(raw);
+      delete q.correct;
+      delete q.correct_answer;
+    } else if (q.type === "short_answer") {
+      const raw = q.acceptable_answers ?? q.correct_answer ?? q.correct;
+      if (raw == null || raw === "")
+        throw new Error(
+          `Question ${i + 1} needs at least one acceptable answer.`,
+        );
+      q.acceptable_answers = Array.isArray(raw)
+        ? raw.map(String)
+        : [String(raw)];
+      delete q.correct;
+      delete q.correct_answer;
+    } else {
+      delete q.correct;
+      delete q.correct_answer;
+      delete q.correct_answers;
     }
-
-    return "";
+    return q;
   }
-
-  function bindMgrTabEvents(tab, state) {
-    if (tab === "monitor") {
-      const btnBcast = document.getElementById("ep-mgr-btn-broadcast-nav");
-      if (btnBcast) {
-        btnBcast.onclick = () => {
-          showManagerConfirmModal({
-            title: "Switch to Broadcast Channel",
-            subtitle: "Proctor Announcements",
-            description: "Open the Chat & Announcements channel to broadcast live messages and instructions to all 52 candidates?",
-            confirmText: "Go to Broadcast",
-            confirmType: "info",
-            icon: "broadcast",
-            onConfirm: () => {
-              currentMgrTab = "chat";
-              render();
-            }
-          });
-        };
-      }
-
-      document.querySelectorAll(".btn-mgr-lock-session").forEach((btn) => {
-        btn.onclick = () => {
-          const email = btn.getAttribute("data-email");
-          const candidateName = state.studentSessions[email]?.name || email;
-          showManagerConfirmModal({
-            title: `Lock Session: ${candidateName}`,
-            subtitle: "Security Lockdown",
-            description: `Immediately freeze candidate workstation for <b>${email}</b> and force an exit. Re-entry will require explicit manager review.`,
-            confirmText: "Lock Candidate",
-            confirmType: "danger",
-            icon: "lock",
-            onConfirm: () => {
-              if (state.studentSessions[email]) {
-                state.studentSessions[email].status = "exited";
-                state.reentryRequests.push({
-                  id: "reentry-" + Date.now(),
-                  studentEmail: email,
-                  studentName: state.studentSessions[email].name,
-                  timestamp: Date.now(),
-                  reason: "Security lockdown initiated by Exam Manager",
-                  status: "pending"
-                });
-                saveState(state);
-              }
-            }
-          });
-        };
-      });
-
-      document.querySelectorAll(".btn-mgr-approve-reentry").forEach((btn) => {
-        btn.onclick = () => {
-          const email = btn.getAttribute("data-email");
-          const candidateName = state.studentSessions[email]?.name || email;
-          showManagerConfirmModal({
-            title: `Approve Re-entry: ${candidateName}`,
-            subtitle: "Re-entry Authorization",
-            description: `Clear security lockdown and allow <b>${email}</b> to resume their examination session.`,
-            confirmText: "Approve Re-entry",
-            confirmType: "success",
-            icon: "check",
-            onConfirm: () => {
-              if (state.studentSessions[email]) {
-                state.studentSessions[email].status = "in_exam";
-                state.reentryRequests = state.reentryRequests.filter((r) => r.studentEmail !== email);
-                saveState(state);
-              }
-            }
-          });
-        };
-      });
-    }
-
-    if (tab === "reentry") {
-      document.querySelectorAll(".btn-approve-request").forEach((btn) => {
-        btn.onclick = () => {
-          const id = btn.getAttribute("data-id");
-          const req = state.reentryRequests.find((r) => r.id === id);
-          const name = req ? req.studentName : "Candidate";
-          const email = req ? req.studentEmail : "";
-          showManagerConfirmModal({
-            title: `Approve Candidate Re-entry`,
-            subtitle: "Re-entry Queue",
-            description: `Approve re-entry request for <b>${name} (${email})</b>. Candidate will be restored to active test session.`,
-            confirmText: "Approve Re-entry",
-            confirmType: "success",
-            icon: "check",
-            onConfirm: () => {
-              if (req && state.studentSessions[req.studentEmail]) {
-                state.studentSessions[req.studentEmail].status = "in_exam";
-                state.reentryRequests = state.reentryRequests.filter((r) => r.id !== id);
-                saveState(state);
-              }
-            }
-          });
-        };
-      });
-
-      document.querySelectorAll(".btn-reject-request").forEach((btn) => {
-        btn.onclick = () => {
-          const id = btn.getAttribute("data-id");
-          const req = state.reentryRequests.find((r) => r.id === id);
-          const name = req ? req.studentName : "Candidate";
-          const email = req ? req.studentEmail : "";
-          showManagerConfirmModal({
-            title: `Reject Candidate Re-entry`,
-            subtitle: "Re-entry Queue",
-            description: `Deny re-entry request for <b>${name} (${email})</b>. Candidate session will remain locked.`,
-            confirmText: "Reject Request",
-            confirmType: "danger",
-            icon: "slash",
-            onConfirm: () => {
-              state.reentryRequests = state.reentryRequests.filter((r) => r.id !== id);
-              saveState(state);
-            }
-          });
-        };
-      });
-    }
-
-    if (tab === "whitelist") {
-      const btnAdd = document.getElementById("btn-add-whitelist");
-      if (btnAdd) {
-        btnAdd.onclick = () => {
-          const input = document.getElementById("input-new-whitelist");
-          const val = input.value.trim().toLowerCase();
-          if (!val) return;
-          if (state.exam.allowedEmails.includes(val)) {
-            alert("Email already in whitelist.");
-            return;
-          }
-          showManagerConfirmModal({
-            title: "Add Candidate to Whitelist",
-            subtitle: "Access Control",
-            description: `Grant examination access to student email <b>${val}</b>.`,
-            confirmText: "Add to Whitelist",
-            confirmType: "success",
-            icon: "users",
-            onConfirm: () => {
-              state.exam.allowedEmails.push(val);
-              input.value = "";
-              saveState(state);
-            }
-          });
-        };
-      }
-
-      document.querySelectorAll(".btn-remove-whitelist").forEach((btn) => {
-        btn.onclick = () => {
-          const email = btn.getAttribute("data-email");
-          showManagerConfirmModal({
-            title: `Revoke Whitelist Access`,
-            subtitle: "Access Control",
-            description: `Remove <b>${email}</b> from the allowed candidates whitelist. They will no longer be permitted to take the exam.`,
-            confirmText: "Remove Access",
-            confirmType: "danger",
-            icon: "x",
-            onConfirm: () => {
-              state.exam.allowedEmails = state.exam.allowedEmails.filter((e) => e !== email);
-              saveState(state);
-            }
-          });
-        };
-      });
-    }
-
-    if (tab === "chat") {
-      document.querySelectorAll(".btn-mgr-chat-delete").forEach((btn) => {
-        btn.onclick = () => {
-          const id = btn.getAttribute("data-id");
-          state.chatMessages = state.chatMessages.filter((m) => (m.id || "") !== id);
-          saveState(state);
-          render();
-        };
-      });
-
-      document.querySelectorAll(".btn-mgr-chat-edit").forEach((btn) => {
-        btn.onclick = () => {
-          const id = btn.getAttribute("data-id");
-          const msg = state.chatMessages.find((m) => (m.id || "") === id && (m.role || "manager") === "manager");
-          if (!msg) return;
-          const text = prompt("Edit message", msg.text || msg.message || "");
-          if (text === null) return;
-          const safeText = text.trim().slice(0, 500);
-          if (!safeText) return;
-          msg.text = safeText;
-          msg.timestamp = Date.now();
-          saveState(state);
-          render();
-        };
-      });
-
-      const btnSend = document.getElementById("ep-mgr-chat-send");
-      const input = document.getElementById("ep-mgr-chat-input");
-      if (btnSend && input) {
-        input.maxLength = 500;
-        const doSend = () => {
-          const text = input.value.trim().slice(0, 500);
-          const now = Date.now();
-          if (text) {
-            if (now - (state.lastManagerChatSentAt || 0) < 3000) return;
-            state.lastManagerChatSentAt = now;
-            state.chatMessages.push({
-              id: "msg-" + now,
-              senderName: "Exam Manager",
-              role: "manager",
-              text: text,
-              timestamp: now,
-              isAnnouncement: true
-            });
-            input.value = "";
-            saveState(state);
-            render();
-          }
-        };
-        btnSend.onclick = () => {
-          const text = input.value.trim().slice(0, 500);
-          if (!text) return;
-          showManagerConfirmModal({
-            title: "Broadcast Announcement",
-            subtitle: "Live Communication",
-            description: `Broadcast the following announcement to all 52 students: <div style="margin-top:8px;padding:8px;background:rgba(255,255,255,0.05);border-radius:6px;font-weight:600;color:#f9fafb;">"${escapeHTML(text)}"</div>`,
-            confirmText: "Broadcast to Candidates",
-            confirmType: "warning",
-            icon: "broadcast",
-            onConfirm: doSend
-          });
-        };
-        input.onkeydown = (e) => {
-          if (e.key === "Enter") btnSend.click();
-        };
-      }
-    }
-
-    if (tab === "users") {
-      const retry = document.getElementById("btn-users-retry");
-      if (retry) retry.onclick = () => loadMgrUsers();
-
-      const refresh = document.getElementById("btn-users-refresh");
-      const searchInput = document.getElementById("input-user-search");
-      const filterSelect = document.getElementById("select-user-filter");
-
-      const applyQuery = () => {
-        mgrUsers.search = searchInput ? searchInput.value.trim() : "";
-        mgrUsers.filter = filterSelect ? filterSelect.value : "all";
-        loadMgrUsers();
-      };
-
-      if (refresh) refresh.onclick = applyQuery;
-      if (searchInput) {
-        searchInput.onkeydown = (e) => {
-          if (e.key === "Enter") applyQuery();
-        };
-      }
-      if (filterSelect) filterSelect.onchange = applyQuery;
-
-      const pick = (btn) => {
-        const id = Number(btn.getAttribute("data-id"));
-        return { id: id, user: mgrUsers.items.find((u) => u.id === id) || {} };
-      };
-
-      document.querySelectorAll(".btn-user-active").forEach((btn) => {
-        btn.onclick = () => {
-          const { id, user } = pick(btn);
-          const deactivating = user.is_active;
-          showManagerConfirmModal({
-            title: `${deactivating ? "Deactivate" : "Reactivate"} ${user.name}`,
-            subtitle: "User Management",
-            description: deactivating
-              ? `<b>${escapeHTML(user.name)}</b> will be signed out immediately and blocked from signing in until reactivated.`
-              : `Restore sign-in access for <b>${escapeHTML(user.name)}</b>.`,
-            confirmText: deactivating ? "Deactivate Account" : "Reactivate Account",
-            confirmType: deactivating ? "warning" : "success",
-            icon: "users",
-            onConfirm: () => mgrUserAction(id, `/admin/users/${id}/toggle-active`, "PATCH")
-          });
-        };
-      });
-
-      document.querySelectorAll(".btn-user-pro").forEach((btn) => {
-        btn.onclick = () => {
-          const { id, user } = pick(btn);
-          const granting = !user.is_pro;
-          showManagerConfirmModal({
-            title: `${granting ? "Grant" : "Remove"} Pro — ${user.name}`,
-            subtitle: "User Management",
-            description: granting
-              ? `Give <b>${escapeHTML(user.name)}</b> Pro access to video solutions and premium content.`
-              : `Remove Pro access from <b>${escapeHTML(user.name)}</b>.`,
-            confirmText: granting ? "Make Pro" : "Remove Pro",
-            confirmType: granting ? "success" : "warning",
-            icon: "users",
-            onConfirm: () => mgrUserAction(id, `/admin/users/${id}/toggle-pro`, "PATCH")
-          });
-        };
-      });
-
-      document.querySelectorAll(".select-user-role").forEach((sel) => {
-        sel.onchange = () => {
-          const id = Number(sel.getAttribute("data-id"));
-          const user = mgrUsers.items.find((u) => u.id === id) || {};
-          const nextRole = sel.value;
-          const previousRole = user.role;
-
-          if (nextRole === previousRole) return;
-
-          const blurb =
-            nextRole === "manager"
-              ? "Managers have <b>total control</b>, including changing roles and deleting accounts."
-              : nextRole === "admin"
-                ? "Admins get limited control: they can activate accounts and grant Pro to students, but cannot change roles or delete accounts."
-                : "Students have no administrative access.";
-
-          showManagerConfirmModal({
-            title: `Change role — ${user.name}`,
-            subtitle: "User Management",
-            description: `Change <b>${escapeHTML(user.name)}</b> from <b>${previousRole}</b> to <b>${nextRole}</b>.<br><br>${blurb}`,
-            confirmText: `Make ${nextRole.charAt(0).toUpperCase() + nextRole.slice(1)}`,
-            confirmType: nextRole === "manager" ? "purple" : nextRole === "admin" ? "info" : "warning",
-            icon: "settings",
-            onConfirm: () => mgrUserAction(id, `/admin/users/${id}/role`, "PATCH", { role: nextRole }),
-            onCancel: () => {
-              sel.value = previousRole;
-            }
-          });
-        };
-      });
-
-      document.querySelectorAll(".btn-user-delete").forEach((btn) => {
-        btn.onclick = () => {
-          const { id, user } = pick(btn);
-          showManagerConfirmModal({
-            title: `Delete ${user.name}`,
-            subtitle: "User Management",
-            description: `Permanently delete <b>${escapeHTML(user.name)}</b> and all of their account data. <b>This cannot be undone.</b>`,
-            confirmText: "Delete Permanently",
-            confirmType: "danger",
-            icon: "x",
-            onConfirm: () => mgrUserAction(id, `/admin/users/${id}`, "DELETE")
-          });
-        };
-      });
-    }
-  }
-
-  // ==========================================
-  // 2. STUDENT PORTAL & EXAM WORKSPACE
-  // ==========================================
-  let activeWebcamStream = null;
-  let tempCapturedPhoto = null;
-
-  function renderStudentInterface(container, state) {
-    const student = state.currentUser;
-    const exam = state.exam;
-    const isWhitelisted = !exam.allowedEmails || exam.allowedEmails.length === 0 || exam.allowedEmails.includes(student.email);
-
-    if (!state.studentSessions[student.email]) {
-      state.studentSessions[student.email] = {
-        email: student.email,
-        name: student.name,
-        studentId: "22F3001840",
-        status: "not_started",
-        onboardingStep: 0,
-        attendanceRecordedAt: null,
-        attendanceTimestamp: null,
-        photoDataUrl: null,
-        warnings: 0,
-        warningLogs: [],
-        outsideExamSeconds: 0,
-        outsideSince: null,
-        outsideReason: null,
-        cocAgreedAt: null,
-        cocAgreedAtFormatted: null,
-        currentQuestionIndex: 0,
-        currentSectionId: exam.sections[0]?.id || "sec-a",
-        answers: {},
-        reviewFlags: [],
-        startedAt: null,
-        lastActive: Date.now()
-      };
-      saveState(state);
-    }
-
-    const session = state.studentSessions[student.email];
-
-    if (session.status === "not_started") {
-      renderStudentHub(container, state, session, isWhitelisted);
-      return;
-    }
-
-    if (session.status === "exited" || session.status === "reentry_required") {
-      container.innerHTML = `
-        <div id="ep-root" style="display:flex;align-items:center;justify-content:center;min-height:80vh;padding:20px;background:#f8fafc;">
-          <div class="ep-onboarding-card" style="max-width:480px;text-align:center;">
-            <div class="ep-shield-badge" style="background:#fee2e2;margin:0 auto 16px auto;">
-              ${I("lock", 36, "#dc2626")}
-            </div>
-            <h2 class="ep-onboarding-title" style="color:#0f172a;margin-bottom:8px;">
-              Examination Window Locked
-            </h2>
-            <p class="ep-onboarding-text" style="color:#475569;margin-bottom:18px;">
-              Security policy locked your session because the window was exited or the security infraction threshold was reached. An official re-entry request has been queued with the exam invigilator.
-            </p>
-            <div style="background:#fef3c7;border:1px solid #fde68a;border-radius:10px;padding:12px;color:#92400e;font-size:13px;font-weight:700;margin-bottom:18px;width:100%;display:flex;align-items:center;justify-content:center;gap:8px;">
-              ${I("clock", 15, "#92400e")} Re-entry request pending manager approval...
-            </div>
-            <div style="display:flex;gap:10px;justify-content:center;margin-bottom:16px;">
-              <button id="ep-btn-check-reentry" class="ep-modal-btn" style="background:#0f172a;color:#fff;padding:10px 18px;font-size:13px;border-radius:8px;border:none;cursor:pointer;">
-                ${I("refresh", 13, "#fff")} Check Approval Status
-              </button>
-            </div>
-            <div style="font-size:12px;color:#64748b;line-height:1.5;">
-              This screen automatically checks every few seconds and will restore your exam session immediately once approved by the supervisor.
-            </div>
-          </div>
-        </div>
-      `;
-      const btnCheck = document.getElementById("ep-btn-check-reentry");
-      if (btnCheck) {
-        btnCheck.onclick = () => {
-          btnCheck.disabled = true;
-          btnCheck.innerHTML = `${I("refresh", 13, "#fff")} Checking...`;
-          syncFromBackend().finally(() => {
-            btnCheck.disabled = false;
-            btnCheck.innerHTML = `${I("refresh", 13, "#fff")} Check Approval Status`;
-          });
-        };
-      }
-      return;
-    }
-
-    if (session.status === "submitted") {
-      renderStudentResultsView(container, state, session);
-      return;
-    }
-
-    renderStudentLiveExam(container, state, session);
-  }
-
-  // ==========================================
-  // STUDENT HUB & SCHEDULED EXAMS TAB
-  // ==========================================
-  function renderStudentHub(container, state, session, isWhitelisted) {
-    const exam = state.exam;
-    const activeTab = state.studentActiveTab === "results" ? "results" : "scheduled_exams";
-
-    container.innerHTML = `
-      <div id="ep-root" style="min-height:calc(100vh - 48px);background:#f8fafc;color:#0f172a;">
-        <div class="ep-student-hub">
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;flex-wrap:wrap;gap:12px;">
-            <div style="display:flex;align-items:center;gap:14px;">
-              <img src="/assets/genz-logo.png" alt="Quiz Lab" style="height:36px;object-fit:contain;">
-              <div>
-                <h1 style="font-size:24px;font-weight:800;color:#0f172a;margin:0 0 4px 0;">Student Assessment Portal</h1>
-                <div style="font-size:13px;color:#64748b;">
-                  Welcome, <b>${state.currentUser.name}</b> (${session.email}) • Roll: <b>22F3001840</b>
-                </div>
-              </div>
-            </div>
-            <div style="display:flex;align-items:center;gap:8px;">
-              <button id="ep-btn-view-coc" style="background:#ffffff;color:#0f172a;border:1px solid #cbd5e1;padding:7px 12px;border-radius:9999px;font-size:12px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:6px;">
-                ${I("shield", 13, "#475569")} COC
-              </button>
-              <span style="font-size:12px;color:#059669;background:#dcfce7;border:1px solid #86efac;padding:5px 12px;border-radius:9999px;font-weight:700;display:inline-flex;align-items:center;gap:6px;">
-                ${I("checkCircle", 13, "#059669")} Portal Active
-              </span>
-            </div>
-          </div>
-
-          <div class="ep-hub-nav">
-            <button class="ep-hub-tab-btn ${activeTab === "scheduled_exams" ? "active" : ""}" data-tab="scheduled_exams" style="position:relative;">
-              ${I("zap", 15)} Scheduled Exams
-              <span style="background:#059669;color:#fff;font-size:10px;font-weight:800;padding:2px 7px;border-radius:9999px;margin-left:4px;">
-                1 Active
-              </span>
-            </button>
-            <button class="ep-hub-tab-btn ${activeTab === "results" ? "active" : ""}" data-tab="results">
-              ${I("barChart", 15)} Past Results & Transcripts
-            </button>
-          </div>
-
-          ${
-            activeTab === "scheduled_exams"
-              ? isWhitelisted
-                ? `
-                <div class="ep-exam-hero-card">
-                  <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px;margin-bottom:16px;">
-                    <div>
-                      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
-                        <span style="font-size:11px;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;padding:3px 8px;border-radius:6px;background:${exam.type === "final" ? "#ffe4e6" : "#e0f2fe"};color:${exam.type === "final" ? "#e11d48" : "#0284c7"};">
-                          ${exam.type === "final" ? "OFFICIAL FINAL TEST" : "GENERAL TEST"}
-                        </span>
-                      </div>
-                      <h2 style="font-size:22px;font-weight:800;color:#0f172a;margin:0 0 6px 0;">
-                        ${exam.title}
-                      </h2>
-                      <div style="font-size:13px;color:#64748b;">
-                        Subject: <b>${exam.subject}</b> • Term 2 Assessment
-                      </div>
-                    </div>
-
-                    <button id="ep-btn-attend-exam" style="background:#059669;color:#ffffff;border:none;padding:12px 26px;border-radius:10px;font-size:14px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:8px;box-shadow:0 4px 14px rgba(5,150,105,0.3);">
-                      Attend Exam →
-                    </button>
-                  </div>
-
-                  <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(180px, 1fr));gap:12px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:16px;margin-bottom:18px;">
-                    <div>
-                      <div style="font-size:11px;color:#64748b;font-weight:700;text-transform:uppercase;">Time Limit</div>
-                      <div style="font-size:15px;font-weight:800;color:#0f172a;margin-top:2px;">
-                        ${exam.durationMinutes} Minutes
-                      </div>
-                    </div>
-                    <div>
-                      <div style="font-size:11px;color:#64748b;font-weight:700;text-transform:uppercase;">Total Marks</div>
-                      <div style="font-size:15px;font-weight:800;color:#0f172a;margin-top:2px;">
-                        +22 Marks (8 Questions)
-                      </div>
-                    </div>
-                    <div>
-                      <div style="font-size:11px;color:#64748b;font-weight:700;text-transform:uppercase;">Verification</div>
-                      <div style="font-size:13px;font-weight:700;color:#475569;margin-top:2px;">
-                        Attendance + Live Photo
-                      </div>
-                    </div>
-                  </div>
-
-                </div>
-              `
-                : `
-                <div class="ep-exam-hero-card" style="text-align:center;padding:40px;">
-                  <div style="margin-bottom:12px;">${I("slash", 40, "#dc2626")}</div>
-                  <h3 style="font-size:20px;font-weight:800;color:#0f172a;margin:0 0 8px 0;">Access Restricted</h3>
-                  <p style="color:#64748b;font-size:14px;max-width:460px;margin:0 auto 18px auto;">
-                    Your email (<b>${session.email}</b>) has not been added to the whitelist for this examination.
-                  </p>
-                  <div style="font-size:12px;color:#94a3b8;">
-                    Contact your course manager or switch to <b>Manager View</b> to whitelist your address.
-                  </div>
-                </div>
-              `
-              : ""
-          }
-
-          ${
-            activeTab === "results"
-              ? `<div class="ep-exam-hero-card" style="padding:24px;">
-                   <div style="font-size:16px;font-weight:800;color:#0f172a;margin-bottom:8px;">Past Exam Transcripts</div>
-                   <p style="color:#64748b;font-size:13px;">No past semester transcripts recorded yet for this session.</p>
-                 </div>`
-              : ""
-          }
-        </div>
-      </div>
-    `;
-
-    document.querySelectorAll(".ep-hub-tab-btn").forEach((btn) => {
-      btn.onclick = () => {
-        state.studentActiveTab = btn.getAttribute("data-tab");
-        saveState(state);
-      };
+  function parseImport(raw) {
+    if (new Blob([raw]).size > 5 * 1024 * 1024)
+      throw new Error("Import must be smaller than 5 MB.");
+    let data = JSON.parse(raw);
+    data = data.example_payload || data;
+    let questions = Array.isArray(data) ? data : data.questions;
+    if (
+      !Array.isArray(questions) &&
+      data.quiz &&
+      Array.isArray(data.quiz.questions)
+    )
+      questions = data.quiz.questions;
+    if (
+      !Array.isArray(questions) ||
+      !questions.length ||
+      questions.length > 500
+    )
+      throw new Error("JSON must contain between 1 and 500 questions.");
+    const ids = new Set();
+    const normalized = questions.map(normalizeQuestion);
+    normalized.forEach((q, i) => {
+      if (ids.has(q.id))
+        throw new Error(`Duplicate question id “${q.id}” (question ${i + 1}).`);
+      ids.add(q.id);
     });
-
-    const btnAttend = document.getElementById("ep-btn-attend-exam");
-    if (btnAttend) {
-      btnAttend.onclick = () => {
-        if (getExamDeviceInfo().isPhone) {
-          showLaptopOnlyModal();
-          return;
-        }
-        if (state.exam.status === "ended") {
-          showExamEndedRejoinModal();
-          return;
-        }
-        state.activeOnboardingModal = 1;
-        saveState(state);
+    return normalized;
+  }
+  function startPolling() {
+    clearInterval(app.poll);
+    clearInterval(app.ticker);
+    if (
+      app.exam &&
+      ["room", "detail", "rules", "result"].includes(app.screen)
+    ) {
+      app.poll = setInterval(
+        () =>
+          pollState().catch((e) =>
+            flash(`Connection lost: ${e.message}`, true),
+          ),
+        6000,
+      );
+    }
+    if (app.screen === "room")
+      app.ticker = setInterval(() => {
+        const node = $("#ep-countdown");
+        if (!node || app.state?.remaining_seconds == null) return;
+        const elapsed =
+          app.exam.status === "paused"
+            ? 0
+            : Math.floor((Date.now() - app.stateFetchedAt) / 1000);
+        node.textContent = formatClock(
+          Number(app.state.remaining_seconds) - elapsed,
+        );
+      }, 1000);
+  }
+  async function pollState() {
+    if (!app.exam || app.polling) return;
+    app.polling = true;
+    const epoch = app.epoch,
+      id = app.exam.id;
+    try {
+      const before = [
+        app.exam.status,
+        app.state?.session?.status,
+        app.exam.results_published,
+        app.state?.session?.warnings,
+      ].join("|");
+      const d = await request(
+        `/exam-platform/exams/${encodeURIComponent(id)}/state?compact=1`,
+      );
+      if (epoch !== app.epoch) return;
+      const after = [
+        d.exam.status,
+        d.session?.status,
+        d.exam.results_published,
+        d.session?.warnings,
+      ].join("|");
+      // Fetch full content only when session/results change. Ordinary polls never replace typing.
+      if (before !== after) {
+        await loadState();
+        return;
+      }
+      app.state = {
+        ...app.state,
+        ...d,
+        session: d.session ? { ...app.state?.session, ...d.session } : null,
       };
-    }
-
-    const btnViewCoc = document.getElementById("ep-btn-view-coc");
-    if (btnViewCoc) {
-      btnViewCoc.onclick = showCocModal;
-    }
-
-    if (state.activeOnboardingModal) {
-      renderOnboardingModal(state, session);
+      app.exam = { ...app.exam, ...d.exam };
+      app.stateFetchedAt = Date.now();
+      if (isManager() && app.screen === "detail") {
+        const sessions = $("#ep-sessions");
+        if (sessions) sessions.innerHTML = sessionTable(d.sessions || []);
+        const count = $(".ep-live-dot");
+        if (count)
+          count.textContent = `${(d.sessions || []).length} candidates`;
+      }
+      if (app.dirty && !app.savePromise && app.exam.status === "live")
+        saveAnswers().catch(() => {});
+      flushEvents();
+    } finally {
+      app.polling = false;
     }
   }
-
-  function showCocModal() {
-    const oldModal = document.getElementById("ep-coc-modal");
-    if (oldModal) oldModal.remove();
-
-    const modal = document.createElement("div");
-    modal.id = "ep-coc-modal";
-    modal.className = "ep-modal-backdrop";
-    modal.style.display = "flex";
-    modal.innerHTML = `
-      <div class="ep-onboarding-card" style="max-width:760px;text-align:left;max-height:86vh;overflow-y:auto;">
-        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:16px;">
-          <div>
-            <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
-              <img src="/assets/genz-logo.png" alt="Quiz Lab" style="height:28px;object-fit:contain;">
-              ${I("shield", 22, "#059669")}
-              <h2 style="font-size:20px;font-weight:800;color:#0f172a;margin:0;">Candidate Code of Conduct</h2>
-            </div>
-          </div>
-          <button id="ep-coc-close" style="background:#f8fafc;border:1px solid #cbd5e1;color:#334155;border-radius:8px;padding:8px 10px;cursor:pointer;font-weight:800;">
-            ${I("x", 14, "#334155")}
-          </button>
-        </div>
-
-        <h3 style="font-size:16px;font-weight:800;color:#1e3a8a;margin:0 0 12px 0;">
-          Online Remote Proctored Exams
-        </h3>
-        <p style="font-size:13.5px;color:#334155;line-height:1.7;margin-bottom:18px;">
-          This exam is conducted online from the examinee's place of residence and proctored remotely. The following guidelines must be followed by all examinees.
-        </p>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));gap:12px;">
-          ${[
-            ["Personal details", "No examinee shall share personal details with proctors, including but not limited to phone number or address, during or after the exam."],
-            ["Clean desk", "The table or desk where the examinee takes this exam shall not have any items kept that may have sensitive information, including but not limited to phone numbers and address."],
-            ["No assistance", "No examinee shall aid, or attempt to aid, another candidate by discussing answers via email, text, chat, call, or any other method."],
-            ["Confidential exam", "No examinee will disclose any details of what happened during the exam or examination trials to anyone outside."],
-            ["Ask inside exam", "If an examinee wishes to ask a question during the exam, they should post the query in the exam room chat window and the proctor will clarify the issue."],
-            ["Violation action", "If any examinee is found to have violated the Code of Conduct for Online Examinations, or to have acted improperly, they will be liable to disciplinary procedures. This can include withholding exam results, suspension, or termination from the program."]
-          ]
-            .map(
-              ([title, body], idx) => `
-                <div style="border:1px solid #e2e8f0;background:#f8fafc;border-radius:12px;padding:12px 14px;">
-                  <div style="display:flex;align-items:center;gap:8px;font-size:13px;font-weight:800;color:#0f172a;margin-bottom:6px;">
-                    <span style="width:22px;height:22px;border-radius:9999px;background:#dcfce7;color:#047857;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;">${idx + 1}</span>
-                    ${title}
-                  </div>
-                  <div style="font-size:12.5px;line-height:1.55;color:#475569;">${body}</div>
-                </div>
-              `
+  function changedAnswer(id, value) {
+    app.draftAnswers[id] = value;
+    app.pending[id] = value;
+    app.dirty = true;
+    app.saveError = "";
+    const status = $("#ep-save-state");
+    if (status) status.textContent = "Unsaved changes…";
+    clearTimeout(app.saveTimer);
+    app.saveTimer = setTimeout(() => saveAnswers().catch(() => {}), 700);
+  }
+  function wireAnswers(source) {
+    const out = { ...source };
+    for (const q of app.exam?.questions || [])
+      if (q.id in out) {
+        if (
+          out[q.id] === "" ||
+          out[q.id] == null ||
+          (Array.isArray(out[q.id]) && !out[q.id].length)
+        ) {
+          out[q.id] = null;
+          continue;
+        }
+        if (q.type === "numerical") {
+          if (!String(out[q.id]).trim() || !Number.isFinite(Number(out[q.id])))
+            throw new Error("Enter a finite number for each numerical answer.");
+          out[q.id] = Number(out[q.id]);
+        }
+      }
+    return out;
+  }
+  async function saveAnswers() {
+    if (app.savePromise) {
+      await app.savePromise;
+      if (app.dirty) return saveAnswers();
+      return;
+    }
+    if (!app.dirty) return;
+    if (app.exam?.status !== "live" || app.state?.session?.status !== "in_exam")
+      throw new Error("Saving will resume when your exam session is active.");
+    const epoch = app.epoch,
+      id = app.exam.id;
+    app.savePromise = (async () => {
+      for (let attempt = 0; attempt < 3; attempt++) {
+        const pending = { ...app.pending },
+          answers = wireAnswers(pending),
+          revision = app.revision;
+        try {
+          const d = await request(
+            `/exam-platform/exams/${encodeURIComponent(id)}/answers`,
+            { method: "PATCH", body: { answers, revision } },
+          );
+          if (epoch !== app.epoch) return;
+          for (const key of Object.keys(pending))
+            if (
+              JSON.stringify(app.pending[key]) === JSON.stringify(pending[key])
             )
-            .join("")}
-        </div>
-      </div>
-    `;
-
-    document.body.appendChild(modal);
-    const close = () => modal.remove();
-    document.getElementById("ep-coc-close").onclick = close;
-    modal.addEventListener("click", (e) => {
-      if (e.target === modal) close();
-    });
-  }
-
-  // ==========================================
-  // ONBOARDING MODALS (4-Step Sequential Flow)
-  // ==========================================
-  function renderOnboardingModal(state, session) {
-    const step = state.activeOnboardingModal;
-    const exam = state.exam;
-
-    let backdrop = document.getElementById("ep-modal-wrapper");
-    if (!backdrop) {
-      backdrop = document.createElement("div");
-      backdrop.id = "ep-modal-wrapper";
-      backdrop.className = "ep-modal-backdrop";
-      document.body.appendChild(backdrop);
-    }
-
-    // STEP 1: Environment & Network Checklist
-    if (step === 1) {
-      backdrop.innerHTML = `
-        <div class="ep-onboarding-card">
-          <div class="ep-shield-badge">
-            ${I("shield", 36, "#059669")}
-          </div>
-
-          <h2 class="ep-onboarding-title">Exam Environment Check</h2>
-          <p class="ep-onboarding-text">
-          Please confirm your testing workspace meets Quiz Lab academic integrity standards:
-          </p>
-
-          <div class="ep-checklist-box">
-            <div class="ep-checklist-item">
-              ${I("lock", 16, "#059669")}
-              <div><b>Locked & Private Room:</b> Ensure you are alone with no other persons present.</div>
-            </div>
-            <div class="ep-checklist-item">
-              ${I("volumeX", 16, "#059669")}
-              <div><b>Zero Noise:</b> No background conversation, audio devices, or music.</div>
-            </div>
-            <div class="ep-checklist-item">
-              ${I("wifi", 16, "#059669")}
-              <div><b>Stable Network:</b> Ensure unlimited high-speed data or uninterrupted Wi-Fi.</div>
-            </div>
-            <div class="ep-checklist-item">
-              ${I("shield", 16, "#059669")}
-              <div><b>Zero Cheating Tolerance:</b> No secondary devices, paper notes, or browser extensions.</div>
-            </div>
-          </div>
-
-          <button id="ep-btn-step1-next" class="ep-modal-btn">
-            Proceed to Attendance →
-          </button>
-
-          <div class="ep-modal-stepper">
-            <span class="ep-stepper-dot active"></span>
-            <span class="ep-stepper-dot"></span>
-            <span class="ep-stepper-dot"></span>
-            <span class="ep-stepper-dot"></span>
-          </div>
-        </div>
-      `;
-
-      document.getElementById("ep-btn-step1-next").onclick = () => {
-        state.activeOnboardingModal = 2;
-        saveState(state);
-      };
-      return;
-    }
-
-    // STEP 2: Attendance Modal (Exact replica of user's uploaded image!)
-    if (step === 2) {
-      backdrop.innerHTML = `
-        <div class="ep-onboarding-card">
-          <!-- Circular badge with verified scalloped shield checkmark -->
-          <div class="ep-shield-badge" style="background:#e2e8f0;">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="#334155" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 1L14.7 3.3L18.3 3.6L19.4 7.1L22.4 9.1L21.8 12.7L23.3 16L20.5 18.3L19.8 21.9L16.2 22.1L13.8 24.5L10.5 23.3L7.7 24.5L5.3 22.1L1.7 21.9L1 18.3L-1.8 16L-0.3 12.7L-0.9 9.1L2.1 7.1L3.2 3.6L6.8 3.3L9.5 1L12 1Z" opacity="0.15" />
-              <circle cx="12" cy="12" r="10" fill="#334155"/>
-              <path d="M8 12.3L10.7 15L16.3 9.4" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-
-          <h2 class="ep-onboarding-title">Record my Attendance</h2>
-          <p class="ep-onboarding-text" style="font-size:13.5px;color:#334155;line-height:1.65;margin-bottom:24px;">
-            By marking your attendance, you confirm your presence for the exam. Please note that once your attendance is recorded, any exit from the exam session will be registered and could affect your ability to continue. Make sure you're ready before proceeding. If you face any technical issues, reach out to support immediately
-          </p>
-
-          <button id="ep-btn-step2-confirm" class="ep-modal-btn" style="background:#475569;">
-            Confirm Attendance
-          </button>
-
-          <div class="ep-modal-stepper">
-            <span class="ep-stepper-dot"></span>
-            <span class="ep-stepper-dot active"></span>
-            <span class="ep-stepper-dot"></span>
-            <span class="ep-stepper-dot"></span>
-          </div>
-        </div>
-      `;
-
-      document.getElementById("ep-btn-step2-confirm").onclick = () => {
-        const timeStr = new Date().toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit", second: "2-digit" });
-        session.attendanceRecordedAt = timeStr;
-        session.attendanceTimestamp = Date.now();
-        state.activeOnboardingModal = 3;
-        saveState(state);
-      };
-      return;
-    }
-
-    // STEP 3: Live Camera Photo Verification
-    if (step === 3) {
-      tempCapturedPhoto = null;
-      backdrop.innerHTML = `
-        <div class="ep-onboarding-card">
-          <div class="ep-shield-badge" style="background:#e0f2fe;">
-            ${I("camera", 36, "#0284c7")}
-          </div>
-
-          <h2 class="ep-onboarding-title">Live Identity Capture</h2>
-          <p class="ep-onboarding-text" style="margin-bottom:14px;">
-            Position your face inside the frame. Live camera verification will be logged.
-          </p>
-
-          <div class="ep-cam-viewfinder">
-            <video id="ep-cam-stream" class="ep-cam-video" autoplay playsinline muted></video>
-            <canvas id="ep-cam-canvas" width="320" height="240" style="display:none;"></canvas>
-            <img id="ep-cam-snapshot" class="ep-cam-preview-img" style="display:none;" />
-            <div id="ep-cam-fallback-tag" style="display:none;position:absolute;bottom:8px;left:8px;font-size:10px;background:rgba(0,0,0,0.6);color:#fff;padding:2px 6px;border-radius:4px;">
-              Live Viewfinder
-            </div>
-          </div>
-
-          <div id="ep-cam-action-bar" style="width:100%;">
-            <button id="ep-btn-take-photo" class="ep-modal-btn" style="background:#059669;display:flex;align-items:center;justify-content:center;gap:8px;">
-              ${I("camera", 16, "#ffffff")} Capture Photo
-            </button>
-          </div>
-
-          <div id="ep-cam-confirm-bar" style="display:none;width:100%;gap:10px;">
-            <button id="ep-btn-retake-photo" class="ep-modal-btn" style="background:#f1f5f9;color:#334155;border:1px solid #cbd5e1;flex:1;display:flex;align-items:center;justify-content:center;gap:6px;">
-              ${I("refresh", 14, "#334155")} Retake
-            </button>
-            <button id="ep-btn-confirm-photo" class="ep-modal-btn" style="background:#059669;flex:1;display:flex;align-items:center;justify-content:center;gap:6px;">
-              ${I("check", 14, "#ffffff")} Confirm Photo
-            </button>
-          </div>
-
-          <div class="ep-modal-stepper">
-            <span class="ep-stepper-dot"></span>
-            <span class="ep-stepper-dot"></span>
-            <span class="ep-stepper-dot active"></span>
-            <span class="ep-stepper-dot"></span>
-          </div>
-        </div>
-      `;
-
-      const video = document.getElementById("ep-cam-stream");
-      const canvas = document.getElementById("ep-cam-canvas");
-      const snapshotImg = document.getElementById("ep-cam-snapshot");
-      const btnTake = document.getElementById("ep-btn-take-photo");
-      const btnRetake = document.getElementById("ep-btn-retake-photo");
-      const btnConfirm = document.getElementById("ep-btn-confirm-photo");
-      const actionBar = document.getElementById("ep-cam-action-bar");
-      const confirmBar = document.getElementById("ep-cam-confirm-bar");
-
-      if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-        navigator.mediaDevices
-          .getUserMedia({ video: { width: 320, height: 240 } })
-          .then((stream) => {
-            activeWebcamStream = stream;
-            video.srcObject = stream;
-          })
-          .catch(() => {
-            simulateCanvasCamera(canvas, video);
-          });
-      } else {
-        simulateCanvasCamera(canvas, video);
-      }
-
-      function simulateCanvasCamera(cvs, vid) {
-        const ctx = cvs.getContext("2d");
-        ctx.fillStyle = "#1e293b";
-        ctx.fillRect(0, 0, 320, 240);
-        ctx.fillStyle = "#38bdf8";
-        ctx.beginPath();
-        ctx.arc(160, 95, 45, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.beginPath();
-        ctx.arc(160, 200, 70, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.fillStyle = "#ffffff";
-        ctx.font = "bold 13px Inter, sans-serif";
-        ctx.textAlign = "center";
-        ctx.fillText("Verified Student Face", 160, 160);
-        const dataUrl = cvs.toDataURL("image/jpeg");
-        snapshotImg.src = dataUrl;
-        const tag = document.getElementById("ep-cam-fallback-tag");
-        if (tag) tag.style.display = "block";
-      }
-
-      btnTake.onclick = () => {
-        const ctx = canvas.getContext("2d");
-        if (video.videoWidth > 0) {
-          ctx.drawImage(video, 0, 0, 320, 240);
-        } else {
-          simulateCanvasCamera(canvas, video);
-        }
-        tempCapturedPhoto = canvas.toDataURL("image/jpeg");
-        snapshotImg.src = tempCapturedPhoto;
-        video.style.display = "none";
-        snapshotImg.style.display = "block";
-
-        actionBar.style.display = "none";
-        confirmBar.style.display = "flex";
-      };
-
-      btnRetake.onclick = () => {
-        video.style.display = "block";
-        snapshotImg.style.display = "none";
-        actionBar.style.display = "block";
-        confirmBar.style.display = "none";
-      };
-
-      btnConfirm.onclick = () => {
-        session.photoDataUrl = tempCapturedPhoto;
-        if (activeWebcamStream) {
-          activeWebcamStream.getTracks().forEach((t) => t.stop());
-          activeWebcamStream = null;
-        }
-        state.activeOnboardingModal = 4;
-        saveState(state);
-      };
-      return;
-    }
-
-    // STEP 4: Exam Protocol & Final Agreement (Checkbox unselected by default, no emojis)
-    if (step === 4) {
-      backdrop.innerHTML = `
-        <div class="ep-onboarding-card">
-          <div class="ep-shield-badge" style="background:#fef3c7;">
-            ${I("fileText", 36, "#d97706")}
-          </div>
-
-          <h2 class="ep-onboarding-title" style="margin-bottom:6px;">
-            Exam Type — ${exam.type === "final" ? "Final Test" : "General Test"}
-          </h2>
-
-          <div class="ep-checklist-box" style="font-size:12.5px;">
-            <div class="ep-checklist-item">
-              ${I("slash", 16, "#dc2626")}
-              <div><b>No Window Leaving:</b> You are NOT permitted to leave or minimize this window. Any exit locks access and requires manager review.</div>
-            </div>
-            <div class="ep-checklist-item">
-              ${I("slash", 16, "#dc2626")}
-              <div><b>No Tab Switching:</b> You are NOT permitted to open any other tab. Doing so triggers infraction warnings.</div>
-            </div>
-            <div class="ep-checklist-item">
-              ${I("clock", 16, "#059669")}
-              <div><b>Auto-Submission:</b> Your answers will automatically submit when the exam timer ends.</div>
-            </div>
-            <div class="ep-checklist-item">
-              ${I("lock", 16, "#475569")}
-              <div><b>Integrity Guard:</b> Copy/paste, double-clicking, and text selections are locked.</div>
-            </div>
-          </div>
-
-          <!-- NOT checked by default -->
-          <label style="display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;color:#334155;cursor:pointer;margin-bottom:20px;text-align:left;width:100%;">
-            <input type="checkbox" id="ep-cb-agree" style="width:17px;height:17px;accent-color:#059669;cursor:pointer;" />
-            <span>I understand and agree to all examination rules.</span>
-          </label>
-
-          <!-- Disabled by default, NO rocket emoji -->
-          <button id="ep-btn-final-enter" class="ep-modal-btn" disabled style="background:#94a3b8;color:#ffffff;cursor:not-allowed;box-shadow:none;">
-            I Agree & Start Exam
-          </button>
-
-          <div class="ep-modal-stepper">
-            <span class="ep-stepper-dot"></span>
-            <span class="ep-stepper-dot"></span>
-            <span class="ep-stepper-dot"></span>
-            <span class="ep-stepper-dot active"></span>
-          </div>
-        </div>
-      `;
-
-      const cb = document.getElementById("ep-cb-agree");
-      const btn = document.getElementById("ep-btn-final-enter");
-
-      cb.onchange = () => {
-        if (cb.checked) {
-          btn.disabled = false;
-          btn.style.background = "#059669";
-          btn.style.cursor = "pointer";
-          btn.style.boxShadow = "0 4px 14px rgba(5,150,105,0.3)";
-        } else {
-          btn.disabled = true;
-          btn.style.background = "#94a3b8";
-          btn.style.cursor = "not-allowed";
-          btn.style.boxShadow = "none";
-        }
-      };
-
-      btn.onclick = () => {
-        if (!cb.checked) return;
-        if (getExamDeviceInfo().isPhone) {
-          showLaptopOnlyModal();
+              delete app.pending[key];
+          app.dirty = Object.keys(app.pending).length > 0;
+          app.saveError = "";
+          app.revision = d.session.revision;
+          app.state.session = { ...app.state.session, ...d.session };
+          app.draftAnswers = { ...d.session.answers, ...app.pending };
+          const status = $("#ep-save-state");
+          if (status)
+            status.textContent = app.dirty
+              ? "Unsaved changes…"
+              : "Answers saved on server";
           return;
+        } catch (e) {
+          if (e.status !== 409 || attempt === 2) throw e;
+          const d = await request(
+            `/exam-platform/exams/${encodeURIComponent(id)}/state`,
+          );
+          if (epoch !== app.epoch) return;
+          applyState(d);
+          render();
+          if (d.exam.status !== "live" || d.session?.status !== "in_exam") {
+            render();
+            throw e;
+          }
         }
-        enterExamFullscreen();
-        session.status = "in_exam";
-        session.startedAt = Date.now();
-        session.cocAgreedAt = null;
-        session.cocAgreedAtFormatted = null;
-        session.currentSectionId = "sec-coc";
-        state.activeOnboardingModal = null;
-        if (backdrop) backdrop.remove();
-        saveState(state);
-      };
+      }
+    })();
+    try {
+      await app.savePromise;
+    } catch (e) {
+      if (epoch === app.epoch) {
+        app.saveError = `Not saved: ${e.message}`;
+        const status = $("#ep-save-state");
+        if (status) status.textContent = app.saveError;
+      }
+      throw e;
+    } finally {
+      app.savePromise = null;
+      if (epoch === app.epoch && app.dirty) {
+        clearTimeout(app.saveTimer);
+        app.saveTimer = setTimeout(
+          () => saveAnswers().catch(() => {}),
+          app.saveError ? 5000 : 0,
+        );
+      }
+    }
+  }
+  async function event(type) {
+    if (
+      app.screen !== "room" ||
+      app.exam?.status !== "live" ||
+      app.state?.session?.status !== "in_exam" ||
+      Date.now() - app.lastEventAt < 1200
+    )
       return;
+    app.lastEventAt = Date.now();
+    if (app.eventQueue.length < 100)
+      app.eventQueue.push({
+        examId: app.exam.id,
+        id: crypto.randomUUID(),
+        type,
+      });
+    await flushEvents();
+  }
+  async function flushEvents() {
+    if (app.flushingEvents) return;
+    app.flushingEvents = true;
+    try {
+      while (app.eventQueue.length) {
+        const item = app.eventQueue[0];
+        try {
+          const d = await request(
+            `/exam-platform/exams/${encodeURIComponent(item.examId)}/events`,
+            { method: "POST", body: { id: item.id, type: item.type } },
+          );
+          app.eventQueue.shift();
+          if (app.exam?.id === item.examId) {
+            app.state.session = { ...app.state.session, ...d.session };
+            render();
+            flash(`Browser warning recorded (${d.session.warnings}).`, true);
+          }
+        } catch (e) {
+          if ([403, 404, 409, 422].includes(e.status)) app.eventQueue.shift();
+          else break;
+        }
+      }
+    } finally {
+      app.flushingEvents = false;
     }
   }
-
-  // ==========================================
-  // LIVE EXAM WORKSPACE
-  // ==========================================
-  function renderStudentLiveExam(container, state, session) {
-    const exam = state.exam;
-    const currentQIdx = session.currentQuestionIndex || 0;
-    const currentQuestion = exam.questions[currentQIdx] || exam.questions[0];
-    const totalQ = exam.questions.length;
-    const sectionQuestions = exam.questions.filter((q) => q.sectionId === session.currentSectionId);
-    const sectionAnsweredCount = sectionQuestions.filter((q) => session.answers[q.id] !== undefined && session.answers[q.id] !== "").length;
-    const sectionReviewCount = sectionQuestions.filter((q) => session.reviewFlags.includes(q.id)).length;
-    const sectionUnansweredCount = sectionQuestions.length - sectionAnsweredCount;
-    const currentSectionQuestionIndex = Math.max(0, sectionQuestions.findIndex((q) => q.id === currentQuestion?.id));
-
-    const totalSeconds = (exam.durationMinutes + exam.extendedMinutes) * 60;
-    const elapsedSeconds = session.startedAt ? Math.floor((Date.now() - session.startedAt) / 1000) : 0;
-    const remainingSeconds = Math.max(0, totalSeconds - elapsedSeconds);
-    const mins = Math.floor(remainingSeconds / 60);
-    const secs = remainingSeconds % 60;
-    const timeFormatted = `${String(mins).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
-
-    const warnings = session.warnings || 0;
-
-    container.innerHTML = `
-      <div id="ep-root" class="ep-live-exam-root" style="display:flex;flex-direction:column;height:calc(100vh - 48px);overflow:hidden;background:#f8fafc;user-select:none;-webkit-user-select:none;">
-        <!-- Top Header Bar -->
-        <header style="height:clamp(62px, 5.4vw, 82px);background:#ffffff;border-bottom:1px solid #e2e8f0;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(18px, 2vw, 34px);flex-shrink:0;">
-          <div style="display:flex;align-items:center;gap:12px;">
-            <img src="/assets/genz-logo.png" alt="Quiz Lab" style="height:30px;max-width:90px;object-fit:contain;">
-            <div>
-              <h1 style="font-size:clamp(14px, 1.15vw, 21px);font-weight:800;color:#0f172a;margin:0;">${exam.title}</h1>
-              <div style="font-size:clamp(11px, 0.9vw, 15px);color:#64748b;">
-                ${session.name} (${session.email}) • Attendance: <b>${session.attendanceRecordedAt || "Verified"}</b>
-              </div>
-            </div>
-          </div>
-
-          <!-- Warnings, Timer & Submit -->
-          <div style="display:flex;align-items:center;gap:10px;">
-            <div id="ep-warning-chip" class="ep-header-warning ${warnings > 0 ? "warning-active" : ""}">
-              ${I("alert", 14, warnings > 0 ? "#dc2626" : "#64748b")}
-              Warnings: <b id="ep-warning-val">${warnings}</b>
-            </div>
-
-            <!-- Live Timer -->
-            <div style="display:flex;align-items:center;gap:6px;background:#f1f5f9;padding:6px 12px;border-radius:8px;border:1px solid #cbd5e1;">
-              <span style="width:8px;height:8px;border-radius:9999px;background:${mins < 5 || exam.status === "ended" ? "#ef4444" : "#059669"};animation:ep-pulse 2s infinite;"></span>
-              <span style="font-size:11px;font-weight:700;color:#64748b;">Time:</span>
-              <span style="font-size:15px;font-weight:800;color:${mins < 5 || exam.status === "ended" ? "#ef4444" : "#0f172a"};font-family:ui-monospace,monospace;">
-                ${exam.status === "ended" ? "ENDED" : timeFormatted}
-              </span>
-            </div>
-
-            <!-- Exit Button -->
-            <button id="btn-student-submit" style="background:#059669;border:none;color:#fff;padding:7px 18px;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:6px;box-shadow:0 1px 3px rgba(5,150,105,0.3);transition:background 0.15s;">
-              ${I("check", 13, "#ffffff")} Submit & Exit
-            </button>
-          </div>
-        </header>
-
-        <!-- Main Body -->
-        <div style="display:flex;flex:1;overflow:hidden;">
-          <aside id="ep-sidebar" style="width:clamp(280px, 24vw, 380px);background:#ffffff;border-right:2px solid #0f172a;display:flex;flex-direction:column;flex-shrink:0;">
-            <div style="padding:14px 16px;border-bottom:1px solid #e2e8f0;">
-              <div style="font-size:11px;font-weight:700;text-transform:uppercase;color:#64748b;margin-bottom:8px;">
-                Sections
-              </div>
-              <div style="display:flex;flex-direction:column;gap:6px;">
-                ${exam.sections
-                  .map((sec) => {
-                    const isActive = sec.id === session.currentSectionId;
-                    const isCoc = sec.id === "sec-coc";
-                    const lockedUntilCoc = !isCoc && !session.cocAgreedAt;
-                    const secQCount = exam.questions.filter((q) => q.sectionId === sec.id).length;
-                    return `
-                      <button class="btn-select-section ep-section-btn" data-id="${sec.id}" style="text-align:left;padding:8px 12px;border-radius:8px;border:1.5px solid ${isActive ? "#059669" : "#e2e8f0"};background:${isActive ? "#f0fdf4" : "#ffffff"};color:${lockedUntilCoc ? "#94a3b8" : isActive ? "#059669" : "#334155"};font-weight:700;font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:6px;opacity:${lockedUntilCoc ? "0.65" : "1"};">
-                        <span style="display:inline-flex;align-items:center;gap:6px;">
-                          ${isCoc ? I("shield", 13, isActive ? "#059669" : "#64748b") : ""}
-                          ${sec.title}
-                        </span>
-                        ${isCoc ? `<span style="font-size:10px;font-weight:800;background:#dbeafe;color:#1e40af;padding:1px 6px;border-radius:4px;">RULES</span>` : `<span>(${secQCount})</span>`}
-                      </button>
-                    `;
-                  })
-                  .join("")}
-              </div>
-            </div>
-
-            <!-- Question Palette Grid -->
-            <div style="flex:1;overflow-y:auto;padding:16px;">
-              <div style="font-size:11px;font-weight:700;text-transform:uppercase;color:#64748b;margin-bottom:12px;">
-                Question Palette
-              </div>
-              <div class="ep-q-grid">
-                ${sectionQuestions.length
-                  ? sectionQuestions
-                      .map((q, sectionQIndex) => {
-                    const qIndex = exam.questions.findIndex((item) => item.id === q.id);
-                    const isAnswered = session.answers[q.id] !== undefined && session.answers[q.id] !== "";
-                    const isReviewed = session.reviewFlags.includes(q.id);
-                    const isCurrent = qIndex === currentQIdx && session.currentSectionId !== "sec-coc";
-
-                    let statusClass = "ep-q-unvisited";
-                    if (isReviewed) statusClass = "ep-q-review";
-                    else if (isAnswered) statusClass = "ep-q-answered";
-
-                    return `
-                      <button class="ep-q-btn ${statusClass} ${isCurrent ? "current" : ""}" data-q="${qIndex}" style="${!session.cocAgreedAt ? "opacity:0.55;cursor:not-allowed;" : ""}">
-                        ${sectionQIndex + 1}
-                      </button>
-                    `;
-                  })
-                  .join("")
-                  : `<div style="grid-column:1/-1;color:#94a3b8;font-size:12px;font-weight:700;text-align:center;padding:14px 0;">No questions in this section</div>`}
-              </div>
-            </div>
-
-            <div style="padding:12px 16px;border-top:1px solid #e2e8f0;background:#ffffff;">
-              <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
-                <button id="ep-btn-calc-basic" title="Open Basic Calculator" style="background:#f0fdf4;border:1px solid #86efac;color:#047857;padding:9px 10px;border-radius:8px;font-size:12px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px;">
-                  ${I("calculator", 13, "#047857")} Basic
-                </button>
-                <button id="ep-btn-calc-pro" title="Open Scientific Calculator" style="background:#f0fdf4;border:1px solid #86efac;color:#047857;padding:9px 10px;border-radius:8px;font-size:12px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px;">
-                  ${I("calculator", 13, "#047857")} Pro
-                </button>
-              </div>
-              <div style="margin-top:8px;">
-                <button id="ep-btn-header-chat" style="width:100%;background:#0f172a;color:#fff;border:none;padding:9px 10px;border-radius:8px;font-size:12px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px;">
-                  ${I("message", 13, "#ffffff")} Doubts ${state.chatMessages.length > 0 ? `<span style="background:#059669;color:#fff;font-size:10px;padding:1px 6px;border-radius:9999px;">${state.chatMessages.length}</span>` : ""}
-                </button>
-              </div>
-            </div>
-
-            <!-- Legend Summary -->
-            <div style="padding:12px 16px;border-top:1px solid #e2e8f0;background:#f8fafc;font-size:11px;color:#475569;">
-              <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
-                <div style="display:flex;align-items:center;gap:6px;">
-                  <span style="width:10px;height:10px;border-radius:3px;background:#dcfce7;border:1px solid #86efac;"></span>
-                  Answered (${sectionAnsweredCount})
-                </div>
-                <div style="display:flex;align-items:center;gap:6px;">
-                  <span style="width:10px;height:10px;border-radius:3px;background:#ede9fe;border:1px solid #c4b5fd;"></span>
-                  Review (${sectionReviewCount})
-                </div>
-                <div style="display:flex;align-items:center;gap:6px;">
-                  <span style="width:10px;height:10px;border-radius:3px;background:#f1f5f9;border:1px solid #cbd5e1;"></span>
-                  Unvisited (${sectionUnansweredCount})
-                </div>
-              </div>
-            </div>
-          </aside>
-
-          <!-- Main Workspace -->
-          <main style="flex:1;display:flex;flex-direction:column;overflow-y:auto;padding:clamp(22px, 2vw, 42px) clamp(28px, 3vw, 58px);background:#ffffff;">
-            ${
-              session.currentSectionId === "sec-coc"
-                ? `
-                <!-- Code of Conduct (COC) Full View -->
-                <div style="flex:1;overflow-y:auto;max-width:880px;">
-                  <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid #e2e8f0;">
-                    <img src="/assets/genz-logo.png" alt="Quiz Lab" style="height:28px;object-fit:contain;">
-                    <div style="font-size:16px;font-weight:800;color:#0f172a;">Candidate Code of Conduct & Remote Proctoring Rules</div>
-                  </div>
-
-                  <h2 style="font-size:16px;font-weight:800;color:#1e3a8a;margin:0 0 12px 0;">
-                    Online Remote Proctored Exams
-                  </h2>
-                  <p style="font-size:13.5px;color:#334155;line-height:1.7;margin-bottom:18px;">
-                    This exam is conducted online from the examinee's place of residence and proctored remotely by the Quiz Lab team. Due date for this assignment is binding. The following guidelines must be followed by all examinees.
-                  </p>
-
-                  <ol style="font-size:13px;color:#334155;line-height:1.75;padding-left:22px;display:flex;flex-direction:column;gap:10px;margin-bottom:28px;">
-                    <li><b>Personal details:</b> No examinee shall share their personal details with the proctors, including but not limited to phone number or address, during or after the exam.</li>
-                    <li><b>Clean desk:</b> The table or desk where the examinee takes this exam shall not have any items kept that may have sensitive information, including but not limited to phone numbers and address.</li>
-                    <li><b>No assistance:</b> No examinee shall aid, or attempt to aid another candidate by discussing answers via email, text, chat, call, or any other method.</li>
-                    <li><b>Confidential exam:</b> No examinee will disclose any details of what happened during the exam or examination trials to anyone outside.</li>
-                    <li><b>Ask inside exam:</b> If an examinee wishes to ask a question during the exam, they should post the query in the exam room chat window and the proctor will clarify the issue.</li>
-                    <li><b>Violation action:</b> If any examinee is found to have violated the Code of Conduct for Online Examinations, or to have acted improperly, they will be liable to disciplinary procedures. This can include withholding exam results, suspension, or termination from the program.</li>
-                  </ol>
-
-                  <div style="padding-top:16px;border-top:1px solid #e2e8f0;display:flex;flex-direction:column;align-items:flex-start;gap:14px;">
-                    <label style="display:flex;align-items:center;gap:10px;font-size:13px;font-weight:700;color:#334155;cursor:pointer;">
-                      <input type="checkbox" id="ep-coc-agree" ${session.cocAgreedAt ? "checked" : ""} style="width:17px;height:17px;accent-color:#059669;cursor:pointer;" />
-                      <span>I know and I agree to follow the Code of Conduct.</span>
-                    </label>
-                    ${session.cocAgreedAtFormatted ? `<div style="font-size:11.5px;color:#64748b;">Agreed at: <b>${session.cocAgreedAtFormatted}</b></div>` : ""}
-                    <button id="ep-btn-coc-continue" ${session.cocAgreedAt ? "" : "disabled"} style="background:${session.cocAgreedAt ? "#059669" : "#94a3b8"};color:#ffffff;border:none;padding:10px 22px;border-radius:8px;font-size:13px;font-weight:700;cursor:${session.cocAgreedAt ? "pointer" : "not-allowed"};display:inline-flex;align-items:center;gap:8px;box-shadow:${session.cocAgreedAt ? "0 2px 8px rgba(5,150,105,0.25)" : "none"};">
-                      ${I("check", 14, "#ffffff")} Back to Exam Questions →
-                    </button>
-                  </div>
-                </div>
-                `
-                : `
-                <!-- Question Top Details -->
-                <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #e2e8f0;padding-bottom:12px;margin-bottom:18px;">
-                  <div style="display:flex;align-items:center;gap:10px;">
-                    <span style="font-size:17px;font-weight:800;color:#0f172a;">Question ${currentSectionQuestionIndex + 1} of ${sectionQuestions.length}</span>
-                    <span style="padding:3px 8px;border-radius:6px;background:#e0f2fe;color:#0369a1;font-size:11px;font-weight:700;">
-                      ${currentQuestion.type.toUpperCase().replace("_", " ")}
-                    </span>
-                  </div>
-                  <div style="font-size:12px;font-weight:700;color:#059669;">
-                    +${currentQuestion.marks} Marks ${currentQuestion.negative ? `| -${currentQuestion.negative} Negative` : ""}
-                  </div>
-                </div>
-
-                <!-- Question Prompt -->
-                <div style="font-size:15px;color:#0f172a;line-height:1.6;font-weight:500;margin-bottom:14px;">
-                  ${currentQuestion.prompt}
-                </div>
-
-                <!-- Code snippet if any -->
-                ${
-                  currentQuestion.code
-                    ? `<pre style="background:#0f172a;color:#f8fafc;padding:14px;border-radius:8px;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:13px;line-height:1.5;margin-bottom:18px;overflow-x:auto;"><code>${currentQuestion.code}</code></pre>`
-                    : ""
-                }
-
-                <!-- Answer Options -->
-                <div style="margin-bottom:28px;">
-                  ${renderQuestionInputs(currentQuestion, session.answers[currentQuestion.id])}
-                </div>
-
-                <!-- Action Bar -->
-                <div style="margin-top:auto;display:flex;justify-content:space-between;align-items:center;border-top:1px solid #e2e8f0;padding-top:18px;">
-                  <div style="display:flex;gap:8px;">
-                    <button id="btn-q-prev" ${currentQIdx === 0 ? "disabled" : ""} style="background:#fff;border:1px solid #cbd5e1;color:#475569;padding:9px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:${currentQIdx === 0 ? "not-allowed" : "pointer"};opacity:${currentQIdx === 0 ? 0.4 : 1};">
-                      ← Prev
-                    </button>
-                    <button id="btn-q-clear" style="background:#fff;border:1px solid #cbd5e1;color:#64748b;padding:9px 14px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;">
-                      Clear
-                    </button>
-                  </div>
-
-                  <div style="display:flex;gap:8px;">
-                    <button id="btn-q-review" style="background:#f5f3ff;border:1px solid #c4b5fd;color:#6d28d9;padding:9px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;">
-                      ${session.reviewFlags.includes(currentQuestion.id) ? "Marked for Review" : "Review & Next"}
-                    </button>
-                    <button id="btn-q-save-next" style="background:#059669;color:#fff;border:none;padding:9px 20px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;">
-                      ${currentQIdx === totalQ - 1 ? "Save Response" : "Save & Next →"}
-                    </button>
-                  </div>
-                </div>
-                `
-            }
-          </main>
-        </div>
-      </div>
-    `;
-
-    if (exam.status === "ended") {
-      showExamEndedForceModal(state, session);
+  async function fullscreen() {
+    try {
+      if (
+        !document.fullscreenElement &&
+        document.documentElement.requestFullscreen
+      )
+        await document.documentElement.requestFullscreen();
+    } catch (_) {
+      flash(
+        "Fullscreen is unavailable in this browser. Browser focus events are still recorded.",
+      );
     }
-
-    bindStudentLiveExamEvents(state, session, currentQIdx, currentQuestion, totalQ);
   }
-
-  function renderTabSwitchAlertModal(state, session) {
-    let backdrop = document.getElementById("ep-tabswitch-modal");
-    if (!backdrop) {
-      backdrop = document.createElement("div");
-      backdrop.id = "ep-tabswitch-modal";
-      backdrop.className = "ep-modal-backdrop";
-      document.body.appendChild(backdrop);
-    }
-
-    backdrop.innerHTML = `
-      <div class="ep-onboarding-card" style="border:2px solid #ef4444;max-width:440px;">
-        <div class="ep-shield-badge" style="background:#fee2e2;margin-bottom:12px;">
-          ${I("alert", 36, "#dc2626")}
-        </div>
-        <h3 style="font-size:20px;font-weight:800;color:#991b1b;margin:0 0 8px 0;">
-          Warning: Tab Change Detected!
-        </h3>
-        <p style="color:#64748b;font-size:13px;line-height:1.5;margin-bottom:16px;">
-          You switched away from the exam tab. Navigating outside the testing window is an infraction and has been recorded.
-        </p>
-
-        <div style="background:#fef2f2;border:1px solid #fecaca;padding:12px;border-radius:10px;margin-bottom:20px;width:100%;text-align:center;">
-          <span style="font-size:11px;color:#991b1b;font-weight:700;text-transform:uppercase;">TOTAL WARNING COUNT</span>
-          <div style="font-size:26px;font-weight:900;color:#dc2626;margin:4px 0;">${session.warnings}</div>
-        </div>
-
-        <button id="ep-btn-resume-tabswitch" class="ep-modal-btn" style="background:#0f172a;">
-          I Understand & Resume Exam
-        </button>
-      </div>
-    `;
-
-    document.getElementById("ep-btn-resume-tabswitch").onclick = () => {
-      tabSwitchAlertActive = false;
-      if (backdrop) backdrop.remove();
-      render();
-    };
+  function rememberSetup() {
+    const form = $('form[data-form="exam"]');
+    if (form) app.setupDraft = formData(form);
+    const roster = $("#ep-enrollment-list");
+    if (roster)
+      app.exam = {
+        ...app.exam,
+        enrollments: roster.value
+          .split(/\n/)
+          .filter(Boolean)
+          .map((email) => ({ email })),
+      };
   }
-
-  function renderQuestionInputs(q, currentAnswer) {
-    if (q.type === "mcq_single" || q.type === "true_false") {
-      return `
-        <div style="display:flex;flex-direction:column;gap:10px;">
-          ${q.options
-            .map((opt, i) => {
-              const isChecked = currentAnswer === i;
-              return `
-              <label style="display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:10px;border:1.5px solid ${isChecked ? "#059669" : "#e2e8f0"};background:${isChecked ? "#f0fdf4" : "#ffffff"};cursor:pointer;transition:all 0.15s ease;">
-                <input type="radio" name="opt-mcq" value="${i}" ${isChecked ? "checked" : ""} style="width:16px;height:16px;accent-color:#059669;" />
-                <span style="font-size:14px;color:#1e293b;font-weight:${isChecked ? "600" : "500"};">${opt}</span>
-              </label>
-            `;
-            })
-            .join("")}
-        </div>
-      `;
-    }
-
-    if (q.type === "mcq_multi") {
-      const selectedArr = Array.isArray(currentAnswer) ? currentAnswer : [];
-      return `
-        <div style="display:flex;flex-direction:column;gap:10px;">
-          ${q.options
-            .map((opt, i) => {
-              const isChecked = selectedArr.includes(i);
-              return `
-              <label style="display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:10px;border:1.5px solid ${isChecked ? "#059669" : "#e2e8f0"};background:${isChecked ? "#f0fdf4" : "#ffffff"};cursor:pointer;transition:all 0.15s ease;">
-                <input type="checkbox" name="opt-multi" value="${i}" ${isChecked ? "checked" : ""} style="width:16px;height:16px;accent-color:#059669;" />
-                <span style="font-size:14px;color:#1e293b;font-weight:${isChecked ? "600" : "500"};">${opt}</span>
-              </label>
-            `;
-            })
-            .join("")}
-        </div>
-      `;
-    }
-
-    if (q.type === "numerical") {
-      return `
-        <div>
-          <label style="display:block;font-size:12px;font-weight:700;color:#64748b;margin-bottom:6px;">Enter Numerical Answer:</label>
-          <input type="number" id="input-numerical-ans" value="${currentAnswer !== undefined ? currentAnswer : ""}" placeholder="e.g. 42" style="background:#fff;border:1.5px solid #cbd5e1;padding:10px 14px;border-radius:8px;font-size:15px;width:240px;color:#0f172a;outline:none;" />
-        </div>
-      `;
-    }
-
-    if (q.type === "short_answer") {
-      return `
-        <div>
-          <label style="display:block;font-size:12px;font-weight:700;color:#64748b;margin-bottom:6px;">Enter Short Answer (Single word/keyword):</label>
-          <input type="text" id="input-short-ans" value="${currentAnswer || ""}" placeholder="Type your answer here..." style="background:#fff;border:1.5px solid #cbd5e1;padding:10px 14px;border-radius:8px;font-size:14px;width:320px;color:#0f172a;outline:none;" />
-        </div>
-      `;
-    }
-
-    return "";
-  }
-
-  function bindStudentLiveExamEvents(state, session, currentQIdx, currentQuestion, totalQ) {
-    document.querySelectorAll(".btn-select-section").forEach((btn) => {
-      btn.onclick = () => {
-        const secId = btn.getAttribute("data-id");
-        if (secId !== "sec-coc" && !session.cocAgreedAt) {
-          session.currentSectionId = "sec-coc";
-          saveState(state);
-          return;
-        }
-        session.currentSectionId = secId;
-        if (secId !== "sec-coc") {
-          const firstQIdx = state.exam.questions.findIndex((q) => q.sectionId === secId);
-          if (firstQIdx !== -1) session.currentQuestionIndex = firstQIdx;
-        }
-        saveState(state);
-      };
-    });
-
-    document.querySelectorAll(".ep-q-btn").forEach((btn) => {
-      btn.onclick = () => {
-        if (!session.cocAgreedAt) {
-          session.currentSectionId = "sec-coc";
-          saveState(state);
-          return;
-        }
-        const targetQ = parseInt(btn.getAttribute("data-q"), 10);
-        session.currentQuestionIndex = targetQ;
-        const qObj = state.exam.questions[targetQ];
-        if (qObj) session.currentSectionId = qObj.sectionId;
-        saveState(state);
-      };
-    });
-
-    function grabCurrentInputAnswer() {
-      if (currentQuestion.type === "mcq_single" || currentQuestion.type === "true_false") {
-        const checked = document.querySelector('input[name="opt-mcq"]:checked');
-        return checked ? parseInt(checked.value, 10) : undefined;
+  async function onClick(ev) {
+    const b = ev.target.closest("[data-action]");
+    if (!b) return;
+    ev.preventDefault();
+    if (b.disabled) return;
+    const action = b.dataset.action;
+    b.disabled = true;
+    try {
+      if (action === "logout") {
+        if (app.dirty) await saveAnswers();
+        await request("/auth/logout", { method: "POST" });
+        localStorage.removeItem("lab_token");
+        localStorage.removeItem("lab_user");
+        location.assign("/login");
+        return;
       }
-      if (currentQuestion.type === "mcq_multi") {
-        const checkedBoxes = Array.from(document.querySelectorAll('input[name="opt-multi"]:checked'));
-        return checkedBoxes.map((cb) => parseInt(cb.value, 10));
+      if (action === "back") {
+        if (app.dirty) await saveAnswers();
+        clearInterval(app.poll);
+        await loadList();
+        return;
       }
-      if (currentQuestion.type === "numerical") {
-        const inp = document.getElementById("input-numerical-ans");
-        return inp && inp.value !== "" ? parseFloat(inp.value) : undefined;
+      if (action === "refresh-list") {
+        await updateList();
+        return;
       }
-      if (currentQuestion.type === "short_answer") {
-        const inp = document.getElementById("input-short-ans");
-        return inp && inp.value.trim() !== "" ? inp.value.trim() : undefined;
+      if (action === "open") {
+        await loadExam(b.dataset.id);
+        if (app.exam.status !== "draft") {
+          await loadState();
+          if (
+            !isManager() &&
+            ["in_exam", "locked"].includes(app.state.session?.status)
+          )
+            app.screen = "room";
+          render();
+          startPolling();
+        }
+        return;
       }
-      return undefined;
-    }
-
-    const btnSaveNext = document.getElementById("btn-q-save-next");
-    if (btnSaveNext) {
-      btnSaveNext.onclick = () => {
-        const ans = grabCurrentInputAnswer();
-        if (ans !== undefined && (!Array.isArray(ans) || ans.length > 0)) {
-          session.answers[currentQuestion.id] = ans;
-        }
-        if (currentQIdx < totalQ - 1) {
-          session.currentQuestionIndex = currentQIdx + 1;
-          const nextQ = state.exam.questions[currentQIdx + 1];
-          if (nextQ) session.currentSectionId = nextQ.sectionId;
-        }
-        saveState(state);
-      };
-    }
-
-    const btnPrev = document.getElementById("btn-q-prev");
-    if (btnPrev && currentQIdx > 0) {
-      btnPrev.onclick = () => {
-        const ans = grabCurrentInputAnswer();
-        if (ans !== undefined) session.answers[currentQuestion.id] = ans;
-        session.currentQuestionIndex = currentQIdx - 1;
-        const prevQ = state.exam.questions[currentQIdx - 1];
-        if (prevQ) session.currentSectionId = prevQ.sectionId;
-        saveState(state);
-      };
-    }
-
-    const btnClear = document.getElementById("btn-q-clear");
-    if (btnClear) {
-      btnClear.onclick = () => {
-        delete session.answers[currentQuestion.id];
-        session.reviewFlags = session.reviewFlags.filter((id) => id !== currentQuestion.id);
-        saveState(state);
-      };
-    }
-
-    const btnReview = document.getElementById("btn-q-review");
-    if (btnReview) {
-      btnReview.onclick = () => {
-        const ans = grabCurrentInputAnswer();
-        if (ans !== undefined) session.answers[currentQuestion.id] = ans;
-        if (!session.reviewFlags.includes(currentQuestion.id)) {
-          session.reviewFlags.push(currentQuestion.id);
-        } else {
-          session.reviewFlags = session.reviewFlags.filter((id) => id !== currentQuestion.id);
-        }
-        if (currentQIdx < totalQ - 1) {
-          session.currentQuestionIndex = currentQIdx + 1;
-        }
-        saveState(state);
-      };
-    }
-
-    const btnCalcBasic = document.getElementById("ep-btn-calc-basic");
-    if (btnCalcBasic) {
-      btnCalcBasic.onmousedown = markInternalExamAction;
-      btnCalcBasic.onclick = () => toggleCalculator("basic");
-    }
-
-    const btnCalcPro = document.getElementById("ep-btn-calc-pro");
-    if (btnCalcPro) {
-      btnCalcPro.onmousedown = markInternalExamAction;
-      btnCalcPro.onclick = () => toggleCalculator("pro");
-    }
-
-    const btnCalc = document.getElementById("ep-btn-calc");
-    if (btnCalc) {
-      btnCalc.onmousedown = markInternalExamAction;
-      btnCalc.onclick = () => toggleCalculator("pro");
-    }
-
-    const btnDoubts = document.getElementById("ep-btn-header-chat");
-    if (btnDoubts) {
-      btnDoubts.onmousedown = markInternalExamAction;
-      btnDoubts.onclick = () => showDoubtsModal(state);
-    }
-
-    const btnCocContinue = document.getElementById("ep-btn-coc-continue");
-    const cbCocAgree = document.getElementById("ep-coc-agree");
-    if (cbCocAgree && btnCocContinue) {
-      cbCocAgree.onchange = () => {
-        if (!cbCocAgree.checked) return;
-        const now = new Date();
-        session.cocAgreedAt = now.getTime();
-        session.cocAgreedAtFormatted = now.toLocaleString();
-        btnCocContinue.disabled = false;
-        btnCocContinue.style.background = "#059669";
-        btnCocContinue.style.cursor = "pointer";
-        btnCocContinue.style.boxShadow = "0 2px 8px rgba(5,150,105,0.25)";
-        saveState(state);
-      };
-    }
-    if (btnCocContinue) {
-      btnCocContinue.onclick = () => {
-        if (!session.cocAgreedAt) return;
-        session.currentSectionId = state.exam.sections.find((s) => s.id !== "sec-coc")?.id || "sec-a";
-        saveState(state);
-      };
-    }
-
-    const btnSubmit = document.getElementById("btn-student-submit");
-    if (btnSubmit) {
-      btnSubmit.onclick = () => {
-        const ansCount = Object.keys(session.answers).length;
-        showStudentSubmitConfirmModal({
-          answeredCount: ansCount,
-          totalCount: totalQ,
-          onConfirm: () => {
-            session.status = "submitted";
-            session.submittedAt = Date.now();
-            saveState(state);
-            submitExamToServer(session.answers).then((res) => {
-              if (res && res.score !== undefined) {
-                const fresh = getState();
-                const freshSess = fresh.studentSessions[fresh.currentUser.email];
-                if (freshSess) {
-                  freshSess.score = res.score;
-                  freshSess.totalMarks = res.totalMarks;
-                  freshSess.status = "submitted";
-                  freshSess.submittedAt = res.submittedAt || Date.now();
-                  saveState(fresh);
-                }
-              }
+      if (action === "copy-link") {
+        await navigator.clipboard.writeText(
+          `${location.origin}/exams/${app.exam.id}`,
+        );
+        flash("Candidate link copied. Only enrolled accounts can join.");
+        return;
+      }
+      if (action === "more-exams") {
+        const d = await request(`/exam-platform/exams?page=${app.nextPage}`);
+        app.exams.push(...rows(d));
+        app.nextPage = d.next_page;
+        render();
+        return;
+      }
+      if (action === "fullscreen") {
+        await fullscreen();
+        return;
+      }
+      if (action === "clear-answer") {
+        changedAnswer(b.dataset.id, null);
+        render();
+        return;
+      }
+      if (action === "retry-save") {
+        await saveAnswers();
+        return;
+      }
+      if (action === "edit-enrollments") {
+        const dialog = document.createElement("dialog");
+        dialog.className = "ep-dialog";
+        dialog.innerHTML = `<h2>Candidate enrollment</h2><p>One email per line. Replace the full roster before starting.</p><textarea rows="10">${esc((app.exam.enrollments || []).map((x) => x.email).join("\n"))}</textarea><div class="ep-actions"><button class="ep-btn" data-close>Cancel</button><button class="ep-btn ep-btn-primary" data-save>Save enrollment</button></div><p role="alert"></p>`;
+        document.body.append(dialog);
+        dialog.showModal();
+        dialog.onclose = () => dialog.remove();
+        dialog.querySelector("[data-close]").onclick = () => dialog.close();
+        dialog.querySelector("[data-save]").onclick = async () => {
+          try {
+            const emails = dialog
+              .querySelector("textarea")
+              .value.split(/[\n,;]/)
+              .map((x) => x.trim())
+              .filter(Boolean);
+            await request(`/exam-platform/exams/${app.exam.id}/enrollments`, {
+              method: "PUT",
+              body: { emails },
             });
+            dialog.close();
+            await loadExam(app.exam.id);
+            startPolling();
+          } catch (e) {
+            dialog.querySelector("[role=alert]").textContent = e.message;
           }
-        });
-      };
+        };
+        return;
+      }
+      if (action === "new") {
+        app.exam = null;
+        app.importQuestions = null;
+        app.importText = "";
+        app.screen = "edit";
+        render();
+        return;
+      }
+      if (action === "edit") {
+        app.screen = "edit";
+        app.importQuestions = null;
+        render();
+        return;
+      }
+      if (action === "edit-json") {
+        rememberSetup();
+        app.importText = JSON.stringify(
+          { questions: app.exam.questions },
+          null,
+          2,
+        );
+        app.importQuestions = null;
+        render();
+        $("#ep-import-json").focus();
+        return;
+      }
+      if (action === "download-template") {
+        const a = document.createElement("a");
+        a.href = "/templates/proctored-exam-template.json";
+        a.download = "proctored-exam-template.json";
+        a.click();
+        return;
+      }
+      if (action === "preview-import") {
+        rememberSetup();
+        app.importText = $("#ep-import-json")?.value || "";
+        app.importQuestions = parseImport(app.importText);
+        render();
+        return;
+      }
+      if (action === "import") {
+        rememberSetup();
+        await request(
+          `/exam-platform/exams/${encodeURIComponent(app.exam.id)}/import`,
+          { method: "POST", body: { questions: app.importQuestions } },
+        );
+        app.importQuestions = null;
+        await loadExam(app.exam.id);
+        app.screen = "edit";
+        flash("Questions imported.");
+        return;
+      }
+      if (action === "save-enrollments") {
+        rememberSetup();
+        const emails = ($("#ep-enrollment-list")?.value || "")
+          .split(/[\n,;]/)
+          .map((x) => x.trim().toLowerCase())
+          .filter(Boolean);
+        const invalid = emails.find((x) => !/^\S+@\S+\.\S+$/.test(x));
+        if (invalid) throw new Error(`Invalid email address: ${invalid}`);
+        await request(
+          `/exam-platform/exams/${encodeURIComponent(app.exam.id)}/enrollments`,
+          { method: "PUT", body: { emails: [...new Set(emails)] } },
+        );
+        await loadExam(app.exam.id);
+        app.screen = "edit";
+        flash("Candidate enrollment saved.");
+        return;
+      }
+      if (action === "publish") {
+        const form = $("form[data-form=exam]");
+        if (form) {
+          const payload = formData(form);
+          app.exam = examFrom(
+            await request(`/exam-platform/exams/${app.exam.id}`, {
+              method: "PATCH",
+              body: payload,
+            }),
+          );
+        }
+        if (
+          !confirm(
+            "Publish this exam to enrolled candidates? You can no longer edit its questions after publishing.",
+          )
+        )
+          return;
+        await act("publish");
+        await loadExam(app.exam.id);
+        flash("Exam published.");
+        return;
+      }
+      if (
+        action === "start" ||
+        action === "pause" ||
+        action === "resume" ||
+        action === "end" ||
+        action === "publish-results"
+      ) {
+        const actionName =
+          action === "publish-results" ? "publish_results" : action;
+        const prompts = {
+          start: "Start this exam for enrolled candidates?",
+          pause: "Pause the live exam?",
+          resume: "Resume the live exam?",
+          end: "End this exam now? Candidates will no longer be able to continue.",
+          publish_results: "Publish results and answer review to candidates?",
+        };
+        if (!confirm(prompts[actionName])) return;
+        await act(actionName);
+        await loadExam(app.exam.id);
+        await loadState();
+        flash("Exam updated.");
+        return;
+      }
+      if (action === "extend") {
+        await act("extend", { minutes: 5 });
+        await loadState();
+        flash("Exam time extended by 5 minutes.");
+        return;
+      }
+      if (action === "archive") {
+        if (
+          !confirm(
+            "Archive this ended exam? It will be removed from the active exam list.",
+          )
+        )
+          return;
+        await act("archive");
+        await loadList();
+        flash("Exam archived.");
+        return;
+      }
+      if (action === "lock" || action === "unlock") {
+        await request(
+          `/exam-platform/exams/${encodeURIComponent(app.exam.id)}/sessions/${encodeURIComponent(b.dataset.user)}/action`,
+          { method: "POST", body: { action } },
+        );
+        await loadState();
+        return;
+      }
+      if (action === "refresh-state") {
+        await loadState();
+        return;
+      }
+      if (action === "join") {
+        app.screen = "rules";
+        render();
+        return;
+      }
+      if (action === "join-confirm") {
+        await fullscreen();
+        if (!$("#ep-rules-check")?.checked)
+          throw new Error("Please accept the exam rules before continuing.");
+        await request(
+          `/exam-platform/exams/${encodeURIComponent(app.exam.id)}/join`,
+          { method: "POST", body: { acceptedRules: true } },
+        );
+        await loadState();
+        app.draftAnswers = { ...(app.state.session?.answers || {}) };
+        app.screen = "room";
+        render();
+        startPolling();
+        return;
+      }
+      if (action === "submit-exam") {
+        await saveAnswers();
+        if (app.dirty)
+          throw new Error(
+            "Your answers are not saved yet. Please wait for the save confirmation.",
+          );
+        const unanswered = (app.exam.questions || []).filter(
+          (q) =>
+            q.type !== "comprehension" &&
+            (app.draftAnswers[q.id] === undefined ||
+              app.draftAnswers[q.id] === ""),
+        ).length;
+        if (
+          !confirm(
+            `Submit your exam now? ${unanswered ? `${unanswered} question(s) are unanswered. ` : ""}You cannot change answers after submission.`,
+          )
+        )
+          return;
+        const d = await request(
+          `/exam-platform/exams/${encodeURIComponent(app.exam.id)}/submit`,
+          { method: "POST", body: { revision: app.revision } },
+        );
+        app.state = {
+          ...app.state,
+          ...d,
+          session: d.session || {
+            ...app.state.session,
+            status: "submitted",
+            score: d.score,
+            total_marks: d.total_marks,
+          },
+        };
+        app.screen = "result";
+        app.pending = {};
+        app.dirty = false;
+        await loadState();
+        render();
+        flash("Your submission was recorded.");
+        startPolling();
+        return;
+      }
+      if (action === "export") {
+        const r = await fetch(
+          `${API}/exam-platform/exams/${encodeURIComponent(app.exam.id)}/export`,
+          {
+            headers: { Accept: "text/csv", Authorization: `Bearer ${token()}` },
+          },
+        );
+        if (!r.ok) throw new Error(`Export failed (${r.status})`);
+        const blob = await r.blob();
+        const a = document.createElement("a");
+        a.href = URL.createObjectURL(blob);
+        a.download = `exam-${app.exam.id}-results.csv`;
+        a.click();
+        URL.revokeObjectURL(a.href);
+        return;
+      }
+      if (action === "audit" || action === "older-audit") {
+        const d = await request(
+          `/exam-platform/exams/${encodeURIComponent(app.exam.id)}/audit${action === "older-audit" ? `?before=${app.auditBefore}` : ""}`,
+        );
+        app.auditEvents =
+          action === "older-audit" ? [...app.auditEvents, ...d.audit] : d.audit;
+        app.auditBefore = d.next_before;
+        $("#ep-audit").innerHTML = auditHtml();
+        return;
+      }
+      if (action === "messages") {
+        await messagesPanel();
+        return;
+      }
+    } catch (e) {
+      flash(e.message || "The request failed.", true);
+    } finally {
+      if (b.isConnected) b.disabled = false;
     }
   }
-
-  // ==========================================
-  // RESULTS VIEW (Final vs General logic)
-  // ==========================================
-  function renderStudentResultsView(container, state, session) {
-    const exam = state.exam;
-    const isFinal = exam.type === "final";
-    const isPublished = isFinal ? exam.resultsPublished : true;
-
-    let score = session.score !== undefined ? session.score : 0;
-    let totalMarks = session.totalMarks !== undefined ? session.totalMarks : 0;
-
-    const breakdown = exam.questions.map((q) => {
-      if (session.totalMarks === undefined) totalMarks += (q.marks || 0);
-      const studentAns = session.answers ? session.answers[q.id] : undefined;
-      let isCorrect = false;
-
-      if (q.correct !== undefined && studentAns !== undefined) {
-        if (Array.isArray(q.correct)) {
-          if (Array.isArray(studentAns) && JSON.stringify(studentAns.sort()) === JSON.stringify(q.correct.sort())) {
-            isCorrect = true;
-          }
-        } else if (String(studentAns).trim().toLowerCase() === String(q.correct).trim().toLowerCase()) {
-          isCorrect = true;
-        }
+  function auditHtml() {
+    return `<h3>Audit history</h3>${(app.auditEvents || []).map((x) => `<p class="ep-audit-item"><b>${esc(x.event)}</b> · ${esc(formatDate(x.created_at))} · ${esc(x.actor?.name || "System")}</p>`).join("") || "<p>No audit events.</p>"}${app.auditBefore ? '<button class="ep-btn" data-action="older-audit">Load older events</button>' : ""}`;
+  }
+  async function act(action, extra = {}) {
+    await request(
+      `/exam-platform/exams/${encodeURIComponent(app.exam.id)}/actions`,
+      { method: "POST", body: { action, ...extra } },
+    );
+  }
+  async function messagesPanel() {
+    const d = await request(
+      `/exam-platform/exams/${encodeURIComponent(app.exam.id)}/messages`,
+    );
+    const items = Array.isArray(d) ? d : d.messages || [];
+    const dialog = document.createElement("dialog");
+    dialog.className = "ep-dialog";
+    dialog.innerHTML = `<form method="dialog"><header><h2>Exam messages</h2><button class="ep-btn ep-btn-quiet">Close</button></header><div class="ep-message-list">${items.map((m) => `<article><b>${esc(m.sender_name || m.name || m.role || "Participant")}</b><small>${esc(formatDate(m.created_at))}</small><p>${esc(m.text)}</p></article>`).join("") || '<p class="ep-muted">No messages yet.</p>'}</div><div class="ep-message-compose"><textarea name="text" maxlength="2000" placeholder="Write a message to the exam room…"></textarea><button type="button" class="ep-btn ep-btn-primary" data-send-message>Send</button></div></form>`;
+    document.body.appendChild(dialog);
+    dialog.showModal();
+    dialog.querySelector("[data-send-message]").onclick = async () => {
+      const text = dialog.querySelector("textarea").value.trim();
+      if (!text) return;
+      try {
+        await request(
+          `/exam-platform/exams/${encodeURIComponent(app.exam.id)}/messages`,
+          { method: "POST", body: { text } },
+        );
+        dialog.close();
+        dialog.remove();
+        await messagesPanel();
+      } catch (e) {
+        flash(e.message, true);
       }
-
-      if (session.score === undefined && isCorrect) score += (q.marks || 0);
-      return { q, studentAns, isCorrect };
-    });
-
-    const percent = totalMarks > 0 ? Math.round((score / totalMarks) * 100) : 0;
-
-    container.innerHTML = `
-      <div id="ep-root" style="min-height:calc(100vh - 48px);background:#f8fafc;padding:30px 20px;color:#0f172a;display:flex;align-items:center;justify-content:center;">
-        <div style="max-width:840px;margin:0 auto;">
-          <div style="background:#ffffff;border:1px solid #e2e8f0;border-radius:16px;padding:36px 28px;box-shadow:0 18px 50px rgba(15,23,42,0.08);margin-bottom:24px;text-align:center;animation:ep-card-pop 0.28s cubic-bezier(0.16, 1, 0.3, 1);">
-            <div class="ep-shield-badge" style="background:#dcfce7;margin:0 auto 18px auto;animation:ep-success-pulse 1.4s ease-in-out infinite;">
-              ${I("checkCircle", 36, "#15803d")}
-            </div>
-            <h1 style="font-size:24px;font-weight:800;color:#0f172a;margin:0 0 6px 0;">
-              Exam Submitted Successfully
-            </h1>
-
-            ${
-              isFinal && !isPublished
-                ? `
-                <div style="background:#f0f9ff;border:1px solid #bae6fd;border-radius:12px;padding:18px 20px;max-width:560px;margin:0 auto 24px auto;color:#0369a1;font-size:13px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:10px;">
-                  ${I("clock", 16, "#0284c7")} Official scores and solution keys will be displayed once the exam manager publishes results.
-                </div>
-                `
-                : `
-                <div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:14px;max-width:560px;margin:0 auto 24px auto;">
-                  <div style="background:#f0fdf4;border:1.5px solid #86efac;border-radius:12px;padding:16px;">
-                    <div style="font-size:28px;font-weight:900;color:#15803d;font-family:ui-monospace,monospace;">
-                      ${score} / ${totalMarks}
-                    </div>
-                    <div style="font-size:12px;color:#166534;font-weight:700;">Score Achieved</div>
-                  </div>
-                  <div style="background:#eff6ff;border:1.5px solid #bfdbfe;border-radius:12px;padding:16px;">
-                    <div style="font-size:28px;font-weight:900;color:#1d4ed8;font-family:ui-monospace,monospace;">
-                      ${percent}%
-                    </div>
-                    <div style="font-size:12px;color:#1e40af;font-weight:700;">Percentage</div>
-                  </div>
-                  <div style="background:#faf5ff;border:1.5px solid #e9d5ff;border-radius:12px;padding:16px;">
-                    <div style="font-size:28px;font-weight:900;color:#7e22ce;font-family:ui-monospace,monospace;">
-                      ${Object.keys(session.answers || {}).length} / ${exam.questions.length}
-                    </div>
-                    <div style="font-size:12px;color:#6b21a8;font-weight:700;">Answered</div>
-                  </div>
-                </div>
-                `
-            }
-
-            <button id="ep-btn-retest" style="background:#0f172a;color:#fff;border:none;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;">
-              Retest Exam Attempt
-            </button>
-          </div>
-
-          ${
-            isPublished
-              ? `
-              <div style="background:#ffffff;border:1px solid #e2e8f0;border-radius:16px;padding:24px;box-shadow:0 4px 20px rgba(0,0,0,0.05);">
-                <div style="font-size:18px;font-weight:800;color:#0f172a;margin-bottom:6px;display:flex;align-items:center;gap:8px;">
-                  ${I("fileText", 18, "#059669")} Question-by-Question Answer Breakdown
-                </div>
-                <p style="font-size:13px;color:#64748b;margin-bottom:20px;">
-                  Review which questions were correct, where marks were lost, and read faculty explanations:
-                </p>
-
-                <div style="display:flex;flex-direction:column;gap:16px;">
-                  ${breakdown
-                    .map(({ q, studentAns, isCorrect }, idx) => {
-                      const displayAns =
-                        studentAns === undefined
-                          ? "<i>(Not attempted)</i>"
-                          : Array.isArray(studentAns)
-                          ? studentAns.map((i) => q.options[i]).join(", ")
-                          : q.options && q.options[studentAns] !== undefined
-                          ? q.options[studentAns]
-                          : String(studentAns);
-
-                      const displayCorrect = Array.isArray(q.correct)
-                        ? q.correct.map((i) => q.options[i]).join(", ")
-                        : q.options && q.options[q.correct] !== undefined
-                        ? q.options[q.correct]
-                        : String(q.correct);
-
-                      return `
-                      <div style="border:1.5px solid ${isCorrect ? "#86efac" : studentAns === undefined ? "#e2e8f0" : "#fecaca"};background:${isCorrect ? "#f0fdf4" : studentAns === undefined ? "#f8fafc" : "#fff1f2"};border-radius:12px;padding:18px;">
-                        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-                          <span style="font-weight:800;font-size:13px;color:#0f172a;">
-                            Question ${idx + 1}
-                          </span>
-                          <span style="font-size:12px;font-weight:800;padding:2px 8px;border-radius:6px;background:${isCorrect ? "#dcfce7" : "#fee2e2"};color:${isCorrect ? "#15803d" : "#b91c1c"};">
-                            ${isCorrect ? `+${q.marks} Marks` : `0 Marks`}
-                          </span>
-                        </div>
-
-                        <div style="font-size:14px;color:#1e293b;margin-bottom:10px;font-weight:600;">
-                          ${q.prompt}
-                        </div>
-
-                        ${q.code ? `<pre style="background:#0f172a;color:#a7f3d0;padding:10px;border-radius:6px;font-size:12px;margin:8px 0;"><code>${q.code}</code></pre>` : ""}
-
-                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;font-size:12.5px;margin-top:12px;">
-                          <div style="background:#ffffff;border:1px solid #e2e8f0;padding:10px;border-radius:8px;">
-                            <div style="color:#64748b;font-weight:700;font-size:11px;text-transform:uppercase;">Your Answer:</div>
-                            <div style="color:${isCorrect ? "#15803d" : "#b91c1c"};font-weight:700;margin-top:2px;">
-                              ${displayAns}
-                            </div>
-                          </div>
-                          <div style="background:#ffffff;border:1px solid #e2e8f0;padding:10px;border-radius:8px;">
-                            <div style="color:#64748b;font-weight:700;font-size:11px;text-transform:uppercase;">Correct Answer:</div>
-                            <div style="color:#15803d;font-weight:700;margin-top:2px;">
-                              ${displayCorrect}
-                            </div>
-                          </div>
-                        </div>
-
-                        ${
-                          q.explanation
-                            ? `<div style="margin-top:10px;font-size:12px;color:#475569;background:rgba(255,255,255,0.7);padding:8px 10px;border-radius:6px;">
-                                 <b>Explanation:</b> ${q.explanation}
-                               </div>`
-                            : ""
-                        }
-                      </div>
-                    `;
-                    })
-                    .join("")}
-                </div>
-              </div>
-            `
-              : ""
-          }
-        </div>
-      </div>
-    `;
-
-    document.getElementById("ep-btn-retest").onclick = () => {
-      session.status = "not_started";
-      session.answers = {};
-      session.reviewFlags = [];
-      session.warnings = 0;
-      session.warningLogs = [];
-      session.outsideExamSeconds = 0;
-      session.outsideSince = null;
-      session.outsideReason = null;
-      session.cocAgreedAt = null;
-      session.cocAgreedAtFormatted = null;
-      session.onboardingStep = 0;
-      session.attendanceRecordedAt = null;
-      session.photoDataUrl = null;
-      state.activeOnboardingModal = null;
-      saveState(state);
     };
+    dialog.addEventListener("close", () => dialog.remove());
   }
-
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", render);
-  } else {
-    render();
+  function onBlur() {
+    event("blur");
   }
-
-  // Confirm the role with the server, then keep the entry button in step with
-  // client-side navigation (the React app changes routes without a reload).
-  verifyRole();
-  let lastPath = window.location.pathname;
-  setInterval(() => {
-    if (window.location.pathname !== lastPath) {
-      lastPath = window.location.pathname;
-      renderRoleEntryButton();
+  function onVisibility() {
+    if (document.visibilityState === "hidden") event("visibility_hidden");
+  }
+  function onFullscreen() {
+    if (!document.fullscreenElement) event("fullscreen_exit");
+  }
+  function onInput(ev) {
+    const t = ev.target;
+    if (t.matches("#ep-import-json")) {
+      app.importText = t.value;
+      app.importQuestions = null;
+      const b = $('[data-action="import"]');
+      if (b) b.disabled = true;
+    }
+    if (t.matches("[data-answer-text]"))
+      changedAnswer(t.dataset.answerText, t.value);
+    if (t.matches("[data-answer-multi]")) {
+      const id = t.dataset.answerMulti;
+      const vals = Array.from(
+        document.querySelectorAll(
+          `[data-answer-multi="${CSS.escape(id)}"]:checked`,
+        ),
+      )
+        .map((x) => Number(x.value))
+        .sort((a, b) => a - b);
+      changedAnswer(id, vals);
+    }
+  }
+  function onChange(ev) {
+    const t = ev.target;
+    if (t.matches("[data-answer]"))
+      changedAnswer(
+        t.dataset.answer,
+        t.value === "true"
+          ? true
+          : t.value === "false"
+            ? false
+            : Number(t.value),
+      );
+    if (t.matches("[data-import-file]") && t.files?.[0]) {
+      if (t.files[0].size > 5 * 1024 * 1024) {
+        flash("Import must be smaller than 5 MB.", true);
+        return;
+      }
+      rememberSetup();
+      const reader = new FileReader();
+      reader.onload = () => {
+        app.importText = String(reader.result || "");
+        const area = $("#ep-import-json");
+        if (area) area.value = app.importText;
+        try {
+          app.importQuestions = parseImport(app.importText);
+          render();
+        } catch (e) {
+          flash(e.message, true);
+        }
+      };
+      reader.readAsText(t.files[0]);
+    }
+  }
+  async function onSubmit(ev) {
+    const form = ev.target.closest('form[data-form="exam"]');
+    if (!form) return;
+    ev.preventDefault();
+    try {
+      const payload = formData(form);
+      app.busy = true;
+      form.querySelector("[type=submit]").disabled = true;
+      let exam;
+      if (app.exam?.id)
+        exam = examFrom(
+          await request(
+            `/exam-platform/exams/${encodeURIComponent(app.exam.id)}`,
+            { method: "PATCH", body: payload },
+          ),
+        );
+      else
+        exam = examFrom(
+          await request("/exam-platform/exams", {
+            method: "POST",
+            body: payload,
+          }),
+        );
+      app.exam = exam;
+      app.setupDraft = null;
+      await loadExam(exam.id);
+      app.screen = "edit";
+      flash("Draft saved.");
+    } catch (e) {
+      app.error = e.message;
+      render();
+    } finally {
+      app.busy = false;
       render();
     }
-  }, 600);
-  window.addEventListener("popstate", () => {
-    renderRoleEntryButton();
-    render();
+  }
+  async function boot() {
+    if (!desktopEligible()) { if(inExamArea) showDesktopOnly(); return; }
+    if (!inExamArea) {
+      let lastToken = "";
+      const check = async () => {
+        if (/^\/exams?(\/|$)/.test(location.pathname)) {
+          location.reload();
+          return;
+        }
+        if (!token() || token() === lastToken) return;
+        lastToken = token();
+        try {
+          await verify();
+          path = location.pathname;
+          showEntry();
+          const target = sessionStorage.getItem("ep_return");
+          if (target && /^\/exams?(\/[-a-zA-Z0-9]+)?$/.test(target)) {
+            sessionStorage.removeItem("ep_return");
+            location.assign(target);
+          }
+        } catch (_) {}
+      };
+      await check();
+      setInterval(check, 500);
+      return;
+    }
+    mount();
+    try {
+      await verify();
+      const name = $(".ep-user span");
+      if (name) name.textContent = app.user.name || app.user.email;
+      showEntry();
+      await loadList();
+      if (path.startsWith("/exams/") && path.split("/")[2]) {
+        await loadExam(decodeURIComponent(path.split("/")[2]));
+        if (app.exam.status !== "draft") {
+          await loadState();
+          app.screen = isManager()
+            ? "detail"
+            : ["in_exam", "locked"].includes(app.state.session?.status)
+              ? "room"
+              : app.state.session?.status === "submitted"
+                ? "result"
+                : "detail";
+          render();
+          startPolling();
+        }
+      }
+    } catch (e) {
+      app.error = e.message;
+      app.screen = "list";
+      render();
+    }
+  }
+  window.addEventListener("blur", onBlur);
+  document.addEventListener("visibilitychange", onVisibility);
+  document.addEventListener("fullscreenchange", onFullscreen);
+  window.addEventListener("online", () => {
+    if (app.dirty) saveAnswers().catch(() => {});
+    flushEvents();
+  });
+  if (document.readyState === "loading")
+    document.addEventListener("DOMContentLoaded", boot);
+  else boot();
+  window.addEventListener("beforeunload", (ev) => {
+    if (app.screen === "room" && app.dirty) {
+      ev.preventDefault();
+      ev.returnValue = "";
+    }
   });
 })();

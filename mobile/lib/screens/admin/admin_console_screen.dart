@@ -86,11 +86,10 @@ class _AdminConsoleScreenState extends State<AdminConsoleScreen> {
         actions: [
           if (isManager)
             IconButton(
-              icon: const Icon(Icons.rocket_launch_rounded, color: Color(0xFF2563EB)),
-              tooltip: 'Switch to Proctor Cockpit',
+              icon: const Icon(Icons.visibility_rounded, color: Color(0xFF2563EB)),
+              tooltip: 'Preview student app',
               onPressed: () {
-                // If router or caller wants to switch view
-                widget.authState.togglePreviewStudentView(false);
+                widget.authState.togglePreviewStudentView(true);
               },
             ),
           IconButton(

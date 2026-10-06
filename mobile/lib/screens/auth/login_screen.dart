@@ -271,7 +271,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         Text(
                           '• Student: Routes to 5-Tab Learning Shell\n'
                           '• Admin: Routes to User Management Console\n'
-                          '• Manager: Routes to Live Proctor Cockpit with Student Preview',
+                          '• Manager: Opens Admin Console with Student Preview',
                           style: TextStyle(fontSize: 11, color: Color(0xFF64748B), height: 1.4),
                         ),
                       ],

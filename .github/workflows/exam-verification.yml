@@ -1,0 +1,73 @@
+name: Verify online exams
+on:
+  pull_request:
+  push:
+    branches: [main, backend]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php: ['8.2', '8.3']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: mbstring, pdo_sqlite, xml, curl, zip
+          coverage: none
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: composer install --no-interaction --prefer-dist --no-scripts
+        working-directory: backend
+      - run: composer audit --locked
+        working-directory: backend
+      - run: php backend/vendor/bin/phpunit -c backend/phpunit.xml
+      - run: php tests/proctored_question_service_test.php
+      - run: node tests/exam-rich-content.test.cjs
+      - run: node tests/exam-static-security.cjs
+  browser:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: mbstring, pdo_sqlite, xml, curl, zip
+          coverage: none
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: composer install --no-interaction --prefer-dist --no-scripts
+        working-directory: backend
+      - name: Install browser test tools
+        run: |
+          npm install --prefix "$RUNNER_TEMP/exam-browser-tools" playwright@1.62.1
+          "$RUNNER_TEMP/exam-browser-tools/node_modules/.bin/playwright" install --with-deps chromium
+      - name: Verify manager and candidate journey with isolated records
+        env:
+          EXAM_BROWSER_TEST: '1'
+        run: |
+          export EXAM_TEST_DIR="$(mktemp -d)"
+          export NODE_PATH="$RUNNER_TEMP/exam-browser-tools/node_modules"
+          echo "EXAM_TEST_DIR=$EXAM_TEST_DIR" >> "$GITHUB_ENV"
+          php tests/support/exam-browser-server.php
+          php -S 127.0.0.1:8137 tests/support/exam-browser-server.php > "$EXAM_TEST_DIR/server.log" 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid"' EXIT
+          for attempt in $(seq 1 30); do
+            if curl -fsS http://127.0.0.1:8137/exams > /dev/null; then break; fi
+            sleep 1
+          done
+          node tests/exam-device-gate.cjs
+          node tests/proctored-exam-browser.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: exam-browser-screenshots
+          path: ${{ env.EXAM_TEST_DIR }}/*.png
+          retention-days: 7

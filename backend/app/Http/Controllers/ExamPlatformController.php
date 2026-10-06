@@ -2,681 +2,723 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\ProctoredExam;
+use App\Models\ProctoredExamAuditLog;
+use App\Models\ProctoredExamEnrollment;
+use App\Models\ProctoredExamEvent;
+use App\Models\ProctoredExamMessage;
+use App\Models\ProctoredExamSession;
+use App\Models\User;
+use App\Services\ProctoredQuestionService;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class ExamPlatformController extends Controller
 {
-    protected function getStateFilePath(): string
+    public function __construct(private readonly ProctoredQuestionService $questionService)
     {
-        $dir = storage_path('app');
-        if (!File::isDirectory($dir)) {
-            File::makeDirectory($dir, 0755, true);
-        }
-        return storage_path('app/exam_state.json');
-    }
-
-    protected function getDefaultState(): array
-    {
-        $questions = [
-            [
-                'id' => 'q1',
-                'sectionId' => 'sec-a',
-                'type' => 'mcq_single',
-                'marks' => 2,
-                'negative' => 0.5,
-                'prompt' => 'What is the output of the following Python slice operation on a list?',
-                'code' => "x = [1, 2, 3, 4, 5]\nprint(x[::-1])",
-                'options' => ['[1, 2, 3, 4, 5]', '[5, 4, 3, 2, 1]', '(5, 4, 3, 2, 1)', 'SyntaxError'],
-                'correct' => 1,
-                'explanation' => 'Slice x[::-1] steps backward through list x from end to start, reversing it to [5, 4, 3, 2, 1].'
-            ],
-            [
-                'id' => 'q2',
-                'sectionId' => 'sec-a',
-                'type' => 'mcq_multi',
-                'marks' => 2,
-                'negative' => 0.5,
-                'prompt' => 'Which of the following statements correctly create a Python dictionary? (Select all that apply)',
-                'code' => null,
-                'options' => [
-                    "d = {'roll': 101, 'name': 'Aditi'}",
-                    "d = dict(roll=101, name='Aditi')",
-                    "d = { ('id', 1): 'admin' }",
-                    "d = { ['id']: 'admin' }"
-                ],
-                'correct' => [0, 1, 2],
-                'explanation' => "Tuples are immutable and hashable, so ('id', 1) is a valid dict key. Lists are mutable and cannot be dict keys."
-            ],
-            [
-                'id' => 'q3',
-                'sectionId' => 'sec-a',
-                'type' => 'true_false',
-                'marks' => 2,
-                'negative' => 0.5,
-                'prompt' => 'In Python, a standard dictionary preserves insertion order of keys starting from Python 3.7+.',
-                'code' => null,
-                'options' => ['True', 'False'],
-                'correct' => 0,
-                'explanation' => 'Starting in Python 3.7, dict insertion order is an official part of the Python language specification.'
-            ],
-            [
-                'id' => 'q4',
-                'sectionId' => 'sec-a',
-                'type' => 'numerical',
-                'marks' => 2,
-                'negative' => 0,
-                'prompt' => 'What is the returned integer value of the following set length expression?',
-                'code' => 'len(set([10, 20, 20, 30, 10, 40, 50]))',
-                'correct' => 5,
-                'explanation' => 'Unique values in [10, 20, 20, 30, 10, 40, 50] are {10, 20, 30, 40, 50}, which has 5 elements.'
-            ],
-            [
-                'id' => 'q5',
-                'sectionId' => 'sec-b',
-                'type' => 'mcq_single',
-                'marks' => 3,
-                'negative' => 1.0,
-                'prompt' => 'What is the worst-case time complexity of searching in a balanced Binary Search Tree (AVL tree) of N nodes?',
-                'code' => null,
-                'options' => ['O(1)', 'O(log N)', 'O(N)', 'O(N log N)'],
-                'correct' => 1,
-                'explanation' => 'Balanced BSTs (AVL / Red-Black) maintain height of O(log N), so search is guaranteed O(log N) in worst case.'
-            ],
-            [
-                'id' => 'q6',
-                'sectionId' => 'sec-b',
-                'type' => 'short_answer',
-                'marks' => 3,
-                'negative' => 0,
-                'prompt' => 'What keyword is used in Python inside an inner function to modify a variable defined in the enclosing (non-global) scope?',
-                'code' => null,
-                'correct' => 'nonlocal',
-                'explanation' => "The 'nonlocal' keyword binds an inner function variable to its closest enclosing non-global scope."
-            ],
-            [
-                'id' => 'q7',
-                'sectionId' => 'sec-b',
-                'type' => 'mcq_single',
-                'marks' => 3,
-                'negative' => 1.0,
-                'prompt' => 'What will be printed when running this generator function?',
-                'code' => "def gen():\n    yield 1\n    yield 2\n\ng = gen()\nnext(g)\nprint(next(g))",
-                'options' => ['1', '2', 'StopIteration', 'None'],
-                'correct' => 1,
-                'explanation' => 'First next(g) yields 1. Second next(g) yields 2 and print() outputs 2.'
-            ],
-            [
-                'id' => 'q8',
-                'sectionId' => 'sec-b',
-                'type' => 'numerical',
-                'marks' => 3,
-                'negative' => 0,
-                'prompt' => 'Calculate the exact output value of the arithmetic precedence expression:',
-                'code' => "res = 2 ** 3 * 2 + 10 // 3\nprint(res)",
-                'correct' => 19,
-                'explanation' => '2**3 = 8; 8*2 = 16; 10//3 = 3; 16 + 3 = 19.'
-            ]
-        ];
-
-        $allowedEmails = [];
-
-        return [
-            'activeView' => 'login',
-            'studentActiveTab' => 'scheduled_exams',
-            'activeOnboardingModal' => null,
-            'currentUser' => [
-                'id' => 'candidate',
-                'name' => 'Candidate',
-                'email' => '',
-                'role' => 'student',
-            ],
-            'exam' => [
-                'id' => 'iitm-python-endterm',
-                'title' => 'QUIZ- LAB — Python & Computational Thinking Endterm',
-                'subject' => 'Python Programming & Data Structures',
-                'type' => 'final',
-                'status' => 'live',
-                'resultsPublished' => false,
-                'durationMinutes' => 60,
-                'extendedMinutes' => 0,
-                'startedAt' => (int)(microtime(true) * 1000) - (15 * 60 * 1000),
-                'instructions' => 'No outside aids permitted. Exiting the exam window requires manager approval to re-enter.',
-                'chatEnabled' => true,
-                'allowedEmails' => $allowedEmails,
-                'sections' => [
-                    ['id' => 'sec-coc', 'title' => 'Code of Conduct (COC)', 'isCoc' => true],
-                    ['id' => 'sec-a', 'title' => 'Section A: Core Concepts', 'marksEach' => 2, 'negativeEach' => 0.5],
-                    ['id' => 'sec-b', 'title' => 'Section B: Algorithmic Logic & Output', 'marksEach' => 3, 'negativeEach' => 1.0],
-                ],
-                'questions' => $questions,
-            ],
-            'reentryRequests' => [],
-            'studentSessions' => (object)[],
-            'chatMessages' => [
-                [
-                    'id' => 'msg-1',
-                    'senderName' => 'Exam Manager',
-                    'role' => 'manager',
-                    'text' => 'Welcome students. Ensure your internet connection is stable. Leaving the window triggers re-entry lock.',
-                    'timestamp' => (int)(microtime(true) * 1000) - (14 * 60 * 1000),
-                    'isAnnouncement' => true,
-                ],
-            ],
-        ];
-    }
-
-    protected function loadState(): array
-    {
-        $path = $this->getStateFilePath();
-        if (File::exists($path)) {
-            $content = File::get($path);
-            $decoded = json_decode($content, true);
-            if (is_array($decoded)) {
-                return $decoded;
-            }
-        }
-        $default = $this->getDefaultState();
-        $this->saveState($default);
-        return $default;
-    }
-
-    protected function saveState(array $state): void
-    {
-        $path = $this->getStateFilePath();
-        $json = json_encode($state, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
-        $tempPath = $path . '.' . uniqid('tmp_', true);
-        file_put_contents($tempPath, $json, LOCK_EX);
-        rename($tempPath, $path);
-    }
-
-    /**
-     * Sanitizes state so candidates never receive answer keys, explanations,
-     * or other candidates' sessions and submissions.
-     */
-    protected function sanitizeStateForUser(array $state, $user): array
-    {
-        if ($user->hasAdminAccess()) {
-            return $state;
-        }
-
-        $isEndedAndPublished = ($state['exam']['status'] ?? '') === 'ended' && !empty($state['exam']['resultsPublished']);
-
-        // 1. Strip answer keys and explanations from questions for candidates
-        if (isset($state['exam']['questions']) && is_array($state['exam']['questions'])) {
-            $sanitizedQuestions = [];
-            foreach ($state['exam']['questions'] as $q) {
-                $copy = $q;
-                if (!$isEndedAndPublished) {
-                    unset($copy['correct']);
-                    unset($copy['explanation']);
-                }
-                $sanitizedQuestions[] = $copy;
-            }
-            $state['exam']['questions'] = $sanitizedQuestions;
-        }
-
-        // 2. Candidate only sees their own session
-        $email = $user->email;
-        $mySession = $state['studentSessions'][$email] ?? null;
-        $state['studentSessions'] = $mySession ? [$email => $mySession] : [];
-
-        // 3. Candidate only sees their own re-entry requests
-        if (isset($state['reentryRequests']) && is_array($state['reentryRequests'])) {
-            $state['reentryRequests'] = array_values(array_filter(
-                $state['reentryRequests'],
-                fn($r) => is_array($r) && ($r['email'] ?? null) === $email
-            ));
-        }
-
-        // 4. Chat: announcements and candidate's own messages
-        if (isset($state['chatMessages']) && is_array($state['chatMessages'])) {
-            $state['chatMessages'] = array_values(array_filter(
-                $state['chatMessages'],
-                fn($m) => is_array($m) && (!empty($m['isAnnouncement']) || ($m['senderEmail'] ?? null) === $email || ($m['role'] ?? '') === 'manager')
-            ));
-        }
-
-        return $state;
     }
 
     public function health(): JsonResponse
     {
+        return response()->json(['status' => 'ok', 'service' => 'proctored-exams']);
+    }
+
+    public function legacyGone(): JsonResponse
+    {
         return response()->json([
-            'status' => 'ok',
-            'service' => 'genzexam-laravel-backend',
-            'timestamp' => microtime(true),
+            'error' => 'This legacy singleton exam API has been retired. Use /exam-platform/exams and the per-exam API.',
+            'code' => 'legacy_exam_api_retired',
+        ], 410);
+    }
+
+    /** Finalize live exams that reached their server-side deadline. */
+    public function expireDueExams(): int
+    {
+        $ids = ProctoredExam::query()->where('status', 'live')->whereNotNull('started_at')->select('id')->lazyById(100);
+        $expired = 0;
+        foreach ($ids as $id) {
+            if ($this->expireExamIfNeeded((string) $id->id)) $expired++;
+        }
+        return $expired;
+    }
+
+    public function index(Request $request): JsonResponse
+    {
+        $request->validate(['page' => ['sometimes', 'integer', 'min:1', 'max:100000']]);
+        $user = $request->user();
+        $query = ProctoredExam::query()->select(['id','owner_id','title','subject','instructions','duration_minutes','extension_minutes','max_warnings','scheduled_at','status','results_published','question_count','created_at','updated_at']);
+        if ($user->isManager()) {
+            $query->where('owner_id', $user->id)->withCount(['enrollments', 'sessions']);
+        } else {
+            abort_unless(!$user->hasAdminAccess(), 403, 'Only managers and enrolled candidates can access exams.');
+            $query->whereIn('id', ProctoredExamEnrollment::query()->select('exam_id')->whereIn('email', $this->normalizedEmailsForUser($user)))
+                ->whereIn('status', ['published', 'live', 'paused', 'ended', 'archived']);
+        }
+        $page = $query->latest()->orderByDesc('id')->simplePaginate(50);
+        return response()->json([
+            'exams' => $page->getCollection()->map(fn (ProctoredExam $exam) => $user->isManager() ? $this->managerExam($exam, false) : $this->candidateExamMetadata($exam))->values(),
+            'next_page' => $page->hasMorePages() ? $page->currentPage() + 1 : null,
         ]);
     }
 
-    public function state(Request $request): JsonResponse
+    public function store(Request $request): JsonResponse
     {
-        abort_if($request->user()->isAdmin(), 403, 'Exam operations are manager-only.');
-        $state = $this->loadState();
-        return response()->json($this->sanitizeStateForUser($state, $request->user()));
+        $data = $request->validate([
+            'title' => ['required', 'string', 'max:200'],
+            'subject' => ['nullable', 'string', 'max:200'],
+            'instructions' => ['nullable', 'string', 'max:10000'],
+            'duration_minutes' => ['required', 'integer', 'min:1', 'max:600'],
+            'max_warnings' => ['sometimes', 'integer', 'min:1', 'max:100'],
+            'scheduled_at' => ['nullable', 'date'],
+        ]);
+
+        $data['subject'] = $data['subject'] ?? '';
+
+        $exam = DB::transaction(function () use ($data, $request) {
+            $exam = ProctoredExam::create([
+                ...$data,
+                'owner_id' => $request->user()->id,
+                'status' => 'draft',
+                'results_published' => false,
+                'questions' => [],
+            ]);
+            $this->recordAudit($exam, $request->user(), 'exam.created', ['title' => $exam->title]);
+            return $exam;
+        });
+
+        return response()->json(['exam' => $this->managerExam($exam, true)], 201);
     }
 
-    public function syncState(Request $request): JsonResponse
+    public function show(Request $request, string $exam): JsonResponse
     {
-        $payload = $request->all();
-        $state = $this->loadState();
-        $user = $request->user();
-        abort_if($user->isAdmin(), 403, 'Exam operations are manager-only.');
-
-        if ($user->hasAdminAccess()) {
-            if (isset($payload['exam']) && is_array($payload['exam'])) {
-                $state['exam'] = array_merge($state['exam'] ?? [], $payload['exam']);
-            }
-            if (isset($payload['studentSessions']) && is_array($payload['studentSessions'])) {
-                $state['studentSessions'] = array_merge($state['studentSessions'] ?? [], $payload['studentSessions']);
-            }
-            if (isset($payload['chatMessages']) && is_array($payload['chatMessages'])) {
-                $state['chatMessages'] = $payload['chatMessages'];
-            }
-            if (isset($payload['reentryRequests']) && is_array($payload['reentryRequests'])) {
-                $state['reentryRequests'] = $payload['reentryRequests'];
-            }
-            if (isset($payload['activeView'])) {
-                $state['activeView'] = $payload['activeView'];
-            }
-            if (isset($payload['studentActiveTab'])) {
-                $state['studentActiveTab'] = $payload['studentActiveTab'];
-            }
-
-            $this->saveState($state);
-
-            return response()->json(['success' => true, 'state' => $state]);
+        $this->findAccessibleExam($request, $exam);
+        $this->expireExamIfNeeded($exam);
+        $record = $this->findAccessibleExam($request, $exam);
+        if ($request->user()->isManager()) {
+            return response()->json(['exam' => $this->managerExam($record, true)]);
         }
 
-        // Candidate sync
-        $email = $user->email;
-        $maxTabSwitches = (int)($state['exam']['maxTabSwitches'] ?? 3);
-
-        if (isset($payload['studentSessions'][$email]) && is_array($payload['studentSessions'][$email])) {
-            $incoming = $payload['studentSessions'][$email];
-            $currentSession = $state['studentSessions'][$email] ?? [];
-            $currentStatus = $currentSession['status'] ?? 'not_started';
-
-            // If session is already submitted or locked, disallow modifying answers
-            if ($currentStatus === 'submitted') {
-                return response()->json(['success' => true, 'state' => $this->sanitizeStateForUser($state, $user)]);
-            }
-
-            unset($incoming['status']); // Candidate cannot self-elevate or change status directly
-            unset($incoming['score']);  // Candidate cannot forge their own score
-
-            $warnings = (int)($incoming['warnings'] ?? ($currentSession['warnings'] ?? 0));
-            $isLocked = $currentStatus === 'reentry_required' || $currentStatus === 'exited' || $warnings >= $maxTabSwitches;
-
-            $mergedSession = array_merge($currentSession, $incoming);
-            if ($isLocked) {
-                $mergedSession['status'] = 'reentry_required';
-            }
-
-            $state['studentSessions'][$email] = $mergedSession;
-
-            // Auto-queue re-entry request if locked and not already queued
-            if ($isLocked) {
-                $hasPending = false;
-                foreach ($state['reentryRequests'] ?? [] as $r) {
-                    if (($r['email'] ?? '') === $email && ($r['status'] ?? '') === 'pending') {
-                        $hasPending = true;
-                        break;
-                    }
-                }
-                if (!$hasPending) {
-                    $state['reentryRequests'][] = [
-                        'id' => 'req-' . (int)(microtime(true) * 1000),
-                        'email' => $email,
-                        'name' => $user->name,
-                        'reason' => 'Proctoring violation threshold reached (' . $warnings . '/' . $maxTabSwitches . ' warnings)',
-                        'status' => 'pending',
-                        'timestamp' => (int)(microtime(true) * 1000),
-                    ];
-                }
-            }
-        }
-
-        if (isset($payload['reentryRequests']) && is_array($payload['reentryRequests'])) {
-            $mine = array_values(array_filter(
-                $payload['reentryRequests'],
-                fn ($r) => is_array($r) && ($r['email'] ?? null) === $email && ($r['status'] ?? 'pending') === 'pending'
-            ));
-            $others = array_values(array_filter(
-                $state['reentryRequests'] ?? [],
-                fn ($r) => ($r['email'] ?? null) !== $email
-            ));
-            $state['reentryRequests'] = array_merge($others, $mine);
-        }
-
-        $this->saveState($state);
-
-        return response()->json(['success' => true, 'state' => $this->sanitizeStateForUser($state, $user)]);
+        return response()->json(['exam' => $this->candidateExamMetadata($record)]);
     }
 
-    /**
-     * Authoritative endpoint for candidates to record proctoring events
-     * (tab_switch, fullscreen_exit, devtools_open, window_blur).
-     */
-    public function recordViolation(Request $request): JsonResponse
+    public function update(Request $request, string $exam): JsonResponse
     {
-        $user = $request->user();
-        abort_if($user->isAdmin(), 403, 'Exam operations are manager-only.');
-        $email = $user->email;
-        $type = (string)$request->input('type', 'window_switch');
-        $outsideSec = (int)$request->input('outsideSeconds', 0);
-        $state = $this->loadState();
+        $record = $this->ownedExam($request->user(), $exam);
+        abort_unless($record->status === 'draft', 409, 'Published exam configuration is immutable.');
+        $data = $request->validate([
+            'title' => ['sometimes', 'required', 'string', 'max:200'],
+            'subject' => ['sometimes', 'nullable', 'string', 'max:200'],
+            'instructions' => ['sometimes', 'nullable', 'string', 'max:10000'],
+            'duration_minutes' => ['sometimes', 'required', 'integer', 'min:1', 'max:600'],
+            'max_warnings' => ['sometimes', 'integer', 'min:1', 'max:100'],
+            'scheduled_at' => ['sometimes', 'nullable', 'date'],
+        ]);
+        abort_if($data === [], 422, 'No exam configuration fields were provided.');
+        if (array_key_exists('subject', $data)) $data['subject'] = $data['subject'] ?? '';
 
-        if (!isset($state['studentSessions'][$email])) {
-            $state['studentSessions'][$email] = [
-                'email' => $email,
-                'name' => $user->name,
-                'status' => 'in_exam',
-                'warnings' => 0,
-                'warningLogs' => [],
-                'outsideExamSeconds' => 0,
-            ];
-        }
+        DB::transaction(function () use ($record, $data, $request) {
+            $locked = ProctoredExam::query()->whereKey($record->id)->lockForUpdate()->firstOrFail();
+            abort_unless($locked->status === 'draft', 409, 'Published exam configuration is immutable.');
+            $locked->fill($data)->save();
+            $this->recordAudit($locked, $request->user(), 'exam.updated', ['fields' => array_keys($data)]);
+        });
 
-        $session = &$state['studentSessions'][$email];
-        $session['warnings'] = ($session['warnings'] ?? 0) + 1;
-        $session['outsideExamSeconds'] = ($session['outsideExamSeconds'] ?? 0) + $outsideSec;
-        $session['warningLogs'] = $session['warningLogs'] ?? [];
+        return response()->json(['exam' => $this->managerExam($record->fresh(), true)]);
+    }
 
-        $timestamp = (int)(microtime(true) * 1000);
-        $session['warningLogs'][] = [
-            'type' => $type,
-            'timestamp' => $timestamp,
-            'timeFormatted' => date('H:i:s'),
-            'outsideSeconds' => $outsideSec,
-        ];
+    public function importQuestions(Request $request, string $exam): JsonResponse
+    {
+        $record = $this->ownedExam($request->user(), $exam);
+        abort_unless($record->status === 'draft', 409, 'Questions cannot be changed after publication.');
+        $data = $request->validate(['questions' => ['required', 'array', 'min:1', 'max:500']]);
+        $questions = $this->questionService->normalize($data['questions']);
 
-        $maxTabSwitches = (int)($state['exam']['maxTabSwitches'] ?? 3);
-        if ($session['warnings'] >= $maxTabSwitches) {
-            $session['status'] = 'reentry_required';
+        DB::transaction(function () use ($record, $questions, $request) {
+            $locked = ProctoredExam::query()->whereKey($record->id)->lockForUpdate()->firstOrFail();
+            abort_unless($locked->status === 'draft', 409, 'Questions cannot be changed after publication.');
+            $locked->questions = $questions;
+            $locked->question_count = count($questions);
+            $locked->save();
+            $this->recordAudit($locked, $request->user(), 'questions.imported', ['count' => count($questions)]);
+        });
 
-            $hasPending = false;
-            foreach ($state['reentryRequests'] ?? [] as $r) {
-                if (($r['email'] ?? '') === $email && ($r['status'] ?? '') === 'pending') {
-                    $hasPending = true;
-                    break;
-                }
-            }
-            if (!$hasPending) {
-                $state['reentryRequests'][] = [
-                    'id' => 'req-' . $timestamp,
+        return response()->json(['exam' => $this->managerExam($record->fresh(), true)]);
+    }
+
+    public function replaceEnrollments(Request $request, string $exam): JsonResponse
+    {
+        $record = $this->ownedExam($request->user(), $exam);
+        abort_unless(in_array($record->status, ['draft', 'published'], true), 409, 'Enrollments are locked after the exam starts.');
+        $data = $request->validate(['emails' => ['present', 'array', 'max:1000'], 'emails.*' => ['required', 'email', 'max:254']]);
+        $emails = array_values(array_unique(array_map(fn ($email) => mb_strtolower(trim($email)), $data['emails'])));
+
+        DB::transaction(function () use ($record, $request, $emails) {
+            $locked = ProctoredExam::query()->whereKey($record->id)->lockForUpdate()->firstOrFail();
+            abort_unless(in_array($locked->status, ['draft', 'published'], true), 409, 'Enrollments are locked after the exam starts.');
+            $users = User::query()->whereIn(DB::raw('LOWER(email)'), $emails)->get()->keyBy(fn (User $u) => mb_strtolower($u->email));
+            $locked->enrollments()->delete();
+            foreach ($emails as $email) {
+                $locked->enrollments()->create([
                     'email' => $email,
-                    'name' => $user->name,
-                    'reason' => "Proctoring violation ({$type}) - threshold reached ({$session['warnings']}/{$maxTabSwitches})",
-                    'status' => 'pending',
-                    'timestamp' => $timestamp,
-                ];
+                    'user_id' => $users->get($email)?->id,
+                    'added_by' => $request->user()->id,
+                ]);
             }
-        }
+            $this->recordAudit($locked, $request->user(), 'enrollments.replaced', ['count' => count($emails)]);
+        });
 
-        $this->saveState($state);
-
-        return response()->json([
-            'success' => true,
-            'warnings' => $session['warnings'],
-            'status' => $session['status'],
-            'session' => $session,
-        ]);
+        return response()->json(['exam' => $this->managerExam($record->fresh(), true)]);
     }
 
-    /**
-     * Authoritative submission and server-side scoring for candidates.
-     */
-    public function submitExam(Request $request): JsonResponse
+    public function action(Request $request, string $exam): JsonResponse
+    {
+        $data = $request->validate([
+            'action' => ['required', 'in:publish,start,pause,resume,end,extend,publish_results,archive'],
+            'minutes' => ['required_if:action,extend', 'integer', 'min:1', 'max:180'],
+        ]);
+
+        $this->ownedExam($request->user(), $exam);
+        $this->expireExamIfNeeded($exam);
+        $record = DB::transaction(function () use ($request, $exam, $data) {
+            $locked = $this->ownedExam($request->user(), $exam, true);
+            $action = $data['action'];
+            $now = now();
+            $details = [];
+            switch ($action) {
+                case 'publish':
+                    abort_unless($locked->status === 'draft', 409, 'Only a draft can be published.');
+                    abort_if(count($locked->questions ?? []) === 0, 422, 'Import at least one question before publishing.');
+                    $locked->status = 'published';
+                    break;
+                case 'start':
+                    abort_unless($locked->status === 'published', 409, 'Only a published exam can start.');
+                    abort_if($locked->scheduled_at && $locked->scheduled_at->isFuture(), 409, 'The scheduled start time has not arrived.');
+                    $locked->status = 'live';
+                    $locked->started_at = $now;
+                    break;
+                case 'pause':
+                    abort_unless($locked->status === 'live', 409, 'Only a live exam can be paused.');
+                    $locked->status = 'paused';
+                    $locked->paused_at = $now;
+                    break;
+                case 'resume':
+                    abort_unless($locked->status === 'paused', 409, 'Only a paused exam can be resumed.');
+                    $locked->paused_seconds += $locked->paused_at ? max(0, $now->getTimestamp() - $locked->paused_at->getTimestamp()) : 0;
+                    $locked->paused_at = null;
+                    $locked->status = 'live';
+                    break;
+                case 'extend':
+                    abort_unless(in_array($locked->status, ['live', 'paused'], true), 409, 'Only a live or paused exam can be extended.');
+                    abort_if($locked->extension_minutes + (int) $data['minutes'] > 600, 422, 'An exam can be extended by at most 600 minutes in total.');
+                    $locked->extension_minutes += (int) $data['minutes'];
+                    $details['minutes'] = (int) $data['minutes'];
+                    break;
+                case 'end':
+                    abort_unless(in_array($locked->status, ['published', 'live', 'paused'], true), 409, 'This exam cannot be ended from its current state.');
+                    if ($locked->status === 'paused' && $locked->paused_at) {
+                        $locked->paused_seconds += max(0, $now->getTimestamp() - $locked->paused_at->getTimestamp());
+                        $locked->paused_at = null;
+                    }
+                    $locked->status = 'ended';
+                    $locked->ended_at = $now;
+                    $this->finalizeActiveSessions($locked, $now, $request->user());
+                    break;
+                case 'publish_results':
+                    abort_unless($locked->status === 'ended', 409, 'End the exam before publishing results.');
+                    $locked->results_published = true;
+                    break;
+                case 'archive':
+                    abort_unless($locked->status === 'ended', 409, 'Only an ended exam can be archived.');
+                    $locked->status = 'archived';
+                    break;
+            }
+            $locked->save();
+            $this->recordAudit($locked, $request->user(), 'exam.action.' . $action, $details);
+            return $locked;
+        });
+
+        return response()->json(['exam' => $this->managerExam($record->fresh(), true)]);
+    }
+
+    public function state(Request $request, string $exam): JsonResponse
     {
         $user = $request->user();
-        abort_if($user->isAdmin(), 403, 'Exam operations are manager-only.');
-        $email = $user->email;
-        $answers = $request->input('answers', []);
-        $state = $this->loadState();
-
-        if (($state['exam']['status'] ?? '') === 'paused') {
-            return response()->json(['error' => 'Examination is paused by manager.'], 400);
+        $compact = $request->boolean('compact');
+        $this->findAccessibleExam($request, $exam, $compact);
+        $this->expireExamIfNeeded($exam);
+        $record = $this->findAccessibleExam($request, $exam, $compact);
+        $now = now();
+        if ($user->isManager()) {
+            return response()->json([
+                'exam' => $this->managerExam($record, !$compact),
+                'session' => null,
+                'sessions' => $record->sessions()->with('user:id,name,email')->orderBy('id')->get()
+                    ->map(fn (ProctoredExamSession $session) => $this->sessionForManager($session)),
+                'server_now' => $now->toIso8601String(),
+                'remaining_seconds' => $this->remainingSeconds($record, $now),
+                'messages' => $this->messagesFor($record, $user),
+            ]);
         }
 
-        $score = 0;
-        $totalMarks = 0;
-        $questions = $state['exam']['questions'] ?? [];
-
-        foreach ($questions as $q) {
-            $qMarks = (float)($q['marks'] ?? 0);
-            $totalMarks += $qMarks;
-            $qId = $q['id'] ?? null;
-            if (!$qId || !array_key_exists($qId, $answers)) {
-                continue;
-            }
-
-            $studentAns = $answers[$qId];
-            $correct = $q['correct'] ?? null;
-            $isCorrect = false;
-
-            if ($correct !== null) {
-                if (is_array($correct)) {
-                    $cArr = $correct;
-                    sort($cArr);
-                    $sArr = is_array($studentAns) ? $studentAns : [$studentAns];
-                    sort($sArr);
-                    $isCorrect = ($cArr == $sArr);
-                } else {
-                    $isCorrect = (trim(strtolower((string)$studentAns)) === trim(strtolower((string)$correct)));
-                }
-            }
-
-            if ($isCorrect) {
-                $score += $qMarks;
-            } else if (!empty($q['negative'])) {
-                $score -= (float)$q['negative'];
-            }
-        }
-
-        $finalScore = max(0, $score);
-        $submittedAt = (int)(microtime(true) * 1000);
-
-        if (!isset($state['studentSessions'][$email])) {
-            $state['studentSessions'][$email] = [
-                'email' => $email,
-                'name' => $user->name,
-            ];
-        }
-
-        $session = &$state['studentSessions'][$email];
-        $session['status'] = 'submitted';
-        $session['submittedAt'] = $submittedAt;
-        $session['score'] = $finalScore;
-        $session['totalMarks'] = $totalMarks;
-        $session['answers'] = $answers;
-
-        $this->saveState($state);
-
+        $session = $record->sessions()->where('user_id', $user->id)->first();
+        $messages = $this->messagesFor($record, $user);
+        $sessionData = $session ? $this->sessionForCandidate($session, $record) : null;
+        if ($compact && $sessionData) unset($sessionData['answers'], $sessionData['score_breakdown']);
         return response()->json([
-            'success' => true,
-            'score' => $finalScore,
-            'totalMarks' => $totalMarks,
-            'status' => 'submitted',
-            'submittedAt' => $submittedAt,
+            'exam' => $compact ? $this->candidateExamMetadata($record) : $this->candidateExam($record, $session),
+            'session' => $sessionData,
+            'server_now' => $now->toIso8601String(),
+            'remaining_seconds' => $this->remainingSeconds($record, $now),
+            'messages' => $messages,
         ]);
     }
 
-    public function action(Request $request): JsonResponse
+    public function join(Request $request, string $exam): JsonResponse
     {
-        abort_unless($request->user()->isManager(), 403, 'Exam operations are manager-only.');
-        $action = $request->input('action');
-        $state = $this->loadState();
+        $request->validate(['acceptedRules' => ['required', 'accepted']]);
+        $user = $request->user();
+        $this->findAccessibleExam($request, $exam);
+        $this->expireExamIfNeeded($exam);
+        $session = DB::transaction(function () use ($request, $exam, $user) {
+            $record = $this->candidateExamRecord($user, $exam, true);
+            abort_unless($record->status === 'live', 409, 'This exam is not live.');
+            abort_if(($record->scheduled_at && $record->scheduled_at->isFuture()) || $this->remainingSeconds($record, now()) <= 0, 409, 'The exam is not currently accepting candidates.');
+            $session = ProctoredExamSession::query()->where('exam_id', $record->id)->where('user_id', $user->id)->lockForUpdate()->first();
+            if (!$session) {
+                $session = ProctoredExamSession::create([
+                    'exam_id' => $record->id, 'user_id' => $user->id, 'status' => 'in_exam',
+                    'warnings' => 0, 'revision' => 0, 'answers' => [], 'joined_at' => now(),
+                ]);
+                $this->recordAudit($record, $user, 'candidate.joined');
+            } else {
+                abort_if($session->status !== 'in_exam', 409, 'This candidate session is locked or already submitted.');
+            }
+            return $session;
+        });
 
-        switch ($action) {
-            case 'start_exam':
-                $state['exam']['status'] = 'live';
-                $state['exam']['startedAt'] = (int)(microtime(true) * 1000);
-                break;
+        $record = ProctoredExam::findOrFail($exam);
+        return response()->json(['session' => $this->sessionForCandidate($session, $record)], 201);
+    }
 
-            case 'pause_exam':
-                $state['exam']['status'] = 'paused';
-                break;
-
-            case 'resume_exam':
-                $state['exam']['status'] = 'live';
-                break;
-
-            case 'end_exam':
-                $state['exam']['status'] = 'ended';
-                foreach ($state['studentSessions'] as $email => &$sess) {
-                    if (in_array($sess['status'] ?? '', ['in_progress', 'in_exam', 'not_started', 'reentry_required'])) {
-                        $sess['status'] = 'submitted';
-                        $sess['submittedAt'] = (int)(microtime(true) * 1000);
-                    }
+    public function saveAnswers(Request $request, string $exam): JsonResponse
+    {
+        $data = $request->validate([
+            'answers' => ['present', 'array', 'max:500'],
+            'revision' => ['required', 'integer', 'min:0'],
+        ]);
+        $user = $request->user();
+        $this->candidateExamRecord($user, $exam);
+        $this->expireExamIfNeeded($exam);
+        $result = DB::transaction(function () use ($request, $exam, $user, $data) {
+            $record = $this->candidateExamRecord($user, $exam, true);
+            abort_unless($record->status === 'live', 409, 'Answers can only be changed during a live exam.');
+            $session = ProctoredExamSession::query()->where('exam_id', $record->id)->where('user_id', $user->id)->lockForUpdate()->firstOrFail();
+            abort_unless($session->status === 'in_exam', 409, 'This candidate session is not writable.');
+            $this->assertNotExpired($record);
+            abort_unless((int) $data['revision'] === $session->revision, 409, 'Answer revision is stale.', ['revision' => $session->revision]);
+            $answers = $session->answers ?? [];
+            foreach ($data['answers'] as $questionId => $answer) {
+                if ($answer === null) {
+                    unset($answers[$questionId]);
+                } else {
+                    $answers[$questionId] = $answer;
                 }
-                break;
+            }
+            $answers = $this->questionService->validateAnswers($record->questions ?? [], $answers);
+            $session->answers = $answers;
+            $session->revision++;
+            $session->save();
+            return [$record, $session];
+        });
 
-            case 'extend_time':
-                $mins = (int)$request->input('minutes', 5);
-                $state['exam']['extendedMinutes'] = ($state['exam']['extendedMinutes'] ?? 0) + $mins;
-                break;
+        return response()->json(['session' => $this->sessionForCandidate($result[1], $result[0])]);
+    }
 
-            case 'toggle_type':
-                $state['exam']['type'] = $request->input('type', 'final');
-                break;
-
-            case 'publish_results':
-                $state['exam']['resultsPublished'] = (bool)$request->input('resultsPublished', true);
-                break;
-
-            case 'add_whitelist':
-                $email = $request->input('email');
-                if ($email && !in_array($email, $state['exam']['allowedEmails'] ?? [])) {
-                    $state['exam']['allowedEmails'][] = $email;
+    public function submit(Request $request, string $exam): JsonResponse
+    {
+        $data = $request->validate([
+            'answers' => ['sometimes', 'array', 'max:500'],
+            'revision' => ['sometimes', 'integer', 'min:0'],
+        ]);
+        $user = $request->user();
+        $this->candidateExamRecord($user, $exam);
+        $this->expireExamIfNeeded($exam);
+        [$record, $session] = DB::transaction(function () use ($request, $exam, $user, $data) {
+            $record = $this->candidateExamRecord($user, $exam, true);
+            $session = ProctoredExamSession::query()->where('exam_id', $record->id)->where('user_id', $user->id)->lockForUpdate()->firstOrFail();
+            if ($session->status === 'submitted') {
+                return [$record, $session]; // Idempotent finalization; never rescore altered payloads.
+            }
+            abort_unless($session->status === 'in_exam', 409, 'This candidate session cannot be submitted.');
+            abort_unless(in_array($record->status, ['live', 'ended'], true), 409, 'The exam is not accepting submissions.');
+            abort_if($record->status === 'ended', 409, 'This candidate session was finalized when the exam ended.');
+            $expired = $this->remainingSeconds($record, now()) <= 0;
+            if (array_key_exists('answers', $data)) {
+                abort_if($expired, 409, 'The exam deadline has passed; submit the last server-saved answers.');
+                abort_unless(isset($data['revision']) && (int) $data['revision'] === $session->revision, 409, 'Answer revision is stale.', ['revision' => $session->revision]);
+                $answers = $data['answers'];
+            } else {
+                $answers = $session->answers ?? [];
+                if (isset($data['revision'])) {
+                    abort_unless((int) $data['revision'] === $session->revision, 409, 'Answer revision is stale.', ['revision' => $session->revision]);
                 }
-                break;
+            }
+            $answers = $this->questionService->validateAnswers($record->questions ?? [], $answers);
+            $score = $this->questionService->score($record->questions ?? [], $answers);
+            $session->answers = $answers;
+            $session->score = $score['score'];
+            $session->total_marks = $score['total_marks'];
+            $session->score_breakdown = $score['breakdown'];
+            $session->status = 'submitted';
+            $session->submitted_at = now();
+            $session->revision++;
+            $session->save();
+            $this->recordAudit($record, $user, 'candidate.submitted', ['revision' => $session->revision]);
+            return [$record, $session];
+        });
 
-            case 'remove_whitelist':
-                $email = $request->input('email');
-                if ($email) {
-                    $state['exam']['allowedEmails'] = array_values(array_filter(
-                        $state['exam']['allowedEmails'] ?? [],
-                        fn($e) => $e !== $email
-                    ));
-                }
-                break;
+        return response()->json([
+            'session' => $this->sessionForCandidate($session, $record),
+            'score' => $record->results_published && in_array($record->status, ['ended', 'archived'], true) ? $session->score : null,
+            'total_marks' => $record->results_published && in_array($record->status, ['ended', 'archived'], true) ? $session->total_marks : null,
+            'status' => $session->status,
+            'submitted_at' => $session->submitted_at?->toIso8601String(),
+        ]);
+    }
 
-            case 'sync_student_session':
-                $email = $request->input('email');
-                $updates = $request->input('updates', []);
-                if ($email && is_array($updates)) {
-                    $existing = $state['studentSessions'][$email] ?? [];
-                    $state['studentSessions'][$email] = array_merge($existing, $updates, [
-                        'lastActive' => (int)(microtime(true) * 1000)
+    public function events(Request $request, string $exam): JsonResponse
+    {
+        $data = $request->validate([
+            'id' => ['required', 'uuid'],
+            'type' => ['required', 'in:blur,fullscreen_exit,visibility_hidden,camera_unavailable'],
+        ]);
+        $user = $request->user();
+        $this->candidateExamRecord($user, $exam);
+        $this->expireExamIfNeeded($exam);
+        [$record, $session, $inserted] = DB::transaction(function () use ($request, $exam, $user, $data) {
+            $record = $this->candidateExamRecord($user, $exam, true);
+            abort_unless($record->status === 'live', 409, 'Proctoring events are only accepted during a live exam.');
+            $session = ProctoredExamSession::query()->where('exam_id', $record->id)->where('user_id', $user->id)->lockForUpdate()->firstOrFail();
+            $exists = ProctoredExamEvent::query()->where('exam_id', $record->id)->where('user_id', $user->id)->where('client_event_id', $data['id'])->exists();
+            if ($exists) {
+                return [$record, $session, false];
+            }
+            abort_unless($session->status === 'in_exam', 409, 'This candidate session is not active.');
+            ProctoredExamEvent::create([
+                'exam_id' => $record->id, 'user_id' => $user->id,
+                'client_event_id' => $data['id'], 'type' => $data['type'], 'occurred_at' => now(),
+            ]);
+            $session->warnings++;
+            if ($session->warnings >= $record->max_warnings + $session->warning_allowance) {
+                $session->status = 'locked';
+            }
+            $session->save();
+            $this->recordAudit($record, $user, 'proctoring.event', ['type' => $data['type'], 'warnings' => $session->warnings]);
+            return [$record, $session, true];
+        });
+
+        return response()->json(['session' => $this->sessionForCandidate($session, $record), 'recorded' => $inserted]);
+    }
+
+    public function sessionAction(Request $request, string $exam, string $targetUser): JsonResponse
+    {
+        $data = $request->validate(['action' => ['required', 'in:lock,unlock']]);
+        $this->ownedExam($request->user(), $exam);
+        $this->expireExamIfNeeded($exam);
+        [$record, $session] = DB::transaction(function () use ($request, $exam, $targetUser, $data) {
+            $record = $this->ownedExam($request->user(), $exam, true);
+            $session = $record->sessions()->where('user_id', $targetUser)->lockForUpdate()->firstOrFail();
+            if ($data['action'] === 'lock') {
+                abort_unless($session->status === 'in_exam', 409, 'Only an active candidate can be locked.');
+                $session->status = 'locked';
+            } else {
+                abort_unless($session->status === 'locked' && $record->status === 'live', 409, 'Only a locked session in a live exam can be unlocked.');
+                $session->warning_allowance++;
+                $session->status = 'in_exam';
+            }
+            $session->save();
+            $this->recordAudit($record, $request->user(), 'candidate.session.' . $data['action'], ['user_id' => (int) $targetUser]);
+            return [$record, $session];
+        });
+
+        return response()->json(['session' => $this->sessionForManager($session)]);
+    }
+
+    public function messages(Request $request, string $exam): JsonResponse
+    {
+        $record = $this->findAccessibleExam($request, $exam);
+        return response()->json(['messages' => $this->messagesFor($record, $request->user())]);
+    }
+
+    public function sendMessage(Request $request, string $exam): JsonResponse
+    {
+        $data = $request->validate(['text' => ['required', 'string', 'max:2000']]);
+        $record = $this->findAccessibleExam($request, $exam);
+        $manager = $request->user()->isManager();
+        abort_unless($manager || $record->status === 'live', 409, 'Candidate chat is not open.');
+        if (!$manager) {
+            $session = $record->sessions()->where('user_id', $request->user()->id)->first();
+            abort_unless($session && in_array($session->status, ['in_exam', 'locked'], true), 409, 'Join the exam before using candidate chat.');
+        }
+        $text = trim($data['text']);
+        abort_if($text === '', 422, 'Message cannot be blank.');
+        $message = DB::transaction(function () use ($record, $request, $text, $manager) {
+            $message = ProctoredExamMessage::create([
+                'exam_id' => $record->id,
+                'sender_id' => $request->user()->id,
+                'text' => $text,
+                'is_announcement' => $manager,
+            ]);
+            $this->recordAudit($record, $request->user(), $manager ? 'message.announced' : 'message.sent', ['message_id' => $message->id]);
+            return $message;
+        });
+
+        return response()->json(['message' => $this->messageProjection($message)], 201);
+    }
+
+    public function export(Request $request, string $exam): StreamedResponse
+    {
+        $record = $this->ownedExam($request->user(), $exam);
+        $filename = 'exam-' . $record->id . '-results.csv';
+        return response()->streamDownload(function () use ($record) {
+            $out = fopen('php://output', 'w');
+            fputcsv($out, ['user_id', 'name', 'email', 'status', 'warnings', 'score', 'total_marks', 'submitted_at']);
+            $record->sessions()->with('user:id,name,email')->orderBy('id')->chunk(200, function ($sessions) use ($out) {
+                foreach ($sessions as $session) {
+                    fputcsv($out, [
+                        $session->user_id, $this->safeCsvCell($session->user?->name), $this->safeCsvCell($session->user?->email),
+                        $session->status, $session->warnings,
+                        $session->score, $session->total_marks,
+                        $session->submitted_at?->toIso8601String(),
                     ]);
                 }
-                break;
-
-            case 'approve_reentry':
-                $reqId = $request->input('requestId');
-                $email = $request->input('email');
-                foreach ($state['reentryRequests'] as &$r) {
-                    if (($r['id'] ?? '') === $reqId) {
-                        $r['status'] = 'approved';
-                    }
-                }
-                if ($email && isset($state['studentSessions'][$email])) {
-                    $state['studentSessions'][$email]['status'] = 'in_exam';
-                }
-                break;
-
-            case 'reject_reentry':
-                $reqId = $request->input('requestId');
-                foreach ($state['reentryRequests'] as &$r) {
-                    if (($r['id'] ?? '') === $reqId) {
-                        $r['status'] = 'rejected';
-                    }
-                }
-                break;
-
-            case 'lock_session':
-                $email = $request->input('email');
-                if ($email && isset($state['studentSessions'][$email])) {
-                    $state['studentSessions'][$email]['status'] = 'reentry_required';
-                }
-                break;
-
-            default:
-                return response()->json(['error' => "Unknown action: {$action}"], 400);
-        }
-
-        $this->saveState($state);
-        return response()->json(['success' => true, 'action' => $action, 'state' => $state]);
+            });
+            fclose($out);
+        }, $filename, ['Content-Type' => 'text/csv; charset=UTF-8']);
     }
 
-    public function getChat(Request $request): JsonResponse
+    public function audit(Request $request, string $exam): JsonResponse
     {
-        abort_if($request->user()->isAdmin(), 403, 'Exam operations are manager-only.');
-        $state = $this->loadState();
-        $user = $request->user();
-        if ($user->hasAdminAccess()) {
-            return response()->json($state['chatMessages'] ?? []);
-        }
-        $email = $user->email;
-        $chat = array_values(array_filter(
-            $state['chatMessages'] ?? [],
-            fn($m) => is_array($m) && (!empty($m['isAnnouncement']) || ($m['senderEmail'] ?? null) === $email || ($m['role'] ?? '') === 'manager')
-        ));
-        return response()->json($chat);
+        $record = $this->ownedExam($request->user(), $exam);
+        $request->validate(['before' => ['sometimes', 'integer', 'min:1']]);
+        $rows = $record->auditLogs()->with('actor:id,name,email')->when($request->input('before'), fn ($query, $before) => $query->where('id', '<', $before))->orderByDesc('id')->limit(501)->get();
+        $hasMore = $rows->count() > 500;
+        $logs = $rows->take(500)
+            ->map(fn (ProctoredExamAuditLog $log) => [
+                'id' => $log->id, 'actor' => $log->actor ? ['id' => $log->actor->id, 'name' => $log->actor->name, 'email' => $log->actor->email] : null,
+                'event' => $log->event, 'details' => $log->details, 'created_at' => $log->created_at?->toIso8601String(),
+            ]);
+        return response()->json(['audit' => $logs->values(), 'next_before' => $hasMore ? $logs->last()['id'] : null]);
     }
 
-    public function sendChat(Request $request): JsonResponse
+    private function ownedExam(User $user, string $id, bool $lock = false, bool $metadataOnly = false): ProctoredExam
     {
-        $msg = $request->input('message');
-        if (!$msg || !is_array($msg)) {
-            return response()->json(['error' => 'Missing message object'], 400);
-        }
-
-        if (empty($msg['id'])) {
-            $msg['id'] = 'msg-' . (int)(microtime(true) * 1000);
-        }
-        if (empty($msg['timestamp'])) {
-            $msg['timestamp'] = (int)(microtime(true) * 1000);
-        }
-
-        $user = $request->user();
-        abort_if($user->isAdmin(), 403, 'Exam operations are manager-only.');
-        if (! $user->hasAdminAccess()) {
-            $msg['senderName'] = $user->name;
-            $msg['senderEmail'] = $user->email;
-            $msg['role'] = 'student';
-            $msg['isAnnouncement'] = false;
-        }
-
-        $state = $this->loadState();
-        $state['chatMessages'][] = $msg;
-        $this->saveState($state);
-
-        return response()->json(['success' => true, 'message' => $msg]);
+        abort_unless($user->isManager(), 403, 'Manager access required.');
+        $query = ProctoredExam::query()->whereKey($id)->where('owner_id', $user->id);
+        if ($metadataOnly) $query->select(['id','owner_id','title','subject','instructions','duration_minutes','extension_minutes','max_warnings','scheduled_at','status','results_published','question_count','started_at','paused_at','paused_seconds','ended_at','created_at','updated_at']);
+        if ($lock) $query->lockForUpdate();
+        return $query->firstOrFail();
     }
 
-    public function getReentry(Request $request): JsonResponse
+    private function candidateExamRecord(User $user, string $id, bool $lock = false, bool $metadataOnly = false): ProctoredExam
     {
-        abort_if($request->user()->isAdmin(), 403, 'Exam operations are manager-only.');
-        $state = $this->loadState();
-        $user = $request->user();
-        if ($user->hasAdminAccess()) {
-            return response()->json($state['reentryRequests'] ?? []);
+        abort_unless(!$user->hasAdminAccess(), 403, 'Only candidates may use candidate exam operations.');
+        $emails = $this->normalizedEmailsForUser($user);
+        $query = ProctoredExam::query()->whereKey($id);
+        if ($metadataOnly) $query->select(['id','owner_id','title','subject','instructions','duration_minutes','extension_minutes','max_warnings','scheduled_at','status','results_published','question_count','started_at','paused_at','paused_seconds','ended_at','created_at','updated_at']);
+        if ($lock) $query->lockForUpdate();
+        $record = $query->firstOrFail();
+        $enrollment = $record->enrollments()->whereIn('email', $emails)->first();
+        abort_unless($enrollment !== null, 404, 'Exam not found.');
+        if ($enrollment->user_id === null) {
+            $enrollment->user_id = $user->id;
+            $enrollment->save();
         }
-        $reentry = array_values(array_filter(
-            $state['reentryRequests'] ?? [],
-            fn($r) => is_array($r) && ($r['email'] ?? null) === $user->email
-        ));
-        return response()->json($reentry);
+        abort_unless($enrollment->user_id === $user->id, 404, 'Exam not found.');
+        return $record;
     }
 
-    public function resetState(): JsonResponse
+    private function findAccessibleExam(Request $request, string $id, bool $metadataOnly = false): ProctoredExam
     {
-        $state = $this->getDefaultState();
-        $this->saveState($state);
-        return response()->json(['success' => true, 'state' => $state]);
+        return $request->user()->isManager()
+            ? $this->ownedExam($request->user(), $id, false, $metadataOnly)
+            : $this->candidateExamRecord($request->user(), $id, false, $metadataOnly);
+    }
+
+    private function normalizedEmailsForUser(User $user): array
+    {
+        return [mb_strtolower(trim($user->email))];
+    }
+
+    private function managerExam(ProctoredExam $exam, bool $withRelations): array
+    {
+        if (!isset($exam->enrollments_count)) $exam->loadCount(['enrollments', 'sessions']);
+        $result = [
+            'id' => $exam->id, 'title' => $exam->title, 'subject' => $exam->subject,
+            'instructions' => $exam->instructions, 'duration_minutes' => $exam->duration_minutes,
+            'extension_minutes' => $exam->extension_minutes, 'max_warnings' => $exam->max_warnings,
+            'scheduled_at' => $exam->scheduled_at?->toIso8601String(), 'status' => $exam->status,
+            'results_published' => $exam->results_published,
+            'question_count' => (int) $exam->question_count,
+            'enrollment_count' => $exam->enrollments_count, 'session_count' => $exam->sessions_count,
+            'created_at' => $exam->created_at?->toIso8601String(), 'updated_at' => $exam->updated_at?->toIso8601String(),
+        ];
+        if ($withRelations) $result['questions'] = $exam->questions ?? [];
+        if ($withRelations) {
+            $result['enrollments'] = $exam->enrollments()->orderBy('email')->get(['email', 'user_id'])
+                ->map(fn (ProctoredExamEnrollment $enrollment) => ['email' => $enrollment->email, 'user_id' => $enrollment->user_id])->values();
+        }
+        return $result;
+    }
+
+    private function candidateExamMetadata(ProctoredExam $exam): array
+    {
+        return [
+            'id' => $exam->id, 'title' => $exam->title, 'subject' => $exam->subject,
+            'instructions' => $exam->instructions, 'duration_minutes' => $exam->duration_minutes,
+            'question_count' => (int) $exam->question_count, 'max_warnings' => $exam->max_warnings,
+            'scheduled_at' => $exam->scheduled_at?->toIso8601String(), 'status' => $exam->status,
+            'results_published' => $exam->results_published,
+        ];
+    }
+
+    private function candidateExam(ProctoredExam $exam, ?ProctoredExamSession $session): array
+    {
+        $released = $exam->results_published && in_array($exam->status, ['ended', 'archived'], true);
+        $questions = [];
+        if ($session) {
+            $questions = array_map(function (array $question) use ($released) {
+                if (!$released) {
+                    unset($question['correct_answer'], $question['correct_answers'], $question['acceptable_answers'], $question['numerical_answer'], $question['numerical_tolerance'], $question['explanation']);
+                }
+                return $question;
+            }, $exam->questions ?? []);
+        }
+        return [...$this->candidateExamMetadata($exam), 'questions' => $questions];
+    }
+
+    private function sessionForCandidate(ProctoredExamSession $session, ProctoredExam $exam): array
+    {
+        $result = [
+            'user_id' => $session->user_id, 'status' => $session->status,
+            'warnings' => $session->warnings, 'warning_allowance' => $session->warning_allowance,
+            'revision' => $session->revision,
+            'answers' => $session->answers ?? [], 'joined_at' => $session->joined_at?->toIso8601String(),
+            'submitted_at' => $session->submitted_at?->toIso8601String(),
+        ];
+        if ($exam->results_published && in_array($exam->status, ['ended', 'archived'], true)) {
+            $result['score'] = $session->score;
+            $result['total_marks'] = $session->total_marks;
+            $result['score_breakdown'] = $session->score_breakdown;
+        }
+        return $result;
+    }
+
+    private function sessionForManager(ProctoredExamSession $session): array
+    {
+        return [
+            'user_id' => $session->user_id, 'name' => $session->user?->name,
+            'email' => $session->user?->email, 'status' => $session->status,
+            'warnings' => $session->warnings, 'warning_allowance' => $session->warning_allowance,
+            'revision' => $session->revision,
+            'answered_count' => count(array_filter($session->answers ?? [], fn ($answer) => $answer !== null && $answer !== '' && $answer !== [])),
+            'updated_at' => $session->updated_at?->toIso8601String(), 'score' => $session->score,
+            'total_marks' => $session->total_marks,
+            'submitted_at' => $session->submitted_at?->toIso8601String(),
+        ];
+    }
+
+    private function remainingSeconds(ProctoredExam $exam, Carbon $now): ?int
+    {
+        if (in_array($exam->status, ['ended', 'archived'], true)) return 0;
+        if (!$exam->started_at) return null;
+        $elapsed = max(0, $now->getTimestamp() - $exam->started_at->getTimestamp());
+        $paused = $exam->paused_seconds + ($exam->status === 'paused' && $exam->paused_at ? max(0, $now->getTimestamp() - $exam->paused_at->getTimestamp()) : 0);
+        return max(0, ($exam->duration_minutes + $exam->extension_minutes) * 60 - $elapsed + $paused);
+    }
+
+    private function assertNotExpired(ProctoredExam $exam): void
+    {
+        abort_if($this->remainingSeconds($exam, now()) <= 0, 409, 'The exam deadline has passed.');
+    }
+
+    private function expireExamIfNeeded(string $id): bool
+    {
+        $current = ProctoredExam::select(['id','status','started_at','duration_minutes','extension_minutes','paused_at','paused_seconds'])->findOrFail($id);
+        if ($current->status !== 'live' || $this->remainingSeconds($current, now()) > 0) return false;
+        return DB::transaction(function () use ($id) {
+            $exam = ProctoredExam::query()->whereKey($id)->lockForUpdate()->firstOrFail();
+            $now = now();
+            if ($exam->status !== 'live' || $this->remainingSeconds($exam, $now) > 0) {
+                return false;
+            }
+            $exam->status = 'ended';
+            $exam->ended_at = $now;
+            $exam->save();
+            $this->finalizeActiveSessions($exam, $now, null);
+            $this->recordAudit($exam, null, 'exam.deadline_reached');
+            return true;
+        });
+    }
+
+    private function finalizeActiveSessions(ProctoredExam $exam, Carbon $now, ?User $actor): void
+    {
+        $exam->sessions()->whereIn('status', ['in_exam', 'locked'])->lockForUpdate()->get()->each(function (ProctoredExamSession $session) use ($exam, $now, $actor) {
+            $answers = $this->questionService->validateAnswers($exam->questions ?? [], $session->answers ?? []);
+            $score = $this->questionService->score($exam->questions ?? [], $answers);
+            $session->answers = $answers;
+            $session->score = $score['score'];
+            $session->total_marks = $score['total_marks'];
+            $session->score_breakdown = $score['breakdown'];
+            $session->status = 'submitted';
+            $session->submitted_at = $now;
+            $session->revision++;
+            $session->save();
+            $this->recordAudit($exam, $actor, 'candidate.force_submitted', ['user_id' => $session->user_id]);
+        });
+    }
+
+    private function messagesFor(ProctoredExam $exam, User $user): array
+    {
+        $query = $exam->messages()->with('sender:id,name,email,role,is_admin')->latest('id');
+        if (!$user->isManager()) {
+            $query->where(function (Builder $builder) use ($user) {
+                $builder->where('sender_id', $user->id)
+                    ->orWhere('is_announcement', true);
+            });
+        }
+        return $query->limit(200)->get()->reverse()->values()->map(fn (ProctoredExamMessage $message) => $this->messageProjection($message))->all();
+    }
+
+    private function messageProjection(ProctoredExamMessage $message): array
+    {
+        return [
+            'id' => $message->id, 'sender_id' => $message->sender_id,
+            'sender_name' => $message->sender?->name,
+            'sender_role' => $message->sender?->role ?? ($message->sender?->is_admin ? 'admin' : 'student'),
+            'text' => $message->text, 'is_announcement' => $message->is_announcement,
+            'created_at' => $message->created_at?->toIso8601String(),
+        ];
+    }
+
+    private function recordAudit(ProctoredExam $exam, ?User $actor, string $event, array $details = []): void
+    {
+        ProctoredExamAuditLog::create([
+            'exam_id' => $exam->id, 'actor_id' => $actor?->id,
+            'event' => $event, 'details' => $details, 'created_at' => now(),
+        ]);
+    }
+
+    private function safeCsvCell(?string $value): ?string
+    {
+        if ($value !== null && preg_match('/^[\s\x00-\x1f]*[=+@-]/u', $value)) {
+            return "'".$value;
+        }
+        return $value;
     }
 }

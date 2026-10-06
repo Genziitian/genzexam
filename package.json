@@ -7,7 +7,9 @@
     "start": "python3 serve.py",
     "start:laravel": "cd backend && php artisan serve",
     "start:node": "node server.js",
-    "start:python": "python3 serve.py"
+    "start:python": "python3 serve.py",
+    "test:exams": "node tests/exam-rich-content.test.cjs && php tests/proctored_question_service_test.php && php backend/vendor/bin/phpunit -c backend/phpunit.xml",
+    "test:exam-browser": "node tests/proctored-exam-browser.cjs"
   },
   "keywords": [
     "iitm",
