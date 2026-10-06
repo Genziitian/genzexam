@@ -51,7 +51,7 @@ class ExamPlatformController extends Controller
     {
         $request->validate(['page' => ['sometimes', 'integer', 'min:1', 'max:100000']]);
         $user = $request->user();
-        $query = ProctoredExam::query()->select(['id','owner_id','title','subject','instructions','duration_minutes','extension_minutes','max_warnings','scheduled_at','status','results_published','question_count','created_at','updated_at']);
+        $query = ProctoredExam::query()->select(['id','owner_id','title','subject','instructions','duration_minutes','extension_minutes','max_warnings','scheduled_at','closes_at','status','results_published','question_count','created_at','updated_at']);
         if ($user->isManager()) {
             $query->where('owner_id', $user->id)->withCount(['enrollments', 'sessions']);
         } else {
@@ -75,9 +75,11 @@ class ExamPlatformController extends Controller
             'duration_minutes' => ['required', 'integer', 'min:1', 'max:600'],
             'max_warnings' => ['sometimes', 'integer', 'min:1', 'max:100'],
             'scheduled_at' => ['nullable', 'date'],
+            'closes_at' => ['nullable', 'date'],
         ]);
 
         $data['subject'] = $data['subject'] ?? '';
+        $this->assertClosesAfterStart($data['scheduled_at'] ?? null, $data['closes_at'] ?? null);
 
         $exam = DB::transaction(function () use ($data, $request) {
             $exam = ProctoredExam::create([
@@ -117,6 +119,7 @@ class ExamPlatformController extends Controller
             'duration_minutes' => ['sometimes', 'required', 'integer', 'min:1', 'max:600'],
             'max_warnings' => ['sometimes', 'integer', 'min:1', 'max:100'],
             'scheduled_at' => ['sometimes', 'nullable', 'date'],
+            'closes_at' => ['sometimes', 'nullable', 'date'],
         ]);
         abort_if($data === [], 422, 'No exam configuration fields were provided.');
         if (array_key_exists('subject', $data)) $data['subject'] = $data['subject'] ?? '';
@@ -124,7 +127,9 @@ class ExamPlatformController extends Controller
         DB::transaction(function () use ($record, $data, $request) {
             $locked = ProctoredExam::query()->whereKey($record->id)->lockForUpdate()->firstOrFail();
             abort_unless($locked->status === 'draft', 409, 'Published exam configuration is immutable.');
-            $locked->fill($data)->save();
+            $locked->fill($data);
+            $this->assertClosesAfterStart($locked->scheduled_at, $locked->closes_at);
+            $locked->save();
             $this->recordAudit($locked, $request->user(), 'exam.updated', ['fields' => array_keys($data)]);
         });
 
@@ -198,6 +203,7 @@ class ExamPlatformController extends Controller
                 case 'start':
                     abort_unless($locked->status === 'published', 409, 'Only a published exam can start.');
                     abort_if($locked->scheduled_at && $locked->scheduled_at->isFuture(), 409, 'The scheduled start time has not arrived.');
+                    abort_if($locked->closes_at && $locked->closes_at->isPast(), 409, 'The exam end time has already passed.');
                     $locked->status = 'live';
                     $locked->started_at = $now;
                     break;
@@ -520,7 +526,7 @@ class ExamPlatformController extends Controller
     {
         abort_unless($user->isManager(), 403, 'Manager access required.');
         $query = ProctoredExam::query()->whereKey($id)->where('owner_id', $user->id);
-        if ($metadataOnly) $query->select(['id','owner_id','title','subject','instructions','duration_minutes','extension_minutes','max_warnings','scheduled_at','status','results_published','question_count','started_at','paused_at','paused_seconds','ended_at','created_at','updated_at']);
+        if ($metadataOnly) $query->select(['id','owner_id','title','subject','instructions','duration_minutes','extension_minutes','max_warnings','scheduled_at','closes_at','status','results_published','question_count','started_at','paused_at','paused_seconds','ended_at','created_at','updated_at']);
         if ($lock) $query->lockForUpdate();
         return $query->firstOrFail();
     }
@@ -530,7 +536,7 @@ class ExamPlatformController extends Controller
         abort_unless(!$user->hasAdminAccess(), 403, 'Only candidates may use candidate exam operations.');
         $emails = $this->normalizedEmailsForUser($user);
         $query = ProctoredExam::query()->whereKey($id);
-        if ($metadataOnly) $query->select(['id','owner_id','title','subject','instructions','duration_minutes','extension_minutes','max_warnings','scheduled_at','status','results_published','question_count','started_at','paused_at','paused_seconds','ended_at','created_at','updated_at']);
+        if ($metadataOnly) $query->select(['id','owner_id','title','subject','instructions','duration_minutes','extension_minutes','max_warnings','scheduled_at','closes_at','status','results_published','question_count','started_at','paused_at','paused_seconds','ended_at','created_at','updated_at']);
         if ($lock) $query->lockForUpdate();
         $record = $query->firstOrFail();
         $enrollment = $record->enrollments()->whereIn('email', $emails)->first();
@@ -562,7 +568,7 @@ class ExamPlatformController extends Controller
             'id' => $exam->id, 'title' => $exam->title, 'subject' => $exam->subject,
             'instructions' => $exam->instructions, 'duration_minutes' => $exam->duration_minutes,
             'extension_minutes' => $exam->extension_minutes, 'max_warnings' => $exam->max_warnings,
-            'scheduled_at' => $exam->scheduled_at?->toIso8601String(), 'status' => $exam->status,
+            'scheduled_at' => $exam->scheduled_at?->toIso8601String(), 'closes_at' => $exam->closes_at?->toIso8601String(), 'closed' => $this->isClosedBeforeStart($exam), 'status' => $exam->status,
             'results_published' => $exam->results_published,
             'question_count' => (int) $exam->question_count,
             'enrollment_count' => $exam->enrollments_count, 'session_count' => $exam->sessions_count,
@@ -582,7 +588,7 @@ class ExamPlatformController extends Controller
             'id' => $exam->id, 'title' => $exam->title, 'subject' => $exam->subject,
             'instructions' => $exam->instructions, 'duration_minutes' => $exam->duration_minutes,
             'question_count' => (int) $exam->question_count, 'max_warnings' => $exam->max_warnings,
-            'scheduled_at' => $exam->scheduled_at?->toIso8601String(), 'status' => $exam->status,
+            'scheduled_at' => $exam->scheduled_at?->toIso8601String(), 'closes_at' => $exam->closes_at?->toIso8601String(), 'closed' => $this->isClosedBeforeStart($exam), 'status' => $exam->status,
             'results_published' => $exam->results_published,
         ];
     }
@@ -639,7 +645,28 @@ class ExamPlatformController extends Controller
         if (!$exam->started_at) return null;
         $elapsed = max(0, $now->getTimestamp() - $exam->started_at->getTimestamp());
         $paused = $exam->paused_seconds + ($exam->status === 'paused' && $exam->paused_at ? max(0, $now->getTimestamp() - $exam->paused_at->getTimestamp()) : 0);
-        return max(0, ($exam->duration_minutes + $exam->extension_minutes) * 60 - $elapsed + $paused);
+        $remaining = max(0, ($exam->duration_minutes + $exam->extension_minutes) * 60 - $elapsed + $paused);
+        if ($exam->closes_at) {
+            // Hard closing time: the exam ends then even if the duration has not run out.
+            // Time added by the manager moves the closing time by the same amount.
+            $closing = $exam->closes_at->getTimestamp() + $exam->extension_minutes * 60;
+            $remaining = min($remaining, max(0, $closing - $now->getTimestamp()));
+        }
+        return $remaining;
+    }
+
+    /** A published exam whose end time passed before it was ever started can no longer be taken. */
+    private function isClosedBeforeStart(ProctoredExam $exam): bool
+    {
+        return $exam->status === 'published' && $exam->closes_at !== null && $exam->closes_at->isPast();
+    }
+
+    private function assertClosesAfterStart(mixed $start, mixed $end): void
+    {
+        if (!$start || !$end) return;
+        $startAt = $start instanceof \DateTimeInterface ? $start->getTimestamp() : strtotime((string) $start);
+        $endAt = $end instanceof \DateTimeInterface ? $end->getTimestamp() : strtotime((string) $end);
+        abort_if($endAt <= $startAt, 422, 'The exam end must be after the scheduled start.');
     }
 
     private function assertNotExpired(ProctoredExam $exam): void
@@ -649,7 +676,7 @@ class ExamPlatformController extends Controller
 
     private function expireExamIfNeeded(string $id): bool
     {
-        $current = ProctoredExam::select(['id','status','started_at','duration_minutes','extension_minutes','paused_at','paused_seconds'])->findOrFail($id);
+        $current = ProctoredExam::select(['id','status','started_at','duration_minutes','extension_minutes','paused_at','paused_seconds','closes_at'])->findOrFail($id);
         if ($current->status !== 'live' || $this->remainingSeconds($current, now()) > 0) return false;
         return DB::transaction(function () use ($id) {
             $exam = ProctoredExam::query()->whereKey($id)->lockForUpdate()->firstOrFail();

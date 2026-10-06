@@ -37,6 +37,10 @@
     saveTimer: null,
     savePromise: null,
     importQuestions: null,
+    papers: null,
+    papersLoading: false,
+    paperFilter: "",
+    paperPick: "",
     selected: null,
     dirty: false,
     pending: {},
@@ -298,19 +302,163 @@
       toast.className = "";
     }, 3600);
   }
+  /* A manager who opens the Exam tab from the student view sees the list the way a student would. */
+  const studentPreview = () =>
+    isManager() && new URLSearchParams(location.search).get("preview") === "student";
   function listView() {
-    const manager = isManager();
-    return `<section class="ep-page"><div class="ep-heading"><div><p class="ep-eyebrow">${manager ? "EXAM MANAGEMENT" : "CANDIDATE PORTAL"}</p><h1>${manager ? "Online proctoring" : "Your exams"}</h1><p>${manager ? "Create an exam, import questions, enroll candidates, publish, and monitor the session." : "Select an exam you are enrolled in to read its instructions and check its status."}</p></div>${manager ? '<button class="ep-btn ep-btn-primary" data-action="new">Create exam</button>' : ""}</div>${app.error ? `<div class="ep-alert error">${esc(app.error)}</div>` : ""}${app.notice ? `<div class="ep-alert">${esc(app.notice)}</div>` : ""}<div class="ep-card"><div class="ep-card-head"><h2>${manager ? "Exams" : "Available exams"}</h2><button class="ep-btn ep-btn-quiet" data-action="refresh-list">Refresh</button></div>${app.exams.length ? `<div class="ep-table-wrap"><table><thead><tr><th>Exam</th><th>Status</th><th>Schedule</th><th>Questions</th><th></th></tr></thead><tbody>${app.exams.map((e) => `<tr><td><b>${esc(e.title)}</b><small>${esc(e.subject || "—")}</small></td><td><span class="ep-status ${esc(e.status)}">${esc(e.status || "draft")}</span></td><td>${esc(formatDate(e.scheduled_at))}</td><td>${Number(e.question_count ?? e.questions_count ?? e.questions?.length ?? 0)}</td><td><button class="ep-btn ep-btn-small" data-action="open" data-id="${esc(e.id)}">${manager ? "Manage" : "Open"}</button></td></tr>`).join("")}</tbody></table></div>` : `<div class="ep-empty"><div class="ep-empty-icon">${manager ? "＋" : "◷"}</div><h3>${manager ? "No exams yet" : "No exams available"}</h3><p>${manager ? "Create a draft exam to begin setting up questions and enrollment." : "Ask your exam manager to enroll your account."}</p></div>`}${app.nextPage ? '<div class="ep-actions"><button class="ep-btn" data-action="more-exams">Load more exams</button></div>' : ""}</div></section>`;
+    const preview = studentPreview();
+    const manager = isManager() && !preview;
+    const list = preview ? app.exams.filter((e) => e.status && e.status !== "draft") : app.exams;
+    return `<section class="ep-page"><div class="ep-heading"><div><p class="ep-eyebrow">${manager ? "EXAM MANAGEMENT" : "CANDIDATE PORTAL"}</p><h1>${manager ? "Online proctoring" : "Your exams"}</h1>${manager ? "" : `<p>Select an exam you are enrolled in to read its instructions and check its status.</p>`}</div>${manager ? '<button class="ep-btn ep-btn-primary" data-action="new">Create exam</button>' : ""}</div>${app.error ? `<div class="ep-alert error">${esc(app.error)}</div>` : ""}${app.notice ? `<div class="ep-alert">${esc(app.notice)}</div>` : ""}${preview ? '<div class="ep-alert">Student preview. This is what enrolled students see for your published exams. You are signed in as a manager, so exams cannot be taken from here. <a class="ep-link" href="/exams">Go to exam management</a></div>' : ""}<div class="ep-card"><div class="ep-card-head"><h2>${manager ? "Exams" : "Available exams"}</h2><button class="ep-btn ep-btn-quiet" data-action="refresh-list">Refresh</button></div>${list.length ? `<div class="ep-table-wrap"><table><thead><tr><th>Exam</th><th>Status</th><th>Schedule</th><th>Questions</th><th></th></tr></thead><tbody>${list.map((e) => `<tr><td><b>${esc(e.title)}</b><small>${esc(e.subject || "—")}</small></td><td><span class="ep-status ${esc(e.closed ? "ended" : e.status)}">${esc(e.closed ? "closed" : e.status || "draft")}</span></td><td>${esc(formatDate(e.scheduled_at))}${e.closes_at ? `<small>Ends ${esc(formatDate(e.closes_at))}</small>` : ""}</td><td>${Number(e.question_count ?? e.questions_count ?? e.questions?.length ?? 0)}</td><td><button class="ep-btn ep-btn-small" data-action="open" data-id="${esc(e.id)}" ${(e.closed && !manager) || preview ? "disabled" : ""}>${manager ? "Manage" : e.closed ? "Closed" : preview ? "Preview" : "Open"}</button></td></tr>`).join("")}</tbody></table></div>` : `<div class="ep-empty"><div class="ep-empty-icon">${manager ? "＋" : "◷"}</div><h3>${manager ? "No exams yet" : "No exams available"}</h3><p>${manager ? "Create a draft exam to begin setting up questions and enrollment." : preview ? "Students see exams here once you publish them and enrol their email." : "Ask your exam manager to enroll your account."}</p></div>`}${app.nextPage ? '<div class="ep-actions"><button class="ep-btn" data-action="more-exams">Load more exams</button></div>' : ""}</div></section>`;
   }
   function formatDate(v) {
     if (!v) return "—";
     const d = new Date(v);
     return Number.isNaN(d.valueOf()) ? esc(v) : d.toLocaleString();
   }
+  /* Copy questions from an existing paper in the Quizzes section into this draft. */
+  const PAPER_SECTIONS = {
+    practice: "Practice",
+    practice_graded: "Graded",
+    quiz1: "Quiz 1",
+    quiz2: "Quiz 2",
+    endterm: "End Term",
+    mock_test: "Mock",
+  };
+  function paperOptions() {
+    const words = app.paperFilter.toLowerCase().split(/\s+/).filter(Boolean);
+    const rows = (app.papers || []).filter((p) => {
+      const text = `${p.title} ${p.course_name || ""} ${PAPER_SECTIONS[p.section] || ""}`.toLowerCase();
+      return words.every((w) => text.includes(w));
+    });
+    return (
+      `<option value="">${rows.length ? `Choose a paper (${rows.length})` : "No papers match"}</option>` +
+      rows
+        .slice(0, 300)
+        .map(
+          (p) =>
+            `<option value="${esc(p.id)}" ${String(p.id) === String(app.paperPick) ? "selected" : ""}>${esc(p.course_name || "Course")} · ${esc(PAPER_SECTIONS[p.section] || p.section || "")} · ${esc(p.title)} (${Number(p.questions_count || 0)} q)</option>`,
+        )
+        .join("")
+    );
+  }
+  function paperPicker() {
+    if (!isManager()) return "";
+    if (app.papers === null && !app.papersLoading) {
+      app.papersLoading = true;
+      request("/admin/quizzes")
+        .then((d) => {
+          app.papers = Array.isArray(d) ? d : rows(d).length ? rows(d) : d.quizzes || [];
+        })
+        .catch(() => {
+          app.papers = [];
+        })
+        .finally(() => {
+          app.papersLoading = false;
+          if (app.screen === "edit") {
+            const box = $("#ep-paper-picker");
+            if (box) box.outerHTML = paperPicker();
+          }
+        });
+    }
+    const ready = Array.isArray(app.papers);
+    return `<div class="ep-paper-picker" id="ep-paper-picker"><b>Or copy questions from an existing paper</b><p class="ep-muted">The questions are copied into this exam. The paper itself is not linked or changed.</p>${
+      !ready
+        ? '<p class="ep-muted">Loading papers…</p>'
+        : !app.papers.length
+          ? '<p class="ep-muted">No papers were found in the Quizzes section.</p>'
+          : `<div class="ep-paper-row"><input type="search" id="ep-paper-filter" placeholder="Filter by course, type or title" value="${esc(app.paperFilter)}" autocomplete="off" aria-label="Filter papers" /><select id="ep-paper-select" aria-label="Paper to copy questions from">${paperOptions()}</select><button class="ep-btn" data-action="load-paper" ${app.paperPick ? "" : "disabled"}>Load questions</button></div>`
+    }</div>`;
+  }
+  function paperText(value) {
+    let text = String(value == null ? "" : value);
+    if (/<\/?[a-z][\s\S]*>/i.test(text))
+      text = text
+        .replace(/<br\s*\/?>/gi, "\n")
+        .replace(/<\/(p|div|li|h[1-6])>/gi, "\n")
+        .replace(/<[^>]+>/g, "")
+        .replace(/&nbsp;/gi, " ")
+        .replace(/&lt;/gi, "<")
+        .replace(/&gt;/gi, ">")
+        .replace(/&quot;/gi, '"')
+        .replace(/&#39;/gi, "'")
+        .replace(/&amp;/gi, "&");
+    return text.trim();
+  }
+  function paperImage(value) {
+    const p = String(value || "").trim();
+    if (!p || /[\s"'<>\\]/.test(p)) return "";
+    const root = API.replace(/\/api$/i, "");
+    let origin = root;
+    try {
+      origin = new URL(API).origin;
+    } catch (_) {}
+    if (/^https:\/\//i.test(p)) return p;
+    if (/^[a-z][a-z0-9+.-]*:/i.test(p)) return "";
+    if (p.startsWith("/storage/")) return root + p;
+    if (p.startsWith("/question-images/")) return root + "/storage" + p;
+    if (p.startsWith("question-images/")) return root + "/storage/" + p;
+    if (p.startsWith("/")) return origin + p;
+    return root + "/" + p;
+  }
+  function paperQuestion(q) {
+    const types = {
+      mcq: "mcq_single",
+      multi_select: "mcq_multi",
+      true_false: "true_false",
+      numerical: "numerical",
+      short_answer: "short_answer",
+      comprehension: "comprehension",
+    };
+    const type = types[q.type] || q.type;
+    const prompt = [];
+    const stem = paperText(q.stem);
+    if (stem) prompt.push({ kind: "text", value: stem });
+    if (q.stem_code)
+      prompt.push({ kind: "code", value: String(q.stem_code), language: q.stem_code_language || "text" });
+    const table = q.stem_table;
+    if (table && Array.isArray(table.headers) && table.headers.length && Array.isArray(table.rows))
+      prompt.push({
+        kind: "table",
+        headers: table.headers.map((h) => String(h ?? "")),
+        rows: table.rows.filter(Array.isArray).map((r) => r.map((c) => String(c ?? ""))),
+        ...(table.caption ? { caption: String(table.caption) } : {}),
+      });
+    const image = paperImage(q.stem_image);
+    if (image) prompt.push({ kind: "image", url: image, alt: "Question figure" });
+    const out = { id: `q${q.id}`, type, prompt, marks: Number(q.marks) || 1, negative: 0 };
+    if (["easy", "medium", "hard"].includes(q.difficulty)) out.difficulty = q.difficulty;
+    const explanation = paperText(q.explanation);
+    if (explanation) out.explanation = [{ kind: "text", value: explanation }];
+    const options = q.question_options || q.questionOptions || [];
+    if (type === "true_false") {
+      const right = options.find((o) => o.is_correct);
+      out.correct_answer = right ? /^true$/i.test(paperText(right.option_text)) : null;
+    } else if (type === "mcq_single" || type === "mcq_multi") {
+      out.options = options.map((o) =>
+        o.option_type === "code"
+          ? [{ kind: "code", value: String(o.option_text || ""), language: o.code_language || "text" }]
+          : paperText(o.option_text),
+      );
+      const right = options.map((o, i) => (o.is_correct ? i : -1)).filter((i) => i >= 0);
+      if (type === "mcq_multi") out.correct_answers = right;
+      else out.correct_answer = right.length ? right[0] : null;
+    } else if (type === "numerical") {
+      out.numerical_answer = q.numerical_answer;
+      if (q.numerical_tolerance != null && Number(q.numerical_tolerance) > 0)
+        out.numerical_tolerance = Number(q.numerical_tolerance);
+    } else if (type === "short_answer") {
+      out.acceptable_answers = (q.short_answer_acceptables || q.shortAnswerAcceptables || [])
+        .map((a) => String(a.acceptable_text ?? "").trim())
+        .filter(Boolean);
+      if (!out.acceptable_answers.length) out.acceptable_answers = null;
+    }
+    return out;
+  }
   function formView() {
     const e = { ...app.exam, ...app.setupDraft };
     const qn = e.questions?.length || 0;
-    return `<section class="ep-page"><div class="ep-back"><button class="ep-btn ep-btn-quiet" data-action="back">← Exams</button></div><div class="ep-heading"><div><p class="ep-eyebrow">DRAFT SETUP</p><h1>${e.id ? "Configure exam" : "Create an exam"}</h1><p>Save a draft, import and review questions, enroll candidates, then publish when ready.</p></div></div>${app.error ? `<div class="ep-alert error">${esc(app.error)}</div>` : ""}<form class="ep-card ep-form" data-form="exam"><div class="ep-grid"><label>Exam title<input required name="title" maxlength="180" value="${esc(e.title || "")}" placeholder="e.g. Statistics Midterm" /></label><label>Subject<input name="subject" maxlength="180" value="${esc(e.subject || "")}" placeholder="Statistics" /></label><label>Duration (minutes)<input required type="number" name="duration_minutes" min="1" max="600" value="${Number(e.duration_minutes || 60)}" /></label><label>Violation warning limit<input required type="number" name="max_warnings" min="1" max="100" value="${Number(e.max_warnings || 3)}" /></label><label>Scheduled start<input type="datetime-local" name="scheduled_at" value="${esc(toLocalInput(e.scheduled_at))}" /></label><label class="ep-span">Instructions<textarea name="instructions" rows="4" maxlength="10000" placeholder="Exam instructions and permitted materials">${esc(e.instructions || "")}</textarea></label></div><div class="ep-actions"><button class="ep-btn ep-btn-primary" type="submit" ${app.busy ? "disabled" : ""}>Save draft</button><span class="ep-muted">${qn} question${qn === 1 ? "" : "s"} imported</span></div></form><div class="ep-card"><div class="ep-card-head"><div><h2>Import questions</h2><p>Save your draft first, then upload or paste JSON. Math can be included in prompts, options, tables, and explanations. Import replaces the draft’s entire question set.</p></div><div class="ep-actions">${e.questions?.length ? '<button class="ep-btn ep-btn-quiet" data-action="edit-json">Edit imported JSON</button>' : ""}<button class="ep-btn ep-btn-quiet" data-action="download-template">Download JSON template</button></div></div><div class="ep-import-tools"><label class="ep-file">Choose JSON file<input type="file" accept="application/json,.json" data-import-file /></label><span class="ep-muted">or paste JSON</span></div><textarea id="ep-import-json" class="ep-codearea" spellcheck="false" placeholder='{"questions":[{"id":"q1","type":"mcq_single","prompt":"Solve $x^2=4$","options":["$x=2$","$x=±2$"],"correct":1,"marks":2,"negative":0}]}'>${esc(app.importText || "")}</textarea><div class="ep-actions"><button class="ep-btn" data-action="preview-import">Preview JSON</button><button class="ep-btn ep-btn-primary" data-action="import" ${!e.id || !app.importQuestions ? "disabled" : ""}>Import all questions</button><span class="ep-muted">All-or-nothing: any invalid question prevents import.</span></div>${app.importQuestions ? `<div class="ep-preview"><h3>Preview · ${app.importQuestions.length} questions</h3>${app.importQuestions.map((q, i) => `<article class="ep-preview-q"><b>${i + 1}. ${esc(q.type)} · ${Number(q.marks || 0)} marks</b><div>${contentHtml(q.prompt)}</div>${(q.options || []).map((o, j) => `<div class="ep-preview-option">${String.fromCharCode(65 + j)}. ${contentHtml(o)}</div>`).join("")}</article>`).join("")}</div>` : ""}</div><div class="ep-card"><div class="ep-card-head"><div><h2>Candidate enrollment</h2><p>One email per line. Enrollment takes effect when saved.</p></div><button class="ep-btn ep-btn-primary" data-action="save-enrollments" ${!e.id ? "disabled" : ""}>Save enrollment</button></div><textarea class="ep-textarea" id="ep-enrollment-list" rows="7" placeholder="candidate@example.edu">${esc((e.enrollments || e.enrolled_emails || []).map((x) => (typeof x === "string" ? x : x.email)).join("\n"))}</textarea></div>${qn ? managerQuestions(e.questions) : ""}<div class="ep-card ep-publish-card"><div><h2>Publish this exam?</h2><p>Publishing makes this exam available to enrolled candidates. Start the exam from the manager controls at its scheduled time.</p></div><button class="ep-btn ep-btn-primary" data-action="publish" ${!e.id || !qn || app.busy ? "disabled" : ""}>Publish exam</button></div></section>`;
+    return `<section class="ep-page"><div class="ep-back"><button class="ep-btn ep-btn-quiet" data-action="back">← Exams</button></div><div class="ep-heading"><div><p class="ep-eyebrow">DRAFT SETUP</p><h1>${e.id ? "Configure exam" : "Create an exam"}</h1><p>Save a draft, import and review questions, enroll candidates, then publish when ready.</p></div></div>${app.error ? `<div class="ep-alert error">${esc(app.error)}</div>` : ""}<form class="ep-card ep-form" data-form="exam"><div class="ep-grid"><label>Exam title<input required name="title" maxlength="180" value="${esc(e.title || "")}" placeholder="e.g. Statistics Midterm" /></label><label>Subject<input name="subject" maxlength="180" value="${esc(e.subject || "")}" placeholder="Statistics" /></label><label>Duration (minutes)<input required type="number" name="duration_minutes" min="1" max="600" value="${Number(e.duration_minutes || 60)}" /></label><label>Violation warning limit<input required type="number" name="max_warnings" min="1" max="100" value="${Number(e.max_warnings || 3)}" /></label><label>Scheduled start<input type="datetime-local" name="scheduled_at" value="${esc(toLocalInput(e.scheduled_at))}" /></label><label>Exam end (date and time)<input type="datetime-local" name="closes_at" value="${esc(toLocalInput(e.closes_at))}" /><span class="ep-muted">Optional. The exam closes at this time even if the duration has not run out.</span></label><label class="ep-span">Instructions<textarea name="instructions" rows="4" maxlength="10000" placeholder="Exam instructions and permitted materials">${esc(e.instructions || "")}</textarea></label></div><div class="ep-actions"><button class="ep-btn ep-btn-primary" type="submit" ${app.busy ? "disabled" : ""}>Save draft</button><span class="ep-muted">${qn} question${qn === 1 ? "" : "s"} imported</span></div></form><div class="ep-card"><div class="ep-card-head"><div><h2>Import questions</h2><p>Save your draft first, then upload or paste JSON. Math can be included in prompts, options, tables, and explanations. Import replaces the draft’s entire question set.</p></div><div class="ep-actions">${e.questions?.length ? '<button class="ep-btn ep-btn-quiet" data-action="edit-json">Edit imported JSON</button>' : ""}<button class="ep-btn ep-btn-quiet" data-action="download-template">Download JSON template</button></div></div><div class="ep-import-tools"><label class="ep-file">Choose JSON file<input type="file" accept="application/json,.json" data-import-file /></label><span class="ep-muted">or paste JSON</span></div>${paperPicker()}<textarea id="ep-import-json" class="ep-codearea" spellcheck="false" placeholder='{"questions":[{"id":"q1","type":"mcq_single","prompt":"Solve $x^2=4$","options":["$x=2$","$x=±2$"],"correct":1,"marks":2,"negative":0}]}'>${esc(app.importText || "")}</textarea><div class="ep-actions"><button class="ep-btn" data-action="preview-import">Preview JSON</button><button class="ep-btn ep-btn-primary" data-action="import" ${!e.id || !app.importQuestions ? "disabled" : ""}>Import all questions</button><span class="ep-muted">All-or-nothing: any invalid question prevents import.</span></div>${app.importQuestions ? `<div class="ep-preview"><h3>Preview · ${app.importQuestions.length} questions</h3>${app.importQuestions.map((q, i) => `<article class="ep-preview-q"><b>${i + 1}. ${esc(q.type)} · ${Number(q.marks || 0)} marks</b><div>${contentHtml(q.prompt)}</div>${(q.options || []).map((o, j) => `<div class="ep-preview-option">${String.fromCharCode(65 + j)}. ${contentHtml(o)}</div>`).join("")}</article>`).join("")}</div>` : ""}</div><div class="ep-card"><div class="ep-card-head"><div><h2>Candidate enrollment</h2><p>One email per line. Enrollment takes effect when saved.</p></div><button class="ep-btn ep-btn-primary" data-action="save-enrollments" ${!e.id ? "disabled" : ""}>Save enrollment</button></div><textarea class="ep-textarea" id="ep-enrollment-list" rows="7" placeholder="candidate@example.edu">${esc((e.enrollments || e.enrolled_emails || []).map((x) => (typeof x === "string" ? x : x.email)).join("\n"))}</textarea></div>${qn ? managerQuestions(e.questions) : ""}<div class="ep-card ep-publish-card"><div><h2>Publish this exam?</h2><p>Publishing makes this exam available to enrolled candidates. Start the exam from the manager controls at its scheduled time.</p></div><button class="ep-btn ep-btn-primary" data-action="publish" ${!e.id || !qn || app.busy ? "disabled" : ""}>Publish exam</button></div></section>`;
   }
   function toLocalInput(v) {
     if (!v) return "";
@@ -324,7 +472,7 @@
     const e = app.exam || {},
       state = app.state || {},
       manager = isManager();
-    return `<section class="ep-page"><div class="ep-back"><button class="ep-btn ep-btn-quiet" data-action="back">← Exams</button></div><div class="ep-heading"><div><p class="ep-eyebrow">${manager ? "MANAGER CONSOLE" : "EXAM DETAILS"}</p><h1>${esc(e.title)}</h1><p>${esc(e.subject || "")}</p></div><span class="ep-status ${esc(e.status)}">${esc(e.status || "draft")}</span></div>${app.error ? `<div class="ep-alert error">${esc(app.error)}</div>` : ""}<div class="ep-detail-grid"><div class="ep-card"><h2>Exam setup</h2><dl class="ep-facts"><div><dt>Duration</dt><dd>${Number(e.duration_minutes || 0)} minutes</dd></div><div><dt>Scheduled</dt><dd>${esc(formatDate(e.scheduled_at))}</dd></div><div><dt>Questions</dt><dd>${Number(e.questions?.length || e.question_count || 0)}</dd></div><div><dt>Results</dt><dd>${e.results_published ? "Published" : "Not published"}</dd></div></dl><h3>Instructions</h3><p class="ep-instructions">${contentHtml(e.instructions || "No additional instructions.")}</p><div class="ep-actions">${manager ? `${e.status === "draft" ? '<button class="ep-btn" data-action="edit">Edit draft</button>' : ""}${e.status === "published" ? '<button class="ep-btn" data-action="edit-enrollments">Edit enrollment</button><button class="ep-btn ep-btn-primary" data-action="start">Start exam</button>' : ""}${["live", "paused"].includes(e.status) ? `<button class="ep-btn" data-action="${e.status === "live" ? "pause" : "resume"}">${e.status === "live" ? "Pause" : "Resume"}</button><button class="ep-btn ep-btn-danger" data-action="end">End exam</button><button class="ep-btn" data-action="extend">Add 5 minutes</button>` : ""}${e.status === "ended" && !e.results_published ? '<button class="ep-btn ep-btn-primary" data-action="publish-results">Publish results</button>' : ""}${e.status === "ended" ? '<button class="ep-btn" data-action="archive">Archive</button>' : ""}${e.results_published ? '<button class="ep-btn" data-action="export">Export results CSV</button>' : ""}<button class="ep-btn ep-btn-quiet" data-action="audit">Audit log</button><button class="ep-btn ep-btn-quiet" data-action="copy-link">Copy candidate link</button>` : `<button class="ep-btn ep-btn-primary" data-action="join" ${e.status === "live" ? "" : "disabled"}>Review rules and join</button>`}</div></div>${manager ? `<div class="ep-card"><div class="ep-card-head"><h2>Live monitoring</h2><span class="ep-live-dot">${Array.isArray(state.sessions) ? state.sessions.length : Object.keys(state.sessions || {}).length} candidates</span></div><div class="ep-actions"><button class="ep-btn ep-btn-quiet" data-action="refresh-state">Refresh now</button><button class="ep-btn" data-action="messages">Messages</button></div><div id="ep-sessions">${sessionTable(state.sessions || [])}</div><div id="ep-audit">${app.auditEvents ? auditHtml() : ""}</div></div>` : candidateSummary(state)}</div>${manager ? managerQuestions(e.questions || []) : ""}</section>`;
+    return `<section class="ep-page"><div class="ep-back"><button class="ep-btn ep-btn-quiet" data-action="back">← Exams</button></div><div class="ep-heading"><div><p class="ep-eyebrow">${manager ? "MANAGER CONSOLE" : "EXAM DETAILS"}</p><h1>${esc(e.title)}</h1><p>${esc(e.subject || "")}</p></div><span class="ep-status ${esc(e.status)}">${esc(e.status || "draft")}</span></div>${app.error ? `<div class="ep-alert error">${esc(app.error)}</div>` : ""}<div class="ep-detail-grid"><div class="ep-card"><h2>Exam setup</h2><dl class="ep-facts"><div><dt>Duration</dt><dd>${Number(e.duration_minutes || 0)} minutes</dd></div><div><dt>Scheduled start</dt><dd>${esc(formatDate(e.scheduled_at))}</dd></div><div><dt>Exam end</dt><dd>${esc(formatDate(e.closes_at))}</dd></div><div><dt>Questions</dt><dd>${Number(e.questions?.length || e.question_count || 0)}</dd></div><div><dt>Results</dt><dd>${e.results_published ? "Published" : "Not published"}</dd></div></dl><h3>Instructions</h3><p class="ep-instructions">${contentHtml(e.instructions || "No additional instructions.")}</p><div class="ep-actions">${manager ? `${e.status === "draft" ? '<button class="ep-btn" data-action="edit">Edit draft</button>' : ""}${e.status === "published" ? '<button class="ep-btn" data-action="edit-enrollments">Edit enrollment</button><button class="ep-btn ep-btn-primary" data-action="start">Start exam</button>' : ""}${["live", "paused"].includes(e.status) ? `<button class="ep-btn" data-action="${e.status === "live" ? "pause" : "resume"}">${e.status === "live" ? "Pause" : "Resume"}</button><button class="ep-btn ep-btn-danger" data-action="end">End exam</button><button class="ep-btn" data-action="extend">Add 5 minutes</button>` : ""}${e.status === "ended" && !e.results_published ? '<button class="ep-btn ep-btn-primary" data-action="publish-results">Publish results</button>' : ""}${e.status === "ended" ? '<button class="ep-btn" data-action="archive">Archive</button>' : ""}${e.results_published ? '<button class="ep-btn" data-action="export">Export results CSV</button>' : ""}<button class="ep-btn ep-btn-quiet" data-action="audit">Audit log</button><button class="ep-btn ep-btn-quiet" data-action="copy-link">Copy candidate link</button>` : `<button class="ep-btn ep-btn-primary" data-action="join" ${e.status === "live" ? "" : "disabled"}>Review rules and join</button>`}</div></div>${manager ? `<div class="ep-card"><div class="ep-card-head"><h2>Live monitoring</h2><span class="ep-live-dot">${Array.isArray(state.sessions) ? state.sessions.length : Object.keys(state.sessions || {}).length} candidates</span></div><div class="ep-actions"><button class="ep-btn ep-btn-quiet" data-action="refresh-state">Refresh now</button><button class="ep-btn" data-action="messages">Messages</button></div><div id="ep-sessions">${sessionTable(state.sessions || [])}</div><div id="ep-audit">${app.auditEvents ? auditHtml() : ""}</div></div>` : candidateSummary(state)}</div>${manager ? managerQuestions(e.questions || []) : ""}</section>`;
   }
   function candidateSummary(s) {
     const sess = s.session || {};
@@ -461,6 +609,9 @@
     d.scheduled_at = d.scheduled_at
       ? new Date(d.scheduled_at).toISOString()
       : null;
+    d.closes_at = d.closes_at ? new Date(d.closes_at).toISOString() : null;
+    if (d.closes_at && d.scheduled_at && d.closes_at <= d.scheduled_at)
+      throw new Error("The exam end must be after the scheduled start.");
     return d;
   }
   function normalizeQuestion(q, i) {
@@ -981,6 +1132,21 @@
         a.click();
         return;
       }
+      if (action === "load-paper") {
+        rememberSetup();
+        const paper = (app.papers || []).find((p) => String(p.id) === String(app.paperPick));
+        if (!paper) return;
+        const data = await request(`/admin/quizzes/${encodeURIComponent(paper.id)}/questions`);
+        const list = Array.isArray(data) ? data : data.questions || [];
+        if (!list.length) throw new Error("That paper has no questions to copy.");
+        app.importText = JSON.stringify({ questions: list.map(paperQuestion) }, null, 2);
+        app.importQuestions = null;
+        render();
+        app.importQuestions = parseImport(app.importText);
+        render();
+        flash(`Copied ${list.length} questions from “${paper.title}”. Review the preview, then press Import all questions.`);
+        return;
+      }
       if (action === "preview-import") {
         rememberSetup();
         app.importText = $("#ep-import-json")?.value || "";
@@ -1236,6 +1402,14 @@
   }
   function onInput(ev) {
     const t = ev.target;
+    if (t.matches("#ep-paper-filter")) {
+      app.paperFilter = t.value;
+      app.paperPick = "";
+      const select = $("#ep-paper-select");
+      if (select) select.innerHTML = paperOptions();
+      const load = $('[data-action="load-paper"]');
+      if (load) load.disabled = true;
+    }
     if (t.matches("#ep-import-json")) {
       app.importText = t.value;
       app.importQuestions = null;
@@ -1267,6 +1441,11 @@
             ? false
             : Number(t.value),
       );
+    if (t.matches("#ep-paper-select")) {
+      app.paperPick = t.value;
+      const load = $('[data-action="load-paper"]');
+      if (load) load.disabled = !t.value;
+    }
     if (t.matches("[data-import-file]") && t.files?.[0]) {
       if (t.files[0].size > 5 * 1024 * 1024) {
         flash("Import must be smaller than 5 MB.", true);

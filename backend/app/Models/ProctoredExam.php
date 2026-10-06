@@ -15,7 +15,7 @@ class ProctoredExam extends Model
 
     protected $fillable = [
         'owner_id', 'title', 'subject', 'instructions', 'duration_minutes', 'extension_minutes', 'max_warnings',
-        'scheduled_at', 'status', 'results_published', 'questions', 'started_at',
+        'scheduled_at', 'closes_at', 'status', 'results_published', 'questions', 'started_at',
         'paused_at', 'paused_seconds', 'ended_at',
     ];
 
@@ -23,6 +23,7 @@ class ProctoredExam extends Model
     {
         return [
             'scheduled_at' => 'immutable_datetime',
+            'closes_at' => 'immutable_datetime',
             'started_at' => 'immutable_datetime',
             'paused_at' => 'immutable_datetime',
             'ended_at' => 'immutable_datetime',

@@ -249,58 +249,6 @@
     });
   }
 
-  function syncStudentPaperLibrary() {
-    var existing = document.getElementById("ql-student-paper-library");
-    var role = document.body.dataset.epVerifiedRole;
-    if (!/^\/dashboard\/?$/i.test(window.location.pathname) || (role && role !== "student")) {
-      if (existing) existing.remove();
-      return;
-    }
-    var host = document.querySelector("#root main");
-    var runtime = window.QLStorefront;
-    if (!host || !runtime || !runtime.token() || existing) return;
-
-    var panel = document.createElement("section");
-    panel.id = "ql-student-paper-library";
-    panel.className = "ql-paper-library";
-    panel.setAttribute("aria-labelledby", "ql-paper-library-title");
-    panel.innerHTML = '<div class="ql-paper-library-header"><div><h2 id="ql-paper-library-title">My Papers</h2><p>Free claims and purchases, all in one place.</p></div><div class="ql-paper-library-actions"><a href="/my-papers">View library</a><a href="/papers">Browse papers</a></div></div><div class="ql-paper-library-items" aria-live="polite"><p class="ql-paper-library-empty">Loading your papers…</p></div>';
-    host.insertBefore(panel, host.firstChild);
-    var list = panel.querySelector(".ql-paper-library-items");
-    fetch(runtime.apiBase + "/storefront/my-papers", {
-      headers: { Accept: "application/json", Authorization: "Bearer " + runtime.token() }
-    }).then(function (response) {
-      if (!response.ok) throw new Error("Library unavailable");
-      return response.json();
-    }).then(function (data) {
-      if (!panel.isConnected) return;
-      list.replaceChildren();
-      var papers = Array.isArray(data.papers) ? data.papers : [];
-      if (!papers.length) {
-        var empty = document.createElement("p");
-        empty.className = "ql-paper-library-empty";
-        empty.textContent = "Your library is empty. Claim a free paper or browse the catalog.";
-        list.appendChild(empty);
-      }
-      papers.slice(0, 6).forEach(function (paper) {
-        var card = document.createElement("a");
-        card.className = "ql-paper-library-item";
-        var available = paper.available !== false && paper.has_access !== false;
-        card.href = available ? "/paper/" + encodeURIComponent(paper.id) : "/my-papers";
-        var title = document.createElement("strong");
-        title.textContent = paper.title || "Paper";
-        var details = document.createElement("span");
-        var state = paper.available === false ? "Currently unavailable" : paper.expired ? "Access expired" : paper.source === "purchase" ? "Purchased" : "Free";
-        details.textContent = [(paper.course || {}).name, paper.year, state].filter(Boolean).join(" · ");
-        card.append(title, details);
-        list.appendChild(card);
-      });
-    }).catch(function () {
-      if (!panel.isConnected) return;
-      list.innerHTML = '<p class="ql-paper-library-empty">Your library could not load. <a href="/my-papers">Try opening My papers</a>.</p>';
-    });
-  }
-
   function syncPaperPricingLink() {
     var existing = document.getElementById("ql-paper-pricing-link");
     if (document.body.dataset.epVerifiedRole !== "manager" || !/^\/admin(?:\/(?:quizzes|courses))?\/?$/.test(location.pathname)) {
@@ -802,6 +750,65 @@
   }
 
   /* ---------------------------------------------------------------
+   * Manager sidebar: the console is reachable at both /admin/... and
+   * /manager/..., but the sidebar links point at /manager/..., so on
+   * an /admin address the app highlights nothing. Mark the matching
+   * link as current.
+   * ------------------------------------------------------------- */
+  function syncConsoleNav() {
+    var links = document.querySelectorAll("#root aside nav a[href]");
+    var path = window.location.pathname.replace(/\/+$/, "") || "/";
+    var best = null;
+    if (/^\/admin(\/|$)/.test(path) && !document.querySelector("#root aside nav a.ql-nav-active")) {
+      var target = path.replace(/^\/admin/, "/manager");
+      links.forEach(function (link) {
+        var href = (link.getAttribute("href") || "").replace(/\/+$/, "");
+        if (!/^\/manager(\/|$)/.test(href)) return;
+        var match = href === "/manager" ? target === "/manager" : target === href || target.indexOf(href + "/") === 0;
+        if (match && (!best || href.length > best.getAttribute("href").length)) best = link;
+      });
+    }
+    links.forEach(function (link) {
+      if (link.classList.contains("ql-nav-current") !== (link === best)) link.classList.toggle("ql-nav-current", link === best);
+    });
+  }
+
+  /* ---------------------------------------------------------------
+   * Manager console: a back link on the single-quiz page, which has
+   * no way back to the quiz list of its own.
+   * ------------------------------------------------------------- */
+  function syncQuizBackLink() {
+    var existing = document.getElementById("ql-quiz-back");
+    var page = /^\/(admin|manager)\/quizzes\/\d+\/?$/i.exec(window.location.pathname);
+    var host = document.querySelector("#root main");
+    if (!page || !host) {
+      if (existing) existing.remove();
+      return;
+    }
+    var listPath = "/" + page[1].toLowerCase() + "/quizzes";
+    if (existing) {
+      if (existing.getAttribute("href") !== listPath) existing.setAttribute("href", listPath);
+      if (host.firstChild !== existing) host.insertBefore(existing, host.firstChild);
+      return;
+    }
+    var link = document.createElement("a");
+    link.id = "ql-quiz-back";
+    link.className = "ql-console-back";
+    link.href = listPath;
+    link.textContent = "← All quizzes";
+    link.addEventListener("click", function (event) {
+      if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      // Use the sidebar's own link so the app switches page without a reload.
+      var nav = null;
+      document.querySelectorAll("#root aside nav a[href]").forEach(function (item) {
+        if (!nav && /\/quizzes\/?$/.test(item.getAttribute("href"))) nav = item;
+      });
+      if (nav) { event.preventDefault(); nav.click(); }
+    });
+    host.insertBefore(link, host.firstChild);
+  }
+
+  /* ---------------------------------------------------------------
    * Brand: Ensure Quiz LAB by GenZ IITian is displayed everywhere.
    * ------------------------------------------------------------- */
   function syncBrandName() {
@@ -859,6 +866,10 @@
    * tab opens the online exam platform. Both are separate pages, so
    * these links must load a page instead of routing inside the app.
    * ------------------------------------------------------------- */
+  function storedRole() {
+    try { return JSON.parse(localStorage.getItem("lab_user") || "{}").role || ""; } catch (_) { return ""; }
+  }
+
   function paperRoomPath(pathname) {
     var m = /^\/quiz\/(\d+)\/?$/.exec(pathname || "");
     return m ? "/paper/" + m[1] : "";
@@ -873,6 +884,11 @@
       event.preventDefault();
       event.stopPropagation();
       window.location.assign(paper);
+    } else if (/^\/exams?\/?$/.test(link.pathname) && !/^\/(admin|manager)(\/|$)/.test(window.location.pathname) && storedRole() === "manager") {
+      // A manager browsing the student view gets the student-facing exam list.
+      event.preventDefault();
+      event.stopPropagation();
+      window.location.assign("/exams?preview=student");
     } else if (/^\/(exams?(\/|$)|manager\/(discussions|sales)\/?$|paper-pricing\/?$)/.test(link.pathname)) {
       event.stopPropagation();
     }
@@ -883,12 +899,13 @@
     if (paper) { window.location.replace(paper); return; }
     syncBrandName();
     syncAdminShell();
-    syncStudentPaperLibrary();
     syncPaperPricingLink();
     removeStudentWeakSpotCard();
     decorateDashboard();
     decorateManagerConsole();
     fillMyPapers();
+    syncConsoleNav();
+    syncQuizBackLink();
     if (!/\/discussions/i.test(window.location.pathname)) return;
     injectStyles();
     ROWS.forEach(convertRow);

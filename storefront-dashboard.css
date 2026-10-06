@@ -140,3 +140,8 @@
 @media(max-width:1024px){.ql-mp-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:600px){.ql-mp-grid{grid-template-columns:minmax(0,1fr)}.ql-mp-head h1{font-size:26px}}
 @media(prefers-reduced-motion:reduce){.ql-mp-card{transition:none}.ql-mp-card:hover{transform:none}}
+
+/* Manager sidebar: current page when the console is opened at an /admin address. */
+.ql-nav-current{background:rgba(198,244,50,.1)!important;color:#C6F432!important;box-shadow:inset 3px 0 0 #C6F432}
+.ql-console-back{display:inline-flex;align-items:center;height:34px;margin:0 0 14px;padding:0 12px;border:1px solid #e2e8f0;border-radius:9px;background:#fff;color:#334155;font-size:13px;font-weight:600;text-decoration:none;transition:border-color .15s ease,color .15s ease}
+.ql-console-back:hover{border-color:#16a34a;color:#15803d}.ql-console-back:focus-visible{outline:3px solid rgba(22,163,74,.4);outline-offset:2px}
