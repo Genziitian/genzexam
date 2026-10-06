@@ -238,6 +238,7 @@ class AdminQuestionController extends Controller
             'This paper belongs to a course that is not assigned to you.'
         );
         if ($forEdit) {
+            abort_if($request->user()->isManager() && $quiz->is_active, 409, 'Unpublish this paper before editing its questions.');
             abort_unless(
                 $request->user()->isManager() || (int) $quiz->created_by === (int) $request->user()->id,
                 403,

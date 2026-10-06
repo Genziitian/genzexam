@@ -26,7 +26,7 @@ The webhook signature is checked over the raw request body. The handler also che
 
 ## Pricing
 
-Open `/paper-pricing` with a manager account. Prices are entered in rupees, with up to two decimal places, and stored in paise. Set a price of `0` for a free paper; paid papers must cost at least ₹1. Optionally set an access duration in days. The migration gives existing papers a price of zero, so current free practice stays available until a manager changes a paper's price.
+Open `/manager/sales` with a manager account. Create a course if needed, create a paper draft, add questions, preview, save its price and access duration, then activate it. The page also lists purchase records. Prices are entered in rupees, with up to two decimal places, and stored in paise. Set a price of `0` for a free paper; paid papers must cost at least ₹1. Optionally set an access duration in days. The migration gives existing papers a price of zero, so current free practice stays available until a manager changes a paper's price.
 
 ## Deployment note
 
@@ -35,3 +35,9 @@ Checkout is unavailable until the Razorpay key ID and key secret are configured 
 Deploy the API changes and run `php artisan migrate --force` before enabling checkout. Refresh cached configuration after setting the environment values.
 
 The storefront uses the existing app's API at `https://labapi.genziitian.in/public/api`, including when the static site is served locally. To develop against a local Laravel server, align both the main app and storefront API configuration with that server's `/public/api` prefix. If a custom `CORS_ALLOWED_ORIGINS` list is configured, include the local site origin there too.
+
+## Manager workflow
+
+The `/manager/sales` page verifies the signed-in account with the server before loading management data. Its `/manager` API routes require manager middleware. Teachers may submit content through their existing workflow, but only managers can approve, price or publish papers. Publication requires an approved paper, an active course and at least one question. Editing paper details returns it to draft so it can be reviewed before publication.
+
+Students browse `/papers`, claim or purchase individual papers, and find access in My Papers on their dashboard. This workflow sells individual papers; courses organize them and are not purchasable bundles. Scheduled proctored exam sales are separate.

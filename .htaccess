@@ -18,6 +18,7 @@ RewriteRule ^api/(.*)$ backend/public/api/$1 [L]
 # Public landing page at the root only
 RewriteRule ^$ landing.html [L]
 RewriteRule ^papers/?$ papers.html [L]
+RewriteRule ^manager/sales/?$ manager-sales.html [L]
 RewriteRule ^paper-pricing/?$ paper-pricing.html [L]
 
 RewriteRule ^exams?(/.*)?$ exams.html [L]
@@ -41,7 +42,7 @@ RewriteRule ^ index.html [QSA,L]
   <FilesMatch "^index-[A-Za-z0-9]+\.(js|css)$">
     Header set Cache-Control "public, max-age=31536000, immutable"
   </FilesMatch>
-  <FilesMatch "^(exam-platform|exam-rich-content|app-enhancements|papers|paper-pricing|storefront-runtime|storefront-dashboard)\.(js|css)$">
+  <FilesMatch "^(exam-platform|exam-rich-content|app-enhancements|papers|paper-pricing|manager-sales|storefront-runtime|storefront-dashboard)\.(js|css)$">
     Header set Cache-Control "no-cache, must-revalidate"
   </FilesMatch>
 </IfModule>

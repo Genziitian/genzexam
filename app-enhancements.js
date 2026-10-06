@@ -303,7 +303,7 @@
 
   function syncPaperPricingLink() {
     var existing = document.getElementById("ql-paper-pricing-link");
-    if (document.body.dataset.epVerifiedRole !== "manager" || !/^\/admin\/quizzes\/?$/.test(location.pathname)) {
+    if (document.body.dataset.epVerifiedRole !== "manager" || !/^\/admin(?:\/(?:quizzes|courses))?\/?$/.test(location.pathname)) {
       if (existing) existing.remove();
       return;
     }
@@ -312,8 +312,8 @@
     var link = document.createElement("a");
     link.id = "ql-paper-pricing-link";
     link.className = "ql-storefront-manager-link";
-    link.href = "/paper-pricing";
-    link.textContent = "Manage free and paid paper prices →";
+    link.href = "/manager/sales";
+    link.textContent = "Manage sales →";
     host.insertBefore(link, host.firstChild);
   }
 

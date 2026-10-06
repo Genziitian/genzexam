@@ -78,6 +78,7 @@ class AdminQuizController extends Controller
         }
 
         $isManager = $request->user()->isManager();
+        abort_if($isManager && (bool) ($validated['is_active'] ?? false), 422, 'Create this paper as a draft, add questions, then publish it.');
         $quiz = Quiz::query()->create([
             ...$validated,
             // New admin papers stay unpublished until a manager reviews them.
@@ -159,6 +160,11 @@ class AdminQuizController extends Controller
             ], 422);
         }
 
+        if ($request->user()->isManager() && (bool) ($validated['is_active'] ?? $quiz->is_active)) {
+            $candidate = clone $quiz;
+            $candidate->fill($validated);
+            $this->assertPublishable($candidate);
+        }
         $quiz->update($validated);
 
         return response()->json(
@@ -189,8 +195,8 @@ class AdminQuizController extends Controller
             return response()->json(['error' => 'Only a manager can publish or disable papers.'], 403);
         }
         $quiz = Quiz::query()->findOrFail($id);
-        if ($quiz->approval_status !== 'approved') {
-            return response()->json(['error' => 'A manager must approve this paper before it can be activated.'], 422);
+        if (! $quiz->is_active) {
+            $this->assertPublishable($quiz);
         }
         $quiz->update([
             'is_active' => ! $quiz->is_active,
@@ -209,6 +215,14 @@ class AdminQuizController extends Controller
         ]);
 
         return response()->json($quiz->fresh()->load(['course:id,name', 'week:id,week_number']));
+    }
+
+    private function assertPublishable(Quiz $quiz): void
+    {
+        abort_unless($quiz->approval_status === 'approved', 422, 'Approve this paper before publishing it.');
+        abort_unless($quiz->course?->is_active, 422, 'Enable the course before publishing its papers.');
+        abort_unless($quiz->questions()->where('type', '!=', 'comprehension')->exists(), 422, 'Add at least one answerable question before publishing.');
+        abort_if((int) $quiz->price_paise > 0 && (int) $quiz->price_paise < 100, 422, 'Paid papers must cost at least ₹1.');
     }
 
     private function assertQuizAccess(Request $request, Quiz $quiz): void

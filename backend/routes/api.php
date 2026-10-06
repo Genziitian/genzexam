@@ -24,6 +24,7 @@ use App\Http\Controllers\StudentProgressController;
 use App\Http\Controllers\VideoSolutionController;
 use App\Http\Controllers\ExamPlatformController;
 use App\Http\Controllers\StorefrontController;
+use App\Http\Controllers\ManagerSalesController;
 use Illuminate\Support\Facades\Route;
 
 // Public auth routes
@@ -180,6 +181,30 @@ Route::middleware(['auth:sanctum', 'is_admin', 'track.seen'])->prefix('admin')->
         Route::delete('/users/{userId}', [AdminUserController::class, 'destroy']);
         Route::patch('/storefront/papers/{quizId}', [StorefrontController::class, 'updatePrice'])->whereNumber('quizId');
     });
+});
+
+// Dedicated manager sales workspace. All content and purchase records are manager-only.
+Route::middleware(['auth:sanctum', 'is_manager', 'track.seen'])->prefix('manager')->group(function () {
+    Route::get('/courses', [AdminCourseController::class, 'index']);
+    Route::post('/courses', [AdminCourseController::class, 'store']);
+    Route::put('/courses/{id}', [AdminCourseController::class, 'update'])->whereNumber('id');
+    Route::get('/courses/{id}/weeks', [ManagerSalesController::class, 'weeks'])->whereNumber('id');
+
+    Route::get('/papers', [ManagerSalesController::class, 'papers']);
+    Route::post('/papers', [ManagerSalesController::class, 'store']);
+    Route::get('/papers/{id}', [AdminQuizController::class, 'show'])->whereNumber('id');
+    Route::match(['PUT', 'PATCH'], '/papers/{id}', [ManagerSalesController::class, 'update'])->whereNumber('id');
+    Route::patch('/papers/{id}/active', [ManagerSalesController::class, 'setActive'])->whereNumber('id');
+    Route::patch('/papers/{id}/approve', [AdminQuizController::class, 'approve'])->whereNumber('id');
+    Route::patch('/papers/{quizId}/price', [StorefrontController::class, 'updatePrice'])->whereNumber('quizId');
+    Route::delete('/papers/{id}', [AdminQuizController::class, 'destroy'])->whereNumber('id');
+
+    Route::get('/papers/{quizId}/questions', [AdminQuestionController::class, 'index'])->whereNumber('quizId');
+    Route::post('/papers/{quizId}/questions', [AdminQuestionController::class, 'store'])->whereNumber('quizId')->middleware(\App\Http\Middleware\ManagerPaperDraft::class);
+    Route::post('/papers/{quizId}/questions/import-json', [AdminQuestionController::class, 'importJson'])->whereNumber('quizId')->middleware('throttle:5,1')->middleware(\App\Http\Middleware\ManagerPaperDraft::class);
+    Route::match(['PUT', 'PATCH'], '/questions/{id}', [AdminQuestionController::class, 'update'])->whereNumber('id')->middleware(\App\Http\Middleware\ManagerPaperDraft::class);
+    Route::delete('/questions/{id}', [AdminQuestionController::class, 'destroy'])->whereNumber('id')->middleware(\App\Http\Middleware\ManagerPaperDraft::class);
+    Route::get('/purchases', [ManagerSalesController::class, 'purchases']);
 });
 
 // Per-exam proctoring API. Exam content and all candidate writes are bound to
