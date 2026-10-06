@@ -264,7 +264,7 @@
     panel.id = "ql-student-paper-library";
     panel.className = "ql-paper-library";
     panel.setAttribute("aria-labelledby", "ql-paper-library-title");
-    panel.innerHTML = '<div class="ql-paper-library-header"><div><h2 id="ql-paper-library-title">My Papers</h2><p>Free claims and purchases, all in one place.</p></div><div class="ql-paper-library-actions"><a href="/papers?library=1">View library</a><a href="/papers">Browse papers</a></div></div><div class="ql-paper-library-items" aria-live="polite"><p class="ql-paper-library-empty">Loading your papers…</p></div>';
+    panel.innerHTML = '<div class="ql-paper-library-header"><div><h2 id="ql-paper-library-title">My Papers</h2><p>Free claims and purchases, all in one place.</p></div><div class="ql-paper-library-actions"><a href="/my-papers">View library</a><a href="/papers">Browse papers</a></div></div><div class="ql-paper-library-items" aria-live="polite"><p class="ql-paper-library-empty">Loading your papers…</p></div>';
     host.insertBefore(panel, host.firstChild);
     var list = panel.querySelector(".ql-paper-library-items");
     fetch(runtime.apiBase + "/storefront/my-papers", {
@@ -286,7 +286,7 @@
         var card = document.createElement("a");
         card.className = "ql-paper-library-item";
         var available = paper.available !== false && paper.has_access !== false;
-        card.href = available ? "/paper/" + encodeURIComponent(paper.id) : "/papers?library=1";
+        card.href = available ? "/paper/" + encodeURIComponent(paper.id) : "/my-papers";
         var title = document.createElement("strong");
         title.textContent = paper.title || "Paper";
         var details = document.createElement("span");
@@ -297,7 +297,7 @@
       });
     }).catch(function () {
       if (!panel.isConnected) return;
-      list.innerHTML = '<p class="ql-paper-library-empty">Your library could not load. <a href="/papers?library=1">Try opening My papers</a>.</p>';
+      list.innerHTML = '<p class="ql-paper-library-empty">Your library could not load. <a href="/my-papers">Try opening My papers</a>.</p>';
     });
   }
 
@@ -734,6 +734,74 @@
   }
 
   /* ---------------------------------------------------------------
+   * My Papers: the student's free and purchased papers, shown as its
+   * own tab inside the student app (/my-papers). The app renders an
+   * empty container for this route and this fills it.
+   * ------------------------------------------------------------- */
+  function fillMyPapers() {
+    var host = document.getElementById("ql-my-papers");
+    if (!host || host.dataset.qlLoaded) return;
+    var runtime = window.QLStorefront;
+    if (!runtime || !runtime.token()) return;
+    host.dataset.qlLoaded = "1";
+    host.innerHTML = '<div class="ql-mp-head"><div><div class="ql-mp-eyebrow">MY PAPERS</div><h1>Your papers.</h1><p>Free papers you claimed and papers you bought. Open one to attempt it.</p></div><a class="ql-mp-browse" href="/papers">Browse papers</a></div><div class="ql-mp-grid" aria-live="polite"><p class="ql-mp-note">Loading your papers…</p></div>';
+    var grid = host.querySelector(".ql-mp-grid");
+    function note(text) {
+      grid.replaceChildren();
+      var p = document.createElement("p");
+      p.className = "ql-mp-note";
+      p.textContent = text;
+      grid.appendChild(p);
+    }
+    fetch(runtime.apiBase + "/storefront/my-papers", {
+      headers: { Accept: "application/json", Authorization: "Bearer " + runtime.token() }
+    }).then(function (response) {
+      if (response.status === 403) throw new Error("role");
+      if (!response.ok) throw new Error("load");
+      return response.json();
+    }).then(function (data) {
+      if (!host.isConnected) return;
+      var papers = Array.isArray(data.papers) ? data.papers : [];
+      if (!papers.length) return note("You have no papers yet. Browse the catalogue to get a free paper or buy one.");
+      grid.replaceChildren();
+      var labels = { quiz1: "Quiz 1", quiz2: "Quiz 2", endterm: "End Term", mock_test: "Mock test", practice: "Practice", practice_graded: "Graded practice" };
+      papers.forEach(function (paper) {
+        var usable = paper.available !== false && paper.has_access !== false && !paper.expired;
+        var state = paper.available === false ? "Unavailable" : paper.expired ? "Access expired" : paper.source === "purchase" ? "Purchased" : "Free";
+        var card = document.createElement("article");
+        card.className = "ql-mp-card";
+        var badge = document.createElement("span");
+        badge.className = "ql-mp-badge" + (usable ? (paper.source === "purchase" ? " paid" : "") : " off");
+        badge.textContent = state;
+        var title = document.createElement("h3");
+        title.textContent = paper.title || "Paper";
+        var sub = document.createElement("p");
+        sub.className = "ql-mp-sub";
+        sub.textContent = [(paper.course || {}).name, paper.year, labels[paper.section]].filter(Boolean).join(" · ");
+        var meta = document.createElement("p");
+        meta.className = "ql-mp-meta";
+        meta.textContent = [
+          paper.question_count != null ? paper.question_count + " questions" : "",
+          paper.time_limit_minutes ? paper.time_limit_minutes + " min" : "Untimed",
+          paper.expires_at ? (paper.expired ? "Expired " : "Access until ") + new Date(paper.expires_at).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" }) : ""
+        ].filter(Boolean).join(" · ");
+        card.append(badge, title, sub, meta);
+        if (paper.available !== false) {
+          var action = document.createElement("a");
+          action.className = "ql-mp-action" + (usable ? "" : " renew");
+          action.href = usable ? "/paper/" + encodeURIComponent(paper.id) : "/papers?paper=" + encodeURIComponent(paper.id);
+          action.textContent = usable ? "Open paper" : "Renew access";
+          card.appendChild(action);
+        }
+        grid.appendChild(card);
+      });
+    }).catch(function (error) {
+      if (!host.isConnected) return;
+      note(error.message === "role" ? "My Papers is for student accounts. Managers handle papers and sales from the manager console." : "Your papers could not load. Check your connection and reload the page.");
+    });
+  }
+
+  /* ---------------------------------------------------------------
    * Brand: Ensure Quiz LAB by GenZ IITian is displayed everywhere.
    * ------------------------------------------------------------- */
   function syncBrandName() {
@@ -805,7 +873,7 @@
       event.preventDefault();
       event.stopPropagation();
       window.location.assign(paper);
-    } else if (/^\/(exams?(\/|$)|manager\/discussions\/?$)/.test(link.pathname)) {
+    } else if (/^\/(exams?(\/|$)|manager\/(discussions|sales)\/?$|paper-pricing\/?$)/.test(link.pathname)) {
       event.stopPropagation();
     }
   }, true);
@@ -820,6 +888,7 @@
     removeStudentWeakSpotCard();
     decorateDashboard();
     decorateManagerConsole();
+    fillMyPapers();
     if (!/\/discussions/i.test(window.location.pathname)) return;
     injectStyles();
     ROWS.forEach(convertRow);

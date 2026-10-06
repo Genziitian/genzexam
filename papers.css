@@ -13,3 +13,5 @@
 .navlinks a{padding:6px 0;border-bottom:2px solid transparent}.navlinks a:hover{color:var(--ink)}.navlinks a.active,.navlinks a[aria-current=page]{color:var(--ink);font-weight:600;border-bottom-color:var(--green)}
 .hero-row{display:flex;align-items:center;justify-content:space-between;gap:20px 32px;flex-wrap:wrap}.hero-row h1{margin-bottom:0}.hero-row .hero-actions{margin-top:0;flex-wrap:nowrap}
 @media(max-width:780px){.navlinks a{padding:6px}.hero-row .hero-actions{flex-wrap:wrap;width:100%}}
+/* Card actions: details on the left, get/open on the right. */
+.card-actions{display:flex;gap:8px;margin-top:auto;flex-wrap:wrap}.card .card-actions .btn{margin-top:0;width:auto;flex:1 1 120px;white-space:nowrap}

@@ -28,7 +28,7 @@ const rootFiles = new Set(
   ),
 );
 const appRoutes =
-  /^\/(login|register|forgot-password|reset-password|dashboard|admin|exams?|courses|quizzes|profile|leaderboard|discussions)(\/[^.]*)?\/?$/;
+  /^\/(login|register|forgot-password|reset-password|dashboard|my-papers|practice|manager|admin|exams?|courses|quizzes|profile|leaderboard|discussions)(\/[^.]*)?\/?$/;
 function handler(req, res) {
   res.setHeader("X-Content-Type-Options", "nosniff");
   res.setHeader("Referrer-Policy", "strict-origin-when-cross-origin");

@@ -286,7 +286,7 @@
     root.innerHTML =
       '<div class="ep-shell"><header class="ep-top"><a class="ep-brand" href="/papers"><span class="ep-mark">QL</span><span><b>Quiz LAB</b><small>Paper room</small></span></a><div class="ep-user"><span>' +
       esc(userName()) +
-      '</span><a class="ep-link" href="/papers?library=1">My papers</a><a class="ep-link" href="/dashboard">Dashboard</a></div></header><div id="ep-content"></div></div>';
+      '</span><a class="ep-link" href="/my-papers">My papers</a><a class="ep-link" href="/dashboard">Dashboard</a></div></header><div id="ep-content"></div></div>';
     root.addEventListener("click", onClick);
     root.addEventListener("change", onChange);
     root.addEventListener("input", onInput);

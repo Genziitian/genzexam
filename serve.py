@@ -14,7 +14,7 @@ ROOT_FILES = set(('index.html exams.html paper-room.html paper-room.js paper-roo
     'paper-pricing.js paper-pricing.css icons.svg site.webmanifest favicon.ico favicon-16x16.png favicon-32x32.png '
     'apple-touch-icon.png android-chrome-192x192.png android-chrome-512x512.png').split())
 ASSET_EXTENSIONS = {'.html','.js','.css','.json','.png','.jpg','.jpeg','.webp','.svg','.ico','.woff','.woff2','.ttf','.webmanifest'}
-APP_ROUTES = re.compile(r'^/(login|register|forgot-password|reset-password|dashboard|admin|exams?|courses|quizzes|profile|leaderboard|discussions)(/[^.]*)?/?$')
+APP_ROUTES = re.compile(r'^/(login|register|forgot-password|reset-password|dashboard|my-papers|practice|manager|admin|exams?|courses|quizzes|profile|leaderboard|discussions)(/[^.]*)?/?$')
 
 class PublicHandler(http.server.BaseHTTPRequestHandler):
     def reply(self, code, body=b'', content_type='text/plain; charset=utf-8'):

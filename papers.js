@@ -21,9 +21,11 @@
   function toast(message) { const el = byId('toast'); el.textContent = message; el.classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(() => el.classList.remove('show'), 6000); }
   function money(paise) { return Number(paise) ? new Intl.NumberFormat('en-IN', {style:'currency', currency:'INR', maximumFractionDigits:2}).format(Number(paise)/100) : 'Free'; }
   function sectionLabel(section) { return ({quiz1:'Quiz 1',quiz2:'Quiz 2',endterm:'End Term',mock_test:'Mock test',practice:'Practice',practice_graded:'Graded practice'})[section] || section || 'Practice paper'; }
+  function shortPrice(paise) { return money(paise).replace(/\.00$/, ''); }
+  function getLabel(p, owned) { const free = Number(p.price_paise || 0) === 0; return owned && !p.expired ? 'Open paper' : p.expired ? (free ? 'Renew free' : 'Renew in '+shortPrice(p.price_paise)) : free ? 'Get in Free' : 'Get in '+shortPrice(p.price_paise); }
   function card(p, owned) {
     const free = Number(p.price_paise || 0) === 0;
-    return `<article class="card"><div class="cardtop"><span class="pill ${free ? '' : 'paid'}">${p.available === false ? 'UNAVAILABLE' : p.expired ? 'ACCESS EXPIRED' : owned ? 'IN YOUR LIBRARY' : free ? 'FREE' : 'PAID'}</span><span class="price">${esc(money(p.price_paise))}</span></div><h3>${esc(p.title)}</h3><div class="sub">${esc(p.course?.name || 'Course')}${p.year ? ' · '+esc(p.year) : ''}</div><p class="card-description">${esc(p.description || 'View the paper details and access options before you start.')}</p><div class="meta"><span>${esc(sectionLabel(p.section))}</span>${p.question_count != null ? `<span>${esc(p.question_count)} questions</span>` : ''}${p.time_limit_minutes ? `<span>${esc(p.time_limit_minutes)} min</span>` : ''}</div><button class="btn ${free ? '' : 'primary'}" data-paper="${esc(p.id)}">${p.available === false ? 'View details' : p.expired ? 'Renew access' : owned ? 'View / open paper' : free ? 'View details · Free' : esc('View details · Buy '+money(p.price_paise).replace(/\.00$/, ''))}</button></article>`;
+    return `<article class="card"><div class="cardtop"><span class="pill ${free ? '' : 'paid'}">${p.available === false ? 'UNAVAILABLE' : p.expired ? 'ACCESS EXPIRED' : owned ? 'IN YOUR LIBRARY' : free ? 'FREE' : 'PAID'}</span><span class="price">${esc(money(p.price_paise))}</span></div><h3>${esc(p.title)}</h3><div class="sub">${esc(p.course?.name || 'Course')}${p.year ? ' · '+esc(p.year) : ''}</div><p class="card-description">${esc(p.description || 'View the paper details and access options before you start.')}</p><div class="meta"><span>${esc(sectionLabel(p.section))}</span>${p.question_count != null ? `<span>${esc(p.question_count)} questions</span>` : ''}${p.time_limit_minutes ? `<span>${esc(p.time_limit_minutes)} min</span>` : ''}</div><div class="card-actions"><button class="btn" data-paper="${esc(p.id)}">View details</button>${p.available === false ? '' : `<button class="btn primary" data-get="${esc(p.id)}">${esc(getLabel(p, owned))}</button>`}</div></article>`;
   }
   function renderCatalog() {
     const query = search.value.trim().toLowerCase();
@@ -49,19 +51,22 @@
     byId('details-status').textContent = paper.expires_at ? 'Access expires: '+new Date(paper.expires_at).toLocaleString() : ''; updateAction(); if (!dialog.open) dialog.showModal();
   }
   function updateAction() { const button = byId('details-action'); button.disabled = busy || selected?.available === false; button.textContent = selected?.available === false ? 'Currently unavailable' : busy ? 'Please wait…' : ownedIds.has(String(selected?.id)) ? 'Open paper' : !token() ? 'Sign in to '+(Number(selected?.price_paise || 0) ? 'buy' : 'claim free paper') : Number(selected?.price_paise || 0) ? 'Buy for '+money(selected.price_paise) : 'Add to My Papers — free'; }
-  async function takeAction() {
+  let cardButton = null;
+  function restoreCard() { if (cardButton) { cardButton.el.disabled = false; cardButton.el.textContent = cardButton.label; cardButton = null; } }
+  function report(message) { byId('details-status').textContent = message; if (!dialog.open) toast(message); }
+  async function takeAction(fromCard) {
     if (!selected || busy || selected.available === false) return;
     const paper = selected;
     if (ownedIds.has(String(paper.id))) { location.assign('/paper/'+encodeURIComponent(paper.id)); return; }
     if (!token()) { signIn(paper.id); return; }
     busy = true; updateAction(); byId('details-status').textContent = '';
     if (Number(paper.price_paise || 0) > 0) { await checkout(paper); return; }
-    try { await api('/storefront/papers/'+encodeURIComponent(paper.id)+'/claim', {}); ownedIds.add(String(paper.id)); paper.expired = false; paper.has_access = true; renderCatalog(); toast('Added to My Papers. Your paper is ready.'); byId('details-status').textContent = 'Added to your library. You can open your paper now.'; }
-    catch (error) { byId('details-status').textContent = error.message; }
+    try { await api('/storefront/papers/'+encodeURIComponent(paper.id)+'/claim', {}); ownedIds.add(String(paper.id)); paper.expired = false; paper.has_access = true; if (fromCard === true) { location.assign('/paper/'+encodeURIComponent(paper.id)); return; } renderCatalog(); toast('Added to My Papers. Your paper is ready.'); byId('details-status').textContent = 'Added to your library. You can open your paper now.'; }
+    catch (error) { report(error.message); restoreCard(); }
     finally { busy = false; updateAction(); }
   }
   async function checkout(paper) {
-    const release = () => { busy = false; updateAction(); };
+    const release = () => { busy = false; updateAction(); restoreCard(); };
     try {
       if (!window.Razorpay) throw new Error('Secure checkout is still loading. Please try again in a moment.');
       const order = await api('/storefront/papers/'+encodeURIComponent(paper.id)+'/orders', {});
@@ -85,16 +90,17 @@
   document.addEventListener('click',event => {
     const button = event.target.closest('button'); if (!button) return;
     if (button.dataset.paper) { const paper = papers.find(p => String(p.id) === button.dataset.paper); if (paper) showDetails(paper); }
+    if (button.dataset.get && !busy) { const paper = papers.find(p => String(p.id) === button.dataset.get); if (paper) { selected = paper; if (token() && !(ownedIds.has(String(paper.id)) && !paper.expired)) { cardButton = {el: button, label: button.textContent}; button.disabled = true; button.textContent = 'Please wait…'; } takeAction(true); } }
     if (button.hasAttribute('data-retry')) loadCatalog();
     if (button.hasAttribute('data-library-retry')) openLibrary();
     if (button.hasAttribute('data-login')) signIn();
     if (button.hasAttribute('data-reset')) { [search,level,type,price].forEach(el => el.value = ''); renderCatalog(); }
   });
   [search,level,type,price].forEach(el => el.addEventListener('input',renderCatalog));
-  byId('close-details').onclick = () => dialog.close(); byId('details-action').onclick = takeAction;
-  byId('library-toggle').onclick = openLibrary; byId('back-catalog').onclick = showCatalog;
-  byId('browse-free').onclick = () => { showCatalog(); price.value = 'free'; renderCatalog(); byId('catalog-view').scrollIntoView({behavior:'smooth'}); };
-  try { if (JSON.parse(localStorage.getItem('lab_user') || '{}').role === 'manager') { const link = document.createElement('a'); link.className = 'btn'; link.href = '/paper-pricing'; link.textContent = 'Manage prices'; document.querySelector('.navend').prepend(link); } } catch {}
-  loadCatalog().then(() => { if (new URLSearchParams(location.search).get('library') === '1') openLibrary(); });
+  byId('close-details').onclick = () => dialog.close(); byId('details-action').onclick = () => takeAction();
+  byId('back-catalog').onclick = showCatalog;
+  // The paper library lives in the student dashboard (My Papers); prices and sales in the manager console.
+  if (new URLSearchParams(location.search).get('library') === '1') { location.replace('/my-papers'); return; }
+  loadCatalog();
   const script = document.createElement('script'); script.src = 'https://checkout.razorpay.com/v1/checkout.js'; script.async = true; script.onerror = () => toast('Checkout could not load. Check your connection and refresh before buying.'); document.head.appendChild(script);
 })();
