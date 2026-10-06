@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' https:; connect-src 'self' https://labapi.genziitian.in; object-src 'none'; base-uri 'self'; form-action 'self'"
+    />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <title>Discussions · Manager · Quiz LAB</title>
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="/manager-discussions.css" />
+  </head>
+  <body>
+    <header class="top">
+      <a class="brand" href="/manager"><span class="mark">QL</span><span><b>Quiz LAB</b><small>Manager · Discussions</small></span></a>
+      <nav aria-label="Manager navigation">
+        <span id="me"></span>
+        <a href="/manager">← Manager console</a>
+        <a href="/discussions">Student view</a>
+      </nav>
+    </header>
+    <main>
+      <div class="heading">
+        <div>
+          <p class="eyebrow">Moderation</p>
+          <h1>Discussions</h1>
+          <p class="sub">Read every thread, reply with the Manager tag, and remove posts that should not be there.</p>
+        </div>
+        <button type="button" id="refresh">Refresh</button>
+      </div>
+      <div id="gate" class="notice" role="status">Checking your manager account…</div>
+      <div id="workspace" hidden>
+        <div class="filters">
+          <label>Search<input type="search" id="search" placeholder="Search title or text" autocomplete="off" /></label>
+          <label>Course<select id="course"><option value="">All courses</option></select></label>
+          <label>Show<select id="sort">
+            <option value="newest">Newest first</option>
+            <option value="trending">Most voted</option>
+            <option value="unsolved">Open only</option>
+            <option value="solved">Solved only</option>
+          </select></label>
+        </div>
+        <div class="columns">
+          <section class="list" aria-label="Discussion threads">
+            <p class="muted" id="thread-count" role="status"></p>
+            <div id="thread-list"></div>
+          </section>
+          <section class="detail" id="thread-view" aria-live="polite"></section>
+        </div>
+      </div>
+    </main>
+    <div id="toast" role="status" aria-live="polite"></div>
+    <script src="/storefront-runtime.js"></script>
+    <script src="/manager-discussions.js"></script>
+  </body>
+</html>

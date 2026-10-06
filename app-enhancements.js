@@ -634,6 +634,106 @@
   }
 
   /* ---------------------------------------------------------------
+   * Manager console: tag the Quizzes and Subjects pages so the
+   * "Manager console" rules in storefront-dashboard.css can restyle
+   * them, and add a quick search over the quiz table. React keeps
+   * ownership of the rows; this only sets attributes and hides rows.
+   * ------------------------------------------------------------- */
+  function consoleHeading(text) {
+    var found = null;
+    document.querySelectorAll("#root main h1, #root h1").forEach(function (h) {
+      if (!found && h.textContent.trim() === text) found = h;
+    });
+    return found;
+  }
+
+  function filterQuizRows() {
+    var table = document.querySelector("[data-ql-tablecard] table");
+    var heading = document.querySelector("[data-ql-console-title]");
+    if (!table) return;
+    var input = document.getElementById("ql-quiz-search");
+    var words = (input ? input.value : "").toLowerCase().split(/\s+/).filter(Boolean);
+    var rows = table.querySelectorAll("tbody tr");
+    var shown = 0;
+    rows.forEach(function (row) {
+      var text = row.textContent.toLowerCase();
+      var match = words.every(function (word) { return text.indexOf(word) !== -1; });
+      if (row.hidden === match) row.hidden = !match;
+      if (match) shown++;
+    });
+    tag(table, "data-ql-empty", shown ? "false" : "true");
+    if (heading) tag(heading, "data-count", shown === rows.length ? String(rows.length) : shown + " of " + rows.length);
+  }
+
+  function decorateManagerConsole() {
+    var page = /^\/(?:admin|manager)\/(quizzes|courses)\/?$/i.exec(window.location.pathname);
+    if (!page) return;
+
+    if (page[1].toLowerCase() === "courses") {
+      var subjects = consoleHeading("Subjects");
+      var header = subjects && subjects.parentElement && subjects.parentElement.parentElement;
+      var grid = header && header.nextElementSibling;
+      if (!grid || !/\bgrid\b/.test(grid.className)) return;
+      tag(grid, "data-ql-console", "courses");
+      tag(header, "data-ql-console-head", "");
+      tag(subjects, "data-ql-console-title", "");
+      tag(subjects, "data-count", String(grid.children.length));
+      grid.querySelectorAll("button").forEach(function (button) {
+        var label = button.textContent.trim().toLowerCase();
+        if (label === "edit" || /^delet/.test(label)) tag(button, "data-ql-act", label === "edit" ? "edit" : "delete");
+      });
+      return;
+    }
+
+    var title = consoleHeading("Quizzes");
+    var root = title && (title.closest(".space-y-4") || title.parentElement.parentElement);
+    if (!root) return;
+    tag(root, "data-ql-console", "quizzes");
+    tag(title.parentElement, "data-ql-console-head", "");
+    tag(title, "data-ql-console-title", "");
+
+    var firstSelect = root.querySelector("select");
+    var filters = firstSelect && firstSelect.closest(".grid");
+    if (filters) {
+      tag(filters, "data-ql-filters", "");
+      if (!document.getElementById("ql-quiz-search")) {
+        var field = document.createElement("div");
+        field.className = "ql-console-search";
+        var label = document.createElement("label");
+        label.htmlFor = "ql-quiz-search";
+        label.textContent = "Search";
+        var input = document.createElement("input");
+        input.id = "ql-quiz-search";
+        input.type = "search";
+        input.placeholder = "Search by title or course";
+        input.autocomplete = "off";
+        input.addEventListener("input", filterQuizRows);
+        field.appendChild(label);
+        field.appendChild(input);
+        filters.appendChild(field);
+      }
+    }
+
+    var table = root.querySelector("table");
+    if (!table) { tag(title, "data-count", "0"); return; }
+    tag(table.parentElement, "data-ql-tablecard", "");
+    table.querySelectorAll("tbody tr").forEach(function (row) {
+      var cells = row.children;
+      if (cells.length < 7) return;
+      tag(cells[0], "data-ql-cell", "title");
+      tag(cells[1], "data-ql-cell", "course");
+      tag(cells[3], "data-ql-cell", cells[3].textContent.trim() === "-" ? "empty" : "week");
+      tag(cells[4], "data-ql-cell", "count");
+      tag(cells[cells.length - 1], "data-ql-cell", "actions");
+      cells[cells.length - 1].querySelectorAll("button").forEach(function (button) {
+        var label = button.textContent.trim().toLowerCase();
+        if (label === "manage" || label === "edit" || label === "delete") tag(button, "data-ql-act", label);
+      });
+    });
+    filterQuizRows();
+  }
+
+  /* ---------------------------------------------------------------
    * Brand: Ensure Quiz LAB by GenZ IITian is displayed everywhere.
    * ------------------------------------------------------------- */
   function syncBrandName() {
@@ -705,7 +805,7 @@
       event.preventDefault();
       event.stopPropagation();
       window.location.assign(paper);
-    } else if (/^\/exams?(\/|$)/.test(link.pathname)) {
+    } else if (/^\/(exams?(\/|$)|manager\/discussions\/?$)/.test(link.pathname)) {
       event.stopPropagation();
     }
   }, true);
@@ -719,6 +819,7 @@
     syncPaperPricingLink();
     removeStudentWeakSpotCard();
     decorateDashboard();
+    decorateManagerConsole();
     if (!/\/discussions/i.test(window.location.pathname)) return;
     injectStyles();
     ROWS.forEach(convertRow);

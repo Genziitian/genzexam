@@ -34,7 +34,7 @@ class DiscussionController extends Controller
 
         $query = Discussion::query()
             ->with([
-                'user:id,name,is_admin,avatar',
+                'user:id,name,is_admin,role,avatar',
                 'course:id,name,slug',
                 'linkedQuiz:id,title',
             ]);
@@ -93,10 +93,10 @@ class DiscussionController extends Controller
         $userId = $viewer->id;
 
         $discussion = Discussion::with([
-            'user:id,name,is_admin,avatar',
+            'user:id,name,is_admin,role,avatar',
             'course:id,name,slug',
             'linkedQuiz:id,title',
-            'replies.user:id,name,is_admin,avatar',
+            'replies.user:id,name,is_admin,role,avatar',
         ])->findOrFail($id);
 
         if ($discussion->user_id !== $userId) {
@@ -461,7 +461,7 @@ class DiscussionController extends Controller
     private function serializeAuthor(?User $user, bool $isAnon, int $authorId, int $viewerId, bool $viewerIsAdmin): array
     {
         if (!$user) {
-            return ['id' => null, 'name' => 'Unknown', 'avatar' => null, 'is_admin' => false, 'is_anonymous' => false, 'is_self' => false];
+            return ['id' => null, 'name' => 'Unknown', 'avatar' => null, 'is_admin' => false, 'role' => null, 'is_anonymous' => false, 'is_self' => false];
         }
 
         $showReal = !$isAnon || $authorId === $viewerId || $viewerIsAdmin;
@@ -471,6 +471,7 @@ class DiscussionController extends Controller
             'name'         => $showReal ? $user->name : 'Anonymous Student',
             'avatar'       => $showReal ? $user->avatar : null,
             'is_admin'     => $showReal ? (bool) $user->is_admin : false,
+            'role'         => $showReal ? $user->effectiveRole() : null,
             'is_anonymous' => $isAnon,
             'is_self'      => $authorId === $viewerId,
         ];

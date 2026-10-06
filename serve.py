@@ -9,7 +9,7 @@ import sys
 import urllib.parse
 
 ROOT = pathlib.Path(__file__).resolve().parent
-ROOT_FILES = set(('index.html exams.html paper-room.html paper-room.js paper-room.css landing.html papers.html paper-pricing.html manager-sales.html manager-sales.js manager-sales.css exam-platform.js exam-rich-content.js '
+ROOT_FILES = set(('index.html exams.html paper-room.html paper-room.js paper-room.css landing.html papers.html paper-pricing.html manager-sales.html manager-sales.js manager-sales.css manager-discussions.html manager-discussions.js manager-discussions.css exam-platform.js exam-rich-content.js '
     'exam-platform.css app-enhancements.js storefront-runtime.js storefront-dashboard.css papers.js papers.css '
     'paper-pricing.js paper-pricing.css icons.svg site.webmanifest favicon.ico favicon-16x16.png favicon-32x32.png '
     'apple-touch-icon.png android-chrome-192x192.png android-chrome-512x512.png').split())
@@ -40,6 +40,7 @@ class PublicHandler(http.server.BaseHTTPRequestHandler):
         elif url.rstrip('/') == '/papers': name = 'papers.html'
         elif re.fullmatch(r'/paper/\d+/?', url): name = 'paper-room.html'
         elif url.rstrip('/') == '/manager/sales': name = 'manager-sales.html'
+        elif url.rstrip('/') == '/manager/discussions': name = 'manager-discussions.html'
         elif url.rstrip('/') == '/paper-pricing': name = 'paper-pricing.html'
         elif re.fullmatch(r'/exams?(/[^.]*)?/?', url): name = 'exams.html'
         elif APP_ROUTES.fullmatch(url): name = 'index.html'
