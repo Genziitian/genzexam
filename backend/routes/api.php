@@ -25,6 +25,7 @@ use App\Http\Controllers\VideoSolutionController;
 use App\Http\Controllers\ExamPlatformController;
 use App\Http\Controllers\StorefrontController;
 use App\Http\Controllers\ManagerSalesController;
+use App\Http\Controllers\ManagerSystemController;
 use Illuminate\Support\Facades\Route;
 
 // Public auth routes
@@ -205,6 +206,13 @@ Route::middleware(['auth:sanctum', 'is_manager', 'track.seen'])->prefix('manager
     Route::match(['PUT', 'PATCH'], '/questions/{id}', [AdminQuestionController::class, 'update'])->whereNumber('id')->middleware(\App\Http\Middleware\ManagerPaperDraft::class);
     Route::delete('/questions/{id}', [AdminQuestionController::class, 'destroy'])->whereNumber('id')->middleware(\App\Http\Middleware\ManagerPaperDraft::class);
     Route::get('/purchases', [ManagerSalesController::class, 'purchases']);
+});
+
+// Manager-only maintenance for hosts without shell access. Kept outside the cached
+// rate limiter so it still works when the cache table itself is missing.
+Route::middleware(['auth:sanctum', 'is_manager'])->prefix('manager/system')->group(function () {
+    Route::get('/status', [ManagerSystemController::class, 'status']);
+    Route::post('/migrate', [ManagerSystemController::class, 'migrate']);
 });
 
 // Per-exam proctoring API. Exam content and all candidate writes are bound to

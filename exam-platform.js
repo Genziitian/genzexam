@@ -37,6 +37,7 @@
     saveTimer: null,
     savePromise: null,
     importQuestions: null,
+    system: null,
     papers: null,
     papersLoading: false,
     paperFilter: "",
@@ -287,6 +288,10 @@
       const d = await request("/exam-platform/exams");
       app.exams = rows(d);
       app.nextPage = d.next_page;
+      if (!quiet) {
+        app.error = "";
+        app.system = null;
+      }
       if (app.screen === "list") render();
     } catch (e) {
       if (!quiet) notice(e.message, true);
@@ -305,11 +310,27 @@
   /* A manager who opens the Exam tab from the student view sees the list the way a student would. */
   const studentPreview = () =>
     isManager() && new URLSearchParams(location.search).get("preview") === "student";
+  /* Managers can check and update the database from here when the exam API fails. */
+  function systemPanel() {
+    if (!isManager() || (!app.error && !app.system)) return "";
+    const r = app.system;
+    if (!r)
+      return '<div class="ep-card ep-system"><h2>Exams could not be loaded</h2><p class="ep-muted">This usually means the server database has not been updated for this release. Check it, then apply the update if one is pending.</p><div class="ep-actions"><button class="ep-btn ep-btn-primary" data-action="system-check">Check database</button></div></div>';
+    if (r.up_to_date)
+      return '<div class="ep-card ep-system"><h2>The database is up to date</h2><p class="ep-muted">Nothing is pending, so the error has another cause. Press Refresh; if it persists, the server log (storage/logs/laravel.log) has the details.</p></div>';
+    const lines = [
+      r.error ? `Database check failed: ${r.error}` : "",
+      r.pending?.length ? `${r.pending.length} pending update${r.pending.length === 1 ? "" : "s"}: ${r.pending.join(", ")}` : "",
+      r.missing_tables?.length ? `Missing tables: ${r.missing_tables.join(", ")}` : "",
+      r.missing_columns?.length ? `Missing columns: ${r.missing_columns.join(", ")}` : "",
+    ].filter(Boolean);
+    return `<div class="ep-card ep-system"><h2>The database needs an update</h2>${lines.map((l) => `<p class="ep-muted">${esc(l)}</p>`).join("")}<div class="ep-actions"><button class="ep-btn ep-btn-primary" data-action="system-migrate" ${r.database ? "" : "disabled"}>Apply database update</button><span class="ep-muted">Adds the missing tables and columns. Existing data is kept.</span></div></div>`;
+  }
   function listView() {
     const preview = studentPreview();
     const manager = isManager() && !preview;
     const list = preview ? app.exams.filter((e) => e.status && e.status !== "draft") : app.exams;
-    return `<section class="ep-page"><div class="ep-heading"><div><p class="ep-eyebrow">${manager ? "EXAM MANAGEMENT" : "CANDIDATE PORTAL"}</p><h1>${manager ? "Online proctoring" : "Your exams"}</h1>${manager ? "" : `<p>Select an exam you are enrolled in to read its instructions and check its status.</p>`}</div>${manager ? '<button class="ep-btn ep-btn-primary" data-action="new">Create exam</button>' : ""}</div>${app.error ? `<div class="ep-alert error">${esc(app.error)}</div>` : ""}${app.notice ? `<div class="ep-alert">${esc(app.notice)}</div>` : ""}${preview ? '<div class="ep-alert">Student preview. This is what enrolled students see for your published exams. You are signed in as a manager, so exams cannot be taken from here. <a class="ep-link" href="/exams">Go to exam management</a></div>' : ""}<div class="ep-card"><div class="ep-card-head"><h2>${manager ? "Exams" : "Available exams"}</h2><button class="ep-btn ep-btn-quiet" data-action="refresh-list">Refresh</button></div>${list.length ? `<div class="ep-table-wrap"><table><thead><tr><th>Exam</th><th>Status</th><th>Schedule</th><th>Questions</th><th></th></tr></thead><tbody>${list.map((e) => `<tr><td><b>${esc(e.title)}</b><small>${esc(e.subject || "—")}</small></td><td><span class="ep-status ${esc(e.closed ? "ended" : e.status)}">${esc(e.closed ? "closed" : e.status || "draft")}</span></td><td>${esc(formatDate(e.scheduled_at))}${e.closes_at ? `<small>Ends ${esc(formatDate(e.closes_at))}</small>` : ""}</td><td>${Number(e.question_count ?? e.questions_count ?? e.questions?.length ?? 0)}</td><td><button class="ep-btn ep-btn-small" data-action="open" data-id="${esc(e.id)}" ${(e.closed && !manager) || preview ? "disabled" : ""}>${manager ? "Manage" : e.closed ? "Closed" : preview ? "Preview" : "Open"}</button></td></tr>`).join("")}</tbody></table></div>` : `<div class="ep-empty"><div class="ep-empty-icon">${manager ? "＋" : "◷"}</div><h3>${manager ? "No exams yet" : "No exams available"}</h3><p>${manager ? "Create a draft exam to begin setting up questions and enrollment." : preview ? "Students see exams here once you publish them and enrol their email." : "Ask your exam manager to enroll your account."}</p></div>`}${app.nextPage ? '<div class="ep-actions"><button class="ep-btn" data-action="more-exams">Load more exams</button></div>' : ""}</div></section>`;
+    return `<section class="ep-page"><div class="ep-heading"><div><p class="ep-eyebrow">${manager ? "EXAM MANAGEMENT" : "CANDIDATE PORTAL"}</p><h1>${manager ? "Online proctoring" : "Your exams"}</h1>${manager ? "" : `<p>Select an exam you are enrolled in to read its instructions and check its status.</p>`}</div>${manager ? '<button class="ep-btn ep-btn-primary" data-action="new">Create exam</button>' : ""}</div>${app.error ? `<div class="ep-alert error">${esc(app.error)}</div>` : ""}${app.notice ? `<div class="ep-alert">${esc(app.notice)}</div>` : ""}${systemPanel()}${preview ? '<div class="ep-alert">Student preview. This is what enrolled students see for your published exams. You are signed in as a manager, so exams cannot be taken from here. <a class="ep-link" href="/exams">Go to exam management</a></div>' : ""}<div class="ep-card"><div class="ep-card-head"><h2>${manager ? "Exams" : "Available exams"}</h2><button class="ep-btn ep-btn-quiet" data-action="refresh-list">Refresh</button></div>${list.length ? `<div class="ep-table-wrap"><table><thead><tr><th>Exam</th><th>Status</th><th>Schedule</th><th>Questions</th><th></th></tr></thead><tbody>${list.map((e) => `<tr><td><b>${esc(e.title)}</b><small>${esc(e.subject || "—")}</small></td><td><span class="ep-status ${esc(e.closed ? "ended" : e.status)}">${esc(e.closed ? "closed" : e.status || "draft")}</span></td><td>${esc(formatDate(e.scheduled_at))}${e.closes_at ? `<small>Ends ${esc(formatDate(e.closes_at))}</small>` : ""}</td><td>${Number(e.question_count ?? e.questions_count ?? e.questions?.length ?? 0)}</td><td><button class="ep-btn ep-btn-small" data-action="open" data-id="${esc(e.id)}" ${(e.closed && !manager) || preview ? "disabled" : ""}>${manager ? "Manage" : e.closed ? "Closed" : preview ? "Preview" : "Open"}</button></td></tr>`).join("")}</tbody></table></div>` : `<div class="ep-empty"><div class="ep-empty-icon">${manager ? "＋" : "◷"}</div><h3>${manager ? "No exams yet" : "No exams available"}</h3><p>${manager ? "Create a draft exam to begin setting up questions and enrollment." : preview ? "Students see exams here once you publish them and enrol their email." : "Ask your exam manager to enroll your account."}</p></div>`}${app.nextPage ? '<div class="ep-actions"><button class="ep-btn" data-action="more-exams">Load more exams</button></div>' : ""}</div></section>`;
   }
   function formatDate(v) {
     if (!v) return "—";
@@ -1130,6 +1151,25 @@
         a.href = "/templates/proctored-exam-template.json";
         a.download = "proctored-exam-template.json";
         a.click();
+        return;
+      }
+      if (action === "system-check") {
+        app.system = await request("/manager/system/status");
+        render();
+        return;
+      }
+      if (action === "system-migrate") {
+        const result = await request("/manager/system/migrate", { method: "POST" });
+        app.system = result;
+        app.error = "";
+        try {
+          await loadList();
+          if (result.up_to_date) app.system = null;
+        } catch (e) {
+          app.error = e.message;
+        }
+        render();
+        flash(result.up_to_date ? "Database updated. Exams are ready." : "The update ran, but some items are still pending.", !result.up_to_date);
         return;
       }
       if (action === "load-paper") {

@@ -917,3 +917,11 @@ body:has(#ep-app) {
     grid-template-columns: 1fr;
   }
 }
+.ep-system {
+  border-color: #f0d9a8;
+  background: #fffaf0;
+}
+.ep-system p {
+  margin: 4px 0 0;
+  overflow-wrap: anywhere;
+}
