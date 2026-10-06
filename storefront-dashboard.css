@@ -145,3 +145,44 @@
 .ql-nav-current{background:rgba(198,244,50,.1)!important;color:#C6F432!important;box-shadow:inset 3px 0 0 #C6F432}
 .ql-console-back{display:inline-flex;align-items:center;height:34px;margin:0 0 14px;padding:0 12px;border:1px solid #e2e8f0;border-radius:9px;background:#fff;color:#334155;font-size:13px;font-weight:600;text-decoration:none;transition:border-color .15s ease,color .15s ease}
 .ql-console-back:hover{border-color:#16a34a;color:#15803d}.ql-console-back:focus-visible{outline:3px solid rgba(22,163,74,.4);outline-offset:2px}
+
+/* Discussions: search, sort, subject and course filters on a single row. */
+[data-ql-disc-filters]{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+[data-ql-disc-filters]>div:first-child{display:contents}
+[data-ql-disc-filters] form{flex:1 1 260px;min-width:220px}
+[data-ql-disc-filters]>div:not(:first-child){margin-top:0!important;flex:0 0 auto}
+[data-ql-disc-filters]>div:not(:first-child)>span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+[data-ql-disc-filters] .ql-filter-select{min-width:0;max-width:210px}
+[data-ql-disc-filters] .ql-discussion-sort-row{flex-wrap:nowrap}
+@media(max-width:640px){[data-ql-disc-filters] .ql-discussion-sort-row{flex-wrap:wrap;flex:1 1 100%}[data-ql-disc-filters] form{flex-basis:100%;min-width:0}[data-ql-disc-filters] .ql-filter-select{max-width:none;min-width:0;flex:1 1 120px}[data-ql-disc-filters]>div:not(:first-child){flex:1 1 140px}[data-ql-disc-filters]>div:not(:first-child) .ql-filter-select{width:100%}}
+
+/* Student sidebar: link to the public home page, above the account block. */
+.ql-home-link{display:flex;align-items:center;gap:10px;flex-shrink:0;margin:0 12px 10px;padding:9px 12px;border:1px solid #1f2937;border-radius:10px;color:#cbd5e1;font-size:13px;font-weight:500;text-decoration:none;transition:background-color .15s ease,color .15s ease,border-color .15s ease}
+.ql-home-link:hover{background:#1c2533;border-color:#334155;color:#fff}
+.ql-home-link:focus-visible{outline:3px solid rgba(198,244,50,.5);outline-offset:2px}
+
+/* ---- Practice course page: header and paper-type tiles ---- */
+[data-ql-course-head]{padding:20px 22px!important;border-radius:16px!important;box-shadow:0 1px 2px rgba(15,23,42,.04)!important}
+[data-ql-course-head]>div{align-items:center!important}
+[data-ql-course-head]>div>div:first-child{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:14px;row-gap:12px;align-items:center}
+[data-ql-course-head]>div>div:first-child>a{grid-column:1/-1;justify-self:start}
+[data-ql-course-head]>div>div:first-child>div{margin-top:0!important;background:#f0fdf4!important;border-color:#bbf7d0!important;color:#16a34a!important}
+[data-ql-course-head] h1{margin-top:0!important;font-size:26px!important;font-weight:700!important;line-height:1.15;letter-spacing:-.02em;color:#0f172a;overflow-wrap:anywhere}
+[data-ql-course-head]>div>div:first-child>p{grid-column:1/-1;margin-top:0!important}
+
+[data-ql-course-tabrow]{gap:10px!important}
+[data-ql-course-tabs]{display:grid!important;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;width:100%;max-width:none!important;padding:0!important;border:0!important;border-radius:0!important;background:transparent!important;overflow:visible!important}
+[data-ql-course-tabs] button{display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;gap:10px;min-height:84px;padding:13px 14px!important;border:1px solid #e2e8f0;border-radius:14px!important;background:#fff!important;color:#334155!important;font-size:13.5px!important;font-weight:600!important;line-height:1.3;text-align:left;white-space:normal!important;box-shadow:none!important;transition:border-color .15s ease,background-color .15s ease,transform .15s ease,box-shadow .15s ease!important}
+[data-ql-course-tabs] button:hover{border-color:#86efac;transform:translateY(-1px)}
+[data-ql-course-tabs] button>span:last-child{margin-left:0!important;padding:2px 9px!important;border-radius:999px;background:#f1f5f9!important;color:#64748b!important;font-size:11px!important;font-weight:600;font-variant-numeric:tabular-nums}
+[data-ql-course-tabs] button>span:last-child::after{content:"done";margin-left:4px}
+[data-ql-course-tabs] button[data-empty=true]{background:#f8fafc!important;color:#94a3b8!important}
+[data-ql-course-tabs] button[data-empty=true]>span:last-child{color:#94a3b8!important}
+[data-ql-course-tabs] button[data-empty=true]>span:last-child::after{content:"· none yet"}
+[data-ql-course-tabs] button.bg-brand{border-color:#16a34a;background:#f0fdf4!important;color:#14532d!important;box-shadow:inset 0 -3px 0 #16a34a,0 10px 22px -16px rgba(22,163,74,.6)!important}
+[data-ql-course-tabs] button.bg-brand>span:last-child{background:#dcfce7!important;color:#166534!important}
+[data-ql-course-tabs] button:focus-visible{outline:3px solid rgba(22,163,74,.4);outline-offset:2px}
+[data-ql-course-tabrow]>p{margin-left:0!important;width:100%}
+@media(max-width:1180px){[data-ql-course-tabs]{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:560px){[data-ql-course-tabs]{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}[data-ql-course-tabs] button{min-height:76px;padding:11px 12px!important}[data-ql-course-head] h1{font-size:22px!important}}
+@media(prefers-reduced-motion:reduce){[data-ql-course-tabs] button{transition:none!important}[data-ql-course-tabs] button:hover{transform:none}}

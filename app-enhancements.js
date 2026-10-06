@@ -809,6 +809,54 @@
   }
 
   /* ---------------------------------------------------------------
+   * Student sidebar: a link back to the public home page, placed just
+   * above the account block at the bottom.
+   * ------------------------------------------------------------- */
+  function syncHomeLink() {
+    document.querySelectorAll("#root aside").forEach(function (aside) {
+      if (!aside.querySelector('nav a[href="/dashboard"]')) return;
+      var existing = aside.querySelector(":scope > .ql-home-link");
+      var footer = null;
+      Array.prototype.forEach.call(aside.children, function (child) {
+        if (child.tagName === "DIV" && /\bborder-t\b/.test(child.className)) footer = child;
+      });
+      if (!footer) return;
+      if (existing) {
+        if (existing.nextElementSibling !== footer) aside.insertBefore(existing, footer);
+        return;
+      }
+      var link = document.createElement("a");
+      link.className = "ql-home-link";
+      link.href = "/";
+      link.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M10 21v-6h4v6"/></svg><span>Home page</span>';
+      aside.insertBefore(link, footer);
+    });
+  }
+
+  /* ---------------------------------------------------------------
+   * Practice course page: tag the header and the paper-type tabs so
+   * storefront-dashboard.css can lay them out as tiles.
+   * ------------------------------------------------------------- */
+  function decorateCoursePage() {
+    if (!/^\/practice\/[^/]+(\/papers)?\/?$/i.test(window.location.pathname)) return;
+    var first = null;
+    document.querySelectorAll("#root main button").forEach(function (button) {
+      if (!first && /^Practice Assignment/i.test(button.textContent.trim())) first = button;
+    });
+    var tabs = first && first.parentElement;
+    if (!tabs || tabs.querySelectorAll("button").length < 6) return;
+    tag(tabs, "data-ql-course-tabs", "");
+    if (tabs.parentElement) tag(tabs.parentElement, "data-ql-course-tabrow", "");
+    tabs.querySelectorAll("button").forEach(function (button) {
+      var count = button.lastElementChild ? button.lastElementChild.textContent.trim() : "";
+      tag(button, "data-empty", /\/0$/.test(count) ? "true" : "false");
+    });
+    var heading = document.querySelector("#root main h1");
+    var card = heading && heading.closest(".rounded-2xl");
+    if (card) tag(card, "data-ql-course-head", "");
+  }
+
+  /* ---------------------------------------------------------------
    * Brand: Ensure Quiz LAB by GenZ IITian is displayed everywhere.
    * ------------------------------------------------------------- */
   function syncBrandName() {
@@ -905,11 +953,17 @@
     decorateManagerConsole();
     fillMyPapers();
     syncConsoleNav();
+    syncHomeLink();
+    decorateCoursePage();
     syncQuizBackLink();
     if (!/\/discussions/i.test(window.location.pathname)) return;
     injectStyles();
     ROWS.forEach(convertRow);
     convertDiscussionSortRow();
+    // Put search, sort, subject and course on one row.
+    var sortRow = document.querySelector(".ql-discussion-sort-row");
+    var filterCard = sortRow && sortRow.parentElement && sortRow.parentElement.parentElement;
+    if (filterCard && filterCard.getAttribute("data-ql-disc-filters") !== "") filterCard.setAttribute("data-ql-disc-filters", "");
   }
 
   var pending = null;
