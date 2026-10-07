@@ -263,3 +263,26 @@ header.lg\:hidden>a[href="/dashboard"] .whitespace-nowrap.text-\[15px\]::after{c
 .ql-mp-browse{flex-shrink:0;white-space:nowrap}
 .ql-mp-actions{display:flex;gap:8px;width:100%;margin-top:14px}
 .ql-mp-actions .ql-mp-action{flex:1 1 0;width:auto;min-width:0;margin-top:0;white-space:nowrap}
+/* ---- Profile: name form right after the title, no subtitle, phone layout ---- */
+div.space-y-6:has(>div>form.space-y-6>.h-px){display:flex;flex-direction:column;gap:1.5rem}
+div.space-y-6:has(>div>form.space-y-6>.h-px)>*{margin-top:0!important;margin-bottom:0!important;order:2}
+div.space-y-6:has(>div>form.space-y-6>.h-px)>:first-child{order:0}
+div.space-y-6:has(>div>form.space-y-6>.h-px)>div:has(>form.space-y-6){order:1}
+div.space-y-6:has(>div>form.space-y-6>.h-px) h1.text-2xl+p.mt-1.text-sm{display:none}
+div.space-y-6:has(>div>form.space-y-6>.h-px) .rounded-full.tracking-wide{white-space:nowrap;flex-shrink:0}
+@media(max-width:640px){
+div.space-y-6:has(>div>form.space-y-6>.h-px){gap:14px}
+div.space-y-6:has(>div>form.space-y-6>.h-px)>.rounded-2xl.p-5{padding:16px}
+div.space-y-6:has(>div>form.space-y-6>.h-px)>:first-child>.flex{gap:6px}
+div.space-y-6:has(>div>form.space-y-6>.h-px)>:first-child>.flex>div{flex:1 1 100%;min-width:0;overflow-wrap:anywhere}
+div.space-y-6:has(>div>form.space-y-6>.h-px) form.space-y-6>:not([hidden])~:not([hidden]){margin-top:16px}
+div.space-y-6:has(>div>form.space-y-6>.h-px) form .flex.justify-end>button{width:100%}
+div.space-y-6:has(>div>form.space-y-6>.h-px) form .flex.items-center.gap-5{gap:14px;min-width:0}
+div.space-y-6:has(>div>form.space-y-6>.h-px) form .flex.items-center.gap-5>div:last-child{min-width:0;overflow-wrap:anywhere}
+div.space-y-6:has(>div>form.space-y-6>.h-px) .flex.flex-wrap.items-start.gap-6{gap:16px}
+div.space-y-6:has(>div>form.space-y-6>.h-px) .flex.flex-wrap.items-start.gap-6>div{flex:1 1 100%;max-width:none}
+div.space-y-6:has(>div>form.space-y-6>.h-px) .flex.flex-wrap.items-start.gap-6 .max-w-md{max-width:none}
+div.space-y-6:has(>div>form.space-y-6>.h-px)>.grid.gap-4{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+div.space-y-6:has(>div>form.space-y-6>.h-px)>.grid.gap-4>.rounded-2xl.p-5{padding:14px}
+div.space-y-6:has(>div>form.space-y-6>.h-px)>.grid.gap-4 .text-3xl{font-size:24px;line-height:1.2}
+}
