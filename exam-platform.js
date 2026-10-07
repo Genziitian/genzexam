@@ -330,7 +330,46 @@
     const preview = studentPreview();
     const manager = isManager() && !preview;
     const list = preview ? app.exams.filter((e) => e.status && e.status !== "draft") : app.exams;
-    return `<section class="ep-page"><div class="ep-heading"><div><p class="ep-eyebrow">${manager ? "EXAM MANAGEMENT" : "CANDIDATE PORTAL"}</p><h1>${manager ? "Online proctoring" : "Your exams"}</h1>${manager ? "" : `<p>Select an exam you are enrolled in to read its instructions and check its status.</p>`}</div>${manager ? '<button class="ep-btn ep-btn-primary" data-action="new">Create exam</button>' : ""}</div>${app.error ? `<div class="ep-alert error">${esc(app.error)}</div>` : ""}${app.notice ? `<div class="ep-alert">${esc(app.notice)}</div>` : ""}${systemPanel()}${preview ? '<div class="ep-alert">Student preview. This is what enrolled students see for your published exams. You are signed in as a manager, so exams cannot be taken from here. <a class="ep-link" href="/exams">Go to exam management</a></div>' : ""}<div class="ep-card"><div class="ep-card-head"><h2>${manager ? "Exams" : "Available exams"}</h2><button class="ep-btn ep-btn-quiet" data-action="refresh-list">Refresh</button></div>${list.length ? `<div class="ep-table-wrap"><table><thead><tr><th>Exam</th><th>Status</th><th>Schedule</th><th>Questions</th><th></th></tr></thead><tbody>${list.map((e) => `<tr><td><b>${esc(e.title)}</b><small>${esc(e.subject || "—")}</small></td><td><span class="ep-status ${esc(e.closed ? "ended" : e.status)}">${esc(e.closed ? "closed" : e.status || "draft")}</span></td><td>${esc(formatDate(e.scheduled_at))}${e.closes_at ? `<small>Ends ${esc(formatDate(e.closes_at))}</small>` : ""}</td><td>${Number(e.question_count ?? e.questions_count ?? e.questions?.length ?? 0)}</td><td><button class="ep-btn ep-btn-small" data-action="open" data-id="${esc(e.id)}" ${(e.closed && !manager) || preview ? "disabled" : ""}>${manager ? "Manage" : e.closed ? "Closed" : preview ? "Preview" : "Open"}</button></td></tr>`).join("")}</tbody></table></div>` : `<div class="ep-empty"><div class="ep-empty-icon">${manager ? "＋" : "◷"}</div><h3>${manager ? "No exams yet" : "No exams available"}</h3><p>${manager ? "Create a draft exam to begin setting up questions and enrollment." : preview ? "Students see exams here once you publish them and enrol their email." : "Ask your exam manager to enroll your account."}</p></div>`}${app.nextPage ? '<div class="ep-actions"><button class="ep-btn" data-action="more-exams">Load more exams</button></div>' : ""}</div></section>`;
+    return `<section class="ep-page"><div class="ep-heading"><div><p class="ep-eyebrow">${manager ? "EXAM MANAGEMENT" : "ONLINE EXAMS"}</p><h1>${manager ? "Online proctoring" : "Your exams"}</h1></div>${manager ? '<button class="ep-btn ep-btn-primary" data-action="new">Create exam</button>' : '<button class="ep-btn" data-action="refresh-list">Refresh</button>'}</div>${app.error ? `<div class="ep-alert error">${esc(app.error)}</div>` : ""}${app.notice ? `<div class="ep-alert">${esc(app.notice)}</div>` : ""}${systemPanel()}${preview ? '<div class="ep-alert">Student preview. This is what enrolled students see for your published exams. You are signed in as a manager, so exams cannot be taken from here. <a class="ep-link" href="/exams">Go to exam management</a></div>' : ""}${manager ? `<div class="ep-card"><div class="ep-card-head"><h2>Exams</h2><button class="ep-btn ep-btn-quiet" data-action="refresh-list">Refresh</button></div>${list.length ? `<div class="ep-table-wrap"><table><thead><tr><th>Exam</th><th>Status</th><th>Schedule</th><th>Questions</th><th></th></tr></thead><tbody>${list.map((e) => `<tr><td><b>${esc(e.title)}</b><small>${esc(e.subject || "—")}</small></td><td><span class="ep-status ${esc(e.closed ? "ended" : e.status)}">${esc(e.closed ? "closed" : e.status || "draft")}</span></td><td>${esc(formatDate(e.scheduled_at))}${e.closes_at ? `<small>Ends ${esc(formatDate(e.closes_at))}</small>` : ""}</td><td>${Number(e.question_count ?? e.questions_count ?? e.questions?.length ?? 0)}</td><td><button class="ep-btn ep-btn-small" data-action="open" data-id="${esc(e.id)}" ${(e.closed && !manager) || preview ? "disabled" : ""}>${manager ? "Manage" : e.closed ? "Closed" : preview ? "Preview" : "Open"}</button></td></tr>`).join("")}</tbody></table></div>` : `<div class="ep-empty"><div class="ep-empty-icon">${manager ? "＋" : "◷"}</div><h3>${manager ? "No exams yet" : "No exams available"}</h3><p>${manager ? "Create a draft exam to begin setting up questions and enrollment." : preview ? "Students see exams here once you publish them and enrol their email." : "Ask your exam manager to enroll your account."}</p></div>`}${app.nextPage ? '<div class="ep-actions"><button class="ep-btn" data-action="more-exams">Load more exams</button></div>' : ""}</div>` : `${studentExams(list, preview)}${app.nextPage ? '<div class="ep-actions"><button class="ep-btn" data-action="more-exams">Load more exams</button></div>' : ""}`}</section>`;
+  }
+  /* The student's exam list: one card per exam, with the next thing they can do. */
+  const STUDENT_STATUS = {
+    published: ["Not started yet", "published"],
+    live: ["Live now", "live"],
+    paused: ["Paused by the manager", "paused"],
+    ended: ["Ended", "ended"],
+    archived: ["Ended", "ended"],
+  };
+  function examDay(v) {
+    const d = v ? new Date(v) : null;
+    return !d || Number.isNaN(d.valueOf())
+      ? null
+      : {
+          day: d.getDate(),
+          month: d.toLocaleDateString("en-IN", { month: "short" }),
+          text: d.toLocaleString("en-IN", { weekday: "short", day: "numeric", month: "short", hour: "numeric", minute: "2-digit" }),
+        };
+  }
+  function studentExams(list, preview) {
+    if (!list.length)
+      return `<div class="ep-card"><div class="ep-empty"><div class="ep-empty-icon">◷</div><h3>No exams yet</h3><p>${preview ? "Students see exams here once you publish them and enrol their email." : "An exam appears here when your exam manager enrols your account."}</p></div></div>`;
+    return `<div class="ep-exam-list">${list
+      .map((e) => {
+        const start = examDay(e.scheduled_at);
+        const end = examDay(e.closes_at);
+        const [label, tone] = e.closed ? ["Closed", "ended"] : STUDENT_STATUS[e.status] || [e.status || "Draft", "draft"];
+        const live = !e.closed && e.status === "live";
+        const questions = Number(e.question_count ?? e.questions_count ?? e.questions?.length ?? 0);
+        const facts = [
+          start ? `Starts ${start.text}` : "Start time not set",
+          end ? `Ends ${end.text}` : "",
+          Number(e.duration_minutes) ? `${Number(e.duration_minutes)} min` : "",
+          `${questions} question${questions === 1 ? "" : "s"}`,
+        ].filter(Boolean);
+        const action = preview ? "Preview" : e.closed ? "Closed" : live ? "Enter exam" : "View details";
+        return `<article class="ep-card ep-exam${live ? " is-live" : ""}"><div class="ep-exam-date" aria-hidden="true">${start ? `<b>${start.day}</b><span>${esc(start.month)}</span>` : "<b>—</b><span>TBA</span>"}</div><div class="ep-exam-main"><span class="ep-status ${tone}">${esc(label)}</span><h2>${esc(e.title)}</h2>${e.subject ? `<p class="ep-exam-subject">${esc(e.subject)}</p>` : ""}<p class="ep-exam-facts">${facts.map((f) => `<span>${esc(f)}</span>`).join("")}</p></div><button class="ep-btn${live ? " ep-btn-primary" : ""}" data-action="open" data-id="${esc(e.id)}" ${e.closed || preview ? "disabled" : ""}>${action}</button></article>`;
+      })
+      .join("")}</div>`;
   }
   function formatDate(v) {
     if (!v) return "—";
@@ -493,7 +532,35 @@
     const e = app.exam || {},
       state = app.state || {},
       manager = isManager();
+    if (!manager) return studentDetail(e, state);
     return `<section class="ep-page"><div class="ep-back"><button class="ep-btn ep-btn-quiet" data-action="back">← Exams</button></div><div class="ep-heading"><div><p class="ep-eyebrow">${manager ? "MANAGER CONSOLE" : "EXAM DETAILS"}</p><h1>${esc(e.title)}</h1><p>${esc(e.subject || "")}</p></div><span class="ep-status ${esc(e.status)}">${esc(e.status || "draft")}</span></div>${app.error ? `<div class="ep-alert error">${esc(app.error)}</div>` : ""}<div class="ep-detail-grid"><div class="ep-card"><h2>Exam setup</h2><dl class="ep-facts"><div><dt>Duration</dt><dd>${Number(e.duration_minutes || 0)} minutes</dd></div><div><dt>Scheduled start</dt><dd>${esc(formatDate(e.scheduled_at))}</dd></div><div><dt>Exam end</dt><dd>${esc(formatDate(e.closes_at))}</dd></div><div><dt>Questions</dt><dd>${Number(e.questions?.length || e.question_count || 0)}</dd></div><div><dt>Results</dt><dd>${e.results_published ? "Published" : "Not published"}</dd></div></dl><h3>Instructions</h3><p class="ep-instructions">${contentHtml(e.instructions || "No additional instructions.")}</p><div class="ep-actions">${manager ? `${e.status === "draft" ? '<button class="ep-btn" data-action="edit">Edit draft</button>' : ""}${e.status === "published" ? '<button class="ep-btn" data-action="edit-enrollments">Edit enrollment</button><button class="ep-btn ep-btn-primary" data-action="start">Start exam</button>' : ""}${["live", "paused"].includes(e.status) ? `<button class="ep-btn" data-action="${e.status === "live" ? "pause" : "resume"}">${e.status === "live" ? "Pause" : "Resume"}</button><button class="ep-btn ep-btn-danger" data-action="end">End exam</button><button class="ep-btn" data-action="extend">Add 5 minutes</button>` : ""}${e.status === "ended" && !e.results_published ? '<button class="ep-btn ep-btn-primary" data-action="publish-results">Publish results</button>' : ""}${e.status === "ended" ? '<button class="ep-btn" data-action="archive">Archive</button>' : ""}${e.results_published ? '<button class="ep-btn" data-action="export">Export results CSV</button>' : ""}<button class="ep-btn ep-btn-quiet" data-action="audit">Audit log</button><button class="ep-btn ep-btn-quiet" data-action="copy-link">Copy candidate link</button>` : `<button class="ep-btn ep-btn-primary" data-action="join" ${e.status === "live" ? "" : "disabled"}>Review rules and join</button>`}</div></div>${manager ? `<div class="ep-card"><div class="ep-card-head"><h2>Live monitoring</h2><span class="ep-live-dot">${Array.isArray(state.sessions) ? state.sessions.length : Object.keys(state.sessions || {}).length} candidates</span></div><div class="ep-actions"><button class="ep-btn ep-btn-quiet" data-action="refresh-state">Refresh now</button><button class="ep-btn" data-action="messages">Messages</button></div><div id="ep-sessions">${sessionTable(state.sessions || [])}</div><div id="ep-audit">${app.auditEvents ? auditHtml() : ""}</div></div>` : candidateSummary(state)}</div>${manager ? managerQuestions(e.questions || []) : ""}</section>`;
+  }
+  /* What a student sees for one exam: where it stands, the next step, then the facts. */
+  function studentDetail(e, state) {
+    const sess = state.session || {};
+    const start = examDay(e.scheduled_at);
+    const end = examDay(e.closes_at);
+    const [label, tone] = e.closed ? ["Closed", "ended"] : STUDENT_STATUS[e.status] || [e.status || "Draft", "draft"];
+    const questions = Number(e.questions?.length || e.question_count || 0);
+    const warnings = Number(e.max_warnings || 3);
+    const score = sess.score != null && e.results_published ? `${Number(sess.score)} / ${Number(sess.total_marks || 0)}` : "";
+    const join = (text) => `<button class="ep-btn ep-btn-primary" data-action="join">${text}</button>`;
+    const check = '<button class="ep-btn" data-action="refresh-state">Check again</button>';
+    let next;
+    if (sess.status === "submitted")
+      next = ["done", "You have submitted this exam", score ? `Your score is ${score}.` : "Your answers are recorded. Your score appears here once results are published.", score ? "" : check];
+    else if (e.status === "ended" || e.status === "archived" || e.closed)
+      next = ["", "This exam has ended", score ? `Your score is ${score}.` : sess.status ? "Your score appears here once results are published." : "You did not join this exam.", ""];
+    else if (sess.status === "locked")
+      next = ["warn", "Your session is locked", "You reached the warning limit. Wait for the exam manager to review and unlock your session.", check];
+    else if (e.status === "live")
+      next = ["live", sess.status === "in_exam" ? "Your exam is in progress" : "The exam is live", sess.status === "in_exam" ? "Go back in to continue. The timer has kept running." : "Read the rules, tick the box to agree, and the exam opens. The timer is already running for everyone.", join(sess.status === "in_exam" ? "Return to exam" : "Read rules and join")];
+    else if (e.status === "paused")
+      next = ["warn", "The exam is paused", "The exam manager has paused it. Your answers are saved. You can continue when it resumes.", check];
+    else
+      next = ["", "This exam has not started yet", `The Join button appears here once your exam manager starts the exam${start ? `, planned for ${start.text}` : ""}. Keep this page open, or press Check again.`, check];
+    const fact = (name, value) => `<div><dt>${name}</dt><dd>${esc(value)}</dd></div>`;
+    return `<section class="ep-page ep-student-detail"><div class="ep-back"><button class="ep-btn ep-btn-quiet" data-action="back">← Exams</button></div><div class="ep-heading"><div><p class="ep-eyebrow">ONLINE EXAM</p><h1>${esc(e.title)}</h1>${e.subject ? `<p>${esc(e.subject)}</p>` : ""}</div><span class="ep-status ${tone}">${esc(label)}</span></div>${app.error ? `<div class="ep-alert error">${esc(app.error)}</div>` : ""}<div class="ep-card ep-next ${next[0]}"><div><h2>${next[1]}</h2><p>${esc(next[2])}</p></div>${next[3] ? `<div class="ep-actions">${next[3]}</div>` : ""}</div><dl class="ep-facts ep-facts-row">${fact("Starts", start ? start.text : "Not set")}${fact("Ends", end ? end.text : "When time runs out")}${fact("Duration", `${Number(e.duration_minutes || 0)} minutes`)}${fact("Questions", questions)}</dl><div class="ep-student-cols"><div class="ep-card"><h2>Instructions</h2><p class="ep-instructions">${contentHtml(e.instructions || "No additional instructions.")}</p></div><div class="ep-card"><h2>How joining works</h2><ol class="ep-steps"><li>Your exam manager starts the exam. This page then shows <b>Read rules and join</b>.</li><li>Read the rules and tick the box to agree. The exam opens in full screen.</li><li>One timer runs for everyone, so joining late does not add time.</li><li>Leaving full screen or switching tabs counts as a warning. ${warnings} warning${warnings === 1 ? "" : "s"} lock your session.</li></ol></div></div></section>`;
   }
   function candidateSummary(s) {
     const sess = s.session || {};

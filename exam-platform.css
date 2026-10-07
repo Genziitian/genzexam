@@ -1276,3 +1276,177 @@ img.ep-mark {
   object-fit: cover;
   flex-shrink: 0;
 }
+
+/* Student exam list: one card per exam. */
+.ep-exam-list {
+  display: grid;
+  gap: 12px;
+}
+.ep-card.ep-exam {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin: 0;
+  padding: 20px 22px;
+}
+.ep-exam.is-live {
+  border-color: #9fd3b3;
+  box-shadow: 0 0 0 3px rgba(36, 113, 68, 0.08);
+}
+.ep-exam-date {
+  flex: 0 0 62px;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  height: 66px;
+  border-radius: 14px;
+  background: #eef4ef;
+  color: #1f4d33;
+  line-height: 1.1;
+}
+.ep-exam-date b {
+  font-size: 24px;
+  font-weight: 750;
+  letter-spacing: -0.03em;
+}
+.ep-exam-date span {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.ep-exam-main {
+  flex: 1;
+  min-width: 0;
+}
+.ep-exam-main h2 {
+  margin: 8px 0 2px;
+  font-size: 19px;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  overflow-wrap: anywhere;
+}
+.ep-exam-subject {
+  margin: 0;
+  color: #718097;
+  overflow-wrap: anywhere;
+}
+.ep-exam-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 0;
+  margin: 10px 0 0;
+  font-size: 13px;
+  color: #4b5a70;
+}
+.ep-exam-facts span:not(:last-child)::after {
+  content: "·";
+  margin: 0 9px;
+  color: #a7b1c2;
+}
+.ep-exam .ep-btn {
+  flex: 0 0 auto;
+  min-width: 128px;
+  min-height: 44px;
+}
+.ep-status.live::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  margin-right: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+@media (max-width: 640px) {
+  .ep-card.ep-exam {
+    flex-wrap: wrap;
+    gap: 14px;
+    padding: 16px;
+  }
+  .ep-exam-main {
+    flex-basis: calc(100% - 76px);
+  }
+  .ep-exam .ep-btn {
+    width: 100%;
+  }
+}
+
+/* Student exam page: next step first, then the facts. */
+.ep-card.ep-next {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  border-left: 4px solid #c3ccd9;
+}
+.ep-next h2 {
+  margin: 0 0 4px;
+}
+.ep-next p {
+  margin: 0;
+  max-width: 640px;
+  color: #526078;
+}
+.ep-next .ep-actions {
+  margin: 0;
+}
+.ep-next .ep-btn {
+  min-height: 44px;
+}
+.ep-next.live {
+  border-left-color: #2f8f58;
+  background: #f1faf4;
+}
+.ep-next.warn {
+  border-left-color: #d49a1c;
+  background: #fffaec;
+}
+.ep-next.done {
+  border-left-color: #315db8;
+  background: #f3f7ff;
+}
+.ep-facts.ep-facts-row {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 14px 0;
+}
+.ep-facts-row div {
+  padding: 14px 16px;
+  background: #fff;
+  border: 1px solid #e6eaf0;
+  border-radius: 12px;
+}
+.ep-facts-row dd {
+  font-size: 15px;
+  margin-top: 5px;
+}
+.ep-student-cols {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 14px;
+  align-items: start;
+}
+.ep-student-cols .ep-card {
+  margin: 0;
+}
+.ep-steps {
+  margin: 12px 0 0;
+  padding-left: 20px;
+  color: #526078;
+}
+.ep-steps li {
+  margin: 0 0 8px;
+  padding-left: 4px;
+}
+@media (max-width: 800px) {
+  .ep-facts.ep-facts-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .ep-student-cols {
+    grid-template-columns: 1fr;
+  }
+  .ep-next .ep-actions,
+  .ep-next .ep-btn {
+    width: 100%;
+  }
+}
