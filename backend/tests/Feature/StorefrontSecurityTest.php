@@ -307,4 +307,16 @@ class StorefrontSecurityTest extends TestCase
         $this->assertFalse($paper['has_access']);
         $this->assertFalse($paper['expired']);
     }
+
+    public function test_managers_see_their_own_attempts_in_my_papers(): void
+    {
+        $manager = User::query()->create(['name' => 'Manager', 'email' => 'manager@example.test', 'role' => 'manager']);
+        Attempt::query()->create(['quiz_id' => $this->paper->id, 'user_id' => $manager->id,
+            'started_at' => now(), 'submitted_at' => now(), 'score' => 7, 'total_marks' => 10, 'is_complete' => true]);
+        $papers = $this->store->myPapers($this->request([], $manager))->getData(true)['papers'];
+        $this->assertCount(1, $papers);
+        $this->assertTrue($papers[0]['has_access']);
+        $this->assertFalse($papers[0]['purchased']);
+        $this->assertSame(1, $papers[0]['attempt_count']);
+    }
 }

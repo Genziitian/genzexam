@@ -733,7 +733,7 @@
         var expired = paid && !!paper.expired;
         var usable = paper.available !== false && paper.has_access !== false && !expired;
         var attempts = Number(paper.attempt_count || 0);
-        var state = paper.available === false ? "Unavailable" : expired ? "Access expired" : purchased ? "Purchased \u2713" : paid && !usable ? "Paid" : "Free";
+        var state = paper.available === false ? "Unavailable" : expired ? "Access expired" : purchased ? "Purchased \u2713" : paid ? "Paid" : "Free";
         var card = document.createElement("article");
         card.className = "ql-mp-card" + (purchased && usable ? " owned" : "");
         var badge = document.createElement("span");
@@ -810,6 +810,8 @@
 
   function decoratePracticeCards() {
     if (!/^\/practice\//i.test(window.location.pathname)) return;
+    // Managers and admins open paid papers without buying, so a lock would mislead.
+    if (storedRole() && storedRole() !== "student") return;
     var links = document.querySelectorAll('#root a[href^="/quiz/"]');
     if (!links.length) return;
     loadPaperAccess();

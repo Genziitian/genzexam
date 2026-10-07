@@ -43,7 +43,8 @@ class StorefrontController extends Controller
     public function myPapers(Request $request): JsonResponse
     {
         $user = $request->user();
-        abort_if(! $user->isStudent(), 403, 'Student paper library only.');
+        // Managers and admins open every paper without buying, so they only ever see their attempts here.
+        $staff = ! $user->isStudent();
 
         $entitlements = QuizEntitlement::query()
             ->where('user_id', $user->id)
@@ -63,7 +64,7 @@ class StorefrontController extends Controller
             ->withCount('questions')
             ->get();
 
-        $papers = $quizzes->map(function (Quiz $quiz) use ($entitlements, $attempts) {
+        $papers = $quizzes->map(function (Quiz $quiz) use ($entitlements, $attempts, $staff) {
             $entitlement = $entitlements->get($quiz->id);
             $rows = $attempts->get($quiz->id, collect());
             $paid = (int) $quiz->price_paise > 0;
@@ -91,8 +92,8 @@ class StorefrontController extends Controller
                 'purchased' => $purchased,
                 'owned_since' => $entitlement?->created_at,
                 'expires_at' => $paid || $purchased ? $entitlement?->expires_at : null,
-                'expired' => $paid && $entitlement !== null && ! $active,
-                'has_access' => ! $paid || $active,
+                'expired' => ! $staff && $paid && $entitlement !== null && ! $active,
+                'has_access' => $staff || ! $paid || $active,
                 'available' => $available,
                 'attempt_count' => $rows->filter(fn (Attempt $attempt) => $attempt->is_complete && $attempt->submitted_at)->count(),
                 'in_progress' => $open !== null,
