@@ -316,3 +316,5 @@ div.space-y-6:has(>div>form.space-y-6>.h-px)>.grid.gap-4 .text-3xl{font-size:24p
 }
 /* Course page on phones: one paper card per row. */
 @media(max-width:560px){[data-ql-course-tabrow]~.grid.grid-cols-2{grid-template-columns:minmax(0,1fr)}}
+/* My Papers on phones: the intro line stays on one row. */
+@media(max-width:600px){.ql-mp-head p{margin-top:8px;font-size:clamp(11.5px,3.4vw,13.5px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.ql-mp-head{margin-bottom:16px}}

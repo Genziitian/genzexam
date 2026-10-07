@@ -719,7 +719,7 @@
     var runtime = window.QLStorefront;
     if (!runtime || !runtime.token()) return;
     host.dataset.qlLoaded = "1";
-    host.innerHTML = '<div class="ql-mp-head"><div class="ql-mp-title"><h1>Your papers.</h1><a class="ql-mp-browse" href="/practice">Browse practice</a></div><p>Papers you bought and papers you have attempted, with your progress.</p></div><div class="ql-mp-grid" aria-live="polite"><p class="ql-mp-note">Loading your papers…</p></div>';
+    host.innerHTML = '<div class="ql-mp-head"><div class="ql-mp-title"><h1>Your papers.</h1><a class="ql-mp-browse" href="/practice">Browse practice</a></div><p>Papers you bought or attempted, with your progress.</p></div><div class="ql-mp-grid" aria-live="polite"><p class="ql-mp-note">Loading your papers…</p></div>';
     var grid = host.querySelector(".ql-mp-grid");
     function note(text) {
       grid.replaceChildren();
