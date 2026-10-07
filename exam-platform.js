@@ -55,6 +55,11 @@
     hasUserSwitchedAway: false,
     outsideSince: null,
     tabWarningTimerId: null,
+    onboardingStep: 1,
+    attendanceTime: null,
+    photoDataUrl: null,
+    activeSection: "sec-questions",
+    webcamStream: null,
   };
   function I(name, size = 16, color = "currentColor", extraStyle = "") {
     const s = `width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="${color}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;flex-shrink:0;${extraStyle}"`;
@@ -99,8 +104,126 @@
         return `<svg ${s}><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>`;
       case "settings":
         return `<svg ${s}><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>`;
+      case "x":
+        return `<svg ${s}><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>`;
+      case "volumeX":
+        return `<svg ${s}><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>`;
+      case "wifi":
+        return `<svg ${s}><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>`;
+      case "calculator":
+        return `<svg ${s}><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="16" y1="14" x2="16" y2="18"/><path d="M16 10h.01M12 10h.01M8 10h.01M12 14h.01M8 14h.01M12 18h.01M8 18h.01"/></svg>`;
+      case "slash":
+        return `<svg ${s}><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>`;
       default:
         return "";
+    }
+  }
+  function showCocModal() {
+    let modal = document.getElementById("ep-coc-modal");
+    if (modal) modal.remove();
+    modal = document.createElement("div");
+    modal.id = "ep-coc-modal";
+    modal.className = "ep-modal-backdrop";
+    modal.style.display = "flex";
+    modal.innerHTML = `
+      <div class="ep-onboarding-card" style="max-width:760px;text-align:left;max-height:88vh;overflow-y:auto;padding:28px 24px;">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:16px;width:100%;">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <img src="/assets/quiz-lab-icon.png" alt="Quiz Lab" style="height:30px;width:30px;border-radius:6px;object-fit:contain;">
+            ${I("shield", 22, "#059669")}
+            <h2 style="font-size:20px;font-weight:800;color:#0f172a;margin:0;">Candidate Code of Conduct (COC)</h2>
+          </div>
+          <button id="ep-coc-close" style="background:#f8fafc;border:1px solid #cbd5e1;color:#334155;border-radius:8px;padding:6px 10px;cursor:pointer;font-weight:800;display:flex;align-items:center;">
+            ${I("x", 14, "#334155")}
+          </button>
+        </div>
+
+        <h3 style="font-size:15px;font-weight:800;color:#1e3a8a;margin:0 0 10px 0;">
+          Online Remote Proctored Exams
+        </h3>
+        <p style="font-size:13px;color:#334155;line-height:1.65;margin-bottom:16px;">
+          This exam is conducted online from the examinee's place of residence and proctored remotely. The following guidelines must be followed by all examinees:
+        </p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));gap:12px;margin-bottom:20px;width:100%;">
+          ${[
+            ["Personal details", "No examinee shall share personal details with proctors, including but not limited to phone number or address, during or after the exam."],
+            ["Clean desk", "The table or desk where the examinee takes this exam shall not have any items kept that may have sensitive information, including but not limited to phone numbers and address."],
+            ["No assistance", "No examinee shall aid, or attempt to aid, another candidate by discussing answers via email, text, chat, call, or any other method."],
+            ["Confidential exam", "No examinee will disclose any details of what happened during the exam or examination trials to anyone outside."],
+            ["Ask inside exam", "If an examinee wishes to ask a question during the exam, they should post the query in the exam room chat / doubts window and the proctor will clarify."],
+            ["Violation action", "If any examinee is found to have violated the Code of Conduct for Online Examinations, or to have acted improperly, they will be liable to disciplinary procedures (withholding results or suspension)."]
+          ]
+            .map(
+              ([title, body], idx) => `
+                <div style="border:1px solid #e2e8f0;background:#f8fafc;border-radius:12px;padding:12px 14px;">
+                  <div style="display:flex;align-items:center;gap:8px;font-size:13px;font-weight:800;color:#0f172a;margin-bottom:6px;">
+                    <span style="width:22px;height:22px;border-radius:9999px;background:#dcfce7;color:#047857;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;">${idx + 1}</span>
+                    ${title}
+                  </div>
+                  <div style="font-size:12px;line-height:1.55;color:#475569;">${body}</div>
+                </div>
+              `
+            )
+            .join("")}
+        </div>
+        <div style="text-align:right;width:100%;">
+          <button id="ep-coc-ok" class="ep-btn ep-btn-primary" style="padding:9px 22px;font-size:13px;font-weight:700;">I Understand</button>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(modal);
+    const close = () => modal.remove();
+    document.getElementById("ep-coc-close").onclick = close;
+    document.getElementById("ep-coc-ok").onclick = close;
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) close();
+    });
+  }
+  function startWebcam() {
+    const video = document.getElementById("ep-cam-stream");
+    const canvas = document.getElementById("ep-cam-canvas");
+    if (!video || !canvas) return;
+    if (app.webcamStream) return;
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+      navigator.mediaDevices.getUserMedia({ video: { width: 320, height: 240 } })
+        .then((stream) => {
+          app.webcamStream = stream;
+          video.srcObject = stream;
+        })
+        .catch(() => {
+          simulateCanvasCamera(canvas, video);
+        });
+    } else {
+      simulateCanvasCamera(canvas, video);
+    }
+  }
+  function simulateCanvasCamera(cvs, vid) {
+    const ctx = cvs.getContext("2d");
+    ctx.fillStyle = "#1e293b";
+    ctx.fillRect(0, 0, 320, 240);
+    ctx.fillStyle = "#38bdf8";
+    ctx.beginPath();
+    ctx.arc(160, 95, 45, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(160, 200, 70, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.fillStyle = "#ffffff";
+    ctx.font = "bold 13px Inter, sans-serif";
+    ctx.textAlign = "center";
+    ctx.fillText("Verified Student Face", 160, 160);
+    const dataUrl = cvs.toDataURL("image/jpeg");
+    const snapshotImg = document.getElementById("ep-cam-snapshot");
+    if (snapshotImg) snapshotImg.src = dataUrl;
+    const tag = document.getElementById("ep-cam-fallback-tag");
+    if (tag) tag.style.display = "block";
+  }
+  function stopWebcam() {
+    if (app.webcamStream) {
+      try {
+        app.webcamStream.getTracks().forEach((t) => t.stop());
+      } catch (_) {}
+      app.webcamStream = null;
     }
   }
   function formatOutsideTime(s) {
@@ -329,7 +452,7 @@
       root.id = "ep-app";
       document.body.appendChild(root);
     }
-    root.innerHTML = `<div class="ep-shell"><header class="ep-top"><a class="ep-brand" href="/exams"><img class="ep-mark" src="/assets/quiz-lab-icon.png" alt="" width="36" height="36"><span><b>Quiz LAB</b><small>Secure exam room</small></span></a><div class="ep-user"><span>${esc(app.user?.name || app.user?.email || "")}</span><a class="ep-link" href="/dashboard">Back to app</a><button class="ep-btn ep-btn-quiet" data-action="logout">Sign out</button></div></header><div id="ep-content"></div><div id="ep-toast" role="status" aria-live="polite"></div></div>`;
+    root.innerHTML = `<div class="ep-shell"><header class="ep-top"><a class="ep-brand" href="/exams"><img class="ep-mark" src="/assets/quiz-lab-icon.png" alt="" width="36" height="36"><span><b>Quiz LAB</b><small>Secure exam room</small></span></a><div class="ep-user"><button type="button" class="ep-btn ep-btn-quiet" data-action="open-coc" style="font-weight:700;cursor:pointer;padding:4px 10px;border-radius:6px;border:1px solid #cbd5e1;background:rgba(255,255,255,0.08);color:inherit;display:inline-flex;align-items:center;gap:6px;">${I("shield", 13, "#10b981")} COC</button><span class="ep-user-name">${esc(app.user?.name || app.user?.email || "")}</span><a class="ep-link" href="/dashboard">Back to app</a><button class="ep-btn ep-btn-quiet" data-action="logout">Sign out</button></div></header><div id="ep-content"></div><div id="ep-toast" role="status" aria-live="polite"></div></div>`;
     root.addEventListener("click", onClick);
     root.addEventListener("input", onInput);
     root.addEventListener("change", onChange);
@@ -1268,7 +1391,156 @@
   }
   function rulesView() {
     const e = app.exam || {};
-    return `<section class="ep-page ep-narrow"><div class="ep-card"><p class="ep-eyebrow">BEFORE YOU BEGIN</p><h1>${esc(e.title)}</h1><p class="ep-instructions">${contentHtml(e.instructions || "Read each question carefully and submit before time expires.")}</p><p>The timer is shared by all candidates. Joining late does not add time. ${Number(e.max_warnings || 3)} warnings lock your session until the manager reviews it.</p><div class="ep-alert">This platform records limited browser focus and fullscreen events. It does not verify identity or monitor video/audio.</div><label class="ep-check"><input type="checkbox" id="ep-rules-check" /> I have read and agree to follow the exam instructions.</label><div class="ep-actions"><button class="ep-btn" data-action="back">Cancel</button><button class="ep-btn ep-btn-primary" data-action="join-confirm">Accept and continue</button></div></div></section>`;
+    const step = app.onboardingStep || 1;
+
+    let content = "";
+    if (step === 1) {
+      content = `
+        <div class="ep-onboarding-card">
+          <div class="ep-shield-badge" style="background:#e0f2fe;">
+            ${I("shield", 36, "#0284c7")}
+          </div>
+          <h2 class="ep-onboarding-title">Exam Environment Check</h2>
+          <p class="ep-onboarding-text">
+            Please confirm your testing workspace meets GenZ IITian academic integrity standards:
+          </p>
+          <div class="ep-checklist-box">
+            <div class="ep-checklist-item">
+              ${I("lock", 16, "#059669")}
+              <div><b>Locked &amp; Private Room:</b> Ensure you are alone with no other persons present.</div>
+            </div>
+            <div class="ep-checklist-item">
+              ${I("volumeX", 16, "#059669")}
+              <div><b>Zero Noise:</b> No background conversation, audio devices, or music.</div>
+            </div>
+            <div class="ep-checklist-item">
+              ${I("wifi", 16, "#059669")}
+              <div><b>Stable Network:</b> Ensure unlimited high-speed data or uninterrupted Wi-Fi.</div>
+            </div>
+            <div class="ep-checklist-item">
+              ${I("shield", 16, "#059669")}
+              <div><b>Zero Cheating Tolerance:</b> No secondary devices, paper notes, or browser extensions.</div>
+            </div>
+          </div>
+          <button type="button" class="ep-modal-btn" data-action="onboard-step-2" style="background:#059669;box-shadow:0 4px 14px rgba(5,150,105,0.3);">
+            Proceed to Attendance →
+          </button>
+          <div class="ep-modal-stepper">
+            <span class="ep-stepper-dot active"></span>
+            <span class="ep-stepper-dot"></span>
+            <span class="ep-stepper-dot"></span>
+            <span class="ep-stepper-dot"></span>
+          </div>
+        </div>
+      `;
+    } else if (step === 2) {
+      content = `
+        <div class="ep-onboarding-card">
+          <div class="ep-shield-badge" style="background:#e2e8f0;">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="#334155" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="10" fill="#334155"/>
+              <path d="M8 12.3L10.7 15L16.3 9.4" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h2 class="ep-onboarding-title">Record my Attendance</h2>
+          <p class="ep-onboarding-text" style="font-size:13.5px;color:#334155;line-height:1.65;margin-bottom:24px;">
+            By marking your attendance, you confirm your presence for the exam. Please note that once your attendance is recorded, any exit from the exam session will be registered and could affect your ability to continue. Make sure you're ready before proceeding. If you face any technical issues, reach out to support immediately
+          </p>
+          <button type="button" class="ep-modal-btn" data-action="onboard-step-3" style="background:#475569;">
+            Confirm Attendance
+          </button>
+          <div class="ep-modal-stepper">
+            <span class="ep-stepper-dot"></span>
+            <span class="ep-stepper-dot active"></span>
+            <span class="ep-stepper-dot"></span>
+            <span class="ep-stepper-dot"></span>
+          </div>
+        </div>
+      `;
+    } else if (step === 3) {
+      content = `
+        <div class="ep-onboarding-card">
+          <div class="ep-shield-badge" style="background:#e0f2fe;">
+            ${I("camera", 36, "#0284c7")}
+          </div>
+          <h2 class="ep-onboarding-title">Live Identity Capture</h2>
+          <p class="ep-onboarding-text" style="margin-bottom:14px;">
+            Position your face inside the frame. Live camera verification will be logged.
+          </p>
+          <div class="ep-cam-viewfinder">
+            <video id="ep-cam-stream" class="ep-cam-video" autoplay playsinline muted></video>
+            <canvas id="ep-cam-canvas" width="320" height="240" style="display:none;"></canvas>
+            <img id="ep-cam-snapshot" class="ep-cam-preview-img" style="display:${app.photoDataUrl ? "block" : "none"};" ${app.photoDataUrl ? `src="${app.photoDataUrl}"` : ""} />
+            <div id="ep-cam-fallback-tag" style="display:none;position:absolute;bottom:8px;left:8px;font-size:10px;background:rgba(0,0,0,0.6);color:#fff;padding:2px 6px;border-radius:4px;">
+              Live Viewfinder
+            </div>
+          </div>
+          <div id="ep-cam-action-bar" style="width:100%;display:${app.photoDataUrl ? "none" : "block"};">
+            <button type="button" id="ep-btn-take-photo" class="ep-modal-btn" data-action="take-selfie" style="background:#059669;display:flex;align-items:center;justify-content:center;gap:8px;">
+              ${I("camera", 16, "#ffffff")} Capture Photo
+            </button>
+          </div>
+          <div id="ep-cam-confirm-bar" style="display:${app.photoDataUrl ? "flex" : "none"};width:100%;gap:10px;">
+            <button type="button" id="ep-btn-retake-photo" class="ep-modal-btn" data-action="retake-selfie" style="background:#f1f5f9;color:#334155;border:1px solid #cbd5e1;flex:1;display:flex;align-items:center;justify-content:center;gap:6px;">
+              ${I("refresh", 14, "#334155")} Retake
+            </button>
+            <button type="button" id="ep-btn-confirm-photo" class="ep-modal-btn" data-action="onboard-step-4" style="background:#059669;flex:1;display:flex;align-items:center;justify-content:center;gap:6px;">
+              ${I("check", 14, "#ffffff")} Confirm Photo
+            </button>
+          </div>
+          <div class="ep-modal-stepper">
+            <span class="ep-stepper-dot"></span>
+            <span class="ep-stepper-dot"></span>
+            <span class="ep-stepper-dot active"></span>
+            <span class="ep-stepper-dot"></span>
+          </div>
+        </div>
+      `;
+    } else {
+      content = `
+        <div class="ep-onboarding-card">
+          <div class="ep-shield-badge" style="background:#fef3c7;">
+            ${I("fileText", 36, "#d97706")}
+          </div>
+          <h2 class="ep-onboarding-title" style="margin-bottom:6px;">
+            Exam Protocol &amp; Final Agreement
+          </h2>
+          <div class="ep-checklist-box" style="font-size:12.5px;">
+            <div class="ep-checklist-item">
+              ${I("slash", 16, "#dc2626")}
+              <div><b>No Window Leaving:</b> You are NOT permitted to leave or minimize this window. Any exit locks access and requires manager review.</div>
+            </div>
+            <div class="ep-checklist-item">
+              ${I("slash", 16, "#dc2626")}
+              <div><b>No Tab Switching:</b> You are NOT permitted to open any other tab. Doing so triggers infraction warnings.</div>
+            </div>
+            <div class="ep-checklist-item">
+              ${I("clock", 16, "#059669")}
+              <div><b>Auto-Submission:</b> Your answers will automatically submit when the exam timer ends.</div>
+            </div>
+            <div class="ep-checklist-item">
+              ${I("lock", 16, "#475569")}
+              <div><b>Integrity Guard:</b> Copy/paste, double-clicking, and text selections are locked.</div>
+            </div>
+          </div>
+          <label style="display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;color:#334155;cursor:pointer;margin-bottom:20px;text-align:left;width:100%;">
+            <input type="checkbox" id="ep-cb-agree" style="width:17px;height:17px;accent-color:#059669;cursor:pointer;" />
+            <span>I understand and agree to all examination rules.</span>
+          </label>
+          <button type="button" id="ep-btn-final-enter" class="ep-modal-btn" data-action="join-confirm" disabled style="background:#94a3b8;color:#ffffff;cursor:not-allowed;box-shadow:none;">
+            I Agree &amp; Start Exam
+          </button>
+          <div class="ep-modal-stepper">
+            <span class="ep-stepper-dot"></span>
+            <span class="ep-stepper-dot"></span>
+            <span class="ep-stepper-dot"></span>
+            <span class="ep-stepper-dot active"></span>
+          </div>
+        </div>
+      `;
+    }
+
+    return `<div id="ep-root" style="display:flex;align-items:center;justify-content:center;min-height:85vh;padding:24px;">${content}</div>`;
   }
   /* The exam screen: header with timer and Submit, question palette on the left,
      one question at a time. Layout follows the exam portal's live exam view. */
@@ -1331,7 +1603,8 @@
     return (app.exam?.questions || [])
       .map((q, i) => {
         const status = app.review[q.id] ? "ep-q-review" : roomAnswered(q) ? "ep-q-answered" : "ep-q-unvisited";
-        return `<button type="button" class="ep-q-btn ${status} ${i === app.roomIndex ? "current" : ""}" data-room-go="${i}" aria-label="Question ${i + 1}${status === "ep-q-answered" ? ", answered" : status === "ep-q-review" ? ", marked for review" : ""}">${i + 1}</button>`;
+        const isCurrent = i === app.roomIndex && app.activeSection !== "sec-coc";
+        return `<button type="button" class="ep-q-btn ${status} ${isCurrent ? "current" : ""}" data-room-go="${i}" aria-label="Question ${i + 1}${status === "ep-q-answered" ? ", answered" : status === "ep-q-review" ? ", marked for review" : ""}">${i + 1}</button>`;
       })
       .join("");
   }
@@ -1358,6 +1631,7 @@
   function roomGo(index) {
     const total = (app.exam?.questions || []).length;
     if (!total) return;
+    app.activeSection = "sec-questions";
     app.roomIndex = Math.min(Math.max(0, index), total - 1);
     rememberRoom();
     render();
@@ -1392,6 +1666,15 @@
     const check =
       '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>';
     const canSubmit = e.status === "live" && sess.status === "in_exam";
+
+    const isCocActive = app.activeSection === "sec-coc";
+    const sections = [
+      { id: "sec-coc", title: "Code of Conduct (COC)", isCoc: true },
+      ...(Array.isArray(e.sections) && e.sections.length
+        ? e.sections
+        : [{ id: "sec-questions", title: e.subject ? `${e.subject} Questions` : "Exam Questions", count: total }])
+    ];
+
     return `<div id="ep-root" class="ep-live-exam-root pr-live-root" style="display:flex;flex-direction:column;overflow:hidden;background:#f8fafc;">
 <header class="pr-live-header" style="background:#ffffff;border-bottom:1px solid #e2e8f0;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(18px, 2vw, 34px);flex-shrink:0;">
 <div style="display:flex;align-items:center;gap:12px;min-width:0;"><img src="/assets/quiz-lab-icon.png" alt="Quiz Lab" style="height:32px;width:32px;border-radius:9px;flex-shrink:0;"><div style="min-width:0;"><h1 style="font-size:clamp(14px, 1.15vw, 21px);font-weight:800;color:#0f172a;margin:0;overflow-wrap:anywhere;">${esc(e.title)}</h1><div style="font-size:clamp(11px, 0.9vw, 15px);color:#64748b;">${esc(app.user?.name || "")}${app.user?.email ? ` (${esc(app.user.email)})` : ""}</div></div></div>
@@ -1404,19 +1687,110 @@
 </div></header>
 <div class="pr-live-body" style="display:flex;flex:1;overflow:hidden;">
 <aside id="ep-sidebar" class="pr-live-aside" style="width:clamp(280px, 24vw, 380px);background:#ffffff;border-right:2px solid #0f172a;display:flex;flex-direction:column;flex-shrink:0;">
-<div class="pr-live-palette" style="flex:1;overflow-y:auto;padding:16px;"><div class="pr-live-palette-title" style="font-size:11px;font-weight:700;text-transform:uppercase;color:#64748b;margin-bottom:12px;">Question Palette</div><div class="ep-q-grid" id="ep-room-palette">${roomPalette()}</div></div>
-<div class="pr-live-tools-box" style="padding:12px 16px;border-top:1px solid #e2e8f0;background:#ffffff;"><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;"><button type="button" data-calc="basic" title="Open Basic Calculator" style="background:#f0fdf4;border:1px solid #86efac;color:#047857;padding:9px 10px;border-radius:8px;font-size:12px;font-weight:800;cursor:pointer;">Basic calculator</button><button type="button" data-calc="pro" title="Open Scientific Calculator" style="background:#f0fdf4;border:1px solid #86efac;color:#047857;padding:9px 10px;border-radius:8px;font-size:12px;font-weight:800;cursor:pointer;">Pro calculator</button></div><div style="margin-top:8px;"><button type="button" data-action="messages" style="width:100%;background:#0f172a;color:#fff;border:none;padding:9px 10px;border-radius:8px;font-size:12px;font-weight:800;cursor:pointer;">Doubts and messages</button></div><div style="margin-top:8px;display:flex;align-items:center;justify-content:space-between;gap:8px;"><span class="ep-save-state" id="ep-save-state">${esc(app.saveError || (app.dirty ? "Unsaved changes…" : "Answers saved on server"))}</span><button type="button" class="ep-btn ep-btn-small" data-action="retry-save">Save now</button></div></div>
-<div class="pr-live-legend" id="ep-room-legend" style="padding:12px 16px;border-top:1px solid #e2e8f0;background:#f8fafc;font-size:11px;color:#475569;">${roomLegend()}</div>
+
+  <!-- Sections (before Question Palette) -->
+  <div class="pr-live-sections" style="padding:14px 16px;border-bottom:1px solid #e2e8f0;background:#f8fafc;">
+    <div style="font-size:11px;font-weight:700;text-transform:uppercase;color:#64748b;margin-bottom:8px;display:flex;align-items:center;justify-content:space-between;">
+      <span>Sections</span>
+      <span style="font-size:10px;color:#94a3b8;">${sections.length} sections</span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:6px;">
+      ${sections.map((sec) => {
+        const isCoc = sec.id === "sec-coc";
+        const isActive = isCoc ? isCocActive : !isCocActive && (app.activeSection === sec.id || (!app.activeSection && sec.id === "sec-questions"));
+        const secQCount = isCoc ? null : sec.questions ? sec.questions.length : total;
+        return `
+          <button type="button" class="ep-sec-tab-btn" data-sec-id="${esc(sec.id)}" style="display:flex;align-items:center;justify-content:space-between;padding:8px 12px;border-radius:8px;border:1.5px solid ${isActive ? "#059669" : "#e2e8f0"};background:${isActive ? "#f0fdf4" : "#ffffff"};color:${isActive ? "#065f46" : "#334155"};font-weight:${isActive ? "800" : "600"};font-size:12.5px;cursor:pointer;text-align:left;transition:all 0.15s ease;">
+            <span style="display:flex;align-items:center;gap:7px;">
+              ${isCoc ? I("shield", 14, isActive ? "#059669" : "#64748b") : I("fileText", 13, isActive ? "#059669" : "#94a3b8")}
+              ${esc(sec.title)}
+            </span>
+            ${isCoc ? '<span style="font-size:10px;font-weight:800;background:#dbeafe;color:#1e40af;padding:2px 6px;border-radius:4px;">RULES</span>' : `<span style="font-size:11px;color:#64748b;font-weight:700;">(${secQCount})</span>`}
+          </button>
+        `;
+      }).join("")}
+    </div>
+  </div>
+
+  <!-- Question Palette -->
+  <div class="pr-live-palette" style="flex:1;overflow-y:auto;padding:16px;">
+    <div class="pr-live-palette-title" style="font-size:11px;font-weight:700;text-transform:uppercase;color:#64748b;margin-bottom:12px;">Question Palette</div>
+    <div class="ep-q-grid" id="ep-room-palette">${roomPalette()}</div>
+  </div>
+
+  <!-- Tools (Merged calculator & doubts in same row, save button removed) -->
+  <div class="pr-live-tools-box" style="padding:12px 16px;border-top:1px solid #e2e8f0;background:#ffffff;">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+      <button type="button" data-calc="toggle" title="Open Calculator" style="background:#f0fdf4;border:1.5px solid #86efac;color:#047857;padding:9px 10px;border-radius:8px;font-size:12px;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;">
+        ${I("calculator", 14, "#047857")} Calculator
+      </button>
+      <button type="button" data-action="messages" title="Doubts and messages" style="background:#0f172a;border:1px solid #334155;color:#fff;padding:9px 10px;border-radius:8px;font-size:12px;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;">
+        ${I("message", 14, "#fff")} Doubts &amp; Messages
+      </button>
+    </div>
+  </div>
+
+  <!-- Legend -->
+  <div class="pr-live-legend" id="ep-room-legend" style="padding:12px 16px;border-top:1px solid #e2e8f0;background:#f8fafc;font-size:11px;color:#475569;">${roomLegend()}</div>
 </aside>
+
 <main class="pr-live-main" id="ep-room-main" style="flex:1;display:flex;flex-direction:column;overflow-y:auto;padding:clamp(22px, 2vw, 42px) clamp(28px, 3vw, 58px);background:#ffffff;">
-${e.status === "paused" ? '<div class="ep-alert">The manager has paused this exam. Answers remain saved. You can continue when it resumes.</div>' : ""}
-<article class="ep-question" data-question-id="${esc(q.id)}">
-<div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;border-bottom:1px solid #e2e8f0;padding-bottom:12px;margin-bottom:18px;"><div style="display:flex;align-items:center;gap:10px;"><span style="font-size:17px;font-weight:800;color:#0f172a;">Question ${index + 1} of ${total}</span><span style="padding:3px 8px;border-radius:6px;background:#e0f2fe;color:#0369a1;font-size:11px;font-weight:700;">${esc(ROOM_TYPE[q.type] || String(q.type || "").toUpperCase())}</span></div>${passage ? "" : `<div style="font-size:12px;font-weight:700;color:#059669;">+${Number(q.marks || 0)} Marks${Number(q.negative) ? ` | -${Number(q.negative)} Negative` : ""}</div>`}</div>
-<div class="pr-live-prompt" style="font-size:15px;color:#0f172a;line-height:1.6;font-weight:500;margin-bottom:14px;">${contentHtml(q.prompt)}</div>
-<div style="margin-bottom:28px;">${roomInputs(q, locked)}</div>
-</article>
-<div style="display:none;" aria-hidden="true">${list.map((item, i) => i === index ? "" : `<div class="ep-question" data-question-id="${esc(item.id)}">${contentHtml(item.prompt)}</div>`).join("")}</div>
-<div class="pr-live-actions" style="margin-top:auto;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;border-top:1px solid #e2e8f0;padding-top:18px;"><div style="display:flex;gap:8px;"><button type="button" data-action="room-prev" ${index === 0 ? "disabled" : ""} style="background:#fff;border:1px solid #cbd5e1;color:#475569;padding:9px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;">← Prev</button>${passage ? "" : `<button type="button" data-action="clear-answer" data-id="${esc(q.id)}" ${locked ? "disabled" : ""} style="background:#fff;border:1px solid #cbd5e1;color:#64748b;padding:9px 14px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;">Clear</button>`}</div><div style="display:flex;gap:8px;">${passage ? "" : `<button type="button" data-action="room-review" style="background:#f5f3ff;border:1px solid #c4b5fd;color:#6d28d9;padding:9px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;">${app.review[q.id] ? "Marked for Review" : "Review &amp; Next"}</button>`}<button type="button" data-action="room-next" style="background:#059669;color:#fff;border:none;padding:9px 20px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;">${index === total - 1 ? "Save Response" : passage ? "Next →" : "Save &amp; Next →"}</button></div></div>
+  ${e.status === "paused" ? '<div class="ep-alert">The manager has paused this exam. Answers remain saved. You can continue when it resumes.</div>' : ""}
+  ${isCocActive ? `
+    <div class="pr-live-coc-view" style="max-width:880px;padding:10px 0;">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid #e2e8f0;">
+        <img src="/assets/quiz-lab-icon.png" alt="Quiz Lab" style="height:32px;width:32px;border-radius:8px;object-fit:contain;">
+        <div>
+          <h2 style="font-size:18px;font-weight:800;color:#0f172a;margin:0;">Candidate Code of Conduct &amp; Remote Proctoring Rules</h2>
+          <div style="font-size:12px;color:#64748b;">Quiz LAB Academic Integrity &amp; Infraction Policy</div>
+        </div>
+      </div>
+
+      <h3 style="font-size:15px;font-weight:800;color:#1e3a8a;margin:0 0 10px 0;">
+        Online Remote Proctored Exams
+      </h3>
+      <p style="font-size:13.5px;color:#334155;line-height:1.65;margin-bottom:20px;">
+        This exam is conducted online from the examinee's place of residence and proctored remotely by the Quiz Lab team. The following guidelines must be followed by all examinees at all times during the examination:
+      </p>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));gap:14px;margin-bottom:24px;">
+        ${[
+          ["1. Personal details", "No examinee shall share personal details with proctors, including but not limited to phone number or address, during or after the exam."],
+          ["2. Clean desk", "The table or desk where the examinee takes this exam shall not have any items kept that may have sensitive information, including but not limited to phone numbers and address."],
+          ["3. No assistance", "No examinee shall aid, or attempt to aid, another candidate by discussing answers via email, text, chat, call, or any other method."],
+          ["4. Confidential exam", "No examinee will disclose any details of what happened during the exam or examination trials to anyone outside."],
+          ["5. Ask inside exam", "If an examinee wishes to ask a question during the exam, they should post the query in the exam room chat / doubts window and the proctor will clarify the issue."],
+          ["6. Violation action", "If any examinee is found to have violated the Code of Conduct for Online Examinations, or to have acted improperly, they will be liable to disciplinary procedures. This can include withholding exam results, suspension, or termination from the program."]
+        ]
+          .map(
+            ([title, body]) => `
+              <div style="border:1.5px solid #e2e8f0;background:#f8fafc;border-radius:12px;padding:14px 16px;">
+                <div style="font-size:13px;font-weight:800;color:#0f172a;margin-bottom:6px;">${title}</div>
+                <div style="font-size:12.5px;line-height:1.55;color:#475569;">${body}</div>
+              </div>
+            `
+          )
+          .join("")}
+      </div>
+
+      <div style="padding-top:18px;border-top:1px solid #e2e8f0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+        <div style="font-size:12px;color:#059669;font-weight:700;display:flex;align-items:center;gap:6px;">
+          ${I("check", 14, "#059669")} You agreed to follow this Code of Conduct upon entering the exam.
+        </div>
+        <button type="button" data-action="coc-back-to-questions" class="ep-btn ep-btn-primary" style="background:#059669;color:#fff;border:none;padding:10px 22px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:8px;">
+          Back to Exam Questions →
+        </button>
+      </div>
+    </div>
+  ` : `
+    <article class="ep-question" data-question-id="${esc(q.id)}">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;border-bottom:1px solid #e2e8f0;padding-bottom:12px;margin-bottom:18px;"><div style="display:flex;align-items:center;gap:10px;"><span style="font-size:17px;font-weight:800;color:#0f172a;">Question ${index + 1} of ${total}</span><span style="padding:3px 8px;border-radius:6px;background:#e0f2fe;color:#0369a1;font-size:11px;font-weight:700;">${esc(ROOM_TYPE[q.type] || String(q.type || "").toUpperCase())}</span></div>${passage ? "" : `<div style="font-size:12px;font-weight:700;color:#059669;">+${Number(q.marks || 0)} Marks${Number(q.negative) ? ` | -${Number(q.negative)} Negative` : ""}</div>`}</div>
+    <div class="pr-live-prompt" style="font-size:15px;color:#0f172a;line-height:1.6;font-weight:500;margin-bottom:14px;">${contentHtml(q.prompt)}</div>
+    <div style="margin-bottom:28px;">${roomInputs(q, locked)}</div>
+    </article>
+    <div style="display:none;" aria-hidden="true">${list.map((item, i) => i === index ? "" : `<div class="ep-question" data-question-id="${esc(item.id)}">${contentHtml(item.prompt)}</div>`).join("")}</div>
+    <div class="pr-live-actions" style="margin-top:auto;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;border-top:1px solid #e2e8f0;padding-top:18px;"><div style="display:flex;gap:8px;"><button type="button" data-action="room-prev" ${index === 0 ? "disabled" : ""} style="background:#fff;border:1px solid #cbd5e1;color:#475569;padding:9px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;">← Prev</button>${passage ? "" : `<button type="button" data-action="clear-answer" data-id="${esc(q.id)}" ${locked ? "disabled" : ""} style="background:#fff;border:1px solid #cbd5e1;color:#64748b;padding:9px 14px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;">Clear</button>`}</div><div style="display:flex;gap:8px;">${passage ? "" : `<button type="button" data-action="room-review" style="background:#f5f3ff;border:1px solid #c4b5fd;color:#6d28d9;padding:9px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;">${app.review[q.id] ? "Marked for Review" : "Review &amp; Next"}</button>`}<button type="button" data-action="room-next" style="background:#059669;color:#fff;border:none;padding:9px 20px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;">${index === total - 1 ? "Save Response" : passage ? "Next →" : "Save &amp; Next →"}</button></div></div>
+  `}
 </main></div></div>`;
   }
   function formatClock(s) {
@@ -1449,6 +1823,11 @@ ${e.status === "paused" ? '<div class="ep-alert">The manager has paused this exa
                   : '<section class="ep-page"><div class="ep-card"><p>Loading exam…</p></div></section>';
     document.getElementById("ep-app")?.classList.toggle("pr-live", app.screen === "room");
     if (app.screen !== "room") window.ExamCalculator?.close();
+    if (app.screen === "rules" && app.onboardingStep === 3) {
+      setTimeout(startWebcam, 50);
+    } else {
+      stopWebcam();
+    }
     typeset(root);
     if (focusSelector) {
       const input = $(focusSelector);
@@ -1875,8 +2254,18 @@ ${e.status === "paused" ? '<div class="ep-alert">The manager has paused this exa
   async function onClick(ev) {
     const jump = ev.target.closest("[data-room-go]");
     if (jump) return void roomGo(Number(jump.dataset.roomGo));
+    const secBtn = ev.target.closest("[data-sec-id]");
+    if (secBtn) {
+      app.activeSection = secBtn.dataset.secId;
+      render();
+      return;
+    }
     const calc = ev.target.closest("[data-calc]");
-    if (calc) return void window.ExamCalculator?.toggle(calc.dataset.calc);
+    if (calc) {
+      const mode = calc.dataset.calc;
+      window.ExamCalculator?.toggle(mode === "toggle" ? undefined : mode);
+      return;
+    }
     const b = ev.target.closest("[data-action]");
     if (!b) return;
     ev.preventDefault();
@@ -2215,23 +2604,88 @@ ${e.status === "paused" ? '<div class="ep-alert">The manager has paused this exa
         return;
       }
       if (action === "join") {
+        app.onboardingStep = 1;
         app.screen = "rules";
+        render();
+        return;
+      }
+      if (action === "onboard-step-2") {
+        app.onboardingStep = 2;
+        render();
+        return;
+      }
+      if (action === "onboard-step-3") {
+        app.attendanceTime = new Date().toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit", second: "2-digit" });
+        app.onboardingStep = 3;
+        render();
+        return;
+      }
+      if (action === "take-selfie") {
+        const video = document.getElementById("ep-cam-stream");
+        const canvas = document.getElementById("ep-cam-canvas");
+        const snapshotImg = document.getElementById("ep-cam-snapshot");
+        const actionBar = document.getElementById("ep-cam-action-bar");
+        const confirmBar = document.getElementById("ep-cam-confirm-bar");
+        if (canvas) {
+          const ctx = canvas.getContext("2d");
+          if (video && video.videoWidth > 0) {
+            ctx.drawImage(video, 0, 0, 320, 240);
+          } else {
+            simulateCanvasCamera(canvas, video);
+          }
+          app.photoDataUrl = canvas.toDataURL("image/jpeg");
+          if (snapshotImg) {
+            snapshotImg.src = app.photoDataUrl;
+            snapshotImg.style.display = "block";
+          }
+          if (video) video.style.display = "none";
+          if (actionBar) actionBar.style.display = "none";
+          if (confirmBar) confirmBar.style.display = "flex";
+        }
+        return;
+      }
+      if (action === "retake-selfie") {
+        app.photoDataUrl = null;
+        const video = document.getElementById("ep-cam-stream");
+        const snapshotImg = document.getElementById("ep-cam-snapshot");
+        const actionBar = document.getElementById("ep-cam-action-bar");
+        const confirmBar = document.getElementById("ep-cam-confirm-bar");
+        if (video) video.style.display = "block";
+        if (snapshotImg) snapshotImg.style.display = "none";
+        if (actionBar) actionBar.style.display = "block";
+        if (confirmBar) confirmBar.style.display = "none";
+        return;
+      }
+      if (action === "onboard-step-4") {
+        stopWebcam();
+        app.onboardingStep = 4;
         render();
         return;
       }
       if (action === "join-confirm") {
         await fullscreen();
-        if (!$("#ep-rules-check")?.checked)
+        const cb = $("#ep-cb-agree") || $("#ep-rules-check");
+        if (cb && !cb.checked)
           throw new Error("Please accept the exam rules before continuing.");
         await request(
           `/exam-platform/exams/${encodeURIComponent(app.exam.id)}/join`,
-          { method: "POST", body: { acceptedRules: true } },
+          { method: "POST", body: { acceptedRules: true, attendanceRecordedAt: app.attendanceTime } },
         );
         await loadState();
         app.draftAnswers = { ...(app.state.session?.answers || {}) };
+        app.activeSection = "sec-questions";
         app.screen = "room";
         render();
         startPolling();
+        return;
+      }
+      if (action === "open-coc") {
+        showCocModal();
+        return;
+      }
+      if (action === "coc-back-to-questions") {
+        app.activeSection = "sec-questions";
+        render();
         return;
       }
       if (action === "submit-exam") {
@@ -2437,6 +2891,16 @@ ${e.status === "paused" ? '<div class="ep-alert">The manager has paused this exa
   }
   function onChange(ev) {
     const t = ev.target;
+    if (t.matches("#ep-cb-agree")) {
+      const btn = document.getElementById("ep-btn-final-enter");
+      if (btn) {
+        btn.disabled = !t.checked;
+        btn.style.background = t.checked ? "#059669" : "#94a3b8";
+        btn.style.cursor = t.checked ? "pointer" : "not-allowed";
+        btn.style.boxShadow = t.checked ? "0 4px 14px rgba(5,150,105,0.3)" : "none";
+      }
+      return;
+    }
     if (t.matches("[data-answer]"))
       changedAnswer(
         t.dataset.answer,

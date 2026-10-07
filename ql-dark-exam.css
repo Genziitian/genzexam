@@ -131,6 +131,10 @@
 :root[data-theme=dark] .ep-onboarding-text{color:#b0baca}
 :root[data-theme=dark] .ep-modal-btn{background-color:#475569;color:#ffffff}
 :root[data-theme=dark] .ep-modal-btn:hover{background-color:#334155}
+:root[data-theme=dark] .ep-checklist-box{background-color:#0b0f17;border-color:#1e293b}
+:root[data-theme=dark] .ep-checklist-item{color:#cbd5e1}
+:root[data-theme=dark] .ep-sec-tab-btn{background-color:#151a25;border-color:#2d3949;color:#d6dae5}
+:root[data-theme=dark] .ep-sec-tab-btn:hover{background-color:#1f2937}
 :root[data-theme=dark] .saas-header{background-color:#3d3d3d;border-color:#1c1c1c}
 :root[data-theme=dark] .saas-breadcrumb{color:#9ca3af}
 :root[data-theme=dark] .saas-breadcrumb span.active{color:#f9fafb}
