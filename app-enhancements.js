@@ -557,6 +557,29 @@
     if (el && el.getAttribute(name) !== value) el.setAttribute(name, value);
   }
 
+  function countUp(el) {
+    if (el.hasAttribute("data-ql-counted")) return;
+    var node = el.firstChild;
+    if (!node || node.nodeType !== 3) return;
+    var match = /^(\D*)(\d+(?:\.\d+)?)$/.exec(node.nodeValue.trim());
+    if (!match) return;
+    el.setAttribute("data-ql-counted", "");
+    var target = Number(match[2]);
+    if (!target || (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches)) return;
+    var prefix = match[1], decimals = (match[2].split(".")[1] || "").length, finalText = node.nodeValue, started = 0;
+    function frame(now) {
+      if (!started) started = now;
+      // React re-rendered a new value meanwhile: leave it alone.
+      if (!el.isConnected || el.firstChild !== node) return;
+      var t = Math.min(1, (now - started) / 900);
+      if (t >= 1) { node.nodeValue = finalText; return; }
+      node.nodeValue = prefix + (target * (1 - Math.pow(1 - t, 3))).toFixed(decimals);
+      requestAnimationFrame(frame);
+    }
+    node.nodeValue = prefix + (0).toFixed(decimals);
+    requestAnimationFrame(frame);
+  }
+
   function decorateDashboard() {
     if (!/^\/dashboard\/?$/i.test(window.location.pathname)) return;
     var hello = null;
@@ -580,6 +603,9 @@
       else if (/^PERFORMANCE\b/.test(text)) tag(card, "data-ql-card", "perf");
       else if (text === "WEEKLY GOAL") tag(card, "data-ql-card", "goal");
     });
+
+    /* Numbers on the stat cards and the performance card count up once when they first appear. */
+    root.querySelectorAll("[data-ql-stat] .leading-none, [data-ql-card=perf] .leading-none").forEach(countUp);
 
     /* The Activity and Leaderboard panels are not shown on the dashboard. */
     root.querySelectorAll("div.uppercase").forEach(function (label) {
