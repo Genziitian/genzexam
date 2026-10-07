@@ -47,7 +47,7 @@ RewriteRule ^ index.html [QSA,L]
   <FilesMatch "^index-[A-Za-z0-9]+\.(js|css)$">
     Header set Cache-Control "public, max-age=31536000, immutable"
   </FilesMatch>
-  <FilesMatch "^(ql-theme|ql-dark-[a-z]+|exam-platform|exam-rich-content|exam-calculator|app-enhancements|paper-room|papers|paper-pricing|manager-sales|manager-discussions|storefront-runtime|storefront-dashboard)\.(js|css)$">
+  <FilesMatch "^(sw|ql-theme|ql-dark-[a-z]+|exam-platform|exam-rich-content|exam-calculator|app-enhancements|paper-room|papers|paper-pricing|manager-sales|manager-discussions|storefront-runtime|storefront-dashboard)\.(js|css)$">
     Header set Cache-Control "no-cache, must-revalidate"
   </FilesMatch>
 </IfModule>

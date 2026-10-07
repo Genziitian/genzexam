@@ -40,6 +40,11 @@
 
   window.QLStorefront = { apiBase: apiBase, token: token, signIn: signIn };
 
+  // Connection guard: retries a request that failed because the phone reused a closed connection.
+  if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
+    try { navigator.serviceWorker.register('/sw.js?v=1').catch(function () {}); } catch (_) {}
+  }
+
   // Papers open in the self-paced paper room, not the old in-app quiz player.
   var oldQuiz = /^\/quiz\/(\d+)\/?$/.exec(location.pathname);
   if (oldQuiz) { location.replace('/paper/' + oldQuiz[1]); return; }
