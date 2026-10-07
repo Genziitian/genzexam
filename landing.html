@@ -72,6 +72,12 @@
     padding:11px 18px;border-radius:10px;border:1px solid transparent;cursor:pointer;
     transition:transform .12s ease,background .2s,border-color .2s,color .2s;white-space:nowrap}
   .btn:active{transform:translateY(1px)}
+  .profile-chip{display:inline-flex;align-items:center;gap:8px;max-width:190px;padding:4px 12px 4px 4px;border:1px solid var(--border);border-radius:999px;background:var(--surface);color:var(--ink);font-size:13px;font-weight:600}
+  .profile-chip:hover{border-color:var(--muted)}
+  .profile-chip[hidden],.btn[hidden]{display:none}
+  .profile-initial{width:28px;height:28px;border-radius:50%;background:var(--deep);color:var(--deep-ink);display:grid;place-items:center;font-size:12px;font-weight:700;flex-shrink:0}
+  .profile-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  @media (max-width:760px){.profile-name{display:none}.profile-chip{padding:4px}}
   .btn-ghost{border-color:var(--border);background:var(--surface);color:var(--ink)}
   .btn-ghost:hover{border-color:var(--muted)}
   .btn-dark{background:var(--deep);color:var(--deep-ink)}
@@ -210,6 +216,8 @@
       </button>
       <a class="btn btn-ghost hide-sm" id="auth-btn" href="/login">Log in</a>
       <a class="btn btn-dark" id="primary-btn" href="/login">Start practising</a>
+      <a class="profile-chip" id="profile-chip" href="/profile" hidden><span class="profile-initial" id="profile-initial"></span><span class="profile-name" id="profile-name"></span></a>
+      <button class="btn btn-ghost" id="logout-btn" type="button" hidden>Log out</button>
     </div>
   </div>
 </header>
@@ -350,7 +358,20 @@
       ['primary-btn','hero-cta','band-cta'].forEach(function(id){
         var el=document.getElementById(id); if(el)el.href=dest;
       });
-      var primary=document.getElementById('primary-btn'); primary.textContent='My papers'; primary.href='/my-papers';
+      document.getElementById('primary-btn').hidden=true;
+      var name=String((u&&(u.name||u.email))||'Profile').trim();
+      document.getElementById('profile-name').textContent=name;
+      document.getElementById('profile-initial').textContent=name.charAt(0).toUpperCase();
+      var chip=document.getElementById('profile-chip'); chip.hidden=false; chip.title=name;
+      var out=document.getElementById('logout-btn'); out.hidden=false;
+      out.addEventListener('click',function(){
+        out.disabled=true;
+        var done=function(){
+          try{localStorage.removeItem('lab_token');localStorage.removeItem('lab_user');}catch(e){}
+          location.assign('/');
+        };
+        fetch(((window.QLStorefront&&window.QLStorefront.apiBase)||'https://labapi.genziitian.in/public/api')+'/auth/logout',{method:'POST',headers:{Accept:'application/json',Authorization:'Bearer '+token}}).then(done,done);
+      });
       var hero=document.getElementById('hero-cta'); hero.textContent='Continue practising'; hero.href='/my-papers';
     }
   }catch(e){}
