@@ -9,11 +9,13 @@
     try { return localStorage.getItem('lab_token') || ''; } catch (_) { return ''; }
   }
 
-  function signIn(paperId) {
+  // open: after login go straight into the paper instead of its details.
+  function signIn(paperId, open) {
     var id = Number(paperId);
     try {
       sessionStorage.setItem(pendingKey, JSON.stringify({
         paperId: Number.isSafeInteger(id) && id > 0 ? id : null,
+        open: open === true,
         at: Date.now()
       }));
     } catch (_) {}
@@ -32,7 +34,8 @@
     if (!token() || !/^\/(dashboard\/?|admin\/?|)$/.test(location.pathname)) return;
     sessionStorage.removeItem(pendingKey);
     var id = Number(pending.paperId);
-    location.replace(Number.isSafeInteger(id) && id > 0 ? '/papers?paper=' + id : '/papers?library=1');
+    var valid = Number.isSafeInteger(id) && id > 0;
+    location.replace(valid ? (pending.open === true ? '/paper/' + id : '/papers?paper=' + id) : '/papers?library=1');
   }
 
   window.QLStorefront = { apiBase: apiBase, token: token, signIn: signIn };

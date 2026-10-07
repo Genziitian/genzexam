@@ -682,8 +682,9 @@
   }
 
   /* ---------------------------------------------------------------
-   * My Papers: the student's free and purchased papers, shown as its
-   * own tab inside the student app (/my-papers). The app renders an
+   * My Papers: the student's own record, papers they bought and papers
+   * they attempted, shown as its own tab inside the student app
+   * (/my-papers). Free papers they never opened stay in Practice. The app renders an
    * empty container for this route and this fills it.
    * ------------------------------------------------------------- */
   function fillMyPapers() {
@@ -692,7 +693,7 @@
     var runtime = window.QLStorefront;
     if (!runtime || !runtime.token()) return;
     host.dataset.qlLoaded = "1";
-    host.innerHTML = '<div class="ql-mp-head"><div><div class="ql-mp-eyebrow">MY PAPERS</div><h1>Your papers.</h1><p>Free papers you claimed and papers you bought. Open one to attempt it.</p></div><a class="ql-mp-browse" href="/papers">Browse papers</a></div><div class="ql-mp-grid" aria-live="polite"><p class="ql-mp-note">Loading your papers…</p></div>';
+    host.innerHTML = '<div class="ql-mp-head"><div><div class="ql-mp-eyebrow">MY PAPERS</div><h1>Your papers.</h1><p>Papers you bought and papers you have attempted, with your progress.</p></div><a class="ql-mp-browse" href="/practice">Browse practice</a></div><div class="ql-mp-grid" aria-live="polite"><p class="ql-mp-note">Loading your papers…</p></div>';
     var grid = host.querySelector(".ql-mp-grid");
     function note(text) {
       grid.replaceChildren();
@@ -710,16 +711,20 @@
     }).then(function (data) {
       if (!host.isConnected) return;
       var papers = Array.isArray(data.papers) ? data.papers : [];
-      if (!papers.length) return note("You have no papers yet. Browse the catalogue to get a free paper or buy one.");
+      if (!papers.length) return note("Nothing here yet. Start any free paper from Practice, or buy a paper, and it shows up here with your score.");
       grid.replaceChildren();
       var labels = { quiz1: "Quiz 1", quiz2: "Quiz 2", endterm: "End Term", mock_test: "Mock test", practice: "Practice", practice_graded: "Graded practice" };
       papers.forEach(function (paper) {
-        var usable = paper.available !== false && paper.has_access !== false && !paper.expired;
-        var state = paper.available === false ? "Unavailable" : paper.expired ? "Access expired" : paper.source === "purchase" ? "Purchased" : "Free";
+        var paid = Number(paper.price_paise || 0) > 0;
+        var purchased = paper.purchased === true || paper.source === "purchase";
+        var expired = paid && !!paper.expired;
+        var usable = paper.available !== false && paper.has_access !== false && !expired;
+        var attempts = Number(paper.attempt_count || 0);
+        var state = paper.available === false ? "Unavailable" : expired ? "Access expired" : purchased ? "Purchased \u2713" : paid && !usable ? "Paid" : "Free";
         var card = document.createElement("article");
-        card.className = "ql-mp-card";
+        card.className = "ql-mp-card" + (purchased && usable ? " owned" : "");
         var badge = document.createElement("span");
-        badge.className = "ql-mp-badge" + (usable ? (paper.source === "purchase" ? " paid" : "") : " off");
+        badge.className = "ql-mp-badge" + (paper.available === false || expired ? " off" : purchased ? " paid" : paid ? " lock" : "");
         badge.textContent = state;
         var title = document.createElement("h3");
         title.textContent = paper.title || "Paper";
@@ -731,14 +736,19 @@
         meta.textContent = [
           paper.question_count != null ? paper.question_count + " questions" : "",
           paper.time_limit_minutes ? paper.time_limit_minutes + " min" : "Untimed",
-          paper.expires_at ? (paper.expired ? "Expired " : "Access until ") + new Date(paper.expires_at).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" }) : ""
+          paper.expires_at && paid ? (expired ? "Expired " : "Access until ") + new Date(paper.expires_at).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" }) : ""
         ].filter(Boolean).join(" · ");
-        card.append(badge, title, sub, meta);
+        var progress = document.createElement("p");
+        progress.className = "ql-mp-progress" + (paper.in_progress ? " live" : attempts ? " done" : "");
+        progress.textContent = paper.in_progress ? "In progress"
+          : attempts ? (paper.last_total_marks != null ? "Last score " + Number(paper.last_score || 0) + "/" + Number(paper.last_total_marks) + " \u00b7 " : "") + attempts + (attempts === 1 ? " attempt" : " attempts")
+          : "Not started";
+        card.append(badge, title, sub, meta, progress);
         if (paper.available !== false) {
           var action = document.createElement("a");
           action.className = "ql-mp-action" + (usable ? "" : " renew");
           action.href = usable ? "/paper/" + encodeURIComponent(paper.id) : "/papers?paper=" + encodeURIComponent(paper.id);
-          action.textContent = usable ? "Open paper" : "Renew access";
+          action.textContent = usable ? (paper.in_progress ? "Continue" : attempts ? "Attempt again" : "Start") : expired ? "Renew access" : "Buy paper";
           card.appendChild(action);
         }
         grid.appendChild(card);
@@ -746,6 +756,68 @@
     }).catch(function (error) {
       if (!host.isConnected) return;
       note(error.message === "role" ? "My Papers is for student accounts. Managers handle papers and sales from the manager console." : "Your papers could not load. Check your connection and reload the page.");
+    });
+  }
+
+  /* ---------------------------------------------------------------
+   * Practice: paid papers carry a lock and price until the student
+   * buys them, then a "Purchased" badge. Free papers are left alone.
+   * Prices come from the public catalogue, purchases from My Papers.
+   * ------------------------------------------------------------- */
+  var paperAccess = null;
+  var paperAccessAt = 0;
+  function loadPaperAccess() {
+    var runtime = window.QLStorefront;
+    if (!runtime || !runtime.token()) return;
+    // One request at a time, and at most one a minute, whether it worked or not.
+    if (paperAccess === "loading" || (paperAccessAt && Date.now() - paperAccessAt < 60000)) return;
+    var previous = paperAccess;
+    paperAccess = "loading";
+    var headers = { Accept: "application/json", Authorization: "Bearer " + runtime.token() };
+    var json = function (response) { return response.ok ? response.json() : { papers: [] }; };
+    Promise.all([
+      fetch(runtime.apiBase + "/storefront/papers", { headers: { Accept: "application/json" } }).then(json),
+      fetch(runtime.apiBase + "/storefront/my-papers", { headers: headers }).then(json)
+    ]).then(function (results) {
+      var map = {};
+      (results[0].papers || []).forEach(function (paper) {
+        if (Number(paper.price_paise || 0) > 0) map[paper.id] = { price: Number(paper.price_paise), owned: false };
+      });
+      (results[1].papers || []).forEach(function (paper) {
+        if (map[paper.id] && paper.has_access !== false && !paper.expired) map[paper.id].owned = true;
+      });
+      paperAccess = map;
+      paperAccessAt = Date.now();
+      schedule();
+    }).catch(function () {
+      paperAccess = previous;
+      paperAccessAt = Date.now();
+    });
+  }
+
+  function decoratePracticeCards() {
+    if (!/^\/practice\//i.test(window.location.pathname)) return;
+    var links = document.querySelectorAll('#root a[href^="/quiz/"]');
+    if (!links.length) return;
+    loadPaperAccess();
+    if (!paperAccess || paperAccess === "loading") return;
+    links.forEach(function (link) {
+      var m = /^\/quiz\/(\d+)\/?$/.exec(link.getAttribute("href") || "");
+      var info = m && paperAccess[m[1]];
+      var row = link.querySelector(":scope > div > div");
+      if (!row) return;
+      var want = info ? (info.owned ? "owned" : "locked") : "";
+      var chip = row.querySelector(".ql-paid-chip");
+      if (!want) { if (chip) chip.remove(); if (link.hasAttribute("data-ql-paid")) link.removeAttribute("data-ql-paid"); return; }
+      var text = info.owned ? "Purchased \u2713" : "\uD83D\uDD12 \u20B9" + String(info.price / 100).replace(/\.0+$/, "");
+      if (!chip) {
+        chip = document.createElement("span");
+        chip.className = "ql-paid-chip";
+        row.appendChild(chip);
+      }
+      if (chip.textContent !== text) chip.textContent = text;
+      tag(chip, "data-state", want);
+      tag(link, "data-ql-paid", want);
     });
   }
 
@@ -952,6 +1024,7 @@
     decorateDashboard();
     decorateManagerConsole();
     fillMyPapers();
+    decoratePracticeCards();
     syncConsoleNav();
     syncHomeLink();
     decorateCoursePage();

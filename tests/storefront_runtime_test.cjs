@@ -40,7 +40,15 @@ assert.equal(app.storage.has('ql_storefront_return'), false);
 app = run({pathname:'/dashboard', token:'mock', pending:{paperId:'https://attacker.invalid', at:Date.now()}});
 assert.deepEqual(app.navigations, ['/papers?library=1']);
 
+app = run();
+app.api.signIn(42, true);
+assert.equal(JSON.parse(app.storage.get('ql_storefront_return')).open, true);
+app = run({pathname:'/dashboard', token:'mock', pending:{paperId:42, open:true, at:Date.now()}});
+assert.deepEqual(app.navigations, ['/paper/42']);
+app = run({pathname:'/dashboard', token:'mock', pending:{paperId:'x', open:true, at:Date.now()}});
+assert.deepEqual(app.navigations, ['/papers?library=1']);
+
 for (const filename of ['papers.js','paper-pricing.js','storefront-runtime.js','app-enhancements.js']) {
   new vm.Script(fs.readFileSync(path.join(__dirname, '..', filename), 'utf8'), {filename});
 }
-console.log('PASS: six sign-in/resume cases and syntax checks for four storefront integration scripts.');
+console.log('PASS: nine sign-in/resume cases and syntax checks for four storefront integration scripts.');

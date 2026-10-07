@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Attempt;
 use App\Models\Quiz;
 use App\Models\QuizEntitlement;
 use App\Models\QuizStorefrontOrder;
@@ -35,6 +36,10 @@ class StorefrontController extends Controller
         return response()->json(['papers' => $papers]);
     }
 
+    /**
+     * My Papers is the student's own record: papers they paid for and papers
+     * they have started. Free papers they never opened stay in the catalogue.
+     */
     public function myPapers(Request $request): JsonResponse
     {
         $user = $request->user();
@@ -42,28 +47,64 @@ class StorefrontController extends Controller
 
         $entitlements = QuizEntitlement::query()
             ->where('user_id', $user->id)
-            ->whereHas('quiz')
-            ->with(['quiz.course:id,name,slug,level,icon,is_active', 'quiz.week:id,week_number,title'])
-            ->with('quiz')
-            ->latest('updated_at')
+            ->get()
+            ->keyBy('quiz_id');
+
+        // One row per attempt; a single student has few enough to group in memory.
+        $attempts = Attempt::query()
+            ->where('user_id', $user->id)
+            ->orderBy('id')
+            ->get(['id', 'quiz_id', 'started_at', 'submitted_at', 'score', 'total_marks', 'is_complete'])
+            ->groupBy('quiz_id');
+
+        $quizzes = Quiz::query()
+            ->whereIn('id', $entitlements->keys()->merge($attempts->keys())->unique()->values())
+            ->with(['course:id,name,slug,level,icon,is_active', 'week:id,week_number,title'])
+            ->withCount('questions')
             ->get();
 
-        return response()->json([
-            'papers' => $entitlements->map(function (QuizEntitlement $entitlement) {
-                $quiz = $entitlement->quiz;
-                $quiz->loadCount('questions');
+        $papers = $quizzes->map(function (Quiz $quiz) use ($entitlements, $attempts) {
+            $entitlement = $entitlements->get($quiz->id);
+            $rows = $attempts->get($quiz->id, collect());
+            $paid = (int) $quiz->price_paise > 0;
+            $purchased = $entitlement?->source === 'purchase';
+            $active = $entitlement && ($entitlement->expires_at === null || $entitlement->expires_at->isFuture());
+            $available = $quiz->is_active && $quiz->approval_status === 'approved' && (bool) $quiz->course?->is_active;
 
-                return [
-                    ...$this->paperSummary($quiz),
-                    'source' => $entitlement->source,
-                    'owned_since' => $entitlement->created_at,
-                    'expires_at' => $entitlement->expires_at,
-                    'expired' => $entitlement->expires_at !== null && $entitlement->expires_at->lte(now()),
-                    'has_access' => $entitlement->expires_at === null || $entitlement->expires_at->isFuture(),
-                    'available' => $quiz->is_active && $quiz->approval_status === 'approved' && (bool) $quiz->course?->is_active,
-                ];
-            })->values(),
-        ]);
+            // A free claim on a paper that is still free was never more than a bookmark.
+            if ($rows->isEmpty() && ! $purchased && ! $paid) {
+                return null;
+            }
+            // A free paper that has been withdrawn leaves nothing to open.
+            if (! $available && ! $purchased && ! ($paid && $entitlement)) {
+                return null;
+            }
+
+            $last = $rows->filter(fn (Attempt $attempt) => $attempt->is_complete && $attempt->submitted_at)->last();
+            $open = $rows->first(fn (Attempt $attempt) => ! $attempt->is_complete);
+            $activity = collect([$entitlement?->updated_at, $rows->last()?->submitted_at, $rows->last()?->started_at])
+                ->filter()->max();
+
+            return [
+                ...$this->paperSummary($quiz),
+                'source' => $entitlement?->source,
+                'purchased' => $purchased,
+                'owned_since' => $entitlement?->created_at,
+                'expires_at' => $paid || $purchased ? $entitlement?->expires_at : null,
+                'expired' => $paid && $entitlement !== null && ! $active,
+                'has_access' => ! $paid || $active,
+                'available' => $available,
+                'attempt_count' => $rows->filter(fn (Attempt $attempt) => $attempt->is_complete && $attempt->submitted_at)->count(),
+                'in_progress' => $open !== null,
+                'last_attempt_id' => $last?->id,
+                'last_score' => $last?->score,
+                'last_total_marks' => $last?->total_marks,
+                'last_submitted_at' => $last?->submitted_at,
+                'last_activity_at' => $activity,
+            ];
+        })->filter()->sortByDesc(fn (array $paper) => $paper['last_activity_at']?->getTimestamp() ?? 0)->values();
+
+        return response()->json(['papers' => $papers]);
     }
 
     public function claimFree(Request $request, int $quizId): JsonResponse

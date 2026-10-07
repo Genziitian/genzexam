@@ -121,7 +121,7 @@
     return data || {};
   }
   function signIn() {
-    if (window.QLStorefront && window.QLStorefront.signIn) window.QLStorefront.signIn(quizId);
+    if (window.QLStorefront && window.QLStorefront.signIn) window.QLStorefront.signIn(quizId, true);
     else location.assign("/login");
   }
 
@@ -688,7 +688,7 @@
     stopTicker();
     st.blocked = {
       eyebrow: "ACCESS NEEDED",
-      title: "This paper is not in your library",
+      title: "This is a paid paper",
       text: (e && e.message) || "Buy or renew this paper to open it.",
       href: "/papers?paper=" + quizId,
       cta: "View paper",

@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Http\Controllers\StorefrontController;
+use App\Models\Attempt;
 use App\Models\Quiz;
 use App\Models\QuizEntitlement;
 use App\Models\QuizStorefrontOrder;
@@ -53,6 +54,12 @@ class StorefrontSecurityTest extends TestCase
         });
         Schema::create('questions', function (Blueprint $table) {
             $table->id(); $table->unsignedBigInteger('quiz_id'); $table->integer('position')->default(0); $table->softDeletes();
+        });
+        Schema::create('attempts', function (Blueprint $table) {
+            $table->id(); $table->unsignedBigInteger('quiz_id'); $table->unsignedBigInteger('user_id');
+            $table->timestamp('started_at')->nullable(); $table->timestamp('submitted_at')->nullable();
+            $table->float('score')->nullable(); $table->float('total_marks')->nullable();
+            $table->boolean('is_complete')->default(false); $table->timestamps();
         });
         (require database_path('migrations/2026_10_05_000004_add_quiz_storefront_and_orders.php'))->up();
         DB::table('courses')->insert(['id' => 1, 'name' => 'Math', 'slug' => 'math', 'is_active' => true]);
@@ -251,5 +258,53 @@ class StorefrontSecurityTest extends TestCase
         $this->assertTrue($paper['expired']);
         $this->assertFalse($paper['has_access']);
         $this->assertFalse($paper['available']);
+    }
+
+    public function test_unopened_free_claims_stay_out_of_my_papers(): void
+    {
+        $this->paper->update(['price_paise' => 0, 'access_days' => null]);
+        $this->store->claimFree($this->request(), $this->paper->id);
+        $this->assertSame([], $this->store->myPapers($this->request())->getData(true)['papers']);
+    }
+
+    public function test_attempted_free_papers_show_progress_without_a_claim(): void
+    {
+        $this->paper->update(['price_paise' => 0, 'access_days' => null]);
+        Attempt::query()->create(['quiz_id' => $this->paper->id, 'user_id' => $this->student->id,
+            'started_at' => now()->subHour(), 'submitted_at' => now()->subMinutes(30), 'score' => 8, 'total_marks' => 10, 'is_complete' => true]);
+        Attempt::query()->create(['quiz_id' => $this->paper->id, 'user_id' => $this->student->id, 'started_at' => now(), 'is_complete' => false]);
+        Attempt::query()->create(['quiz_id' => $this->paper->id, 'user_id' => $this->student->id + 1,
+            'started_at' => now(), 'submitted_at' => now(), 'score' => 1, 'total_marks' => 10, 'is_complete' => true]);
+
+        $papers = $this->store->myPapers($this->request())->getData(true)['papers'];
+        $this->assertCount(1, $papers);
+        $this->assertFalse($papers[0]['purchased']);
+        $this->assertTrue($papers[0]['has_access']);
+        $this->assertFalse($papers[0]['expired']);
+        $this->assertSame(1, $papers[0]['attempt_count']);
+        $this->assertTrue($papers[0]['in_progress']);
+        $this->assertEquals(8, $papers[0]['last_score']);
+        $this->assertEquals(10, $papers[0]['last_total_marks']);
+    }
+
+    public function test_purchases_are_marked_and_listed_before_any_attempt(): void
+    {
+        $this->store->webhook($this->webhook($this->payment($this->order())));
+        $papers = $this->store->myPapers($this->request())->getData(true)['papers'];
+        $this->assertCount(1, $papers);
+        $this->assertTrue($papers[0]['purchased']);
+        $this->assertTrue($papers[0]['has_access']);
+        $this->assertSame(0, $papers[0]['attempt_count']);
+        $this->assertFalse($papers[0]['in_progress']);
+    }
+
+    public function test_attempted_paper_that_became_paid_is_listed_as_locked(): void
+    {
+        Attempt::query()->create(['quiz_id' => $this->paper->id, 'user_id' => $this->student->id,
+            'started_at' => now(), 'submitted_at' => now(), 'score' => 5, 'total_marks' => 10, 'is_complete' => true]);
+        $paper = $this->store->myPapers($this->request())->getData(true)['papers'][0];
+        $this->assertFalse($paper['purchased']);
+        $this->assertFalse($paper['has_access']);
+        $this->assertFalse($paper['expired']);
     }
 }
