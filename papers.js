@@ -95,5 +95,20 @@
   // The paper library lives in the student dashboard (My Papers); prices and sales in the manager console.
   if (new URLSearchParams(location.search).get('library') === '1') { location.replace('/my-papers'); return; }
   loadCatalog();
+  // Search box: type course names into the placeholder until the student starts searching.
+  (function typePlaceholder() {
+    const rest = 'Search papers or courses';
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    let word = 0, pos = 0, hold = 8, erasing = false;
+    const words = () => { const names = [...new Set(papers.map(p => p.course?.name).filter(Boolean))].slice(0, 6); return names.concat(['Quiz 1', 'End Term', 'Mock test']); };
+    setInterval(() => {
+      if (document.activeElement === search || search.value) { if (search.placeholder !== rest) search.placeholder = rest; pos = 0; erasing = false; hold = 0; return; }
+      if (hold > 0) { hold--; return; }
+      const list = words(), text = list[word % list.length];
+      if (!erasing) { pos++; if (pos >= text.length) { pos = text.length; erasing = true; hold = 16; } }
+      else { pos -= 2; if (pos <= 0) { pos = 0; erasing = false; word++; hold = 3; } }
+      search.placeholder = 'Search \u201c' + text.slice(0, pos) + '\u201d';
+    }, 85);
+  })();
   const script = document.createElement('script'); script.src = 'https://checkout.razorpay.com/v1/checkout.js'; script.async = true; script.onerror = () => toast('Checkout could not load. Check your connection and refresh before buying.'); document.head.appendChild(script);
 })();
