@@ -961,6 +961,15 @@
       var count = button.lastElementChild ? button.lastElementChild.textContent.trim() : "";
       tag(button, "data-empty", /\/0$/.test(count) ? "true" : "false");
     });
+    // Paper types with no papers are hidden; if the open one is empty, open the first that has papers.
+    var filled = tabs.querySelectorAll('button[data-empty="false"]');
+    tag(tabs, "data-all-empty", filled.length ? "false" : "true");
+    var active = tabs.querySelector("button.bg-brand");
+    var key = window.location.pathname;
+    if (filled.length && active && active.getAttribute("data-empty") === "true" && tabs.getAttribute("data-ql-autopick") !== key) {
+      tabs.setAttribute("data-ql-autopick", key);
+      filled[0].click();
+    }
     var heading = document.querySelector("#root main h1");
     var card = heading && heading.closest(".rounded-2xl");
     if (card) tag(card, "data-ql-course-head", "");
@@ -1052,6 +1061,56 @@
     }
   }, true);
 
+  /* Practice list: tag the heading and search box for styling, and type course names into the search placeholder. */
+  var practiceTyping = null;
+  function decoratePracticeList() {
+    if (window.location.pathname.replace(/\/+$/, "") !== "/practice") {
+      if (practiceTyping) { clearInterval(practiceTyping.timer); practiceTyping = null; }
+      return;
+    }
+    var heads = document.querySelectorAll("h1");
+    for (var i = 0; i < heads.length; i++) {
+      var h = heads[i];
+      if (/^Brush up at your own pace\.?$/.test((h.textContent || "").trim()) && h.parentElement && !h.parentElement.hasAttribute("data-ql-practice-head")) {
+        h.parentElement.setAttribute("data-ql-practice-head", "");
+      }
+    }
+    var input = document.querySelector('input[data-ql-typing], input[placeholder^="Search courses"]');
+    if (!input) return;
+    if (input.parentElement && !input.parentElement.hasAttribute("data-ql-practice-search")) input.parentElement.setAttribute("data-ql-practice-search", "");
+    if (practiceTyping && practiceTyping.input === input) return;
+    if (practiceTyping) clearInterval(practiceTyping.timer);
+    input.setAttribute("data-ql-typing", "");
+    input.setAttribute("aria-label", "Search courses");
+    var still = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (still) { input.placeholder = "Search your courses\u2026"; practiceTyping = { input: input, timer: 0 }; return; }
+    var state = { input: input, word: 0, pos: 0, hold: 0, erasing: false, timer: 0 };
+    function words() {
+      var names = [];
+      document.querySelectorAll('a.block[href^="/practice/"] .font-semibold.text-slate-900').forEach(function (el) {
+        var name = (el.textContent || "").trim();
+        if (name && names.indexOf(name) < 0 && names.length < 6) names.push(name);
+      });
+      return names.concat(["Quiz 1 papers", "End Term prep", "Mock tests"]);
+    }
+    state.timer = setInterval(function () {
+      if (!document.body.contains(input)) { clearInterval(state.timer); if (practiceTyping === state) practiceTyping = null; return; }
+      if (document.activeElement === input || input.value) { if (input.placeholder !== "Search courses\u2026") input.placeholder = "Search courses\u2026"; state.pos = 0; state.erasing = false; state.hold = 0; return; }
+      if (state.hold > 0) { state.hold--; return; }
+      var list = words();
+      var word = list[state.word % list.length];
+      if (!state.erasing) {
+        state.pos++;
+        if (state.pos >= word.length) { state.pos = word.length; state.erasing = true; state.hold = 16; }
+      } else {
+        state.pos -= 2;
+        if (state.pos <= 0) { state.pos = 0; state.erasing = false; state.word++; state.hold = 3; }
+      }
+      input.placeholder = "Search \u201c" + word.slice(0, state.pos) + "\u201d";
+    }, 85);
+    practiceTyping = state;
+  }
+
   function run() {
     var paper = paperRoomPath(window.location.pathname);
     if (paper) { window.location.replace(paper); return; }
@@ -1063,6 +1122,7 @@
     decorateManagerConsole();
     fillMyPapers();
     decoratePracticeCards();
+    decoratePracticeList();
     syncConsoleNav();
     syncHomeLink();
     decorateCoursePage();

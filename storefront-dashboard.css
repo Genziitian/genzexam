@@ -286,3 +286,31 @@ div.space-y-6:has(>div>form.space-y-6>.h-px)>.grid.gap-4{grid-template-columns:r
 div.space-y-6:has(>div>form.space-y-6>.h-px)>.grid.gap-4>.rounded-2xl.p-5{padding:14px}
 div.space-y-6:has(>div>form.space-y-6>.h-px)>.grid.gap-4 .text-3xl{font-size:24px;line-height:1.2}
 }
+/* ---- Practice list: phone title and a livelier search box ---- */
+[data-ql-practice-search]>input{height:46px!important;padding-left:44px!important;padding-right:14px!important;border-radius:14px!important;border-width:1.5px!important;border-color:#bfe3cb!important;font-size:14.5px!important;font-weight:500;box-shadow:0 1px 2px rgba(15,23,42,.04),0 10px 22px -16px rgba(22,101,52,.55);transition:border-color .15s ease,box-shadow .15s ease}
+[data-ql-practice-search]>input::placeholder{color:#64748b;opacity:1}
+[data-ql-practice-search]>input:focus{border-color:#16a34a!important;box-shadow:0 0 0 4px rgba(22,163,74,.16),0 10px 22px -16px rgba(22,101,52,.55)}
+[data-ql-practice-search]>svg{left:15px!important;width:18px!important;height:18px!important;color:#16a34a!important;stroke-width:2.4}
+:root[data-theme=dark] [data-ql-practice-search]>input{border-color:#2f5a3d!important}
+:root[data-theme=dark] [data-ql-practice-search]>input::placeholder{color:#94a3b8}
+@media(min-width:641px){[data-ql-practice-search]{max-width:24rem!important}}
+@media(max-width:640px){
+[data-ql-practice-search]>input{font-size:16px!important}
+[data-ql-practice-head]{margin-bottom:14px!important}
+[data-ql-practice-head]>h1{display:none}
+[data-ql-practice-head]>div:first-child{margin:0;font-size:0;letter-spacing:0}
+[data-ql-practice-head]>div:first-child::after{content:"Practice questions";font-size:25px;font-weight:700;line-height:1.15;letter-spacing:-.02em;text-transform:none;color:#0f172a}
+:root[data-theme=dark] [data-ql-practice-head]>div:first-child::after{color:#d6dae5}
+}
+/* ---- Course page: hide paper types with no papers; phone header ---- */
+[data-ql-course-tabs][data-all-empty=false] button[data-empty=true]{display:none!important}
+@media(min-width:561px){[data-ql-course-tabs][data-all-empty=false]{grid-template-columns:repeat(auto-fill,minmax(170px,1fr))}}
+[data-ql-course-head] h1{overflow-wrap:break-word;word-break:normal}
+@media(max-width:560px){
+[data-ql-course-head]{padding:16px!important}
+[data-ql-course-head]>div{gap:12px!important}
+[data-ql-course-head]>div>div:first-child{flex:1 1 100%;min-width:0;column-gap:12px;row-gap:10px}
+[data-ql-course-head]>div>div:last-child:not(:first-child){flex:1 1 100%;flex-wrap:nowrap}
+[data-ql-course-head]>div>div:last-child:not(:first-child)>*{flex:1 1 0;min-width:0}
+[data-ql-course-head]>div>div:last-child:not(:first-child) button{width:100%;justify-content:center}
+}
