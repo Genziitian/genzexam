@@ -1,8 +1,10 @@
 /*
  * Self-paced paper room.
  *
- * Papers open here in the same layout as the online exam room, but nothing is
- * proctored: no fullscreen, no focus tracking, no shared clock and no manager.
+ * Papers open here in the exam portal's own exam screen: header with timer and
+ * Submit, question palette on the left, one question at a time with Prev, Clear,
+ * Review & Next and Save & Next. Nothing is proctored: no fullscreen, no focus
+ * tracking, no shared clock and no manager.
  * It runs on the ordinary quiz API (start attempt, submit, result). Answers in
  * progress are kept in this browser until the paper is submitted.
  */
@@ -32,6 +34,9 @@
     attemptId: null,
     startedAt: 0,
     answers: {},
+    review: {},
+    visited: {},
+    current: 0,
     confirming: false,
     busy: false,
     submitError: "",
@@ -76,7 +81,14 @@
     try {
       localStorage.setItem(
         STORE_KEY,
-        JSON.stringify({ attemptId: st.attemptId, startedAt: st.startedAt, answers: st.answers }),
+        JSON.stringify({
+          attemptId: st.attemptId,
+          startedAt: st.startedAt,
+          answers: st.answers,
+          review: st.review,
+          visited: st.visited,
+          current: st.current,
+        }),
       );
       return true;
     } catch (_) {
@@ -254,6 +266,7 @@
       .map((n) => String(n).padStart(2, "0"))
       .join(":");
   }
+  const timeText = (seconds) => (seconds >= 3600 ? clock(seconds) : clock(seconds).slice(3));
   function startTicker() {
     stopTicker();
     if (!limitSeconds()) return;
@@ -269,8 +282,11 @@
     const left = remaining();
     const node = $("#ep-countdown");
     if (node) {
-      node.textContent = clock(left);
-      node.classList.toggle("pr-low", left <= 60);
+      node.textContent = timeText(left);
+      const low = left < 300;
+      node.style.color = low ? "#ef4444" : "#0f172a";
+      const dot = $("#pr-timer-dot");
+      if (dot) dot.style.background = low ? "#ef4444" : "#059669";
     }
     if (left <= 0 && !st.busy) submit(true);
   }
@@ -317,7 +333,7 @@
         (minutes
           ? "This paper is self-paced: start whenever you are ready. The timer begins when you start, keeps running if you leave the page, and the paper is submitted automatically when time runs out."
           : "This paper is self-paced and untimed. Start whenever you are ready and submit when you are done.") +
-        '</p><div class="ep-alert">This is a practice attempt. Nothing is monitored. Your answers are kept in this browser until you submit.</div>' +
+        '</p>' +
         (st.error ? '<div class="ep-alert error" role="alert">' + esc(st.error) + "</div>" : "") +
         '<div class="ep-actions"><a class="ep-btn pr-btn-link" href="/papers">Back to papers</a><button class="ep-btn ep-btn-primary" data-action="start"' +
         (st.busy || !count ? " disabled" : "") +
@@ -327,142 +343,258 @@
       true,
     );
   }
-  function questionCard(q, number) {
+  /* The exam screen. Markup and inline styles follow the exam portal's live exam view. */
+  const TYPE_LABEL = {
+    mcq: "MCQ SINGLE",
+    multi_select: "MCQ MULTI",
+    true_false: "TRUE FALSE",
+    numerical: "NUMERICAL",
+    short_answer: "SHORT ANSWER",
+    comprehension: "PASSAGE",
+  };
+  const ICON_CHECK =
+    '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>';
+  function optionLabelStyle(checked) {
+    return (
+      "display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:10px;border:1.5px solid " +
+      (checked ? "#059669" : "#e2e8f0") +
+      ";background:" +
+      (checked ? "#f0fdf4" : "#ffffff") +
+      ";cursor:pointer;transition:all 0.15s ease;"
+    );
+  }
+  function inputsHtml(q) {
     const a = st.answers[q.id] || {};
-    let input = "";
     if (CHOICE.includes(q.type)) {
       const multi = q.type === "multi_select";
       const chosen = (Array.isArray(a.o) ? a.o : []).map(String);
-      input = (q.options || [])
-        .map(
-          (o) =>
-            '<label class="ep-answer"><input type="' +
-            (multi ? "checkbox" : "radio") +
-            '" name="answer-' +
-            esc(q.id) +
-            '" data-choice="' +
-            esc(q.id) +
-            '" value="' +
-            esc(o.id) +
-            '"' +
-            (chosen.includes(String(o.id)) ? " checked" : "") +
-            ' /><span class="pr-option">' +
-            optionHtml(o) +
-            "</span></label>",
-        )
-        .join("");
-      if (multi) input = '<p class="ep-muted">Select all that apply.</p>' + input;
-    } else if (q.type === "comprehension") {
-      input = '<p class="ep-muted">This passage is provided for the questions that follow.</p>';
-    } else if (q.type === "numerical") {
-      input =
-        '<label class="ep-answer ep-answer-text"><span>Your answer (a number)</span><input class="pr-number" type="text" inputmode="decimal" autocomplete="off" maxlength="40" data-number="' +
+      return (
+        '<div style="display:flex;flex-direction:column;gap:10px;">' +
+        (q.options || [])
+          .map((o) => {
+            const checked = chosen.includes(String(o.id));
+            return (
+              '<label style="' +
+              optionLabelStyle(checked) +
+              '"><input type="' +
+              (multi ? "checkbox" : "radio") +
+              '" name="opt-' +
+              esc(q.id) +
+              '" data-choice="' +
+              esc(q.id) +
+              '" value="' +
+              esc(o.id) +
+              '"' +
+              (checked ? " checked" : "") +
+              ' style="width:16px;height:16px;accent-color:#059669;flex-shrink:0;" /><span class="pr-option" style="font-size:14px;color:#1e293b;font-weight:500;min-width:0;flex:1;">' +
+              optionHtml(o) +
+              "</span></label>"
+            );
+          })
+          .join("") +
+        "</div>"
+      );
+    }
+    if (q.type === "numerical")
+      return (
+        '<div><label style="display:block;font-size:12px;font-weight:700;color:#64748b;margin-bottom:6px;">Enter Numerical Answer:</label><input type="text" inputmode="decimal" autocomplete="off" maxlength="40" data-number="' +
         esc(q.id) +
         '" value="' +
         esc(a.n == null ? "" : a.n) +
-        '" /></label><p class="pr-hint" data-hint="' +
+        '" placeholder="e.g. 42" style="background:#fff;border:1.5px solid #cbd5e1;padding:10px 14px;border-radius:8px;font-size:15px;width:240px;max-width:100%;color:#0f172a;outline:none;" /><p class="pr-hint" data-hint="' +
         esc(q.id) +
-        '" role="alert"></p>';
-    } else {
-      input =
-        '<label class="ep-answer ep-answer-text"><span>Your response</span><textarea rows="2" maxlength="2000" data-text="' +
+        '" role="alert"></p></div>'
+      );
+    if (q.type === "short_answer")
+      return (
+        '<div><label style="display:block;font-size:12px;font-weight:700;color:#64748b;margin-bottom:6px;">Enter Short Answer:</label><input type="text" autocomplete="off" maxlength="2000" data-text="' +
         esc(q.id) +
-        '">' +
+        '" value="' +
         esc(a.t == null ? "" : a.t) +
-        "</textarea></label>";
-    }
-    const context = q.type === "comprehension";
-    return (
-      '<article class="ep-question" id="pr-q-' +
-      esc(q.id) +
-      '"><header><span>' +
-      (context ? "Context" : "Question " + number) +
-      "</span><span>" +
-      (context ? "" : Number(q.marks || 0) + " marks") +
-      '</span></header><div class="ep-question-prompt">' +
-      stemHtml(q) +
-      "</div>" +
-      input +
-      (context
-        ? ""
-        : '<button class="ep-btn ep-btn-quiet" data-action="clear" data-id="' +
-          esc(q.id) +
-          '">Clear answer</button>') +
-      "</article>"
-    );
+        '" placeholder="Type your answer here..." style="background:#fff;border:1.5px solid #cbd5e1;padding:10px 14px;border-radius:8px;font-size:14px;width:320px;max-width:100%;color:#0f172a;outline:none;" /></div>'
+      );
+    return '<p style="font-size:12px;color:#64748b;margin:0;">This passage is provided for the questions that follow.</p>';
   }
-  function navHtml() {
-    let number = 0;
-    return answerable()
-      .map((q) => {
-        number += 1;
+  function paletteHtml() {
+    return questions()
+      .map((q, i) => {
+        const status = st.review[q.id]
+          ? "ep-q-review"
+          : q.type !== "comprehension" && isAnswered(q)
+            ? "ep-q-answered"
+            : "ep-q-unvisited";
         return (
-          '<a class="pr-nav-item' +
-          (isAnswered(q) ? " done" : "") +
-          '" href="#pr-q-' +
-          esc(q.id) +
-          '" data-nav="' +
-          esc(q.id) +
+          '<button type="button" class="ep-q-btn ' +
+          status +
+          (i === st.current ? " current" : "") +
+          '" data-go="' +
+          i +
           '" aria-label="Question ' +
-          number +
-          (isAnswered(q) ? ", answered" : ", not answered") +
+          (i + 1) +
+          (status === "ep-q-answered" ? ", answered" : status === "ep-q-review" ? ", marked for review" : "") +
           '">' +
-          number +
-          "</a>"
+          (i + 1) +
+          "</button>"
         );
       })
       .join("");
   }
-  function barHtml() {
+  function legendHtml() {
     const total = answerable().length;
-    const left = total - answeredCount();
-    if (st.confirming)
-      return (
-        '<span class="ep-save-state" role="alert">' +
-        (left
-          ? left + " question" + (left === 1 ? " is" : "s are") + " unanswered. "
-          : "All questions answered. ") +
-        'Submit now? You cannot change answers afterwards.</span><span class="pr-bar-actions"><button class="ep-btn" data-action="cancel-submit"' +
-        (st.busy ? " disabled" : "") +
-        '>Keep working</button><button class="ep-btn ep-btn-primary" data-action="confirm-submit"' +
-        (st.busy ? " disabled" : "") +
-        ">" +
-        (st.busy ? "Submitting…" : "Submit now") +
-        "</button></span>"
-      );
+    const answered = answeredCount();
+    const review = questions().filter((q) => st.review[q.id]).length;
+    const row = (bg, border, text) =>
+      '<div style="display:flex;align-items:center;gap:6px;"><span style="width:10px;height:10px;border-radius:3px;background:' +
+      bg +
+      ";border:1px solid " +
+      border +
+      ';"></span>' +
+      text +
+      "</div>";
     return (
-      '<span class="ep-save-state' +
-      (st.submitError ? " pr-error" : "") +
-      '" id="ep-save-state">' +
-      esc(st.submitError || "Answers are kept in this browser until you submit") +
-      '</span><button class="ep-btn ep-btn-primary" data-action="submit"' +
-      (st.busy ? " disabled" : "") +
-      ">Submit paper</button>"
+      '<div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">' +
+      row("#dcfce7", "#86efac", "Answered (" + answered + ")") +
+      row("#ede9fe", "#c4b5fd", "Review (" + review + ")") +
+      row("#f1f5f9", "#cbd5e1", "Unanswered (" + (total - answered) + ")") +
+      "</div>"
     );
   }
   function roomView() {
-    const q = st.quiz;
-    let number = 0;
+    const quiz = st.quiz;
+    const list = questions();
+    const total = list.length;
+    const index = Math.min(st.current, Math.max(0, total - 1));
+    const q = list[index] || {};
+    const passage = q.type === "comprehension";
     const left = remaining();
+    const low = left != null && left < 300;
     return (
-      '<section class="ep-room"><header class="ep-room-head"><div><p class="ep-eyebrow">PAPER IN PROGRESS</p><h1>' +
-      esc(q.title) +
-      '</h1></div><div class="ep-room-meta"><span id="pr-answered">Answered ' +
+      '<div id="ep-root" class="ep-live-exam-root pr-live-root" style="display:flex;flex-direction:column;overflow:hidden;background:#f8fafc;">' +
+      '<header class="pr-live-header" style="background:#ffffff;border-bottom:1px solid #e2e8f0;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(18px, 2vw, 34px);flex-shrink:0;">' +
+      '<div style="display:flex;align-items:center;gap:12px;min-width:0;"><img src="/assets/genz-logo.png" alt="Quiz Lab" style="height:30px;max-width:90px;object-fit:contain;"><div style="min-width:0;"><h1 style="font-size:clamp(14px, 1.15vw, 21px);font-weight:800;color:#0f172a;margin:0;overflow-wrap:anywhere;">' +
+      esc(quiz.title) +
+      '</h1><div style="font-size:clamp(11px, 0.9vw, 15px);color:#64748b;">' +
+      esc([userName(), quiz.course && quiz.course.name].filter(Boolean).join(" • ")) +
+      "</div></div></div>" +
+      '<div class="pr-live-tools" style="display:flex;align-items:center;gap:10px;">' +
+      '<div class="ep-header-warning">Answered: <b id="pr-answered">' +
       answeredCount() +
       "/" +
       answerable().length +
-      '</span><strong id="ep-countdown">' +
-      (left == null ? "Untimed" : clock(left)) +
-      '</strong></div></header><nav class="pr-nav" id="pr-nav" aria-label="Questions">' +
-      navHtml() +
-      '</nav><div class="ep-questions">' +
-      questions()
-        .map((item) => questionCard(item, item.type === "comprehension" ? 0 : ++number))
-        .join("") +
-      '</div><div class="ep-submit-bar" id="pr-bar">' +
-      barHtml() +
-      "</div></section>"
+      "</b></div>" +
+      '<div style="display:flex;align-items:center;gap:6px;background:#f1f5f9;padding:6px 12px;border-radius:8px;border:1px solid #cbd5e1;"><span id="pr-timer-dot" style="width:8px;height:8px;border-radius:9999px;background:' +
+      (low ? "#ef4444" : "#059669") +
+      ';animation:ep-pulse 2s infinite;"></span><span style="font-size:11px;font-weight:700;color:#64748b;">Time:</span><span id="ep-countdown" style="font-size:15px;font-weight:800;color:' +
+      (low ? "#ef4444" : "#0f172a") +
+      ';font-family:ui-monospace,monospace;">' +
+      (left == null ? "Untimed" : timeText(left)) +
+      "</span></div>" +
+      '<button type="button" id="btn-student-submit" data-action="submit"' +
+      (st.busy ? " disabled" : "") +
+      ' style="background:#059669;border:none;color:#fff;padding:7px 18px;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:6px;box-shadow:0 1px 3px rgba(5,150,105,0.3);transition:background 0.15s;">' +
+      ICON_CHECK +
+      (st.busy ? " Submitting…" : " Submit &amp; Exit") +
+      "</button></div></header>" +
+      '<div class="pr-live-body" style="display:flex;flex:1;overflow:hidden;">' +
+      '<aside id="ep-sidebar" class="pr-live-aside" style="width:clamp(280px, 24vw, 380px);background:#ffffff;border-right:2px solid #0f172a;display:flex;flex-direction:column;flex-shrink:0;">' +
+      '<div class="pr-live-palette" style="flex:1;overflow-y:auto;padding:16px;"><div class="pr-live-palette-title" style="font-size:11px;font-weight:700;text-transform:uppercase;color:#64748b;margin-bottom:12px;">Question Palette</div><div class="ep-q-grid" id="pr-palette">' +
+      paletteHtml() +
+      "</div></div>" +
+      '<div class="pr-live-tools-box" style="padding:12px 16px;border-top:1px solid #e2e8f0;background:#ffffff;"><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;"><button type="button" data-calc="basic" title="Open Basic Calculator" style="background:#f0fdf4;border:1px solid #86efac;color:#047857;padding:9px 10px;border-radius:8px;font-size:12px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px;">Basic calculator</button><button type="button" data-calc="pro" title="Open Scientific Calculator" style="background:#f0fdf4;border:1px solid #86efac;color:#047857;padding:9px 10px;border-radius:8px;font-size:12px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px;">Pro calculator</button></div></div>' +
+      '<div class="pr-live-legend" id="pr-legend" style="padding:12px 16px;border-top:1px solid #e2e8f0;background:#f8fafc;font-size:11px;color:#475569;">' +
+      legendHtml() +
+      "</div></aside>" +
+      '<main class="pr-live-main" id="pr-main" style="flex:1;display:flex;flex-direction:column;overflow-y:auto;padding:clamp(22px, 2vw, 42px) clamp(28px, 3vw, 58px);background:#ffffff;">' +
+      '<div id="pr-error" role="alert"' +
+      (st.submitError ? "" : " hidden") +
+      ' style="margin-bottom:14px;padding:10px 14px;border-radius:8px;border:1px solid #fecaca;background:#fef2f2;color:#b91c1c;font-size:13px;">' +
+      esc(st.submitError) +
+      "</div>" +
+      '<div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;border-bottom:1px solid #e2e8f0;padding-bottom:12px;margin-bottom:18px;"><div style="display:flex;align-items:center;gap:10px;"><span style="font-size:17px;font-weight:800;color:#0f172a;">Question ' +
+      (index + 1) +
+      " of " +
+      total +
+      '</span><span style="padding:3px 8px;border-radius:6px;background:#e0f2fe;color:#0369a1;font-size:11px;font-weight:700;">' +
+      esc(TYPE_LABEL[q.type] || String(q.type || "").toUpperCase()) +
+      "</span></div>" +
+      (passage
+        ? ""
+        : '<div style="font-size:12px;font-weight:700;color:#059669;">+' + Number(q.marks || 0) + " Marks</div>") +
+      "</div>" +
+      '<div class="pr-live-prompt" style="font-size:15px;color:#0f172a;line-height:1.6;font-weight:500;margin-bottom:14px;">' +
+      stemHtml(q) +
+      "</div>" +
+      '<div style="margin-bottom:28px;" id="pr-q-' +
+      esc(q.id) +
+      '">' +
+      inputsHtml(q) +
+      "</div>" +
+      '<div class="pr-live-actions" style="margin-top:auto;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;border-top:1px solid #e2e8f0;padding-top:18px;"><div style="display:flex;gap:8px;">' +
+      '<button type="button" id="btn-q-prev" data-action="prev"' +
+      (index === 0 ? " disabled" : "") +
+      ' style="background:#fff;border:1px solid #cbd5e1;color:#475569;padding:9px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:' +
+      (index === 0 ? "not-allowed" : "pointer") +
+      ";opacity:" +
+      (index === 0 ? 0.4 : 1) +
+      ';">← Prev</button>' +
+      (passage
+        ? ""
+        : '<button type="button" id="btn-q-clear" data-action="clear" data-id="' +
+          esc(q.id) +
+          '" style="background:#fff;border:1px solid #cbd5e1;color:#64748b;padding:9px 14px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;">Clear</button>') +
+      '</div><div style="display:flex;gap:8px;">' +
+      (passage
+        ? ""
+        : '<button type="button" id="btn-q-review" data-action="review" style="background:#f5f3ff;border:1px solid #c4b5fd;color:#6d28d9;padding:9px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;">' +
+          (st.review[q.id] ? "Marked for Review" : "Review &amp; Next") +
+          "</button>") +
+      '<button type="button" id="btn-q-save-next" data-action="next" style="background:#059669;color:#fff;border:none;padding:9px 20px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;">' +
+      (index === total - 1 ? "Save Response" : passage ? "Next →" : "Save &amp; Next →") +
+      "</button></div></div></main></div></div>"
     );
+  }
+  function submitModal() {
+    const old = document.getElementById("ep-student-submit-modal");
+    if (old) old.remove();
+    const modal = document.createElement("div");
+    modal.id = "ep-student-submit-modal";
+    modal.style.cssText =
+      "display:flex;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(15,23,42,0.8);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);z-index:999999;align-items:center;justify-content:center;padding:20px;";
+    const review = questions().filter((q) => st.review[q.id]).length;
+    modal.innerHTML =
+      '<div role="dialog" aria-modal="true" aria-labelledby="pr-submit-title" style="max-width:460px;width:100%;text-align:center;background:#ffffff;border-radius:20px;box-shadow:0 25px 60px -15px rgba(0,0,0,0.3);padding:30px 24px;color:#0f172a;"><img src="/assets/genz-logo.png" alt="Quiz Lab" style="height:28px;object-fit:contain;margin-bottom:12px;"><h2 id="pr-submit-title" style="font-size:20px;font-weight:800;color:#0f172a;margin:0 0 8px 0;">Submit paper</h2><p style="font-size:13.5px;color:#475569;margin:0 0 18px 0;line-height:1.55;">You have recorded answers for <b>' +
+      answeredCount() +
+      " of " +
+      answerable().length +
+      "</b> questions" +
+      (review ? ", with <b>" + review + "</b> marked for review" : "") +
+      '. Once submitted, your answers are final and you will see your result.</p><div style="display:flex;gap:10px;"><button type="button" id="ep-btn-cancel-submit" style="flex:1;background:#f1f5f9;color:#334155;border:1px solid #cbd5e1;padding:11px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;">Return to Paper</button><button type="button" id="ep-btn-confirm-submit" style="flex:1.2;background:#059669;color:#ffffff;border:none;padding:11px;border-radius:8px;font-size:13px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px;">' +
+      ICON_CHECK +
+      " Submit</button></div></div>";
+    document.body.appendChild(modal);
+    const close = () => modal.remove();
+    modal.addEventListener("click", (ev) => {
+      if (ev.target === modal) close();
+    });
+    modal.addEventListener("keydown", (ev) => {
+      if (ev.key === "Escape") close();
+    });
+    document.getElementById("ep-btn-cancel-submit").onclick = close;
+    document.getElementById("ep-btn-confirm-submit").onclick = () => {
+      close();
+      submit(false);
+    };
+    document.getElementById("ep-btn-confirm-submit").focus();
+  }
+  function go(index) {
+    const list = questions();
+    if (!list.length) return;
+    st.current = Math.min(Math.max(0, index), list.length - 1);
+    st.visited[list[st.current].id] = true;
+    writeStore();
+    render();
+    const main = $("#pr-main");
+    if (main) main.scrollTop = 0;
   }
   function studentAnswerHtml(a) {
     const type = a.question_type;
@@ -596,17 +728,31 @@
               ? blockedView()
               : page('<div class="ep-card"><p>Loading paper…</p></div>', true);
     if (window.ExamRichContent && window.ExamRichContent.typeset) window.ExamRichContent.typeset(root);
+    const app = document.getElementById("ep-app");
+    if (app) app.classList.toggle("pr-live", st.screen === "room");
+    if (st.screen !== "room" && window.ExamCalculator) window.ExamCalculator.close();
     document.title = (st.quiz && st.quiz.title ? st.quiz.title + " · " : "") + "Paper room · Quiz LAB";
   }
   function refreshProgress() {
     const counter = $("#pr-answered");
-    if (counter) counter.textContent = "Answered " + answeredCount() + "/" + answerable().length;
-    const nav = $("#pr-nav");
-    if (nav) nav.innerHTML = navHtml();
+    if (counter) counter.textContent = answeredCount() + "/" + answerable().length;
+    const palette = $("#pr-palette");
+    if (palette) palette.innerHTML = paletteHtml();
+    const legend = $("#pr-legend");
+    if (legend) legend.innerHTML = legendHtml();
   }
   function refreshBar() {
-    const bar = $("#pr-bar");
-    if (bar) bar.innerHTML = barHtml();
+    const error = $("#pr-error");
+    if (error) {
+      error.textContent = st.submitError;
+      error.hidden = !st.submitError;
+      if (st.submitError) error.scrollIntoView({ block: "nearest" });
+    }
+    const button = $("#btn-student-submit");
+    if (button) {
+      button.disabled = st.busy;
+      button.innerHTML = ICON_CHECK + (st.busy ? " Submitting…" : " Submit &amp; Exit");
+    }
   }
 
   /* ---------------------------- actions ---------------------------- */
@@ -624,10 +770,17 @@
       if (saved && String(saved.attemptId) === String(attemptId)) {
         st.startedAt = Number(saved.startedAt) || Date.now();
         st.answers = saved.answers && typeof saved.answers === "object" ? saved.answers : {};
+        st.review = saved.review && typeof saved.review === "object" ? saved.review : {};
+        st.visited = saved.visited && typeof saved.visited === "object" ? saved.visited : {};
+        st.current = Math.min(Math.max(0, Number(saved.current) || 0), Math.max(0, questions().length - 1));
       } else {
         st.startedAt = Date.now();
         st.answers = {};
+        st.review = {};
+        st.visited = {};
+        st.current = 0;
       }
+      if (questions()[st.current]) st.visited[questions()[st.current].id] = true;
       writeStore();
       st.busy = false;
       st.confirming = false;
@@ -662,7 +815,7 @@
         st.submitError =
           (auto ? "Time is up, but the paper could not be submitted: " : "Could not submit: ") +
           e.message +
-          " Your answers are still here. Press Submit paper to retry.";
+          " Your answers are still here. Press Submit & Exit to retry.";
         if (auto) stopTicker();
         refreshBar();
         return;
@@ -697,24 +850,38 @@
     render();
   }
   function onClick(ev) {
+    const jump = ev.target.closest("[data-go]");
+    if (jump) return void go(Number(jump.dataset.go));
+    const calc = ev.target.closest("[data-calc]");
+    if (calc) return void (window.ExamCalculator && window.ExamCalculator.toggle(calc.dataset.calc));
     const target = ev.target.closest("[data-action]");
     if (!target) return;
     const action = target.dataset.action;
     if (action === "start") start();
     else if (action === "reload") location.reload();
-    else if (action === "submit") {
-      st.confirming = true;
-      st.submitError = "";
-      refreshBar();
-    } else if (action === "cancel-submit") {
-      st.confirming = false;
-      refreshBar();
-    } else if (action === "confirm-submit") submit(false);
+    else if (action === "submit") submitModal();
+    else if (action === "prev") go(st.current - 1);
+    else if (action === "next") go(st.current + 1);
+    else if (action === "review") {
+      const q = questions()[st.current];
+      if (!q) return;
+      if (st.review[q.id]) {
+        delete st.review[q.id];
+        writeStore();
+        render();
+      } else {
+        st.review[q.id] = true;
+        go(st.current + 1);
+      }
+    }
     else if (action === "retake") {
       st.result = null;
       st.summary = null;
       st.attemptId = null;
       st.answers = {};
+      st.review = {};
+      st.visited = {};
+      st.current = 0;
       st.error = "";
       st.screen = "intro";
       render();
@@ -724,8 +891,11 @@
       delete st.answers[id];
       const card = document.getElementById("pr-q-" + id);
       if (card) {
-        card.querySelectorAll("input[data-choice]").forEach((input) => (input.checked = false));
-        card.querySelectorAll("textarea,input[data-number]").forEach((input) => (input.value = ""));
+        card.querySelectorAll("input[data-choice]").forEach((input) => {
+          input.checked = false;
+          input.closest("label").style.cssText = optionLabelStyle(false);
+        });
+        card.querySelectorAll("input[data-text],input[data-number]").forEach((input) => (input.value = ""));
         const hint = card.querySelector("[data-hint]");
         if (hint) hint.textContent = "";
       }
@@ -742,6 +912,9 @@
     ).map((node) => Number(node.value));
     if (picked.length) st.answers[id] = { o: picked };
     else delete st.answers[id];
+    document.querySelectorAll('input[data-choice="' + CSS.escape(id) + '"]').forEach((node) => {
+      node.closest("label").style.cssText = optionLabelStyle(node.checked);
+    });
     writeStore();
     refreshProgress();
   }

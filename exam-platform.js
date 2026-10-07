@@ -540,10 +540,112 @@
     const e = app.exam || {};
     return `<section class="ep-page ep-narrow"><div class="ep-card"><p class="ep-eyebrow">BEFORE YOU BEGIN</p><h1>${esc(e.title)}</h1><p class="ep-instructions">${contentHtml(e.instructions || "Read each question carefully and submit before time expires.")}</p><p>The timer is shared by all candidates. Joining late does not add time. ${Number(e.max_warnings || 3)} warnings lock your session until the manager reviews it.</p><div class="ep-alert">This platform records limited browser focus and fullscreen events. It does not verify identity or monitor video/audio.</div><label class="ep-check"><input type="checkbox" id="ep-rules-check" /> I have read and agree to follow the exam instructions.</label><div class="ep-actions"><button class="ep-btn" data-action="back">Cancel</button><button class="ep-btn ep-btn-primary" data-action="join-confirm">Accept and continue</button></div></div></section>`;
   }
+  /* The exam screen: header with timer and Submit, question palette on the left,
+     one question at a time. Layout follows the exam portal's live exam view. */
+  const ROOM_TYPE = {
+    mcq_single: "MCQ SINGLE",
+    mcq_multi: "MCQ MULTI",
+    true_false: "TRUE FALSE",
+    numerical: "NUMERICAL",
+    short_answer: "SHORT ANSWER",
+    comprehension: "PASSAGE",
+  };
+  const roomKey = () => `ep_room:${app.exam?.id || ""}`;
+  function roomMemory() {
+    if (app.roomFor === app.exam?.id) return;
+    app.roomFor = app.exam?.id;
+    app.roomIndex = 0;
+    app.review = {};
+    try {
+      const saved = JSON.parse(sessionStorage.getItem(roomKey()) || "{}");
+      app.roomIndex = Number(saved.index) || 0;
+      app.review = saved.review && typeof saved.review === "object" ? saved.review : {};
+    } catch (_) {}
+  }
+  function rememberRoom() {
+    try {
+      sessionStorage.setItem(roomKey(), JSON.stringify({ index: app.roomIndex, review: app.review }));
+    } catch (_) {}
+  }
+  function roomAnswered(q) {
+    const v = app.draftAnswers[q.id];
+    return q.type !== "comprehension" && !(v === undefined || v === null || v === "" || (Array.isArray(v) && !v.length));
+  }
+  function roomLabelStyle(checked) {
+    return `display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:10px;border:1.5px solid ${checked ? "#059669" : "#e2e8f0"};background:${checked ? "#f0fdf4" : "#ffffff"};cursor:pointer;transition:all 0.15s ease;`;
+  }
+  function roomInputs(q, locked) {
+    const val = app.draftAnswers[q.id];
+    const off = locked ? "disabled" : "";
+    if (["mcq_single", "true_false"].includes(q.type))
+      return `<div style="display:flex;flex-direction:column;gap:10px;">${(q.options || (q.type === "true_false" ? ["True", "False"] : []))
+        .map((o, j) => {
+          const ans = q.type === "true_false" ? j === 0 : j;
+          const checked = val != null && String(val) === String(ans);
+          return `<label style="${roomLabelStyle(checked)}"><input type="radio" name="answer-${esc(q.id)}" data-answer="${esc(q.id)}" value="${q.type === "true_false" ? String(ans) : j}" ${checked ? "checked" : ""} ${off} style="width:16px;height:16px;accent-color:#059669;flex-shrink:0;" /><span style="font-size:14px;color:#1e293b;font-weight:500;min-width:0;flex:1;">${contentHtml(o)}</span></label>`;
+        })
+        .join("")}</div>`;
+    if (q.type === "mcq_multi")
+      return `<div style="display:flex;flex-direction:column;gap:10px;">${(q.options || [])
+        .map((o, j) => {
+          const checked = Array.isArray(val) && val.map(String).includes(String(j));
+          return `<label style="${roomLabelStyle(checked)}"><input type="checkbox" data-answer-multi="${esc(q.id)}" value="${j}" ${checked ? "checked" : ""} ${off} style="width:16px;height:16px;accent-color:#059669;flex-shrink:0;" /><span style="font-size:14px;color:#1e293b;font-weight:500;min-width:0;flex:1;">${contentHtml(o)}</span></label>`;
+        })
+        .join("")}</div>`;
+    if (q.type === "comprehension")
+      return '<p style="font-size:12px;color:#64748b;margin:0;">This passage is provided for the questions that follow.</p>';
+    const numeric = q.type === "numerical";
+    return `<div><label style="display:block;font-size:12px;font-weight:700;color:#64748b;margin-bottom:6px;">${numeric ? "Enter Numerical Answer:" : "Enter Short Answer:"}</label><input type="text" ${numeric ? 'inputmode="decimal"' : ""} autocomplete="off" maxlength="2000" data-answer-text="${esc(q.id)}" value="${esc(val ?? "")}" placeholder="${numeric ? "e.g. 42" : "Type your answer here..."}" ${off} style="background:#fff;border:1.5px solid #cbd5e1;padding:10px 14px;border-radius:8px;font-size:${numeric ? 15 : 14}px;width:${numeric ? 240 : 320}px;max-width:100%;color:#0f172a;outline:none;" /></div>`;
+  }
+  function roomPalette() {
+    return (app.exam?.questions || [])
+      .map((q, i) => {
+        const status = app.review[q.id] ? "ep-q-review" : roomAnswered(q) ? "ep-q-answered" : "ep-q-unvisited";
+        return `<button type="button" class="ep-q-btn ${status} ${i === app.roomIndex ? "current" : ""}" data-room-go="${i}" aria-label="Question ${i + 1}${status === "ep-q-answered" ? ", answered" : status === "ep-q-review" ? ", marked for review" : ""}">${i + 1}</button>`;
+      })
+      .join("");
+  }
+  function roomLegend() {
+    const qs = (app.exam?.questions || []).filter((q) => q.type !== "comprehension");
+    const answered = qs.filter(roomAnswered).length;
+    const review = (app.exam?.questions || []).filter((q) => app.review[q.id]).length;
+    const row = (bg, border, text) =>
+      `<div style="display:flex;align-items:center;gap:6px;"><span style="width:10px;height:10px;border-radius:3px;background:${bg};border:1px solid ${border};"></span>${text}</div>`;
+    return `<div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">${row("#dcfce7", "#86efac", `Answered (${answered})`)}${row("#ede9fe", "#c4b5fd", `Review (${review})`)}${row("#f1f5f9", "#cbd5e1", `Unanswered (${qs.length - answered})`)}</div>`;
+  }
+  /* After an answer changes: refresh the palette and option highlights without re-rendering. */
+  function refreshRoom() {
+    const palette = $("#ep-room-palette");
+    if (!palette) return;
+    palette.innerHTML = roomPalette();
+    const legend = $("#ep-room-legend");
+    if (legend) legend.innerHTML = roomLegend();
+    document.querySelectorAll("#ep-room-main [data-answer], #ep-room-main [data-answer-multi]").forEach((input) => {
+      const label = input.closest("label");
+      if (label) label.style.cssText = roomLabelStyle(input.checked);
+    });
+  }
+  function roomGo(index) {
+    const total = (app.exam?.questions || []).length;
+    if (!total) return;
+    app.roomIndex = Math.min(Math.max(0, index), total - 1);
+    rememberRoom();
+    render();
+    const main = $("#ep-room-main");
+    if (main) main.scrollTop = 0;
+  }
   function examRoom() {
     const e = app.exam || {},
       s = app.state || {},
       sess = s.session || {};
+    roomMemory();
+    const list = e.questions || [];
+    const total = list.length;
+    app.roomIndex = Math.min(Math.max(0, app.roomIndex || 0), Math.max(0, total - 1));
+    const index = app.roomIndex;
+    const q = list[index] || {};
+    const passage = q.type === "comprehension";
+    const locked = e.status !== "live" || ["locked", "submitted"].includes(sess.status);
     const secs =
       s.remaining_seconds == null
         ? null
@@ -554,34 +656,34 @@
                 ? 0
                 : Math.floor((Date.now() - app.stateFetchedAt) / 1000)),
           );
-    return `<section class="ep-room"><header class="ep-room-head"><div><p class="ep-eyebrow">EXAM IN PROGRESS</p><h1>${esc(e.title)}</h1></div><div class="ep-room-meta"><span class="ep-status ${esc(e.status)}">${esc(e.status)}</span><span>Warnings: ${Number(sess.warnings || 0)}</span><button class="ep-btn ep-btn-quiet" data-action="fullscreen">Fullscreen</button><strong id="ep-countdown">${secs == null ? "—" : formatClock(secs)}</strong><button class="ep-btn ep-btn-quiet" data-action="messages">Messages</button></div></header>${e.status === "paused" ? '<div class="ep-alert">The manager has paused this exam. Answers remain saved. You can continue when it resumes.</div>' : ""}${sess.status === "locked" ? '<div class="ep-alert error">Your session is locked. Contact the exam manager for help.</div>' : ""}<div class="ep-questions">${(e.questions || []).map((q, i) => questionCard(q, i)).join("")}</div><div class="ep-submit-bar"><span class="ep-save-state" id="ep-save-state">${esc(app.saveError || (app.dirty ? "Unsaved changes…" : "Answers saved on server"))}</span><button class="ep-btn" data-action="retry-save">Save now</button><button class="ep-btn ep-btn-primary" data-action="submit-exam" ${e.status !== "live" || sess.status !== "in_exam" ? "disabled" : ""}>Submit exam</button></div></section>`;
-  }
-  function questionCard(q, i) {
-    const val = app.draftAnswers[q.id];
-    const locked =
-      !["live"].includes(app.exam.status) ||
-      ["locked", "submitted"].includes(app.state?.session?.status);
-    let input = "";
-    if (["mcq_single", "true_false"].includes(q.type))
-      input = (q.options || (q.type === "true_false" ? ["True", "False"] : []))
-        .map((o, j) => {
-          const ans = q.type === "true_false" ? j === 0 : j;
-          return `<label class="ep-answer"><input type="radio" name="answer-${esc(q.id)}" data-answer="${esc(q.id)}" value="${q.type === "true_false" ? String(ans) : j}" ${String(val) === String(ans) ? "checked" : ""} ${locked ? "disabled" : ""}/><span>${contentHtml(o)}</span></label>`;
-        })
-        .join("");
-    else if (q.type === "mcq_multi")
-      input = (q.options || [])
-        .map(
-          (o, j) =>
-            `<label class="ep-answer"><input type="checkbox" data-answer-multi="${esc(q.id)}" value="${j}" ${Array.isArray(val) && val.map(String).includes(String(j)) ? "checked" : ""} ${locked ? "disabled" : ""}/><span>${contentHtml(o)}</span></label>`,
-        )
-        .join("");
-    else if (q.type === "comprehension")
-      input =
-        '<p class="ep-muted">This reading passage is provided for the questions that follow.</p>';
-    else
-      input = `<label class="ep-answer ep-answer-text"><span>${q.type === "numerical" ? "Your answer" : "Your response"}</span><textarea data-answer-text="${esc(q.id)}" rows="2" maxlength="2000" ${locked ? "disabled" : ""}>${esc(val ?? "")}</textarea></label>`;
-    return `<article class="ep-question"><header><span>Question ${i + 1}</span><span>${Number(q.marks || 0)} marks</span></header><div class="ep-question-prompt">${contentHtml(q.prompt)}</div>${input}${q.type !== "comprehension" ? `<button class="ep-btn ep-btn-quiet" data-action="clear-answer" data-id="${esc(q.id)}" ${locked ? "disabled" : ""}>Clear answer</button>` : ""}</article>`;
+    const low = secs != null && secs < 300;
+    const warnings = Number(sess.warnings || 0);
+    const check =
+      '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>';
+    const canSubmit = e.status === "live" && sess.status === "in_exam";
+    return `<div id="ep-root" class="ep-live-exam-root pr-live-root" style="display:flex;flex-direction:column;overflow:hidden;background:#f8fafc;">
+<header class="pr-live-header" style="background:#ffffff;border-bottom:1px solid #e2e8f0;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(18px, 2vw, 34px);flex-shrink:0;">
+<div style="display:flex;align-items:center;gap:12px;min-width:0;"><img src="/assets/genz-logo.png" alt="Quiz Lab" style="height:30px;max-width:90px;object-fit:contain;"><div style="min-width:0;"><h1 style="font-size:clamp(14px, 1.15vw, 21px);font-weight:800;color:#0f172a;margin:0;overflow-wrap:anywhere;">${esc(e.title)}</h1><div style="font-size:clamp(11px, 0.9vw, 15px);color:#64748b;">${esc(app.user?.name || "")}${app.user?.email ? ` (${esc(app.user.email)})` : ""}</div></div></div>
+<div class="pr-live-tools" style="display:flex;align-items:center;gap:10px;">
+<span class="ep-status ${esc(e.status)}">${esc(e.status)}</span>
+<div id="ep-warning-chip" class="ep-header-warning ${warnings > 0 ? "warning-active" : ""}">Warnings: <b>${warnings}</b></div>
+<div style="display:flex;align-items:center;gap:6px;background:#f1f5f9;padding:6px 12px;border-radius:8px;border:1px solid #cbd5e1;"><span style="width:8px;height:8px;border-radius:9999px;background:${low ? "#ef4444" : "#059669"};animation:ep-pulse 2s infinite;"></span><span style="font-size:11px;font-weight:700;color:#64748b;">Time:</span><span id="ep-countdown" style="font-size:15px;font-weight:800;color:${low ? "#ef4444" : "#0f172a"};font-family:ui-monospace,monospace;">${secs == null ? "—" : formatClock(secs)}</span></div>
+<button type="button" class="ep-btn ep-btn-quiet" data-action="fullscreen">Fullscreen</button>
+<button type="button" id="btn-student-submit" data-action="submit-exam" ${canSubmit ? "" : "disabled"} style="background:#059669;border:none;color:#fff;padding:7px 18px;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:6px;box-shadow:0 1px 3px rgba(5,150,105,0.3);">${check} Submit &amp; Exit</button>
+</div></header>
+<div class="pr-live-body" style="display:flex;flex:1;overflow:hidden;">
+<aside id="ep-sidebar" class="pr-live-aside" style="width:clamp(280px, 24vw, 380px);background:#ffffff;border-right:2px solid #0f172a;display:flex;flex-direction:column;flex-shrink:0;">
+<div class="pr-live-palette" style="flex:1;overflow-y:auto;padding:16px;"><div class="pr-live-palette-title" style="font-size:11px;font-weight:700;text-transform:uppercase;color:#64748b;margin-bottom:12px;">Question Palette</div><div class="ep-q-grid" id="ep-room-palette">${roomPalette()}</div></div>
+<div class="pr-live-tools-box" style="padding:12px 16px;border-top:1px solid #e2e8f0;background:#ffffff;"><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;"><button type="button" data-calc="basic" title="Open Basic Calculator" style="background:#f0fdf4;border:1px solid #86efac;color:#047857;padding:9px 10px;border-radius:8px;font-size:12px;font-weight:800;cursor:pointer;">Basic calculator</button><button type="button" data-calc="pro" title="Open Scientific Calculator" style="background:#f0fdf4;border:1px solid #86efac;color:#047857;padding:9px 10px;border-radius:8px;font-size:12px;font-weight:800;cursor:pointer;">Pro calculator</button></div><div style="margin-top:8px;"><button type="button" data-action="messages" style="width:100%;background:#0f172a;color:#fff;border:none;padding:9px 10px;border-radius:8px;font-size:12px;font-weight:800;cursor:pointer;">Doubts and messages</button></div><div style="margin-top:8px;display:flex;align-items:center;justify-content:space-between;gap:8px;"><span class="ep-save-state" id="ep-save-state">${esc(app.saveError || (app.dirty ? "Unsaved changes…" : "Answers saved on server"))}</span><button type="button" class="ep-btn ep-btn-small" data-action="retry-save">Save now</button></div></div>
+<div class="pr-live-legend" id="ep-room-legend" style="padding:12px 16px;border-top:1px solid #e2e8f0;background:#f8fafc;font-size:11px;color:#475569;">${roomLegend()}</div>
+</aside>
+<main class="pr-live-main" id="ep-room-main" style="flex:1;display:flex;flex-direction:column;overflow-y:auto;padding:clamp(22px, 2vw, 42px) clamp(28px, 3vw, 58px);background:#ffffff;">
+${e.status === "paused" ? '<div class="ep-alert">The manager has paused this exam. Answers remain saved. You can continue when it resumes.</div>' : ""}${sess.status === "locked" ? '<div class="ep-alert error">Your session is locked. Contact the exam manager for help.</div>' : ""}
+<div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;border-bottom:1px solid #e2e8f0;padding-bottom:12px;margin-bottom:18px;"><div style="display:flex;align-items:center;gap:10px;"><span style="font-size:17px;font-weight:800;color:#0f172a;">Question ${index + 1} of ${total}</span><span style="padding:3px 8px;border-radius:6px;background:#e0f2fe;color:#0369a1;font-size:11px;font-weight:700;">${esc(ROOM_TYPE[q.type] || String(q.type || "").toUpperCase())}</span></div>${passage ? "" : `<div style="font-size:12px;font-weight:700;color:#059669;">+${Number(q.marks || 0)} Marks${Number(q.negative) ? ` | -${Number(q.negative)} Negative` : ""}</div>`}</div>
+<div class="pr-live-prompt" style="font-size:15px;color:#0f172a;line-height:1.6;font-weight:500;margin-bottom:14px;">${contentHtml(q.prompt)}</div>
+<div style="margin-bottom:28px;">${roomInputs(q, locked)}</div>
+<div class="pr-live-actions" style="margin-top:auto;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;border-top:1px solid #e2e8f0;padding-top:18px;"><div style="display:flex;gap:8px;"><button type="button" data-action="room-prev" ${index === 0 ? "disabled" : ""} style="background:#fff;border:1px solid #cbd5e1;color:#475569;padding:9px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;">← Prev</button>${passage ? "" : `<button type="button" data-action="clear-answer" data-id="${esc(q.id)}" ${locked ? "disabled" : ""} style="background:#fff;border:1px solid #cbd5e1;color:#64748b;padding:9px 14px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;">Clear</button>`}</div><div style="display:flex;gap:8px;">${passage ? "" : `<button type="button" data-action="room-review" style="background:#f5f3ff;border:1px solid #c4b5fd;color:#6d28d9;padding:9px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;">${app.review[q.id] ? "Marked for Review" : "Review &amp; Next"}</button>`}<button type="button" data-action="room-next" style="background:#059669;color:#fff;border:none;padding:9px 20px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;">${index === total - 1 ? "Save Response" : passage ? "Next →" : "Save &amp; Next →"}</button></div></div>
+</main></div></div>`;
   }
   function formatClock(s) {
     s = Math.max(0, Math.floor(s));
@@ -611,6 +713,8 @@
                 : app.screen === "result"
                   ? resultView()
                   : '<section class="ep-page"><div class="ep-card"><p>Loading exam…</p></div></section>';
+    document.getElementById("ep-app")?.classList.toggle("pr-live", app.screen === "room");
+    if (app.screen !== "room") window.ExamCalculator?.close();
     typeset(root);
     if (focusSelector) {
       const input = $(focusSelector);
@@ -860,6 +964,7 @@
     app.saveError = "";
     const status = $("#ep-save-state");
     if (status) status.textContent = "Unsaved changes…";
+    refreshRoom();
     clearTimeout(app.saveTimer);
     app.saveTimer = setTimeout(() => saveAnswers().catch(() => {}), 700);
   }
@@ -1026,6 +1131,10 @@
       };
   }
   async function onClick(ev) {
+    const jump = ev.target.closest("[data-room-go]");
+    if (jump) return void roomGo(Number(jump.dataset.roomGo));
+    const calc = ev.target.closest("[data-calc]");
+    if (calc) return void window.ExamCalculator?.toggle(calc.dataset.calc);
     const b = ev.target.closest("[data-action]");
     if (!b) return;
     ev.preventDefault();
@@ -1081,6 +1190,24 @@
       }
       if (action === "fullscreen") {
         await fullscreen();
+        return;
+      }
+      if (action === "room-prev") return void roomGo(app.roomIndex - 1);
+      if (action === "room-next") {
+        if (app.dirty && app.exam?.status === "live") saveAnswers().catch(() => {});
+        return void roomGo(app.roomIndex + 1);
+      }
+      if (action === "room-review") {
+        const q = (app.exam?.questions || [])[app.roomIndex];
+        if (!q) return;
+        if (app.review[q.id]) {
+          delete app.review[q.id];
+          rememberRoom();
+          render();
+        } else {
+          app.review[q.id] = true;
+          roomGo(app.roomIndex + 1);
+        }
         return;
       }
       if (action === "clear-answer") {

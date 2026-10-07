@@ -196,3 +196,4 @@
 .ql-paid-chip[data-state=owned]{background:#16a34a;color:#fff}
 .ql-paid-chip[data-state=locked]{background:#fef3c7;color:#92400e}
 [data-ql-paid]>div>div:first-child{flex-wrap:wrap;gap:4px}
+[data-ql-hidden]{display:none!important}

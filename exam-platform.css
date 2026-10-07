@@ -925,3 +925,347 @@ body:has(#ep-app) {
   margin: 4px 0 0;
   overflow-wrap: anywhere;
 }
+
+/* ---- Exam screen (palette layout from the exam portal) ---- */
+#ep-app.pr-live .ep-top {
+  display: none;
+}
+#ep-app .pr-live-root {
+  height: 100vh;
+  height: 100dvh;
+  font-size: clamp(14px, 0.95vw, 18px);
+}
+#ep-app .pr-live-header {
+  min-height: clamp(62px, 5.4vw, 82px);
+  gap: 12px;
+}
+#ep-app .ep-header-warning {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #475569;
+  white-space: nowrap;
+}
+#ep-app .ep-q-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+#ep-app .ep-q-btn {
+  box-sizing: border-box;
+  width: 100%;
+  height: 38px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 13px;
+  border: 1.5px solid #cbd5e1;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  color: #334155;
+  user-select: none;
+}
+#ep-app .ep-q-btn.current {
+  outline: 2.5px solid #059669;
+  outline-offset: 1px;
+}
+#ep-app .ep-q-answered {
+  background: #dcfce7 !important;
+  border-color: #86efac !important;
+  color: #15803d !important;
+}
+#ep-app .ep-q-review {
+  background: #ede9fe !important;
+  border-color: #c4b5fd !important;
+  color: #6d28d9 !important;
+}
+#ep-app .ep-q-unvisited {
+  background: #f8fafc !important;
+  border-color: #e2e8f0 !important;
+  color: #64748b !important;
+}
+@keyframes ep-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.45;
+  }
+}
+#ep-app .pr-live-prompt pre,
+#ep-app .pr-live-main .pr-option pre {
+  background: #0f172a;
+  color: #f8fafc;
+  padding: 14px;
+  border-radius: 8px;
+  font: 13px/1.5 ui-monospace, SFMono-Regular, Consolas, monospace;
+  white-space: pre;
+  overflow-x: auto;
+  margin: 10px 0;
+}
+#ep-app .pr-live-main button:disabled {
+  opacity: 0.4;
+}
+#ep-app #btn-student-submit:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+@media (max-width: 860px) {
+  #ep-app .pr-live-header {
+    flex-wrap: wrap;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+  }
+  #ep-app .pr-live-tools {
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  #ep-app .pr-live-body {
+    flex-direction: column;
+  }
+  #ep-app .pr-live-aside {
+    width: 100% !important;
+    border-right: 0 !important;
+    border-bottom: 2px solid #0f172a;
+  }
+  #ep-app .pr-live-palette {
+    flex: none !important;
+    padding: 10px 12px !important;
+    overflow-x: auto;
+  }
+  #ep-app .pr-live-palette-title,
+  #ep-app .pr-live-legend {
+    display: none;
+  }
+  #ep-app .pr-live-aside .ep-q-grid {
+    display: flex;
+    gap: 8px;
+    width: max-content;
+  }
+  #ep-app .pr-live-aside .ep-q-btn {
+    width: 40px;
+    flex: 0 0 40px;
+  }
+  #ep-app .pr-live-main {
+    padding: 16px 14px !important;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  #ep-app .pr-live-root * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+#ep-app .ep-header-warning.warning-active {
+  background: #fef2f2;
+  border-color: #fecaca;
+  color: #dc2626;
+}
+#ep-app .pr-live-tools-box button {
+  font-family: inherit;
+}
+
+/* ---- Calculator (shared by the paper room and online exams) ---- */
+.ep-calc-panel {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 320px;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 16px;
+  box-shadow: 0 24px 60px -18px rgba(15, 23, 42, 0.28);
+  z-index: 999999;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: ep-card-pop 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  user-select: none;
+}
+
+.ep-calc-panel.pro-mode {
+  width: 380px;
+}
+
+.ep-calc-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  background: #f8fafc;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.ep-calc-tabs {
+  display: flex;
+  background: #e2e8f0;
+  padding: 2px;
+  border-radius: 8px;
+  gap: 2px;
+}
+
+.ep-calc-tab-btn {
+  background: transparent;
+  border: none;
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.ep-calc-tab-btn.active {
+  background: #059669;
+  color: #ffffff;
+}
+
+.ep-calc-screen {
+  background: #f0fdf4;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  border-bottom: 1px solid #bbf7d0;
+  min-height: 72px;
+}
+
+.ep-calc-history {
+  font-size: 11px;
+  color: #64748b;
+  font-family: ui-monospace, monospace;
+  min-height: 14px;
+  word-break: break-all;
+}
+
+.ep-calc-display {
+  font-size: 24px;
+  font-weight: 800;
+  color: #064e3b;
+  font-family: ui-monospace, monospace;
+  letter-spacing: -0.02em;
+  max-width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.ep-calc-body {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ep-calc-grid-basic {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+}
+
+.ep-calc-grid-pro {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 6px;
+}
+
+.ep-calc-key {
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  color: #0f172a;
+  padding: 10px 0;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.1s, transform 0.05s;
+}
+
+.ep-calc-key:hover {
+  background: #e2e8f0;
+}
+
+.ep-calc-key:active {
+  transform: scale(0.96);
+}
+
+.ep-calc-key.op {
+  background: #e0f2fe;
+  border-color: #7dd3fc;
+  color: #0369a1;
+}
+
+.ep-calc-key.op:hover {
+  background: #bae6fd;
+  color: #075985;
+}
+
+.ep-calc-key.fn {
+  background: #ecfdf5;
+  border-color: #86efac;
+  color: #047857;
+  font-size: 11.5px;
+}
+
+.ep-calc-key.fn:hover {
+  background: #dcfce7;
+  color: #065f46;
+}
+
+.ep-calc-key.action-clear {
+  background: #fef2f2;
+  border-color: #fecaca;
+  color: #dc2626;
+}
+
+.ep-calc-key.action-clear:hover {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.ep-calc-key.action-equals {
+  background: #059669;
+  border-color: #10b981;
+  color: #ffffff;
+  font-size: 16px;
+}
+
+.ep-calc-key.action-equals:hover {
+  background: #10b981;
+}
+
+@keyframes ep-card-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+@media (max-width: 480px) {
+  .ep-calc-panel,
+  .ep-calc-panel.pro-mode {
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    width: auto;
+  }
+}

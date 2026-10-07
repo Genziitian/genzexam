@@ -568,6 +568,19 @@
       else if (text === "WEEKLY GOAL") tag(card, "data-ql-card", "goal");
     });
 
+    /* The Activity and Leaderboard panels are not shown on the dashboard. */
+    root.querySelectorAll("div.uppercase").forEach(function (label) {
+      var text = label.textContent.trim().toUpperCase();
+      if (text !== "ACTIVITY" && text !== "LEADERBOARD") return;
+      var card = label.closest(".rounded-2xl");
+      if (!card) return;
+      tag(card, "data-ql-hidden", "");
+      var row = card.parentElement;
+      if (row && row !== root && Array.prototype.every.call(row.children, function (c) {
+        return c.hasAttribute("data-ql-hidden") || /^(ACTIVITY|LEADERBOARD)/.test(c.textContent.trim().toUpperCase());
+      })) tag(row, "data-ql-hidden", "");
+    });
+
     root.querySelectorAll("a.rounded-2xl").forEach(function (card) {
       var text = card.textContent.toUpperCase();
       var kind = /CONTINUE WHERE/.test(text) ? "continue" : /DAILY CHALLENGE/.test(text) ? "daily" : /REVIEW/.test(text) ? "review" : "";
