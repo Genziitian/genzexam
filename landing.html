@@ -350,7 +350,7 @@
       ['primary-btn','hero-cta','band-cta'].forEach(function(id){
         var el=document.getElementById(id); if(el)el.href=dest;
       });
-      document.getElementById('primary-btn').textContent='Open dashboard';
+      var primary=document.getElementById('primary-btn'); primary.textContent='My papers'; primary.href='/my-papers';
       var hero=document.getElementById('hero-cta'); hero.textContent='Continue practising'; hero.href='/my-papers';
     }
   }catch(e){}
