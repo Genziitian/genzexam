@@ -4,6 +4,7 @@ import '../screens/auth/login_screen.dart';
 import '../screens/auth/otp_verification_screen.dart';
 import '../screens/student/student_main_shell.dart';
 import '../screens/admin/admin_console_screen.dart';
+import '../screens/manager/manager_workspace_screen.dart';
 
 /// Production-grade Role-Based Route Gate for GenZ IITian Mobile.
 ///
@@ -14,7 +15,7 @@ import '../screens/admin/admin_console_screen.dart';
 /// 4. If authenticated:
 ///    - Student (Rank 0): Mounts 5-Tab [StudentMainShell].
 ///    - Admin (Rank 1): Mounts [AdminConsoleScreen].
-///    - Manager (Rank 2): Mounts [AdminConsoleScreen].
+///    - Manager (Rank 2): Mounts [ManagerWorkspaceScreen].
 ///      If Manager clicks 'Preview Student View', routes dynamically to [StudentMainShell]
 ///      with persistent exit preview banner.
 class AppRouter extends StatelessWidget {
@@ -66,8 +67,9 @@ class AppRouter extends StatelessWidget {
           isManagerPreview: true,
         );
       }
-      return AdminConsoleScreen(authState: state);
+      return ManagerWorkspaceScreen(authState: state);
     }
+
 
     // Admin (Rank 1)
     if (role == 'admin') {

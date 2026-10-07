@@ -10,6 +10,8 @@ export 'course_service.dart';
 export 'discussion_service.dart';
 export 'leaderboard_service.dart';
 export 'admin_service.dart';
+export 'storefront_service.dart';
+export 'manager_sales_service.dart';
 
 // Models
 export 'models/auth_model.dart';
@@ -19,3 +21,6 @@ export 'models/course_model.dart';
 export 'models/discussion_model.dart';
 export 'models/leaderboard_model.dart';
 export 'models/admin_model.dart';
+export 'models/storefront_model.dart';
+export 'models/manager_sales_model.dart';
+
