@@ -197,3 +197,27 @@
 .ql-paid-chip[data-state=locked]{background:#fef3c7;color:#92400e}
 [data-ql-paid]>div>div:first-child{flex-wrap:wrap;gap:4px}
 [data-ql-hidden]{display:none!important}
+
+/* Weekly goal: change button and editor (dashboard card and Settings) */
+.ql-goal-change{margin-top:12px;padding:6px 14px;border-radius:999px;border:1px solid rgba(22,163,74,.35);background:rgba(22,163,74,.08);color:#15803d;font-size:12px;font-weight:600;line-height:1.3;cursor:pointer;transition:background .15s ease}
+.ql-goal-change:hover{background:rgba(22,163,74,.16)}
+.ql-goal-edit{display:flex;flex-direction:column;align-items:center;gap:10px}
+.ql-goal-step{display:flex;align-items:center;gap:8px}
+.ql-goal-step button{width:36px;height:36px;border-radius:10px;border:1px solid #e2e8f0;background:#f8fafc;color:#0f172a;font-size:18px;font-weight:600;line-height:1;cursor:pointer}
+.ql-goal-step button:hover{background:#f1f5f9}
+.ql-goal-step input{width:72px;height:36px;border-radius:10px;border:1px solid #e2e8f0;background:#ffffff;color:#0f172a;text-align:center;font-size:18px;font-weight:700;font-variant-numeric:tabular-nums}
+.ql-goal-step input:focus{outline:2px solid rgba(22,163,74,.45);outline-offset:1px}
+.ql-goal-unit{font-size:11.5px;color:#64748b}
+.ql-goal-presets{display:flex;gap:6px;flex-wrap:wrap;justify-content:center}
+.ql-goal-chip{min-width:40px;padding:5px 10px;border-radius:999px;border:1px solid #e2e8f0;background:#ffffff;color:#475569;font-size:12px;font-weight:600;cursor:pointer}
+.ql-goal-chip:hover{background:#f1f5f9}
+.ql-goal-chip.is-on{border-color:#16a34a;background:rgba(22,163,74,.12);color:#15803d}
+.ql-goal-actions{display:flex;gap:8px;margin-top:2px}
+.ql-goal-cancel,.ql-goal-save{padding:7px 16px;border-radius:10px;font-size:12.5px;font-weight:600;cursor:pointer}
+.ql-goal-cancel{border:1px solid #e2e8f0;background:#ffffff;color:#475569}
+.ql-goal-save{border:1px solid #16a34a;background:#16a34a;color:#ffffff}
+.ql-goal-save:disabled{opacity:.5;cursor:not-allowed}
+.ql-goal-change:focus-visible,.ql-goal-step button:focus-visible,.ql-goal-chip:focus-visible,.ql-goal-cancel:focus-visible,.ql-goal-save:focus-visible{outline:2px solid rgba(22,163,74,.6);outline-offset:2px}
+.ql-goal-settings{margin-top:16px;display:flex}
+.ql-goal-settings .ql-goal-edit{align-items:flex-start}
+.ql-goal-settings .ql-goal-presets{justify-content:flex-start}

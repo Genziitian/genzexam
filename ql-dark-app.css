@@ -433,6 +433,19 @@
 :root[data-theme=dark] .ql-mp-progress.live{color:#f0924a}
 :root[data-theme=dark] .ql-paid-chip[data-state=owned]{background-color:#16a34a;color:#fff}
 :root[data-theme=dark] .ql-paid-chip[data-state=locked]{background-color:#574c1d;color:#ee8b4f}
+:root[data-theme=dark] .ql-goal-change{border-color:rgba(22,163,74,.35);background-color:rgba(22,163,74,.08);color:#54d785}
+:root[data-theme=dark] .ql-goal-change:hover{background-color:rgba(22,163,74,.16)}
+:root[data-theme=dark] .ql-goal-step button{border-color:#2e3b4c;background-color:#19232c;color:#d6dae5}
+:root[data-theme=dark] .ql-goal-step button:hover{background-color:#1c2833}
+:root[data-theme=dark] .ql-goal-step input{border-color:#2e3b4c;background-color:#151a25;color:#d6dae5}
+:root[data-theme=dark] .ql-goal-step input:focus{outline-color:rgba(22,163,74,.45)}
+:root[data-theme=dark] .ql-goal-unit{color:#9ea9b9}
+:root[data-theme=dark] .ql-goal-chip{border-color:#2e3b4c;background-color:#151a25;color:#b0baca}
+:root[data-theme=dark] .ql-goal-chip:hover{background-color:#1c2833}
+:root[data-theme=dark] .ql-goal-chip.is-on{border-color:#16a34a;background-color:rgba(22,163,74,.12);color:#54d785}
+:root[data-theme=dark] .ql-goal-cancel{border-color:#2e3b4c;background-color:#151a25;color:#b0baca}
+:root[data-theme=dark] .ql-goal-save{border-color:#16a34a;background-color:#16a34a;color:#ffffff}
+:root[data-theme=dark] .ql-goal-change:focus-visible,:root[data-theme=dark] .ql-goal-step button:focus-visible,:root[data-theme=dark] .ql-goal-chip:focus-visible,:root[data-theme=dark] .ql-goal-cancel:focus-visible,:root[data-theme=dark] .ql-goal-save:focus-visible{outline-color:rgba(22,163,74,.6)}
 /* inline styles in app-enhancements.js */
 :root[data-theme=dark] [style*="background:#fff"],:root[data-theme=dark] [style*="background: #fff"],:root[data-theme=dark] [style*="background-color:#fff"],:root[data-theme=dark] [style*="background: rgb(255, 255, 255)"],:root[data-theme=dark] [style*="background-color: rgb(255, 255, 255)"]{background-color:#151a25!important}
 :root[data-theme=dark] [style*="solid #fff"],:root[data-theme=dark] [style*="dashed #fff"],:root[data-theme=dark] [style*="border-color:#fff"],:root[data-theme=dark] [style*="solid rgb(255, 255, 255)"],:root[data-theme=dark] [style*="dashed rgb(255, 255, 255)"],:root[data-theme=dark] [style*="border-color: rgb(255, 255, 255)"]{border-color:#222835!important}
