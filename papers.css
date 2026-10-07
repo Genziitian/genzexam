@@ -22,3 +22,26 @@ img.mark{display:block;background:none;object-fit:cover;flex-shrink:0}
 
 /* Dark / light switch (ql-theme.js fills in the icon). */
 .theme-toggle{display:inline-grid;place-items:center;width:36px;height:36px;min-height:0;padding:0;border:1px solid var(--border);border-radius:10px;background:transparent;color:var(--muted);cursor:pointer}.theme-toggle:hover{color:var(--ink)}
+
+/* Phones: one-line header, no hero buttons, search on top with the three filters in one row. */
+@media(max-width:520px){
+html,body{overflow-x:clip}
+.nav{min-height:0;gap:6px 10px;padding-top:8px;padding-bottom:0}
+.navend{width:auto;margin-left:auto;display:flex;flex-wrap:nowrap}
+.navend .btn{min-height:38px;padding:8px 14px}
+.navlinks{justify-content:flex-start;flex-wrap:nowrap;gap:18px;padding:0;overflow-x:auto;scrollbar-width:none}
+.navlinks::-webkit-scrollbar{display:none}
+.navlinks a{padding:8px 0;white-space:nowrap;flex-shrink:0}
+.navlinks .theme-toggle{margin-left:auto;flex-shrink:0;width:32px;height:32px;margin-bottom:6px}
+.hero{padding:22px 0 18px}
+.hero-row .hero-actions{display:none}
+.hero h1{font-size:clamp(27px,8.4vw,36px);margin-top:8px}
+.filters{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding:10px}
+.filters input{grid-column:1/-1}
+.filters select{appearance:none;-webkit-appearance:none;padding:0 18px 0 8px;text-overflow:ellipsis;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23808578' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 6px center}
+.section-head{margin:22px 0 12px}
+.grid,.library-grid{padding-bottom:44px}
+.card{min-height:0;padding:16px}
+.toast{bottom:14px}
+}
+@media(max-width:374px){.filters select{font-size:14px}.filters{gap:6px;padding:8px}}

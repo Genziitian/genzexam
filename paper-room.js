@@ -484,7 +484,7 @@
       "</b></div>" +
       '<div style="display:flex;align-items:center;gap:6px;background:#f1f5f9;padding:6px 12px;border-radius:8px;border:1px solid #cbd5e1;"><span id="pr-timer-dot" style="width:8px;height:8px;border-radius:9999px;background:' +
       (low ? "#ef4444" : "#059669") +
-      ';animation:ep-pulse 2s infinite;"></span><span style="font-size:11px;font-weight:700;color:#64748b;">Time:</span><span id="ep-countdown" style="font-size:15px;font-weight:800;color:' +
+      ';animation:ep-pulse 2s infinite;"></span><span class="pr-live-time-label" style="font-size:11px;font-weight:700;color:#64748b;">Time:</span><span id="ep-countdown" style="font-size:15px;font-weight:800;color:' +
       (low ? "#ef4444" : "#0f172a") +
       ';font-family:ui-monospace,monospace;">' +
       (left == null ? "Untimed" : timeText(left)) +
@@ -500,7 +500,7 @@
       '<div class="pr-live-palette" style="flex:1;overflow-y:auto;padding:16px;"><div class="pr-live-palette-title" style="font-size:11px;font-weight:700;text-transform:uppercase;color:#64748b;margin-bottom:12px;">Question Palette</div><div class="ep-q-grid" id="pr-palette">' +
       paletteHtml() +
       "</div></div>" +
-      '<div class="pr-live-tools-box" style="padding:12px 16px;border-top:1px solid #e2e8f0;background:#ffffff;"><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;"><button type="button" data-calc="basic" title="Open Basic Calculator" style="background:#f0fdf4;border:1px solid #86efac;color:#047857;padding:9px 10px;border-radius:8px;font-size:12px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px;">Basic calculator</button><button type="button" data-calc="pro" title="Open Scientific Calculator" style="background:#f0fdf4;border:1px solid #86efac;color:#047857;padding:9px 10px;border-radius:8px;font-size:12px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px;">Pro calculator</button></div></div>' +
+      '<div class="pr-live-tools-box" style="padding:12px 16px;border-top:1px solid #e2e8f0;background:#ffffff;"><button type="button" data-calc="toggle" title="Open calculator" style="width:100%;background:#f0fdf4;border:1px solid #86efac;color:#047857;padding:9px 10px;border-radius:8px;font-size:12px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px;">Calculator</button></div>' +
       '<div class="pr-live-legend" id="pr-legend" style="padding:12px 16px;border-top:1px solid #e2e8f0;background:#f8fafc;font-size:11px;color:#475569;">' +
       legendHtml() +
       "</div></aside>" +
@@ -529,7 +529,7 @@
       '">' +
       inputsHtml(q) +
       "</div>" +
-      '<div class="pr-live-actions" style="margin-top:auto;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;border-top:1px solid #e2e8f0;padding-top:18px;"><div style="display:flex;gap:8px;">' +
+      '<div class="pr-live-actions" style="margin-top:auto;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;border-top:1px solid #e2e8f0;background:#ffffff;"><div style="display:flex;gap:8px;">' +
       '<button type="button" id="btn-q-prev" data-action="prev"' +
       (index === 0 ? " disabled" : "") +
       ' style="background:#fff;border:1px solid #cbd5e1;color:#475569;padding:9px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:' +
@@ -546,7 +546,7 @@
       (passage
         ? ""
         : '<button type="button" id="btn-q-review" data-action="review" style="background:#f5f3ff;border:1px solid #c4b5fd;color:#6d28d9;padding:9px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;">' +
-          (st.review[q.id] ? "Marked for Review" : "Review &amp; Next") +
+          (st.review[q.id] ? 'Marked<span class="pr-wide"> for Review</span>' : 'Review<span class="pr-wide"> &amp; Next</span>') +
           "</button>") +
       '<button type="button" id="btn-q-save-next" data-action="next" style="background:#059669;color:#fff;border:none;padding:9px 20px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;">' +
       (index === total - 1 ? "Save Response" : passage ? "Next →" : "Save &amp; Next →") +
@@ -686,7 +686,7 @@
       (scored.length ? "<p>" + correct + " of " + scored.length + " questions correct.</p>" : "") +
       (xp ? '<div class="ep-alert">+' + xp + " XP earned.</div>" : "") +
       (st.error ? '<div class="ep-alert error" role="alert">' + esc(st.error) + "</div>" : "") +
-      '<div class="ep-actions"><a class="ep-btn pr-btn-link" href="/papers">Back to papers</a><a class="ep-btn pr-btn-link" href="/dashboard">Dashboard</a><button class="ep-btn ep-btn-primary" data-action="retake">Attempt again</button></div></div>' +
+      '<div class="ep-actions pr-result-actions"><a class="ep-btn pr-btn-link" href="/papers"><span class="pr-wide">Back to </span>Papers</a><a class="ep-btn pr-btn-link" href="/dashboard">Dashboard</a><button class="ep-btn ep-btn-primary" data-action="retake">Attempt again</button></div></div>' +
       (answers.length
         ? '<h2 class="pr-review-title">Answer review</h2><div class="ep-questions">' +
           answers.map((a) => reviewCard(a, a.question_type === "comprehension" ? 0 : ++number)).join("") +
@@ -853,7 +853,7 @@
     const jump = ev.target.closest("[data-go]");
     if (jump) return void go(Number(jump.dataset.go));
     const calc = ev.target.closest("[data-calc]");
-    if (calc) return void (window.ExamCalculator && window.ExamCalculator.toggle(calc.dataset.calc));
+    if (calc) return void (window.ExamCalculator && window.ExamCalculator.toggle(calc.dataset.calc === "toggle" ? undefined : calc.dataset.calc));
     const target = ev.target.closest("[data-action]");
     if (!target) return;
     const action = target.dataset.action;

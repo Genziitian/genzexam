@@ -221,3 +221,29 @@
 .ql-goal-settings{margin-top:16px;display:flex}
 .ql-goal-settings .ql-goal-edit{align-items:flex-start}
 .ql-goal-settings .ql-goal-presets{justify-content:flex-start}
+
+/* ---- Course cards (Practice, Exam): tinted so they stand off the page background ---- */
+a.block>.group.rounded-2xl.p-4{border-color:rgba(22,163,74,.24)!important;box-shadow:0 1px 2px rgba(15,23,42,.05),0 10px 22px -16px rgba(22,101,52,.4)}
+:root:not([data-theme=dark]) a.block>.group.rounded-2xl.bg-white.p-4{background-image:linear-gradient(160deg,#fff 35%,#ecf7ef 100%)}
+:root:not([data-theme=dark]) a.block>.group.rounded-2xl.p-4>div:first-child>div:first-child{background:#dcf3e3!important;color:#15803d!important}
+:root:not([data-theme=dark]) a.block>.group.rounded-2xl.p-4 .h-1\.5.bg-slate-100{background-color:#dbe7df}
+:root[data-theme=dark] a.block>.group.rounded-2xl.p-4{border-color:rgba(74,222,128,.28)!important}
+/* Practice list on phones: full-width search, count and filter on one line. */
+@media(max-width:640px){
+.flex.flex-wrap>.relative.flex-1.max-w-xs.min-w-\[180px\]{flex:1 1 100%;max-width:none}
+.flex.flex-wrap>.relative.flex-1.max-w-xs.min-w-\[180px\]+.ml-auto{width:100%;margin-left:0;justify-content:space-between}
+.mb-7>h1.text-\[34px\]{font-size:27px;line-height:1.12}
+}
+/* ---- Bottom bar: lightning on the centre Practice button ---- */
+button[aria-label=Practice]>span{position:relative;animation:ql-fab-glow 2.6s ease-in-out infinite}
+button[aria-label=Practice]>span::before,button[aria-label=Practice]>span::after{content:"";position:absolute;inset:-3px;border-radius:999px;border:2px solid #4ade80;opacity:0;pointer-events:none;animation:ql-fab-ring 2.6s ease-out infinite}
+button[aria-label=Practice]>span::after{animation-delay:.45s}
+button[aria-label=Practice]>span>svg{position:relative;z-index:1;transform-origin:50% 50%;animation:ql-fab-bolt 2.6s ease-in-out infinite}
+@keyframes ql-fab-glow{0%,100%{box-shadow:0 8px 18px -4px rgba(22,163,74,.55)}8%{box-shadow:0 0 0 2px rgba(254,240,138,.9),0 0 26px 6px rgba(250,204,21,.75)}14%{box-shadow:0 8px 18px -4px rgba(22,163,74,.55)}20%{box-shadow:0 0 0 2px rgba(254,240,138,.7),0 0 20px 4px rgba(250,204,21,.6)}34%{box-shadow:0 8px 18px -4px rgba(22,163,74,.55)}}
+@keyframes ql-fab-bolt{0%,100%{transform:none;color:#fff;filter:none}8%{transform:scale(1.22) rotate(-8deg);color:#fef08a;filter:drop-shadow(0 0 6px #fde047)}14%{transform:scale(.96);color:#fff;filter:none}20%{transform:scale(1.14) rotate(5deg);color:#fef9c3;filter:drop-shadow(0 0 5px #fde047)}34%{transform:none;color:#fff;filter:none}}
+@keyframes ql-fab-ring{0%,6%{transform:scale(1);opacity:0}10%{opacity:.75}45%,100%{transform:scale(1.55);opacity:0}}
+@media(prefers-reduced-motion:reduce){button[aria-label=Practice]>span,button[aria-label=Practice]>span::before,button[aria-label=Practice]>span::after,button[aria-label=Practice]>span>svg{animation:none}}
+/* Phone top bar: brand line under the name. */
+header.lg\:hidden>a[href="/dashboard"] .whitespace-nowrap.text-\[15px\]{line-height:1.15}
+header.lg\:hidden>a[href="/dashboard"] .whitespace-nowrap.text-\[15px\]::after{content:"by GenZ IITian";display:block;margin-top:1px;font-size:10.5px;font-weight:500;letter-spacing:0;color:#64748b}
+:root[data-theme=dark] header.lg\:hidden>a[href="/dashboard"] .whitespace-nowrap.text-\[15px\]::after{color:#94a3b8}
