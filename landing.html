@@ -223,7 +223,7 @@
         <p class="lede">Past papers from Qualifier to Degree. Browse free and paid papers, then practise on a real timer or with instant solutions.</p>
         <div class="cta-row">
       <a class="btn btn-dark" id="hero-cta" href="/papers">Browse papers</a>
-          <a class="btn btn-soft" href="#demo">Try a sample paper</a>
+          <a class="btn btn-soft" href="/practice">Try a sample paper</a>
         </div>
       </div>
 
@@ -351,7 +351,7 @@
         var el=document.getElementById(id); if(el)el.href=dest;
       });
       document.getElementById('primary-btn').textContent='Open dashboard';
-      document.getElementById('hero-cta').textContent='Continue practising';
+      var hero=document.getElementById('hero-cta'); hero.textContent='Continue practising'; hero.href='/my-papers';
     }
   }catch(e){}
 
