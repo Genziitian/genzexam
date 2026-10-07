@@ -247,3 +247,12 @@ button[aria-label=Practice]>span>svg{position:relative;z-index:1;transform-origi
 header.lg\:hidden>a[href="/dashboard"] .whitespace-nowrap.text-\[15px\]{line-height:1.15}
 header.lg\:hidden>a[href="/dashboard"] .whitespace-nowrap.text-\[15px\]::after{content:"by GenZ IITian";display:block;margin-top:1px;font-size:10.5px;font-weight:500;letter-spacing:0;color:#64748b}
 :root[data-theme=dark] header.lg\:hidden>a[href="/dashboard"] .whitespace-nowrap.text-\[15px\]::after{color:#94a3b8}
+
+/* Phones and tablets: the page never scrolls sideways. Wide tables and formulas scroll inside their own box. */
+@media (max-width: 900px) {
+  html { overflow-x: hidden; }
+  html, body { max-width: 100%; overscroll-behavior-x: none; }
+  @supports (overflow: clip) {
+    html, body { overflow-x: clip; }
+  }
+}

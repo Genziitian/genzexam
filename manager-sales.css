@@ -13,3 +13,12 @@
 
 /* Dark / light switch (ql-theme.js fills in the icon). */
 .theme-toggle{display:inline-grid;place-items:center;width:36px;height:36px;min-height:0;padding:0;border:1px solid var(--line);border-radius:10px;background:transparent;color:var(--muted)}.theme-toggle:hover{color:var(--ink)}header nav{align-items:center}
+
+/* Phones and tablets: the page never scrolls sideways. Wide tables and formulas scroll inside their own box. */
+@media (max-width: 900px) {
+  html { overflow-x: hidden; }
+  html, body { max-width: 100%; overscroll-behavior-x: none; }
+  @supports (overflow: clip) {
+    html, body { overflow-x: clip; }
+  }
+}

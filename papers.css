@@ -45,3 +45,12 @@ html,body{overflow-x:clip}
 .toast{bottom:14px}
 }
 @media(max-width:374px){.filters select{font-size:14px}.filters{gap:6px;padding:8px}}
+
+/* Phones and tablets: the page never scrolls sideways. Wide tables and formulas scroll inside their own box. */
+@media (max-width: 900px) {
+  html { overflow-x: hidden; }
+  html, body { max-width: 100%; overscroll-behavior-x: none; }
+  @supports (overflow: clip) {
+    html, body { overflow-x: clip; }
+  }
+}
