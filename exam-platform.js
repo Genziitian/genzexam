@@ -49,7 +49,147 @@
     epoch: 0,
     eventQueue: [],
     lastEventAt: 0,
+    mgrTab: "monitor",
+    candidateSearch: "",
+    isTabWarningModalOpen: false,
+    hasUserSwitchedAway: false,
+    outsideSince: null,
+    tabWarningTimerId: null,
   };
+  function I(name, size = 16, color = "currentColor", extraStyle = "") {
+    const s = `width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="${color}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;flex-shrink:0;${extraStyle}"`;
+    switch (name) {
+      case "shield":
+        return `<svg ${s}><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`;
+      case "cap":
+        return `<svg ${s}><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>`;
+      case "camera":
+        return `<svg ${s}><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>`;
+      case "lock":
+        return `<svg ${s}><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>`;
+      case "unlock":
+        return `<svg ${s}><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg>`;
+      case "alert":
+        return `<svg ${s}><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>`;
+      case "check":
+        return `<svg ${s}><polyline points="20 6 9 17 4 12"/></svg>`;
+      case "clock":
+        return `<svg ${s}><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`;
+      case "pause":
+        return `<svg ${s}><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>`;
+      case "play":
+        return `<svg ${s}><polygon points="5 3 19 12 5 21 5 3"/></svg>`;
+      case "square":
+        return `<svg ${s}><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/></svg>`;
+      case "download":
+        return `<svg ${s}><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>`;
+      case "broadcast":
+        return `<svg ${s}><circle cx="12" cy="12" r="2"/><path d="M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-.01a6 6 0 0 1 0-8.49m11.31-2.82a10 10 0 0 1 0 14.14m-14.14 0a10 10 0 0 1 0-14.14"/></svg>`;
+      case "users":
+        return `<svg ${s}><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`;
+      case "barChart":
+        return `<svg ${s}><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>`;
+      case "door":
+        return `<svg ${s}><path d="M18 20V6a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v14"/><path d="M2 20h20"/><circle cx="14" cy="12" r="1"/></svg>`;
+      case "message":
+        return `<svg ${s}><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>`;
+      case "fileText":
+        return `<svg ${s}><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>`;
+      case "refresh":
+        return `<svg ${s}><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>`;
+      case "settings":
+        return `<svg ${s}><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>`;
+      default:
+        return "";
+    }
+  }
+  function formatOutsideTime(s) {
+    s = Math.max(0, Math.floor(s || 0));
+    return `${String(Math.floor(s / 60)).padStart(2, "0")}:${String(s % 60).padStart(2, "0")}`;
+  }
+  function showTabSwitchWarningModal(warningCount, maxAllowed, outsideSeconds = 1) {
+    app.isTabWarningModalOpen = true;
+    let modal = document.getElementById("ep-tab-warning-modal");
+    if (!modal) {
+      modal = document.createElement("div");
+      modal.id = "ep-tab-warning-modal";
+      modal.className = "ep-modal-backdrop";
+      document.body.appendChild(modal);
+    }
+    const liveStart = Date.now() - (outsideSeconds * 1000);
+    modal.innerHTML = `
+      <div class="ep-onboarding-card" style="border:1.5px solid #fca5a5;">
+        <div class="ep-shield-badge">
+          ${I("alert", 34, "#dc2626")}
+        </div>
+        <h2 class="ep-onboarding-title" style="color:#b91c1c;">
+          Security Infraction Detected!
+        </h2>
+        <p class="ep-onboarding-text">
+          Exiting the exam screen, changing windows, leaving fullscreen, or opening developer tools is strictly prohibited and logged to the proctoring server.
+        </p>
+        <div style="background:#fef2f2;border:1px solid #fecaca;border-radius:10px;padding:12px 16px;margin-bottom:14px;display:flex;align-items:center;justify-content:center;gap:10px;color:#991b1b;font-weight:800;font-size:15px;width:100%;">
+          ${I("alert", 18, "#dc2626")}
+          Violation ${warningCount} of ${maxAllowed}
+        </div>
+        <div style="background:#fff7ed;border:1px solid #fed7aa;border-radius:10px;padding:10px 14px;margin-bottom:20px;color:#9a3412;font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center;gap:8px;width:100%;">
+          ${I("clock", 15, "#ea580c")}
+          Outside duration: <span id="ep-tab-away-time">${formatOutsideTime(outsideSeconds)}</span>
+        </div>
+        <button id="ep-btn-dismiss-warning" class="ep-modal-btn" style="background:#dc2626;box-shadow:0 4px 14px rgba(220,38,38,0.35);">
+          I Understand &amp; Resume Exam (Return to Fullscreen)
+        </button>
+      </div>
+    `;
+    modal.style.display = "flex";
+    if (app.tabWarningTimerId) clearInterval(app.tabWarningTimerId);
+    app.tabWarningTimerId = setInterval(() => {
+      const timeEl = document.getElementById("ep-tab-away-time");
+      const elapsed = Math.max(1, Math.round((Date.now() - liveStart) / 1000));
+      if (timeEl) timeEl.textContent = formatOutsideTime(elapsed);
+    }, 1000);
+
+    const btnDismiss = document.getElementById("ep-btn-dismiss-warning");
+    if (btnDismiss) {
+      btnDismiss.onclick = async () => {
+        if (app.tabWarningTimerId) clearInterval(app.tabWarningTimerId);
+        app.tabWarningTimerId = null;
+        modal.remove();
+        app.isTabWarningModalOpen = false;
+        app.hasUserSwitchedAway = false;
+        await fullscreen();
+      };
+    }
+  }
+  function renderLockoutScreen(e, sess) {
+    return `<div id="ep-root" style="display:flex;align-items:center;justify-content:center;min-height:85vh;padding:24px;background:#f8fafc;">
+      <div class="ep-onboarding-card" style="max-width:500px;border:1.5px solid #fecaca;padding:36px 32px;">
+        <div class="ep-shield-badge" style="background:#fee2e2;">
+          ${I("lock", 34, "#dc2626")}
+        </div>
+        <h2 class="ep-onboarding-title" style="color:#0f172a;font-size:22px;">
+          Examination Window Locked
+        </h2>
+        <p class="ep-onboarding-text" style="color:#475569;font-size:13.5px;margin-bottom:18px;">
+          Security policy locked your session because the window was exited or the security infraction threshold was reached. An official re-entry request has been queued with the exam invigilator.
+        </p>
+        <div style="background:#fef3c7;border:1px solid #fde68a;border-radius:10px;padding:12px 16px;color:#92400e;font-size:13px;font-weight:700;margin-bottom:20px;width:100%;display:flex;align-items:center;justify-content:center;gap:8px;">
+          ${I("clock", 16, "#92400e")} Re-entry request pending manager approval...
+        </div>
+        <div style="display:flex;gap:10px;justify-content:center;margin-bottom:16px;width:100%;">
+          <button type="button" class="ep-btn ep-btn-primary" data-action="refresh-state" style="padding:10px 18px;font-size:13px;font-weight:700;">
+            ${I("refresh", 13, "#fff")} Check Approval Status
+          </button>
+          <button type="button" class="ep-btn ep-btn-quiet" data-action="messages" style="padding:10px 16px;font-size:13px;">
+            ${I("message", 13, "currentColor")} Contact Manager
+          </button>
+        </div>
+        <div style="font-size:12px;color:#64748b;line-height:1.5;">
+          This screen automatically checks every few seconds and will restore your exam session immediately once approved by the supervisor.
+        </div>
+      </div>
+    </div>`;
+  }
   const $ = (s, root = document) => root.querySelector(s);
   const esc = (v) =>
     String(v == null ? "" : v).replace(
@@ -533,7 +673,530 @@
       state = app.state || {},
       manager = isManager();
     if (!manager) return studentDetail(e, state);
-    return `<section class="ep-page"><div class="ep-back"><button class="ep-btn ep-btn-quiet" data-action="back">← Exams</button></div><div class="ep-heading"><div><p class="ep-eyebrow">${manager ? "MANAGER CONSOLE" : "EXAM DETAILS"}</p><h1>${esc(e.title)}</h1><p>${esc(e.subject || "")}</p></div><span class="ep-status ${esc(e.status)}">${esc(e.status || "draft")}</span></div>${app.error ? `<div class="ep-alert error">${esc(app.error)}</div>` : ""}<div class="ep-detail-grid"><div class="ep-card"><h2>Exam setup</h2><dl class="ep-facts"><div><dt>Duration</dt><dd>${Number(e.duration_minutes || 0)} minutes</dd></div><div><dt>Scheduled start</dt><dd>${esc(formatDate(e.scheduled_at))}</dd></div><div><dt>Exam end</dt><dd>${esc(formatDate(e.closes_at))}</dd></div><div><dt>Questions</dt><dd>${Number(e.questions?.length || e.question_count || 0)}</dd></div><div><dt>Results</dt><dd>${e.results_published ? "Published" : "Not published"}</dd></div></dl><h3>Instructions</h3><p class="ep-instructions">${contentHtml(e.instructions || "No additional instructions.")}</p><div class="ep-actions">${manager ? `${e.status === "draft" ? '<button class="ep-btn" data-action="edit">Edit draft</button>' : ""}${e.status === "published" ? '<button class="ep-btn" data-action="edit-enrollments">Edit enrollment</button><button class="ep-btn ep-btn-primary" data-action="start">Start exam</button>' : ""}${["live", "paused"].includes(e.status) ? `<button class="ep-btn" data-action="${e.status === "live" ? "pause" : "resume"}">${e.status === "live" ? "Pause" : "Resume"}</button><button class="ep-btn ep-btn-danger" data-action="end">End exam</button><button class="ep-btn" data-action="extend">Add 5 minutes</button>` : ""}${e.status === "ended" && !e.results_published ? '<button class="ep-btn ep-btn-primary" data-action="publish-results">Publish results</button>' : ""}${e.status === "ended" ? '<button class="ep-btn" data-action="archive">Archive</button>' : ""}${e.results_published ? '<button class="ep-btn" data-action="export">Export results CSV</button>' : ""}<button class="ep-btn ep-btn-quiet" data-action="audit">Audit log</button><button class="ep-btn ep-btn-quiet" data-action="copy-link">Copy candidate link</button>` : `<button class="ep-btn ep-btn-primary" data-action="join" ${e.status === "live" ? "" : "disabled"}>Review rules and join</button>`}</div></div>${manager ? `<div class="ep-card"><div class="ep-card-head"><h2>Live monitoring</h2><span class="ep-live-dot">${Array.isArray(state.sessions) ? state.sessions.length : Object.keys(state.sessions || {}).length} candidates</span></div><div class="ep-actions"><button class="ep-btn ep-btn-quiet" data-action="refresh-state">Refresh now</button><button class="ep-btn" data-action="messages">Messages</button></div><div id="ep-sessions">${sessionTable(state.sessions || [])}</div><div id="ep-audit">${app.auditEvents ? auditHtml() : ""}</div></div>` : candidateSummary(state)}</div>${manager ? managerQuestions(e.questions || []) : ""}</section>`;
+    return renderManagerPortal(e, state);
+  }
+  function renderManagerPortal(e, state) {
+    const sessions = Array.isArray(state.sessions)
+      ? state.sessions
+      : Object.values(state.sessions || {});
+    const enrolledCount = Number(
+      e.enrollment_count ||
+        (Array.isArray(e.enrollments) ? e.enrollments.length : 0) ||
+        sessions.length ||
+        0,
+    );
+    const activeSessions = sessions.filter((s) => s.status === "in_exam");
+    const lockedSessions = sessions.filter((s) => s.status === "locked");
+    const activeCount = activeSessions.length;
+    const lockedCount = lockedSessions.length;
+    const totalQuestions = Number(e.questions?.length || e.question_count || 0);
+    const totalAnswered = sessions.reduce(
+      (sum, s) => sum + Number(s.answered_count || 0),
+      0,
+    );
+    const avgProgress =
+      sessions.length && totalQuestions
+        ? Math.min(
+            100,
+            Math.round(
+              (totalAnswered / (sessions.length * totalQuestions)) * 100,
+            ),
+          )
+        : 0;
+
+    const currentTab = app.mgrTab || "monitor";
+
+    return `
+      <section class="saas-container">
+        <!-- Top Executive Action Bar -->
+        <div class="saas-header">
+          <div>
+            <div class="saas-breadcrumb">
+              <a href="/exams" data-action="back" style="color:#9ca3af;text-decoration:none;">Assessments</a>
+              <span style="color:#4b5563;">/</span>
+              <span>Quiz LAB</span>
+              <span style="color:#4b5563;">/</span>
+              <span class="active">${esc(e.title)}</span>
+            </div>
+            <div class="saas-title">
+              ${esc(e.title)}
+              <span class="saas-status-pill ${esc(e.status || "draft")}">
+                <span class="saas-pulse-dot"></span>
+                ${esc(e.status || "draft")}
+              </span>
+              <span style="font-size:11px;padding:3px 8px;border-radius:6px;background:${e.type === "final" ? "rgba(244,63,94,0.15)" : "rgba(56,189,248,0.15)"};color:${e.type === "final" ? "#fb7185" : "#38bdf8"};border:1px solid ${e.type === "final" ? "rgba(244,63,94,0.3)" : "rgba(56,189,248,0.3)"};">
+                ${e.type === "final" ? "FINAL TEST" : esc(e.subject || "GENERAL TEST").toUpperCase()}
+              </span>
+            </div>
+          </div>
+
+          <!-- Quick Action Toolbar -->
+          <div class="saas-control-group">
+            ${
+              e.status === "draft"
+                ? `<button class="saas-btn" data-action="edit">
+                     ${I("settings", 13, "#9ca3af")} Edit Draft
+                   </button>`
+                : ""
+            }
+
+            ${
+              e.status === "published"
+                ? `<button class="saas-btn saas-btn-primary" data-action="start">
+                     ${I("play", 13, "#34d399")} Start Exam
+                   </button>
+                   <button class="saas-btn" data-action="edit-enrollments">
+                     ${I("users", 13, "#9ca3af")} Edit Enrollment
+                   </button>
+                   <button class="saas-btn" data-action="edit">
+                     ${I("settings", 13, "#9ca3af")} Edit Draft
+                   </button>`
+                : ""
+            }
+
+            ${
+              e.status === "live"
+                ? `<button class="saas-btn saas-btn-warning" data-action="pause">
+                     ${I("pause", 13, "#fbbf24")} Pause
+                   </button>`
+                : e.status === "paused"
+                  ? `<button class="saas-btn saas-btn-primary" data-action="resume">
+                       ${I("play", 13, "#34d399")} Resume
+                     </button>`
+                  : ""
+            }
+
+            ${
+              ["live", "paused"].includes(e.status)
+                ? `<div class="saas-extend-dock">
+                     <span class="saas-extend-label">Extend:</span>
+                     <button class="saas-extend-btn" data-action="ext-5">+5m</button>
+                     <button class="saas-extend-btn" data-action="ext-10">+10m</button>
+                     <button class="saas-extend-btn" data-action="ext-15">+15m</button>
+                   </div>
+                   <button class="saas-btn saas-btn-danger" data-action="end">
+                     ${I("square", 13, "#fb7185")} End Exam
+                   </button>`
+                : ""
+            }
+
+            ${
+              e.status === "ended" && !e.results_published
+                ? `<button class="saas-btn saas-btn-primary" data-action="publish-results">
+                     ${I("broadcast", 13, "currentColor")} Publish Results
+                   </button>`
+                : ""
+            }
+
+            ${
+              e.results_published
+                ? `<button class="saas-btn" data-action="export" style="background:#042f2e;color:#2dd4bf;border-color:#0d9488;">
+                     ${I("download", 13, "#2dd4bf")} Export Marks (CSV)
+                   </button>`
+                : ""
+            }
+
+            ${
+              e.status === "ended"
+                ? `<button class="saas-btn" data-action="archive">
+                     ${I("square", 13, "#9ca3af")} Archive
+                   </button>`
+                : ""
+            }
+
+            <button class="saas-btn" data-action="messages" title="Doubts and announcements">
+              ${I("message", 13, "#9ca3af")} Doubts &amp; Messages
+            </button>
+            <button class="saas-btn" data-action="copy-link" title="Copy candidate entrance link">
+              ${I("fileText", 13, "#9ca3af")} Candidate Link
+            </button>
+            <button class="saas-btn" data-action="refresh-state" title="Refresh state now">
+              ${I("refresh", 13, "#9ca3af")} Refresh
+            </button>
+          </div>
+        </div>
+
+        ${app.error ? `<div class="ep-alert error" style="margin-bottom:20px;">${esc(app.error)}</div>` : ""}
+
+        <!-- 4 Live KPI Cards -->
+        <div class="saas-kpi-grid">
+          <div class="saas-kpi-card">
+            <div class="saas-kpi-title">
+              <span>Active Test Takers</span>
+              <span style="color:#34d399;font-size:11px;">LIVE</span>
+            </div>
+            <div class="saas-kpi-value-row">
+              <span class="saas-kpi-value">${activeCount}</span>
+              <span style="color:#6b7280;font-size:13px;font-weight:600;">/ ${enrolledCount || sessions.length} in session</span>
+            </div>
+            <div class="saas-kpi-subtext">
+              <span style="color:#10b981;font-weight:700;">100%</span> telemetry uptime
+            </div>
+          </div>
+
+          <div class="saas-kpi-card">
+            <div class="saas-kpi-title">
+              <span>Total Enrolled</span>
+              <span style="color:#6b7280;font-size:11px;">WHITELIST</span>
+            </div>
+            <div class="saas-kpi-value-row">
+              <span class="saas-kpi-value">${enrolledCount || sessions.length}</span>
+              <span style="color:#6b7280;font-size:13px;font-weight:600;">candidates</span>
+            </div>
+            <div class="saas-kpi-subtext">
+              Duration: <b>${Number(e.duration_minutes || 0)} min</b>
+            </div>
+          </div>
+
+          <div class="saas-kpi-card">
+            <div class="saas-kpi-title">
+              <span>Cohort Progress</span>
+              <span style="color:#6b7280;font-size:11px;">COMPLETION</span>
+            </div>
+            <div class="saas-kpi-value-row">
+              <span class="saas-kpi-value">${avgProgress}%</span>
+              <span style="color:#6b7280;font-size:13px;font-weight:600;">avg pace</span>
+            </div>
+            <div style="width:100%;height:4px;background:#1f1f1f;border-radius:9999px;overflow:hidden;margin-top:8px;">
+              <div style="height:100%;background:#10b981;width:${avgProgress}%;"></div>
+            </div>
+          </div>
+
+          <div class="saas-kpi-card" style="${lockedCount > 0 ? "border-color:#f59e0b;background:#1c170d;" : ""}">
+            <div class="saas-kpi-title">
+              <span>Re-entry Approval Queue</span>
+              <span style="color:${lockedCount > 0 ? "#f59e0b" : "#6b7280"};font-size:11px;">
+                ${lockedCount > 0 ? "ATTENTION" : "NORMAL"}
+              </span>
+            </div>
+            <div class="saas-kpi-value-row">
+              <span class="saas-kpi-value" style="color:${lockedCount > 0 ? "#fbbf24" : "#f9fafb"};">
+                ${lockedCount}
+              </span>
+              <span style="color:#6b7280;font-size:13px;font-weight:600;">pending review</span>
+            </div>
+            <div class="saas-kpi-subtext">
+              ${lockedCount > 0 ? `<b style="color:#fbbf24;">Candidates waiting</b>` : "No locked candidates"}
+            </div>
+          </div>
+        </div>
+
+        <!-- Cockpit Navigation Tabs -->
+        <div class="saas-tab-bar">
+          <button class="saas-tab-btn ${currentTab === "monitor" ? "active" : ""}" data-action="mgr-tab" data-tab="monitor">
+            ${I("barChart", 14)} Live Monitor <span class="saas-tab-badge">${sessions.length}</span>
+          </button>
+          <button class="saas-tab-btn ${currentTab === "leave_log" ? "active" : ""}" data-action="mgr-tab" data-tab="leave_log">
+            ${I("clock", 14)} Leave Log &amp; Audit
+          </button>
+          <button class="saas-tab-btn ${currentTab === "reentry" ? "active" : ""}" data-action="mgr-tab" data-tab="reentry">
+            ${I("door", 14)} Re-entry Approval Queue
+            ${lockedCount > 0 ? `<span class="saas-tab-badge" style="background:#78350f;color:#fbbf24;">${lockedCount}</span>` : ""}
+          </button>
+          <button class="saas-tab-btn ${currentTab === "builder" ? "active" : ""}" data-action="mgr-tab" data-tab="builder">
+            ${I("fileText", 14)} Exam Builder &amp; Questions <span class="saas-tab-badge">${totalQuestions}</span>
+          </button>
+          <button class="saas-tab-btn ${currentTab === "whitelist" ? "active" : ""}" data-action="mgr-tab" data-tab="whitelist">
+            ${I("users", 14)} Whitelist &amp; Enrollment <span class="saas-tab-badge">${enrolledCount}</span>
+          </button>
+        </div>
+
+        <!-- Tab Content -->
+        ${renderMgrTabContent(currentTab, e, state, sessions, lockedSessions)}
+      </section>
+    `;
+  }
+  function renderMgrTabContent(tab, e, state, sessions, lockedSessions) {
+    const totalQuestions = Number(e.questions?.length || e.question_count || 0);
+    const maxWarnings = Number(e.max_warnings || 3);
+
+    if (tab === "monitor") {
+      const q = (app.candidateSearch || "").toLowerCase();
+      const filtered = q
+        ? sessions.filter(
+            (s) =>
+              (s.name || "").toLowerCase().includes(q) ||
+              (s.email || "").toLowerCase().includes(q),
+          )
+        : sessions;
+
+      return `
+        <div class="saas-card">
+          <div class="saas-table-toolbar">
+            <div class="saas-search-box">
+              ${I("users", 14, "#6b7280")}
+              <input type="text" id="ep-candidate-search" placeholder="Search candidate by name or email…" value="${esc(app.candidateSearch || "")}" />
+            </div>
+            <div style="font-size:12px;color:#9ca3af;">
+              Showing <b>${filtered.length}</b> of ${sessions.length} candidates
+            </div>
+          </div>
+          <div style="overflow-x:auto;">
+            <table class="saas-table">
+              <thead>
+                <tr>
+                  <th>Candidate</th>
+                  <th>Status</th>
+                  <th>Warnings</th>
+                  <th>Answered</th>
+                  <th>Last Activity</th>
+                  <th style="text-align:right;">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${
+                  filtered.length
+                    ? filtered
+                        .map((s) => {
+                          const dotClass =
+                            s.status === "in_exam"
+                              ? "active"
+                              : s.status === "locked"
+                                ? "locked"
+                                : s.status === "submitted"
+                                  ? "submitted"
+                                  : "not_started";
+                          const statusBadge =
+                            s.status === "in_exam"
+                              ? '<span class="saas-badge-success">LIVE IN EXAM</span>'
+                              : s.status === "locked"
+                                ? '<span class="saas-badge-danger">LOCKED OUT</span>'
+                                : s.status === "submitted"
+                                  ? '<span class="saas-badge-muted">SUBMITTED</span>'
+                                  : '<span class="saas-badge-muted">NOT STARTED</span>';
+                          const initials = (s.name || s.email || "S")
+                            .split(" ")
+                            .map((w) => w[0])
+                            .slice(0, 2)
+                            .join("")
+                            .toUpperCase();
+                          return `
+                            <tr>
+                              <td>
+                                <div class="saas-candidate-cell">
+                                  <div class="saas-avatar">
+                                    ${initials}
+                                    <div class="saas-avatar-dot ${dotClass}"></div>
+                                  </div>
+                                  <div>
+                                    <div style="font-weight:700;color:#f9fafb;">${esc(s.name || s.email || `Candidate #${s.user_id}`)}</div>
+                                    <div style="font-size:11px;color:#6b7280;">${esc(s.email || "")}</div>
+                                  </div>
+                                </div>
+                              </td>
+                              <td>${statusBadge}</td>
+                              <td>
+                                <span style="font-weight:700;color:${Number(s.warnings) > 0 ? "#fb7185" : "#34d399"};">
+                                  ${Number(s.warnings || 0)}
+                                </span>
+                                <span style="color:#6b7280;font-size:11px;">/ ${maxWarnings}</span>
+                              </td>
+                              <td>
+                                <span style="font-weight:700;color:#f9fafb;">
+                                  ${Number(s.answered_count || 0)}
+                                </span>
+                                <span style="color:#6b7280;font-size:11px;">/ ${totalQuestions}</span>
+                              </td>
+                              <td style="font-size:12px;color:#9ca3af;">
+                                ${esc(formatDate(s.updated_at))}
+                              </td>
+                              <td style="text-align:right;">
+                                ${
+                                  s.status === "locked"
+                                    ? `<button class="saas-btn saas-btn-warning" data-action="unlock" data-user="${esc(s.user_id)}" style="padding:5px 11px;font-size:11px;">
+                                         ${I("unlock", 12)} Approve Re-entry
+                                       </button>`
+                                    : s.status === "in_exam"
+                                      ? `<button class="saas-btn saas-btn-danger" data-action="lock" data-user="${esc(s.user_id)}" style="padding:5px 11px;font-size:11px;">
+                                           ${I("lock", 12)} Lock Window
+                                         </button>`
+                                      : '<span style="color:#4b5563;font-size:11px;">—</span>'
+                                }
+                              </td>
+                            </tr>
+                          `;
+                        })
+                        .join("")
+                    : `<tr><td colspan="6" style="text-align:center;padding:32px;color:#6b7280;">No candidates matching filter.</td></tr>`
+                }
+              </tbody>
+            </table>
+          </div>
+        </div>
+      `;
+    }
+
+    if (tab === "reentry") {
+      return `
+        <div class="saas-card">
+          <div class="saas-table-toolbar">
+            <div style="font-weight:700;color:#f9fafb;display:flex;align-items:center;gap:8px;">
+              ${I("door", 16, "#fbbf24")}
+              Candidates Locked &amp; Awaiting Supervisor Re-entry Approval
+            </div>
+            <div style="font-size:12px;color:#9ca3af;">
+              ${lockedSessions.length} waiting
+            </div>
+          </div>
+          <div style="overflow-x:auto;">
+            <table class="saas-table">
+              <thead>
+                <tr>
+                  <th>Candidate</th>
+                  <th>Warnings Triggered</th>
+                  <th>Last Recorded Activity</th>
+                  <th style="text-align:right;">Supervisor Decision</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${
+                  lockedSessions.length
+                    ? lockedSessions
+                        .map(
+                          (s) => `
+                            <tr>
+                              <td>
+                                <div style="font-weight:700;color:#f9fafb;">${esc(s.name || s.email || `Candidate #${s.user_id}`)}</div>
+                                <div style="font-size:11px;color:#6b7280;">${esc(s.email || "")}</div>
+                              </td>
+                              <td>
+                                <span class="saas-badge-danger">
+                                  ${Number(s.warnings || 0)} infractions (${maxWarnings} max)
+                                </span>
+                              </td>
+                              <td style="font-size:12px;color:#9ca3af;">
+                                ${esc(formatDate(s.updated_at))}
+                              </td>
+                              <td style="text-align:right;">
+                                <button class="saas-btn saas-btn-warning" data-action="unlock" data-user="${esc(s.user_id)}" style="font-weight:700;">
+                                  ${I("unlock", 13)} Approve Re-entry (Grant +1 Warning)
+                                </button>
+                              </td>
+                            </tr>
+                          `,
+                        )
+                        .join("")
+                    : `<tr><td colspan="4" style="text-align:center;padding:48px 24px;color:#6b7280;">
+                         <div style="margin-bottom:8px;">${I("check", 28, "#10b981")}</div>
+                         <div style="font-weight:700;color:#d1d5db;margin-bottom:4px;">No Locked Candidates</div>
+                         <div>All candidates are adhering to exam window security rules.</div>
+                       </td></tr>`
+                }
+              </tbody>
+            </table>
+          </div>
+        </div>
+      `;
+    }
+
+    if (tab === "leave_log") {
+      const audits = app.auditEvents || [];
+      return `
+        <div class="saas-card">
+          <div class="saas-table-toolbar">
+            <div style="font-weight:700;color:#f9fafb;display:flex;align-items:center;gap:8px;">
+              ${I("clock", 16, "#38bdf8")}
+              Candidate Telemetry &amp; Security Infraction Log
+            </div>
+            <button class="saas-btn" data-action="audit" style="font-size:11px;padding:4px 10px;">
+              ${I("refresh", 12)} Refresh Audit Logs
+            </button>
+          </div>
+          <div style="overflow-x:auto;">
+            <table class="saas-table">
+              <thead>
+                <tr>
+                  <th>Timestamp</th>
+                  <th>Actor / Student</th>
+                  <th>Event Description</th>
+                  <th>Details</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${
+                  audits.length
+                    ? audits
+                        .map(
+                          (a) => `
+                            <tr>
+                              <td style="font-family:ui-monospace,monospace;font-size:11px;color:#9ca3af;">
+                                ${esc(formatDate(a.created_at))}
+                              </td>
+                              <td>
+                                <div style="font-weight:600;color:#f9fafb;">${esc(a.actor?.name || a.actor?.email || "System / Telemetry")}</div>
+                                ${a.actor?.email ? `<small style="color:#6b7280;">${esc(a.actor.email)}</small>` : ""}
+                              </td>
+                              <td>
+                                <span class="saas-badge-${String(a.event).includes("event") || String(a.event).includes("lock") ? "danger" : "muted"}">
+                                  ${esc(a.event)}
+                                </span>
+                              </td>
+                              <td style="font-size:12px;color:#d1d5db;">
+                                ${esc(a.details ? JSON.stringify(a.details) : "—")}
+                              </td>
+                            </tr>
+                          `,
+                        )
+                        .join("")
+                    : `<tr><td colspan="4" style="text-align:center;padding:48px 24px;color:#6b7280;">
+                         <div>No audit events loaded yet. Press <b>Refresh Audit Logs</b> to fetch server records.</div>
+                       </td></tr>`
+                }
+              </tbody>
+            </table>
+          </div>
+        </div>
+      `;
+    }
+
+    if (tab === "builder") {
+      return `
+        <div>
+          <div style="margin-bottom:16px;display:flex;justify-content:space-between;align-items:center;">
+            <div style="font-size:14px;font-weight:700;color:#f9fafb;">Questions Bank (${e.questions?.length || 0})</div>
+            ${e.status === "draft" ? '<button class="saas-btn saas-btn-primary" data-action="edit-json">Edit Imported JSON</button>' : ""}
+          </div>
+          ${managerQuestions(e.questions || [])}
+        </div>
+      `;
+    }
+
+    if (tab === "whitelist") {
+      const enrollments = Array.isArray(e.enrollments) ? e.enrollments : [];
+      return `
+        <div class="saas-card">
+          <div class="saas-table-toolbar">
+            <div style="font-weight:700;color:#f9fafb;display:flex;align-items:center;gap:8px;">
+              ${I("users", 16, "#34d399")}
+              Enrolled Candidates Whitelist (${enrollments.length})
+            </div>
+            <button class="saas-btn saas-btn-primary" data-action="edit-enrollments">
+              ${I("settings", 13)} Edit Candidate Whitelist
+            </button>
+          </div>
+          <div style="padding:20px;">
+            ${
+              enrollments.length
+                ? `<div style="display:grid;grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));gap:10px;">
+                    ${enrollments
+                      .map(
+                        (en) => `
+                          <div style="background:#141414;border:1px solid #222;border-radius:8px;padding:10px 14px;font-size:13px;display:flex;align-items:center;gap:10px;">
+                            ${I("check", 14, "#10b981")}
+                            <span style="color:#f9fafb;font-family:ui-monospace,monospace;">${esc(en.email || en)}</span>
+                          </div>
+                        `,
+                      )
+                      .join("")}
+                  </div>`
+                : '<p style="color:#9ca3af;">No candidate emails enrolled yet. Click <b>Edit Candidate Whitelist</b> to add student emails.</p>'
+            }
+          </div>
+        </div>
+      `;
+    }
+
+    return "";
   }
   /* What a student sees for one exam: where it stands, the next step, then the facts. */
   function studentDetail(e, state) {
@@ -705,6 +1368,7 @@
     const e = app.exam || {},
       s = app.state || {},
       sess = s.session || {};
+    if (sess.status === "locked") return renderLockoutScreen(e, sess);
     roomMemory();
     const list = e.questions || [];
     const total = list.length;
@@ -745,10 +1409,13 @@
 <div class="pr-live-legend" id="ep-room-legend" style="padding:12px 16px;border-top:1px solid #e2e8f0;background:#f8fafc;font-size:11px;color:#475569;">${roomLegend()}</div>
 </aside>
 <main class="pr-live-main" id="ep-room-main" style="flex:1;display:flex;flex-direction:column;overflow-y:auto;padding:clamp(22px, 2vw, 42px) clamp(28px, 3vw, 58px);background:#ffffff;">
-${e.status === "paused" ? '<div class="ep-alert">The manager has paused this exam. Answers remain saved. You can continue when it resumes.</div>' : ""}${sess.status === "locked" ? '<div class="ep-alert error">Your session is locked. Contact the exam manager for help.</div>' : ""}
+${e.status === "paused" ? '<div class="ep-alert">The manager has paused this exam. Answers remain saved. You can continue when it resumes.</div>' : ""}
+<article class="ep-question" data-question-id="${esc(q.id)}">
 <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;border-bottom:1px solid #e2e8f0;padding-bottom:12px;margin-bottom:18px;"><div style="display:flex;align-items:center;gap:10px;"><span style="font-size:17px;font-weight:800;color:#0f172a;">Question ${index + 1} of ${total}</span><span style="padding:3px 8px;border-radius:6px;background:#e0f2fe;color:#0369a1;font-size:11px;font-weight:700;">${esc(ROOM_TYPE[q.type] || String(q.type || "").toUpperCase())}</span></div>${passage ? "" : `<div style="font-size:12px;font-weight:700;color:#059669;">+${Number(q.marks || 0)} Marks${Number(q.negative) ? ` | -${Number(q.negative)} Negative` : ""}</div>`}</div>
 <div class="pr-live-prompt" style="font-size:15px;color:#0f172a;line-height:1.6;font-weight:500;margin-bottom:14px;">${contentHtml(q.prompt)}</div>
 <div style="margin-bottom:28px;">${roomInputs(q, locked)}</div>
+</article>
+<div style="display:none;" aria-hidden="true">${list.map((item, i) => i === index ? "" : `<div class="ep-question" data-question-id="${esc(item.id)}">${contentHtml(item.prompt)}</div>`).join("")}</div>
 <div class="pr-live-actions" style="margin-top:auto;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;border-top:1px solid #e2e8f0;padding-top:18px;"><div style="display:flex;gap:8px;"><button type="button" data-action="room-prev" ${index === 0 ? "disabled" : ""} style="background:#fff;border:1px solid #cbd5e1;color:#475569;padding:9px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;">← Prev</button>${passage ? "" : `<button type="button" data-action="clear-answer" data-id="${esc(q.id)}" ${locked ? "disabled" : ""} style="background:#fff;border:1px solid #cbd5e1;color:#64748b;padding:9px 14px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;">Clear</button>`}</div><div style="display:flex;gap:8px;">${passage ? "" : `<button type="button" data-action="room-review" style="background:#f5f3ff;border:1px solid #c4b5fd;color:#6d28d9;padding:9px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;">${app.review[q.id] ? "Marked for Review" : "Review &amp; Next"}</button>`}<button type="button" data-action="room-next" style="background:#059669;color:#fff;border:none;padding:9px 20px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;">${index === total - 1 ? "Save Response" : passage ? "Next →" : "Save &amp; Next →"}</button></div></div>
 </main></div></div>`;
   }
@@ -1160,7 +1827,15 @@ ${e.status === "paused" ? '<div class="ep-alert">The manager has paused this exa
           if (app.exam?.id === item.examId) {
             app.state.session = { ...app.state.session, ...d.session };
             render();
-            flash(`Browser warning recorded (${d.session.warnings}).`, true);
+            const maxAllowed = Number(app.exam?.max_warnings || 3);
+            const warnings = Number(d.session?.warnings || 0);
+            if (d.session?.status === "locked" || warnings >= maxAllowed) {
+              document.getElementById("ep-tab-warning-modal")?.remove();
+              app.isTabWarningModalOpen = false;
+            } else if (!app.isTabWarningModalOpen && app.screen === "room") {
+              const outsideSecs = app.lastAwaySeconds || 1;
+              showTabSwitchWarningModal(warnings, maxAllowed, outsideSecs);
+            }
           }
         } catch (e) {
           if ([403, 404, 409, 422].includes(e.status)) app.eventQueue.shift();
@@ -1462,10 +2137,51 @@ ${e.status === "paused" ? '<div class="ep-alert">The manager has paused this exa
         flash("Exam updated.");
         return;
       }
-      if (action === "extend") {
+      if (action === "extend" || action === "ext-5") {
         await act("extend", { minutes: 5 });
         await loadState();
         flash("Exam time extended by 5 minutes.");
+        return;
+      }
+      if (action === "ext-10") {
+        await act("extend", { minutes: 10 });
+        await loadState();
+        flash("Exam time extended by 10 minutes.");
+        return;
+      }
+      if (action === "ext-15") {
+        await act("extend", { minutes: 15 });
+        await loadState();
+        flash("Exam time extended by 15 minutes.");
+        return;
+      }
+      if (action === "mgr-tab") {
+        app.mgrTab = b.dataset.tab;
+        if (b.dataset.tab === "leave_log" && !app.auditEvents) {
+          try {
+            const d = await request(
+              `/exam-platform/exams/${encodeURIComponent(app.exam.id)}/audit`,
+            );
+            app.auditEvents = d.audit || [];
+            app.auditBefore = d.next_before || null;
+          } catch (_) {}
+        }
+        render();
+        return;
+      }
+      if (action === "audit") {
+        try {
+          const d = await request(
+            `/exam-platform/exams/${encodeURIComponent(app.exam.id)}/audit`,
+          );
+          app.auditEvents = d.audit || [];
+          app.auditBefore = d.next_before || null;
+          app.mgrTab = "leave_log";
+          render();
+          flash("Audit logs updated.");
+        } catch (e) {
+          flash(e.message, true);
+        }
         return;
       }
       if (action === "archive") {
@@ -1486,10 +2202,16 @@ ${e.status === "paused" ? '<div class="ep-alert">The manager has paused this exa
           { method: "POST", body: { action } },
         );
         await loadState();
+        flash(
+          action === "unlock"
+            ? "Candidate re-entry approved. Allowed back into exam."
+            : "Candidate session locked.",
+        );
         return;
       }
       if (action === "refresh-state") {
         await loadState();
+        flash("State updated.");
         return;
       }
       if (action === "join") {
@@ -1625,17 +2347,66 @@ ${e.status === "paused" ? '<div class="ep-alert">The manager has paused this exa
     };
     dialog.addEventListener("close", () => dialog.remove());
   }
+  function handleTabLeave(reason = "window_blur") {
+    if (
+      app.screen !== "room" ||
+      app.exam?.status !== "live" ||
+      app.state?.session?.status !== "in_exam"
+    )
+      return;
+    if (app.hasUserSwitchedAway || app.isTabWarningModalOpen) return;
+    app.hasUserSwitchedAway = true;
+    app.outsideSince = Date.now();
+  }
+  async function handleTabReturn(reason = "window_focus") {
+    if (
+      app.screen !== "room" ||
+      app.exam?.status !== "live" ||
+      app.state?.session?.status !== "in_exam"
+    )
+      return;
+    if (!app.hasUserSwitchedAway || app.isTabWarningModalOpen) return;
+    app.hasUserSwitchedAway = false;
+    const outsideSecs = app.outsideSince
+      ? Math.max(1, Math.round((Date.now() - app.outsideSince) / 1000))
+      : 1;
+    app.outsideSince = null;
+    app.lastAwaySeconds = outsideSecs;
+
+    const eventType = !document.fullscreenElement
+      ? "fullscreen_exit"
+      : document.visibilityState === "hidden"
+        ? "visibility_hidden"
+        : "blur";
+
+    await event(eventType);
+  }
   function onBlur() {
-    event("blur");
+    handleTabLeave("window_blur");
+  }
+  function onFocus() {
+    handleTabReturn("window_focus");
   }
   function onVisibility() {
-    if (document.visibilityState === "hidden") event("visibility_hidden");
+    if (document.visibilityState === "hidden") {
+      handleTabLeave("visibility_hidden");
+    } else {
+      handleTabReturn("visibility_visible");
+    }
   }
   function onFullscreen() {
-    if (!document.fullscreenElement) event("fullscreen_exit");
+    if (!document.fullscreenElement) {
+      handleTabLeave("fullscreen_exit");
+      handleTabReturn("fullscreen_exit");
+    }
   }
   function onInput(ev) {
     const t = ev.target;
+    if (t.matches("#ep-candidate-search")) {
+      app.candidateSearch = t.value;
+      const root = $("#ep-content");
+      if (root) render();
+    }
     if (t.matches("#ep-paper-filter")) {
       app.paperFilter = t.value;
       app.paperPick = "";
@@ -1792,6 +2563,7 @@ ${e.status === "paused" ? '<div class="ep-alert">The manager has paused this exa
     }
   }
   window.addEventListener("blur", onBlur);
+  window.addEventListener("focus", onFocus);
   document.addEventListener("visibilitychange", onVisibility);
   document.addEventListener("fullscreenchange", onFullscreen);
   window.addEventListener("online", () => {
