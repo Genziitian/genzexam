@@ -79,6 +79,7 @@ class AdminQuizController extends Controller
 
         $isManager = $request->user()->isManager();
         abort_if($isManager && (bool) ($validated['is_active'] ?? false), 422, 'Create this paper as a draft, add questions, then publish it.');
+        $validated = [...$validated, ...$this->managerPricing($request)];
         $quiz = Quiz::query()->create([
             ...$validated,
             // New admin papers stay unpublished until a manager reviews them.
@@ -160,6 +161,8 @@ class AdminQuizController extends Controller
             ], 422);
         }
 
+        $validated = [...$validated, ...$this->managerPricing($request)];
+
         if ($request->user()->isManager() && (bool) ($validated['is_active'] ?? $quiz->is_active)) {
             $candidate = clone $quiz;
             $candidate->fill($validated);
@@ -173,6 +176,26 @@ class AdminQuizController extends Controller
                 'week:id,week_number,title',
             ])->loadCount('questions')
         );
+    }
+
+    /**
+     * Price and access period sent with the quiz form. Only managers may set
+     * them; anything an admin sends is ignored so the price stays unchanged.
+     */
+    private function managerPricing(Request $request): array
+    {
+        if (! $request->user()->isManager()) {
+            return [];
+        }
+        $pricing = $request->validate([
+            'price_paise' => ['sometimes', 'required', 'integer', 'min:0', 'max:100000000'],
+            'access_days' => ['sometimes', 'nullable', 'integer', 'min:1', 'max:3650'],
+        ]);
+        if (($pricing['price_paise'] ?? 0) > 0 && $pricing['price_paise'] < 100) {
+            throw \Illuminate\Validation\ValidationException::withMessages(['price_paise' => 'Set a price of at least ₹1, or 0 for free.']);
+        }
+
+        return $pricing;
     }
 
     public function destroy(int $id): JsonResponse

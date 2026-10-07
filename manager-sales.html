@@ -1,13 +1,23 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Paper sales · Quiz LAB</title><link rel="icon" href="/favicon.ico"><link rel="stylesheet" href="/manager-sales.css?v=20261007e"></head><body>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Paper sales · Quiz LAB</title><link rel="icon" href="/favicon.ico"><link rel="stylesheet" href="/manager-sales.css?v=20261007g"></head><body>
 <header><a class="brand" href="/"><img class="mark" src="/assets/quiz-lab-icon.png" alt="" width="30" height="30">Quiz LAB <span>Manager</span></a><nav aria-label="Manager navigation"><a href="/admin">Dashboard</a><a href="/papers">Student catalog ↗</a></nav></header>
-<main><div class="page-heading"><div><p class="eyebrow">Your paper storefront</p><h1>Create, publish and sell.</h1><p>Prepare a paper, add questions and set access before making it available to students.</p></div></div>
+<main><div class="page-heading"><div><p class="eyebrow">Paper sales · managers only</p><h1>Sales and papers.</h1><p>See what students bought and what they left unpaid, then manage the papers you sell.</p></div></div>
 <div id="gate" class="notice" role="status">Checking your manager account…</div>
 <div id="workspace" hidden>
-<nav class="tabs" aria-label="Sales sections"><button data-tab="papers" aria-current="page">Papers</button><button data-tab="courses">Courses</button><button data-tab="purchases">Purchases</button></nav>
-<section id="papers-panel"><div class="toolbar"><label class="search">Find a paper<input type="search" id="paper-search" placeholder="Search title or course"></label><button class="primary" id="new-paper">Create paper</button></div><div id="paper-list" class="cards"></div></section>
+<nav class="tabs" aria-label="Sales sections"><button data-tab="sales" aria-current="page">Sales</button><button data-tab="papers">Papers</button><button data-tab="courses">Courses</button></nav>
+<section id="sales-panel">
+<div class="toolbar"><div><h2>Sales overview</h2><p class="hint">Every payment, and every checkout a student opened without paying.</p></div><button id="refresh-sales">Refresh</button></div>
+<div id="sales-metrics" class="metrics" aria-live="polite"><div class="notice">Loading sales…</div></div>
+<div class="panel sales-block"><h3>Last 14 days</h3><div id="sales-days" class="days"></div></div>
+<div class="panel sales-block"><h3>Sales by paper</h3><div class="table-wrap"><table><thead><tr><th>Paper</th><th>Price now</th><th class="num">Sold</th><th class="num">Students</th><th class="num">Amount</th><th class="num">Not paid</th></tr></thead><tbody id="sales-papers"></tbody></table></div></div>
+<div class="panel sales-block"><div class="toolbar tight"><div><h3>Orders</h3><p class="hint" id="order-count"></p></div><button id="export-orders">Download CSV</button></div>
+<div class="filters"><div class="seg" id="order-status" role="group" aria-label="Order status"><button data-status="" aria-pressed="true">All</button><button data-status="paid" aria-pressed="false">Paid</button><button data-status="unpaid" aria-pressed="false">Not paid</button></div><select id="order-paper" aria-label="Paper"><option value="">All papers</option></select><input type="search" id="order-search" placeholder="Search student, email, paper or payment ID" aria-label="Search orders"></div>
+<div class="table-wrap"><table><thead><tr><th>Student</th><th>Paper</th><th class="num">Amount</th><th>Status</th><th>Checkout opened</th><th>Paid on</th><th>Payment ID</th></tr></thead><tbody id="purchase-list"></tbody></table></div>
+<div class="toolbar tight"><button id="previous-purchases">Previous</button><span id="purchase-page" class="hint"></span><button id="next-purchases">Next</button></div></div>
+</section>
+<section id="papers-panel" hidden><div class="toolbar"><label class="search">Find a paper<input type="search" id="paper-search" placeholder="Search title or course"></label><button class="primary" id="new-paper">Create paper</button></div><div id="paper-list" class="cards"></div></section>
 <section id="courses-panel" hidden><div class="two-columns"><form id="course-form" class="panel"><h2>Create a course</h2><label>Course name<input name="name" maxlength="120" required></label><label>Level<select name="level"><option value="foundation">Foundation</option><option value="diploma">Diploma</option><option value="degree">Degree</option></select></label><label>Description<textarea name="description" rows="3"></textarea></label><label>Weekly folders<input name="weeks_count" type="number" min="0" max="52" value="12" required></label><p class="hint">Weekly folders are used by practice and graded practice papers.</p><button class="primary">Create course</button><p class="form-status" role="status"></p></form><div id="course-list" class="stack"></div></div></section>
-<section id="purchases-panel" hidden><div class="toolbar"><div><h2>Purchases</h2><p class="hint">Payment records from your storefront.</p></div><button id="refresh-purchases">Refresh</button></div><div id="purchase-totals" class="metrics"></div><div id="purchase-list" class="stack"></div><div class="toolbar"><button id="previous-purchases">Previous</button><span id="purchase-page"></span><button id="next-purchases">Next</button></div></section>
+
 </div>
 </main>
 <dialog id="editor" aria-labelledby="editor-title"><div class="dialog-heading"><div><p class="eyebrow">Paper editor</p><h2 id="editor-title">Create a paper</h2></div><button data-close="editor" aria-label="Close paper editor">Close</button></div><p id="editor-state" class="notice"></p>
@@ -17,4 +27,4 @@
 <section id="preview-step" hidden><div id="paper-preview"></div><div class="toolbar"><button class="primary" id="publish-paper">Activate / Publish</button><button id="deactivate-paper">Deactivate</button></div><p id="publish-status" role="status"></p></section>
 </dialog>
 <div id="toast" role="status" aria-live="polite"></div>
-<script src="/storefront-runtime.js?v=20261007e"></script><script src="/manager-sales.js?v=20261007e"></script></body></html>
+<script src="/storefront-runtime.js?v=20261007g"></script><script src="/manager-sales.js?v=20261007g"></script></body></html>

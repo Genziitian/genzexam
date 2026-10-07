@@ -319,4 +319,62 @@ class StorefrontSecurityTest extends TestCase
         $this->assertFalse($papers[0]['purchased']);
         $this->assertSame(1, $papers[0]['attempt_count']);
     }
+
+    public function test_sales_summary_counts_paid_and_unfinished_checkouts(): void
+    {
+        $manager = User::query()->create(['name' => 'Manager', 'email' => 'manager@example.test', 'role' => 'manager']);
+        $other = User::query()->create(['name' => 'Asha Rao', 'email' => 'asha@example.test', 'role' => 'student']);
+        $sales = new \App\Http\Controllers\ManagerSalesController();
+
+        // The first student abandons one checkout, then pays with a second order.
+        $this->order('order_first');
+        $this->store->webhook($this->webhook($this->payment($this->order('order_second'))));
+        // The second student opens a checkout and never pays.
+        QuizStorefrontOrder::query()->create(['user_id' => $other->id, 'quiz_id' => $this->paper->id,
+            'razorpay_order_id' => 'order_other', 'amount_paise' => 9900, 'access_days' => 30, 'currency' => 'INR', 'status' => 'created']);
+
+        $summary = $sales->summary($this->request([], $manager))->getData(true);
+        $this->assertSame(1, $summary['totals']['paid_orders']);
+        $this->assertSame(9900, $summary['totals']['revenue_paise']);
+        $this->assertSame(1, $summary['totals']['buyers']);
+        $this->assertSame(1, $summary['totals']['unpaid_orders']);
+        $this->assertSame(9900, $summary['totals']['unpaid_value_paise']);
+        $this->assertSame(9900, $summary['totals']['revenue_today_paise']);
+        $this->assertSame(50, $summary['totals']['conversion_percent']);
+        $this->assertCount(14, $summary['days']);
+        $this->assertSame(9900, array_sum(array_column($summary['days'], 'revenue_paise')));
+        $this->assertSame(['sold' => 1, 'unpaid' => 1], array_intersect_key($summary['papers'][0], ['sold' => 0, 'unpaid' => 0]));
+
+        $list = fn (array $query) => $sales->purchases(Request::create('/api/manager/purchases', 'GET', $query)
+            ->setUserResolver(fn () => $manager))->getData(true);
+        $this->assertSame(3, $list([])['total']);
+        $unpaid = $list(['status' => 'unpaid']);
+        $this->assertSame(1, $unpaid['total']);
+        $this->assertSame('asha@example.test', $unpaid['data'][0]['user']['email']);
+        $this->assertSame('unpaid', $unpaid['data'][0]['state']);
+        $states = array_column($list([])['data'], 'state', 'razorpay_order_id');
+        $this->assertSame(['order_other' => 'unpaid', 'order_second' => 'paid', 'order_first' => 'paid_later'], $states);
+        $this->assertSame(1, $list(['search' => 'asha'])['total']);
+
+        $this->assertAborts(403, fn () => $sales->summary($this->request()));
+    }
+
+    public function test_manager_sets_price_from_the_quiz_form(): void
+    {
+        $manager = User::query()->create(['name' => 'Manager', 'email' => 'manager@example.test', 'role' => 'manager']);
+        $quizzes = app(\App\Http\Controllers\Admin\AdminQuizController::class);
+        $this->paper->update(['is_active' => false]);
+        $quizzes->update($this->request(['title' => 'Paper', 'section' => 'quiz1', 'price_paise' => 4900, 'access_days' => 90], $manager), $this->paper->id);
+        $this->assertSame(4900, $this->paper->fresh()->price_paise);
+        $this->assertSame(90, $this->paper->fresh()->access_days);
+        $quizzes->update($this->request(['title' => 'Paper', 'section' => 'quiz1', 'price_paise' => 0, 'access_days' => null], $manager), $this->paper->id);
+        $this->assertSame(0, $this->paper->fresh()->price_paise);
+        $this->assertNull($this->paper->fresh()->access_days);
+        try {
+            $quizzes->update($this->request(['section' => 'quiz1', 'price_paise' => 50], $manager), $this->paper->id);
+            $this->fail('Expected a validation error.');
+        } catch (\Illuminate\Validation\ValidationException $exception) {
+            $this->assertArrayHasKey('price_paise', $exception->errors());
+        }
+    }
 }

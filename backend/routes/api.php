@@ -206,6 +206,7 @@ Route::middleware(['auth:sanctum', 'is_manager', 'track.seen'])->prefix('manager
     Route::match(['PUT', 'PATCH'], '/questions/{id}', [AdminQuestionController::class, 'update'])->whereNumber('id')->middleware(\App\Http\Middleware\ManagerPaperDraft::class);
     Route::delete('/questions/{id}', [AdminQuestionController::class, 'destroy'])->whereNumber('id')->middleware(\App\Http\Middleware\ManagerPaperDraft::class);
     Route::get('/purchases', [ManagerSalesController::class, 'purchases']);
+    Route::get('/sales/summary', [ManagerSalesController::class, 'summary']);
 });
 
 // Manager-only maintenance for hosts without shell access. Kept outside the cached

@@ -303,6 +303,19 @@
         badge.style.cssText = "display:inline-block;margin:4px 0 0 8px;padding:3px 8px;border-radius:999px;font-size:11px;font-weight:600;background:" + (paper.approval_status === "pending" ? "#fff7ed;color:#c2410c" : paper.is_active ? "#ecfdf5;color:#047857" : "#f1f5f9;color:#475569");
         firstCell.appendChild(badge);
       }
+      // Managers see the price of a paid paper next to its title.
+      if (role === "manager" && firstCell) {
+        var priceText = Number(paper.price_paise || 0) > 0 ? "\u20B9" + String(paper.price_paise / 100).replace(/\.0+$/, "") : "";
+        var priceChip = firstCell.querySelector(".ql-paper-price");
+        if (priceText && !priceChip) {
+          priceChip = document.createElement("span");
+          priceChip.className = "ql-paper-price";
+          priceChip.style.cssText = "display:inline-block;margin:4px 0 0 8px;padding:3px 8px;border-radius:999px;font-size:11px;font-weight:700;background:#fef3c7;color:#92400e";
+          firstCell.appendChild(priceChip);
+        }
+        if (priceChip && !priceText) priceChip.remove();
+        else if (priceChip && priceChip.textContent !== priceText) priceChip.textContent = priceText;
+      }
       var activeCell = row.children.length > 5 ? row.children[5] : null;
       if (activeCell) {
         var toggle = activeCell.querySelector('input[type="checkbox"]');
