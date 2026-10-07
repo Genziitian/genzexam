@@ -759,17 +759,37 @@
         sub.textContent = [(paper.course || {}).name, paper.year, labels[paper.section]].filter(Boolean).join(" · ");
         var meta = document.createElement("p");
         meta.className = "ql-mp-meta";
-        meta.textContent = [
+        [
           paper.question_count != null ? paper.question_count + " questions" : "",
           paper.time_limit_minutes ? paper.time_limit_minutes + " min" : "Untimed",
           paper.expires_at && paid ? (expired ? "Expired " : "Access until ") + new Date(paper.expires_at).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" }) : ""
-        ].filter(Boolean).join(" · ");
+        ].filter(Boolean).forEach(function (text) {
+          var chip = document.createElement("span");
+          chip.textContent = text;
+          meta.appendChild(chip);
+        });
         var progress = document.createElement("p");
         progress.className = "ql-mp-progress" + (paper.in_progress ? " live" : attempts ? " done" : "");
         progress.textContent = paper.in_progress ? "In progress"
           : attempts ? (paper.last_total_marks != null ? "Last score " + Number(paper.last_score || 0) + "/" + Number(paper.last_total_marks) + " \u00b7 " : "") + attempts + (attempts === 1 ? " attempt" : " attempts")
           : "Not started";
-        card.append(badge, title, sub, meta, progress);
+        // Score line and the Free / Purchased tag share one row, with a thin bar for the last score.
+        var status = document.createElement("div");
+        status.className = "ql-mp-status";
+        status.append(progress, badge);
+        card.append(title, sub, meta, status);
+        var total = Number(paper.last_total_marks || 0);
+        if (attempts && total > 0 && !paper.in_progress) {
+          var pct = Math.max(0, Math.min(100, Math.round((Number(paper.last_score || 0) / total) * 100)));
+          var bar = document.createElement("div");
+          bar.className = "ql-mp-bar";
+          bar.setAttribute("role", "img");
+          bar.setAttribute("aria-label", "Last score " + pct + "%");
+          var fill = document.createElement("i");
+          fill.style.width = pct + "%";
+          bar.appendChild(fill);
+          card.appendChild(bar);
+        }
         if (paper.available !== false) {
           var action = document.createElement("a");
           action.className = "ql-mp-action" + (usable ? "" : " renew");
