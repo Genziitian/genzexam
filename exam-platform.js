@@ -459,18 +459,8 @@
     root.addEventListener("submit", onSubmit);
   }
   function showEntry() {
-    const current = document.getElementById("ep-role-entry");
-    const onLogin = path === "/login";
-    if (!desktopEligible() || !ROLE_LABEL[app.user?.role] || inExamArea || onLogin) {
-      current?.remove();
-      return;
-    }
-    if (current) return;
-    const link = document.createElement("a");
-    link.id = "ep-role-entry";
-    link.href = "/exams";
-    link.textContent = `${ROLE_LABEL[app.user.role]} • Online exams`;
-    document.body.appendChild(link);
+    // The floating "Online exams" pill was removed; clear any leftover one.
+    document.getElementById("ep-role-entry")?.remove();
   }
   function rows(d) {
     return Array.isArray(d)
