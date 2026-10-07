@@ -719,7 +719,7 @@
     var runtime = window.QLStorefront;
     if (!runtime || !runtime.token()) return;
     host.dataset.qlLoaded = "1";
-    host.innerHTML = '<div class="ql-mp-head"><div><div class="ql-mp-eyebrow">MY PAPERS</div><h1>Your papers.</h1><p>Papers you bought and papers you have attempted, with your progress.</p></div><a class="ql-mp-browse" href="/practice">Browse practice</a></div><div class="ql-mp-grid" aria-live="polite"><p class="ql-mp-note">Loading your papers…</p></div>';
+    host.innerHTML = '<div class="ql-mp-head"><div class="ql-mp-title"><h1>Your papers.</h1><a class="ql-mp-browse" href="/practice">Browse practice</a></div><p>Papers you bought and papers you have attempted, with your progress.</p></div><div class="ql-mp-grid" aria-live="polite"><p class="ql-mp-note">Loading your papers…</p></div>';
     var grid = host.querySelector(".ql-mp-grid");
     function note(text) {
       grid.replaceChildren();
@@ -775,7 +775,17 @@
           action.className = "ql-mp-action" + (usable ? "" : " renew");
           action.href = usable ? "/paper/" + encodeURIComponent(paper.id) : "/papers?paper=" + encodeURIComponent(paper.id);
           action.textContent = usable ? (paper.in_progress ? "Continue" : attempts ? "Attempt again" : "Start") : expired ? "Renew access" : "Buy paper";
-          card.appendChild(action);
+          var actions = document.createElement("div");
+          actions.className = "ql-mp-actions";
+          if (usable) {
+            var details = document.createElement("a");
+            details.className = "ql-mp-action renew";
+            details.href = "/papers?paper=" + encodeURIComponent(paper.id);
+            details.textContent = "View details";
+            actions.appendChild(details);
+          }
+          actions.appendChild(action);
+          card.appendChild(actions);
         }
         grid.appendChild(card);
       });

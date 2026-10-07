@@ -256,3 +256,10 @@ header.lg\:hidden>a[href="/dashboard"] .whitespace-nowrap.text-\[15px\]::after{c
     html, body { overflow-x: clip; }
   }
 }
+/* My Papers: one headline with Browse practice beside it; View details next to the main action. */
+.ql-mp-head{display:block}
+.ql-mp-title{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.ql-mp-title h1{min-width:0}
+.ql-mp-browse{flex-shrink:0;white-space:nowrap}
+.ql-mp-actions{display:flex;gap:8px;width:100%;margin-top:14px}
+.ql-mp-actions .ql-mp-action{flex:1 1 0;width:auto;min-width:0;margin-top:0;white-space:nowrap}
