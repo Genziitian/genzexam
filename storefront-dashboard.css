@@ -379,3 +379,20 @@ div.space-y-6:has(>div>form.space-y-6>.h-px)>.grid.gap-4 .text-3xl{font-size:24p
 [data-ql-card=perf] .relative>div.absolute .text-\[18px\]{font-size:15px!important}
 [data-ql-card=perf] .ff-mono{font-size:9px!important}
 }
+/* ---- Discussions: one New discussion button; phone layout ---- */
+div.space-y-5:has([data-ql-disc-filters])>.border-dashed button{display:none}
+@media(max-width:640px){
+div.space-y-5:has([data-ql-disc-filters])>:not([hidden])~:not([hidden]){margin-top:14px}
+div.space-y-5:has([data-ql-disc-filters])>div:first-child{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:4px 10px}
+div.space-y-5:has([data-ql-disc-filters])>div:first-child>div:first-child{display:contents}
+div.space-y-5:has([data-ql-disc-filters])>div:first-child h1{grid-column:1;grid-row:1;font-size:23px;line-height:1.15}
+div.space-y-5:has([data-ql-disc-filters])>div:first-child>button{grid-column:2;grid-row:1;height:38px;min-height:0;padding:0 13px;font-size:13px;white-space:nowrap}
+div.space-y-5:has([data-ql-disc-filters])>div:first-child p{grid-column:1/-1;grid-row:2;margin-top:0;font-size:13px}
+[data-ql-disc-filters]{padding:12px!important;gap:8px}
+[data-ql-disc-filters] form{gap:8px}
+[data-ql-disc-filters] .ql-filter-select{padding:10px 28px 10px 11px;background-position:right 9px center;text-overflow:ellipsis}
+div.space-y-5:has([data-ql-disc-filters])>.border-dashed{padding:28px 18px}
+div.space-y-5:has([data-ql-disc-filters])>.border-dashed>div:first-child{width:46px;height:46px;margin-bottom:12px}
+div.space-y-5:has([data-ql-disc-filters])>.border-dashed h3{font-size:16px}
+div.space-y-5:has([data-ql-disc-filters])>.border-dashed p{margin-top:6px;font-size:13px}
+}
