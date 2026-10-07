@@ -300,7 +300,7 @@
       document.body.appendChild(root);
     }
     root.innerHTML =
-      '<div class="ep-shell"><header class="ep-top"><a class="ep-brand" href="/papers"><span class="ep-mark">QL</span><span><b>Quiz LAB</b><small>Paper room</small></span></a><div class="ep-user"><span>' +
+      '<div class="ep-shell"><header class="ep-top"><a class="ep-brand" href="/papers"><img class="ep-mark" src="/assets/quiz-lab-icon.png" alt="" width="36" height="36"><span><b>Quiz LAB</b><small>Paper room</small></span></a><div class="ep-user"><span>' +
       esc(userName()) +
       '</span><a class="ep-link" href="/my-papers">My papers</a><a class="ep-link" href="/dashboard">Dashboard</a></div></header><div id="ep-content"></div></div>';
     root.addEventListener("click", onClick);
@@ -471,7 +471,7 @@
     return (
       '<div id="ep-root" class="ep-live-exam-root pr-live-root" style="display:flex;flex-direction:column;overflow:hidden;background:#f8fafc;">' +
       '<header class="pr-live-header" style="background:#ffffff;border-bottom:1px solid #e2e8f0;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(18px, 2vw, 34px);flex-shrink:0;">' +
-      '<div style="display:flex;align-items:center;gap:12px;min-width:0;"><img src="/assets/genz-logo.png" alt="Quiz Lab" style="height:30px;max-width:90px;object-fit:contain;"><div style="min-width:0;"><h1 style="font-size:clamp(14px, 1.15vw, 21px);font-weight:800;color:#0f172a;margin:0;overflow-wrap:anywhere;">' +
+      '<div style="display:flex;align-items:center;gap:12px;min-width:0;"><img src="/assets/quiz-lab-icon.png" alt="Quiz Lab" style="height:32px;width:32px;border-radius:9px;flex-shrink:0;"><div style="min-width:0;"><h1 style="font-size:clamp(14px, 1.15vw, 21px);font-weight:800;color:#0f172a;margin:0;overflow-wrap:anywhere;">' +
       esc(quiz.title) +
       '</h1><div style="font-size:clamp(11px, 0.9vw, 15px);color:#64748b;">' +
       esc([userName(), quiz.course && quiz.course.name].filter(Boolean).join(" • ")) +
@@ -562,7 +562,7 @@
       "display:flex;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(15,23,42,0.8);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);z-index:999999;align-items:center;justify-content:center;padding:20px;";
     const review = questions().filter((q) => st.review[q.id]).length;
     modal.innerHTML =
-      '<div role="dialog" aria-modal="true" aria-labelledby="pr-submit-title" style="max-width:460px;width:100%;text-align:center;background:#ffffff;border-radius:20px;box-shadow:0 25px 60px -15px rgba(0,0,0,0.3);padding:30px 24px;color:#0f172a;"><img src="/assets/genz-logo.png" alt="Quiz Lab" style="height:28px;object-fit:contain;margin-bottom:12px;"><h2 id="pr-submit-title" style="font-size:20px;font-weight:800;color:#0f172a;margin:0 0 8px 0;">Submit paper</h2><p style="font-size:13.5px;color:#475569;margin:0 0 18px 0;line-height:1.55;">You have recorded answers for <b>' +
+      '<div role="dialog" aria-modal="true" aria-labelledby="pr-submit-title" style="max-width:460px;width:100%;text-align:center;background:#ffffff;border-radius:20px;box-shadow:0 25px 60px -15px rgba(0,0,0,0.3);padding:30px 24px;color:#0f172a;"><img src="/assets/quiz-lab-icon.png" alt="Quiz Lab" style="height:40px;width:40px;border-radius:11px;margin-bottom:12px;"><h2 id="pr-submit-title" style="font-size:20px;font-weight:800;color:#0f172a;margin:0 0 8px 0;">Submit paper</h2><p style="font-size:13.5px;color:#475569;margin:0 0 18px 0;line-height:1.55;">You have recorded answers for <b>' +
       answeredCount() +
       " of " +
       answerable().length +

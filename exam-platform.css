@@ -1269,3 +1269,10 @@ body:has(#ep-app) {
     width: auto;
   }
 }
+
+img.ep-mark {
+  display: block;
+  background: none;
+  object-fit: cover;
+  flex-shrink: 0;
+}

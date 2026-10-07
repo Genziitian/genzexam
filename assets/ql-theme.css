@@ -74,3 +74,7 @@
 .ql-auth-brand-text span:first-child{font-size:20px;letter-spacing:-.02em}
 .ql-auth-brand-text span:last-child{margin-top:4px;font-size:13px;color:#64748b}
 .login-preview-diffuser{background:rgba(15,23,42,.075)}
+
+/* One logo everywhere: the app icon replaces the drawn brand mark. */
+.ql-brand-mark{background:url(/assets/quiz-lab-icon.png) center/cover no-repeat!important;overflow:hidden}
+.ql-brand-mark svg{display:none!important}

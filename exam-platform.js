@@ -189,7 +189,7 @@
       root.id = "ep-app";
       document.body.appendChild(root);
     }
-    root.innerHTML = `<div class="ep-shell"><header class="ep-top"><a class="ep-brand" href="/exams"><span class="ep-mark">QL</span><span><b>Quiz LAB</b><small>Secure exam room</small></span></a><div class="ep-user"><span>${esc(app.user?.name || app.user?.email || "")}</span><a class="ep-link" href="/dashboard">Back to app</a><button class="ep-btn ep-btn-quiet" data-action="logout">Sign out</button></div></header><div id="ep-content"></div><div id="ep-toast" role="status" aria-live="polite"></div></div>`;
+    root.innerHTML = `<div class="ep-shell"><header class="ep-top"><a class="ep-brand" href="/exams"><img class="ep-mark" src="/assets/quiz-lab-icon.png" alt="" width="36" height="36"><span><b>Quiz LAB</b><small>Secure exam room</small></span></a><div class="ep-user"><span>${esc(app.user?.name || app.user?.email || "")}</span><a class="ep-link" href="/dashboard">Back to app</a><button class="ep-btn ep-btn-quiet" data-action="logout">Sign out</button></div></header><div id="ep-content"></div><div id="ep-toast" role="status" aria-live="polite"></div></div>`;
     root.addEventListener("click", onClick);
     root.addEventListener("input", onInput);
     root.addEventListener("change", onChange);
@@ -663,7 +663,7 @@
     const canSubmit = e.status === "live" && sess.status === "in_exam";
     return `<div id="ep-root" class="ep-live-exam-root pr-live-root" style="display:flex;flex-direction:column;overflow:hidden;background:#f8fafc;">
 <header class="pr-live-header" style="background:#ffffff;border-bottom:1px solid #e2e8f0;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(18px, 2vw, 34px);flex-shrink:0;">
-<div style="display:flex;align-items:center;gap:12px;min-width:0;"><img src="/assets/genz-logo.png" alt="Quiz Lab" style="height:30px;max-width:90px;object-fit:contain;"><div style="min-width:0;"><h1 style="font-size:clamp(14px, 1.15vw, 21px);font-weight:800;color:#0f172a;margin:0;overflow-wrap:anywhere;">${esc(e.title)}</h1><div style="font-size:clamp(11px, 0.9vw, 15px);color:#64748b;">${esc(app.user?.name || "")}${app.user?.email ? ` (${esc(app.user.email)})` : ""}</div></div></div>
+<div style="display:flex;align-items:center;gap:12px;min-width:0;"><img src="/assets/quiz-lab-icon.png" alt="Quiz Lab" style="height:32px;width:32px;border-radius:9px;flex-shrink:0;"><div style="min-width:0;"><h1 style="font-size:clamp(14px, 1.15vw, 21px);font-weight:800;color:#0f172a;margin:0;overflow-wrap:anywhere;">${esc(e.title)}</h1><div style="font-size:clamp(11px, 0.9vw, 15px);color:#64748b;">${esc(app.user?.name || "")}${app.user?.email ? ` (${esc(app.user.email)})` : ""}</div></div></div>
 <div class="pr-live-tools" style="display:flex;align-items:center;gap:10px;">
 <span class="ep-status ${esc(e.status)}">${esc(e.status)}</span>
 <div id="ep-warning-chip" class="ep-header-warning ${warnings > 0 ? "warning-active" : ""}">Warnings: <b>${warnings}</b></div>
