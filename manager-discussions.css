@@ -555,3 +555,17 @@ img.mark {
   object-fit: cover;
   flex-shrink: 0;
 }
+
+/* Dark / light switch (ql-theme.js fills in the icon). */
+.theme-toggle {
+  display: inline-grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  min-height: 0;
+  padding: 0;
+  border: 1px solid #475569;
+  border-radius: 9px;
+  background: transparent;
+  color: #cbd5e1;
+}

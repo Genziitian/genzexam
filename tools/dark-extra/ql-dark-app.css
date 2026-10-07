@@ -1,0 +1,5 @@
+:root[data-theme=dark]{color-scheme:dark}
+:root[data-theme=dark] body{background:#0b1219;color:#d6dae5}
+/* The dashboard greeting is gradient text: keep it light at the start. */
+:root[data-theme=dark] [data-ql-hello]{background-image:linear-gradient(100deg,#e8ecf4 0%,#e8ecf4 40%,#4ade80 78%,#a3e635 100%)}
+:root[data-theme=dark] ::placeholder{color:#7a8699}

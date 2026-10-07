@@ -10,3 +10,6 @@
 .state{display:inline-block;padding:3px 8px;border-radius:999px;font-size:11px;font-weight:700;white-space:nowrap}.state.paid{background:var(--green);color:#fff}.state.unpaid{background:#f7eddb;color:#7d5a21}.state.later{background:#eceee8;color:var(--muted)}
 .filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px}.filters select{width:auto;max-width:260px;flex:0 1 220px}.filters input{flex:1 1 240px}.seg{display:inline-flex;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff}.seg button{border:0;border-radius:0;min-height:42px;font-weight:600;color:var(--muted)}.seg button[aria-pressed=true]{background:var(--green);color:#fff}
 @media(max-width:1000px){.metrics{grid-template-columns:repeat(3,minmax(0,1fr))}}@media(max-width:600px){.metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.day b{display:none}.days{gap:3px;height:120px}.day span{font-size:8px}.filters select{max-width:none;flex-basis:100%}.seg{width:100%}.seg button{flex:1}}
+
+/* Dark / light switch (ql-theme.js fills in the icon). */
+.theme-toggle{display:inline-grid;place-items:center;width:36px;height:36px;min-height:0;padding:0;border:1px solid var(--line);border-radius:10px;background:transparent;color:var(--muted)}.theme-toggle:hover{color:var(--ink)}header nav{align-items:center}

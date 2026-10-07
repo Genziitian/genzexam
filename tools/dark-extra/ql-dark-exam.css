@@ -1,0 +1,2 @@
+:root[data-theme=dark]{color-scheme:dark}
+:root[data-theme=dark] #ep-app ::placeholder{color:#7a8699}

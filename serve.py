@@ -9,7 +9,7 @@ import sys
 import urllib.parse
 
 ROOT = pathlib.Path(__file__).resolve().parent
-ROOT_FILES = set(('index.html exams.html paper-room.html paper-room.js paper-room.css landing.html papers.html paper-pricing.html manager-sales.html manager-sales.js manager-sales.css manager-discussions.html manager-discussions.js manager-discussions.css exam-platform.js exam-rich-content.js exam-calculator.js '
+ROOT_FILES = set(('index.html exams.html ql-theme.js ql-dark-app.css ql-dark-exam.css ql-dark-sales.css ql-dark-discussions.css paper-room.html paper-room.js paper-room.css landing.html papers.html paper-pricing.html manager-sales.html manager-sales.js manager-sales.css manager-discussions.html manager-discussions.js manager-discussions.css exam-platform.js exam-rich-content.js exam-calculator.js '
     'exam-platform.css app-enhancements.js storefront-runtime.js storefront-dashboard.css papers.js papers.css '
     'paper-pricing.js paper-pricing.css icons.svg site.webmanifest favicon.ico favicon-16x16.png favicon-32x32.png '
     'apple-touch-icon.png android-chrome-192x192.png android-chrome-512x512.png').split())
