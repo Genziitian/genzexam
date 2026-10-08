@@ -82,10 +82,16 @@
       '.ql-more-rulebook-dialog{width:min(640px,calc(100vw - 32px));max-height:min(82vh,760px);padding:0;border:1px solid #e2e8f0;border-radius:20px;background:#fff;color:#0f172a;box-shadow:0 24px 80px rgba(15,23,42,.28)}',
       '.ql-more-rulebook-dialog::backdrop{background:rgba(15,23,42,.55);backdrop-filter:blur(3px)}',
       '.ql-more-rulebook-content{max-height:min(82vh,760px);overflow:auto;padding:24px}',
+      '.ql-more-delete-dialog{width:min(560px,calc(100vw - 28px));max-height:min(88vh,760px);padding:0;border:1px solid #e2e8f0;border-radius:22px;background:#fff;color:#0f172a;box-shadow:0 24px 80px rgba(15,23,42,.3)}',
+      '.ql-more-delete-dialog::backdrop{background:rgba(15,23,42,.56);backdrop-filter:blur(3px)}',
+      '.ql-more-delete-content{max-height:min(88vh,760px);overflow:auto;padding:24px}',
+      '.ql-more-delete-actions{display:flex;justify-content:flex-end;gap:8px;flex-wrap:wrap}',
       '.ql-more-rulebook-content h3{margin:20px 0 8px;color:#0f172a;font-size:15px;font-weight:750}',
       '.ql-more-rulebook-content ul{margin:8px 0;padding-left:22px;color:#475569;font-size:13px;line-height:1.7}',
       '.ql-more-rulebook-content p{color:#475569;font-size:13px;line-height:1.65}',
       ':root[data-theme=dark] .ql-more-rulebook-dialog{background:#151a25;border-color:#2e3b4c;color:#e2e8f0}',
+      ':root[data-theme=dark] .ql-more-delete-dialog{background:#151a25;border-color:#2e3b4c;color:#e2e8f0}',
+      ':root[data-theme=dark] .ql-more-delete-content .ql-more-heading,:root[data-theme=dark] .ql-more-delete-content label{color:#e2e8f0}',
       ':root[data-theme=dark] .ql-more-rulebook-content h3{color:#e2e8f0}',
       ':root[data-theme=dark] .ql-more-rulebook-content ul,:root[data-theme=dark] .ql-more-rulebook-content p{color:#aeb8c8}',
       ':root[data-theme=dark] .ql-more-card,:root[data-theme=dark] .ql-more-link{background:#151a25;border-color:#2e3b4c;color:#d6dae5}',
@@ -382,11 +388,7 @@
       '<div class="ql-more-row"><div class="ql-more-row-copy"><strong>Help &amp; Support Desk</strong><small>Email admin@genziitian.org or call +91 72549 26179.</small></div><div class="ql-more-theme-options"><a class="ql-more-button" href="mailto:admin@genziitian.org?subject=Quiz%20Lab%20app%3A%20help%20needed">Email us</a><a class="ql-more-button" href="https://wa.me/917254926179" target="_blank" rel="noopener">WhatsApp</a><a class="ql-more-button" href="tel:+917254926179">Call</a></div></div>' +
       '<div class="ql-more-faq"><h3 class="ql-more-heading" style="font-size:15px">FAQs</h3><label class="ql-more-form" style="margin-top:10px"><span>Search FAQs</span><input id="ql-more-faq-search" type="search" placeholder="Search a question" style="width:100%;box-sizing:border-box;border:1px solid #dbe3ee;border-radius:10px;padding:10px 12px;background:#fff;color:#0f172a;font:inherit"></label>' + faqs.map(function (item) { return '<details data-ql-more-faq><summary>' + escapeHtml(item[0]) + '</summary><p>' + escapeHtml(item[1]) + '</p></details>'; }).join('') + '</div></section>' +
       '<section class="ql-more-card"><h2 class="ql-more-heading">Account &amp; data</h2><p class="ql-more-subtitle">Manage your account data and deletion requests.</p>' +
-      '<div class="ql-more-row"><div class="ql-more-row-copy"><strong>Delete Account &amp; Data</strong><small>Send a deletion request for manager review. Your account stays active until processed.</small></div><button type="button" id="ql-more-delete-toggle" class="ql-more-button danger">Request deletion</button></div>' +
-      '<form id="ql-more-delete-form" class="ql-more-form" hidden><p class="ql-more-subtitle" id="ql-more-delete-identity">Loading your account details…</p>' +
-      '<label>Reason for leaving<select id="ql-more-delete-reason" required><option value="">Choose a reason</option><option value="no_longer_needed">I no longer need the account</option><option value="privacy_concerns">Privacy concerns</option><option value="another_account">I am using another account</option><option value="app_issue">I had an issue with the app</option><option value="other">Other</option></select></label>' +
-      '<label>Anything else you want us to know (optional)<textarea id="ql-more-delete-details" maxlength="1200"></textarea></label>' +
-      '<div><button type="submit" class="ql-more-button danger">Send deletion request</button><p id="ql-more-delete-message" class="ql-more-message" role="status"></p></div></form></section>' +
+      '<div class="ql-more-row"><div class="ql-more-row-copy"><strong>Delete Account &amp; Data</strong><small>Send a deletion request for manager review. Your account stays active until processed.</small></div><button type="button" id="ql-more-delete-toggle" class="ql-more-button danger">Request deletion</button></div></section>' +
       '<section class="ql-more-card"><div class="ql-more-row" style="padding:0;border:0"><div class="ql-more-row-copy"><strong>Sign Out</strong><small>You’ll be asked to confirm before your session ends.</small></div><button type="button" id="ql-more-signout" class="ql-more-button danger">Sign Out</button></div></section>' +
       '<p class="ql-more-subtitle" style="text-align:center;padding:4px 0 16px">QUIZ LAB · v1.0.0 · Android package in.genziitian.quizlab</p></div>';
   }
@@ -416,28 +418,41 @@
       dialog.addEventListener('close', function () { dialog.remove(); });
       dialog.showModal();
     });
-    var identity = card.querySelector('#ql-more-delete-identity');
-    profileData().then(function (data) {
-      var user = data.user || {};
-      identity.textContent = 'Request for ' + (user.name || 'your account') + ' · ' + (user.email || '');
-    }).catch(function (error) { identity.textContent = error.message || 'Could not load your account details.'; });
     var toggle = card.querySelector('#ql-more-delete-toggle');
-    var form = card.querySelector('#ql-more-delete-form');
-    toggle.addEventListener('click', function () { form.hidden = !form.hidden; toggle.textContent = form.hidden ? 'Request deletion' : 'Close request'; });
-    form.addEventListener('submit', function (event) {
-      event.preventDefault();
-      var reason = card.querySelector('#ql-more-delete-reason').value;
-      var details = card.querySelector('#ql-more-delete-details').value.trim();
-      var message = card.querySelector('#ql-more-delete-message');
-      var submit = form.querySelector('[type=submit]');
-      if (!reason) { message.textContent = 'Choose a reason before sending.'; message.className = 'ql-more-message error'; return; }
-      submit.disabled = true;
-      message.textContent = 'Sending request…';
-      api('/auth/account-deletion-requests', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ reason: reason, details: details }) }).then(function (data) {
-        message.textContent = data.message || 'Your request was sent to the manager for review.';
-        message.className = 'ql-more-message success';
-        form.reset();
-      }).catch(function (error) { message.textContent = error.message || 'Could not send the request. Please try again.'; message.className = 'ql-more-message error'; }).finally(function () { submit.disabled = false; });
+    var sent = false;
+    toggle.addEventListener('click', function () {
+      var dialog = document.createElement('dialog');
+      dialog.className = 'ql-more-delete-dialog';
+      dialog.innerHTML = '<div class="ql-more-delete-content"><div class="ql-more-row" style="padding-top:0;border:0"><h2 class="ql-more-heading">Request account deletion</h2><button type="button" class="ql-more-button" data-close>Close</button></div><p class="ql-more-subtitle" id="ql-more-delete-identity">Loading your account details…</p><form id="ql-more-delete-form" class="ql-more-form"><label>Reason for leaving<select id="ql-more-delete-reason" required><option value="">Choose a reason</option><option value="no_longer_needed">I no longer need the account</option><option value="privacy_concerns">Privacy concerns</option><option value="another_account">I am using another account</option><option value="app_issue">I had an issue with the app</option><option value="other">Other</option></select></label><label>Anything else you want us to know (optional)<textarea id="ql-more-delete-details" maxlength="1200"></textarea></label><p class="ql-more-subtitle">Your account stays active while the manager reviews your request.</p><div class="ql-more-delete-actions"><button type="button" class="ql-more-button" data-close>Cancel</button><button type="submit" class="ql-more-button danger">Send deletion request</button></div><p id="ql-more-delete-message" class="ql-more-message" role="status" aria-live="polite"></p></form></div>';
+      document.body.appendChild(dialog);
+      var identity = dialog.querySelector('#ql-more-delete-identity');
+      profileData().then(function (data) {
+        var user = data.user || {};
+        identity.textContent = 'Request for ' + (user.name || 'your account') + ' · ' + (user.email || '');
+      }).catch(function (error) { identity.textContent = error.message || 'Could not load your account details.'; });
+      dialog.querySelectorAll('[data-close]').forEach(function (button) { button.addEventListener('click', function () { dialog.close(); }); });
+      dialog.addEventListener('click', function (event) { if (event.target === dialog) dialog.close(); });
+      dialog.addEventListener('close', function () { dialog.remove(); });
+      var form = dialog.querySelector('#ql-more-delete-form');
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        var reason = dialog.querySelector('#ql-more-delete-reason').value;
+        var details = dialog.querySelector('#ql-more-delete-details').value.trim();
+        var message = dialog.querySelector('#ql-more-delete-message');
+        var submit = form.querySelector('[type=submit]');
+        if (!reason) { message.textContent = 'Choose a reason before sending.'; message.className = 'ql-more-message error'; return; }
+        submit.disabled = true;
+        message.textContent = 'Sending request…';
+        api('/auth/account-deletion-requests', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ reason: reason, details: details }) }).then(function (data) {
+          sent = true;
+          message.textContent = data.message || 'Your request was sent to the manager for review.';
+          message.className = 'ql-more-message success';
+          form.querySelectorAll('select,textarea,button').forEach(function (field) { field.disabled = true; });
+          toggle.textContent = 'Request sent';
+          toggle.disabled = true;
+        }).catch(function (error) { message.textContent = error.message || 'Could not send the request. Please try again.'; message.className = 'ql-more-message error'; }).finally(function () { submit.disabled = sent; });
+      });
+      dialog.showModal();
     });
     card.querySelector('#ql-more-signout').addEventListener('click', function () { signOut(); });
   }

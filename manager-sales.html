@@ -4,7 +4,7 @@
 <main><div class="page-heading"><div><p class="eyebrow">Manager workspace · managers only</p><h1>Sales, papers and requests.</h1><p>Review sales, manage the paper catalog, and respond to account deletion requests.</p></div></div>
 <div id="gate" class="notice" role="status">Checking your manager account…</div>
 <div id="workspace" hidden>
-<nav class="tabs" aria-label="Manager sections"><button data-tab="sales" aria-current="page">Sales</button><button data-tab="papers">Papers</button><button data-tab="courses">Courses</button><button data-tab="deletion-requests">Deletion requests</button></nav>
+<nav class="tabs" aria-label="Manager sections"><button data-tab="sales" aria-current="page">Sales</button><button data-tab="papers">Papers</button><button data-tab="courses">Courses</button><button data-tab="deletion-requests">Account deletion</button></nav>
 <section id="sales-panel">
 <div class="toolbar"><div><h2>Sales overview</h2><p class="hint">Every payment, and every checkout a student opened without paying.</p></div><button id="refresh-sales">Refresh</button></div>
 <div id="sales-metrics" class="metrics" aria-live="polite"><div class="notice">Loading sales…</div></div>
@@ -17,7 +17,7 @@
 </section>
 <section id="papers-panel" hidden><div class="toolbar"><label class="search">Find a paper<input type="search" id="paper-search" placeholder="Search title or course"></label><button class="primary" id="new-paper">Create paper</button></div><div id="paper-list" class="cards"></div></section>
 <section id="courses-panel" hidden><div class="two-columns"><form id="course-form" class="panel"><h2>Create a course</h2><label>Course name<input name="name" maxlength="120" required></label><label>Level<select name="level"><option value="foundation">Foundation</option><option value="diploma">Diploma</option><option value="degree">Degree</option></select></label><label>Description<textarea name="description" rows="3"></textarea></label><label>Weekly folders<input name="weeks_count" type="number" min="0" max="52" value="12" required></label><p class="hint">Weekly folders are used by practice and graded practice papers.</p><button class="primary">Create course</button><p class="form-status" role="status"></p></form><div id="course-list" class="stack"></div></div></section>
-<section id="deletion-requests-panel" hidden><div class="toolbar"><div><h2>Account deletion requests</h2><p class="hint">Requests sent from the mobile app, including the account snapshot and reason.</p></div><button id="refresh-deletion-requests">Refresh</button></div><div id="deletion-request-list" class="stack" aria-live="polite"><div class="notice">Loading requests…</div></div></section>
+<section id="deletion-requests-panel" hidden><div class="toolbar"><div><h2>Account deletion requests <span class="hint" id="deletion-request-count"></span></h2><p class="hint">Review every request sent from the website or mobile app, including the account details and reason.</p></div><button id="refresh-deletion-requests">Refresh</button></div><div class="filters"><select id="deletion-request-filter" aria-label="Filter account deletion requests"><option value="all">All requests</option><option value="pending">Pending</option><option value="reviewing">Reviewing</option><option value="completed">Completed</option></select></div><div id="deletion-request-list" class="stack" aria-live="polite"><div class="notice">Loading requests…</div></div></section>
 
 </div>
 </main>
@@ -28,4 +28,4 @@
 <section id="preview-step" hidden><div id="paper-preview"></div><div class="toolbar"><button class="primary" id="publish-paper">Activate / Publish</button><button id="deactivate-paper">Deactivate</button></div><p id="publish-status" role="status"></p></section>
 </dialog>
 <div id="toast" role="status" aria-live="polite"></div>
-<script src="/storefront-runtime.js?v=20261008e"></script><script src="/manager-sales.js?v=20261008f"></script></body></html>
+<script src="/storefront-runtime.js?v=20261008e"></script><script src="/manager-sales.js?v=20261008g"></script></body></html>

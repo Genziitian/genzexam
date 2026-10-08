@@ -23,12 +23,15 @@
   function renderCourses() { $('course-list').innerHTML=courses.length ? courses.map(c=>`<article class="panel"><h3>${esc(c.name)}</h3><span class="badge">${esc(c.level)}</span><p class="hint">${esc(c.description || '')}</p><p>${c.is_active?'Active':'Inactive'}</p><button data-course-toggle="${esc(c.id)}">${c.is_active?'Deactivate course':'Activate course'}</button></article>`).join('') : '<div class="notice">Create your first course to organize its papers.</div>'; $('paper-course').innerHTML='<option value="">Choose a course</option>'+courses.map(c=>`<option value="${esc(c.id)}">${esc(c.name)}${c.is_active?'':' (inactive)'}</option>`).join(''); }
   function renderDeletionRequests() {
     const target = $('deletion-request-list');
-    target.innerHTML = deletionRequests.length ? deletionRequests.map(row => `<article class="panel">
+    const filter = $('deletion-request-filter').value;
+    const rows = filter === 'all' ? deletionRequests : deletionRequests.filter(row => row.status === filter);
+    $('deletion-request-count').textContent = `· ${deletionRequests.length} total`;
+    target.innerHTML = rows.length ? rows.map(row => `<article class="panel">
       <div class="toolbar tight"><div><h3>${esc(row.name)} <span class="hint">· Request #${esc(row.id)}</span></h3><p class="hint">${esc(row.email)} · User ID ${esc(row.user_id ?? 'account removed')} · ${esc(row.role)}</p></div>
       <label>Status<select data-deletion-status="${esc(row.id)}"><option value="pending" ${row.status==='pending'?'selected':''}>Pending</option><option value="reviewing" ${row.status==='reviewing'?'selected':''}>Reviewing</option><option value="completed" ${row.status==='completed'?'selected':''}>Completed</option></select></label></div>
       <p><strong>Reason:</strong> ${esc(row.reason)}</p><p><strong>Additional details:</strong> ${esc(row.details || 'None provided')}</p>
       <p class="hint">Account created ${esc(row.account_created_at ? new Date(row.account_created_at).toLocaleString() : 'date unavailable')} · Requested ${esc(new Date(row.created_at).toLocaleString())}</p>
-    </article>`).join('') : '<div class="notice empty">No account deletion requests have been submitted.</div>';
+    </article>`).join('') : `<div class="notice empty">${deletionRequests.length ? 'No requests match this status.' : 'No account deletion requests have been submitted.'}</div>`;
   }
   async function loadDeletionRequests() { $('deletion-request-list').innerHTML='<div class="notice">Loading requests…</div>'; try { deletionRequests=await api('/manager/account-deletion-requests').then(data=>data.requests || []);renderDeletionRequests(); } catch(error) { $('deletion-request-list').innerHTML=`<div class="notice">${esc(error.message)}</div>`; } }
   async function loadWeeks(selected) { const weekly=['practice','practice_graded'].includes(value(form,'section')); $('week-field').hidden=!weekly; $('paper-week').required=weekly; if(!weekly) return; $('paper-week').innerHTML='<option value="">Loading weeks…</option>'; if(!value(form,'course_id')) return; try { const rows=await api('/manager/courses/'+encodeURIComponent(value(form,'course_id'))+'/weeks'); $('paper-week').innerHTML='<option value="">Choose a week</option>'+rows.map(w=>`<option value="${esc(w.id)}">Week ${esc(w.week_number)}${w.title?' — '+esc(w.title):''}</option>`).join(''); if(selected) $('paper-week').value=selected; } catch(error){toast(error.message);} }
@@ -87,6 +90,7 @@
   }
   document.querySelectorAll('[data-tab]').forEach(button=>button.onclick=()=>{ document.querySelectorAll('[data-tab]').forEach(b=>b.setAttribute('aria-current',b===button?'page':'false')); ['sales','papers','courses','deletion-requests'].forEach(t=>$(t+'-panel').hidden=t!==button.dataset.tab);if(button.dataset.tab==='sales')loadSales();if(button.dataset.tab==='deletion-requests')loadDeletionRequests(); });
   $('refresh-deletion-requests').onclick=loadDeletionRequests;
+  $('deletion-request-filter').onchange=renderDeletionRequests;
   $('deletion-request-list').onchange=e=>{const select=e.target.closest('[data-deletion-status]');if(!select)return;const previous=deletionRequests.find(row=>String(row.id)===select.dataset.deletionStatus)?.status;select.disabled=true;api('/manager/account-deletion-requests/'+encodeURIComponent(select.dataset.deletionStatus),'PATCH',{status:select.value}).then(result=>{const index=deletionRequests.findIndex(row=>String(row.id)===select.dataset.deletionStatus);if(index>=0)deletionRequests[index]=result.request;renderDeletionRequests();toast('Request status updated.');}).catch(error=>{select.value=previous || 'pending';select.disabled=false;toast(error.message);});};
   document.querySelectorAll('[data-edit-tab]').forEach(b=>b.onclick=()=>editTab(b.dataset.editTab));
   function canClose(){return (!dirty && !questionDirty) || confirm('Close and discard unsaved changes?');}

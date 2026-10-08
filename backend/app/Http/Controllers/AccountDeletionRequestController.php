@@ -81,7 +81,6 @@ class AccountDeletionRequestController extends Controller
 
         $requests = AccountDeletionRequest::query()
             ->latest()
-            ->limit(250)
             ->get()
             ->map(fn (AccountDeletionRequest $row) => $this->serializeRequest($row));
 
