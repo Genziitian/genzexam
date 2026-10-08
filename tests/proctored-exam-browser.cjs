@@ -91,7 +91,8 @@ const root = path.resolve(__dirname, "..");
       .waitFor();
     await click(manager, "publish");
     await manager
-      .getByRole("heading", { name: "Browser math & statistics", exact: true })
+      .locator(".saas-title")
+      .filter({ hasText: "Browser math & statistics" })
       .waitFor();
     const { exams } = await api("manager", "/exams", null, "GET");
     const id = exams.find((e) => e.title === "Browser math & statistics").id;
