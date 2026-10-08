@@ -184,9 +184,10 @@ const root = path.resolve(__dirname, "..");
     );
     // Simulate a network interruption for answer writes, then recover without editing again.
     await student.route("**/answers", (route) => route.abort("failed"));
-    const failedSave = student.waitForRequestFailed((request) =>
-      new URL(request.url()).pathname.endsWith("/answers"),
-    );
+    const failedSave = student.waitForEvent("requestfailed", {
+      predicate: (request) =>
+        new URL(request.url()).pathname.endsWith("/answers"),
+    });
     await student.locator('[data-answer-text="mean-number"]').fill("8");
     await failedSave;
     await student.unroute("**/answers");
