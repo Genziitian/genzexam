@@ -311,7 +311,7 @@ class AuthController extends Controller
             .'h1{font-size:22px;margin:0 0 8px}p{margin:0;color:#5f5e58}'
             .'@media(prefers-color-scheme:dark){body{background:#121411;color:#eceae3}p{color:#a3a199}}</style>'
             .'</head><body><div><h1>You are signed in</h1>'
-            .'<p>Close this window (tap <b>Done</b> or <b>&times;</b> at the top) to go back to the Quiz LAB app.</p>'
+            .'<p>Tap <b>&times;</b> at the top left to close this window.<br>The Quiz LAB app opens your dashboard by itself.</p>'
             .'</div></body></html>';
 
         return response($html, 200)
