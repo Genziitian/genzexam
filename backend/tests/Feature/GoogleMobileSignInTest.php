@@ -63,7 +63,7 @@ class GoogleMobileSignInTest extends TestCase
     {
         $this->fakeGoogle();
 
-        $res = $this->postJson('/api/auth/google/mobile', ['id_token' => self::TOKEN]);
+        $res = $this->postJson('/public/api/auth/google/mobile', ['id_token' => self::TOKEN]);
 
         $res->assertOk()->assertJsonPath('user.email', 'raj@example.com')->assertJsonPath('user.name', 'Raj Singh');
         $this->assertNotEmpty($res->json('token'));
@@ -76,7 +76,7 @@ class GoogleMobileSignInTest extends TestCase
         DB::table('users')->insert(['name' => 'Raj', 'email' => 'raj@example.com', 'is_active' => 1, 'role' => 'manager']);
         $this->fakeGoogle();
 
-        $res = $this->postJson('/api/auth/google/mobile', ['id_token' => self::TOKEN]);
+        $res = $this->postJson('/public/api/auth/google/mobile', ['id_token' => self::TOKEN]);
 
         $res->assertOk()->assertJsonPath('user.role', 'manager');
         $this->assertSame(1, DB::table('users')->count());
@@ -87,22 +87,22 @@ class GoogleMobileSignInTest extends TestCase
     {
         $this->fakeGoogle(['aud' => 'someone-elses-client']);
 
-        $this->postJson('/api/auth/google/mobile', ['id_token' => self::TOKEN])->assertStatus(401);
+        $this->postJson('/public/api/auth/google/mobile', ['id_token' => self::TOKEN])->assertStatus(401);
         $this->assertSame(0, DB::table('users')->count());
     }
 
     public function test_expired_unverified_or_invalid_tokens_are_rejected(): void
     {
         $this->fakeGoogle(['exp' => (string) (time() - 10)]);
-        $this->postJson('/api/auth/google/mobile', ['id_token' => self::TOKEN])->assertStatus(401);
+        $this->postJson('/public/api/auth/google/mobile', ['id_token' => self::TOKEN])->assertStatus(401);
 
         Http::swap(new \Illuminate\Http\Client\Factory());
         $this->fakeGoogle(['email_verified' => 'false']);
-        $this->postJson('/api/auth/google/mobile', ['id_token' => self::TOKEN])->assertStatus(401);
+        $this->postJson('/public/api/auth/google/mobile', ['id_token' => self::TOKEN])->assertStatus(401);
 
         Http::swap(new \Illuminate\Http\Client\Factory());
         $this->fakeGoogle(['error_description' => 'Invalid Value'], 400);
-        $this->postJson('/api/auth/google/mobile', ['id_token' => self::TOKEN])->assertStatus(401);
+        $this->postJson('/public/api/auth/google/mobile', ['id_token' => self::TOKEN])->assertStatus(401);
 
         $this->assertSame(0, DB::table('users')->count());
     }
@@ -111,8 +111,8 @@ class GoogleMobileSignInTest extends TestCase
     {
         Http::fake();
 
-        $this->postJson('/api/auth/google/mobile', ['id_token' => 'not-a-token'])->assertStatus(422);
-        $this->postJson('/api/auth/google/mobile', [])->assertStatus(422);
+        $this->postJson('/public/api/auth/google/mobile', ['id_token' => 'not-a-token'])->assertStatus(422);
+        $this->postJson('/public/api/auth/google/mobile', [])->assertStatus(422);
         Http::assertNothingSent();
     }
 
@@ -121,7 +121,7 @@ class GoogleMobileSignInTest extends TestCase
         DB::table('users')->insert(['name' => 'Raj', 'email' => 'raj@example.com', 'is_active' => 0, 'google_id' => 'g-123']);
         $this->fakeGoogle();
 
-        $this->postJson('/api/auth/google/mobile', ['id_token' => self::TOKEN])->assertStatus(403);
+        $this->postJson('/public/api/auth/google/mobile', ['id_token' => self::TOKEN])->assertStatus(403);
         $this->assertSame(0, DB::table('personal_access_tokens')->count());
     }
 }

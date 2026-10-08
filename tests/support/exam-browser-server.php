@@ -10,7 +10,7 @@ if (PHP_SAPI === 'cli-server' && !str_starts_with($uri, '/public/api/')) {
     if ($uri === '/exam-test-config.js') { header('Content-Type: text/javascript');echo 'window.QLStorefront={apiBase:"/public/api"};';return; }
     if (preg_match('~^/exams?(/.*)?$~', $uri)) {
         header('Content-Type: text/html');
-        echo str_replace('<script src="/storefront-runtime.js" defer></script>', '<script src="/exam-test-config.js" defer></script>', file_get_contents($root.'/exams.html')); return;
+        echo preg_replace('~<script src="/storefront-runtime\.js(?:\?[^\"]*)?" defer></script>~', '<script src="/exam-test-config.js" defer></script>', file_get_contents($root.'/exams.html')); return;
     }
     $file=realpath($root.$uri);
     if ($file && str_starts_with($file, $root.'/') && (str_starts_with($uri,'/assets/') || str_starts_with($uri,'/templates/') || in_array($uri,['/exam-platform.js','/exam-platform.css','/exam-rich-content.js']))) {
