@@ -98,6 +98,12 @@ const root = path.resolve(__dirname, "..");
     const id = exams.find((e) => e.title === "Browser math & statistics").id;
     const student = await pageFor("student");
     await click(student, "open");
+    await student.waitForTimeout(500);
+    assert.equal(
+      await student.locator(".ep-student-detail").count(),
+      1,
+      `Candidate exam detail did not render: ${await student.locator("#ep-content").innerText()}`,
+    );
     await student
       .getByText("This exam has not started yet", { exact: true })
       .waitFor();
