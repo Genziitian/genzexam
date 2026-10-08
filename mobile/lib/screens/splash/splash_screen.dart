@@ -3,6 +3,7 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import '../../state/auth_state.dart';
+import '../../state/theme_state.dart';
 
 /// Animated launch screen for Quiz Lab Mobile.
 ///
@@ -80,10 +81,10 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
     return Transform.scale(
       scale: 1.0 + grow * 1.1,
       child: Container(
-        width: 112,
-        height: 112,
+      width: 152,
+      height: 152,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(32),
+          borderRadius: BorderRadius.circular(38),
           border: Border.all(color: const Color(0xFF4ADE80).withValues(alpha: opacity.clamp(0.0, 1.0).toDouble()), width: 2),
         ),
       ),
@@ -111,10 +112,10 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
             child: Transform.rotate(
               angle: (1 - land) * -0.35,
               child: Transform.scale(
-                scale: 0.35 + 0.65 * land,
+                scale: 0.5 + 0.5 * land,
                 child: Container(
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(28),
+                    borderRadius: BorderRadius.circular(36),
                     boxShadow: [
                       BoxShadow(
                         color: const Color(0xFF4ADE80).withValues(alpha: 0.25 + 0.25 * pulse),
@@ -129,8 +130,8 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
                     ],
                   ),
                   child: ClipRRect(
-                    borderRadius: BorderRadius.circular(28),
-                    child: Image.asset('assets/logo.png', width: 108, height: 108, fit: BoxFit.cover),
+                    borderRadius: BorderRadius.circular(36),
+                    child: KeepColors(child: Image.asset('assets/logo.png', width: 144, height: 144, fit: BoxFit.cover)),
                   ),
                 ),
               ),

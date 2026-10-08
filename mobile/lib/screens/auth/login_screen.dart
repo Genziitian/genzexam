@@ -1,7 +1,9 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
+import '../../legal/legal_documents.dart';
 import '../../state/auth_state.dart';
+import '../../state/theme_state.dart';
 import '../../widgets/app_ux_components.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -97,48 +99,6 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
     );
   }
 
-  static const String _termsContent = '''
-Terms & Conditions
-Last Updated: April 2026
-
-01 Service Description
-QUIZ LAB provides access to premium digital educational courses designed specifically for students. Our services are delivered entirely online. Access to the courses is granted immediately upon successful completion of the payment process.
-
-02 User Account & Security
-To access our courses, users must sign in via their Google account. You are solely responsible for maintaining the confidentiality of your account information and for all activities that occur under your account. We reserve the right to terminate accounts that violate our security protocols.
-
-03 Course Access & Usage
-Access is granted exclusively to the email address used during the purchase.
-Course access is non-transferable and intended for personal use only.
-Sharing account credentials or course content with third parties is strictly prohibited.
-
-04 Payment Terms
-All prices are clearly displayed before the final checkout. By proceeding with the payment, you agree to the price and terms of the specific course. All payments are processed through secure third-party payment gateways (Razorpay, Stripe, or Cashfree).
-
-05 Prohibited Use & Copyright
-All content on this platform, including videos, documents, and code samples, is the intellectual property of QUIZ LAB. Any form of piracy, unauthorized redistribution, or commercial use of our content will result in legal action and immediate termination of access without notice.
-
-06 Limitation of Liability
-QUIZ LAB is an educational platform. While we strive for excellence, we do not guarantee specific academic results or career outcomes. The platform is not responsible for any misuse of the information provided or for any technical issues arising from the user's internet connection or device.
-''';
-
-  static const String _privacyContent = '''
-1. Information We Collect:
-Quiz Lab collects necessary academic information including your registered name, student email address (@iitm.ac.in), course enrollment selections, quiz attempt answers, scores, and weekly progress goals.
-
-2. Authentication & Data Security:
-We utilize Laravel Sanctum bearer tokens stored in hardware-backed Android Keystore using EncryptedSharedPreferences (AES-256-GCM). We do not store plain-text passwords or financial transaction information on the device.
-
-3. Third-Party Payments:
-Payment transactions for paper storefront purchases are securely processed by Razorpay. We do not process or retain credit card numbers or UPI PINs.
-
-4. Account & Data Deletion:
-In compliance with Google Play Store policies, users have the absolute right to delete their account and associated attempt records at any time directly through the app Settings menu or via our dedicated web portal at https://lab.genziitian.in/delete-account.html.
-
-5. Contact:
-For inquiries regarding our Privacy Policy or data rights, contact us at privacy@genziitian.in or support@genziitian.in.
-''';
-
   @override
   Widget build(BuildContext context) {
     final authState = widget.authState;
@@ -202,12 +162,12 @@ For inquiries regarding our Privacy Policy or data rights, contact us at privacy
                                       },
                                       child: ClipRRect(
                                         borderRadius: BorderRadius.circular(20),
-                                        child: Image.asset(
+                                        child: KeepColors(child: Image.asset(
                                           'assets/logo.png',
                                           height: 68,
                                           width: 68,
                                           fit: BoxFit.cover,
-                                        ),
+                                        )),
                                       ),
                                     ),
                                     const SizedBox(width: 16),
@@ -441,7 +401,7 @@ For inquiries regarding our Privacy Policy or data rights, contact us at privacy
 
                           const SizedBox(height: 22),
 
-                          // Terms of Service & Privacy Policy links (Play Store requirement)
+                          // Legal links are available before sign-in.
                           _Entrance(
                             delayMs: 360,
                             offsetY: 16,
@@ -449,7 +409,7 @@ For inquiries regarding our Privacy Policy or data rights, contact us at privacy
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 GestureDetector(
-                                  onTap: () => _showLegalSheet('Terms of Service', _termsContent),
+                                  onTap: () => _showLegalSheet('Terms of Service', LegalDocuments.terms),
                                   child: const Text(
                                     'Terms of Service',
                                     style: TextStyle(
@@ -464,7 +424,7 @@ For inquiries regarding our Privacy Policy or data rights, contact us at privacy
                                   style: TextStyle(color: Color(0xFF94A3B8), fontSize: 12),
                                 ),
                                 GestureDetector(
-                                  onTap: () => _showLegalSheet('Privacy Policy', _privacyContent),
+                                  onTap: () => _showLegalSheet('Privacy Policy', LegalDocuments.privacy),
                                   child: const Text(
                                     'Privacy Policy',
                                     style: TextStyle(

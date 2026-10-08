@@ -190,16 +190,12 @@ class AuthService {
     }
   }
 
-  /// Permanently deletes the student account and all stored records.
-  /// Complies with Google Play Store User Data Deletion requirements.
-  Future<void> deleteAccount() async {
-    try {
-      await _client.delete<Map<String, dynamic>>('/auth/account');
-    } catch (_) {
-      // If server fails or is unreachable, ensure local credentials are eradicated
-    } finally {
-      await _client.deleteAuthToken();
-    }
+  /// Submits an account deletion request for manager review.
+  Future<void> requestAccountDeletion({required String reason, String? details}) async {
+    await _client.post<Map<String, dynamic>>(
+      '/auth/account-deletion-requests',
+      data: {'reason': reason, 'details': details?.trim()},
+    );
   }
 
   /// Checks if a valid Sanctum token exists in secure storage.

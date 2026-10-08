@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../api/api.dart';
 import '../../state/auth_state.dart';
 import '../../widgets/app_ux_components.dart';
+import '../../widgets/confirm_sign_out.dart';
 
 /// Real Admin Console for Admin (rank 1) and Manager (rank 2) roles.
 /// Communicates with backend/app/Http/Controllers/Admin/AdminUserController.php
@@ -99,7 +100,7 @@ class _AdminConsoleScreenState extends State<AdminConsoleScreen> {
               icon: const Icon(Icons.logout_rounded, color: Color(0xFFDC2626)),
               onPressed: () {
                 AppHaptics.medium();
-                widget.authState.logout();
+                confirmSignOut(context, widget.authState);
               },
             ),
           ],

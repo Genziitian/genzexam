@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../api/api.dart';
 import '../../state/auth_state.dart';
 import '../../widgets/app_ux_components.dart';
+import '../../widgets/confirm_sign_out.dart';
 import '../admin/admin_console_screen.dart';
 
 /// Manager Executive Workspace for Manager (Rank 2) users.
@@ -151,10 +152,10 @@ class _ManagerWorkspaceScreenState extends State<ManagerWorkspaceScreen> {
               ),
               const SizedBox(width: 12),
               IconButton(
-                onPressed: () {
-                  AppHaptics.medium();
-                  widget.authState.logout();
-                },
+              onPressed: () {
+                AppHaptics.medium();
+                confirmSignOut(context, widget.authState);
+              },
                 icon: const Icon(Icons.logout_rounded, color: Color(0xFFEF4444)),
                 tooltip: 'Sign Out',
               ),

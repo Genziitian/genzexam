@@ -1,12 +1,17 @@
 import 'dart:async';
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
+import '../../legal/legal_documents.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:url_launcher/url_launcher.dart';
 import '../../api/api.dart';
 import '../../state/auth_state.dart';
+import '../../state/theme_state.dart';
 import '../../widgets/app_ux_components.dart';
+import '../../widgets/confirm_sign_out.dart';
+import 'discussions_screen.dart';
+import 'help_screens.dart';
 import 'practice_screens.dart';
+import 'progress_widgets.dart';
 
 // -----------------------------------------------------------------------------
 // AVATARS: ready-made pictures a student can pick. The choice is kept on this
@@ -89,7 +94,8 @@ Widget _avatarCircle({required String? name, required double size, int? preset, 
       ),
     );
   }
-  return Container(
+  return KeepColors(
+    child: Container(
     width: size,
     height: size,
     alignment: Alignment.center,
@@ -100,6 +106,7 @@ Widget _avatarCircle({required String? name, required double size, int? preset, 
       boxShadow: [BoxShadow(color: p.to.withValues(alpha: 0.35), blurRadius: size * 0.2, offset: Offset(0, size * 0.08))],
     ),
     child: Text(p.emoji, style: TextStyle(fontSize: size * 0.5, height: 1.1)),
+    ),
   );
 }
 
@@ -215,6 +222,7 @@ class _StudentMainShellState extends State<StudentMainShell> {
                   children: [
                     _HomeTab(
                       dashboardService: _dashboardService,
+                      leaderboardService: _leaderboardService,
                       user: widget.authState.user,
                       onNavigateToQuizzes: () => setState(() => _currentIndex = 1),
                       onOpenProfile: () => setState(() => _currentIndex = 4),
@@ -611,20 +619,54 @@ class _RanksTabState extends State<_RanksTab> with TickerProviderStateMixin {
     Color(0xFFDB2777),
   ];
 
-  Widget _avatar(String name, double size, {Color? color}) {
+  Uri? _avatarUri(String? avatar) {
+    final value = avatar?.trim();
+    if (value == null || value.isEmpty) return null;
+    final parsed = Uri.tryParse(value);
+    if (parsed == null) return null;
+    if (parsed.hasScheme) return parsed;
+    final apiOrigin = Uri.parse(ApiClient.defaultBaseUrl);
+    return apiOrigin.replace(
+      path: parsed.path.startsWith('/') ? parsed.path : '/${parsed.path}',
+      query: parsed.hasQuery ? parsed.query : null,
+      fragment: parsed.hasFragment ? parsed.fragment : null,
+    );
+  }
+
+  Widget _avatar(String name, double size, {String? avatar, Color? color}) {
     final c = color ?? _avatarColors[name.hashCode.abs() % _avatarColors.length];
+    final imageUri = _avatarUri(avatar);
+    final initials = Container(
+      alignment: Alignment.center,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: Color.alphaBlend(c.withValues(alpha: 0.10), Colors.white),
+      ),
+      child: Text(
+        _initialsOf(name),
+        style: TextStyle(fontSize: size * 0.34, fontWeight: FontWeight.w800, color: c),
+      ),
+    );
     return Container(
       width: size,
       height: size,
-      alignment: Alignment.center,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         color: Color.alphaBlend(c.withValues(alpha: 0.10), Colors.white),
         border: Border.all(color: c.withValues(alpha: 0.30), width: 1.5),
       ),
-      child: Text(
-        _initialsOf(name),
-        style: TextStyle(fontSize: size * 0.34, fontWeight: FontWeight.w800, color: c),
+      child: ClipOval(
+        child: imageUri == null
+            ? initials
+            : Image.network(
+                imageUri.toString(),
+                width: size,
+                height: size,
+                fit: BoxFit.cover,
+                frameBuilder: (context, child, frame, wasSynchronouslyLoaded) =>
+                    wasSynchronouslyLoaded || frame != null ? child : initials,
+                errorBuilder: (context, error, stackTrace) => initials,
+              ),
       ),
     );
   }
@@ -781,7 +823,7 @@ class _RanksTabState extends State<_RanksTab> with TickerProviderStateMixin {
                     padding: const EdgeInsets.fromLTRB(6, 22, 6, 12),
                     child: Column(
                 children: [
-                  _avatar(entry.name, place == 1 ? 62 : 52, color: strong),
+                  _avatar(entry.name, place == 1 ? 62 : 52, avatar: entry.avatar, color: strong),
                   const SizedBox(height: 8),
                   Text(
                     entry.name,
@@ -862,7 +904,7 @@ class _RanksTabState extends State<_RanksTab> with TickerProviderStateMixin {
 
   // ---- Rows -----------------------------------------------------------------
 
-  Widget _row({required String rank, required String name, required int xp, bool isMe = false, bool compact = false, Key? key}) {
+  Widget _row({required String rank, required String name, required int xp, String? avatar, bool isMe = false, bool compact = false, Key? key}) {
     return Container(
       key: key,
       height: compact ? 50 : _rowHeight,
@@ -877,7 +919,7 @@ class _RanksTabState extends State<_RanksTab> with TickerProviderStateMixin {
               style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: isMe ? const Color(0xFF15803D) : const Color(0xFF475569)),
             ),
           ),
-          _avatar(name, 34, color: isMe ? const Color(0xFF16A34A) : null),
+          _avatar(name, 34, avatar: avatar, color: isMe ? const Color(0xFF16A34A) : null),
           const SizedBox(width: 10),
           Expanded(
             child: Row(
@@ -1034,6 +1076,7 @@ class _RanksTabState extends State<_RanksTab> with TickerProviderStateMixin {
                                   rank: '#${rest[i].rank}',
                                   name: rest[i].name,
                                   xp: rest[i].xp,
+                                  avatar: rest[i].avatar,
                                   isMe: rest[i].userId == myId,
                                 ),
                               ),
@@ -1042,7 +1085,7 @@ class _RanksTabState extends State<_RanksTab> with TickerProviderStateMixin {
                               const Divider(height: 1, color: Color(0xFFE2E8F0)),
                               _gapRow(),
                               const Divider(height: 1, color: Color(0xFFE2E8F0)),
-                              _row(key: _myRowKey, rank: '#$myRank', name: myName, xp: data.me.xp, isMe: true),
+                              _row(key: _myRowKey, rank: '#$myRank', name: myName, xp: data.me.xp, avatar: widget.user?.avatar, isMe: true),
                             ],
                           ],
                         ),
@@ -1088,6 +1131,7 @@ class _RanksTabState extends State<_RanksTab> with TickerProviderStateMixin {
                               rank: myRank != null ? '#$myRank' : '—',
                               name: myName,
                               xp: myIndex >= 0 ? entries[myIndex].xp : data.me.xp,
+                              avatar: myIndex >= 0 ? entries[myIndex].avatar : widget.user?.avatar,
                               isMe: true,
                             ),
                           ],
@@ -1186,12 +1230,14 @@ class _ConfettiPainter extends CustomPainter {
 // -----------------------------------------------------------------------------
 class _HomeTab extends StatefulWidget {
   final DashboardService dashboardService;
+  final LeaderboardService leaderboardService;
   final UserModel? user;
   final VoidCallback onNavigateToQuizzes;
   final VoidCallback onOpenProfile;
 
   const _HomeTab({
     required this.dashboardService,
+    required this.leaderboardService,
     this.user,
     required this.onNavigateToQuizzes,
     required this.onOpenProfile,
@@ -1203,6 +1249,7 @@ class _HomeTab extends StatefulWidget {
 
 class _HomeTabState extends State<_HomeTab> with SingleTickerProviderStateMixin {
   late Future<DashboardData> _dashboardFuture;
+  late Future<LeaderboardData> _leaderboardFuture;
 
   /// Gentle loop: logo glow, flickering flame, shimmer on the name.
   late final AnimationController _ambient;
@@ -1211,6 +1258,7 @@ class _HomeTabState extends State<_HomeTab> with SingleTickerProviderStateMixin 
   void initState() {
     super.initState();
     _dashboardFuture = widget.dashboardService.getDashboard();
+    _leaderboardFuture = widget.leaderboardService.getLeaderboard();
     _ambient = AnimationController(vsync: this, duration: const Duration(milliseconds: 3000))..repeat();
   }
 
@@ -1237,6 +1285,7 @@ class _HomeTabState extends State<_HomeTab> with SingleTickerProviderStateMixin 
     AppHaptics.light();
     setState(() {
       _dashboardFuture = widget.dashboardService.getDashboard();
+      _leaderboardFuture = widget.leaderboardService.getLeaderboard();
     });
     await _dashboardFuture;
   }
@@ -1289,7 +1338,7 @@ class _HomeTabState extends State<_HomeTab> with SingleTickerProviderStateMixin 
                       },
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(12),
-                        child: Image.asset('assets/logo.png', width: 44, height: 44, fit: BoxFit.cover),
+                        child: KeepColors(child: Image.asset('assets/logo.png', width: 44, height: 44, fit: BoxFit.cover)),
                       ),
                     ),
                     const SizedBox(width: 10),
@@ -1449,16 +1498,21 @@ class _HomeTabState extends State<_HomeTab> with SingleTickerProviderStateMixin 
                         ),
                         const SizedBox(width: 12),
                         Expanded(
-                          child: _MetricCard(
-                            title: 'RANK',
-                            value: data.rank.current != null ? '#${data.rank.current}' : 'New',
-                            unit: 'of ${data.rank.totalRanked}',
-                            color: const Color(0xFF8B5CF6),
-                            titleColor: const Color(0xFF6D28D9),
-                            history: [
-                              -((data.rank.previous ?? data.rank.current ?? 0).toDouble()),
-                              -((data.rank.current ?? 0).toDouble()),
-                            ],
+                          child: FutureBuilder<LeaderboardData>(
+                            future: _leaderboardFuture,
+                            builder: (context, rankSnapshot) {
+                              final myRank = rankSnapshot.data?.myRank;
+                              return _MetricCard(
+                                title: 'RANK',
+                                value: myRank == null
+                                    ? (rankSnapshot.connectionState == ConnectionState.waiting ? '…' : 'New')
+                                    : '#$myRank',
+                                unit: myRank == null ? 'unranked' : 'XP rank',
+                                color: const Color(0xFF8B5CF6),
+                                titleColor: const Color(0xFF6D28D9),
+                                history: [0, (myRank ?? 0).toDouble()],
+                              );
+                            },
                           ),
                         ),
                       ],
@@ -3274,162 +3328,6 @@ class _QuizzesTabState extends State<_QuizzesTab> {
 }
 
 // -----------------------------------------------------------------------------
-// TAB 4: SUPPORT (Discussions Community)
-// -----------------------------------------------------------------------------
-class _SupportTab extends StatefulWidget {
-  final DiscussionService discussionService;
-
-  const _SupportTab({required this.discussionService});
-
-  @override
-  State<_SupportTab> createState() => _SupportTabState();
-}
-
-class _SupportTabState extends State<_SupportTab> {
-  bool _isLoading = true;
-  String? _errorMessage;
-  List<DiscussionListItem> _discussions = [];
-
-  @override
-  void initState() {
-    super.initState();
-    _loadDiscussions();
-  }
-
-  Future<void> _loadDiscussions() async {
-    setState(() {
-      _isLoading = true;
-      _errorMessage = null;
-    });
-    try {
-      final discussions = await widget.discussionService.getDiscussions();
-      if (mounted) {
-        setState(() {
-          _discussions = discussions;
-          _isLoading = false;
-        });
-      }
-    } catch (e) {
-      if (mounted) {
-        setState(() {
-          _errorMessage = e.toString();
-          _isLoading = false;
-        });
-      }
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    if (_isLoading) {
-      return AppShimmerCard.discussions();
-    }
-
-    if (_errorMessage != null) {
-      return AppErrorCard(
-        title: 'Unable to Load Discussions',
-        message: _errorMessage!,
-        onRetry: _loadDiscussions,
-      );
-    }
-
-    final discussions = _discussions;
-    return RefreshIndicator(
-      onRefresh: _loadDiscussions,
-      color: const Color(0xFF16A34A),
-      child: ListView(
-        padding: const EdgeInsets.all(16),
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const Text('COMMUNITY DISCUSSIONS', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Color(0xFF0F172A))),
-              ElevatedButton.icon(
-                onPressed: () {
-                  AppHaptics.light();
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Discussion posting open! Tap reply on any topic or create doubt.')),
-                  );
-                },
-                icon: const Icon(Icons.add, size: 16),
-                label: const Text('Ask Doubt', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF16A34A),
-                  foregroundColor: Colors.white,
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 4),
-          const Text('Peer questions, verified answers, and doubt discussions', style: TextStyle(fontSize: 13, color: Color(0xFF64748B))),
-          const SizedBox(height: 16),
-            ...discussions.map((d) => Container(
-              margin: const EdgeInsets.only(bottom: 10),
-              padding: const EdgeInsets.all(14),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: const Color(0xFFE2E8F0)),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      if (d.subjectLabel != null)
-                        Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-                          decoration: BoxDecoration(color: const Color(0xFFF1F5F9), borderRadius: BorderRadius.circular(6)),
-                          child: Text(d.subjectLabel!, style: const TextStyle(fontSize: 10, fontWeight: FontWeight.bold, color: Color(0xFF475569))),
-                        ),
-                      const Spacer(),
-                      if (d.isSolved)
-                        Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-                          decoration: BoxDecoration(color: const Color(0xFFDCFCE7), borderRadius: BorderRadius.circular(6)),
-                          child: const Row(
-                            children: [
-                              Icon(Icons.check_circle_outline_rounded, size: 12, color: Color(0xFF16A34A)),
-                              SizedBox(width: 3),
-                              Text('Solved', style: TextStyle(color: Color(0xFF16A34A), fontSize: 10, fontWeight: FontWeight.bold)),
-                            ],
-                          ),
-                        ),
-                    ],
-                  ),
-                  const SizedBox(height: 6),
-                  Text(d.title, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14, color: Color(0xFF0F172A))),
-                  const SizedBox(height: 4),
-                  Text(d.bodyPreview, maxLines: 2, overflow: TextOverflow.ellipsis, style: const TextStyle(fontSize: 12, color: Color(0xFF64748B))),
-                  const SizedBox(height: 10),
-                  Row(
-                    children: [
-                      Text('By ${d.author.name}', style: const TextStyle(fontSize: 11, color: Color(0xFF94A3B8))),
-                      const Spacer(),
-                      Row(
-                        children: [
-                          const Icon(Icons.thumb_up_alt_outlined, size: 13, color: Color(0xFF64748B)),
-                          const SizedBox(width: 4),
-                          Text('${d.voteCount}', style: const TextStyle(fontSize: 11, color: Color(0xFF64748B))),
-                          const SizedBox(width: 12),
-                          const Icon(Icons.chat_bubble_outline_rounded, size: 13, color: Color(0xFF64748B)),
-                          const SizedBox(width: 4),
-                          Text('${d.replyCount}', style: const TextStyle(fontSize: 11, color: Color(0xFF64748B))),
-                        ],
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            )),
-          ],
-        ),
-    );
-  }
-}
-
-// -----------------------------------------------------------------------------
 // TAB 5: MORE (Settings, Dark Mode, Profile, Logout)
 // -----------------------------------------------------------------------------
 class _MoreTab extends StatefulWidget {
@@ -3456,96 +3354,121 @@ class _MoreTab extends StatefulWidget {
 }
 
 class _MoreTabState extends State<_MoreTab> {
-  String _selectedTheme = 'System';
-  late Future<LeaderboardData> _leaderboardFuture;
-
-  static const String _termsContent = '''
-Terms & Conditions
-Last Updated: April 2026
-
-01 Service Description
-QUIZ LAB provides access to premium digital educational courses designed specifically for students. Our services are delivered entirely online. Access to the courses is granted immediately upon successful completion of the payment process.
-
-02 User Account & Security
-To access our courses, users must sign in via their Google account. You are solely responsible for maintaining the confidentiality of your account information and for all activities that occur under your account. We reserve the right to terminate accounts that violate our security protocols.
-
-03 Course Access & Usage
-Access is granted exclusively to the email address used during the purchase.
-Course access is non-transferable and intended for personal use only.
-Sharing account credentials or course content with third parties is strictly prohibited.
-
-04 Payment Terms
-All prices are clearly displayed before the final checkout. By proceeding with the payment, you agree to the price and terms of the specific course. All payments are processed through secure third-party payment gateways (Razorpay, Stripe, or Cashfree).
-
-05 Prohibited Use & Copyright
-All content on this platform, including videos, documents, and code samples, is the intellectual property of QUIZ LAB. Any form of piracy, unauthorized redistribution, or commercial use of our content will result in legal action and immediate termination of access without notice.
-
-06 Limitation of Liability
-QUIZ LAB is an educational platform. While we strive for excellence, we do not guarantee specific academic results or career outcomes. The platform is not responsible for any misuse of the information provided or for any technical issues arising from the user's internet connection or device.
-''';
-
-  static const String _privacyContent = '''
-Privacy Policy
-Last Updated: April 2026
-
-01 Information We Collect
-QUIZ LAB collects minimal necessary academic data: your student email (@iitm.ac.in), display name, course enrollments, quiz attempt answers, scores, and weekly learning progress.
-
-02 Security & Storage
-We employ encrypted local token storage using hardware-backed Android Keystore with EncryptedSharedPreferences (AES-256-GCM). We do not store plain passwords or banking details on the device.
-
-03 Data Safety & Non-Disclosure
-Your personal data and assessment performance are never sold or rented to third-party advertisers. All communication with labapi.genziitian.in is strictly encrypted via TLS 1.3.
-
-04 Account & Data Deletion
-In full compliance with Google Play Store User Data policies, you can delete your account and all associated test records at any time directly through the app or by submitting a request at https://lab.genziitian.in/delete-account.html.
-''';
-
-  @override
-  void initState() {
-    super.initState();
-    _leaderboardFuture = widget.leaderboardService.getLeaderboard();
-  }
 
   Future<void> _refresh() async {
     AppHaptics.light();
-    setState(() {
-      _leaderboardFuture = widget.leaderboardService.getLeaderboard();
-    });
-    await _leaderboardFuture;
+    await Future<void>.delayed(const Duration(milliseconds: 350));
   }
 
+  static String _themeLabel(ThemeMode mode) {
+    switch (mode) {
+      case ThemeMode.dark:
+        return 'Dark';
+      case ThemeMode.light:
+        return 'Light';
+      case ThemeMode.system:
+        return 'System';
+    }
+  }
+
+  /// Appearance: three cards with a small preview each. Picking one applies it at once.
   void _showThemeSelector() {
     AppHaptics.selection();
-    showDialog(
+    showModalBottomSheet<void>(
       context: context,
-      builder: (ctx) => AlertDialog(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-        title: const Text('Appearance', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            _themeTile('System', 'System Default (Follows OS)'),
-            _themeTile('Light', 'Light Mode'),
-            _themeTile('Dark', 'Dark Mode'),
-          ],
-        ),
+      backgroundColor: Colors.white,
+      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(26))),
+      builder: (ctx) => ValueListenableBuilder<ThemeMode>(
+        valueListenable: appThemeMode,
+        builder: (ctx, mode, _) {
+          Widget option(ThemeMode value, String label, String hint, IconData icon, List<Color> preview) {
+            final selected = mode == value;
+            return Expanded(
+              child: GestureDetector(
+                onTap: () {
+                  AppHaptics.selection();
+                  setAppThemeMode(value);
+                },
+                child: AnimatedContainer(
+                  duration: const Duration(milliseconds: 180),
+                  padding: const EdgeInsets.fromLTRB(8, 10, 8, 12),
+                  decoration: BoxDecoration(
+                    color: selected ? const Color(0xFFF0FDF4) : Colors.white,
+                    borderRadius: BorderRadius.circular(18),
+                    border: Border.all(color: selected ? const Color(0xFF16A34A) : const Color(0xFFE2E8F0), width: selected ? 2 : 1),
+                  ),
+                  child: Column(
+                    children: [
+                      // Tiny screen preview; keeps its real colours in dark mode.
+                      KeepColors(
+                        child: Container(
+                          height: 62,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            gradient: LinearGradient(begin: Alignment.centerLeft, end: Alignment.centerRight, stops: const [0.5, 0.5], colors: preview),
+                            border: Border.all(color: const Color(0xFFCBD5E1)),
+                          ),
+                          alignment: Alignment.center,
+                          child: Container(
+                            width: 30,
+                            height: 30,
+                            decoration: const BoxDecoration(color: Color(0xFF16A34A), shape: BoxShape.circle),
+                            child: Icon(icon, size: 17, color: Colors.white),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      Text(label, style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w800, color: Color(0xFF0F172A))),
+                      const SizedBox(height: 2),
+                      Text(hint, textAlign: TextAlign.center, style: const TextStyle(fontSize: 10.5, color: Color(0xFF64748B))),
+                      const SizedBox(height: 8),
+                      Icon(
+                        selected ? Icons.check_circle_rounded : Icons.circle_outlined,
+                        size: 20,
+                        color: selected ? const Color(0xFF16A34A) : const Color(0xFFCBD5E1),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            );
+          }
+
+          return SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(18, 10, 18, 18),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Center(
+                    child: Container(
+                      width: 40,
+                      height: 4,
+                      decoration: BoxDecoration(color: const Color(0xFFE2E8F0), borderRadius: BorderRadius.circular(4)),
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  const Text('Appearance', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800, color: Color(0xFF0F172A))),
+                  const SizedBox(height: 2),
+                  const Text('Choose how Quiz Lab looks on this phone.', style: TextStyle(fontSize: 13, color: Color(0xFF64748B))),
+                  const SizedBox(height: 16),
+                  Row(
+                    children: [
+                      option(ThemeMode.system, 'System', 'Follows your phone', Icons.phone_android_rounded, const [Color(0xFFF8FAFC), Color(0xFF0E131E)]),
+                      const SizedBox(width: 8),
+                      option(ThemeMode.light, 'Light', 'Bright and clear', Icons.light_mode_rounded, const [Color(0xFFF8FAFC), Color(0xFFF8FAFC)]),
+                      const SizedBox(width: 8),
+                      option(ThemeMode.dark, 'Dark', 'Easy at night', Icons.dark_mode_rounded, const [Color(0xFF0E131E), Color(0xFF0E131E)]),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          );
+        },
       ),
     );
-  }
-
-  Widget _themeTile(String theme, String label) {
-    final isSelected = _selectedTheme == theme;
-    return Material(type: MaterialType.transparency, child: ListTile(
-      dense: true,
-      title: Text(label, style: TextStyle(fontWeight: isSelected ? FontWeight.bold : FontWeight.normal, fontSize: 13)),
-      trailing: isSelected ? const Icon(Icons.check_circle_rounded, color: Color(0xFF16A34A), size: 20) : null,
-      onTap: () {
-        AppHaptics.selection();
-        setState(() => _selectedTheme = theme);
-        Navigator.pop(context);
-      },
-    ));
   }
 
   /// Edit profile: change the display name and pick one of the ready-made avatars.
@@ -3711,39 +3634,23 @@ In full compliance with Google Play Store User Data policies, you can delete you
   void _openDiscussions() {
     AppHaptics.light();
     Navigator.of(context).push(
-      MaterialPageRoute<void>(
-        builder: (_) => Scaffold(
-          backgroundColor: const Color(0xFFF8FAFC),
-          appBar: AppBar(
-            title: const Text('Discussions', style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold)),
-            backgroundColor: Colors.white,
-            foregroundColor: const Color(0xFF0F172A),
-            surfaceTintColor: Colors.white,
-            elevation: 0,
-          ),
-          body: SafeArea(child: _SupportTab(discussionService: widget.discussionService)),
-        ),
-      ),
+      MaterialPageRoute<void>(builder: (_) => DiscussionsScreen(discussionService: widget.discussionService)),
     );
   }
 
-  Future<void> _openOnWebsite(String path) async {
+  /// Opens a page of the website inside the app, signed in with this session.
+  void _openInApp(String path, String title) {
     AppHaptics.light();
-    final messenger = ScaffoldMessenger.of(context);
-    var opened = false;
-    try {
-      opened = await launchUrl(
-        Uri.parse('https://quiz.genziitian.in$path'),
-        mode: LaunchMode.externalApplication,
-      );
-    } catch (_) {
-      opened = false;
-    }
-    if (!opened) {
-      messenger.showSnackBar(
-        SnackBar(content: Text('Could not open quiz.genziitian.in$path')),
-      );
-    }
+    Navigator.of(context).push(
+      MaterialPageRoute<void>(
+        builder: (_) => WebPageScreen(
+          path: path,
+          title: title,
+          apiClient: widget.discussionService.client,
+          user: widget.user,
+        ),
+      ),
+    );
   }
 
   Widget _exploreTile({
@@ -3777,65 +3684,13 @@ In full compliance with Google Play Store User Data policies, you can delete you
     ));
   }
 
-  void _showHelpSupportDialog() {
+  void _openFaqs() {
     AppHaptics.light();
-    showDialog(
-      context: context,
-      builder: (ctx) => AlertDialog(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-        title: Row(
-          children: const [
-            Icon(Icons.help_outline_rounded, color: Color(0xFF16A34A), size: 22),
-            SizedBox(width: 8),
-            Text('Help & Support', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
-          ],
-        ),
-        content: SingleChildScrollView(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
-              Text('SUPPORT CHANNELS', style: TextStyle(fontSize: 10, fontWeight: FontWeight.w700, color: Color(0xFF64748B), letterSpacing: 0.5)),
-              SizedBox(height: 8),
-              Material(type: MaterialType.transparency, child: ListTile(
-                dense: true,
-                contentPadding: EdgeInsets.zero,
-                leading: Icon(Icons.email_outlined, color: Color(0xFF16A34A), size: 20),
-                title: Text('Email Support', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600)),
-                subtitle: Text('support@genziitian.in', style: TextStyle(fontSize: 12, color: Color(0xFF64748B))),
-              )),
-              Material(type: MaterialType.transparency, child: ListTile(
-                dense: true,
-                contentPadding: EdgeInsets.zero,
-                leading: Icon(Icons.chat_bubble_outline_rounded, color: Color(0xFF16A34A), size: 20),
-                title: Text('WhatsApp Helpdesk', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600)),
-                subtitle: Text('+91 98765 43210 (10 AM - 8 PM IST)', style: TextStyle(fontSize: 12, color: Color(0xFF64748B))),
-              )),
-              Divider(height: 20),
-              Text('FREQUENTLY ASKED QUESTIONS', style: TextStyle(fontSize: 10, fontWeight: FontWeight.w700, color: Color(0xFF64748B), letterSpacing: 0.5)),
-              SizedBox(height: 8),
-              Text('Q: How do I access claimed papers?', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Color(0xFF0F172A))),
-              SizedBox(height: 2),
-              Text('A: Tap the Quizzes tab and select the "My Papers" filter chip.', style: TextStyle(fontSize: 12, color: Color(0xFF64748B))),
-              SizedBox(height: 8),
-              Text('Q: How does Google sign-in work?', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Color(0xFF0F172A))),
-              SizedBox(height: 2),
-              Text('A: Sign in with your registered student account for instant Sanctum bearer access.', style: TextStyle(fontSize: 12, color: Color(0xFF64748B))),
-              SizedBox(height: 8),
-              Text('Q: Can I retake mock tests?', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Color(0xFF0F172A))),
-              SizedBox(height: 2),
-              Text('A: Yes, practice mock tests support unlimited retakes with detailed auto-scoring analytics.', style: TextStyle(fontSize: 12, color: Color(0xFF64748B))),
-            ],
-          ),
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(ctx),
-            child: const Text('Close', style: TextStyle(color: Color(0xFF16A34A), fontWeight: FontWeight.bold)),
-          ),
-        ],
-      ),
-    );
+    Navigator.of(context).push(MaterialPageRoute<void>(builder: (_) => const FaqScreen()));
+  }
+
+  void _showHelpSupportDialog() {
+    showHelpSheet(context, onOpenFaq: _openFaqs);
   }
 
   void _showLegalSheet(String title, String content) {
@@ -3871,6 +3726,24 @@ In full compliance with Google Play Store User Data policies, you can delete you
                 content,
                 style: const TextStyle(fontSize: 13, color: Color(0xFF475569), height: 1.6),
               ),
+              if (title == 'Refund & Cancellation') ...[
+                const SizedBox(height: 18),
+                Row(
+                  children: [
+                    Expanded(child: OutlinedButton.icon(
+                      onPressed: () => callSupport(ctx),
+                      icon: const Icon(Icons.call_outlined),
+                      label: const Text('Call support'),
+                    )),
+                    const SizedBox(width: 10),
+                    Expanded(child: OutlinedButton.icon(
+                      onPressed: () => emailSupport(ctx),
+                      icon: const Icon(Icons.email_outlined),
+                      label: const Text('Email support'),
+                    )),
+                  ],
+                ),
+              ],
             ],
           ),
         ),
@@ -3880,49 +3753,118 @@ In full compliance with Google Play Store User Data policies, you can delete you
 
   void _showDeleteAccountDialog() {
     AppHaptics.heavy();
-    showDialog(
+    String? selectedReason;
+    bool sending = false;
+    final detailsController = TextEditingController();
+    showDialog<bool>(
       context: context,
-      builder: (ctx) => AlertDialog(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-        title: Row(
-          children: const [
-            Icon(Icons.warning_amber_rounded, color: Color(0xFFDC2626), size: 24),
-            SizedBox(width: 8),
-            Text('Delete Account?', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+      builder: (ctx) => StatefulBuilder(
+        builder: (ctx, setDialogState) => AlertDialog(
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          title: const Row(
+            children: [
+              Icon(Icons.warning_amber_rounded, color: Color(0xFFDC2626), size: 24),
+              SizedBox(width: 8),
+              Flexible(child: Text('Request Account Deletion', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16))),
+            ],
+          ),
+          content: SizedBox(
+            width: 420,
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    'Choose a reason and send your request. Our manager will review it before your account and its data are deleted.',
+                    style: TextStyle(fontSize: 13, color: Color(0xFF475569), height: 1.4),
+                  ),
+                  const SizedBox(height: 16),
+                  Text('Name: ${widget.user?.name ?? '—'}', style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w600)),
+                  const SizedBox(height: 4),
+                  Text('Email: ${widget.user?.email ?? '—'}', style: const TextStyle(fontSize: 13, color: Color(0xFF475569))),
+                  const SizedBox(height: 16),
+                  DropdownButtonFormField<String>(
+                    key: ValueKey(selectedReason),
+                    initialValue: selectedReason,
+                    decoration: const InputDecoration(labelText: 'Reason for leaving', border: OutlineInputBorder()),
+                    items: const [
+                      DropdownMenuItem(value: 'no_longer_needed', child: Text('I no longer need the account')),
+                      DropdownMenuItem(value: 'privacy_concerns', child: Text('Privacy concerns')),
+                      DropdownMenuItem(value: 'another_account', child: Text('I am using another account')),
+                      DropdownMenuItem(value: 'app_issue', child: Text('I had an issue with the app')),
+                      DropdownMenuItem(value: 'other', child: Text('Other')),
+                    ],
+                    onChanged: sending ? null : (value) => setDialogState(() => selectedReason = value),
+                  ),
+                  const SizedBox(height: 12),
+                  TextField(
+                    controller: detailsController,
+                    enabled: !sending,
+                    maxLength: 1200,
+                    maxLines: 3,
+                    decoration: const InputDecoration(
+                      labelText: 'Anything else you want us to know (optional)',
+                      border: OutlineInputBorder(),
+                    ),
+                  ),
+                  const Text(
+                    'Your name, email, account ID, reason, and any note above will be emailed to admin@genziitian.org and shown in the web manager dashboard.',
+                    style: TextStyle(fontSize: 11, color: Color(0xFF64748B), height: 1.4),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: sending ? null : () => Navigator.pop(ctx, false),
+              child: const Text('Cancel', style: TextStyle(color: Color(0xFF64748B))),
+            ),
+            ElevatedButton(
+              onPressed: sending || selectedReason == null
+                  ? null
+                  : () async {
+                      AppHaptics.heavy();
+                      setDialogState(() => sending = true);
+                      final submitted = await widget.authState.requestAccountDeletion(
+                        reason: selectedReason!,
+                        details: detailsController.text,
+                      );
+                      if (!ctx.mounted) return;
+                      if (submitted) {
+                        Navigator.pop(ctx, true);
+                      } else {
+                        setDialogState(() => sending = false);
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text('Could not send your request. Please try again.'), backgroundColor: Colors.red),
+                        );
+                      }
+                    },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color(0xFFDC2626),
+                foregroundColor: Colors.white,
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+              ),
+              child: Text(sending ? 'Sending…' : 'Send Deletion Request'),
+            ),
           ],
         ),
-        content: const Text(
-          'Are you sure you want to permanently delete your QUIZ LAB account?\n\n'
-          'All your test attempts, scores, XP, purchased papers, and personal data will be irreversibly deleted from our servers.\n\n'
-          'This action complies with Google Play Store User Data Deletion requirements.',
-          style: TextStyle(fontSize: 13, color: Color(0xFF475569), height: 1.4),
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(ctx),
-            child: const Text('Cancel', style: TextStyle(color: Color(0xFF64748B))),
-          ),
-          ElevatedButton(
-            onPressed: () async {
-              AppHaptics.heavy();
-              Navigator.pop(ctx);
-              final deleted = await widget.authState.deleteAccount();
-              if (!deleted && mounted) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Failed to delete account. Please try again.'), backgroundColor: Colors.red),
-                );
-              }
-            },
-            style: ElevatedButton.styleFrom(
-              backgroundColor: const Color(0xFFDC2626),
-              foregroundColor: Colors.white,
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-            ),
-            child: const Text('Permanently Delete'),
-          ),
-        ],
       ),
-    );
+    ).then((submitted) {
+      detailsController.dispose();
+      if (submitted != true || !mounted) return;
+      showDialog<void>(
+        context: context,
+        builder: (doneContext) => AlertDialog(
+          title: const Text('Request sent'),
+          content: const Text('Your deletion request was sent to our manager for review. Your account is still active until the request is processed.'),
+          actions: [
+            TextButton(onPressed: () => Navigator.pop(doneContext), child: const Text('Done')),
+          ],
+        ),
+      );
+    });
   }
 
   @override
@@ -3995,6 +3937,10 @@ In full compliance with Google Play Store User Data policies, you can delete you
             ),
           ),
           ),
+          const SizedBox(height: 16),
+
+          // Level, badges and stats (as on the website's profile page)
+          ProgressSection(apiClient: widget.discussionService.client),
           const SizedBox(height: 20),
 
           // Everything the website has, one tap away
@@ -4009,17 +3955,6 @@ In full compliance with Google Play Store User Data policies, you can delete you
             child: Column(
               children: [
                 _exploreTile(
-                  icon: Icons.bolt_rounded,
-                  color: const Color(0xFF16A34A),
-                  title: 'Practice',
-                  subtitle: 'Assignments, quizzes, end term and mock tests',
-                  onTap: () {
-                    AppHaptics.light();
-                    widget.onNavigateToPractice();
-                  },
-                ),
-                const Divider(height: 1, color: Color(0xFFF1F5F9)),
-                _exploreTile(
                   icon: Icons.forum_outlined,
                   color: const Color(0xFF0284C7),
                   title: 'Discussions',
@@ -4028,31 +3963,12 @@ In full compliance with Google Play Store User Data policies, you can delete you
                 ),
                 const Divider(height: 1, color: Color(0xFFF1F5F9)),
                 _exploreTile(
-                  icon: Icons.emoji_events_outlined,
-                  color: const Color(0xFFD97706),
-                  title: 'Leaderboard',
-                  subtitle: 'See where you rank by XP',
-                  onTap: () {
-                    AppHaptics.light();
-                    widget.onNavigateToRanks();
-                  },
-                ),
-                const Divider(height: 1, color: Color(0xFFF1F5F9)),
-                _exploreTile(
                   icon: Icons.play_circle_outline_rounded,
                   color: const Color(0xFF7C3AED),
                   title: 'Video Solutions',
                   badge: 'PRO',
-                  subtitle: 'Opens on quiz.genziitian.in',
-                  onTap: () => _openOnWebsite('/video-solutions'),
-                ),
-                const Divider(height: 1, color: Color(0xFFF1F5F9)),
-                _exploreTile(
-                  icon: Icons.desktop_windows_outlined,
-                  color: const Color(0xFF475569),
-                  title: 'Online Exams',
-                  subtitle: 'Proctored exams run on a desktop browser',
-                  onTap: () => _openOnWebsite('/exams'),
+                  subtitle: 'Step-by-step video answers',
+                  onTap: () => _openInApp('/video-solutions', 'Video Solutions'),
                 ),
               ],
             ),
@@ -4071,22 +3987,18 @@ In full compliance with Google Play Store User Data policies, you can delete you
             child: Column(
               children: [
                 Material(type: MaterialType.transparency, child: ListTile(
-                  leading: const Icon(Icons.menu_book_rounded, color: Color(0xFF16A34A), size: 20),
-                  title: const Text('My Purchased & Claimed Papers', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600)),
-                  trailing: const Icon(Icons.arrow_forward_ios_rounded, size: 14, color: Color(0xFF94A3B8)),
-                  onTap: () {
-                    AppHaptics.light();
-                    widget.onNavigateToMyPapers();
-                  },
-                )),
-                const Divider(height: 1, color: Color(0xFFF1F5F9)),
-                Material(type: MaterialType.transparency, child: ListTile(
                   leading: const Icon(Icons.palette_outlined, color: Color(0xFF64748B), size: 20),
                   title: const Text('Theme / Appearance', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600)),
                   trailing: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Text(_selectedTheme, style: const TextStyle(fontSize: 12, color: Color(0xFF94A3B8), fontWeight: FontWeight.bold)),
+                      ValueListenableBuilder<ThemeMode>(
+                        valueListenable: appThemeMode,
+                        builder: (context, mode, _) => Text(
+                          _themeLabel(mode),
+                          style: const TextStyle(fontSize: 12, color: Color(0xFF94A3B8), fontWeight: FontWeight.bold),
+                        ),
+                      ),
                       const SizedBox(width: 6),
                       const Icon(Icons.arrow_forward_ios_rounded, size: 12, color: Color(0xFF94A3B8)),
                     ],
@@ -4099,6 +4011,14 @@ In full compliance with Google Play Store User Data policies, you can delete you
                   title: const Text('Help & Support Desk', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600)),
                   trailing: const Icon(Icons.arrow_forward_ios_rounded, size: 14, color: Color(0xFF94A3B8)),
                   onTap: _showHelpSupportDialog,
+                )),
+                const Divider(height: 1, color: Color(0xFFF1F5F9)),
+                Material(type: MaterialType.transparency, child: ListTile(
+                  leading: const Icon(Icons.quiz_outlined, color: Color(0xFF7C3AED), size: 20),
+                  title: const Text('FAQs', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600)),
+                  subtitle: const Text('Quick answers to common questions', style: TextStyle(fontSize: 11, color: Color(0xFF94A3B8))),
+                  trailing: const Icon(Icons.arrow_forward_ios_rounded, size: 14, color: Color(0xFF94A3B8)),
+                  onTap: _openFaqs,
                 )),
               ],
             ),
@@ -4120,14 +4040,21 @@ In full compliance with Google Play Store User Data policies, you can delete you
                   leading: const Icon(Icons.description_outlined, color: Color(0xFF64748B), size: 20),
                   title: const Text('Terms & Conditions', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600)),
                   trailing: const Icon(Icons.arrow_forward_ios_rounded, size: 14, color: Color(0xFF94A3B8)),
-                  onTap: () => _showLegalSheet('Terms & Conditions', _termsContent),
+                  onTap: () => _showLegalSheet('Terms & Conditions', LegalDocuments.terms),
+                )),
+                const Divider(height: 1, color: Color(0xFFF1F5F9)),
+                Material(type: MaterialType.transparency, child: ListTile(
+                  leading: const Icon(Icons.receipt_long_outlined, color: Color(0xFF64748B), size: 20),
+                  title: const Text('Refund & Cancellation', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600)),
+                  trailing: const Icon(Icons.arrow_forward_ios_rounded, size: 14, color: Color(0xFF94A3B8)),
+                  onTap: () => _showLegalSheet('Refund & Cancellation', LegalDocuments.refunds),
                 )),
                 const Divider(height: 1, color: Color(0xFFF1F5F9)),
                 Material(type: MaterialType.transparency, child: ListTile(
                   leading: const Icon(Icons.privacy_tip_outlined, color: Color(0xFF64748B), size: 20),
                   title: const Text('Privacy Policy', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600)),
                   trailing: const Icon(Icons.arrow_forward_ios_rounded, size: 14, color: Color(0xFF94A3B8)),
-                  onTap: () => _showLegalSheet('Privacy Policy', _privacyContent),
+                  onTap: () => _showLegalSheet('Privacy Policy', LegalDocuments.privacy),
                 )),
                 const Divider(height: 1, color: Color(0xFFF1F5F9)),
                 Material(type: MaterialType.transparency, child: ListTile(
@@ -4141,61 +4068,13 @@ In full compliance with Google Play Store User Data policies, you can delete you
           ),
           const SizedBox(height: 20),
 
-          // Leaderboard Preview
-          const Text('GLOBAL LEADERBOARD', style: TextStyle(fontSize: 11, fontWeight: FontWeight.w700, letterSpacing: 1, color: Color(0xFF64748B))),
-          const SizedBox(height: 8),
-          FutureBuilder<LeaderboardData>(
-            future: _leaderboardFuture,
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return AppShimmerCard.list(count: 3);
-              }
-              final lb = snapshot.data?.leaderboard ?? [];
-              if (lb.isEmpty) {
-                return Container(
-                  padding: const EdgeInsets.all(16),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(14),
-                    border: Border.all(color: const Color(0xFFE2E8F0)),
-                  ),
-                  child: const Center(child: Text('No leaderboard data yet.', style: TextStyle(fontSize: 12, color: Color(0xFF94A3B8)))),
-                );
-              }
-              return Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(14),
-                  border: Border.all(color: const Color(0xFFE2E8F0)),
-                ),
-                child: ListView.separated(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemCount: lb.take(3).length,
-                  separatorBuilder: (_, __) => const Divider(height: 1, color: Color(0xFFF1F5F9)),
-                  itemBuilder: (context, i) {
-                    final row = lb[i];
-                    return Material(type: MaterialType.transparency, child: ListTile(
-                      dense: true,
-                      leading: Text('#${row.rank}', style: const TextStyle(fontWeight: FontWeight.bold, color: Color(0xFF0F172A))),
-                      title: Text(row.name, style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 13)),
-                      subtitle: Text('Level ${row.level}', style: const TextStyle(fontSize: 11, color: Color(0xFF64748B))),
-                      trailing: Text('${row.xp} XP', style: const TextStyle(color: Color(0xFF16A34A), fontWeight: FontWeight.bold, fontSize: 12)),
-                    ));
-                  },
-                ),
-              );
-            },
-          ),
-          const SizedBox(height: 24),
-
           // Logout
           SizedBox(
             height: 48,
             child: OutlinedButton.icon(
               onPressed: () {
                 AppHaptics.medium();
-                widget.authState.logout();
+                confirmSignOut(context, widget.authState);
               },
               icon: const Icon(Icons.logout_rounded, color: Color(0xFFDC2626)),
               label: const Text('Sign Out', style: TextStyle(color: Color(0xFFDC2626), fontWeight: FontWeight.bold)),

@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\JsonVideoImportController;
 use App\Http\Controllers\Admin\PdfQuizImportController;
 use App\Http\Controllers\AttemptController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AccountDeletionRequestController;
 use App\Http\Controllers\CodePlaygroundController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DashboardController;
@@ -55,6 +56,7 @@ Route::post('/storefront/razorpay/webhook', [StorefrontController::class, 'webho
 Route::middleware(['auth:sanctum', 'track.seen'])->group(function () {
     Route::post('/auth/logout', [AuthController::class, 'logout']);
     Route::delete('/auth/account', [AuthController::class, 'deleteAccount']);
+    Route::post('/auth/account-deletion-requests', [AccountDeletionRequestController::class, 'store'])->middleware('throttle:5,60');
     Route::get('/auth/me', [AuthController::class, 'me']);
     Route::post('/auth/password/change', [AuthController::class, 'changePassword'])->middleware('throttle:5,10');
 
@@ -189,6 +191,8 @@ Route::middleware(['auth:sanctum', 'is_admin', 'track.seen'])->prefix('admin')->
 
 // Dedicated manager sales workspace. All content and purchase records are manager-only.
 Route::middleware(['auth:sanctum', 'is_manager', 'track.seen'])->prefix('manager')->group(function () {
+    Route::get('/account-deletion-requests', [AccountDeletionRequestController::class, 'index']);
+    Route::patch('/account-deletion-requests/{id}', [AccountDeletionRequestController::class, 'update'])->whereNumber('id');
     Route::get('/courses', [AdminCourseController::class, 'index']);
     Route::post('/courses', [AdminCourseController::class, 'store']);
     Route::put('/courses/{id}', [AdminCourseController::class, 'update'])->whereNumber('id');

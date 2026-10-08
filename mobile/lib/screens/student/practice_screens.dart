@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 import '../../api/api.dart';
+import '../../state/theme_state.dart';
 import '../../widgets/app_ux_components.dart';
 
 const _green = Color(0xFF16A34A);
@@ -1003,7 +1004,8 @@ html,body{background:#f1f5f9!important}
     try {
       await _web.runJavaScript(
         'try{localStorage.setItem("lab_token",${jsonEncode(token)});'
-        'localStorage.setItem("lab_user",${jsonEncode(userJson)});}catch(e){}',
+        'localStorage.setItem("lab_user",${jsonEncode(userJson)});'
+        'localStorage.setItem("ql_theme",${jsonEncode(isAppDark(context) ? 'dark' : 'light')});}catch(e){}',
       );
     } catch (_) {
       // If storage is unavailable the paper page shows its own sign-in prompt.
@@ -1096,7 +1098,7 @@ html,body{background:#f1f5f9!important}
             ? AppErrorCard(title: 'Unable to Open Paper', message: _error!, onRetry: _start)
             : Stack(
                 children: [
-                  WebViewWidget(controller: _web),
+                  KeepColors(child: WebViewWidget(controller: _web)),
                   if (!_ready)
                     const ColoredBox(
                       color: Colors.white,
@@ -1109,6 +1111,169 @@ html,body{background:#f1f5f9!important}
                     ),
                 ],
               ),
+      ),
+    );
+  }
+}
+
+// -----------------------------------------------------------------------------
+// WEB PAGE: any page of the website shown inside the app, signed in with this
+// app's session (used for Video Solutions). The site's own top bar and bottom
+// bar are hidden, because the app provides the title bar and navigation.
+// -----------------------------------------------------------------------------
+class WebPageScreen extends StatefulWidget {
+  final String path;
+  final String title;
+  final ApiClient apiClient;
+  final UserModel? user;
+
+  const WebPageScreen({super.key, required this.path, required this.title, required this.apiClient, this.user});
+
+  @override
+  State<WebPageScreen> createState() => _WebPageScreenState();
+}
+
+class _WebPageScreenState extends State<WebPageScreen> {
+  static const String _chromeCss = '''
+header.lg\\:hidden{display:none!important}
+div.fixed.inset-x-0.bottom-0.z-40.lg\\:hidden{display:none!important}
+''';
+
+  late final WebViewController _web;
+  bool _signedIn = false;
+  bool _ready = false;
+  String? _error;
+
+  @override
+  void initState() {
+    super.initState();
+    _web = WebViewController()
+      ..setJavaScriptMode(JavaScriptMode.unrestricted)
+      ..setBackgroundColor(Colors.white)
+      ..setNavigationDelegate(
+        NavigationDelegate(
+          onPageStarted: (url) {
+            if (_signedIn) _hideSiteBars();
+          },
+          onPageFinished: _onPageFinished,
+          onWebResourceError: (error) {
+            if (error.isForMainFrame == true && mounted) {
+              setState(() => _error = 'Could not open this page. Check your connection and try again.');
+            }
+          },
+        ),
+      );
+    _start();
+  }
+
+  void _start() {
+    setState(() {
+      _signedIn = false;
+      _ready = false;
+      _error = null;
+    });
+    _web.loadRequest(Uri.parse('$_webOrigin/terms.html'));
+  }
+
+  Future<void> _hideSiteBars() async {
+    try {
+      await _web.runJavaScript(
+        '(function f(){var d=document;if(!d.head){setTimeout(f,30);return;}'
+        'if(d.getElementById("ql-app-bars"))return;'
+        'var s=d.createElement("style");s.id="ql-app-bars";s.textContent=${jsonEncode(_chromeCss)};d.head.appendChild(s);})();',
+      );
+    } catch (_) {
+      // Cosmetic only.
+    }
+  }
+
+  Future<void> _onPageFinished(String url) async {
+    if (!mounted) return;
+    if (_signedIn) {
+      await _hideSiteBars();
+      if (mounted) setState(() => _ready = true);
+      return;
+    }
+    final token = await widget.apiClient.getAuthToken();
+    if (!mounted) return;
+    if (token == null || token.isEmpty) {
+      setState(() => _error = 'Your session has ended. Please sign in again.');
+      return;
+    }
+    final user = widget.user;
+    final userJson = jsonEncode({
+      'id': user?.id,
+      'name': user?.name,
+      'email': user?.email,
+      'role': user?.role,
+      'is_admin': user?.isAdmin ?? false,
+      'avatar': user?.avatar,
+    });
+    try {
+      await _web.runJavaScript(
+        'try{localStorage.setItem("lab_token",${jsonEncode(token)});'
+        'localStorage.setItem("lab_user",${jsonEncode(userJson)});'
+        'localStorage.setItem("ql_theme",${jsonEncode(isAppDark(context) ? 'dark' : 'light')});}catch(e){}',
+      );
+    } catch (_) {
+      // The page shows its own sign-in if storage is unavailable.
+    }
+    if (!mounted) return;
+    _signedIn = true;
+    await _web.loadRequest(Uri.parse('$_webOrigin${widget.path}'));
+  }
+
+  Future<void> _onBack() async {
+    // Step back inside the page first (for example out of a video), then leave.
+    try {
+      if (_ready && await _web.canGoBack()) {
+        final url = await _web.currentUrl();
+        if (url != null && Uri.tryParse(url)?.path != widget.path) {
+          await _web.goBack();
+          return;
+        }
+      }
+    } catch (_) {
+      // Fall through to leaving the screen.
+    }
+    if (mounted) Navigator.of(context).pop();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return PopScope(
+      canPop: false,
+      onPopInvokedWithResult: (didPop, _) {
+        if (!didPop) _onBack();
+      },
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          surfaceTintColor: Colors.white,
+          foregroundColor: _ink,
+          elevation: 0,
+          leading: IconButton(icon: const Icon(Icons.arrow_back_rounded), onPressed: _onBack),
+          titleSpacing: 0,
+          title: Text(widget.title, style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w800, color: _ink)),
+        ),
+        body: SafeArea(
+          top: false,
+          child: _error != null
+              ? AppErrorCard(title: 'Unable to Open Page', message: _error!, onRetry: _start)
+              : Stack(
+                  children: [
+                    KeepColors(child: WebViewWidget(controller: _web)),
+                    if (!_ready)
+                      const ColoredBox(
+                        color: Colors.white,
+                        child: Center(
+                          child: CircularProgressIndicator(strokeWidth: 2.5, valueColor: AlwaysStoppedAnimation<Color>(_green)),
+                        ),
+                      ),
+                  ],
+                ),
+        ),
       ),
     );
   }

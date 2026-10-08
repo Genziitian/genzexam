@@ -4,8 +4,6 @@ import '../screens/splash/splash_screen.dart';
 import '../screens/onboarding/onboarding_screen.dart';
 import '../screens/auth/login_screen.dart';
 import '../screens/student/student_main_shell.dart';
-import '../screens/admin/admin_console_screen.dart';
-import '../screens/manager/manager_workspace_screen.dart';
 
 /// Production-grade Role-Based Route Gate for Quiz Lab Mobile.
 ///
@@ -89,26 +87,9 @@ class _AppRouterState extends State<AppRouter> {
     );
   }
 
+  /// The app has no manager or admin screens: whoever signs in, including a
+  /// manager or an admin, gets the student app.
   Widget _routeByRole(AuthState state) {
-    final role = state.role;
-
-    // Manager (Rank 2)
-    if (role == 'manager') {
-      if (state.isPreviewingStudentView) {
-        return StudentMainShell(
-          authState: state,
-          isManagerPreview: true,
-        );
-      }
-      return ManagerWorkspaceScreen(authState: state);
-    }
-
-    // Admin (Rank 1)
-    if (role == 'admin') {
-      return AdminConsoleScreen(authState: state);
-    }
-
-    // Student (Rank 0)
     return StudentMainShell(
       authState: state,
       isManagerPreview: false,

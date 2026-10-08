@@ -125,7 +125,7 @@ class AuthState extends ChangeNotifier {
   /// OAuth "Web application" client id of the Google Cloud project (the same one the
   /// backend uses). The Android client (package + SHA-1) lives in that same project.
   static const String _googleServerClientId =
-      '888290803524-ie3phmagns5phse69vodlj38hj1i76qs.apps.googleusercontent.com';
+      '990282572765-bn1ls79tuhpa589eiici5r9mr6c98c8h.apps.googleusercontent.com';
 
   bool _googleReady = false;
 
@@ -238,18 +238,12 @@ class AuthState extends ChangeNotifier {
     }
   }
 
-  /// Permanently deletes account and zeroes session data (Google Play requirement)
-  Future<bool> deleteAccount() async {
-    _status = AuthStatus.loading;
-    notifyListeners();
+  /// Sends an account deletion request without deleting the signed-in account.
+  Future<bool> requestAccountDeletion({required String reason, String? details}) async {
     try {
-      await _authService.deleteAccount();
-      _zeroizeSession();
+      await _authService.requestAccountDeletion(reason: reason, details: details);
       return true;
-    } catch (e) {
-      _status = AuthStatus.authenticated;
-      _errorMessage = 'Failed to delete account. Please try again.';
-      notifyListeners();
+    } catch (_) {
       return false;
     }
   }

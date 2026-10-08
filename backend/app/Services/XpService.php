@@ -23,15 +23,27 @@ class XpService
     // Badge thresholds — { level => [slug, label, description] }
     public const BADGES = [
         1  => ['newcomer',    'Newcomer',     'Joined the platform'],
+        2  => ['spark',       'Spark',        'Reached Level 2'],
+        3  => ['explorer',    'Explorer',     'Reached Level 3'],
+        4  => ['challenger',  'Challenger',   'Reached Level 4'],
         5  => ['apprentice',  'Apprentice',   'Reached Level 5'],
+        7  => ['trailblazer', 'Trailblazer',  'Reached Level 7'],
         10 => ['scholar',     'Scholar',      'Reached Level 10'],
+        12 => ['strategist',  'Strategist',   'Reached Level 12'],
         15 => ['adept',       'Adept',        'Reached Level 15'],
+        18 => ['specialist',  'Specialist',   'Reached Level 18'],
         20 => ['achiever',    'Achiever',     'Reached Level 20'],
+        22 => ['prodigy',     'Prodigy',      'Reached Level 22'],
         25 => ['veteran',     'Veteran',      'Reached Level 25'],
+        28 => ['virtuoso',    'Virtuoso',     'Reached Level 28'],
         30 => ['expert',      'Expert',       'Reached Level 30'],
+        33 => ['sage',        'Sage',         'Reached Level 33'],
         35 => ['master',      'Master',       'Reached Level 35'],
+        38 => ['titan',       'Titan',        'Reached Level 38'],
         40 => ['grandmaster', 'Grandmaster',  'Reached Level 40'],
+        42 => ['mythic',      'Mythic',       'Reached Level 42'],
         45 => ['legend',      'Legend',       'Reached Level 45'],
+        48 => ['immortal',    'Immortal',     'Reached Level 48'],
         50 => ['iit-champion','IIT Champion', 'Maxed out — Level 50'],
     ];
 

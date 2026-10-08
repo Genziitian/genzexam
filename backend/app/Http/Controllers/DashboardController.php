@@ -6,6 +6,7 @@ use App\Models\Attempt;
 use App\Models\Course;
 use App\Models\IDESubmission;
 use App\Models\Quiz;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -24,7 +25,7 @@ class DashboardController extends Controller
             'streak'           => $this->streak($user->id, $now),
             'accuracy'         => $this->accuracyWidget($user->id, $now),
             'hours_this_week'  => $this->hoursWidget($user->id, $now),
-            'rank'             => $this->rankWidget($user->id, $now),
+            'rank'             => $this->rankWidget($user->id),
             'performance'      => $this->performance($user->id, $now),
             'todays_challenge' => $this->todaysChallenge($user->id),
             'active_now'       => $this->activeNow($now),
@@ -180,56 +181,32 @@ class DashboardController extends Controller
         ];
     }
 
-    private function rankWidget(int $userId, Carbon $now): array
+    private function rankWidget(int $userId): array
     {
-        $compute = function ($cutoff) {
-            $query = DB::table('attempts')
-                ->where('is_complete', true)
-                ->whereNotNull('submitted_at')
-                ->whereNotNull('total_marks')
-                ->where('total_marks', '>', 0);
+        // Match /leaderboard: XP descending, then user ID ascending for ties.
+        $rankedUsers = User::query()
+            ->where('is_active', true)
+            ->where('is_admin', false)
+            ->where('xp', '>', 0);
+        $viewer = User::query()->find($userId);
+        $viewerXp = (int) ($viewer?->xp ?? 0);
 
-            if ($cutoff) {
-                $query->where('submitted_at', '<', $cutoff);
-            }
-
-            return $query
-                ->select(
-                    'user_id',
-                    DB::raw('AVG((score / total_marks) * 100) as avg_score'),
-                    DB::raw('COUNT(*) as cnt')
-                )
-                ->groupBy('user_id')
-                ->orderByDesc('avg_score')
-                ->orderByDesc('cnt')
-                ->get();
-        };
-
-        $current  = $compute(null);
-        $previous = $compute($now->copy()->subDays(7));
-
-        $rankOf = function ($rows, $uid) {
-            foreach ($rows as $i => $row) {
-                if ((int) $row->user_id === (int) $uid) {
-                    return $i + 1;
-                }
-            }
-            return null;
-        };
-
-        $currentRank  = $rankOf($current, $userId);
-        $previousRank = $rankOf($previous, $userId);
-
-        $movedUp = null;
-        if ($currentRank !== null && $previousRank !== null) {
-            $movedUp = $previousRank - $currentRank;
+        $currentRank = null;
+        if ($viewerXp > 0) {
+            $ahead = (clone $rankedUsers)->where(function ($query) use ($viewerXp, $userId) {
+                $query->where('xp', '>', $viewerXp)
+                    ->orWhere(function ($tie) use ($viewerXp, $userId) {
+                        $tie->where('xp', $viewerXp)->where('id', '<', $userId);
+                    });
+            })->count();
+            $currentRank = $ahead + 1;
         }
 
         return [
             'current'   => $currentRank,
-            'previous'  => $previousRank,
-            'moved_up'  => $movedUp,
-            'total_ranked' => $current->count(),
+            'previous'  => null,
+            'moved_up'  => null,
+            'total_ranked' => $rankedUsers->count(),
         ];
     }
 

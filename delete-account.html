@@ -146,7 +146,8 @@
     </div>
     <div>
       <a href="/terms.html" style="font-size: 13px; color: var(--brand); text-decoration: none; font-weight: 600; margin-right: 16px;">Terms</a>
-      <a href="/privacy.html" style="font-size: 13px; color: var(--brand); text-decoration: none; font-weight: 600;">Privacy</a>
+      <a href="/privacy.html" style="font-size: 13px; color: var(--brand); text-decoration: none; font-weight: 600; margin-right: 16px;">Privacy</a>
+      <a href="/refund-policy.html" style="font-size: 13px; color: var(--brand); text-decoration: none; font-weight: 600;">Refunds</a>
     </div>
   </div>
 
@@ -154,60 +155,22 @@
     <div class="card">
       <h1>Request Account & Data Deletion</h1>
       <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px;">
-        In compliance with Google Play Store policies, users may request the permanent deletion of their account and all associated personal data without requiring access to the mobile app.
+        To request account and data deletion, sign in to the QUIZ LAB mobile app and open <strong>More → Delete Account & Data</strong>. Choose a reason and submit the request for manager review.
       </p>
 
       <div class="alert-box">
-        <strong>Warning:</strong> Permanent account deletion will completely eradicate:
-        <ul style="margin: 8px 0 0 0; padding-left: 20px;">
-          <li>Your profile and login credentials</li>
-          <li>All quiz attempt records and question responses</li>
-          <li>Your accumulated XP, streak count, and leaderboard ranks</li>
-          <li>Access to any purchased or claimed past paper packages</li>
-        </ul>
+        Your account remains active while the request is reviewed. Once the request is approved and processed, your profile and associated learning records will be removed.
       </div>
 
-      <form id="deletionForm" onsubmit="handleDeletion(event)">
-        <div class="form-group">
-          <label for="email">Registered Student Email Address</label>
-          <input type="email" id="email" required placeholder="student@iitm.ac.in">
-        </div>
-
-        <div class="form-group">
-          <label for="reason">Reason for Deletion (Optional)</label>
-          <textarea id="reason" rows="3" placeholder="Tell us why you are leaving..."></textarea>
-        </div>
-
-        <div class="form-group" style="display: flex; align-items: flex-start; gap: 8px;">
-          <input type="checkbox" id="consent" required style="margin-top: 4px;">
-          <label for="consent" style="font-size: 12.5px; color: var(--text-muted); font-weight: normal; margin-bottom: 0;">
-            I understand that this action is irreversible and all my educational records on QUIZ LAB will be permanently erased.
-          </label>
-        </div>
-
-        <button type="submit" class="btn-delete">Submit Deletion Request</button>
-      </form>
-
-      <div id="confirmationMessage">
-        <h3 style="margin-top: 0; color: #166534;">Deletion Request Received</h3>
-        <p>Your account deletion request for <strong id="submittedEmail"></strong> has been registered. If this account exists, it will be permanently deleted and all personal data wiped within 24 hours.</p>
-        <p style="margin-bottom: 0;">A confirmation email will be dispatched to your registered address.</p>
-      </div>
+      <p style="color: var(--text-muted); font-size: 14px;">
+        If you cannot access the app, email <a href="mailto:admin@genziitian.org?subject=Account%20deletion%20request&amp;body=Please%20help%20me%20request%20deletion%20of%20my%20QUIZ%20LAB%20account.%0ARegistered%20email%3A%20%0AReason%3A%20">admin@genziitian.org</a> from your registered address and include your reason.
+      </p>
     </div>
 
     <div class="footer">
-      <p>&copy; 2026 QUIZ LAB. All rights reserved. · <a href="/terms.html">Terms & Conditions</a> · <a href="/privacy.html">Privacy Policy</a> · Need help? Contact <a href="mailto:support@genziitian.in">support@genziitian.in</a></p>
+      <p>&copy; 2026 QUIZ LAB by GenZ IITian. All rights reserved. · <a href="/terms.html">Terms &amp; Conditions</a> · <a href="/privacy.html">Privacy Policy</a> · <a href="/refund-policy.html">Refund &amp; Cancellation</a> · <a href="tel:+917254926179">Call support</a> · <a href="mailto:admin@genziitian.org">Email support</a></p>
     </div>
   </div>
 
-  <script>
-    function handleDeletion(e) {
-      e.preventDefault();
-      const email = document.getElementById('email').value;
-      document.getElementById('submittedEmail').innerText = email;
-      document.getElementById('deletionForm').style.display = 'none';
-      document.getElementById('confirmationMessage').style.display = 'block';
-    }
-  </script>
 </body>
 </html>
