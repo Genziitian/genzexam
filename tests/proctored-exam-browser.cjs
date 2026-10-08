@@ -98,10 +98,8 @@ const root = path.resolve(__dirname, "..");
     const id = exams.find((e) => e.title === "Browser math & statistics").id;
     const student = await pageFor("student");
     await click(student, "open");
-    assert.equal(
-      await student.locator("[data-action=join]").isDisabled(),
-      true,
-    );
+    assert.equal(await student.locator("[data-action=join]").count(), 0);
+    assert.equal(await student.locator('[data-action="refresh-state"]').count(), 1);
     assert.equal(await student.locator(".ep-question").count(), 0);
     await click(manager, "start");
     await manager.locator(".ep-status.live").first().waitFor();
