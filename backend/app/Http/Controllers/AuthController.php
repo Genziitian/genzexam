@@ -12,6 +12,8 @@ use App\Services\XpService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
@@ -281,17 +283,73 @@ class AuthController extends Controller
         return response()->json(['message' => 'Password changed successfully']);
     }
 
-    public function googleRedirect(): RedirectResponse|\Illuminate\Http\JsonResponse
+    /*
+     * Home-screen apps on iPhone run Google sign-in in a separate browser sheet that has its own
+     * storage, so the app never sees the token. Such an app sends a random handoff id here; the
+     * id travels through Google as the OAuth state, the callback parks the login under it for a
+     * few minutes, and the app collects it once from googleHandoff().
+     */
+    private const HANDOFF_PATTERN = '/^[A-Za-z0-9_-]{32,64}$/';
+    private const HANDOFF_MINUTES = 10;
+
+    private function handoffFromState(string $state): ?string
+    {
+        if (! str_starts_with($state, 'h.')) {
+            return null;
+        }
+        $id = substr($state, 2);
+
+        return preg_match(self::HANDOFF_PATTERN, $id) ? $id : null;
+    }
+
+    private function handoffDonePage(): Response
+    {
+        $html = '<!doctype html><html lang="en"><head><meta charset="utf-8">'
+            .'<meta name="viewport" content="width=device-width,initial-scale=1"><title>Signed in · Quiz LAB</title>'
+            .'<style>html,body{height:100%;margin:0}body{display:grid;place-items:center;background:#f7f6f1;color:#1c1c1a;'
+            .'font:16px/1.5 system-ui,-apple-system,sans-serif;text-align:center;padding:24px;box-sizing:border-box}'
+            .'h1{font-size:22px;margin:0 0 8px}p{margin:0;color:#5f5e58}'
+            .'@media(prefers-color-scheme:dark){body{background:#121411;color:#eceae3}p{color:#a3a199}}</style>'
+            .'</head><body><div><h1>You are signed in</h1>'
+            .'<p>Close this window (tap <b>Done</b> or <b>&times;</b> at the top) to go back to the Quiz LAB app.</p>'
+            .'</div></body></html>';
+
+        return response($html, 200)
+            ->header('Content-Type', 'text/html; charset=utf-8')
+            ->header('Cache-Control', 'no-store');
+    }
+
+    public function googleHandoff(Request $request): JsonResponse
+    {
+        $id = (string) $request->input('handoff', '');
+        if (! preg_match(self::HANDOFF_PATTERN, $id)) {
+            return response()->json(['message' => 'Invalid handoff.'], 422);
+        }
+        $payload = Cache::pull('google_handoff:'.$id);
+        if (! is_array($payload)) {
+            return response()->json(['status' => 'pending'], 404)->header('Cache-Control', 'no-store');
+        }
+
+        return response()->json($payload)->header('Cache-Control', 'no-store');
+    }
+
+    public function googleRedirect(Request $request): RedirectResponse|\Illuminate\Http\JsonResponse
     {
         try {
-            return Socialite::driver('google')->stateless()->redirect();
+            $driver = Socialite::driver('google')->stateless();
+            $handoff = (string) $request->query('handoff', '');
+            if (preg_match(self::HANDOFF_PATTERN, $handoff)) {
+                $driver->with(['state' => 'h.'.$handoff]);
+            }
+
+            return $driver->redirect();
         } catch (Throwable $e) {
             Log::error('Google OAuth redirect failed', ['message' => $e->getMessage()]);
             return response()->json(['message' => 'Google OAuth is not configured correctly.'], 500);
         }
     }
 
-    public function googleCallback(): RedirectResponse
+    public function googleCallback(): RedirectResponse|Response
     {
         try {
             $googleUser = Socialite::driver('google')->stateless()->user();
@@ -334,15 +392,24 @@ class AuthController extends Controller
                 'logged_in_at' => now(),
             ]);
 
-            $encodedToken = urlencode($token);
-            $encodedUser = urlencode(json_encode([
+            $userPayload = [
                 'id' => $user->id,
                 'name' => $user->name,
                 'email' => $user->email,
                 'is_admin' => $user->is_admin,
                 'role' => $user->role,
                 'avatar' => $user->avatar,
-            ]));
+            ];
+
+            $handoff = $this->handoffFromState((string) request()->query('state', ''));
+            if ($handoff !== null) {
+                Cache::put('google_handoff:'.$handoff, ['token' => $token, 'user' => $userPayload], now()->addMinutes(self::HANDOFF_MINUTES));
+
+                return $this->handoffDonePage();
+            }
+
+            $encodedToken = urlencode($token);
+            $encodedUser = urlencode(json_encode($userPayload));
 
             return redirect($frontendUrl.'/auth/callback?token='.$encodedToken.'&user='.$encodedUser);
         } catch (Throwable $e) {

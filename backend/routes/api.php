@@ -37,6 +37,7 @@ Route::post('/auth/password/forgot', [AuthController::class, 'forgotPassword'])-
 Route::post('/auth/password/reset', [AuthController::class, 'resetPassword'])->middleware('throttle:5,10');
 Route::get('/auth/google', [AuthController::class, 'googleRedirect']);
 Route::get('/auth/google/callback', [AuthController::class, 'googleCallback'])->middleware('throttle:10,1');
+Route::post('/auth/google/handoff', [AuthController::class, 'googleHandoff'])->middleware('throttle:60,1');
 
 // Hardened video player page. Reached only via a short-lived signed URL issued by
 // the gated /video-solutions/{id}/play endpoint, and framed by the SPA.
