@@ -15,6 +15,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Laravel\Socialite\Facades\Socialite;
@@ -317,6 +318,96 @@ class AuthController extends Controller
         return response($html, 200)
             ->header('Content-Type', 'text/html; charset=utf-8')
             ->header('Cache-Control', 'no-store');
+    }
+
+    /**
+     * Native Google sign-in for the mobile app. The app shows Google's own account
+     * card, receives an ID token, and posts it here. The token is checked with Google
+     * and must have been issued for this project's OAuth client.
+     */
+    public function googleMobile(Request $request): JsonResponse
+    {
+        $idToken = (string) $request->input('id_token', '');
+        if ($idToken === '' || strlen($idToken) > 4096 || substr_count($idToken, '.') !== 2) {
+            return response()->json(['error' => 'Google sign-in failed. Please try again.'], 422);
+        }
+
+        $clientId = (string) config('services.google.client_id');
+        if ($clientId === '') {
+            Log::error('Google mobile sign-in: GOOGLE_CLIENT_ID is not configured');
+
+            return response()->json(['error' => 'Google sign-in is not available right now.'], 500);
+        }
+
+        try {
+            $check = Http::timeout(10)->acceptJson()->get('https://oauth2.googleapis.com/tokeninfo', ['id_token' => $idToken]);
+        } catch (Throwable $e) {
+            Log::error('Google mobile sign-in: token check unreachable', ['message' => $e->getMessage()]);
+
+            return response()->json(['error' => 'Could not reach Google. Please try again.'], 503);
+        }
+
+        $claims = $check->successful() ? $check->json() : null;
+        $issuer = is_array($claims) ? (string) ($claims['iss'] ?? '') : '';
+        $valid = is_array($claims)
+            && hash_equals($clientId, (string) ($claims['aud'] ?? ''))
+            && in_array($issuer, ['accounts.google.com', 'https://accounts.google.com'], true)
+            && (int) ($claims['exp'] ?? 0) > time()
+            && filter_var($claims['email_verified'] ?? false, FILTER_VALIDATE_BOOLEAN)
+            && ! empty($claims['sub'])
+            && filter_var($claims['email'] ?? '', FILTER_VALIDATE_EMAIL);
+
+        if (! $valid) {
+            return response()->json(['error' => 'Google sign-in could not be verified. Please try again.'], 401);
+        }
+
+        $googleId = (string) $claims['sub'];
+        $email = strtolower((string) $claims['email']);
+        $avatar = isset($claims['picture']) ? (string) $claims['picture'] : null;
+
+        $user = User::where('google_id', $googleId)->orWhere('email', $email)->first();
+
+        if ($user && ! $user->is_active) {
+            return response()->json(['error' => 'Your account has been deactivated.'], 403);
+        }
+
+        if ($user) {
+            if (! $user->google_id) {
+                $user->update(['google_id' => $googleId, 'avatar' => $avatar]);
+            }
+        } else {
+            $user = User::create([
+                'name' => trim((string) ($claims['name'] ?? '')) ?: 'Google User',
+                'email' => $email,
+                'password' => null,
+                'email_verified_at' => now(),
+                'google_id' => $googleId,
+                'avatar' => $avatar,
+                'is_active' => true,
+            ]);
+        }
+
+        $user->tokens()->delete();
+        $token = $user->createToken('auth_token')->plainTextToken;
+
+        LoginLog::create([
+            'user_id'      => $user->id,
+            'user_agent'   => substr((string) $request->userAgent(), 0, 300),
+            'auth_method'  => 'google',
+            'logged_in_at' => now(),
+        ]);
+
+        return response()->json([
+            'token' => $token,
+            'user' => [
+                'id' => $user->id,
+                'name' => $user->name,
+                'email' => $user->email,
+                'is_admin' => $user->is_admin,
+                'role' => $user->role,
+                'avatar' => $user->avatar,
+            ],
+        ])->header('Cache-Control', 'no-store');
     }
 
     public function googleHandoff(Request $request): JsonResponse
