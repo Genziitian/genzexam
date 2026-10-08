@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="ic_launcher_background">#1f3d22</color>
-    <color name="splash_background">#1f3d22</color>
+    <!-- Same deep green the in-app splash starts on, so the hand-over is seamless. -->
+    <color name="splash_background">#07200F</color>
 </resources>

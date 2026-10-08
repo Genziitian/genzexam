@@ -1157,6 +1157,43 @@
     practiceTyping = state;
   }
 
+  /* ---------------------------------------------------------------
+   * Phone top bar: the level chip is gone and the streak pill sits in
+   * its place. The pill is read from the dashboard and remembered, so
+   * the other pages show it too.
+   * ------------------------------------------------------------- */
+  var topStreak = null;
+  function syncPhoneTopBar() {
+    var header = document.querySelector("header.lg\\:hidden");
+    if (!header) return;
+
+    header.querySelectorAll(".rounded-full.tracking-wide").forEach(function (chip) {
+      if (/^LVL\s*\d+$/.test(chip.textContent.trim())) tag(chip, "data-ql-lvl", "");
+    });
+
+    if (/^\/dashboard\/?$/i.test(window.location.pathname)) {
+      document.querySelectorAll("#root div.rounded-full").forEach(function (pill) {
+        if (pill.closest("header") || !/^\d+-day streak$/.test(pill.textContent.trim())) return;
+        tag(pill, "data-ql-streak-src", "");
+        topStreak = { text: pill.textContent.trim(), html: pill.innerHTML };
+      });
+    }
+
+    var slot = header.querySelector(".ql-top-streak");
+    if (!topStreak) return;
+    if (!slot) {
+      var lvl = header.querySelector("[data-ql-lvl]");
+      if (!lvl || !lvl.parentNode) return;
+      slot = document.createElement("span");
+      slot.className = "ql-top-streak";
+      lvl.parentNode.insertBefore(slot, lvl);
+    }
+    if (slot.getAttribute("data-text") !== topStreak.text) {
+      slot.setAttribute("data-text", topStreak.text);
+      slot.innerHTML = topStreak.html;
+    }
+  }
+
   function run() {
     var paper = paperRoomPath(window.location.pathname);
     if (paper) { window.location.replace(paper); return; }
@@ -1165,6 +1202,7 @@
     syncPaperPricingLink();
     removeStudentWeakSpotCard();
     decorateDashboard();
+    syncPhoneTopBar();
     decorateManagerConsole();
     fillMyPapers();
     decoratePracticeCards();

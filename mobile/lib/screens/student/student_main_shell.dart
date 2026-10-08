@@ -93,6 +93,7 @@ class _StudentMainShellState extends State<StudentMainShell> {
                       dashboardService: _dashboardService,
                       user: widget.authState.user,
                       onNavigateToQuizzes: () => setState(() => _currentIndex = 1),
+                      onOpenProfile: () => setState(() => _currentIndex = 4),
                     ),
                     _QuizzesTab(
                       courseService: _courseService,
@@ -310,7 +311,7 @@ class _QuizLabDockState extends State<_QuizLabDock> with SingleTickerProviderSta
       child: Padding(
         padding: const EdgeInsets.fromLTRB(14, 0, 14, 10),
         child: SizedBox(
-          height: 96,
+          height: 106,
           child: Stack(
             clipBehavior: Clip.none,
             alignment: Alignment.bottomCenter,
@@ -594,11 +595,13 @@ class _HomeTab extends StatefulWidget {
   final DashboardService dashboardService;
   final UserModel? user;
   final VoidCallback onNavigateToQuizzes;
+  final VoidCallback onOpenProfile;
 
   const _HomeTab({
     required this.dashboardService,
     this.user,
     required this.onNavigateToQuizzes,
+    required this.onOpenProfile,
   });
 
   @override
@@ -695,33 +698,48 @@ class _HomeTabState extends State<_HomeTab> {
                       ),
                     ),
                     Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 5),
-                      decoration: BoxDecoration(color: const Color(0xFFDCFCE7), borderRadius: BorderRadius.circular(20)),
+                      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                      decoration: BoxDecoration(
+                        color: const Color(0xFFFFEDD5),
+                        borderRadius: BorderRadius.circular(20),
+                        border: Border.all(color: const Color(0xFFFED7AA)),
+                      ),
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          const Icon(Icons.bolt_rounded, size: 14, color: Color(0xFF16A34A)),
-                          const SizedBox(width: 2),
+                          const Icon(Icons.local_fire_department_rounded, color: Color(0xFFF59E0B), size: 15),
+                          const SizedBox(width: 4),
                           Text(
-                            'LVL ${widget.user?.level ?? 1}',
-                            style: const TextStyle(fontSize: 11, fontWeight: FontWeight.w800, letterSpacing: 0.5, color: Color(0xFF15803D)),
+                            '${data.streak.days}-day streak',
+                            style: const TextStyle(color: Color(0xFFB45309), fontWeight: FontWeight.w700, fontSize: 12),
                           ),
                         ],
                       ),
                     ),
                     const SizedBox(width: 8),
-                    Container(
-                      width: 40,
-                      height: 40,
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: const Color(0xFFF0FDF4),
-                        border: Border.all(color: const Color(0xFF86EFAC), width: 2),
-                      ),
-                      child: Text(
-                        _initials(widget.user?.name),
-                        style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w800, color: Color(0xFF16A34A)),
+                    Semantics(
+                      button: true,
+                      label: 'Open profile',
+                      child: GestureDetector(
+                        behavior: HitTestBehavior.opaque,
+                        onTap: () {
+                          AppHaptics.selection();
+                          widget.onOpenProfile();
+                        },
+                        child: Container(
+                          width: 40,
+                          height: 40,
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: const Color(0xFFF0FDF4),
+                            border: Border.all(color: const Color(0xFF86EFAC), width: 2),
+                          ),
+                          child: Text(
+                            _initials(widget.user?.name),
+                            style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w800, color: Color(0xFF16A34A)),
+                          ),
+                        ),
                       ),
                     ),
                   ],
@@ -746,26 +764,6 @@ class _HomeTabState extends State<_HomeTab> {
                         ],
                       ),
                       style: const TextStyle(fontSize: 30, height: 1.15, fontWeight: FontWeight.w800, letterSpacing: -0.8, color: Color(0xFF0F172A)),
-                    ),
-                    const SizedBox(height: 12),
-                    Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                      decoration: BoxDecoration(
-                        color: const Color(0xFFFFEDD5),
-                        borderRadius: BorderRadius.circular(20),
-                        border: Border.all(color: const Color(0xFFFED7AA)),
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          const Icon(Icons.local_fire_department_rounded, color: Color(0xFFF59E0B), size: 16),
-                          const SizedBox(width: 6),
-                          Text(
-                            '${data.streak.days}-day streak',
-                            style: const TextStyle(color: Color(0xFFB45309), fontWeight: FontWeight.w700, fontSize: 13),
-                          ),
-                        ],
-                      ),
                     ),
                   ],
                 ),
@@ -955,36 +953,6 @@ class _HomeTabState extends State<_HomeTab> {
               const SizedBox(height: 20),
             ],
 
-            // Community Feed
-            const Text('LIVE ACTIVITY', style: TextStyle(fontSize: 11, fontWeight: FontWeight.w700, letterSpacing: 1, color: Color(0xFF64748B))),
-            const SizedBox(height: 8),
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(14),
-                border: Border.all(color: const Color(0xFFE2E8F0)),
-              ),
-              child: ListView.separated(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: data.communityFeed.take(5).length,
-                separatorBuilder: (_, __) => const Divider(height: 1, color: Color(0xFFF1F5F9)),
-                itemBuilder: (context, i) {
-                  final feed = data.communityFeed[i];
-                  return ListTile(
-                    dense: true,
-                    leading: CircleAvatar(
-                      radius: 16,
-                      backgroundColor: const Color(0xFFDCFCE7),
-                      child: Text(feed.name.isNotEmpty ? feed.name[0] : 'S', style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Color(0xFF16A34A))),
-                    ),
-                    title: Text('${feed.name} completed ${feed.quizTitle}', style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w600)),
-                    subtitle: Text(feed.courseName, style: const TextStyle(fontSize: 11, color: Color(0xFF64748B))),
-                    trailing: Text('+${feed.xp} XP', style: const TextStyle(color: Color(0xFF16A34A), fontWeight: FontWeight.bold, fontSize: 11)),
-                  );
-                },
-              ),
-            ),
           ],
           ),
         );
