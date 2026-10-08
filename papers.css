@@ -75,3 +75,4 @@ html,body{overflow-x:clip}
 .filters select{min-height:40px;font-size:13.5px;padding:0 18px 0 9px}
 .filters input[type=search]{min-height:44px}
 }
+.footer-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px}.footer-grid section{display:grid;align-content:start;gap:7px}.footer-grid strong{color:var(--ink);font-size:13px}.footer-grid a{color:var(--green);font-weight:600}.footer-disclaimer{grid-column:1/-1;border-top:1px solid var(--border);padding-top:12px}@media(max-width:680px){.footer-grid{grid-template-columns:1fr 1fr}.footer-disclaimer{grid-column:1/-1}}
