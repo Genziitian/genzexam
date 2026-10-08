@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import '../../api/api.dart';
 import '../../state/auth_state.dart';
+import '../../widgets/app_ux_components.dart';
 
 /// 5-Tab Navigation Shell for Students: Home, Quizzes & Storefront, Test, Support, More.
 ///
@@ -38,118 +39,124 @@ class _StudentMainShellState extends State<StudentMainShell> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xFFF8FAFC),
-      body: SafeArea(
-        child: Column(
-          children: [
-            // Manager Preview Mode Banner
-            if (widget.isManagerPreview)
-              Container(
-                width: double.infinity,
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-                decoration: const BoxDecoration(color: Color(0xFF1E293B)),
-                child: Row(
+    return AppKeyboardDismiss(
+      child: Scaffold(
+        backgroundColor: const Color(0xFFF8FAFC),
+        body: SafeArea(
+          child: Column(
+            children: [
+              // Manager Preview Mode Banner
+              if (widget.isManagerPreview)
+                Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                  decoration: const BoxDecoration(color: Color(0xFF1E293B)),
+                  child: Row(
+                    children: [
+                      const Icon(Icons.preview_rounded, color: Color(0xFF38BDF8), size: 18),
+                      const SizedBox(width: 8),
+                      const Expanded(
+                        child: Text(
+                          'MANAGER PREVIEW: Candidate Experience',
+                          style: TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w600),
+                        ),
+                      ),
+                      InkWell(
+                        onTap: () {
+                          AppHaptics.light();
+                          widget.authState.togglePreviewStudentView(false);
+                        },
+                        borderRadius: BorderRadius.circular(6),
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                          decoration: BoxDecoration(
+                            color: const Color(0xFF38BDF8),
+                            borderRadius: BorderRadius.circular(6),
+                          ),
+                          child: const Text(
+                            'Exit to Workspace',
+                            style: TextStyle(color: Color(0xFF0F172A), fontSize: 11, fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+
+              // Tab View Body
+              Expanded(
+                child: IndexedStack(
+                  index: _currentIndex,
                   children: [
-                    const Icon(Icons.preview_rounded, color: Color(0xFF38BDF8), size: 18),
-                    const SizedBox(width: 8),
-                    const Expanded(
-                      child: Text(
-                        'MANAGER PREVIEW: Candidate Experience',
-                        style: TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w600),
-                      ),
+                    _HomeTab(
+                      dashboardService: _dashboardService,
+                      user: widget.authState.user,
+                      onNavigateToQuizzes: () => setState(() => _currentIndex = 1),
                     ),
-                    InkWell(
-                      onTap: () {
-                        widget.authState.togglePreviewStudentView(false);
-                      },
-                      borderRadius: BorderRadius.circular(6),
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-                        decoration: BoxDecoration(
-                          color: const Color(0xFF38BDF8),
-                          borderRadius: BorderRadius.circular(6),
-                        ),
-                        child: const Text(
-                          'Exit to Workspace',
-                          style: TextStyle(color: Color(0xFF0F172A), fontSize: 11, fontWeight: FontWeight.bold),
-                        ),
-                      ),
+                    _QuizzesTab(
+                      courseService: _courseService,
+                      storefrontService: _storefrontService,
+                    ),
+                    _TestTab(courseService: _courseService),
+                    _SupportTab(discussionService: _discussionService),
+                    _MoreTab(
+                      user: widget.authState.user,
+                      authState: widget.authState,
+                      leaderboardService: _leaderboardService,
+                      onNavigateToMyPapers: () => setState(() => _currentIndex = 1),
                     ),
                   ],
                 ),
               ),
-
-            // Tab View Body
-            Expanded(
-              child: IndexedStack(
-                index: _currentIndex,
-                children: [
-                  _HomeTab(
-                    dashboardService: _dashboardService,
-                    user: widget.authState.user,
-                    onNavigateToQuizzes: () => setState(() => _currentIndex = 1),
-                  ),
-                  _QuizzesTab(
-                    courseService: _courseService,
-                    storefrontService: _storefrontService,
-                  ),
-                  _TestTab(courseService: _courseService),
-                  _SupportTab(discussionService: _discussionService),
-                  _MoreTab(
-                    user: widget.authState.user,
-                    leaderboardService: _leaderboardService,
-                    onLogout: () => widget.authState.logout(),
-                    onNavigateToMyPapers: () => setState(() => _currentIndex = 1),
-                  ),
-                ],
+            ],
+          ),
+        ),
+        bottomNavigationBar: Container(
+          decoration: const BoxDecoration(
+            color: Colors.white,
+            border: Border(top: BorderSide(color: Color(0xFFE2E8F0))),
+          ),
+          child: BottomNavigationBar(
+            currentIndex: _currentIndex,
+            onTap: (index) {
+              AppHaptics.selection();
+              setState(() => _currentIndex = index);
+            },
+            type: BottomNavigationBarType.fixed,
+            backgroundColor: Colors.white,
+            selectedItemColor: const Color(0xFF16A34A),
+            unselectedItemColor: const Color(0xFF64748B),
+            selectedLabelStyle: const TextStyle(fontWeight: FontWeight.w600, fontSize: 12),
+            unselectedLabelStyle: const TextStyle(fontWeight: FontWeight.w500, fontSize: 12),
+            elevation: 0,
+            items: const [
+              BottomNavigationBarItem(
+                icon: Icon(Icons.dashboard_outlined),
+                activeIcon: Icon(Icons.dashboard_rounded),
+                label: 'Home',
               ),
-            ),
-          ],
-        ),
-      ),
-      bottomNavigationBar: Container(
-        decoration: const BoxDecoration(
-          color: Colors.white,
-          border: Border(top: BorderSide(color: Color(0xFFE2E8F0))),
-        ),
-        child: BottomNavigationBar(
-          currentIndex: _currentIndex,
-          onTap: (index) => setState(() => _currentIndex = index),
-          type: BottomNavigationBarType.fixed,
-          backgroundColor: Colors.white,
-          selectedItemColor: const Color(0xFF16A34A),
-          unselectedItemColor: const Color(0xFF64748B),
-          selectedLabelStyle: const TextStyle(fontWeight: FontWeight.w600, fontSize: 12),
-          unselectedLabelStyle: const TextStyle(fontWeight: FontWeight.w500, fontSize: 12),
-          elevation: 0,
-          items: const [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.dashboard_outlined),
-              activeIcon: Icon(Icons.dashboard_rounded),
-              label: 'Home',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.menu_book_outlined),
-              activeIcon: Icon(Icons.menu_book_rounded),
-              label: 'Papers',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.assignment_outlined),
-              activeIcon: Icon(Icons.assignment_rounded),
-              label: 'Test',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.forum_outlined),
-              activeIcon: Icon(Icons.forum_rounded),
-              label: 'Support',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.person_outline_rounded),
-              activeIcon: Icon(Icons.person_rounded),
-              label: 'More',
-            ),
-          ],
+              BottomNavigationBarItem(
+                icon: Icon(Icons.menu_book_outlined),
+                activeIcon: Icon(Icons.menu_book_rounded),
+                label: 'Quizzes',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.assignment_outlined),
+                activeIcon: Icon(Icons.assignment_rounded),
+                label: 'Test',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.forum_outlined),
+                activeIcon: Icon(Icons.forum_rounded),
+                label: 'Support',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.person_outline_rounded),
+                activeIcon: Icon(Icons.person_rounded),
+                label: 'More',
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -159,7 +166,7 @@ class _StudentMainShellState extends State<StudentMainShell> {
 // -----------------------------------------------------------------------------
 // TAB 1: HOME (Dashboard & Weekly Goal Tracker)
 // -----------------------------------------------------------------------------
-class _HomeTab extends StatelessWidget {
+class _HomeTab extends StatefulWidget {
   final DashboardService dashboardService;
   final UserModel? user;
   final VoidCallback onNavigateToQuizzes;
@@ -171,48 +178,60 @@ class _HomeTab extends StatelessWidget {
   });
 
   @override
+  State<_HomeTab> createState() => _HomeTabState();
+}
+
+class _HomeTabState extends State<_HomeTab> {
+  late Future<DashboardData> _dashboardFuture;
+
+  @override
+  void initState() {
+    super.initState();
+    _dashboardFuture = widget.dashboardService.getDashboard();
+  }
+
+  Future<void> _refresh() async {
+    AppHaptics.light();
+    setState(() {
+      _dashboardFuture = widget.dashboardService.getDashboard();
+    });
+    await _dashboardFuture;
+  }
+
+  @override
   Widget build(BuildContext context) {
     return FutureBuilder<DashboardData>(
-      future: dashboardService.getDashboard(),
+      future: _dashboardFuture,
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Center(child: CircularProgressIndicator(color: Color(0xFF16A34A)));
+          return AppShimmerCard.dashboard();
         }
         if (snapshot.hasError) {
-          return Center(
-            child: Padding(
-              padding: const EdgeInsets.all(24),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Icon(Icons.wifi_off_rounded, size: 40, color: Color(0xFF94A3B8)),
-                  const SizedBox(height: 12),
-                  Text(
-                    '${snapshot.error}',
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(color: Color(0xFF64748B), fontSize: 13),
-                  ),
-                ],
-              ),
-            ),
+          return AppErrorCard(
+            title: 'Unable to Load Dashboard',
+            message: '${snapshot.error}',
+            onRetry: _refresh,
           );
         }
 
         final data = snapshot.data!;
-        return ListView(
-          padding: const EdgeInsets.all(16),
-          children: [
-            // Welcome Header
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Good ${data.greeting.timeOfDay}, ${user?.name.split(' ').first ?? 'Student'}',
-                      style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Color(0xFF0F172A)),
-                    ),
+        return RefreshIndicator(
+          onRefresh: _refresh,
+          color: const Color(0xFF16A34A),
+          child: ListView(
+            padding: const EdgeInsets.all(16),
+            children: [
+              // Welcome Header
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Good ${data.greeting.timeOfDay}, ${widget.user?.name.split(' ').first ?? 'Student'}',
+                        style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Color(0xFF0F172A)),
+                      ),
                     Text(
                       '${data.greeting.weekday.toUpperCase()} · ${data.greeting.date}',
                       style: const TextStyle(fontSize: 11, fontWeight: FontWeight.w600, color: Color(0xFF94A3B8)),
@@ -318,7 +337,10 @@ class _HomeTab extends StatelessWidget {
                     ),
                   ),
                   ElevatedButton(
-                    onPressed: onNavigateToQuizzes,
+                    onPressed: () {
+                      AppHaptics.light();
+                      widget.onNavigateToQuizzes();
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFF16A34A),
                       foregroundColor: Colors.white,
@@ -372,7 +394,10 @@ class _HomeTab extends StatelessWidget {
                         Text('${data.todaysChallenge!.timeLimitMinutes} minutes', style: const TextStyle(color: Color(0xFF94A3B8), fontSize: 12)),
                         const Spacer(),
                         ElevatedButton(
-                          onPressed: onNavigateToQuizzes,
+                          onPressed: () {
+                            AppHaptics.light();
+                            widget.onNavigateToQuizzes();
+                          },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: const Color(0xFF16A34A),
                             foregroundColor: Colors.white,
@@ -626,6 +651,7 @@ class _QuizzesTab extends StatefulWidget {
 class _QuizzesTabState extends State<_QuizzesTab> {
   String _selectedFilter = 'all'; // 'all', 'my_papers', 'foundation', 'diploma'
   bool _isLoading = true;
+  String? _errorMessage;
   List<StorefrontPaper> _papers = [];
   List<MyPaperItem> _myPapers = [];
 
@@ -636,7 +662,10 @@ class _QuizzesTabState extends State<_QuizzesTab> {
   }
 
   Future<void> _loadPapers() async {
-    setState(() => _isLoading = true);
+    setState(() {
+      _isLoading = true;
+      _errorMessage = null;
+    });
     try {
       final papers = await widget.storefrontService.getPapers();
       final myPapers = await widget.storefrontService.getMyPapers();
@@ -647,12 +676,18 @@ class _QuizzesTabState extends State<_QuizzesTab> {
           _isLoading = false;
         });
       }
-    } catch (_) {
-      if (mounted) setState(() => _isLoading = false);
+    } catch (e) {
+      if (mounted) {
+        setState(() {
+          _errorMessage = e.toString();
+          _isLoading = false;
+        });
+      }
     }
   }
 
   Future<void> _claimFree(int quizId) async {
+    AppHaptics.light();
     try {
       final success = await widget.storefrontService.claimFree(quizId);
       if (success && mounted) {
@@ -708,8 +743,18 @@ class _QuizzesTabState extends State<_QuizzesTab> {
         // Body
         Expanded(
           child: _isLoading
-              ? const Center(child: CircularProgressIndicator(color: Color(0xFF16A34A)))
-              : _buildList(),
+              ? AppShimmerCard.list(count: 4)
+              : _errorMessage != null
+                  ? AppErrorCard(
+                      title: 'Unable to Load Papers',
+                      message: _errorMessage!,
+                      onRetry: _loadPapers,
+                    )
+                  : RefreshIndicator(
+                      onRefresh: _loadPapers,
+                      color: const Color(0xFF16A34A),
+                      child: _buildList(),
+                    ),
         ),
       ],
     );
@@ -726,7 +771,10 @@ class _QuizzesTabState extends State<_QuizzesTab> {
         fontWeight: FontWeight.bold,
         fontSize: 12,
       ),
-      onSelected: (_) => setState(() => _selectedFilter = key),
+      onSelected: (_) {
+        AppHaptics.selection();
+        setState(() => _selectedFilter = key);
+      },
     );
   }
 
@@ -854,61 +902,108 @@ class _QuizzesTabState extends State<_QuizzesTab> {
 // -----------------------------------------------------------------------------
 // TAB 3: TEST (Timed Quiz & Exam Player - Card & Palette Engine)
 // -----------------------------------------------------------------------------
-class _TestTab extends StatelessWidget {
+class _TestTab extends StatefulWidget {
   final CourseService courseService;
 
   const _TestTab({required this.courseService});
 
   @override
+  State<_TestTab> createState() => _TestTabState();
+}
+
+class _TestTabState extends State<_TestTab> {
+  bool _isLoading = true;
+  String? _errorMessage;
+  CourseModel? _primaryCourse;
+  CourseExamPrepResponse? _examPrep;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadData();
+  }
+
+  Future<void> _loadData() async {
+    setState(() {
+      _isLoading = true;
+      _errorMessage = null;
+    });
+    try {
+      final courses = await widget.courseService.getCourses();
+      final primary = courses.firstOrNull;
+      if (primary != null) {
+        final examPrep = await widget.courseService.getExamPrep(primary.slug);
+        if (mounted) {
+          setState(() {
+            _primaryCourse = primary;
+            _examPrep = examPrep;
+            _isLoading = false;
+          });
+        }
+      } else {
+        if (mounted) {
+          setState(() {
+            _isLoading = false;
+          });
+        }
+      }
+    } catch (e) {
+      if (mounted) {
+        setState(() {
+          _errorMessage = e.toString();
+          _isLoading = false;
+        });
+      }
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return FutureBuilder<List<CourseModel>>(
-      future: courseService.getCourses(),
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Center(child: CircularProgressIndicator(color: Color(0xFF16A34A)));
-        }
-        final courses = snapshot.data ?? [];
-        final primaryCourse = courses.firstOrNull;
+    if (_isLoading) {
+      return AppShimmerCard.list(count: 3);
+    }
 
-        if (primaryCourse == null) {
-          return const Center(child: Text('No courses available yet.', style: TextStyle(color: Color(0xFF64748B))));
-        }
+    if (_errorMessage != null) {
+      return AppErrorCard(
+        title: 'Unable to Load Exam Prep',
+        message: _errorMessage!,
+        onRetry: _loadData,
+      );
+    }
 
-        return FutureBuilder<CourseExamPrepResponse>(
-          future: courseService.getExamPrep(primaryCourse.slug),
-          builder: (context, examSnap) {
-            if (examSnap.connectionState == ConnectionState.waiting) {
-              return const Center(child: CircularProgressIndicator(color: Color(0xFF16A34A)));
-            }
+    final primaryCourse = _primaryCourse;
+    if (primaryCourse == null) {
+      return const Center(child: Text('No courses available yet.', style: TextStyle(color: Color(0xFF64748B))));
+    }
 
-            final examPrep = examSnap.data;
-            return ListView(
-              padding: const EdgeInsets.all(16),
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Text('TIMED MOCKS & EXAM PREP', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Color(0xFF0F172A))),
-                    Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                      decoration: BoxDecoration(color: const Color(0xFFE2E8F0), borderRadius: BorderRadius.circular(8)),
-                      child: Text(primaryCourse.name, style: const TextStyle(fontSize: 11, fontWeight: FontWeight.bold, color: Color(0xFF334155))),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 4),
-                const Text('Official timed papers with score analytics & scientific calculator', style: TextStyle(fontSize: 13, color: Color(0xFF64748B))),
-                const SizedBox(height: 16),
+    final examPrep = _examPrep;
+    return RefreshIndicator(
+      onRefresh: _loadData,
+      color: const Color(0xFF16A34A),
+      child: ListView(
+        padding: const EdgeInsets.all(16),
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Text('TIMED MOCKS & EXAM PREP', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Color(0xFF0F172A))),
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                decoration: BoxDecoration(color: const Color(0xFFE2E8F0), borderRadius: BorderRadius.circular(8)),
+                child: Text(primaryCourse.name, style: const TextStyle(fontSize: 11, fontWeight: FontWeight.bold, color: Color(0xFF334155))),
+              ),
+            ],
+          ),
+          const SizedBox(height: 4),
+          const Text('Official timed papers with score analytics & scientific calculator', style: TextStyle(fontSize: 13, color: Color(0xFF64748B))),
+          const SizedBox(height: 16),
 
-                _ExamSection(title: 'Mock Tests', items: examPrep?.mockTest ?? []),
-                _ExamSection(title: 'Quiz 1 Papers', items: examPrep?.quiz1 ?? []),
-                _ExamSection(title: 'Quiz 2 Papers', items: examPrep?.quiz2 ?? []),
-                _ExamSection(title: 'Endterm Papers', items: examPrep?.endterm ?? []),
-              ],
-            );
-          },
-        );
-      },
+          _ExamSection(title: 'Mock Tests', items: examPrep?.mockTest ?? []),
+          _ExamSection(title: 'Quiz 1 Papers', items: examPrep?.quiz1 ?? []),
+          _ExamSection(title: 'Quiz 2 Papers', items: examPrep?.quiz2 ?? []),
+          _ExamSection(title: 'Endterm Papers', items: examPrep?.endterm ?? []),
+        ],
+      ),
     );
   }
 }
@@ -986,46 +1081,94 @@ class _ExamSection extends StatelessWidget {
 // -----------------------------------------------------------------------------
 // TAB 4: SUPPORT (Discussions Community)
 // -----------------------------------------------------------------------------
-class _SupportTab extends StatelessWidget {
+class _SupportTab extends StatefulWidget {
   final DiscussionService discussionService;
 
   const _SupportTab({required this.discussionService});
 
   @override
-  Widget build(BuildContext context) {
-    return FutureBuilder<List<DiscussionListItem>>(
-      future: discussionService.getDiscussions(),
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Center(child: CircularProgressIndicator(color: Color(0xFF16A34A)));
-        }
-        if (snapshot.hasError) {
-          return Center(child: Text('${snapshot.error}', style: const TextStyle(color: Color(0xFF64748B))));
-        }
+  State<_SupportTab> createState() => _SupportTabState();
+}
 
-        final discussions = snapshot.data ?? [];
-        return ListView(
-          padding: const EdgeInsets.all(16),
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Text('COMMUNITY DISCUSSIONS', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Color(0xFF0F172A))),
-                ElevatedButton.icon(
-                  onPressed: () {},
-                  icon: const Icon(Icons.add, size: 16),
-                  label: const Text('Ask Doubt', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFF16A34A),
-                    foregroundColor: Colors.white,
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-                  ),
+class _SupportTabState extends State<_SupportTab> {
+  bool _isLoading = true;
+  String? _errorMessage;
+  List<DiscussionListItem> _discussions = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _loadDiscussions();
+  }
+
+  Future<void> _loadDiscussions() async {
+    setState(() {
+      _isLoading = true;
+      _errorMessage = null;
+    });
+    try {
+      final discussions = await widget.discussionService.getDiscussions();
+      if (mounted) {
+        setState(() {
+          _discussions = discussions;
+          _isLoading = false;
+        });
+      }
+    } catch (e) {
+      if (mounted) {
+        setState(() {
+          _errorMessage = e.toString();
+          _isLoading = false;
+        });
+      }
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    if (_isLoading) {
+      return AppShimmerCard.discussions();
+    }
+
+    if (_errorMessage != null) {
+      return AppErrorCard(
+        title: 'Unable to Load Discussions',
+        message: _errorMessage!,
+        onRetry: _loadDiscussions,
+      );
+    }
+
+    final discussions = _discussions;
+    return RefreshIndicator(
+      onRefresh: _loadDiscussions,
+      color: const Color(0xFF16A34A),
+      child: ListView(
+        padding: const EdgeInsets.all(16),
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Text('COMMUNITY DISCUSSIONS', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Color(0xFF0F172A))),
+              ElevatedButton.icon(
+                onPressed: () {
+                  AppHaptics.light();
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text('Discussion posting open! Tap reply on any topic or create doubt.')),
+                  );
+                },
+                icon: const Icon(Icons.add, size: 16),
+                label: const Text('Ask Doubt', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xFF16A34A),
+                  foregroundColor: Colors.white,
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
                 ),
-              ],
-            ),
-            const SizedBox(height: 4),
-            const Text('Peer questions, verified answers, and doubt discussions', style: TextStyle(fontSize: 13, color: Color(0xFF64748B))),
-            const SizedBox(height: 16),
+              ),
+            ],
+          ),
+          const SizedBox(height: 4),
+          const Text('Peer questions, verified answers, and doubt discussions', style: TextStyle(fontSize: 13, color: Color(0xFF64748B))),
+          const SizedBox(height: 16),
             ...discussions.map((d) => Container(
               margin: const EdgeInsets.only(bottom: 10),
               padding: const EdgeInsets.all(14),
@@ -1095,148 +1238,496 @@ class _SupportTab extends StatelessWidget {
 // -----------------------------------------------------------------------------
 // TAB 5: MORE (Settings, Dark Mode, Profile, Logout)
 // -----------------------------------------------------------------------------
-class _MoreTab extends StatelessWidget {
+class _MoreTab extends StatefulWidget {
   final UserModel? user;
+  final AuthState authState;
   final LeaderboardService leaderboardService;
-  final VoidCallback onLogout;
   final VoidCallback onNavigateToMyPapers;
 
   const _MoreTab({
     this.user,
+    required this.authState,
     required this.leaderboardService,
-    required this.onLogout,
     required this.onNavigateToMyPapers,
   });
 
   @override
-  Widget build(BuildContext context) {
-    return ListView(
-      padding: const EdgeInsets.all(16),
-      children: [
-        // Profile Summary
-        Container(
-          padding: const EdgeInsets.all(16),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: const Color(0xFFE2E8F0)),
-          ),
-          child: Row(
-            children: [
-              CircleAvatar(
-                radius: 26,
-                backgroundColor: const Color(0xFF16A34A),
-                child: Text(
-                  user?.name.isNotEmpty == true ? user!.name[0] : 'S',
-                  style: const TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
-                ),
-              ),
-              const SizedBox(width: 14),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(user?.name ?? 'Student', style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
-                    Text(user?.email ?? '', style: const TextStyle(fontSize: 12, color: Color(0xFF64748B))),
-                    const SizedBox(height: 6),
-                    Row(
-                      children: [
-                        Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-                          decoration: BoxDecoration(color: const Color(0xFFDCFCE7), borderRadius: BorderRadius.circular(6)),
-                          child: Text('Level ${user?.level ?? 1}', style: const TextStyle(color: Color(0xFF16A34A), fontWeight: FontWeight.bold, fontSize: 11)),
-                        ),
-                        const SizedBox(width: 8),
-                        Text('${user?.xp ?? 0} XP', style: const TextStyle(color: Color(0xFF64748B), fontWeight: FontWeight.w600, fontSize: 11)),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
-        const SizedBox(height: 20),
+  State<_MoreTab> createState() => _MoreTabState();
+}
 
-        // Settings & Shortcuts
-        const Text('ACCOUNT & PREFERENCES', style: TextStyle(fontSize: 11, fontWeight: FontWeight.w700, letterSpacing: 1, color: Color(0xFF64748B))),
-        const SizedBox(height: 8),
-        Container(
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(14),
-            border: Border.all(color: const Color(0xFFE2E8F0)),
-          ),
+class _MoreTabState extends State<_MoreTab> {
+  String _selectedTheme = 'System';
+  late Future<LeaderboardData> _leaderboardFuture;
+
+  static const String _termsContent = '''
+Terms & Conditions
+Last Updated: April 2026
+
+01 Service Description
+QUIZ LAB provides access to premium digital educational courses designed specifically for students. Our services are delivered entirely online. Access to the courses is granted immediately upon successful completion of the payment process.
+
+02 User Account & Security
+To access our courses, users must sign in via their Google account. You are solely responsible for maintaining the confidentiality of your account information and for all activities that occur under your account. We reserve the right to terminate accounts that violate our security protocols.
+
+03 Course Access & Usage
+Access is granted exclusively to the email address used during the purchase.
+Course access is non-transferable and intended for personal use only.
+Sharing account credentials or course content with third parties is strictly prohibited.
+
+04 Payment Terms
+All prices are clearly displayed before the final checkout. By proceeding with the payment, you agree to the price and terms of the specific course. All payments are processed through secure third-party payment gateways (Razorpay, Stripe, or Cashfree).
+
+05 Prohibited Use & Copyright
+All content on this platform, including videos, documents, and code samples, is the intellectual property of QUIZ LAB. Any form of piracy, unauthorized redistribution, or commercial use of our content will result in legal action and immediate termination of access without notice.
+
+06 Limitation of Liability
+QUIZ LAB is an educational platform. While we strive for excellence, we do not guarantee specific academic results or career outcomes. The platform is not responsible for any misuse of the information provided or for any technical issues arising from the user's internet connection or device.
+''';
+
+  static const String _privacyContent = '''
+Privacy Policy
+Last Updated: April 2026
+
+01 Information We Collect
+QUIZ LAB collects minimal necessary academic data: your student email (@iitm.ac.in), display name, course enrollments, quiz attempt answers, scores, and weekly learning progress.
+
+02 Security & Storage
+We employ encrypted local token storage using hardware-backed Android Keystore with EncryptedSharedPreferences (AES-256-GCM). We do not store plain passwords or banking details on the device.
+
+03 Data Safety & Non-Disclosure
+Your personal data and assessment performance are never sold or rented to third-party advertisers. All communication with labapi.genziitian.in is strictly encrypted via TLS 1.3.
+
+04 Account & Data Deletion
+In full compliance with Google Play Store User Data policies, you can delete your account and all associated test records at any time directly through the app or by submitting a request at https://lab.genziitian.in/delete-account.html.
+''';
+
+  @override
+  void initState() {
+    super.initState();
+    _leaderboardFuture = widget.leaderboardService.getLeaderboard();
+  }
+
+  Future<void> _refresh() async {
+    AppHaptics.light();
+    setState(() {
+      _leaderboardFuture = widget.leaderboardService.getLeaderboard();
+    });
+    await _leaderboardFuture;
+  }
+
+  void _showThemeSelector() {
+    AppHaptics.selection();
+    showDialog(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+        title: const Text('Appearance', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            _themeTile('System', 'System Default (Follows OS)'),
+            _themeTile('Light', 'Light Mode'),
+            _themeTile('Dark', 'Dark Mode'),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _themeTile(String theme, String label) {
+    final isSelected = _selectedTheme == theme;
+    return ListTile(
+      dense: true,
+      title: Text(label, style: TextStyle(fontWeight: isSelected ? FontWeight.bold : FontWeight.normal, fontSize: 13)),
+      trailing: isSelected ? const Icon(Icons.check_circle_rounded, color: Color(0xFF16A34A), size: 20) : null,
+      onTap: () {
+        AppHaptics.selection();
+        setState(() => _selectedTheme = theme);
+        Navigator.pop(context);
+      },
+    );
+  }
+
+  void _showHelpSupportDialog() {
+    AppHaptics.light();
+    showDialog(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+        title: Row(
+          children: const [
+            Icon(Icons.help_outline_rounded, color: Color(0xFF16A34A), size: 22),
+            SizedBox(width: 8),
+            Text('Help & Support', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+          ],
+        ),
+        content: SingleChildScrollView(
           child: Column(
-            children: [
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: const [
+              Text('SUPPORT CHANNELS', style: TextStyle(fontSize: 10, fontWeight: FontWeight.w700, color: Color(0xFF64748B), letterSpacing: 0.5)),
+              SizedBox(height: 8),
               ListTile(
-                leading: const Icon(Icons.menu_book_rounded, color: Color(0xFF16A34A), size: 20),
-                title: const Text('My Purchased & Claimed Papers', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600)),
-                trailing: const Icon(Icons.arrow_forward_ios_rounded, size: 14, color: Color(0xFF94A3B8)),
-                onTap: onNavigateToMyPapers,
+                dense: true,
+                contentPadding: EdgeInsets.zero,
+                leading: Icon(Icons.email_outlined, color: Color(0xFF16A34A), size: 20),
+                title: Text('Email Support', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600)),
+                subtitle: Text('support@genziitian.in', style: TextStyle(fontSize: 12, color: Color(0xFF64748B))),
               ),
-              const Divider(height: 1, color: Color(0xFFF1F5F9)),
-              const ListTile(
-                leading: Icon(Icons.dark_mode_outlined, color: Color(0xFF64748B), size: 20),
-                title: Text('Appearance / Dark Mode', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600)),
-                trailing: Text('System', style: TextStyle(fontSize: 12, color: Color(0xFF94A3B8), fontWeight: FontWeight.bold)),
+              ListTile(
+                dense: true,
+                contentPadding: EdgeInsets.zero,
+                leading: Icon(Icons.chat_bubble_outline_rounded, color: Color(0xFF16A34A), size: 20),
+                title: Text('WhatsApp Helpdesk', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600)),
+                subtitle: Text('+91 98765 43210 (10 AM - 8 PM IST)', style: TextStyle(fontSize: 12, color: Color(0xFF64748B))),
+              ),
+              Divider(height: 20),
+              Text('FREQUENTLY ASKED QUESTIONS', style: TextStyle(fontSize: 10, fontWeight: FontWeight.w700, color: Color(0xFF64748B), letterSpacing: 0.5)),
+              SizedBox(height: 8),
+              Text('Q: How do I access claimed papers?', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Color(0xFF0F172A))),
+              SizedBox(height: 2),
+              Text('A: Tap the Quizzes tab and select the "My Papers" filter chip.', style: TextStyle(fontSize: 12, color: Color(0xFF64748B))),
+              SizedBox(height: 8),
+              Text('Q: How does Google sign-in work?', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Color(0xFF0F172A))),
+              SizedBox(height: 2),
+              Text('A: Sign in with your registered student account for instant Sanctum bearer access.', style: TextStyle(fontSize: 12, color: Color(0xFF64748B))),
+              SizedBox(height: 8),
+              Text('Q: Can I retake mock tests?', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Color(0xFF0F172A))),
+              SizedBox(height: 2),
+              Text('A: Yes, practice mock tests support unlimited retakes with detailed auto-scoring analytics.', style: TextStyle(fontSize: 12, color: Color(0xFF64748B))),
+            ],
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(ctx),
+            child: const Text('Close', style: TextStyle(color: Color(0xFF16A34A), fontWeight: FontWeight.bold)),
+          ),
+        ],
+      ),
+    );
+  }
+
+  void _showLegalSheet(String title, String content) {
+    AppHaptics.selection();
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.white,
+      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
+      builder: (ctx) => DraggableScrollableSheet(
+        initialChildSize: 0.75,
+        maxChildSize: 0.95,
+        minChildSize: 0.5,
+        expand: false,
+        builder: (_, scrollController) => Padding(
+          padding: const EdgeInsets.all(20),
+          child: ListView(
+            controller: scrollController,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(title, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Color(0xFF0F172A))),
+                  IconButton(
+                    icon: const Icon(Icons.close_rounded),
+                    onPressed: () => Navigator.pop(ctx),
+                  ),
+                ],
+              ),
+              const Divider(color: Color(0xFFE2E8F0)),
+              const SizedBox(height: 8),
+              Text(
+                content,
+                style: const TextStyle(fontSize: 13, color: Color(0xFF475569), height: 1.6),
               ),
             ],
           ),
         ),
-        const SizedBox(height: 20),
+      ),
+    );
+  }
 
-        // Leaderboard Preview
-        const Text('GLOBAL LEADERBOARD', style: TextStyle(fontSize: 11, fontWeight: FontWeight.w700, letterSpacing: 1, color: Color(0xFF64748B))),
-        const SizedBox(height: 8),
-        FutureBuilder<LeaderboardData>(
-          future: leaderboardService.getLeaderboard(),
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Center(child: Padding(padding: EdgeInsets.all(16), child: CircularProgressIndicator()));
-            }
-            final lb = snapshot.data?.leaderboard ?? [];
-            return Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(14),
-                border: Border.all(color: const Color(0xFFE2E8F0)),
-              ),
-              child: ListView.separated(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: lb.take(3).length,
-                separatorBuilder: (_, __) => const Divider(height: 1, color: Color(0xFFF1F5F9)),
-                itemBuilder: (context, i) {
-                  final row = lb[i];
-                  return ListTile(
-                    dense: true,
-                    leading: Text('#${row.rank}', style: const TextStyle(fontWeight: FontWeight.bold, color: Color(0xFF0F172A))),
-                    title: Text(row.name, style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 13)),
-                    subtitle: Text('Level ${row.level}', style: const TextStyle(fontSize: 11, color: Color(0xFF64748B))),
-                    trailing: Text('${row.xp} XP', style: const TextStyle(color: Color(0xFF16A34A), fontWeight: FontWeight.bold, fontSize: 12)),
-                  );
-                },
-              ),
-            );
-          },
+  void _showDeleteAccountDialog() {
+    AppHaptics.heavy();
+    showDialog(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+        title: Row(
+          children: const [
+            Icon(Icons.warning_amber_rounded, color: Color(0xFFDC2626), size: 24),
+            SizedBox(width: 8),
+            Text('Delete Account?', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+          ],
         ),
-        const SizedBox(height: 24),
+        content: const Text(
+          'Are you sure you want to permanently delete your QUIZ LAB account?\n\n'
+          'All your test attempts, scores, XP, purchased papers, and personal data will be irreversibly deleted from our servers.\n\n'
+          'This action complies with Google Play Store User Data Deletion requirements.',
+          style: TextStyle(fontSize: 13, color: Color(0xFF475569), height: 1.4),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(ctx),
+            child: const Text('Cancel', style: TextStyle(color: Color(0xFF64748B))),
+          ),
+          ElevatedButton(
+            onPressed: () async {
+              AppHaptics.heavy();
+              Navigator.pop(ctx);
+              final deleted = await widget.authState.deleteAccount();
+              if (!deleted && mounted) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('Failed to delete account. Please try again.'), backgroundColor: Colors.red),
+                );
+              }
+            },
+            style: ElevatedButton.styleFrom(
+              backgroundColor: const Color(0xFFDC2626),
+              foregroundColor: Colors.white,
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+            ),
+            child: const Text('Permanently Delete'),
+          ),
+        ],
+      ),
+    );
+  }
 
-        // Logout
-        SizedBox(
-          height: 48,
-          child: OutlinedButton.icon(
-            onPressed: onLogout,
-            icon: const Icon(Icons.logout_rounded, color: Color(0xFFDC2626)),
-            label: const Text('Sign Out', style: TextStyle(color: Color(0xFFDC2626), fontWeight: FontWeight.bold)),
-            style: OutlinedButton.styleFrom(
-              side: const BorderSide(color: Color(0xFFFCA5A5)),
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+  @override
+  Widget build(BuildContext context) {
+    final user = widget.user;
+
+    return RefreshIndicator(
+      onRefresh: _refresh,
+      color: const Color(0xFF16A34A),
+      child: ListView(
+        padding: const EdgeInsets.all(16),
+        children: [
+          // Profile Summary
+          Container(
+            padding: const EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(16),
+              border: Border.all(color: const Color(0xFFE2E8F0)),
+            ),
+            child: Row(
+              children: [
+                CircleAvatar(
+                  radius: 26,
+                  backgroundColor: const Color(0xFF16A34A),
+                  child: Text(
+                    user?.name.isNotEmpty == true ? user!.name[0] : 'S',
+                    style: const TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                ),
+                const SizedBox(width: 14),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(user?.name ?? 'Student', style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+                      Text(user?.email ?? '', style: const TextStyle(fontSize: 12, color: Color(0xFF64748B))),
+                      const SizedBox(height: 6),
+                      Row(
+                        children: [
+                          Container(
+                            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                            decoration: BoxDecoration(color: const Color(0xFFDCFCE7), borderRadius: BorderRadius.circular(6)),
+                            child: Text('Level ${user?.level ?? 1}', style: const TextStyle(color: Color(0xFF16A34A), fontWeight: FontWeight.bold, fontSize: 11)),
+                          ),
+                          const SizedBox(width: 8),
+                          Text('${user?.xp ?? 0} XP', style: const TextStyle(color: Color(0xFF64748B), fontWeight: FontWeight.w600, fontSize: 11)),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
           ),
-        ),
-      ],
+          const SizedBox(height: 20),
+
+          // Settings & Preferences
+          const Text('ACCOUNT & PREFERENCES', style: TextStyle(fontSize: 11, fontWeight: FontWeight.w700, letterSpacing: 1, color: Color(0xFF64748B))),
+          const SizedBox(height: 8),
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(14),
+              border: Border.all(color: const Color(0xFFE2E8F0)),
+            ),
+            child: Column(
+              children: [
+                ListTile(
+                  leading: const Icon(Icons.menu_book_rounded, color: Color(0xFF16A34A), size: 20),
+                  title: const Text('My Purchased & Claimed Papers', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600)),
+                  trailing: const Icon(Icons.arrow_forward_ios_rounded, size: 14, color: Color(0xFF94A3B8)),
+                  onTap: () {
+                    AppHaptics.light();
+                    widget.onNavigateToMyPapers();
+                  },
+                ),
+                const Divider(height: 1, color: Color(0xFFF1F5F9)),
+                ListTile(
+                  leading: const Icon(Icons.palette_outlined, color: Color(0xFF64748B), size: 20),
+                  title: const Text('Theme / Appearance', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600)),
+                  trailing: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(_selectedTheme, style: const TextStyle(fontSize: 12, color: Color(0xFF94A3B8), fontWeight: FontWeight.bold)),
+                      const SizedBox(width: 6),
+                      const Icon(Icons.arrow_forward_ios_rounded, size: 12, color: Color(0xFF94A3B8)),
+                    ],
+                  ),
+                  onTap: _showThemeSelector,
+                ),
+                const Divider(height: 1, color: Color(0xFFF1F5F9)),
+                ListTile(
+                  leading: const Icon(Icons.support_agent_rounded, color: Color(0xFF0284C7), size: 20),
+                  title: const Text('Help & Support Desk', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600)),
+                  trailing: const Icon(Icons.arrow_forward_ios_rounded, size: 14, color: Color(0xFF94A3B8)),
+                  onTap: _showHelpSupportDialog,
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 20),
+
+          // Legal & Compliance
+          const Text('LEGAL & COMPLIANCE', style: TextStyle(fontSize: 11, fontWeight: FontWeight.w700, letterSpacing: 1, color: Color(0xFF64748B))),
+          const SizedBox(height: 8),
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(14),
+              border: Border.all(color: const Color(0xFFE2E8F0)),
+            ),
+            child: Column(
+              children: [
+                ListTile(
+                  leading: const Icon(Icons.description_outlined, color: Color(0xFF64748B), size: 20),
+                  title: const Text('Terms & Conditions', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600)),
+                  trailing: const Icon(Icons.arrow_forward_ios_rounded, size: 14, color: Color(0xFF94A3B8)),
+                  onTap: () => _showLegalSheet('Terms & Conditions', _termsContent),
+                ),
+                const Divider(height: 1, color: Color(0xFFF1F5F9)),
+                ListTile(
+                  leading: const Icon(Icons.privacy_tip_outlined, color: Color(0xFF64748B), size: 20),
+                  title: const Text('Privacy Policy', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600)),
+                  trailing: const Icon(Icons.arrow_forward_ios_rounded, size: 14, color: Color(0xFF94A3B8)),
+                  onTap: () => _showLegalSheet('Privacy Policy', _privacyContent),
+                ),
+                const Divider(height: 1, color: Color(0xFFF1F5F9)),
+                ListTile(
+                  leading: const Icon(Icons.delete_forever_rounded, color: Color(0xFFDC2626), size: 20),
+                  title: const Text('Delete Account & Data', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600, color: Color(0xFFDC2626))),
+                  trailing: const Icon(Icons.arrow_forward_ios_rounded, size: 14, color: Color(0xFFFCA5A5)),
+                  onTap: _showDeleteAccountDialog,
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 20),
+
+          // Leaderboard Preview
+          const Text('GLOBAL LEADERBOARD', style: TextStyle(fontSize: 11, fontWeight: FontWeight.w700, letterSpacing: 1, color: Color(0xFF64748B))),
+          const SizedBox(height: 8),
+          FutureBuilder<LeaderboardData>(
+            future: _leaderboardFuture,
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return AppShimmerCard.list(count: 3);
+              }
+              final lb = snapshot.data?.leaderboard ?? [];
+              if (lb.isEmpty) {
+                return Container(
+                  padding: const EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(14),
+                    border: Border.all(color: const Color(0xFFE2E8F0)),
+                  ),
+                  child: const Center(child: Text('No leaderboard data yet.', style: TextStyle(fontSize: 12, color: Color(0xFF94A3B8)))),
+                );
+              }
+              return Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(14),
+                  border: Border.all(color: const Color(0xFFE2E8F0)),
+                ),
+                child: ListView.separated(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: lb.take(3).length,
+                  separatorBuilder: (_, __) => const Divider(height: 1, color: Color(0xFFF1F5F9)),
+                  itemBuilder: (context, i) {
+                    final row = lb[i];
+                    return ListTile(
+                      dense: true,
+                      leading: Text('#${row.rank}', style: const TextStyle(fontWeight: FontWeight.bold, color: Color(0xFF0F172A))),
+                      title: Text(row.name, style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 13)),
+                      subtitle: Text('Level ${row.level}', style: const TextStyle(fontSize: 11, color: Color(0xFF64748B))),
+                      trailing: Text('${row.xp} XP', style: const TextStyle(color: Color(0xFF16A34A), fontWeight: FontWeight.bold, fontSize: 12)),
+                    );
+                  },
+                ),
+              );
+            },
+          ),
+          const SizedBox(height: 24),
+
+          // Logout
+          SizedBox(
+            height: 48,
+            child: OutlinedButton.icon(
+              onPressed: () {
+                AppHaptics.medium();
+                widget.authState.logout();
+              },
+              icon: const Icon(Icons.logout_rounded, color: Color(0xFFDC2626)),
+              label: const Text('Sign Out', style: TextStyle(color: Color(0xFFDC2626), fontWeight: FontWeight.bold)),
+              style: OutlinedButton.styleFrom(
+                side: const BorderSide(color: Color(0xFFFCA5A5)),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+              ),
+            ),
+          ),
+          const SizedBox(height: 24),
+
+          // App Version & Google Play Metadata Footer
+          Container(
+            padding: const EdgeInsets.symmetric(vertical: 12),
+            child: Column(
+              children: const [
+                Text(
+                  'QUIZ LAB',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 12,
+                    letterSpacing: 1.5,
+                    color: Color(0xFF64748B),
+                  ),
+                ),
+                SizedBox(height: 4),
+                Text(
+                  'v1.0.0 (Build 1) · Android 14+ Release',
+                  style: TextStyle(fontSize: 11, color: Color(0xFF94A3B8), fontWeight: FontWeight.w500),
+                ),
+                SizedBox(height: 2),
+                Text(
+                  'Package: in.genziitian.quizlab · Target API 34',
+                  style: TextStyle(fontSize: 10, color: Color(0xFFCBD5E1)),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

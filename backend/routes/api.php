@@ -52,6 +52,7 @@ Route::post('/storefront/razorpay/webhook', [StorefrontController::class, 'webho
 // Authenticated student routes
 Route::middleware(['auth:sanctum', 'track.seen'])->group(function () {
     Route::post('/auth/logout', [AuthController::class, 'logout']);
+    Route::delete('/auth/account', [AuthController::class, 'deleteAccount']);
     Route::get('/auth/me', [AuthController::class, 'me']);
     Route::post('/auth/password/change', [AuthController::class, 'changePassword'])->middleware('throttle:5,10');
 

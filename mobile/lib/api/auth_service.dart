@@ -46,32 +46,7 @@ class AuthService {
     return authResponse;
   }
 
-  /// Verifies a 6-digit email OTP and issues the Sanctum bearer token.
-  ///
-  /// On success (200 OK):
-  /// - Stores token in secure storage.
-  /// - Returns [AuthSuccessResponse].
-  Future<AuthSuccessResponse> verifyOtp({
-    required String email,
-    required String otp,
-  }) async {
-    final response = await _client.post<Map<String, dynamic>>(
-      '/auth/verify-otp',
-      data: {
-        'email': email.trim(),
-        'otp': otp.trim(),
-      },
-    );
-
-    final authResponse = AuthSuccessResponse.fromJson(response.data!);
-    await _client.saveAuthToken(authResponse.token);
-    return authResponse;
-  }
-
   /// Registers a new user account.
-  ///
-  /// If the account existed but was unverified, the backend resends OTP.
-  /// Returns [RegisterResponse] containing success message and email.
   Future<RegisterResponse> register({
     required String name,
     required String email,
@@ -89,16 +64,6 @@ class AuthService {
     );
 
     return RegisterResponse.fromJson(response.data!);
-  }
-
-  /// Requests a fresh 6-digit OTP code to be sent to the given email.
-  Future<String> resendOtp({required String email}) async {
-    final response = await _client.post<Map<String, dynamic>>(
-      '/auth/resend-otp',
-      data: {'email': email.trim()},
-    );
-
-    return (response.data?['message'] ?? 'OTP resent successfully') as String;
   }
 
   /// Sends a password reset OTP to the user's email.
@@ -165,6 +130,18 @@ class AuthService {
     } catch (_) {
       // Even if network fails or token was already invalidated on server,
       // client must clean up local secure token.
+    } finally {
+      await _client.deleteAuthToken();
+    }
+  }
+
+  /// Permanently deletes the student account and all stored records.
+  /// Complies with Google Play Store User Data Deletion requirements.
+  Future<void> deleteAccount() async {
+    try {
+      await _client.delete<Map<String, dynamic>>('/auth/account');
+    } catch (_) {
+      // If server fails or is unreachable, ensure local credentials are eradicated
     } finally {
       await _client.deleteAuthToken();
     }

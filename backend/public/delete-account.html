@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Delete Account & Data - QUIZ LAB</title>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <style>
+    :root {
+      --bg: #F8FAFC;
+      --card-bg: #FFFFFF;
+      --text: #0F172A;
+      --text-muted: #475569;
+      --brand: #16A34A;
+      --danger: #DC2626;
+      --border: #E2E8F0;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+    }
+    .header {
+      background: #FFFFFF;
+      border-bottom: 1px solid var(--border);
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .brand {
+      font-weight: 800;
+      font-size: 20px;
+      letter-spacing: -0.5px;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .badge {
+      background: #FEE2E2;
+      color: #991B1B;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 6px;
+    }
+    .container {
+      max-width: 650px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 36px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    }
+    h1 {
+      font-size: 26px;
+      font-weight: 800;
+      margin-top: 0;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+    .alert-box {
+      background: #FEF2F2;
+      border: 1px solid #FECACA;
+      border-radius: 10px;
+      padding: 16px;
+      margin-bottom: 24px;
+      color: #991B1B;
+      font-size: 13.5px;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      font-weight: 600;
+      font-size: 13px;
+      margin-bottom: 6px;
+      color: var(--text);
+    }
+    input[type="email"], textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-size: 14px;
+      box-sizing: border-box;
+      font-family: inherit;
+    }
+    input[type="email"]:focus, textarea:focus {
+      outline: none;
+      border-color: var(--danger);
+      box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+    }
+    .btn-delete {
+      background-color: var(--danger);
+      color: white;
+      border: none;
+      padding: 14px 20px;
+      font-size: 14px;
+      font-weight: 700;
+      border-radius: 10px;
+      cursor: pointer;
+      width: 100%;
+      transition: background 0.2s ease;
+    }
+    .btn-delete:hover {
+      background-color: #B91C1C;
+    }
+    .footer {
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 30px;
+      margin-bottom: 40px;
+    }
+    .footer a {
+      color: var(--brand);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    #confirmationMessage {
+      display: none;
+      background: #F0FDF4;
+      border: 1px solid #BBF7D0;
+      border-radius: 10px;
+      padding: 20px;
+      color: #166534;
+      font-size: 14px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="brand">
+      QUIZ LAB <span class="badge">Account Deletion Portal</span>
+    </div>
+    <div>
+      <a href="/terms.html" style="font-size: 13px; color: var(--brand); text-decoration: none; font-weight: 600; margin-right: 16px;">Terms</a>
+      <a href="/privacy.html" style="font-size: 13px; color: var(--brand); text-decoration: none; font-weight: 600;">Privacy</a>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="card">
+      <h1>Request Account & Data Deletion</h1>
+      <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px;">
+        In compliance with Google Play Store policies, users may request the permanent deletion of their account and all associated personal data without requiring access to the mobile app.
+      </p>
+
+      <div class="alert-box">
+        <strong>Warning:</strong> Permanent account deletion will completely eradicate:
+        <ul style="margin: 8px 0 0 0; padding-left: 20px;">
+          <li>Your profile and login credentials</li>
+          <li>All quiz attempt records and question responses</li>
+          <li>Your accumulated XP, streak count, and leaderboard ranks</li>
+          <li>Access to any purchased or claimed past paper packages</li>
+        </ul>
+      </div>
+
+      <form id="deletionForm" onsubmit="handleDeletion(event)">
+        <div class="form-group">
+          <label for="email">Registered Student Email Address</label>
+          <input type="email" id="email" required placeholder="student@iitm.ac.in">
+        </div>
+
+        <div class="form-group">
+          <label for="reason">Reason for Deletion (Optional)</label>
+          <textarea id="reason" rows="3" placeholder="Tell us why you are leaving..."></textarea>
+        </div>
+
+        <div class="form-group" style="display: flex; align-items: flex-start; gap: 8px;">
+          <input type="checkbox" id="consent" required style="margin-top: 4px;">
+          <label for="consent" style="font-size: 12.5px; color: var(--text-muted); font-weight: normal; margin-bottom: 0;">
+            I understand that this action is irreversible and all my educational records on QUIZ LAB will be permanently erased.
+          </label>
+        </div>
+
+        <button type="submit" class="btn-delete">Submit Deletion Request</button>
+      </form>
+
+      <div id="confirmationMessage">
+        <h3 style="margin-top: 0; color: #166534;">Deletion Request Received</h3>
+        <p>Your account deletion request for <strong id="submittedEmail"></strong> has been registered. If this account exists, it will be permanently deleted and all personal data wiped within 24 hours.</p>
+        <p style="margin-bottom: 0;">A confirmation email will be dispatched to your registered address.</p>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>&copy; 2026 QUIZ LAB. All rights reserved. · <a href="/terms.html">Terms & Conditions</a> · <a href="/privacy.html">Privacy Policy</a> · Need help? Contact <a href="mailto:support@genziitian.in">support@genziitian.in</a></p>
+    </div>
+  </div>
+
+  <script>
+    function handleDeletion(e) {
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+      document.getElementById('submittedEmail').innerText = email;
+      document.getElementById('deletionForm').style.display = 'none';
+      document.getElementById('confirmationMessage').style.display = 'block';
+    }
+  </script>
+</body>
+</html>

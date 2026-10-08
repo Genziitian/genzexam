@@ -54,11 +54,23 @@ def patch_app_build(path: str):
     with open(path, "r", encoding="utf-8") as f:
         content = f.read()
 
-    # Safely ensure minSdk is at least 21 without corrupting flutter.minSdkVersion
+    # Ensure package ID and namespace are strictly in.genziitian.quizlab
+    content = re.sub(r'applicationId\s+[\"\x27][^\"\x27]+[\"\x27]', 'applicationId "in.genziitian.quizlab"', content)
+    content = re.sub(r'applicationId\s*=\s*[\"\x27][^\"\x27]+[\"\x27]', 'applicationId = "in.genziitian.quizlab"', content)
+    content = re.sub(r'namespace\s+[\"\x27][^\"\x27]+[\"\x27]', 'namespace "in.genziitian.quizlab"', content)
+    content = re.sub(r'namespace\s*=\s*[\"\x27][^\"\x27]+[\"\x27]', 'namespace = "in.genziitian.quizlab"', content)
+
+    # Ensure Android 14 (API 34) compliance for Google Play Store
+    content = re.sub(r'targetSdkVersion\s+([0-9]+)', 'targetSdkVersion 34', content)
+    content = re.sub(r'targetSdk\s*=\s*([0-9]+)', 'targetSdk = 34', content)
+    content = re.sub(r'compileSdkVersion\s+([0-9]+)', 'compileSdkVersion 34', content)
+    content = re.sub(r'compileSdk\s*=\s*([0-9]+)', 'compileSdk = 34', content)
+
+    # Safely ensure minSdk is at least 21
     content = re.sub(r'minSdkVersion\s+([0-9]+)', lambda m: f'minSdkVersion {max(21, int(m.group(1)))}', content)
     content = re.sub(r'minSdk\s*=\s*([0-9]+)', lambda m: f'minSdk = {max(21, int(m.group(1)))}', content)
 
-    # Ensure release signing uses debug key for CI release APK build if not already specified
+    # Ensure release signing uses debug key for CI release builds if not already specified
     if "signingConfigs.debug" not in content and "buildTypes {" in content:
         content = re.sub(
             r'buildTypes\s*\{\s*release\s*\{',

@@ -44,20 +44,34 @@ jobs:
         working-directory: mobile
         run: flutter pub get
 
-      - name: Build Release APK
+      - name: Build Release App Bundle (.aab for Google Play Store)
         working-directory: mobile
         run: |
           set -o pipefail
-          flutter build apk --release --no-shrink 2>&1 | tee /tmp/flutter_build.log
+          flutter build appbundle --release --no-shrink 2>&1 | tee /tmp/flutter_build_aab.log
+
+      - name: Build Release APK (.apk for Direct Device Testing)
+        working-directory: mobile
+        run: |
+          set -o pipefail
+          flutter build apk --release --no-shrink 2>&1 | tee /tmp/flutter_build_apk.log
 
       - name: Upload Build Log on Failure
         if: failure()
         uses: actions/upload-artifact@v4
         with:
           name: build-failure-log
-          path: /tmp/flutter_build.log
+          path: /tmp/flutter_build_*.log
 
-      - name: Upload APK Artifact
+      - name: Upload Google Play AAB Bundle Artifact
+        uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: quiz-lab-release-aab
+          path: mobile/build/app/outputs/bundle/release/*.aab
+          retention-days: 14
+
+      - name: Upload APK Tester Artifact
         uses: actions/upload-artifact@v4
         if: success()
         with:

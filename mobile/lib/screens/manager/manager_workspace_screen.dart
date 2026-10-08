@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../api/api.dart';
 import '../../state/auth_state.dart';
+import '../../widgets/app_ux_components.dart';
 import '../admin/admin_console_screen.dart';
 
 /// Manager Executive Workspace for Manager (Rank 2) users.
@@ -56,120 +57,109 @@ class _ManagerWorkspaceScreenState extends State<ManagerWorkspaceScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xFFF8FAFC),
-      appBar: AppBar(
-        backgroundColor: const Color(0xFF1E293B),
-        elevation: 0,
-        title: const Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Manager Workspace',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            Text(
-              'Sales, Paper Catalog & Platform Governance',
-              style: TextStyle(
-                color: Color(0xFF94A3B8),
-                fontSize: 11,
-              ),
-            ),
-          ],
-        ),
-        actions: [
-          // Preview as Student button
-          TextButton.icon(
-            onPressed: () {
-              widget.authState.togglePreviewStudentView(true);
-            },
-            icon: const Icon(Icons.school_outlined, size: 16, color: Color(0xFF38BDF8)),
-            label: const Text(
-              'Student View',
-              style: TextStyle(color: Color(0xFF38BDF8), fontSize: 12, fontWeight: FontWeight.bold),
-            ),
-          ),
-          IconButton(
-            onPressed: _loadData,
-            icon: const Icon(Icons.refresh_rounded, color: Colors.white, size: 20),
-            tooltip: 'Refresh Analytics',
-          ),
-        ],
-      ),
-      body: SafeArea(
-        child: _isLoading
-            ? const Center(child: CircularProgressIndicator(color: Color(0xFF16A34A)))
-            : _error != null
-                ? _buildErrorView()
-                : _buildDashboard(),
-      ),
-      bottomNavigationBar: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-        decoration: const BoxDecoration(
-          color: Colors.white,
-          border: Border(top: BorderSide(color: Color(0xFFE2E8F0))),
-        ),
-        child: Row(
-          children: [
-            Expanded(
-              child: OutlinedButton.icon(
-                onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (_) => AdminConsoleScreen(authState: widget.authState),
-                    ),
-                  );
-                },
-                icon: const Icon(Icons.people_outline_rounded, size: 18),
-                label: const Text('Manage User Accounts'),
-                style: OutlinedButton.styleFrom(
-                  foregroundColor: const Color(0xFF0F172A),
-                  side: const BorderSide(color: Color(0xFFCBD5E1)),
-                  padding: const EdgeInsets.symmetric(vertical: 12),
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+    return AppKeyboardDismiss(
+      child: Scaffold(
+        backgroundColor: const Color(0xFFF8FAFC),
+        appBar: AppBar(
+          backgroundColor: const Color(0xFF1E293B),
+          elevation: 0,
+          title: const Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Manager Workspace',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
+              Text(
+                'Sales, Paper Catalog & Platform Governance',
+                style: TextStyle(
+                  color: Color(0xFF94A3B8),
+                  fontSize: 11,
+                ),
+              ),
+            ],
+          ),
+          actions: [
+            // Preview as Student button
+            TextButton.icon(
+              onPressed: () {
+                AppHaptics.light();
+                widget.authState.togglePreviewStudentView(true);
+              },
+              icon: const Icon(Icons.school_outlined, size: 16, color: Color(0xFF38BDF8)),
+              label: const Text(
+                'Student View',
+                style: TextStyle(color: Color(0xFF38BDF8), fontSize: 12, fontWeight: FontWeight.bold),
+              ),
             ),
-            const SizedBox(width: 12),
             IconButton(
-              onPressed: () => widget.authState.logout(),
-              icon: const Icon(Icons.logout_rounded, color: Color(0xFFEF4444)),
-              tooltip: 'Sign Out',
+              onPressed: () {
+                AppHaptics.light();
+                _loadData();
+              },
+              icon: const Icon(Icons.refresh_rounded, color: Colors.white, size: 20),
+              tooltip: 'Refresh Analytics',
             ),
           ],
         ),
-      ),
-    );
-  }
-
-  Widget _buildErrorView() {
-    return Center(
-      child: Padding(
-        padding: const EdgeInsets.all(24),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Icon(Icons.cloud_off_rounded, size: 48, color: Color(0xFF94A3B8)),
-            const SizedBox(height: 12),
-            Text(
-              'Could not load sales analytics.\n$_error',
-              textAlign: TextAlign.center,
-              style: const TextStyle(color: Color(0xFF64748B), fontSize: 13),
-            ),
-            const SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: _loadData,
-              style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFF16A34A),
-                foregroundColor: Colors.white,
+        body: SafeArea(
+          child: _isLoading
+              ? AppShimmerCard.managerWorkspace()
+              : _error != null
+                  ? AppErrorCard(
+                      title: 'Analytics Offline',
+                      message: _error!,
+                      onRetry: _loadData,
+                    )
+                  : RefreshIndicator(
+                      onRefresh: _loadData,
+                      color: const Color(0xFF16A34A),
+                      child: _buildDashboard(),
+                    ),
+        ),
+        bottomNavigationBar: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+          decoration: const BoxDecoration(
+            color: Colors.white,
+            border: Border(top: BorderSide(color: Color(0xFFE2E8F0))),
+          ),
+          child: Row(
+            children: [
+              Expanded(
+                child: OutlinedButton.icon(
+                  onPressed: () {
+                    AppHaptics.light();
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (_) => AdminConsoleScreen(authState: widget.authState),
+                      ),
+                    );
+                  },
+                  icon: const Icon(Icons.people_outline_rounded, size: 18),
+                  label: const Text('Manage User Accounts'),
+                  style: OutlinedButton.styleFrom(
+                    foregroundColor: const Color(0xFF0F172A),
+                    side: const BorderSide(color: Color(0xFFCBD5E1)),
+                    padding: const EdgeInsets.symmetric(vertical: 12),
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                  ),
+                ),
               ),
-              child: const Text('Retry'),
-            ),
-          ],
+              const SizedBox(width: 12),
+              IconButton(
+                onPressed: () {
+                  AppHaptics.medium();
+                  widget.authState.logout();
+                },
+                icon: const Icon(Icons.logout_rounded, color: Color(0xFFEF4444)),
+                tooltip: 'Sign Out',
+              ),
+            ],
+          ),
         ),
       ),
     );

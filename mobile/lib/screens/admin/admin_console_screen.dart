@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../api/api.dart';
 import '../../state/auth_state.dart';
+import '../../widgets/app_ux_components.dart';
 
 /// Real Admin Console for Admin (rank 1) and Manager (rank 2) roles.
 /// Communicates with backend/app/Http/Controllers/Admin/AdminUserController.php
@@ -65,43 +66,54 @@ class _AdminConsoleScreenState extends State<AdminConsoleScreen> {
     final user = widget.authState.user;
     final isManager = widget.authState.isManager;
 
-    return Scaffold(
-      backgroundColor: const Color(0xFFF8FAFC),
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        title: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text(
-              'Admin Console',
-              style: TextStyle(color: Color(0xFF0F172A), fontSize: 18, fontWeight: FontWeight.bold),
-            ),
-            Text(
-              '${user?.name ?? 'Admin'} · ${user?.role?.toUpperCase() ?? 'ADMIN'}',
-              style: const TextStyle(color: Color(0xFF64748B), fontSize: 11, fontWeight: FontWeight.w600),
+    return AppKeyboardDismiss(
+      child: Scaffold(
+        backgroundColor: const Color(0xFFF8FAFC),
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          elevation: 0,
+          title: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text(
+                'Admin Console',
+                style: TextStyle(color: Color(0xFF0F172A), fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+              Text(
+                '${user?.name ?? 'Admin'} · ${user?.role?.toUpperCase() ?? 'ADMIN'}',
+                style: const TextStyle(color: Color(0xFF64748B), fontSize: 11, fontWeight: FontWeight.w600),
+              ),
+            ],
+          ),
+          actions: [
+            if (isManager)
+              IconButton(
+                icon: const Icon(Icons.visibility_rounded, color: Color(0xFF2563EB)),
+                tooltip: 'Preview student app',
+                onPressed: () {
+                  AppHaptics.light();
+                  widget.authState.togglePreviewStudentView(true);
+                },
+              ),
+            IconButton(
+              icon: const Icon(Icons.logout_rounded, color: Color(0xFFDC2626)),
+              onPressed: () {
+                AppHaptics.medium();
+                widget.authState.logout();
+              },
             ),
           ],
         ),
-        actions: [
-          if (isManager)
-            IconButton(
-              icon: const Icon(Icons.visibility_rounded, color: Color(0xFF2563EB)),
-              tooltip: 'Preview student app',
-              onPressed: () {
-                widget.authState.togglePreviewStudentView(true);
-              },
-            ),
-          IconButton(
-            icon: const Icon(Icons.logout_rounded, color: Color(0xFFDC2626)),
-            onPressed: () => widget.authState.logout(),
-          ),
-        ],
-      ),
-      body: SafeArea(
-        child: ListView(
-          padding: const EdgeInsets.all(16),
-          children: [
+        body: SafeArea(
+          child: RefreshIndicator(
+            onRefresh: () async {
+              AppHaptics.light();
+              _refresh();
+            },
+            color: const Color(0xFF16A34A),
+            child: ListView(
+              padding: const EdgeInsets.all(16),
+              children: [
             // KPI Stats Overview
             FutureBuilder<AdminStatsResponse>(
               future: _adminService.getStats(),
@@ -184,10 +196,14 @@ class _AdminConsoleScreenState extends State<AdminConsoleScreen> {
               future: _adminService.getUsers(search: _search, filter: _filter, page: _page),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const Center(child: Padding(padding: EdgeInsets.all(24), child: CircularProgressIndicator()));
+                  return AppShimmerCard.list(count: 3);
                 }
                 if (snapshot.hasError) {
-                  return Center(child: Text('Error: ${snapshot.error}', style: const TextStyle(color: Colors.red)));
+                  return AppErrorCard(
+                    title: 'Unable to Load Users',
+                    message: '${snapshot.error}',
+                    onRetry: _refresh,
+                  );
                 }
 
                 final users = snapshot.data?.data ?? [];
@@ -365,7 +381,10 @@ class _FilterChip extends StatelessWidget {
       child: FilterChip(
         label: Text(label),
         selected: selected,
-        onSelected: (_) => onSelect(value),
+        onSelected: (_) {
+          AppHaptics.selection();
+          onSelect(value);
+        },
         selectedColor: const Color(0xFFDCFCE7),
         labelStyle: TextStyle(
           fontSize: 12,

@@ -6,7 +6,6 @@ enum AuthStatus {
   loading,
   authenticated,
   unauthenticated,
-  needsVerification,
 }
 
 /// Central state manager holding session identity, role, and rank.
@@ -22,7 +21,6 @@ class AuthState extends ChangeNotifier {
 
   AuthStatus _status = AuthStatus.initial;
   UserModel? _user;
-  String? _pendingVerificationEmail;
   String? _errorMessage;
   bool _isPreviewingStudentView = false;
 
@@ -39,7 +37,6 @@ class AuthState extends ChangeNotifier {
 
   AuthStatus get status => _status;
   UserModel? get user => _user;
-  String? get pendingVerificationEmail => _pendingVerificationEmail;
   String? get errorMessage => _errorMessage;
   bool get isPreviewingStudentView => _isPreviewingStudentView;
 
@@ -60,6 +57,11 @@ class AuthState extends ChangeNotifier {
   bool get isManager => role == 'manager';
   bool get isAdmin => role == 'admin' || role == 'manager';
   bool get isStudent => role == 'student';
+
+  /// Cold-start initialization helper
+  Future<void> init() async {
+    await checkAuthStatus();
+  }
 
   /// Initializes session check on app start.
   Future<void> checkAuthStatus() async {
@@ -88,7 +90,7 @@ class AuthState extends ChangeNotifier {
     }
   }
 
-  /// Logs in via /api/auth/login.
+  /// Logs in via /api/auth/login directly without OTP.
   Future<bool> login(String email, String password) async {
     _status = AuthStatus.loading;
     _errorMessage = null;
@@ -102,68 +104,16 @@ class AuthState extends ChangeNotifier {
       notifyListeners();
       return true;
     } on ApiException catch (e) {
-      if (e.needsVerification) {
-        _pendingVerificationEmail = e.verificationEmail ?? email;
-        _status = AuthStatus.needsVerification;
-        _errorMessage = e.message;
-      } else {
-        _status = AuthStatus.unauthenticated;
-        _errorMessage = e.message;
-      }
+      _status = AuthStatus.unauthenticated;
+      _errorMessage = e.message;
       notifyListeners();
       return false;
     } catch (e) {
       _status = AuthStatus.unauthenticated;
-      _errorMessage = 'An unexpected error occurred. Please try again.';
+      _errorMessage = 'Invalid credentials or server connection issue.';
       notifyListeners();
       return false;
     }
-  }
-
-  /// Verifies 6-digit OTP code via /api/auth/verify-otp.
-  Future<bool> verifyOtp(String email, String otp) async {
-    _status = AuthStatus.loading;
-    _errorMessage = null;
-    notifyListeners();
-
-    try {
-      final res = await _authService.verifyOtp(email: email, otp: otp);
-      _user = res.user;
-      _status = AuthStatus.authenticated;
-      _pendingVerificationEmail = null;
-      _errorMessage = null;
-      notifyListeners();
-      return true;
-    } on ApiException catch (e) {
-      _status = AuthStatus.needsVerification;
-      _errorMessage = e.message;
-      notifyListeners();
-      return false;
-    } catch (e) {
-      _status = AuthStatus.needsVerification;
-      _errorMessage = 'Failed to verify OTP code.';
-      notifyListeners();
-      return false;
-    }
-  }
-
-  /// Resends OTP to email.
-  Future<bool> resendOtp(String email) async {
-    try {
-      await _authService.resendOtp(email: email);
-      return true;
-    } on ApiException catch (e) {
-      _errorMessage = e.message;
-      notifyListeners();
-      return false;
-    }
-  }
-
-  /// Sets verification email manually if navigating directly.
-  void setPendingVerificationEmail(String email) {
-    _pendingVerificationEmail = email;
-    _status = AuthStatus.needsVerification;
-    notifyListeners();
   }
 
   /// Allows Manager to toggle previewing the 5-Tab Student View.
@@ -181,6 +131,22 @@ class AuthState extends ChangeNotifier {
       await _apiClient.deleteAuthToken();
     } finally {
       _zeroizeSession();
+    }
+  }
+
+  /// Permanently deletes account and zeroes session data (Google Play requirement)
+  Future<bool> deleteAccount() async {
+    _status = AuthStatus.loading;
+    notifyListeners();
+    try {
+      await _authService.deleteAccount();
+      _zeroizeSession();
+      return true;
+    } catch (e) {
+      _status = AuthStatus.authenticated;
+      _errorMessage = 'Failed to delete account. Please try again.';
+      notifyListeners();
+      return false;
     }
   }
 
