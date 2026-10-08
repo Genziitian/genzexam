@@ -44,6 +44,7 @@ class PasswordAuthenticationTest extends TestCase
             $table->string('google_id')->nullable();
             $table->string('avatar')->nullable();
             $table->boolean('is_admin')->default(false);
+            $table->boolean('is_pro')->default(false);
             $table->boolean('is_active')->default(true);
             $table->string('role')->default('student');
             $table->timestamp('email_verified_at')->nullable();
