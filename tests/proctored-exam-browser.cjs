@@ -283,11 +283,9 @@ const root = path.resolve(__dirname, "..");
     );
     assert.equal(csv.status, 200);
     assert.match(await csv.text(), /student@example.test/);
+    await manager.locator('[data-action="mgr-tab"][data-tab="leave_log"]').click();
     await click(manager, "audit");
-    await manager
-      .locator("#ep-audit")
-      .filter({ hasText: "exam.action.publish_results" })
-      .waitFor();
+    await manager.getByText("exam.action.publish_results", { exact: true }).waitFor();
     await manager.screenshot({
       path: path.join(process.env.EXAM_TEST_DIR, "manager-results.png"),
       fullPage: true,
