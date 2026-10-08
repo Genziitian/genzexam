@@ -143,6 +143,23 @@
     if (!/^\/profile\/?$/i.test(location.pathname)) return null;
     return document.querySelector('#root main .page-enter > div') || document.querySelector('#root main .page-enter');
   }
+  function removeDuplicateProfileBlocks(page) {
+    if (!page) return;
+    var nameForms = page.querySelectorAll('form');
+    nameForms.forEach(function (form) {
+      if (!/Full Name/i.test(form.textContent || '')) return;
+      var card = form.closest('.rounded-2xl');
+      if (card && !card.id) card.remove();
+    });
+    page.querySelectorAll('.rounded-2xl').forEach(function (card) {
+      if (card.id || !/\bEdit\b/.test(card.textContent || '')) return;
+      var heading = card.querySelector('h1,h2,h3');
+      var hasEmail = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i.test(card.textContent || '');
+      if (heading && heading.textContent.trim() === 'Profile' && hasEmail) card.remove();
+    });
+    var oldPhotoCard = page.querySelector('#' + PHOTO_ID);
+    if (oldPhotoCard) oldPhotoCard.remove();
+  }
   function profileData() {
     var current = token();
     if (!current) return Promise.reject(new Error('Please sign in again to load your account details.'));
@@ -198,7 +215,7 @@
     card.id = 'ql-web-profile-editor';
     card.className = 'ql-more-card';
     card.innerHTML = '<h2 class="ql-more-heading">Profile</h2><div class="ql-more-profile-summary"><div class="ql-more-avatar" id="ql-web-profile-avatar"></div><div class="ql-more-profile-meta"><strong id="ql-web-profile-name">Loading profile…</strong><small id="ql-web-profile-email"></small></div><button type="button" class="ql-more-button" id="ql-web-profile-edit">Edit</button></div><p class="ql-more-message" id="ql-web-profile-message" role="status"></p>';
-    page.appendChild(card);
+    page.prepend(card);
     var avatar = card.querySelector('#ql-web-profile-avatar');
     var name = card.querySelector('#ql-web-profile-name');
     var email = card.querySelector('#ql-web-profile-email');
@@ -343,7 +360,7 @@
     var faqs = [
       ['How do I sign in?', 'Use Continue with Google or the email and password for your Quiz LAB account.'],
       ['I forgot my password. What do I do?', 'Use Forgot password on the sign-in page and follow the email OTP steps.'],
-      ['How do I change my name or photo?', 'Edit your name in the profile form and use the Profile photo card on this page to upload or remove a photo.'],
+      ['How do I change my name or avatar?', 'Open the profile editor at the top of this page, enter your name, choose an avatar, and save your changes.'],
       ['Why did I get signed out?', 'Signing in on another device or browser can end an older session. Sign in again; your papers, scores, and XP remain on your account.'],
       ['How do I request account deletion?', 'Choose Delete Account & Data below, select a reason, and submit the request for manager review. Your account remains active until the request is processed.'],
       ['Where do my attempted papers appear?', 'Papers you bought or attempted appear in My Papers with your latest score and attempt status.'],
@@ -452,8 +469,8 @@
     var page = profilePage();
     if (!page) return;
     compactBadges(page);
+    removeDuplicateProfileBlocks(page);
     ensureProfileEditor(page);
-    ensurePhotoCard(page);
     if (document.getElementById(MORE_ID)) return;
     var host = document.createElement('div');
     host.innerHTML = actionMarkup();
