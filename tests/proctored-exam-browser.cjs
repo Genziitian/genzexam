@@ -35,6 +35,14 @@ const root = path.resolve(__dirname, "..");
   async function click(p, action) {
     await p.locator(`[data-action="${action}"]`).first().click();
   }
+  async function goToQuestion(p, questions, questionId) {
+    const index = questions.findIndex((question) => question.id === questionId);
+    assert.notEqual(index, -1, `Question ${questionId} is missing from the template.`);
+    await p.locator(`[data-room-go="${index}"]`).click();
+    await p
+      .locator(`.ep-question[data-question-id="${questionId}"]`)
+      .waitFor({ state: "visible" });
+  }
   async function api(role, suffix, body, method = "POST") {
     const r = await fetch(`${base}/public/api/exam-platform${suffix}`, {
       method,
@@ -128,7 +136,10 @@ const root = path.resolve(__dirname, "..");
     );
     assert.ok((await student.locator(".ep-question .katex").count()) > 10);
     assert.ok((await student.locator(".ep-question table").count()) > 0);
-    const diagram = student.locator(".ep-question img");
+    await goToQuestion(student, template.questions, "diagram-identification");
+    const diagram = student.locator(
+      '.ep-question[data-question-id="diagram-identification"] img',
+    );
     await diagram.scrollIntoViewIfNeeded();
     await diagram.evaluate((img) => img.decode());
     assert.ok((await diagram.evaluate((img) => img.naturalWidth)) > 0);
@@ -143,7 +154,9 @@ const root = path.resolve(__dirname, "..");
       }),
       0,
     );
+    await goToQuestion(student, template.questions, "algebra-single");
     await student.locator('[data-answer="algebra-single"][value="2"]').check();
+    await goToQuestion(student, template.questions, "mean-number");
     await student.locator('[data-answer-text="mean-number"]').fill("7");
     await student
       .locator("#ep-save-state")
@@ -223,10 +236,13 @@ const root = path.resolve(__dirname, "..");
       await student.locator('[data-answer-text="mean-number"]').inputValue(),
       "7",
     );
+    await goToQuestion(student, template.questions, "algebra-single");
     await student.locator('[data-answer="algebra-single"][value="2"]').check();
     await click(student, "retry-save");
-    await student.locator(".ep-question img").scrollIntoViewIfNeeded();
-    await student.locator(".ep-question img").evaluate((img) => img.decode());
+    await goToQuestion(student, template.questions, "diagram-identification");
+    await student
+      .locator('.ep-question[data-question-id="diagram-identification"] img')
+      .evaluate((img) => img.decode());
     await student.screenshot({
       path: path.join(process.env.EXAM_TEST_DIR, "candidate-room.png"),
       fullPage: true,
