@@ -43,6 +43,18 @@ const root = path.resolve(__dirname, "..");
       .locator(`.ep-question[data-question-id="${questionId}"]`)
       .waitFor({ state: "visible" });
   }
+  async function saveAnswerAndWait(p, change) {
+    const saved = p.waitForResponse((response) => {
+      const url = new URL(response.url());
+      return (
+        url.pathname.endsWith("/answers") &&
+        response.request().method() === "PATCH" &&
+        response.ok()
+      );
+    });
+    await change();
+    await saved;
+  }
   async function api(role, suffix, body, method = "POST") {
     const r = await fetch(`${base}/public/api/exam-platform${suffix}`, {
       method,
@@ -157,11 +169,9 @@ const root = path.resolve(__dirname, "..");
     await goToQuestion(student, template.questions, "algebra-single");
     await student.locator('[data-answer="algebra-single"][value="2"]').check();
     await goToQuestion(student, template.questions, "mean-number");
-    await student.locator('[data-answer-text="mean-number"]').fill("7");
-    await student
-      .locator("#ep-save-state")
-      .filter({ hasText: "Answers saved on server" })
-      .waitFor();
+    await saveAnswerAndWait(student, () =>
+      student.locator('[data-answer-text="mean-number"]').fill("7"),
+    );
     let state = await api("student", `/exams/${id}/state`, null, "GET");
     assert.equal(state.session.answers["algebra-single"], 2);
     assert.equal(state.session.answers["mean-number"], 7);
@@ -174,17 +184,13 @@ const root = path.resolve(__dirname, "..");
     );
     // Simulate a network interruption for answer writes, then recover without editing again.
     await student.route("**/answers", (route) => route.abort("failed"));
+    const failedSave = student.waitForRequestFailed((request) =>
+      new URL(request.url()).pathname.endsWith("/answers"),
+    );
     await student.locator('[data-answer-text="mean-number"]').fill("8");
-    await student
-      .locator("#ep-save-state")
-      .filter({ hasText: "Not saved" })
-      .waitFor();
+    await failedSave;
     await student.unroute("**/answers");
-    await click(student, "retry-save");
-    await student
-      .locator("#ep-save-state")
-      .filter({ hasText: "Answers saved on server" })
-      .waitFor();
+    await saveAnswerAndWait(student, async () => student.waitForTimeout(5100));
     assert.equal(
       (await api("student", `/exams/${id}/state`, null, "GET")).session.answers[
         "mean-number"
@@ -199,12 +205,9 @@ const root = path.resolve(__dirname, "..");
       { answers: { "algebra-single": 1 }, revision: state.session.revision },
       "PATCH",
     );
-    await student.locator('[data-answer-text="mean-number"]').fill("7");
-    await click(student, "retry-save");
-    await student
-      .locator("#ep-save-state")
-      .filter({ hasText: "Answers saved on server" })
-      .waitFor();
+    await saveAnswerAndWait(student, () =>
+      student.locator('[data-answer-text="mean-number"]').fill("7"),
+    );
     state = await api("student", `/exams/${id}/state`, null, "GET");
     assert.equal(state.session.answers["algebra-single"], 1);
     assert.equal(state.session.answers["mean-number"], 7);
@@ -237,8 +240,9 @@ const root = path.resolve(__dirname, "..");
       "7",
     );
     await goToQuestion(student, template.questions, "algebra-single");
-    await student.locator('[data-answer="algebra-single"][value="2"]').check();
-    await click(student, "retry-save");
+    await saveAnswerAndWait(student, () =>
+      student.locator('[data-answer="algebra-single"][value="2"]').check(),
+    );
     await goToQuestion(student, template.questions, "diagram-identification");
     await student
       .locator('.ep-question[data-question-id="diagram-identification"] img')
