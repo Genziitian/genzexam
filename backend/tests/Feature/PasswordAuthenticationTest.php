@@ -3,7 +3,9 @@
 namespace Tests\Feature;
 
 use App\Mail\OtpMail;
+use App\Models\User;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
@@ -166,5 +168,26 @@ class PasswordAuthenticationTest extends TestCase
         $this->withHeader('Authorization', 'Bearer '.$token)
             ->getJson('/public/api/auth/me')
             ->assertUnauthorized();
+    }
+
+    public function test_play_store_command_creates_one_verified_student_with_a_random_eight_digit_password(): void
+    {
+        $this->assertSame(0, Artisan::call('playstore:create-test-student'));
+        $output = Artisan::output();
+
+        $this->assertMatchesRegularExpression('/Password: (\d{8})/', $output);
+        preg_match('/Password: (\d{8})/', $output, $matches);
+        $password = $matches[1];
+
+        $user = User::query()->where('email', 'test.student@gmail.com')->firstOrFail();
+        $this->assertSame(User::ROLE_STUDENT, $user->effectiveRole());
+        $this->assertFalse($user->is_admin);
+        $this->assertFalse($user->is_pro);
+        $this->assertTrue($user->is_active);
+        $this->assertNotNull($user->email_verified_at);
+        $this->assertTrue(Hash::check($password, (string) $user->password));
+
+        $this->assertSame(1, Artisan::call('playstore:create-test-student'));
+        $this->assertSame(1, User::query()->where('email', 'test.student@gmail.com')->count());
     }
 }
