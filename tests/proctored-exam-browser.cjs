@@ -226,9 +226,9 @@ const root = path.resolve(__dirname, "..");
     await student.locator(".ep-status.live").waitFor({ timeout: 15000 });
     await click(manager, "refresh-state");
     await click(manager, "lock");
-    await student
-      .getByText("Your session is locked.", { exact: false })
-      .waitFor({ timeout: 15000 });
+    await student.getByRole("heading", { name: "Examination Window Locked" }).waitFor({
+      timeout: 15000,
+    });
     await click(manager, "unlock");
     await student
       .locator('[data-answer-text="mean-number"]:enabled')
