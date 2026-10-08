@@ -21,6 +21,10 @@ RewriteRule ^papers/?$ papers.html [L]
 RewriteRule ^manager/sales/?$ manager-sales.html [L]
 RewriteRule ^manager/discussions/?$ manager-discussions.html [L]
 RewriteRule ^paper-pricing/?$ paper-pricing.html [L]
+RewriteRule ^privacy-policy/?$ privacy.html [L]
+RewriteRule ^terms-and-conditions/?$ terms.html [L]
+RewriteRule ^refund-policy/?$ refund-policy.html [L]
+RewriteRule ^delete-account/?$ delete-account.html [L]
 
 RewriteRule ^exams?(/.*)?$ exams.html [L]
 
