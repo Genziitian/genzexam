@@ -111,7 +111,7 @@ const root = path.resolve(__dirname, "..");
     assert.equal(await student.locator('[data-action="refresh-state"]').count(), 1);
     assert.equal(await student.locator(".ep-question").count(), 0);
     await click(manager, "start");
-    await manager.locator(".ep-status.live").first().waitFor();
+    await manager.locator(".saas-status-pill.live").first().waitFor();
     await student.reload();
     await click(student, "open");
     await click(student, "join");
