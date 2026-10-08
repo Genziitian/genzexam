@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
@@ -176,11 +177,37 @@ class _PracticeTabState extends State<PracticeTab> {
       child: ListView(
         padding: const EdgeInsets.fromLTRB(16, 18, 16, 16),
         children: [
-          const Text(
-            'Practice questions',
+          // Small label, then the headline with the last words in green.
+          Row(
+            children: [
+              Container(
+                padding: const EdgeInsets.all(4),
+                decoration: BoxDecoration(color: _green.withValues(alpha: 0.12), borderRadius: BorderRadius.circular(8)),
+                child: const Icon(Icons.bolt_rounded, size: 14, color: _green),
+              ),
+              const SizedBox(width: 7),
+              const Text(
+                'PRACTICE',
+                style: TextStyle(fontSize: 11, fontWeight: FontWeight.w700, letterSpacing: 2.2, color: Color(0xFF64748B)),
+              ),
+            ],
+          ),
+          const SizedBox(height: 8),
+          const Text.rich(
+            TextSpan(
+              text: 'Brush up at ',
+              children: [
+                TextSpan(text: 'your own pace.', style: TextStyle(color: _green)),
+              ],
+            ),
             style: TextStyle(fontSize: 30, height: 1.15, fontWeight: FontWeight.w800, letterSpacing: -0.8, color: _ink),
           ),
-          const SizedBox(height: 14),
+          const SizedBox(height: 4),
+          const Text(
+            'Pick a course and practise any paper, any time.',
+            style: TextStyle(fontSize: 13.5, color: Color(0xFF64748B)),
+          ),
+          const SizedBox(height: 16),
 
           // Search
           Container(
@@ -358,18 +385,76 @@ class _CourseCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(status, style: const TextStyle(fontSize: 11.5, color: Color(0xFF94A3B8))),
-                const Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text('Continue', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600, color: Color(0xFF334155))),
-                    SizedBox(width: 4),
-                    Icon(Icons.arrow_forward_rounded, size: 14, color: Color(0xFF334155)),
-                  ],
-                ),
+                _GoPill(label: pct == 0 ? 'Start' : (pct >= 100 ? 'Review' : 'Continue')),
               ],
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+/// Green pill with an arrow that nudges forward every couple of seconds.
+class _GoPill extends StatefulWidget {
+  final String label;
+
+  const _GoPill({required this.label});
+
+  @override
+  State<_GoPill> createState() => _GoPillState();
+}
+
+class _GoPillState extends State<_GoPill> with SingleTickerProviderStateMixin {
+  late final AnimationController _nudge;
+
+  @override
+  void initState() {
+    super.initState();
+    _nudge = AnimationController(vsync: this, duration: const Duration(milliseconds: 2200))..repeat();
+  }
+
+  @override
+  void dispose() {
+    _nudge.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.fromLTRB(14, 6, 6, 6),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(22),
+        gradient: const LinearGradient(colors: [Color(0xFF22C55E), Color(0xFF15803D)]),
+        boxShadow: [
+          BoxShadow(color: _green.withValues(alpha: 0.35), blurRadius: 12, offset: const Offset(0, 6)),
+        ],
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text(
+            widget.label,
+            style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w700, color: Colors.white),
+          ),
+          const SizedBox(width: 8),
+          Container(
+            width: 24,
+            height: 24,
+            decoration: const BoxDecoration(color: Colors.white, shape: BoxShape.circle),
+            child: AnimatedBuilder(
+              animation: _nudge,
+              builder: (context, child) {
+                // Two quick nudges at the start of each loop, then still.
+                final t = (_nudge.value / 0.35).clamp(0.0, 1.0).toDouble();
+                final dx = 3.0 * math.sin(t * 2 * math.pi).abs();
+                return Transform.translate(offset: Offset(dx, 0), child: child);
+              },
+              child: const Icon(Icons.arrow_forward_rounded, size: 15, color: Color(0xFF15803D)),
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -796,6 +881,10 @@ class _PaperRoomScreenState extends State<PaperRoomScreen> {
       ..setBackgroundColor(Colors.white)
       ..setNavigationDelegate(
         NavigationDelegate(
+          onPageStarted: (url) {
+            // Restyle as early as possible so the plain web look never flashes.
+            if (_signedIn && Uri.tryParse(url)?.path.startsWith('/paper/') == true) _applyAppLook();
+          },
           onPageFinished: _onPageFinished,
           onNavigationRequest: _onNavigationRequest,
           onWebResourceError: (error) {
@@ -818,12 +907,80 @@ class _PaperRoomScreenState extends State<PaperRoomScreen> {
     _web.loadRequest(Uri.parse('$_webOrigin/terms.html'));
   }
 
+  /// Look of the paper room inside the app: the website's own top bar is hidden
+  /// (the app already shows the title), and the "Before you begin" card gets the
+  /// app's rounded, colourful style. Only styling is touched, never behaviour.
+  static const String _appLookCss = '''
+.ep-top{display:none!important}
+html,body{background:#f1f5f9!important}
+.ep-page{padding:16px!important}
+.ep-card{position:relative;overflow:hidden;border-radius:22px!important;border:1px solid #e2e8f0!important;box-shadow:0 14px 30px -16px rgba(15,23,42,.22)!important;padding:22px 18px 18px!important;animation:qlAppIn .45s ease-out both}
+.ep-card::before{content:"";position:absolute;left:0;right:0;top:0;height:5px;background:linear-gradient(90deg,#16a34a,#86efac,rgba(134,239,172,0))}
+.ep-eyebrow{display:inline-block;background:#dcfce7;color:#15803d!important;border-radius:999px;padding:5px 11px!important;font-size:10px!important;font-weight:800!important;letter-spacing:.14em!important;margin:0!important}
+.ep-card h1{font-size:24px!important;line-height:1.2!important;letter-spacing:-.02em;margin:12px 0 14px!important}
+.ep-facts{display:grid!important;grid-template-columns:1fr 1fr!important;gap:10px!important;margin:0 0 14px!important}
+.ep-facts>div{border-radius:14px!important;padding:12px 14px!important;border:1px solid #e2e8f0!important}
+.ep-facts>div:nth-child(1){background:#eff6ff!important;border-color:#bfdbfe!important}
+.ep-facts>div:nth-child(2){background:#f5f3ff!important;border-color:#ddd6fe!important}
+.ep-facts>div:nth-child(3){background:#fffbeb!important;border-color:#fde68a!important}
+.ep-facts>div:nth-child(4){background:#f0fdf4!important;border-color:#bbf7d0!important}
+.ep-facts dt{font-size:10px!important;font-weight:700!important;letter-spacing:.12em!important;color:#64748b!important}
+.ep-facts dd{font-size:16px!important;font-weight:800!important;margin:4px 0 0!important;color:#0f172a!important}
+.ep-actions{display:flex!important;gap:10px!important;margin-top:18px!important}
+.ep-actions .ep-btn{flex:1;display:flex!important;align-items:center;justify-content:center;text-align:center;border-radius:14px!important;padding:14px 10px!important;font-weight:700!important;font-size:15px!important}
+.ep-actions .ep-btn-primary{flex:1.6;background:linear-gradient(90deg,#22c55e,#15803d)!important;border:0!important;color:#fff!important;box-shadow:0 12px 22px -10px rgba(22,163,74,.75)!important}
+@keyframes qlAppIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+#ep-app .pr-live-header{flex-wrap:wrap!important}
+#ep-app .pr-live-header>div:first-child{flex:1 1 100%!important}
+#ep-app .pr-live-header>div:first-child>div{flex:1 1 auto;min-width:0}
+#ep-app .ql-calc-top{width:auto!important;flex:none!important;margin-left:auto;padding:8px 13px!important;white-space:nowrap}
+#ep-app .pr-live-tools-box{display:none!important}
+#ep-app .pr-live-actions{position:fixed!important;left:0!important;right:0!important;bottom:0!important;margin:0!important;padding:9px 12px 10px!important;z-index:6}
+#ep-app .pr-live-main{padding-bottom:78px!important}
+''';
+
+  /// Moves the Calculator button up beside the paper title. The page redraws
+  /// itself between questions, so this keeps watching and moves it again.
+  static const String _appLookJs = '''
+(function(){
+  if (window.__qlAppLook) return;
+  window.__qlAppLook = true;
+  function place(){
+    var header = document.querySelector('.pr-live-header');
+    var button = document.querySelector('.pr-live-tools-box [data-calc]');
+    if (!header || !button) return;
+    var brand = header.firstElementChild;
+    if (!brand) return;
+    var old = brand.querySelector('[data-calc]');
+    if (old) old.remove();
+    button.classList.add('ql-calc-top');
+    brand.appendChild(button);
+  }
+  new MutationObserver(place).observe(document.documentElement, {childList: true, subtree: true});
+  place();
+})();
+''';
+
+  Future<void> _applyAppLook() async {
+    try {
+      await _web.runJavaScript(
+        '(function f(){var d=document;if(!d.head){setTimeout(f,30);return;}'
+        'if(d.getElementById("ql-app-look"))return;'
+        'var s=d.createElement("style");s.id="ql-app-look";s.textContent=${jsonEncode(_appLookCss)};d.head.appendChild(s);})();',
+      );
+      await _web.runJavaScript(_appLookJs);
+    } catch (_) {
+      // Styling is cosmetic; the paper still works without it.
+    }
+  }
+
   /// Step 2: hand over the session, then open the paper.
   Future<void> _onPageFinished(String url) async {
     if (!mounted) return;
     if (_signedIn) {
       if (Uri.tryParse(url)?.path.startsWith('/paper/') == true) {
-        setState(() => _ready = true);
+        await _applyAppLook();
+        if (mounted) setState(() => _ready = true);
       }
       return;
     }
@@ -864,36 +1021,77 @@ class _PaperRoomScreenState extends State<PaperRoomScreen> {
     if (uri == null) return NavigationDecision.navigate;
     final onSite = uri.host == 'quiz.genziitian.in';
     if (onSite && !uri.path.startsWith('/paper/')) {
-      if (mounted) Navigator.of(context).maybePop();
+      _close();
       return NavigationDecision.prevent;
     }
     return NavigationDecision.navigate;
   }
 
+  bool _closing = false;
+
+  void _close() {
+    if (_closing || !mounted) return;
+    _closing = true;
+    Navigator.of(context).pop();
+  }
+
+  /// Asked on the phone's back button / gesture. While a paper is being
+  /// attempted this opens the page's own "Submit paper?" box (with an extra
+  /// "Leave and finish later" link); a second back closes that box. On the
+  /// start and result screens, back simply leaves.
+  static const String _backJs = '''
+(function(){
+  if (!document.querySelector('.pr-live-root')) return 'out';
+  var modal = document.getElementById('ep-student-submit-modal');
+  if (modal) { modal.remove(); return 'closed'; }
+  var submit = document.getElementById('btn-student-submit');
+  if (!submit) return 'out';
+  submit.click();
+  modal = document.getElementById('ep-student-submit-modal');
+  var box = modal && modal.querySelector('[role=dialog]');
+  if (box && !box.querySelector('.ql-leave')) {
+    var leave = document.createElement('button');
+    leave.type = 'button';
+    leave.className = 'ql-leave';
+    leave.textContent = 'Leave and finish later';
+    leave.style.cssText = 'display:block;margin:14px auto 0;background:none;border:0;color:#64748b;font-size:13px;font-weight:600;text-decoration:underline;cursor:pointer;';
+    leave.onclick = function(){ window.location.href = '/my-papers'; };
+    box.appendChild(leave);
+  }
+  return 'asked';
+})();
+''';
+
+  Future<void> _onBack() async {
+    if (!_ready || _error != null) {
+      _close();
+      return;
+    }
+    var answer = 'out';
+    try {
+      answer = (await _web.runJavaScriptReturningResult(_backJs)).toString();
+    } catch (_) {
+      answer = 'out';
+    }
+    if (answer.contains('out')) _close();
+  }
+
   @override
   Widget build(BuildContext context) {
+    return PopScope(
+      canPop: false,
+      onPopInvokedWithResult: (didPop, _) {
+        if (!didPop) _onBack();
+      },
+      child: _buildPage(context),
+    );
+  }
+
+  Widget _buildPage(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        surfaceTintColor: Colors.white,
-        foregroundColor: _ink,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.close_rounded),
-          tooltip: 'Close paper',
-          onPressed: () => Navigator.of(context).maybePop(),
-        ),
-        titleSpacing: 0,
-        title: Text(
-          widget.title,
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis,
-          style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w700, color: _ink),
-        ),
-      ),
+      // No app title bar: the paper page has its own header with the title and Submit & Exit.
       body: SafeArea(
-        top: false,
         child: _error != null
             ? AppErrorCard(title: 'Unable to Open Paper', message: _error!, onRetry: _start)
             : Stack(

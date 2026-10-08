@@ -456,7 +456,8 @@ main[data-ql-paper-filter=todo] a[data-ql-paper=done],main[data-ql-paper-filter=
 [data-ql-podium]>[data-place="1"]>.absolute{background:#f59e0b!important;z-index:2}
 :root:not([data-theme=dark]) [data-ql-podium]>[data-place="1"] .text-brand{color:#92400e!important}
 /* A band of light sweeping across the gold card. */
-[data-ql-podium]>[data-place="1"]::after{content:"";position:absolute;inset:0;border-radius:20px;pointer-events:none;background:linear-gradient(110deg,rgba(255,255,255,0) 38%,rgba(255,255,255,.7) 50%,rgba(255,255,255,0) 62%);background-size:260% 100%;background-repeat:no-repeat;animation:ql-gold-shine 2.4s ease-in-out infinite}
+[data-ql-podium]>[data-place="1"]>*:not(.absolute){position:relative;z-index:1}
+[data-ql-podium]>[data-place="1"]::after{content:"";position:absolute;inset:0;z-index:0;border-radius:20px;pointer-events:none;background:linear-gradient(180deg,rgba(255,255,255,.45),rgba(255,255,255,0) 70px) no-repeat,linear-gradient(108deg,rgba(255,255,255,0) 42%,rgba(255,255,255,.38) 47%,rgba(255,255,255,.62) 50%,rgba(255,255,255,.38) 53%,rgba(255,255,255,0) 58%) no-repeat;background-size:100% 100%,320% 100%;background-position:0 0,150% 0;animation:ql-gold-shine 2.4s ease-in-out infinite}
 [data-ql-lb] tbody tr{animation:ql-row-in .45s ease-out both}
 [data-ql-lb] tbody tr:nth-child(1){animation-delay:.35s}[data-ql-lb] tbody tr:nth-child(2){animation-delay:.41s}[data-ql-lb] tbody tr:nth-child(3){animation-delay:.47s}[data-ql-lb] tbody tr:nth-child(4){animation-delay:.53s}[data-ql-lb] tbody tr:nth-child(5){animation-delay:.59s}[data-ql-lb] tbody tr:nth-child(6){animation-delay:.65s}[data-ql-lb] tbody tr:nth-child(7){animation-delay:.71s}[data-ql-lb] tbody tr:nth-child(8){animation-delay:.77s}[data-ql-lb] tbody tr:nth-child(n+9){animation-delay:.83s}
 .ql-lb-dots{display:flex;justify-content:center;gap:6px;padding:6px 0 5px}
@@ -478,7 +479,7 @@ main[data-ql-paper-filter=todo] a[data-ql-paper=done],main[data-ql-paper-filter=
 @keyframes ql-pod-pop{0%{opacity:0;transform:scale(.6)}100%{opacity:1;transform:none}}
 @keyframes ql-pod-bob{0%,100%{transform:translateY(2px) rotate(-5deg)}50%{transform:translateY(-3px) rotate(5deg)}}
 @keyframes ql-gold-glow{0%,100%{box-shadow:0 10px 22px -8px rgba(245,158,11,.5)}50%{box-shadow:0 0 0 3px rgba(253,224,71,.35),0 12px 36px -4px rgba(251,191,36,.85)}}
-@keyframes ql-gold-shine{0%{background-position:160% 0}55%,100%{background-position:-60% 0}}
+@keyframes ql-gold-shine{0%,8%{background-position:0 0,150% 0}46%,100%{background-position:0 0,-50% 0}}
 @keyframes ql-row-in{0%{opacity:0;transform:translateY(14px)}100%{opacity:1;transform:none}}
 }
 @media(max-width:640px) and (prefers-reduced-motion:reduce){[data-ql-podium]>[data-place],[data-ql-podium]>[data-place]>span.text-2xl,[data-ql-podium]>[data-place="1"]::after,[data-ql-lb] tbody tr{animation:none!important}.ql-lb-pin{transition:none}}

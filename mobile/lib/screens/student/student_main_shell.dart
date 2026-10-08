@@ -8,6 +8,117 @@ import '../../state/auth_state.dart';
 import '../../widgets/app_ux_components.dart';
 import 'practice_screens.dart';
 
+// -----------------------------------------------------------------------------
+// AVATARS: ready-made pictures a student can pick. The choice is kept on this
+// phone (per account); without one, the avatar shows the student's initials.
+// -----------------------------------------------------------------------------
+class _AvatarPreset {
+  final String emoji;
+  final Color from;
+  final Color to;
+
+  const _AvatarPreset(this.emoji, this.from, this.to);
+}
+
+const List<_AvatarPreset> _avatarPresets = [
+  _AvatarPreset('🦊', Color(0xFFFDBA74), Color(0xFFEA580C)),
+  _AvatarPreset('🐼', Color(0xFFE2E8F0), Color(0xFF64748B)),
+  _AvatarPreset('🦁', Color(0xFFFDE68A), Color(0xFFD97706)),
+  _AvatarPreset('🐯', Color(0xFFFED7AA), Color(0xFFC2410C)),
+  _AvatarPreset('🐸', Color(0xFFBBF7D0), Color(0xFF16A34A)),
+  _AvatarPreset('🦉', Color(0xFFDDD6FE), Color(0xFF6D28D9)),
+  _AvatarPreset('🐙', Color(0xFFFBCFE8), Color(0xFFDB2777)),
+  _AvatarPreset('🐬', Color(0xFFBAE6FD), Color(0xFF0284C7)),
+  _AvatarPreset('🚀', Color(0xFFC7D2FE), Color(0xFF4338CA)),
+  _AvatarPreset('⚡', Color(0xFFFEF08A), Color(0xFFCA8A04)),
+  _AvatarPreset('🎯', Color(0xFFFECACA), Color(0xFFDC2626)),
+  _AvatarPreset('🧠', Color(0xFFF5D0FE), Color(0xFFA21CAF)),
+];
+
+/// Index into [_avatarPresets], or null for the initials avatar.
+final ValueNotifier<int?> _avatarChoice = ValueNotifier<int?>(null);
+const _avatarStore = FlutterSecureStorage();
+
+String _avatarKey(int? userId) => 'avatar_preset_${userId ?? 0}';
+
+Future<void> _loadAvatarChoice(int? userId) async {
+  try {
+    final saved = int.tryParse(await _avatarStore.read(key: _avatarKey(userId)) ?? '');
+    _avatarChoice.value = (saved != null && saved >= 0 && saved < _avatarPresets.length) ? saved : null;
+  } catch (_) {
+    _avatarChoice.value = null;
+  }
+}
+
+Future<void> _saveAvatarChoice(int? userId, int? choice) async {
+  _avatarChoice.value = choice;
+  try {
+    if (choice == null) {
+      await _avatarStore.delete(key: _avatarKey(userId));
+    } else {
+      await _avatarStore.write(key: _avatarKey(userId), value: '$choice');
+    }
+  } catch (_) {
+    // The choice still applies for this session.
+  }
+}
+
+String _userInitials(String? name) {
+  final parts = (name ?? '').trim().split(RegExp(r'\s+')).where((p) => p.isNotEmpty).toList();
+  if (parts.isEmpty) return 'S';
+  if (parts.length == 1) return parts.first[0].toUpperCase();
+  return (parts.first[0] + parts.last[0]).toUpperCase();
+}
+
+/// One avatar circle: a chosen preset, or the initials. [preset] overrides the saved choice (used by the picker).
+Widget _avatarCircle({required String? name, required double size, int? preset, bool usePreset = true}) {
+  final p = usePreset && preset != null && preset >= 0 && preset < _avatarPresets.length ? _avatarPresets[preset] : null;
+  if (p == null) {
+    return Container(
+      width: size,
+      height: size,
+      alignment: Alignment.center,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: const Color(0xFFF0FDF4),
+        border: Border.all(color: const Color(0xFF86EFAC), width: 2),
+      ),
+      child: Text(
+        _userInitials(name),
+        style: TextStyle(fontSize: size * 0.34, fontWeight: FontWeight.w800, color: const Color(0xFF16A34A)),
+      ),
+    );
+  }
+  return Container(
+    width: size,
+    height: size,
+    alignment: Alignment.center,
+    decoration: BoxDecoration(
+      shape: BoxShape.circle,
+      gradient: LinearGradient(begin: Alignment.topLeft, end: Alignment.bottomRight, colors: [p.from, p.to]),
+      border: Border.all(color: Colors.white, width: 2),
+      boxShadow: [BoxShadow(color: p.to.withValues(alpha: 0.35), blurRadius: size * 0.2, offset: Offset(0, size * 0.08))],
+    ),
+    child: Text(p.emoji, style: TextStyle(fontSize: size * 0.5, height: 1.1)),
+  );
+}
+
+/// The signed-in student's avatar; redraws when they pick a different one.
+class _UserAvatar extends StatelessWidget {
+  final String? name;
+  final double size;
+
+  const _UserAvatar({required this.name, required this.size});
+
+  @override
+  Widget build(BuildContext context) {
+    return ValueListenableBuilder<int?>(
+      valueListenable: _avatarChoice,
+      builder: (context, choice, _) => _avatarCircle(name: name, size: size, preset: choice),
+    );
+  }
+}
+
 /// 5-Tab Navigation Shell for Students: Home, Quizzes & Storefront, Test, Support, More.
 ///
 /// Features:
@@ -38,6 +149,12 @@ class _StudentMainShellState extends State<StudentMainShell> {
   final StorefrontService _storefrontService = StorefrontService();
   final DiscussionService _discussionService = DiscussionService();
   final LeaderboardService _leaderboardService = LeaderboardService();
+
+  @override
+  void initState() {
+    super.initState();
+    _loadAvatarChoice(widget.authState.user?.id);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -584,7 +701,7 @@ class _RanksTabState extends State<_RanksTab> with TickerProviderStateMixin {
             Container(
               height: height,
               width: double.infinity,
-              padding: const EdgeInsets.fromLTRB(6, 22, 6, 12),
+              clipBehavior: Clip.antiAlias,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(22),
                 gradient: LinearGradient(begin: Alignment.topCenter, end: Alignment.bottomCenter, colors: fill),
@@ -593,7 +710,76 @@ class _RanksTabState extends State<_RanksTab> with TickerProviderStateMixin {
                   BoxShadow(color: edge.withValues(alpha: place == 1 ? 0.35 : 0.2), blurRadius: place == 1 ? 24 : 14, offset: const Offset(0, 10)),
                 ],
               ),
-              child: Column(
+              child: Stack(
+                children: [
+                  if (place == 1) ...[
+                    // Soft gloss along the top edge, like polished metal.
+                    Positioned(
+                      left: 0,
+                      right: 0,
+                      top: 0,
+                      height: 70,
+                      child: DecoratedBox(
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: [Colors.white.withValues(alpha: 0.45), Colors.white.withValues(alpha: 0)],
+                          ),
+                        ),
+                      ),
+                    ),
+                    // A narrow glint that glides across once, then rests. It sits under
+                    // the text, so the name and XP always stay crisp.
+                    Positioned.fill(
+                      child: LayoutBuilder(
+                        builder: (context, box) {
+                          final bandWidth = box.maxWidth * 0.42;
+                          return AnimatedBuilder(
+                            animation: _idle,
+                            builder: (context, child) {
+                              final t = ((_idle.value - 0.08) / 0.38).clamp(0.0, 1.0).toDouble();
+                              final eased = Curves.easeInOut.transform(t);
+                              // The band is centred in the card; slide it from fully off the left to fully off the right.
+                              final travel = box.maxWidth / 2 + bandWidth * 1.2;
+                              final dx = -travel + 2 * travel * eased;
+                              return Transform.translate(offset: Offset(dx, 0), child: child);
+                            },
+                            child: Align(
+                              alignment: Alignment.centerLeft,
+                              child: Transform.rotate(
+                                angle: 0.32,
+                                child: OverflowBox(
+                                  maxHeight: box.maxHeight * 1.8,
+                                  minHeight: box.maxHeight * 1.8,
+                                  maxWidth: bandWidth,
+                                  minWidth: bandWidth,
+                                  child: DecoratedBox(
+                                    decoration: BoxDecoration(
+                                      gradient: LinearGradient(
+                                        colors: [
+                                          Colors.white.withValues(alpha: 0),
+                                          Colors.white.withValues(alpha: 0.38),
+                                          Colors.white.withValues(alpha: 0.62),
+                                          Colors.white.withValues(alpha: 0.38),
+                                          Colors.white.withValues(alpha: 0),
+                                        ],
+                                        stops: const [0.0, 0.35, 0.5, 0.65, 1.0],
+                                      ),
+                                    ),
+                                    child: const SizedBox.expand(),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                  ],
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(6, 22, 6, 12),
+                    child: Column(
                 children: [
                   _avatar(entry.name, place == 1 ? 62 : 52, color: strong),
                   const SizedBox(height: 8),
@@ -639,38 +825,10 @@ class _RanksTabState extends State<_RanksTab> with TickerProviderStateMixin {
                   ),
                 ],
               ),
-            ),
-            if (place == 1)
-              // A band of light sweeping across the gold, once per loop.
-              Positioned(
-                left: 0,
-                right: 0,
-                bottom: 0,
-                height: height,
-                child: IgnorePointer(
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(22),
-                    child: AnimatedBuilder(
-                      animation: _idle,
-                      builder: (context, _) {
-                        // The band crosses during the first 55% of the loop, then rests.
-                        final t = (_idle.value / 0.55).clamp(0.0, 1.0).toDouble();
-                        final x = -2.2 + 4.4 * Curves.easeInOut.transform(t);
-                        return DecoratedBox(
-                          decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                              begin: Alignment(x - 0.8, -1),
-                              end: Alignment(x + 0.8, 1),
-                              colors: const [Color(0x00FFFFFF), Color(0xB3FFFFFF), Color(0x00FFFFFF)],
-                              stops: const [0.38, 0.5, 0.62],
-                            ),
-                          ),
-                        );
-                      },
-                    ),
                   ),
-                ),
+                ],
               ),
+            ),
             Positioned(
               top: 0,
               child: Container(
@@ -1069,13 +1227,6 @@ class _HomeTabState extends State<_HomeTab> with SingleTickerProviderStateMixin 
     return first[0].toUpperCase() + first.substring(1).toLowerCase();
   }
 
-  static String _initials(String? name) {
-    final parts = (name ?? '').trim().split(RegExp(r'\s+')).where((p) => p.isNotEmpty).toList();
-    if (parts.isEmpty) return 'S';
-    if (parts.length == 1) return parts.first[0].toUpperCase();
-    return (parts.first[0] + parts.last[0]).toUpperCase();
-  }
-
   /// "THU · OCT 8, 2026" from the server's greeting.
   static String _shortDate(GreetingInfo greeting) {
     final day = greeting.weekday.length > 3 ? greeting.weekday.substring(0, 3) : greeting.weekday;
@@ -1201,20 +1352,7 @@ class _HomeTabState extends State<_HomeTab> with SingleTickerProviderStateMixin 
                           AppHaptics.selection();
                           widget.onOpenProfile();
                         },
-                        child: Container(
-                          width: 40,
-                          height: 40,
-                          alignment: Alignment.center,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: const Color(0xFFF0FDF4),
-                            border: Border.all(color: const Color(0xFF86EFAC), width: 2),
-                          ),
-                          child: Text(
-                            _initials(widget.user?.name),
-                            style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w800, color: Color(0xFF16A34A)),
-                          ),
-                        ),
+                        child: _UserAvatar(name: widget.user?.name, size: 40),
                       ),
                     ),
                   ],
@@ -2346,45 +2484,240 @@ class _MyPapersTabState extends State<_MyPapersTab> {
 
   void _showDetails(MyPaperItem paper, String state, String progressText) {
     AppHaptics.selection();
+    final attempts = paper.attemptCount;
+    final total = paper.lastTotalMarks ?? 0;
+    final score = paper.lastScore ?? 0;
+    final hasScore = attempts > 0 && total > 0 && !paper.inProgress;
+    final fraction = hasScore ? (score / total).clamp(0.0, 1.0).toDouble() : 0.0;
+    final percent = (fraction * 100).round();
+    final Color scoreColor = percent >= 70
+        ? const Color(0xFF16A34A)
+        : percent >= 40
+            ? const Color(0xFFF59E0B)
+            : const Color(0xFFF43F5E);
+    final timed = (paper.timeLimitMinutes ?? 0) > 0;
+    final actionLabel = paper.inProgress ? 'Continue' : (attempts > 0 ? 'Attempt again' : 'Start');
+    final sub = [paper.course?.name, paper.year?.toString(), _sectionLabels[paper.section]]
+        .where((s) => s != null && s.isNotEmpty)
+        .join(' · ');
+
+    Widget tile(IconData icon, String value, String label, Color color) {
+      return Expanded(
+        child: Container(
+          padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 6),
+          decoration: BoxDecoration(
+            color: color.withValues(alpha: 0.08),
+            borderRadius: BorderRadius.circular(14),
+            border: Border.all(color: color.withValues(alpha: 0.18)),
+          ),
+          child: Column(
+            children: [
+              Icon(icon, size: 18, color: color),
+              const SizedBox(height: 6),
+              Text(
+                value,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w800, color: Color(0xFF0F172A)),
+              ),
+              const SizedBox(height: 1),
+              Text(label, style: const TextStyle(fontSize: 11, color: Color(0xFF64748B))),
+            ],
+          ),
+        ),
+      );
+    }
+
     showModalBottomSheet<void>(
       context: context,
+      isScrollControlled: true,
       backgroundColor: Colors.white,
-      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(22))),
+      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(26))),
       builder: (ctx) {
-        Widget line(String label, String value) => Padding(
-              padding: const EdgeInsets.symmetric(vertical: 7),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(width: 110, child: Text(label, style: const TextStyle(fontSize: 13, color: Color(0xFF64748B)))),
-                  Expanded(
-                    child: Text(value, style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w600, color: Color(0xFF0F172A))),
-                  ),
-                ],
-              ),
-            );
         return SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(20, 18, 20, 16),
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.fromLTRB(20, 10, 20, 18),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(paper.title, style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w800, color: Color(0xFF0F172A))),
+                // Drag handle
+                Center(
+                  child: Container(
+                    width: 40,
+                    height: 4,
+                    decoration: BoxDecoration(color: const Color(0xFFE2E8F0), borderRadius: BorderRadius.circular(4)),
+                  ),
+                ),
+                const SizedBox(height: 16),
+
+                // Header: icon, title, course line, access tag
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      width: 46,
+                      height: 46,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(14),
+                        gradient: const LinearGradient(
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                          colors: [Color(0xFF22C55E), Color(0xFF15803D)],
+                        ),
+                      ),
+                      child: const Icon(Icons.description_rounded, color: Colors.white, size: 24),
+                    ),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            paper.title,
+                            style: const TextStyle(fontSize: 17, height: 1.25, fontWeight: FontWeight.w800, color: Color(0xFF0F172A)),
+                          ),
+                          if (sub.isNotEmpty) ...[
+                            const SizedBox(height: 3),
+                            Text(sub, style: const TextStyle(fontSize: 12.5, color: Color(0xFF64748B))),
+                          ],
+                        ],
+                      ),
+                    ),
+                    const SizedBox(width: 8),
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                      decoration: BoxDecoration(color: const Color(0xFFDCFCE7), borderRadius: BorderRadius.circular(20)),
+                      child: Text(state, style: const TextStyle(fontSize: 11, fontWeight: FontWeight.w700, color: Color(0xFF15803D))),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 16),
+
+                // Quick facts
+                Row(
+                  children: [
+                    tile(Icons.quiz_outlined, '${paper.questionCount}', 'Questions', const Color(0xFF2563EB)),
+                    const SizedBox(width: 8),
+                    tile(Icons.timer_outlined, timed ? '${paper.timeLimitMinutes} min' : 'Untimed', 'Time', const Color(0xFF7C3AED)),
+                    const SizedBox(width: 8),
+                    tile(Icons.replay_rounded, '$attempts', attempts == 1 ? 'Attempt' : 'Attempts', const Color(0xFFD97706)),
+                  ],
+                ),
+                const SizedBox(height: 14),
+
+                // Last score
+                Container(
+                  padding: const EdgeInsets.all(14),
+                  decoration: BoxDecoration(
+                    color: const Color(0xFFF8FAFC),
+                    borderRadius: BorderRadius.circular(16),
+                    border: Border.all(color: const Color(0xFFE2E8F0)),
+                  ),
+                  child: hasScore
+                      ? Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                const Expanded(
+                                  child: Text(
+                                    'LAST SCORE',
+                                    style: TextStyle(fontSize: 10, fontWeight: FontWeight.w700, letterSpacing: 1.4, color: Color(0xFF94A3B8)),
+                                  ),
+                                ),
+                                Text.rich(
+                                  TextSpan(
+                                    text: _num(score),
+                                    children: [
+                                      TextSpan(
+                                        text: ' / ${_num(total)}',
+                                        style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Color(0xFF94A3B8)),
+                                      ),
+                                    ],
+                                  ),
+                                  style: const TextStyle(fontSize: 22, height: 1.0, fontWeight: FontWeight.w800, color: Color(0xFF0F172A)),
+                                ),
+                                const SizedBox(width: 10),
+                                Container(
+                                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                                  decoration: BoxDecoration(color: scoreColor.withValues(alpha: 0.12), borderRadius: BorderRadius.circular(8)),
+                                  child: Text('$percent%', style: TextStyle(fontSize: 12, fontWeight: FontWeight.w800, color: scoreColor)),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 10),
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(6),
+                              child: TweenAnimationBuilder<double>(
+                                tween: Tween<double>(begin: 0.0, end: fraction),
+                                duration: const Duration(milliseconds: 800),
+                                curve: Curves.easeOutCubic,
+                                builder: (context, t, _) => LinearProgressIndicator(
+                                  value: t,
+                                  minHeight: 7,
+                                  backgroundColor: const Color(0xFFE2E8F0),
+                                  valueColor: AlwaysStoppedAnimation<Color>(scoreColor),
+                                ),
+                              ),
+                            ),
+                          ],
+                        )
+                      : Row(
+                          children: [
+                            Icon(
+                              paper.inProgress ? Icons.hourglass_top_rounded : Icons.flag_outlined,
+                              size: 20,
+                              color: paper.inProgress ? const Color(0xFFD97706) : const Color(0xFF94A3B8),
+                            ),
+                            const SizedBox(width: 10),
+                            Expanded(
+                              child: Text(
+                                paper.inProgress
+                                    ? 'You have an attempt in progress. Pick up where you left off.'
+                                    : 'Not started yet. Your score will show here after your first attempt.',
+                                style: const TextStyle(fontSize: 13, height: 1.35, color: Color(0xFF475569)),
+                              ),
+                            ),
+                          ],
+                        ),
+                ),
+
+                // About
                 if ((paper.description ?? '').trim().isNotEmpty) ...[
-                  const SizedBox(height: 6),
-                  Text(paper.description!.trim(), style: const TextStyle(fontSize: 13, height: 1.4, color: Color(0xFF64748B))),
+                  const SizedBox(height: 14),
+                  const Text(
+                    'ABOUT THIS PAPER',
+                    style: TextStyle(fontSize: 10, fontWeight: FontWeight.w700, letterSpacing: 1.4, color: Color(0xFF94A3B8)),
+                  ),
+                  const SizedBox(height: 5),
+                  Text(paper.description!.trim(), style: const TextStyle(fontSize: 13, height: 1.45, color: Color(0xFF475569))),
                 ],
-                const SizedBox(height: 10),
-                const Divider(height: 1, color: Color(0xFFF1F5F9)),
-                const SizedBox(height: 4),
-                line('Course', paper.course?.name ?? '—'),
-                line('Type', _sectionLabels[paper.section] ?? '—'),
-                if (paper.year != null) line('Year', '${paper.year}'),
-                line('Questions', '${paper.questionCount}'),
-                line('Time', (paper.timeLimitMinutes ?? 0) > 0 ? '${paper.timeLimitMinutes} min' : 'Untimed'),
-                line('Access', state),
-                line('Progress', progressText),
+                const SizedBox(height: 18),
+
+                // Actions
+                Row(
+                  children: [
+                    Expanded(
+                      child: _button('Close', filled: false, onTap: () => Navigator.of(ctx).pop()),
+                    ),
+                    if (paper.available && paper.hasAccess) ...[
+                      const SizedBox(width: 10),
+                      Expanded(
+                        flex: 2,
+                        child: _button(
+                          actionLabel,
+                          filled: true,
+                          onTap: () {
+                            Navigator.of(ctx).pop();
+                            _openPaper(paper);
+                          },
+                        ),
+                      ),
+                    ],
+                  ],
+                ),
               ],
             ),
           ),
@@ -2493,50 +2826,63 @@ class _MyPapersTabState extends State<_MyPapersTab> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.fromLTRB(14, 11, 14, 12),
+            padding: const EdgeInsets.fromLTRB(16, 14, 16, 14),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  paper.title,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  style: const TextStyle(fontSize: 15, height: 1.25, fontWeight: FontWeight.w700, color: Color(0xFF0F172A)),
-                ),
-                if (sub.isNotEmpty) ...[
-                  const SizedBox(height: 2),
-                  Text(sub, maxLines: 1, overflow: TextOverflow.ellipsis, style: const TextStyle(fontSize: 12, color: Color(0xFF64748B))),
-                ],
-                const SizedBox(height: 8),
-                // Chips and the Free / Purchased tag share one row.
+                // Left: title, course and score. Right: Free tag, time and question count stacked.
                 Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    _chip('${paper.questionCount} questions'),
-                    const SizedBox(width: 6),
-                    _chip((paper.timeLimitMinutes ?? 0) > 0 ? '${paper.timeLimitMinutes} min' : 'Untimed'),
-                    const Spacer(),
-                    Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 3),
-                      decoration: BoxDecoration(color: tagBg, borderRadius: BorderRadius.circular(20)),
-                      child: Text(state, style: TextStyle(fontSize: 11, fontWeight: FontWeight.w700, color: tagFg)),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            paper.title,
+                            maxLines: 3,
+                            overflow: TextOverflow.ellipsis,
+                            style: const TextStyle(fontSize: 15, height: 1.25, fontWeight: FontWeight.w700, color: Color(0xFF0F172A)),
+                          ),
+                          if (sub.isNotEmpty) ...[
+                            const SizedBox(height: 3),
+                            Text(sub, maxLines: 1, overflow: TextOverflow.ellipsis, style: const TextStyle(fontSize: 12, color: Color(0xFF64748B))),
+                          ],
+                          const SizedBox(height: 8),
+                          Text(
+                            progressText,
+                            style: TextStyle(
+                              fontSize: 12.5,
+                              fontWeight: FontWeight.w700,
+                              color: paper.inProgress
+                                  ? const Color(0xFFB45309)
+                                  : attempts > 0
+                                      ? const Color(0xFF15803D)
+                                      : const Color(0xFF94A3B8),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(width: 12),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 3),
+                          decoration: BoxDecoration(color: tagBg, borderRadius: BorderRadius.circular(20)),
+                          child: Text(state, style: TextStyle(fontSize: 11, fontWeight: FontWeight.w700, color: tagFg)),
+                        ),
+                        const SizedBox(height: 6),
+                        _chip((paper.timeLimitMinutes ?? 0) > 0 ? '${paper.timeLimitMinutes} min' : 'Untimed'),
+                        const SizedBox(height: 6),
+                        _chip('${paper.questionCount} questions'),
+                      ],
                     ),
                   ],
                 ),
-                const SizedBox(height: 8),
-                Text(
-                  progressText,
-                  style: TextStyle(
-                    fontSize: 12.5,
-                    fontWeight: FontWeight.w700,
-                    color: paper.inProgress
-                        ? const Color(0xFFB45309)
-                        : attempts > 0
-                            ? const Color(0xFF15803D)
-                            : const Color(0xFF94A3B8),
-                  ),
-                ),
                 if (showBar) ...[
-                  const SizedBox(height: 6),
+                  const SizedBox(height: 8),
                   ClipRRect(
                     borderRadius: BorderRadius.circular(4),
                     child: LinearProgressIndicator(
@@ -2548,7 +2894,7 @@ class _MyPapersTabState extends State<_MyPapersTab> {
                   ),
                 ],
                 if (paper.available) ...[
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 12),
                   Row(
                     children: [
                       if (usable) ...[
@@ -3190,7 +3536,7 @@ In full compliance with Google Play Store User Data policies, you can delete you
 
   Widget _themeTile(String theme, String label) {
     final isSelected = _selectedTheme == theme;
-    return ListTile(
+    return Material(type: MaterialType.transparency, child: ListTile(
       dense: true,
       title: Text(label, style: TextStyle(fontWeight: isSelected ? FontWeight.bold : FontWeight.normal, fontSize: 13)),
       trailing: isSelected ? const Icon(Icons.check_circle_rounded, color: Color(0xFF16A34A), size: 20) : null,
@@ -3199,6 +3545,166 @@ In full compliance with Google Play Store User Data policies, you can delete you
         setState(() => _selectedTheme = theme);
         Navigator.pop(context);
       },
+    ));
+  }
+
+  /// Edit profile: change the display name and pick one of the ready-made avatars.
+  void _showEditProfile() {
+    AppHaptics.light();
+    final user = widget.user;
+    final nameController = TextEditingController(text: user?.name ?? '');
+    int? picked = _avatarChoice.value;
+    var saving = false;
+    String? error;
+
+    showModalBottomSheet<void>(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.white,
+      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(26))),
+      builder: (ctx) => StatefulBuilder(
+        builder: (ctx, setSheet) {
+          Future<void> save() async {
+            final name = nameController.text.trim();
+            if (name.isEmpty) {
+              setSheet(() => error = 'Name cannot be empty.');
+              return;
+            }
+            setSheet(() {
+              saving = true;
+              error = null;
+            });
+            String? problem;
+            if (name != (user?.name ?? '')) {
+              problem = await widget.authState.updateName(name);
+            }
+            await _saveAvatarChoice(user?.id, picked);
+            if (!ctx.mounted) return;
+            if (problem != null) {
+              setSheet(() {
+                saving = false;
+                error = problem;
+              });
+              return;
+            }
+            Navigator.of(ctx).pop();
+          }
+
+          Widget option(int? index) {
+            final selected = picked == index;
+            return GestureDetector(
+              onTap: () {
+                AppHaptics.selection();
+                setSheet(() => picked = index);
+              },
+              child: AnimatedContainer(
+                duration: const Duration(milliseconds: 160),
+                padding: const EdgeInsets.all(3),
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  border: Border.all(color: selected ? const Color(0xFF16A34A) : Colors.transparent, width: 2.5),
+                ),
+                child: AnimatedScale(
+                  scale: selected ? 1.0 : 0.92,
+                  duration: const Duration(milliseconds: 160),
+                  child: _avatarCircle(name: nameController.text, size: 52, preset: index, usePreset: index != null),
+                ),
+              ),
+            );
+          }
+
+          return Padding(
+            padding: EdgeInsets.only(bottom: MediaQuery.of(ctx).viewInsets.bottom),
+            child: SafeArea(
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.fromLTRB(20, 10, 20, 18),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Center(
+                      child: Container(
+                        width: 40,
+                        height: 4,
+                        decoration: BoxDecoration(color: const Color(0xFFE2E8F0), borderRadius: BorderRadius.circular(4)),
+                      ),
+                    ),
+                    const SizedBox(height: 16),
+                    const Text('Edit profile', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800, color: Color(0xFF0F172A))),
+                    const SizedBox(height: 16),
+
+                    // Live preview
+                    Center(child: _avatarCircle(name: nameController.text, size: 84, preset: picked, usePreset: picked != null)),
+                    const SizedBox(height: 18),
+
+                    const Text(
+                      'CHOOSE AN AVATAR',
+                      style: TextStyle(fontSize: 10, fontWeight: FontWeight.w700, letterSpacing: 1.4, color: Color(0xFF94A3B8)),
+                    ),
+                    const SizedBox(height: 10),
+                    Wrap(
+                      spacing: 6,
+                      runSpacing: 8,
+                      children: [
+                        option(null), // initials
+                        for (var i = 0; i < _avatarPresets.length; i++) option(i),
+                      ],
+                    ),
+                    const SizedBox(height: 18),
+
+                    const Text(
+                      'YOUR NAME',
+                      style: TextStyle(fontSize: 10, fontWeight: FontWeight.w700, letterSpacing: 1.4, color: Color(0xFF94A3B8)),
+                    ),
+                    const SizedBox(height: 8),
+                    TextField(
+                      controller: nameController,
+                      textCapitalization: TextCapitalization.words,
+                      maxLength: 120,
+                      onChanged: (_) => setSheet(() {}),
+                      decoration: InputDecoration(
+                        counterText: '',
+                        hintText: 'Your name',
+                        filled: true,
+                        fillColor: const Color(0xFFF8FAFC),
+                        prefixIcon: const Icon(Icons.person_outline_rounded, color: Color(0xFF64748B)),
+                        border: OutlineInputBorder(borderRadius: BorderRadius.circular(14), borderSide: const BorderSide(color: Color(0xFFE2E8F0))),
+                        enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(14), borderSide: const BorderSide(color: Color(0xFFE2E8F0))),
+                        focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(14), borderSide: const BorderSide(color: Color(0xFF16A34A), width: 2)),
+                      ),
+                    ),
+                    if (error != null) ...[
+                      const SizedBox(height: 8),
+                      Text(error!, style: const TextStyle(fontSize: 12.5, color: Color(0xFFDC2626), fontWeight: FontWeight.w600)),
+                    ],
+                    const SizedBox(height: 18),
+                    SizedBox(
+                      width: double.infinity,
+                      height: 50,
+                      child: ElevatedButton(
+                        onPressed: saving ? null : save,
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: const Color(0xFF16A34A),
+                          foregroundColor: Colors.white,
+                          elevation: 0,
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+                        ),
+                        child: saving
+                            ? const SizedBox(
+                                width: 22,
+                                height: 22,
+                                child: CircularProgressIndicator(strokeWidth: 2.5, valueColor: AlwaysStoppedAnimation<Color>(Colors.white)),
+                              )
+                            : const Text('Save changes', style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          );
+        },
+      ),
     );
   }
 
@@ -3248,7 +3754,7 @@ In full compliance with Google Play Store User Data policies, you can delete you
     String? badge,
     required VoidCallback onTap,
   }) {
-    return ListTile(
+    return Material(type: MaterialType.transparency, child: ListTile(
       leading: Icon(icon, color: color, size: 20),
       title: Row(
         children: [
@@ -3268,7 +3774,7 @@ In full compliance with Google Play Store User Data policies, you can delete you
       subtitle: subtitle == null ? null : Text(subtitle, style: const TextStyle(fontSize: 11, color: Color(0xFF94A3B8))),
       trailing: const Icon(Icons.arrow_forward_ios_rounded, size: 14, color: Color(0xFF94A3B8)),
       onTap: onTap,
-    );
+    ));
   }
 
   void _showHelpSupportDialog() {
@@ -3291,20 +3797,20 @@ In full compliance with Google Play Store User Data policies, you can delete you
             children: const [
               Text('SUPPORT CHANNELS', style: TextStyle(fontSize: 10, fontWeight: FontWeight.w700, color: Color(0xFF64748B), letterSpacing: 0.5)),
               SizedBox(height: 8),
-              ListTile(
+              Material(type: MaterialType.transparency, child: ListTile(
                 dense: true,
                 contentPadding: EdgeInsets.zero,
                 leading: Icon(Icons.email_outlined, color: Color(0xFF16A34A), size: 20),
                 title: Text('Email Support', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600)),
                 subtitle: Text('support@genziitian.in', style: TextStyle(fontSize: 12, color: Color(0xFF64748B))),
-              ),
-              ListTile(
+              )),
+              Material(type: MaterialType.transparency, child: ListTile(
                 dense: true,
                 contentPadding: EdgeInsets.zero,
                 leading: Icon(Icons.chat_bubble_outline_rounded, color: Color(0xFF16A34A), size: 20),
                 title: Text('WhatsApp Helpdesk', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600)),
                 subtitle: Text('+91 98765 43210 (10 AM - 8 PM IST)', style: TextStyle(fontSize: 12, color: Color(0xFF64748B))),
-              ),
+              )),
               Divider(height: 20),
               Text('FREQUENTLY ASKED QUESTIONS', style: TextStyle(fontSize: 10, fontWeight: FontWeight.w700, color: Color(0xFF64748B), letterSpacing: 0.5)),
               SizedBox(height: 8),
@@ -3429,8 +3935,11 @@ In full compliance with Google Play Store User Data policies, you can delete you
       child: ListView(
         padding: const EdgeInsets.all(16),
         children: [
-          // Profile Summary
-          Container(
+          // Profile Summary (tap to edit name and avatar)
+          GestureDetector(
+            behavior: HitTestBehavior.opaque,
+            onTap: _showEditProfile,
+            child: Container(
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
               color: Colors.white,
@@ -3439,13 +3948,25 @@ In full compliance with Google Play Store User Data policies, you can delete you
             ),
             child: Row(
               children: [
-                CircleAvatar(
-                  radius: 26,
-                  backgroundColor: const Color(0xFF16A34A),
-                  child: Text(
-                    user?.name.isNotEmpty == true ? user!.name[0] : 'S',
-                    style: const TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
-                  ),
+                Stack(
+                  clipBehavior: Clip.none,
+                  children: [
+                    _UserAvatar(name: user?.name, size: 56),
+                    Positioned(
+                      right: -4,
+                      bottom: -4,
+                      child: Container(
+                        width: 22,
+                        height: 22,
+                        decoration: BoxDecoration(
+                          color: const Color(0xFF16A34A),
+                          shape: BoxShape.circle,
+                          border: Border.all(color: Colors.white, width: 2),
+                        ),
+                        child: const Icon(Icons.edit_rounded, size: 11, color: Colors.white),
+                      ),
+                    ),
+                  ],
                 ),
                 const SizedBox(width: 14),
                 Expanded(
@@ -3469,8 +3990,10 @@ In full compliance with Google Play Store User Data policies, you can delete you
                     ],
                   ),
                 ),
+                const Text('Edit', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w700, color: Color(0xFF16A34A))),
               ],
             ),
+          ),
           ),
           const SizedBox(height: 20),
 
@@ -3547,7 +4070,7 @@ In full compliance with Google Play Store User Data policies, you can delete you
             ),
             child: Column(
               children: [
-                ListTile(
+                Material(type: MaterialType.transparency, child: ListTile(
                   leading: const Icon(Icons.menu_book_rounded, color: Color(0xFF16A34A), size: 20),
                   title: const Text('My Purchased & Claimed Papers', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600)),
                   trailing: const Icon(Icons.arrow_forward_ios_rounded, size: 14, color: Color(0xFF94A3B8)),
@@ -3555,9 +4078,9 @@ In full compliance with Google Play Store User Data policies, you can delete you
                     AppHaptics.light();
                     widget.onNavigateToMyPapers();
                   },
-                ),
+                )),
                 const Divider(height: 1, color: Color(0xFFF1F5F9)),
-                ListTile(
+                Material(type: MaterialType.transparency, child: ListTile(
                   leading: const Icon(Icons.palette_outlined, color: Color(0xFF64748B), size: 20),
                   title: const Text('Theme / Appearance', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600)),
                   trailing: Row(
@@ -3569,14 +4092,14 @@ In full compliance with Google Play Store User Data policies, you can delete you
                     ],
                   ),
                   onTap: _showThemeSelector,
-                ),
+                )),
                 const Divider(height: 1, color: Color(0xFFF1F5F9)),
-                ListTile(
+                Material(type: MaterialType.transparency, child: ListTile(
                   leading: const Icon(Icons.support_agent_rounded, color: Color(0xFF0284C7), size: 20),
                   title: const Text('Help & Support Desk', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600)),
                   trailing: const Icon(Icons.arrow_forward_ios_rounded, size: 14, color: Color(0xFF94A3B8)),
                   onTap: _showHelpSupportDialog,
-                ),
+                )),
               ],
             ),
           ),
@@ -3593,26 +4116,26 @@ In full compliance with Google Play Store User Data policies, you can delete you
             ),
             child: Column(
               children: [
-                ListTile(
+                Material(type: MaterialType.transparency, child: ListTile(
                   leading: const Icon(Icons.description_outlined, color: Color(0xFF64748B), size: 20),
                   title: const Text('Terms & Conditions', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600)),
                   trailing: const Icon(Icons.arrow_forward_ios_rounded, size: 14, color: Color(0xFF94A3B8)),
                   onTap: () => _showLegalSheet('Terms & Conditions', _termsContent),
-                ),
+                )),
                 const Divider(height: 1, color: Color(0xFFF1F5F9)),
-                ListTile(
+                Material(type: MaterialType.transparency, child: ListTile(
                   leading: const Icon(Icons.privacy_tip_outlined, color: Color(0xFF64748B), size: 20),
                   title: const Text('Privacy Policy', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600)),
                   trailing: const Icon(Icons.arrow_forward_ios_rounded, size: 14, color: Color(0xFF94A3B8)),
                   onTap: () => _showLegalSheet('Privacy Policy', _privacyContent),
-                ),
+                )),
                 const Divider(height: 1, color: Color(0xFFF1F5F9)),
-                ListTile(
+                Material(type: MaterialType.transparency, child: ListTile(
                   leading: const Icon(Icons.delete_forever_rounded, color: Color(0xFFDC2626), size: 20),
                   title: const Text('Delete Account & Data', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600, color: Color(0xFFDC2626))),
                   trailing: const Icon(Icons.arrow_forward_ios_rounded, size: 14, color: Color(0xFFFCA5A5)),
                   onTap: _showDeleteAccountDialog,
-                ),
+                )),
               ],
             ),
           ),
@@ -3652,13 +4175,13 @@ In full compliance with Google Play Store User Data policies, you can delete you
                   separatorBuilder: (_, __) => const Divider(height: 1, color: Color(0xFFF1F5F9)),
                   itemBuilder: (context, i) {
                     final row = lb[i];
-                    return ListTile(
+                    return Material(type: MaterialType.transparency, child: ListTile(
                       dense: true,
                       leading: Text('#${row.rank}', style: const TextStyle(fontWeight: FontWeight.bold, color: Color(0xFF0F172A))),
                       title: Text(row.name, style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 13)),
                       subtitle: Text('Level ${row.level}', style: const TextStyle(fontSize: 11, color: Color(0xFF64748B))),
                       trailing: Text('${row.xp} XP', style: const TextStyle(color: Color(0xFF16A34A), fontWeight: FontWeight.bold, fontSize: 12)),
-                    );
+                    ));
                   },
                 ),
               );

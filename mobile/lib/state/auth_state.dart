@@ -202,6 +202,23 @@ class AuthState extends ChangeNotifier {
     return false;
   }
 
+  /// Changes the signed-in user's display name. Returns null on success,
+  /// or a message to show if it could not be saved.
+  Future<String?> updateName(String name) async {
+    final trimmed = name.trim();
+    if (trimmed.isEmpty) return 'Name cannot be empty.';
+    try {
+      await _apiClient.patch<dynamic>('/student/profile', data: {'name': trimmed});
+      _user = await _authService.getMe();
+      notifyListeners();
+      return null;
+    } on ApiException catch (e) {
+      return e.message;
+    } catch (_) {
+      return 'Could not save your name. Please try again.';
+    }
+  }
+
   /// Allows Manager to toggle previewing the 5-Tab Student View.
   void togglePreviewStudentView([bool? explicitValue]) {
     if (!isManager) return;
