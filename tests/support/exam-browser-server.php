@@ -37,6 +37,7 @@ if (PHP_SAPI === 'cli') {
         $t->id();$t->morphs('tokenable');$t->string('name');$t->string('token',64)->unique();$t->text('abilities')->nullable();$t->timestamp('last_used_at')->nullable();$t->timestamp('expires_at')->nullable();$t->timestamps();
     });
     (require $root.'/backend/database/migrations/2026_10_06_000001_create_proctored_exam_tables.php')->up();
+    (require $root.'/backend/database/migrations/2026_10_06_000002_add_closes_at_to_proctored_exams.php')->up();
     $tokens=[];
     foreach(['manager','student'] as $role){$u=App\Models\User::create(['name'=>'Test '.$role,'email'=>$role.'@example.test','role'=>$role,'is_active'=>true,'email_verified_at'=>now()]);$tokens[$role]=$u->createToken('browser-fixture')->plainTextToken;}
     file_put_contents($fixture.'/tokens.json',json_encode($tokens));chmod($fixture.'/tokens.json',0600);echo "Isolated exam browser fixture created.\n";exit;
