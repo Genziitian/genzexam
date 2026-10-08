@@ -98,6 +98,9 @@ const root = path.resolve(__dirname, "..");
     const id = exams.find((e) => e.title === "Browser math & statistics").id;
     const student = await pageFor("student");
     await click(student, "open");
+    await student
+      .getByRole("heading", { name: "Browser math & statistics" })
+      .waitFor();
     assert.equal(await student.locator("[data-action=join]").count(), 0);
     assert.equal(await student.locator('[data-action="refresh-state"]').count(), 1);
     assert.equal(await student.locator(".ep-question").count(), 0);
