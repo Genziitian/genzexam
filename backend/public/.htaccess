@@ -5,6 +5,18 @@
 
     RewriteEngine On
 
+    # Public legal pages use readable URLs while keeping their existing HTML files.
+    RewriteRule ^privacy-policy/?$ privacy.html [L]
+    RewriteRule ^terms-and-conditions/?$ terms.html [L]
+    RewriteRule ^refund-policy/?$ refund-policy.html [L]
+    RewriteRule ^delete-account/?$ delete-account.html [L]
+
+    # Redirect old file URLs to the clean public URLs.
+    RewriteRule ^privacy\.html$ /privacy-policy [R=301,L]
+    RewriteRule ^terms\.html$ /terms-and-conditions [R=301,L]
+    RewriteRule ^refund-policy\.html$ /refund-policy [R=301,L]
+    RewriteRule ^delete-account\.html$ /delete-account [R=301,L]
+
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]

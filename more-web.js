@@ -57,6 +57,18 @@
       '.ql-more-avatar{display:grid;place-items:center;width:66px;height:66px;overflow:hidden;border-radius:50%;border:2px solid #bbf7d0;background:#ecfdf5;color:#15803d;font-size:20px;font-weight:800}',
       '.ql-more-avatar img{width:100%;height:100%;object-fit:cover}',
       '.ql-more-photo-tools{display:flex;align-items:center;gap:8px;flex-wrap:wrap}',
+      '.ql-more-profile-summary{display:flex;align-items:center;gap:14px;margin-top:14px}',
+      '.ql-more-profile-summary .ql-more-avatar{width:58px;height:58px;font-size:18px;flex:0 0 auto}',
+      '.ql-more-profile-meta{min-width:0;flex:1}.ql-more-profile-meta strong{display:block;color:#0f172a;font-size:16px}.ql-more-profile-meta small{display:block;margin-top:3px;color:#64748b;font-size:12px;overflow-wrap:anywhere}',
+      '.ql-more-profile-dialog{width:min(560px,calc(100vw - 28px));max-height:min(90vh,820px);padding:0;border:0;border-radius:24px;background:#fff;color:#0f172a;box-shadow:0 24px 80px rgba(15,23,42,.3)}',
+      '.ql-more-profile-dialog::backdrop{background:rgba(15,23,42,.55);backdrop-filter:blur(3px)}',
+      '.ql-more-profile-content{max-height:min(90vh,820px);overflow:auto;padding:24px}',
+      '.ql-more-profile-preview{display:grid;place-items:center;margin:18px 0 24px}',
+      '.ql-more-preset-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin:10px 0 22px}',
+      '.ql-more-preset{display:grid;place-items:center;aspect-ratio:1;border:3px solid transparent;border-radius:50%;font-size:25px;cursor:pointer;box-shadow:0 5px 14px rgba(15,23,42,.12)}',
+      '.ql-more-preset[aria-pressed=true]{border-color:#16a34a;box-shadow:0 0 0 3px rgba(22,163,74,.14)}',
+      '.ql-more-profile-content input{box-sizing:border-box;width:100%;border:1px solid #dbe3ee;border-radius:14px;padding:14px;background:#f8fafc;color:#0f172a;font:inherit;font-size:15px}',
+      '.ql-more-profile-content input:focus{outline:2px solid #16a34a;outline-offset:1px}',
       '.ql-more-message{min-height:18px;margin:10px 0 0;font-size:12px;color:#64748b}',
       '.ql-more-message.error{color:#b91c1c}.ql-more-message.success{color:#15803d}',
       '.ql-more-form{display:grid;gap:12px;margin-top:14px}',
@@ -81,7 +93,7 @@
       ':root[data-theme=dark] .ql-more-subtitle,:root[data-theme=dark] .ql-more-link small,:root[data-theme=dark] .ql-more-row-copy small,:root[data-theme=dark] .ql-more-faq p{color:#9ea9b9}',
       ':root[data-theme=dark] .ql-more-form select,:root[data-theme=dark] .ql-more-form textarea,:root[data-theme=dark] .ql-more-button{background:#111722;border-color:#2e3b4c;color:#d6dae5}',
       ':root[data-theme=dark] .ql-more-theme-options button[aria-pressed=true]{background:#1f2e23;border-color:#16a34a;color:#59d78b}',
-      '@media(max-width:640px){.ql-more-card{padding:16px;border-radius:16px}.ql-more-grid{grid-template-columns:1fr}.ql-more-row{align-items:flex-start;flex-direction:column}.ql-more-theme-options{width:100%}.ql-more-theme-options .ql-more-button{flex:1}}'
+      '@media(max-width:640px){.ql-more-card{padding:16px;border-radius:16px}.ql-more-grid{grid-template-columns:1fr}.ql-more-row{align-items:flex-start;flex-direction:column}.ql-more-theme-options{width:100%}.ql-more-theme-options .ql-more-button{flex:1}.ql-more-profile-content{padding:20px}.ql-more-preset-grid{gap:8px}.ql-more-preset{font-size:22px}}'
     ].join('');
     document.head.appendChild(style);
   }
@@ -149,6 +161,9 @@
   }
   function renderAvatar(box, user) {
     if (!box) return;
+    box.style.background = '';
+    box.style.color = '';
+    box.style.fontSize = '';
     box.replaceChildren();
     if (user && user.avatar) {
       var image = document.createElement('img');
@@ -159,6 +174,88 @@
       var initials = (user && user.name || 'Student').trim().split(/\s+/).map(function (part) { return part.charAt(0); }).join('').slice(0, 2).toUpperCase();
       box.textContent = initials || 'S';
     }
+  }
+  var avatarPresets = [
+    ['🦊','#fdbA74','#ea580c'],['🐼','#e2e8f0','#64748b'],['🦁','#fde68a','#d97706'],['🐯','#fed7aa','#c2410c'],['🐸','#bbf7d0','#16a34a'],['🦉','#ddd6fe','#6d28d9'],['🐙','#fbcfe8','#db2777'],['🐬','#bae6fd','#0284c7'],['🚀','#c7d2fe','#4338ca'],['⚡','#fef08a','#ca8a04'],['🎯','#fecaca','#dc2626'],['🧠','#f5d0fe','#a21caf']
+  ];
+  function presetKey(user) { return 'ql_avatar_preset_' + String(user && (user.id || user.email) || 'student'); }
+  function savedPreset(user) {
+    try { var value = localStorage.getItem(presetKey(user)); return value === null ? null : Number(value); } catch (_) { return null; }
+  }
+  function applyPreset(box, user, preset) {
+    if (!box) return;
+    if (preset === null || !avatarPresets[preset]) { renderAvatar(box, user); return; }
+    var item = avatarPresets[preset];
+    box.replaceChildren();
+    box.textContent = item[0];
+    box.style.background = 'linear-gradient(145deg,' + item[1] + ',' + item[2] + ')';
+    box.style.color = '#fff';
+    box.style.fontSize = '34px';
+  }
+  function ensureProfileEditor(page) {
+    if (document.getElementById('ql-web-profile-editor')) return;
+    var card = document.createElement('section');
+    card.id = 'ql-web-profile-editor';
+    card.className = 'ql-more-card';
+    card.innerHTML = '<h2 class="ql-more-heading">Profile</h2><div class="ql-more-profile-summary"><div class="ql-more-avatar" id="ql-web-profile-avatar"></div><div class="ql-more-profile-meta"><strong id="ql-web-profile-name">Loading profile…</strong><small id="ql-web-profile-email"></small></div><button type="button" class="ql-more-button" id="ql-web-profile-edit">Edit</button></div><p class="ql-more-message" id="ql-web-profile-message" role="status"></p>';
+    page.appendChild(card);
+    var avatar = card.querySelector('#ql-web-profile-avatar');
+    var name = card.querySelector('#ql-web-profile-name');
+    var email = card.querySelector('#ql-web-profile-email');
+    var message = card.querySelector('#ql-web-profile-message');
+    var user = null;
+    function show() {
+      if (!user) return;
+      name.textContent = user.name || 'Student';
+      email.textContent = user.email || '';
+      applyPreset(avatar, user, savedPreset(user));
+    }
+    profileData().then(function (data) { user = data.user || {}; show(); }).catch(function (error) { message.textContent = error.message || 'Could not load your profile.'; message.classList.add('error'); });
+    card.querySelector('#ql-web-profile-edit').addEventListener('click', function () {
+      if (!user) return;
+      var choice = savedPreset(user);
+      var dialog = document.createElement('dialog');
+      dialog.className = 'ql-more-profile-dialog';
+      var fullName = user.name || '';
+      var initials = document.createElement('button');
+      initials.type = 'button';
+      initials.className = 'ql-more-preset';
+      initials.style.cssText = 'background:#ecfdf5;color:#15803d;border-color:#86efac;font-size:17px;font-weight:800';
+      initials.textContent = (fullName.trim().split(/\s+/).map(function (part) { return part.charAt(0); }).join('').slice(0,2) || 'S').toUpperCase();
+      initials.dataset.index = 'initials';
+      var options = [initials].concat(avatarPresets.map(function (item, index) {
+        var button = document.createElement('button'); button.type = 'button'; button.className = 'ql-more-preset'; button.textContent = item[0]; button.dataset.index = String(index); button.style.background = 'linear-gradient(145deg,' + item[1] + ',' + item[2] + ')'; button.setAttribute('aria-label', item[0]); return button;
+      }));
+      dialog.innerHTML = '<div class="ql-more-profile-content"><button type="button" class="ql-more-button" data-close style="float:right">Close</button><h2 class="ql-more-heading">Edit profile</h2><div class="ql-more-profile-preview"><div class="ql-more-avatar" id="ql-edit-preview" style="width:84px;height:84px;font-size:34px"></div></div><label class="ql-more-subtitle" style="font-weight:700;letter-spacing:1.4px">CHOOSE AN AVATAR</label><div class="ql-more-preset-grid" id="ql-edit-presets"></div><label class="ql-more-subtitle" for="ql-edit-name" style="font-weight:700;letter-spacing:1.4px">YOUR NAME</label><input id="ql-edit-name" maxlength="120" autocomplete="name"><p class="ql-more-message" id="ql-edit-message" role="status"></p><button type="button" class="ql-more-button primary" id="ql-edit-save" style="width:100%;padding:14px;margin-top:14px">Save changes</button></div>';
+      document.body.appendChild(dialog);
+      var preview = dialog.querySelector('#ql-edit-preview');
+      var input = dialog.querySelector('#ql-edit-name'); input.value = fullName;
+      var grid = dialog.querySelector('#ql-edit-presets'); options.forEach(function (button) { grid.appendChild(button); });
+      var status = dialog.querySelector('#ql-edit-message');
+      function previewChoice() {
+        options.forEach(function (button) { button.setAttribute('aria-pressed', String((choice === null && button.dataset.index === 'initials') || String(choice) === button.dataset.index)); });
+        var selectedName = input.value.trim() || 'Student';
+        if (choice === null) { renderAvatar(preview, { name: selectedName }); preview.style.width='84px'; preview.style.height='84px'; }
+        else applyPreset(preview, { name: selectedName }, choice);
+      }
+      options.forEach(function (button) { button.addEventListener('click', function () { choice = button.dataset.index === 'initials' ? null : Number(button.dataset.index); previewChoice(); }); });
+      input.addEventListener('input', previewChoice); previewChoice();
+      dialog.querySelector('[data-close]').addEventListener('click', function () { dialog.close(); });
+      dialog.addEventListener('click', function (event) { if (event.target === dialog) dialog.close(); });
+      dialog.addEventListener('close', function () { dialog.remove(); });
+      dialog.querySelector('#ql-edit-save').addEventListener('click', function () {
+        var nextName = input.value.trim();
+        if (!nextName) { status.textContent = 'Name cannot be empty.'; status.classList.add('error'); return; }
+        var button = dialog.querySelector('#ql-edit-save'); button.disabled = true; button.textContent = 'Saving…';
+        api('/student/profile', { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ name: nextName }) }).then(function (data) {
+          user = Object.assign({}, user, data.user || {}, { name: nextName });
+          try { if (choice === null) localStorage.removeItem(presetKey(user)); else localStorage.setItem(presetKey(user), String(choice)); } catch (_) {}
+          try { var saved = JSON.parse(localStorage.getItem('lab_user') || '{}'); localStorage.setItem('lab_user', JSON.stringify(Object.assign(saved, user))); } catch (_) {}
+          show(); message.textContent = 'Profile updated.'; message.className = 'ql-more-message success'; dialog.close();
+        }).catch(function (error) { status.textContent = error.message || 'Could not save your profile.'; status.className = 'ql-more-message error'; button.disabled = false; button.textContent = 'Save changes'; });
+      });
+      dialog.showModal();
+    });
   }
   function ensurePhotoCard(page) {
     var existing = document.getElementById(PHOTO_ID);
@@ -271,9 +368,9 @@
       '<div class="ql-more-row"><div class="ql-more-row-copy"><strong>Help &amp; Support Desk</strong><small>Email admin@genziitian.org or call +91 72549 26179.</small></div><div class="ql-more-theme-options"><a class="ql-more-button" href="mailto:admin@genziitian.org?subject=Quiz%20Lab%20app%3A%20help%20needed">Email us</a><a class="ql-more-button" href="https://wa.me/917254926179" target="_blank" rel="noopener">WhatsApp</a><a class="ql-more-button" href="tel:+917254926179">Call</a></div></div>' +
       '<div class="ql-more-faq"><h3 class="ql-more-heading" style="font-size:15px">FAQs</h3><label class="ql-more-form" style="margin-top:10px"><span>Search FAQs</span><input id="ql-more-faq-search" type="search" placeholder="Search a question" style="width:100%;box-sizing:border-box;border:1px solid #dbe3ee;border-radius:10px;padding:10px 12px;background:#fff;color:#0f172a;font:inherit"></label>' + faqs.map(function (item) { return '<details data-ql-more-faq><summary>' + escapeHtml(item[0]) + '</summary><p>' + escapeHtml(item[1]) + '</p></details>'; }).join('') + '</div></section>' +
       '<section class="ql-more-card"><h2 class="ql-more-heading">Legal &amp; compliance</h2><p class="ql-more-subtitle">Read the policies that apply to your account.</p><div class="ql-more-grid">' +
-      '<a class="ql-more-link" href="/terms.html"><span class="ql-more-icon">▤</span><span><strong>Terms &amp; Conditions</strong><small>Service terms and account rules</small></span></a>' +
-      '<a class="ql-more-link" href="/privacy.html"><span class="ql-more-icon">◇</span><span><strong>Privacy Policy</strong><small>How Quiz LAB handles your data</small></span></a>' +
-      '<a class="ql-more-link" href="/refund-policy.html"><span class="ql-more-icon">₹</span><span><strong>Refund &amp; Cancellation</strong><small>Refund, cancellation and duplicate payment help</small></span></a></div>' +
+      '<a class="ql-more-link" href="/terms-and-conditions"><span class="ql-more-icon">▤</span><span><strong>Terms &amp; Conditions</strong><small>Service terms and account rules</small></span></a>' +
+      '<a class="ql-more-link" href="/privacy-policy"><span class="ql-more-icon">◇</span><span><strong>Privacy Policy</strong><small>How Quiz LAB handles your data</small></span></a>' +
+      '<a class="ql-more-link" href="/refund-policy"><span class="ql-more-icon">₹</span><span><strong>Refund &amp; Cancellation</strong><small>Refund, cancellation and duplicate payment help</small></span></a></div>' +
       '<div class="ql-more-row"><div class="ql-more-row-copy"><strong>Delete Account &amp; Data</strong><small>Send a deletion request for manager review. Your account stays active until processed.</small></div><button type="button" id="ql-more-delete-toggle" class="ql-more-button danger">Request deletion</button></div>' +
       '<form id="ql-more-delete-form" class="ql-more-form" hidden><p class="ql-more-subtitle" id="ql-more-delete-identity">Loading your account details…</p>' +
       '<label>Reason for leaving<select id="ql-more-delete-reason" required><option value="">Choose a reason</option><option value="no_longer_needed">I no longer need the account</option><option value="privacy_concerns">Privacy concerns</option><option value="another_account">I am using another account</option><option value="app_issue">I had an issue with the app</option><option value="other">Other</option></select></label>' +
@@ -358,6 +455,7 @@
     var page = profilePage();
     if (!page) return;
     compactBadges(page);
+    ensureProfileEditor(page);
     ensurePhotoCard(page);
     if (document.getElementById(MORE_ID)) return;
     var host = document.createElement('div');

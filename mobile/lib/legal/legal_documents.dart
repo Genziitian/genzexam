@@ -1,5 +1,5 @@
 /// Legal notices shown inside the mobile app. Keep these aligned with the
-/// public documents at quiz.genziitian.in/terms.html and /privacy.html.
+/// public documents at quiz.genziitian.in/terms-and-conditions and /privacy-policy.
 abstract final class LegalDocuments {
   static const String terms = '''
 Terms & Conditions
@@ -98,7 +98,7 @@ Yes. We may update this Notice when our practices or legal requirements change. 
 If you have questions or comments about this Notice, call +91 72549 26179 or email QUIZ LAB by GenZ IITian at admin@genziitian.org or genziitian@gmail.com. Location: Patna, Bihar 800001, India.
 
 16 How Can You Review, Update, or Delete Your Data?
-You can review or update account details through account settings available to you. To request account and data deletion, use More > Delete Account & Data in the mobile app or visit https://quiz.genziitian.in/delete-account.html. Choose a reason and submit the request for manager review. Your account remains active until the request is processed. If you cannot access your account, email admin@genziitian.org or genziitian@gmail.com from your registered email address.
+You can review or update account details through account settings available to you. To request account and data deletion, use More > Delete Account & Data in the mobile app or visit https://quiz.genziitian.in/delete-account. Choose a reason and submit the request for manager review. Your account remains active until the request is processed. If you cannot access your account, email admin@genziitian.org or genziitian@gmail.com from your registered email address.
 ''';
 
   static const String refunds = '''

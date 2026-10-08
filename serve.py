@@ -42,6 +42,10 @@ class PublicHandler(http.server.BaseHTTPRequestHandler):
         elif url.rstrip('/') == '/manager/sales': name = 'manager-sales.html'
         elif url.rstrip('/') == '/manager/discussions': name = 'manager-discussions.html'
         elif url.rstrip('/') == '/paper-pricing': name = 'paper-pricing.html'
+        elif url.rstrip('/') == '/privacy-policy': name = 'privacy.html'
+        elif url.rstrip('/') == '/terms-and-conditions': name = 'terms.html'
+        elif url.rstrip('/') == '/refund-policy': name = 'refund-policy.html'
+        elif url.rstrip('/') == '/delete-account': name = 'delete-account.html'
         elif re.fullmatch(r'/exams?(/[^.]*)?/?', url): name = 'exams.html'
         elif APP_ROUTES.fullmatch(url): name = 'index.html'
         asset = name.startswith('assets/') and pathlib.Path(name).suffix.lower() in ASSET_EXTENSIONS and not name.endswith('package.json')

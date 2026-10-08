@@ -69,6 +69,10 @@ function handler(req, res) {
   else if (/^\/manager\/sales\/?$/.test(url)) file = "manager-sales.html";
   else if (/^\/manager\/discussions\/?$/.test(url)) file = "manager-discussions.html";
   else if (/^\/paper-pricing\/?$/.test(url)) file = "paper-pricing.html";
+  else if (/^\/privacy-policy\/?$/.test(url)) file = "privacy.html";
+  else if (/^\/terms-and-conditions\/?$/.test(url)) file = "terms.html";
+  else if (/^\/refund-policy\/?$/.test(url)) file = "refund-policy.html";
+  else if (/^\/delete-account\/?$/.test(url)) file = "delete-account.html";
   else if (/^\/paper\/\d+\/?$/.test(url)) file = "paper-room.html";
   else if (/^\/exams?(\/[^.]*)?\/?$/.test(url)) file = "exams.html";
   else if (appRoutes.test(url)) file = "index.html";

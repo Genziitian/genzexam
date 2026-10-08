@@ -905,7 +905,7 @@ class _PaperRoomScreenState extends State<PaperRoomScreen> {
       _ready = false;
       _error = null;
     });
-    _web.loadRequest(Uri.parse('$_webOrigin/terms.html'));
+    _web.loadRequest(Uri.parse('$_webOrigin/terms-and-conditions'));
   }
 
   /// Look of the paper room inside the app: the website's own top bar is hidden
@@ -1172,7 +1172,7 @@ div.fixed.inset-x-0.bottom-0.z-40.lg\\:hidden{display:none!important}
       _ready = false;
       _error = null;
     });
-    _web.loadRequest(Uri.parse('$_webOrigin/terms.html'));
+    _web.loadRequest(Uri.parse('$_webOrigin/terms-and-conditions'));
   }
 
   Future<void> _hideSiteBars() async {
