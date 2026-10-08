@@ -56,31 +56,14 @@ class _SplashScreenState extends State<SplashScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Brand Logo Container
-            Container(
-              width: 84,
-              height: 84,
-              decoration: BoxDecoration(
-                color: const Color(0xFF2A5230),
-                borderRadius: BorderRadius.circular(22),
-                border: Border.all(color: const Color(0xFFA8D18C).withOpacity(0.3)),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.2),
-                    blurRadius: 16,
-                    offset: const Offset(0, 8),
-                  ),
-                ],
-              ),
-              alignment: Alignment.center,
-              child: const Text(
-                'Q',
-                style: TextStyle(
-                  color: Color(0xFFA8D18C),
-                  fontSize: 44,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'serif',
-                ),
+            // Brand Logo
+            ClipRRect(
+              borderRadius: BorderRadius.circular(22),
+              child: Image.asset(
+                'assets/logo.png',
+                width: 84,
+                height: 84,
+                fit: BoxFit.cover,
               ),
             ),
             const SizedBox(height: 20),

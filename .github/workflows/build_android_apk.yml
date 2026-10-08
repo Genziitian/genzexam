@@ -26,19 +26,9 @@ jobs:
       - name: Setup Flutter SDK
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.24.0'
+          flutter-version: '3.47.6'
           channel: 'stable'
           cache: true
-
-      - name: Ensure Android Platform Scaffolding
-        working-directory: mobile
-        run: |
-          mkdir -p /tmp/res_backup
-          cp -r android/app/src/main/res /tmp/res_backup/ 2>/dev/null || true
-          rm -rf android
-          flutter create --platforms=android --org in.genziitian .
-          cp -r /tmp/res_backup/res/* android/app/src/main/res/ 2>/dev/null || true
-          python3 patch_android_ci.py
 
       - name: Install Mobile Dependencies
         working-directory: mobile

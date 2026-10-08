@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import '../api/api.dart';
 
 enum AuthStatus {
@@ -23,6 +24,8 @@ class AuthState extends ChangeNotifier {
   UserModel? _user;
   String? _errorMessage;
   bool _isPreviewingStudentView = false;
+  bool _isGoogleSignInPending = false;
+  int _googleAttempt = 0;
 
   AuthState({
     AuthService? authService,
@@ -39,6 +42,9 @@ class AuthState extends ChangeNotifier {
   UserModel? get user => _user;
   String? get errorMessage => _errorMessage;
   bool get isPreviewingStudentView => _isPreviewingStudentView;
+
+  /// True while the browser is open for Google sign-in and the app is waiting for it.
+  bool get isGoogleSignInPending => _isGoogleSignInPending;
 
   String get role => _user?.role ?? (_user?.isAdmin == true ? 'admin' : 'student');
 
@@ -116,6 +122,86 @@ class AuthState extends ChangeNotifier {
     }
   }
 
+  /// OAuth "Web application" client id of the Google Cloud project (the same one the
+  /// backend uses). The Android client (package + SHA-1) lives in that same project.
+  static const String _googleServerClientId =
+      '888290803524-ie3phmagns5phse69vodlj38hj1i76qs.apps.googleusercontent.com';
+
+  bool _googleReady = false;
+
+  Future<void> _ensureGoogleReady() async {
+    if (_googleReady) return;
+    await GoogleSignIn.instance.initialize(serverClientId: _googleServerClientId);
+    _googleReady = true;
+  }
+
+  /// Signs in with Google's own account card (no browser): one tap on an account,
+  /// then the backend turns Google's ID token into a session.
+  Future<bool> loginWithGoogle() async {
+    if (_isGoogleSignInPending) return false;
+
+    final attempt = ++_googleAttempt;
+    _isGoogleSignInPending = true;
+    _errorMessage = null;
+    notifyListeners();
+
+    try {
+      await _ensureGoogleReady();
+      final account = await GoogleSignIn.instance.authenticate();
+      final idToken = account.authentication.idToken;
+      if (idToken == null || idToken.isEmpty) {
+        return _endGoogleAttempt(attempt, 'Google did not return a sign-in token. Please try again.');
+      }
+
+      final res = await _authService.loginWithGoogleIdToken(idToken);
+      UserModel profile = res.user;
+      try {
+        profile = await _authService.getMe();
+      } catch (_) {
+        // Fall back to the profile that came with the session.
+      }
+
+      _user = profile;
+      _isGoogleSignInPending = false;
+      _errorMessage = null;
+      _status = AuthStatus.authenticated;
+      notifyListeners();
+      return true;
+    } on GoogleSignInException catch (e) {
+      if (e.code == GoogleSignInExceptionCode.canceled) {
+        // Closed the card without choosing an account.
+        _isGoogleSignInPending = false;
+        notifyListeners();
+        return false;
+      }
+      final detail = (e.description ?? '').trim();
+      return _endGoogleAttempt(
+        attempt,
+        'Google sign-in failed (${e.code.name})${detail.isEmpty ? '' : ': $detail'}',
+      );
+    } on ApiException catch (e) {
+      return _endGoogleAttempt(attempt, e.message);
+    } catch (_) {
+      return _endGoogleAttempt(attempt, 'Google sign-in could not be completed. Please try again.');
+    }
+  }
+
+  /// Stops waiting for a Google sign-in that the user abandoned.
+  void cancelGoogleLogin() {
+    if (!_isGoogleSignInPending) return;
+    _googleAttempt++;
+    _isGoogleSignInPending = false;
+    notifyListeners();
+  }
+
+  bool _endGoogleAttempt(int attempt, String message) {
+    if (attempt != _googleAttempt) return false;
+    _isGoogleSignInPending = false;
+    _errorMessage = message;
+    notifyListeners();
+    return false;
+  }
+
   /// Allows Manager to toggle previewing the 5-Tab Student View.
   void togglePreviewStudentView([bool? explicitValue]) {
     if (!isManager) return;
@@ -126,6 +212,7 @@ class AuthState extends ChangeNotifier {
   /// Logs out and purges token.
   Future<void> logout() async {
     try {
+      await _forgetGoogleAccount();
       await _authService.logout();
     } catch (_) {
       await _apiClient.deleteAuthToken();
@@ -150,9 +237,20 @@ class AuthState extends ChangeNotifier {
     }
   }
 
+  Future<void> _forgetGoogleAccount() async {
+    try {
+      await _ensureGoogleReady();
+      await GoogleSignIn.instance.signOut();
+    } catch (_) {
+      // Not signed in with Google, or Google services unavailable.
+    }
+  }
+
   void _zeroizeSession() {
     _user = null;
     _isPreviewingStudentView = false;
+    _googleAttempt++;
+    _isGoogleSignInPending = false;
     _status = AuthStatus.unauthenticated;
     _errorMessage = null;
     notifyListeners();

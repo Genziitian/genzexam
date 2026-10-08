@@ -325,7 +325,9 @@ class _AdminConsoleScreenState extends State<AdminConsoleScreen> {
                 );
               },
             ),
-          ],
+              ],
+            ),
+          ),
         ),
       ),
     );

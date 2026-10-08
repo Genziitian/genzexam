@@ -1,4 +1,7 @@
+import 'dart:math';
+
 import 'api_client.dart';
+import 'api_exceptions.dart';
 import 'models/auth_model.dart';
 
 /// Real authentication service communicating with backend/app/Http/Controllers/AuthController.php.
@@ -42,6 +45,58 @@ class AuthService {
 
     final authResponse = AuthSuccessResponse.fromJson(response.data!);
     // Authoritative Sanctum token storage
+    await _client.saveAuthToken(authResponse.token);
+    return authResponse;
+  }
+
+  // ---------------------------------------------------------------------------
+  // Google sign-in (browser handoff)
+  //
+  // The app opens the backend's Google sign-in page in the browser with a random
+  // one-time id. When Google finishes, the backend parks the session under that id
+  // and the app collects it with [claimGoogleHandoff].
+  // ---------------------------------------------------------------------------
+
+  /// Random one-time id (48 chars) that links the browser sign-in to this app.
+  static String newGoogleHandoffId() {
+    const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    final random = Random.secure();
+    return List.generate(48, (_) => alphabet[random.nextInt(alphabet.length)]).join();
+  }
+
+  /// Address of the backend's Google sign-in page for the given handoff id.
+  Uri googleSignInUri(String handoffId) {
+    return Uri.parse('${ApiClient.defaultBaseUrl}/auth/google')
+        .replace(queryParameters: {'handoff': handoffId});
+  }
+
+  /// Collects the session once the browser sign-in has finished.
+  /// Returns null while the sign-in is still in progress.
+  Future<AuthSuccessResponse?> claimGoogleHandoff(String handoffId) async {
+    try {
+      final response = await _client.post<Map<String, dynamic>>(
+        '/auth/google/handoff',
+        data: {'handoff': handoffId},
+      );
+      final data = response.data;
+      if (data == null || data['token'] == null || data['user'] == null) return null;
+      final authResponse = AuthSuccessResponse.fromJson(data);
+      await _client.saveAuthToken(authResponse.token);
+      return authResponse;
+    } on ApiException catch (e) {
+      if (e.statusCode == 404) return null; // still waiting
+      rethrow;
+    }
+  }
+
+  /// Native Google sign-in: exchanges the ID token from Google's account card
+  /// for a session. Endpoint: POST /api/auth/google/mobile
+  Future<AuthSuccessResponse> loginWithGoogleIdToken(String idToken) async {
+    final response = await _client.post<Map<String, dynamic>>(
+      '/auth/google/mobile',
+      data: {'id_token': idToken},
+    );
+    final authResponse = AuthSuccessResponse.fromJson(response.data!);
     await _client.saveAuthToken(authResponse.token);
     return authResponse;
   }

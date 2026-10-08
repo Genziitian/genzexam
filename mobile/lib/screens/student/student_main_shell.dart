@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../api/api.dart';
 import '../../state/auth_state.dart';
 import '../../widgets/app_ux_components.dart';
@@ -98,12 +99,18 @@ class _StudentMainShellState extends State<StudentMainShell> {
                       storefrontService: _storefrontService,
                     ),
                     _TestTab(courseService: _courseService),
-                    _SupportTab(discussionService: _discussionService),
+                    _RanksTab(
+                      leaderboardService: _leaderboardService,
+                      user: widget.authState.user,
+                    ),
                     _MoreTab(
                       user: widget.authState.user,
                       authState: widget.authState,
                       leaderboardService: _leaderboardService,
+                      discussionService: _discussionService,
                       onNavigateToMyPapers: () => setState(() => _currentIndex = 1),
+                      onNavigateToPractice: () => setState(() => _currentIndex = 2),
+                      onNavigateToRanks: () => setState(() => _currentIndex = 3),
                     ),
                   ],
                 ),
@@ -111,54 +118,471 @@ class _StudentMainShellState extends State<StudentMainShell> {
             ],
           ),
         ),
-        bottomNavigationBar: Container(
-          decoration: const BoxDecoration(
-            color: Colors.white,
-            border: Border(top: BorderSide(color: Color(0xFFE2E8F0))),
-          ),
-          child: BottomNavigationBar(
-            currentIndex: _currentIndex,
-            onTap: (index) {
-              AppHaptics.selection();
-              setState(() => _currentIndex = index);
+        bottomNavigationBar: _QuizLabDock(
+          currentIndex: _currentIndex,
+          onTap: (index) {
+            AppHaptics.selection();
+            setState(() => _currentIndex = index);
+          },
+        ),
+      ),
+    );
+  }
+}
+
+// -----------------------------------------------------------------------------
+// FLOATING BOTTOM BAR (same layout and lightning animation as the website)
+// -----------------------------------------------------------------------------
+class _QuizLabDock extends StatefulWidget {
+  final int currentIndex;
+  final ValueChanged<int> onTap;
+
+  const _QuizLabDock({required this.currentIndex, required this.onTap});
+
+  @override
+  State<_QuizLabDock> createState() => _QuizLabDockState();
+}
+
+class _QuizLabDockState extends State<_QuizLabDock> with SingleTickerProviderStateMixin {
+  static const _green = Color(0xFF16A34A);
+
+  // Same 2.6s loop as the website's centre button.
+  late final AnimationController _loop;
+
+  @override
+  void initState() {
+    super.initState();
+    _loop = AnimationController(vsync: this, duration: const Duration(milliseconds: 2600))..repeat();
+  }
+
+  @override
+  void dispose() {
+    _loop.dispose();
+    super.dispose();
+  }
+
+  /// Straight-line keyframes: value at time [t] (0..1) given matching stops and values.
+  static double _keyframes(double t, List<double> stops, List<double> values) {
+    if (t <= stops.first) return values.first;
+    for (var i = 1; i < stops.length; i++) {
+      if (t <= stops[i]) {
+        final span = stops[i] - stops[i - 1];
+        final local = span == 0 ? 1.0 : (t - stops[i - 1]) / span;
+        return values[i - 1] + (values[i] - values[i - 1]) * local;
+      }
+    }
+    return values.last;
+  }
+
+  Widget _ring(double t) {
+    final scale = _keyframes(t, const [0.0, 0.06, 0.45, 1.0], const [1.0, 1.0, 1.55, 1.55]);
+    final opacity = _keyframes(t, const [0.0, 0.06, 0.10, 0.45, 1.0], const [0.0, 0.0, 0.75, 0.0, 0.0]);
+    return Transform.scale(
+      scale: scale,
+      child: Container(
+        width: 66,
+        height: 66,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          border: Border.all(color: const Color(0xFF4ADE80).withValues(alpha: opacity), width: 2),
+        ),
+      ),
+    );
+  }
+
+  Widget _centreButton() {
+    final selected = widget.currentIndex == 2;
+    return Semantics(
+      button: true,
+      label: 'Practice',
+      child: GestureDetector(
+        behavior: HitTestBehavior.opaque,
+        onTap: () => widget.onTap(2),
+        child: SizedBox(
+          width: 84,
+          height: 84,
+          child: AnimatedBuilder(
+            animation: _loop,
+            builder: (context, _) {
+              final t = _loop.value;
+              const stops = [0.0, 0.08, 0.14, 0.20, 0.34, 1.0];
+              final flash = _keyframes(t, stops, const [0.0, 1.0, 0.0, 0.8, 0.0, 0.0]);
+              final boltScale = _keyframes(t, stops, const [1.0, 1.22, 0.96, 1.14, 1.0, 1.0]);
+              final boltTurn = _keyframes(t, stops, const [0.0, -8.0, 0.0, 5.0, 0.0, 0.0]) * math.pi / 180;
+              final boltColor = Color.lerp(Colors.white, const Color(0xFFFEF08A), flash)!;
+
+              return Stack(
+                alignment: Alignment.center,
+                children: [
+                  _ring(t),
+                  _ring((t + 1 - 0.173) % 1.0), // second ring starts 0.45s later
+                  Container(
+                    width: 62,
+                    height: 62,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      gradient: const LinearGradient(
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                        colors: [Color(0xFF22C55E), Color(0xFF15803D)],
+                      ),
+                      border: Border.all(
+                        color: selected ? const Color(0xFFBBF7D0) : Colors.white,
+                        width: 4,
+                      ),
+                      boxShadow: [
+                        BoxShadow(
+                          color: _green.withValues(alpha: 0.55),
+                          blurRadius: 18,
+                          spreadRadius: -4,
+                          offset: const Offset(0, 8),
+                        ),
+                        BoxShadow(
+                          color: const Color(0xFFFACC15).withValues(alpha: 0.75 * flash),
+                          blurRadius: 26,
+                          spreadRadius: 6 * flash,
+                        ),
+                        BoxShadow(
+                          color: const Color(0xFFFEF08A).withValues(alpha: 0.9 * flash),
+                          spreadRadius: 2,
+                        ),
+                      ],
+                    ),
+                    child: Transform.rotate(
+                      angle: boltTurn,
+                      child: Transform.scale(
+                        scale: boltScale,
+                        child: Icon(Icons.bolt_rounded, size: 32, color: boltColor),
+                      ),
+                    ),
+                  ),
+                ],
+              );
             },
-            type: BottomNavigationBarType.fixed,
-            backgroundColor: Colors.white,
-            selectedItemColor: const Color(0xFF16A34A),
-            unselectedItemColor: const Color(0xFF64748B),
-            selectedLabelStyle: const TextStyle(fontWeight: FontWeight.w600, fontSize: 12),
-            unselectedLabelStyle: const TextStyle(fontWeight: FontWeight.w500, fontSize: 12),
-            elevation: 0,
-            items: const [
-              BottomNavigationBarItem(
-                icon: Icon(Icons.dashboard_outlined),
-                activeIcon: Icon(Icons.dashboard_rounded),
-                label: 'Home',
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _item(int index, IconData icon, IconData activeIcon, String label) {
+    final selected = widget.currentIndex == index;
+    final color = selected ? _green : const Color(0xFF64748B);
+    return Expanded(
+      child: Semantics(
+        button: true,
+        selected: selected,
+        label: label,
+        child: GestureDetector(
+          behavior: HitTestBehavior.opaque,
+          onTap: () => widget.onTap(index),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              AnimatedScale(
+                scale: selected ? 1.12 : 1.0,
+                duration: const Duration(milliseconds: 180),
+                curve: Curves.easeOutBack,
+                child: Icon(selected ? activeIcon : icon, size: 24, color: color),
               ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.menu_book_outlined),
-                activeIcon: Icon(Icons.menu_book_rounded),
-                label: 'Quizzes',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.assignment_outlined),
-                activeIcon: Icon(Icons.assignment_rounded),
-                label: 'Test',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.forum_outlined),
-                activeIcon: Icon(Icons.forum_rounded),
-                label: 'Support',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.person_outline_rounded),
-                activeIcon: Icon(Icons.person_rounded),
-                label: 'More',
+              const SizedBox(height: 4),
+              Text(
+                label,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(
+                  fontSize: 11.5,
+                  fontWeight: selected ? FontWeight.w700 : FontWeight.w500,
+                  color: color,
+                ),
               ),
             ],
           ),
         ),
       ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      top: false,
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(14, 0, 14, 10),
+        child: SizedBox(
+          height: 96,
+          child: Stack(
+            clipBehavior: Clip.none,
+            alignment: Alignment.bottomCenter,
+            children: [
+              Positioned(
+                left: 0,
+                right: 0,
+                bottom: 0,
+                height: 68,
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(28),
+                    border: Border.all(color: const Color(0xFFE2E8F0)),
+                    boxShadow: [
+                      BoxShadow(
+                        color: const Color(0xFF0F172A).withValues(alpha: 0.12),
+                        blurRadius: 28,
+                        offset: const Offset(0, 10),
+                      ),
+                    ],
+                  ),
+                  child: Row(
+                    children: [
+                      _item(0, Icons.home_outlined, Icons.home_rounded, 'Home'),
+                      _item(1, Icons.description_outlined, Icons.description_rounded, 'My Papers'),
+                      // Label under the raised centre button
+                      GestureDetector(
+                        behavior: HitTestBehavior.opaque,
+                        onTap: () => widget.onTap(2),
+                        child: SizedBox(
+                          width: 78,
+                          child: Align(
+                            alignment: Alignment.bottomCenter,
+                            child: Padding(
+                              padding: const EdgeInsets.only(bottom: 7),
+                              child: Text(
+                                'Practice',
+                                maxLines: 1,
+                                style: TextStyle(
+                                  fontSize: 11.5,
+                                  fontWeight: widget.currentIndex == 2 ? FontWeight.w700 : FontWeight.w500,
+                                  color: widget.currentIndex == 2 ? _green : const Color(0xFF64748B),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      _item(3, Icons.emoji_events_outlined, Icons.emoji_events_rounded, 'Ranks'),
+                      _item(4, Icons.person_outline_rounded, Icons.person_rounded, 'More'),
+                    ],
+                  ),
+                ),
+              ),
+              Positioned(top: 0, child: _centreButton()),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+// -----------------------------------------------------------------------------
+// TAB: RANKS (Global XP leaderboard)
+// -----------------------------------------------------------------------------
+class _RanksTab extends StatefulWidget {
+  final LeaderboardService leaderboardService;
+  final UserModel? user;
+
+  const _RanksTab({required this.leaderboardService, this.user});
+
+  @override
+  State<_RanksTab> createState() => _RanksTabState();
+}
+
+class _RanksTabState extends State<_RanksTab> {
+  late Future<LeaderboardData> _future;
+
+  @override
+  void initState() {
+    super.initState();
+    _future = widget.leaderboardService.getLeaderboard();
+  }
+
+  Future<void> _refresh() async {
+    final next = widget.leaderboardService.getLeaderboard();
+    setState(() {
+      _future = next;
+    });
+    try {
+      await next;
+    } catch (_) {
+      // The error card is shown by the FutureBuilder.
+    }
+  }
+
+  Color _medal(int rank) {
+    switch (rank) {
+      case 1:
+        return const Color(0xFFF59E0B);
+      case 2:
+        return const Color(0xFF94A3B8);
+      case 3:
+        return const Color(0xFFB45309);
+      default:
+        return const Color(0xFF64748B);
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder<LeaderboardData>(
+      future: _future,
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return AppShimmerCard.list(count: 5);
+        }
+        if (snapshot.hasError || !snapshot.hasData) {
+          return AppErrorCard(
+            title: 'Unable to Load Leaderboard',
+            message: '${snapshot.error ?? 'No data'}',
+            onRetry: _refresh,
+          );
+        }
+
+        final data = snapshot.data!;
+        final entries = data.leaderboard;
+        return RefreshIndicator(
+          onRefresh: _refresh,
+          color: const Color(0xFF16A34A),
+          child: ListView(
+            padding: const EdgeInsets.all(16),
+            children: [
+              const Text(
+                'Leaderboard',
+                style: TextStyle(fontSize: 26, fontWeight: FontWeight.w800, letterSpacing: -0.5, color: Color(0xFF0F172A)),
+              ),
+              const SizedBox(height: 2),
+              const Text(
+                'Top students by XP',
+                style: TextStyle(fontSize: 13, color: Color(0xFF64748B)),
+              ),
+              const SizedBox(height: 16),
+
+              // Your position
+              Container(
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  gradient: const LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [Color(0xFF14532D), Color(0xFF16A34A)],
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: const Color(0xFF16A34A).withValues(alpha: 0.3),
+                      blurRadius: 20,
+                      offset: const Offset(0, 10),
+                    ),
+                  ],
+                ),
+                child: Row(
+                  children: [
+                    const Icon(Icons.emoji_events_rounded, color: Color(0xFFFDE68A), size: 36),
+                    const SizedBox(width: 14),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            'YOUR RANK',
+                            style: TextStyle(fontSize: 11, fontWeight: FontWeight.w700, letterSpacing: 1, color: Color(0xFFBBF7D0)),
+                          ),
+                          Text(
+                            data.myRank != null ? '#${data.myRank}' : 'Unranked',
+                            style: const TextStyle(fontSize: 26, fontWeight: FontWeight.w800, color: Colors.white),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Text(
+                          '${data.me.xp} XP',
+                          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w800, color: Colors.white),
+                        ),
+                        Text(
+                          'Level ${data.me.level}',
+                          style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: Color(0xFFBBF7D0)),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 16),
+
+              if (entries.isEmpty)
+                const Padding(
+                  padding: EdgeInsets.all(24),
+                  child: Center(
+                    child: Text('No rankings yet. Finish a quiz to get on the board.', style: TextStyle(color: Color(0xFF94A3B8))),
+                  ),
+                )
+              else
+                Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(18),
+                    border: Border.all(color: const Color(0xFFE2E8F0)),
+                  ),
+                  child: Column(
+                    children: [
+                      for (var i = 0; i < entries.length; i++) ...[
+                        if (i > 0) const Divider(height: 1, color: Color(0xFFF1F5F9)),
+                        Container(
+                          color: entries[i].userId == widget.user?.id ? const Color(0xFFF0FDF4) : null,
+                          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 11),
+                          child: Row(
+                            children: [
+                              SizedBox(
+                                width: 34,
+                                child: Text(
+                                  '#${entries[i].rank}',
+                                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w800, color: _medal(entries[i].rank)),
+                                ),
+                              ),
+                              CircleAvatar(
+                                radius: 17,
+                                backgroundColor: const Color(0xFFDCFCE7),
+                                child: Text(
+                                  entries[i].name.isNotEmpty ? entries[i].name[0].toUpperCase() : 'S',
+                                  style: const TextStyle(fontSize: 13, fontWeight: FontWeight.bold, color: Color(0xFF16A34A)),
+                                ),
+                              ),
+                              const SizedBox(width: 10),
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      entries[i].name,
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: Color(0xFF0F172A)),
+                                    ),
+                                    Text(
+                                      'Level ${entries[i].level}',
+                                      style: const TextStyle(fontSize: 11, color: Color(0xFF94A3B8)),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Text(
+                                '${entries[i].xp} XP',
+                                style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w800, color: Color(0xFF16A34A)),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ],
+                  ),
+                ),
+            ],
+          ),
+        );
+      },
     );
   }
 }
@@ -188,6 +612,26 @@ class _HomeTabState extends State<_HomeTab> {
   void initState() {
     super.initState();
     _dashboardFuture = widget.dashboardService.getDashboard();
+  }
+
+  static String _firstName(String? name) {
+    final parts = (name ?? '').trim().split(RegExp(r'\s+'));
+    final first = parts.isEmpty ? '' : parts.first;
+    if (first.isEmpty) return 'Student';
+    return first[0].toUpperCase() + first.substring(1).toLowerCase();
+  }
+
+  static String _initials(String? name) {
+    final parts = (name ?? '').trim().split(RegExp(r'\s+')).where((p) => p.isNotEmpty).toList();
+    if (parts.isEmpty) return 'S';
+    if (parts.length == 1) return parts.first[0].toUpperCase();
+    return (parts.first[0] + parts.last[0]).toUpperCase();
+  }
+
+  /// "THU · OCT 8, 2026" from the server's greeting.
+  static String _shortDate(GreetingInfo greeting) {
+    final day = greeting.weekday.length > 3 ? greeting.weekday.substring(0, 3) : greeting.weekday;
+    return '${day.toUpperCase()} · ${greeting.date.toUpperCase()}';
   }
 
   Future<void> _refresh() async {
@@ -221,101 +665,198 @@ class _HomeTabState extends State<_HomeTab> {
           child: ListView(
             padding: const EdgeInsets.all(16),
             children: [
-              // Welcome Header
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Good ${data.greeting.timeOfDay}, ${widget.user?.name.split(' ').first ?? 'Student'}',
-                        style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Color(0xFF0F172A)),
+              // Brand header (same as the website's phone top bar)
+              _FadeUp(
+                delayMs: 0,
+                child: Row(
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(12),
+                      child: Image.asset('assets/logo.png', width: 44, height: 44, fit: BoxFit.cover),
+                    ),
+                    const SizedBox(width: 10),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            _shortDate(data.greeting),
+                            style: const TextStyle(fontSize: 10, fontWeight: FontWeight.w600, letterSpacing: 2, color: Color(0xFF94A3B8)),
+                          ),
+                          const Text(
+                            'Quiz LAB',
+                            style: TextStyle(fontSize: 17, height: 1.15, fontWeight: FontWeight.w800, color: Color(0xFF0F172A)),
+                          ),
+                          const Text(
+                            'by GenZ IITian',
+                            style: TextStyle(fontSize: 11, height: 1.1, color: Color(0xFF64748B)),
+                          ),
+                        ],
                       ),
-                    Text(
-                      '${data.greeting.weekday.toUpperCase()} · ${data.greeting.date}',
-                      style: const TextStyle(fontSize: 11, fontWeight: FontWeight.w600, color: Color(0xFF94A3B8)),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 5),
+                      decoration: BoxDecoration(color: const Color(0xFFDCFCE7), borderRadius: BorderRadius.circular(20)),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          const Icon(Icons.bolt_rounded, size: 14, color: Color(0xFF16A34A)),
+                          const SizedBox(width: 2),
+                          Text(
+                            'LVL ${widget.user?.level ?? 1}',
+                            style: const TextStyle(fontSize: 11, fontWeight: FontWeight.w800, letterSpacing: 0.5, color: Color(0xFF15803D)),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(width: 8),
+                    Container(
+                      width: 40,
+                      height: 40,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: const Color(0xFFF0FDF4),
+                        border: Border.all(color: const Color(0xFF86EFAC), width: 2),
+                      ),
+                      child: Text(
+                        _initials(widget.user?.name),
+                        style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w800, color: Color(0xFF16A34A)),
+                      ),
                     ),
                   ],
                 ),
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                  decoration: BoxDecoration(
-                    color: const Color(0xFFDCFCE7),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: Row(
-                    children: [
-                      const Icon(Icons.local_fire_department_rounded, color: Color(0xFF16A34A), size: 16),
-                      const SizedBox(width: 4),
-                      Text('${data.streak.days} Day Streak', style: const TextStyle(color: Color(0xFF16A34A), fontWeight: FontWeight.bold, fontSize: 12)),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 16),
+              ),
+              const SizedBox(height: 22),
 
-            // Weekly Quiz Goal Card
-            const _WeeklyGoalCard(),
-            const SizedBox(height: 16),
+              // Welcome line
+              _FadeUp(
+                delayMs: 80,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text.rich(
+                      TextSpan(
+                        text: 'Welcome back, ',
+                        children: [
+                          TextSpan(
+                            text: '${_firstName(widget.user?.name)}.',
+                            style: const TextStyle(color: Color(0xFF16A34A)),
+                          ),
+                        ],
+                      ),
+                      style: const TextStyle(fontSize: 30, height: 1.15, fontWeight: FontWeight.w800, letterSpacing: -0.8, color: Color(0xFF0F172A)),
+                    ),
+                    const SizedBox(height: 12),
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                      decoration: BoxDecoration(
+                        color: const Color(0xFFFFEDD5),
+                        borderRadius: BorderRadius.circular(20),
+                        border: Border.all(color: const Color(0xFFFED7AA)),
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          const Icon(Icons.local_fire_department_rounded, color: Color(0xFFF59E0B), size: 16),
+                          const SizedBox(width: 6),
+                          Text(
+                            '${data.streak.days}-day streak',
+                            style: const TextStyle(color: Color(0xFFB45309), fontWeight: FontWeight.w700, fontSize: 13),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 22),
 
-            // Top Metrics Grid
-            Row(
-              children: [
-                Expanded(
-                  child: _StatCard(
-                    title: 'ACCURACY',
-                    value: '${data.accuracy.value.toStringAsFixed(1)}%',
-                    subtitle: '${data.accuracy.delta >= 0 ? '+' : ''}${data.accuracy.delta}% vs last week',
-                    icon: Icons.track_changes_rounded,
-                    iconColor: const Color(0xFF0284C7),
-                  ),
+              // Stat cards
+              _FadeUp(
+                delayMs: 160,
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        Expanded(
+                          child: _MetricCard(
+                            title: 'CURRENT STREAK',
+                            value: '${data.streak.days}',
+                            unit: 'days',
+                            color: const Color(0xFFF59E0B),
+                            titleColor: const Color(0xFFB45309),
+                            history: data.streak.history.map((e) => e.toDouble()).toList(),
+                          ),
+                        ),
+                        const SizedBox(width: 12),
+                        Expanded(
+                          child: _MetricCard(
+                            title: 'ACCURACY',
+                            value: data.accuracy.value.toStringAsFixed(data.accuracy.value % 1 == 0 ? 0 : 1),
+                            unit: '%',
+                            color: const Color(0xFF16A34A),
+                            titleColor: const Color(0xFF15803D),
+                            history: data.accuracy.history,
+                            chip: data.accuracy.delta == 0
+                                ? null
+                                : '${data.accuracy.delta > 0 ? '↑ +' : '↓ '}${data.accuracy.delta.toStringAsFixed(1)}%',
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 12),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: _MetricCard(
+                            title: 'THIS WEEK',
+                            value: data.hoursThisWeek.value.toStringAsFixed(1),
+                            unit: 'hrs',
+                            color: const Color(0xFF3B82F6),
+                            titleColor: const Color(0xFF1D4ED8),
+                            history: data.hoursThisWeek.history,
+                          ),
+                        ),
+                        const SizedBox(width: 12),
+                        Expanded(
+                          child: _MetricCard(
+                            title: 'RANK',
+                            value: data.rank.current != null ? '#${data.rank.current}' : '—',
+                            unit: 'of ${data.rank.totalRanked}',
+                            color: const Color(0xFF8B5CF6),
+                            titleColor: const Color(0xFF6D28D9),
+                            history: [
+                              -((data.rank.previous ?? data.rank.current ?? 0).toDouble()),
+                              -((data.rank.current ?? 0).toDouble()),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
-                const SizedBox(width: 12),
-                Expanded(
-                  child: _StatCard(
-                    title: 'STUDY HOURS',
-                    value: '${data.hoursThisWeek.value}h',
-                    subtitle: '${data.hoursThisWeek.delta >= 0 ? '+' : ''}${data.hoursThisWeek.delta}h this week',
-                    icon: Icons.timer_outlined,
-                    iconColor: const Color(0xFF7C3AED),
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 12),
+              ),
+              const SizedBox(height: 16),
 
-            Row(
-              children: [
-                Expanded(
-                  child: _StatCard(
-                    title: 'RANKING',
-                    value: data.rank.current != null ? '#${data.rank.current}' : 'Unranked',
-                    subtitle: 'of ${data.rank.totalRanked} students',
-                    icon: Icons.emoji_events_outlined,
-                    iconColor: const Color(0xFFD97706),
-                  ),
+              // Performance chart
+              _FadeUp(delayMs: 240, child: _PerformanceCard(points: data.performance)),
+              const SizedBox(height: 16),
+
+              // Weekly goal ring
+              _FadeUp(
+                delayMs: 320,
+                child: _WeeklyGoalCard(
+                  completed: data.performance.isEmpty ? 0 : data.performance.last.attempts,
                 ),
-                const SizedBox(width: 12),
-                Expanded(
-                  child: _StatCard(
-                    title: 'ACTIVE NOW',
-                    value: '${data.activeNow}',
-                    subtitle: 'learning currently',
-                    icon: Icons.people_outline_rounded,
-                    iconColor: const Color(0xFF059669),
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 20),
+              ),
+              const SizedBox(height: 20),
 
             // Quick Continue Card
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: const Color(0xFFDCFCE7).withOpacity(0.5),
+                color: const Color(0xFFDCFCE7).withValues(alpha: 0.5),
                 borderRadius: BorderRadius.circular(16),
                 border: Border.all(color: const Color(0xFF86EFAC)),
               ),
@@ -376,7 +917,7 @@ class _HomeTabState extends State<_HomeTab> {
                         ),
                         Container(
                           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
-                          decoration: BoxDecoration(color: const Color(0xFFF59E0B).withOpacity(0.2), borderRadius: BorderRadius.circular(12)),
+                          decoration: BoxDecoration(color: const Color(0xFFF59E0B).withValues(alpha: 0.2), borderRadius: BorderRadius.circular(12)),
                           child: Text('+${data.todaysChallenge!.xp} XP', style: const TextStyle(color: Color(0xFFFBBF24), fontSize: 11, fontWeight: FontWeight.bold)),
                         ),
                       ],
@@ -445,6 +986,7 @@ class _HomeTabState extends State<_HomeTab> {
               ),
             ),
           ],
+          ),
         );
       },
     );
@@ -453,7 +995,10 @@ class _HomeTabState extends State<_HomeTab> {
 
 /// Interactive Weekly Quiz Goal Card with dynamic target selector
 class _WeeklyGoalCard extends StatefulWidget {
-  const _WeeklyGoalCard();
+  /// Quizzes finished this week (from the dashboard's latest week).
+  final int completed;
+
+  const _WeeklyGoalCard({required this.completed});
 
   @override
   State<_WeeklyGoalCard> createState() => _WeeklyGoalCardState();
@@ -461,8 +1006,7 @@ class _WeeklyGoalCard extends StatefulWidget {
 
 class _WeeklyGoalCardState extends State<_WeeklyGoalCard> {
   static const _storage = FlutterSecureStorage();
-  int _targetGoal = 20;
-  final int _completed = 14;
+  int _targetGoal = 5;
 
   @override
   void initState() {
@@ -534,52 +1078,190 @@ class _WeeklyGoalCardState extends State<_WeeklyGoalCard> {
 
   @override
   Widget build(BuildContext context) {
-    final progress = (_completed / _targetGoal).clamp(0.0, 1.0);
+    final completed = widget.completed;
+    final progress = (completed / _targetGoal).clamp(0.0, 1.0).toDouble();
     final percent = (progress * 100).round();
 
     return Container(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.fromLTRB(18, 18, 18, 12),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(24),
         border: Border.all(color: const Color(0xFFE2E8F0)),
+        boxShadow: [
+          BoxShadow(color: const Color(0xFF0F172A).withValues(alpha: 0.05), blurRadius: 22, offset: const Offset(0, 10)),
+        ],
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Row(
-                children: [
-                  Icon(Icons.flag_rounded, size: 16, color: Color(0xFF16A34A)),
-                  SizedBox(width: 6),
-                  Text('WEEKLY QUIZ GOAL', style: TextStyle(fontSize: 11, fontWeight: FontWeight.bold, color: Color(0xFF64748B), letterSpacing: 0.5)),
-                ],
+              const Text(
+                'WEEKLY GOAL',
+                style: TextStyle(fontSize: 10, fontWeight: FontWeight.w700, letterSpacing: 1.8, color: Color(0xFF94A3B8)),
               ),
-              TextButton(
-                onPressed: _showChangeGoalDialog,
-                style: TextButton.styleFrom(padding: EdgeInsets.zero, minimumSize: const Size(50, 20), tapTargetSize: MaterialTapTargetSize.shrinkWrap),
-                child: const Text('Change goal', style: TextStyle(color: Color(0xFF16A34A), fontSize: 12, fontWeight: FontWeight.bold)),
+              Text(
+                '$completed/$_targetGoal quizzes',
+                style: const TextStyle(fontSize: 12, fontFamily: 'monospace', fontWeight: FontWeight.w600, color: Color(0xFF94A3B8)),
               ),
             ],
           ),
-          const SizedBox(height: 8),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text('$_completed of $_targetGoal quizzes', style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Color(0xFF0F172A))),
-              Text('$percent%', style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Color(0xFF16A34A))),
-            ],
+          const SizedBox(height: 16),
+          SizedBox(
+            width: 150,
+            height: 150,
+            child: TweenAnimationBuilder<double>(
+              tween: Tween<double>(begin: 0.0, end: progress),
+              duration: const Duration(milliseconds: 1100),
+              curve: Curves.easeOutCubic,
+              builder: (context, t, child) {
+                return CustomPaint(painter: _GoalRingPainter(progress: t), child: child);
+              },
+              child: Center(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      '$percent%',
+                      style: const TextStyle(fontSize: 30, height: 1.0, fontWeight: FontWeight.w800, letterSpacing: -1, color: Color(0xFF0F172A)),
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      completed >= _targetGoal ? 'Goal reached' : '${_targetGoal - completed} to go',
+                      style: const TextStyle(fontSize: 12, color: Color(0xFF64748B)),
+                    ),
+                  ],
+                ),
+              ),
+            ),
           ),
-          const SizedBox(height: 8),
-          ClipRRect(
-            borderRadius: BorderRadius.circular(6),
-            child: LinearProgressIndicator(
-              value: progress,
-              backgroundColor: const Color(0xFFF1F5F9),
-              color: const Color(0xFF16A34A),
-              minHeight: 8,
+          const SizedBox(height: 6),
+          TextButton(
+            onPressed: _showChangeGoalDialog,
+            child: const Text('Change goal', style: TextStyle(color: Color(0xFF16A34A), fontSize: 13, fontWeight: FontWeight.bold)),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/// Fades and lifts its child in once, after an optional delay.
+class _FadeUp extends StatelessWidget {
+  final int delayMs;
+  final Widget child;
+
+  const _FadeUp({required this.delayMs, required this.child});
+
+  @override
+  Widget build(BuildContext context) {
+    final totalMs = 550 + delayMs;
+    return TweenAnimationBuilder<double>(
+      tween: Tween<double>(begin: 0.0, end: 1.0),
+      duration: Duration(milliseconds: totalMs),
+      curve: Interval(delayMs / totalMs, 1.0, curve: Curves.easeOutCubic),
+      child: child,
+      builder: (context, t, child) {
+        return Opacity(
+          opacity: t.clamp(0.0, 1.0).toDouble(),
+          child: Transform.translate(offset: Offset(0, (1 - t) * 18), child: child),
+        );
+      },
+    );
+  }
+}
+
+/// Coloured stat card with a small trend line, as on the website dashboard.
+class _MetricCard extends StatelessWidget {
+  final String title;
+  final String value;
+  final String unit;
+  final Color color;
+  final Color titleColor;
+  final List<double> history;
+  final String? chip;
+
+  const _MetricCard({
+    required this.title,
+    required this.value,
+    required this.unit,
+    required this.color,
+    required this.titleColor,
+    required this.history,
+    this.chip,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      clipBehavior: Clip.antiAlias,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(color: color.withValues(alpha: 0.35)),
+        boxShadow: [
+          BoxShadow(color: color.withValues(alpha: 0.14), blurRadius: 18, offset: const Offset(0, 8)),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Container(
+            height: 4,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(colors: [color, color.withValues(alpha: 0.15)]),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(14, 10, 12, 12),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    Expanded(
+                      child: Text(
+                        title,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(fontSize: 10, fontWeight: FontWeight.w800, letterSpacing: 1.2, color: titleColor),
+                      ),
+                    ),
+                    if (chip != null)
+                      Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                        decoration: BoxDecoration(color: color.withValues(alpha: 0.14), borderRadius: BorderRadius.circular(8)),
+                        child: Text(chip!, style: TextStyle(fontSize: 10, fontWeight: FontWeight.w700, color: titleColor)),
+                      ),
+                  ],
+                ),
+                const SizedBox(height: 8),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Flexible(
+                      child: Text(
+                        value,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: const TextStyle(fontSize: 28, height: 1.0, fontWeight: FontWeight.w800, letterSpacing: -0.8, color: Color(0xFF0F172A)),
+                      ),
+                    ),
+                    const SizedBox(width: 4),
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 3),
+                      child: Text(unit, style: const TextStyle(fontSize: 12, color: Color(0xFF94A3B8))),
+                    ),
+                    const Spacer(),
+                    SizedBox(
+                      width: 54,
+                      height: 26,
+                      child: CustomPaint(painter: _TrendPainter(values: history, color: color, progress: 1.0, dense: true)),
+                    ),
+                  ],
+                ),
+              ],
             ),
           ),
         ],
@@ -588,48 +1270,291 @@ class _WeeklyGoalCardState extends State<_WeeklyGoalCard> {
   }
 }
 
-class _StatCard extends StatelessWidget {
-  final String title;
-  final String value;
-  final String subtitle;
-  final IconData icon;
-  final Color iconColor;
+/// Line with a soft fill underneath. Used for the small card trends and the big chart.
+class _TrendPainter extends CustomPainter {
+  final List<double> values;
+  final Color color;
+  final double progress; // 0..1, how much of the line is revealed
+  final bool dense; // small sparkline: no grid, thinner line
 
-  const _StatCard({
-    required this.title,
-    required this.value,
-    required this.subtitle,
-    required this.icon,
-    required this.iconColor,
-  });
+  const _TrendPainter({required this.values, required this.color, required this.progress, this.dense = false});
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    if (!dense) {
+      final grid = Paint()
+        ..color = const Color(0xFFE2E8F0)
+        ..strokeWidth = 1;
+      for (var i = 0; i < 4; i++) {
+        final y = size.height * i / 4;
+        // dotted guide lines
+        for (double x = 0; x < size.width; x += 6) {
+          canvas.drawLine(Offset(x, y), Offset(x + 2, y), grid);
+        }
+      }
+    }
+
+    final data = values.isEmpty ? <double>[0, 0] : (values.length == 1 ? <double>[values.first, values.first] : values);
+    var minV = data.reduce(math.min);
+    var maxV = data.reduce(math.max);
+    if (maxV - minV < 0.0001) {
+      // Flat data sits on a low baseline instead of the middle.
+      maxV = minV + 1;
+      minV = minV - 0.15;
+    }
+    final pad = dense ? 3.0 : 6.0;
+    final h = size.height - pad * 2;
+
+    final points = <Offset>[];
+    for (var i = 0; i < data.length; i++) {
+      final x = size.width * i / (data.length - 1);
+      final y = pad + h * (1 - (data[i] - minV) / (maxV - minV));
+      points.add(Offset(x, y));
+    }
+
+    final line = Path()..moveTo(points.first.dx, points.first.dy);
+    for (var i = 1; i < points.length; i++) {
+      line.lineTo(points[i].dx, points[i].dy);
+    }
+    final area = Path.from(line)
+      ..lineTo(size.width, size.height)
+      ..lineTo(0, size.height)
+      ..close();
+
+    canvas.save();
+    canvas.clipRect(Rect.fromLTWH(0, -8, size.width * progress.clamp(0.0, 1.0) + 1, size.height + 16));
+
+    canvas.drawPath(
+      area,
+      Paint()
+        ..shader = LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [color.withValues(alpha: dense ? 0.18 : 0.16), color.withValues(alpha: 0)],
+        ).createShader(Offset.zero & size),
+    );
+    canvas.drawPath(
+      line,
+      Paint()
+        ..color = color
+        ..style = PaintingStyle.stroke
+        ..strokeWidth = dense ? 1.6 : 2.2
+        ..strokeJoin = StrokeJoin.round
+        ..strokeCap = StrokeCap.round,
+    );
+
+    if (!dense) {
+      final dot = Paint()..color = color;
+      for (final p in points) {
+        canvas.drawCircle(p, 1.8, dot);
+      }
+    }
+    final last = points.last;
+    canvas.drawCircle(last, dense ? 2.2 : 5, Paint()..color = Colors.white);
+    canvas.drawCircle(
+      last,
+      dense ? 2.2 : 5,
+      Paint()
+        ..color = color
+        ..style = PaintingStyle.stroke
+        ..strokeWidth = dense ? 1.4 : 2,
+    );
+    canvas.restore();
+  }
+
+  @override
+  bool shouldRepaint(covariant _TrendPainter oldDelegate) {
+    return oldDelegate.values != values || oldDelegate.color != color || oldDelegate.progress != progress;
+  }
+}
+
+/// "Performance · last N weeks" with Accuracy / Speed / Score tabs.
+class _PerformanceCard extends StatefulWidget {
+  final List<PerformanceDataPoint> points;
+
+  const _PerformanceCard({required this.points});
+
+  @override
+  State<_PerformanceCard> createState() => _PerformanceCardState();
+}
+
+class _PerformanceCardState extends State<_PerformanceCard> {
+  static const _labels = ['Accuracy', 'Speed', 'Score'];
+  int _metric = 0;
+
+  double _valueOf(PerformanceDataPoint p) {
+    switch (_metric) {
+      case 1:
+        return p.speed;
+      case 2:
+        return p.score;
+      default:
+        return p.accuracy;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
+    final points = widget.points;
+    final values = points.map(_valueOf).toList();
+    final active = points.where((p) => p.attempts > 0).map(_valueOf).toList();
+    final avg = active.isEmpty ? 0.0 : active.reduce((a, b) => a + b) / active.length;
+    final avgText = _metric == 0 ? '${avg.round()}%' : avg.toStringAsFixed(avg % 1 == 0 ? 0 : 1);
+
+    String labelAt(double fraction) {
+      if (points.isEmpty) return '';
+      final i = ((points.length - 1) * fraction).round();
+      return points[i].label;
+    }
+
     return Container(
-      padding: const EdgeInsets.all(14),
+      padding: const EdgeInsets.fromLTRB(18, 18, 18, 16),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(14),
+        borderRadius: BorderRadius.circular(24),
         border: Border.all(color: const Color(0xFFE2E8F0)),
+        boxShadow: [
+          BoxShadow(color: const Color(0xFF0F172A).withValues(alpha: 0.05), blurRadius: 22, offset: const Offset(0, 10)),
+        ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(title, style: const TextStyle(fontSize: 10, fontWeight: FontWeight.w700, color: Color(0xFF64748B), letterSpacing: 0.5)),
-              Icon(icon, size: 16, color: iconColor),
-            ],
+          Text(
+            'PERFORMANCE · LAST ${points.length} WEEKS',
+            style: const TextStyle(fontSize: 10, fontWeight: FontWeight.w700, letterSpacing: 1.6, color: Color(0xFF94A3B8)),
           ),
           const SizedBox(height: 6),
-          Text(value, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Color(0xFF0F172A))),
-          const SizedBox(height: 2),
-          Text(subtitle, style: const TextStyle(fontSize: 11, color: Color(0xFF94A3B8))),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              AnimatedSwitcher(
+                duration: const Duration(milliseconds: 220),
+                child: Text(
+                  avgText,
+                  key: ValueKey<String>('$_metric-$avgText'),
+                  style: const TextStyle(fontSize: 32, height: 1.0, fontWeight: FontWeight.w800, letterSpacing: -1, color: Color(0xFF0F172A)),
+                ),
+              ),
+              const SizedBox(width: 8),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 3),
+                child: Text(
+                  'avg ${_labels[_metric].toLowerCase()}',
+                  style: const TextStyle(fontSize: 14, color: Color(0xFF64748B)),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 14),
+
+          // Accuracy / Speed / Score
+          Container(
+            padding: const EdgeInsets.all(4),
+            decoration: BoxDecoration(color: const Color(0xFFF1F5F9), borderRadius: BorderRadius.circular(12)),
+            child: Row(
+              children: [
+                for (var i = 0; i < _labels.length; i++)
+                  Expanded(
+                    child: GestureDetector(
+                      behavior: HitTestBehavior.opaque,
+                      onTap: () {
+                        AppHaptics.selection();
+                        setState(() => _metric = i);
+                      },
+                      child: AnimatedContainer(
+                        duration: const Duration(milliseconds: 200),
+                        padding: const EdgeInsets.symmetric(vertical: 9),
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          color: _metric == i ? Colors.white : Colors.transparent,
+                          borderRadius: BorderRadius.circular(9),
+                          boxShadow: _metric == i
+                              ? [BoxShadow(color: const Color(0xFF0F172A).withValues(alpha: 0.08), blurRadius: 6, offset: const Offset(0, 2))]
+                              : const [],
+                        ),
+                        child: Text(
+                          _labels[i],
+                          style: TextStyle(
+                            fontSize: 13,
+                            fontWeight: _metric == i ? FontWeight.w700 : FontWeight.w500,
+                            color: _metric == i ? const Color(0xFF0F172A) : const Color(0xFF64748B),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 16),
+
+          if (points.isEmpty)
+            const SizedBox(
+              height: 120,
+              child: Center(
+                child: Text('Finish a quiz to see your progress here.', style: TextStyle(color: Color(0xFF94A3B8), fontSize: 13)),
+              ),
+            )
+          else ...[
+            SizedBox(
+              height: 170,
+              width: double.infinity,
+              child: TweenAnimationBuilder<double>(
+                key: ValueKey<int>(_metric),
+                tween: Tween<double>(begin: 0.0, end: 1.0),
+                duration: const Duration(milliseconds: 900),
+                curve: Curves.easeOutCubic,
+                builder: (context, t, _) {
+                  return CustomPaint(
+                    painter: _TrendPainter(values: values, color: const Color(0xFF16A34A), progress: t),
+                  );
+                },
+              ),
+            ),
+            const SizedBox(height: 8),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                for (final f in const [0.0, 0.34, 0.67])
+                  Text(labelAt(f), style: const TextStyle(fontSize: 10, fontFamily: 'monospace', color: Color(0xFF94A3B8))),
+                Text('${labelAt(1.0)} — today', style: const TextStyle(fontSize: 10, fontFamily: 'monospace', color: Color(0xFF94A3B8))),
+              ],
+            ),
+          ],
         ],
       ),
     );
   }
+}
+
+/// Green progress ring for the weekly goal.
+class _GoalRingPainter extends CustomPainter {
+  final double progress;
+
+  const _GoalRingPainter({required this.progress});
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    const stroke = 14.0;
+    final rect = Rect.fromLTWH(stroke / 2, stroke / 2, size.width - stroke, size.height - stroke);
+    final track = Paint()
+      ..color = const Color(0xFFDCFCE7)
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = stroke;
+    canvas.drawArc(rect, 0, math.pi * 2, false, track);
+
+    if (progress <= 0) return;
+    final arc = Paint()
+      ..shader = const LinearGradient(colors: [Color(0xFF22C55E), Color(0xFF15803D)]).createShader(rect)
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = stroke
+      ..strokeCap = StrokeCap.round;
+    canvas.drawArc(rect, -math.pi / 2, math.pi * 2 * progress.clamp(0.0, 1.0), false, arc);
+  }
+
+  @override
+  bool shouldRepaint(covariant _GoalRingPainter oldDelegate) => oldDelegate.progress != progress;
 }
 
 // -----------------------------------------------------------------------------
@@ -1229,8 +2154,7 @@ class _SupportTabState extends State<_SupportTab> {
               ),
             )),
           ],
-        );
-      },
+        ),
     );
   }
 }
@@ -1242,13 +2166,19 @@ class _MoreTab extends StatefulWidget {
   final UserModel? user;
   final AuthState authState;
   final LeaderboardService leaderboardService;
+  final DiscussionService discussionService;
   final VoidCallback onNavigateToMyPapers;
+  final VoidCallback onNavigateToPractice;
+  final VoidCallback onNavigateToRanks;
 
   const _MoreTab({
     this.user,
     required this.authState,
     required this.leaderboardService,
+    required this.discussionService,
     required this.onNavigateToMyPapers,
+    required this.onNavigateToPractice,
+    required this.onNavigateToRanks,
   });
 
   @override
@@ -1345,6 +2275,75 @@ In full compliance with Google Play Store User Data policies, you can delete you
         setState(() => _selectedTheme = theme);
         Navigator.pop(context);
       },
+    );
+  }
+
+  void _openDiscussions() {
+    AppHaptics.light();
+    Navigator.of(context).push(
+      MaterialPageRoute<void>(
+        builder: (_) => Scaffold(
+          backgroundColor: const Color(0xFFF8FAFC),
+          appBar: AppBar(
+            title: const Text('Discussions', style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold)),
+            backgroundColor: Colors.white,
+            foregroundColor: const Color(0xFF0F172A),
+            surfaceTintColor: Colors.white,
+            elevation: 0,
+          ),
+          body: SafeArea(child: _SupportTab(discussionService: widget.discussionService)),
+        ),
+      ),
+    );
+  }
+
+  Future<void> _openOnWebsite(String path) async {
+    AppHaptics.light();
+    final messenger = ScaffoldMessenger.of(context);
+    var opened = false;
+    try {
+      opened = await launchUrl(
+        Uri.parse('https://quiz.genziitian.in$path'),
+        mode: LaunchMode.externalApplication,
+      );
+    } catch (_) {
+      opened = false;
+    }
+    if (!opened) {
+      messenger.showSnackBar(
+        SnackBar(content: Text('Could not open quiz.genziitian.in$path')),
+      );
+    }
+  }
+
+  Widget _exploreTile({
+    required IconData icon,
+    required Color color,
+    required String title,
+    String? subtitle,
+    String? badge,
+    required VoidCallback onTap,
+  }) {
+    return ListTile(
+      leading: Icon(icon, color: color, size: 20),
+      title: Row(
+        children: [
+          Flexible(
+            child: Text(title, style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w600)),
+          ),
+          if (badge != null) ...[
+            const SizedBox(width: 6),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 1),
+              decoration: BoxDecoration(color: const Color(0xFFFEF3C7), borderRadius: BorderRadius.circular(4)),
+              child: Text(badge, style: const TextStyle(fontSize: 9, fontWeight: FontWeight.bold, color: Color(0xFFB45309))),
+            ),
+          ],
+        ],
+      ),
+      subtitle: subtitle == null ? null : Text(subtitle, style: const TextStyle(fontSize: 11, color: Color(0xFF94A3B8))),
+      trailing: const Icon(Icons.arrow_forward_ios_rounded, size: 14, color: Color(0xFF94A3B8)),
+      onTap: onTap,
     );
   }
 
@@ -1545,6 +2544,68 @@ In full compliance with Google Play Store User Data policies, you can delete you
                       ),
                     ],
                   ),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 20),
+
+          // Everything the website has, one tap away
+          const Text('EXPLORE', style: TextStyle(fontSize: 11, fontWeight: FontWeight.w700, letterSpacing: 1, color: Color(0xFF64748B))),
+          const SizedBox(height: 8),
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(14),
+              border: Border.all(color: const Color(0xFFE2E8F0)),
+            ),
+            child: Column(
+              children: [
+                _exploreTile(
+                  icon: Icons.bolt_rounded,
+                  color: const Color(0xFF16A34A),
+                  title: 'Practice',
+                  subtitle: 'Assignments, quizzes, end term and mock tests',
+                  onTap: () {
+                    AppHaptics.light();
+                    widget.onNavigateToPractice();
+                  },
+                ),
+                const Divider(height: 1, color: Color(0xFFF1F5F9)),
+                _exploreTile(
+                  icon: Icons.forum_outlined,
+                  color: const Color(0xFF0284C7),
+                  title: 'Discussions',
+                  subtitle: 'Doubts, answers and peer questions',
+                  onTap: _openDiscussions,
+                ),
+                const Divider(height: 1, color: Color(0xFFF1F5F9)),
+                _exploreTile(
+                  icon: Icons.emoji_events_outlined,
+                  color: const Color(0xFFD97706),
+                  title: 'Leaderboard',
+                  subtitle: 'See where you rank by XP',
+                  onTap: () {
+                    AppHaptics.light();
+                    widget.onNavigateToRanks();
+                  },
+                ),
+                const Divider(height: 1, color: Color(0xFFF1F5F9)),
+                _exploreTile(
+                  icon: Icons.play_circle_outline_rounded,
+                  color: const Color(0xFF7C3AED),
+                  title: 'Video Solutions',
+                  badge: 'PRO',
+                  subtitle: 'Opens on quiz.genziitian.in',
+                  onTap: () => _openOnWebsite('/video-solutions'),
+                ),
+                const Divider(height: 1, color: Color(0xFFF1F5F9)),
+                _exploreTile(
+                  icon: Icons.desktop_windows_outlined,
+                  color: const Color(0xFF475569),
+                  title: 'Online Exams',
+                  subtitle: 'Proctored exams run on a desktop browser',
+                  onTap: () => _openOnWebsite('/exams'),
                 ),
               ],
             ),
@@ -1772,7 +2833,7 @@ class _TimedExamSessionScreenState extends State<TimedExamSessionScreen> {
   List<Map<String, dynamic>> _generateQuestions(int count) {
     final pool = [
       {
-        'stem': 'Evaluate the definite integral using standard calculus principles:\n\n$$\\int_0^2 (x^2 + 1) \\, dx = ?$$',
+        'stem': 'Evaluate the definite integral using standard calculus principles:\n\n\$\$\\int_0^2 (x^2 + 1) \\, dx = ?\$\$',
         'type': 'Single Choice (MCQ)',
         'marks': '+2.0 / -0.5',
         'options': ['8/3', '14/3', '12/3', '10/3'],
@@ -1793,7 +2854,7 @@ class _TimedExamSessionScreenState extends State<TimedExamSessionScreen> {
         'correct': 1,
       },
       {
-        'stem': 'Which of the following matrices has determinant equal to zero (Singular Matrix)?\n\n$$A = \\begin{pmatrix} 2 & 4 \\\\ 1 & 2 \\end{pmatrix}$$',
+        'stem': 'Which of the following matrices has determinant equal to zero (Singular Matrix)?\n\n\$\$A = \\begin{pmatrix} 2 & 4 \\\\ 1 & 2 \\end{pmatrix}\$\$',
         'type': 'Single Choice (MCQ)',
         'marks': '+2.0 / -0.5',
         'options': ['det(A) = 0', 'det(A) = 2', 'det(A) = -2', 'det(A) = 8'],

@@ -182,7 +182,7 @@ class _ManagerWorkspaceScreenState extends State<ManagerWorkspaceScreen> {
             borderRadius: BorderRadius.circular(18),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.08),
+                color: Colors.black.withValues(alpha: 0.08),
                 blurRadius: 10,
                 offset: const Offset(0, 4),
               ),
@@ -193,7 +193,7 @@ class _ManagerWorkspaceScreenState extends State<ManagerWorkspaceScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Row(
-                mainAxisAlignment: MainAxisAlignment.between,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
                     'TOTAL REVENUE',
@@ -262,7 +262,7 @@ class _ManagerWorkspaceScreenState extends State<ManagerWorkspaceScreen> {
 
         // Recent Orders Header
         Row(
-          mainAxisAlignment: MainAxisAlignment.between,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             const Text(
               'Recent Paper Purchases',
@@ -360,7 +360,7 @@ class _ManagerWorkspaceScreenState extends State<ManagerWorkspaceScreen> {
           Container(
             padding: const EdgeInsets.all(8),
             decoration: BoxDecoration(
-              color: iconColor.withOpacity(0.12),
+              color: iconColor.withValues(alpha: 0.12),
               borderRadius: BorderRadius.circular(10),
             ),
             child: Icon(icon, color: iconColor, size: 20),
@@ -457,7 +457,7 @@ class _ManagerWorkspaceScreenState extends State<ManagerWorkspaceScreen> {
         border: Border.all(color: const Color(0xFFE2E8F0)),
       ),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.between,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Expanded(
             child: Column(
