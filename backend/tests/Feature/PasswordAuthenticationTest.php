@@ -142,4 +142,29 @@ class PasswordAuthenticationTest extends TestCase
             'email' => 'pending@example.test', 'password' => 'correct horse battery staple',
         ])->assertForbidden()->assertJsonPath('needs_verification', true);
     }
+
+    public function test_personal_access_tokens_expire_after_the_configured_lifetime(): void
+    {
+        config(['sanctum.expiration' => 1]);
+        DB::table('users')->insert([
+            'name' => 'Test Student',
+            'email' => 'student@example.test',
+            'password' => Hash::make('correct horse battery staple'),
+            'email_verified_at' => now(),
+            'role' => 'student',
+            'is_active' => true,
+        ]);
+
+        $login = $this->postJson('/public/api/auth/login', [
+            'email' => 'student@example.test',
+            'password' => 'correct horse battery staple',
+        ])->assertOk();
+
+        $token = $login->json('token');
+        $this->travel(2)->minutes();
+
+        $this->withHeader('Authorization', 'Bearer '.$token)
+            ->getJson('/public/api/auth/me')
+            ->assertUnauthorized();
+    }
 }

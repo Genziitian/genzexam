@@ -47,7 +47,9 @@ return [
     |
     */
 
-    'expiration' => null,
+    // Bound the lifetime of bearer tokens used by the web client and mobile app.
+    // Users can sign in again after 30 days; logout and password reset revoke tokens sooner.
+    'expiration' => (int) env('SANCTUM_EXPIRATION', 43200),
 
     /*
     |--------------------------------------------------------------------------
