@@ -6,6 +6,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../api/api.dart';
 import '../../state/auth_state.dart';
 import '../../widgets/app_ux_components.dart';
+import 'practice_screens.dart';
 
 /// 5-Tab Navigation Shell for Students: Home, Quizzes & Storefront, Test, Support, More.
 ///
@@ -43,7 +44,10 @@ class _StudentMainShellState extends State<StudentMainShell> {
     return AppKeyboardDismiss(
       child: Scaffold(
         backgroundColor: const Color(0xFFF8FAFC),
+        // Pages run right down to the floating bar, so there is no empty band beside the raised button.
+        extendBody: true,
         body: SafeArea(
+          bottom: false,
           child: Column(
             children: [
               // Manager Preview Mode Banner
@@ -86,7 +90,10 @@ class _StudentMainShellState extends State<StudentMainShell> {
 
               // Tab View Body
               Expanded(
-                child: IndexedStack(
+                child: Padding(
+                  // Height of the bar's white pill plus its bottom margin and the system inset.
+                  padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewPadding.bottom + 76),
+                  child: IndexedStack(
                   index: _currentIndex,
                   children: [
                     _HomeTab(
@@ -95,14 +102,18 @@ class _StudentMainShellState extends State<StudentMainShell> {
                       onNavigateToQuizzes: () => setState(() => _currentIndex = 1),
                       onOpenProfile: () => setState(() => _currentIndex = 4),
                     ),
-                    _QuizzesTab(
-                      courseService: _courseService,
+                    _MyPapersTab(
                       storefrontService: _storefrontService,
+                      courseService: _courseService,
+                      user: widget.authState.user,
+                      isActive: _currentIndex == 1,
+                      onBrowsePractice: () => setState(() => _currentIndex = 2),
                     ),
-                    _TestTab(courseService: _courseService),
+                    PracticeTab(courseService: _courseService, user: widget.authState.user),
                     _RanksTab(
                       leaderboardService: _leaderboardService,
                       user: widget.authState.user,
+                      isActive: _currentIndex == 3,
                     ),
                     _MoreTab(
                       user: widget.authState.user,
@@ -114,6 +125,7 @@ class _StudentMainShellState extends State<StudentMainShell> {
                       onNavigateToRanks: () => setState(() => _currentIndex = 3),
                     ),
                   ],
+                ),
                 ),
               ),
             ],
@@ -377,25 +389,68 @@ class _QuizLabDockState extends State<_QuizLabDock> with SingleTickerProviderSta
 }
 
 // -----------------------------------------------------------------------------
-// TAB: RANKS (Global XP leaderboard)
+// TAB: RANKS (Global XP leaderboard with podium, celebration and pinned "you" row)
 // -----------------------------------------------------------------------------
 class _RanksTab extends StatefulWidget {
   final LeaderboardService leaderboardService;
   final UserModel? user;
 
-  const _RanksTab({required this.leaderboardService, this.user});
+  /// True while this tab is the one on screen; each time it becomes true the
+  /// podium pops in again and the confetti plays.
+  final bool isActive;
+
+  const _RanksTab({required this.leaderboardService, this.user, required this.isActive});
 
   @override
   State<_RanksTab> createState() => _RanksTabState();
 }
 
-class _RanksTabState extends State<_RanksTab> {
+class _RanksTabState extends State<_RanksTab> with TickerProviderStateMixin {
+  static const _rowHeight = 62.0;
+
   late Future<LeaderboardData> _future;
+  late final AnimationController _party; // confetti, ~3.2s
+  late final AnimationController _pop; // podium cards popping in
+  late final AnimationController _idle; // gentle loop: gold glow and bobbing medals
+  int _plays = 0; // bumps each time the tab opens, so one-shot animations replay
+
+  final ScrollController _scroll = ScrollController();
+  final GlobalKey _viewportKey = GlobalKey();
+  final GlobalKey _myRowKey = GlobalKey();
+  bool _pinMyRow = false;
 
   @override
   void initState() {
     super.initState();
     _future = widget.leaderboardService.getLeaderboard();
+    _party = AnimationController(vsync: this, duration: const Duration(milliseconds: 3200));
+    _pop = AnimationController(vsync: this, duration: const Duration(milliseconds: 1100));
+    _idle = AnimationController(vsync: this, duration: const Duration(milliseconds: 2400))..repeat();
+    _scroll.addListener(_updatePin);
+    if (widget.isActive) _celebrate();
+  }
+
+  @override
+  void didUpdateWidget(covariant _RanksTab oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.isActive && !oldWidget.isActive) _celebrate();
+  }
+
+  @override
+  void dispose() {
+    _scroll.removeListener(_updatePin);
+    _scroll.dispose();
+    _party.dispose();
+    _pop.dispose();
+    _idle.dispose();
+    super.dispose();
+  }
+
+  void _celebrate() {
+    _plays++;
+    _pop.forward(from: 0);
+    _party.forward(from: 0);
+    WidgetsBinding.instance.addPostFrameCallback((_) => _updatePin());
   }
 
   Future<void> _refresh() async {
@@ -410,17 +465,307 @@ class _RanksTabState extends State<_RanksTab> {
     }
   }
 
-  Color _medal(int rank) {
-    switch (rank) {
-      case 1:
-        return const Color(0xFFF59E0B);
-      case 2:
-        return const Color(0xFF94A3B8);
-      case 3:
-        return const Color(0xFFB45309);
-      default:
-        return const Color(0xFF64748B);
+  /// Pin the "you" row to the bottom while your real row is still below the screen.
+  void _updatePin() {
+    if (!mounted) return;
+    final rowBox = _myRowKey.currentContext?.findRenderObject();
+    final viewBox = _viewportKey.currentContext?.findRenderObject();
+    var pin = false;
+    if (rowBox is RenderBox && viewBox is RenderBox && rowBox.attached && viewBox.attached) {
+      final top = rowBox.localToGlobal(Offset.zero, ancestor: viewBox).dy;
+      pin = top > viewBox.size.height - _rowHeight - 8;
     }
+    if (pin != _pinMyRow) setState(() => _pinMyRow = pin);
+  }
+
+  static String _initialsOf(String name) {
+    final parts = name.trim().split(RegExp(r'\s+')).where((p) => p.isNotEmpty).toList();
+    if (parts.isEmpty) return 'S';
+    if (parts.length == 1) return parts.first[0].toUpperCase();
+    return (parts.first[0] + parts.last[0]).toUpperCase();
+  }
+
+  static const _avatarColors = [
+    Color(0xFF16A34A),
+    Color(0xFF7C3AED),
+    Color(0xFFD97706),
+    Color(0xFFDC2626),
+    Color(0xFF0284C7),
+    Color(0xFFDB2777),
+  ];
+
+  Widget _avatar(String name, double size, {Color? color}) {
+    final c = color ?? _avatarColors[name.hashCode.abs() % _avatarColors.length];
+    return Container(
+      width: size,
+      height: size,
+      alignment: Alignment.center,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: Color.alphaBlend(c.withValues(alpha: 0.10), Colors.white),
+        border: Border.all(color: c.withValues(alpha: 0.30), width: 1.5),
+      ),
+      child: Text(
+        _initialsOf(name),
+        style: TextStyle(fontSize: size * 0.34, fontWeight: FontWeight.w800, color: c),
+      ),
+    );
+  }
+
+  // ---- Podium ---------------------------------------------------------------
+
+  Widget _podiumCard(GlobalLeaderboardEntry entry, int place) {
+    // place: 1 gold (tallest), 2 silver, 3 bronze. Feet line up at the bottom.
+    final double height = place == 1 ? 262 : (place == 2 ? 244 : 228);
+    final List<Color> fill = place == 1
+        ? const [Color(0xFFFFF4B8), Color(0xFFFCD34D), Color(0xFFF5B92E)] // polished gold
+        : place == 2
+            ? const [Color(0xFFFFFFFF), Color(0xFFE2E8F0)]
+            : const [Color(0xFFFFF7ED), Color(0xFFFCD9B6)];
+    final Color edge = place == 1
+        ? const Color(0xFFF59E0B)
+        : place == 2
+            ? const Color(0xFF94A3B8)
+            : const Color(0xFFC2773A);
+    final Color strong = place == 1
+        ? const Color(0xFF92400E)
+        : place == 2
+            ? const Color(0xFF475569)
+            : const Color(0xFF9A4D16);
+    final medal = place == 1 ? '🥇' : (place == 2 ? '🥈' : '🥉');
+    final label = place == 1 ? 'TOP' : (place == 2 ? '2ND' : '3RD');
+
+    // Pop order: silver, gold, bronze.
+    final order = place == 2 ? 0 : (place == 1 ? 1 : 2);
+    final start = 0.12 * order;
+
+    return AnimatedBuilder(
+      animation: _pop,
+      builder: (context, child) {
+        final t = ((_pop.value - start) / 0.6).clamp(0.0, 1.0).toDouble();
+        final scale = Curves.elasticOut.transform(t);
+        return Opacity(
+          opacity: (t * 3).clamp(0.0, 1.0).toDouble(),
+          child: Transform.scale(scale: 0.6 + 0.4 * scale, alignment: Alignment.bottomCenter, child: child),
+        );
+      },
+      child: SizedBox(
+        height: height + 12,
+        child: Stack(
+          clipBehavior: Clip.none,
+          alignment: Alignment.bottomCenter,
+          children: [
+            if (place == 1)
+              // Breathing golden glow behind the winner.
+              Positioned(
+                left: 0,
+                right: 0,
+                bottom: 0,
+                height: height,
+                child: AnimatedBuilder(
+                  animation: _idle,
+                  builder: (context, _) {
+                    final pulse = 0.5 + 0.5 * math.sin(_idle.value * 2 * math.pi);
+                    return DecoratedBox(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(22),
+                        boxShadow: [
+                          BoxShadow(
+                            color: const Color(0xFFFBBF24).withValues(alpha: 0.25 + 0.35 * pulse),
+                            blurRadius: 18 + 22 * pulse,
+                            spreadRadius: 1 + 4 * pulse,
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                ),
+              ),
+            Container(
+              height: height,
+              width: double.infinity,
+              padding: const EdgeInsets.fromLTRB(6, 22, 6, 12),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(22),
+                gradient: LinearGradient(begin: Alignment.topCenter, end: Alignment.bottomCenter, colors: fill),
+                border: Border.all(color: edge, width: place == 1 ? 2.5 : 1.5),
+                boxShadow: [
+                  BoxShadow(color: edge.withValues(alpha: place == 1 ? 0.35 : 0.2), blurRadius: place == 1 ? 24 : 14, offset: const Offset(0, 10)),
+                ],
+              ),
+              child: Column(
+                children: [
+                  _avatar(entry.name, place == 1 ? 62 : 52, color: strong),
+                  const SizedBox(height: 8),
+                  Text(
+                    entry.name,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(fontSize: 12.5, fontWeight: FontWeight.w600, color: Color(0xFF0F172A)),
+                  ),
+                  const Spacer(),
+                  AnimatedBuilder(
+                    animation: _idle,
+                    builder: (context, child) {
+                      final wave = math.sin((_idle.value + place * 0.22) * 2 * math.pi);
+                      return Transform.translate(
+                        offset: Offset(0, -2.5 * wave),
+                        child: Transform.rotate(angle: 0.10 * wave, child: child),
+                      );
+                    },
+                    child: Text(medal, style: const TextStyle(fontSize: 22, height: 1.1)),
+                  ),
+                  const SizedBox(height: 2),
+                  TweenAnimationBuilder<double>(
+                    key: ValueKey<String>('xp-$_plays-${entry.userId}'),
+                    tween: Tween<double>(begin: 0.0, end: entry.xp.toDouble()),
+                    duration: Duration(milliseconds: 1100 + 150 * order),
+                    curve: Curves.easeOutCubic,
+                    builder: (context, value, _) => Text(
+                      '${value.round()}',
+                      style: TextStyle(fontSize: place == 1 ? 24 : 20, height: 1.1, fontWeight: FontWeight.w800, color: strong),
+                    ),
+                  ),
+                  const Text('XP', style: TextStyle(fontSize: 11, color: Color(0xFF64748B))),
+                  const SizedBox(height: 6),
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 3),
+                    decoration: BoxDecoration(color: Colors.white.withValues(alpha: 0.7), borderRadius: BorderRadius.circular(10)),
+                    child: Text(
+                      '⚡ LVL ${entry.level}',
+                      style: TextStyle(fontSize: 9.5, fontWeight: FontWeight.w800, letterSpacing: 0.4, color: strong),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            if (place == 1)
+              // A band of light sweeping across the gold, once per loop.
+              Positioned(
+                left: 0,
+                right: 0,
+                bottom: 0,
+                height: height,
+                child: IgnorePointer(
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(22),
+                    child: AnimatedBuilder(
+                      animation: _idle,
+                      builder: (context, _) {
+                        // The band crosses during the first 55% of the loop, then rests.
+                        final t = (_idle.value / 0.55).clamp(0.0, 1.0).toDouble();
+                        final x = -2.2 + 4.4 * Curves.easeInOut.transform(t);
+                        return DecoratedBox(
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              begin: Alignment(x - 0.8, -1),
+                              end: Alignment(x + 0.8, 1),
+                              colors: const [Color(0x00FFFFFF), Color(0xB3FFFFFF), Color(0x00FFFFFF)],
+                              stops: const [0.38, 0.5, 0.62],
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                ),
+              ),
+            Positioned(
+              top: 0,
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
+                decoration: BoxDecoration(color: edge, borderRadius: BorderRadius.circular(10)),
+                child: Text(label, style: const TextStyle(fontSize: 10, fontWeight: FontWeight.w800, letterSpacing: 0.8, color: Colors.white)),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _podium(List<GlobalLeaderboardEntry> top) {
+    // Left silver (#2), middle gold (#1), right bronze (#3).
+    final first = top.isNotEmpty ? top[0] : null;
+    final second = top.length > 1 ? top[1] : null;
+    final third = top.length > 2 ? top[2] : null;
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: [
+        Expanded(flex: 10, child: second == null ? const SizedBox() : _podiumCard(second, 2)),
+        const SizedBox(width: 8),
+        Expanded(flex: 11, child: first == null ? const SizedBox() : _podiumCard(first, 1)),
+        const SizedBox(width: 8),
+        Expanded(flex: 10, child: third == null ? const SizedBox() : _podiumCard(third, 3)),
+      ],
+    );
+  }
+
+  // ---- Rows -----------------------------------------------------------------
+
+  Widget _row({required String rank, required String name, required int xp, bool isMe = false, bool compact = false, Key? key}) {
+    return Container(
+      key: key,
+      height: compact ? 50 : _rowHeight,
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      color: isMe ? const Color(0xFFF0FDF4) : null,
+      child: Row(
+        children: [
+          SizedBox(
+            width: 54,
+            child: Text(
+              rank,
+              style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: isMe ? const Color(0xFF15803D) : const Color(0xFF475569)),
+            ),
+          ),
+          _avatar(name, 34, color: isMe ? const Color(0xFF16A34A) : null),
+          const SizedBox(width: 10),
+          Expanded(
+            child: Row(
+              children: [
+                Flexible(
+                  child: Text(
+                    name,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(fontSize: 14.5, fontWeight: FontWeight.w500, color: Color(0xFF0F172A)),
+                  ),
+                ),
+                if (isMe) ...[
+                  const SizedBox(width: 6),
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 1),
+                    decoration: BoxDecoration(color: const Color(0xFF16A34A), borderRadius: BorderRadius.circular(6)),
+                    child: const Text('YOU', style: TextStyle(fontSize: 9, fontWeight: FontWeight.w800, color: Colors.white)),
+                  ),
+                ],
+              ],
+            ),
+          ),
+          Text('$xp', style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w800, color: Color(0xFF0F172A))),
+        ],
+      ),
+    );
+  }
+
+  /// "More people in between" marker.
+  Widget _gapRow({double height = 34}) {
+    return SizedBox(
+      height: height,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          for (var i = 0; i < 3; i++)
+            Container(
+              width: 5,
+              height: 5,
+              margin: const EdgeInsets.symmetric(horizontal: 3),
+              decoration: const BoxDecoration(color: Color(0xFFCBD5E1), shape: BoxShape.circle),
+            ),
+        ],
+      ),
+    );
   }
 
   @override
@@ -441,151 +786,241 @@ class _RanksTabState extends State<_RanksTab> {
 
         final data = snapshot.data!;
         final entries = data.leaderboard;
-        return RefreshIndicator(
-          onRefresh: _refresh,
-          color: const Color(0xFF16A34A),
-          child: ListView(
-            padding: const EdgeInsets.all(16),
-            children: [
-              const Text(
-                'Leaderboard',
-                style: TextStyle(fontSize: 26, fontWeight: FontWeight.w800, letterSpacing: -0.5, color: Color(0xFF0F172A)),
-              ),
-              const SizedBox(height: 2),
-              const Text(
-                'Top students by XP',
-                style: TextStyle(fontSize: 13, color: Color(0xFF64748B)),
-              ),
-              const SizedBox(height: 16),
+        final myId = widget.user?.id;
+        final myName = widget.user?.name ?? 'You';
+        final myRank = data.myRank;
+        final myIndex = entries.indexWhere((e) => e.userId == myId);
+        final rest = entries.length > 3 ? entries.sublist(3) : <GlobalLeaderboardEntry>[];
+        // You are below everyone listed: show a gap marker, then your row at the end.
+        final appendMe = myIndex < 0 && myRank != null;
+        final hasMyRow = myIndex >= 3 || appendMe;
 
-              // Your position
-              Container(
-                padding: const EdgeInsets.all(16),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  gradient: const LinearGradient(
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                    colors: [Color(0xFF14532D), Color(0xFF16A34A)],
-                  ),
-                  boxShadow: [
-                    BoxShadow(
-                      color: const Color(0xFF16A34A).withValues(alpha: 0.3),
-                      blurRadius: 20,
-                      offset: const Offset(0, 10),
-                    ),
-                  ],
-                ),
-                child: Row(
+        WidgetsBinding.instance.addPostFrameCallback((_) => _updatePin());
+
+        return Stack(
+          key: _viewportKey,
+          children: [
+            RefreshIndicator(
+              onRefresh: _refresh,
+              color: const Color(0xFF16A34A),
+              child: SingleChildScrollView(
+                controller: _scroll,
+                physics: const AlwaysScrollableScrollPhysics(),
+                padding: const EdgeInsets.fromLTRB(16, 18, 16, 20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Icon(Icons.emoji_events_rounded, color: Color(0xFFFDE68A), size: 36),
-                    const SizedBox(width: 14),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                    const Text(
+                      'Leaderboard',
+                      style: TextStyle(fontSize: 30, height: 1.15, fontWeight: FontWeight.w800, letterSpacing: -0.8, color: Color(0xFF0F172A)),
+                    ),
+                    const SizedBox(height: 4),
+                    Text.rich(
+                      TextSpan(
+                        text: 'Top students by total XP',
                         children: [
-                          const Text(
-                            'YOUR RANK',
-                            style: TextStyle(fontSize: 11, fontWeight: FontWeight.w700, letterSpacing: 1, color: Color(0xFFBBF7D0)),
-                          ),
-                          Text(
-                            data.myRank != null ? '#${data.myRank}' : 'Unranked',
-                            style: const TextStyle(fontSize: 26, fontWeight: FontWeight.w800, color: Colors.white),
-                          ),
+                          if (myRank != null)
+                            TextSpan(
+                              text: '  · Your rank: #$myRank',
+                              style: const TextStyle(fontWeight: FontWeight.w700, color: Color(0xFF16A34A)),
+                            ),
                         ],
                       ),
+                      style: const TextStyle(fontSize: 14, color: Color(0xFF64748B)),
                     ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        Text(
-                          '${data.me.xp} XP',
-                          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w800, color: Colors.white),
+                    const SizedBox(height: 18),
+
+                    if (entries.isEmpty)
+                      const Padding(
+                        padding: EdgeInsets.symmetric(vertical: 40),
+                        child: Center(
+                          child: Text('No rankings yet. Finish a quiz to get on the board.', style: TextStyle(color: Color(0xFF94A3B8))),
                         ),
-                        Text(
-                          'Level ${data.me.level}',
-                          style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: Color(0xFFBBF7D0)),
+                      )
+                    else ...[
+                      _podium(entries),
+                      const SizedBox(height: 20),
+
+                      Container(
+                        clipBehavior: Clip.antiAlias,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(20),
+                          border: Border.all(color: const Color(0xFFE2E8F0)),
                         ),
-                      ],
-                    ),
+                        child: Column(
+                          children: [
+                            Container(
+                              color: const Color(0xFFF8FAFC),
+                              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                              child: const Row(
+                                children: [
+                                  SizedBox(
+                                    width: 54,
+                                    child: Text('RANK', style: TextStyle(fontSize: 11, fontWeight: FontWeight.w600, letterSpacing: 1, color: Color(0xFF64748B))),
+                                  ),
+                                  Expanded(
+                                    child: Text('STUDENT', style: TextStyle(fontSize: 11, fontWeight: FontWeight.w600, letterSpacing: 1, color: Color(0xFF64748B))),
+                                  ),
+                                  Text('XP', style: TextStyle(fontSize: 11, fontWeight: FontWeight.w600, letterSpacing: 1, color: Color(0xFF64748B))),
+                                ],
+                              ),
+                            ),
+                            for (var i = 0; i < rest.length; i++) ...[
+                              const Divider(height: 1, color: Color(0xFFE2E8F0)),
+                              _FadeUp(
+                                key: ValueKey<String>('row-$_plays-$i'),
+                                delayMs: 350 + (i < 12 ? i * 55 : 660),
+                                child: _row(
+                                  key: rest[i].userId == myId ? _myRowKey : null,
+                                  rank: '#${rest[i].rank}',
+                                  name: rest[i].name,
+                                  xp: rest[i].xp,
+                                  isMe: rest[i].userId == myId,
+                                ),
+                              ),
+                            ],
+                            if (appendMe) ...[
+                              const Divider(height: 1, color: Color(0xFFE2E8F0)),
+                              _gapRow(),
+                              const Divider(height: 1, color: Color(0xFFE2E8F0)),
+                              _row(key: _myRowKey, rank: '#$myRank', name: myName, xp: data.me.xp, isMe: true),
+                            ],
+                          ],
+                        ),
+                      ),
+                    ],
                   ],
                 ),
               ),
-              const SizedBox(height: 16),
+            ),
 
-              if (entries.isEmpty)
-                const Padding(
-                  padding: EdgeInsets.all(24),
-                  child: Center(
-                    child: Text('No rankings yet. Finish a quiz to get on the board.', style: TextStyle(color: Color(0xFF94A3B8))),
-                  ),
-                )
-              else
-                Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(18),
-                    border: Border.all(color: const Color(0xFFE2E8F0)),
-                  ),
-                  child: Column(
-                    children: [
-                      for (var i = 0; i < entries.length; i++) ...[
-                        if (i > 0) const Divider(height: 1, color: Color(0xFFF1F5F9)),
-                        Container(
-                          color: entries[i].userId == widget.user?.id ? const Color(0xFFF0FDF4) : null,
-                          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 11),
-                          child: Row(
-                            children: [
-                              SizedBox(
-                                width: 34,
-                                child: Text(
-                                  '#${entries[i].rank}',
-                                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w800, color: _medal(entries[i].rank)),
-                                ),
-                              ),
-                              CircleAvatar(
-                                radius: 17,
-                                backgroundColor: const Color(0xFFDCFCE7),
-                                child: Text(
-                                  entries[i].name.isNotEmpty ? entries[i].name[0].toUpperCase() : 'S',
-                                  style: const TextStyle(fontSize: 13, fontWeight: FontWeight.bold, color: Color(0xFF16A34A)),
-                                ),
-                              ),
-                              const SizedBox(width: 10),
-                              Expanded(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      entries[i].name,
-                                      maxLines: 1,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: Color(0xFF0F172A)),
-                                    ),
-                                    Text(
-                                      'Level ${entries[i].level}',
-                                      style: const TextStyle(fontSize: 11, color: Color(0xFF94A3B8)),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Text(
-                                '${entries[i].xp} XP',
-                                style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w800, color: Color(0xFF16A34A)),
-                              ),
-                            ],
-                          ),
+            // Your row, pinned to the bottom until your real place scrolls into view.
+            if (hasMyRow)
+              Positioned(
+                left: 16,
+                right: 16,
+                bottom: 6,
+                child: IgnorePointer(
+                  ignoring: !_pinMyRow,
+                  child: AnimatedSlide(
+                    offset: _pinMyRow ? Offset.zero : const Offset(0, 0.4),
+                    duration: const Duration(milliseconds: 220),
+                    curve: Curves.easeOutCubic,
+                    child: AnimatedOpacity(
+                      opacity: _pinMyRow ? 1 : 0,
+                      duration: const Duration(milliseconds: 180),
+                      child: Container(
+                        clipBehavior: Clip.antiAlias,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(16),
+                          border: Border.all(color: const Color(0xFF86EFAC), width: 1.5),
+                          boxShadow: [
+                            BoxShadow(color: const Color(0xFF0F172A).withValues(alpha: 0.16), blurRadius: 20, offset: const Offset(0, 8)),
+                          ],
                         ),
-                      ],
-                    ],
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            // Three dots: there are more students between the rows above and you.
+                            Container(color: const Color(0xFFF0FDF4), child: _gapRow(height: 14)),
+                            _row(
+                              compact: true,
+                              rank: myRank != null ? '#$myRank' : '—',
+                              name: myName,
+                              xp: myIndex >= 0 ? entries[myIndex].xp : data.me.xp,
+                              isMe: true,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
                   ),
                 ),
-            ],
-          ),
+              ),
+
+            // Celebration
+            Positioned.fill(
+              child: IgnorePointer(
+                child: AnimatedBuilder(
+                  animation: _party,
+                  builder: (context, _) {
+                    if (_party.value <= 0 || _party.value >= 1) return const SizedBox.shrink();
+                    return CustomPaint(painter: _ConfettiPainter(progress: _party.value));
+                  },
+                ),
+              ),
+            ),
+          ],
         );
       },
     );
   }
+}
+
+/// Confetti: two bursts popping up from the lower corners, then falling.
+class _ConfettiPainter extends CustomPainter {
+  final double progress; // 0..1 over the whole celebration
+
+  const _ConfettiPainter({required this.progress});
+
+  static const _colors = [
+    Color(0xFFF59E0B),
+    Color(0xFF22C55E),
+    Color(0xFF3B82F6),
+    Color(0xFFEC4899),
+    Color(0xFFA855F7),
+    Color(0xFFFACC15),
+    Color(0xFFEF4444),
+  ];
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final random = math.Random(42);
+    final paint = Paint();
+    const seconds = 3.2;
+    final time = progress * seconds;
+    final fadeOut = ((1 - progress) / 0.25).clamp(0.0, 1.0).toDouble();
+
+    for (var i = 0; i < 130; i++) {
+      final fromLeft = i.isEven;
+      final delay = random.nextDouble() * 0.5; // staggered pops
+      final angle = (fromLeft ? -math.pi / 3 : -2 * math.pi / 3) + (random.nextDouble() - 0.5) * 0.9;
+      final speed = size.height * (0.75 + random.nextDouble() * 0.75);
+      final w = 5.0 + random.nextDouble() * 6;
+      final h = 3.0 + random.nextDouble() * 5;
+      final spin = (random.nextDouble() - 0.5) * 14;
+      final color = _colors[random.nextInt(_colors.length)];
+      final round = random.nextInt(4) == 0;
+
+      final t = time - delay;
+      if (t <= 0) continue;
+
+      // Launch, slow down with drag, fall with gravity.
+      final drag = 1 - math.exp(-2.2 * t);
+      final gravity = size.height * 0.55;
+      final x = (fromLeft ? 0.0 : size.width) + math.cos(angle) * speed * drag / 2.2 + math.sin(t * 3 + i) * 6;
+      final y = size.height * 0.62 + math.sin(angle) * speed * drag / 2.2 + 0.5 * gravity * t * t;
+      if (y > size.height + 20) continue;
+
+      paint.color = color.withValues(alpha: fadeOut);
+      canvas.save();
+      canvas.translate(x, y);
+      canvas.rotate(spin * t);
+      if (round) {
+        canvas.drawCircle(Offset.zero, w / 2, paint);
+      } else {
+        // Squash the width over time so pieces look like they flutter.
+        final flutter = 0.35 + 0.65 * math.cos(t * 9 + i).abs();
+        canvas.drawRect(Rect.fromCenter(center: Offset.zero, width: w * flutter, height: h), paint);
+      }
+      canvas.restore();
+    }
+  }
+
+  @override
+  bool shouldRepaint(covariant _ConfettiPainter oldDelegate) => oldDelegate.progress != progress;
 }
 
 // -----------------------------------------------------------------------------
@@ -608,13 +1043,23 @@ class _HomeTab extends StatefulWidget {
   State<_HomeTab> createState() => _HomeTabState();
 }
 
-class _HomeTabState extends State<_HomeTab> {
+class _HomeTabState extends State<_HomeTab> with SingleTickerProviderStateMixin {
   late Future<DashboardData> _dashboardFuture;
+
+  /// Gentle loop: logo glow, flickering flame, shimmer on the name.
+  late final AnimationController _ambient;
 
   @override
   void initState() {
     super.initState();
     _dashboardFuture = widget.dashboardService.getDashboard();
+    _ambient = AnimationController(vsync: this, duration: const Duration(milliseconds: 3000))..repeat();
+  }
+
+  @override
+  void dispose() {
+    _ambient.dispose();
+    super.dispose();
   }
 
   static String _firstName(String? name) {
@@ -673,9 +1118,28 @@ class _HomeTabState extends State<_HomeTab> {
                 delayMs: 0,
                 child: Row(
                   children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(12),
-                      child: Image.asset('assets/logo.png', width: 44, height: 44, fit: BoxFit.cover),
+                    AnimatedBuilder(
+                      animation: _ambient,
+                      builder: (context, child) {
+                        final pulse = 0.5 + 0.5 * math.sin(_ambient.value * 2 * math.pi);
+                        return Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12),
+                            boxShadow: [
+                              BoxShadow(
+                                color: const Color(0xFF22C55E).withValues(alpha: 0.15 + 0.30 * pulse),
+                                blurRadius: 8 + 12 * pulse,
+                                spreadRadius: 1.5 * pulse,
+                              ),
+                            ],
+                          ),
+                          child: child,
+                        );
+                      },
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(12),
+                        child: Image.asset('assets/logo.png', width: 44, height: 44, fit: BoxFit.cover),
+                      ),
                     ),
                     const SizedBox(width: 10),
                     Expanded(
@@ -707,7 +1171,18 @@ class _HomeTabState extends State<_HomeTab> {
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          const Icon(Icons.local_fire_department_rounded, color: Color(0xFFF59E0B), size: 15),
+                          AnimatedBuilder(
+                            animation: _ambient,
+                            builder: (context, child) {
+                              final a = _ambient.value * 2 * math.pi;
+                              final flicker = 1 + 0.10 * math.sin(a * 5) + 0.06 * math.sin(a * 9);
+                              return Transform.rotate(
+                                angle: 0.10 * math.sin(a * 3),
+                                child: Transform.scale(scale: flicker, alignment: Alignment.bottomCenter, child: child),
+                              );
+                            },
+                            child: const Icon(Icons.local_fire_department_rounded, color: Color(0xFFF59E0B), size: 15),
+                          ),
                           const SizedBox(width: 4),
                           Text(
                             '${data.streak.days}-day streak',
@@ -753,17 +1228,35 @@ class _HomeTabState extends State<_HomeTab> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text.rich(
-                      TextSpan(
-                        text: 'Welcome back, ',
-                        children: [
-                          TextSpan(
-                            text: '${_firstName(widget.user?.name)}.',
-                            style: const TextStyle(color: Color(0xFF16A34A)),
+                    Wrap(
+                      crossAxisAlignment: WrapCrossAlignment.end,
+                      children: [
+                        const Text(
+                          'Welcome back, ',
+                          style: TextStyle(fontSize: 30, height: 1.15, fontWeight: FontWeight.w800, letterSpacing: -0.8, color: Color(0xFF0F172A)),
+                        ),
+                        AnimatedBuilder(
+                          animation: _ambient,
+                          builder: (context, child) {
+                            // A light band crosses the name during the first half of each loop.
+                            final t = (_ambient.value / 0.5).clamp(0.0, 1.0).toDouble();
+                            final x = -2.0 + 4.0 * t;
+                            return ShaderMask(
+                              blendMode: BlendMode.srcIn,
+                              shaderCallback: (rect) => LinearGradient(
+                                begin: Alignment(x - 0.6, 0),
+                                end: Alignment(x + 0.6, 0),
+                                colors: const [Color(0xFF16A34A), Color(0xFF86EFAC), Color(0xFF16A34A)],
+                              ).createShader(rect),
+                              child: child,
+                            );
+                          },
+                          child: Text(
+                            '${_firstName(widget.user?.name)}.',
+                            style: const TextStyle(fontSize: 30, height: 1.15, fontWeight: FontWeight.w800, letterSpacing: -0.8, color: Color(0xFF16A34A)),
                           ),
-                        ],
-                      ),
-                      style: const TextStyle(fontSize: 30, height: 1.15, fontWeight: FontWeight.w800, letterSpacing: -0.8, color: Color(0xFF0F172A)),
+                        ),
+                      ],
                     ),
                   ],
                 ),
@@ -820,7 +1313,7 @@ class _HomeTabState extends State<_HomeTab> {
                         Expanded(
                           child: _MetricCard(
                             title: 'RANK',
-                            value: data.rank.current != null ? '#${data.rank.current}' : '—',
+                            value: data.rank.current != null ? '#${data.rank.current}' : 'New',
                             unit: 'of ${data.rank.totalRanked}',
                             color: const Color(0xFF8B5CF6),
                             titleColor: const Color(0xFF6D28D9),
@@ -846,6 +1339,12 @@ class _HomeTabState extends State<_HomeTab> {
                 delayMs: 320,
                 child: _WeeklyGoalCard(
                   completed: data.performance.isEmpty ? 0 : data.performance.last.attempts,
+                  weekScore: data.performance.isEmpty
+                      ? 0.0
+                      : (data.performance.last.score != 0 ? data.performance.last.score : data.performance.last.accuracy),
+                  lastSevenDays: data.streak.history.length > 7
+                      ? data.streak.history.sublist(data.streak.history.length - 7)
+                      : data.streak.history,
                 ),
               ),
               const SizedBox(height: 20),
@@ -966,20 +1465,36 @@ class _WeeklyGoalCard extends StatefulWidget {
   /// Quizzes finished this week (from the dashboard's latest week).
   final int completed;
 
-  const _WeeklyGoalCard({required this.completed});
+  /// Average score (0-100) for this week.
+  final double weekScore;
+
+  /// Activity flags for the last seven days (1 = active), as the website shows them.
+  final List<int> lastSevenDays;
+
+  const _WeeklyGoalCard({required this.completed, required this.weekScore, required this.lastSevenDays});
 
   @override
   State<_WeeklyGoalCard> createState() => _WeeklyGoalCardState();
 }
 
-class _WeeklyGoalCardState extends State<_WeeklyGoalCard> {
+class _WeeklyGoalCardState extends State<_WeeklyGoalCard> with SingleTickerProviderStateMixin {
   static const _storage = FlutterSecureStorage();
   int _targetGoal = 5;
+
+  /// Breathing pulse for today's chip.
+  late final AnimationController _breath;
 
   @override
   void initState() {
     super.initState();
+    _breath = AnimationController(vsync: this, duration: const Duration(milliseconds: 1400))..repeat(reverse: true);
     _loadGoal();
+  }
+
+  @override
+  void dispose() {
+    _breath.dispose();
+    super.dispose();
   }
 
   Future<void> _loadGoal() async {
@@ -1046,12 +1561,23 @@ class _WeeklyGoalCardState extends State<_WeeklyGoalCard> {
 
   @override
   Widget build(BuildContext context) {
-    final completed = widget.completed;
+    // Same numbers as the website's Weekly Goal card.
+    final completed = math.min(widget.completed, _targetGoal);
     final progress = (completed / _targetGoal).clamp(0.0, 1.0).toDouble();
-    final percent = (progress * 100).round();
+    final remaining = math.max(0, _targetGoal - completed);
+    final todayIndex = DateTime.now().weekday - 1; // Monday = 0
+    final daysLeft = 6 - todayIndex;
+    final perDay = daysLeft > 0 ? (remaining / daysLeft).toStringAsFixed(1) : '—';
+    final score = widget.weekScore.round();
+    final scoreColor = score >= 70
+        ? const Color(0xFF16A34A)
+        : score >= 50
+            ? const Color(0xFFF59E0B)
+            : const Color(0xFFF43F5E);
+    const dayLetters = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
 
     return Container(
-      padding: const EdgeInsets.fromLTRB(18, 18, 18, 12),
+      padding: const EdgeInsets.fromLTRB(18, 18, 18, 18),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(24),
@@ -1071,11 +1597,18 @@ class _WeeklyGoalCardState extends State<_WeeklyGoalCard> {
               ),
               Text(
                 '$completed/$_targetGoal quizzes',
-                style: const TextStyle(fontSize: 12, fontFamily: 'monospace', fontWeight: FontWeight.w600, color: Color(0xFF94A3B8)),
+                style: TextStyle(
+                  fontSize: 12,
+                  fontFamily: 'monospace',
+                  fontWeight: FontWeight.w600,
+                  color: completed >= _targetGoal ? const Color(0xFF16A34A) : const Color(0xFF94A3B8),
+                ),
               ),
             ],
           ),
-          const SizedBox(height: 16),
+          const SizedBox(height: 18),
+
+          // Ring
           SizedBox(
             width: 150,
             height: 150,
@@ -1090,27 +1623,167 @@ class _WeeklyGoalCardState extends State<_WeeklyGoalCard> {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text(
-                      '$percent%',
-                      style: const TextStyle(fontSize: 30, height: 1.0, fontWeight: FontWeight.w800, letterSpacing: -1, color: Color(0xFF0F172A)),
+                    Text.rich(
+                      TextSpan(
+                        text: '$completed',
+                        children: [
+                          TextSpan(
+                            text: '/$_targetGoal',
+                            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w400, color: Color(0xFFCBD5E1)),
+                          ),
+                        ],
+                      ),
+                      style: const TextStyle(fontSize: 32, height: 1.0, fontWeight: FontWeight.w800, letterSpacing: -1, color: Color(0xFF0F172A)),
                     ),
-                    const SizedBox(height: 4),
-                    Text(
-                      completed >= _targetGoal ? 'Goal reached' : '${_targetGoal - completed} to go',
-                      style: const TextStyle(fontSize: 12, color: Color(0xFF64748B)),
-                    ),
+                    const SizedBox(height: 3),
+                    const Text('quizzes', style: TextStyle(fontSize: 11, color: Color(0xFF94A3B8))),
                   ],
                 ),
               ),
             ),
           ),
-          const SizedBox(height: 6),
-          TextButton(
-            onPressed: _showChangeGoalDialog,
-            child: const Text('Change goal', style: TextStyle(color: Color(0xFF16A34A), fontSize: 13, fontWeight: FontWeight.bold)),
+          const SizedBox(height: 16),
+
+          // Message
+          if (remaining > 0) ...[
+            Text.rich(
+              TextSpan(
+                children: [
+                  TextSpan(
+                    text: '$remaining more',
+                    style: const TextStyle(fontWeight: FontWeight.w800, color: Color(0xFF0F172A)),
+                  ),
+                  const TextSpan(text: ' to hit your weekly goal.'),
+                ],
+              ),
+              textAlign: TextAlign.center,
+              style: const TextStyle(fontSize: 16, color: Color(0xFF334155)),
+            ),
+            const SizedBox(height: 3),
+            Text(
+              '$daysLeft day${daysLeft == 1 ? '' : 's'} remaining · ~$perDay/day',
+              style: const TextStyle(fontSize: 12.5, color: Color(0xFF94A3B8)),
+            ),
+          ] else
+            const Text(
+              'Weekly goal complete!',
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: Color(0xFF16A34A)),
+            ),
+          const SizedBox(height: 12),
+
+          // Change goal
+          GestureDetector(
+            onTap: _showChangeGoalDialog,
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              decoration: BoxDecoration(
+                color: const Color(0xFFF0FDF4),
+                borderRadius: BorderRadius.circular(20),
+                border: Border.all(color: const Color(0xFFBBF7D0), width: 1.5),
+              ),
+              child: const Text(
+                'Change goal',
+                style: TextStyle(color: Color(0xFF15803D), fontSize: 13, fontWeight: FontWeight.w700),
+              ),
+            ),
+          ),
+          const SizedBox(height: 16),
+
+          // Week days
+          Row(
+            children: [
+              for (var i = 0; i < 7; i++) ...[
+                if (i > 0) const SizedBox(width: 5),
+                Expanded(child: _dayChip(dayLetters[i], i, todayIndex)),
+              ],
+            ],
+          ),
+          const SizedBox(height: 8),
+          Text(
+            '${dayLetters[todayIndex]} — today',
+            style: const TextStyle(fontSize: 11, fontFamily: 'monospace', color: Color(0xFF94A3B8)),
+          ),
+          const SizedBox(height: 16),
+          const Divider(height: 1, color: Color(0xFFF1F5F9)),
+          const SizedBox(height: 16),
+
+          // This week avg score
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Text('This week avg score', style: TextStyle(fontSize: 13, color: Color(0xFF64748B))),
+              Text('$score%', style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w700, color: Color(0xFF1E293B))),
+            ],
+          ),
+          const SizedBox(height: 8),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(6),
+            child: TweenAnimationBuilder<double>(
+              tween: Tween<double>(begin: 0.0, end: (score / 100).clamp(0.0, 1.0).toDouble()),
+              duration: const Duration(milliseconds: 700),
+              curve: Curves.easeOutCubic,
+              builder: (context, t, _) {
+                return LinearProgressIndicator(
+                  value: t,
+                  minHeight: 6,
+                  backgroundColor: const Color(0xFFF1F5F9),
+                  valueColor: AlwaysStoppedAnimation<Color>(scoreColor),
+                );
+              },
+            ),
           ),
         ],
       ),
+    );
+  }
+
+  Widget _dayChip(String letter, int index, int todayIndex) {
+    final done = index < widget.lastSevenDays.length && widget.lastSevenDays[index] == 1;
+    final isToday = index == todayIndex;
+    final Color background = done
+        ? const Color(0xFF16A34A)
+        : isToday
+            ? const Color(0xFF16A34A).withValues(alpha: 0.10)
+            : const Color(0xFFF8FAFC);
+    final Color foreground = done
+        ? Colors.white
+        : isToday
+            ? const Color(0xFF15803D)
+            : index < todayIndex
+                ? const Color(0xFFCBD5E1)
+                : const Color(0xFF94A3B8);
+    final chip = Container(
+      height: 34,
+      alignment: Alignment.center,
+      decoration: BoxDecoration(
+        color: background,
+        borderRadius: BorderRadius.circular(9),
+        border: Border.all(
+          color: isToday && !done ? const Color(0xFF16A34A).withValues(alpha: 0.45) : Colors.transparent,
+          width: 1.5,
+        ),
+      ),
+      child: Text(letter, style: TextStyle(fontSize: 11, fontWeight: FontWeight.w700, color: foreground)),
+    );
+    if (!isToday) return chip;
+    return AnimatedBuilder(
+      animation: _breath,
+      builder: (context, child) {
+        final t = Curves.easeInOut.transform(_breath.value);
+        return Transform.scale(
+          scale: 1 + 0.07 * t,
+          child: DecoratedBox(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(9),
+              boxShadow: [
+                BoxShadow(color: const Color(0xFF16A34A).withValues(alpha: 0.30 * t), blurRadius: 10 * t, spreadRadius: 1.5 * t),
+              ],
+            ),
+            child: child,
+          ),
+        );
+      },
+      child: chip,
     );
   }
 }
@@ -1120,7 +1793,7 @@ class _FadeUp extends StatelessWidget {
   final int delayMs;
   final Widget child;
 
-  const _FadeUp({required this.delayMs, required this.child});
+  const _FadeUp({super.key, required this.delayMs, required this.child});
 
   @override
   Widget build(BuildContext context) {
@@ -1159,6 +1832,30 @@ class _MetricCard extends StatelessWidget {
     required this.history,
     this.chip,
   });
+
+  static const _valueStyle = TextStyle(fontSize: 28, height: 1.0, fontWeight: FontWeight.w800, letterSpacing: -0.8, color: Color(0xFF0F172A));
+
+  /// The number counts up from zero when the card appears ("#167", "13", "0.5").
+  Widget _animatedValue() {
+    final match = RegExp(r'^(\D*)(\d+(?:\.\d+)?)$').firstMatch(value);
+    if (match == null) {
+      return Text(value, maxLines: 1, overflow: TextOverflow.ellipsis, style: _valueStyle);
+    }
+    final prefix = match.group(1) ?? '';
+    final digits = match.group(2)!;
+    final decimals = digits.contains('.') ? digits.split('.').last.length : 0;
+    return TweenAnimationBuilder<double>(
+      tween: Tween<double>(begin: 0.0, end: double.parse(digits)),
+      duration: const Duration(milliseconds: 1200),
+      curve: Curves.easeOutCubic,
+      builder: (context, v, _) => Text(
+        '$prefix${v.toStringAsFixed(decimals)}',
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
+        style: _valueStyle,
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -1208,14 +1905,7 @@ class _MetricCard extends StatelessWidget {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    Flexible(
-                      child: Text(
-                        value,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: const TextStyle(fontSize: 28, height: 1.0, fontWeight: FontWeight.w800, letterSpacing: -0.8, color: Color(0xFF0F172A)),
-                      ),
-                    ),
+                    Flexible(child: _animatedValue()),
                     const SizedBox(width: 4),
                     Padding(
                       padding: const EdgeInsets.only(bottom: 3),
@@ -1225,7 +1915,13 @@ class _MetricCard extends StatelessWidget {
                     SizedBox(
                       width: 54,
                       height: 26,
-                      child: CustomPaint(painter: _TrendPainter(values: history, color: color, progress: 1.0, dense: true)),
+                      child: TweenAnimationBuilder<double>(
+                        tween: Tween<double>(begin: 0.0, end: 1.0),
+                        duration: const Duration(milliseconds: 1400),
+                        curve: Curves.easeInOutCubic,
+                        builder: (context, t, _) =>
+                            CustomPaint(painter: _TrendPainter(values: history, color: color, progress: t, dense: true)),
+                      ),
                     ),
                   ],
                 ),
@@ -1526,15 +2222,453 @@ class _GoalRingPainter extends CustomPainter {
 }
 
 // -----------------------------------------------------------------------------
-// TAB 2: PAPERS & STOREFRONT (Past Papers, Pricing & Claims)
+// TAB 2: MY PAPERS (papers you bought or attempted, as on the website)
+// -----------------------------------------------------------------------------
+class _MyPapersTab extends StatefulWidget {
+  final StorefrontService storefrontService;
+  final CourseService courseService;
+  final UserModel? user;
+  final VoidCallback onBrowsePractice;
+
+  /// True while this tab is on screen; the list reloads each time it is opened.
+  final bool isActive;
+
+  const _MyPapersTab({
+    required this.storefrontService,
+    required this.courseService,
+    required this.onBrowsePractice,
+    required this.isActive,
+    this.user,
+  });
+
+  @override
+  State<_MyPapersTab> createState() => _MyPapersTabState();
+}
+
+class _MyPapersTabState extends State<_MyPapersTab> {
+  static const _sectionLabels = {
+    'quiz1': 'Quiz 1',
+    'quiz2': 'Quiz 2',
+    'endterm': 'End Term',
+    'mock_test': 'Mock test',
+    'practice': 'Practice',
+    'practice_graded': 'Graded practice',
+  };
+
+  bool _loading = true;
+  String? _error;
+  List<MyPaperItem> _papers = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _load();
+  }
+
+  @override
+  void didUpdateWidget(covariant _MyPapersTab oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.isActive && !oldWidget.isActive) _load(quiet: true);
+  }
+
+  Future<void> _load({bool quiet = false}) async {
+    if (!quiet) {
+      setState(() {
+        _loading = true;
+        _error = null;
+      });
+    }
+    try {
+      final papers = await widget.storefrontService.getMyPapers();
+      if (!mounted) return;
+      setState(() {
+        _papers = papers;
+        _loading = false;
+        _error = null;
+      });
+    } catch (e) {
+      if (!mounted) return;
+      if (quiet && _papers.isNotEmpty) return; // keep what is on screen
+      setState(() {
+        _error = e is ApiException && e.statusCode == 403
+            ? 'My Papers is for student accounts. Managers handle papers and sales from the manager console.'
+            : 'Your papers could not load. Check your connection and try again.';
+        _loading = false;
+      });
+    }
+  }
+
+  static String _num(double value) => value % 1 == 0 ? value.toInt().toString() : value.toStringAsFixed(1);
+
+  Future<void> _openPaper(MyPaperItem paper) async {
+    AppHaptics.light();
+    await Navigator.of(context).push(
+      MaterialPageRoute<void>(
+        builder: (_) => PaperRoomScreen(
+          quizId: paper.id,
+          title: paper.title,
+          apiClient: widget.courseService.client,
+          user: widget.user,
+        ),
+      ),
+    );
+    if (mounted) _load(quiet: true);
+  }
+
+  void _openCatalogue() {
+    AppHaptics.light();
+    Navigator.of(context)
+        .push(
+          MaterialPageRoute<void>(
+            builder: (_) => Scaffold(
+              backgroundColor: const Color(0xFFF8FAFC),
+              appBar: AppBar(
+                title: const Text('All papers', style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold)),
+                backgroundColor: Colors.white,
+                foregroundColor: const Color(0xFF0F172A),
+                surfaceTintColor: Colors.white,
+                elevation: 0,
+              ),
+              body: SafeArea(
+                child: _QuizzesTab(
+                  courseService: widget.courseService,
+                  storefrontService: widget.storefrontService,
+                  user: widget.user,
+                ),
+              ),
+            ),
+          ),
+        )
+        .then((_) {
+      if (mounted) _load(quiet: true);
+    });
+  }
+
+  void _showDetails(MyPaperItem paper, String state, String progressText) {
+    AppHaptics.selection();
+    showModalBottomSheet<void>(
+      context: context,
+      backgroundColor: Colors.white,
+      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(22))),
+      builder: (ctx) {
+        Widget line(String label, String value) => Padding(
+              padding: const EdgeInsets.symmetric(vertical: 7),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(width: 110, child: Text(label, style: const TextStyle(fontSize: 13, color: Color(0xFF64748B)))),
+                  Expanded(
+                    child: Text(value, style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w600, color: Color(0xFF0F172A))),
+                  ),
+                ],
+              ),
+            );
+        return SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(20, 18, 20, 16),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(paper.title, style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w800, color: Color(0xFF0F172A))),
+                if ((paper.description ?? '').trim().isNotEmpty) ...[
+                  const SizedBox(height: 6),
+                  Text(paper.description!.trim(), style: const TextStyle(fontSize: 13, height: 1.4, color: Color(0xFF64748B))),
+                ],
+                const SizedBox(height: 10),
+                const Divider(height: 1, color: Color(0xFFF1F5F9)),
+                const SizedBox(height: 4),
+                line('Course', paper.course?.name ?? '—'),
+                line('Type', _sectionLabels[paper.section] ?? '—'),
+                if (paper.year != null) line('Year', '${paper.year}'),
+                line('Questions', '${paper.questionCount}'),
+                line('Time', (paper.timeLimitMinutes ?? 0) > 0 ? '${paper.timeLimitMinutes} min' : 'Untimed'),
+                line('Access', state),
+                line('Progress', progressText),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  Widget _chip(String text) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 3),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(color: const Color(0xFFE2E8F0)),
+      ),
+      child: Text(text, style: const TextStyle(fontSize: 11.5, color: Color(0xFF475569))),
+    );
+  }
+
+  Widget _button(String text, {required bool filled, required VoidCallback onTap}) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        height: 38,
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          color: filled ? const Color(0xFF16A34A) : Colors.white,
+          borderRadius: BorderRadius.circular(11),
+          border: Border.all(color: filled ? const Color(0xFF16A34A) : const Color(0xFFE2E8F0)),
+          boxShadow: filled
+              ? [BoxShadow(color: const Color(0xFF16A34A).withValues(alpha: 0.28), blurRadius: 10, offset: const Offset(0, 5))]
+              : const [],
+        ),
+        child: Text(
+          text,
+          style: TextStyle(fontSize: 13.5, fontWeight: FontWeight.w700, color: filled ? Colors.white : const Color(0xFF334155)),
+        ),
+      ),
+    );
+  }
+
+  Widget _card(MyPaperItem paper) {
+    // Same rules as the website's My Papers cards.
+    final paid = paper.pricePaise > 0;
+    final purchased = paper.purchased || paper.source == 'purchase';
+    final usable = paper.available && paper.hasAccess;
+    final attempts = paper.attemptCount;
+    final state = !paper.available
+        ? 'Unavailable'
+        : purchased
+            ? 'Purchased ✓'
+            : paid
+                ? 'Paid'
+                : 'Free';
+    final total = paper.lastTotalMarks ?? 0;
+    final score = paper.lastScore ?? 0;
+    final progressText = paper.inProgress
+        ? 'In progress'
+        : attempts > 0
+            ? '${paper.lastTotalMarks != null ? 'Last score ${_num(score)}/${_num(total)} · ' : ''}$attempts attempt${attempts == 1 ? '' : 's'}'
+            : 'Not started';
+    final showBar = attempts > 0 && total > 0 && !paper.inProgress;
+    final pct = showBar ? (score / total).clamp(0.0, 1.0).toDouble() : 0.0;
+    final sub = [paper.course?.name, paper.year?.toString(), _sectionLabels[paper.section]]
+        .where((s) => s != null && s.isNotEmpty)
+        .join(' · ');
+
+    final Color tagBg = !paper.available
+        ? const Color(0xFFF1F5F9)
+        : purchased
+            ? const Color(0xFFDCFCE7)
+            : paid
+                ? const Color(0xFFFEF3C7)
+                : const Color(0xFFECFDF5);
+    final Color tagFg = !paper.available
+        ? const Color(0xFF64748B)
+        : purchased
+            ? const Color(0xFF15803D)
+            : paid
+                ? const Color(0xFFB45309)
+                : const Color(0xFF15803D);
+
+    return Container(
+      clipBehavior: Clip.antiAlias,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(18),
+        gradient: const LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          stops: [0.45, 1.0],
+          colors: [Colors.white, Color(0xFFF0F9F2)],
+        ),
+        border: Border.all(color: const Color(0xFF16A34A).withValues(alpha: 0.22)),
+        boxShadow: [
+          BoxShadow(color: const Color(0xFF166534).withValues(alpha: 0.10), blurRadius: 16, offset: const Offset(0, 8)),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Container(
+            height: 3,
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(colors: [Color(0xFF16A34A), Color(0xFF86EFAC), Color(0x0086EFAC)]),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(14, 11, 14, 12),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  paper.title,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: const TextStyle(fontSize: 15, height: 1.25, fontWeight: FontWeight.w700, color: Color(0xFF0F172A)),
+                ),
+                if (sub.isNotEmpty) ...[
+                  const SizedBox(height: 2),
+                  Text(sub, maxLines: 1, overflow: TextOverflow.ellipsis, style: const TextStyle(fontSize: 12, color: Color(0xFF64748B))),
+                ],
+                const SizedBox(height: 8),
+                // Chips and the Free / Purchased tag share one row.
+                Row(
+                  children: [
+                    _chip('${paper.questionCount} questions'),
+                    const SizedBox(width: 6),
+                    _chip((paper.timeLimitMinutes ?? 0) > 0 ? '${paper.timeLimitMinutes} min' : 'Untimed'),
+                    const Spacer(),
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 3),
+                      decoration: BoxDecoration(color: tagBg, borderRadius: BorderRadius.circular(20)),
+                      child: Text(state, style: TextStyle(fontSize: 11, fontWeight: FontWeight.w700, color: tagFg)),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  progressText,
+                  style: TextStyle(
+                    fontSize: 12.5,
+                    fontWeight: FontWeight.w700,
+                    color: paper.inProgress
+                        ? const Color(0xFFB45309)
+                        : attempts > 0
+                            ? const Color(0xFF15803D)
+                            : const Color(0xFF94A3B8),
+                  ),
+                ),
+                if (showBar) ...[
+                  const SizedBox(height: 6),
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(4),
+                    child: LinearProgressIndicator(
+                      value: pct,
+                      minHeight: 4,
+                      backgroundColor: const Color(0xFFE2E8E4),
+                      valueColor: const AlwaysStoppedAnimation<Color>(Color(0xFF22C55E)),
+                    ),
+                  ),
+                ],
+                if (paper.available) ...[
+                  const SizedBox(height: 10),
+                  Row(
+                    children: [
+                      if (usable) ...[
+                        Expanded(
+                          child: _button('View details', filled: false, onTap: () => _showDetails(paper, state, progressText)),
+                        ),
+                        const SizedBox(width: 8),
+                      ],
+                      Expanded(
+                        child: usable
+                            ? _button(
+                                paper.inProgress ? 'Continue' : (attempts > 0 ? 'Attempt again' : 'Start'),
+                                filled: true,
+                                onTap: () => _openPaper(paper),
+                              )
+                            : _button('Buy paper', filled: false, onTap: _openCatalogue),
+                      ),
+                    ],
+                  ),
+                ],
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    if (_loading && _papers.isEmpty) {
+      return AppShimmerCard.list(count: 4);
+    }
+    return RefreshIndicator(
+      onRefresh: _load,
+      color: const Color(0xFF16A34A),
+      child: ListView(
+        padding: const EdgeInsets.fromLTRB(16, 18, 16, 16),
+        children: [
+          Row(
+            children: [
+              const Expanded(
+                child: Text(
+                  'Your papers.',
+                  style: TextStyle(fontSize: 30, height: 1.15, fontWeight: FontWeight.w800, letterSpacing: -0.8, color: Color(0xFF0F172A)),
+                ),
+              ),
+              GestureDetector(
+                onTap: () {
+                  AppHaptics.light();
+                  widget.onBrowsePractice();
+                },
+                child: Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 9),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(color: const Color(0xFFE2E8F0)),
+                  ),
+                  child: const Text('Browse practice', style: TextStyle(fontSize: 13.5, fontWeight: FontWeight.w600, color: Color(0xFF334155))),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 6),
+          const Text(
+            'Papers you bought or attempted, with your progress.',
+            style: TextStyle(fontSize: 13.5, color: Color(0xFF64748B)),
+          ),
+          const SizedBox(height: 14),
+
+          if (_error != null && _papers.isEmpty)
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 40),
+              child: Column(
+                children: [
+                  Text(_error!, textAlign: TextAlign.center, style: const TextStyle(color: Color(0xFF64748B), fontSize: 14)),
+                  const SizedBox(height: 12),
+                  TextButton(onPressed: _load, child: const Text('Try again', style: TextStyle(color: Color(0xFF16A34A), fontWeight: FontWeight.bold))),
+                ],
+              ),
+            )
+          else if (_papers.isEmpty)
+            const Padding(
+              padding: EdgeInsets.symmetric(vertical: 40, horizontal: 12),
+              child: Text(
+                'Nothing here yet. Start any free paper from Practice, or buy a paper, and it shows up here with your score.',
+                textAlign: TextAlign.center,
+                style: TextStyle(color: Color(0xFF94A3B8), fontSize: 14, height: 1.4),
+              ),
+            )
+          else
+            for (final paper in _papers)
+              Padding(padding: const EdgeInsets.only(bottom: 10), child: _card(paper)),
+
+          const SizedBox(height: 4),
+          Center(
+            child: TextButton(
+              onPressed: _openCatalogue,
+              child: const Text('Browse all papers', style: TextStyle(color: Color(0xFF16A34A), fontSize: 13, fontWeight: FontWeight.bold)),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+// -----------------------------------------------------------------------------
+// ALL PAPERS (catalogue, opened from My Papers): PAPERS & STOREFRONT (Past Papers, Pricing & Claims)
 // -----------------------------------------------------------------------------
 class _QuizzesTab extends StatefulWidget {
   final CourseService courseService;
   final StorefrontService storefrontService;
+  final UserModel? user;
 
   const _QuizzesTab({
     required this.courseService,
     required this.storefrontService,
+    this.user,
   });
 
   @override
@@ -1768,10 +2902,11 @@ class _QuizzesTabState extends State<_QuizzesTab> {
                   onPressed: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (_) => TimedExamSessionScreen(
-                          quizTitle: paper.title,
-                          timeLimitMinutes: paper.timeLimitMinutes ?? 45,
-                          questionCount: paper.questionCount,
+                        builder: (_) => PaperRoomScreen(
+                          quizId: paper.id,
+                          title: paper.title,
+                          apiClient: widget.courseService.client,
+                          user: widget.user,
                         ),
                       ),
                     );
@@ -1788,185 +2923,6 @@ class _QuizzesTabState extends State<_QuizzesTab> {
           ),
         ],
       ),
-    );
-  }
-}
-
-// -----------------------------------------------------------------------------
-// TAB 3: TEST (Timed Quiz & Exam Player - Card & Palette Engine)
-// -----------------------------------------------------------------------------
-class _TestTab extends StatefulWidget {
-  final CourseService courseService;
-
-  const _TestTab({required this.courseService});
-
-  @override
-  State<_TestTab> createState() => _TestTabState();
-}
-
-class _TestTabState extends State<_TestTab> {
-  bool _isLoading = true;
-  String? _errorMessage;
-  CourseModel? _primaryCourse;
-  CourseExamPrepResponse? _examPrep;
-
-  @override
-  void initState() {
-    super.initState();
-    _loadData();
-  }
-
-  Future<void> _loadData() async {
-    setState(() {
-      _isLoading = true;
-      _errorMessage = null;
-    });
-    try {
-      final courses = await widget.courseService.getCourses();
-      final primary = courses.firstOrNull;
-      if (primary != null) {
-        final examPrep = await widget.courseService.getExamPrep(primary.slug);
-        if (mounted) {
-          setState(() {
-            _primaryCourse = primary;
-            _examPrep = examPrep;
-            _isLoading = false;
-          });
-        }
-      } else {
-        if (mounted) {
-          setState(() {
-            _isLoading = false;
-          });
-        }
-      }
-    } catch (e) {
-      if (mounted) {
-        setState(() {
-          _errorMessage = e.toString();
-          _isLoading = false;
-        });
-      }
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    if (_isLoading) {
-      return AppShimmerCard.list(count: 3);
-    }
-
-    if (_errorMessage != null) {
-      return AppErrorCard(
-        title: 'Unable to Load Exam Prep',
-        message: _errorMessage!,
-        onRetry: _loadData,
-      );
-    }
-
-    final primaryCourse = _primaryCourse;
-    if (primaryCourse == null) {
-      return const Center(child: Text('No courses available yet.', style: TextStyle(color: Color(0xFF64748B))));
-    }
-
-    final examPrep = _examPrep;
-    return RefreshIndicator(
-      onRefresh: _loadData,
-      color: const Color(0xFF16A34A),
-      child: ListView(
-        padding: const EdgeInsets.all(16),
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const Text('TIMED MOCKS & EXAM PREP', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Color(0xFF0F172A))),
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                decoration: BoxDecoration(color: const Color(0xFFE2E8F0), borderRadius: BorderRadius.circular(8)),
-                child: Text(primaryCourse.name, style: const TextStyle(fontSize: 11, fontWeight: FontWeight.bold, color: Color(0xFF334155))),
-              ),
-            ],
-          ),
-          const SizedBox(height: 4),
-          const Text('Official timed papers with score analytics & scientific calculator', style: TextStyle(fontSize: 13, color: Color(0xFF64748B))),
-          const SizedBox(height: 16),
-
-          _ExamSection(title: 'Mock Tests', items: examPrep?.mockTest ?? []),
-          _ExamSection(title: 'Quiz 1 Papers', items: examPrep?.quiz1 ?? []),
-          _ExamSection(title: 'Quiz 2 Papers', items: examPrep?.quiz2 ?? []),
-          _ExamSection(title: 'Endterm Papers', items: examPrep?.endterm ?? []),
-        ],
-      ),
-    );
-  }
-}
-
-class _ExamSection extends StatelessWidget {
-  final String title;
-  final List<CourseQuizListItem> items;
-
-  const _ExamSection({required this.title, required this.items});
-
-  @override
-  Widget build(BuildContext context) {
-    if (items.isEmpty) return const SizedBox.shrink();
-
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(title.toUpperCase(), style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold, letterSpacing: 0.5, color: Color(0xFF475569))),
-        const SizedBox(height: 8),
-        ...items.map((q) => Container(
-          margin: const EdgeInsets.only(bottom: 8),
-          padding: const EdgeInsets.all(14),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(12),
-            border: Border.all(color: const Color(0xFFE2E8F0)),
-          ),
-          child: Row(
-            children: [
-              Container(
-                height: 38,
-                width: 38,
-                decoration: BoxDecoration(color: const Color(0xFFEFF6FF), borderRadius: BorderRadius.circular(8)),
-                child: const Icon(Icons.timer_outlined, color: Color(0xFF2563EB), size: 20),
-              ),
-              const SizedBox(width: 12),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(q.title, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
-                    Text('${q.timeLimitMinutes} mins · ${q.questionCount} questions', style: const TextStyle(fontSize: 11, color: Color(0xFF64748B))),
-                  ],
-                ),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (_) => TimedExamSessionScreen(
-                        quizTitle: q.title,
-                        timeLimitMinutes: q.timeLimitMinutes,
-                        questionCount: q.questionCount,
-                      ),
-                    ),
-                  );
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF16A34A),
-                  foregroundColor: Colors.white,
-                  padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-                ),
-                child: const Text('Start', style: TextStyle(fontSize: 11, fontWeight: FontWeight.bold)),
-              ),
-            ],
-          ),
-        )),
-        const SizedBox(height: 12),
-      ],
     );
   }
 }

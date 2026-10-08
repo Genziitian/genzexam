@@ -133,13 +133,15 @@ class MyPaperItem extends StorefrontPaper {
       course: json['course'] != null ? StorefrontPaperCourse.fromJson(json['course']) : null,
       source: json['source'] as String?,
       purchased: json['purchased'] as bool? ?? false,
-      hasAccess: json['has_access'] as bool? ?? false,
+      // Missing means usable, as on the website (only an explicit false blocks access).
+      hasAccess: json['has_access'] as bool? ?? true,
       available: json['available'] as bool? ?? true,
-      attemptCount: json['attempt_count'] as int? ?? 0,
+      attemptCount: (json['attempt_count'] as num?)?.toInt() ?? 0,
       inProgress: json['in_progress'] as bool? ?? false,
       lastAttemptId: json['last_attempt_id'] as int?,
-      lastScore: json['last_score'] != null ? (json['last_score'] as num).toDouble() : null,
-      lastTotalMarks: json['last_total_marks'] != null ? (json['last_total_marks'] as num).toDouble() : null,
+      // The API may send decimals as strings ("10.00").
+      lastScore: json['last_score'] != null ? double.tryParse(json['last_score'].toString()) : null,
+      lastTotalMarks: json['last_total_marks'] != null ? double.tryParse(json['last_total_marks'].toString()) : null,
       lastSubmittedAt: json['last_submitted_at'] as String?,
     );
   }

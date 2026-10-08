@@ -1194,6 +1194,260 @@
     }
   }
 
+  /* ---------------------------------------------------------------
+   * Practice course page on phones: each paper is one compact row
+   * (status dot, title, details, Start / Retake), with an
+   * All / To do / Done filter above the list.
+   * ------------------------------------------------------------- */
+  function decorateCoursePapers() {
+    if (!/^\/practice\/[^/]+(\/papers)?\/?$/i.test(window.location.pathname)) return;
+    var main = document.querySelector("#root main");
+    if (!main) return;
+    var cards = main.querySelectorAll('a[href^="/quiz/"]>div.group.rounded-xl, a[href^="/paper/"]>div.group.rounded-xl');
+    cards.forEach(function (card) {
+      var go = card.querySelector(".mt-auto>div:last-child");
+      var meta = card.querySelector(".mt-auto>div:first-child");
+      if (!go || !meta || go === meta) return;
+      var done = /^Retake/i.test(go.textContent.trim());
+      tag(card.parentElement, "data-ql-paper", done ? "done" : "todo");
+      tag(card, "data-ql-paper-card", done ? "done" : "todo");
+      tag(go, "data-ql-paper-go", "");
+      var badge = card.querySelector(".bg-emerald-50");
+      var count = badge ? parseInt(badge.textContent.replace(/\D/g, ""), 10) || 0 : 0;
+      tag(meta, "data-ql-attempts", count ? (count === 1 ? "1 attempt" : count + " attempts") : "");
+    });
+    var row = main.querySelector("[data-ql-course-tabrow]");
+    if (!cards.length || !row || main.querySelector(".ql-paper-filter")) return;
+    if (!main.getAttribute("data-ql-paper-filter")) main.setAttribute("data-ql-paper-filter", "all");
+    var bar = document.createElement("div");
+    bar.className = "ql-paper-filter";
+    var group = document.createElement("div");
+    group.setAttribute("role", "group");
+    group.setAttribute("aria-label", "Show papers");
+    [["all", "All"], ["todo", "To do"], ["done", "Done"]].forEach(function (item) {
+      var button = document.createElement("button");
+      button.type = "button";
+      button.textContent = item[1];
+      button.setAttribute("aria-pressed", main.getAttribute("data-ql-paper-filter") === item[0] ? "true" : "false");
+      button.addEventListener("click", function () {
+        main.setAttribute("data-ql-paper-filter", item[0]);
+        group.querySelectorAll("button").forEach(function (other) {
+          other.setAttribute("aria-pressed", other === button ? "true" : "false");
+        });
+      });
+      group.appendChild(button);
+    });
+    bar.appendChild(group);
+    row.insertAdjacentElement("afterend", bar);
+  }
+
+  /* ---------------------------------------------------------------
+   * Leaderboard on phones, matching the mobile app: a stepped
+   * gold / silver / bronze podium that pops in, confetti on opening,
+   * XP that counts up, and the student's own row pinned to the bottom
+   * until their real place scrolls into view.
+   * ------------------------------------------------------------- */
+  var lbMe = null, lbMeAsked = false;
+
+  function lbIsPhone() {
+    return !!(window.matchMedia && window.matchMedia("(max-width: 640px)").matches);
+  }
+
+  function lbConfetti() {
+    if (!lbIsPhone() || (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches)) return;
+    var canvas = document.createElement("canvas");
+    canvas.className = "ql-confetti";
+    canvas.setAttribute("aria-hidden", "true");
+    var ratio = Math.min(2, window.devicePixelRatio || 1);
+    var w = window.innerWidth, h = window.innerHeight;
+    canvas.width = w * ratio;
+    canvas.height = h * ratio;
+    document.body.appendChild(canvas);
+    var ctx = canvas.getContext("2d");
+    if (!ctx) { canvas.remove(); return; }
+    ctx.scale(ratio, ratio);
+    var colors = ["#f59e0b", "#22c55e", "#3b82f6", "#ec4899", "#a855f7", "#facc15", "#ef4444"];
+    var pieces = [];
+    for (var i = 0; i < 130; i++) {
+      var left = i % 2 === 0;
+      pieces.push({
+        left: left,
+        delay: Math.random() * 0.5,
+        angle: (left ? -Math.PI / 3 : (-2 * Math.PI) / 3) + (Math.random() - 0.5) * 0.9,
+        speed: h * (0.75 + Math.random() * 0.75),
+        w: 5 + Math.random() * 6,
+        h: 3 + Math.random() * 5,
+        spin: (Math.random() - 0.5) * 14,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        round: Math.random() < 0.25,
+        seed: i
+      });
+    }
+    var total = 3.2, started = 0;
+    function frame(now) {
+      if (!started) started = now;
+      var time = (now - started) / 1000;
+      if (time >= total || !canvas.isConnected) { canvas.remove(); return; }
+      ctx.clearRect(0, 0, w, h);
+      ctx.globalAlpha = Math.max(0, Math.min(1, (1 - time / total) / 0.25));
+      pieces.forEach(function (p) {
+        var t = time - p.delay;
+        if (t <= 0) return;
+        var drag = 1 - Math.exp(-2.2 * t);
+        var x = (p.left ? 0 : w) + (Math.cos(p.angle) * p.speed * drag) / 2.2 + Math.sin(t * 3 + p.seed) * 6;
+        var y = h * 0.62 + (Math.sin(p.angle) * p.speed * drag) / 2.2 + 0.5 * h * 0.55 * t * t;
+        if (y > h + 20) return;
+        ctx.save();
+        ctx.translate(x, y);
+        ctx.rotate(p.spin * t);
+        ctx.fillStyle = p.color;
+        if (p.round) {
+          ctx.beginPath();
+          ctx.arc(0, 0, p.w / 2, 0, Math.PI * 2);
+          ctx.fill();
+        } else {
+          var flutter = 0.35 + 0.65 * Math.abs(Math.cos(t * 9 + p.seed));
+          ctx.fillRect((-p.w * flutter) / 2, -p.h / 2, p.w * flutter, p.h);
+        }
+        ctx.restore();
+      });
+      requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+
+  function lbInitials(name) {
+    var parts = String(name || "").trim().split(/\s+/).filter(Boolean);
+    if (!parts.length) return "S";
+    if (parts.length === 1) return parts[0].charAt(0).toUpperCase();
+    return (parts[0].charAt(0) + parts[parts.length - 1].charAt(0)).toUpperCase();
+  }
+
+  /* One "you" row: rank, initials, name with a YOU tag, XP. */
+  function lbRow(rank, name, xp) {
+    var row = document.createElement("div");
+    row.className = "ql-lb-row";
+    var r = document.createElement("b");
+    r.textContent = rank ? "#" + rank : "—";
+    var avatar = document.createElement("span");
+    avatar.className = "ql-lb-av";
+    avatar.textContent = lbInitials(name);
+    var label = document.createElement("span");
+    label.className = "ql-lb-name";
+    var text = document.createElement("span");
+    text.textContent = name || "You";
+    var you = document.createElement("em");
+    you.textContent = "YOU";
+    label.append(text, you);
+    var points = document.createElement("strong");
+    points.className = "ql-lb-xp";
+    points.textContent = xp == null ? "" : String(xp);
+    row.append(r, avatar, label, points);
+    return row;
+  }
+
+  function lbDots() {
+    var dots = document.createElement("div");
+    dots.className = "ql-lb-dots";
+    dots.setAttribute("aria-hidden", "true");
+    dots.append(document.createElement("i"), document.createElement("i"), document.createElement("i"));
+    return dots;
+  }
+
+  function decorateLeaderboard() {
+    var pin = document.querySelector(".ql-lb-pin");
+    if (!/^\/leaderboard\/?$/i.test(window.location.pathname)) {
+      if (pin) pin.remove();
+      return;
+    }
+    var heading = null;
+    document.querySelectorAll("#root main h1").forEach(function (h) {
+      if (!heading && h.textContent.trim() === "Leaderboard") heading = h;
+    });
+    var root = heading && heading.closest(".space-y-6");
+    var table = root && root.querySelector("table");
+    if (!root || !table) return;
+    tag(root, "data-ql-lb", "");
+
+    var podium = root.querySelector(".grid.grid-cols-3");
+    if (podium && podium.children.length === 3) {
+      tag(podium, "data-ql-podium", "");
+      tag(podium.children[0], "data-place", "2");
+      tag(podium.children[1], "data-place", "1");
+      tag(podium.children[2], "data-place", "3");
+      if (lbIsPhone()) podium.querySelectorAll("p.font-bold").forEach(countUp);
+    }
+    if (!root.hasAttribute("data-ql-party")) {
+      root.setAttribute("data-ql-party", "");
+      lbConfetti();
+    }
+
+    // Who is "you": from the list if you are in it, otherwise from the header and your profile.
+    var rankNote = heading.parentElement.querySelector("span.text-brand");
+    var myRank = rankNote ? parseInt(rankNote.textContent.replace(/\D/g, ""), 10) || null : null;
+    var realRow = table.querySelector("tbody tr.bg-brand\\/5");
+    var name = "", xp = null;
+    if (realRow) {
+      var cells = realRow.querySelectorAll("td");
+      var nameNode = cells[1] && cells[1].querySelector("span.text-sm");
+      name = nameNode && nameNode.firstChild ? String(nameNode.firstChild.nodeValue || "").trim() : "";
+      xp = cells[2] ? cells[2].textContent.trim() : null;
+      var rankCell = cells[0] ? parseInt(cells[0].textContent.replace(/\D/g, ""), 10) : 0;
+      if (rankCell) myRank = rankCell;
+    } else {
+      try { name = (JSON.parse(localStorage.getItem("lab_user") || "{}") || {}).name || ""; } catch (_) { name = ""; }
+      if (lbMe) xp = lbMe.xp;
+      var runtime = window.QLStorefront;
+      if (!lbMeAsked && runtime && runtime.token && runtime.token()) {
+        lbMeAsked = true;
+        fetch(runtime.apiBase + "/leaderboard", {
+          headers: { Accept: "application/json", Authorization: "Bearer " + runtime.token() }
+        }).then(function (response) { return response.ok ? response.json() : null; }).then(function (data) {
+          if (data && data.me) { lbMe = data.me; schedule(); }
+        }).catch(function () {});
+      }
+    }
+    if (!myRank || (realRow && myRank <= 3)) { if (pin) pin.remove(); return; }
+
+    // Beyond the listed students: three dots, then your row, after the table.
+    var target = realRow;
+    if (!realRow) {
+      var tail = root.querySelector(".ql-lb-tail");
+      if (!tail) {
+        tail = document.createElement("div");
+        tail.className = "ql-lb-tail";
+        tail.append(lbDots(), lbRow(myRank, name, xp));
+        root.appendChild(tail);
+      }
+      var tailXp = tail.querySelector(".ql-lb-xp");
+      if (tailXp && xp != null && tailXp.textContent !== String(xp)) tailXp.textContent = String(xp);
+      target = tail;
+    }
+
+    if (!pin) {
+      pin = document.createElement("div");
+      pin.className = "ql-lb-pin";
+      pin.append(lbDots(), lbRow(myRank, name, xp));
+      document.body.appendChild(pin);
+    }
+    var pinXp = pin.querySelector(".ql-lb-xp");
+    if (pinXp && xp != null && pinXp.textContent !== String(xp)) pinXp.textContent = String(xp);
+
+    // Show the pinned row only while your real place is still below the screen.
+    if (pin._qlTarget !== target) {
+      if (pin._qlWatch) pin._qlWatch.disconnect();
+      pin._qlTarget = target;
+      if ("IntersectionObserver" in window) {
+        pin._qlWatch = new IntersectionObserver(function (entries) {
+          var entry = entries[entries.length - 1];
+          var below = !entry.isIntersecting && entry.boundingClientRect.top > window.innerHeight * 0.5;
+          pin.classList.toggle("on", below);
+        }, { rootMargin: "0px 0px -150px 0px" });
+        pin._qlWatch.observe(target);
+      }
+    }
+  }
+
   function run() {
     var paper = paperRoomPath(window.location.pathname);
     if (paper) { window.location.replace(paper); return; }
@@ -1210,6 +1464,8 @@
     syncConsoleNav();
     syncHomeLink();
     decorateCoursePage();
+    decorateCoursePapers();
+    decorateLeaderboard();
     syncQuizBackLink();
     if (!/\/discussions/i.test(window.location.pathname)) return;
     injectStyles();
