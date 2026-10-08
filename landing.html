@@ -72,9 +72,14 @@
     padding:11px 18px;border-radius:10px;border:1px solid transparent;cursor:pointer;
     transition:transform .12s ease,background .2s,border-color .2s,color .2s;white-space:nowrap}
   .btn:active{transform:translateY(1px)}
-  .profile-chip{display:inline-flex;align-items:center;gap:8px;max-width:190px;padding:4px 12px 4px 4px;border:1px solid var(--border);border-radius:999px;background:var(--surface);color:var(--ink);font-size:13px;font-weight:600}
+  .profile-menu{position:relative}
+  .profile-chip{display:inline-flex;align-items:center;gap:8px;max-width:190px;padding:4px 12px 4px 4px;border:1px solid var(--border);border-radius:999px;background:var(--surface);color:var(--ink);font:inherit;font-size:13px;font-weight:600;cursor:pointer}
   .profile-chip:hover{border-color:var(--muted)}
   .profile-chip[hidden],.btn[hidden]{display:none}
+  .profile-dropdown{position:absolute;right:0;top:calc(100% + 9px);z-index:70;min-width:160px;padding:6px;border:1px solid var(--border);border-radius:13px;background:var(--surface);box-shadow:0 14px 36px rgba(15,23,42,.16)}
+  .profile-dropdown[hidden]{display:none!important}
+  .profile-dropdown button{width:100%;padding:10px 12px;border:0;border-radius:9px;background:transparent;color:#dc2626;text-align:left;font:inherit;font-size:13px;font-weight:700;cursor:pointer}
+  .profile-dropdown button:hover{background:rgba(220,38,38,.08)}
   .profile-initial{width:28px;height:28px;border-radius:50%;background:var(--deep);color:var(--deep-ink);display:grid;place-items:center;font-size:12px;font-weight:700;flex-shrink:0}
   .profile-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
   @media (max-width:760px){.profile-name{display:none}.profile-chip{padding:4px}}
@@ -234,8 +239,10 @@
       </button>
       <a class="btn btn-ghost hide-sm" id="auth-btn" href="/login">Log in</a>
       <a class="btn btn-dark" id="primary-btn" href="/login">Start practising</a>
-      <a class="profile-chip" id="profile-chip" href="/profile" hidden><span class="profile-initial" id="profile-initial"></span><span class="profile-name" id="profile-name"></span></a>
-      <button class="btn btn-ghost" id="logout-btn" type="button" hidden>Log out</button>
+      <div class="profile-menu" id="profile-menu" hidden>
+        <button class="profile-chip" id="profile-chip" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="profile-dropdown"><span class="profile-initial" id="profile-initial"></span><span class="profile-name" id="profile-name"></span></button>
+        <div class="profile-dropdown" id="profile-dropdown" role="menu" hidden><button id="logout-btn" type="button" role="menuitem">Log out</button></div>
+      </div>
     </div>
   </div>
 </header>
@@ -383,9 +390,18 @@
       var name=String((u&&(u.name||u.email))||'Profile').trim();
       document.getElementById('profile-name').textContent=name;
       document.getElementById('profile-initial').textContent=name.charAt(0).toUpperCase();
-      var chip=document.getElementById('profile-chip'); chip.hidden=false; chip.title=name;
-      var out=document.getElementById('logout-btn'); out.hidden=false;
+      var menu=document.getElementById('profile-menu'); menu.hidden=false;
+      var chip=document.getElementById('profile-chip'); chip.title=name;
+      var dropdown=document.getElementById('profile-dropdown');
+      function closeProfileMenu(){dropdown.hidden=true;chip.setAttribute('aria-expanded','false');}
+      chip.addEventListener('click',function(){dropdown.hidden=!dropdown.hidden;chip.setAttribute('aria-expanded',String(!dropdown.hidden));});
+      document.addEventListener('click',function(event){if(!menu.contains(event.target))closeProfileMenu();});
+      document.addEventListener('keydown',function(event){if(event.key==='Escape')closeProfileMenu();});
+      var out=document.getElementById('logout-btn');
       out.addEventListener('click',function(){
+        if(!window.confirm('Log out of Quiz LAB?'))return;
+        if(!window.confirm('Confirm log out. Are you sure you want to log out now?'))return;
+        closeProfileMenu();
         out.disabled=true;
         var done=function(){
           try{localStorage.removeItem('lab_token');localStorage.removeItem('lab_user');}catch(e){}
