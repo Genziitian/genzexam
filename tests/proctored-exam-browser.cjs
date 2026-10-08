@@ -115,7 +115,11 @@ const root = path.resolve(__dirname, "..");
     await student.reload();
     await click(student, "open");
     await click(student, "join");
-    await student.locator("#ep-rules-check").check();
+    await click(student, "onboard-step-2");
+    await click(student, "onboard-step-3");
+    await click(student, "take-selfie");
+    await click(student, "onboard-step-4");
+    await student.locator("#ep-cb-agree").check();
     await click(student, "join-confirm");
     await student.locator(".ep-question").first().waitFor();
     assert.equal(
