@@ -375,9 +375,6 @@
       ['How do I contact support?', 'Email admin@genziitian.org, call +91 72549 26179, or message us on WhatsApp.']
     ];
     return '<div id="' + MORE_ID + '" class="space-y-4">' +
-      '<section class="ql-more-card"><h2 class="ql-more-heading">Explore</h2><p class="ql-more-subtitle">Continue learning and get help from the Quiz LAB community.</p><div class="ql-more-grid">' +
-      '<a class="ql-more-link" href="/discussions"><span class="ql-more-icon">✦</span><span><strong>Discussions</strong><small>Ask questions and help other students</small></span></a>' +
-      '<a class="ql-more-link" href="/video-solutions"><span class="ql-more-icon">▶</span><span><strong>Video Solutions <small style="display:inline;color:#b45309;font-weight:800">PRO</small></strong><small>Step-by-step video answers</small></span></a></div></section>' +
       '<section class="ql-more-card"><h2 class="ql-more-heading">XP, levels and badges</h2><p class="ql-more-subtitle">See how your learning activity builds XP and unlocks badges.</p><button type="button" id="ql-more-rulebook" class="ql-more-button" style="margin-top:14px">How do XP, levels and badges work?</button></section>' +
       '<section class="ql-more-card"><h2 class="ql-more-heading">Account &amp; preferences</h2><p class="ql-more-subtitle">Personalize the app and manage your account.</p>' +
       '<div class="ql-more-row"><div class="ql-more-row-copy"><strong>Theme / Appearance</strong><small>Choose System, Light, or Dark mode.</small></div><div class="ql-more-theme-options" role="group" aria-label="Theme"><button type="button" class="ql-more-button" data-ql-more-theme="system">System</button><button type="button" class="ql-more-button" data-ql-more-theme="light">Light</button><button type="button" class="ql-more-button" data-ql-more-theme="dark">Dark</button></div></div>' +
