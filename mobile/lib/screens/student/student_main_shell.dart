@@ -1,8 +1,12 @@
 import 'dart:async';
 import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
+
 import '../../legal/legal_documents.dart';
+
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+
 import '../../api/api.dart';
 import '../../state/auth_state.dart';
 import '../../state/theme_state.dart';
@@ -190,11 +194,21 @@ class _StudentMainShellState extends State<StudentMainShell> {
   int _currentIndex = 0;
   final Set<int> _visitedTabs = {0};
 
-  final DashboardService _dashboardService = DashboardService();
-  final CourseService _courseService = CourseService();
-  final StorefrontService _storefrontService = StorefrontService();
-  final DiscussionService _discussionService = DiscussionService();
-  final LeaderboardService _leaderboardService = LeaderboardService();
+  late final DashboardService _dashboardService = DashboardService(
+    client: widget.authState.client,
+  );
+  late final CourseService _courseService = CourseService(
+    client: widget.authState.client,
+  );
+  late final StorefrontService _storefrontService = StorefrontService(
+    client: widget.authState.client,
+  );
+  late final DiscussionService _discussionService = DiscussionService(
+    client: widget.authState.client,
+  );
+  late final LeaderboardService _leaderboardService = LeaderboardService(
+    client: widget.authState.client,
+  );
 
   @override
   void initState() {
@@ -218,17 +232,17 @@ class _StudentMainShellState extends State<StudentMainShell> {
   void _openOfflinePapers() {
     final user = widget.authState.user;
     if (user == null) return;
-    _openProFeature(() {
-      Navigator.of(context).push<void>(
-        MaterialPageRoute<void>(
-          builder: (_) => OfflinePapersScreen(
-            user: user,
-            apiClient: _courseService.client,
-            onBrowsePractice: () => _selectTab(2),
-          ),
+    // Downloading is checked by the server. Reading an existing download must
+    // never wait for a live membership request.
+    Navigator.of(context).push<void>(
+      MaterialPageRoute<void>(
+        builder: (_) => OfflinePapersScreen(
+          user: user,
+          apiClient: _courseService.client,
+          onBrowsePractice: () => _selectTab(2),
         ),
-      );
-    });
+      ),
+    );
   }
 
   void _openDiscussions() {
@@ -347,6 +361,42 @@ class _StudentMainShellState extends State<StudentMainShell> {
                   ),
                 ),
 
+              ValueListenableBuilder<bool>(
+                valueListenable: ApiClient.connectionUnavailable,
+                builder: (context, unavailable, _) => unavailable
+                    ? Container(
+                        color: const Color(0xFFECFDF5),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 4,
+                        ),
+                        child: Row(
+                          children: [
+                            const Icon(
+                              Icons.wifi_off_rounded,
+                              size: 18,
+                              color: Color(0xFF047857),
+                            ),
+                            const SizedBox(width: 8),
+                            const Expanded(
+                              child: Text(
+                                'Connection unavailable',
+                                style: TextStyle(fontSize: 12),
+                              ),
+                            ),
+                            TextButton.icon(
+                              onPressed: _openOfflinePapers,
+                              icon: const Icon(
+                                Icons.download_rounded,
+                                size: 18,
+                              ),
+                              label: const Text('Downloads'),
+                            ),
+                          ],
+                        ),
+                      )
+                    : const SizedBox.shrink(),
+              ),
               Expanded(
                 child: Padding(
                   // Height of the bar's white pill plus its bottom margin and the system inset.
@@ -394,6 +444,7 @@ class _StudentMainShellState extends State<StudentMainShell> {
                           leaderboardService: _leaderboardService,
                           user: widget.authState.user,
                           isActive: _currentIndex == 3,
+                          onOpenDownloads: _openOfflinePapers,
                         ),
                       ),
                       _tabSlot(
@@ -407,6 +458,7 @@ class _StudentMainShellState extends State<StudentMainShell> {
                           onNavigateToMyPapers: () => _selectTab(1),
                           onNavigateToPractice: () => _selectTab(2),
                           onNavigateToRanks: () => _selectTab(3),
+                          onOpenDownloads: _openOfflinePapers,
                         ),
                       ),
                     ],
@@ -576,16 +628,14 @@ class _QuizLabDockState extends State<_QuizLabDock>
                           offset: const Offset(0, 8),
                         ),
                         BoxShadow(
-                          color: const Color(
-                            0xFFFACC15,
-                          ).withValues(alpha: 0.75 * flash),
+                          color: const Color(0xFFFACC15)
+                              .withValues(alpha: 0.75 * flash),
                           blurRadius: 26,
                           spreadRadius: 6 * flash,
                         ),
                         BoxShadow(
-                          color: const Color(
-                            0xFFFEF08A,
-                          ).withValues(alpha: 0.9 * flash),
+                          color: const Color(0xFFFEF08A)
+                              .withValues(alpha: 0.9 * flash),
                           spreadRadius: 2,
                         ),
                       ],
@@ -750,6 +800,7 @@ class _QuizLabDockState extends State<_QuizLabDock>
 class _RanksTab extends StatefulWidget {
   final LeaderboardService leaderboardService;
   final UserModel? user;
+  final VoidCallback onOpenDownloads;
 
   /// True while this tab is the one on screen; each time it becomes true the
   /// podium pops in again and the confetti plays.
@@ -759,6 +810,7 @@ class _RanksTab extends StatefulWidget {
     required this.leaderboardService,
     this.user,
     required this.isActive,
+    required this.onOpenDownloads,
   });
 
   @override
@@ -1003,9 +1055,8 @@ class _RanksTabState extends State<_RanksTab> with TickerProviderStateMixin {
                         borderRadius: BorderRadius.circular(22),
                         boxShadow: [
                           BoxShadow(
-                            color: const Color(
-                              0xFFFBBF24,
-                            ).withValues(alpha: 0.25 + 0.35 * pulse),
+                            color: const Color(0xFFFBBF24)
+                                .withValues(alpha: 0.25 + 0.35 * pulse),
                             blurRadius: 18 + 22 * pulse,
                             spreadRadius: 1 + 4 * pulse,
                           ),
@@ -1387,9 +1438,14 @@ class _RanksTabState extends State<_RanksTab> with TickerProviderStateMixin {
         }
         if (data == null) {
           return AppErrorCard(
-            title: 'Unable to Load Leaderboard',
-            message: '${snapshot.error ?? 'No data'}',
+            title: 'Rankings are unavailable',
+            message: 'Connect to see the latest rankings. Your downloaded papers still work offline.',
             onRetry: _refresh,
+            secondaryAction: TextButton.icon(
+              onPressed: widget.onOpenDownloads,
+              icon: const Icon(Icons.download_rounded),
+              label: const Text('Open Downloads'),
+            ),
           );
         }
 
@@ -1592,9 +1648,8 @@ class _RanksTabState extends State<_RanksTab> with TickerProviderStateMixin {
                           ),
                           boxShadow: [
                             BoxShadow(
-                              color: const Color(
-                                0xFF0F172A,
-                              ).withValues(alpha: 0.16),
+                              color: const Color(0xFF0F172A)
+                                  .withValues(alpha: 0.16),
                               blurRadius: 20,
                               offset: const Offset(0, 8),
                             ),
@@ -1771,6 +1826,7 @@ class _HomeTabState extends State<_HomeTab>
     super.initState();
     _dashboardFuture = widget.dashboardService.getDashboard();
     _leaderboardFuture = widget.leaderboardService.getLeaderboard();
+    _leaderboardFuture.ignore();
     _ambient = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 3000),
@@ -1786,6 +1842,7 @@ class _HomeTabState extends State<_HomeTab>
       // Keep the rendered dashboard visible while refreshing its values.
       _dashboardFuture = widget.dashboardService.getDashboard();
       _leaderboardFuture = widget.leaderboardService.getLeaderboard();
+      _leaderboardFuture.ignore();
     }
   }
 
@@ -1816,8 +1873,13 @@ class _HomeTabState extends State<_HomeTab>
     setState(() {
       _dashboardFuture = widget.dashboardService.getDashboard();
       _leaderboardFuture = widget.leaderboardService.getLeaderboard();
+      _leaderboardFuture.ignore();
     });
-    await _dashboardFuture;
+    try {
+      await _dashboardFuture;
+    } catch (_) {
+      // Keep local Downloads available while progress is unavailable.
+    }
   }
 
   @override
@@ -1827,15 +1889,44 @@ class _HomeTabState extends State<_HomeTab>
       builder: (context, snapshot) {
         if (snapshot.hasData) _lastDashboard = snapshot.data;
         final data = snapshot.data ?? _lastDashboard;
-        if (snapshot.connectionState == ConnectionState.waiting &&
-            data == null) {
-          return AppShimmerCard.dashboard();
-        }
         if (data == null) {
-          return AppErrorCard(
-            title: 'Unable to Load Dashboard',
-            message: '${snapshot.error}',
-            onRetry: _refresh,
+          final loading = snapshot.connectionState == ConnectionState.waiting;
+          return ListView(
+            padding: const EdgeInsets.all(16),
+            children: [
+              Text(
+                'Welcome back, ${_firstName(widget.user?.name)}.',
+                style: const TextStyle(
+                  fontSize: 28,
+                  fontWeight: FontWeight.w800,
+                ),
+              ),
+              const SizedBox(height: 20),
+              _HomeQuickActions(
+                onOfflinePapers: widget.onOpenOfflinePapers,
+                onDiscussions: widget.onOpenDiscussions,
+                onUploadPaper: widget.onOpenUploadedPapers,
+              ),
+              const SizedBox(height: 24),
+              if (loading) const LinearProgressIndicator(),
+              const SizedBox(height: 16),
+              Text(
+                loading
+                    ? 'Updating your progress…'
+                    : 'Your progress needs a connection.',
+                style: const TextStyle(fontWeight: FontWeight.w700),
+              ),
+              const SizedBox(height: 8),
+              const Text(
+                'Downloaded papers are ready on this device. Open Downloads to practise without internet.',
+              ),
+              if (!loading)
+                TextButton.icon(
+                  onPressed: _refresh,
+                  icon: const Icon(Icons.refresh),
+                  label: const Text('Refresh progress'),
+                ),
+            ],
           );
         }
 
@@ -1861,9 +1952,8 @@ class _HomeTabState extends State<_HomeTab>
                             borderRadius: BorderRadius.circular(12),
                             boxShadow: [
                               BoxShadow(
-                                color: const Color(
-                                  0xFF22C55E,
-                                ).withValues(alpha: 0.15 + 0.30 * pulse),
+                                color: const Color(0xFF22C55E)
+                                    .withValues(alpha: 0.15 + 0.30 * pulse),
                                 blurRadius: 8 + 12 * pulse,
                                 spreadRadius: 1.5 * pulse,
                               ),
@@ -2274,9 +2364,8 @@ class _HomeTabState extends State<_HomeTab>
                               vertical: 3,
                             ),
                             decoration: BoxDecoration(
-                              color: const Color(
-                                0xFFF59E0B,
-                              ).withValues(alpha: 0.2),
+                              color: const Color(0xFFF59E0B)
+                                  .withValues(alpha: 0.2),
                               borderRadius: BorderRadius.circular(12),
                             ),
                             child: Text(
@@ -3425,9 +3514,8 @@ class _PerformanceCardState extends State<_PerformanceCard> {
                           boxShadow: _metric == i
                               ? [
                                   BoxShadow(
-                                    color: const Color(
-                                      0xFF0F172A,
-                                    ).withValues(alpha: 0.08),
+                                    color: const Color(0xFF0F172A)
+                                        .withValues(alpha: 0.08),
                                     blurRadius: 6,
                                     offset: const Offset(0, 2),
                                   ),
@@ -4909,6 +4997,7 @@ class _MoreTab extends StatefulWidget {
   final VoidCallback onNavigateToMyPapers;
   final VoidCallback onNavigateToPractice;
   final VoidCallback onNavigateToRanks;
+  final VoidCallback onOpenDownloads;
 
   const _MoreTab({
     this.user,
@@ -4919,6 +5008,7 @@ class _MoreTab extends StatefulWidget {
     required this.onNavigateToMyPapers,
     required this.onNavigateToPractice,
     required this.onNavigateToRanks,
+    required this.onOpenDownloads,
   });
 
   @override
@@ -5461,9 +5551,8 @@ class _MoreTabState extends State<_MoreTab> {
 
   void _openFaqs() {
     AppHaptics.light();
-    Navigator.of(
-      context,
-    ).push(MaterialPageRoute<void>(builder: (_) => const FaqScreen()));
+    Navigator.of(context)
+        .push(MaterialPageRoute<void>(builder: (_) => const FaqScreen()));
   }
 
   void _showHelpSupportDialog() {
@@ -5866,6 +5955,15 @@ class _MoreTabState extends State<_MoreTab> {
             child: Column(
               children: [
                 _exploreTile(
+                  icon: Icons.download_for_offline_rounded,
+                  color: const Color(0xFF16A34A),
+                  title: 'Downloads',
+                  badge: 'PRO',
+                  subtitle: 'Saved papers · works without internet',
+                  onTap: widget.onOpenDownloads,
+                ),
+                const Divider(height: 1, color: Color(0xFFF1F5F9)),
+                _exploreTile(
                   icon: Icons.forum_outlined,
                   color: const Color(0xFF0284C7),
                   title: 'Discussions',
@@ -6236,32 +6334,28 @@ class _TimedExamSessionScreenState extends State<TimedExamSessionScreen> {
   List<Map<String, dynamic>> _generateQuestions(int count) {
     final pool = [
       {
-        'stem':
-            'Evaluate the definite integral using standard calculus principles:\n\n\$\$\\int_0^2 (x^2 + 1) \\, dx = ?\$\$',
+        'stem': 'Evaluate the definite integral using standard calculus principles:\n\n\$\$\\int_0^2 (x^2 + 1) \\, dx = ?\$\$',
         'type': 'Single Choice (MCQ)',
         'marks': '+2.0 / -0.5',
         'options': ['8/3', '14/3', '12/3', '10/3'],
         'correct': 1,
       },
       {
-        'stem':
-            'Let X be a normally distributed random variable with mean μ = 10 and variance σ² = 4. What is P(X ≤ 10)?',
+        'stem': 'Let X be a normally distributed random variable with mean μ = 10 and variance σ² = 4. What is P(X ≤ 10)?',
         'type': 'Single Choice (MCQ)',
         'marks': '+2.0 / -0.5',
         'options': ['0.25', '0.50', '0.75', '1.00'],
         'correct': 1,
       },
       {
-        'stem':
-            'What is the asymptotic worst-case time complexity of binary search on a sorted list of size N?',
+        'stem': 'What is the asymptotic worst-case time complexity of binary search on a sorted list of size N?',
         'type': 'Single Choice (MCQ)',
         'marks': '+2.0 / -0.5',
         'options': ['O(N)', 'O(log N)', 'O(N log N)', 'O(1)'],
         'correct': 1,
       },
       {
-        'stem':
-            'Which of the following matrices has determinant equal to zero (Singular Matrix)?\n\n\$\$A = \\begin{pmatrix} 2 & 4 \\\\ 1 & 2 \\end{pmatrix}\$\$',
+        'stem': 'Which of the following matrices has determinant equal to zero (Singular Matrix)?\n\n\$\$A = \\begin{pmatrix} 2 & 4 \\\\ 1 & 2 \\end{pmatrix}\$\$',
         'type': 'Single Choice (MCQ)',
         'marks': '+2.0 / -0.5',
         'options': ['det(A) = 0', 'det(A) = 2', 'det(A) = -2', 'det(A) = 8'],

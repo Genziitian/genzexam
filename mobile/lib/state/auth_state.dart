@@ -3,6 +3,7 @@ import 'dart:async';
 
 import 'package:flutter/widgets.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+
 import '../api/api.dart';
 import '../api/offline_paper_store.dart';
 
@@ -22,7 +23,7 @@ enum AuthStatus {
 /// - Exact roles: 'student' (rank 0), 'admin' (rank 1), 'manager' (rank 2).
 /// - Instant 'Preview Student View' context-switch for Managers.
 class AuthState extends ChangeNotifier with WidgetsBindingObserver {
-  final AuthService _authService;
+  late final AuthService _authService;
   final ApiClient _apiClient;
 
   AuthStatus _status = AuthStatus.initial;
@@ -33,10 +34,12 @@ class AuthState extends ChangeNotifier with WidgetsBindingObserver {
   int _googleAttempt = 0;
   Timer? _offlineSyncTimer;
   bool _offlineSyncInProgress = false;
+  Future<void>? _initialization;
+  int _sessionGeneration = 0;
 
   AuthState({AuthService? authService, ApiClient? apiClient})
-    : _apiClient = apiClient ?? ApiClient(),
-      _authService = authService ?? AuthService() {
+    : _apiClient = apiClient ?? authService?.client ?? ApiClient() {
+    _authService = authService ?? AuthService(client: _apiClient);
     WidgetsBinding.instance.addObserver(this);
     // Zeroize token if interceptor catches 401
     _apiClient.onUnauthorized = () {
@@ -45,6 +48,7 @@ class AuthState extends ChangeNotifier with WidgetsBindingObserver {
   }
 
   AuthStatus get status => _status;
+  ApiClient get client => _apiClient;
   UserModel? get user => _user;
   String? get errorMessage => _errorMessage;
   bool get isPreviewingStudentView => _isPreviewingStudentView;
@@ -82,14 +86,14 @@ class AuthState extends ChangeNotifier with WidgetsBindingObserver {
 
   @override
   void dispose() {
+    _offlineSyncTimer?.cancel();
+    _sessionGeneration++;
     WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }
 
   /// Cold-start initialization helper
-  Future<void> init() async {
-    await checkAuthStatus();
-  }
+  Future<void> init() => _initialization ??= checkAuthStatus();
 
   /// Initializes session check on app start.
   Future<void> checkAuthStatus() async {
@@ -101,6 +105,18 @@ class AuthState extends ChangeNotifier with WidgetsBindingObserver {
       if (!hasToken) {
         _status = AuthStatus.unauthenticated;
         notifyListeners();
+        return;
+      }
+
+      // A saved session opens the local app immediately. Server availability
+      // must never be a prerequisite for reading downloaded papers.
+      final cached = await _readCachedUser();
+      if (cached != null) {
+        _user = cached;
+        _status = AuthStatus.authenticated;
+        _errorMessage = null;
+        _startOfflinePaperSync(cached.id);
+        unawaited(_refreshSavedSession(_sessionGeneration));
         return;
       }
 
@@ -124,17 +140,35 @@ class AuthState extends ChangeNotifier with WidgetsBindingObserver {
       if (cached != null && await _apiClient.hasAuthToken()) {
         _user = cached;
         _status = AuthStatus.authenticated;
-        _errorMessage =
-            'Offline: your saved account is available. Changes will sync when you reconnect.';
+        _errorMessage = 'Offline: your saved account is available. Changes will sync when you reconnect.';
         _startOfflinePaperSync(cached.id);
       } else {
         _user = null;
         _status = AuthStatus.connectionUnavailable;
-        _errorMessage =
-            'You are still signed in, but we could not reach the server to check your account. Check your connection and retry.';
+        _errorMessage = 'You are still signed in, but we could not reach the server to check your account. Check your connection and retry.';
       }
     } finally {
       notifyListeners();
+    }
+  }
+
+  Future<void> _refreshSavedSession(int generation) async {
+    try {
+      final profile = await _authService.getMe();
+      if (generation != _sessionGeneration || _user?.id != profile.id) return;
+      _user = profile;
+      await _cacheUser(profile);
+      _errorMessage = null;
+      notifyListeners();
+    } on ApiException catch (error) {
+      if (generation != _sessionGeneration) return;
+      if (error.statusCode == 401 || error.statusCode == 403) {
+        await _apiClient.deleteAuthToken();
+        _zeroizeSession();
+      }
+      // A network failure leaves the saved account and downloads available.
+    } catch (_) {
+      // Keep the local session if the server cannot be checked.
     }
   }
 
@@ -324,6 +358,7 @@ class AuthState extends ChangeNotifier with WidgetsBindingObserver {
   }
 
   void _zeroizeSession() {
+    _sessionGeneration++;
     _offlineSyncTimer?.cancel();
     _offlineSyncTimer = null;
     _apiClient.deleteCachedUser();
@@ -361,6 +396,8 @@ class AuthState extends ChangeNotifier with WidgetsBindingObserver {
       await OfflinePaperStore.syncInterruptedDrafts(
         userId,
         QuizService(client: _apiClient),
+        canSync: () =>
+            _status == AuthStatus.authenticated && _user?.id == userId,
       );
     } catch (_) {
       // Offline drafts stay on device and will be retried next launch.

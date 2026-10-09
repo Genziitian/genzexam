@@ -45,7 +45,8 @@ class AppKeyboardDismiss extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         final currentFocus = FocusScope.of(context);
-        if (!currentFocus.hasPrimaryFocus && currentFocus.focusedChild != null) {
+        if (!currentFocus.hasPrimaryFocus &&
+            currentFocus.focusedChild != null) {
           currentFocus.unfocus();
         }
       },
@@ -80,7 +81,8 @@ class AppShimmer extends StatefulWidget {
   State<AppShimmer> createState() => _AppShimmerState();
 }
 
-class _AppShimmerState extends State<AppShimmer> with SingleTickerProviderStateMixin {
+class _AppShimmerState extends State<AppShimmer>
+    with SingleTickerProviderStateMixin {
   late final AnimationController _controller;
 
   @override
@@ -297,6 +299,7 @@ class AppErrorCard extends StatelessWidget {
   final String message;
   final VoidCallback onRetry;
   final IconData icon;
+  final Widget? secondaryAction;
 
   const AppErrorCard({
     super.key,
@@ -304,6 +307,7 @@ class AppErrorCard extends StatelessWidget {
     required this.message,
     required this.onRetry,
     this.icon = Icons.cloud_off_rounded,
+    this.secondaryAction,
   });
 
   @override
@@ -364,15 +368,27 @@ class AppErrorCard extends StatelessWidget {
                   onRetry();
                 },
                 icon: const Icon(Icons.refresh_rounded, size: 18),
-                label: const Text('Try Again', style: TextStyle(fontWeight: FontWeight.bold)),
+                label: const Text(
+                  'Try Again',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFF16A34A),
                   foregroundColor: Colors.white,
-                  padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 24,
+                    vertical: 12,
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
                   elevation: 0,
                 ),
               ),
+              if (secondaryAction != null) ...[
+                const SizedBox(height: 8),
+                secondaryAction!,
+              ],
             ],
           ),
         ),

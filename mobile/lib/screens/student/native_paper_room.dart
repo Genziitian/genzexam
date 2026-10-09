@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_math_fork/flutter_math.dart';
@@ -16,6 +17,7 @@ class PaperRoomScreen extends StatefulWidget {
   final String title;
   final ApiClient apiClient;
   final UserModel? user;
+  final bool preferOffline;
 
   const PaperRoomScreen({
     super.key,
@@ -23,6 +25,7 @@ class PaperRoomScreen extends StatefulWidget {
     required this.title,
     required this.apiClient,
     this.user,
+    this.preferOffline = false,
   });
 
   @override
@@ -41,9 +44,11 @@ class _PaperRoomScreenState extends State<PaperRoomScreen>
   int _questionIndex = 0;
   int? _attemptId;
   bool _started = false;
+  bool _starting = false;
   bool _submitting = false;
   bool _submitted = false;
   bool _pendingSubmit = false;
+  bool _pendingSaved = false;
   final Set<int> _markedForReview = {};
   String? _startedAt;
   Future<void> _draftWrite = Future<void>.value();
@@ -62,6 +67,7 @@ class _PaperRoomScreenState extends State<PaperRoomScreen>
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
+    OfflinePaperStore.holdPaper(_userId, widget.quizId);
     _loadPaper();
   }
 
@@ -70,6 +76,14 @@ class _PaperRoomScreenState extends State<PaperRoomScreen>
     WidgetsBinding.instance.removeObserver(this);
     _clock?.cancel();
     _syncRetry?.cancel();
+    // Keep the sync worker out until any final local write/network submit ends.
+    if (!_submitting) {
+      unawaited(
+        _draftWrite.catchError((_) {}).whenComplete(() {
+          OfflinePaperStore.releasePaper(_userId, widget.quizId);
+        }),
+      );
+    }
     for (final controller in _answerControllers.values) {
       controller.dispose();
     }
@@ -105,7 +119,16 @@ class _PaperRoomScreenState extends State<PaperRoomScreen>
         _restoreDraft(draft);
         if (_pendingSubmit) unawaited(_submit(force: true));
       }
-      unawaited(_refreshCachedPaper());
+      if (!widget.preferOffline) unawaited(_refreshCachedPaper());
+      return;
+    }
+
+    if (widget.preferOffline) {
+      if (mounted)
+        setState(() {
+          _loading = false;
+          _error = 'This download could not be read. Download it again from Practice while online.';
+        });
       return;
     }
 
@@ -113,7 +136,7 @@ class _PaperRoomScreenState extends State<PaperRoomScreen>
     var offline = false;
     try {
       quiz = await _quizService.getQuiz(widget.quizId);
-      if (_userId > 0) await OfflinePaperStore.cacheQuiz(_userId, quiz);
+      // Only the Pro-protected download endpoint creates offline copies.
     } catch (_) {
       quiz = null;
     }
@@ -121,8 +144,7 @@ class _PaperRoomScreenState extends State<PaperRoomScreen>
     if (quiz == null) {
       setState(() {
         _loading = false;
-        _error =
-            'Could not load this paper. Connect to the internet once to download it for offline practice.';
+        _error = 'Could not load this paper. Connect to the internet once to download it for offline practice.';
       });
       return;
     }
@@ -145,7 +167,7 @@ class _PaperRoomScreenState extends State<PaperRoomScreen>
   Future<void> _refreshCachedPaper() async {
     try {
       final latest = await _quizService.getQuiz(widget.quizId);
-      if (_userId > 0) await OfflinePaperStore.cacheQuiz(_userId, latest);
+      // Keep the explicit download, including its embedded images, intact.
       if (!mounted) return;
       setState(() {
         _offline = false;
@@ -173,7 +195,10 @@ class _PaperRoomScreenState extends State<PaperRoomScreen>
     _attemptId = (draft['attempt_id'] as num?)?.toInt();
     _selectedMinutes =
         (draft['duration_minutes'] as num?)?.toInt() ?? _selectedMinutes;
-    _pendingSubmit = draft['pending_submit'] == true;
+    // A previous screen/process has ended: finish that saved attempt, never
+    // silently resume it or overwrite it with a new one.
+    _pendingSubmit = true;
+    _pendingSaved = draft['pending_submit'] == true;
     final reviewIds = draft['marked_for_review'];
     if (reviewIds is List) {
       _markedForReview
@@ -222,25 +247,33 @@ class _PaperRoomScreenState extends State<PaperRoomScreen>
   }
 
   Future<void> _begin() async {
-    if (_quiz == null) return;
+    if (_quiz == null || _starting || _started) return;
     if (_questions.isEmpty) {
       setState(() => _error = 'This paper does not have any questions yet.');
       return;
     }
+    _starting = true;
     int? attemptId;
     try {
-      attemptId = (await _quizService.startAttempt(widget.quizId)).attemptId;
-      _offline = false;
-    } catch (_) {
+      if (!_offline) {
+        attemptId = (await _quizService.startAttempt(widget.quizId)).attemptId;
+      }
+    } catch (error) {
       // An already downloaded paper can be attempted offline. The attempt is
       // created and scored by the server when the student reconnects.
       final hasLocalCopy =
           _userId > 0 &&
           await OfflinePaperStore.readQuiz(_userId, widget.quizId) != null;
-      if (!hasLocalCopy) {
+      final connectionFailure =
+          error is ApiException &&
+          (error.statusCode == null || (error.statusCode ?? 0) >= 500);
+      if (!hasLocalCopy || !connectionFailure) {
+        _starting = false;
+        if (!mounted) return;
         setState(
-          () => _error =
-              'Could not start this paper. Check your connection and retry.',
+          () => _error = error is ApiException
+              ? error.message
+              : 'Could not start this paper. Please try again.',
         );
         return;
       }
@@ -248,6 +281,7 @@ class _PaperRoomScreenState extends State<PaperRoomScreen>
     }
     if (!mounted) return;
     setState(() {
+      _starting = false;
       _error = null;
       _attemptId = attemptId;
       _started = true;
@@ -255,8 +289,16 @@ class _PaperRoomScreenState extends State<PaperRoomScreen>
       _seconds = _selectedMinutes * 60;
       _questionIndex = 0;
     });
-    await _saveDraft();
-    _startClock();
+    try {
+      await _saveDraft();
+      _startClock();
+    } catch (_) {
+      if (mounted)
+        setState(() {
+          _started = false;
+          _error = 'This device could not save a paper draft. Please free some storage and try again.';
+        });
+    }
   }
 
   void _startClock() {
@@ -280,7 +322,7 @@ class _PaperRoomScreenState extends State<PaperRoomScreen>
     if (mounted) setState(() {});
   }
 
-  Future<void> _submit({bool force = false}) async {
+  Future<void> _submit({bool force = false, bool tryNetwork = false}) async {
     if (_submitting || _submitted || !_started) return;
     if (!force) {
       final confirm = await showDialog<bool>(
@@ -310,11 +352,28 @@ class _PaperRoomScreenState extends State<PaperRoomScreen>
       _error = null;
     });
     _clock?.cancel();
-    await _saveDraft(pending: true);
     try {
+      try {
+        await _saveDraft(pending: true);
+        if (mounted) setState(() => _pendingSaved = true);
+      } catch (_) {
+        if (mounted)
+          setState(() {
+            _pendingSubmit = false;
+            _error = 'Could not save your answers on this device. Keep this paper open and try again.';
+          });
+        return;
+      }
+      if (_offline && !tryNetwork) {
+        _scheduleSyncRetry();
+        return;
+      }
       var attemptId = _attemptId;
       attemptId ??= (await _quizService.startAttempt(widget.quizId)).attemptId;
       _attemptId = attemptId;
+      // Persist the server ID before submitting so reconnect/restart can check
+      // whether the server already accepted this same attempt.
+      await _saveDraft(pending: true);
       final payload = _questions.map((question) {
         final answer = _answers[question.id] ?? const <String, dynamic>{};
         return SubmitAnswerPayload(
@@ -374,19 +433,19 @@ class _PaperRoomScreenState extends State<PaperRoomScreen>
       _scheduleSyncRetry();
       if (mounted) {
         setState(
-          () => _error =
-              'Your answers are saved on this device. We will submit them when the connection returns.',
+          () => _error = 'Your answers are saved on this device. We will submit them when the connection returns.',
         );
       }
     } finally {
       if (mounted) setState(() => _submitting = false);
+      if (!mounted) OfflinePaperStore.releasePaper(_userId, widget.quizId);
     }
   }
 
   void _scheduleSyncRetry() {
     _syncRetry ??= Timer.periodic(const Duration(seconds: 20), (_) {
       if (mounted && _pendingSubmit && !_submitting && !_submitted) {
-        unawaited(_submit(force: true));
+        unawaited(_submit(force: true, tryNetwork: true));
       }
     });
   }
@@ -400,7 +459,7 @@ class _PaperRoomScreenState extends State<PaperRoomScreen>
   @override
   Widget build(BuildContext context) {
     return PopScope(
-      canPop: !_started || _submitted,
+      canPop: !_started || _submitted || _pendingSaved,
       onPopInvokedWithResult: (didPop, _) {
         if (!didPop && _started && !_submitted) unawaited(_submit(force: true));
       },
@@ -715,11 +774,7 @@ class _PaperRoomScreenState extends State<PaperRoomScreen>
                         question.stemImage!.isNotEmpty)
                       Padding(
                         padding: const EdgeInsets.only(top: 12),
-                        child: Image.network(
-                          question.stemImage!,
-                          errorBuilder: (_, __, ___) =>
-                              const Text('Question image could not be loaded.'),
-                        ),
+                        child: _paperImage(question.stemImage!),
                       ),
                     if (question.stemCode != null &&
                         question.stemCode!.isNotEmpty)
@@ -1245,6 +1300,24 @@ class _PaperRoomScreenState extends State<PaperRoomScreen>
         ),
       );
 
+  Widget _paperImage(String source) {
+    Widget unavailable(BuildContext context, Object error, StackTrace? stack) =>
+        const Text(
+          'This image is unavailable. Download the paper again while online.',
+        );
+    if (source.startsWith('data:image/')) {
+      try {
+        return Image.memory(
+          base64Decode(source.substring(source.indexOf(',') + 1)),
+          errorBuilder: unavailable,
+        );
+      } catch (_) {
+        return const Text('Saved image could not be read.');
+      }
+    }
+    return Image.network(source, errorBuilder: unavailable);
+  }
+
   List<Widget> _richWidgets(dynamic content) {
     if (content is List) return content.expand(_richWidgets).toList();
     if (content is Map) {
@@ -1269,18 +1342,13 @@ class _PaperRoomScreenState extends State<PaperRoomScreen>
           return [_codeBlock(value)];
         case 'image':
           final uri = _safeImageUri(
-            (content['url'] ?? content['asset'] ?? '').toString(),
+            (content['url'] ?? content['asset'] ?? content['src'] ?? content['value'] ?? '').toString(),
           );
           return [
             if (uri != null)
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 8),
-                child: Image.network(
-                  uri,
-                  errorBuilder: (_, __, ___) => const Text(
-                    'Question image needs an internet connection.',
-                  ),
-                ),
+                child: _paperImage(uri),
               )
             else
               const Text('Image unavailable.'),
@@ -1376,6 +1444,7 @@ class _PaperRoomScreenState extends State<PaperRoomScreen>
   }
 
   String? _safeImageUri(String value) {
+    if (value.startsWith('data:image/')) return value;
     final parsed = Uri.tryParse(value.trim());
     if (parsed == null) return null;
     if (parsed.scheme == 'https') return parsed.toString();
@@ -1512,8 +1581,7 @@ class _PaperRoomScreenState extends State<PaperRoomScreen>
             ),
             const SizedBox(height: 8),
             Text(
-              _error ??
-                  'Your answers are saved on this device. We will submit them when the connection returns.',
+              _error ?? 'Your answers are saved on this device. We will submit them when the connection returns.',
               textAlign: TextAlign.center,
               style: const TextStyle(color: Color(0xFF64748B), height: 1.45),
             ),
@@ -1521,7 +1589,9 @@ class _PaperRoomScreenState extends State<PaperRoomScreen>
             SizedBox(
               width: double.infinity,
               child: FilledButton.icon(
-                onPressed: _submitting ? null : () => _submit(force: true),
+                onPressed: _submitting
+                    ? null
+                    : () => _submit(force: true, tryNetwork: true),
                 icon: _submitting
                     ? const SizedBox(
                         width: 18,

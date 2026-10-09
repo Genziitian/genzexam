@@ -48,6 +48,7 @@ class _OfflinePapersScreenState extends State<OfflinePapersScreen> {
           title: paper.title,
           apiClient: widget.apiClient,
           user: widget.user,
+          preferOffline: true,
         ),
       ),
     );
@@ -94,8 +95,7 @@ class _OfflinePapersScreenState extends State<OfflinePapersScreen> {
             return _EmptyState(
               icon: Icons.download_for_offline_outlined,
               title: 'No downloads yet',
-              message:
-                  'Open Practice while online and tap the download icon beside a paper. It will be saved here for offline practice.',
+              message: 'Open Practice while online and tap the download icon beside a paper. It will be saved here for offline practice.',
               action: FilledButton.icon(
                 onPressed: () {
                   Navigator.of(context).pop();

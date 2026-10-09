@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+
 import 'api_exceptions.dart';
 
 /// Production-grade API client connecting directly to https://labapi.genziitian.in.
@@ -14,6 +16,7 @@ class ApiClient {
       'https://labapi.genziitian.in/public/api';
   static const String tokenStorageKey = 'auth_token';
   static const String cachedUserKey = 'auth_user_cache';
+  static final ValueNotifier<bool> connectionUnavailable = ValueNotifier(false);
 
   final Dio _dio;
   final FlutterSecureStorage _secureStorage;
@@ -45,6 +48,22 @@ class ApiClient {
         secureStorage: _secureStorage,
         onUnauthorized: () {
           onUnauthorized?.call();
+        },
+      ),
+    );
+    _dio.interceptors.add(
+      InterceptorsWrapper(
+        onResponse: (response, handler) {
+          connectionUnavailable.value = false;
+          handler.next(response);
+        },
+        onError: (error, handler) {
+          if (error.type != DioExceptionType.cancel) {
+            connectionUnavailable.value =
+                error.response == null ||
+                (error.response?.statusCode ?? 0) >= 500;
+          }
+          handler.next(error);
         },
       ),
     );

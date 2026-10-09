@@ -1,7 +1,7 @@
 name: genz_exam_mobile
 description: "Quiz Lab by GenZ IITian mobile app"
 publish_to: "none"
-version: 1.0.3+4
+version: 1.0.4+5
 
 environment:
   sdk: ">=3.13.0 <4.0.0"

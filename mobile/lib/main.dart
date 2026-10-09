@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'state/auth_state.dart';
 import 'state/theme_state.dart';
 import 'navigation/app_router.dart';
@@ -6,7 +7,7 @@ import 'navigation/app_router.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   final authState = AuthState();
-  authState.checkAuthStatus();
+  authState.init();
   loadAppThemeMode();
   runApp(GenZExamApp(authState: authState));
 }
@@ -32,7 +33,8 @@ class GenZExamApp extends StatelessWidget {
         fontFamily: 'Inter',
       ),
       // One layer over every screen and dialog: turns the app dark when chosen.
-      builder: (context, child) => AppDarkLayer(child: child ?? const SizedBox.shrink()),
+      builder: (context, child) =>
+          AppDarkLayer(child: child ?? const SizedBox.shrink()),
       home: AppRouter(authState: authState),
     );
   }
