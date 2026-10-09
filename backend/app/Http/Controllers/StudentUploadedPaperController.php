@@ -38,6 +38,7 @@ class StudentUploadedPaperController extends Controller
     public function store(Request $request, DeepSeekQuizGenerator $generator, QuestionImporter $importer): JsonResponse
     {
         abort_if(! StudentAppMode::isStudent($request), 403, 'Student uploads only.');
+        abort_unless($request->user()->hasProAccess(), 403, 'Uploading papers and generating a private test requires Quiz LAB Pro.');
         @set_time_limit(0);
         @ini_set('max_execution_time', '0');
 

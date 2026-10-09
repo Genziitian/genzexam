@@ -28,6 +28,7 @@ use App\Http\Controllers\StorefrontController;
 use App\Http\Controllers\StudentUploadedPaperController;
 use App\Http\Controllers\ManagerSalesController;
 use App\Http\Controllers\ManagerSystemController;
+use App\Http\Controllers\ProMembershipController;
 use Illuminate\Support\Facades\Route;
 
 // Public auth routes
@@ -52,6 +53,7 @@ Route::get('/video-solutions/embed/{id}', [VideoSolutionController::class, 'embe
 // Public metadata only; quiz questions stay behind the authenticated quiz API.
 Route::get('/storefront/papers', [StorefrontController::class, 'papers'])->middleware('throttle:120,1');
 Route::post('/storefront/razorpay/webhook', [StorefrontController::class, 'webhook'])->middleware('throttle:120,1');
+Route::post('/membership/razorpay/webhook', [ProMembershipController::class, 'razorpayWebhook'])->middleware('throttle:120,1');
 
 // Authenticated student routes
 Route::middleware(['auth:sanctum', 'track.seen'])->group(function () {
@@ -59,6 +61,10 @@ Route::middleware(['auth:sanctum', 'track.seen'])->group(function () {
     Route::delete('/auth/account', [AuthController::class, 'deleteAccount']);
     Route::post('/auth/account-deletion-requests', [AccountDeletionRequestController::class, 'store'])->middleware('throttle:5,60');
     Route::get('/auth/me', [AuthController::class, 'me']);
+    Route::get('/membership', [ProMembershipController::class, 'show']);
+    Route::post('/membership/cancel', [ProMembershipController::class, 'cancel']);
+    Route::post('/membership/razorpay/start', [ProMembershipController::class, 'startRazorpay'])->middleware('throttle:5,1');
+    Route::post('/membership/google-play/verify', [ProMembershipController::class, 'verifyGooglePlay'])->middleware('throttle:10,1');
     Route::post('/auth/password/change', [AuthController::class, 'changePassword'])->middleware('throttle:5,10');
 
     // Courses
@@ -72,6 +78,7 @@ Route::middleware(['auth:sanctum', 'track.seen'])->group(function () {
 
     // Quizzes and attempts
     Route::get('/quizzes/{id}', [QuizController::class, 'show']);
+    Route::get('/quizzes/{id}/offline-download', [QuizController::class, 'downloadForOffline']);
     Route::post('/quizzes/{id}/attempts', [AttemptController::class, 'start']);
     Route::post('/attempts/{id}/submit', [AttemptController::class, 'submit']);
     Route::get('/attempts/{id}/result', [AttemptController::class, 'result']);
@@ -217,6 +224,11 @@ Route::middleware(['auth:sanctum', 'is_manager', 'track.seen'])->prefix('manager
     Route::delete('/questions/{id}', [AdminQuestionController::class, 'destroy'])->whereNumber('id')->middleware(\App\Http\Middleware\ManagerPaperDraft::class);
     Route::get('/purchases', [ManagerSalesController::class, 'purchases']);
     Route::get('/sales/summary', [ManagerSalesController::class, 'summary']);
+    Route::get('/pro/plan', [ProMembershipController::class, 'managerPlan']);
+    Route::put('/pro/plan', [ProMembershipController::class, 'updatePlan']);
+    Route::get('/pro/subscriptions', [ProMembershipController::class, 'managerSubscriptions']);
+    Route::post('/pro/subscriptions/grant', [ProMembershipController::class, 'managerGrant']);
+    Route::patch('/pro/subscriptions/{id}/cancel', [ProMembershipController::class, 'managerCancel']);
 });
 
 // Manager-only maintenance for hosts without shell access. Kept outside the cached

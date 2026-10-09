@@ -11,6 +11,12 @@ use Illuminate\Http\Exceptions\HttpResponseException;
 
 class QuizController extends Controller
 {
+    public function downloadForOffline(Request $request, int $id): JsonResponse
+    {
+        abort_unless($request->user()->hasProAccess(), 403, 'Offline paper downloads require Quiz LAB Pro.');
+        return $this->show($request, $id);
+    }
+
     public function show(Request $request, int $id): JsonResponse
     {
         $quiz = Quiz::withoutGlobalScope('exclude_personal_uploads')

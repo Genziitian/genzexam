@@ -14,6 +14,7 @@ import 'offline_papers_screen.dart';
 import 'uploaded_papers_screen.dart';
 import 'practice_screens.dart';
 import 'progress_widgets.dart';
+import 'pro_membership_card.dart';
 
 // -----------------------------------------------------------------------------
 // AVATARS: ready-made pictures a student can pick. The choice is kept on this
@@ -4766,6 +4767,10 @@ class _MoreTab extends StatefulWidget {
 }
 
 class _MoreTabState extends State<_MoreTab> {
+  Widget _membershipCard() {
+    return ProMembershipCard(apiClient: widget.discussionService.client);
+  }
+
   Future<void> _refresh() async {
     AppHaptics.light();
     await Future<void>.delayed(const Duration(milliseconds: 350));
@@ -5705,6 +5710,7 @@ class _MoreTabState extends State<_MoreTab> {
           const SizedBox(height: 20),
 
           // Settings & Preferences
+          _membershipCard(),
           const Text(
             'ACCOUNT & PREFERENCES',
             style: TextStyle(

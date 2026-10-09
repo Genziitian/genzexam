@@ -60,4 +60,14 @@ return [
         'webhook_secret' => env('RAZORPAY_WEBHOOK_SECRET'),
     ],
 
+    'google_play' => [
+        'package_name' => env('GOOGLE_PLAY_PACKAGE_NAME'),
+        'subscription_product_id' => env('GOOGLE_PLAY_PRO_PRODUCT_ID'),
+        'subscription_base_plan_id' => env('GOOGLE_PLAY_PRO_BASE_PLAN_ID'),
+        'regions_version' => env('GOOGLE_PLAY_REGIONS_VERSION', '2022/02'),
+        'trial_offer_id' => env('GOOGLE_PLAY_PRO_TRIAL_OFFER_ID'),
+        'service_account_json' => env('GOOGLE_PLAY_SERVICE_ACCOUNT_JSON'),
+        'rtdn_topic' => env('GOOGLE_PLAY_RTDN_TOPIC'),
+    ],
+
 ];

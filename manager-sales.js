@@ -33,6 +33,50 @@
       <p class="hint">Account created ${esc(row.account_created_at ? new Date(row.account_created_at).toLocaleString() : 'date unavailable')} · Requested ${esc(new Date(row.created_at).toLocaleString())}</p>
     </article>`).join('') : `<div class="notice empty">${deletionRequests.length ? 'No requests match this status.' : 'No account deletion requests have been submitted.'}</div>`;
   }
+  const proWhen = value => value ? new Date(value).toLocaleString('en-IN', {day:'numeric',month:'short',year:'numeric',hour:'numeric',minute:'2-digit'}) : '—';
+  let proSearchTimer, proPage = 1, proLastPage = 1;
+  async function loadProPlan() {
+    try {
+      const plan = await api('/manager/pro/plan');
+      $('pro-plan-form').elements.price.value = (Number(plan.price_paise || 9900) / 100).toFixed(2);
+      $('pro-plan-form').elements.trial_days.value = plan.trial_days ?? 7;
+      $('pro-plan-form').elements.enabled.value = plan.enabled ? '1' : '0';
+      $('google-play-price-note').textContent = plan.google_play_price_note;
+    } catch (error) { $('pro-plan-status').textContent = error.message; }
+  }
+  async function loadProSubscriptions() {
+    const target = $('pro-list');
+    target.innerHTML = '<tr><td colspan="9" class="empty-row">Loading memberships…</td></tr>';
+    try {
+      const query = new URLSearchParams({status:$('pro-status-filter').value,search:$('pro-search').value.trim(),page:String(proPage),per_page:'50'});
+      const result = await api('/manager/pro/subscriptions?' + query);
+      proPage = result.current_page || 1;
+      proLastPage = result.last_page || 1;
+      $('pro-page').textContent = `Page ${proPage} of ${proLastPage} · ${result.total || 0} records`;
+      $('previous-pro').disabled = proPage <= 1;
+      $('next-pro').disabled = proPage >= proLastPage;
+      const summary = result.summary || {};
+      $('pro-metrics').innerHTML = metric('Paid / active', summary.active || 0, 'Renewing memberships') + metric('Free trials', summary.trialing || 0, 'Trial access') + metric('Pending checkout', summary.pending || 0, 'Awaiting payment confirmation') + metric('Ended or revoked', Number(summary.cancelled || 0) + Number(summary.revoked || 0) + Number(summary.expired || 0), 'Historical records');
+      target.innerHTML = result.data?.length ? result.data.map(row => {
+        const active = ['active','trialing'].includes(row.status);
+        const manual = row.provider === 'manual' || row.provider === 'manual legacy flag';
+        const actions = manual
+          ? (active ? `<button class="danger" data-pro-action="revoke_access" data-pro-id="${esc(row.id)}">Revoke access</button>` : '—')
+          : `${['active','trialing','pending'].includes(row.status) && !row.cancel_at_period_end ? `<button data-pro-action="cancel_renewal" data-pro-id="${esc(row.id)}">${row.status === 'pending' ? 'Cancel checkout' : 'Cancel renewal'}</button>` : esc(row.cancel_at_period_end ? 'Renewal cancelled' : '—')} ${active ? `<button class="danger" data-pro-action="revoke_access" data-pro-id="${esc(row.id)}">Revoke now</button>` : ''}`;
+        const chargeDate = row.cancel_at_period_end ? 'Access until ' + proWhen(row.current_period_ends_at) : proWhen(row.current_period_ends_at);
+        return `<tr><td><strong>${esc(row.user?.name || 'Deleted account')}</strong><small>${esc(row.user?.email || '')} · #${esc(row.user?.id || '—')}</small></td><td><span class="state ${active?'paid':'unpaid'}">${esc(row.status)}</span>${row.cancelled_at?'<small>Action by '+esc(row.cancellation_source || 'provider')+'</small>':''}</td><td>${esc(row.provider)}<small>${esc(row.product_id || '')}</small>${row.provider_subscription_id?'<small class="mono">'+esc(row.provider_subscription_id)+'</small>':''}</td><td>${esc(money(row.amount_paise))}</td><td>${esc(proWhen(row.started_at || row.created_at))}</td><td>${esc(proWhen(row.trial_ends_at))}</td><td>${esc(proWhen(row.paid_at))}</td><td>${esc(chargeDate)}${row.checkout_url?'<small><a href="'+esc(row.checkout_url)+'" target="_blank" rel="noopener">Open pending checkout</a></small>':''}</td><td class="pro-actions">${actions}</td></tr>`;
+      }).join('') : '<tr><td colspan="9" class="empty-row">No subscription records match these filters.</td></tr>';
+    } catch (error) { target.innerHTML = `<tr><td colspan="9" class="empty-row">${esc(error.message)}</td></tr>`; }
+  }
+  async function loadPro() { await Promise.all([loadProPlan(), loadProSubscriptions()]); }
+  $('pro-plan-form').onsubmit = event => { event.preventDefault(); const f=event.currentTarget; busy(f.querySelector('button'),async()=>{const result=await api('/manager/pro/plan','PUT',{price_paise:Math.round(Number(value(f,'price'))*100),trial_days:Number(value(f,'trial_days')),enabled:value(f,'enabled')==='1'}); f.elements.price.value=(Number(result.price_paise)/100).toFixed(2); $('google-play-price-note').textContent=result.google_play_price_note; $('pro-plan-status').textContent=result.google_play_price_managed?'Web price and Google Play price for new India subscribers were updated. Existing Google Play price cohorts are unchanged.':'Web plan saved. '+result.google_play_price_note; toast('Plan updated.'); },$('pro-plan-status')); };
+  $('pro-status-filter').onchange=()=>{proPage=1;loadProSubscriptions();};
+  $('pro-search').oninput=()=>{clearTimeout(proSearchTimer);proSearchTimer=setTimeout(()=>{proPage=1;loadProSubscriptions();},250);};
+  $('previous-pro').onclick=()=>{if(proPage>1){proPage--;loadProSubscriptions();}};
+  $('next-pro').onclick=()=>{if(proPage<proLastPage){proPage++;loadProSubscriptions();}};
+  $('refresh-pro').onclick=loadPro;
+  $('pro-list').onclick=event=>{const button=event.target.closest('[data-pro-action]');if(!button)return;const action=button.dataset.proAction;const prompt=action==='revoke_access'?'Revoke Pro access immediately? Google Play purchases will request a prorated refund. Razorpay will stop the subscription immediately without an automatic refund.':'Stop future renewals? Existing trial or paid access remains through its end date.';if(!confirm(prompt))return;busy(button,async()=>{const result=await api('/manager/pro/subscriptions/'+button.dataset.proId+'/cancel','PATCH',{action});await loadProSubscriptions();toast(result.message || 'Membership updated.');});};
+  $('pro-grant-form').onsubmit=event=>{event.preventDefault();const f=event.currentTarget;busy(f.querySelector('button'),async()=>{const result=await api('/manager/pro/subscriptions/grant','POST',{email:value(f,'email').trim(),days:Number(value(f,'days'))});f.reset();f.elements.days.value=30;$('pro-grant-status').textContent=result.message || 'Pro access granted.';await loadProSubscriptions();toast(result.message || 'Pro access granted.');},$('pro-grant-status'));};
   async function loadDeletionRequests() { $('deletion-request-list').innerHTML='<div class="notice">Loading requests…</div>'; try { deletionRequests=await api('/manager/account-deletion-requests').then(data=>data.requests || []);renderDeletionRequests(); } catch(error) { $('deletion-request-list').innerHTML=`<div class="notice">${esc(error.message)}</div>`; } }
   async function loadWeeks(selected) { const weekly=['practice','practice_graded'].includes(value(form,'section')); $('week-field').hidden=!weekly; $('paper-week').required=weekly; if(!weekly) return; $('paper-week').innerHTML='<option value="">Loading weeks…</option>'; if(!value(form,'course_id')) return; try { const rows=await api('/manager/courses/'+encodeURIComponent(value(form,'course_id'))+'/weeks'); $('paper-week').innerHTML='<option value="">Choose a week</option>'+rows.map(w=>`<option value="${esc(w.id)}">Week ${esc(w.week_number)}${w.title?' — '+esc(w.title):''}</option>`).join(''); if(selected) $('paper-week').value=selected; } catch(error){toast(error.message);} }
   function editTab(tab) { ['details','questions','preview'].forEach(name=>$(name+'-step').hidden=name!==tab); document.querySelectorAll('[data-edit-tab]').forEach(b=>b.classList.toggle('active',b.dataset.editTab===tab)); if(tab==='preview') renderPreview(); }
@@ -88,7 +132,7 @@
     const cell = value => { let text = String(value ?? ''); if (/^[=+\-@\t\r]/.test(text)) text = "'" + text; return '"' + text.replace(/"/g, '""') + '"'; };
     const link = document.createElement('a'); link.href = URL.createObjectURL(new Blob(['﻿' + rows.map(row => row.map(cell).join(',')).join('\r\n')], {type: 'text/csv'})); link.download = 'quiz-lab-orders-' + new Date().toISOString().slice(0, 10) + '.csv'; document.body.appendChild(link); link.click(); link.remove(); setTimeout(() => URL.revokeObjectURL(link.href), 1000);
   }
-  document.querySelectorAll('[data-tab]').forEach(button=>button.onclick=()=>{ document.querySelectorAll('[data-tab]').forEach(b=>b.setAttribute('aria-current',b===button?'page':'false')); ['sales','papers','courses','deletion-requests'].forEach(t=>$(t+'-panel').hidden=t!==button.dataset.tab);if(button.dataset.tab==='sales')loadSales();if(button.dataset.tab==='deletion-requests')loadDeletionRequests(); });
+  document.querySelectorAll('[data-tab]').forEach(button=>button.onclick=()=>{ document.querySelectorAll('[data-tab]').forEach(b=>b.setAttribute('aria-current',b===button?'page':'false')); ['sales','papers','courses','pro','deletion-requests'].forEach(t=>$(t+'-panel').hidden=t!==button.dataset.tab);if(button.dataset.tab==='sales')loadSales();if(button.dataset.tab==='pro')loadPro();if(button.dataset.tab==='deletion-requests')loadDeletionRequests(); });
   $('refresh-deletion-requests').onclick=loadDeletionRequests;
   $('deletion-request-filter').onchange=renderDeletionRequests;
   $('deletion-request-list').onchange=e=>{const select=e.target.closest('[data-deletion-status]');if(!select)return;const previous=deletionRequests.find(row=>String(row.id)===select.dataset.deletionStatus)?.status;select.disabled=true;api('/manager/account-deletion-requests/'+encodeURIComponent(select.dataset.deletionStatus),'PATCH',{status:select.value}).then(result=>{const index=deletionRequests.findIndex(row=>String(row.id)===select.dataset.deletionStatus);if(index>=0)deletionRequests[index]=result.request;renderDeletionRequests();toast('Request status updated.');}).catch(error=>{select.value=previous || 'pending';select.disabled=false;toast(error.message);});};

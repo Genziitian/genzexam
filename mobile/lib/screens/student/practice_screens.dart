@@ -743,7 +743,7 @@ class _CoursePapersScreenState extends State<CoursePapersScreen> {
     try {
       final quiz = await QuizService(
         client: widget.courseService.client,
-      ).getQuiz(paper.id);
+      ).downloadQuiz(paper.id);
       await OfflinePaperStore.cacheQuiz(userId, quiz);
       if (mounted)
         ScaffoldMessenger.of(context).showSnackBar(

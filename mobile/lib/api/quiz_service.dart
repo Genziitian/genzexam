@@ -18,6 +18,12 @@ class QuizService {
     return QuizDetail.fromJson(response.data!);
   }
 
+  /// Offline copies are a Pro entitlement and use a dedicated server gate.
+  Future<QuizDetail> downloadQuiz(int quizId) async {
+    final response = await _client.get<Map<String, dynamic>>('/quizzes/$quizId/offline-download');
+    return QuizDetail.fromJson(response.data!);
+  }
+
   /// Starts or resumes an attempt for the specified quiz.
   /// If an in-progress attempt already exists, the server authoritatively returns it.
   /// Endpoint: POST /api/quizzes/{id}/attempts

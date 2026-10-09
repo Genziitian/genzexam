@@ -86,7 +86,7 @@ class VideoSolution extends Model
             return true;
         }
 
-        return $user !== null && ($user->is_admin || $user->is_pro);
+        return $user !== null && ($user->hasAdminAccess() || $user->hasProAccess());
     }
 
     public function course(): BelongsTo

@@ -5,6 +5,7 @@
   var API_FALLBACK = 'https://labapi.genziitian.in/public/api';
   var MORE_ID = 'ql-web-more-actions';
   var PHOTO_ID = 'ql-web-profile-photo';
+  var MEMBERSHIP_ID = 'ql-web-membership';
   var profileRequest = null;
   var profileToken = '';
   var injectedStyle = false;
@@ -148,6 +149,40 @@
   function profilePage() {
     if (!/^\/profile\/?$/i.test(location.pathname)) return null;
     return document.querySelector('#root main .page-enter > div') || document.querySelector('#root main .page-enter');
+  }
+  function settingsPage() {
+    if (!/^\/settings\/?$/i.test(location.pathname)) return null;
+    return document.querySelector('#root main .page-enter > div') || document.querySelector('#root main .page-enter');
+  }
+  function ensureMembership(page) {
+    if (!page || document.getElementById(MEMBERSHIP_ID)) return;
+    var card = document.createElement('section');
+    card.id = MEMBERSHIP_ID;
+    card.className = 'ql-more-card';
+    card.innerHTML = '<h2 class="ql-more-heading">Pro membership</h2><p class="ql-more-subtitle">Manage your plan and billing details.</p><div class="ql-more-row"><div class="ql-more-row-copy"><strong id="ql-web-pro-status">Loading membership…</strong><small id="ql-web-pro-dates"></small></div><div class="ql-more-theme-options"><button type="button" class="ql-more-button primary" id="ql-web-pro-buy" hidden>Start 7-day trial</button><button type="button" class="ql-more-button danger" id="ql-web-pro-cancel" hidden>Cancel renewal</button></div></div><p class="ql-more-message" id="ql-web-pro-message" role="status"></p><p class="ql-more-subtitle">Pro includes video solutions, offline paper downloads, and PDF uploads.</p>';
+    page.appendChild(card);
+    var status = card.querySelector('#ql-web-pro-status'), dates = card.querySelector('#ql-web-pro-dates'), message = card.querySelector('#ql-web-pro-message'), cancel = card.querySelector('#ql-web-pro-cancel'), buy = card.querySelector('#ql-web-pro-buy');
+    api('/membership').then(function (result) {
+      var sub = result.subscription || {};
+      var pro = result.is_pro === true;
+      status.textContent = pro ? (sub.status === 'trialing' ? 'Free trial active' : 'Pro active') : 'No active Pro membership';
+      dates.textContent = sub.started_at ? 'Started ' + new Date(sub.started_at).toLocaleDateString('en-IN') + (sub.trial_ends_at ? ' · Trial ends ' + new Date(sub.trial_ends_at).toLocaleDateString('en-IN') : '') + (sub.current_period_ends_at ? ' · Next charge / access end ' + new Date(sub.current_period_ends_at).toLocaleDateString('en-IN') : '') : (pro ? 'Pro access is managed by the Quiz LAB team.' : '₹' + ((result.plan?.price_paise || 9900) / 100) + ' per month · ' + (result.plan?.trial_days ?? 7) + '-day trial');
+      cancel.hidden = !pro || !sub.id || sub.cancel_at_period_end === true;
+      buy.hidden = pro || !result.payment_setup?.web || result.plan?.enabled === false;
+      if (!result.payment_setup?.web && !pro) message.textContent = 'Online membership checkout is being connected. Your account will show plan dates here once billing is active.';
+    }).catch(function (error) { status.textContent = 'Membership details could not load.'; message.textContent = error.message; message.className = 'ql-more-message error'; });
+    buy.addEventListener('click', function () {
+      buy.disabled = true; buy.textContent = 'Opening checkout…'; message.textContent = '';
+      api('/membership/razorpay/start', { method:'POST', headers:{'Content-Type':'application/json'}, body:'{}' }).then(function (result) {
+        if (!result.checkout_url) throw new Error('Checkout link was not returned. Please try again.');
+        location.assign(result.checkout_url);
+      }).catch(function (error) { message.textContent = error.message; message.className = 'ql-more-message error'; }).finally(function () { buy.disabled = false; buy.textContent = 'Start 7-day trial'; });
+    });
+    cancel.addEventListener('click', function () {
+      if (!window.confirm('Cancel your Pro membership?')) return;
+      cancel.disabled = true; message.textContent = 'Processing…';
+      fetch(apiBase() + '/membership/cancel', { method:'POST', headers:{Accept:'application/json',Authorization:'Bearer '+token()} }).then(function (response) { return response.json().then(function (body) { if (!response.ok) { var error = new Error(body.error || body.message || 'Could not cancel.'); error.manageUrl = body.manage_url; throw error; } return body; }); }).then(function (body) { status.textContent = body.subscription?.status === 'cancelled' ? 'Membership cancelled' : 'Cancellation scheduled'; dates.textContent = ''; cancel.hidden = true; message.textContent = body.message || 'Membership cancelled.'; message.className = 'ql-more-message success'; }).catch(function (error) { if (error.manageUrl) { message.textContent = 'Open your payment provider to stop future renewals.'; message.className = 'ql-more-message'; window.open(error.manageUrl, '_blank', 'noopener'); } else { message.textContent = error.message; message.className = 'ql-more-message error'; } cancel.disabled = false; });
+    });
   }
   function removeDuplicateProfileBlocks(page) {
     if (!page) return;
@@ -475,6 +510,8 @@
     signOut();
   }
   function ensureMore() {
+    var settings = settingsPage();
+    if (settings) { addStyles(); ensureMembership(settings); }
     if (!/^\/profile\/?$/i.test(location.pathname)) return;
     addStyles();
     renameProfileNav();

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\ProSubscription;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
@@ -115,7 +116,22 @@ class AdminUserController extends Controller
             return $denied;
         }
 
-        $target->update(['is_pro' => ! $target->is_pro]);
+        $grant = ! $target->is_pro;
+        $target->update(['is_pro' => $grant]);
+        if ($grant) {
+            ProSubscription::query()->create([
+                'user_id' => $target->id,
+                'provider' => 'manual',
+                'status' => 'active',
+                'amount_paise' => 0,
+                'currency' => 'INR',
+                'started_at' => now(),
+            ]);
+        } else {
+            $target->proSubscriptions()->whereIn('status', ['active', 'trialing'])->update([
+                'status' => 'revoked', 'cancelled_at' => now(), 'cancellation_source' => 'manager',
+            ]);
+        }
 
         return response()->json([
             'message' => $target->is_pro
