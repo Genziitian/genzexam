@@ -12,6 +12,27 @@
   color: #101b2e;
   overflow-wrap: anywhere;
 }
+#ep-app .pr-time-choice {
+  display: grid;
+  gap: 8px;
+  margin: 18px 0;
+  max-width: 420px;
+  color: #243247;
+  font-size: 14px;
+}
+#ep-app .pr-time-choice select,
+#ep-app .pr-time-choice input {
+  min-height: 44px;
+  padding: 9px 12px;
+  border: 1px solid #dfe4ec;
+  border-radius: 10px;
+  background: #fff;
+  color: #172033;
+  font: inherit;
+}
+#ep-app .pr-time-choice [hidden] {
+  display: none;
+}
 #ep-app .ep-room-head h1 {
   overflow-wrap: anywhere;
 }

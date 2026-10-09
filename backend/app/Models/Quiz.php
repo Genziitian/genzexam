@@ -6,10 +6,21 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Builder;
 
 class Quiz extends Model
 {
     use HasFactory;
+
+    protected static function booted(): void
+    {
+        // Personal student uploads are opt-in in the few owner-only API paths.
+        // Everything else (course catalogs, manager tools, rankings, storefront)
+        // excludes them by default.
+        static::addGlobalScope('exclude_personal_uploads', function (Builder $query) {
+            $query->where('is_personal', false);
+        });
+    }
 
     public const SECTIONS = ['practice', 'practice_graded', 'quiz1', 'quiz2', 'endterm', 'mock_test'];
     public const WEEKLY_SECTIONS = ['practice', 'practice_graded'];
@@ -29,6 +40,8 @@ class Quiz extends Model
         'created_by',
         'reviewed_by',
         'reviewed_at',
+        'is_personal',
+        'owner_user_id',
     ];
 
     protected function casts(): array
@@ -37,6 +50,7 @@ class Quiz extends Model
             'is_active' => 'boolean',
             'price_paise' => 'integer',
             'access_days' => 'integer',
+            'is_personal' => 'boolean',
         ];
     }
 
@@ -58,5 +72,10 @@ class Quiz extends Model
     public function attempts(): HasMany
     {
         return $this->hasMany(Attempt::class);
+    }
+
+    public function owner(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'owner_user_id');
     }
 }

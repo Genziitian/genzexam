@@ -11,6 +11,16 @@
     "https://labapi.genziitian.in/public/api"
   ).replace(/\/+$/, "");
   const $ = (id) => document.getElementById(id);
+  async function fetchWithTimeout(url, options, timeoutMs) {
+    if (typeof AbortController !== "function") return fetch(url, options);
+    const controller = new AbortController();
+    const timeout = window.setTimeout(() => controller.abort(), timeoutMs);
+    try {
+      return await fetch(url, { ...options, signal: controller.signal });
+    } finally {
+      window.clearTimeout(timeout);
+    }
+  }
   const esc = (v) =>
     String(v == null ? "" : v).replace(
       /[&<>"']/g,
@@ -26,16 +36,15 @@
     }
   }
   async function api(path, method, body) {
-    const response = await fetch(API + path, {
+    const response = await fetchWithTimeout(API + path, {
       method: method || "GET",
-      signal: AbortSignal.timeout(25000),
       headers: {
         Accept: "application/json",
         ...(body ? { "Content-Type": "application/json" } : {}),
         Authorization: "Bearer " + token(),
       },
       body: body ? JSON.stringify(body) : undefined,
-    });
+    }, 25000);
     let data = null;
     try {
       data = await response.json();

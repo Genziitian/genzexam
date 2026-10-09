@@ -10,6 +10,8 @@ import '../../widgets/app_ux_components.dart';
 import '../../widgets/confirm_sign_out.dart';
 import 'discussions_screen.dart';
 import 'help_screens.dart';
+import 'offline_papers_screen.dart';
+import 'uploaded_papers_screen.dart';
 import 'practice_screens.dart';
 import 'progress_widgets.dart';
 
@@ -48,8 +50,13 @@ String _avatarKey(int? userId) => 'avatar_preset_${userId ?? 0}';
 
 Future<void> _loadAvatarChoice(int? userId) async {
   try {
-    final saved = int.tryParse(await _avatarStore.read(key: _avatarKey(userId)) ?? '');
-    _avatarChoice.value = (saved != null && saved >= 0 && saved < _avatarPresets.length) ? saved : null;
+    final saved = int.tryParse(
+      await _avatarStore.read(key: _avatarKey(userId)) ?? '',
+    );
+    _avatarChoice.value =
+        (saved != null && saved >= 0 && saved < _avatarPresets.length)
+        ? saved
+        : null;
   } catch (_) {
     _avatarChoice.value = null;
   }
@@ -69,15 +76,30 @@ Future<void> _saveAvatarChoice(int? userId, int? choice) async {
 }
 
 String _userInitials(String? name) {
-  final parts = (name ?? '').trim().split(RegExp(r'\s+')).where((p) => p.isNotEmpty).toList();
+  final parts = (name ?? '')
+      .trim()
+      .split(RegExp(r'\s+'))
+      .where((p) => p.isNotEmpty)
+      .toList();
   if (parts.isEmpty) return 'S';
   if (parts.length == 1) return parts.first[0].toUpperCase();
   return (parts.first[0] + parts.last[0]).toUpperCase();
 }
 
 /// One avatar circle: a chosen preset, or the initials. [preset] overrides the saved choice (used by the picker).
-Widget _avatarCircle({required String? name, required double size, int? preset, bool usePreset = true}) {
-  final p = usePreset && preset != null && preset >= 0 && preset < _avatarPresets.length ? _avatarPresets[preset] : null;
+Widget _avatarCircle({
+  required String? name,
+  required double size,
+  int? preset,
+  bool usePreset = true,
+}) {
+  final p =
+      usePreset &&
+          preset != null &&
+          preset >= 0 &&
+          preset < _avatarPresets.length
+      ? _avatarPresets[preset]
+      : null;
   if (p == null) {
     return Container(
       width: size,
@@ -90,22 +112,36 @@ Widget _avatarCircle({required String? name, required double size, int? preset, 
       ),
       child: Text(
         _userInitials(name),
-        style: TextStyle(fontSize: size * 0.34, fontWeight: FontWeight.w800, color: const Color(0xFF16A34A)),
+        style: TextStyle(
+          fontSize: size * 0.34,
+          fontWeight: FontWeight.w800,
+          color: const Color(0xFF16A34A),
+        ),
       ),
     );
   }
   return KeepColors(
     child: Container(
-    width: size,
-    height: size,
-    alignment: Alignment.center,
-    decoration: BoxDecoration(
-      shape: BoxShape.circle,
-      gradient: LinearGradient(begin: Alignment.topLeft, end: Alignment.bottomRight, colors: [p.from, p.to]),
-      border: Border.all(color: Colors.white, width: 2),
-      boxShadow: [BoxShadow(color: p.to.withValues(alpha: 0.35), blurRadius: size * 0.2, offset: Offset(0, size * 0.08))],
-    ),
-    child: Text(p.emoji, style: TextStyle(fontSize: size * 0.5, height: 1.1)),
+      width: size,
+      height: size,
+      alignment: Alignment.center,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [p.from, p.to],
+        ),
+        border: Border.all(color: Colors.white, width: 2),
+        boxShadow: [
+          BoxShadow(
+            color: p.to.withValues(alpha: 0.35),
+            blurRadius: size * 0.2,
+            offset: Offset(0, size * 0.08),
+          ),
+        ],
+      ),
+      child: Text(p.emoji, style: TextStyle(fontSize: size * 0.5, height: 1.1)),
     ),
   );
 }
@@ -121,7 +157,8 @@ class _UserAvatar extends StatelessWidget {
   Widget build(BuildContext context) {
     return ValueListenableBuilder<int?>(
       valueListenable: _avatarChoice,
-      builder: (context, choice, _) => _avatarCircle(name: name, size: size, preset: choice),
+      builder: (context, choice, _) =>
+          _avatarCircle(name: name, size: size, preset: choice),
     );
   }
 }
@@ -163,6 +200,38 @@ class _StudentMainShellState extends State<StudentMainShell> {
     _loadAvatarChoice(widget.authState.user?.id);
   }
 
+  void _openOfflinePapers() {
+    final user = widget.authState.user;
+    if (user == null) return;
+    Navigator.of(context).push<void>(
+      MaterialPageRoute<void>(
+        builder: (_) =>
+            OfflinePapersScreen(user: user, apiClient: _courseService.client),
+      ),
+    );
+  }
+
+  void _openDiscussions() {
+    AppHaptics.light();
+    Navigator.of(context).push<void>(
+      MaterialPageRoute<void>(
+        builder: (_) =>
+            DiscussionsScreen(discussionService: _discussionService),
+      ),
+    );
+  }
+
+  void _openUploadedPapers() {
+    final user = widget.authState.user;
+    if (user == null) return;
+    Navigator.of(context).push<void>(
+      MaterialPageRoute<void>(
+        builder: (_) =>
+            UploadedPapersScreen(user: user, apiClient: _courseService.client),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return AppKeyboardDismiss(
@@ -178,16 +247,27 @@ class _StudentMainShellState extends State<StudentMainShell> {
               if (widget.isManagerPreview)
                 Container(
                   width: double.infinity,
-                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 10,
+                  ),
                   decoration: const BoxDecoration(color: Color(0xFF1E293B)),
                   child: Row(
                     children: [
-                      const Icon(Icons.preview_rounded, color: Color(0xFF38BDF8), size: 18),
+                      const Icon(
+                        Icons.preview_rounded,
+                        color: Color(0xFF38BDF8),
+                        size: 18,
+                      ),
                       const SizedBox(width: 8),
                       const Expanded(
                         child: Text(
                           'MANAGER PREVIEW: Candidate Experience',
-                          style: TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w600),
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 12,
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
                       ),
                       InkWell(
@@ -197,14 +277,21 @@ class _StudentMainShellState extends State<StudentMainShell> {
                         },
                         borderRadius: BorderRadius.circular(6),
                         child: Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 10,
+                            vertical: 4,
+                          ),
                           decoration: BoxDecoration(
                             color: const Color(0xFF38BDF8),
                             borderRadius: BorderRadius.circular(6),
                           ),
                           child: const Text(
                             'Exit to Workspace',
-                            style: TextStyle(color: Color(0xFF0F172A), fontSize: 11, fontWeight: FontWeight.bold),
+                            style: TextStyle(
+                              color: Color(0xFF0F172A),
+                              fontSize: 11,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
                       ),
@@ -212,45 +299,59 @@ class _StudentMainShellState extends State<StudentMainShell> {
                   ),
                 ),
 
-              // Tab View Body
+              // Only keep the selected tab mounted. Leaving a tab clears its
+              // local scroll/search state, so returning starts fresh.
               Expanded(
                 child: Padding(
                   // Height of the bar's white pill plus its bottom margin and the system inset.
-                  padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewPadding.bottom + 76),
-                  child: IndexedStack(
-                  index: _currentIndex,
-                  children: [
-                    _HomeTab(
-                      dashboardService: _dashboardService,
-                      leaderboardService: _leaderboardService,
-                      user: widget.authState.user,
-                      onNavigateToQuizzes: () => setState(() => _currentIndex = 1),
-                      onOpenProfile: () => setState(() => _currentIndex = 4),
-                    ),
-                    _MyPapersTab(
-                      storefrontService: _storefrontService,
-                      courseService: _courseService,
-                      user: widget.authState.user,
-                      isActive: _currentIndex == 1,
-                      onBrowsePractice: () => setState(() => _currentIndex = 2),
-                    ),
-                    PracticeTab(courseService: _courseService, user: widget.authState.user),
-                    _RanksTab(
-                      leaderboardService: _leaderboardService,
-                      user: widget.authState.user,
-                      isActive: _currentIndex == 3,
-                    ),
-                    _MoreTab(
-                      user: widget.authState.user,
-                      authState: widget.authState,
-                      leaderboardService: _leaderboardService,
-                      discussionService: _discussionService,
-                      onNavigateToMyPapers: () => setState(() => _currentIndex = 1),
-                      onNavigateToPractice: () => setState(() => _currentIndex = 2),
-                      onNavigateToRanks: () => setState(() => _currentIndex = 3),
-                    ),
-                  ],
-                ),
+                  padding: EdgeInsets.only(
+                    bottom: MediaQuery.of(context).viewPadding.bottom + 76,
+                  ),
+                  child: KeyedSubtree(
+                    key: ValueKey<int>(_currentIndex),
+                    child: [
+                      _HomeTab(
+                        dashboardService: _dashboardService,
+                        leaderboardService: _leaderboardService,
+                        user: widget.authState.user,
+                        onNavigateToQuizzes: () =>
+                            setState(() => _currentIndex = 1),
+                        onOpenProfile: () => setState(() => _currentIndex = 4),
+                        onOpenOfflinePapers: _openOfflinePapers,
+                        onOpenDiscussions: _openDiscussions,
+                        onOpenUploadedPapers: _openUploadedPapers,
+                      ),
+                      _MyPapersTab(
+                        storefrontService: _storefrontService,
+                        courseService: _courseService,
+                        user: widget.authState.user,
+                        isActive: _currentIndex == 1,
+                        onBrowsePractice: () =>
+                            setState(() => _currentIndex = 2),
+                      ),
+                      PracticeTab(
+                        courseService: _courseService,
+                        user: widget.authState.user,
+                      ),
+                      _RanksTab(
+                        leaderboardService: _leaderboardService,
+                        user: widget.authState.user,
+                        isActive: _currentIndex == 3,
+                      ),
+                      _MoreTab(
+                        user: widget.authState.user,
+                        authState: widget.authState,
+                        leaderboardService: _leaderboardService,
+                        discussionService: _discussionService,
+                        onNavigateToMyPapers: () =>
+                            setState(() => _currentIndex = 1),
+                        onNavigateToPractice: () =>
+                            setState(() => _currentIndex = 2),
+                        onNavigateToRanks: () =>
+                            setState(() => _currentIndex = 3),
+                      ),
+                    ][_currentIndex],
+                  ),
                 ),
               ),
             ],
@@ -281,7 +382,8 @@ class _QuizLabDock extends StatefulWidget {
   State<_QuizLabDock> createState() => _QuizLabDockState();
 }
 
-class _QuizLabDockState extends State<_QuizLabDock> with SingleTickerProviderStateMixin {
+class _QuizLabDockState extends State<_QuizLabDock>
+    with SingleTickerProviderStateMixin {
   static const _green = Color(0xFF16A34A);
 
   // Same 2.6s loop as the website's centre button.
@@ -290,7 +392,10 @@ class _QuizLabDockState extends State<_QuizLabDock> with SingleTickerProviderSta
   @override
   void initState() {
     super.initState();
-    _loop = AnimationController(vsync: this, duration: const Duration(milliseconds: 2600))..repeat();
+    _loop = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 2600),
+    )..repeat();
   }
 
   @override
@@ -313,8 +418,16 @@ class _QuizLabDockState extends State<_QuizLabDock> with SingleTickerProviderSta
   }
 
   Widget _ring(double t) {
-    final scale = _keyframes(t, const [0.0, 0.06, 0.45, 1.0], const [1.0, 1.0, 1.55, 1.55]);
-    final opacity = _keyframes(t, const [0.0, 0.06, 0.10, 0.45, 1.0], const [0.0, 0.0, 0.75, 0.0, 0.0]);
+    final scale = _keyframes(
+      t,
+      const [0.0, 0.06, 0.45, 1.0],
+      const [1.0, 1.0, 1.55, 1.55],
+    );
+    final opacity = _keyframes(
+      t,
+      const [0.0, 0.06, 0.10, 0.45, 1.0],
+      const [0.0, 0.0, 0.75, 0.0, 0.0],
+    );
     return Transform.scale(
       scale: scale,
       child: Container(
@@ -322,7 +435,10 @@ class _QuizLabDockState extends State<_QuizLabDock> with SingleTickerProviderSta
         height: 66,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
-          border: Border.all(color: const Color(0xFF4ADE80).withValues(alpha: opacity), width: 2),
+          border: Border.all(
+            color: const Color(0xFF4ADE80).withValues(alpha: opacity),
+            width: 2,
+          ),
         ),
       ),
     );
@@ -344,16 +460,39 @@ class _QuizLabDockState extends State<_QuizLabDock> with SingleTickerProviderSta
             builder: (context, _) {
               final t = _loop.value;
               const stops = [0.0, 0.08, 0.14, 0.20, 0.34, 1.0];
-              final flash = _keyframes(t, stops, const [0.0, 1.0, 0.0, 0.8, 0.0, 0.0]);
-              final boltScale = _keyframes(t, stops, const [1.0, 1.22, 0.96, 1.14, 1.0, 1.0]);
-              final boltTurn = _keyframes(t, stops, const [0.0, -8.0, 0.0, 5.0, 0.0, 0.0]) * math.pi / 180;
-              final boltColor = Color.lerp(Colors.white, const Color(0xFFFEF08A), flash)!;
+              final flash = _keyframes(t, stops, const [
+                0.0,
+                1.0,
+                0.0,
+                0.8,
+                0.0,
+                0.0,
+              ]);
+              final boltScale = _keyframes(t, stops, const [
+                1.0,
+                1.22,
+                0.96,
+                1.14,
+                1.0,
+                1.0,
+              ]);
+              final boltTurn =
+                  _keyframes(t, stops, const [0.0, -8.0, 0.0, 5.0, 0.0, 0.0]) *
+                  math.pi /
+                  180;
+              final boltColor = Color.lerp(
+                Colors.white,
+                const Color(0xFFFEF08A),
+                flash,
+              )!;
 
               return Stack(
                 alignment: Alignment.center,
                 children: [
                   _ring(t),
-                  _ring((t + 1 - 0.173) % 1.0), // second ring starts 0.45s later
+                  _ring(
+                    (t + 1 - 0.173) % 1.0,
+                  ), // second ring starts 0.45s later
                   Container(
                     width: 62,
                     height: 62,
@@ -365,7 +504,9 @@ class _QuizLabDockState extends State<_QuizLabDock> with SingleTickerProviderSta
                         colors: [Color(0xFF22C55E), Color(0xFF15803D)],
                       ),
                       border: Border.all(
-                        color: selected ? const Color(0xFFBBF7D0) : Colors.white,
+                        color: selected
+                            ? const Color(0xFFBBF7D0)
+                            : Colors.white,
                         width: 4,
                       ),
                       boxShadow: [
@@ -376,12 +517,16 @@ class _QuizLabDockState extends State<_QuizLabDock> with SingleTickerProviderSta
                           offset: const Offset(0, 8),
                         ),
                         BoxShadow(
-                          color: const Color(0xFFFACC15).withValues(alpha: 0.75 * flash),
+                          color: const Color(
+                            0xFFFACC15,
+                          ).withValues(alpha: 0.75 * flash),
                           blurRadius: 26,
                           spreadRadius: 6 * flash,
                         ),
                         BoxShadow(
-                          color: const Color(0xFFFEF08A).withValues(alpha: 0.9 * flash),
+                          color: const Color(
+                            0xFFFEF08A,
+                          ).withValues(alpha: 0.9 * flash),
                           spreadRadius: 2,
                         ),
                       ],
@@ -390,7 +535,11 @@ class _QuizLabDockState extends State<_QuizLabDock> with SingleTickerProviderSta
                       angle: boltTurn,
                       child: Transform.scale(
                         scale: boltScale,
-                        child: Icon(Icons.bolt_rounded, size: 32, color: boltColor),
+                        child: Icon(
+                          Icons.bolt_rounded,
+                          size: 32,
+                          color: boltColor,
+                        ),
                       ),
                     ),
                   ),
@@ -421,7 +570,11 @@ class _QuizLabDockState extends State<_QuizLabDock> with SingleTickerProviderSta
                 scale: selected ? 1.12 : 1.0,
                 duration: const Duration(milliseconds: 180),
                 curve: Curves.easeOutBack,
-                child: Icon(selected ? activeIcon : icon, size: 24, color: color),
+                child: Icon(
+                  selected ? activeIcon : icon,
+                  size: 24,
+                  color: color,
+                ),
               ),
               const SizedBox(height: 4),
               Text(
@@ -474,7 +627,12 @@ class _QuizLabDockState extends State<_QuizLabDock> with SingleTickerProviderSta
                   child: Row(
                     children: [
                       _item(0, Icons.home_outlined, Icons.home_rounded, 'Home'),
-                      _item(1, Icons.description_outlined, Icons.description_rounded, 'My Papers'),
+                      _item(
+                        1,
+                        Icons.description_outlined,
+                        Icons.description_rounded,
+                        'My Papers',
+                      ),
                       // Label under the raised centre button
                       GestureDetector(
                         behavior: HitTestBehavior.opaque,
@@ -490,16 +648,30 @@ class _QuizLabDockState extends State<_QuizLabDock> with SingleTickerProviderSta
                                 maxLines: 1,
                                 style: TextStyle(
                                   fontSize: 11.5,
-                                  fontWeight: widget.currentIndex == 2 ? FontWeight.w700 : FontWeight.w500,
-                                  color: widget.currentIndex == 2 ? _green : const Color(0xFF64748B),
+                                  fontWeight: widget.currentIndex == 2
+                                      ? FontWeight.w700
+                                      : FontWeight.w500,
+                                  color: widget.currentIndex == 2
+                                      ? _green
+                                      : const Color(0xFF64748B),
                                 ),
                               ),
                             ),
                           ),
                         ),
                       ),
-                      _item(3, Icons.emoji_events_outlined, Icons.emoji_events_rounded, 'Ranks'),
-                      _item(4, Icons.person_outline_rounded, Icons.person_rounded, 'More'),
+                      _item(
+                        3,
+                        Icons.emoji_events_outlined,
+                        Icons.emoji_events_rounded,
+                        'Ranks',
+                      ),
+                      _item(
+                        4,
+                        Icons.person_outline_rounded,
+                        Icons.person_rounded,
+                        'More',
+                      ),
                     ],
                   ),
                 ),
@@ -524,7 +696,11 @@ class _RanksTab extends StatefulWidget {
   /// podium pops in again and the confetti plays.
   final bool isActive;
 
-  const _RanksTab({required this.leaderboardService, this.user, required this.isActive});
+  const _RanksTab({
+    required this.leaderboardService,
+    this.user,
+    required this.isActive,
+  });
 
   @override
   State<_RanksTab> createState() => _RanksTabState();
@@ -536,8 +712,10 @@ class _RanksTabState extends State<_RanksTab> with TickerProviderStateMixin {
   late Future<LeaderboardData> _future;
   late final AnimationController _party; // confetti, ~3.2s
   late final AnimationController _pop; // podium cards popping in
-  late final AnimationController _idle; // gentle loop: gold glow and bobbing medals
-  int _plays = 0; // bumps each time the tab opens, so one-shot animations replay
+  late final AnimationController
+  _idle; // gentle loop: gold glow and bobbing medals
+  int _plays =
+      0; // bumps each time the tab opens, so one-shot animations replay
 
   final ScrollController _scroll = ScrollController();
   final GlobalKey _viewportKey = GlobalKey();
@@ -548,9 +726,18 @@ class _RanksTabState extends State<_RanksTab> with TickerProviderStateMixin {
   void initState() {
     super.initState();
     _future = widget.leaderboardService.getLeaderboard();
-    _party = AnimationController(vsync: this, duration: const Duration(milliseconds: 3200));
-    _pop = AnimationController(vsync: this, duration: const Duration(milliseconds: 1100));
-    _idle = AnimationController(vsync: this, duration: const Duration(milliseconds: 2400))..repeat();
+    _party = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 3200),
+    );
+    _pop = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 1100),
+    );
+    _idle = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 2400),
+    )..repeat();
     _scroll.addListener(_updatePin);
     if (widget.isActive) _celebrate();
   }
@@ -596,7 +783,10 @@ class _RanksTabState extends State<_RanksTab> with TickerProviderStateMixin {
     final rowBox = _myRowKey.currentContext?.findRenderObject();
     final viewBox = _viewportKey.currentContext?.findRenderObject();
     var pin = false;
-    if (rowBox is RenderBox && viewBox is RenderBox && rowBox.attached && viewBox.attached) {
+    if (rowBox is RenderBox &&
+        viewBox is RenderBox &&
+        rowBox.attached &&
+        viewBox.attached) {
       final top = rowBox.localToGlobal(Offset.zero, ancestor: viewBox).dy;
       pin = top > viewBox.size.height - _rowHeight - 8;
     }
@@ -604,7 +794,11 @@ class _RanksTabState extends State<_RanksTab> with TickerProviderStateMixin {
   }
 
   static String _initialsOf(String name) {
-    final parts = name.trim().split(RegExp(r'\s+')).where((p) => p.isNotEmpty).toList();
+    final parts = name
+        .trim()
+        .split(RegExp(r'\s+'))
+        .where((p) => p.isNotEmpty)
+        .toList();
     if (parts.isEmpty) return 'S';
     if (parts.length == 1) return parts.first[0].toUpperCase();
     return (parts.first[0] + parts.last[0]).toUpperCase();
@@ -634,7 +828,8 @@ class _RanksTabState extends State<_RanksTab> with TickerProviderStateMixin {
   }
 
   Widget _avatar(String name, double size, {String? avatar, Color? color}) {
-    final c = color ?? _avatarColors[name.hashCode.abs() % _avatarColors.length];
+    final c =
+        color ?? _avatarColors[name.hashCode.abs() % _avatarColors.length];
     final imageUri = _avatarUri(avatar);
     final initials = Container(
       alignment: Alignment.center,
@@ -644,7 +839,11 @@ class _RanksTabState extends State<_RanksTab> with TickerProviderStateMixin {
       ),
       child: Text(
         _initialsOf(name),
-        style: TextStyle(fontSize: size * 0.34, fontWeight: FontWeight.w800, color: c),
+        style: TextStyle(
+          fontSize: size * 0.34,
+          fontWeight: FontWeight.w800,
+          color: c,
+        ),
       ),
     );
     return Container(
@@ -677,20 +876,24 @@ class _RanksTabState extends State<_RanksTab> with TickerProviderStateMixin {
     // place: 1 gold (tallest), 2 silver, 3 bronze. Feet line up at the bottom.
     final double height = place == 1 ? 262 : (place == 2 ? 244 : 228);
     final List<Color> fill = place == 1
-        ? const [Color(0xFFFFF4B8), Color(0xFFFCD34D), Color(0xFFF5B92E)] // polished gold
+        ? const [
+            Color(0xFFFFF4B8),
+            Color(0xFFFCD34D),
+            Color(0xFFF5B92E),
+          ] // polished gold
         : place == 2
-            ? const [Color(0xFFFFFFFF), Color(0xFFE2E8F0)]
-            : const [Color(0xFFFFF7ED), Color(0xFFFCD9B6)];
+        ? const [Color(0xFFFFFFFF), Color(0xFFE2E8F0)]
+        : const [Color(0xFFFFF7ED), Color(0xFFFCD9B6)];
     final Color edge = place == 1
         ? const Color(0xFFF59E0B)
         : place == 2
-            ? const Color(0xFF94A3B8)
-            : const Color(0xFFC2773A);
+        ? const Color(0xFF94A3B8)
+        : const Color(0xFFC2773A);
     final Color strong = place == 1
         ? const Color(0xFF92400E)
         : place == 2
-            ? const Color(0xFF475569)
-            : const Color(0xFF9A4D16);
+        ? const Color(0xFF475569)
+        : const Color(0xFF9A4D16);
     final medal = place == 1 ? '🥇' : (place == 2 ? '🥈' : '🥉');
     final label = place == 1 ? 'TOP' : (place == 2 ? '2ND' : '3RD');
 
@@ -705,7 +908,11 @@ class _RanksTabState extends State<_RanksTab> with TickerProviderStateMixin {
         final scale = Curves.elasticOut.transform(t);
         return Opacity(
           opacity: (t * 3).clamp(0.0, 1.0).toDouble(),
-          child: Transform.scale(scale: 0.6 + 0.4 * scale, alignment: Alignment.bottomCenter, child: child),
+          child: Transform.scale(
+            scale: 0.6 + 0.4 * scale,
+            alignment: Alignment.bottomCenter,
+            child: child,
+          ),
         );
       },
       child: SizedBox(
@@ -724,13 +931,16 @@ class _RanksTabState extends State<_RanksTab> with TickerProviderStateMixin {
                 child: AnimatedBuilder(
                   animation: _idle,
                   builder: (context, _) {
-                    final pulse = 0.5 + 0.5 * math.sin(_idle.value * 2 * math.pi);
+                    final pulse =
+                        0.5 + 0.5 * math.sin(_idle.value * 2 * math.pi);
                     return DecoratedBox(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(22),
                         boxShadow: [
                           BoxShadow(
-                            color: const Color(0xFFFBBF24).withValues(alpha: 0.25 + 0.35 * pulse),
+                            color: const Color(
+                              0xFFFBBF24,
+                            ).withValues(alpha: 0.25 + 0.35 * pulse),
                             blurRadius: 18 + 22 * pulse,
                             spreadRadius: 1 + 4 * pulse,
                           ),
@@ -746,10 +956,18 @@ class _RanksTabState extends State<_RanksTab> with TickerProviderStateMixin {
               clipBehavior: Clip.antiAlias,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(22),
-                gradient: LinearGradient(begin: Alignment.topCenter, end: Alignment.bottomCenter, colors: fill),
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: fill,
+                ),
                 border: Border.all(color: edge, width: place == 1 ? 2.5 : 1.5),
                 boxShadow: [
-                  BoxShadow(color: edge.withValues(alpha: place == 1 ? 0.35 : 0.2), blurRadius: place == 1 ? 24 : 14, offset: const Offset(0, 10)),
+                  BoxShadow(
+                    color: edge.withValues(alpha: place == 1 ? 0.35 : 0.2),
+                    blurRadius: place == 1 ? 24 : 14,
+                    offset: const Offset(0, 10),
+                  ),
                 ],
               ),
               child: Stack(
@@ -766,7 +984,10 @@ class _RanksTabState extends State<_RanksTab> with TickerProviderStateMixin {
                           gradient: LinearGradient(
                             begin: Alignment.topCenter,
                             end: Alignment.bottomCenter,
-                            colors: [Colors.white.withValues(alpha: 0.45), Colors.white.withValues(alpha: 0)],
+                            colors: [
+                              Colors.white.withValues(alpha: 0.45),
+                              Colors.white.withValues(alpha: 0),
+                            ],
                           ),
                         ),
                       ),
@@ -780,12 +1001,17 @@ class _RanksTabState extends State<_RanksTab> with TickerProviderStateMixin {
                           return AnimatedBuilder(
                             animation: _idle,
                             builder: (context, child) {
-                              final t = ((_idle.value - 0.08) / 0.38).clamp(0.0, 1.0).toDouble();
+                              final t = ((_idle.value - 0.08) / 0.38)
+                                  .clamp(0.0, 1.0)
+                                  .toDouble();
                               final eased = Curves.easeInOut.transform(t);
                               // The band is centred in the card; slide it from fully off the left to fully off the right.
                               final travel = box.maxWidth / 2 + bandWidth * 1.2;
                               final dx = -travel + 2 * travel * eased;
-                              return Transform.translate(offset: Offset(dx, 0), child: child);
+                              return Transform.translate(
+                                offset: Offset(dx, 0),
+                                child: child,
+                              );
                             },
                             child: Align(
                               alignment: Alignment.centerLeft,
@@ -806,7 +1032,13 @@ class _RanksTabState extends State<_RanksTab> with TickerProviderStateMixin {
                                           Colors.white.withValues(alpha: 0.38),
                                           Colors.white.withValues(alpha: 0),
                                         ],
-                                        stops: const [0.0, 0.35, 0.5, 0.65, 1.0],
+                                        stops: const [
+                                          0.0,
+                                          0.35,
+                                          0.5,
+                                          0.65,
+                                          1.0,
+                                        ],
                                       ),
                                     ),
                                     child: const SizedBox.expand(),
@@ -822,51 +1054,93 @@ class _RanksTabState extends State<_RanksTab> with TickerProviderStateMixin {
                   Padding(
                     padding: const EdgeInsets.fromLTRB(6, 22, 6, 12),
                     child: Column(
-                children: [
-                  _avatar(entry.name, place == 1 ? 62 : 52, avatar: entry.avatar, color: strong),
-                  const SizedBox(height: 8),
-                  Text(
-                    entry.name,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(fontSize: 12.5, fontWeight: FontWeight.w600, color: Color(0xFF0F172A)),
-                  ),
-                  const Spacer(),
-                  AnimatedBuilder(
-                    animation: _idle,
-                    builder: (context, child) {
-                      final wave = math.sin((_idle.value + place * 0.22) * 2 * math.pi);
-                      return Transform.translate(
-                        offset: Offset(0, -2.5 * wave),
-                        child: Transform.rotate(angle: 0.10 * wave, child: child),
-                      );
-                    },
-                    child: Text(medal, style: const TextStyle(fontSize: 22, height: 1.1)),
-                  ),
-                  const SizedBox(height: 2),
-                  TweenAnimationBuilder<double>(
-                    key: ValueKey<String>('xp-$_plays-${entry.userId}'),
-                    tween: Tween<double>(begin: 0.0, end: entry.xp.toDouble()),
-                    duration: Duration(milliseconds: 1100 + 150 * order),
-                    curve: Curves.easeOutCubic,
-                    builder: (context, value, _) => Text(
-                      '${value.round()}',
-                      style: TextStyle(fontSize: place == 1 ? 24 : 20, height: 1.1, fontWeight: FontWeight.w800, color: strong),
+                      children: [
+                        _avatar(
+                          entry.name,
+                          place == 1 ? 62 : 52,
+                          avatar: entry.avatar,
+                          color: strong,
+                        ),
+                        const SizedBox(height: 8),
+                        Text(
+                          entry.name,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
+                            fontSize: 12.5,
+                            fontWeight: FontWeight.w600,
+                            color: Color(0xFF0F172A),
+                          ),
+                        ),
+                        const Spacer(),
+                        AnimatedBuilder(
+                          animation: _idle,
+                          builder: (context, child) {
+                            final wave = math.sin(
+                              (_idle.value + place * 0.22) * 2 * math.pi,
+                            );
+                            return Transform.translate(
+                              offset: Offset(0, -2.5 * wave),
+                              child: Transform.rotate(
+                                angle: 0.10 * wave,
+                                child: child,
+                              ),
+                            );
+                          },
+                          child: Text(
+                            medal,
+                            style: const TextStyle(fontSize: 22, height: 1.1),
+                          ),
+                        ),
+                        const SizedBox(height: 2),
+                        TweenAnimationBuilder<double>(
+                          key: ValueKey<String>('xp-$_plays-${entry.userId}'),
+                          tween: Tween<double>(
+                            begin: 0.0,
+                            end: entry.xp.toDouble(),
+                          ),
+                          duration: Duration(milliseconds: 1100 + 150 * order),
+                          curve: Curves.easeOutCubic,
+                          builder: (context, value, _) => Text(
+                            '${value.round()}',
+                            style: TextStyle(
+                              fontSize: place == 1 ? 24 : 20,
+                              height: 1.1,
+                              fontWeight: FontWeight.w800,
+                              color: strong,
+                            ),
+                          ),
+                        ),
+                        const Text(
+                          'XP',
+                          style: TextStyle(
+                            fontSize: 11,
+                            color: Color(0xFF64748B),
+                          ),
+                        ),
+                        const SizedBox(height: 6),
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 7,
+                            vertical: 3,
+                          ),
+                          decoration: BoxDecoration(
+                            color: Colors.white.withValues(alpha: 0.7),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Text(
+                            '⚡ LVL ${entry.level}',
+                            style: TextStyle(
+                              fontSize: 9.5,
+                              fontWeight: FontWeight.w800,
+                              letterSpacing: 0.4,
+                              color: strong,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                  ),
-                  const Text('XP', style: TextStyle(fontSize: 11, color: Color(0xFF64748B))),
-                  const SizedBox(height: 6),
-                  Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 3),
-                    decoration: BoxDecoration(color: Colors.white.withValues(alpha: 0.7), borderRadius: BorderRadius.circular(10)),
-                    child: Text(
-                      '⚡ LVL ${entry.level}',
-                      style: TextStyle(fontSize: 9.5, fontWeight: FontWeight.w800, letterSpacing: 0.4, color: strong),
-                    ),
-                  ),
-                ],
-              ),
                   ),
                 ],
               ),
@@ -874,9 +1148,23 @@ class _RanksTabState extends State<_RanksTab> with TickerProviderStateMixin {
             Positioned(
               top: 0,
               child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
-                decoration: BoxDecoration(color: edge, borderRadius: BorderRadius.circular(10)),
-                child: Text(label, style: const TextStyle(fontSize: 10, fontWeight: FontWeight.w800, letterSpacing: 0.8, color: Colors.white)),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 10,
+                  vertical: 3,
+                ),
+                decoration: BoxDecoration(
+                  color: edge,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Text(
+                  label,
+                  style: const TextStyle(
+                    fontSize: 10,
+                    fontWeight: FontWeight.w800,
+                    letterSpacing: 0.8,
+                    color: Colors.white,
+                  ),
+                ),
               ),
             ),
           ],
@@ -893,18 +1181,35 @@ class _RanksTabState extends State<_RanksTab> with TickerProviderStateMixin {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-        Expanded(flex: 10, child: second == null ? const SizedBox() : _podiumCard(second, 2)),
+        Expanded(
+          flex: 10,
+          child: second == null ? const SizedBox() : _podiumCard(second, 2),
+        ),
         const SizedBox(width: 8),
-        Expanded(flex: 11, child: first == null ? const SizedBox() : _podiumCard(first, 1)),
+        Expanded(
+          flex: 11,
+          child: first == null ? const SizedBox() : _podiumCard(first, 1),
+        ),
         const SizedBox(width: 8),
-        Expanded(flex: 10, child: third == null ? const SizedBox() : _podiumCard(third, 3)),
+        Expanded(
+          flex: 10,
+          child: third == null ? const SizedBox() : _podiumCard(third, 3),
+        ),
       ],
     );
   }
 
   // ---- Rows -----------------------------------------------------------------
 
-  Widget _row({required String rank, required String name, required int xp, String? avatar, bool isMe = false, bool compact = false, Key? key}) {
+  Widget _row({
+    required String rank,
+    required String name,
+    required int xp,
+    String? avatar,
+    bool isMe = false,
+    bool compact = false,
+    Key? key,
+  }) {
     return Container(
       key: key,
       height: compact ? 50 : _rowHeight,
@@ -916,10 +1221,19 @@ class _RanksTabState extends State<_RanksTab> with TickerProviderStateMixin {
             width: 54,
             child: Text(
               rank,
-              style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: isMe ? const Color(0xFF15803D) : const Color(0xFF475569)),
+              style: TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.w700,
+                color: isMe ? const Color(0xFF15803D) : const Color(0xFF475569),
+              ),
             ),
           ),
-          _avatar(name, 34, avatar: avatar, color: isMe ? const Color(0xFF16A34A) : null),
+          _avatar(
+            name,
+            34,
+            avatar: avatar,
+            color: isMe ? const Color(0xFF16A34A) : null,
+          ),
           const SizedBox(width: 10),
           Expanded(
             child: Row(
@@ -929,21 +1243,45 @@ class _RanksTabState extends State<_RanksTab> with TickerProviderStateMixin {
                     name,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(fontSize: 14.5, fontWeight: FontWeight.w500, color: Color(0xFF0F172A)),
+                    style: const TextStyle(
+                      fontSize: 14.5,
+                      fontWeight: FontWeight.w500,
+                      color: Color(0xFF0F172A),
+                    ),
                   ),
                 ),
                 if (isMe) ...[
                   const SizedBox(width: 6),
                   Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 1),
-                    decoration: BoxDecoration(color: const Color(0xFF16A34A), borderRadius: BorderRadius.circular(6)),
-                    child: const Text('YOU', style: TextStyle(fontSize: 9, fontWeight: FontWeight.w800, color: Colors.white)),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 6,
+                      vertical: 1,
+                    ),
+                    decoration: BoxDecoration(
+                      color: const Color(0xFF16A34A),
+                      borderRadius: BorderRadius.circular(6),
+                    ),
+                    child: const Text(
+                      'YOU',
+                      style: TextStyle(
+                        fontSize: 9,
+                        fontWeight: FontWeight.w800,
+                        color: Colors.white,
+                      ),
+                    ),
                   ),
                 ],
               ],
             ),
           ),
-          Text('$xp', style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w800, color: Color(0xFF0F172A))),
+          Text(
+            '$xp',
+            style: const TextStyle(
+              fontSize: 15,
+              fontWeight: FontWeight.w800,
+              color: Color(0xFF0F172A),
+            ),
+          ),
         ],
       ),
     );
@@ -961,7 +1299,10 @@ class _RanksTabState extends State<_RanksTab> with TickerProviderStateMixin {
               width: 5,
               height: 5,
               margin: const EdgeInsets.symmetric(horizontal: 3),
-              decoration: const BoxDecoration(color: Color(0xFFCBD5E1), shape: BoxShape.circle),
+              decoration: const BoxDecoration(
+                color: Color(0xFFCBD5E1),
+                shape: BoxShape.circle,
+              ),
             ),
         ],
       ),
@@ -990,7 +1331,9 @@ class _RanksTabState extends State<_RanksTab> with TickerProviderStateMixin {
         final myName = widget.user?.name ?? 'You';
         final myRank = data.myRank;
         final myIndex = entries.indexWhere((e) => e.userId == myId);
-        final rest = entries.length > 3 ? entries.sublist(3) : <GlobalLeaderboardEntry>[];
+        final rest = entries.length > 3
+            ? entries.sublist(3)
+            : <GlobalLeaderboardEntry>[];
         // You are below everyone listed: show a gap marker, then your row at the end.
         final appendMe = myIndex < 0 && myRank != null;
         final hasMyRow = myIndex >= 3 || appendMe;
@@ -1012,7 +1355,13 @@ class _RanksTabState extends State<_RanksTab> with TickerProviderStateMixin {
                   children: [
                     const Text(
                       'Leaderboard',
-                      style: TextStyle(fontSize: 30, height: 1.15, fontWeight: FontWeight.w800, letterSpacing: -0.8, color: Color(0xFF0F172A)),
+                      style: TextStyle(
+                        fontSize: 30,
+                        height: 1.15,
+                        fontWeight: FontWeight.w800,
+                        letterSpacing: -0.8,
+                        color: Color(0xFF0F172A),
+                      ),
                     ),
                     const SizedBox(height: 4),
                     Text.rich(
@@ -1022,11 +1371,17 @@ class _RanksTabState extends State<_RanksTab> with TickerProviderStateMixin {
                           if (myRank != null)
                             TextSpan(
                               text: '  · Your rank: #$myRank',
-                              style: const TextStyle(fontWeight: FontWeight.w700, color: Color(0xFF16A34A)),
+                              style: const TextStyle(
+                                fontWeight: FontWeight.w700,
+                                color: Color(0xFF16A34A),
+                              ),
                             ),
                         ],
                       ),
-                      style: const TextStyle(fontSize: 14, color: Color(0xFF64748B)),
+                      style: const TextStyle(
+                        fontSize: 14,
+                        color: Color(0xFF64748B),
+                      ),
                     ),
                     const SizedBox(height: 18),
 
@@ -1034,7 +1389,10 @@ class _RanksTabState extends State<_RanksTab> with TickerProviderStateMixin {
                       const Padding(
                         padding: EdgeInsets.symmetric(vertical: 40),
                         child: Center(
-                          child: Text('No rankings yet. Finish a quiz to get on the board.', style: TextStyle(color: Color(0xFF94A3B8))),
+                          child: Text(
+                            'No rankings yet. Finish a quiz to get on the board.',
+                            style: TextStyle(color: Color(0xFF94A3B8)),
+                          ),
                         ),
                       )
                     else ...[
@@ -1052,27 +1410,59 @@ class _RanksTabState extends State<_RanksTab> with TickerProviderStateMixin {
                           children: [
                             Container(
                               color: const Color(0xFFF8FAFC),
-                              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 16,
+                                vertical: 12,
+                              ),
                               child: const Row(
                                 children: [
                                   SizedBox(
                                     width: 54,
-                                    child: Text('RANK', style: TextStyle(fontSize: 11, fontWeight: FontWeight.w600, letterSpacing: 1, color: Color(0xFF64748B))),
+                                    child: Text(
+                                      'RANK',
+                                      style: TextStyle(
+                                        fontSize: 11,
+                                        fontWeight: FontWeight.w600,
+                                        letterSpacing: 1,
+                                        color: Color(0xFF64748B),
+                                      ),
+                                    ),
                                   ),
                                   Expanded(
-                                    child: Text('STUDENT', style: TextStyle(fontSize: 11, fontWeight: FontWeight.w600, letterSpacing: 1, color: Color(0xFF64748B))),
+                                    child: Text(
+                                      'STUDENT',
+                                      style: TextStyle(
+                                        fontSize: 11,
+                                        fontWeight: FontWeight.w600,
+                                        letterSpacing: 1,
+                                        color: Color(0xFF64748B),
+                                      ),
+                                    ),
                                   ),
-                                  Text('XP', style: TextStyle(fontSize: 11, fontWeight: FontWeight.w600, letterSpacing: 1, color: Color(0xFF64748B))),
+                                  Text(
+                                    'XP',
+                                    style: TextStyle(
+                                      fontSize: 11,
+                                      fontWeight: FontWeight.w600,
+                                      letterSpacing: 1,
+                                      color: Color(0xFF64748B),
+                                    ),
+                                  ),
                                 ],
                               ),
                             ),
                             for (var i = 0; i < rest.length; i++) ...[
-                              const Divider(height: 1, color: Color(0xFFE2E8F0)),
+                              const Divider(
+                                height: 1,
+                                color: Color(0xFFE2E8F0),
+                              ),
                               _FadeUp(
                                 key: ValueKey<String>('row-$_plays-$i'),
                                 delayMs: 350 + (i < 12 ? i * 55 : 660),
                                 child: _row(
-                                  key: rest[i].userId == myId ? _myRowKey : null,
+                                  key: rest[i].userId == myId
+                                      ? _myRowKey
+                                      : null,
                                   rank: '#${rest[i].rank}',
                                   name: rest[i].name,
                                   xp: rest[i].xp,
@@ -1082,10 +1472,23 @@ class _RanksTabState extends State<_RanksTab> with TickerProviderStateMixin {
                               ),
                             ],
                             if (appendMe) ...[
-                              const Divider(height: 1, color: Color(0xFFE2E8F0)),
+                              const Divider(
+                                height: 1,
+                                color: Color(0xFFE2E8F0),
+                              ),
                               _gapRow(),
-                              const Divider(height: 1, color: Color(0xFFE2E8F0)),
-                              _row(key: _myRowKey, rank: '#$myRank', name: myName, xp: data.me.xp, avatar: widget.user?.avatar, isMe: true),
+                              const Divider(
+                                height: 1,
+                                color: Color(0xFFE2E8F0),
+                              ),
+                              _row(
+                                key: _myRowKey,
+                                rank: '#$myRank',
+                                name: myName,
+                                xp: data.me.xp,
+                                avatar: widget.user?.avatar,
+                                isMe: true,
+                              ),
                             ],
                           ],
                         ),
@@ -1116,22 +1519,38 @@ class _RanksTabState extends State<_RanksTab> with TickerProviderStateMixin {
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(16),
-                          border: Border.all(color: const Color(0xFF86EFAC), width: 1.5),
+                          border: Border.all(
+                            color: const Color(0xFF86EFAC),
+                            width: 1.5,
+                          ),
                           boxShadow: [
-                            BoxShadow(color: const Color(0xFF0F172A).withValues(alpha: 0.16), blurRadius: 20, offset: const Offset(0, 8)),
+                            BoxShadow(
+                              color: const Color(
+                                0xFF0F172A,
+                              ).withValues(alpha: 0.16),
+                              blurRadius: 20,
+                              offset: const Offset(0, 8),
+                            ),
                           ],
                         ),
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             // Three dots: there are more students between the rows above and you.
-                            Container(color: const Color(0xFFF0FDF4), child: _gapRow(height: 14)),
+                            Container(
+                              color: const Color(0xFFF0FDF4),
+                              child: _gapRow(height: 14),
+                            ),
                             _row(
                               compact: true,
                               rank: myRank != null ? '#$myRank' : '—',
                               name: myName,
-                              xp: myIndex >= 0 ? entries[myIndex].xp : data.me.xp,
-                              avatar: myIndex >= 0 ? entries[myIndex].avatar : widget.user?.avatar,
+                              xp: myIndex >= 0
+                                  ? entries[myIndex].xp
+                                  : data.me.xp,
+                              avatar: myIndex >= 0
+                                  ? entries[myIndex].avatar
+                                  : widget.user?.avatar,
                               isMe: true,
                             ),
                           ],
@@ -1148,8 +1567,11 @@ class _RanksTabState extends State<_RanksTab> with TickerProviderStateMixin {
                 child: AnimatedBuilder(
                   animation: _party,
                   builder: (context, _) {
-                    if (_party.value <= 0 || _party.value >= 1) return const SizedBox.shrink();
-                    return CustomPaint(painter: _ConfettiPainter(progress: _party.value));
+                    if (_party.value <= 0 || _party.value >= 1)
+                      return const SizedBox.shrink();
+                    return CustomPaint(
+                      painter: _ConfettiPainter(progress: _party.value),
+                    );
                   },
                 ),
               ),
@@ -1188,7 +1610,9 @@ class _ConfettiPainter extends CustomPainter {
     for (var i = 0; i < 130; i++) {
       final fromLeft = i.isEven;
       final delay = random.nextDouble() * 0.5; // staggered pops
-      final angle = (fromLeft ? -math.pi / 3 : -2 * math.pi / 3) + (random.nextDouble() - 0.5) * 0.9;
+      final angle =
+          (fromLeft ? -math.pi / 3 : -2 * math.pi / 3) +
+          (random.nextDouble() - 0.5) * 0.9;
       final speed = size.height * (0.75 + random.nextDouble() * 0.75);
       final w = 5.0 + random.nextDouble() * 6;
       final h = 3.0 + random.nextDouble() * 5;
@@ -1202,8 +1626,14 @@ class _ConfettiPainter extends CustomPainter {
       // Launch, slow down with drag, fall with gravity.
       final drag = 1 - math.exp(-2.2 * t);
       final gravity = size.height * 0.55;
-      final x = (fromLeft ? 0.0 : size.width) + math.cos(angle) * speed * drag / 2.2 + math.sin(t * 3 + i) * 6;
-      final y = size.height * 0.62 + math.sin(angle) * speed * drag / 2.2 + 0.5 * gravity * t * t;
+      final x =
+          (fromLeft ? 0.0 : size.width) +
+          math.cos(angle) * speed * drag / 2.2 +
+          math.sin(t * 3 + i) * 6;
+      final y =
+          size.height * 0.62 +
+          math.sin(angle) * speed * drag / 2.2 +
+          0.5 * gravity * t * t;
       if (y > size.height + 20) continue;
 
       paint.color = color.withValues(alpha: fadeOut);
@@ -1215,14 +1645,18 @@ class _ConfettiPainter extends CustomPainter {
       } else {
         // Squash the width over time so pieces look like they flutter.
         final flutter = 0.35 + 0.65 * math.cos(t * 9 + i).abs();
-        canvas.drawRect(Rect.fromCenter(center: Offset.zero, width: w * flutter, height: h), paint);
+        canvas.drawRect(
+          Rect.fromCenter(center: Offset.zero, width: w * flutter, height: h),
+          paint,
+        );
       }
       canvas.restore();
     }
   }
 
   @override
-  bool shouldRepaint(covariant _ConfettiPainter oldDelegate) => oldDelegate.progress != progress;
+  bool shouldRepaint(covariant _ConfettiPainter oldDelegate) =>
+      oldDelegate.progress != progress;
 }
 
 // -----------------------------------------------------------------------------
@@ -1234,6 +1668,9 @@ class _HomeTab extends StatefulWidget {
   final UserModel? user;
   final VoidCallback onNavigateToQuizzes;
   final VoidCallback onOpenProfile;
+  final VoidCallback onOpenOfflinePapers;
+  final VoidCallback onOpenDiscussions;
+  final VoidCallback onOpenUploadedPapers;
 
   const _HomeTab({
     required this.dashboardService,
@@ -1241,13 +1678,17 @@ class _HomeTab extends StatefulWidget {
     this.user,
     required this.onNavigateToQuizzes,
     required this.onOpenProfile,
+    required this.onOpenOfflinePapers,
+    required this.onOpenDiscussions,
+    required this.onOpenUploadedPapers,
   });
 
   @override
   State<_HomeTab> createState() => _HomeTabState();
 }
 
-class _HomeTabState extends State<_HomeTab> with SingleTickerProviderStateMixin {
+class _HomeTabState extends State<_HomeTab>
+    with SingleTickerProviderStateMixin {
   late Future<DashboardData> _dashboardFuture;
   late Future<LeaderboardData> _leaderboardFuture;
 
@@ -1259,7 +1700,10 @@ class _HomeTabState extends State<_HomeTab> with SingleTickerProviderStateMixin 
     super.initState();
     _dashboardFuture = widget.dashboardService.getDashboard();
     _leaderboardFuture = widget.leaderboardService.getLeaderboard();
-    _ambient = AnimationController(vsync: this, duration: const Duration(milliseconds: 3000))..repeat();
+    _ambient = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 3000),
+    )..repeat();
   }
 
   @override
@@ -1277,7 +1721,9 @@ class _HomeTabState extends State<_HomeTab> with SingleTickerProviderStateMixin 
 
   /// "THU · OCT 8, 2026" from the server's greeting.
   static String _shortDate(GreetingInfo greeting) {
-    final day = greeting.weekday.length > 3 ? greeting.weekday.substring(0, 3) : greeting.weekday;
+    final day = greeting.weekday.length > 3
+        ? greeting.weekday.substring(0, 3)
+        : greeting.weekday;
     return '${day.toUpperCase()} · ${greeting.date.toUpperCase()}';
   }
 
@@ -1321,13 +1767,16 @@ class _HomeTabState extends State<_HomeTab> with SingleTickerProviderStateMixin 
                     AnimatedBuilder(
                       animation: _ambient,
                       builder: (context, child) {
-                        final pulse = 0.5 + 0.5 * math.sin(_ambient.value * 2 * math.pi);
+                        final pulse =
+                            0.5 + 0.5 * math.sin(_ambient.value * 2 * math.pi);
                         return Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(12),
                             boxShadow: [
                               BoxShadow(
-                                color: const Color(0xFF22C55E).withValues(alpha: 0.15 + 0.30 * pulse),
+                                color: const Color(
+                                  0xFF22C55E,
+                                ).withValues(alpha: 0.15 + 0.30 * pulse),
                                 blurRadius: 8 + 12 * pulse,
                                 spreadRadius: 1.5 * pulse,
                               ),
@@ -1338,7 +1787,14 @@ class _HomeTabState extends State<_HomeTab> with SingleTickerProviderStateMixin 
                       },
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(12),
-                        child: KeepColors(child: Image.asset('assets/logo.png', width: 44, height: 44, fit: BoxFit.cover)),
+                        child: KeepColors(
+                          child: Image.asset(
+                            'assets/logo.png',
+                            width: 44,
+                            height: 44,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
                       ),
                     ),
                     const SizedBox(width: 10),
@@ -1348,21 +1804,38 @@ class _HomeTabState extends State<_HomeTab> with SingleTickerProviderStateMixin 
                         children: [
                           Text(
                             _shortDate(data.greeting),
-                            style: const TextStyle(fontSize: 10, fontWeight: FontWeight.w600, letterSpacing: 2, color: Color(0xFF94A3B8)),
+                            style: const TextStyle(
+                              fontSize: 10,
+                              fontWeight: FontWeight.w600,
+                              letterSpacing: 2,
+                              color: Color(0xFF94A3B8),
+                            ),
                           ),
                           const Text(
                             'Quiz LAB',
-                            style: TextStyle(fontSize: 17, height: 1.15, fontWeight: FontWeight.w800, color: Color(0xFF0F172A)),
+                            style: TextStyle(
+                              fontSize: 17,
+                              height: 1.15,
+                              fontWeight: FontWeight.w800,
+                              color: Color(0xFF0F172A),
+                            ),
                           ),
                           const Text(
                             'by GenZ IITian',
-                            style: TextStyle(fontSize: 11, height: 1.1, color: Color(0xFF64748B)),
+                            style: TextStyle(
+                              fontSize: 11,
+                              height: 1.1,
+                              color: Color(0xFF64748B),
+                            ),
                           ),
                         ],
                       ),
                     ),
                     Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 10,
+                        vertical: 5,
+                      ),
                       decoration: BoxDecoration(
                         color: const Color(0xFFFFEDD5),
                         borderRadius: BorderRadius.circular(20),
@@ -1375,18 +1848,33 @@ class _HomeTabState extends State<_HomeTab> with SingleTickerProviderStateMixin 
                             animation: _ambient,
                             builder: (context, child) {
                               final a = _ambient.value * 2 * math.pi;
-                              final flicker = 1 + 0.10 * math.sin(a * 5) + 0.06 * math.sin(a * 9);
+                              final flicker =
+                                  1 +
+                                  0.10 * math.sin(a * 5) +
+                                  0.06 * math.sin(a * 9);
                               return Transform.rotate(
                                 angle: 0.10 * math.sin(a * 3),
-                                child: Transform.scale(scale: flicker, alignment: Alignment.bottomCenter, child: child),
+                                child: Transform.scale(
+                                  scale: flicker,
+                                  alignment: Alignment.bottomCenter,
+                                  child: child,
+                                ),
                               );
                             },
-                            child: const Icon(Icons.local_fire_department_rounded, color: Color(0xFFF59E0B), size: 15),
+                            child: const Icon(
+                              Icons.local_fire_department_rounded,
+                              color: Color(0xFFF59E0B),
+                              size: 15,
+                            ),
                           ),
                           const SizedBox(width: 4),
                           Text(
                             '${data.streak.days}-day streak',
-                            style: const TextStyle(color: Color(0xFFB45309), fontWeight: FontWeight.w700, fontSize: 12),
+                            style: const TextStyle(
+                              color: Color(0xFFB45309),
+                              fontWeight: FontWeight.w700,
+                              fontSize: 12,
+                            ),
                           ),
                         ],
                       ),
@@ -1420,27 +1908,45 @@ class _HomeTabState extends State<_HomeTab> with SingleTickerProviderStateMixin 
                       children: [
                         const Text(
                           'Welcome back, ',
-                          style: TextStyle(fontSize: 30, height: 1.15, fontWeight: FontWeight.w800, letterSpacing: -0.8, color: Color(0xFF0F172A)),
+                          style: TextStyle(
+                            fontSize: 30,
+                            height: 1.15,
+                            fontWeight: FontWeight.w800,
+                            letterSpacing: -0.8,
+                            color: Color(0xFF0F172A),
+                          ),
                         ),
                         AnimatedBuilder(
                           animation: _ambient,
                           builder: (context, child) {
                             // A light band crosses the name during the first half of each loop.
-                            final t = (_ambient.value / 0.5).clamp(0.0, 1.0).toDouble();
+                            final t = (_ambient.value / 0.5)
+                                .clamp(0.0, 1.0)
+                                .toDouble();
                             final x = -2.0 + 4.0 * t;
                             return ShaderMask(
                               blendMode: BlendMode.srcIn,
                               shaderCallback: (rect) => LinearGradient(
                                 begin: Alignment(x - 0.6, 0),
                                 end: Alignment(x + 0.6, 0),
-                                colors: const [Color(0xFF16A34A), Color(0xFF86EFAC), Color(0xFF16A34A)],
+                                colors: const [
+                                  Color(0xFF16A34A),
+                                  Color(0xFF86EFAC),
+                                  Color(0xFF16A34A),
+                                ],
                               ).createShader(rect),
                               child: child,
                             );
                           },
                           child: Text(
                             '${_firstName(widget.user?.name)}.',
-                            style: const TextStyle(fontSize: 30, height: 1.15, fontWeight: FontWeight.w800, letterSpacing: -0.8, color: Color(0xFF16A34A)),
+                            style: const TextStyle(
+                              fontSize: 30,
+                              height: 1.15,
+                              fontWeight: FontWeight.w800,
+                              letterSpacing: -0.8,
+                              color: Color(0xFF16A34A),
+                            ),
                           ),
                         ),
                       ],
@@ -1464,14 +1970,18 @@ class _HomeTabState extends State<_HomeTab> with SingleTickerProviderStateMixin 
                             unit: 'days',
                             color: const Color(0xFFF59E0B),
                             titleColor: const Color(0xFFB45309),
-                            history: data.streak.history.map((e) => e.toDouble()).toList(),
+                            history: data.streak.history
+                                .map((e) => e.toDouble())
+                                .toList(),
                           ),
                         ),
                         const SizedBox(width: 12),
                         Expanded(
                           child: _MetricCard(
                             title: 'ACCURACY',
-                            value: data.accuracy.value.toStringAsFixed(data.accuracy.value % 1 == 0 ? 0 : 1),
+                            value: data.accuracy.value.toStringAsFixed(
+                              data.accuracy.value % 1 == 0 ? 0 : 1,
+                            ),
                             unit: '%',
                             color: const Color(0xFF16A34A),
                             titleColor: const Color(0xFF15803D),
@@ -1505,7 +2015,10 @@ class _HomeTabState extends State<_HomeTab> with SingleTickerProviderStateMixin 
                               return _MetricCard(
                                 title: 'RANK',
                                 value: myRank == null
-                                    ? (rankSnapshot.connectionState == ConnectionState.waiting ? '…' : 'New')
+                                    ? (rankSnapshot.connectionState ==
+                                              ConnectionState.waiting
+                                          ? '…'
+                                          : 'New')
                                     : '#$myRank',
                                 unit: myRank == null ? 'unranked' : 'XP rank',
                                 color: const Color(0xFF8B5CF6),
@@ -1522,134 +2035,372 @@ class _HomeTabState extends State<_HomeTab> with SingleTickerProviderStateMixin 
               ),
               const SizedBox(height: 16),
 
+              _FadeUp(
+                delayMs: 210,
+                child: _HomeQuickActions(
+                  onOfflinePapers: widget.onOpenOfflinePapers,
+                  onDiscussions: widget.onOpenDiscussions,
+                  onUploadPaper: widget.onOpenUploadedPapers,
+                ),
+              ),
+              const SizedBox(height: 16),
+
               // Performance chart
-              _FadeUp(delayMs: 240, child: _PerformanceCard(points: data.performance)),
+              _FadeUp(
+                delayMs: 240,
+                child: _PerformanceCard(points: data.performance),
+              ),
               const SizedBox(height: 16),
 
               // Weekly goal ring
               _FadeUp(
                 delayMs: 320,
                 child: _WeeklyGoalCard(
-                  completed: data.performance.isEmpty ? 0 : data.performance.last.attempts,
+                  completed: data.performance.isEmpty
+                      ? 0
+                      : data.performance.last.attempts,
                   weekScore: data.performance.isEmpty
                       ? 0.0
-                      : (data.performance.last.score != 0 ? data.performance.last.score : data.performance.last.accuracy),
+                      : (data.performance.last.score != 0
+                            ? data.performance.last.score
+                            : data.performance.last.accuracy),
                   lastSevenDays: data.streak.history.length > 7
-                      ? data.streak.history.sublist(data.streak.history.length - 7)
+                      ? data.streak.history.sublist(
+                          data.streak.history.length - 7,
+                        )
                       : data.streak.history,
                 ),
               ),
               const SizedBox(height: 20),
 
-            // Quick Continue Card
-            Container(
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                color: const Color(0xFFDCFCE7).withValues(alpha: 0.5),
-                borderRadius: BorderRadius.circular(16),
-                border: Border.all(color: const Color(0xFF86EFAC)),
-              ),
-              child: Row(
-                children: [
-                  Container(
-                    padding: const EdgeInsets.all(10),
-                    decoration: BoxDecoration(color: const Color(0xFF16A34A), borderRadius: BorderRadius.circular(12)),
-                    child: const Icon(Icons.play_arrow_rounded, color: Colors.white, size: 24),
-                  ),
-                  const SizedBox(width: 14),
-                  const Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text('Browse Storefront Papers', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14, color: Color(0xFF0F172A))),
-                        Text('Over 45+ past term papers & practice mocks', style: TextStyle(fontSize: 11, color: Color(0xFF15803D))),
-                      ],
-                    ),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      AppHaptics.light();
-                      widget.onNavigateToQuizzes();
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFF16A34A),
-                      foregroundColor: Colors.white,
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                    ),
-                    child: const Text('Open', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(height: 20),
-
-            // Today's Smart Challenge
-            if (data.todaysChallenge != null) ...[
-              const Text('TODAY’S CHALLENGE', style: TextStyle(fontSize: 11, fontWeight: FontWeight.w700, letterSpacing: 1, color: Color(0xFF64748B))),
-              const SizedBox(height: 8),
+              // Quick Continue Card
               Container(
                 padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
-                  gradient: const LinearGradient(colors: [Color(0xFF0F172A), Color(0xFF1E293B)]),
+                  color: const Color(0xFFDCFCE7).withValues(alpha: 0.5),
                   borderRadius: BorderRadius.circular(16),
+                  border: Border.all(color: const Color(0xFF86EFAC)),
                 ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                child: Row(
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          data.todaysChallenge!.courseName.toUpperCase(),
-                          style: const TextStyle(color: Color(0xFF38BDF8), fontSize: 11, fontWeight: FontWeight.bold),
-                        ),
-                        Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
-                          decoration: BoxDecoration(color: const Color(0xFFF59E0B).withValues(alpha: 0.2), borderRadius: BorderRadius.circular(12)),
-                          child: Text('+${data.todaysChallenge!.xp} XP', style: const TextStyle(color: Color(0xFFFBBF24), fontSize: 11, fontWeight: FontWeight.bold)),
-                        ),
-                      ],
+                    Container(
+                      padding: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        color: const Color(0xFF16A34A),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: const Icon(
+                        Icons.play_arrow_rounded,
+                        color: Colors.white,
+                        size: 24,
+                      ),
                     ),
-                    const SizedBox(height: 6),
-                    Text(
-                      data.todaysChallenge!.title,
-                      style: const TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
-                    ),
-                    const SizedBox(height: 12),
-                    Row(
-                      children: [
-                        const Icon(Icons.timer_outlined, color: Color(0xFF94A3B8), size: 14),
-                        const SizedBox(width: 4),
-                        Text('${data.todaysChallenge!.timeLimitMinutes} minutes', style: const TextStyle(color: Color(0xFF94A3B8), fontSize: 12)),
-                        const Spacer(),
-                        ElevatedButton(
-                          onPressed: () {
-                            AppHaptics.light();
-                            widget.onNavigateToQuizzes();
-                          },
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: const Color(0xFF16A34A),
-                            foregroundColor: Colors.white,
-                            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                    const SizedBox(width: 14),
+                    const Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Browse Storefront Papers',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 14,
+                              color: Color(0xFF0F172A),
+                            ),
                           ),
-                          child: const Text('Start Quiz', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
+                          Text(
+                            'Over 45+ past term papers & practice mocks',
+                            style: TextStyle(
+                              fontSize: 11,
+                              color: Color(0xFF15803D),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        AppHaptics.light();
+                        widget.onNavigateToQuizzes();
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xFF16A34A),
+                        foregroundColor: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
                         ),
-                      ],
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 12,
+                          vertical: 8,
+                        ),
+                      ),
+                      child: const Text(
+                        'Open',
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ),
                   ],
                 ),
               ),
               const SizedBox(height: 20),
-            ],
 
-          ],
+              // Today's Smart Challenge
+              if (data.todaysChallenge != null) ...[
+                const Text(
+                  'TODAY’S CHALLENGE',
+                  style: TextStyle(
+                    fontSize: 11,
+                    fontWeight: FontWeight.w700,
+                    letterSpacing: 1,
+                    color: Color(0xFF64748B),
+                  ),
+                ),
+                const SizedBox(height: 8),
+                Container(
+                  padding: const EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                    gradient: const LinearGradient(
+                      colors: [Color(0xFF0F172A), Color(0xFF1E293B)],
+                    ),
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            data.todaysChallenge!.courseName.toUpperCase(),
+                            style: const TextStyle(
+                              color: Color(0xFF38BDF8),
+                              fontSize: 11,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Container(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 8,
+                              vertical: 3,
+                            ),
+                            decoration: BoxDecoration(
+                              color: const Color(
+                                0xFFF59E0B,
+                              ).withValues(alpha: 0.2),
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            child: Text(
+                              '+${data.todaysChallenge!.xp} XP',
+                              style: const TextStyle(
+                                color: Color(0xFFFBBF24),
+                                fontSize: 11,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 6),
+                      Text(
+                        data.todaysChallenge!.title,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const SizedBox(height: 12),
+                      Row(
+                        children: [
+                          const Icon(
+                            Icons.timer_outlined,
+                            color: Color(0xFF94A3B8),
+                            size: 14,
+                          ),
+                          const SizedBox(width: 4),
+                          Text(
+                            '${data.todaysChallenge!.timeLimitMinutes} minutes',
+                            style: const TextStyle(
+                              color: Color(0xFF94A3B8),
+                              fontSize: 12,
+                            ),
+                          ),
+                          const Spacer(),
+                          ElevatedButton(
+                            onPressed: () {
+                              AppHaptics.light();
+                              widget.onNavigateToQuizzes();
+                            },
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: const Color(0xFF16A34A),
+                              foregroundColor: Colors.white,
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 16,
+                                vertical: 8,
+                              ),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                            ),
+                            child: const Text(
+                              'Start Quiz',
+                              style: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 20),
+              ],
+            ],
           ),
         );
       },
     );
   }
+}
+
+class _HomeQuickActions extends StatelessWidget {
+  final VoidCallback onOfflinePapers;
+  final VoidCallback onDiscussions;
+  final VoidCallback onUploadPaper;
+
+  const _HomeQuickActions({
+    required this.onOfflinePapers,
+    required this.onDiscussions,
+    required this.onUploadPaper,
+  });
+
+  @override
+  Widget build(BuildContext context) => Column(
+    children: [
+      Row(
+        children: [
+          Expanded(
+            child: _QuickActionTile(
+              icon: Icons.download_for_offline_rounded,
+              label: 'Offline papers',
+              tint: const Color(0xFFDBEAFE),
+              color: const Color(0xFF2563EB),
+              onTap: onOfflinePapers,
+            ),
+          ),
+          const SizedBox(width: 10),
+          Expanded(
+            child: _QuickActionTile(
+              icon: Icons.forum_rounded,
+              label: 'Discussions',
+              tint: const Color(0xFFF3E8FF),
+              color: const Color(0xFF9333EA),
+              onTap: onDiscussions,
+            ),
+          ),
+        ],
+      ),
+      const SizedBox(height: 10),
+      _QuickActionTile(
+        icon: Icons.upload_file_rounded,
+        label: 'Upload a paper',
+        subtitle: 'Turn your PDF into a practice test',
+        tint: const Color(0xFFDCFCE7),
+        color: const Color(0xFF16A34A),
+        onTap: onUploadPaper,
+        wide: true,
+      ),
+    ],
+  );
+}
+
+class _QuickActionTile extends StatelessWidget {
+  final IconData icon;
+  final String label;
+  final String? subtitle;
+  final Color tint;
+  final Color color;
+  final VoidCallback onTap;
+  final bool wide;
+
+  const _QuickActionTile({
+    required this.icon,
+    required this.label,
+    this.subtitle,
+    required this.tint,
+    required this.color,
+    required this.onTap,
+    this.wide = false,
+  });
+
+  @override
+  Widget build(BuildContext context) => Material(
+    color: Colors.white,
+    borderRadius: BorderRadius.circular(17),
+    child: InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(17),
+      child: Container(
+        constraints: BoxConstraints(minHeight: wide ? 66 : 60),
+        padding: const EdgeInsets.symmetric(horizontal: 13, vertical: 12),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(17),
+          border: Border.all(color: const Color(0xFFE2E8F0)),
+        ),
+        child: Row(
+          children: [
+            Container(
+              width: 38,
+              height: 38,
+              decoration: BoxDecoration(
+                color: tint,
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Icon(icon, color: color, size: 20),
+            ),
+            const SizedBox(width: 10),
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    label,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(
+                      fontSize: 13,
+                      fontWeight: FontWeight.w800,
+                      color: Color(0xFF0F172A),
+                    ),
+                  ),
+                  if (subtitle != null) ...[
+                    const SizedBox(height: 2),
+                    Text(
+                      subtitle!,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(
+                        fontSize: 10.5,
+                        color: Color(0xFF64748B),
+                      ),
+                    ),
+                  ],
+                ],
+              ),
+            ),
+            const SizedBox(width: 6),
+            Icon(Icons.chevron_right_rounded, color: color, size: 20),
+          ],
+        ),
+      ),
+    ),
+  );
 }
 
 /// Interactive Weekly Quiz Goal Card with dynamic target selector
@@ -1663,13 +2414,18 @@ class _WeeklyGoalCard extends StatefulWidget {
   /// Activity flags for the last seven days (1 = active), as the website shows them.
   final List<int> lastSevenDays;
 
-  const _WeeklyGoalCard({required this.completed, required this.weekScore, required this.lastSevenDays});
+  const _WeeklyGoalCard({
+    required this.completed,
+    required this.weekScore,
+    required this.lastSevenDays,
+  });
 
   @override
   State<_WeeklyGoalCard> createState() => _WeeklyGoalCardState();
 }
 
-class _WeeklyGoalCardState extends State<_WeeklyGoalCard> with SingleTickerProviderStateMixin {
+class _WeeklyGoalCardState extends State<_WeeklyGoalCard>
+    with SingleTickerProviderStateMixin {
   static const _storage = FlutterSecureStorage();
   int _targetGoal = 5;
 
@@ -1679,7 +2435,10 @@ class _WeeklyGoalCardState extends State<_WeeklyGoalCard> with SingleTickerProvi
   @override
   void initState() {
     super.initState();
-    _breath = AnimationController(vsync: this, duration: const Duration(milliseconds: 1400))..repeat(reverse: true);
+    _breath = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 1400),
+    )..repeat(reverse: true);
     _loadGoal();
   }
 
@@ -1710,7 +2469,9 @@ class _WeeklyGoalCardState extends State<_WeeklyGoalCard> with SingleTickerProvi
     showModalBottomSheet(
       context: context,
       backgroundColor: Colors.white,
-      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      ),
       builder: (context) {
         return Padding(
           padding: const EdgeInsets.all(20),
@@ -1718,9 +2479,19 @@ class _WeeklyGoalCardState extends State<_WeeklyGoalCard> with SingleTickerProvi
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text('Set Weekly Quiz Target', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Color(0xFF0F172A))),
+              const Text(
+                'Set Weekly Quiz Target',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFF0F172A),
+                ),
+              ),
               const SizedBox(height: 6),
-              const Text('How many quizzes do you want to practice each week?', style: TextStyle(fontSize: 12, color: Color(0xFF64748B))),
+              const Text(
+                'How many quizzes do you want to practice each week?',
+                style: TextStyle(fontSize: 12, color: Color(0xFF64748B)),
+              ),
               const SizedBox(height: 16),
               Wrap(
                 spacing: 8,
@@ -1732,7 +2503,9 @@ class _WeeklyGoalCardState extends State<_WeeklyGoalCard> with SingleTickerProvi
                     selected: isSelected,
                     selectedColor: const Color(0xFF16A34A),
                     labelStyle: TextStyle(
-                      color: isSelected ? Colors.white : const Color(0xFF0F172A),
+                      color: isSelected
+                          ? Colors.white
+                          : const Color(0xFF0F172A),
                       fontWeight: FontWeight.bold,
                       fontSize: 12,
                     ),
@@ -1759,13 +2532,15 @@ class _WeeklyGoalCardState extends State<_WeeklyGoalCard> with SingleTickerProvi
     final remaining = math.max(0, _targetGoal - completed);
     final todayIndex = DateTime.now().weekday - 1; // Monday = 0
     final daysLeft = 6 - todayIndex;
-    final perDay = daysLeft > 0 ? (remaining / daysLeft).toStringAsFixed(1) : '—';
+    final perDay = daysLeft > 0
+        ? (remaining / daysLeft).toStringAsFixed(1)
+        : '—';
     final score = widget.weekScore.round();
     final scoreColor = score >= 70
         ? const Color(0xFF16A34A)
         : score >= 50
-            ? const Color(0xFFF59E0B)
-            : const Color(0xFFF43F5E);
+        ? const Color(0xFFF59E0B)
+        : const Color(0xFFF43F5E);
     const dayLetters = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
 
     return Container(
@@ -1775,7 +2550,11 @@ class _WeeklyGoalCardState extends State<_WeeklyGoalCard> with SingleTickerProvi
         borderRadius: BorderRadius.circular(24),
         border: Border.all(color: const Color(0xFFE2E8F0)),
         boxShadow: [
-          BoxShadow(color: const Color(0xFF0F172A).withValues(alpha: 0.05), blurRadius: 22, offset: const Offset(0, 10)),
+          BoxShadow(
+            color: const Color(0xFF0F172A).withValues(alpha: 0.05),
+            blurRadius: 22,
+            offset: const Offset(0, 10),
+          ),
         ],
       ),
       child: Column(
@@ -1785,7 +2564,12 @@ class _WeeklyGoalCardState extends State<_WeeklyGoalCard> with SingleTickerProvi
             children: [
               const Text(
                 'WEEKLY GOAL',
-                style: TextStyle(fontSize: 10, fontWeight: FontWeight.w700, letterSpacing: 1.8, color: Color(0xFF94A3B8)),
+                style: TextStyle(
+                  fontSize: 10,
+                  fontWeight: FontWeight.w700,
+                  letterSpacing: 1.8,
+                  color: Color(0xFF94A3B8),
+                ),
               ),
               Text(
                 '$completed/$_targetGoal quizzes',
@@ -1793,7 +2577,9 @@ class _WeeklyGoalCardState extends State<_WeeklyGoalCard> with SingleTickerProvi
                   fontSize: 12,
                   fontFamily: 'monospace',
                   fontWeight: FontWeight.w600,
-                  color: completed >= _targetGoal ? const Color(0xFF16A34A) : const Color(0xFF94A3B8),
+                  color: completed >= _targetGoal
+                      ? const Color(0xFF16A34A)
+                      : const Color(0xFF94A3B8),
                 ),
               ),
             ],
@@ -1809,7 +2595,10 @@ class _WeeklyGoalCardState extends State<_WeeklyGoalCard> with SingleTickerProvi
               duration: const Duration(milliseconds: 1100),
               curve: Curves.easeOutCubic,
               builder: (context, t, child) {
-                return CustomPaint(painter: _GoalRingPainter(progress: t), child: child);
+                return CustomPaint(
+                  painter: _GoalRingPainter(progress: t),
+                  child: child,
+                );
               },
               child: Center(
                 child: Column(
@@ -1821,14 +2610,27 @@ class _WeeklyGoalCardState extends State<_WeeklyGoalCard> with SingleTickerProvi
                         children: [
                           TextSpan(
                             text: '/$_targetGoal',
-                            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w400, color: Color(0xFFCBD5E1)),
+                            style: const TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w400,
+                              color: Color(0xFFCBD5E1),
+                            ),
                           ),
                         ],
                       ),
-                      style: const TextStyle(fontSize: 32, height: 1.0, fontWeight: FontWeight.w800, letterSpacing: -1, color: Color(0xFF0F172A)),
+                      style: const TextStyle(
+                        fontSize: 32,
+                        height: 1.0,
+                        fontWeight: FontWeight.w800,
+                        letterSpacing: -1,
+                        color: Color(0xFF0F172A),
+                      ),
                     ),
                     const SizedBox(height: 3),
-                    const Text('quizzes', style: TextStyle(fontSize: 11, color: Color(0xFF94A3B8))),
+                    const Text(
+                      'quizzes',
+                      style: TextStyle(fontSize: 11, color: Color(0xFF94A3B8)),
+                    ),
                   ],
                 ),
               ),
@@ -1843,7 +2645,10 @@ class _WeeklyGoalCardState extends State<_WeeklyGoalCard> with SingleTickerProvi
                 children: [
                   TextSpan(
                     text: '$remaining more',
-                    style: const TextStyle(fontWeight: FontWeight.w800, color: Color(0xFF0F172A)),
+                    style: const TextStyle(
+                      fontWeight: FontWeight.w800,
+                      color: Color(0xFF0F172A),
+                    ),
                   ),
                   const TextSpan(text: ' to hit your weekly goal.'),
                 ],
@@ -1859,7 +2664,11 @@ class _WeeklyGoalCardState extends State<_WeeklyGoalCard> with SingleTickerProvi
           ] else
             const Text(
               'Weekly goal complete!',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: Color(0xFF16A34A)),
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w700,
+                color: Color(0xFF16A34A),
+              ),
             ),
           const SizedBox(height: 12),
 
@@ -1875,7 +2684,11 @@ class _WeeklyGoalCardState extends State<_WeeklyGoalCard> with SingleTickerProvi
               ),
               child: const Text(
                 'Change goal',
-                style: TextStyle(color: Color(0xFF15803D), fontSize: 13, fontWeight: FontWeight.w700),
+                style: TextStyle(
+                  color: Color(0xFF15803D),
+                  fontSize: 13,
+                  fontWeight: FontWeight.w700,
+                ),
               ),
             ),
           ),
@@ -1893,7 +2706,11 @@ class _WeeklyGoalCardState extends State<_WeeklyGoalCard> with SingleTickerProvi
           const SizedBox(height: 8),
           Text(
             '${dayLetters[todayIndex]} — today',
-            style: const TextStyle(fontSize: 11, fontFamily: 'monospace', color: Color(0xFF94A3B8)),
+            style: const TextStyle(
+              fontSize: 11,
+              fontFamily: 'monospace',
+              color: Color(0xFF94A3B8),
+            ),
           ),
           const SizedBox(height: 16),
           const Divider(height: 1, color: Color(0xFFF1F5F9)),
@@ -1903,15 +2720,28 @@ class _WeeklyGoalCardState extends State<_WeeklyGoalCard> with SingleTickerProvi
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text('This week avg score', style: TextStyle(fontSize: 13, color: Color(0xFF64748B))),
-              Text('$score%', style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w700, color: Color(0xFF1E293B))),
+              const Text(
+                'This week avg score',
+                style: TextStyle(fontSize: 13, color: Color(0xFF64748B)),
+              ),
+              Text(
+                '$score%',
+                style: const TextStyle(
+                  fontSize: 13,
+                  fontWeight: FontWeight.w700,
+                  color: Color(0xFF1E293B),
+                ),
+              ),
             ],
           ),
           const SizedBox(height: 8),
           ClipRRect(
             borderRadius: BorderRadius.circular(6),
             child: TweenAnimationBuilder<double>(
-              tween: Tween<double>(begin: 0.0, end: (score / 100).clamp(0.0, 1.0).toDouble()),
+              tween: Tween<double>(
+                begin: 0.0,
+                end: (score / 100).clamp(0.0, 1.0).toDouble(),
+              ),
               duration: const Duration(milliseconds: 700),
               curve: Curves.easeOutCubic,
               builder: (context, t, _) {
@@ -1930,20 +2760,21 @@ class _WeeklyGoalCardState extends State<_WeeklyGoalCard> with SingleTickerProvi
   }
 
   Widget _dayChip(String letter, int index, int todayIndex) {
-    final done = index < widget.lastSevenDays.length && widget.lastSevenDays[index] == 1;
+    final done =
+        index < widget.lastSevenDays.length && widget.lastSevenDays[index] == 1;
     final isToday = index == todayIndex;
     final Color background = done
         ? const Color(0xFF16A34A)
         : isToday
-            ? const Color(0xFF16A34A).withValues(alpha: 0.10)
-            : const Color(0xFFF8FAFC);
+        ? const Color(0xFF16A34A).withValues(alpha: 0.10)
+        : const Color(0xFFF8FAFC);
     final Color foreground = done
         ? Colors.white
         : isToday
-            ? const Color(0xFF15803D)
-            : index < todayIndex
-                ? const Color(0xFFCBD5E1)
-                : const Color(0xFF94A3B8);
+        ? const Color(0xFF15803D)
+        : index < todayIndex
+        ? const Color(0xFFCBD5E1)
+        : const Color(0xFF94A3B8);
     final chip = Container(
       height: 34,
       alignment: Alignment.center,
@@ -1951,11 +2782,20 @@ class _WeeklyGoalCardState extends State<_WeeklyGoalCard> with SingleTickerProvi
         color: background,
         borderRadius: BorderRadius.circular(9),
         border: Border.all(
-          color: isToday && !done ? const Color(0xFF16A34A).withValues(alpha: 0.45) : Colors.transparent,
+          color: isToday && !done
+              ? const Color(0xFF16A34A).withValues(alpha: 0.45)
+              : Colors.transparent,
           width: 1.5,
         ),
       ),
-      child: Text(letter, style: TextStyle(fontSize: 11, fontWeight: FontWeight.w700, color: foreground)),
+      child: Text(
+        letter,
+        style: TextStyle(
+          fontSize: 11,
+          fontWeight: FontWeight.w700,
+          color: foreground,
+        ),
+      ),
     );
     if (!isToday) return chip;
     return AnimatedBuilder(
@@ -1968,7 +2808,11 @@ class _WeeklyGoalCardState extends State<_WeeklyGoalCard> with SingleTickerProvi
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(9),
               boxShadow: [
-                BoxShadow(color: const Color(0xFF16A34A).withValues(alpha: 0.30 * t), blurRadius: 10 * t, spreadRadius: 1.5 * t),
+                BoxShadow(
+                  color: const Color(0xFF16A34A).withValues(alpha: 0.30 * t),
+                  blurRadius: 10 * t,
+                  spreadRadius: 1.5 * t,
+                ),
               ],
             ),
             child: child,
@@ -1998,7 +2842,10 @@ class _FadeUp extends StatelessWidget {
       builder: (context, t, child) {
         return Opacity(
           opacity: t.clamp(0.0, 1.0).toDouble(),
-          child: Transform.translate(offset: Offset(0, (1 - t) * 18), child: child),
+          child: Transform.translate(
+            offset: Offset(0, (1 - t) * 18),
+            child: child,
+          ),
         );
       },
     );
@@ -2025,13 +2872,24 @@ class _MetricCard extends StatelessWidget {
     this.chip,
   });
 
-  static const _valueStyle = TextStyle(fontSize: 28, height: 1.0, fontWeight: FontWeight.w800, letterSpacing: -0.8, color: Color(0xFF0F172A));
+  static const _valueStyle = TextStyle(
+    fontSize: 28,
+    height: 1.0,
+    fontWeight: FontWeight.w800,
+    letterSpacing: -0.8,
+    color: Color(0xFF0F172A),
+  );
 
   /// The number counts up from zero when the card appears ("#167", "13", "0.5").
   Widget _animatedValue() {
     final match = RegExp(r'^(\D*)(\d+(?:\.\d+)?)$').firstMatch(value);
     if (match == null) {
-      return Text(value, maxLines: 1, overflow: TextOverflow.ellipsis, style: _valueStyle);
+      return Text(
+        value,
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
+        style: _valueStyle,
+      );
     }
     final prefix = match.group(1) ?? '';
     final digits = match.group(2)!;
@@ -2058,7 +2916,11 @@ class _MetricCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
         border: Border.all(color: color.withValues(alpha: 0.35)),
         boxShadow: [
-          BoxShadow(color: color.withValues(alpha: 0.14), blurRadius: 18, offset: const Offset(0, 8)),
+          BoxShadow(
+            color: color.withValues(alpha: 0.14),
+            blurRadius: 18,
+            offset: const Offset(0, 8),
+          ),
         ],
       ),
       child: Column(
@@ -2067,7 +2929,9 @@ class _MetricCard extends StatelessWidget {
           Container(
             height: 4,
             decoration: BoxDecoration(
-              gradient: LinearGradient(colors: [color, color.withValues(alpha: 0.15)]),
+              gradient: LinearGradient(
+                colors: [color, color.withValues(alpha: 0.15)],
+              ),
             ),
           ),
           Padding(
@@ -2082,14 +2946,32 @@ class _MetricCard extends StatelessWidget {
                         title,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
-                        style: TextStyle(fontSize: 10, fontWeight: FontWeight.w800, letterSpacing: 1.2, color: titleColor),
+                        style: TextStyle(
+                          fontSize: 10,
+                          fontWeight: FontWeight.w800,
+                          letterSpacing: 1.2,
+                          color: titleColor,
+                        ),
                       ),
                     ),
                     if (chip != null)
                       Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-                        decoration: BoxDecoration(color: color.withValues(alpha: 0.14), borderRadius: BorderRadius.circular(8)),
-                        child: Text(chip!, style: TextStyle(fontSize: 10, fontWeight: FontWeight.w700, color: titleColor)),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 6,
+                          vertical: 2,
+                        ),
+                        decoration: BoxDecoration(
+                          color: color.withValues(alpha: 0.14),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: Text(
+                          chip!,
+                          style: TextStyle(
+                            fontSize: 10,
+                            fontWeight: FontWeight.w700,
+                            color: titleColor,
+                          ),
+                        ),
                       ),
                   ],
                 ),
@@ -2101,7 +2983,13 @@ class _MetricCard extends StatelessWidget {
                     const SizedBox(width: 4),
                     Padding(
                       padding: const EdgeInsets.only(bottom: 3),
-                      child: Text(unit, style: const TextStyle(fontSize: 12, color: Color(0xFF94A3B8))),
+                      child: Text(
+                        unit,
+                        style: const TextStyle(
+                          fontSize: 12,
+                          color: Color(0xFF94A3B8),
+                        ),
+                      ),
                     ),
                     const Spacer(),
                     SizedBox(
@@ -2111,8 +2999,14 @@ class _MetricCard extends StatelessWidget {
                         tween: Tween<double>(begin: 0.0, end: 1.0),
                         duration: const Duration(milliseconds: 1400),
                         curve: Curves.easeInOutCubic,
-                        builder: (context, t, _) =>
-                            CustomPaint(painter: _TrendPainter(values: history, color: color, progress: t, dense: true)),
+                        builder: (context, t, _) => CustomPaint(
+                          painter: _TrendPainter(
+                            values: history,
+                            color: color,
+                            progress: t,
+                            dense: true,
+                          ),
+                        ),
                       ),
                     ),
                   ],
@@ -2133,7 +3027,12 @@ class _TrendPainter extends CustomPainter {
   final double progress; // 0..1, how much of the line is revealed
   final bool dense; // small sparkline: no grid, thinner line
 
-  const _TrendPainter({required this.values, required this.color, required this.progress, this.dense = false});
+  const _TrendPainter({
+    required this.values,
+    required this.color,
+    required this.progress,
+    this.dense = false,
+  });
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -2150,7 +3049,9 @@ class _TrendPainter extends CustomPainter {
       }
     }
 
-    final data = values.isEmpty ? <double>[0, 0] : (values.length == 1 ? <double>[values.first, values.first] : values);
+    final data = values.isEmpty
+        ? <double>[0, 0]
+        : (values.length == 1 ? <double>[values.first, values.first] : values);
     var minV = data.reduce(math.min);
     var maxV = data.reduce(math.max);
     if (maxV - minV < 0.0001) {
@@ -2178,7 +3079,14 @@ class _TrendPainter extends CustomPainter {
       ..close();
 
     canvas.save();
-    canvas.clipRect(Rect.fromLTWH(0, -8, size.width * progress.clamp(0.0, 1.0) + 1, size.height + 16));
+    canvas.clipRect(
+      Rect.fromLTWH(
+        0,
+        -8,
+        size.width * progress.clamp(0.0, 1.0) + 1,
+        size.height + 16,
+      ),
+    );
 
     canvas.drawPath(
       area,
@@ -2186,7 +3094,10 @@ class _TrendPainter extends CustomPainter {
         ..shader = LinearGradient(
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
-          colors: [color.withValues(alpha: dense ? 0.18 : 0.16), color.withValues(alpha: 0)],
+          colors: [
+            color.withValues(alpha: dense ? 0.18 : 0.16),
+            color.withValues(alpha: 0),
+          ],
         ).createShader(Offset.zero & size),
     );
     canvas.drawPath(
@@ -2220,7 +3131,9 @@ class _TrendPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(covariant _TrendPainter oldDelegate) {
-    return oldDelegate.values != values || oldDelegate.color != color || oldDelegate.progress != progress;
+    return oldDelegate.values != values ||
+        oldDelegate.color != color ||
+        oldDelegate.progress != progress;
   }
 }
 
@@ -2254,8 +3167,12 @@ class _PerformanceCardState extends State<_PerformanceCard> {
     final points = widget.points;
     final values = points.map(_valueOf).toList();
     final active = points.where((p) => p.attempts > 0).map(_valueOf).toList();
-    final avg = active.isEmpty ? 0.0 : active.reduce((a, b) => a + b) / active.length;
-    final avgText = _metric == 0 ? '${avg.round()}%' : avg.toStringAsFixed(avg % 1 == 0 ? 0 : 1);
+    final avg = active.isEmpty
+        ? 0.0
+        : active.reduce((a, b) => a + b) / active.length;
+    final avgText = _metric == 0
+        ? '${avg.round()}%'
+        : avg.toStringAsFixed(avg % 1 == 0 ? 0 : 1);
 
     String labelAt(double fraction) {
       if (points.isEmpty) return '';
@@ -2270,7 +3187,11 @@ class _PerformanceCardState extends State<_PerformanceCard> {
         borderRadius: BorderRadius.circular(24),
         border: Border.all(color: const Color(0xFFE2E8F0)),
         boxShadow: [
-          BoxShadow(color: const Color(0xFF0F172A).withValues(alpha: 0.05), blurRadius: 22, offset: const Offset(0, 10)),
+          BoxShadow(
+            color: const Color(0xFF0F172A).withValues(alpha: 0.05),
+            blurRadius: 22,
+            offset: const Offset(0, 10),
+          ),
         ],
       ),
       child: Column(
@@ -2278,7 +3199,12 @@ class _PerformanceCardState extends State<_PerformanceCard> {
         children: [
           Text(
             'PERFORMANCE · LAST ${points.length} WEEKS',
-            style: const TextStyle(fontSize: 10, fontWeight: FontWeight.w700, letterSpacing: 1.6, color: Color(0xFF94A3B8)),
+            style: const TextStyle(
+              fontSize: 10,
+              fontWeight: FontWeight.w700,
+              letterSpacing: 1.6,
+              color: Color(0xFF94A3B8),
+            ),
           ),
           const SizedBox(height: 6),
           Row(
@@ -2289,7 +3215,13 @@ class _PerformanceCardState extends State<_PerformanceCard> {
                 child: Text(
                   avgText,
                   key: ValueKey<String>('$_metric-$avgText'),
-                  style: const TextStyle(fontSize: 32, height: 1.0, fontWeight: FontWeight.w800, letterSpacing: -1, color: Color(0xFF0F172A)),
+                  style: const TextStyle(
+                    fontSize: 32,
+                    height: 1.0,
+                    fontWeight: FontWeight.w800,
+                    letterSpacing: -1,
+                    color: Color(0xFF0F172A),
+                  ),
                 ),
               ),
               const SizedBox(width: 8),
@@ -2297,7 +3229,10 @@ class _PerformanceCardState extends State<_PerformanceCard> {
                 padding: const EdgeInsets.only(bottom: 3),
                 child: Text(
                   'avg ${_labels[_metric].toLowerCase()}',
-                  style: const TextStyle(fontSize: 14, color: Color(0xFF64748B)),
+                  style: const TextStyle(
+                    fontSize: 14,
+                    color: Color(0xFF64748B),
+                  ),
                 ),
               ),
             ],
@@ -2307,7 +3242,10 @@ class _PerformanceCardState extends State<_PerformanceCard> {
           // Accuracy / Speed / Score
           Container(
             padding: const EdgeInsets.all(4),
-            decoration: BoxDecoration(color: const Color(0xFFF1F5F9), borderRadius: BorderRadius.circular(12)),
+            decoration: BoxDecoration(
+              color: const Color(0xFFF1F5F9),
+              borderRadius: BorderRadius.circular(12),
+            ),
             child: Row(
               children: [
                 for (var i = 0; i < _labels.length; i++)
@@ -2323,18 +3261,32 @@ class _PerformanceCardState extends State<_PerformanceCard> {
                         padding: const EdgeInsets.symmetric(vertical: 9),
                         alignment: Alignment.center,
                         decoration: BoxDecoration(
-                          color: _metric == i ? Colors.white : Colors.transparent,
+                          color: _metric == i
+                              ? Colors.white
+                              : Colors.transparent,
                           borderRadius: BorderRadius.circular(9),
                           boxShadow: _metric == i
-                              ? [BoxShadow(color: const Color(0xFF0F172A).withValues(alpha: 0.08), blurRadius: 6, offset: const Offset(0, 2))]
+                              ? [
+                                  BoxShadow(
+                                    color: const Color(
+                                      0xFF0F172A,
+                                    ).withValues(alpha: 0.08),
+                                    blurRadius: 6,
+                                    offset: const Offset(0, 2),
+                                  ),
+                                ]
                               : const [],
                         ),
                         child: Text(
                           _labels[i],
                           style: TextStyle(
                             fontSize: 13,
-                            fontWeight: _metric == i ? FontWeight.w700 : FontWeight.w500,
-                            color: _metric == i ? const Color(0xFF0F172A) : const Color(0xFF64748B),
+                            fontWeight: _metric == i
+                                ? FontWeight.w700
+                                : FontWeight.w500,
+                            color: _metric == i
+                                ? const Color(0xFF0F172A)
+                                : const Color(0xFF64748B),
                           ),
                         ),
                       ),
@@ -2349,7 +3301,10 @@ class _PerformanceCardState extends State<_PerformanceCard> {
             const SizedBox(
               height: 120,
               child: Center(
-                child: Text('Finish a quiz to see your progress here.', style: TextStyle(color: Color(0xFF94A3B8), fontSize: 13)),
+                child: Text(
+                  'Finish a quiz to see your progress here.',
+                  style: TextStyle(color: Color(0xFF94A3B8), fontSize: 13),
+                ),
               ),
             )
           else ...[
@@ -2363,7 +3318,11 @@ class _PerformanceCardState extends State<_PerformanceCard> {
                 curve: Curves.easeOutCubic,
                 builder: (context, t, _) {
                   return CustomPaint(
-                    painter: _TrendPainter(values: values, color: const Color(0xFF16A34A), progress: t),
+                    painter: _TrendPainter(
+                      values: values,
+                      color: const Color(0xFF16A34A),
+                      progress: t,
+                    ),
                   );
                 },
               ),
@@ -2373,8 +3332,22 @@ class _PerformanceCardState extends State<_PerformanceCard> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 for (final f in const [0.0, 0.34, 0.67])
-                  Text(labelAt(f), style: const TextStyle(fontSize: 10, fontFamily: 'monospace', color: Color(0xFF94A3B8))),
-                Text('${labelAt(1.0)} — today', style: const TextStyle(fontSize: 10, fontFamily: 'monospace', color: Color(0xFF94A3B8))),
+                  Text(
+                    labelAt(f),
+                    style: const TextStyle(
+                      fontSize: 10,
+                      fontFamily: 'monospace',
+                      color: Color(0xFF94A3B8),
+                    ),
+                  ),
+                Text(
+                  '${labelAt(1.0)} — today',
+                  style: const TextStyle(
+                    fontSize: 10,
+                    fontFamily: 'monospace',
+                    color: Color(0xFF94A3B8),
+                  ),
+                ),
               ],
             ),
           ],
@@ -2393,7 +3366,12 @@ class _GoalRingPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     const stroke = 14.0;
-    final rect = Rect.fromLTWH(stroke / 2, stroke / 2, size.width - stroke, size.height - stroke);
+    final rect = Rect.fromLTWH(
+      stroke / 2,
+      stroke / 2,
+      size.width - stroke,
+      size.height - stroke,
+    );
     final track = Paint()
       ..color = const Color(0xFFDCFCE7)
       ..style = PaintingStyle.stroke
@@ -2402,15 +3380,24 @@ class _GoalRingPainter extends CustomPainter {
 
     if (progress <= 0) return;
     final arc = Paint()
-      ..shader = const LinearGradient(colors: [Color(0xFF22C55E), Color(0xFF15803D)]).createShader(rect)
+      ..shader = const LinearGradient(
+        colors: [Color(0xFF22C55E), Color(0xFF15803D)],
+      ).createShader(rect)
       ..style = PaintingStyle.stroke
       ..strokeWidth = stroke
       ..strokeCap = StrokeCap.round;
-    canvas.drawArc(rect, -math.pi / 2, math.pi * 2 * progress.clamp(0.0, 1.0), false, arc);
+    canvas.drawArc(
+      rect,
+      -math.pi / 2,
+      math.pi * 2 * progress.clamp(0.0, 1.0),
+      false,
+      arc,
+    );
   }
 
   @override
-  bool shouldRepaint(covariant _GoalRingPainter oldDelegate) => oldDelegate.progress != progress;
+  bool shouldRepaint(covariant _GoalRingPainter oldDelegate) =>
+      oldDelegate.progress != progress;
 }
 
 // -----------------------------------------------------------------------------
@@ -2450,11 +3437,18 @@ class _MyPapersTabState extends State<_MyPapersTab> {
   bool _loading = true;
   String? _error;
   List<MyPaperItem> _papers = [];
+  final ScrollController _scrollController = ScrollController();
 
   @override
   void initState() {
     super.initState();
     _load();
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
   }
 
   @override
@@ -2490,7 +3484,8 @@ class _MyPapersTabState extends State<_MyPapersTab> {
     }
   }
 
-  static String _num(double value) => value % 1 == 0 ? value.toInt().toString() : value.toStringAsFixed(1);
+  static String _num(double value) =>
+      value % 1 == 0 ? value.toInt().toString() : value.toStringAsFixed(1);
 
   Future<void> _openPaper(MyPaperItem paper) async {
     AppHaptics.light();
@@ -2504,7 +3499,10 @@ class _MyPapersTabState extends State<_MyPapersTab> {
         ),
       ),
     );
-    if (mounted) _load(quiet: true);
+    if (mounted) {
+      if (_scrollController.hasClients) _scrollController.jumpTo(0);
+      _load(quiet: true);
+    }
   }
 
   void _openCatalogue() {
@@ -2515,7 +3513,10 @@ class _MyPapersTabState extends State<_MyPapersTab> {
             builder: (_) => Scaffold(
               backgroundColor: const Color(0xFFF8FAFC),
               appBar: AppBar(
-                title: const Text('All papers', style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold)),
+                title: const Text(
+                  'All papers',
+                  style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+                ),
                 backgroundColor: Colors.white,
                 foregroundColor: const Color(0xFF0F172A),
                 surfaceTintColor: Colors.white,
@@ -2532,8 +3533,10 @@ class _MyPapersTabState extends State<_MyPapersTab> {
           ),
         )
         .then((_) {
-      if (mounted) _load(quiet: true);
-    });
+          if (!mounted) return;
+          if (_scrollController.hasClients) _scrollController.jumpTo(0);
+          _load(quiet: true);
+        });
   }
 
   void _showDetails(MyPaperItem paper, String state, String progressText) {
@@ -2542,18 +3545,24 @@ class _MyPapersTabState extends State<_MyPapersTab> {
     final total = paper.lastTotalMarks ?? 0;
     final score = paper.lastScore ?? 0;
     final hasScore = attempts > 0 && total > 0 && !paper.inProgress;
-    final fraction = hasScore ? (score / total).clamp(0.0, 1.0).toDouble() : 0.0;
+    final fraction = hasScore
+        ? (score / total).clamp(0.0, 1.0).toDouble()
+        : 0.0;
     final percent = (fraction * 100).round();
     final Color scoreColor = percent >= 70
         ? const Color(0xFF16A34A)
         : percent >= 40
-            ? const Color(0xFFF59E0B)
-            : const Color(0xFFF43F5E);
+        ? const Color(0xFFF59E0B)
+        : const Color(0xFFF43F5E);
     final timed = (paper.timeLimitMinutes ?? 0) > 0;
-    final actionLabel = paper.inProgress ? 'Continue' : (attempts > 0 ? 'Attempt again' : 'Start');
-    final sub = [paper.course?.name, paper.year?.toString(), _sectionLabels[paper.section]]
-        .where((s) => s != null && s.isNotEmpty)
-        .join(' · ');
+    final actionLabel = paper.inProgress
+        ? 'Continue'
+        : (attempts > 0 ? 'Attempt again' : 'Start');
+    final sub = [
+      paper.course?.name,
+      paper.year?.toString(),
+      _sectionLabels[paper.section],
+    ].where((s) => s != null && s.isNotEmpty).join(' · ');
 
     Widget tile(IconData icon, String value, String label, Color color) {
       return Expanded(
@@ -2572,10 +3581,17 @@ class _MyPapersTabState extends State<_MyPapersTab> {
                 value,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
-                style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w800, color: Color(0xFF0F172A)),
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w800,
+                  color: Color(0xFF0F172A),
+                ),
               ),
               const SizedBox(height: 1),
-              Text(label, style: const TextStyle(fontSize: 11, color: Color(0xFF64748B))),
+              Text(
+                label,
+                style: const TextStyle(fontSize: 11, color: Color(0xFF64748B)),
+              ),
             ],
           ),
         ),
@@ -2586,7 +3602,9 @@ class _MyPapersTabState extends State<_MyPapersTab> {
       context: context,
       isScrollControlled: true,
       backgroundColor: Colors.white,
-      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(26))),
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(26)),
+      ),
       builder: (ctx) {
         return SafeArea(
           child: SingleChildScrollView(
@@ -2600,7 +3618,10 @@ class _MyPapersTabState extends State<_MyPapersTab> {
                   child: Container(
                     width: 40,
                     height: 4,
-                    decoration: BoxDecoration(color: const Color(0xFFE2E8F0), borderRadius: BorderRadius.circular(4)),
+                    decoration: BoxDecoration(
+                      color: const Color(0xFFE2E8F0),
+                      borderRadius: BorderRadius.circular(4),
+                    ),
                   ),
                 ),
                 const SizedBox(height: 16),
@@ -2620,7 +3641,11 @@ class _MyPapersTabState extends State<_MyPapersTab> {
                           colors: [Color(0xFF22C55E), Color(0xFF15803D)],
                         ),
                       ),
-                      child: const Icon(Icons.description_rounded, color: Colors.white, size: 24),
+                      child: const Icon(
+                        Icons.description_rounded,
+                        color: Colors.white,
+                        size: 24,
+                      ),
                     ),
                     const SizedBox(width: 12),
                     Expanded(
@@ -2629,20 +3654,44 @@ class _MyPapersTabState extends State<_MyPapersTab> {
                         children: [
                           Text(
                             paper.title,
-                            style: const TextStyle(fontSize: 17, height: 1.25, fontWeight: FontWeight.w800, color: Color(0xFF0F172A)),
+                            style: const TextStyle(
+                              fontSize: 17,
+                              height: 1.25,
+                              fontWeight: FontWeight.w800,
+                              color: Color(0xFF0F172A),
+                            ),
                           ),
                           if (sub.isNotEmpty) ...[
                             const SizedBox(height: 3),
-                            Text(sub, style: const TextStyle(fontSize: 12.5, color: Color(0xFF64748B))),
+                            Text(
+                              sub,
+                              style: const TextStyle(
+                                fontSize: 12.5,
+                                color: Color(0xFF64748B),
+                              ),
+                            ),
                           ],
                         ],
                       ),
                     ),
                     const SizedBox(width: 8),
                     Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-                      decoration: BoxDecoration(color: const Color(0xFFDCFCE7), borderRadius: BorderRadius.circular(20)),
-                      child: Text(state, style: const TextStyle(fontSize: 11, fontWeight: FontWeight.w700, color: Color(0xFF15803D))),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 10,
+                        vertical: 4,
+                      ),
+                      decoration: BoxDecoration(
+                        color: const Color(0xFFDCFCE7),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Text(
+                        state,
+                        style: const TextStyle(
+                          fontSize: 11,
+                          fontWeight: FontWeight.w700,
+                          color: Color(0xFF15803D),
+                        ),
+                      ),
                     ),
                   ],
                 ),
@@ -2651,11 +3700,26 @@ class _MyPapersTabState extends State<_MyPapersTab> {
                 // Quick facts
                 Row(
                   children: [
-                    tile(Icons.quiz_outlined, '${paper.questionCount}', 'Questions', const Color(0xFF2563EB)),
+                    tile(
+                      Icons.quiz_outlined,
+                      '${paper.questionCount}',
+                      'Questions',
+                      const Color(0xFF2563EB),
+                    ),
                     const SizedBox(width: 8),
-                    tile(Icons.timer_outlined, timed ? '${paper.timeLimitMinutes} min' : 'Untimed', 'Time', const Color(0xFF7C3AED)),
+                    tile(
+                      Icons.timer_outlined,
+                      timed ? '${paper.timeLimitMinutes} min' : 'Untimed',
+                      'Time',
+                      const Color(0xFF7C3AED),
+                    ),
                     const SizedBox(width: 8),
-                    tile(Icons.replay_rounded, '$attempts', attempts == 1 ? 'Attempt' : 'Attempts', const Color(0xFFD97706)),
+                    tile(
+                      Icons.replay_rounded,
+                      '$attempts',
+                      attempts == 1 ? 'Attempt' : 'Attempts',
+                      const Color(0xFFD97706),
+                    ),
                   ],
                 ),
                 const SizedBox(height: 14),
@@ -2678,7 +3742,12 @@ class _MyPapersTabState extends State<_MyPapersTab> {
                                 const Expanded(
                                   child: Text(
                                     'LAST SCORE',
-                                    style: TextStyle(fontSize: 10, fontWeight: FontWeight.w700, letterSpacing: 1.4, color: Color(0xFF94A3B8)),
+                                    style: TextStyle(
+                                      fontSize: 10,
+                                      fontWeight: FontWeight.w700,
+                                      letterSpacing: 1.4,
+                                      color: Color(0xFF94A3B8),
+                                    ),
                                   ),
                                 ),
                                 Text.rich(
@@ -2687,17 +3756,39 @@ class _MyPapersTabState extends State<_MyPapersTab> {
                                     children: [
                                       TextSpan(
                                         text: ' / ${_num(total)}',
-                                        style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Color(0xFF94A3B8)),
+                                        style: const TextStyle(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w500,
+                                          color: Color(0xFF94A3B8),
+                                        ),
                                       ),
                                     ],
                                   ),
-                                  style: const TextStyle(fontSize: 22, height: 1.0, fontWeight: FontWeight.w800, color: Color(0xFF0F172A)),
+                                  style: const TextStyle(
+                                    fontSize: 22,
+                                    height: 1.0,
+                                    fontWeight: FontWeight.w800,
+                                    color: Color(0xFF0F172A),
+                                  ),
                                 ),
                                 const SizedBox(width: 10),
                                 Container(
-                                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
-                                  decoration: BoxDecoration(color: scoreColor.withValues(alpha: 0.12), borderRadius: BorderRadius.circular(8)),
-                                  child: Text('$percent%', style: TextStyle(fontSize: 12, fontWeight: FontWeight.w800, color: scoreColor)),
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 8,
+                                    vertical: 3,
+                                  ),
+                                  decoration: BoxDecoration(
+                                    color: scoreColor.withValues(alpha: 0.12),
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  child: Text(
+                                    '$percent%',
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w800,
+                                      color: scoreColor,
+                                    ),
+                                  ),
                                 ),
                               ],
                             ),
@@ -2708,12 +3799,15 @@ class _MyPapersTabState extends State<_MyPapersTab> {
                                 tween: Tween<double>(begin: 0.0, end: fraction),
                                 duration: const Duration(milliseconds: 800),
                                 curve: Curves.easeOutCubic,
-                                builder: (context, t, _) => LinearProgressIndicator(
-                                  value: t,
-                                  minHeight: 7,
-                                  backgroundColor: const Color(0xFFE2E8F0),
-                                  valueColor: AlwaysStoppedAnimation<Color>(scoreColor),
-                                ),
+                                builder: (context, t, _) =>
+                                    LinearProgressIndicator(
+                                      value: t,
+                                      minHeight: 7,
+                                      backgroundColor: const Color(0xFFE2E8F0),
+                                      valueColor: AlwaysStoppedAnimation<Color>(
+                                        scoreColor,
+                                      ),
+                                    ),
                               ),
                             ),
                           ],
@@ -2721,9 +3815,13 @@ class _MyPapersTabState extends State<_MyPapersTab> {
                       : Row(
                           children: [
                             Icon(
-                              paper.inProgress ? Icons.hourglass_top_rounded : Icons.flag_outlined,
+                              paper.inProgress
+                                  ? Icons.hourglass_top_rounded
+                                  : Icons.flag_outlined,
                               size: 20,
-                              color: paper.inProgress ? const Color(0xFFD97706) : const Color(0xFF94A3B8),
+                              color: paper.inProgress
+                                  ? const Color(0xFFD97706)
+                                  : const Color(0xFF94A3B8),
                             ),
                             const SizedBox(width: 10),
                             Expanded(
@@ -2731,7 +3829,11 @@ class _MyPapersTabState extends State<_MyPapersTab> {
                                 paper.inProgress
                                     ? 'You have an attempt in progress. Pick up where you left off.'
                                     : 'Not started yet. Your score will show here after your first attempt.',
-                                style: const TextStyle(fontSize: 13, height: 1.35, color: Color(0xFF475569)),
+                                style: const TextStyle(
+                                  fontSize: 13,
+                                  height: 1.35,
+                                  color: Color(0xFF475569),
+                                ),
                               ),
                             ),
                           ],
@@ -2743,10 +3845,22 @@ class _MyPapersTabState extends State<_MyPapersTab> {
                   const SizedBox(height: 14),
                   const Text(
                     'ABOUT THIS PAPER',
-                    style: TextStyle(fontSize: 10, fontWeight: FontWeight.w700, letterSpacing: 1.4, color: Color(0xFF94A3B8)),
+                    style: TextStyle(
+                      fontSize: 10,
+                      fontWeight: FontWeight.w700,
+                      letterSpacing: 1.4,
+                      color: Color(0xFF94A3B8),
+                    ),
                   ),
                   const SizedBox(height: 5),
-                  Text(paper.description!.trim(), style: const TextStyle(fontSize: 13, height: 1.45, color: Color(0xFF475569))),
+                  Text(
+                    paper.description!.trim(),
+                    style: const TextStyle(
+                      fontSize: 13,
+                      height: 1.45,
+                      color: Color(0xFF475569),
+                    ),
+                  ),
                 ],
                 const SizedBox(height: 18),
 
@@ -2754,7 +3868,11 @@ class _MyPapersTabState extends State<_MyPapersTab> {
                 Row(
                   children: [
                     Expanded(
-                      child: _button('Close', filled: false, onTap: () => Navigator.of(ctx).pop()),
+                      child: _button(
+                        'Close',
+                        filled: false,
+                        onTap: () => Navigator.of(ctx).pop(),
+                      ),
                     ),
                     if (paper.available && paper.hasAccess) ...[
                       const SizedBox(width: 10),
@@ -2788,11 +3906,18 @@ class _MyPapersTabState extends State<_MyPapersTab> {
         borderRadius: BorderRadius.circular(20),
         border: Border.all(color: const Color(0xFFE2E8F0)),
       ),
-      child: Text(text, style: const TextStyle(fontSize: 11.5, color: Color(0xFF475569))),
+      child: Text(
+        text,
+        style: const TextStyle(fontSize: 11.5, color: Color(0xFF475569)),
+      ),
     );
   }
 
-  Widget _button(String text, {required bool filled, required VoidCallback onTap}) {
+  Widget _button(
+    String text, {
+    required bool filled,
+    required VoidCallback onTap,
+  }) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
@@ -2801,14 +3926,26 @@ class _MyPapersTabState extends State<_MyPapersTab> {
         decoration: BoxDecoration(
           color: filled ? const Color(0xFF16A34A) : Colors.white,
           borderRadius: BorderRadius.circular(11),
-          border: Border.all(color: filled ? const Color(0xFF16A34A) : const Color(0xFFE2E8F0)),
+          border: Border.all(
+            color: filled ? const Color(0xFF16A34A) : const Color(0xFFE2E8F0),
+          ),
           boxShadow: filled
-              ? [BoxShadow(color: const Color(0xFF16A34A).withValues(alpha: 0.28), blurRadius: 10, offset: const Offset(0, 5))]
+              ? [
+                  BoxShadow(
+                    color: const Color(0xFF16A34A).withValues(alpha: 0.28),
+                    blurRadius: 10,
+                    offset: const Offset(0, 5),
+                  ),
+                ]
               : const [],
         ),
         child: Text(
           text,
-          style: TextStyle(fontSize: 13.5, fontWeight: FontWeight.w700, color: filled ? Colors.white : const Color(0xFF334155)),
+          style: TextStyle(
+            fontSize: 13.5,
+            fontWeight: FontWeight.w700,
+            color: filled ? Colors.white : const Color(0xFF334155),
+          ),
         ),
       ),
     );
@@ -2818,42 +3955,47 @@ class _MyPapersTabState extends State<_MyPapersTab> {
     // Same rules as the website's My Papers cards.
     final paid = paper.pricePaise > 0;
     final purchased = paper.purchased || paper.source == 'purchase';
+    final uploaded = paper.source == 'personal_upload';
     final usable = paper.available && paper.hasAccess;
     final attempts = paper.attemptCount;
     final state = !paper.available
         ? 'Unavailable'
         : purchased
-            ? 'Purchased ✓'
-            : paid
-                ? 'Paid'
-                : 'Free';
+        ? 'Purchased ✓'
+        : uploaded
+        ? 'Uploaded'
+        : paid
+        ? 'Paid'
+        : 'Free';
     final total = paper.lastTotalMarks ?? 0;
     final score = paper.lastScore ?? 0;
     final progressText = paper.inProgress
         ? 'In progress'
         : attempts > 0
-            ? '${paper.lastTotalMarks != null ? 'Last score ${_num(score)}/${_num(total)} · ' : ''}$attempts attempt${attempts == 1 ? '' : 's'}'
-            : 'Not started';
+        ? '${paper.lastTotalMarks != null ? 'Last score ${_num(score)}/${_num(total)} · ' : ''}$attempts attempt${attempts == 1 ? '' : 's'}'
+        : 'Not started';
     final showBar = attempts > 0 && total > 0 && !paper.inProgress;
     final pct = showBar ? (score / total).clamp(0.0, 1.0).toDouble() : 0.0;
-    final sub = [paper.course?.name, paper.year?.toString(), _sectionLabels[paper.section]]
-        .where((s) => s != null && s.isNotEmpty)
-        .join(' · ');
+    final sub = [
+      uploaded ? 'Your upload' : paper.course?.name,
+      paper.year?.toString(),
+      _sectionLabels[paper.section],
+    ].where((s) => s != null && s.isNotEmpty).join(' · ');
 
     final Color tagBg = !paper.available
         ? const Color(0xFFF1F5F9)
         : purchased
-            ? const Color(0xFFDCFCE7)
-            : paid
-                ? const Color(0xFFFEF3C7)
-                : const Color(0xFFECFDF5);
+        ? const Color(0xFFDCFCE7)
+        : paid
+        ? const Color(0xFFFEF3C7)
+        : const Color(0xFFECFDF5);
     final Color tagFg = !paper.available
         ? const Color(0xFF64748B)
         : purchased
-            ? const Color(0xFF15803D)
-            : paid
-                ? const Color(0xFFB45309)
-                : const Color(0xFF15803D);
+        ? const Color(0xFF15803D)
+        : paid
+        ? const Color(0xFFB45309)
+        : const Color(0xFF15803D);
 
     return Container(
       clipBehavior: Clip.antiAlias,
@@ -2865,9 +4007,15 @@ class _MyPapersTabState extends State<_MyPapersTab> {
           stops: [0.45, 1.0],
           colors: [Colors.white, Color(0xFFF0F9F2)],
         ),
-        border: Border.all(color: const Color(0xFF16A34A).withValues(alpha: 0.22)),
+        border: Border.all(
+          color: const Color(0xFF16A34A).withValues(alpha: 0.22),
+        ),
         boxShadow: [
-          BoxShadow(color: const Color(0xFF166534).withValues(alpha: 0.10), blurRadius: 16, offset: const Offset(0, 8)),
+          BoxShadow(
+            color: const Color(0xFF166534).withValues(alpha: 0.10),
+            blurRadius: 16,
+            offset: const Offset(0, 8),
+          ),
         ],
       ),
       child: Column(
@@ -2876,7 +4024,13 @@ class _MyPapersTabState extends State<_MyPapersTab> {
           Container(
             height: 3,
             decoration: const BoxDecoration(
-              gradient: LinearGradient(colors: [Color(0xFF16A34A), Color(0xFF86EFAC), Color(0x0086EFAC)]),
+              gradient: LinearGradient(
+                colors: [
+                  Color(0xFF16A34A),
+                  Color(0xFF86EFAC),
+                  Color(0x0086EFAC),
+                ],
+              ),
             ),
           ),
           Padding(
@@ -2896,11 +4050,24 @@ class _MyPapersTabState extends State<_MyPapersTab> {
                             paper.title,
                             maxLines: 3,
                             overflow: TextOverflow.ellipsis,
-                            style: const TextStyle(fontSize: 15, height: 1.25, fontWeight: FontWeight.w700, color: Color(0xFF0F172A)),
+                            style: const TextStyle(
+                              fontSize: 15,
+                              height: 1.25,
+                              fontWeight: FontWeight.w700,
+                              color: Color(0xFF0F172A),
+                            ),
                           ),
                           if (sub.isNotEmpty) ...[
                             const SizedBox(height: 3),
-                            Text(sub, maxLines: 1, overflow: TextOverflow.ellipsis, style: const TextStyle(fontSize: 12, color: Color(0xFF64748B))),
+                            Text(
+                              sub,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: const TextStyle(
+                                fontSize: 12,
+                                color: Color(0xFF64748B),
+                              ),
+                            ),
                           ],
                           const SizedBox(height: 8),
                           Text(
@@ -2911,8 +4078,8 @@ class _MyPapersTabState extends State<_MyPapersTab> {
                               color: paper.inProgress
                                   ? const Color(0xFFB45309)
                                   : attempts > 0
-                                      ? const Color(0xFF15803D)
-                                      : const Color(0xFF94A3B8),
+                                  ? const Color(0xFF15803D)
+                                  : const Color(0xFF94A3B8),
                             ),
                           ),
                         ],
@@ -2923,12 +4090,29 @@ class _MyPapersTabState extends State<_MyPapersTab> {
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 3),
-                          decoration: BoxDecoration(color: tagBg, borderRadius: BorderRadius.circular(20)),
-                          child: Text(state, style: TextStyle(fontSize: 11, fontWeight: FontWeight.w700, color: tagFg)),
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 9,
+                            vertical: 3,
+                          ),
+                          decoration: BoxDecoration(
+                            color: tagBg,
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: Text(
+                            state,
+                            style: TextStyle(
+                              fontSize: 11,
+                              fontWeight: FontWeight.w700,
+                              color: tagFg,
+                            ),
+                          ),
                         ),
                         const SizedBox(height: 6),
-                        _chip((paper.timeLimitMinutes ?? 0) > 0 ? '${paper.timeLimitMinutes} min' : 'Untimed'),
+                        _chip(
+                          (paper.timeLimitMinutes ?? 0) > 0
+                              ? '${paper.timeLimitMinutes} min'
+                              : 'Untimed',
+                        ),
                         const SizedBox(height: 6),
                         _chip('${paper.questionCount} questions'),
                       ],
@@ -2943,7 +4127,9 @@ class _MyPapersTabState extends State<_MyPapersTab> {
                       value: pct,
                       minHeight: 4,
                       backgroundColor: const Color(0xFFE2E8E4),
-                      valueColor: const AlwaysStoppedAnimation<Color>(Color(0xFF22C55E)),
+                      valueColor: const AlwaysStoppedAnimation<Color>(
+                        Color(0xFF22C55E),
+                      ),
                     ),
                   ),
                 ],
@@ -2953,18 +4139,31 @@ class _MyPapersTabState extends State<_MyPapersTab> {
                     children: [
                       if (usable) ...[
                         Expanded(
-                          child: _button('View details', filled: false, onTap: () => _showDetails(paper, state, progressText)),
+                          child: _button(
+                            'View details',
+                            filled: false,
+                            onTap: () =>
+                                _showDetails(paper, state, progressText),
+                          ),
                         ),
                         const SizedBox(width: 8),
                       ],
                       Expanded(
                         child: usable
                             ? _button(
-                                paper.inProgress ? 'Continue' : (attempts > 0 ? 'Attempt again' : 'Start'),
+                                paper.inProgress
+                                    ? 'Continue'
+                                    : (attempts > 0
+                                          ? 'Attempt again'
+                                          : 'Start'),
                                 filled: true,
                                 onTap: () => _openPaper(paper),
                               )
-                            : _button('Buy paper', filled: false, onTap: _openCatalogue),
+                            : _button(
+                                'Buy paper',
+                                filled: false,
+                                onTap: _openCatalogue,
+                              ),
                       ),
                     ],
                   ),
@@ -2986,6 +4185,7 @@ class _MyPapersTabState extends State<_MyPapersTab> {
       onRefresh: _load,
       color: const Color(0xFF16A34A),
       child: ListView(
+        controller: _scrollController,
         padding: const EdgeInsets.fromLTRB(16, 18, 16, 16),
         children: [
           Row(
@@ -2993,7 +4193,13 @@ class _MyPapersTabState extends State<_MyPapersTab> {
               const Expanded(
                 child: Text(
                   'Your papers.',
-                  style: TextStyle(fontSize: 30, height: 1.15, fontWeight: FontWeight.w800, letterSpacing: -0.8, color: Color(0xFF0F172A)),
+                  style: TextStyle(
+                    fontSize: 30,
+                    height: 1.15,
+                    fontWeight: FontWeight.w800,
+                    letterSpacing: -0.8,
+                    color: Color(0xFF0F172A),
+                  ),
                 ),
               ),
               GestureDetector(
@@ -3002,13 +4208,23 @@ class _MyPapersTabState extends State<_MyPapersTab> {
                   widget.onBrowsePractice();
                 },
                 child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 9),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 14,
+                    vertical: 9,
+                  ),
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(color: const Color(0xFFE2E8F0)),
                   ),
-                  child: const Text('Browse practice', style: TextStyle(fontSize: 13.5, fontWeight: FontWeight.w600, color: Color(0xFF334155))),
+                  child: const Text(
+                    'Browse practice',
+                    style: TextStyle(
+                      fontSize: 13.5,
+                      fontWeight: FontWeight.w600,
+                      color: Color(0xFF334155),
+                    ),
+                  ),
                 ),
               ),
             ],
@@ -3025,32 +4241,155 @@ class _MyPapersTabState extends State<_MyPapersTab> {
               padding: const EdgeInsets.symmetric(vertical: 40),
               child: Column(
                 children: [
-                  Text(_error!, textAlign: TextAlign.center, style: const TextStyle(color: Color(0xFF64748B), fontSize: 14)),
+                  Text(
+                    _error!,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                      color: Color(0xFF64748B),
+                      fontSize: 14,
+                    ),
+                  ),
                   const SizedBox(height: 12),
-                  TextButton(onPressed: _load, child: const Text('Try again', style: TextStyle(color: Color(0xFF16A34A), fontWeight: FontWeight.bold))),
+                  TextButton(
+                    onPressed: _load,
+                    child: const Text(
+                      'Try again',
+                      style: TextStyle(
+                        color: Color(0xFF16A34A),
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
                 ],
               ),
             )
           else if (_papers.isEmpty)
-            const Padding(
-              padding: EdgeInsets.symmetric(vertical: 40, horizontal: 12),
-              child: Text(
-                'Nothing here yet. Start any free paper from Practice, or buy a paper, and it shows up here with your score.',
-                textAlign: TextAlign.center,
-                style: TextStyle(color: Color(0xFF94A3B8), fontSize: 14, height: 1.4),
+            Padding(
+              padding: const EdgeInsets.only(top: 10),
+              child: Container(
+                height: (MediaQuery.sizeOf(context).height * 0.48)
+                    .clamp(330.0, 440.0)
+                    .toDouble(),
+                width: double.infinity,
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 22,
+                  vertical: 24,
+                ),
+                decoration: BoxDecoration(
+                  gradient: const LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [
+                      Color(0xFFF0FDF4),
+                      Color(0xFFFFFFFF),
+                      Color(0xFFF8FAFC),
+                    ],
+                  ),
+                  borderRadius: BorderRadius.circular(24),
+                  border: Border.all(color: const Color(0xFFDCEFE2)),
+                  boxShadow: const [
+                    BoxShadow(
+                      color: Color(0x0D14532D),
+                      blurRadius: 22,
+                      offset: Offset(0, 10),
+                    ),
+                  ],
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      width: 74,
+                      height: 74,
+                      decoration: BoxDecoration(
+                        gradient: const LinearGradient(
+                          colors: [Color(0xFF22C55E), Color(0xFF15803D)],
+                        ),
+                        borderRadius: BorderRadius.circular(24),
+                        boxShadow: const [
+                          BoxShadow(
+                            color: Color(0x3322C55E),
+                            blurRadius: 18,
+                            offset: Offset(0, 8),
+                          ),
+                        ],
+                      ),
+                      child: const Icon(
+                        Icons.auto_stories_rounded,
+                        color: Colors.white,
+                        size: 34,
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                    const Text(
+                      'Nothing to start here yet',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 19,
+                        height: 1.2,
+                        fontWeight: FontWeight.w800,
+                        letterSpacing: -0.3,
+                        color: Color(0xFF0F172A),
+                      ),
+                    ),
+                    const SizedBox(height: 9),
+                    const Text(
+                      'Try a paper from Practice or browse the library. Your score and progress will show up here after your first attempt.',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Color(0xFF64748B),
+                        fontSize: 13.5,
+                        height: 1.45,
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                    FilledButton.icon(
+                      onPressed: _openCatalogue,
+                      icon: const Icon(Icons.explore_rounded, size: 18),
+                      label: const Text('Browse all papers'),
+                      style: FilledButton.styleFrom(
+                        backgroundColor: const Color(0xFF16A34A),
+                        foregroundColor: Colors.white,
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 22,
+                          vertical: 13,
+                        ),
+                        textStyle: const TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w700,
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             )
           else
             for (final paper in _papers)
-              Padding(padding: const EdgeInsets.only(bottom: 10), child: _card(paper)),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 10),
+                child: _card(paper),
+              ),
 
-          const SizedBox(height: 4),
-          Center(
-            child: TextButton(
-              onPressed: _openCatalogue,
-              child: const Text('Browse all papers', style: TextStyle(color: Color(0xFF16A34A), fontSize: 13, fontWeight: FontWeight.bold)),
+          if (_papers.isNotEmpty || _error != null) ...[
+            const SizedBox(height: 4),
+            Center(
+              child: TextButton(
+                onPressed: _openCatalogue,
+                child: const Text(
+                  'Browse all papers',
+                  style: TextStyle(
+                    color: Color(0xFF16A34A),
+                    fontSize: 13,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
             ),
-          ),
+          ],
         ],
       ),
     );
@@ -3119,14 +4458,20 @@ class _QuizzesTabState extends State<_QuizzesTab> {
       final success = await widget.storefrontService.claimFree(quizId);
       if (success && mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Free paper added to your library!'), backgroundColor: Color(0xFF16A34A)),
+          const SnackBar(
+            content: Text('Free paper added to your library!'),
+            backgroundColor: Color(0xFF16A34A),
+          ),
         );
         _loadPapers();
       }
     } catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Failed to claim: $e'), backgroundColor: Colors.red),
+          SnackBar(
+            content: Text('Failed to claim: $e'),
+            backgroundColor: Colors.red,
+          ),
         );
       }
     }
@@ -3143,9 +4488,19 @@ class _QuizzesTabState extends State<_QuizzesTab> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text('PAST PAPERS & STOREFRONT', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Color(0xFF0F172A))),
+              const Text(
+                'PAST PAPERS & STOREFRONT',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFF0F172A),
+                ),
+              ),
               const SizedBox(height: 4),
-              const Text('Self-serve exam library & past term practice papers', style: TextStyle(fontSize: 12, color: Color(0xFF64748B))),
+              const Text(
+                'Self-serve exam library & past term practice papers',
+                style: TextStyle(fontSize: 12, color: Color(0xFF64748B)),
+              ),
               const SizedBox(height: 12),
               // Filter Chips
               SingleChildScrollView(
@@ -3172,16 +4527,16 @@ class _QuizzesTabState extends State<_QuizzesTab> {
           child: _isLoading
               ? AppShimmerCard.list(count: 4)
               : _errorMessage != null
-                  ? AppErrorCard(
-                      title: 'Unable to Load Papers',
-                      message: _errorMessage!,
-                      onRetry: _loadPapers,
-                    )
-                  : RefreshIndicator(
-                      onRefresh: _loadPapers,
-                      color: const Color(0xFF16A34A),
-                      child: _buildList(),
-                    ),
+              ? AppErrorCard(
+                  title: 'Unable to Load Papers',
+                  message: _errorMessage!,
+                  onRetry: _loadPapers,
+                )
+              : RefreshIndicator(
+                  onRefresh: _loadPapers,
+                  color: const Color(0xFF16A34A),
+                  child: _buildList(),
+                ),
         ),
       ],
     );
@@ -3208,24 +4563,39 @@ class _QuizzesTabState extends State<_QuizzesTab> {
   Widget _buildList() {
     if (_selectedFilter == 'my_papers') {
       if (_myPapers.isEmpty) {
-        return const Center(child: Text('No purchased or claimed papers yet.', style: TextStyle(color: Color(0xFF64748B))));
+        return const Center(
+          child: Text(
+            'No purchased or claimed papers yet.',
+            style: TextStyle(color: Color(0xFF64748B)),
+          ),
+        );
       }
       return ListView.builder(
         padding: const EdgeInsets.all(16),
         itemCount: _myPapers.length,
-        itemBuilder: (context, i) => _buildPaperCard(_myPapers[i], isMyPaper: true),
+        itemBuilder: (context, i) =>
+            _buildPaperCard(_myPapers[i], isMyPaper: true),
       );
     }
 
     var list = _papers;
     if (_selectedFilter == 'foundation') {
-      list = list.where((p) => p.course?.level?.toLowerCase() == 'foundation').toList();
+      list = list
+          .where((p) => p.course?.level?.toLowerCase() == 'foundation')
+          .toList();
     } else if (_selectedFilter == 'diploma') {
-      list = list.where((p) => p.course?.level?.toLowerCase() == 'diploma').toList();
+      list = list
+          .where((p) => p.course?.level?.toLowerCase() == 'diploma')
+          .toList();
     }
 
     if (list.isEmpty) {
-      return const Center(child: Text('No papers found for this filter.', style: TextStyle(color: Color(0xFF64748B))));
+      return const Center(
+        child: Text(
+          'No papers found for this filter.',
+          style: TextStyle(color: Color(0xFF64748B)),
+        ),
+      );
     }
 
     return ListView.builder(
@@ -3256,7 +4626,9 @@ class _QuizzesTabState extends State<_QuizzesTab> {
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
                 decoration: BoxDecoration(
-                  color: isFree ? const Color(0xFFDCFCE7) : const Color(0xFFEFF6FF),
+                  color: isFree
+                      ? const Color(0xFFDCFCE7)
+                      : const Color(0xFFEFF6FF),
                   borderRadius: BorderRadius.circular(6),
                 ),
                 child: Text(
@@ -3264,27 +4636,48 @@ class _QuizzesTabState extends State<_QuizzesTab> {
                   style: TextStyle(
                     fontSize: 11,
                     fontWeight: FontWeight.bold,
-                    color: isFree ? const Color(0xFF16A34A) : const Color(0xFF2563EB),
+                    color: isFree
+                        ? const Color(0xFF16A34A)
+                        : const Color(0xFF2563EB),
                   ),
                 ),
               ),
               if (paper.course != null)
                 Text(
                   paper.course!.name,
-                  style: const TextStyle(fontSize: 11, color: Color(0xFF64748B), fontWeight: FontWeight.w600),
+                  style: const TextStyle(
+                    fontSize: 11,
+                    color: Color(0xFF64748B),
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
             ],
           ),
           const SizedBox(height: 8),
-          Text(paper.title, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14, color: Color(0xFF0F172A))),
+          Text(
+            paper.title,
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 14,
+              color: Color(0xFF0F172A),
+            ),
+          ),
           if (paper.description != null && paper.description!.isNotEmpty) ...[
             const SizedBox(height: 4),
-            Text(paper.description!, maxLines: 2, overflow: TextOverflow.ellipsis, style: const TextStyle(fontSize: 11, color: Color(0xFF64748B))),
+            Text(
+              paper.description!,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+              style: const TextStyle(fontSize: 11, color: Color(0xFF64748B)),
+            ),
           ],
           const SizedBox(height: 10),
           Row(
             children: [
-              Text('${paper.questionCount} Questions · ${paper.timeLimitMinutes ?? 45} mins', style: const TextStyle(fontSize: 11, color: Color(0xFF94A3B8))),
+              Text(
+                '${paper.questionCount} Questions · ${paper.timeLimitMinutes ?? 45} mins',
+                style: const TextStyle(fontSize: 11, color: Color(0xFF94A3B8)),
+              ),
               const Spacer(),
               if (isFree && !isMyPaper)
                 OutlinedButton(
@@ -3292,10 +4685,18 @@ class _QuizzesTabState extends State<_QuizzesTab> {
                   style: OutlinedButton.styleFrom(
                     side: const BorderSide(color: Color(0xFF16A34A)),
                     foregroundColor: const Color(0xFF16A34A),
-                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 12,
+                      vertical: 4,
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(6),
+                    ),
                   ),
-                  child: const Text('Claim Free', style: TextStyle(fontSize: 11, fontWeight: FontWeight.bold)),
+                  child: const Text(
+                    'Claim Free',
+                    style: TextStyle(fontSize: 11, fontWeight: FontWeight.bold),
+                  ),
                 )
               else
                 ElevatedButton(
@@ -3314,10 +4715,18 @@ class _QuizzesTabState extends State<_QuizzesTab> {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFF16A34A),
                     foregroundColor: Colors.white,
-                    padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 14,
+                      vertical: 6,
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(6),
+                    ),
                   ),
-                  child: const Text('Start Quiz', style: TextStyle(fontSize: 11, fontWeight: FontWeight.bold)),
+                  child: const Text(
+                    'Start Quiz',
+                    style: TextStyle(fontSize: 11, fontWeight: FontWeight.bold),
+                  ),
                 ),
             ],
           ),
@@ -3354,7 +4763,6 @@ class _MoreTab extends StatefulWidget {
 }
 
 class _MoreTabState extends State<_MoreTab> {
-
   Future<void> _refresh() async {
     AppHaptics.light();
     await Future<void>.delayed(const Duration(milliseconds: 350));
@@ -3377,11 +4785,19 @@ class _MoreTabState extends State<_MoreTab> {
     showModalBottomSheet<void>(
       context: context,
       backgroundColor: Colors.white,
-      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(26))),
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(26)),
+      ),
       builder: (ctx) => ValueListenableBuilder<ThemeMode>(
         valueListenable: appThemeMode,
         builder: (ctx, mode, _) {
-          Widget option(ThemeMode value, String label, String hint, IconData icon, List<Color> preview) {
+          Widget option(
+            ThemeMode value,
+            String label,
+            String hint,
+            IconData icon,
+            List<Color> preview,
+          ) {
             final selected = mode == value;
             return Expanded(
               child: GestureDetector(
@@ -3395,7 +4811,12 @@ class _MoreTabState extends State<_MoreTab> {
                   decoration: BoxDecoration(
                     color: selected ? const Color(0xFFF0FDF4) : Colors.white,
                     borderRadius: BorderRadius.circular(18),
-                    border: Border.all(color: selected ? const Color(0xFF16A34A) : const Color(0xFFE2E8F0), width: selected ? 2 : 1),
+                    border: Border.all(
+                      color: selected
+                          ? const Color(0xFF16A34A)
+                          : const Color(0xFFE2E8F0),
+                      width: selected ? 2 : 1,
+                    ),
                   ),
                   child: Column(
                     children: [
@@ -3405,27 +4826,53 @@ class _MoreTabState extends State<_MoreTab> {
                           height: 62,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
-                            gradient: LinearGradient(begin: Alignment.centerLeft, end: Alignment.centerRight, stops: const [0.5, 0.5], colors: preview),
+                            gradient: LinearGradient(
+                              begin: Alignment.centerLeft,
+                              end: Alignment.centerRight,
+                              stops: const [0.5, 0.5],
+                              colors: preview,
+                            ),
                             border: Border.all(color: const Color(0xFFCBD5E1)),
                           ),
                           alignment: Alignment.center,
                           child: Container(
                             width: 30,
                             height: 30,
-                            decoration: const BoxDecoration(color: Color(0xFF16A34A), shape: BoxShape.circle),
+                            decoration: const BoxDecoration(
+                              color: Color(0xFF16A34A),
+                              shape: BoxShape.circle,
+                            ),
                             child: Icon(icon, size: 17, color: Colors.white),
                           ),
                         ),
                       ),
                       const SizedBox(height: 10),
-                      Text(label, style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w800, color: Color(0xFF0F172A))),
+                      Text(
+                        label,
+                        style: const TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w800,
+                          color: Color(0xFF0F172A),
+                        ),
+                      ),
                       const SizedBox(height: 2),
-                      Text(hint, textAlign: TextAlign.center, style: const TextStyle(fontSize: 10.5, color: Color(0xFF64748B))),
+                      Text(
+                        hint,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          fontSize: 10.5,
+                          color: Color(0xFF64748B),
+                        ),
+                      ),
                       const SizedBox(height: 8),
                       Icon(
-                        selected ? Icons.check_circle_rounded : Icons.circle_outlined,
+                        selected
+                            ? Icons.check_circle_rounded
+                            : Icons.circle_outlined,
                         size: 20,
-                        color: selected ? const Color(0xFF16A34A) : const Color(0xFFCBD5E1),
+                        color: selected
+                            ? const Color(0xFF16A34A)
+                            : const Color(0xFFCBD5E1),
                       ),
                     ],
                   ),
@@ -3445,21 +4892,52 @@ class _MoreTabState extends State<_MoreTab> {
                     child: Container(
                       width: 40,
                       height: 4,
-                      decoration: BoxDecoration(color: const Color(0xFFE2E8F0), borderRadius: BorderRadius.circular(4)),
+                      decoration: BoxDecoration(
+                        color: const Color(0xFFE2E8F0),
+                        borderRadius: BorderRadius.circular(4),
+                      ),
                     ),
                   ),
                   const SizedBox(height: 16),
-                  const Text('Appearance', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800, color: Color(0xFF0F172A))),
+                  const Text(
+                    'Appearance',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w800,
+                      color: Color(0xFF0F172A),
+                    ),
+                  ),
                   const SizedBox(height: 2),
-                  const Text('Choose how Quiz Lab looks on this phone.', style: TextStyle(fontSize: 13, color: Color(0xFF64748B))),
+                  const Text(
+                    'Choose how Quiz Lab looks on this phone.',
+                    style: TextStyle(fontSize: 13, color: Color(0xFF64748B)),
+                  ),
                   const SizedBox(height: 16),
                   Row(
                     children: [
-                      option(ThemeMode.system, 'System', 'Follows your phone', Icons.phone_android_rounded, const [Color(0xFFF8FAFC), Color(0xFF0E131E)]),
+                      option(
+                        ThemeMode.system,
+                        'System',
+                        'Follows your phone',
+                        Icons.phone_android_rounded,
+                        const [Color(0xFFF8FAFC), Color(0xFF0E131E)],
+                      ),
                       const SizedBox(width: 8),
-                      option(ThemeMode.light, 'Light', 'Bright and clear', Icons.light_mode_rounded, const [Color(0xFFF8FAFC), Color(0xFFF8FAFC)]),
+                      option(
+                        ThemeMode.light,
+                        'Light',
+                        'Bright and clear',
+                        Icons.light_mode_rounded,
+                        const [Color(0xFFF8FAFC), Color(0xFFF8FAFC)],
+                      ),
                       const SizedBox(width: 8),
-                      option(ThemeMode.dark, 'Dark', 'Easy at night', Icons.dark_mode_rounded, const [Color(0xFF0E131E), Color(0xFF0E131E)]),
+                      option(
+                        ThemeMode.dark,
+                        'Dark',
+                        'Easy at night',
+                        Icons.dark_mode_rounded,
+                        const [Color(0xFF0E131E), Color(0xFF0E131E)],
+                      ),
                     ],
                   ),
                 ],
@@ -3484,7 +4962,9 @@ class _MoreTabState extends State<_MoreTab> {
       context: context,
       isScrollControlled: true,
       backgroundColor: Colors.white,
-      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(26))),
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(26)),
+      ),
       builder: (ctx) => StatefulBuilder(
         builder: (ctx, setSheet) {
           Future<void> save() async {
@@ -3525,19 +5005,31 @@ class _MoreTabState extends State<_MoreTab> {
                 padding: const EdgeInsets.all(3),
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  border: Border.all(color: selected ? const Color(0xFF16A34A) : Colors.transparent, width: 2.5),
+                  border: Border.all(
+                    color: selected
+                        ? const Color(0xFF16A34A)
+                        : Colors.transparent,
+                    width: 2.5,
+                  ),
                 ),
                 child: AnimatedScale(
                   scale: selected ? 1.0 : 0.92,
                   duration: const Duration(milliseconds: 160),
-                  child: _avatarCircle(name: nameController.text, size: 52, preset: index, usePreset: index != null),
+                  child: _avatarCircle(
+                    name: nameController.text,
+                    size: 52,
+                    preset: index,
+                    usePreset: index != null,
+                  ),
                 ),
               ),
             );
           }
 
           return Padding(
-            padding: EdgeInsets.only(bottom: MediaQuery.of(ctx).viewInsets.bottom),
+            padding: EdgeInsets.only(
+              bottom: MediaQuery.of(ctx).viewInsets.bottom,
+            ),
             child: SafeArea(
               child: SingleChildScrollView(
                 padding: const EdgeInsets.fromLTRB(20, 10, 20, 18),
@@ -3549,20 +5041,42 @@ class _MoreTabState extends State<_MoreTab> {
                       child: Container(
                         width: 40,
                         height: 4,
-                        decoration: BoxDecoration(color: const Color(0xFFE2E8F0), borderRadius: BorderRadius.circular(4)),
+                        decoration: BoxDecoration(
+                          color: const Color(0xFFE2E8F0),
+                          borderRadius: BorderRadius.circular(4),
+                        ),
                       ),
                     ),
                     const SizedBox(height: 16),
-                    const Text('Edit profile', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800, color: Color(0xFF0F172A))),
+                    const Text(
+                      'Edit profile',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w800,
+                        color: Color(0xFF0F172A),
+                      ),
+                    ),
                     const SizedBox(height: 16),
 
                     // Live preview
-                    Center(child: _avatarCircle(name: nameController.text, size: 84, preset: picked, usePreset: picked != null)),
+                    Center(
+                      child: _avatarCircle(
+                        name: nameController.text,
+                        size: 84,
+                        preset: picked,
+                        usePreset: picked != null,
+                      ),
+                    ),
                     const SizedBox(height: 18),
 
                     const Text(
                       'CHOOSE AN AVATAR',
-                      style: TextStyle(fontSize: 10, fontWeight: FontWeight.w700, letterSpacing: 1.4, color: Color(0xFF94A3B8)),
+                      style: TextStyle(
+                        fontSize: 10,
+                        fontWeight: FontWeight.w700,
+                        letterSpacing: 1.4,
+                        color: Color(0xFF94A3B8),
+                      ),
                     ),
                     const SizedBox(height: 10),
                     Wrap(
@@ -3570,14 +5084,20 @@ class _MoreTabState extends State<_MoreTab> {
                       runSpacing: 8,
                       children: [
                         option(null), // initials
-                        for (var i = 0; i < _avatarPresets.length; i++) option(i),
+                        for (var i = 0; i < _avatarPresets.length; i++)
+                          option(i),
                       ],
                     ),
                     const SizedBox(height: 18),
 
                     const Text(
                       'YOUR NAME',
-                      style: TextStyle(fontSize: 10, fontWeight: FontWeight.w700, letterSpacing: 1.4, color: Color(0xFF94A3B8)),
+                      style: TextStyle(
+                        fontSize: 10,
+                        fontWeight: FontWeight.w700,
+                        letterSpacing: 1.4,
+                        color: Color(0xFF94A3B8),
+                      ),
                     ),
                     const SizedBox(height: 8),
                     TextField(
@@ -3590,15 +5110,41 @@ class _MoreTabState extends State<_MoreTab> {
                         hintText: 'Your name',
                         filled: true,
                         fillColor: const Color(0xFFF8FAFC),
-                        prefixIcon: const Icon(Icons.person_outline_rounded, color: Color(0xFF64748B)),
-                        border: OutlineInputBorder(borderRadius: BorderRadius.circular(14), borderSide: const BorderSide(color: Color(0xFFE2E8F0))),
-                        enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(14), borderSide: const BorderSide(color: Color(0xFFE2E8F0))),
-                        focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(14), borderSide: const BorderSide(color: Color(0xFF16A34A), width: 2)),
+                        prefixIcon: const Icon(
+                          Icons.person_outline_rounded,
+                          color: Color(0xFF64748B),
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(14),
+                          borderSide: const BorderSide(
+                            color: Color(0xFFE2E8F0),
+                          ),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(14),
+                          borderSide: const BorderSide(
+                            color: Color(0xFFE2E8F0),
+                          ),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(14),
+                          borderSide: const BorderSide(
+                            color: Color(0xFF16A34A),
+                            width: 2,
+                          ),
+                        ),
                       ),
                     ),
                     if (error != null) ...[
                       const SizedBox(height: 8),
-                      Text(error!, style: const TextStyle(fontSize: 12.5, color: Color(0xFFDC2626), fontWeight: FontWeight.w600)),
+                      Text(
+                        error!,
+                        style: const TextStyle(
+                          fontSize: 12.5,
+                          color: Color(0xFFDC2626),
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
                     ],
                     const SizedBox(height: 18),
                     SizedBox(
@@ -3610,15 +5156,28 @@ class _MoreTabState extends State<_MoreTab> {
                           backgroundColor: const Color(0xFF16A34A),
                           foregroundColor: Colors.white,
                           elevation: 0,
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(14),
+                          ),
                         ),
                         child: saving
                             ? const SizedBox(
                                 width: 22,
                                 height: 22,
-                                child: CircularProgressIndicator(strokeWidth: 2.5, valueColor: AlwaysStoppedAnimation<Color>(Colors.white)),
+                                child: CircularProgressIndicator(
+                                  strokeWidth: 2.5,
+                                  valueColor: AlwaysStoppedAnimation<Color>(
+                                    Colors.white,
+                                  ),
+                                ),
                               )
-                            : const Text('Save changes', style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
+                            : const Text(
+                                'Save changes',
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
                       ),
                     ),
                   ],
@@ -3634,7 +5193,10 @@ class _MoreTabState extends State<_MoreTab> {
   void _openDiscussions() {
     AppHaptics.light();
     Navigator.of(context).push(
-      MaterialPageRoute<void>(builder: (_) => DiscussionsScreen(discussionService: widget.discussionService)),
+      MaterialPageRoute<void>(
+        builder: (_) =>
+            DiscussionsScreen(discussionService: widget.discussionService),
+      ),
     );
   }
 
@@ -3661,32 +5223,62 @@ class _MoreTabState extends State<_MoreTab> {
     String? badge,
     required VoidCallback onTap,
   }) {
-    return Material(type: MaterialType.transparency, child: ListTile(
-      leading: Icon(icon, color: color, size: 20),
-      title: Row(
-        children: [
-          Flexible(
-            child: Text(title, style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w600)),
-          ),
-          if (badge != null) ...[
-            const SizedBox(width: 6),
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 1),
-              decoration: BoxDecoration(color: const Color(0xFFFEF3C7), borderRadius: BorderRadius.circular(4)),
-              child: Text(badge, style: const TextStyle(fontSize: 9, fontWeight: FontWeight.bold, color: Color(0xFFB45309))),
+    return Material(
+      type: MaterialType.transparency,
+      child: ListTile(
+        leading: Icon(icon, color: color, size: 20),
+        title: Row(
+          children: [
+            Flexible(
+              child: Text(
+                title,
+                style: const TextStyle(
+                  fontSize: 13,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
             ),
+            if (badge != null) ...[
+              const SizedBox(width: 6),
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 1),
+                decoration: BoxDecoration(
+                  color: const Color(0xFFFEF3C7),
+                  borderRadius: BorderRadius.circular(4),
+                ),
+                child: Text(
+                  badge,
+                  style: const TextStyle(
+                    fontSize: 9,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xFFB45309),
+                  ),
+                ),
+              ),
+            ],
           ],
-        ],
+        ),
+        subtitle: subtitle == null
+            ? null
+            : Text(
+                subtitle,
+                style: const TextStyle(fontSize: 11, color: Color(0xFF94A3B8)),
+              ),
+        trailing: const Icon(
+          Icons.arrow_forward_ios_rounded,
+          size: 14,
+          color: Color(0xFF94A3B8),
+        ),
+        onTap: onTap,
       ),
-      subtitle: subtitle == null ? null : Text(subtitle, style: const TextStyle(fontSize: 11, color: Color(0xFF94A3B8))),
-      trailing: const Icon(Icons.arrow_forward_ios_rounded, size: 14, color: Color(0xFF94A3B8)),
-      onTap: onTap,
-    ));
+    );
   }
 
   void _openFaqs() {
     AppHaptics.light();
-    Navigator.of(context).push(MaterialPageRoute<void>(builder: (_) => const FaqScreen()));
+    Navigator.of(
+      context,
+    ).push(MaterialPageRoute<void>(builder: (_) => const FaqScreen()));
   }
 
   void _showHelpSupportDialog() {
@@ -3699,7 +5291,9 @@ class _MoreTabState extends State<_MoreTab> {
       context: context,
       isScrollControlled: true,
       backgroundColor: Colors.white,
-      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      ),
       builder: (ctx) => DraggableScrollableSheet(
         initialChildSize: 0.75,
         maxChildSize: 0.95,
@@ -3713,7 +5307,14 @@ class _MoreTabState extends State<_MoreTab> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(title, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Color(0xFF0F172A))),
+                  Text(
+                    title,
+                    style: const TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xFF0F172A),
+                    ),
+                  ),
                   IconButton(
                     icon: const Icon(Icons.close_rounded),
                     onPressed: () => Navigator.pop(ctx),
@@ -3724,23 +5325,31 @@ class _MoreTabState extends State<_MoreTab> {
               const SizedBox(height: 8),
               Text(
                 content,
-                style: const TextStyle(fontSize: 13, color: Color(0xFF475569), height: 1.6),
+                style: const TextStyle(
+                  fontSize: 13,
+                  color: Color(0xFF475569),
+                  height: 1.6,
+                ),
               ),
               if (title == 'Refund & Cancellation') ...[
                 const SizedBox(height: 18),
                 Row(
                   children: [
-                    Expanded(child: OutlinedButton.icon(
-                      onPressed: () => callSupport(ctx),
-                      icon: const Icon(Icons.call_outlined),
-                      label: const Text('Call support'),
-                    )),
+                    Expanded(
+                      child: OutlinedButton.icon(
+                        onPressed: () => callSupport(ctx),
+                        icon: const Icon(Icons.call_outlined),
+                        label: const Text('Call support'),
+                      ),
+                    ),
                     const SizedBox(width: 10),
-                    Expanded(child: OutlinedButton.icon(
-                      onPressed: () => emailSupport(ctx),
-                      icon: const Icon(Icons.email_outlined),
-                      label: const Text('Email support'),
-                    )),
+                    Expanded(
+                      child: OutlinedButton.icon(
+                        onPressed: () => emailSupport(ctx),
+                        icon: const Icon(Icons.email_outlined),
+                        label: const Text('Email support'),
+                      ),
+                    ),
                   ],
                 ),
               ],
@@ -3760,12 +5369,23 @@ class _MoreTabState extends State<_MoreTab> {
       context: context,
       builder: (ctx) => StatefulBuilder(
         builder: (ctx, setDialogState) => AlertDialog(
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),
           title: const Row(
             children: [
-              Icon(Icons.warning_amber_rounded, color: Color(0xFFDC2626), size: 24),
+              Icon(
+                Icons.warning_amber_rounded,
+                color: Color(0xFFDC2626),
+                size: 24,
+              ),
               SizedBox(width: 8),
-              Flexible(child: Text('Request Account Deletion', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16))),
+              Flexible(
+                child: Text(
+                  'Request Account Deletion',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                ),
+              ),
             ],
           ),
           content: SizedBox(
@@ -3777,25 +5397,59 @@ class _MoreTabState extends State<_MoreTab> {
                 children: [
                   const Text(
                     'Choose a reason and send your request. Our manager will review it before your account and its data are deleted.',
-                    style: TextStyle(fontSize: 13, color: Color(0xFF475569), height: 1.4),
+                    style: TextStyle(
+                      fontSize: 13,
+                      color: Color(0xFF475569),
+                      height: 1.4,
+                    ),
                   ),
                   const SizedBox(height: 16),
-                  Text('Name: ${widget.user?.name ?? '—'}', style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w600)),
+                  Text(
+                    'Name: ${widget.user?.name ?? '—'}',
+                    style: const TextStyle(
+                      fontSize: 13,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
                   const SizedBox(height: 4),
-                  Text('Email: ${widget.user?.email ?? '—'}', style: const TextStyle(fontSize: 13, color: Color(0xFF475569))),
+                  Text(
+                    'Email: ${widget.user?.email ?? '—'}',
+                    style: const TextStyle(
+                      fontSize: 13,
+                      color: Color(0xFF475569),
+                    ),
+                  ),
                   const SizedBox(height: 16),
                   DropdownButtonFormField<String>(
                     key: ValueKey(selectedReason),
                     initialValue: selectedReason,
-                    decoration: const InputDecoration(labelText: 'Reason for leaving', border: OutlineInputBorder()),
+                    decoration: const InputDecoration(
+                      labelText: 'Reason for leaving',
+                      border: OutlineInputBorder(),
+                    ),
                     items: const [
-                      DropdownMenuItem(value: 'no_longer_needed', child: Text('I no longer need the account')),
-                      DropdownMenuItem(value: 'privacy_concerns', child: Text('Privacy concerns')),
-                      DropdownMenuItem(value: 'another_account', child: Text('I am using another account')),
-                      DropdownMenuItem(value: 'app_issue', child: Text('I had an issue with the app')),
+                      DropdownMenuItem(
+                        value: 'no_longer_needed',
+                        child: Text('I no longer need the account'),
+                      ),
+                      DropdownMenuItem(
+                        value: 'privacy_concerns',
+                        child: Text('Privacy concerns'),
+                      ),
+                      DropdownMenuItem(
+                        value: 'another_account',
+                        child: Text('I am using another account'),
+                      ),
+                      DropdownMenuItem(
+                        value: 'app_issue',
+                        child: Text('I had an issue with the app'),
+                      ),
                       DropdownMenuItem(value: 'other', child: Text('Other')),
                     ],
-                    onChanged: sending ? null : (value) => setDialogState(() => selectedReason = value),
+                    onChanged: sending
+                        ? null
+                        : (value) =>
+                              setDialogState(() => selectedReason = value),
                   ),
                   const SizedBox(height: 12),
                   TextField(
@@ -3810,7 +5464,11 @@ class _MoreTabState extends State<_MoreTab> {
                   ),
                   const Text(
                     'Your name, email, account ID, reason, and any note above will be emailed to admin@genziitian.org and shown in the web manager dashboard.',
-                    style: TextStyle(fontSize: 11, color: Color(0xFF64748B), height: 1.4),
+                    style: TextStyle(
+                      fontSize: 11,
+                      color: Color(0xFF64748B),
+                      height: 1.4,
+                    ),
                   ),
                 ],
               ),
@@ -3819,7 +5477,10 @@ class _MoreTabState extends State<_MoreTab> {
           actions: [
             TextButton(
               onPressed: sending ? null : () => Navigator.pop(ctx, false),
-              child: const Text('Cancel', style: TextStyle(color: Color(0xFF64748B))),
+              child: const Text(
+                'Cancel',
+                style: TextStyle(color: Color(0xFF64748B)),
+              ),
             ),
             ElevatedButton(
               onPressed: sending || selectedReason == null
@@ -3827,24 +5488,32 @@ class _MoreTabState extends State<_MoreTab> {
                   : () async {
                       AppHaptics.heavy();
                       setDialogState(() => sending = true);
-                      final submitted = await widget.authState.requestAccountDeletion(
-                        reason: selectedReason!,
-                        details: detailsController.text,
-                      );
+                      final submitted = await widget.authState
+                          .requestAccountDeletion(
+                            reason: selectedReason!,
+                            details: detailsController.text,
+                          );
                       if (!ctx.mounted) return;
                       if (submitted) {
                         Navigator.pop(ctx, true);
                       } else {
                         setDialogState(() => sending = false);
                         ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text('Could not send your request. Please try again.'), backgroundColor: Colors.red),
+                          const SnackBar(
+                            content: Text(
+                              'Could not send your request. Please try again.',
+                            ),
+                            backgroundColor: Colors.red,
+                          ),
                         );
                       }
                     },
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color(0xFFDC2626),
                 foregroundColor: Colors.white,
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
               ),
               child: Text(sending ? 'Sending…' : 'Send Deletion Request'),
             ),
@@ -3858,9 +5527,14 @@ class _MoreTabState extends State<_MoreTab> {
         context: context,
         builder: (doneContext) => AlertDialog(
           title: const Text('Request sent'),
-          content: const Text('Your deletion request was sent to our manager for review. Your account is still active until the request is processed.'),
+          content: const Text(
+            'Your deletion request was sent to our manager for review. Your account is still active until the request is processed.',
+          ),
           actions: [
-            TextButton(onPressed: () => Navigator.pop(doneContext), child: const Text('Done')),
+            TextButton(
+              onPressed: () => Navigator.pop(doneContext),
+              child: const Text('Done'),
+            ),
           ],
         ),
       );
@@ -3882,60 +5556,103 @@ class _MoreTabState extends State<_MoreTab> {
             behavior: HitTestBehavior.opaque,
             onTap: _showEditProfile,
             child: Container(
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(16),
-              border: Border.all(color: const Color(0xFFE2E8F0)),
-            ),
-            child: Row(
-              children: [
-                Stack(
-                  clipBehavior: Clip.none,
-                  children: [
-                    _UserAvatar(name: user?.name, size: 56),
-                    Positioned(
-                      right: -4,
-                      bottom: -4,
-                      child: Container(
-                        width: 22,
-                        height: 22,
-                        decoration: BoxDecoration(
-                          color: const Color(0xFF16A34A),
-                          shape: BoxShape.circle,
-                          border: Border.all(color: Colors.white, width: 2),
-                        ),
-                        child: const Icon(Icons.edit_rounded, size: 11, color: Colors.white),
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(width: 14),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(16),
+                border: Border.all(color: const Color(0xFFE2E8F0)),
+              ),
+              child: Row(
+                children: [
+                  Stack(
+                    clipBehavior: Clip.none,
                     children: [
-                      Text(user?.name ?? 'Student', style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
-                      Text(user?.email ?? '', style: const TextStyle(fontSize: 12, color: Color(0xFF64748B))),
-                      const SizedBox(height: 6),
-                      Row(
-                        children: [
-                          Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-                            decoration: BoxDecoration(color: const Color(0xFFDCFCE7), borderRadius: BorderRadius.circular(6)),
-                            child: Text('Level ${user?.level ?? 1}', style: const TextStyle(color: Color(0xFF16A34A), fontWeight: FontWeight.bold, fontSize: 11)),
+                      _UserAvatar(name: user?.name, size: 56),
+                      Positioned(
+                        right: -4,
+                        bottom: -4,
+                        child: Container(
+                          width: 22,
+                          height: 22,
+                          decoration: BoxDecoration(
+                            color: const Color(0xFF16A34A),
+                            shape: BoxShape.circle,
+                            border: Border.all(color: Colors.white, width: 2),
                           ),
-                          const SizedBox(width: 8),
-                          Text('${user?.xp ?? 0} XP', style: const TextStyle(color: Color(0xFF64748B), fontWeight: FontWeight.w600, fontSize: 11)),
-                        ],
+                          child: const Icon(
+                            Icons.edit_rounded,
+                            size: 11,
+                            color: Colors.white,
+                          ),
+                        ),
                       ),
                     ],
                   ),
-                ),
-                const Text('Edit', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w700, color: Color(0xFF16A34A))),
-              ],
+                  const SizedBox(width: 14),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          user?.name ?? 'Student',
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                          ),
+                        ),
+                        Text(
+                          user?.email ?? '',
+                          style: const TextStyle(
+                            fontSize: 12,
+                            color: Color(0xFF64748B),
+                          ),
+                        ),
+                        const SizedBox(height: 6),
+                        Row(
+                          children: [
+                            Container(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 8,
+                                vertical: 2,
+                              ),
+                              decoration: BoxDecoration(
+                                color: const Color(0xFFDCFCE7),
+                                borderRadius: BorderRadius.circular(6),
+                              ),
+                              child: Text(
+                                'Level ${user?.level ?? 1}',
+                                style: const TextStyle(
+                                  color: Color(0xFF16A34A),
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 11,
+                                ),
+                              ),
+                            ),
+                            const SizedBox(width: 8),
+                            Text(
+                              '${user?.xp ?? 0} XP',
+                              style: const TextStyle(
+                                color: Color(0xFF64748B),
+                                fontWeight: FontWeight.w600,
+                                fontSize: 11,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  const Text(
+                    'Edit',
+                    style: TextStyle(
+                      fontSize: 13,
+                      fontWeight: FontWeight.w700,
+                      color: Color(0xFF16A34A),
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
           ),
           const SizedBox(height: 16),
 
@@ -3944,7 +5661,15 @@ class _MoreTabState extends State<_MoreTab> {
           const SizedBox(height: 20),
 
           // Everything the website has, one tap away
-          const Text('EXPLORE', style: TextStyle(fontSize: 11, fontWeight: FontWeight.w700, letterSpacing: 1, color: Color(0xFF64748B))),
+          const Text(
+            'EXPLORE',
+            style: TextStyle(
+              fontSize: 11,
+              fontWeight: FontWeight.w700,
+              letterSpacing: 1,
+              color: Color(0xFF64748B),
+            ),
+          ),
           const SizedBox(height: 8),
           Container(
             decoration: BoxDecoration(
@@ -3968,7 +5693,8 @@ class _MoreTabState extends State<_MoreTab> {
                   title: 'Video Solutions',
                   badge: 'PRO',
                   subtitle: 'Step-by-step video answers',
-                  onTap: () => _openInApp('/video-solutions', 'Video Solutions'),
+                  onTap: () =>
+                      _openInApp('/video-solutions', 'Video Solutions'),
                 ),
               ],
             ),
@@ -3976,7 +5702,15 @@ class _MoreTabState extends State<_MoreTab> {
           const SizedBox(height: 20),
 
           // Settings & Preferences
-          const Text('ACCOUNT & PREFERENCES', style: TextStyle(fontSize: 11, fontWeight: FontWeight.w700, letterSpacing: 1, color: Color(0xFF64748B))),
+          const Text(
+            'ACCOUNT & PREFERENCES',
+            style: TextStyle(
+              fontSize: 11,
+              fontWeight: FontWeight.w700,
+              letterSpacing: 1,
+              color: Color(0xFF64748B),
+            ),
+          ),
           const SizedBox(height: 8),
           Container(
             decoration: BoxDecoration(
@@ -3986,47 +5720,113 @@ class _MoreTabState extends State<_MoreTab> {
             ),
             child: Column(
               children: [
-                Material(type: MaterialType.transparency, child: ListTile(
-                  leading: const Icon(Icons.palette_outlined, color: Color(0xFF64748B), size: 20),
-                  title: const Text('Theme / Appearance', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600)),
-                  trailing: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      ValueListenableBuilder<ThemeMode>(
-                        valueListenable: appThemeMode,
-                        builder: (context, mode, _) => Text(
-                          _themeLabel(mode),
-                          style: const TextStyle(fontSize: 12, color: Color(0xFF94A3B8), fontWeight: FontWeight.bold),
-                        ),
+                Material(
+                  type: MaterialType.transparency,
+                  child: ListTile(
+                    leading: const Icon(
+                      Icons.palette_outlined,
+                      color: Color(0xFF64748B),
+                      size: 20,
+                    ),
+                    title: const Text(
+                      'Theme / Appearance',
+                      style: TextStyle(
+                        fontSize: 13,
+                        fontWeight: FontWeight.w600,
                       ),
-                      const SizedBox(width: 6),
-                      const Icon(Icons.arrow_forward_ios_rounded, size: 12, color: Color(0xFF94A3B8)),
-                    ],
+                    ),
+                    trailing: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        ValueListenableBuilder<ThemeMode>(
+                          valueListenable: appThemeMode,
+                          builder: (context, mode, _) => Text(
+                            _themeLabel(mode),
+                            style: const TextStyle(
+                              fontSize: 12,
+                              color: Color(0xFF94A3B8),
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 6),
+                        const Icon(
+                          Icons.arrow_forward_ios_rounded,
+                          size: 12,
+                          color: Color(0xFF94A3B8),
+                        ),
+                      ],
+                    ),
+                    onTap: _showThemeSelector,
                   ),
-                  onTap: _showThemeSelector,
-                )),
+                ),
                 const Divider(height: 1, color: Color(0xFFF1F5F9)),
-                Material(type: MaterialType.transparency, child: ListTile(
-                  leading: const Icon(Icons.support_agent_rounded, color: Color(0xFF0284C7), size: 20),
-                  title: const Text('Help & Support Desk', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600)),
-                  trailing: const Icon(Icons.arrow_forward_ios_rounded, size: 14, color: Color(0xFF94A3B8)),
-                  onTap: _showHelpSupportDialog,
-                )),
+                Material(
+                  type: MaterialType.transparency,
+                  child: ListTile(
+                    leading: const Icon(
+                      Icons.support_agent_rounded,
+                      color: Color(0xFF0284C7),
+                      size: 20,
+                    ),
+                    title: const Text(
+                      'Help & Support Desk',
+                      style: TextStyle(
+                        fontSize: 13,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    trailing: const Icon(
+                      Icons.arrow_forward_ios_rounded,
+                      size: 14,
+                      color: Color(0xFF94A3B8),
+                    ),
+                    onTap: _showHelpSupportDialog,
+                  ),
+                ),
                 const Divider(height: 1, color: Color(0xFFF1F5F9)),
-                Material(type: MaterialType.transparency, child: ListTile(
-                  leading: const Icon(Icons.quiz_outlined, color: Color(0xFF7C3AED), size: 20),
-                  title: const Text('FAQs', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600)),
-                  subtitle: const Text('Quick answers to common questions', style: TextStyle(fontSize: 11, color: Color(0xFF94A3B8))),
-                  trailing: const Icon(Icons.arrow_forward_ios_rounded, size: 14, color: Color(0xFF94A3B8)),
-                  onTap: _openFaqs,
-                )),
+                Material(
+                  type: MaterialType.transparency,
+                  child: ListTile(
+                    leading: const Icon(
+                      Icons.quiz_outlined,
+                      color: Color(0xFF7C3AED),
+                      size: 20,
+                    ),
+                    title: const Text(
+                      'FAQs',
+                      style: TextStyle(
+                        fontSize: 13,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    subtitle: const Text(
+                      'Quick answers to common questions',
+                      style: TextStyle(fontSize: 11, color: Color(0xFF94A3B8)),
+                    ),
+                    trailing: const Icon(
+                      Icons.arrow_forward_ios_rounded,
+                      size: 14,
+                      color: Color(0xFF94A3B8),
+                    ),
+                    onTap: _openFaqs,
+                  ),
+                ),
               ],
             ),
           ),
           const SizedBox(height: 20),
 
           // Legal & Compliance
-          const Text('LEGAL & COMPLIANCE', style: TextStyle(fontSize: 11, fontWeight: FontWeight.w700, letterSpacing: 1, color: Color(0xFF64748B))),
+          const Text(
+            'LEGAL & COMPLIANCE',
+            style: TextStyle(
+              fontSize: 11,
+              fontWeight: FontWeight.w700,
+              letterSpacing: 1,
+              color: Color(0xFF64748B),
+            ),
+          ),
           const SizedBox(height: 8),
           Container(
             decoration: BoxDecoration(
@@ -4036,33 +5836,111 @@ class _MoreTabState extends State<_MoreTab> {
             ),
             child: Column(
               children: [
-                Material(type: MaterialType.transparency, child: ListTile(
-                  leading: const Icon(Icons.description_outlined, color: Color(0xFF64748B), size: 20),
-                  title: const Text('Terms & Conditions', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600)),
-                  trailing: const Icon(Icons.arrow_forward_ios_rounded, size: 14, color: Color(0xFF94A3B8)),
-                  onTap: () => _showLegalSheet('Terms & Conditions', LegalDocuments.terms),
-                )),
+                Material(
+                  type: MaterialType.transparency,
+                  child: ListTile(
+                    leading: const Icon(
+                      Icons.description_outlined,
+                      color: Color(0xFF64748B),
+                      size: 20,
+                    ),
+                    title: const Text(
+                      'Terms & Conditions',
+                      style: TextStyle(
+                        fontSize: 13,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    trailing: const Icon(
+                      Icons.arrow_forward_ios_rounded,
+                      size: 14,
+                      color: Color(0xFF94A3B8),
+                    ),
+                    onTap: () => _showLegalSheet(
+                      'Terms & Conditions',
+                      LegalDocuments.terms,
+                    ),
+                  ),
+                ),
                 const Divider(height: 1, color: Color(0xFFF1F5F9)),
-                Material(type: MaterialType.transparency, child: ListTile(
-                  leading: const Icon(Icons.receipt_long_outlined, color: Color(0xFF64748B), size: 20),
-                  title: const Text('Refund & Cancellation', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600)),
-                  trailing: const Icon(Icons.arrow_forward_ios_rounded, size: 14, color: Color(0xFF94A3B8)),
-                  onTap: () => _showLegalSheet('Refund & Cancellation', LegalDocuments.refunds),
-                )),
+                Material(
+                  type: MaterialType.transparency,
+                  child: ListTile(
+                    leading: const Icon(
+                      Icons.receipt_long_outlined,
+                      color: Color(0xFF64748B),
+                      size: 20,
+                    ),
+                    title: const Text(
+                      'Refund & Cancellation',
+                      style: TextStyle(
+                        fontSize: 13,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    trailing: const Icon(
+                      Icons.arrow_forward_ios_rounded,
+                      size: 14,
+                      color: Color(0xFF94A3B8),
+                    ),
+                    onTap: () => _showLegalSheet(
+                      'Refund & Cancellation',
+                      LegalDocuments.refunds,
+                    ),
+                  ),
+                ),
                 const Divider(height: 1, color: Color(0xFFF1F5F9)),
-                Material(type: MaterialType.transparency, child: ListTile(
-                  leading: const Icon(Icons.privacy_tip_outlined, color: Color(0xFF64748B), size: 20),
-                  title: const Text('Privacy Policy', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600)),
-                  trailing: const Icon(Icons.arrow_forward_ios_rounded, size: 14, color: Color(0xFF94A3B8)),
-                  onTap: () => _showLegalSheet('Privacy Policy', LegalDocuments.privacy),
-                )),
+                Material(
+                  type: MaterialType.transparency,
+                  child: ListTile(
+                    leading: const Icon(
+                      Icons.privacy_tip_outlined,
+                      color: Color(0xFF64748B),
+                      size: 20,
+                    ),
+                    title: const Text(
+                      'Privacy Policy',
+                      style: TextStyle(
+                        fontSize: 13,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    trailing: const Icon(
+                      Icons.arrow_forward_ios_rounded,
+                      size: 14,
+                      color: Color(0xFF94A3B8),
+                    ),
+                    onTap: () => _showLegalSheet(
+                      'Privacy Policy',
+                      LegalDocuments.privacy,
+                    ),
+                  ),
+                ),
                 const Divider(height: 1, color: Color(0xFFF1F5F9)),
-                Material(type: MaterialType.transparency, child: ListTile(
-                  leading: const Icon(Icons.delete_forever_rounded, color: Color(0xFFDC2626), size: 20),
-                  title: const Text('Delete Account & Data', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600, color: Color(0xFFDC2626))),
-                  trailing: const Icon(Icons.arrow_forward_ios_rounded, size: 14, color: Color(0xFFFCA5A5)),
-                  onTap: _showDeleteAccountDialog,
-                )),
+                Material(
+                  type: MaterialType.transparency,
+                  child: ListTile(
+                    leading: const Icon(
+                      Icons.delete_forever_rounded,
+                      color: Color(0xFFDC2626),
+                      size: 20,
+                    ),
+                    title: const Text(
+                      'Delete Account & Data',
+                      style: TextStyle(
+                        fontSize: 13,
+                        fontWeight: FontWeight.w600,
+                        color: Color(0xFFDC2626),
+                      ),
+                    ),
+                    trailing: const Icon(
+                      Icons.arrow_forward_ios_rounded,
+                      size: 14,
+                      color: Color(0xFFFCA5A5),
+                    ),
+                    onTap: _showDeleteAccountDialog,
+                  ),
+                ),
               ],
             ),
           ),
@@ -4077,10 +5955,18 @@ class _MoreTabState extends State<_MoreTab> {
                 confirmSignOut(context, widget.authState);
               },
               icon: const Icon(Icons.logout_rounded, color: Color(0xFFDC2626)),
-              label: const Text('Sign Out', style: TextStyle(color: Color(0xFFDC2626), fontWeight: FontWeight.bold)),
+              label: const Text(
+                'Sign Out',
+                style: TextStyle(
+                  color: Color(0xFFDC2626),
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
               style: OutlinedButton.styleFrom(
                 side: const BorderSide(color: Color(0xFFFCA5A5)),
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
               ),
             ),
           ),
@@ -4103,7 +5989,11 @@ class _MoreTabState extends State<_MoreTab> {
                 SizedBox(height: 4),
                 Text(
                   'v1.0.0 (Build 1) · Android 14+ Release',
-                  style: TextStyle(fontSize: 11, color: Color(0xFF94A3B8), fontWeight: FontWeight.w500),
+                  style: TextStyle(
+                    fontSize: 11,
+                    color: Color(0xFF94A3B8),
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
                 SizedBox(height: 2),
                 Text(
@@ -4159,28 +6049,32 @@ class _TimedExamSessionScreenState extends State<TimedExamSessionScreen> {
   List<Map<String, dynamic>> _generateQuestions(int count) {
     final pool = [
       {
-        'stem': 'Evaluate the definite integral using standard calculus principles:\n\n\$\$\\int_0^2 (x^2 + 1) \\, dx = ?\$\$',
+        'stem':
+            'Evaluate the definite integral using standard calculus principles:\n\n\$\$\\int_0^2 (x^2 + 1) \\, dx = ?\$\$',
         'type': 'Single Choice (MCQ)',
         'marks': '+2.0 / -0.5',
         'options': ['8/3', '14/3', '12/3', '10/3'],
         'correct': 1,
       },
       {
-        'stem': 'Let X be a normally distributed random variable with mean μ = 10 and variance σ² = 4. What is P(X ≤ 10)?',
+        'stem':
+            'Let X be a normally distributed random variable with mean μ = 10 and variance σ² = 4. What is P(X ≤ 10)?',
         'type': 'Single Choice (MCQ)',
         'marks': '+2.0 / -0.5',
         'options': ['0.25', '0.50', '0.75', '1.00'],
         'correct': 1,
       },
       {
-        'stem': 'What is the asymptotic worst-case time complexity of binary search on a sorted list of size N?',
+        'stem':
+            'What is the asymptotic worst-case time complexity of binary search on a sorted list of size N?',
         'type': 'Single Choice (MCQ)',
         'marks': '+2.0 / -0.5',
         'options': ['O(N)', 'O(log N)', 'O(N log N)', 'O(1)'],
         'correct': 1,
       },
       {
-        'stem': 'Which of the following matrices has determinant equal to zero (Singular Matrix)?\n\n\$\$A = \\begin{pmatrix} 2 & 4 \\\\ 1 & 2 \\end{pmatrix}\$\$',
+        'stem':
+            'Which of the following matrices has determinant equal to zero (Singular Matrix)?\n\n\$\$A = \\begin{pmatrix} 2 & 4 \\\\ 1 & 2 \\end{pmatrix}\$\$',
         'type': 'Single Choice (MCQ)',
         'marks': '+2.0 / -0.5',
         'options': ['det(A) = 0', 'det(A) = 2', 'det(A) = -2', 'det(A) = 8'],
@@ -4238,7 +6132,9 @@ class _TimedExamSessionScreenState extends State<TimedExamSessionScreen> {
   void _openPalette() {
     showModalBottomSheet(
       context: context,
-      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      ),
       backgroundColor: Colors.white,
       builder: (ctx) {
         return StatefulBuilder(
@@ -4256,7 +6152,14 @@ class _TimedExamSessionScreenState extends State<TimedExamSessionScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Text('Question Palette', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Color(0xFF0F172A))),
+                      const Text(
+                        'Question Palette',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xFF0F172A),
+                        ),
+                      ),
                       IconButton(
                         icon: const Icon(Icons.close_rounded, size: 20),
                         onPressed: () => Navigator.pop(ctx),
@@ -4267,9 +6170,15 @@ class _TimedExamSessionScreenState extends State<TimedExamSessionScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      _paletteBadge(const Color(0xFF16A34A), '$answered Answered'),
+                      _paletteBadge(
+                        const Color(0xFF16A34A),
+                        '$answered Answered',
+                      ),
                       _paletteBadge(const Color(0xFFF59E0B), '$review Review'),
-                      _paletteBadge(const Color(0xFF94A3B8), '$unvisited Unseen'),
+                      _paletteBadge(
+                        const Color(0xFF94A3B8),
+                        '$unvisited Unseen',
+                      ),
                     ],
                   ),
                   const SizedBox(height: 14),
@@ -4277,12 +6186,13 @@ class _TimedExamSessionScreenState extends State<TimedExamSessionScreen> {
                     constraints: const BoxConstraints(maxHeight: 260),
                     child: GridView.builder(
                       shrinkWrap: true,
-                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 6,
-                        mainAxisSpacing: 8,
-                        crossAxisSpacing: 8,
-                        childAspectRatio: 1.1,
-                      ),
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 6,
+                            mainAxisSpacing: 8,
+                            crossAxisSpacing: 8,
+                            childAspectRatio: 1.1,
+                          ),
                       itemCount: widget.questionCount,
                       itemBuilder: (ctx, i) {
                         final isAns = _selectedAnswers.containsKey(i);
@@ -4309,14 +6219,20 @@ class _TimedExamSessionScreenState extends State<TimedExamSessionScreen> {
                               color: bg,
                               borderRadius: BorderRadius.circular(8),
                               border: Border.all(
-                                color: isCurrent ? const Color(0xFF16A34A) : Colors.transparent,
+                                color: isCurrent
+                                    ? const Color(0xFF16A34A)
+                                    : Colors.transparent,
                                 width: isCurrent ? 2 : 1,
                               ),
                             ),
                             alignment: Alignment.center,
                             child: Text(
                               '${i + 1}',
-                              style: TextStyle(color: fg, fontWeight: FontWeight.bold, fontSize: 13),
+                              style: TextStyle(
+                                color: fg,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 13,
+                              ),
                             ),
                           ),
                         );
@@ -4335,9 +6251,20 @@ class _TimedExamSessionScreenState extends State<TimedExamSessionScreen> {
   Widget _paletteBadge(Color col, String label) {
     return Row(
       children: [
-        Container(width: 10, height: 10, decoration: BoxDecoration(color: col, shape: BoxShape.circle)),
+        Container(
+          width: 10,
+          height: 10,
+          decoration: BoxDecoration(color: col, shape: BoxShape.circle),
+        ),
         const SizedBox(width: 4),
-        Text(label, style: const TextStyle(fontSize: 11, fontWeight: FontWeight.bold, color: Color(0xFF64748B))),
+        Text(
+          label,
+          style: const TextStyle(
+            fontSize: 11,
+            fontWeight: FontWeight.bold,
+            color: Color(0xFF64748B),
+          ),
+        ),
       ],
     );
   }
@@ -4360,23 +6287,44 @@ class _TimedExamSessionScreenState extends State<TimedExamSessionScreen> {
       context: context,
       builder: (ctx) => AlertDialog(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-        title: const Text('Submit Paper?', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+        title: const Text(
+          'Submit Paper?',
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+        ),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text('Verify your submission summary before finishing:', style: TextStyle(fontSize: 13, color: Color(0xFF64748B))),
+            const Text(
+              'Verify your submission summary before finishing:',
+              style: TextStyle(fontSize: 13, color: Color(0xFF64748B)),
+            ),
             const SizedBox(height: 12),
             Container(
               padding: const EdgeInsets.all(12),
-              decoration: BoxDecoration(color: const Color(0xFFF8FAFC), borderRadius: BorderRadius.circular(10)),
+              decoration: BoxDecoration(
+                color: const Color(0xFFF8FAFC),
+                borderRadius: BorderRadius.circular(10),
+              ),
               child: Column(
                 children: [
-                  _summaryRow('Answered Questions', '$answered', const Color(0xFF16A34A)),
+                  _summaryRow(
+                    'Answered Questions',
+                    '$answered',
+                    const Color(0xFF16A34A),
+                  ),
                   const SizedBox(height: 6),
-                  _summaryRow('Marked for Review', '$review', const Color(0xFFF59E0B)),
+                  _summaryRow(
+                    'Marked for Review',
+                    '$review',
+                    const Color(0xFFF59E0B),
+                  ),
                   const SizedBox(height: 6),
-                  _summaryRow('Unattempted Questions', '$unvisited', const Color(0xFFEF4444)),
+                  _summaryRow(
+                    'Unattempted Questions',
+                    '$unvisited',
+                    const Color(0xFFEF4444),
+                  ),
                 ],
               ),
             ),
@@ -4385,7 +6333,10 @@ class _TimedExamSessionScreenState extends State<TimedExamSessionScreen> {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx),
-            child: const Text('Keep Working', style: TextStyle(color: Color(0xFF64748B))),
+            child: const Text(
+              'Keep Working',
+              style: TextStyle(color: Color(0xFF64748B)),
+            ),
           ),
           ElevatedButton(
             onPressed: () {
@@ -4395,9 +6346,14 @@ class _TimedExamSessionScreenState extends State<TimedExamSessionScreen> {
             style: ElevatedButton.styleFrom(
               backgroundColor: const Color(0xFF16A34A),
               foregroundColor: Colors.white,
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8),
+              ),
             ),
-            child: const Text('Submit Now', style: TextStyle(fontWeight: FontWeight.bold)),
+            child: const Text(
+              'Submit Now',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
           ),
         ],
       ),
@@ -4408,8 +6364,18 @@ class _TimedExamSessionScreenState extends State<TimedExamSessionScreen> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(label, style: const TextStyle(fontSize: 12, color: Color(0xFF475569))),
-        Text(count, style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: col)),
+        Text(
+          label,
+          style: const TextStyle(fontSize: 12, color: Color(0xFF475569)),
+        ),
+        Text(
+          count,
+          style: TextStyle(
+            fontSize: 12,
+            fontWeight: FontWeight.bold,
+            color: col,
+          ),
+        ),
       ],
     );
   }
@@ -4430,7 +6396,9 @@ class _TimedExamSessionScreenState extends State<TimedExamSessionScreen> {
 
     final marks = (correct * 2.0) - (wrong * 0.5);
     final totalMarks = widget.questionCount * 2.0;
-    final accuracy = _selectedAnswers.isEmpty ? 0 : ((correct / _selectedAnswers.length) * 100).round();
+    final accuracy = _selectedAnswers.isEmpty
+        ? 0
+        : ((correct / _selectedAnswers.length) * 100).round();
 
     showDialog(
       context: context,
@@ -4439,9 +6407,16 @@ class _TimedExamSessionScreenState extends State<TimedExamSessionScreen> {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         title: Row(
           children: [
-            const Icon(Icons.check_circle_rounded, color: Color(0xFF16A34A), size: 28),
+            const Icon(
+              Icons.check_circle_rounded,
+              color: Color(0xFF16A34A),
+              size: 28,
+            ),
             const SizedBox(width: 8),
-            Text(auto ? 'Time Up · Auto Submitted' : 'Paper Completed', style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+            Text(
+              auto ? 'Time Up · Auto Submitted' : 'Paper Completed',
+              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+            ),
           ],
         ),
         content: Column(
@@ -4450,21 +6425,49 @@ class _TimedExamSessionScreenState extends State<TimedExamSessionScreen> {
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                gradient: const LinearGradient(colors: [Color(0xFF0F172A), Color(0xFF1E293B)]),
+                gradient: const LinearGradient(
+                  colors: [Color(0xFF0F172A), Color(0xFF1E293B)],
+                ),
                 borderRadius: BorderRadius.circular(14),
               ),
               child: Column(
                 children: [
-                  const Text('FINAL SCORE', style: TextStyle(color: Color(0xFF94A3B8), fontSize: 11, fontWeight: FontWeight.bold, letterSpacing: 1)),
+                  const Text(
+                    'FINAL SCORE',
+                    style: TextStyle(
+                      color: Color(0xFF94A3B8),
+                      fontSize: 11,
+                      fontWeight: FontWeight.bold,
+                      letterSpacing: 1,
+                    ),
+                  ),
                   const SizedBox(height: 4),
-                  Text('${marks.toStringAsFixed(1)} / $totalMarks', style: const TextStyle(color: Colors.white, fontSize: 26, fontWeight: FontWeight.w900)),
+                  Text(
+                    '${marks.toStringAsFixed(1)} / $totalMarks',
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 26,
+                      fontWeight: FontWeight.w900,
+                    ),
+                  ),
                   const SizedBox(height: 8),
-                  Text('$accuracy% Accuracy · $correct Correct · $wrong Incorrect', style: const TextStyle(color: Color(0xFF4ADE80), fontSize: 11, fontWeight: FontWeight.bold)),
+                  Text(
+                    '$accuracy% Accuracy · $correct Correct · $wrong Incorrect',
+                    style: const TextStyle(
+                      color: Color(0xFF4ADE80),
+                      fontSize: 11,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ],
               ),
             ),
             const SizedBox(height: 12),
-            const Text('Your official attempt result is saved directly to your student portfolio.', textAlign: TextAlign.center, style: TextStyle(fontSize: 11, color: Color(0xFF64748B))),
+            const Text(
+              'Your official attempt result is saved directly to your student portfolio.',
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 11, color: Color(0xFF64748B)),
+            ),
           ],
         ),
         actions: [
@@ -4476,9 +6479,14 @@ class _TimedExamSessionScreenState extends State<TimedExamSessionScreen> {
             style: ElevatedButton.styleFrom(
               backgroundColor: const Color(0xFF16A34A),
               foregroundColor: Colors.white,
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8),
+              ),
             ),
-            child: const Text('Return to Papers', style: TextStyle(fontWeight: FontWeight.bold)),
+            child: const Text(
+              'Return to Papers',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
           ),
         ],
       ),
@@ -4490,12 +6498,22 @@ class _TimedExamSessionScreenState extends State<TimedExamSessionScreen> {
     final res = await showDialog<bool>(
       context: context,
       builder: (ctx) => AlertDialog(
-        title: const Text('Exit Examination?', style: TextStyle(fontWeight: FontWeight.bold)),
-        content: const Text('Your timer will keep running. Unsaved answers will be lost if you leave.'),
+        title: const Text(
+          'Exit Examination?',
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
+        content: const Text(
+          'Your timer will keep running. Unsaved answers will be lost if you leave.',
+        ),
         actions: [
-          TextButton(onPressed: () => Navigator.pop(ctx, false), child: const Text('Stay in Exam')),
+          TextButton(
+            onPressed: () => Navigator.pop(ctx, false),
+            child: const Text('Stay in Exam'),
+          ),
           ElevatedButton(
-            style: ElevatedButton.styleFrom(backgroundColor: const Color(0xFFDC2626)),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: const Color(0xFFDC2626),
+            ),
             onPressed: () => Navigator.pop(ctx, true),
             child: const Text('Exit', style: TextStyle(color: Colors.white)),
           ),
@@ -4534,19 +6552,38 @@ class _TimedExamSessionScreenState extends State<TimedExamSessionScreen> {
               if (allow && context.mounted) Navigator.pop(context);
             },
           ),
-          title: Text(widget.quizTitle, style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: Colors.white)),
+          title: Text(
+            widget.quizTitle,
+            style: const TextStyle(
+              fontSize: 15,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+            ),
+          ),
           actions: [
             Container(
               margin: const EdgeInsets.only(right: 14),
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
               decoration: BoxDecoration(
-                color: _remainingSeconds < 300 ? const Color(0xFFFEF2F2) : const Color(0xFFF0FDF4),
+                color: _remainingSeconds < 300
+                    ? const Color(0xFFFEF2F2)
+                    : const Color(0xFFF0FDF4),
                 borderRadius: BorderRadius.circular(8),
-                border: Border.all(color: _remainingSeconds < 300 ? const Color(0xFFFCA5A5) : const Color(0xFF86EFAC)),
+                border: Border.all(
+                  color: _remainingSeconds < 300
+                      ? const Color(0xFFFCA5A5)
+                      : const Color(0xFF86EFAC),
+                ),
               ),
               child: Row(
                 children: [
-                  Icon(Icons.timer_outlined, size: 14, color: _remainingSeconds < 300 ? const Color(0xFFDC2626) : const Color(0xFF16A34A)),
+                  Icon(
+                    Icons.timer_outlined,
+                    size: 14,
+                    color: _remainingSeconds < 300
+                        ? const Color(0xFFDC2626)
+                        : const Color(0xFF16A34A),
+                  ),
                   const SizedBox(width: 4),
                   Text(
                     _formatTimer(_remainingSeconds),
@@ -4554,7 +6591,9 @@ class _TimedExamSessionScreenState extends State<TimedExamSessionScreen> {
                       fontWeight: FontWeight.bold,
                       fontSize: 12,
                       fontFamily: 'monospace',
-                      color: _remainingSeconds < 300 ? const Color(0xFFDC2626) : const Color(0xFF16A34A),
+                      color: _remainingSeconds < 300
+                          ? const Color(0xFFDC2626)
+                          : const Color(0xFF16A34A),
                     ),
                   ),
                 ],
@@ -4570,16 +6609,31 @@ class _TimedExamSessionScreenState extends State<TimedExamSessionScreen> {
               color: Colors.white,
               child: Row(
                 children: [
-                  Text('Question ${_currentIndex + 1} of ${widget.questionCount}', style: const TextStyle(fontSize: 13, fontWeight: FontWeight.bold, color: Color(0xFF0F172A))),
+                  Text(
+                    'Question ${_currentIndex + 1} of ${widget.questionCount}',
+                    style: const TextStyle(
+                      fontSize: 13,
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xFF0F172A),
+                    ),
+                  ),
                   const Spacer(),
                   IconButton(
                     onPressed: _openCalculator,
-                    icon: const Icon(Icons.calculate_outlined, color: Color(0xFF16A34A), size: 22),
+                    icon: const Icon(
+                      Icons.calculate_outlined,
+                      color: Color(0xFF16A34A),
+                      size: 22,
+                    ),
                     tooltip: 'Scientific Calculator',
                   ),
                   IconButton(
                     onPressed: _openPalette,
-                    icon: const Icon(Icons.grid_view_rounded, color: Color(0xFF2563EB), size: 20),
+                    icon: const Icon(
+                      Icons.grid_view_rounded,
+                      color: Color(0xFF2563EB),
+                      size: 20,
+                    ),
                     tooltip: 'Question Palette',
                   ),
                 ],
@@ -4606,17 +6660,42 @@ class _TimedExamSessionScreenState extends State<TimedExamSessionScreen> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Container(
-                              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
-                              decoration: BoxDecoration(color: const Color(0xFFDCFCE7), borderRadius: BorderRadius.circular(6)),
-                              child: Text(q['type'], style: const TextStyle(fontSize: 10, fontWeight: FontWeight.bold, color: Color(0xFF16A34A))),
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 8,
+                                vertical: 3,
+                              ),
+                              decoration: BoxDecoration(
+                                color: const Color(0xFFDCFCE7),
+                                borderRadius: BorderRadius.circular(6),
+                              ),
+                              child: Text(
+                                q['type'],
+                                style: const TextStyle(
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.bold,
+                                  color: Color(0xFF16A34A),
+                                ),
+                              ),
                             ),
-                            Text(q['marks'], style: const TextStyle(fontSize: 11, fontWeight: FontWeight.bold, color: Color(0xFF64748B))),
+                            Text(
+                              q['marks'],
+                              style: const TextStyle(
+                                fontSize: 11,
+                                fontWeight: FontWeight.bold,
+                                color: Color(0xFF64748B),
+                              ),
+                            ),
                           ],
                         ),
                         const SizedBox(height: 12),
                         Text(
                           q['stem'],
-                          style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: Color(0xFF0F172A), height: 1.5),
+                          style: const TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600,
+                            color: Color(0xFF0F172A),
+                            height: 1.5,
+                          ),
                         ),
                       ],
                     ),
@@ -4638,10 +6717,14 @@ class _TimedExamSessionScreenState extends State<TimedExamSessionScreen> {
                         margin: const EdgeInsets.only(bottom: 10),
                         padding: const EdgeInsets.all(14),
                         decoration: BoxDecoration(
-                          color: isChosen ? const Color(0xFFF0FDF4) : Colors.white,
+                          color: isChosen
+                              ? const Color(0xFFF0FDF4)
+                              : Colors.white,
                           borderRadius: BorderRadius.circular(12),
                           border: Border.all(
-                            color: isChosen ? const Color(0xFF16A34A) : const Color(0xFFE2E8F0),
+                            color: isChosen
+                                ? const Color(0xFF16A34A)
+                                : const Color(0xFFE2E8F0),
                             width: isChosen ? 2 : 1,
                           ),
                         ),
@@ -4651,14 +6734,18 @@ class _TimedExamSessionScreenState extends State<TimedExamSessionScreen> {
                               width: 28,
                               height: 28,
                               decoration: BoxDecoration(
-                                color: isChosen ? const Color(0xFF16A34A) : const Color(0xFFF1F5F9),
+                                color: isChosen
+                                    ? const Color(0xFF16A34A)
+                                    : const Color(0xFFF1F5F9),
                                 shape: BoxShape.circle,
                               ),
                               alignment: Alignment.center,
                               child: Text(
                                 letter,
                                 style: TextStyle(
-                                  color: isChosen ? Colors.white : const Color(0xFF475569),
+                                  color: isChosen
+                                      ? Colors.white
+                                      : const Color(0xFF475569),
                                   fontWeight: FontWeight.bold,
                                   fontSize: 12,
                                 ),
@@ -4670,13 +6757,19 @@ class _TimedExamSessionScreenState extends State<TimedExamSessionScreen> {
                                 options[optIdx],
                                 style: TextStyle(
                                   fontSize: 13,
-                                  fontWeight: isChosen ? FontWeight.bold : FontWeight.normal,
+                                  fontWeight: isChosen
+                                      ? FontWeight.bold
+                                      : FontWeight.normal,
                                   color: const Color(0xFF0F172A),
                                 ),
                               ),
                             ),
                             if (isChosen)
-                              const Icon(Icons.check_circle_rounded, color: Color(0xFF16A34A), size: 20),
+                              const Icon(
+                                Icons.check_circle_rounded,
+                                color: Color(0xFF16A34A),
+                                size: 20,
+                              ),
                           ],
                         ),
                       ),
@@ -4696,10 +6789,17 @@ class _TimedExamSessionScreenState extends State<TimedExamSessionScreen> {
               child: Row(
                 children: [
                   OutlinedButton(
-                    onPressed: _currentIndex > 0 ? () => setState(() => _currentIndex--) : null,
+                    onPressed: _currentIndex > 0
+                        ? () => setState(() => _currentIndex--)
+                        : null,
                     style: OutlinedButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 14,
+                        vertical: 10,
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
                     ),
                     child: const Text('Previous'),
                   ),
@@ -4715,21 +6815,36 @@ class _TimedExamSessionScreenState extends State<TimedExamSessionScreen> {
                       });
                     },
                     icon: Icon(
-                      isMarked ? Icons.bookmark_added_rounded : Icons.bookmark_border_rounded,
+                      isMarked
+                          ? Icons.bookmark_added_rounded
+                          : Icons.bookmark_border_rounded,
                       size: 16,
-                      color: isMarked ? const Color(0xFFF59E0B) : const Color(0xFF64748B),
+                      color: isMarked
+                          ? const Color(0xFFF59E0B)
+                          : const Color(0xFF64748B),
                     ),
                     label: Text(
                       isMarked ? 'Marked' : 'Review',
                       style: TextStyle(
                         fontSize: 12,
-                        color: isMarked ? const Color(0xFFF59E0B) : const Color(0xFF64748B),
+                        color: isMarked
+                            ? const Color(0xFFF59E0B)
+                            : const Color(0xFF64748B),
                       ),
                     ),
                     style: OutlinedButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                      side: BorderSide(color: isMarked ? const Color(0xFFF59E0B) : const Color(0xFFCBD5E1)),
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 10,
+                        vertical: 10,
+                      ),
+                      side: BorderSide(
+                        color: isMarked
+                            ? const Color(0xFFF59E0B)
+                            : const Color(0xFFCBD5E1),
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
                     ),
                   ),
                   const Spacer(),
@@ -4739,10 +6854,18 @@ class _TimedExamSessionScreenState extends State<TimedExamSessionScreen> {
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFF16A34A),
                         foregroundColor: Colors.white,
-                        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 10,
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
                       ),
-                      child: const Text('Next', style: TextStyle(fontWeight: FontWeight.bold)),
+                      child: const Text(
+                        'Next',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
                     )
                   else
                     ElevatedButton(
@@ -4750,10 +6873,18 @@ class _TimedExamSessionScreenState extends State<TimedExamSessionScreen> {
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFF2563EB),
                         foregroundColor: Colors.white,
-                        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 10,
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
                       ),
-                      child: const Text('Submit', style: TextStyle(fontWeight: FontWeight.bold)),
+                      child: const Text(
+                        'Submit',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
                     ),
                 ],
               ),
@@ -4796,23 +6927,48 @@ class _ExamCalculatorModalState extends State<ExamCalculatorModal> {
       } else if (k == '=') {
         _evaluate();
       } else if (['+', '-', '×', '÷', '%', '^'].contains(k)) {
-        final op = k == '×' ? '*' : k == '÷' ? '/' : k;
+        final op = k == '×'
+            ? '*'
+            : k == '÷'
+            ? '/'
+            : k;
         _expression += '${_display == 'Error' ? '0' : _display} $op ';
         _history = _expression;
         _display = '0';
-      } else if (['sin', 'cos', 'tan', 'log', 'ln', 'sqrt', 'x²', '1/x'].contains(k)) {
+      } else if ([
+        'sin',
+        'cos',
+        'tan',
+        'log',
+        'ln',
+        'sqrt',
+        'x²',
+        '1/x',
+      ].contains(k)) {
         final v = double.tryParse(_display) ?? 0.0;
         double res = 0;
-        if (k == 'sin') res = math.sin(v * math.pi / 180.0);
-        else if (k == 'cos') res = math.cos(v * math.pi / 180.0);
-        else if (k == 'tan') res = math.tan(v * math.pi / 180.0);
-        else if (k == 'log') res = v > 0 ? (math.log(v) / math.ln10) : double.nan;
-        else if (k == 'ln') res = v > 0 ? math.log(v) : double.nan;
-        else if (k == 'sqrt') res = v >= 0 ? math.sqrt(v) : double.nan;
-        else if (k == 'x²') res = v * v;
-        else if (k == '1/x') res = v != 0 ? 1 / v : double.nan;
+        if (k == 'sin')
+          res = math.sin(v * math.pi / 180.0);
+        else if (k == 'cos')
+          res = math.cos(v * math.pi / 180.0);
+        else if (k == 'tan')
+          res = math.tan(v * math.pi / 180.0);
+        else if (k == 'log')
+          res = v > 0 ? (math.log(v) / math.ln10) : double.nan;
+        else if (k == 'ln')
+          res = v > 0 ? math.log(v) : double.nan;
+        else if (k == 'sqrt')
+          res = v >= 0 ? math.sqrt(v) : double.nan;
+        else if (k == 'x²')
+          res = v * v;
+        else if (k == '1/x')
+          res = v != 0 ? 1 / v : double.nan;
         _history = '$k($v) =';
-        _display = res.isFinite ? (res == res.roundToDouble() ? res.toInt().toString() : res.toStringAsFixed(4)) : 'Error';
+        _display = res.isFinite
+            ? (res == res.roundToDouble()
+                  ? res.toInt().toString()
+                  : res.toStringAsFixed(4))
+            : 'Error';
       } else if (k == 'π') {
         _display = math.pi.toStringAsFixed(6);
       } else if (k == 'e') {
@@ -4836,15 +6992,25 @@ class _ExamCalculatorModalState extends State<ExamCalculatorModal> {
       for (int i = 1; i < tokens.length - 1; i += 2) {
         final op = tokens[i];
         final next = double.tryParse(tokens[i + 1]) ?? 0.0;
-        if (op == '+') result += next;
-        else if (op == '-') result -= next;
-        else if (op == '*') result *= next;
-        else if (op == '/') result = next != 0 ? result / next : double.nan;
-        else if (op == '%') result %= next;
-        else if (op == '^') result = math.pow(result, next).toDouble();
+        if (op == '+')
+          result += next;
+        else if (op == '-')
+          result -= next;
+        else if (op == '*')
+          result *= next;
+        else if (op == '/')
+          result = next != 0 ? result / next : double.nan;
+        else if (op == '%')
+          result %= next;
+        else if (op == '^')
+          result = math.pow(result, next).toDouble();
       }
       _history = '$full =';
-      _display = result.isFinite ? (result == result.roundToDouble() ? result.toInt().toString() : result.toStringAsFixed(4)) : 'Error';
+      _display = result.isFinite
+          ? (result == result.roundToDouble()
+                ? result.toInt().toString()
+                : result.toStringAsFixed(4))
+          : 'Error';
       _expression = '';
     } catch (_) {
       _display = 'Error';
@@ -4881,19 +7047,44 @@ class _ExamCalculatorModalState extends State<ExamCalculatorModal> {
             children: [
               Row(
                 children: [
-                  const Icon(Icons.calculate_rounded, color: Color(0xFF10B981), size: 20),
+                  const Icon(
+                    Icons.calculate_rounded,
+                    color: Color(0xFF10B981),
+                    size: 20,
+                  ),
                   const SizedBox(width: 8),
-                  Text(_isScientific ? 'Scientific Calculator' : 'Basic Calculator', style: const TextStyle(color: Colors.white, fontSize: 15, fontWeight: FontWeight.bold)),
+                  Text(
+                    _isScientific
+                        ? 'Scientific Calculator'
+                        : 'Basic Calculator',
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ],
               ),
               Row(
                 children: [
                   TextButton(
-                    onPressed: () => setState(() => _isScientific = !_isScientific),
-                    child: Text(_isScientific ? 'Basic Mode' : 'Pro Scientific', style: const TextStyle(color: Color(0xFF38BDF8), fontSize: 12, fontWeight: FontWeight.bold)),
+                    onPressed: () =>
+                        setState(() => _isScientific = !_isScientific),
+                    child: Text(
+                      _isScientific ? 'Basic Mode' : 'Pro Scientific',
+                      style: const TextStyle(
+                        color: Color(0xFF38BDF8),
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ),
                   IconButton(
-                    icon: const Icon(Icons.close_rounded, color: Color(0xFF94A3B8), size: 20),
+                    icon: const Icon(
+                      Icons.close_rounded,
+                      color: Color(0xFF94A3B8),
+                      size: 20,
+                    ),
                     onPressed: () => Navigator.pop(context),
                   ),
                 ],
@@ -4915,8 +7106,23 @@ class _ExamCalculatorModalState extends State<ExamCalculatorModal> {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 if (_history.isNotEmpty)
-                  Text(_history, style: const TextStyle(color: Color(0xFF94A3B8), fontSize: 12, fontFamily: 'monospace')),
-                Text(_display, style: const TextStyle(color: Colors.white, fontSize: 26, fontWeight: FontWeight.bold, fontFamily: 'monospace')),
+                  Text(
+                    _history,
+                    style: const TextStyle(
+                      color: Color(0xFF94A3B8),
+                      fontSize: 12,
+                      fontFamily: 'monospace',
+                    ),
+                  ),
+                Text(
+                  _display,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 26,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'monospace',
+                  ),
+                ),
               ],
             ),
           ),
@@ -4924,68 +7130,94 @@ class _ExamCalculatorModalState extends State<ExamCalculatorModal> {
 
           // Scientific row if enabled
           if (_isScientific) ...[
-            ...sciKeys.map((row) => Padding(
-              padding: const EdgeInsets.only(bottom: 6),
-              child: Row(
-                children: row.map((k) => Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 3),
-                    child: ElevatedButton(
-                      onPressed: () => _onKey(k),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xFF334155),
-                        foregroundColor: const Color(0xFF38BDF8),
-                        padding: const EdgeInsets.symmetric(vertical: 10),
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-                      ),
-                      child: Text(k, style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
-                    ),
-                  ),
-                )).toList(),
+            ...sciKeys.map(
+              (row) => Padding(
+                padding: const EdgeInsets.only(bottom: 6),
+                child: Row(
+                  children: row
+                      .map(
+                        (k) => Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 3),
+                            child: ElevatedButton(
+                              onPressed: () => _onKey(k),
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: const Color(0xFF334155),
+                                foregroundColor: const Color(0xFF38BDF8),
+                                padding: const EdgeInsets.symmetric(
+                                  vertical: 10,
+                                ),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                              ),
+                              child: Text(
+                                k,
+                                style: const TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      )
+                      .toList(),
+                ),
               ),
-            )),
+            ),
             const SizedBox(height: 4),
           ],
 
           // Basic keypad
-          ...basicKeys.map((row) => Padding(
-            padding: const EdgeInsets.only(bottom: 6),
-            child: Row(
-              children: row.map((k) {
-                final isOp = ['+', '-', '×', '÷', '%', '^', '='].contains(k);
-                final isAction = ['C', 'DEL'].contains(k);
+          ...basicKeys.map(
+            (row) => Padding(
+              padding: const EdgeInsets.only(bottom: 6),
+              child: Row(
+                children: row.map((k) {
+                  final isOp = ['+', '-', '×', '÷', '%', '^', '='].contains(k);
+                  final isAction = ['C', 'DEL'].contains(k);
 
-                Color bg = const Color(0xFF1E293B);
-                Color fg = Colors.white;
-                if (k == '=') {
-                  bg = const Color(0xFF16A34A);
-                  fg = Colors.white;
-                } else if (isOp) {
-                  bg = const Color(0xFF334155);
-                  fg = const Color(0xFF4ADE80);
-                } else if (isAction) {
-                  bg = const Color(0xFF475569);
-                  fg = const Color(0xFFFCA5A5);
-                }
+                  Color bg = const Color(0xFF1E293B);
+                  Color fg = Colors.white;
+                  if (k == '=') {
+                    bg = const Color(0xFF16A34A);
+                    fg = Colors.white;
+                  } else if (isOp) {
+                    bg = const Color(0xFF334155);
+                    fg = const Color(0xFF4ADE80);
+                  } else if (isAction) {
+                    bg = const Color(0xFF475569);
+                    fg = const Color(0xFFFCA5A5);
+                  }
 
-                return Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 3),
-                    child: ElevatedButton(
-                      onPressed: () => _onKey(k),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: bg,
-                        foregroundColor: fg,
-                        padding: const EdgeInsets.symmetric(vertical: 12),
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                  return Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 3),
+                      child: ElevatedButton(
+                        onPressed: () => _onKey(k),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: bg,
+                          foregroundColor: fg,
+                          padding: const EdgeInsets.symmetric(vertical: 12),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                        ),
+                        child: Text(
+                          k,
+                          style: const TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                       ),
-                      child: Text(k, style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
                     ),
-                  ),
-                );
-              }).toList(),
+                  );
+                }).toList(),
+              ),
             ),
-          )),
+          ),
         ],
       ),
     );

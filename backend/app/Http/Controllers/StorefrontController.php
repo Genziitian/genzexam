@@ -21,6 +21,7 @@ class StorefrontController extends Controller
     {
         $user = $request->user();
         $papers = Quiz::query()
+            ->where('is_personal', false)
             ->where('is_active', true)
             ->where('approval_status', 'approved')
             ->when($user?->isAdmin(), fn ($query) => $query->whereIn('course_id', $user->assignedCourses()->select('courses.id')))
@@ -58,8 +59,14 @@ class StorefrontController extends Controller
             ->get(['id', 'quiz_id', 'started_at', 'submitted_at', 'score', 'total_marks', 'is_complete'])
             ->groupBy('quiz_id');
 
-        $quizzes = Quiz::query()
-            ->whereIn('id', $entitlements->keys()->merge($attempts->keys())->unique()->values())
+        $personalIds = $user->isStudent()
+            ? Quiz::withoutGlobalScope('exclude_personal_uploads')->where('is_personal', true)->where('owner_user_id', $user->id)->pluck('id')
+            : collect();
+
+        $quizzes = Quiz::withoutGlobalScope('exclude_personal_uploads')
+            ->whereIn('id', $entitlements->keys()->merge($attempts->keys())->merge($personalIds)->unique()->values())
+            ->where(fn ($query) => $query->where('is_personal', false)
+                ->orWhere(fn ($owned) => $owned->where('is_personal', true)->where('owner_user_id', $user->id)))
             ->with(['course:id,name,slug,level,icon,is_active', 'week:id,week_number,title'])
             ->withCount('questions')
             ->get();
@@ -67,6 +74,26 @@ class StorefrontController extends Controller
         $papers = $quizzes->map(function (Quiz $quiz) use ($entitlements, $attempts, $staff) {
             $entitlement = $entitlements->get($quiz->id);
             $rows = $attempts->get($quiz->id, collect());
+            if ($quiz->is_personal) {
+                return [
+                    ...$this->paperSummary($quiz),
+                    'course' => ['name' => 'My uploads', 'slug' => ''],
+                    'source' => 'personal_upload',
+                    'purchased' => false,
+                    'owned_since' => $quiz->created_at,
+                    'expires_at' => null,
+                    'expired' => false,
+                    'has_access' => true,
+                    'available' => true,
+                    'attempt_count' => $rows->filter(fn (Attempt $attempt) => $attempt->is_complete && $attempt->submitted_at)->count(),
+                    'in_progress' => $rows->first(fn (Attempt $attempt) => ! $attempt->is_complete) !== null,
+                    'last_attempt_id' => $rows->last()?->id,
+                    'last_score' => $rows->last()?->score,
+                    'last_total_marks' => $rows->last()?->total_marks,
+                    'last_submitted_at' => $rows->last()?->submitted_at,
+                    'last_activity_at' => $rows->last()?->submitted_at ?? $quiz->created_at,
+                ];
+            }
             $paid = (int) $quiz->price_paise > 0;
             $purchased = $entitlement?->source === 'purchase';
             $active = $entitlement && ($entitlement->expires_at === null || $entitlement->expires_at->isFuture());
@@ -357,6 +384,7 @@ class StorefrontController extends Controller
     private function publishedQuiz(int $quizId, bool $lock = false): Quiz
     {
         return Quiz::query()
+            ->where('is_personal', false)
             ->where('is_active', true)
             ->where('approval_status', 'approved')
             ->whereHas('course', fn ($query) => $query->where('is_active', true))

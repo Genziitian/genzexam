@@ -1,12 +1,17 @@
-import 'package:flutter/foundation.dart';
+import 'dart:convert';
+import 'dart:async';
+
+import 'package:flutter/widgets.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import '../api/api.dart';
+import '../api/offline_paper_store.dart';
 
 enum AuthStatus {
   initial,
   loading,
   authenticated,
   unauthenticated,
+  connectionUnavailable,
 }
 
 /// Central state manager holding session identity, role, and rank.
@@ -16,7 +21,7 @@ enum AuthStatus {
 /// - Token zeroization on 401 Unauthorized or manual logout.
 /// - Exact roles: 'student' (rank 0), 'admin' (rank 1), 'manager' (rank 2).
 /// - Instant 'Preview Student View' context-switch for Managers.
-class AuthState extends ChangeNotifier {
+class AuthState extends ChangeNotifier with WidgetsBindingObserver {
   final AuthService _authService;
   final ApiClient _apiClient;
 
@@ -26,12 +31,13 @@ class AuthState extends ChangeNotifier {
   bool _isPreviewingStudentView = false;
   bool _isGoogleSignInPending = false;
   int _googleAttempt = 0;
+  Timer? _offlineSyncTimer;
+  bool _offlineSyncInProgress = false;
 
-  AuthState({
-    AuthService? authService,
-    ApiClient? apiClient,
-  })  : _apiClient = apiClient ?? ApiClient(),
-        _authService = authService ?? AuthService() {
+  AuthState({AuthService? authService, ApiClient? apiClient})
+    : _apiClient = apiClient ?? ApiClient(),
+      _authService = authService ?? AuthService() {
+    WidgetsBinding.instance.addObserver(this);
     // Zeroize token if interceptor catches 401
     _apiClient.onUnauthorized = () {
       _zeroizeSession();
@@ -46,7 +52,8 @@ class AuthState extends ChangeNotifier {
   /// True while the browser is open for Google sign-in and the app is waiting for it.
   bool get isGoogleSignInPending => _isGoogleSignInPending;
 
-  String get role => _user?.role ?? (_user?.isAdmin == true ? 'admin' : 'student');
+  String get role =>
+      _user?.role ?? (_user?.isAdmin == true ? 'admin' : 'student');
 
   int get rank {
     switch (role) {
@@ -63,6 +70,21 @@ class AuthState extends ChangeNotifier {
   bool get isManager => role == 'manager';
   bool get isAdmin => role == 'admin' || role == 'manager';
   bool get isStudent => role == 'student';
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed &&
+        _status == AuthStatus.authenticated &&
+        _user != null) {
+      _startOfflinePaperSync(_user!.id);
+    }
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
 
   /// Cold-start initialization helper
   Future<void> init() async {
@@ -84,13 +106,33 @@ class AuthState extends ChangeNotifier {
 
       final profile = await _authService.getMe();
       _user = profile;
+      await _cacheUser(profile);
       _status = AuthStatus.authenticated;
       _errorMessage = null;
+      _startOfflinePaperSync(profile.id);
     } catch (e) {
-      // Invalid/expired token or connection issue
-      await _apiClient.deleteAuthToken();
-      _user = null;
-      _status = AuthStatus.unauthenticated;
+      // Only a server-confirmed 401 invalidates a Sanctum token. A dropped
+      // connection or 5xx must never sign the student out.
+      if (e is ApiException && e.statusCode == 401) {
+        _user = null;
+        _status = AuthStatus.unauthenticated;
+        _errorMessage = 'Your session expired. Please sign in again.';
+        await _apiClient.deleteCachedUser();
+        return;
+      }
+      final cached = await _readCachedUser();
+      if (cached != null && await _apiClient.hasAuthToken()) {
+        _user = cached;
+        _status = AuthStatus.authenticated;
+        _errorMessage =
+            'Offline: your saved account is available. Changes will sync when you reconnect.';
+        _startOfflinePaperSync(cached.id);
+      } else {
+        _user = null;
+        _status = AuthStatus.connectionUnavailable;
+        _errorMessage =
+            'You are still signed in, but we could not reach the server to check your account. Check your connection and retry.';
+      }
     } finally {
       notifyListeners();
     }
@@ -105,6 +147,8 @@ class AuthState extends ChangeNotifier {
     try {
       final res = await _authService.login(email: email, password: password);
       _user = res.user;
+      await _cacheUser(res.user);
+      _startOfflinePaperSync(res.user.id);
       _status = AuthStatus.authenticated;
       _errorMessage = null;
       notifyListeners();
@@ -131,7 +175,9 @@ class AuthState extends ChangeNotifier {
 
   Future<void> _ensureGoogleReady() async {
     if (_googleReady) return;
-    await GoogleSignIn.instance.initialize(serverClientId: _googleServerClientId);
+    await GoogleSignIn.instance.initialize(
+      serverClientId: _googleServerClientId,
+    );
     _googleReady = true;
   }
 
@@ -150,7 +196,10 @@ class AuthState extends ChangeNotifier {
       final account = await GoogleSignIn.instance.authenticate();
       final idToken = account.authentication.idToken;
       if (idToken == null || idToken.isEmpty) {
-        return _endGoogleAttempt(attempt, 'Google did not return a sign-in token. Please try again.');
+        return _endGoogleAttempt(
+          attempt,
+          'Google did not return a sign-in token. Please try again.',
+        );
       }
 
       final res = await _authService.loginWithGoogleIdToken(idToken);
@@ -162,6 +211,8 @@ class AuthState extends ChangeNotifier {
       }
 
       _user = profile;
+      await _cacheUser(profile);
+      _startOfflinePaperSync(profile.id);
       _isGoogleSignInPending = false;
       _errorMessage = null;
       _status = AuthStatus.authenticated;
@@ -182,7 +233,10 @@ class AuthState extends ChangeNotifier {
     } on ApiException catch (e) {
       return _endGoogleAttempt(attempt, e.message);
     } catch (_) {
-      return _endGoogleAttempt(attempt, 'Google sign-in could not be completed. Please try again.');
+      return _endGoogleAttempt(
+        attempt,
+        'Google sign-in could not be completed. Please try again.',
+      );
     }
   }
 
@@ -208,8 +262,12 @@ class AuthState extends ChangeNotifier {
     final trimmed = name.trim();
     if (trimmed.isEmpty) return 'Name cannot be empty.';
     try {
-      await _apiClient.patch<dynamic>('/student/profile', data: {'name': trimmed});
+      await _apiClient.patch<dynamic>(
+        '/student/profile',
+        data: {'name': trimmed},
+      );
       _user = await _authService.getMe();
+      await _cacheUser(_user!);
       notifyListeners();
       return null;
     } on ApiException catch (e) {
@@ -228,6 +286,8 @@ class AuthState extends ChangeNotifier {
 
   /// Logs out and purges token.
   Future<void> logout() async {
+    _offlineSyncTimer?.cancel();
+    _offlineSyncTimer = null;
     try {
       await _forgetGoogleAccount();
       await _authService.logout();
@@ -239,9 +299,15 @@ class AuthState extends ChangeNotifier {
   }
 
   /// Sends an account deletion request without deleting the signed-in account.
-  Future<bool> requestAccountDeletion({required String reason, String? details}) async {
+  Future<bool> requestAccountDeletion({
+    required String reason,
+    String? details,
+  }) async {
     try {
-      await _authService.requestAccountDeletion(reason: reason, details: details);
+      await _authService.requestAccountDeletion(
+        reason: reason,
+        details: details,
+      );
       return true;
     } catch (_) {
       return false;
@@ -258,6 +324,9 @@ class AuthState extends ChangeNotifier {
   }
 
   void _zeroizeSession() {
+    _offlineSyncTimer?.cancel();
+    _offlineSyncTimer = null;
+    _apiClient.deleteCachedUser();
     _user = null;
     _isPreviewingStudentView = false;
     _googleAttempt++;
@@ -265,5 +334,48 @@ class AuthState extends ChangeNotifier {
     _status = AuthStatus.unauthenticated;
     _errorMessage = null;
     notifyListeners();
+  }
+
+  Future<void> _cacheUser(UserModel user) async {
+    try {
+      await _apiClient.saveCachedUser(jsonEncode(user.toJson()));
+    } catch (_) {
+      // A profile-cache failure must not turn a successful login into a failure.
+    }
+  }
+
+  void _startOfflinePaperSync(int userId) {
+    _offlineSyncTimer ??= Timer.periodic(const Duration(seconds: 30), (_) {
+      final current = _user;
+      if (_status == AuthStatus.authenticated && current != null) {
+        unawaited(_syncOfflinePapers(current.id));
+      }
+    });
+    unawaited(_syncOfflinePapers(userId));
+  }
+
+  Future<void> _syncOfflinePapers(int userId) async {
+    if (_offlineSyncInProgress) return;
+    _offlineSyncInProgress = true;
+    try {
+      await OfflinePaperStore.syncInterruptedDrafts(
+        userId,
+        QuizService(client: _apiClient),
+      );
+    } catch (_) {
+      // Offline drafts stay on device and will be retried next launch.
+    } finally {
+      _offlineSyncInProgress = false;
+    }
+  }
+
+  Future<UserModel?> _readCachedUser() async {
+    try {
+      final value = await _apiClient.getCachedUser();
+      if (value == null) return null;
+      return UserModel.fromJson(jsonDecode(value) as Map<String, dynamic>);
+    } catch (_) {
+      return null;
+    }
   }
 }

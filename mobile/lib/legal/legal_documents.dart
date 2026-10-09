@@ -4,7 +4,7 @@ abstract final class LegalDocuments {
   static const String terms = '''
 Terms & Conditions
 QUIZ LAB by GenZ IITian
-Last updated: October 8, 2026
+Last updated: October 9, 2026
 
 01 Service Description
 GenZ IITian provides access to digital educational services designed for students. QUIZ LAB by GenZ IITian is part of GenZ IITian. Our services are delivered online and may include courses, papers, quizzes, practice tools, video solutions, discussions, and progress features. Access to paid materials is granted after successful payment confirmation. The applicable GenZ IITian service rules and content-use rules also apply to QUIZ LAB, subject to these Terms and applicable law.
@@ -38,6 +38,7 @@ Summary of Key Points
 • Account contact details may include your name, email address, and phone number when you provide it. We do not access your phone contacts or collect a mailing address or address book.
 • We also process information needed to run the learning service, including course access, quiz attempts, answers, scores, XP, badges, account activity, and support or deletion requests.
 • We use Google Sign-In and Google Analytics. We do not use Supabase or PostHog.
+• If you upload a PDF to create a test, its extracted text is processed by DeepSeek AI. We delete the temporary source PDF after processing and keep the generated test in your account.
 • Website payments are processed through Razorpay. Payments are currently available on the website; in-app Razorpay payments are planned, but are not currently offered.
 
 01 What Information Do We Collect?
@@ -49,15 +50,17 @@ Information we do not request from your device: We do not access your phone cont
 
 Information automatically collected: Our systems may collect service, diagnostic, and security information such as IP address, browser and device characteristics, operating system, language, referring URL, date and time of access, pages or features used, and error or activity logs. We use Google Analytics to understand website and app usage. Depending on the Analytics configuration, Google Analytics may collect usage events, session statistics, browser or device information, approximate location, and identifiers such as website cookies or an app-instance identifier.
 
+Uploaded paper information: If you upload a PDF to create a personal test, we extract its selectable text and send that text to DeepSeek AI to structure questions into quiz data. The original PDF is stored temporarily on our server while it is processed and deleted after processing. The generated questions and test are saved to your account so you can use them in My Papers. If you upload a JSON file, we process it to create the test without sending it to the AI service. Scanned image PDFs are not supported yet. Only upload papers you have permission to use.
+
 Payment information: Website checkout is provided through Razorpay. Razorpay processes payment instrument details. QUIZ LAB receives transaction and order information needed to confirm payment, provide access to the purchased item, prevent fraud, and provide support, such as order or payment IDs, product, amount, currency, and payment status. We do not store card numbers, UPI PINs, or banking passwords on our servers. Payments are currently available on the website only. We plan to offer Razorpay payments in the app in the future; if that feature is introduced, we will update this Notice as needed before or when it becomes available.
 
 Google API data: Our use of information received from Google APIs follows the Google API Services User Data Policy, including its Limited Use requirements.
 
 02 How Do We Process Your Information?
-We process information as needed to provide and operate the Services, communicate with you, protect accounts, and meet legal obligations. This includes creating and authenticating accounts; providing course, quiz, paper, video, discussion, and learning features; recording attempts and calculating scores, progress, XP, levels, badges, and rankings; processing website purchases through Razorpay and confirming orders; responding to support questions and deletion requests; maintaining security, troubleshooting errors, preventing fraud or abuse, understanding usage trends through Google Analytics, improving the Services, and complying with legal obligations.
+We process information as needed to provide and operate the Services, communicate with you, protect accounts, and meet legal obligations. This includes creating and authenticating accounts; providing course, quiz, paper, video, discussion, and learning features; recording attempts and calculating scores, progress, XP, levels, badges, and rankings; processing uploaded paper text to create personal tests; processing website purchases through Razorpay and confirming orders; responding to support questions and deletion requests; maintaining security, troubleshooting errors, preventing fraud or abuse, understanding usage trends through Google Analytics, improving the Services, and complying with legal obligations.
 
 03 When and With Whom Do We Share Your Personal Information?
-We may share information with service providers that help operate the Services and need access to perform their work. These include Google Sign-In and Google APIs for authentication and associated profile information; Google Analytics for website and app usage measurement and reporting; Razorpay for website payment processing and transaction confirmation; and our application hosting and infrastructure providers to store and deliver account, learning, and service data. We do not use Supabase or PostHog.
+We may share information with service providers that help operate the Services and need access to perform their work. These include Google Sign-In and Google APIs for authentication and associated profile information; Google Analytics for website and app usage measurement and reporting; DeepSeek AI, which receives extracted text from a PDF only when you choose to create a test from an uploaded PDF; Razorpay for website payment processing and transaction confirmation; and our application hosting and infrastructure providers to store and deliver account, learning, and service data. We do not use Supabase or PostHog.
 
 We may also share information when required by law, to protect users and the Services, or in connection with a merger, financing, sale, or transfer of all or part of our organization or assets. Information you post in public or shared areas, such as discussions, questions, or replies, may be visible to other users. We do not sell your personal information to advertisers.
 

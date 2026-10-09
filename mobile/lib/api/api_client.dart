@@ -5,12 +5,15 @@ import 'api_exceptions.dart';
 /// Production-grade API client connecting directly to https://labapi.genziitian.in.
 ///
 /// Principles:
-/// - Authoritative server state: No local DB sync, caching, or fake offline mockups.
-/// - Minimal secure storage: Only stores the Sanctum personal access token under `auth_token`.
+/// - The server remains authoritative for account data and quiz scoring.
+/// - Sanctum tokens and downloaded paper drafts are stored with platform secure storage.
+/// - Safe GET requests retry briefly after transient network/server failures.
 /// - Automatic Sanctum Bearer token header injection on every authenticated request.
 class ApiClient {
-  static const String defaultBaseUrl = 'https://labapi.genziitian.in/public/api';
+  static const String defaultBaseUrl =
+      'https://labapi.genziitian.in/public/api';
   static const String tokenStorageKey = 'auth_token';
+  static const String cachedUserKey = 'auth_user_cache';
 
   final Dio _dio;
   final FlutterSecureStorage _secureStorage;
@@ -21,25 +24,29 @@ class ApiClient {
     FlutterSecureStorage? secureStorage,
     this.onUnauthorized,
     List<Interceptor>? additionalInterceptors,
-  })  : _secureStorage = secureStorage ?? const FlutterSecureStorage(),
-        _dio = Dio(
-          BaseOptions(
-            baseUrl: baseUrl.endsWith('/') ? baseUrl.substring(0, baseUrl.length - 1) : baseUrl,
-            connectTimeout: const Duration(seconds: 15),
-            receiveTimeout: const Duration(seconds: 20),
-            sendTimeout: const Duration(seconds: 15),
-            headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json',
-            },
-          ),
-        ) {
-    _dio.interceptors.add(_SanctumAuthInterceptor(
-      secureStorage: _secureStorage,
-      onUnauthorized: () {
-        onUnauthorized?.call();
-      },
-    ));
+  }) : _secureStorage = secureStorage ?? const FlutterSecureStorage(),
+       _dio = Dio(
+         BaseOptions(
+           baseUrl: baseUrl.endsWith('/')
+               ? baseUrl.substring(0, baseUrl.length - 1)
+               : baseUrl,
+           connectTimeout: const Duration(seconds: 15),
+           receiveTimeout: const Duration(seconds: 20),
+           sendTimeout: const Duration(seconds: 15),
+           headers: {
+             'Accept': 'application/json',
+             'Content-Type': 'application/json',
+           },
+         ),
+       ) {
+    _dio.interceptors.add(
+      _SanctumAuthInterceptor(
+        secureStorage: _secureStorage,
+        onUnauthorized: () {
+          onUnauthorized?.call();
+        },
+      ),
+    );
 
     if (additionalInterceptors != null) {
       _dio.interceptors.addAll(additionalInterceptors);
@@ -65,6 +72,13 @@ class ApiClient {
     await _secureStorage.delete(key: tokenStorageKey);
   }
 
+  Future<void> saveCachedUser(String json) =>
+      _secureStorage.write(key: cachedUserKey, value: json);
+
+  Future<String?> getCachedUser() => _secureStorage.read(key: cachedUserKey);
+
+  Future<void> deleteCachedUser() => _secureStorage.delete(key: cachedUserKey);
+
   Future<bool> hasAuthToken() async {
     final token = await getAuthToken();
     return token != null && token.trim().isNotEmpty;
@@ -80,15 +94,31 @@ class ApiClient {
     Options? options,
     CancelToken? cancelToken,
   }) async {
-    try {
-      return await _dio.get<T>(
-        path,
-        queryParameters: queryParameters,
-        options: options,
-        cancelToken: cancelToken,
-      );
-    } on DioException catch (e) {
-      throw ApiException.fromDioException(e);
+    for (var attempt = 0; ; attempt++) {
+      try {
+        return await _dio.get<T>(
+          path,
+          queryParameters: queryParameters,
+          options: options,
+          cancelToken: cancelToken,
+        );
+      } on DioException catch (e) {
+        final status = e.response?.statusCode;
+        final transient =
+            e.type == DioExceptionType.connectionTimeout ||
+            e.type == DioExceptionType.receiveTimeout ||
+            e.type == DioExceptionType.connectionError ||
+            status == 408 ||
+            status == 502 ||
+            status == 503 ||
+            status == 504;
+        if (!transient || attempt >= 2 || cancelToken?.isCancelled == true) {
+          throw ApiException.fromDioException(e);
+        }
+        await Future<void>.delayed(
+          Duration(milliseconds: attempt == 0 ? 300 : 900),
+        );
+      }
     }
   }
 

@@ -33,6 +33,7 @@
     blocked: null,
     attemptId: null,
     startedAt: 0,
+    durationMinutes: null,
     answers: {},
     review: {},
     visited: {},
@@ -46,6 +47,17 @@
   };
 
   const $ = (s, root = document) => root.querySelector(s);
+  async function fetchWithTimeout(url, options, timeoutMs) {
+    if (typeof AbortController !== "function") return fetch(url, options);
+
+    const controller = new AbortController();
+    const timeout = window.setTimeout(() => controller.abort(), timeoutMs);
+    try {
+      return await fetch(url, { ...options, signal: controller.signal });
+    } finally {
+      window.clearTimeout(timeout);
+    }
+  }
   const esc = (v) =>
     String(v == null ? "" : v).replace(
       /[&<>"']/g,
@@ -84,6 +96,7 @@
         JSON.stringify({
           attemptId: st.attemptId,
           startedAt: st.startedAt,
+          durationMinutes: st.durationMinutes,
           answers: st.answers,
           review: st.review,
           visited: st.visited,
@@ -103,8 +116,7 @@
 
   /* ------------------------------ API ------------------------------ */
   async function request(url, options = {}) {
-    const response = await fetch(API + url, {
-      signal: AbortSignal.timeout(25000),
+    const response = await fetchWithTimeout(API + url, {
       ...options,
       headers: {
         Accept: "application/json",
@@ -112,7 +124,7 @@
         Authorization: "Bearer " + token(),
       },
       body: options.body ? JSON.stringify(options.body) : undefined,
-    });
+    }, 25000);
     let data = null;
     try {
       data = await response.json();
@@ -254,7 +266,7 @@
   }
 
   /* ----------------------------- timer ----------------------------- */
-  const limitSeconds = () => Math.max(0, Number((st.quiz && st.quiz.time_limit_minutes) || 0)) * 60;
+  const limitSeconds = () => Math.max(0, Number(st.durationMinutes == null ? (st.quiz && st.quiz.time_limit_minutes) || 0 : st.durationMinutes)) * 60;
   function remaining() {
     const limit = limitSeconds();
     if (!limit) return null;
@@ -316,6 +328,18 @@
     const marks = answerable().reduce((sum, item) => sum + Number(item.marks || 0), 0);
     const saved = readStore();
     const minutes = Number(q.time_limit_minutes || 0);
+    const savedMinutes = saved
+      ? Number(saved.durationMinutes == null ? minutes : saved.durationMinutes)
+      : null;
+    const selectedTime = st.durationMinutes == null
+      ? "default"
+      : st.durationMinutes === minutes
+        ? "default"
+        : [0, 15, 30, 45, 60].includes(st.durationMinutes)
+          ? String(st.durationMinutes)
+          : "custom";
+    const timeOption = (value, label) =>
+      '<option value="' + value + '"' + (selectedTime === String(value) ? " selected" : "") + ">" + label + "</option>";
     return page(
       '<div class="ep-card"><p class="ep-eyebrow">BEFORE YOU BEGIN</p><h1>' +
         esc(q.title) +
@@ -329,7 +353,23 @@
         marks +
         "</dd></div><div><dt>Time</dt><dd>" +
         (minutes ? minutes + " minutes" : "Untimed") +
-        "</dd></div></dl><p>" +
+        "</dd></div></dl>" +
+        (saved
+          ? '<p class="pr-time-choice"><b>Saved time limit</b><span>' +
+            (savedMinutes ? savedMinutes + " minutes" : "Untimed") +
+            " · Your original clock continues when you resume.</span></p>"
+          : '<label class="pr-time-choice" for="pr-time-select"><b>Set your time limit</b><select id="pr-time-select">' +
+            timeOption("default", "Paper default · " + (minutes ? minutes + " min" : "Untimed")) +
+            timeOption(0, "Untimed") +
+            timeOption(15, "15 minutes") +
+            timeOption(30, "30 minutes") +
+            timeOption(45, "45 minutes") +
+            timeOption(60, "60 minutes") +
+            timeOption("custom", "Custom time") +
+            '</select><input id="pr-time-custom" type="number" min="1" max="600" placeholder="Custom minutes (1–600)" value="' +
+            (selectedTime === "custom" ? String(st.durationMinutes) : "") +
+            '"' + (selectedTime === "custom" ? "" : " hidden") + '></label>') +
+        "<p>" +
         (minutes
           ? "This paper is self-paced: start whenever you are ready. The timer begins when you start, keeps running if you leave the page, and the paper is submitted automatically when time runs out."
           : "This paper is self-paced and untimed. Start whenever you are ready and submit when you are done.") +
@@ -758,6 +798,26 @@
   /* ---------------------------- actions ---------------------------- */
   async function start() {
     if (st.busy) return;
+    const savedDraft = readStore();
+    if (savedDraft) {
+      st.durationMinutes = Number(savedDraft.durationMinutes == null ? (st.quiz && st.quiz.time_limit_minutes) || 0 : savedDraft.durationMinutes);
+    } else {
+      const select = $("#pr-time-select");
+      const chosen = select ? select.value : "default";
+      if (chosen === "custom") {
+        const custom = Number(($("#pr-time-custom") || {}).value || 0);
+        if (!Number.isInteger(custom) || custom < 1 || custom > 600) {
+          st.error = "Enter a custom time between 1 and 600 minutes.";
+          render();
+          return;
+        }
+        st.durationMinutes = custom;
+      } else if (chosen === "default") {
+        st.durationMinutes = Number((st.quiz && st.quiz.time_limit_minutes) || 0);
+      } else {
+        st.durationMinutes = Number(chosen);
+      }
+    }
     st.busy = true;
     st.error = "";
     render();
@@ -765,7 +825,7 @@
       const data = await request("/quizzes/" + quizId + "/attempts", { method: "POST" });
       const attemptId = data.attempt_id || (data.attempt && data.attempt.id) || data.id;
       if (!attemptId) throw new Error("Could not start this paper. Please try again.");
-      const saved = readStore();
+      const saved = savedDraft;
       st.attemptId = attemptId;
       if (saved && String(saved.attemptId) === String(attemptId)) {
         st.startedAt = Number(saved.startedAt) || Date.now();
@@ -878,6 +938,7 @@
       st.result = null;
       st.summary = null;
       st.attemptId = null;
+      st.durationMinutes = null;
       st.answers = {};
       st.review = {};
       st.visited = {};
@@ -905,6 +966,11 @@
   }
   function onChange(ev) {
     const input = ev.target;
+    if (input.id === "pr-time-select") {
+      const custom = $("#pr-time-custom");
+      if (custom) custom.hidden = input.value !== "custom";
+      return;
+    }
     const id = input.dataset && input.dataset.choice;
     if (!id) return;
     const picked = Array.from(

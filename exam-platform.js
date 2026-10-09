@@ -9,6 +9,16 @@
     (window.QLStorefront && window.QLStorefront.apiBase) ||
     "https://labapi.genziitian.in/public/api"
   ).replace(/\/+$/, "");
+  async function fetchWithTimeout(url, options, timeoutMs) {
+    if (typeof AbortController !== "function" || options.signal) return fetch(url, options);
+    const controller = new AbortController();
+    const timeout = window.setTimeout(() => controller.abort(), timeoutMs);
+    try {
+      return await fetch(url, { ...options, signal: controller.signal });
+    } finally {
+      window.clearTimeout(timeout);
+    }
+  }
   const ROLE_LABEL = { manager: "Manager", student: "Your exams" };
   const TYPES = [
     "mcq_single",
@@ -378,15 +388,14 @@
       ...(token() ? { Authorization: `Bearer ${token()}` } : {}),
       ...(options.headers || {}),
     };
-    const response = await fetch(`${API}${url}`, {
-      signal: AbortSignal.timeout(20000),
+    const response = await fetchWithTimeout(`${API}${url}`, {
       ...options,
       headers,
       body:
         options.body && typeof options.body !== "string"
           ? JSON.stringify(options.body)
           : options.body,
-    });
+    }, 20000);
     let data = null;
     try {
       data = await response.json();

@@ -66,18 +66,15 @@ class QuizCourseRef {
   }
 
   Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'name': name,
-      'slug': slug,
-    };
+    return {'id': id, 'name': name, 'slug': slug};
   }
 }
 
 class QuestionModel {
   final int id;
-  final String type; // 'mcq_single', 'mcq_multi', 'true_false', 'numerical', 'short_answer', 'comprehension'
-  final String stem;
+  final String
+  type; // 'mcq_single', 'mcq_multi', 'true_false', 'numerical', 'short_answer', 'comprehension'
+  final dynamic stem;
   final String? stemImage;
   final String? stemCode;
   final String? stemCodeLanguage;
@@ -105,7 +102,7 @@ class QuestionModel {
     return QuestionModel(
       id: (json['id'] as num).toInt(),
       type: (json['type'] ?? '') as String,
-      stem: (json['stem'] ?? '') as String,
+      stem: json['stem'] ?? '',
       stemImage: json['stem_image'] as String?,
       stemCode: json['stem_code'] as String?,
       stemCodeLanguage: json['stem_code_language'] as String?,
@@ -140,7 +137,7 @@ class QuestionModel {
 class QuestionOptionModel {
   final int id;
   final String optionType; // 'text', 'code', 'latex'
-  final String optionText;
+  final dynamic optionText;
   final String? codeLanguage;
   final int position;
   final bool? isCorrect; // Present only on completed attempt result endpoint
@@ -158,7 +155,7 @@ class QuestionOptionModel {
     return QuestionOptionModel(
       id: (json['id'] as num).toInt(),
       optionType: (json['option_type'] ?? 'text') as String,
-      optionText: (json['option_text'] ?? '') as String,
+      optionText: json['option_text'] ?? '',
       codeLanguage: json['code_language'] as String?,
       position: (json['position'] as num?)?.toInt() ?? 0,
       isCorrect: json['is_correct'] as bool?,
@@ -208,9 +205,7 @@ class StartAttemptResponse {
   const StartAttemptResponse({required this.attemptId});
 
   factory StartAttemptResponse.fromJson(Map<String, dynamic> json) {
-    return StartAttemptResponse(
-      attemptId: (json['attempt_id'] as num).toInt(),
-    );
+    return StartAttemptResponse(attemptId: (json['attempt_id'] as num).toInt());
   }
 }
 
@@ -236,7 +231,9 @@ class SubmitQuizResponse {
       score: (json['score'] as num?)?.toDouble() ?? 0.0,
       totalMarks: (json['total_marks'] as num?)?.toDouble() ?? 0.0,
       percentage: (json['percentage'] as num?)?.toDouble() ?? 0.0,
-      xpAward: XpAwardEnvelope.fromJson(json['xp_award'] as Map<String, dynamic>),
+      xpAward: XpAwardEnvelope.fromJson(
+        json['xp_award'] as Map<String, dynamic>,
+      ),
     );
   }
 }
@@ -434,10 +431,7 @@ class QuizLeaderboard {
   final List<QuizLeaderboardEntry> top;
   final QuizLeaderboardEntry? me;
 
-  const QuizLeaderboard({
-    required this.top,
-    this.me,
-  });
+  const QuizLeaderboard({required this.top, this.me});
 
   factory QuizLeaderboard.fromJson(Map<String, dynamic> json) {
     return QuizLeaderboard(

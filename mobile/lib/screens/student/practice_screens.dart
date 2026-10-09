@@ -6,8 +6,10 @@ import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 import '../../api/api.dart';
+import '../../api/offline_paper_store.dart';
 import '../../state/theme_state.dart';
 import '../../widgets/app_ux_components.dart';
+import 'native_paper_room.dart' as native;
 
 const _green = Color(0xFF16A34A);
 const _ink = Color(0xFF0F172A);
@@ -33,6 +35,8 @@ class _PracticeTabState extends State<PracticeTab> {
   Map<String, double> _completion = {}; // course slug -> percent
   bool _activeOnly = false;
   String _query = '';
+  final TextEditingController _searchController = TextEditingController();
+  final ScrollController _scrollController = ScrollController();
 
   // Search box hint that types course names letter by letter, like the website.
   Timer? _typeTimer;
@@ -47,22 +51,33 @@ class _PracticeTabState extends State<PracticeTab> {
   void initState() {
     super.initState();
     _load();
-    _typeTimer = Timer.periodic(const Duration(milliseconds: 90), (_) => _typeStep());
+    _typeTimer = Timer.periodic(
+      const Duration(milliseconds: 90),
+      (_) => _typeStep(),
+    );
   }
 
   @override
   void dispose() {
     _typeTimer?.cancel();
+    _searchController.dispose();
+    _scrollController.dispose();
     super.dispose();
   }
 
   List<String> get _typeWords {
-    final names = _courses.map((c) => c.name).where((n) => n.isNotEmpty).toList();
-    return names.isEmpty ? const ['Mathematics', 'Statistics', 'Python'] : names;
+    final names = _courses
+        .map((c) => c.name)
+        .where((n) => n.isNotEmpty)
+        .toList();
+    return names.isEmpty
+        ? const ['Mathematics', 'Statistics', 'Python']
+        : names;
   }
 
   void _typeStep() {
-    if (!mounted || _query.isNotEmpty) return; // the hint is hidden while the user types
+    if (!mounted || _query.isNotEmpty)
+      return; // the hint is hidden while the user types
     final words = _typeWords;
     final word = words[_typeWord % words.length];
     _tick++;
@@ -109,12 +124,15 @@ class _PracticeTabState extends State<PracticeTab> {
       final courses = await widget.courseService.getCourses();
       final completion = <String, double>{};
       try {
-        final res = await widget.courseService.client.get<Map<String, dynamic>>('/student/progress');
+        final res = await widget.courseService.client.get<Map<String, dynamic>>(
+          '/student/progress',
+        );
         final rows = res.data?['course_progress'];
         if (rows is List) {
           for (final row in rows) {
             if (row is Map && row['course_slug'] != null) {
-              completion[row['course_slug'].toString()] = (row['completion_percent'] as num?)?.toDouble() ?? 0;
+              completion[row['course_slug'].toString()] =
+                  (row['completion_percent'] as num?)?.toDouble() ?? 0;
             }
           }
         }
@@ -140,6 +158,8 @@ class _PracticeTabState extends State<PracticeTab> {
 
   void _open(CourseModel course) {
     AppHaptics.light();
+    _searchController.clear();
+    _query = '';
     Navigator.of(context)
         .push(
           MaterialPageRoute<void>(
@@ -151,8 +171,10 @@ class _PracticeTabState extends State<PracticeTab> {
           ),
         )
         .then((_) {
-      if (mounted) _load();
-    });
+          if (!mounted) return;
+          if (_scrollController.hasClients) _scrollController.jumpTo(0);
+          _load();
+        });
   }
 
   @override
@@ -161,14 +183,19 @@ class _PracticeTabState extends State<PracticeTab> {
       return AppShimmerCard.list(count: 3);
     }
     if (_error != null && _courses.isEmpty) {
-      return AppErrorCard(title: 'Unable to Load Practice', message: _error!, onRetry: _load);
+      return AppErrorCard(
+        title: 'Unable to Load Practice',
+        message: _error!,
+        onRetry: _load,
+      );
     }
 
     final query = _query.trim().toLowerCase();
     final shown = _courses.where((c) {
       final pct = _percentOf(c);
       if (_activeOnly && !(pct > 0 && pct < 100)) return false;
-      if (query.isNotEmpty && !c.name.toLowerCase().contains(query)) return false;
+      if (query.isNotEmpty && !c.name.toLowerCase().contains(query))
+        return false;
       return true;
     }).toList();
 
@@ -176,6 +203,7 @@ class _PracticeTabState extends State<PracticeTab> {
       onRefresh: _load,
       color: _green,
       child: ListView(
+        controller: _scrollController,
         padding: const EdgeInsets.fromLTRB(16, 18, 16, 16),
         children: [
           // Small label, then the headline with the last words in green.
@@ -183,13 +211,21 @@ class _PracticeTabState extends State<PracticeTab> {
             children: [
               Container(
                 padding: const EdgeInsets.all(4),
-                decoration: BoxDecoration(color: _green.withValues(alpha: 0.12), borderRadius: BorderRadius.circular(8)),
+                decoration: BoxDecoration(
+                  color: _green.withValues(alpha: 0.12),
+                  borderRadius: BorderRadius.circular(8),
+                ),
                 child: const Icon(Icons.bolt_rounded, size: 14, color: _green),
               ),
               const SizedBox(width: 7),
               const Text(
                 'PRACTICE',
-                style: TextStyle(fontSize: 11, fontWeight: FontWeight.w700, letterSpacing: 2.2, color: Color(0xFF64748B)),
+                style: TextStyle(
+                  fontSize: 11,
+                  fontWeight: FontWeight.w700,
+                  letterSpacing: 2.2,
+                  color: Color(0xFF64748B),
+                ),
               ),
             ],
           ),
@@ -198,10 +234,19 @@ class _PracticeTabState extends State<PracticeTab> {
             TextSpan(
               text: 'Brush up at ',
               children: [
-                TextSpan(text: 'your own pace.', style: TextStyle(color: _green)),
+                TextSpan(
+                  text: 'your own pace.',
+                  style: TextStyle(color: _green),
+                ),
               ],
             ),
-            style: TextStyle(fontSize: 30, height: 1.15, fontWeight: FontWeight.w800, letterSpacing: -0.8, color: _ink),
+            style: TextStyle(
+              fontSize: 30,
+              height: 1.15,
+              fontWeight: FontWeight.w800,
+              letterSpacing: -0.8,
+              color: _ink,
+            ),
           ),
           const SizedBox(height: 4),
           const Text(
@@ -217,18 +262,29 @@ class _PracticeTabState extends State<PracticeTab> {
               borderRadius: BorderRadius.circular(14),
               border: Border.all(color: const Color(0xFFBBE5C8), width: 1.5),
               boxShadow: [
-                BoxShadow(color: _green.withValues(alpha: 0.10), blurRadius: 14, offset: const Offset(0, 6)),
+                BoxShadow(
+                  color: _green.withValues(alpha: 0.10),
+                  blurRadius: 14,
+                  offset: const Offset(0, 6),
+                ),
               ],
             ),
             child: TextField(
+              controller: _searchController,
               onChanged: (value) => setState(() => _query = value),
               textInputAction: TextInputAction.search,
               decoration: InputDecoration(
                 hintText: _typedHint,
-                hintStyle: const TextStyle(color: Color(0xFF64748B), fontSize: 16),
+                hintStyle: const TextStyle(
+                  color: Color(0xFF64748B),
+                  fontSize: 16,
+                ),
                 prefixIcon: const Icon(Icons.search_rounded, color: _green),
                 border: InputBorder.none,
-                contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
+                contentPadding: const EdgeInsets.symmetric(
+                  horizontal: 14,
+                  vertical: 14,
+                ),
               ),
             ),
           ),
@@ -243,12 +299,21 @@ class _PracticeTabState extends State<PracticeTab> {
                     children: [
                       TextSpan(
                         text: '${shown.length}',
-                        style: const TextStyle(fontWeight: FontWeight.w700, color: Color(0xFF334155)),
+                        style: const TextStyle(
+                          fontWeight: FontWeight.w700,
+                          color: Color(0xFF334155),
+                        ),
                       ),
-                      TextSpan(text: ' ${_activeOnly ? 'active' : 'enrolled'} course${shown.length == 1 ? '' : 's'}'),
+                      TextSpan(
+                        text:
+                            ' ${_activeOnly ? 'active' : 'enrolled'} course${shown.length == 1 ? '' : 's'}',
+                      ),
                     ],
                   ),
-                  style: const TextStyle(fontSize: 14, color: Color(0xFF64748B)),
+                  style: const TextStyle(
+                    fontSize: 14,
+                    color: Color(0xFF64748B),
+                  ),
                 ),
               ),
               GestureDetector(
@@ -258,11 +323,18 @@ class _PracticeTabState extends State<PracticeTab> {
                 },
                 child: AnimatedContainer(
                   duration: const Duration(milliseconds: 180),
-                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 12,
+                    vertical: 8,
+                  ),
                   decoration: BoxDecoration(
-                    color: _activeOnly ? _green.withValues(alpha: 0.10) : Colors.white,
+                    color: _activeOnly
+                        ? _green.withValues(alpha: 0.10)
+                        : Colors.white,
                     borderRadius: BorderRadius.circular(8),
-                    border: Border.all(color: _activeOnly ? _green : const Color(0xFFE2E8F0)),
+                    border: Border.all(
+                      color: _activeOnly ? _green : const Color(0xFFE2E8F0),
+                    ),
                   ),
                   child: Text(
                     'Active only',
@@ -287,7 +359,10 @@ class _PracticeTabState extends State<PracticeTab> {
                       ? 'Your enrolled courses will appear here once they are published.'
                       : 'No courses match.',
                   textAlign: TextAlign.center,
-                  style: const TextStyle(color: Color(0xFF94A3B8), fontSize: 14),
+                  style: const TextStyle(
+                    color: Color(0xFF94A3B8),
+                    fontSize: 14,
+                  ),
                 ),
               ),
             )
@@ -295,7 +370,11 @@ class _PracticeTabState extends State<PracticeTab> {
             for (final course in shown)
               Padding(
                 padding: const EdgeInsets.only(bottom: 12),
-                child: _CourseCard(course: course, percent: _percentOf(course), onTap: () => _open(course)),
+                child: _CourseCard(
+                  course: course,
+                  percent: _percentOf(course),
+                  onTap: () => _open(course),
+                ),
               ),
         ],
       ),
@@ -308,13 +387,20 @@ class _CourseCard extends StatelessWidget {
   final double percent;
   final VoidCallback onTap;
 
-  const _CourseCard({required this.course, required this.percent, required this.onTap});
+  const _CourseCard({
+    required this.course,
+    required this.percent,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
     final pct = percent.round().clamp(0, 100);
-    final status = pct == 0 ? 'Not started' : (pct >= 100 ? 'Completed' : 'In progress');
-    final sections = '${course.hasIde ? 'PA · GA · IDE' : 'PA · GA'} · Quiz 1 · Quiz 2 · End Term · Mock';
+    final status = pct == 0
+        ? 'Not started'
+        : (pct >= 100 ? 'Completed' : 'In progress');
+    final sections =
+        '${course.hasIde ? 'PA · GA · IDE' : 'PA · GA'} · Quiz 1 · Quiz 2 · End Term · Mock';
 
     return GestureDetector(
       onTap: onTap,
@@ -330,7 +416,11 @@ class _CourseCard extends StatelessWidget {
           ),
           border: Border.all(color: _green.withValues(alpha: 0.24)),
           boxShadow: [
-            BoxShadow(color: const Color(0xFF166534).withValues(alpha: 0.14), blurRadius: 22, offset: const Offset(0, 10)),
+            BoxShadow(
+              color: const Color(0xFF166534).withValues(alpha: 0.14),
+              blurRadius: 22,
+              offset: const Offset(0, 10),
+            ),
           ],
         ),
         child: Column(
@@ -342,8 +432,15 @@ class _CourseCard extends StatelessWidget {
                 Container(
                   width: 40,
                   height: 40,
-                  decoration: BoxDecoration(color: const Color(0xFFDCF3E3), borderRadius: BorderRadius.circular(10)),
-                  child: const Icon(Icons.menu_book_outlined, color: Color(0xFF15803D), size: 22),
+                  decoration: BoxDecoration(
+                    color: const Color(0xFFDCF3E3),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: const Icon(
+                    Icons.menu_book_outlined,
+                    color: Color(0xFF15803D),
+                    size: 22,
+                  ),
                 ),
                 const Spacer(),
                 Column(
@@ -353,24 +450,51 @@ class _CourseCard extends StatelessWidget {
                       TextSpan(
                         text: '$pct',
                         children: const [
-                          TextSpan(text: '%', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w400, color: Color(0xFFCBD5E1))),
+                          TextSpan(
+                            text: '%',
+                            style: TextStyle(
+                              fontSize: 13,
+                              fontWeight: FontWeight.w400,
+                              color: Color(0xFFCBD5E1),
+                            ),
+                          ),
                         ],
                       ),
-                      style: const TextStyle(fontSize: 24, height: 1.0, fontWeight: FontWeight.w800, color: _ink),
+                      style: const TextStyle(
+                        fontSize: 24,
+                        height: 1.0,
+                        fontWeight: FontWeight.w800,
+                        color: _ink,
+                      ),
                     ),
                     const SizedBox(height: 4),
                     const Text(
                       'COMPLETE',
-                      style: TextStyle(fontSize: 9.5, fontWeight: FontWeight.w500, letterSpacing: 1.6, color: Color(0xFF94A3B8)),
+                      style: TextStyle(
+                        fontSize: 9.5,
+                        fontWeight: FontWeight.w500,
+                        letterSpacing: 1.6,
+                        color: Color(0xFF94A3B8),
+                      ),
                     ),
                   ],
                 ),
               ],
             ),
             const SizedBox(height: 12),
-            Text(course.name, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: _ink)),
+            Text(
+              course.name,
+              style: const TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
+                color: _ink,
+              ),
+            ),
             const SizedBox(height: 3),
-            Text(sections, style: const TextStyle(fontSize: 12, color: Color(0xFF64748B))),
+            Text(
+              sections,
+              style: const TextStyle(fontSize: 12, color: Color(0xFF64748B)),
+            ),
             const SizedBox(height: 12),
             ClipRRect(
               borderRadius: BorderRadius.circular(6),
@@ -385,8 +509,18 @@ class _CourseCard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(status, style: const TextStyle(fontSize: 11.5, color: Color(0xFF94A3B8))),
-                _GoPill(label: pct == 0 ? 'Start' : (pct >= 100 ? 'Review' : 'Continue')),
+                Text(
+                  status,
+                  style: const TextStyle(
+                    fontSize: 11.5,
+                    color: Color(0xFF94A3B8),
+                  ),
+                ),
+                _GoPill(
+                  label: pct == 0
+                      ? 'Start'
+                      : (pct >= 100 ? 'Review' : 'Continue'),
+                ),
               ],
             ),
           ],
@@ -412,7 +546,10 @@ class _GoPillState extends State<_GoPill> with SingleTickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    _nudge = AnimationController(vsync: this, duration: const Duration(milliseconds: 2200))..repeat();
+    _nudge = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 2200),
+    )..repeat();
   }
 
   @override
@@ -427,9 +564,15 @@ class _GoPillState extends State<_GoPill> with SingleTickerProviderStateMixin {
       padding: const EdgeInsets.fromLTRB(14, 6, 6, 6),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(22),
-        gradient: const LinearGradient(colors: [Color(0xFF22C55E), Color(0xFF15803D)]),
+        gradient: const LinearGradient(
+          colors: [Color(0xFF22C55E), Color(0xFF15803D)],
+        ),
         boxShadow: [
-          BoxShadow(color: _green.withValues(alpha: 0.35), blurRadius: 12, offset: const Offset(0, 6)),
+          BoxShadow(
+            color: _green.withValues(alpha: 0.35),
+            blurRadius: 12,
+            offset: const Offset(0, 6),
+          ),
         ],
       ),
       child: Row(
@@ -437,13 +580,20 @@ class _GoPillState extends State<_GoPill> with SingleTickerProviderStateMixin {
         children: [
           Text(
             widget.label,
-            style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w700, color: Colors.white),
+            style: const TextStyle(
+              fontSize: 13,
+              fontWeight: FontWeight.w700,
+              color: Colors.white,
+            ),
           ),
           const SizedBox(width: 8),
           Container(
             width: 24,
             height: 24,
-            decoration: const BoxDecoration(color: Colors.white, shape: BoxShape.circle),
+            decoration: const BoxDecoration(
+              color: Colors.white,
+              shape: BoxShape.circle,
+            ),
             child: AnimatedBuilder(
               animation: _nudge,
               builder: (context, child) {
@@ -452,7 +602,11 @@ class _GoPillState extends State<_GoPill> with SingleTickerProviderStateMixin {
                 final dx = 3.0 * math.sin(t * 2 * math.pi).abs();
                 return Transform.translate(offset: Offset(dx, 0), child: child);
               },
-              child: const Icon(Icons.arrow_forward_rounded, size: 15, color: Color(0xFF15803D)),
+              child: const Icon(
+                Icons.arrow_forward_rounded,
+                size: 15,
+                color: Color(0xFF15803D),
+              ),
             ),
           ),
         ],
@@ -469,20 +623,43 @@ class CoursePapersScreen extends StatefulWidget {
   final CourseService courseService;
   final UserModel? user;
 
-  const CoursePapersScreen({super.key, required this.course, required this.courseService, this.user});
+  const CoursePapersScreen({
+    super.key,
+    required this.course,
+    required this.courseService,
+    this.user,
+  });
 
   @override
   State<CoursePapersScreen> createState() => _CoursePapersScreenState();
 }
 
 class _CoursePapersScreenState extends State<CoursePapersScreen> {
-  static const _typeNames = ['Practice Assignment', 'Graded Assignment', 'Quiz 1', 'Quiz 2', 'End Term', 'Mock Test'];
-  static const _typeShort = ['Practice', 'Graded', 'Quiz 1', 'Quiz 2', 'End Term', 'Mock'];
+  static const _typeNames = [
+    'Practice Assignment',
+    'Graded Assignment',
+    'Quiz 1',
+    'Quiz 2',
+    'End Term',
+    'Mock Test',
+  ];
+  static const _typeShort = [
+    'Practice',
+    'Graded',
+    'Quiz 1',
+    'Quiz 2',
+    'End Term',
+    'Mock',
+  ];
   static const _filters = ['All', 'To do', 'Done'];
 
   bool _loading = true;
   String? _error;
-  List<List<CourseQuizListItem>> _lists = List.generate(6, (_) => <CourseQuizListItem>[]);
+  List<List<CourseQuizListItem>> _lists = List.generate(
+    6,
+    (_) => <CourseQuizListItem>[],
+  );
+  final ScrollController _scrollController = ScrollController();
   int _type = 0; // index into _typeNames
   int _filter = 0; // index into _filters
 
@@ -490,6 +667,12 @@ class _CoursePapersScreenState extends State<CoursePapersScreen> {
   void initState() {
     super.initState();
     _load();
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
   }
 
   Future<void> _load({bool quiet = false}) async {
@@ -506,7 +689,14 @@ class _CoursePapersScreenState extends State<CoursePapersScreen> {
       final practice = await practiceFuture;
       final exam = await examFuture;
       if (!mounted) return;
-      final lists = [practice.practice, practice.graded, exam.quiz1, exam.quiz2, exam.endterm, exam.mockTest];
+      final lists = [
+        practice.practice,
+        practice.graded,
+        exam.quiz1,
+        exam.quiz2,
+        exam.endterm,
+        exam.mockTest,
+      ];
       setState(() {
         _lists = lists;
         _loading = false;
@@ -521,7 +711,9 @@ class _CoursePapersScreenState extends State<CoursePapersScreen> {
       if (!mounted) return;
       if (quiet) return;
       setState(() {
-        _error = e is ApiException ? e.message : 'Could not load the papers for this course.';
+        _error = e is ApiException
+            ? e.message
+            : 'Could not load the papers for this course.';
         _loading = false;
       });
     }
@@ -539,10 +731,40 @@ class _CoursePapersScreenState extends State<CoursePapersScreen> {
         ),
       ),
     );
-    if (mounted) _load(quiet: true); // attempt counts may have changed
+    if (mounted) {
+      if (_scrollController.hasClients) _scrollController.jumpTo(0);
+      _load(quiet: true); // attempt counts may have changed
+    }
   }
 
-  static int _doneIn(List<CourseQuizListItem> list) => list.where((p) => p.userHasAttempted).length;
+  Future<void> _downloadPaper(CourseQuizListItem paper) async {
+    final userId = widget.user?.id;
+    if (userId == null) return;
+    try {
+      final quiz = await QuizService(
+        client: widget.courseService.client,
+      ).getQuiz(paper.id);
+      await OfflinePaperStore.cacheQuiz(userId, quiz);
+      if (mounted)
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Paper saved on this device for offline practice.'),
+          ),
+        );
+    } catch (e) {
+      if (mounted)
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              e is ApiException ? e.message : 'Could not download this paper.',
+            ),
+          ),
+        );
+    }
+  }
+
+  static int _doneIn(List<CourseQuizListItem> list) =>
+      list.where((p) => p.userHasAttempted).length;
 
   // ---- Header: course name and overall progress -----------------------------
 
@@ -561,7 +783,11 @@ class _CoursePapersScreenState extends State<CoursePapersScreen> {
           colors: [Color(0xFF14532D), Color(0xFF16A34A)],
         ),
         boxShadow: [
-          BoxShadow(color: _green.withValues(alpha: 0.28), blurRadius: 18, offset: const Offset(0, 8)),
+          BoxShadow(
+            color: _green.withValues(alpha: 0.28),
+            blurRadius: 18,
+            offset: const Offset(0, 8),
+          ),
         ],
       ),
       child: Row(
@@ -574,12 +800,20 @@ class _CoursePapersScreenState extends State<CoursePapersScreen> {
                   widget.course.name,
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
-                  style: const TextStyle(fontSize: 20, height: 1.2, fontWeight: FontWeight.w800, color: Colors.white),
+                  style: const TextStyle(
+                    fontSize: 20,
+                    height: 1.2,
+                    fontWeight: FontWeight.w800,
+                    color: Colors.white,
+                  ),
                 ),
                 const SizedBox(height: 4),
                 Text(
                   total == 0 ? 'No papers yet' : '$done of $total papers done',
-                  style: const TextStyle(fontSize: 12.5, color: Color(0xFFD1FAE5)),
+                  style: const TextStyle(
+                    fontSize: 12.5,
+                    color: Color(0xFFD1FAE5),
+                  ),
                 ),
                 const SizedBox(height: 10),
                 ClipRRect(
@@ -592,7 +826,9 @@ class _CoursePapersScreenState extends State<CoursePapersScreen> {
                       value: t,
                       minHeight: 5,
                       backgroundColor: Colors.white.withValues(alpha: 0.22),
-                      valueColor: const AlwaysStoppedAnimation<Color>(Color(0xFFBBF7D0)),
+                      valueColor: const AlwaysStoppedAnimation<Color>(
+                        Color(0xFFBBF7D0),
+                      ),
                     ),
                   ),
                 ),
@@ -602,7 +838,11 @@ class _CoursePapersScreenState extends State<CoursePapersScreen> {
           const SizedBox(width: 14),
           Text(
             '${(fraction * 100).round()}%',
-            style: const TextStyle(fontSize: 26, fontWeight: FontWeight.w800, color: Colors.white),
+            style: const TextStyle(
+              fontSize: 26,
+              fontWeight: FontWeight.w800,
+              color: Colors.white,
+            ),
           ),
         ],
       ),
@@ -630,25 +870,40 @@ class _CoursePapersScreenState extends State<CoursePapersScreen> {
             decoration: BoxDecoration(
               color: selected ? _green : Colors.white,
               borderRadius: BorderRadius.circular(12),
-              border: Border.all(color: selected ? _green : const Color(0xFFE2E8F0)),
+              border: Border.all(
+                color: selected ? _green : const Color(0xFFE2E8F0),
+              ),
             ),
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
                   _typeShort[i],
-                  style: TextStyle(fontSize: 13, fontWeight: FontWeight.w700, color: selected ? Colors.white : const Color(0xFF334155)),
+                  style: TextStyle(
+                    fontSize: 13,
+                    fontWeight: FontWeight.w700,
+                    color: selected ? Colors.white : const Color(0xFF334155),
+                  ),
                 ),
                 const SizedBox(width: 6),
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 1),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 6,
+                    vertical: 1,
+                  ),
                   decoration: BoxDecoration(
-                    color: selected ? Colors.white.withValues(alpha: 0.22) : const Color(0xFFF1F5F9),
+                    color: selected
+                        ? Colors.white.withValues(alpha: 0.22)
+                        : const Color(0xFFF1F5F9),
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: Text(
                     '${_doneIn(list)}/${list.length}',
-                    style: TextStyle(fontSize: 11, fontWeight: FontWeight.w700, color: selected ? Colors.white : const Color(0xFF64748B)),
+                    style: TextStyle(
+                      fontSize: 11,
+                      fontWeight: FontWeight.w700,
+                      color: selected ? Colors.white : const Color(0xFF64748B),
+                    ),
                   ),
                 ),
               ],
@@ -676,7 +931,10 @@ class _CoursePapersScreenState extends State<CoursePapersScreen> {
         ),
         Container(
           padding: const EdgeInsets.all(3),
-          decoration: BoxDecoration(color: const Color(0xFFE9EEF3), borderRadius: BorderRadius.circular(10)),
+          decoration: BoxDecoration(
+            color: const Color(0xFFE9EEF3),
+            borderRadius: BorderRadius.circular(10),
+          ),
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -688,7 +946,10 @@ class _CoursePapersScreenState extends State<CoursePapersScreen> {
                   },
                   child: AnimatedContainer(
                     duration: const Duration(milliseconds: 160),
-                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 10,
+                      vertical: 5,
+                    ),
                     decoration: BoxDecoration(
                       color: _filter == i ? Colors.white : Colors.transparent,
                       borderRadius: BorderRadius.circular(8),
@@ -697,7 +958,9 @@ class _CoursePapersScreenState extends State<CoursePapersScreen> {
                       _filters[i],
                       style: TextStyle(
                         fontSize: 12,
-                        fontWeight: _filter == i ? FontWeight.w700 : FontWeight.w500,
+                        fontWeight: _filter == i
+                            ? FontWeight.w700
+                            : FontWeight.w500,
                         color: _filter == i ? _ink : const Color(0xFF64748B),
                       ),
                     ),
@@ -718,7 +981,8 @@ class _CoursePapersScreenState extends State<CoursePapersScreen> {
       if (paper.weekNumber != null) 'Week ${paper.weekNumber}',
       '${paper.questionCount} Q',
       paper.timeLimitMinutes > 0 ? '${paper.timeLimitMinutes} min' : 'Untimed',
-      if (done) paper.attemptCount > 1 ? '${paper.attemptCount} attempts' : '1 attempt',
+      if (done)
+        paper.attemptCount > 1 ? '${paper.attemptCount} attempts' : '1 attempt',
     ].join(' · ');
 
     return GestureDetector(
@@ -728,7 +992,9 @@ class _CoursePapersScreenState extends State<CoursePapersScreen> {
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(14),
-          border: Border.all(color: done ? const Color(0xFFBBF7D0) : const Color(0xFFE2E8F0)),
+          border: Border.all(
+            color: done ? const Color(0xFFBBF7D0) : const Color(0xFFE2E8F0),
+          ),
         ),
         child: Row(
           children: [
@@ -754,14 +1020,37 @@ class _CoursePapersScreenState extends State<CoursePapersScreen> {
                     paper.title,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(fontSize: 14, height: 1.25, fontWeight: FontWeight.w600, color: _ink),
+                    style: const TextStyle(
+                      fontSize: 14,
+                      height: 1.25,
+                      fontWeight: FontWeight.w600,
+                      color: _ink,
+                    ),
                   ),
                   const SizedBox(height: 3),
-                  Text(meta, maxLines: 1, overflow: TextOverflow.ellipsis, style: const TextStyle(fontSize: 11.5, color: Color(0xFF64748B))),
+                  Text(
+                    meta,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(
+                      fontSize: 11.5,
+                      color: Color(0xFF64748B),
+                    ),
+                  ),
                 ],
               ),
             ),
             const SizedBox(width: 8),
+            IconButton(
+              tooltip: 'Download for offline practice',
+              visualDensity: VisualDensity.compact,
+              onPressed: () => _downloadPaper(paper),
+              icon: const Icon(
+                Icons.download_for_offline_outlined,
+                color: _green,
+                size: 21,
+              ),
+            ),
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 7),
               decoration: BoxDecoration(
@@ -771,7 +1060,11 @@ class _CoursePapersScreenState extends State<CoursePapersScreen> {
               ),
               child: Text(
                 done ? 'Retake' : 'Start',
-                style: TextStyle(fontSize: 12.5, fontWeight: FontWeight.w700, color: done ? _green : Colors.white),
+                style: TextStyle(
+                  fontSize: 12.5,
+                  fontWeight: FontWeight.w700,
+                  color: done ? _green : Colors.white,
+                ),
               ),
             ),
           ],
@@ -798,49 +1091,75 @@ class _CoursePapersScreenState extends State<CoursePapersScreen> {
         foregroundColor: _ink,
         elevation: 0,
         titleSpacing: 0,
-        title: const Text('All practice courses', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: Color(0xFF475569))),
+        title: const Text(
+          'All practice courses',
+          style: TextStyle(
+            fontSize: 14,
+            fontWeight: FontWeight.w600,
+            color: Color(0xFF475569),
+          ),
+        ),
       ),
       body: _loading
           ? AppShimmerCard.list(count: 4)
           : _error != null
-              ? AppErrorCard(title: 'Unable to Load Papers', message: _error!, onRetry: _load)
-              : RefreshIndicator(
-                  onRefresh: () => _load(quiet: true),
-                  color: _green,
-                  child: ListView(
-                    padding: const EdgeInsets.fromLTRB(16, 4, 16, 24),
-                    children: [
-                      _header(),
-                      const SizedBox(height: 14),
-                      if (!hasAny)
-                        const Padding(
-                          padding: EdgeInsets.symmetric(vertical: 60),
-                          child: Center(
-                            child: Text('No papers in this course yet.', style: TextStyle(color: Color(0xFF94A3B8), fontSize: 14)),
+          ? AppErrorCard(
+              title: 'Unable to Load Papers',
+              message: _error!,
+              onRetry: _load,
+            )
+          : RefreshIndicator(
+              onRefresh: () => _load(quiet: true),
+              color: _green,
+              child: ListView(
+                controller: _scrollController,
+                padding: const EdgeInsets.fromLTRB(16, 4, 16, 24),
+                children: [
+                  _header(),
+                  const SizedBox(height: 14),
+                  if (!hasAny)
+                    const Padding(
+                      padding: EdgeInsets.symmetric(vertical: 60),
+                      child: Center(
+                        child: Text(
+                          'No papers in this course yet.',
+                          style: TextStyle(
+                            color: Color(0xFF94A3B8),
+                            fontSize: 14,
                           ),
-                        )
-                      else ...[
-                        _typeChips(),
-                        const SizedBox(height: 12),
-                        _filterBar(shown.length),
-                        const SizedBox(height: 10),
-                        if (shown.isEmpty)
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 40),
-                            child: Center(
-                              child: Text(
-                                _filter == 1 ? 'All done here. Nice work.' : 'Nothing attempted here yet.',
-                                style: const TextStyle(color: Color(0xFF94A3B8), fontSize: 14),
-                              ),
+                        ),
+                      ),
+                    )
+                  else ...[
+                    _typeChips(),
+                    const SizedBox(height: 12),
+                    _filterBar(shown.length),
+                    const SizedBox(height: 10),
+                    if (shown.isEmpty)
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 40),
+                        child: Center(
+                          child: Text(
+                            _filter == 1
+                                ? 'All done here. Nice work.'
+                                : 'Nothing attempted here yet.',
+                            style: const TextStyle(
+                              color: Color(0xFF94A3B8),
+                              fontSize: 14,
                             ),
-                          )
-                        else
-                          for (final paper in shown)
-                            Padding(padding: const EdgeInsets.only(bottom: 8), child: _paperRow(paper)),
-                      ],
-                    ],
-                  ),
-                ),
+                          ),
+                        ),
+                      )
+                    else
+                      for (final paper in shown)
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 8),
+                          child: _paperRow(paper),
+                        ),
+                  ],
+                ],
+              ),
+            ),
     );
   }
 }
@@ -848,7 +1167,7 @@ class _CoursePapersScreenState extends State<CoursePapersScreen> {
 // -----------------------------------------------------------------------------
 // PAPER ROOM: the website's real paper player, signed in with this app's session
 // -----------------------------------------------------------------------------
-class PaperRoomScreen extends StatefulWidget {
+class PaperRoomScreen extends StatelessWidget {
   final int quizId;
   final String title;
   final ApiClient apiClient;
@@ -863,257 +1182,12 @@ class PaperRoomScreen extends StatefulWidget {
   });
 
   @override
-  State<PaperRoomScreen> createState() => _PaperRoomScreenState();
-}
-
-class _PaperRoomScreenState extends State<PaperRoomScreen> {
-  late final WebViewController _web;
-  bool _signedIn = false; // session handed to the page
-  bool _ready = false; // paper page finished loading
-  String? _error;
-
-  String get _paperPath => '/paper/${widget.quizId}';
-
-  @override
-  void initState() {
-    super.initState();
-    _web = WebViewController()
-      ..setJavaScriptMode(JavaScriptMode.unrestricted)
-      ..setBackgroundColor(Colors.white)
-      ..setNavigationDelegate(
-        NavigationDelegate(
-          onPageStarted: (url) {
-            // Restyle as early as possible so the plain web look never flashes.
-            if (_signedIn && Uri.tryParse(url)?.path.startsWith('/paper/') == true) _applyAppLook();
-          },
-          onPageFinished: _onPageFinished,
-          onNavigationRequest: _onNavigationRequest,
-          onWebResourceError: (error) {
-            if (error.isForMainFrame == true && mounted) {
-              setState(() => _error = 'Could not open the paper. Check your connection and try again.');
-            }
-          },
-        ),
-      );
-    _start();
-  }
-
-  /// Step 1: open a small page on the site so its storage can be written.
-  void _start() {
-    setState(() {
-      _signedIn = false;
-      _ready = false;
-      _error = null;
-    });
-    _web.loadRequest(Uri.parse('$_webOrigin/terms-and-conditions'));
-  }
-
-  /// Look of the paper room inside the app: the website's own top bar is hidden
-  /// (the app already shows the title), and the "Before you begin" card gets the
-  /// app's rounded, colourful style. Only styling is touched, never behaviour.
-  static const String _appLookCss = '''
-.ep-top{display:none!important}
-html,body{background:#f1f5f9!important}
-.ep-page{padding:16px!important}
-.ep-card{position:relative;overflow:hidden;border-radius:22px!important;border:1px solid #e2e8f0!important;box-shadow:0 14px 30px -16px rgba(15,23,42,.22)!important;padding:22px 18px 18px!important;animation:qlAppIn .45s ease-out both}
-.ep-card::before{content:"";position:absolute;left:0;right:0;top:0;height:5px;background:linear-gradient(90deg,#16a34a,#86efac,rgba(134,239,172,0))}
-.ep-eyebrow{display:inline-block;background:#dcfce7;color:#15803d!important;border-radius:999px;padding:5px 11px!important;font-size:10px!important;font-weight:800!important;letter-spacing:.14em!important;margin:0!important}
-.ep-card h1{font-size:24px!important;line-height:1.2!important;letter-spacing:-.02em;margin:12px 0 14px!important}
-.ep-facts{display:grid!important;grid-template-columns:1fr 1fr!important;gap:10px!important;margin:0 0 14px!important}
-.ep-facts>div{border-radius:14px!important;padding:12px 14px!important;border:1px solid #e2e8f0!important}
-.ep-facts>div:nth-child(1){background:#eff6ff!important;border-color:#bfdbfe!important}
-.ep-facts>div:nth-child(2){background:#f5f3ff!important;border-color:#ddd6fe!important}
-.ep-facts>div:nth-child(3){background:#fffbeb!important;border-color:#fde68a!important}
-.ep-facts>div:nth-child(4){background:#f0fdf4!important;border-color:#bbf7d0!important}
-.ep-facts dt{font-size:10px!important;font-weight:700!important;letter-spacing:.12em!important;color:#64748b!important}
-.ep-facts dd{font-size:16px!important;font-weight:800!important;margin:4px 0 0!important;color:#0f172a!important}
-.ep-actions{display:flex!important;gap:10px!important;margin-top:18px!important}
-.ep-actions .ep-btn{flex:1;display:flex!important;align-items:center;justify-content:center;text-align:center;border-radius:14px!important;padding:14px 10px!important;font-weight:700!important;font-size:15px!important}
-.ep-actions .ep-btn-primary{flex:1.6;background:linear-gradient(90deg,#22c55e,#15803d)!important;border:0!important;color:#fff!important;box-shadow:0 12px 22px -10px rgba(22,163,74,.75)!important}
-@keyframes qlAppIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-#ep-app .pr-live-header{flex-wrap:wrap!important}
-#ep-app .pr-live-header>div:first-child{flex:1 1 100%!important}
-#ep-app .pr-live-header>div:first-child>div{flex:1 1 auto;min-width:0}
-#ep-app .ql-calc-top{width:auto!important;flex:none!important;margin-left:auto;padding:8px 13px!important;white-space:nowrap}
-#ep-app .pr-live-tools-box{display:none!important}
-#ep-app .pr-live-actions{position:fixed!important;left:0!important;right:0!important;bottom:0!important;margin:0!important;padding:9px 12px 10px!important;z-index:6}
-#ep-app .pr-live-main{padding-bottom:78px!important}
-''';
-
-  /// Moves the Calculator button up beside the paper title. The page redraws
-  /// itself between questions, so this keeps watching and moves it again.
-  static const String _appLookJs = '''
-(function(){
-  if (window.__qlAppLook) return;
-  window.__qlAppLook = true;
-  function place(){
-    var header = document.querySelector('.pr-live-header');
-    var button = document.querySelector('.pr-live-tools-box [data-calc]');
-    if (!header || !button) return;
-    var brand = header.firstElementChild;
-    if (!brand) return;
-    var old = brand.querySelector('[data-calc]');
-    if (old) old.remove();
-    button.classList.add('ql-calc-top');
-    brand.appendChild(button);
-  }
-  new MutationObserver(place).observe(document.documentElement, {childList: true, subtree: true});
-  place();
-})();
-''';
-
-  Future<void> _applyAppLook() async {
-    try {
-      await _web.runJavaScript(
-        '(function f(){var d=document;if(!d.head){setTimeout(f,30);return;}'
-        'if(d.getElementById("ql-app-look"))return;'
-        'var s=d.createElement("style");s.id="ql-app-look";s.textContent=${jsonEncode(_appLookCss)};d.head.appendChild(s);})();',
-      );
-      await _web.runJavaScript(_appLookJs);
-    } catch (_) {
-      // Styling is cosmetic; the paper still works without it.
-    }
-  }
-
-  /// Step 2: hand over the session, then open the paper.
-  Future<void> _onPageFinished(String url) async {
-    if (!mounted) return;
-    if (_signedIn) {
-      if (Uri.tryParse(url)?.path.startsWith('/paper/') == true) {
-        await _applyAppLook();
-        if (mounted) setState(() => _ready = true);
-      }
-      return;
-    }
-
-    final token = await widget.apiClient.getAuthToken();
-    if (!mounted) return;
-    if (token == null || token.isEmpty) {
-      setState(() => _error = 'Your session has ended. Please sign in again.');
-      return;
-    }
-    final user = widget.user;
-    final userJson = jsonEncode({
-      'id': user?.id,
-      'name': user?.name,
-      'email': user?.email,
-      'role': user?.role,
-      'is_admin': user?.isAdmin ?? false,
-      'avatar': user?.avatar,
-    });
-    try {
-      await _web.runJavaScript(
-        'try{localStorage.setItem("lab_token",${jsonEncode(token)});'
-        'localStorage.setItem("lab_user",${jsonEncode(userJson)});'
-        'localStorage.setItem("ql_theme",${jsonEncode(isAppDark(context) ? 'dark' : 'light')});}catch(e){}',
-      );
-    } catch (_) {
-      // If storage is unavailable the paper page shows its own sign-in prompt.
-    }
-    if (!mounted) return;
-    _signedIn = true;
-    await _web.loadRequest(Uri.parse('$_webOrigin$_paperPath'));
-  }
-
-  /// Leaving the paper (for example "Back to papers") closes this screen
-  /// instead of loading the rest of the website inside it.
-  NavigationDecision _onNavigationRequest(NavigationRequest request) {
-    if (!_signedIn || !request.isMainFrame) return NavigationDecision.navigate;
-    final uri = Uri.tryParse(request.url);
-    if (uri == null) return NavigationDecision.navigate;
-    final onSite = uri.host == 'quiz.genziitian.in';
-    if (onSite && !uri.path.startsWith('/paper/')) {
-      _close();
-      return NavigationDecision.prevent;
-    }
-    return NavigationDecision.navigate;
-  }
-
-  bool _closing = false;
-
-  void _close() {
-    if (_closing || !mounted) return;
-    _closing = true;
-    Navigator.of(context).pop();
-  }
-
-  /// Asked on the phone's back button / gesture. While a paper is being
-  /// attempted this opens the page's own "Submit paper?" box (with an extra
-  /// "Leave and finish later" link); a second back closes that box. On the
-  /// start and result screens, back simply leaves.
-  static const String _backJs = '''
-(function(){
-  if (!document.querySelector('.pr-live-root')) return 'out';
-  var modal = document.getElementById('ep-student-submit-modal');
-  if (modal) { modal.remove(); return 'closed'; }
-  var submit = document.getElementById('btn-student-submit');
-  if (!submit) return 'out';
-  submit.click();
-  modal = document.getElementById('ep-student-submit-modal');
-  var box = modal && modal.querySelector('[role=dialog]');
-  if (box && !box.querySelector('.ql-leave')) {
-    var leave = document.createElement('button');
-    leave.type = 'button';
-    leave.className = 'ql-leave';
-    leave.textContent = 'Leave and finish later';
-    leave.style.cssText = 'display:block;margin:14px auto 0;background:none;border:0;color:#64748b;font-size:13px;font-weight:600;text-decoration:underline;cursor:pointer;';
-    leave.onclick = function(){ window.location.href = '/my-papers'; };
-    box.appendChild(leave);
-  }
-  return 'asked';
-})();
-''';
-
-  Future<void> _onBack() async {
-    if (!_ready || _error != null) {
-      _close();
-      return;
-    }
-    var answer = 'out';
-    try {
-      answer = (await _web.runJavaScriptReturningResult(_backJs)).toString();
-    } catch (_) {
-      answer = 'out';
-    }
-    if (answer.contains('out')) _close();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return PopScope(
-      canPop: false,
-      onPopInvokedWithResult: (didPop, _) {
-        if (!didPop) _onBack();
-      },
-      child: _buildPage(context),
-    );
-  }
-
-  Widget _buildPage(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      // No app title bar: the paper page has its own header with the title and Submit & Exit.
-      body: SafeArea(
-        child: _error != null
-            ? AppErrorCard(title: 'Unable to Open Paper', message: _error!, onRetry: _start)
-            : Stack(
-                children: [
-                  KeepColors(child: WebViewWidget(controller: _web)),
-                  if (!_ready)
-                    const ColoredBox(
-                      color: Colors.white,
-                      child: Center(
-                        child: CircularProgressIndicator(
-                          strokeWidth: 2.5,
-                          valueColor: AlwaysStoppedAnimation<Color>(_green),
-                        ),
-                      ),
-                    ),
-                ],
-              ),
-      ),
-    );
-  }
+  Widget build(BuildContext context) => native.PaperRoomScreen(
+    quizId: quizId,
+    title: title,
+    apiClient: apiClient,
+    user: user,
+  );
 }
 
 // -----------------------------------------------------------------------------
@@ -1127,7 +1201,13 @@ class WebPageScreen extends StatefulWidget {
   final ApiClient apiClient;
   final UserModel? user;
 
-  const WebPageScreen({super.key, required this.path, required this.title, required this.apiClient, this.user});
+  const WebPageScreen({
+    super.key,
+    required this.path,
+    required this.title,
+    required this.apiClient,
+    this.user,
+  });
 
   @override
   State<WebPageScreen> createState() => _WebPageScreenState();
@@ -1158,7 +1238,10 @@ div.fixed.inset-x-0.bottom-0.z-40.lg\\:hidden{display:none!important}
           onPageFinished: _onPageFinished,
           onWebResourceError: (error) {
             if (error.isForMainFrame == true && mounted) {
-              setState(() => _error = 'Could not open this page. Check your connection and try again.');
+              setState(
+                () => _error =
+                    'Could not open this page. Check your connection and try again.',
+              );
             }
           },
         ),
@@ -1253,14 +1336,28 @@ div.fixed.inset-x-0.bottom-0.z-40.lg\\:hidden{display:none!important}
           surfaceTintColor: Colors.white,
           foregroundColor: _ink,
           elevation: 0,
-          leading: IconButton(icon: const Icon(Icons.arrow_back_rounded), onPressed: _onBack),
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back_rounded),
+            onPressed: _onBack,
+          ),
           titleSpacing: 0,
-          title: Text(widget.title, style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w800, color: _ink)),
+          title: Text(
+            widget.title,
+            style: const TextStyle(
+              fontSize: 17,
+              fontWeight: FontWeight.w800,
+              color: _ink,
+            ),
+          ),
         ),
         body: SafeArea(
           top: false,
           child: _error != null
-              ? AppErrorCard(title: 'Unable to Open Page', message: _error!, onRetry: _start)
+              ? AppErrorCard(
+                  title: 'Unable to Open Page',
+                  message: _error!,
+                  onRetry: _start,
+                )
               : Stack(
                   children: [
                     KeepColors(child: WebViewWidget(controller: _web)),
@@ -1268,7 +1365,10 @@ div.fixed.inset-x-0.bottom-0.z-40.lg\\:hidden{display:none!important}
                       const ColoredBox(
                         color: Colors.white,
                         child: Center(
-                          child: CircularProgressIndicator(strokeWidth: 2.5, valueColor: AlwaysStoppedAnimation<Color>(_green)),
+                          child: CircularProgressIndicator(
+                            strokeWidth: 2.5,
+                            valueColor: AlwaysStoppedAnimation<Color>(_green),
+                          ),
                         ),
                       ),
                   ],

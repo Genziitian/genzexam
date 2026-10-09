@@ -1,0 +1,1168 @@
+import 'dart:async';
+
+import 'package:flutter/material.dart';
+import 'package:flutter_math_fork/flutter_math.dart';
+
+import '../../api/api.dart';
+import '../../api/offline_paper_store.dart';
+
+const _paperGreen = Color(0xFF16A34A);
+const _paperInk = Color(0xFF0F172A);
+
+/// Flutter-native paper player. Safe question content is cached locally and
+/// answer drafts are durably written after every change.
+class PaperRoomScreen extends StatefulWidget {
+  final int quizId;
+  final String title;
+  final ApiClient apiClient;
+  final UserModel? user;
+
+  const PaperRoomScreen({
+    super.key,
+    required this.quizId,
+    required this.title,
+    required this.apiClient,
+    this.user,
+  });
+
+  @override
+  State<PaperRoomScreen> createState() => _PaperRoomScreenState();
+}
+
+class _PaperRoomScreenState extends State<PaperRoomScreen>
+    with WidgetsBindingObserver {
+  late final QuizService _quizService = QuizService(client: widget.apiClient);
+  QuizDetail? _quiz;
+  bool _loading = true;
+  bool _offline = false;
+  String? _error;
+  int _seconds = 0;
+  int _selectedMinutes = 0;
+  int _questionIndex = 0;
+  int? _attemptId;
+  bool _started = false;
+  bool _submitting = false;
+  bool _submitted = false;
+  bool _pendingSubmit = false;
+  String? _startedAt;
+  Future<void> _draftWrite = Future<void>.value();
+  SubmitQuizResponse? _result;
+  Timer? _clock;
+  Timer? _syncRetry;
+  final Map<int, Map<String, dynamic>> _answers = {};
+  final Map<int, TextEditingController> _answerControllers = {};
+
+  int get _userId => widget.user?.id ?? 0;
+  List<QuestionModel> get _questions => _quiz?.questions ?? const [];
+  QuestionModel? get _current =>
+      _questions.isEmpty ? null : _questions[_questionIndex];
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+    _loadPaper();
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    _clock?.cancel();
+    _syncRetry?.cancel();
+    for (final controller in _answerControllers.values) {
+      controller.dispose();
+    }
+    super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.paused ||
+        state == AppLifecycleState.detached) {
+      if (_started && !_submitted) unawaited(_submit(force: true));
+    } else if (state == AppLifecycleState.resumed &&
+        _pendingSubmit &&
+        !_submitted) {
+      unawaited(_submit(force: true));
+    }
+  }
+
+  Future<void> _loadPaper() async {
+    final cached = _userId > 0
+        ? await OfflinePaperStore.readQuiz(_userId, widget.quizId)
+        : null;
+    if (cached != null) {
+      if (!mounted) return;
+      setState(() {
+        _quiz = cached;
+        _offline = true;
+        _loading = false;
+        _selectedMinutes = cached.timeLimitMinutes;
+      });
+      final draft = await OfflinePaperStore.readDraft(_userId, widget.quizId);
+      if (draft != null && draft['started_at'] != null) {
+        _restoreDraft(draft);
+        if (_pendingSubmit) unawaited(_submit(force: true));
+      }
+      unawaited(_refreshCachedPaper());
+      return;
+    }
+
+    QuizDetail? quiz;
+    var offline = false;
+    try {
+      quiz = await _quizService.getQuiz(widget.quizId);
+      if (_userId > 0) await OfflinePaperStore.cacheQuiz(_userId, quiz);
+    } catch (_) {
+      quiz = null;
+    }
+    if (!mounted) return;
+    if (quiz == null) {
+      setState(() {
+        _loading = false;
+        _error =
+            'Could not load this paper. Connect to the internet once to download it for offline practice.';
+      });
+      return;
+    }
+    final draft = _userId > 0
+        ? await OfflinePaperStore.readDraft(_userId, widget.quizId)
+        : null;
+    setState(() {
+      _quiz = quiz;
+      _offline = offline;
+      _loading = false;
+      _selectedMinutes = quiz!.timeLimitMinutes;
+    });
+    if (draft != null && draft['started_at'] != null) {
+      _restoreDraft(draft);
+      // Reopening after an OS/process kill finishes the interrupted attempt.
+      if (_pendingSubmit) unawaited(_submit(force: true));
+    }
+  }
+
+  Future<void> _refreshCachedPaper() async {
+    try {
+      final latest = await _quizService.getQuiz(widget.quizId);
+      if (_userId > 0) await OfflinePaperStore.cacheQuiz(_userId, latest);
+      if (!mounted) return;
+      setState(() {
+        _offline = false;
+        // Do not replace the paper while a student is answering it.
+        if (!_started) {
+          _quiz = latest;
+          _selectedMinutes = latest.timeLimitMinutes;
+        }
+      });
+    } catch (_) {
+      // The cached copy is already available; continue without blocking.
+    }
+  }
+
+  void _restoreDraft(Map<String, dynamic> draft) {
+    final rawAnswers = draft['answers'];
+    if (rawAnswers is Map) {
+      for (final entry in rawAnswers.entries) {
+        final questionId = int.tryParse(entry.key.toString());
+        if (questionId != null && entry.value is Map) {
+          _answers[questionId] = Map<String, dynamic>.from(entry.value as Map);
+        }
+      }
+    }
+    _attemptId = (draft['attempt_id'] as num?)?.toInt();
+    _selectedMinutes =
+        (draft['duration_minutes'] as num?)?.toInt() ?? _selectedMinutes;
+    _pendingSubmit = draft['pending_submit'] == true;
+    _started = true;
+    _startedAt = draft['started_at']?.toString();
+    final index = (draft['question_index'] as num?)?.toInt() ?? 0;
+    _questionIndex = index.clamp(0, (_questions.length - 1).clamp(0, 100000));
+    final startedAt = DateTime.tryParse(draft['started_at'].toString());
+    if (_selectedMinutes > 0 && startedAt != null) {
+      final elapsed = DateTime.now().difference(startedAt).inSeconds;
+      _seconds = (_selectedMinutes * 60 - elapsed).clamp(
+        0,
+        _selectedMinutes * 60,
+      );
+    }
+    if (mounted) setState(() {});
+    if (_pendingSubmit) {
+      _scheduleSyncRetry();
+      return;
+    }
+    _startClock();
+  }
+
+  Future<void> _saveDraft({bool pending = false}) {
+    if (_userId <= 0 || !_started || _submitted) return Future<void>.value();
+    _pendingSubmit = _pendingSubmit || pending;
+    _startedAt ??= DateTime.now().toIso8601String();
+    final snapshot = {
+      'attempt_id': _attemptId,
+      'started_at': _startedAt,
+      'duration_minutes': _selectedMinutes,
+      'question_index': _questionIndex,
+      'answers': _answers.map((key, value) => MapEntry(key.toString(), value)),
+      'pending_submit': _pendingSubmit,
+    };
+    _draftWrite = _draftWrite
+        .catchError((_) {})
+        .then(
+          (_) => OfflinePaperStore.writeDraft(_userId, widget.quizId, snapshot),
+        );
+    return _draftWrite;
+  }
+
+  Future<void> _begin() async {
+    if (_quiz == null) return;
+    if (_questions.isEmpty) {
+      setState(() => _error = 'This paper does not have any questions yet.');
+      return;
+    }
+    int? attemptId;
+    try {
+      attemptId = (await _quizService.startAttempt(widget.quizId)).attemptId;
+      _offline = false;
+    } catch (_) {
+      // An already downloaded paper can be attempted offline. The attempt is
+      // created and scored by the server when the student reconnects.
+      final hasLocalCopy =
+          _userId > 0 &&
+          await OfflinePaperStore.readQuiz(_userId, widget.quizId) != null;
+      if (!hasLocalCopy) {
+        setState(
+          () => _error =
+              'Could not start this paper. Check your connection and retry.',
+        );
+        return;
+      }
+      _offline = true;
+    }
+    if (!mounted) return;
+    setState(() {
+      _error = null;
+      _attemptId = attemptId;
+      _started = true;
+      _startedAt = DateTime.now().toIso8601String();
+      _seconds = _selectedMinutes * 60;
+      _questionIndex = 0;
+    });
+    await _saveDraft();
+    _startClock();
+  }
+
+  void _startClock() {
+    _clock?.cancel();
+    if (_seconds <= 0) return;
+    _clock = Timer.periodic(const Duration(seconds: 1), (timer) {
+      if (!mounted || _submitted) return timer.cancel();
+      if (_seconds <= 1) {
+        setState(() => _seconds = 0);
+        timer.cancel();
+        unawaited(_submit(force: true));
+      } else {
+        setState(() => _seconds--);
+      }
+    });
+  }
+
+  Future<void> _setAnswer(int questionId, Map<String, dynamic> answer) async {
+    _answers[questionId] = answer;
+    await _saveDraft();
+    if (mounted) setState(() {});
+  }
+
+  Future<void> _submit({bool force = false}) async {
+    if (_submitting || _submitted || !_started) return;
+    if (!force) {
+      final confirm = await showDialog<bool>(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: const Text('Submit this paper?'),
+          content: const Text(
+            'Your answers will be saved and the paper will close.',
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context, false),
+              child: const Text('Keep working'),
+            ),
+            FilledButton(
+              onPressed: () => Navigator.pop(context, true),
+              child: const Text('Submit'),
+            ),
+          ],
+        ),
+      );
+      if (confirm != true) return;
+    }
+    setState(() {
+      _submitting = true;
+      _pendingSubmit = true;
+      _error = null;
+    });
+    _clock?.cancel();
+    await _saveDraft(pending: true);
+    try {
+      var attemptId = _attemptId;
+      attemptId ??= (await _quizService.startAttempt(widget.quizId)).attemptId;
+      _attemptId = attemptId;
+      final payload = _questions.map((question) {
+        final answer = _answers[question.id] ?? const <String, dynamic>{};
+        return SubmitAnswerPayload(
+          questionId: question.id,
+          selectedOptionIds: (answer['selected_option_ids'] as List?)
+              ?.map((id) => (id as num).toInt())
+              .toList(),
+          textAnswer: answer['text_answer']?.toString(),
+          numericalAnswer: answer['numerical_answer'] as num?,
+        );
+      }).toList();
+      final response = await _quizService.submitAttempt(attemptId, payload);
+      await OfflinePaperStore.clearDraft(_userId, widget.quizId);
+      _syncRetry?.cancel();
+      _syncRetry = null;
+      if (!mounted) return;
+      setState(() {
+        _result = response;
+        _submitted = true;
+        _pendingSubmit = false;
+      });
+    } catch (_) {
+      // If the request reached the server but the response did not, ask the
+      // authoritative result endpoint before retrying a potentially completed
+      // submission. If not complete, retain the encrypted local sync queue.
+      final attemptId = _attemptId;
+      if (attemptId != null) {
+        try {
+          final result = await _quizService.getResult(attemptId);
+          await OfflinePaperStore.clearDraft(_userId, widget.quizId);
+          if (mounted) {
+            setState(() {
+              _submitted = true;
+              _pendingSubmit = false;
+              _result = SubmitQuizResponse(
+                attemptId: result.attempt.id,
+                score: result.attempt.score,
+                totalMarks: result.attempt.totalMarks,
+                percentage: result.attempt.percentage,
+                xpAward: const XpAwardEnvelope(
+                  xpBefore: 0,
+                  xpAfter: 0,
+                  xpGained: 0,
+                  levelBefore: 1,
+                  levelAfter: 1,
+                  leveledUp: false,
+                  newBadges: [],
+                  reason: '',
+                ),
+              );
+            });
+          }
+          return;
+        } catch (_) {}
+      }
+      await _saveDraft(pending: true);
+      _scheduleSyncRetry();
+      if (mounted) {
+        setState(
+          () => _error =
+              'Your answers are saved on this device. We will submit them when the connection returns.',
+        );
+      }
+    } finally {
+      if (mounted) setState(() => _submitting = false);
+    }
+  }
+
+  void _scheduleSyncRetry() {
+    _syncRetry ??= Timer.periodic(const Duration(seconds: 20), (_) {
+      if (mounted && _pendingSubmit && !_submitting && !_submitted) {
+        unawaited(_submit(force: true));
+      }
+    });
+  }
+
+  String get _clockLabel {
+    final m = (_seconds ~/ 60).toString().padLeft(2, '0');
+    final s = (_seconds % 60).toString().padLeft(2, '0');
+    return '$m:$s';
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return PopScope(
+      canPop: !_started || _submitted,
+      onPopInvokedWithResult: (didPop, _) {
+        if (!didPop && _started && !_submitted) unawaited(_submit(force: true));
+      },
+      child: Scaffold(
+        backgroundColor: const Color(0xFFF1F5F9),
+        appBar: AppBar(
+          backgroundColor: const Color(0xFFF1F5F9),
+          foregroundColor: _paperInk,
+          title: Text(
+            _quiz?.title ?? widget.title,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
+          ),
+          actions: [
+            if (_offline)
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10),
+                child: Center(
+                  child: Text(
+                    'OFFLINE',
+                    style: TextStyle(
+                      color: _paperGreen,
+                      fontWeight: FontWeight.w800,
+                      fontSize: 11,
+                    ),
+                  ),
+                ),
+              ),
+          ],
+        ),
+        body: _loading
+            ? const Center(child: CircularProgressIndicator(color: _paperGreen))
+            : _error != null && _quiz == null
+            ? Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(24),
+                  child: Text(_error!, textAlign: TextAlign.center),
+                ),
+              )
+            : _submitted
+            ? _resultView()
+            : _pendingSubmit
+            ? _pendingView()
+            : !_started
+            ? _startView()
+            : _paperView(),
+      ),
+    );
+  }
+
+  Widget _startView() => ListView(
+    padding: const EdgeInsets.fromLTRB(18, 18, 18, 32),
+    children: [
+      _panel(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text(
+              'READY WHEN YOU ARE',
+              style: TextStyle(
+                color: _paperGreen,
+                letterSpacing: 1.5,
+                fontSize: 11,
+                fontWeight: FontWeight.w800,
+              ),
+            ),
+            const SizedBox(height: 10),
+            Text(
+              _quiz?.title ?? widget.title,
+              style: const TextStyle(
+                fontSize: 25,
+                fontWeight: FontWeight.w800,
+                color: _paperInk,
+              ),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              '${_questions.length} questions · ${_quiz?.course?.name ?? 'Practice paper'}',
+              style: const TextStyle(color: Color(0xFF64748B)),
+            ),
+            if (_offline)
+              const Padding(
+                padding: EdgeInsets.only(top: 12),
+                child: Text(
+                  'Downloaded paper. Answers will sync when you are back online.',
+                  style: TextStyle(color: _paperGreen),
+                ),
+              ),
+            const SizedBox(height: 24),
+            const Text(
+              'Choose your time',
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
+            ),
+            const SizedBox(height: 6),
+            const Text(
+              'You can set a custom clock before this attempt starts.',
+              style: TextStyle(color: Color(0xFF64748B)),
+            ),
+            const SizedBox(height: 14),
+            Wrap(
+              spacing: 8,
+              runSpacing: 8,
+              children: [
+                _timeChip('Untimed', 0),
+                if ((_quiz?.timeLimitMinutes ?? 0) > 0)
+                  _timeChip(
+                    'Paper default · ${_quiz!.timeLimitMinutes} min',
+                    _quiz!.timeLimitMinutes,
+                  ),
+                for (final minutes in [15, 30, 45, 60])
+                  _timeChip('$minutes min', minutes),
+              ],
+            ),
+            const SizedBox(height: 12),
+            OutlinedButton.icon(
+              onPressed: _customTime,
+              icon: const Icon(Icons.timer_outlined),
+              label: const Text('Choose custom minutes'),
+            ),
+            if (_error != null)
+              Padding(
+                padding: const EdgeInsets.only(top: 10),
+                child: Text(_error!, style: const TextStyle(color: Colors.red)),
+              ),
+            const SizedBox(height: 20),
+            SizedBox(
+              width: double.infinity,
+              child: FilledButton.icon(
+                onPressed: _begin,
+                icon: const Icon(Icons.play_arrow_rounded),
+                label: const Text('Start paper'),
+                style: FilledButton.styleFrom(
+                  backgroundColor: _paperGreen,
+                  padding: const EdgeInsets.symmetric(vertical: 15),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    ],
+  );
+
+  Widget _timeChip(String label, int minutes) => ChoiceChip(
+    label: Text(label),
+    selected: _selectedMinutes == minutes,
+    selectedColor: const Color(0xFFDCFCE7),
+    onSelected: (_) => setState(() => _selectedMinutes = minutes),
+  );
+
+  Future<void> _customTime() async {
+    final controller = TextEditingController(
+      text: _selectedMinutes > 0 ? '$_selectedMinutes' : '90',
+    );
+    final value = await showDialog<int>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Custom time limit'),
+        content: TextField(
+          controller: controller,
+          autofocus: true,
+          keyboardType: TextInputType.number,
+          decoration: const InputDecoration(
+            labelText: 'Minutes',
+            hintText: 'For example, 75',
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('Cancel'),
+          ),
+          FilledButton(
+            onPressed: () =>
+                Navigator.pop(context, int.tryParse(controller.text.trim())),
+            child: const Text('Use time'),
+          ),
+        ],
+      ),
+    );
+    controller.dispose();
+    if (value == null) return;
+    if (value < 1 || value > 600) {
+      setState(() => _error = 'Choose between 1 and 600 minutes.');
+    } else {
+      setState(() {
+        _selectedMinutes = value;
+        _error = null;
+      });
+    }
+  }
+
+  Widget _paperView() {
+    final question = _current;
+    if (question == null)
+      return const Center(child: Text('This paper has no questions.'));
+    final selected =
+        ((_answers[question.id]?['selected_option_ids'] as List?) ?? [])
+            .map((id) => (id as num).toInt())
+            .toSet();
+    final isMulti =
+        question.type == 'multi_select' || question.type == 'mcq_multi';
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.fromLTRB(16, 4, 16, 10),
+          child: Row(
+            children: [
+              Expanded(
+                child: Text(
+                  'Question ${_questionIndex + 1} of ${_questions.length}',
+                  style: const TextStyle(
+                    color: Color(0xFF64748B),
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+              ),
+              if (_selectedMinutes > 0)
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 12,
+                    vertical: 8,
+                  ),
+                  decoration: BoxDecoration(
+                    color: _seconds < 60
+                        ? const Color(0xFFFEE2E2)
+                        : const Color(0xFFDCFCE7),
+                    borderRadius: BorderRadius.circular(999),
+                  ),
+                  child: Text(
+                    _clockLabel,
+                    style: TextStyle(
+                      color: _seconds < 60 ? Colors.red : _paperGreen,
+                      fontWeight: FontWeight.w800,
+                    ),
+                  ),
+                ),
+              const SizedBox(width: 8),
+              TextButton(
+                onPressed: _submitting ? null : () => _submit(),
+                child: const Text('Submit'),
+              ),
+            ],
+          ),
+        ),
+        LinearProgressIndicator(
+          value: (_questionIndex + 1) / _questions.length,
+          color: _paperGreen,
+          backgroundColor: const Color(0xFFDCE5E0),
+          minHeight: 3,
+        ),
+        Expanded(
+          child: ListView(
+            padding: const EdgeInsets.fromLTRB(16, 14, 16, 18),
+            children: [
+              _panel(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Text(
+                            isMulti
+                                ? 'SELECT ALL THAT APPLY'
+                                : question.type == 'numerical'
+                                ? 'NUMERICAL ANSWER'
+                                : 'QUESTION',
+                            style: const TextStyle(
+                              color: _paperGreen,
+                              letterSpacing: 1.2,
+                              fontWeight: FontWeight.w800,
+                              fontSize: 10,
+                            ),
+                          ),
+                        ),
+                        Text(
+                          '${question.marks} marks',
+                          style: const TextStyle(
+                            color: Color(0xFF64748B),
+                            fontSize: 12,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 12),
+                    ..._richWidgets(question.stem),
+                    if (question.stemImage != null &&
+                        question.stemImage!.isNotEmpty)
+                      Padding(
+                        padding: const EdgeInsets.only(top: 12),
+                        child: Image.network(
+                          question.stemImage!,
+                          errorBuilder: (_, __, ___) =>
+                              const Text('Question image could not be loaded.'),
+                        ),
+                      ),
+                    if (question.stemCode != null &&
+                        question.stemCode!.isNotEmpty)
+                      _codeBlock(question.stemCode!),
+                    if (question.stemTable != null) _table(question.stemTable),
+                    if (question.options.isNotEmpty) ...[
+                      const SizedBox(height: 20),
+                      for (final option in question.options)
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 9),
+                          child: InkWell(
+                            borderRadius: BorderRadius.circular(14),
+                            onTap: () {
+                              final next = Set<int>.from(selected);
+                              if (isMulti) {
+                                if (!next.add(option.id))
+                                  next.remove(option.id);
+                              } else {
+                                next
+                                  ..clear()
+                                  ..add(option.id);
+                              }
+                              _setAnswer(question.id, {
+                                'selected_option_ids': next.toList(),
+                              });
+                            },
+                            child: Container(
+                              padding: const EdgeInsets.all(13),
+                              decoration: BoxDecoration(
+                                color: selected.contains(option.id)
+                                    ? const Color(0xFFF0FDF4)
+                                    : Colors.white,
+                                borderRadius: BorderRadius.circular(14),
+                                border: Border.all(
+                                  color: selected.contains(option.id)
+                                      ? _paperGreen
+                                      : const Color(0xFFE2E8F0),
+                                ),
+                              ),
+                              child: Row(
+                                children: [
+                                  Icon(
+                                    isMulti
+                                        ? (selected.contains(option.id)
+                                              ? Icons.check_box
+                                              : Icons.check_box_outline_blank)
+                                        : (selected.contains(option.id)
+                                              ? Icons.radio_button_checked
+                                              : Icons.radio_button_off),
+                                    color: selected.contains(option.id)
+                                        ? _paperGreen
+                                        : const Color(0xFF94A3B8),
+                                  ),
+                                  const SizedBox(width: 10),
+                                  Expanded(
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: option.optionType == 'code'
+                                          ? [
+                                              _codeBlock(
+                                                option.optionText.toString(),
+                                              ),
+                                            ]
+                                          : _richWidgets(option.optionText),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                    ] else if (question.type == 'numerical') ...[
+                      const SizedBox(height: 18),
+                      TextField(
+                        key: ValueKey('num_${question.id}'),
+                        keyboardType: const TextInputType.numberWithOptions(
+                          decimal: true,
+                          signed: true,
+                        ),
+                        decoration: const InputDecoration(
+                          labelText: 'Your answer',
+                          border: OutlineInputBorder(),
+                        ),
+                        controller: _controller(
+                          question.id,
+                          'numerical_answer',
+                        ),
+                        onChanged: (v) => _setAnswer(question.id, {
+                          'numerical_answer': num.tryParse(v),
+                        }),
+                      ),
+                    ] else ...[
+                      const SizedBox(height: 18),
+                      TextField(
+                        key: ValueKey('text_${question.id}'),
+                        minLines: 2,
+                        maxLines: 5,
+                        decoration: const InputDecoration(
+                          labelText: 'Your answer',
+                          border: OutlineInputBorder(),
+                        ),
+                        controller: _controller(question.id, 'text_answer'),
+                        onChanged: (v) =>
+                            _setAnswer(question.id, {'text_answer': v}),
+                      ),
+                    ],
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+        SafeArea(
+          top: false,
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(16, 8, 16, 10),
+            child: Row(
+              children: [
+                OutlinedButton.icon(
+                  onPressed: _questionIndex > 0
+                      ? () => setState(() => _questionIndex--)
+                      : null,
+                  icon: const Icon(Icons.arrow_back),
+                  label: const Text('Previous'),
+                ),
+                const Spacer(),
+                if (_questionIndex + 1 < _questions.length)
+                  FilledButton.icon(
+                    onPressed: () async {
+                      setState(() => _questionIndex++);
+                      await _saveDraft();
+                    },
+                    icon: const Icon(Icons.arrow_forward),
+                    label: const Text('Next'),
+                  )
+                else
+                  FilledButton.icon(
+                    onPressed: () => _submit(),
+                    icon: const Icon(Icons.check),
+                    label: const Text('Finish'),
+                  ),
+              ],
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  TextEditingController _controller(int questionId, String key) =>
+      _answerControllers.putIfAbsent(
+        questionId,
+        () => TextEditingController(
+          text: (_answers[questionId]?[key] ?? '').toString(),
+        ),
+      );
+
+  List<Widget> _richWidgets(dynamic content) {
+    if (content is List) return content.expand(_richWidgets).toList();
+    if (content is Map) {
+      final kind = (content['kind'] ?? content['type'] ?? 'text')
+          .toString()
+          .toLowerCase();
+      final value = (content['value'] ?? '').toString();
+      switch (kind) {
+        case 'math':
+          return [
+            Container(
+              margin: const EdgeInsets.symmetric(vertical: 5),
+              padding: const EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                color: const Color(0xFFF8FAFC),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: _math(value, display: true),
+            ),
+          ];
+        case 'code':
+          return [_codeBlock(value)];
+        case 'image':
+          final uri = _safeImageUri(
+            (content['url'] ?? content['asset'] ?? '').toString(),
+          );
+          return [
+            if (uri != null)
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8),
+                child: Image.network(
+                  uri,
+                  errorBuilder: (_, __, ___) => const Text(
+                    'Question image needs an internet connection.',
+                  ),
+                ),
+              )
+            else
+              const Text('Image unavailable.'),
+          ];
+        case 'table':
+          return [_table(content)];
+        case 'text':
+          return _richWidgets(value);
+        default:
+          return [
+            SelectableText(
+              content.toString(),
+              style: const TextStyle(
+                fontSize: 16,
+                height: 1.5,
+                color: _paperInk,
+              ),
+            ),
+          ];
+      }
+    }
+    final text = content?.toString() ?? '';
+    final plain = text
+        .replaceAll(RegExp(r'<br\s*/?>', caseSensitive: false), '\n')
+        .replaceAll(
+          RegExp(r'</(p|div|li|h[1-6])\s*>', caseSensitive: false),
+          '\n',
+        )
+        .replaceAll(RegExp(r'<[^>]*>'), '')
+        .replaceAll('&nbsp;', ' ')
+        .replaceAll('&amp;', '&')
+        .replaceAll('&lt;', '<')
+        .replaceAll('&gt;', '>')
+        .replaceAll('&quot;', '"')
+        .trim();
+    return _textWithMath(plain);
+  }
+
+  Widget _math(String source, {required bool display}) => Math.tex(
+    source.trim(),
+    mathStyle: display ? MathStyle.display : MathStyle.text,
+    textStyle: const TextStyle(fontSize: 18, color: _paperInk),
+    onErrorFallback: (error) => SelectableText(
+      source,
+      style: const TextStyle(fontSize: 16, color: _paperInk),
+    ),
+  );
+
+  List<Widget> _textWithMath(String text) {
+    final pattern = RegExp(
+      r'\\\[(.+?)\\\]|\\\((.+?)\\\)|\$\$(.+?)\$\$|\$(.+?)\$',
+      dotAll: true,
+    );
+    final widgets = <Widget>[];
+    var cursor = 0;
+    for (final match in pattern.allMatches(text)) {
+      if (match.start > cursor) {
+        widgets.add(
+          SelectableText(
+            text.substring(cursor, match.start),
+            style: const TextStyle(fontSize: 16, height: 1.5, color: _paperInk),
+          ),
+        );
+      }
+      final display = match.group(1) != null || match.group(3) != null;
+      final expression =
+          match.group(1) ??
+          match.group(2) ??
+          match.group(3) ??
+          match.group(4) ??
+          '';
+      widgets.add(
+        display
+            ? SizedBox(
+                width: double.infinity,
+                child: _math(expression, display: true),
+              )
+            : _math(expression, display: false),
+      );
+      cursor = match.end;
+    }
+    if (cursor < text.length || widgets.isEmpty) {
+      widgets.add(
+        SelectableText(
+          text.substring(cursor),
+          style: const TextStyle(fontSize: 16, height: 1.5, color: _paperInk),
+        ),
+      );
+    }
+    return [
+      Wrap(crossAxisAlignment: WrapCrossAlignment.center, children: widgets),
+    ];
+  }
+
+  String? _safeImageUri(String value) {
+    final parsed = Uri.tryParse(value.trim());
+    if (parsed == null) return null;
+    if (parsed.scheme == 'https') return parsed.toString();
+    if (value.startsWith('/')) return 'https://labapi.genziitian.in$value';
+    return null;
+  }
+
+  Widget _codeBlock(String code) => Container(
+    margin: const EdgeInsets.only(top: 12),
+    padding: const EdgeInsets.all(12),
+    decoration: BoxDecoration(
+      color: const Color(0xFF0F172A),
+      borderRadius: BorderRadius.circular(12),
+    ),
+    child: SelectableText(
+      code,
+      style: const TextStyle(color: Color(0xFFE2E8F0), fontFamily: 'monospace'),
+    ),
+  );
+
+  Widget _table(dynamic raw) {
+    List<dynamic> rows;
+    List<dynamic> headers = [];
+    if (raw is Map) {
+      headers = raw['headers'] is List ? raw['headers'] as List : [];
+      rows = raw['rows'] is List ? raw['rows'] as List : [];
+    } else {
+      rows = raw is List ? raw : [];
+    }
+    if (rows.isEmpty && headers.isEmpty) return const SizedBox.shrink();
+    final normalized = rows
+        .map(
+          (row) => row is List
+              ? row
+              : row is Map
+              ? row.values.toList()
+              : [row],
+        )
+        .toList();
+    final count = headers.isNotEmpty
+        ? headers.length
+        : normalized.map((r) => r.length).fold<int>(0, (a, b) => a > b ? a : b);
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: DataTable(
+        columns: List.generate(
+          count,
+          (i) => DataColumn(
+            label: Text(i < headers.length ? headers[i].toString() : ''),
+          ),
+        ),
+        rows: normalized
+            .map(
+              (row) => DataRow(
+                cells: List.generate(
+                  count,
+                  (i) =>
+                      DataCell(Text(i < row.length ? row[i].toString() : '')),
+                ),
+              ),
+            )
+            .toList(),
+      ),
+    );
+  }
+
+  Widget _resultView() {
+    final result = _result;
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(20),
+        child: _panel(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const Icon(Icons.check_circle, color: _paperGreen, size: 52),
+              const SizedBox(height: 12),
+              const Text(
+                'Paper submitted',
+                style: TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.w800,
+                  color: _paperInk,
+                ),
+              ),
+              if (result != null)
+                Padding(
+                  padding: const EdgeInsets.only(top: 9),
+                  child: Text(
+                    '${result.score} / ${result.totalMarks} · ${result.percentage.toStringAsFixed(1)}%',
+                    style: const TextStyle(
+                      fontSize: 17,
+                      color: _paperGreen,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ),
+              const SizedBox(height: 20),
+              SizedBox(
+                width: double.infinity,
+                child: FilledButton(
+                  onPressed: () => Navigator.of(context).pop(),
+                  style: FilledButton.styleFrom(backgroundColor: _paperGreen),
+                  child: const Text('Back to papers'),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _pendingView() => Center(
+    child: Padding(
+      padding: const EdgeInsets.all(20),
+      child: _panel(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Icon(
+              Icons.cloud_upload_outlined,
+              color: _paperGreen,
+              size: 48,
+            ),
+            const SizedBox(height: 12),
+            const Text(
+              'Paper finished',
+              style: TextStyle(
+                fontSize: 22,
+                fontWeight: FontWeight.w800,
+                color: _paperInk,
+              ),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              _error ??
+                  'Your answers are saved on this device. We will submit them when the connection returns.',
+              textAlign: TextAlign.center,
+              style: const TextStyle(color: Color(0xFF64748B), height: 1.45),
+            ),
+            const SizedBox(height: 18),
+            SizedBox(
+              width: double.infinity,
+              child: FilledButton.icon(
+                onPressed: _submitting ? null : () => _submit(force: true),
+                icon: _submitting
+                    ? const SizedBox(
+                        width: 18,
+                        height: 18,
+                        child: CircularProgressIndicator(
+                          strokeWidth: 2,
+                          color: Colors.white,
+                        ),
+                      )
+                    : const Icon(Icons.sync),
+                label: Text(_submitting ? 'Submitting…' : 'Try submitting now'),
+                style: FilledButton.styleFrom(backgroundColor: _paperGreen),
+              ),
+            ),
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(),
+              child: const Text('Back to papers'),
+            ),
+          ],
+        ),
+      ),
+    ),
+  );
+
+  Widget _panel({required Widget child}) => Container(
+    padding: const EdgeInsets.all(18),
+    decoration: BoxDecoration(
+      color: Colors.white,
+      borderRadius: BorderRadius.circular(20),
+      border: Border.all(color: const Color(0xFFE2E8F0)),
+      boxShadow: const [
+        BoxShadow(
+          color: Color(0x0C0F172A),
+          blurRadius: 20,
+          offset: Offset(0, 8),
+        ),
+      ],
+    ),
+    child: child,
+  );
+}

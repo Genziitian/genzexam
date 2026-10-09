@@ -22,7 +22,12 @@ class AttemptController extends Controller
 
     public function start(Request $request, int $id): JsonResponse
     {
-        $quiz = Quiz::query()->findOrFail($id);
+        $quiz = Quiz::withoutGlobalScope('exclude_personal_uploads')
+            ->where(function ($query) use ($request) {
+                $query->where('is_personal', false)
+                    ->orWhere(fn ($owned) => $owned->where('is_personal', true)->where('owner_user_id', $request->user()->id));
+            })
+            ->findOrFail($id);
 
         if ($request->user()->isAdmin() && ! $request->user()->assignedCourses()->whereKey($quiz->course_id)->exists()) {
             abort(403, 'This course is not assigned to you.');
@@ -76,9 +81,11 @@ class AttemptController extends Controller
     {
         $attempt = Attempt::query()
             ->with([
-                'quiz.questions' => fn ($query) => $query
-                    ->orderBy('position')
-                    ->with(['questionOptions', 'shortAnswerAcceptables']),
+                'quiz' => fn ($quiz) => $quiz
+                    ->withoutGlobalScope('exclude_personal_uploads')
+                    ->with(['questions' => fn ($query) => $query
+                        ->orderBy('position')
+                        ->with(['questionOptions', 'shortAnswerAcceptables'])]),
             ])
             ->findOrFail($id);
 
@@ -199,10 +206,14 @@ class AttemptController extends Controller
     {
         $attempt = Attempt::query()
             ->with([
-                'quiz.course:id,name',
-                'quiz.questions' => fn ($query) => $query
-                    ->orderBy('position')
-                    ->with(['questionOptions' => fn ($optionQuery) => $optionQuery->orderBy('position'), 'shortAnswerAcceptables']),
+                'quiz' => fn ($quiz) => $quiz
+                    ->withoutGlobalScope('exclude_personal_uploads')
+                    ->with([
+                        'course:id,name',
+                        'questions' => fn ($query) => $query
+                            ->orderBy('position')
+                            ->with(['questionOptions' => fn ($optionQuery) => $optionQuery->orderBy('position'), 'shortAnswerAcceptables']),
+                    ]),
                 'attemptAnswers',
             ])
             ->findOrFail($id);

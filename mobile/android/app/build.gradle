@@ -50,8 +50,8 @@ android {
             // Keep local --release runs possible, but block release artifacts below unless signed
             // with the configured upload key. Never let a debug-signed AAB reach Play Console.
             signingConfig = releaseSigningConfigured ? signingConfigs.release : signingConfigs.debug
-            minifyEnabled = false
-            shrinkResources = false
+            minifyEnabled = true
+            shrinkResources = true
             proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
         }
     }

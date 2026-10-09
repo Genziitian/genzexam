@@ -745,7 +745,8 @@
     var runtime = window.QLStorefront;
     if (!runtime || !runtime.token()) return;
     host.dataset.qlLoaded = "1";
-    host.innerHTML = '<div class="ql-mp-head"><div class="ql-mp-title"><h1>Your papers.</h1><a class="ql-mp-browse" href="/practice">Browse practice</a></div><p>Papers you bought or attempted, with your progress.</p></div><div class="ql-mp-grid" aria-live="polite"><p class="ql-mp-note">Loading your papers…</p></div>';
+    host.innerHTML = '<div class="ql-mp-head"><div class="ql-mp-title"><h1>Your papers.</h1><a class="ql-mp-browse" href="/practice">Browse practice</a></div><p>Papers you bought or attempted, with your progress.</p><button class="ql-upload-open" type="button">＋ Upload a paper</button></div><div class="ql-mp-grid" aria-live="polite"><p class="ql-mp-note">Loading your papers…</p></div>';
+    installUploadedPaperDialog(host, runtime);
     var grid = host.querySelector(".ql-mp-grid");
     function note(text) {
       grid.replaceChildren();
@@ -769,10 +770,11 @@
       papers.forEach(function (paper) {
         var paid = Number(paper.price_paise || 0) > 0;
         var purchased = paper.purchased === true || paper.source === "purchase";
+        var uploaded = paper.source === "personal_upload";
         var expired = paid && !!paper.expired;
         var usable = paper.available !== false && paper.has_access !== false && !expired;
         var attempts = Number(paper.attempt_count || 0);
-        var state = paper.available === false ? "Unavailable" : expired ? "Access expired" : purchased ? "Purchased \u2713" : paid ? "Paid" : "Free";
+        var state = paper.available === false ? "Unavailable" : expired ? "Access expired" : purchased ? "Purchased \u2713" : uploaded ? "Uploaded" : paid ? "Paid" : "Free";
         var card = document.createElement("article");
         card.className = "ql-mp-card" + (purchased && usable ? " owned" : "");
         var badge = document.createElement("span");
@@ -782,7 +784,7 @@
         title.textContent = paper.title || "Paper";
         var sub = document.createElement("p");
         sub.className = "ql-mp-sub";
-        sub.textContent = [(paper.course || {}).name, paper.year, labels[paper.section]].filter(Boolean).join(" · ");
+        sub.textContent = [uploaded ? "Your upload" : (paper.course || {}).name, paper.year, labels[paper.section]].filter(Boolean).join(" · ");
         var meta = document.createElement("p");
         meta.className = "ql-mp-meta";
         [
@@ -838,6 +840,72 @@
     }).catch(function (error) {
       if (!host.isConnected) return;
       note(error.message === "role" ? "My Papers is for student accounts. Managers handle papers and sales from the manager console." : "Your papers could not load. Check your connection and reload the page.");
+    });
+  }
+
+  function installUploadedPaperDialog(host, runtime) {
+    var styleId = "ql-upload-paper-style";
+    if (!document.getElementById(styleId)) {
+      var style = document.createElement("style");
+      style.id = styleId;
+      style.textContent = ".ql-upload-open{margin-top:18px;border:0;border-radius:13px;background:#169b50;color:#fff;padding:12px 18px;font:700 14px inherit;cursor:pointer}.ql-upload-open:hover{background:#128343}.ql-upload-overlay{position:fixed;inset:0;z-index:99999;background:rgba(8,18,13,.62);display:grid;place-items:center;padding:18px}.ql-upload-modal{width:min(620px,100%);max-height:min(90vh,780px);overflow:auto;background:#fff;border-radius:24px;padding:26px;box-shadow:0 24px 80px #07130e55;color:#15221a}.ql-upload-modal h2{margin:0 0 8px;font-size:24px}.ql-upload-modal p{color:#647267;line-height:1.55}.ql-upload-close{float:right;border:0;background:#eff5f0;border-radius:50%;width:38px;height:38px;font-size:22px;cursor:pointer}.ql-upload-steps{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:8px;align-items:center;margin:22px 0;padding:16px;border-radius:17px;background:#f3faf5;text-align:center}.ql-upload-steps span{display:block;font-size:12px;font-weight:700}.ql-upload-icon{font-size:25px;margin-bottom:7px}.ql-upload-pick{display:block;width:100%;border:0;border-radius:13px;padding:14px;background:#169b50;color:#fff;font-size:15px;font-weight:700;cursor:pointer}.ql-upload-pick:disabled{opacity:.6;cursor:wait}.ql-upload-file{display:block;width:100%;margin:14px 0}.ql-upload-list{display:grid;gap:9px;margin-top:14px}.ql-upload-item{display:flex;justify-content:space-between;gap:12px;align-items:center;border:1px solid #e1ebe4;border-radius:13px;padding:12px}.ql-upload-item a{color:#168544;font-weight:700;text-decoration:none}.ql-upload-error{color:#b42318!important}.ql-upload-state{font-size:13px;color:#65746a}.ql-upload-note{font-size:12px} @media(max-width:560px){.ql-upload-modal{padding:20px}.ql-upload-steps{gap:3px;padding:12px}.ql-upload-steps span{font-size:10px}.ql-upload-steps b{font-size:11px}}";
+      document.head.appendChild(style);
+    }
+    var open = host.querySelector(".ql-upload-open");
+    if (!open || open.dataset.bound) return;
+    open.dataset.bound = "1";
+    open.addEventListener("click", function () {
+      var overlay = document.createElement("div");
+      overlay.className = "ql-upload-overlay";
+      overlay.innerHTML = '<section class="ql-upload-modal" role="dialog" aria-modal="true" aria-labelledby="ql-upload-title"><button class="ql-upload-close" type="button" aria-label="Close">×</button><h2 id="ql-upload-title">Make your paper a test</h2><p>Upload a question paper and Quiz LAB will organize its questions into a private practice test. Your test will also appear in My Papers.</p><div class="ql-upload-steps"><div><div class="ql-upload-icon">📄</div><span>Your PDF</span></div><b>→</b><div><div class="ql-upload-icon">{ }</div><span>Question data</span></div><b>→</b><div><div class="ql-upload-icon">✍️</div><span>Your test</span></div></div><p class="ql-upload-note">Selectable text from PDFs is sent to DeepSeek AI to structure the questions. The temporary PDF is deleted after processing; the generated test remains in your account. Prepared JSON files are processed without AI. Scanned image PDFs need OCR and are not supported yet.</p><form class="ql-upload-form"><input class="ql-upload-file" type="file" name="paper" accept=".pdf,.json,application/pdf,application/json" required><button class="ql-upload-pick" type="submit">Choose a PDF or JSON file</button><p class="ql-upload-state" aria-live="polite"></p></form><h3>Your uploaded papers</h3><div class="ql-upload-list"><p class="ql-upload-state">Loading…</p></div></section>';
+      document.body.appendChild(overlay);
+      var modal = overlay.querySelector(".ql-upload-modal");
+      function close() { overlay.remove(); }
+      overlay.querySelector(".ql-upload-close").addEventListener("click", close);
+      overlay.addEventListener("click", function (event) { if (event.target === overlay) close(); });
+      document.addEventListener("keydown", function escape(event) { if (event.key === "Escape" && overlay.isConnected) { close(); document.removeEventListener("keydown", escape); } });
+      var list = modal.querySelector(".ql-upload-list");
+      var state = modal.querySelector(".ql-upload-state");
+      function authHeaders(json) {
+        var headers = { Accept: "application/json", Authorization: "Bearer " + runtime.token() };
+        if (json) headers["Content-Type"] = "application/json";
+        return headers;
+      }
+      function refreshUploads() {
+        fetch(runtime.apiBase + "/student/uploaded-papers", { headers: authHeaders(false) }).then(function (response) {
+          if (!response.ok) throw new Error("Could not load your uploads.");
+          return response.json();
+        }).then(function (data) {
+          list.replaceChildren();
+          var papers = Array.isArray(data.papers) ? data.papers : [];
+          if (!papers.length) { var empty = document.createElement("p"); empty.className = "ql-upload-state"; empty.textContent = "No uploads yet. Choose a PDF or JSON above to make your first test."; list.appendChild(empty); return; }
+          papers.forEach(function (paper) {
+            var row = document.createElement("div"); row.className = "ql-upload-item";
+            var title = document.createElement("strong"); title.textContent = paper.title || "My paper";
+            var count = document.createElement("span"); count.className = "ql-upload-state"; count.textContent = (paper.question_count || 0) + " questions";
+            var link = document.createElement("a"); link.href = "/paper/" + encodeURIComponent(paper.id); link.textContent = "Start";
+            row.append(title, count, link); list.appendChild(row);
+          });
+        }).catch(function (error) { list.replaceChildren(); var message = document.createElement("p"); message.className = "ql-upload-state ql-upload-error"; message.textContent = error.message; list.appendChild(message); });
+      }
+      refreshUploads();
+      modal.querySelector(".ql-upload-form").addEventListener("submit", function (event) {
+        event.preventDefault();
+        var file = modal.querySelector("input[type=file]").files[0];
+        if (!file) return;
+        var button = modal.querySelector(".ql-upload-pick");
+        button.disabled = true; button.textContent = "Converting paper into a test…"; state.classList.remove("ql-upload-error"); state.textContent = "This can take a minute for a PDF.";
+        var form = new FormData(); form.append("paper", file);
+        fetch(runtime.apiBase + "/student/uploaded-papers", { method: "POST", headers: authHeaders(false), body: form }).then(function (response) {
+          return response.json().then(function (data) { if (!response.ok) throw new Error(data.error || "Could not create a test from this file."); return data; });
+        }).then(function (data) {
+          state.textContent = (data.title || "Your paper") + " is ready with " + (data.question_count || 0) + " questions.";
+          modal.querySelector("input[type=file]").value = "";
+          refreshUploads();
+          host.dataset.qlLoaded = "";
+          fillMyPapers();
+        }).catch(function (error) { state.classList.add("ql-upload-error"); state.textContent = error.message; }).finally(function () { button.disabled = false; button.textContent = "Choose a PDF or JSON file"; });
+      });
     });
   }
 

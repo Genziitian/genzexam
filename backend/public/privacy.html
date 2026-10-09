@@ -31,7 +31,7 @@
   <main class="container">
     <article class="card">
       <h1>Privacy Policy</h1>
-      <span class="updated">Last updated: October 8, 2026</span>
+      <span class="updated">Last updated: October 9, 2026</span>
       <p class="intro">This Privacy Notice for <strong>QUIZ LAB by GenZ IITian</strong> (“QUIZ LAB,” “we,” “us,” or “our”) explains how and why we access, collect, store, use, and share personal information when you use our services (“Services”), including our website at <a href="https://quiz.genziitian.in/">https://quiz.genziitian.in/</a> and our mobile application.</p>
       <p class="intro">QUIZ LAB is part of GenZ IITian. The applicable GenZ IITian rules, terms, and content-use rules also apply to QUIZ LAB, subject to this Privacy Notice and applicable law. If you have questions or concerns, contact us at <a href="mailto:admin@genziitian.org">admin@genziitian.org</a> or <a href="mailto:genziitian@gmail.com">genziitian@gmail.com</a>.</p>
 
@@ -41,6 +41,7 @@
           <li>Account contact details may include your name, email address, and phone number when you provide it. We do not access your phone contacts or collect a mailing address or address book.</li>
           <li>We also process information needed to run the learning service, such as course access, quiz attempts, answers, scores, XP, badges, account activity, and support or deletion requests.</li>
           <li>We use Google Sign-In and Google Analytics. We do not use Supabase or PostHog.</li>
+          <li>If you upload a PDF to create a test, its extracted text is processed by DeepSeek AI. We delete the temporary source PDF after processing and keep the generated test in your account.</li>
           <li>Website payments are processed through Razorpay. Payments are currently available on the website; in-app Razorpay payments are planned, but are not currently offered.</li>
           <li>You can ask to review, correct, or delete your information through account support or the account deletion request flow.</li>
         </ul>
@@ -50,6 +51,7 @@
         <span class="section-num">01</span><h2>What Information Do We Collect?</h2>
         <p><strong>Personal information you provide.</strong> We collect information you provide when you register, sign in, use account features, contact support, or use paid features. This can include your name and email address, and a phone number if you choose or are asked to provide it for an account, support, or purchase feature. If you sign in with Google, Google may provide the account name, email address, and profile photo associated with the Google account you choose. You may also add or change your profile photo.</p>
         <p><strong>Learning and account information.</strong> To provide the Services, we process your account ID, course access or enrollments, quiz and paper attempts, answers, scores, XP, levels, badges, submissions, and related progress. If you send a support request or account deletion request, we process the account details and the message, reason, or additional information you submit.</p>
+        <p><strong>Uploaded paper information.</strong> If you upload a PDF to create a personal test, we extract its selectable text and send that text to DeepSeek AI to structure questions into quiz data. The original PDF is stored temporarily on our server while it is processed and deleted after processing. The generated questions and test are saved to your account so you can use them in My Papers. If you upload a JSON file, we process it to create the test without sending it to the AI service. Scanned image PDFs are not supported yet. Only upload papers you have permission to use.</p>
         <p><strong>Information we do not request from your device.</strong> We do not access your phone contacts or address book and do not collect mailing addresses through the app. We do not intentionally request sensitive personal information such as racial or ethnic origin, religious beliefs, or health information.</p>
         <p><strong>Information automatically collected.</strong> Our systems may collect service, diagnostic, and security information such as IP address, browser and device characteristics, operating system, language, referring URL, date and time of access, pages or features used, and error or activity logs. We use Google Analytics to understand website and app usage. Depending on the Analytics configuration, Google Analytics may collect usage events, session statistics, browser or device information, approximate location, and identifiers such as website cookies or an app-instance identifier. Google explains its default Analytics data collection in its <a href="https://support.google.com/analytics/answer/11593727">Analytics Help documentation</a>.</p>
         <p><strong>Payment information.</strong> Website checkout is provided through Razorpay. Razorpay processes payment instrument details. QUIZ LAB receives transaction and order information needed to confirm payment, provide access to the purchased item, prevent fraud, and provide support, such as order or payment IDs, product, amount, currency, and payment status. We do not store card numbers, UPI PINs, or banking passwords on our servers. Payments are currently available on the website only. We plan to offer Razorpay payments in the app in the future; if that feature is introduced, we will update this Notice as needed before or when it becomes available.</p>
@@ -63,6 +65,7 @@
           <li>Create and authenticate accounts, maintain sign-in sessions, and manage account settings.</li>
           <li>Provide course, quiz, paper, video, discussion, and other requested learning features.</li>
           <li>Record attempts and calculate scores, progress, XP, levels, badges, and rankings.</li>
+          <li>Process uploaded paper text to create personal tests.</li>
           <li>Process website purchases through Razorpay, confirm order status, and grant purchased access.</li>
           <li>Respond to support questions, account deletion requests, and other communications.</li>
           <li>Maintain service security, troubleshoot errors, prevent fraud or abuse, understand usage trends through Google Analytics, and improve the Services.</li>
@@ -76,6 +79,7 @@
         <ul>
           <li><strong>Google Sign-In and Google APIs</strong> for account authentication and associated profile information.</li>
           <li><strong>Google Analytics</strong> for website and app usage measurement and reporting.</li>
+          <li><strong>DeepSeek AI</strong>, which receives extracted text from a PDF only when you choose to create a test from an uploaded PDF.</li>
           <li><strong>Razorpay</strong> for website payment processing and related transaction confirmation.</li>
           <li><strong>Our application hosting and infrastructure providers</strong> to store and deliver account, learning, and service data. We do not use Supabase or PostHog.</li>
         </ul>

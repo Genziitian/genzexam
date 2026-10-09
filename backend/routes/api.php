@@ -25,6 +25,7 @@ use App\Http\Controllers\StudentProgressController;
 use App\Http\Controllers\VideoSolutionController;
 use App\Http\Controllers\ExamPlatformController;
 use App\Http\Controllers\StorefrontController;
+use App\Http\Controllers\StudentUploadedPaperController;
 use App\Http\Controllers\ManagerSalesController;
 use App\Http\Controllers\ManagerSystemController;
 use Illuminate\Support\Facades\Route;
@@ -88,6 +89,8 @@ Route::middleware(['auth:sanctum', 'track.seen'])->group(function () {
     Route::get('/student/profile', [StudentProgressController::class, 'profile']);
     Route::patch('/student/profile', [StudentProgressController::class, 'updateProfile']);
     Route::get('/student/dashboard', [DashboardController::class, 'index']);
+    Route::get('/student/uploaded-papers', [StudentUploadedPaperController::class, 'index']);
+    Route::post('/student/uploaded-papers', [StudentUploadedPaperController::class, 'store'])->middleware('throttle:5,60');
 
     // Self-serve paper access and Razorpay checkout.
     Route::get('/storefront/my-papers', [StorefrontController::class, 'myPapers']);

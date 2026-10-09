@@ -76,8 +76,50 @@ class _AppRouterState extends State<AppRouter> {
             );
 
           case AuthStatus.unauthenticated:
-            return LoginScreen(
-              authState: widget.authState,
+            return LoginScreen(authState: widget.authState);
+
+          case AuthStatus.connectionUnavailable:
+            return Scaffold(
+              backgroundColor: const Color(0xFFF8FAFC),
+              body: Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(28),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      const Icon(
+                        Icons.wifi_off_rounded,
+                        size: 44,
+                        color: Color(0xFF64748B),
+                      ),
+                      const SizedBox(height: 14),
+                      const Text(
+                        'You are still signed in',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w800,
+                        ),
+                      ),
+                      const SizedBox(height: 8),
+                      Text(
+                        widget.authState.errorMessage ??
+                            'We could not connect to check your account. Your saved sign-in has not been removed.',
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          color: Color(0xFF64748B),
+                          height: 1.4,
+                        ),
+                      ),
+                      const SizedBox(height: 18),
+                      FilledButton.icon(
+                        onPressed: widget.authState.checkAuthStatus,
+                        icon: const Icon(Icons.refresh),
+                        label: const Text('Try again'),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             );
 
           case AuthStatus.authenticated:
@@ -90,9 +132,6 @@ class _AppRouterState extends State<AppRouter> {
   /// The app has no manager or admin screens: whoever signs in, including a
   /// manager or an admin, gets the student app.
   Widget _routeByRole(AuthState state) {
-    return StudentMainShell(
-      authState: state,
-      isManagerPreview: false,
-    );
+    return StudentMainShell(authState: state, isManagerPreview: false);
   }
 }

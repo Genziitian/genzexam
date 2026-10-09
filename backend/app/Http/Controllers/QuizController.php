@@ -12,7 +12,11 @@ class QuizController extends Controller
 {
     public function show(Request $request, int $id): JsonResponse
     {
-        $quiz = Quiz::query()
+        $quiz = Quiz::withoutGlobalScope('exclude_personal_uploads')
+            ->where(function ($query) use ($request) {
+                $query->where('is_personal', false)
+                    ->orWhere(fn ($owned) => $owned->where('is_personal', true)->where('owner_user_id', $request->user()->id));
+            })
             ->where('is_active', true)
             ->where('approval_status', 'approved')
             ->whereHas('course', fn ($query) => $query->where('is_active', true))
@@ -85,6 +89,7 @@ class QuizController extends Controller
     {
         $user = $request->user();
         abort_if($user->isAdmin(), 403, 'Leaderboards are not available in teacher content management.');
+        Quiz::query()->findOrFail($id);
 
         $attempts = Attempt::query()
             ->where('quiz_id', $id)
