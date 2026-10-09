@@ -21,8 +21,14 @@ const _webOrigin = 'https://quiz.genziitian.in';
 class PracticeTab extends StatefulWidget {
   final CourseService courseService;
   final UserModel? user;
+  final bool isActive;
 
-  const PracticeTab({super.key, required this.courseService, this.user});
+  const PracticeTab({
+    super.key,
+    required this.courseService,
+    this.user,
+    this.isActive = true,
+  });
 
   @override
   State<PracticeTab> createState() => _PracticeTabState();
@@ -55,6 +61,19 @@ class _PracticeTabState extends State<PracticeTab> {
       const Duration(milliseconds: 90),
       (_) => _typeStep(),
     );
+  }
+
+  @override
+  void didUpdateWidget(covariant PracticeTab oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.isActive && !widget.isActive) {
+      _searchController.clear();
+      _query = '';
+      _activeOnly = false;
+      if (_scrollController.hasClients) _scrollController.jumpTo(0);
+    } else if (!oldWidget.isActive && widget.isActive) {
+      unawaited(_load(quiet: true));
+    }
   }
 
   @override
@@ -115,11 +134,13 @@ class _PracticeTabState extends State<PracticeTab> {
     return 'Search “$shown${_cursorOn ? '|' : ' '}”';
   }
 
-  Future<void> _load() async {
-    setState(() {
-      _loading = true;
-      _error = null;
-    });
+  Future<void> _load({bool quiet = false}) async {
+    if (!quiet) {
+      setState(() {
+        _loading = true;
+        _error = null;
+      });
+    }
     try {
       final courses = await widget.courseService.getCourses();
       final completion = <String, double>{};
@@ -147,6 +168,7 @@ class _PracticeTabState extends State<PracticeTab> {
       });
     } catch (e) {
       if (!mounted) return;
+      if (quiet && _courses.isNotEmpty) return;
       setState(() {
         _error = e is ApiException ? e.message : 'Could not load your courses.';
         _loading = false;

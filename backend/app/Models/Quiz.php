@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Schema;
 
 class Quiz extends Model
 {
@@ -18,7 +19,11 @@ class Quiz extends Model
         // Everything else (course catalogs, manager tools, rankings, storefront)
         // excludes them by default.
         static::addGlobalScope('exclude_personal_uploads', function (Builder $query) {
-            $query->where('is_personal', false);
+            // Keep existing quiz pages usable during a rolling deployment where
+            // the personal-upload migration has not reached the database yet.
+            if (Schema::hasColumn('quizzes', 'is_personal')) {
+                $query->where('is_personal', false);
+            }
         });
     }
 

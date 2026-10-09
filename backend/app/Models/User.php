@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\Schema;
 
 class User extends Authenticatable
 {
@@ -95,7 +96,13 @@ class User extends Authenticatable
     public function hasProAccess(): bool
     {
         // Keep legacy manager grants working until they are migrated into the
-        // subscription ledger. Once a ledger row exists, it is authoritative.
+        // subscription ledger. During a rolling deployment, the API may receive
+        // traffic before the ledger migration has run; preserve the old flag then.
+        if (! Schema::hasTable('pro_subscriptions')) {
+            return (bool) $this->is_pro;
+        }
+
+        // Once a ledger row exists, it is authoritative.
         if ($this->proSubscriptions()->exists()) {
             return $this->proSubscriptions()->where(function ($query) {
                 $query->where(function ($active) {

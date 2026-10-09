@@ -7,6 +7,123 @@ import 'package:in_app_purchase_android/in_app_purchase_android.dart';
 
 import '../../api/api_client.dart';
 
+class ProMembershipScreen extends StatelessWidget {
+  const ProMembershipScreen({super.key, required this.apiClient});
+
+  final ApiClient apiClient;
+
+  @override
+  Widget build(BuildContext context) => Scaffold(
+    backgroundColor: const Color(0xFFF1F5F9),
+    appBar: AppBar(
+      title: const Text('Quiz LAB Pro'),
+      backgroundColor: const Color(0xFFF1F5F9),
+      foregroundColor: const Color(0xFF0F172A),
+    ),
+    body: ListView(
+      padding: const EdgeInsets.fromLTRB(16, 12, 16, 28),
+      children: [
+        Container(
+          padding: const EdgeInsets.all(20),
+          decoration: BoxDecoration(
+            color: const Color(0xFF123B24),
+            borderRadius: BorderRadius.circular(22),
+          ),
+          child: const Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Make practice yours.',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 23,
+                  fontWeight: FontWeight.w800,
+                ),
+              ),
+              SizedBox(height: 7),
+              Text(
+                'Get more ways to prepare with Quiz LAB Pro.',
+                style: TextStyle(color: Color(0xFFD1FAE5), height: 1.4),
+              ),
+            ],
+          ),
+        ),
+        const SizedBox(height: 14),
+        const _ProBenefit(
+          icon: Icons.download_for_offline_rounded,
+          title: 'Download papers',
+          detail: 'Save papers in Quiz LAB and practise without internet.',
+        ),
+        const SizedBox(height: 9),
+        const _ProBenefit(
+          icon: Icons.upload_file_rounded,
+          title: 'Upload a paper',
+          detail: 'Turn a supported PDF into a private practice test.',
+        ),
+        const SizedBox(height: 9),
+        const _ProBenefit(
+          icon: Icons.ondemand_video_rounded,
+          title: 'Video solutions',
+          detail: 'Learn with step-by-step video answers.',
+        ),
+        const SizedBox(height: 14),
+        ProMembershipCard(apiClient: apiClient),
+      ],
+    ),
+  );
+}
+
+class _ProBenefit extends StatelessWidget {
+  const _ProBenefit({
+    required this.icon,
+    required this.title,
+    required this.detail,
+  });
+
+  final IconData icon;
+  final String title;
+  final String detail;
+
+  @override
+  Widget build(BuildContext context) => Container(
+    padding: const EdgeInsets.all(14),
+    decoration: BoxDecoration(
+      color: Colors.white,
+      borderRadius: BorderRadius.circular(16),
+      border: Border.all(color: const Color(0xFFE2E8F0)),
+    ),
+    child: Row(
+      children: [
+        Icon(icon, color: const Color(0xFF16A34A), size: 22),
+        const SizedBox(width: 12),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                title,
+                style: const TextStyle(
+                  color: Color(0xFF0F172A),
+                  fontWeight: FontWeight.w800,
+                ),
+              ),
+              const SizedBox(height: 3),
+              Text(
+                detail,
+                style: const TextStyle(
+                  color: Color(0xFF64748B),
+                  fontSize: 12,
+                  height: 1.35,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
 /// Google Play purchase UI. The server validates every purchase token before it
 /// grants access, so the client never unlocks Pro based on a local response.
 class ProMembershipCard extends StatefulWidget {

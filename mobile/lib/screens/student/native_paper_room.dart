@@ -44,6 +44,7 @@ class _PaperRoomScreenState extends State<PaperRoomScreen>
   bool _submitting = false;
   bool _submitted = false;
   bool _pendingSubmit = false;
+  final Set<int> _markedForReview = {};
   String? _startedAt;
   Future<void> _draftWrite = Future<void>.value();
   SubmitQuizResponse? _result;
@@ -173,6 +174,12 @@ class _PaperRoomScreenState extends State<PaperRoomScreen>
     _selectedMinutes =
         (draft['duration_minutes'] as num?)?.toInt() ?? _selectedMinutes;
     _pendingSubmit = draft['pending_submit'] == true;
+    final reviewIds = draft['marked_for_review'];
+    if (reviewIds is List) {
+      _markedForReview
+        ..clear()
+        ..addAll(reviewIds.whereType<num>().map((id) => id.toInt()));
+    }
     _started = true;
     _startedAt = draft['started_at']?.toString();
     final index = (draft['question_index'] as num?)?.toInt() ?? 0;
@@ -202,6 +209,7 @@ class _PaperRoomScreenState extends State<PaperRoomScreen>
       'started_at': _startedAt,
       'duration_minutes': _selectedMinutes,
       'question_index': _questionIndex,
+      'marked_for_review': _markedForReview.toList(),
       'answers': _answers.map((key, value) => MapEntry(key.toString(), value)),
       'pending_submit': _pendingSubmit,
     };
@@ -398,32 +406,37 @@ class _PaperRoomScreenState extends State<PaperRoomScreen>
       },
       child: Scaffold(
         backgroundColor: const Color(0xFFF1F5F9),
-        appBar: AppBar(
-          backgroundColor: const Color(0xFFF1F5F9),
-          foregroundColor: _paperInk,
-          title: Text(
-            _quiz?.title ?? widget.title,
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
-          ),
-          actions: [
-            if (_offline)
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10),
-                child: Center(
-                  child: Text(
-                    'OFFLINE',
-                    style: TextStyle(
-                      color: _paperGreen,
-                      fontWeight: FontWeight.w800,
-                      fontSize: 11,
-                    ),
+        appBar: _started && !_submitted
+            ? null
+            : AppBar(
+                backgroundColor: const Color(0xFFF1F5F9),
+                foregroundColor: _paperInk,
+                title: Text(
+                  _quiz?.title ?? widget.title,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w700,
                   ),
                 ),
+                actions: [
+                  if (_offline)
+                    const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 10),
+                      child: Center(
+                        child: Text(
+                          'OFFLINE',
+                          style: TextStyle(
+                            color: _paperGreen,
+                            fontWeight: FontWeight.w800,
+                            fontSize: 11,
+                          ),
+                        ),
+                      ),
+                    ),
+                ],
               ),
-          ],
-        ),
         body: _loading
             ? const Center(child: CircularProgressIndicator(color: _paperGreen))
             : _error != null && _quiz == null
@@ -439,7 +452,7 @@ class _PaperRoomScreenState extends State<PaperRoomScreen>
             ? _pendingView()
             : !_started
             ? _startView()
-            : _paperView(),
+            : SafeArea(child: _paperView()),
       ),
     );
   }
@@ -503,15 +516,27 @@ class _PaperRoomScreenState extends State<PaperRoomScreen>
                     'Paper default · ${_quiz!.timeLimitMinutes} min',
                     _quiz!.timeLimitMinutes,
                   ),
-                for (final minutes in [15, 30, 45, 60])
+                for (final minutes in [15, 30])
                   _timeChip('$minutes min', minutes),
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    _timeChip('45 min', 45),
+                    const SizedBox(width: 8),
+                    _timeChip('60 min', 60),
+                    const SizedBox(width: 8),
+                    OutlinedButton.icon(
+                      onPressed: _customTime,
+                      icon: const Icon(Icons.timer_outlined, size: 16),
+                      label: const Text('Custom'),
+                      style: OutlinedButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(horizontal: 12),
+                        minimumSize: const Size(0, 40),
+                      ),
+                    ),
+                  ],
+                ),
               ],
-            ),
-            const SizedBox(height: 12),
-            OutlinedButton.icon(
-              onPressed: _customTime,
-              icon: const Icon(Icons.timer_outlined),
-              label: const Text('Choose custom minutes'),
             ),
             if (_error != null)
               Padding(
@@ -596,90 +621,95 @@ class _PaperRoomScreenState extends State<PaperRoomScreen>
             .toSet();
     final isMulti =
         question.type == 'multi_select' || question.type == 'mcq_multi';
+    final answeredCount = _questions.where(_hasAnswer).length;
+    final questionType = isMulti
+        ? 'MCQ MULTI'
+        : question.type == 'numerical'
+        ? 'NUMERICAL'
+        : question.options.isEmpty
+        ? 'WRITTEN ANSWER'
+        : 'MCQ';
     return Column(
       children: [
-        Padding(
-          padding: const EdgeInsets.fromLTRB(16, 4, 16, 10),
-          child: Row(
-            children: [
-              Expanded(
-                child: Text(
-                  'Question ${_questionIndex + 1} of ${_questions.length}',
-                  style: const TextStyle(
-                    color: Color(0xFF64748B),
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-              ),
-              if (_selectedMinutes > 0)
-                Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 12,
-                    vertical: 8,
-                  ),
-                  decoration: BoxDecoration(
-                    color: _seconds < 60
-                        ? const Color(0xFFFEE2E2)
-                        : const Color(0xFFDCFCE7),
-                    borderRadius: BorderRadius.circular(999),
-                  ),
-                  child: Text(
-                    _clockLabel,
-                    style: TextStyle(
-                      color: _seconds < 60 ? Colors.red : _paperGreen,
-                      fontWeight: FontWeight.w800,
-                    ),
-                  ),
-                ),
-              const SizedBox(width: 8),
-              TextButton(
-                onPressed: _submitting ? null : () => _submit(),
-                child: const Text('Submit'),
-              ),
-            ],
+        _runnerHeader(answeredCount),
+        Container(height: 1, color: const Color(0xFFE2E8F0)),
+        SizedBox(
+          height: 76,
+          child: ListView.separated(
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+            scrollDirection: Axis.horizontal,
+            itemCount: _questions.length,
+            separatorBuilder: (_, _) => const SizedBox(width: 8),
+            itemBuilder: (context, index) => _questionPaletteItem(index),
           ),
         ),
-        LinearProgressIndicator(
-          value: (_questionIndex + 1) / _questions.length,
-          color: _paperGreen,
-          backgroundColor: const Color(0xFFDCE5E0),
-          minHeight: 3,
-        ),
+        Container(height: 3, color: const Color(0xFF1E293B)),
         Expanded(
           child: ListView(
-            padding: const EdgeInsets.fromLTRB(16, 14, 16, 18),
+            padding: const EdgeInsets.fromLTRB(16, 16, 16, 20),
             children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(2, 0, 2, 14),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Text(
+                        'Question ${_questionIndex + 1} of ${_questions.length}',
+                        style: const TextStyle(
+                          color: _paperInk,
+                          fontSize: 19,
+                          fontWeight: FontWeight.w800,
+                        ),
+                      ),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 10,
+                        vertical: 7,
+                      ),
+                      decoration: BoxDecoration(
+                        color: const Color(0xFFE0F2FE),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Text(
+                        questionType,
+                        style: const TextStyle(
+                          color: Color(0xFF0369A1),
+                          fontWeight: FontWeight.w800,
+                          fontSize: 11,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 10),
+                    Text(
+                      '+${question.marks} Marks',
+                      style: const TextStyle(
+                        color: _paperGreen,
+                        fontWeight: FontWeight.w800,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Container(height: 1, color: const Color(0xFFE2E8F0)),
+              const SizedBox(height: 20),
               _panel(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
-                      children: [
-                        Expanded(
-                          child: Text(
-                            isMulti
-                                ? 'SELECT ALL THAT APPLY'
-                                : question.type == 'numerical'
-                                ? 'NUMERICAL ANSWER'
-                                : 'QUESTION',
-                            style: const TextStyle(
-                              color: _paperGreen,
-                              letterSpacing: 1.2,
-                              fontWeight: FontWeight.w800,
-                              fontSize: 10,
-                            ),
+                    if (isMulti)
+                      const Padding(
+                        padding: EdgeInsets.only(bottom: 10),
+                        child: Text(
+                          'SELECT ALL THAT APPLY',
+                          style: TextStyle(
+                            color: _paperGreen,
+                            letterSpacing: 1.2,
+                            fontWeight: FontWeight.w800,
+                            fontSize: 10,
                           ),
                         ),
-                        Text(
-                          '${question.marks} marks',
-                          style: const TextStyle(
-                            color: Color(0xFF64748B),
-                            fontSize: 12,
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 12),
+                      ),
                     ..._richWidgets(question.stem),
                     if (question.stemImage != null &&
                         question.stemImage!.isNotEmpty)
@@ -803,41 +833,408 @@ class _PaperRoomScreenState extends State<PaperRoomScreen>
             ],
           ),
         ),
-        SafeArea(
-          top: false,
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(16, 8, 16, 10),
-            child: Row(
-              children: [
-                OutlinedButton.icon(
-                  onPressed: _questionIndex > 0
-                      ? () => setState(() => _questionIndex--)
-                      : null,
-                  icon: const Icon(Icons.arrow_back),
-                  label: const Text('Previous'),
-                ),
-                const Spacer(),
-                if (_questionIndex + 1 < _questions.length)
-                  FilledButton.icon(
-                    onPressed: () async {
-                      setState(() => _questionIndex++);
-                      await _saveDraft();
-                    },
-                    icon: const Icon(Icons.arrow_forward),
-                    label: const Text('Next'),
-                  )
-                else
-                  FilledButton.icon(
-                    onPressed: () => _submit(),
-                    icon: const Icon(Icons.check),
-                    label: const Text('Finish'),
+        SafeArea(top: false, child: _runnerBottomBar()),
+      ],
+    );
+  }
+
+  bool _hasAnswer(QuestionModel question) {
+    final answer = _answers[question.id];
+    if (answer == null) return false;
+    final selected = answer['selected_option_ids'];
+    if (selected is List && selected.isNotEmpty) return true;
+    final numerical = answer['numerical_answer'];
+    if (numerical != null && numerical.toString().isNotEmpty) return true;
+    return (answer['text_answer'] ?? '').toString().trim().isNotEmpty;
+  }
+
+  Widget _runnerHeader(int answeredCount) => Padding(
+    padding: const EdgeInsets.fromLTRB(10, 8, 10, 10),
+    child: Column(
+      children: [
+        Row(
+          children: [
+            IconButton(
+              visualDensity: VisualDensity.compact,
+              onPressed: () => unawaited(_submit()),
+              icon: const Icon(Icons.arrow_back),
+              tooltip: 'Submit and exit',
+            ),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(10),
+              child: Image.asset(
+                'assets/logo.png',
+                width: 40,
+                height: 40,
+                fit: BoxFit.cover,
+              ),
+            ),
+            const SizedBox(width: 10),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    _quiz?.title ?? widget.title,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(
+                      color: _paperInk,
+                      fontSize: 15,
+                      fontWeight: FontWeight.w800,
+                    ),
                   ),
-              ],
+                  Text(
+                    _quiz?.course?.name ??
+                        _quiz?.section ??
+                        'Quiz LAB · Practice',
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(
+                      color: Color(0xFF64748B),
+                      fontSize: 12,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            OutlinedButton(
+              style: OutlinedButton.styleFrom(
+                foregroundColor: const Color(0xFF047857),
+                side: const BorderSide(color: Color(0xFF86EFAC)),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 10,
+                  vertical: 10,
+                ),
+              ),
+              onPressed: _showCalculator,
+              child: const Text(
+                'Calculator',
+                style: TextStyle(fontWeight: FontWeight.w700, fontSize: 12),
+              ),
+            ),
+          ],
+        ),
+        if (_offline)
+          const Align(
+            alignment: Alignment.centerLeft,
+            child: Padding(
+              padding: EdgeInsets.only(left: 4, bottom: 6),
+              child: Text(
+                'OFFLINE PAPER',
+                style: TextStyle(
+                  color: _paperGreen,
+                  fontWeight: FontWeight.w800,
+                  fontSize: 10,
+                  letterSpacing: 1,
+                ),
+              ),
+            ),
+          ),
+        const SizedBox(height: 8),
+        Row(
+          children: [
+            _headerPill(
+              'Answered:  $answeredCount/${_questions.length}',
+              const Color(0xFFF1F5F9),
+              const Color(0xFF475569),
+            ),
+            const SizedBox(width: 8),
+            _headerPill(
+              _selectedMinutes > 0 ? _clockLabel : 'Untimed',
+              _seconds < 60 && _selectedMinutes > 0
+                  ? const Color(0xFFFEE2E2)
+                  : const Color(0xFFF1F5F9),
+              _seconds < 60 && _selectedMinutes > 0
+                  ? Colors.red
+                  : const Color(0xFF0F172A),
+              leading: _selectedMinutes == 0 ? Icons.circle : null,
+            ),
+            const Spacer(),
+            FilledButton.icon(
+              style: FilledButton.styleFrom(
+                backgroundColor: const Color(0xFF059669),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 8,
+                  vertical: 11,
+                ),
+              ),
+              onPressed: _submitting ? null : () => _submit(),
+              icon: const Icon(Icons.check, size: 17),
+              label: const Text(
+                'Submit & Exit',
+                style: TextStyle(fontWeight: FontWeight.w800, fontSize: 12),
+              ),
+            ),
+          ],
+        ),
+      ],
+    ),
+  );
+
+  Widget _headerPill(
+    String label,
+    Color background,
+    Color foreground, {
+    IconData? leading,
+  }) => Container(
+    padding: const EdgeInsets.symmetric(horizontal: 11, vertical: 9),
+    decoration: BoxDecoration(
+      color: background,
+      borderRadius: BorderRadius.circular(12),
+      border: Border.all(color: const Color(0xFFCBD5E1)),
+    ),
+    child: Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        if (leading != null) ...[
+          Icon(leading, size: 10, color: _paperGreen),
+          const SizedBox(width: 7),
+        ],
+        Text(
+          label,
+          style: TextStyle(
+            color: foreground,
+            fontWeight: FontWeight.w800,
+            fontSize: 12,
+          ),
+        ),
+      ],
+    ),
+  );
+
+  Widget _questionPaletteItem(int index) {
+    final question = _questions[index];
+    final isCurrent = index == _questionIndex;
+    final answered = _hasAnswer(question);
+    final review = _markedForReview.contains(question.id);
+    final color = review
+        ? const Color(0xFF7C3AED)
+        : answered
+        ? _paperGreen
+        : const Color(0xFF64748B);
+    return InkWell(
+      onTap: () async {
+        setState(() => _questionIndex = index);
+        await _saveDraft();
+      },
+      borderRadius: BorderRadius.circular(12),
+      child: Container(
+        width: 54,
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          color: answered && !review ? const Color(0xFFDCFCE7) : Colors.white,
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(
+            color: isCurrent ? _paperGreen : const Color(0xFFCBD5E1),
+            width: isCurrent ? 3 : 1.5,
+          ),
+        ),
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            Text(
+              '${index + 1}',
+              style: TextStyle(
+                color: color,
+                fontSize: 17,
+                fontWeight: FontWeight.w800,
+              ),
+            ),
+            if (review)
+              const Positioned(
+                right: 3,
+                top: 3,
+                child: Icon(Icons.flag, size: 12, color: Color(0xFF7C3AED)),
+              ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _runnerBottomBar() => Container(
+    padding: const EdgeInsets.fromLTRB(10, 9, 10, 10),
+    decoration: const BoxDecoration(
+      color: Colors.white,
+      border: Border(top: BorderSide(color: Color(0xFFE2E8F0))),
+    ),
+    child: Row(
+      children: [
+        Expanded(
+          child: OutlinedButton.icon(
+            style: _compactRunnerButtonStyle(),
+            onPressed: _questionIndex > 0
+                ? () => _goToQuestion(_questionIndex - 1)
+                : null,
+            icon: const Icon(Icons.arrow_back, size: 14),
+            label: const Text('Prev'),
+          ),
+        ),
+        const SizedBox(width: 6),
+        Expanded(
+          child: OutlinedButton(
+            style: _compactRunnerButtonStyle(),
+            onPressed: _hasAnswer(_current!)
+                ? () async {
+                    _answers.remove(_current!.id);
+                    _answerControllers[_current!.id]?.clear();
+                    await _saveDraft();
+                    if (mounted) setState(() {});
+                  }
+                : null,
+            child: const Text('Clear'),
+          ),
+        ),
+        const SizedBox(width: 6),
+        Expanded(
+          child: OutlinedButton(
+            style: _compactRunnerButtonStyle().copyWith(
+              foregroundColor: WidgetStatePropertyAll(
+                _markedForReview.contains(_current!.id)
+                    ? const Color(0xFF7C3AED)
+                    : const Color(0xFF475569),
+              ),
+            ),
+            onPressed: () async {
+              setState(() {
+                if (!_markedForReview.add(_current!.id))
+                  _markedForReview.remove(_current!.id);
+              });
+              await _saveDraft();
+            },
+            child: Text(
+              _markedForReview.contains(_current!.id) ? 'Marked' : 'Review',
+            ),
+          ),
+        ),
+        const SizedBox(width: 6),
+        Expanded(
+          flex: 2,
+          child: FilledButton.icon(
+            style: _compactRunnerButtonStyle(
+              backgroundColor: _paperGreen,
+              foregroundColor: Colors.white,
+            ),
+            onPressed: _questionIndex + 1 < _questions.length
+                ? () => _goToQuestion(_questionIndex + 1)
+                : () => _submit(),
+            icon: Icon(
+              _questionIndex + 1 < _questions.length
+                  ? Icons.arrow_forward
+                  : Icons.check,
+              size: 14,
+            ),
+            label: Text(
+              _questionIndex + 1 < _questions.length ? 'Save & Next' : 'Finish',
             ),
           ),
         ),
       ],
-    );
+    ),
+  );
+
+  ButtonStyle _compactRunnerButtonStyle({
+    Color? backgroundColor,
+    Color? foregroundColor,
+  }) => OutlinedButton.styleFrom(
+    backgroundColor: backgroundColor,
+    foregroundColor: foregroundColor ?? const Color(0xFF475569),
+    padding: const EdgeInsets.symmetric(horizontal: 3, vertical: 12),
+    visualDensity: VisualDensity.compact,
+    textStyle: const TextStyle(fontSize: 12, fontWeight: FontWeight.w700),
+    side: BorderSide(
+      color: backgroundColor == null
+          ? const Color(0xFFCBD5E1)
+          : backgroundColor,
+    ),
+  );
+
+  Future<void> _goToQuestion(int index) async {
+    setState(() => _questionIndex = index.clamp(0, _questions.length - 1));
+    await _saveDraft();
+  }
+
+  void _showCalculator() {
+    final controller = TextEditingController();
+    String result = '';
+    showDialog<void>(
+      context: context,
+      builder: (dialogContext) => StatefulBuilder(
+        builder: (context, setDialogState) => AlertDialog(
+          title: const Text('Calculator'),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              TextField(
+                controller: controller,
+                keyboardType: const TextInputType.numberWithOptions(
+                  decimal: true,
+                  signed: true,
+                ),
+                decoration: const InputDecoration(
+                  labelText: 'Expression',
+                  hintText: 'e.g. 12 * 4',
+                ),
+              ),
+              const SizedBox(height: 12),
+              Align(
+                alignment: Alignment.centerRight,
+                child: Text(
+                  result,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.w800,
+                    fontSize: 20,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                controller.clear();
+                setDialogState(() => result = '');
+              },
+              child: const Text('Clear'),
+            ),
+            FilledButton(
+              onPressed: () {
+                final expression = controller.text.trim();
+                final match = RegExp(
+                  r'^(-?\d+(?:\.\d+)?)\s*([+*/-])\s*(-?\d+(?:\.\d+)?)$',
+                ).firstMatch(expression);
+                if (match == null) {
+                  setDialogState(() => result = 'Enter a simple calculation');
+                  return;
+                }
+                final a = double.parse(match.group(1)!);
+                final b = double.parse(match.group(3)!);
+                final value = switch (match.group(2)) {
+                  '+' => a + b,
+                  '-' => a - b,
+                  '*' => a * b,
+                  '/' => b == 0 ? double.nan : a / b,
+                  _ => double.nan,
+                };
+                setDialogState(
+                  () => result = value.isFinite
+                      ? (value == value.roundToDouble()
+                            ? value.toInt().toString()
+                            : value.toString())
+                      : 'Cannot divide by zero',
+                );
+              },
+              child: const Text('Calculate'),
+            ),
+            TextButton(
+              onPressed: () => Navigator.pop(dialogContext),
+              child: const Text('Done'),
+            ),
+          ],
+        ),
+      ),
+    ).whenComplete(controller.dispose);
   }
 
   TextEditingController _controller(int questionId, String key) =>

@@ -62,11 +62,9 @@ class _UploadedPapersScreenState extends State<UploadedPapersScreen> {
       final message = error is ApiException
           ? error.message
           : error.toString().replaceFirst('Exception: ', '');
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(message),
-        ),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(message)));
     } finally {
       if (mounted) setState(() => _uploading = false);
     }
@@ -93,6 +91,29 @@ class _UploadedPapersScreenState extends State<UploadedPapersScreen> {
       title: const Text('Upload a paper'),
       backgroundColor: const Color(0xFFF1F5F9),
       foregroundColor: _ink,
+      actions: [
+        Padding(
+          padding: const EdgeInsets.only(right: 14),
+          child: Center(
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+              decoration: BoxDecoration(
+                color: const Color(0xFFFFF1CC),
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: const Text(
+                'PRO',
+                style: TextStyle(
+                  color: Color(0xFF9A5B00),
+                  fontSize: 10,
+                  fontWeight: FontWeight.w900,
+                  letterSpacing: 0.5,
+                ),
+              ),
+            ),
+          ),
+        ),
+      ],
     ),
     body: FutureBuilder<List<UploadedPaper>>(
       future: _papers,
@@ -228,8 +249,8 @@ class _HowItWorks extends StatelessWidget {
           ],
         ),
         const SizedBox(height: 16),
-      const Text(
-        'We send selectable text from PDFs to DeepSeek AI to structure the questions. The original PDF is deleted after processing; the generated test stays in your account. Please review the questions before starting. Scanned PDFs are not supported yet.',
+        const Text(
+          'We send selectable text from PDFs to DeepSeek AI to structure the questions. The original PDF is deleted after processing; the generated test stays in your account. Please review the questions before starting. Scanned PDFs are not supported yet.',
           style: TextStyle(fontSize: 12, height: 1.4, color: Color(0xFF64748B)),
         ),
         const SizedBox(height: 16),

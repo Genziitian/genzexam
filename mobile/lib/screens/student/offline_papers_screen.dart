@@ -59,9 +59,15 @@ class _OfflinePapersScreenState extends State<OfflinePapersScreen> {
     return Scaffold(
       backgroundColor: const Color(0xFFF1F5F9),
       appBar: AppBar(
-        title: const Text('Offline papers'),
+        title: const Text('Downloads'),
         backgroundColor: const Color(0xFFF1F5F9),
         foregroundColor: _ink,
+        actions: const [
+          Padding(
+            padding: EdgeInsets.only(right: 14),
+            child: Center(child: _ProBadge()),
+          ),
+        ],
       ),
       body: FutureBuilder<List<QuizDetail>>(
         future: _papers,
@@ -87,9 +93,9 @@ class _OfflinePapersScreenState extends State<OfflinePapersScreen> {
           if (papers.isEmpty) {
             return _EmptyState(
               icon: Icons.download_for_offline_outlined,
-              title: 'No offline papers yet',
+              title: 'No downloads yet',
               message:
-                  'Open Practice while online, then tap the download icon beside a paper. It will appear here for offline practice.',
+                  'Open Practice while online and tap the download icon beside a paper. It will be saved here for offline practice.',
               action: FilledButton.icon(
                 onPressed: () {
                   Navigator.of(context).pop();
@@ -222,6 +228,28 @@ class _OfflinePapersScreenState extends State<OfflinePapersScreen> {
       ),
     );
   }
+}
+
+class _ProBadge extends StatelessWidget {
+  const _ProBadge();
+
+  @override
+  Widget build(BuildContext context) => Container(
+    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+    decoration: BoxDecoration(
+      color: const Color(0xFFFFF1CC),
+      borderRadius: BorderRadius.circular(8),
+    ),
+    child: const Text(
+      'PRO',
+      style: TextStyle(
+        color: Color(0xFF9A5B00),
+        fontSize: 10,
+        fontWeight: FontWeight.w900,
+        letterSpacing: 0.5,
+      ),
+    ),
+  );
 }
 
 class _EmptyState extends StatelessWidget {

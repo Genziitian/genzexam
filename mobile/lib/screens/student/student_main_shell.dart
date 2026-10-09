@@ -188,6 +188,7 @@ class StudentMainShell extends StatefulWidget {
 
 class _StudentMainShellState extends State<StudentMainShell> {
   int _currentIndex = 0;
+  final Set<int> _visitedTabs = {0};
 
   final DashboardService _dashboardService = DashboardService();
   final CourseService _courseService = CourseService();
@@ -201,18 +202,33 @@ class _StudentMainShellState extends State<StudentMainShell> {
     _loadAvatarChoice(widget.authState.user?.id);
   }
 
+  void _selectTab(int index) {
+    if (index == _currentIndex) return;
+    setState(() {
+      _currentIndex = index;
+      _visitedTabs.add(index);
+    });
+  }
+
+  Widget _tabSlot(int index, Widget tab) => TickerMode(
+    enabled: _currentIndex == index,
+    child: _visitedTabs.contains(index) ? tab : const SizedBox.shrink(),
+  );
+
   void _openOfflinePapers() {
     final user = widget.authState.user;
     if (user == null) return;
-    Navigator.of(context).push<void>(
-      MaterialPageRoute<void>(
-        builder: (_) => OfflinePapersScreen(
-          user: user,
-          apiClient: _courseService.client,
-          onBrowsePractice: () => setState(() => _currentIndex = 2),
+    _openProFeature(() {
+      Navigator.of(context).push<void>(
+        MaterialPageRoute<void>(
+          builder: (_) => OfflinePapersScreen(
+            user: user,
+            apiClient: _courseService.client,
+            onBrowsePractice: () => _selectTab(2),
+          ),
         ),
-      ),
-    );
+      );
+    });
   }
 
   void _openDiscussions() {
@@ -228,10 +244,38 @@ class _StudentMainShellState extends State<StudentMainShell> {
   void _openUploadedPapers() {
     final user = widget.authState.user;
     if (user == null) return;
-    Navigator.of(context).push<void>(
+    _openProFeature(() {
+      Navigator.of(context).push<void>(
+        MaterialPageRoute<void>(
+          builder: (_) => UploadedPapersScreen(
+            user: user,
+            apiClient: _courseService.client,
+          ),
+        ),
+      );
+    });
+  }
+
+  Future<void> _openProFeature(VoidCallback openFeature) async {
+    final user = widget.authState.user;
+    var hasPro = user?.isPro == true;
+    try {
+      final response = await _courseService.client.get<Map<String, dynamic>>(
+        '/membership',
+      );
+      hasPro = response.data?['is_pro'] == true;
+    } catch (_) {
+      // Use the last server-confirmed account state if the membership check is
+      // temporarily unavailable. The protected API still verifies Pro access.
+    }
+    if (!mounted) return;
+    if (hasPro) {
+      openFeature();
+      return;
+    }
+    await Navigator.of(context).push<void>(
       MaterialPageRoute<void>(
-        builder: (_) =>
-            UploadedPapersScreen(user: user, apiClient: _courseService.client),
+        builder: (_) => ProMembershipScreen(apiClient: _courseService.client),
       ),
     );
   }
@@ -303,58 +347,69 @@ class _StudentMainShellState extends State<StudentMainShell> {
                   ),
                 ),
 
-              // Only keep the selected tab mounted. Leaving a tab clears its
-              // local scroll/search state, so returning starts fresh.
               Expanded(
                 child: Padding(
                   // Height of the bar's white pill plus its bottom margin and the system inset.
                   padding: EdgeInsets.only(
                     bottom: MediaQuery.of(context).viewPadding.bottom + 76,
                   ),
-                  child: KeyedSubtree(
-                    key: ValueKey<int>(_currentIndex),
-                    child: [
-                      _HomeTab(
-                        dashboardService: _dashboardService,
-                        leaderboardService: _leaderboardService,
-                        user: widget.authState.user,
-                        onNavigateToQuizzes: () =>
-                            setState(() => _currentIndex = 1),
-                        onOpenProfile: () => setState(() => _currentIndex = 4),
-                        onOpenOfflinePapers: _openOfflinePapers,
-                        onOpenDiscussions: _openDiscussions,
-                        onOpenUploadedPapers: _openUploadedPapers,
+                  child: IndexedStack(
+                    index: _currentIndex,
+                    children: [
+                      _tabSlot(
+                        0,
+                        _HomeTab(
+                          dashboardService: _dashboardService,
+                          leaderboardService: _leaderboardService,
+                          user: widget.authState.user,
+                          isActive: _currentIndex == 0,
+                          onNavigateToQuizzes: () => _selectTab(1),
+                          onOpenProfile: () => _selectTab(4),
+                          onOpenOfflinePapers: _openOfflinePapers,
+                          onOpenDiscussions: _openDiscussions,
+                          onOpenUploadedPapers: _openUploadedPapers,
+                        ),
                       ),
-                      _MyPapersTab(
-                        storefrontService: _storefrontService,
-                        courseService: _courseService,
-                        user: widget.authState.user,
-                        isActive: _currentIndex == 1,
-                        onBrowsePractice: () =>
-                            setState(() => _currentIndex = 2),
+                      _tabSlot(
+                        1,
+                        _MyPapersTab(
+                          storefrontService: _storefrontService,
+                          courseService: _courseService,
+                          user: widget.authState.user,
+                          isActive: _currentIndex == 1,
+                          onBrowsePractice: () => _selectTab(2),
+                        ),
                       ),
-                      PracticeTab(
-                        courseService: _courseService,
-                        user: widget.authState.user,
+                      _tabSlot(
+                        2,
+                        PracticeTab(
+                          courseService: _courseService,
+                          user: widget.authState.user,
+                          isActive: _currentIndex == 2,
+                        ),
                       ),
-                      _RanksTab(
-                        leaderboardService: _leaderboardService,
-                        user: widget.authState.user,
-                        isActive: _currentIndex == 3,
+                      _tabSlot(
+                        3,
+                        _RanksTab(
+                          leaderboardService: _leaderboardService,
+                          user: widget.authState.user,
+                          isActive: _currentIndex == 3,
+                        ),
                       ),
-                      _MoreTab(
-                        user: widget.authState.user,
-                        authState: widget.authState,
-                        leaderboardService: _leaderboardService,
-                        discussionService: _discussionService,
-                        onNavigateToMyPapers: () =>
-                            setState(() => _currentIndex = 1),
-                        onNavigateToPractice: () =>
-                            setState(() => _currentIndex = 2),
-                        onNavigateToRanks: () =>
-                            setState(() => _currentIndex = 3),
+                      _tabSlot(
+                        4,
+                        _MoreTab(
+                          user: widget.authState.user,
+                          authState: widget.authState,
+                          leaderboardService: _leaderboardService,
+                          discussionService: _discussionService,
+                          isActive: _currentIndex == 4,
+                          onNavigateToMyPapers: () => _selectTab(1),
+                          onNavigateToPractice: () => _selectTab(2),
+                          onNavigateToRanks: () => _selectTab(3),
+                        ),
                       ),
-                    ][_currentIndex],
+                    ],
                   ),
                 ),
               ),
@@ -365,7 +420,7 @@ class _StudentMainShellState extends State<StudentMainShell> {
           currentIndex: _currentIndex,
           onTap: (index) {
             AppHaptics.selection();
-            setState(() => _currentIndex = index);
+            _selectTab(index);
           },
         ),
       ),
@@ -714,6 +769,7 @@ class _RanksTabState extends State<_RanksTab> with TickerProviderStateMixin {
   static const _rowHeight = 62.0;
 
   late Future<LeaderboardData> _future;
+  LeaderboardData? _lastLeaderboard;
   late final AnimationController _party; // confetti, ~3.2s
   late final AnimationController _pop; // podium cards popping in
   late final AnimationController
@@ -749,7 +805,12 @@ class _RanksTabState extends State<_RanksTab> with TickerProviderStateMixin {
   @override
   void didUpdateWidget(covariant _RanksTab oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (widget.isActive && !oldWidget.isActive) _celebrate();
+    if (oldWidget.isActive && !widget.isActive) {
+      if (_scroll.hasClients) _scroll.jumpTo(0);
+    } else if (widget.isActive && !oldWidget.isActive) {
+      _future = widget.leaderboardService.getLeaderboard();
+      _celebrate();
+    }
   }
 
   @override
@@ -1318,10 +1379,13 @@ class _RanksTabState extends State<_RanksTab> with TickerProviderStateMixin {
     return FutureBuilder<LeaderboardData>(
       future: _future,
       builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
+        if (snapshot.hasData) _lastLeaderboard = snapshot.data;
+        final data = snapshot.data ?? _lastLeaderboard;
+        if (snapshot.connectionState == ConnectionState.waiting &&
+            data == null) {
           return AppShimmerCard.list(count: 5);
         }
-        if (snapshot.hasError || !snapshot.hasData) {
+        if (data == null) {
           return AppErrorCard(
             title: 'Unable to Load Leaderboard',
             message: '${snapshot.error ?? 'No data'}',
@@ -1329,7 +1393,6 @@ class _RanksTabState extends State<_RanksTab> with TickerProviderStateMixin {
           );
         }
 
-        final data = snapshot.data!;
         final entries = data.leaderboard;
         final myId = widget.user?.id;
         final myName = widget.user?.name ?? 'You';
@@ -1670,6 +1733,7 @@ class _HomeTab extends StatefulWidget {
   final DashboardService dashboardService;
   final LeaderboardService leaderboardService;
   final UserModel? user;
+  final bool isActive;
   final VoidCallback onNavigateToQuizzes;
   final VoidCallback onOpenProfile;
   final VoidCallback onOpenOfflinePapers;
@@ -1680,6 +1744,7 @@ class _HomeTab extends StatefulWidget {
     required this.dashboardService,
     required this.leaderboardService,
     this.user,
+    required this.isActive,
     required this.onNavigateToQuizzes,
     required this.onOpenProfile,
     required this.onOpenOfflinePapers,
@@ -1694,7 +1759,9 @@ class _HomeTab extends StatefulWidget {
 class _HomeTabState extends State<_HomeTab>
     with SingleTickerProviderStateMixin {
   late Future<DashboardData> _dashboardFuture;
+  DashboardData? _lastDashboard;
   late Future<LeaderboardData> _leaderboardFuture;
+  final ScrollController _scrollController = ScrollController();
 
   /// Gentle loop: logo glow, flickering flame, shimmer on the name.
   late final AnimationController _ambient;
@@ -1711,8 +1778,21 @@ class _HomeTabState extends State<_HomeTab>
   }
 
   @override
+  void didUpdateWidget(covariant _HomeTab oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.isActive && !widget.isActive) {
+      if (_scrollController.hasClients) _scrollController.jumpTo(0);
+    } else if (!oldWidget.isActive && widget.isActive) {
+      // Keep the rendered dashboard visible while refreshing its values.
+      _dashboardFuture = widget.dashboardService.getDashboard();
+      _leaderboardFuture = widget.leaderboardService.getLeaderboard();
+    }
+  }
+
+  @override
   void dispose() {
     _ambient.dispose();
+    _scrollController.dispose();
     super.dispose();
   }
 
@@ -1745,10 +1825,13 @@ class _HomeTabState extends State<_HomeTab>
     return FutureBuilder<DashboardData>(
       future: _dashboardFuture,
       builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
+        if (snapshot.hasData) _lastDashboard = snapshot.data;
+        final data = snapshot.data ?? _lastDashboard;
+        if (snapshot.connectionState == ConnectionState.waiting &&
+            data == null) {
           return AppShimmerCard.dashboard();
         }
-        if (snapshot.hasError) {
+        if (data == null) {
           return AppErrorCard(
             title: 'Unable to Load Dashboard',
             message: '${snapshot.error}',
@@ -1756,11 +1839,11 @@ class _HomeTabState extends State<_HomeTab>
           );
         }
 
-        final data = snapshot.data!;
         return RefreshIndicator(
           onRefresh: _refresh,
           color: const Color(0xFF16A34A),
           child: ListView(
+            controller: _scrollController,
             padding: const EdgeInsets.all(16),
             children: [
               // Brand header (same as the website's phone top bar)
@@ -2291,10 +2374,11 @@ class _HomeQuickActions extends StatelessWidget {
           Expanded(
             child: _QuickActionTile(
               icon: Icons.download_for_offline_rounded,
-              label: 'Offline papers',
+              label: 'Downloads',
               tint: const Color(0xFFDBEAFE),
               color: const Color(0xFF2563EB),
               onTap: onOfflinePapers,
+              pro: true,
             ),
           ),
           const SizedBox(width: 10),
@@ -2318,6 +2402,7 @@ class _HomeQuickActions extends StatelessWidget {
         color: const Color(0xFF16A34A),
         onTap: onUploadPaper,
         wide: true,
+        pro: true,
       ),
     ],
   );
@@ -2331,6 +2416,7 @@ class _QuickActionTile extends StatelessWidget {
   final Color color;
   final VoidCallback onTap;
   final bool wide;
+  final bool pro;
 
   const _QuickActionTile({
     required this.icon,
@@ -2340,6 +2426,7 @@ class _QuickActionTile extends StatelessWidget {
     required this.color,
     required this.onTap,
     this.wide = false,
+    this.pro = false,
   });
 
   @override
@@ -2351,37 +2438,99 @@ class _QuickActionTile extends StatelessWidget {
       borderRadius: BorderRadius.circular(17),
       child: Container(
         constraints: BoxConstraints(minHeight: wide ? 66 : 60),
-        padding: const EdgeInsets.symmetric(horizontal: 13, vertical: 12),
+        padding: EdgeInsets.symmetric(
+          horizontal: wide ? 13 : 10,
+          vertical: wide ? 12 : 10,
+        ),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(17),
           border: Border.all(color: const Color(0xFFE2E8F0)),
         ),
         child: Row(
           children: [
-            Container(
+            SizedBox(
               width: 38,
               height: 38,
-              decoration: BoxDecoration(
-                color: tint,
-                borderRadius: BorderRadius.circular(12),
+              child: Stack(
+                clipBehavior: Clip.none,
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      color: tint,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Center(child: Icon(icon, color: color, size: 20)),
+                  ),
+                  if (pro && !wide)
+                    Positioned(
+                      right: -5,
+                      bottom: -4,
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 4,
+                          vertical: 1,
+                        ),
+                        decoration: BoxDecoration(
+                          color: const Color(0xFFFFF1CC),
+                          borderRadius: BorderRadius.circular(5),
+                          border: Border.all(color: Colors.white, width: 1.5),
+                        ),
+                        child: const Text(
+                          'PRO',
+                          style: TextStyle(
+                            color: Color(0xFF9A5B00),
+                            fontSize: 7,
+                            fontWeight: FontWeight.w900,
+                          ),
+                        ),
+                      ),
+                    ),
+                ],
               ),
-              child: Icon(icon, color: color, size: 20),
             ),
-            const SizedBox(width: 10),
+            SizedBox(width: wide ? 10 : 8),
             Expanded(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    label,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(
-                      fontSize: 13,
-                      fontWeight: FontWeight.w800,
-                      color: Color(0xFF0F172A),
-                    ),
+                  Row(
+                    children: [
+                      Flexible(
+                        child: Text(
+                          label,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            fontSize: wide ? 13 : 12,
+                            fontWeight: FontWeight.w800,
+                            color: Color(0xFF0F172A),
+                          ),
+                        ),
+                      ),
+                      if (pro && wide) ...[
+                        const SizedBox(width: 5),
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 5,
+                            vertical: 2,
+                          ),
+                          decoration: BoxDecoration(
+                            color: const Color(0xFFFFF1CC),
+                            borderRadius: BorderRadius.circular(6),
+                          ),
+                          child: const Text(
+                            'PRO',
+                            style: TextStyle(
+                              color: Color(0xFF9A5B00),
+                              fontSize: 8,
+                              fontWeight: FontWeight.w900,
+                              letterSpacing: 0.3,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ],
                   ),
                   if (subtitle != null) ...[
                     const SizedBox(height: 2),
@@ -2398,8 +2547,12 @@ class _QuickActionTile extends StatelessWidget {
                 ],
               ),
             ),
-            const SizedBox(width: 6),
-            Icon(Icons.chevron_right_rounded, color: color, size: 20),
+            SizedBox(width: wide ? 6 : 3),
+            Icon(
+              Icons.chevron_right_rounded,
+              color: color,
+              size: wide ? 20 : 18,
+            ),
           ],
         ),
       ),
@@ -3458,7 +3611,11 @@ class _MyPapersTabState extends State<_MyPapersTab> {
   @override
   void didUpdateWidget(covariant _MyPapersTab oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (widget.isActive && !oldWidget.isActive) _load(quiet: true);
+    if (oldWidget.isActive && !widget.isActive) {
+      if (_scrollController.hasClients) _scrollController.jumpTo(0);
+    } else if (widget.isActive && !oldWidget.isActive) {
+      _load(quiet: true);
+    }
   }
 
   Future<void> _load({bool quiet = false}) async {
@@ -4748,6 +4905,7 @@ class _MoreTab extends StatefulWidget {
   final AuthState authState;
   final LeaderboardService leaderboardService;
   final DiscussionService discussionService;
+  final bool isActive;
   final VoidCallback onNavigateToMyPapers;
   final VoidCallback onNavigateToPractice;
   final VoidCallback onNavigateToRanks;
@@ -4757,6 +4915,7 @@ class _MoreTab extends StatefulWidget {
     required this.authState,
     required this.leaderboardService,
     required this.discussionService,
+    required this.isActive,
     required this.onNavigateToMyPapers,
     required this.onNavigateToPractice,
     required this.onNavigateToRanks,
@@ -4767,6 +4926,24 @@ class _MoreTab extends StatefulWidget {
 }
 
 class _MoreTabState extends State<_MoreTab> {
+  final ScrollController _scrollController = ScrollController();
+
+  @override
+  void didUpdateWidget(covariant _MoreTab oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.isActive &&
+        !widget.isActive &&
+        _scrollController.hasClients) {
+      _scrollController.jumpTo(0);
+    }
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
   Widget _membershipCard() {
     return ProMembershipCard(apiClient: widget.discussionService.client);
   }
@@ -5557,6 +5734,7 @@ class _MoreTabState extends State<_MoreTab> {
       onRefresh: _refresh,
       color: const Color(0xFF16A34A),
       child: ListView(
+        controller: _scrollController,
         padding: const EdgeInsets.all(16),
         children: [
           // Profile Summary (tap to edit name and avatar)
