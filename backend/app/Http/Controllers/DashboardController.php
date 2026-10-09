@@ -7,6 +7,7 @@ use App\Models\Course;
 use App\Models\IDESubmission;
 use App\Models\Quiz;
 use App\Models\User;
+use App\Support\StudentAppMode;
 use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -17,7 +18,7 @@ class DashboardController extends Controller
     public function index(Request $request): JsonResponse
     {
         $user = $request->user();
-        abort_if($user->isAdmin(), 403, 'Student dashboards are not available to teacher accounts.');
+        abort_if($user->isAdmin() && ! StudentAppMode::enabled($request), 403, 'Student dashboards are not available to teacher accounts.');
         $now  = now();
 
         return response()->json([

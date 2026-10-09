@@ -11,11 +11,13 @@ const _ink = Color(0xFF0F172A);
 class OfflinePapersScreen extends StatefulWidget {
   final UserModel user;
   final ApiClient apiClient;
+  final VoidCallback onBrowsePractice;
 
   const OfflinePapersScreen({
     super.key,
     required this.user,
     required this.apiClient,
+    required this.onBrowsePractice,
   });
 
   @override
@@ -88,7 +90,22 @@ class _OfflinePapersScreenState extends State<OfflinePapersScreen> {
               title: 'No offline papers yet',
               message:
                   'Open Practice while online, then tap the download icon beside a paper. It will appear here for offline practice.',
-              action: const SizedBox.shrink(),
+              action: FilledButton.icon(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                  widget.onBrowsePractice();
+                },
+                icon: const Icon(Icons.bolt_rounded),
+                label: const Text('Go to Practice'),
+                style: FilledButton.styleFrom(
+                  backgroundColor: _green,
+                  foregroundColor: Colors.white,
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 22,
+                    vertical: 14,
+                  ),
+                ),
+              ),
             );
           }
 

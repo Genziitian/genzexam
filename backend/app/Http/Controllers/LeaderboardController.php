@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Services\XpService;
+use App\Support\StudentAppMode;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -11,7 +12,7 @@ class LeaderboardController extends Controller
 {
     public function index(Request $request): JsonResponse
     {
-        abort_if($request->user()->isAdmin(), 403, 'Leaderboards are not available in teacher content management.');
+        abort_if($request->user()->isAdmin() && ! StudentAppMode::enabled($request), 403, 'Leaderboards are not available in teacher content management.');
         $viewer = $request->user();
 
         $rows = User::query()

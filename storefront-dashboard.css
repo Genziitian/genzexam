@@ -265,7 +265,8 @@ header.lg\:hidden [data-ql-lvl]{display:none!important}
 }
 /* My Papers: one headline with Browse practice beside it; View details next to the main action. */
 .ql-mp-head{display:block}
-.ql-mp-title{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.ql-mp-title{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.ql-mp-title-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .ql-mp-title h1{min-width:0}
 .ql-mp-browse{flex-shrink:0;white-space:nowrap}
 .ql-mp-actions{display:flex;gap:8px;width:100%;margin-top:14px}
@@ -325,6 +326,7 @@ div.space-y-6:has(>div>form.space-y-6>.h-px)>.grid.gap-4 .text-3xl{font-size:24p
 @media(max-width:560px){[data-ql-course-tabrow]~.grid.grid-cols-2{grid-template-columns:minmax(0,1fr)}}
 /* My Papers on phones: the intro line stays on one row. */
 @media(max-width:600px){.ql-mp-head p{margin-top:8px;font-size:clamp(11.5px,3.4vw,13.5px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.ql-mp-head{margin-bottom:16px}}
+@media(max-width:560px){.ql-mp-title-actions{width:100%}.ql-mp-title-actions>*{flex:1;text-align:center;justify-content:center}}
 /* ---- My Papers cards: tinted card, detail chips, score row with the tag, score bar ---- */
 .ql-mp-card{position:relative;overflow:hidden;padding:16px 16px 14px;border-radius:18px;border-color:rgba(22,163,74,.2);box-shadow:0 1px 2px rgba(15,23,42,.05),0 12px 24px -18px rgba(22,101,52,.45)}
 .ql-mp-card::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;background:linear-gradient(90deg,#16a34a,#86efac 60%,transparent)}
@@ -483,4 +485,3 @@ main[data-ql-paper-filter=todo] a[data-ql-paper=done],main[data-ql-paper-filter=
 @keyframes ql-row-in{0%{opacity:0;transform:translateY(14px)}100%{opacity:1;transform:none}}
 }
 @media(max-width:640px) and (prefers-reduced-motion:reduce){[data-ql-podium]>[data-place],[data-ql-podium]>[data-place]>span.text-2xl,[data-ql-podium]>[data-place="1"]::after,[data-ql-lb] tbody tr{animation:none!important}.ql-lb-pin{transition:none}}
-

@@ -36,6 +36,7 @@ class ApiClient {
            headers: {
              'Accept': 'application/json',
              'Content-Type': 'application/json',
+             'X-QuizLab-Client': 'mobile',
            },
          ),
        ) {

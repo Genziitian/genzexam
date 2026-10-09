@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Attempt;
 use App\Models\Quiz;
 use App\Models\QuizEntitlement;
+use App\Support\StudentAppMode;
 use App\Models\QuizStorefrontOrder;
 use App\Models\User;
 use Illuminate\Http\Client\ConnectionException;
@@ -24,7 +25,7 @@ class StorefrontController extends Controller
             ->where('is_personal', false)
             ->where('is_active', true)
             ->where('approval_status', 'approved')
-            ->when($user?->isAdmin(), fn ($query) => $query->whereIn('course_id', $user->assignedCourses()->select('courses.id')))
+            ->when($user?->isAdmin() && ! StudentAppMode::enabled($request), fn ($query) => $query->whereIn('course_id', $user->assignedCourses()->select('courses.id')))
             ->whereHas('course', fn ($query) => $query->where('is_active', true))
             ->with(['course:id,name,slug,level,icon', 'week:id,week_number,title'])
             ->withCount('questions')
@@ -45,7 +46,7 @@ class StorefrontController extends Controller
     {
         $user = $request->user();
         // Managers and admins open every paper without buying, so they only ever see their attempts here.
-        $staff = ! $user->isStudent();
+        $staff = ! StudentAppMode::isStudent($request);
 
         $entitlements = QuizEntitlement::query()
             ->where('user_id', $user->id)
@@ -59,7 +60,7 @@ class StorefrontController extends Controller
             ->get(['id', 'quiz_id', 'started_at', 'submitted_at', 'score', 'total_marks', 'is_complete'])
             ->groupBy('quiz_id');
 
-        $personalIds = $user->isStudent()
+        $personalIds = StudentAppMode::isStudent($request)
             ? Quiz::withoutGlobalScope('exclude_personal_uploads')->where('is_personal', true)->where('owner_user_id', $user->id)->pluck('id')
             : collect();
 
@@ -138,7 +139,7 @@ class StorefrontController extends Controller
     public function claimFree(Request $request, int $quizId): JsonResponse
     {
         $user = $request->user();
-        abort_if(! $user->isStudent(), 403, 'Student paper library only.');
+        abort_if(! StudentAppMode::isStudent($request), 403, 'Student paper library only.');
 
         DB::transaction(function () use ($user, $quizId) {
             // Serialize all grants for a student, including the first entitlement.
@@ -166,7 +167,7 @@ class StorefrontController extends Controller
     public function createOrder(Request $request, int $quizId): JsonResponse
     {
         $user = $request->user();
-        abort_if(! $user->isStudent(), 403, 'Student checkout only.');
+        abort_if(! StudentAppMode::isStudent($request), 403, 'Student checkout only.');
         $this->requireRazorpayKeys();
 
         try {
@@ -234,7 +235,7 @@ class StorefrontController extends Controller
     public function verifyPayment(Request $request): JsonResponse
     {
         $user = $request->user();
-        abort_if(! $user->isStudent(), 403, 'Student checkout only.');
+        abort_if(! StudentAppMode::isStudent($request), 403, 'Student checkout only.');
         $this->requireRazorpayKeys();
 
         $validated = $request->validate([

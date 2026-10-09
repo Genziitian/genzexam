@@ -7,6 +7,7 @@ use App\Models\Course;
 use App\Models\Quiz;
 use App\Services\DeepSeekQuizGenerator;
 use App\Services\QuestionImporter;
+use App\Support\StudentAppMode;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -18,7 +19,7 @@ class StudentUploadedPaperController extends Controller
 {
     public function index(Request $request): JsonResponse
     {
-        abort_if(! $request->user()->isStudent(), 403, 'Student uploads only.');
+        abort_if(! StudentAppMode::isStudent($request), 403, 'Student uploads only.');
 
         $papers = Quiz::withoutGlobalScope('exclude_personal_uploads')->where('is_personal', true)
             ->where('owner_user_id', $request->user()->id)
@@ -35,7 +36,7 @@ class StudentUploadedPaperController extends Controller
 
     public function store(Request $request, DeepSeekQuizGenerator $generator, QuestionImporter $importer): JsonResponse
     {
-        abort_if(! $request->user()->isStudent(), 403, 'Student uploads only.');
+        abort_if(! StudentAppMode::isStudent($request), 403, 'Student uploads only.');
         @set_time_limit(0);
         @ini_set('max_execution_time', '0');
 

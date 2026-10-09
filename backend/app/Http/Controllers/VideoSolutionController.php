@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\VideoSolution;
+use App\Support\StudentAppMode;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -20,7 +21,7 @@ class VideoSolutionController extends Controller
 
         $videos = VideoSolution::query()
             ->where('is_published', true)
-            ->when($user->isAdmin(), fn ($query) => $query->whereIn('course_id', $user->assignedCourses()->select('courses.id')))
+            ->when($user->isAdmin() && ! StudentAppMode::enabled($request), fn ($query) => $query->whereIn('course_id', $user->assignedCourses()->select('courses.id')))
             ->with('course:id,name,slug')
             ->orderBy('sort_order')
             ->orderBy('id')
@@ -56,7 +57,7 @@ class VideoSolutionController extends Controller
     {
         $video = VideoSolution::query()->where('is_published', true)->findOrFail($id);
 
-        if ($request->user()->isAdmin() && ! $request->user()->assignedCourses()->whereKey($video->course_id)->exists()) {
+        if ($request->user()->isAdmin() && ! StudentAppMode::enabled($request) && ! $request->user()->assignedCourses()->whereKey($video->course_id)->exists()) {
             return response()->json(['error' => 'This course is not assigned to you.'], 403);
         }
 

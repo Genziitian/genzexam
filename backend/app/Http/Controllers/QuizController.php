@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Attempt;
 use App\Models\Quiz;
+use App\Support\StudentAppMode;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Exceptions\HttpResponseException;
@@ -32,11 +33,11 @@ class QuizController extends Controller
             ])
             ->findOrFail($id);
 
-        if ($request->user()->isAdmin() && ! $request->user()->assignedCourses()->whereKey($quiz->course_id)->exists()) {
+        if ($request->user()->isAdmin() && ! StudentAppMode::enabled($request) && ! $request->user()->assignedCourses()->whereKey($quiz->course_id)->exists()) {
             throw new HttpResponseException(response()->json(['error' => 'This course is not assigned to you.'], 403));
         }
 
-        if ($request->user()->isStudent() && (int) $quiz->price_paise > 0) {
+        if (StudentAppMode::isStudent($request) && (int) $quiz->price_paise > 0) {
             $hasAccess = \App\Models\QuizEntitlement::query()
                 ->where('user_id', $request->user()->id)
                 ->where('quiz_id', $quiz->id)
@@ -88,7 +89,7 @@ class QuizController extends Controller
     public function leaderboard(Request $request, int $id): JsonResponse
     {
         $user = $request->user();
-        abort_if($user->isAdmin(), 403, 'Leaderboards are not available in teacher content management.');
+        abort_if($user->isAdmin() && ! StudentAppMode::enabled($request), 403, 'Leaderboards are not available in teacher content management.');
         Quiz::query()->findOrFail($id);
 
         $attempts = Attempt::query()

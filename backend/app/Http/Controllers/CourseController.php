@@ -6,6 +6,7 @@ use App\Models\Attempt;
 use App\Models\Course;
 use App\Models\Quiz;
 use App\Models\Week;
+use App\Support\StudentAppMode;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -270,7 +271,7 @@ class CourseController extends Controller
     private function courseQuery(Request $request)
     {
         $query = Course::query();
-        if ($request->user()->isAdmin()) {
+        if ($request->user()->isAdmin() && ! StudentAppMode::enabled($request)) {
             $query->whereIn('id', $request->user()->assignedCourses()->select('courses.id'));
         }
         return $query;

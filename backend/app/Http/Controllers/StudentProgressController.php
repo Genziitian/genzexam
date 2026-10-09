@@ -6,6 +6,7 @@ use App\Models\Attempt;
 use App\Models\Course;
 use App\Models\IDESubmission;
 use App\Services\XpService;
+use App\Support\StudentAppMode;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -15,7 +16,7 @@ class StudentProgressController extends Controller
     public function index(Request $request): JsonResponse
     {
         $user = $request->user();
-        abort_if($user->isAdmin(), 403, 'Student progress is not available to teacher accounts.');
+        abort_if($user->isAdmin() && ! StudentAppMode::enabled($request), 403, 'Student progress is not available to teacher accounts.');
 
         $completedAttempts = Attempt::query()
             ->where('user_id', $user->id)

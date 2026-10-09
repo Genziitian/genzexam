@@ -7,6 +7,7 @@ use App\Models\AttemptAnswer;
 use App\Models\Quiz;
 use App\Services\AutoScoreService;
 use App\Services\XpService;
+use App\Support\StudentAppMode;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -29,7 +30,7 @@ class AttemptController extends Controller
             })
             ->findOrFail($id);
 
-        if ($request->user()->isAdmin() && ! $request->user()->assignedCourses()->whereKey($quiz->course_id)->exists()) {
+        if ($request->user()->isAdmin() && ! StudentAppMode::enabled($request) && ! $request->user()->assignedCourses()->whereKey($quiz->course_id)->exists()) {
             abort(403, 'This course is not assigned to you.');
         }
 
@@ -37,7 +38,7 @@ class AttemptController extends Controller
             abort(403, 'Quiz not available');
         }
 
-        if ($request->user()->isStudent() && (int) $quiz->price_paise > 0) {
+        if (StudentAppMode::isStudent($request) && (int) $quiz->price_paise > 0) {
             $hasAccess = \App\Models\QuizEntitlement::query()
                 ->where('user_id', $request->user()->id)
                 ->where('quiz_id', $quiz->id)
@@ -168,7 +169,7 @@ class AttemptController extends Controller
 
     private function requirePaperAccess(Request $request, Quiz $quiz): void
     {
-        if (! $request->user()->isStudent()) {
+        if (! StudentAppMode::isStudent($request)) {
             return;
         }
         abort_unless($quiz->is_active && $quiz->approval_status === 'approved' && $quiz->course?->is_active, 403, 'Paper is unavailable.');

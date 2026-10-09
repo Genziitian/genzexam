@@ -205,8 +205,11 @@ class _StudentMainShellState extends State<StudentMainShell> {
     if (user == null) return;
     Navigator.of(context).push<void>(
       MaterialPageRoute<void>(
-        builder: (_) =>
-            OfflinePapersScreen(user: user, apiClient: _courseService.client),
+        builder: (_) => OfflinePapersScreen(
+          user: user,
+          apiClient: _courseService.client,
+          onBrowsePractice: () => setState(() => _currentIndex = 2),
+        ),
       ),
     );
   }

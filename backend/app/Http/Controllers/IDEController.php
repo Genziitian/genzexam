@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Course;
 use App\Models\IDEProblem;
 use App\Models\IDESubmission;
+use App\Support\StudentAppMode;
 use App\Services\CodeExecutionService;
 use App\Services\XpService;
 use Illuminate\Http\JsonResponse;
@@ -21,7 +22,7 @@ class IDEController extends Controller
     public function bySlug(Request $request, string $slug): JsonResponse
     {
         $courseQuery = Course::query();
-        if ($request->user()->isAdmin()) {
+        if ($request->user()->isAdmin() && ! StudentAppMode::enabled($request)) {
             $courseQuery->whereIn('id', $request->user()->assignedCourses()->select('courses.id'));
         }
         $course = $courseQuery
@@ -271,7 +272,7 @@ class IDEController extends Controller
     private function assertAssignedCourse(Request $request, int $courseId): void
     {
         abort_unless(
-            $request->user()->isManager() || ! $request->user()->isAdmin() || $request->user()->assignedCourses()->whereKey($courseId)->exists(),
+            StudentAppMode::enabled($request) || $request->user()->isManager() || ! $request->user()->isAdmin() || $request->user()->assignedCourses()->whereKey($courseId)->exists(),
             403,
             'This course is not assigned to you.'
         );
