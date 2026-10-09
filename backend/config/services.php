@@ -45,6 +45,13 @@ return [
         'key' => env('DEEPSEEK_API_KEY'),
         'endpoint' => env('DEEPSEEK_API_URL', 'https://api.deepseek.com/chat/completions'),
         'model' => env('DEEPSEEK_MODEL', 'deepseek-chat'),
+        'max_input_chars' => (int) env('DEEPSEEK_MAX_INPUT_CHARS', 60000),
+        'max_questions' => (int) env('DEEPSEEK_MAX_QUESTIONS', 100),
+    ],
+
+    'student_paper_uploads' => [
+        'max_pdf_pages' => (int) env('STUDENT_PAPER_MAX_PDF_PAGES', 30),
+        'daily_ai_conversions' => (int) env('STUDENT_PAPER_DAILY_AI_CONVERSIONS', 10),
     ],
 
     'razorpay' => [
