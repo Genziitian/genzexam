@@ -1,11 +1,11 @@
 name: genz_exam_mobile
 description: "Quiz Lab by GenZ IITian mobile app"
 publish_to: "none"
-version: 1.0.1+2
+version: 1.0.3+4
 
 environment:
-  sdk: ">=3.8.0 <4.0.0"
-  flutter: ">=3.35.0"
+  sdk: ">=3.13.0 <4.0.0"
+  flutter: ">=3.47.0"
 
 dependencies:
   flutter:
@@ -17,8 +17,8 @@ dependencies:
   google_sign_in: ^7.1.1
   webview_flutter: ^4.10.0
   file_picker: ^13.1.0
-  in_app_purchase: ^3.2.3
-  in_app_purchase_android: ^0.4.0
+  in_app_purchase: ^3.3.1
+  in_app_purchase_android: ^0.5.3
 
 dev_dependencies:
   flutter_test:

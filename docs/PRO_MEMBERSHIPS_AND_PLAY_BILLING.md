@@ -44,6 +44,47 @@ The Android app uses Flutter's `in_app_purchase` plugin. Google requires server 
 - Add the subscription and 7-day offer in Play Console, then confirm the app product query returns a price before enabling the purchase button.
 - Keep Razorpay checkout for the website and Play Billing for Android. Digital subscription purchases in a Play-distributed app should use Google Play Billing.
 
+### Android release requirements and build
+
+Use Flutter 3.47 or later (CI uses 3.47.6), Dart 3.13 or later, and Java 17 or later.
+The Android project enables AGP 9's built-in Kotlin. The Kotlin 2.4.0 declaration
+in `settings.gradle` selects the compiler without applying the legacy Android
+Kotlin plugin; removing it lets AGP choose a compiler below Flutter's minimum.
+
+`in_app_purchase` 3.3.1 and `in_app_purchase_android` 0.5.3 use Google Play Billing
+Library 8.0.0. The normal submission deadline for Billing Library 7 was August 31,
+2026. Every release AAB/APK build checks the resolved Billing dependency and fails
+if it is missing or below version 8. Do not override Android Billing separately
+from its Flutter plugin or manually change the billing version in the manifest.
+
+From the repository's `mobile` directory:
+
+```sh
+flutter pub get
+flutter analyze
+flutter build appbundle --release
+```
+
+The upload bundle is `build/app/outputs/bundle/release/app-release.aab`. Release
+signing must be configured in the ignored `android/key.properties` file. Increase
+the build number after `+` in `pubspec.yaml` for each new Play upload; this release
+is `1.0.3+4` because version code 3 was already uploaded.
+
+The October 9 dependency update also upgrades `file_picker_web` to 4.1.0. Remaining
+outdated notices are constrained upstream: Flutter pins `material_color_utilities`
+and `flutter_test` pins `test_api`; `file_picker` requires `cross_file` 0.3.x;
+`vector_graphics_compiler` caps `xml` at 7.0.1. Keep the committed lockfile and do
+not force incompatible versions with `dependency_overrides`.
+
+A successful release build verifies compilation and the Billing Library version.
+It does not verify a real subscription transaction. Install the new build through
+the Play testing track and complete the license-tester purchase/restore checks
+above before production rollout.
+
+References: [Google Play Billing deadlines](https://developer.android.com/google/play/billing/deprecation-faq),
+[Flutter Android billing changelog](https://pub.dev/packages/in_app_purchase_android/changelog),
+and [Flutter built-in Kotlin migration](https://docs.flutter.dev/release/breaking-changes/migrate-to-built-in-kotlin/for-app-developers).
+
 ## Web / Razorpay setup
 
 1. Enable Razorpay Subscriptions for the merchant account and set test keys on the backend first:

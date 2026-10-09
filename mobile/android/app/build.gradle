@@ -72,8 +72,28 @@ tasks.register("validateReleaseSigning") {
     }
 }
 
+// Check the resolved Android dependency, not just the Dart plugin version.
+// Google Play's regular submission deadline for Billing 7 was August 31, 2026.
+tasks.register("validateReleaseBilling") {
+    doLast {
+        def billing = configurations.releaseRuntimeClasspath.incoming.resolutionResult
+                .allComponents.find {
+                    it.moduleVersion?.group == "com.android.billingclient" &&
+                            it.moduleVersion?.name == "billing"
+                }?.moduleVersion
+        if (billing == null || billing.version.tokenize('.')[0].toInteger() < 8) {
+            throw new GradleException(
+                    "Google Play releases require Billing Library 8 or newer. Resolved: ${billing}. " +
+                    "Update in_app_purchase and in_app_purchase_android, then run flutter pub get."
+            )
+        }
+        logger.lifecycle("Verified release Google Play Billing Library ${billing.version}")
+    }
+}
+
 tasks.matching { it.name == "bundleRelease" || it.name == "assembleRelease" }.configureEach {
     dependsOn("validateReleaseSigning")
+    dependsOn("validateReleaseBilling")
 }
 
 kotlin {
