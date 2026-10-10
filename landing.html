@@ -4,39 +4,39 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Quiz LAB by GenZ IITian — Every past paper, practised the way the exam feels.</title>
-<meta name="description" content="Browse free and paid Quiz 1, Quiz 2, End Term, and mock-test papers. Practise IITM BS papers on a real timer or with instant solutions." />
-<meta name="theme-color" content="#1f3d22" />
-<script src="/storefront-runtime.js?v=20261008e"></script>
+<meta name="description" content="Practise IITM BS past papers — Quiz 1, Quiz 2, End Term and mock tests — on a real timer, with worked solutions the moment you submit." />
+<meta name="theme-color" content="#33558b" />
+<script src="/storefront-runtime.js?v=20261010a"></script>
 <link rel="icon" type="image/x-icon" href="/favicon.ico" />
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 <link rel="manifest" href="/site.webmanifest" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#f6f5f0; --surface:#fff; --surface-2:#fbfaf6;
-    --ink:#191b17; --muted:#5d6158;
-    --deep:#1f3d22; --deep-ink:#f3f6ee;
-    --green:#2f6b36; --soft:#a8d18c; --tint:#e6f0dd;
-    --border:#e5e3d9; --shadow:0 1px 2px rgba(25,27,23,.04),0 8px 24px rgba(25,27,23,.05);
+    --bg:#f1f5f9; --surface:#fff; --surface-2:#f8fafc;
+    --ink:#0f172a; --muted:#64748b;
+    --deep:#33558b; --deep-ink:#ffffff;
+    --green:#33558b; --soft:#9fb6d8; --tint:#eef3fa;
+    --border:#e2e8f0; --shadow:0 1px 2px rgba(15,23,42,.04),0 8px 24px rgba(15,23,42,.05);
     --radius:16px;
   }
   :root[data-theme="dark"]{
-    --bg:#111310; --surface:#1a1d18; --surface-2:#1f231d;
-    --ink:#f1f2ea; --muted:#a4a99b;
-    --deep:#18301b; --deep-ink:#eef4e7;
-    --green:#8fc97a; --soft:#a8d18c; --tint:#1e2a1b;
-    --border:#2b2f27; --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.35);
+    --bg:#121a27; --surface:#151d2b; --surface-2:#161f2e;
+    --ink:#e8eef7; --muted:#8a99ae;
+    --deep:#1e3355; --deep-ink:#c5d7ef;
+    --green:#6d93cf; --soft:#9fb6d8; --tint:#1d2c45;
+    --border:#2a3648; --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.35);
   }
   @media (prefers-color-scheme:dark){
     :root:not([data-theme="light"]){
-      --bg:#111310; --surface:#1a1d18; --surface-2:#1f231d;
-      --ink:#f1f2ea; --muted:#a4a99b;
-      --deep:#18301b; --deep-ink:#eef4e7;
-      --green:#8fc97a; --soft:#a8d18c; --tint:#1e2a1b;
-      --border:#2b2f27; --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.35);
+      --bg:#121a27; --surface:#151d2b; --surface-2:#161f2e;
+      --ink:#e8eef7; --muted:#8a99ae;
+      --deep:#1e3355; --deep-ink:#c5d7ef;
+      --green:#6d93cf; --soft:#9fb6d8; --tint:#1d2c45;
+      --border:#2a3648; --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.35);
     }
   }
   *{box-sizing:border-box;margin:0;padding:0}
@@ -48,8 +48,8 @@
     overflow-x:hidden;
   }
   .wrap{width:100%;max-width:1060px;margin:0 auto;padding:0 20px}
-  .serif{font-family:Lora,Georgia,serif;font-weight:600;letter-spacing:-.015em;line-height:1.08}
-  .serif em{font-style:italic;color:var(--green)}
+  .serif{font-family:Inter,system-ui,sans-serif;font-weight:800;letter-spacing:-.03em;line-height:1.06}
+  .serif em{font-style:normal;color:var(--green)}
   a{color:inherit;text-decoration:none}
 
   /* ---------- header ---------- */
@@ -62,7 +62,7 @@
   .brand-text strong{font-size:16px;font-weight:700;letter-spacing:-.012em}
   .brand-text small{font-size:10.5px;font-weight:500;color:var(--muted);letter-spacing:.015em}
   .mark{width:34px;height:34px;border-radius:10px;background:var(--deep);color:var(--soft);
-    display:grid;place-items:center;font-family:Lora,serif;font-style:italic;font-size:19px;font-weight:600;flex-shrink:0}
+    display:grid;place-items:center;font-family:Inter,system-ui,sans-serif;font-size:19px;font-weight:800;flex-shrink:0}
   img.mark{display:block;background:none;object-fit:cover;flex-shrink:0}
   .links{display:flex;gap:26px;margin-left:26px;font-size:14px;color:var(--muted);font-weight:500}
   .links a:hover{color:var(--ink)}
@@ -78,7 +78,7 @@
   .profile-chip[hidden],.btn[hidden]{display:none}
   .profile-dropdown{position:absolute;right:0;top:calc(100% + 9px);z-index:70;min-width:160px;padding:6px;border:1px solid var(--border);border-radius:13px;background:var(--surface);box-shadow:0 14px 36px rgba(15,23,42,.16)}
   .profile-dropdown[hidden]{display:none!important}
-  .profile-dropdown button{width:100%;padding:10px 12px;border:0;border-radius:9px;background:transparent;color:#dc2626;text-align:left;font:inherit;font-size:13px;font-weight:700;cursor:pointer}
+  .profile-dropdown button{width:100%;padding:10px 12px;border:0;border-radius:9px;background:transparent;color:#b42318;text-align:left;font:inherit;font-size:13px;font-weight:700;cursor:pointer}
   .profile-dropdown button:hover{background:rgba(220,38,38,.08)}
   .profile-initial{width:28px;height:28px;border-radius:50%;background:var(--deep);color:var(--deep-ink);display:grid;place-items:center;font-size:12px;font-weight:700;flex-shrink:0}
   .profile-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
@@ -86,9 +86,9 @@
   .btn-ghost{border-color:var(--border);background:var(--surface);color:var(--ink)}
   .btn-ghost:hover{border-color:var(--muted)}
   .btn-dark{background:var(--deep);color:var(--deep-ink)}
-  .btn-dark:hover{background:#2a5230}
-  :root[data-theme="dark"] .btn-dark:hover{background:#214526}
-  .btn-soft{background:var(--soft);color:#1d3a20}
+  .btn-dark:hover{background:#29467a}
+  :root[data-theme="dark"] .btn-dark:hover{background:#29467a}
+  .btn-soft{background:var(--soft);color:#1e3355}
   .btn-soft:hover{filter:brightness(1.05)}
   .icon-btn{width:38px;height:38px;border-radius:10px;border:1px solid var(--border);background:var(--surface);
     color:var(--muted);display:grid;place-items:center;cursor:pointer;flex-shrink:0;transition:color .2s,border-color .2s}
@@ -106,13 +106,13 @@
   .stack{position:relative;height:330px;perspective:1200px}
   .sheet{position:absolute;top:50%;left:50%;width:min(290px,86%);margin:-152px 0 0 -145px;
     background:var(--surface);border:1px solid var(--border);border-radius:14px;
-    padding:22px 22px 18px;box-shadow:0 10px 34px rgba(25,27,23,.1);
+    padding:22px 22px 18px;box-shadow:0 10px 34px rgba(15,23,42,.1);
     transform-origin:50% 100%;animation:paperCycle 13s cubic-bezier(.65,.02,.32,1) infinite;will-change:transform,opacity}
   :root[data-theme="dark"] .sheet{box-shadow:0 10px 34px rgba(0,0,0,.42)}
   .s1{animation-delay:0s} .s2{animation-delay:-3.25s} .s3{animation-delay:-6.5s} .s4{animation-delay:-9.75s}
   .tag{display:inline-block;font-size:9.5px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;
     color:var(--green);background:var(--tint);padding:4px 9px;border-radius:5px;margin-bottom:14px}
-  .sheet-title{font-family:Lora,serif;font-size:21px;font-weight:600;letter-spacing:-.01em;line-height:1.2}
+  .sheet-title{font-family:Inter,system-ui,sans-serif;font-size:21px;font-weight:700;letter-spacing:-.01em;line-height:1.2}
   .sheet-sub{font-size:12px;color:var(--muted);margin:3px 0 18px}
   .rule{display:block;height:7px;border-radius:4px;background:var(--border);margin-bottom:9px}
   .w90{width:90%} .w85{width:85%} .w80{width:80%} .w75{width:75%} .w70{width:70%} .w65{width:65%} .w60{width:60%}
@@ -139,7 +139,7 @@
   .quiz-meta{font-size:13px;color:var(--soft);font-weight:500}
   .timer{background:rgba(255,255,255,.1);padding:6px 13px;border-radius:999px;font-size:13px;
     font-variant-numeric:tabular-nums;font-weight:600}
-  .q{font-family:Lora,serif;font-size:clamp(19px,2.6vw,25px);font-weight:500;margin-bottom:20px;line-height:1.35}
+  .q{font-family:Inter,system-ui,sans-serif;font-size:clamp(19px,2.6vw,25px);font-weight:600;margin-bottom:20px;line-height:1.35}
   .opt{display:flex;align-items:center;gap:14px;width:100%;text-align:left;
     background:rgba(255,255,255,.06);border:1.5px solid transparent;color:inherit;
     padding:13px 16px;border-radius:12px;margin-bottom:9px;cursor:pointer;
@@ -147,13 +147,13 @@
   .opt:hover{background:rgba(255,255,255,.1)}
   .opt .key{width:27px;height:27px;border-radius:7px;background:rgba(255,255,255,.12);
     display:grid;place-items:center;font-size:11.5px;font-weight:700;flex-shrink:0}
-  .opt.correct{background:var(--soft);color:#1d3a20;border-color:var(--soft)}
+  .opt.correct{background:var(--soft);color:#1e3355;border-color:var(--soft)}
   .opt.correct .key{background:rgba(0,0,0,.14)}
   .opt.wrong{background:rgba(220,110,100,.16);border-color:rgba(230,130,120,.5)}
   .palette{display:flex;flex-wrap:wrap;gap:9px;margin-top:20px}
   .pal{width:46px;height:44px;border-radius:10px;background:rgba(255,255,255,.07);
     display:grid;place-items:center;font-size:13px;font-weight:600;color:rgba(255,255,255,.65)}
-  .pal.done{background:var(--soft);color:#1d3a20}
+  .pal.done{background:var(--soft);color:#1e3355}
   .pal.now{background:#e0a33c;color:#3a2606}
   .hint{margin-top:16px;font-size:12.5px;color:var(--soft);opacity:0;transition:opacity .3s}
   .hint.show{opacity:.9}
@@ -164,39 +164,91 @@
   .grid{display:grid;gap:14px;grid-template-columns:repeat(4,1fr)}
   .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
     padding:21px 19px;box-shadow:var(--shadow);transition:transform .18s ease,box-shadow .18s ease}
-  .card:hover{transform:translateY(-3px);box-shadow:0 2px 4px rgba(25,27,23,.05),0 14px 34px rgba(25,27,23,.09)}
+  .card:hover{transform:translateY(-3px);box-shadow:0 2px 4px rgba(15,23,42,.05),0 14px 34px rgba(15,23,42,.09)}
   .kicker{font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
-  .card h3{font-family:Lora,serif;font-size:20px;font-weight:600;line-height:1.22;margin-bottom:10px;letter-spacing:-.012em}
+  .card h3{font-family:Inter,system-ui,sans-serif;font-size:20px;font-weight:700;line-height:1.22;margin-bottom:10px;letter-spacing:-.012em}
   .card p{font-size:13.5px;color:var(--muted);line-height:1.55}
   .modes{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
   .mode{border-radius:var(--radius);padding:clamp(24px,3vw,32px);border:1px solid var(--border)}
   .mode.white{background:var(--surface);box-shadow:var(--shadow)}
   .mode.green{background:var(--tint);border-color:transparent}
-  .mode h3{font-family:Lora,serif;font-size:clamp(23px,3vw,30px);font-weight:600;line-height:1.18;margin-bottom:14px;letter-spacing:-.015em}
+  .mode h3{font-family:Inter,system-ui,sans-serif;font-size:clamp(23px,3vw,30px);font-weight:700;line-height:1.18;margin-bottom:14px;letter-spacing:-.015em}
   .mode .kicker{color:var(--green)}
   .mode p{color:var(--muted);font-size:15px}
+
+  /* ---------- how it works ---------- */
+  .steps{display:grid;gap:14px;grid-template-columns:repeat(4,1fr);counter-reset:step}
+  .step{position:relative;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:24px 20px 20px;box-shadow:var(--shadow)}
+  .step::before{counter-increment:step;content:counter(step);display:grid;place-items:center;width:30px;height:30px;margin-bottom:14px;
+    border-radius:9px;background:var(--tint);color:var(--green);font-size:13px;font-weight:800}
+  .step h3{font-size:16px;font-weight:700;letter-spacing:-.01em;margin-bottom:8px}
+  .step p{font-size:13.5px;color:var(--muted);line-height:1.55}
+
+  /* ---------- what's inside ---------- */
+  .inside{display:grid;gap:16px;grid-template-columns:1.05fr .95fr;align-items:start}
+  .spec{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+  .spec h3{padding:19px 22px 0;font-size:17px;font-weight:700;letter-spacing:-.012em}
+  .spec dl{margin:14px 0 0;padding:0 22px 6px}
+  .spec-row{display:flex;justify-content:space-between;gap:18px;padding:12px 0;border-top:1px solid var(--border);font-size:13.5px}
+  .spec-row:first-of-type{border-top:0}
+  .spec-row dt{color:var(--muted)}
+  .spec-row dd{margin:0;font-weight:600;text-align:right}
+  .feature-list{display:grid;gap:10px;margin:0;padding:0;list-style:none}
+  .feature-list li{display:flex;gap:11px;align-items:flex-start;background:var(--surface);border:1px solid var(--border);
+    border-radius:12px;padding:14px 16px;font-size:13.5px;line-height:1.5}
+  .feature-list svg{flex:none;margin-top:1px;width:17px;height:17px;color:var(--green)}
+  .feature-list b{display:block;margin-bottom:2px;font-size:13.5px;font-weight:700}
+  .feature-list span{color:var(--muted)}
+
+  /* ---------- trust ---------- */
+  .trust{display:grid;gap:16px;grid-template-columns:repeat(3,1fr)}
+  .trust-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:24px 21px;box-shadow:var(--shadow)}
+  .trust-card h3{font-size:16px;font-weight:700;letter-spacing:-.01em;margin-bottom:9px}
+  .trust-card p{font-size:13.5px;color:var(--muted);line-height:1.6}
+  .trust-card a{color:var(--green);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+  .disclaimer{margin-top:16px;padding:16px 19px;background:#f3f6fb;border:1px solid #cfdbec;border-radius:12px;
+    font-size:12.5px;color:var(--muted);line-height:1.6}
+
+  /* ---------- faq ---------- */
+  .faq{display:grid;gap:10px;max-width:800px}
+  .faq details{background:var(--surface);border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow)}
+  .faq summary{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:17px 20px;
+    font-size:14.5px;font-weight:600;cursor:pointer;list-style:none}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{content:"";flex:none;width:9px;height:9px;border-right:2px solid var(--muted);
+    border-bottom:2px solid var(--muted);transform:rotate(45deg);transition:transform .18s ease}
+  .faq details[open] summary::after{transform:rotate(225deg)}
+  .faq details[open] summary{color:var(--green)}
+  .faq p{margin:0;padding:0 20px 18px;font-size:13.5px;color:var(--muted);line-height:1.65}
+
+  @media(max-width:900px){
+    .steps{grid-template-columns:repeat(2,1fr)}
+    .inside{grid-template-columns:1fr}
+    .trust{grid-template-columns:1fr}
+  }
+  @media(max-width:560px){.steps{grid-template-columns:1fr}}
 
   /* ---------- cta ---------- */
   .band{background:var(--deep);color:var(--deep-ink);border-radius:22px;padding:clamp(34px,5.5vw,62px)}
   .band h2{color:var(--deep-ink);margin-bottom:28px;max-width:20ch}
   .band h2 em{color:var(--soft)}
 
-  footer.site-footer{margin-top:clamp(48px,7vw,80px);padding:48px 0 20px;background:#102217;color:#c5d1c3;border-top:1px solid #263d2b}
+  footer.site-footer{margin-top:clamp(48px,7vw,80px);padding:48px 0 20px;background:#0f172a;color:#cbd5e1;border-top:1px solid #29467a}
   .site-footer-grid{display:grid;grid-template-columns:1.25fr 1fr 1fr 1.1fr;gap:30px}
-  .site-footer-brand{display:flex;align-items:center;gap:12px;color:#f7f8f4}
+  .site-footer-brand{display:flex;align-items:center;gap:12px;color:#f8fafc}
   .site-footer-brand img{width:52px;height:52px;object-fit:cover;border-radius:14px;box-shadow:0 5px 20px #0005}
   .site-footer-brand strong{display:block;font-size:17px;letter-spacing:-.02em}
-  .site-footer-brand small{display:block;color:#a9b9a7;font-size:12px}
-  .site-footer-quote{margin:16px 0 0;color:#d8e5cf;font:italic 16px/1.5 Lora,Georgia,serif}
+  .site-footer-brand small{display:block;color:#94a3b8;font-size:12px}
+  .site-footer-quote{margin:16px 0 0;color:#e3eaf5;font:italic 16px/1.5 Inter, system-ui, sans-serif}
   .site-footer-column{display:grid;align-content:start;justify-items:start;gap:9px;font-size:13px}
   .site-footer-column strong{margin-bottom:3px;color:#fff;font-size:14px}
-  .site-footer-column a{color:#c5d1c3;transition:color .15s}
-  .site-footer-column a:hover{color:#a8d18c}
-  .site-footer-column small{color:#9caf99;font-size:11px}
-  .site-footer-contact{padding:16px;border:1px solid #3c5740;border-radius:16px;background:#172e1d;box-shadow:0 12px 30px #0002}
-  .site-footer-contact a{display:flex;align-items:center;gap:8px;width:100%;padding:9px 10px;border:1px solid #38523b;border-radius:10px;background:#1c3824;color:#e5efe1;font-weight:600}
-  .site-footer-contact a:hover{border-color:#83b76d;background:#20432a}
-  .site-footer-bottom{grid-column:1/-1;display:grid;gap:10px;margin-top:4px;padding-top:18px;border-top:1px solid #304435;color:#9caf99;font-size:11px;line-height:1.6}
+  .site-footer-column a{color:#cbd5e1;transition:color .15s}
+  .site-footer-column a:hover{color:#9fb6d8}
+  .site-footer-column small{color:#94a3b8;font-size:11px}
+  .site-footer-contact{padding:16px;border:1px solid #3a5078;border-radius:16px;background:#1e3355;box-shadow:0 12px 30px #0002}
+  .site-footer-contact a{display:flex;align-items:center;gap:8px;width:100%;padding:9px 10px;border:1px solid #3a5078;border-radius:10px;background:#1e3355;color:#eef3fa;font-weight:600}
+  .site-footer-contact a:hover{border-color:#6d93cf;background:#29467a}
+  .site-footer-bottom{grid-column:1/-1;display:grid;gap:10px;margin-top:4px;padding-top:18px;border-top:1px solid #475569;color:#94a3b8;font-size:11px;line-height:1.6}
   @media(max-width:800px){.site-footer-grid{grid-template-columns:1fr 1fr}.site-footer-brand-wrap,.site-footer-bottom{grid-column:1/-1}}
   @media(max-width:520px){footer.site-footer{padding-top:34px}.site-footer-grid{grid-template-columns:1fr;gap:24px}.site-footer-brand-wrap,.site-footer-bottom{grid-column:auto}}
 
@@ -230,7 +282,9 @@
     </a>
     <nav class="links">
       <a href="/papers">Papers</a>
-      <a href="#modes">How it works</a>
+      <a href="#how">How it works</a>
+      <a href="#inside">What's inside</a>
+      <a href="#faq">FAQ</a>
       <a href="/leaderboard">Leaderboard</a>
     </nav>
     <div class="nav-end">
@@ -253,7 +307,7 @@
       <div>
         <p class="eyebrow">IITM BS · Data Science &amp; Electronics</p>
         <h1 class="serif">Every past paper, practised the way the <em>exam</em> feels.</h1>
-        <p class="lede">Past papers from Qualifier to Degree. Browse free and paid papers, then practise on a real timer or with instant solutions.</p>
+        <p class="lede">Past papers from Qualifier to Degree, sat in a room that behaves like the real exam: a server-held clock, a question palette, and worked solutions the moment you submit.</p>
         <div class="cta-row">
       <a class="btn btn-dark" id="hero-cta" href="/papers">Browse papers</a>
           <a class="btn btn-soft" href="/papers">Try a sample paper</a>
@@ -334,6 +388,108 @@
         <h3 class="serif">See the answer the moment you choose.</h3>
         <p>No clock. Pick an option and the correct answer and worked solution appear straight away. Bookmark anything you want to revisit before the exam.</p>
       </div>
+    </div>
+  </div></section>
+
+
+  <section id="how"><div class="wrap">
+    <h2 class="serif">From a blank evening to a <em>marked</em> paper.</h2>
+    <div class="steps">
+      <div class="step">
+        <h3>Find the paper</h3>
+        <p>Filter by programme, level and term, then open any Quiz 1, Quiz 2, End Term or mock test in the catalogue.</p>
+      </div>
+      <div class="step">
+        <h3>Add it to your library</h3>
+        <p>Papers you open stay in your library, so you can come back to a half-finished attempt on any device.</p>
+      </div>
+      <div class="step">
+        <h3>Sit it properly</h3>
+        <p>The paper room gives you a clock, a question palette, mark-for-review and a calculator — then takes it away when time is up.</p>
+      </div>
+      <div class="step">
+        <h3>Read the solutions</h3>
+        <p>Submit and the marking appears at once: what you got right, what you missed, and the worked reasoning for each question.</p>
+      </div>
+    </div>
+  </div></section>
+
+  <section id="inside" style="padding-top:0"><div class="wrap">
+    <h2 class="serif">What is actually <em>in</em> the room.</h2>
+    <div class="inside">
+      <div class="spec">
+        <h3>Coverage</h3>
+        <dl>
+          <div class="spec-row"><dt>Programmes</dt><dd>Data Science · Electronic Systems<br>Aerospace · Management &amp; DS</dd></div>
+          <div class="spec-row"><dt>Levels</dt><dd>Qualifier → Foundation → Diploma → Degree</dd></div>
+          <div class="spec-row"><dt>Paper types</dt><dd>Quiz 1, Quiz 2, End Term, mock tests, practice sets</dd></div>
+          <div class="spec-row"><dt>Question types</dt><dd>Single choice, multiple select, true/false,<br>numerical with tolerance, short answer</dd></div>
+          <div class="spec-row"><dt>Comprehension</dt><dd>Passage-based question groups</dd></div>
+          <div class="spec-row"><dt>Maths &amp; chemistry</dt><dd>Full LaTeX and mhchem rendering</dd></div>
+        </dl>
+      </div>
+      <ul class="feature-list">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><div><b>A clock the browser cannot argue with</b><span>Timing is held on the server, so a refresh, a flat battery or a second tab does not buy you extra minutes.</span></div></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><div><b>A question palette</b><span>See at a glance what is answered, what is blank and what you flagged for review, and jump straight to any of them.</span></div></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><div><b>Autosave with retry</b><span>Answers save as you go. If the connection drops the page says so and keeps retrying until it is saved.</span></div></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><div><b>A built-in calculator</b><span>Basic and scientific modes, in the same panel the real exam portal gives you.</span></div></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><div><b>Negative marking that matches</b><span>Wrong attempts carry the paper's own penalty and the total is floored at zero, exactly as the portal scores it.</span></div></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><div><b>Offline library</b><span>Download a paper in the app and sit it with no signal; it syncs when you are back online.</span></div></li>
+      </ul>
+    </div>
+  </div></section>
+
+  <section id="about" style="padding-top:0"><div class="wrap">
+    <h2 class="serif">Built for one degree, and <em>only</em> that one.</h2>
+    <div class="trust">
+      <div class="trust-card">
+        <h3>Who this is for</h3>
+        <p>Students on the IITM BS degree, from the Qualifier through to Degree level. Every paper, mark scheme and solution is written against that syllabus rather than adapted from a general question bank.</p>
+      </div>
+      <div class="trust-card">
+        <h3>Proctored exams for institutions</h3>
+        <p>Teaching teams can run their own invigilated exams here: enrolment by verified email, a shared server clock, browser-event warnings, session locking, CSV exports and a full audit history. This is browser-event proctoring — it is evidence for a human review, not a verdict.</p>
+      </div>
+      <div class="trust-card">
+        <h3>Your account and your data</h3>
+        <p>Read how we handle your data and what you can ask us to remove.<br>
+          <a href="/privacy-policy">Privacy Policy</a> · <a href="/terms-and-conditions">Terms</a> · <a href="/delete-account">Delete your account</a></p>
+      </div>
+    </div>
+    <p class="disclaimer">Quiz LAB is built by GenZ IITian and is <b>not affiliated with, endorsed by, or operated by IIT Madras</b>. Past-paper content is provided for practice. Always check the current syllabus and official announcements on the institute's own portal.</p>
+  </div></section>
+
+  <section id="faq" style="padding-top:0"><div class="wrap">
+    <h2 class="serif">Questions people ask <em>first</em>.</h2>
+    <div class="faq">
+      <details>
+        <summary>Which programmes and terms do you cover?</summary>
+        <p>All four IITM BS programmes — Data Science and Applications, Electronic Systems, Aerospace Engineering, and Management and Data Science — across Qualifier, Foundation, Diploma and Degree levels. Within each, you will find Quiz 1, Quiz 2, End Term, mock tests and practice sets. New papers are added as each term's papers are released.</p>
+      </details>
+      <details>
+        <summary>Is this the same as the real exam portal?</summary>
+        <p>It is built to behave like it: the same one-question-at-a-time layout, question palette, mark-for-review, Save &amp; Next flow, calculator, and the same marking rules including negative marking. It is a practice environment, not the institute's portal, and sitting a paper here has no bearing on your actual results.</p>
+      </details>
+      <details>
+        <summary>Can I practise without a timer?</summary>
+        <p>Yes. Practice mode has no clock — choose an option and the correct answer and worked solution appear straight away, so you can work through a paper question by question. Exam mode is the timed version with solutions held back until you submit.</p>
+      </details>
+      <details>
+        <summary>Does it work offline, or on a phone?</summary>
+        <p>The Android app can download a paper to your device and you can sit it with no connection; it syncs when you are back online. The website works on a phone for browsing and practice. Invigilated proctored exams are laptop and desktop only, because the monitoring the browser provides is not available on mobile.</p>
+      </details>
+      <details>
+        <summary>What happens if my connection drops mid-paper?</summary>
+        <p>Answers save to the server as you go, and the page tells you plainly whether your latest answer is saved. If a save fails it keeps retrying and you can force one with <b>Save now</b>. Refreshing recovers everything the server has. Because the clock runs server-side, a disconnection does not pause it.</p>
+      </details>
+      <details>
+        <summary>How are short and numerical answers marked?</summary>
+        <p>Numerical questions accept an absolute tolerance set per question. Short answers are matched case-insensitively against the accepted answers after trimming whitespace. Multiple-select questions need the exact set of options — partial credit is not awarded. Blank questions score zero rather than a penalty.</p>
+      </details>
+      <details>
+        <summary>Can I delete my account and data?</summary>
+        <p>Yes. You can request deletion from <a href="/delete-account">the account deletion page</a> or in the app. Where exam records have to be retained — for instance an invigilated exam you sat for an institution — we deactivate the account instead and tell you why, rather than destroying records someone else depends on.</p>
+      </details>
     </div>
   </div></section>
 

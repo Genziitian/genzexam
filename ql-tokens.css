@@ -1,0 +1,145 @@
+/*
+ * Quiz Lab design tokens — the canonical palette.
+ *
+ * This file is the reference for every colour the site uses, and the source
+ * the redesign layer (ql-redesign.css) reads from.
+ *
+ * Why the component stylesheets still hold literal hex values rather than
+ * var(--ql-*): dark mode is generated, not written. tools/build-dark-css.py
+ * reads the light stylesheets, finds literal colours, and emits a remapped
+ * rule under :root[data-theme=dark]. A declaration whose value is var(--x)
+ * carries no colour for it to remap, so converting the component CSS to
+ * tokens would hand the generator nothing to work with. Literal values in
+ * components, tokens here and in the redesign layer, is therefore the shape
+ * this architecture wants — not an oversight.
+ *
+ * Changing a colour means changing it here AND in the component stylesheet
+ * that uses it, then regenerating dark mode:
+ *
+ *     python3 tools/build-dark-css.py
+ */
+
+:root {
+  /* ---------------------------------------------------------------- type */
+  --ql-font-ui: Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --ql-font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* ------------------------------------------------------------- primary */
+  /* Slate blue. Primary buttons, active outlines, accents. */
+  --ql-primary: #33558b;
+  --ql-primary-hover: #29467a;
+  /* Dark text on a tinted background, and the GRPA chip. */
+  --ql-primary-deep: #1e3355;
+  /* Text sitting on a tint: answered questions, the calculator. */
+  --ql-primary-ink: #24406b;
+  /* Text and icons that sit on top of the primary fill. */
+  --ql-on-primary: #ffffff;
+
+  /* --------------------------------------------------------------- tints */
+  /* Selected option, active section background. */
+  --ql-tint: #eef3fa;
+  /* Live pill, chips, focus ring. */
+  --ql-tint-strong: #e3eaf5;
+  /* Answered question background and border. */
+  --ql-answered-bg: #dfe8f5;
+  --ql-answered-border: #9fb6d8;
+  --ql-tint-border: #c7d4e8;
+  /* Informational note. */
+  --ql-info-bg: #f3f6fb;
+  --ql-info-border: #cfdbec;
+
+  /* ------------------------------------------------------------ neutrals */
+  --ql-ink: #0f172a;          /* headings, main text, sidebar divider */
+  --ql-body: #334155;         /* body copy */
+  --ql-secondary: #475569;    /* secondary text */
+  --ql-muted: #64748b;        /* muted text */
+  --ql-placeholder: #94a3b8;  /* placeholder text */
+  --ql-border-strong: #cbd5e1;
+  --ql-border: #e2e8f0;
+  --ql-border-soft: #e5e9f0;
+  --ql-panel: #f1f5f9;        /* panels, unanswered questions */
+  --ql-panel-soft: #f8fafc;
+  --ql-surface: #ffffff;      /* cards and surfaces */
+
+  /* -------------------------------------------------------------- status */
+  --ql-review-bg: #ede9fe;
+  --ql-review-border: #c4b5fd;
+  --ql-review-text: #6d28d9;
+
+  --ql-pass-bg: #f0fdf4;
+  --ql-pass-border: #bbf7d0;
+  --ql-pass-text: #15803d;
+
+  --ql-fail-bg: #fef3f2;
+  --ql-fail-border: #fecdca;
+  --ql-fail-text: #b42318;
+
+  --ql-timer-low: #ef4444;
+
+  /* ------------------------------------------------- code editor (dark) */
+  /* These stay dark in both themes: an editor is always a dark surface. */
+  --ql-code-bg: #111a28;
+  --ql-code-gutter: #0e1623;
+  --ql-code-toolbar: #0b1222;
+  --ql-code-border: #26354a;
+  --ql-code-border-soft: #1e293b;
+  --ql-code-text: #dbe7f4;
+  --ql-code-linenum: #475569;
+  --ql-code-cursor: #93b4e6;
+
+  /* ------------------------------------- app shell (dark in both themes) */
+  /* The admin/manager sidebar is a dark surface in light mode too. */
+  --ql-shell: #0f172a;
+  --ql-shell-raised: #1a2740;
+  --ql-shell-border: #26354a;
+  --ql-shell-text: #e3eaf5;
+  --ql-shell-muted: #9fb6d8;
+  --ql-shell-accent: #93b4e6;
+}
+
+/*
+ * Dark mode. The generated stylesheets handle component colours; these are the
+ * token values themselves, which the generator cannot derive safely because a
+ * token's meaning (surface vs text) is not visible in its declaration.
+ */
+:root[data-theme="dark"] {
+  --ql-primary: #6d93cf;
+  --ql-primary-hover: #86a7da;
+  --ql-primary-deep: #c5d7ef;
+  --ql-primary-ink: #c5d7ef;
+  --ql-on-primary: #0b1222;
+
+  --ql-tint: #18253a;
+  --ql-tint-strong: #1f2d44;
+  --ql-answered-bg: #1d2c45;
+  --ql-answered-border: #3a5078;
+  --ql-tint-border: #2a3b56;
+  --ql-info-bg: #151f30;
+  --ql-info-border: #27364e;
+
+  --ql-ink: #e8eef7;
+  --ql-body: #c2cddd;
+  --ql-secondary: #a9b6c9;
+  --ql-muted: #8a99ae;
+  --ql-placeholder: #6b7b91;
+  --ql-border-strong: #3a4a62;
+  --ql-border: #2a3648;
+  --ql-border-soft: #253142;
+  --ql-panel: #161f2e;
+  --ql-panel-soft: #121a27;
+  --ql-surface: #151d2b;
+
+  --ql-review-bg: #241c3d;
+  --ql-review-border: #4b3a7a;
+  --ql-review-text: #c0aef5;
+
+  --ql-pass-bg: #0f2318;
+  --ql-pass-border: #24543a;
+  --ql-pass-text: #6ee7a0;
+
+  --ql-fail-bg: #2a1512;
+  --ql-fail-border: #6b2b25;
+  --ql-fail-text: #f8a49b;
+
+  --ql-timer-low: #f87171;
+}

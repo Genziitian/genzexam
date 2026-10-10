@@ -1,14 +1,14 @@
 /* Quiz Lab theme: sidebar, brand lockup, admin users pages */
-.ql-sidebar{background:#0B0F24!important;border-right:1px solid #1b2140}
+.ql-sidebar{background:#0f172a!important;border-right:1px solid #26354a}
 .ql-lock{display:flex;align-items:center;gap:10px}
-.ql-sidebar-head{display:flex;align-items:center;height:64px;padding:0 20px;border-bottom:1px solid #1b2140}
-.ql-brand-mark{display:flex;width:34px;height:34px;flex-shrink:0;align-items:center;justify-content:center;border-radius:10px;background:#C6F432;color:#0B0F24}
+.ql-sidebar-head{display:flex;align-items:center;height:64px;padding:0 20px;border-bottom:1px solid #26354a}
+.ql-brand-mark{display:flex;width:34px;height:34px;flex-shrink:0;align-items:center;justify-content:center;border-radius:10px;background:#93b4e6;color:#0f172a}
 .ql-brand-text{display:flex;flex-direction:column;text-align:left;line-height:1.1}
 .ql-brand-text b{font-size:15px;font-weight:700;color:#fff;letter-spacing:-.01em}
 .ql-brand-text small{margin-top:3px;font-size:10.5px;color:#8b93b5}
-.ql-role-pill{margin-left:8px;border-radius:5px;background:#1b2140;padding:2px 6px;font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#C6F432}
+.ql-role-pill{margin-left:8px;border-radius:5px;background:#26354a;padding:2px 6px;font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#93b4e6}
 .ql-sidebar .ql-role-pill{display:inline-block;margin:10px 0 0}
-.ql-nav-active{background:rgba(198,244,50,.1)!important;color:#C6F432!important;box-shadow:inset 3px 0 0 #C6F432}
+.ql-nav-active{background:rgba(147,180,230,.1)!important;color:#93b4e6!important;box-shadow:inset 3px 0 0 #93b4e6}
 /* pages */
 .ql-page{display:flex;flex-direction:column;gap:16px;color:#0f172a}
 .ql-page-head{display:flex;justify-content:space-between;align-items:flex-end}
@@ -24,7 +24,7 @@
 .ql-input{min-width:240px;flex:1;border:1px solid #e2e8f0;border-radius:10px;padding:9px 12px;font-size:14px;color:#0f172a;background:#fff}
 .ql-chips{display:flex;flex-wrap:wrap;gap:6px}
 .ql-chip{border:1px solid #e2e8f0;background:#fff;border-radius:999px;padding:6px 12px;font-size:12px;font-weight:500;color:#475569;cursor:pointer}
-.ql-chip-on{background:#0B0F24;border-color:#0B0F24;color:#C6F432}
+.ql-chip-on{background:#0f172a;border-color:#0f172a;color:#93b4e6}
 .ql-chip-n{margin-left:6px;opacity:.7}
 .ql-table-wrap{overflow-x:auto;border:1px solid #e2e8f0;border-radius:12px}
 .ql-table{width:100%;border-collapse:collapse;text-align:left;font-size:14px;color:#0f172a}
@@ -37,9 +37,9 @@
 .ql-btn{border:1px solid #e2e8f0;background:#fff;color:#0f172a;border-radius:10px;padding:8px 14px;font-size:13px;font-weight:600;cursor:pointer}
 .ql-btn:hover:not(:disabled){background:#f1f5f9}
 .ql-btn:disabled{opacity:.45;cursor:not-allowed}
-.ql-btn-primary{background:#0B0F24;border-color:#0B0F24;color:#C6F432}
-.ql-btn-primary:hover:not(:disabled){background:#161c3d}
-.ql-btn-on{background:#C6F432;border-color:#C6F432;color:#0B0F24}
+.ql-btn-primary{background:#0f172a;border-color:#0f172a;color:#93b4e6}
+.ql-btn-primary:hover:not(:disabled){background:#1a2740}
+.ql-btn-on{background:#93b4e6;border-color:#93b4e6;color:#0f172a}
 .ql-btn-danger{background:#dc2626;border-color:#dc2626;color:#fff}
 .ql-btn-danger:hover:not(:disabled){background:#b91c1c}
 .ql-danger{border-color:#fecaca}
@@ -47,10 +47,10 @@
 .ql-hint{margin:10px 0 0;font-size:12px;color:#64748b}
 .ql-back{align-self:flex-start;border:0;background:none;color:#475569;font-size:13px;font-weight:600;cursor:pointer;padding:0}
 .ql-hero{display:flex;gap:16px;align-items:center}
-.ql-avatar{display:flex;width:56px;height:56px;border-radius:50%;background:#0B0F24;color:#C6F432;align-items:center;justify-content:center;font-weight:700;font-size:18px}
+.ql-avatar{display:flex;width:56px;height:56px;border-radius:50%;background:#0f172a;color:#93b4e6;align-items:center;justify-content:center;font-weight:700;font-size:18px}
 .ql-badges{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
 .ql-badge{display:inline-block;margin-right:4px;border-radius:999px;padding:2px 9px;font-size:11px;font-weight:600}
-.ql-badge-student{background:#f1f5f9;color:#475569}.ql-badge-admin{background:#dcfce7;color:#15803d}
+.ql-badge-student{background:#f1f5f9;color:#475569}.ql-badge-admin{background:#eef3fa;color:#29467a}
 .ql-badge-manager{background:#ede9fe;color:#6d28d9}.ql-badge-pro{background:#fef3c7;color:#b45309}
 .ql-badge-ok{background:#dcfce7;color:#15803d}.ql-badge-off{background:#fee2e2;color:#b91c1c}
 .ql-dl{margin:0}.ql-dl-row{display:flex;justify-content:space-between;gap:16px;padding:10px 0;border-top:1px solid #f1f5f9;font-size:14px}
@@ -60,7 +60,7 @@
 .ql-modal-box .ql-actions{margin-top:18px}
 .ql-tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px}
 .ql-tile{display:flex;flex-direction:column;gap:4px;text-align:left;border:1px solid #e2e8f0;background:#f8fafc;border-radius:12px;padding:14px;cursor:pointer;color:#0f172a}
-.ql-tile:hover{border-color:#0B0F24;background:#fff}
+.ql-tile:hover{border-color:#0f172a;background:#fff}
 .ql-tile b{font-size:24px;font-weight:700;line-height:1}
 .ql-tile span{font-size:12px;color:#64748b}
 .ql-qa{display:grid;grid-template-columns:1fr 1fr;gap:10px}

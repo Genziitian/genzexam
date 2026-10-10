@@ -42,7 +42,7 @@
   color: #516076;
 }
 #ep-app #ep-countdown.pr-low {
-  color: #a33229;
+  color: #b42318;
   background: #fff1ef;
 }
 #ep-app .pr-nav {
@@ -66,12 +66,12 @@
   text-decoration: none;
 }
 #ep-app .pr-nav-item:hover {
-  border-color: #9fb3a6;
+  border-color: #9fb6d8;
 }
 #ep-app .pr-nav-item.done {
-  background: #e9f5ed;
-  border-color: #bfe0cb;
-  color: #1a6843;
+  background: #dfe8f5;
+  border-color: #9fb6d8;
+  color: #24406b;
 }
 #ep-app .ep-question {
   scroll-margin-top: 110px;
@@ -80,8 +80,8 @@
   position: relative;
 }
 #ep-app .ep-answer:has(input:checked) {
-  border-color: #6fb38d;
-  background: #f1faf4;
+  border-color: #33558b;
+  background: #eef3fa;
 }
 #ep-app .pr-option {
   min-width: 0;
@@ -107,14 +107,14 @@
   font: inherit;
 }
 #ep-app .pr-number:focus {
-  border-color: #4f9c72;
-  box-shadow: 0 0 0 3px #eaf6ee;
+  border-color: #33558b;
+  box-shadow: 0 0 0 3px #e3eaf5;
 }
 #ep-app .pr-hint {
   margin: 4px 0 0;
   min-height: 0;
   font-size: 12px;
-  color: #a33229;
+  color: #b42318;
 }
 #ep-app .pr-bar-actions {
   display: flex;
@@ -136,19 +136,19 @@
   color: #101b2e;
 }
 #ep-app .pr-review.correct {
-  border-left: 4px solid #2f9160;
+  border-left: 4px solid #15803d;
 }
 #ep-app .pr-review.wrong {
-  border-left: 4px solid #cf4b40;
+  border-left: 4px solid #b42318;
 }
 #ep-app .pr-review.skipped {
   border-left: 4px solid #c2cad6;
 }
 #ep-app .pr-review.correct .pr-verdict {
-  color: #1a6843;
+  color: #15803d;
 }
 #ep-app .pr-review.wrong .pr-verdict {
-  color: #a33229;
+  color: #b42318;
 }
 #ep-app .pr-review-option {
   cursor: default;
@@ -159,13 +159,13 @@
 }
 #ep-app .pr-review-option.is-correct,
 #ep-app .pr-review-option.is-correct:hover {
-  border-color: #9fd3b4;
-  background: #f1faf4;
+  border-color: #bbf7d0;
+  background: #f0fdf4;
 }
 #ep-app .pr-review-option.is-wrong,
 #ep-app .pr-review-option.is-wrong:hover {
-  border-color: #f1c0bb;
-  background: #fff6f5;
+  border-color: #fecdca;
+  background: #fef3f2;
 }
 #ep-app .pr-tags {
   display: flex;
@@ -184,8 +184,8 @@
   font-weight: 750;
 }
 #ep-app .pr-tag.ok {
-  background: #dff1e6;
-  color: #1a6843;
+  background: #f0fdf4;
+  color: #15803d;
 }
 #ep-app .pr-explanation {
   margin-top: 14px;

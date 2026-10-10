@@ -23,8 +23,8 @@ DARK = ':root[data-theme=dark]'
 
 def index_assets():
     html = open(os.path.join(ROOT, 'index.html')).read()
-    css = re.search(r'href="/(assets/index-[\w-]+\.css)"', html).group(1)
-    js = re.search(r'src="/(assets/index-[\w-]+\.js)"', html).group(1)
+    css = re.search(r'href="/(assets/index-[\w-]+\.css)(?:\?[^"]*)?"', html).group(1)
+    js = re.search(r'src="/(assets/index-[\w-]+\.js)(?:\?[^"]*)?"', html).group(1)
     return css, js
 
 
@@ -33,7 +33,9 @@ INDEX_CSS, INDEX_JS = index_assets()
 # output file -> (stylesheets, scripts whose inline style="" attributes are covered, options)
 TARGETS = {
     'ql-dark-app.css': dict(
-        css=[INDEX_CSS, 'assets/ql-theme.css', 'storefront-dashboard.css'],
+        # ql-redesign.css comes last so its dark variants are emitted last and
+        # therefore beat the bundle's own (still green) generated rules.
+        css=[INDEX_CSS, 'assets/ql-theme.css', 'storefront-dashboard.css', 'ql-redesign.css'],
         js=['app-enhancements.js'],
         bundle=[INDEX_JS],
     ),
@@ -43,9 +45,9 @@ TARGETS = {
     ),
     'ql-dark-sales.css': dict(
         css=['manager-sales.css'], js=[],
-        grey_hue=80,
-        vars={'--green': '#8fc97a', '--danger': '#e58a80'},
-        on_accent={'--green': '#10200f'},
+        grey_hue=222,
+        vars={'--green': '#6d93cf', '--danger': '#e58a80'},
+        on_accent={'--green': '#0b1222'},
     ),
     'ql-dark-discussions.css': dict(
         css=['manager-discussions.css'], js=[],
@@ -139,7 +141,7 @@ def fmt(rgb, alpha):
 
 
 GREY_HUE = 222          # hue given to pure greys and white; set per target
-ALWAYS_DARK = re.compile(r'ql-sidebar|ql-home-link|ql-nav|ql-modal(?!-)|\\\[\\#|\.ep-(side|brand)')
+ALWAYS_DARK = re.compile(r'ql-sidebar|ql-home-link|ql-nav|ql-login-banner|ql-modal(?!-)|\\\[\\#|\.ep-(side|brand)')
 PAGE_SELECTORS = re.compile(r'^((body|html)(?![\w-]).*|#ep-app|\.bg-surface|\.ep-shell|\.bg-\\\[\\#f1f5f9\\\])$')
 
 
@@ -425,9 +427,11 @@ def convert_rule(sel, body, opts):
             continue
         leave = False
         if role in ('border', 'bg') and ALWAYS_DARK.search(sel):
-            # parts designed dark in both modes (sidebar, one-off colours)
-            leave = not any(is_light_surface(*parse_color(t)[:3]) for t in COLOR_RE.findall(v)
-                            if parse_color(t))
+            # Parts designed dark in both modes (sidebar, login banner). Their
+            # surfaces are left exactly as written, including translucent white
+            # overlays drawn on top of them, which would otherwise be inverted
+            # into dark-on-dark and disappear.
+            leave = True
         if role in ('text', 'border', 'svg') and keep_text:
             leave = True        # sits on a colour that stays, so it stays too
         if not leave:

@@ -30,11 +30,11 @@ function reconnectingPage() {
   var html = '<!doctype html><html lang="en"><head><meta charset="utf-8">' +
     '<meta name="viewport" content="width=device-width,initial-scale=1">' +
     '<meta http-equiv="refresh" content="3"><title>Reconnecting · Quiz LAB</title>' +
-    '<style>html,body{height:100%;margin:0}body{display:grid;place-items:center;background:#f7f6f1;color:#1c1c1a;' +
+    '<style>html,body{height:100%;margin:0}body{display:grid;place-items:center;background:#f1f5f9;color:#0f172a;' +
     'font:16px/1.5 system-ui,-apple-system,sans-serif;text-align:center;padding:24px;box-sizing:border-box}' +
-    'h1{font-size:20px;margin:0 0 6px}p{margin:0 0 18px;color:#5f5e58}' +
-    'a{display:inline-block;padding:10px 18px;border-radius:10px;background:#1f3d22;color:#fff;text-decoration:none;font-weight:600}' +
-    '@media(prefers-color-scheme:dark){body{background:#121411;color:#eceae3}p{color:#a3a199}a{background:#b5d99c;color:#12210f}}</style>' +
+    'h1{font-size:20px;margin:0 0 6px}p{margin:0 0 18px;color:#64748b}' +
+    'a{display:inline-block;padding:10px 18px;border-radius:10px;background:#33558b;color:#fff;text-decoration:none;font-weight:600}' +
+    '@media(prefers-color-scheme:dark){body{background:#121a27;color:#e8eef7}p{color:#8a99ae}a{background:#6d93cf;color:#0b1222}}</style>' +
     '</head><body><div><h1>Reconnecting…</h1><p>The connection dropped. Trying again in a moment.</p>' +
     '<a href="">Try now</a></div></body></html>';
   return new Response(html, {

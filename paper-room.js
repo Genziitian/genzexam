@@ -298,7 +298,7 @@
       const low = left < 300;
       node.style.color = low ? "#ef4444" : "#0f172a";
       const dot = $("#pr-timer-dot");
-      if (dot) dot.style.background = low ? "#ef4444" : "#059669";
+      if (dot) dot.style.background = low ? "#ef4444" : "#33558b";
     }
     if (left <= 0 && !st.busy) submit(true);
   }
@@ -397,9 +397,9 @@
   function optionLabelStyle(checked) {
     return (
       "display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:10px;border:1.5px solid " +
-      (checked ? "#059669" : "#e2e8f0") +
+      (checked ? "#33558b" : "#e2e8f0") +
       ";background:" +
-      (checked ? "#f0fdf4" : "#ffffff") +
+      (checked ? "#eef3fa" : "#ffffff") +
       ";cursor:pointer;transition:all 0.15s ease;"
     );
   }
@@ -426,7 +426,7 @@
               esc(o.id) +
               '"' +
               (checked ? " checked" : "") +
-              ' style="width:16px;height:16px;accent-color:#059669;flex-shrink:0;" /><span class="pr-option" style="font-size:14px;color:#1e293b;font-weight:500;min-width:0;flex:1;">' +
+              ' style="width:16px;height:16px;accent-color:#33558b;flex-shrink:0;" /><span class="pr-option" style="font-size:14px;color:#1e293b;font-weight:500;min-width:0;flex:1;">' +
               optionHtml(o) +
               "</span></label>"
             );
@@ -493,7 +493,7 @@
       "</div>";
     return (
       '<div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">' +
-      row("#dcfce7", "#86efac", "Answered (" + answered + ")") +
+      row("#dfe8f5", "#9fb6d8", "Answered (" + answered + ")") +
       row("#ede9fe", "#c4b5fd", "Review (" + review + ")") +
       row("#f1f5f9", "#cbd5e1", "Unanswered (" + (total - answered) + ")") +
       "</div>"
@@ -523,7 +523,7 @@
       answerable().length +
       "</b></div>" +
       '<div style="display:flex;align-items:center;gap:6px;background:#f1f5f9;padding:6px 12px;border-radius:8px;border:1px solid #cbd5e1;"><span id="pr-timer-dot" style="width:8px;height:8px;border-radius:9999px;background:' +
-      (low ? "#ef4444" : "#059669") +
+      (low ? "#ef4444" : "#33558b") +
       ';animation:ep-pulse 2s infinite;"></span><span class="pr-live-time-label" style="font-size:11px;font-weight:700;color:#64748b;">Time:</span><span id="ep-countdown" style="font-size:15px;font-weight:800;color:' +
       (low ? "#ef4444" : "#0f172a") +
       ';font-family:ui-monospace,monospace;">' +
@@ -531,7 +531,7 @@
       "</span></div>" +
       '<button type="button" id="btn-student-submit" data-action="submit"' +
       (st.busy ? " disabled" : "") +
-      ' style="background:#059669;border:none;color:#fff;padding:7px 18px;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:6px;box-shadow:0 1px 3px rgba(5,150,105,0.3);transition:background 0.15s;">' +
+      ' style="background:#33558b;border:none;color:#fff;padding:7px 18px;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:6px;box-shadow:0 1px 3px rgba(51,85,139,0.3);transition:background 0.15s;">' +
       ICON_CHECK +
       (st.busy ? " Submitting…" : " Submit &amp; Exit") +
       "</button></div></header>" +
@@ -540,7 +540,7 @@
       '<div class="pr-live-palette" style="flex:1;overflow-y:auto;padding:16px;"><div class="pr-live-palette-title" style="font-size:11px;font-weight:700;text-transform:uppercase;color:#64748b;margin-bottom:12px;">Question Palette</div><div class="ep-q-grid" id="pr-palette">' +
       paletteHtml() +
       "</div></div>" +
-      '<div class="pr-live-tools-box" style="padding:12px 16px;border-top:1px solid #e2e8f0;background:#ffffff;"><button type="button" data-calc="toggle" title="Open calculator" style="width:100%;background:#f0fdf4;border:1px solid #86efac;color:#047857;padding:9px 10px;border-radius:8px;font-size:12px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px;">Calculator</button></div>' +
+      '<div class="pr-live-tools-box" style="padding:12px 16px;border-top:1px solid #e2e8f0;background:#ffffff;"><button type="button" data-calc="toggle" title="Open calculator" style="width:100%;background:#eef3fa;border:1px solid #c7d4e8;color:#24406b;padding:9px 10px;border-radius:8px;font-size:12px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px;">Calculator</button></div>' +
       '<div class="pr-live-legend" id="pr-legend" style="padding:12px 16px;border-top:1px solid #e2e8f0;background:#f8fafc;font-size:11px;color:#475569;">' +
       legendHtml() +
       "</div></aside>" +
@@ -559,7 +559,7 @@
       "</span></div>" +
       (passage
         ? ""
-        : '<div style="font-size:12px;font-weight:700;color:#059669;">+' + Number(q.marks || 0) + " Marks</div>") +
+        : '<div style="font-size:12px;font-weight:700;color:#33558b;">+' + Number(q.marks || 0) + " Marks</div>") +
       "</div>" +
       '<div class="pr-live-prompt" style="font-size:15px;color:#0f172a;line-height:1.6;font-weight:500;margin-bottom:14px;">' +
       stemHtml(q) +
@@ -588,7 +588,7 @@
         : '<button type="button" id="btn-q-review" data-action="review" style="background:#f5f3ff;border:1px solid #c4b5fd;color:#6d28d9;padding:9px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;">' +
           (st.review[q.id] ? 'Marked<span class="pr-wide"> for Review</span>' : 'Review<span class="pr-wide"> &amp; Next</span>') +
           "</button>") +
-      '<button type="button" id="btn-q-save-next" data-action="next" style="background:#059669;color:#fff;border:none;padding:9px 20px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;">' +
+      '<button type="button" id="btn-q-save-next" data-action="next" style="background:#33558b;color:#fff;border:none;padding:9px 20px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;">' +
       (index === total - 1 ? "Save Response" : passage ? "Next →" : "Save &amp; Next →") +
       "</button></div></div></main></div></div>"
     );
@@ -608,7 +608,7 @@
       answerable().length +
       "</b> questions" +
       (review ? ", with <b>" + review + "</b> marked for review" : "") +
-      '. Once submitted, your answers are final and you will see your result.</p><div style="display:flex;gap:10px;"><button type="button" id="ep-btn-cancel-submit" style="flex:1;background:#f1f5f9;color:#334155;border:1px solid #cbd5e1;padding:11px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;">Return to Paper</button><button type="button" id="ep-btn-confirm-submit" style="flex:1.2;background:#059669;color:#ffffff;border:none;padding:11px;border-radius:8px;font-size:13px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px;">' +
+      '. Once submitted, your answers are final and you will see your result.</p><div style="display:flex;gap:10px;"><button type="button" id="ep-btn-cancel-submit" style="flex:1;background:#f1f5f9;color:#334155;border:1px solid #cbd5e1;padding:11px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;">Return to Paper</button><button type="button" id="ep-btn-confirm-submit" style="flex:1.2;background:#33558b;color:#ffffff;border:none;padding:11px;border-radius:8px;font-size:13px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px;">' +
       ICON_CHECK +
       " Submit</button></div></div>";
     document.body.appendChild(modal);

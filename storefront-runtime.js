@@ -42,7 +42,7 @@
 
   // Connection guard: retries a request that failed because the phone reused a closed connection.
   if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
-    try { navigator.serviceWorker.register('/sw.js?v=1').catch(function () {}); } catch (_) {}
+    try { navigator.serviceWorker.register('/sw.js?v=2').catch(function () {}); } catch (_) {}
   }
 
   /*

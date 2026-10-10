@@ -63,7 +63,7 @@
   width: 36px;
   height: 36px;
   border-radius: 11px;
-  background: #176b43;
+  background: #33558b;
   color: #fff;
   display: grid;
   place-items: center;
@@ -78,7 +78,7 @@
   font-size: 12px;
 }
 .ep-link {
-  color: #176b43;
+  color: #33558b;
   text-decoration: none;
   font-weight: 650;
 }
@@ -118,7 +118,7 @@
   font-size: 10px;
   font-weight: 800;
   letter-spacing: 0.14em;
-  color: #67806f;
+  color: #64748b;
   margin: 0 0 7px;
 }
 .ep-card {
@@ -168,13 +168,13 @@
   border-color: #bac5d4;
 }
 .ep-btn-primary {
-  background: #176b43;
-  border-color: #176b43;
+  background: #33558b;
+  border-color: #33558b;
   color: #fff;
 }
 .ep-btn-primary:hover:not(:disabled) {
-  background: #105636;
-  border-color: #105636;
+  background: #29467a;
+  border-color: #29467a;
 }
 .ep-btn-danger {
   background: #fff4f2;
@@ -203,9 +203,9 @@
   font-size: 12px;
 }
 .ep-alert {
-  border: 1px solid #cce9d8;
-  background: #f0faf4;
-  color: #255d3c;
+  border: 1px solid #cfdbec;
+  background: #f3f6fb;
+  color: #1e3355;
   padding: 12px 15px;
   border-radius: 10px;
   margin: 0 0 17px;
@@ -269,8 +269,8 @@
   font-weight: 750;
 }
 .ep-status.live {
-  background: #e9f7ef;
-  color: #247144;
+  background: #e3eaf5;
+  color: #1e3355;
 }
 .ep-status.paused {
   background: #fff5dd;
@@ -307,8 +307,8 @@
 }
 .ep-empty-icon {
   font-size: 25px;
-  color: #176b43;
-  background: #eaf6ef;
+  color: #33558b;
+  background: #eef3fa;
   width: 48px;
   height: 48px;
   border-radius: 15px;
@@ -353,8 +353,8 @@
 .ep-textarea:focus,
 .ep-codearea:focus,
 .ep-message-compose textarea:focus {
-  border-color: #4f9c72;
-  box-shadow: 0 0 0 3px #eaf6ee;
+  border-color: #33558b;
+  box-shadow: 0 0 0 3px #e3eaf5;
 }
 .ep-span {
   grid-column: 1/-1;
@@ -427,7 +427,7 @@
   justify-content: space-between;
   align-items: center;
   gap: 22px;
-  border-color: #cfe4d7;
+  border-color: #c7d4e8;
   background: #f9fcfa;
 }
 .ep-publish-card p {
@@ -475,7 +475,7 @@
 }
 .ep-live-dot {
   font-size: 11px;
-  color: #2b794a;
+  color: #33558b;
   font-weight: 750;
 }
 .ep-audit-item {
@@ -494,7 +494,7 @@
 }
 .ep-check input {
   margin-top: 4px;
-  accent-color: #176b43;
+  accent-color: #33558b;
 }
 .ep-room {
   max-width: 920px;
@@ -525,8 +525,8 @@
   font:
     750 17px/1 ui-monospace,
     monospace;
-  color: #1a6843;
-  background: #e9f5ed;
+  color: #24406b;
+  background: #eef3fa;
   padding: 10px;
   border-radius: 8px;
 }
@@ -574,7 +574,7 @@
   background: #f8fafc;
 }
 .ep-answer input {
-  accent-color: #176b43;
+  accent-color: #33558b;
   margin-top: 4px;
 }
 .ep-answer-text {
@@ -593,8 +593,8 @@
   resize: vertical;
 }
 .ep-answer-text textarea:focus {
-  border-color: #4f9c72;
-  box-shadow: 0 0 0 3px #eaf6ee;
+  border-color: #33558b;
+  box-shadow: 0 0 0 3px #e3eaf5;
 }
 .ep-submit-bar {
   position: sticky;
@@ -713,17 +713,17 @@
   z-index: 45;
   display: inline-flex;
   align-items: center;
-  background: #14301a;
-  color: #eaf6ec;
+  background: #1e3355;
+  color: #eef3fa;
   padding: 12px 17px;
   border-radius: 12px;
   text-decoration: none;
   font-weight: 650;
   font-size: 12px;
-  box-shadow: 0 10px 30px #0a140c4d;
+  box-shadow: 0 10px 30px #1d2c454d;
 }
 #ep-role-entry:hover {
-  background: #1d4426;
+  background: #29467a;
 }
 @media (max-width: 850px) {
   .ep-detail-grid {
@@ -872,7 +872,7 @@ body:has(#ep-app) {
 .ep-paper-picker {
   margin: 0 0 14px;
   padding: 14px 16px;
-  border: 1px solid #dbe7df;
+  border: 1px solid #e2e8f0;
   border-radius: 11px;
   background: #f7fbf8;
 }
@@ -906,8 +906,8 @@ body:has(#ep-app) {
 }
 .ep-paper-row input:focus,
 .ep-paper-row select:focus {
-  border-color: #4f9c72;
-  box-shadow: 0 0 0 3px #eaf6ee;
+  border-color: #33558b;
+  box-shadow: 0 0 0 3px #e3eaf5;
 }
 .ep-form label .ep-muted {
   font-weight: 400;
@@ -975,13 +975,13 @@ body:has(#ep-app) {
   user-select: none;
 }
 #ep-app .ep-q-btn.current {
-  outline: 2.5px solid #059669;
+  outline: 2.5px solid #33558b;
   outline-offset: 1px;
 }
 #ep-app .ep-q-answered {
-  background: #dcfce7 !important;
-  border-color: #86efac !important;
-  color: #15803d !important;
+  background: #dfe8f5 !important;
+  border-color: #9fb6d8 !important;
+  color: #24406b !important;
 }
 #ep-app .ep-q-review {
   background: #ede9fe !important;
@@ -1129,18 +1129,18 @@ body:has(#ep-app) {
 }
 
 .ep-calc-tab-btn.active {
-  background: #059669;
+  background: #33558b;
   color: #ffffff;
 }
 
 .ep-calc-screen {
-  background: #f0fdf4;
+  background: #eef3fa;
   padding: 14px 16px;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   justify-content: center;
-  border-bottom: 1px solid #bbf7d0;
+  border-bottom: 1px solid #c7d4e8;
   min-height: 72px;
 }
 
@@ -1155,7 +1155,7 @@ body:has(#ep-app) {
 .ep-calc-display {
   font-size: 24px;
   font-weight: 800;
-  color: #064e3b;
+  color: #1e3355;
   font-family: ui-monospace, monospace;
   letter-spacing: -0.02em;
   max-width: 100%;
@@ -1217,15 +1217,15 @@ body:has(#ep-app) {
 }
 
 .ep-calc-key.fn {
-  background: #ecfdf5;
-  border-color: #86efac;
-  color: #047857;
+  background: #eef3fa;
+  border-color: #c7d4e8;
+  color: #24406b;
   font-size: 11.5px;
 }
 
 .ep-calc-key.fn:hover {
-  background: #dcfce7;
-  color: #065f46;
+  background: #eef3fa;
+  color: #1e3355;
 }
 
 .ep-calc-key.action-clear {
@@ -1240,14 +1240,14 @@ body:has(#ep-app) {
 }
 
 .ep-calc-key.action-equals {
-  background: #059669;
-  border-color: #10b981;
+  background: #33558b;
+  border-color: #29467a;
   color: #ffffff;
   font-size: 16px;
 }
 
 .ep-calc-key.action-equals:hover {
-  background: #10b981;
+  background: #29467a;
 }
 
 @keyframes ep-card-pop {
@@ -1290,8 +1290,8 @@ img.ep-mark {
   padding: 20px 22px;
 }
 .ep-exam.is-live {
-  border-color: #9fd3b3;
-  box-shadow: 0 0 0 3px rgba(36, 113, 68, 0.08);
+  border-color: #9fb6d8;
+  box-shadow: 0 0 0 3px rgba(51, 85, 139, 0.08);
 }
 .ep-exam-date {
   flex: 0 0 62px;
@@ -1301,7 +1301,7 @@ img.ep-mark {
   height: 66px;
   border-radius: 14px;
   background: #eef4ef;
-  color: #1f4d33;
+  color: #24406b;
   line-height: 1.1;
 }
 .ep-exam-date b {
@@ -1395,8 +1395,8 @@ img.ep-mark {
   min-height: 44px;
 }
 .ep-next.live {
-  border-left-color: #2f8f58;
-  background: #f1faf4;
+  border-left-color: #33558b;
+  background: #eef3fa;
 }
 .ep-next.warn {
   border-left-color: #d49a1c;
@@ -1575,7 +1575,7 @@ img.ep-mark {
 }
 .ep-stepper-dot.active {
   width: 22px;
-  background: #059669;
+  background: #33558b;
 }
 .ep-cam-viewfinder {
   width: 320px;
@@ -1660,9 +1660,9 @@ img.ep-mark {
   text-transform: uppercase;
 }
 .saas-status-pill.live {
-  background: rgba(16, 185, 129, 0.15);
-  color: #34d399;
-  border: 1px solid rgba(16, 185, 129, 0.35);
+  background: rgba(51, 85, 139, 0.15);
+  color: #9fb6d8;
+  border: 1px solid rgba(51, 85, 139, 0.35);
 }
 .saas-status-pill.paused {
   background: rgba(245, 158, 11, 0.15);
@@ -1720,9 +1720,9 @@ img.ep-mark {
   transform: translateY(-1px);
 }
 .saas-btn-primary {
-  background: #064e3b;
-  color: #34d399;
-  border-color: #047857;
+  background: #1e3355;
+  color: #9fb6d8;
+  border-color: #24406b;
 }
 .saas-btn-warning {
   background: #1e1b18;
@@ -1852,8 +1852,8 @@ img.ep-mark {
   color: #f9fafb;
 }
 .saas-tab-btn.active {
-  color: #10b981;
-  border-bottom-color: #10b981;
+  color: #29467a;
+  border-bottom-color: #29467a;
 }
 .saas-tab-badge {
   background: #1a1a1a;
@@ -1864,8 +1864,8 @@ img.ep-mark {
   border-radius: 9999px;
 }
 .saas-tab-btn.active .saas-tab-badge {
-  background: rgba(16, 185, 129, 0.2);
-  color: #34d399;
+  background: rgba(51, 85, 139, 0.2);
+  color: #9fb6d8;
 }
 
 .saas-card {
@@ -1962,7 +1962,7 @@ img.ep-mark {
   border-radius: 50%;
   border: 1.5px solid #0b0b0b;
 }
-.saas-avatar-dot.active { background: #10b981; }
+.saas-avatar-dot.active { background: #29467a; }
 .saas-avatar-dot.locked { background: #f43f5e; }
 .saas-avatar-dot.submitted { background: #38bdf8; }
 .saas-avatar-dot.not_started { background: #6b7280; }
@@ -1975,9 +1975,9 @@ img.ep-mark {
   border-radius: 6px;
   font-size: 11px;
   font-weight: 700;
-  background: rgba(16, 185, 129, 0.12);
-  color: #34d399;
-  border: 1px solid rgba(16, 185, 129, 0.25);
+  background: rgba(51, 85, 139, 0.12);
+  color: #9fb6d8;
+  border: 1px solid rgba(51, 85, 139, 0.25);
   font-family: ui-monospace, monospace;
 }
 .saas-badge-danger {

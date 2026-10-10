@@ -6,11 +6,11 @@
   --text: #334155;
   --muted: #64748b;
   --line: #e2e8f0;
-  --green: #16a34a;
-  --green-dark: #15803d;
-  --tint: #f0fdf4;
-  --navy: #0b0f24;
-  --lime: #c6f432;
+  --green: #33558b;
+  --green-dark: #29467a;
+  --tint: #eef3fa;
+  --navy: #0f172a;
+  --lime: #93b4e6;
   --danger: #dc2626;
 }
 * {
@@ -38,7 +38,7 @@ a {
   text-decoration: none;
 }
 :focus-visible {
-  outline: 3px solid rgba(22, 163, 74, 0.45);
+  outline: 3px solid rgba(51,85,139, 0.45);
   outline-offset: 2px;
 }
 .top {
@@ -250,7 +250,7 @@ button.danger.armed {
 .composer textarea:focus {
   border-color: var(--green);
   background: #fff;
-  box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.14);
+  box-shadow: 0 0 0 3px rgba(51,85,139, 0.14);
 }
 .columns {
   display: grid;
@@ -284,7 +284,7 @@ button.danger.armed {
   font-weight: 400;
 }
 .thread:hover:not(:disabled) {
-  border-color: #86efac;
+  border-color: #c7d4e8;
 }
 .thread.current {
   border-color: var(--green);

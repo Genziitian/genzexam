@@ -30,7 +30,7 @@
       "font:500 13px/1 Inter,system-ui,-apple-system,sans-serif;" +
       "padding:9px 32px 9px 12px;min-width:170px;transition:border-color .15s ease,box-shadow .15s ease}" +
       ".ql-filter-select:hover{border-color:#cbd5e1}" +
-      ".ql-filter-select:focus{outline:none;border-color:#16a34a;box-shadow:0 0 0 3px rgba(22,163,74,.12)}" +
+      ".ql-filter-select:focus{outline:none;border-color:#33558b;box-shadow:0 0 0 3px rgba(51,85,139,.12)}" +
       ".ql-chips-hidden{display:none!important}" +
       ".ql-discussion-sort-row>button{display:none!important}" +
       ".ql-discussion-sort-select{min-width:150px}" +
@@ -300,7 +300,7 @@
         var badge = document.createElement("span");
         badge.className = "ql-paper-review-state";
         badge.textContent = paper.approval_status === "pending" ? "Pending manager approval" : (paper.is_active ? "Approved · active" : "Approved · disabled");
-        badge.style.cssText = "display:inline-block;margin:4px 0 0 8px;padding:3px 8px;border-radius:999px;font-size:11px;font-weight:600;background:" + (paper.approval_status === "pending" ? "#fff7ed;color:#c2410c" : paper.is_active ? "#ecfdf5;color:#047857" : "#f1f5f9;color:#475569");
+        badge.style.cssText = "display:inline-block;margin:4px 0 0 8px;padding:3px 8px;border-radius:999px;font-size:11px;font-weight:600;background:" + (paper.approval_status === "pending" ? "#fff7ed;color:#c2410c" : paper.is_active ? "#eef3fa;color:#24406b" : "#f1f5f9;color:#475569");
         firstCell.appendChild(badge);
       }
       // Managers see the price of a paid paper next to its title.
@@ -349,7 +349,7 @@
         approve.type = "button";
         approve.className = "ql-approve-paper";
         approve.textContent = "Approve";
-        approve.style.cssText = "border:0;border-radius:8px;background:#16a34a;color:white;padding:6px 10px;font:600 12px/1.2 inherit;cursor:pointer";
+        approve.style.cssText = "border:0;border-radius:8px;background:#33558b;color:white;padding:6px 10px;font:600 12px/1.2 inherit;cursor:pointer";
         approve.addEventListener("click", function () {
           approve.disabled = true;
           approve.textContent = "Approving…";
@@ -367,7 +367,7 @@
     var card = document.createElement("section");
     card.id = "ql-manager-course-assignments";
     card.style.cssText = "margin-top:20px;background:#fff;border:1px solid #e2e8f0;border-radius:18px;padding:24px;box-shadow:0 2px 5px rgba(15,23,42,.08)";
-    card.innerHTML = '<h2 style="margin:0;color:#0f172a;font-size:20px;font-weight:700">Teacher course access</h2><p style="margin:6px 0 16px;color:#64748b;font-size:14px">Choose an admin teacher, then assign the courses they can manage.</p><select id="ql-teacher-select" style="width:100%;max-width:440px;padding:10px;border:1px solid #cbd5e1;border-radius:10px"><option>Loading teachers…</option></select><div id="ql-teacher-courses" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px;margin:16px 0"></div><div style="display:flex;align-items:center;gap:12px"><button id="ql-save-teacher-courses" type="button" style="border:0;border-radius:10px;background:#16a34a;color:white;padding:10px 16px;font-weight:700;cursor:pointer">Save course access</button><span id="ql-teacher-course-message" role="status" style="font-size:13px;color:#64748b"></span></div>';
+    card.innerHTML = '<h2 style="margin:0;color:#0f172a;font-size:20px;font-weight:700">Teacher course access</h2><p style="margin:6px 0 16px;color:#64748b;font-size:14px">Choose an admin teacher, then assign the courses they can manage.</p><select id="ql-teacher-select" style="width:100%;max-width:440px;padding:10px;border:1px solid #cbd5e1;border-radius:10px"><option>Loading teachers…</option></select><div id="ql-teacher-courses" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px;margin:16px 0"></div><div style="display:flex;align-items:center;gap:12px"><button id="ql-save-teacher-courses" type="button" style="border:0;border-radius:10px;background:#33558b;color:white;padding:10px 16px;font-weight:700;cursor:pointer">Save course access</button><span id="ql-teacher-course-message" role="status" style="font-size:13px;color:#64748b"></span></div>';
     page.appendChild(card);
     Promise.all([apiFetch("/admin/users?filter=admins&per_page=100"), apiFetch("/admin/courses")]).then(function (results) {
       var users = results[0].data || [];
@@ -410,13 +410,13 @@
       '<p style="margin:6px 0 0;color:#64748b;font-size:14px">Manage the name and photo shown on your manager account.</p></div>' +
       '<form id="ql-manager-profile-form" style="display:grid;gap:16px">' +
       '<div style="display:flex;align-items:center;gap:14px">' +
-      '<div id="ql-manager-avatar" style="width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#ecfdf5;color:#15803d;font-size:21px;font-weight:700;flex:0 0 auto"></div>' +
-      '<div style="min-width:0"><div id="ql-manager-profile-name" style="font-weight:700;color:#0f172a">Loading profile…</div><div id="ql-manager-profile-role" style="margin-top:4px;color:#15803d;font-size:12px;font-weight:700">MANAGER</div></div></div>' +
+      '<div id="ql-manager-avatar" style="width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#eef3fa;color:#24406b;font-size:21px;font-weight:700;flex:0 0 auto"></div>' +
+      '<div style="min-width:0"><div id="ql-manager-profile-name" style="font-weight:700;color:#0f172a">Loading profile…</div><div id="ql-manager-profile-role" style="margin-top:4px;color:#24406b;font-size:12px;font-weight:700">MANAGER</div></div></div>' +
       '<label style="display:grid;gap:6px;color:#475569;font-size:14px">Name<input id="ql-manager-name" name="name" maxlength="120" required style="width:100%;padding:11px 13px;border:1px solid #dbe3ee;border-radius:12px;color:#0f172a;background:#fff;font:inherit"></label>' +
       '<label style="display:grid;gap:6px;color:#475569;font-size:14px">Email<input id="ql-manager-email" readonly style="width:100%;padding:11px 13px;border:1px solid #dbe3ee;border-radius:12px;color:#64748b;background:#f8fafc;font:inherit"></label>' +
       '<label style="display:grid;gap:6px;color:#475569;font-size:14px">Profile photo<input id="ql-manager-photo" type="file" accept="image/png,image/jpeg,image/webp" style="color:#475569;font-size:13px"></label>' +
       '<label style="display:flex;align-items:center;gap:8px;color:#64748b;font-size:13px"><input id="ql-manager-remove-photo" type="checkbox"> Remove current photo</label>' +
-      '<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap"><p id="ql-manager-profile-message" role="status" style="margin:0;color:#64748b;font-size:13px"></p><button id="ql-manager-profile-save" type="submit" style="border:0;border-radius:11px;background:#16a34a;color:#fff;padding:11px 17px;font-size:14px;font-weight:700;cursor:pointer">Save Profile</button></div>' +
+      '<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap"><p id="ql-manager-profile-message" role="status" style="margin:0;color:#64748b;font-size:13px"></p><button id="ql-manager-profile-save" type="submit" style="border:0;border-radius:11px;background:#33558b;color:#fff;padding:11px 17px;font-size:14px;font-weight:700;cursor:pointer">Save Profile</button></div>' +
       '</form>';
 
     var headingCard = page.firstElementChild;
@@ -848,7 +848,7 @@
     if (!document.getElementById(styleId)) {
       var style = document.createElement("style");
       style.id = styleId;
-      style.textContent = ".ql-upload-open{margin:0;border:0;border-radius:13px;background:#169b50;color:#fff;padding:12px 18px;font:700 14px inherit;cursor:pointer;white-space:nowrap}.ql-upload-open:hover{background:#128343}.ql-mp-title-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.ql-upload-overlay{position:fixed;inset:0;z-index:99999;background:rgba(8,18,13,.62);display:grid;place-items:center;padding:18px}.ql-upload-modal{width:min(620px,100%);max-height:min(90vh,780px);overflow:auto;background:#fff;border-radius:24px;padding:26px;box-shadow:0 24px 80px #07130e55;color:#15221a}.ql-upload-modal h2{margin:0 0 8px;font-size:24px}.ql-upload-modal p{color:#647267;line-height:1.55}.ql-upload-close{float:right;border:0;background:#eff5f0;border-radius:50%;width:38px;height:38px;font-size:22px;cursor:pointer}.ql-upload-steps{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:8px;align-items:center;margin:22px 0;padding:16px;border-radius:17px;background:#f3faf5;text-align:center}.ql-upload-steps span{display:block;font-size:12px;font-weight:700}.ql-upload-icon{font-size:25px;margin-bottom:7px}.ql-upload-pick{display:block;width:100%;border:0;border-radius:13px;padding:14px;background:#169b50;color:#fff;font-size:15px;font-weight:700;cursor:pointer}.ql-upload-pick:disabled{opacity:.6;cursor:wait}.ql-upload-file{display:block;width:100%;margin:14px 0}.ql-upload-list{display:grid;gap:9px;margin-top:14px}.ql-upload-item{display:flex;justify-content:space-between;gap:12px;align-items:center;border:1px solid #e1ebe4;border-radius:13px;padding:12px}.ql-upload-item a{color:#168544;font-weight:700;text-decoration:none}.ql-upload-error{color:#b42318!important}.ql-upload-state{font-size:13px;color:#65746a}.ql-upload-note{font-size:12px} @media(max-width:560px){.ql-mp-title-actions{width:100%}.ql-mp-title-actions>*{flex:1;text-align:center;justify-content:center}.ql-upload-modal{padding:20px}.ql-upload-steps{gap:3px;padding:12px}.ql-upload-steps span{font-size:10px}.ql-upload-steps b{font-size:11px}}";
+      style.textContent = ".ql-upload-open{margin:0;border:0;border-radius:13px;background:#33558b;color:#fff;padding:12px 18px;font:700 14px inherit;cursor:pointer;white-space:nowrap}.ql-upload-open:hover{background:#29467a}.ql-mp-title-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.ql-upload-overlay{position:fixed;inset:0;z-index:99999;background:rgba(15,23,42,.62);display:grid;place-items:center;padding:18px}.ql-upload-modal{width:min(620px,100%);max-height:min(90vh,780px);overflow:auto;background:#fff;border-radius:24px;padding:26px;box-shadow:0 24px 80px #121a2755;color:#1d2c45}.ql-upload-modal h2{margin:0 0 8px;font-size:24px}.ql-upload-modal p{color:#64748b;line-height:1.55}.ql-upload-close{float:right;border:0;background:#eff5f0;border-radius:50%;width:38px;height:38px;font-size:22px;cursor:pointer}.ql-upload-steps{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:8px;align-items:center;margin:22px 0;padding:16px;border-radius:17px;background:#f3faf5;text-align:center}.ql-upload-steps span{display:block;font-size:12px;font-weight:700}.ql-upload-icon{font-size:25px;margin-bottom:7px}.ql-upload-pick{display:block;width:100%;border:0;border-radius:13px;padding:14px;background:#33558b;color:#fff;font-size:15px;font-weight:700;cursor:pointer}.ql-upload-pick:disabled{opacity:.6;cursor:wait}.ql-upload-file{display:block;width:100%;margin:14px 0}.ql-upload-list{display:grid;gap:9px;margin-top:14px}.ql-upload-item{display:flex;justify-content:space-between;gap:12px;align-items:center;border:1px solid #e2e8f0;border-radius:13px;padding:12px}.ql-upload-item a{color:#33558b;font-weight:700;text-decoration:none}.ql-upload-error{color:#b42318!important}.ql-upload-state{font-size:13px;color:#64748b}.ql-upload-note{font-size:12px} @media(max-width:560px){.ql-mp-title-actions{width:100%}.ql-mp-title-actions>*{flex:1;text-align:center;justify-content:center}.ql-upload-modal{padding:20px}.ql-upload-steps{gap:3px;padding:12px}.ql-upload-steps span{font-size:10px}.ql-upload-steps b{font-size:11px}}";
       document.head.appendChild(style);
     }
     var open = host.querySelector(".ql-upload-open");
@@ -1101,7 +1101,7 @@
           spans[s].outerHTML =
             '<div class="ql-brand-wrap" style="display:inline-flex;flex-direction:column;line-height:1.15;vertical-align:middle;">' +
               '<span style="font-size:14px;font-weight:800;color:#ffffff;letter-spacing:-0.01em;">Quiz LAB</span>' +
-              '<span style="font-size:10px;color:#94a3b8;font-weight:500;">by GenZ <span style="color:#22c55e;font-style:italic;font-weight:700;">IITian</span></span>' +
+              '<span style="font-size:10px;color:#94a3b8;font-weight:500;">by GenZ <span style="color:#33558b;font-style:italic;font-weight:700;">IITian</span></span>' +
             '</div>';
           break;
         }
@@ -1136,7 +1136,7 @@
               '<span style="font-size:15px;font-weight:800;letter-spacing:-0.01em;' + (isWhite ? 'color:#ffffff;' : 'color:#0f172a;') + '">Quiz LAB</span>' +
               (isAdmin ? '<span style="margin-left:8px;border-radius:4px;background:#1f2937;padding:2px 6px;font-size:9px;font-weight:700;text-transform:uppercase;color:#94a3b8;">Admin</span>' : '') +
             '</div>' +
-            '<span style="font-size:10.5px;font-weight:500;' + (isWhite ? 'color:#94a3b8;' : 'color:#64748b;') + '">by GenZ <span style="color:#16a34a;font-style:italic;font-weight:700;">IITian</span></span>' +
+            '<span style="font-size:10.5px;font-weight:500;' + (isWhite ? 'color:#94a3b8;' : 'color:#64748b;') + '">by GenZ <span style="color:#33558b;font-style:italic;font-weight:700;">IITian</span></span>' +
           '</div>';
       }
     }
@@ -1334,7 +1334,7 @@
     var ctx = canvas.getContext("2d");
     if (!ctx) { canvas.remove(); return; }
     ctx.scale(ratio, ratio);
-    var colors = ["#f59e0b", "#22c55e", "#3b82f6", "#ec4899", "#a855f7", "#facc15", "#ef4444"];
+    var colors = ["#f59e0b", "#33558b", "#3b82f6", "#ec4899", "#a855f7", "#facc15", "#ef4444"];
     var pieces = [];
     for (var i = 0; i < 130; i++) {
       var left = i % 2 === 0;
@@ -1516,10 +1516,82 @@
     }
   }
 
+  /*
+   * Login: one banner beside the form.
+   *
+   * The compiled login screen renders an animated mock dashboard in a 62%
+   * column beside the form. The mock is a React subtree, so it is hidden by
+   * ql-redesign.css and one static banner is placed in the same column here.
+   * The form itself keeps its own markup; only the stacked badge and the
+   * two-line headline are trimmed, so the page reads as banner plus form.
+   */
+  var LOGIN_POINTS = [
+    "Every past paper, in a room that behaves like the real exam",
+    "A real timer, a question palette and a calculator",
+    "Worked solutions the moment you submit",
+  ];
+
+  function simplifyLogin() {
+    if (!/^\/login\/?$/i.test(window.location.pathname)) return;
+    var column = document.querySelector(".lg\\:w-\\[62\\%\\]");
+    if (!column) return;
+
+    // The floating "Live preview of your dashboard" label belongs to the mock.
+    var float = document.querySelector(".login-preview-float");
+    if (float) float.style.display = "none";
+
+    if (!column.querySelector(".ql-login-banner")) {
+      // Mark the mock so the stylesheet can hide it without hiding the column.
+      Array.prototype.forEach.call(column.children, function (child) {
+        if (!child.classList.contains("ql-login-banner")) tag(child, "data-ql-login-preview", "");
+      });
+
+      var banner = document.createElement("div");
+      banner.className = "ql-login-banner";
+      banner.innerHTML =
+        '<div class="ql-login-banner-brand"><i></i><div>Quiz LAB<small>by GenZ IITian</small></div></div>' +
+        "<div>" +
+        "<h2>Practise the way the exam actually feels.</h2>" +
+        "<p>Past papers for the IITM BS degree, sat under a real clock " +
+        "with the same palette, navigation and marking you get on the day.</p>" +
+        '<ul class="ql-login-banner-points">' +
+        LOGIN_POINTS.map(function (point) {
+          return (
+            "<li>" +
+            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" ' +
+            'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+            '<path d="M20 6 9 17l-5-5"/></svg>' +
+            "<span>" + escapeHtml(point) + "</span></li>"
+          );
+        }).join("") +
+        "</ul></div>" +
+        '<div class="ql-login-banner-foot">Data Science · Electronic Systems · Aerospace · Management</div>';
+      column.appendChild(banner);
+    }
+
+    // Trim the form's own preamble: the banner now carries the message.
+    var form = document.querySelector(".max-w-\\[400px\\]");
+    if (!form || form.dataset.qlLoginTrimmed === "") return;
+    var badge = form.querySelector("span.rounded-full.border-brand\\/25");
+    if (badge) badge.style.display = "none";
+    var heading = form.querySelector("h2");
+    if (heading) {
+      heading.textContent = "Sign in";
+      heading.classList.remove("sm:text-[34px]");
+    }
+    var lede = heading && heading.nextElementSibling;
+    if (lede && lede.tagName === "P") {
+      lede.textContent = "Pick up your streak, rank and saved papers.";
+      lede.classList.remove("whitespace-nowrap");
+    }
+    tag(form, "data-ql-login-trimmed", "");
+  }
+
   function run() {
     var paper = paperRoomPath(window.location.pathname);
     if (paper) { window.location.replace(paper); return; }
     syncBrandName();
+    simplifyLogin();
     syncAdminShell();
     syncPaperPricingLink();
     removeStudentWeakSpotCard();

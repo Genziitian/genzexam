@@ -74,7 +74,7 @@
     try {
       if (!window.Razorpay) throw new Error('Secure checkout is still loading. Please try again in a moment.');
       const order = await api('/storefront/papers/'+encodeURIComponent(paper.id)+'/orders', {});
-      const checkout = new window.Razorpay({key:order.key_id,amount:order.amount,currency:order.currency,name:order.name,description:order.description,order_id:order.order_id,prefill:order.prefill,theme:{color:'#1f3d22'},handler:async result => {
+      const checkout = new window.Razorpay({key:order.key_id,amount:order.amount,currency:order.currency,name:order.name,description:order.description,order_id:order.order_id,prefill:order.prefill,theme:{color:'#33558b'},handler:async result => {
         try { await api('/storefront/payments/verify',result); location.assign('/my-papers?payment=success'); }
         catch (error) { toast(error.message+' If you were charged, check My Papers for confirmation before trying again.'); release(); }
       },modal:{ondismiss:() => { toast('Checkout closed. You can try again when you are ready.'); release(); }}});

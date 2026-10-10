@@ -1,0 +1,356 @@
+/*
+ * Quiz Lab redesign layer — slate blue.
+ *
+ * The student app ships as a compiled bundle; its React source no longer
+ * exists, so its brand colour cannot be changed at the source. The bundle
+ * expresses the brand through a bounded set of Tailwind `brand` utilities,
+ * which this file repoints at the tokens in ql-tokens.css. Load it after
+ * assets/index-*.css so it wins on source order at equal specificity.
+ *
+ * Green is kept wherever it still means "correct" or "passed" — the `success`
+ * utilities and the pass/fail pills are deliberately untouched. Only green
+ * used as the *brand* becomes slate blue.
+ *
+ * Sections:
+ *   1. bundle brand utilities
+ *   2. bundle card tints
+ *   3. ql-* shell, sidebar and controls
+ *   4. login page: one banner beside the form
+ */
+
+/* ------------------------------------------- 1. bundle brand utilities */
+
+:root {
+  --brand: #33558b;
+  --brand-dark: #29467a;
+}
+
+.border-brand { border-color: var(--ql-primary) }
+.border-brand\/20 { border-color: #33558b33 }
+.border-brand\/25 { border-color: #33558b40 }
+.border-brand\/30 { border-color: #33558b4d }
+.border-brand\/40 { border-color: #33558b66 }
+.border-brand\/60 { border-color: #33558b99 }
+
+.bg-brand { background-color: var(--ql-primary) }
+.bg-brand\/5 { background-color: #33558b0d }
+.bg-brand\/10 { background-color: #33558b1a }
+.bg-brand\/15 { background-color: #33558b26 }
+.bg-brand\/20 { background-color: #33558b33 }
+.bg-brand\/30 { background-color: #33558b4d }
+
+.text-brand { color: var(--ql-primary) }
+.text-brand-light { color: #6d93cf }
+
+.from-brand {
+  --tw-gradient-from: #33558b var(--tw-gradient-from-position);
+  --tw-gradient-to: #33558b00 var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.accent-brand { accent-color: var(--ql-primary) }
+.ring-brand { --tw-ring-color: var(--ql-primary) }
+.ring-brand\/60 { --tw-ring-color: #33558b99 }
+.shadow-brand\/20 { --tw-shadow-color: #33558b33; --tw-shadow: var(--tw-shadow-colored) }
+.shadow-brand\/25 { --tw-shadow-color: #33558b40; --tw-shadow: var(--tw-shadow-colored) }
+.shadow-glow {
+  --tw-shadow: 0 0 20px #33558b2e;
+  --tw-shadow-colored: 0 0 20px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.file\:bg-brand\/10::file-selector-button { background-color: #33558b1a }
+.file\:text-brand::file-selector-button { color: var(--ql-primary) }
+
+.hover\:border-brand:hover { border-color: var(--ql-primary) }
+.hover\:border-brand\/30:hover { border-color: #33558b4d }
+.hover\:border-brand\/40:hover { border-color: #33558b66 }
+.hover\:border-brand\/50:hover { border-color: #33558b80 }
+.hover\:border-brand\/60:hover { border-color: #33558b99 }
+.hover\:bg-brand-dark:hover { background-color: var(--ql-primary-hover) }
+.hover\:bg-brand\/5:hover { background-color: #33558b0d }
+.hover\:bg-brand\/10:hover { background-color: #33558b1a }
+.hover\:bg-brand\/25:hover { background-color: #33558b40 }
+.hover\:text-brand:hover { color: var(--ql-primary) }
+.hover\:text-brand-dark:hover { color: var(--ql-primary-hover) }
+.hover\:text-brand-light:hover { color: #6d93cf }
+.hover\:shadow-brand\/5:hover { --tw-shadow-color: #33558b0d; --tw-shadow: var(--tw-shadow-colored) }
+.hover\:shadow-brand\/25:hover { --tw-shadow-color: #33558b40; --tw-shadow: var(--tw-shadow-colored) }
+
+.focus\:border-brand:focus { border-color: var(--ql-primary) }
+.focus\:ring-brand\/20:focus { --tw-ring-color: #33558b33 }
+.focus\:ring-brand\/30:focus { --tw-ring-color: #33558b4d }
+
+.group:hover .group-hover\:text-brand-light { color: #6d93cf }
+
+/* The emerald utilities are decoration (the live pill, gradient accents), not
+   a pass state — green-* carries that. The spec puts the live pill on the
+   slate tint, so emerald joins the brand family. */
+.border-emerald-200 { border-color: var(--ql-tint-border) }
+.bg-emerald-50 { background-color: var(--ql-tint-strong) }
+.bg-emerald-50\/60 { background-color: #e3eaf599 }
+.bg-emerald-100 { background-color: var(--ql-answered-bg) }
+.bg-emerald-400 { background-color: #6d93cf }
+.bg-emerald-500 { background-color: var(--ql-primary) }
+.text-emerald-600 { color: var(--ql-primary) }
+.text-emerald-700 { color: var(--ql-primary-ink) }
+.text-emerald-800\/90 { color: #1e3355e6 }
+.ring-emerald-200 { --tw-ring-color: var(--ql-tint-border) }
+.from-emerald-200 {
+  --tw-gradient-from: #c7d4e8 var(--tw-gradient-from-position);
+  --tw-gradient-to: #c7d4e800 var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+.via-emerald-500 {
+  --tw-gradient-to: #33558b00 var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), #33558b var(--tw-gradient-via-position), var(--tw-gradient-to);
+}
+.to-emerald-100 { --tw-gradient-to: #dfe8f5 var(--tw-gradient-to-position) }
+.to-emerald-400 { --tw-gradient-to: #6d93cf var(--tw-gradient-to-position) }
+.to-emerald-500 { --tw-gradient-to: #33558b var(--tw-gradient-to-position) }
+.to-emerald-600 { --tw-gradient-to: #29467a var(--tw-gradient-to-position) }
+
+/* bg-green-500 is the live dot; green-100/700 stay for positive deltas. */
+.bg-green-500 { background-color: var(--ql-primary) }
+
+/* ----------------------------------------------- 2. bundle card tints */
+
+.bg-surface-card.shadow-card::before {
+  background: linear-gradient(90deg, var(--ql-primary), #6d93cf 55%, var(--ql-tint-border));
+}
+
+.bg-surface-card .bg-slate-100,
+.bg-surface-card .bg-slate-50 {
+  background-color: var(--ql-tint) !important;
+  color: var(--ql-primary-ink);
+}
+
+.bg-surface-card a:hover { color: var(--ql-primary) }
+
+/* ------------------------------ 3. ql-* shell, sidebar and controls */
+
+.ql-sidebar {
+  background: var(--ql-shell) !important;
+  border-right: 1px solid var(--ql-shell-border);
+}
+.ql-sidebar-head { border-bottom: 1px solid var(--ql-shell-border) }
+
+.ql-brand-mark { color: var(--ql-shell-text) }
+.ql-brand-text b { color: #fff }
+.ql-brand-text small { color: var(--ql-shell-muted) }
+
+.ql-role-pill {
+  background: var(--ql-shell-raised);
+  color: var(--ql-shell-accent);
+}
+
+.ql-nav-active,
+.ql-nav-current {
+  background: rgba(51, 85, 139, .22) !important;
+  color: #fff !important;
+  box-shadow: inset 3px 0 0 var(--ql-shell-accent);
+}
+
+/* Page furniture */
+.ql-page { color: var(--ql-ink) }
+.ql-h1, .ql-h2 { color: var(--ql-ink) }
+.ql-sub, .ql-mute, .ql-hint { color: var(--ql-muted) }
+.ql-card {
+  background: var(--ql-surface);
+  border: 1px solid var(--ql-border);
+  color: var(--ql-ink);
+}
+.ql-input {
+  border: 1px solid var(--ql-border);
+  color: var(--ql-ink);
+  background: var(--ql-surface);
+}
+.ql-input::placeholder { color: var(--ql-placeholder) }
+.ql-input:focus {
+  outline: none;
+  border-color: var(--ql-primary);
+  box-shadow: 0 0 0 3px var(--ql-tint-strong);
+}
+
+.ql-chip {
+  border: 1px solid var(--ql-border);
+  background: var(--ql-surface);
+  color: var(--ql-secondary);
+}
+.ql-chip-on {
+  background: var(--ql-primary);
+  border-color: var(--ql-primary);
+  color: var(--ql-on-primary);
+}
+
+.ql-table { color: var(--ql-ink) }
+.ql-table th { background: var(--ql-panel-soft); color: var(--ql-muted) }
+.ql-table td { border-top: 1px solid var(--ql-border) }
+.ql-table-wrap { border: 1px solid var(--ql-border) }
+.ql-mail, .ql-empty { color: var(--ql-muted) }
+
+.ql-btn {
+  border: 1px solid var(--ql-border);
+  background: var(--ql-surface);
+  color: var(--ql-ink);
+}
+.ql-btn:hover:not(:disabled) { background: var(--ql-panel) }
+.ql-btn-primary {
+  background: var(--ql-primary);
+  border-color: var(--ql-primary);
+  color: var(--ql-on-primary);
+}
+.ql-btn-primary:hover:not(:disabled) {
+  background: var(--ql-primary-hover);
+  border-color: var(--ql-primary-hover);
+}
+.ql-btn-on {
+  background: var(--ql-primary);
+  border-color: var(--ql-primary);
+  color: var(--ql-on-primary);
+}
+
+.ql-avatar { background: var(--ql-primary); color: var(--ql-on-primary) }
+
+/* Role badges are categorical; status badges keep their status colour. */
+.ql-badge-student { background: var(--ql-panel); color: var(--ql-secondary) }
+.ql-badge-admin { background: var(--ql-tint); color: var(--ql-primary-deep) }
+.ql-badge-manager { background: var(--ql-review-bg); color: var(--ql-review-text) }
+.ql-badge-ok { background: var(--ql-pass-bg); color: var(--ql-pass-text) }
+
+.ql-tile {
+  border: 1px solid var(--ql-border);
+  background: var(--ql-panel-soft);
+  color: var(--ql-ink);
+}
+.ql-tile:hover { border-color: var(--ql-primary); background: var(--ql-surface) }
+.ql-tile span { color: var(--ql-muted) }
+
+.ql-dl-row { border-top: 1px solid var(--ql-panel) }
+.ql-dl dt { color: var(--ql-muted) }
+.ql-modal { background: rgba(15, 23, 42, .6) }
+.ql-modal-box { background: var(--ql-surface); color: var(--ql-ink) }
+.ql-back { color: var(--ql-secondary) }
+
+/* --------------------------- 4. login page: one banner beside the form */
+
+/*
+ * The old login screen rendered an animated mock dashboard (sparklines,
+ * rotating tabs, a drifting cursor) beside the form. It is replaced by a
+ * single static banner. The mock is a React subtree that cannot be removed
+ * from the source, so it is hidden here and the banner is injected by
+ * app-enhancements.js into the same slot.
+ */
+[data-ql-login-preview] { display: none !important }
+
+/* A single banner needs less room than the mock dashboard it replaces. */
+@media (min-width: 1024px) {
+  .lg\:w-\[62\%\] { width: 52% }
+}
+
+.ql-login-banner {
+  position: relative;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  padding: clamp(32px, 4vw, 56px);
+  /* Literal, not tokens: this panel stays dark in both themes, so it must not
+     follow --ql-primary-deep, which flips to a light text colour in dark mode. */
+  background:
+    radial-gradient(120% 90% at 100% 0%, #3f6aa8 0%, rgba(63, 106, 168, 0) 58%),
+    linear-gradient(155deg, #33558b 0%, #1e3355 100%);
+  color: #fff;
+}
+
+/* A faint grid, so the panel reads as a surface rather than a flat fill. */
+.ql-login-banner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, .06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, .06) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(120% 80% at 20% 10%, #000 20%, transparent 75%);
+  -webkit-mask-image: radial-gradient(120% 80% at 20% 10%, #000 20%, transparent 75%);
+  pointer-events: none;
+}
+
+.ql-login-banner > * { position: relative; z-index: 1 }
+
+.ql-login-banner-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -.01em;
+}
+.ql-login-banner-brand i {
+  width: 38px;
+  height: 38px;
+  flex: none;
+  border-radius: 11px;
+  background: url(/assets/quiz-lab-icon.png) center/cover no-repeat;
+}
+.ql-login-banner-brand small {
+  display: block;
+  margin-top: 2px;
+  font-size: 11px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, .72);
+}
+
+.ql-login-banner h2 {
+  margin: 28px 0 0;
+  max-width: 15em;
+  font-size: clamp(26px, 2.4vw, 34px);
+  font-weight: 800;
+  line-height: 1.14;
+  letter-spacing: -.02em;
+}
+.ql-login-banner p {
+  margin: 14px 0 0;
+  max-width: 30em;
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, .78);
+}
+
+.ql-login-banner-points {
+  margin: 28px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 10px;
+}
+.ql-login-banner-points li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13.5px;
+  color: rgba(255, 255, 255, .88);
+}
+.ql-login-banner-points svg {
+  flex: none;
+  margin-top: 1px;
+  width: 17px;
+  height: 17px;
+  color: #bcd2f0;
+}
+
+.ql-login-banner-foot {
+  margin-top: 32px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, .16);
+  font-size: 12px;
+  color: rgba(255, 255, 255, .66);
+}
+
+/* The banner is decoration: below the two-column breakpoint it is dropped
+   entirely rather than stacked, leaving the form on its own. */
+@media (max-width: 1023px) {
+  .ql-login-banner { display: none }
+}

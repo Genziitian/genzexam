@@ -140,7 +140,7 @@
         <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:16px;width:100%;">
           <div style="display:flex;align-items:center;gap:10px;">
             <img src="/assets/quiz-lab-icon.png" alt="Quiz Lab" style="height:30px;width:30px;border-radius:6px;object-fit:contain;">
-            ${I("shield", 22, "#059669")}
+            ${I("shield", 22, "#33558b")}
             <h2 style="font-size:20px;font-weight:800;color:#0f172a;margin:0;">Candidate Code of Conduct (COC)</h2>
           </div>
           <button id="ep-coc-close" style="background:#f8fafc;border:1px solid #cbd5e1;color:#334155;border-radius:8px;padding:6px 10px;cursor:pointer;font-weight:800;display:flex;align-items:center;">
@@ -167,7 +167,7 @@
               ([title, body], idx) => `
                 <div style="border:1px solid #e2e8f0;background:#f8fafc;border-radius:12px;padding:12px 14px;">
                   <div style="display:flex;align-items:center;gap:8px;font-size:13px;font-weight:800;color:#0f172a;margin-bottom:6px;">
-                    <span style="width:22px;height:22px;border-radius:9999px;background:#dcfce7;color:#047857;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;">${idx + 1}</span>
+                    <span style="width:22px;height:22px;border-radius:9999px;background:#eef3fa;color:#24406b;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;">${idx + 1}</span>
                     ${title}
                   </div>
                   <div style="font-size:12px;line-height:1.55;color:#475569;">${body}</div>
@@ -461,7 +461,7 @@
       root.id = "ep-app";
       document.body.appendChild(root);
     }
-    root.innerHTML = `<div class="ep-shell"><header class="ep-top"><a class="ep-brand" href="/exams"><img class="ep-mark" src="/assets/quiz-lab-icon.png" alt="" width="36" height="36"><span><b>Quiz LAB</b><small>Secure exam room</small></span></a><div class="ep-user"><button type="button" class="ep-btn ep-btn-quiet" data-action="open-coc" style="font-weight:700;cursor:pointer;padding:4px 10px;border-radius:6px;border:1px solid #cbd5e1;background:rgba(255,255,255,0.08);color:inherit;display:inline-flex;align-items:center;gap:6px;">${I("shield", 13, "#10b981")} COC</button><span class="ep-user-name">${esc(app.user?.name || app.user?.email || "")}</span><a class="ep-link" href="/dashboard">Back to app</a><button class="ep-btn ep-btn-quiet" data-action="logout">Sign out</button></div></header><div id="ep-content"></div><div id="ep-toast" role="status" aria-live="polite"></div></div>`;
+    root.innerHTML = `<div class="ep-shell"><header class="ep-top"><a class="ep-brand" href="/exams"><img class="ep-mark" src="/assets/quiz-lab-icon.png" alt="" width="36" height="36"><span><b>Quiz LAB</b><small>Secure exam room</small></span></a><div class="ep-user"><button type="button" class="ep-btn ep-btn-quiet" data-action="open-coc" style="font-weight:700;cursor:pointer;padding:4px 10px;border-radius:6px;border:1px solid #cbd5e1;background:rgba(255,255,255,0.08);color:inherit;display:inline-flex;align-items:center;gap:6px;">${I("shield", 13, "#29467a")} COC</button><span class="ep-user-name">${esc(app.user?.name || app.user?.email || "")}</span><a class="ep-link" href="/dashboard">Back to app</a><button class="ep-btn ep-btn-quiet" data-action="logout">Sign out</button></div></header><div id="ep-content"></div><div id="ep-toast" role="status" aria-live="polite"></div></div>`;
     root.addEventListener("click", onClick);
     root.addEventListener("input", onInput);
     root.addEventListener("change", onChange);
@@ -865,7 +865,7 @@
             ${
               e.status === "published"
                 ? `<button class="saas-btn saas-btn-primary" data-action="start">
-                     ${I("play", 13, "#34d399")} Start Exam
+                     ${I("play", 13, "#9fb6d8")} Start Exam
                    </button>
                    <button class="saas-btn" data-action="edit-enrollments">
                      ${I("users", 13, "#9ca3af")} Edit Enrollment
@@ -883,7 +883,7 @@
                    </button>`
                 : e.status === "paused"
                   ? `<button class="saas-btn saas-btn-primary" data-action="resume">
-                       ${I("play", 13, "#34d399")} Resume
+                       ${I("play", 13, "#9fb6d8")} Resume
                      </button>`
                   : ""
             }
@@ -912,8 +912,8 @@
 
             ${
               e.results_published
-                ? `<button class="saas-btn" data-action="export" style="background:#042f2e;color:#2dd4bf;border-color:#0d9488;">
-                     ${I("download", 13, "#2dd4bf")} Export Marks (CSV)
+                ? `<button class="saas-btn" data-action="export" style="background:#0f172a;color:#9fb6d8;border-color:#33558b;">
+                     ${I("download", 13, "#9fb6d8")} Export Marks (CSV)
                    </button>`
                 : ""
             }
@@ -945,14 +945,14 @@
           <div class="saas-kpi-card">
             <div class="saas-kpi-title">
               <span>Active Test Takers</span>
-              <span style="color:#34d399;font-size:11px;">LIVE</span>
+              <span style="color:#9fb6d8;font-size:11px;">LIVE</span>
             </div>
             <div class="saas-kpi-value-row">
               <span class="saas-kpi-value">${activeCount}</span>
               <span style="color:#6b7280;font-size:13px;font-weight:600;">/ ${enrolledCount || sessions.length} in session</span>
             </div>
             <div class="saas-kpi-subtext">
-              <span style="color:#10b981;font-weight:700;">100%</span> telemetry uptime
+              <span style="color:#29467a;font-weight:700;">100%</span> telemetry uptime
             </div>
           </div>
 
@@ -980,7 +980,7 @@
               <span style="color:#6b7280;font-size:13px;font-weight:600;">avg pace</span>
             </div>
             <div style="width:100%;height:4px;background:#1f1f1f;border-radius:9999px;overflow:hidden;margin-top:8px;">
-              <div style="height:100%;background:#10b981;width:${avgProgress}%;"></div>
+              <div style="height:100%;background:#29467a;width:${avgProgress}%;"></div>
             </div>
           </div>
 
@@ -1108,7 +1108,7 @@
                               </td>
                               <td>${statusBadge}</td>
                               <td>
-                                <span style="font-weight:700;color:${Number(s.warnings) > 0 ? "#fb7185" : "#34d399"};">
+                                <span style="font-weight:700;color:${Number(s.warnings) > 0 ? "#fb7185" : "#9fb6d8"};">
                                   ${Number(s.warnings || 0)}
                                 </span>
                                 <span style="color:#6b7280;font-size:11px;">/ ${maxWarnings}</span>
@@ -1199,7 +1199,7 @@
                         )
                         .join("")
                     : `<tr><td colspan="4" style="text-align:center;padding:48px 24px;color:#6b7280;">
-                         <div style="margin-bottom:8px;">${I("check", 28, "#10b981")}</div>
+                         <div style="margin-bottom:8px;">${I("check", 28, "#29467a")}</div>
                          <div style="font-weight:700;color:#d1d5db;margin-bottom:4px;">No Locked Candidates</div>
                          <div>All candidates are adhering to exam window security rules.</div>
                        </td></tr>`
@@ -1289,7 +1289,7 @@
         <div class="saas-card">
           <div class="saas-table-toolbar">
             <div style="font-weight:700;color:#f9fafb;display:flex;align-items:center;gap:8px;">
-              ${I("users", 16, "#34d399")}
+              ${I("users", 16, "#9fb6d8")}
               Enrolled Candidates Whitelist (${enrollments.length})
             </div>
             <button class="saas-btn saas-btn-primary" data-action="edit-enrollments">
@@ -1304,7 +1304,7 @@
                       .map(
                         (en) => `
                           <div style="background:#141414;border:1px solid #222;border-radius:8px;padding:10px 14px;font-size:13px;display:flex;align-items:center;gap:10px;">
-                            ${I("check", 14, "#10b981")}
+                            ${I("check", 14, "#29467a")}
                             <span style="color:#f9fafb;font-family:ui-monospace,monospace;">${esc(en.email || en)}</span>
                           </div>
                         `,
@@ -1405,23 +1405,23 @@
           </p>
           <div class="ep-checklist-box">
             <div class="ep-checklist-item">
-              ${I("lock", 16, "#059669")}
+              ${I("lock", 16, "#33558b")}
               <div><b>Locked &amp; Private Room:</b> Ensure you are alone with no other persons present.</div>
             </div>
             <div class="ep-checklist-item">
-              ${I("volumeX", 16, "#059669")}
+              ${I("volumeX", 16, "#33558b")}
               <div><b>Zero Noise:</b> No background conversation, audio devices, or music.</div>
             </div>
             <div class="ep-checklist-item">
-              ${I("wifi", 16, "#059669")}
+              ${I("wifi", 16, "#33558b")}
               <div><b>Stable Network:</b> Ensure unlimited high-speed data or uninterrupted Wi-Fi.</div>
             </div>
             <div class="ep-checklist-item">
-              ${I("shield", 16, "#059669")}
+              ${I("shield", 16, "#33558b")}
               <div><b>Zero Cheating Tolerance:</b> No secondary devices, paper notes, or browser extensions.</div>
             </div>
           </div>
-          <button type="button" class="ep-modal-btn" data-action="onboard-step-2" style="background:#059669;box-shadow:0 4px 14px rgba(5,150,105,0.3);">
+          <button type="button" class="ep-modal-btn" data-action="onboard-step-2" style="background:#33558b;box-shadow:0 4px 14px rgba(51,85,139,0.3);">
             Proceed to Attendance →
           </button>
           <div class="ep-modal-stepper">
@@ -1475,7 +1475,7 @@
             </div>
           </div>
           <div id="ep-cam-action-bar" style="width:100%;display:${app.photoDataUrl ? "none" : "block"};">
-            <button type="button" id="ep-btn-take-photo" class="ep-modal-btn" data-action="take-selfie" style="background:#059669;display:flex;align-items:center;justify-content:center;gap:8px;">
+            <button type="button" id="ep-btn-take-photo" class="ep-modal-btn" data-action="take-selfie" style="background:#33558b;display:flex;align-items:center;justify-content:center;gap:8px;">
               ${I("camera", 16, "#ffffff")} Capture Photo
             </button>
           </div>
@@ -1483,7 +1483,7 @@
             <button type="button" id="ep-btn-retake-photo" class="ep-modal-btn" data-action="retake-selfie" style="background:#f1f5f9;color:#334155;border:1px solid #cbd5e1;flex:1;display:flex;align-items:center;justify-content:center;gap:6px;">
               ${I("refresh", 14, "#334155")} Retake
             </button>
-            <button type="button" id="ep-btn-confirm-photo" class="ep-modal-btn" data-action="onboard-step-4" style="background:#059669;flex:1;display:flex;align-items:center;justify-content:center;gap:6px;">
+            <button type="button" id="ep-btn-confirm-photo" class="ep-modal-btn" data-action="onboard-step-4" style="background:#33558b;flex:1;display:flex;align-items:center;justify-content:center;gap:6px;">
               ${I("check", 14, "#ffffff")} Confirm Photo
             </button>
           </div>
@@ -1514,7 +1514,7 @@
               <div><b>No Tab Switching:</b> You are NOT permitted to open any other tab. Doing so triggers infraction warnings.</div>
             </div>
             <div class="ep-checklist-item">
-              ${I("clock", 16, "#059669")}
+              ${I("clock", 16, "#33558b")}
               <div><b>Auto-Submission:</b> Your answers will automatically submit when the exam timer ends.</div>
             </div>
             <div class="ep-checklist-item">
@@ -1523,7 +1523,7 @@
             </div>
           </div>
           <label style="display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;color:#334155;cursor:pointer;margin-bottom:20px;text-align:left;width:100%;">
-            <input type="checkbox" id="ep-cb-agree" style="width:17px;height:17px;accent-color:#059669;cursor:pointer;" />
+            <input type="checkbox" id="ep-cb-agree" style="width:17px;height:17px;accent-color:#33558b;cursor:pointer;" />
             <span>I understand and agree to all examination rules.</span>
           </label>
           <button type="button" id="ep-btn-final-enter" class="ep-modal-btn" data-action="join-confirm" disabled style="background:#94a3b8;color:#ffffff;cursor:not-allowed;box-shadow:none;">
@@ -1573,7 +1573,7 @@
     return q.type !== "comprehension" && !(v === undefined || v === null || v === "" || (Array.isArray(v) && !v.length));
   }
   function roomLabelStyle(checked) {
-    return `display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:10px;border:1.5px solid ${checked ? "#059669" : "#e2e8f0"};background:${checked ? "#f0fdf4" : "#ffffff"};cursor:pointer;transition:all 0.15s ease;`;
+    return `display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:10px;border:1.5px solid ${checked ? "#33558b" : "#e2e8f0"};background:${checked ? "#eef3fa" : "#ffffff"};cursor:pointer;transition:all 0.15s ease;`;
   }
   function roomInputs(q, locked) {
     const val = app.draftAnswers[q.id];
@@ -1583,14 +1583,14 @@
         .map((o, j) => {
           const ans = q.type === "true_false" ? j === 0 : j;
           const checked = val != null && String(val) === String(ans);
-          return `<label style="${roomLabelStyle(checked)}"><input type="radio" name="answer-${esc(q.id)}" data-answer="${esc(q.id)}" value="${q.type === "true_false" ? String(ans) : j}" ${checked ? "checked" : ""} ${off} style="width:16px;height:16px;accent-color:#059669;flex-shrink:0;" /><span style="font-size:14px;color:#1e293b;font-weight:500;min-width:0;flex:1;">${contentHtml(o)}</span></label>`;
+          return `<label style="${roomLabelStyle(checked)}"><input type="radio" name="answer-${esc(q.id)}" data-answer="${esc(q.id)}" value="${q.type === "true_false" ? String(ans) : j}" ${checked ? "checked" : ""} ${off} style="width:16px;height:16px;accent-color:#33558b;flex-shrink:0;" /><span style="font-size:14px;color:#1e293b;font-weight:500;min-width:0;flex:1;">${contentHtml(o)}</span></label>`;
         })
         .join("")}</div>`;
     if (q.type === "mcq_multi")
       return `<div style="display:flex;flex-direction:column;gap:10px;">${(q.options || [])
         .map((o, j) => {
           const checked = Array.isArray(val) && val.map(String).includes(String(j));
-          return `<label style="${roomLabelStyle(checked)}"><input type="checkbox" data-answer-multi="${esc(q.id)}" value="${j}" ${checked ? "checked" : ""} ${off} style="width:16px;height:16px;accent-color:#059669;flex-shrink:0;" /><span style="font-size:14px;color:#1e293b;font-weight:500;min-width:0;flex:1;">${contentHtml(o)}</span></label>`;
+          return `<label style="${roomLabelStyle(checked)}"><input type="checkbox" data-answer-multi="${esc(q.id)}" value="${j}" ${checked ? "checked" : ""} ${off} style="width:16px;height:16px;accent-color:#33558b;flex-shrink:0;" /><span style="font-size:14px;color:#1e293b;font-weight:500;min-width:0;flex:1;">${contentHtml(o)}</span></label>`;
         })
         .join("")}</div>`;
     if (q.type === "comprehension")
@@ -1613,7 +1613,7 @@
     const review = (app.exam?.questions || []).filter((q) => app.review[q.id]).length;
     const row = (bg, border, text) =>
       `<div style="display:flex;align-items:center;gap:6px;"><span style="width:10px;height:10px;border-radius:3px;background:${bg};border:1px solid ${border};"></span>${text}</div>`;
-    return `<div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">${row("#dcfce7", "#86efac", `Answered (${answered})`)}${row("#ede9fe", "#c4b5fd", `Review (${review})`)}${row("#f1f5f9", "#cbd5e1", `Unanswered (${qs.length - answered})`)}</div>`;
+    return `<div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">${row("#dfe8f5", "#9fb6d8", `Answered (${answered})`)}${row("#ede9fe", "#c4b5fd", `Review (${review})`)}${row("#f1f5f9", "#cbd5e1", `Unanswered (${qs.length - answered})`)}</div>`;
   }
   /* After an answer changes: refresh the palette and option highlights without re-rendering. */
   function refreshRoom() {
@@ -1680,9 +1680,9 @@
 <div class="pr-live-tools" style="display:flex;align-items:center;gap:10px;">
 <span class="ep-status ${esc(e.status)}">${esc(e.status)}</span>
 <div id="ep-warning-chip" class="ep-header-warning ${warnings > 0 ? "warning-active" : ""}">Warnings: <b>${warnings}</b></div>
-<div style="display:flex;align-items:center;gap:6px;background:#f1f5f9;padding:6px 12px;border-radius:8px;border:1px solid #cbd5e1;"><span style="width:8px;height:8px;border-radius:9999px;background:${low ? "#ef4444" : "#059669"};animation:ep-pulse 2s infinite;"></span><span style="font-size:11px;font-weight:700;color:#64748b;">Time:</span><span id="ep-countdown" style="font-size:15px;font-weight:800;color:${low ? "#ef4444" : "#0f172a"};font-family:ui-monospace,monospace;">${secs == null ? "—" : formatClock(secs)}</span></div>
+<div style="display:flex;align-items:center;gap:6px;background:#f1f5f9;padding:6px 12px;border-radius:8px;border:1px solid #cbd5e1;"><span style="width:8px;height:8px;border-radius:9999px;background:${low ? "#ef4444" : "#33558b"};animation:ep-pulse 2s infinite;"></span><span style="font-size:11px;font-weight:700;color:#64748b;">Time:</span><span id="ep-countdown" style="font-size:15px;font-weight:800;color:${low ? "#ef4444" : "#0f172a"};font-family:ui-monospace,monospace;">${secs == null ? "—" : formatClock(secs)}</span></div>
 <button type="button" class="ep-btn ep-btn-quiet" data-action="fullscreen">Fullscreen</button>
-<button type="button" id="btn-student-submit" data-action="submit-exam" ${canSubmit ? "" : "disabled"} style="background:#059669;border:none;color:#fff;padding:7px 18px;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:6px;box-shadow:0 1px 3px rgba(5,150,105,0.3);">${check} Submit &amp; Exit</button>
+<button type="button" id="btn-student-submit" data-action="submit-exam" ${canSubmit ? "" : "disabled"} style="background:#33558b;border:none;color:#fff;padding:7px 18px;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:6px;box-shadow:0 1px 3px rgba(51,85,139,0.3);">${check} Submit &amp; Exit</button>
 </div></header>
 <div class="pr-live-body" style="display:flex;flex:1;overflow:hidden;">
 <aside id="ep-sidebar" class="pr-live-aside" style="width:clamp(280px, 24vw, 380px);background:#ffffff;border-right:2px solid #0f172a;display:flex;flex-direction:column;flex-shrink:0;">
@@ -1699,9 +1699,9 @@
         const isActive = isCoc ? isCocActive : !isCocActive && (app.activeSection === sec.id || (!app.activeSection && sec.id === "sec-questions"));
         const secQCount = isCoc ? null : sec.questions ? sec.questions.length : total;
         return `
-          <button type="button" class="ep-sec-tab-btn" data-sec-id="${esc(sec.id)}" style="display:flex;align-items:center;justify-content:space-between;padding:8px 12px;border-radius:8px;border:1.5px solid ${isActive ? "#059669" : "#e2e8f0"};background:${isActive ? "#f0fdf4" : "#ffffff"};color:${isActive ? "#065f46" : "#334155"};font-weight:${isActive ? "800" : "600"};font-size:12.5px;cursor:pointer;text-align:left;transition:all 0.15s ease;">
+          <button type="button" class="ep-sec-tab-btn" data-sec-id="${esc(sec.id)}" style="display:flex;align-items:center;justify-content:space-between;padding:8px 12px;border-radius:8px;border:1.5px solid ${isActive ? "#33558b" : "#e2e8f0"};background:${isActive ? "#eef3fa" : "#ffffff"};color:${isActive ? "#1e3355" : "#334155"};font-weight:${isActive ? "800" : "600"};font-size:12.5px;cursor:pointer;text-align:left;transition:all 0.15s ease;">
             <span style="display:flex;align-items:center;gap:7px;">
-              ${isCoc ? I("shield", 14, isActive ? "#059669" : "#64748b") : I("fileText", 13, isActive ? "#059669" : "#94a3b8")}
+              ${isCoc ? I("shield", 14, isActive ? "#33558b" : "#64748b") : I("fileText", 13, isActive ? "#33558b" : "#94a3b8")}
               ${esc(sec.title)}
             </span>
             ${isCoc ? '<span style="font-size:10px;font-weight:800;background:#dbeafe;color:#1e40af;padding:2px 6px;border-radius:4px;">RULES</span>' : `<span style="font-size:11px;color:#64748b;font-weight:700;">(${secQCount})</span>`}
@@ -1720,8 +1720,8 @@
   <!-- Tools (Merged calculator & doubts in same row, save button removed) -->
   <div class="pr-live-tools-box" style="padding:12px 16px;border-top:1px solid #e2e8f0;background:#ffffff;">
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
-      <button type="button" data-calc="toggle" title="Open Calculator" style="background:#f0fdf4;border:1.5px solid #86efac;color:#047857;padding:9px 10px;border-radius:8px;font-size:12px;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;">
-        ${I("calculator", 14, "#047857")} Calculator
+      <button type="button" data-calc="toggle" title="Open Calculator" style="background:#eef3fa;border:1.5px solid #c7d4e8;color:#24406b;padding:9px 10px;border-radius:8px;font-size:12px;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;">
+        ${I("calculator", 14, "#24406b")} Calculator
       </button>
       <button type="button" data-action="messages" title="Doubts and messages" style="background:#0f172a;border:1px solid #334155;color:#fff;padding:9px 10px;border-radius:8px;font-size:12px;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;">
         ${I("message", 14, "#fff")} Doubts &amp; Messages
@@ -1773,22 +1773,22 @@
       </div>
 
       <div style="padding-top:18px;border-top:1px solid #e2e8f0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
-        <div style="font-size:12px;color:#059669;font-weight:700;display:flex;align-items:center;gap:6px;">
-          ${I("check", 14, "#059669")} You agreed to follow this Code of Conduct upon entering the exam.
+        <div style="font-size:12px;color:#33558b;font-weight:700;display:flex;align-items:center;gap:6px;">
+          ${I("check", 14, "#33558b")} You agreed to follow this Code of Conduct upon entering the exam.
         </div>
-        <button type="button" data-action="coc-back-to-questions" class="ep-btn ep-btn-primary" style="background:#059669;color:#fff;border:none;padding:10px 22px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:8px;">
+        <button type="button" data-action="coc-back-to-questions" class="ep-btn ep-btn-primary" style="background:#33558b;color:#fff;border:none;padding:10px 22px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:8px;">
           Back to Exam Questions →
         </button>
       </div>
     </div>
   ` : `
     <article class="ep-question" data-question-id="${esc(q.id)}">
-    <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;border-bottom:1px solid #e2e8f0;padding-bottom:12px;margin-bottom:18px;"><div style="display:flex;align-items:center;gap:10px;"><span style="font-size:17px;font-weight:800;color:#0f172a;">Question ${index + 1} of ${total}</span><span style="padding:3px 8px;border-radius:6px;background:#e0f2fe;color:#0369a1;font-size:11px;font-weight:700;">${esc(ROOM_TYPE[q.type] || String(q.type || "").toUpperCase())}</span></div>${passage ? "" : `<div style="font-size:12px;font-weight:700;color:#059669;">+${Number(q.marks || 0)} Marks${Number(q.negative) ? ` | -${Number(q.negative)} Negative` : ""}</div>`}</div>
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;border-bottom:1px solid #e2e8f0;padding-bottom:12px;margin-bottom:18px;"><div style="display:flex;align-items:center;gap:10px;"><span style="font-size:17px;font-weight:800;color:#0f172a;">Question ${index + 1} of ${total}</span><span style="padding:3px 8px;border-radius:6px;background:#e0f2fe;color:#0369a1;font-size:11px;font-weight:700;">${esc(ROOM_TYPE[q.type] || String(q.type || "").toUpperCase())}</span></div>${passage ? "" : `<div style="font-size:12px;font-weight:700;color:#33558b;">+${Number(q.marks || 0)} Marks${Number(q.negative) ? ` | -${Number(q.negative)} Negative` : ""}</div>`}</div>
     <div class="pr-live-prompt" style="font-size:15px;color:#0f172a;line-height:1.6;font-weight:500;margin-bottom:14px;">${contentHtml(q.prompt)}</div>
     <div style="margin-bottom:28px;">${roomInputs(q, locked)}</div>
     </article>
     <div style="display:none;" aria-hidden="true">${list.map((item, i) => i === index ? "" : `<div class="ep-question" data-question-id="${esc(item.id)}">${contentHtml(item.prompt)}</div>`).join("")}</div>
-    <div class="pr-live-actions" style="margin-top:auto;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;border-top:1px solid #e2e8f0;padding-top:18px;"><div style="display:flex;gap:8px;"><button type="button" data-action="room-prev" ${index === 0 ? "disabled" : ""} style="background:#fff;border:1px solid #cbd5e1;color:#475569;padding:9px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;">← Prev</button>${passage ? "" : `<button type="button" data-action="clear-answer" data-id="${esc(q.id)}" ${locked ? "disabled" : ""} style="background:#fff;border:1px solid #cbd5e1;color:#64748b;padding:9px 14px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;">Clear</button>`}</div><div style="display:flex;gap:8px;">${passage ? "" : `<button type="button" data-action="room-review" style="background:#f5f3ff;border:1px solid #c4b5fd;color:#6d28d9;padding:9px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;">${app.review[q.id] ? "Marked for Review" : "Review &amp; Next"}</button>`}<button type="button" data-action="room-next" style="background:#059669;color:#fff;border:none;padding:9px 20px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;">${index === total - 1 ? "Save Response" : passage ? "Next →" : "Save &amp; Next →"}</button></div></div>
+    <div class="pr-live-actions" style="margin-top:auto;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;border-top:1px solid #e2e8f0;padding-top:18px;"><div style="display:flex;gap:8px;"><button type="button" data-action="room-prev" ${index === 0 ? "disabled" : ""} style="background:#fff;border:1px solid #cbd5e1;color:#475569;padding:9px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;">← Prev</button>${passage ? "" : `<button type="button" data-action="clear-answer" data-id="${esc(q.id)}" ${locked ? "disabled" : ""} style="background:#fff;border:1px solid #cbd5e1;color:#64748b;padding:9px 14px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;">Clear</button>`}</div><div style="display:flex;gap:8px;">${passage ? "" : `<button type="button" data-action="room-review" style="background:#f5f3ff;border:1px solid #c4b5fd;color:#6d28d9;padding:9px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;">${app.review[q.id] ? "Marked for Review" : "Review &amp; Next"}</button>`}<button type="button" data-action="room-next" style="background:#33558b;color:#fff;border:none;padding:9px 20px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;">${index === total - 1 ? "Save Response" : passage ? "Next →" : "Save &amp; Next →"}</button></div></div>
   `}
 </main></div></div>`;
   }
@@ -2894,9 +2894,9 @@
       const btn = document.getElementById("ep-btn-final-enter");
       if (btn) {
         btn.disabled = !t.checked;
-        btn.style.background = t.checked ? "#059669" : "#94a3b8";
+        btn.style.background = t.checked ? "#33558b" : "#94a3b8";
         btn.style.cursor = t.checked ? "pointer" : "not-allowed";
-        btn.style.boxShadow = t.checked ? "0 4px 14px rgba(5,150,105,0.3)" : "none";
+        btn.style.boxShadow = t.checked ? "0 4px 14px rgba(51,85,139,0.3)" : "none";
       }
       return;
     }
