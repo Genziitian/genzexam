@@ -516,6 +516,54 @@ if('IntersectionObserver' in window&&!(window.matchMedia&&matchMedia('(prefers-r
   .pol-sep{height:1px;margin:6px 8px;background:var(--line)}
   .pol-ico.tb{background:var(--brand-soft);color:var(--brand-text)}
   
+
+  /* ---------- phone/tablet menu: button on the right, card panel, hover motion ---------- */
+  @media (max-width:1180px){
+    .nav-end>.menu-btn{order:99}
+    .menu-btn[aria-expanded="true"]{background:var(--brand)!important;border-color:var(--brand)!important;color:#fff!important}
+  }
+  .mnav{background:transparent!important;border-top:0!important;padding:0 0 14px}
+  .mnav-in{margin-top:6px;padding:10px!important;border-radius:22px;background:var(--surface-2);border:1.5px solid var(--line);box-shadow:0 24px 50px -28px rgba(14,19,48,.55);animation:mnavIn .28s cubic-bezier(.2,.7,.2,1)!important}
+  :root[data-theme="dark"] .mnav-in{background:#141414;border-color:#262626;box-shadow:0 24px 50px -24px rgba(0,0,0,.9)}
+  @keyframes mnavIn{from{opacity:0;transform:translateY(-10px) scale(.98)}}
+  .mnav-in>a{position:relative;transition:background .2s,color .2s,padding-left .25s cubic-bezier(.2,.7,.2,1)!important}
+  .mnav-in>a::after{content:'\2192';position:absolute;right:16px;opacity:0;transform:translateX(-8px);transition:opacity .2s,transform .25s;color:var(--brand-text);font-weight:800}
+  .mnav-in>a:hover,.mnav-in>a:active{background:var(--surface)!important;padding-left:20px!important;color:var(--brand-text)!important}
+  .mnav-in>a:hover::after,.mnav-in>a:active::after{opacity:1;transform:none}
+  .mnav-in>a[aria-current="page"]{background:var(--brand)!important;color:#fff!important}
+  .mnav-in>a[aria-current="page"]::after{opacity:1;transform:none;color:#fff}
+  .mnav-in>a.nav-genz{border-color:var(--line-2)!important;background:var(--surface)!important}
+  .mnav-pol a{transition:background .2s,transform .2s}
+  .mnav-pol a:hover{transform:translateX(4px)}
+  .mnav-in>*{animation:mnavItem .35s cubic-bezier(.2,.7,.2,1) both}
+  .mnav-in>*:nth-child(2){animation-delay:.03s}.mnav-in>*:nth-child(3){animation-delay:.06s}.mnav-in>*:nth-child(4){animation-delay:.09s}.mnav-in>*:nth-child(5){animation-delay:.12s}.mnav-in>*:nth-child(6){animation-delay:.15s}.mnav-in>*:nth-child(7){animation-delay:.18s}.mnav-in>*:nth-child(8){animation-delay:.21s}
+  @keyframes mnavItem{from{opacity:0;transform:translateX(-10px)}}
+  @media (prefers-reduced-motion:reduce){.mnav-in,.mnav-in>*{animation:none!important}}
+  
+  /* ---------- hero badge ---------- */
+  .pill{position:relative;overflow:hidden;gap:10px!important;padding:6px 16px 6px 6px!important;background:var(--brand-soft)!important;border:1.5px solid color-mix(in srgb,var(--brand) 30%,transparent)!important;color:var(--brand-text)!important;font-weight:700!important}
+  .pill-ico{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--brand);color:#fff;flex:none}
+  .pill b{color:var(--ink);font-weight:800}
+  .pill::after{content:'';position:absolute;top:0;left:-40%;width:30%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.6),transparent);transform:skewX(-20deg);animation:pillShine 4.5s ease-in-out 1.5s infinite}
+  :root[data-theme="dark"] .pill::after{background:linear-gradient(100deg,transparent,rgba(255,255,255,.12),transparent)}
+  @keyframes pillShine{0%,65%{left:-40%}85%,100%{left:120%}}
+  @media (prefers-reduced-motion:reduce){.pill::after{animation:none}}
+  
+
+  /* ---------- search bar on phones: one rounded bar, round arrow button ---------- */
+  .sg-ico{display:none}
+  @media (max-width:640px){
+    .search{flex-wrap:nowrap!important;align-items:center;gap:6px!important;padding:6px 6px 6px 4px!important;border-radius:999px!important;border-width:2px!important}
+    .search-field{flex:1 1 auto!important;min-width:0;padding:0 8px 0 14px!important;min-height:48px!important}
+    .search .btn.search-go{flex:none!important;width:50px;height:50px;min-height:50px;padding:0!important;border-radius:50%!important;box-shadow:0 8px 18px -8px var(--brand)}
+    .search .btn.search-go .sg-txt{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+    .search .btn.search-go .sg-ico{display:block;transition:transform .2s}
+    .search .btn.search-go:active .sg-ico{transform:translateX(3px)}
+    .search:focus-within .search-go{animation:goPulse 1.6s ease-in-out infinite}
+    @keyframes goPulse{50%{box-shadow:0 0 0 6px color-mix(in srgb,var(--brand) 25%,transparent)}}
+    .typer{left:46px!important}
+  }
+  
   /* ---------- responsive ---------- */
   @media (max-width:980px){.who{grid-template-columns:1fr}.stairs{height:280px}.faq-grid{display:flex;flex-direction:column;gap:32px}.faq-side{display:contents}.faq-head{order:1}.faq{order:2;width:100%}.ask{order:3}.inside{grid-template-columns:1fr}.foot{grid-template-columns:1fr 1fr}.foot>section:first-child{grid-column:1/-1}}
   /* tablets: facts in a 2x2 grid, smaller step cards, roomier hero card */
@@ -659,7 +707,7 @@ if('IntersectionObserver' in window&&!(window.matchMedia&&matchMedia('(prefers-r
   <section class="hero" id="top">
     <div class="wrap hero-in">
       <div class="hero-copy">
-        <span class="pill"><i></i>Made for IITM BS students</span>
+        <span class="pill"><span class="pill-ico" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l10 5-10 5L2 8l10-5z"/><path d="M6 10.5V16c0 1.4 2.7 3 6 3s6-1.6 6-3v-5.5"/></svg></span><span>Made for <b>IITM BS</b> students</span></span>
         <h1>Practise like it's the <span class="hl">real exam.</span></h1>
         <p class="lede">Past Quiz 1, Quiz 2, End Term and mock papers for IITM BS.</p>
 
@@ -670,7 +718,7 @@ if('IntersectionObserver' in window&&!(window.matchMedia&&matchMedia('(prefers-r
             <input id="q-search" name="q" type="search" placeholder="Search a course, e.g. Statistics 1" autocomplete="off">
             <span class="typer" id="typer" aria-hidden="true" hidden>Search&nbsp;<em id="typer-txt"></em><i></i></span>
           </div>
-          <button type="submit" class="btn btn-brand">Find papers</button>
+          <button type="submit" class="btn btn-brand search-go"><span class="sg-txt">Find papers</span><svg class="sg-ico" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
         </form>
 
         <div class="chips">

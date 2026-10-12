@@ -274,3 +274,26 @@ footer{background:var(--navy);color:var(--navy-text)}
 .nav-genz .tv-scr img{width:33px}
 .pol-sep{height:1px;margin:6px 8px;background:var(--line)}
 .pol-ico.tb{background:var(--brand-soft);color:var(--brand-text)}
+
+/* ---------- phone/tablet menu: button on the right, card panel, hover motion ---------- */
+@media (max-width:1180px){
+  .nav-end>.menu-btn{order:99}
+  .menu-btn[aria-expanded="true"]{background:var(--brand)!important;border-color:var(--brand)!important;color:#fff!important}
+}
+.mnav{background:transparent!important;border-top:0!important;padding:0 0 14px}
+.mnav-in{margin-top:6px;padding:10px!important;border-radius:22px;background:var(--surface-2);border:1.5px solid var(--line);box-shadow:0 24px 50px -28px rgba(14,19,48,.55);animation:mnavIn .28s cubic-bezier(.2,.7,.2,1)!important}
+:root[data-theme="dark"] .mnav-in{background:#141414;border-color:#262626;box-shadow:0 24px 50px -24px rgba(0,0,0,.9)}
+@keyframes mnavIn{from{opacity:0;transform:translateY(-10px) scale(.98)}}
+.mnav-in>a{position:relative;transition:background .2s,color .2s,padding-left .25s cubic-bezier(.2,.7,.2,1)!important}
+.mnav-in>a::after{content:'\2192';position:absolute;right:16px;opacity:0;transform:translateX(-8px);transition:opacity .2s,transform .25s;color:var(--brand-text);font-weight:800}
+.mnav-in>a:hover,.mnav-in>a:active{background:var(--surface)!important;padding-left:20px!important;color:var(--brand-text)!important}
+.mnav-in>a:hover::after,.mnav-in>a:active::after{opacity:1;transform:none}
+.mnav-in>a[aria-current="page"]{background:var(--brand)!important;color:#fff!important}
+.mnav-in>a[aria-current="page"]::after{opacity:1;transform:none;color:#fff}
+.mnav-in>a.nav-genz{border-color:var(--line-2)!important;background:var(--surface)!important}
+.mnav-pol a{transition:background .2s,transform .2s}
+.mnav-pol a:hover{transform:translateX(4px)}
+.mnav-in>*{animation:mnavItem .35s cubic-bezier(.2,.7,.2,1) both}
+.mnav-in>*:nth-child(2){animation-delay:.03s}.mnav-in>*:nth-child(3){animation-delay:.06s}.mnav-in>*:nth-child(4){animation-delay:.09s}.mnav-in>*:nth-child(5){animation-delay:.12s}.mnav-in>*:nth-child(6){animation-delay:.15s}.mnav-in>*:nth-child(7){animation-delay:.18s}.mnav-in>*:nth-child(8){animation-delay:.21s}
+@keyframes mnavItem{from{opacity:0;transform:translateX(-10px)}}
+@media (prefers-reduced-motion:reduce){.mnav-in,.mnav-in>*{animation:none!important}}
