@@ -36,7 +36,7 @@
   }
   function renderCatalog() {
     const query = search.value.trim().toLowerCase();
-    const rows = papers.filter(p => p.available !== false && (!query || [p.title,p.description,p.course?.name,p.year,sectionLabel(p.section)].join(' ').toLowerCase().includes(query)) && (!level.value || String(p.course?.level || '') === level.value) && (!type.value || p.section === type.value) && (!price.value || (price.value === 'free' ? Number(p.price_paise || 0) === 0 : Number(p.price_paise || 0) > 0)));
+    const rows = papers.filter(p => p.available !== false && (!query || [p.title,p.description,p.course?.name,p.course?.level,p.year,sectionLabel(p.section)].join(' ').toLowerCase().includes(query)) && (!level.value || String(p.course?.level || '') === level.value) && (!type.value || p.section === type.value) && (!price.value || (price.value === 'free' ? Number(p.price_paise || 0) === 0 : Number(p.price_paise || 0) > 0)));
     byId('result-count').textContent = `${rows.length} ${rows.length === 1 ? 'paper' : 'papers'}`;
     grid.innerHTML = rows.length ? rows.map(card).join('') : '<div class="empty">No papers match these filters. Try another level or paper type.<br><button class="btn" data-reset>Clear filters</button></div>';
   }
@@ -46,6 +46,10 @@
       const data = await api('/storefront/papers'); papers = Array.isArray(data.papers) ? data.papers : [];
       level.innerHTML = '<option value="">All levels</option>';
       [...new Set(papers.map(p => p.course?.level).filter(Boolean))].sort().forEach(value => { const option = document.createElement('option'); option.value = value; option.textContent = value; level.appendChild(option); });
+      // Links from the home page: /papers?q=<text> and /papers?level=<level>.
+      const params = new URLSearchParams(location.search), wantLevel = (params.get('level') || '').trim().toLowerCase();
+      if (params.get('q') && !search.value) search.value = params.get('q');
+      if (wantLevel) { const match = [...level.options].find(o => o.value && o.value.toLowerCase().includes(wantLevel)); if (match) level.value = match.value; else if (!search.value) search.value = params.get('level'); }
       if (token()) { try { const library = await api('/storefront/my-papers'); ownedIds = new Set((library.papers || []).filter(p => Number(p.price_paise || 0) > 0 && p.has_access !== false && !p.expired && p.available !== false).map(p => String(p.id))); (library.papers || []).forEach(p => { const index = papers.findIndex(row => String(row.id) === String(p.id)); if (index >= 0) papers[index] = {...papers[index], ...p}; }); } catch { /* Catalog remains available if library cannot load. */ } }
       renderCatalog();
       const requested = new URLSearchParams(location.search).get('paper');

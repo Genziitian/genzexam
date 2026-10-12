@@ -3,272 +3,314 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Quiz LAB by GenZ IITian — Every past paper, practised the way the exam feels.</title>
-<meta name="description" content="Practise IITM BS past papers — Quiz 1, Quiz 2, End Term and mock tests — on a real timer, with worked solutions the moment you submit." />
-<meta name="theme-color" content="#33558b" />
+<title>Quiz LAB by GenZ IITian — Practise IITM BS papers like it's the real exam</title>
+<meta name="description" content="Past Quiz 1, Quiz 2, End Term and mock papers for the IIT Madras BS programmes. Practise on a real timer or with instant solutions, from Qualifier to Degree." />
+<meta name="theme-color" content="#0E1330" />
 <script src="/storefront-runtime.js?v=20261010a"></script>
+<script>
+/* Apply the saved theme before first paint (same logic as ql-theme.js). */
+try{var _t=localStorage.getItem('ql_theme');if(_t==='dark'||_t==='light')document.documentElement.setAttribute('data-theme',_t);}catch(e){}
+</script>
 <link rel="icon" type="image/x-icon" href="/favicon.ico" />
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 <link rel="manifest" href="/site.webmanifest" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#f1f5f9; --surface:#fff; --surface-2:#f8fafc;
-    --ink:#0f172a; --muted:#64748b;
-    --deep:#33558b; --deep-ink:#ffffff;
-    --green:#33558b; --soft:#9fb6d8; --tint:#eef3fa;
-    --border:#e2e8f0; --shadow:0 1px 2px rgba(15,23,42,.04),0 8px 24px rgba(15,23,42,.05);
-    --radius:16px;
+    --bg:#F7F8FC; --surface:#fff; --surface-2:#F1F2FF; --dots:#D5D9EE;
+    --ink:#0E1330; --text:#3E4569; --muted:#59607F; --faint:#6A7194;
+    --line:#E3E6F2; --line-2:#D5D9EE; --line-3:#B9BEDC;
+    --brand:#3A3FD8; --brand-hover:#2B30B8; --brand-text:#3A3FD8; --brand-soft:#ECEDFF; --brand-row:#F1F2FF;
+    --yellow:#FFC24B; --yellow-ink:#0E1330;
+    --green:#0E7A4F; --green-soft:#E5F5EC; --red:#B3261E; --red-soft:#FDECEA;
+    --navy:#0E1330; --navy-ink:#fff; --navy-text:#C6CBE6; --navy-faint:#9AA1C8;
+    --t-yellow:#FFE7A8; --t-indigo:#DCDEFF; --t-green:#CDEFDC;
+    --shadow:0 18px 40px -28px rgba(14,19,48,.45);
+    --display:'Bricolage Grotesque',system-ui,sans-serif;
   }
   :root[data-theme="dark"]{
-    --bg:#121a27; --surface:#151d2b; --surface-2:#161f2e;
-    --ink:#e8eef7; --muted:#8a99ae;
-    --deep:#1e3355; --deep-ink:#c5d7ef;
-    --green:#6d93cf; --soft:#9fb6d8; --tint:#1d2c45;
-    --border:#2a3648; --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.35);
+    --bg:#0B0E1F; --surface:#141933; --surface-2:#1A2042; --dots:#232A4F;
+    --ink:#EEF0FA; --text:#B8BEDD; --muted:#A3A9CB; --faint:#8E95BA;
+    --line:#252C50; --line-2:#2F3760; --line-3:#46507F;
+    --brand:#4A4FE6; --brand-hover:#5D62F0; --brand-text:#9A9DFF; --brand-soft:#232A5A; --brand-row:#1A2042;
+    --green:#3FBF86; --green-soft:#12342A; --red:#F07167; --red-soft:#3A1A1F;
+    --navy:#060818; --navy-text:#B8BEDD; --navy-faint:#8E95BA;
+    --t-yellow:#4A3A12; --t-indigo:#2A2F66; --t-green:#173D2D;
+    --shadow:0 18px 40px -24px rgba(0,0,0,.7);
   }
   @media (prefers-color-scheme:dark){
     :root:not([data-theme="light"]){
-      --bg:#121a27; --surface:#151d2b; --surface-2:#161f2e;
-      --ink:#e8eef7; --muted:#8a99ae;
-      --deep:#1e3355; --deep-ink:#c5d7ef;
-      --green:#6d93cf; --soft:#9fb6d8; --tint:#1d2c45;
-      --border:#2a3648; --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.35);
+      --bg:#0B0E1F; --surface:#141933; --surface-2:#1A2042; --dots:#232A4F;
+      --ink:#EEF0FA; --text:#B8BEDD; --muted:#A3A9CB; --faint:#8E95BA;
+      --line:#252C50; --line-2:#2F3760; --line-3:#46507F;
+      --brand:#4A4FE6; --brand-hover:#5D62F0; --brand-text:#9A9DFF; --brand-soft:#232A5A; --brand-row:#1A2042;
+      --green:#3FBF86; --green-soft:#12342A; --red:#F07167; --red-soft:#3A1A1F;
+      --navy:#060818; --navy-text:#B8BEDD; --navy-faint:#8E95BA;
+      --t-yellow:#4A3A12; --t-indigo:#2A2F66; --t-green:#173D2D;
+      --shadow:0 18px 40px -24px rgba(0,0,0,.7);
     }
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-  body{
-    background:var(--bg);color:var(--ink);
-    font-family:Inter,system-ui,-apple-system,sans-serif;
-    font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;
-    overflow-x:hidden;
-  }
-  .wrap{width:100%;max-width:1060px;margin:0 auto;padding:0 20px}
-  .serif{font-family:Inter,system-ui,sans-serif;font-weight:800;letter-spacing:-.03em;line-height:1.06}
-  .serif em{font-style:normal;color:var(--green)}
+  body{background:var(--bg);color:var(--ink);font-family:'Figtree',system-ui,-apple-system,sans-serif;font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
   a{color:inherit;text-decoration:none}
+  button{font-family:inherit;cursor:pointer;color:inherit}
+  img{display:block}
+  a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(--yellow);outline-offset:2px}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+  .display{font-family:var(--display);letter-spacing:-.03em}
+  .eyebrow{font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--brand-text)}
+  .h2{margin-top:10px;font-family:var(--display);font-weight:800;font-size:clamp(32px,4.4vw,48px);line-height:1.08;letter-spacing:-.03em;text-wrap:balance}
+  .sec-head{max-width:640px}
+  .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+  /* ---------- buttons ---------- */
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 20px;border-radius:12px;border:1.5px solid transparent;font-weight:700;font-size:15px;white-space:nowrap;transition:background .15s,border-color .15s,transform .12s}
+  .btn:active{transform:translateY(1px)}
+  .btn-brand{background:var(--brand);color:#fff}
+  .btn-brand:hover{background:var(--brand-hover)}
+  .btn-navy{background:var(--ink);color:var(--bg)}
+  .btn-outline{border-color:var(--ink);background:transparent}
+  .btn-outline:hover{background:var(--ink);color:var(--bg)}
+  .btn-yellow{background:var(--yellow);color:var(--yellow-ink);font-weight:800}
+  .btn-yellow:hover{filter:brightness(1.05)}
+  .btn-plain{padding:0 14px;font-weight:600}
+  .btn-plain:hover{color:var(--brand-text)}
 
   /* ---------- header ---------- */
-  header{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 88%,transparent);
-    backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid transparent;transition:border-color .2s}
-  header.stuck{border-bottom-color:var(--border)}
-  .nav{display:flex;align-items:center;gap:14px;height:68px}
+  header{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:saturate(180%) blur(12px);-webkit-backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid transparent;transition:border-color .2s}
+  header.stuck{border-bottom-color:var(--line)}
+  .nav{display:flex;align-items:center;gap:16px;min-height:76px}
   .brand{display:flex;align-items:center;gap:10px;flex-shrink:0}
-  .brand-text{display:flex;flex-direction:column;line-height:1.12}
-  .brand-text strong{font-size:16px;font-weight:700;letter-spacing:-.012em}
-  .brand-text small{font-size:10.5px;font-weight:500;color:var(--muted);letter-spacing:.015em}
-  .mark{width:34px;height:34px;border-radius:10px;background:var(--deep);color:var(--soft);
-    display:grid;place-items:center;font-family:Inter,system-ui,sans-serif;font-size:19px;font-weight:800;flex-shrink:0}
-  img.mark{display:block;background:none;object-fit:cover;flex-shrink:0}
-  .links{display:flex;gap:26px;margin-left:26px;font-size:14px;color:var(--muted);font-weight:500}
-  .links a:hover{color:var(--ink)}
-  .nav-end{display:flex;align-items:center;gap:10px;margin-left:auto}
-  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;
-    font-size:12px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;
-    padding:11px 18px;border-radius:10px;border:1px solid transparent;cursor:pointer;
-    transition:transform .12s ease,background .2s,border-color .2s,color .2s;white-space:nowrap}
-  .btn:active{transform:translateY(1px)}
+  .brand img{width:40px;height:40px;border-radius:11px;object-fit:cover}
+  .brand-text{display:flex;flex-direction:column;line-height:1.1}
+  .brand-text strong{font-family:var(--display);font-weight:800;font-size:21px;letter-spacing:-.02em}
+  .brand-text small{font-size:11.5px;font-weight:600;color:var(--muted);letter-spacing:.01em}
+  .links{display:flex;gap:28px;margin-left:28px;font-weight:600;font-size:15px;color:var(--text)}
+  .links a:hover{color:var(--brand-text)}
+  .nav-end{display:flex;align-items:center;gap:8px;margin-left:auto}
+  .icon-btn{width:44px;height:44px;border-radius:12px;border:1.5px solid var(--line-2);background:var(--surface);color:var(--text);display:grid;place-items:center;flex-shrink:0}
+  .icon-btn:hover{border-color:var(--brand)}
   .profile-menu{position:relative}
-  .profile-chip{display:inline-flex;align-items:center;gap:8px;max-width:190px;padding:4px 12px 4px 4px;border:1px solid var(--border);border-radius:999px;background:var(--surface);color:var(--ink);font:inherit;font-size:13px;font-weight:600;cursor:pointer}
-  .profile-chip:hover{border-color:var(--muted)}
-  .profile-chip[hidden],.btn[hidden]{display:none}
-  .profile-dropdown{position:absolute;right:0;top:calc(100% + 9px);z-index:70;min-width:160px;padding:6px;border:1px solid var(--border);border-radius:13px;background:var(--surface);box-shadow:0 14px 36px rgba(15,23,42,.16)}
-  .profile-dropdown[hidden]{display:none!important}
-  .profile-dropdown button{width:100%;padding:10px 12px;border:0;border-radius:9px;background:transparent;color:#b42318;text-align:left;font:inherit;font-size:13px;font-weight:700;cursor:pointer}
-  .profile-dropdown button:hover{background:rgba(220,38,38,.08)}
-  .profile-initial{width:28px;height:28px;border-radius:50%;background:var(--deep);color:var(--deep-ink);display:grid;place-items:center;font-size:12px;font-weight:700;flex-shrink:0}
+  .profile-menu[hidden],.btn[hidden]{display:none}
+  .profile-chip{display:inline-flex;align-items:center;gap:8px;max-width:200px;min-height:44px;padding:4px 14px 4px 5px;border:1.5px solid var(--line-2);border-radius:999px;background:var(--surface);font-size:14px;font-weight:700}
+  .profile-chip:hover{border-color:var(--brand)}
+  .profile-initial{width:32px;height:32px;border-radius:50%;background:var(--brand);color:#fff;display:grid;place-items:center;font-size:13px;font-weight:800;flex-shrink:0}
   .profile-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-  @media (max-width:760px){.profile-name{display:none}.profile-chip{padding:4px}}
-  .btn-ghost{border-color:var(--border);background:var(--surface);color:var(--ink)}
-  .btn-ghost:hover{border-color:var(--muted)}
-  .btn-dark{background:var(--deep);color:var(--deep-ink)}
-  .btn-dark:hover{background:#29467a}
-  :root[data-theme="dark"] .btn-dark:hover{background:#29467a}
-  .btn-soft{background:var(--soft);color:#1e3355}
-  .btn-soft:hover{filter:brightness(1.05)}
-  .icon-btn{width:38px;height:38px;border-radius:10px;border:1px solid var(--border);background:var(--surface);
-    color:var(--muted);display:grid;place-items:center;cursor:pointer;flex-shrink:0;transition:color .2s,border-color .2s}
-  .icon-btn:hover{color:var(--ink);border-color:var(--muted)}
+  .profile-dropdown{position:absolute;right:0;top:calc(100% + 9px);z-index:70;min-width:170px;padding:6px;border:1.5px solid var(--line);border-radius:14px;background:var(--surface);box-shadow:0 14px 36px rgba(14,19,48,.18)}
+  .profile-dropdown[hidden]{display:none!important}
+  .profile-dropdown a,.profile-dropdown button{display:flex;align-items:center;width:100%;min-height:42px;padding:0 12px;border:0;border-radius:10px;background:transparent;text-align:left;font:inherit;font-size:14px;font-weight:700}
+  .profile-dropdown a:hover{background:var(--brand-row)}
+  .profile-dropdown button{color:#dc2626}
+  .profile-dropdown button:hover{background:rgba(220,38,38,.08)}
 
   /* ---------- hero ---------- */
-  .hero{padding-top:clamp(48px,9vw,104px);padding-bottom:clamp(36px,6vw,64px)}
-  .eyebrow{font-size:11.5px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--green);margin-bottom:22px}
-  h1{font-size:clamp(38px,7.2vw,68px);max-width:16ch}
-  .lede{margin-top:24px;max-width:56ch;color:var(--muted);font-size:clamp(15px,1.6vw,17px)}
-  .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
-  .hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:clamp(28px,5vw,60px);align-items:center}
+  .hero{background-image:radial-gradient(var(--dots) 1.2px,transparent 1.2px);background-size:26px 26px}
+  .hero-in{display:flex;flex-wrap:wrap;align-items:center;gap:56px;padding:48px 24px 88px}
+  .hero-copy{flex:1 1 480px;min-width:0}
+  .pill{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:999px;background:var(--surface);border:1px solid var(--line);font-weight:600;font-size:14px;color:var(--text)}
+  .pill i{width:8px;height:8px;border-radius:50%;background:var(--green)}
+  h1{margin-top:22px;font-family:var(--display);font-weight:800;font-size:clamp(40px,6vw,72px);line-height:1.02;letter-spacing:-.035em;text-wrap:balance}
+  .hl{background:var(--yellow);color:var(--yellow-ink);padding:0 12px;border-radius:12px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+  .lede{margin-top:24px;font-size:19px;line-height:1.55;color:var(--text);max-width:540px;text-wrap:pretty}
+  .search{margin-top:32px;display:flex;flex-wrap:wrap;gap:10px;background:var(--surface);border:1.5px solid var(--line-2);border-radius:18px;padding:8px;max-width:570px;box-shadow:var(--shadow)}
+  .search-field{flex:1 1 220px;display:flex;align-items:center;gap:10px;padding:0 12px;min-height:48px;color:var(--faint)}
+  .search input{border:0;outline:0;background:transparent;font:inherit;font-size:16px;width:100%;color:var(--ink);min-height:44px}
+  .search input::placeholder{color:var(--faint)}
+  .search .btn{min-height:48px;padding:0 24px;font-size:16px}
+  .chips{margin-top:20px;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+  .chips>span{font-size:14px;font-weight:600;color:var(--muted)}
+  .chip{display:flex;align-items:center;min-height:40px;padding:0 16px;border-radius:999px;border:1.5px solid var(--line-2);background:var(--surface);font-weight:600;font-size:14px;transition:background .15s,border-color .15s}
+  .chip:hover{background:var(--brand-soft);border-color:var(--brand)}
 
-  /* ---------- animated stack of past papers ---------- */
-  .stack{position:relative;height:330px;perspective:1200px}
-  .sheet{position:absolute;top:50%;left:50%;width:min(290px,86%);margin:-152px 0 0 -145px;
-    background:var(--surface);border:1px solid var(--border);border-radius:14px;
-    padding:22px 22px 18px;box-shadow:0 10px 34px rgba(15,23,42,.1);
-    transform-origin:50% 100%;animation:paperCycle 13s cubic-bezier(.65,.02,.32,1) infinite;will-change:transform,opacity}
-  :root[data-theme="dark"] .sheet{box-shadow:0 10px 34px rgba(0,0,0,.42)}
-  .s1{animation-delay:0s} .s2{animation-delay:-3.25s} .s3{animation-delay:-6.5s} .s4{animation-delay:-9.75s}
-  .tag{display:inline-block;font-size:9.5px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;
-    color:var(--green);background:var(--tint);padding:4px 9px;border-radius:5px;margin-bottom:14px}
-  .sheet-title{font-family:Inter,system-ui,sans-serif;font-size:21px;font-weight:700;letter-spacing:-.01em;line-height:1.2}
-  .sheet-sub{font-size:12px;color:var(--muted);margin:3px 0 18px}
-  .rule{display:block;height:7px;border-radius:4px;background:var(--border);margin-bottom:9px}
-  .w90{width:90%} .w85{width:85%} .w80{width:80%} .w75{width:75%} .w70{width:70%} .w65{width:65%} .w60{width:60%}
-  .mcq{display:flex;gap:7px;margin-top:16px}
-  .mcq i{flex:1;height:20px;border-radius:6px;background:var(--border);opacity:.7}
-  .mcq i.on{background:var(--soft);opacity:1}
+  /* demo card */
+  .demo-wrap{flex:1 1 400px;min-width:0;display:flex;justify-content:center}
+  .demo{position:relative;width:100%;max-width:470px}
+  .demo-shadow{position:absolute;inset:18px -16px -18px 16px;border-radius:28px;background:var(--brand)}
+  .demo-card{position:relative;background:var(--surface);border:1.5px solid var(--ink);border-radius:28px;padding:26px 26px 22px}
+  .demo-head{display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .demo-kicker{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+  .demo-title{margin-top:2px;font-family:var(--display);font-weight:700;font-size:18px}
+  .ring{position:relative;width:62px;height:62px;flex:none}
+  .ring svg{display:block}
+  .ring-track{stroke:var(--line)}
+  .ring-bar{stroke:var(--brand);transition:stroke-dashoffset .9s linear}
+  .ring b{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:800;font-size:19px}
+  .q{margin-top:20px;font-size:18px;line-height:1.45;font-weight:600;text-wrap:pretty}
+  .opts{margin-top:18px;display:flex;flex-direction:column;gap:10px}
+  .opt{display:flex;align-items:center;gap:12px;width:100%;min-height:52px;padding:8px 14px;border-radius:14px;font-size:16px;font-weight:600;background:var(--surface);border:1.5px solid var(--line-2);text-align:left}
+  .opt:hover{border-color:var(--brand)}
+  .opt .key{width:30px;height:30px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex:none;background:var(--brand-soft);color:var(--brand-text)}
+  .opt .txt{flex:1}
+  .opt .tag{font-weight:700;font-size:13px}
+  .opt.correct{background:var(--green-soft);border-color:var(--green)}
+  .opt.correct .key{background:var(--green);color:#fff}
+  .opt.correct .tag{color:var(--green)}
+  .opt.wrong{background:var(--red-soft);border-color:var(--red)}
+  .opt.wrong .key{background:var(--red);color:#fff}
+  .opt.wrong .tag{color:var(--red)}
+  .demo-foot{margin-top:16px;min-height:44px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+  .demo-foot p{font-size:14px;line-height:1.4;color:var(--text);max-width:270px}
+  .demo-foot .btn{font-size:14px;padding:0 18px}
 
-  @keyframes paperCycle{
-    0%,17%   {transform:translate(0,0) rotate(-3deg) scale(1);          z-index:4;opacity:1}
-    23%      {transform:translate(165px,-54px) rotate(15deg) scale(.97); z-index:4;opacity:0}
-    23.6%    {transform:translate(0,36px) rotate(5deg) scale(.88);       z-index:1;opacity:0}
-    29%      {transform:translate(0,36px) rotate(5deg) scale(.88);       z-index:1;opacity:1}
-    49%      {transform:translate(0,36px) rotate(5deg) scale(.88);       z-index:1;opacity:1}
-    51%      {transform:translate(0,24px) rotate(3deg) scale(.92);       z-index:2;opacity:1}
-    74%      {transform:translate(0,24px) rotate(3deg) scale(.92);       z-index:2;opacity:1}
-    76%      {transform:translate(0,12px) rotate(0deg) scale(.96);       z-index:3;opacity:1}
-    98%      {transform:translate(0,12px) rotate(0deg) scale(.96);       z-index:3;opacity:1}
-    100%     {transform:translate(0,0) rotate(-3deg) scale(1);           z-index:4;opacity:1}
-  }
+  /* ---------- facts strip ---------- */
+  .strip{background:var(--navy);color:var(--navy-ink)}
+  .strip-in{padding:36px 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));gap:28px}
+  .strip b{display:block;font-family:var(--display);font-weight:800;font-size:38px;letter-spacing:-.02em;color:var(--yellow);line-height:1.1}
+  .strip span{display:block;margin-top:6px;font-size:15px;color:var(--navy-text)}
 
-  /* ---------- quiz preview ---------- */
-  .quiz{background:var(--deep);color:var(--deep-ink);border-radius:22px;padding:clamp(20px,3.4vw,30px);margin-top:clamp(40px,6vw,64px)}
-  .quiz-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:22px}
-  .quiz-meta{font-size:13px;color:var(--soft);font-weight:500}
-  .timer{background:rgba(255,255,255,.1);padding:6px 13px;border-radius:999px;font-size:13px;
-    font-variant-numeric:tabular-nums;font-weight:600}
-  .q{font-family:Inter,system-ui,sans-serif;font-size:clamp(19px,2.6vw,25px);font-weight:600;margin-bottom:20px;line-height:1.35}
-  .opt{display:flex;align-items:center;gap:14px;width:100%;text-align:left;
-    background:rgba(255,255,255,.06);border:1.5px solid transparent;color:inherit;
-    padding:13px 16px;border-radius:12px;margin-bottom:9px;cursor:pointer;
-    font:inherit;font-size:15px;transition:background .18s,border-color .18s}
-  .opt:hover{background:rgba(255,255,255,.1)}
-  .opt .key{width:27px;height:27px;border-radius:7px;background:rgba(255,255,255,.12);
-    display:grid;place-items:center;font-size:11.5px;font-weight:700;flex-shrink:0}
-  .opt.correct{background:var(--soft);color:#1e3355;border-color:var(--soft)}
-  .opt.correct .key{background:rgba(0,0,0,.14)}
-  .opt.wrong{background:rgba(220,110,100,.16);border-color:rgba(230,130,120,.5)}
-  .palette{display:flex;flex-wrap:wrap;gap:9px;margin-top:20px}
-  .pal{width:46px;height:44px;border-radius:10px;background:rgba(255,255,255,.07);
-    display:grid;place-items:center;font-size:13px;font-weight:600;color:rgba(255,255,255,.65)}
-  .pal.done{background:var(--soft);color:#1e3355}
-  .pal.now{background:#e0a33c;color:#3a2606}
-  .hint{margin-top:16px;font-size:12.5px;color:var(--soft);opacity:0;transition:opacity .3s}
-  .hint.show{opacity:.9}
+  /* ---------- levels ---------- */
+  section.block{padding:88px 0 24px}
+  .row-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px}
+  .more{font-weight:700;font-size:15px;color:var(--brand-text);min-height:44px;display:flex;align-items:center;gap:8px}
+  .more:hover{text-decoration:underline}
+  .cats{margin-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(360px,100%),1fr));gap:20px}
+  .cat{display:flex;gap:18px;align-items:flex-start;padding:24px;background:var(--surface);border:1.5px solid var(--line);border-radius:22px;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
+  .cat:hover{border-color:var(--brand);transform:translateY(-3px);box-shadow:0 14px 30px -18px rgba(58,63,216,.45)}
+  .cat-ico{width:56px;height:56px;border-radius:16px;display:flex;align-items:center;justify-content:center;flex:none;color:var(--ink)}
+  .ty{background:var(--t-yellow)} .ti{background:var(--t-indigo)} .tg{background:var(--t-green)}
+  .cat h3{font-family:var(--display);font-weight:700;font-size:22px;letter-spacing:-.01em;line-height:1.2}
+  .cat p{margin-top:6px;font-size:15px;line-height:1.5;color:var(--text)}
 
-  /* ---------- sections ---------- */
-  section{padding:clamp(52px,8vw,96px) 0}
-  h2{font-size:clamp(29px,5vw,46px);max-width:18ch;margin-bottom:clamp(28px,4vw,44px)}
-  .grid{display:grid;gap:14px;grid-template-columns:repeat(4,1fr)}
-  .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
-    padding:21px 19px;box-shadow:var(--shadow);transition:transform .18s ease,box-shadow .18s ease}
-  .card:hover{transform:translateY(-3px);box-shadow:0 2px 4px rgba(15,23,42,.05),0 14px 34px rgba(15,23,42,.09)}
-  .kicker{font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
-  .card h3{font-family:Inter,system-ui,sans-serif;font-size:20px;font-weight:700;line-height:1.22;margin-bottom:10px;letter-spacing:-.012em}
-  .card p{font-size:13.5px;color:var(--muted);line-height:1.55}
-  .modes{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
-  .mode{border-radius:var(--radius);padding:clamp(24px,3vw,32px);border:1px solid var(--border)}
-  .mode.white{background:var(--surface);box-shadow:var(--shadow)}
-  .mode.green{background:var(--tint);border-color:transparent}
-  .mode h3{font-family:Inter,system-ui,sans-serif;font-size:clamp(23px,3vw,30px);font-weight:700;line-height:1.18;margin-bottom:14px;letter-spacing:-.015em}
-  .mode .kicker{color:var(--green)}
-  .mode p{color:var(--muted);font-size:15px}
+  /* ---------- modes ---------- */
+  .modes{background:var(--surface);border:1.5px solid var(--line);border-radius:32px;padding:clamp(24px,4vw,56px)}
+  .modes .h2{font-size:clamp(30px,4vw,44px)}
+  .tabs{margin-top:32px;display:flex;flex-wrap:wrap;gap:10px}
+  .tab{min-height:48px;padding:0 24px;border-radius:999px;font-size:16px;font-weight:700;border:1.5px solid var(--line-2);background:var(--surface)}
+  .tab:hover{border-color:var(--ink)}
+  .tab[aria-selected="true"]{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+  .panel{margin-top:28px;display:flex;flex-wrap:wrap;gap:40px;align-items:stretch}
+  .panel-copy{flex:1 1 380px;min-width:0}
+  .panel-copy h3{font-family:var(--display);font-weight:700;font-size:30px;letter-spacing:-.02em}
+  .panel-copy>p{margin-top:12px;font-size:18px;line-height:1.55;color:var(--text);max-width:520px;text-wrap:pretty}
+  .ticks{margin-top:22px;list-style:none;display:flex;flex-direction:column;gap:12px}
+  .ticks li{display:flex;gap:12px;align-items:flex-start;font-size:16px;line-height:1.5}
+  .ticks svg{flex:none;margin-top:1px;color:var(--green)}
+  .panel-copy .btn{margin-top:30px;min-height:50px;padding:0 26px;font-size:16px;border-radius:14px}
+  .sheet{flex:1 1 340px;min-width:0;background:var(--surface-2);border-radius:24px;padding:28px;display:flex;flex-direction:column;gap:18px}
+  .sheet-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+  .sheet-head b{font-family:var(--display);font-weight:700;font-size:18px}
+  .sheet-head span{font-size:14px;font-weight:600;color:var(--text)}
+  .pal{display:grid;grid-template-columns:repeat(auto-fill,minmax(46px,1fr));gap:10px}
+  .pal span{height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;background:var(--surface);border:1.5px solid var(--line-3)}
+  .pal span.a{background:var(--green);border-color:var(--green);color:#fff}
+  .pal span.m{background:var(--yellow);border-color:var(--yellow);color:var(--yellow-ink)}
+  .pal span.c{border-color:var(--brand);box-shadow:inset 0 0 0 1.5px var(--brand)}
+  .legend{display:flex;flex-wrap:wrap;gap:8px 20px;font-size:13px;font-weight:600;color:var(--text)}
+  .legend span{display:flex;align-items:center;gap:8px}
+  .legend i{width:14px;height:14px;border-radius:4px}
 
-  /* ---------- how it works ---------- */
-  .steps{display:grid;gap:14px;grid-template-columns:repeat(4,1fr);counter-reset:step}
-  .step{position:relative;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:24px 20px 20px;box-shadow:var(--shadow)}
-  .step::before{counter-increment:step;content:counter(step);display:grid;place-items:center;width:30px;height:30px;margin-bottom:14px;
-    border-radius:9px;background:var(--tint);color:var(--green);font-size:13px;font-weight:800}
-  .step h3{font-size:16px;font-weight:700;letter-spacing:-.01em;margin-bottom:8px}
-  .step p{font-size:13.5px;color:var(--muted);line-height:1.55}
+  /* ---------- papers list ---------- */
+  .list{margin-top:36px;background:var(--surface);border:1.5px solid var(--line);border-radius:24px;overflow:hidden}
+  .row{display:flex;flex-wrap:wrap;align-items:center;gap:14px 24px;padding:22px 28px;border-bottom:1px solid var(--line);transition:background .15s}
+  .row:last-child{border-bottom:0}
+  .row:hover{background:var(--brand-row)}
+  .row-tag{width:64px;height:64px;border-radius:18px;display:flex;align-items:center;justify-content:center;flex:none;font-family:var(--display);font-weight:800;font-size:15px;letter-spacing:.02em;color:var(--ink)}
+  .row-main{flex:1 1 260px;min-width:0}
+  .row-main b{display:block;font-family:var(--display);font-weight:700;font-size:20px;letter-spacing:-.01em;line-height:1.25}
+  .row-main span{display:block;margin-top:4px;font-size:15px;color:var(--text)}
+  .row-go{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .price{font-weight:800;font-size:14px;padding:6px 12px;border-radius:999px;background:var(--brand-soft);color:var(--brand-text)}
+  .price.free{background:var(--green-soft);color:var(--green)}
+  .row .btn{pointer-events:none}
+
+  /* ---------- how ---------- */
+  .steps{margin-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(340px,100%),1fr));gap:20px}
+  .step{padding:30px;border-radius:24px;background:var(--surface);border:1.5px solid var(--line)}
+  .step-n{font-family:var(--display);font-weight:800;font-size:64px;line-height:1;color:var(--yellow);-webkit-text-stroke:1.5px var(--ink)}
+  .step h3{margin-top:18px;font-family:var(--display);font-weight:700;font-size:24px}
+  .step p{margin-top:10px;font-size:16px;line-height:1.55;color:var(--text)}
 
   /* ---------- what's inside ---------- */
-  .inside{display:grid;gap:16px;grid-template-columns:1.05fr .95fr;align-items:start}
-  .spec{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
-  .spec h3{padding:19px 22px 0;font-size:17px;font-weight:700;letter-spacing:-.012em}
-  .spec dl{margin:14px 0 0;padding:0 22px 6px}
-  .spec-row{display:flex;justify-content:space-between;gap:18px;padding:12px 0;border-top:1px solid var(--border);font-size:13.5px}
-  .spec-row:first-of-type{border-top:0}
-  .spec-row dt{color:var(--muted)}
-  .spec-row dd{margin:0;font-weight:600;text-align:right}
-  .feature-list{display:grid;gap:10px;margin:0;padding:0;list-style:none}
-  .feature-list li{display:flex;gap:11px;align-items:flex-start;background:var(--surface);border:1px solid var(--border);
-    border-radius:12px;padding:14px 16px;font-size:13.5px;line-height:1.5}
-  .feature-list svg{flex:none;margin-top:1px;width:17px;height:17px;color:var(--green)}
-  .feature-list b{display:block;margin-bottom:2px;font-size:13.5px;font-weight:700}
-  .feature-list span{color:var(--muted)}
+  .inside{margin-top:40px;display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
+  .spec{background:var(--surface);border:1.5px solid var(--line);border-radius:24px;padding:28px}
+  .spec h3{font-family:var(--display);font-weight:700;font-size:22px}
+  .spec dl{margin-top:14px}
+  .spec dl div{display:grid;grid-template-columns:150px 1fr;gap:16px;padding:14px 0;border-top:1px solid var(--line)}
+  .spec dt{font-size:14px;font-weight:600;color:var(--muted)}
+  .spec dd{font-size:15px;font-weight:600;line-height:1.45}
+  .features{list-style:none;display:flex;flex-direction:column;gap:12px}
+  .features li{display:flex;gap:16px;align-items:flex-start;padding:18px 20px;background:var(--surface);border:1.5px solid var(--line);border-radius:18px}
+  .f-ico{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex:none;color:var(--ink)}
+  .features b{display:block;font-family:var(--display);font-weight:700;font-size:17px;line-height:1.3}
+  .features span{display:block;margin-top:4px;font-size:15px;line-height:1.5;color:var(--text)}
 
-  /* ---------- trust ---------- */
-  .trust{display:grid;gap:16px;grid-template-columns:repeat(3,1fr)}
-  .trust-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:24px 21px;box-shadow:var(--shadow)}
-  .trust-card h3{font-size:16px;font-weight:700;letter-spacing:-.01em;margin-bottom:9px}
-  .trust-card p{font-size:13.5px;color:var(--muted);line-height:1.6}
-  .trust-card a{color:var(--green);font-weight:600;text-decoration:underline;text-underline-offset:3px}
-  .disclaimer{margin-top:16px;padding:16px 19px;background:#f3f6fb;border:1px solid #cfdbec;border-radius:12px;
-    font-size:12.5px;color:var(--muted);line-height:1.6}
+  /* ---------- about ---------- */
+  .trust{margin-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:20px}
+  .trust-card{padding:28px;border-radius:24px;background:var(--surface);border:1.5px solid var(--line)}
+  .trust-card h3{font-family:var(--display);font-weight:700;font-size:22px}
+  .trust-card p{margin-top:10px;font-size:15.5px;line-height:1.6;color:var(--text)}
+  .trust-links a,.faq a{color:var(--brand-text);font-weight:700;text-decoration:underline;text-underline-offset:2px}
+  .disclaimer{margin-top:24px;padding:18px 22px;border-radius:16px;background:var(--surface-2);font-size:14.5px;line-height:1.6;color:var(--text)}
+  .disclaimer b{color:var(--ink)}
 
   /* ---------- faq ---------- */
-  .faq{display:grid;gap:10px;max-width:800px}
-  .faq details{background:var(--surface);border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow)}
-  .faq summary{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:17px 20px;
-    font-size:14.5px;font-weight:600;cursor:pointer;list-style:none}
+  .faq{margin-top:36px;display:flex;flex-direction:column;gap:12px;max-width:860px}
+  .faq details{background:var(--surface);border:1.5px solid var(--line);border-radius:18px;transition:border-color .15s}
+  .faq details[open]{border-color:var(--brand)}
+  .faq summary{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:60px;padding:16px 22px;font-family:var(--display);font-weight:700;font-size:18px;cursor:pointer;list-style:none}
   .faq summary::-webkit-details-marker{display:none}
-  .faq summary::after{content:"";flex:none;width:9px;height:9px;border-right:2px solid var(--muted);
-    border-bottom:2px solid var(--muted);transform:rotate(45deg);transition:transform .18s ease}
-  .faq details[open] summary::after{transform:rotate(225deg)}
-  .faq details[open] summary{color:var(--green)}
-  .faq p{margin:0;padding:0 20px 18px;font-size:13.5px;color:var(--muted);line-height:1.65}
-
-  @media(max-width:900px){
-    .steps{grid-template-columns:repeat(2,1fr)}
-    .inside{grid-template-columns:1fr}
-    .trust{grid-template-columns:1fr}
-  }
-  @media(max-width:560px){.steps{grid-template-columns:1fr}}
+  .faq summary::after{content:'+';flex:none;width:32px;height:32px;border-radius:10px;display:grid;place-items:center;background:var(--brand-soft);color:var(--brand-text);font-family:'Figtree',sans-serif;font-size:22px;font-weight:700;transition:transform .2s}
+  .faq details[open] summary::after{transform:rotate(45deg)}
+  .faq summary:focus-visible{outline:3px solid var(--yellow);outline-offset:2px;border-radius:18px}
+  .faq details p{padding:0 22px 20px;font-size:16px;line-height:1.6;color:var(--text)}
 
   /* ---------- cta ---------- */
-  .band{background:var(--deep);color:var(--deep-ink);border-radius:22px;padding:clamp(34px,5.5vw,62px)}
-  .band h2{color:var(--deep-ink);margin-bottom:28px;max-width:20ch}
-  .band h2 em{color:var(--soft)}
+  .cta-sec{padding:96px 0}
+  .band{background:var(--brand);color:#fff;border-radius:32px;padding:clamp(32px,6vw,72px);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:28px}
+  .band-copy{flex:1 1 420px;min-width:0}
+  .band h2{font-family:var(--display);font-weight:800;font-size:clamp(32px,4.6vw,52px);line-height:1.06;letter-spacing:-.03em;text-wrap:balance}
+  .band p{margin-top:14px;font-size:18px;line-height:1.5;color:#DADCFF;max-width:520px}
+  .band .btn{min-height:56px;padding:0 32px;font-size:17px;border-radius:16px}
 
-  footer.site-footer{margin-top:clamp(48px,7vw,80px);padding:48px 0 20px;background:#0f172a;color:#cbd5e1;border-top:1px solid #29467a}
-  .site-footer-grid{display:grid;grid-template-columns:1.25fr 1fr 1fr 1.1fr;gap:30px}
-  .site-footer-brand{display:flex;align-items:center;gap:12px;color:#f8fafc}
-  .site-footer-brand img{width:52px;height:52px;object-fit:cover;border-radius:14px;box-shadow:0 5px 20px #0005}
-  .site-footer-brand strong{display:block;font-size:17px;letter-spacing:-.02em}
-  .site-footer-brand small{display:block;color:#94a3b8;font-size:12px}
-  .site-footer-quote{margin:16px 0 0;color:#e3eaf5;font:italic 16px/1.5 Inter, system-ui, sans-serif}
-  .site-footer-column{display:grid;align-content:start;justify-items:start;gap:9px;font-size:13px}
-  .site-footer-column strong{margin-bottom:3px;color:#fff;font-size:14px}
-  .site-footer-column a{color:#cbd5e1;transition:color .15s}
-  .site-footer-column a:hover{color:#9fb6d8}
-  .site-footer-column small{color:#94a3b8;font-size:11px}
-  .site-footer-contact{padding:16px;border:1px solid #3a5078;border-radius:16px;background:#1e3355;box-shadow:0 12px 30px #0002}
-  .site-footer-contact a{display:flex;align-items:center;gap:8px;width:100%;padding:9px 10px;border:1px solid #3a5078;border-radius:10px;background:#1e3355;color:#eef3fa;font-weight:600}
-  .site-footer-contact a:hover{border-color:#6d93cf;background:#29467a}
-  .site-footer-bottom{grid-column:1/-1;display:grid;gap:10px;margin-top:4px;padding-top:18px;border-top:1px solid #475569;color:#94a3b8;font-size:11px;line-height:1.6}
-  @media(max-width:800px){.site-footer-grid{grid-template-columns:1fr 1fr}.site-footer-brand-wrap,.site-footer-bottom{grid-column:1/-1}}
-  @media(max-width:520px){footer.site-footer{padding-top:34px}.site-footer-grid{grid-template-columns:1fr;gap:24px}.site-footer-brand-wrap,.site-footer-bottom{grid-column:auto}}
+  /* ---------- footer ---------- */
+  footer{background:var(--navy);color:var(--navy-text)}
+  .foot{padding:56px 24px 28px;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:36px}
+  .foot-brand{display:flex;align-items:center;gap:12px;color:#fff}
+  .foot-brand img{width:52px;height:52px;object-fit:cover;border-radius:14px}
+  .foot-brand strong{display:block;font-family:var(--display);font-weight:800;font-size:22px;letter-spacing:-.02em}
+  .foot-brand small{display:block;color:var(--navy-faint);font-size:12px;font-weight:600}
+  .foot-quote{margin-top:16px;font-size:15px;line-height:1.6;max-width:320px}
+  .foot-col{display:flex;flex-direction:column;gap:4px;font-size:15px}
+  .foot-col strong{color:#fff;font-weight:700;margin-bottom:6px}
+  .foot-col a{min-height:32px;display:flex;align-items:center;gap:8px}
+  .foot-col a:hover{color:#fff;text-decoration:underline}
+  .foot-col small{color:var(--navy-faint);font-size:13px;margin:-4px 0 6px}
+  .foot-col svg{flex:none}
+  .foot-bottom{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.1);padding-top:22px;display:flex;flex-direction:column;gap:8px;font-size:13px;line-height:1.55;color:var(--navy-faint)}
 
-  @media (max-width:900px){
-    .hero-grid{grid-template-columns:1fr;gap:34px}
-    .stack{height:290px;order:2}
-    .grid{grid-template-columns:repeat(2,1fr)}
+  /* ---------- responsive ---------- */
+  @media (max-width:980px){.links{display:none}.inside{grid-template-columns:1fr}.foot{grid-template-columns:1fr 1fr}.foot>section:first-child{grid-column:1/-1}}
+  @media (max-width:640px){
+    .wrap{padding:0 16px}
+    .hero-in{padding:28px 16px 64px;gap:48px}
+    .strip-in{padding:32px 16px;grid-template-columns:1fr 1fr;gap:24px 16px}
+    .strip b{font-size:26px}
+    .strip span{font-size:14px}
+    .nav{min-height:64px;gap:8px}
+    .brand img{width:36px;height:36px}
+    .brand-text strong{font-size:18px}
+    .hide-sm{display:none!important}
+    .profile-name{display:none}.profile-chip{padding:4px}
+    .nav-end .btn{padding:0 14px;font-size:14px}
+    .search .btn{flex:1 1 100%}
+    .demo-shadow{inset:12px -8px -12px 8px}
+    .demo-card{padding:22px 18px 18px}
+    section.block{padding-top:64px}
+    .row{padding:18px}
+    .row-go{width:100%}
+    .row-go .btn{flex:1}
+    .cta-sec{padding:64px 0}
+    .foot{grid-template-columns:1fr;padding:44px 16px 24px}
+    .spec{padding:22px}
+    .spec dl div{grid-template-columns:1fr;gap:4px}
+    .faq summary{font-size:16.5px;padding:14px 16px}
+    .faq details p{padding:0 16px 18px}
   }
-  @media (max-width:540px){
-    .grid{grid-template-columns:1fr}
-  }
-  @media (max-width:760px){
-    .links{display:none}
-    .nav{height:62px;gap:8px}
-    .btn{padding:10px 14px;font-size:11px;letter-spacing:.07em}
-    .hide-sm{display:none}
-    .pal{width:40px;height:40px}
-  }
-  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
-  /* Phones and tablets: the page never scrolls sideways. */
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
   @media (max-width:900px){html{overflow-x:hidden}html,body{max-width:100%;overscroll-behavior-x:none}@supports (overflow:clip){html,body{overflow-x:clip}}}
 </style>
 </head>
@@ -276,319 +318,485 @@
 
 <header id="hdr">
   <div class="wrap nav">
-    <a class="brand" href="/">
-      <img class="mark" src="/assets/quiz-lab-icon.png" alt="" width="34" height="34">
+    <a class="brand" href="/" aria-label="Quiz LAB by GenZ IITian, home">
+      <img src="/assets/quiz-lab-icon.png" alt="" width="40" height="40">
       <span class="brand-text"><strong>Quiz LAB</strong><small>by GenZ IITian</small></span>
     </a>
-    <nav class="links">
+    <nav class="links" aria-label="Main">
       <a href="/papers">Papers</a>
+      <a href="#levels">Levels</a>
       <a href="#how">How it works</a>
       <a href="#inside">What's inside</a>
       <a href="#faq">FAQ</a>
       <a href="/leaderboard">Leaderboard</a>
     </nav>
     <div class="nav-end">
-      <button class="icon-btn" id="theme" aria-label="Toggle dark mode" title="Toggle dark mode">
-        <svg id="theme-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></svg>
+      <button class="icon-btn" id="theme" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
+        <svg id="theme-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"></svg>
       </button>
-      <a class="btn btn-ghost hide-sm" id="auth-btn" href="/login">Log in</a>
-      <a class="btn btn-dark" id="primary-btn" href="/login">Start practising</a>
+      <a class="btn btn-plain hide-sm" id="auth-btn" href="/login">Log in</a>
+      <a class="btn btn-brand" id="primary-btn" href="/login">Sign up free</a>
       <div class="profile-menu" id="profile-menu" hidden>
         <button class="profile-chip" id="profile-chip" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="profile-dropdown"><span class="profile-initial" id="profile-initial"></span><span class="profile-name" id="profile-name"></span></button>
-        <div class="profile-dropdown" id="profile-dropdown" role="menu" hidden><button id="logout-btn" type="button" role="menuitem">Log out</button></div>
+        <div class="profile-dropdown" id="profile-dropdown" role="menu" hidden>
+          <a id="dash-link" href="/dashboard" role="menuitem">Dashboard</a>
+          <a href="/my-papers" role="menuitem">My Papers</a>
+          <button id="logout-btn" type="button" role="menuitem">Log out</button>
+        </div>
       </div>
     </div>
   </div>
 </header>
 
 <main>
-  <div class="wrap hero">
-    <div class="hero-grid">
-      <div>
-        <p class="eyebrow">IITM BS · Data Science &amp; Electronics</p>
-        <h1 class="serif">Every past paper, practised the way the <em>exam</em> feels.</h1>
-        <p class="lede">Past papers from Qualifier to Degree, sat in a room that behaves like the real exam: a server-held clock, a question palette, and worked solutions the moment you submit.</p>
-        <div class="cta-row">
-      <a class="btn btn-dark" id="hero-cta" href="/papers">Browse papers</a>
-          <a class="btn btn-soft" href="/papers">Try a sample paper</a>
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="wrap hero-in">
+      <div class="hero-copy">
+        <span class="pill"><i></i>IITM BS · Qualifier to Degree</span>
+        <h1>Practise like it's the <span class="hl">real exam.</span></h1>
+        <p class="lede">Past Quiz 1, Quiz 2, End Term and mock papers for the IIT Madras BS programmes. Pick a course, start in one tap, and see exactly where your marks are leaking.</p>
+
+        <form class="search" action="/papers" method="get" role="search">
+          <label for="q-search" class="sr">Search a course or paper</label>
+          <div class="search-field">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+            <input id="q-search" name="q" type="search" placeholder="Search a course, e.g. Statistics 1" autocomplete="off">
+          </div>
+          <button type="submit" class="btn btn-brand">Find papers</button>
+        </form>
+
+        <div class="chips">
+          <span>Try:</span>
+          <a class="chip" href="/papers?q=Mathematics%201">Maths 1</a>
+          <a class="chip" href="/papers?q=Statistics%201">Statistics 1</a>
+          <a class="chip" href="/papers?q=Computational%20Thinking">Computational Thinking</a>
+          <a class="chip" href="/papers?q=Python">Python</a>
         </div>
       </div>
 
-      <div class="stack" aria-hidden="true">
-        <article class="sheet s1">
-          <span class="tag">Quiz 1</span>
-          <p class="sheet-title">Mathematics 1</p>
-          <p class="sheet-sub">Jan 2026 · 45 min</p>
-          <span class="rule w90"></span><span class="rule w70"></span><span class="rule w80"></span>
-          <div class="mcq"><i></i><i class="on"></i><i></i><i></i></div>
-        </article>
-        <article class="sheet s2">
-          <span class="tag">Quiz 2</span>
-          <p class="sheet-title">Statistics 1</p>
-          <p class="sheet-sub">May 2025 · 45 min</p>
-          <span class="rule w80"></span><span class="rule w90"></span><span class="rule w60"></span>
-          <div class="mcq"><i class="on"></i><i></i><i></i><i></i></div>
-        </article>
-        <article class="sheet s3">
-          <span class="tag">End Term</span>
-          <p class="sheet-title">Python</p>
-          <p class="sheet-sub">Sep 2025 · 120 min</p>
-          <span class="rule w70"></span><span class="rule w85"></span><span class="rule w75"></span>
-          <div class="mcq"><i></i><i></i><i class="on"></i><i></i></div>
-        </article>
-        <article class="sheet s4">
-          <span class="tag">Quiz 1</span>
-          <p class="sheet-title">Comp. Thinking</p>
-          <p class="sheet-sub">Jan 2025 · 45 min</p>
-          <span class="rule w85"></span><span class="rule w65"></span><span class="rule w90"></span>
-          <div class="mcq"><i></i><i class="on"></i><i></i><i></i></div>
-        </article>
+      <div class="demo-wrap">
+        <div class="demo">
+          <div class="demo-shadow" aria-hidden="true"></div>
+          <div class="demo-card">
+            <div class="demo-head">
+              <div>
+                <div class="demo-kicker">Try it now · Maths 1 · Quiz 1</div>
+                <div class="demo-title">Sample question</div>
+              </div>
+              <div class="ring" role="timer" aria-label="Seconds left">
+                <svg width="62" height="62" viewBox="0 0 62 62" aria-hidden="true">
+                  <circle class="ring-track" cx="31" cy="31" r="26" fill="none" stroke-width="6"/>
+                  <circle class="ring-bar" id="ring" cx="31" cy="31" r="26" fill="none" stroke-width="6" stroke-linecap="round" stroke-dasharray="163.4" stroke-dashoffset="0" transform="rotate(-90 31 31)"/>
+                </svg>
+                <b id="secs">30</b>
+              </div>
+            </div>
+            <p class="q">If f(x) = 2x + 3, what is f⁻¹(7)?</p>
+            <div class="opts" id="opts">
+              <button class="opt" type="button"><span class="key">A</span><span class="txt">5</span><span class="tag"></span></button>
+              <button class="opt" type="button" data-correct="1"><span class="key">B</span><span class="txt">2</span><span class="tag"></span></button>
+              <button class="opt" type="button"><span class="key">C</span><span class="txt">17</span><span class="tag"></span></button>
+              <button class="opt" type="button"><span class="key">D</span><span class="txt">4</span><span class="tag"></span></button>
+            </div>
+            <div class="demo-foot">
+              <p id="hint" aria-live="polite">Pick an answer. The clock is running.</p>
+              <a class="btn btn-navy" href="/papers">Take a full paper</a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+  </section>
 
-    <div class="quiz" id="demo">
-      <div class="quiz-head">
-        <span class="quiz-meta">Maths 1 · Quiz 1 · Jan 2026</span>
-        <span class="timer" id="timer">41:12</span>
+  <!-- FACTS -->
+  <section class="strip" aria-label="What you get">
+    <div class="wrap strip-in">
+      <div><b>4 levels</b><span>Qualifier, Foundation, Diploma and Degree</span></div>
+      <div><b>6 paper types</b><span>Practice, Graded, Quiz 1, Quiz 2, End Term and Mock</span></div>
+      <div><b>Free papers</b><span>Start practising without paying a rupee</span></div>
+      <div><b>Any device</b><span>Laptop, tablet or phone, with progress saved</span></div>
+    </div>
+  </section>
+
+  <!-- LEVELS -->
+  <section class="block" id="levels">
+    <div class="wrap">
+      <div class="row-head">
+        <div class="sec-head">
+          <div class="eyebrow">Choose your level</div>
+          <h2 class="h2">Every paper, sorted by where you are in the BS.</h2>
+        </div>
+        <a class="more" href="/papers">Browse all papers
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
       </div>
-      <p class="q">If f(x) = 2x + 3, what is f⁻¹(7)?</p>
-      <div id="opts">
-        <button class="opt" data-k="A"><span class="key">A</span> 5</button>
-        <button class="opt" data-k="B" data-correct="1"><span class="key">B</span> 2</button>
-        <button class="opt" data-k="C"><span class="key">C</span> 17</button>
-      </div>
-      <p class="hint" id="hint">f⁻¹(7) solves 2x + 3 = 7, so x = 2.</p>
-      <div class="palette">
-        <span class="pal done">1</span><span class="pal done">2</span><span class="pal done">3</span>
-        <span class="pal done">4</span><span class="pal now">5</span><span class="pal done">6</span>
-        <span class="pal">7</span><span class="pal">8</span><span class="pal">9</span><span class="pal">10</span>
+      <div class="cats">
+        <a class="cat" href="/papers?q=Qualifier">
+          <span class="cat-ico ty" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V7l8-4z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg></span>
+          <span><h3>Qualifier</h3><p>Week 1 to 4 assignments and qualifier mocks for Maths 1, Statistics 1, Computational Thinking and English 1.</p></span>
+        </a>
+        <a class="cat" href="/papers?level=Foundation">
+          <span class="cat-ico ti" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h12a4 4 0 014 4v10H8a4 4 0 01-4-4V5z"/><path d="M8 9h8M8 13h5"/></svg></span>
+          <span><h3>Foundation</h3><p>Maths, Statistics, English, Computational Thinking and Python: Quiz 1, Quiz 2 and End Term.</p></span>
+        </a>
+        <a class="cat" href="/papers?level=Diploma">
+          <span class="cat-ico tg" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 8l-4 4 4 4M16 8l4 4-4 4M13.5 5l-3 14"/></svg></span>
+          <span><h3>Diploma in Programming</h3><p>DBMS, PDSA, App Development, Java and System Commands.</p></span>
+        </a>
+        <a class="cat" href="/papers?level=Diploma">
+          <span class="cat-ico ti" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span>
+          <span><h3>Diploma in Data Science</h3><p>Machine Learning Foundations, Techniques and Practice, BDM and Business Analytics.</p></span>
+        </a>
+        <a class="cat" href="/papers?level=Degree">
+          <span class="cat-ico ty" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M6 11v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5"/></svg></span>
+          <span><h3>Degree</h3><p>BSc and BS level electives and core courses, term by term.</p></span>
+        </a>
+        <a class="cat" href="/papers?q=Electronic">
+          <span class="cat-ico tg" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/></svg></span>
+          <span><h3>Electronic Systems</h3><p>Circuits, digital systems, signals and embedded C for the ES programme.</p></span>
+        </a>
       </div>
     </div>
-  </div>
+  </section>
 
-  <section id="programmes"><div class="wrap">
-    <h2 class="serif">Four programmes. <em>Every</em> level, every term.</h2>
-    <div class="grid">
-      <div class="card"><p class="kicker">Data Science</p><h3>Data Science and Applications</h3><p>Maths, statistics, programming and machine learning</p></div>
-      <div class="card"><p class="kicker">Electronic Systems</p><h3>Electronic Systems</h3><p>Circuits, embedded systems, signals and VLSI</p></div>
-      <div class="card"><p class="kicker">Aerospace</p><h3>Aerospace Engineering</h3><p>Aerodynamics, structures, propulsion and flight</p></div>
-      <div class="card"><p class="kicker">Management &amp; DS</p><h3>Management and Data Science</h3><p>Business, economics and analytics alongside data science</p></div>
-    </div>
-  </div></section>
-
-  <section id="modes" style="padding-top:0"><div class="wrap">
-    <div class="modes">
-      <div class="mode white">
-        <p class="kicker">Exam mode</p>
-        <h3 class="serif">A real timer and a question palette.</h3>
-        <p>Jump between questions, mark them for review, and submit when you are ready. Answers and solutions open after you submit, just like the portal.</p>
-      </div>
-      <div class="mode green">
-        <p class="kicker">Practice mode</p>
-        <h3 class="serif">See the answer the moment you choose.</h3>
-        <p>No clock. Pick an option and the correct answer and worked solution appear straight away. Bookmark anything you want to revisit before the exam.</p>
-      </div>
-    </div>
-  </div></section>
-
-
-  <section id="how"><div class="wrap">
-    <h2 class="serif">From a blank evening to a <em>marked</em> paper.</h2>
-    <div class="steps">
-      <div class="step">
-        <h3>Find the paper</h3>
-        <p>Filter by programme, level and term, then open any Quiz 1, Quiz 2, End Term or mock test in the catalogue.</p>
-      </div>
-      <div class="step">
-        <h3>Add it to your library</h3>
-        <p>Papers you open stay in your library, so you can come back to a half-finished attempt on any device.</p>
-      </div>
-      <div class="step">
-        <h3>Sit it properly</h3>
-        <p>The paper room gives you a clock, a question palette, mark-for-review and a calculator — then takes it away when time is up.</p>
-      </div>
-      <div class="step">
-        <h3>Read the solutions</h3>
-        <p>Submit and the marking appears at once: what you got right, what you missed, and the worked reasoning for each question.</p>
+  <!-- MODES -->
+  <section class="block" id="modes">
+    <div class="wrap">
+      <div class="modes">
+        <div class="sec-head">
+          <div class="eyebrow">Three ways to practise</div>
+          <h2 class="h2">Ten minutes before class, or three hours before the end term.</h2>
+        </div>
+        <div class="tabs" role="tablist" aria-label="Practice modes">
+          <button class="tab" role="tab" type="button" id="tab-practice" data-mode="practice" aria-selected="true" aria-controls="mode-panel">Practice mode</button>
+          <button class="tab" role="tab" type="button" id="tab-exam" data-mode="exam" aria-selected="false" aria-controls="mode-panel" tabindex="-1">Exam mode</button>
+          <button class="tab" role="tab" type="button" id="tab-mock" data-mode="mock" aria-selected="false" aria-controls="mode-panel" tabindex="-1">Mock test</button>
+        </div>
+        <div class="panel" id="mode-panel" role="tabpanel" aria-labelledby="tab-practice">
+          <div class="panel-copy">
+            <h3 id="m-title"></h3>
+            <p id="m-desc"></p>
+            <ul class="ticks" id="m-points"></ul>
+            <a class="btn btn-brand" id="m-cta" href="/papers"></a>
+          </div>
+          <div class="sheet">
+            <div class="sheet-head"><b>Question palette</b><span id="m-meta"></span></div>
+            <div class="pal" id="m-pal" aria-hidden="true"></div>
+            <div class="legend">
+              <span><i style="background:var(--green)"></i>Answered</span>
+              <span><i style="background:var(--yellow)"></i>Marked for review</span>
+              <span><i style="background:var(--surface);border:1.5px solid var(--line-3)"></i>Not visited</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div></section>
+  </section>
 
-  <section id="inside" style="padding-top:0"><div class="wrap">
-    <h2 class="serif">What is actually <em>in</em> the room.</h2>
-    <div class="inside">
-      <div class="spec">
-        <h3>Coverage</h3>
-        <dl>
-          <div class="spec-row"><dt>Programmes</dt><dd>Data Science · Electronic Systems<br>Aerospace · Management &amp; DS</dd></div>
-          <div class="spec-row"><dt>Levels</dt><dd>Qualifier → Foundation → Diploma → Degree</dd></div>
-          <div class="spec-row"><dt>Paper types</dt><dd>Quiz 1, Quiz 2, End Term, mock tests, practice sets</dd></div>
-          <div class="spec-row"><dt>Question types</dt><dd>Single choice, multiple select, true/false,<br>numerical with tolerance, short answer</dd></div>
-          <div class="spec-row"><dt>Comprehension</dt><dd>Passage-based question groups</dd></div>
-          <div class="spec-row"><dt>Maths &amp; chemistry</dt><dd>Full LaTeX and mhchem rendering</dd></div>
-        </dl>
+  <!-- PAPERS -->
+  <section class="block" id="popular">
+    <div class="wrap">
+      <div class="row-head">
+        <div class="sec-head">
+          <div class="eyebrow">Start here</div>
+          <h2 class="h2">Papers you can open right now.</h2>
+        </div>
+        <a class="more" href="/papers">See every paper
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
       </div>
-      <ul class="feature-list">
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><div><b>A clock the browser cannot argue with</b><span>Timing is held on the server, so a refresh, a flat battery or a second tab does not buy you extra minutes.</span></div></li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><div><b>A question palette</b><span>See at a glance what is answered, what is blank and what you flagged for review, and jump straight to any of them.</span></div></li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><div><b>Autosave with retry</b><span>Answers save as you go. If the connection drops the page says so and keeps retrying until it is saved.</span></div></li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><div><b>A built-in calculator</b><span>Basic and scientific modes, in the same panel the real exam portal gives you.</span></div></li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><div><b>Negative marking that matches</b><span>Wrong attempts carry the paper's own penalty and the total is floored at zero, exactly as the portal scores it.</span></div></li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><div><b>Offline library</b><span>Download a paper in the app and sit it with no signal; it syncs when you are back online.</span></div></li>
-      </ul>
-    </div>
-  </div></section>
-
-  <section id="about" style="padding-top:0"><div class="wrap">
-    <h2 class="serif">Built for one degree, and <em>only</em> that one.</h2>
-    <div class="trust">
-      <div class="trust-card">
-        <h3>Who this is for</h3>
-        <p>Students on the IITM BS degree, from the Qualifier through to Degree level. Every paper, mark scheme and solution is written against that syllabus rather than adapted from a general question bank.</p>
-      </div>
-      <div class="trust-card">
-        <h3>Proctored exams for institutions</h3>
-        <p>Teaching teams can run their own invigilated exams here: enrolment by verified email, a shared server clock, browser-event warnings, session locking, CSV exports and a full audit history. This is browser-event proctoring — it is evidence for a human review, not a verdict.</p>
-      </div>
-      <div class="trust-card">
-        <h3>Your account and your data</h3>
-        <p>Read how we handle your data and what you can ask us to remove.<br>
-          <a href="/privacy-policy">Privacy Policy</a> · <a href="/terms-and-conditions">Terms</a> · <a href="/delete-account">Delete your account</a></p>
+      <div class="list" id="paper-list">
+        <a class="row" href="/papers?q=Mathematics%201"><span class="row-tag ty">MA1</span><span class="row-main"><b>Mathematics 1</b><span>Foundation · Practice assignments, Quiz 1, Quiz 2 and End Term</span></span><span class="row-go"><span class="btn btn-outline">View papers</span></span></a>
+        <a class="row" href="/papers?q=Statistics%201"><span class="row-tag tg">ST1</span><span class="row-main"><b>Statistics 1</b><span>Foundation · Practice assignments, Quiz 1, Quiz 2 and End Term</span></span><span class="row-go"><span class="btn btn-outline">View papers</span></span></a>
+        <a class="row" href="/papers?q=Computational%20Thinking"><span class="row-tag ti">CT</span><span class="row-main"><b>Computational Thinking</b><span>Foundation · Weekly assignments and qualifier mocks</span></span><span class="row-go"><span class="btn btn-outline">View papers</span></span></a>
+        <a class="row" href="/papers?q=English%201"><span class="row-tag ti">EN1</span><span class="row-main"><b>English 1</b><span>Foundation · Graded assignments and qualifier mocks</span></span><span class="row-go"><span class="btn btn-outline">View papers</span></span></a>
+        <a class="row" href="/papers?q=Python"><span class="row-tag ti">PY</span><span class="row-main"><b>Programming in Python</b><span>Foundation · Quiz and End Term practice</span></span><span class="row-go"><span class="btn btn-outline">View papers</span></span></a>
       </div>
     </div>
-    <p class="disclaimer">Quiz LAB is built by GenZ IITian and is <b>not affiliated with, endorsed by, or operated by IIT Madras</b>. Past-paper content is provided for practice. Always check the current syllabus and official announcements on the institute's own portal.</p>
-  </div></section>
+  </section>
 
-  <section id="faq" style="padding-top:0"><div class="wrap">
-    <h2 class="serif">Questions people ask <em>first</em>.</h2>
-    <div class="faq">
-      <details>
-        <summary>Which programmes and terms do you cover?</summary>
-        <p>All four IITM BS programmes — Data Science and Applications, Electronic Systems, Aerospace Engineering, and Management and Data Science — across Qualifier, Foundation, Diploma and Degree levels. Within each, you will find Quiz 1, Quiz 2, End Term, mock tests and practice sets. New papers are added as each term's papers are released.</p>
-      </details>
-      <details>
-        <summary>Is this the same as the real exam portal?</summary>
-        <p>It is built to behave like it: the same one-question-at-a-time layout, question palette, mark-for-review, Save &amp; Next flow, calculator, and the same marking rules including negative marking. It is a practice environment, not the institute's portal, and sitting a paper here has no bearing on your actual results.</p>
-      </details>
-      <details>
-        <summary>Can I practise without a timer?</summary>
-        <p>Yes. Practice mode has no clock — choose an option and the correct answer and worked solution appear straight away, so you can work through a paper question by question. Exam mode is the timed version with solutions held back until you submit.</p>
-      </details>
-      <details>
-        <summary>Does it work offline, or on a phone?</summary>
-        <p>The Android app can download a paper to your device and you can sit it with no connection; it syncs when you are back online. The website works on a phone for browsing and practice. Invigilated proctored exams are laptop and desktop only, because the monitoring the browser provides is not available on mobile.</p>
-      </details>
-      <details>
-        <summary>What happens if my connection drops mid-paper?</summary>
-        <p>Answers save to the server as you go, and the page tells you plainly whether your latest answer is saved. If a save fails it keeps retrying and you can force one with <b>Save now</b>. Refreshing recovers everything the server has. Because the clock runs server-side, a disconnection does not pause it.</p>
-      </details>
-      <details>
-        <summary>How are short and numerical answers marked?</summary>
-        <p>Numerical questions accept an absolute tolerance set per question. Short answers are matched case-insensitively against the accepted answers after trimming whitespace. Multiple-select questions need the exact set of options — partial credit is not awarded. Blank questions score zero rather than a penalty.</p>
-      </details>
-      <details>
-        <summary>Can I delete my account and data?</summary>
-        <p>Yes. You can request deletion from <a href="/delete-account">the account deletion page</a> or in the app. Where exam records have to be retained — for instance an invigilated exam you sat for an institution — we deactivate the account instead and tell you why, rather than destroying records someone else depends on.</p>
-      </details>
+  <!-- HOW -->
+  <section class="block" id="how">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">How it works</div>
+        <h2 class="h2">From first question to a fixed weak spot.</h2>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="step-n" aria-hidden="true">1</div><h3>Pick a paper</h3><p>Search a course or choose your level. Assignments, quizzes, end terms and mocks are all one tap away, and free papers open straight away.</p></div>
+        <div class="step"><div class="step-n" aria-hidden="true">2</div><h3>Take it under the clock</h3><p>A real timer and question palette, just like the portal. Or switch to practice mode and see each answer the moment you choose.</p></div>
+        <div class="step"><div class="step-n" aria-hidden="true">3</div><h3>Review every mistake</h3><p>Worked solutions for each question, your score saved in My Papers, and a clear view of what to practise next.</p></div>
+      </div>
     </div>
-  </div></section>
+  </section>
 
-  <section style="padding-top:0"><div class="wrap">
-    <div class="band">
-      <h2 class="serif">Your next quiz is closer than it looks. <em>Start tonight.</em></h2>
-      <a class="btn btn-soft" id="band-cta" href="/login">Open dashboard</a>
+  <!-- WHAT'S INSIDE -->
+  <section class="block" id="inside">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">What's inside</div>
+        <h2 class="h2">What is actually in the room.</h2>
+      </div>
+      <div class="inside">
+        <div class="spec">
+          <h3>Coverage</h3>
+          <dl>
+            <div><dt>Programmes</dt><dd>Data Science · Electronic Systems · Aerospace · Management &amp; DS</dd></div>
+            <div><dt>Levels</dt><dd>Qualifier → Foundation → Diploma → Degree</dd></div>
+            <div><dt>Paper types</dt><dd>Quiz 1, Quiz 2, End Term, mock tests, practice sets</dd></div>
+            <div><dt>Question types</dt><dd>Single choice, multiple select, true/false, numerical with tolerance, short answer</dd></div>
+            <div><dt>Comprehension</dt><dd>Passage-based question groups</dd></div>
+            <div><dt>Maths &amp; chemistry</dt><dd>Full LaTeX and mhchem rendering</dd></div>
+          </dl>
+        </div>
+        <ul class="features">
+          <li><span class="f-ico ti" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5M9 2h6"/></svg></span><div><b>A clock the browser cannot argue with</b><span>Timing is held on the server, so a refresh, a flat battery or a second tab does not buy you extra minutes.</span></div></li>
+          <li><span class="f-ico tg" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></span><div><b>A question palette</b><span>See at a glance what is answered, what is blank and what you flagged for review, and jump straight to any of them.</span></div></li>
+          <li><span class="f-ico ty" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 11-3-6.7L21 8"/><path d="M21 3v5h-5"/></svg></span><div><b>Autosave with retry</b><span>Answers save as you go. If the connection drops the page says so and keeps retrying until it is saved.</span></div></li>
+          <li><span class="f-ico ti" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M8 6h8M8 11h.01M12 11h.01M16 11h.01M8 15h.01M12 15h.01M16 15h.01M8 19h8"/></svg></span><div><b>A built-in calculator</b><span>Basic and scientific modes, in the same panel the real exam portal gives you.</span></div></li>
+          <li><span class="f-ico tg" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><circle cx="12" cy="12" r="9"/></svg></span><div><b>Negative marking that matches</b><span>Wrong attempts carry the paper's own penalty and the total is floored at zero, exactly as the portal scores it.</span></div></li>
+          <li><span class="f-ico ty" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg></span><div><b>Offline library</b><span>Download a paper in the app and sit it with no signal; it syncs when you are back online.</span></div></li>
+        </ul>
+      </div>
     </div>
-  </div></section>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="block" id="about">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">Who it's for</div>
+        <h2 class="h2">Built for one degree, and only that one.</h2>
+      </div>
+      <div class="trust">
+        <div class="trust-card">
+          <h3>Who this is for</h3>
+          <p>Students on the IITM BS degree, from the Qualifier through to Degree level. Every paper, mark scheme and solution is written against that syllabus rather than adapted from a general question bank.</p>
+        </div>
+        <div class="trust-card">
+          <h3>Proctored exams for institutions</h3>
+          <p>Teaching teams can run their own invigilated exams here: enrolment by verified email, a shared server clock, browser-event warnings, session locking, CSV exports and a full audit history. This is browser-event proctoring — it is evidence for a human review, not a verdict.</p>
+        </div>
+        <div class="trust-card">
+          <h3>Your account and your data</h3>
+          <p>Read how we handle your data and what you can ask us to remove.</p>
+          <p class="trust-links"><a href="/privacy-policy">Privacy Policy</a> · <a href="/terms-and-conditions">Terms</a> · <a href="/delete-account">Delete your account</a></p>
+        </div>
+      </div>
+      <p class="disclaimer">Quiz LAB is built by GenZ IITian and is <b>not affiliated with, endorsed by, or operated by IIT Madras</b>. Past-paper content is provided for practice. Always check the current syllabus and official announcements on the institute's own portal.</p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="block" id="faq">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">FAQ</div>
+        <h2 class="h2">Questions people ask first.</h2>
+      </div>
+      <div class="faq">
+        <details>
+          <summary>Which programmes and terms do you cover?</summary>
+          <p>All four IITM BS programmes — Data Science and Applications, Electronic Systems, Aerospace Engineering, and Management and Data Science — across Qualifier, Foundation, Diploma and Degree levels. Within each, you will find Quiz 1, Quiz 2, End Term, mock tests and practice sets. New papers are added as each term's papers are released.</p>
+        </details>
+        <details>
+          <summary>Is this the same as the real exam portal?</summary>
+          <p>It is built to behave like it: the same one-question-at-a-time layout, question palette, mark-for-review, Save &amp; Next flow, calculator, and the same marking rules including negative marking. It is a practice environment, not the institute's portal, and sitting a paper here has no bearing on your actual results.</p>
+        </details>
+        <details>
+          <summary>Can I practise without a timer?</summary>
+          <p>Yes. Practice mode has no clock — choose an option and the correct answer and worked solution appear straight away, so you can work through a paper question by question. Exam mode is the timed version with solutions held back until you submit.</p>
+        </details>
+        <details>
+          <summary>Does it work offline, or on a phone?</summary>
+          <p>The Android app can download a paper to your device and you can sit it with no connection; it syncs when you are back online. The website works on a phone for browsing and practice. Invigilated proctored exams are laptop and desktop only, because the monitoring the browser provides is not available on mobile.</p>
+        </details>
+        <details>
+          <summary>What happens if my connection drops mid-paper?</summary>
+          <p>Answers save to the server as you go, and the page tells you plainly whether your latest answer is saved. If a save fails it keeps retrying and you can force one with <b>Save now</b>. Refreshing recovers everything the server has. Because the clock runs server-side, a disconnection does not pause it.</p>
+        </details>
+        <details>
+          <summary>How are short and numerical answers marked?</summary>
+          <p>Numerical questions accept an absolute tolerance set per question. Short answers are matched case-insensitively against the accepted answers after trimming whitespace. Multiple-select questions need the exact set of options — partial credit is not awarded. Blank questions score zero rather than a penalty.</p>
+        </details>
+        <details>
+          <summary>Can I delete my account and data?</summary>
+          <p>Yes. You can request deletion from <a href="/delete-account">the account deletion page</a> or in the app. Where exam records have to be retained — for instance an invigilated exam you sat for an institution — we deactivate the account instead and tell you why, rather than destroying records someone else depends on.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-sec">
+    <div class="wrap">
+      <div class="band">
+        <div class="band-copy">
+          <h2>Your next quiz is one tap away.</h2>
+          <p>Create a free account and open your first IITM BS paper tonight.</p>
+        </div>
+        <a class="btn btn-yellow" id="band-cta" href="/login">Sign up free</a>
+      </div>
+    </div>
+  </section>
 </main>
 
-<footer class="site-footer"><div class="wrap site-footer-grid">
-  <section class="site-footer-brand-wrap"><div class="site-footer-brand"><img src="/assets/quiz-lab-icon.png" alt="Quiz LAB logo"><div><strong>QUIZ LAB</strong><small>by GenZ IITian</small></div></div><p class="site-footer-quote">“Learn steadily. Practise boldly. Grow together.”</p></section>
-  <section class="site-footer-column"><strong>Check out GenZ IITian</strong><a href="https://genziitian.in/" target="_blank" rel="noopener">genziitian.in</a><small>Explore GenZ IITian</small><a href="https://class.genziitian.in/" target="_blank" rel="noopener">class.genziitian.in</a><small>Free lectures and materials</small></section>
-  <section class="site-footer-column"><strong>Explore</strong><a href="/privacy-policy">Privacy Policy</a><a href="/terms-and-conditions">Terms &amp; Conditions</a><a href="/refund-policy">Refund &amp; Cancellation</a><a href="/delete-account">Delete Account &amp; Data</a><small>Not affiliated with IIT Madras</small></section>
-  <section class="site-footer-column site-footer-contact"><strong>Contact us</strong><a href="mailto:admin@genziitian.org">✉ <span>admin@genziitian.org</span></a><a href="tel:+917254926179">☎ <span>+91 72549 26179</span></a><a href="https://wa.me/917254926179" target="_blank" rel="noopener">◉ <span>WhatsApp us</span></a></section>
-  <div class="site-footer-bottom"><span>&copy; 2026 GEN-Z IITIAN. All rights reserved. · Quiz LAB by GenZ IITian · Built by students, for students</span><span>Quiz LAB is a medium for presenting questions in a clear, organized way with helpful design and graphics. We do not claim ownership or authorship of questions unless clearly identified as our own.</span></div>
-</div></footer>
+<footer>
+  <div class="wrap foot">
+    <section>
+      <div class="foot-brand"><img src="/assets/quiz-lab-icon.png" alt="Quiz LAB logo" width="52" height="52"><div><strong>Quiz LAB</strong><small>by GenZ IITian</small></div></div>
+      <p class="foot-quote">“Learn steadily. Practise boldly. Grow together.”</p>
+    </section>
+    <section class="foot-col">
+      <strong>Check out GenZ IITian</strong>
+      <a href="https://genziitian.in/" target="_blank" rel="noopener">genziitian.in</a><small>Explore GenZ IITian</small>
+      <a href="https://class.genziitian.in/" target="_blank" rel="noopener">class.genziitian.in</a><small>Free lectures and materials</small>
+    </section>
+    <section class="foot-col">
+      <strong>Explore</strong>
+      <a href="/papers">All papers</a>
+      <a href="/privacy-policy">Privacy Policy</a>
+      <a href="/terms-and-conditions">Terms &amp; Conditions</a>
+      <a href="/refund-policy">Refund &amp; Cancellation</a>
+      <a href="/delete-account">Delete Account &amp; Data</a>
+    </section>
+    <section class="foot-col">
+      <strong>Contact us</strong>
+      <a href="mailto:admin@genziitian.org"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>admin@genziitian.org</a>
+      <a href="tel:+917254926179"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.4 1.8.7 2.7a2 2 0 01-.5 2.1L8 9.8a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.4c.9.3 1.8.6 2.7.7a2 2 0 011.7 2z"/></svg>+91 72549 26179</a>
+      <a href="https://wa.me/917254926179" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 01-12.4 7.4L3 21l2.1-5.5A8.4 8.4 0 1121 11.5z"/></svg>WhatsApp us</a>
+    </section>
+    <div class="foot-bottom">
+      <span>&copy; 2026 GEN-Z IITIAN. All rights reserved. · Quiz LAB by GenZ IITian · Built by students, for students · Not affiliated with IIT Madras</span>
+      <span>Quiz LAB is a medium for presenting questions in a clear, organized way with helpful design and graphics. We do not claim ownership or authorship of questions unless clearly identified as our own.</span>
+    </div>
+  </div>
+</footer>
 
 <script>
 (function(){
-  /* ---- theme ---- */
+  var $=function(id){return document.getElementById(id);};
+  function esc(v){return String(v==null?'':v).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+
+  /* ---- theme (same saved key as the app: ql_theme) ---- */
   var SUN='<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M6.3 17.7l-1.4 1.4M19.1 4.9l-1.4 1.4"/>';
   var MOON='<path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/>';
-  var icon=document.getElementById('theme-icon');
-  function paint(){
-    var dark=document.documentElement.getAttribute('data-theme')==='dark'
-      ||(!document.documentElement.getAttribute('data-theme')&&matchMedia('(prefers-color-scheme:dark)').matches);
-    icon.innerHTML=dark?SUN:MOON;
-  }
-  try{var saved=localStorage.getItem('ql_theme'); if(saved)document.documentElement.setAttribute('data-theme',saved);}catch(e){}
+  var root=document.documentElement;
+  function isDark(){var t=root.getAttribute('data-theme');return t?t==='dark':matchMedia('(prefers-color-scheme:dark)').matches;}
+  function paint(){$('theme-icon').innerHTML=isDark()?SUN:MOON;}
   paint();
-  document.getElementById('theme').onclick=function(){
-    var cur=document.documentElement.getAttribute('data-theme');
-    if(!cur)cur=matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';
-    var next=cur==='dark'?'light':'dark';
-    document.documentElement.setAttribute('data-theme',next);
+  $('theme').onclick=function(){
+    var next=isDark()?'light':'dark';
+    root.setAttribute('data-theme',next);
     try{localStorage.setItem('ql_theme',next);}catch(e){}
     paint();
   };
 
-  /* ---- signed-in state: send people straight to their dashboard ---- */
-  try{
-    var token=localStorage.getItem('lab_token');
-    if(token){
-      var dest='/dashboard';
-      try{var u=JSON.parse(localStorage.getItem('lab_user')||'{}'); if(u&&u.is_admin)dest='/admin';}catch(e){}
-      var auth=document.getElementById('auth-btn');
-      auth.textContent='Dashboard'; auth.href=dest;
-      ['primary-btn','hero-cta','band-cta'].forEach(function(id){
-        var el=document.getElementById(id); if(el)el.href=dest;
-      });
-      document.getElementById('primary-btn').hidden=true;
-      var name=String((u&&(u.name||u.email))||'Profile').trim();
-      document.getElementById('profile-name').textContent=name;
-      document.getElementById('profile-initial').textContent=name.charAt(0).toUpperCase();
-      var menu=document.getElementById('profile-menu'); menu.hidden=false;
-      var chip=document.getElementById('profile-chip'); chip.title=name;
-      var dropdown=document.getElementById('profile-dropdown');
-      function closeProfileMenu(){dropdown.hidden=true;chip.setAttribute('aria-expanded','false');}
+  /* ---- signed-in state ---- */
+  var token='';
+  try{token=localStorage.getItem('lab_token')||'';}catch(e){}
+  if(token){
+    try{
+      var u={};try{u=JSON.parse(localStorage.getItem('lab_user')||'{}')||{};}catch(e){}
+      var dest=u.is_admin?'/admin':'/dashboard';
+      $('auth-btn').hidden=true;
+      var pb=$('primary-btn');pb.textContent='Dashboard';pb.href=dest;pb.classList.add('hide-sm');
+      $('dash-link').href=dest;
+      var band=$('band-cta');band.textContent='Open dashboard';band.href=dest;
+      var name=String(u.name||u.email||'Profile').trim();
+      $('profile-name').textContent=name;
+      $('profile-initial').textContent=name.charAt(0).toUpperCase();
+      var menu=$('profile-menu'),chip=$('profile-chip'),dropdown=$('profile-dropdown');
+      menu.hidden=false;chip.title=name;
+      var closeMenu=function(){dropdown.hidden=true;chip.setAttribute('aria-expanded','false');};
       chip.addEventListener('click',function(){dropdown.hidden=!dropdown.hidden;chip.setAttribute('aria-expanded',String(!dropdown.hidden));});
-      document.addEventListener('click',function(event){if(!menu.contains(event.target))closeProfileMenu();});
-      document.addEventListener('keydown',function(event){if(event.key==='Escape')closeProfileMenu();});
-      var out=document.getElementById('logout-btn');
+      document.addEventListener('click',function(ev){if(!menu.contains(ev.target))closeMenu();});
+      document.addEventListener('keydown',function(ev){if(ev.key==='Escape')closeMenu();});
+      var out=$('logout-btn');
       out.addEventListener('click',function(){
         if(!window.confirm('Log out of Quiz LAB?'))return;
         if(!window.confirm('Confirm log out. Are you sure you want to log out now?'))return;
-        closeProfileMenu();
-        out.disabled=true;
-        var done=function(){
-          try{localStorage.removeItem('lab_token');localStorage.removeItem('lab_user');}catch(e){}
-          location.assign('/');
-        };
+        closeMenu();out.disabled=true;
+        var done=function(){try{localStorage.removeItem('lab_token');localStorage.removeItem('lab_user');}catch(e){}location.assign('/');};
         fetch(((window.QLStorefront&&window.QLStorefront.apiBase)||'https://labapi.genziitian.in/public/api')+'/auth/logout',{method:'POST',headers:{Accept:'application/json',Authorization:'Bearer '+token}}).then(done,done);
       });
-      var hero=document.getElementById('hero-cta'); hero.textContent='Continue practising'; hero.href='/my-papers';
-    }
-  }catch(e){}
+    }catch(e){}
+  }
 
   /* ---- header border on scroll ---- */
-  var hdr=document.getElementById('hdr');
-  addEventListener('scroll',function(){hdr.classList.toggle('stuck',scrollY>4)},{passive:true});
+  var hdr=$('hdr');
+  addEventListener('scroll',function(){hdr.classList.toggle('stuck',scrollY>4);},{passive:true});
 
-  /* ---- sample question ---- */
-  var hint=document.getElementById('hint');
-  document.getElementById('opts').addEventListener('click',function(e){
-    var b=e.target.closest('.opt'); if(!b)return;
-    [].forEach.call(this.children,function(o){o.classList.remove('correct','wrong')});
-    this.querySelector('[data-correct]').classList.add('correct');
-    if(!b.hasAttribute('data-correct'))b.classList.add('wrong');
-    hint.classList.add('show');
+  /* ---- sample question + ring timer ---- */
+  var picked=false,secs=30,ring=$('ring'),secsEl=$('secs'),hint=$('hint');
+  function tick(){
+    secsEl.textContent=secs;
+    ring.style.strokeDashoffset=(163.4*(1-secs/30)).toFixed(1);
+  }
+  setInterval(function(){if(picked)return;secs=secs>0?secs-1:30;tick();},1000);
+  $('opts').addEventListener('click',function(e){
+    var b=e.target.closest('.opt');if(!b||picked)return;
+    picked=true;
+    var ok=this.querySelector('[data-correct]');
+    ok.classList.add('correct');ok.querySelector('.tag').textContent='Correct';
+    if(b!==ok){b.classList.add('wrong');b.querySelector('.tag').textContent='Not quite';hint.textContent='f⁻¹(7) solves 2x + 3 = 7, so x = 2.';}
+    else hint.textContent='Right. 2x + 3 = 7 gives x = 2.';
   });
 
-  /* ---- timer ---- */
-  var t=2472,el=document.getElementById('timer');
-  setInterval(function(){
-    if(t<=0)return; t--;
-    el.textContent=String(Math.floor(t/60)).padStart(2,'0')+':'+String(t%60).padStart(2,'0');
-  },1000);
+  /* ---- practice modes ---- */
+  var MODES={
+    practice:{title:'Practice mode',desc:'No clock. Pick an option and the correct answer and worked solution appear straight away. Ideal between lectures or while revising a week.',points:['Instant answer and solution after each question','Bookmark anything to revisit before the quiz','Works on your phone as well as your laptop'],cta:'Start practising',meta:'No timer',total:20,done:12,marked:0},
+    exam:{title:'Exam mode',desc:'A real timer and a question palette. Jump between questions, mark them for review, and submit when you are ready. Solutions open after you submit, just like the portal.',points:['Timer and palette that match exam day','Mark for review and come back later','Score and full solutions after submitting'],cta:'Try exam mode',meta:'Quiz 1 · timed',total:20,done:9,marked:3},
+    mock:{title:'Mock test',desc:'A full paper in the Qualifier, Quiz or End Term format. Your dress rehearsal before the real thing.',points:['Full-length paper under exam conditions','Qualifier mocks for every Foundation course','Saved in My Papers so you can track each attempt'],cta:'Take a mock test',meta:'Full paper',total:30,done:21,marked:4}
+  };
+  var tabs=[].slice.call(document.querySelectorAll('.tab'));
+  function showMode(k){
+    var m=MODES[k];
+    tabs.forEach(function(t){var on=t.dataset.mode===k;t.setAttribute('aria-selected',String(on));t.tabIndex=on?0:-1;});
+    $('mode-panel').setAttribute('aria-labelledby','tab-'+k);
+    $('m-title').textContent=m.title;$('m-desc').textContent=m.desc;
+    $('m-cta').textContent=m.cta;$('m-meta').textContent=m.meta;
+    $('m-points').innerHTML=m.points.map(function(p){return '<li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg><span>'+esc(p)+'</span></li>';}).join('');
+    var h='',markedEvery=m.marked?Math.floor(m.total/m.marked):0;
+    for(var i=1;i<=m.total;i++){
+      var c='';
+      if(i<=m.done)c='a';
+      if(markedEvery&&i%markedEvery===0&&i<m.total)c='m';
+      if(i===m.done+1)c='c';
+      h+='<span class="'+c+'">'+i+'</span>';
+    }
+    $('m-pal').innerHTML=h;
+  }
+  tabs.forEach(function(t,i){
+    t.addEventListener('click',function(){showMode(t.dataset.mode);});
+    t.addEventListener('keydown',function(e){
+      var d=e.key==='ArrowRight'?1:e.key==='ArrowLeft'?-1:0;if(!d)return;
+      var n=tabs[(i+d+tabs.length)%tabs.length];n.focus();showMode(n.dataset.mode);e.preventDefault();
+    });
+  });
+  showMode('practice');
+
+  /* ---- live papers from the catalogue (static course list stays if this fails) ---- */
+  var LABEL={quiz1:'Quiz 1',quiz2:'Quiz 2',endterm:'End Term',mock_test:'Mock test',practice:'Practice',practice_graded:'Graded'};
+  var TAG={quiz1:'Q1',quiz2:'Q2',endterm:'ET',mock_test:'MOCK',practice:'PA',practice_graded:'GA'};
+  var TINT={quiz1:'ti',quiz2:'ti',endterm:'ty',mock_test:'tg',practice:'tg',practice_graded:'ty'};
+  function money(p){return new Intl.NumberFormat('en-IN',{style:'currency',currency:'INR',maximumFractionDigits:0}).format(Number(p)/100);}
+  try{
+    var API=(window.QLStorefront&&window.QLStorefront.apiBase)||'https://labapi.genziitian.in/public/api';
+    fetch(API+'/storefront/papers',{headers:{Accept:'application/json'}}).then(function(r){return r.ok?r.json():null;}).then(function(d){
+      var list=d&&Array.isArray(d.papers)?d.papers.filter(function(p){return p.available!==false;}):[];
+      if(list.length<3)return;
+      list.sort(function(a,b){return (Number(a.price_paise||0)>0)-(Number(b.price_paise||0)>0);});
+      $('paper-list').innerHTML=list.slice(0,5).map(function(p){
+        var free=!Number(p.price_paise||0);
+        var meta=[p.course&&p.course.name,p.course&&p.course.level,LABEL[p.section]||'Paper'];
+        if(p.question_count!=null)meta.push(p.question_count+' questions');
+        if(p.time_limit_minutes)meta.push(p.time_limit_minutes+' min');
+        return '<a class="row" href="/papers?paper='+encodeURIComponent(p.id)+'"><span class="row-tag '+(TINT[p.section]||'ti')+'">'+esc(TAG[p.section]||'QL')+'</span><span class="row-main"><b>'+esc(p.title)+'</b><span>'+esc(meta.filter(Boolean).join(' · '))+'</span></span><span class="row-go"><span class="price'+(free?' free':'')+'">'+(free?'Free':esc(money(p.price_paise)))+'</span><span class="btn btn-outline">'+(free?'Start free':'View paper')+'</span></span></a>';
+      }).join('');
+    }).catch(function(){});
+  }catch(e){}
 })();
 </script>
 </body>
