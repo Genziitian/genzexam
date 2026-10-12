@@ -1322,7 +1322,7 @@
   }
 
   function lbConfetti() {
-    if (!lbIsPhone() || (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches)) return;
+    if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     var canvas = document.createElement("canvas");
     canvas.className = "ql-confetti";
     canvas.setAttribute("aria-hidden", "true");
@@ -1443,7 +1443,7 @@
       tag(podium.children[0], "data-place", "2");
       tag(podium.children[1], "data-place", "1");
       tag(podium.children[2], "data-place", "3");
-      if (lbIsPhone()) podium.querySelectorAll("p.font-bold").forEach(countUp);
+      podium.querySelectorAll("p.font-bold").forEach(countUp);
     }
     if (!root.hasAttribute("data-ql-party")) {
       root.setAttribute("data-ql-party", "");
@@ -1498,6 +1498,19 @@
       pin.append(lbDots(), lbRow(myRank, name, xp));
       document.body.appendChild(pin);
     }
+    // Wide screens: line the pinned row up with the table instead of the whole window.
+    if (!pin._qlPlace) {
+      pin._qlPlace = function () {
+        var t = document.querySelector("[data-ql-lb] table");
+        if (window.innerWidth >= 1024 && t) {
+          var r = t.getBoundingClientRect();
+          pin.style.left = Math.round(r.left) + "px";
+          pin.style.right = Math.max(16, Math.round(window.innerWidth - r.right)) + "px";
+        } else { pin.style.left = ""; pin.style.right = ""; }
+      };
+      window.addEventListener("resize", pin._qlPlace, { passive: true });
+    }
+    pin._qlPlace();
     var pinXp = pin.querySelector(".ql-lb-xp");
     if (pinXp && xp != null && pinXp.textContent !== String(xp)) pinXp.textContent = String(xp);
 

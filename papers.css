@@ -56,9 +56,6 @@ header.stuck{border-bottom-color:var(--line)}
 .brand-text strong{font-family:var(--display);font-weight:800;font-size:21px;letter-spacing:-.02em}
 .brand-text small{font-size:11.5px;font-weight:600;color:var(--muted)}
 .links{display:flex;gap:28px;margin-left:28px;font-weight:600;font-size:15px;color:var(--text)}
-.links a{padding:6px 0;border-bottom:2px solid transparent}
-.links a:hover{color:var(--brand-text)}
-.links a.active{color:var(--ink);border-bottom-color:var(--yellow)}
 .nav-end{display:flex;align-items:center;gap:8px;margin-left:auto}
 .icon-btn{width:44px;height:44px;border-radius:12px;border:1.5px solid var(--line-2);background:var(--surface);color:var(--text);display:grid;place-items:center;cursor:pointer;flex-shrink:0}
 .icon-btn:hover{border-color:var(--brand)}
@@ -153,6 +150,42 @@ footer{background:var(--navy);color:var(--navy-text)}
 .foot-col svg{flex:none}
 .foot-bottom{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.1);padding-top:22px;display:flex;flex-direction:column;gap:8px;font-size:13px;line-height:1.55;color:var(--navy-faint)}
 
+/* ---------- top menu: Home, Papers, Policies, Contact us ---------- */
+.links{align-items:center}
+.links>a,.pol-btn{padding:6px 0;border-bottom:2px solid transparent;transition:color .15s}
+.links>a:hover,.pol-btn:hover{color:var(--brand-text)}
+.links>a.active{color:var(--ink);border-bottom-color:var(--yellow)}
+.pol{position:relative}
+.pol-btn{display:inline-flex;align-items:center;gap:6px;background:none;border-top:0;border-left:0;border-right:0;font:inherit;font-weight:600;color:inherit;cursor:pointer}
+.pol-btn .chev{transition:transform .2s ease}
+.pol-btn[aria-expanded="true"]{color:var(--brand-text)}
+.pol-btn[aria-expanded="true"] .chev{transform:rotate(180deg)}
+.pol-menu{position:absolute;top:calc(100% + 12px);left:-14px;z-index:70;min-width:250px;padding:8px;background:var(--surface);border:1.5px solid var(--line);border-radius:18px;box-shadow:0 22px 50px -24px rgba(14,19,48,.5);animation:menuIn .2s cubic-bezier(.2,.7,.2,1)}
+.pol-menu[hidden]{display:none}
+.pol-menu a,.mnav-pol a{display:flex;align-items:center;gap:12px;min-height:44px;padding:0 10px;border-radius:12px;font-size:14.5px;font-weight:600;color:var(--ink);border:0}
+.pol-menu a:hover,.mnav-pol a:hover{background:var(--brand-row);color:var(--ink)}
+.pol-ico{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;flex:none;color:var(--ink)}
+.pol-ico.ty{background:var(--t-yellow)}.pol-ico.ti{background:var(--t-indigo)}.pol-ico.tg{background:var(--t-green)}.pol-ico.tr{background:#FDE2E0}
+:root[data-theme="dark"] .pol-ico.tr{background:#3A1A1F}
+@keyframes menuIn{from{opacity:0;transform:translateY(-6px)}}
+.menu-btn{display:none}
+.menu-btn path{transition:transform .25s ease,opacity .2s ease;transform-origin:12px 12px}
+.menu-btn[aria-expanded="true"] .mb1{transform:translateY(5px) rotate(45deg)}
+.menu-btn[aria-expanded="true"] .mb2{opacity:0}
+.menu-btn[aria-expanded="true"] .mb3{transform:translateY(-5px) rotate(-45deg)}
+.mnav{border-top:1px solid var(--line);background:var(--bg);max-height:calc(100dvh - 64px);overflow-y:auto}
+.mnav[hidden]{display:none}
+.mnav-in{display:flex;flex-direction:column;gap:2px;padding-top:10px;padding-bottom:18px;animation:menuIn .22s ease}
+.mnav-in>a{display:flex;align-items:center;min-height:50px;padding:0 12px;border-radius:14px;font-family:var(--display);font-weight:700;font-size:18px;color:var(--ink)}
+.mnav-in>a:hover,.mnav-in>a[aria-current="page"]{background:var(--brand-row)}
+.mnav-in>a[aria-current="page"]{color:var(--brand-text)}
+.mnav-h{margin:10px 12px 4px;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.mnav-pol{display:grid;grid-template-columns:1fr 1fr;gap:4px}
+#contact{scroll-margin-top:96px}
+@media (max-width:900px){.links{display:none!important}.menu-btn{display:grid}}
+@media (min-width:901px){.mnav{display:none!important}}
+@media (max-width:520px){.mnav-pol{grid-template-columns:1fr}}
+
 /* ---------- responsive ---------- */
 @media (max-width:980px){
   .filters{grid-template-columns:repeat(3,minmax(0,1fr))}
@@ -164,7 +197,6 @@ footer{background:var(--navy);color:var(--navy-text)}
   .nav{min-height:64px;gap:8px}
   .brand img{width:36px;height:36px}
   .brand-text strong{font-size:18px}
-  .links{display:none}
   .nav-end .btn{padding:0 14px;font-size:14px}
   .hero{padding:26px 0 30px}
   .hero-actions{display:none}
