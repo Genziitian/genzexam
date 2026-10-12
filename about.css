@@ -44,3 +44,4 @@
 @media (max-width:980px){.ab-two,.ab-genz,.ab-next{grid-template-columns:1fr}.ab-focus{grid-template-columns:1fr 1fr}.ab-time{grid-template-columns:1fr 1fr;row-gap:28px}.ab-time::before{display:none}}
 @media (max-width:640px){.ab-hero{padding:32px 0 48px}.ab-card,.ab-f{padding:20px;border-radius:22px}.ab-focus{grid-template-columns:1fr}.ab-time{grid-template-columns:1fr}.ab-motto{padding:28px 22px}.ab-genz,.ab-story,.ab-next{margin-top:64px!important}.ab-story+section{margin-top:64px}}
 @media (prefers-reduced-motion:reduce){.ab-card,.ab-f,.ab-time li.now::before{animation:none}}
+.ab-next-solo{grid-template-columns:1fr}
