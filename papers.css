@@ -265,3 +265,12 @@ footer{background:var(--navy);color:var(--navy-text)}
 .nav-free{gap:6px!important}
 @media (max-width:1180px){.links{display:none!important}.menu-btn{display:grid!important}}
 @media (min-width:1181px){.mnav{display:none!important}}
+
+/* ---------- More menu + Courses pill ---------- */
+.nav-genz{gap:10px!important;padding:5px 14px 5px 6px!important;border:1.5px solid var(--line-2)!important;border-radius:999px;background:var(--surface);font-weight:700;transition:border-color .2s,background .2s,transform .15s!important}
+.nav-genz:hover{border-color:var(--ink)!important;color:var(--ink)!important;transform:translateY(-1px)}
+.nav-genz .tv{width:44px;height:32px}
+.nav-genz .tv-scr{height:27px}
+.nav-genz .tv-scr img{width:33px}
+.pol-sep{height:1px;margin:6px 8px;background:var(--line)}
+.pol-ico.tb{background:var(--brand-soft);color:var(--brand-text)}
