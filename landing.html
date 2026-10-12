@@ -34,24 +34,24 @@ if('IntersectionObserver' in window&&!(window.matchMedia&&matchMedia('(prefers-r
     --display:'Bricolage Grotesque',system-ui,sans-serif;
   }
   :root[data-theme="dark"]{
-    --bg:#0B0E1F; --surface:#141933; --surface-2:#1A2042; --dots:#232A4F;
-    --ink:#EEF0FA; --text:#B8BEDD; --muted:#A3A9CB; --faint:#8E95BA;
-    --line:#252C50; --line-2:#2F3760; --line-3:#46507F;
-    --brand:#4A4FE6; --brand-hover:#5D62F0; --brand-text:#9A9DFF; --brand-soft:#232A5A; --brand-row:#1A2042;
-    --green:#3FBF86; --green-soft:#12342A; --red:#F07167; --red-soft:#3A1A1F;
-    --navy:#060818; --navy-text:#B8BEDD; --navy-faint:#8E95BA;
-    --t-yellow:#4A3A12; --t-indigo:#2A2F66; --t-green:#173D2D;
+    --bg:#000000; --surface:#111111; --surface-2:#1A1A1A; --dots:#242424;
+    --ink:#F2F2F2; --text:#B4B4B4; --muted:#9C9C9C; --faint:#8A8A8A;
+    --line:#262626; --line-2:#333333; --line-3:#4A4A4A;
+    --brand:#4A4FE6; --brand-hover:#5D62F0; --brand-text:#9A9DFF; --brand-soft:#1E1F3A; --brand-row:#1A1A1A;
+    --green:#3FBF86; --green-soft:#10291D; --red:#F07167; --red-soft:#3A1A1F;
+    --navy:#000000; --navy-text:#B4B4B4; --navy-faint:#8A8A8A;
+    --t-yellow:#3A2D0E; --t-indigo:#23244A; --t-green:#14301F;
     --shadow:0 18px 40px -24px rgba(0,0,0,.7);
   }
   @media (prefers-color-scheme:dark){
     :root:not([data-theme="light"]){
-      --bg:#0B0E1F; --surface:#141933; --surface-2:#1A2042; --dots:#232A4F;
-      --ink:#EEF0FA; --text:#B8BEDD; --muted:#A3A9CB; --faint:#8E95BA;
-      --line:#252C50; --line-2:#2F3760; --line-3:#46507F;
-      --brand:#4A4FE6; --brand-hover:#5D62F0; --brand-text:#9A9DFF; --brand-soft:#232A5A; --brand-row:#1A2042;
-      --green:#3FBF86; --green-soft:#12342A; --red:#F07167; --red-soft:#3A1A1F;
-      --navy:#060818; --navy-text:#B8BEDD; --navy-faint:#8E95BA;
-      --t-yellow:#4A3A12; --t-indigo:#2A2F66; --t-green:#173D2D;
+      --bg:#000000; --surface:#111111; --surface-2:#1A1A1A; --dots:#242424;
+      --ink:#F2F2F2; --text:#B4B4B4; --muted:#9C9C9C; --faint:#8A8A8A;
+      --line:#262626; --line-2:#333333; --line-3:#4A4A4A;
+      --brand:#4A4FE6; --brand-hover:#5D62F0; --brand-text:#9A9DFF; --brand-soft:#1E1F3A; --brand-row:#1A1A1A;
+      --green:#3FBF86; --green-soft:#10291D; --red:#F07167; --red-soft:#3A1A1F;
+      --navy:#000000; --navy-text:#B4B4B4; --navy-faint:#8A8A8A;
+      --t-yellow:#3A2D0E; --t-indigo:#23244A; --t-green:#14301F;
       --shadow:0 18px 40px -24px rgba(0,0,0,.7);
     }
   }
@@ -451,6 +451,38 @@ if('IntersectionObserver' in window&&!(window.matchMedia&&matchMedia('(prefers-r
   @keyframes bandOrb{50%{transform:translate(-40px,40px) scale(1.15)}}
   @media (prefers-reduced-motion:reduce){.anim [data-rv]{opacity:1;transform:none}.anim .hl{background-size:100% 100%}}
 
+
+  /* ---------- footer ---------- */
+  .sf{background:#05060F;color:#A9AEC7;padding:64px 0 28px;margin-top:0}
+  :root[data-theme="dark"] .sf{background:#000;border-top:1px solid #1C1C1C}
+  .sf a{color:inherit;text-decoration:none}
+  .sf-top{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:32px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.08)}
+  .sf-logo{display:inline-flex;align-items:center;gap:12px;color:#fff}
+  .sf-logo img{width:48px;height:48px;border-radius:14px}
+  .sf-logo strong{display:block;color:#fff;font-family:var(--display);font-weight:800;font-size:22px;letter-spacing:-.02em}
+  .sf-logo small{display:block;font-size:12px;font-weight:600;color:#8A90AE}
+  .sf-brand p{margin-top:16px;max-width:400px;font-size:15px;line-height:1.6}
+  .sf-motto{color:#FFC24B!important;font-family:var(--display);font-weight:700;font-size:16px!important;margin-top:10px!important}
+  .sf-cta{padding:24px;border-radius:22px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08)}
+  .sf-cta b{display:block;font-family:var(--display);font-weight:800;font-size:20px;color:#fff}
+  .sf-cta span{display:block;margin-top:4px;font-size:14px}
+  .sf-chips{margin-top:16px;display:flex;flex-wrap:wrap;gap:8px}
+  .sf-chips a{display:inline-flex;align-items:center;gap:8px;min-height:42px;padding:0 14px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:#fff;font-size:14px;font-weight:600;transition:background .15s,border-color .15s,transform .15s}
+  .sf-chips a:hover{background:rgba(255,255,255,.12);transform:translateY(-2px)}
+  .sf-chips a.wa{background:#0E7A4F;border-color:#0E7A4F}
+  .sf-chips a.wa:hover{background:#12935F}
+  .sf-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding:36px 0}
+  .sf-cols h3{margin-bottom:12px;font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#fff}
+  .sf-cols nav{display:flex;flex-direction:column;gap:2px}
+  .sf-cols nav a{display:inline-flex;align-items:center;gap:6px;min-height:34px;font-size:15px;transition:color .15s}
+  .sf-cols nav a:hover{color:#fff}
+  .sf-bottom{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 24px;padding-top:22px;border-top:1px solid rgba(255,255,255,.08);font-size:13px}
+  .sf-bottom p{flex-basis:100%;font-size:12px;line-height:1.6;color:#6F7593}
+  .sf-up{display:inline-flex;align-items:center;gap:6px;min-height:36px;padding:0 14px;border-radius:999px;border:1px solid rgba(255,255,255,.14);color:#fff!important;font-weight:700}
+  .sf-up:hover{background:rgba(255,255,255,.08)}
+  @media (max-width:860px){.sf-top{grid-template-columns:1fr}}
+  @media (max-width:560px){.sf{padding:48px 0 24px}.sf-cols{grid-template-columns:1fr 1fr}.sf-cols nav:last-child{grid-column:1/-1}.sf-chips a{flex:1 1 100%;justify-content:center}}
+  
   /* ---------- responsive ---------- */
   @media (max-width:980px){.who{grid-template-columns:1fr}.stairs{height:280px}.faq-grid{display:flex;flex-direction:column;gap:32px}.faq-side{display:contents}.faq-head{order:1}.faq{order:2;width:100%}.ask{order:3}.inside{grid-template-columns:1fr}.foot{grid-template-columns:1fr 1fr}.foot>section:first-child{grid-column:1/-1}}
   /* tablets: facts in a 2x2 grid, smaller step cards, roomier hero card */
@@ -568,7 +600,7 @@ if('IntersectionObserver' in window&&!(window.matchMedia&&matchMedia('(prefers-r
       <img src="/assets/quiz-lab-icon.png" alt="" width="40" height="40">
       <span class="brand-text"><strong>Quiz LAB</strong><small>by GenZ IITian</small></span>
     </a>
-    <nav class="links" aria-label="Main"><a href="/" class="active" aria-current="page">Home</a><a href="/papers">Papers</a><div class="pol"><button type="button" class="pol-btn" id="pol-btn" aria-haspopup="true" aria-expanded="false" aria-controls="pol-menu">Policies<svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><div class="pol-menu" id="pol-menu" role="menu" hidden><a href="/privacy-policy" role="menuitem"><span class="pol-ico ti" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V7l8-4z"/></svg></span>Privacy Policy</a><a href="/terms-and-conditions" role="menuitem"><span class="pol-ico ty" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8l-5-5z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg></span>Terms &amp; Conditions</a><a href="/refund-policy" role="menuitem"><span class="pol-ico tg" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 103-6.7L3 8"/><path d="M3 3v5h5"/></svg></span>Refund &amp; Cancellation</a><a href="/delete-account" role="menuitem"><span class="pol-ico tr" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M10 11v6M14 11v6M5 7l1 12a2 2 0 002 2h8a2 2 0 002-2l1-12M9 7V4h6v3"/></svg></span>Delete Account &amp; Data</a></div></div><a href="#contact">Contact us</a></nav>
+    <nav class="links" aria-label="Main"><a href="/" class="active" aria-current="page">Home</a><a href="/papers">Papers</a><div class="pol"><button type="button" class="pol-btn" id="pol-btn" aria-haspopup="true" aria-expanded="false" aria-controls="pol-menu">Policies<svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><div class="pol-menu" id="pol-menu" role="menu" hidden><a href="/privacy-policy" role="menuitem"><span class="pol-ico ti" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V7l8-4z"/></svg></span>Privacy Policy</a><a href="/terms-and-conditions" role="menuitem"><span class="pol-ico ty" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8l-5-5z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg></span>Terms &amp; Conditions</a><a href="/refund-policy" role="menuitem"><span class="pol-ico tg" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 103-6.7L3 8"/><path d="M3 3v5h5"/></svg></span>Refund &amp; Cancellation</a><a href="/delete-account" role="menuitem"><span class="pol-ico tr" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M10 11v6M14 11v6M5 7l1 12a2 2 0 002 2h8a2 2 0 002-2l1-12M9 7V4h6v3"/></svg></span>Delete Account &amp; Data</a></div></div><a href="/about">About us</a><a href="/contact">Contact us</a></nav>
     <div class="nav-end">
       <button type="button" class="icon-btn menu-btn" id="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mnav"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path class="mb1" d="M4 7h16"/><path class="mb2" d="M4 12h16"/><path class="mb3" d="M4 17h16"/></svg></button>
       <button class="icon-btn" id="theme" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
@@ -586,7 +618,7 @@ if('IntersectionObserver' in window&&!(window.matchMedia&&matchMedia('(prefers-r
       </div>
     </div>
   </div>
-  <div class="mnav" id="mnav" hidden><div class="wrap mnav-in"><a href="/" aria-current="page">Home</a><a href="/papers">Papers</a><div class="mnav-h">Policies</div><div class="mnav-pol"><a href="/privacy-policy"><span class="pol-ico ti" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V7l8-4z"/></svg></span>Privacy Policy</a><a href="/terms-and-conditions"><span class="pol-ico ty" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8l-5-5z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg></span>Terms &amp; Conditions</a><a href="/refund-policy"><span class="pol-ico tg" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 103-6.7L3 8"/><path d="M3 3v5h5"/></svg></span>Refund &amp; Cancellation</a><a href="/delete-account"><span class="pol-ico tr" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M10 11v6M14 11v6M5 7l1 12a2 2 0 002 2h8a2 2 0 002-2l1-12M9 7V4h6v3"/></svg></span>Delete Account &amp; Data</a></div><a href="#contact">Contact us</a></div></div>
+  <div class="mnav" id="mnav" hidden><div class="wrap mnav-in"><a href="/" aria-current="page">Home</a><a href="/papers">Papers</a><div class="mnav-h">Policies</div><div class="mnav-pol"><a href="/privacy-policy"><span class="pol-ico ti" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V7l8-4z"/></svg></span>Privacy Policy</a><a href="/terms-and-conditions"><span class="pol-ico ty" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8l-5-5z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg></span>Terms &amp; Conditions</a><a href="/refund-policy"><span class="pol-ico tg" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 103-6.7L3 8"/><path d="M3 3v5h5"/></svg></span>Refund &amp; Cancellation</a><a href="/delete-account"><span class="pol-ico tr" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M10 11v6M14 11v6M5 7l1 12a2 2 0 002 2h8a2 2 0 002-2l1-12M9 7V4h6v3"/></svg></span>Delete Account &amp; Data</a></div><a href="/about">About us</a><a href="/contact">Contact us</a></div></div>
 </header>
 
 <main>
@@ -814,11 +846,11 @@ if('IntersectionObserver' in window&&!(window.matchMedia&&matchMedia('(prefers-r
         <div class="who-copy">
           <div class="eyebrow">Who it's for</div>
           <h2 class="h2">Built for one degree, and <span class="who-hl">only that one.</span></h2>
-          <p class="who-lead">Students on the IITM BS degree, from the Qualifier through to Degree level. Every paper, mark scheme and solution is written against that syllabus rather than adapted from a general question bank.</p>
+          <p class="who-lead">For IITM BS students, from Qualifier to Degree.</p>
           <ul class="who-points">
-            <li><span class="wp-ico ty" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h12a4 4 0 014 4v10H8a4 4 0 01-4-4V5z"/><path d="M8 9h8M8 13h5"/></svg></span><span><b>Written for the IITM syllabus</b>Not borrowed from a general question bank.</span></li>
-            <li><span class="wp-ico tg" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3 8-8"/><path d="M20 12v6a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h9"/></svg></span><span><b>Marking that matches</b>Same rules, including negative marking.</span></li>
-            <li><span class="wp-ico ti" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M6 11v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5"/></svg></span><span><b>Every level, every term</b>Quiz 1, Quiz 2, End Term and mocks.</span></li>
+            <li><span class="wp-ico ty" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h12a4 4 0 014 4v10H8a4 4 0 01-4-4V5z"/><path d="M8 9h8M8 13h5"/></svg></span><span><b>Written for the IITM syllabus</b></span></li>
+            <li><span class="wp-ico tg" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3 8-8"/><path d="M20 12v6a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h9"/></svg></span><span><b>Marking that matches</b></span></li>
+            <li><span class="wp-ico ti" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M6 11v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5"/></svg></span><span><b>Every level, every term</b></span></li>
           </ul>
         </div>
         <div class="stairs" aria-label="Levels covered: Qualifier, Foundation, Diploma and Degree">
@@ -897,34 +929,32 @@ if('IntersectionObserver' in window&&!(window.matchMedia&&matchMedia('(prefers-r
   </section>
 </main>
 
-<footer>
-  <div class="wrap foot">
-    <section>
-      <div class="foot-brand"><img src="/assets/quiz-lab-icon.png" alt="Quiz LAB logo" width="52" height="52"><div><strong>Quiz LAB</strong><small>by GenZ IITian</small></div></div>
-      <p class="foot-quote">“Learn steadily. Practise boldly. Grow together.”</p>
-    </section>
-    <section class="foot-col">
-      <strong>Check out GenZ IITian</strong>
-      <a href="https://genziitian.in/" target="_blank" rel="noopener">genziitian.in</a><small>Explore GenZ IITian</small>
-      <a href="https://class.genziitian.in/" target="_blank" rel="noopener">class.genziitian.in</a><small>Free lectures and materials</small>
-    </section>
-    <section class="foot-col">
-      <strong>Explore</strong>
-      <a href="/papers">All papers</a>
-      <a href="/privacy-policy">Privacy Policy</a>
-      <a href="/terms-and-conditions">Terms &amp; Conditions</a>
-      <a href="/refund-policy">Refund &amp; Cancellation</a>
-      <a href="/delete-account">Delete Account &amp; Data</a>
-    </section>
-    <section class="foot-col" id="contact">
-      <strong>Contact us</strong>
-      <a href="mailto:admin@genziitian.org"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>admin@genziitian.org</a>
-      <a href="tel:+917254926179"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.4 1.8.7 2.7a2 2 0 01-.5 2.1L8 9.8a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.4c.9.3 1.8.6 2.7.7a2 2 0 011.7 2z"/></svg>+91 72549 26179</a>
-      <a href="https://wa.me/917254926179" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 01-12.4 7.4L3 21l2.1-5.5A8.4 8.4 0 1121 11.5z"/></svg>WhatsApp us</a>
-    </section>
-    <div class="foot-bottom">
-      <span>&copy; 2026 GEN-Z IITIAN. All rights reserved. · Quiz LAB by GenZ IITian · Built by students, for students · Not affiliated with IIT Madras</span>
-      <span>Quiz LAB is a medium for presenting questions in a clear, organized way with helpful design and graphics. We do not claim ownership or authorship of questions unless clearly identified as our own.</span>
+<footer class="sf">
+  <div class="wrap">
+    <div class="sf-top">
+      <div class="sf-brand">
+        <a class="sf-logo" href="/"><img src="/assets/quiz-lab-icon.png" alt="" width="48" height="48"><span><strong>Quiz LAB</strong><small>by GenZ IITian</small></span></a>
+        <p>Past-paper practice for IIT Madras BS students, in a room that feels like the real exam.</p>
+        <p class="sf-motto">Learn steadily. Practise boldly. Grow together.</p>
+      </div>
+      <div class="sf-cta">
+        <b>Need help?</b><span>We usually reply fastest on WhatsApp.</span>
+        <div class="sf-chips">
+          <a href="mailto:admin@genziitian.org"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>admin@genziitian.org</a>
+          <a href="tel:+917254926179"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.4 1.8.7 2.7a2 2 0 01-.5 2.1L8 9.8a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.4c.9.3 1.8.6 2.7.7a2 2 0 011.7 2z"/></svg>+91 72549 26179</a>
+          <a class="wa" href="https://wa.me/917254926179" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 01-12.4 7.4L3 21l2.1-5.5A8.4 8.4 0 1121 11.5z"/></svg>WhatsApp us</a>
+        </div>
+      </div>
+    </div>
+    <div class="sf-cols">
+      <nav aria-label="Quiz LAB"><h3>Quiz LAB</h3><a href="/">Home</a><a href="/papers">Papers</a><a href="/about">About us</a><a href="/contact">Contact us</a></nav>
+      <nav aria-label="Policies"><h3>Policies</h3><a href="/privacy-policy">Privacy Policy</a><a href="/terms-and-conditions">Terms &amp; Conditions</a><a href="/refund-policy">Refund &amp; Cancellation</a><a href="/delete-account">Delete Account &amp; Data</a></nav>
+      <nav aria-label="GenZ IITian"><h3>GenZ IITian</h3><a href="https://genziitian.in/" target="_blank" rel="noopener">genziitian.in <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a><a href="https://class.genziitian.in/" target="_blank" rel="noopener">Free lectures <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a></nav>
+    </div>
+    <div class="sf-bottom">
+      <span>&copy; 2026 GEN-Z IITIAN. All rights reserved. Not affiliated with IIT Madras.</span>
+      <a class="sf-up" href="#top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">Back to top <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg></a>
+      <p>Quiz LAB is a medium for presenting questions in a clear, organized way with helpful design and graphics. We do not claim ownership or authorship of questions unless clearly identified as our own.</p>
     </div>
   </div>
 </footer>

@@ -14,13 +14,13 @@
   --display:'Bricolage Grotesque',system-ui,sans-serif;
 }
 :root[data-theme="dark"]{
-  --bg:#0B0E1F; --surface:#141933; --surface-2:#1A2042; --dots:#232A4F;
-  --ink:#EEF0FA; --text:#B8BEDD; --muted:#A3A9CB; --faint:#8E95BA;
-  --line:#252C50; --line-2:#2F3760; --line-3:#46507F;
-  --brand:#4A4FE6; --brand-hover:#5D62F0; --brand-text:#9A9DFF; --brand-soft:#232A5A; --brand-row:#1A2042;
-  --green:#3FBF86; --green-soft:#12342A; --red:#F07167;
-  --navy:#060818; --navy-text:#B8BEDD; --navy-faint:#8E95BA;
-  --t-yellow:#4A3A12; --t-indigo:#2A2F66; --t-green:#173D2D;
+  --bg:#000000; --surface:#111111; --surface-2:#1A1A1A; --dots:#242424;
+  --ink:#F2F2F2; --text:#B4B4B4; --muted:#9C9C9C; --faint:#8A8A8A;
+  --line:#262626; --line-2:#333333; --line-3:#4A4A4A;
+  --brand:#4A4FE6; --brand-hover:#5D62F0; --brand-text:#9A9DFF; --brand-soft:#1E1F3A; --brand-row:#1A1A1A;
+  --green:#3FBF86; --green-soft:#10291D; --red:#F07167;
+  --navy:#000000; --navy-text:#B4B4B4; --navy-faint:#8A8A8A;
+  --t-yellow:#3A2D0E; --t-indigo:#23244A; --t-green:#14301F;
   --shadow:0 18px 40px -24px rgba(0,0,0,.7);
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -213,3 +213,34 @@ footer{background:var(--navy);color:var(--navy-text)}
 @media (max-width:400px){.filters{grid-template-columns:1fr 1fr}.filters select:last-child{grid-column:1/-1}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 @media (max-width:900px){html{overflow-x:hidden}html,body{max-width:100%;overscroll-behavior-x:none}@supports (overflow:clip){html,body{overflow-x:clip}}}
+
+/* ---------- footer ---------- */
+.sf{background:#05060F;color:#A9AEC7;padding:64px 0 28px;margin-top:0}
+:root[data-theme="dark"] .sf{background:#000;border-top:1px solid #1C1C1C}
+.sf a{color:inherit;text-decoration:none}
+.sf-top{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:32px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.08)}
+.sf-logo{display:inline-flex;align-items:center;gap:12px;color:#fff}
+.sf-logo img{width:48px;height:48px;border-radius:14px}
+.sf-logo strong{display:block;color:#fff;font-family:var(--display);font-weight:800;font-size:22px;letter-spacing:-.02em}
+.sf-logo small{display:block;font-size:12px;font-weight:600;color:#8A90AE}
+.sf-brand p{margin-top:16px;max-width:400px;font-size:15px;line-height:1.6}
+.sf-motto{color:#FFC24B!important;font-family:var(--display);font-weight:700;font-size:16px!important;margin-top:10px!important}
+.sf-cta{padding:24px;border-radius:22px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08)}
+.sf-cta b{display:block;font-family:var(--display);font-weight:800;font-size:20px;color:#fff}
+.sf-cta span{display:block;margin-top:4px;font-size:14px}
+.sf-chips{margin-top:16px;display:flex;flex-wrap:wrap;gap:8px}
+.sf-chips a{display:inline-flex;align-items:center;gap:8px;min-height:42px;padding:0 14px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:#fff;font-size:14px;font-weight:600;transition:background .15s,border-color .15s,transform .15s}
+.sf-chips a:hover{background:rgba(255,255,255,.12);transform:translateY(-2px)}
+.sf-chips a.wa{background:#0E7A4F;border-color:#0E7A4F}
+.sf-chips a.wa:hover{background:#12935F}
+.sf-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding:36px 0}
+.sf-cols h3{margin-bottom:12px;font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#fff}
+.sf-cols nav{display:flex;flex-direction:column;gap:2px}
+.sf-cols nav a{display:inline-flex;align-items:center;gap:6px;min-height:34px;font-size:15px;transition:color .15s}
+.sf-cols nav a:hover{color:#fff}
+.sf-bottom{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 24px;padding-top:22px;border-top:1px solid rgba(255,255,255,.08);font-size:13px}
+.sf-bottom p{flex-basis:100%;font-size:12px;line-height:1.6;color:#6F7593}
+.sf-up{display:inline-flex;align-items:center;gap:6px;min-height:36px;padding:0 14px;border-radius:999px;border:1px solid rgba(255,255,255,.14);color:#fff!important;font-weight:700}
+.sf-up:hover{background:rgba(255,255,255,.08)}
+@media (max-width:860px){.sf-top{grid-template-columns:1fr}}
+@media (max-width:560px){.sf{padding:48px 0 24px}.sf-cols{grid-template-columns:1fr 1fr}.sf-cols nav:last-child{grid-column:1/-1}.sf-chips a{flex:1 1 100%;justify-content:center}}

@@ -1,0 +1,98 @@
+/* Profile page (/profile) redesign — applies only while the profile editor from more-web.js is on the page.
+   Own light and dark values; not an input to tools/build-dark-css.py. */
+:root{--pf-surface:#fff;--pf-soft:#F1F2FF;--pf-ink:#0E1330;--pf-text:#3E4569;--pf-muted:#6A7194;--pf-line:#E3E6F2;--pf-brand:#3A3FD8;--pf-brand-soft:#ECEDFF;--pf-brand-text:#3A3FD8;--pf-yellow:#FFC24B;--pf-y-soft:#FFF4D6;--pf-y-ink:#7A4D00;--pf-green:#0E7A4F;--pf-g-soft:#E5F5EC;--pf-red:#B3261E;--pf-r-soft:#FDECEA;--pf-purple:#7C3AED;--pf-p-soft:#F3EEFF}
+:root[data-theme=dark]{--pf-surface:#141933;--pf-soft:#1A2042;--pf-ink:#EEF0FA;--pf-text:#B8BEDD;--pf-muted:#8E95BA;--pf-line:#252C50;--pf-brand:#4A4FE6;--pf-brand-soft:#232A5A;--pf-brand-text:#A5A8FF;--pf-y-soft:#3A2F12;--pf-y-ink:#FFD27A;--pf-green:#3FBF86;--pf-g-soft:#12342A;--pf-red:#F07167;--pf-r-soft:#3A1A1F;--pf-purple:#A78BFA;--pf-p-soft:#2A2150}
+
+/* hero */
+main:has(#ql-web-profile-editor) #ql-web-profile-editor{position:relative;overflow:hidden;background:var(--pf-brand)!important;border:0!important;border-radius:28px!important;padding:28px 28px 30px!important;color:#fff;box-shadow:0 24px 50px -30px rgba(58,63,216,.8)!important;animation:pfIn .6s cubic-bezier(.2,.7,.2,1) both}
+main:has(#ql-web-profile-editor) #ql-web-profile-editor::before{content:'';position:absolute;right:-70px;top:-90px;width:260px;height:260px;border-radius:50%;background:var(--pf-yellow);opacity:.95}
+main:has(#ql-web-profile-editor) #ql-web-profile-editor::after{content:'';position:absolute;right:140px;bottom:-110px;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,.08)}
+main:has(#ql-web-profile-editor) #ql-web-profile-editor>*{position:relative;z-index:1}
+main:has(#ql-web-profile-editor) #ql-web-profile-editor .ql-more-heading{color:#DADCFF!important;font-size:13px!important;letter-spacing:.12em;text-transform:uppercase}
+main:has(#ql-web-profile-editor) .ql-more-profile-summary{gap:20px!important;margin-top:16px!important}
+main:has(#ql-web-profile-editor) #ql-web-profile-avatar{width:88px!important;height:88px!important;border:4px solid var(--pf-yellow)!important;box-shadow:0 0 0 6px rgba(255,255,255,.12);background:#fff!important;color:var(--pf-brand)!important;font-size:28px!important;font-weight:800}
+main:has(#ql-web-profile-editor) .ql-more-profile-meta strong{color:#fff!important;font-size:clamp(22px,3vw,30px)!important;font-weight:800;letter-spacing:-.02em}
+main:has(#ql-web-profile-editor) .ql-more-profile-meta small{color:#DADCFF!important;font-size:14px!important}
+main:has(#ql-web-profile-editor) #ql-web-profile-edit{background:#fff!important;color:var(--pf-brand)!important;border:0!important;border-radius:999px!important;padding:11px 22px!important;font-weight:800!important;font-size:14px!important;box-shadow:0 8px 20px -10px rgba(0,0,0,.4)}
+main:has(#ql-web-profile-editor) #ql-web-profile-edit:hover{background:var(--pf-yellow)!important;color:#0E1330!important}
+main:has(#ql-web-profile-editor) #ql-web-profile-message{color:#DADCFF!important}
+
+/* React "More" header duplicates the hero */
+main:has(#ql-web-profile-editor) #ql-web-profile-editor+div{display:none!important}
+
+/* stat tiles */
+main:has(#ql-web-profile-editor) #ql-web-profile-editor~.grid>div{position:relative;overflow:hidden;border-radius:22px!important;border:1.5px solid var(--pf-line)!important;background:var(--pf-surface)!important;padding:22px!important;box-shadow:none!important;transition:transform .2s ease,border-color .2s;animation:pfIn .6s cubic-bezier(.2,.7,.2,1) both}
+main:has(#ql-web-profile-editor) #ql-web-profile-editor~.grid>div:hover{transform:translateY(-3px);border-color:var(--pf-brand)!important}
+main:has(#ql-web-profile-editor) #ql-web-profile-editor~.grid>div::before{content:'';position:absolute;left:0;top:0;right:0;height:5px;z-index:1}
+main:has(#ql-web-profile-editor) #ql-web-profile-editor~.grid>div:nth-child(1)::before{background:var(--pf-brand)}
+main:has(#ql-web-profile-editor) #ql-web-profile-editor~.grid>div:nth-child(2)::before{background:var(--pf-yellow)}
+main:has(#ql-web-profile-editor) #ql-web-profile-editor~.grid>div:nth-child(3)::before{background:var(--pf-green)}
+main:has(#ql-web-profile-editor) #ql-web-profile-editor~.grid>div:nth-child(4)::before{background:var(--pf-purple)}
+main:has(#ql-web-profile-editor) #ql-web-profile-editor~.grid>div:nth-child(2){animation-delay:.06s}
+main:has(#ql-web-profile-editor) #ql-web-profile-editor~.grid>div:nth-child(3){animation-delay:.12s}
+main:has(#ql-web-profile-editor) #ql-web-profile-editor~.grid>div:nth-child(4){animation-delay:.18s}
+main:has(#ql-web-profile-editor) #ql-web-profile-editor~.grid>div>p:first-child{color:var(--pf-muted)!important;font-size:11px!important}
+main:has(#ql-web-profile-editor) #ql-web-profile-editor~.grid>div>p:nth-child(2){color:var(--pf-ink)!important;font-size:34px!important}
+
+/* section cards */
+main:has(#ql-web-profile-editor) #ql-web-more-actions .ql-more-card{border:1.5px solid var(--pf-line)!important;border-radius:24px!important;background:var(--pf-surface)!important;padding:24px!important;box-shadow:none!important;animation:pfIn .6s cubic-bezier(.2,.7,.2,1) both}
+main:has(#ql-web-profile-editor) #ql-web-more-actions>.ql-more-card>.ql-more-heading,main:has(#ql-web-profile-editor) #ql-web-more-actions .ql-more-card>.ql-more-row:only-child .ql-more-row-copy strong{display:flex!important;align-items:center;gap:12px;color:var(--pf-ink)!important;font-size:20px!important}
+main:has(#ql-web-profile-editor) #ql-web-more-actions>.ql-more-card>.ql-more-heading::before{content:'';flex:none;width:38px;height:38px;border-radius:12px;background:var(--pf-brand-soft) center/20px no-repeat}
+main:has(#ql-web-profile-editor) #ql-web-more-actions>.ql-more-card:nth-of-type(1)>.ql-more-heading::before{background-color:var(--pf-y-soft);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23C27A00' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M13 2L4 14h7l-1 8 9-12h-7z'/%3E%3C/svg%3E")}
+main:has(#ql-web-profile-editor) #ql-web-more-actions>.ql-more-card:nth-of-type(2)>.ql-more-heading::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233A3FD8' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='3'/%3E%3Cpath d='M19.4 15a1.7 1.7 0 00.3 1.8l.1.1a2 2 0 11-2.8 2.8l-.1-.1a1.7 1.7 0 00-1.8-.3 1.7 1.7 0 00-1 1.5V21a2 2 0 11-4 0v-.1a1.7 1.7 0 00-1.1-1.5 1.7 1.7 0 00-1.8.3l-.1.1a2 2 0 11-2.8-2.8l.1-.1a1.7 1.7 0 00.3-1.8 1.7 1.7 0 00-1.5-1H3a2 2 0 110-4h.1a1.7 1.7 0 001.5-1.1 1.7 1.7 0 00-.3-1.8l-.1-.1a2 2 0 112.8-2.8l.1.1a1.7 1.7 0 001.8.3H9a1.7 1.7 0 001-1.5V3a2 2 0 114 0v.1a1.7 1.7 0 001 1.5 1.7 1.7 0 001.8-.3l.1-.1a2 2 0 112.8 2.8l-.1.1a1.7 1.7 0 00-.3 1.8V9a1.7 1.7 0 001.5 1H21a2 2 0 110 4h-.1a1.7 1.7 0 00-1.5 1z'/%3E%3C/svg%3E")}
+main:has(#ql-web-profile-editor) #ql-web-more-actions>.ql-more-card:nth-of-type(3)>.ql-more-heading::before{background-color:var(--pf-r-soft);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23B3261E' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3l8 4v5c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V7l8-4z'/%3E%3C/svg%3E")}
+main:has(#ql-web-profile-editor) #ql-web-more-actions .ql-more-subtitle{color:var(--pf-text)!important;font-size:14.5px!important}
+main:has(#ql-web-profile-editor) #ql-web-more-actions .ql-more-row{border-top:1px solid var(--pf-line)!important;padding:16px 0!important}
+main:has(#ql-web-profile-editor) #ql-web-more-actions .ql-more-row-copy strong{color:var(--pf-ink)!important;font-size:15px!important}
+main:has(#ql-web-profile-editor) #ql-web-more-actions .ql-more-row-copy small{color:var(--pf-muted)!important;font-size:13px!important}
+main:has(#ql-web-profile-editor) #ql-web-more-actions .ql-more-button{border-radius:999px!important;padding:10px 18px!important;font-weight:700!important;font-size:13.5px!important;border:1.5px solid var(--pf-line)!important;background:var(--pf-surface)!important;color:var(--pf-ink)!important;transition:transform .12s,background .15s,border-color .15s}
+main:has(#ql-web-profile-editor) #ql-web-more-actions .ql-more-button:hover{border-color:var(--pf-brand)!important}
+main:has(#ql-web-profile-editor) #ql-web-more-actions .ql-more-button:active{transform:translateY(1px)}
+main:has(#ql-web-profile-editor) #ql-more-rulebook{background:var(--pf-y-soft)!important;border-color:transparent!important;color:var(--pf-y-ink)!important;margin-top:14px}
+/* theme switch as one segmented control */
+main:has(#ql-web-profile-editor) #ql-web-more-actions .ql-more-theme-options:has(button){gap:4px!important;padding:4px;border-radius:999px;background:var(--pf-soft)}
+main:has(#ql-web-profile-editor) #ql-web-more-actions .ql-more-theme-options button.ql-more-button{border:0!important;background:transparent!important;color:var(--pf-text)!important}
+main:has(#ql-web-profile-editor) #ql-web-more-actions .ql-more-theme-options button[aria-pressed=true]{background:var(--pf-brand)!important;color:#fff!important}
+/* contact buttons */
+main:has(#ql-web-profile-editor) #ql-web-more-actions .ql-more-theme-options a.ql-more-button:nth-child(1){background:var(--pf-brand-soft)!important;border-color:transparent!important;color:var(--pf-brand-text)!important}
+main:has(#ql-web-profile-editor) #ql-web-more-actions .ql-more-theme-options a.ql-more-button:nth-child(2){background:var(--pf-g-soft)!important;border-color:transparent!important;color:var(--pf-green)!important}
+main:has(#ql-web-profile-editor) #ql-web-more-actions .ql-more-theme-options a.ql-more-button:nth-child(3){background:var(--pf-y-soft)!important;border-color:transparent!important;color:var(--pf-y-ink)!important}
+/* settings link */
+main:has(#ql-web-profile-editor) #ql-web-more-actions .ql-more-link{border:1.5px solid var(--pf-line)!important;border-radius:18px!important;background:var(--pf-soft)!important;padding:16px!important;transition:border-color .15s,transform .15s}
+main:has(#ql-web-profile-editor) #ql-web-more-actions .ql-more-link:hover{border-color:var(--pf-brand)!important;transform:translateY(-2px)}
+main:has(#ql-web-profile-editor) #ql-web-more-actions .ql-more-icon{background:var(--pf-brand)!important;color:#fff!important;border-radius:12px!important}
+main:has(#ql-web-profile-editor) #ql-web-more-actions .ql-more-link strong{color:var(--pf-ink)!important;font-size:15px!important}
+/* FAQ */
+main:has(#ql-web-profile-editor) .ql-more-faq{margin-top:18px!important}
+main:has(#ql-web-profile-editor) .ql-more-faq>.ql-more-heading{color:var(--pf-ink)!important;font-size:18px!important}
+main:has(#ql-web-profile-editor) .ql-more-faq .ql-more-form>span{display:none}
+main:has(#ql-web-profile-editor) #ql-more-faq-search{border:1.5px solid var(--pf-line)!important;border-radius:14px!important;background:var(--pf-soft)!important;color:var(--pf-ink)!important;padding:13px 16px 13px 44px!important;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%236A7194' stroke-width='2.4' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='M20 20l-3.5-3.5'/%3E%3C/svg%3E")!important;background-repeat:no-repeat!important;background-position:15px center!important}
+main:has(#ql-web-profile-editor) #ql-more-faq-search:focus{outline:none;border-color:var(--pf-brand)!important;box-shadow:0 0 0 4px var(--pf-brand-soft)}
+main:has(#ql-web-profile-editor) .ql-more-faq details{border:1.5px solid var(--pf-line)!important;border-radius:16px;padding:0!important;margin-top:10px;background:var(--pf-surface);transition:border-color .2s}
+main:has(#ql-web-profile-editor) .ql-more-faq details[open]{border-color:var(--pf-brand)!important}
+main:has(#ql-web-profile-editor) .ql-more-faq summary{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:15px 18px;list-style:none;color:var(--pf-ink)!important;font-weight:700!important;font-size:15px!important}
+main:has(#ql-web-profile-editor) .ql-more-faq summary::-webkit-details-marker{display:none}
+main:has(#ql-web-profile-editor) .ql-more-faq summary::after{content:'+';flex:none;width:30px;height:30px;border-radius:9px;display:grid;place-items:center;background:var(--pf-brand-soft);color:var(--pf-brand-text);font-size:20px;transition:background .2s,color .2s}
+main:has(#ql-web-profile-editor) .ql-more-faq details[open] summary::after{content:'\2212';background:var(--pf-brand);color:#fff}
+main:has(#ql-web-profile-editor) .ql-more-faq details>p{margin:0!important;padding:0 18px 16px!important;color:var(--pf-text)!important;font-size:14.5px!important;line-height:1.6;animation:pfIn .3s ease both}
+/* danger */
+main:has(#ql-web-profile-editor) #ql-web-more-actions .ql-more-button.danger{background:var(--pf-r-soft)!important;border-color:transparent!important;color:var(--pf-red)!important}
+main:has(#ql-web-profile-editor) #ql-web-more-actions .ql-more-button.danger:hover{background:var(--pf-red)!important;color:#fff!important}
+main:has(#ql-web-profile-editor) #ql-web-more-actions>p.ql-more-subtitle{text-align:center;color:var(--pf-muted)!important;font-size:12.5px!important}
+@keyframes pfIn{from{opacity:0;transform:translateY(14px)}}
+/* phones */
+@media(max-width:640px){
+main:has(#ql-web-profile-editor) #ql-web-profile-editor{padding:22px 18px!important;border-radius:22px!important}
+main:has(#ql-web-profile-editor) #ql-web-profile-editor::before{width:170px;height:170px;right:-60px;top:-70px}
+main:has(#ql-web-profile-editor) .ql-more-profile-summary{flex-wrap:wrap}
+main:has(#ql-web-profile-editor) #ql-web-profile-avatar{width:70px!important;height:70px!important}
+main:has(#ql-web-profile-editor) #ql-web-profile-edit{width:100%}
+main:has(#ql-web-profile-editor) #ql-web-profile-editor~.grid{grid-template-columns:1fr 1fr!important;gap:10px!important}
+main:has(#ql-web-profile-editor) #ql-web-profile-editor~.grid>div{padding:16px!important;border-radius:18px!important}
+main:has(#ql-web-profile-editor) #ql-web-profile-editor~.grid>div>p:nth-child(2){font-size:26px!important}
+main:has(#ql-web-profile-editor) #ql-web-more-actions .ql-more-card{padding:18px!important;border-radius:20px!important}
+main:has(#ql-web-profile-editor) #ql-web-more-actions>.ql-more-card>.ql-more-heading{font-size:18px!important}
+main:has(#ql-web-profile-editor) #ql-web-more-actions .ql-more-theme-options{width:100%}
+main:has(#ql-web-profile-editor) #ql-web-more-actions .ql-more-theme-options>*{flex:1;justify-content:center;text-align:center}
+}
+@media(prefers-reduced-motion:reduce){main:has(#ql-web-profile-editor) *{animation:none!important}}

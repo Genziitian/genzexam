@@ -23,7 +23,7 @@ const types = {
   ".webmanifest": "application/manifest+json",
 };
 const rootFiles = new Set(
-  "index.html exams.html ql-theme.js ql-dark-app.css ql-dark-exam.css ql-dark-sales.css ql-dark-discussions.css paper-room.html paper-room.js paper-room.css paper-room-color.css ql-leaderboard.css landing.html papers.html paper-pricing.html terms.html privacy.html delete-account.html refund-policy.html manager-sales.html manager-sales.js manager-sales.css manager-discussions.html manager-discussions.js manager-discussions.css exam-platform.js exam-rich-content.js exam-calculator.js exam-platform.css app-enhancements.js more-web.js storefront-runtime.js storefront-dashboard.css papers.js papers.css paper-pricing.js paper-pricing.css icons.svg site.webmanifest favicon.ico favicon-16x16.png favicon-32x32.png apple-touch-icon.png android-chrome-192x192.png android-chrome-512x512.png".split(
+  "index.html exams.html ql-theme.js ql-dark-app.css ql-dark-exam.css ql-dark-sales.css ql-dark-discussions.css paper-room.html paper-room.js paper-room.css paper-room-color.css ql-leaderboard.css ql-profile.css contact.html contact.css about.html about.css landing.html papers.html paper-pricing.html terms.html privacy.html delete-account.html refund-policy.html manager-sales.html manager-sales.js manager-sales.css manager-discussions.html manager-discussions.js manager-discussions.css exam-platform.js exam-rich-content.js exam-calculator.js exam-platform.css app-enhancements.js more-web.js storefront-runtime.js storefront-dashboard.css papers.js papers.css paper-pricing.js paper-pricing.css icons.svg site.webmanifest favicon.ico favicon-16x16.png favicon-32x32.png apple-touch-icon.png android-chrome-192x192.png android-chrome-512x512.png".split(
     " ",
   ),
 );
@@ -66,6 +66,8 @@ function handler(req, res) {
   let file = url.slice(1);
   if (url === "/") file = "landing.html";
   else if (/^\/papers\/?$/.test(url)) file = "papers.html";
+  else if (/^\/contact\/?$/.test(url)) file = "contact.html";
+  else if (/^\/about\/?$/.test(url)) file = "about.html";
   else if (/^\/manager\/sales\/?$/.test(url)) file = "manager-sales.html";
   else if (/^\/manager\/discussions\/?$/.test(url)) file = "manager-discussions.html";
   else if (/^\/paper-pricing\/?$/.test(url)) file = "paper-pricing.html";

@@ -1,0 +1,57 @@
+/* Contact page — uses papers.css for tokens, header, footer and buttons. */
+.ct-hero{padding:64px 0 120px}
+.ct-hero h1{margin-top:14px;font-family:var(--display);font-weight:800;font-size:clamp(40px,6vw,72px);line-height:1.04;letter-spacing:-.035em}
+.ct-hero .hl{margin-top:8px}
+.ct-lead{margin-top:22px;max-width:640px;font-size:clamp(17px,1.6vw,19px);line-height:1.6;color:var(--text)}
+.ct-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:-72px;position:relative;z-index:1}
+.ct-card{display:flex;flex-direction:column;gap:6px;padding:26px;border-radius:26px;background:var(--surface);border:1.5px solid var(--line);box-shadow:var(--shadow);transition:transform .2s ease,border-color .2s ease;animation:ctIn .6s cubic-bezier(.2,.7,.2,1) both}
+.ct-card:nth-child(2){animation-delay:.08s}.ct-card:nth-child(3){animation-delay:.16s}
+.ct-card:hover{transform:translateY(-5px);border-color:var(--brand)}
+.ct-ico{width:56px;height:56px;border-radius:16px;display:grid;place-items:center;margin-bottom:10px;color:var(--ink);transition:transform .3s cubic-bezier(.3,1.6,.5,1)}
+.ct-card:hover .ct-ico{transform:rotate(-8deg) scale(1.08)}
+.c-mail .ct-ico{background:var(--t-indigo)}.c-wa .ct-ico{background:var(--t-green)}.c-call .ct-ico{background:var(--t-yellow)}
+.ct-k{font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.ct-card b{font-family:var(--display);font-weight:800;font-size:clamp(19px,1.8vw,23px);letter-spacing:-.01em;overflow-wrap:anywhere}
+.ct-card small{font-size:14.5px;line-height:1.5;color:var(--text)}
+.ct-go{margin-top:auto;padding-top:16px;font-weight:800;font-size:15px;color:var(--brand-text)}
+.c-wa .ct-go{color:var(--green)}
+.ct-tips{margin-top:28px}
+.ct-tips{display:flex;flex-wrap:wrap;align-items:center;gap:18px 32px;padding:22px 26px!important;border-radius:22px;background:var(--surface-2);max-width:1192px}
+@media (min-width:1240px){.ct-tips{margin-left:auto;margin-right:auto}}
+.ct-tip-head{display:flex;flex-direction:column}
+.ct-tip-head b{font-family:var(--display);font-weight:800;font-size:19px}
+.ct-tip-head span{font-size:14px;color:var(--text)}
+.ct-tips ul{list-style:none;display:flex;flex-wrap:wrap;gap:10px}
+.ct-tips li{display:flex;align-items:center;gap:8px;padding:8px 14px 8px 8px;border-radius:999px;background:var(--surface);border:1.5px solid var(--line);font-size:14px;font-weight:600}
+.ct-tips li i{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:var(--brand);color:#fff;font-style:normal;font-size:12px;font-weight:800}
+.ct-faq{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:56px;align-items:start;padding-top:88px!important;padding-bottom:24px!important}
+.ct-faq-side{position:sticky;top:108px}
+.ct-faq-side h2{margin-top:10px;font-family:var(--display);font-weight:800;font-size:clamp(30px,4vw,44px);line-height:1.08;letter-spacing:-.03em}
+.ct-faq-side p{margin-top:14px;font-size:17px;line-height:1.55;color:var(--text)}
+.ct-policies{margin-top:22px;display:flex;flex-wrap:wrap;gap:8px}
+.ct-policies a{padding:8px 14px;border-radius:999px;border:1.5px solid var(--line-2);font-size:14px;font-weight:700;transition:border-color .15s,color .15s}
+.ct-policies a:hover{border-color:var(--brand);color:var(--brand-text)}
+.ct-faq-list{display:flex;flex-direction:column;gap:12px}
+.ct-faq-list details{background:var(--surface);border:1.5px solid var(--line);border-radius:20px;transition:border-color .2s,box-shadow .25s}
+.ct-faq-list details[open]{border-color:var(--brand);box-shadow:0 18px 40px -26px rgba(58,63,216,.55)}
+.ct-faq-list summary{display:flex;align-items:center;gap:16px;min-height:66px;padding:16px 20px;cursor:pointer;list-style:none;border-radius:20px}
+.ct-faq-list summary::-webkit-details-marker{display:none}
+.fq-n{flex:none;width:30px;font-family:var(--display);font-weight:800;font-size:15px;color:var(--faint)}
+.fq-q{flex:1;font-family:var(--display);font-weight:700;font-size:17.5px;line-height:1.35}
+.fq-x{flex:none;width:34px;height:34px;border-radius:11px;display:grid;place-items:center;background:var(--brand-soft);color:var(--brand-text);font-weight:800;font-size:20px}
+.fq-x::before{content:'+'}
+details[open] .fq-x{background:var(--brand);color:#fff}
+details[open] .fq-x::before{content:'\2212'}
+details[open] .fq-n{color:var(--brand-text)}
+.ct-faq-list details p{padding:0 22px 20px 66px;font-size:15.5px;line-height:1.65;color:var(--text);animation:ctIn .3s ease both}
+.ct-band{margin:72px 0 88px;padding:clamp(28px,5vw,56px);border-radius:30px;background:var(--brand);color:#fff;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px;position:relative;overflow:hidden}
+.ct-band::before{content:'';position:absolute;right:-60px;top:-90px;width:220px;height:220px;border-radius:50%;background:var(--yellow);opacity:.95}
+.ct-band>*{position:relative}
+.ct-band h2{font-family:var(--display);font-weight:800;font-size:clamp(26px,3.4vw,40px);line-height:1.1;letter-spacing:-.03em;max-width:640px}
+.ct-band p{margin-top:10px;color:#DADCFF;font-size:16.5px}
+.ct-band-btn{background:#fff!important;color:#0E1330!important;border:0!important;min-height:52px;padding:0 26px;border-radius:14px}
+.ct-band-btn:hover{background:var(--yellow)!important}
+@keyframes ctIn{from{opacity:0;transform:translateY(14px)}}
+@media (max-width:900px){.ct-cards{grid-template-columns:1fr;margin-top:-60px}.ct-faq{grid-template-columns:1fr;gap:28px;padding-top:64px!important}.ct-faq-side{position:static}}
+@media (max-width:640px){.ct-hero{padding:32px 0 96px}.ct-card{padding:20px;border-radius:22px}.ct-tips{padding:18px!important}.ct-faq-list summary{padding:14px;gap:10px}.fq-n{width:24px;font-size:13px}.fq-q{font-size:16px}.ct-faq-list details p{padding:0 16px 18px 48px;font-size:15px}.ct-band{margin:56px 0 64px;border-radius:24px}.ct-band-btn{width:100%}}
+@media (prefers-reduced-motion:reduce){.ct-card,.ct-faq-list details p{animation:none}}

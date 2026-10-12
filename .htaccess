@@ -18,6 +18,8 @@ RewriteRule ^api/(.*)$ backend/public/api/$1 [L]
 # Public landing page at the root only
 RewriteRule ^$ landing.html [L]
 RewriteRule ^papers/?$ papers.html [L]
+RewriteRule ^contact/?$ contact.html [L]
+RewriteRule ^about/?$ about.html [L]
 RewriteRule ^manager/sales/?$ manager-sales.html [L]
 RewriteRule ^manager/discussions/?$ manager-discussions.html [L]
 RewriteRule ^paper-pricing/?$ paper-pricing.html [L]
@@ -51,7 +53,7 @@ RewriteRule ^ index.html [QSA,L]
   <FilesMatch "^index-[A-Za-z0-9]+\.(js|css)$">
     Header set Cache-Control "public, max-age=31536000, immutable"
   </FilesMatch>
-  <FilesMatch "^(sw|ql-theme|ql-tokens|ql-redesign|ql-dark-[a-z]+|ql-leaderboard|exam-platform|exam-rich-content|exam-calculator|app-enhancements|more-web|paper-room|paper-room-color|papers|paper-pricing|manager-sales|manager-discussions|storefront-runtime|storefront-dashboard)\.(js|css)$">
+  <FilesMatch "^(sw|ql-theme|ql-tokens|ql-redesign|ql-dark-[a-z]+|ql-leaderboard|ql-profile|exam-platform|exam-rich-content|exam-calculator|app-enhancements|more-web|paper-room|paper-room-color|papers|contact|about|paper-pricing|manager-sales|manager-discussions|storefront-runtime|storefront-dashboard)\.(js|css)$">
     Header set Cache-Control "no-cache, must-revalidate"
   </FilesMatch>
 </IfModule>
