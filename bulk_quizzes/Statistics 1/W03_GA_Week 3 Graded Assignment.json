@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Week 3 Graded Assignment",
+  "subject": "Statistics 1",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In a deck, there are cards numbered 1 to n such that the number of cards of a given number is the same as the number on the card. Which of the following statement(s) 4 is/are true about the mean and mode of the numbers on this deck of card?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Mode is n."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Mean is 2n + 13 ."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Mode is n− 1."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Mean is n. e. Mean is n + 12 . f. Mode is not deﬁned for this data."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Given that the number of cards of a number in the deck is the same as the number on the card. It means that: Number (xi) Frequency (fi) 1 1 2 2 ... ... ... ... n n Table 3.1 Hence, Mode = n. Now, Total number of observations = f1 + f2 + ... + fn = 1 + 2 + ... + n = n(n + 1)2Sum of observations = f1x1 + f2x2 + ... + fnxn = 1× 1 + 2× 2 + ... + n× n So, f1x1 + f2x2 + ... + fnxn = n(n + 1)(2n + 1)6 Therefore, Mean = f1x1 + f2x2 + ... + fnxn f1 + f2 + ... + fn = n(n + 1)(2n + 1) 6 n(n + 1) 2 = 2n + 13 Hence, options (a) and (b) are correct. For example, n = 42 Given that the number of cards of a number in the deck is the same as the number on the card, it means that: 5 Number (xi) Frequency (fi) 1 1 2 2 ... ... ... ... 42 42 Table 3.2 Hence, Mode = 42. Now, Total number of observations = f1 + f2 + ... + f42 = 1 + 2 +... + 42 = 42(42 + 1)2Sum of observations = f1x1 + f2x2 + ... + f42x42 = 1× 1 + 2× 2 + ... + 42× 42 So, f1x1 + f2x2 + ... + f42x42 = 42(42 + 1)(2(42) + 1)6 Mean = f1x1 + f2x2 + ... + f42x42 f1 + f2 + ... + f42 = 42(42 + 1)(2(42) + 1) 6 42(42 + 1) 2 = 2(42) + 13 Hence, Mean = 28.33 Figure 3.1.G shows a stem and leaf plot of the ratings (out of 100) of an actor’s performance in diﬀerent movies. Based on the given information, answer questions (9) and (10). Stem Leaf 5 3 9 7 2 2 5 8 8 7 7 7 9 9 Here 6| 4 represents rating of 64. Figure 3.1.G"
+        }
+      ]
+    }
+  ],
+  "week": 3
+}

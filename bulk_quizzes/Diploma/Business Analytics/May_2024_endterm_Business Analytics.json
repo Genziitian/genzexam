@@ -1,0 +1,379 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "May 2024 Endterm",
+  "subject": "Business Analytics",
+  "section": "endterm",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the expected number of jeans of Style-B that would be sold in Store-3? (Note: Input your answer rounded to two decimal places. For example, if your answer is “1.235” then enter the answer as “1.24”)"
+        }
+      ],
+      "acceptable_answers": [
+        "121 to 123"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many degrees of freedom does are present in the hypothesis test conducted for this problem? (Note: Input your answer rounded to two decimal places. For example, if your answer is “1.235” then enter the answer as “1.24”)"
+        }
+      ],
+      "numerical_answer": 6.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the probability that a bulb from the production lot will give a life of more than 100 hours? (Note: Input your answer rounded to two decimal places. For example, if your answer is “1.235” then enter the answer as “1.24”)"
+        }
+      ],
+      "acceptable_answers": [
+        "0.40 to 0.42"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If a randomly selected bulb from the production lot has a life of more than 100 hours, then what is the probability that it was of Type-B? (Note: Input your answer rounded to two decimal places. For example, if your answer is “1.235” then enter the answer as “1.24”)"
+        }
+      ],
+      "acceptable_answers": [
+        "0.28 to 0.30"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "DMS is giving a replacement warranty for bulbs that last for less than 100 hours of life. The replacement will cost Rs. 2 for every Type-A bulb, Rs. 1.75 for every Type-B bulb and Rs. 3 for every Type-C bulb. Then, if 10,000 bulbs are produced and sold in a year, what would be the total warranty related cost that DMS will expect to incur? (Note: Input your answer rounded to two decimal places. For example, if your answer is “1.235” then enter the answer as “1.24”) Question Id : 640653905412 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix There are 5 business units where we measure the efficiency based on two outputs and one input. You are solving the optimization problem for business unit 4 and you find that the efficiency is 0.8. You find that the dual variables corresponding to the constraints of business units 3 and 5 are non-zero and the dual variables corresponding to the constraints of other units are zero. The dual variables corresponding to the constraints of business units 3 and 5 are 0.5 and 0.3 respectively. You are given the following table where sales and loyal customers are the two outputs. Answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "14849 to 14851"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How much is the sales in HCU 4? Hint: Round-off up to 2 decimal places"
+        }
+      ],
+      "numerical_answer": 11250.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many loyal customers must be there in HCU 4? Hint: Round-off up to 2 decimal places Dr. Milo wants to advertise his new brand of tuition centres called “Torture Students”. Currently promotion plans are underway for this year’s admission. Advertising alternatives include TV, Radio and Social Media. The estimated audiences per advertisement (who will enrol after viewing the advertisement) and costs per advertisement for the different alternatives are shown in Table-2. To ensure a balanced use of advertisement media (1) radio advertisements must not exceed 70% of the total number of advertisements authorised (2) amount authorised for TV advertisements should account for at least 30% of the total spending (3) Amount of spending on social media advertisements cannot exceed more than 25% of the other two spending. The promotional budget is limited to Rs. 1,82,000, and Dr. Milo wants to use all the available money to maximize the number of enrolments. Then answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "107 to 108 Question Id : 640653905431 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many decision variables (count) are present in the standard form of the primal problem? (Note: Specify the count of variables. Not the count of notations)"
+        }
+      ],
+      "numerical_answer": 3.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many constraints (excluding the non-negativity constraints) are present in the standard form of the primal? (Note: Specify the count of constraints. Not the count of constrains in notation format)"
+        }
+      ],
+      "numerical_answer": 5.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If the standard form of the primal is converted to a dual, then how many constraints (excluding the non-negativity constraints) are present in the dual? (Note: Specify the count of constraints. Not the count of constrains in notation format)"
+        }
+      ],
+      "numerical_answer": 3.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "For the sake of argument, assume that Dr. Milo is an operations expert (irrespective of your answer to the previous question). Then, for the solution (Rs. 1,05,000 in TV and Rs. 31,500 in Social Media and Rs. 45,200 in Radio are made) how many (count) decision variables in the dual (which is formulated based on the standard form of the primal) will have a non-zero value?"
+        }
+      ],
+      "numerical_answer": 0.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "For the sake of argument, assume that Dr. Milo is an operations expert (irrespective of your answer to the previous question). Then, for the solution (where an investment of Rs. 1,05,000 in TV and Rs. 31,500 in Social Media and Rs. 45,200 in Radio are made) what is the objective function value for the standard form of the primal? Question Id : 640653905415 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix A travel company wants to understand its model performance of a classification problem where the task is to classify if its customer will be granted with a tourist visa or not (assume granted = Class 1 and Not Granted as Class 0). Using the table given below, answer the given subquestions Sub questions"
+        }
+      ],
+      "numerical_answer": -791400.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the accuracy of the model? Hint: Round your answer to two decimal places and answer them in terms of percentage. Example: If your answers is 0.735, write it as 73.50."
+        }
+      ],
+      "acceptable_answers": [
+        "63.8 to 64.6"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the precision of class 1? Hint: Round your answer to two decimal places and answer them in terms of percentage. Example: If your answers is 0.735, write it as 73.50."
+        }
+      ],
+      "acceptable_answers": [
+        "62.3 to 62.8"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the recall of class 1? Hint: Round your answer to two decimal places and answer them in terms of percentage.Example: If your answers is 0.735, write it as 73.50."
+        }
+      ],
+      "acceptable_answers": [
+        "71.0 to 71.6"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the precision of class 0? Hint: Round your answer to two decimal places and answer them in terms of percentage. Example: If your answers is 0.735, write it as 73.50."
+        }
+      ],
+      "acceptable_answers": [
+        "66.4 to 66.85"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the recall of class 0? Hint: Round your answer to two decimal places and answer them in terms of percentage. Example: If your answers is 0.735, write it as 73.50."
+        }
+      ],
+      "acceptable_answers": [
+        "56.9 to 57.5"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the Sensitivity for the model? Hint: Round your answer to two decimal places and answer them in terms of percentage. Example: If your answers is 0.735, write it as 73.50."
+        }
+      ],
+      "acceptable_answers": [
+        "71.0 to 71.6"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the Specificity for the model? Hint: Round your answer to two decimal places and answer them in terms of percentage.Example: If your answers is 0.735, write it as 73.50. Question Id : 640653905438 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix A company has developed a new fodder for pigs. To model the “increase in weight of a piglet (in pounds) in one week”, an experiment is performed in which eight piglets were exclusively feed the fodder. Table-3 below provides the data on “Initial weight (pounds)”, “Age of the piglet (weeks)”, “Actual Weight gained after one week (pounds)” and “Predicted Weight gained after one week (pounds)” . The column \"Predicted Weight gained after one week (pounds)\" is obtained using Model-1 The different models developed are presented in the below Figures (which specify the partial regression outputs). Given this information, answer the given subquestions Model-1: Partial output when regression “Weight Gained (pounds)”, “Initial Weight (pounds)” and “Initial Age (weeks)” Model-2: Partial output when regressing “Initial Weight (pounds)” and “Initial Age (weeks)” Model-3: Partial output when regressing “Initial Weight (pounds)” and “Initial Age (weeks)” Model-4: Partial output when regression “Weight Gained (pounds)”, “Initial Weight (pounds)” and “Initial Age (weeks)” Model-5: Partial output when regression “Weight Gained (pounds)”, “Initial Weight (pounds)” and “Initial Age (weeks)” Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "56.9 to 57.6"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the value of “X1” in Model-1? (Note: Input your answer rounded to two decimal places. For example, if your answer is “1.235” then enter the answer as “1.24”)"
+        }
+      ],
+      "acceptable_answers": [
+        "0.92 to 0.95"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the value of “X2” in Model-1? (Note: Input your answer rounded to two decimal places. For example, if your answer is “1.235” then enter the answer as “1.24”)"
+        }
+      ],
+      "acceptable_answers": [
+        "0.85 to 0.88"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the value of “X3” in Model-1? (Note: Input your answer rounded to two decimal places. For example, if your answer is “1.235” then enter the answer as “1.24”)"
+        }
+      ],
+      "acceptable_answers": [
+        "0.80 to 0.83"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the value of “X4” in Model-1? (Note: Input your answer rounded to two decimal places. For example, if your answer is “1.235” then enter the answer as “1.24”)"
+        }
+      ],
+      "acceptable_answers": [
+        "36 to 37"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the value of “X5” in Model-1? (Note: Input your answer rounded to two decimal places. For example, if your answer is “1.235” then enter the answer as “1.24”)"
+        }
+      ],
+      "acceptable_answers": [
+        "41 to 43"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the value of the F-statistic for Model-1? (Note: Input your answer rounded to two decimal places. For example, if your answer is “1.235” then enter the answer as “1.24”)"
+        }
+      ],
+      "acceptable_answers": [
+        "16.0 to 16.50"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the VIF associated with “Initial Age (weeks)”? (Note: Input your answer rounded to two decimal places. For example, if your answer is “1.235” then enter the answer as “1.24”)"
+        }
+      ],
+      "acceptable_answers": [
+        "2.10 to 2.40"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the VIF associated with “Initial Weight (pounds)”? (Note: Input your answer rounded to two decimal places. For example, if your answer is “1.235” then enter the answer as “1.24”)"
+        }
+      ],
+      "acceptable_answers": [
+        "1.70 to 1.99"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ]
+}

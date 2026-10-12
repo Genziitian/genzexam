@@ -1,0 +1,225 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Week 7 Graded Assignment",
+  "subject": "Statistics 1",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "m boys and 2 girls are to be placed next to each other in the school ground for morning assembly. What is the probability that there are exactly 4 boys between the 2 girls?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "2m− 5m+2P2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "2m− 6m+2P2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "2m− 6m+3P2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "2m− 4m+2P2"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "There are a total of (m + 2) places to arrange the 2 girls. Therefore, the number of ways in which 2 girls can be arranged = m+2P 2 Positioning of the 2 girls such that there are exactly 4 boys between them can be done in the following ways: Case 1: First girl at 1 st place and second girl at 6 th place and vice-versa, i.e. 2 ways. Case 2: First girl at 2 nd place and second girl at 7 th place and vice-versa, i.e. 2 ways. Similarly, Case (m-3): First girl at ( m− 3)th place and second girl at ( m + 2)th place, and vice-versa, i.e. 2 ways. Hence, Number of possible ways such that there are exactly 4 boys between the 2 girls = 2× (m− 3) = 2m− 6 ways. Therefore, P[There are exactly 4 boys between the 2 girls] = 2m− 6m+2P 2 Hence, option (b) is correct. Example: m = 8 There are a total of 10 places to arrange the 2 girls. Therefore, the number of ways in which 2 girls can be arranged = 10P 2 Positioning of the 2 girls such that there are exactly 4 boys between them can be done in the following ways: Case 1: First girl at 1 st place and second girl at 6 th place and vice-versa, i.e. 2 ways. 1 Case 2: First girl at 2 nd place and second girl at 7 th place and vice-versa, i.e. 2 ways. Case 3: First girl at 3 rd place and second girl at 8 th place and vice-versa, i.e. 2 ways. Case 4: First girl at 4 th place and second girl at 9 th place and vice-versa, i.e. 2 ways. Case 5: First girl at 5th place and second girl at 10 th place and vice-versa, i.e. 2 ways. Hence, Number of possible ways such that there are exactly 4 boys between the 2 girls = 2× 5 = 10 ways. Therefore, P[There are exactly 4 boys between the 2 girls] = 1010P 2 = 1090 = 19 Hence, option (b) is correct."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A person predicts daily whether the price of stocks of wrist watch companies will go up or down. If his prediction on stock price of Titan is correct a times out of b, for Rolex it is correct p times out of q and for Fossil it is correct x times out of y, then what is the probability that at least two of his predictions are correct on a given day?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "[a b× pq×(1− xy)] +[ab×(1− pq)× xy] +[(1− ab)× pq× xy] +[ab× pq× xy] 2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[a b× pq×(1− xy)] +[ab×(1− pq)× xy] +[(1− ab)× pq× xy]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[a b× pq× xy] +[ab× pq× xy] +[ab× pq× xy] +[ab× pq× xy]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[a b× pq× xy] +[ab× pq× xy] +[ab× pq× xy]"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Let us deﬁne the following events: A : Prediction for Titan is correct. B : Prediction for Rolex is correct. C : Prediction for Fossil is correct. We are given that : P (A) = ab , P (B) = pq and P (C) = xy Case 1: Prediction for only Titan and Rolex is correct P (A∩B∩C c) = ab× pq×(1− xy) Case 2: Prediction for only Titan and Fossil is correct P (A∩Bc∩C) = ab×(1− pq)× xy Case 3: Prediction for only Rolex and Fossil is correct P (Ac∩B∩C) =(1− ab)× pq× xy Case 4: All predictions are correct. P (A∩B∩C) = ab× pq× xy Hence, P (At least two predictions are correct) = [a b× pq×(1− xy)] +[ab×(1− pq)× xy] +[(1− ab)× pq× xy] +[ab× pq× xy] Hence, option (a) is correct. Example: a = 4,b = 5,p =,q = 6,x = 3,y = 4 Let us deﬁne the following events: A : Prediction for Titan is correct. B : Prediction for Rolex is correct. C : Prediction for Fossil is correct. We are given that : P (A) = 45, P (B) = 56 and P (C) = 34 Case 1: Prediction for only Titan and Rolex is correct 3 P (A∩B∩C c) = 45× 56× 14 = 20120 Case 2: Prediction for only Titan and Fossil is correct P (A∩Bc∩C) = 45× 16× 34 = 12120 Case 3: Prediction for only Rolex and Fossil is correct P (Ac∩B∩C) = 15× 56× 34 = 15120 Case 4: All predictions are correct. P (A∩B∩C) = 45× 56× 34 = 60120 Hence, P (At least two predictions are correct)= 20120 + 15120 + 12120 + 60120 = 107120 Hence, option (a) is correct."
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "a cards are drawn at random (without replacement) from a pack of 52 cards. Find the probability that b are black and c are red. (Enter the answer correct to two decimal places)"
+        }
+      ],
+      "acceptable_answers": [
+        "the questions 8, 9 and 10."
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Since there are 26 black cards (of spades and clubs) and 26 red cards (of diamonds and hearts) in a pack of cards, the required probability= 26Cb×26Cc 52Ca Example: a = 4,b = 2 and c = 2 Since there are 26 black cards (of spades and clubs) and 26 red cards (of diamonds and hearts) in a pack of cards, the required probability= 26C2×26C2 52C4 = 0.39 Pramod goes to a shop to buy some clothes. Shopkeeper shows him x shirts, y pants and z t-shirts. If he selects three clothes at random, then based on the information,"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the probability that the randomly chosen clothes are of diﬀerent type. (Enter the"
+        }
+      ],
+      "acceptable_answers": [
+        "correct to three decimal places)"
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The total number of cases are x+y+zC3. Since the number of favourable cases of getting one cloth of each type is = xC1×yC1×zC1 Therefore, the required probability= xC1×yC1×zC1 x+y+zC3 For example: x = 5, y = 4, z = 10 The total number of cases are 19C3. Since the number of favourable cases of getting one cloth of each type is 6 = 5C1×4C1×10C1 Therefore, the required probability= 5C1×4C1×10C1 19C3 = 200969 = 0.2064"
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "An urn contains 3 balls numbered 1 , 2 and 3. The co-eﬃcients of the equation 7 px2 +qx +c = 0 is determined by drawing the numbered balls with replacement. What is the probability that the equation will have imaginary roots? Nature of roots: Consider a quadratic equation: ax2 +bx +c = 0 Compute D =b2− 4ac< 0 Roots = { D <0 imaginary roots D≥ 0 real roots"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "427"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "2327"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1627"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of the above"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Since each coeﬃcient in equationpx2+qx+c = 0 is determined by drawing a numbered ball from the urn, each of the coeﬃcients p,q and c can take values from 1 to 3. Therefore, total number of possible outcomes = 3 × 3× 3 = 27 P [Imaginary roots] = 1−P [Real roots] For a Quadratic equation to have real roots, the equation q2− 4pc≥ 0 should be satisﬁed. The number of favourable cases for real roots are: pc p c 4pc q (such that q2− 4pc≥ 0) No. of cases 1 1 1 4 2, 3 2 2 1 2 8 3 1 2 1 8 3 1 Hence, Total number of favourable cases for real roots = 2 + 1 + 1 = 4 Therefore, P [Real roots]= 423 P [Imaginary roots]=1− 423 = 2327 Hence, option (b) is correct."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If A andB are mutually exclusive or disjoint events, then which of the following is/are always true:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "P (A) =P (B) 8"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "P (A)<P (B)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "P (A)≤P (Bc)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "P (A)≥P (Bc)"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Since, A and B are mutually exclusive or disjoint events. Therefore, A∩B =φ A = (A∩B)∪ (A∩Bc) =φ∪ (A∩Bc) =A∩Bc Therefore, A⊆Bc⇒P (A)≤P (Bc) 9"
+        }
+      ]
+    }
+  ],
+  "week": 7
+}

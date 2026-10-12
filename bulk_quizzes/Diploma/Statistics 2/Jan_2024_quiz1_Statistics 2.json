@@ -1,0 +1,118 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Jan 2024 Quiz1",
+  "subject": "Statistics 2",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the probability that the first failed inspection occurs on the analyst’s 5th inspection? Enter the answer correct to three decimal places."
+        }
+      ],
+      "acceptable_answers": [
+        "0.046 to 0.086"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The probability distribution of a discrete random variable X is given as below: Calculate the expected value of X. Enter the answer correct to one decimal place. Question Id : 640653737916 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "numerical_answer": 1.1,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Kunal and Sanskriti are playing a game. Kunal will roll a fair six-sided die, and Sanskriti will flip a fair coin as many times as the number shown on the die. Let X represent the number displayed on the die, and Y represent the number of heads obtained by Sanskriti. Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "0.4 to 0.6 Question Id : 640653737919 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "0.13 to 0.19 Question Id : 640653737922 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Suppose that a random variable X denotes the number of items produced in a factory during a week with mean 50 and variance 25. Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "7 Question Id : 640653737925 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Using Chebyshev’s inequality, find a lower bound on the probability that this week’s production will be between 40 and 60. Enter the answer correct to two decimal places. Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "0.72 to 0.78 Question Id : 640653737928 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the value of k. Enter the answer correct to one decimal place."
+        }
+      ],
+      "numerical_answer": 0.4,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the value of P(1 < X < 2.5)? Enter the answer correct to two decimal places."
+        }
+      ],
+      "acceptable_answers": [
+        "0.72 to 0.78"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    }
+  ]
+}

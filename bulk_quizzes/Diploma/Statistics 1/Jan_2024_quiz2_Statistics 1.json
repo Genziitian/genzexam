@@ -1,0 +1,90 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Jan 2024 Quiz2",
+  "subject": "Statistics 1",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In how many different ways can the letters of the word ‘ENGLISH’ be arranged such that the vowels always come together? Question Id : 640653771039 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Consider a given dataset of weights (in kg) of persons such as 50, 55, 40, 60, 99, 90, 95, 60, 80, 75. Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "numerical_answer": 1440.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the IQR (Inter-quartile range) of the given dataset. Question Id : 640653771021 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix A drawer of socks contains three black socks, four blue socks, and three grey socks. Two socks are chosen at random without replacement. Based on the information, answer the given subquestion. Sub questions"
+        }
+      ],
+      "numerical_answer": 35.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the probability that a black pair is chosen ? Enter the answer correct to two decimal places"
+        }
+      ],
+      "acceptable_answers": [
+        "0.04 to 0.10"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the probability that they are of same colour ? Enter the answer correct to two decimal places. A family has two children. Assume being a male or female of a child is equally likely. Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "0.24 to 0.30 Question Id : 640653771024 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the probability that both are boys given that at least one is a boy ? Enter the answer correct to two decimal places. Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "0.30 to 0.36 Question Id : 640653771027 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If co-education has been introduced in the college, then what is the probability that X is principal ? Enter the answer correct to two decimal places. In a school function, there are 2 violinists, 3 pianists, and 1 flutist. They have to sit in a circular order for a performance. Based on the information, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "0.40 to 0.48 Question Id : 640653771030 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ]
+}

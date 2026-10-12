@@ -1,0 +1,75 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "May 2025 Endterm",
+  "subject": "Llm",
+  "section": "endterm",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Question Id : 6406531424293 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Sub questions"
+        }
+      ],
+      "numerical_answer": 6.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "For the input “you enjoy tea often”, compute the final representation of the word “enjoy” after the attention layer (i.e., after applying WQ, WK, WV , attention weights, and WO). Enter the sum of the elements in the resulting vector."
+        }
+      ],
+      "acceptable_answers": [
+        "0.92 to 1.0"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Suppose the input sentence is “tea you enjoy often”. Using the same matrices and processing method, what is the attention score (i.e., softmax entry from A) for the query word “tea” attending to key word “often”? Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "0.04 to 0.10 Question Id : 6406531424302 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many permutations of π are possible for n = 5?"
+        }
+      ],
+      "numerical_answer": 120.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What percentage of entries in the attention matrix are zero (i.e., the sparsity)? Question Id : 6406531424296 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "numerical_answer": 80.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ]
+}

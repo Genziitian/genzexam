@@ -1,0 +1,118 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "May 2023 Endterm",
+  "subject": "Statistics 2",
+  "section": "endterm",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Using the Central Limit Theorem, find the approximate probability that there will be more than 150 industrial injuries in a year in Delhi. Enter the answer correct to two decimal places. Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "0.34 to 0.40 Question Id : 640653612285 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Calculate the value of FX(0.5). Enter the answer correct to two decimal places."
+        }
+      ],
+      "acceptable_answers": [
+        "0.53 to 0.59"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the expected value of X. Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "0 Question Id : 640653612289 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the method of moments estimate of p. Enter the answer correct to one decimal place."
+        }
+      ],
+      "numerical_answer": 0.9,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the maximum likelihood estimate of p. Enter the answer correct to one decimal place. Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "0.9 Question Id : 640653612292 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the posterior mean. Enter the answer correct to two decimal places. Suppose a principal states that the students studying in her school have an average IQ score equal to 98.5. A reporter suspects that the average may be higher and took a sample of 100 random students from that school and found out that the average IQ score of those children is 98.78. Assume the IQ scores of the students are normally distributed with a standard deviation of 1.6. Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "0.55 to 0.61 Question Id : 640653612295 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the P−value. Enter the answer correct to two decimal places. Clear Response : Yes Maximum Instruction Time : 0"
+        }
+      ],
+      "acceptable_answers": [
+        "0.01 to 0.07 CT Section Id : 64065341351 Section Number : 3"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What does calculate(5, 3) return?"
+        }
+      ],
+      "numerical_answer": 11.0,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium"
+    }
+  ]
+}

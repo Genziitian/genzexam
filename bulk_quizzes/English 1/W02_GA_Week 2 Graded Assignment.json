@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Week 2 Graded Assignment",
+  "subject": "English 1",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Welcome e) Fix 3. Excruciating i. a ii. b iii. c iv. d v. e"
+        }
+      ],
+      "acceptable_answers": [
+        "iii. All of the above are examples of word collocation. Collocation is the co-occurence of a certain pair of words by convention, as „absolute‟ with „necessity‟ and „welcome‟ with „change.‟"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "week": 2
+}

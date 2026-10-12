@@ -1,0 +1,105 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Jan 2023 Endterm",
+  "subject": "Statistics 2",
+  "section": "endterm",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Two 4-sided fair dice are rolled. If the sum of the numbers on the two dice is less than or equal to 7, then find the conditional probability that the number on the first die is 4."
+        }
+      ],
+      "acceptable_answers": [
+        "0.17 to 0.23"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the standard deviation of Y ?"
+        }
+      ],
+      "numerical_answer": 1.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the value of P(X < 1, Y < 3). Enter the answer correct to three decimal places. Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "0.372 to 0.378 Question Id : 640653564200 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the method of moments estimate of θ for the given sample. Enter the answer correct to two decimal places."
+        }
+      ],
+      "acceptable_answers": [
+        "0.23 to 0.27"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the maximum likelihood estimate of θ for the given sample. Enter the answer correct to two decimal places. Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "0.23 to 0.27 Question Id : 640653564203 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the posterior mean. Enter the answer correct to two decimal places. A manufacturer produces cotter pins and claims that the probability of a randomly selected cotter pin being defective is 0.3. However, an analyst suspects that the claimed probability value is too high and decides to verify it by conducting a test. The analyst randomly selects 8 cotter pins from the manufacturer’s production line and inspects them for defects. If less than 2 cotter pins are defective (out of those 8 cotter pins), then the analyst rejects the claim, or else he accepts it. Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "3.60 to 3.68 Question Id : 640653564206 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the significance level of the test. Enter the answer correct to two decimal places."
+        }
+      ],
+      "acceptable_answers": [
+        "0.23 to 0.29"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    }
+  ]
+}

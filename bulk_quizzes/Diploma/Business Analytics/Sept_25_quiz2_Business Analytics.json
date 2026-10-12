@@ -1,0 +1,263 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Sept 25 Quiz2",
+  "subject": "Business Analytics",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the adjusted R-square value for the model? (Note: Enter the answer as a numeric percentage value rounded to two decimal places without the % symbol. For example, if your answer is “10.256 %”, enter it as “10.26”)"
+        }
+      ],
+      "acceptable_answers": [
+        "86 to 88"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the total variability (magnitude) that is present in the error terms for this model? (Note: Enter the answer rounded to two decimal places. For example, if the answer is “1.234”, then enter it as “1.23”)"
+        }
+      ],
+      "acceptable_answers": [
+        "1461677 to 1461679"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many degrees of freedom will be present for the “SST” term in the ANOVA table for this model? (Note: Enter the answer rounded to two decimal places. For example, if the answer is “1.234”, then enter it as “1.23”)"
+        }
+      ],
+      "numerical_answer": 499.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the F-statistic value for this model? (Note: Enter the answer rounded to two decimal places. For example, if the answer is “1.234”, then enter it as “1.23”) Question Id : 6406531828391 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix “Milo Loner (ML)” is a bank that gives out personal loans to customers. Currently, the process of document verification is done manually by verifying the scores from 2 variables “Earnings” and “Tenure”. The aim of inspection process is to identify customers who will default on a loan (considered as the negative class). From historical experience, manual inspection correctly identifies 85% of loan defaulters in any given batch of only defaulter customers. The top brass at ML, Dr. Milo, has embarked on a journey in business analytics. Hence, he has decided to replace the manual inspection with an Automatic Defaulter Detection System (ADDS). This ADDS runs a trained logistic model in the background which classifies an applicant as “Defaulter” or “Non-Defaulter” based on the scores for “Earnings” and “Tenure”. To test the ADDS, a sample of 200 applications are taken. The sample is imbalanced and only 30% of the sample applicants were non-defaulters. The sample applications are passed through the ADDS, and the system identifies 70% of the actual non-defaulters as defaulters and 10% of actual defaulters as non-defaulters. Using this information, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "550 to 552"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many “True Positives” is ADDS predicting?"
+        }
+      ],
+      "numerical_answer": 126.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many “False Positives” is ADDS predicting?"
+        }
+      ],
+      "numerical_answer": 14.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many “True Negatives” is ADDS predicting?"
+        }
+      ],
+      "numerical_answer": 18.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many “False Negatives” is ADDS predicting?"
+        }
+      ],
+      "numerical_answer": 42.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the accuracy of the ADDS? (Note: Enter the answer as a numeric percentage value rounded to two decimal places without the % symbol. For example, if your answer is “10.256 %”, enter it as “10.26”)"
+        }
+      ],
+      "acceptable_answers": [
+        "71 to 73"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the specificity of the ADDS? (Note: Enter the answer as a numeric percentage value rounded to two decimal places without the % symbol. For example, if your answer is “10.256 %”, enter it as “10.26”)"
+        }
+      ],
+      "numerical_answer": 30.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the sensitivity of the ADDS? (Note: Enter the answer as a numeric percentage value rounded to two decimal places without the % symbol. For example, if your answer is “10.256 %”, enter it as “10.26”)"
+        }
+      ],
+      "numerical_answer": 90.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many decision variables are present in the standard form of the primal for the given problem? (Note: Enter the answer rounded to two decimal places. For example, if the answer is “1.234”, then enter it as “1.23”)"
+        }
+      ],
+      "numerical_answer": 5.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Based on the standard form of the primal, how many decision variables will be present in the dual formulation? (Note: Enter the answer rounded to two decimal places. For example, if the answer is “1.234”, then enter it as “1.23”)"
+        }
+      ],
+      "numerical_answer": 11.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Say the owner purchases 700 Apples, 800 Bananas, 500 Oranges, 500 Mangoes and 600 Guavas. Then how many constraints in the standard form of the primal will be binding? (Note: Enter the answer rounded to two decimal places. For example, if the answer is “1.234”, then enter it as “1.23”)"
+        }
+      ],
+      "numerical_answer": 2.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Say the owner purchases 700 Apples, 800 Bananas, 500 Oranges, 500 Mangoes and 600 Guavas. Then what is the value of the objective function? (Note: Enter the answer rounded to two decimal places. For example, if the answer is “1.234”, then enter it as “1.23”) Question Id : 6406531828406 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix You perform a Chi-square Test of Independence on a contingency table with 6 rows and 7 columns. The value of the computed test statistic is 30.24. Given this information and the Figure-1 below. Answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "36388 to 36402"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "At a 5% confidence level, what is the value of the tabulated test statistic? (Note: If your answer is in decimal, enter it rounded to two decimal places. For example, if your answer is “10.256”, enter it as “10.26”)"
+        }
+      ],
+      "acceptable_answers": [
+        "18.48 to 18.50"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Based on Figure-1, up to what (maximum) level of significance will the null hypothesis be rejected? (Note: Enter the answer as a numeric percentage value rounded to two decimal places without the % symbol. For example, if your answer is “10.256 %”, enter it as “10.26”)"
+        }
+      ],
+      "numerical_answer": 50.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the elasticity of the curve? (Note: If your answer is in decimal, enter it rounded to two decimal places. For example, if your answer is “10.256”, enter it as “10.26”)"
+        }
+      ],
+      "acceptable_answers": [
+        "0.33 to 0.37"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the value of the “constant” in the non-linear demand response curve function? (Note: If your answer is in decimal, enter it rounded to two decimal places. For example, if your answer is “10.256”, enter it as “10.26”)"
+        }
+      ],
+      "acceptable_answers": [
+        "17298 to 17304"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ]
+}

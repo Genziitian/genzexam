@@ -1,0 +1,120 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Sept 25 Quiz2",
+  "subject": "Machine Learning Foundations",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider a matrix of shape . The SVD of is given by . The columns of are the left singular vectors and the columns of are the right singular vectors. The following details are given: • The first left singular vector is • The first right singular vector is • The first singular value is Find ."
+        }
+      ],
+      "acceptable_answers": [
+        "3.9 to 4.1"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Suppose . What is the value of when is minimum? Question Id : 6406531828169 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix For each sub-question, answer whether it is true or false. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "63.9 to 64.1"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Enter the value of ."
+        }
+      ],
+      "acceptable_answers": [
+        "-0.1 to 0.1"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Enter the value of ."
+        }
+      ],
+      "acceptable_answers": [
+        "-1.1 to -0.9"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Starting at , run two steps of gradient descent with learning rate to obtain . If , enter the value of correct to two places after the decimal. Note that the sequence of iterates will be: ."
+        }
+      ],
+      "acceptable_answers": [
+        "0.35 to 0.37"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "For what value of will gradient descent reach the minimum after exactly one step? Enter your answer correct to one decimal place."
+        }
+      ],
+      "acceptable_answers": [
+        "0.49 to 0.51"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If the covariance matrix of the dataset is , find ."
+        }
+      ],
+      "acceptable_answers": [
+        "1.9 to 2.1"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If the unit-norm eigenvector corresponding to the largest eigenvalue of is , find ."
+        }
+      ],
+      "acceptable_answers": [
+        "3.9 to 4.1"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ]
+}

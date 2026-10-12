@@ -1,0 +1,92 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Jan 2023 Endterm",
+  "subject": "Business Data Management",
+  "section": "endterm",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Availability - _______%"
+        }
+      ],
+      "acceptable_answers": [
+        "70 to 73"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Performance ________%"
+        }
+      ],
+      "acceptable_answers": [
+        "85 to 87"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Quality ________%"
+        }
+      ],
+      "acceptable_answers": [
+        "92.5 to 94"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "OEE _______ (Enter a number between 0 and 1 up to 3 decimal places) Question Id : 640653564406 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Answer the given subquestions concerning the Hobbing process of gear manufacturing? Total Output of Gear Casts after Broaching: 2300 Cost of Broaching: INR 27 per Gear cast, Raw Material Cost: INR 43 per Gear Cast Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "0.560 to 0.583"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Scrap Percentage after broaching process__________________%"
+        }
+      ],
+      "acceptable_answers": [
+        "3.15 to 3.25"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Loss due to scrap after broaching_________________________"
+        }
+      ],
+      "acceptable_answers": [
+        "5050 to 5300"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ]
+}

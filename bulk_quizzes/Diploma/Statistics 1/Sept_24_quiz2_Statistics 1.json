@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Sept 24 Quiz2",
+  "subject": "Statistics 1",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In a school, there are 3 students in section-A, 4 students in section-B and 5 students in section-C. Find the number of ways, in which 8 students can be selected such that it includes at least 2 students from each section and at most 5 students from the total 7 students in section-A and section-B."
+        }
+      ],
+      "numerical_answer": 270.0,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the probability that a black pair of balls is chosen? (Enter the answer correct to two decimal places.)"
+        }
+      ],
+      "acceptable_answers": [
+        "0.04 to 0.10"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the probability that they are of same colour? (Enter the answer correct to two decimal places.) Question Id : 6406531021454 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "0.24 to 0.30"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    }
+  ]
+}

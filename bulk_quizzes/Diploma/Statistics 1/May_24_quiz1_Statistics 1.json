@@ -1,0 +1,87 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "May 24 Quiz1",
+  "subject": "Statistics 1",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the value of x? Enter the answer correct to two decimal places."
+        }
+      ],
+      "acceptable_answers": [
+        "0.23 to 0.27"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the population covariance between X and Y for the dataset given in Table Q.2. Question Id : 640653827978 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix The marks (out of 100) scored by Manoj in a semester exam are given as 60, 70, 65, 75, 80. If Nitin has scored 5 marks more than Manoj in each subject. Based on the given information, answer the subquestions. Sub questions"
+        }
+      ],
+      "numerical_answer": 0.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the mean of the marks scored by Nitin."
+        }
+      ],
+      "numerical_answer": 75.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Calculate the correlation coefficient between the marks scored by Manoj and Nitin. Question Id : 640653827982 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Based on the above data, answer the given subquestions Sub questions"
+        }
+      ],
+      "numerical_answer": 1.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What will be the median age for this group?"
+        }
+      ],
+      "numerical_answer": 31.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many people are above 23 years of Age in the given stem and leaf plot?"
+        }
+      ],
+      "numerical_answer": 8.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ]
+}

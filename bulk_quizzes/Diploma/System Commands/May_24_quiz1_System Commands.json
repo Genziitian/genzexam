@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "May 24 Quiz1",
+  "subject": "System Commands",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Answers Case Sensitive : No Clear Response : No Section Maximum Duration : 0 Section Minimum Duration : 0 Section Time In : Minutes Maximum Instruction Time : 0"
+        }
+      ],
+      "acceptable_answers": [
+        "example.org CT Section Id : 64065359350 Section Number : 11"
+      ],
+      "marks": 8,
+      "difficulty": "medium"
+    }
+  ]
+}

@@ -1,0 +1,130 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Jan 2023 Quiz2",
+  "subject": "Statistics 2",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Question Id : 640653520997 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Suppose a fair die is thrown twice independently. Let a random variable X denote the number obtained on the first die and a random variable Y denote the number obtained on the second die. Define Z =| 7 − X − Y |. Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "numerical_answer": 12.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the value of k."
+        }
+      ],
+      "numerical_answer": 6.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the value of P (|X − 0.5| ≤ 0.25). Enter the answer correct to two decimal places. 30% of the total candidates in a competitive exam were boys and 70% were girls. The distribution of the marks of the boys is Normal(60,36) and the distribution of the marks of the girls is Normal(55,49). Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "0.66 to 0.72 Question Id : 640653521007 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the value of c. Enter the answer correct to one decimal place."
+        }
+      ],
+      "acceptable_answers": [
+        "0.48 to 0.52"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the probability that the amount of petrol sold in a given week is less than half the amount stocked in that week. Enter the answer correct to two decimal places. In a manufacturing company, each machine produces 600 bottles daily. If a bottle is selected uniformly at random, then the probability that the bottle is of good quality is 60%. Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "0.23 to 0.27 Question Id : 640653521013 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Using the Central Limit Theorem, find the approximate probability that a machine will produce more than 370 bottles that are of good quality on a particular day. Enter the answer correct to two decimal places. Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "0.17 to 0.23 Question Id : 640653521016 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the expected value of Y . Clear Response : Maximum Instruction Time : 0"
+        }
+      ],
+      "acceptable_answers": [
+        "2 CT Section Id : 64065333931 Section Number : 3"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the procedure doSomething given below. If C = [3, 4, 1, 9, 5, 3, 1, 9] and B = doSomething(C), what would be the value of first(B)?"
+        }
+      ],
+      "numerical_answer": 1.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following pseudocode where Y is a row in the \"Words\" table. At the end of the execution, what will be the value of length(keys(alphaDict)) if Y.Word is \"think\"? Question Id : 640653521031 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix The following pseudocode is executed using the \"Words\" dataset. Answer the given subquestions. Sub questions"
+        }
+      ],
+      "numerical_answer": 6.0,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium"
+    }
+  ]
+}

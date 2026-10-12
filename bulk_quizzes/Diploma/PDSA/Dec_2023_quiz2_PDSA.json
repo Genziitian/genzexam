@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Dec 2023 Quiz2",
+  "subject": "PDSA",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the maximum possible height of an AVL tree containing 15 nodes? Consider that an AVL tree with a single node has a height of 1."
+        }
+      ],
+      "numerical_answer": 5.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    }
+  ]
+}

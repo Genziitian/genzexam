@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Sept 2023 Quiz1",
+  "subject": "Machine Learning Foundations",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the length of the error vector e =b − p, where p is the projection of b onto U. Enter the answer correct to two decimal places."
+        }
+      ],
+      "acceptable_answers": [
+        "3.70 to 3.78"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ]
+}

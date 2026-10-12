@@ -1,0 +1,405 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Week 1 Graded Assignment",
+  "subject": "Statistics 1",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the sample and population."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The sample consists of all the engineering institutes of India and the population consists of randomly selected four IITs of India."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The sample consists of all the IITs of India and the population consists of all the engineering institutes of India."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The sample consists of all IITs of India and the population consists of randomly selected four IITs of India."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The sample consists of four randomly selected IITs of India and the population consists of all the engineering institutes of India."
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "By definition, population is the entire collection of elements we are interested in. Here, the purpose of the survey is to know the status of campus placements of B.Tech stu- dents in different engineering institutes of India. Hence, the population will be all the engineering institutes of India. Also, sample is a subset of the population which is being studied. Since, the four IITs of India is selected to know the status of campus placement. Therefore, sample is four randomly selected IITs of India. Thus, the sample consists of four randomly selected IITs of India and the population consists of all the engineering institutes of India. Hence, option (d) is correct."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The report given by an analyst to the education minister about the status of campus placements states that “The campus placement of B.Tech students is 95% in the different engineering institutes of India”. The given statement of analyst is based on which kind of statistical analysis?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Descriptive Statistics"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Inferential Statistics"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "1 Making conclusions from the sample data comes under inferential statistics. Here, ana- lyst makes the conclusion in the report that “The campus placement of B.Tech students is 95% in the different engineering institutes of India” based on the information of four randomly selected IITs of India. Therefore, the study is inferential statistics. Hence, option (b) is correct."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Is the conclusion of this study made by analyst on the basis of chosen sample reliable?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Yes"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "No"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following statements is/are true?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Inorganic is a case and Types of Fertilizers is a variable."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Rice is a case."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Manure is a case."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Amount of fertilizers is a variable. 2 (e) Nitrogen is a variable."
+          }
+        ]
+      ],
+      "correct_answers": [
+        2,
+        3
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Here, the specification data of the five different types of fertilizers used by farmers of a village are collected. So each specification (columns of the table) i.e. Fertilizers, Types of Fertilizers, Area of fields(In acres), Types of Crops and Amount of fertilizers(In Kg) is a variable. Observation is an individual data point for which the entire data is being collected. So, here each value corresponding to which each of the specification noted is a case. Thus, it is clear that Manure is a case. Hence, options (c) and (d) are correct."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the scale of measurement of “Types of Crops”?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Ordinal Scale"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Nominal Scale"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Interval Scale"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Ratio Scale"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Types of Crops is a categorical variable and it has four different categories of crops, i.e., Rice, Wheat, Potato and Pulse which are just labels. Since, there is no particular order among the types of crops. Therefore, it has nominal scale of measurement. Hence, option (b) is correct."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What kind of variable is “Area of fields”?(More than one option can be correct)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Categorical"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Numerical"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Discrete"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Continuous"
+          }
+        ]
+      ],
+      "correct_answers": [
+        1,
+        3
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Since Area of fields has numeric properties and can have arithmetic operations performed on it, it follows that Area of fields is a numerical variable. Moreover, it can take any value greater than 0 and have to measure in acres. Therefore, Area of fields is a contin- uous numerical variable. Hence, options (b) and (d) are correct. 3"
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the scale of measurement of “Amount of Fertilizers”?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Ordinal Scale"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Nominal Scale"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Interval Scale"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Ratio Scale"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Amount of Fertilizers can have a meaningful interval. It also has an absolute zero. Hence, it comes under the ratio scale of measurement. Hence, option (d) is correct."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Is the data given in Table 1.1.G structured or unstructured?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The data is structured"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The data is unstructured"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Since the data of the five types of fertilizers used by farmers of a village can be organized in a well-defined tabular form. Therefore, it comes under the structured data. Hence, option (a) is correct."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The data of Netflix subscribers at the end of year 2020 across different Asian countries is recorded. Based on this, choose the correct option:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "It is time series data"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "It is cross-sectional data"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Since the data of Netflix subscribers are recorded across different Asian countries at a same time (i.e., at the end of year 2020), not at different time-intervals. Therefore, the data collected is cross-sectional data. Hence, option (b) is correct."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the incorrect statement(s):"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Stock price of Titan is numeric and continuous variable."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of assignments submitted by a student has an interval scale of measure- ment."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Soccer positions (i.e. Defender, Midfielder, Forward) has an ordinal scale of mea- surement. 4"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The education level of a person has a nominal scale of measurement."
+          }
+        ]
+      ],
+      "correct_answers": [
+        1,
+        2,
+        3
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Since stock price of Titan has numeric properties and can have arithmetic operations performed on it, it follows that Stock Price of Titan is a numerical variable. Moreover, it can take any value (any non-negative value). Therefore, Stock price of Titan is a numeric and continuous variable. Therefore, option(a) is correct. Number of assignments submitted by a student can have a meaningful interval. It also has an absolute zero. Hence, it comes under the ratio scale of measurement. Therefore, option(b) is incorrect. Soccer positions (i.e. Defender, Midfielder, Forward) are just labels. There is no par- ticular order among positions. Thus, it has nominal scale of measurement. Therefore, option(c) is incorrect. There is a particular order in the education level of a person like 12 th, Undergraduate, graduate etc. Thus, it has an ordinal scale of measurement. Therefore, option(d) is incorrect. Hence, options(b), (c) and (d) are correct. 5"
+        }
+      ]
+    }
+  ],
+  "week": 1
+}

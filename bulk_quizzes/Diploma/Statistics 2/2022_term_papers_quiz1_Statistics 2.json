@@ -1,0 +1,146 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "2022 term papers Quiz1",
+  "subject": "Statistics 2",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A coin is biased so that the probability of obtaining a head is 0.75. The coin is tossed four times and number of heads obtained is given by X. Find Var(X). Enter the answer correct to two decimal places."
+        }
+      ],
+      "numerical_answer": 0.75,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Question Id : 640653345158 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Calculator : None Response Time : N.A Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "numerical_answer": 1.7,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In a book store, there are two types of books (Type 1 and Type 2). Let X denote the number of books of Type 1 that is sold in a week. Let Y denote the number of books of Type 2 that is sold in a week. Suppose X and Y follows the Poisson distribution with parameters 2 and 3, respectively. Let Z denote the total number of books of Type 1 and Type 2 sold in a week. Assume that X and Y are independent. Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "3 Question Id : 640653345161 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Calculator : None Response Time : N.A"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the value of P(X = 1|Z = 5). Enter the answer correct to two decimal places. Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "0.24 to 0.27 Question Id : 640653345165 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Calculator : None Response Time : N.A"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let X denote the number of products delivered to a fixed destination using a drone. There are problems with either too many or too few products to the destination. Assume E[X] = 2000,Var(X) = 100. Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "0.82 to 0.84 Question Id : 640653345168 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Calculator : None Response Time : N.A"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Use Markov’s inequality to find an upper bound on P(X ≥ 2040). Enter the answer correct to two decimal places."
+        }
+      ],
+      "acceptable_answers": [
+        "0.98 to 0.99"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Use Chebyshev’s inequality to find a lower bound on P(1988 < X < 2012). Enter the answer correct to two decimal places. During an IPL cricket match, amount of time (in minutes) Jadeja bats follows the exponential distribution with an expected time of 50 minutes. Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "0.30 to 0.31 Question Id : 640653345171 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Calculator : None Response Time : N.A"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the probability that Jadeja will bat for more than 40 minutes? Enter the answer correct to two decimal places."
+        }
+      ],
+      "acceptable_answers": [
+        "0.44 to 0.46"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the probability that Jadeja will bat for more than 60 minutes given that he has already batted for more than 40 minutes? Enter the answer correct to two decimal places."
+        }
+      ],
+      "acceptable_answers": [
+        "0.66 to 0.68"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Clear Response : Yes Maximum Instruction Time : 0"
+        }
+      ],
+      "acceptable_answers": [
+        "50 CT Section Id : 64065321854 Section Number : 3"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    }
+  ]
+}

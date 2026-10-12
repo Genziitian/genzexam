@@ -1,0 +1,233 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Week 1 Graded Assignment",
+  "subject": "English 1",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Mark the appropriate response. Deepthi is not here. Could you please _________."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Speak up"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Hang up"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Hang on"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Ring her later"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "When someone says “Your voice is echoing” it becomes evident the voice is resurfacing and hence the tele-conversation is not clear."
+        }
+      ],
+      "acceptable_answers": [
+        "True The statement above defines the answer to the question."
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The phrase „speak up‟ means to tone down the voice."
+        }
+      ],
+      "acceptable_answers": [
+        "False The meaning of ‘speak up’ is explained in detail in Que:1."
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "That is not ---- university, it is a college."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "an"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "a"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The phrase „hang on‟ (in the context of telephonic conversations) means to wait."
+        }
+      ],
+      "acceptable_answers": [
+        "True The meaning of ‘hang on’ is explained in detail in Que:1."
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In a formal call, the use of the phrase „what‟s up‟ should be refrained. (True)"
+        }
+      ],
+      "acceptable_answers": [
+        "True ‘What's up’ is an informal usage."
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Geetha, while speaking to Mary (on the phone) hears vibrating noise. Choose the best appropriate sentence that Geeta should use to convey the problem."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Your voice is echoing."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Your voice is jarring."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "You have to speak up."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "You are not audible."
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The phrase „pick up‟ (in the context of a telephonic conversation) means to answer the call. (True)"
+        }
+      ],
+      "acceptable_answers": [
+        "True The statement above defines the answer to the question."
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How do you pronounce the word „heat‟?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Hiit (with the long vowel ii pronounced as ee)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Hit (with the short vowel i pronounced as e)"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How do you pronounce the word class?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "With the long vowel aa (claas)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "With the short vowel a (clas)"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "week": 1
+}

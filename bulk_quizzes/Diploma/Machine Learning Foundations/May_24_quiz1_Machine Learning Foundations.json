@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "May 24 Quiz1",
+  "subject": "Machine Learning Foundations",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the value of α + 2β."
+        }
+      ],
+      "numerical_answer": 3.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    }
+  ]
+}

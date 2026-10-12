@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "May 2024 Endterm",
+  "subject": "Machine Learning Foundations",
+  "section": "endterm",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the minimum cost price of the products."
+        }
+      ],
+      "numerical_answer": 80.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A farmer has 120 meters of fencing and wants to fence off a rectangular field that borders a straight river. The farmer does not need to fence along the river. Find the maximum possible fenced area of the field."
+        }
+      ],
+      "numerical_answer": 1800.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Suppose a random variable X has a mean μ of 70 and a standard deviation σ of 8. Using Chebyshev’s inequality, determine the maximum probability that X will deviate from the mean by more than 16 units. Enter the answer correct to two decimal places."
+        }
+      ],
+      "numerical_answer": 0.25,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    }
+  ]
+}

@@ -1,0 +1,323 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Week 8 Practice Assignment",
+  "subject": "Mathematics 1",
+  "section": "practice",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Table M2W2P1 gives functions in Column A with the equation of their tangents at the origin (0, 0) in column B and the plotted graphs and tangents in Column C. Function It’s tangent at (0,0) Graph (Column A) (Column B) (Column C) i) f(x) = xex a) y =−2x 1) −2 −1 1 2 −4 −2 2 4 6 ii) f(x) = e−2x− 1 b) y = x 2) −2 −1 1 2 −0.6 −0.4 −0.2 iii) f(x) = e−x2− 1 c) y = 0 3) −2 −1 1 2 −2 −1 1 2 Table: M2W2P1 Based on the given Table M2W2P1, Choose the options which represent the correct matching of a given function with its tangent at (0,0) and its graph."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Option 1: i)→ b)→ 3)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Option 2: ii) → c)→ 2)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Option 3: iii)→ c)→ 2)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Option 4: iii) → b)→ 3)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Option 5: ii)→ a)→ 1)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Option 6: i) → a)→ 1) Solution:"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the graphs given below: −4 −2 2 4 −1 −0.5 0.5 Figure: Curve 1 −3 −2 −1 1 2 3 0.2 0.4 0.6 0.8 Figure: Curve 2 −2 −1 1 2 5 10 15 Figure: Curve 3 −4 −2 2 4 4.5 5 5.5 6 Figure: Curve 4 Choose the set of correct options:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Option 1: There are at least two points on Curve 1, where the derivatives of the function corresponding to Curve 1, are equal."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Option 2: At the origin the derivative of the function corresponding to Curve 2 does not exist."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Option 3: The derivative of the function corresponding to Curve 3, at the origin and at the point (−2, 0) are the same. 4"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Option 4: The derivative of the function corresponding to Curve 4 does not exist at any point. Solution: Option 1: There are at least two points on Curve 1, where the derivatives of the func- tion corresponding to Curve 1, are equal. As it is shown in the ﬁgure, the straight line y =−1 is tangent at two point of the curve. So at those two points on Curve 1, the derivatives of the function corresponding to Curve 1, as slope of the tangents at those two points are the same. Option 2: At the origin the derivative of the function corresponding to Curve 2 does not exist. Curve 2 has a sharp corner at x = 0, which shows the derivative of the function corre- sponding to Curve 2 does not exist.That’s why option 2 is correct. Option 3: The derivative of the function corresponding to Curve 3, at the origin and at the point (−2, 0) are the same. At origin the derivative of the function corresponding to Curve 3 is zero as the X-axis is the tangent of the curve at the origin. But at x =−2 the tangent is not parallel to the X-axis, hence the slope of the tangent at x =−2 must be diﬀerent from 0. So the derivative of the function corresponding to Curve 3, at the origin and at the point (−2, 0) are not the same. Option 4: The derivative of the function corresponding to Curve 4 does not exist at any point. The function corresponding to Curve 4 is a constant function, therefore, the derivative of the function corresponding to Curve 4 always exists and is 0. 5"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let f be a function and the Figure M2W2P1 represent the graph of function f. The solid points denote the value of the function at the points, and the values denoted by the hollow points are not taken by the functions. −2 2 4 6 8 10 −5 5 10 Figure: M2W2P1 Choose the set of correct options."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Option 1: lim t→2− f(t) = 10"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Option 2: lim t→2+ f(t) = 5"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Option 3: lim t→6− f(t) = 10"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Option 4: lim t→6+ f(t) = 10"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Option 5: f is continuous at x = 2."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Option 6: f is continuous at x = 4 Solution: We can see that the curve is discontinuous at t = 2 and t = 6 only. As t is approaching to 2 from left side, f is approaching to the value 10, which means the LHL (left hand limit) i.e., t→ 2− is 10. As t is approaching to 2 from right side, f is approaching to the value 5, which means the RHL (right hand limit) i.e., t→ 2+ is 5. Hence limit at the function f does not exist at t = 2. So f is discontinuous at t = 2. Similar explanation can be given for t = 6. 6"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Deﬁne a function f as follows: f(x) =    x3 if x > 1, x2 if 0 < x≤ 1 x if x < 0, 0 if x = 0 Choose the set of correct options."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Option 1: f is continuous, but not diﬀerentiable at x = 1."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Option 2: f is both continuous and diﬀerentiable at x = 1."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Option 3: f is continuous, but not diﬀerentiable at x = 0."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Option 4: f is both continuous and diﬀerentiable at x = 0."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Option 5: f is not continuous at x = 0."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Option 6: f is not continuous at x = 1. Solution: For x = 1: Left Hand Limit: lim x→1− f(x) = lim x→1− x2 = 1 Right Hand Limit: lim x→1+ f(x) = lim x→1+ x3 = 1 Moreover f(1) = 1. Hence lim x→1− f(x) = lim x→1+ f(x) = f(1) = 1 Therefore, the function is continuous at x = 1. For diﬀerentiability at x = 1: lim h→0+ f(1 + h)− f(1) h = limh→0+ (1 + h)3− 1 h = limh→0+ (1 + h3 + 3h2 + 3h)− 1 h lim h→0+ h3 + 3h2 + 3h h = limh→0+(h2 + 3h + 3) = 3 Similarly, lim h→0− f(1 + h)− f(1) h = limh→0+ (1 + h)2− 1 h = limh→0+ (1 + h2 + 2h)− 1 h 7 lim h→0+ h2 + 2h h = limh→0+(h + 2) = 2 Hence, lim h→0+ f(1 + h)− f(1) h ⁄= limh→0− f(1 + h)− f(1) h So lim h→0 f (1+h)−f (1) h does not exist. Therefore the function f is not diﬀerentiable at x = 1. Similar argument can be given for x = 0. 8"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let f and g be two real valued functions deﬁned as: f : R→ R f(x) = ex− 1 g : R→ R g(x) = x Choose the set of correct options."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Option 1: The linear function ex− 1 is the best linear approximation of the function f(x) at the point x = 1."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Option 2: In this case, lim x→0 f (x) g(x) = lim x→0 f (x) lim x→0 g(x)."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Option 3: In this case, ( f + g) (where, ( f + g)(x) is deﬁned by f(x) + g(x)) is continuous at x = 0."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Option 4: lim x→0 f(x)g(x) = 0. Solution: Given, f(x) = ex− 1 The linear approximation for this function at x = 1 would be y = f′(1)(x− 1) + f(1) = e1(x− 1) + e1− 1 = ex− 1 In option 2 given, lim x→0 f(x) g(x) = lim x→0 f(x) lim x→0 g(x) LHS: lim x→0 f(x) g(x) = limx→0 ex− 1 x This is 0 divided by 0 case, therefore, we can use L’Hˆ opital’s rule, LHS = lim x→0 f′(x) g′(x) = limx→0 ex 1 = 1 Now RHS = lim x→0 f(x) lim x→0 g(x) 9 RHS = lim x→0 ex−1 lim x→0 x is in indeterminate form, as both the numerator and denominator are 0. Therefore, LHS⁄= RHS In option 3, (f + g)(x) = ex− 1 + x LHL = lim x→0− (f + g)(x) = lim x→0− (ex− 1 + x) = 0 RHL = lim x→0+ (f + g)(x) = lim x→0+ (ex− 1 + x) = 0 (f + g)(0) = 0 Therefore, (f + g)(x) is continuous at x = 0. In option 4, lim x→0 f(x)g(x) = lim x→0 (ex− 1)(x) = 0 10 2 Numerical Answer Type (NAT)"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If the functions f(t) and g(t) denoting the proﬁts of Company A and Company B, respectively, are known to be continuous at t = 3, then which of the following options is(are) true? (MSQ)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Option 1: n = 3"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Option 2: n = 2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Option 3: m = 2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Option 4: m = 3 Solution: Given, f(t) = { (t−2)n−1 t−3 if 0≤ t < 3, ⌊t⌋ if t≥ 3 For f(t) to be continuous at t = 3, lim t→3− f(t) = lim t→3+ f(t) = f(3) lim t→3− f(t) = lim t→3− (t− 2)n− 1 t− 3 Using L’Hospital rule we get, lim t→3− n(t− 2)(n−1) 1 = n Further we have, lim t→3+ f(t) = lim t→3+ ⌊t⌋ = 3 12 Hence we have n = 3 = f(3). Now, g(t) = { t3−33 t−3 if 0≤ t < 3, 3tm if t≥ 3 For g(t) to be continuous at t = 3, lim t→3− g(t) = lim t→3+ g(t) = g(3) lim t→3− g(t) = lim t→3− t3− 33 t− 3 Using L’Hospital rule we get, lim t→3− 3t2 1 = 27 Further we have, lim t→3+ g(t) = lim t→3+ 3tm = 3(m+1) Again we have f(3) = 3(m+1). Therefore, 3(m+1) = 27 =⇒ m + 1 = 3 =⇒ m = 2. So, options (1) and (3) are correct. 13"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Assuming g to be continuous at t = 3, choose the set of correct options. (MSQ)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Option 1: lim t→3− g(t)−g(3) t−3 = 18"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Option 2: lim t→3+ g(t)−g(3) t−3 = 18"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Option 3: lim t→3+ g(t)−g(3) t−3 = 9"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Option 4: lim t→3− g(t)−g(3) t−3 = 9"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Option 5: g is not diﬀerentiable at t = 3."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Option 6: g is diﬀerentiable at t = 3. Solution: As g is continuous at t = 3, we have g(t) = { t3−33 t−3 if 0≤ t < 3, 3t2 if t≥ 3 lim t→3− g(t)− g(3) t− 3 = limt→3− t3−33 t−3 − (3× 32) t− 3 lim t→3− g(t)− g(3) t− 3 = limt→3− t3− 27− 27t + 81 (t− 3)2 Using L’Hospital rule two times consecutively, lim t→3− g(t)− g(3) t− 3 = limt→3− 3t2− 27 2(t− 3) = limt→3− 6t 2 = 9 So, option 4 is correct. Similarly we can calculate, lim t→3+ g(t)− g(3) t− 3 = limt→3+ 3t2− 27 t− 3 = limt→3+ 6t 1 = 18 So, option 2 is correct. As, lim t→3− g(t)− g(3) t− 3 ⁄= limt→3+ g(t)− g(3) t− 3 , g is not diﬀerentiable at t = 3. So, option 5 is correct. 14"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ],
+  "week": 8
+}

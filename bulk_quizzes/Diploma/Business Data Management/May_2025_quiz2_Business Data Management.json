@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "May 2025 Quiz2",
+  "subject": "Business Data Management",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Determine the percentage change in total revenue when income increases from Rs 15000 to Rs 25000. (upto 3 decimals, hint : if your ans is 98% then enter 0.98 as your answer). Income level 1 1) Income = Rs 15,000 2) Qty demanded = 60 units 3) Price per qty = Rs 40 Income level 2 1) Income = Rs 25,000 2) Qty demanded = 90 units 3) Price per qty = Rs 38"
+        }
+      ],
+      "numerical_answer": 0.425,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Question Id : 6406531325323 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "0.77 to 0.81"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "After how many days should you trigger a re-order Question Id : 6406531325326 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Sub questions"
+        }
+      ],
+      "numerical_answer": 6.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ]
+}

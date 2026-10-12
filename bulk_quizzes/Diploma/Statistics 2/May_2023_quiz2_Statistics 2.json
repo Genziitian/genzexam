@@ -1,0 +1,91 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "May 2023 Quiz2",
+  "subject": "Statistics 2",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the probability that rainfall in the local area will be at most 10 inches? (Enter the answer correct to 3 decimal places) Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "0.388 to 0.398 Question Id : 640653587466 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "0.75 Question Id : 640653587469 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix"
+      ],
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the value of c. Enter the answer correct to two decimal places."
+        }
+      ],
+      "numerical_answer": 0.25,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the probability that the pressure change during the chemical process is more than 0.5, given that the temperature change is equal to 0.5? Enter the answer correct to two decimal places. Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "0.92 to 0.96 Question Id : 640653587472 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In a large city, it is expected that 10% of children have defective eye-sight. Suppose a random sample of 300 children is selected from the city. Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "0.014 to 0.02 Question Id : 640653587475 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Using the Central Limit Theorem, find the approximate probability that in a random sample of 300 selected children at least 30 will have defective eye-sight. Enter the answer correct to 1 decimal place. Clear Response : Yes Maximum Instruction Time : 0"
+        }
+      ],
+      "acceptable_answers": [
+        "0.5 CT Section Id : 64065339740 Section Number : 4"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    }
+  ]
+}

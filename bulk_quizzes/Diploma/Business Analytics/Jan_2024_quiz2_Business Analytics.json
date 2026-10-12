@@ -1,0 +1,214 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Jan 2024 Quiz2",
+  "subject": "Business Analytics",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Say a demand response curve is modelled as a constant elasticity curve. If Q1 is 2400 units, Q2 is 1500 units, P1 is Rs. 100 and P2 is Rs. 200, then what is the elasticity of the curve? (Note: Enter the answer rounded to two decimal places. For example, if the answer is “1.234”, then enter it as “1.23”) Question Id : 640653771241 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix A parts supplier must assign supply from 5 warehouses (W1, W2, W3, W4 and W5) to 3 customers (C1, C2 and C3), such that the total demand of 300 units for the three customers is satisfied. The warehouse capacities are 85, 55, 75, 65 and 40, for W1, W2, W3, W4 and W5 respectively. A warehouse can supply any number of customers. The cost to supply a customer from a given warehouse is provided in Table-1.Given this information, answer the subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "0.66 to 0.70"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many decision variables are present in the standard primal formulation of the given problem?"
+        }
+      ],
+      "acceptable_answers": [
+        "1 15"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many constraints are present in the standard primal formulation of the given problem? (Note: Exclude the count of non-negativity constraints when you input your answer)"
+        }
+      ],
+      "acceptable_answers": [
+        "3 7"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If W1 supplies 75 units, W2 supplies 55 units, W3 supplies 75 units, W4 supplies 60 units and W5 supplies 35 units, then how many decision variables in the dual will have a non-zero value? (Note: Enter your answer after you formulate the dual based on the standard form of the primal) Milo’s Motors (MM) is a motorcycle brand that manufactures electric two wheelers. MM wants to understand the relationship between “Mileage”, “Storage space” and “Charging Time in Minutes” on “Sales volume”. The owner of the company, Dr. Milo, only has half-baked knowledge of regression. Hence, several regression models (Model-1, Model-2, Model-3, Model-4, Model-5, Model-6, Model-7, Model-8, Model-9 and Model-10) which are given below were built on appropriate available data by Dr. Milo.Given this information, answer the subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "4 Question Id : 640653771246 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many observations (rows) are present in the data set used to build Model-1?"
+        }
+      ],
+      "numerical_answer": 19.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the total indirect effect of “Mileage” on “Sales Volume”? (Note: Enter the answer rounded to two decimal places. For example, if the answer is “1.234”, then enter it as “1.23”)"
+        }
+      ],
+      "acceptable_answers": [
+        "-37.0 to -36.0"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the value of the “T-statistic” associated with the intercept in Model-3? (Note: Enter the answer rounded to two decimal places. For example, if the answer is “1.234”, then enter it as “1.23”)"
+        }
+      ],
+      "acceptable_answers": [
+        "9.30 to 9.40"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the adjusted R-Square value for Model-10? (Note: Enter the answer rounded to two decimal places. For example, if the answer is “1.234”, then enter it as “1.23”)"
+        }
+      ],
+      "acceptable_answers": [
+        "0.97 to 0.99"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is F-statistic for Model-10? (Note: Enter the answer rounded to two decimal places. For example, if the answer is “1.234”, then enter it as “1.23”)"
+        }
+      ],
+      "acceptable_answers": [
+        "351 to 352"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "At a threshold of 0.7, what is the accuracy of the AI engine? (Note: Enter the answer in “%” rounded to two decimal places without the “%” symbol. For example, if the answer is “1.234%”, then enter it as “1.23”)"
+        }
+      ],
+      "acceptable_answers": [
+        "37 to 39"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "At a threshold of 0.7, what is the precision for “Not Selected” category for the AI engine? (Note: Enter the answer in “%” rounded to two decimal places without the “%” symbol. For example, if the answer is “1.234%”, then enter it as “1.23”)"
+        }
+      ],
+      "acceptable_answers": [
+        "24 to 26"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "At a threshold of 0.7, what is the recall for “Selected” category for the AI engine? (Note: Enter the answer in “%” rounded to two decimal places without the “%” symbol. For example, if the answer is “1.234%”, then enter it as “1.23”)"
+        }
+      ],
+      "acceptable_answers": [
+        "39 to 41"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "At a threshold of 0.4, how many “False Positives” is the AI engine predicting? (Note: Enter the answer rounded to two decimal places. For example, if the answer is “1.234”, then enter it as “1.23”)"
+        }
+      ],
+      "numerical_answer": 2.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "At a threshold of 0.4, how many “False Negatives” is the AI engine predicting? (Note: Enter the answer rounded to two decimal places. For example, if the answer is “1.234”, then enter it as “1.23”)"
+        }
+      ],
+      "numerical_answer": 0.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "At a threshold of 0.4, how many “True Negatives” is the AI engine predicting? (Note: Enter the answer rounded to two decimal places. For example, if the answer is “1.234”, then enter it as “1.23”)"
+        }
+      ],
+      "numerical_answer": 1.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ]
+}

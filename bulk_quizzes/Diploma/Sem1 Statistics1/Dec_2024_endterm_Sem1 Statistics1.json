@@ -1,0 +1,87 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Dec 2024 Endterm",
+  "subject": "Sem1 Statistics1",
+  "section": "endterm",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The average of 15 observations is 48. If the average of the first 8 observations is 42 and the average of the last 8 observations is 54, what is the value of the 8th observation?"
+        }
+      ],
+      "numerical_answer": 48.0,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A certain type of electronic device has a lifetime that follows an exponential distribution with a mean of 500 hours. If the device has already worked for 300 hours without failing, what is the probability that it will continue to function for at least another 200 hours? (Enter the answer correct to 2 decimal accuracy.) Question Id : 6406531039972 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix A university needs to form a research team of 4 students out of total 8 students. Based on the above data answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "0.64 to 0.70"
+      ],
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In how many ways can the team be formed if two particular students must be included?"
+        }
+      ],
+      "numerical_answer": 15.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In how many ways can the team be formed if two particular students must not be included?"
+        }
+      ],
+      "numerical_answer": 15.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In how many different ways can the letters of the word “LEADING” be arranged such that the vowels always come together?"
+        }
+      ],
+      "numerical_answer": 720.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In a survey of 100 people, 60 like tea, 40 like coffee, and 20 like both tea and coffee. What is the probability that a person chosen at random likes either tea or coffee? [Enter the correct answer up to 1 decimal place]"
+        }
+      ],
+      "numerical_answer": 0.8,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ]
+}

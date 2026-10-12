@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "May 2023 Quiz1",
+  "subject": "System Commands",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many background processes are running after the end of execution of the following script?"
+        }
+      ],
+      "numerical_answer": 5.0,
+      "numerical_tolerance": 0.01,
+      "marks": 7,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What will be the output of the following script? Answers Case Sensitive : Yes"
+        }
+      ],
+      "acceptable_answers": [
+        "abcdabcd"
+      ],
+      "marks": 6,
+      "difficulty": "medium"
+    }
+  ]
+}

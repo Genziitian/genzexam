@@ -1,0 +1,356 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Week 1 Graded Assignment",
+  "subject": "Computational Thinking",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What will values of A, B, and C be after the execution of the following procedure using the \"Scores\" dataset? Step 1: Arrange all cards in a single pile called Pile 1 Step 2: Initialize variables A, B, and C to 0 Step 3: If Pile 1 is empty then stop the iteration Step 4: Read the top card in Pile 1 Step 5: If Total >250 then increment A Step 6: If Total > 200 and Total < 250 then increment B Step 7: If Total < 200 then increment C Step 8: Move the current card to another pile called Pile 2 and repeat from Step 3 The value of A is _ _ _ _ ? It is a Numerical Answer Type Question (NAT)."
+        }
+      ],
+      "numerical_answer": 6.0,
+      "numerical_tolerance": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What will values of A, B, and C be after the execution of the following procedure using the \"Scores\" dataset? Step 1: Arrange all cards in a single pile called Pile 1 Step 2: Initialize variables A, B, and C to 0 Step 3: If Pile 1 is empty then stop the iteration Step 4: Read the top card in Pile 1 Step 5: If Total >250 then increment A Step 6: If Total > 200 and Total < 250 then increment B Step 7: If Total < 200 then increment C Step 8: Move the current card to another pile called Pile 2 and repeat from Step 3 The value of B is _ _ _ _ ? It is a Numerical Answer Type Question (NAT)."
+        }
+      ],
+      "numerical_answer": 15.0,
+      "numerical_tolerance": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What will values of A, B, and C be after the execution of the following procedure using the \"Scores\" dataset? Step 1: Arrange all cards in a single pile called Pile 1 Step 2: Initialize variables A, B, and C to 0 Step 3: If Pile 1 is empty then stop the iteration Step 4: Read the top card in Pile 1 Step 5: If Total >250 then increment A Step 6: If Total > 200 and Total < 250 then increment B Step 7: If Total < 200 then increment C Step 8: Move the current card to another pile called Pile 2 and repeat from Step 3 The value of C is _ _ _ _ ? It is a Numerical Answer Type Question (NAT)."
+        }
+      ],
+      "numerical_answer": 8.0,
+      "numerical_tolerance": 0,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The following procedure is executed using the “Scores” dataset. Step 1: Cards are arranged in to a single pile and which is called as Pile 1. Step 2: We are creating 3 new variables called A, B, and C and assigning the value 0 to them. Step 3: Checks whether the iteration has to be continued or not. If the Pile 1 is empty then the iteration has to be stopped. Step 4: The top card of the Pile 1 is taken and read. Step 5: A is incremented if the total score is greater than 250. Step 6: B is incremented if the total score lies between 200 and 250, both 200 and 250 are not included. Step 7: C is incremented if the total score is less than 200. Step 8: Finally, in Step 8, the current card is moved to another called Pile 2 and the procedure is repeated from Step 3. By using the \"Scores\" dataset we find the values of A as 6, B as 15 and C as 8."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following procedure is executed using the “Shopping Bills” dataset. What will X represent at the end of execution? It is a Multiple Choice Question (MCQ). Step 1: Arrange all cards in a single pile called Pile 1 Step 2: Initialize variables A ,B and X to 0 Step 3: If Pile 1 is empty then stop the iteration and execute Step 7 Step 4: Read the top card in Pile 1 Step 5: If the Shop Name is “SV Stores” then add total bill amount to A and increment B Step 6: Move the current card to another pile called Pile 2 and repeat from Step 3 Step 7: Divide A by B and store the result in X"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Total bill amount from “SV Stores”"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of bills from “SV Stores”"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Average of total bill amount from “SV Stores”"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Average of total bill amount from all shops other than “SV Stores”"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The following procedure is executed using the “Shopping Bills” dataset. Step 1: Cards are arranged in to a single pile and which is called as Pile 1. Step 2: We are creating 3 new variables called A, B, and X and assigning the value 0 to them. Step 3: Checks whether the iteration has to be continued or not. If Pile 1 is empty then the iteration has to be stopped. Step 4: The top card of Pile 1 is taken and read. Step 5: Total bill amount is added to A, and B is incremented if the ShopName is \"SV Stores\". That is A is storing the sum of total bill amount from all bills from \"SV Stores\", B is counting the number of bills that are from \"SV Stores\". Step 6: The current card is moved to another called Pile 2 and the procedure is repeated from Step 3. Step 7: This step will be executed only if Pile 1 has become empty. The result of A/B is stored in X. Hence, X represents the average of total bill amount from “SV Stores”."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The given information may have some mistakes with respect to the sanity of data. How many rows are there with no mistakes? It is a Multiple Choice Question (MCQ)."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "4"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "5"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "3"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "6"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Line 4: There is a mistake either in Qty or in Price or in Cost. Line 6: Dustpan given Qty as 1.5 but must be an integer. The rest of the five rows have no mistakes."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following procedure is executed using the “Scores” dataset. January to June and July to December are known as first and second half of the year respectively. When will the value of C be 1? It is a Multiple Choice Question (MCQ). Step 1: Arrange all cards in a single pile called Pile 1 Step 2: Maintain variables A, B, C and initialize them to 0 Step 3: If Pile 1 is empty then stop the iteration and go to Step 8 Step 4: Read the top card in Pile 1 Step 5: If Date of Birth is from 1st January to 30th June then increment A Step 6: If Date of Birth is from 1st July to 31st December then increment B Step 7: Move the current card to another pile called Pile 2 and repeat from Step 3 Step 8: If A < B then set C to 1"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "When there are more students born in the first half than the second half of the year."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "When there are more students born in the second half than the first half of the year."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "When there are an equal number of students born in both, the first and the second half of the year."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "When all students are born in the second half of the year."
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The following procedure is executed using the “Scores” dataset. Step 1: Cards are arranged in to a single pile and which is called as Pile 1. Step 2: We are creating 3 new variables called A, B, and C and assigning the value 0 to them. Step 3: Checks whether the iteration has to be continued or not. If Pile 1 is empty then the iteration has to be stopped. Step 4: The top card of Pile 1 is taken and read. Step 5: A is incremented if Date of Birth lies between 1st January and 30th June, both 1st January and 30th June included. Step 6: B is incremented if Date of Birth lies between 1st July and 31st December, both 1st July and 31st December included. Step 7: The current card is moved to another called Pile 2 and the procedure is repeated from Step 3. Step 8: C is set to 1 if A < B i.e when more students are born in the second half of the year than the first half."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What will the given procedure compute and store in variable X, if executed on the \"Shopping Bills\" dataset? Assume that there are total 3 shops in the dataset. It is a Multiple Choice Question (MCQ). Step 1: Arrange all cards in a single pile called Pile 1 Step 2: Maintain four variables A, B, C, X and initialize them to 0 Step 3: If Pile 1 is empty then stop the iteration and start from Step 9 Step 4: Read the top card in Pile 1 Step 5: If the Shop name is \"SV Stores\" and Customer name is \"Neeraja\" then set A equal to 1 Step 6: If the Shop name is \"Big Bazaar\" and Customer name is \"Neeraja\" then set B equal to 1 Step 7: If the Shop name is \"Sun General\" and Customer name is \"Neeraja\" then set C equal to 1 Step 8: Move the current card to another pile called Pile 2 and repeat from Step 3 Step 9: Update the value of X as X = A + B + C"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Number of bills in the dataset which belong to Neeraja"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of times Neeraja has visited Sun General"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of distinct stores which Neeraja has never visited"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of distinct stores which Neeraja has visited"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The following procedure is executed using the “Shopping Bills” dataset. Step 1: Cards are arranged in to a single pile and which is called as Pile 1. Step 2: We are creating 3 new variables called A, B, C and X and assigning the value 0 to them. Step 3: Checks whether the iteration has to be continued or not. If Pile 1 is empty then the iteration has to be stopped. Step 4: The top card of Pile 1 is taken and read. Step 5: A is set to 1 if the Shop name is \"SV Stores\" and Customer name is \"Neeraja\" Step 6: B is set to 1 if the Shop name is \"Big Bazaar\" and Customer name is \"Neeraja\" Step 7: C is set to 1 if the Shop name is \"Sun General\" and Customer name is \"Neeraja\" Step 8: The current card is moved to another called Pile 2 and the procedure is repeated from Step 3. Step 9: When no more cards are left in Pile 1, the value of X is updated to A+B+C. This will give the number of distinct stores visited by Neeraja."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following procedure is executed using the \"Shopping Bills\" dataset. At the end of the execution, count stores the number of bills generated from \"SV Stores\" with total bill amount more than 500. But the programmer may have made mistakes in one or more steps. Identify all such steps (if any). It is a Multiple Choice Question (MCQ). Step 1: Arrange all cards in a single pile called Pile 1 Step 2: Maintain a variable count and initialize it to 0 Step 3: If Pile 1 is empty then stop the iteration Step 4: Read the top card in Pile 1 Step 5: If Shop Name is \"SV Stores\" and Total Bill Amount > 500 then increment count Step 6: Move the current card to another pile called Pile 2 and repeat from Step 2"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Step 2: Incorrect initialization of the variable count"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Step 3: Incorrect step for stopping the iteration"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Step 5: Incorrect condition to update count"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Step 6: Incorrect step indicated from where the procedure has to be repeated (e) No mistake"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The given information represents a \"Words\" dataset and it may have some mistakes with respect to the sanity of data. Identify all rows with such mistakes. It is a Multiple Select Question (MSQ)."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Row 1: Incorrect data type of card number"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Row 2: Incorrect data type of Word"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Row 3: Incorrect data type of Part of Speech"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Row 3: Invalid value of Part of Speech (e) Row 4: Incorrect data type of Letter Count (f) Row 4: Invalid value of Letter Count"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Row 1: Has incorrect data type for card number. It has to be of integer type, not string. Row 4: Has invalid value of Letter Count. Letter Count cannot be negative."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the “Words” dataset. What will A represent at the end of execution? It is a Multiple Choice Question (MCQ). Step 1: Arrange all cards in a single pile called Pile 1 Step 2: Initialize variable A to 0 Step 3: If Pile 1 is empty then stop the iteration Step 4: Read the top card in Pile 1 Step 5: If the Word ends with a full stop and Part of Speech is “Adjective” then increment A Step 6: Move the current card to another pile called Pile 2 and repeat from Step 3"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Total number of adjective"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Total number of words"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of adjectives which are at the end of a sentence"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of adjectives which are not at the end of a sentence"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The following procedure is executed using the “Words” dataset. Step 1: Cards are arranged in to a single pile and which is called as Pile 1. Step 2: We are creating a new variable A and assigning the value 0 to it. Step 3: Checks whether the iteration has to be continued or not. If Pile 1 is empty then the iteration has to be stopped. Step 4: The top card of Pile 1 is taken and read. Step 5: A is incremented if the word ends with a full stop and Part of Speech is “Adjective”. Step 6: The current card is moved to another called Pile 2 and the procedure is repeated from Step 3. After execution is completed, A will represent the number of adjectives that are at the end of a sentence."
+        }
+      ]
+    }
+  ],
+  "week": 1
+}

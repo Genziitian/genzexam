@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Jan 2024 Endterm",
+  "subject": "System Commands",
+  "section": "endterm",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Answers Case Sensitive : Yes"
+        }
+      ],
+      "acceptable_answers": [
+        "World"
+      ],
+      "marks": 7,
+      "difficulty": "medium"
+    }
+  ]
+}

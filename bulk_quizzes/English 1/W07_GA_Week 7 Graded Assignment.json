@@ -1,0 +1,165 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Week 7 Graded Assignment",
+  "subject": "English 1",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Radha ...... a nurse."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "is"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "will"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "I ....... not a teacher."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "am"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "will"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Sarah did not.......the movie."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "like"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "likes"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "'I go home every week.' This statement has a(n) ....... verb."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Transitive"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Intransitive"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the order of words typically followed in a sentence in the English language?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Subject, Object, Verb"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Subject, Verb, Object"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Object, Verb, Subject"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Verb, Subject, Object"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "“I worked out the question finally.” What is the object in this sentence? e. the question f. finally g. I h. worked"
+        }
+      ],
+      "acceptable_answers": [
+        "a Explanation: “The question” is the object of this sentence."
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "week": 7
+}

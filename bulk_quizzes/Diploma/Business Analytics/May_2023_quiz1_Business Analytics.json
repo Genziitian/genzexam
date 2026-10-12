@@ -1,0 +1,104 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "May 2023 Quiz1",
+  "subject": "Business Analytics",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Suppose a factory manufactures products on three machines A, B and C. Suppose 65% of total output comes from machine A, 30% of total output comes from machine B and 5% of total output comes from machine C. From the past data, it is known that 1% of products by machine A are defectives, 2% of products by machine B are defectives and 10% of products by machine C are defectives. What is the probability that the product has come from machine B, given that it is defective? Question Id : 640653577975 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Say, Table-1 specifies the win results for the teams that batted first during the PARADOX Cricket Games. You are now interested to generate more data on win margins for Teams that bat first during future PARADOX games, which will be used as part of your business proposal to improve the pitch. Accordingly, you are told that the win margins are uniformly distributed between 1 and 10 runs U[1,10] for any given game in the future. Then answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "0.32 to 0.36"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the expected number of runs by which a team batting first will win a game? Note: Round your answer to one decimal point. Example, if your answer is \"1.245\", enter the answer as \"1.2\""
+        }
+      ],
+      "numerical_answer": 5.5,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the value of the computed test statistic? Note: Round your answer to one decimal point. Example, if your answer is \"1.245\", enter the answer as \"1.2\""
+        }
+      ],
+      "acceptable_answers": [
+        "2 to 2.2"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the number of degrees of freedom for the test?"
+        }
+      ],
+      "numerical_answer": 4.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If the p-value for the test is 0.75, then what should be the minimum level of significance needed if we need to conclude that the sample indeed comes from a U[1,10] Note: Round your answer to one decimal point. Example, if your answer is \"1.245\", enter the answer as \"1.2\" Question Id : 640653577981 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Say Table-2, provides the data on the number of enrolments in the three BSc courses for “Male”and “Female” gender students. Given this information, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "0.75 to 0.76"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the value for the computed test statistic? (Note-1: round your final answer to two decimal places. Example: If your answer is “1.2345” enter it as “1.23”)"
+        }
+      ],
+      "acceptable_answers": [
+        "14.00 to 15.00"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the elasticity of demand?"
+        }
+      ],
+      "acceptable_answers": [
+        "0.4 to 0.42"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ]
+}

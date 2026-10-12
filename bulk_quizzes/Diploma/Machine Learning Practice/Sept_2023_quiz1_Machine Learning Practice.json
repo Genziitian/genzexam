@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Sept 2023 Quiz1",
+  "subject": "Machine Learning Practice",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Question Id : 640653669259 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Go through the code snippet given below and answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "0.327 to 0.333"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    }
+  ]
+}

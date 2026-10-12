@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Jan 2023 Quiz1",
+  "subject": "Business Data Management",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Given all this data, calculate the price elasticity of demand of the local baker’s bread loaf (round the answer to 2 decimal places and DO NOT use mid-point method). Give the absolute value of the answer."
+        }
+      ],
+      "acceptable_answers": [
+        "4.29 to 4.40"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Enter the correct answer for Blank (2)"
+        }
+      ],
+      "numerical_answer": 62.5,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ]
+}

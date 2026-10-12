@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "May 2025 Quiz2",
+  "subject": "Machine Learning Foundations",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Question Id : 6406531325166 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "3.45 to 4.05"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    }
+  ]
+}

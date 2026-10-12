@@ -1,0 +1,197 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "May 2023 Quiz2",
+  "subject": "Business Analytics",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many degrees of freedom are present for the “Residuals” in the ANOVA Table?"
+        }
+      ],
+      "numerical_answer": 245.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many total degrees of freedom are present for the fitted model in the ANOVA Table?"
+        }
+      ],
+      "numerical_answer": 249.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If no feature engineering was performed, then how many features were present in the dataset?"
+        }
+      ],
+      "numerical_answer": 4.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The relationship between Demand “D” and Selling Price “P” is given by the equation D(p) = 180 – 6*P. If the intention is to maximize the profit, then what is the optimal selling price if the item is going to be made at Rs. 20 per unit?"
+        }
+      ],
+      "numerical_answer": 25.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Say a demand response curve is modelled as a constant elasticity curve. If Q1 is 2400 units, Q2 is 1500 units, P1 is Rs. 100 and P2 is Rs. 200, then what is the elasticity of the curve? (Note: If your answer is in decimal, enter it rounded to two decimal places. For example, if your answer is “10.256”, enter it as “10.26”)"
+        }
+      ],
+      "acceptable_answers": [
+        "0.65 to 0.70"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the accuracy of the model?"
+        }
+      ],
+      "numerical_answer": 0.7,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the precision of the model for predicting the positive class?"
+        }
+      ],
+      "acceptable_answers": [
+        "0.71 to 0.72"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the recall of the model for predicting the positive class? Question Id : 640653587665 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix You are given the below regression output. Then answer the given subquestions (Note: If your answer is in decimal, enter it rounded to two decimal places. For example if your answer is “10.256”, enter it as “10.26”) Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "0.79 to 0.80"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the value of X1?"
+        }
+      ],
+      "numerical_answer": 1.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the value of X2?"
+        }
+      ],
+      "numerical_answer": 18.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the value of X3?"
+        }
+      ],
+      "acceptable_answers": [
+        "3267.10 to 3267.30"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the value of X4?"
+        }
+      ],
+      "acceptable_answers": [
+        "746.40 to 746.65"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the value of X5?"
+        }
+      ],
+      "acceptable_answers": [
+        "4.25 to 4.45"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the p-value for the regression model?"
+        }
+      ],
+      "acceptable_answers": [
+        "0.05 to 0.06"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ]
+}

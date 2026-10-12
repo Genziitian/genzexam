@@ -1,0 +1,457 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Week 6 Practice Assignment",
+  "subject": "Mathematics 1",
+  "section": "practice",
+  "questions": [
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If b >0 and 4 logx b + 9 logb5x b = 1, then the possible value(s) of x is (are)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "b10"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "b9"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "b−2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "b5"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "b4 Solution: Given that: 4 log x b + 9 logb5x b = 1 and b >0 4 logx b + 9 logb5x b = 1 = ⇒ 4logb x + 9logb(b5x) = 1 =⇒ 4logb x + 9logb b5 + logb x = 1 =⇒ 4logb x + 95 logb b + logb x = 1 Let p = logb x Now, 4 logx b + 9 logb5x b = 1 = ⇒ 4p + 95 + p = 1 =⇒ 4(5 + p) + 9pp(5 + p) = 1 =⇒ 20 + 4p + 9p = 5p + p2 =⇒ p2 − 8p − 20 = 0 =⇒ p2 − 10p + 2p − 20 = 0 =⇒ p(p − 10) + 2(p − 10) = 0 =⇒ (p + 2)(p − 10) = 0 =⇒ p = −2, 10 We know that p = logb x Case 1: p = −2 = ⇒ −2 = logb x =⇒ x = b−2 1 Case 2: p = 10 = ⇒ 10 = logb x =⇒ x = b10 Note: logab c = 1b loga cProof: LHS = logab c = 1logc ab = 1b logc a = 1b × 1logc a = 1b loga c = RHS"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        2
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "George deposits | 5L in a bank that compounded quarterly at the rate of 20% per year. How long will it take to increase his money to 16 times the principal amount (in a year)?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "ln 164"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "ln 164 ln2120"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "ln 2ln 2120"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "log 21 20 2 ✓"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "ln 2 1 4 ln 2120 Solution: The formula for Compound Interest is given by: A = P \u0012 1 + R100 \u0013nt ; where 2 t = time period (years) R = Interest year per year P = Principal on initial deposit A = Amount after t years n = No. of times it compounded in a year Now, A = P \u0012 1 + Rn × 100 \u0013nt At A = 16P, n = 4 and R = 20, A = 16P = P \u0012 1 + 20400 \u00134t =⇒ 16P = P \u0012 1 + 120 \u00134t =⇒ 16 = \u0012 21 20 \u00134t =⇒ ln 16 = 4t ln \u0012 21 20 \u0013 =⇒ t = 14"
+          }
+        ]
+      ],
+      "correct_answers": [
+        1,
+        2
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the set of correct options."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "log5 2 is a rational number."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "If 0 < b <1 and 0 < x <1 then log b x <0"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "If log 3(log5 x) = 1 then x = 125"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "If 0 < b <1, 0 < x <1 and x > bthen log b x >1 3"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "If 0 < b <1 and 0 < x < ythen log b x >logb y"
+          }
+        ]
+      ],
+      "correct_answers": [
+        2,
+        4
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Suppose that two types of insects are found in a pond. Their growth in number after t seconds is given by the equations f (t) = 5 3t−2 and h(t) = 3 2t−1(t ̸= 0). For what value of t will both insects be of same number in the pond?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "ln 3+2 ln 53 ln 5−2 ln 3"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "ln 75ln 1259"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "log 125 9 75 ✓"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "ln 5+2 ln 33 ln 3−2 ln 5 4 Solution: Insects number will be same when: f (t) = h(t) = ⇒ 53t−2 = 32t−1 =⇒ (3t − 2) ln 5 = (2t + 1) ln 3 =⇒ (3 ln 5)t − 2 ln 5 = (2 ln 3)t + ln 3 =⇒ (3 ln 5)t − (2 ln 3)t = ln 3 + 2 ln 5 =⇒ t(3 ln 5− 2 ln 3) = ln 3 + 2 ln 5 =⇒ t = ln 3 + 2 ln 53 ln 5− 2 ln 3 =⇒ t = ln 3 + ln 52 ln 53 − ln 32 =⇒ t = ln 3 × 25ln \u0000 1259 \u0001 =⇒ t = ln 75ln \u0000 1259 \u0001 =⇒ t = log 125 9 75 By Using Formulas: (1) ln ab = b ln a (2) ln(ab) = ln a + ln b (3) ln ab = ln a − ln b (4) log b a = log alog b"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following is/are true? 5"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "If m and n are positive real numbers, then mlog(n) = nlog(m)."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "log5 1234567899999999999999 is a rational number."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The function f (x) = log10(x2 + x + 1) is one-one on the interval (-0.5, ∞)."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of the above. Solution: • Given that m and n are positive real numbers. Let a = mlog(n) and b = nlog(m). Now, log a = log(n) × log(m) and log b = log(m) × log(n) But log(n) × log(m) = log(n) × log(m) = ⇒ log a = log b Since, log is a one-one function, a = b. Therefore, option (a) is true. • Consider a = 1234567899999999999999. Suppose log 5 a is a rational number. Then, it can be represented in the pq form, where p and q are integers. Now, log5 a = pq =⇒ a = 5pq =⇒ aq = 5p But 5 cannot divide a which is a contradiction to our assumption. Therefore, our assumption is wrong. log 5 a is not a rational number. Therefore, option (b) is not true. • For x2 + x + 1, (−0.5, 0.75) x2 + x + 1 6 As shown in above figure, x2 + x + 1 is one-one (strictly increasing) in the interval (−0.5, ∞). Also, log10x is a one-one (strictly increasing) function on its entire domain. Therefore, f (x) = log10(x2 + x + 1) is one-one on the interval (-0.5, ∞). Therefore, option (c) is true."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        2
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following is/are true?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Suppose D is an arbitrary subset of R and f is one-one function on D. log f (x) whenever defined is also an one-one function on D. ✓"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "(14!) 1 14 < (15!) 1 15 , where ! denotes the factorial function, and for a non-negative integer n, the value of n! is n × (n − 1) × ... × 2 × 1.✓"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The function f (x) = 2x + 3x + ..... + 100x is one-one function on R."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "There exists a function f (x) on R, such that log(f (x)) ≥ 100 for all x ∈ R. Solution: (a) Given: f is one-one function on D. Also, log f (x) is defined on D. We, know that the log function is a one-one function and therefore log of a one-one function (strictly increasing or decreasing) will give a one-one function. Therefore, option (c) is true. (b) To verify: (14!) 1 14 < (15!) 1 15 Suppose that the above statement is true. Taking log14! on both sides, we have: 7 (14!) 1 14 < (15!) 1 15 ⇐ ⇒114 log14! 14! < 115 log14! 15! ⇐ ⇒114 < 115 log14!(15 × 14!) ⇐ ⇒114 < 115 [log14! 15 + log14! 14!] ⇐ ⇒1514 < log14! 15 + 1 ⇐ ⇒1514 − 1 < log14! 15 ⇐ ⇒114 < log14! 15 ⇐ ⇒1 < 14 log14! 15 ⇐ ⇒1 < log14!(15)14 ⇐ ⇒14! < 1514,which is true Therefore, option (b) is true. (c) We know that, the exponential function of a natural number (except 0 and 1) is strictly increasing function and thus one-one function. Suppose x ̸= y; x, y∈ R such that 0 < x < y. x ̸= y and 0 < x < y=⇒ 2x < 2y, 3x < 3y, .....,100x < 100y =⇒ 2x + 3x + ..... + 100x < 2y + 3y + ..... + 100y =⇒ f (x) < f(y) =⇒ f (x) ̸= f (y) Thus, f (x) is a one-one function. Therefore, option (c) is true. (d) Let c ∈ R such that log c > 100. There exists such a c because the range of log is (−∞, ∞). Define f : R → R, f(x) = c, for all x ∈ R. Thus, log( f (x)) ≥ 100 for all x ∈ R. Therefore, option (d) is true."
+          }
+        ]
+      ],
+      "correct_answers": [
+        2,
+        3
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If log √2(x + 4) − log2 \u0000 12 x + 2\u0001 = 1 then x is"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "−3"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "−4 8"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "5 Solution: Given that log √2(x + 4) − log2 \u0000 12 x + 2\u0001 = 1 =⇒ 12 log2(x + 4) − log2 \u0012 x 2 + 2 \u0013 = 1 =⇒ log2(x + 4) 1 2 − log2 \u0012 x + 4 2 \u0013 = 1 =⇒ log2"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Seismologists use the Richter scale to measure and report the magnitude of an earthquake as given by the equation R = ln I − ln I0, where I is the intensity of an earthquake with respect to a minimal or reference intensity I0 (i.e. I = cI0, where c is a constant). The reference intensity is the smallest earth movement that can be recorded on a seismograph. If an earthquake in a city A recorded of magnitude 8.0 in the Richter scale and the intensity of the earthquake in the city B is the reference intensity, then what is the ratio of the intensity of the earthquake in city A with respect to city B?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "e0 : 1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "e1 : 2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "e8 : 1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "e5 : 1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "e8 : 2 Solution: Given: R = 8.0, intensity of the earthquake in city B = I0 Using the given equation, R = ln I − ln I0 =⇒ R = ln II0 = 8 10 =⇒ e8 = II0 =⇒ II0 = e81 =⇒ e8 : 1 Therefore the ratio of the intensity of earthquake in city A w.r.t. city B is e8 : 1."
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Suppose that the number of bacteria present in a loaf of rotten bread after t minutes is given by the equation G(t) = G03kt, where G0 represents the number of bacteria at t = 0, k is a constant (Given ln 730 = 6 .59 and ln 3 = 1 .09). If the initial number of bacteria is 1000 and it takes 1 min to increase to 9000 then how long (in minutes) would it take for the bacteria count to grow to 730000 (integer value of t)?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "3"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "6 Solution: Given that: G0 = 1000. At t = 1 min, G(t) = 9000 To find: At what time ( t), G(t) = 7, 30, 000 G(t) = G03kt =⇒ G(t)G0 = 3kt At t = 1 min, G(t) G0 = 3kt =⇒ 90001000 = 9 = 3kt =⇒ log3 32 = kt log3 3 =⇒ 2 log3 3 = kt log3 3 =⇒ k = 2 On substituting the values of k and G0, equation 1 becomes: 11 G(t) = 1000 × 32t When G(t) = 730000, G(t) = 1000 × 32t =⇒ 7300001000 = 32t =⇒ 730 = 32t =⇒ ln 730 = 2t ln 3 =⇒ t = ln 7302 ln 3 =⇒ t = 6.592 × 1.09 = 3 min Thus at t = 3 min (integer value) bacteria count will be 7,30,000. Read the following paragraph and answer questions 8 and 9 Let cA and cB be the luminosity (measure of brightness) (luminous efficacy) of the bulbs A and B respectively. The bulb A is f (x) times brighter than the B, if f (x) = 3x2+1 (i.e. cA = f (x) × cB), where x is the difference of the magnitude of supply voltage between the bulb A and the bulb B. Answer questions 8 and 9 based on the above information."
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If the bulb A is 10 times brighter than the bulb B, then the difference of the magnitude of supply voltage between the two bulbs is"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "p log3 5 − 1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "p log3 10"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "q ln 10 ln 3"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "q log3 103 ✓ Solution: 12 Given that: cA = 10 cB; cA = cB × f (x); cA = cB × 3x2+1 10 cB = cB × 3x2+1 =⇒ log3 10 = (x2 + 1) log3 3 =⇒ log3 10 = x2 + 1 =⇒ x2 = log3 10 − 1 =⇒ x = p log3 10 − 1 =⇒ x = p log3 10 − log3 3 =⇒ x = r log3 10 3 The difference between the magnitude of 2 bulbs is r log3 10 3"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If 4 voltage and 3 voltage are the supply voltages for the bulbs A and B respectively then how many times the bulb A is brighter than the bulb B? Since x is the difference between the supply voltage of A and B, thus x = 4 − 3 = 1 We know that cA = cB × f (x) We have to find f (x). f (x) = 3x2+1 =⇒ f (x) = 31+1 = 32 = 9 Now, cA = 9 cB Therefore, bulb A is 9 times brighter than bulb B."
+        }
+      ],
+      "numerical_answer": 9.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the number of values of x satisfying the equation (5 x) log (5x) 1 5 (6x3−36x2+66x−35) 15 = 1. Given: (5 x) log (5x) 1 5 (6x3−36x2+66x−35) 15 = 1 13 (5x) log (5x) 1 5 (6x3−36x2+66x−35) 15 = 1 =⇒ log(5x) 15 (6x3 − 36x2 + 66x − 35) 15 = 0 =⇒ 6x3 − 36x2 + 66x − 35 = 1 =⇒ 6x3 − 36x2 + 66x − 36 = 0 =⇒ 6(x3 − 6x2 + 11x − 6) = 0 =⇒ (x − 1)(x2 − 5x + 6) = 0 =⇒ (x − 1)(x − 3)(x − 2) = 0 =⇒ x = 1, x= 3, x= 2 Thus, there are three values of x satisfying the given equation. 14"
+        }
+      ],
+      "numerical_answer": 3.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ],
+  "week": 6
+}

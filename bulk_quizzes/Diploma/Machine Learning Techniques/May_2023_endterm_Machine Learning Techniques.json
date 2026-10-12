@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "May 2023 Endterm",
+  "subject": "Machine Learning Techniques",
+  "section": "endterm",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Hint: Assume that these are only two possible words (that is there are only two features)"
+        }
+      ],
+      "acceptable_answers": [
+        "0.98 to 1"
+      ],
+      "marks": 6,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Calculate the information gain for the \"Age Group\" feature."
+        }
+      ],
+      "acceptable_answers": [
+        "0.20 to 0.60"
+      ],
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Calculate the information gain for the \"Income level\" feature."
+        }
+      ],
+      "acceptable_answers": [
+        "0.20 to 0.60"
+      ],
+      "marks": 4,
+      "difficulty": "medium"
+    }
+  ]
+}

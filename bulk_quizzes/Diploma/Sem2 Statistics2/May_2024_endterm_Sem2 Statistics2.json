@@ -1,0 +1,91 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "May 2024 Endterm",
+  "subject": "Sem2 Statistics2",
+  "section": "endterm",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider a game where two coins, Coin 1 and Coin 2, are flipped simultaneously until one lands on head and the other on tail. The probability of Coin 1 landing heads is 1/4, while for Coin 2, it is 1/3. Let X denote the number of tosses until the game concludes. Assume that all the tosses are independent. Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "0.93 to 0.99 Question Id : 640653904753 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find P(X = 5). Enter the answer correct to three decimal places."
+        }
+      ],
+      "acceptable_answers": [
+        "0.045 to 0.051"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the expected value of X. Enter the answer correct to one decimal place. Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "2.4 Question Id : 640653904756 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the posterior mean. Enter the answer correct to two decimal places. An old charging method takes an average of 60 minutes to fully charge a battery with a standard deviation of 10 minutes. A new charging method is introduced and is expected to reduce this time to around 55 minutes. We want to test if the new charging method significantly reduces the average charging time. To evaluate this, the new charging method is tested on 36 batteries and the average charging time is found to be 57 minutes. Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "0.30 to 0.36 Question Id : 640653904759 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the critical value c at a significance level of 0.05. Enter the answer correct to two decimal places."
+        }
+      ],
+      "acceptable_answers": [
+        "57.23 to 57.29"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If the P-value of the test is 0.05, find the value of n. Round off your answer to the next greatest integer."
+        }
+      ],
+      "numerical_answer": 20.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    }
+  ]
+}

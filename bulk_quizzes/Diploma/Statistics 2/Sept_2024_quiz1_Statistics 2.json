@@ -1,0 +1,92 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Sept 2024 Quiz1",
+  "subject": "Statistics 2",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "0.08 to 0.14 Question Id : 640653996229 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Suppose that a factory manufactures electronic gadgets every day. A quality control team tracks the number of defective gadgets found in daily production runs. Let X be the number of defective gadgets produced on any given day. The mean and variance of X are 50 and 81, respectively. Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "0.47 to 0.53 Question Id : 640653996237 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Using Markov’s inequality, find an upper bound on the probability that production will exceed 99 on a given day. Enter the answer correct to one decimal place."
+        }
+      ],
+      "acceptable_answers": [
+        "0.47 to 0.53"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the value of k. Enter the answer correct to two decimal places."
+        }
+      ],
+      "acceptable_answers": [
+        "0.05 to 0.11"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Calculate the probability that the length of a randomly selected rod is between 2 cm and 4 cm. Enter the answer correct to two decimal places. Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "0.29 to 0.35 Question Id : 640653996243 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the value of 100P(Y = 6). Enter the answer correct to two decimal places."
+        }
+      ],
+      "acceptable_answers": [
+        "0.23 to 0.29"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ]
+}

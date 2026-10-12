@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Dec 2023 Quiz2",
+  "subject": "Statistics 1",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Kanika has to choose a t-shirt for her outfit from a collection of 6 yellow t-shirts, 2 black t-shirts and 4 blue t-shirts. If a t-shirt is chosen randomly, then what is the chance that a black or a blue t- shirt is chosen by Kanika for her outfit? Enter the answer correct to one decimal place."
+        }
+      ],
+      "acceptable_answers": [
+        "0.4 to 0.6"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If she wins a colour TV, then what is the probability that candy was from bag B1? (Enter the answer correct to two decimal places)."
+        }
+      ],
+      "acceptable_answers": [
+        "0.51 to 0.57"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A person is randomly picked from this group, then what is the probability that the person is a female, given that the person’s reaction is favourable to the new gadget? Enter the answer correct to two decimal places."
+        }
+      ],
+      "acceptable_answers": [
+        "0.30 to 0.36"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    }
+  ]
+}

@@ -1,0 +1,443 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Week 3 Graded Assignment",
+  "subject": "Computational Thinking",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What will P represent at the end of the execution?(MCQ)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Number of words with an even letter count"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of words with an odd letter count"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of adverbs with an even letter count"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of adverbs with an odd letter count"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What will Q represent at the end of execution?(MCQ)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Number of adverbs with an even letter count"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of adverbs with an odd letter count"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of words with any letter count"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of adverbs with any letter count"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The given pseudocode is executed on \"Words\" dataset. Variables P, and Q are initialized with 0. Line 4: Condition checks if the word in current row has letter count divisible by 2. If so then P will be incremented. This refers that P represents the number of words with an even letter count. Line 7: else is being used, this means if the condition in line 4 is not satisfied then else block will be executed. Which refers that the letter count of the word is not divisible by 2. If the condition in line 8 is True, this means the word is an adverb. If so then Q gets incremented. Therefore, Q stores the number of adverbs with an odd letter count."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the “Scores” dataset.(MCQ) At the end of the execution, E will be True if"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "All female students have scores greater than or equal to 60 in either Physics, Chemistry or Maths"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "All female students have scores less than 60 in either Physics, Chemistry or Maths"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "There is at least one female student with scores less than 60 in Physics, Chemistry or Maths"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "All female students have scores greater than or equal to 60 in Physics, Chemistry and Maths"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "E is initialized with True. It will be updated to False when both the if conditions are True. So if any one of the conditions is False, then the value of E will remain True. For a row there are two possibilities: 1. If the row belongs to a male, then E will remain True. But as we can see in the question, all the options given to us are regarding female students so we can assume that we are talking about female students here. E = True while(Table 1 has more rows){ Read the first row X in Table 1 if(X.Gender == 'F'){ if(X.Physics < 60 or X.Chemistry < 60 or X.Maths < 60){ E = False } } Move X to Table 2 } 1 2 3 4 5 6 7 8 9 10 2. If the row belongs to a female, to keep E True, the condition in nested \"if\" should be False. For a female student, if the condition in nested \"if\" is False always, then it means there does not exist even a single female student who is having scores less than 60 in either Physics,Chemistry or Maths. Therefore, to keep E True, all the female students must have scores greater than or equal to 60 in all subjects. Thus the correct option is (d)."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the “Shopping Bills” dataset. Procedure checkShoppingBills accepts a card Y and returns True if the minimum total bill amount of shop is greater than the average total bill amount of shop from where the card Y is generated otherwise returns False. Choose the correct code fragments to complete the procedure. It is a Multiple Select Question (MSQ). Note : MAX_VALUE represent the maximum bill amount of shop Y."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": ""
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Procedure checkShoppingBills(Y) count = 0, totalAmount = 0, minAmount = MAX_VALUE while(Pile 1 has more cards){ Read the top card X from Pile 1 if(X.ShopName == Y.ShopName){ count = count + 1 totalAmount = totalAmount + X.TotalBillAmount if(X.TotalBillAmount < minAmount){ minAmount = X.TotalBillAmount } } Move card X to Pile 2 } averageAmount = totalAmount / count ********************* * Fill the code       * ********************* End checkShoppingBills 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 if(minAmount >= averageAmount){ return(True) } return(False) 1 2 3 4 if(Y.TotalBillAmount > minAmount){ return(True) } return(False) 1 2 3 4"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": ""
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": ""
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "If a card (let us say Y) is passed as the parameter to the procedure checkShoppingBills . Let the card is generated from a shop XYZ, then the procedure will return True minimum total bill amount is greater than the average total bill amount generated from the shop XYZ. To do so, first we need to collect all the cards which are generated from the same shop i.e., XYZ and then find its average of total bill amount. We can check that if the card X is from the same shop or not by using the condition X.ShopName == Y.ShopName. This is what being done in the Line 5. Line 6: Variable count stores the number of cards from the same shop. Line 7: Total bill amount of every card which are from same shop is being added into variable totalAmount which was initialized as 0. Line 8: Will check if the minimum amount is greater than total bill amount of shop XYZ.If the condition is satisfied then it will update minAmount variable which was initialized as MAX_VALUE. Line 14: avg stores the average of total bill amount generated from the same shop. Now we just need to check if the minimum total bill amount of shop Y is greater than average or not. Option A: The \"if condition\" checks whether the minimum total bill amount is greater than or equal to average. Thus option A is Wrong. Option B: The \"if condition\" checks for card Y whether the total bill amount is greater than minimum total bill amount. Thus option B is Wrong. Option C- The \"if condition\" checks for card Y whether the total bill amount is greater than or equal to minimum total bill amount. Thus option C is Wrong. if(Y.TotalBillAmount >= minAmount){ return(True) } else{ return(False) } 1 2 3 4 5 6 if(minAmount > averageAmount){ return(True) } return(False) 1 2 3 4 Option D- The \"if condition\" checks whether the minimum total bill amount is greater than average. Thus option D is Correct. So the Correct option is (d)."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Scores\" dataset. What will A represent at the end of the execution?(MCQ)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Number of students scored above 60 in all three subjects"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of students scored below 60 in at least any one subject"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A will always be 0"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of students scored exactly 60 in all three subjects"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The value of B will become False if all of the below conditions are True :- 1. If X's Physics marks are greater than or equal to 60. 2. If X's Mathematics marks are greater than or equal to 60. 3. If X's Chemistry marks are greater than or equal to 60. To keep B True, student shouldn't score greater than or equal to 60 in atleast any one of the subject. Therefore A represents the number of students failing in at least one subject with a score below 60. A = 0 while(Table 1 has more rows){ Read the first row X in Table 1 B = True if(X.Physics >= 60 and X.Chemistry >= 60 and X.Mathematics >= 60){ B = False } if(B){ A = A + 1 } Move X to Table 2 } 1 2 3 4 5 6 7 8 9 10 11 12 So the correct option is (b)."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the “Scores” dataset. At the end of the execution, variable Count captures the number of students whose total marks are more than the average (of total marks) of entire dataset but have scored below the subject average in any two subjects. Assume that the variable AvgT holds the value of the average total marks. Similarly, the variables AvgP, AvgC and AvgM hold the value of the average marks of Physics, Chemistry and Mathematics respectively. Choose the correct code fragment to complete the pseudocode.It is a Multiple Select Question(MSQ)."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": ""
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Count = 0 while(Table 1 has more rows){ Read the first row X from Table 1 A = False, B = False, C = False, D = False if(X.Total > AvgT){ A = True } if(X.Mathematics < AvgM and X.Physics < AvgP){ B = True } if(X.Physics < AvgP and X.Chemistry < AvgC){ C = True } if(X.Chemistry < AvgC and X.Mathematics < AvgM){ D = True } ************************* **    Fill the code    ** ************************* Move X to Table 2 } 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 if(A and (B or C or D)){ Count = Count + 1 } 1 2 3 if(A and (B and C) and (C and D) and (D and B)){ Count = Count + 1 } 1 2 3"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": ""
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": ""
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Let us first understand the meaning of each variable using the given pseudocode: AvgT: Average total marks AvgM: Average Mathematics marks AvgP: Average Physics marks AvgC: Average Chemistry marks A: Initially False but it will become True if Total > AvgT B: Initially False but it will become True if MathematicsMarks < AvgM and PhysicsMarks < AvgP C: Initially False but it will become True if PhysicsMarks < AvgP and ChemistryMarks < AvgC D: Initially False but it will become True if ChemistryMarks < AvgC and MathematicsMarks < AvgM Now, as per the question statement Count will be incremented only if A is True and at least one among B, C and D are True. Here, in condition for if statement, we can't say A \"or\" other as we have to satisfy both 1 and 2 conditions mentioned above. So, option (c) and (d) are incorrect. Option a: A and (B or C or D) -- Let A is True Let B is True, C is True and D is False (B or C) = True, (C or D) = True, and (D or B) = True Overall = True This will be True if any one variables are True among B, C ,D. Option b: A and (B and C) and (C and D) and (D and B) , it's checking for all the variables to be true Therefore, the correct option is (a). if(A or (B and C) or (C and D) or (D and B)){ Count = Count + 1 } 1 2 3 if(A or (B or C) or (C or D) or (D or B)){ Count = Count + 1 } 1 2 3"
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the “Scores” dataset.(MCQ) At the end of the execution, A represents the number of students from Madurai having total marks............."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "greater than the average marks of students SumA = 0, SumB = 0 CountA = 0, CountB = 0 A = 0, J = 0, K = 0 while(Pile 1 has more cards){ Read the top card X from Pile 1 if(X.CityTown == \"Vellore\"){ SumA = SumA + X.Total CountA = CountA + 1 } if(X.CityTown == \"Chennai\"){ SumB = SumB + X.Total CountB = CountB + 1 } Move card X to Pile 2 } J = SumA / CountA K = SumB / CountB while(Pile 2 has more cards){ Read the top card X from Pile 2 if(X.CityTown == \"Madurai\"){ if(X.Total > J){ if(X.Total < K){ A = A + 1 } } } Move card X to Pile 1 } 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "greater than the average marks of students from Vellore and Chennai"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "greater than the average marks of students from Vellore but less than that of Chennai"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "greater than the average marks of students from Chennai but less than that of Vellore"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "In the first while loop we are computing values of SumA, CountA, SumB and CountB. Let us understand what these variable represent in this pseudocode: SumA: Sum of total marks of students from Vellore CountA: Number of students from Vellore SumB: Sum of total marks of students from Chennai CountB: Number of students from Chennai After the first while loop we are calculating values of J and K which represents average marks of students from Vellore and Chennai respectively. Now in the second while loop, first, the card is being checked to find if it belongs to the student from \"Vellore\" or not. If True, then Total marks is being checked if it is greater than J or not. If so, then Total marks is being checked if it is less than K or not. If this is also True then, A is being incremented. So, basically, in the end, A represents the number of students from Madurai having total marks \"greater than the average marks of students from Vellore but less than that of Chennai\". Hence, option (c) is correct."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Scores\" dataset. At the end of the execution, A captures the number of female students who are below average in at least one subject. Assume that the variables M, P and C hold the average marks of the subjects Mathematics, Physics and Chemistry respectively. The pseudocode may have mistakes. Identify all such mistakes (if any). Assume that all statements not listed in the options below are free of errors. It is a Multiple Select Question (MSQ)."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Line 1: Incorrect initialization of A"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Line 3: Incorrect initialization of B"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Line 7: Incorrect Update of B"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Line 13: Incorrect Update of B 1. A = 0 2. while(Table 1 has more rows){ 3.    B = True 4.    Read the first row X from Table 1 5.    if(X.Gender == 'F'){ 6.        if(X.Mathematics < M){ 7.            B = False 8.        } 9.        if(X.Physics < P){ 10.           B = True 11.       } 12.       if(X.Chemistry < C){ 13.           B = False 14.       } 15.    } 16.    if(B){ 17.        A = A + 1 18.    } 19.    Move X to Table 2 20. } 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 (e) No error in the code"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The variable A counts the number of female students who have scored less than the subject average in at least one subject (either in one subject or in more than one subjects). Line 16: A is being incremented whenever B is True. This means B should be True when the card belongs to a female student and the subject marks of at least one subject is less than the average of that subject. Line 5 - Line 15: It is totally clear that B should be True in lines 7 and 13. Therefore options c and d are correct. Line 3: As A gets incremented only if B is True, then B should be initialized with False."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the “Scores” dataset. What will A represent at the end of the execution?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Number of students with highest marks only in Mathematics out of their three subjects' marks"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of students with highest marks only in Mathematics and lowest marks only in Physics"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of students with highest marks only in Chemistry out of their three subjects' marks"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of students with lowest marks only in Physics out of their three subjects' marks"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "As we can see in line 4, A is getting incremented if procedure isInSeq() returns 1. In procedure isInSeq, it says if Mathematics marks of X is more than Physics marks of X, then check if Chemistry marks of X is more than Physics marks of X, then return 1. That means, it returns 1 if students' Physics marks is lowest compared to Mathematics and Chemistry. A = 0 while(Pile 1 has more cards){ Read the top card X from Pile 1 A = A + isInSeq(X) Move X to Pile 2 } Procedure isInSeq(X) if(X.Mathematics > X.Physics){ if(X.Physics < X.Chemistry){ return(1) } } return(0) End isInSeq 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 Therefore, A is storing the number of cards (or number of students) with lowest marks in Physics out of their three subjects marks. Hence, Option (d) is correct."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the “Words” dataset. What will A represent at the end of the execution?(MCQ)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Number of words that end with a comma."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of words that end with a comma and have a letter count greater than ratio of number of words to sum of letter count."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of words that end with a comma and have a letter count less than or equal to the average letter count of dataset."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of words that end with a comma and have a letter count greater than the average letter count of dataset."
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "In first while loop, CountT is keeping command of \"count of cards (or words)\" of dataset. And SumT is keeping command of \"sum of letter count of words\" of whole dataset. Then we can see, B = SumT / CountT , means \"the average letter count of dataset.\" Now, in second while loop, If conditional says, that word ends with comma then A will get incremented by 1 if X.LetterCount > B. That means, A will maintain the number of words that end with a comma and have a letter count greater than the average letter count of dataset. Hence, option (d) is correct."
+        }
+      ]
+    }
+  ],
+  "week": 3
+}

@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Jan 2023 Quiz2",
+  "subject": "Business Data Management",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A firm has annual sales turnover of INR 95,00,000/-. Its total current liabilities sum up to INR 3,00,00,000/-. It has INR 15,00,000/- as accounts receivable. Calculate the firm’s debtor days (round the answer to 2 decimal places)."
+        }
+      ],
+      "acceptable_answers": [
+        "57.00 to 58.00"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ]
+}

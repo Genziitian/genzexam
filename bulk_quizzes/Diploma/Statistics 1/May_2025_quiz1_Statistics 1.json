@@ -1,0 +1,114 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "May 2025 Quiz1",
+  "subject": "Statistics 1",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The mean of the dataset 6, 9, y, 15, 20 is 12. What is the sample standard deviation of the new dataset if 5 is added to each number in the given dataset? Enter the answer correct to two decimal places."
+        }
+      ],
+      "acceptable_answers": [
+        "5.49 to 5.55"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A company conducted an online test as part of its hiring process. The test completion times (in minutes) for 8 candidates are given below: 48, 52, 49, 50, 60, 47, 46, 53 To shortlist candidates for further rounds, the company decides to eliminate the slowest 80% and retain only the top 20% fastest candidates based on their test completion time. What is the maximum test completion time (in minutes) a candidate can have to be in the top 20% fastest"
+        }
+      ],
+      "numerical_answer": 47.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Figure Q.1 represents the time (in minutes) spent by 6 students on a math puzzle during the first week. In the second week, each student spent twice as much time on the puzzle as they did in the first week. What is the average time each student spent on the puzzle in the second week?"
+        }
+      ],
+      "numerical_answer": 75.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A fitness coach records whether the clients meet their weekly exercise goal (Yes = 1, No = 0) and their body fat percentage after 3 months. The data is collected from four clients and represented in Table Q.2. Calculate the absolute Point BI serial correlation coefficient between the exercise goal and body fat (%). Enter the answer correct up to two decimal places. Question Id : 6406531298551 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix A survey was conducted among X number of college students to find out how many online courses they completed during a semester. The data is summarized in Table Q.4. Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "0.68 to 0.74"
+      ],
+      "marks": 5,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many students have completed less than 2 courses?"
+        }
+      ],
+      "numerical_answer": 20.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the relative frequency of students who completed 4 or more online courses in the semester? Enter the answer correct to one decimal place. Question Id : 6406531298554 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Figure Q.2 represents the percentage of employees from various departments who attended a company’s professional development training. The total number of attendees is 540. Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "numerical_answer": 0.2,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "After the training, 10% of all the total participants were promoted. Half of those promoted were from the Sales department, and 2/3 of the promoted Sales employees accepted the offer. How many Sales employees accepted the promotion?"
+        }
+      ],
+      "numerical_answer": 18.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many more employees attended the training from the Sales department than from the IT department?"
+        }
+      ],
+      "numerical_answer": 54.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    }
+  ]
+}

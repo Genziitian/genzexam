@@ -1,0 +1,196 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Jan 2023 Quiz2",
+  "subject": "Business Analytics",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the total market size?"
+        }
+      ],
+      "numerical_answer": 8125.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the satiating price for the price-demand data based on the fitted model (Note: If your answer is in decimal, enter it rounded to two decimal places. For example, if your answer is “10.256”, enter it as “10.26”)"
+        }
+      ],
+      "acceptable_answers": [
+        "41.60 to 42.00"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the elasticity of the (regression line) demand, when the price is Rs. 33 (round to two decimal places)? (Note: If your answer is in decimal, enter it rounded to two decimal places. For example, if your answer is “10.256”, enter it as “10.26”)"
+        }
+      ],
+      "acceptable_answers": [
+        "3.60 to 3.80"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "You have estimated the demand to follow the following relationship: D(p) = 100 - p. Now, you intend to maximize the revenue R(p) = D(p)* p. You find the first derivative of R(p) with respect to p, equate it to 0 and find p*. What is the value of p*? Question Id : 640653521212 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix A multiple linear regression model, as specified below is fit on a data set with 150 data points. Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "49.9 to 50.1"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many degrees of freedom are present for the “Residuals” in the ANOVA Table?"
+        }
+      ],
+      "numerical_answer": 146.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many degrees of freedom are present for the “Regression” in the ANOVA Table?"
+        }
+      ],
+      "numerical_answer": 3.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many total degrees of freedom are present for the fitted model in the ANOVA Table? Question Id : 640653521217 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Company “ABC” manufacturer’s product “X”. Currently, the quality inspection of “X” is done manually through visual inspection. The aim of the quality inspection process is to identify defective products. From historical experience, manual visual inspection correctly identified 75% of defective items in any given batch of only defective items. The management has decided to replace manual visual inspection with an automatic detection system (ADS). This ADS runs a logistic model in the background for classifying an item as defective or not-defective based on photos taken by a camera. To test the ADS, a sample of 100 units of X is taken. 30% of the sample contains defective items. The samples are passed through the ADS, and the system identifies 20% of the non-defective items as defective and 10% of the defective items as non-defective. Using this information, answer the given subquestions. Sub questions"
+        }
+      ],
+      "numerical_answer": 149.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many “True Positives” is ADS predicting?"
+        }
+      ],
+      "numerical_answer": 27.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many “False Positives” is ADS predicting?"
+        }
+      ],
+      "numerical_answer": 14.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many “True Negatives” is ADS predicting?"
+        }
+      ],
+      "numerical_answer": 56.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many “False Negatives” is ADS predicting?"
+        }
+      ],
+      "numerical_answer": 3.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the accuracy of the ADS? (Note: Enter the answer as a numeric percentage value rounded to two decimal places without the % symbol. For example, if your answer is “10.256 %”, enter it as “10.26”)"
+        }
+      ],
+      "acceptable_answers": [
+        "82.00 to 84.00"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the precision of the ADS when predicting defective products? (Note: Enter the answer as a numeric percentage value rounded to two decimal places without the % symbol. For example, if your answer is “10.256 %”, enter it as “10.26”)"
+        }
+      ],
+      "acceptable_answers": [
+        "65.00 to 67.00"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the recall of the ADS when predicting non-defective products? (Note: Enter the answer as a numeric percentage value rounded to two decimal places without the % symbol. For example, if your answer is “10.256 %”, enter it as “10.26”)"
+        }
+      ],
+      "acceptable_answers": [
+        "79.00 to 81.00"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ]
+}

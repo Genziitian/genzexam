@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Week 4 Graded Assignment",
+  "subject": "Statistics 1",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What proportion of students of good economic conditions are borderline?(Enter the"
+        }
+      ],
+      "acceptable_answers": [
+        "correct to 2 decimal accuracy)"
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Required proportion = da +b +c +d"
+        }
+      ]
+    }
+  ],
+  "week": 4
+}

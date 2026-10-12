@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "May 24 Quiz1",
+  "subject": "PDSA",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "An undirected connected graph G has 46 edges. The minimum number of vertices in G is ___."
+        }
+      ],
+      "numerical_answer": 11.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    }
+  ]
+}

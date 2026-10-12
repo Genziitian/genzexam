@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Jan 2024 Quiz1",
+  "subject": "Statistics 1",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the value of 10x."
+        }
+      ],
+      "numerical_answer": 357.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ]
+}

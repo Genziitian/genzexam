@@ -1,0 +1,308 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Week 12 Graded Assignment",
+  "subject": "Statistics 1",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let a random variable is uniformly distributed over [ a, b] with expectation and variance e and v respectively. Find the value of ab."
+        }
+      ],
+      "acceptable_answers": [
+        "e2 − 3v"
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Given random variable is uniformly distributed from [ a, b]. E[X] = b + a2 = e ⇒ (b + a)2 = e2 × 4 = 4e2 V ar(X) = (b − a)2 12 = v ⇒ (b − a)2 = 12v (b + a)2 − (b − a)2 = 4ab = 4e2 − 12v ⇒ ab = e2 − 3v For example: e=6 and v=4 Given random variable is uniformly distributed from [ a, b]. E[X] = b + a2 = 6 ⇒ (b + a)2 = 62 × 4 = 144 V ar(X) = (b − a)2 12 = 4 ⇒ (b − a)2 = 48 (b + a)2 − (b − a)2 = 4ab = 144 − 48 = 96 ⇒ ab = 24"
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Probability density function of a random variable X is given by f (x) = ( kx2 if 0 ≤ x ≤ 1 0 otherwise Find P (m < X < n)? (Hint: R b a cx2dx = c b3 − a33 where c is a constant)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "n2 − m2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "n3 − m3 9"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "n2 − m2 9"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "n3 − m3"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "We know that R ∞ −∞ f (x)dx = 1 ⇒ R 1 0 kx2dx = 1 ⇒ k x3 3 |10 = 1 ⇒ k 13 = 1 ⇒ k = 3 We know that P (m ≤ X ≤ n) = R n m f (x)dx ⇒ P (m ≤ X ≤ n) = R n m 3x2dx ⇒ P (m ≤ X ≤ n) = 3 x3 3 n m ⇒ P (m ≤ X ≤ n) = n3 − m3 For example: m =0.1 and n=0.7 We know that R ∞ −∞ f (x)dx = 1 ⇒ R 1 0 kx2dx = 1 ⇒ k x3 3 |10 = 1 ⇒ k 13 = 1 ⇒ k = 3 We know that P (a ≤ X ≤ b) = R b a f (x)dx ⇒ P (0.1 ≤ X ≤ 0.7) = R 0.7 0.1 3x2dx ⇒ P (0.1 ≤ X ≤ 0.7) = 3 x3 3 0.7 0.1 ⇒ P (0.1 ≤ X ≤ 0.7) = 0.73 − 0.13 = 0.343 − 0.001 = 0.342"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The amount of milk produced every day by a dairy is uniformly distributed between 100 litres and 120 litres. What is the probability that the amount of milk produced is more than m litres given that on that day, more than n litres of milk was produced?(Enter the answer correct to 2 decimal place)"
+        }
+      ],
+      "acceptable_answers": [
+        "120 − m120 − n"
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Given that milk produced is uniform between 100 and 120 litres. Given that on a given day milk produced is more than n litres. Let X denote the quantity of milk produced. P (X > m|X > n) = 1 − P (X ≤ m)1 − P (X ≤ n) = 1 − ( m−100120−100 )1 − ( n−100120−100 ) = 120 − m120 − n For Example: m=115 and n=110 Page 2 Given that milk produced is uniform between 100 and 120 litres. Given that on a given day milk produced is more than 110 litres. Let X denote the quantity of milk produced. P (X >115|X >110) = 120−115120−110 = 510 = 0.5"
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The time that Jan shatabdi express will reach the Delhi station is uniformly distributed between x p.m. and y p.m. What is the probability that the train reaches Delhi exactly at z p.m?"
+        }
+      ],
+      "numerical_answer": 0.0,
+      "numerical_tolerance": 0,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The probability that train reaches exactly at z PM is R z z f (x)dx = 0 Since the area under the curve at a particular instant of x value is zero. For example: x=12, y=5 and z=2 The probability that train reaches exactly at 2 PM is R 2 2 f (x)dx = 0 Since the area under the curve at a particular instant of x value is zero."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The length of time for one person to be served at a restaurant is exponentially distributed, with an expected time of t minutes. If 5 persons arrived at the restaurant, then what is the probability that at least 2 of them will be served in more than p minutes? (Assume that each person is served independently)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "1 − \u0000 1 − e−( pt )\u00015 − 5.e−( pt ) \u00001 − e(− pt )\u00014"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1 − \u0000 e−( pt )\u00015 − h5 \u0000e−( pt )\u00014 (1 − e−( pt ))i"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1 − (1 − e−pt)5 − [5.e−pt(1 − e−pt)4]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1 − (e−pt)5 − [5.e−4pt(1 − e−pt)]"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Given expected time 1λ = t minutes. ⇒ λ = 1t P (X > p) = e−pλ = e −pt ⇒ P (X ≤ p) = 1 − e −p t Let i be the event that i among 5 of them are served in more than p minutes. P (i) =5 Ci(P (X > p))i(P (X ≤ p))5−i P (i) =5 Ci(e −pt )i(1 − e −pt )5−i P (i ≥ 2) = 1 − P (i = 1) − P (i = 0) Page 3 P (i ≥ 2) = 1 −5 C1(e −pt )1(1 − e −pt )4 −5 C0(e −pt )0(1 − e −pt )5 P (i ≥ 2) = 1 − 5(e −p t )(1 − e −p t )4 − (1 − e −pt )5 Hence, option ( a) is correct. For Example: t=5 and p=8 Given expected time 1λ = 5 minutes. ⇒ λ = 15 P (X >8) = e−8λ = e −85 ⇒ P (X ≤ 8) = 1 − e −8 5 Let i be the event that i among 5 of them are served in more than 8 minutes. P (i) =5 Ci(P (X >8))i(P (X ≤ 8))5−i P (i) =5 Ci(e −85 )i(1 − e −85 )5−i P (i ≥ 2) = 1 − P (i = 0) − P (i = 1) P (i ≥ 2) = 1 − 5C0(e −85 )0(1 − e −85 )5 − 5C1(e −85 )1(1 − e −85 )4 P (i ≥ 2) = 1 − (1 − e −8 5 )5 − 5(e −85 )(1 − e −85 )4"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Probability density function of a random variable X is given by f (x) =    0.2x if 0 ≤ x ≤ 1 0.2 if 1 ≤ x ≤ 2 0.2x − 0.2 if 2 ≤ x ≤ 3 0.4 if 3 ≤ x ≤ 4 0 otherwise Find the probability that 0 < X <2.5. (Answer upto three decimal points) Hint: Try to find the area under pdf using integration, otherwise draw the graph of pdf of X"
+        }
+      ],
+      "acceptable_answers": [
+        "0.425 accepted range: [0.421, 0.429]"
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "P (0 < X <2.5) = R 1 0 0.2xdx + R 2 1 0.2dx + R 2.5 2 (0.2x − 0.2)dx P (0 < X <2.5) = 0.1x2|10 + 0.2x|21 + (0.1x2|2.52 − 0.2x|2.52 ) P (0 < X <2.5) = 0.1 + (0.2 ∗ 2 − 0.2) + (0.1 ∗ 2.52 − 0.1 ∗ 22 − 0.2 ∗ 2.5 + 0.2 ∗ 2) P (0 < X <2.5) = 0.425 Page 4"
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In a certain exhibition, the time for the next visitor to come is exponentially distributed with a standard deviation of t minutes. What will be the expected time (in minutes) for two visitors to arrive if one comes after the other? (Note that the arrival of a visitor is independent of the arrival of the previous visitor)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "1t"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "2 t"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "t"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "2t"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Given standard deviation = t minutes. ⇒ Variance = t2 Variance = 1λ2 = t2 1/λ = t ⇒ E[X] = 1/λ = t Expected time for two visitors = 2 ∗ E[X] = 2t minutes, since both are independent of other visitor. For Example: t=10 Given standard deviation = 10 minutes. ⇒ Variance = 102 = 100 Variance = 1λ2 = 100 1/λ = 10 ⇒ E[X] = 1/λ = 10 Expected time for two visitors = 2 ∗ E[X] = 20 minutes, since both are independent of other visitor."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The probability density function of the time X (in minutes) between calls at the customer care is given by f (x) = ( 1 m .e −x m if 0 ≤ x <∞ 0 otherwise Find the probability that time between calls exceeds the mean time."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "1 − 1e"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1 − e"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1e"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "e"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Mean time is 1λ = 11m = m P (X ≥ t) = e−λt P (X ≥ 1λ ) = e−λ∗ 1λ = e−1 = 1e For example: m=4 Mean time is 1λ = 114 = 4 Page 6 P (X ≥ t) = e−λt P (X ≥ 1λ ) = e−λ∗ 1λ = e−1 = 1e"
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The lifetime of a light bulb is exponentially distributed with a mean life of n months. If there are p% chances that a light bulb will last at most t months, then what is the value of t?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "n × ln \u0012 100 − p 100 \u0013"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "n × ln \u0012 100 100 − p \u0013"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1n ln \u0012 100 − p100 \u0013"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1n ln \u0012 100100 − p \u0013"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Given mean of exponential random variable (life of light bulb)= n months. ⇒ 1λ = n, ⇒ λ = 1n . Given P (X ≤ t) = p100 ⇒ 1 − e−λt = p100 ⇒ e−λt = 1 − p100 = 100 − p100 ⇒ eλt = 100100 − p λt = ln \u0012 100 100 − p \u0013 t = 1λ ln \u0012 100100 − p \u0013 t = n × ln \u0012 100 100 − p \u0013 Hence, option b is correct. For example: n=18 and p=60 Given mean of exponential random variable (life of light bulb)=18 months. ⇒ 1λ = 18, ⇒ λ = 118 . Given P (X ≤ t) = 0.6 ⇒ 1 − e−λt = 0.6 Page 7 ⇒ e−λt = 0.4 λt = ln 2.5 1 18 t = ln 2.5 t = 18 ln 2.5 Page 8"
+        }
+      ]
+    }
+  ],
+  "week": 12
+}

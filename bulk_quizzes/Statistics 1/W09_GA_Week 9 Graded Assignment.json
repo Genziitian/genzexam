@@ -1,0 +1,258 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Week 9 Graded Assignment",
+  "subject": "Statistics 1",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A discrete random variable X can take the values 1 , 2, 3,··· , n. For these values the cumulative distribution function is deﬁned by: F (x) = P (X≤ x) = x2 + km ; x = 1, 2, 3,··· , nFind the value of k."
+        }
+      ],
+      "acceptable_answers": [
+        "k = m− n2"
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "F (n) = P (X≤ n) = 1 =⇒ n2 + km = 1 Hence, k = m− n2 Suppose, we substitute values of n and m as 3 and 40 respectively, then 32 + k 40 = 1 k = 31"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "An organization in Texas organizes a lucky draw this month. n thousand tickets are sold for m$ each. Each has an equal chance of winning. x tickets will win a$, y tickets will win b$ and z tickets will win c$. Let, the random variable X denote the net gain from purchase of one ticket. What is the probability that X takes a value less than b? (Enter the answer correct to 4 decimal place)"
+        }
+      ],
+      "acceptable_answers": [
+        "n× 1000− xn× 1000"
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "X can take values−m, c− m, b− m and a− m P (X < b ) = P (X = b− m) + P (X = c− m) + P (X =−m) P (X < b ) = yn× 1000 + zn× 1000 + n× 1000− x− y− zn× 1000 P (X < b ) = n× 1000− xn× 1000 Suppose, we substitute values of n, m, x, a, y, b, z and c as 5, 1, 1, 1000, 2 500, 10 and 100 respectively, then P (X < 500) = P (X = 499) + P (X = 99) + P (X =−1) = 25000 + 105000 + 49875000 Therefore, P (X < 500) = 49995000 = 0.9998 1"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In a group of n people, x are photographers and n− x are journalists. m people are randomly picked from a group of these n people. Let, Y be a random variable which represents the number of photographers. How many possible values can the random variable Y take?"
+        }
+      ],
+      "acceptable_answers": [
+        "m + 1"
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Possible values of Y are 0 , 1, 2, ..., m. Hence, the number of possible values Y can take is m + 1. Suppose, we substitute values of m, x and n as 8, 240 and 15 respectively, then possible values of Y are 0, 1, 2, ...,8 Hence, the number of possible values Y can take is 9."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following is/are discrete random variables?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Number of tires produced in an automotive tire factory every 30 minutes."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The number of kernels(pieces) of popcorn in a 1 kg container."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The time between customers entering a checkout lane at a retail store."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The amount of rain recorded at an airport one day. e. The amount of liquid in a 2 litres bottle of soft drink. f. The number of no-shows for every 1000 reservations made with a commercial airline."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The number of tires produced in an automotive tire factory every 30 minutes can have countable possible values, and hence it denotes a discrete random variable. Hence, option (a) is correct. The number of kernels of popcorn in a 1 kg container also have countable possible val- ues, it cannot take all values between some interval and hence it is a discrete random variable. So option (b) is correct. The time between customers entering a checkout lane at a retail store can take any values between some interval. Hence, it is a continuous random variable. So, option (c) is incorrect. Again, the amount of rain recorded at an airport one day and the amount of liquid in a 2 litres bottle of soft drink can take any values between some interval. Hence, they are continuous random variable. So, option (d) and (e) are incorrect. 2 The number of no-shows for every 1000 reservations made with a commercial airline can have countable possible values, and hence it denotes a discrete random variable. Hence, option (f) is correct."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A biased coin with probability of heads 0 .75 is tossed three times. Let X be a random variable that represents the number of head runs, a head run being deﬁned as a con- secutive occurrence of at least two heads. Then the probability mass function of X is given by:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "P (X = x) = { 0.375 for x = 0 0.625 for x = 1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "P (X = x) = { 0.297 for x = 0 0.703 for x = 1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "P (X = x) =    0.016 for x = 0 0.140 for x = 1 0.422 for x = 2 0.422 for x = 3"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "P (X = x) =    0.016 for x = 0 0.844 for x = 1 0.140 for x = 2"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Possible outcomes X P (X = x) HHH 1 0.422 HHT 1 0.141 HTH 0 0.141 HTT 0 0.047 THH 1 0.141 THT 0 0.047 TTH 0 0.047 TTT 0 0.016 Table 9.1 3 Hence, the probability mass function of X is given by: P (X = x) = { 0.297 for x = 0 0.703 for x = 1"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Nina has n music sessions in a week. She attends the sessions n days a week x% of the time, n− 1 days y% of the time, one day z% of the time, and no days p% of the time. Let, X be a discrete random variable representing the number of sessions she attends in a week. Suppose one week is randomly selected, what is the probability that the random variable X takes the value at most n− 1?(Enter the answer correct to 2 decimal places)"
+        }
+      ],
+      "acceptable_answers": [
+        "1− x100"
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The pmf of random variable X is given by: P (X = k) =    x 100 for k = n y 100 for k = n− 1 z 100 for k = 1 p 100 for k = 0 P (X≤ n− 1) = P (X = 0) + P (X = 1) + P (X = n− 1) = p100 + z100 + y100 = p + y + z100 = 1− x100 Suppose, we substitute values of n, x, y, z and p as 5, 50, 20, 10 and 20 respectively, then The pmf of random variable X is given by: P (X = k) =    0.5 for k=5 0.2 for k=4 0.1 for k=1 0.2 for k=0 4 P (X≤ 4) = P (X = 0) + P (X = 1) + P (X = 4) = 0.2 + 0.1 + 0.2 = 0.5"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the value of k for which k ( m n )x ( x = 0, 1, 2, ...) is a pmf. (Enter the answer correct up to 2 decimal places)"
+        }
+      ],
+      "acceptable_answers": [
+        "n− mn"
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "For pmf: k [( m n )0 + ( m n )1 + ( m n )2 +··· ] = 1 =⇒ k. 1 1− mn = 1 =⇒ k. nn− m = 1 Therefore, k = n− mn . For example: Take m = 3 and n = 8. For pmf: k [(3 8 )0 + (3 8 )1 + (3 8 )2 +··· ] = 1 =⇒ k. 1 1− 38 = 1 =⇒ k.85 = 1 Therefore, k = 58."
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Using the information in the previous question, calculate P (X = 2). (Enter the answer correct up to 2 decimal places)"
+        }
+      ],
+      "acceptable_answers": [
+        "(n− m)n .( mn)2"
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "P (X = 2) = (n− m)n .( mn)2. For example: Take m = 3 and n = 8. For pmf: k [(3 8 )0 + (3 8 )1 + (3 8 )2 +··· ] = 1 5 =⇒ k. 1 1− 38 = 1 =⇒ k.85 = 1 Therefore, k = 58. And, P (X = 2) = 58 .(38)2 = 0.09."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "From a box A containing 3 white and 6 black balls, 5 balls are transferred into an empty box B. Let X be a random variable that represents the number of white balls which are transferred from A to B. What value of random variable will have the least probability?"
+        }
+      ],
+      "numerical_answer": 0.0,
+      "numerical_tolerance": 0,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Let us deﬁne the following cases: Transfer of 0 white and 5 black balls. Transfer of 1 white and 4 black balls. Transfer of 2 white and 3 black balls. Transfer of 3 white and 2 black balls. Probabilities for all cases: (i) P (X = 0) = 6C 5 9C 5 = 0.048 (ii) P (X = 1) = 3C 1 6C 4 9C 5 = 0.357 (iii) P (X = 2) = 3C 2 6C 3 9C 5 = 0.476 (iv) P (X = 3) = 3C 3 6C 2 9C 5 = 0.119. Thus, X = 0 has the least probability."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The probability mass function of a random variable X is given by: P (X = x) =    3k2− 3k for x = 0 2k2− 1 for x = 1 0 otherwise Determine the value of k given k > 0."
+        }
+      ],
+      "numerical_answer": 1.0,
+      "numerical_tolerance": 0,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "6 From properties of pmf, p(0) + p(1) = 1 3k2− 3k + 2k2− 1 = 1 5k2− 3k− 2 = 0 5k2− 5k + 2k− 2 = 0 5k(k− 1) + 2(k− 1) = 0 (5k + 2)(k− 1) = 0 k =−25 or k = 1 As k > 0, therefore k = 1. 7"
+        }
+      ]
+    }
+  ],
+  "week": 9
+}

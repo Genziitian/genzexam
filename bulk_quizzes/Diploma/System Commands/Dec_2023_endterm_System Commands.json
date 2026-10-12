@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Dec 2023 Endterm",
+  "subject": "System Commands",
+  "section": "endterm",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Answers Case Sensitive : No"
+        }
+      ],
+      "acceptable_answers": [
+        "If"
+      ],
+      "marks": 8,
+      "difficulty": "medium"
+    }
+  ]
+}

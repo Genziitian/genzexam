@@ -1,0 +1,114 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "2022 term papers Quiz1",
+  "subject": "Business Analytics",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the elasticity of this curve when the price is Rs.50?"
+        }
+      ],
+      "numerical_answer": 2.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the satiating price for this curve?"
+        }
+      ],
+      "numerical_answer": 750.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the elasticity between any two points of the given demand response curve (Note: Do not assume that it is linear and do not assume that it is a constant elasticity curve)?"
+        }
+      ],
+      "numerical_answer": 2.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the demand when the price is Rs.1?"
+        }
+      ],
+      "numerical_answer": 10.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the price elasticity for the demand response curve? Question Id : 640653345393 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Calculator : None Response Time : N.A You are given the following contingency table based on sample data where different cities and their brand preferences are provided. You perform a chi-squared test of independence to make inferences about the population from this sample. Sub questions"
+        }
+      ],
+      "numerical_answer": 1.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "From the given contingency table, find the expected frequency of Chennai people preferring brand B? Note: Do not round off the values in the intermediate iterations. Round off to two decimal values only at the last step."
+        }
+      ],
+      "acceptable_answers": [
+        "200 to 204"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Suppose a factory manufactures products on three machines A, B and C. Suppose 65% of total output comes from machine A, 30% of total output comes from machine B and 5% of total output comes from machine C. From the past data, it is known that 1% of products by machine A are defectives, 2% of products by machine B are defectives and 10% of products by machine C are defectives. What is the probability that the product has come from machine C given that it is a defective?"
+        }
+      ],
+      "acceptable_answers": [
+        "0.24 to 0.34"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A data set with 200 data points on 15 variables is provided. Chi-square goodness of fit test is conducted on a variable in the data-set, to see if it follows an exponential distribution. If the dataset is binned into 10 bins, then how many degrees of freedom does the chi-square statistic have?"
+        }
+      ],
+      "numerical_answer": 8.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ]
+}

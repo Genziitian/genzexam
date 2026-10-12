@@ -1,0 +1,185 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Week 8 Graded Assignment",
+  "subject": "Statistics 1",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Zaheer Khan has taken m ﬁve-wicket hauls in his last n matches. His match records are selected at random, one by one, and analyzed. If none of the match records is analyzed more than once, then what is the probability that the kth one analyzed is his last ﬁve-wicket haul match?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "mCm−1×n−m Ck−m nCk−1 × 1n− k + 1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "mCm−1×n−m Ck−m nCk−1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1n− k + 1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "n−mCk−m nCk−1"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Let A be the event of getting exactly ( m− 1) ﬁve-wicket haul matches when the ﬁrst (k− 1) matches are analyzed. Let B be the event that kth match analyzed is ﬁve-wicket haul match. Now, P(A)= mCm−1×n−m Ck−m nCk−1 P (B|A) = Probability that the kth match analyzed is ﬁve-wicket haul match given that the analysis of the ﬁrst k− 1 matches shows m− 1 ﬁve-wicket haul matches. = 1n− k + 1 Required Probability = P (A∩B) = P (A)×P (B|A) = mCm−1×n−m Ck−m nCk−1 × 1n− k + 1 Hence, option ( a) is correct. Example: n=15,k=9, m=4 Let A be the event of getting exactly 3 ﬁve-wicket haul matches when the ﬁrst 8 matches are analyzed. Let B be the the event that 9 th match analyzed is ﬁve-wicket haul match. Now, P(A)= 4C3×11 C5 15C8 P (B|A) = Probability that the 9 th match analyzed is a ﬁve-wicket haul match given that the analysis of the ﬁrst 8 matches shows 3 ﬁve-wicket haul matches = 4− 315− 8 = 17 1 Required Probability = P (A∩ B) = P (A)× P (B|A) = 4C3×11 C5 15C8 × 17 = 8195"
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A and B predicts the outcomes of a cricket match and their chances of predicting the runs scored by a speciﬁc batsman correctly are ab and cd respectively independent of each other. If the probability of them predicting the same wrong score is pq . Given that they predicted the same score, ﬁnd the probability that their answer is correct."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "q− pq"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "p(b− a)(d− c)qac + p(b− a)(d− c)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "qacqac + p(b− a)(d− c)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "p(b− a)(d− c)q"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Let us deﬁne the following events: E1: Both A and B predicted the score correctly. E2: Exactly one of them predicted the score correctly. E3: Neither of them predicted the score correctly. E: They predicted the same score. Now, P (E1) = ab× cd = acbd ; P (E|E1) = 1 P (E2) = ab× d− cd + b− ab × cd = a(d− c) + c(b− a)bd ; P (E|E2) = 0 P (E3) = b− ab × d− cd = (b− a)(d− c)bd ; P (E|E3) = pq Hence, By Bayes’ Rule: P (E1|E) = P (E1)× P (E|E1)P (E1)× P (E|E1) + P (E2)× P (E|E2) + P (E3)× P (E|E3) = ac bd× 1 ac bd× 1 + a(d− c) + c(b− a)bd × 0 + (b− a)(d− c)bd × pq = qacqac + p(b− a)(d− c) Hence, option ( c) is correct. 2 For example: a=1, b=3, c=1, d=4, p=1 and q=228 Let us deﬁne the following events: E1: Both A and B predicted the score correctly. E2: Exactly one of them predicted the score correctly. E3: Neither of them predicted the score correctly. E: They predicted the same score. Now, P (E1) = 13× 14 = 112 ; P (E|E1) = 1 P (E2) = 13× 34 + 23× 14 = 512 ; P (E|E2) = 0 P (E3) = 23× 34 = 612 ; P (E|E3) = 1228 Hence, By Bayes’ Rule: P (E1|E) = P (E1)× P (E|E1)P (E1)× P (E|E1) + P (E2)× P (E|E2) + P (E3)× P (E|E3) = 1 12× 1 1 12× 1 + 512× 0 + 612× 1228 = 1 12× 3838 1 12× 3838 + 0 + 112× 138 = 3839 An item is produced in three factories A, B and C. Factory A produces x times the number of items produced by factory B, and the factories B and C produces the same number of items. It is known that p%, q%, r% of the items produced by factories A, B and C respectively are defective. All items produced in the three factories are stocked, and an item is selected at random. On the basis of given information, answer the questions (3) and (4)."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "During the monsoon, it rains one-third of the days and aﬀects students travel to school. The probability that there will be heavy traﬃc on a rainy day is 0.5 and on a non-rainy day is 0 .25. If it rains and there is heavy traﬃc, the probability of a student arriving late to school is 0.5. If it is a clear day and there is no traﬃc, this probability is reduced by 38. In other possible situations, the probability of a student reaching school late0.25. If on a randomly selected day, a student arrives late to school, then what is the 7 probability that it rained that day? Hint: Consider the event as, H= There is heavy traﬃc H c= There is no traﬃc."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "18"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "611"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1148"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of the above"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Let us deﬁne the following events: H: There is heavy traﬃc. R: Rainy-day. E: Student is late for school. Now, we are given that, P (R) = 13 P (H|R) = 0.5 and, P (H|Rc) = 0.25 P (E|R∩H) = 0.5, P (E|Rc∩H c) = 0.5−38 = 18 and P (E|Rc∩H) = P (E|R∩H c) = 0.25 P (R∩ H∩ E) = P (R)P (H|R)P (E|R∩ H) = 13× 12× 12 = 112 Similarly, P (Rc∩ H∩ E) = P (Rc)P (H|Rc)P (E|Rc∩ H) = 23× 14× 14 = 248 P (R∩ H c∩ E) = P (R)P (H c|R)P (E|R∩ H c) = 13×(1− 12)× 14 = 124 P (Rc∩ H c∩ E) = P (Rc)P (H c|Rc)P (E|Rc∩ H c) = 23× 34× 18 = 348 Therefore, P (E) = P (R∩ H∩ E) +P (Rc∩ H∩ E) +P (R∩ H c∩ E) +P (Rc∩ H c∩ E) = 112 + 248 + 124 + 348 = 1148 Also, P (R∩ E) = P (R∩ H∩ E) + P (R∩ H c∩ E) = 112 + 124 = 324 Now, Required Probability; P (R|E) = P (R∩ E)P (E) = 3 24 11 48 = 611 Hence, option ( b) is correct. 8"
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "There are two shops, A and B, selling t-shirts in the market. Shop A has stock of n red and 2 black t-shirts and Shop B has a stock of 2 red and n black t-shirts. One of the shops is selected at random and two t-shirts are purchased from it. If both the t-shirts purchased are red and the probability that it was purchased from a shop A is 6 7, ﬁnd the value of n."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "3"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "4"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "5"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "6"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Let us deﬁne the following events: E1: Shop A is selected. E2: Shop B is selected. E: Two t-shirts purchased are of red color. Now, P (E1) = P (E2) = 12 P (E|E1) = nC2 n+2C2 = n(n− 1)(n + 2)(n + 1) and, P (E|E2) = 2C2 n+2C2 = 2(n + 2)(n + 1) Using Bayes’ Theorem, we get: P (E1|E) = P (E1)P (E|E1)P (E1)P (E|E1) + P (E2)P (E|E2) = 67 (Given) =⇒ 1 2× n(n− 1)(n + 2)(n + 1) 1 2× n(n− 1)(n + 2)(n + 1) + 12× 2(n + 2)(n + 1) = 67 =⇒ n(n− 1)n(n− 1) + 2 = 67 7n(n− 1) = 6n(n− 1) + 12 =⇒ n2− n− 12 = 0 Therefore, n = 4,−3. Since, n cannot be negative. So, n = 4 Hence, option ( b) is correct. 9"
+        }
+      ]
+    }
+  ],
+  "week": 8
+}

@@ -1,0 +1,199 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Week 6 Graded Assignment",
+  "subject": "English 1",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the central argument of Betty Kelly‟s comments?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Kids need more freedom and less supervision."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Kids need a place to play outdoors."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Parents nowadays are irresponsible."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The town council needs to be more responsive."
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The word vehemently, as used in the passage, most nearly means"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Vehicle"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Passive"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Inadvertently"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Passionately"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which word in the paragraph refers to „ writing or drawings made on a wall or other surface, usually illegal, involving the unauthorized marking of public space by an individual or group’?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Tunnel"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Video games"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Graffiti"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Ramp"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A few of those who spoke, howe ver, endorsed the proposal. What is the meaning of the underlined word?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "To reject"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To oppose"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To reform"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To accept"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the meaning of „put in (something)’ in the paragraph?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Replace"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Destroy"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "make it ready to operate"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Eliminate"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "week": 6
+}

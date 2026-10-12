@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "May 2023 Quiz1",
+  "subject": "Machine Learning Foundations",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let P1 be the projection matrix onto the line spanned by the vector a = [1, 2, 3]T . Let P2 be the projection matrix that projects vectors onto the plane perpendicular to span of a. Find the determinant of P1 + P2."
+        }
+      ],
+      "numerical_answer": 1.0,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Question Id : 640653577880 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "numerical_answer": 3.5,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Using the least square approximation, find the length of the projection vector p of b onto the column space of A. Enter the answer correct to two decimal places."
+        }
+      ],
+      "acceptable_answers": [
+        "3.12 to 3.16"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Sept 25 Quiz2",
+  "subject": "Machine Learning Techniques",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What class would belong to? Assume that no Laplacian smoothing has been done."
+        }
+      ],
+      "numerical_answer": 0.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following trained decision tree learned for the dataset in Figure 1. Find the training error of the decision tree for the given dataset. Enter the answer correct to one decimal place."
+        }
+      ],
+      "numerical_answer": 0.4,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    }
+  ]
+}

@@ -1,0 +1,141 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Week 2 Graded Assignment",
+  "subject": "Computational Thinking",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following procedure counts the number of students from Bengaluru whose total marks are less than the average total marks from the “Scores” dataset and stores it in variable A. Let avgT be the average total marks. The programmer may have made mistakes in one or more steps. Identify all such steps (if any). It is a Multiple Select Question (MSQ). Step 1 : Arrange all cards in a single pile called Pile 1 Step 2 : Initialize variable A to 0 Step 3 : If Pile 1 is empty then stop the iteration Step 4 : Read the top card in Pile 1 Step 5 : If X.CityTown == “Bengaluru” and X.Total > avgT then add 1 to A Step 6 : Move the current card to another pile called Pile 2 and repeat from Step 2"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Step 5"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Step 6"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Step 2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Step 3 (e) No mistake"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The goal is to count the number of students from Bengaluru whose total marks are less than the average total marks from the “Scores” dataset and stores it in variable A. In Step 5 it is clear that the second condition in the If statement is wrong, it should be checking if X.Total < avgT and if that returns true, then only increment variable A by 1. Again, we can see that in Step 6, after the current card is moved to Pile 2, the iteration is directed to start again from Step 2 which is incorrect because that way variable A will again be set to 0, and at the end of execution of all iterations, it'll be impossible for A to have any value other than 0 or 1. To correct the statement, the iteration should start from Step 3. Hence options (a) and (b) are correct."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "At the end of the execution of the given procedure on the “Scores” dataset, what will A and B represent? (MCQ) Step 1. Arrange all cards in a single pile called Pile 1 Step 2. Maintain two variables A, B and initialize A to101 and B to 0. Step 3. If Pile 1 is empty then stop the iteration Step 4. Read the top card in Pile 1 Step 5. If A > Chemistry marks , then store Chemistry marks in A Step 6. If B < Mathematics marks, then store Mathematics marks in B Step 7. Move the current card to another pile called Pile 2 and repeat from Step 3"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "A = Lowest marks in Chemistry, B = Highest marks in Mathematics"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A = Highest marks in Chemistry, B = Lowest marks in Mathematics"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A = Lowest marks in Chemistry, B = 0"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A = 101, B = Lowest marks in Mathematics"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "In the start, A is initialized to 101 and B is initialized to 0. In Step 5, A is being updated if A > Chemistry marks, then this is nothing but A is keeping track of minimum marks in Chemistry. In Step 6, B is updated if B < Mathematics marks , this is nothing but the condition to keep track of maximum marks in Mathematics. So, the correct answer is option (a). Question-3 [3 Marks] The following procedure took data from the “Scores” dataset and A represents the number of male students whose Physics marks are less than the Mathematics marks but equal to their Chemistry marks. The programmer may have made mistakes in one or more steps. Identify all such steps (if any). It is a Multiple Select Question (MSQ). Step 1 : Arrange all cards in a single pile called Pile 1 Step 2 : Initialize variable A to 1 Step 3 : If Pile 1 is empty then stop the iteration Step 4 : Read the top card in Pile 1 Step 5 : If Gender is ‘M’ and Physics marks = Mathematics marks and Chemistry marks > Physics marks then add 1 to A Step 6 : Move the current card to another pile called Pile 2 and repeat from Step 3 (a) Step 2 (b) Step 5 (c) Step 6 (d) No mistake Here the goal is to count the number of male students whose Physics marks are less than the Mathematics marks but equal to their Chemistry marks, and store it in variable A. We can see in Step 2 that the initialization of variable A is wrong as it is initialized with 1. This means that even before we start checking the conditions for any card, we are assuming that there exists at least one such male student whose Physics marks are less than the Mathematics marks but equal to their Chemistry marks. This will always give one extra student in the result, after the execution. Again, in Step 5 we can clearly see the the conditions are wrong, it should check whether Physics marks < Mathematics marks and Chemistry marks = Physics marks are satisfied. Hence options (a) and (b) are correct. Question - 4 [2 Marks] At the end of the execution of the given procedure on the “Words” dataset, what will A represent? This is a Multiple Choice Question (MCQ) Step 1. Arrange all cards in a single pile called Pile 1 Step 2. Maintain two variables A, B and initialize A to 1000 and B to 0 Step 3. If Pile 1 is empty then stop the iteration Step 4. Read the top card in Pile 1 Step 5. Add Letter Count to variable B Step 6. If Word does not end with a full stop then execute Step 9 Step 7. If Word ends with a full stop and B < A then store B in A Step 8. Re-initialize the variable B to 0 Step 9. Move the current card to another pile called Pile 2 and repeat from Step 3 (a) Length of the shortest sentence based on the number of words (b) Length of the longest sentence based on the number of words (c) Length of the longest sentence based on the number of letters (d) Length of the shortest sentence based on the number of letters Step 5: B stores the sum of the letter counts of the words but how many words? Step 6: It says if the word does not end with full stop then go to step 9 which is nothing but repeating the iteration. It means when a word ends with a full stop, then step 7 and 8 will be executed. From step 8 it is clear that whenever the word ends with a full stop then B is being reinitialized to 0. This means B stores the letter counts in a sentence. Step 7: For every sentence, A is compare with B. The value of A gets updated with the value of B whenever B is less than A. As A is initialized with 1000, and B stores the number of letters in a sentence, then A stores the minimum number of letters in a sentence i.e., length of shortest sentence in terms of number of letters. Values of a, b, c step 2 (a < b) step 3 (b < c) step 4 (a < c) current value of X a = 5, b = 6, c = 7 True Go to step 4 Skipped True X=a X = a = 5 (Smallest among a, b, and c) a = 6, b = 7, c = 5 True Go to step 4 Skipped False X=c X = c = 5 (Smallest among a, b, and c) a = 7, b = 5, c = 6 False Go to step 3 True X=b Skipped X = b = 5 (Smallest among a, b, and c)"
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Assume that a, b, and c are three distinct integers. What will X represent after the execution of the following procedure? (MCQ) Step 1. Maintain variable X and Initialize it to 0 Step 2. If a < b then go to step 4 Step 3. If b < c then store b in X else store c in X and stop the procedure. Step 4. If a < c then store a in X else store c in X"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Largest among a, b, and c"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Smallest among a, b, and c"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "X will always be 0"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Second smallest among a, b, and c"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Let us take multiple values of a, b, and c to understand this problem. Before execution X = 0 ## Question-6 [3 Marks] What will be the value of X after the execution of the following procedure using the “Scores” dataset? (MCQ) Step 1: Arrange all cards in a single pile called Pile 1 Step 2: Maintain variables A, B, C, D, Y and Initialize them all to 0 except Y. Initialize Y to 100 Step 3: Maintain a variable X and initialize it to “None” Step 4: If Pile 1 is empty then stop the iteration Step 5: Read the top card in Pile 1 Step 6: If the Town/City is “Chennai” then add one to A. If A < Y then store A in Y and “Chennai” in X Step 7: If the Town/City is “Bengaluru” then add one to B. If B < Y then store B in Y and “Bengaluru” in X Step 8: If the Town/City is “Madurai” then add one to C. If C < Y then store C in Y and “Madurai” in X Step 9: If the Town/City is “Vellore” then add one to D. If D < Y then store D in Y and “Vellore” in X Step 10: Move the current card to another pile called Pile 2 and repeat from Step 4 (a) Chennai (b) Bengaluru (c) Madurai (d) Vellore Here in Step 2, variables A, B, C, D are initialized to 0 and Y is initialized to 100, whereas in Step 3, variable X is initialized to ”None” which indicates that this variable is used to store value of string datatype. If we observe Steps 6 to 9 then we can notice that the computation in these steps is identical except it is for different city/town. Variables A, B, C and D store the number of cards from Chennai, Bengaluru, Madurai and Vellore respectively. Variable Y stores minimum among A, B, C and D. These steps also store the name of the city/town which corresponds to the minimum in the variable X. Here is the full list of cards which belong to the respective cities. City/Town Card No. Total no. of cards Chennai 2, 3, 5, 10, 12, 17, 25, 26 8 Bengaluru 8, 9, 11, 21, 23 5 Madurai 4, 13, 24, 27, 28 5 Vellore 7, 20, 29 3 From the table it is clear that there are less number of cards which belong to Vellore than other cities. Hence, the correct answer of this question is Vellore i.e option (d). Question-7 [3 Marks] The following flowchart is executed using the “Scores” dataset. Assume that Rida and Siddharth both have scored the lowest total marks across the whole dataset which is 173. Let cards are arranged in such a way that Rida's card is below Siddharth's card, what will the values of A and B be at the end of the execution? (MCQ) (a) A = \"Siddharth\", B = 173 (b) A = 173 , B = \"Rida\" (c) A = \"Rida\", B = 173 (d) A = 173, B = \"Siddharth\" It is clear from the second conditional block with condition (X.Total <= A) that A is keeping track of minimum total marks in the dataset and therefore, B is keeping track of the student with minimum total marks. But what if two or more than two students have minimum total marks? As cards are arranged in such a way that Rida's card is below Siddharth's card, then Siddharth's card will be read first. A will be updated to 173 and B will be updated to \"Siddharth\". After Siddharth's card when we reach to Rida's card, the condition X.Total <= A will again be True and therefore, there will A will contain the same value 173 but B will be updated to \"Rida\". Hence, option (b) is correct. ## Question-8 [3 Marks] The following pseudocode is executed using the “Scores” dataset. What will count represent at the end of the execution of pseudocode? (MCQ) (a) Number of students who scored less than 80 marks in at least two subjects (b) Number of students who scored more than 80 marks in exactly two subjects (c) Number of students who scored more than 80 marks in all three subjects (d) Number of students who scored less than 80 marks in at least one subject At first Count is initialized to 0. count = 0 while(Pile 1 has more cards){ Read the top card X from Pile 1 C = 0 if(X.Mathematics > 80){ C = C + 1 } if(X.Physics > 80){ C = C + 1 } if(X.Chemistry > 80){ C = C + 1 } if(C == 2){ count = count + 1 } Move X to Pile 2 } 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 Within the while loop, before every iteration, C is initialized to 0. C is incremented every time a student has scored marks higher than 80 in Mathematics. C is incremented every time a student has scored marks higher than 80 in Physics. C is incremented every time a student has scored marks higher than 80 in Chemistry. Count is incremented if C contains the value 2 at the end of each iteration, which means that the student has scored marks greater than 80 in exactly 2 subjects. Question-9 [2 Marks] What will (A–B) represent after execution of the following procedure using the “Shopping Bills” dataset? (MCQ) Step 1 : Arrange all cards in a single pile called Pile 1 Step 2 : Initialize variables A and B to 0 Step 3 : If Pile 1 is empty then stop the iteration Step 4 : Read the top card in Pile 1 Step 5 : If the bill contains an item “Bananas” then add 1 to variable A Step 6 : If Total < 600 and the bill contains an item “Bananas” then add 1 to variable B Step 7 : Move the current card to another pile called Pile 2 and repeat from Step 3 (a) Number of bills that contain the item \"Bananas\" and total is more than or equal to 600 (b) Number of bills that contain the item \"Bananas\" and total is less than 600 (c) Number of bills that do not contain the item \"Bananas\" and total is more than 600 (d) Number of bills that contain the item \"Bananas\" and total is less than 600 The procedure is executed using the “Shopping Bills” dataset. Step 5: A is incremented if a bill contains the item \"Bananas\". So A represents the number of bills that contain the item \"Bananas\". Step 6: B is incremented if a bill has total amount less than 600 as well as contains the item \"Bananas\". So B represents the number of bills that have a total amount less than 600 and that contain the item \"Bananas\". At the end of execution A-B would represent the number of bills that contain the item \"Bananas\" and whose total amount is greater than or equal to 600. So option (a) is correct. Question-10 [3 Marks] The given pseudocode is executed using the “Scores” dataset. At the end of the execution, C will be True if there are more female students from Chennai than male students from Bangalore. Choose the correct option to complete the pseudocode. (MCQ) (a) Statement 1: A = A + 1, Statement 2: A > B (b) Statement 1: A = A - 1, Statement 2: A > B (c) Statement 1: A = A + 1, Statement 2: A < B (d) Statement 1: A = A - 1, Statement 2: A < B A = 0, B = 0, C = False while (Pile 1 has more cards) { Read the top card X from Pile 1 if (X.Gender == ‘F’){ if (X.CityTown == “Chennai”){ *** Statement 1 *** } } Move card X to Pile 2 } while (Pile 2 has more cards) { Read the top card X from Pile 2 if (X.CityTown == “Bengaluru”) { if (X.Gender == 'M'){ B = B + 1 } } Move card X to Pile 1 } if (*** Statement 2 ***){ C = True } 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 Goal is that at the end of the execution, C will be True If there are more female students from Chennai than male students from Bangalore. To get the desired result, we need to find the number of cards where Gender is 'F' and City/Town is 'Chennai'. So in the first while loop, A needs to be incremented every time the conditions are met. Hence statement 1 will be A = A + 1. Again in the second while loop, B counts the number of cards where Gender is not 'F' and City/Town is 'Bengaluru'. So B is incremented every time the conditions are met. For C to be True, there should be more female students from Chennai than male students from Bangalore. Hence statement 2 will be A > B. Hence option (a) is the correct answer."
+        }
+      ]
+    }
+  ],
+  "week": 2
+}

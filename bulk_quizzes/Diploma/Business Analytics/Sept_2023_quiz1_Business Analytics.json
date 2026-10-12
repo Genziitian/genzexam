@@ -1,0 +1,115 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Sept 2023 Quiz1",
+  "subject": "Business Analytics",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the expected value for the statistical test to be performed? (Note: give only a numerical value rounded to 2 decimal places. For example, if your answer is 10.1253, then input the answer as “10.13”)"
+        }
+      ],
+      "numerical_answer": 5.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If three bins of equal sizes {that is Bin-1 = [70-80), Bin-2= [80 to 90) and Bin-3 = [90 to 100)} are considered. Then, what is the value of the computed test statistic for the statistical test to be performed? (Note: give only a numerical value rounded to 2 decimal places. For example, if your answer is 10.1253, then input the answer as “10.13”)"
+        }
+      ],
+      "acceptable_answers": [
+        "1.60 to 1.90"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the number of degrees of freedom for the statistical test to be performed? (Note: give only a numerical value rounded to 2 decimal places. For example, if your answer is 10.1253, then input the answer as “10.13”)"
+        }
+      ],
+      "numerical_answer": 2.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If the aim is to understand if the “Gender” categories and “Completion” categories (including completion of any degree and discontinuation) are independent of each other, then what is the value for the computed test statistic? (Note: round your final answer to two decimal places. Example: If your answer is “1.2354” enter it as “1.24”)"
+        }
+      ],
+      "acceptable_answers": [
+        "15.50 to 16.30"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the number of degrees of freedom for the statistical test to be performed? (Note: give only a numerical value rounded to 2 decimal places. For example, if your answer is 10.1253, then input the answer as “10.13”)"
+        }
+      ],
+      "numerical_answer": 3.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the market size for the “Lunch Buffet” at the restaurant? (Note: give only a numerical value rounded to 2 decimal places. For example, if your answer is 10.1253, then input the answer as “10.13”)"
+        }
+      ],
+      "numerical_answer": 400.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the elasticity of the linear demand response curve at a price of 500? (Note: give only a numerical value rounded to 2 decimal places. For example, if your answer is 10.1253, then input the answer as “10.13”)"
+        }
+      ],
+      "acceptable_answers": [
+        "0.40 to 0.41"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the satiating price of the linear demand response curve for the “Lunch Buffet” demand at the restaurant? (Note: give only a numerical value rounded to 2 decimal places. For example, if your answer is 10.1253, then input the answer as “10.13”)"
+        }
+      ],
+      "numerical_answer": 1000.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ]
+}

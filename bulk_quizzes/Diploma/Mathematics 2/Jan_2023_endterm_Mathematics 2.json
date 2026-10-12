@@ -1,0 +1,127 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Jan 2023 Endterm",
+  "subject": "Mathematics 2",
+  "section": "endterm",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the maximum product of three non-negative numbers whose sum is 6?"
+        }
+      ],
+      "numerical_answer": 8.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Question Id : 640653564156 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Sub questions"
+        }
+      ],
+      "numerical_answer": 6.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "2 Question Id : 640653564167 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix"
+      ],
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "From the list of given terms find out the best possible options for each of the given subquestions: Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "-72 Question Id : 640653564174 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A local maxima is/can be _______________ . (Enter 2 best possible options. Enter only the serial numbers of those options in increasing order without adding any comma or space in between them.) [Suppose your answer is 7 and 17, then you should enter 717]"
+        }
+      ],
+      "numerical_answer": 1012.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Orthogonal matrix of order 3 has ______________ . (Enter 2 best possible options. Enter only the serial numbers of those options in increasing order without adding any comma or space in between them.) [Suppose your answer is 7 and 17, then you should enter 717]"
+        }
+      ],
+      "numerical_answer": 316.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If the tangent plane exists for a function at a point then at that point ________________ . (Enter 4 best possible options. Enter only the serial numbers of those options in increasing order without adding any comma or space in between them.) [Suppose your answer is 7, 14, 15 and 17, then you should enter 7141517]"
+        }
+      ],
+      "numerical_answer": 13141519.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Some of the conditions that need to be checked to identify a vector space V are _______________ . (Enter 5 best possible options. Enter only the serial numbers of those options in increasing order without adding any comma or space in between them.) [Suppose your answer is 7, 14, 11, 15 and 17, then you should enter 714111517]"
+        }
+      ],
+      "numerical_answer": 45678.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find Rank(A)."
+        }
+      ],
+      "numerical_answer": 2.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ]
+}

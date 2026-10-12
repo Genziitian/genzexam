@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Sept 25 Quiz2",
+  "subject": "Dlgenai",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A deep learning model contains a stack of three consecutive 3x3 convolutional layers, each with a stride of 1and sufficient padding to preserve spatial dimensions. What is the side length of the effective receptive field of a neuron in the third layer with respect to the input?"
+        }
+      ],
+      "numerical_answer": 7.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Week 9 Practice Assignment",
+  "subject": "Mathematics 1",
+  "section": "practice",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Suppose a wire of length 31 is cut into two pieces. One part is bent into a circle and other into a square. Let x be the minimum value of the combined area of the circle and the square. Then the value of 4 x(π + 4) is"
+        }
+      ],
+      "acceptable_answers": [
+        "Questions 8,9, and 10 using the data given above."
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Let the piece that is bent into a circle have length y and the remaining piece of wire that bent into a square have length 31−y. Then the radius of the circle is r = y2π and side of the square is a = 31−y4 . A = Total area = Area of the circle + Area of the square =πr2 +a2 =π× ( y 2π )2 + (31−y 4 )2 = y2 4π + (31−y)216 To get the minima we can equate dAdy to 0. dA dy = y2π− (31−y)8 = 0 =⇒ y2π = (31−y)8 =⇒ y = 31π4 +π The second derivative d2Ady2 = 12π + 18 is always greater than 0. Hence, y = 31π4 +π is a point of minimum, that is, the combined area is minimum when y = 31π4 +π . 11 Then the minimum value of the combined area is x =πr2 +a2 =π ( y 2π )2 + (31−y 4 )2 = (31π)2 4π(4 +π)2 + (4× 31 + 31π− 31π)216(4 +π)2 = (31π)2 4π(4 +π)2 + (4× 31)216(4 +π)2 = (31π)2 4π(4 +π)2 + 312(4 +π)2 = 312π4(4 +π)2 + 312(4 +π)2 = 312π + 4× 312 4(4 +π)2 = 312(π + 4)4(4 +π)2 = 312 4(4 +π) The value of 4x(π + 4) is 312 = 961. 12 3 Comprehension Type Question: A car manufacturer determines that in order to sell x number of cars, the price per car(in lakh) must be f(x) = 1000−x, if x≤ 800, and the manufacturer also determines that the total cost(in lakh) of producing x number of cars is g(x) = { 30000 + 300x if x≤ 400, 100x + 110000 if 400 <x ≤ 800 Although in the above context,x can take only integer values, assume thatx is a continuous variable in the interval [0, 800] and that the functions f(x) and g(x) are deﬁned as above on this entire interval."
+        }
+      ]
+    }
+  ],
+  "week": 9
+}

@@ -1,0 +1,249 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Week 6 Graded Assignment",
+  "subject": "Statistics 1",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many 5-digit numbers can be formed from the numbers 0 , 2, 4, 5, 7 and 9 (without repetition), such that it is divisible by 4?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "120"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "144"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "132"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "104"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "By the divisibility rule of 4, for a number to be divisible by 4, the last two digits of the number should be divisible by 4. Using the divisibility rule of 4, any 5-digit number formed from the numbers 0, 2, 4, 5, 7 and 9 will be divisible by 4 if its last two digits are: 04, 20, 24, 40, 52, 72 or 92. Case 1- Number ends with 04: The last two digits of a ﬁve digit number is ﬁxed (i.e. 04). We have to ﬁll the ﬁrst three digits using the remaining four numbers (as repetition is not allowed) i.e. 2,5,7 and 9. Now, the three places can be ﬁlled with these 4 numbers in 4P3 ways. Similarly, in the cases where the ﬁve digit number ends with 20 and 40, the number of ways to ﬁll in the last three digits is 4P3 in each case. Case 2- Number ends with 24: The last two digits of a ﬁve digit number is ﬁxed (i.e. 24). We have to ﬁll the ﬁrst three digits using the remaining four numbers (as repetition is not allowed) i.e. 0,5,7 and 9. 0 cannot be the ﬁrst digit as it will make the number a four digit number. Therefore, the number of ways to ﬁll in the ﬁrst place is 3. Now, 0 can be used along with the numbers 5,7 and 9 in the remaining places. Hence, the remaining two places can be ﬁlled with these 4 digits in 3P2 ways. Therefore, total number of ways to complete a ﬁve-digit number ending with 24 = 3 ×3 P2 Similarly, in the cases where the ﬁve digit number ends with 52, 72 and 92, the number of ways to ﬁll in the last three digits is 3 ×3 P2 in each case. 1 Hence, the total number of 5-digit numbers that can be formed from the digits 0, 2, 4, 5, 7 and 9 (without repetition), such that it is divisible by 4 are: =4 P3 +4 P3 +4 P3 + 3 ×3 P2 + 3 ×3 P2 + 3 ×3 P2 + 3 ×3 P2 = 3 ×4 P3 + 4 × 3 ×3 P2 = 3 × 24 + 4 × 3 × 6 = 144"
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many n-digit numbers can be formed such that they read the same way from either of the side (i.e. the number should be a palindrome)?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "9 × 10( n−12 )"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "9 × 10( n+12 )"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "9 × 10n−1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "10 n"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "For a n-digit number to read the same way from either side, the 1 st, 2nd, ... and( n − 1 2 )th digits needs to be the same as nth, (n − 1)th, ... and ( n + 3 2 )th digits re- spectively. So, number of ways to ﬁll ﬁrst place = 9, as the number will become a ( n − 1) digit number if 0 is in the ﬁrst place. And, 2nd, 3rd..., ( n − 1 2 )th and ( n + 1 2 )th can be ﬁlled in 10   n − 1 2   ways as repeti- 3 tion is allowed. nth, (n−1)th, ... and ( n + 3 2 )th digit should be same as 1st, 2nd, ... and ( n − 1 2 )th digit respectively, so number of ways to ﬁll that place is 1 Hence, the total number of n-digit numbers that can be formed such that they read the same way from either side = 9 × 10   n − 1 2   ways. Hence, option a is correct. Example: n = 5 For a 5-digit number to read the same way from either side, the ﬁrst and second digit needs to be same as the ﬁfth and fourth digit respectively. So, number of ways to ﬁll ﬁrst place = 9, as the number will become a 4-digit number if 0 is in the ﬁrst place. And, second and third place can be ﬁlled in 10 × 10 ways as repetition is allowed. Fourth and ﬁfth digit should be same as ﬁrst and second digit respectively, so number of ways to ﬁll that place is 1 × 1 Hence, the total number of 5-digit number that can be formed such that they read the same way from either side = 9 × 100 = 9 × 102 Hence, option a is correct."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the total number of ways to form a m digit number (without repetition) from the digits 0, 1, 2, ..., n."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "n × nP m−1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "n+1P m"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "( n − 1) × n−1P m−1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "n + nP m−1"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "We have to form m digit number with the digits 0 , 1, 2, ..., n and we have n + 1 digits in total. For the ﬁrst digit we have n ways (as 0 can’t be considered as ﬁrst digit). Now, we have n digits remaining (because one digit is already used for ﬁrst digit) and m − 1 places. Therefore, number of ways to arrange n digits at m − 1 places is nP m−1 ways. Hence, total number of ways to form a m digit number from the digits 0 , 1, 2, ..., n (without repetition) is n × nP m−1. For example: m = 6 and n = 7 We have to form 6 digit numbers from digits 0 , 1, 2, 3, 4, 5, 6, 7 and we have 8 digits in total. For the ﬁrst digit we have 7 ways( as 0 can’t be considered as ﬁrst digit). Now, we have 7 digits remaining (because one digit is already used for ﬁrst digit) and 5 places. 4 Therefore, number of ways to arrange 7 digits at 5 places is 7P 5 ways. Hence, total number of ways to form a 6 digit number from the digits 0, 1, 2, ...,7 (with- out repetition) is 7 × 7P 5."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In a restaurant, x men and y women are seated on ( x + y) chairs at a round table. Find the total number of possible ways such that x men are always sitting next to each other."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "x! × y!"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "( x − 1)! × (y − 1)!"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "x! × (y + 1)!"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "( x + y − 1)!"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Considering the x men M1, M2, ..., Mx who sit together as one, we get ( y + 1) persons in all, who can be seated at a round table in y! ways. Further, since M1, M2, ..., Mx can interchange their positions in x! ways, the total number of possible ways of getting M1, M2, ..., Mx together is y! ∗ x! For example: y = 2, x = 3 Considering the 3 men M1, M2 and M3 who sit together as one, we get 2 + 1 = 3 persons in all, who can be seated at a round table in 2! ways. Further, since M1, M2 and M3 can interchange their positions in 3! ways, the total number of possible ways of getting M1, M2 and M3 together is 2! ∗ 3! = 12."
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In how many ways can a group of n − m players be formed from n state level players and m district level players such that the group contains exactly 1 district level player?"
+        }
+      ],
+      "acceptable_answers": [
+        "m × n!(m + 1)!(n − m − 1)!"
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The group must have (n − m) players and must contain exactly 1 district level player. Hence, we will select ( n − m − 1) persons from n state level players and 1 from m district level players. The total number of ways to form a group of ( n − m) players is: = nCn−m−1 ×m C1 = m × n!(n − m − 1)! × (m + 1)!. For example: n = 10, m = 6 The group must have 4 players. But the group must contain exactly 1 district level 5 player. Hence, we will select 3 players from 10 state level players and 1 from 6 district level players. Total number of ways to form a group of 4 players = 10C3 ×6 C1 = 6 × 10!3! × 7! = 720."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the incorrect option/s for n > 2:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "nCr +n Cr−1 =n+1 Cr"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "nCr = 1 for r = 0 and r = n"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "nCr =n−1 Cr−1 +n−1 Cr"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of the above"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Going through the options and solving for given conditions, options a, b, c are the true relations and hence, are incorrect. Therefore, the correct option is (d). 6"
+        }
+      ]
+    }
+  ],
+  "week": 6
+}

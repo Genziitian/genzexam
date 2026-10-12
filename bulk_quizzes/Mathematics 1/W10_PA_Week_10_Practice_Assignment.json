@@ -1,0 +1,93 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Week 10 Practice Assignment",
+  "subject": "Mathematics 1",
+  "section": "practice",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Suppose we obtain the following DFS tree rooted at node 0 for an undirected graph with vertices{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10}. 0 1 2 6 10 7 98 3 4 5 (a) (1 , 4) (b) (0 , 4) (c) (7 , 10) (d) (2 , 9) 1 . 2 Use the following information for the questions 2-4: Ten friends in a college decided to have a night party at the home of one of them. Unfortu- nately at D-day the government closes many of the routs of the city. The below graph shows the location of their homes and the open routs as the graph G = (V, E), where V is the set of nodes and E is the edges representing the open routs. Abhi Anya Karim Rubi Joe Ritu Vishi Shiva Kristi Nia (a) Shiva’s house. (b) Abhi’s house. (c) Joe’s house. (d) Vishi’s house. 3 . 4"
+        }
+      ],
+      "acceptable_answers": [
+        "a]"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let V1 ={Kristi, Shiva, Nia} and E1 = E∩ (V1× V1), that is, E1 is the subset of edges (a) G1 = (V1, E1) is an undirected graph. (b) G1 = (V1, E1) is a cyclic graph. (c) G1 = (V1, E1) will not be a graph. (d) G1 = (V1, E1) is a directed graph. 5 . 6"
+        }
+      ],
+      "acceptable_answers": [
+        "d]"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If Joe wants to have the party on his home, then at most how many members can join (a) 5. (b) 6. (c) 7. (d) 8. 7 . 8 2 MUTIPLE SELECT QUESTIONS:"
+        }
+      ],
+      "acceptable_answers": [
+        "d]"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Suppose G be a graph (shown in the below ﬁgure). Let V be the set of vertices of G, Vi be the maximum independent set and Vc be the minimum vertex cover. Which of (a) Cardinality of Vi is 4. (b) Cardinality of Vc is 3. (c) Cardinality of Vi is 5. (d) Cardinality of Vc is 4. 9 . 10"
+        }
+      ],
+      "acceptable_answers": [
+        "a,d]"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the graph given below. 0 1 2 3 4 5 6 7 Suppose we perform BFS/DFS so that when we visit a vertex, we explore its unvisited neighbours in a random order. Which of the following options are correct? [a,c,d] (a) If we perform Breadth First Search at node 0, then one of the possible order in which the nodes will be visited is 01423567. (b) If we perform Depth First Search at node 0, then one of the possible order in which the nodes will be visited is 04123576 (c) If we perform Breadth First Search at node 0, then one of the possible order in which the nodes will be visited is 01423576. (d) If we perform Depth First Search at node 0, then one of the possible order in which the nodes will be visited is 04132567. 11 . 12 . 13 (a) In Depth First search of a directed graph only back edges generate cycles. (b) If the maximum independent set of a graph G contains only 1 element, then the graph must be connected. (c) If we add an edge to a tree T , then the resulting graph becomes cyclic. (d) In a connected graph G having n vertices, at least two vertices have same degree. 14 . 15 . 16"
+        }
+      ],
+      "acceptable_answers": [
+        "a,b,c,d]"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following directed graph. A B C D E F Suppose DFS of this graph is performed from node A, such that when we visit a vertex, we explore its unvisited neighbours in alphabetical order. (a) AC is a forward edge. (b) CE is a backward edge. (c) BD is a forward edge. (d) F C is a backward edge. 17 . 18 . 19 3 NUMERICAL ANSWER TYPE: 20 21"
+        }
+      ],
+      "acceptable_answers": [
+        "2]"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ],
+  "week": 10
+}

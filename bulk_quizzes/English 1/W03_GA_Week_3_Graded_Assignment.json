@@ -1,0 +1,253 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Week 3 Graded Assignment",
+  "subject": "English 1",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "true_false",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In a word with two syllables, each one of them have their independent meanings and the overall meaning of the word is the combination of the separate meanings of the two syllables"
+        }
+      ],
+      "correct_answer": false,
+      "marks": 1,
+      "difficulty": "easy"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The vowel sound in a syllable plays a critical role in the syllabification of a word. (True) The lecture contains a discussion on the above statements."
+        }
+      ],
+      "acceptable_answers": [
+        "See solution"
+      ],
+      "marks": 1,
+      "difficulty": "easy"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the upper limit for the number of syllables in a word?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Four"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Five"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "No limit"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "easy"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The word ‘machine’ is a _____ word."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "monosyllabic"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "polysyllabic"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "disyllabic"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "easy"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The word ‘marketing’ has _______ syllables."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "3"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "easy"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following has the stress correctly marked?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "proDUCT"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "PROduct"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "easy"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘The output of dairy produce has suffered because of large herds of cattle being affected by the deadly flu. The dairy farm owners will have to take control of the situation to produce the adequate quantity needed for profit-generation by the end of April.’ Choose the appropriate stre ss for the two usages of the word ‘produce’ in its given order in the sentence."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "ProDUCE ; PROduce"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "PROduce ; ProDUCE"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "PROduce ; PROduce"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "easy"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The plural marker for the words ‘stakeholders’, ‘stockouts’, and ‘networks’ end in"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "/s/, /s/, and /z/ respectively."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "/z/, /z/, and /s/ respectively."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "/z/, /s/, and /s/ respectively."
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "easy"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘The physician advised the Nursing Assistant to administer a daily dose of medicine to the child. He told her that a consultation with the pediatric specialist was advisable. ‘ Which among the following rightly represent the stress pattern in the underlined words in the given sentence?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "PHYsician ; nursing ASSISTANT ; CONsultation ; pediatRICS ; advisABLE"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "phySICian ; NURSING assistant ; consulTAtion ; pediATrics ; adVISable"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "physicIAN ; NURSING assistant ; consulTAtion ; pediATrics ; ADvisable"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "easy"
+    }
+  ],
+  "week": 3
+}

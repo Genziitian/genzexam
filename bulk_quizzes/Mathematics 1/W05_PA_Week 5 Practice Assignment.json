@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Week 5 Practice Assignment",
+  "subject": "Mathematics 1",
+  "section": "practice",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If Geeta is allowed to use the oﬀer in any sequence and M(n) =−n2 + 18n− 72, where n∈{ 6, 7, 8, 9}, then choose the set of correct options which minimizes the total payable amount. © Total payable amount is same irrespective of the order in which the oﬀers are applied. © She should choose oﬀer one and then oﬀer two i.e., gof(M(n)). © She should choose oﬀer two and then oﬀer one i.e. gof (M(n)). © If she chooses oﬀer one and then oﬀer two, the minimum payable amount will be |12650."
+        }
+      ],
+      "acceptable_answers": [
+        "the following questions."
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Total payable amount when she choose oﬀer one and then oﬀer two is T1(n) = (100−M(n))× 150− 1000 It is given that M(n) =−n2 + 18n− 72, so T1(n) = (100− (−n2 + 18n− 72))× 150− 1000 On solving we get, T1(n) = 150n2− 2700n + 24800 And total payable amount when she chooses oﬀer two and then oﬀer one is T2(n) = (100−M(n))× 140 On substituting M(n) and solving we get, T2(n) = 140n2− 2520n + 24080 Since the coeﬃcient of n2 is positive for both T1(n) and T2(n) therefore minimum value i.e., minimum payable amount of these function can be calculated as follows ForT1(n) Vertex(n) =−b2a =−(−2700)2× 150 = 9 The minimum payable amount will be T1(9) = 150(9)2− 2700(9) + 24800 = |12,650 7 ForT2(n) Vertex(n) =−b2a =−(−2520)2× 140 = 9 The minimum payable amount will be T2(9) = 140(9)2− 2520(9) + 24080 = |12,740 Thus if she chooses oﬀer one and then oﬀer two, the minimum payable amount will be |12,650. n T1(n) | T2(n) | 6 14000 14000 7 13250 13300 8 12800 12880 9 12650 12740 Table: M1W8PAS-1 From Table: M1W8PAS-1, it is clear that for all the values ofn the total payable amount is lower for T1(n) as compared to T2(n) therefore she should choose oﬀer one and then oﬀer two. Note: This can be also identiﬁed by plotting the graph for T1(n) and T2(n). 3 Numerical Answer Type (NAT): Use the following information for questions 9-15. Given two real valued functions f(x) = 5x+92x , g(y) = √y2− 9. If h(x) = f(g(x)), then"
+        }
+      ]
+    }
+  ],
+  "week": 5
+}

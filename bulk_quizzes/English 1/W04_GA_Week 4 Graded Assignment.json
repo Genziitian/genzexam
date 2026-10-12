@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Week 4 Graded Assignment",
+  "subject": "English 1",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let us leave aside slogans let us leave aside words which frighten people"
+        }
+      ],
+      "acceptable_answers": [
+        "."
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "week": 4
+}

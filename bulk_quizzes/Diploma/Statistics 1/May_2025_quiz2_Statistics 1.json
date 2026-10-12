@@ -1,0 +1,127 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "May 2025 Quiz2",
+  "subject": "Statistics 1",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In a quiz competition, eight students are competing, each assigned a roll number from 1 to 8. What is the probability that only students with prime-numbered roll numbers (i.e., 2, 3, 5, 7) secure the top four ranks, in any order? Enter the answer correct to three decimal places."
+        }
+      ],
+      "acceptable_answers": [
+        "0.011 to 0.017"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A company has 15 offices and wants to set up two-way communication between every pair of offices. However, the 3 smallest offices will not have direct communication with one another, though each of them can still connect directly with the remaining offices. How many communication channels are needed in total?"
+        }
+      ],
+      "numerical_answer": 102.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A group of 4 teachers and 4 students is to be seated around a circular table for a discussion. They decide that all students must sit together. Find the number of ways they can be seated around the table such that all students are sitting together."
+        }
+      ],
+      "numerical_answer": 576.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A basket contains 5 red balls and 4 green balls. If 3 balls are to be selected at random without replacement, in how many ways can the balls be selected such that at least one green ball is included?"
+        }
+      ],
+      "numerical_answer": 74.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many 5-digit numbers can be formed using the digits 0, 2, 3, 4, and 7 where digits may be repeated such that the number is divisible by 2 ?"
+        }
+      ],
+      "numerical_answer": 1500.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A box C contains 3 white balls and 2 black balls, while box D contains 4 white balls and 3 black balls. One ball is randomly selected from box C and transferred to box D. After the transfer, one ball is drawn at random from box D. What is the probability that the ball drawn from box D is black? Enter the answer correct to three decimal places."
+        }
+      ],
+      "acceptable_answers": [
+        "0.422 to 0.428"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In how many different ways can the letters of the word ‘ARTICLE’ be arranged such that all the vowels always come together?"
+        }
+      ],
+      "numerical_answer": 720.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A committee of 3 people is to be formed from a group of n people. The number of possible committees in which two particular people A and B are both included together is 7. Find the number of ways in which committee can be formed. Question Id : 6406531325358 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "numerical_answer": 84.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many panels include at least one Mathematics student?"
+        }
+      ],
+      "numerical_answer": 19.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ]
+}

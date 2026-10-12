@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "2022 term papers Quiz1",
+  "subject": "Machine Learning Practice",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "NOTE: Enter your answer to the nearest integer."
+        }
+      ],
+      "numerical_answer": 3.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ]
+}

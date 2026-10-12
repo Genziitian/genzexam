@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Dec 2023 Endterm",
+  "subject": "Machine Learning Foundations",
+  "section": "endterm",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the value of the projected variance? Enter the answer correct to two decimal places."
+        }
+      ],
+      "acceptable_answers": [
+        "5.30 to 5.37"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ]
+}

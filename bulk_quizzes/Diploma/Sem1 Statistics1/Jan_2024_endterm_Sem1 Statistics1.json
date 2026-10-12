@@ -1,0 +1,90 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Jan 2024 Endterm",
+  "subject": "Sem1 Statistics1",
+  "section": "endterm",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If the mean of the observations 2a, 10, 3a, 50 and 40 is 30, then find the median of the dataset."
+        }
+      ],
+      "numerical_answer": 30.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In the first semester of B.S. degree, a student is expected to take 4 subjects. The grades for each subject can be S(10points),A(9points),B(8points),C(7points),D(6points),E(5points) and F(Fail). As per the rules, an enrolled student should obtain a minimum grade E in each subject to get promoted to the next semester. What is the total number of possible ways in which a student can get promoted?"
+        }
+      ],
+      "numerical_answer": 1296.0,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The mean and sample standard deviation of the dataset consisting of 8 observations is 15 and 11 respectively. Later it is noted that one observation 13 is wrongly noted as 10. What is the mean of the original dataset? Enter the answer correct to two decimal places. Question Id : 640653816494 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix In a company, 120 employees are divided into three departments: Marketing, Finance and IT. The number of employees in each department is as follows: 36 in Marketing, 40 in Finance and 44 in IT. An employee, out of 120, is randomly selected for a presentation. Let X denote the number of employees in the department to which that employee belongs. Based on the given information, answer the subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "15.08 to 15.68"
+      ],
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the expected value of X. Enter the answer correct to two decimal places. A manufacturing company produces steel rods with lengths between 20 cm and 40 cm. Assume length of steel rods follows a uniform distribution. Based on the given information, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "40.24 to 40.30 Question Id : 640653816497 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "0.35 to 0.41 Question Id : 640653816508 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the probability that a patient has the disease given that the test is positive. Enter the answer correct to two decimal places."
+        }
+      ],
+      "acceptable_answers": [
+        "0.39 to 0.45"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    }
+  ]
+}

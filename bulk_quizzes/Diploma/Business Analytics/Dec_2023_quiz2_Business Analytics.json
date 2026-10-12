@@ -1,0 +1,222 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Dec 2023 Quiz2",
+  "subject": "Business Analytics",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the value of “A1” in the figure?"
+        }
+      ],
+      "numerical_answer": 15.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many columns are present in the sample used to develop the regression model (all the columns present in the sample)?"
+        }
+      ],
+      "numerical_answer": 3.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the value for “A3” in the figure?"
+        }
+      ],
+      "numerical_answer": 2.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the value for “A4” in the figure?"
+        }
+      ],
+      "acceptable_answers": [
+        "452 to 453"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the elasticity of the demand response curve?"
+        }
+      ],
+      "acceptable_answers": [
+        "0.32 to 0.36"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the demand at a price of Rs. 35?"
+        }
+      ],
+      "acceptable_answers": [
+        "34.00 to 37.00"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many constraints will be present in the dual formulation (after converting the primal to the standard form)?"
+        }
+      ],
+      "numerical_answer": 3.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many decision variables will be present in the dual formulation? (after converting the primal to the standard form)"
+        }
+      ],
+      "numerical_answer": 4.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If the optimal solution of the primal is X1= 1701, X2= 2196, X3= 293. Then, how many decision variables will have a value of “0” in the optimal solution of the dual (after converting the primal to the standard form)? Question Id : 640653690229 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix An AI system is being tested by a bank to identify the customer traffic. It is currently implemented at a single branch. The AI system uses a logistic model in the backend and its primary purpose (at the moment) is to classify customers as “Male” or “Female”. In the past week, a total of 300 willing participants took part in a trial run of the AI system. Among the 300 participants, 129 were “Male” and the remaining were “Female”. Among the “Male” participants, the system correctly identified 120 as “Male” and the rest were identified as “Female”. Among the “Female” participants, the system correctly identified 142 as “Female” and the rest were identified as “Male”. Then answer the given subquestions Note: For all questions in this comprehension, where ever applicable enter your answer in PERCENTAGE rounded to two decimal places without the percentage sign. For example, if your answer is “20.324%” then enter it as “20.32” Sub questions"
+        }
+      ],
+      "numerical_answer": 3.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If “Female” is categorised as the positive class (that is Y=1), then how many “True Positives” are present? (Note: do not convert to percentage, give actual count)"
+        }
+      ],
+      "numerical_answer": 142.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If “Female” is categorised as the positive class (that is Y=1), then how many “True Negatives” are present? (Note: do not convert to percentage, give actual count)"
+        }
+      ],
+      "numerical_answer": 120.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If “Female” is categorised as the positive class (that is Y=1), then how many “False Positives” are present? (Note: do not convert to percentage, give actual count)"
+        }
+      ],
+      "numerical_answer": 9.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If “Female” is categorised as the positive class (that is Y=1), then how many “False Negatives” are present? (Note: do not convert to percentage, give actual count)"
+        }
+      ],
+      "numerical_answer": 29.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the accuracy of the AI system?"
+        }
+      ],
+      "acceptable_answers": [
+        "86.00 to 88.00"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the “Precision” of the AI system for predicting “Male” class?"
+        }
+      ],
+      "acceptable_answers": [
+        "80.00 to 82.00"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the “Recall” of the AI system for predicting the “Female” class?"
+        }
+      ],
+      "acceptable_answers": [
+        "82.00 to 84.00"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ]
+}

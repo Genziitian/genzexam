@@ -1,0 +1,74 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "May 2023 Quiz2",
+  "subject": "Statistics 1",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Ajay speaks truth in 50% cases, while Vijay speaks truth in 90% cases. What is the probability that Ajay and Vijay will contradict in stating the same fact?"
+        }
+      ],
+      "numerical_answer": 0.5,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In how many ways can letters in the word “ADAMANT” be arranged such that no two A’s are adjacent to each other?"
+        }
+      ],
+      "numerical_answer": 240.0,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In a gaming room, 2 brothers and 4 other boys are playing together. In a particular game, how many ways can all the boys be seated in a circular order so that two brothers are not seated together?"
+        }
+      ],
+      "numerical_answer": 72.0,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A blood test indicates the presence of Amyotrophic lateral sclerosis (ALS) 93% of the time when ALS is actually present. The same test indicates the presence of ALS 0.5% of the time when ALS is not actually present. One percent of the population actually has ALS. Calculate the probability that a person actually has ALS given that the test indicates the presence of ALS. (Enter your answer correct to two decimal places)"
+        }
+      ],
+      "acceptable_answers": [
+        "0.62 to 0.68"
+      ],
+      "marks": 5,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The dataset consists of three distinct observations, say x, y and z, and the sum of their frequencies is 100. Relative frequencies corresponding to x and z are 35% and 45% respectively. Find the cumulative frequency(in %)of y and z."
+        }
+      ],
+      "numerical_answer": 65.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    }
+  ]
+}

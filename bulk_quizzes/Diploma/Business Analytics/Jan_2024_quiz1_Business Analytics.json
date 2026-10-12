@@ -1,0 +1,186 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Jan 2024 Quiz1",
+  "subject": "Business Analytics",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A data set with 450 data points provides information on 13 variables. Chi-square goodness of fit test is conducted on a variable in the data-set, to see if it follows a normal distribution. If the dataset is binned into 15 bins, then how many degrees of freedom does the chi-square statistic have? Question Id : 640653738073 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix The linear demand response for a product–X is modelled as a simple linear regression represented as D(P) = 5000 – 20*P, where D(P) is the demand at price-P. Then, answer the given subquestions. Sub questions"
+        }
+      ],
+      "numerical_answer": 12.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the elasticity of this curve when the price is Rs.100? (Note: Enter the answer rounded to two decimal places. For example, if the answer is “1.234”, then enter it as“1.23” .DO NOT ENTER PERCENTAGE VALUES)"
+        }
+      ],
+      "acceptable_answers": [
+        "0.65 to 0.67"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the satiating price for this curve? (Note: Enter the answer rounded to two decimal places. For example, if the answer is “1.234”, then enter it as “1.23”. DO NOT ENTER PERCENTAGE VALUES) Using the excel regression output given in Figure-2 answer the given sub questions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "250 Question Id : 640653738093 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the value of “X1”?"
+        }
+      ],
+      "numerical_answer": 12.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the value of “X2”? (Note: Enter the answer rounded to two decimal places. For example, if the answer is “1.234”, then enter it as “1.23”)"
+        }
+      ],
+      "acceptable_answers": [
+        "18493221 to 18493222"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the value of “X3”? (Note: Enter the answer rounded to two decimal places. For example, if the answer is “1.234”, then enter it as “1.23”)"
+        }
+      ],
+      "acceptable_answers": [
+        "132407 to 132408"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the value of “X4”? Question Id : 640653738082 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Given the imaginary demand response curve in the below figure, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "138 to 140"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the elasticity between any two points of the given demand response curve? (Note-1: Do not assume that it is linear and do not assume that it is a constant elasticity curve) (Note-2: Enter the answer rounded to two decimal places. For example, if the answer is “1.234”, then enter it as “1.23”. DO NOT ENTER PERCENTAGE VALUES)"
+        }
+      ],
+      "numerical_answer": 2.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "From the given contingency table, find the expected frequency of Chennai people preferring brand B? (Note: Enter the answer rounded to two decimal places. For example, if the answer is “1.234”, then enter it as “1.23”. DO NOT ENTER PERCENTAGE VALUES)"
+        }
+      ],
+      "acceptable_answers": [
+        "159 to 160"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the calculated value of chi-squared? (Note: Enter the answer rounded to two decimal places. For example, if the answer is “1.234”, then enter it as “1.23”. DO NOT ENTER PERCENTAGE VALUES)"
+        }
+      ],
+      "acceptable_answers": [
+        "28 to 30"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the probability that an application for the coming admission will be “Fully Completed”? (Note: Enter the answer rounded to two decimal places. For example, if the answer is “1.234”, then enter it as “1.23”. DO NOT ENTER PERCENTAGE VALUES)"
+        }
+      ],
+      "acceptable_answers": [
+        "0.29 to 0.31"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If a total of 550 applications are expected to be received for the upcoming admission, then how many would you expect to be “Blank”? (Note: Enter the answer rounded to two decimal places. For example, if the answer is “1.234”, then enter it as “1.23”. DO NOT ENTER PERCENTAGE VALUES)"
+        }
+      ],
+      "numerical_answer": 121.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "SU is planning spend money on advertising to increase applications. Once the advertising is completed, a total of 600 applications are expected. Then, what is the expected revenue that can be generated from “TV Watcher” category if an application fee of Rs. 500 is charged for “Blank” applications, Rs. 200 is charged for “Half Completed” applications and Rs. 100 is for “Fully Completed” applications? (Note: Enter the answer rounded to two decimal places. For example, if the answer is “1.234”, then enter it as “1.23”)"
+        }
+      ],
+      "acceptable_answers": [
+        "131999 to 132001"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ]
+}

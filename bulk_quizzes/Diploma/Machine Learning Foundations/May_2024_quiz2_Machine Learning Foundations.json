@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "May 2024 Quiz2",
+  "subject": "Machine Learning Foundations",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider a function f(x,y) = (x − 1)2 + (y − 2)2 . Using a gradient descent algorithm, with an initial guess of (0, 0) and learning rate of 0.1, what will be the absolute difference between the value of the function after first and second iteration? Enter the answer correct to three decimal places."
+        }
+      ],
+      "acceptable_answers": [
+        "1.149 to 1.155"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The value of a function at point 25 is 5. The values of the function’s first and second order derivatives at this point are 0.1 and -0.002 respectively. What will be the function’s approximate value at the point 25.1? (Enter the answer correct up to three decimal places)."
+        }
+      ],
+      "acceptable_answers": [
+        "5.006 to 5.012"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    }
+  ]
+}

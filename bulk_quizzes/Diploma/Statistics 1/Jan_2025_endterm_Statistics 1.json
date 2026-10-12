@@ -1,0 +1,90 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Jan 2025 Endterm",
+  "subject": "Statistics 1",
+  "section": "endterm",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A call center receives customer calls and the number of calls received per hour follows a Poisson distribution with a mean rate of 6 calls per hour. What is the probability that at most 2 calls are received in 30 minutes? Enter the answer correct to two decimal places. Question Id : 6406531231681 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Consider a dataset such as 8, 12, 16, 24, and 20. Suppose we multiply all observations by 3. Based on the given information answer the sub questions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "0.39 to 0.45"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What will be the 25th percentile of the new dataset?"
+        }
+      ],
+      "numerical_answer": 36.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find IQR of the new dataset. Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "24 Question Id : 6406531231684 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If the probability that the vendor sells exactly 2 items in a day is 0.30, then find the value of a. Enter the answer correct to two decimal places."
+        }
+      ],
+      "acceptable_answers": [
+        "0.43 to 0.47"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the probability that the vendor sells at least 2 items in a day? Enter the answer correct to two decimal places. Question Id : 6406531231690 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "0.53 to 0.57"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If the expected time for the coffee machine to brew a cup of coffee is 8.5 minutes, then find the value of b."
+        }
+      ],
+      "numerical_answer": 15.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ]
+}

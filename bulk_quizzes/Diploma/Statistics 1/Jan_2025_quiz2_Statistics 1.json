@@ -1,0 +1,102 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Jan 2025 Quiz2",
+  "subject": "Statistics 1",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A box contains three distinct white balls, four distinct black balls, and three distinct red balls. Find the number of ways in which three balls can be drawn from the box so that all three drawn balls have different colors."
+        }
+      ],
+      "numerical_answer": 36.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A card is randomly drawn from a standard deck of 52 playing cards. If the chosen card is known to be a face card (King, Queen, or Jack), what is the probability that it is also an Ace?"
+        }
+      ],
+      "numerical_answer": 0.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The number of ways to arrange n + 1 objects in a line is equal to 6 times the number of ways to arrange n objects in a line. Find the value of n."
+        }
+      ],
+      "numerical_answer": 5.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In how many ways can 7 people be arranged around a circular table if one specific person must always occupy a fixed seat, which cannot be changed?"
+        }
+      ],
+      "numerical_answer": 120.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "There are 6 dark chocolates and 5 milk chocolates in a fridge. A person selects 3 chocolates from the fridge at random. Find the probability that among the chocolates drawn there is at least one chocolate of each type. Enter the answer correct to two decimal places. Question Id : 6406531174151 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix At a school, 30% of students are members of the Science Club, while 70% are members of the Art Club. Data indicates that the probability of passing a specific test, given that a student is in the Science Club, is 0.8, whereas the probability of passing the same test, given membership in the Art Club, is 0.4. Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "0.79 to 0.85"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the probability that a randomly selected student passes the test? Enter the answer correct to two decimal places."
+        }
+      ],
+      "acceptable_answers": [
+        "0.49 to 0.55"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If a randomly selected student is known to have passed the test, what is the probability that this student is a member of the Science Club? Enter the answer correct to two decimal places."
+        }
+      ],
+      "acceptable_answers": [
+        "0.43 to 0.49"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ]
+}

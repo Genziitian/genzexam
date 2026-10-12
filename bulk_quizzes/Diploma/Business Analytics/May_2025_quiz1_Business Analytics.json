@@ -1,0 +1,118 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "May 2025 Quiz1",
+  "subject": "Business Analytics",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Four teams (1, 2, 3 and 4) have qualified for the final of the cricket world cup. Team 1 plays Team 2. Team 3 plays Team 4. The winners then play in the final. In a game between Team “i” and Team “j”, the probability of team “i” winning is given by {i /(i+j)}. Then what is the conditional probability that “Team 1” will win the World Cup? (Note: Enter your answer in decimals rounded to two decimal places. For example, if your answer is “0.245”, enter it as “0.25”) Question Id : 6406531298607 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Milo’s Wheels sells bicycles. DrMilo, the owner of the shop, is curious to know about his customer base. Hence, he collects data on the total sales made to different age groups in the year 2024. This data is given in Table-2. He hires you (a student in the BA course) as a data analyst and asks for your opinion. Then answer the given subquestions. (Note: For all questions in this comprehension, if your answer is in decimal, enter it rounded to two decimal places. For example, if your answer is “10.256”, enter it as “10.26”) Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "0.06 to 0.09"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Based on Table-2, you think the data is normally distributed such that the buckets split the distribution into areas that have equal probability. Then what is the probability of selling a cycle in any given bucket?"
+        }
+      ],
+      "acceptable_answers": [
+        "0.13 to 0.15"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Based on Table-2, you think the data is normally distributed such that the buckets split the distribution into areas that have equal probability. Then what is the expected number of cycles that will be sold to the age group of “25 to 30 years”?"
+        }
+      ],
+      "acceptable_answers": [
+        "35 to 36"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the value of the computed test statistic to perform a test to check if the Data in Table-2 follows a normal distribution?"
+        }
+      ],
+      "acceptable_answers": [
+        "29 to 33"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many (count of) degrees of freedom is present for the performed test (to check if the data in Table-2 follows a normal distribution)?"
+        }
+      ],
+      "numerical_answer": 4.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the sample size that DrMilo has provided for your analysis? Question Id : 6406531298614 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix A cosmetics brand “SwamiIsBeautiful” manufactures three products, “Face Creams (FC)”, “Body Lotion (BL)” and “Lip Gloze (LG)”. The company believes displaying all their products together in a single shelf at a retailer store will help boost their sales, as people tend to pick up the items together. Hence, they are currently spending a lot of money to make sure that the retailers display the products together. However, on hearing this, Dr.Milo feels sceptical as it is counter intuitive. He feels that the sales of the products are independent. To check his theory, data in Table-3 was collected. Table-3 contains the total sales (in quantity) of the three products across retail stores. Here, the retail stores were classified in two types: “Type-1: The three products are displayed together”, “Type-2: The three products are not displayed together”. Given this information answer the given subquestions. (Note: For all questions in this comprehension, if your answer is in decimal, enter it rounded to two decimal places. For example, if your answer is “10.256”, enter it as “10.26”) Sub questions"
+        }
+      ],
+      "numerical_answer": 250.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the expected frequency for “BL” in Type-2 stores?"
+        }
+      ],
+      "acceptable_answers": [
+        "237 to 239"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the value of the computed test statistic for the hypothesis test that DrMilo will perform to check if his intuition is correct?"
+        }
+      ],
+      "acceptable_answers": [
+        "18 to 22"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    }
+  ]
+}

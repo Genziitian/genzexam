@@ -1,0 +1,139 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Week 5 Graded Assignment",
+  "subject": "English 1",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Mark the preposition in the following phrase ‘on the table’."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "On"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": ". Identify the determiner in the phrase ‘In the classroom.’"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "In"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Neither Ram nor John ________ going to the museum."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Are"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Is"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘Please bring a cup for me’ is a:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Command"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Request"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘I am a doctor.’ This sentence is an indicator of..... tense."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Present"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Past"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "week": 5
+}

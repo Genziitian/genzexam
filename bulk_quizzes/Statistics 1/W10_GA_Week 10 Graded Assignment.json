@@ -1,0 +1,327 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Week 10 Graded Assignment",
+  "subject": "Statistics 1",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "There are 2 n numbered cards in a deck among which nC i cards bear the number i ; i=0,1,2,...,n. From the deck, m cards are drawn with replacement. What is the expectation of the sum of their numbers? (Enter the answer correct to one decimal accuracy)"
+        }
+      ],
+      "acceptable_answers": [
+        "mn2"
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Let, Xj; i=1,2,...,m be the random variable representing the number on the jth card drawn. Xj 0 1 2 ... n Number of cards nC 0 nC 1 nC 2 ... nC n P (Xj = x) nC 0 2n nC 1 2n nC 2 2n ... nC n 2n Table 10.1 E(Xj) =∑nx=0 xP (Xj = x) =∑nx=0 x× nC x2n E(Xj) = 12n× [(0× nC 0) + (1× nC 1) + (2× nC 2) + ... + (n× nC n)] E(Xj) = 12n× [0 + (1× n) +(2× n(n− 1)2! ) +(3× n(n− 1)(n− 2)3! ) ... + (n× 1)] E(Xj) = n2n× [1 + (n− 1) +((n− 1)(n− 2)2! ) + ... + 1] E(Xj) = n2n× [n−1C 0 + n−1C 1 + n−1C 2 + ... + n−1C n−1] E(Xj) = n2n× 2n−1 = n2 Therefore, Expectation of the sum of their numbers is given by: =∑mj=1 E(Xj) =∑mj=1 n2 = mn2 Suppose, we substitute values of n and m as 4 and 7 respectively, then 1 Let, Xj; i=1,2,...,7 be the random variable representing the number on the jth card drawn. Xj 0 1 2 3 4 Number of cards 4C 0 4C 1 4C 2 4C 3 4C 4 P (Xj = x) 4C 0 24 4C 1 24 4C 2 24 4C 3 24 4C 4 24 Table 10.1 E(Xj) =∑4x=0 xP (Xj = x) =∑4x=0 x× 4C x24 E(Xj) = 124× [(0× 4C 0) + (1× 4C 1) + (2× 4C 2) + (3× 4C 3) + (4× 4C 4)] E(Xj) = 124× [0 + (1× 4) +(2× 4(4− 1)2! ) +(3× 4(4− 1)(4− 2)3! ) + (4× 1)] E(Xj) = 424× [1 + (4− 1) +((4− 1)(4− 2)2! ) + 1] E(Xj) = 424× [3C 0 + 3C 1 + 3C 2 + 3C 3] E(Xj) = 424× 23 = 42 = 2 Therefore, Expectation of the sum of their numbers is given by: =∑7j=1 E(Xj) =∑7j=1 2 = 14 An unbiased die is thrown n+2 times. After each throw a ’+’ is recorded for 2 or 5 and ’-’ is recorded for 1,3,4 or 6, the signs forming an ordered sequence. To each, except the ﬁrst and last sign, a random variable Xi; i=1,2,...,n is associated which takes the value 1 if both of its neighbouring sign diﬀers from the one between them and 0 otherwise. If the random variable Y is deﬁned as Y = aS + b where, S =∑ni=1 Xi, then use the given information to answer question (2) and (3)."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the expected value of Y ."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "( a× 2n9) + b"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "( a× 2n9)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "2n9 + b"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "2n9 2"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Xi = { 1 if the pattern is either ’+ - +’ or ’- + -’ 0 otherwise E(Xi) = 1× P (Xi = 1) + 0× P (Xi = 0) = P (Xi = 1) Now, P (Xi = 1) =P(Pattern = ’+ - +’) + P(pattern=’- + -’) P (Xi = 1) = (4 6 )2 × (2 6 ) + (4 6 ) × (2 6 )2 = 29 E(S) = E(∑ni=1 Xi) =∑ni=1 E(Xi) E(S) = 2n9 Therefore, E(Y ) = aE(S) + b E(Y ) = ( a× 2n9) + b Suppose, we substitute values of n, a and b as 10, 9 and 1 respectively then, E(S) = E(∑10i=1 Xi) =∑10i=1 E(Xi) E(S) =∑10i=1 29 = 209 Therefore, E(Y ) = 9E(S) + 1 = 9× 209 + 1 E(Y ) = 20 + 1 = 21"
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following statement(s) is/are true?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "V (Y ) = a2V (S) + b"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "V (Y ) = a2V (S)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "V (Y )⁄= a2V (S)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "E(Y ) = a2E(S) + b e. E(Y ) = aE(S) + b"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the expected distance between the starting point and end point of Amandeep after n steps?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "2 p− 1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "n(2p− 1)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1− 2p"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "n(1− 2p)"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Let us associate a random variable Xi with the ith step. Xi = { 1 if ith step of Amandeep is towards the right −1 if ith step of Amandeep is towards the left E(Xi) = 1× P (Xi = 1) + (−1)× P (Xi =−1) E(Xi) = 1× p− 1× (1− p) = 2p− 1 S = X1 + X2 + ... + Xn represents the random distance moved from the starting point after n steps. Therefore, E(S) =∑ni=1 E(Xi) = n(2p− 1) Hence, expected distance between the starting point and end point of Amandeep after n steps is n(2p− 1) For example: p=0.6 , n=7 Let us associate a random variable Xi with the ith step. Xi = { 1 if ith step of Amandeep is towards the right −1 if ith step of Amandeep is towards the left E(Xi) = 1× P (Xi = 1) + (−1)× P (Xi =−1) E(Xi) = 1× 0.6− 1× 0.4 = 0.2 4 S = X1 + X2 + ... + X7 represents the random distance moved from the starting point after 7 steps. Therefore, E(S) =∑7i=1 E(Xi) = 7(0.2) = 1.4 Hence, the expected distance between the starting point and end point of Amandeep after 7 steps is 1 .4."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the variance distance between the starting point and end point of Amandeep after n steps?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "4 np(1− p)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "4 p(1− p)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "n2(2p− 1)2− 1"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "E(Xi)2 = 12× P (Xi = 1) + (−1)2× P (Xi =−1) E(Xi)2 = p + (1− p) = 1 V (Xi) = E(Xi)2− [E(Xi)]2 V (Xi) = 1− (2p− 1)2 = 4p(1− p) Therefore, V (S) =∑ni=1 V (Xi) (because, movements of steps are independent) Hence, V (S) =∑ni=1 4p(1− p) = 4np(1− p) For Example: p=0.6 , n=7 E(Xi)2 = 12× P (Xi = 1) + (−1)2× P (Xi =−1) E(Xi)2 = 0.6 + 0.4 = 1 V (Xi) = E(Xi)2− [E(Xi)]2 V (Xi) = 1− (0.2)2 = 0.96 Therefore, V (S) =∑7i=1 V (Xi) Because, movements of steps are independent. Hence, V (S) =∑7i=1(0.96) = 7× (0.96) = 6.72"
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Rohit wants to open his door with 5 keys(out of which 1 will open the door) and tries the keys independently and at random. If unsuccessful keys are eliminated from further selection, then Find the expected number of trials required to open the door. (Hint: Suppose Rohit gets the ﬁrst success at xth trial, i.e., he is unable to open the door in the ﬁrst (x−1) trials. And, P(he gets ﬁrst success at second trial)=(1− 15)× 14)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "9"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "3"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "2"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "If unsuccessful keys are eliminated from further selection, then the random variable X will take the values from 1 to n. In this case, we have Probability of success at the ﬁrst trial= 15 Probability of success at the second trial= 14 Probability of success at the third trial= 13 Probability of success at the fourth trial= 12 Probability of success at the ﬁfth trial=1 and so on. Hence probability of 1 st success at the 2 nd trial = (1− 15)× 14 = 15 6 probability of 1 st success at the 3 rd trial = (1− 15)× (1− 14)× 13 = 15 and so on. In general, p(x)= probability of 1 st success at the xth trial=15; x = 1, 2, 3, 4, 5Therefore, E(X) = 5∑ x=1 xp(x) = 1× 15 + 2× 15 + 3× 15 + 4× 15 + 5× 15 = 3"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "X and Y are independent random variables with means m1 and m2, and variances v1 and v2 respectively. Find the variance of aX + bY ?"
+        }
+      ],
+      "acceptable_answers": [
+        "a2× v1 + b2× v2"
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Since X and Y are independent random variables. Therefore, V (aX + bY ) = a2× V (X) + b2× V (Y ) = a2× v1 + b2× v2 For example: m1 = 10, m2 = 20, v1 = 2 and v2 = 3 Since X and Y are independent random variables. Therefore, V (3X + 4Y ) = 9× V (X) + 16× V (Y ) = 9× 2 + 16× 3 = 18 + 48 = 66"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let X be a random variable with the following probability distribution: X a b c P (X = x) 1d 1e fg Calculate the value of E(2X + 1)2.(Enter the answer correct to 2 decimal places)"
+        }
+      ],
+      "acceptable_answers": [
+        "4× ( a2× 1d + b2× 1e + c2× 1f) + 4×(a× 1d + b× 1e + c× 1f) + 1"
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "E(X) = Σxp(x) = a× 1d + b× 1e + c× 1f . E(X 2) = Σx2p(x) = a2× 1d + b2× 1e + c2× 1f E(2X + 1)2 = E(4X 2 + 4X + 1) = 4E(X 2) + 4E(X) + 1 For example: a =−3, b = 6, c = 9, d = 6, e = 2 and f = 3 X -3 6 9 P (X = x) 16 12 13 E(X) = Σxp(x) = (−3)× 16 + 6× 12 + 9× 13 = 112 . 7 E(X 2) = Σx2p(x) = 9× 16 + 36× 12 + 81× 13 = 932 E(2X + 1)2 = E(4X 2 + 4X + 1) = 4E(X 2) + 4E(X) + 1 = 4× 932 + 4× 112 + 1 = 209"
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Suppose that X is a random variable for which E(X) = m and V ar(X) = v. Find the positive values of a and b such that Y = aX− b, has expectation 0 and variance 1."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "−1√v ,−m√v"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1v , m√v"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1√v , m√v"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1 , m"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "E(Y ) = aE(X)− b = 0 =⇒ ma− b = 0 =⇒ ma = b ...(1) Now,V (Y ) = a2V (X) = 1 =⇒ a2× v = 1 =⇒ a2 = 1v =⇒ a = 1√v Now putting value of a in equation(1) , we get b = m√v Hence, option(c) is correct. For example: m=10 and v=25 E(Y ) = aE(X)− b = 0 =⇒ 10a− b = 0 =⇒ 10a = b ...(1) Now,V (Y ) = a2V (X) = 1 =⇒ a2× 25 = 1 =⇒ a2 = 125 =⇒ a = 15 Now putting value of a in equation(1) , we get b = 2 8"
+        }
+      ]
+    }
+  ],
+  "week": 10
+}

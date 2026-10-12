@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Sept 25 Quiz2",
+  "subject": "PDSA",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the weight of a minimum spanning tree in the graph given below?"
+        }
+      ],
+      "numerical_answer": 10.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the minimum number of nodes possible in an AVL tree of height 6 ? Consider the tree with a single node having height 1."
+        }
+      ],
+      "numerical_answer": 20.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Given below is a set of characters and their frequencies: Using Huffman encoding, construct the Huffman tree for this set of characters. What is the maximum number of bits needed to encode any character?"
+        }
+      ],
+      "numerical_answer": 3.0,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In an integer list L of length n, two elements L[i] and L[j] form an inversion if L[i] > L[j] and i < j. Consider a list L of length n in which all elements are distinct and the list L has inversions. The minimum possible value of n is ___."
+        }
+      ],
+      "numerical_answer": 9.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    }
+  ]
+}

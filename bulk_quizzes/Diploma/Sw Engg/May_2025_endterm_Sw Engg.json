@@ -1,0 +1,216 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "May 2025 Endterm",
+  "subject": "Sw Engg",
+  "section": "endterm",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the path found by the Best First Search algorithm? Enter the path as a comma separated list of node labels. NO SPACES, TABS, DOTS, BRACKETS OR EXTRANEOUS CHARACTERS. Answer format: S,X,Y,Z Answers Case Sensitive : No"
+        }
+      ],
+      "acceptable_answers": [
+        "S,E,C,G"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "NO SPACES, TABS, DOTS, BRACKETS OR EXTRANEOUS CHARACTERS. Answer format: S,X,Y,Z Answers Case Sensitive : No"
+        }
+      ],
+      "acceptable_answers": [
+        "S,F,B,A,G"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the path found by Branch-and-Bound search algorithm? Enter the path as a comma separated list of node labels. Use the Branch-and-Bound variation that avoids cyclic expansions like S,E,S,E,S,E,... NO SPACES, TABS, DOTS, BRACKETS OR EXTRANEOUS CHARACTERS. Answer format: S,X,Y,Z Answers Case Sensitive : No"
+        }
+      ],
+      "acceptable_answers": [
+        "S,F,B,A,G"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let S0 (ref. no. a1) be the first node to be refined, identify the next 4 nodes (2nd to 5th node) that are refined by the TSP Branch-and-Bound algorithm. Enter the nodes (node reference numbers) in the order they are refined. Enter a comma separated list of node reference numbers. NO SPACES, TABS, DOTS, BRACKETS OR EXTRANEOUS CHARACTERS. Answer format: a9,b9,c9,d9 Answers Case Sensitive : No"
+        }
+      ],
+      "acceptable_answers": [
+        "b1,c2,b2,c3"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which node represents the optimal tour? Enter the node reference number in the text box, or enter NIL if it is not possible to determine the optimal tour. Enter a node reference number. NO SPACES, TABS, DOTS, BRACKETS OR EXTRANEOUS CHARACTERS. Answer format: a9 Answers Case Sensitive : No"
+        }
+      ],
+      "acceptable_answers": [
+        "d3"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the cost of the optimal tour? Enter the cost of the optimal tour in the text box, or enter NIL if it is not possible to determine the optimal tour. Enter an integer. NO SPACES, TABS, BRACKETS OR EXTRANEOUS CHARACTERS. Answer format: 42 Answers Case Sensitive : No"
+        }
+      ],
+      "numerical_answer": 434.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Determine the number of cities in the TSP instance. Enter the number of cities in the text box, or enter NIL if it is not possible to determine the number of cities. Enter an integer. NO SPACES, TABS, DOTS, BRACKETS OR EXTRANEOUS CHARACTERS. Answer format: 42 Answers Case Sensitive : No"
+        }
+      ],
+      "numerical_answer": 5.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Start from city A, what is the path representation of the optimal tour? Enter the path representation in the text box, or enter NIL if it is not possible to determine the optimal tour. Enter a comma separated list of cities (city labels). NO SPACES, TABS, DOTS, BRACKETS OR EXTRANEOUS CHARACTERS. Answer format: A,B,C Answers Case Sensitive : No Question Id : 6406531405261 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix GAMES The figure shows a game tree with evaluation function values at the leaf nodes. The leaf nodes are labeled from A to K. Use these labels to enter a leaf node or a list of leaf nodes in short answers (textbox). Tie-breaker: When several nodes carry the same best cost then select the deepest node, if tie persists then select the leftmost of the deepest nodes to break the tie. Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "A,B,D,E,C A,C,E,D,B"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "List the leaf nodes in the best strategy for MAX. Enter the node labels in alphabetical order. Enter a comma separated list of node labels in alphabetical order. NO SPACES, TABS, DOTS, BRACKETS OR EXTRANEOUS CHARACTERS. Answer format: X,Y,Z Answers Case Sensitive : No"
+        }
+      ],
+      "acceptable_answers": [
+        "A,C"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "List the leaf nodes inspected by Alpha-Beta algorithm. Enter a comma separated list of node labels in alphabetical order. NO SPACES, TABS, DOTS, BRACKETS OR EXTRANEOUS CHARACTERS. Answer format: X,Y,Z Answers Case Sensitive : No"
+        }
+      ],
+      "acceptable_answers": [
+        "A,B,D,H"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "List the leaf nodes SOLVED by SSS*. Enter a comma separated list of node labels in alphabetical order. NO SPACES, TABS, DOTS, BRACKETS OR EXTRANEOUS CHARACTERS. Answer format: X,Y,Z Answers Case Sensitive : No Question Id : 6406531405266 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix PROBLEM DECOMPOSITION The figure shows an AND-OR graph that depicts how a problem S can be decomposed into one or more smaller problems. Nodes are uniquely identified by labels (S, A, B, …). The number in each node is the heuristic estimate of the cost of solving that node. Nodes shown in double lines are primitive nodes and their values are actual costs. Observe that a primitive node is added to the graph by its parent when the parent is expanded, and the primitive node is labeled as SOLVED and it will not be expanded subsequently. The cost of each edge is 10 units. Tie-breaker 1: If several nodes have the same cost then break the tie using node labels. Tie-breaker 2: For AND nodes, expand the unsolved branch with the highest cost Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "A,B,D,H A,D,H,B D,H,A,B"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Enter a comma separated list of node labels. NO SPACES, TABS, DOTS, BRACKETS OR EXTRANEOUS CHARACTERS. Answer format: X,Y,Z Answers Case Sensitive : No"
+        }
+      ],
+      "acceptable_answers": [
+        "S,C,B C,B"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Determine the value of the start node S after each node is expanded. Enter the value of S after each node is expanded. Enter a comma separated list of numbers. NO SPACES, TABS, DOTS, BRACKETS OR EXTRANEOUS CHARACTERS. Answer format: 12,42,17 Answers Case Sensitive : No"
+        }
+      ],
+      "acceptable_answers": [
+        "45,50,80 50,80"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the final value of the start node S computed by AO*? Enter a number. NO SPACES, TABS, DOTS, BRACKETS OR EXTRANEOUS CHARACTERS. Answer format: 17 RULE BASED EXPERT SYSTEMS A Rete Net for a rule based system to identify engines, turbines and motors is shown in the figure. BoM refers to Bill-of-Materials, which is a list of parts and their quantities needed for assembling a machine. The nodes in the network are uniquely identified by labels: A1,A2,... for Alpha nodes; B1,B2,... for beta nodes; R1,R2,... for rules. The Working Memory contains the following WMEs uniquely identified by timestamps (sequence numbers). Assume that WMEs reside in the appropriate Alpha node, and Beta nodes simply point to elements in the ancestor Alpha nodes. The sub-questions are based on the first Match-Resolve-Execute cycle. Determine the locations of the WMEs and compute the conflict set, then answer the sub-questions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "80 Question Id : 6406531405270 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Does the given CSP have a solution? Enter the solution for regions A,B,C as a comma separated list of colours. Enter NIL if there is no solution. NO SPACES, TABS, DOTS, BRACKETS OR EXTRANEOUS CHARACTERS. Answer format: r,b,r Answers Case Sensitive : No"
+        }
+      ],
+      "acceptable_answers": [
+        "g,r,b g,b,r"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "May 2025 Endterm",
+  "subject": "Machine Learning Techniques",
+  "section": "endterm",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Question Id : 6406531405179 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "0.69 to 0.696"
+      ],
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the probability that a 60-year-old patient with a cholesterol level of 200 mg/dL has the disease? Enter the answer correct to two decimal places."
+        }
+      ],
+      "acceptable_answers": [
+        "0.71 to 0.75"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How high should the cholesterol level be for the patient mentioned in the previous question to have a 50% chance of being diagnosed with the disease? Question Id : 6406531405185 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Consider the datapoints (−2,−2) with label +1 and (2, 2) with label −1. A hard margin SVM is applied on this dataset. Answer the given subquestions: Sub questions"
+        }
+      ],
+      "numerical_answer": 150.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    }
+  ]
+}

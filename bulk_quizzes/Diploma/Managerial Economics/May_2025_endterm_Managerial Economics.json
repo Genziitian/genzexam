@@ -1,0 +1,302 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "May 2025 Endterm",
+  "subject": "Managerial Economics",
+  "section": "endterm",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If the price elasticity of demand for the product is –2, find the marginal cost (in ₹) of the last unit produced ____________"
+        }
+      ],
+      "numerical_answer": 20.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the firm’s percentage markup of price over marginal cost (as a % of the price)? ___________"
+        }
+      ],
+      "numerical_answer": 50.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Suppose that the average cost of the last unit produced is ₹15 and the firm’s fixed cost is ₹2000. Find the firm’s profit (in ₹)___________ Question Id : 6406531424394 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "numerical_answer": 20000.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is Latif’s profit (per car in $) if he does not offer a one-year warranty?______________"
+        }
+      ],
+      "numerical_answer": 2000.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is Latif’s profit (per car in $) if he offers a one-year warranty?______________"
+        }
+      ],
+      "numerical_answer": 2500.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is Hamid’s profit (per car in $) if Latif’s does not offer a one-year warranty? ___________"
+        }
+      ],
+      "numerical_answer": 1500.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is Hamid’s profit (per car in $) if Latif’s offers a one-year warranty? _____________"
+        }
+      ],
+      "numerical_answer": 0.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The equilibrium price of ball pens in the domestic market without any imports will be P*= _______"
+        }
+      ],
+      "numerical_answer": 50.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consumer surplus in this case will be CS = ____________"
+        }
+      ],
+      "acceptable_answers": [
+        "1250 1250000"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Producer surplus in this case will be PS = ____________"
+        }
+      ],
+      "acceptable_answers": [
+        "1250 1250000"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In case of import without tariff, how many total units of ball pens will be imported _______________"
+        }
+      ],
+      "acceptable_answers": [
+        "60 60000"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In case of import without tariff, how many units of ball pens are being supplied by domestic firms ____________"
+        }
+      ],
+      "acceptable_answers": [
+        "20 20000"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "With the tariff, how many units would be imported? ____________"
+        }
+      ],
+      "acceptable_answers": [
+        "40 40000"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How much would domestic producer surplus change compared to the case with imports without tariffs if the government introduces a ₹10 import duty per ball pen?____________"
+        }
+      ],
+      "acceptable_answers": [
+        "250000 250"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How much revenue would the domestic government collect from the imports of ball pens due to this import duty of ₹10? ____________ Question Id : 6406531424411 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix The market demand curve for pizzas is P=300-Q and the market supply curve is P=60+2Q. A tax of t=15 INR is imposed on one unit of pizza sold. Answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "400 400000"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What should be the socially efficient number of hives that the beekeeper should maintain ____________"
+        }
+      ],
+      "numerical_answer": 6.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many beehives will the beekeeper maintain if we ignore the apple orchard ____________ Question Id : 6406531424425 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Imagine that you have been working after college and now face the decision of whether or not to get an MBA at a prestigious institution. The cost of getting the MBA is 10. (Again, you can decide on the denomination, but rest assured that this sum includes the income lost over the course of the two years you will be studying!) Your future value is your stream of income, which depends on the strength of the labor market for the next decade. If the labor market is strong then your income value from having an MBA is 32, while your income value from your current status is 12. If the labor market is average then your income value from having an MBA is 16, while your income value from your current status is 8. If the labor market is weak then your income value from having an MBA is 12, while your income value from your current status is 4. Further assume that the probability of a strong labor market is p, of an average labor market is 0.5 and of a weak labor market is 0.5− p. Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "numerical_answer": 4.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If P=0.4, what is the highest price the university can charge for you to be willing to go ahead and get an MBA? ____________ Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "2.8 Question Id : 6406531424428 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What price would this monopolist will set? ____________"
+        }
+      ],
+      "numerical_answer": 25.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many apartments will he offer for rent?____________"
+        }
+      ],
+      "numerical_answer": 50.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What price would he set if he had 40 apartments? ____________"
+        }
+      ],
+      "numerical_answer": 30.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many would he rent if he had 40 apartments?____________"
+        }
+      ],
+      "numerical_answer": 40.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ]
+}

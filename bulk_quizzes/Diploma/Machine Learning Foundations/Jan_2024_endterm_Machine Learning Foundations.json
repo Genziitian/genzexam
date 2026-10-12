@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Jan 2024 Endterm",
+  "subject": "Machine Learning Foundations",
+  "section": "endterm",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the number of discontinuous points."
+        }
+      ],
+      "numerical_answer": 2.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the number of points where the function is not differentiable."
+        }
+      ],
+      "numerical_answer": 2.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In a large town, it is estimated that 20% of students own a laptop. A random sample of 400 students is selected from the town. What is the variance of the number of students with the laptops in a given sample?"
+        }
+      ],
+      "numerical_answer": 64.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A quality control manager at a factory measures the thickness of glass sheets produced. Five randomly selected sheets have the thicknesses(in mm) 10, 8, 11, 9, 12 respectively. Assuming the thickness follows a normal distribution and the variance is known, what is the maximum likelihood estimator (MLE) of the mean thickness, (μ), in mm of the glass sheets?"
+        }
+      ],
+      "numerical_answer": 10.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    }
+  ]
+}

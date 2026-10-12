@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "May 2023 Quiz2",
+  "subject": "DBMS",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Answers Case Sensitive : Yes"
+        }
+      ],
+      "acceptable_answers": [
+        "conn.commit()"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    }
+  ]
+}

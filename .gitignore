@@ -3,6 +3,9 @@ templates.*
 data/
 *.tmp
 node_modules/
+.DS_Store
+*/.DS_Store
+_push/
 
 # Laravel Backend
 /backend/vendor/

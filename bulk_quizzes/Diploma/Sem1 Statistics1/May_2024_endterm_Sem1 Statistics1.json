@@ -1,0 +1,102 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "May 2024 Endterm",
+  "subject": "Sem1 Statistics1",
+  "section": "endterm",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A florist prepares bouquets for customers each day. For each bouquet, there is a 30% chance that it will include a specific rare flower. Find the probability that at most one bouquet out of five will include this rare flower. Enter the answer correct to two decimal places."
+        }
+      ],
+      "acceptable_answers": [
+        "0.50 to 0.56"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Suppose person A makes accurate predictions about the weather with a probability of 4/7 and person B makes accurate predictions with a probability of 2/3. If you ask both of them their predictions about tomorrow’s weather, what is the probability that their predictions will be contradictory? Enter the answer correct to two decimal places."
+        }
+      ],
+      "acceptable_answers": [
+        "0.45 to 0.51"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A box contains 10 red marbles, 8 blue marbles, and 12 green marbles. If one marble is drawn at random, what is the probability that it is either red or green? Enter the answer correct to two decimal places."
+        }
+      ],
+      "acceptable_answers": [
+        "0.70 to 0.76"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "There are 42 ways to fill the position of captain and a vice captain from a team of n members. What is the value of n?"
+        }
+      ],
+      "numerical_answer": 7.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Question Id : 640653905097 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix A parking garage charges an hourly rate and the time spent by cars in the garage follows a uniform distribution between 1 hour and 5 hours. Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "numerical_answer": 2.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the probability that a randomly selected car will spend exactly 2 hours?"
+        }
+      ],
+      "numerical_answer": 0.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the probability that a randomly selected car will spend more than 3 hours in the garage? Enter the answer correct to one decimal place. Question Id : 640653905101 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "numerical_answer": 0.5,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    }
+  ]
+}

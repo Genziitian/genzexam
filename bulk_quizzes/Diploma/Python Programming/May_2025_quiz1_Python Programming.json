@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "May 2025 Quiz1",
+  "subject": "Python Programming",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following snippet of code. What will the output be? result = 0 for i in range(1, 4): for j in range(1, 4): if i == j: continue if i + j > 4: break result += i + j print(result)"
+        }
+      ],
+      "numerical_answer": 14.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the output of the following snippet of code? Enter an integer as your answer. lst = ['IIT', ['Madras', '2025'], 'exam'] print(len(lst[0]) + len(lst[1][1]) + len(lst[2]))"
+        }
+      ],
+      "numerical_answer": 11.0,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the output of the following snippet of code? Enter an integer as your answer. lst = [x for x in [1,0,-2]] result = 0 for val in lst: if val == 0: result += 10 elif val < 0: result += 5 elif val % 2 == 1: result += 3 else: result += 1 print(result)"
+        }
+      ],
+      "numerical_answer": 18.0,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following snippet of code. What will the output be? names = [\"alice\", \"bob\", \"charlie\", \"david\", \"eve\"] result = 0 short = [] for name in names: if len(name) < 4: short.append(name) elif len(name) == 5: result += 1 elif 'a' in name: result += 2 print(len(short) + result) Question Id : 6406531298394 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Consider the following snippet of code and answer the given sub-questions. def transform(data): result = [] for item in data: if isinstance(item, str) and len(item) % 2 == 0: result.append(item.upper()) elif isinstance(item, int) and item % 2 == 1: result.append(item * item) else: continue return result sample = ['ai', 5, 'sql', 4, 'ml', 8, 9] output = transform(sample) Note: The built-in function isinstance(object, type) is used to check if an object is of a specified type. Sub questions"
+        }
+      ],
+      "numerical_answer": 6.0,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium"
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Dec 2024 Endterm",
+  "subject": "Business Data Management",
+  "section": "endterm",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Enter the value X1 _________"
+        }
+      ],
+      "numerical_answer": 1.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Enter the value X2 __________"
+        }
+      ],
+      "numerical_answer": 180.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Enter the value X3 __________"
+        }
+      ],
+      "acceptable_answers": [
+        "83 to 83.5"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Enter the value X4 __________"
+        }
+      ],
+      "acceptable_answers": [
+        "65 to 65.75"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ]
+}

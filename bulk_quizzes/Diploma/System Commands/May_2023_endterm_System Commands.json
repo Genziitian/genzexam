@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "May 2023 Endterm",
+  "subject": "System Commands",
+  "section": "endterm",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Question Id : 640653612509 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "numerical_answer": 1.0,
+      "numerical_tolerance": 0.01,
+      "marks": 7,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the output of the first loop at the end of the execution of the given script? Answers Case Sensitive : No"
+        }
+      ],
+      "numerical_answer": 987987987.0,
+      "numerical_tolerance": 0.01,
+      "marks": 7,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the output of the second loop after the execution of the given script? Answers Case Sensitive : No"
+        }
+      ],
+      "numerical_answer": 998877.0,
+      "numerical_tolerance": 0.01,
+      "marks": 7,
+      "difficulty": "medium"
+    }
+  ]
+}
