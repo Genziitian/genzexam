@@ -297,3 +297,21 @@ footer{background:var(--navy);color:var(--navy-text)}
 .mnav-in>*:nth-child(2){animation-delay:.03s}.mnav-in>*:nth-child(3){animation-delay:.06s}.mnav-in>*:nth-child(4){animation-delay:.09s}.mnav-in>*:nth-child(5){animation-delay:.12s}.mnav-in>*:nth-child(6){animation-delay:.15s}.mnav-in>*:nth-child(7){animation-delay:.18s}.mnav-in>*:nth-child(8){animation-delay:.21s}
 @keyframes mnavItem{from{opacity:0;transform:translateX(-10px)}}
 @media (prefers-reduced-motion:reduce){.mnav-in,.mnav-in>*{animation:none!important}}
+
+/* ---------- footer v2: contact button, wordmark animation ---------- */
+.sf-cta .sf-btn{margin-top:16px;display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 22px;border-radius:999px;background:#fff;color:#0E1330!important;font-weight:800;font-size:15px;transition:transform .15s,background .2s}
+.sf-cta .sf-btn:hover{background:#FFC24B;transform:translateY(-2px)}
+.sf-cta .sf-btn svg{transition:transform .2s}
+.sf-cta .sf-btn:hover svg{transform:translateX(4px)}
+.sf-cols{grid-template-columns:repeat(3,minmax(0,1fr))}
+.sf-mark{position:relative;display:flex;align-items:center;justify-content:center;gap:clamp(12px,2vw,28px);padding:28px 0 6px;overflow:hidden;user-select:none}
+.sf-mark-logo{width:clamp(56px,9vw,128px);height:auto;border-radius:22%;opacity:0;transform:translateY(30px) rotate(-12deg) scale(.8);transition:opacity .8s ease,transform .9s cubic-bezier(.3,1.5,.5,1)}
+.sf-mark.in .sf-mark-logo{opacity:1;transform:none;animation:sfFloat 5s ease-in-out 1.2s infinite}
+.sf-mark-word{display:flex;font-family:var(--display);font-weight:800;font-size:clamp(56px,13vw,190px);line-height:.9;letter-spacing:-.05em;white-space:nowrap}
+.sf-mark-word span{display:inline-block;color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.18);background:linear-gradient(100deg,rgba(255,255,255,.06) 0%,rgba(255,255,255,.06) 40%,#FFC24B 50%,rgba(255,255,255,.06) 60%,rgba(255,255,255,.06) 100%);background-size:400% 100%;-webkit-background-clip:text;background-clip:text;opacity:0;transform:translateY(60%);transition:opacity .6s ease calc(var(--i)*70ms),transform .8s cubic-bezier(.2,.8,.2,1) calc(var(--i)*70ms)}
+.sf-mark.in .sf-mark-word span{opacity:1;transform:none;animation:sfSweep 6s ease-in-out 1.4s infinite}
+@keyframes sfSweep{0%{background-position:100% 0}60%,100%{background-position:0 0}}
+@keyframes sfFloat{50%{transform:translateY(-8px) rotate(-3deg)}}
+@media (max-width:560px){.sf-mark{padding-top:20px}.sf-mark-word span{-webkit-text-stroke:1px rgba(255,255,255,.2)}}
+@media (prefers-reduced-motion:reduce){.sf-mark-logo,.sf-mark-word span{opacity:1!important;transform:none!important;animation:none!important;transition:none!important}}
+@media (max-width:560px){.sf-cols{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr)!important}.sf-cols nav:last-child{grid-column:1/-1}}

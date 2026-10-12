@@ -1562,23 +1562,26 @@
       var banner = document.createElement("div");
       banner.className = "ql-login-banner";
       banner.innerHTML =
-        '<div class="ql-login-banner-brand"><i></i><div>Quiz LAB<small>by GenZ IITian</small></div></div>' +
-        "<div>" +
-        "<h2>Practise the way the exam actually feels.</h2>" +
-        "<p>Past papers for the IITM BS degree, sat under a real clock " +
-        "with the same palette, navigation and marking you get on the day.</p>" +
-        '<ul class="ql-login-banner-points">' +
-        LOGIN_POINTS.map(function (point) {
-          return (
-            "<li>" +
-            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" ' +
-            'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
-            '<path d="M20 6 9 17l-5-5"/></svg>' +
-            "<span>" + escapeHtml(point) + "</span></li>"
-          );
-        }).join("") +
-        "</ul></div>" +
-        '<div class="ql-login-banner-foot">Data Science · Electronic Systems · Aerospace · Management</div>';
+        '<div class="ql-lg-brand"><img src="/assets/quiz-lab-icon.png" alt="" width="44" height="44"><div>Quiz LAB<small>by GenZ IITian</small></div></div>' +
+        '<div class="ql-lg-copy">' +
+        '<span class="ql-lg-pill"><i></i>Made for IITM BS students</span>' +
+        '<h2>Practise like it\'s the <mark>real exam.</mark></h2>' +
+        '<p>Past papers for the IITM BS degree, sat under a real clock with the same palette, navigation and marking you get on the day.</p>' +
+        '</div>' +
+        '<div class="ql-lg-scene" aria-hidden="true">' +
+          '<div class="ql-lg-card">' +
+            '<div class="ql-lg-head"><span>MATHS 1 · QUIZ 1</span><b class="ql-lg-ring"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="16"/><circle class="bar" cx="20" cy="20" r="16"/></svg><em>45</em></b></div>' +
+            '<div class="ql-lg-q">If f(x) = 2x + 3, what is f\u207b\u00b9(7)?</div>' +
+            '<div class="ql-lg-opt"><i>A</i>5</div><div class="ql-lg-opt ok"><i>B</i>2<s>Correct</s></div><div class="ql-lg-opt"><i>C</i>17</div>' +
+          '</div>' +
+          '<div class="ql-lg-pal"><b>Palette</b><div>' + Array.apply(null, Array(15)).map(function (_, k) { return '<i style="--k:' + k + '"></i>'; }).join('') + '</div></div>' +
+          '<div class="ql-lg-toast t1"><span>\u26a1</span>+200 XP</div>' +
+          '<div class="ql-lg-toast t2"><span>\ud83c\udfc6</span>Rank up</div>' +
+          '<div class="ql-lg-toast t3"><span>\u2713</span>Solutions ready</div>' +
+        '</div>' +
+        '<div class="ql-lg-marquee" aria-hidden="true"><div>' +
+          ['Maths 1','Statistics 1','Computational Thinking','English 1','Python','Maths 2','Statistics 2','DBMS','PDSA','Java','MLF','MLT','MLP','BDM'].concat(['Maths 1','Statistics 1','Computational Thinking','English 1','Python','Maths 2','Statistics 2','DBMS','PDSA','Java','MLF','MLT','MLP','BDM']).map(function (c) { return '<span>' + c + '</span>'; }).join('') +
+        '</div></div>';
       column.appendChild(banner);
     }
 

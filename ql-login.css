@@ -1,0 +1,96 @@
+/* Sign-in page (/login) redesign. The left banner markup comes from app-enhancements.js
+   (simplifyLogin); the form is the app's own, restyled here without changing its text.
+   Own light/dark values; not an input to tools/build-dark-css.py. */
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&display=swap');
+:root{--lg-bg:#F7F8FC;--lg-dots:#D5D9EE;--lg-surface:#fff;--lg-ink:#0E1330;--lg-text:#3E4569;--lg-muted:#6A7194;--lg-line:#D5D9EE;--lg-brand:#3A3FD8;--lg-brand-h:#2B30B8;--lg-brand-soft:#ECEDFF;--lg-shadow:0 30px 60px -36px rgba(14,19,48,.45)}
+:root[data-theme=dark]{--lg-bg:#000;--lg-dots:#1f1f1f;--lg-surface:#111;--lg-ink:#F2F2F2;--lg-text:#B4B4B4;--lg-muted:#8A8A8A;--lg-line:#2a2a2a;--lg-brand:#4A4FE6;--lg-brand-h:#5D62F0;--lg-brand-soft:#1E1F3A;--lg-shadow:0 30px 60px -30px rgba(0,0,0,.9)}
+.ql-disp{font-family:'Bricolage Grotesque',system-ui,sans-serif}
+
+/* ---------- left panel ---------- */
+.ql-login-banner{background:#0B0E1F!important;color:#fff;gap:28px}
+:root[data-theme=dark] .ql-login-banner{background:#0a0a0a!important;border-right:1px solid #1c1c1c}
+.ql-login-banner::after{background-image:radial-gradient(rgba(255,255,255,.12) 1.2px,transparent 1.2px)!important;background-size:24px 24px!important;-webkit-mask-image:radial-gradient(110% 80% at 30% 20%,#000 30%,transparent 80%)!important;mask-image:radial-gradient(110% 80% at 30% 20%,#000 30%,transparent 80%)!important}
+.ql-login-banner::before{content:'';position:absolute;right:-140px;top:-140px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(74,79,230,.55),rgba(74,79,230,0) 70%);animation:lgOrb 10s ease-in-out infinite;pointer-events:none}
+@keyframes lgOrb{50%{transform:translate(-60px,60px) scale(1.15)}}
+.ql-lg-brand{display:flex;align-items:center;gap:12px;font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800;font-size:20px;letter-spacing:-.02em;animation:lgUp .6s cubic-bezier(.2,.7,.2,1) both}
+.ql-lg-brand img{width:44px;height:44px;border-radius:12px}
+.ql-lg-brand small{display:block;font-family:Inter,system-ui,sans-serif;font-size:12px;font-weight:600;color:rgba(255,255,255,.6);letter-spacing:0}
+.ql-lg-copy{animation:lgUp .7s cubic-bezier(.2,.7,.2,1) .1s both}
+.ql-lg-pill{display:inline-flex;align-items:center;gap:8px;padding:5px 12px 5px 6px;border-radius:999px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.05);font-size:12.5px;font-weight:600;color:rgba(255,255,255,.85)}
+.ql-lg-pill i{width:18px;height:18px;border-radius:50%;background:#FFC24B;box-shadow:0 0 0 0 rgba(255,194,75,.6);animation:lgPing 2s ease-in-out infinite}
+@keyframes lgPing{50%{box-shadow:0 0 0 6px rgba(255,194,75,0)}}
+.ql-lg-copy h2{margin:18px 0 0!important;max-width:13em!important;font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800!important;font-size:clamp(32px,3.2vw,50px)!important;line-height:1.02!important;letter-spacing:-.035em!important;color:#fff}
+.ql-lg-copy mark{white-space:nowrap;display:inline-block;margin-top:4px;background:linear-gradient(#FFC24B,#FFC24B) no-repeat left/0% 100%;color:#0E1330;padding:0 10px;border-radius:10px;animation:lgHl .8s cubic-bezier(.6,0,.2,1) .6s forwards}
+@keyframes lgHl{to{background-size:100% 100%}}
+.ql-lg-copy p{margin:16px 0 0!important;max-width:30em!important;font-size:15px!important;line-height:1.65!important;color:rgba(255,255,255,.7)!important}
+/* scene */
+.ql-lg-scene{position:relative;flex:1;min-height:270px;max-width:520px}
+.ql-lg-card{position:absolute;left:0;top:10px;width:min(330px,72%);padding:18px;border-radius:20px;background:#fff;color:#0E1330;box-shadow:0 30px 60px -30px rgba(0,0,0,.8);animation:lgUp .8s cubic-bezier(.2,.7,.2,1) .25s both,lgFloat 6s ease-in-out 1.2s infinite}
+.ql-lg-head{display:flex;align-items:center;justify-content:space-between;font-size:10.5px;font-weight:800;letter-spacing:.08em;color:#6A7194}
+.ql-lg-ring{position:relative;width:38px;height:38px}
+.ql-lg-ring svg{width:38px;height:38px;transform:rotate(-90deg)}
+.ql-lg-ring circle{fill:none;stroke:#E3E6F2;stroke-width:4}
+.ql-lg-ring circle.bar{stroke:#3A3FD8;stroke-linecap:round;stroke-dasharray:100.5;animation:lgRing 8s linear infinite}
+.ql-lg-ring em{position:absolute;inset:0;display:grid;place-items:center;font-style:normal;font-size:11px;font-weight:800;color:#0E1330}
+@keyframes lgRing{from{stroke-dashoffset:0}to{stroke-dashoffset:100.5}}
+.ql-lg-q{margin:10px 0 12px;font-size:14px;font-weight:700}
+.ql-lg-opt{display:flex;align-items:center;gap:10px;margin-top:7px;padding:8px 10px;border-radius:11px;border:1.5px solid #E3E6F2;font-size:13px;font-weight:600}
+.ql-lg-opt i{width:22px;height:22px;border-radius:7px;display:grid;place-items:center;background:#ECEDFF;color:#3A3FD8;font-style:normal;font-size:11px;font-weight:800}
+.ql-lg-opt s{margin-left:auto;text-decoration:none;font-size:11px;font-weight:800;color:#0E7A4F;opacity:0}
+.ql-lg-opt.ok{animation:lgPick 6s ease-in-out 1.6s infinite}
+.ql-lg-opt.ok i{animation:lgPickI 6s ease-in-out 1.6s infinite}
+.ql-lg-opt.ok s{animation:lgPickS 6s ease-in-out 1.6s infinite}
+@keyframes lgPick{0%,20%{background:#fff;border-color:#E3E6F2}28%,85%{background:#E5F5EC;border-color:#0E7A4F}100%{background:#fff;border-color:#E3E6F2}}
+@keyframes lgPickI{0%,20%{background:#ECEDFF;color:#3A3FD8}28%,85%{background:#0E7A4F;color:#fff}100%{background:#ECEDFF;color:#3A3FD8}}
+@keyframes lgPickS{0%,24%{opacity:0}30%,85%{opacity:1}100%{opacity:0}}
+.ql-lg-pal{position:absolute;right:0;bottom:6px;width:min(220px,46%);padding:14px;border-radius:18px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(8px);animation:lgUp .8s cubic-bezier(.2,.7,.2,1) .45s both,lgFloat 7s ease-in-out 2s infinite reverse}
+.ql-lg-pal b{display:block;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:10px}
+.ql-lg-pal div{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.ql-lg-pal i{aspect-ratio:1;border-radius:7px;background:rgba(255,255,255,.1);animation:lgFill 7.5s ease-in-out infinite;animation-delay:calc(var(--k)*.25s)}
+.ql-lg-pal i:nth-child(4n){animation-name:lgFillY}
+@keyframes lgFill{0%,10%{background:rgba(255,255,255,.1)}20%,80%{background:#0E7A4F}100%{background:rgba(255,255,255,.1)}}
+@keyframes lgFillY{0%,10%{background:rgba(255,255,255,.1)}20%,80%{background:#FFC24B}100%{background:rgba(255,255,255,.1)}}
+.ql-lg-toast{position:absolute;display:flex;align-items:center;gap:8px;padding:8px 14px 8px 8px;border-radius:999px;background:#fff;color:#0E1330;font-size:12.5px;font-weight:800;box-shadow:0 14px 30px -14px rgba(0,0,0,.7);opacity:0}
+.ql-lg-toast span{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-size:12px;background:#FFE7A8}
+.ql-lg-toast.t1{right:8%;top:0;animation:lgToast 9s ease-in-out 1.8s infinite}
+.ql-lg-toast.t2{left:52%;top:44%;animation:lgToast 9s ease-in-out 4.8s infinite}
+.ql-lg-toast.t2 span{background:#DCDEFF}
+.ql-lg-toast.t3{left:4%;bottom:0;animation:lgToast 9s ease-in-out 7.8s infinite}
+.ql-lg-toast.t3 span{background:#CDEFDC;color:#0E7A4F}
+@keyframes lgToast{0%{opacity:0;transform:translateY(12px) scale(.9)}6%,26%{opacity:1;transform:none}32%,100%{opacity:0;transform:translateY(-8px)}}
+@keyframes lgFloat{50%{transform:translateY(-10px)}}
+@keyframes lgUp{from{opacity:0;transform:translateY(20px)}}
+/* course marquee */
+.ql-lg-marquee{overflow:hidden;padding-top:18px;border-top:1px solid rgba(255,255,255,.1);-webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
+.ql-lg-marquee div{display:flex;gap:10px;width:max-content;animation:lgMarq 40s linear infinite}
+.ql-lg-marquee span{padding:7px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.12);font-size:12.5px;font-weight:600;color:rgba(255,255,255,.75);white-space:nowrap}
+@keyframes lgMarq{to{transform:translateX(-50%)}}
+
+/* ---------- right side: form ---------- */
+html:has([data-ql-login-trimmed]) .relative.flex.flex-1.overflow-y-auto{background-color:var(--lg-bg)!important;background-image:radial-gradient(var(--lg-dots) 1.2px,transparent 1.2px)!important;background-size:24px 24px!important;box-shadow:none!important}
+[data-ql-login-trimmed]{padding:34px 30px 26px;border-radius:28px;background:var(--lg-surface);border:1px solid var(--lg-line);box-shadow:var(--lg-shadow)}
+[data-ql-login-trimmed]>*{animation:lgUp .55s cubic-bezier(.2,.7,.2,1) both}
+[data-ql-login-trimmed]>*:nth-child(2){animation-delay:.05s}[data-ql-login-trimmed]>*:nth-child(3){animation-delay:.1s}[data-ql-login-trimmed]>*:nth-child(4){animation-delay:.15s}[data-ql-login-trimmed]>*:nth-child(5){animation-delay:.2s}[data-ql-login-trimmed]>*:nth-child(6){animation-delay:.25s}[data-ql-login-trimmed]>*:nth-child(7){animation-delay:.3s}[data-ql-login-trimmed]>*:nth-child(8){animation-delay:.35s}[data-ql-login-trimmed]>*:nth-child(9){animation-delay:.4s}
+[data-ql-login-trimmed] h2{margin-top:0!important;font-family:'Bricolage Grotesque',system-ui,sans-serif!important;font-size:38px!important;letter-spacing:-.035em!important;color:var(--lg-ink)!important}
+[data-ql-login-trimmed] h2+p{font-size:15px!important;color:var(--lg-text)!important}
+[data-ql-login-trimmed]>button:first-of-type{min-height:52px;border-radius:14px!important;border:1.5px solid var(--lg-line)!important;background:var(--lg-surface)!important;color:var(--lg-ink)!important;font-weight:700!important;transition:transform .15s,border-color .2s,box-shadow .2s!important}
+[data-ql-login-trimmed]>button:first-of-type:hover{transform:translateY(-2px);border-color:var(--lg-ink)!important;box-shadow:0 12px 24px -16px rgba(14,19,48,.5)}
+[data-ql-login-trimmed] .my-5 span{color:var(--lg-muted)!important}
+[data-ql-login-trimmed] .my-5 .h-px{background:var(--lg-line)!important}
+[data-ql-login-trimmed] label{color:var(--lg-ink)!important;font-weight:700!important;font-size:13.5px!important}
+[data-ql-login-trimmed] input{min-height:50px;border-radius:14px!important;border:1.5px solid var(--lg-line)!important;background:var(--lg-bg)!important;color:var(--lg-ink)!important;font-size:15px!important;padding-left:16px!important;transition:border-color .2s,box-shadow .2s,background .2s!important}
+[data-ql-login-trimmed] input:focus{border-color:var(--lg-brand)!important;background:var(--lg-surface)!important;box-shadow:0 0 0 4px var(--lg-brand-soft)!important}
+[data-ql-login-trimmed] form a,[data-ql-login-trimmed] p a{color:var(--lg-brand)!important;font-weight:700!important}
+:root[data-theme=dark] [data-ql-login-trimmed] form a,:root[data-theme=dark] [data-ql-login-trimmed] p a{color:#A5A8FF!important}
+[data-ql-login-trimmed] form>button[type=submit],[data-ql-login-trimmed] form>button:last-child{position:relative;overflow:hidden;width:100%;min-height:54px;border-radius:14px!important;background:var(--lg-brand)!important;color:#fff!important;font-size:16px!important;font-weight:800!important;border:0!important;box-shadow:0 14px 28px -14px var(--lg-brand)!important;transition:transform .15s,background .2s!important}
+[data-ql-login-trimmed] form>button:last-child:hover{background:var(--lg-brand-h)!important;transform:translateY(-1px)}
+[data-ql-login-trimmed] form>button:last-child::after{content:'';position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.35),transparent);transform:skewX(-20deg);animation:lgShine 4.5s ease-in-out 2s infinite}
+@keyframes lgShine{0%,70%{left:-60%}90%,100%{left:130%}}
+[data-ql-login-trimmed]>p{color:var(--lg-text)!important}
+[data-ql-login-trimmed]>div:last-child{color:var(--lg-muted)!important;border-top:1px solid var(--lg-line);padding-top:16px;margin-top:28px!important}
+[data-ql-login-trimmed] .ql-auth-brand span:first-child{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:800!important;font-size:18px!important;color:var(--lg-ink)!important}
+@media (max-width:1023px){
+  [data-ql-login-trimmed]{padding:26px 20px 20px;border-radius:24px}
+  [data-ql-login-trimmed] h2{font-size:32px!important}
+}
+@media (prefers-reduced-motion:reduce){.ql-login-banner *,.ql-login-banner::before,[data-ql-login-trimmed]>*,[data-ql-login-trimmed] form>button:last-child::after{animation:none!important}.ql-lg-copy mark{background-size:100% 100%}.ql-lg-toast.t1{opacity:1}}
