@@ -429,6 +429,28 @@ if('IntersectionObserver' in window&&!(window.matchMedia&&matchMedia('(prefers-r
   @media (min-width:901px){.mnav{display:none!important}}
   @media (max-width:520px){.mnav-pol{grid-template-columns:1fr}}
 
+
+  /* ---------- extra motion ---------- */
+  .anim .hero-copy>*{animation:heroIn .7s cubic-bezier(.2,.7,.2,1) both}
+  .anim .hero-copy>*:nth-child(1){animation-delay:.05s}.anim .hero-copy>*:nth-child(2){animation-delay:.15s}
+  .anim .hero-copy>*:nth-child(3){animation-delay:.3s}.anim .hero-copy>*:nth-child(4){animation-delay:.42s}.anim .hero-copy>*:nth-child(5){animation-delay:.54s}
+  @keyframes heroIn{from{opacity:0;transform:translateY(22px)}}
+  .anim .hl{background:linear-gradient(var(--yellow),var(--yellow)) no-repeat left/0% 100%;animation:hlSweep .8s cubic-bezier(.6,0,.2,1) .55s forwards}
+  @keyframes hlSweep{to{background-size:100% 100%}}
+  .pill i{animation:livePulse 2s ease-in-out infinite}
+  @keyframes livePulse{0%,100%{box-shadow:0 0 0 0 rgba(14,122,79,.5)}50%{box-shadow:0 0 0 6px rgba(14,122,79,0)}}
+  .btn-brand,.btn-yellow{position:relative;overflow:hidden}
+  .btn-brand::after,.btn-yellow::after{content:'';position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.35),transparent);transform:skewX(-20deg);animation:btnShine 5s ease-in-out 2s infinite;pointer-events:none}
+  @keyframes btnShine{0%,70%{left:-60%}90%,100%{left:130%}}
+  .anim [data-rv]{opacity:0;transform:translateY(28px);transition:opacity .7s ease var(--rd,0ms),transform .7s cubic-bezier(.2,.7,.2,1) var(--rd,0ms)}
+  .anim [data-rv].rv-in{opacity:1;transform:none}
+  .anim .demo{animation:demoIn .8s cubic-bezier(.2,.7,.2,1) .3s both,demoFloat 6s ease-in-out 1.4s infinite}
+  @keyframes demoFloat{50%{transform:translateY(-8px)}}
+  .band{position:relative;overflow:hidden}
+  .band::before{content:'';position:absolute;width:260px;height:260px;border-radius:50%;right:-80px;top:-120px;background:rgba(255,255,255,.08);animation:bandOrb 9s ease-in-out infinite}
+  @keyframes bandOrb{50%{transform:translate(-40px,40px) scale(1.15)}}
+  @media (prefers-reduced-motion:reduce){.anim [data-rv]{opacity:1;transform:none}.anim .hl{background-size:100% 100%}}
+
   /* ---------- responsive ---------- */
   @media (max-width:980px){.who{grid-template-columns:1fr}.stairs{height:280px}.faq-grid{display:flex;flex-direction:column;gap:32px}.faq-side{display:contents}.faq-head{order:1}.faq{order:2;width:100%}.ask{order:3}.inside{grid-template-columns:1fr}.foot{grid-template-columns:1fr 1fr}.foot>section:first-child{grid-column:1/-1}}
   /* tablets: facts in a 2x2 grid, smaller step cards, roomier hero card */
@@ -1028,6 +1050,16 @@ if('IntersectionObserver' in window&&!(window.matchMedia&&matchMedia('(prefers-r
     document.addEventListener('click',function(e){if(pm&&!e.target.closest('.pol'))closePol();});
     document.addEventListener('keydown',function(e){if(e.key==='Escape'){if(pm&&!pm.hidden){closePol();pb.focus();}closeNav();}});
     addEventListener('resize',function(){if(innerWidth>900)closeNav();},{passive:true});
+  })();
+
+  /* ---- scroll reveal for section heads and cards ---- */
+  (function(){
+    if(!root.classList.contains('anim')||!('IntersectionObserver' in window))return;
+    var groups=['.sec-head','.row-head','.cats>.cat','.modes','.list>.row','.steps>.step','.spec','.features>li','.who','.disclaimer','.faq-head','.ask','.band','.foot>section'];
+    function show(el){el.classList.add('rv-in');io.unobserve(el);}
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){show(e.target);if(e.target.matches('.cats>.cat'))[].forEach.call(e.target.parentNode.children,show);}});},{threshold:0,rootMargin:'0px 0px -30px 0px'});
+    addEventListener('scroll',function(){if(innerHeight+scrollY>=document.body.scrollHeight-4)[].forEach.call(document.querySelectorAll('[data-rv]:not(.rv-in)'),show);},{passive:true});
+    groups.forEach(function(sel){[].forEach.call(document.querySelectorAll(sel),function(el,i){el.setAttribute('data-rv','');el.style.setProperty('--rd',(i%6)*80+'ms');io.observe(el);});});
   })();
 
   /* ---- header border on scroll ---- */
