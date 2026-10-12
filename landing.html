@@ -220,7 +220,7 @@ if('IntersectionObserver' in window&&!(window.matchMedia&&matchMedia('(prefers-r
   .row-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px}
   .more{font-weight:700;font-size:15px;color:var(--brand-text);min-height:44px;display:flex;align-items:center;gap:8px}
   .more:hover{text-decoration:underline}
-  .cats{margin-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(360px,100%),1fr));gap:20px}
+  .cats{margin-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:20px}
   .cat{display:flex;gap:18px;align-items:flex-start;padding:24px;background:var(--surface);border:1.5px solid var(--line);border-radius:22px;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
   .cat:hover{border-color:var(--brand);transform:translateY(-3px);box-shadow:0 14px 30px -18px rgba(58,63,216,.45)}
   .cat-ico{width:56px;height:56px;border-radius:16px;display:flex;align-items:center;justify-content:center;flex:none;color:var(--ink)}
@@ -269,7 +269,7 @@ if('IntersectionObserver' in window&&!(window.matchMedia&&matchMedia('(prefers-r
   .row .btn{pointer-events:none}
 
   /* ---------- how ---------- */
-  .steps{margin-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(340px,100%),1fr));gap:20px}
+  .steps{margin-top:40px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
   .step{padding:30px;border-radius:24px;background:var(--surface);border:1.5px solid var(--line)}
   .step-n{font-family:var(--display);font-weight:800;font-size:64px;line-height:1;color:var(--yellow);-webkit-text-stroke:1.5px var(--ink)}
   .step h3{margin-top:18px;font-family:var(--display);font-weight:700;font-size:24px}
@@ -360,7 +360,30 @@ if('IntersectionObserver' in window&&!(window.matchMedia&&matchMedia('(prefers-r
   .foot-bottom{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.1);padding-top:22px;display:flex;flex-direction:column;gap:8px;font-size:13px;line-height:1.55;color:var(--navy-faint)}
 
   /* ---------- responsive ---------- */
-  @media (max-width:980px){.faq-grid{display:flex;flex-direction:column;gap:32px}.faq-side{display:contents}.faq-head{order:1}.faq{order:2;width:100%}.ask{order:3}.strip-in{grid-template-columns:1fr 1fr;gap:28px 24px}.fact:nth-child(3){border-left:0;padding-left:0}.links{display:none}.inside{grid-template-columns:1fr}.foot{grid-template-columns:1fr 1fr}.foot>section:first-child{grid-column:1/-1}}
+  @media (max-width:980px){.faq-grid{display:flex;flex-direction:column;gap:32px}.faq-side{display:contents}.faq-head{order:1}.faq{order:2;width:100%}.ask{order:3}.links{display:none}.inside{grid-template-columns:1fr}.foot{grid-template-columns:1fr 1fr}.foot>section:first-child{grid-column:1/-1}}
+  /* tablets: facts in a 2x2 grid, smaller step cards, roomier hero card */
+  @media (max-width:1100px){
+    .strip-in{grid-template-columns:1fr 1fr;gap:26px 32px}
+    .fact:nth-child(3){border-left:0;padding-left:0}
+  }
+  @media (max-width:980px){
+    .hero-in{gap:44px}
+    .hero-copy{flex-basis:100%}
+    .demo-wrap{flex-basis:100%}
+    .demo{max-width:540px}
+    .step{padding:24px}
+    .step-n{font-size:52px}
+    .step h3{font-size:21px}
+  }
+  /* small tablets and phones: steps become a compact list */
+  @media (max-width:760px){
+    .steps{grid-template-columns:1fr;gap:12px;margin-top:28px}
+    .step{display:grid;grid-template-columns:auto 1fr;column-gap:18px;align-items:start;padding:20px 22px}
+    .step-n{font-size:44px;grid-row:span 2}
+    .step h3{margin-top:2px;font-size:20px}
+    .step p{margin-top:6px;font-size:15px}
+    .panel{gap:28px}
+  }
   @media (max-width:640px){
     .wrap{padding:0 16px}
     .hero-in{padding:28px 16px 64px;gap:48px}
@@ -394,6 +417,38 @@ if('IntersectionObserver' in window&&!(window.matchMedia&&matchMedia('(prefers-r
     .faq-x{width:32px;height:32px}
     .faq-a p{padding:0 16px 18px 54px;font-size:15.5px}
     .ask{padding:22px}
+    /* levels: swipeable row with the next card peeking in */
+    .cats{display:flex;gap:12px;margin:28px -16px 0;padding:0 16px 10px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding:0 16px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+    .cats::-webkit-scrollbar{display:none}
+    .cat{flex:0 0 80%;flex-direction:column;gap:14px;padding:20px;scroll-snap-align:start}
+    .cat:hover{transform:none}
+    .cat-ico{width:48px;height:48px;border-radius:14px}
+    .cat h3{font-size:20px}
+    .cat p{font-size:14.5px}
+    /* practice modes: one-row segmented tabs */
+    .modes{padding:22px 18px;border-radius:24px}
+    .tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px;margin-top:24px;padding:4px;border-radius:16px;background:var(--surface-2)}
+    .tab{min-height:44px;padding:0 6px;font-size:14px;border:0;border-radius:12px;background:transparent;white-space:nowrap}
+    .tab[aria-selected="true"]{background:var(--ink);color:var(--bg)}
+    .tab-x{display:none}
+    .panel-copy h3{font-size:24px}
+    .panel-copy>p{font-size:16px}
+    .panel-copy .btn{width:100%}
+    .sheet{padding:18px}
+    .pal{grid-template-columns:repeat(auto-fill,minmax(40px,1fr));gap:8px}
+    .pal span{height:40px;font-size:14px}
+    .h2{font-size:clamp(28px,8vw,36px)}
+    .lede{font-size:17px}
+    .trust{margin-top:28px}
+    .trust-card{padding:22px}
+    .cta-sec .band{border-radius:24px}
+    .band .btn{width:100%}
+  }
+  @media (max-width:380px){
+    .brand-text small{display:none}
+    .nav-end .btn{padding:0 12px}
+    .chip{font-size:13px;padding:0 12px}
+    .tab{font-size:13px}
   }
   @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
   @media (max-width:900px){html{overflow-x:hidden}html,body{max-width:100%;overscroll-behavior-x:none}@supports (overflow:clip){html,body{overflow-x:clip}}}
@@ -554,8 +609,8 @@ if('IntersectionObserver' in window&&!(window.matchMedia&&matchMedia('(prefers-r
           <h2 class="h2">Ten minutes before class, or three hours before the end term.</h2>
         </div>
         <div class="tabs" role="tablist" aria-label="Practice modes">
-          <button class="tab" role="tab" type="button" id="tab-practice" data-mode="practice" aria-selected="true" aria-controls="mode-panel">Practice mode</button>
-          <button class="tab" role="tab" type="button" id="tab-exam" data-mode="exam" aria-selected="false" aria-controls="mode-panel" tabindex="-1">Exam mode</button>
+          <button class="tab" role="tab" type="button" id="tab-practice" data-mode="practice" aria-selected="true" aria-controls="mode-panel">Practice<span class="tab-x"> mode</span></button>
+          <button class="tab" role="tab" type="button" id="tab-exam" data-mode="exam" aria-selected="false" aria-controls="mode-panel" tabindex="-1">Exam<span class="tab-x"> mode</span></button>
           <button class="tab" role="tab" type="button" id="tab-mock" data-mode="mock" aria-selected="false" aria-controls="mode-panel" tabindex="-1">Mock test</button>
         </div>
         <div class="panel" id="mode-panel" role="tabpanel" aria-labelledby="tab-practice">

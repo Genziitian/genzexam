@@ -1,0 +1,119 @@
+/* Paper room colour layer (loaded last, after ql-dark-exam.css).
+   The room is built from inline styles in paper-room.js; these rules repaint it in the
+   site colours (indigo, yellow, green, purple) for light and dark mode. This file is
+   hand-written with its own dark values, so it is not part of tools/build-dark-css.py. */
+:root{
+  --pr-bg:#F4F5FB; --pr-surface:#fff; --pr-surface-2:#F1F2FF; --pr-ink:#0E1330; --pr-text:#3E4569; --pr-muted:#6A7194;
+  --pr-line:#E3E6F2; --pr-line-2:#D5D9EE;
+  --pr-brand:#3A3FD8; --pr-brand-hover:#2B30B8; --pr-brand-text:#3A3FD8; --pr-brand-soft:#ECEDFF;
+  --pr-yellow:#FFC24B; --pr-yellow-soft:#FFF4D6; --pr-yellow-ink:#7A4D00;
+  --pr-green:#0E7A4F; --pr-green-soft:#E5F5EC;
+  --pr-purple:#7C3AED; --pr-purple-soft:#F3EEFF; --pr-purple-text:#6D28D9;
+  --pr-red:#B3261E; --pr-red-soft:#FDECEA;
+  --pr-shadow:0 18px 40px -28px rgba(14,19,48,.45);
+}
+:root[data-theme=dark]{
+  --pr-bg:#0B0E1F; --pr-surface:#141933; --pr-surface-2:#1A2042; --pr-ink:#EEF0FA; --pr-text:#B8BEDD; --pr-muted:#8E95BA;
+  --pr-line:#252C50; --pr-line-2:#2F3760;
+  --pr-brand:#4A4FE6; --pr-brand-hover:#5D62F0; --pr-brand-text:#A5A8FF; --pr-brand-soft:#232A5A;
+  --pr-yellow:#FFC24B; --pr-yellow-soft:#3A2F12; --pr-yellow-ink:#FFD27A;
+  --pr-green:#3FBF86; --pr-green-soft:#12342A;
+  --pr-purple:#A78BFA; --pr-purple-soft:#2A2150; --pr-purple-text:#C4B5FD;
+  --pr-red:#F07167; --pr-red-soft:#3A1A1F;
+  --pr-shadow:0 18px 40px -24px rgba(0,0,0,.7);
+}
+
+/* ---------- frame ---------- */
+#ep-app #ep-root.pr-live-root{background:var(--pr-bg)!important}
+#ep-app .pr-live-header{position:relative;background:var(--pr-surface)!important;border-bottom:1px solid var(--pr-line)!important;
+  background-image:linear-gradient(90deg,var(--pr-brand) 0 34%,var(--pr-yellow) 34% 67%,var(--pr-green) 67%)!important;background-size:100% 3px!important;background-repeat:no-repeat!important;background-position:top!important}
+#ep-app .pr-live-header h1{color:var(--pr-ink)!important;letter-spacing:-.01em}
+#ep-app .pr-live-header h1+div{color:var(--pr-muted)!important}
+
+/* answered / time / submit */
+#ep-app .pr-live-tools .ep-header-warning{background:var(--pr-green-soft)!important;border:0!important;color:var(--pr-green)!important;border-radius:999px!important;font-weight:700}
+#ep-app .pr-live-tools #pr-answered{color:var(--pr-green)!important;font-weight:800}
+#ep-app .pr-live-tools>div:has(#ep-countdown){background:var(--pr-yellow-soft)!important;border:0!important;border-radius:999px!important;padding:7px 14px!important}
+#ep-app .pr-live-tools .pr-live-time-label{color:var(--pr-yellow-ink)!important}
+#ep-app #pr-timer-dot:not([style*="#ef4444"]){background:var(--pr-yellow)!important}
+#ep-app #ep-countdown:not([style*="#ef4444"]):not(.pr-low){color:var(--pr-ink)!important}
+#ep-app .pr-live-tools>div:has(#ep-countdown.pr-low),#ep-app .pr-live-tools>div:has(#ep-countdown[style*="#ef4444"]){background:var(--pr-red-soft)!important}
+#ep-app #btn-student-submit{background:var(--pr-brand)!important;border-radius:999px!important;padding:9px 20px!important;box-shadow:0 8px 20px -10px var(--pr-brand)!important;transition:background .15s,transform .12s!important}
+#ep-app #btn-student-submit:hover{background:var(--pr-brand-hover)!important}
+#ep-app #btn-student-submit:active{transform:translateY(1px)}
+
+/* ---------- sidebar ---------- */
+#ep-app .pr-live-aside{background:var(--pr-surface)!important;border-right:1px solid var(--pr-line)!important}
+#ep-app .pr-live-palette-title{color:var(--pr-brand-text)!important;letter-spacing:.1em!important}
+#ep-app #pr-palette .ep-q-btn{border-radius:10px!important;font-weight:800!important;border:1.5px solid var(--pr-line-2)!important;background:var(--pr-surface)!important;color:var(--pr-muted)!important;box-shadow:none!important;transition:transform .15s,background .2s,border-color .2s!important}
+#ep-app #pr-palette .ep-q-btn:hover{border-color:var(--pr-brand)!important;color:var(--pr-brand-text)!important;transform:translateY(-1px)}
+#ep-app #pr-palette .ep-q-btn.ep-q-answered{background:var(--pr-green)!important;border-color:var(--pr-green)!important;color:#fff!important}
+#ep-app #pr-palette .ep-q-btn.ep-q-review{background:var(--pr-purple)!important;border-color:var(--pr-purple)!important;color:#fff!important}
+#ep-app #pr-palette .ep-q-btn.current{box-shadow:0 0 0 3px var(--pr-yellow)!important;border-color:var(--pr-yellow)!important}
+#ep-app #pr-palette .ep-q-btn.current.ep-q-unvisited{background:var(--pr-brand-soft)!important;color:var(--pr-brand-text)!important}
+#ep-app .pr-live-tools-box{background:var(--pr-surface)!important;border-top:1px solid var(--pr-line)!important}
+#ep-app [data-calc="toggle"]{background:var(--pr-yellow-soft)!important;border:1.5px solid color-mix(in srgb,var(--pr-yellow) 45%,transparent)!important;color:var(--pr-yellow-ink)!important;border-radius:12px!important;min-height:42px}
+#ep-app [data-calc="toggle"]:hover{border-color:var(--pr-yellow)!important}
+#ep-app #pr-legend{background:var(--pr-surface-2)!important;border-top:1px solid var(--pr-line)!important;color:var(--pr-text)!important;font-weight:600}
+#ep-app #pr-legend>div>div>span{border-radius:4px!important;border:0!important}
+#ep-app #pr-legend>div>div:nth-child(1)>span{background:var(--pr-green)!important}
+#ep-app #pr-legend>div>div:nth-child(2)>span{background:var(--pr-purple)!important}
+#ep-app #pr-legend>div>div:nth-child(3)>span{background:var(--pr-surface)!important;box-shadow:inset 0 0 0 1.5px var(--pr-line-2)}
+
+/* ---------- question ---------- */
+#ep-app #pr-main{background:var(--pr-surface)!important}
+#ep-app #pr-main>div:nth-child(2){border-bottom:1px solid var(--pr-line)!important}
+#ep-app #pr-main>div:nth-child(2)>div:first-child>span:first-child{color:var(--pr-ink)!important}
+#ep-app #pr-main>div:nth-child(2)>div:first-child>span:nth-child(2){background:var(--pr-yellow-soft)!important;color:var(--pr-yellow-ink)!important;border-radius:999px!important;padding:4px 10px!important}
+#ep-app #pr-main>div:nth-child(2)>div:nth-child(2){background:var(--pr-green-soft);color:var(--pr-green)!important;padding:4px 10px;border-radius:999px}
+#ep-app .pr-live-prompt{color:var(--pr-ink)!important;background:var(--pr-surface-2);border-radius:16px;padding:18px 20px;font-size:16px!important;animation:prIn .35s ease both}
+
+/* options: lettered badges, coloured selection */
+#ep-app [id^="pr-q-"]>div{counter-reset:pr-opt}
+#ep-app [id^="pr-q-"] label:has(input[type=radio]),#ep-app [id^="pr-q-"] label:has(input[type=checkbox]){
+  position:relative;counter-increment:pr-opt;gap:14px!important;padding:14px 16px!important;min-height:56px;border:1.5px solid var(--pr-line-2)!important;border-radius:14px!important;background:var(--pr-surface)!important;
+  transition:border-color .15s,background .2s,transform .12s!important;animation:prOpt .4s cubic-bezier(.2,.7,.2,1) both}
+#ep-app [id^="pr-q-"] label:nth-child(2){animation-delay:50ms}
+#ep-app [id^="pr-q-"] label:nth-child(3){animation-delay:100ms}
+#ep-app [id^="pr-q-"] label:nth-child(4){animation-delay:150ms}
+#ep-app [id^="pr-q-"] label:nth-child(n+5){animation-delay:200ms}
+#ep-app [id^="pr-q-"] label:has(input[type=radio])::before,#ep-app [id^="pr-q-"] label:has(input[type=checkbox])::before{
+  content:counter(pr-opt,upper-alpha);flex:none;width:32px;height:32px;border-radius:10px;display:grid;place-items:center;font-size:14px;font-weight:800;background:var(--pr-brand-soft);color:var(--pr-brand-text);transition:background .2s,color .2s,transform .3s cubic-bezier(.3,1.6,.5,1)}
+#ep-app [id^="pr-q-"] label:has(input[type=checkbox])::before{border-radius:8px}
+#ep-app [id^="pr-q-"] label input[type=radio],#ep-app [id^="pr-q-"] label input[type=checkbox]{position:absolute!important;opacity:0!important;width:1px!important;height:1px!important;pointer-events:none}
+#ep-app [id^="pr-q-"] label:hover{border-color:var(--pr-brand)!important}
+#ep-app [id^="pr-q-"] label:active{transform:scale(.99)}
+#ep-app [id^="pr-q-"] label:has(input:focus-visible){outline:3px solid var(--pr-yellow);outline-offset:2px}
+#ep-app [id^="pr-q-"] label:has(input:checked){border-color:var(--pr-brand)!important;background:var(--pr-brand-soft)!important;box-shadow:0 10px 24px -18px var(--pr-brand)}
+#ep-app [id^="pr-q-"] label:has(input:checked)::before{background:var(--pr-brand);color:#fff;transform:scale(1.08)}
+#ep-app [id^="pr-q-"] label:has(input[type=checkbox]:checked)::before{content:'✓'}
+#ep-app [id^="pr-q-"] .pr-option{color:var(--pr-ink)!important;font-size:15px!important}
+#ep-app [id^="pr-q-"] label:not(:has(input))  {color:var(--pr-muted)!important}
+#ep-app [data-number],#ep-app [data-text]{background:var(--pr-surface)!important;border:1.5px solid var(--pr-line-2)!important;border-radius:12px!important;color:var(--pr-ink)!important;min-height:46px}
+#ep-app [data-number]:focus,#ep-app [data-text]:focus{border-color:var(--pr-brand)!important;box-shadow:0 0 0 4px var(--pr-brand-soft)}
+
+/* ---------- bottom actions ---------- */
+#ep-app .pr-live-actions{background:var(--pr-surface)!important;border-top:1px solid var(--pr-line)!important;padding-top:16px}
+#ep-app .pr-live-actions button{border-radius:12px!important;min-height:44px;transition:background .15s,border-color .15s,transform .12s!important}
+#ep-app .pr-live-actions button:active{transform:translateY(1px)}
+#ep-app #btn-q-prev,#ep-app #btn-q-clear{background:var(--pr-surface)!important;border:1.5px solid var(--pr-line-2)!important;color:var(--pr-text)!important}
+#ep-app #btn-q-prev:not([disabled]):hover,#ep-app #btn-q-clear:hover{border-color:var(--pr-ink)!important;color:var(--pr-ink)!important}
+#ep-app #btn-q-clear:hover{border-color:var(--pr-red)!important;color:var(--pr-red)!important}
+#ep-app #btn-q-review{background:var(--pr-purple-soft)!important;border:1.5px solid color-mix(in srgb,var(--pr-purple) 45%,transparent)!important;color:var(--pr-purple-text)!important}
+#ep-app #btn-q-review:hover{border-color:var(--pr-purple)!important}
+#ep-app #btn-q-save-next{background:var(--pr-brand)!important;color:#fff!important;box-shadow:0 8px 20px -10px var(--pr-brand)}
+#ep-app #btn-q-save-next:hover{background:var(--pr-brand-hover)!important}
+
+/* submit dialog */
+#ep-student-submit-modal>div{background:var(--pr-surface)!important;color:var(--pr-ink)!important;border-radius:24px!important;animation:prIn .3s cubic-bezier(.2,.7,.2,1) both}
+#ep-btn-confirm-submit{background:var(--pr-brand)!important;border-radius:12px!important}
+#ep-btn-cancel-submit{border-radius:12px!important}
+
+@keyframes prIn{from{opacity:0;transform:translateY(8px)}}
+@keyframes prOpt{from{opacity:0;transform:translateX(14px)}}
+@media (prefers-reduced-motion:reduce){
+  #ep-app .pr-live-prompt,#ep-app [id^="pr-q-"] label,#ep-student-submit-modal>div{animation:none!important}
+}
+@media (max-width:860px){
+  #ep-app .pr-live-aside{border-bottom:1px solid var(--pr-line)!important}
+}
