@@ -411,7 +411,7 @@
       ['How do XP, levels and badges work?', 'Your total XP sets your level, and your level unlocks badges. Open the progress guide below for XP rules and badge levels.'],
       ['How is the leaderboard ranked?', 'Students are ranked by total XP. Open Ranks to see your current place.'],
       ['What is the weekly goal?', 'It is your target number of quizzes to finish from Monday through Sunday. Update it in Settings.'],
-      ['What are Video Solutions?', 'Step-by-step answers for selected papers. Some videos require Pro access.'],
+      ['What are Video Solutions?', 'Step-by-step video answers for questions. Coming soon.'],
       ['How do I turn on dark mode?', 'Choose System, Light, or Dark under Theme / Appearance on this page.'],
       ['How do I contact support?', 'Email admin@genziitian.org, call +91 72549 26179, or message us on WhatsApp.']
     ];

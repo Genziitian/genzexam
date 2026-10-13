@@ -833,6 +833,7 @@
             actions.appendChild(details);
           }
           actions.appendChild(action);
+          if (window.QLShare) actions.appendChild(window.QLShare.button(paper.id, paper.title || "", "ql-share-icon"));
           card.appendChild(actions);
         }
         grid.appendChild(card);
@@ -1147,6 +1148,33 @@
    * tab opens the online exam platform. Both are separate pages, so
    * these links must load a page instead of routing inside the app.
    * ------------------------------------------------------------- */
+  /* ---------------------------------------------------------------
+   * Exam tab: students see it only when a manager has enrolled their
+   * email in at least one online exam. Managers always see it.
+   * ------------------------------------------------------------- */
+  var examAccess = null, examAccessAt = 0;
+  function updateExamNav() {
+    var role = storedRole();
+    var root = document.documentElement;
+    if (role === "manager") { root.setAttribute("data-ql-exam", "show"); return; }
+    var runtime = window.QLStorefront;
+    if (!role || !runtime || !runtime.token()) { root.setAttribute("data-ql-exam", "hide"); return; }
+    if (examAccess === null || (examAccess !== "loading" && Date.now() - examAccessAt > 300000)) {
+      var was = examAccess; examAccess = "loading";
+      fetch(runtime.apiBase + "/exam-platform/exams", { headers: { Accept: "application/json", Authorization: "Bearer " + runtime.token() } })
+        .then(function (r) { return r.ok ? r.json() : { exams: [] }; })
+        .then(function (d) { examAccess = Array.isArray(d.exams) && d.exams.length > 0; })
+        .catch(function () { examAccess = was === "loading" ? false : !!was; })
+        .then(function () { examAccessAt = Date.now(); updateExamNav(); });
+    }
+    root.setAttribute("data-ql-exam", examAccess === true ? "show" : "hide");
+  }
+  (function () {
+    var st = document.createElement("style");
+    st.textContent = 'html:not([data-ql-exam="show"]) #root a[href="/exams"],html:not([data-ql-exam="show"]) #root a[href^="/exams/"]{display:none!important}';
+    (document.head || document.documentElement).appendChild(st);
+  })();
+
   function storedRole() {
     try { return JSON.parse(localStorage.getItem("lab_user") || "{}").role || ""; } catch (_) { return ""; }
   }
@@ -1280,6 +1308,12 @@
       tag(card.parentElement, "data-ql-paper", done ? "done" : "todo");
       tag(card, "data-ql-paper-card", done ? "done" : "todo");
       tag(go, "data-ql-paper-go", "");
+      var pm = /\/(?:quiz|paper)\/(\d+)/.exec(card.parentElement.getAttribute("href") || "");
+      if (pm && window.QLShare && !card.querySelector(".ql-share-btn")) {
+        var th = card.querySelector("h3,h4,.font-semibold");
+        if (getComputedStyle(card).position === "static") card.style.position = "relative";
+        card.appendChild(window.QLShare.button(pm[1], th ? th.textContent.trim() : "", "ql-share-corner ql-share-icon"));
+      }
       var badge = card.querySelector(".bg-emerald-50");
       var count = badge ? parseInt(badge.textContent.replace(/\D/g, ""), 10) || 0 : 0;
       tag(meta, "data-ql-attempts", count ? (count === 1 ? "1 attempt" : count + " attempts") : "");
@@ -1621,6 +1655,7 @@
     syncHomeLink();
     decorateCoursePage();
     decorateCoursePapers();
+    updateExamNav();
     decorateLeaderboard();
     syncQuizBackLink();
     if (!/\/discussions/i.test(window.location.pathname)) return;

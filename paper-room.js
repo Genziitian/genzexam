@@ -517,6 +517,7 @@
       esc([userName(), quiz.course && quiz.course.name].filter(Boolean).join(" • ")) +
       "</div></div></div>" +
       '<div class="pr-live-tools" style="display:flex;align-items:center;gap:10px;">' +
+      '<button type="button" class="ql-share-btn ql-share-icon" data-ql-share="' + esc(String(quiz.id || (location.pathname.match(/\d+/) || [""])[0])) + '" data-ql-share-title="' + esc(quiz.title || "") + '" aria-label="Share link to this paper" title="Share link"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg><span>Share</span></button>' +
       '<div class="ep-header-warning">Answered: <b id="pr-answered">' +
       answeredCount() +
       "/" +
