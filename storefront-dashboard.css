@@ -496,3 +496,24 @@ a:hover [data-ql-paper-card=done] [data-ql-paper-go]{background:#eef2fa}
 @keyframes ql-row-in{0%{opacity:0;transform:translateY(14px)}100%{opacity:1;transform:none}}
 }
 @media(max-width:640px) and (prefers-reduced-motion:reduce){[data-ql-podium]>[data-place],[data-ql-podium]>[data-place]>span.text-2xl,[data-ql-podium]>[data-place="1"]::after,[data-ql-lb] tbody tr{animation:none!important}.ql-lb-pin{transition:none}}
+
+/* ---- Dashboard announcement slider ---- */
+#ql-ann{position:relative;overflow:hidden;border-radius:16px;margin:0 0 18px;box-shadow:0 10px 26px -14px rgba(30,41,90,.45)}
+#ql-ann .ql-ann-track{display:flex;transition:transform .45s ease}
+#ql-ann .ql-ann-slide{flex:0 0 100%;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:20px 24px 34px;color:#fff;background:linear-gradient(120deg,#3730a3,#4f46e5 60%,#6366f1)}
+#ql-ann .tone-green{background:linear-gradient(120deg,#166534,#16a34a)}
+#ql-ann .tone-amber{background:linear-gradient(120deg,#b45309,#f59e0b)}
+#ql-ann .tone-dark{background:linear-gradient(120deg,#0f172a,#1e293b)}
+#ql-ann .ql-ann-copy{min-width:0}
+#ql-ann .ql-ann-tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.85;margin-bottom:6px}
+#ql-ann strong{display:block;font-size:19px;line-height:1.25;font-weight:800}
+#ql-ann p{margin:6px 0 0;font-size:14px;line-height:1.45;opacity:.92}
+#ql-ann .ql-ann-cta{flex-shrink:0;padding:10px 16px;border-radius:10px;background:#fff;color:#1e1b4b;font-weight:700;font-size:13.5px;text-decoration:none;white-space:nowrap}
+#ql-ann .ql-ann-cta:hover{background:#eef2ff}
+#ql-ann .ql-ann-nav{position:absolute;left:0;right:0;bottom:8px;display:flex;align-items:center;justify-content:center;gap:10px}
+#ql-ann .ql-ann-arrow{width:24px;height:24px;border:0;border-radius:999px;background:rgba(255,255,255,.2);color:#fff;font-size:17px;line-height:1;cursor:pointer}
+#ql-ann .ql-ann-arrow:hover{background:rgba(255,255,255,.35)}
+#ql-ann .ql-ann-dots{display:flex;gap:6px}
+#ql-ann .ql-ann-dot{width:7px;height:7px;padding:0;border:0;border-radius:999px;background:rgba(255,255,255,.45);cursor:pointer;transition:width .2s}
+#ql-ann .ql-ann-dot[aria-current=true]{width:20px;background:#fff}
+@media(max-width:640px){#ql-ann .ql-ann-slide{flex-direction:column;align-items:flex-start;padding:16px 16px 34px}#ql-ann strong{font-size:16px}}

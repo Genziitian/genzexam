@@ -1175,6 +1175,72 @@
     (document.head || document.documentElement).appendChild(st);
   })();
 
+  /* ---------------------------------------------------------------
+   * Announcement slider at the top of the dashboard. Managers add,
+   * schedule and remove announcements at /manager/announcements.
+   * ------------------------------------------------------------- */
+  var annData = null, annAt = 0, annTimer = null;
+  function loadAnnouncements() {
+    var runtime = window.QLStorefront;
+    if (!runtime || annData === "loading" || (annAt && Date.now() - annAt < 300000)) return;
+    annData = "loading";
+    fetch(runtime.apiBase + "/announcements", { headers: { Accept: "application/json" } })
+      .then(function (r) { return r.ok ? r.json() : { announcements: [] }; })
+      .then(function (d) { annData = Array.isArray(d.announcements) ? d.announcements : []; })
+      .catch(function () { annData = []; })
+      .then(function () { annAt = Date.now(); var old = document.getElementById("ql-ann"); if (old) old.remove(); schedule(); });
+  }
+  function renderAnnouncements() {
+    var existing = document.getElementById("ql-ann");
+    if (!/^\/dashboard\/?$/.test(location.pathname)) { if (existing) existing.remove(); return; }
+    loadAnnouncements();
+    if (!Array.isArray(annData) || !annData.length) { if (existing) existing.remove(); return; }
+    var main = document.querySelector("#root main");
+    if (!main || existing) return;
+    var host = main.firstElementChild && main.firstElementChild.children.length ? main.firstElementChild : main;
+    var box = document.createElement("section");
+    box.id = "ql-ann"; box.setAttribute("aria-label", "Announcements"); box.setAttribute("aria-roledescription", "carousel");
+    var track = document.createElement("div"); track.className = "ql-ann-track";
+    annData.forEach(function (a, i) {
+      var slide = document.createElement("div");
+      slide.className = "ql-ann-slide tone-" + (/^(brand|green|amber|dark)$/.test(a.tone) ? a.tone : "brand");
+      slide.setAttribute("role", "group"); slide.setAttribute("aria-label", (i + 1) + " of " + annData.length);
+      var copy = document.createElement("div"); copy.className = "ql-ann-copy";
+      var tag = document.createElement("span"); tag.className = "ql-ann-tag"; tag.textContent = "📢 Announcement";
+      var h = document.createElement("strong"); h.textContent = a.title || "";
+      copy.append(tag, h);
+      if (a.body) { var p = document.createElement("p"); p.textContent = a.body; copy.appendChild(p); }
+      slide.appendChild(copy);
+      if (a.link_url && /^(https:\/\/|\/)/.test(a.link_url)) {
+        var link = document.createElement("a"); link.className = "ql-ann-cta"; link.href = a.link_url;
+        if (/^https:/.test(a.link_url) && a.link_url.indexOf(location.origin) !== 0) { link.target = "_blank"; link.rel = "noopener"; }
+        link.textContent = (a.link_label || "Open") + " →"; slide.appendChild(link);
+      }
+      track.appendChild(slide);
+    });
+    box.appendChild(track);
+    var idx = 0, n = annData.length;
+    function go(i) {
+      idx = (i + n) % n; track.style.transform = "translateX(" + (-100 * idx) + "%)";
+      Array.prototype.forEach.call(box.querySelectorAll(".ql-ann-dot"), function (d, k) { d.setAttribute("aria-current", k === idx ? "true" : "false"); });
+    }
+    function auto() { clearInterval(annTimer); if (n > 1) annTimer = setInterval(function () { if (!document.hidden && box.isConnected && !box.matches(":hover")) go(idx + 1); }, 6000); }
+    if (n > 1) {
+      var nav = document.createElement("div"); nav.className = "ql-ann-nav";
+      var prev = document.createElement("button"); prev.type = "button"; prev.className = "ql-ann-arrow"; prev.setAttribute("aria-label", "Previous announcement"); prev.textContent = "‹";
+      var next = document.createElement("button"); next.type = "button"; next.className = "ql-ann-arrow"; next.setAttribute("aria-label", "Next announcement"); next.textContent = "›";
+      prev.onclick = function () { go(idx - 1); auto(); }; next.onclick = function () { go(idx + 1); auto(); };
+      var dots = document.createElement("div"); dots.className = "ql-ann-dots";
+      for (var k = 0; k < n; k++) (function (k) { var d = document.createElement("button"); d.type = "button"; d.className = "ql-ann-dot"; d.setAttribute("aria-label", "Announcement " + (k + 1)); d.onclick = function () { go(k); auto(); }; dots.appendChild(d); })(k);
+      nav.append(prev, dots, next); box.appendChild(nav);
+      var sx = null;
+      box.addEventListener("touchstart", function (e) { sx = e.touches[0].clientX; }, { passive: true });
+      box.addEventListener("touchend", function (e) { if (sx == null) return; var dx = e.changedTouches[0].clientX - sx; if (Math.abs(dx) > 40) { go(idx + (dx < 0 ? 1 : -1)); auto(); } sx = null; });
+    }
+    host.insertBefore(box, host.firstChild);
+    go(0); auto();
+  }
+
   function storedRole() {
     try { return JSON.parse(localStorage.getItem("lab_user") || "{}").role || ""; } catch (_) { return ""; }
   }
@@ -1198,7 +1264,7 @@
       event.preventDefault();
       event.stopPropagation();
       window.location.assign("/exams?preview=student");
-    } else if (/^\/(exams?(\/|$)|manager\/(discussions|sales)\/?$|paper-pricing\/?$)/.test(link.pathname)) {
+    } else if (/^\/(exams?(\/|$)|manager\/(discussions|sales|announcements)\/?$|paper-pricing\/?$)/.test(link.pathname)) {
       event.stopPropagation();
     }
   }, true);
@@ -1655,6 +1721,7 @@
     decorateCoursePage();
     decorateCoursePapers();
     updateExamNav();
+    renderAnnouncements();
     decorateLeaderboard();
     syncQuizBackLink();
     if (!/\/discussions/i.test(window.location.pathname)) return;

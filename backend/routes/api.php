@@ -27,6 +27,7 @@ use App\Http\Controllers\ExamPlatformController;
 use App\Http\Controllers\StorefrontController;
 use App\Http\Controllers\StudentUploadedPaperController;
 use App\Http\Controllers\ManagerSalesController;
+use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\ManagerSystemController;
 use App\Http\Controllers\ProMembershipController;
 use Illuminate\Support\Facades\Route;
@@ -52,6 +53,7 @@ Route::get('/video-solutions/embed/{id}', [VideoSolutionController::class, 'embe
 
 // Public metadata only; quiz questions stay behind the authenticated quiz API.
 Route::get('/storefront/papers', [StorefrontController::class, 'papers'])->middleware('throttle:120,1');
+Route::get('/announcements', [AnnouncementController::class, 'live'])->middleware('throttle:120,1');
 Route::post('/storefront/razorpay/webhook', [StorefrontController::class, 'webhook'])->middleware('throttle:120,1');
 Route::post('/membership/razorpay/webhook', [ProMembershipController::class, 'razorpayWebhook'])->middleware('throttle:120,1');
 
@@ -202,6 +204,10 @@ Route::middleware(['auth:sanctum', 'is_admin', 'track.seen'])->prefix('admin')->
 // Dedicated manager sales workspace. All content and purchase records are manager-only.
 Route::middleware(['auth:sanctum', 'is_manager', 'track.seen'])->prefix('manager')->group(function () {
     Route::get('/account-deletion-requests', [AccountDeletionRequestController::class, 'index']);
+    Route::get('/announcements', [AnnouncementController::class, 'index']);
+    Route::post('/announcements', [AnnouncementController::class, 'store']);
+    Route::match(['PUT', 'PATCH'], '/announcements/{id}', [AnnouncementController::class, 'update'])->whereNumber('id');
+    Route::delete('/announcements/{id}', [AnnouncementController::class, 'destroy'])->whereNumber('id');
     Route::patch('/account-deletion-requests/{id}', [AccountDeletionRequestController::class, 'update'])->whereNumber('id');
     Route::get('/courses', [AdminCourseController::class, 'index']);
     Route::post('/courses', [AdminCourseController::class, 'store']);

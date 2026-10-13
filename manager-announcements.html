@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' https:; connect-src 'self' https://labapi.genziitian.in; object-src 'none'; base-uri 'self'; form-action 'self'" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <title>Announcements · Manager · Quiz LAB</title>
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="/manager-discussions.css?v=20261010a" />
+    <link rel="stylesheet" href="/ql-dark-discussions.css?v=20261010a" />
+    <link rel="stylesheet" href="/manager-announcements.css?v=20261013a" />
+    <script src="/ql-theme.js?v=20261010a"></script>
+  </head>
+  <body>
+    <header class="top">
+      <a class="brand" href="/manager"><img class="mark" src="/assets/quiz-lab-icon.png" alt="" width="34" height="34"><span><b>Quiz LAB</b><small>Manager · Announcements</small></span></a>
+      <nav aria-label="Manager navigation">
+        <span id="me"></span>
+        <button type="button" class="theme-toggle" data-ql-theme-toggle aria-label="Switch theme"></button>
+        <a href="/manager">← Manager console</a>
+        <a href="/dashboard">Student view</a>
+      </nav>
+    </header>
+    <main>
+      <div class="heading">
+        <div>
+          <p class="eyebrow">Dashboard</p>
+          <h1>Announcements</h1>
+          <p class="sub">Everything switched on here slides across the top of every student's dashboard.</p>
+        </div>
+      </div>
+      <div id="gate" class="notice" role="status">Checking your manager account…</div>
+      <div id="workspace" class="ann-grid" hidden>
+        <form id="form" class="ann-form" autocomplete="off">
+          <h2 id="form-title">New announcement</h2>
+          <label>Title<input id="f-title" maxlength="140" required placeholder="e.g. Quiz 2 mock papers are live" /></label>
+          <label>Message <small>(optional)</small><textarea id="f-body" maxlength="400" rows="3" placeholder="One or two short lines"></textarea></label>
+          <div class="row2">
+            <label>Button text <small>(optional)</small><input id="f-label" maxlength="40" placeholder="Open papers" /></label>
+            <label>Button link <small>(optional)</small><input id="f-url" maxlength="500" placeholder="/papers or https://…" /></label>
+          </div>
+          <div class="row2">
+            <label>Show from <small>(optional)</small><input id="f-start" type="datetime-local" /></label>
+            <label>Hide after <small>(optional)</small><input id="f-end" type="datetime-local" /></label>
+          </div>
+          <div class="row2">
+            <label>Colour<select id="f-tone"><option value="brand">Indigo</option><option value="green">Green</option><option value="amber">Amber</option><option value="dark">Dark</option></select></label>
+            <label>Order <small>(lower shows first)</small><input id="f-order" type="number" value="0" min="-1000" max="1000" /></label>
+          </div>
+          <label class="check"><input id="f-active" type="checkbox" checked /> Show on the dashboard</label>
+          <div id="preview" class="ann-preview" aria-label="Preview"></div>
+          <div class="actions">
+            <button type="submit" class="primary" id="save">Publish</button>
+            <button type="button" class="quiet" id="cancel" hidden>Cancel edit</button>
+          </div>
+        </form>
+        <section>
+          <h2>All announcements</h2>
+          <div id="list"></div>
+        </section>
+      </div>
+    </main>
+    <div id="toast" role="status" aria-live="polite"></div>
+    <script src="/storefront-runtime.js?v=20261010a"></script>
+    <script src="/manager-announcements.js?v=20261013a"></script>
+  </body>
+</html>
