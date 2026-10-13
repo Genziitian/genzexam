@@ -517,3 +517,16 @@ a:hover [data-ql-paper-card=done] [data-ql-paper-go]{background:#eef2fa}
 #ql-ann .ql-ann-dot{width:7px;height:7px;padding:0;border:0;border-radius:999px;background:rgba(255,255,255,.45);cursor:pointer;transition:width .2s}
 #ql-ann .ql-ann-dot[aria-current=true]{width:20px;background:#fff}
 @media(max-width:640px){#ql-ann .ql-ann-slide{flex-direction:column;align-items:flex-start;padding:16px 16px 34px}#ql-ann strong{font-size:16px}}
+
+/* ---- Video Solutions closed for now ---- */
+html[data-ql-vs-locked] #root main>*:not(#ql-vs-soon){display:none!important}
+#ql-vs-soon{max-width:520px;margin:12vh auto 0;text-align:center;padding:36px 28px;border-radius:20px;background:var(--surface-card,#fff);border:1px solid rgba(148,163,184,.3)}
+#ql-vs-soon .ql-vs-ico{width:68px;height:68px;margin:0 auto 16px;border-radius:18px;display:grid;place-items:center;background:#eef2ff;color:#4338ca}
+#ql-vs-soon h1{margin:0 0 8px;font-size:24px;font-weight:800}
+#ql-vs-soon p{margin:0 0 20px;color:#64748b;font-size:15px;line-height:1.5}
+#ql-vs-soon a{display:inline-block;padding:11px 18px;border-radius:10px;background:#4338ca;color:#fff;font-weight:700;text-decoration:none}
+:root[data-theme=dark] #ql-vs-soon{background:#151b28;border-color:#263044}
+:root[data-theme=dark] #ql-vs-soon h1{color:#f1f5f9}
+:root[data-theme=dark] #ql-vs-soon .ql-vs-ico{background:rgba(99,102,241,.18);color:#a5b4fc}
+#ql-vs-toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);background:#0f172a;color:#fff;padding:10px 16px;border-radius:10px;font:600 13px/1.2 system-ui,sans-serif;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:99999}
+#ql-vs-toast.show{opacity:1;transform:translate(-50%,0)}

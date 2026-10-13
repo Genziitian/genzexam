@@ -1241,6 +1241,31 @@
     go(0); auto();
   }
 
+  /* ---------------------------------------------------------------
+   * Video Solutions is closed for now: the page shows "Coming soon"
+   * for everyone and the sidebar link does not open it.
+   * ------------------------------------------------------------- */
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest && e.target.closest('a[href="/video-solutions"],a[href^="/video-solutions/"]');
+    if (!a) return;
+    e.preventDefault(); e.stopPropagation();
+    var n = document.getElementById("ql-vs-toast");
+    if (!n) { n = document.createElement("div"); n.id = "ql-vs-toast"; document.body.appendChild(n); }
+    n.textContent = "Video solutions are coming soon"; n.className = "show";
+    clearTimeout(n._t); n._t = setTimeout(function () { n.className = ""; }, 2200);
+  }, true);
+  function lockVideoSolutions() {
+    var on = /^\/video-solutions(\/|$)/.test(location.pathname);
+    document.documentElement.toggleAttribute("data-ql-vs-locked", on);
+    if (!on) return;
+    var main = document.querySelector("#root main");
+    if (!main || main.querySelector("#ql-vs-soon")) return;
+    var box = document.createElement("section");
+    box.id = "ql-vs-soon";
+    box.innerHTML = '<div class="ql-vs-ico" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2.5"/><path d="M10 9.5v5l4.5-2.5z" fill="currentColor"/></svg></div><h1>Video solutions are coming soon</h1><p>Step-by-step video answers for questions are on the way. Keep practising in the meantime.</p><a href="/practice">Go to Practice →</a>';
+    main.appendChild(box);
+  }
+
   function storedRole() {
     try { return JSON.parse(localStorage.getItem("lab_user") || "{}").role || ""; } catch (_) { return ""; }
   }
@@ -1722,6 +1747,7 @@
     decorateCoursePapers();
     updateExamNav();
     renderAnnouncements();
+    lockVideoSolutions();
     decorateLeaderboard();
     syncQuizBackLink();
     if (!/\/discussions/i.test(window.location.pathname)) return;
