@@ -339,7 +339,7 @@
           ? String(st.durationMinutes)
           : "custom";
     const timeOption = (value, label) =>
-      '<option value="' + value + '"' + (selectedTime === String(value) ? " selected" : "") + ">" + label + "</option>";
+      '<label class="pr-time-opt"><input type="radio" name="pr-time" value="' + value + '"' + (selectedTime === String(value) ? " checked" : "") + "><span>" + label + "</span></label>";
     return page(
       '<div class="ep-card"><p class="ep-eyebrow">BEFORE YOU BEGIN</p><h1>' +
         esc(q.title) +
@@ -358,17 +358,17 @@
           ? '<p class="pr-time-choice"><b>Saved time limit</b><span>' +
             (savedMinutes ? savedMinutes + " minutes" : "Untimed") +
             " · Your original clock continues when you resume.</span></p>"
-          : '<label class="pr-time-choice" for="pr-time-select"><b>Set your time limit</b><select id="pr-time-select">' +
-            timeOption("default", "Paper default · " + (minutes ? minutes + " min" : "Untimed")) +
-            timeOption(0, "Untimed") +
-            timeOption(15, "15 minutes") +
-            timeOption(30, "30 minutes") +
-            timeOption(45, "45 minutes") +
-            timeOption(60, "60 minutes") +
-            timeOption("custom", "Custom time") +
-            '</select><input id="pr-time-custom" type="number" min="1" max="600" placeholder="Custom minutes (1–600)" value="' +
+          : '<div class="pr-time-choice"><b>Set your time limit</b><input type="hidden" id="pr-time-select" value="' + esc(selectedTime) + '"><div class="pr-time-opts" role="radiogroup" aria-label="Time limit">' +
+            timeOption("default", "Default · " + (minutes ? minutes + " min" : "Untimed")) +
+            (minutes ? timeOption(0, "Untimed") : "") +
+            timeOption(15, "15 min") +
+            timeOption(30, "30 min") +
+            timeOption(45, "45 min") +
+            timeOption(60, "60 min") +
+            timeOption("custom", "Custom") +
+            '</div><input id="pr-time-custom" type="number" min="1" max="600" placeholder="Custom minutes (1–600)" value="' +
             (selectedTime === "custom" ? String(st.durationMinutes) : "") +
-            '"' + (selectedTime === "custom" ? "" : " hidden") + '></label>') +
+            '"' + (selectedTime === "custom" ? "" : " hidden") + '></div>') +
         "<p>" +
         (minutes
           ? "This paper is self-paced: start whenever you are ready. The timer begins when you start, keeps running if you leave the page, and the paper is submitted automatically when time runs out."
@@ -967,8 +967,11 @@
   }
   function onChange(ev) {
     const input = ev.target;
-    if (input.id === "pr-time-select") {
+    if (input.name === "pr-time") {
+      const hiddenSel = $("#pr-time-select");
+      if (hiddenSel) hiddenSel.value = input.value;
       const custom = $("#pr-time-custom");
+      if (custom && input.value === "custom") setTimeout(() => custom.focus(), 0);
       if (custom) custom.hidden = input.value !== "custom";
       return;
     }

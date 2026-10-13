@@ -30,6 +30,14 @@
   color: #172033;
   font: inherit;
 }
+#ep-app .pr-time-opts { display: flex; flex-wrap: wrap; gap: 8px; }
+#ep-app .pr-time-opt { position: relative; cursor: pointer; }
+#ep-app .pr-time-opt input { position: absolute; opacity: 0; pointer-events: none; }
+#ep-app .pr-time-opt span { display: inline-flex; align-items: center; min-height: 40px; padding: 0 16px; border: 1.5px solid #dfe4ec; border-radius: 999px; background: #fff; color: #334155; font-weight: 600; font-size: 13.5px; transition: border-color .15s, background .15s, color .15s; }
+#ep-app .pr-time-opt:hover span { border-color: #33558b; }
+#ep-app .pr-time-opt input:checked + span { background: #33558b; border-color: #33558b; color: #fff; box-shadow: 0 4px 12px -4px rgba(51,85,139,.5); }
+#ep-app .pr-time-opt input:focus-visible + span { outline: 2px solid #33558b; outline-offset: 2px; }
+#ep-app .pr-time-choice { max-width: 640px; }
 #ep-app .pr-time-choice [hidden] {
   display: none;
 }
