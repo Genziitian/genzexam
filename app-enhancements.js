@@ -1264,7 +1264,7 @@
       event.preventDefault();
       event.stopPropagation();
       window.location.assign("/exams?preview=student");
-    } else if (/^\/(exams?(\/|$)|manager\/(discussions|sales|announcements)\/?$|paper-pricing\/?$)/.test(link.pathname)) {
+    } else if (/^\/(exams?(\/|$)|manager\/(discussions|sales|announcements|reports)\/?$|paper-pricing\/?$)/.test(link.pathname)) {
       event.stopPropagation();
     }
   }, true);

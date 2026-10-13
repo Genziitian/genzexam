@@ -29,6 +29,7 @@ use App\Http\Controllers\StudentUploadedPaperController;
 use App\Http\Controllers\ManagerSalesController;
 use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\ManagerSystemController;
+use App\Http\Controllers\QuestionReportController;
 use App\Http\Controllers\ProMembershipController;
 use Illuminate\Support\Facades\Route;
 
@@ -59,6 +60,7 @@ Route::post('/membership/razorpay/webhook', [ProMembershipController::class, 'ra
 
 // Authenticated student routes
 Route::middleware(['auth:sanctum', 'track.seen'])->group(function () {
+    Route::post('/question-reports', [QuestionReportController::class, 'store'])->middleware('throttle:20,1');
     Route::post('/auth/logout', [AuthController::class, 'logout']);
     Route::delete('/auth/account', [AuthController::class, 'deleteAccount']);
     Route::post('/auth/account-deletion-requests', [AccountDeletionRequestController::class, 'store'])->middleware('throttle:5,60');
@@ -204,6 +206,8 @@ Route::middleware(['auth:sanctum', 'is_admin', 'track.seen'])->prefix('admin')->
 // Dedicated manager sales workspace. All content and purchase records are manager-only.
 Route::middleware(['auth:sanctum', 'is_manager', 'track.seen'])->prefix('manager')->group(function () {
     Route::get('/account-deletion-requests', [AccountDeletionRequestController::class, 'index']);
+    Route::get('/question-reports', [QuestionReportController::class, 'index']);
+    Route::patch('/question-reports/{id}', [QuestionReportController::class, 'update'])->whereNumber('id');
     Route::get('/announcements', [AnnouncementController::class, 'index']);
     Route::post('/announcements', [AnnouncementController::class, 'store']);
     Route::match(['PUT', 'PATCH'], '/announcements/{id}', [AnnouncementController::class, 'update'])->whereNumber('id');

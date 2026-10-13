@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' https:; connect-src 'self' https://labapi.genziitian.in; object-src 'none'; base-uri 'self'; form-action 'self'" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <title>Reported questions · Manager · Quiz LAB</title>
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="/manager-discussions.css?v=20261010a" />
+    <link rel="stylesheet" href="/ql-dark-discussions.css?v=20261010a" />
+    <link rel="stylesheet" href="/manager-reports.css?v=20261013a" />
+    <script src="/ql-theme.js?v=20261010a"></script>
+  </head>
+  <body>
+    <header class="top">
+      <a class="brand" href="/manager"><img class="mark" src="/assets/quiz-lab-icon.png" alt="" width="34" height="34"><span><b>Quiz LAB</b><small>Manager · Reported questions</small></span></a>
+      <nav aria-label="Manager navigation">
+        <span id="me"></span>
+        <button type="button" class="theme-toggle" data-ql-theme-toggle aria-label="Switch theme"></button>
+        <a href="/manager">← Manager console</a>
+      </nav>
+    </header>
+    <main>
+      <div class="heading">
+        <div>
+          <p class="eyebrow">Quality</p>
+          <h1>Reported questions</h1>
+          <p class="sub">Problems students flagged while solving papers. Fix the question, then mark the report resolved.</p>
+        </div>
+        <button type="button" id="refresh">Refresh</button>
+      </div>
+      <div id="gate" class="notice" role="status">Checking your manager account…</div>
+      <div id="workspace" hidden>
+        <div class="rep-tabs" role="group" aria-label="Show reports">
+          <button type="button" data-status="open" aria-pressed="true">Open <b id="c-open">0</b></button>
+          <button type="button" data-status="resolved" aria-pressed="false">Resolved <b id="c-resolved">0</b></button>
+          <button type="button" data-status="dismissed" aria-pressed="false">Dismissed <b id="c-dismissed">0</b></button>
+          <button type="button" data-status="all" aria-pressed="false">All</button>
+          <input type="search" id="search" placeholder="Search paper, student or text" autocomplete="off" />
+        </div>
+        <div id="list" class="rep-list"></div>
+      </div>
+    </main>
+    <div id="toast" role="status" aria-live="polite"></div>
+    <script src="/storefront-runtime.js?v=20261010a"></script>
+    <script src="/manager-reports.js?v=20261013a"></script>
+  </body>
+</html>

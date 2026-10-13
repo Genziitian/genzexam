@@ -558,9 +558,12 @@
       '</span><span style="padding:3px 8px;border-radius:6px;background:#e0f2fe;color:#0369a1;font-size:11px;font-weight:700;">' +
       esc(TYPE_LABEL[q.type] || String(q.type || "").toUpperCase()) +
       "</span></div>" +
+      '<div style="display:flex;align-items:center;gap:10px;">' +
+      '<button type="button" class="pr-report-btn" data-report="' + esc(String(q.id)) + '" data-report-no="' + (index + 1) + '" title="Report a problem with this question"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 22V4a1 1 0 011-1h12l-2 4 2 4H5"/></svg>Report</button>' +
       (passage
         ? ""
         : '<div style="font-size:12px;font-weight:700;color:#33558b;">+' + Number(q.marks || 0) + " Marks</div>") +
+      "</div>" +
       "</div>" +
       '<div class="pr-live-prompt" style="font-size:15px;color:#0f172a;line-height:1.6;font-weight:500;margin-bottom:14px;">' +
       stemHtml(q) +
@@ -910,7 +913,57 @@
     st.screen = "blocked";
     render();
   }
+  const REPORT_REASONS = [
+    ["wrong_question", "This question is wrong"],
+    ["wrong_answer", "The correct answer is wrong"],
+    ["wrong_format", "The format is wrong"],
+    ["typo", "Typo or unclear wording"],
+    ["missing_info", "Image, table or data is missing"],
+    ["options_wrong", "Options are wrong or missing"],
+    ["other", "Something else is wrong"],
+  ];
+  function reportModal(questionId, number) {
+    const old = document.getElementById("pr-report-modal");
+    if (old) old.remove();
+    const modal = document.createElement("div");
+    modal.id = "pr-report-modal";
+    modal.innerHTML =
+      '<form class="pr-report-card" role="dialog" aria-modal="true" aria-labelledby="pr-report-title">' +
+      '<h2 id="pr-report-title">Report question ' + Number(number) + "</h2>" +
+      "<p>What is wrong? Pick all that apply.</p>" +
+      '<div class="pr-report-reasons">' +
+      REPORT_REASONS.map((r) => '<label><input type="checkbox" name="reason" value="' + r[0] + '"><span>' + esc(r[1]) + "</span></label>").join("") +
+      "</div>" +
+      '<label class="pr-report-comment">Tell us more <small>(optional)</small><textarea name="comment" maxlength="1000" rows="3" placeholder="e.g. The answer should be 4, not 5"></textarea></label>' +
+      '<p class="pr-report-error" role="alert" hidden></p>' +
+      '<div class="pr-report-actions"><button type="button" data-close>Cancel</button><button type="submit" class="primary">Submit report</button></div>' +
+      "</form>";
+    document.body.appendChild(modal);
+    const form = modal.querySelector("form");
+    const err = modal.querySelector(".pr-report-error");
+    const close = () => modal.remove();
+    modal.addEventListener("click", (e) => { if (e.target === modal || e.target.closest("[data-close]")) close(); });
+    modal.addEventListener("keydown", (e) => { if (e.key === "Escape") close(); });
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const reasons = Array.from(form.querySelectorAll('input[name="reason"]:checked')).map((i) => i.value);
+      if (!reasons.length) { err.textContent = "Pick at least one problem."; err.hidden = false; return; }
+      const btn = form.querySelector("button.primary");
+      btn.disabled = true; btn.textContent = "Sending…"; err.hidden = true;
+      try {
+        await request("/question-reports", { method: "POST", body: { question_id: Number(questionId), question_number: Number(number), reasons, comment: form.comment.value.trim() || null } });
+        form.innerHTML = '<h2>Thanks, report sent</h2><p>Our team will check question ' + Number(number) + ' and fix it if needed.</p><div class="pr-report-actions"><button type="button" class="primary" data-close>Back to the paper</button></div>';
+      } catch (ex) {
+        err.textContent = ex.message || "Could not send the report. Try again."; err.hidden = false;
+        btn.disabled = false; btn.textContent = "Submit report";
+      }
+    });
+    const first = form.querySelector("input");
+    if (first) first.focus();
+  }
   function onClick(ev) {
+    const rep = ev.target.closest("[data-report]");
+    if (rep) return void reportModal(rep.dataset.report, rep.dataset.reportNo);
     const jump = ev.target.closest("[data-go]");
     if (jump) return void go(Number(jump.dataset.go));
     const calc = ev.target.closest("[data-calc]");
