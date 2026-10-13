@@ -1310,9 +1310,8 @@
       tag(go, "data-ql-paper-go", "");
       var pm = /\/(?:quiz|paper)\/(\d+)/.exec(card.parentElement.getAttribute("href") || "");
       if (pm && window.QLShare && !card.querySelector(".ql-share-btn")) {
-        var th = card.querySelector("h3,h4,.font-semibold");
-        if (getComputedStyle(card).position === "static") card.style.position = "relative";
-        card.appendChild(window.QLShare.button(pm[1], th ? th.textContent.trim() : "", "ql-share-corner ql-share-icon"));
+        var th = card.querySelector("p");
+        meta.appendChild(window.QLShare.button(pm[1], th ? th.textContent.trim() : "", "ql-share-inline ql-share-icon"));
       }
       var badge = card.querySelector(".bg-emerald-50");
       var count = badge ? parseInt(badge.textContent.replace(/\D/g, ""), 10) || 0 : 0;

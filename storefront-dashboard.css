@@ -433,6 +433,17 @@ main[data-ql-paper-filter=todo] a[data-ql-paper=done],main[data-ql-paper-filter=
 :root[data-theme=dark] [data-ql-paper-card=done] [data-ql-paper-go]{background:transparent;color:#6d93cf!important}
 }
 
+/* ---- Course page, wider screens: Start / Retry as a clear button ---- */
+@media(min-width:641px){
+[data-ql-paper-go]{justify-content:center!important;gap:8px;margin-top:2px;padding:10px 14px;border-radius:10px;background:#33558b;color:#fff!important;font-size:13.5px!important;font-weight:700;box-shadow:0 4px 12px -4px rgba(51,85,139,.55);transition:background .15s,transform .15s,box-shadow .15s}
+a:hover [data-ql-paper-go]{background:#284777;transform:translateY(-1px);box-shadow:0 8px 18px -6px rgba(51,85,139,.6)}
+[data-ql-paper-card=done] [data-ql-paper-go]{background:#fff;color:#33558b!important;border:1.5px solid #33558b;box-shadow:none}
+a:hover [data-ql-paper-card=done] [data-ql-paper-go]{background:#eef2fa}
+:root[data-theme=dark] [data-ql-paper-go]{background:#4a6fb0;color:#fff!important}
+:root[data-theme=dark] [data-ql-paper-card=done] [data-ql-paper-go]{background:transparent;color:#9cb4db!important;border-color:#4a6fb0}
+}
+.ql-share-btn.ql-share-inline{margin-left:auto;height:24px;padding:0 7px}
+
 /* ---- Phones: leaderboard like the mobile app (podium, shine, pinned "you" row) ---- */
 .ql-confetti{position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:90}
 .ql-lb-pin,.ql-lb-tail{display:none}
