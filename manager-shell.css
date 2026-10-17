@@ -20,9 +20,8 @@
 #ql-manager-sidebar .qm-initial{display:grid;place-items:center;width:32px;height:32px;flex:none;border-radius:50%;background:#1e3a5f;color:#bfdbfe;font-weight:800}
 #ql-manager-sidebar .qm-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#e2e8f0;font-size:13px}
 body.ql-manager-layout{padding-left:256px}
-body.ql-manager-layout>header,body.ql-manager-layout .ep-top{box-sizing:border-box;width:100%;max-width:none;padding:16px 28px;background:#fff;color:#0f172a;border-bottom:1px solid #e2e8f0}
-body.ql-manager-layout>header a,body.ql-manager-layout .ep-top a{color:#475569}
-body.ql-manager-layout>header .brand b{color:#0f172a}
+body.ql-manager-layout>header,body.ql-manager-layout header.top,body.ql-manager-layout .ep-top{display:none!important}
+body.ql-manager-layout .heading p.sub,body.ql-manager-layout .heading p.eyebrow,body.ql-manager-layout .page-heading p:not(.eyebrow){display:none!important}
 body.ql-manager-layout>main{box-sizing:border-box;min-width:0;max-width:1600px;margin:0 auto;padding:28px clamp(18px,3vw,40px) 64px}
 body.ql-manager-layout>main#ep-app{max-width:none;padding:0}
 body.ql-manager-layout .ep-page{max-width:1600px;padding:32px clamp(18px,3vw,40px)}
@@ -35,7 +34,7 @@ body.ql-manager-layout h1,body.ql-manager-layout h2,body.ql-manager-layout h3{fo
 @media(max-width:1000px){
  body.ql-manager-drawer-open{overflow:hidden}
  body.ql-manager-layout{padding-left:0}
- body.ql-manager-layout>header,body.ql-manager-layout .ep-top{padding-left:72px;min-height:72px}
+ body.ql-manager-layout>main{padding-top:72px}
  #ql-manager-toggle{display:block}
  #ql-manager-sidebar{transform:translateX(-100%);transition:transform .2s ease;visibility:hidden}
  body.ql-manager-drawer-open #ql-manager-sidebar{transform:translateX(0);visibility:visible}

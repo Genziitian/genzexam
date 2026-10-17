@@ -17,21 +17,11 @@
 <script src="/manager-shell.js?v=20261017a" defer></script>
 </head>
   <body>
-    <header class="top">
-      <a class="brand" href="/manager"><img class="mark" src="/assets/quiz-lab-icon.png" alt="" width="34" height="34"><span><b>Quiz LAB</b><small>Manager · Announcements</small></span></a>
-      <nav aria-label="Manager navigation">
-        <span id="me"></span>
-        <button type="button" class="theme-toggle" data-ql-theme-toggle aria-label="Switch theme"></button>
-        <a href="/manager">← Manager console</a>
-        <a href="/dashboard">Student view</a>
-      </nav>
-    </header>
+    <span id="me" hidden></span>
     <main>
       <div class="heading">
         <div>
-          <p class="eyebrow">Dashboard</p>
           <h1>Announcements</h1>
-          <p class="sub">Everything switched on here slides across the top of every student's dashboard.</p>
         </div>
       </div>
       <div id="gate" class="notice" role="status">Checking your manager account…</div>

@@ -17,20 +17,11 @@
 <script src="/manager-shell.js?v=20261017a" defer></script>
 </head>
   <body>
-    <header class="top">
-      <a class="brand" href="/manager"><img class="mark" src="/assets/quiz-lab-icon.png" alt="" width="34" height="34"><span><b>Quiz LAB</b><small>Manager · Student uploads</small></span></a>
-      <nav aria-label="Manager navigation">
-        <span id="me"></span>
-        <button type="button" class="theme-toggle" data-ql-theme-toggle aria-label="Switch theme"></button>
-        <a href="/manager">← Manager console</a>
-      </nav>
-    </header>
+    <span id="me" hidden></span>
     <main>
       <div class="heading">
         <div>
-          <p class="eyebrow">Content</p>
           <h1>Student uploads</h1>
-          <p class="sub">Papers Pro students turned into tests. Review the questions, pick a course and week, then publish a public copy. The student keeps their private test.</p>
         </div>
         <button type="button" id="refresh">Refresh</button>
       </div>

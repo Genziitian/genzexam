@@ -115,7 +115,7 @@
   const when = value => value ? new Date(value).toLocaleString('en-IN', {day:'numeric', month:'short', year:'numeric', hour:'numeric', minute:'2-digit'}) : '—';
   const STATES = {paid:['Paid','paid'], unpaid:['Not paid','unpaid'], paid_later:['Paid with a later order','later']};
   let orderStatus = '', searchTimer;
-  function metric(label, figure, note, tone) { return `<div class="panel metric${tone ? ' '+tone : ''}"><span>${esc(label)}</span><strong>${esc(figure)}</strong><small>${esc(note)}</small></div>`; }
+  function metric(label, figure, note, tone) { return `<div class="panel metric${tone ? ' '+tone : ''}"><span>${esc(label)}</span><strong>${esc(figure)}</strong></div>`; }
   async function loadSummary() {
     try {
       const data = await api('/manager/sales/summary'), t = data.totals || {};

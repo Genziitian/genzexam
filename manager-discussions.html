@@ -19,21 +19,11 @@
 <script src="/manager-shell.js?v=20261017a" defer></script>
 </head>
   <body>
-    <header class="top">
-      <a class="brand" href="/manager"><img class="mark" src="/assets/quiz-lab-icon.png" alt="" width="34" height="34"><span><b>Quiz LAB</b><small>Manager · Discussions</small></span></a>
-      <nav aria-label="Manager navigation">
-        <span id="me"></span>
-        <button type="button" class="theme-toggle" data-ql-theme-toggle aria-label="Switch theme"></button>
-        <a href="/manager">← Manager console</a>
-        <a href="/discussions">Student view</a>
-      </nav>
-    </header>
+    <span id="me" hidden></span>
     <main>
       <div class="heading">
         <div>
-          <p class="eyebrow">Moderation</p>
           <h1>Discussions</h1>
-          <p class="sub">Read every thread, reply with the Manager tag, and remove posts that should not be there.</p>
         </div>
         <button type="button" id="refresh">Refresh</button>
       </div>

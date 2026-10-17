@@ -1,1 +1,152 @@
-:root[data-theme=dark]{color-scheme:dark}
+:root[data-theme=dark] {
+  color-scheme: dark;
+  --bg: #0b0f17;
+  --surface: #111827;
+  --line: #1f2937;
+  --ink: #f3f4f6;
+  --muted: #9ca3af;
+  --green: #3b82f6;
+  --tint: rgba(59, 130, 246, 0.15);
+  --seg-bg: rgba(0, 0, 0, 0.4);
+}
+
+:root[data-theme=dark] body {
+  background: var(--bg);
+  color: var(--ink);
+}
+
+:root[data-theme=dark] header {
+  background: #111827;
+  border-color: #1f2937;
+}
+
+:root[data-theme=dark] button {
+  background: #141b26;
+  border-color: #243042;
+  color: var(--ink);
+}
+:root[data-theme=dark] button:hover:not(:disabled) {
+  background: #1c2536;
+  border-color: #3b82f6;
+  color: #ffffff;
+}
+:root[data-theme=dark] .primary {
+  background: #2563eb;
+  border-color: #2563eb;
+  color: #ffffff;
+}
+:root[data-theme=dark] .primary:hover:not(:disabled) {
+  background: #1d4ed8;
+  border-color: #1d4ed8;
+}
+
+:root[data-theme=dark] .tabs {
+  background: #0d121c;
+  border-color: #1f2937;
+}
+:root[data-theme=dark] .tabs button {
+  color: var(--muted);
+}
+:root[data-theme=dark] .tabs button:hover:not([aria-current=page]) {
+  background: rgba(255, 255, 255, 0.06);
+  color: #ffffff;
+}
+:root[data-theme=dark] .tabs button[aria-current=page] {
+  background: #2563eb;
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.4);
+}
+
+:root[data-theme=dark] .metric {
+  background: #111827;
+  border-color: #1f2937;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+:root[data-theme=dark] .metric:hover {
+  border-color: #3b82f6;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+}
+:root[data-theme=dark] .metric strong {
+  color: #f3f4f6;
+}
+:root[data-theme=dark] .metric.warn {
+  background: rgba(245, 158, 11, 0.06);
+  border-color: rgba(245, 158, 11, 0.3);
+}
+:root[data-theme=dark] .metric.warn strong {
+  color: #fbbf24;
+}
+
+:root[data-theme=dark] .sales-block,
+:root[data-theme=dark] .card,
+:root[data-theme=dark] .panel,
+:root[data-theme=dark] .notice {
+  background: #111827;
+  border-color: #1f2937;
+}
+
+:root[data-theme=dark] .table-wrap {
+  background: #111827;
+  border-color: #1f2937;
+}
+:root[data-theme=dark] th {
+  background: #0d121c;
+  border-color: #1f2937;
+  color: var(--muted);
+}
+:root[data-theme=dark] td {
+  border-color: #1f2937;
+  color: #e5e7eb;
+}
+:root[data-theme=dark] tbody tr:hover td {
+  background: rgba(255, 255, 255, 0.025);
+}
+
+:root[data-theme=dark] .state.paid {
+  background: rgba(16, 185, 129, 0.15);
+  color: #34d399;
+  border-color: rgba(16, 185, 129, 0.3);
+}
+:root[data-theme=dark] .state.unpaid {
+  background: rgba(245, 158, 11, 0.15);
+  color: #fbbf24;
+  border-color: rgba(245, 158, 11, 0.3);
+}
+:root[data-theme=dark] .state.later {
+  background: rgba(148, 163, 184, 0.15);
+  color: #94a3b8;
+  border-color: rgba(148, 163, 184, 0.25);
+}
+
+:root[data-theme=dark] .filters select,
+:root[data-theme=dark] .filters input[type="search"],
+:root[data-theme=dark] input,
+:root[data-theme=dark] select,
+:root[data-theme=dark] textarea {
+  background: #141b26;
+  border-color: #243042;
+  color: #f3f4f6;
+}
+:root[data-theme=dark] .filters select:focus,
+:root[data-theme=dark] .filters input[type="search"]:focus,
+:root[data-theme=dark] input:focus,
+:root[data-theme=dark] select:focus,
+:root[data-theme=dark] textarea:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+:root[data-theme=dark] .seg {
+  background: #0d121c;
+  border-color: #1f2937;
+}
+:root[data-theme=dark] .seg button[aria-pressed=true] {
+  background: #2563eb;
+  color: #ffffff;
+}
+
+:root[data-theme=dark] .days > p.hint {
+  background: rgba(0, 0, 0, 0.25);
+  border-color: #1f2937;
+  color: var(--muted);
+}
