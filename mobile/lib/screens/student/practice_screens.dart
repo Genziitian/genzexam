@@ -8,6 +8,7 @@ import 'package:webview_flutter/webview_flutter.dart';
 import '../../api/api.dart';
 import '../../api/offline_paper_store.dart';
 import '../../state/theme_state.dart';
+import '../../state/app_activity.dart';
 import '../../widgets/app_ux_components.dart';
 import 'native_paper_room.dart' as native;
 
@@ -762,10 +763,10 @@ class _CoursePapersScreenState extends State<CoursePapersScreen> {
   Future<void> _downloadPaper(CourseQuizListItem paper) async {
     final userId = widget.user?.id;
     if (userId == null) return;
+    final finish = AppActivity.begin('Saving your paper for offline use…');
     try {
-      final quiz = await QuizService(
-        client: widget.courseService.client,
-      ).downloadQuiz(paper.id);
+      final quiz = await QuizService(client: widget.courseService.client)
+          .downloadQuiz(paper.id);
       await OfflinePaperStore.cacheQuiz(userId, quiz);
       if (mounted)
         ScaffoldMessenger.of(context).showSnackBar(
@@ -782,6 +783,8 @@ class _CoursePapersScreenState extends State<CoursePapersScreen> {
             ),
           ),
         );
+    } finally {
+      finish();
     }
   }
 
@@ -1261,8 +1264,7 @@ div.fixed.inset-x-0.bottom-0.z-40.lg\\:hidden{display:none!important}
           onWebResourceError: (error) {
             if (error.isForMainFrame == true && mounted) {
               setState(
-                () => _error =
-                    'Could not open this page. Check your connection and try again.',
+                () => _error = 'Could not open this page. Check your connection and try again.',
               );
             }
           },

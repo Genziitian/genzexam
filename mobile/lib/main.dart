@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'state/auth_state.dart';
 import 'state/theme_state.dart';
 import 'navigation/app_router.dart';
+import 'widgets/app_loading_layer.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -33,8 +34,9 @@ class GenZExamApp extends StatelessWidget {
         fontFamily: 'Inter',
       ),
       // One layer over every screen and dialog: turns the app dark when chosen.
-      builder: (context, child) =>
-          AppDarkLayer(child: child ?? const SizedBox.shrink()),
+      builder: (context, child) => AppDarkLayer(
+        child: AppLoadingLayer(child: child ?? const SizedBox.shrink()),
+      ),
       home: AppRouter(authState: authState),
     );
   }

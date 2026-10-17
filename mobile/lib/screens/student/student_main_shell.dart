@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
+import '../../widgets/premium_widgets.dart';
 
 import '../../legal/legal_documents.dart';
 
@@ -258,38 +259,14 @@ class _StudentMainShellState extends State<StudentMainShell> {
   void _openUploadedPapers() {
     final user = widget.authState.user;
     if (user == null) return;
-    _openProFeature(() {
-      Navigator.of(context).push<void>(
-        MaterialPageRoute<void>(
-          builder: (_) => UploadedPapersScreen(
-            user: user,
-            apiClient: _courseService.client,
-          ),
-        ),
-      );
-    });
-  }
-
-  Future<void> _openProFeature(VoidCallback openFeature) async {
-    final user = widget.authState.user;
-    var hasPro = user?.isPro == true;
-    try {
-      final response = await _courseService.client.get<Map<String, dynamic>>(
-        '/membership',
-      );
-      hasPro = response.data?['is_pro'] == true;
-    } catch (_) {
-      // Use the last server-confirmed account state if the membership check is
-      // temporarily unavailable. The protected API still verifies Pro access.
-    }
-    if (!mounted) return;
-    if (hasPro) {
-      openFeature();
-      return;
-    }
-    await Navigator.of(context).push<void>(
+    // Everyone gets a free upload each week; the screen shows the allowance and
+    // sends free accounts to Pro when it runs out.
+    Navigator.of(context).push<void>(
       MaterialPageRoute<void>(
-        builder: (_) => ProMembershipScreen(apiClient: _courseService.client),
+        builder: (_) => UploadedPapersScreen(
+          user: user,
+          apiClient: _courseService.client,
+        ),
       ),
     );
   }
@@ -2486,12 +2463,11 @@ class _HomeQuickActions extends StatelessWidget {
       _QuickActionTile(
         icon: Icons.upload_file_rounded,
         label: 'Upload a paper',
-        subtitle: 'Turn your PDF into a practice test',
+        subtitle: '1 free upload a week · Pro gets more',
         tint: const Color(0xFFDCFCE7),
         color: const Color(0xFF16A34A),
         onTap: onUploadPaper,
         wide: true,
-        pro: true,
       ),
     ],
   );
@@ -2551,28 +2527,10 @@ class _QuickActionTile extends StatelessWidget {
                     child: Center(child: Icon(icon, color: color, size: 20)),
                   ),
                   if (pro && !wide)
-                    Positioned(
-                      right: -5,
-                      bottom: -4,
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 4,
-                          vertical: 1,
-                        ),
-                        decoration: BoxDecoration(
-                          color: const Color(0xFFFFF1CC),
-                          borderRadius: BorderRadius.circular(5),
-                          border: Border.all(color: Colors.white, width: 1.5),
-                        ),
-                        child: const Text(
-                          'PRO',
-                          style: TextStyle(
-                            color: Color(0xFF9A5B00),
-                            fontSize: 7,
-                            fontWeight: FontWeight.w900,
-                          ),
-                        ),
-                      ),
+                    const Positioned(
+                      right: -6,
+                      bottom: -6,
+                      child: ProEmblem(size: 18, glow: false),
                     ),
                 ],
               ),
@@ -2598,26 +2556,8 @@ class _QuickActionTile extends StatelessWidget {
                         ),
                       ),
                       if (pro && wide) ...[
-                        const SizedBox(width: 5),
-                        Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 5,
-                            vertical: 2,
-                          ),
-                          decoration: BoxDecoration(
-                            color: const Color(0xFFFFF1CC),
-                            borderRadius: BorderRadius.circular(6),
-                          ),
-                          child: const Text(
-                            'PRO',
-                            style: TextStyle(
-                              color: Color(0xFF9A5B00),
-                              fontSize: 8,
-                              fontWeight: FontWeight.w900,
-                              letterSpacing: 0.3,
-                            ),
-                          ),
-                        ),
+                        const SizedBox(width: 6),
+                        const ProEmblem(size: 20, glow: false),
                       ],
                     ],
                   ),
@@ -5515,21 +5455,24 @@ class _MoreTabState extends State<_MoreTab> {
             ),
             if (badge != null) ...[
               const SizedBox(width: 6),
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 1),
-                decoration: BoxDecoration(
-                  color: const Color(0xFFFEF3C7),
-                  borderRadius: BorderRadius.circular(4),
-                ),
-                child: Text(
-                  badge,
-                  style: const TextStyle(
-                    fontSize: 9,
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xFFB45309),
+              if (badge == 'PRO')
+                const ProEmblem(size: 20, glow: false)
+              else
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 1),
+                  decoration: BoxDecoration(
+                    color: const Color(0xFFFEF3C7),
+                    borderRadius: BorderRadius.circular(4),
+                  ),
+                  child: Text(
+                    badge,
+                    style: const TextStyle(
+                      fontSize: 9,
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xFFB45309),
+                    ),
                   ),
                 ),
-              ),
             ],
           ],
         ),

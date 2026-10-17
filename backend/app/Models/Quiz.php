@@ -47,6 +47,8 @@ class Quiz extends Model
         'reviewed_at',
         'is_personal',
         'owner_user_id',
+        'published_quiz_id',
+        'upload_reviewed_at',
     ];
 
     protected function casts(): array
@@ -56,6 +58,7 @@ class Quiz extends Model
             'price_paise' => 'integer',
             'access_days' => 'integer',
             'is_personal' => 'boolean',
+            'upload_reviewed_at' => 'datetime',
         ];
     }
 

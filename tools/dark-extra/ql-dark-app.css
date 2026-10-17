@@ -3,3 +3,40 @@
 /* The dashboard greeting is gradient text: keep it light at the start. */
 :root[data-theme=dark] [data-ql-hello]{background-image:linear-gradient(100deg,#e8ecf4 0%,#e8ecf4 40%,#4ade80 78%,#a3e635 100%)}
 :root[data-theme=dark] ::placeholder{color:#7a8699}
+
+/* Practice / course card accents in dark mode: lighter accent, deep tint. */
+:root[data-theme=dark] .ql-pc-0{--pc:#8c90ff;--pc-soft:#1b1c34}
+:root[data-theme=dark] .ql-pc-1{--pc:#f5b83d;--pc-soft:#33270c}
+:root[data-theme=dark] .ql-pc-2{--pc:#3fbf86;--pc-soft:#10291d}
+:root[data-theme=dark] .ql-pc-3{--pc:#f07aa8;--pc-soft:#3a1626}
+:root[data-theme=dark] .ql-pc-4{--pc:#5cc0f0;--pc-soft:#0f2a3a}
+:root[data-theme=dark] .ql-pc-5{--pc:#b08cff;--pc-soft:#251a42}
+:root[data-theme=dark] .ql-pc:hover .ql-pc-cta{color:#0b0b0b!important}
+
+/* My Papers: in-place details dialog. */
+:root[data-theme=dark] .ql-pd{background:#111;color:#f2f2f2}
+:root[data-theme=dark] .ql-pd-sub,:root[data-theme=dark] .ql-pd-note{color:#9c9c9c}
+:root[data-theme=dark] .ql-pd-desc{color:#b4b4b4}
+:root[data-theme=dark] .ql-pd-x{background:#1a1a1a;color:#ddd}
+:root[data-theme=dark] .ql-pd-facts div{background:#1b1c34}
+:root[data-theme=dark] .ql-pd-facts dt{color:#9c9c9c}
+:root[data-theme=dark] .ql-pd-facts dd{color:#f2f2f2}
+:root[data-theme=dark] .ql-pd-actions a,:root[data-theme=dark] .ql-pd-actions button{background:#111;border-color:#333;color:#9a9dff}
+:root[data-theme=dark] .ql-pd-actions a.go{background:#4a4fe6;border-color:#4a4fe6;color:#fff}
+
+/* Upload dialog + maintenance dialog in dark mode. */
+:root[data-theme=dark] .ql-upload-modal,:root[data-theme=dark] .ql-mt{background:#111;color:#f2f2f2}
+:root[data-theme=dark] .ql-upload-quota{background:#1b1c34;border-color:#2b2d57}
+:root[data-theme=dark] .ql-upload-quota.locked{background:#33270c;border-color:#5a4415}
+:root[data-theme=dark] .ql-upload-quota.empty{background:#3a1a1f;border-color:#5e2a31}
+:root[data-theme=dark] .ql-upload-quota small,:root[data-theme=dark] .ql-upload-state,:root[data-theme=dark] .ql-upload-note,:root[data-theme=dark] .ql-upload-drop small,:root[data-theme=dark] .ql-mt p{color:#9c9c9c}
+:root[data-theme=dark] .ql-upload-meter i.used{background:#3a3b66}
+:root[data-theme=dark] .ql-upload-steps>div,:root[data-theme=dark] .ql-upload-item{background:#1a1a1a;border-color:#2e2e2e}
+:root[data-theme=dark] .ql-upload-drop{background:#15162a;border-color:#3a3b66}
+:root[data-theme=dark] .ql-upload-drop:hover,:root[data-theme=dark] .ql-upload-drop.over{background:#1b1c34;border-color:#8c90ff}
+:root[data-theme=dark] .ql-upload-chip{background:#1b1c34;color:#c9ccf5}
+:root[data-theme=dark] .ql-upload-state.ok{color:#3fbf86}
+:root[data-theme=dark] .ql-mt-bar{background:#1b1c34}
+:root[data-theme=dark] .ql-mt-actions a{background:#111;border-color:#333;color:#9a9dff}
+:root[data-theme=dark] .ql-upload-quota.free{background:linear-gradient(135deg,#1b1c34,#33270c);border-color:#2b2d57}
+:root[data-theme=dark] .ql-upload-quota-actions a.ql-upload-upgrade{color:#9a9dff;border-color:#3a3b66}

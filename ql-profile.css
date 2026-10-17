@@ -17,9 +17,8 @@ main:has(#ql-web-profile-editor) #ql-web-profile-edit{background:#fff!important;
 main:has(#ql-web-profile-editor) #ql-web-profile-edit:hover{background:var(--pf-yellow)!important;color:#0E1330!important}
 main:has(#ql-web-profile-editor) #ql-web-profile-message{color:#DADCFF!important}
 
-/* "More" summary card (joined date): kept, restyled */
-main:has(#ql-web-profile-editor) [data-ql-profile-page]>div:first-child{border:1.5px solid var(--pf-line)!important;border-radius:22px!important;background:var(--pf-surface)!important;box-shadow:none!important}
-main:has(#ql-web-profile-editor) [data-ql-profile-page]>div:first-child h1{color:var(--pf-ink)!important}
+/* The editable Profile card replaces the duplicate More/email summary. */
+main:has(#ql-web-profile-editor) [data-ql-profile-summary]{display:none!important}
 
 /* stat tiles */
 main:has(#ql-web-profile-editor) [data-ql-profile-page]>.grid>div{position:relative;overflow:hidden;border-radius:22px!important;border:1.5px solid var(--pf-line)!important;background:var(--pf-surface)!important;padding:22px!important;box-shadow:none!important;transition:transform .2s ease,border-color .2s;animation:pfIn .6s cubic-bezier(.2,.7,.2,1) both}

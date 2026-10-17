@@ -26,27 +26,27 @@
 
   /* ------------------------------------------------------------- primary */
   /* Slate blue. Primary buttons, active outlines, accents. */
-  --ql-primary: #33558b;
-  --ql-primary-hover: #29467a;
+  --ql-primary: #3a3fd8;
+  --ql-primary-hover: #2b30b8;
   /* Dark text on a tinted background, and the GRPA chip. */
-  --ql-primary-deep: #1e3355;
+  --ql-primary-deep: #1b1f7a;
   /* Text sitting on a tint: answered questions, the calculator. */
-  --ql-primary-ink: #24406b;
+  --ql-primary-ink: #2a2fa8;
   /* Text and icons that sit on top of the primary fill. */
   --ql-on-primary: #ffffff;
 
   /* --------------------------------------------------------------- tints */
   /* Selected option, active section background. */
-  --ql-tint: #eef3fa;
+  --ql-tint: #f1f2ff;
   /* Live pill, chips, focus ring. */
-  --ql-tint-strong: #e3eaf5;
+  --ql-tint-strong: #ecedff;
   /* Answered question background and border. */
-  --ql-answered-bg: #dfe8f5;
-  --ql-answered-border: #9fb6d8;
-  --ql-tint-border: #c7d4e8;
+  --ql-answered-bg: #dcdeff;
+  --ql-answered-border: #a9acf0;
+  --ql-tint-border: #c9ccf5;
   /* Informational note. */
-  --ql-info-bg: #f3f6fb;
-  --ql-info-border: #cfdbec;
+  --ql-info-bg: #f5f6ff;
+  --ql-info-border: #d5d8f7;
 
   /* ------------------------------------------------------------ neutrals */
   --ql-ink: #0f172a;          /* headings, main text, sidebar divider */
@@ -92,8 +92,8 @@
   --ql-shell: #0f172a;
   --ql-shell-raised: #1a2740;
   --ql-shell-border: #26354a;
-  --ql-shell-text: #e3eaf5;
-  --ql-shell-muted: #9fb6d8;
+  --ql-shell-text: #ecedff;
+  --ql-shell-muted: #a9acf0;
   --ql-shell-accent: #93b4e6;
 }
 
@@ -103,7 +103,7 @@
  * token's meaning (surface vs text) is not visible in its declaration.
  */
 :root[data-theme="dark"] {
-  --ql-primary: #6d93cf;
+  --ql-primary: #7f84f0;
   --ql-primary-hover: #86a7da;
   --ql-primary-deep: #c5d7ef;
   --ql-primary-ink: #c5d7ef;

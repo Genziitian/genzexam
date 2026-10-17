@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 import 'api_exceptions.dart';
+import '../state/app_activity.dart';
 
 /// Production-grade API client connecting directly to https://labapi.genziitian.in.
 ///
@@ -114,31 +115,36 @@ class ApiClient {
     Options? options,
     CancelToken? cancelToken,
   }) async {
-    for (var attempt = 0; ; attempt++) {
-      try {
-        return await _dio.get<T>(
-          path,
-          queryParameters: queryParameters,
-          options: options,
-          cancelToken: cancelToken,
-        );
-      } on DioException catch (e) {
-        final status = e.response?.statusCode;
-        final transient =
-            e.type == DioExceptionType.connectionTimeout ||
-            e.type == DioExceptionType.receiveTimeout ||
-            e.type == DioExceptionType.connectionError ||
-            status == 408 ||
-            status == 502 ||
-            status == 503 ||
-            status == 504;
-        if (!transient || attempt >= 2 || cancelToken?.isCancelled == true) {
-          throw ApiException.fromDioException(e);
+    final finish = AppActivity.request(path, 'GET', extra: options?.extra);
+    try {
+      for (var attempt = 0; ; attempt++) {
+        try {
+          return await _dio.get<T>(
+            path,
+            queryParameters: queryParameters,
+            options: options,
+            cancelToken: cancelToken,
+          );
+        } on DioException catch (e) {
+          final status = e.response?.statusCode;
+          final transient =
+              e.type == DioExceptionType.connectionTimeout ||
+              e.type == DioExceptionType.receiveTimeout ||
+              e.type == DioExceptionType.connectionError ||
+              status == 408 ||
+              status == 502 ||
+              status == 503 ||
+              status == 504;
+          if (!transient || attempt >= 2 || cancelToken?.isCancelled == true) {
+            throw ApiException.fromDioException(e);
+          }
+          await Future<void>.delayed(
+            Duration(milliseconds: attempt == 0 ? 300 : 900),
+          );
         }
-        await Future<void>.delayed(
-          Duration(milliseconds: attempt == 0 ? 300 : 900),
-        );
       }
+    } finally {
+      finish();
     }
   }
 
@@ -149,16 +155,21 @@ class ApiClient {
     Options? options,
     CancelToken? cancelToken,
   }) async {
+    final finish = AppActivity.request(path, 'POST', extra: options?.extra);
     try {
-      return await _dio.post<T>(
-        path,
-        data: data,
-        queryParameters: queryParameters,
-        options: options,
-        cancelToken: cancelToken,
-      );
-    } on DioException catch (e) {
-      throw ApiException.fromDioException(e);
+      try {
+        return await _dio.post<T>(
+          path,
+          data: data,
+          queryParameters: queryParameters,
+          options: options,
+          cancelToken: cancelToken,
+        );
+      } on DioException catch (e) {
+        throw ApiException.fromDioException(e);
+      }
+    } finally {
+      finish();
     }
   }
 
@@ -169,16 +180,21 @@ class ApiClient {
     Options? options,
     CancelToken? cancelToken,
   }) async {
+    final finish = AppActivity.request(path, 'PUT', extra: options?.extra);
     try {
-      return await _dio.put<T>(
-        path,
-        data: data,
-        queryParameters: queryParameters,
-        options: options,
-        cancelToken: cancelToken,
-      );
-    } on DioException catch (e) {
-      throw ApiException.fromDioException(e);
+      try {
+        return await _dio.put<T>(
+          path,
+          data: data,
+          queryParameters: queryParameters,
+          options: options,
+          cancelToken: cancelToken,
+        );
+      } on DioException catch (e) {
+        throw ApiException.fromDioException(e);
+      }
+    } finally {
+      finish();
     }
   }
 
@@ -189,16 +205,21 @@ class ApiClient {
     Options? options,
     CancelToken? cancelToken,
   }) async {
+    final finish = AppActivity.request(path, 'PATCH', extra: options?.extra);
     try {
-      return await _dio.patch<T>(
-        path,
-        data: data,
-        queryParameters: queryParameters,
-        options: options,
-        cancelToken: cancelToken,
-      );
-    } on DioException catch (e) {
-      throw ApiException.fromDioException(e);
+      try {
+        return await _dio.patch<T>(
+          path,
+          data: data,
+          queryParameters: queryParameters,
+          options: options,
+          cancelToken: cancelToken,
+        );
+      } on DioException catch (e) {
+        throw ApiException.fromDioException(e);
+      }
+    } finally {
+      finish();
     }
   }
 
@@ -209,16 +230,21 @@ class ApiClient {
     Options? options,
     CancelToken? cancelToken,
   }) async {
+    final finish = AppActivity.request(path, 'DELETE', extra: options?.extra);
     try {
-      return await _dio.delete<T>(
-        path,
-        data: data,
-        queryParameters: queryParameters,
-        options: options,
-        cancelToken: cancelToken,
-      );
-    } on DioException catch (e) {
-      throw ApiException.fromDioException(e);
+      try {
+        return await _dio.delete<T>(
+          path,
+          data: data,
+          queryParameters: queryParameters,
+          options: options,
+          cancelToken: cancelToken,
+        );
+      } on DioException catch (e) {
+        throw ApiException.fromDioException(e);
+      }
+    } finally {
+      finish();
     }
   }
 }

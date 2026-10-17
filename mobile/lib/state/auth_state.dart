@@ -6,6 +6,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 
 import '../api/api.dart';
 import '../api/offline_paper_store.dart';
+import 'app_activity.dart';
 
 enum AuthStatus {
   initial,
@@ -32,6 +33,7 @@ class AuthState extends ChangeNotifier with WidgetsBindingObserver {
   bool _isPreviewingStudentView = false;
   bool _isGoogleSignInPending = false;
   int _googleAttempt = 0;
+  VoidCallback? _finishGoogleActivity;
   Timer? _offlineSyncTimer;
   bool _offlineSyncInProgress = false;
   Future<void>? _initialization;
@@ -225,6 +227,11 @@ class AuthState extends ChangeNotifier with WidgetsBindingObserver {
     _errorMessage = null;
     notifyListeners();
 
+    final finish = AppActivity.begin(
+      'Waiting for Google sign-in…',
+      blocking: false,
+    );
+    _finishGoogleActivity = finish;
     try {
       await _ensureGoogleReady();
       final account = await GoogleSignIn.instance.authenticate();
@@ -271,12 +278,18 @@ class AuthState extends ChangeNotifier with WidgetsBindingObserver {
         attempt,
         'Google sign-in could not be completed. Please try again.',
       );
+    } finally {
+      finish();
+      if (identical(_finishGoogleActivity, finish))
+        _finishGoogleActivity = null;
     }
   }
 
   /// Stops waiting for a Google sign-in that the user abandoned.
   void cancelGoogleLogin() {
     if (!_isGoogleSignInPending) return;
+    _finishGoogleActivity?.call();
+    _finishGoogleActivity = null;
     _googleAttempt++;
     _isGoogleSignInPending = false;
     notifyListeners();

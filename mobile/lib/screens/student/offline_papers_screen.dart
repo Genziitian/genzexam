@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../widgets/premium_widgets.dart';
 
 import '../../api/api.dart';
 import '../../api/offline_paper_store.dart';
@@ -234,22 +235,8 @@ class _ProBadge extends StatelessWidget {
   const _ProBadge();
 
   @override
-  Widget build(BuildContext context) => Container(
-    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-    decoration: BoxDecoration(
-      color: const Color(0xFFFFF1CC),
-      borderRadius: BorderRadius.circular(8),
-    ),
-    child: const Text(
-      'PRO',
-      style: TextStyle(
-        color: Color(0xFF9A5B00),
-        fontSize: 10,
-        fontWeight: FontWeight.w900,
-        letterSpacing: 0.5,
-      ),
-    ),
-  );
+  Widget build(BuildContext context) =>
+      const ProEmblem(size: 26, glow: false);
 }
 
 class _EmptyState extends StatelessWidget {

@@ -32,13 +32,50 @@ class StudentUploadedPaperController extends Controller
                 'created_at' => $quiz->created_at,
             ])->values();
 
-        return response()->json(['papers' => $papers]);
+        return response()->json(['papers' => $papers, 'quota' => $this->quota($request->user())]);
+    }
+
+    /**
+     * Rolling-window upload allowance: `limit` uploads in any `window_days` days.
+     * Only papers that were actually created count, so a failed conversion costs nothing.
+     */
+    private function quota($user): array
+    {
+        $isPro = $user->hasProAccess();
+        // Everyone gets a free upload each window; Pro members get a bigger allowance.
+        $limit = $isPro
+            ? max(1, (int) config('services.student_paper_uploads.limit', 5))
+            : max(1, (int) config('services.student_paper_uploads.free_limit', 1));
+        $days = max(1, (int) config('services.student_paper_uploads.window_days', 7));
+        $since = now()->subDays($days);
+        $recent = Quiz::withoutGlobalScope('exclude_personal_uploads')->where('is_personal', true)
+            ->where('owner_user_id', $user->id)->where('created_at', '>', $since)->orderBy('created_at')->pluck('created_at');
+        $used = $recent->count();
+        $resetsAt = $used >= $limit ? $recent[$used - $limit]->copy()->addDays($days) : null;
+
+        return [
+            'is_pro' => $isPro,
+            'pro_limit' => max(1, (int) config('services.student_paper_uploads.limit', 5)),
+            'limit' => $limit,
+            'window_days' => $days,
+            'used' => min($used, $limit),
+            'remaining' => max(0, $limit - $used),
+            'resets_at' => $resetsAt?->toIso8601String(),
+        ];
     }
 
     public function store(Request $request, DeepSeekQuizGenerator $generator, QuestionImporter $importer): JsonResponse
     {
         abort_if(! StudentAppMode::isStudent($request), 403, 'Student uploads only.');
-        abort_unless($request->user()->hasProAccess(), 403, 'Uploading papers and generating a private test requires Quiz LAB Pro.');
+        $quota = $this->quota($request->user());
+        if ($quota['remaining'] < 1) {
+            return response()->json([
+                'error' => $quota['is_pro']
+                    ? "You have used all {$quota['limit']} uploads for these {$quota['window_days']} days. Your next upload unlocks soon."
+                    : "You have used your free upload for these {$quota['window_days']} days. Go Pro for {$quota['pro_limit']} uploads, or wait for your next free one.",
+                'quota' => $quota,
+            ], 429);
+        }
         @set_time_limit(0);
         @ini_set('max_execution_time', '0');
 
@@ -123,6 +160,19 @@ class StudentUploadedPaperController extends Controller
         $user = $request->user();
 
         $quiz = DB::transaction(function () use ($courseId, $title, $normalized, $importer, $user) {
+            // Web and app uploads share one account allowance. Recheck after
+            // conversion under an account lock so concurrent requests cannot
+            // both consume the last remaining upload.
+            \App\Models\User::query()->lockForUpdate()->findOrFail($user->id);
+            $quota = $this->quota($user);
+            if ($quota['remaining'] < 1) {
+                throw new \Illuminate\Http\Exceptions\HttpResponseException(response()->json([
+                    'error' => $quota['is_pro']
+                    ? "You have used all {$quota['limit']} uploads for these {$quota['window_days']} days. Your next upload unlocks soon."
+                    : "You have used your free upload for these {$quota['window_days']} days. Go Pro for {$quota['pro_limit']} uploads, or wait for your next free one.",
+                    'quota' => $quota,
+                ], 429));
+            }
             $quiz = Quiz::query()->create([
                 'course_id' => $courseId,
                 'week_id' => null,
@@ -148,6 +198,7 @@ class StudentUploadedPaperController extends Controller
             'title' => $quiz->title,
             'question_count' => count($normalized['rows']),
             'warnings' => $normalized['errors'],
+            'quota' => $this->quota($user),
         ], 201);
     }
 

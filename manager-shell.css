@@ -1,0 +1,45 @@
+/* Match the existing manager console while preserving each tool's own content. */
+#ql-manager-sidebar{box-sizing:border-box;position:fixed;inset:0 auto 0 0;z-index:100;width:256px;display:flex;flex-direction:column;padding:24px 16px 16px;background:#0f172a;color:#cbd5e1;border-right:1px solid #243147;font:500 14px/1.4 system-ui,sans-serif;text-align:left}
+#ql-manager-sidebar[hidden],#ql-manager-toggle[hidden]{display:none!important}
+#ql-manager-sidebar a{text-decoration:none;color:inherit}
+#ql-manager-sidebar .qm-brand{display:flex;align-items:center;gap:12px;padding:0 4px 12px;color:#f8fafc}
+#ql-manager-sidebar .qm-brand img{border-radius:11px;flex:none}
+#ql-manager-sidebar .qm-brand strong{display:block;font-size:19px;font-weight:800}
+#ql-manager-sidebar .qm-brand small{display:block;margin-top:2px;font-size:11px;color:#94a3b8}
+#ql-manager-sidebar .qm-role{align-self:flex-start;margin:0 4px 24px;padding:4px 7px;background:#1e2b46;color:#93b4e6;border-radius:6px;font-size:10px;font-weight:800;letter-spacing:.1em}
+#ql-manager-sidebar nav{display:flex;flex:1;min-height:0;flex-direction:column;gap:4px;overflow-y:auto;overscroll-behavior:contain}
+#ql-manager-sidebar nav a{display:flex;align-items:center;gap:12px;min-height:43px;padding:10px 12px;border-radius:12px;color:#94a3b8;font-weight:500;font-size:14px}
+#ql-manager-sidebar nav a:hover{background:#1c2533;color:#f8fafc}
+#ql-manager-sidebar nav a[aria-current=page]{background:#1b2843;color:#f8fafc;box-shadow:inset 3px 0 #93b4e6}
+#ql-manager-sidebar svg{flex:none}
+#ql-manager-sidebar a:focus-visible,#ql-manager-toggle:focus-visible{outline:3px solid #93b4e6;outline-offset:2px}
+#ql-manager-sidebar .qm-bottom{padding-top:14px;margin-top:auto}
+#ql-manager-sidebar .qm-student,#ql-manager-sidebar .qm-home{display:flex;align-items:center;justify-content:center;gap:10px;padding:11px 8px;border:1px solid #2b426d;border-radius:12px;color:#93b4e6;font-size:13px;font-weight:650}
+#ql-manager-sidebar .qm-home{margin-top:9px;border-color:#243147;color:#cbd5e1}
+#ql-manager-sidebar .qm-account{display:flex;align-items:center;gap:10px;margin-top:14px;padding:12px 4px 0;border-top:1px solid #243147}
+#ql-manager-sidebar .qm-initial{display:grid;place-items:center;width:32px;height:32px;flex:none;border-radius:50%;background:#1e3a5f;color:#bfdbfe;font-weight:800}
+#ql-manager-sidebar .qm-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#e2e8f0;font-size:13px}
+body.ql-manager-layout{padding-left:256px}
+body.ql-manager-layout>header,body.ql-manager-layout .ep-top{box-sizing:border-box;width:100%;max-width:none;padding:16px 28px;background:#fff;color:#0f172a;border-bottom:1px solid #e2e8f0}
+body.ql-manager-layout>header a,body.ql-manager-layout .ep-top a{color:#475569}
+body.ql-manager-layout>header .brand b{color:#0f172a}
+body.ql-manager-layout>main{box-sizing:border-box;min-width:0;max-width:1600px;margin:0 auto;padding:28px clamp(18px,3vw,40px) 64px}
+body.ql-manager-layout>main#ep-app{max-width:none;padding:0}
+body.ql-manager-layout .ep-page{max-width:1600px;padding:32px clamp(18px,3vw,40px)}
+body.ql-manager-layout h1,body.ql-manager-layout h2,body.ql-manager-layout h3{font-family:system-ui,sans-serif}
+#ql-manager-toggle{display:none;position:fixed;top:16px;left:16px;z-index:102;box-sizing:border-box;width:40px;height:40px;min-height:0;padding:8px;border:1px solid #cbd5e1;border-radius:10px;background:#fff;color:#334155;cursor:pointer}
+#ql-manager-scrim{display:none}
+:root[data-theme=dark] body.ql-manager-layout>header,:root[data-theme=dark] body.ql-manager-layout .ep-top{background:#151a25;color:#e2e8f0;border-color:#2e3b4c}
+:root[data-theme=dark] body.ql-manager-layout>header a,:root[data-theme=dark] body.ql-manager-layout .ep-top a,:root[data-theme=dark] body.ql-manager-layout>header .brand b{color:#cbd5e1}
+:root[data-theme=dark] #ql-manager-toggle{background:#1e293b;border-color:#475569;color:#e2e8f0}
+@media(max-width:1000px){
+ body.ql-manager-drawer-open{overflow:hidden}
+ body.ql-manager-layout{padding-left:0}
+ body.ql-manager-layout>header,body.ql-manager-layout .ep-top{padding-left:72px;min-height:72px}
+ #ql-manager-toggle{display:block}
+ #ql-manager-sidebar{transform:translateX(-100%);transition:transform .2s ease;visibility:hidden}
+ body.ql-manager-drawer-open #ql-manager-sidebar{transform:translateX(0);visibility:visible}
+ body.ql-manager-drawer-open #ql-manager-toggle{left:268px}
+ body.ql-manager-drawer-open #ql-manager-scrim{display:block;position:fixed;inset:0;z-index:99;border:0;border-radius:0;background:#02061799}
+}
+@media(prefers-reduced-motion:reduce){#ql-manager-sidebar{transition:none}}

@@ -298,7 +298,7 @@
       const low = left < 300;
       node.style.color = low ? "#ef4444" : "#0f172a";
       const dot = $("#pr-timer-dot");
-      if (dot) dot.style.background = low ? "#ef4444" : "#33558b";
+      if (dot) dot.style.background = low ? "#ef4444" : "#3a3fd8";
     }
     if (left <= 0 && !st.busy) submit(true);
   }
@@ -397,9 +397,9 @@
   function optionLabelStyle(checked) {
     return (
       "display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:10px;border:1.5px solid " +
-      (checked ? "#33558b" : "#e2e8f0") +
+      (checked ? "#3a3fd8" : "#e2e8f0") +
       ";background:" +
-      (checked ? "#eef3fa" : "#ffffff") +
+      (checked ? "#f1f2ff" : "#ffffff") +
       ";cursor:pointer;transition:all 0.15s ease;"
     );
   }
@@ -426,7 +426,7 @@
               esc(o.id) +
               '"' +
               (checked ? " checked" : "") +
-              ' style="width:16px;height:16px;accent-color:#33558b;flex-shrink:0;" /><span class="pr-option" style="font-size:14px;color:#1e293b;font-weight:500;min-width:0;flex:1;">' +
+              ' style="width:16px;height:16px;accent-color:#3a3fd8;flex-shrink:0;" /><span class="pr-option" style="font-size:14px;color:#1e293b;font-weight:500;min-width:0;flex:1;">' +
               optionHtml(o) +
               "</span></label>"
             );
@@ -493,7 +493,7 @@
       "</div>";
     return (
       '<div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">' +
-      row("#dfe8f5", "#9fb6d8", "Answered (" + answered + ")") +
+      row("#dcdeff", "#a9acf0", "Answered (" + answered + ")") +
       row("#ede9fe", "#c4b5fd", "Review (" + review + ")") +
       row("#f1f5f9", "#cbd5e1", "Unanswered (" + (total - answered) + ")") +
       "</div>"
@@ -524,7 +524,7 @@
       answerable().length +
       "</b></div>" +
       '<div style="display:flex;align-items:center;gap:6px;background:#f1f5f9;padding:6px 12px;border-radius:8px;border:1px solid #cbd5e1;"><span id="pr-timer-dot" style="width:8px;height:8px;border-radius:9999px;background:' +
-      (low ? "#ef4444" : "#33558b") +
+      (low ? "#ef4444" : "#3a3fd8") +
       ';animation:ep-pulse 2s infinite;"></span><span class="pr-live-time-label" style="font-size:11px;font-weight:700;color:#64748b;">Time:</span><span id="ep-countdown" style="font-size:15px;font-weight:800;color:' +
       (low ? "#ef4444" : "#0f172a") +
       ';font-family:ui-monospace,monospace;">' +
@@ -532,7 +532,7 @@
       "</span></div>" +
       '<button type="button" id="btn-student-submit" data-action="submit"' +
       (st.busy ? " disabled" : "") +
-      ' style="background:#33558b;border:none;color:#fff;padding:7px 18px;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:6px;box-shadow:0 1px 3px rgba(51,85,139,0.3);transition:background 0.15s;">' +
+      ' style="background:#3a3fd8;border:none;color:#fff;padding:7px 18px;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:6px;box-shadow:0 1px 3px rgba(58, 63, 216,0.3);transition:background 0.15s;">' +
       ICON_CHECK +
       (st.busy ? " Submitting…" : " Submit &amp; Exit") +
       "</button></div></header>" +
@@ -541,7 +541,7 @@
       '<div class="pr-live-palette" style="flex:1;overflow-y:auto;padding:16px;"><div class="pr-live-palette-title" style="font-size:11px;font-weight:700;text-transform:uppercase;color:#64748b;margin-bottom:12px;">Question Palette</div><div class="ep-q-grid" id="pr-palette">' +
       paletteHtml() +
       "</div></div>" +
-      '<div class="pr-live-tools-box" style="padding:12px 16px;border-top:1px solid #e2e8f0;background:#ffffff;"><button type="button" data-calc="toggle" title="Open calculator" style="width:100%;background:#eef3fa;border:1px solid #c7d4e8;color:#24406b;padding:9px 10px;border-radius:8px;font-size:12px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px;">Calculator</button></div>' +
+      '<div class="pr-live-tools-box" style="padding:12px 16px;border-top:1px solid #e2e8f0;background:#ffffff;"><button type="button" data-calc="toggle" title="Open calculator" style="width:100%;background:#f1f2ff;border:1px solid #c9ccf5;color:#2a2fa8;padding:9px 10px;border-radius:8px;font-size:12px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px;">Calculator</button></div>' +
       '<div class="pr-live-legend" id="pr-legend" style="padding:12px 16px;border-top:1px solid #e2e8f0;background:#f8fafc;font-size:11px;color:#475569;">' +
       legendHtml() +
       "</div></aside>" +
@@ -562,7 +562,7 @@
       '<button type="button" class="pr-report-btn" data-report="' + esc(String(q.id)) + '" data-report-no="' + (index + 1) + '" title="Report a problem with this question"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 22V4a1 1 0 011-1h12l-2 4 2 4H5"/></svg>Report</button>' +
       (passage
         ? ""
-        : '<div style="font-size:12px;font-weight:700;color:#33558b;">+' + Number(q.marks || 0) + " Marks</div>") +
+        : '<div style="font-size:12px;font-weight:700;color:#3a3fd8;">+' + Number(q.marks || 0) + " Marks</div>") +
       "</div>" +
       "</div>" +
       '<div class="pr-live-prompt" style="font-size:15px;color:#0f172a;line-height:1.6;font-weight:500;margin-bottom:14px;">' +
@@ -592,7 +592,7 @@
         : '<button type="button" id="btn-q-review" data-action="review" style="background:#f5f3ff;border:1px solid #c4b5fd;color:#6d28d9;padding:9px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;">' +
           (st.review[q.id] ? 'Marked<span class="pr-wide"> for Review</span>' : 'Review<span class="pr-wide"> &amp; Next</span>') +
           "</button>") +
-      '<button type="button" id="btn-q-save-next" data-action="next" style="background:#33558b;color:#fff;border:none;padding:9px 20px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;">' +
+      '<button type="button" id="btn-q-save-next" data-action="next" style="background:#3a3fd8;color:#fff;border:none;padding:9px 20px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;">' +
       (index === total - 1 ? "Save Response" : passage ? "Next →" : "Save &amp; Next →") +
       "</button></div></div></main></div></div>"
     );
@@ -612,7 +612,7 @@
       answerable().length +
       "</b> questions" +
       (review ? ", with <b>" + review + "</b> marked for review" : "") +
-      '. Once submitted, your answers are final and you will see your result.</p><div style="display:flex;gap:10px;"><button type="button" id="ep-btn-cancel-submit" style="flex:1;background:#f1f5f9;color:#334155;border:1px solid #cbd5e1;padding:11px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;">Return to Paper</button><button type="button" id="ep-btn-confirm-submit" style="flex:1.2;background:#33558b;color:#ffffff;border:none;padding:11px;border-radius:8px;font-size:13px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px;">' +
+      '. Once submitted, your answers are final and you will see your result.</p><div style="display:flex;gap:10px;"><button type="button" id="ep-btn-cancel-submit" style="flex:1;background:#f1f5f9;color:#334155;border:1px solid #cbd5e1;padding:11px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;">Return to Paper</button><button type="button" id="ep-btn-confirm-submit" style="flex:1.2;background:#3a3fd8;color:#ffffff;border:none;padding:11px;border-radius:8px;font-size:13px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px;">' +
       ICON_CHECK +
       " Submit</button></div></div>";
     document.body.appendChild(modal);

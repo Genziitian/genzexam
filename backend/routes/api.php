@@ -25,12 +25,14 @@ use App\Http\Controllers\StudentProgressController;
 use App\Http\Controllers\VideoSolutionController;
 use App\Http\Controllers\ExamPlatformController;
 use App\Http\Controllers\StorefrontController;
+use App\Http\Controllers\ManagerUploadedPaperController;
 use App\Http\Controllers\StudentUploadedPaperController;
 use App\Http\Controllers\ManagerSalesController;
 use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\ManagerSystemController;
 use App\Http\Controllers\QuestionReportController;
 use App\Http\Controllers\ProMembershipController;
+use App\Http\Controllers\GooglePlayNotificationController;
 use Illuminate\Support\Facades\Route;
 
 // Public auth routes
@@ -57,6 +59,8 @@ Route::get('/storefront/papers', [StorefrontController::class, 'papers'])->middl
 Route::get('/announcements', [AnnouncementController::class, 'live'])->middleware('throttle:120,1');
 Route::post('/storefront/razorpay/webhook', [StorefrontController::class, 'webhook'])->middleware('throttle:120,1');
 Route::post('/membership/razorpay/webhook', [ProMembershipController::class, 'razorpayWebhook'])->middleware('throttle:120,1');
+Route::post('/membership/google-play/notifications', GooglePlayNotificationController::class)
+    ->middleware('throttle:600,1');
 
 // Authenticated student routes
 Route::middleware(['auth:sanctum', 'track.seen'])->group(function () {
@@ -206,6 +210,10 @@ Route::middleware(['auth:sanctum', 'is_admin', 'track.seen'])->prefix('admin')->
 // Dedicated manager sales workspace. All content and purchase records are manager-only.
 Route::middleware(['auth:sanctum', 'is_manager', 'track.seen'])->prefix('manager')->group(function () {
     Route::get('/account-deletion-requests', [AccountDeletionRequestController::class, 'index']);
+    Route::get('/uploaded-papers', [ManagerUploadedPaperController::class, 'index']);
+    Route::get('/uploaded-papers/{id}', [ManagerUploadedPaperController::class, 'show'])->whereNumber('id');
+    Route::post('/uploaded-papers/{id}/publish', [ManagerUploadedPaperController::class, 'publish'])->whereNumber('id');
+    Route::post('/uploaded-papers/{id}/unpublish', [ManagerUploadedPaperController::class, 'unpublish'])->whereNumber('id');
     Route::get('/question-reports', [QuestionReportController::class, 'index']);
     Route::patch('/question-reports/{id}', [QuestionReportController::class, 'update'])->whereNumber('id');
     Route::get('/announcements', [AnnouncementController::class, 'index']);

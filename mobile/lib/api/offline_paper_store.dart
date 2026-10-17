@@ -193,7 +193,10 @@ class OfflinePaperStore {
       try {
         if (_openPapers.contains(_key(userId, quizId))) continue;
         if (canSync != null && !canSync()) return;
-        attemptId ??= (await service.startAttempt(quizId)).attemptId;
+        attemptId ??= (await service.startAttempt(
+          quizId,
+          background: true,
+        )).attemptId;
         if (canSync != null && !canSync()) return;
         if (_openPapers.contains(_key(userId, quizId))) continue;
         final rawAnswers = draft['answers'];
@@ -225,7 +228,7 @@ class OfflinePaperStore {
         );
         if (canSync != null && !canSync()) return;
         if (_openPapers.contains(_key(userId, quizId))) continue;
-        await service.submitAttempt(attemptId, payload);
+        await service.submitAttempt(attemptId, payload, background: true);
         await clearDraft(userId, quizId);
       } catch (_) {
         // Keep the draft; the next launch/reconnection can retry it.

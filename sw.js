@@ -33,8 +33,8 @@ function reconnectingPage() {
     '<style>html,body{height:100%;margin:0}body{display:grid;place-items:center;background:#f1f5f9;color:#0f172a;' +
     'font:16px/1.5 system-ui,-apple-system,sans-serif;text-align:center;padding:24px;box-sizing:border-box}' +
     'h1{font-size:20px;margin:0 0 6px}p{margin:0 0 18px;color:#64748b}' +
-    'a{display:inline-block;padding:10px 18px;border-radius:10px;background:#33558b;color:#fff;text-decoration:none;font-weight:600}' +
-    '@media(prefers-color-scheme:dark){body{background:#121a27;color:#e8eef7}p{color:#8a99ae}a{background:#6d93cf;color:#0b1222}}</style>' +
+    'a{display:inline-block;padding:10px 18px;border-radius:10px;background:#3a3fd8;color:#fff;text-decoration:none;font-weight:600}' +
+    '@media(prefers-color-scheme:dark){body{background:#121a27;color:#e8eef7}p{color:#8a99ae}a{background:#7f84f0;color:#0b1222}}</style>' +
     '</head><body><div><h1>Reconnecting…</h1><p>The connection dropped. Trying again in a moment.</p>' +
     '<a href="">Try now</a></div></body></html>';
   return new Response(html, {

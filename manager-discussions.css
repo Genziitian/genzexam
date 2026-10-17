@@ -6,9 +6,9 @@
   --text: #334155;
   --muted: #64748b;
   --line: #e2e8f0;
-  --green: #33558b;
-  --green-dark: #29467a;
-  --tint: #eef3fa;
+  --green: #3a3fd8;
+  --green-dark: #2b30b8;
+  --tint: #f1f2ff;
   --navy: #0f172a;
   --lime: #93b4e6;
   --danger: #dc2626;
@@ -38,7 +38,7 @@ a {
   text-decoration: none;
 }
 :focus-visible {
-  outline: 3px solid rgba(51,85,139, 0.45);
+  outline: 3px solid rgba(58, 63, 216, 0.45);
   outline-offset: 2px;
 }
 .top {
@@ -250,7 +250,7 @@ button.danger.armed {
 .composer textarea:focus {
   border-color: var(--green);
   background: #fff;
-  box-shadow: 0 0 0 3px rgba(51,85,139, 0.14);
+  box-shadow: 0 0 0 3px rgba(58, 63, 216, 0.14);
 }
 .columns {
   display: grid;
@@ -284,7 +284,7 @@ button.danger.armed {
   font-weight: 400;
 }
 .thread:hover:not(:disabled) {
-  border-color: #c7d4e8;
+  border-color: #c9ccf5;
 }
 .thread.current {
   border-color: var(--green);

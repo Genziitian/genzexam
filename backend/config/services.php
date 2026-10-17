@@ -52,6 +52,11 @@ return [
     'student_paper_uploads' => [
         'max_pdf_pages' => (int) env('STUDENT_PAPER_MAX_PDF_PAGES', 30),
         'daily_ai_conversions' => (int) env('STUDENT_PAPER_DAILY_AI_CONVERSIONS', 10),
+        // Pro members may upload `limit` papers in any rolling `window_days` days.
+        'limit' => (int) env('STUDENT_PAPER_UPLOAD_LIMIT', 5),
+        // Free (non-Pro) accounts get this many uploads per window.
+        'free_limit' => (int) env('STUDENT_PAPER_FREE_UPLOAD_LIMIT', 1),
+        'window_days' => (int) env('STUDENT_PAPER_UPLOAD_WINDOW_DAYS', 7),
     ],
 
     'razorpay' => [
@@ -68,6 +73,9 @@ return [
         'trial_offer_id' => env('GOOGLE_PLAY_PRO_TRIAL_OFFER_ID'),
         'service_account_json' => env('GOOGLE_PLAY_SERVICE_ACCOUNT_JSON'),
         'rtdn_topic' => env('GOOGLE_PLAY_RTDN_TOPIC'),
+        'rtdn_subscription' => env('GOOGLE_PLAY_RTDN_SUBSCRIPTION'),
+        'rtdn_audience' => env('GOOGLE_PLAY_RTDN_AUDIENCE'),
+        'rtdn_service_account_email' => env('GOOGLE_PLAY_RTDN_SERVICE_ACCOUNT_EMAIL'),
     ],
 
 ];

@@ -6,6 +6,8 @@ import 'package:flutter_math_fork/flutter_math.dart';
 
 import '../../api/api.dart';
 import '../../api/offline_paper_store.dart';
+import '../../widgets/app_ux_components.dart';
+import '../../widgets/premium_widgets.dart';
 
 const _paperGreen = Color(0xFF16A34A);
 const _paperInk = Color(0xFF0F172A);
@@ -325,23 +327,66 @@ class _PaperRoomScreenState extends State<PaperRoomScreen>
   Future<void> _submit({bool force = false, bool tryNetwork = false}) async {
     if (_submitting || _submitted || !_started) return;
     if (!force) {
-      final confirm = await showDialog<bool>(
+      final answeredNow = _questions.where(_hasAnswer).length;
+      final totalNow = _questions.length;
+      final confirm = await showGeneralDialog<bool>(
         context: context,
-        builder: (context) => AlertDialog(
-          title: const Text('Submit this paper?'),
-          content: const Text(
-            'Your answers will be saved and the paper will close.',
+        barrierDismissible: true,
+        barrierLabel: 'Close',
+        barrierColor: Colors.black54,
+        transitionDuration: const Duration(milliseconds: 320),
+        transitionBuilder: (context, anim, _, child) => FadeTransition(
+          opacity: anim,
+          child: ScaleTransition(
+            scale: CurvedAnimation(parent: anim, curve: Curves.easeOutBack),
+            child: child,
           ),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(context, false),
-              child: const Text('Keep working'),
+        ),
+        pageBuilder: (context, _, _) => Center(
+          child: Material(
+            color: Colors.transparent,
+            child: Container(
+              margin: const EdgeInsets.symmetric(horizontal: 24),
+              padding: const EdgeInsets.fromLTRB(22, 24, 22, 20),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(28),
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  AnimatedRing(
+                    value: totalNow == 0 ? 0 : answeredNow / totalNow,
+                    size: 92,
+                    child: Text(
+                      '$answeredNow/$totalNow',
+                      style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w800, color: _paperInk),
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  const Text('Submit this paper?', style: TextStyle(fontSize: 21, fontWeight: FontWeight.w800, color: _paperInk)),
+                  const SizedBox(height: 6),
+                  Text(
+                    answeredNow < totalNow
+                        ? '${totalNow - answeredNow} question${totalNow - answeredNow == 1 ? '' : 's'} still unanswered. Your answers will be saved and the paper will close.'
+                        : 'All questions answered. Your answers will be saved and the paper will close.',
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(color: Color(0xFF64748B), height: 1.45),
+                  ),
+                  const SizedBox(height: 20),
+                  PremiumButton(
+                    label: 'Submit',
+                    icon: Icons.check_rounded,
+                    onPressed: () => Navigator.pop(context, true),
+                  ),
+                  TextButton(
+                    onPressed: () => Navigator.pop(context, false),
+                    child: const Text('Keep working', style: TextStyle(fontWeight: FontWeight.w700, color: _paperGreen)),
+                  ),
+                ],
+              ),
             ),
-            FilledButton(
-              onPressed: () => Navigator.pop(context, true),
-              child: const Text('Submit'),
-            ),
-          ],
+          ),
         ),
       );
       if (confirm != true) return;
@@ -519,17 +564,31 @@ class _PaperRoomScreenState extends State<PaperRoomScreen>
   Widget _startView() => ListView(
     padding: const EdgeInsets.fromLTRB(18, 18, 18, 32),
     children: [
-      _panel(
+      FadeSlideIn(child: _panel(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              'READY WHEN YOU ARE',
-              style: TextStyle(
-                color: _paperGreen,
-                letterSpacing: 1.5,
-                fontSize: 11,
-                fontWeight: FontWeight.w800,
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 11, vertical: 6),
+              decoration: BoxDecoration(
+                color: _paperGreen.withValues(alpha: .1),
+                borderRadius: BorderRadius.circular(999),
+              ),
+              child: const Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(Icons.bolt_rounded, size: 14, color: _paperGreen),
+                  SizedBox(width: 4),
+                  Text(
+                    'READY WHEN YOU ARE',
+                    style: TextStyle(
+                      color: _paperGreen,
+                      letterSpacing: 1.3,
+                      fontSize: 10.5,
+                      fontWeight: FontWeight.w800,
+                    ),
+                  ),
+                ],
               ),
             ),
             const SizedBox(height: 10),
@@ -603,21 +662,14 @@ class _PaperRoomScreenState extends State<PaperRoomScreen>
                 child: Text(_error!, style: const TextStyle(color: Colors.red)),
               ),
             const SizedBox(height: 20),
-            SizedBox(
-              width: double.infinity,
-              child: FilledButton.icon(
-                onPressed: _begin,
-                icon: const Icon(Icons.play_arrow_rounded),
-                label: const Text('Start paper'),
-                style: FilledButton.styleFrom(
-                  backgroundColor: _paperGreen,
-                  padding: const EdgeInsets.symmetric(vertical: 15),
-                ),
-              ),
+            PremiumButton(
+              label: 'Start paper',
+              icon: Icons.play_arrow_rounded,
+              onPressed: _begin,
             ),
           ],
         ),
-      ),
+      )),
     ],
   );
 
@@ -625,7 +677,17 @@ class _PaperRoomScreenState extends State<PaperRoomScreen>
     label: Text(label),
     selected: _selectedMinutes == minutes,
     selectedColor: const Color(0xFFDCFCE7),
-    onSelected: (_) => setState(() => _selectedMinutes = minutes),
+    showCheckmark: true,
+    checkmarkColor: _paperGreen,
+    shape: StadiumBorder(
+      side: BorderSide(
+        color: _selectedMinutes == minutes ? _paperGreen : const Color(0xFFCBD5E1),
+      ),
+    ),
+    onSelected: (_) {
+      AppHaptics.selection();
+      setState(() => _selectedMinutes = minutes);
+    },
   );
 
   Future<void> _customTime() async {
@@ -668,6 +730,179 @@ class _PaperRoomScreenState extends State<PaperRoomScreen>
         _error = null;
       });
     }
+  }
+
+  static const _reportReasons = <String, String>{
+    'wrong_question': 'This question is wrong',
+    'wrong_answer': 'The correct answer is wrong',
+    'wrong_format': 'The format is wrong',
+    'typo': 'Typo or unclear wording',
+    'missing_info': 'Image, table or data is missing',
+    'options_wrong': 'Options are wrong or missing',
+    'other': 'Something else is wrong',
+  };
+
+  Future<void> _reportQuestion(int questionId, int number) async {
+    final picked = <String>{};
+    final comment = TextEditingController();
+    var sending = false;
+    var sent = false;
+    String? error;
+    await showModalBottomSheet<void>(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (sheetContext) => StatefulBuilder(
+        builder: (context, setSheet) => Padding(
+          padding: EdgeInsets.only(bottom: MediaQuery.viewInsetsOf(context).bottom),
+          child: Container(
+            padding: const EdgeInsets.fromLTRB(20, 12, 20, 22),
+            decoration: const BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
+            ),
+            child: SafeArea(
+              top: false,
+              child: AnimatedSize(
+                duration: const Duration(milliseconds: 250),
+                curve: Curves.easeOutCubic,
+                child: sent
+                    ? Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          const SizedBox(height: 18),
+                          TweenAnimationBuilder<double>(
+                            tween: Tween(begin: 0, end: 1),
+                            duration: const Duration(milliseconds: 600),
+                            curve: Curves.elasticOut,
+                            builder: (context, v, child) => Transform.scale(scale: v, child: child),
+                            child: Container(
+                              width: 64,
+                              height: 64,
+                              decoration: const BoxDecoration(gradient: Brand.gradient, shape: BoxShape.circle),
+                              child: const Icon(Icons.check_rounded, color: Colors.white, size: 36),
+                            ),
+                          ),
+                          const SizedBox(height: 14),
+                          const Text('Thanks, report sent', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800, color: _paperInk)),
+                          const SizedBox(height: 6),
+                          Text(
+                            'Our team will check question $number and fix it if needed.',
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(color: Color(0xFF64748B), height: 1.4),
+                          ),
+                          const SizedBox(height: 18),
+                          PremiumButton(label: 'Back to the paper', onPressed: () => Navigator.pop(sheetContext)),
+                        ],
+                      )
+                    : Column(
+                        mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Center(
+                            child: Container(
+                              width: 40,
+                              height: 4,
+                              decoration: BoxDecoration(color: const Color(0xFFE2E8F0), borderRadius: BorderRadius.circular(4)),
+                            ),
+                          ),
+                          const SizedBox(height: 16),
+                          Text('Report question $number', style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w800, color: _paperInk)),
+                          const SizedBox(height: 4),
+                          const Text('What is wrong? Pick everything that applies.', style: TextStyle(color: Color(0xFF64748B))),
+                          const SizedBox(height: 12),
+                          Flexible(
+                            child: SingleChildScrollView(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Wrap(
+                                    spacing: 8,
+                                    runSpacing: 8,
+                                    children: [
+                                      for (final entry in _reportReasons.entries)
+                                        FilterChip(
+                                          label: Text(entry.value),
+                                          selected: picked.contains(entry.key),
+                                          showCheckmark: false,
+                                          avatar: picked.contains(entry.key)
+                                              ? const Icon(Icons.check_rounded, size: 16, color: _paperGreen)
+                                              : null,
+                                          selectedColor: const Color(0xFFDCFCE7),
+                                          onSelected: (on) => setSheet(() {
+                                            on ? picked.add(entry.key) : picked.remove(entry.key);
+                                            error = null;
+                                          }),
+                                        ),
+                                    ],
+                                  ),
+                                  const SizedBox(height: 14),
+                                  TextField(
+                                    controller: comment,
+                                    maxLines: 3,
+                                    maxLength: 1000,
+                                    decoration: InputDecoration(
+                                      labelText: 'Tell us more (optional)',
+                                      hintText: 'e.g. The answer should be 4, not 5',
+                                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(14)),
+                                    ),
+                                  ),
+                                  if (error != null)
+                                    Padding(
+                                      padding: const EdgeInsets.only(bottom: 8),
+                                      child: Text(error!, style: const TextStyle(color: Color(0xFFB91C1C))),
+                                    ),
+                                ],
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: 8),
+                          PremiumButton(
+                            label: 'Submit report',
+                            icon: Icons.flag_rounded,
+                            busy: sending,
+                            onPressed: () async {
+                              if (picked.isEmpty) {
+                                setSheet(() => error = 'Pick at least one reason.');
+                                return;
+                              }
+                              setSheet(() {
+                                sending = true;
+                                error = null;
+                              });
+                              try {
+                                await widget.apiClient.post<Map<String, dynamic>>(
+                                  '/question-reports',
+                                  data: {
+                                    'question_id': questionId,
+                                    'question_number': number,
+                                    'reasons': picked.toList(),
+                                    'comment': comment.text.trim().isEmpty ? null : comment.text.trim(),
+                                  },
+                                );
+                                setSheet(() {
+                                  sending = false;
+                                  sent = true;
+                                });
+                              } catch (e) {
+                                setSheet(() {
+                                  sending = false;
+                                  error = e is ApiException
+                                      ? e.message
+                                      : 'Could not send the report. Check your connection and try again.';
+                                });
+                              }
+                            },
+                          ),
+                        ],
+                      ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+    comment.dispose();
   }
 
   Widget _paperView() {
@@ -738,6 +973,10 @@ class _PaperRoomScreenState extends State<PaperRoomScreen>
                           fontSize: 11,
                         ),
                       ),
+                    ),
+                    const SizedBox(width: 8),
+                    _ReportButton(
+                      onTap: () => _reportQuestion(question.id, _questionIndex + 1),
                     ),
                     const SizedBox(width: 10),
                     Text(
@@ -1513,45 +1752,70 @@ class _PaperRoomScreenState extends State<PaperRoomScreen>
 
   Widget _resultView() {
     final result = _result;
+    final pct = (result?.percentage ?? 0).toDouble();
     return Center(
       child: Padding(
         padding: const EdgeInsets.all(20),
-        child: _panel(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const Icon(Icons.check_circle, color: _paperGreen, size: 52),
-              const SizedBox(height: 12),
-              const Text(
-                'Paper submitted',
-                style: TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.w800,
-                  color: _paperInk,
-                ),
-              ),
-              if (result != null)
-                Padding(
-                  padding: const EdgeInsets.only(top: 9),
-                  child: Text(
-                    '${result.score} / ${result.totalMarks} · ${result.percentage.toStringAsFixed(1)}%',
-                    style: const TextStyle(
-                      fontSize: 17,
-                      color: _paperGreen,
-                      fontWeight: FontWeight.w700,
+        child: FadeSlideIn(
+          child: _panel(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                TweenAnimationBuilder<double>(
+                  tween: Tween(begin: 0, end: 1),
+                  duration: const Duration(milliseconds: 700),
+                  curve: Curves.elasticOut,
+                  builder: (context, v, child) => Transform.scale(scale: v, child: child),
+                  child: Container(
+                    width: 64,
+                    height: 64,
+                    decoration: BoxDecoration(
+                      gradient: Brand.gradient,
+                      shape: BoxShape.circle,
+                      boxShadow: [BoxShadow(color: _paperGreen.withValues(alpha: .4), blurRadius: 22)],
                     ),
+                    child: const Icon(Icons.check_rounded, color: Colors.white, size: 38),
                   ),
                 ),
-              const SizedBox(height: 20),
-              SizedBox(
-                width: double.infinity,
-                child: FilledButton(
-                  onPressed: () => Navigator.of(context).pop(),
-                  style: FilledButton.styleFrom(backgroundColor: _paperGreen),
-                  child: const Text('Back to papers'),
+                const SizedBox(height: 14),
+                const Text(
+                  'Paper submitted',
+                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.w800, color: _paperInk),
                 ),
-              ),
-            ],
+                if (result != null) ...[
+                  const SizedBox(height: 18),
+                  TweenAnimationBuilder<double>(
+                    tween: Tween(begin: 0, end: pct),
+                    duration: const Duration(milliseconds: 1100),
+                    curve: Curves.easeOutCubic,
+                    builder: (context, v, _) => AnimatedRing(
+                      value: pct / 100,
+                      size: 128,
+                      stroke: 11,
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            '${v.toStringAsFixed(0)}%',
+                            style: const TextStyle(fontSize: 30, fontWeight: FontWeight.w900, color: _paperInk),
+                          ),
+                          Text(
+                            '${result.score} / ${result.totalMarks}',
+                            style: const TextStyle(fontSize: 12.5, color: Color(0xFF64748B), fontWeight: FontWeight.w700),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+                const SizedBox(height: 22),
+                PremiumButton(
+                  label: 'Back to papers',
+                  icon: Icons.arrow_back_rounded,
+                  onPressed: () => Navigator.of(context).pop(),
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -1631,5 +1895,38 @@ class _PaperRoomScreenState extends State<PaperRoomScreen>
       ],
     ),
     child: child,
+  );
+}
+
+class _ReportButton extends StatelessWidget {
+  final VoidCallback onTap;
+  const _ReportButton({required this.onTap});
+
+  @override
+  Widget build(BuildContext context) => Material(
+    color: const Color(0xFFFEF2F2),
+    shape: const StadiumBorder(),
+    child: InkWell(
+      customBorder: const StadiumBorder(),
+      onTap: onTap,
+      child: const Padding(
+        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 7),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(Icons.flag_outlined, size: 14, color: Color(0xFFB91C1C)),
+            SizedBox(width: 4),
+            Text(
+              'Report',
+              style: TextStyle(
+                color: Color(0xFFB91C1C),
+                fontWeight: FontWeight.w800,
+                fontSize: 11.5,
+              ),
+            ),
+          ],
+        ),
+      ),
+    ),
   );
 }

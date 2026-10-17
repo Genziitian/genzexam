@@ -9,7 +9,7 @@ import sys
 import urllib.parse
 
 ROOT = pathlib.Path(__file__).resolve().parent
-ROOT_FILES = set(('index.html exams.html ql-tokens.css ql-redesign.css ql-theme.js ql-dark-app.css ql-dark-exam.css ql-dark-sales.css ql-dark-discussions.css paper-room.html paper-room.js paper-room.css paper-room-color.css ql-leaderboard.css ql-profile.css ql-login.css contact.html contact.css about.html about.css landing.html papers.html paper-pricing.html terms.html privacy.html delete-account.html refund-policy.html manager-sales.html manager-sales.js manager-sales.css manager-discussions.html manager-discussions.js manager-discussions.css exam-platform.js exam-rich-content.js exam-calculator.js '
+ROOT_FILES = set(('index.html exams.html ql-loading.js ql-loading.css manager-shell.js manager-shell.css manager-announcements.html manager-announcements.js manager-announcements.css manager-reports.html manager-reports.js manager-reports.css manager-uploads.html manager-uploads.js manager-uploads.css share-link.js ql-tokens.css ql-redesign.css ql-theme.js ql-dark-app.css ql-dark-exam.css ql-dark-sales.css ql-dark-discussions.css paper-room.html paper-room.js paper-room.css paper-room-color.css ql-leaderboard.css ql-profile.css ql-login.css contact.html contact.css about.html about.css landing.html papers.html paper-pricing.html terms.html privacy.html delete-account.html refund-policy.html manager-sales.html manager-sales.js manager-sales.css manager-discussions.html manager-discussions.js manager-discussions.css exam-platform.js exam-rich-content.js exam-calculator.js '
     'exam-platform.css app-enhancements.js more-web.js storefront-runtime.js storefront-dashboard.css papers.js papers.css '
     'paper-pricing.js paper-pricing.css icons.svg site.webmanifest favicon.ico favicon-16x16.png favicon-32x32.png '
     'apple-touch-icon.png android-chrome-192x192.png android-chrome-512x512.png').split())
@@ -43,6 +43,9 @@ class PublicHandler(http.server.BaseHTTPRequestHandler):
         elif re.fullmatch(r'/paper/\d+/?', url): name = 'paper-room.html'
         elif url.rstrip('/') == '/manager/sales': name = 'manager-sales.html'
         elif url.rstrip('/') == '/manager/discussions': name = 'manager-discussions.html'
+        elif url.rstrip('/') == '/manager/announcements': name = 'manager-announcements.html'
+        elif url.rstrip('/') == '/manager/reports': name = 'manager-reports.html'
+        elif url.rstrip('/') == '/manager/uploads': name = 'manager-uploads.html'
         elif url.rstrip('/') == '/paper-pricing': name = 'paper-pricing.html'
         elif url.rstrip('/') == '/privacy-policy': name = 'privacy.html'
         elif url.rstrip('/') == '/terms-and-conditions': name = 'terms.html'

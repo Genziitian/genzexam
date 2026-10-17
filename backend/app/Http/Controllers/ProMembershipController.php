@@ -8,6 +8,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Services\GooglePlaySubscriptions;
+use App\Services\GooglePlayMembershipSync;
 use App\Services\RazorpayProSubscriptions;
 use Throwable;
 
@@ -19,21 +20,8 @@ class ProMembershipController extends Controller
         $subscription = $user->proSubscriptions()->latest('id')->first();
         if ($subscription?->provider === 'google_play' && $subscription->google_purchase_token) {
             try {
-                $remote = app(GooglePlaySubscriptions::class)->get($subscription->google_purchase_token);
-                $line = collect($remote['lineItems'] ?? [])->firstWhere('productId', $subscription->product_id);
-                if ($line) {
-                    $expiry = isset($line['expiryTime']) ? now()->parse($line['expiryTime']) : null;
-                    $state = (string) ($remote['subscriptionState'] ?? '');
-                    $isTrial = $subscription->trial_ends_at && $subscription->trial_ends_at->isFuture() && $state === 'SUBSCRIPTION_STATE_ACTIVE';
-                    $hasEntitlement = $expiry?->isFuture() && in_array($state, ['SUBSCRIPTION_STATE_ACTIVE', 'SUBSCRIPTION_STATE_IN_GRACE_PERIOD', 'SUBSCRIPTION_STATE_CANCELED'], true);
-                    $subscription->update([
-                        'status' => $hasEntitlement ? ($isTrial ? 'trialing' : 'active') : ($state === 'SUBSCRIPTION_STATE_EXPIRED' ? 'expired' : 'cancelled'),
-                        'current_period_ends_at' => $expiry,
-                        'cancel_at_period_end' => $state === 'SUBSCRIPTION_STATE_CANCELED' || data_get($line, 'autoRenewingPlan.autoRenewEnabled') === false,
-                    ]);
-                    if (! $hasEntitlement) $user->update(['is_pro' => false]);
-                    $subscription->refresh();
-                }
+                $subscription = app(GooglePlayMembershipSync::class)->refresh($subscription);
+                $user->refresh();
             } catch (Throwable $error) {
                 // If Play is temporarily unreachable, show the last server-verified state.
             }
@@ -45,6 +33,7 @@ class ProMembershipController extends Controller
             'plan' => ['price_paise' => (int) ($plan->price_paise ?? 9900), 'trial_days' => (int) ($plan->trial_days ?? 7), 'enabled' => (bool) ($plan->enabled ?? true)],
             'trial_available' => $trialAvailable,
             'google_play_trial_offer_id' => config('services.google_play.trial_offer_id'),
+            'google_play_base_plan_id' => config('services.google_play.subscription_base_plan_id'),
             'subscription' => $subscription ? $this->subscriptionData($subscription) : ((bool) $user->is_pro ? ['id' => 'legacy', 'provider' => 'manual', 'status' => 'active', 'started_at' => null, 'trial_ends_at' => null, 'current_period_ends_at' => null, 'cancel_at_period_end' => false] : null),
             'payment_setup' => [
                 'web' => (bool) (config('services.razorpay.key_id') && config('services.razorpay.key_secret')),
@@ -160,6 +149,17 @@ class ProMembershipController extends Controller
         $configuredProduct = (string) config('services.google_play.subscription_product_id');
         abort_if($configuredProduct === '' || ! hash_equals($configuredProduct, $validated['product_id']), 422, 'This is not the configured Pro subscription product.');
 
+        return DB::transaction(function () use ($request, $validated, $configuredProduct) {
+            // Use the same account lock as RTDN and membership refresh before
+            // reading Google, so app verification cannot overwrite newer state.
+            User::query()->lockForUpdate()->findOrFail($request->user()->id);
+
+            return $this->verifyGooglePlayPurchase($request, $validated, $configuredProduct);
+        }, 3);
+    }
+
+    private function verifyGooglePlayPurchase(Request $request, array $validated, string $configuredProduct): JsonResponse
+    {
         try {
             $purchase = app(GooglePlaySubscriptions::class)->get($validated['purchase_token']);
         } catch (Throwable $error) {
@@ -174,8 +174,7 @@ class ProMembershipController extends Controller
         $hash = hash('sha256', $validated['purchase_token']);
         $existing = ProSubscription::query()->where('provider_reference_hash', $hash)->first();
         abort_if($existing && (int) $existing->user_id !== (int) $request->user()->id, 409, 'This purchase is already linked to another account.');
-        $offerId = data_get($line, 'offerDetails.offerId');
-        $isTrial = (string) config('services.google_play.trial_offer_id') !== '' && $offerId === config('services.google_play.trial_offer_id');
+        $isTrial = app(GooglePlayMembershipSync::class)->isFreeTrial($line, $existing);
         if ($isTrial && $request->user()->proSubscriptions()->whereNotNull('trial_ends_at')->where(function ($query) use ($hash) {
             $query->whereNull('provider_reference_hash')->orWhere('provider_reference_hash', '!=', $hash);
         })->exists()) {
@@ -198,12 +197,13 @@ class ProMembershipController extends Controller
             'amount_paise' => (int) (DB::table('pro_plan_settings')->value('price_paise') ?? 9900),
             'currency' => 'INR',
             'started_at' => isset($purchase['startTime']) ? now()->parse($purchase['startTime']) : now(),
-            'trial_ends_at' => $isTrial ? $expiry : null,
+            'trial_ends_at' => $existing?->trial_ends_at ?? ($isTrial ? $expiry : null),
             'paid_at' => $isTrial ? null : ($existing?->paid_at ?? now()),
             'current_period_ends_at' => $expiry,
             'cancel_at_period_end' => data_get($line, 'autoRenewingPlan.autoRenewEnabled') === false || $state === 'SUBSCRIPTION_STATE_CANCELED',
         ]);
-        $request->user()->update(['is_pro' => true]);
+        $sub->update(app(GooglePlayMembershipSync::class)->snapshot($purchase, $sub));
+        $request->user()->update(['is_pro' => $request->user()->hasProAccess()]);
         return response()->json(['message' => 'Purchase verified with Google Play.', 'subscription' => $this->subscriptionData($sub)]);
     }
 

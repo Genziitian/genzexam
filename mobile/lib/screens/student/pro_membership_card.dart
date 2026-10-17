@@ -6,6 +6,8 @@ import 'package:in_app_purchase/in_app_purchase.dart';
 import 'package:in_app_purchase_android/in_app_purchase_android.dart';
 
 import '../../api/api_client.dart';
+import '../../api/pro_play_offer.dart';
+import '../../widgets/premium_widgets.dart';
 
 class ProMembershipScreen extends StatelessWidget {
   const ProMembershipScreen({super.key, required this.apiClient});
@@ -15,59 +17,99 @@ class ProMembershipScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Scaffold(
     backgroundColor: const Color(0xFFF1F5F9),
+    extendBodyBehindAppBar: true,
     appBar: AppBar(
+      backgroundColor: Colors.transparent,
+      elevation: 0,
+      foregroundColor: Colors.white,
       title: const Text('Quiz LAB Pro'),
-      backgroundColor: const Color(0xFFF1F5F9),
-      foregroundColor: const Color(0xFF0F172A),
     ),
     body: ListView(
-      padding: const EdgeInsets.fromLTRB(16, 12, 16, 28),
+      padding: EdgeInsets.zero,
       children: [
         Container(
-          padding: const EdgeInsets.all(20),
-          decoration: BoxDecoration(
-            color: const Color(0xFF123B24),
-            borderRadius: BorderRadius.circular(22),
+          padding: EdgeInsets.fromLTRB(
+            22,
+            MediaQuery.paddingOf(context).top + 64,
+            22,
+            30,
           ),
-          child: const Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          decoration: const BoxDecoration(
+            gradient: Brand.darkGradient,
+            borderRadius: BorderRadius.vertical(bottom: Radius.circular(34)),
+          ),
+          child: Column(
             children: [
-              Text(
-                'Make practice yours.',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 23,
-                  fontWeight: FontWeight.w800,
+              PulseRings(
+                size: 96,
+                color: Brand.gold,
+                child: Floating(child: const ProEmblem(size: 96)),
+              ),
+              const SizedBox(height: 4),
+              const FadeSlideIn(
+                delay: Duration(milliseconds: 150),
+                child: Text(
+                  'Make practice yours.',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 27,
+                    fontWeight: FontWeight.w800,
+                    letterSpacing: -.5,
+                  ),
                 ),
               ),
-              SizedBox(height: 7),
-              Text(
-                'Get more ways to prepare with Quiz LAB Pro.',
-                style: TextStyle(color: Color(0xFFD1FAE5), height: 1.4),
+              const SizedBox(height: 8),
+              const FadeSlideIn(
+                delay: Duration(milliseconds: 260),
+                child: Text(
+                  'Everything in Quiz LAB Pro, for less than a cup of chai.',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(color: Brand.mint, height: 1.45),
+                ),
               ),
             ],
           ),
         ),
-        const SizedBox(height: 14),
-        const _ProBenefit(
-          icon: Icons.download_for_offline_rounded,
-          title: 'Download papers',
-          detail: 'Save papers in Quiz LAB and practise without internet.',
+        Padding(
+          padding: const EdgeInsets.fromLTRB(16, 18, 16, 28),
+          child: Column(
+            children: [
+              const FadeSlideIn(
+                delay: Duration(milliseconds: 320),
+                child: _ProBenefit(
+                  icon: Icons.download_for_offline_rounded,
+                  title: 'Download papers',
+                  detail: 'Save papers in Quiz LAB and practise without internet.',
+                ),
+              ),
+              const SizedBox(height: 10),
+              const FadeSlideIn(
+                delay: Duration(milliseconds: 420),
+                child: _ProBenefit(
+                  icon: Icons.upload_file_rounded,
+                  title: 'Upload your own papers',
+                  detail:
+                      'Turn a PDF or JSON into a private practice test. Free accounts get 1 upload a week, Pro gets 5.',
+                ),
+              ),
+              const SizedBox(height: 10),
+              const FadeSlideIn(
+                delay: Duration(milliseconds: 520),
+                child: _ProBenefit(
+                  icon: Icons.ondemand_video_rounded,
+                  title: 'Video solutions',
+                  detail: 'Learn with step-by-step video answers. Coming soon.',
+                ),
+              ),
+              const SizedBox(height: 16),
+              FadeSlideIn(
+                delay: const Duration(milliseconds: 620),
+                child: ProMembershipCard(apiClient: apiClient),
+              ),
+            ],
+          ),
         ),
-        const SizedBox(height: 9),
-        const _ProBenefit(
-          icon: Icons.upload_file_rounded,
-          title: 'Upload a paper',
-          detail: 'Turn a supported PDF into a private practice test.',
-        ),
-        const SizedBox(height: 9),
-        const _ProBenefit(
-          icon: Icons.ondemand_video_rounded,
-          title: 'Video solutions',
-          detail: 'Learn with step-by-step video answers.',
-        ),
-        const SizedBox(height: 14),
-        ProMembershipCard(apiClient: apiClient),
       ],
     ),
   );
@@ -89,13 +131,24 @@ class _ProBenefit extends StatelessWidget {
     padding: const EdgeInsets.all(14),
     decoration: BoxDecoration(
       color: Colors.white,
-      borderRadius: BorderRadius.circular(16),
+      borderRadius: BorderRadius.circular(18),
       border: Border.all(color: const Color(0xFFE2E8F0)),
+      boxShadow: const [
+        BoxShadow(color: Color(0x0F0F172A), blurRadius: 16, offset: Offset(0, 6)),
+      ],
     ),
     child: Row(
       children: [
-        Icon(icon, color: const Color(0xFF16A34A), size: 22),
-        const SizedBox(width: 12),
+        Container(
+          width: 44,
+          height: 44,
+          decoration: BoxDecoration(
+            gradient: Brand.gradient,
+            borderRadius: BorderRadius.circular(14),
+          ),
+          child: Icon(icon, color: Colors.white, size: 22),
+        ),
+        const SizedBox(width: 14),
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -105,6 +158,7 @@ class _ProBenefit extends StatelessWidget {
                 style: const TextStyle(
                   color: Color(0xFF0F172A),
                   fontWeight: FontWeight.w800,
+                  fontSize: 15,
                 ),
               ),
               const SizedBox(height: 3),
@@ -112,7 +166,7 @@ class _ProBenefit extends StatelessWidget {
                 detail,
                 style: const TextStyle(
                   color: Color(0xFF64748B),
-                  fontSize: 12,
+                  fontSize: 12.5,
                   height: 1.35,
                 ),
               ),
@@ -139,6 +193,7 @@ class _ProMembershipCardState extends State<ProMembershipCard> {
   StreamSubscription<List<PurchaseDetails>>? _purchaseSubscription;
   Map<String, dynamic> _membership = {};
   GooglePlayProductDetails? _product;
+  ProPlayOffer? _playOffer;
   bool _trialOfferSelected = false;
   String? _error;
   String? _message;
@@ -183,8 +238,7 @@ class _ProMembershipCardState extends State<ProMembershipCard> {
           _membership['is_pro'] != true) {
         if (paymentSetup['google_play'] != true) {
           _product = null;
-          _error =
-              'Google Play billing is still being connected. Please try again later.';
+          _error = 'Google Play billing is still being connected. Please try again later.';
           return;
         }
         final available = await InAppPurchase.instance.isAvailable();
@@ -199,25 +253,18 @@ class _ProMembershipCardState extends State<ProMembershipCard> {
           final trialAvailable = _membership['trial_available'] == true;
           final trialOfferId = _membership['google_play_trial_offer_id']
               ?.toString();
-          GooglePlayProductDetails? trialProduct;
-          GooglePlayProductDetails? regularProduct;
-          for (final product in matching) {
-            final index = product.subscriptionIndex;
-            final offers = product.productDetails.subscriptionOfferDetails;
-            final offer =
-                index != null && index >= 0 && index < (offers?.length ?? 0)
-                ? offers![index]
-                : null;
-            if (trialOfferId != null && offer?.offerId == trialOfferId)
-              trialProduct ??= product;
-            if (offer?.offerId == null) regularProduct ??= product;
-          }
-          _trialOfferSelected = trialAvailable && trialProduct != null;
-          _product = _trialOfferSelected ? trialProduct : regularProduct;
+          final basePlanId =
+              _membership['google_play_base_plan_id']?.toString() ?? 'monthly';
+          _playOffer = ProPlayOffer.select(
+            matching,
+            basePlanId: basePlanId,
+            trialOfferId: trialOfferId,
+            trialAvailable: trialAvailable,
+          );
+          _trialOfferSelected = _playOffer?.isTrial ?? false;
+          _product = _playOffer?.product;
           if (products.error != null) _error = products.error!.message;
-          if (products.notFoundIDs.isNotEmpty)
-            _error =
-                'Pro is not available in Google Play yet. Please try again later.';
+          if (products.notFoundIDs.isNotEmpty) _error = 'Pro is not available in Google Play yet. Please try again later.';
         } else {
           _error = 'Google Play billing is unavailable on this device.';
         }
@@ -283,7 +330,7 @@ class _ProMembershipCardState extends State<ProMembershipCard> {
 
   Future<void> _buy() async {
     final product = _product;
-    if (product == null || _buying) return;
+    if (product == null || _buying || _planDisabled) return;
     setState(() {
       _buying = true;
       _message = null;
@@ -359,6 +406,9 @@ class _ProMembershipCardState extends State<ProMembershipCard> {
     return date == null ? '—' : '${date.day}/${date.month}/${date.year}';
   }
 
+  bool get _planDisabled =>
+      _membership['plan'] is Map && _membership['plan']['enabled'] == false;
+
   @override
   Widget build(BuildContext context) {
     final subscription = _membership['subscription'] is Map
@@ -372,14 +422,20 @@ class _ProMembershipCardState extends State<ProMembershipCard> {
     final price =
         _product?.price ??
         '₹${((plan['price_paise'] ?? 9900) / 100).toStringAsFixed(0)}';
-    final trialDays = plan['trial_days'] ?? 7;
     return Container(
       margin: const EdgeInsets.only(bottom: 18),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(14),
-        border: Border.all(color: const Color(0xFFD9E6DD)),
+        borderRadius: BorderRadius.circular(22),
+        border: Border.all(color: const Color(0xFFFFD36E), width: 1.4),
+        boxShadow: [
+          BoxShadow(
+            color: Brand.gold.withValues(alpha: .22),
+            blurRadius: 24,
+            offset: const Offset(0, 10),
+          ),
+        ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -413,36 +469,40 @@ class _ProMembershipCardState extends State<ProMembershipCard> {
             const SizedBox(height: 4),
             Text(
               subscription['started_at'] != null
-                  ? 'Started ${_date(subscription['started_at'])}${subscription['trial_ends_at'] != null ? ' · Trial ends ${_date(subscription['trial_ends_at'])}' : ''}${subscription['current_period_ends_at'] != null ? ' · Next charge / access end ${_date(subscription['current_period_ends_at'])}' : ''}'
-                  : _trialOfferSelected
-                  ? '$price / month · $trialDays-day free trial, then billed monthly'
-                  : '$price / month · billed monthly',
+                  ? 'Started ${_date(subscription['started_at'])}${trial && subscription['trial_ends_at'] != null ? ' · Trial ends ${_date(subscription['trial_ends_at'])}' : ''}${subscription['current_period_ends_at'] != null ? '${subscription['cancel_at_period_end'] == true || subscription['status'] == 'cancelled' ? ' · Access ends ' : ' · Next charge / access end '}${_date(subscription['current_period_ends_at'])}' : ''}'
+                  : _playOffer?.terms ??
+                        (defaultTargetPlatform == TargetPlatform.android
+                            ? 'Pricing will be shown when Google Play is available.'
+                            : '$price / month · billed monthly'),
               style: const TextStyle(fontSize: 12, color: Color(0xFF64748B)),
             ),
             if (!isPro &&
                 !kIsWeb &&
                 defaultTargetPlatform == TargetPlatform.android) ...[
               const SizedBox(height: 12),
-              SizedBox(
-                width: double.infinity,
-                child: FilledButton(
-                  onPressed: _product == null || _buying ? null : _buy,
-                  child: Text(
-                    _buying
-                        ? 'Opening Google Play…'
-                        : _trialOfferSelected
-                        ? 'Start free trial'
-                        : 'Subscribe to Pro',
-                  ),
-                ),
+              PremiumButton(
+                gold: true,
+                icon: Icons.workspace_premium_rounded,
+                busy: _buying,
+                onPressed: _product == null || _planDisabled ? null : _buy,
+                label: _trialOfferSelected
+                    ? 'Start free trial'
+                    : 'Subscribe to Pro',
               ),
               TextButton(
                 onPressed: _restore,
                 child: const Text('Restore purchases'),
               ),
+              if (_planDisabled)
+                const Text('New Pro subscriptions are unavailable right now.'),
             ],
             if (isPro &&
                 subscription['id'] != null &&
+                [
+                  'google_play',
+                  'razorpay',
+                ].contains(subscription['provider']) &&
+                subscription['status'] != 'cancelled' &&
                 subscription['cancel_at_period_end'] != true) ...[
               const SizedBox(height: 12),
               OutlinedButton.icon(

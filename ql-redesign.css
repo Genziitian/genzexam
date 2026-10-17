@@ -21,94 +21,94 @@
 /* ------------------------------------------- 1. bundle brand utilities */
 
 :root {
-  --brand: #33558b;
-  --brand-dark: #29467a;
+  --brand: #3a3fd8;
+  --brand-dark: #2b30b8;
 }
 
 .border-brand { border-color: var(--ql-primary) }
-.border-brand\/20 { border-color: #33558b33 }
-.border-brand\/25 { border-color: #33558b40 }
-.border-brand\/30 { border-color: #33558b4d }
-.border-brand\/40 { border-color: #33558b66 }
-.border-brand\/60 { border-color: #33558b99 }
+.border-brand\/20 { border-color: #3a3fd833 }
+.border-brand\/25 { border-color: #3a3fd840 }
+.border-brand\/30 { border-color: #3a3fd84d }
+.border-brand\/40 { border-color: #3a3fd866 }
+.border-brand\/60 { border-color: #3a3fd899 }
 
 .bg-brand { background-color: var(--ql-primary) }
-.bg-brand\/5 { background-color: #33558b0d }
-.bg-brand\/10 { background-color: #33558b1a }
-.bg-brand\/15 { background-color: #33558b26 }
-.bg-brand\/20 { background-color: #33558b33 }
-.bg-brand\/30 { background-color: #33558b4d }
+.bg-brand\/5 { background-color: #3a3fd80d }
+.bg-brand\/10 { background-color: #3a3fd81a }
+.bg-brand\/15 { background-color: #3a3fd826 }
+.bg-brand\/20 { background-color: #3a3fd833 }
+.bg-brand\/30 { background-color: #3a3fd84d }
 
 .text-brand { color: var(--ql-primary) }
-.text-brand-light { color: #6d93cf }
+.text-brand-light { color: #7f84f0 }
 
 .from-brand {
-  --tw-gradient-from: #33558b var(--tw-gradient-from-position);
-  --tw-gradient-to: #33558b00 var(--tw-gradient-to-position);
+  --tw-gradient-from: #3a3fd8 var(--tw-gradient-from-position);
+  --tw-gradient-to: #3a3fd800 var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 
 .accent-brand { accent-color: var(--ql-primary) }
 .ring-brand { --tw-ring-color: var(--ql-primary) }
-.ring-brand\/60 { --tw-ring-color: #33558b99 }
-.shadow-brand\/20 { --tw-shadow-color: #33558b33; --tw-shadow: var(--tw-shadow-colored) }
-.shadow-brand\/25 { --tw-shadow-color: #33558b40; --tw-shadow: var(--tw-shadow-colored) }
+.ring-brand\/60 { --tw-ring-color: #3a3fd899 }
+.shadow-brand\/20 { --tw-shadow-color: #3a3fd833; --tw-shadow: var(--tw-shadow-colored) }
+.shadow-brand\/25 { --tw-shadow-color: #3a3fd840; --tw-shadow: var(--tw-shadow-colored) }
 .shadow-glow {
-  --tw-shadow: 0 0 20px #33558b2e;
+  --tw-shadow: 0 0 20px #3a3fd82e;
   --tw-shadow-colored: 0 0 20px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
-.file\:bg-brand\/10::file-selector-button { background-color: #33558b1a }
+.file\:bg-brand\/10::file-selector-button { background-color: #3a3fd81a }
 .file\:text-brand::file-selector-button { color: var(--ql-primary) }
 
 .hover\:border-brand:hover { border-color: var(--ql-primary) }
-.hover\:border-brand\/30:hover { border-color: #33558b4d }
-.hover\:border-brand\/40:hover { border-color: #33558b66 }
-.hover\:border-brand\/50:hover { border-color: #33558b80 }
-.hover\:border-brand\/60:hover { border-color: #33558b99 }
+.hover\:border-brand\/30:hover { border-color: #3a3fd84d }
+.hover\:border-brand\/40:hover { border-color: #3a3fd866 }
+.hover\:border-brand\/50:hover { border-color: #3a3fd880 }
+.hover\:border-brand\/60:hover { border-color: #3a3fd899 }
 .hover\:bg-brand-dark:hover { background-color: var(--ql-primary-hover) }
-.hover\:bg-brand\/5:hover { background-color: #33558b0d }
-.hover\:bg-brand\/10:hover { background-color: #33558b1a }
-.hover\:bg-brand\/25:hover { background-color: #33558b40 }
+.hover\:bg-brand\/5:hover { background-color: #3a3fd80d }
+.hover\:bg-brand\/10:hover { background-color: #3a3fd81a }
+.hover\:bg-brand\/25:hover { background-color: #3a3fd840 }
 .hover\:text-brand:hover { color: var(--ql-primary) }
 .hover\:text-brand-dark:hover { color: var(--ql-primary-hover) }
-.hover\:text-brand-light:hover { color: #6d93cf }
-.hover\:shadow-brand\/5:hover { --tw-shadow-color: #33558b0d; --tw-shadow: var(--tw-shadow-colored) }
-.hover\:shadow-brand\/25:hover { --tw-shadow-color: #33558b40; --tw-shadow: var(--tw-shadow-colored) }
+.hover\:text-brand-light:hover { color: #7f84f0 }
+.hover\:shadow-brand\/5:hover { --tw-shadow-color: #3a3fd80d; --tw-shadow: var(--tw-shadow-colored) }
+.hover\:shadow-brand\/25:hover { --tw-shadow-color: #3a3fd840; --tw-shadow: var(--tw-shadow-colored) }
 
 .focus\:border-brand:focus { border-color: var(--ql-primary) }
-.focus\:ring-brand\/20:focus { --tw-ring-color: #33558b33 }
-.focus\:ring-brand\/30:focus { --tw-ring-color: #33558b4d }
+.focus\:ring-brand\/20:focus { --tw-ring-color: #3a3fd833 }
+.focus\:ring-brand\/30:focus { --tw-ring-color: #3a3fd84d }
 
-.group:hover .group-hover\:text-brand-light { color: #6d93cf }
+.group:hover .group-hover\:text-brand-light { color: #7f84f0 }
 
 /* The emerald utilities are decoration (the live pill, gradient accents), not
    a pass state — green-* carries that. The spec puts the live pill on the
    slate tint, so emerald joins the brand family. */
 .border-emerald-200 { border-color: var(--ql-tint-border) }
 .bg-emerald-50 { background-color: var(--ql-tint-strong) }
-.bg-emerald-50\/60 { background-color: #e3eaf599 }
+.bg-emerald-50\/60 { background-color: #ecedff99 }
 .bg-emerald-100 { background-color: var(--ql-answered-bg) }
-.bg-emerald-400 { background-color: #6d93cf }
+.bg-emerald-400 { background-color: #7f84f0 }
 .bg-emerald-500 { background-color: var(--ql-primary) }
 .text-emerald-600 { color: var(--ql-primary) }
 .text-emerald-700 { color: var(--ql-primary-ink) }
-.text-emerald-800\/90 { color: #1e3355e6 }
+.text-emerald-800\/90 { color: #1b1f7ae6 }
 .ring-emerald-200 { --tw-ring-color: var(--ql-tint-border) }
 .from-emerald-200 {
-  --tw-gradient-from: #c7d4e8 var(--tw-gradient-from-position);
-  --tw-gradient-to: #c7d4e800 var(--tw-gradient-to-position);
+  --tw-gradient-from: #c9ccf5 var(--tw-gradient-from-position);
+  --tw-gradient-to: #c9ccf500 var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 .via-emerald-500 {
-  --tw-gradient-to: #33558b00 var(--tw-gradient-to-position);
-  --tw-gradient-stops: var(--tw-gradient-from), #33558b var(--tw-gradient-via-position), var(--tw-gradient-to);
+  --tw-gradient-to: #3a3fd800 var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), #3a3fd8 var(--tw-gradient-via-position), var(--tw-gradient-to);
 }
-.to-emerald-100 { --tw-gradient-to: #dfe8f5 var(--tw-gradient-to-position) }
-.to-emerald-400 { --tw-gradient-to: #6d93cf var(--tw-gradient-to-position) }
-.to-emerald-500 { --tw-gradient-to: #33558b var(--tw-gradient-to-position) }
-.to-emerald-600 { --tw-gradient-to: #29467a var(--tw-gradient-to-position) }
+.to-emerald-100 { --tw-gradient-to: #dcdeff var(--tw-gradient-to-position) }
+.to-emerald-400 { --tw-gradient-to: #7f84f0 var(--tw-gradient-to-position) }
+.to-emerald-500 { --tw-gradient-to: #3a3fd8 var(--tw-gradient-to-position) }
+.to-emerald-600 { --tw-gradient-to: #2b30b8 var(--tw-gradient-to-position) }
 
 /* bg-green-500 is the live dot; green-100/700 stay for positive deltas. */
 .bg-green-500 { background-color: var(--ql-primary) }
@@ -116,7 +116,7 @@
 /* ----------------------------------------------- 2. bundle card tints */
 
 .bg-surface-card.shadow-card::before {
-  background: linear-gradient(90deg, var(--ql-primary), #6d93cf 55%, var(--ql-tint-border));
+  background: linear-gradient(90deg, var(--ql-primary), #7f84f0 55%, var(--ql-tint-border));
 }
 
 .bg-surface-card .bg-slate-100,
@@ -146,7 +146,7 @@
 
 .ql-nav-active,
 .ql-nav-current {
-  background: rgba(51, 85, 139, .22) !important;
+  background: rgba(58, 63, 216, .22) !important;
   color: #fff !important;
   box-shadow: inset 3px 0 0 var(--ql-shell-accent);
 }
@@ -260,7 +260,7 @@
      follow --ql-primary-deep, which flips to a light text colour in dark mode. */
   background:
     radial-gradient(120% 90% at 100% 0%, #3f6aa8 0%, rgba(63, 106, 168, 0) 58%),
-    linear-gradient(155deg, #33558b 0%, #1e3355 100%);
+    linear-gradient(155deg, #3a3fd8 0%, #1b1f7a 100%);
   color: #fff;
 }
 

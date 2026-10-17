@@ -83,7 +83,7 @@ void showHelpSheet(BuildContext context, {required VoidCallback onOpenFaq}) {
                       children: [
                         Text(title, style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: _muted)),
                         const SizedBox(height: 1),
-                        SelectableText(value, style: const TextStyle(fontSize: 15.5, fontWeight: FontWeight.w800, color: _ink)),
+                        Text(value, style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w700, color: _ink)),
                       ],
                     ),
                   ),
@@ -144,14 +144,14 @@ void showHelpSheet(BuildContext context, {required VoidCallback onOpenFaq}) {
                 icon: Icons.mail_outline_rounded,
                 color: _green,
                 title: 'Email',
-                value: supportEmail,
+                value: 'Write to our support team',
                 actions: [action('Email us', Icons.send_rounded, _green, () => emailSupport(ctx))],
               ),
               channel(
                 icon: Icons.phone_in_talk_outlined,
                 color: const Color(0xFF0284C7),
                 title: 'Phone and WhatsApp',
-                value: supportPhoneDisplay,
+                value: 'Chat or talk to us directly',
                 actions: [
                   action('WhatsApp', Icons.chat_rounded, const Color(0xFF16A34A), () => _whatsAppSupport(ctx)),
                   const SizedBox(width: 8),

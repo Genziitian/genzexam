@@ -41,21 +41,21 @@
       '.ql-more-subtitle{margin:5px 0 0;color:#64748b;font-size:13px;line-height:1.5}',
       '.ql-more-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:16px}',
       '.ql-more-link{display:flex;align-items:center;gap:12px;min-width:0;padding:13px;border:1px solid #e2e8f0;border-radius:13px;color:#0f172a;text-decoration:none;background:#fff;transition:border-color .15s,background .15s}',
-      '.ql-more-link:hover{border-color:#c7d4e8;background:#eef3fa}',
+      '.ql-more-link:hover{border-color:#c9ccf5;background:#f1f2ff}',
       '.ql-more-link strong{display:block;font-size:13px;font-weight:700}',
       '.ql-more-link small{display:block;margin-top:3px;color:#64748b;font-size:11px;line-height:1.4}',
-      '.ql-more-icon{display:grid;place-items:center;flex:0 0 38px;height:38px;border-radius:11px;background:#eef3fa;color:#24406b;font-size:18px}',
+      '.ql-more-icon{display:grid;place-items:center;flex:0 0 38px;height:38px;border-radius:11px;background:#f1f2ff;color:#2a2fa8;font-size:18px}',
       '.ql-more-row{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:13px 0;border-top:1px solid #f1f5f9}',
       '.ql-more-row:first-of-type{border-top:0}',
       '.ql-more-row-copy{min-width:0}.ql-more-row-copy strong{display:block;color:#0f172a;font-size:13px}.ql-more-row-copy small{display:block;margin-top:3px;color:#64748b;font-size:11px;line-height:1.4}',
       '.ql-more-button{border:1px solid #dbe3ee;border-radius:10px;padding:9px 12px;background:#fff;color:#334155;font:inherit;font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap}',
-      '.ql-more-button:hover{border-color:#c7d4e8;background:#eef3fa}',
-      '.ql-more-button.primary{border-color:#33558b;background:#33558b;color:#fff}',
+      '.ql-more-button:hover{border-color:#c9ccf5;background:#f1f2ff}',
+      '.ql-more-button.primary{border-color:#3a3fd8;background:#3a3fd8;color:#fff}',
       '.ql-more-button.danger{border-color:#fecaca;background:#fff;color:#b91c1c}',
       '.ql-more-theme-options{display:flex;gap:7px;flex-wrap:wrap}',
-      '.ql-more-theme-options button[aria-pressed=true]{border-color:#33558b;background:#eef3fa;color:#24406b}',
+      '.ql-more-theme-options button[aria-pressed=true]{border-color:#3a3fd8;background:#f1f2ff;color:#2a2fa8}',
       '.ql-more-photo{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:16px}',
-      '.ql-more-avatar{display:grid;place-items:center;width:66px;height:66px;overflow:hidden;border-radius:50%;border:2px solid #c7d4e8;background:#eef3fa;color:#24406b;font-size:20px;font-weight:800}',
+      '.ql-more-avatar{display:grid;place-items:center;width:66px;height:66px;overflow:hidden;border-radius:50%;border:2px solid #c9ccf5;background:#f1f2ff;color:#2a2fa8;font-size:20px;font-weight:800}',
       '.ql-more-avatar img{width:100%;height:100%;object-fit:cover}',
       '.ql-more-photo-tools{display:flex;align-items:center;gap:8px;flex-wrap:wrap}',
       '.ql-more-profile-summary{display:flex;align-items:center;gap:14px;margin-top:14px}',
@@ -67,9 +67,9 @@
       '.ql-more-profile-preview{display:grid;place-items:center;margin:18px 0 24px}',
       '.ql-more-preset-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin:10px 0 22px}',
       '.ql-more-preset{display:grid;place-items:center;aspect-ratio:1;border:3px solid transparent;border-radius:50%;font-size:25px;cursor:pointer;box-shadow:0 5px 14px rgba(15,23,42,.12)}',
-      '.ql-more-preset[aria-pressed=true]{border-color:#33558b;box-shadow:0 0 0 3px rgba(51,85,139,.14)}',
+      '.ql-more-preset[aria-pressed=true]{border-color:#3a3fd8;box-shadow:0 0 0 3px rgba(58, 63, 216,.14)}',
       '.ql-more-profile-content input{box-sizing:border-box;width:100%;border:1px solid #dbe3ee;border-radius:14px;padding:14px;background:#f8fafc;color:#0f172a;font:inherit;font-size:15px}',
-      '.ql-more-profile-content input:focus{outline:2px solid #33558b;outline-offset:1px}',
+      '.ql-more-profile-content input:focus{outline:2px solid #3a3fd8;outline-offset:1px}',
       '.ql-more-message{min-height:18px;margin:10px 0 0;font-size:12px;color:#64748b}',
       '.ql-more-message.error{color:#b91c1c}.ql-more-message.success{color:#15803d}',
       '.ql-more-form{display:grid;gap:12px;margin-top:14px}',
@@ -77,7 +77,7 @@
       '.ql-more-form select,.ql-more-form textarea{width:100%;box-sizing:border-box;border:1px solid #dbe3ee;border-radius:10px;padding:10px 12px;background:#fff;color:#0f172a;font:inherit;font-size:13px}',
       '.ql-more-form textarea{min-height:90px;resize:vertical}',
       '.ql-more-badges-preview:not(.expanded)>:nth-child(n+4){display:none!important}',
-      '.ql-more-view-all{display:block;margin:14px auto 0;border:0;background:transparent;color:#33558b;font:inherit;font-size:13px;font-weight:700;cursor:pointer}',
+      '.ql-more-view-all{display:block;margin:14px auto 0;border:0;background:transparent;color:#3a3fd8;font:inherit;font-size:13px;font-weight:700;cursor:pointer}',
       '.ql-more-faq{margin-top:12px}.ql-more-faq details{border-top:1px solid #f1f5f9;padding:12px 0}.ql-more-faq summary{cursor:pointer;color:#0f172a;font-size:13px;font-weight:650}.ql-more-faq p{margin:8px 0 0;color:#64748b;font-size:12px;line-height:1.6}',
       '.ql-more-status{margin:12px 0 0;color:#64748b;font-size:12px}',
       '.ql-more-rulebook-dialog{width:min(640px,calc(100vw - 32px));max-height:min(82vh,760px);padding:0;border:1px solid #e2e8f0;border-radius:20px;background:#fff;color:#0f172a;box-shadow:0 24px 80px rgba(15,23,42,.28)}',
@@ -99,7 +99,7 @@
       ':root[data-theme=dark] .ql-more-heading,:root[data-theme=dark] .ql-more-row-copy strong,:root[data-theme=dark] .ql-more-faq summary{color:#e2e8f0}',
       ':root[data-theme=dark] .ql-more-subtitle,:root[data-theme=dark] .ql-more-link small,:root[data-theme=dark] .ql-more-row-copy small,:root[data-theme=dark] .ql-more-faq p{color:#9ea9b9}',
       ':root[data-theme=dark] .ql-more-form select,:root[data-theme=dark] .ql-more-form textarea,:root[data-theme=dark] .ql-more-button{background:#111722;border-color:#2e3b4c;color:#d6dae5}',
-      ':root[data-theme=dark] .ql-more-theme-options button[aria-pressed=true]{background:#1f2d44;border-color:#33558b;color:#9fb6d8}',
+      ':root[data-theme=dark] .ql-more-theme-options button[aria-pressed=true]{background:#1f2d44;border-color:#3a3fd8;color:#a9acf0}',
       '@media(max-width:640px){.ql-more-card{padding:16px;border-radius:16px}.ql-more-grid{grid-template-columns:1fr}.ql-more-row{align-items:flex-start;flex-direction:column}.ql-more-theme-options{width:100%}.ql-more-theme-options .ql-more-button{flex:1}.ql-more-profile-content{padding:20px}.ql-more-preset-grid{gap:8px}.ql-more-preset{font-size:22px}}'
     ].join('');
     document.head.appendChild(style);
@@ -162,26 +162,32 @@
     card.innerHTML = '<h2 class="ql-more-heading">Pro membership</h2><p class="ql-more-subtitle">Manage your plan and billing details.</p><div class="ql-more-row"><div class="ql-more-row-copy"><strong id="ql-web-pro-status">Loading membership…</strong><small id="ql-web-pro-dates"></small></div><div class="ql-more-theme-options"><button type="button" class="ql-more-button primary" id="ql-web-pro-buy" hidden>Start 7-day trial</button><button type="button" class="ql-more-button danger" id="ql-web-pro-cancel" hidden>Cancel renewal</button></div></div><p class="ql-more-message" id="ql-web-pro-message" role="status"></p><p class="ql-more-subtitle">Pro includes video solutions, offline paper downloads, and PDF uploads.</p>';
     page.appendChild(card);
     var status = card.querySelector('#ql-web-pro-status'), dates = card.querySelector('#ql-web-pro-dates'), message = card.querySelector('#ql-web-pro-message'), cancel = card.querySelector('#ql-web-pro-cancel'), buy = card.querySelector('#ql-web-pro-buy');
-    api('/membership').then(function (result) {
+    var buyLabel = 'Subscribe to Pro';
+    function loadMembership() { return api('/membership').then(function (result) {
       var sub = result.subscription || {};
       var pro = result.is_pro === true;
+      var trialDays = result.plan?.trial_days ?? 7;
+      var trialAvailable = result.trial_available === true && trialDays > 0;
+      buyLabel = trialAvailable ? 'Start ' + trialDays + '-day trial' : 'Subscribe to Pro';
+      buy.textContent = buyLabel;
       status.textContent = pro ? (sub.status === 'trialing' ? 'Free trial active' : 'Pro active') : 'No active Pro membership';
-      dates.textContent = sub.started_at ? 'Started ' + new Date(sub.started_at).toLocaleDateString('en-IN') + (sub.trial_ends_at ? ' · Trial ends ' + new Date(sub.trial_ends_at).toLocaleDateString('en-IN') : '') + (sub.current_period_ends_at ? ' · Next charge / access end ' + new Date(sub.current_period_ends_at).toLocaleDateString('en-IN') : '') : (pro ? 'Pro access is managed by the Quiz LAB team.' : '₹' + ((result.plan?.price_paise || 9900) / 100) + ' per month · ' + (result.plan?.trial_days ?? 7) + '-day trial');
-      cancel.hidden = !pro || !sub.id || sub.cancel_at_period_end === true;
+      dates.textContent = sub.started_at ? 'Started ' + new Date(sub.started_at).toLocaleDateString('en-IN') + (sub.trial_ends_at && sub.status === 'trialing' ? ' · Trial ends ' + new Date(sub.trial_ends_at).toLocaleDateString('en-IN') : '') + (sub.current_period_ends_at ? (sub.cancel_at_period_end || sub.status === 'cancelled' ? ' · Access ends ' : ' · Next charge / access end ') + new Date(sub.current_period_ends_at).toLocaleDateString('en-IN') : '') : (pro ? 'Pro access is managed by the Quiz LAB team.' : '₹' + ((result.plan?.price_paise ?? 9900) / 100) + ' per month' + (trialAvailable ? ' · ' + trialDays + '-day trial' : ''));
+      cancel.hidden = !pro || !sub.id || !['google_play', 'razorpay'].includes(sub.provider) || sub.status === 'cancelled' || sub.cancel_at_period_end === true;
       buy.hidden = pro || !result.payment_setup?.web || result.plan?.enabled === false;
       if (!result.payment_setup?.web && !pro) message.textContent = 'Online membership checkout is being connected. Your account will show plan dates here once billing is active.';
-    }).catch(function (error) { status.textContent = 'Membership details could not load.'; message.textContent = error.message; message.className = 'ql-more-message error'; });
+    }).catch(function (error) { status.textContent = 'Membership details could not load.'; message.textContent = error.message; message.className = 'ql-more-message error'; }); }
+    loadMembership();
     buy.addEventListener('click', function () {
       buy.disabled = true; buy.textContent = 'Opening checkout…'; message.textContent = '';
       api('/membership/razorpay/start', { method:'POST', headers:{'Content-Type':'application/json'}, body:'{}' }).then(function (result) {
         if (!result.checkout_url) throw new Error('Checkout link was not returned. Please try again.');
         location.assign(result.checkout_url);
-      }).catch(function (error) { message.textContent = error.message; message.className = 'ql-more-message error'; }).finally(function () { buy.disabled = false; buy.textContent = 'Start 7-day trial'; });
+      }).catch(function (error) { message.textContent = error.message; message.className = 'ql-more-message error'; }).finally(function () { buy.disabled = false; buy.textContent = buyLabel; });
     });
     cancel.addEventListener('click', function () {
-      if (!window.confirm('Cancel your Pro membership?')) return;
+      if (!window.confirm('Cancel Pro renewal? Your Pro access remains until the current trial or billing period ends.')) return;
       cancel.disabled = true; message.textContent = 'Processing…';
-      fetch(apiBase() + '/membership/cancel', { method:'POST', headers:{Accept:'application/json',Authorization:'Bearer '+token()} }).then(function (response) { return response.json().then(function (body) { if (!response.ok) { var error = new Error(body.error || body.message || 'Could not cancel.'); error.manageUrl = body.manage_url; throw error; } return body; }); }).then(function (body) { status.textContent = body.subscription?.status === 'cancelled' ? 'Membership cancelled' : 'Cancellation scheduled'; dates.textContent = ''; cancel.hidden = true; message.textContent = body.message || 'Membership cancelled.'; message.className = 'ql-more-message success'; }).catch(function (error) { if (error.manageUrl) { message.textContent = 'Open your payment provider to stop future renewals.'; message.className = 'ql-more-message'; window.open(error.manageUrl, '_blank', 'noopener'); } else { message.textContent = error.message; message.className = 'ql-more-message error'; } cancel.disabled = false; });
+      fetch(apiBase() + '/membership/cancel', { method:'POST', headers:{Accept:'application/json',Authorization:'Bearer '+token()} }).then(function (response) { return response.json().then(function (body) { if (!response.ok) { var error = new Error(body.error || body.message || 'Could not cancel.'); error.manageUrl = body.manage_url; throw error; } return body; }); }).then(function (body) { message.textContent = body.message || 'Renewal cancelled.'; message.className = 'ql-more-message success'; return loadMembership(); }).catch(function (error) { if (error.manageUrl) { message.textContent = 'Open your payment provider to stop future renewals.'; message.className = 'ql-more-message'; window.open(error.manageUrl, '_blank', 'noopener'); } else { message.textContent = error.message; message.className = 'ql-more-message error'; } }).finally(function () { cancel.disabled = false; });
     });
   }
   function removeDuplicateProfileBlocks(page) {
@@ -278,7 +284,7 @@
       var initials = document.createElement('button');
       initials.type = 'button';
       initials.className = 'ql-more-preset';
-      initials.style.cssText = 'background:#eef3fa;color:#24406b;border-color:#c7d4e8;font-size:17px;font-weight:800';
+      initials.style.cssText = 'background:#f1f2ff;color:#2a2fa8;border-color:#c9ccf5;font-size:17px;font-weight:800';
       initials.textContent = (fullName.trim().split(/\s+/).map(function (part) { return part.charAt(0); }).join('').slice(0,2) || 'S').toUpperCase();
       initials.dataset.index = 'initials';
       var options = [initials].concat(avatarPresets.map(function (item, index) {
@@ -530,14 +536,20 @@
     orderProfileSections(page);
   }
   function orderProfileSections(page) {
-    // Keep the app's level, badge and performance cards before the account tools.
-    // Move only the sections injected by this script, leaving React's cards intact.
+    // Use the editable Profile card as the header, followed by progress and tools.
+    // Hide the duplicate React summary without removing a node React still owns.
     var editor = page.querySelector('#ql-web-profile-editor');
     var actions = page.querySelector('#' + MORE_ID);
-    var children = page.children;
-    if (editor && actions && children[children.length - 2] === editor && page.lastElementChild === actions) return;
-    if (editor) page.appendChild(editor);
-    if (actions) page.appendChild(actions);
+    Array.from(page.children).forEach(function (card) {
+      if (card === editor || card === actions) return;
+      var heading = card.querySelector('h1');
+      if (heading && /^(More|My Profile|Profile)$/i.test(heading.textContent.trim())) {
+        card.setAttribute('data-ql-profile-summary', '');
+        card.hidden = true;
+      }
+    });
+    if (editor && page.firstElementChild !== editor) page.insertBefore(editor, page.firstElementChild);
+    if (actions && page.lastElementChild !== actions) page.appendChild(actions);
   }
   document.addEventListener('click', interceptSignOut, true);
   var scheduled = false;

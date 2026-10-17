@@ -1,3 +1,5 @@
+import 'package:dio/dio.dart';
+
 import 'api_client.dart';
 import 'models/quiz_model.dart';
 
@@ -14,21 +16,31 @@ class QuizService {
   /// Fetches the quiz questions and options for an active quiz.
   /// Endpoint: GET /api/quizzes/{id}
   Future<QuizDetail> getQuiz(int quizId) async {
-    final response = await _client.get<Map<String, dynamic>>('/quizzes/$quizId');
+    final response = await _client.get<Map<String, dynamic>>(
+      '/quizzes/$quizId',
+    );
     return QuizDetail.fromJson(response.data!);
   }
 
   /// Offline copies are a Pro entitlement and use a dedicated server gate.
   Future<QuizDetail> downloadQuiz(int quizId) async {
-    final response = await _client.get<Map<String, dynamic>>('/quizzes/$quizId/offline-download');
+    final response = await _client.get<Map<String, dynamic>>(
+      '/quizzes/$quizId/offline-download',
+    );
     return QuizDetail.fromJson(response.data!);
   }
 
   /// Starts or resumes an attempt for the specified quiz.
   /// If an in-progress attempt already exists, the server authoritatively returns it.
   /// Endpoint: POST /api/quizzes/{id}/attempts
-  Future<StartAttemptResponse> startAttempt(int quizId) async {
-    final response = await _client.post<Map<String, dynamic>>('/quizzes/$quizId/attempts');
+  Future<StartAttemptResponse> startAttempt(
+    int quizId, {
+    bool background = false,
+  }) async {
+    final response = await _client.post<Map<String, dynamic>>(
+      '/quizzes/$quizId/attempts',
+      options: Options(extra: {'loadingBlocking': !background}),
+    );
     return StartAttemptResponse.fromJson(response.data!);
   }
 
@@ -36,13 +48,13 @@ class QuizService {
   /// Endpoint: POST /api/attempts/{id}/submit
   Future<SubmitQuizResponse> submitAttempt(
     int attemptId,
-    List<SubmitAnswerPayload> answers,
-  ) async {
+    List<SubmitAnswerPayload> answers, {
+    bool background = false,
+  }) async {
     final response = await _client.post<Map<String, dynamic>>(
       '/attempts/$attemptId/submit',
-      data: {
-        'answers': answers.map((a) => a.toJson()).toList(),
-      },
+      options: Options(extra: {'loadingBlocking': !background}),
+      data: {'answers': answers.map((a) => a.toJson()).toList()},
     );
     return SubmitQuizResponse.fromJson(response.data!);
   }
@@ -51,14 +63,18 @@ class QuizService {
   /// Includes correctness, marks awarded, explanations, and official acceptable answers.
   /// Endpoint: GET /api/attempts/{id}/result
   Future<QuizResultData> getResult(int attemptId) async {
-    final response = await _client.get<Map<String, dynamic>>('/attempts/$attemptId/result');
+    final response = await _client.get<Map<String, dynamic>>(
+      '/attempts/$attemptId/result',
+    );
     return QuizResultData.fromJson(response.data!);
   }
 
   /// Fetches the leaderboard for a specific quiz (top 10 + current user rank).
   /// Endpoint: GET /api/quizzes/{id}/leaderboard
   Future<QuizLeaderboard> getLeaderboard(int quizId) async {
-    final response = await _client.get<Map<String, dynamic>>('/quizzes/$quizId/leaderboard');
+    final response = await _client.get<Map<String, dynamic>>(
+      '/quizzes/$quizId/leaderboard',
+    );
     return QuizLeaderboard.fromJson(response.data!);
   }
 }

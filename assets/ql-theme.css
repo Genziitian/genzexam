@@ -50,7 +50,7 @@
 .ql-avatar{display:flex;width:56px;height:56px;border-radius:50%;background:#0f172a;color:#93b4e6;align-items:center;justify-content:center;font-weight:700;font-size:18px}
 .ql-badges{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
 .ql-badge{display:inline-block;margin-right:4px;border-radius:999px;padding:2px 9px;font-size:11px;font-weight:600}
-.ql-badge-student{background:#f1f5f9;color:#475569}.ql-badge-admin{background:#eef3fa;color:#29467a}
+.ql-badge-student{background:#f1f5f9;color:#475569}.ql-badge-admin{background:#f1f2ff;color:#2b30b8}
 .ql-badge-manager{background:#ede9fe;color:#6d28d9}.ql-badge-pro{background:#fef3c7;color:#b45309}
 .ql-badge-ok{background:#dcfce7;color:#15803d}.ql-badge-off{background:#fee2e2;color:#b91c1c}
 .ql-dl{margin:0}.ql-dl-row{display:flex;justify-content:space-between;gap:16px;padding:10px 0;border-top:1px solid #f1f5f9;font-size:14px}

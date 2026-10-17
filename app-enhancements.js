@@ -30,7 +30,7 @@
       "font:500 13px/1 Inter,system-ui,-apple-system,sans-serif;" +
       "padding:9px 32px 9px 12px;min-width:170px;transition:border-color .15s ease,box-shadow .15s ease}" +
       ".ql-filter-select:hover{border-color:#cbd5e1}" +
-      ".ql-filter-select:focus{outline:none;border-color:#33558b;box-shadow:0 0 0 3px rgba(51,85,139,.12)}" +
+      ".ql-filter-select:focus{outline:none;border-color:#3a3fd8;box-shadow:0 0 0 3px rgba(58, 63, 216,.12)}" +
       ".ql-chips-hidden{display:none!important}" +
       ".ql-discussion-sort-row>button{display:none!important}" +
       ".ql-discussion-sort-select{min-width:150px}" +
@@ -300,7 +300,7 @@
         var badge = document.createElement("span");
         badge.className = "ql-paper-review-state";
         badge.textContent = paper.approval_status === "pending" ? "Pending manager approval" : (paper.is_active ? "Approved · active" : "Approved · disabled");
-        badge.style.cssText = "display:inline-block;margin:4px 0 0 8px;padding:3px 8px;border-radius:999px;font-size:11px;font-weight:600;background:" + (paper.approval_status === "pending" ? "#fff7ed;color:#c2410c" : paper.is_active ? "#eef3fa;color:#24406b" : "#f1f5f9;color:#475569");
+        badge.style.cssText = "display:inline-block;margin:4px 0 0 8px;padding:3px 8px;border-radius:999px;font-size:11px;font-weight:600;background:" + (paper.approval_status === "pending" ? "#fff7ed;color:#c2410c" : paper.is_active ? "#f1f2ff;color:#2a2fa8" : "#f1f5f9;color:#475569");
         firstCell.appendChild(badge);
       }
       // Managers see the price of a paid paper next to its title.
@@ -349,7 +349,7 @@
         approve.type = "button";
         approve.className = "ql-approve-paper";
         approve.textContent = "Approve";
-        approve.style.cssText = "border:0;border-radius:8px;background:#33558b;color:white;padding:6px 10px;font:600 12px/1.2 inherit;cursor:pointer";
+        approve.style.cssText = "border:0;border-radius:8px;background:#3a3fd8;color:white;padding:6px 10px;font:600 12px/1.2 inherit;cursor:pointer";
         approve.addEventListener("click", function () {
           approve.disabled = true;
           approve.textContent = "Approving…";
@@ -367,7 +367,7 @@
     var card = document.createElement("section");
     card.id = "ql-manager-course-assignments";
     card.style.cssText = "margin-top:20px;background:#fff;border:1px solid #e2e8f0;border-radius:18px;padding:24px;box-shadow:0 2px 5px rgba(15,23,42,.08)";
-    card.innerHTML = '<h2 style="margin:0;color:#0f172a;font-size:20px;font-weight:700">Teacher course access</h2><p style="margin:6px 0 16px;color:#64748b;font-size:14px">Choose an admin teacher, then assign the courses they can manage.</p><select id="ql-teacher-select" style="width:100%;max-width:440px;padding:10px;border:1px solid #cbd5e1;border-radius:10px"><option>Loading teachers…</option></select><div id="ql-teacher-courses" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px;margin:16px 0"></div><div style="display:flex;align-items:center;gap:12px"><button id="ql-save-teacher-courses" type="button" style="border:0;border-radius:10px;background:#33558b;color:white;padding:10px 16px;font-weight:700;cursor:pointer">Save course access</button><span id="ql-teacher-course-message" role="status" style="font-size:13px;color:#64748b"></span></div>';
+    card.innerHTML = '<h2 style="margin:0;color:#0f172a;font-size:20px;font-weight:700">Teacher course access</h2><p style="margin:6px 0 16px;color:#64748b;font-size:14px">Choose an admin teacher, then assign the courses they can manage.</p><select id="ql-teacher-select" style="width:100%;max-width:440px;padding:10px;border:1px solid #cbd5e1;border-radius:10px"><option>Loading teachers…</option></select><div id="ql-teacher-courses" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px;margin:16px 0"></div><div style="display:flex;align-items:center;gap:12px"><button id="ql-save-teacher-courses" type="button" style="border:0;border-radius:10px;background:#3a3fd8;color:white;padding:10px 16px;font-weight:700;cursor:pointer">Save course access</button><span id="ql-teacher-course-message" role="status" style="font-size:13px;color:#64748b"></span></div>';
     page.appendChild(card);
     Promise.all([apiFetch("/admin/users?filter=admins&per_page=100"), apiFetch("/admin/courses")]).then(function (results) {
       var users = results[0].data || [];
@@ -410,13 +410,13 @@
       '<p style="margin:6px 0 0;color:#64748b;font-size:14px">Manage the name and photo shown on your manager account.</p></div>' +
       '<form id="ql-manager-profile-form" style="display:grid;gap:16px">' +
       '<div style="display:flex;align-items:center;gap:14px">' +
-      '<div id="ql-manager-avatar" style="width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#eef3fa;color:#24406b;font-size:21px;font-weight:700;flex:0 0 auto"></div>' +
-      '<div style="min-width:0"><div id="ql-manager-profile-name" style="font-weight:700;color:#0f172a">Loading profile…</div><div id="ql-manager-profile-role" style="margin-top:4px;color:#24406b;font-size:12px;font-weight:700">MANAGER</div></div></div>' +
+      '<div id="ql-manager-avatar" style="width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#f1f2ff;color:#2a2fa8;font-size:21px;font-weight:700;flex:0 0 auto"></div>' +
+      '<div style="min-width:0"><div id="ql-manager-profile-name" style="font-weight:700;color:#0f172a">Loading profile…</div><div id="ql-manager-profile-role" style="margin-top:4px;color:#2a2fa8;font-size:12px;font-weight:700">MANAGER</div></div></div>' +
       '<label style="display:grid;gap:6px;color:#475569;font-size:14px">Name<input id="ql-manager-name" name="name" maxlength="120" required style="width:100%;padding:11px 13px;border:1px solid #dbe3ee;border-radius:12px;color:#0f172a;background:#fff;font:inherit"></label>' +
       '<label style="display:grid;gap:6px;color:#475569;font-size:14px">Email<input id="ql-manager-email" readonly style="width:100%;padding:11px 13px;border:1px solid #dbe3ee;border-radius:12px;color:#64748b;background:#f8fafc;font:inherit"></label>' +
       '<label style="display:grid;gap:6px;color:#475569;font-size:14px">Profile photo<input id="ql-manager-photo" type="file" accept="image/png,image/jpeg,image/webp" style="color:#475569;font-size:13px"></label>' +
       '<label style="display:flex;align-items:center;gap:8px;color:#64748b;font-size:13px"><input id="ql-manager-remove-photo" type="checkbox"> Remove current photo</label>' +
-      '<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap"><p id="ql-manager-profile-message" role="status" style="margin:0;color:#64748b;font-size:13px"></p><button id="ql-manager-profile-save" type="submit" style="border:0;border-radius:11px;background:#33558b;color:#fff;padding:11px 17px;font-size:14px;font-weight:700;cursor:pointer">Save Profile</button></div>' +
+      '<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap"><p id="ql-manager-profile-message" role="status" style="margin:0;color:#64748b;font-size:13px"></p><button id="ql-manager-profile-save" type="submit" style="border:0;border-radius:11px;background:#3a3fd8;color:#fff;padding:11px 17px;font-size:14px;font-weight:700;cursor:pointer">Save Profile</button></div>' +
       '</form>';
 
     var headingCard = page.firstElementChild;
@@ -830,6 +830,11 @@
             details.className = "ql-mp-action renew";
             details.href = "/papers?paper=" + encodeURIComponent(paper.id);
             details.textContent = "View details";
+            details.addEventListener("click", function (event) {
+              if (event.metaKey || event.ctrlKey || event.shiftKey || event.button) return;
+              event.preventDefault();
+              showPaperDetails(paper, labels, state, usable, attempts, action.href);
+            });
             actions.appendChild(details);
           }
           actions.appendChild(action);
@@ -844,12 +849,66 @@
     });
   }
 
+  function showPaperDetails(paper, labels, state, usable, attempts, startHref) {
+    if (!document.getElementById("ql-pd-style")) {
+      var st = document.createElement("style");
+      st.id = "ql-pd-style";
+      st.textContent = ".ql-pd-overlay{position:fixed;inset:0;z-index:99999;background:rgba(15,23,42,.62);display:grid;place-items:center;padding:18px}.ql-pd{width:min(560px,100%);max-height:90vh;overflow:auto;background:#fff;border-radius:22px;padding:26px;box-shadow:0 24px 80px #121a2755;color:#0f172a}.ql-pd-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}.ql-pd h2{margin:0;font-size:22px;line-height:1.25;letter-spacing:-.01em}.ql-pd-sub{margin:6px 0 0;color:#64748b;font-size:14px}.ql-pd-x{flex:none;border:0;background:#f1f5f9;color:#334155;border-radius:50%;width:36px;height:36px;font-size:20px;cursor:pointer}.ql-pd-desc{margin:16px 0 0;color:#334155;line-height:1.6;font-size:14.5px}.ql-pd-facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:18px 0 0}.ql-pd-facts div{background:#f1f2ff;border-radius:14px;padding:11px 14px}.ql-pd-facts dt{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#64748b;font-weight:600}.ql-pd-facts dd{margin:3px 0 0;font-weight:700;font-size:14.5px;color:#0f172a}.ql-pd-note{margin:16px 0 0;font-size:13px;color:#64748b}.ql-pd-actions{display:flex;gap:10px;margin-top:20px}.ql-pd-actions a,.ql-pd-actions button{flex:1;text-align:center;border-radius:13px;padding:13px;font:700 14.5px inherit;text-decoration:none;cursor:pointer;border:1px solid #c9ccf5;background:#fff;color:#3a3fd8}.ql-pd-actions a.go{background:#3a3fd8;border-color:#3a3fd8;color:#fff}.ql-pd-actions a.go:hover{background:#2b30b8}@media(max-width:480px){.ql-pd{padding:20px}.ql-pd-facts{grid-template-columns:1fr}}";
+      document.head.appendChild(st);
+    }
+    var last = document.activeElement;
+    var overlay = document.createElement("div");
+    overlay.className = "ql-pd-overlay";
+    var box = document.createElement("div");
+    box.className = "ql-pd";
+    box.setAttribute("role", "dialog");
+    box.setAttribute("aria-modal", "true");
+    function el(tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; }
+    function close() { document.removeEventListener("keydown", onKey); overlay.remove(); if (last && last.focus) last.focus(); }
+    function onKey(e) { if (e.key === "Escape") close(); }
+    var top = el("div", "ql-pd-top");
+    var heading = el("div");
+    heading.appendChild(el("h2", "", paper.title || "Paper"));
+    heading.appendChild(el("p", "ql-pd-sub", [(paper.course || {}).name, (paper.course || {}).level, paper.year].filter(Boolean).join(" · ")));
+    var x = el("button", "ql-pd-x", "×");
+    x.type = "button";
+    x.setAttribute("aria-label", "Close");
+    x.addEventListener("click", close);
+    top.append(heading, x);
+    box.appendChild(top);
+    box.appendChild(el("p", "ql-pd-desc", paper.description || "Practice this paper and review your progress from your student dashboard."));
+    var facts = el("dl", "ql-pd-facts");
+    var rows = [
+      ["Paper type", labels[paper.section] || paper.section || "Practice paper"],
+      ["Questions", paper.question_count != null ? paper.question_count : "See paper"],
+      ["Time limit", paper.time_limit_minutes ? paper.time_limit_minutes + " minutes" : "No time limit"],
+      ["Status", state],
+      ["Attempts", attempts],
+      ["Last score", attempts && paper.last_total_marks != null ? Number(paper.last_score || 0) + "/" + Number(paper.last_total_marks) : "—"]
+    ];
+    if (paper.expires_at && Number(paper.price_paise || 0) > 0) rows.push(["Access until", new Date(paper.expires_at).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" })]);
+    rows.forEach(function (r) { var d = el("div"); d.append(el("dt", "", r[0]), el("dd", "", String(r[1]))); facts.appendChild(d); });
+    box.appendChild(facts);
+    var actions = el("div", "ql-pd-actions");
+    var closeBtn = el("button", "", "Close");
+    closeBtn.type = "button";
+    closeBtn.addEventListener("click", close);
+    actions.appendChild(closeBtn);
+    if (usable) { var go = el("a", "go", paper.in_progress ? "Continue" : attempts ? "Attempt again" : "Start"); go.href = startHref; actions.appendChild(go); }
+    box.appendChild(actions);
+    overlay.appendChild(box);
+    overlay.addEventListener("click", function (e) { if (e.target === overlay) close(); });
+    document.addEventListener("keydown", onKey);
+    document.body.appendChild(overlay);
+    x.focus();
+  }
+
   function installUploadedPaperDialog(host, runtime) {
     var styleId = "ql-upload-paper-style";
     if (!document.getElementById(styleId)) {
       var style = document.createElement("style");
       style.id = styleId;
-      style.textContent = ".ql-upload-open{margin:0;border:0;border-radius:13px;background:#33558b;color:#fff;padding:12px 18px;font:700 14px inherit;cursor:pointer;white-space:nowrap}.ql-upload-open:hover{background:#29467a}.ql-mp-title-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.ql-upload-overlay{position:fixed;inset:0;z-index:99999;background:rgba(15,23,42,.62);display:grid;place-items:center;padding:18px}.ql-upload-modal{width:min(620px,100%);max-height:min(90vh,780px);overflow:auto;background:#fff;border-radius:24px;padding:26px;box-shadow:0 24px 80px #121a2755;color:#1d2c45}.ql-upload-modal h2{margin:0 0 8px;font-size:24px}.ql-upload-modal p{color:#64748b;line-height:1.55}.ql-upload-close{float:right;border:0;background:#eff5f0;border-radius:50%;width:38px;height:38px;font-size:22px;cursor:pointer}.ql-upload-steps{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:8px;align-items:center;margin:22px 0;padding:16px;border-radius:17px;background:#f3faf5;text-align:center}.ql-upload-steps span{display:block;font-size:12px;font-weight:700}.ql-upload-icon{font-size:25px;margin-bottom:7px}.ql-upload-pick{display:block;width:100%;border:0;border-radius:13px;padding:14px;background:#33558b;color:#fff;font-size:15px;font-weight:700;cursor:pointer}.ql-upload-pick:disabled{opacity:.6;cursor:wait}.ql-upload-file{display:block;width:100%;margin:14px 0}.ql-upload-list{display:grid;gap:9px;margin-top:14px}.ql-upload-item{display:flex;justify-content:space-between;gap:12px;align-items:center;border:1px solid #e2e8f0;border-radius:13px;padding:12px}.ql-upload-item a{color:#33558b;font-weight:700;text-decoration:none}.ql-upload-error{color:#b42318!important}.ql-upload-state{font-size:13px;color:#64748b}.ql-upload-note{font-size:12px} @media(max-width:560px){.ql-mp-title-actions{width:100%}.ql-mp-title-actions>*{flex:1;text-align:center;justify-content:center}.ql-upload-modal{padding:20px}.ql-upload-steps{gap:3px;padding:12px}.ql-upload-steps span{font-size:10px}.ql-upload-steps b{font-size:11px}}";
+      style.textContent = ".ql-upload-open{margin:0;border:0;border-radius:13px;background:#3a3fd8;color:#fff;padding:12px 18px;font:700 14px inherit;cursor:pointer;white-space:nowrap;transition:transform .15s ease,background .15s ease,box-shadow .15s ease}.ql-upload-open:hover{background:#2b30b8;transform:translateY(-1px);box-shadow:0 10px 20px -10px #3a3fd8}.ql-mp-title-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}\n.ql-upload-overlay{position:fixed;inset:0;z-index:99999;background:rgba(15,23,42,.62);backdrop-filter:blur(3px);display:grid;place-items:center;padding:18px;animation:qlu-fade .2s ease}\n.ql-upload-modal{width:min(640px,100%);max-height:min(92vh,820px);overflow:auto;background:#fff;border-radius:26px;box-shadow:0 30px 90px #121a2766;color:#0f172a;animation:qlu-pop .35s cubic-bezier(.2,.9,.3,1.15)}\n.ql-upload-hero{position:relative;padding:26px 26px 22px;background:linear-gradient(135deg,#3a3fd8,#6a6ff0 70%,#8b90ff);color:#fff;border-radius:26px 26px 0 0;overflow:hidden}\n.ql-upload-hero::after{content:\"\";position:absolute;right:-50px;top:-60px;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,.14)}\n.ql-upload-hero h2{margin:0;font-size:25px;letter-spacing:-.02em;position:relative}.ql-upload-hero p{margin:6px 0 0;max-width:430px;color:#e6e7ff;line-height:1.5;font-size:14.5px;position:relative}\n.ql-upload-pro{display:inline-block;margin-bottom:10px;padding:3px 10px;border-radius:999px;background:#ffc24b;color:#0e1330;font-size:11px;font-weight:800;letter-spacing:.08em;position:relative}\n.ql-upload-close{position:absolute;right:16px;top:16px;z-index:2;border:0;background:rgba(255,255,255,.2);color:#fff;border-radius:50%;width:36px;height:36px;font-size:21px;cursor:pointer;transition:background .15s,transform .2s}.ql-upload-close:hover{background:rgba(255,255,255,.34);transform:rotate(90deg)}\n.ql-upload-body{padding:22px 26px 26px;display:grid;gap:18px}\n.ql-upload-quota{border-radius:18px;padding:16px 18px;background:#f1f2ff;border:1px solid #d5d8f7}.ql-upload-quota.locked{background:#fff7e0;border-color:#fde68a}.ql-upload-quota.empty{background:#fdecea;border-color:#f6c6c1}\n.ql-upload-quota-top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}.ql-upload-quota strong{font-size:16px}.ql-upload-quota small{color:#64748b;font-size:12.5px}\n.ql-upload-meter{display:flex;gap:6px;margin-top:12px}.ql-upload-meter i{flex:1;height:10px;border-radius:6px;background:#3a3fd8;transform-origin:left;animation:qlu-grow .5s cubic-bezier(.2,.8,.2,1) backwards}.ql-upload-meter i.used{background:#c9ccf5}\n.ql-upload-quota a.ql-upload-upgrade{display:inline-block;margin-top:12px;padding:9px 16px;border-radius:11px;background:#3a3fd8;color:#fff;font-weight:700;font-size:13.5px;text-decoration:none}\n.ql-upload-steps{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:8px;align-items:center;text-align:center}\n.ql-upload-steps>div{padding:12px 6px;border-radius:16px;background:#f8fafc;border:1px solid #e2e8f0;animation:qlu-rise .5s ease backwards}.ql-upload-steps>div:nth-of-type(2){animation-delay:.12s}.ql-upload-steps>div:nth-of-type(3){animation-delay:.24s}\n.ql-upload-steps span{display:block;font-size:12px;font-weight:700}.ql-upload-icon{font-size:24px;margin-bottom:5px;display:inline-block;animation:qlu-bob 2.6s ease-in-out infinite}\n.ql-upload-steps b{color:#3a3fd8;animation:qlu-nudge 1.4s ease-in-out infinite}\n.ql-upload-drop{position:relative;display:grid;place-items:center;gap:4px;text-align:center;padding:26px 18px;border:2px dashed #b9bedc;border-radius:20px;background:#f8f9ff;cursor:pointer;transition:border-color .15s,background .15s,transform .15s}\n.ql-upload-drop:hover,.ql-upload-drop.over{border-color:#3a3fd8;background:#eef0ff;transform:translateY(-1px)}.ql-upload-drop.disabled{opacity:.55;cursor:not-allowed;pointer-events:none}\n.ql-upload-drop .big{font-size:30px;animation:qlu-bob 2.2s ease-in-out infinite}.ql-upload-drop strong{font-size:15px}.ql-upload-drop small{color:#64748b}.ql-upload-drop input{position:absolute;inset:0;opacity:0;cursor:pointer}\n.ql-upload-chip{display:none;align-items:center;gap:10px;padding:10px 14px;border-radius:12px;background:#ecedff;color:#1b1f7a;font-weight:700;font-size:13.5px}.ql-upload-chip.on{display:flex;animation:qlu-rise .25s ease}\n.ql-upload-pick{display:block;width:100%;border:0;border-radius:14px;padding:15px;background:#3a3fd8;color:#fff;font-size:15px;font-weight:800;cursor:pointer;position:relative;overflow:hidden;transition:background .15s,transform .15s}.ql-upload-pick:hover:not(:disabled){background:#2b30b8;transform:translateY(-1px)}.ql-upload-pick:disabled{opacity:.55;cursor:not-allowed}\n.ql-upload-pick.busy{cursor:wait;opacity:1}.ql-upload-pick.busy::after{content:\"\";position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);animation:qlu-sheen 1.2s linear infinite}\n.ql-upload-state{margin:0;font-size:13.5px;color:#64748b;min-height:1.2em}.ql-upload-state.ok{color:#0e7a4f;font-weight:700;animation:qlu-rise .3s ease}.ql-upload-error{color:#b42318!important}\n.ql-upload-note{font-size:12px;color:#64748b;line-height:1.55;margin:0}\n.ql-upload-h{margin:2px 0 0;font-size:16px}.ql-upload-list{display:grid;gap:9px}\n.ql-upload-item{display:flex;justify-content:space-between;gap:12px;align-items:center;border:1px solid #e2e8f0;border-radius:14px;padding:12px 14px;animation:qlu-rise .35s ease backwards;transition:border-color .15s,transform .15s}.ql-upload-item:hover{border-color:#3a3fd8;transform:translateY(-1px)}\n.ql-upload-item a{color:#fff;background:#3a3fd8;padding:7px 14px;border-radius:999px;font-weight:700;font-size:13px;text-decoration:none}\n.ql-upload-quota.free{background:linear-gradient(135deg,#ecedff,#fff3d6);border-color:#c9ccf5}.ql-upload-quota-actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:12px}.ql-upload-claim{border:0;border-radius:11px;padding:10px 18px;background:#3a3fd8;color:#fff;font:800 14px inherit;cursor:pointer;animation:qlu-pulse 2s ease-in-out infinite}.ql-upload-quota-actions a.ql-upload-upgrade{margin-top:0;background:transparent;color:#3a3fd8;border:1px solid #c9ccf5}@keyframes qlu-pulse{0%,100%{box-shadow:0 0 0 0 rgba(58,63,216,.45)}50%{box-shadow:0 0 0 9px rgba(58,63,216,0)}}@keyframes qlu-fade{from{opacity:0}to{opacity:1}}@keyframes qlu-pop{from{opacity:0;transform:translateY(18px) scale(.96)}to{opacity:1;transform:none}}@keyframes qlu-rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}@keyframes qlu-grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}@keyframes qlu-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}@keyframes qlu-nudge{0%,100%{transform:translateX(0)}50%{transform:translateX(4px)}}@keyframes qlu-sheen{from{transform:translateX(-100%)}to{transform:translateX(100%)}}\n@media(prefers-reduced-motion:reduce){.ql-upload-overlay,.ql-upload-modal,.ql-upload-steps>div,.ql-upload-icon,.ql-upload-steps b,.ql-upload-drop .big,.ql-upload-meter i,.ql-upload-item,.ql-upload-pick.busy::after{animation:none!important}}\n@media(max-width:560px){.ql-mp-title-actions{width:100%}.ql-mp-title-actions>*{flex:1;text-align:center;justify-content:center}.ql-upload-hero,.ql-upload-body{padding-left:18px;padding-right:18px}.ql-upload-steps{gap:3px}.ql-upload-steps span{font-size:10.5px}}";
       document.head.appendChild(style);
     }
     var open = host.querySelector(".ql-upload-open");
@@ -858,7 +917,7 @@
     open.addEventListener("click", function () {
       var overlay = document.createElement("div");
       overlay.className = "ql-upload-overlay";
-      overlay.innerHTML = '<section class="ql-upload-modal" role="dialog" aria-modal="true" aria-labelledby="ql-upload-title"><button class="ql-upload-close" type="button" aria-label="Close">×</button><h2 id="ql-upload-title">Make your paper a test</h2><p>Upload a question paper and Quiz LAB will organize its questions into a private practice test. Your test will also appear in My Papers.</p><div class="ql-upload-steps"><div><div class="ql-upload-icon">📄</div><span>Your PDF</span></div><b>→</b><div><div class="ql-upload-icon">{ }</div><span>Question data</span></div><b>→</b><div><div class="ql-upload-icon">✍️</div><span>Your test</span></div></div><p class="ql-upload-note">Selectable text from PDFs is sent to DeepSeek AI to structure the questions. The temporary PDF is deleted after processing; the generated test remains in your account. Prepared JSON files are processed without AI. Scanned image PDFs need OCR and are not supported yet.</p><form class="ql-upload-form"><input class="ql-upload-file" type="file" name="paper" accept=".pdf,.json,application/pdf,application/json" required><button class="ql-upload-pick" type="submit">Choose a PDF or JSON file</button><p class="ql-upload-state" aria-live="polite"></p></form><h3>Your uploaded papers</h3><div class="ql-upload-list"><p class="ql-upload-state">Loading…</p></div></section>';
+      overlay.innerHTML = '<section class="ql-upload-modal" role="dialog" aria-modal="true" aria-labelledby="ql-upload-title"><div class="ql-upload-hero"><button class="ql-upload-close" type="button" aria-label="Close">\u00d7</button><h2 id="ql-upload-title">Make your paper a test</h2><p>Upload any question paper and Quiz LAB turns it into a private practice test. It also appears in My Papers.</p></div><div class="ql-upload-body"><div class="ql-upload-quota" aria-live="polite"><div class="ql-upload-quota-top"><strong>Checking your uploads\u2026</strong></div></div><div class="ql-upload-steps"><div><div class="ql-upload-icon">\ud83d\udcc4</div><span>Your PDF</span></div><b>\u2192</b><div><div class="ql-upload-icon">{ }</div><span>Question data</span></div><b>\u2192</b><div><div class="ql-upload-icon">\u270d\ufe0f</div><span>Your test</span></div></div><form class="ql-upload-form" style="display:grid;gap:12px"><label class="ql-upload-drop"><span class="big">\u2b06\ufe0f</span><strong>Drop a PDF or JSON here</strong><small>or tap to choose a file \u00b7 up to 10 MB</small><input class="ql-upload-file" type="file" name="paper" accept=".pdf,.json,application/pdf,application/json" required></label><div class="ql-upload-chip"></div><button class="ql-upload-pick" type="submit" disabled>Create my test</button><p class="ql-upload-state" aria-live="polite"></p></form><p class="ql-upload-note">Selectable text from PDFs is sent to DeepSeek AI to structure the questions. The temporary PDF is deleted after processing; the generated test stays in your account. Prepared JSON files are processed without AI. Scanned image PDFs are not supported yet.</p><h3 class="ql-upload-h">Your uploaded papers</h3><div class="ql-upload-list"><p class="ql-upload-state">Loading\u2026</p></div></div></section>';
       document.body.appendChild(overlay);
       var modal = overlay.querySelector(".ql-upload-modal");
       function close() { overlay.remove(); }
@@ -866,46 +925,119 @@
       overlay.addEventListener("click", function (event) { if (event.target === overlay) close(); });
       document.addEventListener("keydown", function escape(event) { if (event.key === "Escape" && overlay.isConnected) { close(); document.removeEventListener("keydown", escape); } });
       var list = modal.querySelector(".ql-upload-list");
-      var state = modal.querySelector(".ql-upload-state");
-      function authHeaders(json) {
-        var headers = { Accept: "application/json", Authorization: "Bearer " + runtime.token() };
-        if (json) headers["Content-Type"] = "application/json";
-        return headers;
+      var state = modal.querySelector(".ql-upload-form .ql-upload-state");
+      var quotaBox = modal.querySelector(".ql-upload-quota");
+      var drop = modal.querySelector(".ql-upload-drop");
+      var fileInput = modal.querySelector("input[type=file]");
+      var chip = modal.querySelector(".ql-upload-chip");
+      var button = modal.querySelector(".ql-upload-pick");
+      var allowed = false;
+      function authHeaders() { return { Accept: "application/json", Authorization: "Bearer " + runtime.token() }; }
+      function inTime(iso) {
+        var ms = new Date(iso).getTime() - Date.now();
+        if (!(ms > 0)) return "soon";
+        var hours = Math.ceil(ms / 3600000);
+        return hours >= 24 ? "in " + Math.ceil(hours / 24) + " days" : hours > 1 ? "in " + hours + " hours" : "within the hour";
       }
+      function renderQuota(q) {
+        quotaBox.replaceChildren();
+        quotaBox.className = "ql-upload-quota";
+        if (!q) { allowed = true; quotaBox.hidden = true; return; }
+        quotaBox.hidden = false;
+        var top = document.createElement("div"); top.className = "ql-upload-quota-top";
+        var head = document.createElement("strong"), sub = document.createElement("small");
+        var showClaim = false;
+        if (!q.is_pro && q.remaining > 0) {
+          allowed = true; quotaBox.classList.add("free"); showClaim = true;
+          head.textContent = "\ud83c\udf81 Your free upload this week";
+          sub.textContent = "Everyone gets " + q.limit + " free upload every " + q.window_days + " days. Pro members get " + (q.pro_limit || 5) + ".";
+        } else if (!q.is_pro) {
+          allowed = false; quotaBox.classList.add("locked");
+          head.textContent = "Free upload used";
+          sub.textContent = (q.resets_at ? "Your next free upload unlocks " + inTime(q.resets_at) + ". " : "") + "Pro members get " + (q.pro_limit || 5) + " every " + q.window_days + " days.";
+        } else if (q.remaining > 0) {
+          allowed = true;
+          head.textContent = q.remaining + " of " + q.limit + " uploads left";
+          sub.textContent = "Allowance for any " + q.window_days + " days";
+        } else {
+          allowed = false; quotaBox.classList.add("empty");
+          head.textContent = "No uploads left right now";
+          sub.textContent = q.resets_at ? "Your next upload unlocks " + inTime(q.resets_at) : "Please try again later";
+        }
+        top.append(head, sub); quotaBox.appendChild(top);
+        if (q.is_pro) {
+          var meter = document.createElement("div"); meter.className = "ql-upload-meter";
+          for (var i = 0; i < q.limit; i++) { var seg = document.createElement("i"); if (i < q.used) seg.className = "used"; seg.style.animationDelay = (i * 60) + "ms"; meter.appendChild(seg); }
+          quotaBox.appendChild(meter);
+        } else {
+          var row = document.createElement("div"); row.className = "ql-upload-quota-actions";
+          if (showClaim) {
+            var claim = document.createElement("button"); claim.type = "button"; claim.className = "ql-upload-claim"; claim.textContent = "Claim free upload";
+            claim.addEventListener("click", function () { drop.classList.add("over"); setTimeout(function () { drop.classList.remove("over"); }, 900); fileInput.click(); });
+            row.appendChild(claim);
+          }
+          var up = document.createElement("a"); up.className = "ql-upload-upgrade"; up.href = "/profile"; up.textContent = "Go Pro for more"; row.appendChild(up);
+          quotaBox.appendChild(row);
+        }
+        drop.classList.toggle("disabled", !allowed);
+        syncButton();
+      }
+      function syncButton() { button.disabled = !allowed || !fileInput.files.length; }
+      function setFile(file) {
+        chip.classList.toggle("on", !!file);
+        chip.textContent = file ? "📎 " + file.name + " · " + Math.max(1, Math.round(file.size / 1024)) + " KB" : "";
+        syncButton();
+      }
+      fileInput.addEventListener("change", function () { setFile(fileInput.files[0]); });
+      ["dragenter", "dragover"].forEach(function (name) { drop.addEventListener(name, function (e) { e.preventDefault(); drop.classList.add("over"); }); });
+      ["dragleave", "drop"].forEach(function (name) { drop.addEventListener(name, function (e) { e.preventDefault(); drop.classList.remove("over"); }); });
+      drop.addEventListener("drop", function (e) {
+        var f = e.dataTransfer && e.dataTransfer.files[0];
+        if (!f || !allowed) return;
+        try { var dt = new DataTransfer(); dt.items.add(f); fileInput.files = dt.files; setFile(f); } catch (_) { /* browser without DataTransfer: use the picker */ }
+      });
       function refreshUploads() {
-        fetch(runtime.apiBase + "/student/uploaded-papers", { headers: authHeaders(false) }).then(function (response) {
+        fetch(runtime.apiBase + "/student/uploaded-papers", { headers: authHeaders() }).then(function (response) {
           if (!response.ok) throw new Error("Could not load your uploads.");
           return response.json();
         }).then(function (data) {
+          renderQuota(data.quota);
           list.replaceChildren();
           var papers = Array.isArray(data.papers) ? data.papers : [];
-          if (!papers.length) { var empty = document.createElement("p"); empty.className = "ql-upload-state"; empty.textContent = "No uploads yet. Choose a PDF or JSON above to make your first test."; list.appendChild(empty); return; }
-          papers.forEach(function (paper) {
-            var row = document.createElement("div"); row.className = "ql-upload-item";
+          if (!papers.length) { var empty = document.createElement("p"); empty.className = "ql-upload-state"; empty.textContent = "No uploads yet. Drop a PDF or JSON above to make your first test."; list.appendChild(empty); return; }
+          papers.forEach(function (paper, index) {
+            var row = document.createElement("div"); row.className = "ql-upload-item"; row.style.animationDelay = (index * 50) + "ms";
+            var info = document.createElement("div");
             var title = document.createElement("strong"); title.textContent = paper.title || "My paper";
-            var count = document.createElement("span"); count.className = "ql-upload-state"; count.textContent = (paper.question_count || 0) + " questions";
+            var count = document.createElement("div"); count.className = "ql-upload-state"; count.textContent = (paper.question_count || 0) + " questions · Your private test";
+            info.append(title, count);
             var link = document.createElement("a"); link.href = "/paper/" + encodeURIComponent(paper.id); link.textContent = "Start";
-            row.append(title, count, link); list.appendChild(row);
+            row.append(info, link); list.appendChild(row);
           });
         }).catch(function (error) { list.replaceChildren(); var message = document.createElement("p"); message.className = "ql-upload-state ql-upload-error"; message.textContent = error.message; list.appendChild(message); });
       }
       refreshUploads();
+      var steps = ["Reading your paper…", "Finding the questions…", "Checking answers and options…", "Building your test…"];
       modal.querySelector(".ql-upload-form").addEventListener("submit", function (event) {
         event.preventDefault();
-        var file = modal.querySelector("input[type=file]").files[0];
-        if (!file) return;
-        var button = modal.querySelector(".ql-upload-pick");
-        button.disabled = true; button.textContent = "Converting paper into a test…"; state.classList.remove("ql-upload-error"); state.textContent = "This can take a minute for a PDF.";
+        var file = fileInput.files[0];
+        if (!file || !allowed) return;
+        var n = 0, ticker;
+        button.disabled = true; button.classList.add("busy"); button.textContent = steps[0];
+        state.className = "ql-upload-state"; state.textContent = "This can take a minute for a PDF.";
+        ticker = setInterval(function () { n = Math.min(n + 1, steps.length - 1); button.textContent = steps[n]; }, 6000);
         var form = new FormData(); form.append("paper", file);
-        fetch(runtime.apiBase + "/student/uploaded-papers", { method: "POST", headers: authHeaders(false), body: form }).then(function (response) {
-          return response.json().then(function (data) { if (!response.ok) throw new Error(data.error || "Could not create a test from this file."); return data; });
+        fetch(runtime.apiBase + "/student/uploaded-papers", { method: "POST", headers: authHeaders(), body: form }).then(function (response) {
+          return response.json().catch(function () { return {}; }).then(function (data) { if (!response.ok) { if (data.quota) renderQuota(data.quota); throw new Error(data.error || data.message || "Could not create a test from this file."); } return data; });
         }).then(function (data) {
-          state.textContent = (data.title || "Your paper") + " is ready with " + (data.question_count || 0) + " questions.";
-          modal.querySelector("input[type=file]").value = "";
+          state.className = "ql-upload-state ok";
+          state.textContent = "✅ " + (data.title || "Your paper") + " is ready with " + (data.question_count || 0) + " questions.";
+          fileInput.value = ""; setFile(null);
+          if (data.quota) renderQuota(data.quota);
           refreshUploads();
           host.dataset.qlLoaded = "";
           fillMyPapers();
-        }).catch(function (error) { state.classList.add("ql-upload-error"); state.textContent = error.message; }).finally(function () { button.disabled = false; button.textContent = "Choose a PDF or JSON file"; });
+        }).catch(function (error) { state.className = "ql-upload-state ql-upload-error"; state.textContent = error.message; }).finally(function () { clearInterval(ticker); button.classList.remove("busy"); button.textContent = "Create my test"; syncButton(); });
       });
     });
   }
@@ -1102,7 +1234,7 @@
           spans[s].outerHTML =
             '<div class="ql-brand-wrap" style="display:inline-flex;flex-direction:column;line-height:1.15;vertical-align:middle;">' +
               '<span style="font-size:14px;font-weight:800;color:#ffffff;letter-spacing:-0.01em;">Quiz LAB</span>' +
-              '<span style="font-size:10px;color:#94a3b8;font-weight:500;">by GenZ <span style="color:#33558b;font-style:italic;font-weight:700;">IITian</span></span>' +
+              '<span style="font-size:10px;color:#94a3b8;font-weight:500;">by GenZ <span style="color:#3a3fd8;font-style:italic;font-weight:700;">IITian</span></span>' +
             '</div>';
           break;
         }
@@ -1137,7 +1269,7 @@
               '<span style="font-size:15px;font-weight:800;letter-spacing:-0.01em;' + (isWhite ? 'color:#ffffff;' : 'color:#0f172a;') + '">Quiz LAB</span>' +
               (isAdmin ? '<span style="margin-left:8px;border-radius:4px;background:#1f2937;padding:2px 6px;font-size:9px;font-weight:700;text-transform:uppercase;color:#94a3b8;">Admin</span>' : '') +
             '</div>' +
-            '<span style="font-size:10.5px;font-weight:500;' + (isWhite ? 'color:#94a3b8;' : 'color:#64748b;') + '">by GenZ <span style="color:#33558b;font-style:italic;font-weight:700;">IITian</span></span>' +
+            '<span style="font-size:10.5px;font-weight:500;' + (isWhite ? 'color:#94a3b8;' : 'color:#64748b;') + '">by GenZ <span style="color:#3a3fd8;font-style:italic;font-weight:700;">IITian</span></span>' +
           '</div>';
       }
     }
@@ -1249,11 +1381,23 @@
     var a = e.target.closest && e.target.closest('a[href="/video-solutions"],a[href^="/video-solutions/"]');
     if (!a) return;
     e.preventDefault(); e.stopPropagation();
-    var n = document.getElementById("ql-vs-toast");
-    if (!n) { n = document.createElement("div"); n.id = "ql-vs-toast"; document.body.appendChild(n); }
-    n.textContent = "Video solutions are coming soon"; n.className = "show";
-    clearTimeout(n._t); n._t = setTimeout(function () { n.className = ""; }, 2200);
+    showMaintenance();
   }, true);
+  function showMaintenance() {
+    if (document.getElementById("ql-mt-overlay")) return;
+    var last = document.activeElement;
+    var gear = '<g fill="currentColor"><rect x="10.2" y="1.5" width="3.6" height="5" rx="1" transform="rotate(0 12 12)"/><rect x="10.2" y="1.5" width="3.6" height="5" rx="1" transform="rotate(45 12 12)"/><rect x="10.2" y="1.5" width="3.6" height="5" rx="1" transform="rotate(90 12 12)"/><rect x="10.2" y="1.5" width="3.6" height="5" rx="1" transform="rotate(135 12 12)"/><rect x="10.2" y="1.5" width="3.6" height="5" rx="1" transform="rotate(180 12 12)"/><rect x="10.2" y="1.5" width="3.6" height="5" rx="1" transform="rotate(225 12 12)"/><rect x="10.2" y="1.5" width="3.6" height="5" rx="1" transform="rotate(270 12 12)"/><rect x="10.2" y="1.5" width="3.6" height="5" rx="1" transform="rotate(315 12 12)"/><path fill-rule="evenodd" d="M12 4.8a7.2 7.2 0 1 0 0 14.4 7.2 7.2 0 0 0 0-14.4zm0 4.4a2.8 2.8 0 1 1 0 5.6 2.8 2.8 0 0 1 0-5.6z"/></g>';
+    var o = document.createElement("div");
+    o.id = "ql-mt-overlay";
+    o.innerHTML = '<div class="ql-mt" role="dialog" aria-modal="true" aria-labelledby="ql-mt-title"><div class="ql-mt-art" aria-hidden="true"><svg class="g1" width="76" height="76" viewBox="0 0 24 24">' + gear + '</svg><svg class="g2" width="52" height="52" viewBox="0 0 24 24">' + gear + '</svg><span class="spark s1"></span><span class="spark s2"></span><span class="spark s3"></span></div><h2 id="ql-mt-title">Video Solutions is under maintenance</h2><p>We are polishing it so every solution plays smoothly. It will be back soon \u2014 keep practising in the meantime.</p><div class="ql-mt-bar" aria-hidden="true"><i></i></div><div class="ql-mt-actions"><a href="/practice">Go to Practice</a><button type="button">Got it</button></div></div>';
+    function close() { document.removeEventListener("keydown", onKey); o.classList.add("out"); setTimeout(function () { o.remove(); }, 180); if (last && last.focus) last.focus(); }
+    function onKey(e) { if (e.key === "Escape") close(); }
+    o.addEventListener("click", function (e) { if (e.target === o) close(); });
+    o.querySelector("button").addEventListener("click", close);
+    document.addEventListener("keydown", onKey);
+    document.body.appendChild(o);
+    o.querySelector("button").focus();
+  }
   function lockVideoSolutions() {
     var on = /^\/video-solutions(\/|$)/.test(location.pathname);
     document.documentElement.toggleAttribute("data-ql-vs-locked", on);
@@ -1289,7 +1433,7 @@
       event.preventDefault();
       event.stopPropagation();
       window.location.assign("/exams?preview=student");
-    } else if (/^\/(exams?(\/|$)|manager\/(discussions|sales|announcements|reports)\/?$|paper-pricing\/?$)/.test(link.pathname)) {
+    } else if (/^\/(exams?(\/|$)|manager\/(discussions|sales|announcements|reports|uploads)\/?$|paper-pricing\/?$)/.test(link.pathname)) {
       event.stopPropagation();
     }
   }, true);
@@ -1458,7 +1602,7 @@
     var ctx = canvas.getContext("2d");
     if (!ctx) { canvas.remove(); return; }
     ctx.scale(ratio, ratio);
-    var colors = ["#f59e0b", "#33558b", "#3b82f6", "#ec4899", "#a855f7", "#facc15", "#ef4444"];
+    var colors = ["#f59e0b", "#3a3fd8", "#3b82f6", "#ec4899", "#a855f7", "#facc15", "#ef4444"];
     var pieces = [];
     for (var i = 0; i < 130; i++) {
       var left = i % 2 === 0;
