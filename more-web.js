@@ -100,10 +100,63 @@
       ':root[data-theme=dark] .ql-more-subtitle,:root[data-theme=dark] .ql-more-link small,:root[data-theme=dark] .ql-more-row-copy small,:root[data-theme=dark] .ql-more-faq p{color:#9ea9b9}',
       ':root[data-theme=dark] .ql-more-form select,:root[data-theme=dark] .ql-more-form textarea,:root[data-theme=dark] .ql-more-button{background:#111722;border-color:#2e3b4c;color:#d6dae5}',
       ':root[data-theme=dark] .ql-more-theme-options button[aria-pressed=true]{background:#1f2d44;border-color:#3a3fd8;color:#a9acf0}',
-      '@media(max-width:640px){.ql-more-card{padding:16px;border-radius:16px}.ql-more-grid{grid-template-columns:1fr}.ql-more-row{align-items:flex-start;flex-direction:column}.ql-more-theme-options{width:100%}.ql-more-theme-options .ql-more-button{flex:1}.ql-more-profile-content{padding:20px}.ql-more-preset-grid{gap:8px}.ql-more-preset{font-size:22px}}'
+      '@media(max-width:640px){.ql-more-card{padding:16px;border-radius:16px}.ql-more-grid{grid-template-columns:1fr}.ql-more-row{align-items:flex-start;flex-direction:column}.ql-more-theme-options{width:100%}.ql-more-theme-options .ql-more-button{flex:1}.ql-more-profile-content{padding:20px}.ql-more-preset-grid{gap:8px}.ql-more-preset{font-size:22px}}',
+      '.ql-paywall-overlay{position:fixed;inset:0;z-index:100000;background:#f8fafc;overflow-y:auto;display:flex;flex-direction:column;animation:qlu-fade .2s ease;font-family:inherit;color:#0f172a}',
+      ':root[data-theme=dark] .ql-paywall-overlay{background:#0b0f19;color:#f8fafc}',
+      '.ql-paywall-close{position:absolute;right:24px;top:24px;z-index:10;border:0;background:rgba(255,255,255,.18);color:#fff;border-radius:50%;width:42px;height:42px;font-size:26px;cursor:pointer;display:grid;place-items:center;transition:background .15s,transform .2s}',
+      '.ql-paywall-close:hover{background:rgba(255,255,255,.32);transform:rotate(90deg)}',
+      '.ql-paywall-hero{background:linear-gradient(135deg,#0f172a 0%,#1e1b4b 60%,#312e81 100%);color:#fff;padding:52px 24px 44px;text-align:center;position:relative;overflow:hidden}',
+      '.ql-paywall-hero::before{content:"";position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(251,191,36,.18) 0%,transparent 70%);pointer-events:none}',
+      '.ql-paywall-hero-inner{max-width:680px;margin:0 auto;position:relative}',
+      '.ql-paywall-emblem{display:inline-flex;align-items:center;justify-content:center;margin-bottom:14px}',
+      '.ql-paywall-pro-pill{padding:6px 18px;border-radius:999px;background:linear-gradient(135deg,#ffd36e,#f59e0b);color:#0f172a;font-size:13px;font-weight:900;letter-spacing:.1em;box-shadow:0 4px 20px rgba(245,158,11,.45)}',
+      '.ql-paywall-title{margin:0;font-size:32px;font-weight:800;letter-spacing:-.03em;color:#fff;line-height:1.2}',
+      '.ql-paywall-sub{margin:12px auto 0;max-width:540px;color:#cbd5e1;font-size:15.5px;line-height:1.55}',
+      '.ql-paywall-body{max-width:720px;margin:0 auto;padding:32px 20px 80px;width:100%;box-sizing:border-box;display:grid;gap:26px}',
+      '.ql-paywall-section-h{margin:0 0 14px;font-size:19px;font-weight:800;color:#0f172a;letter-spacing:-.01em}',
+      ':root[data-theme=dark] .ql-paywall-section-h{color:#f8fafc}',
+      '.ql-paywall-compare{background:#fff;border-radius:20px;border:1px solid #e2e8f0;padding:18px 22px;box-shadow:0 4px 16px rgba(15,23,42,.04)}',
+      ':root[data-theme=dark] .ql-paywall-compare{background:#1e293b;border-color:#334155}',
+      '.ql-paywall-row{display:flex;align-items:center;padding:12px 0;border-bottom:1px solid #f1f5f9;font-size:14px}',
+      ':root[data-theme=dark] .ql-paywall-row{border-bottom-color:#334155}',
+      '.ql-paywall-row:last-child{border-bottom:0}',
+      '.ql-paywall-col-feature{flex:3;font-weight:600;color:#0f172a}',
+      ':root[data-theme=dark] .ql-paywall-col-feature{color:#f8fafc}',
+      '.ql-paywall-col-free{flex:2;text-align:center;color:#64748b;font-weight:600}',
+      ':root[data-theme=dark] .ql-paywall-col-free{color:#94a3b8}',
+      '.ql-paywall-col-pro{flex:2;text-align:center;color:#16a34a;font-weight:800}',
+      '.ql-paywall-plans{display:grid;gap:12px}',
+      '.ql-paywall-plan{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:18px 22px;border:2px solid #e2e8f0;border-radius:18px;background:#fff;cursor:pointer;transition:border-color .15s,background .15s,transform .15s}',
+      ':root[data-theme=dark] .ql-paywall-plan{background:#1e293b;border-color:#334155}',
+      '.ql-paywall-plan:hover{border-color:#c7d2fe}',
+      '.ql-paywall-plan.selected{border-color:#4f46e5;background:#f5f7ff}',
+      ':root[data-theme=dark] .ql-paywall-plan.selected{background:#1e1b4b;border-color:#6366f1}',
+      '.ql-paywall-plan-left{display:flex;align-items:center;gap:14px}',
+      '.ql-paywall-radio{width:20px;height:20px;border-radius:50%;border:2px solid #cbd5e1;display:grid;place-items:center;flex-shrink:0}',
+      '.ql-paywall-plan.selected .ql-paywall-radio{border-color:#4f46e5}',
+      '.ql-paywall-plan.selected .ql-paywall-radio::after{content:"";width:10px;height:10px;border-radius:50%;background:#4f46e5}',
+      '.ql-paywall-plan-title{font-size:16px;font-weight:800;color:#0f172a;display:flex;align-items:center;gap:8px}',
+      ':root[data-theme=dark] .ql-paywall-plan-title{color:#f8fafc}',
+      '.ql-paywall-plan-sub{margin-top:4px;font-size:13px;color:#64748b}',
+      ':root[data-theme=dark] .ql-paywall-plan-sub{color:#94a3b8}',
+      '.ql-paywall-plan-price{font-size:18px;font-weight:800;color:#0f172a;text-align:right;white-space:nowrap}',
+      ':root[data-theme=dark] .ql-paywall-plan-price{color:#f8fafc}',
+      '.ql-paywall-rec{padding:3px 9px;border-radius:6px;background:#fef3c7;color:#92400e;font-size:10px;font-weight:900;letter-spacing:.05em}',
+      '.ql-paywall-trial-box{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:16px;padding:16px 20px;color:#166534}',
+      ':root[data-theme=dark] .ql-paywall-trial-box{background:#052e16;border-color:#166534;color:#86efac}',
+      '.ql-paywall-trial-box strong{display:block;font-size:15px;font-weight:800}',
+      '.ql-paywall-trial-box p{margin:6px 0 0;font-size:13px;line-height:1.5}',
+      '.ql-paywall-trial-box small{display:block;margin-top:6px;font-size:11.5px;color:#15803d;line-height:1.4}',
+      ':root[data-theme=dark] .ql-paywall-trial-box small{color:#4ade80}',
+      '.ql-paywall-cta-btn{width:100%;border:0;border-radius:16px;padding:18px 24px;background:linear-gradient(135deg,#ffd36e,#f59e0b);color:#0f172a;font-size:17px;font-weight:900;cursor:pointer;box-shadow:0 10px 25px -5px rgba(245,158,11,.45);transition:transform .15s,box-shadow .15s;letter-spacing:-.01em;font-family:inherit}',
+      '.ql-paywall-cta-btn:hover{transform:translateY(-2px);box-shadow:0 15px 30px -5px rgba(245,158,11,.55)}',
+      '.ql-paywall-cta-btn:disabled{opacity:.65;cursor:not-allowed;transform:none}',
+      '.ql-paywall-footer-note{text-align:center;font-size:12.5px;color:#64748b;margin:0}',
+      ':root[data-theme=dark] .ql-paywall-footer-note{color:#94a3b8}'
     ].join('');
     document.head.appendChild(style);
   }
+
 
   function badgeGrid(page) {
     var headings = page.querySelectorAll('h2');
@@ -246,6 +299,251 @@
     var oldPhotoCard = page.querySelector('#' + PHOTO_ID);
     if (oldPhotoCard) oldPhotoCard.remove();
   }
+
+  function openProPaywall() {
+    addStyles();
+    var existing = document.getElementById('ql-pro-paywall-modal');
+    if (existing) return;
+    var overlay = document.createElement('div');
+    overlay.id = 'ql-pro-paywall-modal';
+    overlay.className = 'ql-paywall-overlay';
+    overlay.setAttribute('role', 'dialog');
+    overlay.setAttribute('aria-modal', 'true');
+    overlay.setAttribute('aria-label', 'Quiz LAB Pro');
+
+    overlay.innerHTML = [
+      '<div class="ql-paywall-hero">',
+      '  <button class="ql-paywall-close" type="button" aria-label="Close">&times;</button>',
+      '  <div class="ql-paywall-hero-inner">',
+      '    <div class="ql-paywall-emblem"><span class="ql-paywall-pro-pill">PRO</span></div>',
+      '    <h1 class="ql-paywall-title">Go Pro. Make practice yours.</h1>',
+      '    <p class="ql-paywall-sub">Video solutions, offline papers, and turning your uploaded PDFs into practice tests.</p>',
+      '  </div>',
+      '</div>',
+      '<div class="ql-paywall-body">',
+      '  <div id="ql-paywall-status" hidden></div>',
+      '  <div>',
+      '    <h2 class="ql-paywall-section-h">Everything in Pro</h2>',
+      '    <div class="ql-paywall-compare">',
+      '      <div class="ql-paywall-row" style="font-weight:700;border-bottom:1px solid #e2e8f0;padding-bottom:10px;">',
+      '        <div class="ql-paywall-col-feature">Feature</div>',
+      '        <div class="ql-paywall-col-free">Free</div>',
+      '        <div class="ql-paywall-col-pro"><span class="ql-paywall-rec" style="background:linear-gradient(135deg,#ffd36e,#f59e0b);color:#0f172a;font-size:11px;padding:3px 10px;">PRO</span></div>',
+      '      </div>',
+      '      <div class="ql-paywall-row">',
+      '        <div class="ql-paywall-col-feature">Paper uploads</div>',
+      '        <div class="ql-paywall-col-free">1 / week</div>',
+      '        <div class="ql-paywall-col-pro">5 / week</div>',
+      '      </div>',
+      '      <div class="ql-paywall-row">',
+      '        <div class="ql-paywall-col-feature">Offline downloads</div>',
+      '        <div class="ql-paywall-col-free">—</div>',
+      '        <div class="ql-paywall-col-pro">Included</div>',
+      '      </div>',
+      '      <div class="ql-paywall-row">',
+      '        <div class="ql-paywall-col-feature">Video solutions</div>',
+      '        <div class="ql-paywall-col-free">—</div>',
+      '        <div class="ql-paywall-col-pro">Included</div>',
+      '      </div>',
+      '      <div class="ql-paywall-row">',
+      '        <div class="ql-paywall-col-feature">Practice papers</div>',
+      '        <div class="ql-paywall-col-free">Included</div>',
+      '        <div class="ql-paywall-col-pro">Included</div>',
+      '      </div>',
+      '    </div>',
+      '  </div>',
+      '  <div id="ql-paywall-plans-container">',
+      '    <h2 class="ql-paywall-section-h">Choose your plan</h2>',
+      '    <div class="ql-paywall-plans" role="radiogroup" aria-label="Choose your Pro plan">',
+      '      <div class="ql-paywall-plan selected" id="ql-paywall-plan-monthly" role="radio" aria-checked="true" tabindex="0">',
+      '        <div class="ql-paywall-plan-left">',
+      '          <span class="ql-paywall-radio" aria-hidden="true"></span>',
+      '          <div>',
+      '            <div class="ql-paywall-plan-title">Monthly <span class="ql-paywall-rec" id="ql-paywall-rec-badge">RECOMMENDED</span></div>',
+      '            <div class="ql-paywall-plan-sub" id="ql-paywall-monthly-sub">Try for free · 7 days, then ₹99/month</div>',
+      '          </div>',
+      '        </div>',
+      '        <div class="ql-paywall-plan-price" id="ql-paywall-monthly-price">₹99/mo</div>',
+      '      </div>',
+      '      <div class="ql-paywall-plan" id="ql-paywall-plan-annual" role="radio" aria-checked="false" tabindex="0">',
+      '        <div class="ql-paywall-plan-left">',
+      '          <span class="ql-paywall-radio" aria-hidden="true"></span>',
+      '          <div>',
+      '            <div class="ql-paywall-plan-title">Yearly</div>',
+      '            <div class="ql-paywall-plan-sub">Billed yearly. No free trial. Cancel renewal any time.</div>',
+      '          </div>',
+      '        </div>',
+      '        <div class="ql-paywall-plan-price" id="ql-paywall-annual-price">₹999/yr</div>',
+      '      </div>',
+      '    </div>',
+      '  </div>',
+      '  <div class="ql-paywall-trial-box" id="ql-paywall-trial-box">',
+      '    <strong id="ql-paywall-trial-headline">₹99 − ₹99 trial discount = FREE today</strong>',
+      '    <p id="ql-paywall-trial-copy">Pro starts today. First charge after 7 days, then ₹99/month.</p>',
+      '    <small>Cancel before the trial ends to avoid subscription charges. Razorpay confirms the exact billing time; your bank may require an authorisation payment.</small>',
+      '  </div>',
+      '  <div style="display:grid;gap:12px;">',
+      '    <button type="button" class="ql-paywall-cta-btn" id="ql-paywall-cta">Try for free</button>',
+      '    <p class="ql-paywall-footer-note">Cancel any time from your subscription settings. Powered by Razorpay.</p>',
+      '  </div>',
+      '  <div id="ql-paywall-history-sec" style="margin-top:10px;">',
+      '    <button type="button" class="ql-more-button" id="ql-paywall-history-btn" style="width:100%;text-align:center;padding:12px;">View membership &amp; transactions</button>',
+      '    <div id="ql-paywall-history" hidden style="margin-top:16px;background:#fff;border:1px solid #e2e8f0;border-radius:18px;padding:18px;"></div>',
+      '  </div>',
+      '</div>'
+    ].join('\n');
+
+    document.body.appendChild(overlay);
+
+    function close() {
+      overlay.remove();
+      if (location.pathname === '/pro' || location.hash === '#pro') {
+        if (window.history.length > 1) window.history.back();
+        else location.assign('/dashboard');
+      }
+    }
+    overlay.querySelector('.ql-paywall-close').addEventListener('click', close);
+    document.addEventListener('keydown', function esc(e) {
+      if (e.key === 'Escape' && overlay.isConnected) {
+        close();
+        document.removeEventListener('keydown', esc);
+      }
+    });
+
+    var selectedPeriod = 'monthly';
+    var planMonthly = overlay.querySelector('#ql-paywall-plan-monthly');
+    var planAnnual = overlay.querySelector('#ql-paywall-plan-annual');
+    var trialBox = overlay.querySelector('#ql-paywall-trial-box');
+    var cta = overlay.querySelector('#ql-paywall-cta');
+    var statusCard = overlay.querySelector('#ql-paywall-status');
+    var plansContainer = overlay.querySelector('#ql-paywall-plans-container');
+    var monthlySub = overlay.querySelector('#ql-paywall-monthly-sub');
+    var monthlyPrice = overlay.querySelector('#ql-paywall-monthly-price');
+    var annualPrice = overlay.querySelector('#ql-paywall-annual-price');
+    var trialHeadline = overlay.querySelector('#ql-paywall-trial-headline');
+    var trialCopy = overlay.querySelector('#ql-paywall-trial-copy');
+    var recBadge = overlay.querySelector('#ql-paywall-rec-badge');
+    var historyBtn = overlay.querySelector('#ql-paywall-history-btn');
+    var historyBox = overlay.querySelector('#ql-paywall-history');
+    var currentData = null;
+
+    function renderPaywall() {
+      if (!currentData) return;
+      var isYearly = selectedPeriod === 'annual';
+      var pro = currentData.is_pro === true;
+      var sub = currentData.subscription || {};
+      var days = currentData.plan?.trial_days ?? 7;
+      var trial = !isYearly && currentData.trial_available === true && days > 0;
+      var mPrice = '₹' + ((currentData.plan?.price_paise ?? 9900) / 100);
+      var aPrice = '₹' + ((currentData.annual_price_paise ?? 99900) / 100);
+
+      monthlyPrice.textContent = mPrice + '/mo';
+      annualPrice.textContent = aPrice + '/yr';
+
+      if (pro) {
+        statusCard.hidden = false;
+        var dateText = sub.started_at ? 'Started ' + new Date(sub.started_at).toLocaleDateString('en-IN') + (sub.current_period_ends_at ? ' · Current period ends ' + new Date(sub.current_period_ends_at).toLocaleDateString('en-IN') : '') : 'Pro access is active on your account.';
+        statusCard.innerHTML = '<div style="padding:18px 22px;border-radius:18px;background:#f0fdf4;border:1px solid #bbf7d0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;"><div style="color:#166534;"><strong style="font-size:16px;">✓ You are a Pro member</strong><br><small style="color:#15803d;font-size:13px;">' + escapeHtml(dateText) + '</small></div>' + (sub.id && ['google_play','razorpay'].includes(sub.provider) && sub.status !== 'cancelled' && !sub.cancel_at_period_end ? '<button type="button" class="ql-more-button danger" id="ql-paywall-cancel" style="padding:10px 16px;font-size:13px;font-weight:700;">Cancel renewal</button>' : '') + '</div>';
+        var cancelBtn = statusCard.querySelector('#ql-paywall-cancel');
+        if (cancelBtn) {
+          cancelBtn.addEventListener('click', function () {
+            if (!window.confirm('Cancel Pro renewal? Your Pro access remains until the current billing period ends.')) return;
+            cancelBtn.disabled = true;
+            cancelBtn.textContent = 'Processing…';
+            fetch(apiBase() + '/membership/cancel', { method: 'POST', headers: { Accept: 'application/json', Authorization: 'Bearer ' + token() } })
+              .then(function (res) { return res.json(); })
+              .then(function () { alert('Renewal cancelled.'); loadData(); })
+              .catch(function (e) { alert(e.message); cancelBtn.disabled = false; cancelBtn.textContent = 'Cancel renewal'; });
+          });
+        }
+        plansContainer.hidden = true;
+        trialBox.hidden = true;
+        cta.hidden = true;
+      } else {
+        statusCard.hidden = true;
+        plansContainer.hidden = false;
+        cta.hidden = false;
+
+        if (isYearly) {
+          planAnnual.classList.add('selected');
+          planAnnual.setAttribute('aria-checked', 'true');
+          planMonthly.classList.remove('selected');
+          planMonthly.setAttribute('aria-checked', 'false');
+          trialBox.hidden = true;
+          cta.textContent = 'Subscribe yearly · ' + aPrice;
+        } else {
+          planMonthly.classList.add('selected');
+          planMonthly.setAttribute('aria-checked', 'true');
+          planAnnual.classList.remove('selected');
+          planAnnual.setAttribute('aria-checked', 'false');
+
+          if (trial) {
+            recBadge.hidden = false;
+            monthlySub.textContent = 'Try for free · ' + days + ' days, then ' + mPrice + '/month';
+            trialBox.hidden = false;
+            trialHeadline.textContent = mPrice + ' − ' + mPrice + ' trial discount = FREE today';
+            var chargeDate = new Date(); chargeDate.setDate(chargeDate.getDate() + days);
+            trialCopy.textContent = 'Pro starts today. First charge: ' + chargeDate.toLocaleDateString('en-IN') + ', then ' + mPrice + '/month.';
+            cta.textContent = '🚀 Try for free';
+          } else {
+            recBadge.hidden = true;
+            monthlySub.textContent = 'Billed monthly. Cancel renewal any time.';
+            trialBox.hidden = true;
+            cta.textContent = 'Subscribe monthly · ' + mPrice;
+          }
+        }
+      }
+    }
+
+    planMonthly.addEventListener('click', function () { selectedPeriod = 'monthly'; renderPaywall(); });
+    planAnnual.addEventListener('click', function () { selectedPeriod = 'annual'; renderPaywall(); });
+
+    cta.addEventListener('click', function () {
+      cta.disabled = true;
+      cta.textContent = 'Opening Razorpay checkout…';
+      api('/membership/razorpay/start', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ billing_period: selectedPeriod })
+      }).then(function (result) {
+        if (!result.checkout_url) throw new Error('Checkout link was not returned. Please try again.');
+        location.assign(result.checkout_url);
+      }).catch(function (err) {
+        alert('Could not start Razorpay checkout: ' + err.message);
+        cta.disabled = false;
+        renderPaywall();
+      });
+    });
+
+    var histPage = 1;
+    function loadHistory() {
+      historyBox.hidden = false;
+      historyBox.textContent = 'Loading history…';
+      api('/membership/history?page=' + histPage).then(function (result) {
+        var ledger = result.transactions || {}, memberships = result.subscriptions || result.memberships || [];
+        function safe(v) { return escapeHtml(v); }
+        historyBox.innerHTML = '<h3 style="margin-top:0;font-size:15px;">Membership history</h3>' + (memberships.length ? memberships.map(function (row) { return '<p style="font-size:13px;margin:6px 0;"><strong>' + safe(row.provider) + ' · ' + safe(row.status) + '</strong><br>Started: ' + safe(row.started_at || row.created_at || '—') + '<br>Next charge / access end: ' + safe(row.current_period_ends_at || '—') + (row.cancel_at_period_end ? '<br>Renewal cancelled' : '') + '</p>'; }).join('') : '<p style="font-size:13px;color:#64748b;">No membership history yet.</p>') + '<h3 style="font-size:15px;margin-top:14px;">Transactions</h3>' + ((ledger.data || []).length ? ledger.data.map(function (row) { var amt = row.amount_paise ?? row.amount_minor; return '<p style="font-size:13px;margin:6px 0;"><strong>' + safe(row.title || 'Payment') + ' · ₹' + (amt ? Number(amt)/100 : '0') + '</strong><br>' + safe(row.provider) + ' · ' + safe(row.status) + ' · ' + safe(row.paid_at || row.created_at || '') + '</p>'; }).join('') : '<p style="font-size:13px;color:#64748b;">No recorded transactions.</p>');
+      }).catch(function (e) { historyBox.textContent = e.message; });
+    }
+    historyBtn.addEventListener('click', function () {
+      if (historyBox.hidden) loadHistory();
+      else historyBox.hidden = true;
+    });
+
+    function loadData() {
+      api('/membership').then(function (res) {
+        currentData = res;
+        renderPaywall();
+      }).catch(function (err) {
+        trialBox.hidden = false;
+        trialHeadline.textContent = 'Could not load Pro plan';
+        trialCopy.textContent = err.message;
+      });
+    }
+    loadData();
+  }
+  window.openProPaywall = openProPaywall;
+
   function profileData() {
     var current = token();
     if (!current) return Promise.reject(new Error('Please sign in again to load your account details.'));
@@ -555,6 +853,9 @@
     signOut();
   }
   function ensureMore() {
+    if (/^\/pro\/?$/i.test(location.pathname) || location.hash === '#pro') {
+      openProPaywall();
+    }
     var settings = settingsPage();
     if (settings) { addStyles(); ensureMembership(settings); }
     if (!/^\/profile\/?$/i.test(location.pathname)) return;
@@ -591,6 +892,13 @@
     if (actions && page.lastElementChild !== actions) page.appendChild(actions);
   }
   document.addEventListener('click', interceptSignOut, true);
+  document.addEventListener('click', function (e) {
+    var a = e.target && e.target.closest && e.target.closest('a[href="/pro"], a[href="#pro"], [data-pro-paywall], .ql-open-pro');
+    if (a) {
+      e.preventDefault();
+      openProPaywall();
+    }
+  });
   var scheduled = false;
   function schedule() {
     if (scheduled) return;
