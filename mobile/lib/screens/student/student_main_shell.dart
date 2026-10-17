@@ -2463,11 +2463,12 @@ class _HomeQuickActions extends StatelessWidget {
       _QuickActionTile(
         icon: Icons.upload_file_rounded,
         label: 'Upload a paper',
-        subtitle: '1 free upload a week · Pro gets more',
+        subtitle: 'Turn your PDF into a practice test',
         tint: const Color(0xFFDCFCE7),
         color: const Color(0xFF16A34A),
         onTap: onUploadPaper,
         wide: true,
+        pro: true,
       ),
     ],
   );
