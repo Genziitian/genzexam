@@ -18,22 +18,22 @@ main:has(#ql-web-profile-editor) #ql-web-profile-edit:hover{background:var(--pf-
 main:has(#ql-web-profile-editor) #ql-web-profile-message{color:#DADCFF!important}
 
 /* "More" summary card (joined date): kept, restyled */
-main:has(#ql-web-profile-editor) #ql-web-profile-editor+div{border:1.5px solid var(--pf-line)!important;border-radius:22px!important;background:var(--pf-surface)!important;box-shadow:none!important}
-main:has(#ql-web-profile-editor) #ql-web-profile-editor+div h1{color:var(--pf-ink)!important}
+main:has(#ql-web-profile-editor) [data-ql-profile-page]>div:first-child{border:1.5px solid var(--pf-line)!important;border-radius:22px!important;background:var(--pf-surface)!important;box-shadow:none!important}
+main:has(#ql-web-profile-editor) [data-ql-profile-page]>div:first-child h1{color:var(--pf-ink)!important}
 
 /* stat tiles */
-main:has(#ql-web-profile-editor) #ql-web-profile-editor~.grid>div{position:relative;overflow:hidden;border-radius:22px!important;border:1.5px solid var(--pf-line)!important;background:var(--pf-surface)!important;padding:22px!important;box-shadow:none!important;transition:transform .2s ease,border-color .2s;animation:pfIn .6s cubic-bezier(.2,.7,.2,1) both}
-main:has(#ql-web-profile-editor) #ql-web-profile-editor~.grid>div:hover{transform:translateY(-3px);border-color:var(--pf-brand)!important}
-main:has(#ql-web-profile-editor) #ql-web-profile-editor~.grid>div::before{content:'';position:absolute;left:0;top:0;right:0;height:5px;z-index:1}
-main:has(#ql-web-profile-editor) #ql-web-profile-editor~.grid>div:nth-child(1)::before{background:var(--pf-brand)}
-main:has(#ql-web-profile-editor) #ql-web-profile-editor~.grid>div:nth-child(2)::before{background:var(--pf-yellow)}
-main:has(#ql-web-profile-editor) #ql-web-profile-editor~.grid>div:nth-child(3)::before{background:var(--pf-green)}
-main:has(#ql-web-profile-editor) #ql-web-profile-editor~.grid>div:nth-child(4)::before{background:var(--pf-purple)}
-main:has(#ql-web-profile-editor) #ql-web-profile-editor~.grid>div:nth-child(2){animation-delay:.06s}
-main:has(#ql-web-profile-editor) #ql-web-profile-editor~.grid>div:nth-child(3){animation-delay:.12s}
-main:has(#ql-web-profile-editor) #ql-web-profile-editor~.grid>div:nth-child(4){animation-delay:.18s}
-main:has(#ql-web-profile-editor) #ql-web-profile-editor~.grid>div>p:first-child{color:var(--pf-muted)!important;font-size:11px!important}
-main:has(#ql-web-profile-editor) #ql-web-profile-editor~.grid>div>p:nth-child(2){color:var(--pf-ink)!important;font-size:34px!important}
+main:has(#ql-web-profile-editor) [data-ql-profile-page]>.grid>div{position:relative;overflow:hidden;border-radius:22px!important;border:1.5px solid var(--pf-line)!important;background:var(--pf-surface)!important;padding:22px!important;box-shadow:none!important;transition:transform .2s ease,border-color .2s;animation:pfIn .6s cubic-bezier(.2,.7,.2,1) both}
+main:has(#ql-web-profile-editor) [data-ql-profile-page]>.grid>div:hover{transform:translateY(-3px);border-color:var(--pf-brand)!important}
+main:has(#ql-web-profile-editor) [data-ql-profile-page]>.grid>div::before{content:'';position:absolute;left:0;top:0;right:0;height:5px;z-index:1}
+main:has(#ql-web-profile-editor) [data-ql-profile-page]>.grid>div:nth-child(1)::before{background:var(--pf-brand)}
+main:has(#ql-web-profile-editor) [data-ql-profile-page]>.grid>div:nth-child(2)::before{background:var(--pf-yellow)}
+main:has(#ql-web-profile-editor) [data-ql-profile-page]>.grid>div:nth-child(3)::before{background:var(--pf-green)}
+main:has(#ql-web-profile-editor) [data-ql-profile-page]>.grid>div:nth-child(4)::before{background:var(--pf-purple)}
+main:has(#ql-web-profile-editor) [data-ql-profile-page]>.grid>div:nth-child(2){animation-delay:.06s}
+main:has(#ql-web-profile-editor) [data-ql-profile-page]>.grid>div:nth-child(3){animation-delay:.12s}
+main:has(#ql-web-profile-editor) [data-ql-profile-page]>.grid>div:nth-child(4){animation-delay:.18s}
+main:has(#ql-web-profile-editor) [data-ql-profile-page]>.grid>div>p:first-child{color:var(--pf-muted)!important;font-size:11px!important}
+main:has(#ql-web-profile-editor) [data-ql-profile-page]>.grid>div>p:nth-child(2){color:var(--pf-ink)!important;font-size:34px!important}
 
 /* section cards */
 main:has(#ql-web-profile-editor) #ql-web-more-actions .ql-more-card{border:1.5px solid var(--pf-line)!important;border-radius:24px!important;background:var(--pf-surface)!important;padding:24px!important;box-shadow:none!important;animation:pfIn .6s cubic-bezier(.2,.7,.2,1) both}
@@ -88,9 +88,9 @@ main:has(#ql-web-profile-editor) #ql-web-profile-editor::before{width:170px;heig
 main:has(#ql-web-profile-editor) .ql-more-profile-summary{flex-wrap:wrap}
 main:has(#ql-web-profile-editor) #ql-web-profile-avatar{width:70px!important;height:70px!important}
 main:has(#ql-web-profile-editor) #ql-web-profile-edit{width:100%}
-main:has(#ql-web-profile-editor) #ql-web-profile-editor~.grid{grid-template-columns:1fr 1fr!important;gap:10px!important}
-main:has(#ql-web-profile-editor) #ql-web-profile-editor~.grid>div{padding:16px!important;border-radius:18px!important}
-main:has(#ql-web-profile-editor) #ql-web-profile-editor~.grid>div>p:nth-child(2){font-size:26px!important}
+main:has(#ql-web-profile-editor) [data-ql-profile-page]>.grid{grid-template-columns:1fr 1fr!important;gap:10px!important}
+main:has(#ql-web-profile-editor) [data-ql-profile-page]>.grid>div{padding:16px!important;border-radius:18px!important}
+main:has(#ql-web-profile-editor) [data-ql-profile-page]>.grid>div>p:nth-child(2){font-size:26px!important}
 main:has(#ql-web-profile-editor) #ql-web-more-actions .ql-more-card{padding:18px!important;border-radius:20px!important}
 main:has(#ql-web-profile-editor) #ql-web-more-actions>.ql-more-card>.ql-more-heading{font-size:18px!important}
 main:has(#ql-web-profile-editor) #ql-web-more-actions .ql-more-theme-options{width:100%}

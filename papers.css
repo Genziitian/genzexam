@@ -246,7 +246,7 @@ footer{background:var(--navy);color:var(--navy-text)}
 @media (max-width:560px){.sf{padding:48px 0 24px}.sf-cols{grid-template-columns:1fr 1fr}.sf-cols nav:last-child{grid-column:1/-1}.sf-chips a{flex:1 1 100%;justify-content:center}}
 
 /* ---------- GenZ IITian links in the menu ---------- */
-.nav-genz,.nav-free{display:inline-flex!important;align-items:center;gap:9px}
+.nav-genz,.nav-youtube{display:inline-flex!important;align-items:center;gap:9px}
 .tv{position:relative;display:inline-block;width:38px;height:28px;flex:none;transition:transform .25s cubic-bezier(.3,1.6,.5,1)}
 .tv-scr{position:absolute;left:0;right:0;bottom:0;height:24px;border-radius:7px;background:#fff;border:2px solid var(--ink);box-shadow:inset 0 0 0 1.5px #fff,0 3px 0 -1px var(--ink);display:grid;place-items:center;overflow:hidden}
 .tv-scr img{width:28px;height:auto;display:block}
@@ -257,12 +257,14 @@ footer{background:var(--navy);color:var(--navy-text)}
 .nav-genz:hover .tv{transform:rotate(-8deg) scale(1.08)}
 @keyframes tvGlare{0%,70%{transform:translateX(-120%)}100%{transform:translateX(120%)}}
 .free-tag{font-size:10px;font-weight:800;letter-spacing:.06em;padding:3px 7px;border-radius:999px;background:#0E7A4F;color:#fff;line-height:1}
-.mnav-in>a.nav-genz,.mnav-in>a.nav-free{gap:12px}
+.mnav-in>a.nav-genz,.mnav-in>a.nav-youtube{gap:12px}
 @media (prefers-reduced-motion:reduce){.tv-scr::after{animation:none}}
 
 .links{gap:22px!important;margin-left:22px!important}
 .links>a,.pol-btn{white-space:nowrap}
-.nav-free{gap:6px!important}
+.nav-youtube{gap:6px!important}
+  .nav-youtube svg{display:block;flex:none}
+  .nav-youtube span{font-size:12px;font-weight:600;line-height:1.2}
 @media (max-width:1180px){.links{display:none!important}.menu-btn{display:grid!important}}
 @media (min-width:1181px){.mnav{display:none!important}}
 

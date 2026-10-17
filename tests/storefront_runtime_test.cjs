@@ -9,7 +9,9 @@ function run({ pathname = '/papers', token = '', pending = null } = {}) {
   const navigations = [];
   const context = {
     window: { addEventListener() {} },
-    localStorage: { getItem: () => token },
+    localStorage: { getItem: k => k === 'lab_token' ? token : null },
+    navigator: {},
+    document: { addEventListener() {} },
     sessionStorage: { getItem: k => storage.get(k), setItem: (k,v) => storage.set(k,v), removeItem: k => storage.delete(k) },
     location: { pathname, assign: url => navigations.push(url), replace: url => navigations.push(url) },
     setInterval: () => 1, clearInterval() {},

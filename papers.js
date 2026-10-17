@@ -38,7 +38,6 @@
   function renderCatalog() {
     const query = search.value.trim().toLowerCase();
     const rows = papers.filter(p => p.available !== false && (!query || [p.title,p.description,p.course?.name,p.course?.level,p.year,sectionLabel(p.section)].join(' ').toLowerCase().includes(query)) && (!level.value || String(p.course?.level || '') === level.value) && (!type.value || p.section === type.value) && (!subject.value || String(p.course?.name || '') === subject.value));
-    byId('result-count').textContent = `${rows.length} ${rows.length === 1 ? 'paper' : 'papers'}`;
     grid.innerHTML = rows.length ? rows.map(card).join('') : '<div class="empty">No papers match these filters. Try another level or paper type.<br><button class="btn" data-reset>Clear filters</button></div>';
   }
   async function loadCatalog() {
@@ -46,8 +45,10 @@
     try {
       const data = await api('/storefront/papers'); papers = Array.isArray(data.papers) ? data.papers : [];
       level.innerHTML = '<option value="">All levels</option>';
-      [...new Set(papers.map(p => p.course?.level).filter(Boolean))].sort().forEach(value => { const option = document.createElement('option'); option.value = value; option.textContent = value; level.appendChild(option); });
-      subject.innerHTML = '<option value="">All subjects</option>';
+      const levelOrder = ['foundation', 'diploma', 'degree'];
+      const levelRank = value => { const rank = levelOrder.indexOf(value.trim().toLowerCase()); return rank < 0 ? levelOrder.length : rank; };
+      [...new Set(papers.map(p => p.course?.level).filter(Boolean))].sort((a, b) => levelRank(a) - levelRank(b) || a.localeCompare(b)).forEach(value => { const option = document.createElement('option'); option.value = value; option.textContent = value; level.appendChild(option); });
+      subject.innerHTML = '<option value="">All courses</option>';
       [...new Set(papers.map(p => p.course?.name).filter(Boolean))].sort((a, b) => a.localeCompare(b)).forEach(value => { const option = document.createElement('option'); option.value = value; option.textContent = value; subject.appendChild(option); });
       // Links from the home page: /papers?q=<text> and /papers?level=<level>.
       const params = new URLSearchParams(location.search), wantLevel = (params.get('level') || '').trim().toLowerCase();

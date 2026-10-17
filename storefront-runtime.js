@@ -83,7 +83,7 @@
         localStorage.setItem('lab_token', data.token);
         localStorage.setItem('lab_user', JSON.stringify(data.user));
       } catch (_) { return; }
-      location.replace(data.user.is_admin ? '/admin' : '/dashboard');
+      location.replace('/dashboard');
     }).catch(function () {}).then(function () { collecting = false; });
   }
   document.addEventListener('click', function (event) {

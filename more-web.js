@@ -256,7 +256,7 @@
     card.id = 'ql-web-profile-editor';
     card.className = 'ql-more-card';
     card.innerHTML = '<h2 class="ql-more-heading">Profile</h2><div class="ql-more-profile-summary"><div class="ql-more-avatar" id="ql-web-profile-avatar"></div><div class="ql-more-profile-meta"><strong id="ql-web-profile-name">Loading profile…</strong><small id="ql-web-profile-email"></small></div><button type="button" class="ql-more-button" id="ql-web-profile-edit">Edit</button></div><p class="ql-more-message" id="ql-web-profile-message" role="status"></p>';
-    page.prepend(card);
+    page.appendChild(card);
     var avatar = card.querySelector('#ql-web-profile-avatar');
     var name = card.querySelector('#ql-web-profile-name');
     var email = card.querySelector('#ql-web-profile-email');
@@ -517,15 +517,27 @@
     renameProfileNav();
     var page = profilePage();
     if (!page) return;
+    page.setAttribute('data-ql-profile-page', '');
     compactBadges(page);
     removeDuplicateProfileBlocks(page);
     ensureProfileEditor(page);
-    if (document.getElementById(MORE_ID)) return;
+    if (document.getElementById(MORE_ID)) { orderProfileSections(page); return; }
     var host = document.createElement('div');
     host.innerHTML = actionMarkup();
     var actions = host.firstElementChild;
     page.appendChild(actions);
     bindMore(actions);
+    orderProfileSections(page);
+  }
+  function orderProfileSections(page) {
+    // Keep the app's level, badge and performance cards before the account tools.
+    // Move only the sections injected by this script, leaving React's cards intact.
+    var editor = page.querySelector('#ql-web-profile-editor');
+    var actions = page.querySelector('#' + MORE_ID);
+    var children = page.children;
+    if (editor && actions && children[children.length - 2] === editor && page.lastElementChild === actions) return;
+    if (editor) page.appendChild(editor);
+    if (actions) page.appendChild(actions);
   }
   document.addEventListener('click', interceptSignOut, true);
   var scheduled = false;

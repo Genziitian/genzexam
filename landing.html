@@ -6,7 +6,7 @@
 <title>Quiz LAB by GenZ IITian — Practise IITM BS papers like it's the real exam</title>
 <meta name="description" content="Past Quiz 1, Quiz 2, End Term and mock papers for IITM BS. Practise on a real timer or with instant solutions, from Qualifier to Degree." />
 <meta name="theme-color" content="#0E1330" />
-<script src="/storefront-runtime.js?v=20261010a"></script>
+<script src="/storefront-runtime.js?v=20261017a"></script>
 <script>
 /* Apply the saved theme before first paint (same logic as ql-theme.js). */
 try{var _t=localStorage.getItem('ql_theme');if(_t==='dark'||_t==='light')document.documentElement.setAttribute('data-theme',_t);}catch(e){}
@@ -98,10 +98,15 @@ if('IntersectionObserver' in window&&!(window.matchMedia&&matchMedia('(prefers-r
   .icon-btn:hover{border-color:var(--brand)}
   .profile-menu{position:relative}
   .profile-menu[hidden],.btn[hidden]{display:none}
-  .profile-chip{display:inline-flex;align-items:center;gap:8px;max-width:200px;min-height:44px;padding:4px 14px 4px 5px;border:1.5px solid var(--line-2);border-radius:999px;background:var(--surface);font-size:14px;font-weight:700}
+  .profile-chip{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:5px 10px 5px 6px;border:1.5px solid var(--line-2);border-radius:999px;background:var(--surface);font-size:14px;font-weight:700}
   .profile-chip:hover{border-color:var(--brand)}
-  .profile-initial{width:32px;height:32px;border-radius:50%;background:var(--brand);color:#fff;display:grid;place-items:center;font-size:13px;font-weight:800;flex-shrink:0}
-  .profile-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .profile-chip:focus-visible{outline:3px solid var(--brand);outline-offset:4px}
+  .profile-initial{position:relative;width:32px;height:32px;border-radius:50%;background:var(--brand);color:#fff;display:grid;place-items:center;font-size:13px;font-weight:800;flex-shrink:0}
+  .profile-initial::before{content:'';position:absolute;inset:-4px;border-radius:50%;padding:2px;background:conic-gradient(transparent 15%,var(--brand) 50%,var(--yellow) 80%,transparent);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;animation:profileOrbit 5s linear infinite}
+  .profile-chevron{flex:none;color:var(--text);transition:transform .2s ease}
+  .profile-chip[aria-expanded="true"] .profile-chevron{transform:rotate(180deg)}
+  @keyframes profileOrbit{to{transform:rotate(360deg)}}
+  @media(prefers-reduced-motion:reduce){.profile-initial::before{animation:none}.profile-chevron{transition:none}}
   .profile-dropdown{position:absolute;right:0;top:calc(100% + 9px);z-index:70;min-width:170px;padding:6px;border:1.5px solid var(--line);border-radius:14px;background:var(--surface);box-shadow:0 14px 36px rgba(14,19,48,.18)}
   .profile-dropdown[hidden]{display:none!important}
   .profile-dropdown a,.profile-dropdown button{display:flex;align-items:center;width:100%;min-height:42px;padding:0 12px;border:0;border-radius:10px;background:transparent;text-align:left;font:inherit;font-size:14px;font-weight:700}
@@ -485,7 +490,7 @@ if('IntersectionObserver' in window&&!(window.matchMedia&&matchMedia('(prefers-r
   
 
   /* ---------- GenZ IITian links in the menu ---------- */
-  .nav-genz,.nav-free{display:inline-flex!important;align-items:center;gap:9px}
+  .nav-genz,.nav-youtube{display:inline-flex!important;align-items:center;gap:9px}
   .tv{position:relative;display:inline-block;width:38px;height:28px;flex:none;transition:transform .25s cubic-bezier(.3,1.6,.5,1)}
   .tv-scr{position:absolute;left:0;right:0;bottom:0;height:24px;border-radius:7px;background:#fff;border:2px solid var(--ink);box-shadow:inset 0 0 0 1.5px #fff,0 3px 0 -1px var(--ink);display:grid;place-items:center;overflow:hidden}
   .tv-scr img{width:28px;height:auto;display:block}
@@ -496,13 +501,15 @@ if('IntersectionObserver' in window&&!(window.matchMedia&&matchMedia('(prefers-r
   .nav-genz:hover .tv{transform:rotate(-8deg) scale(1.08)}
   @keyframes tvGlare{0%,70%{transform:translateX(-120%)}100%{transform:translateX(120%)}}
   .free-tag{font-size:10px;font-weight:800;letter-spacing:.06em;padding:3px 7px;border-radius:999px;background:#0E7A4F;color:#fff;line-height:1}
-  .mnav-in>a.nav-genz,.mnav-in>a.nav-free{gap:12px}
+  .mnav-in>a.nav-genz,.mnav-in>a.nav-youtube{gap:12px}
   @media (prefers-reduced-motion:reduce){.tv-scr::after{animation:none}}
   
 
   .links{gap:22px!important;margin-left:22px!important}
   .links>a,.pol-btn{white-space:nowrap}
-  .nav-free{gap:6px!important}
+  .nav-youtube{gap:6px!important}
+  .nav-youtube svg{display:block;flex:none}
+  .nav-youtube span{font-size:12px;font-weight:600;line-height:1.2}
   @media (max-width:1180px){.links{display:none!important}.menu-btn{display:grid!important}}
   @media (min-width:1181px){.mnav{display:none!important}}
   
@@ -617,7 +624,7 @@ if('IntersectionObserver' in window&&!(window.matchMedia&&matchMedia('(prefers-r
     .brand img{width:36px;height:36px}
     .brand-text strong{font-size:18px}
     .hide-sm{display:none!important}
-    .profile-name{display:none}.profile-chip{padding:4px}
+    .profile-chip{padding:5px 10px 5px 6px}
     .nav-end .btn{padding:0 14px;font-size:14px}
     .search .btn{flex:1 1 100%}
     .chips{flex-wrap:nowrap;gap:8px;overflow-x:auto;scrollbar-width:none;margin-right:-16px;padding-right:16px}
@@ -697,7 +704,7 @@ if('IntersectionObserver' in window&&!(window.matchMedia&&matchMedia('(prefers-r
       <img src="/assets/quiz-lab-icon.png" alt="" width="40" height="40">
       <span class="brand-text"><strong>Quiz LAB</strong><small>by GenZ IITian</small></span>
     </a>
-    <nav class="links" aria-label="Main"><a href="/" class="active" aria-current="page">Home</a><a href="/papers">Papers</a><a href="https://genziitian.in/courses" target="_blank" rel="noopener" class="nav-genz"><span class="tv" aria-hidden="true"><span class="tv-ant"></span><span class="tv-scr"><img src="/assets/genz-tv-logo.png" alt="" width="34" height="22"></span></span>Courses</a><a href="https://class.genziitian.in/dashboard" target="_blank" rel="noopener" class="nav-free">Free classes</a><a href="/contact">Contact us</a><div class="pol"><button type="button" class="pol-btn" id="pol-btn" aria-haspopup="true" aria-expanded="false" aria-controls="pol-menu">More<svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><div class="pol-menu" id="pol-menu" role="menu" hidden><a href="/about" role="menuitem"><span class="pol-ico tb" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg></span>About us</a><div class="pol-sep" role="separator"></div><a href="/privacy-policy" role="menuitem"><span class="pol-ico ti" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V7l8-4z"/></svg></span>Privacy Policy</a><a href="/terms-and-conditions" role="menuitem"><span class="pol-ico ty" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8l-5-5z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg></span>Terms &amp; Conditions</a><a href="/refund-policy" role="menuitem"><span class="pol-ico tg" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 103-6.7L3 8"/><path d="M3 3v5h5"/></svg></span>Refund &amp; Cancellation</a><a href="/delete-account" role="menuitem"><span class="pol-ico tr" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M10 11v6M14 11v6M5 7l1 12a2 2 0 002 2h8a2 2 0 002-2l1-12M9 7V4h6v3"/></svg></span>Delete Account &amp; Data</a></div></div></nav>
+    <nav class="links" aria-label="Main"><a href="/" class="active" aria-current="page">Home</a><a href="/papers">Papers</a><a href="https://genziitian.in/courses" target="_blank" rel="noopener" class="nav-genz"><span class="tv" aria-hidden="true"><span class="tv-ant"></span><span class="tv-scr"><img src="/assets/genz-tv-logo.png" alt="" width="34" height="22"></span></span>Courses</a><a href="https://www.youtube.com/@Gen-ZIITian" target="_blank" rel="noopener noreferrer" class="nav-youtube" aria-label="GenZ IITian on YouTube (opens in a new tab)"><svg width="24" height="17" viewBox="0 0 24 17" aria-hidden="true" focusable="false"><path fill="#FF0000" d="M23.5 2.66A3.02 3.02 0 0 0 21.38.52C19.5 0 12 0 12 0S4.5 0 2.62.52A3.02 3.02 0 0 0 .5 2.66C0 4.55 0 8.5 0 8.5s0 3.95.5 5.84a3.02 3.02 0 0 0 2.12 2.14C4.5 17 12 17 12 17s7.5 0 9.38-.52a3.02 3.02 0 0 0 2.12-2.14C24 12.45 24 8.5 24 8.5s0-3.95-.5-5.84Z"/><path fill="#fff" d="m9.55 12.08 6.27-3.58-6.27-3.58z"/></svg><span>YouTube</span></a><div class="pol"><button type="button" class="pol-btn" id="pol-btn" aria-haspopup="true" aria-expanded="false" aria-controls="pol-menu">More<svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><div class="pol-menu" id="pol-menu" role="menu" hidden><a href="/about" role="menuitem"><span class="pol-ico tb" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg></span>About us</a><div class="pol-sep" role="separator"></div><a href="/privacy-policy" role="menuitem"><span class="pol-ico ti" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V7l8-4z"/></svg></span>Privacy Policy</a><a href="/terms-and-conditions" role="menuitem"><span class="pol-ico ty" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8l-5-5z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg></span>Terms &amp; Conditions</a><a href="/refund-policy" role="menuitem"><span class="pol-ico tg" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 103-6.7L3 8"/><path d="M3 3v5h5"/></svg></span>Refund &amp; Cancellation</a><a href="/delete-account" role="menuitem"><span class="pol-ico tr" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M10 11v6M14 11v6M5 7l1 12a2 2 0 002 2h8a2 2 0 002-2l1-12M9 7V4h6v3"/></svg></span>Delete Account &amp; Data</a></div></div><a href="/contact">Contact us</a></nav>
     <div class="nav-end">
       <button type="button" class="icon-btn menu-btn" id="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mnav"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path class="mb1" d="M4 7h16"/><path class="mb2" d="M4 12h16"/><path class="mb3" d="M4 17h16"/></svg></button>
       <button class="icon-btn" id="theme" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
@@ -706,7 +713,7 @@ if('IntersectionObserver' in window&&!(window.matchMedia&&matchMedia('(prefers-r
       <a class="btn btn-plain hide-sm" id="auth-btn" href="/login">Log in</a>
       <a class="btn btn-brand" id="primary-btn" href="/login">Sign up free</a>
       <div class="profile-menu" id="profile-menu" hidden>
-        <button class="profile-chip" id="profile-chip" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="profile-dropdown"><span class="profile-initial" id="profile-initial"></span><span class="profile-name" id="profile-name"></span></button>
+        <button class="profile-chip" id="profile-chip" type="button" aria-label="Account menu" aria-haspopup="true" aria-expanded="false" aria-controls="profile-dropdown"><span class="profile-initial" id="profile-initial" aria-hidden="true"></span><svg class="profile-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
         <div class="profile-dropdown" id="profile-dropdown" role="menu" hidden>
           <a id="dash-link" href="/dashboard" role="menuitem">Dashboard</a>
           <a href="/my-papers" role="menuitem">My Papers</a>
@@ -715,7 +722,7 @@ if('IntersectionObserver' in window&&!(window.matchMedia&&matchMedia('(prefers-r
       </div>
     </div>
   </div>
-  <div class="mnav" id="mnav" hidden><div class="wrap mnav-in"><a href="/" aria-current="page">Home</a><a href="/papers">Papers</a><a href="https://genziitian.in/courses" target="_blank" rel="noopener" class="nav-genz"><span class="tv" aria-hidden="true"><span class="tv-ant"></span><span class="tv-scr"><img src="/assets/genz-tv-logo.png" alt="" width="34" height="22"></span></span>Courses</a><a href="https://class.genziitian.in/dashboard" target="_blank" rel="noopener" class="nav-free">Free classes</a><div class="mnav-h">Policies</div><div class="mnav-pol"><a href="/privacy-policy"><span class="pol-ico ti" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V7l8-4z"/></svg></span>Privacy Policy</a><a href="/terms-and-conditions"><span class="pol-ico ty" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8l-5-5z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg></span>Terms &amp; Conditions</a><a href="/refund-policy"><span class="pol-ico tg" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 103-6.7L3 8"/><path d="M3 3v5h5"/></svg></span>Refund &amp; Cancellation</a><a href="/delete-account"><span class="pol-ico tr" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M10 11v6M14 11v6M5 7l1 12a2 2 0 002 2h8a2 2 0 002-2l1-12M9 7V4h6v3"/></svg></span>Delete Account &amp; Data</a></div><a href="/about">About us</a><a href="/contact">Contact us</a></div></div>
+  <div class="mnav" id="mnav" hidden><div class="wrap mnav-in"><a href="/" aria-current="page">Home</a><a href="/papers">Papers</a><a href="https://genziitian.in/courses" target="_blank" rel="noopener" class="nav-genz"><span class="tv" aria-hidden="true"><span class="tv-ant"></span><span class="tv-scr"><img src="/assets/genz-tv-logo.png" alt="" width="34" height="22"></span></span>Courses</a><a href="https://www.youtube.com/@Gen-ZIITian" target="_blank" rel="noopener noreferrer" class="nav-youtube" aria-label="GenZ IITian on YouTube (opens in a new tab)"><svg width="24" height="17" viewBox="0 0 24 17" aria-hidden="true" focusable="false"><path fill="#FF0000" d="M23.5 2.66A3.02 3.02 0 0 0 21.38.52C19.5 0 12 0 12 0S4.5 0 2.62.52A3.02 3.02 0 0 0 .5 2.66C0 4.55 0 8.5 0 8.5s0 3.95.5 5.84a3.02 3.02 0 0 0 2.12 2.14C4.5 17 12 17 12 17s7.5 0 9.38-.52a3.02 3.02 0 0 0 2.12-2.14C24 12.45 24 8.5 24 8.5s0-3.95-.5-5.84Z"/><path fill="#fff" d="m9.55 12.08 6.27-3.58-6.27-3.58z"/></svg><span>YouTube</span></a><div class="mnav-h">Policies</div><div class="mnav-pol"><a href="/privacy-policy"><span class="pol-ico ti" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V7l8-4z"/></svg></span>Privacy Policy</a><a href="/terms-and-conditions"><span class="pol-ico ty" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8l-5-5z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg></span>Terms &amp; Conditions</a><a href="/refund-policy"><span class="pol-ico tg" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 103-6.7L3 8"/><path d="M3 3v5h5"/></svg></span>Refund &amp; Cancellation</a><a href="/delete-account"><span class="pol-ico tr" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M10 11v6M14 11v6M5 7l1 12a2 2 0 002 2h8a2 2 0 002-2l1-12M9 7V4h6v3"/></svg></span>Delete Account &amp; Data</a></div><a href="/about">About us</a><a href="/contact">Contact us</a></div></div>
 </header>
 
 <main>
@@ -1079,16 +1086,15 @@ if('IntersectionObserver' in window&&!(window.matchMedia&&matchMedia('(prefers-r
   if(token){
     try{
       var u={};try{u=JSON.parse(localStorage.getItem('lab_user')||'{}')||{};}catch(e){}
-      var dest=u.is_admin?'/admin':'/dashboard';
+      var dest='/dashboard';
       $('auth-btn').hidden=true;
       var pb=$('primary-btn');pb.textContent='Dashboard';pb.href=dest;pb.classList.add('hide-sm');
       $('dash-link').href=dest;
       var band=$('band-cta');band.textContent='Open dashboard';band.href=dest;
       var name=String(u.name||u.email||'Profile').trim();
-      $('profile-name').textContent=name;
       $('profile-initial').textContent=name.charAt(0).toUpperCase();
       var menu=$('profile-menu'),chip=$('profile-chip'),dropdown=$('profile-dropdown');
-      menu.hidden=false;chip.title=name;
+      menu.hidden=false;chip.title='Account menu';chip.setAttribute('aria-label','Account menu for '+name);
       var closeMenu=function(){dropdown.hidden=true;chip.setAttribute('aria-expanded','false');};
       chip.addEventListener('click',function(){dropdown.hidden=!dropdown.hidden;chip.setAttribute('aria-expanded',String(!dropdown.hidden));});
       document.addEventListener('click',function(ev){if(!menu.contains(ev.target))closeMenu();});

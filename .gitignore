@@ -6,6 +6,7 @@ node_modules/
 .DS_Store
 */.DS_Store
 _push/
+*.bundle
 
 # Laravel Backend
 /backend/vendor/
