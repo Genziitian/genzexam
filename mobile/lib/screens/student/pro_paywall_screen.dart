@@ -1,32 +1,31 @@
 import 'package:flutter/material.dart';
 
+import '../../api/pro_play_offer.dart';
 import '../../widgets/app_ux_components.dart';
 import '../../widgets/premium_widgets.dart';
 
-/// Which plan the member picked on the paywall.
-enum ProPlanChoice { trial, monthly }
+enum ProPlanChoice { monthly, yearly }
 
-/// "Get Pro" page: what Pro includes, then the plan choice. New members see a
-/// free trial and the monthly plan; members who already had a trial see only
-/// the monthly plan.
-///
-/// The buttons are not connected to billing yet. Pass [onStartTrial] and
-/// [onSubscribe] to wire them; until then they tell the member it is not
-/// available.
+/// Prices and eligibility come from the authenticated server and Play catalog.
 class ProPaywallScreen extends StatefulWidget {
-  final bool trialAvailable;
-  final int trialDays;
-  final String price;
-  final Future<void> Function()? onStartTrial;
-  final Future<void> Function()? onSubscribe;
-
+  final ProPlayOffer? monthly;
+  final ProPlayOffer? yearly;
+  final bool disabled;
+  final bool busy;
+  final String? message;
+  final Future<void> Function(ProPlayOffer) onSubscribe;
+  final VoidCallback onRestore;
+  final VoidCallback onRetry;
   const ProPaywallScreen({
     super.key,
-    this.trialAvailable = true,
-    this.trialDays = 7,
-    this.price = '₹99',
-    this.onStartTrial,
-    this.onSubscribe,
+    this.monthly,
+    this.yearly,
+    required this.onSubscribe,
+    required this.onRestore,
+    required this.onRetry,
+    this.disabled = false,
+    this.busy = false,
+    this.message,
   });
 
   @override
@@ -34,28 +33,12 @@ class ProPaywallScreen extends StatefulWidget {
 }
 
 class _ProPaywallScreenState extends State<ProPaywallScreen> {
-  late ProPlanChoice _choice = widget.trialAvailable
-      ? ProPlanChoice.trial
-      : ProPlanChoice.monthly;
-  bool _busy = false;
-
-  bool get _trial => _choice == ProPlanChoice.trial;
-
-  Future<void> _continue() async {
-    final handler = _trial ? widget.onStartTrial : widget.onSubscribe;
-    if (handler == null) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Pro checkout is not available yet.')),
-      );
-      return;
-    }
-    setState(() => _busy = true);
-    try {
-      await handler();
-    } finally {
-      if (mounted) setState(() => _busy = false);
-    }
-  }
+  ProPlanChoice _choice = ProPlanChoice.monthly;
+  ProPlayOffer? get _offer =>
+      _choice == ProPlanChoice.yearly ? widget.yearly : widget.monthly;
+  bool get _trial => _offer?.isTrial == true;
+  String _date(DateTime date) =>
+      MaterialLocalizations.of(context).formatMediumDate(date);
 
   @override
   Widget build(BuildContext context) {
@@ -72,9 +55,9 @@ class _ProPaywallScreenState extends State<ProPaywallScreen> {
       body: Stack(
         children: [
           ListView(
-            padding: EdgeInsets.only(bottom: 150 + bottom),
+            padding: EdgeInsets.only(bottom: 230 + bottom),
             children: [
-              _Hero(price: widget.price),
+              const _Hero(),
               Padding(
                 padding: const EdgeInsets.fromLTRB(16, 22, 16, 0),
                 child: Column(
@@ -93,81 +76,94 @@ class _ProPaywallScreenState extends State<ProPaywallScreen> {
                     ),
                     const SizedBox(height: 12),
                     const FadeSlideIn(
-                      delay: Duration(milliseconds: 320),
-                      child: _Benefit(
-                        icon: Icons.download_for_offline_rounded,
-                        title: 'Practise offline',
-                        detail:
-                            'Download papers to your phone and attempt them anywhere, with no internet.',
-                      ),
-                    ),
-                    const SizedBox(height: 10),
-                    const FadeSlideIn(
-                      delay: Duration(milliseconds: 400),
-                      child: _Benefit(
-                        icon: Icons.upload_file_rounded,
-                        title: '5 paper uploads every week',
-                        detail:
-                            'Turn your own PDFs into private practice tests. Free accounts get 1 a week.',
-                      ),
-                    ),
-                    const SizedBox(height: 10),
-                    const FadeSlideIn(
-                      delay: Duration(milliseconds: 480),
-                      child: _Benefit(
-                        icon: Icons.ondemand_video_rounded,
-                        title: 'Video solutions',
-                        detail:
-                            'Step-by-step video answers for questions, as they roll out.',
-                      ),
-                    ),
-                    const SizedBox(height: 22),
-                    const FadeSlideIn(
                       delay: Duration(milliseconds: 560),
                       child: _Compare(),
                     ),
                     const SizedBox(height: 26),
-                    FadeSlideIn(
-                      delay: const Duration(milliseconds: 640),
-                      child: Text(
-                        widget.trialAvailable
-                            ? 'Choose how to start'
-                            : 'Your plan',
-                        style: const TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w800,
-                          color: Brand.ink,
-                        ),
+                    const Text(
+                      'Choose your plan',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w800,
+                        color: Brand.ink,
                       ),
                     ),
                     const SizedBox(height: 12),
-                    if (widget.trialAvailable) ...[
-                      FadeSlideIn(
-                        delay: const Duration(milliseconds: 700),
-                        child: _PlanCard(
-                          selected: _trial,
-                          recommended: true,
-                          title: '${widget.trialDays}-day free trial',
-                          subtitle:
-                              'Then ${widget.price} / month. Try everything first.',
-                          trailing: 'FREE',
-                          onTap: () => setState(() => _choice = ProPlanChoice.trial),
+                    _PlanCard(
+                      selected: _choice == ProPlanChoice.monthly,
+                      title: 'Monthly',
+                      recommended: widget.monthly?.isTrial == true,
+                      subtitle: widget.monthly?.isTrial == true
+                          ? 'Try for free · ${widget.monthly!.trialDays} days, then ${widget.monthly!.price}/month'
+                          : 'Billed monthly. Cancel renewal any time.',
+                      trailing: widget.monthly?.price ?? 'Unavailable',
+                      onTap: widget.busy
+                          ? () {}
+                          : () =>
+                                setState(() => _choice = ProPlanChoice.monthly),
+                    ),
+                    const SizedBox(height: 10),
+                    _PlanCard(
+                      selected: _choice == ProPlanChoice.yearly,
+                      title: 'Yearly',
+                      subtitle: 'Billed yearly. No free trial.',
+                      trailing: widget.yearly?.price ?? 'Unavailable',
+                      onTap: widget.busy
+                          ? () {}
+                          : () =>
+                                setState(() => _choice = ProPlanChoice.yearly),
+                    ),
+                    if (_trial) ...[
+                      const SizedBox(height: 16),
+                      Container(
+                        padding: const EdgeInsets.all(16),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              '${_offer!.price} − ${_offer!.price} trial discount = FREE today',
+                              style: const TextStyle(
+                                fontWeight: FontWeight.w700,
+                              ),
+                            ),
+                            const SizedBox(height: 6),
+                            Text(
+                              'Pro starts today. First charge: ${_date(DateUtils.addDaysToDate(DateTime.now(), _offer!.trialDays))}, then ${_offer!.price}/month.',
+                            ),
+                            const SizedBox(height: 6),
+                            const Text(
+                              'Cancel before the trial ends to avoid the subscription charge. Google Play confirms the exact billing date at checkout.',
+                              style: TextStyle(
+                                fontSize: 11,
+                                color: Brand.muted,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
-                      const SizedBox(height: 10),
                     ],
-                    FadeSlideIn(
-                      delay: const Duration(milliseconds: 780),
-                      child: _PlanCard(
-                        selected: !_trial,
-                        title: 'Pro monthly',
-                        subtitle: widget.trialAvailable
-                            ? 'Skip the trial and start Pro today.'
-                            : 'Billed monthly. Cancel any time.',
-                        trailing: '${widget.price}/mo',
-                        onTap: () => setState(() => _choice = ProPlanChoice.monthly),
+                    if (widget.message != null)
+                      Padding(
+                        padding: const EdgeInsets.only(top: 12),
+                        child: Text(widget.message!),
                       ),
+                    if (widget.disabled)
+                      const Text(
+                        'New Pro subscriptions are unavailable right now.',
+                      ),
+                    TextButton(
+                      onPressed: widget.onRestore,
+                      child: const Text('Restore purchases'),
                     ),
+                    if (widget.monthly == null || widget.yearly == null)
+                      TextButton(
+                        onPressed: widget.onRetry,
+                        child: const Text('Reload available plans'),
+                      ),
                     const SizedBox(height: 14),
                     const Center(
                       child: Text(
@@ -196,7 +192,9 @@ class _ProPaywallScreenState extends State<ProPaywallScreen> {
                     offset: const Offset(0, -6),
                   ),
                 ],
-                borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
+                borderRadius: const BorderRadius.vertical(
+                  top: Radius.circular(24),
+                ),
               ),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -205,8 +203,8 @@ class _ProPaywallScreenState extends State<ProPaywallScreen> {
                     duration: const Duration(milliseconds: 250),
                     child: Text(
                       _trial
-                          ? '${widget.trialDays} days free, then ${widget.price} a month'
-                          : '${widget.price} a month, starting today',
+                          ? '${_offer!.trialDays} days free, then ${_offer!.price}/month'
+                          : _offer?.terms ?? 'Plan unavailable in Google Play',
                       key: ValueKey(_trial),
                       style: const TextStyle(
                         fontWeight: FontWeight.w700,
@@ -217,14 +215,18 @@ class _ProPaywallScreenState extends State<ProPaywallScreen> {
                   const SizedBox(height: 10),
                   PremiumButton(
                     gold: true,
-                    busy: _busy,
+                    busy: widget.busy,
                     icon: _trial
                         ? Icons.rocket_launch_rounded
                         : Icons.workspace_premium_rounded,
                     label: _trial
-                        ? 'Start ${widget.trialDays}-day free trial'
-                        : 'Subscribe for ${widget.price}/month',
-                    onPressed: _continue,
+                        ? 'Try for free'
+                        : _choice == ProPlanChoice.yearly
+                        ? 'Subscribe yearly'
+                        : 'Subscribe monthly',
+                    onPressed: _offer == null || widget.disabled || widget.busy
+                        ? null
+                        : () => widget.onSubscribe(_offer!),
                   ),
                 ],
               ),
@@ -237,8 +239,7 @@ class _ProPaywallScreenState extends State<ProPaywallScreen> {
 }
 
 class _Hero extends StatelessWidget {
-  final String price;
-  const _Hero({required this.price});
+  const _Hero();
 
   @override
   Widget build(BuildContext context) => Container(
@@ -262,7 +263,7 @@ class _Hero extends StatelessWidget {
         const FadeSlideIn(
           delay: Duration(milliseconds: 120),
           child: Text(
-            'Go Pro. Practise without limits.',
+            'Go Pro. Make practice yours.',
             textAlign: TextAlign.center,
             style: TextStyle(
               color: Colors.white,
@@ -271,69 +272,6 @@ class _Hero extends StatelessWidget {
               letterSpacing: -.5,
               height: 1.15,
             ),
-          ),
-        ),
-        const SizedBox(height: 10),
-        FadeSlideIn(
-          delay: const Duration(milliseconds: 220),
-          child: Text(
-            'Offline papers, more uploads and video solutions for $price a month.',
-            textAlign: TextAlign.center,
-            style: const TextStyle(color: Brand.mint, height: 1.45),
-          ),
-        ),
-      ],
-    ),
-  );
-}
-
-class _Benefit extends StatelessWidget {
-  final IconData icon;
-  final String title;
-  final String detail;
-  const _Benefit({required this.icon, required this.title, required this.detail});
-
-  @override
-  Widget build(BuildContext context) => Container(
-    padding: const EdgeInsets.all(14),
-    decoration: BoxDecoration(
-      color: Colors.white,
-      borderRadius: BorderRadius.circular(18),
-      border: Border.all(color: const Color(0xFFE2E8F0)),
-      boxShadow: const [
-        BoxShadow(color: Color(0x0F0F172A), blurRadius: 16, offset: Offset(0, 6)),
-      ],
-    ),
-    child: Row(
-      children: [
-        Container(
-          width: 46,
-          height: 46,
-          decoration: BoxDecoration(
-            gradient: Brand.gradient,
-            borderRadius: BorderRadius.circular(15),
-          ),
-          child: Icon(icon, color: Colors.white, size: 23),
-        ),
-        const SizedBox(width: 14),
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                title,
-                style: const TextStyle(
-                  color: Brand.ink,
-                  fontWeight: FontWeight.w800,
-                  fontSize: 15,
-                ),
-              ),
-              const SizedBox(height: 3),
-              Text(
-                detail,
-                style: const TextStyle(color: Brand.muted, fontSize: 12.5, height: 1.4),
-              ),
-            ],
           ),
         ),
       ],
@@ -372,7 +310,11 @@ class _Compare extends StatelessWidget {
               flex: 3,
               child: Text(
                 label,
-                style: const TextStyle(fontWeight: FontWeight.w600, color: Brand.ink, fontSize: 13),
+                style: const TextStyle(
+                  fontWeight: FontWeight.w600,
+                  color: Brand.ink,
+                  fontSize: 13,
+                ),
               ),
             ),
             _cell(free, color: Brand.muted),
@@ -399,7 +341,10 @@ class _Compare extends StatelessWidget {
               flex: 2,
               child: Center(
                 child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 12,
+                    vertical: 4,
+                  ),
                   decoration: BoxDecoration(
                     gradient: const LinearGradient(
                       colors: [Color(0xFFFFD36E), Color(0xFFF59E0B)],
@@ -511,7 +456,10 @@ class _PlanCard extends StatelessWidget {
                     if (recommended) ...[
                       const SizedBox(width: 8),
                       Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 8,
+                          vertical: 3,
+                        ),
                         decoration: BoxDecoration(
                           color: Brand.gold,
                           borderRadius: BorderRadius.circular(999),
@@ -532,7 +480,11 @@ class _PlanCard extends StatelessWidget {
                 const SizedBox(height: 3),
                 Text(
                   subtitle,
-                  style: const TextStyle(color: Brand.muted, fontSize: 12.5, height: 1.35),
+                  style: const TextStyle(
+                    color: Brand.muted,
+                    fontSize: 12.5,
+                    height: 1.35,
+                  ),
                 ),
               ],
             ),

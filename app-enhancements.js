@@ -920,7 +920,8 @@
       overlay.innerHTML = '<section class="ql-upload-modal" role="dialog" aria-modal="true" aria-labelledby="ql-upload-title"><div class="ql-upload-hero"><button class="ql-upload-close" type="button" aria-label="Close">\u00d7</button><span class="ql-upload-pro">PRO</span><h2 id="ql-upload-title">Make your paper a test</h2><p>Upload any question paper and Quiz LAB turns it into a private practice test. It also appears in My Papers.</p></div><div class="ql-upload-body"><div class="ql-upload-quota" aria-live="polite"><div class="ql-upload-quota-top"><strong>Checking your uploads\u2026</strong></div></div><div class="ql-upload-steps"><div><div class="ql-upload-icon">\ud83d\udcc4</div><span>Your PDF</span></div><b>\u2192</b><div><div class="ql-upload-icon">{ }</div><span>Question data</span></div><b>\u2192</b><div><div class="ql-upload-icon">\u270d\ufe0f</div><span>Your test</span></div></div><form class="ql-upload-form" style="display:grid;gap:12px"><label class="ql-upload-drop"><span class="big">\u2b06\ufe0f</span><strong>Drop a PDF or JSON here</strong><small>or tap to choose a file \u00b7 up to 10 MB</small><input class="ql-upload-file" type="file" name="paper" accept=".pdf,.json,application/pdf,application/json" required></label><div class="ql-upload-chip"></div><button class="ql-upload-pick" type="submit" disabled>Create my test</button><p class="ql-upload-state" aria-live="polite"></p></form><p class="ql-upload-note">Selectable text from PDFs is sent to DeepSeek AI to structure the questions. The temporary PDF is deleted after processing; the generated test stays in your account. Prepared JSON files are processed without AI. Scanned image PDFs are not supported yet.</p><h3 class="ql-upload-h">Your uploaded papers</h3><div class="ql-upload-list"><p class="ql-upload-state">Loading\u2026</p></div></div></section>';
       document.body.appendChild(overlay);
       var modal = overlay.querySelector(".ql-upload-modal");
-      function close() { overlay.remove(); }
+      var quotaTimer;
+      function close() { clearInterval(quotaTimer); overlay.remove(); }
       overlay.querySelector(".ql-upload-close").addEventListener("click", close);
       overlay.addEventListener("click", function (event) { if (event.target === overlay) close(); });
       document.addEventListener("keydown", function escape(event) { if (event.key === "Escape" && overlay.isConnected) { close(); document.removeEventListener("keydown", escape); } });
@@ -934,12 +935,12 @@
       var allowed = false;
       function authHeaders() { return { Accept: "application/json", Authorization: "Bearer " + runtime.token() }; }
       function inTime(iso) {
-        var ms = new Date(iso).getTime() - Date.now();
-        if (!(ms > 0)) return "soon";
-        var hours = Math.ceil(ms / 3600000);
-        return hours >= 24 ? "in " + Math.ceil(hours / 24) + " days" : hours > 1 ? "in " + hours + " hours" : "within the hour";
+        var seconds = Math.max(0, Math.ceil((new Date(iso).getTime() - Date.now()) / 1000));
+        if (!seconds) return "now — refresh to check availability";
+        return "in " + Math.floor(seconds / 86400) + "d " + Math.floor(seconds / 3600) % 24 + "h " + Math.floor(seconds / 60) % 60 + "m " + seconds % 60 + "s";
       }
       function renderQuota(q) {
+        clearInterval(quotaTimer);
         quotaBox.replaceChildren();
         quotaBox.className = "ql-upload-quota";
         if (!q) { allowed = true; quotaBox.hidden = true; return; }
@@ -964,6 +965,10 @@
           head.textContent = "No uploads left right now";
           sub.textContent = q.resets_at ? "Your next upload unlocks " + inTime(q.resets_at) : "Please try again later";
         }
+        if (!q.is_pro && q.remaining <= 0 && q.resets_at) {
+          function tick() { sub.textContent = "Next free upload " + inTime(q.resets_at); }
+          tick(); quotaTimer = setInterval(tick, 1000);
+        }
         top.append(head, sub); quotaBox.appendChild(top);
         if (q.is_pro) {
           var meter = document.createElement("div"); meter.className = "ql-upload-meter";
@@ -976,7 +981,7 @@
             claim.addEventListener("click", function () { drop.classList.add("over"); setTimeout(function () { drop.classList.remove("over"); }, 900); fileInput.click(); });
             row.appendChild(claim);
           }
-          var up = document.createElement("a"); up.className = "ql-upload-upgrade"; up.href = "/profile"; up.textContent = "Go Pro for more"; row.appendChild(up);
+          var up = document.createElement("a"); up.className = "ql-upload-upgrade"; up.href = "/profile"; up.textContent = q.remaining <= 0 ? "Get Pro to upload now" : "Get Pro"; row.appendChild(up);
           quotaBox.appendChild(row);
         }
         drop.classList.toggle("disabled", !allowed);

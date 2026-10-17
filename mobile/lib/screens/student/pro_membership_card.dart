@@ -8,181 +8,27 @@ import 'package:in_app_purchase_android/in_app_purchase_android.dart';
 import '../../api/api_client.dart';
 import '../../api/pro_play_offer.dart';
 import '../../widgets/premium_widgets.dart';
+import 'pro_paywall_screen.dart';
+import 'membership_history_screen.dart';
 
 class ProMembershipScreen extends StatelessWidget {
   const ProMembershipScreen({super.key, required this.apiClient});
-
   final ApiClient apiClient;
-
   @override
-  Widget build(BuildContext context) => Scaffold(
-    backgroundColor: const Color(0xFFF1F5F9),
-    extendBodyBehindAppBar: true,
-    appBar: AppBar(
-      backgroundColor: Colors.transparent,
-      elevation: 0,
-      foregroundColor: Colors.white,
-      title: const Text('Quiz LAB Pro'),
-    ),
-    body: ListView(
-      padding: EdgeInsets.zero,
-      children: [
-        Container(
-          padding: EdgeInsets.fromLTRB(
-            22,
-            MediaQuery.paddingOf(context).top + 64,
-            22,
-            30,
-          ),
-          decoration: const BoxDecoration(
-            gradient: Brand.darkGradient,
-            borderRadius: BorderRadius.vertical(bottom: Radius.circular(34)),
-          ),
-          child: Column(
-            children: [
-              PulseRings(
-                size: 96,
-                color: Brand.gold,
-                child: Floating(child: const ProEmblem(size: 96)),
-              ),
-              const SizedBox(height: 4),
-              const FadeSlideIn(
-                delay: Duration(milliseconds: 150),
-                child: Text(
-                  'Make practice yours.',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 27,
-                    fontWeight: FontWeight.w800,
-                    letterSpacing: -.5,
-                  ),
-                ),
-              ),
-              const SizedBox(height: 8),
-              const FadeSlideIn(
-                delay: Duration(milliseconds: 260),
-                child: Text(
-                  'Everything in Quiz LAB Pro, for less than a cup of chai.',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(color: Brand.mint, height: 1.45),
-                ),
-              ),
-            ],
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(16, 18, 16, 28),
-          child: Column(
-            children: [
-              const FadeSlideIn(
-                delay: Duration(milliseconds: 320),
-                child: _ProBenefit(
-                  icon: Icons.download_for_offline_rounded,
-                  title: 'Download papers',
-                  detail: 'Save papers in Quiz LAB and practise without internet.',
-                ),
-              ),
-              const SizedBox(height: 10),
-              const FadeSlideIn(
-                delay: Duration(milliseconds: 420),
-                child: _ProBenefit(
-                  icon: Icons.upload_file_rounded,
-                  title: 'Upload your own papers',
-                  detail:
-                      'Turn a PDF or JSON into a private practice test. Free accounts get 1 upload a week, Pro gets 5.',
-                ),
-              ),
-              const SizedBox(height: 10),
-              const FadeSlideIn(
-                delay: Duration(milliseconds: 520),
-                child: _ProBenefit(
-                  icon: Icons.ondemand_video_rounded,
-                  title: 'Video solutions',
-                  detail: 'Learn with step-by-step video answers. Coming soon.',
-                ),
-              ),
-              const SizedBox(height: 16),
-              FadeSlideIn(
-                delay: const Duration(milliseconds: 620),
-                child: ProMembershipCard(apiClient: apiClient),
-              ),
-            ],
-          ),
-        ),
-      ],
-    ),
-  );
-}
-
-class _ProBenefit extends StatelessWidget {
-  const _ProBenefit({
-    required this.icon,
-    required this.title,
-    required this.detail,
-  });
-
-  final IconData icon;
-  final String title;
-  final String detail;
-
-  @override
-  Widget build(BuildContext context) => Container(
-    padding: const EdgeInsets.all(14),
-    decoration: BoxDecoration(
-      color: Colors.white,
-      borderRadius: BorderRadius.circular(18),
-      border: Border.all(color: const Color(0xFFE2E8F0)),
-      boxShadow: const [
-        BoxShadow(color: Color(0x0F0F172A), blurRadius: 16, offset: Offset(0, 6)),
-      ],
-    ),
-    child: Row(
-      children: [
-        Container(
-          width: 44,
-          height: 44,
-          decoration: BoxDecoration(
-            gradient: Brand.gradient,
-            borderRadius: BorderRadius.circular(14),
-          ),
-          child: Icon(icon, color: Colors.white, size: 22),
-        ),
-        const SizedBox(width: 14),
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                title,
-                style: const TextStyle(
-                  color: Color(0xFF0F172A),
-                  fontWeight: FontWeight.w800,
-                  fontSize: 15,
-                ),
-              ),
-              const SizedBox(height: 3),
-              Text(
-                detail,
-                style: const TextStyle(
-                  color: Color(0xFF64748B),
-                  fontSize: 12.5,
-                  height: 1.35,
-                ),
-              ),
-            ],
-          ),
-        ),
-      ],
-    ),
-  );
+  Widget build(BuildContext context) =>
+      Scaffold(body: ProMembershipCard(apiClient: apiClient, fullScreen: true));
 }
 
 /// Google Play purchase UI. The server validates every purchase token before it
 /// grants access, so the client never unlocks Pro based on a local response.
 class ProMembershipCard extends StatefulWidget {
-  const ProMembershipCard({super.key, required this.apiClient});
+  const ProMembershipCard({
+    super.key,
+    required this.apiClient,
+    this.fullScreen = false,
+  });
   final ApiClient apiClient;
+  final bool fullScreen;
 
   @override
   State<ProMembershipCard> createState() => _ProMembershipCardState();
@@ -194,6 +40,8 @@ class _ProMembershipCardState extends State<ProMembershipCard> {
   Map<String, dynamic> _membership = {};
   GooglePlayProductDetails? _product;
   ProPlayOffer? _playOffer;
+  ProPlayOffer? _monthlyOffer;
+  ProPlayOffer? _yearlyOffer;
   bool _trialOfferSelected = false;
   String? _error;
   String? _message;
@@ -250,7 +98,8 @@ class _ProMembershipCardState extends State<ProMembershipCard> {
               .whereType<GooglePlayProductDetails>()
               .where((product) => product.id == _productId)
               .toList();
-          final trialAvailable = _membership['trial_available'] == true;
+          final trialAvailable = _membership['trial_available'] == true &&
+              ((_membership['plan'] as Map?)?['trial_days'] ?? 7) > 0;
           final trialOfferId = _membership['google_play_trial_offer_id']
               ?.toString();
           final basePlanId =
@@ -260,6 +109,16 @@ class _ProMembershipCardState extends State<ProMembershipCard> {
             basePlanId: basePlanId,
             trialOfferId: trialOfferId,
             trialAvailable: trialAvailable,
+          );
+          _monthlyOffer = _playOffer;
+          _yearlyOffer = ProPlayOffer.select(
+            matching,
+            basePlanId:
+                _membership['google_play_annual_base_plan_id']?.toString() ??
+                'annual',
+            trialOfferId: null,
+            trialAvailable: false,
+            billingPeriod: 'P1Y',
           );
           _trialOfferSelected = _playOffer?.isTrial ?? false;
           _product = _playOffer?.product;
@@ -326,6 +185,13 @@ class _ProMembershipCardState extends State<ProMembershipCard> {
         }
       }
     }
+  }
+
+  Future<void> _buyOffer(ProPlayOffer offer) async {
+    _product = offer.product;
+    _playOffer = offer;
+    _trialOfferSelected = offer.isTrial;
+    await _buy();
   }
 
   Future<void> _buy() async {
@@ -415,6 +281,18 @@ class _ProMembershipCardState extends State<ProMembershipCard> {
         ? Map<String, dynamic>.from(_membership['subscription'] as Map)
         : <String, dynamic>{};
     final isPro = _membership['is_pro'] == true;
+    if (_loading) return const Center(child: CircularProgressIndicator());
+    if (!isPro && widget.fullScreen)
+      return ProPaywallScreen(
+        monthly: _monthlyOffer,
+        yearly: _yearlyOffer,
+        onSubscribe: _buyOffer,
+        onRestore: _restore,
+        onRetry: _load,
+        disabled: _planDisabled,
+        busy: _buying,
+        message: _error ?? _message,
+      );
     final trial = subscription['status'] == 'trialing';
     final plan = _membership['plan'] is Map
         ? Map<String, dynamic>.from(_membership['plan'] as Map)
@@ -441,13 +319,18 @@ class _ProMembershipCardState extends State<ProMembershipCard> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const Text(
-            'PRO MEMBERSHIP',
+            'MANAGE MEMBERSHIP & TRANSACTIONS',
             style: TextStyle(
               fontSize: 11,
               fontWeight: FontWeight.w700,
               letterSpacing: 1,
               color: Color(0xFF64748B),
             ),
+          ),
+          TextButton.icon(
+            onPressed: () => Navigator.of(context).push(MaterialPageRoute<void>(builder: (_) => MembershipHistoryScreen(apiClient: widget.apiClient))),
+            icon: const Icon(Icons.receipt_long_outlined),
+            label: const Text('View membership & transactions'),
           ),
           const SizedBox(height: 8),
           if (_loading)
@@ -484,7 +367,17 @@ class _ProMembershipCardState extends State<ProMembershipCard> {
                 gold: true,
                 icon: Icons.workspace_premium_rounded,
                 busy: _buying,
-                onPressed: _product == null || _planDisabled ? null : _buy,
+                onPressed: _planDisabled
+                    ? null
+                    : () => Navigator.of(context)
+                          .push(
+                            MaterialPageRoute<void>(
+                              builder: (_) => ProMembershipScreen(
+                                apiClient: widget.apiClient,
+                              ),
+                            ),
+                          )
+                          .then((_) => _load()),
                 label: _trialOfferSelected
                     ? 'Start free trial'
                     : 'Subscribe to Pro',

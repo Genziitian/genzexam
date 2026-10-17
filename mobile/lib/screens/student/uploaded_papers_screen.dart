@@ -8,7 +8,7 @@ import '../../api/uploaded_papers_service.dart';
 import '../../widgets/app_ux_components.dart';
 import '../../widgets/premium_widgets.dart';
 import 'native_paper_room.dart';
-import 'pro_paywall_screen.dart';
+import 'pro_membership_card.dart';
 
 const _ink = Brand.ink;
 
@@ -88,9 +88,8 @@ class _UploadedPapersScreenState extends State<UploadedPapersScreen> {
       final message = error is ApiException
           ? error.message
           : error.toString().replaceFirst('Exception: ', '');
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text(message)));
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(message)));
       setState(() => _papers = _service.list());
     } finally {
       _stageTimer?.cancel();
@@ -114,7 +113,9 @@ class _UploadedPapersScreenState extends State<UploadedPapersScreen> {
 
   Future<void> _goPro() async {
     await Navigator.of(context).push<void>(
-      MaterialPageRoute<void>(builder: (_) => const ProPaywallScreen()),
+      MaterialPageRoute<void>(
+        builder: (_) => ProMembershipScreen(apiClient: widget.apiClient),
+      ),
     );
     if (mounted) await _reload();
   }
@@ -158,7 +159,7 @@ class _UploadedPapersScreenState extends State<UploadedPapersScreen> {
                   children: [
                     FadeSlideIn(
                       delay: const Duration(milliseconds: 150),
-                      child: _QuotaCard(quota: quota, onGetPro: _goPro),
+                      child: _QuotaCard(quota: quota, onGetPro: _goPro, onReset: _reload),
                     ),
                     const SizedBox(height: 14),
                     FadeSlideIn(
@@ -217,13 +218,11 @@ class _UploadedPapersScreenState extends State<UploadedPapersScreen> {
                     const SizedBox(height: 10),
                     if (snapshot.hasError)
                       const _MessageCard(
-                        text:
-                            'Could not load your papers. Pull down to try again.',
+                        text: 'Could not load your papers. Pull down to try again.',
                       )
                     else if (papers.isEmpty)
                       const _MessageCard(
-                        text:
-                            'Your uploaded tests will appear here and in My Papers.',
+                        text: 'Your uploaded tests will appear here and in My Papers.',
                       )
                     else
                       for (var i = 0; i < papers.length; i++)
@@ -270,10 +269,17 @@ class _Hero extends StatelessWidget {
               gradient: Brand.gradient,
               borderRadius: BorderRadius.circular(24),
               boxShadow: [
-                BoxShadow(color: Brand.green.withValues(alpha: .45), blurRadius: 26),
+                BoxShadow(
+                  color: Brand.green.withValues(alpha: .45),
+                  blurRadius: 26,
+                ),
               ],
             ),
-            child: const Icon(Icons.upload_file_rounded, color: Colors.white, size: 38),
+            child: const Icon(
+              Icons.upload_file_rounded,
+              color: Colors.white,
+              size: 38,
+            ),
           ),
         ),
         const SizedBox(width: 16),
@@ -296,7 +302,11 @@ class _Hero extends StatelessWidget {
                 SizedBox(height: 6),
                 Text(
                   'One free upload every week for everyone. Pro members get more.',
-                  style: TextStyle(color: Brand.mint, height: 1.4, fontSize: 13),
+                  style: TextStyle(
+                    color: Brand.mint,
+                    height: 1.4,
+                    fontSize: 13,
+                  ),
                 ),
               ],
             ),
@@ -308,21 +318,58 @@ class _Hero extends StatelessWidget {
 }
 
 /// Counter shown before any upload: how many are left in the current window.
-class _QuotaCard extends StatelessWidget {
+class _QuotaCard extends StatefulWidget {
   final UploadQuota? quota;
   final VoidCallback onGetPro;
-  const _QuotaCard({required this.quota, required this.onGetPro});
+  final VoidCallback onReset;
+  const _QuotaCard({required this.quota, required this.onGetPro, required this.onReset});
+
+  @override
+  State<_QuotaCard> createState() => _QuotaCardState();
+}
+
+class _QuotaCardState extends State<_QuotaCard> {
+  Timer? _ticker;
+  bool _refreshRequested = false;
+  @override
+  void initState() {
+    super.initState();
+    _ticker = Timer.periodic(const Duration(seconds: 1), (_) {
+      if (!mounted || widget.quota?.remaining != 0) return;
+      final reset = widget.quota?.resetsAt;
+      if (reset != null && !reset.isAfter(DateTime.now()) && !_refreshRequested) {
+        _refreshRequested = true;
+        widget.onReset();
+      }
+      setState(() {});
+    });
+  }
+
+  @override
+  void didUpdateWidget(covariant _QuotaCard oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.quota?.resetsAt != widget.quota?.resetsAt || widget.quota?.remaining != 0) {
+      _refreshRequested = false;
+    }
+  }
+
+  @override
+  void dispose() {
+    _ticker?.cancel();
+    super.dispose();
+  }
 
   static String _resets(DateTime at) {
-    final left = at.difference(DateTime.now());
-    if (left.inHours >= 24) return 'in ${left.inDays + 1} days';
-    if (left.inHours >= 1) return 'in ${left.inHours} hours';
-    return 'in under an hour';
+    final seconds = at.difference(DateTime.now()).inSeconds;
+    if (seconds <= 0) return 'now — refresh to check availability';
+    final left = Duration(seconds: seconds);
+    String two(int n) => n.toString().padLeft(2, '0');
+    return 'in ${left.inDays}d ${two(left.inHours % 24)}h ${two(left.inMinutes % 60)}m ${two(left.inSeconds % 60)}s';
   }
 
   @override
   Widget build(BuildContext context) {
-    final q = quota;
+    final q = widget.quota;
     if (q == null) return const SizedBox.shrink();
     final active = q.remaining > 0;
     final String headline;
@@ -338,7 +385,8 @@ class _QuotaCard extends StatelessWidget {
           '${q.resetsAt != null ? 'Your next free upload unlocks ${_resets(q.resetsAt!)}. ' : ''}Pro members get ${q.proLimit} every ${q.windowDays} days.';
     } else if (active) {
       headline = '${q.remaining} of ${q.limit} uploads left';
-      detail = 'Allowance for any ${q.windowDays} days. You have used ${q.used}.';
+      detail =
+          'Allowance for any ${q.windowDays} days. You have used ${q.used}.';
     } else {
       headline = 'No uploads left right now';
       detail = q.resetsAt != null
@@ -355,7 +403,11 @@ class _QuotaCard extends StatelessWidget {
           width: 1.4,
         ),
         boxShadow: const [
-          BoxShadow(color: Color(0x0F0F172A), blurRadius: 18, offset: Offset(0, 8)),
+          BoxShadow(
+            color: Color(0x0F0F172A),
+            blurRadius: 18,
+            offset: Offset(0, 8),
+          ),
         ],
       ),
       child: Row(
@@ -391,30 +443,41 @@ class _QuotaCard extends StatelessWidget {
                 const SizedBox(height: 4),
                 Text(
                   detail,
-                  style: const TextStyle(color: Brand.muted, height: 1.4, fontSize: 13),
+                  style: const TextStyle(
+                    color: Brand.muted,
+                    height: 1.4,
+                    fontSize: 13,
+                  ),
                 ),
                 if (!q.isPro) ...[
                   const SizedBox(height: 10),
                   GestureDetector(
                     onTap: () {
                       AppHaptics.light();
-                      onGetPro();
+                      widget.onGetPro();
                     },
                     child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 14,
+                        vertical: 8,
+                      ),
                       decoration: BoxDecoration(
                         gradient: const LinearGradient(
                           colors: [Color(0xFFFFD36E), Color(0xFFF59E0B)],
                         ),
                         borderRadius: BorderRadius.circular(999),
                       ),
-                      child: const Row(
+                      child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          Icon(Icons.workspace_premium_rounded, size: 16, color: Brand.deep),
+                          Icon(
+                            Icons.workspace_premium_rounded,
+                            size: 16,
+                            color: Brand.deep,
+                          ),
                           SizedBox(width: 6),
                           Text(
-                            'Get Pro',
+                            active ? 'Get Pro' : 'Get Pro to upload now',
                             style: TextStyle(
                               fontWeight: FontWeight.w900,
                               color: Brand.deep,
@@ -442,10 +505,11 @@ class _QuotaCard extends StatelessWidget {
                                 right: i == q.limit - 1 ? 0 : 4,
                               ),
                               decoration: BoxDecoration(
-                                color: (i < q.used
-                                        ? const Color(0xFFCBD5E1)
-                                        : Brand.green)
-                                    .withValues(alpha: v),
+                                color:
+                                    (i < q.used
+                                            ? const Color(0xFFCBD5E1)
+                                            : Brand.green)
+                                        .withValues(alpha: v),
                                 borderRadius: BorderRadius.circular(4),
                               ),
                             ),
@@ -496,7 +560,11 @@ class _UploadPanel extends StatelessWidget {
       borderRadius: BorderRadius.circular(24),
       border: Border.all(color: const Color(0xFFE2E8F0)),
       boxShadow: const [
-        BoxShadow(color: Color(0x120F172A), blurRadius: 22, offset: Offset(0, 10)),
+        BoxShadow(
+          color: Color(0x120F172A),
+          blurRadius: 22,
+          offset: Offset(0, 10),
+        ),
       ],
     ),
     child: AnimatedSize(
@@ -534,7 +602,7 @@ class _UploadPanel extends StatelessWidget {
         PremiumButton(
           gold: true,
           icon: Icons.workspace_premium_rounded,
-          label: 'Go Pro for more uploads',
+          label: 'Get Pro to upload now',
           onPressed: onGoPro,
         )
       else
@@ -562,7 +630,10 @@ class _UploadPanel extends StatelessWidget {
             gradient: Brand.gradient,
             borderRadius: BorderRadius.circular(20),
             boxShadow: [
-              BoxShadow(color: Brand.green.withValues(alpha: .4), blurRadius: 20),
+              BoxShadow(
+                color: Brand.green.withValues(alpha: .4),
+                blurRadius: 20,
+              ),
             ],
           ),
           child: AnimatedSwitcher(
@@ -578,7 +649,10 @@ class _UploadPanel extends StatelessWidget {
       ),
       const SizedBox(height: 16),
       for (var i = 0; i < stages.length; i++)
-        _StageRow(label: stages[i].$1, state: i < stage ? 2 : (i == stage ? 1 : 0)),
+        _StageRow(
+          label: stages[i].$1,
+          state: i < stage ? 2 : (i == stage ? 1 : 0),
+        ),
       const SizedBox(height: 14),
       ClipRRect(
         borderRadius: BorderRadius.circular(6),
@@ -618,7 +692,10 @@ class _UploadPanel extends StatelessWidget {
             gradient: Brand.gradient,
             shape: BoxShape.circle,
             boxShadow: [
-              BoxShadow(color: Brand.green.withValues(alpha: .45), blurRadius: 24),
+              BoxShadow(
+                color: Brand.green.withValues(alpha: .45),
+                blurRadius: 24,
+              ),
             ],
           ),
           child: const Icon(Icons.check_rounded, color: Colors.white, size: 40),
@@ -627,7 +704,11 @@ class _UploadPanel extends StatelessWidget {
       const SizedBox(height: 14),
       Text(
         'Your test is ready',
-        style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w800, color: _ink),
+        style: const TextStyle(
+          fontSize: 20,
+          fontWeight: FontWeight.w800,
+          color: _ink,
+        ),
       ),
       const SizedBox(height: 4),
       Text(
@@ -800,8 +881,10 @@ class _ArrowState extends State<_Arrow> with SingleTickerProviderStateMixin {
     padding: const EdgeInsets.only(bottom: 22),
     child: AnimatedBuilder(
       animation: _c,
-      builder: (context, child) =>
-          Transform.translate(offset: Offset(_c.value * 4 - 2, 0), child: child),
+      builder: (context, child) => Transform.translate(
+        offset: Offset(_c.value * 4 - 2, 0),
+        child: child,
+      ),
       child: const Icon(
         Icons.arrow_forward_rounded,
         size: 18,
@@ -811,12 +894,19 @@ class _ArrowState extends State<_Arrow> with SingleTickerProviderStateMixin {
   );
 }
 
-class _Rules extends StatelessWidget {
+class _Rules extends StatefulWidget {
   final UploadQuota? quota;
   const _Rules({required this.quota});
 
   @override
+  State<_Rules> createState() => _RulesState();
+}
+
+class _RulesState extends State<_Rules> {
+  bool _expanded = false;
+  @override
   Widget build(BuildContext context) {
+    final quota = widget.quota;
     final days = quota?.windowDays ?? 7;
     final rules = <(IconData, String, String)>[
       (
@@ -862,10 +952,14 @@ class _Rules extends StatelessWidget {
         children: [
           const Text(
             'Upload rules',
-            style: TextStyle(fontSize: 17, fontWeight: FontWeight.w800, color: _ink),
+            style: TextStyle(
+              fontSize: 17,
+              fontWeight: FontWeight.w800,
+              color: _ink,
+            ),
           ),
           const SizedBox(height: 12),
-          for (var i = 0; i < rules.length; i++)
+          for (var i = 0; i < (_expanded ? rules.length : 2); i++)
             FadeSlideIn(
               delay: Duration(milliseconds: 450 + i * 80),
               dy: 12,
@@ -912,6 +1006,10 @@ class _Rules extends StatelessWidget {
                 ),
               ),
             ),
+          TextButton(
+            onPressed: () => setState(() => _expanded = !_expanded),
+            child: Text(_expanded ? 'See less' : 'See more'),
+          ),
         ],
       ),
     );
@@ -951,7 +1049,10 @@ class _PaperTile extends StatelessWidget {
                   gradient: Brand.gradient,
                   borderRadius: BorderRadius.circular(14),
                 ),
-                child: const Icon(Icons.description_rounded, color: Colors.white),
+                child: const Icon(
+                  Icons.description_rounded,
+                  color: Colors.white,
+                ),
               ),
               const SizedBox(width: 12),
               Expanded(
@@ -970,12 +1071,19 @@ class _PaperTile extends StatelessWidget {
                     const SizedBox(height: 2),
                     Text(
                       '${paper.questionCount} questions · Your private test',
-                      style: const TextStyle(color: Brand.muted, fontSize: 12.5),
+                      style: const TextStyle(
+                        color: Brand.muted,
+                        fontSize: 12.5,
+                      ),
                     ),
                   ],
                 ),
               ),
-              const Icon(Icons.play_circle_fill_rounded, color: Brand.green, size: 32),
+              const Icon(
+                Icons.play_circle_fill_rounded,
+                color: Brand.green,
+                size: 32,
+              ),
             ],
           ),
         ),

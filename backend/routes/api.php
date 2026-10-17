@@ -69,6 +69,7 @@ Route::middleware(['auth:sanctum', 'track.seen'])->group(function () {
     Route::delete('/auth/account', [AuthController::class, 'deleteAccount']);
     Route::post('/auth/account-deletion-requests', [AccountDeletionRequestController::class, 'store'])->middleware('throttle:5,60');
     Route::get('/auth/me', [AuthController::class, 'me']);
+    Route::get('/membership/history', [\App\Http\Controllers\MembershipHistoryController::class, 'show']);
     Route::get('/membership', [ProMembershipController::class, 'show']);
     Route::post('/membership/cancel', [ProMembershipController::class, 'cancel']);
     Route::post('/membership/razorpay/start', [ProMembershipController::class, 'startRazorpay'])->middleware('throttle:5,1');
@@ -242,6 +243,7 @@ Route::middleware(['auth:sanctum', 'is_manager', 'track.seen'])->prefix('manager
     Route::delete('/questions/{id}', [AdminQuestionController::class, 'destroy'])->whereNumber('id')->middleware(\App\Http\Middleware\ManagerPaperDraft::class);
     Route::get('/purchases', [ManagerSalesController::class, 'purchases']);
     Route::get('/sales/summary', [ManagerSalesController::class, 'summary']);
+    Route::get('/pro/transactions', [\App\Http\Controllers\MembershipHistoryController::class, 'manager']);
     Route::get('/pro/plan', [ProMembershipController::class, 'managerPlan']);
     Route::put('/pro/plan', [ProMembershipController::class, 'updatePlan']);
     Route::get('/pro/subscriptions', [ProMembershipController::class, 'managerSubscriptions']);

@@ -31,7 +31,9 @@ class ProMembershipController extends Controller
         return response()->json([
             'is_pro' => $user->hasProAccess(),
             'plan' => ['price_paise' => (int) ($plan->price_paise ?? 9900), 'trial_days' => (int) ($plan->trial_days ?? 7), 'enabled' => (bool) ($plan->enabled ?? true)],
-            'trial_available' => $trialAvailable,
+            'trial_available' => $trialAvailable && (int) ($plan->trial_days ?? 7) > 0,
+            'annual_price_paise' => (int) config('services.pro.annual_price_paise', 99900),
+            'google_play_annual_base_plan_id' => config('services.google_play.annual_base_plan_id', 'annual'),
             'google_play_trial_offer_id' => config('services.google_play.trial_offer_id'),
             'google_play_base_plan_id' => config('services.google_play.subscription_base_plan_id'),
             'subscription' => $subscription ? $this->subscriptionData($subscription) : ((bool) $user->is_pro ? ['id' => 'legacy', 'provider' => 'manual', 'status' => 'active', 'started_at' => null, 'trial_ends_at' => null, 'current_period_ends_at' => null, 'cancel_at_period_end' => false] : null),
@@ -84,16 +86,21 @@ class ProMembershipController extends Controller
 
     public function startRazorpay(Request $request): JsonResponse
     {
+        $validated = $request->validate(['billing_period' => ['sometimes', 'in:monthly,annual']]);
+        $annual = ($validated['billing_period'] ?? 'monthly') === 'annual';
         $user = $request->user();
         abort_if($user->hasProAccess(), 409, 'Your account already has Pro access.');
         $settings = DB::table('pro_plan_settings')->where('id', 1)->first();
         abort_if(! $settings || ! $settings->enabled, 403, 'Pro membership is not available right now.');
         try {
             $service = app(RazorpayProSubscriptions::class);
-            $planId = $settings->razorpay_plan_id ?: $service->createPlan((int) $settings->price_paise);
-            if (! $settings->razorpay_plan_id) DB::table('pro_plan_settings')->where('id', 1)->update(['razorpay_plan_id' => $planId, 'updated_at' => now()]);
-            $trialDays = $user->proSubscriptions()->whereNotNull('trial_ends_at')->exists() ? 0 : (int) $settings->trial_days;
-            $remote = $service->createSubscription($planId, $trialDays, (int) $user->id, (string) $user->email);
+            $amount = $annual ? (int) config('services.pro.annual_price_paise', 99900) : (int) $settings->price_paise;
+            $planId = $annual ? $service->createPlan($amount, 'yearly') : ($settings->razorpay_plan_id ?: $service->createPlan($amount));
+            if (! $annual && ! $settings->razorpay_plan_id) DB::table('pro_plan_settings')->where('id', 1)->update(['razorpay_plan_id' => $planId, 'updated_at' => now()]);
+            $trialDays = $annual || $user->proSubscriptions()->whereNotNull('trial_ends_at')->exists() ? 0 : (int) $settings->trial_days;
+            $remote = $annual
+                ? $service->createSubscription($planId, 0, (int) $user->id, (string) $user->email, 'yearly')
+                : $service->createSubscription($planId, $trialDays, (int) $user->id, (string) $user->email);
         } catch (Throwable $error) {
             return response()->json(['error' => $error->getMessage()], 503);
         }
@@ -102,16 +109,16 @@ class ProMembershipController extends Controller
             'user_id' => $user->id,
             'provider' => 'razorpay',
             'provider_subscription_id' => $remote['id'],
-            'product_id' => 'quiz-lab-pro-monthly',
+            'product_id' => $annual ? 'quiz-lab-pro-annual' : 'quiz-lab-pro-monthly',
             'checkout_url' => $remote['short_url'],
             'status' => 'pending',
-            'amount_paise' => (int) $settings->price_paise,
+            'amount_paise' => $amount,
             'currency' => 'INR',
             'started_at' => now(),
             'trial_ends_at' => $trialEnd,
             'current_period_ends_at' => $trialEnd,
         ]);
-        return response()->json(['subscription' => $this->subscriptionData($sub), 'checkout_url' => $remote['short_url'], 'trial_days' => $trialDays, 'amount_paise' => (int) $settings->price_paise]);
+        return response()->json(['subscription' => $this->subscriptionData($sub), 'checkout_url' => $remote['short_url'], 'trial_days' => $trialDays, 'amount_paise' => $amount]);
     }
 
     public function razorpayWebhook(Request $request): JsonResponse
@@ -132,11 +139,15 @@ class ProMembershipController extends Controller
             $subscription->user?->update(['is_pro' => true]);
         } elseif ($event === 'subscription.cancelled') {
             $subscription->update(['status' => 'cancelled', 'cancel_at_period_end' => false, 'current_period_ends_at' => $periodEnd, 'checkout_url' => null]);
-            if (! $periodEnd || $periodEnd->isPast()) $subscription->user?->update(['is_pro' => false]);
+            if (! $periodEnd || $periodEnd->isPast()) $subscription->user?->update(['is_pro' => $subscription->user->hasProAccess()]);
         } elseif (in_array($event, ['subscription.halted', 'subscription.completed'], true)) {
             $subscription->update(['status' => $event === 'subscription.completed' ? 'expired' : 'cancelled', 'current_period_ends_at' => $periodEnd, 'checkout_url' => null]);
-            if (! $periodEnd || $periodEnd->isPast()) $subscription->user?->update(['is_pro' => false]);
+            if (! $periodEnd || $periodEnd->isPast()) $subscription->user?->update(['is_pro' => $subscription->user->hasProAccess()]);
         }
+        if ($event === 'subscription.charged') {
+            app(\App\Services\MembershipTransactionRecorder::class)->razorpay($subscription, (array) $request->input('payload.payment.entity', []));
+        }
+        $subscription->user?->update(['is_pro' => $subscription->user->hasProAccess()]);
         return response()->json(['ok' => true]);
     }
 
@@ -194,7 +205,9 @@ class ProMembershipController extends Controller
             'google_purchase_token' => $validated['purchase_token'],
             'product_id' => $configuredProduct,
             'status' => $isTrial ? 'trialing' : 'active',
-            'amount_paise' => (int) (DB::table('pro_plan_settings')->value('price_paise') ?? 9900),
+            'amount_paise' => data_get($line, 'offerDetails.basePlanId') === config('services.google_play.annual_base_plan_id', 'annual')
+                ? (int) config('services.pro.annual_price_paise', 99900)
+                : (int) (DB::table('pro_plan_settings')->value('price_paise') ?? 9900),
             'currency' => 'INR',
             'started_at' => isset($purchase['startTime']) ? now()->parse($purchase['startTime']) : now(),
             'trial_ends_at' => $existing?->trial_ends_at ?? ($isTrial ? $expiry : null),
@@ -203,6 +216,7 @@ class ProMembershipController extends Controller
             'cancel_at_period_end' => data_get($line, 'autoRenewingPlan.autoRenewEnabled') === false || $state === 'SUBSCRIPTION_STATE_CANCELED',
         ]);
         $sub->update(app(GooglePlayMembershipSync::class)->snapshot($purchase, $sub));
+        app(\App\Services\MembershipTransactionRecorder::class)->google($sub, $purchase);
         $request->user()->update(['is_pro' => $request->user()->hasProAccess()]);
         return response()->json(['message' => 'Purchase verified with Google Play.', 'subscription' => $this->subscriptionData($sub)]);
     }
@@ -333,7 +347,7 @@ class ProMembershipController extends Controller
             }
             DB::transaction(function () use ($subscription) {
                 $subscription->update(['status' => 'revoked', 'cancelled_at' => now(), 'cancel_at_period_end' => false, 'cancellation_source' => 'manager', 'checkout_url' => null]);
-                $subscription->user?->update(['is_pro' => false]);
+                $subscription->user?->update(['is_pro' => $subscription->user->hasProAccess()]);
             });
             return response()->json(['message' => $subscription->provider === 'google_play' ? 'Pro access revoked. Google Play was asked to issue a prorated refund.' : 'Pro access revoked immediately. No automatic refund was issued.', 'subscription' => $this->subscriptionData($subscription->fresh('user'), true)]);
         }
@@ -364,7 +378,7 @@ class ProMembershipController extends Controller
         // Manager-granted Pro has no external recurring payment to stop.
         DB::transaction(function () use ($subscription) {
             $subscription->update(['status' => 'revoked', 'cancelled_at' => now(), 'cancel_at_period_end' => false, 'cancellation_source' => 'manager']);
-            $subscription->user?->update(['is_pro' => false]);
+            $subscription->user?->update(['is_pro' => $subscription->user->hasProAccess()]);
         });
 
         return response()->json(['message' => 'Pro access revoked.', 'subscription' => $this->subscriptionData($subscription->fresh('user'), true)]);

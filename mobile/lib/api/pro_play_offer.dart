@@ -1,7 +1,7 @@
 import 'package:in_app_purchase_android/billing_client_wrappers.dart';
 import 'package:in_app_purchase_android/in_app_purchase_android.dart';
 
-/// Selects the configured monthly plan, even when Play also returns annual plans.
+/// Selects an explicit base plan and its eligible offer returned by Play.
 /// Checkout wording comes from Play's actual phases, not the web plan's price.
 class ProPlayOffer {
   const ProPlayOffer(this.product, this.details, {required this.isTrial});
@@ -10,7 +10,17 @@ class ProPlayOffer {
   final SubscriptionOfferDetailsWrapper details;
   final bool isTrial;
 
+  String get price => details.pricingPhases.last.formattedPrice;
+  bool get yearly => details.pricingPhases.last.billingPeriod == 'P1Y';
+  int get trialDays {
+    if (!isTrial) return 0;
+    final period = details.pricingPhases.first.billingPeriod;
+    final match = RegExp(r'^P(\d+)([DW])$').firstMatch(period);
+    return match == null ? 0 : int.parse(match[1]!) * (match[2] == 'W' ? 7 : 1);
+  }
+
   String get terms {
+    if (yearly) return '$price / year · billed yearly';
     final monthlyPrice = details.pricingPhases.last.formattedPrice;
     if (!isTrial) return '$monthlyPrice / month · billed monthly';
     final period = details.pricingPhases.first.billingPeriod;
@@ -33,6 +43,7 @@ class ProPlayOffer {
     required String basePlanId,
     required String? trialOfferId,
     required bool trialAvailable,
+    String billingPeriod = 'P1M',
   }) {
     ProPlayOffer? regular;
     ProPlayOffer? trial;
@@ -49,7 +60,7 @@ class ProPlayOffer {
       if (offer.basePlanId != basePlanId ||
           offer.installmentPlanDetails != null ||
           offer.pricingPhases.isEmpty ||
-          offer.pricingPhases.last.billingPeriod != 'P1M' ||
+          offer.pricingPhases.last.billingPeriod != billingPeriod ||
           offer.pricingPhases.last.recurrenceMode !=
               RecurrenceMode.infiniteRecurring) {
         continue;

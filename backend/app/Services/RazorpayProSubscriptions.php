@@ -15,27 +15,27 @@ class RazorpayProSubscriptions
         return Http::withBasicAuth($key, $secret)->acceptJson()->connectTimeout(5)->timeout(20);
     }
 
-    public function createPlan(int $amountPaise): string
+    public function createPlan(int $amountPaise, string $period = 'monthly'): string
     {
         $response = $this->request()->post('https://api.razorpay.com/v1/plans', [
-            'period' => 'monthly',
+            'period' => $period,
             'interval' => 1,
-            'item' => ['name' => 'Quiz LAB Pro', 'amount' => $amountPaise, 'currency' => 'INR', 'description' => 'Quiz LAB Pro monthly membership'],
+            'item' => ['name' => 'Quiz LAB Pro', 'amount' => $amountPaise, 'currency' => 'INR', 'description' => 'Quiz LAB Pro '.$period.' membership'],
         ]);
-        if (! $response->successful() || ! $response->json('id')) throw new RuntimeException('Razorpay could not create the monthly Pro plan.');
+        if (! $response->successful() || ! $response->json('id')) throw new RuntimeException('Razorpay could not create the Pro plan.');
         return (string) $response->json('id');
     }
 
-    public function createSubscription(string $planId, int $trialDays, int $userId, string $email): array
+    public function createSubscription(string $planId, int $trialDays, int $userId, string $email, string $period = 'monthly'): array
     {
         $now = now();
         $startAt = $now->copy()->addDays($trialDays)->timestamp;
         $response = $this->request()->post('https://api.razorpay.com/v1/subscriptions', [
             'plan_id' => $planId,
-            'total_count' => 120,
+            'total_count' => $period === 'yearly' ? 10 : 120,
             'quantity' => 1,
             'customer_notify' => 0,
-            'start_at' => $startAt,
+            ...($trialDays > 0 ? ['start_at' => $startAt] : []),
             'expire_by' => $now->copy()->addHours(1)->timestamp,
             'notes' => ['quiz_lab_user_id' => (string) $userId, 'product' => 'quiz_lab_pro'],
         ]);

@@ -32,14 +32,34 @@
     const rows = st.rows.filter((p) => !term || [p.title, p.owner && p.owner.name, p.owner && p.owner.email].join(" ").toLowerCase().includes(term));
     $("list").innerHTML = rows.length ? rows.map(card).join("") : '<p class="rep-empty">' + (st.state === "new" ? "Nothing waiting for review." : "Nothing here.") + "</p>";
   }
-  async function load() {
+  async function load(isRetry) {
     $("list").innerHTML = '<p class="rep-empty">Loading…</p>';
     try {
       const d = await api("/manager/uploaded-papers?state=" + st.state);
       st.rows = d.papers || [];
       const c = d.counts || {}; $("c-new").textContent = c.new || 0; $("c-published").textContent = c.published || 0;
       render();
-    } catch (e) { $("list").innerHTML = '<p class="rep-empty">Could not load uploads: ' + esc(e.message) + "</p>"; }
+    } catch (e) {
+      if (!isRetry) {
+        try {
+          await api("/manager/system/migrate", "POST");
+          return await load(true);
+        } catch (_) {}
+      }
+      $("list").innerHTML = '<div class="rep-empty"><p>Could not load uploads: ' + esc(e.message) + '</p><button type="button" class="primary" style="margin-top:12px;padding:8px 16px;font-weight:600;cursor:pointer;" id="up-repair-btn">Run Database Update</button></div>';
+      const b = $("up-repair-btn");
+      if (b) b.onclick = async () => {
+        b.disabled = true; b.textContent = "Updating database...";
+        try {
+          await api("/manager/system/migrate", "POST");
+          toast("Database updated!");
+          await load(true);
+        } catch (err) {
+          toast("Update failed: " + err.message);
+          b.disabled = false; b.textContent = "Run Database Update";
+        }
+      };
+    }
   }
   async function weeksFor(courseId) {
     if (!courseId) return [];

@@ -65,9 +65,12 @@ return [
         'webhook_secret' => env('RAZORPAY_WEBHOOK_SECRET'),
     ],
 
+    'pro' => ['annual_price_paise' => (int) env('PRO_ANNUAL_PRICE_PAISE', 99900)],
+
     'google_play' => [
         'package_name' => env('GOOGLE_PLAY_PACKAGE_NAME'),
         'subscription_product_id' => env('GOOGLE_PLAY_PRO_PRODUCT_ID'),
+        'annual_base_plan_id' => env('GOOGLE_PLAY_PRO_ANNUAL_BASE_PLAN_ID', 'annual'),
         'subscription_base_plan_id' => env('GOOGLE_PLAY_PRO_BASE_PLAN_ID'),
         'regions_version' => env('GOOGLE_PLAY_REGIONS_VERSION', '2022/02'),
         'trial_offer_id' => env('GOOGLE_PLAY_PRO_TRIAL_OFFER_ID'),

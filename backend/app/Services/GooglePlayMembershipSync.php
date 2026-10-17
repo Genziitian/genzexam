@@ -29,6 +29,7 @@ class GooglePlayMembershipSync
                 $this->play->acknowledge($subscription->google_purchase_token, $subscription->product_id);
             }
             $subscription->update($data);
+            app(MembershipTransactionRecorder::class)->google($subscription, $purchase);
             // A separate active Play, web or complimentary grant must survive.
             $user->update(['is_pro' => $user->hasProAccess()]);
 
@@ -76,6 +77,14 @@ class GooglePlayMembershipSync
             'cancelled_at' => $cancelled ? ($subscription->cancelled_at ?? now()) : null,
             'cancellation_source' => $cancelled ? ($subscription->cancellation_source ?? 'provider') : null,
         ];
+        $money = data_get($line, 'autoRenewingPlan.recurringPrice');
+        if (is_array($money) && isset($money['currencyCode'])) {
+            $currency = $money['currencyCode'];
+            $digits = in_array($currency, ['JPY', 'KRW', 'VND', 'CLP', 'PYG', 'RWF', 'UGX', 'VUV', 'XAF', 'XOF', 'XPF', 'BIF', 'DJF', 'GNF', 'KMF'], true) ? 0
+                : (in_array($currency, ['BHD', 'IQD', 'JOD', 'KWD', 'LYD', 'OMR', 'TND'], true) ? 3 : 2);
+            $data['currency'] = $currency;
+            $data['amount_paise'] = (int) round(((int) ($money['units'] ?? 0) + (int) ($money['nanos'] ?? 0) / 1000000000) * (10 ** $digits));
+        }
         if ($status === 'trialing' && ! $subscription->trial_ends_at) $data['trial_ends_at'] = $expiry;
         if ($status === 'active' && ! $subscription->paid_at) $data['paid_at'] = now();
 

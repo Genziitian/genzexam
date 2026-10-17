@@ -60,14 +60,37 @@
       target.innerHTML = result.data?.length ? result.data.map(row => {
         const active = ['active','trialing'].includes(row.status);
         const manual = row.provider === 'manual' || row.provider === 'manual legacy flag';
-        const actions = manual
+        const historyAction = row.user?.id ? `<button data-pro-history="${esc(row.user.id)}">User history</button> ` : '';
+        const actions = historyAction + (manual
           ? (active ? `<button class="danger" data-pro-action="revoke_access" data-pro-id="${esc(row.id)}">Revoke access</button>` : '—')
-          : `${['active','trialing','pending'].includes(row.status) && !row.cancel_at_period_end ? `<button data-pro-action="cancel_renewal" data-pro-id="${esc(row.id)}">${row.status === 'pending' ? 'Cancel checkout' : 'Cancel renewal'}</button>` : esc(row.cancel_at_period_end ? 'Renewal cancelled' : '—')} ${active ? `<button class="danger" data-pro-action="revoke_access" data-pro-id="${esc(row.id)}">Revoke now</button>` : ''}`;
+          : `${['active','trialing','pending'].includes(row.status) && !row.cancel_at_period_end ? `<button data-pro-action="cancel_renewal" data-pro-id="${esc(row.id)}">${row.status === 'pending' ? 'Cancel checkout' : 'Cancel renewal'}</button>` : esc(row.cancel_at_period_end ? 'Renewal cancelled' : '—')} ${active ? `<button class="danger" data-pro-action="revoke_access" data-pro-id="${esc(row.id)}">Revoke now</button>` : ''}`);
         const chargeDate = row.cancel_at_period_end ? 'Access until ' + proWhen(row.current_period_ends_at) : proWhen(row.current_period_ends_at);
         return `<tr><td><strong>${esc(row.user?.name || 'Deleted account')}</strong><small>${esc(row.user?.email || '')} · #${esc(row.user?.id || '—')}</small></td><td><span class="state ${active?'paid':'unpaid'}">${esc(row.status)}</span>${row.cancelled_at?'<small>Action by '+esc(row.cancellation_source || 'provider')+'</small>':''}</td><td>${esc(row.provider)}<small>${esc(row.product_id || '')}</small>${row.provider_subscription_id?'<small class="mono">'+esc(row.provider_subscription_id)+'</small>':''}</td><td>${esc(money(row.amount_paise))}</td><td>${esc(proWhen(row.started_at || row.created_at))}</td><td>${esc(proWhen(row.trial_ends_at))}</td><td>${esc(proWhen(row.paid_at))}</td><td>${esc(chargeDate)}${row.checkout_url?'<small><a href="'+esc(row.checkout_url)+'" target="_blank" rel="noopener">Open pending checkout</a></small>':''}</td><td class="pro-actions">${actions}</td></tr>`;
       }).join('') : '<tr><td colspan="9" class="empty-row">No subscription records match these filters.</td></tr>';
     } catch (error) { target.innerHTML = `<tr><td colspan="9" class="empty-row">${esc(error.message)}</td></tr>`; }
   }
+  let transactionPage = 1, transactionLastPage = 1, transactionUser = '';
+  async function loadTransactions() {
+    const target = $('pro-transactions'); target.textContent = 'Loading history…';
+    try {
+      const query = new URLSearchParams({page:String(transactionPage),search:$('pro-transaction-search').value.trim(),user_id:transactionUser});
+      const result = await api('/manager/pro/transactions?' + query), ledger = result.transactions || {};
+      transactionLastPage = ledger.last_page || 1;
+      $('pro-history-user').textContent = result.user ? `${result.user.name} · ${result.user.email} · #${result.user.id}` : 'All users';
+      const memberships = result.subscriptions || result.memberships || [];
+      target.innerHTML = (memberships.length ? '<h4>Membership history</h4>' + memberships.map(row => `<p>${esc(row.provider)} · ${esc(row.status)} · Access end ${esc(proWhen(row.current_period_ends_at))}${row.cancel_at_period_end?' · Renewal cancelled':''}</p>`).join('') : '') + `<p class="hint">${esc(result.history_note || '')}</p>` + ((ledger.data || []).length ? '<div class="table-wrap"><table><thead><tr><th>User</th><th>Transaction</th><th>Provider</th><th>Status</th><th>Amount</th><th>Date</th><th>Reference</th></tr></thead><tbody>' + ledger.data.map(row => {
+        const minor = row.amount_paise ?? row.amount_minor;
+        let amount = 'Unavailable'; if (minor != null) { try { amount = new Intl.NumberFormat(undefined,{style:'currency',currency:row.currency || 'INR'}).format(Number(minor)/100); } catch (_) { amount = `${row.currency || ''} ${Number(minor)/100}`; } }
+        return `<tr><td>${esc(row.user?.name)}<small>${esc(row.user?.email)}</small></td><td>${esc(row.title)}</td><td>${esc(row.provider)}</td><td>${esc(row.status)}</td><td>${esc(amount)}</td><td>${esc(proWhen(row.paid_at || row.created_at))}</td><td>${esc(row.reference || '—')}</td></tr>`;
+      }).join('') + '</tbody></table></div>' : '<p>No recorded transactions.</p>');
+      $('pro-transactions-page').textContent = `Page ${transactionPage} of ${transactionLastPage} · ${ledger.total || 0} records`;
+      $('pro-transactions-prev').disabled = transactionPage <= 1; $('pro-transactions-next').disabled = transactionPage >= transactionLastPage;
+    } catch (error) { target.textContent = error.message; }
+  }
+  $('pro-transaction-search-button').onclick = () => { transactionUser = ''; transactionPage = 1; loadTransactions(); };
+  $('pro-transactions-prev').onclick = () => { if (transactionPage > 1) { transactionPage--; loadTransactions(); } };
+  $('pro-transactions-next').onclick = () => { if (transactionPage < transactionLastPage) { transactionPage++; loadTransactions(); } };
+  $('pro-list').addEventListener('click', event => { const button = event.target.closest('[data-pro-history]'); if (!button) return; transactionUser = button.dataset.proHistory; transactionPage = 1; $('pro-transaction-search').value = ''; loadTransactions(); $('pro-transactions').scrollIntoView({behavior:'smooth',block:'center'}); });
   async function loadPro() { await Promise.all([loadProPlan(), loadProSubscriptions()]); }
   $('pro-plan-form').onsubmit = event => { event.preventDefault(); const f=event.currentTarget; busy(f.querySelector('button'),async()=>{const result=await api('/manager/pro/plan','PUT',{price_paise:Math.round(Number(value(f,'price'))*100),trial_days:Number(value(f,'trial_days')),enabled:value(f,'enabled')==='1'}); f.elements.price.value=(Number(result.price_paise)/100).toFixed(2); $('google-play-price-note').textContent=result.google_play_price_note; $('pro-plan-status').textContent=result.google_play_price_managed?'Web price and Google Play price for new India subscribers were updated. Existing Google Play price cohorts are unchanged.':'Web plan saved. '+result.google_play_price_note; toast('Plan updated.'); },$('pro-plan-status')); };
   $('pro-status-filter').onchange=()=>{proPage=1;loadProSubscriptions();};

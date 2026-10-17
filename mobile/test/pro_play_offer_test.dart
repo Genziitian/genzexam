@@ -105,4 +105,13 @@ void main() {
     expect(selected.isTrial, false);
     expect(selected.terms, '₹99.00 / month · billed monthly');
   });
+  test('yearly uses the annual token and yearly price with no trial', () {
+    final selected = ProPlayOffer.select(products, basePlanId: 'annual',
+      trialOfferId: null, trialAvailable: false, billingPeriod: 'P1Y')!;
+    expect(selected.product.offerToken, 'annual-regular');
+    expect(selected.price, '₹999.00');
+    expect(selected.terms, '₹999.00 / year · billed yearly');
+    expect(selected.isTrial, false);
+  });
+
 }

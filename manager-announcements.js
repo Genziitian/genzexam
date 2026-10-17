@@ -73,7 +73,33 @@
         '<button type="button" class="danger' + (st.armed === a.id ? " armed" : "") + '" data-del="' + a.id + '">' + (st.armed === a.id ? "Click again to delete" : "Delete") + "</button></div></article>";
     }).join("");
   }
-  async function load() { const d = await api("/manager/announcements"); st.rows = d.announcements || []; render(); }
+  async function load(isRetry) {
+    try {
+      const d = await api("/manager/announcements");
+      st.rows = d.announcements || [];
+      render();
+    } catch (err) {
+      if (!isRetry) {
+        try {
+          await api("/manager/system/migrate", "POST");
+          return await load(true);
+        } catch (_) {}
+      }
+      $("list").innerHTML = '<div class="ann-empty"><p>Could not load announcements: ' + esc(err.message) + '</p><button type="button" class="primary" style="margin-top:12px;padding:8px 16px;font-weight:600;cursor:pointer;" id="ann-repair-btn">Run Database Update</button></div>';
+      const b = $("ann-repair-btn");
+      if (b) b.onclick = async () => {
+        b.disabled = true; b.textContent = "Updating database...";
+        try {
+          await api("/manager/system/migrate", "POST");
+          toast("Database updated!");
+          await load(true);
+        } catch (e) {
+          toast("Update failed: " + e.message);
+          b.disabled = false; b.textContent = "Run Database Update";
+        }
+      };
+    }
+  }
 
   $("form").addEventListener("input", preview);
   $("form").addEventListener("change", preview);
@@ -113,7 +139,7 @@
       $("me").textContent = user.name || user.email || "";
     } catch (err) { gate.textContent = "Could not verify your account: " + err.message; gate.classList.add("error"); return; }
     gate.hidden = true; $("workspace").hidden = false; fill(null);
-    try { await load(); } catch (err) { $("list").innerHTML = '<p class="ann-empty">Could not load announcements: ' + esc(err.message) + "</p>"; }
+    await load();
   }
   boot();
 })();

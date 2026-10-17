@@ -11,7 +11,7 @@
       style = document.getElementById('ql-loading-styles');
       if (!style) {
         style = document.createElement('link'); style.id = 'ql-loading-styles';
-        style.rel = 'stylesheet'; style.href = '/ql-loading.css?v=20261017a';
+        style.rel = 'stylesheet'; style.href = '/ql-loading.css?v=20261017b';
         document.head.appendChild(style);
       }
     }

@@ -7,15 +7,19 @@ const membershipSource = source.slice(source.indexOf('  function ensureMembershi
 function setup(initial) {
   let membership = initial;
   const parts = new Map();
-  const element = () => ({hidden: false, disabled: false, textContent: '', listeners: {},
-    addEventListener(event, fn) { this.listeners[event] = fn; }});
-  const card = {querySelector(selector) {
-    if (!parts.has(selector)) parts.set(selector, element());
-    return parts.get(selector);
-  }};
+  const element = () => ({
+    hidden: false, disabled: false, textContent: '', innerHTML: '', listeners: {},
+    setAttribute(name, value) { this[name] = value; },
+    addEventListener(event, fn) { this.listeners[event] = fn; },
+    appendChild() {},
+    querySelector(selector) {
+      if (!parts.has(selector)) parts.set(selector, element());
+      return parts.get(selector);
+    }
+  });
   const context = {
     MEMBERSHIP_ID: 'membership',
-    document: {getElementById: () => null, createElement: () => card},
+    document: {getElementById: () => null, createElement: () => element()},
     api: async () => membership,
     apiBase: () => 'https://example.test/api', token: () => 'fixture',
     window: {confirm: () => true},
@@ -34,17 +38,23 @@ const initial = () => ({is_pro: false, trial_available: true, plan: {price_paise
 
 (async () => {
   let app = setup(initial()); await settle();
-  assert.equal(app.part('buy').textContent, 'Start 7-day trial');
+  assert.equal(app.part('buy').textContent, 'Try for free');
+
+  assert.match(app.part('summary').textContent, /FREE today/);
+  app.part('annual').listeners.click();
+  assert.equal(app.part('buy').textContent, 'Subscribe yearly');
+  assert.match(app.part('summary').textContent, /₹999 charged today/);
+  assert.doesNotMatch(app.part('summary').textContent, /FREE today/);
 
   app = setup({...initial(), trial_available: false}); await settle();
-  assert.equal(app.part('buy').textContent, 'Subscribe to Pro');
+  assert.equal(app.part('buy').textContent, 'Subscribe monthly');
   assert.doesNotMatch(app.part('dates').textContent, /trial/);
 
   app = setup({...initial(), plan: {enabled: false}}); await settle();
   assert.equal(app.part('buy').hidden, true);
 
   app = setup({...initial(), plan: {trial_days: 0}}); await settle();
-  assert.equal(app.part('buy').textContent, 'Subscribe to Pro');
+  assert.equal(app.part('buy').textContent, 'Subscribe monthly');
 
   app = setup({...initial(), is_pro: true, subscription: {id: 1, provider: 'google_play', status: 'active', started_at: '2026-10-01T00:00:00Z', current_period_ends_at: '2026-11-01T00:00:00Z'}});
   await settle();

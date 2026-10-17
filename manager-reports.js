@@ -46,14 +46,34 @@
     const rows = st.rows.filter((r) => !term || [r.quiz && r.quiz.title, r.user && r.user.name, r.user && r.user.email, r.comment, r.question && r.question.stem].join(" ").toLowerCase().includes(term));
     $("list").innerHTML = rows.length ? rows.map(card).join("") : '<p class="rep-empty">' + (st.status === "open" ? "No open reports. Nice." : "Nothing here.") + "</p>";
   }
-  async function load() {
+  async function load(isRetry) {
     $("list").innerHTML = '<p class="rep-empty">Loading…</p>';
     try {
       const d = await api("/manager/question-reports?status=" + st.status);
       st.rows = d.reports || []; st.reasons = d.reasons || {};
       const c = d.counts || {}; ["open", "resolved", "dismissed"].forEach((k) => { $("c-" + k).textContent = c[k] || 0; });
       render();
-    } catch (e) { $("list").innerHTML = '<p class="rep-empty">Could not load reports: ' + esc(e.message) + "</p>"; }
+    } catch (e) {
+      if (!isRetry) {
+        try {
+          await api("/manager/system/migrate", "POST");
+          return await load(true);
+        } catch (_) {}
+      }
+      $("list").innerHTML = '<div class="rep-empty"><p>Could not load reports: ' + esc(e.message) + '</p><button type="button" class="primary" style="margin-top:12px;padding:8px 16px;font-weight:600;cursor:pointer;" id="rep-repair-btn">Run Database Update</button></div>';
+      const b = $("rep-repair-btn");
+      if (b) b.onclick = async () => {
+        b.disabled = true; b.textContent = "Updating database...";
+        try {
+          await api("/manager/system/migrate", "POST");
+          toast("Database updated!");
+          await load(true);
+        } catch (err) {
+          toast("Update failed: " + err.message);
+          b.disabled = false; b.textContent = "Run Database Update";
+        }
+      };
+    }
   }
   document.querySelector(".rep-tabs").addEventListener("click", (e) => {
     const b = e.target.closest("[data-status]"); if (!b) return;

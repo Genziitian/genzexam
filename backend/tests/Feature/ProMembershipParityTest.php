@@ -123,6 +123,23 @@ class ProMembershipParityTest extends TestCase
         $this->postJson('/public/api/membership/razorpay/start')->assertForbidden();
     }
 
+    public function test_annual_web_checkout_has_the_yearly_price_and_no_trial(): void
+    {
+        $this->student->update(['is_pro' => false]);
+        config(['services.pro.annual_price_paise' => 99900]);
+        $payment = Mockery::mock(RazorpayProSubscriptions::class);
+        $payment->shouldReceive('createPlan')->once()->with(99900, 'yearly')->andReturn('annual-plan');
+        $payment->shouldReceive('createSubscription')->once()
+            ->with('annual-plan', 0, $this->student->id, $this->student->email, 'yearly')
+            ->andReturn(['id' => 'annual-sub', 'short_url' => 'https://example.test/yearly']);
+        $this->app->instance(RazorpayProSubscriptions::class, $payment);
+        $this->postJson('/public/api/membership/razorpay/start', ['billing_period' => 'annual'])
+            ->assertOk()->assertJsonPath('trial_days', 0)->assertJsonPath('amount_paise', 99900);
+        $this->assertDatabaseHas('pro_subscriptions', [
+            'product_id' => 'quiz-lab-pro-annual', 'trial_ends_at' => null, 'amount_paise' => 99900,
+        ]);
+    }
+
     public function test_used_play_trial_prevents_a_second_web_trial(): void
     {
         $sub = $this->grant('google_play', 'expired', -1);

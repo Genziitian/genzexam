@@ -159,27 +159,66 @@
     var card = document.createElement('section');
     card.id = MEMBERSHIP_ID;
     card.className = 'ql-more-card';
-    card.innerHTML = '<h2 class="ql-more-heading">Pro membership</h2><p class="ql-more-subtitle">Manage your plan and billing details.</p><div class="ql-more-row"><div class="ql-more-row-copy"><strong id="ql-web-pro-status">Loading membership…</strong><small id="ql-web-pro-dates"></small></div><div class="ql-more-theme-options"><button type="button" class="ql-more-button primary" id="ql-web-pro-buy" hidden>Start 7-day trial</button><button type="button" class="ql-more-button danger" id="ql-web-pro-cancel" hidden>Cancel renewal</button></div></div><p class="ql-more-message" id="ql-web-pro-message" role="status"></p><p class="ql-more-subtitle">Pro includes video solutions, offline paper downloads, and PDF uploads.</p>';
+    card.innerHTML = '<h2 class="ql-more-heading">Manage membership &amp; transactions</h2><p class="ql-more-subtitle">Manage your plan and billing details.</p><div class="ql-more-row"><div class="ql-more-row-copy"><strong id="ql-web-pro-status">Loading membership…</strong><small id="ql-web-pro-dates"></small></div><div class="ql-more-theme-options"><button type="button" class="ql-more-button primary" id="ql-web-pro-buy" hidden>Start 7-day trial</button><button type="button" class="ql-more-button danger" id="ql-web-pro-cancel" hidden>Cancel renewal</button></div></div><div id="ql-web-pro-options" role="group" aria-label="Choose your Pro plan"><button type="button" class="ql-more-button" id="ql-web-pro-monthly">Monthly</button> <button type="button" class="ql-more-button" id="ql-web-pro-annual">Yearly</button><p id="ql-web-pro-summary" class="ql-more-subtitle"></p></div><p class="ql-more-message" id="ql-web-pro-message" role="status"></p><p class="ql-more-subtitle">Pro includes video solutions, offline paper downloads, and PDF uploads.</p>';
     page.appendChild(card);
     var status = card.querySelector('#ql-web-pro-status'), dates = card.querySelector('#ql-web-pro-dates'), message = card.querySelector('#ql-web-pro-message'), cancel = card.querySelector('#ql-web-pro-cancel'), buy = card.querySelector('#ql-web-pro-buy');
-    var buyLabel = 'Subscribe to Pro';
+    var buyLabel = 'Subscribe monthly', selectedPeriod = 'monthly', currentMembership;
+    var options = card.querySelector('#ql-web-pro-options'), monthly = card.querySelector('#ql-web-pro-monthly'), annual = card.querySelector('#ql-web-pro-annual'), summary = card.querySelector('#ql-web-pro-summary');
+    function renderPlans() {
+      var result = currentMembership;
+      if (!result) return;
+      var yearly = selectedPeriod === 'annual';
+      var days = result.plan?.trial_days ?? 7;
+      var trial = !yearly && result.trial_available === true && days > 0;
+      var monthlyPrice = '₹' + ((result.plan?.price_paise ?? 9900) / 100);
+      var yearlyPrice = '₹' + ((result.annual_price_paise ?? 99900) / 100);
+      monthly.textContent = 'Monthly · ' + monthlyPrice + '/month' + (result.trial_available === true && days > 0 ? ' · Try for free' : '');
+      annual.textContent = 'Yearly · ' + yearlyPrice + '/year';
+      monthly.setAttribute('aria-pressed', String(!yearly)); annual.setAttribute('aria-pressed', String(yearly));
+      monthly.disabled = buy.disabled; annual.disabled = buy.disabled;
+      options.hidden = result.is_pro === true;
+      buyLabel = trial ? 'Try for free' : yearly ? 'Subscribe yearly' : 'Subscribe monthly';
+      buy.textContent = buyLabel;
+      var firstCharge = new Date(); firstCharge.setDate(firstCharge.getDate() + days);
+      summary.textContent = trial
+        ? monthlyPrice + ' − ' + monthlyPrice + ' trial discount = FREE today. Pro starts today. First charge: ' + firstCharge.toLocaleDateString('en-IN') + ', then ' + monthlyPrice + '/month. Cancel before the trial ends to avoid subscription charges. Checkout confirms the exact billing time; your bank may require an authorisation payment.'
+        : yearly ? yearlyPrice + ' charged today, then every year. No free trial. Cancel renewal any time.' : monthlyPrice + ' charged today, then every month. Cancel renewal any time.';
+    }
+    monthly.addEventListener('click', function () { selectedPeriod = 'monthly'; renderPlans(); });
+    annual.addEventListener('click', function () { selectedPeriod = 'annual'; renderPlans(); });
     function loadMembership() { return api('/membership').then(function (result) {
       var sub = result.subscription || {};
       var pro = result.is_pro === true;
       var trialDays = result.plan?.trial_days ?? 7;
       var trialAvailable = result.trial_available === true && trialDays > 0;
-      buyLabel = trialAvailable ? 'Start ' + trialDays + '-day trial' : 'Subscribe to Pro';
-      buy.textContent = buyLabel;
+      currentMembership = result;
+      renderPlans();
       status.textContent = pro ? (sub.status === 'trialing' ? 'Free trial active' : 'Pro active') : 'No active Pro membership';
       dates.textContent = sub.started_at ? 'Started ' + new Date(sub.started_at).toLocaleDateString('en-IN') + (sub.trial_ends_at && sub.status === 'trialing' ? ' · Trial ends ' + new Date(sub.trial_ends_at).toLocaleDateString('en-IN') : '') + (sub.current_period_ends_at ? (sub.cancel_at_period_end || sub.status === 'cancelled' ? ' · Access ends ' : ' · Next charge / access end ') + new Date(sub.current_period_ends_at).toLocaleDateString('en-IN') : '') : (pro ? 'Pro access is managed by the Quiz LAB team.' : '₹' + ((result.plan?.price_paise ?? 9900) / 100) + ' per month' + (trialAvailable ? ' · ' + trialDays + '-day trial' : ''));
       cancel.hidden = !pro || !sub.id || !['google_play', 'razorpay'].includes(sub.provider) || sub.status === 'cancelled' || sub.cancel_at_period_end === true;
       buy.hidden = pro || !result.payment_setup?.web || result.plan?.enabled === false;
       if (!result.payment_setup?.web && !pro) message.textContent = 'Online membership checkout is being connected. Your account will show plan dates here once billing is active.';
     }).catch(function (error) { status.textContent = 'Membership details could not load.'; message.textContent = error.message; message.className = 'ql-more-message error'; }); }
+    var historyButton = document.createElement('button'); historyButton.type = 'button'; historyButton.className = 'ql-more-button'; historyButton.textContent = 'View membership & transactions';
+    var history = document.createElement('div'); history.hidden = true; history.setAttribute('aria-live', 'polite');
+    card.appendChild(historyButton); card.appendChild(history);
+    var historyPage = 1;
+    function safeHistory(value) { return String(value ?? '').replace(/[&<>"']/g, function (c) { return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+    function historyAmount(row) { var amount = row.amount_paise ?? row.amount_minor; if (amount == null) return 'Amount unavailable'; try { return new Intl.NumberFormat(undefined, {style:'currency',currency:row.currency || 'INR'}).format(Number(amount)/100); } catch (_) { return String(row.currency || '') + ' ' + Number(amount)/100; } }
+    function loadHistory() {
+      history.hidden = false; history.textContent = 'Loading history…';
+      api('/membership/history?page=' + historyPage).then(function (result) {
+        var ledger = result.transactions || {}, memberships = result.subscriptions || result.memberships || [];
+        history.innerHTML = '<h3>Membership history</h3>' + (memberships.length ? memberships.map(function (row) { return '<p><strong>' + safeHistory(row.provider) + ' · ' + safeHistory(row.status) + '</strong><br>Started: ' + safeHistory(row.started_at || row.created_at || '—') + '<br>Next charge / access end: ' + safeHistory(row.current_period_ends_at || '—') + (row.cancel_at_period_end ? '<br>Renewal cancelled' : '') + '</p>'; }).join('') : '<p>No membership history yet.</p>') + '<h3>Transactions</h3><p>' + safeHistory(result.history_note || '') + '</p>' + ((ledger.data || []).length ? ledger.data.map(function (row) { return '<p><strong>' + safeHistory(row.title || 'Payment') + ' · ' + safeHistory(historyAmount(row)) + '</strong><br>' + safeHistory(row.provider) + ' · ' + safeHistory(row.status) + '<br>' + safeHistory(row.paid_at || row.created_at || '') + '<br>Reference: ' + safeHistory(row.reference || '—') + '</p>'; }).join('') : '<p>No recorded transactions.</p>') + '<button type="button" class="ql-more-button" data-history-prev ' + (historyPage <= 1 ? 'disabled' : '') + '>Previous</button> <span>Page ' + historyPage + ' of ' + (ledger.last_page || 1) + '</span> <button type="button" class="ql-more-button" data-history-next ' + (historyPage >= (ledger.last_page || 1) ? 'disabled' : '') + '>Next</button>';
+        history.querySelector('[data-history-prev]').onclick = function () { historyPage--; loadHistory(); };
+        history.querySelector('[data-history-next]').onclick = function () { historyPage++; loadHistory(); };
+      }).catch(function (error) { history.textContent = error.message; });
+    }
+    historyButton.addEventListener('click', function () { if (history.hidden) loadHistory(); else history.hidden = true; });
     loadMembership();
     buy.addEventListener('click', function () {
       buy.disabled = true; buy.textContent = 'Opening checkout…'; message.textContent = '';
-      api('/membership/razorpay/start', { method:'POST', headers:{'Content-Type':'application/json'}, body:'{}' }).then(function (result) {
+      api('/membership/razorpay/start', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({billing_period: selectedPeriod}) }).then(function (result) {
         if (!result.checkout_url) throw new Error('Checkout link was not returned. Please try again.');
         location.assign(result.checkout_url);
       }).catch(function (error) { message.textContent = error.message; message.className = 'ql-more-message error'; }).finally(function () { buy.disabled = false; buy.textContent = buyLabel; });

@@ -56,6 +56,16 @@ class GooglePlaySubscriptions
         return $response->json();
     }
 
+    public function order(string $orderId): array
+    {
+        $package = (string) config('services.google_play.package_name');
+        if ($package === '') throw new RuntimeException('Google Play package name is not configured.');
+        $url = 'https://androidpublisher.googleapis.com/androidpublisher/v3/applications/'.rawurlencode($package).'/orders/'.rawurlencode($orderId);
+        $response = Http::withToken($this->accessToken())->connectTimeout(5)->timeout(15)->get($url);
+        if (! $response->successful()) throw new RuntimeException('Google Play order receipt is temporarily unavailable.');
+        return $response->json();
+    }
+
     public function cancel(string $purchaseToken, string $reason): void
     {
         $package = (string) config('services.google_play.package_name');
