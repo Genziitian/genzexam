@@ -1,0 +1,6 @@
+Generated with the built-in image generation tool.
+
+Use case: precise-object-edit / logo-brand. Create the final Google Play subscription product icon for Quiz LAB Pro using the attached existing Quiz LAB app icon as the edit target and exact brand reference. Output one square 1024 x 1024 PNG suitable for upload, no mockup or surrounding scene. Retain the recognizable mint green Q logo, its graduation cap and small laboratory flask, forest-green and sage palette. Improve its edge clarity. Compose this same symbol centered in the upper-middle of a premium dark forest green square with a subtle emerald glow and restrained soft dimensional shading. In the lower center add one beautifully legible small light-sage capsule badge reading exactly 'PRO' in bold dark forest-green uppercase sans serif. Spacious composition, strong contrast, visually related to existing icon, readable at small sizes, no extra symbols, no crown, no fake affiliation, no watermark, no pricing, no trial claim, no other wording. Flat square opaque background to image edges, no transparent outer corners, no large frame around the icon. This is a professional education app subscription icon, not a promotional poster.
+
+Reference: mobile/assets/logo.png
+Export: quiz-lab-pro-icon.png, 1024 x 1024, 32-bit RGBA PNG.
