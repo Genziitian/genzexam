@@ -27,6 +27,7 @@ class ProMembershipParityTest extends TestCase
             'database.connections.parity_test' => ['driver' => 'sqlite', 'database' => ':memory:', 'prefix' => '', 'foreign_key_constraints' => true],
             'cache.default' => 'array',
             'services.student_paper_uploads.limit' => 5,
+            'services.student_paper_uploads.free_limit' => 1,
             'services.student_paper_uploads.window_days' => 7,
             'services.google_play.subscription_base_plan_id' => 'monthly',
         ]);
@@ -134,18 +135,19 @@ class ProMembershipParityTest extends TestCase
         $this->postJson('/public/api/membership/razorpay/start')->assertOk()->assertJsonPath('trial_days', 0);
     }
 
-    public function test_expired_members_cannot_upload_or_download_on_either_client(): void
+    public function test_expired_members_get_only_free_upload_allowance_and_cannot_download_on_either_client(): void
     {
         $this->grant('google_play', 'expired');
         foreach (['web', 'mobile'] as $client) {
-            $this->postJson('/public/api/student/uploaded-papers', [], ['X-QuizLab-Client' => $client])->assertForbidden();
+            $this->getJson('/public/api/student/uploaded-papers', ['X-QuizLab-Client' => $client])
+                ->assertOk()->assertJsonPath('quota.is_pro', false)->assertJsonPath('quota.limit', 1);
             $this->getJson('/public/api/quizzes/999/offline-download', ['X-QuizLab-Client' => $client])->assertForbidden();
         }
     }
 
     public function test_web_and_app_consume_one_shared_upload_allowance(): void
     {
-        $this->grant('google_play', 'active');
+        $this->grant('google_play', 'active', 30);
         $importer = Mockery::mock(QuestionImporter::class);
         $importer->shouldReceive('normalizeMany')->times(5)->andReturn(['rows' => [['stem' => 'Fixture']], 'errors' => []]);
         $importer->shouldReceive('persist')->times(5)->andReturn([]);
@@ -164,5 +166,22 @@ class ProMembershipParityTest extends TestCase
         }
         $this->travel(7)->days();
         $this->getJson('/public/api/student/uploaded-papers')->assertJsonPath('quota.remaining', 5);
+    }
+
+    public function test_free_upload_consumed_on_web_is_not_a_second_free_upload_in_app(): void
+    {
+        $this->student->update(['is_pro' => false]);
+        $importer = Mockery::mock(QuestionImporter::class);
+        $importer->shouldReceive('normalizeMany')->once()->andReturn(['rows' => [['stem' => 'Fixture']], 'errors' => []]);
+        $importer->shouldReceive('persist')->once()->andReturn([]);
+        $this->app->instance(QuestionImporter::class, $importer);
+        $this->withHeaders(['Accept' => 'application/json', 'X-QuizLab-Client' => 'web'])
+            ->post('/public/api/student/uploaded-papers', ['paper' => UploadedFile::fake()->createWithContent('paper.json', '[{"stem":"Fixture"}]')])
+            ->assertCreated()->assertJsonPath('quota.limit', 1)->assertJsonPath('quota.remaining', 0);
+        $this->postJson('/public/api/student/uploaded-papers', [], ['X-QuizLab-Client' => 'mobile'])
+            ->assertStatus(429)->assertJsonPath('quota.remaining', 0);
+        $this->grant('google_play', 'active', 30);
+        $this->getJson('/public/api/student/uploaded-papers', ['X-QuizLab-Client' => 'mobile'])
+            ->assertJsonPath('quota.limit', 5)->assertJsonPath('quota.used', 1)->assertJsonPath('quota.remaining', 4);
     }
 }

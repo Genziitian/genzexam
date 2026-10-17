@@ -7,6 +7,7 @@ import 'package:webview_flutter/webview_flutter.dart';
 
 import '../../api/api.dart';
 import '../../api/offline_paper_store.dart';
+import '../../api/pro_access_guard.dart';
 import '../../state/theme_state.dart';
 import '../../state/app_activity.dart';
 import '../../widgets/app_ux_components.dart';
@@ -200,6 +201,34 @@ class _PracticeTabState extends State<PracticeTab> {
         });
   }
 
+  static const Map<String, List<String>> _courseAliases = {
+    'ct': ['computational thinking'],
+    'st1': ['statistics 1'],
+    'st2': ['statistics 2'],
+    'stats': ['statistics 1', 'statistics 2'],
+    'stats 1': ['statistics 1'],
+    'stats 2': ['statistics 2'],
+    'ma1': ['mathematics 1'],
+    'ma2': ['mathematics 2'],
+    'maths': ['mathematics 1', 'mathematics 2'],
+    'math': ['mathematics 1', 'mathematics 2'],
+    'py': ['python', 'programming in python'],
+    'en1': ['english 1'],
+    'en2': ['english 2'],
+    'dbms': ['database management systems'],
+    'pdsa': ['programming, data structures and algorithms using python'],
+    'java': ['programming in java'],
+  };
+
+  bool _courseMatches(CourseModel c, String query) {
+    if (query.isEmpty) return true;
+    final name = c.name.toLowerCase();
+    if (name.contains(query)) return true;
+    final targets = _courseAliases[query];
+    if (targets != null && targets.any((t) => name.contains(t))) return true;
+    return false;
+  }
+
   @override
   Widget build(BuildContext context) {
     if (_loading && _courses.isEmpty) {
@@ -217,7 +246,7 @@ class _PracticeTabState extends State<PracticeTab> {
     final shown = _courses.where((c) {
       final pct = _percentOf(c);
       if (_activeOnly && !(pct > 0 && pct < 100)) return false;
-      if (query.isNotEmpty && !c.name.toLowerCase().contains(query))
+      if (query.isNotEmpty && !_courseMatches(c, query))
         return false;
       return true;
     }).toList();
@@ -768,6 +797,8 @@ class _CoursePapersScreenState extends State<CoursePapersScreen> {
       final quiz = await QuizService(client: widget.courseService.client)
           .downloadQuiz(paper.id);
       await OfflinePaperStore.cacheQuiz(userId, quiz);
+      // Downloading proves Pro is active right now; remember it for offline use.
+      unawaited(ProAccessGuard.refresh(widget.courseService.client, userId));
       if (mounted)
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(

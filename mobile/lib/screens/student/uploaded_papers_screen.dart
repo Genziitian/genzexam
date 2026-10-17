@@ -8,7 +8,7 @@ import '../../api/uploaded_papers_service.dart';
 import '../../widgets/app_ux_components.dart';
 import '../../widgets/premium_widgets.dart';
 import 'native_paper_room.dart';
-import 'pro_membership_card.dart';
+import 'pro_paywall_screen.dart';
 
 const _ink = Brand.ink;
 
@@ -114,9 +114,7 @@ class _UploadedPapersScreenState extends State<UploadedPapersScreen> {
 
   Future<void> _goPro() async {
     await Navigator.of(context).push<void>(
-      MaterialPageRoute<void>(
-        builder: (_) => ProMembershipScreen(apiClient: widget.apiClient),
-      ),
+      MaterialPageRoute<void>(builder: (_) => const ProPaywallScreen()),
     );
     if (mounted) await _reload();
   }
@@ -160,7 +158,7 @@ class _UploadedPapersScreenState extends State<UploadedPapersScreen> {
                   children: [
                     FadeSlideIn(
                       delay: const Duration(milliseconds: 150),
-                      child: _QuotaCard(quota: quota),
+                      child: _QuotaCard(quota: quota, onGetPro: _goPro),
                     ),
                     const SizedBox(height: 14),
                     FadeSlideIn(
@@ -312,7 +310,8 @@ class _Hero extends StatelessWidget {
 /// Counter shown before any upload: how many are left in the current window.
 class _QuotaCard extends StatelessWidget {
   final UploadQuota? quota;
-  const _QuotaCard({required this.quota});
+  final VoidCallback onGetPro;
+  const _QuotaCard({required this.quota, required this.onGetPro});
 
   static String _resets(DateTime at) {
     final left = at.difference(DateTime.now());
@@ -394,6 +393,39 @@ class _QuotaCard extends StatelessWidget {
                   detail,
                   style: const TextStyle(color: Brand.muted, height: 1.4, fontSize: 13),
                 ),
+                if (!q.isPro) ...[
+                  const SizedBox(height: 10),
+                  GestureDetector(
+                    onTap: () {
+                      AppHaptics.light();
+                      onGetPro();
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+                      decoration: BoxDecoration(
+                        gradient: const LinearGradient(
+                          colors: [Color(0xFFFFD36E), Color(0xFFF59E0B)],
+                        ),
+                        borderRadius: BorderRadius.circular(999),
+                      ),
+                      child: const Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(Icons.workspace_premium_rounded, size: 16, color: Brand.deep),
+                          SizedBox(width: 6),
+                          Text(
+                            'Get Pro',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w900,
+                              color: Brand.deep,
+                              fontSize: 13,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
                 if (q.isPro && q.limit > 0) ...[
                   const SizedBox(height: 10),
                   Row(

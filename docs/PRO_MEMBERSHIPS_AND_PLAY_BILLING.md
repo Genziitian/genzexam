@@ -8,7 +8,7 @@
 - Shows membership status and dates in web Settings and app More/Settings.
 - Lets a member or manager cancel future renewal at the billing provider while preserving current access. Managers can revoke access immediately; Google Play revocation requests a prorated refund, while Razorpay cancellation does not automatically refund.
 - Lets managers search the subscription history, inspect trial/payment dates and provider references, grant complimentary Pro for a chosen number of days, cancel renewal, or revoke access.
-- Restricts PDF-to-test uploads, offline paper downloads, and Pro video playback to active Pro access on the server.
+- Restricts new offline paper downloads and Pro video playback to active Pro access on the server. PDF/JSON-to-test uploads share an account allowance across web and app: one free upload or five Pro uploads per rolling seven days. See [the current shared rules](APP_AND_WEB_PRO_RULES.md).
 
 ## Google Play Console steps
 

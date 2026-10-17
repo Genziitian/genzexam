@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
-import '../../widgets/premium_widgets.dart';
+
 
 import '../../legal/legal_documents.dart';
 
@@ -263,10 +263,8 @@ class _StudentMainShellState extends State<StudentMainShell> {
     // sends free accounts to Pro when it runs out.
     Navigator.of(context).push<void>(
       MaterialPageRoute<void>(
-        builder: (_) => UploadedPapersScreen(
-          user: user,
-          apiClient: _courseService.client,
-        ),
+        builder: (_) =>
+            UploadedPapersScreen(user: user, apiClient: _courseService.client),
       ),
     );
   }
@@ -2528,10 +2526,28 @@ class _QuickActionTile extends StatelessWidget {
                     child: Center(child: Icon(icon, color: color, size: 20)),
                   ),
                   if (pro && !wide)
-                    const Positioned(
-                      right: -6,
-                      bottom: -6,
-                      child: ProEmblem(size: 18, glow: false),
+                    Positioned(
+                      right: -5,
+                      bottom: -4,
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 4,
+                          vertical: 1,
+                        ),
+                        decoration: BoxDecoration(
+                          color: const Color(0xFFFFF1CC),
+                          borderRadius: BorderRadius.circular(5),
+                          border: Border.all(color: Colors.white, width: 1.5),
+                        ),
+                        child: const Text(
+                          'PRO',
+                          style: TextStyle(
+                            color: Color(0xFF9A5B00),
+                            fontSize: 7,
+                            fontWeight: FontWeight.w900,
+                          ),
+                        ),
+                      ),
                     ),
                 ],
               ),
@@ -2557,8 +2573,26 @@ class _QuickActionTile extends StatelessWidget {
                         ),
                       ),
                       if (pro && wide) ...[
-                        const SizedBox(width: 6),
-                        const ProEmblem(size: 20, glow: false),
+                        const SizedBox(width: 5),
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 5,
+                            vertical: 2,
+                          ),
+                          decoration: BoxDecoration(
+                            color: const Color(0xFFFFF1CC),
+                            borderRadius: BorderRadius.circular(6),
+                          ),
+                          child: const Text(
+                            'PRO',
+                            style: TextStyle(
+                              color: Color(0xFF9A5B00),
+                              fontSize: 8,
+                              fontWeight: FontWeight.w900,
+                              letterSpacing: 0.3,
+                            ),
+                          ),
+                        ),
                       ],
                     ],
                   ),
@@ -5456,24 +5490,21 @@ class _MoreTabState extends State<_MoreTab> {
             ),
             if (badge != null) ...[
               const SizedBox(width: 6),
-              if (badge == 'PRO')
-                const ProEmblem(size: 20, glow: false)
-              else
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 1),
-                  decoration: BoxDecoration(
-                    color: const Color(0xFFFEF3C7),
-                    borderRadius: BorderRadius.circular(4),
-                  ),
-                  child: Text(
-                    badge,
-                    style: const TextStyle(
-                      fontSize: 9,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xFFB45309),
-                    ),
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 1),
+                decoration: BoxDecoration(
+                  color: const Color(0xFFFEF3C7),
+                  borderRadius: BorderRadius.circular(4),
+                ),
+                child: Text(
+                  badge,
+                  style: const TextStyle(
+                    fontSize: 9,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xFFB45309),
                   ),
                 ),
+              ),
             ],
           ],
         ),

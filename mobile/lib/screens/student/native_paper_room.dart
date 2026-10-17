@@ -6,6 +6,8 @@ import 'package:flutter_math_fork/flutter_math.dart';
 
 import '../../api/api.dart';
 import '../../api/offline_paper_store.dart';
+import '../../api/pro_access_guard.dart';
+import 'pro_locked_view.dart';
 import '../../widgets/app_ux_components.dart';
 import '../../widgets/premium_widgets.dart';
 
@@ -40,6 +42,7 @@ class _PaperRoomScreenState extends State<PaperRoomScreen>
   QuizDetail? _quiz;
   bool _loading = true;
   bool _offline = false;
+  ProAccess? _locked;
   String? _error;
   int _seconds = 0;
   int _selectedMinutes = 0;
@@ -105,16 +108,34 @@ class _PaperRoomScreenState extends State<PaperRoomScreen>
   }
 
   Future<void> _loadPaper() async {
-    final cached = _userId > 0
+    var cached = _userId > 0
         ? await OfflinePaperStore.readQuiz(_userId, widget.quizId)
         : null;
+    // A downloaded copy opens only while Pro is active, online or offline.
+    ProAccess? lockedBy;
     if (cached != null) {
+      final access = await ProAccessGuard.check(widget.apiClient, _userId);
+      if (!mounted) return;
+      if (access != ProAccess.active) {
+        lockedBy = access;
+        cached = null;
+        if (widget.preferOffline) {
+          setState(() {
+            _loading = false;
+            _locked = access;
+          });
+          return;
+        }
+      }
+    }
+    final saved = cached;
+    if (saved != null) {
       if (!mounted) return;
       setState(() {
-        _quiz = cached;
+        _quiz = saved;
         _offline = true;
         _loading = false;
-        _selectedMinutes = cached.timeLimitMinutes;
+        _selectedMinutes = saved.timeLimitMinutes;
       });
       final draft = await OfflinePaperStore.readDraft(_userId, widget.quizId);
       if (draft != null && draft['started_at'] != null) {
@@ -143,6 +164,13 @@ class _PaperRoomScreenState extends State<PaperRoomScreen>
       quiz = null;
     }
     if (!mounted) return;
+    if (quiz == null && lockedBy != null) {
+      setState(() {
+        _loading = false;
+        _locked = lockedBy;
+      });
+      return;
+    }
     if (quiz == null) {
       setState(() {
         _loading = false;
@@ -543,6 +571,25 @@ class _PaperRoomScreenState extends State<PaperRoomScreen>
               ),
         body: _loading
             ? const Center(child: CircularProgressIndicator(color: _paperGreen))
+            : _locked != null
+            ? ProLockedView(
+                access: _locked!,
+                apiClient: widget.apiClient,
+                paperCount: 1,
+                onRecheck: () async {
+                  final access = await ProAccessGuard.check(widget.apiClient, _userId);
+                  if (access == ProAccess.active && mounted) {
+                    setState(() {
+                      _locked = null;
+                      _loading = true;
+                    });
+                    unawaited(_loadPaper());
+                  } else if (mounted) {
+                    setState(() => _locked = access);
+                  }
+                  return access;
+                },
+              )
             : _error != null && _quiz == null
             ? Center(
                 child: Padding(

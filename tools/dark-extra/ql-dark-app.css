@@ -40,3 +40,4 @@
 :root[data-theme=dark] .ql-mt-actions a{background:#111;border-color:#333;color:#9a9dff}
 :root[data-theme=dark] .ql-upload-quota.free{background:linear-gradient(135deg,#1b1c34,#33270c);border-color:#2b2d57}
 :root[data-theme=dark] .ql-upload-quota-actions a.ql-upload-upgrade{color:#9a9dff;border-color:#3a3b66}
+:root[data-theme=dark] .ql-upload-tag{background:#33270c;color:#f5b83d}

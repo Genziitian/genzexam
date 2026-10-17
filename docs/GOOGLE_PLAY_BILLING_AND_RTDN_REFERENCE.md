@@ -2,11 +2,15 @@
 
 Recorded: 17 October 2026.
 
+For the later app/website consistency audit and current upload package, see
+[Shared Pro rules](APP_AND_WEB_PRO_RULES.md) and
+[Hostinger upload instructions](../output/deployment/QUIZLAB_PRO_UPLOAD_INSTRUCTIONS.md).
+
 This explains why we set up Google Play Billing and real-time developer notifications (RTDN), what each part does, what we configured, and how to continue or troubleshoot later.
 
 ## 1. Why we are doing this
 
-Quiz LAB Pro unlocks video solutions, offline paper downloads, and turning uploaded PDFs into tests. Google Play Billing collects Android subscription payments. Our Laravel backend decides which Quiz LAB account currently has Pro access.
+Quiz LAB Pro unlocks video solutions, offline paper downloads, and a larger PDF/JSON-to-test upload allowance. The current shared allowance is one free upload or five Pro uploads per rolling seven days. Google Play Billing collects Android subscription payments. Our Laravel backend decides which Quiz LAB account currently has Pro access.
 
 A subscription can change while the student is away from the app. A renewal can succeed, a payment can fail, or access can expire. RTDN tells our backend that something changed so it can check Google and update the student's membership without waiting for the student to open the membership screen.
 
@@ -50,7 +54,7 @@ A base plan ID is a label. Naming it `monthly` does not set its billing period: 
 
 The proposed trial flow is seven free days, followed by the regular monthly price unless the student cancels. Eligibility and availability must be configured in Play Console, and the app must select the appropriate offer.
 
-An annual plan can offer a lower effective monthly cost and collect a year's payment up front. ₹999/year in India was discussed, but is not verified configuration. The current Flutter membership card has monthly wording and does not explicitly select an annual base plan. Keep annual purchasing unavailable in the app until plan selection, displayed terms, and purchase/restore flows are updated and tested.
+An annual plan can offer a lower effective monthly cost and collect a year's payment up front. ₹999/year in India was discussed, but is not verified configuration. The updated Flutter selector explicitly selects the configured monthly base plan and excludes annual plans. Keep annual purchasing unavailable in the app until annual selection, displayed terms, and purchase/restore flows are implemented and tested.
 
 Regional pricing follows the buyer's Google Play country/region, not their nationality. A student abroad sees that region's configured currency and price. No final overseas price table is preserved in this record.
 

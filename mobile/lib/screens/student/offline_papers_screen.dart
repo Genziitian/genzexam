@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import '../../widgets/premium_widgets.dart';
+
 
 import '../../api/api.dart';
 import '../../api/offline_paper_store.dart';
+import '../../api/pro_access_guard.dart';
+import 'pro_locked_view.dart';
 import 'native_paper_room.dart';
 
 const _green = Color(0xFF16A34A);
@@ -27,11 +29,20 @@ class OfflinePapersScreen extends StatefulWidget {
 
 class _OfflinePapersScreenState extends State<OfflinePapersScreen> {
   late Future<List<QuizDetail>> _papers;
+  ProAccess? _access;
 
   @override
   void initState() {
     super.initState();
     _papers = OfflinePaperStore.listDownloadedPapers(widget.user.id);
+    _verify();
+  }
+
+  /// Downloads open only while Pro is active, online or offline.
+  Future<ProAccess> _verify() async {
+    final access = await ProAccessGuard.check(widget.apiClient, widget.user.id);
+    if (mounted) setState(() => _access = access);
+    return access;
   }
 
   Future<void> _reload() async {
@@ -42,6 +53,12 @@ class _OfflinePapersScreenState extends State<OfflinePapersScreen> {
   }
 
   Future<void> _open(QuizDetail paper) async {
+    final access = await ProAccessGuard.check(widget.apiClient, widget.user.id);
+    if (!mounted) return;
+    if (access != ProAccess.active) {
+      setState(() => _access = access);
+      return;
+    }
     await Navigator.of(context).push<void>(
       MaterialPageRoute<void>(
         builder: (_) => PaperRoomScreen(
@@ -74,6 +91,15 @@ class _OfflinePapersScreenState extends State<OfflinePapersScreen> {
       body: FutureBuilder<List<QuizDetail>>(
         future: _papers,
         builder: (context, snapshot) {
+          final access = _access;
+          if (access != null && access != ProAccess.active) {
+            return ProLockedView(
+              access: access,
+              apiClient: widget.apiClient,
+              paperCount: snapshot.data?.length ?? 0,
+              onRecheck: _verify,
+            );
+          }
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(
               child: CircularProgressIndicator(color: _green),
@@ -235,8 +261,22 @@ class _ProBadge extends StatelessWidget {
   const _ProBadge();
 
   @override
-  Widget build(BuildContext context) =>
-      const ProEmblem(size: 26, glow: false);
+  Widget build(BuildContext context) => Container(
+    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+    decoration: BoxDecoration(
+      color: const Color(0xFFFFF1CC),
+      borderRadius: BorderRadius.circular(8),
+    ),
+    child: const Text(
+      'PRO',
+      style: TextStyle(
+        color: Color(0xFF9A5B00),
+        fontSize: 10,
+        fontWeight: FontWeight.w900,
+        letterSpacing: 0.5,
+      ),
+    ),
+  );
 }
 
 class _EmptyState extends StatelessWidget {

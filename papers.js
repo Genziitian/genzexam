@@ -35,9 +35,91 @@
     const sub = [p.course?.level, p.year].filter(Boolean).map(esc).join(' · ');
     return `<article class="card${owned ? ' is-owned' : ''}"><div class="cardtop"><span class="subject"><i aria-hidden="true"></i>${esc(p.course?.name || 'General')}</span>${state ? `<span class="pill ${owned ? 'owned' : 'muted'}">${esc(state)}</span>` : ''}</div><h3>${esc(p.title)}</h3>${sub ? `<div class="sub">${sub}</div>` : ''}<p class="card-description">${esc(p.description || 'View the paper details before you start.')}</p><div class="meta"><span class="type">${esc(sectionLabel(p.section))}</span>${p.question_count != null ? `<span>${esc(p.question_count)} ${Number(p.question_count) === 1 ? 'question' : 'questions'}</span>` : ''}${p.time_limit_minutes ? `<span>${esc(p.time_limit_minutes)} min</span>` : ''}${progress(p) ? `<span class="done">${esc(progress(p))}</span>` : ''}</div><div class="card-actions"><button class="btn" data-paper="${esc(p.id)}">View details</button><button class="btn ql-share-btn ql-share-icon" data-ql-share="${esc(p.id)}" data-ql-share-title="${esc(p.title)}" aria-label="Share link to this paper" title="Share link"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg><span>Share</span></button>${p.available === false ? '' : `<button class="btn primary" data-get="${esc(p.id)}">${esc(getLabel(p))}</button>`}</div></article>`;
   }
+  const SECTION_TAGS = {
+    practice_graded: ['ga', 'graded', 'graded assignment', 'graded practice'],
+    practice: ['pa', 'practice', 'practice assignment', 'weekly practice'],
+    quiz1: ['q1', 'quiz1', 'quiz 1'],
+    quiz2: ['q2', 'quiz2', 'quiz 2'],
+    endterm: ['et', 'endterm', 'end term', 'end-term'],
+    mock_test: ['mock', 'mocks', 'mock test'],
+  };
+  const COURSE_ALIAS_RULES = [
+    { match: /computational\s+thinking/i, aliases: ['ct', 'computational thinking', 'comp thinking'] },
+    { match: /statistics\s*1\b|stats\s*1\b/i, aliases: ['st1', 's1', 'stats 1', 'stat 1', 'stats1', 'stat1'] },
+    { match: /statistics\s*2\b|stats\s*2\b/i, aliases: ['st2', 's2', 'stats 2', 'stat 2', 'stats2', 'stat2'] },
+    { match: /statistics|stats/i, aliases: ['stats', 'stat', 'statistics'] },
+    { match: /mathematics\s*1\b|maths?\s*1\b/i, aliases: ['ma1', 'm1', 'maths 1', 'math 1', 'maths1', 'math1'] },
+    { match: /mathematics\s*2\b|maths?\s*2\b/i, aliases: ['ma2', 'm2', 'maths 2', 'math 2', 'maths2', 'math2'] },
+    { match: /mathematics|maths?/i, aliases: ['maths', 'math', 'mathematics'] },
+    { match: /english\s*1\b|eng\s*1\b/i, aliases: ['en1', 'e1', 'eng 1', 'english 1', 'eng1'] },
+    { match: /english\s*2\b|eng\s*2\b/i, aliases: ['en2', 'e2', 'eng 2', 'english 2', 'eng2'] },
+    { match: /english|eng/i, aliases: ['eng', 'english'] },
+    { match: /python/i, aliases: ['py', 'python', 'programming in python'] },
+    { match: /database|dbms/i, aliases: ['dbms', 'database management systems'] },
+    { match: /programming,\s*data\s*structures|pdsa|algorithms\s*using\s*python/i, aliases: ['pdsa', 'dsa'] },
+    { match: /java/i, aliases: ['java', 'programming in java'] },
+    { match: /modern\s+application\s+development\s*1|mad\s*1\b/i, aliases: ['mad1', 'mad 1'] },
+    { match: /modern\s+application\s+development\s*2|mad\s*2\b/i, aliases: ['mad2', 'mad 2'] },
+    { match: /machine\s+learning\s+foundations|mlf\b/i, aliases: ['mlf'] },
+    { match: /machine\s+learning\s+techniques|mlt\b/i, aliases: ['mlt'] },
+    { match: /machine\s+learning\s+practice|mlp\b/i, aliases: ['mlp'] },
+    { match: /business\s+data\s+management|bdm\b/i, aliases: ['bdm'] },
+    { match: /business\s+analytics|ba\b/i, aliases: ['ba'] },
+    { match: /tools\s+in\s+data\s+science|tds\b/i, aliases: ['tds'] },
+    { match: /system\s+commands|sc\b/i, aliases: ['sc'] },
+    { match: /software\s+engineering|se\b/i, aliases: ['se'] },
+    { match: /deep\s+learning|dl\b/i, aliases: ['dl'] },
+    { match: /artificial\s+intelligence|ai\b/i, aliases: ['ai'] },
+  ];
+  function courseInitials(name) {
+    if (!name) return '';
+    return name.replace(/[^a-zA-Z0-9\s]/g, '').split(/\s+/).filter(w => !/^(in|of|and|using|the|for)$/i.test(w)).map(w => w[0].toLowerCase()).join('');
+  }
+  function paperSearchTerms(p) {
+    if (p._searchTerms) return p._searchTerms;
+    const terms = new Set();
+    const cName = p.course?.name || '', title = p.title || '', desc = p.description || '', sec = p.section || '';
+    const fullText = [title, desc, cName, p.course?.level, p.year, sectionLabel(sec), sec].join(' ').toLowerCase();
+    if (SECTION_TAGS[sec]) SECTION_TAGS[sec].forEach(t => terms.add(t));
+    if (/graded/i.test(title)) { terms.add('ga'); terms.add('graded'); terms.add('graded assignment'); }
+    if (/practice\s+assignment/i.test(title)) { terms.add('pa'); terms.add('practice assignment'); }
+    const wm = (title + ' ' + desc).match(/\b(?:week|wk|w)\s*(\d+)\b/i);
+    const wn = wm ? wm[1] : (p.week_number ? String(p.week_number) : null);
+    if (wn) {
+      terms.add('w' + wn); terms.add('wk' + wn); terms.add('week ' + wn); terms.add('week' + wn);
+      if (sec === 'practice_graded' || /graded/i.test(title)) { terms.add('ga' + wn); terms.add('ga ' + wn); }
+      if (sec === 'practice' || /practice/i.test(title)) { terms.add('pa' + wn); terms.add('pa ' + wn); }
+    }
+    COURSE_ALIAS_RULES.forEach(r => { if (r.match.test(cName)) r.aliases.forEach(a => terms.add(a)); });
+    const init = courseInitials(cName);
+    if (init && init.length >= 2) terms.add(init);
+    p._searchTerms = { terms, fullText };
+    return p._searchTerms;
+  }
+  function paperMatches(p, query) {
+    if (!query) return true;
+    const { terms, fullText } = paperSearchTerms(p);
+    const raw = query.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+    if (!raw) return true;
+    const tokens = raw.split(/\s+/).filter(Boolean);
+    return tokens.every(token => {
+      if (terms.has(token)) return true;
+      const pair = token.match(/^([a-z]+)(\d+)$/);
+      if (pair) {
+        const [, letters, digits] = pair;
+        const lettersOk = terms.has(letters) || (letters.length >= 3 ? fullText.includes(letters) : new RegExp('(^|[^a-z0-9])' + letters + '([^a-z0-9]|$)', 'i').test(fullText));
+        const digitsOk = terms.has(digits) || new RegExp('(^|[^a-z0-9])' + digits + '([^a-z0-9]|$)', 'i').test(fullText);
+        if (lettersOk && digitsOk) return true;
+      }
+      if (token.length <= 2) {
+        return new RegExp('(^|[^a-z0-9])' + token + '([^a-z0-9]|$)', 'i').test(fullText);
+      }
+      return new RegExp('(^|[^a-z0-9])' + token, 'i').test(fullText);
+    });
+  }
   function renderCatalog() {
     const query = search.value.trim().toLowerCase();
-    const rows = papers.filter(p => p.available !== false && (!query || [p.title,p.description,p.course?.name,p.course?.level,p.year,sectionLabel(p.section)].join(' ').toLowerCase().includes(query)) && (!level.value || String(p.course?.level || '') === level.value) && (!type.value || p.section === type.value) && (!subject.value || String(p.course?.name || '') === subject.value));
+    const rows = papers.filter(p => p.available !== false && paperMatches(p, query) && (!level.value || String(p.course?.level || '') === level.value) && (!type.value || p.section === type.value) && (!subject.value || String(p.course?.name || '') === subject.value));
     grid.innerHTML = rows.length ? rows.map(card).join('') : '<div class="empty">No papers match these filters. Try another level or paper type.<br><button class="btn" data-reset>Clear filters</button></div>';
   }
   async function loadCatalog() {
@@ -109,7 +191,7 @@
     const rest = 'Search papers or courses';
     if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     let word = 0, pos = 0, hold = 8, erasing = false;
-    const words = () => { const names = [...new Set(papers.map(p => p.course?.name).filter(Boolean))].slice(0, 6); return names.concat(['Quiz 1', 'End Term', 'Mock test']); };
+    const words = () => { const names = [...new Set(papers.map(p => p.course?.name).filter(Boolean))].slice(0, 4); return names.concat(['CT', 'GA', 'PA', 'Quiz 1', 'End Term', 'Mock test']); };
     setInterval(() => {
       if (document.activeElement === search || search.value) { if (search.placeholder !== rest) search.placeholder = rest; pos = 0; erasing = false; hold = 0; return; }
       if (hold > 0) { hold--; return; }
