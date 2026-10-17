@@ -20,7 +20,7 @@ class StudentUploadedPaperController extends Controller
 {
     public function index(Request $request): JsonResponse
     {
-        abort_if(! StudentAppMode::isStudent($request), 403, 'Student uploads only.');
+        abort_if(! StudentAppMode::isStudent($request) && ! $request->user()?->hasAdminAccess(), 403, 'Student uploads only.');
 
         $papers = Quiz::withoutGlobalScope('exclude_personal_uploads')->where('is_personal', true)
             ->where('owner_user_id', $request->user()->id)
@@ -66,7 +66,7 @@ class StudentUploadedPaperController extends Controller
 
     public function store(Request $request, DeepSeekQuizGenerator $generator, QuestionImporter $importer): JsonResponse
     {
-        abort_if(! StudentAppMode::isStudent($request), 403, 'Student uploads only.');
+        abort_if(! StudentAppMode::isStudent($request) && ! $request->user()?->hasAdminAccess(), 403, 'Student uploads only.');
         $quota = $this->quota($request->user());
         if ($quota['remaining'] < 1) {
             return response()->json([

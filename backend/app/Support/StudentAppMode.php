@@ -13,7 +13,9 @@ final class StudentAppMode
 {
     public static function enabled(Request $request): bool
     {
-        return $request->header('X-QuizLab-Client') === 'mobile';
+        $client = strtolower((string) $request->header('X-QuizLab-Client'));
+        return in_array($client, ['mobile', 'web'], true)
+            || $request->header('X-QuizLab-Mode') === 'student';
     }
 
     public static function isStudent(Request $request): bool

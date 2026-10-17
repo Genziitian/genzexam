@@ -60,9 +60,10 @@ class StorefrontController extends Controller
             ->get(['id', 'quiz_id', 'started_at', 'submitted_at', 'score', 'total_marks', 'is_complete'])
             ->groupBy('quiz_id');
 
-        $personalIds = StudentAppMode::isStudent($request)
-            ? Quiz::withoutGlobalScope('exclude_personal_uploads')->where('is_personal', true)->where('owner_user_id', $user->id)->pluck('id')
-            : collect();
+        $personalIds = Quiz::withoutGlobalScope('exclude_personal_uploads')
+            ->where('is_personal', true)
+            ->where('owner_user_id', $user->id)
+            ->pluck('id');
 
         $quizzes = Quiz::withoutGlobalScope('exclude_personal_uploads')
             ->whereIn('id', $entitlements->keys()->merge($attempts->keys())->merge($personalIds)->unique()->values())
