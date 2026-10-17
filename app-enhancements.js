@@ -1405,6 +1405,198 @@
   }
 
   /* ---------------------------------------------------------------
+   * Header Bell & Daily Challenge navigation
+   * Clicking bell shows announcements & notifications.
+   * Clicking Daily Challenge takes user to /practice.
+   * ------------------------------------------------------------- */
+  var bellStyleId = "ql-bell-style";
+  function ensureBellStyles() {
+    if (document.getElementById(bellStyleId)) return;
+    var s = document.createElement("style");
+    s.id = bellStyleId;
+    s.textContent =
+      ".ql-bell-popover{position:fixed;z-index:99999;width:min(400px,calc(100vw - 24px));max-height:min(540px,calc(100vh - 80px));background:var(--surface,#fff);border:1px solid var(--line,#e2e8f0);border-radius:18px;box-shadow:0 20px 45px -10px rgba(15,23,42,.22),0 0 0 1px rgba(15,23,42,.05);display:flex;flex-direction:column;overflow:hidden;animation:qlu-rise .25s ease;color:var(--ink,#0f172a);font-family:system-ui,-apple-system,sans-serif}\n" +
+      ":root[data-theme=dark] .ql-bell-popover{background:#151a25;border-color:#2e3b4c;color:#f8fafc;box-shadow:0 24px 50px -10px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.08)}\n" +
+      ".ql-bell-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px;border-bottom:1px solid var(--line,#e2e8f0);background:rgba(248,250,252,.8);backdrop-filter:blur(4px)}\n" +
+      ":root[data-theme=dark] .ql-bell-head{background:rgba(21,26,37,.8);border-color:#2e3b4c}\n" +
+      ".ql-bell-head strong{font-size:14.5px;font-weight:750;display:flex;align-items:center;gap:8px}\n" +
+      ".ql-bell-badge{font-size:11px;font-weight:750;padding:2px 8px;border-radius:999px;background:#e0e7ff;color:#3730a3}\n" +
+      ":root[data-theme=dark] .ql-bell-badge{background:#282b51;color:#a5b4fc}\n" +
+      ".ql-bell-close{border:0;background:transparent;color:#64748b;font-size:22px;line-height:1;cursor:pointer;padding:2px 6px;border-radius:8px;transition:color .15s,background .15s}\n" +
+      ".ql-bell-close:hover{color:#0f172a;background:rgba(0,0,0,.06)}\n" +
+      ":root[data-theme=dark] .ql-bell-close:hover{color:#fff;background:rgba(255,255,255,.1)}\n" +
+      ".ql-bell-list{padding:14px;overflow-y:auto;display:grid;gap:12px}\n" +
+      ".ql-bell-card{border-radius:14px;padding:14px 16px;color:#fff;background:linear-gradient(135deg,#3730a3,#4f46e5 60%,#6366f1);box-shadow:0 4px 14px rgba(79,70,229,.2);display:grid;gap:6px}\n" +
+      ".ql-bell-card.tone-green{background:linear-gradient(135deg,#166534,#16a34a)!important;box-shadow:0 4px 14px rgba(22,163,74,.2)!important}\n" +
+      ".ql-bell-card.tone-amber{background:linear-gradient(135deg,#b45309,#f59e0b)!important;box-shadow:0 4px 14px rgba(245,158,11,.2)!important}\n" +
+      ".ql-bell-card.tone-dark{background:linear-gradient(135deg,#0f172a,#1e293b)!important;box-shadow:0 4px 14px rgba(15,23,42,.3)!important}\n" +
+      ".ql-bell-card b{font-size:14px;line-height:1.35;font-weight:700}\n" +
+      ".ql-bell-card p{margin:0;font-size:12.5px;line-height:1.45;opacity:.92}\n" +
+      ".ql-bell-card a{display:inline-block;align-self:start;margin-top:4px;padding:5px 12px;border-radius:8px;background:#fff;color:#1e1b4b;font-size:11.5px;font-weight:700;text-decoration:none;box-shadow:0 1px 3px rgba(0,0,0,.1)}\n" +
+      ".ql-bell-card a:hover{opacity:.95}\n" +
+      ".ql-bell-empty{padding:32px 18px;text-align:center;color:var(--muted,#64748b)}\n" +
+      ".ql-bell-empty .icon{font-size:32px;margin-bottom:8px}\n" +
+      ".ql-bell-empty strong{display:block;font-size:14px;color:var(--ink,#0f172a);margin-bottom:4px}\n" +
+      ":root[data-theme=dark] .ql-bell-empty strong{color:#f8fafc}\n" +
+      ".ql-bell-empty p{margin:0;font-size:12.5px;line-height:1.5}\n" +
+      ".ql-bell-foot{padding:10px 16px;border-top:1px solid var(--line,#e2e8f0);display:flex;align-items:center;justify-content:space-between;font-size:12px;background:rgba(248,250,252,.5)}\n" +
+      ":root[data-theme=dark] .ql-bell-foot{background:rgba(21,26,37,.5);border-color:#2e3b4c}\n" +
+      ".ql-bell-scrim{position:fixed;inset:0;z-index:99998;background:transparent}";
+    document.head.appendChild(s);
+  }
+
+  function toggleBellNotifications(bell) {
+    var existing = document.getElementById("ql-bell-popover");
+    var scrim = document.getElementById("ql-bell-scrim");
+    if (existing) { existing.remove(); if (scrim) scrim.remove(); return; }
+    ensureBellStyles();
+
+    try {
+      localStorage.setItem("ql_bell_seen_at", String(Date.now()));
+      var dot = bell && bell.querySelector("span");
+      if (dot) dot.style.display = "none";
+    } catch (_) {}
+
+    scrim = document.createElement("div");
+    scrim.id = "ql-bell-scrim";
+    scrim.className = "ql-bell-scrim";
+    document.body.appendChild(scrim);
+
+    var popover = document.createElement("div");
+    popover.id = "ql-bell-popover";
+    popover.className = "ql-bell-popover";
+    popover.setAttribute("role", "dialog");
+    popover.setAttribute("aria-label", "Notifications and announcements");
+
+    if (bell) {
+      var r = bell.getBoundingClientRect();
+      var right = Math.max(12, window.innerWidth - r.right);
+      popover.style.top = (r.bottom + 8) + "px";
+      popover.style.right = right + "px";
+    } else {
+      popover.style.top = "64px";
+      popover.style.right = "16px";
+    }
+
+    function close() {
+      popover.remove();
+      scrim.remove();
+      document.removeEventListener("keydown", onKey);
+    }
+    scrim.onclick = close;
+    function onKey(e) { if (e.key === "Escape") close(); }
+    document.addEventListener("keydown", onKey);
+
+    function renderContent(items) {
+      var count = items ? items.length : 0;
+      var head = '<div class="ql-bell-head"><strong><span>🔔</span>Announcements</strong>' +
+        (count ? '<span class="ql-bell-badge">' + count + ' live</span>' : '') +
+        '<button type="button" class="ql-bell-close" aria-label="Close">×</button></div>';
+
+      var body = '<div class="ql-bell-list">';
+      if (!items) {
+        body += '<div class="ql-bell-empty"><p>Checking announcements…</p></div>';
+      } else if (!items.length) {
+        body += '<div class="ql-bell-empty"><div class="icon">🎉</div><strong>All caught up!</strong><p>No active announcements or notifications right now.</p></div>';
+      } else {
+        body += items.map(function (a) {
+          var tone = /^(brand|green|amber|dark)$/.test(a.tone) ? a.tone : "brand";
+          var cta = "";
+          if (a.link_url && /^(https:\/\/|\/)/.test(a.link_url)) {
+            cta = '<a href="' + escapeHtml(a.link_url) + '">' + escapeHtml(a.link_label || "View") + ' →</a>';
+          }
+          return '<article class="ql-bell-card tone-' + tone + '">' +
+            '<span style="font-size:10px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;opacity:.85">📢 Announcement</span>' +
+            '<b>' + escapeHtml(a.title || "") + '</b>' +
+            (a.body ? '<p>' + escapeHtml(a.body) + '</p>' : '') +
+            cta +
+            '</article>';
+        }).join("");
+      }
+      body += '</div>';
+
+      var user = null;
+      try { user = JSON.parse(localStorage.getItem("lab_user") || "null"); } catch (_) {}
+      var isManager = user && (user.role === "manager" || user.is_admin);
+      var foot = '<div class="ql-bell-foot">' +
+        (isManager ? '<a href="/manager/announcements" style="color:#4f46e5;font-weight:700;text-decoration:none">Manage announcements →</a>' : '<span style="color:#64748b">Everything live for your account</span>') +
+        '<button type="button" class="ql-bell-close-btn" style="border:0;background:transparent;color:#64748b;cursor:pointer;font-weight:600;font-size:12px">Close</button></div>';
+
+      popover.innerHTML = head + body + foot;
+      var cBtn = popover.querySelector(".ql-bell-close");
+      if (cBtn) cBtn.onclick = close;
+      var cfBtn = popover.querySelector(".ql-bell-close-btn");
+      if (cfBtn) cfBtn.onclick = close;
+      popover.querySelectorAll("a").forEach(function (link) {
+        link.addEventListener("click", function () { close(); });
+      });
+    }
+
+    renderContent(Array.isArray(annData) ? annData : null);
+    document.body.appendChild(popover);
+
+    var runtime = window.QLStorefront;
+    var apiBase = (runtime && runtime.apiBase) || "https://labapi.genziitian.in/public/api";
+    fetch(apiBase + "/announcements", { headers: { Accept: "application/json" } })
+      .then(function (r) { return r.ok ? r.json() : { announcements: [] }; })
+      .then(function (d) {
+        annData = Array.isArray(d.announcements) ? d.announcements : [];
+        if (popover.isConnected) renderContent(annData);
+      })
+      .catch(function () {
+        if (popover.isConnected && !Array.isArray(annData)) renderContent([]);
+      });
+  }
+
+  function syncBellNotifications() {
+    loadAnnouncements();
+    var bell = document.querySelector(".ql-bell-btn, [data-ql-bell]");
+    if (!bell) {
+      var btn = Array.prototype.find.call(document.querySelectorAll("header button, nav button"), function (b) {
+        return b.querySelector && b.querySelector('svg path[d*="M18 8A6 6 0 006 8"]');
+      });
+      if (btn) {
+        btn.classList.add("ql-bell-btn");
+        btn.setAttribute("data-ql-bell", "1");
+        bell = btn;
+      }
+    }
+    if (bell && Array.isArray(annData)) {
+      var lastSeen = Number(localStorage.getItem("ql_bell_seen_at") || "0");
+      var hasUnread = annData.length > 0 && (!lastSeen || annData.some(function (a) {
+        return new Date(a.updated_at || a.created_at || a.starts_at || 0).getTime() > lastSeen;
+      }));
+      var dot = bell.querySelector("span");
+      if (dot) dot.style.display = hasUnread ? "" : "none";
+    }
+  }
+
+  document.addEventListener("click", function (e) {
+    var dc = e.target.closest && e.target.closest('a, button');
+    if (dc && /daily\s*challenge/i.test(dc.textContent || "")) {
+      e.preventDefault();
+      e.stopPropagation();
+      var practiceNav = document.querySelector('a[href="/practice"]');
+      if (practiceNav && practiceNav !== dc) {
+        practiceNav.click();
+      } else {
+        location.assign("/practice");
+      }
+      return;
+    }
+    var bell = e.target.closest && (
+      e.target.closest("button[data-ql-bell], .ql-bell-btn") ||
+      (e.target.closest("button") && e.target.closest("button").querySelector('svg path[d*="M18 8A6 6 0 006 8"]'))
+    );
+    if (bell) {
+      e.preventDefault();
+      e.stopPropagation();
+      toggleBellNotifications(bell);
+      return;
+    }
+  }, true);
+
+  /* ---------------------------------------------------------------
    * Video Solutions is closed for now: the page shows "Coming soon"
    * for everyone and the sidebar link does not open it.
    * ------------------------------------------------------------- */
@@ -1922,6 +2114,7 @@
     decorateCoursePapers();
     updateExamNav();
     renderAnnouncements();
+    syncBellNotifications();
     lockVideoSolutions();
     decorateLeaderboard();
     syncQuizBackLink();
