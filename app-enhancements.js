@@ -2928,37 +2928,66 @@
   /* ---------------------------------------------------------------
    * Phone top bar: the level chip is gone and the Spin & Win button
    * sits in its place, linking directly to /rewards.
+   * Also hides the welcome streak pill on phone screens.
    * ------------------------------------------------------------- */
   function syncPhoneTopBar() {
+    // Hide the welcome streak pill under "Welcome back, ..." on mobile view
+    document.querySelectorAll("#root div.rounded-full").forEach(function (pill) {
+      if (pill.closest("header")) return;
+      if (/^\d+-day\s+streak$/i.test(pill.textContent.trim())) {
+        tag(pill, "data-ql-streak-src", "");
+        if (window.innerWidth < 1024) {
+          pill.style.setProperty("display", "none", "important");
+        } else {
+          pill.style.removeProperty("display");
+        }
+      }
+    });
+
     var header = document.querySelector("header.lg\\:hidden");
     if (!header) return;
 
     header.querySelectorAll(".rounded-full.tracking-wide").forEach(function (chip) {
       if (/^LVL\s*\d+$/.test(chip.textContent.trim())) tag(chip, "data-ql-lvl", "");
     });
+    header.querySelectorAll('a[href*="/profile"]').forEach(function (link) {
+      link.style.setProperty("display", "none", "important");
+    });
 
     var oldStreak = header.querySelector(".ql-top-streak");
     if (oldStreak) oldStreak.remove();
 
+    var rightGroup = header.querySelector(".flex.items-center.gap-2") || header.lastElementChild;
+    var avatarMenu = rightGroup ? rightGroup.querySelector('.relative, button[aria-label="Account menu"]') : null;
+
     var slot = header.querySelector(".ql-top-spin-btn");
     if (!slot) {
-      var lvl = header.querySelector("[data-ql-lvl]");
-      if (!lvl || !lvl.parentNode) return;
       slot = document.createElement("a");
       slot.className = "ql-top-spin-btn";
       slot.href = "/rewards";
       slot.setAttribute("role", "button");
       slot.setAttribute("aria-label", "Spin & Win Daily Rewards");
-      slot.innerHTML =
-        '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24"/><path d="m14.83 9.17 4.24-4.24"/><path d="m14.83 14.83 4.24 4.24"/><path d="m9.17 14.83-4.24 4.24"/><circle cx="12" cy="12" r="3"/></svg>' +
-        '<span>Spin &amp; Win</span>';
       slot.addEventListener("click", function (e) {
         e.preventDefault();
         var nav = document.querySelector('nav a[href*="rewards"], nav button[data-ql-rewards]');
         if (nav) nav.click();
         else location.assign("/rewards");
       });
-      lvl.parentNode.insertBefore(slot, lvl);
+      if (rightGroup) {
+        if (avatarMenu) rightGroup.insertBefore(slot, avatarMenu);
+        else rightGroup.appendChild(slot);
+      }
+    } else if (rightGroup && slot.parentNode !== rightGroup) {
+      if (avatarMenu) rightGroup.insertBefore(slot, avatarMenu);
+      else rightGroup.appendChild(slot);
+    }
+
+    if (slot) {
+      slot.style.cssText =
+        "display:inline-flex!important;flex-direction:row!important;align-items:center!important;gap:4px!important;white-space:nowrap!important;flex-shrink:0!important;border:1px solid rgba(79,70,229,0.25)!important;background:rgba(79,70,229,0.08)!important;color:#4f46e5!important;border-radius:999px!important;padding:3px 8px!important;font-size:11px!important;font-weight:750!important;line-height:1!important;text-decoration:none!important;cursor:pointer;";
+      slot.innerHTML =
+        '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block!important;flex-shrink:0!important;vertical-align:middle!important"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24"/><path d="m14.83 9.17 4.24-4.24"/><path d="m14.83 14.83 4.24 4.24"/><path d="m9.17 14.83-4.24 4.24"/><circle cx="12" cy="12" r="3"/></svg>' +
+        '<span style="white-space:nowrap!important;font-size:11px!important;font-weight:750!important;letter-spacing:-0.2px!important;display:inline!important;line-height:1!important">Spin &amp; Win</span>';
     }
   }
 
@@ -4612,6 +4641,7 @@
   new MutationObserver(schedule).observe(document.documentElement, { childList: true, subtree: true });
   new MutationObserver(schedule).observe(document.body, { attributes: true, attributeFilter: ["data-ep-verified-role"] });
   window.addEventListener("popstate", schedule);
+  window.addEventListener("resize", schedule);
 
   var lastPath = window.location.pathname;
   setInterval(function () {
