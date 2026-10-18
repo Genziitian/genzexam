@@ -1414,8 +1414,14 @@
     container.className = "ql-upload-page-container";
     container.innerHTML =
       '<div class="ql-up-head">' +
+        '<div class="ql-up-back-row">' +
+          '<a href="/my-papers" class="ql-up-back-btn">' +
+            '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>' +
+            '<span>Back</span>' +
+          '</a>' +
+        '</div>' +
         '<div class="ql-up-title-row">' +
-          '<div>' +
+          '<div class="ql-up-title-wrap">' +
             '<h1 class="ql-up-title">Upload a paper.</h1>' +
             '<p class="ql-up-subtitle">Upload a study PDF or structured JSON to convert it into a full practice test in your account.</p>' +
           '</div>' +
@@ -1543,8 +1549,22 @@
     var state = container.querySelector(".ql-up-form-card .ql-upload-state");
     var list = container.querySelector(".ql-upload-list");
     var rules = container.querySelector(".ql-upload-rules");
+    var backBtn = container.querySelector(".ql-up-back-btn");
 
     var allowed = false, uploading = false, lastQuota = null;
+
+    if (backBtn) {
+      backBtn.addEventListener("click", function (e) {
+        if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+        e.preventDefault();
+        if (window.history.length > 1) {
+          window.history.back();
+        } else {
+          window.history.pushState(null, "", "/my-papers");
+          schedule();
+        }
+      });
+    }
 
     rules.addEventListener("toggle", function () {
       var toggle = rules.querySelector(".ql-up-rules-toggle");
@@ -1904,6 +1924,16 @@
 
   function fillTryPractice() {
     var onTry = /^\/(try-practice|spin-practice)(\/|$)/i.test(window.location.pathname);
+    var bottomNav = document.querySelector("#root > div > div.fixed.bottom-0, #root div.fixed.inset-x-0.bottom-0");
+    if (!onTry) {
+      if (document.body.classList.contains("ql-page-try-practice")) {
+        document.body.classList.remove("ql-page-try-practice");
+        if (bottomNav) bottomNav.style.removeProperty("display");
+      }
+      return;
+    }
+    document.body.classList.add("ql-page-try-practice");
+    if (bottomNav) bottomNav.style.setProperty("display", "none", "important");
     var host = document.getElementById("ql-try-practice");
     if (!host && onTry) {
       var main = document.querySelector("#root main");
@@ -1920,7 +1950,14 @@
     document.title = "Test yourself · Quiz LAB";
     host.innerHTML = [
       '<section class="ql-spin-container">',
-        '<header class="ql-spin-head"><div class="ql-spin-heading-row"><h1>Test yourself <span class="ql-spin-pro-badge" title="Pro: up to 7 spins daily. Free: 1 daily.">PRO</span></h1><button type="button" class="ql-spin-help-button" id="ql-spin-help" aria-haspopup="dialog">How it works</button></div><p>Generate 10 random question</p></header>',
+        '<header class="ql-spin-head">',
+          '<div class="ql-spin-back-row">',
+            '<a href="/dashboard" class="ql-spin-back-btn ql-up-back-btn" id="ql-spin-back">',
+              '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>',
+              '<span>Back</span>',
+            '</a>',
+          '</div>',
+          '<div class="ql-spin-heading-row"><h1>Test yourself <span class="ql-spin-pro-badge" title="Pro: up to 7 spins daily. Free: 1 daily.">PRO</span></h1><button type="button" class="ql-spin-help-button" id="ql-spin-help" aria-haspopup="dialog">How it works</button></div><p>Generate 10 random question</p></header>',
         '<div class="ql-spin-grid">',
           '<div class="ql-spin-wheel-card">',
             '<div class="ql-wheel-stage" aria-hidden="true"><canvas id="ql-spin-canvas" width="680" height="680"></canvas>',
@@ -1957,10 +1994,11 @@
                 '<input type="text" id="ql-spin-name" class="ql-spin-input" placeholder="My practice paper" maxlength="150">',
               '</div>',
             '</fieldset>',
-            '<button type="submit" class="ql-spin-main-btn" id="ql-spin-main-btn" disabled><span aria-hidden="true">↻</span> Spin the wheel</button>',
+            '<div class="ql-spin-action-dock">',
+              '<button type="submit" class="ql-spin-main-btn" id="ql-spin-main-btn" disabled><span aria-hidden="true">↻</span> Spin the wheel</button>',
+            '</div>',
           '</form>',
         '</div>',
-      '</section>',
       '</section>'
     ].join("");
     host.querySelector("#ql-spin-help").addEventListener("click", function () {
@@ -1983,6 +2021,20 @@
       dialog.addEventListener("close", function () { dialog.remove(); });
       dialog.showModal();
     });
+    var backBtn = host.querySelector("#ql-spin-back");
+    if (backBtn) {
+      backBtn.addEventListener("click", function (e) {
+        if (isSpinning) return;
+        if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+        e.preventDefault();
+        if (window.history.length > 1) {
+          window.history.back();
+        } else {
+          window.history.pushState(null, "", "/dashboard");
+          schedule();
+        }
+      });
+    }
     var canvas = host.querySelector("#ql-spin-canvas"), ctx = canvas.getContext("2d");
     var form = host.querySelector("#ql-spin-form"), settings = host.querySelector("#ql-spin-settings");
     var mainBtn = host.querySelector("#ql-spin-main-btn"), outcome = host.querySelector("#ql-spin-outcome");
@@ -2182,6 +2234,7 @@
       isSpinning = true; settings.disabled = true; mainBtn.disabled = true; host.classList.add("ql-is-spinning");
       document.documentElement.classList.add("ql-spin-focus");
       form.inert = true; host.querySelector("#ql-spin-help").disabled = true;
+      if (backBtn) backBtn.style.pointerEvents = "none";
       host.querySelector(".ql-spin-types").open = false;
       mainBtn.textContent = "Creating paper…"; outcome.className = "ql-spin-outcome"; outcome.textContent = "Creating your practice paper…";
       var controller = new AbortController(), timeout = setTimeout(function () { controller.abort(); }, 25000);
@@ -2211,6 +2264,7 @@
         clearTimeout(timeout); isSpinning = false; host.classList.remove("ql-is-spinning");
         document.documentElement.classList.remove("ql-spin-focus"); form.inert = false;
         host.querySelector("#ql-spin-help").disabled = false;
+        if (backBtn) backBtn.style.pointerEvents = "";
         if (host.isConnected) { settings.disabled = false; renderSpinButton(); }
       }
     }
@@ -3261,17 +3315,38 @@
    * Pro, paid papers, or study XP. Includes interactive scratch card,
    * 7-day coupon expiry engine, and daily prompt modal.
    * ------------------------------------------------------------- */
+  function getPrizeSvgIcon(type) {
+    switch (type) {
+      case "free_pro":
+        return '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m2 4 3 12h14l3-12-6 7-4-7-4 7-6-7zm3 16h14"/></svg>';
+      case "coupon_pct":
+      case "coupon_flat":
+        return '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M13 5v2"/><path d="M13 11v2"/><path d="M13 17v2"/></svg>';
+      case "bonus_xp":
+        return '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>';
+      case "free_spin":
+        return '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg>';
+      case "free_test":
+        return '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="m9 15 2 2 4-4"/></svg>';
+      case "free_paper_upload":
+        return '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>';
+      case "try_again":
+      default:
+        return '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7" r="4"/><circle cx="7" cy="12" r="4"/><circle cx="17" cy="12" r="4"/><circle cx="12" cy="17" r="4"/><path d="M12 12v9"/></svg>';
+    }
+  }
+
   var WHEEL_PRIZES = [
-    { title: "UPTO ₹50 OFF", sub: "5% Discount", icon: "🎟️", color: "#4f46e5", type: "coupon_pct", value: "5% OFF (Upto ₹50)", prefix: "GENZ5-" },
-    { title: "30D FREE PRO", sub: "Jackpot", icon: "👑", color: "#d97706", type: "free_pro", value: "30 Days Pro", prefix: "" },
-    { title: "₹50 OFF", sub: "Coupon", icon: "🎟️", color: "#059669", type: "coupon_flat", value: "₹50 OFF", prefix: "GENZ50-" },
-    { title: "BETTER LUCK", sub: "Tomorrow", icon: "🍀", color: "#64748b", type: "try_again", value: "Try Tomorrow", prefix: "" },
-    { title: "25% OFF", sub: "Mega Deal", icon: "🎟️", color: "#7c3aed", type: "coupon_pct", value: "25% OFF", prefix: "GENZ25-" },
-    { title: "FREE SPIN", sub: "Extra Spin", icon: "🔄", color: "#0284c7", type: "free_spin", value: "1 Free Spin", prefix: "" },
-    { title: "₹100 OFF", sub: "Discount", icon: "🎟️", color: "#db2777", type: "coupon_flat", value: "₹100 OFF", prefix: "GENZ100-" },
-    { title: "+50 XP", sub: "Study Boost", icon: "⚡", color: "#2563eb", type: "bonus_xp", value: "50 XP", prefix: "" },
-    { title: "TEST FREE", sub: "1 Test Pass", icon: "📝", color: "#0d9488", type: "free_test", value: "1 Free Test Yourself", prefix: "TEST1-" },
-    { title: "FREE UPLOAD", sub: "Paper Pass", icon: "📄", color: "#ea580c", type: "free_paper_upload", value: "1 Free Paper Upload", prefix: "UPLOAD1-" }
+    { title: "UPTO ₹50 OFF", sub: "5% Discount", color: "#4f46e5", type: "coupon_pct", value: "5% OFF (Upto ₹50)", prefix: "GENZ5-" },
+    { title: "30D FREE PRO", sub: "Jackpot", color: "#d97706", type: "free_pro", value: "30 Days Pro", prefix: "" },
+    { title: "₹50 OFF", sub: "Coupon", color: "#059669", type: "coupon_flat", value: "₹50 OFF", prefix: "GENZ50-" },
+    { title: "BETTER LUCK", sub: "Tomorrow", color: "#64748b", type: "try_again", value: "Try Tomorrow", prefix: "" },
+    { title: "25% OFF", sub: "Mega Deal", color: "#7c3aed", type: "coupon_pct", value: "25% OFF", prefix: "GENZ25-" },
+    { title: "FREE SPIN", sub: "Extra Spin", color: "#0284c7", type: "free_spin", value: "1 Free Spin", prefix: "" },
+    { title: "₹100 OFF", sub: "Discount", color: "#db2777", type: "coupon_flat", value: "₹100 OFF", prefix: "GENZ100-" },
+    { title: "+50 XP", sub: "Study Boost", color: "#2563eb", type: "bonus_xp", value: "50 XP", prefix: "" },
+    { title: "TEST FREE", sub: "1 Test Pass", color: "#0d9488", type: "free_test", value: "1 Free Test Yourself", prefix: "TEST1-" },
+    { title: "FREE UPLOAD", sub: "Paper Pass", color: "#ea580c", type: "free_paper_upload", value: "1 Free Paper Upload", prefix: "UPLOAD1-" }
   ];
 
   function getTodayISTString() {
@@ -3438,7 +3513,7 @@
             btn.replaceChildren(svg, document.createTextNode("Spin & Win"));
           }
         } else if (!btn.querySelector(".ql-rewards-label")) {
-          btn.innerHTML = '<span aria-hidden="true">🎁</span> Spin & Win';
+          btn.innerHTML = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:-2px"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24"/><path d="m14.83 9.17 4.24-4.24"/><path d="m14.83 14.83 4.24 4.24"/><path d="m9.17 14.83-4.24 4.24"/><circle cx="12" cy="12" r="3"/></svg> Spin & Win';
         }
       }
     });
@@ -3451,7 +3526,7 @@
       '<div class="ql-scratch-dialog" role="dialog" aria-modal="true">' +
         '<button type="button" class="ql-scratch-dialog-close" aria-label="Close">✕</button>' +
         '<div class="ql-scratch-dialog-head">' +
-          '<h2>🎉 You Won a Scratch Coupon!</h2>' +
+          '<h2>You Won a Reward Coupon!</h2>' +
           '<p>Scratch with your mouse or finger to reveal your secret code</p>' +
         '</div>' +
         '<div class="ql-scratch-card-body">' +
@@ -3459,42 +3534,42 @@
             '<div class="ql-scratch-secret' + (reward.type === "free_pro" ? " pro" : "") + '">' +
               '<div class="ql-scratch-val">' + escapeHtml(reward.title) + '</div>' +
               '<div class="ql-scratch-code" id="ql-scratch-secret-code">' + escapeHtml(reward.code || "ACTIVATED") + '</div>' +
-              '<div class="ql-scratch-expiry-note">⏰ Valid for 7 days only · Expires if unused</div>' +
+              '<div class="ql-scratch-expiry-note">Valid for 7 days only · Expires if unused</div>' +
             '</div>' +
             '<canvas class="ql-scratch-canvas" width="380" height="180"></canvas>' +
           '</div>' +
           '<div class="ql-scratch-actions">' +
-            '<button type="button" class="ql-copy-code-btn" id="ql-scratch-copy-btn" style="display:none"><span aria-hidden="true">📋</span> Copy Coupon Code</button>' +
+            '<button type="button" class="ql-copy-code-btn" id="ql-scratch-copy-btn" style="display:none"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg> Copy Coupon Code</button>' +
             (reward.type === "free_test" || reward.type === "free_paper_upload" ?
               '<div class="ql-claim-steps-card">' +
-                '<strong class="ql-claim-steps-title">📋 How to Use Your ' + escapeHtml(reward.title) + ':</strong>' +
+                '<strong class="ql-claim-steps-title">How to Use Your ' + escapeHtml(reward.title) + ':</strong>' +
                 '<ol class="ql-claim-steps-list">' +
                   '<li><strong>Pass Code:</strong> Copy your secret pass: <code style="background:#e0e7ff;color:#3730a3;padding:2px 6px;border-radius:4px;font-weight:700">' + escapeHtml(reward.code || "REVEAL CODE ABOVE") + '</code></li>' +
                   '<li><strong>Use Feature:</strong> Head to ' + (reward.type === "free_test" ? "Test Yourself" : "Upload Paper") + ' in Quiz Lab</li>' +
                   '<li><strong>Redeem Pass:</strong> Apply this pass code to unlock your 1-time free session</li>' +
                 '</ol>' +
                 '<div class="ql-claim-terms-box">' +
-                  '<div class="ql-claim-term-row">🌐 <strong>Applicability:</strong> Valid on Quiz Lab platform.</div>' +
-                  '<div class="ql-claim-term-row">⏰ <strong>7-Day Expiry:</strong> Valid for 7 days from the day spinned.</div>' +
-                  '<div class="ql-claim-term-row">🎁 <strong>100% Free:</strong> No payment required to unlock this pass.</div>' +
+                  '<div class="ql-claim-term-row"><strong>Applicability:</strong> Valid on Quiz Lab platform.</div>' +
+                  '<div class="ql-claim-term-row"><strong>7-Day Expiry:</strong> Valid for 7 days from the day spinned.</div>' +
+                  '<div class="ql-claim-term-row"><strong>100% Free:</strong> No payment required to unlock this pass.</div>' +
                 '</div>' +
               '</div>' :
               '<div class="ql-claim-steps-card">' +
-                '<strong class="ql-claim-steps-title">📋 How to Claim Your Coupon (' + escapeHtml(reward.title) + ' off):</strong>' +
+                '<strong class="ql-claim-steps-title">How to Claim Your Coupon (' + escapeHtml(reward.title) + ' off):</strong>' +
                 '<ol class="ql-claim-steps-list">' +
                   '<li><strong>Visit:</strong> <a href="https://genziitian.in/courses" target="_blank" rel="noopener noreferrer">Genziitian.in/courses</a></li>' +
                   '<li><strong>Choose:</strong> Pick any course of your choice</li>' +
                   '<li><strong>Apply Code:</strong> Apply this code at checkout: <code style="background:#e0e7ff;color:#3730a3;padding:2px 6px;border-radius:4px;font-weight:700">' + escapeHtml(reward.code || "REVEAL CODE ABOVE") + '</code></li>' +
                 '</ol>' +
                 '<div class="ql-claim-terms-box">' +
-                  '<div class="ql-claim-term-row">🌐 <strong>Applicability:</strong> Please note this is only applicable on this website (<a href="https://genziitian.in/courses" target="_blank" rel="noopener noreferrer">Genziitian.in/courses</a>).</div>' +
-                  '<div class="ql-claim-term-row">⏰ <strong>7-Day Expiry:</strong> If not claimed or claimed, this auto disables in 7 days counting from the day scratch or spinned.</div>' +
-                  '<div class="ql-claim-term-row">🎁 <strong>No Payment:</strong> No payment required to get this coupon.</div>' +
-                  '<div class="ql-claim-term-row">🛒 <strong>Minimum Purchase:</strong> Minimum amount purchase is ₹350.</div>' +
-                  '<div class="ql-claim-term-row">🏷️ <strong>Discount Cap:</strong> Max discount you get on any percentage is 100 rupees.</div>' +
-                  '<div class="ql-claim-term-row">📜 <strong>Terms Agreement:</strong> By continuing you accept all our <a href="/terms.html#rewards-promotions" target="_blank">terms, conditions and rules</a>.</div>' +
+                  '<div class="ql-claim-term-row"><strong>Applicability:</strong> Please note this is only applicable on this website (<a href="https://genziitian.in/courses" target="_blank" rel="noopener noreferrer">Genziitian.in/courses</a>).</div>' +
+                  '<div class="ql-claim-term-row"><strong>7-Day Expiry:</strong> If not claimed or claimed, this auto disables in 7 days counting from the day scratch or spinned.</div>' +
+                  '<div class="ql-claim-term-row"><strong>No Payment:</strong> No payment required to get this coupon.</div>' +
+                  '<div class="ql-claim-term-row"><strong>Minimum Purchase:</strong> Minimum amount purchase is ₹350.</div>' +
+                  '<div class="ql-claim-term-row"><strong>Discount Cap:</strong> Max discount you get on any percentage is 100 rupees.</div>' +
+                  '<div class="ql-claim-term-row"><strong>Terms Agreement:</strong> By continuing you accept all our <a href="/terms.html#rewards-promotions" target="_blank">terms, conditions and rules</a>.</div>' +
                 '</div>' +
-                '<a href="https://genziitian.in/courses" target="_blank" rel="noopener noreferrer" class="ql-visit-courses-cta">🚀 Visit Genziitian.in/courses &amp; Redeem →</a>' +
+                '<a href="https://genziitian.in/courses" target="_blank" rel="noopener noreferrer" class="ql-visit-courses-cta">Visit Genziitian.in/courses &amp; Redeem →</a>' +
               '</div>'
             ) +
           '</div>' +
@@ -3528,7 +3603,7 @@
       ctx.font = "bold 15px sans-serif";
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
-      ctx.fillText("✨ SCRATCH HERE TO REVEAL ✨", w / 2, h / 2 - 10);
+      ctx.fillText("SCRATCH HERE TO REVEAL", w / 2, h / 2 - 10);
       ctx.font = "12px sans-serif";
       ctx.fillStyle = "#475569";
       ctx.fillText("Drag mouse or swipe finger", w / 2, h / 2 + 14);
@@ -3616,7 +3691,7 @@
       navigator.clipboard.writeText(reward.code).then(function () {
         copyBtn.innerHTML = '<span aria-hidden="true">✓</span> Copied to clipboard!';
         setTimeout(function () {
-          copyBtn.innerHTML = '<span aria-hidden="true">📋</span> Copy Coupon Code';
+          copyBtn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:-2px"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg> Copy Coupon Code';
         }, 2200);
       });
     });
@@ -3633,28 +3708,30 @@
       '<div class="ql-scratch-dialog" role="dialog" aria-modal="true">' +
         '<button type="button" class="ql-scratch-dialog-close" aria-label="Close">✕</button>' +
         '<div class="ql-scratch-dialog-head" style="background:linear-gradient(135deg,#78350f,#b45309,#d97706)">' +
-          '<div style="font-size:42px;margin-bottom:6px">👑</div>' +
+          '<div style="width:54px;height:54px;border-radius:50%;background:rgba(255,255,255,0.2);display:grid;place-items:center;margin:0 auto 10px;color:#fff"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4l3 12h14l3-12-6 7-4-7-4 7-6-7zm3 16h14"/></svg></div>' +
           '<h2>JACKPOT! 30 Days Free Pro!</h2>' +
           '<p>You won 1 full month of complimentary Quiz LAB Pro membership!</p>' +
         '</div>' +
         '<div class="ql-scratch-card-body">' +
           '<div class="ql-claim-steps-card pro">' +
-            '<strong class="ql-claim-steps-title" style="color:#92400e">👑 How to Claim Your 30 Days Free Pro Plan:</strong>' +
+            '<strong class="ql-claim-steps-title" style="color:#92400e">How to Claim Your 30 Days Free Pro Plan:</strong>' +
             '<ol class="ql-claim-steps-list">' +
-              '<li><strong>Click to Claim:</strong> Click the <strong>👑 Claim 30 Days Free Pro Now</strong> button below.</li>' +
+              '<li><strong>Click to Claim:</strong> Click the <strong>Claim 30 Days Free Pro Now</strong> button below.</li>' +
               '<li><strong>Instant Activation:</strong> 30 consecutive days of Quiz LAB Pro membership are automatically credited to your student account.</li>' +
               '<li><strong>Enjoy Benefits:</strong> Unlimited practice spins, private paper creation, offline tests, and pro discussions.</li>' +
             '</ol>' +
             '<div class="ql-claim-terms-box">' +
-              '<div class="ql-claim-term-row">💳 <strong>Zero Payment:</strong> No payment, credit card, or billing info required. 100% free daily reward.</div>' +
-              '<div class="ql-claim-term-row">⏳ <strong>Duration:</strong> Valid for exactly 30 consecutive calendar days from activation.</div>' +
-              '<div class="ql-claim-term-row">🔄 <strong>No Auto-Renewal:</strong> Auto-expires cleanly after 30 days — no hidden charges or recurring bills.</div>' +
-              '<div class="ql-claim-term-row">👤 <strong>Account Bound:</strong> Non-transferable; tied directly to your logged-in student account.</div>' +
-              '<div class="ql-claim-term-row">📜 <strong>Terms Agreement:</strong> By continuing you accept all our <a href="/terms.html#rewards-promotions" target="_blank">terms, conditions and rules</a>.</div>' +
+              '<div class="ql-claim-term-row"><strong>Zero Payment:</strong> No payment, credit card, or billing info required. 100% free daily reward.</div>' +
+              '<div class="ql-claim-term-row"><strong>Duration:</strong> Valid for exactly 30 consecutive calendar days from activation.</div>' +
+              '<div class="ql-claim-term-row"><strong>No Auto-Renewal:</strong> Auto-expires cleanly after 30 days — no hidden charges or recurring bills.</div>' +
+              '<div class="ql-claim-term-row"><strong>Account Bound:</strong> Non-transferable; tied directly to your logged-in student account.</div>' +
+              '<div class="ql-claim-term-row"><strong>Terms Agreement:</strong> By continuing you accept all our <a href="/terms.html#rewards-promotions" target="_blank">terms, conditions and rules</a>.</div>' +
             '</div>' +
           '</div>' +
           '<div class="ql-scratch-actions">' +
-            '<button type="button" class="ql-claim-pro-btn" id="ql-jackpot-claim-cta">👑 Claim 30 Days Free Pro Now</button>' +
+            '<button type="button" class="ql-claim-pro-btn" id="ql-jackpot-claim-cta">' +
+              '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:-3px"><path d="M2 4l3 12h14l3-12-6 7-4-7-4 7-6-7zm3 16h14"/></svg> Claim 30 Days Free Pro Now' +
+            '</button>' +
           '</div>' +
         '</div>' +
       '</div>';
@@ -3668,7 +3745,7 @@
     overlay.querySelector("#ql-jackpot-claim-cta").addEventListener("click", function () {
       claimProMembership(reward, function () {
         overlay.querySelector(".ql-scratch-card-body").innerHTML =
-          '<div style="text-align:center;padding:16px 0"><div style="font-size:36px">🎉</div><strong style="display:block;font-size:18px;color:#15803d;margin-top:8px">Pro Plan Activated!</strong><p style="font-size:13px;color:#64748b;margin:6px 0 16px">Your account has been granted 30 days of Pro access.</p><button type="button" class="ql-copy-code-btn" id="ql-pro-ok-btn">Awesome!</button></div>';
+          '<div style="text-align:center;padding:16px 0"><div style="width:52px;height:52px;border-radius:50%;background:#dcfce7;color:#16a34a;display:grid;place-items:center;margin:0 auto 10px"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div><strong style="display:block;font-size:18px;color:#15803d;margin-top:8px">Pro Plan Activated!</strong><p style="font-size:13px;color:#64748b;margin:6px 0 16px">Your account has been granted 30 days of Pro access.</p><button type="button" class="ql-copy-code-btn" id="ql-pro-ok-btn">Awesome!</button></div>';
         overlay.querySelector("#ql-pro-ok-btn").addEventListener("click", close);
         playWheelWinSound();
         fireConfettiBurst();
@@ -3740,13 +3817,13 @@
 
     var statusHtml = "";
     if (isPro) {
-      statusHtml = isClaimed ? '<span class="ql-tag-claimed">👑 Pro Claimed</span>' : '<span class="ql-tag-unscratched">👑 Unclaimed Pro</span>';
+      statusHtml = isClaimed ? '<span class="ql-tag-claimed">Pro Claimed</span>' : '<span class="ql-tag-unscratched">Unclaimed Pro</span>';
     } else if (isExpired) {
       statusHtml = isScratched ? '<span class="ql-tag-expired">Outdated · Expired</span>' : '<span class="ql-tag-expired">Expired · Unscratched</span>';
     } else if (isScratched) {
-      statusHtml = '<span class="ql-tag-active">● Active · 7d limit</span>';
+      statusHtml = '<span class="ql-tag-active">Active · 7d limit</span>';
     } else {
-      statusHtml = '<span class="ql-tag-unscratched">✨ Unscratched</span>';
+      statusHtml = '<span class="ql-tag-unscratched">Unscratched</span>';
     }
 
     var codeRowHtml = "";
@@ -3754,7 +3831,7 @@
       if (isClaimed) {
         codeRowHtml = '<div class="ql-card-code-row"><span>Status</span><strong>Active (30-day Access)</strong></div>';
       } else {
-        codeRowHtml = '<button type="button" class="ql-claim-pro-btn" style="padding:10px 14px;font-size:13px">👑 Claim 30 Days Free Pro</button>';
+        codeRowHtml = '<button type="button" class="ql-claim-pro-btn" style="padding:10px 14px;font-size:13px">Claim 30 Days Free Pro</button>';
       }
     } else if (isExpired) {
       codeRowHtml = '<div class="ql-card-code-row"><span class="ql-card-code-masked">••••••••</span><span style="font-size:11px;color:#94a3b8">Code hidden (expired)</span></div>';
@@ -3765,7 +3842,7 @@
           '<button type="button" class="ql-card-copy-btn">Copy</button>' +
         '</div>';
     } else {
-      codeRowHtml = '<button type="button" class="ql-copy-code-btn" style="padding:10px 14px;font-size:13px;background:#4f46e5">✨ Scratch to Reveal</button>';
+      codeRowHtml = '<button type="button" class="ql-copy-code-btn" style="padding:10px 14px;font-size:13px;background:#4f46e5">Scratch to Reveal</button>';
     }
 
     var expiryText = "";
@@ -3787,7 +3864,7 @@
     card.innerHTML =
       '<div class="ql-card-top-row">' +
         '<div class="ql-card-title-row">' +
-          '<span class="ql-card-icon">' + (isPro ? "👑" : reward.type === "free_paper" ? "📄" : "🎟️") + '</span>' +
+          '<span class="ql-card-icon" style="display:grid;place-items:center;width:28px;height:28px;border-radius:6px;background:#f1f5f9;color:#4f46e5">' + getPrizeSvgIcon(reward.type) + '</span>' +
           '<div>' +
             '<strong>' + escapeHtml(reward.title) + '</strong>' +
             '<small>Won ' + new Date(reward.created_at).toLocaleDateString() + '</small>' +
@@ -3796,28 +3873,28 @@
         statusHtml +
       '</div>' +
       codeRowHtml +
-      '<button type="button" class="ql-card-terms-toggle"><span>📋</span> How to claim &amp; rules ▾</button>' +
+      '<button type="button" class="ql-card-terms-toggle">How to claim &amp; rules ▾</button>' +
       '<div class="ql-card-claim-details" style="display:none">' +
         (isPro ?
           '<div class="ql-claim-terms-box" style="margin-top:4px">' +
-            '<div class="ql-claim-term-row">👑 <strong>Claim:</strong> Click the Claim button to activate 30 days of Pro.</div>' +
-            '<div class="ql-claim-term-row">💳 <strong>Zero Cost:</strong> No payment or card required. No recurring charge.</div>' +
-            '<div class="ql-claim-term-row">⏳ <strong>Duration:</strong> Valid for exactly 30 consecutive calendar days.</div>' +
-            '<div class="ql-claim-term-row">📜 <strong>Terms:</strong> <a href="/terms.html#rewards-promotions" target="_blank">View Promotional Terms</a></div>' +
+            '<div class="ql-claim-term-row"><strong>Claim:</strong> Click the Claim button to activate 30 days of Pro.</div>' +
+            '<div class="ql-claim-term-row"><strong>Zero Cost:</strong> No payment or card required. No recurring charge.</div>' +
+            '<div class="ql-claim-term-row"><strong>Duration:</strong> Valid for exactly 30 consecutive calendar days.</div>' +
+            '<div class="ql-claim-term-row"><strong>Terms:</strong> <a href="/terms.html#rewards-promotions" target="_blank">View Promotional Terms</a></div>' +
           '</div>' :
           '<div class="ql-claim-terms-box" style="margin-top:4px">' +
             '<div class="ql-claim-term-row"><strong>1. Visit:</strong> <a href="https://genziitian.in/courses" target="_blank" rel="noopener">Genziitian.in/courses</a> &amp; pick any course.</div>' +
             '<div class="ql-claim-term-row"><strong>2. Apply Code:</strong> <strong>' + (isExpired ? 'Masked (Expired)' : escapeHtml(reward.code || 'Scratch card above')) + '</strong></div>' +
-            '<div class="ql-claim-term-row">🛒 <strong>Min Order:</strong> Minimum purchase is ₹350.</div>' +
-            '<div class="ql-claim-term-row">🏷️ <strong>Discount Cap:</strong> Max discount on any percentage is ₹100.</div>' +
-            '<div class="ql-claim-term-row">⏰ <strong>Expiry:</strong> Auto-disables in 7 days counting from day scratched or spinned.</div>' +
-            '<div class="ql-claim-term-row">🎁 <strong>Free:</strong> No payment required to get this coupon.</div>' +
-            '<div class="ql-claim-term-row">📜 <strong>Terms:</strong> By continuing you accept all our <a href="/terms.html#rewards-promotions" target="_blank">terms &amp; rules</a>.</div>' +
+            '<div class="ql-claim-term-row"><strong>Min Order:</strong> Minimum purchase is ₹350.</div>' +
+            '<div class="ql-claim-term-row"><strong>Discount Cap:</strong> Max discount on any percentage is ₹100.</div>' +
+            '<div class="ql-claim-term-row"><strong>Expiry:</strong> Auto-disables in 7 days counting from day scratched or spinned.</div>' +
+            '<div class="ql-claim-term-row"><strong>Free:</strong> No payment required to get this coupon.</div>' +
+            '<div class="ql-claim-term-row"><strong>Terms:</strong> By continuing you accept all our <a href="/terms.html#rewards-promotions" target="_blank">terms &amp; rules</a>.</div>' +
           '</div>'
         ) +
       '</div>' +
       '<div class="ql-card-footer">' +
-        '<span>⏰ ' + expiryText + '</span>' +
+        '<span>' + expiryText + '</span>' +
         '<span style="font-weight:700;color:' + (isExpired ? '#94a3b8' : '#15803d') + '">' + (isExpired ? 'Outdated' : 'Valid on Website') + '</span>' +
       '</div>';
 
@@ -3827,7 +3904,7 @@
       toggleBtn.addEventListener("click", function () {
         var isHidden = detailsBox.style.display === "none";
         detailsBox.style.display = isHidden ? "block" : "none";
-        toggleBtn.innerHTML = isHidden ? "<span>📋</span> Hide claim rules ▴" : "<span>📋</span> How to claim &amp; rules ▾";
+        toggleBtn.innerHTML = isHidden ? "Hide claim rules ▴" : "How to claim &amp; rules ▾";
       });
     }
 
@@ -3883,12 +3960,14 @@
     overlay.innerHTML =
       '<div class="ql-daily-prompt-dialog" role="dialog" aria-modal="true">' +
         '<div class="ql-daily-prompt-hero">' +
-          '<div class="ql-daily-prompt-icon" aria-hidden="true">🎡</div>' +
-          '<h2>Your Daily Spin is Ready!</h2>' +
-          '<p>Spin today\'s Lucky Wheel to win 30 Days Free Pro, discount coupons up to 25% OFF, and free papers!</p>' +
+          '<div class="ql-daily-prompt-icon" aria-hidden="true">' +
+            '<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24"/><path d="m14.83 9.17 4.24-4.24"/><path d="m14.83 14.83 4.24 4.24"/><path d="m9.17 14.83-4.24 4.24"/><circle cx="12" cy="12" r="3"/></svg>' +
+          '</div>' +
+          '<h2>Daily Spin Available</h2>' +
+          '<p>Spin today\'s Lucky Wheel to win Free Pro, discounts, and study perks!</p>' +
         '</div>' +
         '<div class="ql-daily-prompt-body">' +
-          '<button type="button" class="ql-daily-prompt-spin-btn" id="ql-prompt-spin-cta">🎡 Spin &amp; Win Now</button>' +
+          '<button type="button" class="ql-daily-prompt-spin-btn" id="ql-prompt-spin-cta">Spin Now</button>' +
           '<button type="button" class="ql-daily-prompt-later-btn" id="ql-prompt-later-cta">Maybe later</button>' +
         '</div>' +
       '</div>';
@@ -3912,6 +3991,92 @@
     overlay.addEventListener("click", function (e) { if (e.target === overlay) dismiss(); });
   }
 
+  function getRulesDropdownHtml() {
+    return '<details class="ql-rules-dropdown">' +
+      '<summary class="ql-rules-summary">' +
+        '<span class="ql-rules-summary-left">' +
+          '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>' +
+          ' Rules and Conditions' +
+        '</span>' +
+        '<svg class="ql-dropdown-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>' +
+      '</summary>' +
+      '<div class="ql-rules-body">' +
+        '<ul class="ql-rules-list">' +
+          '<li><strong>Daily Free Spin Allowance:</strong> Every registered account receives 1 free spin every calendar day. No payment, deposit, or billing information is ever required. Daily spin quota resets at 12:00 AM IST (midnight).</li>' +
+          '<li><strong>7-Day Automatic Expiry:</strong> All discount coupons and feature passes auto-disable exactly 7 days from the moment spun or scratched (claimed or unclaimed). Expired codes are masked and locked.</li>' +
+          '<li><strong>Redemption Venue:</strong> Course discount coupons are valid exclusively at <a href="https://genziitian.in/courses" target="_blank" rel="noopener noreferrer" style="color:#4f46e5;font-weight:700">Genziitian.in/courses</a>. Choose any course and enter your coupon code at checkout.</li>' +
+          '<li><strong>Order Value &amp; Max Cap:</strong> Minimum course purchase requirement is ₹350. The maximum discount on percentage coupons is capped at ₹100.</li>' +
+          '<li><strong>30 Days Free Pro Membership:</strong> Claim instantly with one click. Provides 30 days of full Pro access with zero recurring billing or credit card requirements.</li>' +
+          '<li><strong>Feature Passes &amp; Study XP:</strong> Test Yourself and Paper Upload passes provide 1-time waivers on Quiz Lab. XP boosters credit automatically to your profile progress.</li>' +
+          '<li><strong>Platform Rules Agreement:</strong> By participating you accept all our <a href="/terms.html#rewards-promotions" target="_blank" style="color:#4f46e5;text-decoration:underline">terms, conditions and promotional rules</a>.</li>' +
+        '</ul>' +
+      '</div>' +
+    '</details>';
+  }
+
+  function openPrizesDrawer() {
+    if (document.getElementById("ql-prizes-overlay")) return;
+    var overlay = document.createElement("div");
+    overlay.id = "ql-prizes-overlay";
+    overlay.className = "ql-prizes-overlay";
+    overlay.innerHTML =
+      '<div class="ql-prizes-drawer" role="dialog" aria-modal="true">' +
+        '<div class="ql-prizes-drawer-head">' +
+          '<h2>' +
+            '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24"/><path d="m14.83 9.17 4.24-4.24"/><path d="m14.83 14.83 4.24 4.24"/><path d="m9.17 14.83-4.24 4.24"/><circle cx="12" cy="12" r="3"/></svg>' +
+            ' Wheel Prizes &amp; Odds' +
+          '</h2>' +
+          '<button type="button" class="ql-prizes-drawer-close" aria-label="Close">' +
+            '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>' +
+          '</button>' +
+        '</div>' +
+        '<div class="ql-prizes-drawer-body">' +
+          WHEEL_PRIZES.map(function (p, i) {
+            var odds = [18, 8, 10, 9, 8, 10, 5, 12, 10, 10][i] || 10;
+            return '<div class="ql-prize-drawer-item">' +
+              '<div class="ql-prize-drawer-icon" style="background:' + p.color + '">' +
+                getPrizeSvgIcon(p.type) +
+              '</div>' +
+              '<div class="ql-prize-drawer-info">' +
+                '<strong>' + escapeHtml(p.title) + '</strong>' +
+                '<span>' + escapeHtml(p.sub) + ' · ' + escapeHtml(p.value) + '</span>' +
+              '</div>' +
+              '<div class="ql-prize-drawer-chance">' + odds + '%</div>' +
+            '</div>';
+          }).join('') +
+        '</div>' +
+      '</div>';
+    document.body.appendChild(overlay);
+
+    function close() {
+      overlay.remove();
+    }
+    overlay.querySelector(".ql-prizes-drawer-close").addEventListener("click", close);
+    overlay.addEventListener("click", function (e) { if (e.target === overlay) close(); });
+  }
+
+  function openResultModal(cfg) {
+    var overlay = document.createElement("div");
+    overlay.className = "ql-result-overlay";
+    overlay.innerHTML =
+      '<div class="ql-result-dialog" role="dialog" aria-modal="true">' +
+        '<div class="ql-result-icon-bubble" style="background:' + (cfg.iconBg || '#4f46e5') + '">' +
+          cfg.iconSvg +
+        '</div>' +
+        '<h2 class="ql-result-title">' + escapeHtml(cfg.title) + '</h2>' +
+        '<p class="ql-result-desc">' + escapeHtml(cfg.desc) + '</p>' +
+        '<button type="button" class="ql-result-action-btn" id="ql-result-cta">' + escapeHtml(cfg.btnText || 'Got It') + '</button>' +
+      '</div>';
+    document.body.appendChild(overlay);
+
+    function close() {
+      overlay.remove();
+      if (typeof cfg.onClose === "function") cfg.onClose();
+    }
+    overlay.querySelector("#ql-result-cta").addEventListener("click", close);
+    overlay.addEventListener("click", function (e) { if (e.target === overlay) close(); });
+  }
+
   function fillRewardsPage() {
     var onRewards = /^\/(rewards|spin-rewards|daily-rewards)(\/|$)/i.test(window.location.pathname);
     var host = document.getElementById("ql-rewards-page");
@@ -3933,15 +4098,23 @@
 
     host.innerHTML =
       '<div class="ql-rewards-page">' +
-        '<header class="ql-rewards-header">' +
-          '<span class="ql-rewards-badge">✨ Daily Rewards</span>' +
-          '<h1 class="ql-rewards-title">🎡 Spin &amp; Win Lucky Wheel</h1>' +
-          '<p class="ql-rewards-sub">Spin once every day! Win 30 Days Free Pro, exclusive course discount coupons, or free papers.</p>' +
-          '<div class="ql-rewards-tabs" role="tablist">' +
-            '<button type="button" class="ql-rewards-tab-btn" id="ql-tab-wheel" role="tab" aria-selected="true">🎡 Lucky Wheel</button>' +
-            '<button type="button" class="ql-rewards-tab-btn" id="ql-tab-rewards" role="tab" aria-selected="false">🎁 My Rewards <span class="ql-rewards-pill" id="ql-rewards-badge-count">' + state.rewards.length + '</span></button>' +
+        '<div class="ql-rewards-top-bar">' +
+          '<h1 class="ql-rewards-title">Spin &amp; Win</h1>' +
+          '<div class="ql-rewards-corner-actions">' +
+            '<button type="button" class="ql-corner-btn" id="ql-btn-open-prizes">' +
+              '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24"/><path d="m14.83 9.17 4.24-4.24"/><path d="m14.83 14.83 4.24 4.24"/><path d="m9.17 14.83-4.24 4.24"/><circle cx="12" cy="12" r="3"/></svg>' +
+              ' View Prizes' +
+            '</button>' +
+            '<button type="button" class="ql-corner-btn primary" id="ql-tab-rewards">' +
+              '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13"/><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5"/></svg>' +
+              ' My Rewards <span class="ql-rewards-pill" id="ql-rewards-badge-count">' + state.rewards.length + '</span>' +
+            '</button>' +
+            '<button type="button" class="ql-corner-btn" id="ql-tab-wheel" style="display:none">' +
+              '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>' +
+              ' Back to Wheel' +
+            '</button>' +
           '</div>' +
-        '</header>' +
+        '</div>' +
 
         // Tab View 1: Lucky Wheel
         '<div id="ql-view-wheel" class="ql-wheel-layout">' +
@@ -3952,35 +4125,14 @@
             '</div>' +
             '<div class="ql-wheel-controls">' +
               '<button type="button" class="ql-spin-main-cta" id="ql-rewards-spin-btn">' +
-                (isSpunToday ? '✓ Spun Today · Come Back Tomorrow' : '<span aria-hidden="true">🎡</span> SPIN NOW · 1 Free Daily Spin') +
+                (isSpunToday ? '✓ Spun Today · Come Back Tomorrow' : '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg> SPIN NOW') +
               '</button>' +
-              '<div class="ql-spin-quota-text" id="ql-rewards-timer-label">' +
-                (isSpunToday ? 'Next spin resets in: <span class="ql-spin-timer-badge" id="ql-timer-val">calculating…</span>' : '1 Free Daily Spin for Every Account · Resets at midnight IST') +
+              '<div class="ql-spin-quota-text" id="ql-rewards-timer-label" style="' + (isSpunToday ? '' : 'display:none') + '">' +
+                (isSpunToday ? 'Next spin resets in: <span class="ql-spin-timer-badge" id="ql-timer-val">calculating…</span>' : '') +
               '</div>' +
             '</div>' +
           '</div>' +
-
-          '<div class="ql-rewards-side">' +
-            '<div class="ql-rewards-info-box">' +
-              '<h3><span>🎁</span> Prizes on the Wheel</h3>' +
-              '<ul class="ql-rewards-prizes-list">' +
-                WHEEL_PRIZES.map(function (p) {
-                  return '<li class="ql-prize-item"><span class="ql-prize-dot" style="background:' + p.color + '"></span><span>' + p.icon + ' ' + escapeHtml(p.title) + '</span></li>';
-                }).join('') +
-              '</ul>' +
-            '</div>' +
-            '<div class="ql-rewards-info-box">' +
-              '<h3><span>⏰</span> Rules &amp; Scratch Card Catch</h3>' +
-              '<ul style="margin:0;padding-left:18px;font-size:12px;color:#64748b;line-height:1.7">' +
-                '<li><strong>Redemption Venue:</strong> Valid only on <a href="https://genziitian.in/courses" target="_blank" rel="noopener noreferrer" style="color:#4f46e5;font-weight:700">Genziitian.in/courses</a>. Choose any course &amp; apply your code.</li>' +
-                '<li><strong>7-Day Auto-Disable:</strong> If not claimed or claimed, coupons auto-disable in 7 days counting from the day scratched or spun. Code is hidden after expiration.</li>' +
-                '<li><strong>Order Value &amp; Cap:</strong> Minimum purchase amount is ₹350. Max discount on percentage coupons is capped at ₹100.</li>' +
-                '<li><strong>100% Free Daily Spin:</strong> No payment required to get coupons. Every student gets 1 free spin every calendar day (resets at 12:00 AM IST).</li>' +
-                '<li><strong>30 Days Free Pro:</strong> Claim 30 days of Pro instantly. No credit card, no recurring charges, auto-expires after 30 days.</li>' +
-                '<li><strong>Terms Agreement:</strong> By continuing you accept all our <a href="/terms.html#rewards-promotions" target="_blank" style="color:#4f46e5;text-decoration:underline">terms, conditions and rules</a>.</li>' +
-              '</ul>' +
-            '</div>' +
-          '</div>' +
+          getRulesDropdownHtml() +
         '</div>' +
 
         // Tab View 2: My Rewards List
@@ -3992,6 +4144,7 @@
             '<button type="button" class="ql-filter-pill" data-filter="expired">Outdated / Expired</button>' +
           '</div>' +
           '<div class="ql-reward-cards-grid" id="ql-rewards-grid"></div>' +
+          getRulesDropdownHtml() +
         '</div>' +
       '</div>';
 
@@ -4003,10 +4156,15 @@
     var timerLabel = host.querySelector("#ql-rewards-timer-label");
     var tabWheel = host.querySelector("#ql-tab-wheel");
     var tabRewards = host.querySelector("#ql-tab-rewards");
+    var btnOpenPrizes = host.querySelector("#ql-btn-open-prizes");
     var viewWheel = host.querySelector("#ql-view-wheel");
     var viewRewards = host.querySelector("#ql-view-rewards");
     var rewardsGrid = host.querySelector("#ql-rewards-grid");
     var badgeCount = host.querySelector("#ql-rewards-badge-count");
+
+    if (btnOpenPrizes) {
+      btnOpenPrizes.addEventListener("click", openPrizesDrawer);
+    }
 
     var isSpinning = false;
     var currentAngle = 0;
@@ -4030,6 +4188,7 @@
       if (isSpunToday) {
         spinBtn.disabled = true;
         spinBtn.innerHTML = '✓ Spun Today · Come Back Tomorrow';
+        timerLabel.style.display = "block";
         timerLabel.innerHTML = 'Next spin resets in: <span class="ql-spin-timer-badge" id="ql-timer-val">calculating…</span>';
         timerVal = host.querySelector("#ql-timer-val");
         updateTimer();
@@ -4037,8 +4196,9 @@
       } else {
         if (timerInterval) { clearInterval(timerInterval); timerInterval = null; }
         spinBtn.disabled = isSpinning;
-        spinBtn.innerHTML = '<span aria-hidden="true">🎡</span> SPIN NOW · 1 Free Daily Spin';
-        timerLabel.textContent = '1 Free Daily Spin for Every Account · Resets at midnight IST';
+        spinBtn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg> SPIN NOW';
+        timerLabel.style.display = "none";
+        timerLabel.innerHTML = '';
       }
     }
     renderButtonState();
@@ -4109,7 +4269,7 @@
         ctx.stroke();
         ctx.restore();
 
-        // Slice text & icon
+        // Slice text
         ctx.save();
         ctx.translate(cx, cy);
         ctx.rotate(startAngle + arc / 2);
@@ -4118,15 +4278,11 @@
         ctx.font = p.title.length > 8 ? "bold 15px sans-serif" : "bold 18px sans-serif";
         ctx.shadowColor = "rgba(0, 0, 0, 0.4)";
         ctx.shadowBlur = 4;
-        ctx.fillText(p.title, r - 48, 5);
+        ctx.fillText(p.title, r - 32, 5);
 
         ctx.font = "11px sans-serif";
         ctx.fillStyle = "#fde047";
-        ctx.fillText(p.sub, r - 48, 20);
-
-        ctx.font = "20px sans-serif";
-        ctx.shadowBlur = 0;
-        ctx.fillText(p.icon, r - 16, 7);
+        ctx.fillText(p.sub, r - 32, 20);
         ctx.restore();
       }
 
@@ -4163,19 +4319,9 @@
       if (isSpinning || isSpunToday) return;
       isSpinning = true;
       spinBtn.disabled = true;
-      spinBtn.innerHTML = '<span aria-hidden="true">↻</span> Spinning the Lucky Wheel…';
+      spinBtn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="animate-spin"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg> Spinning the Lucky Wheel…';
 
       // Pick prize with weighted probabilities (Sum = 100%):
-      // 0: UPTO ₹50 OFF (18%)
-      // 1: 30D Free Pro (8%)
-      // 2: ₹50 OFF (10%)
-      // 3: Better Luck Next Time (9%)
-      // 4: 25% OFF (8%)
-      // 5: Free Spin (10%)
-      // 6: ₹100 OFF (5%)
-      // 7: +50 XP (12%)
-      // 8: Free Test (10%)
-      // 9: Free Paper Upload (10%)
       var weights = [18, 8, 10, 9, 8, 10, 5, 12, 10, 10];
       var rand = Math.floor(Math.random() * 100) + 1;
       var cumulative = 0;
@@ -4301,16 +4447,34 @@
           renderRewardsList();
         });
       } else if (prize.type === "free_spin") {
-        alert("🎉 You won 1 Free Extra Spin! Spin the wheel again right now!");
+        openResultModal({
+          iconBg: "linear-gradient(135deg,#0284c7,#2563eb)",
+          iconSvg: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg>',
+          title: "1 Free Extra Spin Won!",
+          desc: "You unlocked a free instant re-spin! Spin the lucky wheel again right now without consuming your daily quota.",
+          btnText: "Spin Again Now"
+        });
       } else if (reward && prize.type !== "bonus_xp") {
         openScratchCardModal(reward, function () {
           saveLocalRewardsState(state);
           renderRewardsList();
         });
       } else if (prize.type === "bonus_xp") {
-        alert("⚡ Awesome! You won +50 Study XP! Added to your learning progress.");
+        openResultModal({
+          iconBg: "linear-gradient(135deg,#2563eb,#4f46e5)",
+          iconSvg: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>',
+          title: "+50 Study XP Earned!",
+          desc: "Awesome! 50 bonus Study XP has been added to your profile to boost your learning rank.",
+          btnText: "Awesome!"
+        });
       } else {
-        alert("🍀 Better luck next time! Your daily spin resets tomorrow at midnight IST.");
+        openResultModal({
+          iconBg: "linear-gradient(135deg,#64748b,#475569)",
+          iconSvg: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7" r="4"/><circle cx="7" cy="12" r="4"/><circle cx="17" cy="12" r="4"/><circle cx="12" cy="17" r="4"/><path d="M12 12v9"/></svg>',
+          title: "Better Luck Next Time!",
+          desc: "Your daily spin resets tomorrow at midnight IST. Come back tomorrow to spin again!",
+          btnText: "Got It"
+        });
       }
     }
 
@@ -4319,19 +4483,19 @@
     }
 
     // Tab switcher
-    tabWheel.addEventListener("click", function () {
-      tabWheel.setAttribute("aria-selected", "true");
-      tabRewards.setAttribute("aria-selected", "false");
-      viewWheel.style.display = "grid";
-      viewRewards.style.display = "none";
-    });
-
     tabRewards.addEventListener("click", function () {
-      tabWheel.setAttribute("aria-selected", "false");
-      tabRewards.setAttribute("aria-selected", "true");
       viewWheel.style.display = "none";
       viewRewards.style.display = "block";
+      tabRewards.style.display = "none";
+      tabWheel.style.display = "inline-flex";
       renderRewardsList();
+    });
+
+    tabWheel.addEventListener("click", function () {
+      viewWheel.style.display = "flex";
+      viewRewards.style.display = "none";
+      tabRewards.style.display = "inline-flex";
+      tabWheel.style.display = "none";
     });
 
     // Filter pills
@@ -4362,7 +4526,7 @@
         var empty = document.createElement("div");
         empty.style.cssText = "grid-column:1/-1;text-align:center;padding:60px 20px;color:#64748b";
         empty.innerHTML =
-          '<div style="font-size:38px;margin-bottom:8px">🎁</div>' +
+          '<div style="width:48px;height:48px;border-radius:14px;background:#eef2ff;color:#4f46e5;display:grid;place-items:center;margin:0 auto 12px"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13"/><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5"/></svg></div>' +
           '<strong style="font-size:16px;color:#0f172a;display:block">No rewards in this view</strong>' +
           '<p style="font-size:13px;margin:6px 0 0">Spin the Lucky Wheel daily to collect coupon codes and free plans.</p>';
         rewardsGrid.appendChild(empty);

@@ -137,6 +137,9 @@ const termsHtml = fs.readFileSync(path.join(root, "terms.html"), "utf8");
 const backendTermsHtml = fs.readFileSync(path.join(root, "backend", "public", "terms.html"), "utf8");
 const mobileLegal = fs.readFileSync(path.join(root, "mobile", "lib", "legal", "legal_documents.dart"), "utf8");
 const mobileShell = fs.readFileSync(path.join(root, "mobile", "lib", "screens", "student", "student_main_shell.dart"), "utf8");
+const mobileRewardsPath = path.join(root, "mobile", "lib", "screens", "student", "daily_rewards_screen.dart");
+const mobileRewardsContent = fs.existsSync(mobileRewardsPath) ? fs.readFileSync(mobileRewardsPath, "utf8") : "";
+const mobileRewardsCode = mobileShell + mobileRewardsContent;
 
 assert.ok(
   termsHtml.includes('id="rewards-promotions"') &&
@@ -163,10 +166,10 @@ assert.ok(
 );
 
 assert.ok(
-  mobileShell.includes("Genziitian.in/courses") &&
-  mobileShell.includes("₹350") &&
-  mobileShell.includes("₹100"),
-  "mobile student_main_shell.dart must show detailed claim instructions and limits"
+  mobileRewardsCode.includes("Genziitian.in/courses") &&
+  mobileRewardsCode.includes("₹350") &&
+  mobileRewardsCode.includes("₹100"),
+  "mobile rewards UI must show detailed claim instructions and limits"
 );
 
 assert.ok(
@@ -225,6 +228,44 @@ assert.ok(
   "StudentRewardController.php weights must match exact 10-slice probability distribution"
 );
 
-console.log("PASS: All Daily Rewards, Claim Instructions, Legal Policy, Expiry, Manager Log, and 10-Slice Probability tests passed.");
+// 11. Header, Rules Dropdown, Prizes Drawer, and Result Modal Assertions
+assert.ok(
+  !appEnhancements.includes("Spin once every day! Win 30 Days Free Pro") &&
+  !appEnhancements.includes("1 Free Daily Spin for Every Account · Resets at midnight IST") &&
+  !appEnhancements.includes('class="ql-rewards-badge"') &&
+  !appEnhancements.includes("✨ Daily Rewards"),
+  "app-enhancements.js must have removed old header badges and static subtexts from /rewards"
+);
+
+assert.ok(
+  appEnhancements.includes("Rules and Conditions") &&
+  appEnhancements.includes("ql-rules-dropdown") &&
+  appEnhancements.includes("ql-rules-summary"),
+  "app-enhancements.js must render collapsible Rules and Conditions dropdown"
+);
+
+assert.ok(
+  appEnhancements.includes("openPrizesDrawer") &&
+  appEnhancements.includes("ql-prizes-drawer") &&
+  dashboardCss.includes(".ql-prizes-drawer"),
+  "Prizes drawer must be defined in app-enhancements.js and styled in storefront-dashboard.css"
+);
+
+assert.ok(
+  appEnhancements.includes("openResultModal") &&
+  appEnhancements.includes("ql-result-dialog") &&
+  dashboardCss.includes(".ql-result-dialog"),
+  "Animated result modal must be defined and styled"
+);
+
+assert.ok(
+  appEnhancements.includes("Daily Spin Available") &&
+  appEnhancements.includes("Spin today\\'s Lucky Wheel") &&
+  appEnhancements.includes("Spin Now"),
+  "ensureDailySpinPrompt must render updated title, subtitle, and CTA"
+);
+
+console.log("PASS: All Daily Rewards, Claim Instructions, Legal Policy, Expiry, Manager Log, 10-Slice Probability, UI Layout, Prizes Drawer, and Result Modal tests passed.");
+
 
 
