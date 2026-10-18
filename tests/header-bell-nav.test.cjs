@@ -1,11 +1,16 @@
 const assert = require("assert");
 const fs = require("fs");
 const path = require("path");
+const { spawnSync } = require("child_process");
 
 const root = path.resolve(__dirname, "..");
 const bundle = fs.readFileSync(path.join(root, "assets", "index-fad00dd6r.js"), "utf8");
 const appEnhancements = fs.readFileSync(path.join(root, "app-enhancements.js"), "utf8");
 const indexHtml = fs.readFileSync(path.join(root, "index.html"), "utf8");
+
+// Parse the shipped module before checking the notification markup.
+const syntax = spawnSync(process.execPath, ["--check", path.join(root, "assets", "index-fad00dd6r.js")], { encoding: "utf8" });
+assert.strictEqual(syntax.status, 0, "The main app bundle must parse successfully before the dashboard can load");
 
 // 1. Bundle verification
 assert.ok(
@@ -13,7 +18,7 @@ assert.ok(
   "Daily challenge must route to /practice in React bundle"
 );
 assert.ok(
-  bundle.includes('button`,{type:`button`,`data-ql-bell`:`1`,`aria-label`:`Notifications and announcements`,className:`ql-bell-btn relative flex h-8 w-8'),
+  bundle.includes('button`,{type:`button`,"data-ql-bell":`1`,"aria-label":`Notifications and announcements`,className:`ql-bell-btn relative flex h-8 w-8'),
   "Header bell button must have data-ql-bell and ql-bell-btn class in React bundle"
 );
 

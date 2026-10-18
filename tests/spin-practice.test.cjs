@@ -89,7 +89,7 @@ assert.ok(
 
 // 6. Cache busters
 assert.ok(
-  indexHtml.includes('/assets/index-fad00dd6r.js?v=20261018b'),
+  indexHtml.includes('/assets/index-fad00dd6r.js?v=20261018c'),
   "index.html must reference refreshed bundle query parameter"
 );
 assert.ok(
