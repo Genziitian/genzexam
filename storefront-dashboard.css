@@ -161,6 +161,106 @@
 .ql-home-link:hover{background:#1c2533;border-color:#334155;color:#fff}
 .ql-home-link:focus-visible{outline:3px solid rgba(147,180,230,.5);outline-offset:2px}
 
+/* Sidebar nav: subtle divider line after every navigation button */
+.ql-sidebar nav a,
+.ql-sidebar nav button,
+#root aside nav a,
+#root aside nav button {
+  position: relative;
+  margin-bottom: 6px !important;
+}
+.ql-sidebar nav a::after,
+.ql-sidebar nav button::after,
+#root aside nav a::after,
+#root aside nav button::after {
+  content: "";
+  position: absolute;
+  left: 4px;
+  right: 4px;
+  bottom: -3.5px;
+  height: 1px;
+  background-color: #1f2937;
+  pointer-events: none;
+}
+
+/* Video Solutions: keep in one row without wrapping or cutting text */
+.ql-sidebar nav a[href="/video-solutions"],
+#root aside nav a[href="/video-solutions"] {
+  white-space: nowrap !important;
+  gap: 6px !important;
+  padding-left: 10px !important;
+  padding-right: 8px !important;
+}
+.ql-sidebar nav a[href="/video-solutions"] > span:nth-child(2),
+#root aside nav a[href="/video-solutions"] > span:nth-child(2) {
+  white-space: nowrap !important;
+  overflow: visible !important;
+  flex: 0 0 auto !important;
+}
+.ql-sidebar nav a[href="/video-solutions"] > span:last-child,
+#root aside nav a[href="/video-solutions"] > span:last-child {
+  margin-left: auto !important;
+  flex-shrink: 0 !important;
+  font-size: 8.5px !important;
+  letter-spacing: 0.02em !important;
+  padding: 1.5px 5px !important;
+  white-space: nowrap !important;
+}
+
+/* Sidebar Upload a paper button and PRO tag */
+.ql-sidebar-upload {
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  text-align: left;
+}
+.ql-sidebar-upload .ql-upload-tag {
+  display: inline-block;
+  margin-left: auto;
+  padding: 1.5px 6px;
+  border-radius: 4px;
+  background: linear-gradient(135deg, #ffd36e, #f59e0b);
+  color: #0f172a;
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Sidebar search button: white in every mode */
+.ql-sidebar .px-4.pt-3.pb-2 button,
+#root aside .px-4.pt-3.pb-2 button,
+:root[data-theme=dark] .ql-sidebar .px-4.pt-3.pb-2 button,
+:root[data-theme=dark] #root aside .px-4.pt-3.pb-2 button {
+  background-color: #ffffff !important;
+  color: #1e293b !important;
+  border: 1px solid #e2e8f0 !important;
+}
+.ql-sidebar .px-4.pt-3.pb-2 button:hover,
+#root aside .px-4.pt-3.pb-2 button:hover,
+:root[data-theme=dark] .ql-sidebar .px-4.pt-3.pb-2 button:hover,
+:root[data-theme=dark] #root aside .px-4.pt-3.pb-2 button:hover {
+  background-color: #f8fafc !important;
+  border-color: #cbd5e1 !important;
+}
+.ql-sidebar .px-4.pt-3.pb-2 button svg,
+#root aside .px-4.pt-3.pb-2 button svg {
+  color: #64748b !important;
+}
+.ql-sidebar .px-4.pt-3.pb-2 button span,
+#root aside .px-4.pt-3.pb-2 button span {
+  color: #334155 !important;
+  font-weight: 500 !important;
+}
+.ql-sidebar .px-4.pt-3.pb-2 button kbd,
+#root aside .px-4.pt-3.pb-2 button kbd,
+:root[data-theme=dark] .ql-sidebar .px-4.pt-3.pb-2 button kbd,
+:root[data-theme=dark] #root aside .px-4.pt-3.pb-2 button kbd {
+  background-color: #f1f5f9 !important;
+  color: #475569 !important;
+  border: 1px solid #e2e8f0 !important;
+}
+
 /* ---- Practice course page: header and paper-type tiles ---- */
 [data-ql-course-head]{padding:20px 22px!important;border-radius:16px!important;box-shadow:0 1px 2px rgba(15,23,42,.04)!important}
 [data-ql-course-head]>div{align-items:center!important}
@@ -356,11 +456,16 @@ div.space-y-6:has(>div>form.space-y-6>.h-px)>.grid.gap-4 .text-3xl{font-size:24p
 .ql-mp-qchip:hover{border-color:#cbd5e1;background:#f8fafc}
 .ql-mp-qchip.active{background:#3a3fd8;border-color:#3a3fd8;color:#fff;box-shadow:0 4px 12px -4px rgba(58,63,216,.45)}
 .ql-mp-qchip.active svg{fill:#fff!important}
+.ql-mp-card-top-actions{position:absolute;top:12px;right:12px;display:flex;align-items:center;gap:6px;z-index:3}
+.ql-mp-card-top-actions .ql-mp-heart{position:static;top:auto;right:auto;flex-shrink:0}
+.ql-mp-card-top-actions .ql-share-btn{width:34px;height:34px;padding:0;border-radius:50%;border:1px solid rgba(226,232,240,.9);background:rgba(255,255,255,.92);backdrop-filter:blur(4px);display:inline-flex;align-items:center;justify-content:center;cursor:pointer;color:#94a3b8;box-sizing:border-box;transition:all .18s cubic-bezier(.2,.7,.2,1);flex-shrink:0}
+.ql-mp-card-top-actions .ql-share-btn:hover{transform:scale(1.12);color:#3a3fd8;border-color:#c7d2fe;background:#fff}
+.ql-mp-card-top-actions .ql-share-btn svg{width:15px;height:15px;display:block}
 .ql-mp-heart{position:absolute;top:12px;right:12px;width:34px;height:34px;border-radius:50%;border:1px solid rgba(226,232,240,.9);background:rgba(255,255,255,.92);backdrop-filter:blur(4px);display:inline-flex;align-items:center;justify-content:center;cursor:pointer;color:#94a3b8;padding:0;transition:all .18s cubic-bezier(.2,.7,.2,1);z-index:3}
 .ql-mp-heart:hover{transform:scale(1.12);color:#f43f5e;border-color:#fecdd3;background:#fff}
 .ql-mp-heart.active{color:#e11d48;border-color:#fecdd3;background:#fff1f2}
 .ql-mp-heart.active svg{fill:#e11d48}
-.ql-mp-card h3{padding-right:36px}
+.ql-mp-card h3{padding-right:82px}
 .ql-fm-overlay{position:fixed;inset:0;z-index:99999;background:rgba(15,23,42,.58);backdrop-filter:blur(3px);display:grid;place-items:center;padding:18px;opacity:0;animation:ql-fade-in .2s ease forwards}
 @keyframes ql-fade-in{to{opacity:1}}
 .ql-fm-modal{width:min(540px,100%);max-height:88vh;display:flex;flex-direction:column;background:#fff;border-radius:22px;box-shadow:0 24px 70px rgba(15,23,42,.28);overflow:hidden;transform:translateY(12px) scale(.98);animation:ql-modal-pop .22s cubic-bezier(.16,1,.3,1) forwards}
@@ -386,6 +491,8 @@ div.space-y-6:has(>div>form.space-y-6>.h-px)>.grid.gap-4 .text-3xl{font-size:24p
 :root[data-theme=dark] .ql-mp-filter-btn{background:#1e293b;border-color:#334155;color:#cbd5e1}
 :root[data-theme=dark] .ql-mp-qchip{background:#1e293b;border-color:#334155;color:#cbd5e1}
 :root[data-theme=dark] .ql-mp-heart{background:#1e293b;border-color:#334155;color:#94a3b8}
+:root[data-theme=dark] .ql-mp-card-top-actions .ql-share-btn{background:#1e293b;border-color:#334155;color:#94a3b8}
+:root[data-theme=dark] .ql-mp-card-top-actions .ql-share-btn:hover{color:#818cf8;border-color:#4f46e5;background:#1e293b}
 :root[data-theme=dark] .ql-fm-modal{background:#0f172a;color:#f1f5f9}
 :root[data-theme=dark] .ql-fm-header{border-bottom-color:#1e293b}
 :root[data-theme=dark] .ql-fm-header h2{color:#f1f5f9}

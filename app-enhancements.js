@@ -774,9 +774,6 @@
       '<div class="ql-mp-title">' +
         '<h1>Your papers.</h1>' +
         '<div class="ql-mp-title-actions">' +
-          '<a class="ql-mp-browse" href="/practice">Browse practice</a>' +
-          '<a class="ql-mp-browse" href="/try-practice">🎯 Try your practice</a>' +
-          '<button class="ql-upload-open" type="button">＋ Upload a paper <span class="ql-upload-tag">PRO</span></button>' +
           '<button class="ql-mp-filter-btn" type="button" aria-label="Filter papers">' +
             '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>' +
             '<span>Filter</span>' +
@@ -930,6 +927,13 @@
           var card = document.createElement("article");
           card.className = "ql-mp-card" + (purchased && usable ? " owned" : "");
 
+          // Card top action buttons (Share + Heart)
+          var topActions = document.createElement("div");
+          topActions.className = "ql-mp-card-top-actions";
+          if (window.QLShare && paper.available !== false && paper.can_share !== false && !paper.is_personal && !["spin_practice", "personal_upload"].includes(paper.source)) {
+            topActions.appendChild(window.QLShare.button(paper.id, paper.title || "", "ql-share-icon"));
+          }
+
           // Heart favorite button
           var isLiked = likedIds.has(Number(paper.id));
           var heart = document.createElement("button");
@@ -955,7 +959,8 @@
             saveLikedIds(likedIds);
             if (filters.liked) render();
           });
-          card.appendChild(heart);
+          topActions.appendChild(heart);
+          card.appendChild(topActions);
 
           var badge = document.createElement("span");
           badge.className = "ql-mp-badge" + (paper.available === false || expired ? " off" : purchased ? " paid" : paid ? " lock" : "");
@@ -1024,7 +1029,6 @@
               actions.appendChild(details);
             }
             actions.appendChild(action);
-            if (window.QLShare && paper.can_share !== false && !paper.is_personal && !["spin_practice", "personal_upload"].includes(paper.source)) actions.appendChild(window.QLShare.button(paper.id, paper.title || "", "ql-share-icon"));
             card.appendChild(actions);
           }
           grid.appendChild(card);
@@ -1251,7 +1255,8 @@
     x.focus();
   }
 
-  function installUploadedPaperDialog(host, runtime) {
+  function openUploadedPaperModal(runtime) {
+    runtime = runtime || window.QLStorefront || {};
     var styleId = "ql-upload-paper-style";
     if (!document.getElementById(styleId)) {
       var style = document.createElement("style");
@@ -1259,30 +1264,27 @@
       style.textContent = ".ql-upload-open{margin:0;border:0;border-radius:13px;background:#3a3fd8;color:#fff;padding:12px 18px;font:700 14px inherit;cursor:pointer;white-space:nowrap;transition:transform .15s ease,background .15s ease,box-shadow .15s ease}.ql-upload-open:hover{background:#2b30b8;transform:translateY(-1px);box-shadow:0 10px 20px -10px #3a3fd8}.ql-mp-title-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}\n.ql-upload-overlay{position:fixed;inset:0;z-index:99999;background:#f8fafc;display:flex;flex-direction:column;padding:0;overflow-y:auto;animation:qlu-fade .2s ease}\n:root[data-theme=dark] .ql-upload-overlay{background:#0b0f19}\n.ql-upload-modal{width:100%;min-height:100vh;max-height:none;overflow:visible;background:#fff;border-radius:0;box-shadow:none;color:#0f172a;display:flex;flex-direction:column;animation:qlu-rise .25s ease}\n:root[data-theme=dark] .ql-upload-modal{background:#0f172a;color:#f8fafc}\n.ql-upload-hero{position:relative;padding:36px 32px 28px;background:linear-gradient(135deg,#3a3fd8,#6a6ff0 70%,#8b90ff);color:#fff;border-radius:0;overflow:hidden;flex-shrink:0}\n.ql-upload-hero-inner{max-width:1000px;margin:0 auto;position:relative;width:100%}\n.ql-upload-hero::after{content:\"\";position:absolute;right:-50px;top:-60px;width:240px;height:240px;border-radius:50%;background:rgba(255,255,255,.14);pointer-events:none}\n.ql-upload-hero h2{margin:0;font-size:30px;line-height:1.25;letter-spacing:-.02em;position:relative}.ql-upload-hero p{margin:8px 0 0;max-width:680px;color:#e6e7ff;line-height:1.5;font-size:15px;position:relative}\n.ql-upload-pro{display:inline-block;margin-bottom:10px;padding:3px 10px;border-radius:999px;background:#ffc24b;color:#0e1330;font-size:11px;font-weight:800;letter-spacing:.08em;position:relative}\n.ql-upload-close{position:absolute;right:0;top:0;z-index:2;border:0;background:rgba(255,255,255,.2);color:#fff;border-radius:50%;width:40px;height:40px;font-size:24px;cursor:pointer;transition:background .15s,transform .2s;display:grid;place-items:center}.ql-upload-close:hover{background:rgba(255,255,255,.34);transform:rotate(90deg)}\n.ql-upload-body{padding:32px 32px 64px;display:grid;gap:24px;max-width:1000px;margin:0 auto;width:100%;box-sizing:border-box;flex:1}\n.ql-upload-quota{border-radius:18px;padding:18px 22px;background:#f1f2ff;border:1px solid #d5d8f7}.ql-upload-quota.locked{background:#fff7e0;border-color:#fde68a}.ql-upload-quota.empty{background:#fdecea;border-color:#f6c6c1}\n.ql-upload-quota-top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}.ql-upload-quota strong{font-size:16px}.ql-upload-quota small{color:#64748b;font-size:13px}\n.ql-upload-meter{display:flex;gap:6px;margin-top:12px}.ql-upload-meter i{flex:1;height:10px;border-radius:6px;background:#3a3fd8;transform-origin:left;animation:qlu-grow .5s cubic-bezier(.2,.8,.2,1) backwards}.ql-upload-meter i.used{background:#c9ccf5}\n.ql-upload-quota .ql-upload-upgrade{display:inline-block;margin-top:12px;padding:10px 18px;border-radius:11px;background:#3a3fd8;color:#fff;font-weight:700;font-size:13.5px;text-decoration:none;border:0;cursor:pointer;font-family:inherit}\n.ql-upload-steps{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:12px;align-items:center;text-align:center}\n.ql-upload-steps>div{padding:14px 10px;border-radius:16px;background:#f8fafc;border:1px solid #e2e8f0;animation:qlu-rise .5s ease backwards}.ql-upload-steps>div:nth-of-type(2){animation-delay:.12s}.ql-upload-steps>div:nth-of-type(3){animation-delay:.24s}\n.ql-upload-steps span{display:block;font-size:12.5px;font-weight:700}.ql-upload-icon{font-size:26px;margin-bottom:6px;display:inline-block;animation:qlu-bob 2.6s ease-in-out infinite}\n.ql-upload-steps b{color:#3a3fd8;font-size:18px;animation:qlu-nudge 1.4s ease-in-out infinite}\n.ql-upload-drop{position:relative;display:grid;place-items:center;gap:6px;text-align:center;padding:36px 24px;border:2px dashed #b9bedc;border-radius:22px;background:#f8f9ff;cursor:pointer;transition:border-color .15s,background .15s,transform .15s}\n.ql-upload-drop:hover,.ql-upload-drop.over{border-color:#3a3fd8;background:#eef0ff;transform:translateY(-1px)}.ql-upload-drop.disabled{opacity:.55;cursor:not-allowed;pointer-events:none}\n.ql-upload-drop .big{font-size:36px;animation:qlu-bob 2.2s ease-in-out infinite}.ql-upload-drop strong{font-size:16px}.ql-upload-drop small{color:#64748b}.ql-upload-drop input{position:absolute;inset:0;opacity:0;cursor:pointer}\n.ql-upload-chip{display:none;align-items:center;gap:10px;padding:12px 16px;border-radius:12px;background:#ecedff;color:#1b1f7a;font-weight:700;font-size:14px}.ql-upload-chip.on{display:flex;animation:qlu-rise .25s ease}\n.ql-upload-pick{display:block;width:100%;border:0;border-radius:14px;padding:16px;background:#3a3fd8;color:#fff;font-size:16px;font-weight:800;cursor:pointer;position:relative;overflow:hidden;transition:background .15s,transform .15s}.ql-upload-pick:hover:not(:disabled){background:#2b30b8;transform:translateY(-1px)}.ql-upload-pick:disabled{opacity:.55;cursor:not-allowed}\n.ql-upload-pick.busy{cursor:wait;opacity:1}.ql-upload-pick.busy::after{content:\"\";position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);animation:qlu-sheen 1.2s linear infinite}\n.ql-upload-state{margin:0;font-size:14px;color:#64748b;min-height:1.2em}.ql-upload-state.ok{color:#0e7a4f;font-weight:700;animation:qlu-rise .3s ease}.ql-upload-error{color:#b42318!important}\n.ql-upload-note{font-size:12.5px;color:#64748b;line-height:1.6;margin:0}\n.ql-upload-h{margin:4px 0 0;font-size:18px}.ql-upload-list{display:grid;gap:10px}\n.ql-upload-item{display:flex;justify-content:space-between;gap:12px;align-items:center;border:1px solid #e2e8f0;border-radius:14px;padding:14px 18px;animation:qlu-rise .35s ease backwards;transition:border-color .15s,transform .15s}.ql-upload-item:hover{border-color:#3a3fd8;transform:translateY(-1px)}\n.ql-upload-item a{color:#fff;background:#3a3fd8;padding:8px 16px;border-radius:999px;font-weight:700;font-size:13px;text-decoration:none}\n.ql-upload-quota.free{background:linear-gradient(135deg,#ecedff,#fff3d6);border-color:#c9ccf5}.ql-upload-quota-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:14px}.ql-upload-claim{border:0;border-radius:11px;padding:11px 20px;background:#3a3fd8;color:#fff;font:800 14px inherit;cursor:pointer;animation:qlu-pulse 2s ease-in-out infinite}.ql-upload-quota-actions .ql-upload-upgrade{margin-top:0;background:transparent;color:#3a3fd8;border:1px solid #c9ccf5}@keyframes qlu-pulse{0%,100%{box-shadow:0 0 0 0 rgba(58,63,216,.45)}50%{box-shadow:0 0 0 9px rgba(58,63,216,0)}}.ql-upload-tag{display:inline-block;margin-left:6px;padding:2px 7px;border-radius:6px;background:#fff1cc;color:#9a5b00;font-size:10px;font-weight:800;letter-spacing:.08em;vertical-align:middle}@keyframes qlu-fade{from{opacity:0}to{opacity:1}}@keyframes qlu-rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}@keyframes qlu-grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}@keyframes qlu-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}@keyframes qlu-nudge{0%,100%{transform:translateX(0)}50%{transform:translateX(4px)}}@keyframes qlu-sheen{from{transform:translateX(-100%)}to{transform:translateX(100%)}}\n@media(prefers-reduced-motion:reduce){.ql-upload-overlay,.ql-upload-modal,.ql-upload-steps>div,.ql-upload-icon,.ql-upload-steps b,.ql-upload-drop .big,.ql-upload-meter i,.ql-upload-item,.ql-upload-pick.busy::after{animation:none!important}}\n@media(max-width:640px){.ql-mp-title-actions{width:100%}.ql-mp-title-actions>*{flex:1;text-align:center;justify-content:center}.ql-upload-hero,.ql-upload-body{padding-left:18px;padding-right:18px}.ql-upload-steps{gap:4px}.ql-upload-steps span{font-size:11px}}";
       document.head.appendChild(style);
     }
-    var open = host.querySelector(".ql-upload-open");
-    if (!open || open.dataset.bound) return;
-    open.dataset.bound = "1";
-    open.addEventListener("click", function () {
+    if (document.querySelector(".ql-upload-overlay")) return;
       var overlay = document.createElement("div");
       overlay.className = "ql-upload-overlay";
-      overlay.innerHTML = '<section class="ql-upload-modal" role="dialog" aria-modal="true" aria-labelledby="ql-upload-title"><div class="ql-upload-hero" style="padding:20px 24px"><button class="ql-upload-close" type="button" aria-label="Close">×</button><h2 id="ql-upload-title">Your uploaded papers</h2></div><div class="ql-upload-body"><div class="ql-upload-quota" aria-live="polite">Checking your uploads…</div><div style="display:flex;align-items:center;justify-content:space-between;gap:12px"><h3 class="ql-upload-h">Your papers</h3><button type="button" class="ql-upload-new ql-upload-claim" style="animation:none">＋ Upload paper</button></div><form class="ql-upload-form" style="display:none;gap:12px"><label class="ql-upload-drop"><strong>Choose a PDF or JSON</strong><small>Up to 10 MB · PDF up to 30 pages</small><input class="ql-upload-file" type="file" name="paper" accept=".pdf,.json,application/pdf,application/json" required></label><div class="ql-upload-chip"></div><button class="ql-upload-pick" type="submit" disabled>Create my test</button><p class="ql-upload-state" aria-live="polite"></p><button type="button" class="ql-upload-hide">Close upload</button></form><div class="ql-upload-list"><p class="ql-upload-state">Loading…</p></div><details class="ql-upload-rules"><summary style="cursor:pointer;padding:10px 0;font-weight:700">Upload rules · See all</summary><div class="ql-upload-note" style="padding:8px 0"><p>Free: 1 successful upload every 7 days. Pro: 5 in the same rolling window. Each slot returns 7 days after use. Failed conversions do not use a slot.</p><p>PDF or JSON, up to 10 MB. PDFs support up to 30 pages of selectable text; scanned PDFs are not supported.</p><p>PDF text is sent to DeepSeek AI to structure questions. The temporary file is deleted after processing. JSON is processed without AI. Review questions because AI can make mistakes.</p><p>Your tests appear in My Papers. Our team may review uploads and add suitable papers to the public library.</p></div></details></div></section>';
+      overlay.innerHTML = '<section class="ql-upload-modal" role="dialog" aria-modal="true" aria-labelledby="ql-upload-title"><div class="ql-upload-hero" style="padding:20px 24px"><button class="ql-upload-close" type="button" aria-label="Close">×</button><h2 id="ql-upload-title">Upload a paper</h2></div><div class="ql-upload-body"><section><h3 class="ql-upload-h" style="margin-bottom:12px">How it works</h3><div class="ql-upload-steps"><div><div class="ql-upload-icon">📄</div><span>Upload</span></div><b>→</b><div><div class="ql-upload-icon">✦</div><span>Convert</span></div><b>→</b><div><div class="ql-upload-icon">▶</div><span>Take test</span></div></div></section><div class="ql-upload-quota" aria-live="polite">Checking your uploads…</div><button type="button" class="ql-upload-new ql-upload-claim" style="animation:none">Use free upload</button><form class="ql-upload-form" style="display:none;gap:12px"><label class="ql-upload-drop"><strong>Choose a PDF or JSON</strong><small>Up to 10 MB · PDF up to 30 pages</small><input class="ql-upload-file" type="file" name="paper" accept=".pdf,.json,application/pdf,application/json" required></label><div class="ql-upload-chip"></div><button class="ql-upload-pick" type="submit" disabled>Create my test</button><p class="ql-upload-state" aria-live="polite"></p><button type="button" class="ql-upload-hide">Close upload</button></form><h3 class="ql-upload-h">Your papers</h3><div class="ql-upload-list"><p class="ql-upload-state">Loading…</p></div><h3 class="ql-upload-h" style="margin-bottom:-16px">Upload rules</h3><details class="ql-upload-rules"><summary style="cursor:pointer;padding:10px 0;font-weight:700;text-align:left">See all</summary><div class="ql-upload-note" style="padding:8px 0"><p>Free: 1 successful upload every 7 days. Pro: 5 in the same rolling window. Each slot returns 7 days after use. Failed conversions do not use a slot.</p><p>PDF or JSON, up to 10 MB. PDFs support up to 30 pages of selectable text; scanned PDFs are not supported.</p><p>PDF text is sent to DeepSeek AI to structure questions. The temporary file is deleted after processing. JSON is processed without AI. Review questions because AI can make mistakes.</p><p>Your tests appear in My Papers. Our team may review uploads and add suitable papers to the public library.</p></div></details></div></section>';
       document.body.appendChild(overlay);
 
       var modal = overlay.querySelector(".ql-upload-modal");
-      var quotaTimer, rulesTimer;
+      var quotaTimer, rulesTimer, syncTimer, listRequest = 0;
       var rules = modal.querySelector('.ql-upload-rules');
       function collapseRules() { clearTimeout(rulesTimer); rules.open = false; }
       rules.addEventListener('toggle', function () {
         clearTimeout(rulesTimer);
-        rules.querySelector('summary').textContent = 'Upload rules · ' + (rules.open ? 'See less' : 'See all');
+        rules.querySelector('summary').textContent = rules.open ? 'See less' : 'See all';
         if (rules.open) rulesTimer = setTimeout(collapseRules, 30000);
       });
-      function onHidden() { if (document.hidden) collapseRules(); }
+      function onHidden() { if (document.hidden) collapseRules(); else if (!uploading) refreshUploads(); }
       document.addEventListener('visibilitychange', onHidden);
       window.addEventListener('pagehide', collapseRules);
       function escape(event) { if (event.key === 'Escape') close(); }
       function close() {
-        clearInterval(quotaTimer); collapseRules(); overlay.remove();
+        clearInterval(quotaTimer); clearInterval(syncTimer); listRequest++; collapseRules(); overlay.remove();
         document.removeEventListener('visibilitychange', onHidden);
         document.removeEventListener('keydown', escape);
         window.removeEventListener('pagehide', collapseRules);
@@ -1297,7 +1299,7 @@
       var fileInput = modal.querySelector("input[type=file]");
       var chip = modal.querySelector(".ql-upload-chip");
       var button = modal.querySelector(".ql-upload-pick");
-      var allowed = false, uploading = false;
+      var allowed = false, uploading = false, lastQuota = null;
       var uploadForm = modal.querySelector('.ql-upload-form');
       var newUpload = modal.querySelector('.ql-upload-new');
       newUpload.addEventListener('click', function () {
@@ -1311,10 +1313,11 @@
         return "in " + Math.floor(seconds / 86400) + "d " + Math.floor(seconds / 3600) % 24 + "h " + Math.floor(seconds / 60) % 60 + "m " + seconds % 60 + "s";
       }
       function renderQuota(q) {
+        lastQuota = q;
         clearInterval(quotaTimer);
         quotaBox.replaceChildren();
         quotaBox.className = "ql-upload-quota";
-        if (!q) { allowed = false; newUpload.disabled = true; quotaBox.textContent = "Upload allowance unavailable. Reopen to retry."; syncButton(); return; }
+        if (!q) { allowed = false; newUpload.hidden = true; newUpload.disabled = true; quotaBox.textContent = "Upload allowance unavailable. Reopen to retry."; syncButton(); return; }
         quotaBox.hidden = false;
         var top = document.createElement("div"); top.className = "ql-upload-quota-top";
         var head = document.createElement("strong"), sub = document.createElement("small");
@@ -1333,12 +1336,19 @@
         top.append(head, sub); quotaBox.appendChild(top);
         if (!q.is_pro) {
           var up = document.createElement('button'); up.type = 'button'; up.className = 'ql-upload-upgrade';
-          up.style.cssText = 'border:0;background:transparent;color:#3a3fd8;font-weight:700;cursor:pointer;padding:6px 0';
-          up.textContent = allowed ? 'Get ' + (q.pro_limit || 5) + ' · Pro' : 'Get Pro to upload';
+          up.style.cssText = 'border:0;border-radius:12px;background:#ffc24b;color:#0e1330;font-weight:800;cursor:pointer;padding:10px 16px;white-space:nowrap';
+          up.textContent = 'Get Pro';
+          var benefit = document.createElement('small'); benefit.textContent = (q.pro_limit || 5) + ' uploads every ' + (q.window_days || 7) + ' days with Pro'; quotaBox.appendChild(benefit);
           up.addEventListener('click', function () { close(); if (typeof window.openProPaywall === 'function') window.openProPaywall(); else location.assign('/pro'); });
           quotaBox.appendChild(up);
         }
-        newUpload.disabled = !allowed;
+        newUpload.hidden = !allowed;
+        newUpload.disabled = !allowed || uploading;
+        newUpload.textContent = q.is_pro ? '＋ Upload paper' : 'Claim ' + q.remaining + ' free upload' + (q.remaining === 1 ? '' : 's');
+        quotaBox.style.display = 'grid'; quotaBox.style.gridTemplateColumns = '1fr auto'; quotaBox.style.columnGap = '12px'; quotaBox.style.alignItems = 'center';
+        top.style.gridColumn = '1 / -1'; top.style.display = !q.is_pro && allowed ? 'none' : 'flex';
+        if (!q.is_pro && allowed) quotaBox.before(newUpload); else quotaBox.after(newUpload);
+        if (!allowed && !uploading) uploadForm.style.display = 'none';
         drop.classList.toggle("disabled", !allowed);
         syncButton();
       }
@@ -1357,6 +1367,8 @@
         try { var dt = new DataTransfer(); dt.items.add(f); fileInput.files = dt.files; setFile(f); } catch (_) { /* browser without DataTransfer: use the picker */ }
       });
       function refreshUploads() {
+        if (!overlay.isConnected || uploading) return;
+        var requestId = ++listRequest;
         fetch(runtime.apiBase + "/student/uploaded-papers", { headers: authHeaders() }).then(async function (response) {
           var data = null;
           try { data = await response.json(); } catch (_) {}
@@ -1366,11 +1378,16 @@
           }
           return data;
         }).then(function (data) {
+          if (!overlay.isConnected || requestId !== listRequest || uploading) return;
           renderQuota(data.quota);
           list.replaceChildren();
           var papers = Array.isArray(data.papers) ? data.papers.slice().sort(function (a, b) { return Number(b.id) - Number(a.id); }) : [];
-          if (!papers.length) { var empty = document.createElement("p"); empty.className = "ql-upload-state"; empty.textContent = "Your papers will appear here. Upload a paper and turn it into a practice test."; list.appendChild(empty);
-            var first = document.createElement('button'); first.type = 'button'; first.className = 'ql-upload-claim'; first.style.animation = 'none'; first.textContent = 'Upload your first paper'; first.disabled = !allowed; first.onclick = function () { newUpload.click(); }; list.appendChild(first); return; }
+          if (!papers.length) {
+            var empty = document.createElement('p'); empty.className = 'ql-upload-state';
+            empty.textContent = allowed ? 'No papers yet. Use the upload button above to create a test.'
+              : lastQuota ? 'No papers to show. Your next upload countdown is shown above; existing tests remain available here.' : 'Your upload allowance could not be loaded. Reopen to retry.';
+            list.appendChild(empty); return;
+          }
           papers.forEach(function (paper, index) {
             var row = document.createElement("div"); row.className = "ql-upload-item"; row.style.animationDelay = (index * 50) + "ms";
             var info = document.createElement("div");
@@ -1381,6 +1398,7 @@
             row.append(info, link); list.appendChild(row);
           });
         }).catch(function (error) {
+          if (!overlay.isConnected || requestId !== listRequest || uploading) return;
           list.replaceChildren();
           var message = document.createElement("p");
           message.className = "ql-upload-state ql-upload-error";
@@ -1390,12 +1408,13 @@
         });
       }
       refreshUploads();
+      syncTimer = setInterval(function () { if (overlay.isConnected && !document.hidden && !uploading) refreshUploads(); }, 30000);
       var steps = ["Reading your paper…", "Finding the questions…", "Checking answers and options…", "Building your test…"];
       modal.querySelector(".ql-upload-form").addEventListener("submit", function (event) {
         event.preventDefault();
         var file = fileInput.files[0];
         if (!file || !allowed || uploading) return;
-        uploading = true;
+        uploading = true; listRequest++; newUpload.disabled = true;
         var n = 0, ticker;
         button.disabled = true; button.classList.add("busy"); button.textContent = steps[0];
         state.className = "ql-upload-state"; state.textContent = "This can take a minute for a PDF.";
@@ -1409,13 +1428,27 @@
           state.textContent = "✅ " + (data.title || "Your paper") + " is ready with " + (data.question_count || 0) + " questions.";
           fileInput.value = ""; setFile(null);
           if (data.quota) renderQuota(data.quota);
+          uploading = false;
           refreshUploads();
-          host.dataset.qlLoaded = "";
-          fillMyPapers();
-        }).catch(function (error) { state.className = "ql-upload-state ql-upload-error"; state.textContent = error.message; }).finally(function () { clearInterval(ticker); uploading = false; button.classList.remove("busy"); button.textContent = "Create my test"; syncButton(); });
+          var myPapersHost = document.getElementById("ql-my-papers");
+          if (myPapersHost) {
+            myPapersHost.dataset.qlLoaded = "";
+            fillMyPapers();
+          }
+        }).catch(function (error) { state.className = "ql-upload-state ql-upload-error"; state.textContent = error.message; }).finally(function () { clearInterval(ticker); uploading = false; button.classList.remove("busy"); button.textContent = "Create my test"; newUpload.disabled = !allowed; if (!allowed) uploadForm.style.display = "none"; syncButton(); });
       });
-    });
   }
+
+  function installUploadedPaperDialog(host, runtime) {
+    // Delegated click listener handles all .ql-upload-open clicks globally
+  }
+
+  document.addEventListener("click", function (e) {
+    var btn = e.target.closest && e.target.closest(".ql-upload-open");
+    if (!btn) return;
+    e.preventDefault();
+    openUploadedPaperModal(window.QLStorefront);
+  });
 
   /* ---------------------------------------------------------------
    * Try your practice: Spin wheel & custom practice paper builder.
@@ -1432,8 +1465,9 @@
         if (!anchor) return;
         existing = document.createElement("a");
         existing.href = "/try-practice";
-        existing.className = "mb-0.5 flex items-center gap-2.5 rounded-lg px-3 py-[7px] text-[13px] font-medium transition-colors " +
-          (isTry ? "bg-brand text-white shadow-sm" : "text-slate-700 hover:bg-slate-100");
+        existing.dataset.qlInjected = "1";
+        existing.className = "mb-0.5 flex items-center gap-2.5 rounded-lg px-3 py-[7px] text-[13px] font-medium transition-all " +
+          (isTry ? "ql-nav-active" : "text-[#9ca3af] hover:bg-[#1c2533] hover:text-[#e5e7eb]");
         existing.innerHTML = '<span class="flex h-5 w-5 items-center justify-center font-bold text-sm">🎯</span><span>Try your practice</span>';
         existing.addEventListener("click", function (e) {
           if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
@@ -1448,9 +1482,47 @@
         } else {
           anchor.parentNode.appendChild(existing);
         }
+      } else if (existing.dataset.qlInjected) {
+        existing.className = "mb-0.5 flex items-center gap-2.5 rounded-lg px-3 py-[7px] text-[13px] font-medium transition-all " +
+          (isTry ? "ql-nav-active" : "text-[#9ca3af] hover:bg-[#1c2533] hover:text-[#e5e7eb]");
       } else {
-        existing.className = "mb-0.5 flex items-center gap-2.5 rounded-lg px-3 py-[7px] text-[13px] font-medium transition-colors " +
-          (isTry ? "bg-brand text-white shadow-sm" : "text-slate-700 hover:bg-slate-100");
+        if (existing.classList.contains("text-slate-700")) {
+          existing.classList.remove("text-slate-700", "hover:bg-slate-100", "bg-brand", "text-white", "shadow-sm");
+          if (!existing.classList.contains("ql-nav-active")) {
+            existing.classList.add("text-[#9ca3af]", "hover:bg-[#1c2533]", "hover:text-[#e5e7eb]");
+          }
+        }
+        if (isTry) {
+          existing.classList.add("ql-nav-active");
+          existing.classList.remove("text-[#9ca3af]");
+        } else if (existing.classList.contains("ql-nav-active") && !/^\/try-practice(\/|$)/i.test(window.location.pathname)) {
+          existing.classList.remove("ql-nav-active");
+          existing.classList.add("text-[#9ca3af]");
+        }
+      }
+    });
+  }
+
+  function syncUploadPaperNav() {
+    document.querySelectorAll("#root aside nav").forEach(function (nav) {
+      if (!nav.querySelector('a[href="/dashboard"]')) return;
+      var existing = nav.querySelector(".ql-sidebar-upload");
+      if (!existing) {
+        var anchor = nav.querySelector('a[href="/my-papers"]') || nav.querySelector('a[href="/practice"]');
+        if (!anchor) return;
+        var btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "ql-sidebar-upload ql-upload-open mb-0.5 flex w-full items-center gap-2.5 rounded-lg px-3 py-[7px] text-[13px] font-medium text-[#9ca3af] transition-all hover:bg-[#1c2533] hover:text-[#e5e7eb]";
+        btn.innerHTML = '<span class="flex-shrink-0 opacity-75">' +
+          '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>' +
+          '</span>' +
+          '<span class="flex-1 text-left tracking-[-0.01em]">Upload a paper</span>' +
+          '<span class="ql-upload-tag">PRO</span>';
+        if (anchor.nextSibling) {
+          anchor.parentNode.insertBefore(btn, anchor.nextSibling);
+        } else {
+          anchor.parentNode.appendChild(btn);
+        }
       }
     });
   }
@@ -2768,6 +2840,7 @@
     fillMyPapers();
     fillTryPractice();
     syncTryPracticeNav();
+    syncUploadPaperNav();
     decoratePracticeCards();
     decoratePracticeList();
     syncConsoleNav();

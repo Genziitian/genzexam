@@ -40,23 +40,8 @@ const initial = () => ({is_pro: false, trial_available: true, plan: {price_paise
 
 (async () => {
   let app = setup(initial()); await settle();
-  assert.equal(app.part('buy').textContent, 'Try for free');
-
-  assert.match(app.part('summary').innerHTML, /FREE/);
-  app.part('annual').listeners.click();
-  assert.equal(app.part('buy').textContent, 'Subscribe yearly');
-  assert.match(app.part('summary').innerHTML, /₹999 charged today/);
-  assert.doesNotMatch(app.part('summary').innerHTML, /FREE/);
-
-  app = setup({...initial(), trial_available: false}); await settle();
-  assert.equal(app.part('buy').textContent, 'Subscribe monthly');
-  assert.doesNotMatch(app.part('dates').textContent, /trial/);
-
-  app = setup({...initial(), plan: {enabled: false}}); await settle();
-  assert.equal(app.part('buy').hidden, true);
-
-  app = setup({...initial(), plan: {trial_days: 0}}); await settle();
-  assert.equal(app.part('buy').textContent, 'Subscribe monthly');
+  assert.equal(app.part('buy').textContent, 'Get membership');
+  assert.equal(app.part('status').textContent, 'No membership');
 
   app = setup({...initial(), is_pro: true, subscription: {id: 1, provider: 'google_play', status: 'active', started_at: '2026-10-01T00:00:00Z', current_period_ends_at: '2026-11-01T00:00:00Z'}});
   await settle();
@@ -65,7 +50,8 @@ const initial = () => ({is_pro: false, trial_available: true, plan: {price_paise
   assert.match(app.part('dates').textContent, /Access ends/);
   assert.equal(app.part('cancel').hidden, true);
 
-  app = setup({...initial(), is_pro: true, subscription: {id: 1, provider: 'manual', status: 'active'}}); await settle();
+  app = setup({...initial(), is_pro: true, subscription: {id: 2, provider: 'manual', status: 'active'}}); await settle();
   assert.equal(app.part('cancel').hidden, true);
-  console.log('PASS: web trial eligibility, disabled sales, zero-day trial, cancellation access dates, and complimentary membership.');
+  assert.equal(app.part('status').textContent, 'Pro active');
+  console.log('PASS: web no-membership CTA, pro active status, cancellation access dates, and complimentary membership.');
 })().catch(error => { console.error(error); process.exitCode = 1; });

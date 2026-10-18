@@ -50,16 +50,6 @@ class RazorpayProSubscriptions
         return $response->json();
     }
 
-    public function changeState(string $subscriptionId, string $action): array
-    {
-        if (! in_array($action, ['pause', 'resume'], true)) throw new RuntimeException('Unsupported subscription action.');
-        $response = $this->request()->post('https://api.razorpay.com/v1/subscriptions/'.rawurlencode($subscriptionId).'/'.$action, [$action.'_at' => 'now']);
-        if (! $response->successful()) throw new RuntimeException('Razorpay could not '.$action.' this subscription.');
-        $result = $response->json();
-        if (($result['status'] ?? '') !== ($action === 'pause' ? 'paused' : 'active')) throw new RuntimeException('Razorpay has not confirmed the requested subscription state. Refresh before retrying.');
-        return $result;
-    }
-
     public function verifyWebhook(string $payload, string $signature): bool
     {
         $secret = (string) config('services.razorpay.webhook_secret');

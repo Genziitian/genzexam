@@ -21,7 +21,153 @@
 <section id="papers-panel" hidden><div class="toolbar"><label class="search">Find a paper<input type="search" id="paper-search" placeholder="Search title or course"></label><button class="primary" id="new-paper">Create paper</button></div><div id="paper-list" class="cards"></div></section>
 <section id="courses-panel" hidden><div class="two-columns"><form id="course-form" class="panel"><h2>Create a course</h2><label>Course name<input name="name" maxlength="120" required></label><label>Level<select name="level"><option value="foundation">Foundation</option><option value="diploma">Diploma</option><option value="degree">Degree</option></select></label><label>Description<textarea name="description" rows="3"></textarea></label><label>Weekly folders<input name="weeks_count" type="number" min="0" max="52" value="12" required></label><button class="primary">Create course</button><p class="form-status" role="status"></p></form><div id="course-list" class="stack"></div></div></section>
 <section id="deletion-requests-panel" hidden><div class="toolbar"><div><h2>Account deletion requests <span class="hint" id="deletion-request-count"></span></h2></div><button id="refresh-deletion-requests">Refresh</button></div><div class="filters"><select id="deletion-request-filter" aria-label="Filter account deletion requests"><option value="all">All requests</option><option value="pending">Pending</option><option value="reviewing">Reviewing</option><option value="completed">Completed</option></select></div><div id="deletion-request-list" class="stack" aria-live="polite"><div class="notice">Loading requests…</div></div></section>
-<section id="pro-panel" hidden><div class="toolbar"><div><h2>Memberships &amp; transactions</h2></div><button id="refresh-pro">Refresh</button></div><div class="panel"><h3>Transactions &amp; user history</h3><div class="filters"><input id="pro-transaction-search" type="search" placeholder="Student name or email" aria-label="Search transaction history"><button id="pro-transaction-search-button">Search all transactions</button></div><p id="pro-history-user" class="hint"></p><div id="pro-transactions" aria-live="polite">Select a student's history below, or search all transactions.</div><div class="toolbar tight"><button id="pro-transactions-prev">Previous</button><span id="pro-transactions-page"></span><button id="pro-transactions-next">Next</button></div></div><div id="pro-metrics" class="metrics" aria-live="polite"></div><form id="pro-plan-form" class="panel"><h3>Plan settings</h3><div class="form-grid"><label>Monthly price (₹)<input name="price" type="number" min="1" step="0.01" value="99" required></label><label>Web free trial (days)<input name="trial_days" type="number" min="0" max="30" value="7" required></label><label><span>Offer status</span><select name="enabled"><option value="1">Available</option><option value="0">Unavailable</option></select></label></div><p class="hint" id="google-play-price-note">Google Play price and free-trial offer need matching Play Console configuration.</p><button class="primary">Save plan</button><p id="pro-plan-status" class="form-status" role="status"></p></form><form id="pro-grant-form" class="panel"><h3>Grant complimentary Pro</h3><div class="form-grid"><label>Student email<input type="email" name="email" required placeholder="student@example.com"></label><label>Access duration (days)<input type="number" name="days" min="1" max="3650" value="30" required></label></div><button class="primary">Grant Pro</button><p id="pro-grant-status" class="form-status" role="status"></p></form><div class="filters"><select id="pro-status-filter" aria-label="Membership status"><option value="all">All memberships</option><option value="pending">Checkout pending</option><option value="trialing">Trial</option><option value="active">Active</option><option value="cancelled">Cancelled</option><option value="revoked">Revoked</option><option value="expired">Expired</option></select><input type="search" id="pro-search" placeholder="Find a student by name or email" aria-label="Search memberships"></div><div class="table-wrap"><table><thead><tr><th>Student</th><th>Status</th><th>Provider</th><th>Price</th><th>Started</th><th>Trial ends</th><th>Last paid</th><th>Next charge / access end</th><th>Actions</th></tr></thead><tbody id="pro-list"><tr><td colspan="9" class="empty-row">Open this tab to load memberships.</td></tr></tbody></table></div><div class="toolbar tight"><button id="previous-pro">Previous</button><span id="pro-page" class="hint"></span><button id="next-pro">Next</button></div></section>
+<section id="pro-panel" class="pro-dashboard" hidden>
+<div class="pro-header-toolbar">
+  <div class="pro-header-titles">
+    <h2>Memberships &amp; transactions</h2>
+    <p class="pro-header-sub">Real-time ledger synchronized with Razorpay &amp; Google Play Billing webhooks.</p>
+  </div>
+  <div class="pro-header-actions">
+    <div class="pro-telemetry-pill">
+      <span class="pro-pulse-dot" aria-hidden="true"></span>
+      <span>Webhooks: Live</span>
+    </div>
+    <button id="refresh-pro" class="btn-refresh">Refresh</button>
+  </div>
+</div>
+
+<div id="pro-metrics" class="metrics pro-metrics-grid" aria-live="polite"></div>
+
+<div class="panel pro-panel-block pro-transactions-section">
+  <div class="pro-block-header">
+    <div>
+      <h3>Transaction History &amp; Student Audit</h3>
+      <p class="hint">Search student ledger or inspect payment receipts across providers.</p>
+    </div>
+  </div>
+
+  <div id="pro-history-banner" class="pro-spotlight-banner">
+    <div class="pro-spotlight-inner">
+      <div id="pro-history-avatar" class="pro-avatar-circle">All</div>
+      <div class="pro-spotlight-details">
+        <div class="pro-spotlight-top">
+          <span id="pro-history-name" class="pro-student-name">All Students</span>
+          <span id="pro-history-badge" class="pro-status-chip">Global Ledger</span>
+        </div>
+        <p id="pro-history-user" class="hint pro-student-meta">Showing all transactions across payment providers.</p>
+        <div id="pro-history-membership-strip" class="pro-membership-strip"></div>
+      </div>
+    </div>
+    <div id="pro-spotlight-actions" class="pro-spotlight-actions" hidden>
+      <button type="button" id="pro-clear-history" class="pro-btn-subtle">Close history</button>
+    </div>
+  </div>
+
+  <div class="pro-sync-alert" role="status">
+    <span class="pro-sync-icon" aria-hidden="true">🔄</span>
+    <span>Paper orders and verified subscription receipts synchronize automatically via Google Play &amp; Razorpay webhooks.</span>
+  </div>
+
+  <div class="filters pro-tx-filters">
+    <input id="pro-transaction-search" type="search" placeholder="Search student name, email, or order ID…" aria-label="Search transaction history">
+    <button id="pro-transaction-search-button" class="primary">Search transactions</button>
+  </div>
+
+  <div id="pro-transactions" class="pro-tx-results" aria-live="polite">Select a student's history below, or search all transactions.</div>
+
+  <div class="toolbar tight pagination-bar">
+    <button id="pro-transactions-prev" class="btn-prev">Previous</button>
+    <span id="pro-transactions-page" class="hint"></span>
+    <button id="pro-transactions-next" class="btn-next">Next</button>
+  </div>
+</div>
+
+<div class="pro-controls-grid">
+  <form id="pro-plan-form" class="panel pro-panel-block">
+    <div class="pro-card-title">
+      <div class="pro-title-icon">⚙️</div>
+      <div>
+        <h3>Plan &amp; pricing configuration</h3>
+        <p class="hint">Monthly Pro subscription pricing and free trial</p>
+      </div>
+    </div>
+    <div class="form-grid">
+      <label>Monthly price (₹)<input name="price" type="number" min="1" step="0.01" value="99" required></label>
+      <label>Web free trial (days)<input name="trial_days" type="number" min="0" max="30" value="7" required></label>
+      <label><span>Offer status</span><select name="enabled"><option value="1">Available</option><option value="0">Unavailable</option></select></label>
+    </div>
+    <p class="hint" id="google-play-price-note">Google Play price and free-trial offer need matching Play Console configuration.</p>
+    <div class="pro-form-footer">
+      <button class="primary">Save plan</button>
+      <p id="pro-plan-status" class="form-status" role="status"></p>
+    </div>
+  </form>
+
+  <form id="pro-grant-form" class="panel pro-panel-block">
+    <div class="pro-card-title">
+      <div class="pro-title-icon">⚡</div>
+      <div>
+        <h3>Grant complimentary Pro</h3>
+        <p class="hint">Manual access grant override without payment gate</p>
+      </div>
+    </div>
+    <div class="form-grid">
+      <label>Student email<input type="email" name="email" required placeholder="student@example.com"></label>
+      <label>Access duration (days)<input type="number" name="days" min="1" max="3650" value="30" required></label>
+    </div>
+    <div class="pro-form-footer">
+      <button class="primary">Grant Pro</button>
+      <p id="pro-grant-status" class="form-status" role="status"></p>
+    </div>
+  </form>
+</div>
+
+<div class="panel pro-panel-block pro-directory-section">
+  <div class="pro-block-header">
+    <div>
+      <h3>All memberships directory</h3>
+      <p class="hint">Registered subscriber entitlements and access status across cohorts.</p>
+    </div>
+  </div>
+  <div class="filters">
+    <select id="pro-status-filter" aria-label="Membership status">
+      <option value="all">All memberships</option>
+      <option value="pending">Checkout pending</option>
+      <option value="trialing">Trial</option>
+      <option value="active">Active</option>
+      <option value="cancelled">Cancelled</option>
+      <option value="revoked">Revoked</option>
+      <option value="expired">Expired</option>
+    </select>
+    <input type="search" id="pro-search" placeholder="Find a student by name or email…" aria-label="Search memberships">
+  </div>
+  <div class="table-wrap pro-table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Student</th>
+          <th>Status</th>
+          <th>Provider</th>
+          <th>Price</th>
+          <th>Started</th>
+          <th>Trial ends</th>
+          <th>Last paid</th>
+          <th>Next charge / access end</th>
+          <th class="pro-actions-header">Actions</th>
+        </tr>
+      </thead>
+      <tbody id="pro-list">
+        <tr><td colspan="9" class="empty-row">Open this tab to load memberships.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="toolbar tight pagination-bar">
+    <button id="previous-pro" class="btn-prev">Previous</button>
+    <span id="pro-page" class="hint"></span>
+    <button id="next-pro" class="btn-next">Next</button>
+  </div>
+</div>
+</section>
 
 </div>
 </main>

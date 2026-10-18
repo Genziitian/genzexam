@@ -32,6 +32,20 @@ class ProSubscription extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function billingDates(): array
+    {
+        $firstPayment = \Illuminate\Support\Facades\Schema::hasTable('membership_transactions')
+            ? \Illuminate\Support\Facades\DB::table('membership_transactions')->where('pro_subscription_id', $this->id)
+                ->where('amount_paise', '>', 0)->whereIn('status', ['paid', 'processed', 'charged'])->min('paid_at')
+            : null;
+        $renewing = in_array($this->provider, ['google_play', 'razorpay'], true) && in_array($this->status, ['active', 'trialing'], true) && ! $this->cancel_at_period_end;
+        return [
+            // No invented first-purchase date when an older receipt is unavailable.
+            'first_payment_recorded_at' => $firstPayment ? $this->asDateTime($firstPayment) : null,
+            'next_charge_at' => $renewing && $this->current_period_ends_at?->isFuture() ? $this->current_period_ends_at : null,
+        ];
+    }
+
     public function grantsAccess(): bool
     {
         if (in_array($this->status, ['trialing', 'active'], true)) {

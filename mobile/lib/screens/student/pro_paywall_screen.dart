@@ -56,7 +56,13 @@ class _ProPaywallScreenState extends State<ProPaywallScreen> {
       body: Stack(
         children: [
           ListView(
-            padding: EdgeInsets.only(bottom: 300 + bottom),
+            padding: EdgeInsets.only(
+              bottom:
+                  (MediaQuery.textScalerOf(context).scale(14) > 20
+                      ? 240
+                      : 150) +
+                  bottom,
+            ),
             children: [
               const _Hero(),
               Padding(
@@ -192,7 +198,7 @@ class _ProPaywallScreenState extends State<ProPaywallScreen> {
             right: 0,
             bottom: 0,
             child: Container(
-              padding: EdgeInsets.fromLTRB(16, 12, 16, 12 + bottom),
+              padding: EdgeInsets.fromLTRB(16, 8, 16, 8 + bottom),
               decoration: BoxDecoration(
                 color: Colors.white,
                 boxShadow: [
@@ -209,67 +215,110 @@ class _ProPaywallScreenState extends State<ProPaywallScreen> {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  AnimatedSwitcher(
-                    duration: const Duration(milliseconds: 250),
-                    child: Text(
-                      _trial
-                          ? '${_offer!.trialDays} days free, then ${_offer!.price}/month'
-                          : _offer?.terms ?? 'Plan unavailable in Google Play',
-                      key: ValueKey(_trial),
-                      style: const TextStyle(
-                        fontWeight: FontWeight.w700,
-                        color: Brand.ink,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 10),
-                  PremiumButton(
-                    gold: true,
-                    busy: widget.busy,
-                    icon: _trial
-                        ? Icons.rocket_launch_rounded
-                        : Icons.workspace_premium_rounded,
-                    label: _trial
-                        ? 'Try for free'
-                        : _choice == ProPlanChoice.yearly
-                        ? 'Subscribe yearly'
-                        : 'Subscribe monthly',
-                    onPressed: _offer == null || widget.disabled || widget.busy
-                        ? null
-                        : () => widget.onSubscribe(_offer!),
-                  ),
-                  const SizedBox(height: 4),
-                  Wrap(
-                    alignment: WrapAlignment.center,
-                    crossAxisAlignment: WrapCrossAlignment.center,
+                  Row(
                     children: [
-                      const Text(
-                        'By continuing, you agree to our ',
-                        style: TextStyle(fontSize: 11, color: Brand.muted),
-                      ),
-                      TextButton(
-                        onPressed: () async {
-                          final opened = await launchUrl(
-                            Uri.parse(
-                              'https://quiz.genziitian.in/terms-and-conditions',
+                      Expanded(
+                        flex: 3,
+                        child: AnimatedSwitcher(
+                          duration: const Duration(milliseconds: 250),
+                          child: Text(
+                            _trial
+                                ? '${_offer!.trialDays} days free, then ${_offer!.price}/month'
+                                : _offer?.terms ??
+                                      'Plan unavailable in Google Play',
+                            key: ValueKey(
+                              '${_choice.name}-${_trial}-${_offer?.price}',
                             ),
-                            mode: LaunchMode.externalApplication,
-                          );
-                          if (!opened && context.mounted)
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                content: Text(
-                                  'Could not open Terms & Conditions. Please try again.',
+                            style: const TextStyle(
+                              fontSize: 13,
+                              fontWeight: FontWeight.w700,
+                              color: Brand.ink,
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 12),
+                      Flexible(
+                        flex: 2,
+                        child: FilledButton(
+                          style: FilledButton.styleFrom(
+                            backgroundColor: Brand.gold,
+                            foregroundColor: Brand.deep,
+                            minimumSize: const Size(110, 44),
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 12,
+                              vertical: 10,
+                            ),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                          ),
+                          onPressed:
+                              _offer == null || widget.disabled || widget.busy
+                              ? null
+                              : () => widget.onSubscribe(_offer!),
+                          child: widget.busy
+                              ? const SizedBox(
+                                  width: 18,
+                                  height: 18,
+                                  child: CircularProgressIndicator(
+                                    strokeWidth: 2,
+                                  ),
+                                )
+                              : Text(
+                                  _trial
+                                      ? 'Try for free'
+                                      : _choice == ProPlanChoice.yearly
+                                      ? 'Subscribe yearly'
+                                      : 'Subscribe monthly',
+                                  textAlign: TextAlign.center,
+                                  style: const TextStyle(
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.w800,
+                                  ),
                                 ),
-                              ),
-                            );
-                        },
-                        child: const Text(
-                          'Terms & Conditions',
-                          style: TextStyle(fontSize: 11),
                         ),
                       ),
                     ],
+                  ),
+                  TextButton(
+                    style: TextButton.styleFrom(
+                      padding: EdgeInsets.zero,
+                      minimumSize: const Size(0, 32),
+                      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    ),
+                    onPressed: () async {
+                      final opened = await launchUrl(
+                        Uri.parse(
+                          'https://quiz.genziitian.in/terms-and-conditions',
+                        ),
+                        mode: LaunchMode.externalApplication,
+                      );
+                      if (!opened && context.mounted)
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text(
+                              'Could not open Terms & Conditions. Please try again.',
+                            ),
+                          ),
+                        );
+                    },
+                    child: const Text.rich(
+                      TextSpan(
+                        text: 'By continuing, you agree to our ',
+                        style: TextStyle(fontSize: 11, color: Brand.muted),
+                        children: [
+                          TextSpan(
+                            text: 'Terms & Conditions',
+                            style: TextStyle(
+                              color: Brand.green,
+                              decoration: TextDecoration.underline,
+                            ),
+                          ),
+                        ],
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
                   ),
                 ],
               ),

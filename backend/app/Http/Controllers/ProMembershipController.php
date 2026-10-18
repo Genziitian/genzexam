@@ -86,7 +86,7 @@ class ProMembershipController extends Controller
 
     public function manage(Request $request): JsonResponse
     {
-        $data = $request->validate(['subscription_id' => ['required','integer'], 'action' => ['required','in:cancel,pause,resume']]);
+        $data = $request->validate(['subscription_id' => ['required','integer'], 'action' => ['required','in:cancel']]);
         try {
             $subscription = DB::transaction(function () use ($request, $data) {
                 $sub = $request->user()->proSubscriptions()->whereKey($data['subscription_id'])->lockForUpdate()->firstOrFail();
@@ -99,15 +99,6 @@ class ProMembershipController extends Controller
                         else app(RazorpayProSubscriptions::class)->cancel((string) $sub->provider_subscription_id);
                         $sub->update(['cancel_at_period_end' => true, 'cancelled_at' => now(), 'cancellation_source' => 'user']);
                     }
-                } else {
-                    abort_unless($sub->provider === 'razorpay', 422, 'Use Google Play to pause or resume this subscription.');
-                    abort_if($sub->cancel_at_period_end, 422, 'A cancellation is already scheduled.');
-                    abort_unless($sub->status === ($action === 'pause' ? 'active' : 'paused'), 422, 'The membership state does not allow this action.');
-                    $remote = app(RazorpayProSubscriptions::class)->changeState((string) $sub->provider_subscription_id, $action);
-                    $sub->update([
-                        'status' => $remote['status'],
-                        'current_period_ends_at' => ! empty($remote['current_end']) ? now()->setTimestamp((int) $remote['current_end']) : $sub->current_period_ends_at,
-                    ]);
                 }
                 $request->user()->update(['is_pro' => $request->user()->hasProAccess()]);
                 return $sub->fresh();
@@ -115,11 +106,7 @@ class ProMembershipController extends Controller
         } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $error) { throw $error;
         } catch (\Symfony\Component\HttpKernel\Exception\HttpExceptionInterface $error) { throw $error;
         } catch (Throwable $error) { return response()->json(['error' => $error->getMessage()], 503); }
-        return response()->json(['message' => match ($data['action']) {
-            'cancel' => 'Renewal cancellation confirmed. Any remaining paid or trial access keeps its existing end date.',
-            'pause' => 'Subscription paused. Pro access is suspended for this subscription. No automatic refund was requested.',
-            'resume' => 'Subscription resumed. Billing follows the payment provider’s schedule.',
-        }, 'subscription' => $this->subscriptionData($subscription)]);
+        return response()->json(['message' => 'Renewal cancellation confirmed. Any remaining paid or trial access keeps its existing end date.', 'subscription' => $this->subscriptionData($subscription)]);
     }
 
     public function startRazorpay(Request $request): JsonResponse
@@ -436,6 +423,7 @@ class ProMembershipController extends Controller
             'currency' => $subscription->currency,
             'started_at' => $subscription->started_at,
             'paid_at' => $subscription->paid_at,
+            ...$subscription->billingDates(),
             'trial_ends_at' => $subscription->trial_ends_at,
             'current_period_ends_at' => $subscription->current_period_ends_at,
             'cancelled_at' => $subscription->cancelled_at,

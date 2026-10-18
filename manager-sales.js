@@ -34,6 +34,12 @@
     </article>`).join('') : `<div class="notice empty">${deletionRequests.length ? 'No requests match this status.' : 'No account deletion requests have been submitted.'}</div>`;
   }
   const proWhen = value => value ? new Date(value).toLocaleString('en-IN', {day:'numeric',month:'short',year:'numeric',hour:'numeric',minute:'2-digit'}) : '—';
+  const initialsOf = name => {
+    if (!name) return '??';
+    const p = String(name).trim().split(/\s+/).filter(Boolean);
+    if (!p.length) return '??';
+    return (p.length === 1 ? p[0].slice(0, 2) : p[0][0] + p[p.length - 1][0]).toUpperCase();
+  };
   let proSearchTimer, proPage = 1, proLastPage = 1;
   async function loadProPlan() {
     try {
@@ -56,40 +62,138 @@
       $('previous-pro').disabled = proPage <= 1;
       $('next-pro').disabled = proPage >= proLastPage;
       const summary = result.summary || {};
-      $('pro-metrics').innerHTML = metric('Paid / active', summary.active || 0, 'Renewing memberships') + metric('Free trials', summary.trialing || 0, 'Trial access') + metric('Pending checkout', summary.pending || 0, 'Awaiting payment confirmation') + metric('Ended or revoked', Number(summary.cancelled || 0) + Number(summary.revoked || 0) + Number(summary.expired || 0), 'Historical records');
+      $('pro-metrics').innerHTML =
+        metric('Paid / active', summary.active || 0, 'Renewing Pro memberships', 'active') +
+        metric('Free trials', summary.trialing || 0, '7-day trial period', 'trial') +
+        metric('Pending checkout', summary.pending || 0, 'Awaiting payment confirmation', 'pending') +
+        metric('Ended or revoked', Number(summary.cancelled || 0) + Number(summary.revoked || 0) + Number(summary.expired || 0), 'Historical or revoked', 'revoked');
       target.innerHTML = result.data?.length ? result.data.map(row => {
         const active = ['active','trialing'].includes(row.status);
         const manual = row.provider === 'manual' || row.provider === 'manual legacy flag';
-        const historyAction = row.user?.id ? `<button data-pro-history="${esc(row.user.id)}">User history</button> ` : '';
+        const historyAction = row.user?.id ? `<button class="btn-sm" data-pro-history="${esc(row.user.id)}">User history</button> ` : '';
         const actions = historyAction + (manual
-          ? (active ? `<button class="danger" data-pro-action="revoke_access" data-pro-id="${esc(row.id)}">Revoke access</button>` : '—')
-          : `${['active','trialing','pending'].includes(row.status) && !row.cancel_at_period_end ? `<button data-pro-action="cancel_renewal" data-pro-id="${esc(row.id)}">${row.status === 'pending' ? 'Cancel checkout' : 'Cancel renewal'}</button>` : esc(row.cancel_at_period_end ? 'Renewal cancelled' : '—')} ${active ? `<button class="danger" data-pro-action="revoke_access" data-pro-id="${esc(row.id)}">Revoke now</button>` : ''}`);
+          ? (active ? `<button class="btn-sm danger" data-pro-action="revoke_access" data-pro-id="${esc(row.id)}">Revoke access</button>` : '—')
+          : `${['active','trialing','pending'].includes(row.status) && !row.cancel_at_period_end ? `<button class="btn-sm" data-pro-action="cancel_renewal" data-pro-id="${esc(row.id)}">${row.status === 'pending' ? 'Cancel checkout' : 'Cancel renewal'}</button>` : esc(row.cancel_at_period_end ? 'Renewal cancelled' : '—')} ${active ? `<button class="btn-sm danger" data-pro-action="revoke_access" data-pro-id="${esc(row.id)}">Revoke now</button>` : ''}`);
         const chargeDate = row.cancel_at_period_end ? 'Access until ' + proWhen(row.current_period_ends_at) : proWhen(row.current_period_ends_at);
-        return `<tr><td><strong>${esc(row.user?.name || 'Deleted account')}</strong><small>${esc(row.user?.email || '')} · #${esc(row.user?.id || '—')}</small></td><td><span class="state ${active?'paid':'unpaid'}">${esc(row.status)}</span>${row.cancelled_at?'<small>Action by '+esc(row.cancellation_source || 'provider')+'</small>':''}</td><td>${esc(row.provider)}<small>${esc(row.product_id || '')}</small>${row.provider_subscription_id?'<small class="mono">'+esc(row.provider_subscription_id)+'</small>':''}</td><td>${esc(money(row.amount_paise))}</td><td>${esc(proWhen(row.started_at || row.created_at))}</td><td>${esc(proWhen(row.trial_ends_at))}</td><td>${esc(proWhen(row.paid_at))}</td><td>${esc(chargeDate)}${row.checkout_url?'<small><a href="'+esc(row.checkout_url)+'" target="_blank" rel="noopener">Open pending checkout</a></small>':''}</td><td class="pro-actions">${actions}</td></tr>`;
+        const provLower = String(row.provider || '').toLowerCase();
+        const provCls = provLower.includes('google') ? 'prov-google' : (provLower.includes('razor') ? 'prov-razor' : 'prov-manual');
+        const statusCls = active ? 'paid' : (['pending','trialing'].includes(row.status) ? 'unpaid' : 'later');
+        return `<tr>
+          <td>
+            <div class="pro-user-cell">
+              <span class="avatar-initials">${esc(initialsOf(row.user?.name))}</span>
+              <div>
+                <strong>${esc(row.user?.name || 'Deleted account')}</strong>
+                <small>${esc(row.user?.email || '')} · #${esc(row.user?.id || '—')}</small>
+              </div>
+            </div>
+          </td>
+          <td><span class="state ${statusCls}"><span class="state-dot" aria-hidden="true"></span>${esc(row.status)}</span>${row.cancelled_at?'<small class="pro-cancel-note">Action by '+esc(row.cancellation_source || 'provider')+'</small>':''}</td>
+          <td><span class="pro-provider-badge ${provCls}">${esc(row.provider)}</span>${row.product_id?'<small class="pro-product-tag">'+esc(row.product_id)+'</small>':''}${row.provider_subscription_id?'<small class="mono pro-sub-id">'+esc(row.provider_subscription_id)+'</small>':''}</td>
+          <td class="font-mono"><strong>${esc(money(row.amount_paise))}</strong></td>
+          <td class="cell-date">${esc(proWhen(row.started_at || row.created_at))}</td>
+          <td class="cell-date">${esc(proWhen(row.trial_ends_at))}</td>
+          <td class="cell-date">${esc(proWhen(row.paid_at))}</td>
+          <td class="cell-date">${esc(chargeDate)}${row.checkout_url?'<small><a href="'+esc(row.checkout_url)+'" target="_blank" rel="noopener">Open pending checkout ↗</a></small>':''}</td>
+          <td class="pro-actions">${actions}</td>
+        </tr>`;
       }).join('') : '<tr><td colspan="9" class="empty-row">No subscription records match these filters.</td></tr>';
     } catch (error) { target.innerHTML = `<tr><td colspan="9" class="empty-row">${esc(error.message)}</td></tr>`; }
   }
   let transactionPage = 1, transactionLastPage = 1, transactionUser = '';
   async function loadTransactions() {
-    const target = $('pro-transactions'); target.textContent = 'Loading history…';
+    const target = $('pro-transactions');
+    target.innerHTML = '<div class="pro-loading-state">Loading transaction history…</div>';
     try {
       const query = new URLSearchParams({page:String(transactionPage),search:$('pro-transaction-search').value.trim(),user_id:transactionUser});
       const result = await api('/manager/pro/transactions?' + query), ledger = result.transactions || {};
       transactionLastPage = ledger.last_page || 1;
-      $('pro-history-user').textContent = result.user ? `${result.user.name} · ${result.user.email} · #${result.user.id}` : 'All users';
+
+      const banner = $('pro-history-banner');
+      const avatarEl = $('pro-history-avatar');
+      const nameEl = $('pro-history-name');
+      const badgeEl = $('pro-history-badge');
+      const userEl = $('pro-history-user');
+      const stripEl = $('pro-history-membership-strip');
+      const actionsEl = $('pro-spotlight-actions');
       const memberships = result.subscriptions || result.memberships || [];
-      target.innerHTML = (memberships.length ? '<h4>Membership history</h4>' + memberships.map(row => `<p>${esc(row.provider)} · ${esc(row.status)} · Access end ${esc(proWhen(row.current_period_ends_at))}${row.cancel_at_period_end?' · Renewal cancelled':''}</p>`).join('') : '') + `<p class="hint">${esc(result.history_note || '')}</p>` + ((ledger.data || []).length ? '<div class="table-wrap"><table><thead><tr><th>User</th><th>Transaction</th><th>Provider</th><th>Status</th><th>Amount</th><th>Date</th><th>Reference</th></tr></thead><tbody>' + ledger.data.map(row => {
-        const minor = row.amount_paise ?? row.amount_minor;
-        let amount = 'Unavailable'; if (minor != null) { try { amount = new Intl.NumberFormat(undefined,{style:'currency',currency:row.currency || 'INR'}).format(row.amount_major != null ? Number(row.amount_major) : Number(minor)/100); } catch (_) { amount = `${row.currency || ''} ${row.amount_major != null ? row.amount_major : Number(minor)/100}`; } }
-        return `<tr><td>${esc(row.user?.name)}<small>${esc(row.user?.email)}</small></td><td>${esc(row.title)}</td><td>${esc(row.provider)}</td><td>${esc(row.status)}</td><td>${esc(amount)}</td><td>${esc(proWhen(row.paid_at || row.created_at))}</td><td>${esc(row.reference || '—')}</td></tr>`;
-      }).join('') + '</tbody></table></div>' : '<p>No recorded transactions.</p>');
+
+      if (result.user) {
+        if (avatarEl) avatarEl.textContent = initialsOf(result.user.name);
+        if (nameEl) nameEl.textContent = result.user.name;
+        if (badgeEl) { badgeEl.textContent = 'Student #' + (result.user.id || '—'); badgeEl.className = 'pro-status-chip pro-chip-inspecting'; }
+        if (userEl) userEl.textContent = `${result.user.email} · Account #${result.user.id}`;
+        if (stripEl) {
+          stripEl.innerHTML = memberships.length
+            ? memberships.map(row => `<span class="pro-membership-pill"><span class="pro-pill-dot ${row.status === 'active' ? 'active' : ''}"></span><strong>${esc(row.provider)}</strong> · ${esc(row.status)} · Access end ${esc(proWhen(row.current_period_ends_at))}${row.cancel_at_period_end ? ' · (Renewal cancelled)' : ''}</span>`).join('')
+            : '<span class="pro-membership-pill muted">No active subscription membership</span>';
+        }
+        if (actionsEl) actionsEl.hidden = false;
+        if (banner) banner.classList.add('is-inspecting');
+      } else {
+        if (avatarEl) avatarEl.textContent = 'All';
+        if (nameEl) nameEl.textContent = 'All Students & Purchases';
+        if (badgeEl) { badgeEl.textContent = 'Global Ledger'; badgeEl.className = 'pro-status-chip'; }
+        if (userEl) userEl.textContent = 'Showing all transactions and paper receipts across students.';
+        if (stripEl) stripEl.innerHTML = '';
+        if (actionsEl) actionsEl.hidden = true;
+        if (banner) banner.classList.remove('is-inspecting');
+      }
+
+      const rows = ledger.data || [];
+      if (rows.length) {
+        target.innerHTML = '<div class="table-wrap pro-table-wrap"><table><thead><tr><th>Student</th><th>Item / Plan</th><th>Provider</th><th>Status</th><th class="num">Amount</th><th>Date</th><th>Reference ID</th></tr></thead><tbody>' + rows.map(row => {
+          const minor = row.amount_paise ?? row.amount_minor;
+          let amount = '—';
+          if (minor != null) {
+            try { amount = new Intl.NumberFormat(undefined,{style:'currency',currency:row.currency || 'INR'}).format(row.amount_major != null ? Number(row.amount_major) : Number(minor)/100); } catch (_) { amount = `${row.currency || ''} ${row.amount_major != null ? row.amount_major : Number(minor)/100}`; }
+          }
+          const isSuccess = ['paid','completed','active','successful'].includes(String(row.status).toLowerCase());
+          const statusCls = isSuccess ? 'paid' : (['pending','processing'].includes(String(row.status).toLowerCase()) ? 'unpaid' : 'later');
+          const provLower = String(row.provider || '').toLowerCase();
+          const provCls = provLower.includes('google') ? 'prov-google' : (provLower.includes('razor') ? 'prov-razor' : 'prov-manual');
+          return `<tr>
+            <td>
+              <div class="pro-user-cell">
+                <span class="avatar-initials">${esc(initialsOf(row.user?.name))}</span>
+                <div>
+                  <strong>${esc(row.user?.name || 'Unknown student')}</strong>
+                  <small>${esc(row.user?.email || '—')}</small>
+                </div>
+              </div>
+            </td>
+            <td><strong>${esc(row.title || 'Pro Subscription')}</strong></td>
+            <td><span class="pro-provider-badge ${provCls}">${esc(row.provider || '—')}</span></td>
+            <td><span class="state ${statusCls}">${esc(row.status || '—')}</span></td>
+            <td class="num font-mono"><strong>${esc(amount)}</strong></td>
+            <td class="cell-date">${esc(proWhen(row.paid_at || row.created_at))}</td>
+            <td><code class="pro-ref-code">${esc(row.reference || '—')}</code></td>
+          </tr>`;
+        }).join('') + '</tbody></table></div>';
+      } else {
+        target.innerHTML = `<div class="pro-empty-card">
+          <div class="pro-empty-icon">🧾</div>
+          <h4>No recorded transactions</h4>
+          <p class="hint">${esc(result.history_note || 'Paper orders and verified subscription receipts will appear here automatically when payments are processed.')}</p>
+        </div>`;
+      }
       $('pro-transactions-page').textContent = `Page ${transactionPage} of ${transactionLastPage} · ${ledger.total || 0} records`;
-      $('pro-transactions-prev').disabled = transactionPage <= 1; $('pro-transactions-next').disabled = transactionPage >= transactionLastPage;
-    } catch (error) { target.textContent = error.message; }
+      $('pro-transactions-prev').disabled = transactionPage <= 1;
+      $('pro-transactions-next').disabled = transactionPage >= transactionLastPage;
+    } catch (error) { target.innerHTML = `<div class="notice">${esc(error.message)}</div>`; }
   }
   $('pro-transaction-search-button').onclick = () => { transactionUser = ''; transactionPage = 1; loadTransactions(); };
   $('pro-transactions-prev').onclick = () => { if (transactionPage > 1) { transactionPage--; loadTransactions(); } };
   $('pro-transactions-next').onclick = () => { if (transactionPage < transactionLastPage) { transactionPage++; loadTransactions(); } };
+  const clearHistoryBtn = $('pro-clear-history');
+  if (clearHistoryBtn) {
+    clearHistoryBtn.onclick = () => {
+      transactionUser = '';
+      transactionPage = 1;
+      $('pro-transaction-search').value = '';
+      loadTransactions();
+    };
+  }
   $('pro-list').addEventListener('click', event => { const button = event.target.closest('[data-pro-history]'); if (!button) return; transactionUser = button.dataset.proHistory; transactionPage = 1; $('pro-transaction-search').value = ''; loadTransactions(); $('pro-transactions').scrollIntoView({behavior:'smooth',block:'center'}); });
   async function loadPro() { await Promise.all([loadProPlan(), loadProSubscriptions(), loadTransactions()]); }
   $('pro-plan-form').onsubmit = event => { event.preventDefault(); const f=event.currentTarget; busy(f.querySelector('button'),async()=>{const result=await api('/manager/pro/plan','PUT',{price_paise:Math.round(Number(value(f,'price'))*100),trial_days:Number(value(f,'trial_days')),enabled:value(f,'enabled')==='1'}); f.elements.price.value=(Number(result.price_paise)/100).toFixed(2); $('google-play-price-note').textContent=result.google_play_price_note; $('pro-plan-status').textContent=result.google_play_price_managed?'Web price and Google Play price for new India subscribers were updated. Existing Google Play price cohorts are unchanged.':'Web plan saved. '+result.google_play_price_note; toast('Plan updated.'); },$('pro-plan-status')); };
@@ -115,7 +219,11 @@
   const when = value => value ? new Date(value).toLocaleString('en-IN', {day:'numeric', month:'short', year:'numeric', hour:'numeric', minute:'2-digit'}) : '—';
   const STATES = {paid:['Paid','paid'], unpaid:['Not paid','unpaid'], paid_later:['Paid with a later order','later']};
   let orderStatus = '', searchTimer;
-  function metric(label, figure, note, tone) { return `<div class="panel metric${tone ? ' '+tone : ''}"><span>${esc(label)}</span><strong>${esc(figure)}</strong></div>`; }
+  function metric(label, figure, note, tone) {
+    const dot = tone === 'active' ? '<span class="metric-live-dot" aria-hidden="true"></span>' : '';
+    const noteHtml = note ? `<p class="hint metric-note">${esc(note)}</p>` : '';
+    return `<div class="panel metric${tone ? ' '+tone : ''}"><div class="metric-header"><span>${esc(label)}</span>${dot}</div><strong>${esc(figure)}</strong>${noteHtml}</div>`;
+  }
   async function loadSummary() {
     try {
       const data = await api('/manager/sales/summary'), t = data.totals || {};

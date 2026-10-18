@@ -45,9 +45,10 @@ class MembershipHistoryController extends Controller {
         return response()->json([
             'user' => $userId ? User::query()->find($userId, ['id','name','email']) : null,
             // Explicit allowlist excludes purchase tokens, hashes, checkout URLs and private provider metadata.
-            'subscriptions' => $subscriptions->latest('id')->limit(100)->get()->map(fn ($sub) => [
+            'subscriptions' => $subscriptions->latest('id')->when(! $userId, fn ($query) => $query->limit(100))->get()->map(fn ($sub) => [
                 'id' => $sub->id, 'provider' => $sub->provider, 'product_id' => $sub->product_id, 'status' => $sub->status,
                 'amount_paise' => $sub->amount_paise, 'currency' => $sub->currency, 'started_at' => $sub->started_at,
+                ...$sub->billingDates(),
                 'paid_at' => $sub->paid_at, 'trial_ends_at' => $sub->trial_ends_at, 'current_period_ends_at' => $sub->current_period_ends_at,
                 'cancel_at_period_end' => $sub->cancel_at_period_end, 'cancelled_at' => $sub->cancelled_at,
                 'cancellation_source' => $sub->cancellation_source, 'created_at' => $sub->created_at, 'user' => $sub->user,

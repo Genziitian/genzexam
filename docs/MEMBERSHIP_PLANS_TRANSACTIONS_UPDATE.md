@@ -117,3 +117,34 @@ For Razorpay, additionally enable subscription.paused and subscription.resumed o
 Provider references: https://developer.android.com/google/play/billing/subscriptions and https://github.com/razorpay/razorpay-php/blob/master/documents/subscription.md .
 
 Checks: Dart files parsed/formatted and JavaScript syntax passed. Added backend regression cases for ownership, provider failure preserving access, and confirmed pause/resume. Backend tests, device interaction and real provider mutations were not run. A PHP syntax-check attempt could not start because the available WASM runtime tries to bind a local port that this sandbox disallows. No production cancellation, pause or charge was performed.
+
+
+## Final management policy — pause controls removed
+
+This section supersedes the earlier pause/resume implementation notes. Quiz LAB now exposes cancellation only through /membership/manage; pause and resume requests are rejected. Removed native/web buttons and Razorpay changeState method. Provider-originated paused/resumed notifications are still processed so account state stays accurate; Google Play may expose its own options. To disable Google's pause option entirely, change the subscription pause setting in Play Console; source changes alone cannot change that setting.
+
+Management now displays subscription start, first recorded payment from verified nonzero receipts, other recorded payment dates, next expected charge for a renewing paid-provider subscription, and cancellation/access end. Older receipt history is not backfilled, so the first recorded payment is not falsely labelled the original purchase date. Missing provider dates remain unconfirmed, and complimentary access never gets a next-charge date.
+
+Updated Terms & Conditions, Privacy Policy, Refund & Cancellation Policy, account deletion notices and bundled mobile legal text on 18 October 2026. Website and backend/public policy copies describe Razorpay website checkout, Google Play Android checkout, monthly/yearly recurring billing, trial eligibility and conversion, provider cancellation, refund channels, shared account benefits, billing records and deletion not cancelling billing. Removed obsolete website-only payment and blanket no-cancellation wording for subscriptions.
+
+Only source/static checks were performed. New cancellation authorization and failure-handling regression cases are supplied but unrun. The Google Play item-not-found screenshot remains unresolved: package/product IDs match local configuration, but the installed build's Play account, license-testing eligibility, test-track access and offer availability still need validation. Do not interpret policy/source updates as proof of a completed purchase.
+
+
+## Upload screen follow-up — process guide and account states
+
+The latest layout starts with a compact How it works guide: Upload → Convert → Take test, followed by allowance, a single upload action when available, papers and collapsed rules. This supersedes the earlier papers-first layout.
+
+Free with allowance: show the remaining free upload, Use free upload, and “5 uploads with Pro · Get Pro” (using the configured Pro limit). Free with no allowance: hide upload actions, show the live server reset countdown and the same Pro link. Pro with allowance: show X of 5 uploads and Upload paper, with no Pro upsell. Pro without allowance: hide upload actions and show the next-slot countdown, keeping existing papers usable. The empty paper list never presents another first-upload button.
+
+Both surfaces use /student/uploaded-papers quota, which counts successful test creation by account regardless of web/app origin. Merely opening or claiming the upload action consumes nothing. Refresh on app/browser return and every 30 seconds while visible keeps the other platform's uploads reflected. Explicit refresh also updates immediately. Server-side account locking rechecks allowance at final test creation, so an outdated client display cannot bypass the shared limit. In-flight background responses are prevented from overwriting post-upload state.
+
+Checks for this follow-up: edited Dart parsed/formatted; web JavaScript syntax and whitespace checks passed. Device rendering, live cross-device timing, and upload conversion were not run.
+
+
+## Compact checkout footer and upload wording
+
+The mobile paywall footer places the charge/trial text on the left and a compact checkout button on the right. Terms remain below as a small linked line. Reduced footer padding and scroll clearance retain the device safe area without the old large banner. Button labels, prices, trial eligibility and disabled/busy handling are unchanged.
+
+A free account with allowance now sees Claim 1 free upload on its single primary action; the repeated availability heading is removed. The separate compact Pro row says 5 uploads every 7 days with Pro and uses a filled gold Get Pro button (numbers use server quota). Used Free and exhausted Pro states keep their countdowns; Pro accounts keep remaining-slot counts and no upsell. Upload rules remain after papers, with a left-aligned See all / See less toggle below the heading. Web upload wording and states match.
+
+Dart formatting/parsing, JavaScript syntax and whitespace checks passed for this change. No app/device UI session or build was run.

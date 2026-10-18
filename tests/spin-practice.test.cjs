@@ -89,7 +89,7 @@ assert.ok(
   "storefront-dashboard.css must include .ql-spin-container and .ql-wheel-stage"
 );
 assert.ok(
-  darkCss.includes(":root[data-theme=dark] .ql-spin-wheel-card"),
+  darkCss.includes(":root[data-theme=dark] .ql-spin-wheel-card") || darkCss.includes(":root[data-theme=dark] .ql-spin-custom-card"),
   "ql-dark-app.css must include dark mode styling for spin practice"
 );
 

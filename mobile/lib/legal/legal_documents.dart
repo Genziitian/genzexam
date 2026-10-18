@@ -4,7 +4,7 @@ abstract final class LegalDocuments {
   static const String terms = '''
 Terms & Conditions
 QUIZ LAB by GenZ IITian
-Last updated: October 9, 2026
+Last updated: October 18, 2026
 
 01 Service Description
 GenZ IITian provides access to digital educational services designed for students. QUIZ LAB by GenZ IITian is part of GenZ IITian. Our services are delivered online and may include courses, papers, quizzes, practice tools, video solutions, discussions, and progress features. Access to paid materials is granted after successful payment confirmation. The applicable GenZ IITian service rules and content-use rules also apply to QUIZ LAB, subject to these Terms and applicable law.
@@ -15,8 +15,18 @@ Some Services require an account. Users may sign in through Google or another si
 03 Course Access & Usage
 Access to purchased materials is associated with the account and email address used during the purchase. Course access is non-transferable and intended for personal learning use. Sharing account credentials or course content with third parties is prohibited.
 
-04 Payment Terms
-All prices are displayed before checkout. By completing a purchase, you agree to the price and terms shown for that item. Website payments are processed through Razorpay. Payment is currently available on the website only. We plan to offer Razorpay payments in the mobile app in the future; in-app payment is not currently available. Razorpay processes payment details, while QUIZ LAB receives the order and payment status needed to grant access and provide support. Refund eligibility is governed by the purchase terms shown at checkout and applicable law. For payment errors or access issues, contact us using the details below.
+04 Payment & Subscription Terms
+Website purchases and Pro subscriptions use Razorpay. Android Pro subscriptions, when offered, use Google Play Billing. Prices, currency, billing period and any eligible trial are shown before checkout. Android prices and trial eligibility come from Google Play; website pricing is shown in the website checkout. A subscription is optional; free features remain available without subscribing.
+
+Monthly and yearly Pro plans provide the benefits shown on the plan screen. Plans automatically renew at the selected billing interval until renewal is cancelled or the provider's subscription term ends. A yearly charge covers a full year and is not a monthly payment. The current charge and renewal price are those confirmed by the payment provider.
+
+An eligible monthly plan may offer a 7-day free trial. The yearly plan has no free trial unless a different offer is expressly shown. Trial eligibility is limited by prior Quiz LAB trial use and the provider's rules. Trial access begins after the required provider authorisation and backend confirmation. Unless renewal is cancelled before the trial ends, the subscription changes to a paid plan at the price and frequency shown. The provider confirms the exact first charge date and time. An authorisation hold or payment may be required; review the provider's checkout instructions.
+
+Use Membership & transactions to view subscription start, recorded payment dates, provider, transaction history and next expected charge when confirmed. Cancel renewal there or use Manage in Google Play for a Play purchase. Cancelling renewal stops future renewal charges once confirmed and normally keeps access through the existing trial or paid period; it does not automatically refund an existing charge. We do not offer a pause or resume control within Quiz LAB. Any separate provider options remain subject to that provider's terms and availability. After access ends, you may subscribe again to an available plan; a previously used trial is not reset.
+
+Pro access is linked to the same Quiz LAB account across the app and website, after provider verification. Use the same account to access your benefits. Current upload allowances are 1 successful upload for Free and 5 for Pro in a rolling 7-day window, shared across app and website; failed conversions do not consume a completed-upload slot. Other feature limits and availability are shown in the service. Uninstalling the app or submitting an account deletion request does not itself cancel a subscription. Cancel renewal before requesting deletion if you do not want further charges.
+
+Refund eligibility, duplicate payment resolution and provider-specific refund routes are described in the Refund & Cancellation Policy. Applicable consumer rights and payment-provider requirements continue to apply. By continuing with checkout, you agree to these Terms and the offer and renewal terms displayed by the payment provider.
 
 05 Prohibited Use & Copyright
 Content on the Services, including videos, documents, questions, and code samples, is owned by or licensed to GenZ IITian and QUIZ LAB. You may not pirate, copy, redistribute, or commercially use the content without permission. We may suspend access for violations, subject to applicable law and our terms.
@@ -30,7 +40,7 @@ Questions about these Terms? Call +91 72549 26179 or email admin@genziitian.org 
   static const String privacy = '''
 Privacy Policy
 QUIZ LAB by GenZ IITian
-Last updated: October 8, 2026
+Last updated: October 18, 2026
 
 This Privacy Notice for QUIZ LAB by GenZ IITian ("QUIZ LAB," "we," "us," or "our") explains how and why we access, collect, store, use, and share personal information when you use our Services, including our website at https://quiz.genziitian.in/ and our mobile application. QUIZ LAB is part of GenZ IITian. The applicable GenZ IITian rules, terms, and content-use rules also apply to QUIZ LAB, subject to this Notice and applicable law. Questions or concerns? Contact admin@genziitian.org or genziitian@gmail.com.
 
@@ -39,7 +49,7 @@ Summary of Key Points
 • We also process information needed to run the learning service, including course access, quiz attempts, answers, scores, XP, badges, account activity, and support or deletion requests.
 • We use Google Sign-In and Google Analytics. We do not use Supabase or PostHog.
 • If you upload a PDF to create a test, its extracted text is processed by DeepSeek AI. We delete the temporary source PDF after processing and keep the generated test in your account.
-• Website payments are processed through Razorpay. Payments are currently available on the website; in-app Razorpay payments are planned, but are not currently offered.
+• Website payments use Razorpay. Android Pro purchases, when offered, use Google Play Billing. We process the account-linked payment and subscription records needed to verify access, renewals and cancellation.
 
 01 What Information Do We Collect?
 Personal information you provide: We collect information you provide when you register, sign in, use account features, contact support, or use paid features. This can include your name and email address, and a phone number if you choose or are asked to provide it for an account, support, or purchase feature. If you sign in with Google, Google may provide the account name, email address, and profile photo associated with the Google account you choose. You may also add or change your profile photo.
@@ -52,12 +62,12 @@ Information automatically collected: Our systems may collect service, diagnostic
 
 Uploaded paper information: If you upload a PDF to create a personal test, we extract its selectable text and send that text to DeepSeek AI to structure questions into quiz data. The original PDF is stored temporarily on our server while it is processed and deleted after processing. The generated questions and test are saved to your account so you can use them in My Papers. If you upload a JSON file, we process it to create the test without sending it to the AI service. Scanned image PDFs are not supported yet. Only upload papers you have permission to use.
 
-Payment information: Website checkout is provided through Razorpay. Razorpay processes payment instrument details. QUIZ LAB receives transaction and order information needed to confirm payment, provide access to the purchased item, prevent fraud, and provide support, such as order or payment IDs, product, amount, currency, and payment status. We do not store card numbers, UPI PINs, or banking passwords on our servers. Payments are currently available on the website only. We plan to offer Razorpay payments in the app in the future; if that feature is introduced, we will update this Notice as needed before or when it becomes available.
+Payment information: Website payments use Razorpay and Android Pro subscriptions, when offered, use Google Play Billing. These providers process payment instrument details. QUIZ LAB processes account-linked order, payment and subscription references, Google Play purchase tokens, product and plan information, amount, currency, payment and subscription status, trial and billing dates, and cancellation or refund information needed to verify purchases, deliver access, synchronise renewals, display Membership & transactions, prevent fraud and provide support. Signed payment-provider notifications update subscription records. Purchase tokens are handled on the backend and are not shown in user transaction history. We do not store full card numbers, UPI PINs or banking passwords on our servers.
 
 Google API data: Our use of information received from Google APIs follows the Google API Services User Data Policy, including its Limited Use requirements.
 
 02 How Do We Process Your Information?
-We process information as needed to provide and operate the Services, communicate with you, protect accounts, and meet legal obligations. This includes creating and authenticating accounts; providing course, quiz, paper, video, discussion, and learning features; recording attempts and calculating scores, progress, XP, levels, badges, and rankings; processing uploaded paper text to create personal tests; processing website purchases through Razorpay and confirming orders; responding to support questions and deletion requests; maintaining security, troubleshooting errors, preventing fraud or abuse, understanding usage trends through Google Analytics, improving the Services, and complying with legal obligations.
+We process information as needed to provide and operate the Services, communicate with you, protect accounts, and meet legal obligations. This includes creating and authenticating accounts; providing course, quiz, paper, video, discussion, and learning features; recording attempts and calculating scores, progress, XP, levels, badges, and rankings; processing uploaded paper text to create personal tests; processing Razorpay website purchases and Google Play subscriptions, verifying renewals and cancellations, and maintaining transaction history; responding to support questions and deletion requests; maintaining security, troubleshooting errors, preventing fraud or abuse, understanding usage trends through Google Analytics, improving the Services, and complying with legal obligations.
 
 03 When and With Whom Do We Share Your Personal Information?
 We may share information with service providers that help operate the Services and need access to perform their work. These include Google Sign-In and Google APIs for authentication and associated profile information; Google Analytics for website and app usage measurement and reporting; DeepSeek AI, which receives extracted text from a PDF only when you choose to create a test from an uploaded PDF; Razorpay for website payment processing and transaction confirmation; and our application hosting and infrastructure providers to store and deliver account, learning, and service data. We do not use Supabase or PostHog.
@@ -92,7 +102,7 @@ Content on the Services, including videos, documents, questions, and code sample
 QUIZ LAB is an educational service. We work to keep the Services useful and available, but do not guarantee specific academic results or career outcomes. To the extent permitted by law, we are not responsible for issues caused by a user's internet connection, device, or misuse of the Services. Nothing in this Notice limits rights that cannot legally be limited.
 
 13 Return & Refund Policy
-QUIZ LAB provides digital educational services and no physical product, shipment, or delivery. Purchases are generally final after access is granted, except for a verified duplicate payment or where applicable law requires otherwise. Orders generally cannot be cancelled after a successful payment. For the full policy and duplicate payment resolution, see Refund & Cancellation in More. For help, call +91 72549 26179 or email admin@genziitian.org.
+One-time purchases, recurring subscription cancellation, trial charges and refund requests follow the Refund & Cancellation Policy, provider rules and applicable law. Cancelling renewal is different from requesting a refund.
 
 14 Do We Make Updates to This Notice?
 Yes. We may update this Notice when our practices or legal requirements change. The revised date at the top shows when it was last updated. If we make a material change, we may post a notice in the Services or send a notification. We encourage you to review this Notice periodically.
@@ -107,27 +117,25 @@ You can review or update account details through account settings available to y
   static const String refunds = '''
 Refund & Cancellation
 QUIZ LAB by GenZ IITian
-Last updated: October 8, 2026
+Last updated: October 18, 2026
 
-At QUIZ LAB by GenZ IITian, we aim to provide high-quality educational content and resources to our students. Because our products are digital and delivered instantly, we maintain a clear refund and cancellation policy. QUIZ LAB is part of GenZ IITian, and applicable GenZ IITian rules and terms also apply, subject to applicable law.
+QUIZ LAB by GenZ IITian provides digital educational services. This policy distinguishes one-time digital purchases from recurring Pro subscriptions and applies alongside the checkout terms, payment-provider rules and applicable law.
 
-01 No Refund Policy
-All purchases are final. We do not offer refunds once a course is purchased, except for a verified duplicate payment or where applicable law requires otherwise.
-Our products are digital educational courses and access is granted after payment confirmation. Once course material is accessed, the digital service is considered delivered. This does not affect your rights under applicable law or the duplicate payment resolution below.
+01 One-time digital purchases
+Course and paper purchases are one-time purchases unless the checkout explicitly describes a subscription. After successful payment and delivery of digital access, these purchases are generally final, except for verified duplicate payments, applicable consumer rights, or an approved refund under the relevant provider rules. Contact support promptly if payment succeeded but access was not delivered.
 
-02 No Cancellation Policy
-Orders cannot be cancelled once placed, except where applicable law requires otherwise.
-Due to the automated nature of enrollment, once a payment is successful, the order is processed and access may be linked to your account. Please review the item and price before confirming your purchase. If a payment or order has a technical issue, contact us promptly so we can investigate.
+02 Cancel a recurring Pro subscription
+Monthly and yearly Pro subscriptions renew according to the billing terms shown at checkout. You can cancel future renewal from Membership & transactions or, for a Google Play purchase, through Manage in Google Play. Once provider cancellation is confirmed, ordinary cancellation preserves access through the current trial or paid period and stops the next renewal. Cancellation is not an automatic refund of an amount already charged. Quiz LAB does not provide an in-service pause or resume control; any separate provider options are governed by that provider.
 
-03 Reason for this Policy
-We provide access to proprietary educational content, downloadable resources, and curriculum-specific study materials. Since these materials are made available digitally after purchase, access may not be reversible once the content has been viewed.
+03 Free trial and first charge
+Where an eligible monthly 7-day trial is offered, cancel renewal before the trial ends to avoid the subsequent subscription charge. Google Play or Razorpay confirms the exact billing date and time at checkout. Yearly plans have no free trial unless the checkout expressly says otherwise. Eligibility depends on your Quiz LAB trial history and provider rules; subscribing again does not reset a used trial. An authorisation hold or payment may be required by the provider.
 
-04 Duplicate Payment Resolution
-If a technical issue leads to a duplicate payment for the same course or item, contact our support team immediately. After we verify the duplicate transaction, we will initiate a refund for the duplicate payment through the original payment method. Refund processing may take 5–7 business days, depending on the payment gateway and your bank.
+04 Refund requests and duplicate payments
+For Google Play purchases, request a refund through Google Play or contact support with the order reference. Google Play rules and applicable law determine eligibility and processing. For website purchases, contact QUIZ LAB support with your account email and Razorpay payment or order reference. We investigate missing access and duplicate charges; an approved refund is processed through the original payment provider and method. Timing depends on the provider and bank. Do not send card numbers, UPI PINs, banking passwords or private credentials. A manager-issued revocation or approved refund can end access according to the provider outcome; it is distinct from ordinary renewal cancellation. Nothing in this policy excludes rights that cannot legally be excluded.
 
-Need help? Choose either contact option and include the email address used for the purchase, the item name, and your payment/order reference. Do not send your card number, UPI PIN, or banking password.
-Call: +91 72549 26179
-Email: admin@genziitian.org
-You can also email genziitian@gmail.com.
+05 Subscription records and account deletion
+Membership & transactions displays subscription start, recorded payments, next expected charge when available, cancellation status and access end dates. Payment-provider records determine the confirmed charge and cancellation outcome; older payments may not appear in the local history. Uninstalling the app or submitting an account deletion request does not itself cancel recurring billing. Cancel renewal before requesting deletion if you do not want further charges. Once access ends, you may subscribe again at the then-current price.
+
+Support: +91 72549 26179 · admin@genziitian.org · genziitian@gmail.com.
 ''';
 }

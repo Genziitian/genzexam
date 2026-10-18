@@ -83,32 +83,34 @@ class ProMembershipParityTest extends TestCase
         $owner = User::query()->create(['name'=>'Other','email'=>'other@example.test','is_pro'=>false]);
         $sub = $this->grant('razorpay', 'active');
         $sub->update(['user_id'=>$owner->id]);
-        $this->postJson('/public/api/membership/manage', ['subscription_id'=>$sub->id,'action'=>'pause'])->assertNotFound();
-        $this->assertSame('active', $sub->fresh()->status);
+        $this->postJson('/public/api/membership/manage', ['subscription_id'=>$sub->id,'action'=>'cancel'])->assertNotFound();
+        $this->assertFalse($sub->fresh()->cancel_at_period_end);
     }
 
-    public function test_pause_requires_provider_confirmation_before_changing_access(): void
+    public function test_failed_provider_cancellation_preserves_access_and_renewal_state(): void
     {
         $sub = $this->grant('razorpay', 'active');
         $this->mock(\App\Services\RazorpayProSubscriptions::class, function ($mock) {
-            $mock->shouldReceive('changeState')->once()->with('fixture-razorpay', 'pause')->andThrow(new \RuntimeException('Provider unavailable.'));
+            $mock->shouldReceive('cancel')->once()->with('fixture-razorpay')->andThrow(new \RuntimeException('Provider unavailable.'));
         });
-        $this->postJson('/public/api/membership/manage', ['subscription_id'=>$sub->id,'action'=>'pause'])->assertStatus(503);
-        $this->assertSame('active', $sub->fresh()->status);
+        $this->postJson('/public/api/membership/manage', ['subscription_id'=>$sub->id,'action'=>'cancel'])->assertStatus(503);
+        $this->assertFalse($sub->fresh()->cancel_at_period_end);
         $this->assertTrue($this->student->fresh()->hasProAccess());
     }
 
-    public function test_confirmed_razorpay_pause_and_resume_update_access(): void
+    public function test_confirmed_cancellation_keeps_access_and_removes_next_charge(): void
     {
         $sub = $this->grant('razorpay', 'active');
+        $this->assertNotNull($sub->billingDates()['next_charge_at']);
         $this->mock(\App\Services\RazorpayProSubscriptions::class, function ($mock) {
-            $mock->shouldReceive('changeState')->once()->with('fixture-razorpay', 'pause')->andReturn(['status'=>'paused']);
-            $mock->shouldReceive('changeState')->once()->with('fixture-razorpay', 'resume')->andReturn(['status'=>'active','current_end'=>now()->addDay()->timestamp]);
+            $mock->shouldReceive('cancel')->once()->with('fixture-razorpay')->andReturn(['status'=>'active']);
         });
-        $this->postJson('/public/api/membership/manage', ['subscription_id'=>$sub->id,'action'=>'pause'])->assertOk();
-        $this->assertFalse($this->student->fresh()->hasProAccess());
-        $this->postJson('/public/api/membership/manage', ['subscription_id'=>$sub->id,'action'=>'resume'])->assertOk();
+        $this->postJson('/public/api/membership/manage', ['subscription_id'=>$sub->id,'action'=>'cancel'])->assertOk();
+        $this->assertTrue($sub->fresh()->cancel_at_period_end);
+        $this->assertNull($sub->fresh()->billingDates()['next_charge_at']);
         $this->assertTrue($this->student->fresh()->hasProAccess());
+        $this->postJson('/public/api/membership/manage', ['subscription_id'=>$sub->id,'action'=>'pause'])->assertUnprocessable();
+        $this->postJson('/public/api/membership/manage', ['subscription_id'=>$sub->id,'action'=>'resume'])->assertUnprocessable();
     }
 
     public function test_paid_play_billing_does_not_require_a_trial_offer(): void

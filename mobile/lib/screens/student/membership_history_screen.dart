@@ -115,19 +115,12 @@ class _MembershipHistoryScreenState extends State<MembershipHistoryScreen>
   }
 
   Future<void> _manage(Map row, String action) async {
-    final details = switch (action) {
-      'pause' => 'Pause this Razorpay subscription now? Its Pro access will be suspended. No automatic refund is issued.',
-      'resume' => 'Resume this subscription? Recurring billing restarts according to Razorpay’s schedule and may involve a charge.',
-      _ => 'Stop future renewals? Your existing paid or trial access keeps its end date. This does not issue a refund.',
-    };
+    const details =
+        'Stop future renewals? Your existing paid or trial access keeps its end date. This does not issue a refund.';
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (c) => AlertDialog(
-        title: Text(
-          action == 'cancel'
-              ? 'Cancel renewal?'
-              : '${action == 'pause' ? 'Pause' : 'Resume'} subscription?',
-        ),
+        title: const Text('Cancel renewal?'),
         content: Text(details),
         actions: [
           TextButton(
@@ -209,7 +202,38 @@ class _MembershipHistoryScreenState extends State<MembershipHistoryScreen>
               style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 16),
             ),
             const SizedBox(height: 8),
-            Text('Started: ${_date(row['started_at'] ?? row['created_at'])}'),
+            Text(
+              '${status == 'pending' ? 'Checkout started' : 'Subscription started'}: ${_date(row['started_at'] ?? row['created_at'])}',
+            ),
+            if (row['first_payment_recorded_at'] != null)
+              Text(
+                'First recorded payment: ${_date(row['first_payment_recorded_at'])}',
+                style: const TextStyle(fontWeight: FontWeight.w700),
+              )
+            else if (row['paid_at'] != null)
+              Text('Payment recorded: ${_date(row['paid_at'])}')
+            else if (status == 'pending')
+              const Text('Purchase not yet confirmed.'),
+            if (!google && !razorpay)
+              const Text('Complimentary access — no recurring charge.')
+            else if (row['next_charge_at'] != null)
+              Text(
+                'Next expected charge: ${_date(row['next_charge_at'])}',
+                style: const TextStyle(
+                  fontWeight: FontWeight.w700,
+                  color: Brand.green,
+                ),
+              )
+            else if ([
+                  'cancelled',
+                  'expired',
+                  'revoked',
+                  'paused',
+                ].contains(status) ||
+                row['cancel_at_period_end'] == true)
+              const Text('No next charge is currently scheduled in Quiz LAB.')
+            else
+              const Text('Next charge date: awaiting provider confirmation.'),
             if (row['trial_ends_at'] != null)
               Text('Trial ends: ${_date(row['trial_ends_at'])}'),
             if (row['current_period_ends_at'] != null)
@@ -228,7 +252,7 @@ class _MembershipHistoryScreenState extends State<MembershipHistoryScreen>
                 label: const Text('Manage in Google Play'),
               ),
               const Text(
-                'Cancellation, pause, resume and resubscribe options depend on the subscription and Google Play eligibility.',
+                'Manage renewal, payment methods and eligible resubscription options with Google Play.',
                 style: TextStyle(fontSize: 12, color: Brand.muted),
               ),
             ],
@@ -239,16 +263,6 @@ class _MembershipHistoryScreenState extends State<MembershipHistoryScreen>
                   TextButton(
                     onPressed: _busy ? null : () => _manage(row, 'cancel'),
                     child: const Text('Cancel renewal'),
-                  ),
-                if (razorpay && renewing && status == 'active')
-                  TextButton(
-                    onPressed: _busy ? null : () => _manage(row, 'pause'),
-                    child: const Text('Pause subscription'),
-                  ),
-                if (razorpay && renewing && status == 'paused')
-                  FilledButton(
-                    onPressed: _busy ? null : () => _manage(row, 'resume'),
-                    child: const Text('Resume subscription'),
                   ),
               ],
             ),
@@ -269,7 +283,6 @@ class _MembershipHistoryScreenState extends State<MembershipHistoryScreen>
     final hasPaused = subscriptions.whereType<Map>().any(
       (row) => row['status'] == 'paused',
     );
-    final user = _data['user'] is Map ? _data['user'] as Map : {};
     return DefaultTabController(
       length: 2,
       child: Scaffold(
@@ -292,122 +305,132 @@ class _MembershipHistoryScreenState extends State<MembershipHistoryScreen>
                 children: [
                   RefreshIndicator(
                     onRefresh: _load,
-                    child: ListView(
-                      physics: const AlwaysScrollableScrollPhysics(),
-                      padding: const EdgeInsets.all(16),
-                      children: [
-                        Text(
-                          _membership['is_pro'] == true
-                              ? 'Pro access active'
-                              : hasPaused
-                              ? 'Subscription paused'
-                              : 'No active Pro access',
-                          style: Theme.of(context).textTheme.headlineSmall,
-                        ),
-                        Text('${user['name'] ?? ''}\n${user['email'] ?? ''}'),
-                        const SizedBox(height: 16),
-                        if (_membership['is_pro'] != true &&
-                            !hasPaused &&
-                            widget.onViewPlans != null)
-                          FilledButton(
-                            onPressed: _busy
-                                ? null
-                                : () async {
-                                    await widget.onViewPlans!();
-                                    await _load();
-                                  },
-                            child: Text(
-                              subscriptions.isEmpty
-                                  ? 'View monthly & yearly plans'
-                                  : 'Subscribe again',
+                    child: _membership['is_pro'] != true && !hasPaused
+                        ? Center(
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 24,
+                                vertical: 48,
+                              ),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  const Text(
+                                    'No membership',
+                                    style: TextStyle(
+                                      color: Brand.muted,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                  const SizedBox(height: 16),
+                                  if (widget.onViewPlans != null)
+                                    FilledButton(
+                                      onPressed: _busy
+                                          ? null
+                                          : () async {
+                                              await widget.onViewPlans!();
+                                              await _load();
+                                            },
+                                      child: const Text('Get membership'),
+                                    ),
+                                ],
+                              ),
                             ),
+                          )
+                        : ListView(
+                            physics: const AlwaysScrollableScrollPhysics(),
+                            padding: const EdgeInsets.all(16),
+                            children: [
+                              Text(
+                                _membership['is_pro'] == true
+                                    ? 'Pro access active'
+                                    : 'Subscription paused',
+                                style: Theme.of(context).textTheme.titleLarge
+                                    ?.copyWith(
+                                      fontWeight: FontWeight.bold,
+                                      color: _membership['is_pro'] == true
+                                          ? Brand.green
+                                          : null,
+                                    ),
+                              ),
+                              const SizedBox(height: 12),
+                              ...subscriptions.whereType<Map>().map(_subscription),
+                            ],
                           ),
-                        if (widget.onRestore != null)
-                          TextButton(
-                            onPressed: _busy
-                                ? null
-                                : () async {
-                                    await widget.onRestore!();
-                                    await _load();
-                                  },
-                            child: const Text('Restore Google Play purchases'),
-                          ),
-                        if (subscriptions.isEmpty)
-                          const Padding(
-                            padding: EdgeInsets.all(16),
-                            child: Text('No membership history yet.'),
-                          ),
-                        ...subscriptions.whereType<Map>().map(_subscription),
-                        TextButton(
-                          onPressed: _load,
-                          child: const Text('Refresh membership'),
-                        ),
-                      ],
-                    ),
                   ),
                   RefreshIndicator(
                     onRefresh: _load,
-                    child: ListView(
-                      physics: const AlwaysScrollableScrollPhysics(),
-                      padding: const EdgeInsets.all(16),
-                      children: [
-                        Text(
-                          'Your transactions',
-                          style: Theme.of(context).textTheme.titleLarge,
-                        ),
-                        if (_data['history_note'] != null)
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 12),
-                            child: Text(
-                              '${_data['history_note']}',
-                              style: const TextStyle(
-                                fontSize: 12,
-                                color: Brand.muted,
+                    child: rows.isEmpty
+                        ? const Center(
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(
+                                horizontal: 24,
+                                vertical: 48,
+                              ),
+                              child: Text(
+                                'No transactions',
+                                style: TextStyle(
+                                  color: Brand.muted,
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w500,
+                                ),
                               ),
                             ),
+                          )
+                        : ListView(
+                            physics: const AlwaysScrollableScrollPhysics(),
+                            padding: const EdgeInsets.all(16),
+                            children: [
+                              ...rows.whereType<Map>().map(
+                                (row) => Card(
+                                  child: ListTile(
+                                    title: Text(
+                                      '${row['title'] ?? 'Payment'} · ${_amount(row)}',
+                                      style: const TextStyle(
+                                        fontWeight: FontWeight.w700,
+                                      ),
+                                    ),
+                                    subtitle: Text(
+                                      '${row['provider'] ?? ''} · ${row['status'] ?? ''}\n${_date(row['paid_at'] ?? row['created_at'])}\nReference: ${row['reference'] ?? '—'}',
+                                    ),
+                                    isThreeLine: true,
+                                  ),
+                                ),
+                              ),
+                              if ((ledger['last_page'] as int? ?? 1) > 1)
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    TextButton(
+                                      onPressed: _page > 1
+                                          ? () {
+                                              _page--;
+                                              _load();
+                                            }
+                                          : null,
+                                      child: const Text('Previous'),
+                                    ),
+                                    Text(
+                                      'Page $_page of ${ledger['last_page']}',
+                                    ),
+                                    TextButton(
+                                      onPressed:
+                                          _page <
+                                                  (ledger['last_page'] as int? ??
+                                                      1)
+                                              ? () {
+                                                  _page++;
+                                                  _load();
+                                                }
+                                              : null,
+                                      child: const Text('Next'),
+                                    ),
+                                  ],
+                                ),
+                            ],
                           ),
-                        if (rows.isEmpty)
-                          const Text('No recorded transactions.'),
-                        ...rows.whereType<Map>().map(
-                          (row) => Card(
-                            child: ListTile(
-                              title: Text(
-                                '${row['title'] ?? 'Payment'} · ${_amount(row)}',
-                              ),
-                              subtitle: Text(
-                                '${row['provider'] ?? ''} · ${row['status'] ?? ''}\n${_date(row['paid_at'] ?? row['created_at'])}\nReference: ${row['reference'] ?? '—'}',
-                              ),
-                              isThreeLine: true,
-                            ),
-                          ),
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            TextButton(
-                              onPressed: _page > 1
-                                  ? () {
-                                      _page--;
-                                      _load();
-                                    }
-                                  : null,
-                              child: const Text('Previous'),
-                            ),
-                            Text('Page $_page of ${ledger['last_page'] ?? 1}'),
-                            TextButton(
-                              onPressed:
-                                  _page < (ledger['last_page'] as int? ?? 1)
-                                  ? () {
-                                      _page++;
-                                      _load();
-                                    }
-                                  : null,
-                              child: const Text('Next'),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
                   ),
                 ],
               ),

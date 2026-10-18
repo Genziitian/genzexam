@@ -26,32 +26,70 @@ class UploadedPapersScreen extends StatefulWidget {
   State<UploadedPapersScreen> createState() => _UploadedPapersScreenState();
 }
 
-class _UploadedPapersScreenState extends State<UploadedPapersScreen> {
+class _UploadedPapersScreenState extends State<UploadedPapersScreen>
+    with WidgetsBindingObserver {
   late final UploadedPapersService _service;
   late Future<UploadedPapersData> _papers;
   bool _uploading = false;
   UploadedPaper? _justMade;
   bool _rulesVisible = true;
+  Timer? _refreshTimer;
+  bool _refreshing = false;
+  int _dataVersion = 0;
 
   @override
   void initState() {
     super.initState();
     _service = UploadedPapersService(client: widget.apiClient);
     _papers = _service.list();
+    WidgetsBinding.instance.addObserver(this);
+    _refreshTimer = Timer.periodic(
+      const Duration(seconds: 30),
+      (_) => _refreshVisible(),
+    );
   }
 
   @override
   void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    _refreshTimer?.cancel();
     super.dispose();
   }
 
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed) _refreshVisible();
+  }
+
+  Future<void> _refreshVisible() async {
+    if (!mounted ||
+        _uploading ||
+        _refreshing ||
+        ModalRoute.of(context)?.isCurrent != true ||
+        WidgetsBinding.instance.lifecycleState != AppLifecycleState.resumed)
+      return;
+    _refreshing = true;
+    final version = _dataVersion;
+    try {
+      final data = await _service.list();
+      if (mounted && !_uploading && version == _dataVersion)
+        setState(() => _papers = Future.value(data));
+    } catch (_) {
+      /* Keep the last successful screen; explicit refresh reports errors. */
+    } finally {
+      _refreshing = false;
+    }
+  }
+
   Future<void> _reload() async {
+    _dataVersion++;
     setState(() => _papers = _service.list());
     await _papers;
   }
 
   Future<void> _pickAndUpload() async {
     if (_uploading) return;
+    _dataVersion++;
     setState(() => _rulesVisible = false);
     final files = await FilePicker.pickFiles(
       type: FileType.custom,
@@ -61,6 +99,7 @@ class _UploadedPapersScreenState extends State<UploadedPapersScreen> {
     setState(() => _rulesVisible = true);
     if (files.isEmpty) return;
     setState(() {
+      _dataVersion++;
       _uploading = true;
       _justMade = null;
     });
@@ -123,7 +162,7 @@ class _UploadedPapersScreenState extends State<UploadedPapersScreen> {
     appBar: AppBar(
       backgroundColor: Brand.deep,
       foregroundColor: Colors.white,
-      title: const Text('Your uploaded papers'),
+      title: const Text('Upload a paper'),
     ),
     body: FutureBuilder<UploadedPapersData>(
       future: _papers,
@@ -141,6 +180,7 @@ class _UploadedPapersScreenState extends State<UploadedPapersScreen> {
           papers.insert(0, _justMade!);
         }
         final quota = snapshot.data?.quota;
+        final freeRemaining = quota?.remaining ?? 0;
         final canUpload =
             !snapshot.hasError && quota != null && quota.remaining > 0;
         return RefreshIndicator(
@@ -150,26 +190,35 @@ class _UploadedPapersScreenState extends State<UploadedPapersScreen> {
             physics: const AlwaysScrollableScrollPhysics(),
             padding: const EdgeInsets.all(16),
             children: [
+              const _UploadGuide(),
+              const SizedBox(height: 12),
+              if (canUpload && quota?.isPro != true) ...[
+                FilledButton.icon(
+                  onPressed: !_uploading ? _pickAndUpload : null,
+                  icon: const Icon(Icons.upload_file_rounded),
+                  label: Text(
+                    'Claim $freeRemaining free upload${freeRemaining == 1 ? '' : 's'}',
+                  ),
+                ),
+                const SizedBox(height: 12),
+              ],
               _QuotaCard(quota: quota, onGetPro: _goPro, onReset: _reload),
-              const SizedBox(height: 16),
-              Row(
-                children: [
-                  Expanded(
-                    child: Text(
-                      'Your papers (${papers.length})',
-                      style: const TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w800,
-                        color: _ink,
-                      ),
-                    ),
-                  ),
-                  FilledButton.icon(
-                    onPressed: canUpload && !_uploading ? _pickAndUpload : null,
-                    icon: const Icon(Icons.add_rounded, size: 18),
-                    label: const Text('Upload paper'),
-                  ),
-                ],
+              if (canUpload && quota?.isPro == true) ...[
+                const SizedBox(height: 12),
+                FilledButton.icon(
+                  onPressed: !_uploading ? _pickAndUpload : null,
+                  icon: const Icon(Icons.upload_file_rounded),
+                  label: const Text('Upload paper'),
+                ),
+              ],
+              const SizedBox(height: 22),
+              Text(
+                'Your papers (${papers.length})',
+                style: const TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w800,
+                  color: _ink,
+                ),
               ),
               const SizedBox(height: 12),
               if (_uploading)
@@ -221,14 +270,13 @@ class _UploadedPapersScreenState extends State<UploadedPapersScreen> {
                         ),
                       ),
                       const SizedBox(height: 8),
-                      const Text(
-                        'Turn a PDF or JSON into a practice test.',
+                      Text(
+                        canUpload
+                            ? 'Use the upload button above to turn a PDF or JSON into a test.'
+                            : quota == null
+                            ? 'Upload allowance could not be loaded. Pull down to retry.'
+                            : 'Your next upload countdown is shown above. Existing tests remain available here.',
                         textAlign: TextAlign.center,
-                      ),
-                      const SizedBox(height: 16),
-                      FilledButton(
-                        onPressed: canUpload ? _pickAndUpload : null,
-                        child: const Text('Upload your first paper'),
                       ),
                     ],
                   ),
@@ -242,6 +290,64 @@ class _UploadedPapersScreenState extends State<UploadedPapersScreen> {
           ),
         );
       },
+    ),
+  );
+}
+
+class _UploadGuide extends StatelessWidget {
+  const _UploadGuide();
+  @override
+  Widget build(BuildContext context) => Container(
+    padding: const EdgeInsets.all(16),
+    decoration: BoxDecoration(
+      color: Colors.white,
+      borderRadius: BorderRadius.circular(20),
+    ),
+    child: const Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'How it works',
+          style: TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.w800,
+            color: _ink,
+          ),
+        ),
+        SizedBox(height: 14),
+        Row(
+          children: [
+            _GuideStep(icon: Icons.upload_file_rounded, label: 'Upload'),
+            Icon(Icons.arrow_forward_rounded, size: 18, color: Brand.green),
+            _GuideStep(icon: Icons.auto_awesome_rounded, label: 'Convert'),
+            Icon(Icons.arrow_forward_rounded, size: 18, color: Brand.green),
+            _GuideStep(
+              icon: Icons.play_circle_fill_rounded,
+              label: 'Take test',
+            ),
+          ],
+        ),
+      ],
+    ),
+  );
+}
+
+class _GuideStep extends StatelessWidget {
+  const _GuideStep({required this.icon, required this.label});
+  final IconData icon;
+  final String label;
+  @override
+  Widget build(BuildContext context) => Expanded(
+    child: Column(
+      children: [
+        Icon(icon, color: Brand.green, size: 30),
+        const SizedBox(height: 6),
+        Text(
+          label,
+          textAlign: TextAlign.center,
+          style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 12),
+        ),
+      ],
     ),
   );
 }
@@ -302,35 +408,66 @@ class _QuotaCardState extends State<_QuotaCard> {
   Widget build(BuildContext context) {
     final q = widget.quota;
     if (q == null) return const SizedBox.shrink();
-    final text = q.remaining > 0
-        ? (q.isPro
-              ? '${q.remaining} of ${q.limit} uploads available'
-              : '${q.remaining} free upload available')
-        : (q.resetsAt != null
-              ? 'Next ${q.isPro ? 'upload' : 'free upload'}: ${_remaining(q.resetsAt!)}'
-              : 'Upload allowance used');
+    final available = q.remaining > 0;
+    final headline = q.isPro
+        ? '${q.remaining} of ${q.limit} Pro uploads available'
+        : available
+        ? '${q.remaining} free upload available'
+        : 'Free upload used';
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(14),
+        borderRadius: BorderRadius.circular(18),
       ),
-      child: Row(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Expanded(
-            child: Text(
-              text,
-              style: const TextStyle(color: Brand.muted, fontSize: 13),
-            ),
-          ),
-          if (!q.isPro)
-            TextButton(
-              onPressed: widget.onGetPro,
-              child: Text(
-                q.remaining > 0
-                    ? 'Get ${q.proLimit} · Pro'
-                    : 'Get Pro to upload',
+          if (q.isPro || !available)
+            Text(
+              headline,
+              style: const TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.w700,
+                color: _ink,
               ),
+            ),
+          if (!available)
+            Padding(
+              padding: const EdgeInsets.only(top: 6),
+              child: Text(
+                q.resetsAt != null
+                    ? 'Next ${q.isPro ? 'upload' : 'free upload'} in ${_remaining(q.resetsAt!)}'
+                    : 'Refresh to check your next upload.',
+                style: const TextStyle(color: Brand.muted, fontSize: 13),
+              ),
+            ),
+          if (!q.isPro)
+            Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    '${q.proLimit} uploads every ${q.windowDays} days with Pro',
+                    style: const TextStyle(color: Brand.muted, fontSize: 13),
+                  ),
+                ),
+                const SizedBox(width: 12),
+                FilledButton(
+                  style: FilledButton.styleFrom(
+                    backgroundColor: Brand.gold,
+                    foregroundColor: Brand.deep,
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16,
+                      vertical: 10,
+                    ),
+                  ),
+                  onPressed: widget.onGetPro,
+                  child: const Text(
+                    'Get Pro',
+                    style: TextStyle(fontWeight: FontWeight.w800),
+                  ),
+                ),
+              ],
             ),
         ],
       ),
@@ -425,16 +562,24 @@ class _RulesState extends State<_Rules> with WidgetsBindingObserver {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          TextButton.icon(
-            onPressed: _toggle,
-            icon: Icon(_expanded ? Icons.expand_less : Icons.expand_more),
-            label: Text(
-              _expanded ? 'Upload rules · See less' : 'Upload rules · See all',
-              style: TextStyle(
-                fontSize: 17,
-                fontWeight: FontWeight.w800,
-                color: _ink,
+          const Text(
+            'Upload rules',
+            style: TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.w800,
+              color: _ink,
+            ),
+          ),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: TextButton.icon(
+              onPressed: _toggle,
+              style: TextButton.styleFrom(
+                padding: EdgeInsets.zero,
+                alignment: Alignment.centerLeft,
               ),
+              icon: Icon(_expanded ? Icons.expand_less : Icons.expand_more),
+              label: Text(_expanded ? 'See less' : 'See all'),
             ),
           ),
           if (_expanded) const SizedBox(height: 12),
