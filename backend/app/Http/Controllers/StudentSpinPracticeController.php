@@ -17,6 +17,8 @@ class StudentSpinPracticeController extends Controller
 {
     public function quota(Request $request): JsonResponse
     {
+        Quiz::purgeExpiredSpinPapers();
+
         return response()->json(['quota' => $this->dailyQuota($request->user())]);
     }
 
@@ -42,6 +44,7 @@ class StudentSpinPracticeController extends Controller
     {
         $user = $request->user();
         abort_unless($user, 401, 'Please sign in to create a practice paper.');
+        Quiz::purgeExpiredSpinPapers();
 
         $validated = $request->validate([
             'course_id' => ['required', 'integer', 'exists:courses,id'],

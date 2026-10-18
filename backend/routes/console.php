@@ -9,3 +9,4 @@ Artisan::command('inspire', function () {
 })->purpose('Display an inspiring quote')->hourly();
 
 Schedule::command('proctored-exams:finalize-expired')->everyMinute()->withoutOverlapping();
+Schedule::call(fn () => \App\Models\Quiz::purgeExpiredSpinPapers())->daily();

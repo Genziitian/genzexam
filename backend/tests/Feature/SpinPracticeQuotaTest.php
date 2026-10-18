@@ -165,4 +165,12 @@ class SpinPracticeQuotaTest extends TestCase
         $this->getJson('/public/api/student/spin-practice/quota')->assertJsonPath('quota.used', 0);
     }
 
+    public function test_spin_papers_auto_delete_after_thirty_days(): void
+    {
+        $paperId = $this->spin();
+        $this->assertDatabaseHas('quizzes', ['id' => $paperId]);
+        $this->travel(31)->days();
+        Quiz::purgeExpiredSpinPapers();
+        $this->assertDatabaseMissing('quizzes', ['id' => $paperId]);
+    }
 }

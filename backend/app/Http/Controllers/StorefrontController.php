@@ -60,9 +60,13 @@ class StorefrontController extends Controller
             ->get(['id', 'quiz_id', 'started_at', 'submitted_at', 'score', 'total_marks', 'is_complete'])
             ->groupBy('quiz_id');
 
+        Quiz::purgeExpiredSpinPapers();
+
         $personalIds = Quiz::withoutGlobalScope('exclude_personal_uploads')
             ->where('is_personal', true)
             ->where('owner_user_id', $user->id)
+            ->where(fn ($q) => $q->fileUploads()
+                ->orWhere('created_at', '>=', now()->subDays(Quiz::SPIN_PRACTICE_RETENTION_DAYS)))
             ->pluck('id');
 
         $quizzes = Quiz::withoutGlobalScope('exclude_personal_uploads')

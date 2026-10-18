@@ -33,6 +33,18 @@ class Quiz extends Model
     // This server-owned prefix also identifies spin papers created before the
     // upload counter distinguished file uploads from free practice generation.
     public const SPIN_PRACTICE_PREFIX = 'Unified practice paper generated from Spin Wheel (';
+    public const SPIN_PRACTICE_RETENTION_DAYS = 30;
+
+    public static function purgeExpiredSpinPapers(): int
+    {
+        $cutoff = now()->subDays(self::SPIN_PRACTICE_RETENTION_DAYS);
+
+        return (int) static::withoutGlobalScope('exclude_personal_uploads')
+            ->where('is_personal', true)
+            ->where('description', 'like', self::SPIN_PRACTICE_PREFIX.'%')
+            ->where('created_at', '<', $cutoff)
+            ->delete();
+    }
 
     public function scopeFileUploads(Builder $query): Builder
     {

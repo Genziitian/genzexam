@@ -1309,7 +1309,6 @@
             '<div class="ql-up-step-icon" style="background:#fffbeb;color:#d97706">✦</div>' +
             '<div class="ql-up-step-info">' +
               '<strong>Convert</strong>' +
-              '<span>DeepSeek AI structures questions</span>' +
             '</div>' +
           '</div>' +
           '<div class="ql-up-step-arrow">→</div>' +
@@ -1455,6 +1454,7 @@
         newUpload.disabled = true;
         quotaHeadline.textContent = "Upload allowance unavailable";
         quotaSub.textContent = "Please refresh to retry.";
+        quotaSub.style.display = "";
         proBanner.style.display = "none";
         syncButton();
         return;
@@ -1465,6 +1465,7 @@
         : "Upload allowance used";
 
       if (!allowed && q.resets_at) {
+        quotaSub.style.display = "";
         var refreshed = false;
         function tick() {
           quotaSub.textContent = "Next " + (q.is_pro ? "upload " : "free upload ") + inTime(q.resets_at);
@@ -1477,7 +1478,8 @@
         tick();
         if (!refreshed) uploadQuotaTimer = setInterval(tick, 1000);
       } else {
-        quotaSub.textContent = q.is_pro ? "Resets every 7 days (rolling window)" : "1 upload every 7 days · Upgrade to Pro for 5 uploads";
+        quotaSub.textContent = q.is_pro ? "Resets every 7 days (rolling window)" : "";
+        quotaSub.style.display = q.is_pro ? "" : "none";
       }
 
       newUpload.style.display = allowed ? "inline-flex" : "none";
