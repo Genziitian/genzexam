@@ -69,3 +69,31 @@ This confirms that the native screen-loading failure was caused by Hostinger CDN
 The dashboard still showed zero websites opted out of automatic CDN. Expand its opt-out control and select only the API hostname if it should stay disabled, or arrange an API-specific exception with Hostinger before re-enabling CDN.
 
 Recovery confirms successful screen data loading. A real PDF conversion, persisted uploaded paper and generated practice-paper attempt remain separate end-to-end checks. The conversion-service timeout patch in the ZIP is still not deployed.
+
+## CDN re-enabled: fresh edge verification at 14:59 IST
+
+The owner re-enabled CDN and relayed a Hostinger AI report that WAF, browser challenge and CAPTCHA were disabled. Those internal configuration claims have not been independently verified. The current published security-level documentation does not map numeric level 3 to a named setting.
+
+At 14:59 IST, both authoritative nameservers returned A records `147.79.69.43` and `88.222.243.94` with TTL 60. Some recursive/system lookups still returned the previous direct address `46.28.45.140`. The direct address returned JSON 401 from LiteSpeed for an unauthenticated courses request. That expected response does not validate the newly enabled CDN route.
+
+Read-only GET requests to both freshly published addresses, preserving the hostname, normal TLS verification and identical JSON/mobile headers, returned HTML 403 from `server: hcdn`:
+
+| IST time | Published destination | x-hcdn-request-id |
+| --- | --- | --- |
+| 14:59:27 | 147.79.69.43 | 96bfc7b8efe9ab5f7ed5d5cc74d62b06-mum-edge9 |
+| 14:59:27 | 88.222.243.94 | d61b4200cf3acd38173a1d975e6514af-mum-edge7 |
+| 14:59:54 | 147.79.69.43 | 06bc3e57517164f71b77d2085fb103de-mum-edge9 |
+
+Endpoint: `GET https://labapi.genziitian.in/public/api/courses`. The last response's HTML title was `Checking your browser before accessing. Just a moment...`. No login credentials were used, no challenge was executed, and no hosting settings were changed. The destination overrides were diagnostic only; do not hardcode these IPs in the app.
+
+This establishes that browser verification was still served on currently published CDN routes after the owner's re-enable. It does not identify the triggering rule or prove that a recent control-plane change has propagated to every edge. Fresh authenticated app validation through CDN remains pending.
+
+Hostinger's official documentation explains that “Essentially off” can still challenge worst-reputation IPs, and that automatic attack protection can also trigger verification. Its DNS documentation describes cached routing during enable/disable transitions. Neither CORS changes nor application cache-control headers disable an edge JavaScript challenge.
+
+The existing API hostname is already separate from the frontend; moving to a new hostname or database is not required by the evidence. Preferred outcome: a verified challenge-free CDN configuration for this API while retaining applicable protection. If Hostinger cannot supply that configuration, alternatives are independent CDN settings for the existing API website or a separately reviewed API-compatible edge provider. Keep frontend/static-asset CDN benefits in either case.
+
+Additional official references:
+
+- https://www.hostinger.com/support/10695636-hostinger-cdn-security-levels/
+- https://www.hostinger.com/support/hostinger-cdn-and-your-dns-records/
+- https://www.hostinger.com/support/how-hostinger-cdn-caching-works/

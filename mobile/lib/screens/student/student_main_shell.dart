@@ -412,6 +412,7 @@ class _StudentMainShellState extends State<StudentMainShell> {
                           onOpenDiscussions: _openDiscussions,
                           onOpenUploadedPapers: _openUploadedPapers,
                           onOpenSpinPractice: _openSpinPractice,
+                          onOpenDailyRewards: _openDailyRewards,
                         ),
                       ),
                       _tabSlot(
@@ -1789,6 +1790,7 @@ class _HomeTab extends StatefulWidget {
   final VoidCallback onOpenDiscussions;
   final VoidCallback onOpenUploadedPapers;
   final VoidCallback onOpenSpinPractice;
+  final VoidCallback onOpenDailyRewards;
 
   const _HomeTab({
     required this.dashboardService,
@@ -1801,6 +1803,7 @@ class _HomeTab extends StatefulWidget {
     required this.onOpenDiscussions,
     required this.onOpenUploadedPapers,
     required this.onOpenSpinPractice,
+    required this.onOpenDailyRewards,
   });
 
   @override
@@ -2005,52 +2008,46 @@ class _HomeTabState extends State<_HomeTab>
                         ],
                       ),
                     ),
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 10,
-                        vertical: 5,
-                      ),
-                      decoration: BoxDecoration(
-                        color: const Color(0xFFFFEDD5),
-                        borderRadius: BorderRadius.circular(20),
-                        border: Border.all(color: const Color(0xFFFED7AA)),
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          AnimatedBuilder(
-                            animation: _ambient,
-                            builder: (context, child) {
-                              final a = _ambient.value * 2 * math.pi;
-                              final flicker =
-                                  1 +
-                                  0.10 * math.sin(a * 5) +
-                                  0.06 * math.sin(a * 9);
-                              return Transform.rotate(
-                                angle: 0.10 * math.sin(a * 3),
-                                child: Transform.scale(
-                                  scale: flicker,
-                                  alignment: Alignment.bottomCenter,
-                                  child: child,
+                    Semantics(
+                      button: true,
+                      label: 'Spin & Win daily rewards',
+                      child: GestureDetector(
+                        behavior: HitTestBehavior.opaque,
+                        onTap: () {
+                          AppHaptics.selection();
+                          widget.onOpenDailyRewards();
+                        },
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 11,
+                            vertical: 6,
+                          ),
+                          decoration: BoxDecoration(
+                            color: const Color(0xFFEEF2FF),
+                            borderRadius: BorderRadius.circular(20),
+                            border: Border.all(color: const Color(0xFFC7D2FE)),
+                          ),
+                          child: const Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Icon(
+                                Icons.casino_outlined,
+                                color: Color(0xFF4F46E5),
+                                size: 16,
+                              ),
+                              SizedBox(width: 5),
+                              Text(
+                                'Spin & Win',
+                                style: TextStyle(
+                                  color: Color(0xFF4F46E5),
+                                  fontWeight: FontWeight.w800,
+                                  fontSize: 12,
+                                  letterSpacing: -0.2,
                                 ),
-                              );
-                            },
-                            child: const Icon(
-                              Icons.local_fire_department_rounded,
-                              color: Color(0xFFF59E0B),
-                              size: 15,
-                            ),
+                              ),
+                            ],
                           ),
-                          const SizedBox(width: 4),
-                          Text(
-                            '${data.streak.days}-day streak',
-                            style: const TextStyle(
-                              color: Color(0xFFB45309),
-                              fontWeight: FontWeight.w700,
-                              fontSize: 12,
-                            ),
-                          ),
-                        ],
+                        ),
                       ),
                     ),
                     const SizedBox(width: 8),

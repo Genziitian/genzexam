@@ -2926,11 +2926,9 @@
   }
 
   /* ---------------------------------------------------------------
-   * Phone top bar: the level chip is gone and the streak pill sits in
-   * its place. The pill is read from the dashboard and remembered, so
-   * the other pages show it too.
+   * Phone top bar: the level chip is gone and the Spin & Win button
+   * sits in its place, linking directly to /rewards.
    * ------------------------------------------------------------- */
-  var topStreak = null;
   function syncPhoneTopBar() {
     var header = document.querySelector("header.lg\\:hidden");
     if (!header) return;
@@ -2939,26 +2937,28 @@
       if (/^LVL\s*\d+$/.test(chip.textContent.trim())) tag(chip, "data-ql-lvl", "");
     });
 
-    if (/^\/dashboard\/?$/i.test(window.location.pathname)) {
-      document.querySelectorAll("#root div.rounded-full").forEach(function (pill) {
-        if (pill.closest("header") || !/^\d+-day streak$/.test(pill.textContent.trim())) return;
-        tag(pill, "data-ql-streak-src", "");
-        topStreak = { text: pill.textContent.trim(), html: pill.innerHTML };
-      });
-    }
+    var oldStreak = header.querySelector(".ql-top-streak");
+    if (oldStreak) oldStreak.remove();
 
-    var slot = header.querySelector(".ql-top-streak");
-    if (!topStreak) return;
+    var slot = header.querySelector(".ql-top-spin-btn");
     if (!slot) {
       var lvl = header.querySelector("[data-ql-lvl]");
       if (!lvl || !lvl.parentNode) return;
-      slot = document.createElement("span");
-      slot.className = "ql-top-streak";
+      slot = document.createElement("a");
+      slot.className = "ql-top-spin-btn";
+      slot.href = "/rewards";
+      slot.setAttribute("role", "button");
+      slot.setAttribute("aria-label", "Spin & Win Daily Rewards");
+      slot.innerHTML =
+        '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24"/><path d="m14.83 9.17 4.24-4.24"/><path d="m14.83 14.83 4.24 4.24"/><path d="m9.17 14.83-4.24 4.24"/><circle cx="12" cy="12" r="3"/></svg>' +
+        '<span>Spin &amp; Win</span>';
+      slot.addEventListener("click", function (e) {
+        e.preventDefault();
+        var nav = document.querySelector('nav a[href*="rewards"], nav button[data-ql-rewards]');
+        if (nav) nav.click();
+        else location.assign("/rewards");
+      });
       lvl.parentNode.insertBefore(slot, lvl);
-    }
-    if (slot.getAttribute("data-text") !== topStreak.text) {
-      slot.setAttribute("data-text", topStreak.text);
-      slot.innerHTML = topStreak.html;
     }
   }
 
