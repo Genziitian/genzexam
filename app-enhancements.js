@@ -745,6 +745,12 @@
           if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
           var href = link.getAttribute("href");
           if (!href) return;
+          var targetNav = document.querySelector('nav a[href="' + href + '"]');
+          if (targetNav) {
+            e.preventDefault();
+            targetNav.click();
+            return;
+          }
           e.preventDefault();
           window.location.assign(href);
         });
@@ -1398,22 +1404,31 @@
         host.innerHTML = "";
       }
       var existingUpload = document.querySelector(".ql-upload-page-container");
-      if (existingUpload) existingUpload.remove();
+      if (existingUpload && (!host || !host.contains(existingUpload))) {
+        existingUpload.remove();
+      }
       clearInterval(uploadQuotaTimer);
       clearInterval(uploadSyncTimer);
       return;
     }
+
+    var staleRewards = document.getElementById("ql-rewards-page") || document.querySelector(".ql-rewards-page");
+    if (staleRewards && staleRewards !== host) staleRewards.remove();
+    var stalePractice = document.getElementById("ql-try-practice") || document.querySelector(".ql-spin-container");
+    if (stalePractice && stalePractice !== host) stalePractice.remove();
+
     if (!host) {
-      var main = document.querySelector("#root main");
-      if (main && !main.querySelector(".ql-upload-page-container")) {
+      var outlet = document.querySelector("#root main .page-enter, #root main");
+      if (outlet && !outlet.querySelector("#ql-upload-paper-page")) {
         host = document.createElement("div");
         host.id = "ql-upload-paper-page";
-        main.replaceChildren(host);
+        outlet.appendChild(host);
       }
     }
     if (!host || host.dataset.qlLoaded) return;
     var runtime = window.QLStorefront;
-    if (!runtime || !runtime.token()) return;
+    var tok = runtime && runtime.token ? runtime.token() : (localStorage.getItem("lab_token") || "");
+    if (!tok) return;
     host.dataset.qlLoaded = "1";
     document.title = "Upload a paper · Quiz LAB";
 
@@ -1922,27 +1937,42 @@
   function fillTryPractice() {
     var onTry = /^\/(try-practice|spin-practice)(\/|$)/i.test(window.location.pathname);
     var bottomNav = document.querySelector("#root > div > div.fixed.bottom-0, #root div.fixed.inset-x-0.bottom-0");
+    var host = document.getElementById("ql-try-practice");
     if (!onTry) {
       if (document.body.classList.contains("ql-page-try-practice")) {
         document.body.classList.remove("ql-page-try-practice");
         if (bottomNav) bottomNav.style.removeProperty("display");
       }
+      if (host) {
+        host.dataset.qlLoaded = "";
+        host.innerHTML = "";
+      }
+      var existingSpin = document.querySelector(".ql-spin-container");
+      if (existingSpin && (!host || !host.contains(existingSpin))) {
+        existingSpin.remove();
+      }
       return;
     }
     document.body.classList.add("ql-page-try-practice");
     if (bottomNav) bottomNav.style.setProperty("display", "none", "important");
-    var host = document.getElementById("ql-try-practice");
-    if (!host && onTry) {
-      var main = document.querySelector("#root main");
-      if (main && !main.querySelector(".ql-spin-container")) {
+
+    var staleRewards = document.getElementById("ql-rewards-page") || document.querySelector(".ql-rewards-page");
+    if (staleRewards && staleRewards !== host) staleRewards.remove();
+    var staleUpload = document.getElementById("ql-upload-paper-page") || document.querySelector(".ql-upload-page-container");
+    if (staleUpload && staleUpload !== host) staleUpload.remove();
+
+    if (!host) {
+      var outlet = document.querySelector("#root main .page-enter, #root main");
+      if (outlet && !outlet.querySelector("#ql-try-practice")) {
         host = document.createElement("div");
         host.id = "ql-try-practice";
-        main.replaceChildren(host);
+        outlet.appendChild(host);
       }
     }
     if (!host || host.dataset.qlLoaded) return;
     var runtime = window.QLStorefront;
-    if (!runtime || !runtime.token()) return;
+    var tok = runtime && runtime.token ? runtime.token() : (localStorage.getItem("lab_token") || "");
+    if (!tok) return;
     host.dataset.qlLoaded = "1";
     document.title = "Test yourself · Quiz LAB";
     host.innerHTML = [
@@ -4199,12 +4229,29 @@
   function fillRewardsPage() {
     var onRewards = /^\/(rewards|spin-rewards|daily-rewards)(\/|$)/i.test(window.location.pathname);
     var host = document.getElementById("ql-rewards-page");
-    if (!host && onRewards) {
-      var main = document.querySelector("#root main");
-      if (main && !main.querySelector(".ql-rewards-page")) {
+    if (!onRewards) {
+      if (host) {
+        host.dataset.qlLoaded = "";
+        host.innerHTML = "";
+      }
+      var existingRew = document.querySelector(".ql-rewards-page");
+      if (existingRew && (!host || !host.contains(existingRew))) {
+        existingRew.remove();
+      }
+      return;
+    }
+
+    var stalePractice = document.getElementById("ql-try-practice") || document.querySelector(".ql-spin-container");
+    if (stalePractice && stalePractice !== host) stalePractice.remove();
+    var staleUpload = document.getElementById("ql-upload-paper-page") || document.querySelector(".ql-upload-page-container");
+    if (staleUpload && staleUpload !== host) staleUpload.remove();
+
+    if (!host) {
+      var outlet = document.querySelector("#root main .page-enter, #root main");
+      if (outlet && !outlet.querySelector("#ql-rewards-page")) {
         host = document.createElement("div");
         host.id = "ql-rewards-page";
-        main.replaceChildren(host);
+        outlet.appendChild(host);
       }
     }
     if (!host || host.dataset.qlLoaded) return;
@@ -4799,42 +4846,14 @@
 
   new MutationObserver(schedule).observe(document.documentElement, { childList: true, subtree: true });
   new MutationObserver(schedule).observe(document.body, { attributes: true, attributeFilter: ["data-ep-verified-role"] });
-  window.addEventListener("popstate", function () {
-    var p = window.location.pathname;
-    if (!/^\/(upload-paper|upload)(\/|$)/i.test(p)) {
-      var uc = document.querySelector(".ql-upload-page-container");
-      if (uc) {
-        uc.remove();
-        window.location.reload();
-        return;
-      }
-    }
-    if (!/^\/(try-practice|spin-practice)(\/|$)/i.test(p)) {
-      var sc = document.querySelector(".ql-spin-container");
-      if (sc) {
-        sc.remove();
-        window.location.reload();
-        return;
-      }
-    }
-    schedule();
-  });
+  window.addEventListener("popstate", schedule);
   window.addEventListener("resize", schedule);
 
   var lastPath = window.location.pathname;
   setInterval(function () {
     if (window.location.pathname !== lastPath) {
-      var prev = lastPath;
       lastPath = window.location.pathname;
-      if (/^\/(upload-paper|upload|try-practice|spin-practice)(\/|$)/i.test(prev) &&
-          !/^\/(upload-paper|upload|try-practice|spin-practice)(\/|$)/i.test(lastPath)) {
-        var uc = document.querySelector(".ql-upload-page-container, .ql-spin-container");
-        if (uc) {
-          window.location.reload();
-          return;
-        }
-      }
       schedule();
     }
-  }, 500);
+  }, 200);
 })();
