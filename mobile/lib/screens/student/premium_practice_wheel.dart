@@ -191,6 +191,31 @@ class _WheelPainter extends CustomPainter {
           ..strokeWidth = 0.7,
       );
       final angle = start + math.pi / 10;
+      final label = TextPainter(
+        text: TextSpan(
+          text: '${i + 1}'.padLeft(2, '0'),
+          style: const TextStyle(
+            color: Color(0xFFDBEFDF),
+            fontSize: 11,
+            fontWeight: FontWeight.w700,
+          ),
+        ),
+        textDirection: TextDirection.ltr,
+      )..layout();
+      canvas.save();
+      canvas.translate(center.dx, center.dy);
+      canvas.rotate(angle);
+      canvas.translate(radius - 55, 0);
+      canvas.rotate(math.pi / 2);
+      label.paint(canvas, Offset(-label.width / 2, -label.height / 2));
+      canvas.drawRect(
+        const Rect.fromLTWH(-5, 11, 10, 12),
+        Paint()
+          ..style = PaintingStyle.stroke
+          ..strokeWidth = .8
+          ..color = const Color(0x99DBEFDF),
+      );
+      canvas.restore();
       canvas.drawCircle(
         center + Offset(math.cos(angle), math.sin(angle)) * (radius - 34),
         2,
@@ -198,6 +223,33 @@ class _WheelPainter extends CustomPainter {
       );
     }
     canvas.restore();
+    for (var i = 0; i < 3; i++) {
+      final angle = i * math.pi * 2 / 3 + turns.value * math.pi * .5;
+      final position =
+          center + Offset(math.cos(angle), math.sin(angle)) * (radius - 10);
+      final pulse =
+          .4 + .6 * ((math.sin(turns.value * math.pi * 4 + i) + 1) / 2);
+      canvas.drawCircle(
+        position,
+        8,
+        Paint()
+          ..color = const Color(0xFFFFE5A6).withValues(alpha: pulse * .3)
+          ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 5),
+      );
+      final flare = Paint()
+        ..color = const Color(0xFFFFEDBA).withValues(alpha: pulse)
+        ..strokeWidth = 1.5;
+      canvas.drawLine(
+        position - const Offset(4, 0),
+        position + const Offset(4, 0),
+        flare,
+      );
+      canvas.drawLine(
+        position - const Offset(0, 4),
+        position + const Offset(0, 4),
+        flare,
+      );
+    }
     canvas.drawCircle(
       center,
       radius - 22,

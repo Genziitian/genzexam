@@ -8,12 +8,14 @@ class GeneratedPracticePaper {
   final String title;
   final int questionCount;
   final int timeLimitMinutes;
+  final int? spinsRemaining;
 
   const GeneratedPracticePaper({
     required this.id,
     required this.title,
     required this.questionCount,
     required this.timeLimitMinutes,
+    this.spinsRemaining,
   });
 
   factory GeneratedPracticePaper.fromJson(Map<String, dynamic> json) {
@@ -30,6 +32,7 @@ class GeneratedPracticePaper {
       title: json['title'] as String? ?? 'Practice paper',
       questionCount: count,
       timeLimitMinutes: minutes,
+      spinsRemaining: ((json['quota'] as Map?)?['remaining'] as num?)?.toInt(),
     );
   }
 }

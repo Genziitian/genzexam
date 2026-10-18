@@ -925,7 +925,7 @@
           var expired = paid && !!paper.expired;
           var usable = paper.available !== false && paper.has_access !== false && !expired;
           var attempts = Number(paper.attempt_count || 0);
-          var state = paper.available === false ? "Unavailable" : expired ? "Access expired" : purchased ? "Purchased \u2713" : isSpin ? "Practice" : uploaded ? "Uploaded" : paid ? "Paid" : "Free";
+          var state = paper.available === false ? "Unavailable" : expired ? "Access expired" : purchased ? "Purchased \u2713" : isSpin ? "Private tests" : uploaded ? "Uploaded" : paid ? "Paid" : "Free";
 
           var card = document.createElement("article");
           card.className = "ql-mp-card" + (purchased && usable ? " owned" : "");
@@ -1024,7 +1024,7 @@
               actions.appendChild(details);
             }
             actions.appendChild(action);
-            if (window.QLShare) actions.appendChild(window.QLShare.button(paper.id, paper.title || "", "ql-share-icon"));
+            if (window.QLShare && paper.can_share !== false && !paper.is_personal && !["spin_practice", "personal_upload"].includes(paper.source)) actions.appendChild(window.QLShare.button(paper.id, paper.title || "", "ql-share-icon"));
             card.appendChild(actions);
           }
           grid.appendChild(card);
@@ -1473,11 +1473,11 @@
     document.title = "Try your practice · Quiz LAB";
     host.innerHTML = [
       '<section class="ql-spin-container">',
-        '<header class="ql-spin-head"><h1>Try your practice.</h1><p>Get random 10 question</p></header>',
+        '<header class="ql-spin-head"><div class="ql-spin-heading-row"><button type="button" class="ql-spin-help-button" id="ql-spin-help" aria-haspopup="dialog">How it works</button><h1>Try your practice.</h1></div><p>Get random 10 question</p><p class="ql-spin-daily-quota" id="ql-spin-daily-quota" role="status">1 spin/day free · Up to 7/day with Pro · Private papers</p></header>',
         '<div class="ql-spin-grid">',
           '<div class="ql-spin-wheel-card">',
             '<div class="ql-wheel-stage" aria-hidden="true"><canvas id="ql-spin-canvas" width="680" height="680"></canvas>',
-              '<span class="ql-wheel-pointer"></span><span class="ql-wheel-hub"><img src="/android-chrome-192x192.png" alt=""></span>',
+              '<span class="ql-wheel-flare ql-wheel-flare-one"></span><span class="ql-wheel-flare ql-wheel-flare-two"></span><span class="ql-wheel-flare ql-wheel-flare-three"></span><span class="ql-wheel-pointer"></span><span class="ql-wheel-hub"><img src="/android-chrome-192x192.png" alt=""></span>',
             '</div>',
             '<p class="ql-spin-outcome" id="ql-spin-outcome" role="status" aria-live="polite"></p>',
           '</div>',
@@ -1513,19 +1513,36 @@
             '<button type="submit" class="ql-spin-main-btn" id="ql-spin-main-btn" disabled><span aria-hidden="true">↻</span> Spin the wheel</button>',
           '</form>',
         '</div>',
-        '<section class="ql-spin-result" id="ql-spin-result" hidden tabindex="-1" aria-labelledby="ql-spin-result-title">',
-          '<div><span class="ql-spin-result-check" aria-hidden="true">✓</span><h2 id="ql-spin-result-title"></h2><p id="ql-spin-result-meta"></p></div>',
-          '<div class="ql-spin-result-actions"><a id="ql-spin-start" class="ql-spin-main-btn">Open paper <span aria-hidden="true">→</span></a><a href="/my-papers">My Papers</a></div>',
-        '</section>',
+      '</section>',
       '</section>'
     ].join("");
+    host.querySelector("#ql-spin-help").addEventListener("click", function () {
+      var dialog = document.createElement("dialog");
+      dialog.className = "ql-spin-help-dialog";
+      dialog.setAttribute("aria-labelledby", "ql-spin-help-title");
+      dialog.innerHTML = '<div class="ql-spin-help-content">' +
+        '<div class="ql-spin-help-top"><span><img src="/assets/quiz-lab-icon.png" alt="" width="32" height="32">Quiz LAB</span><button type="button" class="ql-spin-help-close" aria-label="Close explanation" autofocus><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div>' +
+        '<h2 id="ql-spin-help-title">How it works</h2><p>A fresh mix of questions from existing papers.</p>' +
+        '<ol><li><strong>Choose your course.</strong> Set the weeks you want to practise.</li><li><strong>Pick paper types.</strong> Select one, several, or all types. A paper name is optional.</li><li><strong>Spin the wheel.</strong> Get up to 10 random matching questions. The wheel animation does not change your filters.</li><li><strong>Open your paper.</strong> Choose your time limit and start. Find the paper again in My Papers.</li></ol>' +
+        '<p class="ql-spin-help-free">1 free spin daily, or up to 7 daily with Pro. Resets at midnight IST. No upload tokens used. Your papers are private and cannot be shared.</p>' +
+        '<button type="button" class="ql-spin-help-done">Got it</button></div>';
+      host.appendChild(dialog);
+      dialog.querySelector(".ql-spin-help-close").addEventListener("click", function () { dialog.close(); });
+      dialog.querySelector(".ql-spin-help-done").addEventListener("click", function () { dialog.close(); });
+      dialog.addEventListener("click", function (event) {
+        var bounds = dialog.getBoundingClientRect();
+        if (event.target === dialog && (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom)) dialog.close();
+      });
+      dialog.addEventListener("close", function () { dialog.remove(); });
+      dialog.showModal();
+    });
     var canvas = host.querySelector("#ql-spin-canvas"), ctx = canvas.getContext("2d");
     var form = host.querySelector("#ql-spin-form"), settings = host.querySelector("#ql-spin-settings");
     var mainBtn = host.querySelector("#ql-spin-main-btn"), outcome = host.querySelector("#ql-spin-outcome");
     var courseSelect = host.querySelector("#ql-spin-course"), retry = host.querySelector("#ql-spin-retry");
     var weekMinInput = host.querySelector("#ql-spin-week-min"), weekMaxInput = host.querySelector("#ql-spin-week-max");
     var types = Array.from(host.querySelectorAll(".ql-spin-types-list input"));
-    var result = host.querySelector("#ql-spin-result"), currentAngle = 0, isSpinning = false;
+    var currentAngle = 0, isSpinning = false, spinQuota = null;
     var palette = ["#064e3b", "#0d7054", "#116149", "#158467", "#0c5a45", "#167454", "#14543d", "#0c8060", "#0c634f", "#1b755c"];
     function drawWheel(angle) {
       if (!ctx) return;
@@ -1550,6 +1567,12 @@
         ctx.strokeStyle = "rgba(156,227,187,.28)"; ctx.lineWidth = .8; ctx.stroke();
         var dot = start + Math.PI / 10;
         ctx.beginPath(); ctx.arc(Math.cos(dot) * 128, Math.sin(dot) * 128, 2.5, 0, Math.PI * 2); ctx.fillStyle = "#b9dec7"; ctx.fill();
+        ctx.save(); ctx.rotate(dot); ctx.translate(103, 0); ctx.rotate(Math.PI / 2);
+        ctx.fillStyle = "#dbefdf"; ctx.font = "600 13px system-ui, sans-serif"; ctx.textAlign = "center"; ctx.textBaseline = "middle";
+        ctx.fillText(String(i + 1).padStart(2, "0"), 0, 0);
+        ctx.strokeStyle = "rgba(212,234,217,.45)"; ctx.lineWidth = 1;
+        ctx.strokeRect(-8, 14, 16, 19); ctx.beginPath(); ctx.moveTo(-4, 20); ctx.lineTo(4, 20); ctx.moveTo(-4, 25); ctx.lineTo(2, 25); ctx.stroke();
+        ctx.restore();
       }
       ctx.restore();
       var light = ctx.createLinearGradient(65, 65, 270, 270);
@@ -1558,6 +1581,15 @@
       ctx.beginPath(); ctx.arc(cx, cy, 58, 0, Math.PI * 2); ctx.strokeStyle = "rgba(154,213,182,.45)"; ctx.lineWidth = 1; ctx.stroke();
     }
     drawWheel(0);
+    function updateSpinQuota(quota) {
+      if (!quota || typeof quota.remaining !== "number") return;
+      spinQuota = quota;
+      host.querySelector("#ql-spin-daily-quota").textContent = quota.remaining + " of " + quota.limit + " spins left today · Resets at midnight IST · Private papers";
+      mainBtn.disabled = isSpinning || courseSelect.disabled || quota.remaining === 0;
+    }
+    fetch(runtime.apiBase + "/student/spin-practice/quota", {headers: {Accept: "application/json", Authorization: "Bearer " + runtime.token()}})
+      .then(function (res) { if (!res.ok) throw Error("Quota unavailable"); return res.json(); })
+      .then(function (data) { if (host.isConnected && !spinQuota && !isSpinning) updateSpinQuota(data.quota); }).catch(function () {});
     function loadCourses() {
       retry.hidden = true; courseSelect.disabled = true; mainBtn.disabled = true;
       courseSelect.innerHTML = '<option value="">Loading courses…</option>';
@@ -1569,7 +1601,7 @@
           courseSelect.innerHTML = '<option value="">Choose a course</option>' + list.map(function (course) {
             return '<option value="' + Number(course.id) + '">' + escapeHtml(course.name) + '</option>';
           }).join("");
-          courseSelect.disabled = !list.length; mainBtn.disabled = !list.length;
+          courseSelect.disabled = !list.length; mainBtn.disabled = !list.length || !!(spinQuota && spinQuota.remaining === 0);
           if (!list.length) outcome.textContent = "No courses are available yet.";
         }).catch(function () { outcome.textContent = "Could not load courses. Please try again."; retry.hidden = false; });
     }
@@ -1605,19 +1637,57 @@
       if (details && !details.contains(event.target)) details.open = false;
     });
     function animateSpin() {
-      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return Promise.resolve();
-      return new Promise(function (resolve) {
-        var start = performance.now(), initial = currentAngle;
-        function frame(now) {
-          if (!host.isConnected) { resolve(); return; }
-          var progress = Math.min(1, (now - start) / 2800);
-          // Ease in, then settle softly. The wheel does not select a paper type.
-          var eased = progress < .5 ? 4 * progress * progress * progress : 1 - Math.pow(-2 * progress + 2, 3) / 2;
-          currentAngle = initial + 2034 * eased; drawWheel(currentAngle);
-          if (progress < 1) requestAnimationFrame(frame); else { currentAngle %= 360; resolve(); }
+      var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      var finished = false, settling = false, finishAt = null, finishFrom = 0, finishTo = 0, last = performance.now(), started = last;
+      var resolveAnimation;
+      var completion = new Promise(function (resolve) { resolveAnimation = resolve; });
+      function frame(now) {
+        if (!host.isConnected) { document.documentElement.classList.remove("ql-spin-focus"); finished = true; resolveAnimation(); return; }
+        if (finishAt !== null && now >= finishAt) {
+          if (!settling) { settling = true; finishFrom = currentAngle; finishTo = currentAngle + 132; }
+          var progress = Math.min(1, Math.max(0, (now - finishAt) / 1100));
+          currentAngle = finishFrom + (finishTo - finishFrom) * (1 - Math.pow(1 - progress, 3));
+          drawWheel(currentAngle);
+          if (progress >= 1) { currentAngle %= 360; finished = true; resolveAnimation(); return; }
+        } else {
+          var elapsed = Math.min(64, Math.max(0, now - last));
+          var speed = 100 + 260 * Math.min(1, (now - started) / 800);
+          currentAngle = (currentAngle + elapsed * speed / 1000) % 360;
+          drawWheel(currentAngle);
         }
+        last = now;
         requestAnimationFrame(frame);
+      }
+      if (!reduced) requestAnimationFrame(frame);
+      return { finish: function () {
+        if (reduced || finished) return Promise.resolve();
+        if (finishAt === null) { finishAt = Math.max(performance.now(), started + 4000); }
+        return completion;
+      } };
+    }
+    function showPaperReady(paper, payload) {
+      var dialog = document.createElement("dialog");
+      dialog.className = "ql-spin-help-dialog ql-spin-paper-dialog";
+      dialog.setAttribute("aria-labelledby", "ql-spin-ready-title");
+      dialog.innerHTML = '<div class="ql-spin-help-content"><div class="ql-spin-help-top"><span><img src="/assets/quiz-lab-icon.png" alt="" width="32" height="32">Quiz LAB</span><button type="button" class="ql-spin-help-close" aria-label="Close paper details"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div>' +
+        '<p class="ql-spin-ready-eyebrow">Your paper is ready</p><h2 id="ql-spin-ready-title"></h2><dl class="ql-spin-ready-details"><div><dt>Course</dt><dd data-ready-course></dd></div><div><dt>Questions</dt><dd data-ready-count></dd></div><div><dt>Weeks</dt><dd data-ready-weeks></dd></div><div><dt>Paper types</dt><dd data-ready-types></dd></div><div data-ready-quota-row hidden><dt>Spins left today</dt><dd data-ready-quota></dd></div></dl>' +
+        '<p class="ql-spin-help-free">Private paper, saved in My Papers. Only you can open it. Choose your time when you start.</p><div class="ql-spin-ready-actions"><a class="ql-spin-main-btn" data-ready-try autofocus>Try now</a><button type="button" class="ql-spin-help-button" data-ready-again>Spin again</button></div></div>';
+      dialog.querySelector("#ql-spin-ready-title").textContent = paper.title || "Practice paper";
+      dialog.querySelector("[data-ready-course]").textContent = courseSelect.selectedOptions[0].textContent;
+      dialog.querySelector("[data-ready-count]").textContent = String(paper.question_count);
+      dialog.querySelector("[data-ready-weeks]").textContent = payload.week_min + "–" + payload.week_max;
+      dialog.querySelector("[data-ready-types]").textContent = host.querySelector("#ql-spin-type-summary").textContent;
+      if (spinQuota) { dialog.querySelector("[data-ready-quota-row]").hidden = false; dialog.querySelector("[data-ready-quota]").textContent = String(spinQuota.remaining); }
+      dialog.querySelector("[data-ready-again]").disabled = !!(spinQuota && spinQuota.remaining === 0);
+      dialog.querySelector("[data-ready-try]").href = "/paper/" + encodeURIComponent(paper.id);
+      dialog.querySelector(".ql-spin-help-close").addEventListener("click", function () { dialog.close(); });
+      dialog.querySelector("[data-ready-again]").addEventListener("click", function () { dialog.close(); form.requestSubmit(); });
+      dialog.addEventListener("click", function (event) {
+        var bounds = dialog.getBoundingClientRect();
+        if (event.target === dialog && (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom)) dialog.close();
       });
+      dialog.addEventListener("close", function () { dialog.remove(); });
+      host.appendChild(dialog); dialog.showModal();
     }
     async function spinWheel(event) {
       event.preventDefault();
@@ -1625,32 +1695,39 @@
       if (!courseSelect.value) { courseSelect.reportValidity(); return; }
       var payload = {course_id: Number(courseSelect.value), week_min: Number(weekMinInput.value), week_max: Number(weekMaxInput.value),
         paper_types: types.filter(function (item) { return item.checked; }).map(function (item) { return item.value; }), title: host.querySelector("#ql-spin-name").value.trim()};
-      isSpinning = true; settings.disabled = true; mainBtn.disabled = true; result.hidden = true;
+      isSpinning = true; settings.disabled = true; mainBtn.disabled = true; host.classList.add("ql-is-spinning");
+      document.documentElement.classList.add("ql-spin-focus");
+      form.inert = true; host.querySelector("#ql-spin-help").disabled = true;
       host.querySelector(".ql-spin-types").open = false;
       mainBtn.textContent = "Creating paper…"; outcome.className = "ql-spin-outcome"; outcome.textContent = "Creating your practice paper…";
       var controller = new AbortController(), timeout = setTimeout(function () { controller.abort(); }, 25000);
+      var animation = animateSpin();
       try {
         var request = fetch(runtime.apiBase + "/student/spin-practice", {method: "POST", signal: controller.signal,
           headers: {Accept: "application/json", "Content-Type": "application/json", Authorization: "Bearer " + runtime.token()}, body: JSON.stringify(payload)})
-          .then(async function (res) { var paper = await res.json(); if (!res.ok) throw Error(paper.error || paper.message || "Could not create your paper.");
+          .then(async function (res) { var paper = await res.json(); updateSpinQuota(paper.quota); if (!res.ok) throw Error(paper.message || paper.error || "Could not create your paper.");
             if (!(Number(paper.id) > 0 && Number(paper.question_count) > 0)) throw Error("The server returned an incomplete paper. Check My Papers before trying again.");
             return paper;
           });
-        var responses = await Promise.allSettled([request, animateSpin()]);
+        var paper = await request;
+        await animation.finish();
         if (!host.isConnected) return;
-        if (responses[0].status === "rejected") throw responses[0].reason;
-        var paper = responses[0].value;
-        host.querySelector("#ql-spin-result-title").textContent = paper.title || "Practice paper";
-        host.querySelector("#ql-spin-result-meta").textContent = paper.question_count + " questions · Choose your time when you open it";
-        host.querySelector("#ql-spin-start").href = "/paper/" + encodeURIComponent(paper.id);
-        result.hidden = false; outcome.textContent = "Your paper is ready."; result.focus({preventScroll: true}); result.scrollIntoView({behavior: "smooth", block: "nearest"});
+        host.classList.remove("ql-is-spinning");
+        document.documentElement.classList.remove("ql-spin-focus");
+        if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) await new Promise(function (resolve) { setTimeout(resolve, 650); });
+        if (!host.isConnected) return;
+        outcome.textContent = "Your paper is ready. Saved in My Papers.";
+        showPaperReady(paper, payload);
       } catch (error) {
+        await animation.finish();
         if (!host.isConnected) return;
         outcome.className = "ql-spin-outcome error";
         outcome.textContent = error.name === "AbortError" ? "The request timed out. Check My Papers before trying again." : (error.message || "Could not create your paper. Please try again.");
       } finally {
-        clearTimeout(timeout); isSpinning = false;
-        if (host.isConnected) { settings.disabled = false; mainBtn.disabled = false; mainBtn.innerHTML = '<span aria-hidden="true">↻</span> Spin the wheel'; }
+        clearTimeout(timeout); isSpinning = false; host.classList.remove("ql-is-spinning");
+        document.documentElement.classList.remove("ql-spin-focus"); form.inert = false;
+        host.querySelector("#ql-spin-help").disabled = false;
+        if (host.isConnected) { settings.disabled = false; mainBtn.disabled = !!(spinQuota && spinQuota.remaining === 0); mainBtn.innerHTML = '<span aria-hidden="true">↻</span> Spin the wheel'; }
       }
     }
     form.addEventListener("submit", spinWheel);

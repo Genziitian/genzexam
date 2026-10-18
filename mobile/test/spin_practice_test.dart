@@ -130,6 +130,7 @@ void main() {
       await tester.enterText(find.byType(TextField), ' My revision ');
       await tapVisible(tester, 'Spin the wheel');
       await tester.pump(const Duration(milliseconds: 200));
+      expect(tester.widget<AnimatedOpacity>(find.byKey(const Key('spin-background-dim'))).opacity, .18);
       expect(generated, hasLength(1));
       expect(generated.single.path, '/student/spin-practice');
       expect(generated.single.headers['Authorization'], 'Bearer test-session');
@@ -153,14 +154,23 @@ void main() {
         'time_limit_minutes': 30,
       });
       await tester.pump();
-      await tester.pump(const Duration(seconds: 3));
+      await tester.pump(const Duration(seconds: 4));
+      await tester.pump(const Duration(milliseconds: 1200));
+      await tester.pump(const Duration(milliseconds: 700));
+      await tester.pumpAndSettle();
       expect(find.text('Creating paper…'), findsNothing);
       expect(
-        find.text('6 questions · Choose your time when you open it'),
+        find.text('6'),
         findsOneWidget,
       );
-      expect(find.text('Start practice'), findsOneWidget);
+      expect(find.text('Try now'), findsOneWidget);
+      expect(find.text('Spin again'), findsOneWidget);
+      expect(find.byTooltip('Close'), findsOneWidget);
       expect(generated, hasLength(1));
+      expect(tester.widget<AnimatedOpacity>(find.byKey(const Key('spin-background-dim'))).opacity, 1);
+      await tester.tap(find.byTooltip('Close'));
+      await tester.pumpAndSettle();
+      expect(find.text('Try now'), findsNothing);
       expect(tester.takeException(), isNull);
     },
   );
@@ -194,7 +204,10 @@ void main() {
         'time_limit_minutes': 20,
       });
       await tester.pump();
-      await tester.pump(const Duration(seconds: 3));
+      await tester.pump(const Duration(seconds: 4));
+      await tester.pump(const Duration(milliseconds: 1200));
+      await tester.pump(const Duration(milliseconds: 700));
+      await tester.pumpAndSettle();
       expect(tester.takeException(), isNull);
     },
   );
@@ -208,7 +221,10 @@ void main() {
       await tester.pump(const Duration(milliseconds: 200));
       response.complete({'error': 'No questions found for these weeks.'});
       await tester.pump();
-      await tester.pump(const Duration(seconds: 3));
+      await tester.pump(const Duration(seconds: 4));
+      await tester.pump(const Duration(milliseconds: 1200));
+      await tester.pump(const Duration(milliseconds: 700));
+      await tester.pumpAndSettle();
       expect(find.text('No questions found for these weeks.'), findsOneWidget);
       expect(find.text('Start practice'), findsNothing);
       final button = tester.widget<FilledButton>(
@@ -218,6 +234,26 @@ void main() {
       expect(tester.takeException(), isNull);
     },
   );
+
+  testWidgets('paper modal can spin again without duplicate requests or disposal errors', (tester) async {
+    await mount(tester); await selectCourse(tester); await tapVisible(tester, 'Spin the wheel');
+    await tester.pump(const Duration(milliseconds: 200));
+    response.complete({'id': 101, 'title': 'Private revision', 'question_count': 8, 'time_limit_minutes': 20, 'quota': {'remaining': 6}});
+    await tester.pump(); await tester.pump(const Duration(seconds: 4));
+    await tester.pump(const Duration(milliseconds: 1200)); await tester.pump(const Duration(milliseconds: 700)); await tester.pumpAndSettle();
+    response = Completer<Map<String, dynamic>>();
+    await tester.tap(find.text('Spin again')); await tester.pump(); await tester.pump(const Duration(milliseconds: 400));
+    expect(generated, hasLength(2));
+    expect(find.text('Try now'), findsNothing);
+    response.complete({'id': 102, 'title': 'Second private revision', 'question_count': 10, 'time_limit_minutes': 20, 'quota': {'remaining': 0}});
+    await tester.pump(); await tester.pump(const Duration(seconds: 4));
+    await tester.pump(const Duration(milliseconds: 1200)); await tester.pump(const Duration(milliseconds: 700)); await tester.pumpAndSettle();
+    expect(find.text('Second private revision'), findsOneWidget);
+    expect(tester.widget<OutlinedButton>(find.widgetWithText(OutlinedButton, 'Spin again')).onPressed, isNull);
+    await tester.tap(find.byTooltip('Close')); await tester.pumpAndSettle();
+    expect(find.text('Daily spins used'), findsOneWidget);
+    expect(tester.takeException(), isNull);
+  });
 
   test('rejects incomplete responses instead of inventing a paper', () {
     expect(

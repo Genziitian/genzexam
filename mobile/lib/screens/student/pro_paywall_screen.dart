@@ -448,6 +448,7 @@ class _Compare extends StatelessWidget {
         ),
         const SizedBox(height: 6),
         _row('Paper uploads', '1 / week', '5 / week'),
+        _row('Daily spins', '1 / day', '7 / day'),
         _row('Offline downloads', '—', 'Included'),
         _row('Video solutions', '—', 'Included'),
         _row('Practice papers', 'Included', 'Included', last: true),

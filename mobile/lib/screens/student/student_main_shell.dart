@@ -4682,6 +4682,8 @@ class _MyPapersTabState extends State<_MyPapersTab> {
         ? 'Unavailable'
         : purchased
         ? 'Purchased ✓'
+        : paper.source == 'spin_practice'
+        ? 'Private tests'
         : uploaded
         ? 'Uploaded'
         : paid
