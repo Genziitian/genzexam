@@ -148,9 +148,9 @@
       '#ql-paywall-status{grid-column:1/-1}',
       '.ql-paywall-footer{flex-shrink:0;background:#fff;border-top:1px solid #e2e8f0;box-shadow:0 -8px 30px rgba(15,23,42,.06);padding:14px 24px max(14px,env(safe-area-inset-bottom));z-index:1}',
       '.ql-paywall-footer-inner{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;gap:24px}',
-      '.ql-paywall-footer-left{min-width:0}',
-      '.ql-paywall-footer-action{display:flex;flex-direction:column;align-items:center;gap:8px;width:100%}',
-      '.ql-paywall-footer-legal{display:flex;flex-direction:column;align-items:center;gap:3px;width:100%}',
+      '.ql-paywall-footer-left{min-width:0;display:flex;align-items:center}',
+      '.ql-paywall-footer-action{display:flex;flex-direction:column;align-items:center;width:100%}',
+      '.ql-paywall-footer-legal{display:flex;flex-direction:column;align-items:flex-start;gap:3px;width:100%}',
       ':root[data-theme=dark] .ql-paywall-footer{background:#111827;border-color:#334155}',
       '.ql-paywall-section-h{margin:0 0 14px;font-size:19px;font-weight:800;color:#0f172a;letter-spacing:-.01em}',
       ':root[data-theme=dark] .ql-paywall-section-h{color:#f8fafc}',
@@ -189,16 +189,21 @@
       ':root[data-theme=dark] .ql-paywall-trial-copy{color:#f8fafc}',
       '.ql-paywall-trial-sub{margin:0;font-size:12px;color:#64748b;line-height:1.4}',
       ':root[data-theme=dark] .ql-paywall-trial-sub{color:#94a3b8}',
-      '.ql-paywall-cta-btn{width:100%;border:0;border-radius:16px;padding:18px 24px;background:linear-gradient(135deg,#ffd36e,#f59e0b);color:#0f172a;font-size:17px;font-weight:900;cursor:pointer;box-shadow:0 10px 25px -5px rgba(245,158,11,.45);transition:transform .15s,box-shadow .15s;letter-spacing:-.01em;font-family:inherit}',
-      '.ql-paywall-cta-btn:hover{transform:translateY(-2px);box-shadow:0 15px 30px -5px rgba(245,158,11,.55)}',
-      '.ql-paywall-cta-btn:disabled{opacity:.65;cursor:not-allowed;transform:none}',
-      '.ql-paywall-footer-note{text-align:center;font-size:12px;color:#64748b;margin:0;line-height:1.4}',
-      '.ql-paywall-footer-note a{color:inherit;text-decoration:underline}',
-      '.ql-paywall-footer-note a:hover{color:#4f46e5}',
+      '@keyframes ql-cta-shimmer{0%{transform:translateX(-160%) skewX(-20deg)}35%,100%{transform:translateX(260%) skewX(-20deg)}}',
+      '@keyframes ql-cta-glow{0%,100%{box-shadow:0 10px 25px -5px rgba(245,158,11,.45)}50%{box-shadow:0 14px 32px -4px rgba(245,158,11,.65),0 0 18px rgba(251,191,36,.4)}}',
+      '.ql-paywall-cta-btn{position:relative;overflow:hidden;width:100%;border:0;border-radius:16px;padding:18px 24px;background:linear-gradient(135deg,#ffd36e,#f59e0b);color:#0f172a;font-size:17px;font-weight:900;cursor:pointer;box-shadow:0 10px 25px -5px rgba(245,158,11,.45);transition:transform .2s ease,box-shadow .2s ease;letter-spacing:-.01em;font-family:inherit;animation:ql-cta-glow 3s ease-in-out infinite}',
+      '.ql-paywall-cta-btn::after{content:"";position:absolute;top:0;left:0;width:50%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.45),transparent);transform:translateX(-160%) skewX(-20deg);animation:ql-cta-shimmer 3.2s ease-in-out infinite;pointer-events:none}',
+      '.ql-paywall-cta-btn:hover{transform:translateY(-2px) scale(1.01);box-shadow:0 16px 36px -4px rgba(245,158,11,.65)}',
+      '.ql-paywall-cta-btn:disabled{opacity:.65;cursor:not-allowed;transform:none;animation:none}',
+      '.ql-paywall-cta-btn:disabled::after{display:none}',
+      '.ql-paywall-footer-note{text-align:left;font-size:12.5px;color:#64748b;margin:0;line-height:1.5}',
+      '.ql-paywall-footer-note a{color:#4f46e5;text-decoration:underline;text-underline-offset:2px}',
+      '.ql-paywall-footer-note a:hover{color:#3730a3}',
       ':root[data-theme=dark] .ql-paywall-footer-note{color:#94a3b8}',
-      ':root[data-theme=dark] .ql-paywall-footer-note a:hover{color:#818cf8}',
+      ':root[data-theme=dark] .ql-paywall-footer-note a{color:#818cf8}',
+      ':root[data-theme=dark] .ql-paywall-footer-note a:hover{color:#a5b4fc}',
       '.ql-paywall-plan:focus-visible,.ql-paywall-cta-btn:focus-visible,.ql-paywall-close:focus-visible{outline:3px solid #818cf8;outline-offset:3px}',
-      '@media(max-width:767px){.ql-paywall-body{grid-template-columns:minmax(0,1fr);padding:20px;gap:22px}.ql-paywall-checkout{grid-row:1}.ql-paywall-hero{padding:18px 64px}.ql-paywall-title{font-size:20px}.ql-paywall-sub{display:none}.ql-paywall-footer{padding:12px 16px max(12px,env(safe-area-inset-bottom))}.ql-paywall-footer-inner{grid-template-columns:minmax(0,1fr);gap:10px}.ql-paywall-footer-left{display:none}.ql-paywall-cta-btn{padding:15px 12px;font-size:15px}.ql-paywall-footer-note{font-size:11px}}',
+      '@media(max-width:767px){.ql-paywall-body{grid-template-columns:minmax(0,1fr);padding:20px;gap:22px}.ql-paywall-checkout{grid-row:1}.ql-paywall-hero{padding:18px 64px}.ql-paywall-title{font-size:20px}.ql-paywall-sub{display:none}.ql-paywall-footer{padding:12px 16px max(12px,env(safe-area-inset-bottom))}.ql-paywall-footer-inner{grid-template-columns:minmax(0,1fr);gap:12px}.ql-paywall-footer-left{order:2;width:100%}.ql-paywall-footer-action{order:1;width:100%}.ql-paywall-footer-legal{align-items:center}.ql-paywall-cta-btn{padding:15px 12px;font-size:15px}.ql-paywall-footer-note{text-align:center;font-size:11px}}',
       '@media(max-width:380px){.ql-paywall-body{padding:16px}.ql-paywall-plan{padding:12px;gap:8px}.ql-paywall-plan-left{gap:8px}.ql-paywall-plan-title{font-size:15px}.ql-paywall-plan-price{font-size:16px}.ql-paywall-rec{font-size:9px;padding:3px 6px}.ql-paywall-compare{padding:14px}.ql-paywall-row{font-size:12px}.ql-paywall-trial-box{padding:14px}.ql-paywall-footer-inner{column-gap:8px}.ql-paywall-cta-btn{font-size:14px}}'
     ].join('');
     document.head.appendChild(style);
@@ -586,13 +591,14 @@
       '</div>',
       '<footer class="ql-paywall-footer" id="ql-paywall-footer">',
       '  <div class="ql-paywall-footer-inner">',
-      '    <div class="ql-paywall-footer-left"></div>',
-      '    <div class="ql-paywall-footer-action">',
-      '      <button type="button" class="ql-paywall-cta-btn" id="ql-paywall-cta" disabled>Loading plan…</button>',
+      '    <div class="ql-paywall-footer-left">',
       '      <div class="ql-paywall-footer-legal">',
       '        <p class="ql-paywall-footer-note">Cancel renewal any time · Powered by Razorpay</p>',
       '        <p class="ql-paywall-footer-note">By continuing, you agree to our <a href="/terms-and-conditions" target="_blank" rel="noopener">Terms &amp; Conditions</a>.</p>',
       '      </div>',
+      '    </div>',
+      '    <div class="ql-paywall-footer-action">',
+      '      <button type="button" class="ql-paywall-cta-btn" id="ql-paywall-cta" disabled>Loading plan…</button>',
       '    </div>',
       '  </div>',
       '</footer>'
@@ -963,6 +969,7 @@
       ['How do I contact support?', 'Email admin@genziitian.org, call +91 72549 26179, or message us on WhatsApp.']
     ];
     return '<div id="' + MORE_ID + '" class="space-y-4">' +
+      '<section class="ql-more-card"><div class="ql-more-row" style="padding:0;border:0"><div class="ql-more-row-copy"><div style="display:flex;align-items:center;gap:8px"><span style="font-size:22px">🎁</span><strong style="font-size:15px">Daily Rewards · Spin &amp; Win</strong><span class="ql-tag-active" style="background:#eef2ff;color:#4f46e5;font-size:10px;padding:2px 8px;border-radius:999px">1 Daily Spin</span></div><small>Spin once daily for free Pro plan, discount coupons, and prizes. View your collected scratch coupons.</small></div><a class="ql-more-button primary" href="/rewards" style="text-decoration:none">Spin &amp; Win →</a></div></section>' +
       '<section class="ql-more-card"><h2 class="ql-more-heading">XP, levels and badges</h2><p class="ql-more-subtitle">See how your learning activity builds XP and unlocks badges.</p><button type="button" id="ql-more-rulebook" class="ql-more-button" style="margin-top:14px">How do XP, levels and badges work?</button></section>' +
       '<section class="ql-more-card"><h2 class="ql-more-heading">Account &amp; preferences</h2>' +
       '<div class="ql-more-row"><div class="ql-more-row-copy"><strong>Theme / Appearance</strong></div><div class="ql-more-theme-options" role="group" aria-label="Theme"><button type="button" class="ql-more-button" data-ql-more-theme="system">System</button><button type="button" class="ql-more-button" data-ql-more-theme="light">Light</button><button type="button" class="ql-more-button" data-ql-more-theme="dark">Dark</button></div></div>' +
