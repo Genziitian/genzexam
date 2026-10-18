@@ -38,7 +38,39 @@
     location.replace(valid ? (pending.open === true ? '/paper/' + id : '/papers?paper=' + id) : '/papers?library=1');
   }
 
-  window.QLStorefront = { apiBase: apiBase, token: token, signIn: signIn };
+  function updateProBrandIcons() {
+    if (typeof document === 'undefined' || typeof document.querySelector !== 'function') return;
+    var isPro = false;
+    try {
+      var user = JSON.parse(localStorage.getItem('lab_user') || 'null');
+      if (user && (user.is_pro === true || user.isPro === true)) isPro = true;
+    } catch (_) {}
+
+    var icon32 = document.querySelector('link[rel="icon"][sizes="32x32"]');
+    if (icon32) icon32.href = isPro ? '/favicon-pro-32x32.png' : '/favicon-32x32.png';
+
+    var icon16 = document.querySelector('link[rel="icon"][sizes="16x16"]');
+    if (icon16) icon16.href = isPro ? '/favicon-pro-16x16.png' : '/favicon-16x16.png';
+
+    var appleIcon = document.querySelector('link[rel="apple-touch-icon"]');
+    if (appleIcon) appleIcon.href = isPro ? '/apple-touch-icon-pro.png' : '/apple-touch-icon.png';
+
+    var manifest = document.querySelector('link[rel="manifest"]');
+    if (manifest) manifest.href = isPro ? '/site-pro.webmanifest' : '/site.webmanifest';
+
+    var fav = document.querySelector('link[rel="icon"]:not([sizes])');
+    if (fav) fav.href = isPro ? '/favicon-pro-32x32.png' : '/favicon.ico';
+  }
+
+  updateProBrandIcons();
+  window.addEventListener('storage', function (e) {
+    if (!e || e.key === 'lab_user' || e.key === 'lab_token') updateProBrandIcons();
+  });
+  document.addEventListener('visibilitychange', function () {
+    if (document.visibilityState === 'visible') updateProBrandIcons();
+  });
+
+  window.QLStorefront = { apiBase: apiBase, token: token, signIn: signIn, updateProBrandIcons: updateProBrandIcons };
 
   // Connection guard: retries a request that failed because the phone reused a closed connection.
   if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {

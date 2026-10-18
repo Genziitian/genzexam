@@ -265,7 +265,7 @@ void main() {
     expect(find.text('Second private revision'), findsOneWidget);
     expect(tester.widget<OutlinedButton>(find.widgetWithText(OutlinedButton, 'Spin again')).onPressed, isNull);
     await tester.tap(find.byTooltip('Close')); await tester.pumpAndSettle();
-    expect(find.text('Get 7 spins/day in PRO · Get now'), findsOneWidget);
+    expect(find.text('Unlock 7 spins/day with Pro'), findsOneWidget);
     expect(tester.takeException(), isNull);
   });
 

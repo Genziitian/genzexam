@@ -53,4 +53,30 @@ assert.deepEqual(app.navigations, ['/papers?library=1']);
 for (const filename of ['papers.js','paper-pricing.js','storefront-runtime.js','app-enhancements.js']) {
   new vm.Script(fs.readFileSync(path.join(__dirname, '..', filename), 'utf8'), {filename});
 }
+
+// Pro icon switching test
+{
+  const links = {
+    'link[rel="icon"][sizes="32x32"]': { href: '/favicon-32x32.png' },
+    'link[rel="icon"][sizes="16x16"]': { href: '/favicon-16x16.png' },
+    'link[rel="apple-touch-icon"]': { href: '/apple-touch-icon.png' },
+    'link[rel="manifest"]': { href: '/site.webmanifest' },
+  };
+  const ctx = {
+    window: { addEventListener() {} },
+    localStorage: { getItem: k => k === 'lab_user' ? JSON.stringify({ is_pro: true }) : null },
+    navigator: {},
+    document: {
+      addEventListener() {},
+      querySelector: sel => links[sel] || null,
+    },
+    sessionStorage: { getItem: () => null, setItem() {}, removeItem() {} },
+    location: { pathname: '/' },
+    setInterval: () => 1, clearInterval() {},
+  };
+  vm.runInNewContext(source, ctx);
+  assert.equal(links['link[rel="icon"][sizes="32x32"]'].href, '/favicon-pro-32x32.png');
+  assert.equal(links['link[rel="manifest"]'].href, '/site-pro.webmanifest');
+  assert.equal(links['link[rel="apple-touch-icon"]'].href, '/apple-touch-icon-pro.png');
+}
 console.log('PASS: nine sign-in/resume cases and syntax checks for four storefront integration scripts.');

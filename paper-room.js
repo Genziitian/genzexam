@@ -44,6 +44,8 @@
     summary: null,
     result: null,
     ticker: null,
+    showReview: false,
+    reviewIndex: 0,
   };
 
   const $ = (s, root = document) => root.querySelector(s);
@@ -312,9 +314,9 @@
       document.body.appendChild(root);
     }
     root.innerHTML =
-      '<div class="ep-shell"><header class="ep-top"><a class="ep-brand" href="/papers"><img class="ep-mark" src="/assets/quiz-lab-icon.png" alt="" width="36" height="36"><span><b>Quiz LAB</b><small>Paper room</small></span></a><div class="ep-user"><span>' +
+      '<div class="ep-shell"><header class="ep-top"><a class="ep-brand" href="/my-papers"><img class="ep-mark" src="/assets/quiz-lab-icon.png" alt="" width="36" height="36"><span><b>Quiz LAB</b><small>Paper room</small></span></a><div class="ep-user"><span>' +
       esc(userName()) +
-      '</span><a class="ep-link" href="/my-papers">My papers</a><a class="ep-link" href="/dashboard">Dashboard</a></div></header><div id="ep-content"></div></div>';
+      '</span><a class="ep-link" href="/my-papers">Back</a></div></header><div id="ep-content"></div></div>';
     root.addEventListener("click", onClick);
     root.addEventListener("change", onChange);
     root.addEventListener("input", onInput);
@@ -338,8 +340,8 @@
         : [0, 15, 30, 45, 60].includes(st.durationMinutes)
           ? String(st.durationMinutes)
           : "custom";
-    const timeOption = (value, label) =>
-      '<label class="pr-time-opt"><input type="radio" name="pr-time" value="' + value + '"' + (selectedTime === String(value) ? " checked" : "") + "><span>" + label + "</span></label>";
+    const timeOption = (value, label, extraClass) =>
+      '<label class="pr-time-opt' + (extraClass ? " " + extraClass : "") + '"><input type="radio" name="pr-time" value="' + value + '"' + (selectedTime === String(value) ? " checked" : "") + "><span>" + label + "</span></label>";
     return page(
       '<div class="ep-card"><p class="ep-eyebrow">BEFORE YOU BEGIN</p><h1>' +
         esc(q.title) +
@@ -359,7 +361,7 @@
             (savedMinutes ? savedMinutes + " minutes" : "Untimed") +
             " · Your original clock continues when you resume.</span></p>"
           : '<div class="pr-time-choice"><b>Set your time limit</b><input type="hidden" id="pr-time-select" value="' + esc(selectedTime) + '"><div class="pr-time-opts" role="radiogroup" aria-label="Time limit">' +
-            timeOption("default", "Default · " + (minutes ? minutes + " min" : "Untimed")) +
+            timeOption("default", "Default · " + (minutes ? minutes + " min" : "Untimed"), "pr-time-opt-default") +
             (minutes ? timeOption(0, "Untimed") : "") +
             timeOption(15, "15 min") +
             timeOption(30, "30 min") +
@@ -375,7 +377,7 @@
           : "This paper is self-paced and untimed. Start whenever you are ready and submit when you are done.") +
         '</p>' +
         (st.error ? '<div class="ep-alert error" role="alert">' + esc(st.error) + "</div>" : "") +
-        '<div class="ep-actions"><a class="ep-btn pr-btn-link" href="/papers">Back to papers</a><button class="ep-btn ep-btn-primary" data-action="start"' +
+        '<div class="ep-actions"><a class="ep-btn pr-btn-link" href="/my-papers">Back</a><button class="ep-btn ep-btn-primary" data-action="start"' +
         (st.busy || !count ? " disabled" : "") +
         ">" +
         (st.busy ? "Starting…" : saved ? "Resume paper" : "Start paper") +
@@ -716,7 +718,10 @@
     const answers = Array.isArray(r.answers) ? r.answers : [];
     const scored = answers.filter((a) => a.question_type !== "comprehension");
     const correct = scored.filter((a) => a.is_correct).length;
-    let number = 0;
+    let num = 0;
+    const qNums = answers.map((a) => (a.question_type === "comprehension" ? 0 : ++num));
+    const idx = Math.min(Math.max(0, st.reviewIndex || 0), Math.max(0, answers.length - 1));
+    const currentAnswer = answers[idx];
     return (
       '<section class="ep-page"><div class="ep-card ep-result-card"><p class="ep-eyebrow">PAPER SUBMITTED</p><h1>' +
       esc((r.quiz && r.quiz.title) || (st.quiz && st.quiz.title) || "Your result") +
@@ -730,10 +735,76 @@
       (scored.length ? "<p>" + correct + " of " + scored.length + " questions correct.</p>" : "") +
       (xp ? '<div class="ep-alert">+' + xp + " XP earned.</div>" : "") +
       (st.error ? '<div class="ep-alert error" role="alert">' + esc(st.error) + "</div>" : "") +
-      '<div class="ep-actions pr-result-actions"><a class="ep-btn pr-btn-link" href="/papers"><span class="pr-wide">Back to </span>Papers</a><a class="ep-btn pr-btn-link" href="/dashboard">Dashboard</a><button class="ep-btn ep-btn-primary" data-action="retake">Attempt again</button></div></div>' +
+      '<div class="ep-actions pr-result-actions">' +
+      '<a class="ep-btn pr-btn-link" href="/my-papers">Back</a>' +
       (answers.length
-        ? '<h2 class="pr-review-title">Answer review</h2><div class="ep-questions">' +
-          answers.map((a) => reviewCard(a, a.question_type === "comprehension" ? 0 : ++number)).join("") +
+        ? '<button type="button" class="ep-btn" data-action="toggle-review">' +
+          (st.showReview ? "Hide review" : "Review answers") +
+          "</button>"
+        : "") +
+      '<button class="ep-btn ep-btn-primary" data-action="retake">Attempt again</button>' +
+      "</div></div>" +
+      (st.showReview && answers.length && currentAnswer
+        ? '<div id="pr-review-section" class="pr-review-wrap">' +
+          '<div class="pr-review-toolbar">' +
+          '<h2 class="pr-review-title">Answer review</h2>' +
+          '<span class="pr-review-counter">' +
+          (currentAnswer.question_type === "comprehension"
+            ? "Context passage"
+            : "Question " + (qNums[idx] || idx + 1) + " of " + (scored.length || answers.length)) +
+          "</span>" +
+          "</div>" +
+          (answers.length > 1
+            ? '<div class="pr-review-strip">' +
+              answers
+                .map((a, i) => {
+                  const chosen = (
+                    Array.isArray(a.student_selected_option_ids)
+                      ? a.student_selected_option_ids
+                      : []
+                  ).map(String);
+                  const answered =
+                    chosen.length > 0 ||
+                    (a.student_text_answer != null &&
+                      String(a.student_text_answer).trim() !== "") ||
+                    a.student_numerical_answer != null;
+                  const state =
+                    a.question_type === "comprehension"
+                      ? "ctx"
+                      : a.is_correct
+                        ? "correct"
+                        : answered
+                          ? "wrong"
+                          : "skipped";
+                  const label = a.question_type === "comprehension" ? "P" : qNums[i];
+                  return (
+                    '<button type="button" class="pr-review-tab' +
+                    (i === idx ? " active" : "") +
+                    " " +
+                    state +
+                    '" data-review-go="' +
+                    i +
+                    '" aria-label="' +
+                    (a.question_type === "comprehension" ? "Passage" : "Question " + label) +
+                    '">' +
+                    label +
+                    "</button>"
+                  );
+                })
+                .join("") +
+              "</div>"
+            : "") +
+          '<div class="ep-questions">' +
+          reviewCard(currentAnswer, qNums[idx]) +
+          "</div>" +
+          '<div class="pr-review-nav">' +
+          '<button type="button" class="ep-btn" data-action="review-prev"' +
+          (idx === 0 ? " disabled" : "") +
+          ">← Previous</button>" +
+          '<button type="button" class="ep-btn ep-btn-primary" data-action="review-next"' +
+          (idx === answers.length - 1 ? " disabled" : "") +
+          ">Next →</button>" +
+          "</div>" +
           "</div>"
         : "") +
       "</section>"
@@ -772,6 +843,12 @@
               ? blockedView()
               : page('<div class="ep-card"><p>Loading paper…</p></div>', true);
     if (window.ExamRichContent && window.ExamRichContent.typeset) window.ExamRichContent.typeset(root);
+    if (st.screen === "result" && st.showReview) {
+      const activeTab = root.querySelector(".pr-review-tab.active");
+      if (activeTab && typeof activeTab.scrollIntoView === "function") {
+        activeTab.scrollIntoView({ block: "nearest", inline: "nearest" });
+      }
+    }
     const app = document.getElementById("ep-app");
     if (app) app.classList.toggle("pr-live", st.screen === "room");
     if (st.screen !== "room" && window.ExamCalculator) window.ExamCalculator.close();
@@ -898,6 +975,8 @@
       st.error = "Your paper was submitted, but the answer review could not be loaded: " + e.message;
     }
     st.screen = "result";
+    st.showReview = false;
+    st.reviewIndex = 0;
     render();
     window.scrollTo(0, 0);
   }
@@ -966,6 +1045,14 @@
     if (rep) return void reportModal(rep.dataset.report, rep.dataset.reportNo);
     const jump = ev.target.closest("[data-go]");
     if (jump) return void go(Number(jump.dataset.go));
+    const rJump = ev.target.closest("[data-review-go]");
+    if (rJump) {
+      st.reviewIndex = Number(rJump.dataset.reviewGo);
+      render();
+      const reviewEl = document.getElementById("pr-review-section");
+      if (reviewEl) reviewEl.scrollIntoView({ behavior: "smooth", block: "start" });
+      return;
+    }
     const calc = ev.target.closest("[data-calc]");
     if (calc) return void (window.ExamCalculator && window.ExamCalculator.toggle(calc.dataset.calc === "toggle" ? undefined : calc.dataset.calc));
     const target = ev.target.closest("[data-action]");
@@ -998,9 +1085,34 @@
       st.visited = {};
       st.current = 0;
       st.error = "";
+      st.showReview = false;
+      st.reviewIndex = 0;
       st.screen = "intro";
       render();
       window.scrollTo(0, 0);
+    } else if (action === "toggle-review") {
+      st.showReview = !st.showReview;
+      st.reviewIndex = 0;
+      render();
+      if (st.showReview) {
+        const reviewEl = document.getElementById("pr-review-section");
+        if (reviewEl) reviewEl.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    } else if (action === "review-prev") {
+      if (st.reviewIndex > 0) {
+        st.reviewIndex--;
+        render();
+        const reviewEl = document.getElementById("pr-review-section");
+        if (reviewEl) reviewEl.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    } else if (action === "review-next") {
+      const answers = (st.result && Array.isArray(st.result.answers)) ? st.result.answers : [];
+      if (st.reviewIndex < answers.length - 1) {
+        st.reviewIndex++;
+        render();
+        const reviewEl = document.getElementById("pr-review-section");
+        if (reviewEl) reviewEl.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
     } else if (action === "clear") {
       const id = target.dataset.id;
       delete st.answers[id];

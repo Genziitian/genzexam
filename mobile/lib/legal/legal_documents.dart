@@ -34,6 +34,23 @@ Content on the Services, including videos, documents, questions, and code sample
 06 Limitation of Liability
 QUIZ LAB is an educational service. We work to keep the Services useful and available, but do not guarantee specific academic results or career outcomes. To the extent permitted by law, we are not responsible for issues caused by a user's internet connection, device, or misuse of the Services. Nothing in these Terms limits rights that cannot legally be limited.
 
+07 Daily Rewards, Spin Wheel & Promotional Coupons
+QUIZ LAB offers an optional promotional daily reward feature ("Spin & Win") allowing eligible students to spin a promotional wheel once every calendar day. Participation is entirely free and no purchase, billing information, or payment is required to spin, scratch, or receive rewards. Daily spin allowances reset at 12:00 AM IST (midnight).
+
+Promotional Discount Coupons:
+• Redemption Venue: Promotional discount coupon codes won through the daily spin are strictly valid and applicable exclusively on https://genziitian.in/courses. Coupons are not applicable to third-party services or unlisted items.
+• 7-Day Auto-Disable Window: All promotional discount coupons have a strict validity period of seven (7) calendar days from the date and time they are spun or revealed. Whether claimed or unclaimed, the coupon code automatically disables and expires seven days after being spun or scratched. After expiration, the code is masked and cannot be recovered or redeemed.
+• Minimum Purchase: Coupons require a minimum order value of ₹350 on eligible courses to be applied.
+• Maximum Discount Cap: On any percentage-based discount coupon (including 15% and 25% OFF), the maximum discount is capped at ₹100 per transaction.
+• Usage Limits: Each coupon code is single-use, non-transferable, and cannot be combined with other promotional offers or referral codes. Coupons hold no cash value and cannot be exchanged for cash or refunds.
+
+30-Day Free Pro Plan Reward:
+• Complimentary Access: Winning the 30-Day Free Pro reward grants thirty (30) consecutive calendar days of complimentary Quiz LAB Pro membership benefits (including unlimited practice spins, private paper creation, downloadable offline tests, and pro discussions) at no charge. No payment or credit card is required to claim this reward.
+• Activation & Duration: The 30-day access period activates immediately upon clicking the "Claim 30 Days Free Pro" button in your account. The complimentary period auto-expires after 30 calendar days without recurring charges, auto-renewal, or hidden fees.
+• Non-Transferable: Free Pro plan rewards are tied exclusively to the recipient's Quiz LAB account and cannot be transferred, sold, or redeemed for cash.
+
+By spinning the wheel, scratching cards, or claiming any coupon or reward, you acknowledge and accept all our Terms & Conditions and platform rules. GenZ IITian reserves the right to void coupons, reverse rewards, or restrict access in cases of suspected fraud, abuse, multiple account creation, or technical manipulation.
+
 Questions about these Terms? Call +91 72549 26179 or email admin@genziitian.org or genziitian@gmail.com, or visit https://quiz.genziitian.in/.
 ''';
 

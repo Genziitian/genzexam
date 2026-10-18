@@ -54,7 +54,7 @@ class MembershipHistoryController extends Controller {
                 'cancellation_source' => $sub->cancellation_source, 'created_at' => $sub->created_at, 'user' => $sub->user,
             ]),
             'transactions' => $payments, 'ledger_available' => $available,
-            'history_note' => $available ? 'Paper orders and verified subscription receipts are shown. Membership records are not receipts. Earlier subscription renewals are not automatically reconstructed; Google receipts synchronize on purchase verification or membership refresh. Amounts are in the original currency.' : 'Subscription payment history requires the membership_transactions migration. Paper orders and membership records remain available.',
+            'history_note' => $available ? '' : 'Subscription payment history requires the membership_transactions migration. Paper orders and membership records remain available.',
         ]);
     }
 }

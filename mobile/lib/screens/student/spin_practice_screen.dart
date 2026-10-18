@@ -539,7 +539,7 @@ class _SpinPracticeScreenState extends State<SpinPracticeScreen>
       if (_remaining! > 0) {
         label = 'Spin the wheel · 1 free spin left';
       } else {
-        label = 'Get 7 spins/day in PRO · Get now';
+        label = 'Unlock 7 spins/day with Pro';
       }
     } else {
       if (_remaining! > 0) {

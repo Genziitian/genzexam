@@ -100,6 +100,12 @@
 :root[data-theme=dark] .pro-empty-card h4{color:var(--ink)}
 :root[data-theme=dark] .pro-loading-state{color:var(--muted)}
 :root[data-theme=dark] .pro-cancel-note,:root[data-theme=dark] .pro-product-tag,:root[data-theme=dark] .pro-sub-id{color:var(--muted)}
+:root[data-theme=dark] .pro-modal{background:var(--surface)}
+:root[data-theme=dark] .pro-modal-heading{background-color:rgba(0, 0, 0, 0.02)}
+:root[data-theme=dark] .pro-modal-user-header h2{color:var(--ink)}
+:root[data-theme=dark] .pro-modal-sub{color:var(--muted)}
+:root[data-theme=dark] .pro-detail-field label{color:var(--muted)}
+:root[data-theme=dark] .pro-detail-val{color:var(--ink)}
 /* hand-written: tools/dark-extra/ql-dark-sales.css */
 :root[data-theme=dark] {
   color-scheme: dark;
@@ -396,4 +402,23 @@
   background: rgba(239, 68, 68, 0.2);
   border-color: #ef4444;
   color: #ffffff;
+}
+
+:root[data-theme=dark] .pro-modal {
+  background: #121a29;
+  border-color: #223249;
+  box-shadow: 0 25px 60px -12px rgba(0, 0, 0, 0.7);
+}
+:root[data-theme=dark] .pro-modal-heading {
+  background: #0d1322;
+  border-color: #223249;
+}
+:root[data-theme=dark] .pro-modal-user-header h2 {
+  color: #f8fafc;
+}
+:root[data-theme=dark] .pro-modal-actions-bar {
+  border-color: #223249;
+}
+:root[data-theme=dark] .pro-detail-val {
+  color: #f8fafc;
 }

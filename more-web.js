@@ -99,10 +99,10 @@
       '.ql-more-view-all{display:block;margin:14px auto 0;border:0;background:transparent;color:#3a3fd8;font:inherit;font-size:13px;font-weight:700;cursor:pointer}',
       '.ql-more-faq{margin-top:12px}.ql-more-faq details{border-top:1px solid #f1f5f9;padding:12px 0}.ql-more-faq details[hidden]{display:none!important}.ql-more-faq summary{cursor:pointer;color:#0f172a;font-size:13px;font-weight:650}.ql-more-faq p{margin:8px 0 0;color:#64748b;font-size:12px;line-height:1.6}',
       '.ql-more-status{margin:12px 0 0;color:#64748b;font-size:12px}',
-      '.ql-more-rulebook-dialog{width:min(640px,calc(100vw - 32px));max-height:min(82vh,760px);padding:0;border:1px solid #e2e8f0;border-radius:20px;background:#fff;color:#0f172a;box-shadow:0 24px 80px rgba(15,23,42,.28)}',
+      '.ql-more-rulebook-dialog{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);margin:0;width:min(640px,calc(100vw - 32px));max-height:min(82vh,760px);padding:0;border:1px solid #e2e8f0;border-radius:20px;background:#fff;color:#0f172a;box-shadow:0 24px 80px rgba(15,23,42,.28)}',
       '.ql-more-rulebook-dialog::backdrop{background:rgba(15,23,42,.55);backdrop-filter:blur(3px)}',
       '.ql-more-rulebook-content{max-height:min(82vh,760px);overflow:auto;padding:24px}',
-      '.ql-more-delete-dialog{width:min(560px,calc(100vw - 28px));max-height:min(88vh,760px);padding:0;border:1px solid #e2e8f0;border-radius:22px;background:#fff;color:#0f172a;box-shadow:0 24px 80px rgba(15,23,42,.3)}',
+      '.ql-more-delete-dialog{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);margin:0;width:min(560px,calc(100vw - 28px));max-height:min(88vh,760px);padding:0;border:1px solid #e2e8f0;border-radius:22px;background:#fff;color:#0f172a;box-shadow:0 24px 80px rgba(15,23,42,.3)}',
       '.ql-more-delete-dialog::backdrop{background:rgba(15,23,42,.56);backdrop-filter:blur(3px)}',
       '.ql-more-delete-content{max-height:min(88vh,760px);overflow:auto;padding:24px}',
       '.ql-more-delete-actions{display:flex;justify-content:flex-end;gap:8px;flex-wrap:wrap}',
@@ -374,6 +374,12 @@
       return api('/membership').then(function (result) {
         var sub = result.subscription || {};
         var pro = result.is_pro === true;
+        try {
+          var saved = JSON.parse(localStorage.getItem('lab_user') || '{}');
+          saved.is_pro = pro;
+          localStorage.setItem('lab_user', JSON.stringify(saved));
+          if (window.QLStorefront && window.QLStorefront.updateProBrandIcons) window.QLStorefront.updateProBrandIcons();
+        } catch (_) {}
         if (!pro) {
           membershipPanel.innerHTML = '<div style="text-align:center;padding:48px 16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;">' +
             '<div id="ql-web-pro-status" style="font-size:16px;font-weight:600;color:#64748b;">No membership</div>' +
@@ -969,7 +975,7 @@
       ['How do I contact support?', 'Email admin@genziitian.org, call +91 72549 26179, or message us on WhatsApp.']
     ];
     return '<div id="' + MORE_ID + '" class="space-y-4">' +
-      '<section class="ql-more-card"><div class="ql-more-row" style="padding:0;border:0"><div class="ql-more-row-copy"><div style="display:flex;align-items:center;gap:8px"><span style="font-size:22px">🎁</span><strong style="font-size:15px">Daily Rewards · Spin &amp; Win</strong><span class="ql-tag-active" style="background:#eef2ff;color:#4f46e5;font-size:10px;padding:2px 8px;border-radius:999px">1 Daily Spin</span></div><small>Spin once daily for free Pro plan, discount coupons, and prizes. View your collected scratch coupons.</small></div><a class="ql-more-button primary" href="/rewards" style="text-decoration:none">Spin &amp; Win →</a></div></section>' +
+      '<section class="ql-more-card"><div class="ql-more-row" style="padding:0;border:0"><div class="ql-more-row-copy"><div style="display:flex;align-items:center;gap:8px"><span style="font-size:20px">🎁</span><strong class="ql-more-rewards-title">Daily Rewards · Spin &amp; Win</strong></div></div><a class="ql-more-button primary" href="/rewards" style="text-decoration:none">Spin &amp; Win →</a></div></section>' +
       '<section class="ql-more-card"><h2 class="ql-more-heading">XP, levels and badges</h2><p class="ql-more-subtitle">See how your learning activity builds XP and unlocks badges.</p><button type="button" id="ql-more-rulebook" class="ql-more-button" style="margin-top:14px">How do XP, levels and badges work?</button></section>' +
       '<section class="ql-more-card"><h2 class="ql-more-heading">Account &amp; preferences</h2>' +
       '<div class="ql-more-row"><div class="ql-more-row-copy"><strong>Theme / Appearance</strong></div><div class="ql-more-theme-options" role="group" aria-label="Theme"><button type="button" class="ql-more-button" data-ql-more-theme="system">System</button><button type="button" class="ql-more-button" data-ql-more-theme="light">Light</button><button type="button" class="ql-more-button" data-ql-more-theme="dark">Dark</button></div></div>' +

@@ -28,6 +28,7 @@ use App\Http\Controllers\StorefrontController;
 use App\Http\Controllers\ManagerUploadedPaperController;
 use App\Http\Controllers\StudentUploadedPaperController;
 use App\Http\Controllers\StudentSpinPracticeController;
+use App\Http\Controllers\StudentRewardController;
 use App\Http\Controllers\ManagerSalesController;
 use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\ManagerSystemController;
@@ -111,6 +112,10 @@ Route::middleware(['auth:sanctum', 'track.seen'])->group(function () {
     Route::post('/student/uploaded-papers', [StudentUploadedPaperController::class, 'store'])->middleware('throttle:5,60');
     Route::get('/student/spin-practice/quota', [StudentSpinPracticeController::class, 'quota']);
     Route::post('/student/spin-practice', [StudentSpinPracticeController::class, 'generate'])->middleware('throttle:20,1');
+    Route::get('/student/rewards', [StudentRewardController::class, 'index']);
+    Route::post('/student/rewards/spin', [StudentRewardController::class, 'spin'])->middleware('throttle:10,1');
+    Route::post('/student/rewards/claim-pro', [StudentRewardController::class, 'claimPro'])->middleware('throttle:5,1');
+    Route::post('/student/rewards/scratch', [StudentRewardController::class, 'scratch'])->middleware('throttle:30,1');
 
     // Self-serve paper access and Razorpay checkout.
     Route::get('/storefront/my-papers', [StorefrontController::class, 'myPapers']);
@@ -253,6 +258,7 @@ Route::middleware(['auth:sanctum', 'is_manager', 'track.seen'])->prefix('manager
     Route::get('/pro/subscriptions', [ProMembershipController::class, 'managerSubscriptions']);
     Route::post('/pro/subscriptions/grant', [ProMembershipController::class, 'managerGrant']);
     Route::patch('/pro/subscriptions/{id}/cancel', [ProMembershipController::class, 'managerCancel']);
+    Route::get('/rewards/log', [\App\Http\Controllers\StudentRewardController::class, 'managerLog']);
 });
 
 // Manager-only maintenance for hosts without shell access. Kept outside the cached

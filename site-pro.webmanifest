@@ -1,0 +1,11 @@
+{
+  "name": "QUIZ- LAB PRO by GenZ IITian",
+  "short_name": "QUIZ- LAB PRO",
+  "icons": [
+    { "src": "/android-chrome-pro-192x192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/android-chrome-pro-512x512.png", "sizes": "512x512", "type": "image/png" }
+  ],
+  "theme_color": "#07200F",
+  "background_color": "#07200F",
+  "display": "standalone"
+}

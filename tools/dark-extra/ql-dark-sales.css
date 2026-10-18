@@ -295,3 +295,22 @@
   color: #ffffff;
 }
 
+:root[data-theme=dark] .pro-modal {
+  background: #121a29;
+  border-color: #223249;
+  box-shadow: 0 25px 60px -12px rgba(0, 0, 0, 0.7);
+}
+:root[data-theme=dark] .pro-modal-heading {
+  background: #0d1322;
+  border-color: #223249;
+}
+:root[data-theme=dark] .pro-modal-user-header h2 {
+  color: #f8fafc;
+}
+:root[data-theme=dark] .pro-modal-actions-bar {
+  border-color: #223249;
+}
+:root[data-theme=dark] .pro-detail-val {
+  color: #f8fafc;
+}
+

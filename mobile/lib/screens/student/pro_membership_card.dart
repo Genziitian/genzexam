@@ -6,6 +6,7 @@ import 'package:in_app_purchase/in_app_purchase.dart';
 import 'package:in_app_purchase_android/in_app_purchase_android.dart';
 
 import '../../api/api_client.dart';
+import '../../api/app_icon_service.dart';
 import '../../api/pro_play_offer.dart';
 import '../../widgets/premium_widgets.dart';
 import '../../widgets/success_tick.dart';
@@ -92,6 +93,9 @@ class _ProMembershipCardState extends State<ProMembershipCard> {
         '/membership',
       );
       _membership = response.data ?? {};
+      if (_membership['is_pro'] is bool) {
+        unawaited(AppIconService.syncIcon(isPro: _membership['is_pro'] == true));
+      }
       final paymentSetup = _membership['payment_setup'] is Map
           ? Map<String, dynamic>.from(_membership['payment_setup'] as Map)
           : <String, dynamic>{};

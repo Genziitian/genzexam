@@ -40,7 +40,7 @@
     if (!p.length) return '??';
     return (p.length === 1 ? p[0].slice(0, 2) : p[0][0] + p[p.length - 1][0]).toUpperCase();
   };
-  let proSearchTimer, proPage = 1, proLastPage = 1;
+  let proSearchTimer, proPage = 1, proLastPage = 1, proSubscriptions = [];
   async function loadProPlan() {
     try {
       const plan = await api('/manager/pro/plan');
@@ -50,9 +50,104 @@
       $('google-play-price-note').textContent = plan.google_play_price_note;
     } catch (error) { $('pro-plan-status').textContent = error.message; }
   }
+  function openProModal(row) {
+    if (!row) return;
+    const modal = $('pro-details-modal');
+    if (!modal) return;
+    const active = ['active','trialing'].includes(row.status);
+    const manual = row.provider === 'manual' || row.provider === 'manual legacy flag';
+    const provLower = String(row.provider || '').toLowerCase();
+    const provCls = provLower.includes('google') ? 'prov-google' : (provLower.includes('razor') ? 'prov-razor' : 'prov-manual');
+    const statusCls = active ? 'paid' : (['pending','trialing'].includes(row.status) ? 'unpaid' : 'later');
+
+    $('pro-modal-avatar').textContent = initialsOf(row.user?.name);
+    $('pro-modal-name').textContent = row.user?.name || 'Deleted account';
+    $('pro-modal-email').textContent = row.user?.email ? `${row.user.email} · Account #${row.user.id || '—'}` : 'No email';
+    $('pro-modal-user-id').textContent = row.user?.id ? '#' + row.user.id : '—';
+    $('pro-modal-status').innerHTML = `<span class="state ${statusCls}"><span class="state-dot" aria-hidden="true"></span>${esc(row.status)}</span>`;
+    $('pro-modal-provider').innerHTML = `<span class="pro-provider-badge ${provCls}">${esc(row.provider)}</span>`;
+    $('pro-modal-price').textContent = money(row.amount_paise);
+    $('pro-modal-product').textContent = row.product_id || '—';
+    $('pro-modal-sub-id').textContent = row.provider_subscription_id || '—';
+    $('pro-modal-started').textContent = proWhen(row.started_at || row.created_at);
+    $('pro-modal-trial').textContent = proWhen(row.trial_ends_at);
+    $('pro-modal-paid').textContent = proWhen(row.paid_at);
+    $('pro-modal-charge').textContent = row.cancel_at_period_end ? 'Access until ' + proWhen(row.current_period_ends_at) : proWhen(row.current_period_ends_at);
+
+    const cancelRow = $('pro-modal-cancel-row');
+    if (cancelRow) {
+      if (row.cancel_at_period_end || row.cancelled_at) {
+        cancelRow.hidden = false;
+        $('pro-modal-cancel-info').textContent = (row.cancel_at_period_end ? 'Renewal cancelled. ' : '') + (row.cancelled_at ? `Cancelled on ${proWhen(row.cancelled_at)}${row.cancellation_source ? ' via ' + row.cancellation_source : ''}` : '');
+      } else {
+        cancelRow.hidden = true;
+      }
+    }
+
+    const checkoutRow = $('pro-modal-checkout-row');
+    const checkoutLink = $('pro-modal-checkout-link');
+    if (checkoutRow && checkoutLink) {
+      if (row.checkout_url) {
+        checkoutRow.hidden = false;
+        checkoutLink.href = row.checkout_url;
+      } else {
+        checkoutRow.hidden = true;
+      }
+    }
+
+    const historyBtn = $('pro-modal-history-btn');
+    if (historyBtn) {
+      if (row.user?.id) {
+        historyBtn.hidden = false;
+        historyBtn.onclick = () => {
+          modal.close();
+          transactionUser = String(row.user.id);
+          transactionPage = 1;
+          $('pro-transaction-search').value = '';
+          loadTransactions();
+          $('pro-transactions').scrollIntoView({behavior:'smooth',block:'center'});
+        };
+      } else {
+        historyBtn.hidden = true;
+      }
+    }
+
+    const manageActions = $('pro-modal-manage-actions');
+    if (manageActions) {
+      let actionsHtml = '';
+      if (manual) {
+        if (active) actionsHtml += `<button type="button" class="btn-sm danger" data-pro-action="revoke_access" data-pro-id="${esc(row.id)}">Revoke access</button>`;
+      } else {
+        if (['active','trialing','pending'].includes(row.status) && !row.cancel_at_period_end) {
+          actionsHtml += `<button type="button" class="btn-sm" data-pro-action="cancel_renewal" data-pro-id="${esc(row.id)}">${row.status === 'pending' ? 'Cancel checkout' : 'Cancel renewal'}</button> `;
+        }
+        if (active) {
+          actionsHtml += `<button type="button" class="btn-sm danger" data-pro-action="revoke_access" data-pro-id="${esc(row.id)}">Revoke now</button>`;
+        }
+      }
+      manageActions.innerHTML = actionsHtml;
+    }
+
+    if (!modal.open) modal.showModal();
+  }
+
+  function handleProAction(button, onDone) {
+    const action = button.dataset.proAction;
+    const prompt = action === 'revoke_access'
+      ? 'Revoke Pro access immediately? Google Play purchases will request a prorated refund. Razorpay will stop the subscription immediately without an automatic refund.'
+      : 'Stop future renewals? Existing trial or paid access remains through its end date.';
+    if (!confirm(prompt)) return;
+    busy(button, async () => {
+      const result = await api('/manager/pro/subscriptions/' + button.dataset.proId + '/cancel', 'PATCH', {action});
+      await loadProSubscriptions();
+      if (onDone) onDone();
+      toast(result.message || 'Membership updated.');
+    });
+  }
+
   async function loadProSubscriptions() {
     const target = $('pro-list');
-    target.innerHTML = '<tr><td colspan="9" class="empty-row">Loading memberships…</td></tr>';
+    target.innerHTML = '<tr><td colspan="5" class="empty-row">Loading memberships…</td></tr>';
     try {
       const query = new URLSearchParams({status:$('pro-status-filter').value,search:$('pro-search').value.trim(),page:String(proPage),per_page:'50'});
       const result = await api('/manager/pro/subscriptions?' + query);
@@ -67,14 +162,9 @@
         metric('Free trials', summary.trialing || 0, '7-day trial period', 'trial') +
         metric('Pending checkout', summary.pending || 0, 'Awaiting payment confirmation', 'pending') +
         metric('Ended or revoked', Number(summary.cancelled || 0) + Number(summary.revoked || 0) + Number(summary.expired || 0), 'Historical or revoked', 'revoked');
-      target.innerHTML = result.data?.length ? result.data.map(row => {
+      proSubscriptions = result.data || [];
+      target.innerHTML = proSubscriptions.length ? proSubscriptions.map(row => {
         const active = ['active','trialing'].includes(row.status);
-        const manual = row.provider === 'manual' || row.provider === 'manual legacy flag';
-        const historyAction = row.user?.id ? `<button class="btn-sm" data-pro-history="${esc(row.user.id)}">User history</button> ` : '';
-        const actions = historyAction + (manual
-          ? (active ? `<button class="btn-sm danger" data-pro-action="revoke_access" data-pro-id="${esc(row.id)}">Revoke access</button>` : '—')
-          : `${['active','trialing','pending'].includes(row.status) && !row.cancel_at_period_end ? `<button class="btn-sm" data-pro-action="cancel_renewal" data-pro-id="${esc(row.id)}">${row.status === 'pending' ? 'Cancel checkout' : 'Cancel renewal'}</button>` : esc(row.cancel_at_period_end ? 'Renewal cancelled' : '—')} ${active ? `<button class="btn-sm danger" data-pro-action="revoke_access" data-pro-id="${esc(row.id)}">Revoke now</button>` : ''}`);
-        const chargeDate = row.cancel_at_period_end ? 'Access until ' + proWhen(row.current_period_ends_at) : proWhen(row.current_period_ends_at);
         const provLower = String(row.provider || '').toLowerCase();
         const provCls = provLower.includes('google') ? 'prov-google' : (provLower.includes('razor') ? 'prov-razor' : 'prov-manual');
         const statusCls = active ? 'paid' : (['pending','trialing'].includes(row.status) ? 'unpaid' : 'later');
@@ -88,17 +178,15 @@
               </div>
             </div>
           </td>
-          <td><span class="state ${statusCls}"><span class="state-dot" aria-hidden="true"></span>${esc(row.status)}</span>${row.cancelled_at?'<small class="pro-cancel-note">Action by '+esc(row.cancellation_source || 'provider')+'</small>':''}</td>
-          <td><span class="pro-provider-badge ${provCls}">${esc(row.provider)}</span>${row.product_id?'<small class="pro-product-tag">'+esc(row.product_id)+'</small>':''}${row.provider_subscription_id?'<small class="mono pro-sub-id">'+esc(row.provider_subscription_id)+'</small>':''}</td>
-          <td class="font-mono"><strong>${esc(money(row.amount_paise))}</strong></td>
-          <td class="cell-date">${esc(proWhen(row.started_at || row.created_at))}</td>
-          <td class="cell-date">${esc(proWhen(row.trial_ends_at))}</td>
-          <td class="cell-date">${esc(proWhen(row.paid_at))}</td>
-          <td class="cell-date">${esc(chargeDate)}${row.checkout_url?'<small><a href="'+esc(row.checkout_url)+'" target="_blank" rel="noopener">Open pending checkout ↗</a></small>':''}</td>
-          <td class="pro-actions">${actions}</td>
+          <td><span class="state ${statusCls}"><span class="state-dot" aria-hidden="true"></span>${esc(row.status)}</span></td>
+          <td><span class="pro-provider-badge ${provCls}">${esc(row.provider)}</span></td>
+          <td class="num font-mono" style="white-space:nowrap"><strong>${esc(money(row.amount_paise))}</strong></td>
+          <td class="pro-actions">
+            <button type="button" class="btn-sm primary" data-pro-view="${esc(row.id)}">View</button>
+          </td>
         </tr>`;
-      }).join('') : '<tr><td colspan="9" class="empty-row">No subscription records match these filters.</td></tr>';
-    } catch (error) { target.innerHTML = `<tr><td colspan="9" class="empty-row">${esc(error.message)}</td></tr>`; }
+      }).join('') : '<tr><td colspan="5" class="empty-row">No subscription records match these filters.</td></tr>';
+    } catch (error) { target.innerHTML = `<tr><td colspan="5" class="empty-row">${esc(error.message)}</td></tr>`; }
   }
   let transactionPage = 1, transactionLastPage = 1, transactionUser = '';
   async function loadTransactions() {
@@ -134,7 +222,7 @@
         if (avatarEl) avatarEl.textContent = 'All';
         if (nameEl) nameEl.textContent = 'All Students & Purchases';
         if (badgeEl) { badgeEl.textContent = 'Global Ledger'; badgeEl.className = 'pro-status-chip'; }
-        if (userEl) userEl.textContent = 'Showing all transactions and paper receipts across students.';
+        if (userEl) userEl.textContent = '';
         if (stripEl) stripEl.innerHTML = '';
         if (actionsEl) actionsEl.hidden = true;
         if (banner) banner.classList.remove('is-inspecting');
@@ -174,7 +262,6 @@
         target.innerHTML = `<div class="pro-empty-card">
           <div class="pro-empty-icon">🧾</div>
           <h4>No recorded transactions</h4>
-          <p class="hint">${esc(result.history_note || 'Paper orders and verified subscription receipts will appear here automatically when payments are processed.')}</p>
         </div>`;
       }
       $('pro-transactions-page').textContent = `Page ${transactionPage} of ${transactionLastPage} · ${ledger.total || 0} records`;
@@ -194,7 +281,31 @@
       loadTransactions();
     };
   }
-  $('pro-list').addEventListener('click', event => { const button = event.target.closest('[data-pro-history]'); if (!button) return; transactionUser = button.dataset.proHistory; transactionPage = 1; $('pro-transaction-search').value = ''; loadTransactions(); $('pro-transactions').scrollIntoView({behavior:'smooth',block:'center'}); });
+  $('pro-list').addEventListener('click', event => {
+    const viewBtn = event.target.closest('[data-pro-view]');
+    if (viewBtn) {
+      const row = proSubscriptions.find(s => String(s.id) === String(viewBtn.dataset.proView));
+      if (row) openProModal(row);
+      return;
+    }
+    const actBtn = event.target.closest('[data-pro-action]');
+    if (actBtn) { handleProAction(actBtn); return; }
+    const button = event.target.closest('[data-pro-history]');
+    if (!button) return;
+    transactionUser = button.dataset.proHistory;
+    transactionPage = 1;
+    $('pro-transaction-search').value = '';
+    loadTransactions();
+    $('pro-transactions').scrollIntoView({behavior:'smooth',block:'center'});
+  });
+  const proModal = $('pro-details-modal');
+  if (proModal) {
+    proModal.addEventListener('click', event => {
+      if (event.target === proModal) { proModal.close(); return; }
+      const actBtn = event.target.closest('[data-pro-action]');
+      if (actBtn) handleProAction(actBtn, () => proModal.close());
+    });
+  }
   async function loadPro() { await Promise.all([loadProPlan(), loadProSubscriptions(), loadTransactions()]); }
   $('pro-plan-form').onsubmit = event => { event.preventDefault(); const f=event.currentTarget; busy(f.querySelector('button'),async()=>{const result=await api('/manager/pro/plan','PUT',{price_paise:Math.round(Number(value(f,'price'))*100),trial_days:Number(value(f,'trial_days')),enabled:value(f,'enabled')==='1'}); f.elements.price.value=(Number(result.price_paise)/100).toFixed(2); $('google-play-price-note').textContent=result.google_play_price_note; $('pro-plan-status').textContent=result.google_play_price_managed?'Web price and Google Play price for new India subscribers were updated. Existing Google Play price cohorts are unchanged.':'Web plan saved. '+result.google_play_price_note; toast('Plan updated.'); },$('pro-plan-status')); };
   $('pro-status-filter').onchange=()=>{proPage=1;loadProSubscriptions();};
@@ -202,7 +313,6 @@
   $('previous-pro').onclick=()=>{if(proPage>1){proPage--;loadProSubscriptions();}};
   $('next-pro').onclick=()=>{if(proPage<proLastPage){proPage++;loadProSubscriptions();}};
   $('refresh-pro').onclick=loadPro;
-  $('pro-list').onclick=event=>{const button=event.target.closest('[data-pro-action]');if(!button)return;const action=button.dataset.proAction;const prompt=action==='revoke_access'?'Revoke Pro access immediately? Google Play purchases will request a prorated refund. Razorpay will stop the subscription immediately without an automatic refund.':'Stop future renewals? Existing trial or paid access remains through its end date.';if(!confirm(prompt))return;busy(button,async()=>{const result=await api('/manager/pro/subscriptions/'+button.dataset.proId+'/cancel','PATCH',{action});await loadProSubscriptions();toast(result.message || 'Membership updated.');});};
   $('pro-grant-form').onsubmit=event=>{event.preventDefault();const f=event.currentTarget;busy(f.querySelector('button'),async()=>{const result=await api('/manager/pro/subscriptions/grant','POST',{email:value(f,'email').trim(),days:Number(value(f,'days'))});f.reset();f.elements.days.value=30;$('pro-grant-status').textContent=result.message || 'Pro access granted.';await loadProSubscriptions();toast(result.message || 'Pro access granted.');},$('pro-grant-status'));};
   async function loadDeletionRequests() { $('deletion-request-list').innerHTML='<div class="notice">Loading requests…</div>'; try { deletionRequests=await api('/manager/account-deletion-requests').then(data=>data.requests || []);renderDeletionRequests(); } catch(error) { $('deletion-request-list').innerHTML=`<div class="notice">${esc(error.message)}</div>`; } }
   async function loadWeeks(selected) { const weekly=['practice','practice_graded'].includes(value(form,'section')); $('week-field').hidden=!weekly; $('paper-week').required=weekly; if(!weekly) return; $('paper-week').innerHTML='<option value="">Loading weeks…</option>'; if(!value(form,'course_id')) return; try { const rows=await api('/manager/courses/'+encodeURIComponent(value(form,'course_id'))+'/weeks'); $('paper-week').innerHTML='<option value="">Choose a week</option>'+rows.map(w=>`<option value="${esc(w.id)}">Week ${esc(w.week_number)}${w.title?' — '+esc(w.title):''}</option>`).join(''); if(selected) $('paper-week').value=selected; } catch(error){toast(error.message);} }
@@ -263,7 +373,178 @@
     const cell = value => { let text = String(value ?? ''); if (/^[=+\-@\t\r]/.test(text)) text = "'" + text; return '"' + text.replace(/"/g, '""') + '"'; };
     const link = document.createElement('a'); link.href = URL.createObjectURL(new Blob(['﻿' + rows.map(row => row.map(cell).join(',')).join('\r\n')], {type: 'text/csv'})); link.download = 'quiz-lab-orders-' + new Date().toISOString().slice(0, 10) + '.csv'; document.body.appendChild(link); link.click(); link.remove(); setTimeout(() => URL.revokeObjectURL(link.href), 1000);
   }
-  document.querySelectorAll('[data-tab]').forEach(button=>button.onclick=()=>{ document.querySelectorAll('[data-tab]').forEach(b=>b.setAttribute('aria-current',b===button?'page':'false')); ['sales','papers','courses','pro','deletion-requests'].forEach(t=>$(t+'-panel').hidden=t!==button.dataset.tab);if(button.dataset.tab==='sales')loadSales();if(button.dataset.tab==='pro')loadPro();if(button.dataset.tab==='deletion-requests')loadDeletionRequests(); });
+  let rewardsLog = [];
+  async function loadRewardsLog() {
+    const listEl = $('rewards-log-list');
+    if (listEl) listEl.innerHTML = '<tr><td colspan="6" class="notice">Loading active rewards log…</td></tr>';
+    let data = { log: [], metrics: {} };
+    try {
+      data = await api('/manager/rewards/log');
+    } catch (_) {
+      data = { log: [], metrics: {} };
+    }
+
+    // Merge with any client-recorded localStorage log entries
+    let localLog = [];
+    try {
+      localLog = JSON.parse(localStorage.getItem('ql_rewards_global_log') || '[]');
+    } catch (_) {}
+
+    const seenIds = new Set((data.log || []).map(r => r.id));
+    const merged = [...(data.log || [])];
+    for (const item of localLog) {
+      if (!seenIds.has(item.id)) {
+        seenIds.add(item.id);
+        merged.push(item);
+      }
+    }
+
+    // Sort newest first
+    merged.sort((a, b) => new Date(b.created_at || 0) - new Date(a.created_at || 0));
+    rewardsLog = merged;
+
+    const totalSpins = rewardsLog.length;
+    const activeCoupons = rewardsLog.filter(r => (r.prize_type === 'coupon_pct' || r.prize_type === 'coupon_flat') && !r.is_expired).length;
+    const proWins = rewardsLog.filter(r => r.prize_type === 'free_pro').length;
+    const totalXp = rewardsLog.filter(r => r.prize_type === 'bonus_xp').length * 50;
+
+    if ($('metric-total-spins')) $('metric-total-spins').textContent = totalSpins;
+    if ($('metric-active-coupons')) $('metric-active-coupons').textContent = activeCoupons;
+    if ($('metric-pro-wins')) $('metric-pro-wins').textContent = proWins;
+    if ($('metric-total-xp')) $('metric-total-xp').textContent = totalXp + ' XP';
+
+    renderRewardsLog();
+  }
+
+  function renderRewardsLog() {
+    const query = ($('rewards-search')?.value || '').trim().toLowerCase();
+    const typeFilter = $('rewards-filter-type')?.value || '';
+    const listEl = $('rewards-log-list');
+    if (!listEl) return;
+
+    let filtered = rewardsLog.filter(row => {
+      if (typeFilter === 'coupons') {
+        if (row.prize_type !== 'coupon_pct' && row.prize_type !== 'coupon_flat') return false;
+      } else if (typeFilter && row.prize_type !== typeFilter) {
+        return false;
+      }
+      if (query) {
+        const text = [
+          row.user_name || '',
+          row.user_email || '',
+          row.coupon_code || '',
+          row.prize_title || '',
+          row.status || ''
+        ].join(' ').toLowerCase();
+        if (!text.includes(query)) return false;
+      }
+      return true;
+    });
+
+    if (filtered.length === 0) {
+      listEl.innerHTML = '<tr><td colspan="6" class="notice">No spin records found matching your filters.</td></tr>';
+      return;
+    }
+
+    listEl.innerHTML = filtered.map(row => {
+      const now = Date.now();
+      const isExpired = row.expires_at ? now > new Date(row.expires_at).getTime() : false;
+      let statusChip = '';
+      if (row.prize_type === 'free_pro') {
+        statusChip = row.is_claimed
+          ? '<span class="status-chip chip-pro" style="background:#fef3c7;color:#92400e;border:1px solid #fde68a">👑 Pro Claimed</span>'
+          : '<span class="status-chip chip-trial" style="background:#ede9fe;color:#5b21b6;border:1px solid #ddd6fe">👑 Unclaimed Pro</span>';
+      } else if (row.prize_type === 'try_again') {
+        statusChip = '<span class="status-chip chip-cancelled" style="background:#f1f5f9;color:#64748b;border:1px solid #e2e8f0">🍀 Try Tomorrow</span>';
+      } else if (row.prize_type === 'bonus_xp') {
+        statusChip = '<span class="status-chip chip-paid" style="background:#eff6ff;color:#1d4ed8;border:1px solid #bfdbfe">⚡ Claimed (+50 XP)</span>';
+      } else if (isExpired) {
+        statusChip = '<span class="status-chip chip-failed" style="background:#fee2e2;color:#991b1b;border:1px solid #fecaca">Outdated / Expired</span>';
+      } else if (row.is_scratched || row.status === 'Active (Scratched)') {
+        statusChip = '<span class="status-chip chip-active" style="background:#dcfce7;color:#15803d;border:1px solid #bbf7d0">● Scratched · Active</span>';
+      } else {
+        statusChip = '<span class="status-chip chip-open" style="background:#fef9c3;color:#854d0e;border:1px solid #fef08a">✨ Unscratched</span>';
+      }
+
+      const dateStr = row.created_at ? new Date(row.created_at).toLocaleString('en-IN', {
+        dateStyle: 'medium',
+        timeStyle: 'short'
+      }) : '—';
+
+      const expStr = row.expires_at ? new Date(row.expires_at).toLocaleDateString('en-IN', {
+        dateStyle: 'medium'
+      }) : '—';
+
+      const codeDisplay = row.coupon_code
+        ? '<div style="display:inline-flex;align-items:center;gap:6px"><code style="background:#f1f5f9;padding:2px 6px;border-radius:4px;font-weight:700;font-size:12px;color:#1e293b">' + esc(row.coupon_code) + '</code><button type="button" class="btn-copy-code" data-code="' + esc(row.coupon_code) + '" style="background:transparent;border:0;cursor:pointer;font-size:12px" title="Copy code">📋</button></div>'
+        : '<span style="color:#94a3b8">—</span>';
+
+      return '<tr>' +
+        '<td>' +
+          '<strong>' + esc(row.user_name || 'Student') + '</strong>' +
+          '<div class="hint" style="font-size:11px">' + esc(row.user_email || '') + '</div>' +
+        '</td>' +
+        '<td>' +
+          '<strong>' + esc(row.prize_title || 'Reward') + '</strong>' +
+        '</td>' +
+        '<td>' + codeDisplay + '</td>' +
+        '<td>' + statusChip + '</td>' +
+        '<td style="white-space:nowrap">' + esc(dateStr) + '</td>' +
+        '<td style="white-space:nowrap;color:' + (isExpired ? '#ef4444' : '#64748b') + '">' + esc(expStr) + '</td>' +
+      '</tr>';
+    }).join('');
+
+    listEl.querySelectorAll('.btn-copy-code').forEach(btn => {
+      btn.onclick = () => {
+        const code = btn.dataset.code;
+        if (code) {
+          navigator.clipboard.writeText(code).then(() => {
+            btn.textContent = '✓';
+            setTimeout(() => { btn.textContent = '📋'; }, 1500);
+          });
+        }
+      };
+    });
+  }
+
+  function exportRewardsLog() {
+    if (!rewardsLog || rewardsLog.length === 0) {
+      toast('No rewards logs available to download.');
+      return;
+    }
+    const cell = value => {
+      let text = String(value ?? '');
+      if (/^[=+\-@\t\r]/.test(text)) text = "'" + text;
+      return '"' + text.replace(/"/g, '""') + '"';
+    };
+    const rows = [['Log ID', 'Student Name', 'Student Email', 'Prize Won', 'Prize Type', 'Coupon Code', 'Status', 'Spun At', 'Expires At']];
+    rewardsLog.forEach(r => {
+      rows.push([
+        r.id,
+        r.user_name,
+        r.user_email,
+        r.prize_title,
+        r.prize_type,
+        r.coupon_code || '',
+        r.status || '',
+        r.created_at ? new Date(r.created_at).toISOString() : '',
+        r.expires_at ? new Date(r.expires_at).toISOString() : ''
+      ]);
+    });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(new Blob(['﻿' + rows.map(row => row.map(cell).join(',')).join('\r\n')], { type: 'text/csv' }));
+    link.download = 'quiz-lab-rewards-log-' + new Date().toISOString().slice(0, 10) + '.csv';
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    setTimeout(() => URL.revokeObjectURL(link.href), 1000);
+  }
+
+  document.querySelectorAll('[data-tab]').forEach(button=>button.onclick=()=>{ document.querySelectorAll('[data-tab]').forEach(b=>b.setAttribute('aria-current',b===button?'page':'false')); ['sales','papers','courses','pro','deletion-requests','rewards-log'].forEach(t=>{ const el=$(t+'-panel'); if(el) el.hidden=t!==button.dataset.tab; });if(button.dataset.tab==='sales')loadSales();if(button.dataset.tab==='pro')loadPro();if(button.dataset.tab==='deletion-requests')loadDeletionRequests();if(button.dataset.tab==='rewards-log')loadRewardsLog(); });
+  if ($('refresh-rewards-log')) $('refresh-rewards-log').onclick = loadRewardsLog;
+  if ($('export-rewards-log')) $('export-rewards-log').onclick = exportRewardsLog;
+  if ($('rewards-search')) $('rewards-search').oninput = renderRewardsLog;
+  if ($('rewards-filter-type')) $('rewards-filter-type').onchange = renderRewardsLog;
   $('refresh-deletion-requests').onclick=loadDeletionRequests;
   $('deletion-request-filter').onchange=renderDeletionRequests;
   $('deletion-request-list').onchange=e=>{const select=e.target.closest('[data-deletion-status]');if(!select)return;const previous=deletionRequests.find(row=>String(row.id)===select.dataset.deletionStatus)?.status;select.disabled=true;api('/manager/account-deletion-requests/'+encodeURIComponent(select.dataset.deletionStatus),'PATCH',{status:select.value}).then(result=>{const index=deletionRequests.findIndex(row=>String(row.id)===select.dataset.deletionStatus);if(index>=0)deletionRequests[index]=result.request;renderDeletionRequests();toast('Request status updated.');}).catch(error=>{select.value=previous || 'pending';select.disabled=false;toast(error.message);});};

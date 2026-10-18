@@ -115,6 +115,7 @@ class AuthState extends ChangeNotifier with WidgetsBindingObserver {
       final cached = await _readCachedUser();
       if (cached != null) {
         _user = cached;
+        _syncAppIcon();
         _status = AuthStatus.authenticated;
         _errorMessage = null;
         _startOfflinePaperSync(cached.id);
@@ -124,6 +125,7 @@ class AuthState extends ChangeNotifier with WidgetsBindingObserver {
 
       final profile = await _authService.getMe();
       _user = profile;
+      _syncAppIcon();
       await _cacheUser(profile);
       _status = AuthStatus.authenticated;
       _errorMessage = null;
@@ -159,6 +161,7 @@ class AuthState extends ChangeNotifier with WidgetsBindingObserver {
       final profile = await _authService.getMe();
       if (generation != _sessionGeneration || _user?.id != profile.id) return;
       _user = profile;
+      _syncAppIcon();
       await _cacheUser(profile);
       _errorMessage = null;
       notifyListeners();
@@ -183,6 +186,7 @@ class AuthState extends ChangeNotifier with WidgetsBindingObserver {
     try {
       final res = await _authService.login(email: email, password: password);
       _user = res.user;
+      _syncAppIcon();
       await _cacheUser(res.user);
       _startOfflinePaperSync(res.user.id);
       _status = AuthStatus.authenticated;
@@ -252,6 +256,7 @@ class AuthState extends ChangeNotifier with WidgetsBindingObserver {
       }
 
       _user = profile;
+      _syncAppIcon();
       await _cacheUser(profile);
       _startOfflinePaperSync(profile.id);
       _isGoogleSignInPending = false;
@@ -314,6 +319,7 @@ class AuthState extends ChangeNotifier with WidgetsBindingObserver {
         data: {'name': trimmed},
       );
       _user = await _authService.getMe();
+      _syncAppIcon();
       await _cacheUser(_user!);
       notifyListeners();
       return null;
@@ -322,6 +328,13 @@ class AuthState extends ChangeNotifier with WidgetsBindingObserver {
     } catch (_) {
       return 'Could not save your name. Please try again.';
     }
+  }
+
+  /// Triggers a manual sync of the launcher app icon with Pro status.
+  void syncAppIcon() => _syncAppIcon();
+
+  void _syncAppIcon() {
+    unawaited(AppIconService.syncIcon(isPro: _user?.isPro == true));
   }
 
   /// Allows Manager to toggle previewing the 5-Tab Student View.
@@ -376,6 +389,7 @@ class AuthState extends ChangeNotifier with WidgetsBindingObserver {
     _offlineSyncTimer = null;
     _apiClient.deleteCachedUser();
     _user = null;
+    unawaited(AppIconService.syncIcon(isPro: false));
     _isPreviewingStudentView = false;
     _googleAttempt++;
     _isGoogleSignInPending = false;

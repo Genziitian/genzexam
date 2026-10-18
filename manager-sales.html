@@ -7,7 +7,7 @@
 <main>
 <div id="gate" class="notice" role="status">Checking your manager account…</div>
 <div id="workspace" hidden>
-<nav class="tabs" aria-label="Manager sections"><button data-tab="sales" aria-current="page">Sales</button><button data-tab="papers">Papers</button><button data-tab="courses">Courses</button><button data-tab="pro">Memberships &amp; transactions</button><button data-tab="deletion-requests">Account deletion</button></nav>
+<nav class="tabs" aria-label="Manager sections"><button data-tab="sales" aria-current="page">Sales</button><button data-tab="papers">Papers</button><button data-tab="courses">Courses</button><button data-tab="pro">Memberships &amp; transactions</button><button data-tab="deletion-requests">Account deletion</button><button data-tab="rewards-log">🎁 Daily Rewards Log</button></nav>
 <section id="sales-panel">
 <div class="sales-toolbar"><button type="button" class="theme-toggle" data-ql-theme-toggle aria-label="Switch theme"></button><button id="refresh-sales" class="btn-refresh">Refresh</button></div>
 <div id="sales-metrics" class="metrics" aria-live="polite"><div class="notice">Loading sales…</div></div>
@@ -25,7 +25,6 @@
 <div class="pro-header-toolbar">
   <div class="pro-header-titles">
     <h2>Memberships &amp; transactions</h2>
-    <p class="pro-header-sub">Real-time ledger synchronized with Razorpay &amp; Google Play Billing webhooks.</p>
   </div>
   <div class="pro-header-actions">
     <div class="pro-telemetry-pill">
@@ -54,18 +53,13 @@
           <span id="pro-history-name" class="pro-student-name">All Students</span>
           <span id="pro-history-badge" class="pro-status-chip">Global Ledger</span>
         </div>
-        <p id="pro-history-user" class="hint pro-student-meta">Showing all transactions across payment providers.</p>
+        <p id="pro-history-user" class="hint pro-student-meta"></p>
         <div id="pro-history-membership-strip" class="pro-membership-strip"></div>
       </div>
     </div>
     <div id="pro-spotlight-actions" class="pro-spotlight-actions" hidden>
       <button type="button" id="pro-clear-history" class="pro-btn-subtle">Close history</button>
     </div>
-  </div>
-
-  <div class="pro-sync-alert" role="status">
-    <span class="pro-sync-icon" aria-hidden="true">🔄</span>
-    <span>Paper orders and verified subscription receipts synchronize automatically via Google Play &amp; Razorpay webhooks.</span>
   </div>
 
   <div class="filters pro-tx-filters">
@@ -88,7 +82,6 @@
       <div class="pro-title-icon">⚙️</div>
       <div>
         <h3>Plan &amp; pricing configuration</h3>
-        <p class="hint">Monthly Pro subscription pricing and free trial</p>
       </div>
     </div>
     <div class="form-grid">
@@ -108,7 +101,6 @@
       <div class="pro-title-icon">⚡</div>
       <div>
         <h3>Grant complimentary Pro</h3>
-        <p class="hint">Manual access grant override without payment gate</p>
       </div>
     </div>
     <div class="form-grid">
@@ -126,7 +118,6 @@
   <div class="pro-block-header">
     <div>
       <h3>All memberships directory</h3>
-      <p class="hint">Registered subscriber entitlements and access status across cohorts.</p>
     </div>
   </div>
   <div class="filters">
@@ -148,16 +139,12 @@
           <th>Student</th>
           <th>Status</th>
           <th>Provider</th>
-          <th>Price</th>
-          <th>Started</th>
-          <th>Trial ends</th>
-          <th>Last paid</th>
-          <th>Next charge / access end</th>
+          <th class="num">Price</th>
           <th class="pro-actions-header">Actions</th>
         </tr>
       </thead>
       <tbody id="pro-list">
-        <tr><td colspan="9" class="empty-row">Open this tab to load memberships.</td></tr>
+        <tr><td colspan="5" class="empty-row">Open this tab to load memberships.</td></tr>
       </tbody>
     </table>
   </div>
@@ -169,6 +156,57 @@
 </div>
 </section>
 
+<section id="rewards-log-panel" class="pro-dashboard" hidden>
+  <div class="pro-header-toolbar">
+    <div class="pro-header-titles">
+      <h2>🎁 Daily Rewards &amp; Lucky Spin Log</h2>
+      <p class="hint">Active audit trail of student wheel spins, revealed scratch coupons, and Free Pro activations with exact timestamps.</p>
+    </div>
+    <div class="pro-header-actions">
+      <button id="refresh-rewards-log" class="btn-refresh">Refresh Log</button>
+      <button id="export-rewards-log" class="btn-export">Download CSV</button>
+    </div>
+  </div>
+
+  <div id="rewards-metrics" class="metrics pro-metrics-grid" aria-live="polite">
+    <div class="metric-card"><span class="metric-label">Total Spins Recorded</span><strong id="metric-total-spins" class="metric-value">—</strong></div>
+    <div class="metric-card"><span class="metric-label">Active Coupons</span><strong id="metric-active-coupons" class="metric-value">—</strong></div>
+    <div class="metric-card"><span class="metric-label">30D Free Pro Won</span><strong id="metric-pro-wins" class="metric-value">—</strong></div>
+    <div class="metric-card"><span class="metric-label">Total Study XP Awarded</span><strong id="metric-total-xp" class="metric-value">—</strong></div>
+  </div>
+
+  <div class="panel pro-panel-block">
+    <div class="filters">
+      <input id="rewards-search" type="search" placeholder="Search student name, email, or coupon code…" aria-label="Search rewards log">
+      <select id="rewards-filter-type" aria-label="Filter reward prize">
+        <option value="">All Prizes &amp; Spins</option>
+        <option value="coupons">Discount Coupons (5%, 25%, ₹50, ₹100)</option>
+        <option value="free_pro">30 Days Free Pro</option>
+        <option value="bonus_xp">+50 Study XP</option>
+        <option value="try_again">Try Again / No Prize</option>
+      </select>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Student</th>
+            <th>Reward Won</th>
+            <th>Coupon Code</th>
+            <th>Status</th>
+            <th>Spun At</th>
+            <th>Auto-Disables On</th>
+          </tr>
+        </thead>
+        <tbody id="rewards-log-list">
+          <tr><td colspan="6" class="notice">Loading active rewards log…</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
 </div>
 </main>
 <dialog id="editor" aria-labelledby="editor-title"><div class="dialog-heading"><div><p class="eyebrow">Paper editor</p><h2 id="editor-title">Create a paper</h2></div><button data-close="editor" aria-label="Close paper editor">Close</button></div><p id="editor-state" class="notice"></p>
@@ -176,6 +214,74 @@
 <section id="details-step"><form id="paper-form"><div class="form-grid"><label class="full">Paper title<input name="title" maxlength="200" required></label><label>Course<select name="course_id" id="paper-course" required></select></label><label>Paper type<select name="section" id="paper-section"><option value="mock_test">Mock test</option><option value="quiz1">Quiz 1</option><option value="quiz2">Quiz 2</option><option value="endterm">End term</option><option value="practice">Weekly practice</option><option value="practice_graded">Graded practice</option></select></label><label id="week-field" hidden>Week<select name="week_id" id="paper-week"></select></label><label>Year<input name="year" type="number" min="1990" max="2100" placeholder="Optional"></label><label>Time limit (minutes)<input name="time_limit_minutes" type="number" min="1" max="300" placeholder="No time limit"></label><label class="full">Description for students<textarea name="description" rows="4" placeholder="Explain what this paper covers and what students receive."></textarea></label><label>Price (₹)<input name="price" type="number" min="0" step="0.01" inputmode="decimal" value="0" required><span class="hint">Set ₹0 for a free paper.</span></label><label>Access days<input name="access_days" type="number" min="1" max="3650" inputmode="numeric" placeholder="No expiry"></label></div><button class="primary">Save paper</button><p class="form-status" role="status"></p></form></section>
 <section id="questions-step" hidden><div class="toolbar"><p class="hint">Save the paper first, then add its questions.</p><button id="add-question">Add question</button></div><p id="question-lock" class="notice" hidden>This paper is published. Take it offline in Preview &amp; publish before editing its questions.</p><div id="question-list" class="stack"></div><details id="question-import" class="panel"><summary>Import questions from JSON</summary><form id="import-form"><label>Questions JSON<textarea name="json" rows="7" required placeholder='Paste a questions array or an object containing a questions array'></textarea></label><p class="hint">Import adds questions to this paper. All entries must be valid; existing questions are kept.</p><button class="primary">Import questions</button><p class="form-status" role="status"></p></form></details><form id="question-form" class="panel" hidden><h3 id="question-title">Add question</h3><div class="form-grid"><label>Question type<select name="type" id="question-type"><option value="mcq">Single answer</option><option value="multi_select">Multiple answers</option><option value="true_false">True / false</option><option value="short_answer">Short answer</option><option value="numerical">Numerical</option><option value="comprehension">Reading passage</option></select></label><label>Marks<input name="marks" type="number" min="0" max="100" step="0.01" value="1" required></label><label class="full">Question<textarea name="stem" rows="4" required></textarea></label><label>Difficulty<select name="difficulty"><option value="easy">Easy</option><option value="medium" selected>Medium</option><option value="hard">Hard</option></select></label></div><div id="option-fields"><p class="hint">Enter each choice and tick the correct answer(s).</p><div id="options" class="stack"></div><button type="button" id="add-option">Add choice</button></div><label id="short-field" hidden>Accepted answers (one per line)<textarea name="acceptable_answers" rows="3"></textarea></label><div id="numerical-fields" class="form-grid" hidden><label>Correct number<input name="numerical_answer" type="number" step="any"></label><label>Allowed tolerance<input name="numerical_tolerance" type="number" min="0" step="any" value="0.01"></label></div><label>Explanation<textarea name="explanation" rows="3"></textarea></label><div class="toolbar"><button class="primary">Save question</button><button type="button" id="cancel-question">Cancel</button></div><p class="form-status" role="status"></p></form></section>
 <section id="preview-step" hidden><div id="paper-preview"></div><div class="toolbar"><button class="primary" id="publish-paper">Activate / Publish</button><button id="deactivate-paper">Deactivate</button></div><p id="publish-status" role="status"></p></section>
+</dialog>
+<dialog id="pro-details-modal" class="pro-modal" aria-labelledby="pro-modal-name">
+  <div class="dialog-heading pro-modal-heading">
+    <div class="pro-modal-user-header">
+      <div id="pro-modal-avatar" class="pro-avatar-circle"></div>
+      <div>
+        <h2 id="pro-modal-name">Student Details</h2>
+        <p id="pro-modal-email" class="hint pro-modal-sub"></p>
+      </div>
+    </div>
+    <button type="button" data-close="pro-details-modal" aria-label="Close dialog">Close</button>
+  </div>
+  <div class="pro-modal-body">
+    <div class="pro-modal-grid">
+      <div class="pro-detail-field">
+        <label>Account ID</label>
+        <span id="pro-modal-user-id" class="font-mono pro-detail-val">—</span>
+      </div>
+      <div class="pro-detail-field">
+        <label>Membership Status</label>
+        <div id="pro-modal-status"></div>
+      </div>
+      <div class="pro-detail-field">
+        <label>Provider</label>
+        <div id="pro-modal-provider"></div>
+      </div>
+      <div class="pro-detail-field">
+        <label>Price</label>
+        <span id="pro-modal-price" class="font-mono pro-detail-val">—</span>
+      </div>
+      <div class="pro-detail-field">
+        <label>Product / Plan ID</label>
+        <span id="pro-modal-product" class="mono pro-detail-val">—</span>
+      </div>
+      <div class="pro-detail-field">
+        <label>Subscription / Order ID</label>
+        <span id="pro-modal-sub-id" class="mono pro-detail-val">—</span>
+      </div>
+      <div class="pro-detail-field">
+        <label>Started Date</label>
+        <span id="pro-modal-started" class="cell-date pro-detail-val">—</span>
+      </div>
+      <div class="pro-detail-field">
+        <label>Trial Ends</label>
+        <span id="pro-modal-trial" class="cell-date pro-detail-val">—</span>
+      </div>
+      <div class="pro-detail-field">
+        <label>Last Paid Date</label>
+        <span id="pro-modal-paid" class="cell-date pro-detail-val">—</span>
+      </div>
+      <div class="pro-detail-field">
+        <label>Next Charge / Access End</label>
+        <span id="pro-modal-charge" class="cell-date pro-detail-val">—</span>
+      </div>
+      <div id="pro-modal-cancel-row" class="pro-detail-field full" hidden>
+        <label>Cancellation Details</label>
+        <span id="pro-modal-cancel-info" class="hint pro-detail-val">—</span>
+      </div>
+      <div id="pro-modal-checkout-row" class="pro-detail-field full" hidden>
+        <label>Pending Checkout</label>
+        <a id="pro-modal-checkout-link" href="#" target="_blank" rel="noopener">Open pending checkout ↗</a>
+      </div>
+    </div>
+    <div class="pro-modal-actions-bar">
+      <button type="button" id="pro-modal-history-btn" class="btn-sm">View Transaction Ledger</button>
+      <div id="pro-modal-manage-actions" class="pro-modal-manage-actions"></div>
+    </div>
+  </div>
 </dialog>
 <div id="toast" role="status" aria-live="polite"></div>
 <script src="/storefront-runtime.js?v=20261017a"></script><script src="/manager-sales.js?v=20261018a"></script></body></html>

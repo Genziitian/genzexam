@@ -12,6 +12,7 @@ export 'leaderboard_service.dart';
 export 'admin_service.dart';
 export 'storefront_service.dart';
 export 'manager_sales_service.dart';
+export 'app_icon_service.dart';
 
 // Models
 export 'models/auth_model.dart';

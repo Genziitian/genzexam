@@ -631,6 +631,137 @@
       tag(path, "pathLength", "1");
       tag(path, "data-ql-draw", "");
     });
+
+    ensureDashboardQuickActions(root);
+  }
+
+  function showDownloadsModal() {
+    var dialog = document.getElementById("ql-downloads-dialog");
+    if (!dialog) {
+      dialog = document.createElement("dialog");
+      dialog.id = "ql-downloads-dialog";
+      dialog.className = "ql-downloads-dialog";
+      dialog.innerHTML =
+        '<div class="ql-dl-modal-box">' +
+          '<div class="ql-dl-icon-circle">' +
+            '<svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14l-4-4h3V8h2v4h3l-4 4z"/></svg>' +
+          '</div>' +
+          '<h2>Available in App Only</h2>' +
+          '<p>This is only available in the app.<br>Please wait, that is coming soon!</p>' +
+          '<button type="button" class="ql-dl-close-btn">Got it</button>' +
+        '</div>';
+      document.body.appendChild(dialog);
+
+      var closeBtn = dialog.querySelector(".ql-dl-close-btn");
+      if (closeBtn) closeBtn.addEventListener("click", function () { dialog.close(); });
+      dialog.addEventListener("click", function (e) {
+        var box = dialog.querySelector(".ql-dl-modal-box");
+        if (!box) return;
+        var rect = box.getBoundingClientRect();
+        if (e.clientX < rect.left || e.clientX > rect.right || e.clientY < rect.top || e.clientY > rect.bottom) {
+          dialog.close();
+        }
+      });
+    }
+    if (typeof dialog.showModal === "function") {
+      dialog.showModal();
+    } else {
+      dialog.setAttribute("open", "");
+    }
+  }
+
+  function ensureDashboardQuickActions(root) {
+    if (!root) return;
+    var statCard = root.querySelector("[data-ql-stat]");
+    var statGrid = statCard ? statCard.parentElement : null;
+    var perfCard = root.querySelector("[data-ql-card=perf]");
+    if (!statGrid && !perfCard) return;
+
+    var existing = root.querySelector("#ql-dash-quick-actions");
+    if (!existing) {
+      existing = document.createElement("div");
+      existing.id = "ql-dash-quick-actions";
+      existing.className = "ql-dash-qa";
+      existing.innerHTML =
+        '<div class="ql-qa-row">' +
+          '<button type="button" class="ql-qa-card ql-qa-half ql-qa-downloads" aria-label="Downloads">' +
+            '<div class="ql-qa-icon-wrap" style="background:#DBEAFE">' +
+              '<svg class="ql-qa-icon" style="color:#2563EB" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14l-4-4h3V8h2v4h3l-4 4z"/></svg>' +
+              '<span class="ql-qa-pro-badge icon-corner">PRO</span>' +
+            '</div>' +
+            '<div class="ql-qa-info">' +
+              '<span class="ql-qa-label">Downloads</span>' +
+            '</div>' +
+            '<svg class="ql-qa-arrow" style="color:#2563EB" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>' +
+          '</button>' +
+          '<a href="/discussions" class="ql-qa-card ql-qa-half ql-qa-discussions" aria-label="Discussions">' +
+            '<div class="ql-qa-icon-wrap" style="background:#F3E8FF">' +
+              '<svg class="ql-qa-icon" style="color:#9333EA" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-3 9H7V9h10v2zm-4 4H7v-2h6v2zm4-8H7V5h10v2z"/></svg>' +
+            '</div>' +
+            '<div class="ql-qa-info">' +
+              '<span class="ql-qa-label">Discussions</span>' +
+            '</div>' +
+            '<svg class="ql-qa-arrow" style="color:#9333EA" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>' +
+          '</a>' +
+        '</div>' +
+        '<a href="/upload-paper" class="ql-qa-card ql-qa-wide ql-qa-upload" aria-label="Upload a paper">' +
+          '<div class="ql-qa-icon-wrap" style="background:#DCFCE7">' +
+            '<svg class="ql-qa-icon" style="color:#16A34A" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 12 15 15"/></svg>' +
+          '</div>' +
+          '<div class="ql-qa-info">' +
+            '<div class="ql-qa-title-row">' +
+              '<span class="ql-qa-label">Upload a paper</span>' +
+              '<span class="ql-qa-pro-badge inline">PRO</span>' +
+            '</div>' +
+            '<span class="ql-qa-sub">Turn your PDF into a practice test</span>' +
+          '</div>' +
+          '<svg class="ql-qa-arrow" style="color:#16A34A" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>' +
+        '</a>' +
+        '<a href="/try-practice" class="ql-qa-card ql-qa-wide ql-qa-spin" aria-label="Test yourself">' +
+          '<div class="ql-qa-icon-wrap" style="background:#F3E8FF">' +
+            '<svg class="ql-qa-icon" style="color:#7C3AED" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4" ry="4"/><circle cx="8.5" cy="8.5" r="1.5" fill="currentColor"/><circle cx="15.5" cy="8.5" r="1.5" fill="currentColor"/><circle cx="8.5" cy="15.5" r="1.5" fill="currentColor"/><circle cx="15.5" cy="15.5" r="1.5" fill="currentColor"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></svg>' +
+          '</div>' +
+          '<div class="ql-qa-info">' +
+            '<div class="ql-qa-title-row">' +
+              '<span class="ql-qa-label">Test yourself</span>' +
+              '<span class="ql-qa-pro-badge inline">PRO</span>' +
+            '</div>' +
+            '<span class="ql-qa-sub">Spin a custom practice paper</span>' +
+          '</div>' +
+          '<svg class="ql-qa-arrow" style="color:#7C3AED" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>' +
+        '</a>';
+
+      var dlBtn = existing.querySelector(".ql-qa-downloads");
+      if (dlBtn) {
+        dlBtn.addEventListener("click", function (e) {
+          e.preventDefault();
+          showDownloadsModal();
+        });
+      }
+
+      existing.querySelectorAll("a").forEach(function (link) {
+        link.addEventListener("click", function (e) {
+          if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+          var href = link.getAttribute("href");
+          if (!href) return;
+          e.preventDefault();
+          if (window.location.pathname !== href) {
+            window.history.pushState(null, "", href);
+            schedule();
+          }
+        });
+      });
+    }
+
+    if (statGrid && statGrid.parentNode) {
+      if (existing.previousElementSibling !== statGrid || existing.parentNode !== statGrid.parentNode) {
+        statGrid.parentNode.insertBefore(existing, statGrid.nextSibling);
+      }
+    } else if (perfCard && perfCard.parentNode) {
+      if (existing.nextElementSibling !== perfCard || existing.parentNode !== perfCard.parentNode) {
+        perfCard.parentNode.insertBefore(existing, perfCard);
+      }
+    }
   }
 
   /* ---------------------------------------------------------------
@@ -1917,15 +2048,18 @@
       }
       if (!spinQuota.is_pro) {
         if (spinQuota.remaining > 0) {
+          mainBtn.type = "submit";
           mainBtn.disabled = courseSelect.disabled;
           mainBtn.classList.remove("ql-spin-upgrade-btn");
           mainBtn.innerHTML = '<span aria-hidden="true">↻</span> Spin the wheel · 1 free spin left';
         } else {
+          mainBtn.type = "button";
           mainBtn.disabled = false;
           mainBtn.classList.add("ql-spin-upgrade-btn");
-          mainBtn.innerHTML = '★ Get 7 spins/day in PRO · Get now';
+          mainBtn.innerHTML = '★ Unlock 7 spins/day with Pro';
         }
       } else {
+        mainBtn.type = "submit";
         mainBtn.classList.remove("ql-spin-upgrade-btn");
         if (spinQuota.remaining > 0) {
           mainBtn.disabled = courseSelect.disabled;
@@ -2080,10 +2214,19 @@
         if (host.isConnected) { settings.disabled = false; renderSpinButton(); }
       }
     }
+    function openProUpgrade(event) {
+      if (event) { event.preventDefault(); event.stopPropagation(); }
+      if (typeof window.openProPaywall === "function") window.openProPaywall();
+      else window.location.assign("/pro");
+    }
+    mainBtn.addEventListener("click", function (event) {
+      if (mainBtn.classList.contains("ql-spin-upgrade-btn") || (spinQuota && !spinQuota.is_pro && spinQuota.remaining === 0)) {
+        openProUpgrade(event);
+      }
+    });
     form.addEventListener("submit", function (event) {
-      if (spinQuota && !spinQuota.is_pro && spinQuota.remaining === 0) {
-        event.preventDefault();
-        window.location.href = "/membership";
+      if (mainBtn.classList.contains("ql-spin-upgrade-btn") || (spinQuota && !spinQuota.is_pro && spinQuota.remaining === 0)) {
+        openProUpgrade(event);
         return;
       }
       spinWheel(event);
@@ -2590,14 +2733,14 @@
 
   document.addEventListener("click", function (e) {
     var dc = e.target.closest && e.target.closest('a, button');
-    if (dc && /daily\s*challenge/i.test(dc.textContent || "")) {
+    if (dc && /(daily\s*challenge|spin\s*(&|and)?\s*win|daily\s*rewards)/i.test(dc.textContent || "")) {
       e.preventDefault();
       e.stopPropagation();
-      var practiceNav = document.querySelector('a[href="/practice"]');
-      if (practiceNav && practiceNav !== dc) {
-        practiceNav.click();
+      var rewardsNav = document.querySelector('a[href="/rewards"]');
+      if (rewardsNav && rewardsNav !== dc) {
+        rewardsNav.click();
       } else {
-        location.assign("/practice");
+        location.assign("/rewards");
       }
       return;
     }
@@ -3111,6 +3254,1108 @@
     tag(form, "data-ql-login-trimmed", "");
   }
 
+
+  /* ---------------------------------------------------------------
+   * Daily Rewards: Lucky Wheel, Scratch Card & Collected Rewards
+   * Lets every user spin once daily to win discount coupons, 30-day Free
+   * Pro, paid papers, or study XP. Includes interactive scratch card,
+   * 7-day coupon expiry engine, and daily prompt modal.
+   * ------------------------------------------------------------- */
+  var WHEEL_PRIZES = [
+    { title: "5% OFF", sub: "Coupon", icon: "🎟️", color: "#4f46e5", type: "coupon_pct", value: "5% OFF", prefix: "GENZ5-" },
+    { title: "30D FREE PRO", sub: "Jackpot", icon: "👑", color: "#d97706", type: "free_pro", value: "30 Days Pro", prefix: "" },
+    { title: "₹50 OFF", sub: "Coupon", icon: "🎟️", color: "#059669", type: "coupon_flat", value: "₹50 OFF", prefix: "GENZ50-" },
+    { title: "TRY AGAIN", sub: "Tomorrow", icon: "🍀", color: "#64748b", type: "try_again", value: "Try Tomorrow", prefix: "" },
+    { title: "25% OFF", sub: "Mega Deal", icon: "🎟️", color: "#7c3aed", type: "coupon_pct", value: "25% OFF", prefix: "GENZ25-" },
+    { title: "BETTER LUCK", sub: "Try Tomorrow", icon: "🤞", color: "#0891b2", type: "try_again", value: "Better Luck", prefix: "" },
+    { title: "₹100 OFF", sub: "Discount", icon: "🎟️", color: "#db2777", type: "coupon_flat", value: "₹100 OFF", prefix: "GENZ100-" },
+    { title: "+50 XP", sub: "Study Boost", icon: "⚡", color: "#2563eb", type: "bonus_xp", value: "50 XP", prefix: "" }
+  ];
+
+  function getTodayISTString() {
+    try {
+      return new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Kolkata" });
+    } catch (_) {
+      var d = new Date();
+      var utc = d.getTime() + (d.getTimezoneOffset() * 60000);
+      var ist = new Date(utc + (3600000 * 5.5));
+      return ist.toISOString().slice(0, 10);
+    }
+  }
+
+  function getMidnightISTRemaining() {
+    var now = new Date();
+    var utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+    var ist = new Date(utc + (3600000 * 5.5));
+    var midnight = new Date(ist);
+    midnight.setHours(24, 0, 0, 0);
+    var diff = Math.max(0, midnight.getTime() - ist.getTime());
+    var h = Math.floor(diff / 3600000);
+    var m = Math.floor((diff % 3600000) / 60000);
+    var s = Math.floor((diff % 60000) / 1000);
+    return { diff: diff, hours: h, minutes: m, seconds: s, text: h + "h " + m + "m " + s + "s" };
+  }
+
+  function getRewardsUserKey() {
+    try {
+      var u = JSON.parse(localStorage.getItem("lab_user") || "{}");
+      return u.id ? String(u.id) : (u.email ? String(u.email) : "guest");
+    } catch (_) {
+      return "guest";
+    }
+  }
+
+  function loadLocalRewardsState() {
+    var key = "ql_rewards_v2_" + getRewardsUserKey();
+    try {
+      var parsed = JSON.parse(localStorage.getItem(key) || "{}");
+      return {
+        lastSpinDate: parsed.lastSpinDate || "",
+        rewards: Array.isArray(parsed.rewards) ? parsed.rewards : []
+      };
+    } catch (_) {
+      return { lastSpinDate: "", rewards: [] };
+    }
+  }
+
+  function saveLocalRewardsState(state) {
+    var key = "ql_rewards_v2_" + getRewardsUserKey();
+    try {
+      localStorage.setItem(key, JSON.stringify(state));
+    } catch (_) {}
+  }
+
+  var rewardAudioCtx = null;
+  function getRewardAudioCtx() {
+    if (!rewardAudioCtx && typeof window.AudioContext !== "undefined") {
+      rewardAudioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    }
+    if (rewardAudioCtx && rewardAudioCtx.state === "suspended") {
+      rewardAudioCtx.resume();
+    }
+    return rewardAudioCtx;
+  }
+
+  function playWheelTickSound() {
+    try {
+      var ctx = getRewardAudioCtx();
+      if (!ctx) return;
+      var osc = ctx.createOscillator();
+      var gain = ctx.createGain();
+      osc.type = "sine";
+      osc.frequency.setValueAtTime(560, ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(220, ctx.currentTime + 0.035);
+      gain.gain.setValueAtTime(0.09, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.035);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start();
+      osc.stop(ctx.currentTime + 0.035);
+    } catch (_) {}
+  }
+
+  function playWheelWinSound() {
+    try {
+      var ctx = getRewardAudioCtx();
+      if (!ctx) return;
+      var notes = [523.25, 659.25, 783.99, 1046.50]; // C5, E5, G5, C6
+      notes.forEach(function (freq, i) {
+        var osc = ctx.createOscillator();
+        var gain = ctx.createGain();
+        osc.type = "triangle";
+        osc.frequency.setValueAtTime(freq, ctx.currentTime + i * 0.08);
+        gain.gain.setValueAtTime(0.12, ctx.currentTime + i * 0.08);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + i * 0.08 + 0.28);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(ctx.currentTime + i * 0.08);
+        osc.stop(ctx.currentTime + i * 0.08 + 0.28);
+      });
+    } catch (_) {}
+  }
+
+  function fireConfettiBurst() {
+    var c = document.createElement("canvas");
+    c.style.cssText = "position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none;z-index:100001";
+    document.body.appendChild(c);
+    var ctx = c.getContext("2d");
+    var w = c.width = window.innerWidth;
+    var h = c.height = window.innerHeight;
+    var colors = ["#4F46E5", "#10B981", "#F59E0B", "#EF4444", "#EC4899", "#8B5CF6", "#06B6D4", "#FDE047"];
+    var particles = [];
+    for (var i = 0; i < 90; i++) {
+      particles.push({
+        x: w * 0.5 + (Math.random() - 0.5) * 60,
+        y: h * 0.45,
+        vx: (Math.random() - 0.5) * 14,
+        vy: -Math.random() * 12 - 4,
+        size: Math.random() * 8 + 5,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        rotation: Math.random() * 360,
+        rotationSpeed: (Math.random() - 0.5) * 14,
+        gravity: 0.35,
+        opacity: 1
+      });
+    }
+    var start = Date.now();
+    function animate() {
+      ctx.clearRect(0, 0, w, h);
+      var elapsed = Date.now() - start;
+      if (elapsed > 3200) { c.remove(); return; }
+      particles.forEach(function (p) {
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += p.gravity;
+        p.rotation += p.rotationSpeed;
+        if (elapsed > 2000) p.opacity = Math.max(0, 1 - (elapsed - 2000) / 1200);
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate((p.rotation * Math.PI) / 180);
+        ctx.fillStyle = p.color;
+        ctx.globalAlpha = p.opacity;
+        ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.6);
+        ctx.restore();
+      });
+      requestAnimationFrame(animate);
+    }
+    requestAnimationFrame(animate);
+  }
+
+  function syncRewardsButton() {
+    document.querySelectorAll('header a, header button, nav a').forEach(function (btn) {
+      if (/(daily\s*challenge|spin\s*(&|and)?\s*win|daily\s*rewards)/i.test(btn.textContent || "")) {
+        if (btn.tagName === "A" && btn.getAttribute("href") !== "/rewards") {
+          btn.setAttribute("href", "/rewards");
+        }
+        btn.setAttribute("data-ql-rewards-btn", "1");
+        var svg = btn.querySelector("svg");
+        if (svg) {
+          if (btn.lastChild && btn.lastChild.nodeType === Node.TEXT_NODE) {
+            btn.lastChild.textContent = "Spin & Win";
+          } else {
+            btn.replaceChildren(svg, document.createTextNode("Spin & Win"));
+          }
+        } else if (!btn.querySelector(".ql-rewards-label")) {
+          btn.innerHTML = '<span aria-hidden="true">🎁</span> Spin & Win';
+        }
+      }
+    });
+  }
+
+  function openScratchCardModal(reward, onScratchDone) {
+    var overlay = document.createElement("div");
+    overlay.className = "ql-scratch-overlay";
+    overlay.innerHTML =
+      '<div class="ql-scratch-dialog" role="dialog" aria-modal="true">' +
+        '<button type="button" class="ql-scratch-dialog-close" aria-label="Close">✕</button>' +
+        '<div class="ql-scratch-dialog-head">' +
+          '<h2>🎉 You Won a Scratch Coupon!</h2>' +
+          '<p>Scratch with your mouse or finger to reveal your secret code</p>' +
+        '</div>' +
+        '<div class="ql-scratch-card-body">' +
+          '<div class="ql-scratch-stage">' +
+            '<div class="ql-scratch-secret' + (reward.type === "free_pro" ? " pro" : "") + '">' +
+              '<div class="ql-scratch-val">' + escapeHtml(reward.title) + '</div>' +
+              '<div class="ql-scratch-code" id="ql-scratch-secret-code">' + escapeHtml(reward.code || "ACTIVATED") + '</div>' +
+              '<div class="ql-scratch-expiry-note">⏰ Valid for 7 days only · Expires if unused</div>' +
+            '</div>' +
+            '<canvas class="ql-scratch-canvas" width="380" height="180"></canvas>' +
+          '</div>' +
+          '<div class="ql-scratch-actions">' +
+            '<button type="button" class="ql-copy-code-btn" id="ql-scratch-copy-btn" style="display:none"><span aria-hidden="true">📋</span> Copy Coupon Code</button>' +
+            '<div class="ql-claim-steps-card">' +
+              '<strong class="ql-claim-steps-title">📋 How to Claim Your Coupon (' + escapeHtml(reward.title) + ' off):</strong>' +
+              '<ol class="ql-claim-steps-list">' +
+                '<li><strong>Visit:</strong> <a href="https://genziitian.in/courses" target="_blank" rel="noopener noreferrer">Genziitian.in/courses</a></li>' +
+                '<li><strong>Choose:</strong> Pick any course of your choice</li>' +
+                '<li><strong>Apply Code:</strong> Apply this code at checkout: <code style="background:#e0e7ff;color:#3730a3;padding:2px 6px;border-radius:4px;font-weight:700">' + escapeHtml(reward.code || "REVEAL CODE ABOVE") + '</code></li>' +
+              '</ol>' +
+              '<div class="ql-claim-terms-box">' +
+                '<div class="ql-claim-term-row">🌐 <strong>Applicability:</strong> Please note this is only applicable on this website (<a href="https://genziitian.in/courses" target="_blank" rel="noopener noreferrer">Genziitian.in/courses</a>).</div>' +
+                '<div class="ql-claim-term-row">⏰ <strong>7-Day Expiry:</strong> If not claimed or claimed, this auto disables in 7 days counting from the day scratch or spinned.</div>' +
+                '<div class="ql-claim-term-row">🎁 <strong>No Payment:</strong> No payment required to get this coupon.</div>' +
+                '<div class="ql-claim-term-row">🛒 <strong>Minimum Purchase:</strong> Minimum amount purchase is ₹350.</div>' +
+                '<div class="ql-claim-term-row">🏷️ <strong>Discount Cap:</strong> Max discount you get on any percentage is 100 rupees.</div>' +
+                '<div class="ql-claim-term-row">📜 <strong>Terms Agreement:</strong> By continuing you accept all our <a href="/terms.html#rewards-promotions" target="_blank">terms, conditions and rules</a>.</div>' +
+              '</div>' +
+              '<a href="https://genziitian.in/courses" target="_blank" rel="noopener noreferrer" class="ql-visit-courses-cta">🚀 Visit Genziitian.in/courses &amp; Redeem →</a>' +
+            '</div>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
+    document.body.appendChild(overlay);
+
+    var canvas = overlay.querySelector(".ql-scratch-canvas");
+    var ctx = canvas.getContext("2d");
+    var copyBtn = overlay.querySelector("#ql-scratch-copy-btn");
+    var closeBtn = overlay.querySelector(".ql-scratch-dialog-close");
+
+    function paintFoil() {
+      var w = canvas.width;
+      var h = canvas.height;
+      var grad = ctx.createLinearGradient(0, 0, w, h);
+      grad.addColorStop(0, "#cbd5e1");
+      grad.addColorStop(0.25, "#f1f5f9");
+      grad.addColorStop(0.5, "#94a3b8");
+      grad.addColorStop(0.75, "#cbd5e1");
+      grad.addColorStop(1, "#64748b");
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, w, h);
+
+      ctx.fillStyle = "rgba(255, 255, 255, 0.22)";
+      for (var y = 0; y < h; y += 8) {
+        ctx.fillRect(0, y, w, 2);
+      }
+
+      ctx.fillStyle = "#1e293b";
+      ctx.font = "bold 15px sans-serif";
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.fillText("✨ SCRATCH HERE TO REVEAL ✨", w / 2, h / 2 - 10);
+      ctx.font = "12px sans-serif";
+      ctx.fillStyle = "#475569";
+      ctx.fillText("Drag mouse or swipe finger", w / 2, h / 2 + 14);
+    }
+    paintFoil();
+
+    var isScratching = false;
+    var isRevealed = false;
+    var scratchCount = 0;
+
+    function scratchAt(clientX, clientY) {
+      if (isRevealed) return;
+      var rect = canvas.getBoundingClientRect();
+      var x = (clientX - rect.left) * (canvas.width / rect.width);
+      var y = (clientY - rect.top) * (canvas.height / rect.height);
+      ctx.globalCompositeOperation = "destination-out";
+      ctx.beginPath();
+      ctx.arc(x, y, 22, 0, Math.PI * 2);
+      ctx.fill();
+
+      scratchCount++;
+      if (scratchCount % 8 === 0) {
+        checkClearedPercent();
+      }
+    }
+
+    function checkClearedPercent() {
+      if (isRevealed) return;
+      try {
+        var imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        var pixels = imgData.data;
+        var transparentCount = 0;
+        var step = 16;
+        var total = pixels.length / (4 * step);
+        for (var i = 3; i < pixels.length; i += 4 * step) {
+          if (pixels[i] < 128) transparentCount++;
+        }
+        var ratio = transparentCount / total;
+        if (ratio > 0.38) {
+          autoReveal();
+        }
+      } catch (_) {}
+    }
+
+    function autoReveal() {
+      if (isRevealed) return;
+      isRevealed = true;
+      canvas.style.opacity = "0";
+      setTimeout(function () { if (canvas.isConnected) canvas.remove(); }, 350);
+      copyBtn.style.display = "flex";
+      reward.is_scratched = true;
+      try {
+        var mLog = JSON.parse(localStorage.getItem("ql_rewards_global_log") || "[]");
+        for (var gi = 0; gi < mLog.length; gi++) {
+          if (mLog[gi].coupon_code === reward.code) {
+            mLog[gi].is_scratched = true;
+            mLog[gi].status = "Active (Scratched)";
+            break;
+          }
+        }
+        localStorage.setItem("ql_rewards_global_log", JSON.stringify(mLog));
+      } catch (_) {}
+      playWheelWinSound();
+      fireConfettiBurst();
+      if (typeof onScratchDone === "function") onScratchDone(reward);
+    }
+
+    canvas.addEventListener("mousedown", function (e) { isScratching = true; scratchAt(e.clientX, e.clientY); });
+    window.addEventListener("mousemove", function (e) { if (isScratching) scratchAt(e.clientX, e.clientY); });
+    window.addEventListener("mouseup", function () { isScratching = false; });
+
+    canvas.addEventListener("touchstart", function (e) {
+      isScratching = true;
+      if (e.touches[0]) scratchAt(e.touches[0].clientX, e.touches[0].clientY);
+    }, { passive: false });
+    canvas.addEventListener("touchmove", function (e) {
+      if (!isScratching) return;
+      e.preventDefault();
+      if (e.touches[0]) scratchAt(e.touches[0].clientX, e.touches[0].clientY);
+    }, { passive: false });
+    window.addEventListener("touchend", function () { isScratching = false; });
+
+    copyBtn.addEventListener("click", function () {
+      if (!reward.code) return;
+      navigator.clipboard.writeText(reward.code).then(function () {
+        copyBtn.innerHTML = '<span aria-hidden="true">✓</span> Copied to clipboard!';
+        setTimeout(function () {
+          copyBtn.innerHTML = '<span aria-hidden="true">📋</span> Copy Coupon Code';
+        }, 2200);
+      });
+    });
+
+    function close() { overlay.remove(); }
+    closeBtn.addEventListener("click", close);
+    overlay.addEventListener("click", function (e) { if (e.target === overlay) close(); });
+  }
+
+  function openProJackpotModal(reward, onClaimDone) {
+    var overlay = document.createElement("div");
+    overlay.className = "ql-scratch-overlay";
+    overlay.innerHTML =
+      '<div class="ql-scratch-dialog" role="dialog" aria-modal="true">' +
+        '<button type="button" class="ql-scratch-dialog-close" aria-label="Close">✕</button>' +
+        '<div class="ql-scratch-dialog-head" style="background:linear-gradient(135deg,#78350f,#b45309,#d97706)">' +
+          '<div style="font-size:42px;margin-bottom:6px">👑</div>' +
+          '<h2>JACKPOT! 30 Days Free Pro!</h2>' +
+          '<p>You won 1 full month of complimentary Quiz LAB Pro membership!</p>' +
+        '</div>' +
+        '<div class="ql-scratch-card-body">' +
+          '<div class="ql-claim-steps-card pro">' +
+            '<strong class="ql-claim-steps-title" style="color:#92400e">👑 How to Claim Your 30 Days Free Pro Plan:</strong>' +
+            '<ol class="ql-claim-steps-list">' +
+              '<li><strong>Click to Claim:</strong> Click the <strong>👑 Claim 30 Days Free Pro Now</strong> button below.</li>' +
+              '<li><strong>Instant Activation:</strong> 30 consecutive days of Quiz LAB Pro membership are automatically credited to your student account.</li>' +
+              '<li><strong>Enjoy Benefits:</strong> Unlimited practice spins, private paper creation, offline tests, and pro discussions.</li>' +
+            '</ol>' +
+            '<div class="ql-claim-terms-box">' +
+              '<div class="ql-claim-term-row">💳 <strong>Zero Payment:</strong> No payment, credit card, or billing info required. 100% free daily reward.</div>' +
+              '<div class="ql-claim-term-row">⏳ <strong>Duration:</strong> Valid for exactly 30 consecutive calendar days from activation.</div>' +
+              '<div class="ql-claim-term-row">🔄 <strong>No Auto-Renewal:</strong> Auto-expires cleanly after 30 days — no hidden charges or recurring bills.</div>' +
+              '<div class="ql-claim-term-row">👤 <strong>Account Bound:</strong> Non-transferable; tied directly to your logged-in student account.</div>' +
+              '<div class="ql-claim-term-row">📜 <strong>Terms Agreement:</strong> By continuing you accept all our <a href="/terms.html#rewards-promotions" target="_blank">terms, conditions and rules</a>.</div>' +
+            '</div>' +
+          '</div>' +
+          '<div class="ql-scratch-actions">' +
+            '<button type="button" class="ql-claim-pro-btn" id="ql-jackpot-claim-cta">👑 Claim 30 Days Free Pro Now</button>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
+    document.body.appendChild(overlay);
+
+    var closeBtn = overlay.querySelector(".ql-scratch-dialog-close");
+    function close() { overlay.remove(); }
+    closeBtn.addEventListener("click", close);
+    overlay.addEventListener("click", function (e) { if (e.target === overlay) close(); });
+
+    overlay.querySelector("#ql-jackpot-claim-cta").addEventListener("click", function () {
+      claimProMembership(reward, function () {
+        overlay.querySelector(".ql-scratch-card-body").innerHTML =
+          '<div style="text-align:center;padding:16px 0"><div style="font-size:36px">🎉</div><strong style="display:block;font-size:18px;color:#15803d;margin-top:8px">Pro Plan Activated!</strong><p style="font-size:13px;color:#64748b;margin:6px 0 16px">Your account has been granted 30 days of Pro access.</p><button type="button" class="ql-copy-code-btn" id="ql-pro-ok-btn">Awesome!</button></div>';
+        overlay.querySelector("#ql-pro-ok-btn").addEventListener("click", close);
+        playWheelWinSound();
+        fireConfettiBurst();
+        if (typeof onClaimDone === "function") onClaimDone();
+      });
+    });
+  }
+
+  function claimProMembership(reward, onDone) {
+    var runtime = window.QLStorefront || {};
+    var tok = runtime.token ? runtime.token() : (localStorage.getItem("lab_token") || "");
+    var apiBase = runtime.apiBase || "https://labapi.genziitian.in/public/api";
+
+    function updateLocalPro() {
+      try {
+        var user = JSON.parse(localStorage.getItem("lab_user") || "{}");
+        user.is_pro = true;
+        var until = new Date(Date.now() + 30 * 86400 * 1000).toISOString();
+        user.pro_expires_at = until;
+        localStorage.setItem("lab_user", JSON.stringify(user));
+      } catch (_) {}
+    }
+
+    function finishClaim() {
+      updateLocalPro();
+      reward.is_claimed = true;
+      try {
+        var mLog = JSON.parse(localStorage.getItem("ql_rewards_global_log") || "[]");
+        for (var gi = 0; gi < mLog.length; gi++) {
+          if (mLog[gi].prize_type === "free_pro" && mLog[gi].status !== "Pro Claimed") {
+            mLog[gi].is_claimed = true;
+            mLog[gi].status = "Pro Claimed";
+            break;
+          }
+        }
+        localStorage.setItem("ql_rewards_global_log", JSON.stringify(mLog));
+      } catch (_) {}
+      if (typeof onDone === "function") onDone();
+    }
+
+    if (tok) {
+      fetch(apiBase + "/student/rewards/claim-pro", {
+        method: "POST",
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json",
+          "Authorization": "Bearer " + tok
+        }
+      }).then(function (res) {
+        return res.json().catch(function () { return {}; });
+      }).then(function () {
+        finishClaim();
+      }).catch(function () {
+        finishClaim();
+      });
+    } else {
+      finishClaim();
+    }
+  }
+
+  function formatRewardCard(reward, nowTime, onScratchClick, onClaimProClick) {
+    var isExpired = reward.expires_at ? nowTime > new Date(reward.expires_at).getTime() : false;
+    var isScratched = Boolean(reward.is_scratched);
+    var isPro = reward.type === "free_pro";
+    var isClaimed = Boolean(reward.is_claimed);
+
+    var card = document.createElement("div");
+    card.className = "ql-user-reward-card" + (isExpired ? " expired" : "") + (isPro ? " pro" : "");
+
+    var statusHtml = "";
+    if (isPro) {
+      statusHtml = isClaimed ? '<span class="ql-tag-claimed">👑 Pro Claimed</span>' : '<span class="ql-tag-unscratched">👑 Unclaimed Pro</span>';
+    } else if (isExpired) {
+      statusHtml = isScratched ? '<span class="ql-tag-expired">Outdated · Expired</span>' : '<span class="ql-tag-expired">Expired · Unscratched</span>';
+    } else if (isScratched) {
+      statusHtml = '<span class="ql-tag-active">● Active · 7d limit</span>';
+    } else {
+      statusHtml = '<span class="ql-tag-unscratched">✨ Unscratched</span>';
+    }
+
+    var codeRowHtml = "";
+    if (isPro) {
+      if (isClaimed) {
+        codeRowHtml = '<div class="ql-card-code-row"><span>Status</span><strong>Active (30-day Access)</strong></div>';
+      } else {
+        codeRowHtml = '<button type="button" class="ql-claim-pro-btn" style="padding:10px 14px;font-size:13px">👑 Claim 30 Days Free Pro</button>';
+      }
+    } else if (isExpired) {
+      codeRowHtml = '<div class="ql-card-code-row"><span class="ql-card-code-masked">••••••••</span><span style="font-size:11px;color:#94a3b8">Code hidden (expired)</span></div>';
+    } else if (isScratched) {
+      codeRowHtml =
+        '<div class="ql-card-code-row">' +
+          '<span class="ql-card-code-text">' + escapeHtml(reward.code || "") + '</span>' +
+          '<button type="button" class="ql-card-copy-btn">Copy</button>' +
+        '</div>';
+    } else {
+      codeRowHtml = '<button type="button" class="ql-copy-code-btn" style="padding:10px 14px;font-size:13px;background:#4f46e5">✨ Scratch to Reveal</button>';
+    }
+
+    var expiryText = "";
+    if (reward.expires_at) {
+      if (isExpired) {
+        expiryText = "Expired after 7 days";
+      } else {
+        var diff = Math.max(0, new Date(reward.expires_at).getTime() - nowTime);
+        var daysLeft = Math.floor(diff / (86400 * 1000));
+        var hoursLeft = Math.floor((diff % (86400 * 1000)) / (3600 * 1000));
+        expiryText = "Expires in " + daysLeft + "d " + hoursLeft + "h";
+      }
+    } else if (isPro) {
+      expiryText = isClaimed ? "30 Days Access Active" : "Click to activate 30 days";
+    } else {
+      expiryText = "Claimed";
+    }
+
+    card.innerHTML =
+      '<div class="ql-card-top-row">' +
+        '<div class="ql-card-title-row">' +
+          '<span class="ql-card-icon">' + (isPro ? "👑" : reward.type === "free_paper" ? "📄" : "🎟️") + '</span>' +
+          '<div>' +
+            '<strong>' + escapeHtml(reward.title) + '</strong>' +
+            '<small>Won ' + new Date(reward.created_at).toLocaleDateString() + '</small>' +
+          '</div>' +
+        '</div>' +
+        statusHtml +
+      '</div>' +
+      codeRowHtml +
+      '<button type="button" class="ql-card-terms-toggle"><span>📋</span> How to claim &amp; rules ▾</button>' +
+      '<div class="ql-card-claim-details" style="display:none">' +
+        (isPro ?
+          '<div class="ql-claim-terms-box" style="margin-top:4px">' +
+            '<div class="ql-claim-term-row">👑 <strong>Claim:</strong> Click the Claim button to activate 30 days of Pro.</div>' +
+            '<div class="ql-claim-term-row">💳 <strong>Zero Cost:</strong> No payment or card required. No recurring charge.</div>' +
+            '<div class="ql-claim-term-row">⏳ <strong>Duration:</strong> Valid for exactly 30 consecutive calendar days.</div>' +
+            '<div class="ql-claim-term-row">📜 <strong>Terms:</strong> <a href="/terms.html#rewards-promotions" target="_blank">View Promotional Terms</a></div>' +
+          '</div>' :
+          '<div class="ql-claim-terms-box" style="margin-top:4px">' +
+            '<div class="ql-claim-term-row"><strong>1. Visit:</strong> <a href="https://genziitian.in/courses" target="_blank" rel="noopener">Genziitian.in/courses</a> &amp; pick any course.</div>' +
+            '<div class="ql-claim-term-row"><strong>2. Apply Code:</strong> <strong>' + (isExpired ? 'Masked (Expired)' : escapeHtml(reward.code || 'Scratch card above')) + '</strong></div>' +
+            '<div class="ql-claim-term-row">🛒 <strong>Min Order:</strong> Minimum purchase is ₹350.</div>' +
+            '<div class="ql-claim-term-row">🏷️ <strong>Discount Cap:</strong> Max discount on any percentage is ₹100.</div>' +
+            '<div class="ql-claim-term-row">⏰ <strong>Expiry:</strong> Auto-disables in 7 days counting from day scratched or spinned.</div>' +
+            '<div class="ql-claim-term-row">🎁 <strong>Free:</strong> No payment required to get this coupon.</div>' +
+            '<div class="ql-claim-term-row">📜 <strong>Terms:</strong> By continuing you accept all our <a href="/terms.html#rewards-promotions" target="_blank">terms &amp; rules</a>.</div>' +
+          '</div>'
+        ) +
+      '</div>' +
+      '<div class="ql-card-footer">' +
+        '<span>⏰ ' + expiryText + '</span>' +
+        '<span style="font-weight:700;color:' + (isExpired ? '#94a3b8' : '#15803d') + '">' + (isExpired ? 'Outdated' : 'Valid on Website') + '</span>' +
+      '</div>';
+
+    var toggleBtn = card.querySelector(".ql-card-terms-toggle");
+    var detailsBox = card.querySelector(".ql-card-claim-details");
+    if (toggleBtn && detailsBox) {
+      toggleBtn.addEventListener("click", function () {
+        var isHidden = detailsBox.style.display === "none";
+        detailsBox.style.display = isHidden ? "block" : "none";
+        toggleBtn.innerHTML = isHidden ? "<span>📋</span> Hide claim rules ▴" : "<span>📋</span> How to claim &amp; rules ▾";
+      });
+    }
+
+    var copyBtn = card.querySelector(".ql-card-copy-btn");
+    if (copyBtn) {
+      copyBtn.addEventListener("click", function () {
+        if (!reward.code) return;
+        navigator.clipboard.writeText(reward.code).then(function () {
+          copyBtn.textContent = "Copied!";
+          setTimeout(function () { copyBtn.textContent = "Copy"; }, 2000);
+        });
+      });
+    }
+
+    var scratchBtn = card.querySelector(".ql-copy-code-btn");
+    if (scratchBtn) {
+      scratchBtn.addEventListener("click", function () {
+        if (typeof onScratchClick === "function") onScratchClick(reward);
+      });
+    }
+
+    var claimBtn = card.querySelector(".ql-claim-pro-btn");
+    if (claimBtn) {
+      claimBtn.addEventListener("click", function () {
+        if (typeof onClaimProClick === "function") onClaimProClick(reward);
+      });
+    }
+
+    return card;
+  }
+
+  function ensureDailySpinPrompt() {
+    var tok = "";
+    try { tok = localStorage.getItem("lab_token") || ""; } catch (_) {}
+    if (!tok) return;
+
+    var onRewards = /^\/(rewards|spin-rewards|daily-rewards)(\/|$)/i.test(window.location.pathname);
+    if (onRewards) return;
+
+    var today = getTodayISTString();
+    var dismissedDate = "";
+    try { dismissedDate = localStorage.getItem("ql_daily_spin_prompt_dismissed") || ""; } catch (_) {}
+    if (dismissedDate === today) return;
+
+    var state = loadLocalRewardsState();
+    if (state.lastSpinDate === today) return;
+
+    if (document.getElementById("ql-daily-prompt-overlay")) return;
+
+    var overlay = document.createElement("div");
+    overlay.id = "ql-daily-prompt-overlay";
+    overlay.className = "ql-daily-prompt-overlay";
+    overlay.innerHTML =
+      '<div class="ql-daily-prompt-dialog" role="dialog" aria-modal="true">' +
+        '<div class="ql-daily-prompt-hero">' +
+          '<div class="ql-daily-prompt-icon" aria-hidden="true">🎡</div>' +
+          '<h2>Your Daily Spin is Ready!</h2>' +
+          '<p>Spin today\'s Lucky Wheel to win 30 Days Free Pro, discount coupons up to 25% OFF, and free papers!</p>' +
+        '</div>' +
+        '<div class="ql-daily-prompt-body">' +
+          '<button type="button" class="ql-daily-prompt-spin-btn" id="ql-prompt-spin-cta">🎡 Spin &amp; Win Now</button>' +
+          '<button type="button" class="ql-daily-prompt-later-btn" id="ql-prompt-later-cta">Maybe later</button>' +
+        '</div>' +
+      '</div>';
+    document.body.appendChild(overlay);
+
+    overlay.querySelector("#ql-prompt-spin-cta").addEventListener("click", function () {
+      overlay.remove();
+      var rewardsNav = document.querySelector('a[href="/rewards"]');
+      if (rewardsNav) {
+        rewardsNav.click();
+      } else {
+        location.assign("/rewards");
+      }
+    });
+
+    function dismiss() {
+      try { localStorage.setItem("ql_daily_spin_prompt_dismissed", today); } catch (_) {}
+      overlay.remove();
+    }
+    overlay.querySelector("#ql-prompt-later-cta").addEventListener("click", dismiss);
+    overlay.addEventListener("click", function (e) { if (e.target === overlay) dismiss(); });
+  }
+
+  function fillRewardsPage() {
+    var onRewards = /^\/(rewards|spin-rewards|daily-rewards)(\/|$)/i.test(window.location.pathname);
+    var host = document.getElementById("ql-rewards-page");
+    if (!host && onRewards) {
+      var main = document.querySelector("#root main");
+      if (main && !main.querySelector(".ql-rewards-page")) {
+        host = document.createElement("div");
+        host.id = "ql-rewards-page";
+        main.replaceChildren(host);
+      }
+    }
+    if (!host || host.dataset.qlLoaded) return;
+    host.dataset.qlLoaded = "1";
+    document.title = "Spin & Win · Daily Rewards · Quiz LAB";
+
+    var state = loadLocalRewardsState();
+    var today = getTodayISTString();
+    var isSpunToday = state.lastSpinDate === today;
+
+    host.innerHTML =
+      '<div class="ql-rewards-page">' +
+        '<header class="ql-rewards-header">' +
+          '<span class="ql-rewards-badge">✨ Daily Rewards</span>' +
+          '<h1 class="ql-rewards-title">🎡 Spin &amp; Win Lucky Wheel</h1>' +
+          '<p class="ql-rewards-sub">Spin once every day! Win 30 Days Free Pro, exclusive course discount coupons, or free papers.</p>' +
+          '<div class="ql-rewards-tabs" role="tablist">' +
+            '<button type="button" class="ql-rewards-tab-btn" id="ql-tab-wheel" role="tab" aria-selected="true">🎡 Lucky Wheel</button>' +
+            '<button type="button" class="ql-rewards-tab-btn" id="ql-tab-rewards" role="tab" aria-selected="false">🎁 My Rewards <span class="ql-rewards-pill" id="ql-rewards-badge-count">' + state.rewards.length + '</span></button>' +
+          '</div>' +
+        '</header>' +
+
+        // Tab View 1: Lucky Wheel
+        '<div id="ql-view-wheel" class="ql-wheel-layout">' +
+          '<div class="ql-wheel-card">' +
+            '<div class="ql-wheel-stage-wrap">' +
+              '<svg class="ql-wheel-pointer-top" viewBox="0 0 24 32" aria-hidden="true"><path d="M12 30 L3 6 Q1 2 5 2 L19 2 Q23 2 21 6 Z"/></svg>' +
+              '<canvas id="ql-rewards-canvas" class="ql-wheel-canvas" width="680" height="680"></canvas>' +
+            '</div>' +
+            '<div class="ql-wheel-controls">' +
+              '<button type="button" class="ql-spin-main-cta" id="ql-rewards-spin-btn">' +
+                (isSpunToday ? '✓ Spun Today · Come Back Tomorrow' : '<span aria-hidden="true">🎡</span> SPIN NOW · 1 Free Daily Spin') +
+              '</button>' +
+              '<div class="ql-spin-quota-text" id="ql-rewards-timer-label">' +
+                (isSpunToday ? 'Next spin resets in: <span class="ql-spin-timer-badge" id="ql-timer-val">calculating…</span>' : '1 Free Daily Spin for Every Account · Resets at midnight IST') +
+              '</div>' +
+            '</div>' +
+          '</div>' +
+
+          '<div class="ql-rewards-side">' +
+            '<div class="ql-rewards-info-box">' +
+              '<h3><span>🎁</span> Prizes on the Wheel</h3>' +
+              '<ul class="ql-rewards-prizes-list">' +
+                WHEEL_PRIZES.map(function (p) {
+                  return '<li class="ql-prize-item"><span class="ql-prize-dot" style="background:' + p.color + '"></span><span>' + p.icon + ' ' + escapeHtml(p.title) + '</span></li>';
+                }).join('') +
+              '</ul>' +
+            '</div>' +
+            '<div class="ql-rewards-info-box">' +
+              '<h3><span>⏰</span> Rules &amp; Scratch Card Catch</h3>' +
+              '<ul style="margin:0;padding-left:18px;font-size:12px;color:#64748b;line-height:1.7">' +
+                '<li><strong>Redemption Venue:</strong> Valid only on <a href="https://genziitian.in/courses" target="_blank" rel="noopener noreferrer" style="color:#4f46e5;font-weight:700">Genziitian.in/courses</a>. Choose any course &amp; apply your code.</li>' +
+                '<li><strong>7-Day Auto-Disable:</strong> If not claimed or claimed, coupons auto-disable in 7 days counting from the day scratched or spun. Code is hidden after expiration.</li>' +
+                '<li><strong>Order Value &amp; Cap:</strong> Minimum purchase amount is ₹350. Max discount on percentage coupons is capped at ₹100.</li>' +
+                '<li><strong>100% Free Daily Spin:</strong> No payment required to get coupons. Every student gets 1 free spin every calendar day (resets at 12:00 AM IST).</li>' +
+                '<li><strong>30 Days Free Pro:</strong> Claim 30 days of Pro instantly. No credit card, no recurring charges, auto-expires after 30 days.</li>' +
+                '<li><strong>Terms Agreement:</strong> By continuing you accept all our <a href="/terms.html#rewards-promotions" target="_blank" style="color:#4f46e5;text-decoration:underline">terms, conditions and rules</a>.</li>' +
+              '</ul>' +
+            '</div>' +
+          '</div>' +
+        '</div>' +
+
+        // Tab View 2: My Rewards List
+        '<div id="ql-view-rewards" class="ql-my-rewards-view" style="display:none">' +
+          '<div class="ql-rewards-filter-bar">' +
+            '<button type="button" class="ql-filter-pill" data-filter="all" aria-selected="true">All Rewards</button>' +
+            '<button type="button" class="ql-filter-pill" data-filter="active">Active Coupons</button>' +
+            '<button type="button" class="ql-filter-pill" data-filter="pro">Pro Membership</button>' +
+            '<button type="button" class="ql-filter-pill" data-filter="expired">Outdated / Expired</button>' +
+          '</div>' +
+          '<div class="ql-reward-cards-grid" id="ql-rewards-grid"></div>' +
+        '</div>' +
+      '</div>';
+
+    // Elements
+    var canvas = host.querySelector("#ql-rewards-canvas");
+    var ctx = canvas.getContext("2d");
+    var spinBtn = host.querySelector("#ql-rewards-spin-btn");
+    var timerVal = host.querySelector("#ql-timer-val");
+    var timerLabel = host.querySelector("#ql-rewards-timer-label");
+    var tabWheel = host.querySelector("#ql-tab-wheel");
+    var tabRewards = host.querySelector("#ql-tab-rewards");
+    var viewWheel = host.querySelector("#ql-view-wheel");
+    var viewRewards = host.querySelector("#ql-view-rewards");
+    var rewardsGrid = host.querySelector("#ql-rewards-grid");
+    var badgeCount = host.querySelector("#ql-rewards-badge-count");
+
+    var isSpinning = false;
+    var currentAngle = 0;
+    var timerInterval = null;
+
+    function updateTimer() {
+      var rem = getMidnightISTRemaining();
+      if (timerVal) timerVal.textContent = rem.text;
+      if (rem.diff <= 0) {
+        state = loadLocalRewardsState();
+        state.lastSpinDate = "";
+        saveLocalRewardsState(state);
+        isSpunToday = false;
+        renderButtonState();
+      }
+    }
+
+    function renderButtonState() {
+      today = getTodayISTString();
+      isSpunToday = state.lastSpinDate === today;
+      if (isSpunToday) {
+        spinBtn.disabled = true;
+        spinBtn.innerHTML = '✓ Spun Today · Come Back Tomorrow';
+        timerLabel.innerHTML = 'Next spin resets in: <span class="ql-spin-timer-badge" id="ql-timer-val">calculating…</span>';
+        timerVal = host.querySelector("#ql-timer-val");
+        updateTimer();
+        if (!timerInterval) timerInterval = setInterval(updateTimer, 1000);
+      } else {
+        if (timerInterval) { clearInterval(timerInterval); timerInterval = null; }
+        spinBtn.disabled = isSpinning;
+        spinBtn.innerHTML = '<span aria-hidden="true">🎡</span> SPIN NOW · 1 Free Daily Spin';
+        timerLabel.textContent = '1 Free Daily Spin for Every Account · Resets at midnight IST';
+      }
+    }
+    renderButtonState();
+
+    // Wheel drawing
+    function drawWheel(angle, lightTick) {
+      var w = canvas.width;
+      var h = canvas.height;
+      var cx = w / 2;
+      var cy = h / 2;
+      var r = cx - 24;
+      var numSlices = WHEEL_PRIZES.length;
+      var arc = (Math.PI * 2) / numSlices;
+
+      ctx.clearRect(0, 0, w, h);
+
+      // Outer gold rim
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(cx, cy, r + 18, 0, Math.PI * 2);
+      ctx.fillStyle = "#1e293b";
+      ctx.fill();
+      ctx.lineWidth = 14;
+      ctx.strokeStyle = "#eab308";
+      ctx.stroke();
+
+      // Outer lights (24 bulbs)
+      var numLights = 24;
+      for (var k = 0; k < numLights; k++) {
+        var lightAngle = (k * (Math.PI * 2)) / numLights;
+        var lx = cx + (r + 18) * Math.cos(lightAngle);
+        var ly = cy + (r + 18) * Math.sin(lightAngle);
+        var isLit = ((k + Math.floor(lightTick || 0)) % 2 === 0);
+        ctx.beginPath();
+        ctx.arc(lx, ly, 5, 0, Math.PI * 2);
+        ctx.fillStyle = isLit ? "#fef08a" : "#ca8a04";
+        ctx.shadowColor = isLit ? "#fef08a" : "transparent";
+        ctx.shadowBlur = isLit ? 10 : 0;
+        ctx.fill();
+      }
+      ctx.restore();
+
+      // Slices
+      for (var i = 0; i < numSlices; i++) {
+        var startAngle = angle + (i * arc);
+        var endAngle = startAngle + arc;
+        var p = WHEEL_PRIZES[i];
+
+        ctx.save();
+        ctx.beginPath();
+        ctx.moveTo(cx, cy);
+        ctx.arc(cx, cy, r, startAngle, endAngle);
+        ctx.closePath();
+        ctx.fillStyle = p.color;
+        ctx.fill();
+
+        // Edge separator
+        ctx.lineWidth = 2.5;
+        ctx.strokeStyle = "rgba(255, 255, 255, 0.4)";
+        ctx.stroke();
+
+        // Inner shadow
+        ctx.clip();
+        ctx.beginPath();
+        ctx.arc(cx, cy, r, 0, Math.PI * 2);
+        ctx.lineWidth = 16;
+        ctx.strokeStyle = "rgba(0, 0, 0, 0.14)";
+        ctx.stroke();
+        ctx.restore();
+
+        // Slice text & icon
+        ctx.save();
+        ctx.translate(cx, cy);
+        ctx.rotate(startAngle + arc / 2);
+        ctx.textAlign = "right";
+        ctx.fillStyle = "#ffffff";
+        ctx.font = "bold 22px sans-serif";
+        ctx.shadowColor = "rgba(0, 0, 0, 0.4)";
+        ctx.shadowBlur = 4;
+        ctx.fillText(p.title, r - 52, 5);
+
+        ctx.font = "12px sans-serif";
+        ctx.fillStyle = "#fde047";
+        ctx.fillText(p.sub, r - 52, 22);
+
+        ctx.font = "24px sans-serif";
+        ctx.shadowBlur = 0;
+        ctx.fillText(p.icon, r - 16, 8);
+        ctx.restore();
+      }
+
+      // Center Hub
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(cx, cy, 54, 0, Math.PI * 2);
+      ctx.fillStyle = "#0f172a";
+      ctx.shadowColor = "rgba(0, 0, 0, 0.35)";
+      ctx.shadowBlur = 12;
+      ctx.fill();
+      ctx.lineWidth = 6;
+      ctx.strokeStyle = "#eab308";
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.arc(cx, cy, 38, 0, Math.PI * 2);
+      ctx.fillStyle = "#facc15";
+      ctx.fill();
+
+      ctx.fillStyle = "#713f12";
+      ctx.font = "bold 20px sans-serif";
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.fillText("QUIZ", cx, cy - 6);
+      ctx.font = "bold 13px sans-serif";
+      ctx.fillText("LAB", cx, cy + 10);
+      ctx.restore();
+    }
+    drawWheel(0, 0);
+
+    // Spin animation execution
+    function startSpin() {
+      if (isSpinning || isSpunToday) return;
+      isSpinning = true;
+      spinBtn.disabled = true;
+      spinBtn.innerHTML = '<span aria-hidden="true">↻</span> Spinning the Lucky Wheel…';
+
+      // Pick prize with weighted probabilities:
+      // 0: 5% OFF (20%)
+      // 1: 30D Free Pro (4%)
+      // 2: ₹50 OFF (10%)
+      // 3: Try Again (22%)
+      // 4: 25% OFF (8%)
+      // 5: Better Luck (16%)
+      // 6: ₹100 OFF (5% super rare)
+      // 7: +50 XP (15% 4th most common)
+      var weights = [20, 4, 10, 22, 8, 16, 5, 15];
+      var rand = Math.floor(Math.random() * 100) + 1;
+      var cumulative = 0;
+      var chosenIndex = 0;
+      for (var idx = 0; idx < weights.length; idx++) {
+        cumulative += weights[idx];
+        if (rand <= cumulative) { chosenIndex = idx; break; }
+      }
+
+      var chosenPrize = WHEEL_PRIZES[chosenIndex];
+      var numSlices = WHEEL_PRIZES.length;
+      var arc = (Math.PI * 2) / numSlices;
+
+      // Pointer is at 12 o'clock (angle 3*PI/2)
+      var targetAngle = (Math.PI * 1.5) - (chosenIndex * arc + arc / 2);
+      var fullRotations = 6 + Math.floor(Math.random() * 3);
+      var totalAngleDelta = (fullRotations * Math.PI * 2) + (targetAngle - (currentAngle % (Math.PI * 2)));
+      if (totalAngleDelta < fullRotations * Math.PI * 2) totalAngleDelta += Math.PI * 2;
+
+      var startAngle = currentAngle;
+      var targetTotal = startAngle + totalAngleDelta;
+      var duration = 4600;
+      var startTime = Date.now();
+      var lastSliceTick = -1;
+      var lightTick = 0;
+
+      function frame() {
+        var now = Date.now();
+        var t = Math.min(1, (now - startTime) / duration);
+        // Easing: ease-out cubic-quartic
+        var ease = 1 - Math.pow(1 - t, 3.8);
+        currentAngle = startAngle + totalAngleDelta * ease;
+        lightTick += 0.35;
+
+        // Sound on slice transition
+        var currentSlice = Math.floor((currentAngle % (Math.PI * 2)) / arc);
+        if (currentSlice !== lastSliceTick) {
+          lastSliceTick = currentSlice;
+          playWheelTickSound();
+        }
+
+        drawWheel(currentAngle, lightTick);
+
+        if (t < 1) {
+          requestAnimationFrame(frame);
+        } else {
+          isSpinning = false;
+          onSpinFinished(chosenPrize);
+        }
+      }
+      requestAnimationFrame(frame);
+    }
+
+    function onSpinFinished(prize) {
+      today = getTodayISTString();
+      state.lastSpinDate = today;
+
+      var nowTime = Date.now();
+      var reward = null;
+
+      if (prize.type !== "try_again") {
+        var code = prize.prefix ? (prize.prefix + Math.random().toString(36).substring(2, 6).toUpperCase()) : null;
+        reward = {
+          id: "rew_" + nowTime + "_" + Math.floor(Math.random() * 1000),
+          type: prize.type,
+          title: prize.title,
+          value: prize.value,
+          code: code,
+          created_at: new Date(nowTime).toISOString(),
+          expires_at: inArray(prize.type, ["coupon_pct", "coupon_flat"]) ? new Date(nowTime + 7 * 86400 * 1000).toISOString() : null,
+          is_scratched: false,
+          is_claimed: false
+        };
+        state.rewards.unshift(reward);
+      }
+
+      // Record to active manager rewards log
+      try {
+        var mLog = JSON.parse(localStorage.getItem("ql_rewards_global_log") || "[]");
+        var studentUser = JSON.parse(localStorage.getItem("lab_user") || "{}");
+        mLog.unshift({
+          id: "rewlog_" + nowTime + "_" + Math.floor(Math.random() * 1000),
+          user_id: studentUser.id || "guest",
+          user_name: studentUser.name || (studentUser.email ? studentUser.email.split("@")[0] : "Student"),
+          user_email: studentUser.email || "student@genziitian.in",
+          prize_title: prize.title,
+          prize_type: prize.type,
+          coupon_code: reward ? reward.code : null,
+          created_at: new Date(nowTime).toISOString(),
+          expires_at: reward ? reward.expires_at : null,
+          status: prize.type === "try_again" ? "Try Again" : (prize.type === "bonus_xp" ? "Claimed (+50 XP)" : "Unscratched")
+        });
+        if (mLog.length > 500) mLog = mLog.slice(0, 500);
+        localStorage.setItem("ql_rewards_global_log", JSON.stringify(mLog));
+      } catch (_) {}
+
+      saveLocalRewardsState(state);
+      badgeCount.textContent = state.rewards.length;
+      renderButtonState();
+      renderRewardsList();
+
+      playWheelWinSound();
+      fireConfettiBurst();
+
+      if (prize.type === "free_pro") {
+        openProJackpotModal(reward, function () {
+          renderRewardsList();
+        });
+      } else if (reward && prize.type !== "bonus_xp") {
+        openScratchCardModal(reward, function () {
+          saveLocalRewardsState(state);
+          renderRewardsList();
+        });
+      } else if (prize.type === "bonus_xp") {
+        alert("⚡ Awesome! You won +50 Study XP! Added to your learning progress.");
+      } else {
+        alert("🍀 Better luck next time! Your daily spin resets tomorrow at midnight IST.");
+      }
+    }
+
+    function inArray(val, arr) {
+      return arr.indexOf(val) !== -1;
+    }
+
+    // Tab switcher
+    tabWheel.addEventListener("click", function () {
+      tabWheel.setAttribute("aria-selected", "true");
+      tabRewards.setAttribute("aria-selected", "false");
+      viewWheel.style.display = "grid";
+      viewRewards.style.display = "none";
+    });
+
+    tabRewards.addEventListener("click", function () {
+      tabWheel.setAttribute("aria-selected", "false");
+      tabRewards.setAttribute("aria-selected", "true");
+      viewWheel.style.display = "none";
+      viewRewards.style.display = "block";
+      renderRewardsList();
+    });
+
+    // Filter pills
+    var currentFilter = "all";
+    host.querySelectorAll(".ql-filter-pill").forEach(function (pill) {
+      pill.addEventListener("click", function () {
+        host.querySelectorAll(".ql-filter-pill").forEach(function (p) { p.setAttribute("aria-selected", "false"); });
+        pill.setAttribute("aria-selected", "true");
+        currentFilter = pill.dataset.filter || "all";
+        renderRewardsList();
+      });
+    });
+
+    function renderRewardsList() {
+      state = loadLocalRewardsState();
+      var nowTime = Date.now();
+      rewardsGrid.replaceChildren();
+
+      var list = state.rewards.filter(function (r) {
+        var isExpired = r.expires_at ? nowTime > new Date(r.expires_at).getTime() : false;
+        if (currentFilter === "active") return !isExpired && r.type !== "free_pro";
+        if (currentFilter === "pro") return r.type === "free_pro";
+        if (currentFilter === "expired") return isExpired;
+        return true;
+      });
+
+      if (!list.length) {
+        var empty = document.createElement("div");
+        empty.style.cssText = "grid-column:1/-1;text-align:center;padding:60px 20px;color:#64748b";
+        empty.innerHTML =
+          '<div style="font-size:38px;margin-bottom:8px">🎁</div>' +
+          '<strong style="font-size:16px;color:#0f172a;display:block">No rewards in this view</strong>' +
+          '<p style="font-size:13px;margin:6px 0 0">Spin the Lucky Wheel daily to collect coupon codes and free plans.</p>';
+        rewardsGrid.appendChild(empty);
+        return;
+      }
+
+      list.forEach(function (reward) {
+        var card = formatRewardCard(
+          reward,
+          nowTime,
+          function onScratch(r) {
+            openScratchCardModal(r, function () {
+              saveLocalRewardsState(state);
+              renderRewardsList();
+            });
+          },
+          function onClaimPro(r) {
+            claimProMembership(r, function () {
+              saveLocalRewardsState(state);
+              renderRewardsList();
+            });
+          }
+        );
+        rewardsGrid.appendChild(card);
+      });
+    }
+
+    spinBtn.addEventListener("click", startSpin);
+  }
+
   function run() {
     var paper = paperRoomPath(window.location.pathname);
     if (paper) { window.location.replace(paper); return; }
@@ -3139,6 +4384,9 @@
     lockVideoSolutions();
     decorateLeaderboard();
     syncQuizBackLink();
+    syncRewardsButton();
+    fillRewardsPage();
+    ensureDailySpinPrompt();
     if (!/\/discussions/i.test(window.location.pathname)) return;
     injectStyles();
     ROWS.forEach(convertRow);
