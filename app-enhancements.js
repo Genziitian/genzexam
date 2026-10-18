@@ -4019,20 +4019,20 @@
     var overlay = document.createElement("div");
     overlay.id = "ql-prizes-overlay";
     overlay.className = "ql-prizes-overlay";
+    var shuffled = WHEEL_PRIZES.slice().sort(function () { return Math.random() - 0.5; });
     overlay.innerHTML =
       '<div class="ql-prizes-drawer" role="dialog" aria-modal="true">' +
         '<div class="ql-prizes-drawer-head">' +
           '<h2>' +
             '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24"/><path d="m14.83 9.17 4.24-4.24"/><path d="m14.83 14.83 4.24 4.24"/><path d="m9.17 14.83-4.24 4.24"/><circle cx="12" cy="12" r="3"/></svg>' +
-            ' Wheel Prizes &amp; Odds' +
+            ' Wheel Prizes' +
           '</h2>' +
           '<button type="button" class="ql-prizes-drawer-close" aria-label="Close">' +
             '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>' +
           '</button>' +
         '</div>' +
         '<div class="ql-prizes-drawer-body">' +
-          WHEEL_PRIZES.map(function (p, i) {
-            var odds = [18, 8, 10, 9, 8, 10, 5, 12, 10, 10][i] || 10;
+          shuffled.map(function (p) {
             return '<div class="ql-prize-drawer-item">' +
               '<div class="ql-prize-drawer-icon" style="background:' + p.color + '">' +
                 getPrizeSvgIcon(p.type) +
@@ -4041,7 +4041,6 @@
                 '<strong>' + escapeHtml(p.title) + '</strong>' +
                 '<span>' + escapeHtml(p.sub) + ' · ' + escapeHtml(p.value) + '</span>' +
               '</div>' +
-              '<div class="ql-prize-drawer-chance">' + odds + '%</div>' +
             '</div>';
           }).join('') +
         '</div>' +

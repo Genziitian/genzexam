@@ -20,6 +20,8 @@ import 'offline_papers_screen.dart';
 import 'uploaded_papers_screen.dart';
 import 'practice_screens.dart';
 import 'spin_practice_screen.dart';
+import 'daily_rewards_screen.dart';
+import 'video_solutions_screen.dart';
 import 'progress_widgets.dart';
 import 'pro_membership_card.dart';
 
@@ -5740,168 +5742,14 @@ class _MoreTabState extends State<_MoreTab> {
     }
   }
 
-  void _showDailyRewardsDialog() {
+  void _openDailyRewards() {
     AppHaptics.selection();
-    showModalBottomSheet<void>(
-      context: context,
-      isScrollControlled: true,
-      backgroundColor: Colors.white,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(26)),
+    Navigator.of(context).push(MaterialPageRoute<void>(
+      builder: (_) => DailyRewardsScreen(
+        apiClient: widget.discussionService.client,
+        onAccountChanged: () => widget.authState.refreshAccount(),
       ),
-      builder: (ctx) => SingleChildScrollView(
-        padding: EdgeInsets.fromLTRB(20, 16, 20, MediaQuery.of(ctx).viewInsets.bottom + 32),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Center(
-              child: Container(
-                width: 42,
-                height: 4,
-                decoration: BoxDecoration(
-                  color: const Color(0xFFE2E8F0),
-                  borderRadius: BorderRadius.circular(4),
-                ),
-              ),
-            ),
-            const SizedBox(height: 20),
-            Row(
-              children: [
-                Container(
-                  width: 44,
-                  height: 44,
-                  decoration: BoxDecoration(
-                    color: const Color(0xFFEEF2FF),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: const Center(
-                    child: Text('🎁', style: TextStyle(fontSize: 22)),
-                  ),
-                ),
-                const SizedBox(width: 14),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text(
-                        'Daily Rewards · Spin & Win',
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w800,
-                          color: Color(0xFF0F172A),
-                        ),
-                      ),
-                      Text(
-                        '1 free spin every day · Resets at midnight IST',
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: Colors.grey.shade600,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 18),
-            Container(
-              padding: const EdgeInsets.all(14),
-              decoration: BoxDecoration(
-                color: const Color(0xFFF8FAFC),
-                borderRadius: BorderRadius.circular(14),
-                border: Border.all(color: const Color(0xFFE2E8F0)),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
-                    'WHAT YOU CAN WIN TODAY',
-                    style: TextStyle(
-                      fontSize: 10,
-                      fontWeight: FontWeight.w800,
-                      letterSpacing: 1.2,
-                      color: Color(0xFF64748B),
-                    ),
-                  ),
-                  const SizedBox(height: 10),
-                  const Text('👑  30 Days Free Pro Membership (Automatic claim)'),
-                  const SizedBox(height: 6),
-                  const Text('🎟️  15%, 25%, ₹50 & ₹100 OFF Coupons for courses'),
-                  const SizedBox(height: 6),
-                  const Text('📄  Free Paid Papers & Study XP boosters'),
-                  const SizedBox(height: 12),
-                  const Text(
-                    'HOW TO CLAIM & RULES',
-                    style: TextStyle(
-                      fontSize: 10,
-                      fontWeight: FontWeight.w800,
-                      letterSpacing: 1.2,
-                      color: Color(0xFF64748B),
-                    ),
-                  ),
-                  const SizedBox(height: 8),
-                  const Text(
-                    '1. Visit Genziitian.in/courses and choose any course.\n'
-                    '2. Apply your unlocked coupon code at checkout.\n'
-                    '• Only applicable on Genziitian.in/courses.\n'
-                    '• Auto-disables in 7 days from day spun or scratched.\n'
-                    '• 100% free — no payment required to get coupon.\n'
-                    '• Minimum purchase amount is ₹350.\n'
-                    '• Max discount on percentage coupons capped at ₹100.\n'
-                    '• Free Pro grants 30 days without payment or auto-renewal.\n'
-                    '• By continuing you accept all terms, conditions, and rules.',
-                    style: TextStyle(
-                      fontSize: 11,
-                      color: Color(0xFF334155),
-                      height: 1.45,
-                    ),
-                  ),
-                  const SizedBox(height: 10),
-                  Container(
-                    padding: const EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      color: const Color(0xFFFEF3C7),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: const Text(
-                      '⏰ 7-Day Auto-Disable: Coupons expire 7 days after spin or scratch (claimed or unclaimed).',
-                      style: TextStyle(
-                        fontSize: 11,
-                        color: Color(0xFF92400E),
-                        fontWeight: FontWeight.w600,
-                        height: 1.4,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.of(ctx).pop();
-                _openInApp('/rewards', 'Daily Rewards · Spin & Win');
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFF4F46E5),
-                foregroundColor: Colors.white,
-                padding: const EdgeInsets.symmetric(vertical: 14),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(14),
-                ),
-                elevation: 0,
-              ),
-              child: const Text(
-                'Open Lucky Spin Wheel',
-                style: TextStyle(fontSize: 15, fontWeight: FontWeight.w800),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
+    ));
   }
 
   /// Appearance: three cards with a small preview each. Picking one applies it at once.
@@ -6321,21 +6169,6 @@ class _MoreTabState extends State<_MoreTab> {
       MaterialPageRoute<void>(
         builder: (_) =>
             DiscussionsScreen(discussionService: widget.discussionService),
-      ),
-    );
-  }
-
-  /// Opens a page of the website inside the app, signed in with this session.
-  void _openInApp(String path, String title) {
-    AppHaptics.light();
-    Navigator.of(context).push(
-      MaterialPageRoute<void>(
-        builder: (_) => WebPageScreen(
-          path: path,
-          title: title,
-          apiClient: widget.discussionService.client,
-          user: widget.user,
-        ),
       ),
     );
   }
@@ -6812,7 +6645,7 @@ class _MoreTabState extends State<_MoreTab> {
                   subtitle: 'Spin daily for Free Pro, coupons & scratch cards',
                   onTap: () {
                     AppHaptics.selection();
-                    _showDailyRewardsDialog();
+                    _openDailyRewards();
                   },
                 ),
                 const Divider(height: 1, color: Color(0xFFF1F5F9)),
@@ -6855,7 +6688,7 @@ class _MoreTabState extends State<_MoreTab> {
                   badge: 'PRO',
                   subtitle: 'Step-by-step video answers',
                   onTap: () =>
-                      _openInApp('/video-solutions', 'Video Solutions'),
+                      Navigator.of(context).push(MaterialPageRoute<void>(builder: (_) => VideoSolutionsScreen(apiClient: widget.discussionService.client, user: widget.user))),
                 ),
               ],
             ),

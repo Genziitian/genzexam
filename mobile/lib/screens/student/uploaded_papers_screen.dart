@@ -7,6 +7,8 @@ import '../../api/api.dart';
 import '../../api/uploaded_papers_service.dart';
 import '../../widgets/app_ux_components.dart';
 import '../../widgets/premium_widgets.dart';
+import '../../widgets/feature_load_error_card.dart';
+import 'help_screens.dart';
 import 'native_paper_room.dart';
 import 'pro_membership_card.dart';
 
@@ -30,8 +32,10 @@ class _UploadedPapersScreenState extends State<UploadedPapersScreen>
     with WidgetsBindingObserver {
   late final UploadedPapersService _service;
   late Future<UploadedPapersData> _papers;
+  bool _picking = false;
   bool _uploading = false;
   UploadedPaper? _justMade;
+  UploadedPapersData? _lastLoaded;
   bool _rulesVisible = true;
   Timer? _refreshTimer;
   bool _refreshing = false;
@@ -63,6 +67,7 @@ class _UploadedPapersScreenState extends State<UploadedPapersScreen>
 
   Future<void> _refreshVisible() async {
     if (!mounted ||
+        _picking ||
         _uploading ||
         _refreshing ||
         ModalRoute.of(context)?.isCurrent != true ||
@@ -72,8 +77,10 @@ class _UploadedPapersScreenState extends State<UploadedPapersScreen>
     final version = _dataVersion;
     try {
       final data = await _service.list();
-      if (mounted && !_uploading && version == _dataVersion)
-        setState(() => _papers = Future.value(data));
+      if (mounted && !_picking && !_uploading && version == _dataVersion)
+        setState(() {
+          _papers = Future.value(data);
+        });
     } catch (_) {
       /* Keep the last successful screen; explicit refresh reports errors. */
     } finally {
@@ -82,46 +89,67 @@ class _UploadedPapersScreenState extends State<UploadedPapersScreen>
   }
 
   Future<void> _reload() async {
+    if (!mounted || _picking || _uploading) return;
     _dataVersion++;
-    setState(() => _papers = _service.list());
-    await _papers;
+    setState(() {
+      _papers = _service.list();
+    });
+    try {
+      await _papers;
+    } catch (_) {
+      // The FutureBuilder renders this failure; refresh must still finish.
+    }
   }
 
   Future<void> _pickAndUpload() async {
-    if (_uploading) return;
-    _dataVersion++;
-    setState(() => _rulesVisible = false);
-    final files = await FilePicker.pickFiles(
-      type: FileType.custom,
-      allowedExtensions: const ['pdf', 'json'],
-    );
-    if (!mounted) return;
-    setState(() => _rulesVisible = true);
-    if (files.isEmpty) return;
+    if (_picking || _uploading) return;
     setState(() {
       _dataVersion++;
-      _uploading = true;
-      _justMade = null;
+      _picking = true;
+      _rulesVisible = false;
     });
     try {
+      final files = await FilePicker.pickFiles(
+        type: FileType.custom,
+        allowedExtensions: const ['pdf', 'json'],
+      );
+      if (!mounted || files.isEmpty) return;
+      if (files.length != 1) {
+        throw const ApiException(message: 'Choose one paper at a time.');
+      }
+      setState(() {
+        _picking = false;
+        _uploading = true;
+        _rulesVisible = true;
+      });
       final paper = await _service.upload(files.single);
       if (!mounted) return;
       AppHaptics.medium();
       setState(() {
         _justMade = paper;
-        _papers = _service.list();
       });
     } catch (error) {
       if (!mounted) return;
       AppHaptics.heavy();
       final message = error is ApiException
           ? error.message
-          : error.toString().replaceFirst('Exception: ', '');
+          : _picking
+          ? 'Could not choose a file. Please try again.'
+          : 'Could not upload your paper. Please try again.';
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text(message)));
-      setState(() => _papers = _service.list());
     } finally {
-      if (mounted) setState(() => _uploading = false);
+      if (mounted) {
+        final refreshAllowance = _uploading;
+        setState(() {
+          _picking = false;
+          _uploading = false;
+          _rulesVisible = true;
+        });
+        // A rejected/uncertain upload may have changed the server allowance.
+        // Await refresh so a failed GET is handled even before the next frame.
+        if (refreshAllowance) await _reload();
+      }
     }
   }
 
@@ -168,21 +196,26 @@ class _UploadedPapersScreenState extends State<UploadedPapersScreen>
       future: _papers,
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting &&
-            !snapshot.hasData) {
+            !snapshot.hasData &&
+            _lastLoaded == null) {
           return const Center(
             child: CircularProgressIndicator(color: Brand.green),
           );
         }
-        final papers = [...?snapshot.data?.papers]
-          ..sort((a, b) => b.id.compareTo(a.id));
+        if (snapshot.hasData) _lastLoaded = snapshot.data;
+        final data = snapshot.data ?? _lastLoaded;
+        final papers = [...?data?.papers]..sort((a, b) => b.id.compareTo(a.id));
         if (_justMade != null &&
             !papers.any((paper) => paper.id == _justMade!.id)) {
           papers.insert(0, _justMade!);
         }
-        final quota = snapshot.data?.quota;
+        final quota = data?.quota;
         final freeRemaining = quota?.remaining ?? 0;
         final canUpload =
-            !snapshot.hasError && quota != null && quota.remaining > 0;
+            snapshot.connectionState == ConnectionState.done &&
+            !snapshot.hasError &&
+            quota != null &&
+            quota.remaining > 0;
         return RefreshIndicator(
           color: Brand.green,
           onRefresh: _reload,
@@ -192,9 +225,17 @@ class _UploadedPapersScreenState extends State<UploadedPapersScreen>
             children: [
               const _UploadGuide(),
               const SizedBox(height: 12),
-              if (canUpload && quota?.isPro != true) ...[
+              if (quota == null || snapshot.hasError) ...[
                 FilledButton.icon(
-                  onPressed: !_uploading ? _pickAndUpload : null,
+                  onPressed: null,
+                  icon: const Icon(Icons.upload_file_rounded),
+                  label: const Text('Upload paper'),
+                ),
+                const SizedBox(height: 12),
+              ],
+              if (canUpload && quota.isPro != true) ...[
+                FilledButton.icon(
+                  onPressed: !_picking && !_uploading ? _pickAndUpload : null,
                   icon: const Icon(Icons.upload_file_rounded),
                   label: Text(
                     'Claim $freeRemaining free upload${freeRemaining == 1 ? '' : 's'}',
@@ -202,18 +243,19 @@ class _UploadedPapersScreenState extends State<UploadedPapersScreen>
                 ),
                 const SizedBox(height: 12),
               ],
-              _QuotaCard(quota: quota, onGetPro: _goPro, onReset: _reload),
-              if (canUpload && quota?.isPro == true) ...[
+              if (!snapshot.hasError)
+                _QuotaCard(quota: quota, onGetPro: _goPro, onReset: _reload),
+              if (canUpload && quota.isPro == true) ...[
                 const SizedBox(height: 12),
                 FilledButton.icon(
-                  onPressed: !_uploading ? _pickAndUpload : null,
+                  onPressed: !_picking && !_uploading ? _pickAndUpload : null,
                   icon: const Icon(Icons.upload_file_rounded),
                   label: const Text('Upload paper'),
                 ),
               ],
               const SizedBox(height: 22),
               Text(
-                'Your papers (${papers.length})',
+                data == null ? 'Your papers' : 'Your papers (${papers.length})',
                 style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.w800,
@@ -241,10 +283,14 @@ class _UploadedPapersScreenState extends State<UploadedPapersScreen>
                   ),
                 ),
               if (snapshot.hasError)
-                const _MessageCard(
-                  text: 'Could not load your papers. Pull down to try again.',
-                )
-              else if (papers.isEmpty && !_uploading)
+                FeatureLoadErrorCard(
+                  error: snapshot.error!,
+                  feature: 'Your papers',
+                  onRetry: _reload,
+                  onSupport: () => emailSupport(context),
+                  showingSavedData: _lastLoaded != null,
+                ),
+              if (!snapshot.hasError && papers.isEmpty && !_uploading)
                 Container(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 24,
@@ -281,7 +327,7 @@ class _UploadedPapersScreenState extends State<UploadedPapersScreen>
                     ],
                   ),
                 )
-              else
+              else if (papers.isNotEmpty)
                 for (final paper in papers)
                   _PaperTile(paper: paper, onTap: () => _open(paper)),
               const SizedBox(height: 16),
@@ -708,25 +754,6 @@ class _PaperTile extends StatelessWidget {
           ),
         ),
       ),
-    ),
-  );
-}
-
-class _MessageCard extends StatelessWidget {
-  final String text;
-  const _MessageCard({required this.text});
-  @override
-  Widget build(BuildContext context) => Container(
-    width: double.infinity,
-    padding: const EdgeInsets.all(18),
-    decoration: BoxDecoration(
-      color: Colors.white,
-      borderRadius: BorderRadius.circular(18),
-    ),
-    child: Text(
-      text,
-      textAlign: TextAlign.center,
-      style: const TextStyle(color: Brand.muted, height: 1.4),
     ),
   );
 }

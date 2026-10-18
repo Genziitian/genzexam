@@ -11,6 +11,7 @@ class ApiException implements Exception {
   final int? statusCode;
   final Map<String, List<String>>? validationErrors;
   final bool isUnauthorized;
+  final bool isSecurityChallenge;
   final bool needsVerification;
   final String? verificationEmail;
   final dynamic rawData;
@@ -20,6 +21,7 @@ class ApiException implements Exception {
     this.statusCode,
     this.validationErrors,
     this.isUnauthorized = false,
+    this.isSecurityChallenge = false,
     this.needsVerification = false,
     this.verificationEmail,
     this.rawData,
@@ -72,7 +74,8 @@ class ApiException implements Exception {
       String message = 'An unexpected error occurred.';
       if (errorField != null && errorField.toString().trim().isNotEmpty) {
         message = errorField.toString();
-      } else if (messageField != null && messageField.toString().trim().isNotEmpty) {
+      } else if (messageField != null &&
+          messageField.toString().trim().isNotEmpty) {
         message = messageField.toString();
       } else if (validationErrors != null && validationErrors.isNotEmpty) {
         final firstError = validationErrors.values.first.firstOrNull;
@@ -93,15 +96,25 @@ class ApiException implements Exception {
     }
 
     if (data is String && data.isNotEmpty) {
-      final isHtml = data.trim().toLowerCase().startsWith('<!doctype') ||
+      final isHtml =
+          data.trim().toLowerCase().startsWith('<!doctype') ||
           data.trim().toLowerCase().startsWith('<html') ||
           data.contains('<body');
-      final cleanMessage = isHtml
+      final isSecurityChallenge =
+          isHtml &&
+          statusCode == 403 &&
+          (data.contains('Checking your browser') ||
+              data.contains('Just a moment') ||
+              data.contains('cdn-cgi/challenge'));
+      final cleanMessage = isSecurityChallenge
+          ? 'Quiz LAB’s server is blocking this request. Please contact support. You do not need to sign in again.'
+          : isHtml
           ? 'Server response error (${statusCode ?? 'HTTP'}). Security verification or temporary network issue. Please try again shortly.'
           : data;
       return ApiException(
         message: cleanMessage,
         statusCode: statusCode,
+        isSecurityChallenge: isSecurityChallenge,
         rawData: data,
       );
     }
@@ -115,5 +128,6 @@ class ApiException implements Exception {
   }
 
   @override
-  String toString() => 'ApiException(statusCode: $statusCode, message: $message)';
+  String toString() =>
+      'ApiException(statusCode: $statusCode, message: $message)';
 }

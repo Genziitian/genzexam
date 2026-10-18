@@ -55,10 +55,33 @@ class ApiClient {
     _dio.interceptors.add(
       InterceptorsWrapper(
         onResponse: (response, handler) {
+          if (kDebugMode &&
+              RegExp(r'/(courses|student/uploaded-papers|student/spin-practice(?:/quota)?)$')
+                  .hasMatch(response.requestOptions.uri.path)) {
+            // Confirm recovery using metadata only, never account data or tokens.
+            debugPrint(
+              'Quiz LAB API: ${response.requestOptions.method} '
+              '${response.requestOptions.uri.path} '
+              'status=${response.statusCode} '
+              'contentType=${response.headers.value('content-type') ?? 'unknown'} '
+              'requestId=${response.headers.value('x-hcdn-request-id') ?? 'none'}',
+            );
+          }
           connectionUnavailable.value = false;
           handler.next(response);
         },
         onError: (error, handler) {
+          if (kDebugMode && error.type != DioExceptionType.cancel) {
+            final response = error.response;
+            // Diagnostic metadata only: never log tokens, query strings or bodies.
+            debugPrint(
+              'Quiz LAB API: ${error.requestOptions.method} '
+              '${error.requestOptions.uri.path} '
+              'status=${response?.statusCode ?? error.type.name} '
+              'contentType=${response?.headers.value('content-type') ?? 'unknown'} '
+              'requestId=${response?.headers.value('x-hcdn-request-id') ?? 'none'}',
+            );
+          }
           if (error.type != DioExceptionType.cancel) {
             connectionUnavailable.value =
                 error.response == null ||

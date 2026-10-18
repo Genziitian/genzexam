@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Exceptions\DeepSeekGenerationException;
+use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 
@@ -494,7 +495,15 @@ PROMPT;
 
         // One provider call per upload. Retries are user initiated and protected by
         // upload throttles, so malformed/failed model responses cannot double spend.
-        return $this->callApiWithText($trimmed, $apiKey);
+        try {
+            return $this->callApiWithText($trimmed, $apiKey);
+        } catch (ConnectionException $exception) {
+            throw new DeepSeekGenerationException(
+                'The paper conversion service could not be reached. Please try again shortly.',
+                0,
+                $exception
+            );
+        }
     }
 
     private function callApiWithText(string $pdfText, string $apiKey): array

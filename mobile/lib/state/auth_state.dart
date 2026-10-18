@@ -156,6 +156,9 @@ class AuthState extends ChangeNotifier with WidgetsBindingObserver {
     }
   }
 
+  /// Refresh account entitlements without replacing the current screen.
+  Future<void> refreshAccount() => _refreshSavedSession(_sessionGeneration);
+
   Future<void> _refreshSavedSession(int generation) async {
     try {
       final profile = await _authService.getMe();
@@ -167,7 +170,8 @@ class AuthState extends ChangeNotifier with WidgetsBindingObserver {
       notifyListeners();
     } on ApiException catch (error) {
       if (generation != _sessionGeneration) return;
-      if (error.statusCode == 401 || error.statusCode == 403) {
+      if (error.statusCode == 401 ||
+          (error.statusCode == 403 && error.rawData is Map)) {
         await _apiClient.deleteAuthToken();
         _zeroizeSession();
       }

@@ -51,11 +51,26 @@ class SpinPracticeQuota {
   });
 
   factory SpinPracticeQuota.fromJson(Map<String, dynamic> json) {
+    final limit = json['limit'];
+    final used = json['used'];
+    final remaining = json['remaining'];
+    if (json['is_pro'] is! bool ||
+        limit is! int ||
+        limit < 1 ||
+        used is! int ||
+        used < 0 ||
+        remaining is! int ||
+        remaining < 0 ||
+        remaining > limit) {
+      throw const ApiException(
+        message: 'Could not check your available spins. Please try again.',
+      );
+    }
     return SpinPracticeQuota(
       isPro: json['is_pro'] == true,
-      limit: (json['limit'] as num?)?.toInt() ?? 1,
-      used: (json['used'] as num?)?.toInt() ?? 0,
-      remaining: (json['remaining'] as num?)?.toInt() ?? 0,
+      limit: limit,
+      used: used,
+      remaining: remaining,
     );
   }
 }
@@ -64,20 +79,18 @@ class SpinPracticeService {
   final ApiClient client;
   SpinPracticeService({required this.client});
 
-  Future<SpinPracticeQuota?> getQuota() async {
-    try {
-      final response = await client.get<Map<String, dynamic>>(
-        '/student/spin-practice/quota',
-        options: Options(extra: {'loadingBlocking': false}),
+  Future<SpinPracticeQuota> getQuota() async {
+    final response = await client.get<Map<String, dynamic>>(
+      '/student/spin-practice/quota',
+      options: Options(extra: {'loadingBlocking': false}),
+    );
+    final raw = response.data?['quota'];
+    if (raw is! Map) {
+      throw const ApiException(
+        message: 'Could not check your available spins. Please try again.',
       );
-      final raw = response.data?['quota'];
-      if (raw is Map) {
-        return SpinPracticeQuota.fromJson(Map<String, dynamic>.from(raw));
-      }
-      return null;
-    } catch (_) {
-      return null;
     }
+    return SpinPracticeQuota.fromJson(Map<String, dynamic>.from(raw));
   }
 
   Future<GeneratedPracticePaper> generate({

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
+
+import '../../legal/legal_documents.dart';
 
 import '../../api/pro_play_offer.dart';
 import '../../widgets/app_ux_components.dart';
@@ -287,22 +288,19 @@ class _ProPaywallScreenState extends State<ProPaywallScreen> {
                       minimumSize: const Size(0, 32),
                       tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     ),
-                    onPressed: () async {
-                      final opened = await launchUrl(
-                        Uri.parse(
-                          'https://quiz.genziitian.in/terms-and-conditions',
-                        ),
-                        mode: LaunchMode.externalApplication,
-                      );
-                      if (!opened && context.mounted)
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text(
-                              'Could not open Terms & Conditions. Please try again.',
-                            ),
+                    onPressed: () => Navigator.of(context).push(
+                      MaterialPageRoute<void>(
+                        builder: (_) => Scaffold(
+                          appBar: AppBar(
+                            title: const Text('Terms & Conditions'),
                           ),
-                        );
-                    },
+                          body: const SingleChildScrollView(
+                            padding: EdgeInsets.all(20),
+                            child: SelectableText(LegalDocuments.terms),
+                          ),
+                        ),
+                      ),
+                    ),
                     child: const Text.rich(
                       TextSpan(
                         text: 'By continuing, you agree to our ',
