@@ -5,6 +5,8 @@ import '../../legal/legal_documents.dart';
 import '../../api/pro_play_offer.dart';
 import '../../widgets/app_ux_components.dart';
 import '../../widgets/premium_widgets.dart';
+import '../../widgets/feature_load_error_card.dart';
+import 'help_screens.dart';
 
 enum ProPlanChoice { monthly, yearly }
 
@@ -15,6 +17,7 @@ class ProPaywallScreen extends StatefulWidget {
   final bool disabled;
   final bool busy;
   final String? message;
+  final Object? membershipError;
   final Future<void> Function(ProPlayOffer) onSubscribe;
   final VoidCallback onRestore;
   final VoidCallback onRetry;
@@ -28,6 +31,7 @@ class ProPaywallScreen extends StatefulWidget {
     this.disabled = false,
     this.busy = false,
     this.message,
+    this.membershipError,
   });
 
   @override
@@ -87,81 +91,94 @@ class _ProPaywallScreenState extends State<ProPaywallScreen> {
                       delay: Duration(milliseconds: 560),
                       child: _Compare(),
                     ),
-                    const SizedBox(height: 26),
-                    const Text(
-                      'Choose your plan',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w800,
-                        color: Brand.ink,
+                    if (widget.membershipError != null) ...[
+                      const SizedBox(height: 20),
+                      FeatureLoadErrorCard(
+                        error: widget.membershipError!,
+                        feature: 'Membership',
+                        onRetry: () async => widget.onRetry(),
+                        onSupport: () => emailSupport(context),
                       ),
-                    ),
-                    const SizedBox(height: 12),
-                    _PlanCard(
-                      selected: _choice == ProPlanChoice.monthly,
-                      title: 'Monthly',
-                      recommended: widget.monthly?.isTrial == true,
-                      subtitle: widget.monthly?.isTrial == true
-                          ? 'Try for free · ${widget.monthly!.trialDays} days, then ${widget.monthly!.price}/month'
-                          : 'Billed monthly. Cancel renewal any time.',
-                      trailing: widget.monthly?.price ?? 'Unavailable',
-                      onTap: widget.busy
-                          ? () {}
-                          : () =>
-                                setState(() => _choice = ProPlanChoice.monthly),
-                    ),
-                    const SizedBox(height: 10),
-                    _PlanCard(
-                      selected: _choice == ProPlanChoice.yearly,
-                      title: 'Yearly',
-                      subtitle: 'Billed yearly. No free trial.',
-                      trailing: widget.yearly?.price ?? 'Unavailable',
-                      onTap: widget.busy
-                          ? () {}
-                          : () =>
-                                setState(() => _choice = ProPlanChoice.yearly),
-                    ),
-                    if (_trial) ...[
-                      const SizedBox(height: 16),
-                      Container(
-                        padding: const EdgeInsets.all(16),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(16),
+                    ] else ...[
+                      const SizedBox(height: 26),
+                      const Text(
+                        'Choose your plan',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w800,
+                          color: Brand.ink,
                         ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            _ReceiptRow(
-                              label: 'Monthly plan',
-                              amount: _offer!.price,
-                            ),
-                            const SizedBox(height: 8),
-                            _ReceiptRow(
-                              label: '${_offer!.trialDays}-day trial discount',
-                              amount: '− ${_offer!.price}',
-                            ),
-                            const Divider(height: 24),
-                            const _ReceiptRow(
-                              label: 'Due today',
-                              amount: 'FREE',
-                              total: true,
-                            ),
-                            const SizedBox(height: 6),
-                            Text(
-                              'First charge: ${_date(DateUtils.addDaysToDate(DateTime.now(), _offer!.trialDays))} — ${_offer!.price}, then every month.',
-                            ),
-                            const SizedBox(height: 6),
-                            const Text(
-                              'Cancel before this date to avoid the subscription charge. The date assumes you start today; Google Play confirms the exact billing time at checkout.',
-                              style: TextStyle(
-                                fontSize: 11,
-                                color: Brand.muted,
+                      ),
+                      const SizedBox(height: 12),
+                      _PlanCard(
+                        selected: _choice == ProPlanChoice.monthly,
+                        title: 'Monthly',
+                        recommended: widget.monthly?.isTrial == true,
+                        subtitle: widget.monthly?.isTrial == true
+                            ? 'Try for free · ${widget.monthly!.trialDays} days, then ${widget.monthly!.price}/month'
+                            : 'Billed monthly. Cancel renewal any time.',
+                        trailing: widget.monthly?.price ?? 'Unavailable',
+                        onTap: widget.busy
+                            ? () {}
+                            : () => setState(
+                                () => _choice = ProPlanChoice.monthly,
                               ),
-                            ),
-                          ],
-                        ),
                       ),
+                      const SizedBox(height: 10),
+                      _PlanCard(
+                        selected: _choice == ProPlanChoice.yearly,
+                        title: 'Yearly',
+                        subtitle: 'Billed yearly. No free trial.',
+                        trailing: widget.yearly?.price ?? 'Unavailable',
+                        onTap: widget.busy
+                            ? () {}
+                            : () => setState(
+                                () => _choice = ProPlanChoice.yearly,
+                              ),
+                      ),
+                      if (_trial) ...[
+                        const SizedBox(height: 16),
+                        Container(
+                          padding: const EdgeInsets.all(16),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              _ReceiptRow(
+                                label: 'Monthly plan',
+                                amount: _offer!.price,
+                              ),
+                              const SizedBox(height: 8),
+                              _ReceiptRow(
+                                label:
+                                    '${_offer!.trialDays}-day trial discount',
+                                amount: '− ${_offer!.price}',
+                              ),
+                              const Divider(height: 24),
+                              const _ReceiptRow(
+                                label: 'Due today',
+                                amount: 'FREE',
+                                total: true,
+                              ),
+                              const SizedBox(height: 6),
+                              Text(
+                                'First charge: ${_date(DateUtils.addDaysToDate(DateTime.now(), _offer!.trialDays))} — ${_offer!.price}, then every month.',
+                              ),
+                              const SizedBox(height: 6),
+                              const Text(
+                                'Cancel before this date to avoid the subscription charge. The date assumes you start today; Google Play confirms the exact billing time at checkout.',
+                                style: TextStyle(
+                                  fontSize: 11,
+                                  color: Brand.muted,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
                     ],
                     if (widget.message != null)
                       Padding(
@@ -176,7 +193,8 @@ class _ProPaywallScreenState extends State<ProPaywallScreen> {
                       onPressed: widget.onRestore,
                       child: const Text('Restore purchases'),
                     ),
-                    if (widget.monthly == null || widget.yearly == null)
+                    if (widget.membershipError == null &&
+                        (widget.monthly == null || widget.yearly == null))
                       TextButton(
                         onPressed: widget.onRetry,
                         child: const Text('Reload available plans'),
@@ -225,6 +243,8 @@ class _ProPaywallScreenState extends State<ProPaywallScreen> {
                           child: Text(
                             _trial
                                 ? '${_offer!.trialDays} days free, then ${_offer!.price}/month'
+                                : widget.membershipError != null
+                                ? 'Membership unavailable'
                                 : _offer?.terms ??
                                       'Plan unavailable in Google Play',
                             key: ValueKey(
@@ -255,7 +275,10 @@ class _ProPaywallScreenState extends State<ProPaywallScreen> {
                             ),
                           ),
                           onPressed:
-                              _offer == null || widget.disabled || widget.busy
+                              _offer == null ||
+                                  widget.disabled ||
+                                  widget.busy ||
+                                  widget.membershipError != null
                               ? null
                               : () => widget.onSubscribe(_offer!),
                           child: widget.busy

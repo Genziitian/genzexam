@@ -6,6 +6,7 @@ import 'package:in_app_purchase/in_app_purchase.dart';
 import 'package:in_app_purchase_android/in_app_purchase_android.dart';
 
 import '../../api/api_client.dart';
+import '../../api/api_exceptions.dart';
 import '../../api/app_icon_service.dart';
 import '../../api/pro_play_offer.dart';
 import '../../widgets/premium_widgets.dart';
@@ -48,6 +49,7 @@ class _ProMembershipCardState extends State<ProMembershipCard> {
   bool _billingReady = false;
   final Set<String> _celebratedPurchases = {};
   String? _error;
+  Object? _membershipLoadError;
   String? _message;
   bool _loading = true;
   bool _buying = false;
@@ -76,10 +78,12 @@ class _ProMembershipCardState extends State<ProMembershipCard> {
   }
 
   Future<void> _load() async {
+    var membershipLoaded = false;
     if (mounted)
       setState(() {
         _loading = true;
         _error = null;
+        _membershipLoadError = null;
         _message = null;
         _product = null;
         _playOffer = null;
@@ -93,6 +97,7 @@ class _ProMembershipCardState extends State<ProMembershipCard> {
         '/membership',
       );
       _membership = response.data ?? {};
+      membershipLoaded = true;
       if (_membership['is_pro'] is bool) {
         unawaited(AppIconService.syncIcon(isPro: _membership['is_pro'] == true));
       }
@@ -168,7 +173,10 @@ class _ProMembershipCardState extends State<ProMembershipCard> {
         }
       }
     } catch (error) {
-      _error = 'Membership details could not load: $error';
+      if (!membershipLoaded) _membershipLoadError = error;
+      _error = error is ApiException
+          ? error.message
+          : 'Membership details could not load. Please try again.';
     } finally {
       if (mounted) setState(() => _loading = false);
     }
@@ -397,7 +405,8 @@ class _ProMembershipCardState extends State<ProMembershipCard> {
         onRetry: _load,
         disabled: _planDisabled,
         busy: _buying,
-        message: _error ?? _message,
+        message: _membershipLoadError == null ? _error ?? _message : null,
+        membershipError: _membershipLoadError,
       );
     final trial = subscription['status'] == 'trialing';
     final plan = _membership['plan'] is Map

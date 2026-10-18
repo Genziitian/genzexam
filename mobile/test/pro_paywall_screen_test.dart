@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:genz_exam_mobile/api/pro_play_offer.dart';
+import 'package:genz_exam_mobile/api/api_exceptions.dart';
 import 'package:genz_exam_mobile/screens/student/pro_paywall_screen.dart';
 import 'package:in_app_purchase_android/billing_client_wrappers.dart';
 import 'package:in_app_purchase_android/in_app_purchase_android.dart';
@@ -8,6 +9,69 @@ import 'package:in_app_purchase_android/in_app_purchase_android.dart';
 import 'pro_play_offer_test.dart' as fixtures;
 
 void main() {
+  testWidgets('blocked membership is not shown as a missing Google Play plan', (
+    tester,
+  ) async {
+    tester.view.physicalSize = const Size(800, 1400);
+    tester.view.devicePixelRatio = 1.0;
+    addTearDown(() {
+      tester.view.resetPhysicalSize();
+      tester.view.resetDevicePixelRatio();
+    });
+    var retries = 0;
+    await tester.pumpWidget(
+      MaterialApp(
+        home: ProPaywallScreen(
+          membershipError: const ApiException(
+            message: 'Server blocked this request',
+            statusCode: 403,
+            isSecurityChallenge: true,
+          ),
+          onSubscribe: (_) async =>
+              fail('A blocked membership must not start a purchase'),
+          onRestore: () {},
+          onRetry: () => retries++,
+        ),
+      ),
+    );
+    await tester.pump(const Duration(seconds: 2));
+    expect(find.text('Membership unavailable'), findsOneWidget);
+    expect(find.text('Choose your plan'), findsNothing);
+    expect(find.text('Plan unavailable in Google Play'), findsNothing);
+    expect(find.textContaining('ApiException('), findsNothing);
+    await tester.ensureVisible(find.text('Try again'));
+    await tester.pump(const Duration(milliseconds: 500));
+    await tester.tap(find.text('Try again'));
+    expect(retries, 1);
+    expect(
+      tester.widget<FilledButton>(find.byType(FilledButton)).onPressed,
+      isNull,
+    );
+    expect(tester.takeException(), isNull);
+  });
+
+  testWidgets(
+    'missing Play products remain distinct from a membership server error',
+    (tester) async {
+      await tester.pumpWidget(
+        MaterialApp(
+          home: ProPaywallScreen(
+            onSubscribe: (_) async {},
+            onRestore: () {},
+            onRetry: () {},
+          ),
+        ),
+      );
+      await tester.pump(const Duration(seconds: 2));
+      expect(find.text('Plan unavailable in Google Play'), findsOneWidget);
+      expect(find.text('Membership unavailable'), findsNothing);
+      expect(
+        tester.widget<FilledButton>(find.byType(FilledButton)).onPressed,
+        isNull,
+      );
+    },
+  );
+
   testWidgets(
     'selected yearly plan sends annual offer; monthly trial shows its real terms',
     (tester) async {

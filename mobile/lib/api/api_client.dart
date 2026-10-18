@@ -124,8 +124,7 @@ class ApiClient {
           }
           if (error.type != DioExceptionType.cancel) {
             connectionUnavailable.value =
-                error.response == null ||
-                (error.response?.statusCode ?? 0) >= 500;
+                error.response == null;
           }
           handler.next(error);
         },

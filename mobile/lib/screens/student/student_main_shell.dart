@@ -10,6 +10,7 @@ import '../../legal/legal_documents.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 import '../../api/api.dart';
+import '../../widgets/feature_load_error_card.dart';
 import '../../state/auth_state.dart';
 import '../../state/theme_state.dart';
 import '../../widgets/app_ux_components.dart';
@@ -385,7 +386,7 @@ class _StudentMainShellState extends State<StudentMainShell> {
                             const SizedBox(width: 8),
                             const Expanded(
                               child: Text(
-                                'Connection unavailable',
+                                'Cannot reach Quiz LAB',
                                 style: TextStyle(fontSize: 12),
                               ),
                             ),
@@ -1922,22 +1923,23 @@ class _HomeTabState extends State<_HomeTab>
               const SizedBox(height: 24),
               if (loading) const LinearProgressIndicator(),
               const SizedBox(height: 16),
-              Text(
-                loading
-                    ? 'Updating your progress…'
-                    : 'Your progress needs a connection.',
-                style: const TextStyle(fontWeight: FontWeight.w700),
-              ),
+              if (loading)
+                const Text(
+                  'Updating your progress…',
+                  style: TextStyle(fontWeight: FontWeight.w700),
+                )
+              else
+                FeatureLoadErrorCard(
+                  error: snapshot.error ??
+                      const ApiException(message: 'Please try again.'),
+                  feature: 'Dashboard',
+                  onRetry: _refresh,
+                  onSupport: () => emailSupport(context),
+                ),
               const SizedBox(height: 8),
               const Text(
                 'Downloaded papers are ready on this device. Open Downloads to practise without internet.',
               ),
-              if (!loading)
-                TextButton.icon(
-                  onPressed: _refresh,
-                  icon: const Icon(Icons.refresh),
-                  label: const Text('Refresh progress'),
-                ),
             ],
           );
         }
@@ -1949,6 +1951,14 @@ class _HomeTabState extends State<_HomeTab>
             controller: _scrollController,
             padding: const EdgeInsets.all(16),
             children: [
+              if (snapshot.hasError)
+                FeatureLoadErrorCard(
+                  error: snapshot.error!,
+                  feature: 'Dashboard',
+                  onRetry: _refresh,
+                  onSupport: () => emailSupport(context),
+                  showingSavedData: true,
+                ),
               // Brand header (same as the website's phone top bar)
               _FadeUp(
                 delayMs: 0,
@@ -3245,19 +3255,31 @@ class _MetricCard extends StatelessWidget {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    Flexible(child: _animatedValue()),
-                    const SizedBox(width: 4),
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 3),
-                      child: Text(
-                        unit,
-                        style: const TextStyle(
-                          fontSize: 12,
-                          color: Color(0xFF94A3B8),
+                    Expanded(
+                      child: FittedBox(
+                        fit: BoxFit.scaleDown,
+                        alignment: Alignment.bottomLeft,
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            _animatedValue(),
+                            const SizedBox(width: 4),
+                            Padding(
+                              padding: const EdgeInsets.only(bottom: 3),
+                              child: Text(
+                                unit,
+                                style: const TextStyle(
+                                  fontSize: 12,
+                                  color: Color(0xFF94A3B8),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ),
-                    const Spacer(),
+                    const SizedBox(width: 6),
                     SizedBox(
                       width: 54,
                       height: 26,
