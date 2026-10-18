@@ -64,6 +64,8 @@ void main() {
 
   Future<void> mount(WidgetTester tester) async {
     response = Completer<Map<String, dynamic>>();
+    await tester.binding.setSurfaceSize(const Size(393, 852));
+    addTearDown(() => tester.binding.setSurfaceSize(null));
     await tester.pumpWidget(
       MaterialApp(
         home: SpinPracticeScreen(apiClient: client, onOpenMyPapers: () {}),
@@ -73,7 +75,7 @@ void main() {
   }
 
   Future<void> selectCourse(WidgetTester tester) async {
-    final dropdown = find.byType(DropdownButtonFormField<int>);
+    final dropdown = find.byKey(const Key('spin-course'));
     await tester.ensureVisible(dropdown);
     await tester.tap(dropdown);
     await tester.pumpAndSettle();
@@ -107,9 +109,23 @@ void main() {
     (tester) async {
       await mount(tester);
       await selectCourse(tester);
-      await tapVisible(tester, 'Weeks 5–8');
-      await tapVisible(tester, 'GA');
-      await tapVisible(tester, '30 min');
+      final slider = find.byType(RangeSlider);
+      await tester.ensureVisible(slider);
+      final sliderRect = tester.getRect(slider);
+      await tester.dragFrom(
+        Offset(sliderRect.left + 24, sliderRect.center.dy),
+        Offset(sliderRect.width * 0.3, 0),
+      );
+      await tester.pumpAndSettle();
+      final weeks = tester.widget<RangeSlider>(slider).values;
+      await tapVisible(tester, 'All types');
+      await tester.pumpAndSettle();
+      await tester.tap(find.widgetWithText(CheckboxListTile, 'PA'));
+      await tester.pump();
+      await tester.tap(find.widgetWithText(CheckboxListTile, 'GA'));
+      await tester.pump();
+      await tester.tap(find.text('Apply selection'));
+      await tester.pumpAndSettle();
       await tester.ensureVisible(find.byType(TextField));
       await tester.enterText(find.byType(TextField), ' My revision ');
       await tapVisible(tester, 'Spin the wheel');
@@ -119,12 +135,12 @@ void main() {
       expect(generated.single.headers['Authorization'], 'Bearer test-session');
       expect(generated.single.data, {
         'course_id': 7,
-        'week_min': 5,
-        'week_max': 8,
-        'paper_types': ['ga'],
+        'week_min': weeks.start.round(),
+        'week_max': weeks.end.round(),
+        'paper_types': ['pa', 'ga'],
         'title': 'My revision',
-        'time_limit_minutes': 30,
       });
+      expect(generated.single.data.containsKey('time_limit_minutes'), isFalse);
       final button = tester.widget<FilledButton>(
         find.widgetWithText(FilledButton, 'Creating paper…'),
       );
@@ -137,11 +153,48 @@ void main() {
         'time_limit_minutes': 30,
       });
       await tester.pump();
-      await tester.pump(const Duration(seconds: 1));
+      await tester.pump(const Duration(seconds: 3));
       expect(find.text('Creating paper…'), findsNothing);
-      expect(find.text('6 questions · 30 minutes'), findsOneWidget);
+      expect(
+        find.text('6 questions · Choose your time when you open it'),
+        findsOneWidget,
+      );
       expect(find.text('Start practice'), findsOneWidget);
       expect(generated, hasLength(1));
+      expect(tester.takeException(), isNull);
+    },
+  );
+
+  testWidgets(
+    'All types replaces individual selections and time stays out of setup',
+    (tester) async {
+      await mount(tester);
+      expect(find.byType(ChoiceChip), findsNothing);
+      expect(find.text('Time limit'), findsNothing);
+      expect(find.text('All weeks'), findsNothing);
+      await selectCourse(tester);
+      await tapVisible(tester, 'All types');
+      await tester.pumpAndSettle();
+      await tester.tap(find.widgetWithText(CheckboxListTile, 'PA'));
+      await tester.pump();
+      await tester.tap(find.widgetWithText(CheckboxListTile, 'GA'));
+      await tester.pump();
+      await tester.tap(find.widgetWithText(CheckboxListTile, 'All types'));
+      await tester.pump();
+      await tester.tap(find.text('Apply selection'));
+      await tester.pumpAndSettle();
+      await tapVisible(tester, 'Spin the wheel');
+      await tester.pump(const Duration(milliseconds: 200));
+      expect(generated.single.data['paper_types'], ['all']);
+      expect(generated.single.data.containsKey('time_limit_minutes'), isFalse);
+      response.complete({
+        'id': 100,
+        'title': 'All types practice',
+        'question_count': 10,
+        'time_limit_minutes': 20,
+      });
+      await tester.pump();
+      await tester.pump(const Duration(seconds: 3));
       expect(tester.takeException(), isNull);
     },
   );
@@ -155,7 +208,7 @@ void main() {
       await tester.pump(const Duration(milliseconds: 200));
       response.complete({'error': 'No questions found for these weeks.'});
       await tester.pump();
-      await tester.pump(const Duration(seconds: 1));
+      await tester.pump(const Duration(seconds: 3));
       expect(find.text('No questions found for these weeks.'), findsOneWidget);
       expect(find.text('Start practice'), findsNothing);
       final button = tester.widget<FilledButton>(

@@ -43,7 +43,6 @@ class SpinPracticeService {
     required int weekMin,
     required int weekMax,
     required List<String> paperTypes,
-    required int timeLimitMinutes,
     String title = '',
   }) async {
     final response = await client.post<Map<String, dynamic>>(
@@ -55,7 +54,6 @@ class SpinPracticeService {
         'week_max': weekMax,
         'paper_types': paperTypes,
         'title': title.trim(),
-        'time_limit_minutes': timeLimitMinutes,
       },
     );
     return GeneratedPracticePaper.fromJson(response.data ?? {});

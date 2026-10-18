@@ -626,7 +626,7 @@ class _PaperRoomScreenState extends State<PaperRoomScreen>
                 children: [
                   Icon(Icons.bolt_rounded, size: 14, color: _paperGreen),
                   SizedBox(width: 4),
-                  Text(
+                  Flexible(child: Text(
                     'READY WHEN YOU ARE',
                     style: TextStyle(
                       color: _paperGreen,
@@ -634,7 +634,7 @@ class _PaperRoomScreenState extends State<PaperRoomScreen>
                       fontSize: 10.5,
                       fontWeight: FontWeight.w800,
                     ),
-                  ),
+                  )),
                 ],
               ),
             ),
@@ -683,23 +683,16 @@ class _PaperRoomScreenState extends State<PaperRoomScreen>
                   ),
                 for (final minutes in [15, 30])
                   _timeChip('$minutes min', minutes),
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    _timeChip('45 min', 45),
-                    const SizedBox(width: 8),
-                    _timeChip('60 min', 60),
-                    const SizedBox(width: 8),
-                    OutlinedButton.icon(
-                      onPressed: _customTime,
-                      icon: const Icon(Icons.timer_outlined, size: 16),
-                      label: const Text('Custom'),
-                      style: OutlinedButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(horizontal: 12),
-                        minimumSize: const Size(0, 40),
-                      ),
-                    ),
-                  ],
+                _timeChip('45 min', 45),
+                _timeChip('60 min', 60),
+                OutlinedButton.icon(
+                  onPressed: _customTime,
+                  icon: const Icon(Icons.timer_outlined, size: 16),
+                  label: const Text('Custom'),
+                  style: OutlinedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(horizontal: 12),
+                    minimumSize: const Size(0, 40),
+                  ),
                 ),
               ],
             ),
@@ -1021,10 +1014,6 @@ class _PaperRoomScreenState extends State<PaperRoomScreen>
                         ),
                       ),
                     ),
-                    const SizedBox(width: 8),
-                    _ReportButton(
-                      onTap: () => _reportQuestion(question.id, _questionIndex + 1),
-                    ),
                     const SizedBox(width: 10),
                     Text(
                       '+${question.marks} Marks',
@@ -1273,10 +1262,10 @@ class _PaperRoomScreenState extends State<PaperRoomScreen>
             ),
           ),
         const SizedBox(height: 8),
-        Row(
+        LayoutBuilder(builder: (context, constraints) => Row(
           children: [
             _headerPill(
-              'Answered:  $answeredCount/${_questions.length}',
+              constraints.maxWidth < 440 ? '$answeredCount/${_questions.length}' : 'Answered:  $answeredCount/${_questions.length}',
               const Color(0xFFF1F5F9),
               const Color(0xFF475569),
             ),
@@ -1292,6 +1281,11 @@ class _PaperRoomScreenState extends State<PaperRoomScreen>
               leading: _selectedMinutes == 0 ? Icons.circle : null,
             ),
             const Spacer(),
+            if (_current != null) _ReportButton(
+              compact: constraints.maxWidth < 340,
+              onTap: () => _reportQuestion(_current!.id, _questionIndex + 1),
+            ),
+            const SizedBox(width: 6),
             FilledButton.icon(
               style: FilledButton.styleFrom(
                 backgroundColor: const Color(0xFF059669),
@@ -1308,7 +1302,7 @@ class _PaperRoomScreenState extends State<PaperRoomScreen>
               ),
             ),
           ],
-        ),
+        )),
       ],
     ),
   );
@@ -1947,31 +1941,24 @@ class _PaperRoomScreenState extends State<PaperRoomScreen>
 
 class _ReportButton extends StatelessWidget {
   final VoidCallback onTap;
-  const _ReportButton({required this.onTap});
+  final bool compact;
+  const _ReportButton({required this.onTap, this.compact = false});
 
   @override
-  Widget build(BuildContext context) => Material(
-    color: const Color(0xFFFEF2F2),
-    shape: const StadiumBorder(),
-    child: InkWell(
-      customBorder: const StadiumBorder(),
-      onTap: onTap,
-      child: const Padding(
-        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 7),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(Icons.flag_outlined, size: 14, color: Color(0xFFB91C1C)),
-            SizedBox(width: 4),
-            Text(
-              'Report',
-              style: TextStyle(
-                color: Color(0xFFB91C1C),
-                fontWeight: FontWeight.w800,
-                fontSize: 11.5,
-              ),
-            ),
-          ],
+  Widget build(BuildContext context) => Tooltip(
+    message: 'Report question',
+    child: Semantics(button: true, label: 'Report question',
+      child: Material(
+        color: const Color(0xFFFEF2F2), shape: const StadiumBorder(),
+        child: InkWell(customBorder: const StadiumBorder(), onTap: onTap,
+          child: Padding(padding: EdgeInsets.symmetric(horizontal: compact ? 11 : 12, vertical: 12),
+            child: Row(mainAxisSize: MainAxisSize.min, children: [
+              const Icon(Icons.flag_outlined, size: 17, color: Color(0xFFB91C1C)),
+              if (!compact) ...[
+                const SizedBox(width: 4),
+                const Text('Report', style: TextStyle(color: Color(0xFFB91C1C), fontWeight: FontWeight.w800, fontSize: 11.5)),
+              ],
+            ])),
         ),
       ),
     ),

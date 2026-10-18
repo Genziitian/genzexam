@@ -1,10 +1,9 @@
-import 'dart:math' as math;
-
 import 'package:flutter/material.dart';
 
 import '../../api/api.dart';
 import '../../api/spin_practice_service.dart';
 import 'native_paper_room.dart';
+import 'premium_practice_wheel.dart';
 
 class SpinPracticeScreen extends StatefulWidget {
   final ApiClient apiClient;
@@ -24,9 +23,8 @@ class SpinPracticeScreen extends StatefulWidget {
 
 class _SpinPracticeScreenState extends State<SpinPracticeScreen>
     with SingleTickerProviderStateMixin {
-  late final AnimationController _rotation = AnimationController(
+  late final AnimationController _rotation = AnimationController.unbounded(
     vsync: this,
-    duration: const Duration(milliseconds: 1400),
   );
   final _title = TextEditingController();
   final _scroll = ScrollController();
@@ -34,7 +32,6 @@ class _SpinPracticeScreenState extends State<SpinPracticeScreen>
   int? _courseId;
   RangeValues _weeks = const RangeValues(1, 12);
   final Set<String> _types = {'all'};
-  int _minutes = 20;
   bool _loading = true;
   bool _busy = false;
   String? _loadError;
@@ -89,18 +86,29 @@ class _SpinPracticeScreenState extends State<SpinPracticeScreen>
       _error = null;
       _paper = null;
     });
-    if (!MediaQuery.disableAnimationsOf(context)) _rotation.repeat();
     try {
-      final paper = await SpinPracticeService(client: widget.apiClient)
-          .generate(
-            courseId: _courseId!,
-            weekMin: _weeks.start.round(),
-            weekMax: _weeks.end.round(),
-            paperTypes: _types.toList(),
-            timeLimitMinutes: _minutes,
-            title: _title.text,
-          );
+      final generation = SpinPracticeService(client: widget.apiClient).generate(
+        courseId: _courseId!,
+        weekMin: _weeks.start.round(),
+        weekMax: _weeks.end.round(),
+        paperTypes: _types.toList(),
+        title: _title.text,
+      );
+      final spin = MediaQuery.disableAnimationsOf(context)
+          ? Future<void>.value()
+          : _rotation
+                .animateTo(
+                  _rotation.value + 5.65,
+                  duration: const Duration(milliseconds: 2800),
+                  curve: const Cubic(0.18, 0.05, 0.12, 1),
+                )
+                .orCancel;
+      final results = await Future.wait<Object?>([
+        generation,
+        spin,
+      ], eagerError: true);
       if (!mounted) return;
+      final paper = results.first as GeneratedPracticePaper;
       setState(() => _paper = paper);
       WidgetsBinding.instance.addPostFrameCallback((_) {
         if (mounted && _scroll.hasClients) {
@@ -124,28 +132,300 @@ class _SpinPracticeScreenState extends State<SpinPracticeScreen>
       );
     } finally {
       if (mounted) {
-        _rotation.stop();
+        _rotation.stop(canceled: false);
         setState(() => _busy = false);
       }
     }
   }
 
-  void _setType(String type, bool selected) {
-    setState(() {
-      if (type == 'all') {
+  static const _paperTypes = {
+    'pa': 'PA',
+    'ga': 'GA',
+    'quiz1': 'Quiz 1',
+    'quiz2': 'Quiz 2',
+    'endterm': 'End term',
+    'mock_test': 'Mock',
+  };
+
+  Widget _selectionField({
+    required Key key,
+    required IconData icon,
+    required String text,
+    required VoidCallback onTap,
+    bool placeholder = false,
+  }) {
+    final scheme = Theme.of(context).colorScheme;
+    return Material(
+      color: scheme.surfaceContainerLow,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16),
+        side: BorderSide(color: scheme.outlineVariant.withValues(alpha: 0.6)),
+      ),
+      clipBehavior: Clip.antiAlias,
+      child: InkWell(
+        key: key,
+        onTap: _busy ? null : onTap,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 18),
+          child: Row(
+            children: [
+              Icon(icon, size: 20, color: scheme.onSurfaceVariant),
+              const SizedBox(width: 12),
+              Expanded(
+                child: Text(
+                  text,
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                    color: placeholder
+                        ? scheme.onSurfaceVariant
+                        : scheme.onSurface,
+                  ),
+                ),
+              ),
+              const SizedBox(width: 8),
+              Icon(
+                Icons.unfold_more_rounded,
+                size: 18,
+                color: scheme.onSurfaceVariant,
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Future<void> _chooseCourse() async {
+    final selected = await showModalBottomSheet<int>(
+      context: context,
+      isScrollControlled: true,
+      showDragHandle: true,
+      useSafeArea: true,
+      builder: (sheet) {
+        var query = '';
+        return StatefulBuilder(
+          builder: (sheet, update) {
+            final courses = _courses
+                .where(
+                  (course) =>
+                      course.name.toLowerCase().contains(query.toLowerCase()),
+                )
+                .toList();
+            return Padding(
+              padding: EdgeInsets.fromLTRB(
+                20,
+                0,
+                20,
+                MediaQuery.viewInsetsOf(sheet).bottom + 20,
+              ),
+              child: SizedBox(
+                height: MediaQuery.sizeOf(sheet).height * 0.65,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    const Text(
+                      'Choose a course',
+                      style: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    const SizedBox(height: 16),
+                    TextField(
+                      decoration: const InputDecoration(
+                        hintText: 'Search courses',
+                        prefixIcon: Icon(Icons.search_rounded),
+                      ),
+                      onChanged: (value) => update(() => query = value),
+                    ),
+                    const SizedBox(height: 12),
+                    Expanded(
+                      child: courses.isEmpty
+                          ? const Center(child: Text('No matching courses'))
+                          : ListView.builder(
+                              itemCount: courses.length,
+                              itemBuilder: (_, index) {
+                                final course = courses[index];
+                                return ListTile(
+                                  contentPadding: EdgeInsets.zero,
+                                  title: Text(course.name),
+                                  trailing: course.id == _courseId
+                                      ? const Icon(
+                                          Icons.check_circle_rounded,
+                                          color: Color(0xFF059669),
+                                        )
+                                      : const Icon(
+                                          Icons.circle_outlined,
+                                          color: Color(0xFFCBD5E1),
+                                        ),
+                                  onTap: () => Navigator.pop(sheet, course.id),
+                                );
+                              },
+                            ),
+                    ),
+                  ],
+                ),
+              ),
+            );
+          },
+        );
+      },
+    );
+    if (selected != null && mounted)
+      setState(() {
+        _courseId = selected;
+        _error = null;
+      });
+  }
+
+  Future<void> _chooseTypes() async {
+    final selected = Set<String>.of(_types);
+    final result = await showModalBottomSheet<Set<String>>(
+      context: context,
+      showDragHandle: true,
+      useSafeArea: true,
+      isScrollControlled: true,
+      builder: (sheet) => StatefulBuilder(
+        builder: (sheet, update) => SafeArea(
+          top: false,
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 8),
+                  child: Text(
+                    'Paper types',
+                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.w700),
+                  ),
+                ),
+                const Padding(
+                  padding: EdgeInsets.fromLTRB(8, 6, 8, 12),
+                  child: Text('Choose more than one, or include all types.'),
+                ),
+                Flexible(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        CheckboxListTile(
+                          title: const Text('All types'),
+                          value: selected.contains('all'),
+                          controlAffinity: ListTileControlAffinity.trailing,
+                          onChanged: (_) => update(() {
+                            selected.clear();
+                            selected.add('all');
+                          }),
+                        ),
+                        const Divider(height: 16),
+                        for (final type in _paperTypes.entries)
+                          CheckboxListTile(
+                            title: Text(type.value),
+                            value: selected.contains(type.key),
+                            controlAffinity: ListTileControlAffinity.trailing,
+                            onChanged: (checked) => update(() {
+                              selected.remove('all');
+                              checked == true
+                                  ? selected.add(type.key)
+                                  : selected.remove(type.key);
+                              if (selected.isEmpty) selected.add('all');
+                            }),
+                          ),
+                      ],
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 12),
+                FilledButton(
+                  onPressed: () => Navigator.pop(sheet, selected),
+                  style: FilledButton.styleFrom(
+                    backgroundColor: const Color(0xFF064E3B),
+                    foregroundColor: Colors.white,
+                    minimumSize: const Size.fromHeight(52),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(14),
+                    ),
+                  ),
+                  child: const Text('Apply selection'),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+    if (result != null && mounted)
+      setState(() {
         _types.clear();
-        _types.add('all');
-      } else {
-        _types.remove('all');
-        selected ? _types.add(type) : _types.remove(type);
-        if (_types.isEmpty) _types.add('all');
-      }
-    });
+        _types.addAll(result);
+      });
   }
 
   Widget _label(String text) => Padding(
     padding: const EdgeInsets.only(top: 20, bottom: 8),
     child: Text(text, style: const TextStyle(fontWeight: FontWeight.w700)),
+  );
+
+  Widget _footer(ColorScheme scheme) => Container(
+    decoration: BoxDecoration(
+      color: scheme.surface,
+      border: Border(
+        top: BorderSide(color: scheme.outlineVariant.withValues(alpha: 0.35)),
+      ),
+    ),
+    child: SafeArea(
+      top: false,
+      minimum: const EdgeInsets.fromLTRB(20, 12, 20, 16),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          if (_error != null)
+            Padding(
+              padding: const EdgeInsets.only(bottom: 10),
+              child: Semantics(
+                liveRegion: true,
+                child: Text(
+                  _error!,
+                  maxLines: 3,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(color: scheme.error, fontSize: 12),
+                ),
+              ),
+            ),
+          FilledButton.icon(
+            style: FilledButton.styleFrom(
+              backgroundColor: const Color(0xFF064E3B),
+              foregroundColor: Colors.white,
+              minimumSize: const Size.fromHeight(54),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(16),
+              ),
+            ),
+            onPressed: _busy ? null : _spin,
+            icon: _busy
+                ? const SizedBox.square(
+                    dimension: 18,
+                    child: CircularProgressIndicator(strokeWidth: 2),
+                  )
+                : const Icon(Icons.rotate_right_rounded),
+            label: Text(_busy ? 'Creating paper…' : 'Spin the wheel'),
+          ),
+          if (_error != null)
+            TextButton(
+              onPressed: _busy
+                  ? null
+                  : () {
+                      Navigator.of(context).pop();
+                      widget.onOpenMyPapers();
+                    },
+              child: const Text('Check My Papers'),
+            ),
+        ],
+      ),
+    ),
   );
 
   @override
@@ -155,6 +435,10 @@ class _SpinPracticeScreenState extends State<SpinPracticeScreen>
       canPop: !_busy,
       child: Scaffold(
         appBar: AppBar(title: const Text('Try your practice')),
+        bottomNavigationBar:
+            !_loading && _loadError == null && _courses.isNotEmpty
+            ? _footer(scheme)
+            : null,
         body: _loading
             ? const Center(child: CircularProgressIndicator())
             : _loadError != null || _courses.isEmpty
@@ -190,35 +474,10 @@ class _SpinPracticeScreenState extends State<SpinPracticeScreen>
                     'Up to 10 random questions from your selected papers.',
                   ),
                   const SizedBox(height: 20),
-                  Center(
-                    child: SizedBox(
-                      height: 228,
-                      width: 228,
-                      child: Stack(
-                        alignment: Alignment.center,
-                        children: [
-                          RotationTransition(
-                            turns: _rotation,
-                            child: const CustomPaint(
-                              size: Size.square(220),
-                              painter: _PracticeWheelPainter(),
-                            ),
-                          ),
-                          Container(
-                            padding: const EdgeInsets.all(18),
-                            decoration: BoxDecoration(
-                              color: scheme.surface,
-                              shape: BoxShape.circle,
-                            ),
-                            child: Icon(
-                              Icons.bolt_rounded,
-                              size: 32,
-                              color: scheme.primary,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
+                  PracticeWheel(
+                    turns: _rotation,
+                    busy: _busy,
+                    complete: _paper != null,
                   ),
                   if (_busy) ...[
                     const SizedBox(height: 12),
@@ -247,7 +506,7 @@ class _SpinPracticeScreenState extends State<SpinPracticeScreen>
                             ),
                             const SizedBox(height: 8),
                             Text(
-                              '${paper.questionCount} questions · ${paper.timeLimitMinutes} minutes',
+                              '${paper.questionCount} questions · Choose your time when you open it',
                             ),
                             const SizedBox(height: 12),
                             FilledButton.icon(
@@ -277,189 +536,110 @@ class _SpinPracticeScreenState extends State<SpinPracticeScreen>
                     ),
                   ],
                   _label('Course'),
-                  DropdownButtonFormField<int>(
-                    initialValue: _courseId,
-                    isExpanded: true,
-                    decoration: const InputDecoration(
-                      hintText: 'Choose a course',
-                      border: OutlineInputBorder(),
-                    ),
-                    items: _courses
-                        .map(
-                          (course) => DropdownMenuItem(
-                            value: course.id,
-                            child: Text(
-                              course.name,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ),
-                        )
-                        .toList(),
-                    onChanged: _busy
-                        ? null
-                        : (id) => setState(() {
-                            _courseId = id;
-                            _error = null;
-                          }),
+                  _selectionField(
+                    key: const Key('spin-course'),
+                    icon: Icons.school_outlined,
+                    text: _courseId == null
+                        ? 'Choose a course'
+                        : _courses.firstWhere((c) => c.id == _courseId).name,
+                    placeholder: _courseId == null,
+                    onTap: _chooseCourse,
                   ),
-                  _label('Weeks ${_weeks.start.round()}–${_weeks.end.round()}'),
-                  RangeSlider(
-                    values: _weeks,
-                    min: 1,
-                    max: 12,
-                    divisions: 11,
-                    labels: RangeLabels(
-                      '${_weeks.start.round()}',
-                      '${_weeks.end.round()}',
-                    ),
-                    onChanged: _busy
-                        ? null
-                        : (weeks) => setState(() => _weeks = weeks),
-                  ),
-                  Wrap(
-                    spacing: 8,
+                  const SizedBox(height: 22),
+                  Row(
                     children: [
-                      for (final preset in [
-                        (1, 12, 'All weeks'),
-                        (1, 4, 'Weeks 1–4'),
-                        (5, 8, 'Weeks 5–8'),
-                        (9, 12, 'Weeks 9–12'),
-                      ])
-                        ChoiceChip(
-                          label: Text(preset.$3),
-                          selected:
-                              _weeks.start == preset.$1 &&
-                              _weeks.end == preset.$2,
-                          onSelected: _busy
-                              ? null
-                              : (_) => setState(
-                                  () => _weeks = RangeValues(
-                                    preset.$1.toDouble(),
-                                    preset.$2.toDouble(),
-                                  ),
-                                ),
+                      const Expanded(
+                        child: Text(
+                          'Week range',
+                          style: TextStyle(fontWeight: FontWeight.w700),
                         ),
+                      ),
+                      Text(
+                        '${_weeks.start.round().toString().padLeft(2, '0')} — ${_weeks.end.round().toString().padLeft(2, '0')}',
+                        style: TextStyle(
+                          color: scheme.primary,
+                          fontWeight: FontWeight.w700,
+                          fontFeatures: const [FontFeature.tabularFigures()],
+                        ),
+                      ),
+                    ],
+                  ),
+                  SliderTheme(
+                    data: SliderTheme.of(context).copyWith(
+                      trackHeight: 3,
+                      activeTrackColor: const Color(0xFF059669),
+                      inactiveTrackColor: scheme.outlineVariant.withValues(
+                        alpha: 0.6,
+                      ),
+                      rangeThumbShape: const RoundRangeSliderThumbShape(
+                        enabledThumbRadius: 8,
+                      ),
+                      overlayShape: const RoundSliderOverlayShape(
+                        overlayRadius: 18,
+                      ),
+                      showValueIndicator: ShowValueIndicator.onDrag,
+                    ),
+                    child: RangeSlider(
+                      key: const Key('spin-weeks'),
+                      values: _weeks,
+                      min: 1,
+                      max: 12,
+                      labels: RangeLabels(
+                        'Week ${_weeks.start.round()}',
+                        'Week ${_weeks.end.round()}',
+                      ),
+                      onChanged: _busy
+                          ? null
+                          : (weeks) => setState(() => _weeks = weeks),
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Week 1',
+                        style: TextStyle(
+                          fontSize: 11,
+                          color: scheme.onSurfaceVariant,
+                        ),
+                      ),
+                      Text(
+                        'Week 12',
+                        style: TextStyle(
+                          fontSize: 11,
+                          color: scheme.onSurfaceVariant,
+                        ),
+                      ),
                     ],
                   ),
                   _label('Paper types'),
-                  Wrap(
-                    spacing: 8,
-                    children: [
-                      for (final type in {
-                        'all': 'All types',
-                        'pa': 'PA',
-                        'ga': 'GA',
-                        'quiz1': 'Quiz 1',
-                        'quiz2': 'Quiz 2',
-                        'endterm': 'End term',
-                        'mock_test': 'Mock',
-                      }.entries)
-                        FilterChip(
-                          label: Text(type.value),
-                          selected: _types.contains(type.key),
-                          onSelected: _busy
-                              ? null
-                              : (selected) => _setType(type.key, selected),
-                        ),
-                    ],
-                  ),
-                  _label('Time limit'),
-                  Wrap(
-                    spacing: 8,
-                    children: [
-                      for (final minutes in [15, 20, 30, 45, 60])
-                        ChoiceChip(
-                          label: Text('$minutes min'),
-                          selected: _minutes == minutes,
-                          onSelected: _busy
-                              ? null
-                              : (_) => setState(() => _minutes = minutes),
-                        ),
-                    ],
+                  _selectionField(
+                    key: const Key('spin-types'),
+                    icon: Icons.layers_outlined,
+                    text: _types.contains('all')
+                        ? 'All types'
+                        : _types.map((type) => _paperTypes[type]!).join(', '),
+                    onTap: _chooseTypes,
                   ),
                   _label('Paper name (optional)'),
                   TextField(
                     controller: _title,
                     enabled: !_busy,
                     maxLength: 150,
-                    decoration: const InputDecoration(
+                    decoration: InputDecoration(
                       hintText: 'My practice paper',
-                      border: OutlineInputBorder(),
-                    ),
-                  ),
-                  if (_error != null)
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 12),
-                      child: Semantics(
-                        liveRegion: true,
-                        child: Text(
-                          _error!,
-                          style: TextStyle(color: scheme.error),
-                        ),
+                      filled: true,
+                      fillColor: scheme.surfaceContainerLow,
+                      contentPadding: const EdgeInsets.all(16),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(16),
+                        borderSide: BorderSide.none,
                       ),
                     ),
-                  FilledButton.icon(
-                    onPressed: _busy ? null : _spin,
-                    icon: const Icon(Icons.casino_outlined),
-                    label: Text(_busy ? 'Creating paper…' : 'Spin the wheel'),
                   ),
-                  if (_error != null)
-                    TextButton(
-                      onPressed: _busy
-                          ? null
-                          : () {
-                              Navigator.of(context).pop();
-                              widget.onOpenMyPapers();
-                            },
-                      child: const Text('Check My Papers'),
-                    ),
                 ],
               ),
       ),
     );
   }
-}
-
-class _PracticeWheelPainter extends CustomPainter {
-  const _PracticeWheelPainter();
-  @override
-  void paint(Canvas canvas, Size size) {
-    final center = size.center(Offset.zero);
-    final rect = Rect.fromCircle(
-      center: center,
-      radius: size.shortestSide / 2 - 4,
-    );
-    const colors = [
-      Color(0xFF16A34A),
-      Color(0xFF0284C7),
-      Color(0xFF7C3AED),
-      Color(0xFFDB2777),
-      Color(0xFFD97706),
-      Color(0xFF059669),
-      Color(0xFF2563EB),
-      Color(0xFF4F46E5),
-    ];
-    for (var i = 0; i < colors.length; i++) {
-      canvas.drawArc(
-        rect,
-        i * math.pi / 4,
-        math.pi / 4,
-        true,
-        Paint()..color = colors[i],
-      );
-      canvas.drawArc(
-        rect,
-        i * math.pi / 4,
-        math.pi / 4,
-        true,
-        Paint()
-          ..color = Colors.white.withValues(alpha: 0.5)
-          ..style = PaintingStyle.stroke
-          ..strokeWidth = 2,
-      );
-    }
-  }
-
-  @override
-  bool shouldRepaint(_PracticeWheelPainter oldDelegate) => false;
 }
