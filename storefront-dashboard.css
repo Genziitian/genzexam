@@ -879,14 +879,15 @@ body:has(#ql-try-practice) .lg\:hidden.bottom-0:not(.ql-spin-action-dock){
 /* ---- Upload a paper page: Quiz LAB theme ---- */
 .ql-upload-page-container{max-width:960px;margin:0 auto;padding:8px 0 36px;display:flex;flex-direction:column;gap:20px}
 .ql-up-head{margin-bottom:4px}
-.ql-up-back-row{display:none}
-.ql-up-back-btn{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:#475569;text-decoration:none;padding:6px 12px;border-radius:999px;background:#f1f5f9;border:1px solid #e2e8f0;transition:all .15s ease}
+.ql-up-back-row{display:none!important}
+.ql-up-back-btn{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:#475569;text-decoration:none;padding:6px 12px;border-radius:999px;background:#f1f5f9;border:1px solid #e2e8f0;flex-shrink:0;transition:all .15s ease}
 .ql-up-back-btn:hover{background:#e2e8f0;color:#0f172a}
 .ql-up-back-btn svg{flex-shrink:0}
-.ql-up-title-row{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
-.ql-up-title{margin:0;font-size:clamp(26px,3.2vw,34px);font-weight:750;line-height:1.15;letter-spacing:-.03em;color:#0f172a}
+.ql-up-title-row{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:nowrap}
+.ql-up-title-wrap{min-width:0;flex:1;display:flex;align-items:center}
+.ql-up-title{margin:0;font-size:clamp(19px,2.8vw,30px);font-weight:750;line-height:1.15;letter-spacing:-.03em;color:#0f172a;white-space:nowrap}
 .ql-up-subtitle{margin:8px 0 0;font-size:14.5px;line-height:1.5;color:#64748b;max-width:680px}
-.ql-up-pro-badge{display:inline-flex;align-items:center;gap:4px;padding:4px 12px;border-radius:999px;background:linear-gradient(135deg,#ffd36e,#f59e0b);color:#0f172a;font-size:11px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;box-shadow:0 4px 12px -2px rgba(245,158,11,.35)}
+.ql-up-pro-badge{display:inline-flex;align-items:center;gap:4px;padding:4px 12px;border-radius:999px;background:linear-gradient(135deg,#ffd36e,#f59e0b);color:#0f172a;font-size:11px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;box-shadow:0 4px 12px -2px rgba(245,158,11,.35);flex-shrink:0}
 .ql-up-card{border-radius:20px;border:1px solid #e2e8f0;background:#fff;padding:24px;box-shadow:0 1px 3px rgba(15,23,42,.04),0 8px 24px -16px rgba(58,63,216,.06);transition:border-color .15s ease,box-shadow .15s ease}
 .ql-up-card-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;gap:12px}
 .ql-up-card-title{margin:0;font-size:17px;font-weight:700;letter-spacing:-.01em;color:#0f172a}
@@ -952,12 +953,13 @@ body:has(#ql-try-practice) .lg\:hidden.bottom-0:not(.ql-spin-action-dock){
 @media(max-width:768px){
   .ql-upload-page-container{padding:6px 14px calc(96px + env(safe-area-inset-bottom, 0px));gap:14px}
   .ql-up-head{margin-bottom:0}
-  .ql-up-back-row{display:flex!important;margin-bottom:8px}
-  .ql-up-title-row{flex-wrap:nowrap;align-items:center;justify-content:space-between;gap:12px}
+  .ql-up-back-row{display:none!important}
+  .ql-up-title-row{flex-wrap:nowrap;align-items:center;justify-content:space-between;gap:8px}
   .ql-up-title-wrap{min-width:0;flex:1}
-  .ql-up-title{font-size:24px;line-height:1.2}
+  .ql-up-title{font-size:clamp(17px,4.6vw,22px);line-height:1.2;white-space:nowrap}
+  .ql-up-back-btn{padding:5px 10px;font-size:12.5px}
   .ql-up-subtitle{display:none!important}
-  .ql-up-pro-badge{flex-shrink:0}
+  .ql-up-pro-badge{flex-shrink:0;padding:3px 8px;font-size:10.5px}
   .ql-up-card{padding:16px;border-radius:16px}
   .ql-up-card-header{margin-bottom:12px}
   .ql-up-card-title{font-size:16px}

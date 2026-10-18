@@ -99,7 +99,8 @@ class StudentRewardController extends Controller
         $reward = null;
 
         if ($prizeData['type'] !== 'try_again') {
-            $code = $prizeData['prefix'] ? $prizeData['prefix'] . strtoupper(Str::random(4)) : null;
+            $isInApp = in_array($prizeData['type'], ['free_test', 'free_paper_upload', 'free_pro', 'free_spin', 'bonus_xp'], true);
+            $code = (!$isInApp && $prizeData['prefix']) ? $prizeData['prefix'] . strtoupper(Str::random(4)) : null;
             $reward = [
                 'id' => (string) Str::uuid(),
                 'type' => $prizeData['type'],
@@ -107,17 +108,26 @@ class StudentRewardController extends Controller
                 'value' => $prizeData['value'],
                 'code' => $code,
                 'created_at' => $now->toIso8601String(),
-                'expires_at' => in_array($prizeData['type'], ['coupon_pct', 'coupon_flat', 'free_test', 'free_paper_upload'], true)
+                'expires_at' => in_array($prizeData['type'], ['coupon_pct', 'coupon_flat'], true)
                     ? $now->copy()->addDays(self::EXPIRY_DAYS)->toIso8601String()
                     : null,
                 'is_scratched' => false,
-                'is_claimed' => $prizeData['type'] === 'free_spin',
+                'is_claimed' => in_array($prizeData['type'], ['free_spin', 'bonus_xp', 'free_test', 'free_paper_upload'], true),
             ];
 
             // If bonus XP: immediately add to user
             if ($prizeData['type'] === 'bonus_xp' && isset($user->xp)) {
                 $user->increment('xp', 50);
-                $reward['is_claimed'] = true;
+            }
+
+            // If free test yourself spin: grant +1 bonus spin directly
+            if ($prizeData['type'] === 'free_test') {
+                Cache::increment('user_bonus_spins_'.$user->id, 1);
+            }
+
+            // If free paper upload: grant +1 bonus upload directly
+            if ($prizeData['type'] === 'free_paper_upload') {
+                Cache::increment('user_bonus_uploads_'.$user->id, 1);
             }
 
             $this->saveUserReward($user, $reward);

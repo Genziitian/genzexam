@@ -11,6 +11,7 @@ use App\Models\User;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 
 class StudentSpinPracticeController extends Controller
@@ -29,7 +30,8 @@ class StudentSpinPracticeController extends Controller
         $start = $day->copy()->setTimezone(config('app.timezone', 'UTC'));
         $end = $day->copy()->addDay()->setTimezone(config('app.timezone', 'UTC'));
         $pro = $user->hasProAccess();
-        $limit = $pro ? 7 : 1;
+        $bonus = (int) Cache::get('user_bonus_spins_'.$user->id, 0);
+        $limit = ($pro ? 7 : 1) + $bonus;
         $used = Quiz::withoutGlobalScope('exclude_personal_uploads')
             ->where('is_personal', true)->where('owner_user_id', $user->id)
             ->where('description', 'like', Quiz::SPIN_PRACTICE_PREFIX.'%')

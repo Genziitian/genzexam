@@ -745,10 +745,7 @@
           var href = link.getAttribute("href");
           if (!href) return;
           e.preventDefault();
-          if (window.location.pathname !== href) {
-            window.history.pushState(null, "", href);
-            schedule();
-          }
+          window.location.assign(href);
         });
       });
     }
@@ -1391,7 +1388,12 @@
     var onUpload = /^\/(upload-paper|upload)(\/|$)/i.test(window.location.pathname);
     var host = document.getElementById("ql-upload-paper-page");
     if (!onUpload) {
-      if (host) host.dataset.qlLoaded = "";
+      if (host) {
+        host.dataset.qlLoaded = "";
+        host.innerHTML = "";
+      }
+      var existingUpload = document.querySelector(".ql-upload-page-container");
+      if (existingUpload) existingUpload.remove();
       clearInterval(uploadQuotaTimer);
       clearInterval(uploadSyncTimer);
       return;
@@ -1414,19 +1416,17 @@
     container.className = "ql-upload-page-container";
     container.innerHTML =
       '<div class="ql-up-head">' +
-        '<div class="ql-up-back-row">' +
-          '<a href="/my-papers" class="ql-up-back-btn">' +
+        '<div class="ql-up-title-row">' +
+          '<a href="/dashboard" class="ql-up-back-btn" aria-label="Go back">' +
             '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>' +
             '<span>Back</span>' +
           '</a>' +
-        '</div>' +
-        '<div class="ql-up-title-row">' +
           '<div class="ql-up-title-wrap">' +
             '<h1 class="ql-up-title">Upload a paper.</h1>' +
-            '<p class="ql-up-subtitle">Upload a study PDF or structured JSON to convert it into a full practice test in your account.</p>' +
           '</div>' +
           '<span class="ql-up-pro-badge">PRO</span>' +
         '</div>' +
+        '<p class="ql-up-subtitle">Upload a study PDF or structured JSON to convert it into a full practice test in your account.</p>' +
       '</div>' +
 
       '<section class="ql-up-card ql-up-steps-card">' +
@@ -1560,8 +1560,7 @@
         if (window.history.length > 1) {
           window.history.back();
         } else {
-          window.history.pushState(null, "", "/my-papers");
-          schedule();
+          window.location.assign("/dashboard");
         }
       });
     }
@@ -1800,8 +1799,7 @@
 
   function openUploadedPaperModal(runtime) {
     if (!/^\/(upload-paper|upload)(\/|$)/i.test(window.location.pathname)) {
-      window.history.pushState(null, "", "/upload-paper");
-      schedule();
+      window.location.assign("/upload-paper");
     }
   }
 
@@ -1838,10 +1836,7 @@
         existing.addEventListener("click", function (e) {
           if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
           e.preventDefault();
-          if (window.location.pathname !== "/try-practice") {
-            window.history.pushState(null, "", "/try-practice");
-            schedule();
-          }
+          window.location.assign("/try-practice");
         });
         if (anchor.nextSibling) {
           anchor.parentNode.insertBefore(existing, anchor.nextSibling);
@@ -1900,10 +1895,7 @@
         link.addEventListener("click", function (e) {
           if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
           e.preventDefault();
-          if (window.location.pathname !== "/upload-paper") {
-            window.history.pushState(null, "", "/upload-paper");
-            schedule();
-          }
+          window.location.assign("/upload-paper");
         });
         if (anchor.nextSibling) {
           anchor.parentNode.insertBefore(link, anchor.nextSibling);
@@ -2030,8 +2022,7 @@
         if (window.history.length > 1) {
           window.history.back();
         } else {
-          window.history.pushState(null, "", "/dashboard");
-          schedule();
+          window.location.assign("/dashboard");
         }
       });
     }
@@ -3374,8 +3365,8 @@
     { title: "FREE SPIN", sub: "Extra Spin", color: "#0284c7", type: "free_spin", value: "1 Free Spin", prefix: "" },
     { title: "₹100 OFF", sub: "Discount", color: "#db2777", type: "coupon_flat", value: "₹100 OFF", prefix: "GENZ100-" },
     { title: "+50 XP", sub: "Study Boost", color: "#2563eb", type: "bonus_xp", value: "50 XP", prefix: "" },
-    { title: "TEST FREE", sub: "1 Test Pass", color: "#0d9488", type: "free_test", value: "1 Free Test Yourself", prefix: "TEST1-" },
-    { title: "FREE UPLOAD", sub: "Paper Pass", color: "#ea580c", type: "free_paper_upload", value: "1 Free Paper Upload", prefix: "UPLOAD1-" }
+    { title: "TEST FREE", sub: "1 Test Pass", color: "#0d9488", type: "free_test", value: "1 Free Test Yourself", prefix: "" },
+    { title: "FREE UPLOAD", sub: "Paper Pass", color: "#ea580c", type: "free_paper_upload", value: "1 Free Paper Upload", prefix: "" }
   ];
 
   function getTodayISTString() {
@@ -3551,56 +3542,102 @@
   function openScratchCardModal(reward, onScratchDone) {
     var overlay = document.createElement("div");
     overlay.className = "ql-scratch-overlay";
+    var isInApp = reward.type === "free_test" || reward.type === "free_paper_upload" || reward.type === "free_pro";
+    var modalHeadTitle = isInApp ? "You Won a Bonus Reward!" : "You Won a Reward Coupon!";
+    var modalHeadSub = isInApp ? "Scratch with your mouse or finger to reveal your reward" : "Scratch with your mouse or finger to reveal your secret code";
+
+    var secretSubHtml = "";
+    if (reward.type === "free_test") {
+      secretSubHtml = '<div class="ql-scratch-code" style="font-size:15px;letter-spacing:0.5px;color:#16a34a">✓ ADDED TO ACCOUNT</div>' +
+                      '<div class="ql-scratch-expiry-note">Ready to use in Test Yourself immediately</div>';
+    } else if (reward.type === "free_paper_upload") {
+      secretSubHtml = '<div class="ql-scratch-code" style="font-size:15px;letter-spacing:0.5px;color:#16a34a">✓ ADDED TO ACCOUNT</div>' +
+                      '<div class="ql-scratch-expiry-note">Ready to use in Upload Paper immediately</div>';
+    } else if (reward.type === "free_pro") {
+      secretSubHtml = '<div class="ql-scratch-code" style="font-size:15px;letter-spacing:0.5px;color:#b45309">👑 30 DAYS PRO</div>' +
+                      '<div class="ql-scratch-expiry-note">Ready to activate on your account</div>';
+    } else {
+      secretSubHtml = '<div class="ql-scratch-code" id="ql-scratch-secret-code">' + escapeHtml(reward.code || "") + '</div>' +
+                      '<div class="ql-scratch-expiry-note">Valid for 7 days only · Expires if unused</div>';
+    }
+
+    var actionsHtml = "";
+    if (reward.type === "free_test") {
+      actionsHtml =
+        '<div class="ql-claim-steps-card">' +
+          '<div style="display:flex;align-items:center;gap:12px;margin-bottom:10px">' +
+            '<div style="width:38px;height:38px;border-radius:50%;background:#dcfce7;color:#16a34a;display:grid;place-items:center;flex-shrink:0">' +
+              '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>' +
+            '</div>' +
+            '<div>' +
+              '<strong style="display:block;font-size:15px;color:#0f172a">1 Free Practice Test Credited!</strong>' +
+              '<span style="font-size:12px;color:#64748b">Added directly to your balance · No coupon code needed</span>' +
+            '</div>' +
+          '</div>' +
+          '<a href="/try-practice" class="ql-visit-courses-cta" style="background:#4f46e5;color:#fff;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:12px 18px;border-radius:8px;font-weight:700;font-size:14px;width:100%">Test Yourself Now →</a>' +
+        '</div>';
+    } else if (reward.type === "free_paper_upload") {
+      actionsHtml =
+        '<div class="ql-claim-steps-card">' +
+          '<div style="display:flex;align-items:center;gap:12px;margin-bottom:10px">' +
+            '<div style="width:38px;height:38px;border-radius:50%;background:#dcfce7;color:#16a34a;display:grid;place-items:center;flex-shrink:0">' +
+              '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>' +
+            '</div>' +
+            '<div>' +
+              '<strong style="display:block;font-size:15px;color:#0f172a">1 Free Paper Upload Credited!</strong>' +
+              '<span style="font-size:12px;color:#64748b">Added directly to your balance · No coupon code needed</span>' +
+            '</div>' +
+          '</div>' +
+          '<a href="/upload-paper" class="ql-visit-courses-cta" style="background:#4f46e5;color:#fff;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:12px 18px;border-radius:8px;font-weight:700;font-size:14px;width:100%">Upload a Paper Now →</a>' +
+        '</div>';
+    } else if (reward.type === "free_pro") {
+      actionsHtml =
+        '<div class="ql-claim-steps-card pro">' +
+          '<strong class="ql-claim-steps-title" style="color:#92400e">Claim Your 30 Days Free Pro:</strong>' +
+          '<p style="font-size:13px;color:#475569;margin:6px 0 12px">Click below to activate 30 full days of Quiz LAB Pro on your account.</p>' +
+          '<button type="button" class="ql-claim-pro-btn" id="ql-scratch-claim-pro-btn" style="padding:12px 18px;font-weight:700;font-size:14px;width:100%">Activate 30 Days Free Pro Now →</button>' +
+        '</div>';
+    } else {
+      actionsHtml =
+        '<button type="button" class="ql-copy-code-btn" id="ql-scratch-copy-btn" style="display:none">' +
+          '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg> Copy Coupon Code' +
+        '</button>' +
+        '<div class="ql-claim-steps-card">' +
+          '<strong class="ql-claim-steps-title">How to Claim Your Coupon (' + escapeHtml(reward.title) + ' off):</strong>' +
+          '<ol class="ql-claim-steps-list">' +
+            '<li><strong>Visit:</strong> <a href="https://genziitian.in/courses" target="_blank" rel="noopener noreferrer">Genziitian.in/courses</a></li>' +
+            '<li><strong>Choose:</strong> Pick any course of your choice</li>' +
+            '<li><strong>Apply Code:</strong> Apply this code at checkout: <code style="background:#e0e7ff;color:#3730a3;padding:2px 6px;border-radius:4px;font-weight:700">' + escapeHtml(reward.code || "") + '</code></li>' +
+          '</ol>' +
+          '<div class="ql-claim-terms-box">' +
+            '<div class="ql-claim-term-row"><strong>Applicability:</strong> Valid only on <a href="https://genziitian.in/courses" target="_blank" rel="noopener noreferrer">Genziitian.in/courses</a>.</div>' +
+            '<div class="ql-claim-term-row"><strong>7-Day Expiry:</strong> Auto-disables in 7 days counting from day scratched or spinned.</div>' +
+            '<div class="ql-claim-term-row"><strong>No Payment:</strong> No payment required to get this coupon.</div>' +
+            '<div class="ql-claim-term-row"><strong>Minimum Purchase:</strong> Minimum order amount is ₹350.</div>' +
+            '<div class="ql-claim-term-row"><strong>Discount Cap:</strong> Max discount on any percentage is ₹100.</div>' +
+            '<div class="ql-claim-term-row"><strong>Terms Agreement:</strong> By continuing you accept all our <a href="/terms.html#rewards-promotions" target="_blank">terms, conditions and rules</a>.</div>' +
+          '</div>' +
+          '<a href="https://genziitian.in/courses" target="_blank" rel="noopener noreferrer" class="ql-visit-courses-cta">Visit Genziitian.in/courses &amp; Redeem →</a>' +
+        '</div>';
+    }
+
     overlay.innerHTML =
       '<div class="ql-scratch-dialog" role="dialog" aria-modal="true">' +
         '<button type="button" class="ql-scratch-dialog-close" aria-label="Close">✕</button>' +
         '<div class="ql-scratch-dialog-head">' +
-          '<h2>You Won a Reward Coupon!</h2>' +
-          '<p>Scratch with your mouse or finger to reveal your secret code</p>' +
+          '<h2>' + escapeHtml(modalHeadTitle) + '</h2>' +
+          '<p>' + escapeHtml(modalHeadSub) + '</p>' +
         '</div>' +
         '<div class="ql-scratch-card-body">' +
           '<div class="ql-scratch-stage">' +
             '<div class="ql-scratch-secret' + (reward.type === "free_pro" ? " pro" : "") + '">' +
               '<div class="ql-scratch-val">' + escapeHtml(reward.title) + '</div>' +
-              '<div class="ql-scratch-code" id="ql-scratch-secret-code">' + escapeHtml(reward.code || "ACTIVATED") + '</div>' +
-              '<div class="ql-scratch-expiry-note">Valid for 7 days only · Expires if unused</div>' +
+              secretSubHtml +
             '</div>' +
             '<canvas class="ql-scratch-canvas" width="380" height="180"></canvas>' +
           '</div>' +
-          '<div class="ql-scratch-actions">' +
-            '<button type="button" class="ql-copy-code-btn" id="ql-scratch-copy-btn" style="display:none"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg> Copy Coupon Code</button>' +
-            (reward.type === "free_test" || reward.type === "free_paper_upload" ?
-              '<div class="ql-claim-steps-card">' +
-                '<strong class="ql-claim-steps-title">How to Use Your ' + escapeHtml(reward.title) + ':</strong>' +
-                '<ol class="ql-claim-steps-list">' +
-                  '<li><strong>Pass Code:</strong> Copy your secret pass: <code style="background:#e0e7ff;color:#3730a3;padding:2px 6px;border-radius:4px;font-weight:700">' + escapeHtml(reward.code || "REVEAL CODE ABOVE") + '</code></li>' +
-                  '<li><strong>Use Feature:</strong> Head to ' + (reward.type === "free_test" ? "Test Yourself" : "Upload Paper") + ' in Quiz Lab</li>' +
-                  '<li><strong>Redeem Pass:</strong> Apply this pass code to unlock your 1-time free session</li>' +
-                '</ol>' +
-                '<div class="ql-claim-terms-box">' +
-                  '<div class="ql-claim-term-row"><strong>Applicability:</strong> Valid on Quiz Lab platform.</div>' +
-                  '<div class="ql-claim-term-row"><strong>7-Day Expiry:</strong> Valid for 7 days from the day spinned.</div>' +
-                  '<div class="ql-claim-term-row"><strong>100% Free:</strong> No payment required to unlock this pass.</div>' +
-                '</div>' +
-              '</div>' :
-              '<div class="ql-claim-steps-card">' +
-                '<strong class="ql-claim-steps-title">How to Claim Your Coupon (' + escapeHtml(reward.title) + ' off):</strong>' +
-                '<ol class="ql-claim-steps-list">' +
-                  '<li><strong>Visit:</strong> <a href="https://genziitian.in/courses" target="_blank" rel="noopener noreferrer">Genziitian.in/courses</a></li>' +
-                  '<li><strong>Choose:</strong> Pick any course of your choice</li>' +
-                  '<li><strong>Apply Code:</strong> Apply this code at checkout: <code style="background:#e0e7ff;color:#3730a3;padding:2px 6px;border-radius:4px;font-weight:700">' + escapeHtml(reward.code || "REVEAL CODE ABOVE") + '</code></li>' +
-                '</ol>' +
-                '<div class="ql-claim-terms-box">' +
-                  '<div class="ql-claim-term-row"><strong>Applicability:</strong> Please note this is only applicable on this website (<a href="https://genziitian.in/courses" target="_blank" rel="noopener noreferrer">Genziitian.in/courses</a>).</div>' +
-                  '<div class="ql-claim-term-row"><strong>7-Day Expiry:</strong> If not claimed or claimed, this auto disables in 7 days counting from the day scratch or spinned.</div>' +
-                  '<div class="ql-claim-term-row"><strong>No Payment:</strong> No payment required to get this coupon.</div>' +
-                  '<div class="ql-claim-term-row"><strong>Minimum Purchase:</strong> Minimum amount purchase is ₹350.</div>' +
-                  '<div class="ql-claim-term-row"><strong>Discount Cap:</strong> Max discount you get on any percentage is 100 rupees.</div>' +
-                  '<div class="ql-claim-term-row"><strong>Terms Agreement:</strong> By continuing you accept all our <a href="/terms.html#rewards-promotions" target="_blank">terms, conditions and rules</a>.</div>' +
-                '</div>' +
-                '<a href="https://genziitian.in/courses" target="_blank" rel="noopener noreferrer" class="ql-visit-courses-cta">Visit Genziitian.in/courses &amp; Redeem →</a>' +
-              '</div>'
-            ) +
+          '<div class="ql-scratch-actions" id="ql-scratch-actions" style="display:none">' +
+            actionsHtml +
           '</div>' +
         '</div>' +
       '</div>';
@@ -3682,14 +3719,16 @@
       isRevealed = true;
       canvas.style.opacity = "0";
       setTimeout(function () { if (canvas.isConnected) canvas.remove(); }, 350);
-      copyBtn.style.display = "flex";
+      var actionsEl = overlay.querySelector("#ql-scratch-actions");
+      if (actionsEl) actionsEl.style.display = "flex";
+      if (copyBtn) copyBtn.style.display = "flex";
       reward.is_scratched = true;
       try {
         var mLog = JSON.parse(localStorage.getItem("ql_rewards_global_log") || "[]");
         for (var gi = 0; gi < mLog.length; gi++) {
-          if (mLog[gi].coupon_code === reward.code) {
+          if (mLog[gi].id === reward.id || (reward.code && mLog[gi].coupon_code === reward.code)) {
             mLog[gi].is_scratched = true;
-            mLog[gi].status = "Active (Scratched)";
+            mLog[gi].status = isInApp ? "Credited to Account" : "Active (Scratched)";
             break;
           }
         }
@@ -3715,15 +3754,29 @@
     }, { passive: false });
     window.addEventListener("touchend", function () { isScratching = false; });
 
-    copyBtn.addEventListener("click", function () {
-      if (!reward.code) return;
-      navigator.clipboard.writeText(reward.code).then(function () {
-        copyBtn.innerHTML = '<span aria-hidden="true">✓</span> Copied to clipboard!';
-        setTimeout(function () {
-          copyBtn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:-2px"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg> Copy Coupon Code';
-        }, 2200);
+    if (copyBtn) {
+      copyBtn.addEventListener("click", function () {
+        if (!reward.code) return;
+        navigator.clipboard.writeText(reward.code).then(function () {
+          copyBtn.innerHTML = '<span aria-hidden="true">✓</span> Copied to clipboard!';
+          setTimeout(function () {
+            copyBtn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:-2px"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg> Copy Coupon Code';
+          }, 2200);
+        });
       });
-    });
+    }
+
+    var scratchClaimPro = overlay.querySelector("#ql-scratch-claim-pro-btn");
+    if (scratchClaimPro) {
+      scratchClaimPro.addEventListener("click", function () {
+        scratchClaimPro.disabled = true;
+        scratchClaimPro.textContent = "Activating Pro...";
+        claimProMembership(reward, function () {
+          scratchClaimPro.textContent = "✓ 30 Days Pro Activated!";
+          setTimeout(close, 1200);
+        });
+      });
+    }
 
     function close() { overlay.remove(); }
     closeBtn.addEventListener("click", close);
@@ -3840,6 +3893,7 @@
     var isScratched = Boolean(reward.is_scratched);
     var isPro = reward.type === "free_pro";
     var isClaimed = Boolean(reward.is_claimed);
+    var isInApp = reward.type === "free_test" || reward.type === "free_paper_upload";
 
     var card = document.createElement("div");
     card.className = "ql-user-reward-card" + (isExpired ? " expired" : "") + (isPro ? " pro" : "");
@@ -3847,6 +3901,8 @@
     var statusHtml = "";
     if (isPro) {
       statusHtml = isClaimed ? '<span class="ql-tag-claimed">Pro Claimed</span>' : '<span class="ql-tag-unscratched">Unclaimed Pro</span>';
+    } else if (isInApp) {
+      statusHtml = '<span class="ql-tag-claimed">Credited to Account</span>';
     } else if (isExpired) {
       statusHtml = isScratched ? '<span class="ql-tag-expired">Outdated · Expired</span>' : '<span class="ql-tag-expired">Expired · Unscratched</span>';
     } else if (isScratched) {
@@ -3862,6 +3918,22 @@
       } else {
         codeRowHtml = '<button type="button" class="ql-claim-pro-btn" style="padding:10px 14px;font-size:13px">Claim 30 Days Free Pro</button>';
       }
+    } else if (isInApp) {
+      if (!isScratched) {
+        codeRowHtml = '<button type="button" class="ql-copy-code-btn" style="padding:10px 14px;font-size:13px;background:#4f46e5">Scratch to Reveal</button>';
+      } else if (reward.type === "free_test") {
+        codeRowHtml =
+          '<div class="ql-card-code-row" style="display:flex;align-items:center;justify-content:space-between;gap:8px">' +
+            '<span style="font-size:13px;font-weight:600;color:#16a34a">✓ Ready to use</span>' +
+            '<a href="/try-practice" class="ql-card-copy-btn" style="background:#4f46e5;color:#fff;text-decoration:none;display:inline-flex;align-items:center;padding:7px 12px;border-radius:6px;font-size:12px;font-weight:700">Test Yourself Now →</a>' +
+          '</div>';
+      } else {
+        codeRowHtml =
+          '<div class="ql-card-code-row" style="display:flex;align-items:center;justify-content:space-between;gap:8px">' +
+            '<span style="font-size:13px;font-weight:600;color:#16a34a">✓ Ready to use</span>' +
+            '<a href="/upload-paper" class="ql-card-copy-btn" style="background:#4f46e5;color:#fff;text-decoration:none;display:inline-flex;align-items:center;padding:7px 12px;border-radius:6px;font-size:12px;font-weight:700">Upload Paper Now →</a>' +
+          '</div>';
+      }
     } else if (isExpired) {
       codeRowHtml = '<div class="ql-card-code-row"><span class="ql-card-code-masked">••••••••</span><span style="font-size:11px;color:#94a3b8">Code hidden (expired)</span></div>';
     } else if (isScratched) {
@@ -3875,7 +3947,9 @@
     }
 
     var expiryText = "";
-    if (reward.expires_at) {
+    if (isInApp) {
+      expiryText = "Credited to Account";
+    } else if (reward.expires_at) {
       if (isExpired) {
         expiryText = "Expired after 7 days";
       } else {
@@ -3902,9 +3976,15 @@
         statusHtml +
       '</div>' +
       codeRowHtml +
-      '<button type="button" class="ql-card-terms-toggle">How to claim &amp; rules ▾</button>' +
+      '<button type="button" class="ql-card-terms-toggle">How to use &amp; rules ▾</button>' +
       '<div class="ql-card-claim-details" style="display:none">' +
-        (isPro ?
+        (isInApp ?
+          '<div class="ql-claim-terms-box" style="margin-top:4px">' +
+            '<div class="ql-claim-term-row"><strong>Auto-Credited:</strong> Added directly to your account balance. No coupon code needed.</div>' +
+            '<div class="ql-claim-term-row"><strong>Usage:</strong> Click ' + (reward.type === "free_test" ? '"Test Yourself Now"' : '"Upload Paper Now"') + ' to use your bonus session.</div>' +
+            '<div class="ql-claim-term-row"><strong>100% Free:</strong> No payment required.</div>' +
+          '</div>' :
+        isPro ?
           '<div class="ql-claim-terms-box" style="margin-top:4px">' +
             '<div class="ql-claim-term-row"><strong>Claim:</strong> Click the Claim button to activate 30 days of Pro.</div>' +
             '<div class="ql-claim-term-row"><strong>Zero Cost:</strong> No payment or card required. No recurring charge.</div>' +
@@ -3924,7 +4004,7 @@
       '</div>' +
       '<div class="ql-card-footer">' +
         '<span>' + expiryText + '</span>' +
-        '<span style="font-weight:700;color:' + (isExpired ? '#94a3b8' : '#15803d') + '">' + (isExpired ? 'Outdated' : 'Valid on Website') + '</span>' +
+        '<span style="font-weight:700;color:' + (isExpired ? '#94a3b8' : '#15803d') + '">' + (isExpired ? 'Outdated' : (isInApp ? 'In-App Ready' : 'Valid on Website')) + '</span>' +
       '</div>';
 
     var toggleBtn = card.querySelector(".ql-card-terms-toggle");
@@ -3933,12 +4013,12 @@
       toggleBtn.addEventListener("click", function () {
         var isHidden = detailsBox.style.display === "none";
         detailsBox.style.display = isHidden ? "block" : "none";
-        toggleBtn.innerHTML = isHidden ? "Hide claim rules ▴" : "How to claim &amp; rules ▾";
+        toggleBtn.innerHTML = isHidden ? "Hide claim rules ▴" : "How to use &amp; rules ▾";
       });
     }
 
     var copyBtn = card.querySelector(".ql-card-copy-btn");
-    if (copyBtn) {
+    if (copyBtn && copyBtn.tagName === "BUTTON") {
       copyBtn.addEventListener("click", function () {
         if (!reward.code) return;
         navigator.clipboard.writeText(reward.code).then(function () {
@@ -4413,7 +4493,8 @@
       var reward = null;
 
       if (prize.type !== "try_again" && prize.type !== "free_spin") {
-        var code = prize.prefix ? (prize.prefix + Math.random().toString(36).substring(2, 6).toUpperCase()) : null;
+        var isInAppPrize = inArray(prize.type, ["free_test", "free_paper_upload", "free_pro", "bonus_xp"]);
+        var code = (!isInAppPrize && prize.prefix) ? (prize.prefix + Math.random().toString(36).substring(2, 6).toUpperCase()) : null;
         reward = {
           id: "rew_" + nowTime + "_" + Math.floor(Math.random() * 1000),
           type: prize.type,
@@ -4421,9 +4502,9 @@
           value: prize.value,
           code: code,
           created_at: new Date(nowTime).toISOString(),
-          expires_at: inArray(prize.type, ["coupon_pct", "coupon_flat", "free_test", "free_paper_upload"]) ? new Date(nowTime + 7 * 86400 * 1000).toISOString() : null,
+          expires_at: inArray(prize.type, ["coupon_pct", "coupon_flat"]) ? new Date(nowTime + 7 * 86400 * 1000).toISOString() : null,
           is_scratched: false,
-          is_claimed: false
+          is_claimed: inArray(prize.type, ["bonus_xp", "free_test", "free_paper_upload"])
         };
         state.rewards.unshift(reward);
       }
@@ -4441,10 +4522,8 @@
           logStatus = "Claimed (+50 XP)";
         } else if (prize.type === "free_pro") {
           logStatus = "Unclaimed Pro";
-        } else if (prize.type === "free_test") {
-          logStatus = "Test Pass Won";
-        } else if (prize.type === "free_paper_upload") {
-          logStatus = "Upload Pass Won";
+        } else if (prize.type === "free_test" || prize.type === "free_paper_upload") {
+          logStatus = "Credited to Account";
         }
         mLog.unshift({
           id: "rewlog_" + nowTime + "_" + Math.floor(Math.random() * 1000),
@@ -4640,11 +4719,42 @@
 
   new MutationObserver(schedule).observe(document.documentElement, { childList: true, subtree: true });
   new MutationObserver(schedule).observe(document.body, { attributes: true, attributeFilter: ["data-ep-verified-role"] });
-  window.addEventListener("popstate", schedule);
+  window.addEventListener("popstate", function () {
+    var p = window.location.pathname;
+    if (!/^\/(upload-paper|upload)(\/|$)/i.test(p)) {
+      var uc = document.querySelector(".ql-upload-page-container");
+      if (uc) {
+        uc.remove();
+        window.location.reload();
+        return;
+      }
+    }
+    if (!/^\/(try-practice|spin-practice)(\/|$)/i.test(p)) {
+      var sc = document.querySelector(".ql-spin-container");
+      if (sc) {
+        sc.remove();
+        window.location.reload();
+        return;
+      }
+    }
+    schedule();
+  });
   window.addEventListener("resize", schedule);
 
   var lastPath = window.location.pathname;
   setInterval(function () {
-    if (window.location.pathname !== lastPath) { lastPath = window.location.pathname; schedule(); }
+    if (window.location.pathname !== lastPath) {
+      var prev = lastPath;
+      lastPath = window.location.pathname;
+      if (/^\/(upload-paper|upload|try-practice|spin-practice)(\/|$)/i.test(prev) &&
+          !/^\/(upload-paper|upload|try-practice|spin-practice)(\/|$)/i.test(lastPath)) {
+        var uc = document.querySelector(".ql-upload-page-container, .ql-spin-container");
+        if (uc) {
+          window.location.reload();
+          return;
+        }
+      }
+      schedule();
+    }
   }, 500);
 })();

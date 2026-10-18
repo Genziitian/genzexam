@@ -10,6 +10,7 @@ use App\Services\QuestionImporter;
 use App\Support\StudentAppMode;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\RateLimiter;
@@ -42,10 +43,11 @@ class StudentUploadedPaperController extends Controller
     private function quota($user): array
     {
         $isPro = $user->hasProAccess();
+        $bonus = (int) Cache::get('user_bonus_uploads_'.$user->id, 0);
         // Everyone gets a free upload each window; Pro members get a bigger allowance.
-        $limit = $isPro
+        $limit = ($isPro
             ? max(1, (int) config('services.student_paper_uploads.limit', 5))
-            : max(1, (int) config('services.student_paper_uploads.free_limit', 1));
+            : max(1, (int) config('services.student_paper_uploads.free_limit', 1))) + $bonus;
         $days = max(1, (int) config('services.student_paper_uploads.window_days', 7));
         $since = now()->subDays($days);
         $recent = Quiz::withoutGlobalScope('exclude_personal_uploads')->fileUploads()

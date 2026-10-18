@@ -97,3 +97,21 @@ Additional official references:
 - https://www.hostinger.com/support/10695636-hostinger-cdn-security-levels/
 - https://www.hostinger.com/support/hostinger-cdn-and-your-dns-records/
 - https://www.hostinger.com/support/how-hostinger-cdn-caching-works/
+
+## Intermittent authenticated CDN results at 15:45 IST
+
+The owner's new emulator retry produced both JSON 200 and HTML 403 from the same running Flutter process. Unlike the earlier direct-origin recovery, the 200 responses now also carry Hostinger CDN request IDs:
+
+| IST time on 18 October 2026 | GET endpoint | Status/type | x-hcdn-request-id |
+| --- | --- | --- | --- |
+| 15:45:00.031 | `/public/api/courses` | 403, text/html | 9daaa9145fbb55295ba99308bac9a38e-mum-edge6 |
+| 15:45:09.440 | `/public/api/courses` | 200, application/json | fbd299c26b86ad2e77f93c362c7f21fc-mum-edge9 |
+| 15:45:09.446 | `/public/api/student/spin-practice/quota` | 200, application/json | c63226ede897b9591c70690802d363ab-mum-edge7 |
+| 15:45:26.223 | `/public/api/student/spin-practice/quota` | 403, text/html | ed8043c7bc83316427e889c926f437b6-mum-edge4 |
+| 15:45:26.314 | `/public/api/courses` | 403, text/html | 62556a87c15c004764d6cb057c0f5c8c-mum-edge9 |
+
+This is intermittent CDN-path behavior, not confirmed resolution. The success/failure pair for courses includes the same `mum-edge9` label, although that label alone does not establish the same physical instance, client IP, or applied policy. Hostinger's CDN team should compare the full IDs to identify the differing conditions.
+
+The API client sets no custom User-Agent. The installed Dart SDK and package generator are 3.13.5; the SDK's HTTP implementation truncates the patch component and defaults to `Dart/3.13 (dart:io)`. Dio's IO adapter uses the standard HttpClient without overriding it. A standalone local Dart diagnostic also printed that exact User-Agent. The earlier 15:02 request IDs were from a separate unauthenticated curl/8.7.1 probe and should not be described as signed-in Flutter requests.
+
+The owner supplied Hostinger's `hcdn-cgi/myip` output and confirmed home Wi-Fi for the failing network. The output is being supplied directly to support rather than stored in this project document. No CDN settings were changed during this follow-up.
