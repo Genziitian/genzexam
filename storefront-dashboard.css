@@ -828,3 +828,109 @@ html[data-ql-vs-locked] #root main>*:not(#ql-vs-soon){display:none!important}
 .ql-spin-help-button:disabled{opacity:.5;cursor:not-allowed}
 .ql-spin-ready-details [hidden]{display:none}
 @media(prefers-reduced-motion:reduce){.ql-spin-head,.ql-spin-custom-card,#root aside,#root header,#root nav,.ql-wheel-stage{transition:none!important}}
+
+/* ---- Upload a paper page: Quiz LAB theme ---- */
+.ql-upload-page-container{max-width:960px;margin:0 auto;padding:8px 0 36px;display:flex;flex-direction:column;gap:20px}
+.ql-up-head{margin-bottom:4px}
+.ql-up-title-row{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.ql-up-title{margin:0;font-size:clamp(26px,3.2vw,34px);font-weight:750;line-height:1.15;letter-spacing:-.03em;color:#0f172a}
+.ql-up-subtitle{margin:8px 0 0;font-size:14.5px;line-height:1.5;color:#64748b;max-width:680px}
+.ql-up-pro-badge{display:inline-flex;align-items:center;gap:4px;padding:4px 12px;border-radius:999px;background:linear-gradient(135deg,#ffd36e,#f59e0b);color:#0f172a;font-size:11px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;box-shadow:0 4px 12px -2px rgba(245,158,11,.35)}
+.ql-up-card{border-radius:20px;border:1px solid #e2e8f0;background:#fff;padding:24px;box-shadow:0 1px 3px rgba(15,23,42,.04),0 8px 24px -16px rgba(58,63,216,.06);transition:border-color .15s ease,box-shadow .15s ease}
+.ql-up-card-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;gap:12px}
+.ql-up-card-title{margin:0;font-size:17px;font-weight:700;letter-spacing:-.01em;color:#0f172a}
+.ql-up-steps{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:center;gap:14px}
+.ql-up-step{display:flex;align-items:center;gap:14px;padding:16px 18px;border-radius:16px;border:1px solid #e2e8f0;background:#f8fafc;transition:transform .15s ease,border-color .15s ease}
+.ql-up-step:hover{transform:translateY(-2px);border-color:#c9ccf5;background:#fff}
+.ql-up-step-icon{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;font-size:20px;flex-shrink:0}
+.ql-up-step-info{display:flex;flex-direction:column;min-width:0}
+.ql-up-step-info strong{font-size:14px;font-weight:700;color:#0f172a}
+.ql-up-step-info span{font-size:12px;color:#64748b;margin-top:2px}
+.ql-up-step-arrow{color:#94a3b8;font-size:20px;font-weight:700;text-align:center}
+.ql-up-quota-card{display:flex;flex-direction:column;gap:18px}
+.ql-up-quota-row{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.ql-up-quota-info{display:flex;flex-direction:column;gap:4px}
+.ql-up-quota-headline{font-size:18px;font-weight:700;color:#0f172a}
+.ql-up-quota-sub{font-size:13px;color:#64748b}
+.ql-up-quota-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:44px;padding:0 24px;border-radius:12px;background:#3a3fd8;color:#fff;font-size:14px;font-weight:700;border:0;cursor:pointer;transition:all .15s ease;box-shadow:0 4px 14px -3px rgba(58,63,216,.45)}
+.ql-up-quota-btn:hover:not(:disabled){background:#2b30b8;transform:translateY(-1px)}
+.ql-up-quota-btn:disabled{opacity:.5;cursor:not-allowed;box-shadow:none}
+.ql-up-pro-banner{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 20px;border-radius:16px;background:linear-gradient(135deg,rgba(254,243,199,.6),rgba(253,230,138,.35));border:1px solid #fde68a}
+.ql-up-pro-banner-left{display:flex;align-items:center;gap:12px}
+.ql-up-pro-crown{font-size:24px}
+.ql-up-pro-banner-text strong{display:block;font-size:14.5px;font-weight:700;color:#92400e}
+.ql-up-pro-banner-text small{display:block;font-size:12.5px;color:#b45309;margin-top:1px}
+.ql-up-pro-btn{flex-shrink:0;padding:9px 18px;border-radius:11px;background:linear-gradient(135deg,#ffd36e,#f59e0b);border:0;color:#0f172a;font-size:13px;font-weight:800;cursor:pointer;box-shadow:0 3px 10px -2px rgba(245,158,11,.4);transition:transform .15s ease,filter .15s ease}
+.ql-up-pro-btn:hover{transform:translateY(-1px);filter:brightness(1.05)}
+.ql-up-form-card{display:flex;flex-direction:column;gap:16px}
+.ql-up-dropzone{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:38px 24px;border-radius:18px;border:2px dashed #c7d2fe;background:#f8faff;cursor:pointer;transition:all .18s ease}
+.ql-up-dropzone:hover,.ql-up-dropzone.over{border-color:#3a3fd8;background:#f0f3ff;transform:translateY(-1px)}
+.ql-up-dropzone.disabled{opacity:.55;cursor:not-allowed;pointer-events:none}
+.ql-up-dropzone-icon{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;background:#e0e4fc;color:#3a3fd8;margin-bottom:12px}
+.ql-up-dropzone strong{font-size:16px;font-weight:700;color:#0f172a}
+.ql-up-dropzone small{font-size:13px;color:#64748b;margin-top:4px}
+.ql-up-dropzone input{position:absolute;inset:0;opacity:0;cursor:pointer}
+.ql-up-chip{display:none;align-items:center;gap:10px;padding:12px 16px;border-radius:12px;background:#ecedff;color:#1e2474;font-size:13.5px;font-weight:600}
+.ql-up-chip.on{display:flex}
+.ql-up-submit-btn{width:100%;height:48px;border-radius:13px;border:0;background:#3a3fd8;color:#fff;font-size:15px;font-weight:750;cursor:pointer;position:relative;overflow:hidden;transition:background .15s ease,transform .15s ease;box-shadow:0 4px 14px -3px rgba(58,63,216,.45)}
+.ql-up-submit-btn:hover:not(:disabled){background:#2b30b8;transform:translateY(-1px)}
+.ql-up-submit-btn:disabled{opacity:.5;cursor:not-allowed;box-shadow:none}
+.ql-up-submit-btn.busy{cursor:wait}
+.ql-up-submit-btn.busy::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);animation:qlu-sheen 1.2s linear infinite}
+.ql-up-ghost-btn{border:0;background:#f1f5f9;color:#475569;font-size:13px;font-weight:600;padding:8px 14px;border-radius:10px;cursor:pointer;transition:background .15s ease}
+.ql-up-ghost-btn:hover{background:#e2e8f0;color:#0f172a}
+.ql-up-state{margin:0;font-size:13.5px;color:#64748b;min-height:1.2em}
+.ql-up-state.ok{color:#059669;font-weight:600}
+.ql-up-state.err{color:#dc2626!important}
+.ql-up-papers-list{display:flex;flex-direction:column;gap:10px}
+.ql-up-paper-item{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 20px;border-radius:14px;border:1px solid #e2e8f0;background:#fff;transition:transform .15s ease,border-color .15s ease}
+.ql-up-paper-item:hover{transform:translateY(-1px);border-color:#cbd5e1;box-shadow:0 4px 16px -6px rgba(15,23,42,.08)}
+.ql-up-paper-info strong{display:block;font-size:15px;font-weight:600;color:#0f172a}
+.ql-up-paper-info span{display:block;font-size:12.5px;color:#64748b;margin-top:3px}
+.ql-up-paper-start{display:inline-flex;align-items:center;justify-content:center;height:36px;padding:0 18px;border-radius:10px;background:#3a3fd8;color:#fff;font-size:13px;font-weight:700;text-decoration:none;transition:background .15s ease}
+.ql-up-paper-start:hover{background:#2b30b8}
+.ql-up-empty{padding:32px 20px;text-align:center;border-radius:14px;border:1px dashed #cbd5e1;background:#f8fafc;color:#64748b;font-size:14px}
+.ql-up-rules details{border-radius:14px}
+.ql-up-rules summary{display:flex;align-items:center;justify-content:space-between;padding:8px 0;font-size:14px;font-weight:700;color:#0f172a;cursor:pointer;list-style:none;user-select:none}
+.ql-up-rules summary::-webkit-details-marker{display:none}
+.ql-up-rules-toggle{font-size:12.5px;font-weight:600;color:#3a3fd8}
+.ql-up-rules-content{padding-top:14px;display:flex;flex-direction:column;gap:12px;border-top:1px solid #f1f5f9}
+.ql-up-rule-item{font-size:13px;line-height:1.55;color:#64748b}
+.ql-up-rule-item strong{display:block;color:#0f172a;font-weight:600;margin-bottom:2px}
+.ql-up-rule-item p{margin:0}
+@media(max-width:768px){.ql-up-steps{grid-template-columns:1fr;gap:8px}.ql-up-step-arrow{display:none}.ql-up-pro-banner{flex-direction:column;align-items:flex-start}}
+
+/* Dark Mode for Upload Page */
+:root[data-theme=dark] .ql-up-title{color:#f1f5f9}
+:root[data-theme=dark] .ql-up-subtitle{color:#94a3b8}
+:root[data-theme=dark] .ql-up-card{background:#151d2a;border-color:#27384e;box-shadow:0 1px 3px rgba(0,0,0,.2)}
+:root[data-theme=dark] .ql-up-card-title{color:#f1f5f9}
+:root[data-theme=dark] .ql-up-step{background:#111823;border-color:#243447}
+:root[data-theme=dark] .ql-up-step:hover{background:#192435;border-color:#3a4f6d}
+:root[data-theme=dark] .ql-up-step-info strong{color:#f1f5f9}
+:root[data-theme=dark] .ql-up-step-info span{color:#94a3b8}
+:root[data-theme=dark] .ql-up-step-arrow{color:#64748b}
+:root[data-theme=dark] .ql-up-quota-headline{color:#f1f5f9}
+:root[data-theme=dark] .ql-up-quota-sub{color:#94a3b8}
+:root[data-theme=dark] .ql-up-pro-banner{background:linear-gradient(135deg,rgba(51,39,12,.7),rgba(40,31,10,.5));border-color:#4d380e}
+:root[data-theme=dark] .ql-up-pro-banner-text strong{color:#fde68a}
+:root[data-theme=dark] .ql-up-pro-banner-text small{color:#f59e0b}
+:root[data-theme=dark] .ql-up-dropzone{background:#111823;border-color:#2e3e56}
+:root[data-theme=dark] .ql-up-dropzone:hover,:root[data-theme=dark] .ql-up-dropzone.over{background:#192435;border-color:#6366f1}
+:root[data-theme=dark] .ql-up-dropzone-icon{background:#1e2b40;color:#818cf8}
+:root[data-theme=dark] .ql-up-dropzone strong{color:#f1f5f9}
+:root[data-theme=dark] .ql-up-dropzone small{color:#94a3b8}
+:root[data-theme=dark] .ql-up-chip{background:#1e2842;color:#c7d2fe}
+:root[data-theme=dark] .ql-up-ghost-btn{background:#1e293b;color:#cbd5e1}
+:root[data-theme=dark] .ql-up-ghost-btn:hover{background:#334155;color:#fff}
+:root[data-theme=dark] .ql-up-paper-item{background:#111823;border-color:#243447}
+:root[data-theme=dark] .ql-up-paper-item:hover{background:#192435;border-color:#3a4f6d}
+:root[data-theme=dark] .ql-up-paper-info strong{color:#f1f5f9}
+:root[data-theme=dark] .ql-up-paper-info span{color:#94a3b8}
+:root[data-theme=dark] .ql-up-empty{background:#111823;border-color:#243447;color:#94a3b8}
+:root[data-theme=dark] .ql-up-rules summary{color:#f1f5f9}
+:root[data-theme=dark] .ql-up-rules-toggle{color:#818cf8}
+:root[data-theme=dark] .ql-up-rules-content{border-top-color:#243447}
+:root[data-theme=dark] .ql-up-rule-item{color:#94a3b8}
+:root[data-theme=dark] .ql-up-rule-item strong{color:#f1f5f9}
+
