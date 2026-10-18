@@ -89,6 +89,7 @@
     if (!/^\/(?:public\/)?api\//.test(parsed.pathname)) return null;
     var path = parsed.pathname.replace(/^\/(?:public\/)?api/, '');
     var read = /^(GET|HEAD|OPTIONS)$/.test(method);
+    if (path === '/student/spin-practice') return {label:'Creating your practice paper…', blocking:false};
     var background = /\/(?:answers|events|state|heartbeat|presence|seen|read|notifications)(?:\/|$)/.test(path) || /\/auth\/google\/handoff$/.test(path);
     var label = read ? 'Loading…' : method === 'DELETE' ? 'Deleting…' : 'Saving changes…';
     if (/\/auth\//.test(path)) label = read ? 'Checking your account…' : /logout/.test(path) ? 'Signing out…' : /login|google/.test(path) ? 'Signing in…' : /register/.test(path) ? 'Creating your account…' : 'Updating your account…';

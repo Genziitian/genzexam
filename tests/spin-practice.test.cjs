@@ -45,7 +45,7 @@ assert.ok(
   "app-enhancements.js must support week 1-12 range sliders"
 );
 assert.ok(
-  appEnhancements.includes("⚠️ Please select a course first!"),
+  appEnhancements.includes("courseSelect.reportValidity()"),
   "app-enhancements.js must validate course selection before spinning"
 );
 assert.ok(
@@ -56,6 +56,13 @@ assert.ok(
   appEnhancements.includes("fillTryPractice();") && appEnhancements.includes("syncTryPracticeNav();"),
   "app-enhancements.js run() function must execute fillTryPractice and syncTryPracticeNav"
 );
+
+const spinSource = appEnhancements.slice(appEnhancements.indexOf('  function fillTryPractice() {'), appEnhancements.indexOf('   * Practice: paid papers'));
+assert.ok(spinSource.includes('Get random 10 question'), 'Use the requested concise subtitle');
+assert.ok(!spinSource.includes('ql-spin-preset-btn'), 'Week preset buttons are removed');
+assert.ok(!spinSource.includes('ql-spin-time-btn') && !spinSource.includes('time_limit_minutes:'), 'Time is chosen in the paper room');
+assert.ok(spinSource.includes('value="quiz1"') && spinSource.includes('value="mock_test"'), 'Expose individual paper types for multiple selection');
+assert.ok(spinSource.includes('Promise.allSettled([request, animateSpin()])'), 'Keep generation locked until both the request and animation finish');
 
 // 3. Backend & API routes verification
 assert.ok(
@@ -93,7 +100,7 @@ assert.ok(
   "index.html must reference refreshed bundle query parameter"
 );
 assert.ok(
-  indexHtml.includes('/app-enhancements.js?v=20261018c'),
+  indexHtml.includes('/app-enhancements.js?v=20261018d'),
   "index.html must reference refreshed app-enhancements.js query parameter"
 );
 

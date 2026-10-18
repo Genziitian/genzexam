@@ -793,27 +793,9 @@
 :root[data-theme=dark] .ql-upload-tag{background:#33270c;color:#f5b83d}
 
 /* Try your practice dark mode */
-:root[data-theme=dark] .ql-spin-head h1{color:#d6dae5}
-:root[data-theme=dark] .ql-spin-head p{color:#9ea9b9}
-:root[data-theme=dark] .ql-spin-wheel-card{background:#151a25;border-color:#2e3b4c;box-shadow:none}
-:root[data-theme=dark] .ql-spin-custom-card{background:#151a25;border-color:#2e3b4c;box-shadow:none}
-:root[data-theme=dark] .ql-spin-custom-head{border-bottom-color:#27333f}
-:root[data-theme=dark] .ql-spin-custom-head h2{color:#d6dae5}
-:root[data-theme=dark] .ql-spin-badge-10{background:#1a1b30;color:#9498e7;border-color:#2d3276}
-:root[data-theme=dark] .ql-spin-field label{color:#cbd5e1}
-:root[data-theme=dark] .ql-spin-select{background:#19232c;border-color:#2e3b4c;color:#d6dae5}
-:root[data-theme=dark] .ql-spin-slider-box{background:#19232c;border-color:#2e3b4c}
-:root[data-theme=dark] .ql-spin-slider-labels strong{color:#d6dae5}
-:root[data-theme=dark] .ql-spin-preset-btn{background:#151a25;border-color:#2e3b4c;color:#bcc6d4}
-:root[data-theme=dark] .ql-spin-type-pill{background:#19232c;border-color:#2e3b4c;color:#bcc6d4}
-:root[data-theme=dark] .ql-spin-type-pill.active{background:#1a1b30;border-color:#3a3fd8;color:#9498e7}
-:root[data-theme=dark] .ql-spin-time-btn{background:#151a25;border-color:#2e3b4c;color:#bcc6d4}
-:root[data-theme=dark] .ql-spin-time-btn.active{background:#3a3fd8;color:#fff}
-:root[data-theme=dark] .ql-spin-input{background:#19232c;border-color:#2e3b4c;color:#d6dae5}
-:root[data-theme=dark] .ql-spin-outcome{background:#19232c;color:#9ea9b9}
-:root[data-theme=dark] .ql-spin-modal{background:#151a25;color:#d6dae5;border:1px solid #2e3b4c}
-:root[data-theme=dark] .ql-spin-modal h2{color:#d6dae5}
-:root[data-theme=dark] .ql-spin-modal-details{background:#19232c;border-color:#2e3b4c}
-:root[data-theme=dark] .ql-spin-modal-row strong{color:#d6dae5}
-:root[data-theme=dark] .ql-spin-modal-btn{background:#19232c;border-color:#2e3b4c;color:#bcc6d4}
+:root[data-theme=dark] #ql-try-practice{--spin-ink:#e0ebe5;--spin-muted:#92a69b;--spin-card:#131e1a;--spin-field:#18261f;--spin-line:#2a3a30;--spin-accent:#57c99b;--spin-track:#34463b}
+:root[data-theme=dark] .ql-spin-wheel-card{background:transparent;box-shadow:none}
+:root[data-theme=dark] .ql-wheel-stage:before{box-shadow:0 16px 30px #0003,0 0 65px #05966920}
 
+:root[data-theme=dark] #ql-try-practice .ql-spin-main-btn{background:linear-gradient(135deg,#0a6249,#064e3b);border-color:#2a8063}
+:root[data-theme=dark] #ql-try-practice .ql-spin-main-btn:hover:not(:disabled){background:linear-gradient(135deg,#107b5d,#08634b)}

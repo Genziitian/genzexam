@@ -66,6 +66,7 @@ const jsonResponse = () => ({json:async()=>({ok:true}),status:200});
   app.modal().querySelector('button').listeners.click();assert.equal(app.modal().open,false);assert.equal(app.activity().hidden,false);
   finish();assert.equal(app.activity().hidden,true);
 
+  assert.equal(app.context.QLLoading.requestDetails('https://labapi.genziitian.in/public/api/student/spin-practice','POST').blocking,false,'The wheel owns its progress feedback; a modal must not cover it');
   app=setup();const quick=app.context.QLLoading.begin('Quick');quick();app.tick(200);assert.equal(app.modal(),undefined);
   for(const file of fs.readdirSync(path.join(__dirname,'..')).filter(f=>f.endsWith('.html'))){
     assert.match(fs.readFileSync(path.join(__dirname,'..',file),'utf8'),/ql-loading\.js/,'Missing loading feedback: '+file);
