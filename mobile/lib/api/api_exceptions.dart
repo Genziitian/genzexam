@@ -93,8 +93,14 @@ class ApiException implements Exception {
     }
 
     if (data is String && data.isNotEmpty) {
+      final isHtml = data.trim().toLowerCase().startsWith('<!doctype') ||
+          data.trim().toLowerCase().startsWith('<html') ||
+          data.contains('<body');
+      final cleanMessage = isHtml
+          ? 'Server response error (${statusCode ?? 'HTTP'}). Security verification or temporary network issue. Please try again shortly.'
+          : data;
       return ApiException(
-        message: data,
+        message: cleanMessage,
         statusCode: statusCode,
         rawData: data,
       );

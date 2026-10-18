@@ -5882,15 +5882,7 @@ class _MoreTabState extends State<_MoreTab> {
             ElevatedButton(
               onPressed: () {
                 Navigator.of(ctx).pop();
-                Navigator.of(context).push(
-                  MaterialPageRoute<void>(
-                    builder: (_) => SpinPracticeScreen(
-                      apiClient: widget.discussionService.client,
-                      user: widget.user,
-                      onOpenMyPapers: widget.onNavigateToMyPapers,
-                    ),
-                  ),
-                );
+                _openInApp('/rewards', 'Daily Rewards · Spin & Win');
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color(0xFF4F46E5),
@@ -6820,15 +6812,7 @@ class _MoreTabState extends State<_MoreTab> {
                   subtitle: 'Spin daily for Free Pro, coupons & scratch cards',
                   onTap: () {
                     AppHaptics.selection();
-                    Navigator.of(context).push(
-                      MaterialPageRoute<void>(
-                        builder: (_) => SpinPracticeScreen(
-                          apiClient: widget.discussionService.client,
-                          user: widget.user,
-                          onOpenMyPapers: widget.onNavigateToMyPapers,
-                        ),
-                      ),
-                    );
+                    _showDailyRewardsDialog();
                   },
                 ),
                 const Divider(height: 1, color: Color(0xFFF1F5F9)),

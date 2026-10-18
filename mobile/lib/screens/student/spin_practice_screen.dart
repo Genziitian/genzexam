@@ -679,19 +679,38 @@ class _SpinPracticeScreenState extends State<SpinPracticeScreen>
                     ? const Center(child: CircularProgressIndicator())
                     : _loadError != null || _courses.isEmpty
                     ? Center(
-                        child: Padding(
+                        child: SingleChildScrollView(
                           padding: const EdgeInsets.all(24),
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
                             children: [
+                              Container(
+                                padding: const EdgeInsets.all(12),
+                                decoration: BoxDecoration(
+                                  color: Colors.red.shade50,
+                                  shape: BoxShape.circle,
+                                ),
+                                child: Icon(
+                                  Icons.error_outline_rounded,
+                                  color: Colors.red.shade600,
+                                  size: 32,
+                                ),
+                              ),
+                              const SizedBox(height: 14),
                               Text(
                                 _loadError ?? 'No courses are available yet.',
                                 textAlign: TextAlign.center,
+                                style: const TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w500,
+                                  height: 1.4,
+                                ),
                               ),
-                              const SizedBox(height: 12),
-                              OutlinedButton(
+                              const SizedBox(height: 16),
+                              ElevatedButton.icon(
                                 onPressed: _loadCourses,
-                                child: const Text('Retry'),
+                                icon: const Icon(Icons.refresh_rounded, size: 18),
+                                label: const Text('Try Again'),
                               ),
                             ],
                           ),
