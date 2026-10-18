@@ -129,7 +129,7 @@
       '.ql-paywall-hero{background:linear-gradient(135deg,#0f172a 0%,#1e1b4b 60%,#312e81 100%);color:#fff;padding:20px 76px;text-align:center;flex-shrink:0;position:relative;overflow:hidden}',
       '.ql-paywall-hero::before{content:"";position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(251,191,36,.18) 0%,transparent 70%);pointer-events:none}',
       '.ql-paywall-hero-inner{max-width:680px;margin:0 auto;position:relative}',
-      '.ql-paywall-emblem{display:inline-flex;align-items:center;justify-content:center;gap:12px;margin-bottom:8px}',
+      '.ql-paywall-emblem{display:inline-flex;align-items:center;justify-content:center;gap:8px;margin-bottom:8px}',
       '.ql-paywall-brand{display:inline-flex;align-items:center;gap:9px;font-size:19px;font-weight:800;letter-spacing:-.02em}',
       '.ql-paywall-brand img{width:38px;height:38px;border-radius:11px;object-fit:contain}',
       '.ql-membership-page{max-width:960px;width:100%;margin:0 auto;min-width:0;overflow-wrap:anywhere}',
@@ -139,7 +139,7 @@
       '.ql-membership-page [role=tab][aria-selected=true]{background:#eef2ff;border-color:#6366f1;color:#3730a3}',
       '.ql-membership-page #ql-web-pro-options{display:flex;flex-wrap:wrap;gap:10px}',
       '.ql-membership-page #ql-web-pro-summary{flex-basis:100%}',
-      '.ql-paywall-pro-pill{padding:6px 18px;border-radius:999px;background:linear-gradient(135deg,#ffd36e,#f59e0b);color:#0f172a;font-size:13px;font-weight:900;letter-spacing:.1em;box-shadow:0 4px 20px rgba(245,158,11,.45)}',
+      '.ql-paywall-pro-pill{padding:2px 8px;border-radius:999px;background:linear-gradient(135deg,#ffd36e,#f59e0b);color:#0f172a;font-size:10px;font-weight:900;letter-spacing:.05em;line-height:1.3;box-shadow:0 2px 8px rgba(245,158,11,.35);display:inline-flex;align-items:center;vertical-align:middle}',
       '.ql-paywall-title{margin:0;font-size:24px;font-weight:800;letter-spacing:-.03em;color:#fff;line-height:1.2}',
       '.ql-paywall-sub{margin:8px auto 0;max-width:540px;color:#cbd5e1;font-size:13px;line-height:1.55}',
       '.ql-paywall-body{max-width:1120px;margin:0 auto;padding:24px;width:100%;box-sizing:border-box;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start;gap:24px}',
@@ -147,8 +147,10 @@
       '.ql-paywall-features{min-width:0}',
       '#ql-paywall-status{grid-column:1/-1}',
       '.ql-paywall-footer{flex-shrink:0;background:#fff;border-top:1px solid #e2e8f0;box-shadow:0 -8px 30px rgba(15,23,42,.06);padding:14px 24px max(14px,env(safe-area-inset-bottom));z-index:1}',
-      '.ql-paywall-footer-inner{max-width:1072px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;gap:12px 24px}',
-      '.ql-paywall-footer-legal{grid-column:1/-1;display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}',
+      '.ql-paywall-footer-inner{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;gap:24px}',
+      '.ql-paywall-footer-left{min-width:0}',
+      '.ql-paywall-footer-action{display:flex;flex-direction:column;align-items:center;gap:8px;width:100%}',
+      '.ql-paywall-footer-legal{display:flex;flex-direction:column;align-items:center;gap:3px;width:100%}',
       ':root[data-theme=dark] .ql-paywall-footer{background:#111827;border-color:#334155}',
       '.ql-paywall-section-h{margin:0 0 14px;font-size:19px;font-weight:800;color:#0f172a;letter-spacing:-.01em}',
       ':root[data-theme=dark] .ql-paywall-section-h{color:#f8fafc}',
@@ -182,16 +184,21 @@
       '.ql-paywall-trial-box{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:16px;padding:16px 20px;color:#166534}',
       ':root[data-theme=dark] .ql-paywall-trial-box{background:#052e16;border-color:#166534;color:#86efac}',
       '.ql-paywall-trial-box strong{display:block;font-size:15px;font-weight:800}',
-      '.ql-paywall-trial-box p{margin:6px 0 0;font-size:13px;line-height:1.5}',
-      '.ql-paywall-trial-box small{display:block;margin-top:6px;font-size:11.5px;color:#15803d;line-height:1.4}',
-      ':root[data-theme=dark] .ql-paywall-trial-box small{color:#4ade80}',
-      '.ql-paywall-cta-btn{grid-column:2;width:100%;border:0;border-radius:16px;padding:18px 24px;background:linear-gradient(135deg,#ffd36e,#f59e0b);color:#0f172a;font-size:17px;font-weight:900;cursor:pointer;box-shadow:0 10px 25px -5px rgba(245,158,11,.45);transition:transform .15s,box-shadow .15s;letter-spacing:-.01em;font-family:inherit}',
+      '.ql-paywall-trial-notice{display:flex;flex-direction:column;gap:3px;padding:0 2px}',
+      '.ql-paywall-trial-copy{margin:0;font-size:13px;font-weight:700;color:#0f172a;line-height:1.4}',
+      ':root[data-theme=dark] .ql-paywall-trial-copy{color:#f8fafc}',
+      '.ql-paywall-trial-sub{margin:0;font-size:12px;color:#64748b;line-height:1.4}',
+      ':root[data-theme=dark] .ql-paywall-trial-sub{color:#94a3b8}',
+      '.ql-paywall-cta-btn{width:100%;border:0;border-radius:16px;padding:18px 24px;background:linear-gradient(135deg,#ffd36e,#f59e0b);color:#0f172a;font-size:17px;font-weight:900;cursor:pointer;box-shadow:0 10px 25px -5px rgba(245,158,11,.45);transition:transform .15s,box-shadow .15s;letter-spacing:-.01em;font-family:inherit}',
       '.ql-paywall-cta-btn:hover{transform:translateY(-2px);box-shadow:0 15px 30px -5px rgba(245,158,11,.55)}',
       '.ql-paywall-cta-btn:disabled{opacity:.65;cursor:not-allowed;transform:none}',
-      '.ql-paywall-footer-note{text-align:center;font-size:12.5px;color:#64748b;margin:0}',
+      '.ql-paywall-footer-note{text-align:center;font-size:12px;color:#64748b;margin:0;line-height:1.4}',
+      '.ql-paywall-footer-note a{color:inherit;text-decoration:underline}',
+      '.ql-paywall-footer-note a:hover{color:#4f46e5}',
       ':root[data-theme=dark] .ql-paywall-footer-note{color:#94a3b8}',
+      ':root[data-theme=dark] .ql-paywall-footer-note a:hover{color:#818cf8}',
       '.ql-paywall-plan:focus-visible,.ql-paywall-cta-btn:focus-visible,.ql-paywall-close:focus-visible{outline:3px solid #818cf8;outline-offset:3px}',
-      '@media(max-width:767px){.ql-paywall-body{grid-template-columns:minmax(0,1fr);padding:20px;gap:22px}.ql-paywall-checkout{grid-row:1}.ql-paywall-hero{padding:18px 64px}.ql-paywall-title{font-size:20px}.ql-paywall-sub{display:none}.ql-paywall-footer{padding:12px 16px max(12px,env(safe-area-inset-bottom))}.ql-paywall-footer-inner{grid-template-columns:minmax(0,1fr);gap:10px}.ql-paywall-cta-btn{grid-column:1}.ql-paywall-footer-legal{justify-content:center}.ql-paywall-footer-note{font-size:11px}.ql-paywall-cta-btn{padding:15px 12px;font-size:15px}}',
+      '@media(max-width:767px){.ql-paywall-body{grid-template-columns:minmax(0,1fr);padding:20px;gap:22px}.ql-paywall-checkout{grid-row:1}.ql-paywall-hero{padding:18px 64px}.ql-paywall-title{font-size:20px}.ql-paywall-sub{display:none}.ql-paywall-footer{padding:12px 16px max(12px,env(safe-area-inset-bottom))}.ql-paywall-footer-inner{grid-template-columns:minmax(0,1fr);gap:10px}.ql-paywall-footer-left{display:none}.ql-paywall-cta-btn{padding:15px 12px;font-size:15px}.ql-paywall-footer-note{font-size:11px}}',
       '@media(max-width:380px){.ql-paywall-body{padding:16px}.ql-paywall-plan{padding:12px;gap:8px}.ql-paywall-plan-left{gap:8px}.ql-paywall-plan-title{font-size:15px}.ql-paywall-plan-price{font-size:16px}.ql-paywall-rec{font-size:9px;padding:3px 6px}.ql-paywall-compare{padding:14px}.ql-paywall-row{font-size:12px}.ql-paywall-trial-box{padding:14px}.ql-paywall-footer-inner{column-gap:8px}.ql-paywall-cta-btn{font-size:14px}}'
     ].join('');
     document.head.appendChild(style);
@@ -502,7 +509,6 @@
       '  <div class="ql-paywall-hero-inner">',
       '    <div class="ql-paywall-emblem"><span class="ql-paywall-brand"><img src="/assets/quiz-lab-icon.png" alt="" width="38" height="38">Quiz LAB</span><span class="ql-paywall-pro-pill">PRO</span></div>',
       '    <h1 class="ql-paywall-title">Go Pro. Make practice yours.</h1>',
-      '    <p class="ql-paywall-sub">Video solutions, offline papers, and turning your uploaded PDFs into practice tests.</p>',
       '  </div>',
       '</div>',
       '<div class="ql-paywall-body">',
@@ -570,16 +576,24 @@
       '  </div>',
       '  <div class="ql-paywall-trial-box" id="ql-paywall-trial-box">',
       '    <strong id="ql-paywall-trial-headline">₹99 − ₹99 trial discount = FREE today</strong>',
-      '    <p id="ql-paywall-trial-copy">Pro starts today. First charge after 7 days, then ₹99/month.</p>',
-      '    <small>Cancel before the first charge date to avoid subscription charges. Razorpay confirms the exact billing time; your bank may require an authorisation payment.</small>',
+      '  </div>',
+      '  <div class="ql-paywall-trial-notice" id="ql-paywall-trial-notice">',
+      '    <p class="ql-paywall-trial-copy" id="ql-paywall-trial-copy">First charge: 25/10/2026 — ₹99, then every month.</p>',
+      '    <p class="ql-paywall-trial-sub" id="ql-paywall-trial-sub">Cancel before the first charge date to avoid subscription charges.</p>',
       '  </div>',
       '  </div>',
       '</div>',
       '</div>',
       '<footer class="ql-paywall-footer" id="ql-paywall-footer">',
       '  <div class="ql-paywall-footer-inner">',
-      '    <button type="button" class="ql-paywall-cta-btn" id="ql-paywall-cta" disabled>Loading plan…</button>',
-      '    <div class="ql-paywall-footer-legal"><p class="ql-paywall-footer-note">Cancel renewal any time. Powered by Razorpay.</p><p class="ql-paywall-footer-note">By continuing, you agree to our <a href="/terms-and-conditions" target="_blank" rel="noopener">Terms &amp; Conditions</a>.</p></div>',
+      '    <div class="ql-paywall-footer-left"></div>',
+      '    <div class="ql-paywall-footer-action">',
+      '      <button type="button" class="ql-paywall-cta-btn" id="ql-paywall-cta" disabled>Loading plan…</button>',
+      '      <div class="ql-paywall-footer-legal">',
+      '        <p class="ql-paywall-footer-note">Cancel renewal any time · Powered by Razorpay</p>',
+      '        <p class="ql-paywall-footer-note">By continuing, you agree to our <a href="/terms-and-conditions" target="_blank" rel="noopener">Terms &amp; Conditions</a>.</p>',
+      '      </div>',
+      '    </div>',
       '  </div>',
       '</footer>'
     ].join('\n');
@@ -605,6 +619,7 @@
     var planMonthly = overlay.querySelector('#ql-paywall-plan-monthly');
     var planAnnual = overlay.querySelector('#ql-paywall-plan-annual');
     var trialBox = overlay.querySelector('#ql-paywall-trial-box');
+    var trialNotice = overlay.querySelector('#ql-paywall-trial-notice');
     var cta = overlay.querySelector('#ql-paywall-cta');
     var footer = overlay.querySelector('#ql-paywall-footer');
     var checkout = overlay.querySelector('#ql-paywall-checkout');
@@ -651,6 +666,7 @@
         }
         plansContainer.hidden = true;
         trialBox.hidden = true;
+        if (trialNotice) trialNotice.hidden = true;
         cta.hidden = true;
       } else {
         statusCard.hidden = true;
@@ -663,6 +679,7 @@
           planMonthly.classList.remove('selected');
           planMonthly.setAttribute('aria-checked', 'false');
           trialBox.hidden = true;
+          if (trialNotice) trialNotice.hidden = true;
           cta.textContent = 'Subscribe yearly · ' + aPrice;
         } else {
           planMonthly.classList.add('selected');
@@ -674,6 +691,7 @@
             recBadge.hidden = false;
             monthlySub.textContent = 'Try for free · ' + days + ' days, then ' + mPrice + '/month';
             trialBox.hidden = false;
+            if (trialNotice) trialNotice.hidden = false;
             trialHeadline.innerHTML = trialReceipt(mPrice, days);
             var chargeDate = new Date(); chargeDate.setDate(chargeDate.getDate() + days);
             trialCopy.textContent = 'First charge: ' + chargeDate.toLocaleDateString('en-IN') + ' — ' + mPrice + ', then every month.';
@@ -682,6 +700,7 @@
             recBadge.hidden = true;
             monthlySub.textContent = 'Billed monthly. Cancel renewal any time.';
             trialBox.hidden = true;
+            if (trialNotice) trialNotice.hidden = true;
             cta.textContent = 'Subscribe monthly · ' + mPrice;
           }
         }
@@ -720,8 +739,9 @@
         renderPaywall();
       }).catch(function (err) {
         trialBox.hidden = false;
+        if (trialNotice) trialNotice.hidden = true;
         trialHeadline.textContent = 'Could not load Pro plan';
-        trialCopy.textContent = err.message;
+        if (trialCopy) trialCopy.textContent = err.message;
       });
     }
     loadData();
