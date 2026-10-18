@@ -45,9 +45,9 @@ class _ProPaywallScreenState extends State<ProPaywallScreen> {
     final bottom = MediaQuery.paddingOf(context).bottom;
     return Scaffold(
       backgroundColor: const Color(0xFFF1F5F9),
-      extendBodyBehindAppBar: true,
+      extendBodyBehindAppBar: false,
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: Brand.deep,
         elevation: 0,
         foregroundColor: Colors.white,
         title: const Text('Get Pro'),
@@ -151,7 +151,7 @@ class _ProPaywallScreenState extends State<ProPaywallScreen> {
                         padding: const EdgeInsets.only(top: 12),
                         child: Text(widget.message!),
                       ),
-                    if (widget.disabled)
+                    if (widget.disabled && widget.message == null)
                       const Text(
                         'New Pro subscriptions are unavailable right now.',
                       ),

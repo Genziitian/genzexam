@@ -8,6 +8,7 @@ import 'package:in_app_purchase_android/in_app_purchase_android.dart';
 import '../../api/api_client.dart';
 import '../../api/pro_play_offer.dart';
 import '../../widgets/premium_widgets.dart';
+import '../../widgets/success_tick.dart';
 import 'pro_paywall_screen.dart';
 import 'membership_history_screen.dart';
 
@@ -43,6 +44,8 @@ class _ProMembershipCardState extends State<ProMembershipCard> {
   ProPlayOffer? _monthlyOffer;
   ProPlayOffer? _yearlyOffer;
   bool _trialOfferSelected = false;
+  bool _billingReady = false;
+  final Set<String> _celebratedPurchases = {};
   String? _error;
   String? _message;
   bool _loading = true;
@@ -72,6 +75,13 @@ class _ProMembershipCardState extends State<ProMembershipCard> {
       setState(() {
         _loading = true;
         _error = null;
+        _message = null;
+        _product = null;
+        _playOffer = null;
+        _monthlyOffer = null;
+        _yearlyOffer = null;
+        _trialOfferSelected = false;
+        _billingReady = false;
       });
     try {
       final response = await widget.apiClient.get<Map<String, dynamic>>(
@@ -84,10 +94,9 @@ class _ProMembershipCardState extends State<ProMembershipCard> {
       if (!kIsWeb &&
           defaultTargetPlatform == TargetPlatform.android &&
           _membership['is_pro'] != true) {
-        if (paymentSetup['google_play'] != true) {
-          _product = null;
-          _error = 'Google Play billing is still being connected. Please try again later.';
-          return;
+        _billingReady = paymentSetup['google_play'] == true;
+        if (!_billingReady) {
+          _error = 'Checkout is temporarily unavailable. Billing verification needs to be configured. You can still view available Google Play prices.';
         }
         final available = await InAppPurchase.instance.isAvailable();
         if (available) {
@@ -98,10 +107,16 @@ class _ProMembershipCardState extends State<ProMembershipCard> {
               .whereType<GooglePlayProductDetails>()
               .where((product) => product.id == _productId)
               .toList();
-          final trialAvailable = _membership['trial_available'] == true &&
+          final trialAvailable =
+              _membership['trial_available'] == true &&
               ((_membership['plan'] as Map?)?['trial_days'] ?? 7) > 0;
-          final trialOfferId = _membership['google_play_trial_offer_id']
-              ?.toString();
+          final configuredTrial = _membership['google_play_trial_offer_id']
+              ?.toString()
+              .trim();
+          final trialOfferId =
+              configuredTrial == null || configuredTrial.isEmpty
+              ? 'trial-7-days'
+              : configuredTrial;
           final basePlanId =
               _membership['google_play_base_plan_id']?.toString() ?? 'monthly';
           _playOffer = ProPlayOffer.select(
@@ -121,9 +136,25 @@ class _ProMembershipCardState extends State<ProMembershipCard> {
             billingPeriod: 'P1Y',
           );
           _trialOfferSelected = _playOffer?.isTrial ?? false;
+          if (trialAvailable &&
+              _monthlyOffer != null &&
+              !_trialOfferSelected &&
+              _billingReady) {
+            _message = 'Google Play has not returned a free-trial offer for this account. The monthly option shown is a paid plan.';
+          } else if (!trialAvailable &&
+              _monthlyOffer != null &&
+              _billingReady) {
+            _message = 'A free trial is not available for this Quiz LAB account. Monthly starts with a paid subscription.';
+          }
           _product = _playOffer?.product;
           if (products.error != null) _error = products.error!.message;
-          if (products.notFoundIDs.isNotEmpty) _error = 'Pro is not available in Google Play yet. Please try again later.';
+          if (products.notFoundIDs.isNotEmpty) _error = 'Pro is not available for this Google Play account yet. Install the latest Play testing release and use your tester account.';
+          if (products.error == null &&
+              _monthlyOffer == null &&
+              _yearlyOffer == null &&
+              products.notFoundIDs.isEmpty) {
+            _error = 'Google Play returned no eligible plans. Check the Play account, test release and regional plan availability.';
+          }
         } else {
           _error = 'Google Play billing is unavailable on this device.';
         }
@@ -175,6 +206,42 @@ class _ProMembershipCardState extends State<ProMembershipCard> {
             'Pro activated. Your purchase is verified with Google Play.',
           );
           await _load();
+          final confirmationId = purchase.purchaseID ?? purchase.productID;
+          if (mounted &&
+              purchase.status == PurchaseStatus.purchased &&
+              _membership['is_pro'] == true &&
+              _celebratedPurchases.add(confirmationId)) {
+            await showDialog<void>(
+              context: context,
+              builder: (dialogContext) => AlertDialog(
+                content: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const SuccessTick(
+                      size: 132,
+                      label: 'Pro membership activated',
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      'Pro activated',
+                      style: Theme.of(dialogContext).textTheme.headlineSmall,
+                    ),
+                    const SizedBox(height: 8),
+                    const Text(
+                      'Your membership is confirmed. Enjoy your Pro benefits.',
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
+                ),
+                actions: [
+                  TextButton(
+                    onPressed: () => Navigator.of(dialogContext).pop(),
+                    child: const Text('Continue'),
+                  ),
+                ],
+              ),
+            );
+          }
         } catch (error) {
           _setMessage(
             'Google Play received the purchase, but server verification did not finish. Tap Restore purchases or contact support before trying to buy again. $error',
@@ -273,7 +340,8 @@ class _ProMembershipCardState extends State<ProMembershipCard> {
   }
 
   bool get _planDisabled =>
-      _membership['plan'] is Map && _membership['plan']['enabled'] == false;
+      !_billingReady ||
+      (_membership['plan'] is Map && _membership['plan']['enabled'] == false);
 
   @override
   Widget build(BuildContext context) {
@@ -328,7 +396,12 @@ class _ProMembershipCardState extends State<ProMembershipCard> {
             ),
           ),
           TextButton.icon(
-            onPressed: () => Navigator.of(context).push(MaterialPageRoute<void>(builder: (_) => MembershipHistoryScreen(apiClient: widget.apiClient))),
+            onPressed: () => Navigator.of(context).push(
+              MaterialPageRoute<void>(
+                builder: (_) =>
+                    MembershipHistoryScreen(apiClient: widget.apiClient),
+              ),
+            ),
             icon: const Icon(Icons.receipt_long_outlined),
             label: const Text('View membership & transactions'),
           ),

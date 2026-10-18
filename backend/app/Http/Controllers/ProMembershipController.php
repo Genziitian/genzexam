@@ -39,7 +39,7 @@ class ProMembershipController extends Controller
             'subscription' => $subscription ? $this->subscriptionData($subscription) : ((bool) $user->is_pro ? ['id' => 'legacy', 'provider' => 'manual', 'status' => 'active', 'started_at' => null, 'trial_ends_at' => null, 'current_period_ends_at' => null, 'cancel_at_period_end' => false] : null),
             'payment_setup' => [
                 'web' => (bool) (config('services.razorpay.key_id') && config('services.razorpay.key_secret')),
-                'google_play' => (bool) (config('services.google_play.package_name') && config('services.google_play.subscription_product_id') && config('services.google_play.trial_offer_id') && config('services.google_play.service_account_json')),
+                'google_play' => (bool) (config('services.google_play.package_name') && config('services.google_play.subscription_product_id') && config('services.google_play.service_account_json')),
             ],
         ]);
     }

@@ -78,6 +78,21 @@ class ProMembershipParityTest extends TestCase
         ]);
     }
 
+    public function test_paid_play_billing_does_not_require_a_trial_offer(): void
+    {
+        config([
+            'services.google_play.package_name' => 'in.genziitian.quizlab',
+            'services.google_play.subscription_product_id' => 'quiz_lab_pro_monthly',
+            'services.google_play.service_account_json' => '/private/billing.json',
+            'services.google_play.trial_offer_id' => null,
+        ]);
+        $this->getJson('/public/api/membership')->assertOk()
+            ->assertJsonPath('payment_setup.google_play', true);
+        config(['services.google_play.service_account_json' => null]);
+        $this->getJson('/public/api/membership')->assertOk()
+            ->assertJsonPath('payment_setup.google_play', false);
+    }
+
     public function test_web_and_app_share_membership_and_trial_rules_for_both_payment_providers(): void
     {
         foreach (['google_play', 'razorpay'] as $provider) {

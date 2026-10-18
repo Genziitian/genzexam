@@ -10,6 +10,7 @@ import '../../api/pro_access_guard.dart';
 import 'pro_locked_view.dart';
 import '../../widgets/app_ux_components.dart';
 import '../../widgets/premium_widgets.dart';
+import '../../widgets/success_tick.dart';
 
 const _paperGreen = Color(0xFF16A34A);
 const _paperInk = Color(0xFF0F172A);
@@ -1802,22 +1803,7 @@ class _PaperRoomScreenState extends State<PaperRoomScreen>
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                TweenAnimationBuilder<double>(
-                  tween: Tween(begin: 0, end: 1),
-                  duration: const Duration(milliseconds: 700),
-                  curve: Curves.elasticOut,
-                  builder: (context, v, child) => Transform.scale(scale: v, child: child),
-                  child: Container(
-                    width: 64,
-                    height: 64,
-                    decoration: BoxDecoration(
-                      gradient: Brand.gradient,
-                      shape: BoxShape.circle,
-                      boxShadow: [BoxShadow(color: _paperGreen.withValues(alpha: .4), blurRadius: 22)],
-                    ),
-                    child: const Icon(Icons.check_rounded, color: Colors.white, size: 38),
-                  ),
-                ),
+                const SuccessTick(size: 120, label: 'Paper submitted successfully'),
                 const SizedBox(height: 14),
                 const Text(
                   'Paper submitted',

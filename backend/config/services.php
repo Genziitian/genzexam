@@ -73,7 +73,7 @@ return [
         'annual_base_plan_id' => env('GOOGLE_PLAY_PRO_ANNUAL_BASE_PLAN_ID', 'annual'),
         'subscription_base_plan_id' => env('GOOGLE_PLAY_PRO_BASE_PLAN_ID'),
         'regions_version' => env('GOOGLE_PLAY_REGIONS_VERSION', '2022/02'),
-        'trial_offer_id' => env('GOOGLE_PLAY_PRO_TRIAL_OFFER_ID'),
+        'trial_offer_id' => env('GOOGLE_PLAY_PRO_TRIAL_OFFER_ID', 'trial-7-days'),
         'service_account_json' => env('GOOGLE_PLAY_SERVICE_ACCOUNT_JSON'),
         'rtdn_topic' => env('GOOGLE_PLAY_RTDN_TOPIC'),
         'rtdn_subscription' => env('GOOGLE_PLAY_RTDN_SUBSCRIPTION'),

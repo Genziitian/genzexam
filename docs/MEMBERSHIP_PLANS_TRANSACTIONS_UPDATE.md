@@ -69,3 +69,34 @@ Student history uses `/membership/history`; manager history uses `/manager/pro/t
 History amounts preserve the provider currency and its minor-unit precision. Free trial access is a membership record; it is not a fabricated payment receipt.
 
 Final changes were reviewed in source only, as requested. JavaScript syntax checks passed and the edited Dart files were parsed and formatted. No new app, Android Studio, browser session, build or test run was started for this final update. Deployment, the new migration, a rebuilt Android release, and real/test payment flows remain owner checks. Existing deployment ZIPs predate this final update; do not assume they contain these changes.
+
+
+## Corrected upload layout and billing gate — 18 October 2026
+
+The previous source/ZIP still contained the large mobile upload screen. This correction replaces it with papers first, newest first; a compact allowance and Pro link; an Upload paper button; a first-upload empty state; and fully collapsed rules. Rules close after 30 seconds, on navigation or app backgrounding. The original marketing hero, ring and pipeline are removed. The website already has the corresponding compact layout.
+
+The Pro app bar now stays above the scrolling content instead of overlapping it. Missing trial-offer configuration no longer marks all paid Google Play billing as unavailable. The app requests the Play catalog even when backend verification configuration is incomplete; actual localized prices may then appear, while checkout remains disabled until the backend reports ready. Reload clears old offers to prevent a stale purchasable selection.
+
+This does not install credentials on Hostinger. To see exactly which configuration is missing, run from the existing backend directory (no private key or credential values are printed):
+
+```sh
+cd ~/domains/labapi.genziitian.in/public_html/backend
+php artisan config:clear
+php artisan tinker --execute='$keys=["package_name","subscription_product_id","subscription_base_plan_id","annual_base_plan_id","trial_offer_id","service_account_json"]; foreach($keys as $key) { dump([$key => (bool) config("services.google_play.".$key)]); } $p=config("services.google_play.service_account_json"); dump(["billing_file_readable" => is_string($p) && is_file($p) && is_readable($p)]);'
+```
+
+Required configuration names are GOOGLE_PLAY_PACKAGE_NAME, GOOGLE_PLAY_PRO_PRODUCT_ID and GOOGLE_PLAY_SERVICE_ACCOUNT_JSON. Monthly/yearly base plans must match monthly/annual. The optional trial offer is trial-7-days. The billing JSON path previously confirmed on Hostinger was /home/u404320264/domains/labapi.genziitian.in/private/teaching-lms-4e59e7438b03.json. The readiness flag confirms configuration presence, not successful Google authentication, Play permissions or purchase completion.
+
+Checks for this correction: edited Dart files parsed/formatted; JavaScript syntax checked; ZIP contents checked against current source. The added backend readiness regression test has not been run. No build, device session, migration or payment was run.
+
+
+## Confirmation animation
+
+A shared SuccessTick widget expands the green circle and draws the white tick once. Paper submitted uses a 120px mark. A confirmed new Google Play purchase displays a Pro activated dialog after server verification and a refreshed Pro entitlement. Pending, cancelled, failed or restored events do not trigger a purchase celebration. Reduced-motion settings show the completed tick immediately. This animation has been checked in source and parsed, not run on a device.
+
+
+## Loading and monthly trial follow-up
+
+Read requests now use the screen-owned spinner only. The shared app loader renders only for blocking work, with an opaque backdrop that hides screen loaders beneath it. This removes the duplicate purple/green indicators.
+
+The known Play monthly trial offer ID trial-7-days is the fallback when the backend omits an ID. It must still be returned by Google Play for the current account, and Quiz LAB must report trial eligibility. Eligible monthly cards show Try for free, the trial calculation and first billing date; other accounts receive regular monthly terms. Checkout remains disabled when backend billing verification configuration is missing. Removed the duplicated unavailable sentence on the paywall.
