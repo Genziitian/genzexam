@@ -4219,6 +4219,7 @@
     var serverRewards = [];
     var isSpunToday = false;
     var isLoadingQuota = Boolean(tok);
+    var quotaError = false;
     var today = getTodayISTString();
 
     host.innerHTML =
@@ -4300,15 +4301,7 @@
       if (rem.diff <= 0) {
         if (timerInterval) { clearInterval(timerInterval); timerInterval = null; }
         if (tok) {
-          fetch(apiBase + "/student/rewards", {
-            headers: { "Accept": "application/json", "Authorization": "Bearer " + tok }
-          }).then(function (res) { return res.json(); }).then(function (data) {
-            if (data && data.quota) {
-              serverQuota = data.quota;
-              isSpunToday = Boolean(serverQuota.remaining <= 0);
-              renderButtonState();
-            }
-          }).catch(function () {});
+          fetchQuota();
         } else {
           isSpunToday = false;
           renderButtonState();
@@ -4331,7 +4324,14 @@
         timerLabel.innerHTML = '';
         return;
       }
-      if (isSpunToday) {
+      if (quotaError || !serverQuota) {
+        spinBtn.disabled = false;
+        spinBtn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:-3px"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg> Check Allowance · Tap to Retry';
+        timerLabel.style.display = "none";
+        timerLabel.innerHTML = '';
+        return;
+      }
+      if (isSpunToday || (serverQuota && serverQuota.remaining <= 0)) {
         spinBtn.disabled = true;
         spinBtn.innerHTML = '✓ Spun Today · Come Back Tomorrow';
         timerLabel.style.display = "block";
@@ -4351,7 +4351,12 @@
     }
     renderButtonState();
 
-    if (tok) {
+    function fetchQuota() {
+      if (!tok) return;
+      isLoadingQuota = true;
+      quotaError = false;
+      renderButtonState();
+
       fetch(apiBase + "/student/rewards", {
         headers: {
           "Accept": "application/json",
@@ -4360,13 +4365,19 @@
       }).then(function (res) {
         if (!res.ok) {
           isLoadingQuota = false;
+          quotaError = true;
           renderButtonState();
           return null;
         }
         return res.json();
       }).then(function (data) {
         isLoadingQuota = false;
-        if (!data) return;
+        if (!data || !data.quota) {
+          quotaError = true;
+          renderButtonState();
+          return;
+        }
+        quotaError = false;
         serverQuota = data.quota || {};
         serverRewards = Array.isArray(data.rewards) ? data.rewards : [];
         isSpunToday = Boolean(serverQuota.remaining <= 0);
@@ -4375,8 +4386,13 @@
         renderRewardsList();
       }).catch(function () {
         isLoadingQuota = false;
+        quotaError = true;
         renderButtonState();
       });
+    }
+
+    if (tok) {
+      fetchQuota();
     }
 
     // Wheel drawing
@@ -4496,7 +4512,15 @@
         location.assign("/login");
         return;
       }
-      if (isSpinning || isSpunToday) return;
+      if (quotaError || !serverQuota) {
+        fetchQuota();
+        return;
+      }
+      if (isSpinning || isSpunToday || (serverQuota && serverQuota.remaining <= 0)) {
+        isSpunToday = true;
+        renderButtonState();
+        return;
+      }
 
       isSpinning = true;
       spinBtn.disabled = true;
@@ -4515,6 +4539,7 @@
             isSpinning = false;
             isSpunToday = true;
             if (err.quota) serverQuota = err.quota;
+            else if (serverQuota) serverQuota.remaining = 0;
             renderButtonState();
             alert(err.error || "You have already used your daily spin for today. Come back tomorrow after midnight IST!");
             return null;
@@ -4522,7 +4547,9 @@
         }
         if (!res.ok) {
           return res.json().catch(function () { return {}; }).then(function (err) {
-            throw new Error(err.error || "Could not spin the wheel.");
+            var msg = err.error || err.message;
+            if (!msg && res.status === 404) msg = "Daily spin service is updating on the server. Please try again shortly.";
+            throw new Error(msg || "Could not spin the wheel.");
           });
         }
         return res.json();
