@@ -45,44 +45,42 @@ class StudentRewardController extends Controller
             ], 429);
         }
 
-        // 8 Wheel Slices:
-        // 0: 5% OFF Coupon
-        // 1: 30 Days Free Pro Plan
-        // 2: ₹50 OFF Coupon
-        // 3: Better Luck Next Time
-        // 4: 25% OFF Coupon
-        // 5: Better Luck Next Time (Free Paper removed)
-        // 6: ₹100 OFF Coupon
-        // 7: 50 Bonus XP
+        // 10 Wheel Slices:
+        // 0: 5% OFF (Upto ₹50) (18%)
+        // 1: 30 Days Free Pro Plan (8%)
+        // 2: ₹50 OFF Coupon (10%)
+        // 3: Better Luck Next Time (9%)
+        // 4: 25% OFF Coupon (8%)
+        // 5: 1 Free Extra Spin (10%)
+        // 6: ₹100 OFF Coupon (5%)
+        // 7: 50 Bonus XP (12%)
+        // 8: Free 1 Test Yourself (10%)
+        // 9: Free 1 Paper Upload (10%)
         $prizes = [
-            0 => ['type' => 'coupon_pct',  'title' => '5% OFF Coupon',        'value' => '5% OFF',      'prefix' => 'GENZ5-'],
-            1 => ['type' => 'free_pro',    'title' => '30 Days Free Pro',     'value' => '30 Days Pro', 'prefix' => ''],
-            2 => ['type' => 'coupon_flat', 'title' => '₹50 OFF Coupon',       'value' => '₹50 OFF',     'prefix' => 'GENZ50-'],
-            3 => ['type' => 'try_again',   'title' => 'Better Luck Next Time','value' => 'Try Tomorrow','prefix' => ''],
-            4 => ['type' => 'coupon_pct',  'title' => '25% OFF Coupon',       'value' => '25% OFF',     'prefix' => 'GENZ25-'],
-            5 => ['type' => 'try_again',   'title' => 'Better Luck Next Time','value' => 'Try Tomorrow','prefix' => ''],
-            6 => ['type' => 'coupon_flat', 'title' => '₹100 OFF Coupon',      'value' => '₹100 OFF',    'prefix' => 'GENZ100-'],
-            7 => ['type' => 'bonus_xp',    'title' => '+50 Study XP',         'value' => '50 XP',       'prefix' => ''],
+            0 => ['type' => 'coupon_pct',          'title' => '5% OFF (Upto ₹50)',      'value' => '5% OFF (Upto ₹50)', 'prefix' => 'GENZ5-'],
+            1 => ['type' => 'free_pro',            'title' => '30 Days Free Pro',       'value' => '30 Days Pro',       'prefix' => ''],
+            2 => ['type' => 'coupon_flat',         'title' => '₹50 OFF Coupon',         'value' => '₹50 OFF',           'prefix' => 'GENZ50-'],
+            3 => ['type' => 'try_again',           'title' => 'Better Luck Next Time',  'value' => 'Try Tomorrow',      'prefix' => ''],
+            4 => ['type' => 'coupon_pct',          'title' => '25% OFF Coupon',         'value' => '25% OFF',           'prefix' => 'GENZ25-'],
+            5 => ['type' => 'free_spin',           'title' => '1 Free Extra Spin',      'value' => '1 Extra Spin',      'prefix' => ''],
+            6 => ['type' => 'coupon_flat',         'title' => '₹100 OFF Coupon',        'value' => '₹100 OFF',          'prefix' => 'GENZ100-'],
+            7 => ['type' => 'bonus_xp',            'title' => '+50 Study XP',           'value' => '50 XP',             'prefix' => ''],
+            8 => ['type' => 'free_test',           'title' => 'Free 1 Test Yourself',   'value' => '1 Free Test',       'prefix' => 'TEST1-'],
+            9 => ['type' => 'free_paper_upload',   'title' => 'Free 1 Paper Upload',   'value' => '1 Free Upload',     'prefix' => 'UPLOAD1-'],
         ];
 
-        // Weighted probabilities:
-        // 0: 5% OFF Coupon (20%)
-        // 1: Free Pro Jackpot (4%)
-        // 2: ₹50 OFF Coupon (10%)
-        // 3: Better Luck Next Time 1 (22%)
-        // 4: 25% OFF Coupon (8%)
-        // 5: Better Luck Next Time 2 (16%)
-        // 6: ₹100 OFF Coupon (5% super rare)
-        // 7: +50 XP (15% - 4th most common)
+        // Weighted probabilities (Sum = 100%):
         $weights = [
-            0 => 20, // 5% OFF
-            1 => 4,  // Free Pro (Jackpot)
-            2 => 10, // ₹50 OFF (10% chance)
-            3 => 22, // Better Luck Next Time 1
-            4 => 8,  // 25% OFF (8% chance)
-            5 => 16, // Better Luck Next Time 2 (replacing Free Paper)
-            6 => 5,  // ₹100 OFF (5% super rare)
-            7 => 15, // +50 XP (15% 4th most common)
+            0 => 18, // 5% OFF (Upto ₹50) - 18% (#1 most common)
+            1 => 8,  // 30 Days Free Pro - 8%
+            2 => 10, // ₹50 OFF Coupon - 10%
+            3 => 9,  // Better Luck Next Time - 9%
+            4 => 8,  // 25% OFF Coupon - 8%
+            5 => 10, // 1 Free Extra Spin - 10%
+            6 => 5,  // ₹100 OFF Coupon - 5% (super rare)
+            7 => 12, // +50 XP - 12% (#2 most common)
+            8 => 10, // Free 1 Test Yourself - 10%
+            9 => 10, // Free 1 Paper Upload - 10%
         ];
 
         $rand = mt_rand(1, array_sum($weights));
@@ -109,11 +107,11 @@ class StudentRewardController extends Controller
                 'value' => $prizeData['value'],
                 'code' => $code,
                 'created_at' => $now->toIso8601String(),
-                'expires_at' => in_array($prizeData['type'], ['coupon_pct', 'coupon_flat'], true)
+                'expires_at' => in_array($prizeData['type'], ['coupon_pct', 'coupon_flat', 'free_test', 'free_paper_upload'], true)
                     ? $now->copy()->addDays(self::EXPIRY_DAYS)->toIso8601String()
                     : null,
                 'is_scratched' => false,
-                'is_claimed' => false,
+                'is_claimed' => $prizeData['type'] === 'free_spin',
             ];
 
             // If bonus XP: immediately add to user
@@ -125,8 +123,10 @@ class StudentRewardController extends Controller
             $this->saveUserReward($user, $reward);
         }
 
-        // Record spin usage for today
-        $this->markSpunToday($user);
+        // Record spin usage for today (unless user won a Free Extra Spin!)
+        if ($prizeData['type'] !== 'free_spin') {
+            $this->markSpunToday($user);
+        }
 
         // Record to active manager rewards log
         $this->logSpinResult($user, $prizeData, $reward, $now);
@@ -309,8 +309,14 @@ class StudentRewardController extends Controller
             $status = 'Try Again';
         } elseif ($prizeData['type'] === 'bonus_xp') {
             $status = 'Claimed (+50 XP)';
+        } elseif ($prizeData['type'] === 'free_spin') {
+            $status = 'Free Spin Won';
         } elseif ($prizeData['type'] === 'free_pro') {
             $status = 'Unclaimed Pro';
+        } elseif ($prizeData['type'] === 'free_test') {
+            $status = 'Test Pass Won';
+        } elseif ($prizeData['type'] === 'free_paper_upload') {
+            $status = 'Upload Pass Won';
         }
 
         $entry = [

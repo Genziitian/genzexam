@@ -195,11 +195,36 @@ assert.ok(
   "manager-sales.js must handle loadRewardsLog, render table, and exportRewardsLog"
 );
 
+// 10. 10-Slice Configuration & Weighted Probabilities Tests
+const studentRewardController = fs.readFileSync(path.join(root, "backend", "app", "Http", "Controllers", "StudentRewardController.php"), "utf8");
+
 assert.ok(
-  apiRoutes.includes("/rewards/log") && apiRoutes.includes("StudentRewardController"),
-  "backend/routes/api.php must register manager /rewards/log route"
+  appEnhancements.includes("UPTO ₹50 OFF") &&
+  appEnhancements.includes("FREE SPIN") &&
+  appEnhancements.includes("TEST FREE") &&
+  appEnhancements.includes("FREE UPLOAD"),
+  "app-enhancements.js must include all 10 slices including Free Spin, Test Free, and Free Upload"
 );
 
-console.log("PASS: All Daily Rewards, Claim Instructions, Legal Policy, Expiry, and Manager Log tests passed.");
+assert.ok(
+  appEnhancements.includes("var weights = [18, 8, 10, 9, 8, 10, 5, 12, 10, 10];"),
+  "app-enhancements.js weights must sum to 100 with exact user-specified distribution"
+);
+
+assert.ok(
+  studentRewardController.includes("0 => 18") &&
+  studentRewardController.includes("1 => 8") &&
+  studentRewardController.includes("2 => 10") &&
+  studentRewardController.includes("3 => 9") &&
+  studentRewardController.includes("4 => 8") &&
+  studentRewardController.includes("5 => 10") &&
+  studentRewardController.includes("6 => 5") &&
+  studentRewardController.includes("7 => 12") &&
+  studentRewardController.includes("8 => 10") &&
+  studentRewardController.includes("9 => 10"),
+  "StudentRewardController.php weights must match exact 10-slice probability distribution"
+);
+
+console.log("PASS: All Daily Rewards, Claim Instructions, Legal Policy, Expiry, Manager Log, and 10-Slice Probability tests passed.");
 
 

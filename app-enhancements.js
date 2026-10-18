@@ -3262,14 +3262,16 @@
    * 7-day coupon expiry engine, and daily prompt modal.
    * ------------------------------------------------------------- */
   var WHEEL_PRIZES = [
-    { title: "5% OFF", sub: "Coupon", icon: "🎟️", color: "#4f46e5", type: "coupon_pct", value: "5% OFF", prefix: "GENZ5-" },
+    { title: "UPTO ₹50 OFF", sub: "5% Discount", icon: "🎟️", color: "#4f46e5", type: "coupon_pct", value: "5% OFF (Upto ₹50)", prefix: "GENZ5-" },
     { title: "30D FREE PRO", sub: "Jackpot", icon: "👑", color: "#d97706", type: "free_pro", value: "30 Days Pro", prefix: "" },
     { title: "₹50 OFF", sub: "Coupon", icon: "🎟️", color: "#059669", type: "coupon_flat", value: "₹50 OFF", prefix: "GENZ50-" },
-    { title: "TRY AGAIN", sub: "Tomorrow", icon: "🍀", color: "#64748b", type: "try_again", value: "Try Tomorrow", prefix: "" },
+    { title: "BETTER LUCK", sub: "Tomorrow", icon: "🍀", color: "#64748b", type: "try_again", value: "Try Tomorrow", prefix: "" },
     { title: "25% OFF", sub: "Mega Deal", icon: "🎟️", color: "#7c3aed", type: "coupon_pct", value: "25% OFF", prefix: "GENZ25-" },
-    { title: "BETTER LUCK", sub: "Try Tomorrow", icon: "🤞", color: "#0891b2", type: "try_again", value: "Better Luck", prefix: "" },
+    { title: "FREE SPIN", sub: "Extra Spin", icon: "🔄", color: "#0284c7", type: "free_spin", value: "1 Free Spin", prefix: "" },
     { title: "₹100 OFF", sub: "Discount", icon: "🎟️", color: "#db2777", type: "coupon_flat", value: "₹100 OFF", prefix: "GENZ100-" },
-    { title: "+50 XP", sub: "Study Boost", icon: "⚡", color: "#2563eb", type: "bonus_xp", value: "50 XP", prefix: "" }
+    { title: "+50 XP", sub: "Study Boost", icon: "⚡", color: "#2563eb", type: "bonus_xp", value: "50 XP", prefix: "" },
+    { title: "TEST FREE", sub: "1 Test Pass", icon: "📝", color: "#0d9488", type: "free_test", value: "1 Free Test Yourself", prefix: "TEST1-" },
+    { title: "FREE UPLOAD", sub: "Paper Pass", icon: "📄", color: "#ea580c", type: "free_paper_upload", value: "1 Free Paper Upload", prefix: "UPLOAD1-" }
   ];
 
   function getTodayISTString() {
@@ -3463,23 +3465,38 @@
           '</div>' +
           '<div class="ql-scratch-actions">' +
             '<button type="button" class="ql-copy-code-btn" id="ql-scratch-copy-btn" style="display:none"><span aria-hidden="true">📋</span> Copy Coupon Code</button>' +
-            '<div class="ql-claim-steps-card">' +
-              '<strong class="ql-claim-steps-title">📋 How to Claim Your Coupon (' + escapeHtml(reward.title) + ' off):</strong>' +
-              '<ol class="ql-claim-steps-list">' +
-                '<li><strong>Visit:</strong> <a href="https://genziitian.in/courses" target="_blank" rel="noopener noreferrer">Genziitian.in/courses</a></li>' +
-                '<li><strong>Choose:</strong> Pick any course of your choice</li>' +
-                '<li><strong>Apply Code:</strong> Apply this code at checkout: <code style="background:#e0e7ff;color:#3730a3;padding:2px 6px;border-radius:4px;font-weight:700">' + escapeHtml(reward.code || "REVEAL CODE ABOVE") + '</code></li>' +
-              '</ol>' +
-              '<div class="ql-claim-terms-box">' +
-                '<div class="ql-claim-term-row">🌐 <strong>Applicability:</strong> Please note this is only applicable on this website (<a href="https://genziitian.in/courses" target="_blank" rel="noopener noreferrer">Genziitian.in/courses</a>).</div>' +
-                '<div class="ql-claim-term-row">⏰ <strong>7-Day Expiry:</strong> If not claimed or claimed, this auto disables in 7 days counting from the day scratch or spinned.</div>' +
-                '<div class="ql-claim-term-row">🎁 <strong>No Payment:</strong> No payment required to get this coupon.</div>' +
-                '<div class="ql-claim-term-row">🛒 <strong>Minimum Purchase:</strong> Minimum amount purchase is ₹350.</div>' +
-                '<div class="ql-claim-term-row">🏷️ <strong>Discount Cap:</strong> Max discount you get on any percentage is 100 rupees.</div>' +
-                '<div class="ql-claim-term-row">📜 <strong>Terms Agreement:</strong> By continuing you accept all our <a href="/terms.html#rewards-promotions" target="_blank">terms, conditions and rules</a>.</div>' +
-              '</div>' +
-              '<a href="https://genziitian.in/courses" target="_blank" rel="noopener noreferrer" class="ql-visit-courses-cta">🚀 Visit Genziitian.in/courses &amp; Redeem →</a>' +
-            '</div>' +
+            (reward.type === "free_test" || reward.type === "free_paper_upload" ?
+              '<div class="ql-claim-steps-card">' +
+                '<strong class="ql-claim-steps-title">📋 How to Use Your ' + escapeHtml(reward.title) + ':</strong>' +
+                '<ol class="ql-claim-steps-list">' +
+                  '<li><strong>Pass Code:</strong> Copy your secret pass: <code style="background:#e0e7ff;color:#3730a3;padding:2px 6px;border-radius:4px;font-weight:700">' + escapeHtml(reward.code || "REVEAL CODE ABOVE") + '</code></li>' +
+                  '<li><strong>Use Feature:</strong> Head to ' + (reward.type === "free_test" ? "Test Yourself" : "Upload Paper") + ' in Quiz Lab</li>' +
+                  '<li><strong>Redeem Pass:</strong> Apply this pass code to unlock your 1-time free session</li>' +
+                '</ol>' +
+                '<div class="ql-claim-terms-box">' +
+                  '<div class="ql-claim-term-row">🌐 <strong>Applicability:</strong> Valid on Quiz Lab platform.</div>' +
+                  '<div class="ql-claim-term-row">⏰ <strong>7-Day Expiry:</strong> Valid for 7 days from the day spinned.</div>' +
+                  '<div class="ql-claim-term-row">🎁 <strong>100% Free:</strong> No payment required to unlock this pass.</div>' +
+                '</div>' +
+              '</div>' :
+              '<div class="ql-claim-steps-card">' +
+                '<strong class="ql-claim-steps-title">📋 How to Claim Your Coupon (' + escapeHtml(reward.title) + ' off):</strong>' +
+                '<ol class="ql-claim-steps-list">' +
+                  '<li><strong>Visit:</strong> <a href="https://genziitian.in/courses" target="_blank" rel="noopener noreferrer">Genziitian.in/courses</a></li>' +
+                  '<li><strong>Choose:</strong> Pick any course of your choice</li>' +
+                  '<li><strong>Apply Code:</strong> Apply this code at checkout: <code style="background:#e0e7ff;color:#3730a3;padding:2px 6px;border-radius:4px;font-weight:700">' + escapeHtml(reward.code || "REVEAL CODE ABOVE") + '</code></li>' +
+                '</ol>' +
+                '<div class="ql-claim-terms-box">' +
+                  '<div class="ql-claim-term-row">🌐 <strong>Applicability:</strong> Please note this is only applicable on this website (<a href="https://genziitian.in/courses" target="_blank" rel="noopener noreferrer">Genziitian.in/courses</a>).</div>' +
+                  '<div class="ql-claim-term-row">⏰ <strong>7-Day Expiry:</strong> If not claimed or claimed, this auto disables in 7 days counting from the day scratch or spinned.</div>' +
+                  '<div class="ql-claim-term-row">🎁 <strong>No Payment:</strong> No payment required to get this coupon.</div>' +
+                  '<div class="ql-claim-term-row">🛒 <strong>Minimum Purchase:</strong> Minimum amount purchase is ₹350.</div>' +
+                  '<div class="ql-claim-term-row">🏷️ <strong>Discount Cap:</strong> Max discount you get on any percentage is 100 rupees.</div>' +
+                  '<div class="ql-claim-term-row">📜 <strong>Terms Agreement:</strong> By continuing you accept all our <a href="/terms.html#rewards-promotions" target="_blank">terms, conditions and rules</a>.</div>' +
+                '</div>' +
+                '<a href="https://genziitian.in/courses" target="_blank" rel="noopener noreferrer" class="ql-visit-courses-cta">🚀 Visit Genziitian.in/courses &amp; Redeem →</a>' +
+              '</div>'
+            ) +
           '</div>' +
         '</div>' +
       '</div>';
@@ -4098,18 +4115,18 @@
         ctx.rotate(startAngle + arc / 2);
         ctx.textAlign = "right";
         ctx.fillStyle = "#ffffff";
-        ctx.font = "bold 22px sans-serif";
+        ctx.font = p.title.length > 8 ? "bold 15px sans-serif" : "bold 18px sans-serif";
         ctx.shadowColor = "rgba(0, 0, 0, 0.4)";
         ctx.shadowBlur = 4;
-        ctx.fillText(p.title, r - 52, 5);
+        ctx.fillText(p.title, r - 48, 5);
 
-        ctx.font = "12px sans-serif";
+        ctx.font = "11px sans-serif";
         ctx.fillStyle = "#fde047";
-        ctx.fillText(p.sub, r - 52, 22);
+        ctx.fillText(p.sub, r - 48, 20);
 
-        ctx.font = "24px sans-serif";
+        ctx.font = "20px sans-serif";
         ctx.shadowBlur = 0;
-        ctx.fillText(p.icon, r - 16, 8);
+        ctx.fillText(p.icon, r - 16, 7);
         ctx.restore();
       }
 
@@ -4148,16 +4165,18 @@
       spinBtn.disabled = true;
       spinBtn.innerHTML = '<span aria-hidden="true">↻</span> Spinning the Lucky Wheel…';
 
-      // Pick prize with weighted probabilities:
-      // 0: 5% OFF (20%)
-      // 1: 30D Free Pro (4%)
+      // Pick prize with weighted probabilities (Sum = 100%):
+      // 0: UPTO ₹50 OFF (18%)
+      // 1: 30D Free Pro (8%)
       // 2: ₹50 OFF (10%)
-      // 3: Try Again (22%)
+      // 3: Better Luck Next Time (9%)
       // 4: 25% OFF (8%)
-      // 5: Better Luck (16%)
-      // 6: ₹100 OFF (5% super rare)
-      // 7: +50 XP (15% 4th most common)
-      var weights = [20, 4, 10, 22, 8, 16, 5, 15];
+      // 5: Free Spin (10%)
+      // 6: ₹100 OFF (5%)
+      // 7: +50 XP (12%)
+      // 8: Free Test (10%)
+      // 9: Free Paper Upload (10%)
+      var weights = [18, 8, 10, 9, 8, 10, 5, 12, 10, 10];
       var rand = Math.floor(Math.random() * 100) + 1;
       var cumulative = 0;
       var chosenIndex = 0;
@@ -4212,12 +4231,14 @@
 
     function onSpinFinished(prize) {
       today = getTodayISTString();
-      state.lastSpinDate = today;
+      if (prize.type !== "free_spin") {
+        state.lastSpinDate = today;
+      }
 
       var nowTime = Date.now();
       var reward = null;
 
-      if (prize.type !== "try_again") {
+      if (prize.type !== "try_again" && prize.type !== "free_spin") {
         var code = prize.prefix ? (prize.prefix + Math.random().toString(36).substring(2, 6).toUpperCase()) : null;
         reward = {
           id: "rew_" + nowTime + "_" + Math.floor(Math.random() * 1000),
@@ -4226,7 +4247,7 @@
           value: prize.value,
           code: code,
           created_at: new Date(nowTime).toISOString(),
-          expires_at: inArray(prize.type, ["coupon_pct", "coupon_flat"]) ? new Date(nowTime + 7 * 86400 * 1000).toISOString() : null,
+          expires_at: inArray(prize.type, ["coupon_pct", "coupon_flat", "free_test", "free_paper_upload"]) ? new Date(nowTime + 7 * 86400 * 1000).toISOString() : null,
           is_scratched: false,
           is_claimed: false
         };
@@ -4237,6 +4258,20 @@
       try {
         var mLog = JSON.parse(localStorage.getItem("ql_rewards_global_log") || "[]");
         var studentUser = JSON.parse(localStorage.getItem("lab_user") || "{}");
+        var logStatus = "Unscratched";
+        if (prize.type === "try_again") {
+          logStatus = "Try Again";
+        } else if (prize.type === "free_spin") {
+          logStatus = "Free Spin Won";
+        } else if (prize.type === "bonus_xp") {
+          logStatus = "Claimed (+50 XP)";
+        } else if (prize.type === "free_pro") {
+          logStatus = "Unclaimed Pro";
+        } else if (prize.type === "free_test") {
+          logStatus = "Test Pass Won";
+        } else if (prize.type === "free_paper_upload") {
+          logStatus = "Upload Pass Won";
+        }
         mLog.unshift({
           id: "rewlog_" + nowTime + "_" + Math.floor(Math.random() * 1000),
           user_id: studentUser.id || "guest",
@@ -4247,7 +4282,7 @@
           coupon_code: reward ? reward.code : null,
           created_at: new Date(nowTime).toISOString(),
           expires_at: reward ? reward.expires_at : null,
-          status: prize.type === "try_again" ? "Try Again" : (prize.type === "bonus_xp" ? "Claimed (+50 XP)" : "Unscratched")
+          status: logStatus
         });
         if (mLog.length > 500) mLog = mLog.slice(0, 500);
         localStorage.setItem("ql_rewards_global_log", JSON.stringify(mLog));
@@ -4265,6 +4300,8 @@
         openProJackpotModal(reward, function () {
           renderRewardsList();
         });
+      } else if (prize.type === "free_spin") {
+        alert("🎉 You won 1 Free Extra Spin! Spin the wheel again right now!");
       } else if (reward && prize.type !== "bonus_xp") {
         openScratchCardModal(reward, function () {
           saveLocalRewardsState(state);
