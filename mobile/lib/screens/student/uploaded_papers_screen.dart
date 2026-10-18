@@ -159,7 +159,11 @@ class _UploadedPapersScreenState extends State<UploadedPapersScreen> {
                   children: [
                     FadeSlideIn(
                       delay: const Duration(milliseconds: 150),
-                      child: _QuotaCard(quota: quota, onGetPro: _goPro, onReset: _reload),
+                      child: _QuotaCard(
+                        quota: quota,
+                        onGetPro: _goPro,
+                        onReset: _reload,
+                      ),
                     ),
                     const SizedBox(height: 14),
                     FadeSlideIn(
@@ -322,7 +326,11 @@ class _QuotaCard extends StatefulWidget {
   final UploadQuota? quota;
   final VoidCallback onGetPro;
   final VoidCallback onReset;
-  const _QuotaCard({required this.quota, required this.onGetPro, required this.onReset});
+  const _QuotaCard({
+    required this.quota,
+    required this.onGetPro,
+    required this.onReset,
+  });
 
   @override
   State<_QuotaCard> createState() => _QuotaCardState();
@@ -337,7 +345,9 @@ class _QuotaCardState extends State<_QuotaCard> {
     _ticker = Timer.periodic(const Duration(seconds: 1), (_) {
       if (!mounted || widget.quota?.remaining != 0) return;
       final reset = widget.quota?.resetsAt;
-      if (reset != null && !reset.isAfter(DateTime.now()) && !_refreshRequested) {
+      if (reset != null &&
+          !reset.isAfter(DateTime.now()) &&
+          !_refreshRequested) {
         _refreshRequested = true;
         widget.onReset();
       }
@@ -348,7 +358,8 @@ class _QuotaCardState extends State<_QuotaCard> {
   @override
   void didUpdateWidget(covariant _QuotaCard oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (oldWidget.quota?.resetsAt != widget.quota?.resetsAt || widget.quota?.remaining != 0) {
+    if (oldWidget.quota?.resetsAt != widget.quota?.resetsAt ||
+        widget.quota?.remaining != 0) {
       _refreshRequested = false;
     }
   }

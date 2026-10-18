@@ -20,7 +20,7 @@ Present two billing choices with the same Pro benefits on the website and Androi
 
 ## Upload screen
 
-The marketing subtitle under the Pro hero is removed. The comparison table remains. Upload rules show the first two entries, with See more / See less for the rest. Once the free upload is used, a live countdown uses the server-provided `resets_at`; the app refreshes the server allowance when it reaches zero. Get Pro to upload now opens the real membership checkout flow. Clicking Claim alone does not consume quota: successful test creation does.
+The marketing subtitle under the Pro hero is removed. The comparison table remains. Uploaded papers are the main content, ordered newest first, with a compact allowance strip and Upload paper button. All upload rules are hidden behind Upload rules · See all. They collapse after 30 seconds, on page exit, or when the app/browser goes to the background. The large hero, quota ring and conversion diagram are removed. Empty accounts receive a clear Upload your first paper action. The app shows a simple spinner during conversion. Once the free upload is used, a live countdown uses the server-provided `resets_at`; the app refreshes the server allowance when it reaches zero. Get Pro to upload now opens the real membership checkout flow. Clicking Claim alone does not consume quota: successful test creation does.
 
 ## Manager cancellation
 
@@ -51,3 +51,21 @@ No Android Studio session or app was opened by this change. At the owner's reque
 7. Run the backend feature tests including ProMembershipParityTest and the transaction history tests after applying the new migration to a test database. Real provider purchase, renewal, refund, and cancellation tests remain required.
 
 This source update is not a production deployment and is not proof that a real payment or cancellation succeeded.
+
+
+## Transaction history deployment
+
+The earlier membership UI, manager history, provider receipt recorder and authenticated history endpoints are implemented in source. They still require deployment and owner testing. Apply the new migration from the Hostinger backend directory:
+
+```sh
+php artisan migrate --path=database/migrations/2026_10_17_000003_create_membership_transactions_table.php --force
+php artisan optimize:clear
+```
+
+Use the **000003** filename currently in this repository. The earlier draft filename 000002 is outdated.
+
+Student history uses `/membership/history`; manager history uses `/manager/pro/transactions`. The student endpoint always uses the signed-in account. Manager history supports user/search filters and pagination. The ledger records verified provider receipts and existing paper orders, not invented historical renewals. Previous renewals are not automatically backfilled. Google Orders API access must succeed for its latest receipt to appear; membership access is not blocked by an unavailable receipt lookup.
+
+History amounts preserve the provider currency and its minor-unit precision. Free trial access is a membership record; it is not a fabricated payment receipt.
+
+Final changes were reviewed in source only, as requested. JavaScript syntax checks passed and the edited Dart files were parsed and formatted. No new app, Android Studio, browser session, build or test run was started for this final update. Deployment, the new migration, a rebuilt Android release, and real/test payment flows remain owner checks. Existing deployment ZIPs predate this final update; do not assume they contain these changes.

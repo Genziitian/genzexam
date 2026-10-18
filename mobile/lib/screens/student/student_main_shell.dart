@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
@@ -3659,10 +3660,100 @@ class _MyPapersTabState extends State<_MyPapersTab> {
   List<MyPaperItem> _papers = [];
   final ScrollController _scrollController = ScrollController();
 
+  static const _storage = FlutterSecureStorage();
+  Set<int> _likedIds = <int>{};
+
+  // Filter state
+  bool _filterLikedOnly = false;
+  String _filterStatus = 'all'; // 'all', 'in_progress', 'completed', 'not_started'
+  String _filterAccess = 'all'; // 'all', 'free', 'purchased', 'upload'
+  String _filterSection = 'all'; // 'all', 'quiz1', 'quiz2', 'endterm', 'mock_test', 'practice'
+  String _filterCourse = 'all'; // 'all' or course name
+  String _filterSort = 'newest'; // 'newest', 'title', 'attempts', 'score'
+  String _quickFilter = 'all'; // 'all', 'liked', 'in_progress', 'completed'
+
   @override
   void initState() {
     super.initState();
+    _loadLiked();
     _load();
+  }
+
+  Future<void> _loadLiked() async {
+    try {
+      final raw = await _storage.read(key: 'ql_liked_papers');
+      if (raw != null && raw.isNotEmpty) {
+        final decoded = jsonDecode(raw);
+        if (decoded is List && mounted) {
+          setState(() {
+            _likedIds = decoded.map((e) => (e as num).toInt()).toSet();
+          });
+        }
+      }
+    } catch (_) {}
+  }
+
+  Future<void> _toggleLike(int id) async {
+    AppHaptics.light();
+    setState(() {
+      if (_likedIds.contains(id)) {
+        _likedIds.remove(id);
+      } else {
+        _likedIds.add(id);
+      }
+    });
+    try {
+      await _storage.write(
+        key: 'ql_liked_papers',
+        value: jsonEncode(_likedIds.toList()),
+      );
+    } catch (_) {}
+  }
+
+  int get _activeFilterCount {
+    int count = 0;
+    if (_filterLikedOnly) count++;
+    if (_filterStatus != 'all') count++;
+    if (_filterAccess != 'all') count++;
+    if (_filterSection != 'all') count++;
+    if (_filterCourse != 'all') count++;
+    if (_filterSort != 'newest') count++;
+    return count;
+  }
+
+  List<MyPaperItem> get _filteredPapers {
+    final list = _papers.where((p) {
+      if (_filterLikedOnly && !_likedIds.contains(p.id)) return false;
+      if (_filterStatus == 'in_progress' && !p.inProgress) return false;
+      if (_filterStatus == 'completed' && (p.attemptCount == 0 || p.inProgress)) return false;
+      if (_filterStatus == 'not_started' && (p.attemptCount > 0 || p.inProgress)) return false;
+      if (_filterAccess == 'free' && (p.pricePaise > 0 || p.source == 'personal_upload')) return false;
+      if (_filterAccess == 'purchased' && !(p.purchased || p.source == 'purchase')) return false;
+      if (_filterAccess == 'upload' && p.source != 'personal_upload') return false;
+      if (_filterSection != 'all' && p.section != _filterSection) return false;
+      if (_filterCourse != 'all' && (p.course?.name ?? '') != _filterCourse) return false;
+      return true;
+    }).toList();
+
+    if (_filterSort == 'title') {
+      list.sort((a, b) => a.title.toLowerCase().compareTo(b.title.toLowerCase()));
+    } else if (_filterSort == 'attempts') {
+      list.sort((a, b) => b.attemptCount.compareTo(a.attemptCount));
+    } else if (_filterSort == 'score') {
+      list.sort((a, b) {
+        final pctA = (a.lastTotalMarks != null && a.lastTotalMarks! > 0)
+            ? ((a.lastScore ?? 0) / a.lastTotalMarks!)
+            : 0.0;
+        final pctB = (b.lastTotalMarks != null && b.lastTotalMarks! > 0)
+            ? ((b.lastScore ?? 0) / b.lastTotalMarks!)
+            : 0.0;
+        return pctB.compareTo(pctA);
+      });
+    } else {
+      list.sort((a, b) => b.id.compareTo(a.id));
+    }
+
+    return list;
   }
 
   @override
@@ -4175,6 +4266,410 @@ class _MyPapersTabState extends State<_MyPapersTab> {
     );
   }
 
+  Widget _quickChip(
+    String text, {
+    int? count,
+    required bool isSelected,
+    required VoidCallback onTap,
+  }) {
+    return GestureDetector(
+      onTap: () {
+        AppHaptics.selection();
+        onTap();
+      },
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 150),
+        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 7),
+        decoration: BoxDecoration(
+          color: isSelected ? const Color(0xFF16A34A) : Colors.white,
+          borderRadius: BorderRadius.circular(20),
+          border: Border.all(
+            color: isSelected
+                ? const Color(0xFF16A34A)
+                : const Color(0xFFE2E8F0),
+          ),
+          boxShadow: isSelected
+              ? [
+                  BoxShadow(
+                    color: const Color(0xFF16A34A).withValues(alpha: 0.25),
+                    blurRadius: 8,
+                    offset: const Offset(0, 3),
+                  ),
+                ]
+              : null,
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              text,
+              style: TextStyle(
+                fontSize: 12.5,
+                fontWeight: isSelected ? FontWeight.w700 : FontWeight.w600,
+                color: isSelected ? Colors.white : const Color(0xFF475569),
+              ),
+            ),
+            if (count != null && count > 0) ...[
+              const SizedBox(width: 5),
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 1),
+                decoration: BoxDecoration(
+                  color: isSelected
+                      ? Colors.white.withValues(alpha: 0.25)
+                      : const Color(0xFFF1F5F9),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Text(
+                  '$count',
+                  style: TextStyle(
+                    fontSize: 10.5,
+                    fontWeight: FontWeight.w700,
+                    color: isSelected ? Colors.white : const Color(0xFF64748B),
+                  ),
+                ),
+              ),
+            ],
+          ],
+        ),
+      ),
+    );
+  }
+
+  void _showFilterSheet() {
+    AppHaptics.selection();
+    bool draftLikedOnly = _filterLikedOnly;
+    String draftStatus = _filterStatus;
+    String draftAccess = _filterAccess;
+    String draftSection = _filterSection;
+    String draftCourse = _filterCourse;
+    String draftSort = _filterSort;
+
+    final courses = _papers
+        .map((p) => p.course?.name)
+        .where((n) => n != null && n.trim().isNotEmpty)
+        .cast<String>()
+        .toSet()
+        .toList()
+      ..sort();
+
+    showModalBottomSheet<void>(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.white,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+      ),
+      builder: (ctx) {
+        return StatefulBuilder(
+          builder: (context, setModalState) {
+            final matchCount = _papers.where((p) {
+              if (draftLikedOnly && !_likedIds.contains(p.id)) return false;
+              if (draftStatus == 'in_progress' && !p.inProgress) return false;
+              if (draftStatus == 'completed' && (p.attemptCount == 0 || p.inProgress)) return false;
+              if (draftStatus == 'not_started' && (p.attemptCount > 0 || p.inProgress)) return false;
+              if (draftAccess == 'free' && (p.pricePaise > 0 || p.source == 'personal_upload')) return false;
+              if (draftAccess == 'purchased' && !(p.purchased || p.source == 'purchase')) return false;
+              if (draftAccess == 'upload' && p.source != 'personal_upload') return false;
+              if (draftSection != 'all' && p.section != draftSection) return false;
+              if (draftCourse != 'all' && (p.course?.name ?? '') != draftCourse) return false;
+              return true;
+            }).length;
+
+            Widget sectionTitle(String title) {
+              return Padding(
+                padding: const EdgeInsets.only(top: 16, bottom: 8),
+                child: Text(
+                  title.toUpperCase(),
+                  style: const TextStyle(
+                    fontSize: 11,
+                    fontWeight: FontWeight.w700,
+                    letterSpacing: 1.1,
+                    color: Color(0xFF64748B),
+                  ),
+                ),
+              );
+            }
+
+            Widget chipItem(String label, bool selected, VoidCallback onTap) {
+              return GestureDetector(
+                onTap: () {
+                  AppHaptics.selection();
+                  onTap();
+                },
+                child: AnimatedContainer(
+                  duration: const Duration(milliseconds: 150),
+                  padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 7),
+                  decoration: BoxDecoration(
+                    color: selected ? const Color(0xFF16A34A) : Colors.white,
+                    borderRadius: BorderRadius.circular(20),
+                    border: Border.all(
+                      color: selected ? const Color(0xFF16A34A) : const Color(0xFFE2E8F0),
+                    ),
+                    boxShadow: selected
+                        ? [
+                            BoxShadow(
+                              color: const Color(0xFF16A34A).withValues(alpha: 0.25),
+                              blurRadius: 8,
+                              offset: const Offset(0, 3),
+                            ),
+                          ]
+                        : null,
+                  ),
+                  child: Text(
+                    label,
+                    style: TextStyle(
+                      fontSize: 13,
+                      fontWeight: selected ? FontWeight.w700 : FontWeight.w500,
+                      color: selected ? Colors.white : const Color(0xFF334155),
+                    ),
+                  ),
+                ),
+              );
+            }
+
+            return SafeArea(
+              child: ConstrainedBox(
+                constraints: BoxConstraints(
+                  maxHeight: MediaQuery.sizeOf(context).height * 0.85,
+                ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Center(
+                      child: Container(
+                        margin: const EdgeInsets.only(top: 10, bottom: 6),
+                        width: 38,
+                        height: 4,
+                        decoration: BoxDecoration(
+                          color: const Color(0xFFCBD5E1),
+                          borderRadius: BorderRadius.circular(2),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(20, 8, 16, 12),
+                      child: Row(
+                        children: [
+                          const Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Filter papers',
+                                  style: TextStyle(
+                                    fontSize: 19,
+                                    fontWeight: FontWeight.w800,
+                                    letterSpacing: -0.3,
+                                    color: Color(0xFF0F172A),
+                                  ),
+                                ),
+                                SizedBox(height: 2),
+                                Text(
+                                  'Refine by favorites, status, section or course',
+                                  style: TextStyle(fontSize: 12.5, color: Color(0xFF64748B)),
+                                ),
+                              ],
+                            ),
+                          ),
+                          IconButton(
+                            onPressed: () => Navigator.of(ctx).pop(),
+                            icon: const Icon(Icons.close_rounded, size: 22, color: Color(0xFF475569)),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const Divider(height: 1, color: Color(0xFFF1F5F9)),
+                    Flexible(
+                      child: SingleChildScrollView(
+                        padding: const EdgeInsets.fromLTRB(20, 4, 20, 16),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            sectionTitle('Favorites'),
+                            Wrap(
+                              spacing: 8,
+                              runSpacing: 8,
+                              children: [
+                                chipItem('All papers', !draftLikedOnly, () {
+                                  setModalState(() => draftLikedOnly = false);
+                                }),
+                                chipItem('❤️ Liked only (${_likedIds.length})', draftLikedOnly, () {
+                                  setModalState(() => draftLikedOnly = true);
+                                }),
+                              ],
+                            ),
+                            sectionTitle('Status & Progress'),
+                            Wrap(
+                              spacing: 8,
+                              runSpacing: 8,
+                              children: [
+                                chipItem('All', draftStatus == 'all', () {
+                                  setModalState(() => draftStatus = 'all');
+                                }),
+                                chipItem('In progress', draftStatus == 'in_progress', () {
+                                  setModalState(() => draftStatus = 'in_progress');
+                                }),
+                                chipItem('Completed', draftStatus == 'completed', () {
+                                  setModalState(() => draftStatus = 'completed');
+                                }),
+                                chipItem('Not started', draftStatus == 'not_started', () {
+                                  setModalState(() => draftStatus = 'not_started');
+                                }),
+                              ],
+                            ),
+                            sectionTitle('Access & Pricing'),
+                            Wrap(
+                              spacing: 8,
+                              runSpacing: 8,
+                              children: [
+                                chipItem('All', draftAccess == 'all', () {
+                                  setModalState(() => draftAccess = 'all');
+                                }),
+                                chipItem('Free', draftAccess == 'free', () {
+                                  setModalState(() => draftAccess = 'free');
+                                }),
+                                chipItem('Purchased', draftAccess == 'purchased', () {
+                                  setModalState(() => draftAccess = 'purchased');
+                                }),
+                                chipItem('Your uploads', draftAccess == 'upload', () {
+                                  setModalState(() => draftAccess = 'upload');
+                                }),
+                              ],
+                            ),
+                            sectionTitle('Exam section'),
+                            Wrap(
+                              spacing: 8,
+                              runSpacing: 8,
+                              children: [
+                                chipItem('All', draftSection == 'all', () {
+                                  setModalState(() => draftSection = 'all');
+                                }),
+                                chipItem('Quiz 1', draftSection == 'quiz1', () {
+                                  setModalState(() => draftSection = 'quiz1');
+                                }),
+                                chipItem('Quiz 2', draftSection == 'quiz2', () {
+                                  setModalState(() => draftSection = 'quiz2');
+                                }),
+                                chipItem('End Term', draftSection == 'endterm', () {
+                                  setModalState(() => draftSection = 'endterm');
+                                }),
+                                chipItem('Mock test', draftSection == 'mock_test', () {
+                                  setModalState(() => draftSection = 'mock_test');
+                                }),
+                                chipItem('Practice', draftSection == 'practice', () {
+                                  setModalState(() => draftSection = 'practice');
+                                }),
+                              ],
+                            ),
+                            if (courses.length > 1) ...[
+                              sectionTitle('Course'),
+                              Wrap(
+                                spacing: 8,
+                                runSpacing: 8,
+                                children: [
+                                  chipItem('All courses', draftCourse == 'all', () {
+                                    setModalState(() => draftCourse = 'all');
+                                  }),
+                                  ...courses.map((c) => chipItem(c, draftCourse == c, () {
+                                    setModalState(() => draftCourse = c);
+                                  })),
+                                ],
+                              ),
+                            ],
+                            sectionTitle('Sort by'),
+                            Wrap(
+                              spacing: 8,
+                              runSpacing: 8,
+                              children: [
+                                chipItem('Newest first', draftSort == 'newest', () {
+                                  setModalState(() => draftSort = 'newest');
+                                }),
+                                chipItem('Title (A-Z)', draftSort == 'title', () {
+                                  setModalState(() => draftSort = 'title');
+                                }),
+                                chipItem('Most attempted', draftSort == 'attempts', () {
+                                  setModalState(() => draftSort = 'attempts');
+                                }),
+                                chipItem('Highest score', draftSort == 'score', () {
+                                  setModalState(() => draftSort = 'score');
+                                }),
+                              ],
+                            ),
+                            const SizedBox(height: 16),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.fromLTRB(20, 12, 20, 16),
+                      decoration: const BoxDecoration(
+                        color: Color(0xFFF8FAFC),
+                        border: Border(top: BorderSide(color: Color(0xFFF1F5F9))),
+                      ),
+                      child: Row(
+                        children: [
+                          TextButton(
+                            onPressed: () {
+                              AppHaptics.light();
+                              Navigator.of(ctx).pop();
+                              setState(() {
+                                _filterLikedOnly = false;
+                                _filterStatus = 'all';
+                                _filterAccess = 'all';
+                                _filterSection = 'all';
+                                _filterCourse = 'all';
+                                _filterSort = 'newest';
+                                _quickFilter = 'all';
+                              });
+                            },
+                            child: const Text(
+                              'Reset filters',
+                              style: TextStyle(
+                                color: Color(0xFF64748B),
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ),
+                          const Spacer(),
+                          FilledButton(
+                            onPressed: () {
+                              AppHaptics.medium();
+                              Navigator.of(ctx).pop();
+                              setState(() {
+                                _filterLikedOnly = draftLikedOnly;
+                                _filterStatus = draftStatus;
+                                _filterAccess = draftAccess;
+                                _filterSection = draftSection;
+                                _filterCourse = draftCourse;
+                                _filterSort = draftSort;
+                                _quickFilter = draftLikedOnly ? 'liked' : 'all';
+                              });
+                            },
+                            style: FilledButton.styleFrom(
+                              backgroundColor: const Color(0xFF16A34A),
+                              foregroundColor: Colors.white,
+                              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                            ),
+                            child: Text(
+                              'Apply ($matchCount)',
+                              style: const TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            );
+          },
+        );
+      },
+    );
+  }
+
   Widget _card(MyPaperItem paper) {
     // Same rules as the website's My Papers cards.
     final paid = paper.pricePaise > 0;
@@ -4313,23 +4808,44 @@ class _MyPapersTabState extends State<_MyPapersTab> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
-                        Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 9,
-                            vertical: 3,
-                          ),
-                          decoration: BoxDecoration(
-                            color: tagBg,
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          child: Text(
-                            state,
-                            style: TextStyle(
-                              fontSize: 11,
-                              fontWeight: FontWeight.w700,
-                              color: tagFg,
+                        Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            GestureDetector(
+                              behavior: HitTestBehavior.opaque,
+                              onTap: () => _toggleLike(paper.id),
+                              child: Padding(
+                                padding: const EdgeInsets.only(right: 6),
+                                child: Icon(
+                                  _likedIds.contains(paper.id)
+                                      ? Icons.favorite_rounded
+                                      : Icons.favorite_border_rounded,
+                                  size: 20,
+                                  color: _likedIds.contains(paper.id)
+                                      ? const Color(0xFFEF4444)
+                                      : const Color(0xFF94A3B8),
+                                ),
+                              ),
                             ),
-                          ),
+                            Container(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 9,
+                                vertical: 3,
+                              ),
+                              decoration: BoxDecoration(
+                                color: tagBg,
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              child: Text(
+                                state,
+                                style: TextStyle(
+                                  fontSize: 11,
+                                  fontWeight: FontWeight.w700,
+                                  color: tagFg,
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                         const SizedBox(height: 6),
                         _chip(
@@ -4405,6 +4921,8 @@ class _MyPapersTabState extends State<_MyPapersTab> {
     if (_loading && _papers.isEmpty) {
       return AppShimmerCard.list(count: 4);
     }
+    final displayed = _filteredPapers;
+
     return RefreshIndicator(
       onRefresh: _load,
       color: const Color(0xFF16A34A),
@@ -4427,14 +4945,79 @@ class _MyPapersTabState extends State<_MyPapersTab> {
                 ),
               ),
               GestureDetector(
+                onTap: _showFilterSheet,
+                child: Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 12,
+                    vertical: 8,
+                  ),
+                  decoration: BoxDecoration(
+                    color: _activeFilterCount > 0
+                        ? const Color(0xFFF0FDF4)
+                        : Colors.white,
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(
+                      color: _activeFilterCount > 0
+                          ? const Color(0xFF16A34A)
+                          : const Color(0xFFE2E8F0),
+                    ),
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(
+                        Icons.tune_rounded,
+                        size: 16,
+                        color: _activeFilterCount > 0
+                            ? const Color(0xFF16A34A)
+                            : const Color(0xFF475569),
+                      ),
+                      const SizedBox(width: 5),
+                      Text(
+                        'Filter',
+                        style: TextStyle(
+                          fontSize: 13,
+                          fontWeight: FontWeight.w600,
+                          color: _activeFilterCount > 0
+                              ? const Color(0xFF16A34A)
+                              : const Color(0xFF334155),
+                        ),
+                      ),
+                      if (_activeFilterCount > 0) ...[
+                        const SizedBox(width: 5),
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 6,
+                            vertical: 1.5,
+                          ),
+                          decoration: BoxDecoration(
+                            color: const Color(0xFF16A34A),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Text(
+                            '$_activeFilterCount',
+                            style: const TextStyle(
+                              fontSize: 10.5,
+                              fontWeight: FontWeight.w800,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ],
+                  ),
+                ),
+              ),
+              const SizedBox(width: 8),
+              GestureDetector(
                 onTap: () {
                   AppHaptics.light();
                   widget.onBrowsePractice();
                 },
                 child: Container(
                   padding: const EdgeInsets.symmetric(
-                    horizontal: 14,
-                    vertical: 9,
+                    horizontal: 12,
+                    vertical: 8,
                   ),
                   decoration: BoxDecoration(
                     color: Colors.white,
@@ -4442,9 +5025,9 @@ class _MyPapersTabState extends State<_MyPapersTab> {
                     border: Border.all(color: const Color(0xFFE2E8F0)),
                   ),
                   child: const Text(
-                    'Browse practice',
+                    'Browse',
                     style: TextStyle(
-                      fontSize: 13.5,
+                      fontSize: 13,
                       fontWeight: FontWeight.w600,
                       color: Color(0xFF334155),
                     ),
@@ -4457,6 +5040,52 @@ class _MyPapersTabState extends State<_MyPapersTab> {
           const Text(
             'Papers you bought or attempted, with your progress.',
             style: TextStyle(fontSize: 13.5, color: Color(0xFF64748B)),
+          ),
+          const SizedBox(height: 12),
+
+          // Horizontal quick filter bar
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                _quickChip('All', isSelected: _quickFilter == 'all', onTap: () {
+                  setState(() {
+                    _quickFilter = 'all';
+                    _filterLikedOnly = false;
+                    _filterStatus = 'all';
+                  });
+                }),
+                const SizedBox(width: 8),
+                _quickChip(
+                  '❤️ Liked',
+                  count: _likedIds.length,
+                  isSelected: _quickFilter == 'liked',
+                  onTap: () {
+                    setState(() {
+                      _quickFilter = 'liked';
+                      _filterLikedOnly = true;
+                      _filterStatus = 'all';
+                    });
+                  },
+                ),
+                const SizedBox(width: 8),
+                _quickChip('In progress', isSelected: _quickFilter == 'in_progress', onTap: () {
+                  setState(() {
+                    _quickFilter = 'in_progress';
+                    _filterLikedOnly = false;
+                    _filterStatus = 'in_progress';
+                  });
+                }),
+                const SizedBox(width: 8),
+                _quickChip('Completed', isSelected: _quickFilter == 'completed', onTap: () {
+                  setState(() {
+                    _quickFilter = 'completed';
+                    _filterLikedOnly = false;
+                    _filterStatus = 'completed';
+                  });
+                }),
+              ],
+            ),
           ),
           const SizedBox(height: 14),
 
@@ -4591,8 +5220,55 @@ class _MyPapersTabState extends State<_MyPapersTab> {
                 ),
               ),
             )
+          else if (displayed.isEmpty)
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 36, horizontal: 16),
+              child: Center(
+                child: Column(
+                  children: [
+                    Icon(
+                      _filterLikedOnly ? Icons.favorite_border_rounded : Icons.filter_alt_off_outlined,
+                      size: 46,
+                      color: const Color(0xFF94A3B8),
+                    ),
+                    const SizedBox(height: 12),
+                    Text(
+                      _filterLikedOnly ? 'No liked papers yet' : 'No papers match your filters',
+                      style: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xFF0F172A),
+                      ),
+                    ),
+                    const SizedBox(height: 6),
+                    Text(
+                      _filterLikedOnly
+                          ? 'Tap the heart icon on any paper to save it to your favorites.'
+                          : 'Try clearing some filters to see your papers.',
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(fontSize: 13, color: Color(0xFF64748B)),
+                    ),
+                    const SizedBox(height: 16),
+                    FilledButton.tonal(
+                      onPressed: () {
+                        setState(() {
+                          _quickFilter = 'all';
+                          _filterLikedOnly = false;
+                          _filterStatus = 'all';
+                          _filterAccess = 'all';
+                          _filterSection = 'all';
+                          _filterCourse = 'all';
+                          _filterSort = 'newest';
+                        });
+                      },
+                      child: const Text('Show all papers'),
+                    ),
+                  ],
+                ),
+              ),
+            )
           else
-            for (final paper in _papers)
+            for (final paper in displayed)
               Padding(
                 padding: const EdgeInsets.only(bottom: 10),
                 child: _card(paper),

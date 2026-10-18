@@ -30,6 +30,8 @@ class MembershipHistoryController extends Controller {
         $payments->through(function ($row) {
             $row->id = $row->type.'-'.$row->id;
             $row->amount_paise = (int) $row->amount_paise;
+            $digits = in_array($row->currency, ['JPY','KRW','VND','CLP','PYG','RWF','UGX','VUV','XAF','XOF','XPF','BIF','DJF','GNF','KMF'], true) ? 0 : (in_array($row->currency, ['BHD','IQD','JOD','KWD','LYD','OMR','TND'], true) ? 3 : 2);
+            $row->amount_major = number_format($row->amount_paise / (10 ** $digits), $digits, '.', '');
             $row->user = ['id' => $row->user_id, 'name' => $row->user_name, 'email' => $row->user_email];
             unset($row->user_name, $row->user_email);
             return $row;
