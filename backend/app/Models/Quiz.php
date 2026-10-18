@@ -30,6 +30,17 @@ class Quiz extends Model
     public const SECTIONS = ['practice', 'practice_graded', 'quiz1', 'quiz2', 'endterm', 'mock_test'];
     public const WEEKLY_SECTIONS = ['practice', 'practice_graded'];
 
+    // This server-owned prefix also identifies spin papers created before the
+    // upload counter distinguished file uploads from free practice generation.
+    public const SPIN_PRACTICE_PREFIX = 'Unified practice paper generated from Spin Wheel (';
+
+    public function scopeFileUploads(Builder $query): Builder
+    {
+        return $query->where('is_personal', true)
+            ->where(fn (Builder $papers) => $papers->whereNull('description')
+                ->orWhere('description', 'not like', self::SPIN_PRACTICE_PREFIX.'%'));
+    }
+
     protected $fillable = [
         'course_id',
         'week_id',

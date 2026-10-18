@@ -22,7 +22,7 @@ class StudentUploadedPaperController extends Controller
     {
         abort_if(! StudentAppMode::isStudent($request) && ! $request->user()?->hasAdminAccess(), 403, 'Student uploads only.');
 
-        $papers = Quiz::withoutGlobalScope('exclude_personal_uploads')->where('is_personal', true)
+        $papers = Quiz::withoutGlobalScope('exclude_personal_uploads')->fileUploads()
             ->where('owner_user_id', $request->user()->id)
             ->withCount('questions')->latest('id')->get()
             ->map(fn (Quiz $quiz) => [
@@ -48,7 +48,7 @@ class StudentUploadedPaperController extends Controller
             : max(1, (int) config('services.student_paper_uploads.free_limit', 1));
         $days = max(1, (int) config('services.student_paper_uploads.window_days', 7));
         $since = now()->subDays($days);
-        $recent = Quiz::withoutGlobalScope('exclude_personal_uploads')->where('is_personal', true)
+        $recent = Quiz::withoutGlobalScope('exclude_personal_uploads')->fileUploads()
             ->where('owner_user_id', $user->id)->where('created_at', '>', $since)->orderBy('created_at')->pluck('created_at');
         $used = $recent->count();
         $resetsAt = $used >= $limit ? $recent[$used - $limit]->copy()->addDays($days) : null;

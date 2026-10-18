@@ -123,7 +123,7 @@ class StudentSpinPracticeController extends Controller
                 'week_id' => null,
                 'section' => 'practice',
                 'title' => mb_substr($paperTitle, 0, 200),
-                'description' => "Unified practice paper generated from Spin Wheel ({$course->name}, Weeks {$weekMin}–{$weekMax}).",
+                'description' => Quiz::SPIN_PRACTICE_PREFIX."{$course->name}, Weeks {$weekMin}–{$weekMax}).",
                 'time_limit_minutes' => $timeLimitMinutes,
                 'price_paise' => 0,
                 'is_active' => true,

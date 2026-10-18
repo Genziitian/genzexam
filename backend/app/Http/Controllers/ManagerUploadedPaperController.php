@@ -20,7 +20,7 @@ class ManagerUploadedPaperController extends Controller
 {
     private function uploads()
     {
-        return Quiz::withoutGlobalScope('exclude_personal_uploads')->where('is_personal', true);
+        return Quiz::withoutGlobalScope('exclude_personal_uploads')->fileUploads();
     }
 
     public function index(Request $request): JsonResponse

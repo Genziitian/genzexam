@@ -1,0 +1,27 @@
+name: Verify free spin practice
+on:
+  push:
+    branches: [main, backend]
+    paths:
+      - 'backend/app/Models/Quiz.php'
+      - 'backend/app/Http/Controllers/StudentSpinPracticeController.php'
+      - 'backend/app/Http/Controllers/StudentUploadedPaperController.php'
+      - 'backend/app/Http/Controllers/ManagerUploadedPaperController.php'
+      - 'backend/tests/Feature/SpinPracticeQuotaTest.php'
+      - '.github/workflows/free-spin-verification.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  quota:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: mbstring, pdo_sqlite, xml, curl, zip
+          coverage: none
+      - run: composer install --no-interaction --prefer-dist --no-scripts
+        working-directory: backend
+      - run: php backend/vendor/bin/phpunit -c backend/phpunit.xml backend/tests/Feature/SpinPracticeQuotaTest.php
