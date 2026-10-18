@@ -19,6 +19,7 @@ import 'help_screens.dart';
 import 'offline_papers_screen.dart';
 import 'uploaded_papers_screen.dart';
 import 'practice_screens.dart';
+import 'spin_practice_screen.dart';
 import 'progress_widgets.dart';
 import 'pro_membership_card.dart';
 
@@ -6605,6 +6606,20 @@ class _MoreTabState extends State<_MoreTab> {
             ),
             child: Column(
               children: [
+                _exploreTile(
+                  icon: Icons.casino_outlined,
+                  color: const Color(0xFF7C3AED),
+                  title: 'Try your practice',
+                  subtitle: 'Spin a custom practice paper',
+                  onTap: () => Navigator.of(context).push(MaterialPageRoute<void>(
+                    builder: (_) => SpinPracticeScreen(
+                      apiClient: widget.discussionService.client,
+                      user: widget.user,
+                      onOpenMyPapers: widget.onNavigateToMyPapers,
+                    ),
+                  )),
+                ),
+                const Divider(height: 1, color: Color(0xFFF1F5F9)),
                 _exploreTile(
                   icon: Icons.download_for_offline_rounded,
                   color: const Color(0xFF16A34A),
