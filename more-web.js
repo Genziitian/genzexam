@@ -4,7 +4,7 @@
 
   function trialReceipt(price, days) {
     var p = escapeHtml(price);
-    return '<span style="display:grid;gap:8px;max-width:420px"><span style="display:flex;justify-content:space-between;gap:18px"><span>Monthly plan</span><strong>' + p + '</strong></span><span style="display:flex;justify-content:space-between;gap:18px"><span>' + Number(days) + '-day trial discount</span><strong>− ' + p + '</strong></span><span style="display:flex;justify-content:space-between;gap:18px;border-top:1px solid #dce5df;padding-top:12px"><strong>Due today</strong><strong style="color:#16a34a;font-size:22px">FREE</strong></span></span>';
+    return '<span style="display:grid;gap:8px;width:100%"><span style="display:flex;justify-content:space-between;gap:18px"><span>Monthly plan</span><strong>' + p + '</strong></span><span style="display:flex;justify-content:space-between;gap:18px"><span>' + Number(days) + '-day trial discount</span><strong>− ' + p + '</strong></span><span style="display:flex;justify-content:space-between;gap:18px;border-top:1px solid #dce5df;padding-top:12px"><strong>Due today</strong><strong style="color:#16a34a;font-size:22px">FREE</strong></span></span>';
   }
   function membershipConsent() { return 'By continuing, you agree to our <a href="/terms-and-conditions" target="_blank" rel="noopener">Terms &amp; Conditions</a>.'; }
 
@@ -107,18 +107,32 @@
       ':root[data-theme=dark] .ql-more-form select,:root[data-theme=dark] .ql-more-form textarea,:root[data-theme=dark] .ql-more-button{background:#111722;border-color:#2e3b4c;color:#d6dae5}',
       ':root[data-theme=dark] .ql-more-theme-options button[aria-pressed=true]{background:#1f2d44;border-color:#3a3fd8;color:#a9acf0}',
       '@media(max-width:640px){.ql-more-card{padding:16px;border-radius:16px}.ql-more-grid{grid-template-columns:1fr}.ql-more-row{align-items:flex-start;flex-direction:column}.ql-more-theme-options{width:100%}.ql-more-theme-options .ql-more-button{flex:1}.ql-more-profile-content{padding:20px}.ql-more-preset-grid{gap:8px}.ql-more-preset{font-size:22px}}',
-      '.ql-paywall-overlay{position:fixed;inset:0;z-index:100000;background:#f8fafc;overflow-y:auto;display:flex;flex-direction:column;animation:qlu-fade .2s ease;font-family:inherit;color:#0f172a}',
+      '.ql-paywall-overlay{position:fixed;inset:0;z-index:100000;background:#f8fafc;overflow:hidden;display:flex;flex-direction:column;animation:qlu-fade .2s ease;font-family:inherit;color:#0f172a}',
       ':root[data-theme=dark] .ql-paywall-overlay{background:#0b0f19;color:#f8fafc}',
-      '.ql-paywall-close{position:absolute;right:24px;top:24px;z-index:10;border:0;background:rgba(255,255,255,.18);color:#fff;border-radius:50%;width:42px;height:42px;font-size:26px;cursor:pointer;display:grid;place-items:center;transition:background .15s,transform .2s}',
+      '.ql-paywall-scroll{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain}',
+      '.ql-paywall-overlay [hidden]{display:none!important}',
+      '.ql-paywall-close{position:absolute;right:20px;top:16px;z-index:10;border:0;background:rgba(255,255,255,.18);color:#fff;border-radius:50%;width:42px;height:42px;font-size:26px;cursor:pointer;display:grid;place-items:center;transition:background .15s,transform .2s}',
       '.ql-paywall-close:hover{background:rgba(255,255,255,.32);transform:rotate(90deg)}',
-      '.ql-paywall-hero{background:linear-gradient(135deg,#0f172a 0%,#1e1b4b 60%,#312e81 100%);color:#fff;padding:52px 24px 44px;text-align:center;position:relative;overflow:hidden}',
+      '.ql-paywall-hero{background:linear-gradient(135deg,#0f172a 0%,#1e1b4b 60%,#312e81 100%);color:#fff;padding:20px 76px;text-align:center;flex-shrink:0;position:relative;overflow:hidden}',
       '.ql-paywall-hero::before{content:"";position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(251,191,36,.18) 0%,transparent 70%);pointer-events:none}',
       '.ql-paywall-hero-inner{max-width:680px;margin:0 auto;position:relative}',
-      '.ql-paywall-emblem{display:inline-flex;align-items:center;justify-content:center;margin-bottom:14px}',
+      '.ql-paywall-emblem{display:inline-flex;align-items:center;justify-content:center;margin-bottom:8px}',
       '.ql-paywall-pro-pill{padding:6px 18px;border-radius:999px;background:linear-gradient(135deg,#ffd36e,#f59e0b);color:#0f172a;font-size:13px;font-weight:900;letter-spacing:.1em;box-shadow:0 4px 20px rgba(245,158,11,.45)}',
-      '.ql-paywall-title{margin:0;font-size:32px;font-weight:800;letter-spacing:-.03em;color:#fff;line-height:1.2}',
-      '.ql-paywall-sub{margin:12px auto 0;max-width:540px;color:#cbd5e1;font-size:15.5px;line-height:1.55}',
-      '.ql-paywall-body{max-width:720px;margin:0 auto;padding:32px 20px 80px;width:100%;box-sizing:border-box;display:grid;gap:26px}',
+      '.ql-paywall-title{margin:0;font-size:24px;font-weight:800;letter-spacing:-.03em;color:#fff;line-height:1.2}',
+      '.ql-paywall-sub{margin:8px auto 0;max-width:540px;color:#cbd5e1;font-size:13px;line-height:1.55}',
+      '.ql-paywall-body{max-width:1120px;margin:0 auto;padding:24px;width:100%;box-sizing:border-box;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start;gap:24px}',
+      '.ql-paywall-checkout{display:grid;gap:18px;min-width:0}',
+      '.ql-paywall-features{min-width:0}',
+      '#ql-paywall-status,#ql-paywall-history-sec{grid-column:1/-1}',
+      '.ql-paywall-footer{flex-shrink:0;background:#fff;border-top:1px solid #e2e8f0;box-shadow:0 -8px 30px rgba(15,23,42,.06);padding:14px 24px max(14px,env(safe-area-inset-bottom));z-index:1}',
+      '.ql-paywall-footer-inner{max-width:1072px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;gap:12px 24px}',
+      '.ql-paywall-footer-total{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:13px;color:#64748b}',
+      '.ql-paywall-footer-total strong{font-size:22px;color:#0f172a}',
+      '.ql-paywall-footer-total small{flex-basis:100%;font-size:12px}',
+      '.ql-paywall-footer-legal{grid-column:1/-1;display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}',
+      ':root[data-theme=dark] .ql-paywall-footer{background:#111827;border-color:#334155}',
+      ':root[data-theme=dark] .ql-paywall-footer-total{color:#94a3b8}',
+      ':root[data-theme=dark] .ql-paywall-footer-total strong{color:#f8fafc}',
       '.ql-paywall-section-h{margin:0 0 14px;font-size:19px;font-weight:800;color:#0f172a;letter-spacing:-.01em}',
       ':root[data-theme=dark] .ql-paywall-section-h{color:#f8fafc}',
       '.ql-paywall-compare{background:#fff;border-radius:20px;border:1px solid #e2e8f0;padding:18px 22px;box-shadow:0 4px 16px rgba(15,23,42,.04)}',
@@ -132,16 +146,16 @@
       ':root[data-theme=dark] .ql-paywall-col-free{color:#94a3b8}',
       '.ql-paywall-col-pro{flex:2;text-align:center;color:#16a34a;font-weight:800}',
       '.ql-paywall-plans{display:grid;gap:12px}',
-      '.ql-paywall-plan{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:18px 22px;border:2px solid #e2e8f0;border-radius:18px;background:#fff;cursor:pointer;transition:border-color .15s,background .15s,transform .15s}',
+      '.ql-paywall-plan{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 16px;border:2px solid #e2e8f0;border-radius:18px;background:#fff;cursor:pointer;transition:border-color .15s,background .15s,transform .15s}',
       ':root[data-theme=dark] .ql-paywall-plan{background:#1e293b;border-color:#334155}',
       '.ql-paywall-plan:hover{border-color:#c7d2fe}',
       '.ql-paywall-plan.selected{border-color:#4f46e5;background:#f5f7ff}',
       ':root[data-theme=dark] .ql-paywall-plan.selected{background:#1e1b4b;border-color:#6366f1}',
-      '.ql-paywall-plan-left{display:flex;align-items:center;gap:14px}',
+      '.ql-paywall-plan-left{display:flex;align-items:center;gap:12px;min-width:0}',
       '.ql-paywall-radio{width:20px;height:20px;border-radius:50%;border:2px solid #cbd5e1;display:grid;place-items:center;flex-shrink:0}',
       '.ql-paywall-plan.selected .ql-paywall-radio{border-color:#4f46e5}',
       '.ql-paywall-plan.selected .ql-paywall-radio::after{content:"";width:10px;height:10px;border-radius:50%;background:#4f46e5}',
-      '.ql-paywall-plan-title{font-size:16px;font-weight:800;color:#0f172a;display:flex;align-items:center;gap:8px}',
+      '.ql-paywall-plan-title{font-size:16px;font-weight:800;color:#0f172a;display:flex;align-items:center;gap:8px;flex-wrap:wrap}',
       ':root[data-theme=dark] .ql-paywall-plan-title{color:#f8fafc}',
       '.ql-paywall-plan-sub{margin-top:4px;font-size:13px;color:#64748b}',
       ':root[data-theme=dark] .ql-paywall-plan-sub{color:#94a3b8}',
@@ -158,7 +172,10 @@
       '.ql-paywall-cta-btn:hover{transform:translateY(-2px);box-shadow:0 15px 30px -5px rgba(245,158,11,.55)}',
       '.ql-paywall-cta-btn:disabled{opacity:.65;cursor:not-allowed;transform:none}',
       '.ql-paywall-footer-note{text-align:center;font-size:12.5px;color:#64748b;margin:0}',
-      ':root[data-theme=dark] .ql-paywall-footer-note{color:#94a3b8}'
+      ':root[data-theme=dark] .ql-paywall-footer-note{color:#94a3b8}',
+      '.ql-paywall-plan:focus-visible,.ql-paywall-cta-btn:focus-visible,.ql-paywall-close:focus-visible{outline:3px solid #818cf8;outline-offset:3px}',
+      '@media(max-width:767px){.ql-paywall-body{grid-template-columns:minmax(0,1fr);padding:20px;gap:22px}.ql-paywall-checkout{grid-row:1}.ql-paywall-hero{padding:18px 64px}.ql-paywall-title{font-size:20px}.ql-paywall-sub{display:none}.ql-paywall-footer{padding:12px 16px max(12px,env(safe-area-inset-bottom))}.ql-paywall-footer-inner{grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:10px 14px}.ql-paywall-footer-legal{justify-content:center}.ql-paywall-footer-note{font-size:11px}.ql-paywall-cta-btn{padding:15px 12px;font-size:15px}.ql-paywall-footer-total strong{font-size:20px}.ql-paywall-footer-total small{font-size:11px}}',
+      '@media(max-width:380px){.ql-paywall-body{padding:16px}.ql-paywall-plan{padding:12px;gap:8px}.ql-paywall-plan-left{gap:8px}.ql-paywall-plan-title{font-size:15px}.ql-paywall-plan-price{font-size:16px}.ql-paywall-rec{font-size:9px;padding:3px 6px}.ql-paywall-compare{padding:14px}.ql-paywall-row{font-size:12px}.ql-paywall-trial-box{padding:14px}.ql-paywall-footer-inner{column-gap:8px}.ql-paywall-footer-total{gap:5px}.ql-paywall-cta-btn{font-size:14px}}'
     ].join('');
     document.head.appendChild(style);
   }
@@ -354,6 +371,7 @@
     overlay.setAttribute('aria-label', 'Quiz LAB Pro');
 
     overlay.innerHTML = [
+      '<div class="ql-paywall-scroll">',
       '<div class="ql-paywall-hero">',
       '  <button class="ql-paywall-close" type="button" aria-label="Close">&times;</button>',
       '  <div class="ql-paywall-hero-inner">',
@@ -364,7 +382,7 @@
       '</div>',
       '<div class="ql-paywall-body">',
       '  <div id="ql-paywall-status" hidden></div>',
-      '  <div>',
+      '  <div class="ql-paywall-features">',
       '    <h2 class="ql-paywall-section-h">Everything in Pro</h2>',
       '    <div class="ql-paywall-compare">',
       '      <div class="ql-paywall-row" style="font-weight:700;border-bottom:1px solid #e2e8f0;padding-bottom:10px;">',
@@ -394,6 +412,7 @@
       '      </div>',
       '    </div>',
       '  </div>',
+      '  <div class="ql-paywall-checkout" id="ql-paywall-checkout">',
       '  <div id="ql-paywall-plans-container">',
       '    <h2 class="ql-paywall-section-h">Choose your plan</h2>',
       '    <div class="ql-paywall-plans" role="radiogroup" aria-label="Choose your Pro plan">',
@@ -424,15 +443,20 @@
       '    <p id="ql-paywall-trial-copy">Pro starts today. First charge after 7 days, then ₹99/month.</p>',
       '    <small>Cancel before the first charge date to avoid subscription charges. Razorpay confirms the exact billing time; your bank may require an authorisation payment.</small>',
       '  </div>',
-      '  <div style="display:grid;gap:12px;">',
-      '    <button type="button" class="ql-paywall-cta-btn" id="ql-paywall-cta">Try for free</button>',
-      '    <p class="ql-paywall-footer-note">Cancel renewal any time. Powered by Razorpay.</p><p class="ql-paywall-footer-note">By continuing, you agree to our <a href="/terms-and-conditions" target="_blank" rel="noopener">Terms &amp; Conditions</a>.</p>',
       '  </div>',
       '  <div id="ql-paywall-history-sec" style="margin-top:10px;">',
       '    <button type="button" class="ql-more-button" id="ql-paywall-history-btn" style="width:100%;text-align:center;padding:12px;">View membership &amp; transactions</button>',
       '    <div id="ql-paywall-history" hidden style="margin-top:16px;background:#fff;border:1px solid #e2e8f0;border-radius:18px;padding:18px;"></div>',
       '  </div>',
-      '</div>'
+      '</div>',
+      '</div>',
+      '<footer class="ql-paywall-footer" id="ql-paywall-footer">',
+      '  <div class="ql-paywall-footer-inner">',
+      '    <div class="ql-paywall-footer-total" aria-live="polite"><span>Due today</span><strong id="ql-paywall-due">—</strong><small id="ql-paywall-billing-note">Loading plan…</small></div>',
+      '    <button type="button" class="ql-paywall-cta-btn" id="ql-paywall-cta" disabled>Loading plan…</button>',
+      '    <div class="ql-paywall-footer-legal"><p class="ql-paywall-footer-note">Cancel renewal any time. Powered by Razorpay.</p><p class="ql-paywall-footer-note">By continuing, you agree to our <a href="/terms-and-conditions" target="_blank" rel="noopener">Terms &amp; Conditions</a>.</p></div>',
+      '  </div>',
+      '</footer>'
     ].join('\n');
 
     document.body.appendChild(overlay);
@@ -457,6 +481,10 @@
     var planAnnual = overlay.querySelector('#ql-paywall-plan-annual');
     var trialBox = overlay.querySelector('#ql-paywall-trial-box');
     var cta = overlay.querySelector('#ql-paywall-cta');
+    var footer = overlay.querySelector('#ql-paywall-footer');
+    var checkout = overlay.querySelector('#ql-paywall-checkout');
+    var due = overlay.querySelector('#ql-paywall-due');
+    var billingNote = overlay.querySelector('#ql-paywall-billing-note');
     var statusCard = overlay.querySelector('#ql-paywall-status');
     var plansContainer = overlay.querySelector('#ql-paywall-plans-container');
     var monthlySub = overlay.querySelector('#ql-paywall-monthly-sub');
@@ -481,6 +509,10 @@
 
       monthlyPrice.textContent = mPrice + '/mo';
       annualPrice.textContent = aPrice + '/yr';
+      footer.hidden = pro;
+      checkout.hidden = pro;
+      due.textContent = trial ? 'FREE' : (isYearly ? aPrice : mPrice);
+      billingNote.textContent = trial ? days + '-day trial, then ' + mPrice + '/month' : (isYearly ? 'Yearly plan · billed yearly' : 'Monthly plan · billed monthly');
 
       if (pro) {
         statusCard.hidden = false;
@@ -539,6 +571,11 @@
 
     planMonthly.addEventListener('click', function () { selectedPeriod = 'monthly'; renderPaywall(); });
     planAnnual.addEventListener('click', function () { selectedPeriod = 'annual'; renderPaywall(); });
+    [planMonthly, planAnnual].forEach(function (plan) {
+      plan.addEventListener('keydown', function (event) {
+        if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); plan.click(); }
+      });
+    });
 
     cta.addEventListener('click', function () {
       cta.disabled = true;
@@ -575,6 +612,7 @@
     function loadData() {
       api('/membership').then(function (res) {
         currentData = res;
+        cta.disabled = false;
         renderPaywall();
       }).catch(function (err) {
         trialBox.hidden = false;
