@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:genz_exam_mobile/api/api.dart';
+import 'package:genz_exam_mobile/api/rewards_service.dart';
 import 'package:genz_exam_mobile/screens/student/daily_rewards_screen.dart';
 
 void main() {
@@ -15,6 +16,7 @@ void main() {
   late List<Map<String, dynamic>> rewards;
   late int remaining;
   late bool revealed;
+  late bool loadUnavailable;
 
   setUp(() {
     FlutterSecureStorage.setMockInitialValues({'auth_token': 'native-session'});
@@ -22,6 +24,7 @@ void main() {
     rewards = [];
     remaining = 1;
     revealed = false;
+    loadUnavailable = false;
     spin = Completer<Map<String, dynamic>>();
     client = ApiClient(
       additionalInterceptors: [
@@ -29,6 +32,20 @@ void main() {
           onRequest: (request, handler) async {
             expect(request.headers['Authorization'], 'Bearer native-session');
             if (request.method == 'GET') {
+              if (loadUnavailable) {
+                handler.reject(
+                  DioException(
+                    requestOptions: request,
+                    type: DioExceptionType.badResponse,
+                    response: Response(
+                      requestOptions: request,
+                      statusCode: 404,
+                      data: {'message': 'The route could not be found.'},
+                    ),
+                  ),
+                );
+                return;
+              }
               handler.resolve(
                 Response(
                   requestOptions: request,
@@ -147,6 +164,96 @@ void main() {
   );
 
   testWidgets(
+    'missing rewards API disables spinning until a successful retry',
+    (tester) async {
+      loadUnavailable = true;
+      await mount(tester);
+      expect(find.textContaining('unavailable on the server'), findsOneWidget);
+      expect(
+        tester
+            .widget<FilledButton>(
+              find.widgetWithText(
+                FilledButton,
+                'Rewards unavailable · Try again',
+              ),
+            )
+            .onPressed,
+        isNull,
+      );
+      expect(writes, isEmpty);
+      loadUnavailable = false;
+      await tester.tap(find.text('Try again'));
+      await tester.pumpAndSettle();
+      expect(
+        tester
+            .widget<FilledButton>(
+              find.widgetWithText(FilledButton, 'Spin now · Free daily spin'),
+            )
+            .onPressed,
+        isNotNull,
+      );
+    },
+  );
+
+  testWidgets('reward rules expand without a ListTile material assertion', (
+    tester,
+  ) async {
+    await mount(tester);
+    await tester.ensureVisible(find.text('Rules and Conditions'));
+    await tester.tap(find.text('Rules and Conditions'));
+    await tester.pumpAndSettle();
+    expect(
+      find.textContaining('Daily Free Spin Allowance', findRichText: true),
+      findsOneWidget,
+    );
+    expect(tester.takeException(), isNull);
+  });
+
+  test(
+    'missing server endpoints never generate rewards or claim Pro locally',
+    () async {
+      final requests = <RequestOptions>[];
+      final unavailableClient = ApiClient(
+        additionalInterceptors: [
+          InterceptorsWrapper(
+            onRequest: (request, handler) {
+              requests.add(request);
+              handler.reject(
+                DioException(
+                  requestOptions: request,
+                  type: DioExceptionType.badResponse,
+                  response: Response(
+                    requestOptions: request,
+                    statusCode: 404,
+                    data: {'message': 'The route could not be found.'},
+                  ),
+                ),
+              );
+            },
+          ),
+        ],
+      );
+      final service = RewardsService(unavailableClient);
+      await expectLater(service.load(), throwsA(isA<ApiException>()));
+      await expectLater(service.spin(), throwsA(isA<ApiException>()));
+      await expectLater(
+        service.reveal('server-reward'),
+        throwsA(isA<ApiException>()),
+      );
+      await expectLater(
+        service.claimPro('server-reward'),
+        throwsA(isA<ApiException>()),
+      );
+      expect(requests.map((r) => r.path), [
+        '/student/rewards',
+        '/student/rewards/spin',
+        '/student/rewards/scratch',
+        '/student/rewards/claim-pro',
+      ]);
+    },
+  );
+
+  testWidgets(
     'failed spin cannot be repeated until rewards have been refreshed',
     (tester) async {
       await mount(tester);
@@ -160,7 +267,7 @@ void main() {
       expect(
         tester
             .widget<FilledButton>(
-              find.widgetWithText(FilledButton, 'Spin now · Free daily spin'),
+              find.widgetWithText(FilledButton, 'Rewards unavailable · Try again'),
             )
             .onPressed,
         isNull,

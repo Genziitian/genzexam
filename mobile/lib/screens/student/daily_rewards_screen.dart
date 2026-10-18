@@ -104,10 +104,11 @@ class _DailyRewardsScreenState extends State<DailyRewardsScreen>
         _needsRefresh = false;
         _loading = false;
       });
-    } catch (_) {
+    } catch (e) {
       if (mounted) {
         setState(() {
-          _data = _data ?? const RewardsSnapshot(remaining: 1, rewards: []);
+          _error = e;
+          _needsRefresh = true;
           _loading = false;
         });
       }
@@ -613,7 +614,7 @@ class _DailyRewardsScreenState extends State<DailyRewardsScreen>
                           onPressed: () {
                             setState(() {
                               _error = null;
-                              _needsRefresh = false;
+                              _loading = true;
                             });
                             _load();
                           },
@@ -698,6 +699,8 @@ class _DailyRewardsScreenState extends State<DailyRewardsScreen>
                               label: Text(
                                 _busy
                                     ? 'Spinning…'
+                                    : _needsRefresh
+                                    ? 'Rewards unavailable · Try again'
                                     : (_data?.remaining ?? 0) <= 0
                                     ? '✓ Spun Today · Come Back Tomorrow'
                                     : 'Spin now · Free daily spin',

@@ -1,8 +1,4 @@
-import 'dart:convert';
-import 'dart:math' as math;
-
 import 'package:dio/dio.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 import 'api_client.dart';
 import 'api_exceptions.dart';
@@ -46,10 +42,7 @@ class RewardItem {
     'is_expired': expired,
   };
 
-  RewardItem copyWith({
-    bool? scratched,
-    bool? claimed,
-  }) => RewardItem(
+  RewardItem copyWith({bool? scratched, bool? claimed}) => RewardItem(
     id: id,
     type: type,
     title: title,
@@ -135,73 +128,94 @@ class WheelPrizeDef {
 }
 
 const wheelPrizes = [
-  WheelPrizeDef(segment: 0, title: '5% OFF (Upto ₹50)', sub: '5% Discount', type: 'coupon_pct', codePrefix: 'GENZ5-', weight: 18),
-  WheelPrizeDef(segment: 1, title: '30 Days Free Pro', sub: 'Jackpot', type: 'free_pro', codePrefix: '', weight: 8),
-  WheelPrizeDef(segment: 2, title: '₹50 OFF Coupon', sub: 'Coupon', type: 'coupon_flat', codePrefix: 'GENZ50-', weight: 10),
-  WheelPrizeDef(segment: 3, title: 'Better Luck Next Time', sub: 'Tomorrow', type: 'try_again', codePrefix: '', weight: 9),
-  WheelPrizeDef(segment: 4, title: '25% OFF Coupon', sub: 'Mega Deal', type: 'coupon_pct', codePrefix: 'GENZ25-', weight: 8),
-  WheelPrizeDef(segment: 5, title: '1 Free Extra Spin', sub: 'Extra Spin', type: 'free_spin', codePrefix: '', weight: 10),
-  WheelPrizeDef(segment: 6, title: '₹100 OFF Coupon', sub: 'Discount', type: 'coupon_flat', codePrefix: 'GENZ100-', weight: 5),
-  WheelPrizeDef(segment: 7, title: '+50 Study XP Boost', sub: 'Study Boost', type: 'bonus_xp', codePrefix: '', weight: 12),
-  WheelPrizeDef(segment: 8, title: 'Free Test Yourself Paper', sub: '1 Test Pass', type: 'free_test', codePrefix: 'TEST1-', weight: 10),
-  WheelPrizeDef(segment: 9, title: 'Free Paper Upload Pass', sub: 'Paper Pass', type: 'free_paper_upload', codePrefix: 'UPLOAD1-', weight: 10),
+  WheelPrizeDef(
+    segment: 0,
+    title: '5% OFF (Upto ₹50)',
+    sub: '5% Discount',
+    type: 'coupon_pct',
+    codePrefix: 'GENZ5-',
+    weight: 18,
+  ),
+  WheelPrizeDef(
+    segment: 1,
+    title: '30 Days Free Pro',
+    sub: 'Jackpot',
+    type: 'free_pro',
+    codePrefix: '',
+    weight: 8,
+  ),
+  WheelPrizeDef(
+    segment: 2,
+    title: '₹50 OFF Coupon',
+    sub: 'Coupon',
+    type: 'coupon_flat',
+    codePrefix: 'GENZ50-',
+    weight: 10,
+  ),
+  WheelPrizeDef(
+    segment: 3,
+    title: 'Better Luck Next Time',
+    sub: 'Tomorrow',
+    type: 'try_again',
+    codePrefix: '',
+    weight: 9,
+  ),
+  WheelPrizeDef(
+    segment: 4,
+    title: '25% OFF Coupon',
+    sub: 'Mega Deal',
+    type: 'coupon_pct',
+    codePrefix: 'GENZ25-',
+    weight: 8,
+  ),
+  WheelPrizeDef(
+    segment: 5,
+    title: '1 Free Extra Spin',
+    sub: 'Extra Spin',
+    type: 'free_spin',
+    codePrefix: '',
+    weight: 10,
+  ),
+  WheelPrizeDef(
+    segment: 6,
+    title: '₹100 OFF Coupon',
+    sub: 'Discount',
+    type: 'coupon_flat',
+    codePrefix: 'GENZ100-',
+    weight: 5,
+  ),
+  WheelPrizeDef(
+    segment: 7,
+    title: '+50 Study XP Boost',
+    sub: 'Study Boost',
+    type: 'bonus_xp',
+    codePrefix: '',
+    weight: 12,
+  ),
+  WheelPrizeDef(
+    segment: 8,
+    title: 'Free Test Yourself Paper',
+    sub: '1 Test Pass',
+    type: 'free_test',
+    codePrefix: 'TEST1-',
+    weight: 10,
+  ),
+  WheelPrizeDef(
+    segment: 9,
+    title: 'Free Paper Upload Pass',
+    sub: 'Paper Pass',
+    type: 'free_paper_upload',
+    codePrefix: 'UPLOAD1-',
+    weight: 10,
+  ),
 ];
 
 class RewardsService {
   final ApiClient client;
-  final FlutterSecureStorage storage;
 
-  RewardsService(this.client, [FlutterSecureStorage? storage])
-      : storage = storage ?? const FlutterSecureStorage();
-
-  static const String _cacheKey = 'ql_rewards_cache_v1';
-  static const String _lastSpinKey = 'ql_rewards_last_spin_date';
-
-  static String todayIst() {
-    final ist = DateTime.now().toUtc().add(const Duration(hours: 5, minutes: 30));
-    return '${ist.year}-${ist.month.toString().padLeft(2, '0')}-${ist.day.toString().padLeft(2, '0')}';
-  }
+  RewardsService(this.client);
 
   Options get _options => Options(extra: {'loadingBlocking': false});
-
-  Future<RewardsSnapshot> _readLocalSnapshot() async {
-    final lastDate = await storage.read(key: _lastSpinKey) ?? '';
-    final remaining = (lastDate == todayIst()) ? 0 : 1;
-    final jsonStr = await storage.read(key: _cacheKey);
-    List<RewardItem> rewards = [];
-    if (jsonStr != null && jsonStr.isNotEmpty) {
-      try {
-        final list = jsonDecode(jsonStr) as List;
-        rewards = list.map((item) => RewardItem.fromJson(Map<String, dynamic>.from(item as Map))).toList();
-      } catch (_) {}
-    }
-    return RewardsSnapshot(remaining: remaining, rewards: rewards);
-  }
-
-  Future<void> _writeLocalRewards(List<RewardItem> rewards) async {
-    try {
-      await storage.write(key: _cacheKey, value: jsonEncode(rewards.map((r) => r.toJson()).toList()));
-    } catch (_) {}
-  }
-
-  bool _isFallbackError(Object e) {
-    if (e is ApiException) {
-      final code = e.statusCode;
-      if (code == 404 || code == 403 || e.isSecurityChallenge) return true;
-      if (e.message.contains('timed out') ||
-          e.message.contains('Unable to connect') ||
-          e.message.contains('could not be found')) {
-        return true;
-      }
-    }
-    if (e is DioException) {
-      final code = e.response?.statusCode;
-      if (code == 404 || code == 403) return true;
-      if (e.type == DioExceptionType.connectionError ||
-          e.type == DioExceptionType.connectionTimeout) return true;
-    }
-    return false;
-  }
 
   Future<RewardsSnapshot> load() async {
     try {
@@ -209,116 +223,42 @@ class RewardsService {
         '/student/rewards',
         options: _options,
       );
-      final snapshot = RewardsSnapshot.fromJson(res.data!);
-      await _writeLocalRewards(snapshot.rewards);
-      if (snapshot.remaining == 0) {
-        await storage.write(key: _lastSpinKey, value: todayIst());
-      }
-      return snapshot;
-    } catch (e) {
-      if (_isFallbackError(e)) {
-        return await _readLocalSnapshot();
+      return RewardsSnapshot.fromJson(res.data!);
+    } on ApiException catch (e) {
+      if (e.statusCode == 404) {
+        throw const ApiException(
+          message: 'Daily Rewards is unavailable on the server. Please try again later.',
+          statusCode: 404,
+        );
       }
       rethrow;
     }
   }
 
-  // Never retry writes: the server may already have awarded the prize.
+  // Never retry writes or invent local prizes: the server owns every award.
   Future<RewardSpinResult> spin() async {
-    try {
-      final res = await client.post<Map<String, dynamic>>(
-        '/student/rewards/spin',
-        options: _options,
-      );
-      final result = RewardSpinResult.fromJson(res.data!);
-      if (result.remaining == 0) {
-        await storage.write(key: _lastSpinKey, value: todayIst());
-      }
-      if (result.reward != null) {
-        final local = await _readLocalSnapshot();
-        await _writeLocalRewards([result.reward!, ...local.rewards]);
-      }
-      return result;
-    } catch (e) {
-      if (!_isFallbackError(e)) rethrow;
-      // Local fallback spin
-      final local = await _readLocalSnapshot();
-      if (local.remaining <= 0) {
-        throw const ApiException(message: 'Already spun today. Come back tomorrow after midnight IST.');
-      }
-      final rand = math.Random();
-      final roll = rand.nextInt(100) + 1;
-      int cumulative = 0;
-      WheelPrizeDef chosen = wheelPrizes.first;
-      for (final p in wheelPrizes) {
-        cumulative += p.weight;
-        if (roll <= cumulative) {
-          chosen = p;
-          break;
-        }
-      }
-
-      RewardItem? reward;
-      if (chosen.type != 'try_again' && chosen.type != 'free_spin') {
-        const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
-        final suffix = List.generate(6, (_) => chars[rand.nextInt(chars.length)]).join();
-        final code = chosen.codePrefix.isNotEmpty ? '${chosen.codePrefix}$suffix' : null;
-        reward = RewardItem(
-          id: 'local_${DateTime.now().millisecondsSinceEpoch}',
-          type: chosen.type,
-          title: chosen.title,
-          code: code,
-          expiresAt: DateTime.now().add(const Duration(days: 7)),
-          scratched: false,
-          claimed: false,
-          expired: false,
-        );
-        await _writeLocalRewards([reward, ...local.rewards]);
-      }
-
-      final remaining = (chosen.type == 'free_spin') ? 1 : 0;
-      if (remaining == 0) {
-        await storage.write(key: _lastSpinKey, value: todayIst());
-      }
-      return RewardSpinResult(
-        segment: chosen.segment,
-        remaining: remaining,
-        title: chosen.title,
-        reward: reward,
-      );
-    }
+    final res = await client.post<Map<String, dynamic>>(
+      '/student/rewards/spin',
+      options: _options,
+    );
+    return RewardSpinResult.fromJson(res.data!);
   }
 
   Future<void> reveal(String id) async {
-    try {
-      await client.post<Map<String, dynamic>>(
-        '/student/rewards/scratch',
-        data: {'id': id},
-        options: _options,
-      );
-    } catch (_) {}
-    final local = await _readLocalSnapshot();
-    final updated = local.rewards.map((r) => r.id == id ? r.copyWith(scratched: true) : r).toList();
-    await _writeLocalRewards(updated);
+    await client.post<Map<String, dynamic>>(
+      '/student/rewards/scratch',
+      data: {'id': id},
+      options: _options,
+    );
   }
 
   Future<String> claimPro(String id) async {
-    try {
-      final res = await client.post<Map<String, dynamic>>(
-        '/student/rewards/claim-pro',
-        data: {'id': id},
-        options: _options,
-      );
-      final local = await _readLocalSnapshot();
-      final updated = local.rewards.map((r) => r.id == id ? r.copyWith(claimed: true) : r).toList();
-      await _writeLocalRewards(updated);
-      return res.data?['message'] as String? ?? '30 Days Pro activated successfully!';
-    } catch (_) {
-      final local = await _readLocalSnapshot();
-      final updated = local.rewards.map((r) => r.id == id ? r.copyWith(claimed: true) : r).toList();
-      await _writeLocalRewards(updated);
-      return '30 Days Pro activated on your account!';
-    }
+    final res = await client.post<Map<String, dynamic>>(
+      '/student/rewards/claim-pro',
+      data: {'id': id},
+      options: _options,
+    );
+    return res.data?['message'] as String? ??
+        '30 Days Pro activated successfully!';
   }
 }
-

@@ -287,6 +287,18 @@ class _StudentMainShellState extends State<StudentMainShell> {
     );
   }
 
+  void _openDailyRewards() {
+    AppHaptics.selection();
+    Navigator.of(context).push<void>(
+      MaterialPageRoute<void>(
+        builder: (_) => DailyRewardsScreen(
+          apiClient: widget.authState.client,
+          onAccountChanged: () => widget.authState.refreshAccount(),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return AppKeyboardDismiss(
