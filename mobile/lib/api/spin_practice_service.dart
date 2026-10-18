@@ -37,9 +37,48 @@ class GeneratedPracticePaper {
   }
 }
 
+class SpinPracticeQuota {
+  final bool isPro;
+  final int limit;
+  final int used;
+  final int remaining;
+
+  const SpinPracticeQuota({
+    required this.isPro,
+    required this.limit,
+    required this.used,
+    required this.remaining,
+  });
+
+  factory SpinPracticeQuota.fromJson(Map<String, dynamic> json) {
+    return SpinPracticeQuota(
+      isPro: json['is_pro'] == true,
+      limit: (json['limit'] as num?)?.toInt() ?? 1,
+      used: (json['used'] as num?)?.toInt() ?? 0,
+      remaining: (json['remaining'] as num?)?.toInt() ?? 0,
+    );
+  }
+}
+
 class SpinPracticeService {
   final ApiClient client;
   SpinPracticeService({required this.client});
+
+  Future<SpinPracticeQuota?> getQuota() async {
+    try {
+      final response = await client.get<Map<String, dynamic>>(
+        '/student/spin-practice/quota',
+        options: Options(extra: {'loadingBlocking': false}),
+      );
+      final raw = response.data?['quota'];
+      if (raw is Map) {
+        return SpinPracticeQuota.fromJson(Map<String, dynamic>.from(raw));
+      }
+      return null;
+    } catch (_) {
+      return null;
+    }
+  }
 
   Future<GeneratedPracticePaper> generate({
     required int courseId,

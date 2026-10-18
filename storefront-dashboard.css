@@ -771,8 +771,10 @@ html[data-ql-vs-locked] #root main>*:not(#ql-vs-soon){display:none!important}
 @media(prefers-reduced-motion:reduce){.ql-spin-main-btn{transition:none}}
 
 /* Practice explanation: shared header row and accessible native dialog. */
-.ql-spin-heading-row{display:flex;align-items:center;gap:20px}
-.ql-spin-help-button{flex-shrink:0;min-height:42px;padding:10px 14px;border:1px solid var(--spin-line);border-radius:12px;background:var(--spin-card);color:var(--spin-ink);font:inherit;font-size:13px;font-weight:650;cursor:pointer}
+.ql-spin-heading-row{display:flex;align-items:center;gap:14px}
+.ql-spin-help-button{flex-shrink:0;min-height:32px;padding:5px 12px;border:1px solid var(--spin-line);border-radius:9px;background:var(--spin-card);color:var(--spin-ink);font:inherit;font-size:12px;font-weight:600;cursor:pointer}
+.ql-spin-main-btn.ql-spin-upgrade-btn{background:linear-gradient(135deg,#b45309,#d97706);color:#fff;border:none;box-shadow:0 4px 14px rgba(217,119,6,.35);cursor:pointer}
+.ql-spin-main-btn.ql-spin-upgrade-btn:hover{background:linear-gradient(135deg,#92400e,#b45309)}
 .ql-spin-help-button:hover{border-color:var(--spin-accent);color:var(--spin-accent)}
 .ql-spin-help-button:focus-visible,.ql-spin-help-close:focus-visible,.ql-spin-help-done:focus-visible{outline:3px solid var(--spin-accent);outline-offset:3px}
 .ql-spin-help-dialog{width:440px;max-width:calc(100vw - 32px);max-height:calc(100dvh - 40px);margin:auto;padding:0;overflow:auto;border:1px solid var(--spin-line);border-radius:24px;background:var(--spin-card);color:var(--spin-ink);box-shadow:0 28px 90px #032c2033;font-family:inherit}

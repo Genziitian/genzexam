@@ -31,6 +31,20 @@ void main() {
                   ],
                 ),
               );
+            } else if (request.path == '/student/spin-practice/quota') {
+              handler.resolve(
+                Response(
+                  requestOptions: request,
+                  data: {
+                    'quota': {
+                      'is_pro': false,
+                      'limit': 1,
+                      'used': 0,
+                      'remaining': 1,
+                    },
+                  },
+                ),
+              );
             } else {
               generated.add(request);
               final result = await response.future;
@@ -84,7 +98,7 @@ void main() {
   }
 
   Future<void> tapVisible(WidgetTester tester, String label) async {
-    final finder = find.text(label);
+    final finder = find.textContaining(label);
     await tester.scrollUntilVisible(
       finder,
       250,
@@ -228,7 +242,7 @@ void main() {
       expect(find.text('No questions found for these weeks.'), findsOneWidget);
       expect(find.text('Start practice'), findsNothing);
       final button = tester.widget<FilledButton>(
-        find.widgetWithText(FilledButton, 'Spin the wheel'),
+        find.widgetWithText(FilledButton, 'Spin the wheel · 1 free spin left'),
       );
       expect(button.onPressed, isNotNull);
       expect(tester.takeException(), isNull);
@@ -251,7 +265,7 @@ void main() {
     expect(find.text('Second private revision'), findsOneWidget);
     expect(tester.widget<OutlinedButton>(find.widgetWithText(OutlinedButton, 'Spin again')).onPressed, isNull);
     await tester.tap(find.byTooltip('Close')); await tester.pumpAndSettle();
-    expect(find.text('Daily spins used'), findsOneWidget);
+    expect(find.text('Get 7 spins/day in PRO · Get now'), findsOneWidget);
     expect(tester.takeException(), isNull);
   });
 

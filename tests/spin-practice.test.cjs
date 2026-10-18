@@ -58,7 +58,7 @@ assert.ok(
 );
 
 const spinSource = appEnhancements.slice(appEnhancements.indexOf('  function fillTryPractice() {'), appEnhancements.indexOf('   * Practice: paid papers'));
-assert.ok(spinSource.includes('Get random 10 question'), 'Use the requested concise subtitle');
+assert.ok(spinSource.includes('Generate 10 random question'), 'Use the requested concise subtitle');
 assert.ok(!spinSource.includes('ql-spin-preset-btn'), 'Week preset buttons are removed');
 assert.ok(!spinSource.includes('ql-spin-time-btn') && !spinSource.includes('time_limit_minutes:'), 'Time is chosen in the paper room');
 assert.ok(spinSource.includes('value="quiz1"') && spinSource.includes('value="mock_test"'), 'Expose individual paper types for multiple selection');

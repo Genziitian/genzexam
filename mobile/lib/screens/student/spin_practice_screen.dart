@@ -6,6 +6,7 @@ import '../../api/api.dart';
 import '../../api/spin_practice_service.dart';
 import 'native_paper_room.dart';
 import 'premium_practice_wheel.dart';
+import 'pro_membership_card.dart';
 
 class SpinPracticeScreen extends StatefulWidget {
   final ApiClient apiClient;
@@ -38,6 +39,8 @@ class _SpinPracticeScreenState extends State<SpinPracticeScreen>
   bool _busy = false;
   bool _restoring = false;
   int? _remaining;
+  int? _limit;
+  bool _isPro = false;
   String? _loadError;
   String? _error;
   GeneratedPracticePaper? _paper;
@@ -45,7 +48,19 @@ class _SpinPracticeScreenState extends State<SpinPracticeScreen>
   @override
   void initState() {
     super.initState();
+    _isPro = widget.user?.isPro == true;
     _loadCourses();
+    _loadQuota();
+  }
+
+  Future<void> _loadQuota() async {
+    final quota = await SpinPracticeService(client: widget.apiClient).getQuota();
+    if (!mounted || quota == null) return;
+    setState(() {
+      _isPro = quota.isPro;
+      _remaining = quota.remaining;
+      _limit = quota.limit;
+    });
   }
 
   @override
@@ -129,7 +144,11 @@ class _SpinPracticeScreenState extends State<SpinPracticeScreen>
       if (!mounted) return;
       if (error is ApiException && error.rawData is Map) {
         final quota = (error.rawData as Map)['quota'];
-        if (quota is Map) _remaining = (quota['remaining'] as num?)?.toInt();
+        if (quota is Map) {
+          _remaining = (quota['remaining'] as num?)?.toInt();
+          _limit = (quota['limit'] as num?)?.toInt();
+          if (quota['is_pro'] is bool) _isPro = quota['is_pro'] as bool;
+        }
       }
       setState(
         () => _error = error is ApiException
@@ -158,7 +177,7 @@ class _SpinPracticeScreenState extends State<SpinPracticeScreen>
       scrollable: true,
       title: _dialogTitle(dialog, 'How it works'),
       content: const Text(
-        '1. Choose your course and week range.\n\n2. Pick one, several, or all paper types. Naming the paper is optional.\n\n3. Spin for up to 10 random questions from matching papers.\n\n4. Choose your time when you open it. The paper stays in My Papers.\n\n1 free spin daily, up to 7 with Pro. Resets at midnight IST. No upload tokens used. Papers are private and cannot be shared.',
+        '1. Choose your course and week range.\n\n2. Pick one, several, or all paper types. Naming the paper is optional.\n\n3. Spin for up to 10 random questions from matching papers.\n\n4. Choose your time when you open it. The paper stays in My Papers.\n\n1 free spin daily, up to 7 with Pro. Resets at midnight IST. Papers auto-delete after 30 days. No upload tokens used. Papers are private and cannot be shared.',
       ),
       actions: [
         FilledButton(
@@ -222,7 +241,7 @@ class _SpinPracticeScreenState extends State<SpinPracticeScreen>
               _paperDetail('Spins left today', '$_remaining'),
             const SizedBox(height: 16),
             const Text(
-              'Private test, saved in My Papers. Only you can open it. Choose your time when you start.',
+              'Private test, saved in My Papers. Kept for 30 days. Only you can open it. Choose your time when you start.',
             ),
           ],
         ),
@@ -506,71 +525,108 @@ class _SpinPracticeScreenState extends State<SpinPracticeScreen>
     child: Text(text, style: const TextStyle(fontWeight: FontWeight.w700)),
   );
 
-  Widget _footer(ColorScheme scheme) => Container(
-    decoration: BoxDecoration(
-      color: scheme.surface,
-      border: Border(
-        top: BorderSide(color: scheme.outlineVariant.withValues(alpha: 0.35)),
+  Widget _footer(ColorScheme scheme) {
+    final isUpgrade = !_isPro && _remaining == 0;
+    final isProExhausted = _isPro && _remaining == 0;
+    final isDisabled = _busy || _restoring || isProExhausted;
+
+    String label;
+    if (_busy) {
+      label = 'Creating paper…';
+    } else if (_remaining == null) {
+      label = 'Spin the wheel';
+    } else if (!_isPro) {
+      if (_remaining! > 0) {
+        label = 'Spin the wheel · 1 free spin left';
+      } else {
+        label = 'Get 7 spins/day in PRO · Get now';
+      }
+    } else {
+      if (_remaining! > 0) {
+        label = 'Spin the wheel · $_remaining/${_limit ?? 7} spins left';
+      } else {
+        label = '0/${_limit ?? 7} spins left today';
+      }
+    }
+
+    return Container(
+      decoration: BoxDecoration(
+        color: scheme.surface,
+        border: Border(
+          top: BorderSide(color: scheme.outlineVariant.withValues(alpha: 0.35)),
+        ),
       ),
-    ),
-    child: SafeArea(
-      top: false,
-      minimum: const EdgeInsets.fromLTRB(20, 12, 20, 16),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          if (_error != null)
-            Padding(
-              padding: const EdgeInsets.only(bottom: 10),
-              child: Semantics(
-                liveRegion: true,
-                child: Text(
-                  _error!,
-                  maxLines: 3,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(color: scheme.error, fontSize: 12),
+      child: SafeArea(
+        top: false,
+        minimum: const EdgeInsets.fromLTRB(20, 12, 20, 16),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            if (_error != null)
+              Padding(
+                padding: const EdgeInsets.only(bottom: 10),
+                child: Semantics(
+                  liveRegion: true,
+                  child: Text(
+                    _error!,
+                    maxLines: 3,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(color: scheme.error, fontSize: 12),
+                  ),
                 ),
               ),
-            ),
-          FilledButton.icon(
-            style: FilledButton.styleFrom(
-              backgroundColor: const Color(0xFF064E3B),
-              foregroundColor: Colors.white,
-              minimumSize: const Size.fromHeight(54),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(16),
+            FilledButton.icon(
+              style: FilledButton.styleFrom(
+                backgroundColor: isUpgrade
+                    ? const Color(0xFFD97706)
+                    : const Color(0xFF064E3B),
+                foregroundColor: Colors.white,
+                minimumSize: const Size.fromHeight(54),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16),
+                ),
               ),
-            ),
-            onPressed: _busy || _restoring || _remaining == 0 ? null : _spin,
-            icon: _busy
-                ? const SizedBox.square(
-                    dimension: 18,
-                    child: CircularProgressIndicator(strokeWidth: 2),
-                  )
-                : const Icon(Icons.rotate_right_rounded),
-            label: Text(
-              _busy
-                  ? 'Creating paper…'
-                  : _remaining == 0
-                  ? 'Daily spins used'
-                  : 'Spin the wheel',
-            ),
-          ),
-          if (_error != null)
-            TextButton(
-              onPressed: _busy
+              onPressed: isDisabled
                   ? null
-                  : () {
-                      Navigator.of(context).pop();
-                      widget.onOpenMyPapers();
-                    },
-              child: const Text('Check My Papers'),
+                  : isUpgrade
+                      ? () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute<void>(
+                              builder: (_) => ProMembershipScreen(
+                                apiClient: widget.apiClient,
+                              ),
+                            ),
+                          );
+                        }
+                      : _spin,
+              icon: _busy
+                  ? const SizedBox.square(
+                      dimension: 18,
+                      child: CircularProgressIndicator(strokeWidth: 2),
+                    )
+                  : Icon(
+                      isUpgrade
+                          ? Icons.stars_rounded
+                          : Icons.rotate_right_rounded,
+                    ),
+              label: Text(label),
             ),
-        ],
+            if (_error != null)
+              TextButton(
+                onPressed: _busy
+                    ? null
+                    : () {
+                        Navigator.of(context).pop();
+                        widget.onOpenMyPapers();
+                      },
+                child: const Text('Check My Papers'),
+              ),
+          ],
+        ),
       ),
-    ),
-  );
+    );
+  }
 
   @override
   Widget build(BuildContext context) {

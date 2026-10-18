@@ -1789,7 +1789,7 @@
     document.title = "Test yourself · Quiz LAB";
     host.innerHTML = [
       '<section class="ql-spin-container">',
-        '<header class="ql-spin-head"><div class="ql-spin-heading-row"><button type="button" class="ql-spin-help-button" id="ql-spin-help" aria-haspopup="dialog">How it works</button><h1>Test yourself <span class="ql-spin-pro-badge" title="Pro: up to 7 spins daily. Free: 1 daily.">PRO</span></h1></div><p>Get random 10 question</p><p class="ql-spin-daily-quota" id="ql-spin-daily-quota" role="status">1 spin/day free · Up to 7/day with Pro · Private papers</p></header>',
+        '<header class="ql-spin-head"><div class="ql-spin-heading-row"><h1>Test yourself <span class="ql-spin-pro-badge" title="Pro: up to 7 spins daily. Free: 1 daily.">PRO</span></h1><button type="button" class="ql-spin-help-button" id="ql-spin-help" aria-haspopup="dialog">How it works</button></div><p>Generate 10 random question</p></header>',
         '<div class="ql-spin-grid">',
           '<div class="ql-spin-wheel-card">',
             '<div class="ql-wheel-stage" aria-hidden="true"><canvas id="ql-spin-canvas" width="680" height="680"></canvas>',
@@ -1840,7 +1840,7 @@
         '<div class="ql-spin-help-top"><span><img src="/assets/quiz-lab-icon.png" alt="" width="32" height="32">Quiz LAB</span><button type="button" class="ql-spin-help-close" aria-label="Close explanation" autofocus><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div>' +
         '<h2 id="ql-spin-help-title">How it works</h2><p>A fresh mix of questions from existing papers.</p>' +
         '<ol><li><strong>Choose your course.</strong> Set the weeks you want to practise.</li><li><strong>Pick paper types.</strong> Select one, several, or all types. A paper name is optional.</li><li><strong>Spin the wheel.</strong> Get up to 10 random matching questions. The wheel animation does not change your filters.</li><li><strong>Open your paper.</strong> Choose your time limit and start. Find the paper again in My Papers.</li></ol>' +
-        '<p class="ql-spin-help-free">1 free spin daily, or up to 7 daily with Pro. Resets at midnight IST. No upload tokens used. Your papers are private and cannot be shared.</p>' +
+        '<p class="ql-spin-help-free">1 free spin daily, or up to 7 daily with Pro. Resets at midnight IST. Papers auto-delete after 30 days. No upload tokens used. Your papers are private and cannot be shared.</p>' +
         '<button type="button" class="ql-spin-help-done">Got it</button></div>';
       host.appendChild(dialog);
       dialog.querySelector(".ql-spin-help-close").addEventListener("click", function () { dialog.close(); });
@@ -1900,8 +1900,41 @@
     function updateSpinQuota(quota) {
       if (!quota || typeof quota.remaining !== "number") return;
       spinQuota = quota;
-      host.querySelector("#ql-spin-daily-quota").textContent = quota.remaining + " of " + quota.limit + " spins left today · Resets at midnight IST · Private papers";
-      mainBtn.disabled = isSpinning || courseSelect.disabled || quota.remaining === 0;
+      renderSpinButton();
+    }
+    function renderSpinButton() {
+      if (isSpinning) {
+        mainBtn.disabled = true;
+        mainBtn.classList.remove("ql-spin-upgrade-btn");
+        mainBtn.innerHTML = '<span aria-hidden="true">↻</span> Creating paper…';
+        return;
+      }
+      if (!spinQuota) {
+        mainBtn.disabled = courseSelect.disabled;
+        mainBtn.classList.remove("ql-spin-upgrade-btn");
+        mainBtn.innerHTML = '<span aria-hidden="true">↻</span> Spin the wheel';
+        return;
+      }
+      if (!spinQuota.is_pro) {
+        if (spinQuota.remaining > 0) {
+          mainBtn.disabled = courseSelect.disabled;
+          mainBtn.classList.remove("ql-spin-upgrade-btn");
+          mainBtn.innerHTML = '<span aria-hidden="true">↻</span> Spin the wheel · 1 free spin left';
+        } else {
+          mainBtn.disabled = false;
+          mainBtn.classList.add("ql-spin-upgrade-btn");
+          mainBtn.innerHTML = '★ Get 7 spins/day in PRO · Get now';
+        }
+      } else {
+        mainBtn.classList.remove("ql-spin-upgrade-btn");
+        if (spinQuota.remaining > 0) {
+          mainBtn.disabled = courseSelect.disabled;
+          mainBtn.innerHTML = '<span aria-hidden="true">↻</span> Spin the wheel · ' + spinQuota.remaining + '/' + spinQuota.limit + ' spins left';
+        } else {
+          mainBtn.disabled = true;
+          mainBtn.innerHTML = '0/' + spinQuota.limit + ' spins left today';
+        }
+      }
     }
     fetch(runtime.apiBase + "/student/spin-practice/quota", {headers: {Accept: "application/json", Authorization: "Bearer " + runtime.token()}})
       .then(function (res) { if (!res.ok) throw Error("Quota unavailable"); return res.json(); })
@@ -1917,7 +1950,8 @@
           courseSelect.innerHTML = '<option value="">Choose a course</option>' + list.map(function (course) {
             return '<option value="' + Number(course.id) + '">' + escapeHtml(course.name) + '</option>';
           }).join("");
-          courseSelect.disabled = !list.length; mainBtn.disabled = !list.length || !!(spinQuota && spinQuota.remaining === 0);
+          courseSelect.disabled = !list.length;
+          renderSpinButton();
           if (!list.length) outcome.textContent = "No courses are available yet.";
         }).catch(function () { outcome.textContent = "Could not load courses. Please try again."; retry.hidden = false; });
     }
@@ -2043,10 +2077,17 @@
         clearTimeout(timeout); isSpinning = false; host.classList.remove("ql-is-spinning");
         document.documentElement.classList.remove("ql-spin-focus"); form.inert = false;
         host.querySelector("#ql-spin-help").disabled = false;
-        if (host.isConnected) { settings.disabled = false; mainBtn.disabled = !!(spinQuota && spinQuota.remaining === 0); mainBtn.innerHTML = '<span aria-hidden="true">↻</span> Spin the wheel'; }
+        if (host.isConnected) { settings.disabled = false; renderSpinButton(); }
       }
     }
-    form.addEventListener("submit", spinWheel);
+    form.addEventListener("submit", function (event) {
+      if (spinQuota && !spinQuota.is_pro && spinQuota.remaining === 0) {
+        event.preventDefault();
+        window.location.href = "/membership";
+        return;
+      }
+      spinWheel(event);
+    });
   }
 
   /* ---------------------------------------------------------------
