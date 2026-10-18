@@ -4,6 +4,9 @@ on:
     branches: [main, backend]
     paths:
       - 'backend/app/Models/Quiz.php'
+      - 'backend/app/Http/Controllers/QuizController.php'
+      - 'backend/app/Http/Controllers/StorefrontController.php'
+      - 'backend/routes/api.php'
       - 'backend/app/Http/Controllers/StudentSpinPracticeController.php'
       - 'backend/app/Http/Controllers/StudentUploadedPaperController.php'
       - 'backend/app/Http/Controllers/ManagerUploadedPaperController.php'

@@ -7,12 +7,37 @@ use App\Models\Question;
 use App\Models\QuestionOption;
 use App\Models\Quiz;
 use App\Models\ShortAnswerAcceptable;
+use App\Models\User;
+use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class StudentSpinPracticeController extends Controller
 {
+    public function quota(Request $request): JsonResponse
+    {
+        return response()->json(['quota' => $this->dailyQuota($request->user())]);
+    }
+
+    private function dailyQuota(User $user): array
+    {
+        // One calendar-day allowance for both clients, resetting at midnight in India.
+        $day = now('Asia/Kolkata')->startOfDay();
+        $start = $day->copy()->setTimezone(config('app.timezone', 'UTC'));
+        $end = $day->copy()->addDay()->setTimezone(config('app.timezone', 'UTC'));
+        $pro = $user->hasProAccess();
+        $limit = $pro ? 7 : 1;
+        $used = Quiz::withoutGlobalScope('exclude_personal_uploads')
+            ->where('is_personal', true)->where('owner_user_id', $user->id)
+            ->where('description', 'like', Quiz::SPIN_PRACTICE_PREFIX.'%')
+            ->where('created_at', '>=', $start)->where('created_at', '<', $end)->count();
+
+        return ['is_pro' => $pro, 'limit' => $limit, 'used' => $used,
+            'remaining' => max(0, $limit - $used), 'resets_at' => $day->copy()->addDay()->toIso8601String(),
+            'timezone' => 'Asia/Kolkata'];
+    }
+
     public function generate(Request $request): JsonResponse
     {
         $user = $request->user();
@@ -118,6 +143,16 @@ class StudentSpinPracticeController extends Controller
         $paperTitle = $customTitle !== '' ? $customTitle : "{$course->name} — W{$weekMin}-W{$weekMax} Practice";
 
         $quiz = DB::transaction(function () use ($course, $paperTitle, $timeLimitMinutes, $questions, $user, $weekMin, $weekMax) {
+            // Serialize generation for this account so simultaneous app/web requests cannot exceed the daily limit.
+            $lockedUser = User::query()->whereKey($user->id)->lockForUpdate()->firstOrFail();
+            $quota = $this->dailyQuota($lockedUser);
+            if ($quota['remaining'] === 0) {
+                throw new HttpResponseException(response()->json([
+                    'code' => 'daily_spin_limit',
+                    'message' => $quota['is_pro'] ? 'You have used your 7 Pro spins today. Come back after midnight IST.' : 'You have used your free spin today. Pro includes up to 7 spins per day. Your free spin resets at midnight IST.',
+                    'quota' => $quota,
+                ], 429));
+            }
             $newQuiz = Quiz::query()->create([
                 'course_id' => $course->id,
                 'week_id' => null,
@@ -176,6 +211,9 @@ class StudentSpinPracticeController extends Controller
         return response()->json([
             'id' => $quiz->id,
             'title' => $quiz->title,
+            'is_personal' => true,
+            'can_share' => false,
+            'quota' => $this->dailyQuota($user),
             'course' => [
                 'id' => $course->id,
                 'name' => $course->name,

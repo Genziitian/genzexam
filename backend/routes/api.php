@@ -109,6 +109,7 @@ Route::middleware(['auth:sanctum', 'track.seen'])->group(function () {
     Route::get('/student/dashboard', [DashboardController::class, 'index']);
     Route::get('/student/uploaded-papers', [StudentUploadedPaperController::class, 'index']);
     Route::post('/student/uploaded-papers', [StudentUploadedPaperController::class, 'store'])->middleware('throttle:5,60');
+    Route::get('/student/spin-practice/quota', [StudentSpinPracticeController::class, 'quota']);
     Route::post('/student/spin-practice', [StudentSpinPracticeController::class, 'generate'])->middleware('throttle:20,1');
 
     // Self-serve paper access and Razorpay checkout.

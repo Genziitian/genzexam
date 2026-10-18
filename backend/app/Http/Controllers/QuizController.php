@@ -61,6 +61,8 @@ class QuizController extends Controller
 
         return response()->json([
             'id' => $quiz->id,
+            'is_personal' => (bool) $quiz->is_personal,
+            'can_share' => ! $quiz->is_personal,
             'title' => $quiz->title,
             'description' => $quiz->description,
             'section' => $quiz->section,

@@ -92,9 +92,10 @@ class SpinPracticeQuotaTest extends TestCase
         // Match already-created production papers independently of the new constant.
         Quiz::query()->create(['course_id' => 1, 'section' => 'practice', 'title' => 'Old spin',
             'description' => 'Unified practice paper generated from Spin Wheel (Maths 1, Weeks 1–12).',
-            'is_personal' => true, 'owner_user_id' => $this->student->id]);
+            'is_personal' => true, 'owner_user_id' => $this->student->id, 'created_at' => now()->subDay()]);
+        $this->spin('web');
+        $this->postJson('/public/api/student/spin-practice', ['course_id' => 1], ['X-QuizLab-Client' => 'mobile'])->assertStatus(429);
         foreach (['web', 'mobile'] as $client) {
-            $this->spin($client);
             $this->getJson('/public/api/student/uploaded-papers', ['X-QuizLab-Client' => $client])
                 ->assertOk()->assertJsonCount(0, 'papers')->assertJsonPath('quota.used', 0)
                 ->assertJsonPath('quota.remaining', 1)->assertJsonPath('quota.resets_at', null);
@@ -110,7 +111,7 @@ class SpinPracticeQuotaTest extends TestCase
             'created_at' => now()->subDays(2), 'updated_at' => now()->subDays(2)]);
         $before = $this->getJson('/public/api/student/uploaded-papers')->assertOk()
             ->assertJsonPath('quota.remaining', 0)->json('quota');
-        $this->spin(); $this->spin('mobile');
+        $this->spin();
         $this->getJson('/public/api/student/uploaded-papers')->assertOk()->assertJsonCount(1, 'papers')->assertJsonPath('quota', $before);
         $this->student->update(['is_pro' => true]);
         $this->getJson('/public/api/student/uploaded-papers')->assertJsonPath('quota.used', 1)->assertJsonPath('quota.remaining', 4);
@@ -118,7 +119,7 @@ class SpinPracticeQuotaTest extends TestCase
 
     public function test_real_file_upload_still_uses_exactly_one_slot_after_free_spins(): void
     {
-        $this->spin(); $this->spin('mobile');
+        $this->spin();
         $importer = Mockery::mock(QuestionImporter::class);
         $importer->shouldReceive('normalizeMany')->once()->andReturn(['rows' => [['stem' => 'Fixture']], 'errors' => []]);
         $importer->shouldReceive('persist')->once()->andReturn([]);
@@ -128,4 +129,40 @@ class SpinPracticeQuotaTest extends TestCase
             ->assertCreated()->assertJsonPath('quota.used', 1)->assertJsonPath('quota.remaining', 0);
         $this->getJson('/public/api/student/uploaded-papers')->assertJsonCount(1, 'papers')->assertJsonPath('quota.used', 1);
     }
+    public function test_daily_free_limit_is_shared_across_web_and_mobile_and_resets_at_midnight_ist(): void
+    {
+        $this->travelTo(\Carbon\Carbon::parse('2026-10-18T23:59:00+05:30')->setTimezone('UTC'));
+        $this->getJson('/public/api/student/spin-practice/quota')->assertOk()->assertJsonPath('quota.limit', 1)->assertJsonPath('quota.remaining', 1);
+        $this->spin('web');
+        $this->postJson('/public/api/student/spin-practice', ['course_id' => 1], ['X-QuizLab-Client' => 'mobile'])
+            ->assertStatus(429)->assertJsonPath('quota.remaining', 0)->assertJsonPath('quota.used', 1);
+        $this->travelTo(\Carbon\Carbon::parse('2026-10-19T00:00:00+05:30')->setTimezone('UTC'));
+        $this->getJson('/public/api/student/spin-practice/quota')->assertJsonPath('quota.used', 0)->assertJsonPath('quota.remaining', 1);
+        $this->spin('mobile');
+    }
+
+    public function test_pro_gets_seven_daily_spins_and_failures_use_no_allowance(): void
+    {
+        $this->student->update(['is_pro' => true]);
+        $this->postJson('/public/api/student/spin-practice', ['course_id' => 99999])->assertUnprocessable();
+        $this->getJson('/public/api/student/spin-practice/quota')->assertJsonPath('quota.remaining', 7);
+        for ($i = 0; $i < 7; $i++) $this->spin($i % 2 ? 'mobile' : 'web');
+        $this->postJson('/public/api/student/spin-practice', ['course_id' => 1])
+            ->assertStatus(429)->assertJsonPath('quota.limit', 7)->assertJsonPath('quota.used', 7)->assertJsonPath('quota.remaining', 0);
+        $this->getJson('/public/api/student/uploaded-papers')->assertJsonPath('quota.used', 0)->assertJsonPath('quota.remaining', 5);
+    }
+
+    public function test_spin_papers_cannot_be_opened_attempted_claimed_or_downloaded_by_other_users(): void
+    {
+        $paper = $this->spin();
+        $this->getJson("/public/api/quizzes/{$paper}")->assertJsonPath('can_share', false)->assertJsonPath('is_personal', true);
+        $other = User::query()->create(['name' => 'Other student', 'email' => 'other@example.test', 'is_pro' => true]);
+        $this->actingAs($other, 'sanctum');
+        $this->getJson("/public/api/quizzes/{$paper}")->assertNotFound();
+        $this->postJson("/public/api/quizzes/{$paper}/attempts")->assertNotFound();
+        $this->getJson("/public/api/quizzes/{$paper}/offline-download")->assertNotFound();
+        $this->postJson("/public/api/storefront/papers/{$paper}/claim")->assertNotFound();
+        $this->getJson('/public/api/student/spin-practice/quota')->assertJsonPath('quota.used', 0);
+    }
+
 }
