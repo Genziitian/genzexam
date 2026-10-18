@@ -2,6 +2,12 @@ Options -MultiViews
 DirectoryIndex landing.html index.html
 RewriteEngine On
 
+# Public Android App Links statement; exempt only this file from the hidden-path block.
+RewriteRule ^\.well-known/assetlinks\.json$ - [END]
+<Files "assetlinks.json">
+  ForceType application/json
+</Files>
+
 # Never serve private application state, source, backup folders or hidden files.
 RewriteRule (^|/)\. - [F,L]
 RewriteRule ^(data|mobile|tests|docs|design|templates\.[^/]+|assets\.[^/]+)(/|$) - [F,L,NC]

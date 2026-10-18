@@ -29,6 +29,8 @@ const rootFiles = new Set(
 );
 const appRoutes =
   /^\/(login|register|forgot-password|reset-password|dashboard|my-papers|try-practice|spin-practice|upload-paper|upload|practice|rewards|spin-rewards|daily-rewards|manager|admin|exams?|courses|quizzes|profile|leaderboard|discussions|pro|membership)(\/[^.]*)?\/?$/;
+const assetLinksPath = "/.well-known/assetlinks.json";
+rootFiles.add(assetLinksPath.slice(1));
 function handler(req, res) {
   res.setHeader("X-Content-Type-Options", "nosniff");
   res.setHeader("Referrer-Policy", "strict-origin-when-cross-origin");
@@ -55,10 +57,11 @@ function handler(req, res) {
     return res.end();
   }
   if (
-    url
+    url !== assetLinksPath &&
+    (url
       .split("/")
       .some((segment) => segment.startsWith(".") || segment.includes("\\")) ||
-    url.includes("\0")
+      url.includes("\0"))
   ) {
     res.writeHead(404);
     return res.end();

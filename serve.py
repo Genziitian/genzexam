@@ -14,6 +14,8 @@ ROOT_FILES = set(('index.html exams.html ql-loading.js ql-loading.css manager-sh
     'paper-pricing.js paper-pricing.css icons.svg site.webmanifest favicon.ico favicon-16x16.png favicon-32x32.png '
     'apple-touch-icon.png android-chrome-192x192.png android-chrome-512x512.png').split())
 ASSET_EXTENSIONS = {'.html','.js','.css','.json','.png','.jpg','.jpeg','.webp','.svg','.ico','.woff','.woff2','.ttf','.webmanifest'}
+ASSET_LINKS_PATH = '/.well-known/assetlinks.json'
+ROOT_FILES.add(ASSET_LINKS_PATH.lstrip('/'))
 APP_ROUTES = re.compile(r'^/(login|register|forgot-password|reset-password|dashboard|my-papers|try-practice|spin-practice|upload-paper|upload|practice|rewards|spin-rewards|daily-rewards|manager|admin|exams?|courses|quizzes|profile|leaderboard|discussions|pro)(/[^.]*)?/?$')
 
 class PublicHandler(http.server.BaseHTTPRequestHandler):
@@ -33,7 +35,7 @@ class PublicHandler(http.server.BaseHTTPRequestHandler):
         if re.match(r'^/(public/)?api(/|$)', url):
             return self.reply(503, json.dumps({'message': 'The authenticated Laravel API must be running. This server only previews public pages.'}).encode(), 'application/json')
         if self.command not in ('GET', 'HEAD'): return self.reply(405)
-        if any(part.startswith('.') or '\\' in part for part in url.split('/')) or '\x00' in url:
+        if url != ASSET_LINKS_PATH and (any(part.startswith('.') or '\\' in part for part in url.split('/')) or '\x00' in url):
             return self.reply(404)
         name = url.lstrip('/')
         if url == '/': name = 'landing.html'

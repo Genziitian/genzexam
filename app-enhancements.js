@@ -3710,6 +3710,7 @@
     function autoReveal() {
       if (isRevealed) return;
       isRevealed = true;
+      canvas.style.pointerEvents = "none";
       canvas.style.opacity = "0";
       setTimeout(function () { if (canvas.isConnected) canvas.remove(); }, 350);
       var actionsEl = overlay.querySelector("#ql-scratch-actions");

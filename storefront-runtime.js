@@ -72,9 +72,26 @@
 
   window.QLStorefront = { apiBase: apiBase, token: token, signIn: signIn, updateProBrandIcons: updateProBrandIcons };
 
-  // Connection guard: retries a request that failed because the phone reused a closed connection.
+  // Retire the old connection guard; do not install it on new pages. Keep other
+  // service workers intact. The replacement sw.js releases existing controllers.
   if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
-    try { navigator.serviceWorker.register('/sw.js?v=2').catch(function () {}); } catch (_) {}
+    try {
+      navigator.serviceWorker.getRegistration('/').then(function (registration) {
+        if (!registration) return;
+        var owned = [registration.active, registration.waiting, registration.installing].some(function (worker) {
+          if (!worker || !worker.scriptURL) return false;
+          try {
+            var script = new URL(worker.scriptURL, location.origin);
+            return script.origin === location.origin && script.pathname === '/sw.js';
+          } catch (_) { return false; }
+        });
+        if (!owned) return;
+        return registration.update().catch(function () {
+          // If the update cannot download, release future navigations anyway.
+          return registration.unregister();
+        });
+      }).catch(function () {});
+    } catch (_) {}
   }
 
   /*

@@ -1,0 +1,14 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "in.genziitian.quizlab",
+      "sha256_cert_fingerprints": [
+        "D2:76:64:CA:44:32:79:8C:53:3C:20:EF:51:94:22:64:F2:7B:D6:E2:BD:4D:0E:EB:D8:9F:84:8C:7E:D7:5B:48",
+        "67:8B:5B:4F:05:5B:EA:3E:7C:AE:AE:14:39:61:7E:ED:43:28:87:BA:62:79:03:8B:EA:57:21:F9:E6:81:3B:94",
+        "D5:2C:83:7E:B4:3C:A1:91:6A:44:29:B7:CB:1B:22:8C:8E:43:55:6E:F1:D0:76:F6:90:31:9C:E4:82:C2:C8:A2"
+      ]
+    }
+  }
+]
