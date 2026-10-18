@@ -953,7 +953,7 @@ body:has(#ql-try-practice) .lg\:hidden.bottom-0:not(.ql-spin-action-dock){
 @media(max-width:768px){
   .ql-upload-page-container{padding:6px 14px calc(96px + env(safe-area-inset-bottom, 0px));gap:14px}
   .ql-up-head{margin-bottom:0}
-  .ql-up-back-row{margin-bottom:8px}
+  .ql-up-back-row{display:flex!important;margin-bottom:8px}
   .ql-up-title-row{flex-wrap:nowrap;align-items:center;justify-content:space-between;gap:12px}
   .ql-up-title-wrap{min-width:0;flex:1}
   .ql-up-title{font-size:24px;line-height:1.2}
