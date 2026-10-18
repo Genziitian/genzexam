@@ -347,6 +347,52 @@ div.space-y-6:has(>div>form.space-y-6>.h-px)>.grid.gap-4 .text-3xl{font-size:24p
 :root[data-theme=dark] .ql-mp-card{border-color:rgba(109,147,207,.22)}
 :root[data-theme=dark] .ql-mp-meta span{border-color:#2e3b4c;background:transparent;color:#9ea9b9}
 :root[data-theme=dark] .ql-mp-bar{background:#243042}
+/* ---- My Papers: Filter button, Quick filters, Heart button & Filter Modal ---- */
+.ql-mp-filter-btn{display:inline-flex;align-items:center;gap:7px;height:38px;padding:0 14px;border:1px solid #e2e8f0;border-radius:10px;background:#fff;color:#334155;font-size:13px;font-weight:600;cursor:pointer;transition:all .15s ease}
+.ql-mp-filter-btn:hover{border-color:#94a3b8;background:#f8fafc}
+.ql-mp-filter-count{display:inline-flex;align-items:center;justify-content:center;min-width:18px;height:18px;padding:0 5px;border-radius:999px;background:#3a3fd8;color:#fff;font-size:11px;font-weight:700;line-height:1}
+.ql-mp-quick-bar{display:flex;align-items:center;gap:8px;margin-top:14px;margin-bottom:2px;overflow-x:auto;padding-bottom:4px;-webkit-overflow-scrolling:touch}
+.ql-mp-qchip{display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 14px;border-radius:999px;border:1px solid #e2e8f0;background:#fff;color:#475569;font-size:12.5px;font-weight:600;cursor:pointer;white-space:nowrap;transition:all .15s ease}
+.ql-mp-qchip:hover{border-color:#cbd5e1;background:#f8fafc}
+.ql-mp-qchip.active{background:#3a3fd8;border-color:#3a3fd8;color:#fff;box-shadow:0 4px 12px -4px rgba(58,63,216,.45)}
+.ql-mp-qchip.active svg{fill:#fff!important}
+.ql-mp-heart{position:absolute;top:12px;right:12px;width:34px;height:34px;border-radius:50%;border:1px solid rgba(226,232,240,.9);background:rgba(255,255,255,.92);backdrop-filter:blur(4px);display:inline-flex;align-items:center;justify-content:center;cursor:pointer;color:#94a3b8;padding:0;transition:all .18s cubic-bezier(.2,.7,.2,1);z-index:3}
+.ql-mp-heart:hover{transform:scale(1.12);color:#f43f5e;border-color:#fecdd3;background:#fff}
+.ql-mp-heart.active{color:#e11d48;border-color:#fecdd3;background:#fff1f2}
+.ql-mp-heart.active svg{fill:#e11d48}
+.ql-mp-card h3{padding-right:36px}
+.ql-fm-overlay{position:fixed;inset:0;z-index:99999;background:rgba(15,23,42,.58);backdrop-filter:blur(3px);display:grid;place-items:center;padding:18px;opacity:0;animation:ql-fade-in .2s ease forwards}
+@keyframes ql-fade-in{to{opacity:1}}
+.ql-fm-modal{width:min(540px,100%);max-height:88vh;display:flex;flex-direction:column;background:#fff;border-radius:22px;box-shadow:0 24px 70px rgba(15,23,42,.28);overflow:hidden;transform:translateY(12px) scale(.98);animation:ql-modal-pop .22s cubic-bezier(.16,1,.3,1) forwards}
+@keyframes ql-modal-pop{to{transform:translateY(0) scale(1)}}
+.ql-fm-header{display:flex;align-items:center;justify-content:space-between;padding:20px 24px 16px;border-bottom:1px solid #f1f5f9}
+.ql-fm-header h2{margin:0;font-size:19px;font-weight:700;color:#0f172a}
+.ql-fm-header p{margin:3px 0 0;font-size:12.5px;color:#64748b}
+.ql-fm-close{width:34px;height:34px;border-radius:50%;border:0;background:#f1f5f9;color:#475569;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s ease}
+.ql-fm-close:hover{background:#e2e8f0;color:#0f172a}
+.ql-fm-body{padding:20px 24px;overflow-y:auto;display:flex;flex-direction:column;gap:18px}
+.ql-fm-group label{display:block;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#64748b;margin-bottom:8px}
+.ql-fm-chips{display:flex;flex-wrap:wrap;gap:7px}
+.ql-fm-chip{border:1px solid #e2e8f0;background:#fff;color:#334155;padding:6px 14px;border-radius:999px;font-size:12.5px;font-weight:600;cursor:pointer;transition:all .15s ease}
+.ql-fm-chip:hover{border-color:#cbd5e1;background:#f8fafc}
+.ql-fm-chip.active{background:#3a3fd8;border-color:#3a3fd8;color:#fff}
+.ql-fm-select{width:100%;height:38px;padding:0 12px;border-radius:10px;border:1px solid #cbd5e1;background:#fff;color:#0f172a;font-size:13.5px;font-weight:500;outline:none}
+.ql-fm-select:focus{border-color:#3a3fd8;box-shadow:0 0 0 3px rgba(58,63,216,.18)}
+.ql-fm-footer{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;border-top:1px solid #f1f5f9;background:#f8fafc;gap:12px}
+.ql-fm-reset{border:0;background:transparent;color:#64748b;font-size:13px;font-weight:600;cursor:pointer;padding:8px 12px;border-radius:8px}
+.ql-fm-reset:hover{color:#0f172a;background:#e2e8f0}
+.ql-fm-apply{border:0;background:#3a3fd8;color:#fff;font-size:13.5px;font-weight:700;cursor:pointer;padding:10px 20px;border-radius:12px;transition:background .15s ease}
+.ql-fm-apply:hover{background:#2b30b8}
+:root[data-theme=dark] .ql-mp-filter-btn{background:#1e293b;border-color:#334155;color:#cbd5e1}
+:root[data-theme=dark] .ql-mp-qchip{background:#1e293b;border-color:#334155;color:#cbd5e1}
+:root[data-theme=dark] .ql-mp-heart{background:#1e293b;border-color:#334155;color:#94a3b8}
+:root[data-theme=dark] .ql-fm-modal{background:#0f172a;color:#f1f5f9}
+:root[data-theme=dark] .ql-fm-header{border-bottom-color:#1e293b}
+:root[data-theme=dark] .ql-fm-header h2{color:#f1f5f9}
+:root[data-theme=dark] .ql-fm-close{background:#1e293b;color:#cbd5e1}
+:root[data-theme=dark] .ql-fm-chip{background:#1e293b;border-color:#334155;color:#cbd5e1}
+:root[data-theme=dark] .ql-fm-select{background:#1e293b;border-color:#334155;color:#f1f5f9}
+:root[data-theme=dark] .ql-fm-footer{background:#141e33;border-top-color:#1e293b}
 /* ---- Dashboard: extra motion ---- */
 [data-ql-stat]::before{transform-origin:0 50%;animation:ql-grow .7s cubic-bezier(.2,.7,.2,1) .35s backwards}
 [data-ql-stat]::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.55) 50%,transparent 65%);transform:translateX(-120%);animation:ql-sheen 1.1s ease-out .6s 1 both}
@@ -574,3 +620,93 @@ html[data-ql-vs-locked] #root main>*:not(#ql-vs-soon){display:none!important}
 @keyframes ql-mt-load{0%{transform:translateX(-100%)}100%{transform:translateX(260%)}}
 @keyframes ql-mt-spark{0%,100%{opacity:0;transform:scale(.4)}50%{opacity:1;transform:scale(1.2)}}
 @media(prefers-reduced-motion:reduce){#ql-mt-overlay,.ql-mt,.ql-mt-art .g1,.ql-mt-art .g2,.ql-mt-art .spark,.ql-mt-bar i{animation:none}.ql-mt-bar i{width:100%}}
+
+/* ---- Try your practice: Spin Wheel & Customization ---- */
+.ql-spin-container{max-width:1160px;margin:0 auto;padding-bottom:40px}
+.ql-spin-head{margin-bottom:24px}
+.ql-spin-eyebrow{display:inline-block;margin-bottom:8px;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#3a3fd8;background:rgba(58,63,216,.08);padding:4px 10px;border-radius:999px}
+.ql-spin-head h1{margin:0;font-size:32px;font-weight:800;letter-spacing:-.025em;color:#0f172a;line-height:1.2}
+.ql-spin-head p{margin:8px 0 0;font-size:14px;color:#64748b;max-width:680px;line-height:1.5}
+.ql-spin-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:24px;align-items:start}
+@media(max-width:960px){.ql-spin-grid{grid-template-columns:1fr}}
+
+/* Left: Wheel card */
+.ql-spin-wheel-card{display:flex;flex-direction:column;align-items:center;background:#fff;border:1px solid #e2e8f0;border-radius:20px;padding:28px 20px;box-shadow:0 4px 16px rgba(15,23,42,.04);position:relative;overflow:hidden}
+.ql-wheel-stage{position:relative;width:340px;height:340px;max-width:100%;margin:10px auto 16px;display:flex;align-items:center;justify-content:center}
+.ql-wheel-pointer{position:absolute;top:-8px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:14px solid transparent;border-right:14px solid transparent;border-top:24px solid #ef4444;z-index:20;filter:drop-shadow(0 3px 4px rgba(0,0,0,.35));transition:transform .1s ease}
+.ql-wheel-pointer.tick{transform:translateX(-50%) scale(1.18) rotate(6deg)}
+#ql-spin-canvas{border-radius:50%;box-shadow:0 10px 30px rgba(15,23,42,.12),0 0 0 6px #0f172a,0 0 0 10px #e2e8f0;cursor:pointer;touch-action:none;display:block}
+.ql-wheel-center-btn{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,#3a3fd8 0%,#20238a 100%);color:#fff;border:4px solid #fff;box-shadow:0 4px 14px rgba(0,0,0,.35);font-size:14px;font-weight:800;letter-spacing:.05em;cursor:pointer;z-index:15;display:flex;align-items:center;justify-content:center;transition:transform .15s ease,box-shadow .15s ease}
+.ql-wheel-center-btn:hover:not(:disabled){transform:translate(-50%,-50%) scale(1.08);box-shadow:0 6px 18px rgba(58,63,216,.45)}
+.ql-wheel-center-btn:disabled{opacity:.7;cursor:not-allowed}
+.ql-spin-outcome{margin-top:14px;padding:8px 16px;border-radius:12px;background:#f1f5f9;color:#475569;font-size:13px;font-weight:600;text-align:center;min-height:36px;display:flex;align-items:center;justify-content:center;transition:all .2s ease;max-width:90%}
+.ql-spin-outcome.spinning{background:#eef2ff;color:#3a3fd8}
+.ql-spin-outcome.ready{background:#ecfdf5;color:#047857}
+.ql-spin-outcome.error{background:#fef2f2;color:#b91c1c}
+
+/* Right: Customization card */
+.ql-spin-custom-card{background:#fff;border:1px solid #e2e8f0;border-radius:20px;padding:24px;box-shadow:0 4px 16px rgba(15,23,42,.04);display:flex;flex-direction:column;gap:18px}
+.ql-spin-custom-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-bottom:12px;border-bottom:1px solid #f1f5f9}
+.ql-spin-custom-head h2{margin:0;font-size:18px;font-weight:700;color:#0f172a}
+.ql-spin-badge-10{font-size:11px;font-weight:700;color:#3a3fd8;background:#f1f2ff;border:1px solid #c9ccf5;padding:3px 10px;border-radius:999px;white-space:nowrap}
+.ql-spin-field{display:flex;flex-direction:column;gap:7px}
+.ql-spin-field label{font-size:13px;font-weight:650;color:#1e293b;display:flex;align-items:center;justify-content:space-between}
+.ql-spin-field label .req{color:#ef4444;margin-left:3px}
+.ql-spin-select{width:100%;height:42px;padding:0 12px;border:1px solid #cbd5e1;border-radius:10px;background:#fff;color:#0f172a;font-size:14px;font-weight:500;outline:none;transition:border-color .15s ease,box-shadow .15s ease}
+.ql-spin-select:focus{border-color:#3a3fd8;box-shadow:0 0 0 3px rgba(58,63,216,.14)}
+.ql-spin-select.error{border-color:#ef4444;box-shadow:0 0 0 3px rgba(239,68,68,.12)}
+
+/* Slider container */
+.ql-spin-slider-box{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:12px 14px}
+.ql-spin-slider-labels{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;font-size:12px;color:#64748b}
+.ql-spin-slider-labels strong{color:#0f172a;font-size:13px}
+.ql-spin-dual-range{display:flex;flex-direction:column;gap:10px}
+.ql-spin-dual-range input[type=range]{width:100%;-webkit-appearance:none;appearance:none;height:6px;border-radius:3px;background:#cbd5e1;outline:none}
+.ql-spin-dual-range input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:#3a3fd8;cursor:pointer;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.25);transition:transform .1s ease}
+.ql-spin-dual-range input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.15)}
+.ql-spin-week-presets{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.ql-spin-preset-btn{border:1px solid #cbd5e1;background:#fff;border-radius:8px;padding:4px 9px;font-size:11.5px;font-weight:600;color:#475569;cursor:pointer;transition:all .15s ease}
+.ql-spin-preset-btn:hover{border-color:#3a3fd8;color:#3a3fd8;background:#f1f2ff}
+.ql-spin-preset-btn.active{border-color:#3a3fd8;color:#fff;background:#3a3fd8}
+
+/* Type pills */
+.ql-spin-types-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+@media(max-width:540px){.ql-spin-types-grid{grid-template-columns:1fr}}
+.ql-spin-type-pill{display:flex;align-items:center;gap:8px;padding:8px 12px;border:1px solid #cbd5e1;border-radius:10px;background:#fff;color:#334155;font-size:12.5px;font-weight:600;cursor:pointer;user-select:none;transition:all .15s ease}
+.ql-spin-type-pill:hover{border-color:#94a3b8;background:#f8fafc}
+.ql-spin-type-pill.active{border-color:#3a3fd8;background:#f1f2ff;color:#23279c}
+.ql-spin-type-pill input{accent-color:#3a3fd8;cursor:pointer}
+
+/* Time selector */
+.ql-spin-time-grid{display:flex;gap:7px;flex-wrap:wrap}
+.ql-spin-time-btn{flex:1;min-width:56px;padding:7px 10px;border:1px solid #cbd5e1;border-radius:8px;background:#fff;color:#475569;font-size:12px;font-weight:600;cursor:pointer;text-align:center;transition:all .15s ease}
+.ql-spin-time-btn:hover{border-color:#3a3fd8;color:#3a3fd8}
+.ql-spin-time-btn.active{border-color:#3a3fd8;background:#3a3fd8;color:#fff}
+
+/* Name input */
+.ql-spin-input{width:100%;box-sizing:border-box;height:40px;padding:0 12px;border:1px solid #cbd5e1;border-radius:10px;background:#fff;color:#0f172a;font-size:13.5px;outline:none;transition:border-color .15s ease}
+.ql-spin-input:focus{border-color:#3a3fd8;box-shadow:0 0 0 3px rgba(58,63,216,.14)}
+
+/* Primary action */
+.ql-spin-main-btn{width:100%;height:46px;margin-top:6px;border:0;border-radius:12px;background:linear-gradient(135deg,#3a3fd8 0%,#2b30b8 100%);color:#fff;font-size:15px;font-weight:700;letter-spacing:-.01em;cursor:pointer;box-shadow:0 4px 12px rgba(58,63,216,.28);transition:transform .15s ease,box-shadow .15s ease,opacity .15s ease;display:flex;align-items:center;justify-content:center;gap:8px}
+.ql-spin-main-btn:hover:not(:disabled){transform:translateY(-1px);box-shadow:0 8px 20px rgba(58,63,216,.38)}
+.ql-spin-main-btn:disabled{opacity:.6;cursor:not-allowed}
+
+/* Ready Celebration Modal */
+.ql-spin-modal-overlay{position:fixed;inset:0;background:rgba(15,23,42,.6);backdrop-filter:blur(4px);z-index:9999;display:flex;align-items:center;justify-content:center;padding:16px;animation:ql-fade-in .2s ease}
+@keyframes ql-fade-in{from{opacity:0}to{opacity:1}}
+.ql-spin-modal{background:#fff;border-radius:24px;width:100%;max-width:480px;padding:28px 24px;box-shadow:0 20px 40px rgba(0,0,0,.25);position:relative;text-align:center;animation:ql-modal-pop .25s cubic-bezier(.175,.885,.32,1.275)}
+@keyframes ql-modal-pop{from{transform:scale(.9);opacity:0}to{transform:none;opacity:1}}
+.ql-spin-modal-icon{width:64px;height:64px;border-radius:50%;background:#ecfdf5;color:#10b981;font-size:32px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;box-shadow:0 0 0 8px rgba(16,185,129,.1)}
+.ql-spin-modal h2{margin:0;font-size:22px;font-weight:800;color:#0f172a;letter-spacing:-.02em}
+.ql-spin-modal-sub{margin:8px 0 20px;font-size:13.5px;color:#64748b;line-height:1.5}
+.ql-spin-modal-details{background:#f8fafc;border:1px solid #e2e8f0;border-radius:14px;padding:14px 16px;margin-bottom:20px;text-align:left;display:flex;flex-direction:column;gap:8px}
+.ql-spin-modal-row{display:flex;justify-content:space-between;font-size:13px;color:#475569}
+.ql-spin-modal-row strong{color:#0f172a}
+.ql-spin-modal-actions{display:flex;flex-direction:column;gap:9px}
+.ql-spin-modal-start{height:44px;border-radius:11px;background:#3a3fd8;color:#fff;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;text-decoration:none;transition:background .15s ease}
+.ql-spin-modal-start:hover{background:#2b30b8}
+.ql-spin-modal-sec{display:flex;gap:8px}
+.ql-spin-modal-btn{flex:1;height:40px;border-radius:10px;border:1px solid #cbd5e1;background:#fff;color:#334155;font-size:13px;font-weight:600;display:flex;align-items:center;justify-content:center;text-decoration:none;cursor:pointer;transition:all .15s ease}
+.ql-spin-modal-btn:hover{background:#f8fafc;border-color:#94a3b8}
+

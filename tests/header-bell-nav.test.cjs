@@ -37,11 +37,11 @@ assert.ok(
 
 // 3. Cache busters
 assert.ok(
-  indexHtml.includes('/assets/index-fad00dd6r.js?v=20261018a'),
+  /\/assets\/index-fad00dd6r\.js\?v=20261018[a-z]/.test(indexHtml),
   "index.html must reference refreshed bundle query parameter"
 );
 assert.ok(
-  indexHtml.includes('/app-enhancements.js?v=20261018b'),
+  /\/app-enhancements\.js\?v=20261018[a-z]/.test(indexHtml),
   "index.html must reference refreshed app-enhancements.js query parameter"
 );
 

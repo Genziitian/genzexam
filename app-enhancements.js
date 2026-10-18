@@ -745,16 +745,106 @@
     var runtime = window.QLStorefront;
     if (!runtime || !runtime.token()) return;
     host.dataset.qlLoaded = "1";
-    host.innerHTML = '<div class="ql-mp-head"><div class="ql-mp-title"><h1>Your papers.</h1><div class="ql-mp-title-actions"><a class="ql-mp-browse" href="/practice">Browse practice</a><button class="ql-upload-open" type="button">＋ Upload a paper <span class="ql-upload-tag">PRO</span></button></div></div><p>Papers you bought or attempted, with your progress.</p></div><div class="ql-mp-grid" aria-live="polite"><p class="ql-mp-note">Loading your papers…</p></div>';
+
+    function getLikedIds() {
+      try {
+        var raw = localStorage.getItem("ql_liked_papers");
+        return new Set(raw ? JSON.parse(raw) : []);
+      } catch (_) {
+        return new Set();
+      }
+    }
+    function saveLikedIds(set) {
+      try {
+        localStorage.setItem("ql_liked_papers", JSON.stringify(Array.from(set)));
+      } catch (_) {}
+    }
+    var likedIds = getLikedIds();
+
+    var filters = {
+      liked: false,
+      status: "all",
+      access: "all",
+      section: "all",
+      course: "all",
+      sort: "newest"
+    };
+
+    host.innerHTML = '<div class="ql-mp-head">' +
+      '<div class="ql-mp-title">' +
+        '<h1>Your papers.</h1>' +
+        '<div class="ql-mp-title-actions">' +
+          '<a class="ql-mp-browse" href="/practice">Browse practice</a>' +
+          '<a class="ql-mp-browse" href="/try-practice">🎯 Try your practice</a>' +
+          '<button class="ql-upload-open" type="button">＋ Upload a paper <span class="ql-upload-tag">PRO</span></button>' +
+          '<button class="ql-mp-filter-btn" type="button" aria-label="Filter papers">' +
+            '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>' +
+            '<span>Filter</span>' +
+            '<span class="ql-mp-filter-count" style="display:none">0</span>' +
+          '</button>' +
+        '</div>' +
+      '</div>' +
+      '<p>Papers you bought or attempted, with your progress.</p>' +
+      '<div class="ql-mp-quick-bar" role="tablist" aria-label="Paper quick filters">' +
+        '<button type="button" class="ql-mp-qchip active" data-qfilter="all">All</button>' +
+        '<button type="button" class="ql-mp-qchip" data-qfilter="liked"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg> Liked</button>' +
+        '<button type="button" class="ql-mp-qchip" data-qfilter="in_progress">In progress</button>' +
+        '<button type="button" class="ql-mp-qchip" data-qfilter="completed">Completed</button>' +
+      '</div>' +
+    '</div>' +
+    '<div class="ql-mp-grid" aria-live="polite"><p class="ql-mp-note">Loading your papers…</p></div>';
+
     installUploadedPaperDialog(host, runtime);
     var grid = host.querySelector(".ql-mp-grid");
-    function note(text) {
+
+    function note(text, actionText, onAction) {
       grid.replaceChildren();
       var p = document.createElement("p");
       p.className = "ql-mp-note";
       p.textContent = text;
+      if (actionText && onAction) {
+        var btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "ql-mp-action";
+        btn.style.cssText = "max-width:220px;margin:14px auto 0";
+        btn.textContent = actionText;
+        btn.addEventListener("click", onAction);
+        p.appendChild(document.createElement("br"));
+        p.appendChild(btn);
+      }
       grid.appendChild(p);
     }
+
+    function countActiveFilters() {
+      var count = 0;
+      if (filters.liked) count++;
+      if (filters.status !== "all") count++;
+      if (filters.access !== "all") count++;
+      if (filters.section !== "all") count++;
+      if (filters.course !== "all") count++;
+      if (filters.sort !== "newest") count++;
+      return count;
+    }
+
+    function syncFilterUI() {
+      var badge = host.querySelector(".ql-mp-filter-count");
+      if (badge) {
+        var count = countActiveFilters();
+        badge.style.display = count > 0 ? "inline-flex" : "none";
+        badge.textContent = String(count);
+      }
+      var qchips = host.querySelectorAll(".ql-mp-qchip");
+      qchips.forEach(function (btn) {
+        var q = btn.dataset.qfilter;
+        var active = false;
+        if (q === "all") active = !filters.liked && filters.status === "all";
+        else if (q === "liked") active = filters.liked;
+        else if (q === "in_progress") active = !filters.liked && filters.status === "in_progress";
+        else if (q === "completed") active = !filters.liked && filters.status === "completed";
+        btn.classList.toggle("active", active);
+      });
+    }
+
     fetch(runtime.apiBase + "/storefront/my-papers", {
       headers: { Accept: "application/json", Authorization: "Bearer " + runtime.token() }
     }).then(function (response) {
@@ -763,86 +853,344 @@
       return response.json();
     }).then(function (data) {
       if (!host.isConnected) return;
-      var papers = Array.isArray(data.papers) ? data.papers : [];
-      if (!papers.length) return note("Nothing here yet. Start any free paper from Practice, or buy a paper, and it shows up here with your score.");
-      grid.replaceChildren();
+      var rawPapers = Array.isArray(data.papers) ? data.papers.slice() : [];
+      if (!rawPapers.length) {
+        return note("Nothing here yet. Start any free paper from Practice, or buy a paper, and it shows up here with your score.");
+      }
+
       var labels = { quiz1: "Quiz 1", quiz2: "Quiz 2", endterm: "End Term", mock_test: "Mock test", practice: "Practice", practice_graded: "Graded practice" };
-      papers.forEach(function (paper) {
-        var paid = Number(paper.price_paise || 0) > 0;
-        var purchased = paper.purchased === true || paper.source === "purchase";
-        var uploaded = paper.source === "personal_upload";
-        var expired = paid && !!paper.expired;
-        var usable = paper.available !== false && paper.has_access !== false && !expired;
-        var attempts = Number(paper.attempt_count || 0);
-        var state = paper.available === false ? "Unavailable" : expired ? "Access expired" : purchased ? "Purchased \u2713" : uploaded ? "Uploaded" : paid ? "Paid" : "Free";
-        var card = document.createElement("article");
-        card.className = "ql-mp-card" + (purchased && usable ? " owned" : "");
-        var badge = document.createElement("span");
-        badge.className = "ql-mp-badge" + (paper.available === false || expired ? " off" : purchased ? " paid" : paid ? " lock" : "");
-        badge.textContent = state;
-        var title = document.createElement("h3");
-        title.textContent = paper.title || "Paper";
-        var sub = document.createElement("p");
-        sub.className = "ql-mp-sub";
-        sub.textContent = [uploaded ? "Your upload" : (paper.course || {}).name, paper.year, labels[paper.section]].filter(Boolean).join(" · ");
-        var meta = document.createElement("p");
-        meta.className = "ql-mp-meta";
-        [
-          paper.question_count != null ? paper.question_count + " questions" : "",
-          paper.time_limit_minutes ? paper.time_limit_minutes + " min" : "Untimed",
-          paper.expires_at && paid ? (expired ? "Expired " : "Access until ") + new Date(paper.expires_at).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" }) : ""
-        ].filter(Boolean).forEach(function (text) {
-          var chip = document.createElement("span");
-          chip.textContent = text;
-          meta.appendChild(chip);
-        });
-        var progress = document.createElement("p");
-        progress.className = "ql-mp-progress" + (paper.in_progress ? " live" : attempts ? " done" : "");
-        progress.textContent = paper.in_progress ? "In progress"
-          : attempts ? (paper.last_total_marks != null ? "Last score " + Number(paper.last_score || 0) + "/" + Number(paper.last_total_marks) + " \u00b7 " : "") + attempts + (attempts === 1 ? " attempt" : " attempts")
-          : "Not started";
-        // Score line and the Free / Purchased tag share one row, with a thin bar for the last score.
-        var status = document.createElement("div");
-        status.className = "ql-mp-status";
-        status.append(progress, badge);
-        card.append(title, sub, meta, status);
-        var total = Number(paper.last_total_marks || 0);
-        if (attempts && total > 0 && !paper.in_progress) {
-          var pct = Math.max(0, Math.min(100, Math.round((Number(paper.last_score || 0) / total) * 100)));
-          var bar = document.createElement("div");
-          bar.className = "ql-mp-bar";
-          bar.setAttribute("role", "img");
-          bar.setAttribute("aria-label", "Last score " + pct + "%");
-          var fill = document.createElement("i");
-          fill.style.width = pct + "%";
-          bar.appendChild(fill);
-          card.appendChild(bar);
+
+      function matchesFilter(paper, stateObj) {
+        var s = stateObj || filters;
+        if (s.liked && !likedIds.has(Number(paper.id))) return false;
+        if (s.status === "in_progress" && !paper.in_progress) return false;
+        if (s.status === "completed" && (!paper.attempt_count || paper.in_progress)) return false;
+        if (s.status === "not_started" && (paper.attempt_count > 0 || paper.in_progress)) return false;
+        if (s.access === "free" && (Number(paper.price_paise || 0) > 0 || paper.source === "personal_upload")) return false;
+        if (s.access === "purchased" && !(paper.purchased === true || paper.source === "purchase")) return false;
+        if (s.access === "upload" && paper.source !== "personal_upload") return false;
+        if (s.section !== "all" && paper.section !== s.section) return false;
+        if (s.course !== "all" && (paper.course || {}).name !== s.course) return false;
+        return true;
+      }
+
+      function sortPapers(list, sortKey) {
+        var out = list.slice();
+        if (sortKey === "title") {
+          out.sort(function (a, b) { return (a.title || "").localeCompare(b.title || ""); });
+        } else if (sortKey === "attempts") {
+          out.sort(function (a, b) { return Number(b.attempt_count || 0) - Number(a.attempt_count || 0); });
+        } else if (sortKey === "score") {
+          out.sort(function (a, b) {
+            var pctA = a.last_total_marks ? Number(a.last_score || 0) / Number(a.last_total_marks) : 0;
+            var pctB = b.last_total_marks ? Number(b.last_score || 0) / Number(b.last_total_marks) : 0;
+            return pctB - pctA;
+          });
+        } else {
+          out.sort(function (a, b) { return Number(b.id) - Number(a.id); });
         }
-        if (paper.available !== false) {
-          var action = document.createElement("a");
-          action.className = "ql-mp-action" + (usable ? "" : " renew");
-          action.href = usable ? "/paper/" + encodeURIComponent(paper.id) : "/papers?paper=" + encodeURIComponent(paper.id);
-          action.textContent = usable ? (paper.in_progress ? "Continue" : attempts ? "Attempt again" : "Start") : expired ? "Renew access" : "Buy paper";
-          var actions = document.createElement("div");
-          actions.className = "ql-mp-actions";
-          if (usable) {
-            var details = document.createElement("a");
-            details.className = "ql-mp-action renew";
-            details.href = "/papers?paper=" + encodeURIComponent(paper.id);
-            details.textContent = "View details";
-            details.addEventListener("click", function (event) {
-              if (event.metaKey || event.ctrlKey || event.shiftKey || event.button) return;
-              event.preventDefault();
-              showPaperDetails(paper, labels, state, usable, attempts, action.href);
+        return out;
+      }
+
+      function render() {
+        syncFilterUI();
+        var filtered = rawPapers.filter(function (p) { return matchesFilter(p, filters); });
+        var sorted = sortPapers(filtered, filters.sort);
+
+        if (!sorted.length) {
+          if (filters.liked) {
+            return note("No liked papers yet. Tap the heart on any paper card to save it to your favorites.", "Show all papers", function () {
+              filters.liked = false;
+              filters.status = "all";
+              render();
             });
-            actions.appendChild(details);
           }
-          actions.appendChild(action);
-          if (window.QLShare) actions.appendChild(window.QLShare.button(paper.id, paper.title || "", "ql-share-icon"));
-          card.appendChild(actions);
+          return note("No papers match your filters.", "Reset filters", function () {
+            filters.liked = false;
+            filters.status = "all";
+            filters.access = "all";
+            filters.section = "all";
+            filters.course = "all";
+            filters.sort = "newest";
+            render();
+          });
         }
-        grid.appendChild(card);
+
+        grid.replaceChildren();
+        sorted.forEach(function (paper) {
+          var paid = Number(paper.price_paise || 0) > 0;
+          var purchased = paper.purchased === true || paper.source === "purchase";
+          var uploaded = paper.source === "personal_upload";
+          var isSpin = paper.source === "spin_practice";
+          var expired = paid && !!paper.expired;
+          var usable = paper.available !== false && paper.has_access !== false && !expired;
+          var attempts = Number(paper.attempt_count || 0);
+          var state = paper.available === false ? "Unavailable" : expired ? "Access expired" : purchased ? "Purchased \u2713" : isSpin ? "Practice" : uploaded ? "Uploaded" : paid ? "Paid" : "Free";
+
+          var card = document.createElement("article");
+          card.className = "ql-mp-card" + (purchased && usable ? " owned" : "");
+
+          // Heart favorite button
+          var isLiked = likedIds.has(Number(paper.id));
+          var heart = document.createElement("button");
+          heart.type = "button";
+          heart.className = "ql-mp-heart" + (isLiked ? " active" : "");
+          heart.setAttribute("aria-label", isLiked ? "Remove from favorites" : "Save to favorites");
+          heart.title = isLiked ? "Remove from favorites" : "Save to favorites";
+          heart.innerHTML = '<svg width="17" height="17" viewBox="0 0 24 24" fill="' + (isLiked ? "currentColor" : "none") + '" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>';
+          heart.addEventListener("click", function (e) {
+            e.stopPropagation();
+            var pid = Number(paper.id);
+            if (likedIds.has(pid)) {
+              likedIds.delete(pid);
+              heart.classList.remove("active");
+              heart.querySelector("svg").setAttribute("fill", "none");
+              heart.title = "Save to favorites";
+            } else {
+              likedIds.add(pid);
+              heart.classList.add("active");
+              heart.querySelector("svg").setAttribute("fill", "currentColor");
+              heart.title = "Remove from favorites";
+            }
+            saveLikedIds(likedIds);
+            if (filters.liked) render();
+          });
+          card.appendChild(heart);
+
+          var badge = document.createElement("span");
+          badge.className = "ql-mp-badge" + (paper.available === false || expired ? " off" : purchased ? " paid" : paid ? " lock" : "");
+          badge.textContent = state;
+
+          var title = document.createElement("h3");
+          title.textContent = paper.title || "Paper";
+
+          var sub = document.createElement("p");
+          sub.className = "ql-mp-sub";
+          sub.textContent = [uploaded ? "Your upload" : isSpin ? ((paper.course || {}).name + " · Spin Practice") : (paper.course || {}).name, paper.year, isSpin ? "" : labels[paper.section]].filter(Boolean).join(" · ");
+
+          var meta = document.createElement("p");
+          meta.className = "ql-mp-meta";
+          [
+            paper.question_count != null ? paper.question_count + " questions" : "",
+            paper.time_limit_minutes ? paper.time_limit_minutes + " min" : "Untimed",
+            paper.expires_at && paid ? (expired ? "Expired " : "Access until ") + new Date(paper.expires_at).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" }) : ""
+          ].filter(Boolean).forEach(function (text) {
+            var chip = document.createElement("span");
+            chip.textContent = text;
+            meta.appendChild(chip);
+          });
+
+          var progress = document.createElement("p");
+          progress.className = "ql-mp-progress" + (paper.in_progress ? " live" : attempts ? " done" : "");
+          progress.textContent = paper.in_progress ? "In progress"
+            : attempts ? (paper.last_total_marks != null ? "Last score " + Number(paper.last_score || 0) + "/" + Number(paper.last_total_marks) + " \u00b7 " : "") + attempts + (attempts === 1 ? " attempt" : " attempts")
+            : "Not started";
+
+          var status = document.createElement("div");
+          status.className = "ql-mp-status";
+          status.append(progress, badge);
+          card.append(title, sub, meta, status);
+
+          var total = Number(paper.last_total_marks || 0);
+          if (attempts && total > 0 && !paper.in_progress) {
+            var pct = Math.max(0, Math.min(100, Math.round((Number(paper.last_score || 0) / total) * 100)));
+            var bar = document.createElement("div");
+            bar.className = "ql-mp-bar";
+            bar.setAttribute("role", "img");
+            bar.setAttribute("aria-label", "Last score " + pct + "%");
+            var fill = document.createElement("i");
+            fill.style.width = pct + "%";
+            bar.appendChild(fill);
+            card.appendChild(bar);
+          }
+
+          if (paper.available !== false) {
+            var action = document.createElement("a");
+            action.className = "ql-mp-action" + (usable ? "" : " renew");
+            action.href = usable ? "/paper/" + encodeURIComponent(paper.id) : "/papers?paper=" + encodeURIComponent(paper.id);
+            action.textContent = usable ? (paper.in_progress ? "Continue" : attempts ? "Attempt again" : "Start") : expired ? "Renew access" : "Buy paper";
+            var actions = document.createElement("div");
+            actions.className = "ql-mp-actions";
+            if (usable) {
+              var details = document.createElement("a");
+              details.className = "ql-mp-action renew";
+              details.href = "/papers?paper=" + encodeURIComponent(paper.id);
+              details.textContent = "View details";
+              details.addEventListener("click", function (event) {
+                if (event.metaKey || event.ctrlKey || event.shiftKey || event.button) return;
+                event.preventDefault();
+                showPaperDetails(paper, labels, state, usable, attempts, action.href);
+              });
+              actions.appendChild(details);
+            }
+            actions.appendChild(action);
+            if (window.QLShare) actions.appendChild(window.QLShare.button(paper.id, paper.title || "", "ql-share-icon"));
+            card.appendChild(actions);
+          }
+          grid.appendChild(card);
+        });
+      }
+
+      // Quick filter click handlers
+      host.querySelectorAll(".ql-mp-qchip").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var q = btn.dataset.qfilter;
+          if (q === "all") {
+            filters.liked = false;
+            filters.status = "all";
+          } else if (q === "liked") {
+            filters.liked = true;
+            filters.status = "all";
+          } else if (q === "in_progress") {
+            filters.liked = false;
+            filters.status = "in_progress";
+          } else if (q === "completed") {
+            filters.liked = false;
+            filters.status = "completed";
+          }
+          render();
+        });
       });
+
+      // Filter modal setup
+      var filterBtn = host.querySelector(".ql-mp-filter-btn");
+      if (filterBtn) {
+        filterBtn.addEventListener("click", function () {
+          var draft = Object.assign({}, filters);
+          var overlay = document.createElement("div");
+          overlay.className = "ql-fm-overlay";
+          overlay.setAttribute("role", "dialog");
+          overlay.setAttribute("aria-modal", "true");
+
+          var distinctCourses = Array.from(new Set(rawPapers.map(function (p) { return (p.course || {}).name; }).filter(Boolean))).sort();
+
+          overlay.innerHTML = '<div class="ql-fm-modal">' +
+            '<div class="ql-fm-header">' +
+              '<div><h2>Filter Papers</h2><p>Choose filter options to narrow down your papers.</p></div>' +
+              '<button type="button" class="ql-fm-close" aria-label="Close">✕</button>' +
+            '</div>' +
+            '<div class="ql-fm-body">' +
+              '<div class="ql-fm-group">' +
+                '<label>Favorites</label>' +
+                '<div class="ql-fm-chips" data-fkey="liked">' +
+                  '<button type="button" class="ql-fm-chip' + (!draft.liked ? ' active' : '') + '" data-val="all">All papers</button>' +
+                  '<button type="button" class="ql-fm-chip' + (draft.liked ? ' active' : '') + '" data-val="liked">❤️ Liked only</button>' +
+                '</div>' +
+              '</div>' +
+              '<div class="ql-fm-group">' +
+                '<label>Status & Progress</label>' +
+                '<div class="ql-fm-chips" data-fkey="status">' +
+                  '<button type="button" class="ql-fm-chip' + (draft.status === 'all' ? ' active' : '') + '" data-val="all">All</button>' +
+                  '<button type="button" class="ql-fm-chip' + (draft.status === 'in_progress' ? ' active' : '') + '" data-val="in_progress">In progress</button>' +
+                  '<button type="button" class="ql-fm-chip' + (draft.status === 'completed' ? ' active' : '') + '" data-val="completed">Completed</button>' +
+                  '<button type="button" class="ql-fm-chip' + (draft.status === 'not_started' ? ' active' : '') + '" data-val="not_started">Not started</button>' +
+                '</div>' +
+              '</div>' +
+              '<div class="ql-fm-group">' +
+                '<label>Access & Pricing</label>' +
+                '<div class="ql-fm-chips" data-fkey="access">' +
+                  '<button type="button" class="ql-fm-chip' + (draft.access === 'all' ? ' active' : '') + '" data-val="all">All</button>' +
+                  '<button type="button" class="ql-fm-chip' + (draft.access === 'free' ? ' active' : '') + '" data-val="free">Free</button>' +
+                  '<button type="button" class="ql-fm-chip' + (draft.access === 'purchased' ? ' active' : '') + '" data-val="purchased">Purchased</button>' +
+                  '<button type="button" class="ql-fm-chip' + (draft.access === 'upload' ? ' active' : '') + '" data-val="upload">Your uploads</button>' +
+                '</div>' +
+              '</div>' +
+              '<div class="ql-fm-group">' +
+                '<label>Exam Section</label>' +
+                '<div class="ql-fm-chips" data-fkey="section">' +
+                  '<button type="button" class="ql-fm-chip' + (draft.section === 'all' ? ' active' : '') + '" data-val="all">All</button>' +
+                  '<button type="button" class="ql-fm-chip' + (draft.section === 'quiz1' ? ' active' : '') + '" data-val="quiz1">Quiz 1</button>' +
+                  '<button type="button" class="ql-fm-chip' + (draft.section === 'quiz2' ? ' active' : '') + '" data-val="quiz2">Quiz 2</button>' +
+                  '<button type="button" class="ql-fm-chip' + (draft.section === 'endterm' ? ' active' : '') + '" data-val="endterm">End Term</button>' +
+                  '<button type="button" class="ql-fm-chip' + (draft.section === 'mock_test' ? ' active' : '') + '" data-val="mock_test">Mock Test</button>' +
+                  '<button type="button" class="ql-fm-chip' + (draft.section === 'practice' ? ' active' : '') + '" data-val="practice">Practice</button>' +
+                '</div>' +
+              '</div>' +
+              (distinctCourses.length ? (
+                '<div class="ql-fm-group">' +
+                  '<label for="ql-fm-course-select">Course</label>' +
+                  '<select id="ql-fm-course-select" class="ql-fm-select">' +
+                    '<option value="all"' + (draft.course === 'all' ? ' selected' : '') + '>All courses (' + distinctCourses.length + ')</option>' +
+                    distinctCourses.map(function (c) {
+                      return '<option value="' + c.replace(/"/g, '&quot;') + '"' + (draft.course === c ? ' selected' : '') + '>' + c.replace(/</g, '&lt;') + '</option>';
+                    }).join('') +
+                  '</select>' +
+                '</div>'
+              ) : '') +
+              '<div class="ql-fm-group">' +
+                '<label>Sort By</label>' +
+                '<div class="ql-fm-chips" data-fkey="sort">' +
+                  '<button type="button" class="ql-fm-chip' + (draft.sort === 'newest' ? ' active' : '') + '" data-val="newest">Newest first</button>' +
+                  '<button type="button" class="ql-fm-chip' + (draft.sort === 'title' ? ' active' : '') + '" data-val="title">Title (A-Z)</button>' +
+                  '<button type="button" class="ql-fm-chip' + (draft.sort === 'attempts' ? ' active' : '') + '" data-val="attempts">Most attempted</button>' +
+                  '<button type="button" class="ql-fm-chip' + (draft.sort === 'score' ? ' active' : '') + '" data-val="score">Highest score</button>' +
+                '</div>' +
+              '</div>' +
+            '</div>' +
+            '<div class="ql-fm-footer">' +
+              '<button type="button" class="ql-fm-reset">Reset filters</button>' +
+              '<button type="button" class="ql-fm-apply">Apply filters (<span class="ql-fm-count">0</span>)</button>' +
+            '</div>' +
+          '</div>';
+
+          function updateDraftCount() {
+            var matching = rawPapers.filter(function (p) { return matchesFilter(p, draft); });
+            var countEl = overlay.querySelector(".ql-fm-count");
+            if (countEl) countEl.textContent = String(matching.length);
+          }
+          updateDraftCount();
+
+          function close() {
+            document.removeEventListener("keydown", onKey);
+            overlay.remove();
+          }
+          function onKey(e) { if (e.key === "Escape") close(); }
+
+          overlay.querySelector(".ql-fm-close").addEventListener("click", close);
+          overlay.addEventListener("click", function (e) { if (e.target === overlay) close(); });
+
+          overlay.querySelectorAll(".ql-fm-chips").forEach(function (group) {
+            var fkey = group.dataset.fkey;
+            group.querySelectorAll(".ql-fm-chip").forEach(function (chip) {
+              chip.addEventListener("click", function () {
+                var val = chip.dataset.val;
+                if (fkey === "liked") draft.liked = (val === "liked");
+                else draft[fkey] = val;
+
+                group.querySelectorAll(".ql-fm-chip").forEach(function (c) { c.classList.remove("active"); });
+                chip.classList.add("active");
+                updateDraftCount();
+              });
+            });
+          });
+
+          var courseSelect = overlay.querySelector("#ql-fm-course-select");
+          if (courseSelect) {
+            courseSelect.addEventListener("change", function () {
+              draft.course = courseSelect.value;
+              updateDraftCount();
+            });
+          }
+
+          overlay.querySelector(".ql-fm-reset").addEventListener("click", function () {
+            draft = { liked: false, status: "all", access: "all", section: "all", course: "all", sort: "newest" };
+            filters = Object.assign({}, draft);
+            close();
+            render();
+          });
+
+          overlay.querySelector(".ql-fm-apply").addEventListener("click", function () {
+            filters = Object.assign({}, draft);
+            close();
+            render();
+          });
+
+          document.addEventListener("keydown", onKey);
+          document.body.appendChild(overlay);
+        });
+      }
+
+      render();
     }).catch(function (error) {
       if (!host.isConnected) return;
       note(error.message === "role" ? "My Papers is for student accounts. Managers handle papers and sales from the manager console." : "Your papers could not load. Check your connection and reload the page.");
@@ -917,15 +1265,31 @@
     open.addEventListener("click", function () {
       var overlay = document.createElement("div");
       overlay.className = "ql-upload-overlay";
-      overlay.innerHTML = '<section class="ql-upload-modal" role="dialog" aria-modal="true" aria-labelledby="ql-upload-title"><div class="ql-upload-hero"><div class="ql-upload-hero-inner"><button class="ql-upload-close" type="button" aria-label="Close">\u00d7</button><span class="ql-upload-pro">PRO</span><h2 id="ql-upload-title">Make your paper a test</h2><p>Upload any question paper and Quiz LAB turns it into a private practice test. It also appears in My Papers.</p></div></div><div class="ql-upload-body"><div class="ql-upload-quota" aria-live="polite"><div class="ql-upload-quota-top"><strong>Checking your uploads\u2026</strong></div></div><div class="ql-upload-steps"><div><div class="ql-upload-icon">\ud83d\udcc4</div><span>Your PDF</span></div><b>\u2192</b><div><div class="ql-upload-icon">{ }</div><span>Question data</span></div><b>\u2192</b><div><div class="ql-upload-icon">\u270d\ufe0f</div><span>Your test</span></div></div><form class="ql-upload-form" style="display:grid;gap:12px"><label class="ql-upload-drop"><span class="big">\u2b06\ufe0f</span><strong>Drop a PDF or JSON here</strong><small>or tap to choose a file \u00b7 up to 10 MB</small><input class="ql-upload-file" type="file" name="paper" accept=".pdf,.json,application/pdf,application/json" required></label><div class="ql-upload-chip"></div><button class="ql-upload-pick" type="submit" disabled>Create my test</button><p class="ql-upload-state" aria-live="polite"></p></form><p class="ql-upload-note">Selectable text from PDFs is sent to DeepSeek AI to structure the questions. The temporary PDF is deleted after processing; the generated test stays in your account. Prepared JSON files are processed without AI. Scanned image PDFs are not supported yet.</p><h3 class="ql-upload-h">Your uploaded papers</h3><div class="ql-upload-list"><p class="ql-upload-state">Loading\u2026</p></div></div></section>';
+      overlay.innerHTML = '<section class="ql-upload-modal" role="dialog" aria-modal="true" aria-labelledby="ql-upload-title"><div class="ql-upload-hero" style="padding:20px 24px"><button class="ql-upload-close" type="button" aria-label="Close">×</button><h2 id="ql-upload-title">Your uploaded papers</h2></div><div class="ql-upload-body"><div class="ql-upload-quota" aria-live="polite">Checking your uploads…</div><div style="display:flex;align-items:center;justify-content:space-between;gap:12px"><h3 class="ql-upload-h">Your papers</h3><button type="button" class="ql-upload-new ql-upload-claim" style="animation:none">＋ Upload paper</button></div><form class="ql-upload-form" style="display:none;gap:12px"><label class="ql-upload-drop"><strong>Choose a PDF or JSON</strong><small>Up to 10 MB · PDF up to 30 pages</small><input class="ql-upload-file" type="file" name="paper" accept=".pdf,.json,application/pdf,application/json" required></label><div class="ql-upload-chip"></div><button class="ql-upload-pick" type="submit" disabled>Create my test</button><p class="ql-upload-state" aria-live="polite"></p><button type="button" class="ql-upload-hide">Close upload</button></form><div class="ql-upload-list"><p class="ql-upload-state">Loading…</p></div><details class="ql-upload-rules"><summary style="cursor:pointer;padding:10px 0;font-weight:700">Upload rules · See all</summary><div class="ql-upload-note" style="padding:8px 0"><p>Free: 1 successful upload every 7 days. Pro: 5 in the same rolling window. Each slot returns 7 days after use. Failed conversions do not use a slot.</p><p>PDF or JSON, up to 10 MB. PDFs support up to 30 pages of selectable text; scanned PDFs are not supported.</p><p>PDF text is sent to DeepSeek AI to structure questions. The temporary file is deleted after processing. JSON is processed without AI. Review questions because AI can make mistakes.</p><p>Your tests appear in My Papers. Our team may review uploads and add suitable papers to the public library.</p></div></details></div></section>';
       document.body.appendChild(overlay);
 
       var modal = overlay.querySelector(".ql-upload-modal");
-      var quotaTimer;
-      function close() { clearInterval(quotaTimer); overlay.remove(); }
+      var quotaTimer, rulesTimer;
+      var rules = modal.querySelector('.ql-upload-rules');
+      function collapseRules() { clearTimeout(rulesTimer); rules.open = false; }
+      rules.addEventListener('toggle', function () {
+        clearTimeout(rulesTimer);
+        rules.querySelector('summary').textContent = 'Upload rules · ' + (rules.open ? 'See less' : 'See all');
+        if (rules.open) rulesTimer = setTimeout(collapseRules, 30000);
+      });
+      function onHidden() { if (document.hidden) collapseRules(); }
+      document.addEventListener('visibilitychange', onHidden);
+      window.addEventListener('pagehide', collapseRules);
+      function escape(event) { if (event.key === 'Escape') close(); }
+      function close() {
+        clearInterval(quotaTimer); collapseRules(); overlay.remove();
+        document.removeEventListener('visibilitychange', onHidden);
+        document.removeEventListener('keydown', escape);
+        window.removeEventListener('pagehide', collapseRules);
+      }
       overlay.querySelector(".ql-upload-close").addEventListener("click", close);
       overlay.addEventListener("click", function (event) { if (event.target === overlay) close(); });
-      document.addEventListener("keydown", function escape(event) { if (event.key === "Escape" && overlay.isConnected) { close(); document.removeEventListener("keydown", escape); } });
+      document.addEventListener("keydown", escape);
       var list = modal.querySelector(".ql-upload-list");
       var state = modal.querySelector(".ql-upload-form .ql-upload-state");
       var quotaBox = modal.querySelector(".ql-upload-quota");
@@ -933,7 +1297,13 @@
       var fileInput = modal.querySelector("input[type=file]");
       var chip = modal.querySelector(".ql-upload-chip");
       var button = modal.querySelector(".ql-upload-pick");
-      var allowed = false;
+      var allowed = false, uploading = false;
+      var uploadForm = modal.querySelector('.ql-upload-form');
+      var newUpload = modal.querySelector('.ql-upload-new');
+      newUpload.addEventListener('click', function () {
+        collapseRules(); uploadForm.style.display = 'grid'; fileInput.focus();
+      });
+      modal.querySelector('.ql-upload-hide').addEventListener('click', function () { uploadForm.style.display = 'none'; });
       function authHeaders() { return { Accept: "application/json", Authorization: "Bearer " + runtime.token(), "X-QuizLab-Client": "web" }; }
       function inTime(iso) {
         var seconds = Math.max(0, Math.ceil((new Date(iso).getTime() - Date.now()) / 1000));
@@ -944,64 +1314,35 @@
         clearInterval(quotaTimer);
         quotaBox.replaceChildren();
         quotaBox.className = "ql-upload-quota";
-        if (!q) { allowed = true; quotaBox.hidden = true; return; }
+        if (!q) { allowed = false; newUpload.disabled = true; quotaBox.textContent = "Upload allowance unavailable. Reopen to retry."; syncButton(); return; }
         quotaBox.hidden = false;
         var top = document.createElement("div"); top.className = "ql-upload-quota-top";
         var head = document.createElement("strong"), sub = document.createElement("small");
-        var showClaim = false;
-        if (!q.is_pro && q.remaining > 0) {
-          allowed = true; quotaBox.classList.add("free"); showClaim = true;
-          head.textContent = "\ud83c\udf81 Your free upload this week";
-          sub.textContent = "Everyone gets " + q.limit + " free upload every " + q.window_days + " days. Pro members get " + (q.pro_limit || 5) + ".";
-        } else if (!q.is_pro) {
-          allowed = false; quotaBox.classList.add("locked");
-          head.textContent = "Free upload used";
-          sub.textContent = (q.resets_at ? "Your next free upload unlocks " + inTime(q.resets_at) + ". " : "") + "Pro members get " + (q.pro_limit || 5) + " every " + q.window_days + " days.";
-        } else if (q.remaining > 0) {
-          allowed = true;
-          head.textContent = q.remaining + " of " + q.limit + " uploads left";
-          sub.textContent = "Allowance for any " + q.window_days + " days";
-        } else {
-          allowed = false; quotaBox.classList.add("empty");
-          head.textContent = "No uploads left right now";
-          sub.textContent = q.resets_at ? "Your next upload unlocks " + inTime(q.resets_at) : "Please try again later";
-        }
-        if (!q.is_pro && q.remaining <= 0 && q.resets_at) {
-          function tick() { sub.textContent = "Next free upload " + inTime(q.resets_at); }
-          tick(); quotaTimer = setInterval(tick, 1000);
+        allowed = q.remaining > 0;
+        head.style.fontSize = '13px';
+        head.textContent = allowed ? (q.is_pro ? q.remaining + ' of ' + q.limit + ' uploads available' : q.remaining + ' free upload available') : 'Upload allowance used';
+        quotaBox.style.padding = '8px 12px';
+        if (!allowed && q.resets_at) {
+          var refreshed = false;
+          function tick() {
+            sub.textContent = 'Next ' + (q.is_pro ? 'upload ' : 'free upload ') + inTime(q.resets_at);
+            if (new Date(q.resets_at).getTime() <= Date.now() && !refreshed) { refreshed = true; clearInterval(quotaTimer); refreshUploads(); }
+          }
+          tick(); if (!refreshed) quotaTimer = setInterval(tick, 1000);
         }
         top.append(head, sub); quotaBox.appendChild(top);
-        if (q.is_pro) {
-          var meter = document.createElement("div"); meter.className = "ql-upload-meter";
-          for (var i = 0; i < q.limit; i++) { var seg = document.createElement("i"); if (i < q.used) seg.className = "used"; seg.style.animationDelay = (i * 60) + "ms"; meter.appendChild(seg); }
-          quotaBox.appendChild(meter);
-        } else {
-          var row = document.createElement("div"); row.className = "ql-upload-quota-actions";
-          if (showClaim) {
-            var claim = document.createElement("button"); claim.type = "button"; claim.className = "ql-upload-claim"; claim.textContent = "Claim free upload";
-            claim.addEventListener("click", function () { drop.classList.add("over"); setTimeout(function () { drop.classList.remove("over"); }, 900); fileInput.click(); });
-            row.appendChild(claim);
-          }
-          var up = document.createElement("button");
-          up.type = "button";
-          up.className = "ql-upload-upgrade";
-          up.textContent = q.remaining <= 0 ? "Get Pro to upload now" : "Get Pro";
-          up.addEventListener("click", function (e) {
-            e.preventDefault();
-            close();
-            if (typeof window.openProPaywall === "function") {
-              window.openProPaywall();
-            } else {
-              location.assign("/pro");
-            }
-          });
-          row.appendChild(up);
-          quotaBox.appendChild(row);
+        if (!q.is_pro) {
+          var up = document.createElement('button'); up.type = 'button'; up.className = 'ql-upload-upgrade';
+          up.style.cssText = 'border:0;background:transparent;color:#3a3fd8;font-weight:700;cursor:pointer;padding:6px 0';
+          up.textContent = allowed ? 'Get ' + (q.pro_limit || 5) + ' · Pro' : 'Get Pro to upload';
+          up.addEventListener('click', function () { close(); if (typeof window.openProPaywall === 'function') window.openProPaywall(); else location.assign('/pro'); });
+          quotaBox.appendChild(up);
         }
+        newUpload.disabled = !allowed;
         drop.classList.toggle("disabled", !allowed);
         syncButton();
       }
-      function syncButton() { button.disabled = !allowed || !fileInput.files.length; }
+      function syncButton() { button.disabled = uploading || !allowed || !fileInput.files.length; }
       function setFile(file) {
         chip.classList.toggle("on", !!file);
         chip.textContent = file ? "📎 " + file.name + " · " + Math.max(1, Math.round(file.size / 1024)) + " KB" : "";
@@ -1027,8 +1368,9 @@
         }).then(function (data) {
           renderQuota(data.quota);
           list.replaceChildren();
-          var papers = Array.isArray(data.papers) ? data.papers : [];
-          if (!papers.length) { var empty = document.createElement("p"); empty.className = "ql-upload-state"; empty.textContent = "No uploads yet. Drop a PDF or JSON above to make your first test."; list.appendChild(empty); return; }
+          var papers = Array.isArray(data.papers) ? data.papers.slice().sort(function (a, b) { return Number(b.id) - Number(a.id); }) : [];
+          if (!papers.length) { var empty = document.createElement("p"); empty.className = "ql-upload-state"; empty.textContent = "Your papers will appear here. Upload a paper and turn it into a practice test."; list.appendChild(empty);
+            var first = document.createElement('button'); first.type = 'button'; first.className = 'ql-upload-claim'; first.style.animation = 'none'; first.textContent = 'Upload your first paper'; first.disabled = !allowed; first.onclick = function () { newUpload.click(); }; list.appendChild(first); return; }
           papers.forEach(function (paper, index) {
             var row = document.createElement("div"); row.className = "ql-upload-item"; row.style.animationDelay = (index * 50) + "ms";
             var info = document.createElement("div");
@@ -1044,7 +1386,7 @@
           message.className = "ql-upload-state ql-upload-error";
           message.textContent = error.message;
           list.appendChild(message);
-          quotaBox.innerHTML = '<div class="ql-upload-quota-top"><strong style="color:#b42318">Uploads unavailable</strong><small>' + error.message + '</small></div>';
+          quotaBox.textContent = "Uploads unavailable: " + error.message; allowed = false; newUpload.disabled = true; syncButton();
         });
       }
       refreshUploads();
@@ -1052,7 +1394,8 @@
       modal.querySelector(".ql-upload-form").addEventListener("submit", function (event) {
         event.preventDefault();
         var file = fileInput.files[0];
-        if (!file || !allowed) return;
+        if (!file || !allowed || uploading) return;
+        uploading = true;
         var n = 0, ticker;
         button.disabled = true; button.classList.add("busy"); button.textContent = steps[0];
         state.className = "ql-upload-state"; state.textContent = "This can take a minute for a PDF.";
@@ -1062,15 +1405,485 @@
           return response.json().catch(function () { return {}; }).then(function (data) { if (!response.ok) { if (data.quota) renderQuota(data.quota); throw new Error(data.error || data.message || "Could not create a test from this file."); } return data; });
         }).then(function (data) {
           state.className = "ql-upload-state ok";
+          list.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
           state.textContent = "✅ " + (data.title || "Your paper") + " is ready with " + (data.question_count || 0) + " questions.";
           fileInput.value = ""; setFile(null);
           if (data.quota) renderQuota(data.quota);
           refreshUploads();
           host.dataset.qlLoaded = "";
           fillMyPapers();
-        }).catch(function (error) { state.className = "ql-upload-state ql-upload-error"; state.textContent = error.message; }).finally(function () { clearInterval(ticker); button.classList.remove("busy"); button.textContent = "Create my test"; syncButton(); });
+        }).catch(function (error) { state.className = "ql-upload-state ql-upload-error"; state.textContent = error.message; }).finally(function () { clearInterval(ticker); uploading = false; button.classList.remove("busy"); button.textContent = "Create my test"; syncButton(); });
       });
     });
+  }
+
+  /* ---------------------------------------------------------------
+   * Try your practice: Spin wheel & custom practice paper builder.
+   * Lets any student customize course, week range, and paper types,
+   * spins the wheel, and builds a 10-question unified paper.
+   * ------------------------------------------------------------- */
+  function syncTryPracticeNav() {
+    var isTry = /^\/(try-practice|spin-practice)(\/|$)/i.test(window.location.pathname);
+    document.querySelectorAll("#root aside nav").forEach(function (nav) {
+      if (!nav.querySelector('a[href="/dashboard"]')) return;
+      var existing = nav.querySelector('a[href="/try-practice"]');
+      if (!existing) {
+        var anchor = nav.querySelector('a[href="/my-papers"]') || nav.querySelector('a[href="/practice"]');
+        if (!anchor) return;
+        existing = document.createElement("a");
+        existing.href = "/try-practice";
+        existing.className = "mb-0.5 flex items-center gap-2.5 rounded-lg px-3 py-[7px] text-[13px] font-medium transition-colors " +
+          (isTry ? "bg-brand text-white shadow-sm" : "text-slate-700 hover:bg-slate-100");
+        existing.innerHTML = '<span class="flex h-5 w-5 items-center justify-center font-bold text-sm">🎯</span><span>Try your practice</span>';
+        existing.addEventListener("click", function (e) {
+          if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+          e.preventDefault();
+          if (window.location.pathname !== "/try-practice") {
+            window.history.pushState(null, "", "/try-practice");
+            schedule();
+          }
+        });
+        if (anchor.nextSibling) {
+          anchor.parentNode.insertBefore(existing, anchor.nextSibling);
+        } else {
+          anchor.parentNode.appendChild(existing);
+        }
+      } else {
+        existing.className = "mb-0.5 flex items-center gap-2.5 rounded-lg px-3 py-[7px] text-[13px] font-medium transition-colors " +
+          (isTry ? "bg-brand text-white shadow-sm" : "text-slate-700 hover:bg-slate-100");
+      }
+    });
+  }
+
+  function fillTryPractice() {
+    var onTry = /^\/(try-practice|spin-practice)(\/|$)/i.test(window.location.pathname);
+    var host = document.getElementById("ql-try-practice");
+    if (!host && onTry) {
+      var main = document.querySelector("#root main");
+      if (main && !main.querySelector(".ql-spin-container")) {
+        host = document.createElement("div");
+        host.id = "ql-try-practice";
+        main.replaceChildren(host);
+      }
+    }
+    if (!host || host.dataset.qlLoaded) return;
+    var runtime = window.QLStorefront;
+    if (!runtime || !runtime.token()) return;
+    host.dataset.qlLoaded = "1";
+
+    document.title = "Try your practice · Quiz LAB";
+
+    host.innerHTML = [
+      '<div class="ql-spin-container">',
+        '<div class="ql-spin-head">',
+          '<span class="ql-spin-eyebrow">Quiz LAB · Custom Practice</span>',
+          '<h1>Try your practice.</h1>',
+          '<p>Pick a course, select your week range and paper types, then spin the wheel to roll a randomized 10-question unified paper.</p>',
+        '</div>',
+        '<div class="ql-spin-grid">',
+          '<!-- Left: Wheel card -->',
+          '<div class="ql-spin-wheel-card">',
+            '<div class="ql-wheel-stage">',
+              '<div class="ql-wheel-pointer" id="ql-wheel-pointer"></div>',
+              '<canvas id="ql-spin-canvas" width="340" height="340"></canvas>',
+              '<button type="button" class="ql-wheel-center-btn" id="ql-wheel-center-btn" aria-label="Spin wheel">SPIN</button>',
+            '</div>',
+            '<div class="ql-spin-outcome" id="ql-spin-outcome">Ready to spin! Choose a course &amp; options.</div>',
+          '</div>',
+          '<!-- Right: Customization card -->',
+          '<div class="ql-spin-custom-card">',
+            '<div class="ql-spin-custom-head">',
+              '<h2>Customization</h2>',
+              '<span class="ql-spin-badge-10">⚡ 10 Questions Max</span>',
+            '</div>',
+            '<div class="ql-spin-field">',
+              '<label for="ql-spin-course">Select Course <span class="req">*</span></label>',
+              '<select id="ql-spin-course" class="ql-spin-select">',
+                '<option value="">Loading courses…</option>',
+              '</select>',
+            '</div>',
+            '<div class="ql-spin-field">',
+              '<label>Week 1–12 Range: <strong id="ql-week-range-text" style="color:#3a3fd8">Weeks 1 – 12</strong></label>',
+              '<div class="ql-spin-slider-box">',
+                '<div class="ql-spin-slider-labels">',
+                  '<span>From: <strong id="ql-week-min-lbl">Week 1</strong></span>',
+                  '<span>To: <strong id="ql-week-max-lbl">Week 12</strong></span>',
+                '</div>',
+                '<div class="ql-spin-dual-range">',
+                  '<input type="range" id="ql-spin-week-min" min="1" max="12" value="1" step="1" aria-label="Start week">',
+                  '<input type="range" id="ql-spin-week-max" min="1" max="12" value="12" step="1" aria-label="End week">',
+                '</div>',
+                '<div class="ql-spin-week-presets">',
+                  '<button type="button" class="ql-spin-preset-btn active" data-preset="all">All (1–12)</button>',
+                  '<button type="button" class="ql-spin-preset-btn" data-preset="q1">Quiz 1 (1–4)</button>',
+                  '<button type="button" class="ql-spin-preset-btn" data-preset="q2">Quiz 2 (5–8)</button>',
+                  '<button type="button" class="ql-spin-preset-btn" data-preset="q3">Weeks 9–12</button>',
+                '</div>',
+              '</div>',
+            '</div>',
+            '<div class="ql-spin-field">',
+              '<label>Paper Types</label>',
+              '<div class="ql-spin-types-grid">',
+                '<label class="ql-spin-type-pill active" data-type="all"><input type="checkbox" checked value="all"> All Types</label>',
+                '<label class="ql-spin-type-pill" data-type="pa"><input type="checkbox" value="pa"> PA (Practice)</label>',
+                '<label class="ql-spin-type-pill" data-type="ga"><input type="checkbox" value="ga"> GA (Graded)</label>',
+                '<label class="ql-spin-type-pill" data-type="other"><input type="checkbox" value="other"> Other (Q1, Q2, Mock)</label>',
+              '</div>',
+            '</div>',
+            '<div class="ql-spin-field">',
+              '<label>Practice Timer</label>',
+              '<div class="ql-spin-time-grid">',
+                '<button type="button" class="ql-spin-time-btn" data-time="15">15 min</button>',
+                '<button type="button" class="ql-spin-time-btn active" data-time="20">20 min</button>',
+                '<button type="button" class="ql-spin-time-btn" data-time="30">30 min</button>',
+                '<button type="button" class="ql-spin-time-btn" data-time="45">45 min</button>',
+                '<button type="button" class="ql-spin-time-btn" data-time="60">60 min</button>',
+              '</div>',
+            '</div>',
+            '<div class="ql-spin-field">',
+              '<label for="ql-spin-name">Paper Name <span style="font-weight:400;color:#64748b;font-size:11.5px">(optional override)</span></label>',
+              '<input type="text" id="ql-spin-name" class="ql-spin-input" placeholder="e.g. Rapid Fire Week 1-4 Blitz" maxlength="150">',
+            '</div>',
+            '<button type="button" class="ql-spin-main-btn" id="ql-spin-main-btn">🎯 Spin the Wheel to Practice</button>',
+          '</div>',
+        '</div>',
+      '</div>'
+    ].join("");
+
+    var canvas = host.querySelector("#ql-spin-canvas");
+    var ctx = canvas ? canvas.getContext("2d") : null;
+    var pointer = host.querySelector("#ql-wheel-pointer");
+    var centerBtn = host.querySelector("#ql-wheel-center-btn");
+    var mainBtn = host.querySelector("#ql-spin-main-btn");
+    var outcome = host.querySelector("#ql-spin-outcome");
+    var courseSelect = host.querySelector("#ql-spin-course");
+    var weekMinInput = host.querySelector("#ql-spin-week-min");
+    var weekMaxInput = host.querySelector("#ql-spin-week-max");
+    var weekRangeText = host.querySelector("#ql-week-range-text");
+    var weekMinLbl = host.querySelector("#ql-week-min-lbl");
+    var weekMaxLbl = host.querySelector("#ql-week-max-lbl");
+    var nameInput = host.querySelector("#ql-spin-name");
+
+    var segments = [
+      { label: "PA Drill", color: "#4f46e5" },
+      { label: "GA Boost", color: "#7c3aed" },
+      { label: "Rapid 10", color: "#db2777" },
+      { label: "Quiz 1 Prep", color: "#e11d48" },
+      { label: "Quiz 2 Mix", color: "#d97706" },
+      { label: "Speed Test", color: "#059669" },
+      { label: "End Term Blitz", color: "#0284c7" },
+      { label: "Mastery Spin", color: "#2563eb" }
+    ];
+    var numSegments = segments.length;
+    var currentAngle = 0;
+    var isSpinning = false;
+    var selectedTime = 20;
+
+    function drawWheel(angle) {
+      if (!ctx || !canvas) return;
+      var w = canvas.width;
+      var h = canvas.height;
+      var cx = w / 2;
+      var cy = h / 2;
+      var radius = cx - 12;
+
+      ctx.clearRect(0, 0, w, h);
+      ctx.save();
+      ctx.translate(cx, cy);
+      ctx.rotate((angle * Math.PI) / 180);
+
+      var arc = (2 * Math.PI) / numSegments;
+      for (var i = 0; i < numSegments; i++) {
+        var startA = i * arc;
+        var endA = startA + arc;
+
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+        ctx.arc(0, 0, radius, startA, endA);
+        ctx.closePath();
+        ctx.fillStyle = segments[i].color;
+        ctx.fill();
+
+        ctx.lineWidth = 2;
+        ctx.strokeStyle = "rgba(255,255,255,0.35)";
+        ctx.stroke();
+
+        ctx.save();
+        ctx.rotate(startA + arc / 2);
+        ctx.textAlign = "right";
+        ctx.fillStyle = "#ffffff";
+        ctx.font = "bold 13px system-ui, -apple-system, sans-serif";
+        ctx.shadowColor = "rgba(0,0,0,0.45)";
+        ctx.shadowBlur = 3;
+        ctx.fillText(segments[i].label, radius - 20, 5);
+        ctx.restore();
+      }
+
+      for (var j = 0; j < numSegments * 2; j++) {
+        var dotAngle = j * (Math.PI / numSegments);
+        var dx = (radius - 5) * Math.cos(dotAngle);
+        var dy = (radius - 5) * Math.sin(dotAngle);
+        ctx.beginPath();
+        ctx.arc(dx, dy, 3, 0, 2 * Math.PI);
+        ctx.fillStyle = "#ffffff";
+        ctx.fill();
+      }
+
+      ctx.restore();
+    }
+
+    drawWheel(0);
+
+    fetch(runtime.apiBase + "/courses", {
+      headers: { Accept: "application/json", Authorization: "Bearer " + runtime.token() }
+    }).then(function (res) {
+      if (!res.ok) throw new Error("Could not load courses");
+      return res.json();
+    }).then(function (courses) {
+      if (!courseSelect) return;
+      var list = Array.isArray(courses) ? courses : [];
+      courseSelect.innerHTML = '<option value="">— Select Course (Must) —</option>' +
+        list.map(function (c) {
+          return '<option value="' + c.id + '">' + (c.name || 'Course ' + c.id) + '</option>';
+        }).join("");
+    }).catch(function () {
+      if (courseSelect) courseSelect.innerHTML = '<option value="">Could not load courses</option>';
+    });
+
+    function updateWeekRange() {
+      var min = parseInt(weekMinInput.value, 10);
+      var max = parseInt(weekMaxInput.value, 10);
+      if (min > max) {
+        if (this === weekMinInput) { max = min; weekMaxInput.value = max; }
+        else { min = max; weekMinInput.value = min; }
+      }
+      weekMinLbl.textContent = "Week " + min;
+      weekMaxLbl.textContent = "Week " + max;
+      weekRangeText.textContent = min === max ? "Week " + min : "Weeks " + min + " – " + max;
+
+      host.querySelectorAll(".ql-spin-preset-btn").forEach(function (btn) {
+        var p = btn.dataset.preset;
+        var active = (p === "all" && min === 1 && max === 12) ||
+                     (p === "q1" && min === 1 && max === 4) ||
+                     (p === "q2" && min === 5 && max === 8) ||
+                     (p === "q3" && min === 9 && max === 12);
+        btn.classList.toggle("active", active);
+      });
+    }
+
+    weekMinInput.addEventListener("input", updateWeekRange);
+    weekMaxInput.addEventListener("input", updateWeekRange);
+
+    host.querySelectorAll(".ql-spin-preset-btn").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var p = btn.dataset.preset;
+        if (p === "all") { weekMinInput.value = 1; weekMaxInput.value = 12; }
+        else if (p === "q1") { weekMinInput.value = 1; weekMaxInput.value = 4; }
+        else if (p === "q2") { weekMinInput.value = 5; weekMaxInput.value = 8; }
+        else if (p === "q3") { weekMinInput.value = 9; weekMaxInput.value = 12; }
+        updateWeekRange();
+      });
+    });
+
+    var typeLabels = host.querySelectorAll(".ql-spin-type-pill");
+    typeLabels.forEach(function (pill) {
+      var checkbox = pill.querySelector("input");
+      checkbox.addEventListener("change", function () {
+        var t = pill.dataset.type;
+        if (t === "all") {
+          var checked = checkbox.checked;
+          typeLabels.forEach(function (other) {
+            var oc = other.querySelector("input");
+            oc.checked = checked;
+            other.classList.toggle("active", checked);
+          });
+        } else {
+          pill.classList.toggle("active", checkbox.checked);
+          var allPill = host.querySelector('.ql-spin-type-pill[data-type="all"]');
+          var allCheck = allPill.querySelector("input");
+          var subPills = [].slice.call(typeLabels).filter(function (p) { return p.dataset.type !== "all"; });
+          var allSelected = subPills.every(function (p) { return p.querySelector("input").checked; });
+          allCheck.checked = allSelected;
+          allPill.classList.toggle("active", allSelected);
+        }
+      });
+    });
+
+    host.querySelectorAll(".ql-spin-time-btn").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        host.querySelectorAll(".ql-spin-time-btn").forEach(function (b) { b.classList.remove("active"); });
+        btn.classList.add("active");
+        selectedTime = parseInt(btn.dataset.time, 10) || 20;
+      });
+    });
+
+    function spinWheel() {
+      if (isSpinning) return;
+      var courseId = courseSelect.value;
+      if (!courseId) {
+        courseSelect.classList.add("error");
+        courseSelect.focus();
+        outcome.className = "ql-spin-outcome error";
+        outcome.textContent = "⚠️ Please select a course first!";
+        return;
+      }
+      courseSelect.classList.remove("error");
+
+      var weekMin = parseInt(weekMinInput.value, 10) || 1;
+      var weekMax = parseInt(weekMaxInput.value, 10) || 12;
+      var allCheck = host.querySelector('.ql-spin-type-pill[data-type="all"] input').checked;
+      var types = [];
+      if (allCheck) {
+        types = ["all"];
+      } else {
+        if (host.querySelector('.ql-spin-type-pill[data-type="pa"] input').checked) types.push("pa");
+        if (host.querySelector('.ql-spin-type-pill[data-type="ga"] input').checked) types.push("ga");
+        if (host.querySelector('.ql-spin-type-pill[data-type="other"] input').checked) {
+          types.push("quiz1", "quiz2", "endterm", "mock_test");
+        }
+      }
+      if (!types.length) types = ["all"];
+
+      var customTitle = nameInput.value.trim();
+
+      isSpinning = true;
+      centerBtn.disabled = true;
+      mainBtn.disabled = true;
+      outcome.className = "ql-spin-outcome spinning";
+      outcome.textContent = "Spinning & generating your 10-question practice paper…";
+
+      var startAngle = currentAngle;
+      var randomExtra = Math.floor(Math.random() * numSegments) * (360 / numSegments) + (Math.random() * 20 - 10);
+      var totalRotation = 360 * 6 + randomExtra;
+      var targetAngle = startAngle + totalRotation;
+      var duration = 3600;
+      var startTime = performance.now();
+      var tickTimer = null;
+
+      function easeOutCubic(t) { return (--t) * t * t + 1; }
+
+      var paperResult = null;
+      var apiError = null;
+
+      fetch(runtime.apiBase + "/student/spin-practice", {
+        method: "POST",
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json",
+          "Authorization": "Bearer " + runtime.token()
+        },
+        body: JSON.stringify({
+          course_id: parseInt(courseId, 10),
+          week_min: weekMin,
+          week_max: weekMax,
+          paper_types: types,
+          title: customTitle,
+          time_limit_minutes: selectedTime
+        })
+      }).then(function (res) {
+        return res.json().then(function (data) {
+          if (!res.ok) throw new Error(data.error || data.message || "Failed to generate paper.");
+          return data;
+        });
+      }).then(function (data) {
+        paperResult = data;
+      }).catch(function (err) {
+        apiError = err.message || "Error generating paper.";
+      });
+
+      function animate(now) {
+        var elapsed = now - startTime;
+        var progress = Math.min(1, elapsed / duration);
+        var eased = easeOutCubic(progress);
+        var current = startAngle + totalRotation * eased;
+        drawWheel(current);
+
+        if (pointer) {
+          var step = Math.floor(current / (360 / numSegments));
+          if (step !== pointer._lastStep) {
+            pointer._lastStep = step;
+            pointer.classList.add("tick");
+            clearTimeout(tickTimer);
+            tickTimer = setTimeout(function () { pointer.classList.remove("tick"); }, 60);
+          }
+        }
+
+        if (progress < 1) {
+          requestAnimationFrame(animate);
+        } else {
+          currentAngle = targetAngle % 360;
+          isSpinning = false;
+          centerBtn.disabled = false;
+          mainBtn.disabled = false;
+
+          if (apiError) {
+            outcome.className = "ql-spin-outcome error";
+            outcome.textContent = "❌ " + apiError;
+          } else if (paperResult) {
+            outcome.className = "ql-spin-outcome ready";
+            outcome.textContent = "🎉 " + paperResult.title + " is ready with " + (paperResult.question_count || 10) + " questions!";
+            showCelebrationModal(paperResult);
+          } else {
+            outcome.className = "ql-spin-outcome ready";
+            outcome.textContent = "Generating paper… almost ready!";
+            var checkInterval = setInterval(function () {
+              if (paperResult || apiError) {
+                clearInterval(checkInterval);
+                if (paperResult) {
+                  outcome.className = "ql-spin-outcome ready";
+                  outcome.textContent = "🎉 " + paperResult.title + " is ready!";
+                  showCelebrationModal(paperResult);
+                } else {
+                  outcome.className = "ql-spin-outcome error";
+                  outcome.textContent = "❌ " + apiError;
+                }
+              }
+            }, 200);
+          }
+        }
+      }
+
+      requestAnimationFrame(animate);
+    }
+
+    centerBtn.addEventListener("click", spinWheel);
+    mainBtn.addEventListener("click", spinWheel);
+    canvas.addEventListener("click", spinWheel);
+
+    function showCelebrationModal(paper) {
+      var overlay = document.createElement("div");
+      overlay.className = "ql-spin-modal-overlay";
+      overlay.innerHTML = [
+        '<div class="ql-spin-modal" role="dialog" aria-modal="true" aria-labelledby="ql-sm-title">',
+          '<div class="ql-spin-modal-icon">🎯</div>',
+          '<h2 id="ql-sm-title">Your Practice Paper is Ready!</h2>',
+          '<p class="ql-spin-modal-sub">Unified random questions assembled from your selected papers.</p>',
+          '<div class="ql-spin-modal-details">',
+            '<div class="ql-spin-modal-row"><span>Paper</span><strong>' + (paper.title || "Custom Practice") + '</strong></div>',
+            '<div class="ql-spin-modal-row"><span>Course</span><strong>' + ((paper.course || {}).name || "Selected course") + '</strong></div>',
+            '<div class="ql-spin-modal-row"><span>Questions</span><strong>' + (paper.question_count || 10) + ' questions (Random mix)</strong></div>',
+            '<div class="ql-spin-modal-row"><span>Time Limit</span><strong>' + (paper.time_limit_minutes || 20) + ' minutes</strong></div>',
+            '<div class="ql-spin-modal-row"><span>Privacy</span><strong>Only visible to you</strong></div>',
+          '</div>',
+          '<div class="ql-spin-modal-actions">',
+            '<a class="ql-spin-modal-start" href="/paper/' + encodeURIComponent(paper.id) + '">🚀 Start Practice Now →</a>',
+            '<div class="ql-spin-modal-sec">',
+              '<a class="ql-spin-modal-btn" href="/my-papers">📁 View in My Papers</a>',
+              '<button type="button" class="ql-spin-modal-btn ql-sm-close">Spin Again</button>',
+            '</div>',
+          '</div>',
+        '</div>'
+      ].join("");
+
+      document.body.appendChild(overlay);
+
+      function closeModal() { overlay.remove(); }
+      overlay.querySelector(".ql-sm-close").addEventListener("click", closeModal);
+      overlay.addEventListener("click", function (e) { if (e.target === overlay) closeModal(); });
+      document.addEventListener("keydown", function esc(e) {
+        if (e.key === "Escape" && overlay.isConnected) { closeModal(); document.removeEventListener("keydown", esc); }
+      });
+    }
   }
 
   /* ---------------------------------------------------------------
@@ -2106,6 +2919,8 @@
     syncPhoneTopBar();
     decorateManagerConsole();
     fillMyPapers();
+    fillTryPractice();
+    syncTryPracticeNav();
     decoratePracticeCards();
     decoratePracticeList();
     syncConsoleNav();

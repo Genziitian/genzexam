@@ -77,10 +77,11 @@ class StorefrontController extends Controller
             $entitlement = $entitlements->get($quiz->id);
             $rows = $attempts->get($quiz->id, collect());
             if ($quiz->is_personal) {
+                $isSpin = $quiz->description && str_contains($quiz->description, 'Spin Wheel');
                 return [
                     ...$this->paperSummary($quiz),
-                    'course' => ['name' => 'My uploads', 'slug' => ''],
-                    'source' => 'personal_upload',
+                    'course' => ['name' => $quiz->course?->name ?: ($isSpin ? 'Spin Practice' : 'My uploads'), 'slug' => $quiz->course?->slug ?: ''],
+                    'source' => $isSpin ? 'spin_practice' : 'personal_upload',
                     'purchased' => false,
                     'owned_since' => $quiz->created_at,
                     'expires_at' => null,

@@ -27,6 +27,7 @@ use App\Http\Controllers\ExamPlatformController;
 use App\Http\Controllers\StorefrontController;
 use App\Http\Controllers\ManagerUploadedPaperController;
 use App\Http\Controllers\StudentUploadedPaperController;
+use App\Http\Controllers\StudentSpinPracticeController;
 use App\Http\Controllers\ManagerSalesController;
 use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\ManagerSystemController;
@@ -107,6 +108,7 @@ Route::middleware(['auth:sanctum', 'track.seen'])->group(function () {
     Route::get('/student/dashboard', [DashboardController::class, 'index']);
     Route::get('/student/uploaded-papers', [StudentUploadedPaperController::class, 'index']);
     Route::post('/student/uploaded-papers', [StudentUploadedPaperController::class, 'store'])->middleware('throttle:5,60');
+    Route::post('/student/spin-practice', [StudentSpinPracticeController::class, 'generate'])->middleware('throttle:20,1');
 
     // Self-serve paper access and Razorpay checkout.
     Route::get('/storefront/my-papers', [StorefrontController::class, 'myPapers']);
