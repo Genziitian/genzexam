@@ -6611,7 +6611,8 @@ class _MoreTabState extends State<_MoreTab> {
                 _exploreTile(
                   icon: Icons.casino_outlined,
                   color: const Color(0xFF7C3AED),
-                  title: 'Try your practice',
+                  title: 'Test yourself',
+                  badge: 'PRO',
                   subtitle: 'Spin a custom practice paper',
                   onTap: () => Navigator.of(context).push(MaterialPageRoute<void>(
                     builder: (_) => SpinPracticeScreen(

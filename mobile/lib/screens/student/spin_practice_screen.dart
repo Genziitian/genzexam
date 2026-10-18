@@ -589,7 +589,32 @@ class _SpinPracticeScreenState extends State<SpinPracticeScreen>
                   : const Duration(milliseconds: 650),
               curve: Curves.easeInOut,
               child: Scaffold(
-                appBar: AppBar(title: const Text('Try your practice')),
+                appBar: AppBar(
+                  title: Row(
+                    children: [
+                      const Flexible(child: Text('Test yourself')),
+                      const SizedBox(width: 10),
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 8,
+                          vertical: 4,
+                        ),
+                        decoration: BoxDecoration(
+                          color: const Color(0xFFFFD36E),
+                          borderRadius: BorderRadius.circular(6),
+                        ),
+                        child: const Text(
+                          'PRO',
+                          style: TextStyle(
+                            color: Color(0xFF714308),
+                            fontSize: 11,
+                            fontWeight: FontWeight.w800,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
                 bottomNavigationBar:
                     !_loading && _loadError == null && _courses.isNotEmpty
                     ? _footer(scheme)
@@ -621,26 +646,39 @@ class _SpinPracticeScreenState extends State<SpinPracticeScreen>
                         padding: const EdgeInsets.fromLTRB(20, 8, 20, 32),
                         children: [
                           Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              OutlinedButton(
-                                onPressed: _busy ? null : _showHelp,
-                                child: const Text('How it works'),
-                              ),
-                              const SizedBox(width: 14),
                               const Expanded(
                                 child: Text(
-                                  'Spin a fresh paper.',
+                                  'Test yourself',
                                   style: TextStyle(
                                     fontSize: 24,
                                     fontWeight: FontWeight.w800,
                                   ),
                                 ),
                               ),
+                              const SizedBox(width: 8),
+                              OutlinedButton(
+                                style: OutlinedButton.styleFrom(
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 10,
+                                    vertical: 4,
+                                  ),
+                                  visualDensity: VisualDensity.compact,
+                                  textStyle: const TextStyle(fontSize: 12),
+                                ),
+                                onPressed: _busy ? null : _showHelp,
+                                child: const Text('How it works'),
+                              ),
                             ],
                           ),
                           const SizedBox(height: 6),
-                          const Text(
-                            'Up to 10 random questions. 1 spin/day free, up to 7/day with Pro. Resets at midnight IST. Papers are private and cannot be shared.',
+                          Text(
+                            'Generate 10 random question',
+                            style: TextStyle(
+                              fontSize: 14,
+                              color: scheme.onSurfaceVariant,
+                            ),
                           ),
                           const SizedBox(height: 20),
                           PracticeWheel(

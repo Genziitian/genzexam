@@ -1664,7 +1664,7 @@
   });
 
   /* ---------------------------------------------------------------
-   * Try your practice: Spin wheel & custom practice paper builder.
+   * Test yourself: Spin wheel & custom practice paper builder.
    * Lets any student customize course, week range, and paper types,
    * spins the wheel, and builds a 10-question unified paper.
    * ------------------------------------------------------------- */
@@ -1681,7 +1681,7 @@
         existing.dataset.qlInjected = "1";
         existing.className = "mb-0.5 flex items-center gap-2.5 rounded-lg px-3 py-[7px] text-[13px] font-medium transition-all " +
           (isTry ? "ql-nav-active" : "text-[#9ca3af] hover:bg-[#1c2533] hover:text-[#e5e7eb]");
-        existing.innerHTML = '<span class="flex h-5 w-5 items-center justify-center font-bold text-sm">🎯</span><span>Try your practice</span>';
+        existing.innerHTML = '<span class="flex h-5 w-5 items-center justify-center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/></svg></span><span>Test yourself</span>';
         existing.addEventListener("click", function (e) {
           if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
           e.preventDefault();
@@ -1712,6 +1712,13 @@
           existing.classList.remove("ql-nav-active");
           existing.classList.add("text-[#9ca3af]");
         }
+      }
+      if (!existing.querySelector('.ql-spin-pro-badge')) {
+        var badge = document.createElement('span');
+        badge.className = 'ql-spin-pro-badge';
+        badge.textContent = 'PRO';
+        badge.title = 'Pro: up to 7 spins daily. Free: 1 daily.';
+        existing.appendChild(badge);
       }
     });
   }
@@ -1777,10 +1784,10 @@
     var runtime = window.QLStorefront;
     if (!runtime || !runtime.token()) return;
     host.dataset.qlLoaded = "1";
-    document.title = "Try your practice · Quiz LAB";
+    document.title = "Test yourself · Quiz LAB";
     host.innerHTML = [
       '<section class="ql-spin-container">',
-        '<header class="ql-spin-head"><div class="ql-spin-heading-row"><button type="button" class="ql-spin-help-button" id="ql-spin-help" aria-haspopup="dialog">How it works</button><h1>Try your practice.</h1></div><p>Get random 10 question</p><p class="ql-spin-daily-quota" id="ql-spin-daily-quota" role="status">1 spin/day free · Up to 7/day with Pro · Private papers</p></header>',
+        '<header class="ql-spin-head"><div class="ql-spin-heading-row"><button type="button" class="ql-spin-help-button" id="ql-spin-help" aria-haspopup="dialog">How it works</button><h1>Test yourself <span class="ql-spin-pro-badge" title="Pro: up to 7 spins daily. Free: 1 daily.">PRO</span></h1></div><p>Get random 10 question</p><p class="ql-spin-daily-quota" id="ql-spin-daily-quota" role="status">1 spin/day free · Up to 7/day with Pro · Private papers</p></header>',
         '<div class="ql-spin-grid">',
           '<div class="ql-spin-wheel-card">',
             '<div class="ql-wheel-stage" aria-hidden="true"><canvas id="ql-spin-canvas" width="680" height="680"></canvas>',

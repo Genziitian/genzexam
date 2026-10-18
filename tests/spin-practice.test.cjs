@@ -15,7 +15,7 @@ const controllerPath = path.join(root, "backend", "app", "Http", "Controllers", 
 
 // 1. Bundle verification
 assert.ok(
-  bundle.includes('{to:`/try-practice`,label:`Try your practice`,Icon:ec}'),
+  bundle.includes('{to:`/try-practice`,label:`Test yourself`,Icon:ec}'),
   "React navigation items list (_c) must include /try-practice tab"
 );
 assert.ok(
@@ -23,7 +23,7 @@ assert.ok(
   "React router must include /try-practice route with #ql-try-practice container"
 );
 assert.ok(
-  bundle.includes('e===`/try-practice`?`Try your practice`'),
+  bundle.includes('e===`/try-practice`?`Test yourself`'),
   "React route title lookup must handle /try-practice"
 );
 
@@ -103,4 +103,4 @@ assert.ok(
   "index.html must reference refreshed app-enhancements.js query parameter"
 );
 
-console.log("PASS: Spin wheel Try your practice, customization sliders, API routes, and styles verified successfully.");
+console.log("PASS: Spin wheel Test yourself, customization sliders, API routes, and styles verified successfully.");

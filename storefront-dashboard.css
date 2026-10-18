@@ -934,3 +934,9 @@ html[data-ql-vs-locked] #root main>*:not(#ql-vs-soon){display:none!important}
 :root[data-theme=dark] .ql-up-rule-item{color:#94a3b8}
 :root[data-theme=dark] .ql-up-rule-item strong{color:#f1f5f9}
 
+
+/* Test yourself is a Pro benefit with one free daily spin for every account. */
+.ql-spin-pro-badge{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;padding:4px 7px;border:1px solid #edc36e;border-radius:6px;background:linear-gradient(135deg,#fff0c2,#ffc963);color:#714308!important;font-size:10px;font-weight:800;line-height:1;letter-spacing:.04em;vertical-align:middle}
+.ql-spin-heading-row h1{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.ql-spin-heading-row h1 .ql-spin-pro-badge{font-size:11px;padding:5px 8px;letter-spacing:.04em}
+#root aside nav a[href="/try-practice"]>.ql-spin-pro-badge{margin-left:auto}
