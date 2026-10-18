@@ -588,8 +588,8 @@
     });
     if (!hello) return;
 
-    var root = hello.parentElement;
-    while (root && root.id !== "root" && !/CURRENT STREAK/.test(root.textContent)) root = root.parentElement;
+    var root = hello.closest('[data-ql-dash="root"]') || hello.parentElement;
+    while (root && root.id !== "root" && !root.hasAttribute("data-ql-dash") && !/CURRENT STREAK/.test(root.textContent)) root = root.parentElement;
     if (!root || root.id === "root") return;
     tag(root, "data-ql-dash", "root");
     tag(hello, "data-ql-hello", "");
@@ -675,7 +675,8 @@
     var statCard = root.querySelector("[data-ql-stat]");
     var statGrid = statCard ? statCard.parentElement : null;
     var perfCard = root.querySelector("[data-ql-card=perf]");
-    if (!statGrid && !perfCard) return;
+    var dashboardStatus = root.querySelector("[data-ql-dashboard-status]");
+    if (!statGrid && !perfCard && !dashboardStatus) return;
 
     var existing = root.querySelector("#ql-dash-quick-actions");
     if (!existing) {
@@ -757,6 +758,10 @@
     } else if (perfCard && perfCard.parentNode) {
       if (existing.nextElementSibling !== perfCard || existing.parentNode !== perfCard.parentNode) {
         perfCard.parentNode.insertBefore(existing, perfCard);
+      }
+    } else if (dashboardStatus && dashboardStatus.parentNode) {
+      if (existing.previousElementSibling !== dashboardStatus || existing.parentNode !== dashboardStatus.parentNode) {
+        dashboardStatus.parentNode.insertBefore(existing, dashboardStatus.nextSibling);
       }
     }
   }
