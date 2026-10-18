@@ -61,7 +61,11 @@ class _ProMembershipCardState extends State<ProMembershipCard> {
         isError: true,
       ),
     );
-    _load();
+    if (widget.fullScreen) {
+      _load();
+    } else {
+      _loading = false;
+    }
   }
 
   @override
@@ -345,6 +349,36 @@ class _ProMembershipCardState extends State<ProMembershipCard> {
 
   @override
   Widget build(BuildContext context) {
+    if (!widget.fullScreen)
+      return Card(
+        margin: const EdgeInsets.only(bottom: 18),
+        child: ListTile(
+          leading: const Icon(
+            Icons.receipt_long_outlined,
+            color: Color(0xFF16A34A),
+          ),
+          title: const Text('Membership & transactions'),
+          subtitle: const Text('Your plan, payments and subscription controls'),
+          trailing: const Icon(Icons.chevron_right),
+          onTap: () => Navigator.of(context).push(
+            MaterialPageRoute<void>(
+              builder: (_) => MembershipHistoryScreen(
+                apiClient: widget.apiClient,
+                onRestore: _restore,
+                onViewPlans: () async {
+                  await Navigator.of(context).push(
+                    MaterialPageRoute<void>(
+                      builder: (_) =>
+                          ProMembershipScreen(apiClient: widget.apiClient),
+                    ),
+                  );
+                  if (mounted) await _load();
+                },
+              ),
+            ),
+          ),
+        ),
+      );
     final subscription = _membership['subscription'] is Map
         ? Map<String, dynamic>.from(_membership['subscription'] as Map)
         : <String, dynamic>{};

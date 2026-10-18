@@ -100,3 +100,20 @@ A shared SuccessTick widget expands the green circle and draws the white tick on
 Read requests now use the screen-owned spinner only. The shared app loader renders only for blocking work, with an opaque backdrop that hides screen loaders beneath it. This removes the duplicate purple/green indicators.
 
 The known Play monthly trial offer ID trial-7-days is the fallback when the backend omits an ID. It must still be returned by Google Play for the current account, and Quiz LAB must report trial eligibility. Eligible monthly cards show Try for free, the trial calculation and first billing date; other accounts receive regular monthly terms. Checkout remains disabled when backend billing verification configuration is missing. Removed the duplicated unavailable sentence on the paywall.
+
+
+## Dedicated membership screen and receipt summary
+
+The More page now has a compact Membership & transactions entry. It opens a dedicated app screen with Membership and Transactions tabs. The web More page opens a matching management panel with the same tabs. Membership details include status, provider, start, trial and current-period end; transaction history is paginated.
+
+Eligible monthly trials display a receipt: monthly price, negative trial discount, divider, FREE due today, estimated first charge date and amount. Cancellation wording and a linked Terms & Conditions acknowledgement accompany checkout. The date assumes checkout is completed today; the provider confirms the exact time. Yearly stays a paid annual choice with no trial.
+
+POST /membership/manage accepts an owned subscription_id and action cancel/pause/resume. The backend scopes lookup to the authenticated user's subscriptions. Provider errors do not mark the local action successful. Razorpay pause/resume uses its real API and only updates local state after the expected provider status is returned. Pause is immediate: access from this subscription is suspended and no refund is requested. Resume may involve a charge according to Razorpay's schedule. Another independent active membership remains effective.
+
+Google Play management opens its subscription centre, where pause/resume/resubscribe availability is decided by Google and the Play Console configuration. The app never implements Google pause as a local database toggle. Cancel renewal requests provider cancellation and keeps the existing access end date. Subscribe again opens a fresh checkout after access ends; a paused subscription is resumed through its own provider instead.
+
+For Razorpay, additionally enable subscription.paused and subscription.resumed on the existing signed webhook. The app refreshes membership on return from the provider. For Google, existing RTDN processing supplies the refreshed store state.
+
+Provider references: https://developer.android.com/google/play/billing/subscriptions and https://github.com/razorpay/razorpay-php/blob/master/documents/subscription.md .
+
+Checks: Dart files parsed/formatted and JavaScript syntax passed. Added backend regression cases for ownership, provider failure preserving access, and confirmed pause/resume. Backend tests, device interaction and real provider mutations were not run. A PHP syntax-check attempt could not start because the available WASM runtime tries to bind a local port that this sandbox disallows. No production cancellation, pause or charge was performed.

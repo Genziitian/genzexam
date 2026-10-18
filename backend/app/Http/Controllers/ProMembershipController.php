@@ -84,6 +84,44 @@ class ProMembershipController extends Controller
         return response()->json(['message' => 'Your Pro membership has been cancelled.', 'subscription' => $this->subscriptionData($subscription->fresh())]);
     }
 
+    public function manage(Request $request): JsonResponse
+    {
+        $data = $request->validate(['subscription_id' => ['required','integer'], 'action' => ['required','in:cancel,pause,resume']]);
+        try {
+            $subscription = DB::transaction(function () use ($request, $data) {
+                $sub = $request->user()->proSubscriptions()->whereKey($data['subscription_id'])->lockForUpdate()->firstOrFail();
+                abort_unless(in_array($sub->provider, ['google_play','razorpay'], true), 422, 'This membership has no recurring billing to manage.');
+                $action = $data['action'];
+                if ($action === 'cancel') {
+                    abort_unless(in_array($sub->status, ['active','trialing','paused'], true), 422, 'This membership is not renewing.');
+                    if (! $sub->cancel_at_period_end) {
+                        if ($sub->provider === 'google_play') app(GooglePlaySubscriptions::class)->cancel((string) $sub->google_purchase_token, 'user');
+                        else app(RazorpayProSubscriptions::class)->cancel((string) $sub->provider_subscription_id);
+                        $sub->update(['cancel_at_period_end' => true, 'cancelled_at' => now(), 'cancellation_source' => 'user']);
+                    }
+                } else {
+                    abort_unless($sub->provider === 'razorpay', 422, 'Use Google Play to pause or resume this subscription.');
+                    abort_if($sub->cancel_at_period_end, 422, 'A cancellation is already scheduled.');
+                    abort_unless($sub->status === ($action === 'pause' ? 'active' : 'paused'), 422, 'The membership state does not allow this action.');
+                    $remote = app(RazorpayProSubscriptions::class)->changeState((string) $sub->provider_subscription_id, $action);
+                    $sub->update([
+                        'status' => $remote['status'],
+                        'current_period_ends_at' => ! empty($remote['current_end']) ? now()->setTimestamp((int) $remote['current_end']) : $sub->current_period_ends_at,
+                    ]);
+                }
+                $request->user()->update(['is_pro' => $request->user()->hasProAccess()]);
+                return $sub->fresh();
+            });
+        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $error) { throw $error;
+        } catch (\Symfony\Component\HttpKernel\Exception\HttpExceptionInterface $error) { throw $error;
+        } catch (Throwable $error) { return response()->json(['error' => $error->getMessage()], 503); }
+        return response()->json(['message' => match ($data['action']) {
+            'cancel' => 'Renewal cancellation confirmed. Any remaining paid or trial access keeps its existing end date.',
+            'pause' => 'Subscription paused. Pro access is suspended for this subscription. No automatic refund was requested.',
+            'resume' => 'Subscription resumed. Billing follows the payment provider’s schedule.',
+        }, 'subscription' => $this->subscriptionData($subscription)]);
+    }
+
     public function startRazorpay(Request $request): JsonResponse
     {
         $validated = $request->validate(['billing_period' => ['sometimes', 'in:monthly,annual']]);
@@ -137,6 +175,8 @@ class ProMembershipController extends Controller
             $trial = $subscription->trial_ends_at && $subscription->trial_ends_at->isFuture() && (int) ($entity['paid_count'] ?? 0) === 0;
             $subscription->update(['status' => $trial ? 'trialing' : 'active', 'current_period_ends_at' => $periodEnd, 'paid_at' => $event === 'subscription.charged' ? now() : $subscription->paid_at, 'checkout_url' => null]);
             $subscription->user?->update(['is_pro' => true]);
+        } elseif (in_array($event, ['subscription.paused', 'subscription.resumed'], true)) {
+            $subscription->update(['status' => $event === 'subscription.paused' ? 'paused' : 'active', 'current_period_ends_at' => $periodEnd]);
         } elseif ($event === 'subscription.cancelled') {
             $subscription->update(['status' => 'cancelled', 'cancel_at_period_end' => false, 'current_period_ends_at' => $periodEnd, 'checkout_url' => null]);
             if (! $periodEnd || $periodEnd->isPast()) $subscription->user?->update(['is_pro' => $subscription->user->hasProAccess()]);

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../api/pro_play_offer.dart';
 import '../../widgets/app_ux_components.dart';
@@ -55,7 +56,7 @@ class _ProPaywallScreenState extends State<ProPaywallScreen> {
       body: Stack(
         children: [
           ListView(
-            padding: EdgeInsets.only(bottom: 230 + bottom),
+            padding: EdgeInsets.only(bottom: 300 + bottom),
             children: [
               const _Hero(),
               Padding(
@@ -124,19 +125,28 @@ class _ProPaywallScreenState extends State<ProPaywallScreen> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                              '${_offer!.price} − ${_offer!.price} trial discount = FREE today',
-                              style: const TextStyle(
-                                fontWeight: FontWeight.w700,
-                              ),
+                            _ReceiptRow(
+                              label: 'Monthly plan',
+                              amount: _offer!.price,
+                            ),
+                            const SizedBox(height: 8),
+                            _ReceiptRow(
+                              label: '${_offer!.trialDays}-day trial discount',
+                              amount: '− ${_offer!.price}',
+                            ),
+                            const Divider(height: 24),
+                            const _ReceiptRow(
+                              label: 'Due today',
+                              amount: 'FREE',
+                              total: true,
                             ),
                             const SizedBox(height: 6),
                             Text(
-                              'Pro starts today. First charge: ${_date(DateUtils.addDaysToDate(DateTime.now(), _offer!.trialDays))}, then ${_offer!.price}/month.',
+                              'First charge: ${_date(DateUtils.addDaysToDate(DateTime.now(), _offer!.trialDays))} — ${_offer!.price}, then every month.',
                             ),
                             const SizedBox(height: 6),
                             const Text(
-                              'Cancel before the trial ends to avoid the subscription charge. Google Play confirms the exact billing date at checkout.',
+                              'Cancel before this date to avoid the subscription charge. The date assumes you start today; Google Play confirms the exact billing time at checkout.',
                               style: TextStyle(
                                 fontSize: 11,
                                 color: Brand.muted,
@@ -228,6 +238,39 @@ class _ProPaywallScreenState extends State<ProPaywallScreen> {
                         ? null
                         : () => widget.onSubscribe(_offer!),
                   ),
+                  const SizedBox(height: 4),
+                  Wrap(
+                    alignment: WrapAlignment.center,
+                    crossAxisAlignment: WrapCrossAlignment.center,
+                    children: [
+                      const Text(
+                        'By continuing, you agree to our ',
+                        style: TextStyle(fontSize: 11, color: Brand.muted),
+                      ),
+                      TextButton(
+                        onPressed: () async {
+                          final opened = await launchUrl(
+                            Uri.parse(
+                              'https://quiz.genziitian.in/terms-and-conditions',
+                            ),
+                            mode: LaunchMode.externalApplication,
+                          );
+                          if (!opened && context.mounted)
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text(
+                                  'Could not open Terms & Conditions. Please try again.',
+                                ),
+                              ),
+                            );
+                        },
+                        child: const Text(
+                          'Terms & Conditions',
+                          style: TextStyle(fontSize: 11),
+                        ),
+                      ),
+                    ],
+                  ),
                 ],
               ),
             ),
@@ -236,6 +279,44 @@ class _ProPaywallScreenState extends State<ProPaywallScreen> {
       ),
     );
   }
+}
+
+class _ReceiptRow extends StatelessWidget {
+  const _ReceiptRow({
+    required this.label,
+    required this.amount,
+    this.total = false,
+  });
+  final String label;
+  final String amount;
+  final bool total;
+  @override
+  Widget build(BuildContext context) => Row(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Expanded(
+        child: Text(
+          label,
+          style: TextStyle(
+            fontSize: total ? 17 : 14,
+            fontWeight: total ? FontWeight.w800 : FontWeight.w500,
+          ),
+        ),
+      ),
+      const SizedBox(width: 16),
+      Flexible(
+        child: Text(
+          amount,
+          textAlign: TextAlign.right,
+          style: TextStyle(
+            fontSize: total ? 22 : 16,
+            fontWeight: FontWeight.w800,
+            color: total ? Brand.green : Brand.ink,
+          ),
+        ),
+      ),
+    ],
+  );
 }
 
 class _Hero extends StatelessWidget {

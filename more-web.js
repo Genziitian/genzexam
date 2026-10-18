@@ -2,6 +2,12 @@
 (function () {
   'use strict';
 
+  function trialReceipt(price, days) {
+    var p = escapeHtml(price);
+    return '<span style="display:grid;gap:8px;max-width:420px"><span style="display:flex;justify-content:space-between;gap:18px"><span>Monthly plan</span><strong>' + p + '</strong></span><span style="display:flex;justify-content:space-between;gap:18px"><span>' + Number(days) + '-day trial discount</span><strong>− ' + p + '</strong></span><span style="display:flex;justify-content:space-between;gap:18px;border-top:1px solid #dce5df;padding-top:12px"><strong>Due today</strong><strong style="color:#16a34a;font-size:22px">FREE</strong></span></span>';
+  }
+  function membershipConsent() { return 'By continuing, you agree to our <a href="/terms-and-conditions" target="_blank" rel="noopener">Terms &amp; Conditions</a>.'; }
+
   var API_FALLBACK = 'https://labapi.genziitian.in/public/api';
   var MORE_ID = 'ql-web-more-actions';
   var PHOTO_ID = 'ql-web-profile-photo';
@@ -213,7 +219,36 @@
     card.id = MEMBERSHIP_ID;
     card.className = 'ql-more-card';
     card.innerHTML = '<h2 class="ql-more-heading">Manage membership &amp; transactions</h2><p class="ql-more-subtitle">Manage your plan and billing details.</p><div class="ql-more-row"><div class="ql-more-row-copy"><strong id="ql-web-pro-status">Loading membership…</strong><small id="ql-web-pro-dates"></small></div><div class="ql-more-theme-options"><button type="button" class="ql-more-button primary" id="ql-web-pro-buy" hidden>Start 7-day trial</button><button type="button" class="ql-more-button danger" id="ql-web-pro-cancel" hidden>Cancel renewal</button></div></div><div id="ql-web-pro-options" role="group" aria-label="Choose your Pro plan"><button type="button" class="ql-more-button" id="ql-web-pro-monthly">Monthly</button> <button type="button" class="ql-more-button" id="ql-web-pro-annual">Yearly</button><p id="ql-web-pro-summary" class="ql-more-subtitle"></p></div><p class="ql-more-message" id="ql-web-pro-message" role="status"></p><p class="ql-more-subtitle">Pro includes video solutions, offline paper downloads, and PDF uploads.</p>';
-    page.appendChild(card);
+    var entry = document.createElement('section'); entry.className = 'ql-more-card';
+    var openManagement = document.createElement('button'); openManagement.type = 'button'; openManagement.className = 'ql-more-button'; openManagement.textContent = 'Membership & transactions →';
+    entry.appendChild(openManagement);
+    var dialog = document.createElement('dialog'); dialog.setAttribute('aria-label', 'Membership & transactions');
+    dialog.style.cssText = 'border:0;padding:0;width:min(760px,calc(100vw - 24px));max-height:90vh;overflow:auto;border-radius:20px';
+    var closeManagement = document.createElement('button'); closeManagement.type = 'button'; closeManagement.className = 'ql-more-button'; closeManagement.textContent = 'Close';
+    closeManagement.onclick = function () { dialog.close(); openManagement.focus(); };
+    dialog.appendChild(closeManagement); dialog.appendChild(card); entry.appendChild(dialog); page.appendChild(entry);
+    openManagement.onclick = function () { dialog.showModal(); loadMembership(); };
+    var membershipPanel = document.createElement('div');
+    while (card.firstChild) membershipPanel.appendChild(card.firstChild);
+    card.appendChild(membershipPanel);
+    var controls = document.createElement('div'); membershipPanel.appendChild(controls);
+    function manageCurrent(action) {
+      var sub = currentMembership && currentMembership.subscription;
+      if (!sub || !window.confirm(action === 'pause' ? 'Pause now? Pro access for this subscription will be suspended. No automatic refund is issued.' : 'Resume recurring billing? A charge may occur according to Razorpay’s schedule.')) return;
+      controls.querySelectorAll('button').forEach(function (b) { b.disabled = true; });
+      api('/membership/manage', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({subscription_id:sub.id, action:action})})
+        .then(function (res) { message.textContent = res.message; return loadMembership(); })
+        .catch(function (e) { message.textContent = e.message; loadMembership(); });
+    }
+    function renderControls(sub) {
+      controls.replaceChildren();
+      if (sub.provider === 'google_play') {
+        var link = document.createElement('a'); link.className = 'ql-more-button'; link.href = 'https://play.google.com/store/account/subscriptions?sku=quiz_lab_pro_monthly&package=in.genziitian.quizlab'; link.target = '_blank'; link.rel = 'noopener'; link.textContent = 'Manage in Google Play'; controls.appendChild(link);
+        var note = document.createElement('p'); note.className = 'ql-more-subtitle'; note.textContent = 'Google Play shows available cancellation, pause, resume and resubscribe options.'; controls.appendChild(note);
+      } else if (sub.provider === 'razorpay' && !sub.cancel_at_period_end && ['active','paused'].includes(sub.status)) {
+        var button = document.createElement('button'); button.type = 'button'; button.className = 'ql-more-button'; button.textContent = sub.status === 'paused' ? 'Resume subscription' : 'Pause subscription'; button.onclick = function () { manageCurrent(sub.status === 'paused' ? 'resume' : 'pause'); }; controls.appendChild(button);
+      }
+    }
     var status = card.querySelector('#ql-web-pro-status'), dates = card.querySelector('#ql-web-pro-dates'), message = card.querySelector('#ql-web-pro-message'), cancel = card.querySelector('#ql-web-pro-cancel'), buy = card.querySelector('#ql-web-pro-buy');
     var buyLabel = 'Subscribe monthly', selectedPeriod = 'monthly', currentMembership;
     var options = card.querySelector('#ql-web-pro-options'), monthly = card.querySelector('#ql-web-pro-monthly'), annual = card.querySelector('#ql-web-pro-annual'), summary = card.querySelector('#ql-web-pro-summary');
@@ -233,9 +268,10 @@
       buyLabel = trial ? 'Try for free' : yearly ? 'Subscribe yearly' : 'Subscribe monthly';
       buy.textContent = buyLabel;
       var firstCharge = new Date(); firstCharge.setDate(firstCharge.getDate() + days);
-      summary.textContent = trial
-        ? monthlyPrice + ' − ' + monthlyPrice + ' trial discount = FREE today. Pro starts today. First charge: ' + firstCharge.toLocaleDateString('en-IN') + ', then ' + monthlyPrice + '/month. Cancel before the trial ends to avoid subscription charges. Checkout confirms the exact billing time; your bank may require an authorisation payment.'
-        : yearly ? yearlyPrice + ' charged today, then every year. No free trial. Cancel renewal any time.' : monthlyPrice + ' charged today, then every month. Cancel renewal any time.';
+      summary.innerHTML = trial
+        ? trialReceipt(monthlyPrice, days) + '<span style="display:block;margin-top:12px">First charge: ' + escapeHtml(firstCharge.toLocaleDateString('en-IN')) + ' — ' + escapeHtml(monthlyPrice) + ', then every month.</span><small>Cancel before this date to avoid subscription charges. Checkout confirms the exact billing time; your bank may require an authorisation payment.</small>'
+        : escapeHtml(yearly ? yearlyPrice + ' charged today, then every year. No free trial. Cancel renewal any time.' : monthlyPrice + ' charged today, then every month. Cancel renewal any time.');
+      summary.innerHTML += '<span style="display:block;font-size:12px;margin-top:10px">' + membershipConsent() + '</span>';
     }
     monthly.addEventListener('click', function () { selectedPeriod = 'monthly'; renderPlans(); });
     annual.addEventListener('click', function () { selectedPeriod = 'annual'; renderPlans(); });
@@ -245,16 +281,22 @@
       var trialDays = result.plan?.trial_days ?? 7;
       var trialAvailable = result.trial_available === true && trialDays > 0;
       currentMembership = result;
+      renderControls(sub);
       renderPlans();
       status.textContent = pro ? (sub.status === 'trialing' ? 'Free trial active' : 'Pro active') : 'No active Pro membership';
       dates.textContent = sub.started_at ? 'Started ' + new Date(sub.started_at).toLocaleDateString('en-IN') + (sub.trial_ends_at && sub.status === 'trialing' ? ' · Trial ends ' + new Date(sub.trial_ends_at).toLocaleDateString('en-IN') : '') + (sub.current_period_ends_at ? (sub.cancel_at_period_end || sub.status === 'cancelled' ? ' · Access ends ' : ' · Next charge / access end ') + new Date(sub.current_period_ends_at).toLocaleDateString('en-IN') : '') : (pro ? 'Pro access is managed by the Quiz LAB team.' : '₹' + ((result.plan?.price_paise ?? 9900) / 100) + ' per month' + (trialAvailable ? ' · ' + trialDays + '-day trial' : ''));
       cancel.hidden = !pro || !sub.id || !['google_play', 'razorpay'].includes(sub.provider) || sub.status === 'cancelled' || sub.cancel_at_period_end === true;
-      buy.hidden = pro || !result.payment_setup?.web || result.plan?.enabled === false;
+      buy.hidden = pro || sub.status === 'paused' || !result.payment_setup?.web || result.plan?.enabled === false;
       if (!result.payment_setup?.web && !pro) message.textContent = 'Online membership checkout is being connected. Your account will show plan dates here once billing is active.';
     }).catch(function (error) { status.textContent = 'Membership details could not load.'; message.textContent = error.message; message.className = 'ql-more-message error'; }); }
-    var historyButton = document.createElement('button'); historyButton.type = 'button'; historyButton.className = 'ql-more-button'; historyButton.textContent = 'View membership & transactions';
+    var historyButton = document.createElement('button'); historyButton.type = 'button'; historyButton.className = 'ql-more-button'; historyButton.textContent = 'Transactions';
     var history = document.createElement('div'); history.hidden = true; history.setAttribute('aria-live', 'polite');
-    card.appendChild(historyButton); card.appendChild(history);
+    var membershipButton = document.createElement('button'); membershipButton.type = 'button'; membershipButton.className = 'ql-more-button'; membershipButton.textContent = 'Membership';
+    var tabNav = document.createElement('div'); tabNav.setAttribute('role', 'tablist'); tabNav.setAttribute('aria-label', 'Membership and transaction views');
+    membershipButton.setAttribute('role', 'tab'); historyButton.setAttribute('role', 'tab');
+    membershipButton.setAttribute('aria-selected', 'true'); historyButton.setAttribute('aria-selected', 'false');
+    tabNav.append(membershipButton, historyButton); card.prepend(tabNav); card.appendChild(history);
+    membershipButton.onclick = function () { membershipPanel.hidden = false; history.hidden = true; membershipButton.setAttribute('aria-selected', 'true'); historyButton.setAttribute('aria-selected', 'false'); };
     var historyPage = 1;
     function safeHistory(value) { return String(value ?? '').replace(/[&<>"']/g, function (c) { return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
     function historyAmount(row) { var amount = row.amount_paise ?? row.amount_minor; if (amount == null) return 'Amount unavailable'; try { return new Intl.NumberFormat(undefined, {style:'currency',currency:row.currency || 'INR'}).format(row.amount_major != null ? Number(row.amount_major) : Number(amount)/100); } catch (_) { return String(row.currency || '') + ' ' + (row.amount_major != null ? row.amount_major : Number(amount)/100); } }
@@ -267,7 +309,7 @@
         history.querySelector('[data-history-next]').onclick = function () { historyPage++; loadHistory(); };
       }).catch(function (error) { history.textContent = error.message; });
     }
-    historyButton.addEventListener('click', function () { if (history.hidden) loadHistory(); else history.hidden = true; });
+    historyButton.addEventListener('click', function () { membershipPanel.hidden = true; membershipButton.setAttribute('aria-selected', 'false'); historyButton.setAttribute('aria-selected', 'true'); loadHistory(); });
     loadMembership();
     buy.addEventListener('click', function () {
       buy.disabled = true; buy.textContent = 'Opening checkout…'; message.textContent = '';
@@ -380,11 +422,11 @@
       '  <div class="ql-paywall-trial-box" id="ql-paywall-trial-box">',
       '    <strong id="ql-paywall-trial-headline">₹99 − ₹99 trial discount = FREE today</strong>',
       '    <p id="ql-paywall-trial-copy">Pro starts today. First charge after 7 days, then ₹99/month.</p>',
-      '    <small>Cancel before the trial ends to avoid subscription charges. Razorpay confirms the exact billing time; your bank may require an authorisation payment.</small>',
+      '    <small>Cancel before the first charge date to avoid subscription charges. Razorpay confirms the exact billing time; your bank may require an authorisation payment.</small>',
       '  </div>',
       '  <div style="display:grid;gap:12px;">',
       '    <button type="button" class="ql-paywall-cta-btn" id="ql-paywall-cta">Try for free</button>',
-      '    <p class="ql-paywall-footer-note">Cancel any time from your subscription settings. Powered by Razorpay.</p>',
+      '    <p class="ql-paywall-footer-note">Cancel renewal any time. Powered by Razorpay.</p><p class="ql-paywall-footer-note">By continuing, you agree to our <a href="/terms-and-conditions" target="_blank" rel="noopener">Terms &amp; Conditions</a>.</p>',
       '  </div>',
       '  <div id="ql-paywall-history-sec" style="margin-top:10px;">',
       '    <button type="button" class="ql-more-button" id="ql-paywall-history-btn" style="width:100%;text-align:center;padding:12px;">View membership &amp; transactions</button>',
@@ -481,9 +523,9 @@
             recBadge.hidden = false;
             monthlySub.textContent = 'Try for free · ' + days + ' days, then ' + mPrice + '/month';
             trialBox.hidden = false;
-            trialHeadline.textContent = mPrice + ' − ' + mPrice + ' trial discount = FREE today';
+            trialHeadline.innerHTML = trialReceipt(mPrice, days);
             var chargeDate = new Date(); chargeDate.setDate(chargeDate.getDate() + days);
-            trialCopy.textContent = 'Pro starts today. First charge: ' + chargeDate.toLocaleDateString('en-IN') + ', then ' + mPrice + '/month.';
+            trialCopy.textContent = 'First charge: ' + chargeDate.toLocaleDateString('en-IN') + ' — ' + mPrice + ', then every month.';
             cta.textContent = '🚀 Try for free';
           } else {
             recBadge.hidden = true;

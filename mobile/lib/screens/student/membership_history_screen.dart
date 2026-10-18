@@ -1,57 +1,261 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../api/api_client.dart';
+import '../../widgets/premium_widgets.dart';
 
 class MembershipHistoryScreen extends StatefulWidget {
-  const MembershipHistoryScreen({super.key, required this.apiClient});
+  const MembershipHistoryScreen({
+    super.key,
+    required this.apiClient,
+    this.onViewPlans,
+    this.onRestore,
+  });
   final ApiClient apiClient;
+  final Future<void> Function()? onViewPlans;
+  final Future<void> Function()? onRestore;
   @override
   State<MembershipHistoryScreen> createState() =>
       _MembershipHistoryScreenState();
 }
 
-class _MembershipHistoryScreenState extends State<MembershipHistoryScreen> {
-  Map<String, dynamic> _data = {};
-  bool _loading = true;
+class _MembershipHistoryScreenState extends State<MembershipHistoryScreen>
+    with WidgetsBindingObserver {
+  Map<String, dynamic> _data = {}, _membership = {};
+  bool _loading = true, _busy = false;
   String? _error;
   int _page = 1;
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addObserver(this);
     _load();
   }
 
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed && !_loading && !_busy) _load();
+  }
+
   Future<void> _load() async {
+    if (!mounted) return;
     setState(() {
       _loading = true;
       _error = null;
     });
     try {
-      final response = await widget.apiClient.get<Map<String, dynamic>>(
+      final membership = await widget.apiClient.get<Map<String, dynamic>>(
+        '/membership',
+      );
+      final history = await widget.apiClient.get<Map<String, dynamic>>(
         '/membership/history?page=$_page',
       );
-      if (mounted) setState(() => _data = response.data ?? {});
+      if (mounted)
+        setState(() {
+          _membership = membership.data ?? {};
+          _data = history.data ?? {};
+        });
     } catch (_) {
       if (mounted)
-        setState(() => _error = 'Could not load your history. Please retry.');
+        setState(
+          () => _error = 'Could not load membership details. Tap to retry.',
+        );
     } finally {
       if (mounted) setState(() => _loading = false);
     }
   }
 
-  String _date(dynamic value) =>
-      DateTime.tryParse(value?.toString() ?? '')
-          ?.toLocal()
-          .toString()
-          .split('.')
-          .first ??
-      '—';
+  String _date(dynamic value) {
+    final date = DateTime.tryParse(value?.toString() ?? '')?.toLocal();
+    return date == null
+        ? '—'
+        : '${MaterialLocalizations.of(context).formatMediumDate(date)} ${TimeOfDay.fromDateTime(date).format(context)}';
+  }
+
   String _amount(Map row) {
     if (row['amount_major'] != null)
       return '${row['currency'] ?? 'INR'} ${row['amount_major']}';
-    final minor = row['amount_paise'] ?? row['amount_minor'];
+    final minor = num.tryParse('${row['amount_paise'] ?? row['amount_minor']}');
     if (minor == null) return 'Amount unavailable';
-    return '${row['currency'] ?? 'INR'} ${((num.tryParse('$minor') ?? 0) / 100).toStringAsFixed(2)}';
+    final code = '${row['currency'] ?? 'INR'}';
+    final digits =
+        [
+          'JPY',
+          'KRW',
+          'VND',
+          'CLP',
+          'PYG',
+          'RWF',
+          'UGX',
+          'VUV',
+          'XAF',
+          'XOF',
+          'XPF',
+          'BIF',
+          'DJF',
+          'GNF',
+          'KMF',
+        ].contains(code)
+        ? 0
+        : ['BHD', 'IQD', 'JOD', 'KWD', 'LYD', 'OMR', 'TND'].contains(code)
+        ? 3
+        : 2;
+    final divisor = digits == 0
+        ? 1
+        : digits == 3
+        ? 1000
+        : 100;
+    return '$code ${(minor / divisor).toStringAsFixed(digits)}';
+  }
+
+  Future<void> _manage(Map row, String action) async {
+    final details = switch (action) {
+      'pause' => 'Pause this Razorpay subscription now? Its Pro access will be suspended. No automatic refund is issued.',
+      'resume' => 'Resume this subscription? Recurring billing restarts according to Razorpay’s schedule and may involve a charge.',
+      _ => 'Stop future renewals? Your existing paid or trial access keeps its end date. This does not issue a refund.',
+    };
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (c) => AlertDialog(
+        title: Text(
+          action == 'cancel'
+              ? 'Cancel renewal?'
+              : '${action == 'pause' ? 'Pause' : 'Resume'} subscription?',
+        ),
+        content: Text(details),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(c, false),
+            child: const Text('Go back'),
+          ),
+          FilledButton(
+            onPressed: () => Navigator.pop(c, true),
+            child: const Text('Confirm'),
+          ),
+        ],
+      ),
+    );
+    if (confirmed != true || !mounted) return;
+    setState(() => _busy = true);
+    try {
+      final result = await widget.apiClient.post<Map<String, dynamic>>(
+        '/membership/manage',
+        data: {'subscription_id': row['id'], 'action': action},
+      );
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('${result.data?['message'] ?? 'Membership updated.'}'),
+        ),
+      );
+      await _load();
+    } catch (_) {
+      if (mounted)
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text(
+              'The provider could not confirm this change. Refresh before retrying.',
+            ),
+          ),
+        );
+    } finally {
+      if (mounted) setState(() => _busy = false);
+    }
+  }
+
+  Future<void> _openPlay() async {
+    final opened = await launchUrl(
+      Uri.https('play.google.com', '/store/account/subscriptions', {
+        'sku': 'quiz_lab_pro_monthly',
+        'package': 'in.genziitian.quizlab',
+      }),
+      mode: LaunchMode.externalApplication,
+    );
+    if (!opened && mounted)
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text(
+            'Could not open Google Play. Open Play Store → Payments & subscriptions → Subscriptions.',
+          ),
+        ),
+      );
+  }
+
+  Widget _subscription(Map row) {
+    final status = '${row['status'] ?? ''}';
+    final google = row['provider'] == 'google_play';
+    final razorpay = row['provider'] == 'razorpay';
+    final renewing =
+        ['active', 'trialing', 'paused'].contains(status) &&
+        row['cancel_at_period_end'] != true;
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              '${google
+                  ? 'Google Play'
+                  : razorpay
+                  ? 'Razorpay'
+                  : 'Complimentary access'} · $status',
+              style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 16),
+            ),
+            const SizedBox(height: 8),
+            Text('Started: ${_date(row['started_at'] ?? row['created_at'])}'),
+            if (row['trial_ends_at'] != null)
+              Text('Trial ends: ${_date(row['trial_ends_at'])}'),
+            if (row['current_period_ends_at'] != null)
+              Text(
+                '${row['cancel_at_period_end'] == true || status == 'cancelled' ? 'Access until' : 'Current period ends'}: ${_date(row['current_period_ends_at'])}',
+              ),
+            if (row['cancel_at_period_end'] == true)
+              const Text(
+                'Renewal cancellation scheduled. Any remaining access keeps its end date.',
+              ),
+            if (google) ...[
+              const SizedBox(height: 8),
+              OutlinedButton.icon(
+                onPressed: _busy ? null : _openPlay,
+                icon: const Icon(Icons.open_in_new),
+                label: const Text('Manage in Google Play'),
+              ),
+              const Text(
+                'Cancellation, pause, resume and resubscribe options depend on the subscription and Google Play eligibility.',
+                style: TextStyle(fontSize: 12, color: Brand.muted),
+              ),
+            ],
+            Wrap(
+              spacing: 8,
+              children: [
+                if (renewing)
+                  TextButton(
+                    onPressed: _busy ? null : () => _manage(row, 'cancel'),
+                    child: const Text('Cancel renewal'),
+                  ),
+                if (razorpay && renewing && status == 'active')
+                  TextButton(
+                    onPressed: _busy ? null : () => _manage(row, 'pause'),
+                    child: const Text('Pause subscription'),
+                  ),
+                if (razorpay && renewing && status == 'paused')
+                  FilledButton(
+                    onPressed: _busy ? null : () => _manage(row, 'resume'),
+                    child: const Text('Resume subscription'),
+                  ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
   }
 
   @override
@@ -62,115 +266,152 @@ class _MembershipHistoryScreenState extends State<MembershipHistoryScreen> {
     final rows = ledger['data'] is List ? ledger['data'] as List : [];
     final subscriptions =
         (_data['subscriptions'] ?? _data['memberships']) as List? ?? [];
+    final hasPaused = subscriptions.whereType<Map>().any(
+      (row) => row['status'] == 'paused',
+    );
     final user = _data['user'] is Map ? _data['user'] as Map : {};
-    return Scaffold(
-      appBar: AppBar(title: const Text('Membership & transactions')),
-      body: _loading
-          ? const Center(child: CircularProgressIndicator())
-          : _error != null
-          ? Center(
-              child: TextButton(onPressed: _load, child: Text(_error!)),
-            )
-          : RefreshIndicator(
-              onRefresh: _load,
-              child: ListView(
-                padding: const EdgeInsets.all(20),
+    return DefaultTabController(
+      length: 2,
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text('Membership & transactions'),
+          bottom: const TabBar(
+            tabs: [
+              Tab(text: 'Membership'),
+              Tab(text: 'Transactions'),
+            ],
+          ),
+        ),
+        body: _loading
+            ? const Center(child: CircularProgressIndicator())
+            : _error != null
+            ? Center(
+                child: TextButton(onPressed: _load, child: Text(_error!)),
+              )
+            : TabBarView(
                 children: [
-                  Text(
-                    user['name']?.toString() ?? 'Your account',
-                    style: Theme.of(context).textTheme.titleLarge,
-                  ),
-                  Text(user['email']?.toString() ?? ''),
-                  const SizedBox(height: 20),
-                  Text(
-                    'Membership details',
-                    style: Theme.of(context).textTheme.titleLarge,
-                  ),
-                  if (subscriptions.isEmpty)
-                    const Padding(
-                      padding: EdgeInsets.symmetric(vertical: 12),
-                      child: Text('No membership history yet.'),
+                  RefreshIndicator(
+                    onRefresh: _load,
+                    child: ListView(
+                      physics: const AlwaysScrollableScrollPhysics(),
+                      padding: const EdgeInsets.all(16),
+                      children: [
+                        Text(
+                          _membership['is_pro'] == true
+                              ? 'Pro access active'
+                              : hasPaused
+                              ? 'Subscription paused'
+                              : 'No active Pro access',
+                          style: Theme.of(context).textTheme.headlineSmall,
+                        ),
+                        Text('${user['name'] ?? ''}\n${user['email'] ?? ''}'),
+                        const SizedBox(height: 16),
+                        if (_membership['is_pro'] != true &&
+                            !hasPaused &&
+                            widget.onViewPlans != null)
+                          FilledButton(
+                            onPressed: _busy
+                                ? null
+                                : () async {
+                                    await widget.onViewPlans!();
+                                    await _load();
+                                  },
+                            child: Text(
+                              subscriptions.isEmpty
+                                  ? 'View monthly & yearly plans'
+                                  : 'Subscribe again',
+                            ),
+                          ),
+                        if (widget.onRestore != null)
+                          TextButton(
+                            onPressed: _busy
+                                ? null
+                                : () async {
+                                    await widget.onRestore!();
+                                    await _load();
+                                  },
+                            child: const Text('Restore Google Play purchases'),
+                          ),
+                        if (subscriptions.isEmpty)
+                          const Padding(
+                            padding: EdgeInsets.all(16),
+                            child: Text('No membership history yet.'),
+                          ),
+                        ...subscriptions.whereType<Map>().map(_subscription),
+                        TextButton(
+                          onPressed: _load,
+                          child: const Text('Refresh membership'),
+                        ),
+                      ],
                     ),
-                  ...subscriptions.whereType<Map>().map(
-                    (row) => Card(
-                      child: Padding(
-                        padding: const EdgeInsets.all(16),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              '${row['provider'] ?? 'Membership'} · ${row['status'] ?? ''}',
+                  ),
+                  RefreshIndicator(
+                    onRefresh: _load,
+                    child: ListView(
+                      physics: const AlwaysScrollableScrollPhysics(),
+                      padding: const EdgeInsets.all(16),
+                      children: [
+                        Text(
+                          'Your transactions',
+                          style: Theme.of(context).textTheme.titleLarge,
+                        ),
+                        if (_data['history_note'] != null)
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 12),
+                            child: Text(
+                              '${_data['history_note']}',
                               style: const TextStyle(
-                                fontWeight: FontWeight.bold,
+                                fontSize: 12,
+                                color: Brand.muted,
                               ),
                             ),
-                            Text(
-                              'Started: ${_date(row['started_at'] ?? row['created_at'])}',
+                          ),
+                        if (rows.isEmpty)
+                          const Text('No recorded transactions.'),
+                        ...rows.whereType<Map>().map(
+                          (row) => Card(
+                            child: ListTile(
+                              title: Text(
+                                '${row['title'] ?? 'Payment'} · ${_amount(row)}',
+                              ),
+                              subtitle: Text(
+                                '${row['provider'] ?? ''} · ${row['status'] ?? ''}\n${_date(row['paid_at'] ?? row['created_at'])}\nReference: ${row['reference'] ?? '—'}',
+                              ),
+                              isThreeLine: true,
                             ),
-                            if (row['trial_ends_at'] != null)
-                              Text(
-                                'Trial ends: ${_date(row['trial_ends_at'])}',
-                              ),
-                            if (row['current_period_ends_at'] != null)
-                              Text(
-                                '${row['cancel_at_period_end'] == true ? 'Access until' : 'Next charge / access end'}: ${_date(row['current_period_ends_at'])}',
-                              ),
+                          ),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            TextButton(
+                              onPressed: _page > 1
+                                  ? () {
+                                      _page--;
+                                      _load();
+                                    }
+                                  : null,
+                              child: const Text('Previous'),
+                            ),
+                            Text('Page $_page of ${ledger['last_page'] ?? 1}'),
+                            TextButton(
+                              onPressed:
+                                  _page < (ledger['last_page'] as int? ?? 1)
+                                  ? () {
+                                      _page++;
+                                      _load();
+                                    }
+                                  : null,
+                              child: const Text('Next'),
+                            ),
                           ],
                         ),
-                      ),
+                      ],
                     ),
-                  ),
-                  const SizedBox(height: 20),
-                  Text(
-                    'Transactions',
-                    style: Theme.of(context).textTheme.titleLarge,
-                  ),
-                  if (_data['history_note'] != null)
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 12),
-                      child: Text('${_data['history_note']}'),
-                    ),
-                  if (rows.isEmpty) const Text('No recorded transactions.'),
-                  ...rows.whereType<Map>().map(
-                    (row) => Card(
-                      child: ListTile(
-                        title: Text(
-                          '${row['title'] ?? 'Payment'} · ${_amount(row)}',
-                        ),
-                        subtitle: Text(
-                          '${row['provider'] ?? ''} · ${row['status'] ?? ''}\n${_date(row['paid_at'] ?? row['created_at'])}\nReference: ${row['reference'] ?? '—'}',
-                        ),
-                        isThreeLine: true,
-                      ),
-                    ),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      TextButton(
-                        onPressed: _page > 1
-                            ? () {
-                                _page--;
-                                _load();
-                              }
-                            : null,
-                        child: const Text('Previous'),
-                      ),
-                      Text('Page $_page of ${ledger['last_page'] ?? 1}'),
-                      TextButton(
-                        onPressed: _page < (ledger['last_page'] as int? ?? 1)
-                            ? () {
-                                _page++;
-                                _load();
-                              }
-                            : null,
-                        child: const Text('Next'),
-                      ),
-                    ],
                   ),
                 ],
               ),
-            ),
+      ),
     );
   }
 }

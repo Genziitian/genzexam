@@ -73,6 +73,7 @@ Route::middleware(['auth:sanctum', 'track.seen'])->group(function () {
     Route::get('/membership/history', [\App\Http\Controllers\MembershipHistoryController::class, 'show']);
     Route::get('/membership', [ProMembershipController::class, 'show']);
     Route::post('/membership/cancel', [ProMembershipController::class, 'cancel']);
+    Route::post('/membership/manage', [ProMembershipController::class, 'manage'])->middleware('throttle:10,1');
     Route::post('/membership/razorpay/start', [ProMembershipController::class, 'startRazorpay'])->middleware('throttle:5,1');
     Route::post('/membership/google-play/verify', [ProMembershipController::class, 'verifyGooglePlay'])->middleware('throttle:10,1');
     Route::post('/auth/password/change', [AuthController::class, 'changePassword'])->middleware('throttle:5,10');

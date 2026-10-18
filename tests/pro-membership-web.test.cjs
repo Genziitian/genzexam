@@ -2,13 +2,15 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const vm = require('node:vm');
 const source = fs.readFileSync(require('node:path').join(__dirname, '../more-web.js'), 'utf8');
+const receiptSource = source.slice(source.indexOf('  function trialReceipt('), source.indexOf('  var API_FALLBACK'));
 const membershipSource = source.slice(source.indexOf('  function ensureMembership('), source.indexOf('  function removeDuplicateProfileBlocks('));
 
 function setup(initial) {
   let membership = initial;
   const parts = new Map();
   const element = () => ({
-    hidden: false, disabled: false, textContent: '', innerHTML: '', listeners: {},
+    hidden: false, disabled: false, textContent: '', innerHTML: '', listeners: {}, style: {},
+    replaceChildren() {}, append() {}, prepend() {}, querySelectorAll() { return []; }, showModal() {}, close() {}, focus() {},
     setAttribute(name, value) { this[name] = value; },
     addEventListener(event, fn) { this.listeners[event] = fn; },
     appendChild() {},
@@ -18,7 +20,7 @@ function setup(initial) {
     }
   });
   const context = {
-    MEMBERSHIP_ID: 'membership',
+    MEMBERSHIP_ID: 'membership', escapeHtml: value => String(value ?? ''),
     document: {getElementById: () => null, createElement: () => element()},
     api: async () => membership,
     apiBase: () => 'https://example.test/api', token: () => 'fixture',
@@ -29,7 +31,7 @@ function setup(initial) {
       return {ok: true, json: async () => ({message: 'Renewal cancelled; access remains.'})};
     },
   };
-  vm.runInNewContext(membershipSource + '\nensureMembership({appendChild() {}});', context);
+  vm.runInNewContext(receiptSource + membershipSource + '\nensureMembership({appendChild() {}});', context);
   return {part: name => parts.get('#ql-web-pro-' + name)};
 }
 
@@ -40,11 +42,11 @@ const initial = () => ({is_pro: false, trial_available: true, plan: {price_paise
   let app = setup(initial()); await settle();
   assert.equal(app.part('buy').textContent, 'Try for free');
 
-  assert.match(app.part('summary').textContent, /FREE today/);
+  assert.match(app.part('summary').innerHTML, /FREE/);
   app.part('annual').listeners.click();
   assert.equal(app.part('buy').textContent, 'Subscribe yearly');
-  assert.match(app.part('summary').textContent, /₹999 charged today/);
-  assert.doesNotMatch(app.part('summary').textContent, /FREE today/);
+  assert.match(app.part('summary').innerHTML, /₹999 charged today/);
+  assert.doesNotMatch(app.part('summary').innerHTML, /FREE/);
 
   app = setup({...initial(), trial_available: false}); await settle();
   assert.equal(app.part('buy').textContent, 'Subscribe monthly');

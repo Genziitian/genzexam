@@ -78,6 +78,39 @@ class ProMembershipParityTest extends TestCase
         ]);
     }
 
+    public function test_student_cannot_manage_another_students_subscription(): void
+    {
+        $owner = User::query()->create(['name'=>'Other','email'=>'other@example.test','is_pro'=>false]);
+        $sub = $this->grant('razorpay', 'active');
+        $sub->update(['user_id'=>$owner->id]);
+        $this->postJson('/public/api/membership/manage', ['subscription_id'=>$sub->id,'action'=>'pause'])->assertNotFound();
+        $this->assertSame('active', $sub->fresh()->status);
+    }
+
+    public function test_pause_requires_provider_confirmation_before_changing_access(): void
+    {
+        $sub = $this->grant('razorpay', 'active');
+        $this->mock(\App\Services\RazorpayProSubscriptions::class, function ($mock) {
+            $mock->shouldReceive('changeState')->once()->with('fixture-razorpay', 'pause')->andThrow(new \RuntimeException('Provider unavailable.'));
+        });
+        $this->postJson('/public/api/membership/manage', ['subscription_id'=>$sub->id,'action'=>'pause'])->assertStatus(503);
+        $this->assertSame('active', $sub->fresh()->status);
+        $this->assertTrue($this->student->fresh()->hasProAccess());
+    }
+
+    public function test_confirmed_razorpay_pause_and_resume_update_access(): void
+    {
+        $sub = $this->grant('razorpay', 'active');
+        $this->mock(\App\Services\RazorpayProSubscriptions::class, function ($mock) {
+            $mock->shouldReceive('changeState')->once()->with('fixture-razorpay', 'pause')->andReturn(['status'=>'paused']);
+            $mock->shouldReceive('changeState')->once()->with('fixture-razorpay', 'resume')->andReturn(['status'=>'active','current_end'=>now()->addDay()->timestamp]);
+        });
+        $this->postJson('/public/api/membership/manage', ['subscription_id'=>$sub->id,'action'=>'pause'])->assertOk();
+        $this->assertFalse($this->student->fresh()->hasProAccess());
+        $this->postJson('/public/api/membership/manage', ['subscription_id'=>$sub->id,'action'=>'resume'])->assertOk();
+        $this->assertTrue($this->student->fresh()->hasProAccess());
+    }
+
     public function test_paid_play_billing_does_not_require_a_trial_offer(): void
     {
         config([
