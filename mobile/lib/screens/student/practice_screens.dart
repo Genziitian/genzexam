@@ -37,7 +37,6 @@ class _PracticeTabState extends State<PracticeTab> {
   String? _error;
   List<CourseModel> _courses = [];
   Map<String, double> _completion = {}; // course slug -> percent
-  bool _activeOnly = false;
   String _query = '';
   final TextEditingController _searchController = TextEditingController();
   final ScrollController _scrollController = ScrollController();
@@ -67,7 +66,6 @@ class _PracticeTabState extends State<PracticeTab> {
     if (oldWidget.isActive && !widget.isActive) {
       _searchController.clear();
       _query = '';
-      _activeOnly = false;
       if (_scrollController.hasClients) _scrollController.jumpTo(0);
     } else if (!oldWidget.isActive && widget.isActive) {
       unawaited(_load(quiet: true));
@@ -240,8 +238,6 @@ class _PracticeTabState extends State<PracticeTab> {
 
     final query = _query.trim().toLowerCase();
     final shown = _courses.where((c) {
-      final pct = _percentOf(c);
-      if (_activeOnly && !(pct > 0 && pct < 100)) return false;
       if (query.isNotEmpty && !_courseMatches(c, query))
         return false;
       return true;
@@ -296,11 +292,6 @@ class _PracticeTabState extends State<PracticeTab> {
               color: _ink,
             ),
           ),
-          const SizedBox(height: 4),
-          const Text(
-            'Pick a course and practise any paper, any time.',
-            style: TextStyle(fontSize: 13.5, color: Color(0xFF64748B)),
-          ),
           const SizedBox(height: 16),
 
           // Search
@@ -335,66 +326,6 @@ class _PracticeTabState extends State<PracticeTab> {
                 ),
               ),
             ),
-          ),
-          const SizedBox(height: 12),
-
-          // Count + filter
-          Row(
-            children: [
-              Expanded(
-                child: Text.rich(
-                  TextSpan(
-                    children: [
-                      TextSpan(
-                        text: '${shown.length}',
-                        style: const TextStyle(
-                          fontWeight: FontWeight.w700,
-                          color: Color(0xFF334155),
-                        ),
-                      ),
-                      TextSpan(
-                        text:
-                            ' ${_activeOnly ? 'active' : 'enrolled'} course${shown.length == 1 ? '' : 's'}',
-                      ),
-                    ],
-                  ),
-                  style: const TextStyle(
-                    fontSize: 14,
-                    color: Color(0xFF64748B),
-                  ),
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  AppHaptics.selection();
-                  setState(() => _activeOnly = !_activeOnly);
-                },
-                child: AnimatedContainer(
-                  duration: const Duration(milliseconds: 180),
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 12,
-                    vertical: 8,
-                  ),
-                  decoration: BoxDecoration(
-                    color: _activeOnly
-                        ? _green.withValues(alpha: 0.10)
-                        : Colors.white,
-                    borderRadius: BorderRadius.circular(8),
-                    border: Border.all(
-                      color: _activeOnly ? _green : const Color(0xFFE2E8F0),
-                    ),
-                  ),
-                  child: Text(
-                    'Active only',
-                    style: TextStyle(
-                      fontSize: 13,
-                      fontWeight: FontWeight.w500,
-                      color: _activeOnly ? _green : const Color(0xFF64748B),
-                    ),
-                  ),
-                ),
-              ),
-            ],
           ),
           const SizedBox(height: 12),
 

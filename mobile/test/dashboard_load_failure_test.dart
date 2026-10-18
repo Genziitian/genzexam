@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:typed_data';
 
 import 'package:dio/dio.dart';
@@ -42,6 +43,9 @@ void main() {
   late int status;
   late Object body;
   late int calls;
+  late int leaderboardStatus;
+  late Map<String, dynamic> leaderboardBody;
+  Completer<Map<String, dynamic>>? leaderboardPending;
   final goodDashboard = <String, dynamic>{
     'greeting': {
       'weekday': 'sunday',
@@ -59,6 +63,12 @@ void main() {
     FlutterSecureStorage.setMockInitialValues({'auth_token': 'test-session'});
     ApiClient.connectionUnavailable.value = false;
     calls = 0;
+    leaderboardStatus = 200;
+    leaderboardPending = null;
+    leaderboardBody = {
+      'leaderboard': [],
+      'me': {'xp': 0, 'level': 1},
+    };
     status = 403;
     body = '<!DOCTYPE html><html><title>Checking your browser</title></html>';
     client = ApiClient(
@@ -66,14 +76,32 @@ void main() {
         InterceptorsWrapper(
           onRequest: (request, handler) {
             if (!request.path.endsWith('/student/dashboard')) {
+              if (request.path.endsWith('/leaderboard') &&
+                  leaderboardPending != null) {
+                leaderboardPending!.future.then((data) {
+                  handler.resolve(
+                    Response(requestOptions: request, data: data),
+                  );
+                });
+                return;
+              }
+              if (request.path.endsWith('/leaderboard') &&
+                  leaderboardStatus != 200) {
+                handler.reject(
+                  DioException(
+                    requestOptions: request,
+                    type: DioExceptionType.badResponse,
+                    response: Response(
+                      requestOptions: request,
+                      statusCode: leaderboardStatus,
+                      data: {'message': 'Rank request failed'},
+                    ),
+                  ),
+                );
+                return;
+              }
               handler.resolve(
-                Response(
-                  requestOptions: request,
-                  data: {
-                    'leaderboard': [],
-                    'me': {'xp': 0, 'level': 1},
-                  },
-                ),
+                Response(requestOptions: request, data: leaderboardBody),
               );
               return;
             }
@@ -105,7 +133,7 @@ void main() {
     );
   });
   Future<void> flush(WidgetTester tester) async {
-    for (var i = 0; i < 8; i++) {
+    for (var i = 0; i < 20; i++) {
       await tester.pump(const Duration(milliseconds: 100));
     }
   }
@@ -182,4 +210,79 @@ void main() {
     expect(ApiClient.connectionUnavailable.value, isFalse);
     expect(await client.hasAuthToken(), isTrue);
   });
+
+  testWidgets(
+    'Home rank keeps the server dashboard rank if leaderboard fails',
+    (tester) async {
+      status = 200;
+      body = goodDashboard;
+      leaderboardStatus = 403;
+      await mount(tester);
+      expect(find.text('#12'), findsOneWidget);
+      expect(find.text('unranked'), findsNothing);
+      expect(tester.takeException(), isNull);
+      await tester.pumpWidget(const SizedBox.shrink());
+      await tester.pump();
+    },
+  );
+
+  testWidgets(
+    'Home rank is visible while the separate rank request is still loading',
+    (tester) async {
+      status = 200;
+      body = goodDashboard;
+      leaderboardPending = Completer<Map<String, dynamic>>();
+      await mount(tester);
+      expect(find.text('#12'), findsOneWidget);
+      leaderboardPending!.complete({...leaderboardBody, 'my_rank': 3});
+      await flush(tester);
+      expect(find.text('#3'), findsOneWidget);
+      expect(tester.takeException(), isNull);
+      await tester.pumpWidget(const SizedBox.shrink());
+      await tester.pump();
+    },
+  );
+
+  testWidgets(
+    'Home rank reports unavailable instead of inventing an unranked user',
+    (tester) async {
+      status = 200;
+      body = {
+        ...goodDashboard,
+        'rank': {'current': null, 'total_ranked': 100},
+      };
+      leaderboardStatus = 403;
+      await mount(tester);
+      expect(find.text('Unavailable'), findsOneWidget);
+      expect(find.text('unranked'), findsNothing);
+      expect(find.text('New'), findsNothing);
+      expect(tester.takeException(), isNull);
+      await tester.pumpWidget(const SizedBox.shrink());
+      await tester.pump();
+    },
+  );
+
+  testWidgets(
+    'Home rank uses the leaderboard result including a confirmed unranked result',
+    (tester) async {
+      status = 200;
+      body = goodDashboard;
+      leaderboardBody['my_rank'] = 3;
+      await mount(tester);
+      expect(find.text('#3'), findsOneWidget);
+      expect(find.text('#12'), findsNothing);
+      leaderboardBody.remove('my_rank');
+      final refresh = tester.widget<RefreshIndicator>(
+        find.byType(RefreshIndicator).first,
+      );
+      final refreshing = refresh.onRefresh();
+      await flush(tester);
+      await refreshing;
+      expect(find.text('unranked'), findsOneWidget);
+      expect(find.text('#12'), findsNothing);
+      expect(tester.takeException(), isNull);
+      await tester.pumpWidget(const SizedBox.shrink());
+      await tester.pump();
+    },
+  );
 }

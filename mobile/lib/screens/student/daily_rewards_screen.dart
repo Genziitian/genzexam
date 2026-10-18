@@ -2,6 +2,7 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../api/api.dart';
 import '../../api/rewards_service.dart';
@@ -57,10 +58,14 @@ IconData _getPrizeIcon(String type) {
 class DailyRewardsScreen extends StatefulWidget {
   final ApiClient apiClient;
   final VoidCallback? onAccountChanged;
+  final VoidCallback? onOpenUploadPaper;
+  final VoidCallback? onOpenTestYourself;
   const DailyRewardsScreen({
     super.key,
     required this.apiClient,
     this.onAccountChanged,
+    this.onOpenUploadPaper,
+    this.onOpenTestYourself,
   });
   @override
   State<DailyRewardsScreen> createState() => _DailyRewardsScreenState();
@@ -74,6 +79,7 @@ class _DailyRewardsScreenState extends State<DailyRewardsScreen>
   Object? _error;
   bool _loading = true, _busy = false, _history = false;
   bool _needsRefresh = false;
+  final Set<String> _expandedInstructions = {};
 
   @override
   void initState() {
@@ -170,7 +176,10 @@ class _DailyRewardsScreenState extends State<DailyRewardsScreen>
   }
 
   Future<void> _showResultModal(RewardSpinResult result) async {
-    await showGeneralDialog<void>(
+    final destination = result.reward == null
+        ? null
+        : _rewardDestination(result.reward!);
+    final action = await showGeneralDialog<VoidCallback>(
       context: context,
       barrierDismissible: true,
       barrierLabel: 'Result',
@@ -197,23 +206,34 @@ class _DailyRewardsScreenState extends State<DailyRewardsScreen>
                     shape: BoxShape.circle,
                   ),
                   child: Center(
-                    child: Icon(_getPrizeIcon(result.reward?.type ?? 'try_again'), color: _colors[result.segment], size: 34),
+                    child: Icon(
+                      _getPrizeIcon(result.reward?.type ?? 'try_again'),
+                      color: _colors[result.segment],
+                      size: 34,
+                    ),
                   ),
                 ),
                 const SizedBox(height: 16),
                 Text(
                   result.title,
-                  style: const TextStyle(fontSize: 21, fontWeight: FontWeight.w900),
+                  style: const TextStyle(
+                    fontSize: 21,
+                    fontWeight: FontWeight.w900,
+                  ),
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 8),
                 Text(
                   result.reward == null
                       ? (result.segment == 3
-                          ? 'Better luck tomorrow! Free spin quota resets at midnight IST.'
-                          : 'You won 1 Free Extra Spin! Spin again now.')
-                      : 'Saved to your My Rewards list. Tap below to view your code.',
-                  style: TextStyle(color: Colors.grey.shade600, fontSize: 13, height: 1.45),
+                            ? 'Better luck tomorrow! Free spin quota resets at midnight IST.'
+                            : 'You won 1 Free Extra Spin! Spin again now.')
+                      : _rewardDescription(result.reward!),
+                  style: TextStyle(
+                    color: Colors.grey.shade600,
+                    fontSize: 13,
+                    height: 1.45,
+                  ),
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 20),
@@ -223,15 +243,34 @@ class _DailyRewardsScreenState extends State<DailyRewardsScreen>
                     style: FilledButton.styleFrom(
                       backgroundColor: _purple,
                       padding: const EdgeInsets.symmetric(vertical: 14),
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(14),
+                      ),
                     ),
                     onPressed: () {
-                      Navigator.pop(ctx);
-                      if (result.reward != null) setState(() => _history = true);
+                      Navigator.pop(ctx, destination);
+                      if (destination == null && result.reward != null)
+                        setState(() => _history = true);
                     },
-                    child: Text(result.reward != null ? 'My Rewards' : 'Got It'),
+                    child: Text(
+                      destination != null
+                          ? result.reward!.type == 'free_paper_upload'
+                                ? 'Upload paper now'
+                                : 'Test yourself now'
+                          : result.reward != null
+                          ? 'My Rewards'
+                          : 'Got It',
+                    ),
                   ),
                 ),
+                if (destination != null)
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pop(ctx);
+                      setState(() => _history = true);
+                    },
+                    child: const Text('My Rewards'),
+                  ),
               ],
             ),
           ),
@@ -242,7 +281,25 @@ class _DailyRewardsScreenState extends State<DailyRewardsScreen>
         child: child,
       ),
     );
+    if (mounted) action?.call();
   }
+
+  VoidCallback? _rewardDestination(RewardItem reward) => switch (reward.type) {
+    'free_paper_upload' => widget.onOpenUploadPaper,
+    'free_test' => widget.onOpenTestYourself,
+    _ => null,
+  };
+
+  String _rewardDescription(RewardItem reward) => switch (reward.type) {
+    'free_paper_upload' => '1 bonus upload has been added to your account. Open Upload Paper to use it. No coupon code needed.',
+    'free_test' => '1 bonus practice test has been added to your account. Open Test Yourself to use it. No coupon code needed.',
+    'free_pro' => 'Open My Rewards and activate your 30 days of free Pro. No card or recurring charge.',
+    'free_spin' =>
+      'Your extra spin is ready. Return to the wheel to spin again.',
+    'bonus_xp' =>
+      '50 Study XP has been added to your account. No code or claim needed.',
+    _ => 'Saved in My Rewards. Reveal and copy your coupon, then apply it at Genziitian.in/courses checkout.',
+  };
 
   void _showPrizesSheet() {
     final shuffledPrizes = List<WheelPrizeDef>.from(wheelPrizes)..shuffle();
@@ -299,11 +356,27 @@ class _DailyRewardsScreenState extends State<DailyRewardsScreen>
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: Center(
-                          child: Icon(_getPrizeIcon(p.type), color: _colors[p.segment], size: 20),
+                          child: Icon(
+                            _getPrizeIcon(p.type),
+                            color: _colors[p.segment],
+                            size: 20,
+                          ),
                         ),
                       ),
-                      title: Text(p.title, style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 14)),
-                      subtitle: Text(p.sub, style: TextStyle(color: Colors.grey.shade600, fontSize: 12)),
+                      title: Text(
+                        p.title,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.w700,
+                          fontSize: 14,
+                        ),
+                      ),
+                      subtitle: Text(
+                        p.sub,
+                        style: TextStyle(
+                          color: Colors.grey.shade600,
+                          fontSize: 12,
+                        ),
+                      ),
                     );
                   },
                 ),
@@ -317,6 +390,15 @@ class _DailyRewardsScreenState extends State<DailyRewardsScreen>
 
   Future<void> _rewardAction(RewardItem reward) async {
     if (_busy || reward.isExpired) return;
+    final destination = _rewardDestination(reward);
+    if (destination != null) {
+      destination();
+      return;
+    }
+    if (reward.type == 'free_spin') {
+      setState(() => _history = false);
+      return;
+    }
     setState(() => _busy = true);
     try {
       if (!reward.scratched) {
@@ -325,27 +407,36 @@ class _DailyRewardsScreenState extends State<DailyRewardsScreen>
         if (mounted && reward.code != null) {
           await Clipboard.setData(ClipboardData(text: reward.code!));
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('Coupon code ${reward.code} revealed & copied!')),
+            SnackBar(
+              content: Text('Coupon code ${reward.code} revealed & copied!'),
+            ),
           );
         }
       } else if (reward.type == 'free_pro' && !reward.claimed) {
         final message = await _service.claimPro(reward.id);
         widget.onAccountChanged?.call();
         if (mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message)));
+          ScaffoldMessenger.of(context)
+              .showSnackBar(SnackBar(content: Text(message)));
         }
         await _load();
       } else if (reward.code != null) {
         await Clipboard.setData(ClipboardData(text: reward.code!));
         if (mounted) {
           HapticFeedback.lightImpact();
-          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Coupon code copied!')));
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(const SnackBar(content: Text('Coupon code copied!')));
         }
       }
     } catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(e is ApiException ? e.message : 'Could not complete action.')),
+          SnackBar(
+            content: Text(
+              e is ApiException ? e.message : 'Could not complete action.',
+            ),
+          ),
         );
       }
     } finally {
@@ -366,7 +457,11 @@ class _DailyRewardsScreenState extends State<DailyRewardsScreen>
         child: Theme(
           data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
           child: ExpansionTile(
-            leading: const Icon(Icons.shield_outlined, color: _purple, size: 20),
+            leading: const Icon(
+              Icons.shield_outlined,
+              color: _purple,
+              size: 20,
+            ),
             title: const Text(
               'Rules and Conditions',
               style: TextStyle(
@@ -378,12 +473,30 @@ class _DailyRewardsScreenState extends State<DailyRewardsScreen>
             childrenPadding: const EdgeInsets.fromLTRB(18, 0, 18, 16),
             expandedCrossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _ruleItem('Daily Free Spin Allowance', 'Every registered account receives 1 free spin every calendar day. No payment required. Resets at midnight IST.'),
-              _ruleItem('7-Day Automatic Expiry', 'All discount coupons and feature passes auto-disable exactly 7 days from the moment spun or scratched.'),
-              _ruleItem('Redemption Venue', 'Course discount coupons are valid exclusively at Genziitian.in/courses checkout.'),
-              _ruleItem('Order Value & Max Cap', 'Minimum purchase requirement is ₹350. Maximum discount on percentage coupons capped at ₹100.'),
-              _ruleItem('30 Days Free Pro', 'Provides 30 consecutive calendar days of full Pro access with zero recurring billing.'),
-              _ruleItem('Platform Rules Agreement', 'By participating you accept all Quiz LAB terms and promotional rules.'),
+              _ruleItem(
+                'Daily Free Spin Allowance',
+                'Every registered account receives 1 free spin every calendar day. No payment required. Resets at midnight IST.',
+              ),
+              _ruleItem(
+                '7-Day Automatic Expiry',
+                'All discount coupons and feature passes auto-disable exactly 7 days from the moment spun or scratched.',
+              ),
+              _ruleItem(
+                'Redemption Venue',
+                'Course discount coupons are valid exclusively at Genziitian.in/courses checkout.',
+              ),
+              _ruleItem(
+                'Order Value & Max Cap',
+                'Minimum purchase requirement is ₹350. Maximum discount on percentage coupons capped at ₹100.',
+              ),
+              _ruleItem(
+                '30 Days Free Pro',
+                'Provides 30 consecutive calendar days of full Pro access with zero recurring billing.',
+              ),
+              _ruleItem(
+                'Platform Rules Agreement',
+                'By participating you accept all Quiz LAB terms and promotional rules.',
+              ),
             ],
           ),
         ),
@@ -396,9 +509,19 @@ class _DailyRewardsScreenState extends State<DailyRewardsScreen>
       padding: const EdgeInsets.only(bottom: 8),
       child: RichText(
         text: TextSpan(
-          style: const TextStyle(fontSize: 12, color: Color(0xFF475569), height: 1.45),
+          style: const TextStyle(
+            fontSize: 12,
+            color: Color(0xFF475569),
+            height: 1.45,
+          ),
           children: [
-            TextSpan(text: '• $title: ', style: const TextStyle(fontWeight: FontWeight.bold, color: Color(0xFF0F172A))),
+            TextSpan(
+              text: '• $title: ',
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF0F172A),
+              ),
+            ),
             TextSpan(text: desc),
           ],
         ),
@@ -411,6 +534,12 @@ class _DailyRewardsScreenState extends State<DailyRewardsScreen>
     final revealed = reward.scratched;
     final label = expired
         ? 'Expired'
+        : _rewardDestination(reward) != null
+        ? reward.type == 'free_paper_upload'
+              ? 'Upload paper now'
+              : 'Test yourself now'
+        : reward.type == 'free_spin'
+        ? 'Spin again'
         : !revealed
         ? 'Reveal reward'
         : reward.type == 'free_pro' && !reward.claimed
@@ -439,12 +568,16 @@ class _DailyRewardsScreenState extends State<DailyRewardsScreen>
                   width: 36,
                   height: 36,
                   decoration: BoxDecoration(
-                    color: expired ? Colors.grey.shade100 : const Color(0xFFEEF2FF),
+                    color: expired
+                        ? Colors.grey.shade100
+                        : const Color(0xFFEEF2FF),
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Center(
                     child: Icon(
-                      expired ? Icons.timer_off_outlined : _getPrizeIcon(reward.type),
+                      expired
+                          ? Icons.timer_off_outlined
+                          : _getPrizeIcon(reward.type),
                       color: expired ? Colors.grey : _purple,
                       size: 20,
                     ),
@@ -456,21 +589,36 @@ class _DailyRewardsScreenState extends State<DailyRewardsScreen>
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        revealed || expired ? reward.title : 'Your reward is ready',
-                        style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 15),
+                        revealed || expired
+                            ? reward.title
+                            : 'Your reward is ready',
+                        style: const TextStyle(
+                          fontWeight: FontWeight.w700,
+                          fontSize: 15,
+                        ),
                       ),
                       if (reward.expiresAt != null)
                         Text(
-                          expired ? 'Expired after 7 days' : 'Expires in 7 days',
-                          style: TextStyle(color: Colors.grey.shade600, fontSize: 11),
+                          expired
+                              ? 'Expired after 7 days'
+                              : 'Expires in 7 days',
+                          style: TextStyle(
+                            color: Colors.grey.shade600,
+                            fontSize: 11,
+                          ),
                         ),
                     ],
                   ),
                 ),
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 8,
+                    vertical: 4,
+                  ),
                   decoration: BoxDecoration(
-                    color: expired ? Colors.grey.shade100 : const Color(0xFFDCFCE7),
+                    color: expired
+                        ? Colors.grey.shade100
+                        : const Color(0xFFDCFCE7),
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: Text(
@@ -487,7 +635,10 @@ class _DailyRewardsScreenState extends State<DailyRewardsScreen>
             if (revealed && !expired && reward.code != null) ...[
               const SizedBox(height: 12),
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 14,
+                  vertical: 10,
+                ),
                 decoration: BoxDecoration(
                   color: const Color(0xFFF8FAFC),
                   borderRadius: BorderRadius.circular(10),
@@ -496,44 +647,187 @@ class _DailyRewardsScreenState extends State<DailyRewardsScreen>
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    SelectableText(
-                      reward.code!,
-                      style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w800, letterSpacing: 1),
-                    ),
-                    InkWell(
-                      onTap: () => _rewardAction(reward),
-                      child: const Text('Copy', style: TextStyle(color: _purple, fontWeight: FontWeight.bold, fontSize: 13)),
+                    Expanded(
+                      child: SelectableText(
+                        reward.code!,
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w800,
+                          letterSpacing: 1,
+                        ),
+                      ),
                     ),
                   ],
                 ),
               ),
             ],
             const SizedBox(height: 10),
-            SizedBox(
-              width: double.infinity,
-              child: TextButton(
-                onPressed: _busy || expired || (revealed && reward.code == null && (reward.type != 'free_pro' || reward.claimed))
-                    ? null
-                    : () => _rewardAction(reward),
-                style: TextButton.styleFrom(
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-                  backgroundColor: expired ? Colors.grey.shade100 : const Color(0xFFEEF2FF),
-                  foregroundColor: expired ? Colors.grey.shade500 : _purple,
+            Row(
+              children: [
+                Expanded(
+                  child: TextButton(
+                    onPressed: () => setState(() {
+                      if (!_expandedInstructions.remove(reward.id))
+                        _expandedInstructions.add(reward.id);
+                    }),
+                    child: Text(
+                      _expandedInstructions.contains(reward.id)
+                          ? 'Hide instructions'
+                          : 'Instructions',
+                    ),
+                  ),
                 ),
-                child: Text(label),
-              ),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: TextButton(
+                    onPressed:
+                        _busy ||
+                            expired ||
+                            (_rewardDestination(reward) == null &&
+                                reward.type != 'free_spin' &&
+                                revealed &&
+                                reward.code == null &&
+                                (reward.type != 'free_pro' || reward.claimed))
+                        ? null
+                        : () => _rewardAction(reward),
+                    style: TextButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      backgroundColor: expired
+                          ? Colors.grey.shade100
+                          : const Color(0xFFEEF2FF),
+                      foregroundColor: expired ? Colors.grey.shade500 : _purple,
+                    ),
+                    child: Text(label),
+                  ),
+                ),
+              ],
             ),
+            if (_expandedInstructions.contains(reward.id)) ...[
+              const SizedBox(height: 12),
+              ..._rewardInstructions(reward),
+            ],
           ],
         ),
       ),
     );
   }
 
+  List<Widget> _rewardInstructions(RewardItem reward) {
+    if (reward.isExpired)
+      return [
+        _ruleItem(
+          'Expired',
+          'This reward is no longer available. Expired coupon codes cannot be copied or redeemed.',
+        ),
+      ];
+    switch (reward.type) {
+      case 'coupon_pct':
+      case 'coupon_flat':
+        return [
+          _ruleItem(
+            '1. Visit',
+            'Open Genziitian.in/courses and choose a course. This coupon is for that website checkout.',
+          ),
+          _ruleItem(
+            '2. Apply code',
+            'Reveal the reward, tap Copy code, then paste it into the coupon field at checkout before paying.',
+          ),
+          _ruleItem(
+            'Minimum order',
+            '₹350. Receiving this coupon is free; buying a course requires payment.',
+          ),
+          if (reward.type == 'coupon_pct')
+            _ruleItem(
+              'Discount limit',
+              reward.title.startsWith('5%') ||
+                      (reward.code?.startsWith('GENZ5-') ?? false)
+                  ? 'Up to ₹50, as shown on this coupon.'
+                  : 'Up to ₹100 per purchase.',
+            ),
+          _ruleItem(
+            'Expiry',
+            'Valid for 7 days from winning the coupon. Revealing it later does not restart its validity.',
+          ),
+          TextButton(
+            onPressed: () =>
+                _openRewardLink(Uri.https('genziitian.in', '/courses')),
+            child: const Text('Visit courses'),
+          ),
+          TextButton(
+            onPressed: () => _openRewardLink(
+              Uri.parse(
+                'https://quiz.genziitian.in/terms.html#rewards-promotions',
+              ),
+            ),
+            child: const Text('Promotional terms'),
+          ),
+        ];
+      case 'free_paper_upload':
+        return [
+          _ruleItem(
+            'Added to your account',
+            '1 bonus paper upload was credited automatically. Tap Upload paper now, choose your PDF or JSON, and turn it into a test. No coupon code or payment needed.',
+          ),
+        ];
+      case 'free_test':
+        return [
+          _ruleItem(
+            'Added to your account',
+            '1 bonus practice test was credited automatically. Tap Test yourself now and choose your course to create a paper. No coupon code or payment needed.',
+          ),
+        ];
+      case 'free_pro':
+        return [
+          _ruleItem(
+            reward.claimed ? 'Pro activated' : 'Activate your reward',
+            reward.claimed
+                ? 'Your 30-day Pro reward has been activated. No card or recurring charge applies to this reward.'
+                : 'Reveal your reward, then tap Activate Pro for 30 consecutive days of Pro access. No card, payment or recurring charge.',
+          ),
+        ];
+      case 'bonus_xp':
+        return [
+          _ruleItem(
+            'Added to your account',
+            '50 Study XP was credited automatically. No code or claim needed.',
+          ),
+        ];
+      case 'free_spin':
+        return [
+          _ruleItem(
+            'Extra spin ready',
+            'Tap Spin again to return to the wheel and use your extra Daily Rewards spin. No code or payment needed.',
+          ),
+        ];
+      default:
+        return [_ruleItem('My Rewards', _rewardDescription(reward))];
+    }
+  }
+
+  Future<void> _openRewardLink(Uri uri) async {
+    try {
+      if (await launchUrl(uri, mode: LaunchMode.externalApplication)) return;
+    } catch (_) {
+      // Keep the instructions visible if the device cannot open a browser.
+    }
+    if (mounted)
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Could not open the link. Visit $uri in your browser.'),
+        ),
+      );
+  }
+
   @override
   Widget build(BuildContext context) => Scaffold(
     backgroundColor: const Color(0xFFF8FAFC),
     appBar: AppBar(
-      title: const Text('Daily Rewards', style: TextStyle(fontWeight: FontWeight.w800)),
+      title: const Text(
+        'Daily Rewards',
+        style: TextStyle(fontWeight: FontWeight.w800),
+      ),
       backgroundColor: Colors.white,
       elevation: 0,
       scrolledUnderElevation: 1,
@@ -552,29 +846,48 @@ class _DailyRewardsScreenState extends State<DailyRewardsScreen>
                     const Expanded(
                       child: Text(
                         'Spin & Win',
-                        style: TextStyle(fontSize: 22, fontWeight: FontWeight.w900, letterSpacing: -0.5),
+                        style: TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.w900,
+                          letterSpacing: -0.5,
+                        ),
                       ),
                     ),
                     OutlinedButton(
                       onPressed: _showPrizesSheet,
                       style: OutlinedButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 8,
+                          vertical: 6,
+                        ),
                         minimumSize: Size.zero,
                         tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                        textStyle: const TextStyle(fontSize: 12, fontWeight: FontWeight.w700),
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                        textStyle: const TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w700,
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
                       ),
                       child: const Text('View Prizes'),
                     ),
                     const SizedBox(width: 6),
                     FilledButton(
-                      onPressed: _busy ? null : () => setState(() => _history = !_history),
+                      onPressed: _busy
+                          ? null
+                          : () => setState(() => _history = !_history),
                       style: FilledButton.styleFrom(
                         backgroundColor: _purple,
-                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 10,
+                          vertical: 6,
+                        ),
                         minimumSize: Size.zero,
                         tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
                       ),
                       child: Text(
                         _history
@@ -582,7 +895,10 @@ class _DailyRewardsScreenState extends State<DailyRewardsScreen>
                             : (_data?.rewards.isEmpty ?? true)
                             ? 'My Rewards'
                             : 'My Rewards (${_data?.rewards.length ?? 0})',
-                        style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w700),
+                        style: const TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w700,
+                        ),
                       ),
                     ),
                   ],
@@ -600,14 +916,22 @@ class _DailyRewardsScreenState extends State<DailyRewardsScreen>
                     ),
                     child: Row(
                       children: [
-                        const Icon(Icons.error_outline_rounded, color: Color(0xFFDC2626), size: 20),
+                        const Icon(
+                          Icons.error_outline_rounded,
+                          color: Color(0xFFDC2626),
+                          size: 20,
+                        ),
                         const SizedBox(width: 8),
                         Expanded(
                           child: Text(
                             _error is ApiException
                                 ? (_error as ApiException).message
                                 : 'Temporary server failure. Please try again.',
-                            style: const TextStyle(color: Color(0xFF991B1B), fontSize: 13, fontWeight: FontWeight.w600),
+                            style: const TextStyle(
+                              color: Color(0xFF991B1B),
+                              fontSize: 13,
+                              fontWeight: FontWeight.w600,
+                            ),
                           ),
                         ),
                         TextButton(
@@ -689,10 +1013,17 @@ class _DailyRewardsScreenState extends State<DailyRewardsScreen>
                             child: FilledButton.icon(
                               style: FilledButton.styleFrom(
                                 backgroundColor: _purple,
-                                padding: const EdgeInsets.symmetric(vertical: 14),
-                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+                                padding: const EdgeInsets.symmetric(
+                                  vertical: 14,
+                                ),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(14),
+                                ),
                               ),
-                              onPressed: _busy || _needsRefresh || (_data?.remaining ?? 0) <= 0
+                              onPressed:
+                                  _busy ||
+                                      _needsRefresh ||
+                                      (_data?.remaining ?? 0) <= 0
                                   ? null
                                   : _spin,
                               icon: const Icon(Icons.casino_outlined, size: 20),
@@ -704,7 +1035,10 @@ class _DailyRewardsScreenState extends State<DailyRewardsScreen>
                                     : (_data?.remaining ?? 0) <= 0
                                     ? '✓ Spun Today · Come Back Tomorrow'
                                     : 'Spin now · Free daily spin',
-                                style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 15),
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.w800,
+                                  fontSize: 15,
+                                ),
                               ),
                             ),
                           ),
@@ -730,17 +1064,27 @@ class _DailyRewardsScreenState extends State<DailyRewardsScreen>
                                 color: const Color(0xFFEEF2FF),
                                 borderRadius: BorderRadius.circular(16),
                               ),
-                              child: const Icon(Icons.card_giftcard_rounded, color: _purple, size: 28),
+                              child: const Icon(
+                                Icons.card_giftcard_rounded,
+                                color: _purple,
+                                size: 28,
+                              ),
                             ),
                             const SizedBox(height: 12),
                             const Text(
                               'No rewards yet',
-                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w800),
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w800,
+                              ),
                             ),
                             const SizedBox(height: 4),
                             Text(
                               'Spin the wheel daily to collect coupons and Free Pro.',
-                              style: TextStyle(color: Colors.grey.shade600, fontSize: 13),
+                              style: TextStyle(
+                                color: Colors.grey.shade600,
+                                fontSize: 13,
+                              ),
                             ),
                           ],
                         ),

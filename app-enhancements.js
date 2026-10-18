@@ -3561,6 +3561,7 @@
     var isInApp = reward.type === "free_test" || reward.type === "free_paper_upload" || reward.type === "free_pro";
     var modalHeadTitle = isInApp ? "You Won a Bonus Reward!" : "You Won a Reward Coupon!";
     var modalHeadSub = isInApp ? "Scratch with your mouse or finger to reveal your reward" : "Scratch with your mouse or finger to reveal your secret code";
+    var copyIcon = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>';
 
     var secretSubHtml = "";
     if (reward.type === "free_test") {
@@ -3573,7 +3574,8 @@
       secretSubHtml = '<div class="ql-scratch-code" style="font-size:15px;letter-spacing:0.5px;color:#b45309">👑 30 DAYS PRO</div>' +
                       '<div class="ql-scratch-expiry-note">Ready to activate on your account</div>';
     } else {
-      secretSubHtml = '<div class="ql-scratch-code" id="ql-scratch-secret-code">' + escapeHtml(reward.code || "") + '</div>' +
+      secretSubHtml = '<div class="ql-scratch-code-row"><div class="ql-scratch-code" id="ql-scratch-secret-code">' + escapeHtml(reward.code || "") + '</div>' +
+                      '<button type="button" class="ql-copy-code-btn" id="ql-scratch-copy-btn" aria-label="Copy coupon code" title="Copy coupon code" style="display:none">' + copyIcon + '</button></div>' +
                       '<div class="ql-scratch-expiry-note">Valid for 7 days only · Expires if unused</div>';
     }
 
@@ -3618,15 +3620,14 @@
         '</div>';
     } else {
       actionsHtml =
-        '<button type="button" class="ql-copy-code-btn" id="ql-scratch-copy-btn" style="display:none">' +
-          '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg> Copy Coupon Code' +
-        '</button>' +
         '<div class="ql-claim-steps-card">' +
-          '<strong class="ql-claim-steps-title">How to Claim Your Coupon (' + escapeHtml(reward.title) + ' off):</strong>' +
+          '<div class="ql-coupon-claim-header"><strong class="ql-claim-steps-title">How to Claim Your Coupon:</strong>' +
+            '<button type="button" class="ql-card-terms-toggle" id="ql-scratch-claim-toggle" aria-expanded="false" aria-controls="ql-scratch-claim-details">View</button></div>' +
+          '<div class="ql-card-claim-details" id="ql-scratch-claim-details" style="display:none">' +
           '<ol class="ql-claim-steps-list">' +
             '<li><strong>Visit:</strong> <a href="https://genziitian.in/courses" target="_blank" rel="noopener noreferrer">Genziitian.in/courses</a></li>' +
             '<li><strong>Choose:</strong> Pick any course of your choice</li>' +
-            '<li><strong>Apply Code:</strong> Apply this code at checkout: <code style="background:#e0e7ff;color:#3730a3;padding:2px 6px;border-radius:4px;font-weight:700">' + escapeHtml(reward.code || "") + '</code></li>' +
+            '<li><strong>Apply Code:</strong> Apply your coupon code at checkout.</li>' +
           '</ol>' +
           '<div class="ql-claim-terms-box">' +
             '<div class="ql-claim-term-row"><strong>Applicability:</strong> Valid only on <a href="https://genziitian.in/courses" target="_blank" rel="noopener noreferrer">Genziitian.in/courses</a>.</div>' +
@@ -3636,8 +3637,9 @@
             '<div class="ql-claim-term-row"><strong>Discount Cap:</strong> Max discount on any percentage is ₹100.</div>' +
             '<div class="ql-claim-term-row"><strong>Terms Agreement:</strong> By continuing you accept all our <a href="/terms.html#rewards-promotions" target="_blank">terms, conditions and rules</a>.</div>' +
           '</div>' +
-          '<a href="https://genziitian.in/courses" target="_blank" rel="noopener noreferrer" class="ql-visit-courses-cta">Visit Genziitian.in/courses &amp; Redeem →</a>' +
-          '<button type="button" class="ql-scratch-done-btn" id="ql-scratch-done-btn">✕ Close &amp; Keep in My Rewards</button>' +
+          '</div>' +
+          '<div class="ql-coupon-actions"><a href="https://genziitian.in/courses" target="_blank" rel="noopener noreferrer" class="ql-visit-courses-cta">Redeem</a>' +
+          '<button type="button" class="ql-scratch-done-btn" id="ql-scratch-done-btn">Close</button></div>' +
         '</div>';
     }
 
@@ -3667,6 +3669,16 @@
     var ctx = canvas.getContext("2d");
     var copyBtn = overlay.querySelector("#ql-scratch-copy-btn");
     var closeBtn = overlay.querySelector(".ql-scratch-dialog-close");
+    var claimToggle = overlay.querySelector("#ql-scratch-claim-toggle");
+    var claimDetails = overlay.querySelector("#ql-scratch-claim-details");
+    if (claimToggle && claimDetails) {
+      claimToggle.addEventListener("click", function () {
+        var expanded = claimToggle.getAttribute("aria-expanded") !== "true";
+        claimToggle.setAttribute("aria-expanded", String(expanded));
+        claimToggle.textContent = expanded ? "Hide" : "View";
+        claimDetails.style.display = expanded ? "block" : "none";
+      });
+    }
 
     function paintFoil() {
       var w = canvas.width;
@@ -3771,9 +3783,13 @@
       copyBtn.addEventListener("click", function () {
         if (!reward.code) return;
         navigator.clipboard.writeText(reward.code).then(function () {
-          copyBtn.innerHTML = '<span aria-hidden="true">✓</span> Copied to clipboard!';
+          copyBtn.innerHTML = '<span aria-hidden="true">✓</span>';
+          copyBtn.setAttribute("aria-label", "Coupon code copied");
+          copyBtn.title = "Copied!";
           setTimeout(function () {
-            copyBtn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:-2px"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg> Copy Coupon Code';
+            copyBtn.innerHTML = copyIcon;
+            copyBtn.setAttribute("aria-label", "Copy coupon code");
+            copyBtn.title = "Copy coupon code";
           }, 2200);
         });
       });

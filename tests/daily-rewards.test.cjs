@@ -12,6 +12,45 @@ const serverJs = fs.readFileSync(path.join(root, "server.js"), "utf8");
 const apiRoutes = fs.readFileSync(path.join(root, "backend", "routes", "api.php"), "utf8");
 const indexHtml = fs.readFileSync(path.join(root, "index.html"), "utf8");
 
+// Coupon instructions start collapsed and support reopening without changing the reward.
+const scratchSource = appEnhancements.slice(appEnhancements.indexOf('  function openScratchCardModal('), appEnhancements.indexOf('  function openProJackpotModal('));
+assert.ok(scratchSource.includes('How to Claim Your Coupon:</strong>'));
+assert.ok(!scratchSource.includes("escapeHtml(reward.title) + ' off):"));
+assert.ok(scratchSource.includes('id="ql-scratch-claim-details" style="display:none"'));
+const couponRules = scratchSource.slice(scratchSource.indexOf('<div class="ql-coupon-claim-header"'), scratchSource.indexOf('<div class="ql-coupon-actions"'));
+assert.ok(!couponRules.includes('reward.title') && !couponRules.includes('reward.code'), 'Common course coupon rules must not include a specific discount or code');
+const claimToggle = {
+  expanded: 'false', textContent: 'View',
+  getAttribute() { return this.expanded; },
+  setAttribute(name, value) { this.expanded = value; },
+  addEventListener(name, handler) { this.click = handler; }
+};
+const claimDetails = { style: { display: 'none' } };
+require('node:vm').runInNewContext(
+  scratchSource.slice(scratchSource.indexOf('    var claimToggle ='), scratchSource.indexOf('    function paintFoil()')),
+  { overlay: { querySelector: selector => selector === '#ql-scratch-claim-toggle' ? claimToggle : claimDetails } }
+);
+claimToggle.click();
+assert.strictEqual(claimDetails.style.display, 'block', 'View reveals the instructions');
+assert.strictEqual(claimToggle.expanded, 'true');
+assert.strictEqual(claimToggle.textContent, 'Hide');
+claimToggle.click();
+assert.strictEqual(claimDetails.style.display, 'none', 'Hide collapses the instructions');
+assert.strictEqual(claimToggle.expanded, 'false');
+assert.strictEqual(claimToggle.textContent, 'View');
+assert.ok(scratchSource.includes('class="ql-scratch-code-row"'), 'Copy icon sits beside the coupon code');
+assert.ok(!scratchSource.includes('Copy Coupon Code'), 'The large copy button is removed');
+assert.ok(scratchSource.includes('class="ql-coupon-actions"') && scratchSource.includes('>Redeem</a>') && scratchSource.includes('>Close</button></div>'), 'Redeem and Close share an action row');
+let copiedCode;
+const copyBtn = { addEventListener(name, handler) { this.click = handler; }, setAttribute() {} };
+require('node:vm').runInNewContext(
+  scratchSource.slice(scratchSource.indexOf('    if (copyBtn) {'), scratchSource.indexOf('    var scratchClaimPro =')),
+  { copyBtn, reward: { code: 'TEST-COUPON' }, navigator: { clipboard: { writeText(code) { copiedCode = code; return { then(done) { done(); } }; } } }, setTimeout() {} }
+);
+copyBtn.click();
+assert.strictEqual(copiedCode, 'TEST-COUPON', 'The icon copies the actual coupon code');
+assert.strictEqual(copyBtn.title, 'Copied!');
+
 // 1. Bundle tests
 assert.ok(
   bundle.includes('Ln,{to:`/rewards`,className:`flex items-center gap-1.5 rounded-lg bg-brand px-3.5 py-1.5 text-[12px] font-semibold text-white shadow-sm transition-all hover:bg-brand-dark hover:shadow`,children:[(0,F.jsx)(lc,{}),`Spin & Win`]'),

@@ -7,11 +7,12 @@ use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 class StudentRewardController extends Controller
 {
-    private const SECTOR_COUNT = 8;
+    private const SECTOR_COUNT = 10;
     private const EXPIRY_DAYS = 7;
 
     public function index(Request $request): JsonResponse
@@ -32,11 +33,11 @@ class StudentRewardController extends Controller
 
     public function spin(Request $request): JsonResponse
     {
-        $user = $request->user();
-        if (! $user) {
-            return response()->json(['error' => 'Unauthenticated'], 401);
-        }
+        return $this->withRewardLock($request, fn (User $user) => $this->spinForUser($user));
+    }
 
+    private function spinForUser(User $user): JsonResponse
+    {
         $quota = $this->dailyQuota($user);
         if ($quota['remaining'] <= 0) {
             return response()->json([
@@ -122,11 +123,13 @@ class StudentRewardController extends Controller
 
             // If free test yourself spin: grant +1 bonus spin directly
             if ($prizeData['type'] === 'free_test') {
+                Cache::add('user_bonus_spins_'.$user->id, 0, now()->addYear());
                 Cache::increment('user_bonus_spins_'.$user->id, 1);
             }
 
             // If free paper upload: grant +1 bonus upload directly
             if ($prizeData['type'] === 'free_paper_upload') {
+                Cache::add('user_bonus_uploads_'.$user->id, 0, now()->addYear());
                 Cache::increment('user_bonus_uploads_'.$user->id, 1);
             }
 
@@ -151,69 +154,83 @@ class StudentRewardController extends Controller
 
     public function claimPro(Request $request): JsonResponse
     {
-        $user = $request->user();
-        if (! $user) {
-            return response()->json(['error' => 'Unauthenticated'], 401);
-        }
+        $data = $request->validate(['id' => ['required', 'uuid']]);
 
-        $now = now();
-        $subscription = ProSubscription::create([
-            'user_id' => $user->id,
-            'provider' => 'reward',
-            'status' => 'active',
-            'amount_paise' => 0,
-            'currency' => 'INR',
-            'started_at' => $now,
-            'current_period_ends_at' => $now->copy()->addDays(30),
-        ]);
+        return $this->withRewardLock($request, function (User $user) use ($data) {
+            $rewards = $this->getUserRewards($user);
+            $index = array_search($data['id'], array_column($rewards, 'id'), true);
+            abort_if($index === false || ($rewards[$index]['type'] ?? null) !== 'free_pro', 404, 'Pro reward not found.');
+            $reward = $rewards[$index];
+            $reference = 'reward-'.$data['id'];
+            abort_if(! empty($reward['is_claimed']) || ProSubscription::query()
+                ->where('user_id', $user->id)->where('provider', 'reward')
+                ->where('provider_subscription_id', $reference)->exists(), 409, 'This reward has already been claimed.');
+            abort_if(! empty($reward['is_expired']), 410, 'This reward has expired.');
 
-        $user->update(['is_pro' => true]);
+            $now = now();
+            $subscription = DB::transaction(function () use ($user, $reference, $now) {
+                $subscription = ProSubscription::create([
+                    'user_id' => $user->id,
+                    'provider' => 'reward',
+                    'provider_subscription_id' => $reference,
+                    'status' => 'active',
+                    'amount_paise' => 0,
+                    'currency' => 'INR',
+                    'started_at' => $now,
+                    'current_period_ends_at' => $now->copy()->addDays(30),
+                ]);
+                $user->update(['is_pro' => true]);
+                return $subscription;
+            });
 
-        // Mark any unclaimed pro reward as claimed
-        $rewards = $this->getUserRewards($user);
-        foreach ($rewards as &$r) {
-            if ($r['type'] === 'free_pro' && empty($r['is_claimed'])) {
-                $r['is_claimed'] = true;
-                $r['claimed_at'] = $now->toIso8601String();
-            }
-        }
-        $this->setUserRewards($user, $rewards);
-        $this->updateLogProClaim($user);
+            $rewards[$index]['is_claimed'] = true;
+            $rewards[$index]['claimed_at'] = $now->toIso8601String();
+            $this->setUserRewards($user, $rewards);
+            $this->updateLogProClaim($user, $data['id']);
 
-        return response()->json([
-            'success' => true,
-            'message' => '30 Days Free Pro plan activated successfully!',
-            'is_pro' => true,
-            'current_period_ends_at' => $subscription->current_period_ends_at->toIso8601String(),
-        ]);
+            return response()->json([
+                'success' => true,
+                'message' => '30 Days Free Pro plan activated successfully!',
+                'is_pro' => true,
+                'current_period_ends_at' => $subscription->current_period_ends_at->toIso8601String(),
+            ]);
+        });
     }
 
     public function scratch(Request $request): JsonResponse
     {
-        $user = $request->user();
-        if (! $user) {
-            return response()->json(['error' => 'Unauthenticated'], 401);
-        }
+        $data = $request->validate(['id' => ['required', 'uuid']]);
+        return $this->withRewardLock($request, function (User $user) use ($data) {
+            $id = $data['id'];
+            $rewards = $this->getUserRewards($user);
+            $found = false;
 
-        $id = (string) $request->input('id');
-        $rewards = $this->getUserRewards($user);
-        $found = false;
-
-        foreach ($rewards as &$r) {
-            if (($r['id'] ?? '') === $id) {
-                $r['is_scratched'] = true;
-                $r['scratched_at'] = now()->toIso8601String();
-                $found = true;
-                break;
+            foreach ($rewards as &$r) {
+                if (($r['id'] ?? '') === $id) {
+                    $r['is_scratched'] = true;
+                    $r['scratched_at'] = now()->toIso8601String();
+                    $found = true;
+                    break;
+                }
             }
-        }
 
-        if ($found) {
+            abort_unless($found, 404, 'Reward not found.');
             $this->setUserRewards($user, $rewards);
             $this->updateLogScratch($id);
-        }
 
-        return response()->json(['success' => true, 'id' => $id]);
+            return response()->json(['success' => true, 'id' => $id]);
+        });
+    }
+
+    private function withRewardLock(Request $request, callable $callback): JsonResponse
+    {
+        $user = $request->user();
+        abort_unless($user, 401, 'Unauthenticated.');
+        $response = Cache::lock('user_rewards_lock_'.$user->id, 30)
+            ->get(fn () => $callback($user));
+        return $response === false
+            ? response()->json(['error' => 'Another rewards request is in progress. Please try again.'], 409)
+            : $response;
     }
 
     private function dailyQuota(User $user): array
@@ -367,11 +384,11 @@ class StudentRewardController extends Controller
         Cache::put('manager_rewards_log', $log, now()->addYear());
     }
 
-    private function updateLogProClaim(User $user): void
+    private function updateLogProClaim(User $user, string $rewardId): void
     {
         $log = (array) Cache::get('manager_rewards_log', []);
         foreach ($log as &$row) {
-            if (($row['user_id'] ?? null) === $user->id && ($row['prize_type'] ?? '') === 'free_pro' && empty($row['is_claimed'])) {
+            if (($row['user_id'] ?? null) === $user->id && ($row['reward_id'] ?? null) === $rewardId && ($row['prize_type'] ?? '') === 'free_pro' && empty($row['is_claimed'])) {
                 $row['is_claimed'] = true;
                 $row['status'] = 'Pro Claimed';
                 $row['claimed_at'] = now()->toIso8601String();

@@ -295,6 +295,14 @@ class _StudentMainShellState extends State<StudentMainShell> {
         builder: (_) => DailyRewardsScreen(
           apiClient: widget.authState.client,
           onAccountChanged: () => widget.authState.refreshAccount(),
+          onOpenUploadPaper: () {
+            Navigator.of(context).pop();
+            _openUploadedPapers();
+          },
+          onOpenTestYourself: () {
+            Navigator.of(context).pop();
+            _openSpinPractice();
+          },
         ),
       ),
     );
@@ -467,6 +475,7 @@ class _StudentMainShellState extends State<StudentMainShell> {
                           onNavigateToPractice: () => _selectTab(2),
                           onNavigateToRanks: () => _selectTab(3),
                           onOpenDownloads: _openOfflinePapers,
+                          onOpenDailyRewards: _openDailyRewards,
                         ),
                       ),
                     ],
@@ -2204,16 +2213,24 @@ class _HomeTabState extends State<_HomeTab>
                           child: FutureBuilder<LeaderboardData>(
                             future: _leaderboardFuture,
                             builder: (context, rankSnapshot) {
-                              final myRank = rankSnapshot.data?.myRank;
+                              // Dashboard already includes a server-calculated XP rank.
+                              final myRank = rankSnapshot.hasData
+                                  ? rankSnapshot.data!.myRank
+                                  : data.rank.current;
+                              final unavailable =
+                                  myRank == null && rankSnapshot.hasError;
+                              final loading = myRank == null &&
+                                  !unavailable && rankSnapshot.connectionState ==
+                                      ConnectionState.waiting;
                               return _MetricCard(
                                 title: 'RANK',
                                 value: myRank == null
-                                    ? (rankSnapshot.connectionState ==
-                                              ConnectionState.waiting
-                                          ? '…'
-                                          : 'New')
+                                    ? (unavailable ? '—' : loading ? '…' : 'New')
                                     : '#$myRank',
-                                unit: myRank == null ? 'unranked' : 'XP rank',
+                                unit: myRank != null
+                                    ? 'XP rank'
+                                    : unavailable ? 'Unavailable'
+                                    : loading ? 'Loading' : 'unranked',
                                 color: const Color(0xFF8B5CF6),
                                 titleColor: const Color(0xFF6D28D9),
                                 history: [0, (myRank ?? 0).toDouble()],
@@ -5717,6 +5734,7 @@ class _MoreTab extends StatefulWidget {
   final VoidCallback onNavigateToPractice;
   final VoidCallback onNavigateToRanks;
   final VoidCallback onOpenDownloads;
+  final VoidCallback onOpenDailyRewards;
 
   const _MoreTab({
     this.user,
@@ -5728,6 +5746,7 @@ class _MoreTab extends StatefulWidget {
     required this.onNavigateToPractice,
     required this.onNavigateToRanks,
     required this.onOpenDownloads,
+    required this.onOpenDailyRewards,
   });
 
   @override
@@ -5771,16 +5790,6 @@ class _MoreTabState extends State<_MoreTab> {
       case ThemeMode.system:
         return 'System';
     }
-  }
-
-  void _openDailyRewards() {
-    AppHaptics.selection();
-    Navigator.of(context).push(MaterialPageRoute<void>(
-      builder: (_) => DailyRewardsScreen(
-        apiClient: widget.discussionService.client,
-        onAccountChanged: () => widget.authState.refreshAccount(),
-      ),
-    ));
   }
 
   /// Appearance: three cards with a small preview each. Picking one applies it at once.
@@ -6676,7 +6685,7 @@ class _MoreTabState extends State<_MoreTab> {
                   subtitle: 'Spin daily for Free Pro, coupons & scratch cards',
                   onTap: () {
                     AppHaptics.selection();
-                    _openDailyRewards();
+                    widget.onOpenDailyRewards();
                   },
                 ),
                 const Divider(height: 1, color: Color(0xFFF1F5F9)),

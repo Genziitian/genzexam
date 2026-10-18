@@ -105,6 +105,7 @@ class AuthState extends ChangeNotifier with WidgetsBindingObserver {
     try {
       final hasToken = await _apiClient.hasAuthToken();
       if (!hasToken) {
+        _syncAppIcon();
         _status = AuthStatus.unauthenticated;
         notifyListeners();
         return;
@@ -135,6 +136,7 @@ class AuthState extends ChangeNotifier with WidgetsBindingObserver {
       // connection or 5xx must never sign the student out.
       if (e is ApiException && e.statusCode == 401) {
         _user = null;
+        _syncAppIcon();
         _status = AuthStatus.unauthenticated;
         _errorMessage = 'Your session expired. Please sign in again.';
         await _apiClient.deleteCachedUser();

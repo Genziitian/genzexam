@@ -262,9 +262,9 @@ footer{background:var(--navy);color:var(--navy-text)}
 
 .links{gap:22px!important;margin-left:22px!important}
 .links>a,.pol-btn{white-space:nowrap}
-.nav-youtube{gap:6px!important}
+.nav-youtube{flex-direction:column;justify-content:center;gap:3px!important}
   .nav-youtube svg{display:block;flex:none}
-  .nav-youtube span{font-size:12px;font-weight:600;line-height:1.2}
+  .nav-youtube span{font-size:9px;font-weight:600;line-height:1.2;letter-spacing:.06em}
 @media (max-width:1180px){.links{display:none!important}.menu-btn{display:grid!important}}
 @media (min-width:1181px){.mnav{display:none!important}}
 
