@@ -116,23 +116,28 @@
       '.ql-paywall-hero{background:linear-gradient(135deg,#0f172a 0%,#1e1b4b 60%,#312e81 100%);color:#fff;padding:20px 76px;text-align:center;flex-shrink:0;position:relative;overflow:hidden}',
       '.ql-paywall-hero::before{content:"";position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(251,191,36,.18) 0%,transparent 70%);pointer-events:none}',
       '.ql-paywall-hero-inner{max-width:680px;margin:0 auto;position:relative}',
-      '.ql-paywall-emblem{display:inline-flex;align-items:center;justify-content:center;margin-bottom:8px}',
+      '.ql-paywall-emblem{display:inline-flex;align-items:center;justify-content:center;gap:12px;margin-bottom:8px}',
+      '.ql-paywall-brand{display:inline-flex;align-items:center;gap:9px;font-size:19px;font-weight:800;letter-spacing:-.02em}',
+      '.ql-paywall-brand img{width:38px;height:38px;border-radius:11px;object-fit:contain}',
+      '.ql-membership-page{max-width:960px;width:100%;margin:0 auto;min-width:0;overflow-wrap:anywhere}',
+      '.ql-membership-page [hidden]{display:none!important}',
+      '.ql-membership-page-brand{display:flex;align-items:center;gap:10px;margin-bottom:18px;font-size:20px;font-weight:800}',
+      '.ql-membership-page-brand img{width:40px;height:40px;border-radius:12px}',
+      '.ql-membership-page [role=tablist]{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}',
+      '.ql-membership-page [role=tab][aria-selected=true]{background:#eef2ff;border-color:#6366f1;color:#3730a3}',
+      '.ql-membership-page #ql-web-pro-options{display:flex;flex-wrap:wrap;gap:10px}',
+      '.ql-membership-page #ql-web-pro-summary{flex-basis:100%}',
       '.ql-paywall-pro-pill{padding:6px 18px;border-radius:999px;background:linear-gradient(135deg,#ffd36e,#f59e0b);color:#0f172a;font-size:13px;font-weight:900;letter-spacing:.1em;box-shadow:0 4px 20px rgba(245,158,11,.45)}',
       '.ql-paywall-title{margin:0;font-size:24px;font-weight:800;letter-spacing:-.03em;color:#fff;line-height:1.2}',
       '.ql-paywall-sub{margin:8px auto 0;max-width:540px;color:#cbd5e1;font-size:13px;line-height:1.55}',
       '.ql-paywall-body{max-width:1120px;margin:0 auto;padding:24px;width:100%;box-sizing:border-box;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start;gap:24px}',
       '.ql-paywall-checkout{display:grid;gap:18px;min-width:0}',
       '.ql-paywall-features{min-width:0}',
-      '#ql-paywall-status,#ql-paywall-history-sec{grid-column:1/-1}',
+      '#ql-paywall-status{grid-column:1/-1}',
       '.ql-paywall-footer{flex-shrink:0;background:#fff;border-top:1px solid #e2e8f0;box-shadow:0 -8px 30px rgba(15,23,42,.06);padding:14px 24px max(14px,env(safe-area-inset-bottom));z-index:1}',
       '.ql-paywall-footer-inner{max-width:1072px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;gap:12px 24px}',
-      '.ql-paywall-footer-total{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:13px;color:#64748b}',
-      '.ql-paywall-footer-total strong{font-size:22px;color:#0f172a}',
-      '.ql-paywall-footer-total small{flex-basis:100%;font-size:12px}',
       '.ql-paywall-footer-legal{grid-column:1/-1;display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}',
       ':root[data-theme=dark] .ql-paywall-footer{background:#111827;border-color:#334155}',
-      ':root[data-theme=dark] .ql-paywall-footer-total{color:#94a3b8}',
-      ':root[data-theme=dark] .ql-paywall-footer-total strong{color:#f8fafc}',
       '.ql-paywall-section-h{margin:0 0 14px;font-size:19px;font-weight:800;color:#0f172a;letter-spacing:-.01em}',
       ':root[data-theme=dark] .ql-paywall-section-h{color:#f8fafc}',
       '.ql-paywall-compare{background:#fff;border-radius:20px;border:1px solid #e2e8f0;padding:18px 22px;box-shadow:0 4px 16px rgba(15,23,42,.04)}',
@@ -168,14 +173,14 @@
       '.ql-paywall-trial-box p{margin:6px 0 0;font-size:13px;line-height:1.5}',
       '.ql-paywall-trial-box small{display:block;margin-top:6px;font-size:11.5px;color:#15803d;line-height:1.4}',
       ':root[data-theme=dark] .ql-paywall-trial-box small{color:#4ade80}',
-      '.ql-paywall-cta-btn{width:100%;border:0;border-radius:16px;padding:18px 24px;background:linear-gradient(135deg,#ffd36e,#f59e0b);color:#0f172a;font-size:17px;font-weight:900;cursor:pointer;box-shadow:0 10px 25px -5px rgba(245,158,11,.45);transition:transform .15s,box-shadow .15s;letter-spacing:-.01em;font-family:inherit}',
+      '.ql-paywall-cta-btn{grid-column:2;width:100%;border:0;border-radius:16px;padding:18px 24px;background:linear-gradient(135deg,#ffd36e,#f59e0b);color:#0f172a;font-size:17px;font-weight:900;cursor:pointer;box-shadow:0 10px 25px -5px rgba(245,158,11,.45);transition:transform .15s,box-shadow .15s;letter-spacing:-.01em;font-family:inherit}',
       '.ql-paywall-cta-btn:hover{transform:translateY(-2px);box-shadow:0 15px 30px -5px rgba(245,158,11,.55)}',
       '.ql-paywall-cta-btn:disabled{opacity:.65;cursor:not-allowed;transform:none}',
       '.ql-paywall-footer-note{text-align:center;font-size:12.5px;color:#64748b;margin:0}',
       ':root[data-theme=dark] .ql-paywall-footer-note{color:#94a3b8}',
       '.ql-paywall-plan:focus-visible,.ql-paywall-cta-btn:focus-visible,.ql-paywall-close:focus-visible{outline:3px solid #818cf8;outline-offset:3px}',
-      '@media(max-width:767px){.ql-paywall-body{grid-template-columns:minmax(0,1fr);padding:20px;gap:22px}.ql-paywall-checkout{grid-row:1}.ql-paywall-hero{padding:18px 64px}.ql-paywall-title{font-size:20px}.ql-paywall-sub{display:none}.ql-paywall-footer{padding:12px 16px max(12px,env(safe-area-inset-bottom))}.ql-paywall-footer-inner{grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:10px 14px}.ql-paywall-footer-legal{justify-content:center}.ql-paywall-footer-note{font-size:11px}.ql-paywall-cta-btn{padding:15px 12px;font-size:15px}.ql-paywall-footer-total strong{font-size:20px}.ql-paywall-footer-total small{font-size:11px}}',
-      '@media(max-width:380px){.ql-paywall-body{padding:16px}.ql-paywall-plan{padding:12px;gap:8px}.ql-paywall-plan-left{gap:8px}.ql-paywall-plan-title{font-size:15px}.ql-paywall-plan-price{font-size:16px}.ql-paywall-rec{font-size:9px;padding:3px 6px}.ql-paywall-compare{padding:14px}.ql-paywall-row{font-size:12px}.ql-paywall-trial-box{padding:14px}.ql-paywall-footer-inner{column-gap:8px}.ql-paywall-footer-total{gap:5px}.ql-paywall-cta-btn{font-size:14px}}'
+      '@media(max-width:767px){.ql-paywall-body{grid-template-columns:minmax(0,1fr);padding:20px;gap:22px}.ql-paywall-checkout{grid-row:1}.ql-paywall-hero{padding:18px 64px}.ql-paywall-title{font-size:20px}.ql-paywall-sub{display:none}.ql-paywall-footer{padding:12px 16px max(12px,env(safe-area-inset-bottom))}.ql-paywall-footer-inner{grid-template-columns:minmax(0,1fr);gap:10px}.ql-paywall-cta-btn{grid-column:1}.ql-paywall-footer-legal{justify-content:center}.ql-paywall-footer-note{font-size:11px}.ql-paywall-cta-btn{padding:15px 12px;font-size:15px}}',
+      '@media(max-width:380px){.ql-paywall-body{padding:16px}.ql-paywall-plan{padding:12px;gap:8px}.ql-paywall-plan-left{gap:8px}.ql-paywall-plan-title{font-size:15px}.ql-paywall-plan-price{font-size:16px}.ql-paywall-rec{font-size:9px;padding:3px 6px}.ql-paywall-compare{padding:14px}.ql-paywall-row{font-size:12px}.ql-paywall-trial-box{padding:14px}.ql-paywall-footer-inner{column-gap:8px}.ql-paywall-cta-btn{font-size:14px}}'
     ].join('');
     document.head.appendChild(style);
   }
@@ -230,12 +235,13 @@
     if (!/^\/settings\/?$/i.test(location.pathname)) return null;
     return document.querySelector('#root main .page-enter > div') || document.querySelector('#root main .page-enter');
   }
-  function ensureMembership(page) {
+  function ensureMembership(page, inline) {
     if (!page || document.getElementById(MEMBERSHIP_ID)) return;
     var card = document.createElement('section');
     card.id = MEMBERSHIP_ID;
     card.className = 'ql-more-card';
     card.innerHTML = '<h2 class="ql-more-heading">Manage membership &amp; transactions</h2><p class="ql-more-subtitle">Manage your plan and billing details.</p><div class="ql-more-row"><div class="ql-more-row-copy"><strong id="ql-web-pro-status">Loading membership…</strong><small id="ql-web-pro-dates"></small></div><div class="ql-more-theme-options"><button type="button" class="ql-more-button primary" id="ql-web-pro-buy" hidden>Start 7-day trial</button><button type="button" class="ql-more-button danger" id="ql-web-pro-cancel" hidden>Cancel renewal</button></div></div><div id="ql-web-pro-options" role="group" aria-label="Choose your Pro plan"><button type="button" class="ql-more-button" id="ql-web-pro-monthly">Monthly</button> <button type="button" class="ql-more-button" id="ql-web-pro-annual">Yearly</button><p id="ql-web-pro-summary" class="ql-more-subtitle"></p></div><p class="ql-more-message" id="ql-web-pro-message" role="status"></p><p class="ql-more-subtitle">Pro includes video solutions, offline paper downloads, and PDF uploads.</p>';
+    if (inline) { page.appendChild(card); } else {
     var entry = document.createElement('section'); entry.className = 'ql-more-card';
     var openManagement = document.createElement('button'); openManagement.type = 'button'; openManagement.className = 'ql-more-button'; openManagement.textContent = 'Membership & transactions →';
     entry.appendChild(openManagement);
@@ -245,6 +251,7 @@
     closeManagement.onclick = function () { dialog.close(); openManagement.focus(); };
     dialog.appendChild(closeManagement); dialog.appendChild(card); entry.appendChild(dialog); page.appendChild(entry);
     openManagement.onclick = function () { dialog.showModal(); loadMembership(); };
+    }
     var membershipPanel = document.createElement('div');
     while (card.firstChild) membershipPanel.appendChild(card.firstChild);
     card.appendChild(membershipPanel);
@@ -375,7 +382,7 @@
       '<div class="ql-paywall-hero">',
       '  <button class="ql-paywall-close" type="button" aria-label="Close">&times;</button>',
       '  <div class="ql-paywall-hero-inner">',
-      '    <div class="ql-paywall-emblem"><span class="ql-paywall-pro-pill">PRO</span></div>',
+      '    <div class="ql-paywall-emblem"><span class="ql-paywall-brand"><img src="/assets/quiz-lab-icon.png" alt="" width="38" height="38">Quiz LAB</span><span class="ql-paywall-pro-pill">PRO</span></div>',
       '    <h1 class="ql-paywall-title">Go Pro. Make practice yours.</h1>',
       '    <p class="ql-paywall-sub">Video solutions, offline papers, and turning your uploaded PDFs into practice tests.</p>',
       '  </div>',
@@ -444,15 +451,10 @@
       '    <small>Cancel before the first charge date to avoid subscription charges. Razorpay confirms the exact billing time; your bank may require an authorisation payment.</small>',
       '  </div>',
       '  </div>',
-      '  <div id="ql-paywall-history-sec" style="margin-top:10px;">',
-      '    <button type="button" class="ql-more-button" id="ql-paywall-history-btn" style="width:100%;text-align:center;padding:12px;">View membership &amp; transactions</button>',
-      '    <div id="ql-paywall-history" hidden style="margin-top:16px;background:#fff;border:1px solid #e2e8f0;border-radius:18px;padding:18px;"></div>',
-      '  </div>',
       '</div>',
       '</div>',
       '<footer class="ql-paywall-footer" id="ql-paywall-footer">',
       '  <div class="ql-paywall-footer-inner">',
-      '    <div class="ql-paywall-footer-total" aria-live="polite"><span>Due today</span><strong id="ql-paywall-due">—</strong><small id="ql-paywall-billing-note">Loading plan…</small></div>',
       '    <button type="button" class="ql-paywall-cta-btn" id="ql-paywall-cta" disabled>Loading plan…</button>',
       '    <div class="ql-paywall-footer-legal"><p class="ql-paywall-footer-note">Cancel renewal any time. Powered by Razorpay.</p><p class="ql-paywall-footer-note">By continuing, you agree to our <a href="/terms-and-conditions" target="_blank" rel="noopener">Terms &amp; Conditions</a>.</p></div>',
       '  </div>',
@@ -483,8 +485,6 @@
     var cta = overlay.querySelector('#ql-paywall-cta');
     var footer = overlay.querySelector('#ql-paywall-footer');
     var checkout = overlay.querySelector('#ql-paywall-checkout');
-    var due = overlay.querySelector('#ql-paywall-due');
-    var billingNote = overlay.querySelector('#ql-paywall-billing-note');
     var statusCard = overlay.querySelector('#ql-paywall-status');
     var plansContainer = overlay.querySelector('#ql-paywall-plans-container');
     var monthlySub = overlay.querySelector('#ql-paywall-monthly-sub');
@@ -493,8 +493,6 @@
     var trialHeadline = overlay.querySelector('#ql-paywall-trial-headline');
     var trialCopy = overlay.querySelector('#ql-paywall-trial-copy');
     var recBadge = overlay.querySelector('#ql-paywall-rec-badge');
-    var historyBtn = overlay.querySelector('#ql-paywall-history-btn');
-    var historyBox = overlay.querySelector('#ql-paywall-history');
     var currentData = null;
 
     function renderPaywall() {
@@ -511,13 +509,11 @@
       annualPrice.textContent = aPrice + '/yr';
       footer.hidden = pro;
       checkout.hidden = pro;
-      due.textContent = trial ? 'FREE' : (isYearly ? aPrice : mPrice);
-      billingNote.textContent = trial ? days + '-day trial, then ' + mPrice + '/month' : (isYearly ? 'Yearly plan · billed yearly' : 'Monthly plan · billed monthly');
 
       if (pro) {
         statusCard.hidden = false;
         var dateText = sub.started_at ? 'Started ' + new Date(sub.started_at).toLocaleDateString('en-IN') + (sub.current_period_ends_at ? ' · Current period ends ' + new Date(sub.current_period_ends_at).toLocaleDateString('en-IN') : '') : 'Pro access is active on your account.';
-        statusCard.innerHTML = '<div style="padding:18px 22px;border-radius:18px;background:#f0fdf4;border:1px solid #bbf7d0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;"><div style="color:#166534;"><strong style="font-size:16px;">✓ You are a Pro member</strong><br><small style="color:#15803d;font-size:13px;">' + escapeHtml(dateText) + '</small></div>' + (sub.id && ['google_play','razorpay'].includes(sub.provider) && sub.status !== 'cancelled' && !sub.cancel_at_period_end ? '<button type="button" class="ql-more-button danger" id="ql-paywall-cancel" style="padding:10px 16px;font-size:13px;font-weight:700;">Cancel renewal</button>' : '') + '</div>';
+        statusCard.innerHTML = '<div style="padding:18px 22px;border-radius:18px;background:#f0fdf4;border:1px solid #bbf7d0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;"><div style="color:#166534;"><strong style="font-size:16px;">You are a Pro member</strong><br><small style="color:#15803d;font-size:13px;">' + escapeHtml(dateText) + '</small></div>' + (sub.id && ['google_play','razorpay'].includes(sub.provider) && sub.status !== 'cancelled' && !sub.cancel_at_period_end ? '<button type="button" class="ql-more-button danger" id="ql-paywall-cancel" style="padding:10px 16px;font-size:13px;font-weight:700;">Cancel renewal</button>' : '') + '</div>';
         var cancelBtn = statusCard.querySelector('#ql-paywall-cancel');
         if (cancelBtn) {
           cancelBtn.addEventListener('click', function () {
@@ -558,7 +554,7 @@
             trialHeadline.innerHTML = trialReceipt(mPrice, days);
             var chargeDate = new Date(); chargeDate.setDate(chargeDate.getDate() + days);
             trialCopy.textContent = 'First charge: ' + chargeDate.toLocaleDateString('en-IN') + ' — ' + mPrice + ', then every month.';
-            cta.textContent = '🚀 Try for free';
+            cta.textContent = 'Try for free';
           } else {
             recBadge.hidden = true;
             monthlySub.textContent = 'Billed monthly. Cancel renewal any time.';
@@ -592,21 +588,6 @@
         cta.disabled = false;
         renderPaywall();
       });
-    });
-
-    var histPage = 1;
-    function loadHistory() {
-      historyBox.hidden = false;
-      historyBox.textContent = 'Loading history…';
-      api('/membership/history?page=' + histPage).then(function (result) {
-        var ledger = result.transactions || {}, memberships = result.subscriptions || result.memberships || [];
-        function safe(v) { return escapeHtml(v); }
-        historyBox.innerHTML = '<h3 style="margin-top:0;font-size:15px;">Membership history</h3>' + (memberships.length ? memberships.map(function (row) { return '<p style="font-size:13px;margin:6px 0;"><strong>' + safe(row.provider) + ' · ' + safe(row.status) + '</strong><br>Started: ' + safe(row.started_at || row.created_at || '—') + '<br>Next charge / access end: ' + safe(row.current_period_ends_at || '—') + (row.cancel_at_period_end ? '<br>Renewal cancelled' : '') + '</p>'; }).join('') : '<p style="font-size:13px;color:#64748b;">No membership history yet.</p>') + '<h3 style="font-size:15px;margin-top:14px;">Transactions</h3>' + ((ledger.data || []).length ? ledger.data.map(function (row) { var amt = row.amount_paise ?? row.amount_minor; return '<p style="font-size:13px;margin:6px 0;"><strong>' + safe(row.title || 'Payment') + ' · ' + safe(row.currency || 'INR') + ' ' + safe(row.amount_major != null ? row.amount_major : (amt ? Number(amt)/100 : '0')) + '</strong><br>' + safe(row.provider) + ' · ' + safe(row.status) + ' · ' + safe(row.paid_at || row.created_at || '') + '</p>'; }).join('') : '<p style="font-size:13px;color:#64748b;">No recorded transactions.</p>');
-      }).catch(function (e) { historyBox.textContent = e.message; });
-    }
-    historyBtn.addEventListener('click', function () {
-      if (historyBox.hidden) loadHistory();
-      else historyBox.hidden = true;
     });
 
     function loadData() {
@@ -932,7 +913,23 @@
     if (event.stopImmediatePropagation) event.stopImmediatePropagation();
     signOut();
   }
+  function ensureMembershipPage() {
+    if (!/^\/membership\/?$/i.test(location.pathname) || !token()) return;
+    var page = document.getElementById('ql-membership-page');
+    if (!page) return;
+    addStyles();
+    page.classList.add('ql-membership-page');
+    if (!page.querySelector('.ql-membership-page-brand')) {
+      var brand = document.createElement('div');
+      brand.className = 'ql-membership-page-brand';
+      brand.innerHTML = '<img src="/assets/quiz-lab-icon.png" alt="" width="40" height="40"><span>Quiz LAB</span>';
+      page.appendChild(brand);
+    }
+    ensureMembership(page, true);
+    document.title = 'Membership & transactions · Quiz LAB';
+  }
   function ensureMore() {
+    ensureMembershipPage();
     if (/^\/pro\/?$/i.test(location.pathname) || location.hash === '#pro') {
       openProPaywall();
     }
