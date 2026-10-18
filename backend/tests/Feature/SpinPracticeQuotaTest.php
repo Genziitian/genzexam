@@ -90,7 +90,7 @@ class SpinPracticeQuotaTest extends TestCase
     public function test_free_spins_and_legacy_spin_papers_never_use_upload_allowance(): void
     {
         // Match already-created production papers independently of the new constant.
-        Quiz::query()->create(['course_id' => 1, 'section' => 'practice', 'title' => 'Old spin',
+        Quiz::query()->forceCreate(['course_id' => 1, 'section' => 'practice', 'title' => 'Old spin',
             'description' => 'Unified practice paper generated from Spin Wheel (Maths 1, Weeks 1–12).',
             'is_personal' => true, 'owner_user_id' => $this->student->id, 'created_at' => now()->subDay()]);
         $this->spin('web');
