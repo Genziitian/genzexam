@@ -3373,6 +3373,7 @@
     { title: "TEST FREE", sub: "1 Test Pass", color: "#0d9488", type: "free_test", value: "1 Free Test Yourself", prefix: "" },
     { title: "FREE UPLOAD", sub: "Paper Pass", color: "#ea580c", type: "free_paper_upload", value: "1 Free Paper Upload", prefix: "" }
   ];
+  var weights = [18, 8, 10, 9, 8, 10, 5, 12, 10, 10];
 
   function getTodayISTString() {
     try {
@@ -3398,34 +3399,14 @@
     return { diff: diff, hours: h, minutes: m, seconds: s, text: h + "h " + m + "m " + s + "s" };
   }
 
-  function getRewardsUserKey() {
-    try {
-      var u = JSON.parse(localStorage.getItem("lab_user") || "{}");
-      return u.id ? String(u.id) : (u.email ? String(u.email) : "guest");
-    } catch (_) {
-      return "guest";
+  try {
+    localStorage.removeItem("ql_rewards_global_log");
+    for (var lk in localStorage) {
+      if (lk && lk.indexOf("ql_rewards_v2_") === 0) {
+        localStorage.removeItem(lk);
+      }
     }
-  }
-
-  function loadLocalRewardsState() {
-    var key = "ql_rewards_v2_" + getRewardsUserKey();
-    try {
-      var parsed = JSON.parse(localStorage.getItem(key) || "{}");
-      return {
-        lastSpinDate: parsed.lastSpinDate || "",
-        rewards: Array.isArray(parsed.rewards) ? parsed.rewards : []
-      };
-    } catch (_) {
-      return { lastSpinDate: "", rewards: [] };
-    }
-  }
-
-  function saveLocalRewardsState(state) {
-    var key = "ql_rewards_v2_" + getRewardsUserKey();
-    try {
-      localStorage.setItem(key, JSON.stringify(state));
-    } catch (_) {}
-  }
+  } catch (_) {}
 
   var rewardAudioCtx = null;
   function getRewardAudioCtx() {
@@ -3580,6 +3561,7 @@
             '</div>' +
           '</div>' +
           '<a href="/try-practice" class="ql-visit-courses-cta" style="background:#4f46e5;color:#fff;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:12px 18px;border-radius:8px;font-weight:700;font-size:14px;width:100%">Test Yourself Now →</a>' +
+          '<button type="button" class="ql-scratch-done-btn" id="ql-scratch-done-btn">✕ Close</button>' +
         '</div>';
     } else if (reward.type === "free_paper_upload") {
       actionsHtml =
@@ -3594,6 +3576,7 @@
             '</div>' +
           '</div>' +
           '<a href="/upload-paper" class="ql-visit-courses-cta" style="background:#4f46e5;color:#fff;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:12px 18px;border-radius:8px;font-weight:700;font-size:14px;width:100%">Upload a Paper Now →</a>' +
+          '<button type="button" class="ql-scratch-done-btn" id="ql-scratch-done-btn">✕ Close</button>' +
         '</div>';
     } else if (reward.type === "free_pro") {
       actionsHtml =
@@ -3601,6 +3584,7 @@
           '<strong class="ql-claim-steps-title" style="color:#92400e">Claim Your 30 Days Free Pro:</strong>' +
           '<p style="font-size:13px;color:#475569;margin:6px 0 12px">Click below to activate 30 full days of Quiz LAB Pro on your account.</p>' +
           '<button type="button" class="ql-claim-pro-btn" id="ql-scratch-claim-pro-btn" style="padding:12px 18px;font-weight:700;font-size:14px;width:100%">Activate 30 Days Free Pro Now →</button>' +
+          '<button type="button" class="ql-scratch-done-btn" id="ql-scratch-done-btn">✕ Close &amp; Claim Later</button>' +
         '</div>';
     } else {
       actionsHtml =
@@ -3623,6 +3607,7 @@
             '<div class="ql-claim-term-row"><strong>Terms Agreement:</strong> By continuing you accept all our <a href="/terms.html#rewards-promotions" target="_blank">terms, conditions and rules</a>.</div>' +
           '</div>' +
           '<a href="https://genziitian.in/courses" target="_blank" rel="noopener noreferrer" class="ql-visit-courses-cta">Visit Genziitian.in/courses &amp; Redeem →</a>' +
+          '<button type="button" class="ql-scratch-done-btn" id="ql-scratch-done-btn">✕ Close &amp; Keep in My Rewards</button>' +
         '</div>';
     }
 
@@ -3680,6 +3665,9 @@
       ctx.fillText("Drag mouse or swipe finger", w / 2, h / 2 + 14);
     }
     paintFoil();
+    if (reward.is_scratched) {
+      setTimeout(autoReveal, 10);
+    }
 
     var isScratching = false;
     var isRevealed = false;
@@ -3728,17 +3716,6 @@
       if (actionsEl) actionsEl.style.display = "flex";
       if (copyBtn) copyBtn.style.display = "flex";
       reward.is_scratched = true;
-      try {
-        var mLog = JSON.parse(localStorage.getItem("ql_rewards_global_log") || "[]");
-        for (var gi = 0; gi < mLog.length; gi++) {
-          if (mLog[gi].id === reward.id || (reward.code && mLog[gi].coupon_code === reward.code)) {
-            mLog[gi].is_scratched = true;
-            mLog[gi].status = isInApp ? "Credited to Account" : "Active (Scratched)";
-            break;
-          }
-        }
-        localStorage.setItem("ql_rewards_global_log", JSON.stringify(mLog));
-      } catch (_) {}
       playWheelWinSound();
       fireConfettiBurst();
       if (typeof onScratchDone === "function") onScratchDone(reward);
@@ -3783,9 +3760,19 @@
       });
     }
 
-    function close() { overlay.remove(); }
+    function close() {
+      window.removeEventListener("keydown", onKeyDown);
+      if (overlay.isConnected) overlay.remove();
+    }
+    function onKeyDown(e) {
+      if (e.key === "Escape") close();
+    }
+    window.addEventListener("keydown", onKeyDown);
+
     closeBtn.addEventListener("click", close);
     overlay.addEventListener("click", function (e) { if (e.target === overlay) close(); });
+    var doneBtn = overlay.querySelector("#ql-scratch-done-btn");
+    if (doneBtn) doneBtn.addEventListener("click", close);
   }
 
   function openProJackpotModal(reward, onClaimDone) {
@@ -3819,14 +3806,25 @@
             '<button type="button" class="ql-claim-pro-btn" id="ql-jackpot-claim-cta">' +
               '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:-3px"><path d="M2 4l3 12h14l3-12-6 7-4-7-4 7-6-7zm3 16h14"/></svg> Claim 30 Days Free Pro Now' +
             '</button>' +
+            '<button type="button" class="ql-scratch-done-btn" id="ql-jackpot-done-btn">✕ Close &amp; Claim Later</button>' +
           '</div>' +
         '</div>' +
       '</div>';
     document.body.appendChild(overlay);
 
     var closeBtn = overlay.querySelector(".ql-scratch-dialog-close");
-    function close() { overlay.remove(); }
+    var jackpotDoneBtn = overlay.querySelector("#ql-jackpot-done-btn");
+    function close() {
+      window.removeEventListener("keydown", onKeyDown);
+      if (overlay.isConnected) overlay.remove();
+    }
+    function onKeyDown(e) {
+      if (e.key === "Escape") close();
+    }
+    window.addEventListener("keydown", onKeyDown);
+
     closeBtn.addEventListener("click", close);
+    if (jackpotDoneBtn) jackpotDoneBtn.addEventListener("click", close);
     overlay.addEventListener("click", function (e) { if (e.target === overlay) close(); });
 
     overlay.querySelector("#ql-jackpot-claim-cta").addEventListener("click", function () {
@@ -3859,17 +3857,6 @@
     function finishClaim() {
       updateLocalPro();
       reward.is_claimed = true;
-      try {
-        var mLog = JSON.parse(localStorage.getItem("ql_rewards_global_log") || "[]");
-        for (var gi = 0; gi < mLog.length; gi++) {
-          if (mLog[gi].prize_type === "free_pro" && mLog[gi].status !== "Pro Claimed") {
-            mLog[gi].is_claimed = true;
-            mLog[gi].status = "Pro Claimed";
-            break;
-          }
-        }
-        localStorage.setItem("ql_rewards_global_log", JSON.stringify(mLog));
-      } catch (_) {}
       if (typeof onDone === "function") onDone();
     }
 
@@ -3880,7 +3867,8 @@
           "Accept": "application/json",
           "Content-Type": "application/json",
           "Authorization": "Bearer " + tok
-        }
+        },
+        body: JSON.stringify({ id: reward ? reward.id : "" })
       }).then(function (res) {
         return res.json().catch(function () { return {}; });
       }).then(function () {
@@ -3999,8 +3987,8 @@
           '<div class="ql-claim-terms-box" style="margin-top:4px">' +
             '<div class="ql-claim-term-row"><strong>1. Visit:</strong> <a href="https://genziitian.in/courses" target="_blank" rel="noopener">Genziitian.in/courses</a> &amp; pick any course.</div>' +
             '<div class="ql-claim-term-row"><strong>2. Apply Code:</strong> <strong>' + (isExpired ? 'Masked (Expired)' : escapeHtml(reward.code || 'Scratch card above')) + '</strong></div>' +
-            '<div class="ql-claim-term-row"><strong>Min Order:</strong> Minimum purchase is ₹350.</div>' +
-            '<div class="ql-claim-term-row"><strong>Discount Cap:</strong> Max discount on any percentage is ₹100.</div>' +
+            '<div class="ql-claim-term-row"><strong>Min Order:</strong> Minimum amount purchase is ₹350.</div>' +
+            '<div class="ql-claim-term-row"><strong>Discount Cap:</strong> Max discount you get on any percentage is 100 rupees.</div>' +
             '<div class="ql-claim-term-row"><strong>Expiry:</strong> Auto-disables in 7 days counting from day scratched or spinned.</div>' +
             '<div class="ql-claim-term-row"><strong>Free:</strong> No payment required to get this coupon.</div>' +
             '<div class="ql-claim-term-row"><strong>Terms:</strong> By continuing you accept all our <a href="/terms.html#rewards-promotions" target="_blank">terms &amp; rules</a>.</div>' +
@@ -4050,9 +4038,10 @@
     return card;
   }
 
+  var lastPromptServerCheck = 0;
   function ensureDailySpinPrompt() {
-    var tok = "";
-    try { tok = localStorage.getItem("lab_token") || ""; } catch (_) {}
+    var runtime = window.QLStorefront || {};
+    var tok = runtime.token ? runtime.token() : (localStorage.getItem("lab_token") || "");
     if (!tok) return;
 
     var onRewards = /^\/(rewards|spin-rewards|daily-rewards)(\/|$)/i.test(window.location.pathname);
@@ -4063,46 +4052,62 @@
     try { dismissedDate = localStorage.getItem("ql_daily_spin_prompt_dismissed") || ""; } catch (_) {}
     if (dismissedDate === today) return;
 
-    var state = loadLocalRewardsState();
-    if (state.lastSpinDate === today) return;
-
     if (document.getElementById("ql-daily-prompt-overlay")) return;
 
-    var overlay = document.createElement("div");
-    overlay.id = "ql-daily-prompt-overlay";
-    overlay.className = "ql-daily-prompt-overlay";
-    overlay.innerHTML =
-      '<div class="ql-daily-prompt-dialog" role="dialog" aria-modal="true">' +
-        '<div class="ql-daily-prompt-hero">' +
-          '<div class="ql-daily-prompt-icon" aria-hidden="true">' +
-            '<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24"/><path d="m14.83 9.17 4.24-4.24"/><path d="m14.83 14.83 4.24 4.24"/><path d="m9.17 14.83-4.24 4.24"/><circle cx="12" cy="12" r="3"/></svg>' +
-          '</div>' +
-          '<h2>Daily Spin Available</h2>' +
-          '<p>Spin today\'s Lucky Wheel to win Free Pro, discounts, and study perks!</p>' +
-        '</div>' +
-        '<div class="ql-daily-prompt-body">' +
-          '<button type="button" class="ql-daily-prompt-spin-btn" id="ql-prompt-spin-cta">Spin Now</button>' +
-          '<button type="button" class="ql-daily-prompt-later-btn" id="ql-prompt-later-cta">Maybe later</button>' +
-        '</div>' +
-      '</div>';
-    document.body.appendChild(overlay);
+    var now = Date.now();
+    if (now - lastPromptServerCheck < 30000) return;
+    lastPromptServerCheck = now;
 
-    overlay.querySelector("#ql-prompt-spin-cta").addEventListener("click", function () {
-      overlay.remove();
-      var rewardsNav = document.querySelector('a[href="/rewards"]');
-      if (rewardsNav) {
-        rewardsNav.click();
-      } else {
-        location.assign("/rewards");
+    var apiBase = runtime.apiBase || "https://labapi.genziitian.in/public/api";
+    fetch(apiBase + "/student/rewards", {
+      headers: {
+        "Accept": "application/json",
+        "Authorization": "Bearer " + tok
       }
-    });
+    }).then(function (res) {
+      if (!res.ok) return null;
+      return res.json();
+    }).then(function (data) {
+      if (!data || !data.quota) return;
+      if (data.quota.remaining <= 0) return; // User already spun today on server!
+      if (document.getElementById("ql-daily-prompt-overlay")) return;
 
-    function dismiss() {
-      try { localStorage.setItem("ql_daily_spin_prompt_dismissed", today); } catch (_) {}
-      overlay.remove();
-    }
-    overlay.querySelector("#ql-prompt-later-cta").addEventListener("click", dismiss);
-    overlay.addEventListener("click", function (e) { if (e.target === overlay) dismiss(); });
+      var overlay = document.createElement("div");
+      overlay.id = "ql-daily-prompt-overlay";
+      overlay.className = "ql-daily-prompt-overlay";
+      overlay.innerHTML =
+        '<div class="ql-daily-prompt-dialog" role="dialog" aria-modal="true">' +
+          '<div class="ql-daily-prompt-hero">' +
+            '<div class="ql-daily-prompt-icon" aria-hidden="true">' +
+              '<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24"/><path d="m14.83 9.17 4.24-4.24"/><path d="m14.83 14.83 4.24 4.24"/><path d="m9.17 14.83-4.24 4.24"/><circle cx="12" cy="12" r="3"/></svg>' +
+            '</div>' +
+            '<h2>Daily Spin Available</h2>' +
+            '<p>Spin today\'s Lucky Wheel to win Free Pro, discounts, and study perks!</p>' +
+          '</div>' +
+          '<div class="ql-daily-prompt-body">' +
+            '<button type="button" class="ql-daily-prompt-spin-btn" id="ql-prompt-spin-cta">Spin Now</button>' +
+            '<button type="button" class="ql-daily-prompt-later-btn" id="ql-prompt-later-cta">Maybe later</button>' +
+          '</div>' +
+        '</div>';
+      document.body.appendChild(overlay);
+
+      overlay.querySelector("#ql-prompt-spin-cta").addEventListener("click", function () {
+        overlay.remove();
+        var rewardsNav = document.querySelector('a[href="/rewards"]');
+        if (rewardsNav) {
+          rewardsNav.click();
+        } else {
+          location.assign("/rewards");
+        }
+      });
+
+      function dismiss() {
+        try { localStorage.setItem("ql_daily_spin_prompt_dismissed", today); } catch (_) {}
+        overlay.remove();
+      }
+      overlay.querySelector("#ql-prompt-later-cta").addEventListener("click", dismiss);
+      overlay.addEventListener("click", function (e) { if (e.target === overlay) dismiss(); });
+    }).catch(function () {});
   }
 
   function getRulesDropdownHtml() {
@@ -4205,9 +4210,15 @@
     host.dataset.qlLoaded = "1";
     document.title = "Spin & Win · Daily Rewards · Quiz LAB";
 
-    var state = loadLocalRewardsState();
+    var runtime = window.QLStorefront || {};
+    var apiBase = runtime.apiBase || "https://labapi.genziitian.in/public/api";
+    var tok = runtime.token ? runtime.token() : (localStorage.getItem("lab_token") || "");
+
+    var serverQuota = null;
+    var serverRewards = [];
+    var isSpunToday = false;
+    var isLoadingQuota = Boolean(tok);
     var today = getTodayISTString();
-    var isSpunToday = state.lastSpinDate === today;
 
     host.innerHTML =
       '<div class="ql-rewards-page">' +
@@ -4220,7 +4231,7 @@
             '</button>' +
             '<button type="button" class="ql-corner-btn primary" id="ql-tab-rewards">' +
               '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13"/><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5"/></svg>' +
-              ' My Rewards <span class="ql-rewards-pill" id="ql-rewards-badge-count">' + state.rewards.length + '</span>' +
+              ' My Rewards <span class="ql-rewards-pill" id="ql-rewards-badge-count">0</span>' +
             '</button>' +
             '<button type="button" class="ql-corner-btn" id="ql-tab-wheel" style="display:none">' +
               '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>' +
@@ -4238,10 +4249,9 @@
             '</div>' +
             '<div class="ql-wheel-controls">' +
               '<button type="button" class="ql-spin-main-cta" id="ql-rewards-spin-btn">' +
-                (isSpunToday ? '✓ Spun Today · Come Back Tomorrow' : '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg> SPIN NOW') +
+                (tok ? 'Checking Daily Allowance…' : '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:-3px"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24"/><path d="m14.83 9.17 4.24-4.24"/><path d="m14.83 14.83 4.24 4.24"/><path d="m9.17 14.83-4.24 4.24"/><circle cx="12" cy="12" r="3"/></svg> Sign in to Spin') +
               '</button>' +
-              '<div class="ql-spin-quota-text" id="ql-rewards-timer-label" style="' + (isSpunToday ? '' : 'display:none') + '">' +
-                (isSpunToday ? 'Next spin resets in: <span class="ql-spin-timer-badge" id="ql-timer-val">calculating…</span>' : '') +
+              '<div class="ql-spin-quota-text" id="ql-rewards-timer-label" style="display:none">' +
               '</div>' +
             '</div>' +
           '</div>' +
@@ -4287,17 +4297,39 @@
       var rem = getMidnightISTRemaining();
       if (timerVal) timerVal.textContent = rem.text;
       if (rem.diff <= 0) {
-        state = loadLocalRewardsState();
-        state.lastSpinDate = "";
-        saveLocalRewardsState(state);
-        isSpunToday = false;
-        renderButtonState();
+        if (timerInterval) { clearInterval(timerInterval); timerInterval = null; }
+        if (tok) {
+          fetch(apiBase + "/student/rewards", {
+            headers: { "Accept": "application/json", "Authorization": "Bearer " + tok }
+          }).then(function (res) { return res.json(); }).then(function (data) {
+            if (data && data.quota) {
+              serverQuota = data.quota;
+              isSpunToday = Boolean(serverQuota.remaining <= 0);
+              renderButtonState();
+            }
+          }).catch(function () {});
+        } else {
+          isSpunToday = false;
+          renderButtonState();
+        }
       }
     }
 
     function renderButtonState() {
-      today = getTodayISTString();
-      isSpunToday = state.lastSpinDate === today;
+      if (!tok) {
+        spinBtn.disabled = false;
+        spinBtn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:-3px"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24"/><path d="m14.83 9.17 4.24-4.24"/><path d="m14.83 14.83 4.24 4.24"/><path d="m9.17 14.83-4.24 4.24"/><circle cx="12" cy="12" r="3"/></svg> Sign in to Spin';
+        timerLabel.style.display = "none";
+        timerLabel.innerHTML = '';
+        return;
+      }
+      if (isLoadingQuota) {
+        spinBtn.disabled = true;
+        spinBtn.innerHTML = '<svg class="animate-spin" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="display:inline-block;vertical-align:-3px"><circle cx="12" cy="12" r="10" stroke-opacity="0.25"/><path d="M12 2a10 10 0 0 1 10 10" stroke-linecap="round"/></svg> Checking Daily Allowance…';
+        timerLabel.style.display = "none";
+        timerLabel.innerHTML = '';
+        return;
+      }
       if (isSpunToday) {
         spinBtn.disabled = true;
         spinBtn.innerHTML = '✓ Spun Today · Come Back Tomorrow';
@@ -4309,12 +4341,42 @@
       } else {
         if (timerInterval) { clearInterval(timerInterval); timerInterval = null; }
         spinBtn.disabled = isSpinning;
-        spinBtn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg> SPIN NOW';
+        spinBtn.innerHTML = isSpinning
+          ? '<svg class="animate-spin" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" style="display:inline-block;vertical-align:-3px"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg> Spinning the Lucky Wheel…'
+          : '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:-3px"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg> SPIN NOW';
         timerLabel.style.display = "none";
         timerLabel.innerHTML = '';
       }
     }
     renderButtonState();
+
+    if (tok) {
+      fetch(apiBase + "/student/rewards", {
+        headers: {
+          "Accept": "application/json",
+          "Authorization": "Bearer " + tok
+        }
+      }).then(function (res) {
+        if (!res.ok) {
+          isLoadingQuota = false;
+          renderButtonState();
+          return null;
+        }
+        return res.json();
+      }).then(function (data) {
+        isLoadingQuota = false;
+        if (!data) return;
+        serverQuota = data.quota || {};
+        serverRewards = Array.isArray(data.rewards) ? data.rewards : [];
+        isSpunToday = Boolean(serverQuota.remaining <= 0);
+        badgeCount.textContent = serverRewards.length;
+        renderButtonState();
+        renderRewardsList();
+      }).catch(function () {
+        isLoadingQuota = false;
+        renderButtonState();
+      });
+    }
 
     // Wheel drawing
     function drawWheel(angle, lightTick) {
@@ -4429,169 +4491,146 @@
 
     // Spin animation execution
     function startSpin() {
+      if (!tok) {
+        location.assign("/login");
+        return;
+      }
       if (isSpinning || isSpunToday) return;
+
       isSpinning = true;
       spinBtn.disabled = true;
-      spinBtn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="animate-spin"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg> Spinning the Lucky Wheel…';
+      spinBtn.innerHTML = '<svg class="animate-spin" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" style="display:inline-block;vertical-align:-3px"><circle cx="12" cy="12" r="10" stroke-opacity="0.25"/><path d="M12 2a10 10 0 0 1 10 10" stroke-linecap="round"/></svg> Contacting server…';
 
-      // Pick prize with weighted probabilities (Sum = 100%):
-      var weights = [18, 8, 10, 9, 8, 10, 5, 12, 10, 10];
-      var rand = Math.floor(Math.random() * 100) + 1;
-      var cumulative = 0;
-      var chosenIndex = 0;
-      for (var idx = 0; idx < weights.length; idx++) {
-        cumulative += weights[idx];
-        if (rand <= cumulative) { chosenIndex = idx; break; }
-      }
-
-      var chosenPrize = WHEEL_PRIZES[chosenIndex];
-      var numSlices = WHEEL_PRIZES.length;
-      var arc = (Math.PI * 2) / numSlices;
-
-      // Pointer is at 12 o'clock (angle 3*PI/2)
-      var targetAngle = (Math.PI * 1.5) - (chosenIndex * arc + arc / 2);
-      var fullRotations = 6 + Math.floor(Math.random() * 3);
-      var totalAngleDelta = (fullRotations * Math.PI * 2) + (targetAngle - (currentAngle % (Math.PI * 2)));
-      if (totalAngleDelta < fullRotations * Math.PI * 2) totalAngleDelta += Math.PI * 2;
-
-      var startAngle = currentAngle;
-      var targetTotal = startAngle + totalAngleDelta;
-      var duration = 4600;
-      var startTime = Date.now();
-      var lastSliceTick = -1;
-      var lightTick = 0;
-
-      function frame() {
-        var now = Date.now();
-        var t = Math.min(1, (now - startTime) / duration);
-        // Easing: ease-out cubic-quartic
-        var ease = 1 - Math.pow(1 - t, 3.8);
-        currentAngle = startAngle + totalAngleDelta * ease;
-        lightTick += 0.35;
-
-        // Sound on slice transition
-        var currentSlice = Math.floor((currentAngle % (Math.PI * 2)) / arc);
-        if (currentSlice !== lastSliceTick) {
-          lastSliceTick = currentSlice;
-          playWheelTickSound();
+      fetch(apiBase + "/student/rewards/spin", {
+        method: "POST",
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json",
+          "Authorization": "Bearer " + tok
         }
-
-        drawWheel(currentAngle, lightTick);
-
-        if (t < 1) {
-          requestAnimationFrame(frame);
-        } else {
-          isSpinning = false;
-          onSpinFinished(chosenPrize);
+      }).then(function (res) {
+        if (res.status === 429) {
+          return res.json().then(function (err) {
+            isSpinning = false;
+            isSpunToday = true;
+            if (err.quota) serverQuota = err.quota;
+            renderButtonState();
+            alert(err.error || "You have already used your daily spin for today. Come back tomorrow after midnight IST!");
+            return null;
+          });
         }
-      }
-      requestAnimationFrame(frame);
-    }
-
-    function onSpinFinished(prize) {
-      today = getTodayISTString();
-      if (prize.type !== "free_spin") {
-        state.lastSpinDate = today;
-      }
-
-      var nowTime = Date.now();
-      var reward = null;
-
-      if (prize.type !== "try_again" && prize.type !== "free_spin") {
-        var isInAppPrize = inArray(prize.type, ["free_test", "free_paper_upload", "free_pro", "bonus_xp"]);
-        var code = (!isInAppPrize && prize.prefix) ? (prize.prefix + Math.random().toString(36).substring(2, 6).toUpperCase()) : null;
-        reward = {
-          id: "rew_" + nowTime + "_" + Math.floor(Math.random() * 1000),
-          type: prize.type,
-          title: prize.title,
-          value: prize.value,
-          code: code,
-          created_at: new Date(nowTime).toISOString(),
-          expires_at: inArray(prize.type, ["coupon_pct", "coupon_flat"]) ? new Date(nowTime + 7 * 86400 * 1000).toISOString() : null,
-          is_scratched: false,
-          is_claimed: inArray(prize.type, ["bonus_xp", "free_test", "free_paper_upload"])
-        };
-        state.rewards.unshift(reward);
-      }
-
-      // Record to active manager rewards log
-      try {
-        var mLog = JSON.parse(localStorage.getItem("ql_rewards_global_log") || "[]");
-        var studentUser = JSON.parse(localStorage.getItem("lab_user") || "{}");
-        var logStatus = "Unscratched";
-        if (prize.type === "try_again") {
-          logStatus = "Try Again";
-        } else if (prize.type === "free_spin") {
-          logStatus = "Free Spin Won";
-        } else if (prize.type === "bonus_xp") {
-          logStatus = "Claimed (+50 XP)";
-        } else if (prize.type === "free_pro") {
-          logStatus = "Unclaimed Pro";
-        } else if (prize.type === "free_test" || prize.type === "free_paper_upload") {
-          logStatus = "Credited to Account";
+        if (!res.ok) {
+          return res.json().catch(function () { return {}; }).then(function (err) {
+            throw new Error(err.error || "Could not spin the wheel.");
+          });
         }
-        mLog.unshift({
-          id: "rewlog_" + nowTime + "_" + Math.floor(Math.random() * 1000),
-          user_id: studentUser.id || "guest",
-          user_name: studentUser.name || (studentUser.email ? studentUser.email.split("@")[0] : "Student"),
-          user_email: studentUser.email || "student@genziitian.in",
-          prize_title: prize.title,
-          prize_type: prize.type,
-          coupon_code: reward ? reward.code : null,
-          created_at: new Date(nowTime).toISOString(),
-          expires_at: reward ? reward.expires_at : null,
-          status: logStatus
-        });
-        if (mLog.length > 500) mLog = mLog.slice(0, 500);
-        localStorage.setItem("ql_rewards_global_log", JSON.stringify(mLog));
-      } catch (_) {}
+        return res.json();
+      }).then(function (data) {
+        if (!data) return;
+        var chosenIndex = (typeof data.segment === "number") ? data.segment : 0;
+        var chosenPrize = WHEEL_PRIZES[chosenIndex] || data.prize;
+        var serverReward = data.reward;
+        serverQuota = data.quota || {};
 
-      saveLocalRewardsState(state);
-      badgeCount.textContent = state.rewards.length;
-      renderButtonState();
-      renderRewardsList();
+        var numSlices = WHEEL_PRIZES.length;
+        var arc = (Math.PI * 2) / numSlices;
+        var targetAngle = (Math.PI * 1.5) - (chosenIndex * arc + arc / 2);
+        var fullRotations = 6 + Math.floor(Math.random() * 3);
+        var totalAngleDelta = (fullRotations * Math.PI * 2) + (targetAngle - (currentAngle % (Math.PI * 2)));
+        if (totalAngleDelta < fullRotations * Math.PI * 2) totalAngleDelta += Math.PI * 2;
 
-      playWheelWinSound();
-      fireConfettiBurst();
+        var startAngle = currentAngle;
+        var duration = 4600;
+        var startTime = Date.now();
+        var lastSliceTick = -1;
+        var lightTick = 0;
 
-      if (prize.type === "free_pro") {
-        openProJackpotModal(reward, function () {
-          renderRewardsList();
-        });
-      } else if (prize.type === "free_spin") {
-        openResultModal({
-          iconBg: "linear-gradient(135deg,#0284c7,#2563eb)",
-          iconSvg: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg>',
-          title: "1 Free Extra Spin Won!",
-          desc: "You unlocked a free instant re-spin! Spin the lucky wheel again right now without consuming your daily quota.",
-          btnText: "Spin Again Now"
-        });
-      } else if (reward && prize.type !== "bonus_xp") {
-        openScratchCardModal(reward, function () {
-          saveLocalRewardsState(state);
-          renderRewardsList();
-        });
-      } else if (prize.type === "bonus_xp") {
-        openResultModal({
-          iconBg: "linear-gradient(135deg,#2563eb,#4f46e5)",
-          iconSvg: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>',
-          title: "+50 Study XP Earned!",
-          desc: "Awesome! 50 bonus Study XP has been added to your profile to boost your learning rank.",
-          btnText: "Awesome!"
-        });
-      } else {
-        openResultModal({
-          iconBg: "linear-gradient(135deg,#64748b,#475569)",
-          iconSvg: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7" r="4"/><circle cx="7" cy="12" r="4"/><circle cx="17" cy="12" r="4"/><circle cx="12" cy="17" r="4"/><path d="M12 12v9"/></svg>',
-          title: "Better Luck Next Time!",
-          desc: "Your daily spin resets tomorrow at midnight IST. Come back tomorrow to spin again!",
-          btnText: "Got It"
-        });
-      }
-    }
+        spinBtn.innerHTML = '<svg class="animate-spin" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" style="display:inline-block;vertical-align:-3px"><circle cx="12" cy="12" r="10" stroke-opacity="0.25"/><path d="M12 2a10 10 0 0 1 10 10" stroke-linecap="round"/></svg> Spinning the Lucky Wheel…';
 
-    function inArray(val, arr) {
-      return arr.indexOf(val) !== -1;
+        function frame() {
+          var now = Date.now();
+          var t = Math.min(1, (now - startTime) / duration);
+          var ease = 1 - Math.pow(1 - t, 3.8);
+          currentAngle = startAngle + totalAngleDelta * ease;
+          lightTick += 0.35;
+
+          var currentSlice = Math.floor((currentAngle % (Math.PI * 2)) / arc);
+          if (currentSlice !== lastSliceTick) {
+            lastSliceTick = currentSlice;
+            playWheelTickSound();
+          }
+
+          drawWheel(currentAngle, lightTick);
+
+          if (t < 1) {
+            requestAnimationFrame(frame);
+          } else {
+            isSpinning = false;
+            if (chosenPrize.type !== "free_spin") {
+              isSpunToday = true;
+            }
+            if (serverReward) {
+              serverRewards.unshift(serverReward);
+            }
+            badgeCount.textContent = serverRewards.length;
+            renderButtonState();
+            renderRewardsList();
+
+            playWheelWinSound();
+            fireConfettiBurst();
+
+            if (chosenPrize.type === "free_pro") {
+              openProJackpotModal(serverReward, function () {
+                renderRewardsList();
+              });
+            } else if (chosenPrize.type === "free_spin") {
+              openResultModal({
+                iconBg: "linear-gradient(135deg,#0284c7,#2563eb)",
+                iconSvg: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg>',
+                title: "1 Free Extra Spin Won!",
+                desc: "You unlocked a free instant re-spin! Spin the lucky wheel again right now without consuming your daily quota.",
+                btnText: "Spin Again Now"
+              });
+            } else if (serverReward && chosenPrize.type !== "bonus_xp") {
+              openScratchCardModal(serverReward, function () {
+                if (serverReward.id && tok) {
+                  fetch(apiBase + "/student/rewards/scratch", {
+                    method: "POST",
+                    headers: {
+                      "Accept": "application/json",
+                      "Content-Type": "application/json",
+                      "Authorization": "Bearer " + tok
+                    },
+                    body: JSON.stringify({ id: serverReward.id })
+                  }).catch(function () {});
+                }
+                renderRewardsList();
+              });
+            } else if (chosenPrize.type === "bonus_xp") {
+              openResultModal({
+                iconBg: "linear-gradient(135deg,#2563eb,#4f46e5)",
+                iconSvg: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>',
+                title: "+50 Study XP Earned!",
+                desc: "Awesome! 50 bonus Study XP has been added to your profile to boost your learning rank.",
+                btnText: "Awesome!"
+              });
+            } else {
+              openResultModal({
+                iconBg: "linear-gradient(135deg,#64748b,#475569)",
+                iconSvg: '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7" r="4"/><circle cx="7" cy="12" r="4"/><circle cx="17" cy="12" r="4"/><circle cx="12" cy="17" r="4"/><path d="M12 12v9"/></svg>',
+                title: "Better Luck Next Time!",
+                desc: "Your daily spin resets tomorrow at midnight IST. Come back tomorrow to spin again!",
+                btnText: "Got It"
+              });
+            }
+          }
+        }
+        requestAnimationFrame(frame);
+      }).catch(function (err) {
+        isSpinning = false;
+        renderButtonState();
+        alert(err.message || "Could not spin the wheel. Please check your connection.");
+      });
     }
 
     // Tab switcher
@@ -4622,11 +4661,10 @@
     });
 
     function renderRewardsList() {
-      state = loadLocalRewardsState();
       var nowTime = Date.now();
       rewardsGrid.replaceChildren();
 
-      var list = state.rewards.filter(function (r) {
+      var list = serverRewards.filter(function (r) {
         var isExpired = r.expires_at ? nowTime > new Date(r.expires_at).getTime() : false;
         if (currentFilter === "active") return !isExpired && r.type !== "free_pro";
         if (currentFilter === "pro") return r.type === "free_pro";
@@ -4651,13 +4689,22 @@
           nowTime,
           function onScratch(r) {
             openScratchCardModal(r, function () {
-              saveLocalRewardsState(state);
+              if (r.id && tok) {
+                fetch(apiBase + "/student/rewards/scratch", {
+                  method: "POST",
+                  headers: {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json",
+                    "Authorization": "Bearer " + tok
+                  },
+                  body: JSON.stringify({ id: r.id })
+                }).catch(function () {});
+              }
               renderRewardsList();
             });
           },
           function onClaimPro(r) {
             claimProMembership(r, function () {
-              saveLocalRewardsState(state);
               renderRewardsList();
             });
           }

@@ -1,8 +1,11 @@
+import 'dart:async';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 import 'api_exceptions.dart';
+import 'cdn_debug_capture.dart';
 import '../state/app_activity.dart';
 
 /// Production-grade API client connecting directly to https://labapi.genziitian.in.
@@ -54,17 +57,32 @@ class ApiClient {
     );
     _dio.interceptors.add(
       InterceptorsWrapper(
+        onRequest: (options, handler) {
+          if (kDebugMode &&
+              RegExp(
+                r'/(courses|student/uploaded-papers|student/spin-practice(?:/quota)?)$',
+              ).hasMatch(options.uri.path)) {
+            debugPrint(
+              'Quiz LAB API start: ${options.method} ${options.uri.path} timeUtc=${DateTime.now().toUtc().toIso8601String()} url=${options.uri.origin}${options.uri.path}',
+            );
+          }
+          handler.next(options);
+        },
         onResponse: (response, handler) {
           if (kDebugMode &&
-              RegExp(r'/(courses|student/uploaded-papers|student/spin-practice(?:/quota)?)$')
-                  .hasMatch(response.requestOptions.uri.path)) {
+              RegExp(
+                r'/(courses|student/uploaded-papers|student/spin-practice(?:/quota)?)$',
+              ).hasMatch(response.requestOptions.uri.path)) {
             // Confirm recovery using metadata only, never account data or tokens.
             debugPrint(
               'Quiz LAB API: ${response.requestOptions.method} '
               '${response.requestOptions.uri.path} '
               'status=${response.statusCode} '
               'contentType=${response.headers.value('content-type') ?? 'unknown'} '
-              'requestId=${response.headers.value('x-hcdn-request-id') ?? 'none'}',
+              'requestId=${response.headers.value('x-hcdn-request-id') ?? 'none'} '
+              'timeUtc=${DateTime.now().toUtc().toIso8601String()} '
+              'url=${response.requestOptions.uri.origin}${response.requestOptions.uri.path} '
+              'cacheStatus=${response.headers.value('x-hcdn-cache-status') ?? 'absent'}',
             );
           }
           connectionUnavailable.value = false;
@@ -73,13 +91,35 @@ class ApiClient {
         onError: (error, handler) {
           if (kDebugMode && error.type != DioExceptionType.cancel) {
             final response = error.response;
+            final body = response?.data;
+            if (response?.statusCode == 403 &&
+                body is String &&
+                (response?.headers.value('content-type') ?? '').contains(
+                  'text/html',
+                ) &&
+                response?.headers.value('x-hcdn-request-id') != null &&
+                body.toLowerCase().contains('checking your browser')) {
+              unawaited(
+                saveCdnDebugCapture(
+                  body: body,
+                  requestId: response!.headers.value('x-hcdn-request-id')!,
+                  method: error.requestOptions.method,
+                  path: error.requestOptions.uri.path,
+                  url:
+                      '${error.requestOptions.uri.origin}${error.requestOptions.uri.path}',
+                ),
+              );
+            }
             // Diagnostic metadata only: never log tokens, query strings or bodies.
             debugPrint(
               'Quiz LAB API: ${error.requestOptions.method} '
               '${error.requestOptions.uri.path} '
               'status=${response?.statusCode ?? error.type.name} '
               'contentType=${response?.headers.value('content-type') ?? 'unknown'} '
-              'requestId=${response?.headers.value('x-hcdn-request-id') ?? 'none'}',
+              'requestId=${response?.headers.value('x-hcdn-request-id') ?? 'none'} '
+              'timeUtc=${DateTime.now().toUtc().toIso8601String()} '
+              'url=${error.requestOptions.uri.origin}${error.requestOptions.uri.path} '
+              'cacheStatus=${response?.headers.value('x-hcdn-cache-status') ?? 'absent'}',
             );
           }
           if (error.type != DioExceptionType.cancel) {

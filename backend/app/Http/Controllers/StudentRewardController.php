@@ -65,8 +65,8 @@ class StudentRewardController extends Controller
             5 => ['type' => 'free_spin',           'title' => '1 Free Extra Spin',      'value' => '1 Extra Spin',      'prefix' => ''],
             6 => ['type' => 'coupon_flat',         'title' => '₹100 OFF Coupon',        'value' => '₹100 OFF',          'prefix' => 'GENZ100-'],
             7 => ['type' => 'bonus_xp',            'title' => '+50 Study XP',           'value' => '50 XP',             'prefix' => ''],
-            8 => ['type' => 'free_test',           'title' => 'Free 1 Test Yourself',   'value' => '1 Free Test',       'prefix' => 'TEST1-'],
-            9 => ['type' => 'free_paper_upload',   'title' => 'Free 1 Paper Upload',   'value' => '1 Free Upload',     'prefix' => 'UPLOAD1-'],
+            8 => ['type' => 'free_test',           'title' => 'Free 1 Test Yourself',   'value' => '1 Free Test',       'prefix' => ''],
+            9 => ['type' => 'free_paper_upload',   'title' => 'Free 1 Paper Upload',   'value' => '1 Free Upload',     'prefix' => ''],
         ];
 
         // Weighted probabilities (Sum = 100%):
