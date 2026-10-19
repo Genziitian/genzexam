@@ -1307,3 +1307,115 @@ body:has(#ql-try-practice) .lg\:hidden.bottom-0:not(.ql-spin-action-dock){
 .ql-dl-close-btn:hover{background:#2b30b8}
 
 
+
+/* ==========================================================================
+   Daily Rewards · redesign (tiles, richer wheel card, spin button, rules)
+   ========================================================================== */
+.ql-rewards-page{max-width:720px}
+.ql-rewards-top-bar{margin-bottom:18px}
+.ql-rewards-corner-actions{display:grid;grid-template-columns:1fr 1fr;gap:14px;width:100%;margin-left:0}
+.ql-corner-btn{justify-content:center;padding:15px 18px;border-radius:18px;border:1px solid #e0e7ff;font-size:14px;font-weight:800;color:#1e1b4b;box-shadow:0 6px 16px rgba(30,27,75,.07)}
+.ql-corner-btn:hover{background:#fff;border-color:#c7d2fe;transform:translateY(-2px);box-shadow:0 10px 22px rgba(30,27,75,.12)}
+.ql-corner-btn svg{color:#4f46e5}
+.ql-corner-btn.primary{background:linear-gradient(135deg,#4f46e5,#3730a3);border-color:transparent;color:#fff;box-shadow:0 10px 22px rgba(55,48,163,.35)}
+.ql-corner-btn.primary:hover{background:linear-gradient(135deg,#5b52ee,#4338ca);box-shadow:0 14px 28px rgba(55,48,163,.42)}
+.ql-corner-btn.primary svg{color:#f6e7b4}
+.ql-corner-btn.primary .ql-rewards-pill{background:#f6e7b4;color:#3730a3}
+
+.ql-wheel-card{max-width:600px;border-radius:32px;border:1px solid #e0e7ff;padding:38px 26px 28px;background:linear-gradient(180deg,#eef2ff 0%,#fff 55%);box-shadow:0 24px 50px rgba(79,70,229,.14)}
+.ql-wheel-canvas{filter:drop-shadow(0 18px 26px rgba(30,27,75,.28))}
+.ql-wheel-pointer-top path{fill:#ef4444;stroke:#f6e7b4;stroke-width:2.4}
+.ql-wheel-controls{max-width:none;margin-top:30px}
+.ql-spin-main-cta{padding:19px 28px;border-radius:22px;font-size:17px;background:linear-gradient(135deg,#4f46e5,#3730a3);border:1.5px solid #d9b04a;color:#fff;box-shadow:0 16px 30px -6px rgba(55,48,163,.55)}
+.ql-spin-main-cta:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 20px 36px -6px rgba(55,48,163,.62)}
+.ql-spin-main-cta:disabled{background:#e5e7eb;border-color:transparent;color:#6b7280}
+
+.ql-rules-dropdown{max-width:600px;border-radius:22px;border:1px solid #e0e7ff;background:#fff;box-shadow:0 10px 24px rgba(30,27,75,.07)}
+.ql-rules-summary{padding:18px 20px;font-size:15px;color:#1e1b4b}
+.ql-rules-summary-left svg{padding:8px;box-sizing:content-box;width:20px;height:20px;border-radius:12px;background:#eef2ff;color:#4f46e5}
+.ql-rules-summary:hover{background:#fafaff}
+.ql-rules-body{padding:6px 22px 22px;color:#475569}
+.ql-rules-list{list-style:none;padding-left:0;gap:12px}
+.ql-rules-list li{position:relative;padding-left:18px}
+.ql-rules-list li::before{content:"";position:absolute;left:0;top:.62em;width:7px;height:7px;border-radius:50%;background:#d9b04a}
+.ql-rules-list li strong{color:#1e1b4b}
+
+.ql-rewards-filter-bar{gap:10px;margin-bottom:22px}
+.ql-filter-pill{padding:10px 18px;font-size:13px;border-radius:999px;border:1px solid #e0e7ff;box-shadow:0 4px 10px rgba(30,27,75,.05)}
+.ql-filter-pill[aria-selected="true"]{background:linear-gradient(135deg,#4f46e5,#3730a3);box-shadow:0 8px 16px rgba(55,48,163,.3)}
+
+.ql-reward-cards-grid{grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
+.ql-user-reward-card{border-radius:24px;border:1px solid #e0e7ff;padding:22px 22px 18px 26px;gap:16px;overflow:hidden;box-shadow:0 12px 26px rgba(30,27,75,.08)}
+.ql-user-reward-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:6px;background:linear-gradient(180deg,#4f46e5,#818cf8)}
+.ql-user-reward-card.pro::before{background:linear-gradient(180deg,#d97706,#fbbf24)}
+.ql-user-reward-card.expired::before{background:#cbd5e1}
+.ql-card-icon{display:grid;place-items:center;width:46px;height:46px;border-radius:15px;background:#eef2ff;font-size:22px}
+.ql-card-title-row strong{font-size:16px;color:#1e1b4b}
+.ql-tag-active,.ql-tag-unscratched,.ql-tag-expired,.ql-tag-claimed{padding:5px 12px;border-radius:999px}
+.ql-card-code-row{padding:13px 16px;background:#fbf7ea;border:1px solid #e7cf8a;border-radius:16px}
+.ql-card-code-text{font-size:17px;color:#1e1b4b;letter-spacing:.12em}
+.ql-card-copy-btn{padding:8px 14px;border-radius:12px;border:1px solid #d9b04a;color:#5b3a00;font-weight:800}
+.ql-card-copy-btn:hover{background:#fff8e1;border-color:#b8902c}
+.ql-card-footer{padding-top:14px}
+
+/* ==========================================================================
+   Test yourself (/try-practice) · indigo + gold redesign
+   ========================================================================== */
+#ql-try-practice{--spin-accent:#4338ca;--spin-ink:#1e1b4b;--spin-field:#fff;--spin-line:#e0e7ff}
+#ql-try-practice .ql-wheel-stage:before{box-shadow:0 22px 36px #1e1b4b40,0 0 70px #4338ca1f}
+#ql-try-practice .ql-wheel-hub{background:linear-gradient(135deg,#f1e1b6,#c9a961 55%,#8e7234);border:0;padding:4px;box-sizing:border-box;box-shadow:0 8px 20px #1e1b4b66}
+#ql-try-practice .ql-wheel-hub::before{content:"";position:absolute;inset:4px;border-radius:50%;background:linear-gradient(135deg,#4338ca,#312e81)}
+#ql-try-practice .ql-wheel-hub img{position:relative}
+#ql-try-practice .ql-wheel-pointer{width:26px;height:36px;background:linear-gradient(135deg,#fff,#e5e7eb);filter:drop-shadow(0 3px 4px #0004) drop-shadow(0 0 1px #c9a961)}
+#ql-try-practice .ql-wheel-flare{visibility:hidden}
+#ql-try-practice.ql-is-spinning .ql-wheel-flare,.ql-is-spinning #ql-try-practice .ql-wheel-flare,.ql-is-spinning .ql-wheel-flare{visibility:visible}
+#ql-try-practice .ql-wheel-flare{background:#f1e1b6;box-shadow:0 0 9px 2px #f1e1b688,0 0 22px 7px #c9a96144}
+
+#ql-try-practice .ql-spin-custom-card{border-radius:28px;border:1px solid #e0e7ff;box-shadow:0 22px 44px #4338ca1a}
+#ql-try-practice .ql-spin-select,#ql-try-practice .ql-spin-input,#ql-try-practice .ql-spin-types summary{background:#fff;border:1px solid #e0e7ff;border-radius:18px;min-height:54px;box-shadow:0 4px 12px #1e1b4b0d;color:#1e1b4b;font-weight:600}
+#ql-try-practice .ql-spin-select:focus-visible,#ql-try-practice .ql-spin-input:focus-visible,#ql-try-practice .ql-spin-types summary:focus-visible{outline:2px solid #4338ca;outline-offset:2px}
+#ql-try-practice .ql-spin-types-list{border:1px solid #e0e7ff;border-radius:18px;box-shadow:0 18px 36px #1e1b4b24}
+#ql-try-practice .ql-spin-types-list input{accent-color:#4338ca}
+#ql-try-practice .ql-spin-field label{color:#1e1b4b;font-weight:800}
+#ql-try-practice #ql-week-range-text{color:#4338ca}
+#ql-try-practice .ql-spin-dual-range input[type=range]::-webkit-slider-thumb{background:#c9a961;border-color:#312e81}
+#ql-try-practice .ql-spin-dual-range input[type=range]::-moz-range-thumb{background:#c9a961;border-color:#312e81}
+#ql-try-practice .ql-spin-main-btn{min-height:58px;border-radius:20px;border:1.2px solid #c9a961;background:linear-gradient(135deg,#312e81,#4338ca);color:#f1e1b6!important;font-size:15.5px;font-weight:700;box-shadow:0 16px 30px -6px #312e8199,inset 0 1px #ffffff2e}
+#ql-try-practice .ql-spin-main-btn:hover:not(:disabled){background:linear-gradient(135deg,#3b37a0,#4f46e5);transform:translateY(-2px)}
+#ql-try-practice .ql-spin-main-btn.ql-spin-upgrade-btn{background:linear-gradient(135deg,#b45309,#d97706);border-color:transparent;color:#fff!important}
+#ql-try-practice .ql-spin-help-button{border-radius:14px;border:1px solid #e0e7ff;background:#fff;color:#1e1b4b;font-weight:700;box-shadow:0 4px 10px #1e1b4b0d}
+#ql-try-practice .ql-spin-back-btn{border-radius:14px;border:1px solid #e0e7ff;background:#fff;box-shadow:0 4px 10px #1e1b4b0d}
+#ql-try-practice .ql-spin-pro-badge{background:linear-gradient(135deg,#f1e1b6,#c9a961);color:#3b2a00}
+
+#ql-try-practice .ql-spin-help-dialog{border-radius:28px;border:1px solid #c9a96199;overflow:hidden}
+#ql-try-practice .ql-spin-help-top{margin:-26px -26px 18px;padding:16px 20px;background:linear-gradient(135deg,#312e81,#4338ca);color:#f1e1b6}
+#ql-try-practice .ql-spin-help-content li::marker{color:#4338ca}
+#ql-try-practice .ql-spin-help-content .ql-spin-help-free{background:#f8f4ea;border-color:#e7cf8a;color:#5b4a1f}
+#ql-try-practice .ql-spin-help-done{border-radius:16px;background:linear-gradient(135deg,#312e81,#4338ca);color:#f1e1b6;border:1px solid #c9a961;font-weight:700}
+
+/* ==========================================================================
+   Membership & transactions (/membership) · redesign
+   ========================================================================== */
+.ql-membership-card{border-radius:30px!important;border:1px solid #e0e7ff!important;padding:24px!important;box-shadow:0 22px 44px rgba(79,70,229,.1)!important}
+.ql-membership-tabs{display:inline-flex;gap:4px;padding:5px;margin-bottom:22px;background:#eef2ff;border:1px solid #e0e7ff;border-radius:999px}
+.ql-membership-tabs .ql-more-button{border:0;background:transparent;color:#4b5563;padding:10px 22px;border-radius:999px;font-size:14px;font-weight:700;transition:all .18s}
+.ql-membership-tabs .ql-more-button:hover{background:rgba(255,255,255,.7);color:#1e1b4b}
+.ql-membership-tabs .ql-more-button[aria-selected="true"]{background:linear-gradient(135deg,#4f46e5,#3730a3);color:#fff;box-shadow:0 8px 16px rgba(55,48,163,.3)}
+
+.ql-pro-hero{display:flex;align-items:center;gap:18px;padding:22px 24px;border-radius:24px;background:linear-gradient(135deg,#312e81 0%,#4338ca 60%,#5b54dc 100%);color:#fff;box-shadow:0 18px 34px rgba(55,48,163,.32);flex-wrap:wrap}
+.ql-pro-hero-crown{display:grid;place-items:center;flex:none;width:60px;height:60px;border-radius:19px;background:linear-gradient(135deg,#f1e1b6,#c9a961);color:#3b2a00;font-size:32px;line-height:1;box-shadow:0 8px 18px rgba(0,0,0,.25)}
+.ql-pro-hero-copy{display:flex;flex-direction:column;gap:6px;flex:1;min-width:160px}
+.ql-pro-hero-chip{align-self:flex-start;padding:4px 11px;border-radius:999px;background:rgba(255,255,255,.18);color:#f1e1b6;font-size:11px;font-weight:800;letter-spacing:.12em}
+.ql-pro-hero-copy strong{font-size:28px!important;line-height:1.1;font-weight:850;letter-spacing:-.03em;color:#fff!important}
+.ql-pro-hero .ql-more-button.danger{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.35);color:#fff;border-radius:14px;padding:11px 18px;font-weight:700}
+.ql-pro-hero .ql-more-button.danger:hover{background:#fff;color:#b91c1c}
+
+.ql-pro-timeline{list-style:none;margin:18px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.ql-pro-timeline li{display:flex;flex-direction:column;gap:5px;padding:16px 18px;border:1px solid #e0e7ff;border-radius:18px;background:linear-gradient(180deg,#fff,#f8f9ff);box-shadow:0 6px 14px rgba(30,27,75,.05)}
+.ql-pro-timeline li span{font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#6b7280}
+.ql-pro-timeline li strong{font-size:15px;font-weight:800;color:#1e1b4b}
+.ql-pro-timeline li.note{grid-column:1/-1;background:#fbf7ea;border-color:#e7cf8a}
+.ql-pro-timeline li.note span{text-transform:none;letter-spacing:0;font-size:13.5px;color:#5b4a1f}
+#ql-web-pro-controls{margin-top:14px}
+#ql-web-pro-controls .ql-more-button{border-radius:14px;border:1px solid #c9a961;color:#5b3a00;background:#fffaf0;font-weight:800;padding:11px 18px;text-decoration:none;display:inline-block}
+#ql-web-history-panel .ql-more-row{border:1px solid #e0e7ff;border-radius:18px;padding:16px 18px!important;margin-bottom:10px;background:#fff;box-shadow:0 6px 14px rgba(30,27,75,.05)}

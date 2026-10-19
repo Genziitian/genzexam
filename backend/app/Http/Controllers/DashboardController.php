@@ -167,7 +167,7 @@ class DashboardController extends Controller
             $weekAtt = $attempts->filter(fn ($a) => $a->submitted_at >= $w['start'] && $a->submitted_at <= $w['end']);
             $seconds = $weekAtt->reduce(function ($carry, $a) {
                 if (! $a->started_at || ! $a->submitted_at) return $carry;
-                return $carry + max(0, $a->submitted_at->diffInSeconds($a->started_at));
+                return $carry + max(0, $a->started_at->diffInSeconds($a->submitted_at, false));
             }, 0);
             $history[] = round($seconds / 3600, 2);
         }
@@ -236,7 +236,7 @@ class DashboardController extends Controller
 
             $avgSeconds = $weekAtt->avg(function ($a) {
                 if (! $a->started_at || ! $a->submitted_at) return 0;
-                return max(0, $a->submitted_at->diffInSeconds($a->started_at));
+                return max(0, $a->started_at->diffInSeconds($a->submitted_at, false));
             });
 
             // Speed: 60s → 100, 600s → 0 (linear)

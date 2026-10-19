@@ -26,7 +26,7 @@
     const filter = $('deletion-request-filter').value;
     const rows = filter === 'all' ? deletionRequests : deletionRequests.filter(row => row.status === filter);
     $('deletion-request-count').textContent = `· ${deletionRequests.length} total`;
-    target.innerHTML = rows.length ? rows.map(row => `<article class="panel">
+    target.innerHTML = rows.length ? rows.map(row => `<article class="panel deletion-card" data-status="${esc(row.status)}">
       <div class="toolbar tight"><div><h3>${esc(row.name)} <span class="hint">· Request #${esc(row.id)}</span></h3><p class="hint">${esc(row.email)} · User ID ${esc(row.user_id ?? 'account removed')} · ${esc(row.role)}</p></div>
       <label>Status<select data-deletion-status="${esc(row.id)}"><option value="pending" ${row.status==='pending'?'selected':''}>Pending</option><option value="reviewing" ${row.status==='reviewing'?'selected':''}>Reviewing</option><option value="completed" ${row.status==='completed'?'selected':''}>Completed</option></select></label></div>
       <p><strong>Reason:</strong> ${esc(row.reason)}</p><p><strong>Additional details:</strong> ${esc(row.details || 'None provided')}</p>

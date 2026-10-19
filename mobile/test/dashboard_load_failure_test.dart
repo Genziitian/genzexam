@@ -212,6 +212,107 @@ void main() {
   });
 
   testWidgets(
+    'performance chart retains last weeks result and its metric tabs change values',
+    (tester) async {
+      status = 200;
+      body = {
+        ...goodDashboard,
+        'performance': List.generate(
+          12,
+          (i) => {
+            'label': 'Week ${i + 1}',
+            'attempts': i == 10 ? 1 : 0,
+            'accuracy': i == 10 ? 20 : 0,
+            'speed': i == 10 ? 55.6 : 0,
+            'score': i == 10 ? 80 : 0,
+          },
+        ),
+      };
+      await mount(tester);
+      await tester.ensureVisible(find.text('Accuracy'));
+      await flush(tester);
+      expect(find.text('20%'), findsOneWidget);
+      await tester.tap(find.text('Speed'));
+      await flush(tester);
+      expect(find.text('55.6'), findsOneWidget);
+      await tester.tap(find.text('Score'));
+      await flush(tester);
+      expect(find.text('80'), findsOneWidget);
+      expect(tester.takeException(), isNull);
+      await tester.pumpWidget(const SizedBox.shrink());
+      await tester.pump();
+    },
+  );
+
+  for (final attempts in [0, 1]) {
+    testWidgets(
+      'performance chart distinguishes no attempts from a real zero score ($attempts)',
+      (tester) async {
+        status = 200;
+        body = {
+          ...goodDashboard,
+          'performance': List.generate(
+            12,
+            (i) => {
+              'label': 'Week ${i + 1}',
+              'attempts': i == 11 ? attempts : 0,
+              'accuracy': 0,
+              'speed': 0,
+              'score': 0,
+            },
+          ),
+        };
+        await mount(tester);
+        expect(
+          find.textContaining('No submitted tests in this period'),
+          attempts == 0 ? findsOneWidget : findsNothing,
+        );
+        expect(tester.takeException(), isNull);
+        await tester.pumpWidget(const SizedBox.shrink());
+        await tester.pump();
+      },
+    );
+  }
+
+  testWidgets('Home refreshes progress when returning from a paper screen', (
+    tester,
+  ) async {
+    status = 200;
+    body = goodDashboard;
+    await mount(tester);
+    final navigator = Navigator.of(
+      tester.element(find.byType(StudentMainShell)),
+    );
+    unawaited(
+      navigator.push<void>(
+        MaterialPageRoute<void>(
+          builder: (_) => const Scaffold(body: Text('Paper screen')),
+        ),
+      ),
+    );
+    await flush(tester);
+    body = {
+      ...goodDashboard,
+      'performance': [
+        {
+          'label': 'Oct 19',
+          'attempts': 1,
+          'accuracy': 80,
+          'speed': 55.6,
+          'score': 80,
+        },
+      ],
+    };
+    navigator.pop();
+    await flush(tester);
+    expect(calls, 2);
+    expect(find.text('80%'), findsOneWidget);
+    expect(tester.takeException(), isNull);
+    await tester.pumpWidget(const SizedBox.shrink());
+    await tester.pump();
+  });
+
+  testWidgets(
     'Home rank keeps the server dashboard rank if leaderboard fails',
     (tester) async {
       status = 200;

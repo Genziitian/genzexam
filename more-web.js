@@ -305,7 +305,10 @@
     tabNav.setAttribute('role', 'tablist');
     tabNav.setAttribute('aria-label', 'Membership and transaction views');
     tabNav.append(membershipButton, historyButton);
-    card.prepend(tabNav);
+    tabNav.className = 'ql-membership-tabs';
+    if (card && card.classList && card.classList.add) card.classList.add('ql-membership-card');
+    if (card && card.prepend) card.prepend(tabNav);
+    else if (card && card.appendChild) card.appendChild(tabNav);
 
     membershipButton.onclick = function () {
       membershipPanel.hidden = false;
@@ -400,19 +403,26 @@
         var statusDates = sub.id ? membershipDates(sub) : 'Pro access is managed by the Quiz LAB team.';
         var canCancel = sub.id && ['google_play', 'razorpay'].includes(sub.provider) && sub.status !== 'cancelled' && !sub.cancel_at_period_end;
 
-        membershipPanel.innerHTML = '<div style="padding:8px 0;">' +
-          '<div class="ql-more-row" style="border-top:0;padding-top:0;">' +
-            '<div class="ql-more-row-copy">' +
-              '<strong id="ql-web-pro-status" style="font-size:17px;color:#166534;">' + escapeHtml(statusTitle) + '</strong>' +
-              '<small id="ql-web-pro-dates" style="font-size:13px;color:#475569;margin-top:6px;line-height:1.6;">' + escapeHtml(statusDates) + '</small>' +
+        var timelineItems = String(statusDates).split(' · ').map(function (part) {
+          var cut = part.indexOf(': ');
+          return cut > 0
+            ? '<li><span>' + escapeHtml(part.slice(0, cut)) + '</span><strong>' + escapeHtml(part.slice(cut + 2)) + '</strong></li>'
+            : '<li class="note"><span>' + escapeHtml(part) + '</span></li>';
+        }).join('');
+        membershipPanel.innerHTML = '<div class="ql-pro-hero">' +
+            '<div class="ql-pro-hero-crown" aria-hidden="true">&#9819;</div>' +
+            '<div class="ql-pro-hero-copy">' +
+              '<span class="ql-pro-hero-chip">' + (isTrial ? 'FREE TRIAL' : 'ACTIVE') + '</span>' +
+              '<strong id="ql-web-pro-status">' + escapeHtml(statusTitle) + '</strong>' +
             '</div>' +
             '<div class="ql-more-theme-options">' +
               '<button type="button" class="ql-more-button danger" id="ql-web-pro-cancel"' + (canCancel ? '' : ' hidden') + '>Cancel renewal</button>' +
             '</div>' +
           '</div>' +
+          '<ul class="ql-pro-timeline">' + timelineItems + '</ul>' +
+          '<small id="ql-web-pro-dates" hidden></small>' +
           '<div id="ql-web-pro-controls"></div>' +
-          '<p class="ql-more-message" id="ql-web-pro-message" role="status"></p>' +
-        '</div>';
+          '<p class="ql-more-message" id="ql-web-pro-message" role="status"></p>';
 
         var statusActiveEl = membershipPanel.querySelector('#ql-web-pro-status');
         if (statusActiveEl) statusActiveEl.textContent = statusTitle;

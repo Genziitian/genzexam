@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:math' as math;
 
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 
 import '../../legal/legal_documents.dart';
@@ -9,6 +10,9 @@ import '../../legal/legal_documents.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 import '../../api/api.dart';
+import '../../api/offline_paper_store.dart';
+import '../../api/pro_access_guard.dart';
+import '../../state/app_activity.dart';
 import '../../widgets/feature_load_error_card.dart';
 import '../../state/auth_state.dart';
 import '../../state/theme_state.dart';
@@ -425,7 +429,8 @@ class _StudentMainShellState extends State<StudentMainShell> {
                           dashboardService: _dashboardService,
                           leaderboardService: _leaderboardService,
                           user: widget.authState.user,
-                          isActive: _currentIndex == 0,
+                          isActive: _currentIndex == 0 &&
+                              (ModalRoute.isCurrentOf(context) ?? true),
                           onNavigateToQuizzes: () => _selectTab(1),
                           onOpenProfile: () => _selectTab(4),
                           onOpenOfflinePapers: _openOfflinePapers,
@@ -3484,7 +3489,9 @@ class _PerformanceCardState extends State<_PerformanceCard> {
     final avg = active.isEmpty
         ? 0.0
         : active.reduce((a, b) => a + b) / active.length;
-    final avgText = _metric == 0
+    final avgText = active.isEmpty
+        ? '—'
+        : _metric == 0
         ? '${avg.round()}%'
         : avg.toStringAsFixed(avg % 1 == 0 ? 0 : 1);
 
@@ -3610,12 +3617,12 @@ class _PerformanceCardState extends State<_PerformanceCard> {
           ),
           const SizedBox(height: 16),
 
-          if (points.isEmpty)
+          if (active.isEmpty)
             const SizedBox(
               height: 120,
               child: Center(
                 child: Text(
-                  'Finish a quiz to see your progress here.',
+                  'No submitted tests in this period. Finish and submit a test to see your progress.',
                   style: TextStyle(color: Color(0xFF94A3B8), fontSize: 13),
                 ),
               ),
@@ -3645,22 +3652,27 @@ class _PerformanceCardState extends State<_PerformanceCard> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 for (final f in const [0.0, 0.34, 0.67])
-                  Text(
+                  Flexible(child: Text(
                     labelAt(f),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                     style: const TextStyle(
                       fontSize: 10,
                       fontFamily: 'monospace',
                       color: Color(0xFF94A3B8),
                     ),
-                  ),
-                Text(
+                  )),
+                Flexible(flex: 2, child: Text(
                   '${labelAt(1.0)} — today',
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  textAlign: TextAlign.right,
                   style: const TextStyle(
                     fontSize: 10,
                     fontFamily: 'monospace',
                     color: Color(0xFF94A3B8),
                   ),
-                ),
+                )),
               ],
             ),
           ],
@@ -3754,6 +3766,8 @@ class _MyPapersTabState extends State<_MyPapersTab> {
 
   static const _storage = FlutterSecureStorage();
   Set<int> _likedIds = <int>{};
+  Set<int> _downloadedIds = <int>{};
+  final Set<int> _downloadingIds = <int>{};
 
   // Filter state
   bool _filterLikedOnly = false;
@@ -3770,7 +3784,55 @@ class _MyPapersTabState extends State<_MyPapersTab> {
   void initState() {
     super.initState();
     _loadLiked();
+    _loadDownloaded();
     _load();
+  }
+
+  Future<void> _loadDownloaded() async {
+    final userId = widget.user?.id;
+    if (userId == null) return;
+    try {
+      final saved = await OfflinePaperStore.listDownloadedPapers(userId);
+      if (mounted)
+        setState(() => _downloadedIds = saved.map((q) => q.id).toSet());
+    } catch (_) {}
+  }
+
+  /// Saves any paper, including private tests, for offline practice. The
+  /// server only allows this for Pro members and for papers the user may open.
+  Future<void> _downloadPaper(MyPaperItem paper) async {
+    final userId = widget.user?.id;
+    if (userId == null || _downloadingIds.contains(paper.id)) return;
+    AppHaptics.light();
+    setState(() => _downloadingIds.add(paper.id));
+    final finish = AppActivity.begin('Saving your paper for offline use…');
+    try {
+      final client = widget.courseService.client;
+      final quiz = await QuizService(client: client).downloadQuiz(paper.id);
+      await OfflinePaperStore.cacheQuiz(userId, quiz);
+      unawaited(ProAccessGuard.refresh(client, userId));
+      if (mounted) {
+        setState(() => _downloadedIds.add(paper.id));
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Paper saved on this device for offline practice.'),
+          ),
+        );
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              e is ApiException ? e.message : 'Could not download this paper.',
+            ),
+          ),
+        );
+      }
+    } finally {
+      finish();
+      if (mounted) setState(() => _downloadingIds.remove(paper.id));
+    }
   }
 
   Future<void> _loadLiked() async {
@@ -5024,6 +5086,33 @@ class _MyPapersTabState extends State<_MyPapersTab> {
                         Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
+                            if (usable && !kIsWeb)
+                              GestureDetector(
+                                behavior: HitTestBehavior.opaque,
+                                onTap: () => _downloadPaper(paper),
+                                child: Padding(
+                                  padding: const EdgeInsets.only(right: 8),
+                                  child: _downloadingIds.contains(paper.id)
+                                      ? const SizedBox.square(
+                                          dimension: 20,
+                                          child: CircularProgressIndicator(
+                                            strokeWidth: 2,
+                                            color: Color(0xFF16A34A),
+                                          ),
+                                        )
+                                      : Icon(
+                                          _downloadedIds.contains(paper.id)
+                                              ? Icons.download_done_rounded
+                                              : Icons
+                                                    .download_for_offline_outlined,
+                                          size: 21,
+                                          color:
+                                              _downloadedIds.contains(paper.id)
+                                              ? const Color(0xFF16A34A)
+                                              : const Color(0xFF64748B),
+                                        ),
+                                ),
+                              ),
                             GestureDetector(
                               behavior: HitTestBehavior.opaque,
                               onTap: () => _toggleLike(paper.id),

@@ -2068,42 +2068,45 @@
     var weekMinInput = host.querySelector("#ql-spin-week-min"), weekMaxInput = host.querySelector("#ql-spin-week-max");
     var types = Array.from(host.querySelectorAll(".ql-spin-types-list input"));
     var currentAngle = 0, isSpinning = false, spinQuota = null;
-    var palette = ["#064e3b", "#0d7054", "#116149", "#158467", "#0c5a45", "#167454", "#14543d", "#0c8060", "#0c634f", "#1b755c"];
+    var GOLD = "#c9a961", GOLD_LIGHT = "#f1e1b6", GOLD_DEEP = "#8e7234";
     function drawWheel(angle) {
       if (!ctx) return;
       ctx.setTransform(2, 0, 0, 2, 0, 0);
       ctx.clearRect(0, 0, 340, 340);
-      var cx = 170, cy = 170, radius = 143;
-      var rim = ctx.createLinearGradient(35, 35, 300, 300);
-      rim.addColorStop(0, "#e0f4e9"); rim.addColorStop(.4, "#579d84"); rim.addColorStop(.65, "#ecfdf5"); rim.addColorStop(1, "#275e4a");
-      ctx.beginPath(); ctx.arc(cx, cy, 159, 0, Math.PI * 2); ctx.fillStyle = rim; ctx.fill();
-      ctx.beginPath(); ctx.arc(cx, cy, 154, 0, Math.PI * 2); ctx.fillStyle = "#082f27"; ctx.fill();
-      for (var tick = 0; tick < 72; tick++) {
-        var a = tick * Math.PI / 36, major = tick % 6 === 0;
-        ctx.beginPath(); ctx.moveTo(cx + Math.cos(a) * 152, cy + Math.sin(a) * 152);
-        ctx.lineTo(cx + Math.cos(a) * (major ? 145 : 149), cy + Math.sin(a) * (major ? 145 : 149));
-        ctx.strokeStyle = major ? "#d5eedf" : "#6a9e87"; ctx.lineWidth = major ? 1.5 : .7; ctx.stroke();
+      var cx = 170, cy = 170, radius = 138;
+      // Champagne metal rim
+      var rim = ctx.createLinearGradient(20, 20, 320, 320);
+      rim.addColorStop(0, GOLD_LIGHT); rim.addColorStop(.35, GOLD); rim.addColorStop(.6, GOLD_DEEP); rim.addColorStop(.85, GOLD); rim.addColorStop(1, GOLD_LIGHT);
+      ctx.beginPath(); ctx.arc(cx, cy, 160, 0, Math.PI * 2); ctx.fillStyle = rim; ctx.fill();
+      ctx.beginPath(); ctx.arc(cx, cy, 154, 0, Math.PI * 2); ctx.fillStyle = "#2b2670"; ctx.fill();
+      for (var bulb = 0; bulb < 30; bulb++) {
+        var ba = bulb * Math.PI / 15;
+        ctx.beginPath(); ctx.arc(cx + Math.cos(ba) * 148, cy + Math.sin(ba) * 148, bulb % 2 ? 1.4 : 2.2, 0, Math.PI * 2);
+        ctx.fillStyle = bulb % 2 ? "rgba(201,169,97,.7)" : GOLD_LIGHT; ctx.fill();
       }
       ctx.save(); ctx.translate(cx, cy); ctx.rotate(angle * Math.PI / 180);
+      var segColors = ["#312e81", "#4338ca"];
       for (var i = 0; i < 10; i++) {
-        var start = i * Math.PI / 5, gradient = ctx.createRadialGradient(0, 0, 20, 0, 0, radius);
-        gradient.addColorStop(0, "#062c23"); gradient.addColorStop(1, palette[i]);
+        var start = i * Math.PI / 5 - Math.PI / 2 - Math.PI / 10, base = segColors[i % 2];
+        var gradient = ctx.createRadialGradient(0, 0, 20, 0, 0, radius);
+        gradient.addColorStop(0, "#1b1850"); gradient.addColorStop(.7, base); gradient.addColorStop(1, i % 2 ? "#5b54dc" : "#423e9a");
         ctx.beginPath(); ctx.moveTo(0, 0); ctx.arc(0, 0, radius, start, start + Math.PI / 5); ctx.closePath(); ctx.fillStyle = gradient; ctx.fill();
-        ctx.strokeStyle = "rgba(156,227,187,.28)"; ctx.lineWidth = .8; ctx.stroke();
+        ctx.strokeStyle = "rgba(201,169,97,.55)"; ctx.lineWidth = .9; ctx.stroke();
         var dot = start + Math.PI / 10;
-        ctx.beginPath(); ctx.arc(Math.cos(dot) * 128, Math.sin(dot) * 128, 2.5, 0, Math.PI * 2); ctx.fillStyle = "#b9dec7"; ctx.fill();
-        ctx.save(); ctx.rotate(dot); ctx.translate(103, 0); ctx.rotate(Math.PI / 2);
-        ctx.fillStyle = "#dbefdf"; ctx.font = "600 13px system-ui, sans-serif"; ctx.textAlign = "center"; ctx.textBaseline = "middle";
+        ctx.beginPath(); ctx.arc(Math.cos(start) * (radius - 6), Math.sin(start) * (radius - 6), 2, 0, Math.PI * 2); ctx.fillStyle = GOLD_LIGHT; ctx.fill();
+        ctx.save(); ctx.rotate(dot); ctx.translate(98, 0); ctx.rotate(Math.PI / 2);
+        ctx.beginPath(); ctx.arc(0, 0, 13, 0, Math.PI * 2); ctx.fillStyle = "rgba(255,255,255,.1)"; ctx.fill();
+        ctx.strokeStyle = "rgba(201,169,97,.85)"; ctx.lineWidth = .9; ctx.stroke();
+        ctx.fillStyle = "#f8f4ea"; ctx.font = "700 12px system-ui, sans-serif"; ctx.textAlign = "center"; ctx.textBaseline = "middle";
         ctx.fillText(String(i + 1).padStart(2, "0"), 0, 0);
-        ctx.strokeStyle = "rgba(212,234,217,.45)"; ctx.lineWidth = 1;
-        ctx.strokeRect(-8, 14, 16, 19); ctx.beginPath(); ctx.moveTo(-4, 20); ctx.lineTo(4, 20); ctx.moveTo(-4, 25); ctx.lineTo(2, 25); ctx.stroke();
         ctx.restore();
       }
       ctx.restore();
+      ctx.beginPath(); ctx.arc(cx, cy, radius, 0, Math.PI * 2); ctx.strokeStyle = GOLD; ctx.lineWidth = 2; ctx.stroke();
+      ctx.beginPath(); ctx.arc(cx, cy, 58, 0, Math.PI * 2); ctx.strokeStyle = "rgba(201,169,97,.6)"; ctx.lineWidth = 1; ctx.stroke();
       var light = ctx.createLinearGradient(65, 65, 270, 270);
-      light.addColorStop(0, "rgba(255,255,255,.16)"); light.addColorStop(.5, "rgba(255,255,255,0)"); light.addColorStop(1, "rgba(0,0,0,.12)");
+      light.addColorStop(0, "rgba(255,255,255,.18)"); light.addColorStop(.5, "rgba(255,255,255,0)"); light.addColorStop(1, "rgba(0,0,0,.14)");
       ctx.beginPath(); ctx.arc(cx, cy, radius, 0, Math.PI * 2); ctx.fillStyle = light; ctx.fill();
-      ctx.beginPath(); ctx.arc(cx, cy, 58, 0, Math.PI * 2); ctx.strokeStyle = "rgba(154,213,182,.45)"; ctx.lineWidth = 1; ctx.stroke();
     }
     drawWheel(0);
     function updateSpinQuota(quota) {
@@ -4288,7 +4291,6 @@
     host.innerHTML =
       '<div class="ql-rewards-page">' +
         '<div class="ql-rewards-top-bar">' +
-          '<h1 class="ql-rewards-title">Spin &amp; Win</h1>' +
           '<div class="ql-rewards-corner-actions">' +
             '<button type="button" class="ql-corner-btn" id="ql-btn-open-prizes">' +
               '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24"/><path d="m14.83 9.17 4.24-4.24"/><path d="m14.83 14.83 4.24 4.24"/><path d="m9.17 14.83-4.24 4.24"/><circle cx="12" cy="12" r="3"/></svg>' +
@@ -4507,7 +4509,12 @@
         ctx.moveTo(cx, cy);
         ctx.arc(cx, cy, r, startAngle, endAngle);
         ctx.closePath();
-        ctx.fillStyle = p.color;
+        var sliceMid = startAngle + arc / 2;
+        var sliceGrad = ctx.createRadialGradient(cx, cy, r * 0.12, cx + Math.cos(sliceMid) * r * 0.4, cy + Math.sin(sliceMid) * r * 0.4, r);
+        sliceGrad.addColorStop(0, "rgba(0,0,0,.38)");
+        sliceGrad.addColorStop(0.35, p.color);
+        sliceGrad.addColorStop(1, p.color);
+        ctx.fillStyle = sliceGrad;
         ctx.fill();
 
         // Edge separator
@@ -4540,6 +4547,23 @@
         ctx.fillText(p.sub, r - 32, 20);
         ctx.restore();
       }
+
+      // Gold pearls on every slice edge and a soft glass reflection
+      for (var pe = 0; pe < numSlices; pe++) {
+        var pa = angle + pe * arc;
+        ctx.beginPath();
+        ctx.arc(cx + Math.cos(pa) * (r - 9), cy + Math.sin(pa) * (r - 9), 4, 0, Math.PI * 2);
+        ctx.fillStyle = "#fde68a";
+        ctx.fill();
+      }
+      var glass = ctx.createLinearGradient(cx - r, cy - r, cx + r, cy + r);
+      glass.addColorStop(0, "rgba(255,255,255,.2)");
+      glass.addColorStop(0.45, "rgba(255,255,255,0)");
+      glass.addColorStop(1, "rgba(0,0,0,.14)");
+      ctx.beginPath();
+      ctx.arc(cx, cy, r, 0, Math.PI * 2);
+      ctx.fillStyle = glass;
+      ctx.fill();
 
       // Center Hub
       ctx.save();
