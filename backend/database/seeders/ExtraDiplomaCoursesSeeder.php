@@ -13,6 +13,10 @@ class ExtraDiplomaCoursesSeeder extends Seeder
         $courses = [
             ['name' => 'Deep Learning', 'slug' => 'deep-learning', 'description' => 'Neural networks and deep learning'],
             ['name' => 'Tools in Data Science', 'slug' => 'tools-in-data-science', 'description' => 'Practical tools for data science work'],
+            ['name' => 'Deep Learning Practice', 'slug' => 'deep-learning-practice', 'description' => 'Hands-on deep learning'],
+            ['name' => 'Large Language Models', 'slug' => 'large-language-models', 'description' => 'Large language models and their applications'],
+            ['name' => 'Software Engineering', 'slug' => 'software-engineering', 'description' => 'Software design and engineering practice'],
+            ['name' => 'Software Testing', 'slug' => 'software-testing', 'description' => 'Testing methods and practice'],
         ];
 
         $order = (int) Course::query()->max('sort_order');

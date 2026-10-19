@@ -10,7 +10,7 @@ import() { # <course slug> <folder under bulk_quizzes>
 }
 
 EXTRA=("$@")
-# Diploma subjects without a course yet (Deep Learning, Tools in Data Science) are created first.
+# Diploma subjects without a course yet (Deep Learning, Tools in Data Science, DLP, LLM, Sw Engg, Sw Testing) are created first.
 [ "${EXTRA[0]}" = "--dry-run" ] || php artisan db:seed --class=ExtraDiplomaCoursesSeeder --force
 import computational-thinking "Computational Thinking" "${EXTRA[@]}"
 import mathematics-1 "Mathematics 1" "${EXTRA[@]}"
@@ -45,4 +45,8 @@ import statistics-2 "Diploma/Sem2 Statistics2" "${EXTRA[@]}"
 import python "Diploma/Python Programming" "${EXTRA[@]}"
 import deep-learning "Diploma/Deep Learning" "${EXTRA[@]}"
 import tools-in-data-science "Diploma/Tds" "${EXTRA[@]}"
+import deep-learning-practice "Diploma/Dlp" "${EXTRA[@]}"
+import large-language-models "Diploma/Llm" "${EXTRA[@]}"
+import software-engineering "Diploma/Sw Engg" "${EXTRA[@]}"
+import software-testing "Diploma/Sw Testing" "${EXTRA[@]}"
 echo "All done."
