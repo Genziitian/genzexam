@@ -97,4 +97,15 @@ main:has(#ql-web-profile-editor) #ql-web-more-actions>.ql-more-card>.ql-more-hea
 main:has(#ql-web-profile-editor) #ql-web-more-actions .ql-more-theme-options{width:100%}
 main:has(#ql-web-profile-editor) #ql-web-more-actions .ql-more-theme-options>*{flex:1;justify-content:center;text-align:center}
 }
+/* phone web: level card stacks, and one-button rows (Daily Rewards, Delete account, Sign out) keep title and button on one row */
+@media(max-width:640px){
+main:has(#ql-web-profile-editor) [data-ql-profile-page] .flex-wrap.justify-between.gap-6{flex-direction:column!important;align-items:stretch!important;gap:16px!important}
+main:has(#ql-web-profile-editor) [data-ql-profile-page] .flex-wrap.justify-between.gap-6>div{max-width:none!important;width:100%;min-width:0!important}
+main:has(#ql-web-profile-editor) [data-ql-profile-page] .flex.items-center.gap-3>*{flex:none;white-space:nowrap}
+main:has(#ql-web-profile-editor) #ql-web-more-actions .ql-more-row:has(>.ql-more-button){flex-direction:row!important;align-items:center!important;gap:10px!important}
+main:has(#ql-web-profile-editor) #ql-web-more-actions .ql-more-row:has(>.ql-more-button) .ql-more-row-copy{flex:1}
+main:has(#ql-web-profile-editor) #ql-web-more-actions .ql-more-row:has(>.ql-more-button) .ql-more-button{flex:none;padding:9px 14px!important;font-size:13px!important}
+main:has(#ql-web-profile-editor) #ql-web-more-actions .ql-more-rewards-title{font-size:14px!important}
+main:has(#ql-web-profile-editor) #ql-web-more-actions .ql-more-card>.ql-more-row:only-child{border-top:0!important;padding:0!important}
+}
 @media(prefers-reduced-motion:reduce){main:has(#ql-web-profile-editor) *{animation:none!important}}
