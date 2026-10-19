@@ -2533,7 +2533,7 @@
     a.className = "block"; a.href = "/ide.html?course=" + encodeURIComponent(slug) + "&problem=" + next;
     a.setAttribute("data-ql-paper", full ? "done" : "todo");
     var info = /^(.+?) \((.+?)\) Set (\d+)$/.exec(pp.name);
-    var title = info ? info[1] + " — " + info[2] + " Set " + info[3] : pp.name;
+    var title = info ? slug.charAt(0).toUpperCase() + slug.slice(1) + " — " + info[2] + " Set " + info[3] : pp.name;
     a.innerHTML = '<div class="group flex h-full flex-col rounded-xl border border-surface-border bg-white p-4 transition hover:-translate-y-0.5 hover:border-brand/40 hover:shadow-[0_8px_22px_-12px_rgba(0,0,0,0.12)]" data-ql-paper-card="' + (full ? "done" : "todo") + '">' +
       '<div class="mb-2 flex items-center justify-between"><span class="rounded-md bg-amber-50 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-amber-700"></span><span class="inline-flex items-center gap-1 rounded-md bg-emerald-50 px-1.5 py-0.5 text-[10px] font-semibold text-emerald-600" style="display:none"></span></div>' +
       '<p class="line-clamp-2 text-[14px] font-semibold leading-snug text-slate-900"></p>' +
