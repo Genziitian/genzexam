@@ -2573,6 +2573,1256 @@
   function exitIdeMode(tabs) {
     ideMode = null;
     tabs.removeAttribute("data-ql-ide-mode");
+    tabs.querySelectorAll("[data-ql-ide-tab]").forEach(function (x) { x.classList.remove("bg-brand", "text-white"); });
+    tabs.querySelectorAll("[data-ql-was-active]").forEach(function (x) { x.classList.add("bg-brand", "text-white"); x.removeAttribute("data-ql-was-active"); });
+    var panel = document.getElementById("ql-ide-panel"); if (panel) panel.remove();
+    document.querySelectorAll("[data-ql-ide-hide]").forEach(function (n) { n.removeAttribute("data-ql-ide-hide"); });
+  }
+  function addIdeTabs(tabs) {
+    var m = window.location.pathname.match(/^\/practice\/([^/]+)/i);
+    var runtime = window.QLStorefront;
+    if (!m || !runtime || !runtime.token()) return;
+    var slug = m[1];
+    if (ideTypesFor !== slug) {
+      ideTypesFor = slug; ideTypes = null; ideMode = null;
+      fetch(runtime.apiBase + "/courses/" + encodeURIComponent(slug) + "/ide-problems", { headers: { Accept: "application/json", Authorization: "Bearer " + runtime.token() } })
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (d) { if (d) { ideTypes = buildIdeTypes(d); schedule(); } })
+        .catch(function () {});
+      return;
+    }
+    if (!ideTypes) return;
+    if (!document.getElementById("ql-ide-style")) {
+      var st = document.createElement("style"); st.id = "ql-ide-style";
+      st.textContent = '[data-ql-ide-hide]{display:none!important}';
+      document.head.appendChild(st);
+    }
+    var last = document.activeElement;
+    var overlay = document.createElement("div");
+    overlay.className = "ql-pd-overlay";
+    var box = document.createElement("div");
+    box.className = "ql-pd";
+    box.setAttribute("role", "dialog");
+    box.setAttribute("aria-modal", "true");
+    function el(tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; }
+    function close() { document.removeEventListener("keydown", onKey); overlay.remove(); if (last && last.focus) last.focus(); }
+    function onKey(e) { if (e.key === "Escape") close(); }
+    var top = el("div", "ql-pd-top");
+    var heading = el("div");
+    heading.appendChild(el("h2", "", paper.title || "Paper"));
+    heading.appendChild(el("p", "ql-pd-sub", [(paper.course || {}).name, (paper.course || {}).level, paper.year].filter(Boolean).join(" · ")));
+    var x = el("button", "ql-pd-x", "×");
+    x.type = "button";
+    x.setAttribute("aria-label", "Close");
+    x.addEventListener("click", close);
+    top.append(heading, x);
+    box.appendChild(top);
+    box.appendChild(el("p", "ql-pd-desc", paper.description || "Practice this paper and review your progress from your student dashboard."));
+    var facts = el("dl", "ql-pd-facts");
+    var rows = [
+      ["Paper type", labels[paper.section] || paper.section || "Practice paper"],
+      ["Questions", paper.question_count != null ? paper.question_count : "See paper"],
+      ["Time limit", paper.time_limit_minutes ? paper.time_limit_minutes + " minutes" : "No time limit"],
+      ["Status", state],
+      ["Attempts", attempts],
+      ["Last score", attempts && paper.last_total_marks != null ? Number(paper.last_score || 0) + "/" + Number(paper.last_total_marks) : "—"]
+    ];
+    if (paper.expires_at && Number(paper.price_paise || 0) > 0) rows.push(["Access until", new Date(paper.expires_at).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" })]);
+    rows.forEach(function (r) { var d = el("div"); d.append(el("dt", "", r[0]), el("dd", "", String(r[1]))); facts.appendChild(d); });
+    box.appendChild(facts);
+    var actions = el("div", "ql-pd-actions");
+    var closeBtn = el("button", "", "Close");
+    closeBtn.type = "button";
+    closeBtn.addEventListener("click", close);
+    actions.appendChild(closeBtn);
+    if (usable) { var go = el("a", "go", paper.in_progress ? "Continue" : attempts ? "Attempt again" : "Start"); go.href = startHref; actions.appendChild(go); }
+    box.appendChild(actions);
+    overlay.appendChild(box);
+    overlay.addEventListener("click", function (e) { if (e.target === overlay) close(); });
+    document.addEventListener("keydown", onKey);
+    document.body.appendChild(overlay);
+    x.focus();
+  }
+
+  var uploadQuotaTimer = null, uploadSyncTimer = null, uploadListRequest = 0;
+  function fillUploadPaperPage() {
+    var onUpload = /^\/(upload-paper|upload)(\/|$)/i.test(window.location.pathname);
+    var host = document.getElementById("ql-upload-paper-page");
+    if (!onUpload) {
+      if (host) {
+        host.dataset.qlLoaded = "";
+        host.innerHTML = "";
+      }
+      var existingUpload = document.querySelector(".ql-upload-page-container");
+      if (existingUpload && (!host || !host.contains(existingUpload))) {
+        existingUpload.remove();
+      }
+      clearInterval(uploadQuotaTimer);
+      clearInterval(uploadSyncTimer);
+      return;
+    }
+
+    var staleRewards = document.getElementById("ql-rewards-page") || document.querySelector(".ql-rewards-page");
+    if (staleRewards && staleRewards !== host) staleRewards.remove();
+    var stalePractice = document.getElementById("ql-try-practice") || document.querySelector(".ql-spin-container");
+    if (stalePractice && stalePractice !== host) stalePractice.remove();
+
+    if (!host) {
+      var outlet = document.querySelector("#root main .page-enter, #root main");
+      if (outlet && !outlet.querySelector("#ql-upload-paper-page")) {
+        host = document.createElement("div");
+        host.id = "ql-upload-paper-page";
+        outlet.appendChild(host);
+      }
+    }
+    if (!host || host.dataset.qlLoaded) return;
+    var runtime = window.QLStorefront;
+    var tok = runtime && runtime.token ? runtime.token() : (localStorage.getItem("lab_token") || "");
+    if (!tok) return;
+    host.dataset.qlLoaded = "1";
+    document.title = "Upload a paper · Quiz LAB";
+
+    var container = document.createElement("div");
+    container.className = "ql-upload-page-container";
+    container.innerHTML =
+      '<div class="ql-up-head">' +
+        '<div class="ql-up-title-row">' +
+          '<a href="/dashboard" class="ql-up-back-btn" aria-label="Go back">' +
+            '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>' +
+            '<span>Back</span>' +
+          '</a>' +
+          '<div class="ql-up-title-wrap">' +
+            '<h1 class="ql-up-title">Upload a paper.</h1>' +
+          '</div>' +
+          '<span class="ql-up-pro-badge">PRO</span>' +
+        '</div>' +
+        '<p class="ql-up-subtitle">Upload a study PDF or structured JSON to convert it into a full practice test in your account.</p>' +
+      '</div>' +
+
+      '<section class="ql-up-card ql-up-steps-card">' +
+        '<div class="ql-up-card-header">' +
+          '<h2 class="ql-up-card-title">How it works</h2>' +
+        '</div>' +
+        '<div class="ql-up-steps">' +
+          '<div class="ql-up-step">' +
+            '<div class="ql-up-step-icon" style="background:#eef2ff;color:#4338ca">📄</div>' +
+            '<div class="ql-up-step-info">' +
+              '<strong>Upload</strong>' +
+              '<span>Choose a PDF or JSON</span>' +
+            '</div>' +
+          '</div>' +
+          '<div class="ql-up-step-arrow">→</div>' +
+          '<div class="ql-up-step">' +
+            '<div class="ql-up-step-icon" style="background:#fffbeb;color:#d97706">✦</div>' +
+            '<div class="ql-up-step-info">' +
+              '<strong>Convert</strong>' +
+            '</div>' +
+          '</div>' +
+          '<div class="ql-up-step-arrow">→</div>' +
+          '<div class="ql-up-step">' +
+            '<div class="ql-up-step-icon" style="background:#ecfdf5;color:#059669">▶</div>' +
+            '<div class="ql-up-step-info">' +
+              '<strong>Take test</strong>' +
+              '<span>Practice anytime in My Papers</span>' +
+            '</div>' +
+          '</div>' +
+        '</div>' +
+      '</section>' +
+
+      '<section class="ql-up-card ql-up-quota-card">' +
+        '<div class="ql-up-quota-row">' +
+          '<div class="ql-up-quota-info">' +
+            '<span class="ql-up-quota-headline" aria-live="polite">Checking your uploads…</span>' +
+            '<span class="ql-up-quota-sub"></span>' +
+          '</div>' +
+          '<button type="button" class="ql-upload-new ql-up-quota-btn" style="display:none">Use free upload</button>' +
+        '</div>' +
+        '<div class="ql-up-pro-banner" style="display:none">' +
+          '<div class="ql-up-pro-banner-left">' +
+            '<span class="ql-up-pro-crown">👑</span>' +
+            '<div class="ql-up-pro-banner-text">' +
+              '<strong>5 uploads every 7 days with Pro</strong>' +
+              '<small>Pro members get 5 rolling slots and priority AI conversion</small>' +
+            '</div>' +
+          '</div>' +
+          '<button type="button" class="ql-up-pro-btn">Get Pro</button>' +
+        '</div>' +
+      '</section>' +
+
+      '<form class="ql-up-card ql-up-form-card ql-upload-form" style="display:none">' +
+        '<div class="ql-up-card-header">' +
+          '<h2 class="ql-up-card-title">Upload your file</h2>' +
+          '<button type="button" class="ql-upload-hide ql-up-ghost-btn">Close upload</button>' +
+        '</div>' +
+        '<label class="ql-up-dropzone ql-upload-drop">' +
+          '<div class="ql-up-dropzone-icon">' +
+            '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>' +
+          '</div>' +
+          '<strong>Choose a PDF or JSON</strong>' +
+          '<small>Up to 10 MB · PDF up to 30 pages</small>' +
+          '<input class="ql-upload-file" type="file" name="paper" accept=".pdf,.json,application/pdf,application/json" required>' +
+        '</label>' +
+        '<div class="ql-up-chip ql-upload-chip"></div>' +
+        '<button class="ql-upload-pick ql-up-submit-btn" type="submit" disabled>Create my test</button>' +
+        '<p class="ql-upload-state ql-up-state" aria-live="polite"></p>' +
+      '</form>' +
+
+      '<section class="ql-up-card ql-up-papers-card">' +
+        '<div class="ql-up-card-header">' +
+          '<h2 class="ql-up-card-title">Your papers</h2>' +
+        '</div>' +
+        '<div class="ql-upload-list ql-up-papers-list">' +
+          '<p class="ql-upload-state ql-up-state">Loading…</p>' +
+        '</div>' +
+      '</section>' +
+
+      '<section class="ql-up-card ql-up-rules-card ql-up-rules">' +
+        '<details class="ql-upload-rules">' +
+          '<summary>' +
+            '<span>Upload rules</span>' +
+            '<span class="ql-up-rules-toggle">See all</span>' +
+          '</summary>' +
+          '<div class="ql-up-rules-content ql-upload-note">' +
+            '<div class="ql-up-rule-item">' +
+              '<strong>Allowance rules</strong>' +
+              '<p>Free: 1 successful upload every 7 days. Pro: 5 in the same rolling window. Each slot returns 7 days after use. Failed conversions do not use a slot.</p>' +
+            '</div>' +
+            '<div class="ql-up-rule-item">' +
+              '<strong>Format & size</strong>' +
+              '<p>PDF or JSON, up to 10 MB. PDFs support up to 30 pages of selectable text; scanned PDFs are not supported.</p>' +
+            '</div>' +
+            '<div class="ql-up-rule-item">' +
+              '<strong>DeepSeek AI processing</strong>' +
+              '<p>PDF text is sent to DeepSeek AI to structure questions. The temporary file is deleted after processing. JSON is processed without AI. Review questions because AI can make mistakes.</p>' +
+            '</div>' +
+            '<div class="ql-up-rule-item">' +
+              '<strong>Availability</strong>' +
+              '<p>Your tests appear in My Papers. Our team may review uploads and add suitable papers to the public library.</p>' +
+            '</div>' +
+          '</div>' +
+        '</details>' +
+      '</section>';
+
+    host.replaceChildren(container);
+
+    var quotaHeadline = container.querySelector(".ql-up-quota-headline");
+    var quotaSub = container.querySelector(".ql-up-quota-sub");
+    var newUpload = container.querySelector(".ql-upload-new");
+    var proBanner = container.querySelector(".ql-up-pro-banner");
+    var proBtn = container.querySelector(".ql-up-pro-btn");
+    var uploadForm = container.querySelector(".ql-upload-form");
+    var hideForm = container.querySelector(".ql-upload-hide");
+    var drop = container.querySelector(".ql-upload-drop");
+    var fileInput = container.querySelector(".ql-upload-file");
+    var chip = container.querySelector(".ql-upload-chip");
+    var button = container.querySelector(".ql-upload-pick");
+    var state = container.querySelector(".ql-up-form-card .ql-upload-state");
+    var list = container.querySelector(".ql-upload-list");
+    var rules = container.querySelector(".ql-upload-rules");
+    var backBtn = container.querySelector(".ql-up-back-btn");
+
+    var allowed = false, uploading = false, lastQuota = null;
+
+    if (backBtn) {
+      backBtn.addEventListener("click", function (e) {
+        if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+        e.preventDefault();
+        if (window.history.length > 1) {
+          window.history.back();
+        } else {
+          window.location.assign("/dashboard");
+        }
+      });
+    }
+
+    rules.addEventListener("toggle", function () {
+      var toggle = rules.querySelector(".ql-up-rules-toggle");
+      if (toggle) toggle.textContent = rules.open ? "See less" : "See all";
+    });
+
+    newUpload.addEventListener("click", function () {
+      uploadForm.style.display = "flex";
+      fileInput.focus();
+      uploadForm.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    });
+
+    hideForm.addEventListener("click", function () {
+      uploadForm.style.display = "none";
+    });
+
+    proBtn.addEventListener("click", function () {
+      if (typeof window.openProPaywall === "function") window.openProPaywall();
+      else window.location.assign("/pro");
+    });
+
+    function authHeaders() {
+      return { Accept: "application/json", Authorization: "Bearer " + runtime.token(), "X-QuizLab-Client": "web" };
+    }
+
+    function inTime(iso) {
+      var seconds = Math.max(0, Math.ceil((new Date(iso).getTime() - Date.now()) / 1000));
+      if (!seconds) return "now — refresh to check availability";
+      return "in " + Math.floor(seconds / 86400) + "d " + Math.floor(seconds / 3600) % 24 + "h " + Math.floor(seconds / 60) % 60 + "m " + seconds % 60 + "s";
+    }
+
+    function renderQuota(q) {
+      lastQuota = q;
+      clearInterval(uploadQuotaTimer);
+      if (!q) {
+        allowed = false;
+        newUpload.style.display = "none";
+        newUpload.disabled = true;
+        quotaHeadline.textContent = "Upload allowance unavailable";
+        quotaSub.textContent = "Please refresh to retry.";
+        quotaSub.style.display = "";
+        proBanner.style.display = "none";
+        syncButton();
+        return;
+      }
+      allowed = q.remaining > 0;
+      quotaHeadline.textContent = allowed
+        ? (q.is_pro ? q.remaining + " of " + q.limit + " uploads available" : q.remaining + " free upload available")
+        : "Upload allowance used";
+
+      if (!allowed && q.resets_at) {
+        quotaSub.style.display = "";
+        var refreshed = false;
+        function tick() {
+          quotaSub.textContent = "Next " + (q.is_pro ? "upload " : "free upload ") + inTime(q.resets_at);
+          if (new Date(q.resets_at).getTime() <= Date.now() && !refreshed) {
+            refreshed = true;
+            clearInterval(uploadQuotaTimer);
+            refreshUploads();
+          }
+        }
+        tick();
+        if (!refreshed) uploadQuotaTimer = setInterval(tick, 1000);
+      } else {
+        quotaSub.textContent = q.is_pro ? "Resets every 7 days (rolling window)" : "";
+        quotaSub.style.display = q.is_pro ? "" : "none";
+      }
+
+      newUpload.style.display = allowed ? "inline-flex" : "none";
+      newUpload.disabled = !allowed || uploading;
+      newUpload.textContent = q.is_pro ? "＋ Upload paper" : "Claim " + q.remaining + " free upload" + (q.remaining === 1 ? "" : "s");
+
+      if (!q.is_pro) {
+        proBanner.style.display = "flex";
+      } else {
+        proBanner.style.display = "none";
+      }
+
+      if (!allowed && !uploading) uploadForm.style.display = "none";
+      drop.classList.toggle("disabled", !allowed);
+      syncButton();
+    }
+
+    function syncButton() {
+      button.disabled = uploading || !allowed || !fileInput.files.length;
+    }
+
+    function setFile(file) {
+      chip.classList.toggle("on", !!file);
+      chip.textContent = file ? "📎 " + file.name + " · " + Math.max(1, Math.round(file.size / 1024)) + " KB" : "";
+      syncButton();
+    }
+
+    fileInput.addEventListener("change", function () {
+      setFile(fileInput.files[0]);
+    });
+
+    ["dragenter", "dragover"].forEach(function (name) {
+      drop.addEventListener(name, function (e) { e.preventDefault(); drop.classList.add("over"); });
+    });
+    ["dragleave", "drop"].forEach(function (name) {
+      drop.addEventListener(name, function (e) { e.preventDefault(); drop.classList.remove("over"); });
+    });
+    drop.addEventListener("drop", function (e) {
+      var f = e.dataTransfer && e.dataTransfer.files[0];
+      if (!f || !allowed) return;
+      try {
+        var dt = new DataTransfer();
+        dt.items.add(f);
+        fileInput.files = dt.files;
+        setFile(f);
+      } catch (_) {}
+    });
+
+    function refreshUploads() {
+      if (!host.isConnected || uploading) return;
+      var requestId = ++uploadListRequest;
+      fetch(runtime.apiBase + "/student/uploaded-papers", { headers: authHeaders() }).then(async function (response) {
+        var data = null;
+        try { data = await response.json(); } catch (_) {}
+        if (!response.ok) {
+          var msg = (data && (data.message || data.error)) || ("Could not load uploads (" + response.status + ")");
+          throw new Error(msg);
+        }
+        return data;
+      }).then(function (data) {
+        if (!host.isConnected || requestId !== uploadListRequest || uploading) return;
+        renderQuota(data.quota);
+        list.replaceChildren();
+        var papers = Array.isArray(data.papers) ? data.papers.slice().sort(function (a, b) { return Number(b.id) - Number(a.id); }) : [];
+        if (!papers.length) {
+          var empty = document.createElement("div");
+          empty.className = "ql-up-empty";
+          empty.textContent = allowed
+            ? "No papers yet. Use the upload button above to create a test."
+            : lastQuota ? "No papers to show. Your next upload countdown is shown above; existing tests remain available here."
+            : "Your upload allowance could not be loaded. Please refresh.";
+          list.appendChild(empty);
+          return;
+        }
+        papers.forEach(function (paper) {
+          var row = document.createElement("div");
+          row.className = "ql-up-paper-item";
+          var info = document.createElement("div");
+          info.className = "ql-up-paper-info";
+          var title = document.createElement("strong");
+          title.textContent = paper.title || "My paper";
+          var count = document.createElement("span");
+          count.textContent = (paper.question_count || 0) + " questions · Your private test";
+          info.append(title, count);
+          var link = document.createElement("a");
+          link.href = "/paper/" + encodeURIComponent(paper.id);
+          link.className = "ql-up-paper-start";
+          link.textContent = "Start";
+          row.append(info, link);
+          list.appendChild(row);
+        });
+      }).catch(function (error) {
+        if (!host.isConnected || requestId !== uploadListRequest || uploading) return;
+        list.replaceChildren();
+        var message = document.createElement("p");
+        message.className = "ql-up-state ql-up-state-err";
+        message.textContent = error.message;
+        list.appendChild(message);
+        quotaHeadline.textContent = "Uploads unavailable";
+        quotaSub.textContent = error.message;
+        allowed = false;
+        newUpload.disabled = true;
+        syncButton();
+      });
+    }
+
+    refreshUploads();
+    uploadSyncTimer = setInterval(function () {
+      if (host.isConnected && !document.hidden && !uploading) refreshUploads();
+    }, 30000);
+
+    var steps = ["Reading your paper…", "Finding the questions…", "Checking answers and options…", "Building your test…"];
+    uploadForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+      var file = fileInput.files[0];
+      if (!file || !allowed || uploading) return;
+      uploading = true;
+      uploadListRequest++;
+      newUpload.disabled = true;
+      var n = 0, ticker;
+      button.disabled = true;
+      button.classList.add("busy");
+      button.textContent = steps[0];
+      state.className = "ql-up-state";
+      state.textContent = "This can take a minute for a PDF.";
+      ticker = setInterval(function () {
+        n = Math.min(n + 1, steps.length - 1);
+        button.textContent = steps[n];
+      }, 6000);
+      var form = new FormData();
+      form.append("paper", file);
+      fetch(runtime.apiBase + "/student/uploaded-papers", { method: "POST", headers: authHeaders(), body: form }).then(function (response) {
+        return response.json().catch(function () { return {}; }).then(function (data) {
+          if (!response.ok) {
+            if (data.quota) renderQuota(data.quota);
+            throw new Error(data.error || data.message || "Could not create a test from this file.");
+          }
+          return data;
+        });
+      }).then(function (data) {
+        state.className = "ql-up-state ok";
+        state.textContent = "✅ " + (data.title || "Your paper") + " is ready with " + (data.question_count || 0) + " questions.";
+        fileInput.value = "";
+        setFile(null);
+        if (data.quota) renderQuota(data.quota);
+        uploading = false;
+        refreshUploads();
+        var myPapersHost = document.getElementById("ql-my-papers");
+        if (myPapersHost) {
+          myPapersHost.dataset.qlLoaded = "";
+          fillMyPapers();
+        }
+      }).catch(function (error) {
+        state.className = "ql-up-state err";
+        state.textContent = error.message;
+      }).finally(function () {
+        clearInterval(ticker);
+        uploading = false;
+        button.classList.remove("busy");
+        button.textContent = "Create my test";
+        newUpload.disabled = !allowed;
+        if (!allowed) uploadForm.style.display = "none";
+        syncButton();
+      });
+    });
+  }
+
+  function openUploadedPaperModal(runtime) {
+    if (!/^\/(upload-paper|upload)(\/|$)/i.test(window.location.pathname)) {
+      window.location.assign("/upload-paper");
+    }
+  }
+
+  function installUploadedPaperDialog(host, runtime) {
+    // Handled by fillUploadPaperPage on /upload-paper
+  }
+
+  document.addEventListener("click", function (e) {
+    var btn = e.target.closest && e.target.closest(".ql-upload-open");
+    if (!btn) return;
+    e.preventDefault();
+    openUploadedPaperModal(window.QLStorefront);
+  });
+
+  /* ---------------------------------------------------------------
+   * Test yourself: Spin wheel & custom practice paper builder.
+   * Lets any student customize course, week range, and paper types,
+   * spins the wheel, and builds a 10-question unified paper.
+   * ------------------------------------------------------------- */
+  function syncTryPracticeNav() {
+    var isTry = /^\/(try-practice|spin-practice)(\/|$)/i.test(window.location.pathname);
+    document.querySelectorAll("#root aside nav").forEach(function (nav) {
+      if (!nav.querySelector('a[href="/dashboard"]')) return;
+      var existing = nav.querySelector('a[href="/try-practice"]');
+      if (!existing) {
+        var anchor = nav.querySelector('a[href="/my-papers"]') || nav.querySelector('a[href="/practice"]');
+        if (!anchor) return;
+        existing = document.createElement("a");
+        existing.href = "/try-practice";
+        existing.dataset.qlInjected = "1";
+        existing.className = "mb-0.5 flex items-center gap-2.5 rounded-lg px-3 py-[7px] text-[13px] font-medium transition-all " +
+          (isTry ? "ql-nav-active" : "text-[#9ca3af] hover:bg-[#1c2533] hover:text-[#e5e7eb]");
+        existing.innerHTML = '<span class="flex h-5 w-5 items-center justify-center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/></svg></span><span>Test yourself</span>';
+        existing.addEventListener("click", function (e) {
+          if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+          e.preventDefault();
+          window.location.assign("/try-practice");
+        });
+        if (anchor.nextSibling) {
+          anchor.parentNode.insertBefore(existing, anchor.nextSibling);
+        } else {
+          anchor.parentNode.appendChild(existing);
+        }
+      } else if (existing.dataset.qlInjected) {
+        existing.className = "mb-0.5 flex items-center gap-2.5 rounded-lg px-3 py-[7px] text-[13px] font-medium transition-all " +
+          (isTry ? "ql-nav-active" : "text-[#9ca3af] hover:bg-[#1c2533] hover:text-[#e5e7eb]");
+      } else {
+        if (existing.classList.contains("text-slate-700")) {
+          existing.classList.remove("text-slate-700", "hover:bg-slate-100", "bg-brand", "text-white", "shadow-sm");
+          if (!existing.classList.contains("ql-nav-active")) {
+            existing.classList.add("text-[#9ca3af]", "hover:bg-[#1c2533]", "hover:text-[#e5e7eb]");
+          }
+        }
+        if (isTry) {
+          existing.classList.add("ql-nav-active");
+          existing.classList.remove("text-[#9ca3af]");
+        } else if (existing.classList.contains("ql-nav-active") && !/^\/try-practice(\/|$)/i.test(window.location.pathname)) {
+          existing.classList.remove("ql-nav-active");
+          existing.classList.add("text-[#9ca3af]");
+        }
+      }
+      if (!existing.querySelector('.ql-spin-pro-badge')) {
+        var badge = document.createElement('span');
+        badge.className = 'ql-spin-pro-badge';
+        badge.textContent = 'PRO';
+        badge.title = 'Pro: up to 7 spins daily. Free: 1 daily.';
+        existing.appendChild(badge);
+      }
+    });
+  }
+
+  function syncUploadPaperNav() {
+    var isUpload = /^\/(upload-paper|upload)(\/|$)/i.test(window.location.pathname);
+    document.querySelectorAll("#root aside nav").forEach(function (nav) {
+      if (!nav.querySelector('a[href="/dashboard"]')) return;
+      var oldButton = nav.querySelector("button.ql-sidebar-upload");
+      if (oldButton) oldButton.remove();
+
+      var existing = nav.querySelector('a[href="/upload-paper"]');
+      if (!existing) {
+        var anchor = nav.querySelector('a[href="/my-papers"]') || nav.querySelector('a[href="/practice"]');
+        if (!anchor) return;
+        var link = document.createElement("a");
+        link.href = "/upload-paper";
+        link.dataset.qlInjected = "1";
+        link.className = "ql-sidebar-upload mb-0.5 flex w-full items-center gap-2.5 rounded-lg px-3 py-[7px] text-[13px] font-medium transition-all " +
+          (isUpload ? "ql-nav-active" : "text-[#9ca3af] hover:bg-[#1c2533] hover:text-[#e5e7eb]");
+        link.innerHTML = '<span class="flex-shrink-0 opacity-75">' +
+          '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>' +
+          '</span>' +
+          '<span class="flex-1 text-left tracking-[-0.01em]">Upload a paper</span>' +
+          '<span class="ql-upload-tag">PRO</span>';
+        link.addEventListener("click", function (e) {
+          if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+          e.preventDefault();
+          window.location.assign("/upload-paper");
+        });
+        if (anchor.nextSibling) {
+          anchor.parentNode.insertBefore(link, anchor.nextSibling);
+        } else {
+          anchor.parentNode.appendChild(link);
+        }
+      } else {
+        if (isUpload) {
+          existing.classList.add("ql-nav-active");
+          existing.classList.remove("text-[#9ca3af]");
+        } else {
+          existing.classList.remove("ql-nav-active");
+          existing.classList.add("text-[#9ca3af]");
+        }
+      }
+    });
+  }
+
+  function fillTryPractice() {
+    var onTry = /^\/(try-practice|spin-practice)(\/|$)/i.test(window.location.pathname);
+    var bottomNav = document.querySelector("#root > div > div.fixed.bottom-0, #root div.fixed.inset-x-0.bottom-0");
+    var host = document.getElementById("ql-try-practice");
+    if (!onTry) {
+      if (document.body.classList.contains("ql-page-try-practice")) {
+        document.body.classList.remove("ql-page-try-practice");
+        if (bottomNav) bottomNav.style.removeProperty("display");
+      }
+      if (host) {
+        host.dataset.qlLoaded = "";
+        host.innerHTML = "";
+      }
+      var existingSpin = document.querySelector(".ql-spin-container");
+      if (existingSpin && (!host || !host.contains(existingSpin))) {
+        existingSpin.remove();
+      }
+      return;
+    }
+    document.body.classList.add("ql-page-try-practice");
+    if (bottomNav) bottomNav.style.setProperty("display", "none", "important");
+
+    var staleRewards = document.getElementById("ql-rewards-page") || document.querySelector(".ql-rewards-page");
+    if (staleRewards && staleRewards !== host) staleRewards.remove();
+    var staleUpload = document.getElementById("ql-upload-paper-page") || document.querySelector(".ql-upload-page-container");
+    if (staleUpload && staleUpload !== host) staleUpload.remove();
+
+    if (!host) {
+      var outlet = document.querySelector("#root main .page-enter, #root main");
+      if (outlet && !outlet.querySelector("#ql-try-practice")) {
+        host = document.createElement("div");
+        host.id = "ql-try-practice";
+        outlet.appendChild(host);
+      }
+    }
+    if (!host || host.dataset.qlLoaded) return;
+    var runtime = window.QLStorefront;
+    var tok = runtime && runtime.token ? runtime.token() : (localStorage.getItem("lab_token") || "");
+    if (!tok) return;
+    host.dataset.qlLoaded = "1";
+    document.title = "Test yourself · Quiz LAB";
+    host.innerHTML = [
+      '<section class="ql-spin-container">',
+        '<header class="ql-spin-head">',
+          '<div class="ql-spin-back-row">',
+            '<a href="/dashboard" class="ql-spin-back-btn ql-up-back-btn" id="ql-spin-back">',
+              '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>',
+              '<span>Back</span>',
+            '</a>',
+          '</div>',
+          '<div class="ql-spin-heading-row"><h1>Test yourself <span class="ql-spin-pro-badge" title="Pro: up to 7 spins daily. Free: 1 daily.">PRO</span></h1><button type="button" class="ql-spin-help-button" id="ql-spin-help" aria-haspopup="dialog">How it works</button></div><p>Generate 10 random question</p></header>',
+        '<div class="ql-spin-grid">',
+          '<div class="ql-spin-wheel-card">',
+            '<div class="ql-wheel-stage" aria-hidden="true"><canvas id="ql-spin-canvas" width="680" height="680"></canvas>',
+              '<span class="ql-wheel-flare ql-wheel-flare-one"></span><span class="ql-wheel-flare ql-wheel-flare-two"></span><span class="ql-wheel-flare ql-wheel-flare-three"></span><span class="ql-wheel-pointer"></span><span class="ql-wheel-hub"><img src="/android-chrome-192x192.png" alt=""></span>',
+            '</div>',
+            '<p class="ql-spin-outcome" id="ql-spin-outcome" role="status" aria-live="polite"></p>',
+          '</div>',
+          '<form class="ql-spin-custom-card" id="ql-spin-form">',
+            '<fieldset id="ql-spin-settings">',
+              '<div class="ql-spin-field"><label for="ql-spin-course">Course</label>',
+                '<select id="ql-spin-course" class="ql-spin-select" required disabled><option value="">Loading courses…</option></select>',
+                '<button class="ql-spin-retry" type="button" id="ql-spin-retry" hidden>Retry loading courses</button>',
+              '</div>',
+              '<div class="ql-spin-field"><label>Week range <output id="ql-week-range-text">01 — 12</output></label>',
+                '<div class="ql-spin-dual-range" id="ql-spin-range-track">',
+                  '<input type="range" id="ql-spin-week-min" min="1" max="12" value="1" step="1" aria-label="Start week">',
+                  '<input type="range" id="ql-spin-week-max" min="1" max="12" value="12" step="1" aria-label="End week">',
+                '</div><div class="ql-spin-slider-labels"><span>Week 1</span><span>Week 12</span></div>',
+              '</div>',
+              '<div class="ql-spin-field"><label for="ql-spin-type-toggle">Paper types</label>',
+                '<details class="ql-spin-types"><summary id="ql-spin-type-toggle"><span id="ql-spin-type-summary">All types</span><span aria-hidden="true">⌄</span></summary>',
+                  '<div class="ql-spin-types-list">',
+                    '<label><span>All types</span><input type="checkbox" value="all" checked></label>',
+                    '<label><span>PA</span><input type="checkbox" value="pa"></label>',
+                    '<label><span>GA</span><input type="checkbox" value="ga"></label>',
+                    '<label><span>Quiz 1</span><input type="checkbox" value="quiz1"></label>',
+                    '<label><span>Quiz 2</span><input type="checkbox" value="quiz2"></label>',
+                    '<label><span>End term</span><input type="checkbox" value="endterm"></label>',
+                    '<label><span>Mock</span><input type="checkbox" value="mock_test"></label>',
+                  '</div>',
+                '</details>',
+              '</div>',
+              '<div class="ql-spin-field"><label for="ql-spin-name">Paper name <span class="ql-spin-optional">Optional</span></label>',
+                '<input type="text" id="ql-spin-name" class="ql-spin-input" placeholder="My practice paper" maxlength="150">',
+              '</div>',
+            '</fieldset>',
+            '<div class="ql-spin-action-dock">',
+              '<button type="submit" class="ql-spin-main-btn" id="ql-spin-main-btn" disabled><span aria-hidden="true">↻</span> Spin the wheel</button>',
+            '</div>',
+          '</form>',
+        '</div>',
+      '</section>'
+    ].join("");
+    host.querySelector("#ql-spin-help").addEventListener("click", function () {
+      var dialog = document.createElement("dialog");
+      dialog.className = "ql-spin-help-dialog";
+      dialog.setAttribute("aria-labelledby", "ql-spin-help-title");
+      dialog.innerHTML = '<div class="ql-spin-help-content">' +
+        '<div class="ql-spin-help-top"><span><img src="/assets/quiz-lab-icon.png" alt="" width="32" height="32">Quiz LAB</span><button type="button" class="ql-spin-help-close" aria-label="Close explanation" autofocus><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div>' +
+        '<h2 id="ql-spin-help-title">How it works</h2><p>A fresh mix of questions from existing papers.</p>' +
+        '<ol><li><strong>Choose your course.</strong> Set the weeks you want to practise.</li><li><strong>Pick paper types.</strong> Select one, several, or all types. A paper name is optional.</li><li><strong>Spin the wheel.</strong> Get up to 10 random matching questions. The wheel animation does not change your filters.</li><li><strong>Open your paper.</strong> Choose your time limit and start. Find the paper again in My Papers.</li></ol>' +
+        '<p class="ql-spin-help-free">1 free spin daily, or up to 7 daily with Pro. Resets at midnight IST. Papers auto-delete after 30 days. No upload tokens used. Your papers are private and cannot be shared.</p>' +
+        '<button type="button" class="ql-spin-help-done">Got it</button></div>';
+      host.appendChild(dialog);
+      dialog.querySelector(".ql-spin-help-close").addEventListener("click", function () { dialog.close(); });
+      dialog.querySelector(".ql-spin-help-done").addEventListener("click", function () { dialog.close(); });
+      dialog.addEventListener("click", function (event) {
+        var bounds = dialog.getBoundingClientRect();
+        if (event.target === dialog && (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom)) dialog.close();
+      });
+      dialog.addEventListener("close", function () { dialog.remove(); });
+      dialog.showModal();
+    });
+    var backBtn = host.querySelector("#ql-spin-back");
+    if (backBtn) {
+      backBtn.addEventListener("click", function (e) {
+        if (isSpinning) return;
+        if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+        e.preventDefault();
+        if (window.history.length > 1) {
+          window.history.back();
+        } else {
+          window.location.assign("/dashboard");
+        }
+      });
+    }
+    var canvas = host.querySelector("#ql-spin-canvas"), ctx = canvas.getContext("2d");
+    var form = host.querySelector("#ql-spin-form"), settings = host.querySelector("#ql-spin-settings");
+    var mainBtn = host.querySelector("#ql-spin-main-btn"), outcome = host.querySelector("#ql-spin-outcome");
+    var courseSelect = host.querySelector("#ql-spin-course"), retry = host.querySelector("#ql-spin-retry");
+    var weekMinInput = host.querySelector("#ql-spin-week-min"), weekMaxInput = host.querySelector("#ql-spin-week-max");
+    var types = Array.from(host.querySelectorAll(".ql-spin-types-list input"));
+    var currentAngle = 0, isSpinning = false, spinQuota = null;
+    var GOLD = "#c9a961", GOLD_LIGHT = "#f1e1b6", GOLD_DEEP = "#8e7234";
+    function drawWheel(angle) {
+      if (!ctx) return;
+      ctx.setTransform(2, 0, 0, 2, 0, 0);
+      ctx.clearRect(0, 0, 340, 340);
+      var cx = 170, cy = 170, radius = 138;
+      // Champagne metal rim
+      var rim = ctx.createLinearGradient(20, 20, 320, 320);
+      rim.addColorStop(0, GOLD_LIGHT); rim.addColorStop(.35, GOLD); rim.addColorStop(.6, GOLD_DEEP); rim.addColorStop(.85, GOLD); rim.addColorStop(1, GOLD_LIGHT);
+      ctx.beginPath(); ctx.arc(cx, cy, 160, 0, Math.PI * 2); ctx.fillStyle = rim; ctx.fill();
+      ctx.beginPath(); ctx.arc(cx, cy, 154, 0, Math.PI * 2); ctx.fillStyle = "#2b2670"; ctx.fill();
+      for (var bulb = 0; bulb < 30; bulb++) {
+        var ba = bulb * Math.PI / 15;
+        ctx.beginPath(); ctx.arc(cx + Math.cos(ba) * 148, cy + Math.sin(ba) * 148, bulb % 2 ? 1.4 : 2.2, 0, Math.PI * 2);
+        ctx.fillStyle = bulb % 2 ? "rgba(201,169,97,.7)" : GOLD_LIGHT; ctx.fill();
+      }
+      ctx.save(); ctx.translate(cx, cy); ctx.rotate(angle * Math.PI / 180);
+      var segColors = ["#312e81", "#4338ca"];
+      for (var i = 0; i < 10; i++) {
+        var start = i * Math.PI / 5 - Math.PI / 2 - Math.PI / 10, base = segColors[i % 2];
+        var gradient = ctx.createRadialGradient(0, 0, 20, 0, 0, radius);
+        gradient.addColorStop(0, "#1b1850"); gradient.addColorStop(.7, base); gradient.addColorStop(1, i % 2 ? "#5b54dc" : "#423e9a");
+        ctx.beginPath(); ctx.moveTo(0, 0); ctx.arc(0, 0, radius, start, start + Math.PI / 5); ctx.closePath(); ctx.fillStyle = gradient; ctx.fill();
+        ctx.strokeStyle = "rgba(201,169,97,.55)"; ctx.lineWidth = .9; ctx.stroke();
+        var dot = start + Math.PI / 10;
+        ctx.beginPath(); ctx.arc(Math.cos(start) * (radius - 6), Math.sin(start) * (radius - 6), 2, 0, Math.PI * 2); ctx.fillStyle = GOLD_LIGHT; ctx.fill();
+        ctx.save(); ctx.rotate(dot); ctx.translate(98, 0); ctx.rotate(Math.PI / 2);
+        ctx.beginPath(); ctx.arc(0, 0, 13, 0, Math.PI * 2); ctx.fillStyle = "rgba(255,255,255,.1)"; ctx.fill();
+        ctx.strokeStyle = "rgba(201,169,97,.85)"; ctx.lineWidth = .9; ctx.stroke();
+        ctx.fillStyle = "#f8f4ea"; ctx.font = "700 12px system-ui, sans-serif"; ctx.textAlign = "center"; ctx.textBaseline = "middle";
+        ctx.fillText(String(i + 1).padStart(2, "0"), 0, 0);
+        ctx.restore();
+      }
+      ctx.restore();
+      ctx.beginPath(); ctx.arc(cx, cy, radius, 0, Math.PI * 2); ctx.strokeStyle = GOLD; ctx.lineWidth = 2; ctx.stroke();
+      ctx.beginPath(); ctx.arc(cx, cy, 58, 0, Math.PI * 2); ctx.strokeStyle = "rgba(201,169,97,.6)"; ctx.lineWidth = 1; ctx.stroke();
+      var light = ctx.createLinearGradient(65, 65, 270, 270);
+      light.addColorStop(0, "rgba(255,255,255,.18)"); light.addColorStop(.5, "rgba(255,255,255,0)"); light.addColorStop(1, "rgba(0,0,0,.14)");
+      ctx.beginPath(); ctx.arc(cx, cy, radius, 0, Math.PI * 2); ctx.fillStyle = light; ctx.fill();
+    }
+    drawWheel(0);
+    function updateSpinQuota(quota) {
+      if (!quota || typeof quota.remaining !== "number") return;
+      spinQuota = quota;
+      renderSpinButton();
+    }
+    function renderSpinButton() {
+      if (isSpinning) {
+        mainBtn.disabled = true;
+        mainBtn.classList.remove("ql-spin-upgrade-btn");
+        mainBtn.innerHTML = '<span aria-hidden="true">↻</span> Creating paper…';
+        return;
+      }
+      if (!spinQuota) {
+        mainBtn.disabled = courseSelect.disabled;
+        mainBtn.classList.remove("ql-spin-upgrade-btn");
+        mainBtn.innerHTML = '<span aria-hidden="true">↻</span> Spin the wheel';
+        return;
+      }
+      if (!spinQuota.is_pro) {
+        if (spinQuota.remaining > 0) {
+          mainBtn.type = "submit";
+          mainBtn.disabled = courseSelect.disabled;
+          mainBtn.classList.remove("ql-spin-upgrade-btn");
+          mainBtn.innerHTML = '<span aria-hidden="true">↻</span> Spin the wheel · 1 free spin left';
+        } else {
+          mainBtn.type = "button";
+          mainBtn.disabled = false;
+          mainBtn.classList.add("ql-spin-upgrade-btn");
+          mainBtn.innerHTML = '★ Unlock 7 spins/day with Pro';
+        }
+      } else {
+        mainBtn.type = "submit";
+        mainBtn.classList.remove("ql-spin-upgrade-btn");
+        if (spinQuota.remaining > 0) {
+          mainBtn.disabled = courseSelect.disabled;
+          mainBtn.innerHTML = '<span aria-hidden="true">↻</span> Spin the wheel · ' + spinQuota.remaining + '/' + spinQuota.limit + ' spins left';
+        } else {
+          mainBtn.disabled = true;
+          mainBtn.innerHTML = '0/' + spinQuota.limit + ' spins left today';
+        }
+      }
+    }
+    fetch(runtime.apiBase + "/student/spin-practice/quota", {headers: {Accept: "application/json", Authorization: "Bearer " + runtime.token()}})
+      .then(function (res) { if (!res.ok) throw Error("Quota unavailable"); return res.json(); })
+      .then(function (data) { if (host.isConnected && !spinQuota && !isSpinning) updateSpinQuota(data.quota); }).catch(function () {});
+    function loadCourses() {
+      retry.hidden = true; courseSelect.disabled = true; mainBtn.disabled = true;
+      courseSelect.innerHTML = '<option value="">Loading courses…</option>';
+      fetch(runtime.apiBase + "/courses", {headers: {Accept: "application/json", Authorization: "Bearer " + runtime.token()}})
+        .then(function (res) { if (!res.ok) throw Error("Could not load courses."); return res.json(); })
+        .then(function (courses) {
+          if (!host.isConnected) return;
+          var list = Array.isArray(courses) ? courses : [];
+          courseSelect.innerHTML = '<option value="">Choose a course</option>' + list.map(function (course) {
+            return '<option value="' + Number(course.id) + '">' + escapeHtml(course.name) + '</option>';
+          }).join("");
+          courseSelect.disabled = !list.length;
+          renderSpinButton();
+          if (!list.length) outcome.textContent = "No courses are available yet.";
+        }).catch(function () { outcome.textContent = "Could not load courses. Please try again."; retry.hidden = false; });
+    }
+    retry.addEventListener("click", loadCourses); loadCourses();
+    function updateWeekRange() {
+      var min = Number(weekMinInput.value), max = Number(weekMaxInput.value);
+      if (min > max) {
+        if (this === weekMinInput) weekMaxInput.value = max = min;
+        else weekMinInput.value = min = max;
+      }
+      host.querySelector("#ql-week-range-text").textContent = String(min).padStart(2, "0") + " — " + String(max).padStart(2, "0");
+      var track = host.querySelector("#ql-spin-range-track");
+      track.style.setProperty("--range-start", ((min - 1) / 11 * 100) + "%");
+      track.style.setProperty("--range-end", ((max - 1) / 11 * 100) + "%");
+      weekMinInput.style.zIndex = min === 12 ? 3 : 1; weekMaxInput.style.zIndex = 2;
+      weekMinInput.setAttribute("aria-valuetext", "Week " + min); weekMaxInput.setAttribute("aria-valuetext", "Week " + max);
+    }
+    weekMinInput.addEventListener("input", updateWeekRange); weekMaxInput.addEventListener("input", updateWeekRange); updateWeekRange();
+    types.forEach(function (checkbox) {
+      checkbox.addEventListener("change", function () {
+        if (checkbox.value === "all") { types.forEach(function (item) { item.checked = item.value === "all"; }); }
+        else {
+          types[0].checked = false;
+          if (!types.some(function (item) { return item.checked; })) types[0].checked = true;
+        }
+        host.querySelector("#ql-spin-type-summary").textContent = types.filter(function (item) { return item.checked; })
+          .map(function (item) { return item.closest("label").querySelector("span").textContent; }).join(", ");
+      });
+    });
+    document.addEventListener("click", function closeTypes(event) {
+      if (!host.isConnected) { document.removeEventListener("click", closeTypes); return; }
+      var details = host.querySelector(".ql-spin-types");
+      if (details && !details.contains(event.target)) details.open = false;
+    });
+    function animateSpin() {
+      var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      var finished = false, settling = false, finishAt = null, finishFrom = 0, finishTo = 0, last = performance.now(), started = last;
+      var resolveAnimation;
+      var completion = new Promise(function (resolve) { resolveAnimation = resolve; });
+      function frame(now) {
+        if (!host.isConnected) { document.documentElement.classList.remove("ql-spin-focus"); finished = true; resolveAnimation(); return; }
+        if (finishAt !== null && now >= finishAt) {
+          if (!settling) { settling = true; finishFrom = currentAngle; finishTo = currentAngle + 132; }
+          var progress = Math.min(1, Math.max(0, (now - finishAt) / 1100));
+          currentAngle = finishFrom + (finishTo - finishFrom) * (1 - Math.pow(1 - progress, 3));
+          drawWheel(currentAngle);
+          if (progress >= 1) { currentAngle %= 360; finished = true; resolveAnimation(); return; }
+        } else {
+          var elapsed = Math.min(64, Math.max(0, now - last));
+          var speed = 100 + 260 * Math.min(1, (now - started) / 800);
+          currentAngle = (currentAngle + elapsed * speed / 1000) % 360;
+          drawWheel(currentAngle);
+        }
+        last = now;
+        requestAnimationFrame(frame);
+      }
+      if (!reduced) requestAnimationFrame(frame);
+      return { finish: function () {
+        if (reduced || finished) return Promise.resolve();
+        if (finishAt === null) { finishAt = Math.max(performance.now(), started + 4000); }
+        return completion;
+      } };
+    }
+    function showPaperReady(paper, payload) {
+      var dialog = document.createElement("dialog");
+      dialog.className = "ql-spin-help-dialog ql-spin-paper-dialog";
+      dialog.setAttribute("aria-labelledby", "ql-spin-ready-title");
+      dialog.innerHTML = '<div class="ql-spin-help-content"><div class="ql-spin-help-top"><span><img src="/assets/quiz-lab-icon.png" alt="" width="32" height="32">Quiz LAB</span><button type="button" class="ql-spin-help-close" aria-label="Close paper details"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div>' +
+        '<p class="ql-spin-ready-eyebrow">Your paper is ready</p><h2 id="ql-spin-ready-title"></h2><dl class="ql-spin-ready-details"><div><dt>Course</dt><dd data-ready-course></dd></div><div><dt>Questions</dt><dd data-ready-count></dd></div><div><dt>Weeks</dt><dd data-ready-weeks></dd></div><div><dt>Paper types</dt><dd data-ready-types></dd></div><div data-ready-quota-row hidden><dt>Spins left today</dt><dd data-ready-quota></dd></div></dl>' +
+        '<p class="ql-spin-help-free">Private paper, saved in My Papers. Only you can open it. Choose your time when you start.</p><div class="ql-spin-ready-actions"><a class="ql-spin-main-btn" data-ready-try autofocus>Try now</a><button type="button" class="ql-spin-help-button" data-ready-again>Spin again</button></div></div>';
+      dialog.querySelector("#ql-spin-ready-title").textContent = paper.title || "Practice paper";
+      dialog.querySelector("[data-ready-course]").textContent = courseSelect.selectedOptions[0].textContent;
+      dialog.querySelector("[data-ready-count]").textContent = String(paper.question_count);
+      dialog.querySelector("[data-ready-weeks]").textContent = payload.week_min + "–" + payload.week_max;
+      dialog.querySelector("[data-ready-types]").textContent = host.querySelector("#ql-spin-type-summary").textContent;
+      if (spinQuota) { dialog.querySelector("[data-ready-quota-row]").hidden = false; dialog.querySelector("[data-ready-quota]").textContent = String(spinQuota.remaining); }
+      dialog.querySelector("[data-ready-again]").disabled = !!(spinQuota && spinQuota.remaining === 0);
+      dialog.querySelector("[data-ready-try]").href = "/paper/" + encodeURIComponent(paper.id);
+      dialog.querySelector(".ql-spin-help-close").addEventListener("click", function () { dialog.close(); });
+      dialog.querySelector("[data-ready-again]").addEventListener("click", function () { dialog.close(); form.requestSubmit(); });
+      dialog.addEventListener("click", function (event) {
+        var bounds = dialog.getBoundingClientRect();
+        if (event.target === dialog && (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom)) dialog.close();
+      });
+      dialog.addEventListener("close", function () { dialog.remove(); });
+      host.appendChild(dialog); dialog.showModal();
+    }
+    async function spinWheel(event) {
+      event.preventDefault();
+      if (isSpinning) return;
+      if (!courseSelect.value) { courseSelect.reportValidity(); return; }
+      var payload = {course_id: Number(courseSelect.value), week_min: Number(weekMinInput.value), week_max: Number(weekMaxInput.value),
+        paper_types: types.filter(function (item) { return item.checked; }).map(function (item) { return item.value; }), title: host.querySelector("#ql-spin-name").value.trim()};
+      isSpinning = true; settings.disabled = true; mainBtn.disabled = true; host.classList.add("ql-is-spinning");
+      document.documentElement.classList.add("ql-spin-focus");
+      form.inert = true; host.querySelector("#ql-spin-help").disabled = true;
+      if (backBtn) backBtn.style.pointerEvents = "none";
+      host.querySelector(".ql-spin-types").open = false;
+      mainBtn.textContent = "Creating paper…"; outcome.className = "ql-spin-outcome"; outcome.textContent = "Creating your practice paper…";
+      var controller = new AbortController(), timeout = setTimeout(function () { controller.abort(); }, 25000);
+      var animation = animateSpin();
+      try {
+        var request = fetch(runtime.apiBase + "/student/spin-practice", {method: "POST", signal: controller.signal,
+          headers: {Accept: "application/json", "Content-Type": "application/json", Authorization: "Bearer " + runtime.token()}, body: JSON.stringify(payload)})
+          .then(async function (res) { var paper = await res.json(); updateSpinQuota(paper.quota); if (!res.ok) throw Error(paper.message || paper.error || "Could not create your paper.");
+            if (!(Number(paper.id) > 0 && Number(paper.question_count) > 0)) throw Error("The server returned an incomplete paper. Check My Papers before trying again.");
+            return paper;
+          });
+        var paper = await request;
+        await animation.finish();
+        if (!host.isConnected) return;
+        host.classList.remove("ql-is-spinning");
+        document.documentElement.classList.remove("ql-spin-focus");
+        if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) await new Promise(function (resolve) { setTimeout(resolve, 650); });
+        if (!host.isConnected) return;
+        outcome.textContent = "Your paper is ready. Saved in My Papers.";
+        showPaperReady(paper, payload);
+      } catch (error) {
+        await animation.finish();
+        if (!host.isConnected) return;
+        outcome.className = "ql-spin-outcome error";
+        outcome.textContent = error.name === "AbortError" ? "The request timed out. Check My Papers before trying again." : (error.message || "Could not create your paper. Please try again.");
+      } finally {
+        clearTimeout(timeout); isSpinning = false; host.classList.remove("ql-is-spinning");
+        document.documentElement.classList.remove("ql-spin-focus"); form.inert = false;
+        host.querySelector("#ql-spin-help").disabled = false;
+        if (backBtn) backBtn.style.pointerEvents = "";
+        if (host.isConnected) { settings.disabled = false; renderSpinButton(); }
+      }
+    }
+    function openProUpgrade(event) {
+      if (event) { event.preventDefault(); event.stopPropagation(); }
+      if (typeof window.openProPaywall === "function") window.openProPaywall();
+      else window.location.assign("/pro");
+    }
+    mainBtn.addEventListener("click", function (event) {
+      if (mainBtn.classList.contains("ql-spin-upgrade-btn") || (spinQuota && !spinQuota.is_pro && spinQuota.remaining === 0)) {
+        openProUpgrade(event);
+      }
+    });
+    form.addEventListener("submit", function (event) {
+      if (mainBtn.classList.contains("ql-spin-upgrade-btn") || (spinQuota && !spinQuota.is_pro && spinQuota.remaining === 0)) {
+        openProUpgrade(event);
+        return;
+      }
+      spinWheel(event);
+    });
+  }
+
+  /* ---------------------------------------------------------------
+   * Practice: paid papers carry a lock and price until the student
+   * buys them, then a "Purchased" badge. Free papers are left alone.
+   * Prices come from the public catalogue, purchases from My Papers.
+   * ------------------------------------------------------------- */
+  var paperAccess = null;
+  var paperAccessAt = 0;
+  function loadPaperAccess() {
+    var runtime = window.QLStorefront;
+    if (!runtime || !runtime.token()) return;
+    // One request at a time, and at most one a minute, whether it worked or not.
+    if (paperAccess === "loading" || (paperAccessAt && Date.now() - paperAccessAt < 60000)) return;
+    var previous = paperAccess;
+    paperAccess = "loading";
+    var headers = { Accept: "application/json", Authorization: "Bearer " + runtime.token() };
+    var json = function (response) { return response.ok ? response.json() : { papers: [] }; };
+    Promise.all([
+      fetch(runtime.apiBase + "/storefront/papers", { headers: { Accept: "application/json" } }).then(json),
+      fetch(runtime.apiBase + "/storefront/my-papers", { headers: headers }).then(json)
+    ]).then(function (results) {
+      var map = {};
+      (results[0].papers || []).forEach(function (paper) {
+        if (Number(paper.price_paise || 0) > 0) map[paper.id] = { price: Number(paper.price_paise), owned: false };
+      });
+      (results[1].papers || []).forEach(function (paper) {
+        if (map[paper.id] && paper.has_access !== false && !paper.expired) map[paper.id].owned = true;
+      });
+      paperAccess = map;
+      paperAccessAt = Date.now();
+      schedule();
+    }).catch(function () {
+      paperAccess = previous;
+      paperAccessAt = Date.now();
+    });
+  }
+
+  function decoratePracticeCards() {
+    if (!/^\/practice\//i.test(window.location.pathname)) return;
+    // Managers and admins open paid papers without buying, so a lock would mislead.
+    if (storedRole() && storedRole() !== "student") return;
+    var links = document.querySelectorAll('#root a[href^="/quiz/"]');
+    if (!links.length) return;
+    loadPaperAccess();
+    if (!paperAccess || paperAccess === "loading") return;
+    links.forEach(function (link) {
+      var m = /^\/quiz\/(\d+)\/?$/.exec(link.getAttribute("href") || "");
+      var info = m && paperAccess[m[1]];
+      var row = link.querySelector(":scope > div > div");
+      if (!row) return;
+      var want = info ? (info.owned ? "owned" : "locked") : "";
+      var chip = row.querySelector(".ql-paid-chip");
+      if (!want) { if (chip) chip.remove(); if (link.hasAttribute("data-ql-paid")) link.removeAttribute("data-ql-paid"); return; }
+      var text = info.owned ? "Purchased \u2713" : "\uD83D\uDD12 \u20B9" + String(info.price / 100).replace(/\.0+$/, "");
+      if (!chip) {
+        chip = document.createElement("span");
+        chip.className = "ql-paid-chip";
+        row.appendChild(chip);
+      }
+      if (chip.textContent !== text) chip.textContent = text;
+      tag(chip, "data-state", want);
+      tag(link, "data-ql-paid", want);
+    });
+  }
+
+  /* ---------------------------------------------------------------
+   * Manager sidebar: the console is reachable at both /admin/... and
+   * /manager/..., but the sidebar links point at /manager/..., so on
+   * an /admin address the app highlights nothing. Mark the matching
+   * link as current.
+   * ------------------------------------------------------------- */
+  function syncConsoleNav() {
+    var links = document.querySelectorAll("#root aside nav a[href]");
+    var path = window.location.pathname.replace(/\/+$/, "") || "/";
+    var best = null;
+    if (/^\/admin(\/|$)/.test(path) && !document.querySelector("#root aside nav a.ql-nav-active")) {
+      var target = path.replace(/^\/admin/, "/manager");
+      links.forEach(function (link) {
+        var href = (link.getAttribute("href") || "").replace(/\/+$/, "");
+        if (!/^\/manager(\/|$)/.test(href)) return;
+        var match = href === "/manager" ? target === "/manager" : target === href || target.indexOf(href + "/") === 0;
+        if (match && (!best || href.length > best.getAttribute("href").length)) best = link;
+      });
+    }
+    links.forEach(function (link) {
+      if (link.classList.contains("ql-nav-current") !== (link === best)) link.classList.toggle("ql-nav-current", link === best);
+    });
+  }
+
+  /* ---------------------------------------------------------------
+   * Manager console: a back link on the single-quiz page, which has
+   * no way back to the quiz list of its own.
+   * ------------------------------------------------------------- */
+  function syncQuizBackLink() {
+    var existing = document.getElementById("ql-quiz-back");
+    var page = /^\/(admin|manager)\/quizzes\/\d+\/?$/i.exec(window.location.pathname);
+    var host = document.querySelector("#root main");
+    if (!page || !host) {
+      if (existing) existing.remove();
+      return;
+    }
+    var listPath = "/" + page[1].toLowerCase() + "/quizzes";
+    if (existing) {
+      if (existing.getAttribute("href") !== listPath) existing.setAttribute("href", listPath);
+      if (host.firstChild !== existing) host.insertBefore(existing, host.firstChild);
+      return;
+    }
+    var link = document.createElement("a");
+    link.id = "ql-quiz-back";
+    link.className = "ql-console-back";
+    link.href = listPath;
+    link.textContent = "← All quizzes";
+    link.addEventListener("click", function (event) {
+      if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      // Use the sidebar's own link so the app switches page without a reload.
+      var nav = null;
+      document.querySelectorAll("#root aside nav a[href]").forEach(function (item) {
+        if (!nav && /\/quizzes\/?$/.test(item.getAttribute("href"))) nav = item;
+      });
+      if (nav) { event.preventDefault(); nav.click(); }
+    });
+    host.insertBefore(link, host.firstChild);
+  }
+
+  /* ---------------------------------------------------------------
+   * Student sidebar: a link back to the public home page, placed just
+   * above the account block at the bottom.
+   * ------------------------------------------------------------- */
+  function syncHomeLink() {
+    document.querySelectorAll("#root aside").forEach(function (aside) {
+      if (!aside.querySelector('nav a[href="/dashboard"]')) return;
+      var existing = aside.querySelector(":scope > .ql-home-link");
+      var footer = null;
+      Array.prototype.forEach.call(aside.children, function (child) {
+        if (child.tagName === "DIV" && /\bborder-t\b/.test(child.className)) footer = child;
+      });
+      if (!footer) return;
+      if (existing) {
+        if (existing.nextElementSibling !== footer) aside.insertBefore(existing, footer);
+        return;
+      }
+      var link = document.createElement("a");
+      link.className = "ql-home-link";
+      link.href = "/";
+      link.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M10 21v-6h4v6"/></svg><span>Home page</span>';
+      aside.insertBefore(link, footer);
+    });
+  }
+
+  /* ---------------------------------------------------------------
+   * Practice course page: tag the header and the paper-type tabs so
+   * storefront-dashboard.css can lay them out as tiles.
+   * ------------------------------------------------------------- */
+  function decorateCoursePage() {
+    if (!/^\/practice\/[^/]+(\/papers)?\/?$/i.test(window.location.pathname)) return;
+    var first = null;
+    document.querySelectorAll("#root main button").forEach(function (button) {
+      if (!first && /^Practice Assignment/i.test(button.textContent.trim())) first = button;
+    });
+    var tabs = first && first.parentElement;
+    if (!tabs || tabs.querySelectorAll("button").length < 6) return;
+    tag(tabs, "data-ql-course-tabs", "");
+    if (tabs.parentElement) tag(tabs.parentElement, "data-ql-course-tabrow", "");
+    tabs.querySelectorAll("button").forEach(function (button) {
+      var count = button.lastElementChild ? button.lastElementChild.textContent.trim() : "";
+      tag(button, "data-empty", /\/0$/.test(count) ? "true" : "false");
+    });
+    // Paper types with no papers are hidden; if the open one is empty, open the first that has papers.
+    var filled = tabs.querySelectorAll('button[data-empty="false"]');
+    tag(tabs, "data-all-empty", filled.length ? "false" : "true");
+    var active = tabs.querySelector("button.bg-brand");
+    var key = window.location.pathname;
+    if (filled.length && active && active.getAttribute("data-empty") === "true" && tabs.getAttribute("data-ql-autopick") !== key) {
+      tabs.setAttribute("data-ql-autopick", key);
+      filled[0].click();
+    }
+    var heading = document.querySelector("#root main h1");
+    var card = heading && heading.closest(".rounded-2xl");
+    if (card) tag(card, "data-ql-course-head", "");
+    addIdeTabs(tabs);
+  }
+
+  /* Coding papers (GrPA, OPPE 1, OPPE 2 ...) come from the IDE API. They get their own tabs after End Term
+   * and, when opened, show paper cards on this page in the same style as the quiz cards. Start opens the IDE. */
+  var ideTypes = null, ideTypesFor = "", ideMode = null;
+  var IDE_DEFS = [["GrPA", /^GrPA/i, "GrPA"], ["OPPE 1", /^OPPE ?1\b/i, "OPPE 1"], ["OPPE 2", /^OPPE ?2\b/i, "OPPE 2"], ["Quiz 1", /^Quiz ?1\b/i, "Quiz 1 Coding"], ["End Term", /^End ?Term/i, "End Term Coding"]];
+  function ideSolved() { try { return JSON.parse(localStorage.getItem("ide.solved") || "[]"); } catch (_) { return []; } }
+  function ideStats(t) {
+    var solved = ideSolved(), done = 0;
+    t.papers.forEach(function (pp) {
+      pp.done = pp.ids.filter(function (id) { return solved.indexOf(id) >= 0; }).length;
+      if (pp.done === pp.ids.length) done++;
+    });
+    return done;
+  }
+  function buildIdeTypes(d) {
+    var out = IDE_DEFS.map(function (t) { return { type: t[0], label: t[2], papers: [], byName: {} }; });
+    (d.weeks || []).forEach(function (w) { (w.problems || []).forEach(function (p) {
+      IDE_DEFS.forEach(function (t, i) {
+        if (!t[1].test(p.title)) return;
+        var m = /^(.*?) · P\d+: /.exec(p.title), name = m ? m[1] : p.title.replace(/ - .*$/, "") + (p.week_number ? " · Week " + p.week_number : "");
+        var o = out[i];
+        if (!o.byName[name]) { o.byName[name] = { name: name, ids: [] }; o.papers.push(o.byName[name]); }
+        o.byName[name].ids.push(p.id);
+      });
+    }); });
+    return out.filter(function (t) { return t.papers.length > 0; });
+  }
+  function ideCard(slug, t, pp) {
+    var total = pp.ids.length, full = pp.done === total;
+    var solved = ideSolved();
+    var next = pp.ids.filter(function (id) { return solved.indexOf(id) < 0; })[0] || pp.ids[0];
+    var a = document.createElement("a");
+    a.className = "block"; a.href = "/ide.html?course=" + encodeURIComponent(slug) + "&problem=" + next;
+    a.setAttribute("data-ql-paper", full ? "done" : "todo");
+    var info = /^(.+?) \((.+?)\) Set (\d+)$/.exec(pp.name);
+    var title = info ? slug.charAt(0).toUpperCase() + slug.slice(1) + " — " + info[2] + " Set " + info[3] : pp.name;
+    a.innerHTML = '<div class="group flex h-full flex-col rounded-xl border border-surface-border bg-white p-4 transition hover:-translate-y-0.5 hover:border-brand/40 hover:shadow-[0_8px_22px_-12px_rgba(0,0,0,0.12)]" data-ql-paper-card="' + (full ? "done" : "todo") + '">' +
+      '<div class="mb-2 flex items-center justify-between"><span class="rounded-md bg-amber-50 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-amber-700"></span><span class="inline-flex items-center gap-1 rounded-md bg-emerald-50 px-1.5 py-0.5 text-[10px] font-semibold text-emerald-600" style="display:none"></span></div>' +
+      '<p class="line-clamp-2 text-[14px] font-semibold leading-snug text-slate-900"></p>' +
+      '<div class="mt-auto pt-3"><div class="mb-2.5 flex flex-wrap items-center gap-1.5 text-[11px] text-slate-500"><span class="font-medium text-slate-600"></span><span class="text-slate-300">·</span><span>Coding</span></div>' +
+      '<div class="flex items-center justify-between text-[12px] font-semibold text-brand group-hover:text-brand-light" data-ql-paper-go><span></span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition group-hover:translate-x-0.5"><path d="M5 12h14M13 5l7 7-7 7"></path></svg></div></div></div>';
+    var q = function (sel) { return a.querySelector(sel); };
+    q("span.bg-amber-50").textContent = t.type;
+    var badge = q("span.bg-emerald-50"); if (pp.done) { badge.style.display = ""; badge.textContent = "✓ " + pp.done + "/" + total; }
+    q("p").textContent = title;
+    q(".font-medium.text-slate-600").textContent = total + " Q";
+    q("[data-ql-paper-go] span").textContent = full ? "Review" : pp.done ? "Continue" : "Start";
+    return a;
+  }
+  function renderIdePanel(slug, row, t) {
+    var panel = document.getElementById("ql-ide-panel");
+    if (!panel) { panel = document.createElement("div"); panel.id = "ql-ide-panel"; panel.className = "space-y-6"; }
+    var anchor = row.nextElementSibling && row.nextElementSibling.classList.contains("ql-paper-filter") ? row.nextElementSibling : row;
+    if (panel.previousElementSibling !== anchor) anchor.insertAdjacentElement("afterend", panel);
+    var sig = t.type + "|" + ideSolved().join(",");
+    if (panel.getAttribute("data-sig") === sig) return;
+    panel.setAttribute("data-sig", sig); panel.textContent = "";
+    var groups = [], by = {};
+    t.papers.forEach(function (pp) {
+      var m = /\((.+?)\)/.exec(pp.name), key = m ? m[1] : "All";
+      if (!by[key]) { by[key] = []; groups.push(key); }
+      by[key].push(pp);
+    });
+    groups.forEach(function (key) {
+      var box = document.createElement("div");
+      box.innerHTML = '<div class="mb-2.5 flex items-center gap-2"><h3 class="text-sm font-semibold text-slate-700"></h3><span class="rounded-full bg-slate-100 px-2 py-0.5 text-[11px] text-slate-500"></span></div><div class="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"></div>';
+      box.querySelector("h3").textContent = key; box.querySelector("span.rounded-full").textContent = by[key].length;
+      var grid = box.querySelector(".grid");
+      by[key].forEach(function (pp) { grid.appendChild(ideCard(slug, t, pp)); });
+      panel.appendChild(box);
+    });
+  }
+  function exitIdeMode(tabs) {
+    ideMode = null;
+    tabs.removeAttribute("data-ql-ide-mode");
+    tabs.querySelectorAll("[data-ql-ide-tab]").forEach(function (x) { x.classList.remove("bg-brand", "text-white"); });
+    tabs.querySelectorAll("[data-ql-was-active]").forEach(function (x) { x.classList.add("bg-brand", "text-white"); x.removeAttribute("data-ql-was-active"); });
     var panel = document.getElementById("ql-ide-panel"); if (panel) panel.remove();
     document.querySelectorAll("[data-ql-ide-hide]").forEach(function (n) { n.removeAttribute("data-ql-ide-hide"); });
   }
@@ -2622,13 +3872,16 @@
         last.insertAdjacentElement("afterend", b);
       }
       b.lastChild.textContent = done + "/" + t.papers.length;
-      if (ideMode === t.type) b.setAttribute("data-on", ""); else b.removeAttribute("data-on");
+      b.classList.toggle("bg-brand", ideMode === t.type);
+      b.classList.toggle("text-white", ideMode === t.type);
       last = b;
     });
     var cur = ideTypes.filter(function (t) { return t.type === ideMode; })[0];
     if (!cur) { if (ideMode) exitIdeMode(tabs); return; }
     tabs.setAttribute("data-ql-ide-mode", "");
-    var row = tabs.parentElement && tabs.parentElement.parentElement;
+    // The app's own active tab (Quiz 1 ...) steps back while a coding tab is selected.
+    tabs.querySelectorAll("button.bg-brand:not([data-ql-ide-tab])").forEach(function (x) { x.classList.remove("bg-brand", "text-white"); x.setAttribute("data-ql-was-active", ""); });
+    var row = tabs.parentElement;
     if (!row) return;
     // Hide the app's own quiz content (and the "27 quizzes" hint) while coding papers are shown.
     for (var n = row.nextElementSibling; n; n = n.nextElementSibling) {
