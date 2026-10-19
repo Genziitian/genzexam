@@ -22,6 +22,14 @@ void main() {
       'https://quiz.genziitian.in/assets/exam-examples/crops/q(1).png',
     );
     expect(
+      paperImageUri('assets/exam-examples/crops/q(1).png'),
+      'https://quiz.genziitian.in/assets/exam-examples/crops/q(1).png',
+    );
+    expect(
+      paperImageUri('oct2022_q1_figure1.png'),
+      'https://quiz.genziitian.in/assets/exam-examples/question-crops/mathematics-1/quiz1/oct2022_q1_figure1.png',
+    );
+    expect(
       paperImageUri('/storage/crops/option.png'),
       'https://labapi.genziitian.in/storage/crops/option.png',
     );
