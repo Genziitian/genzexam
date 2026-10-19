@@ -23,6 +23,7 @@
   [hidden] { display: none !important; }
   html, body { height: 100%; margin: 0; }
   body { background: var(--bg); color: var(--ink); font: 15px/1.5 -apple-system, "Segoe UI", Roboto, sans-serif; display: flex; flex-direction: column; }
+  body:not(.in-home) header { display: none; }
   header { display: flex; align-items: center; gap: 12px; padding: 10px 16px; background: var(--panel); border-bottom: 1px solid var(--line); }
   header a.back { color: var(--brand); text-decoration: none; font-weight: 600; }
   header select { flex: 1; min-width: 0; max-width: 520px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); color: var(--ink); font: inherit; }
@@ -105,11 +106,32 @@
   .tile .meta { color: var(--muted); font-size: 13px; }
   .go { padding: 8px 16px; border: 0; border-radius: 10px; color: #fff; font: 700 13px inherit; cursor: pointer; background: linear-gradient(135deg, var(--a), var(--b)); }
   .go.ghost { background: var(--bg); color: var(--ink); border: 1px solid var(--line); }
-  body.in-home #where { display: none; }
   .msg { color: var(--muted); padding: 40px 20px; text-align: center; }
   .msg a { color: var(--brand); font-weight: 600; }
   .side { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; overflow: auto; padding: 14px 10px; }
+  .side .top { display: flex; align-items: center; gap: 6px; margin-bottom: 10px; }
+  .side .top .back2 { display: inline-flex; align-items: center; gap: 6px; padding: 7px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--brand); font: 600 13px inherit; cursor: pointer; }
+  .side .top .collapse { margin-left: auto; display: inline-flex; padding: 7px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--muted); cursor: pointer; }
   .side h4 { margin: 0 8px 12px; font-size: 14px; }
+  main.side-collapsed { grid-template-columns: 52px minmax(280px, 1fr) minmax(320px, 1.2fr); }
+  main.side-collapsed .side > :not(.top) { display: none; }
+  main.side-collapsed .side .top > :not(.collapse) { display: none; }
+  main.side-collapsed .side .top .collapse { margin: 0 auto; transform: scaleX(-1); }
+  .gsec { --c: #6366f1; margin: 0 0 12px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+  .gsec:last-child { border-bottom: 0; }
+  .gsec.s2 { --c: #14b8a6; } .gsec.s3 { --c: #f59e0b; } .gsec.s4 { --c: #ec4899; }
+  .side .sechead { display: flex; align-items: center; gap: 8px; width: 100%; margin: 0 0 4px; padding: 8px 10px; border: 0; border-left: 3px solid var(--c); border-radius: 6px; background: color-mix(in srgb, var(--c) 14%, transparent); color: var(--ink); font: 700 12px/1 ui-monospace, Menlo, monospace; letter-spacing: .08em; text-transform: uppercase; cursor: pointer; }
+  .side .sechead svg { margin-left: auto; transition: transform .15s; }
+  .gsec.shut .sechead svg { transform: rotate(-90deg); }
+  .gsec.shut button.item { display: none; }
+  .side button.on { background: color-mix(in srgb, var(--c) 18%, transparent); color: var(--ink); box-shadow: inset 3px 0 0 var(--c); }
+  .ic { display: inline-flex; vertical-align: -2px; }
+  .pane.fs { position: fixed; inset: 0; z-index: 50; border-radius: 0; border: 0; }
+  body.fs-on { overflow: hidden; }
+  .mini { display: none; align-items: center; gap: 10px; padding: 8px 14px; border-top: 1px solid var(--line); font-size: 13px; font-weight: 700; }
+  .pane.fs .mini.show { display: flex; }
+  .mini.ok { color: var(--ok); } .mini.bad { color: var(--bad); }
+  .mini button { margin-left: auto; }
   .side .sec { margin: 14px 8px 6px; font: 700 11px/1 ui-monospace, Menlo, monospace; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
   .side button { display: flex; align-items: center; gap: 8px; width: 100%; text-align: left; padding: 9px 10px; margin-bottom: 2px; border: 0; border-radius: 8px; background: none; color: var(--ink); font: 500 13px inherit; cursor: pointer; }
   .side button:hover { background: var(--bg); }
@@ -128,8 +150,7 @@
 </head>
 <body>
 <header>
-  <a class="back" href="/dashboard">&larr; Back</a>
-  <div id="where" style="min-width:0"><div id="whereTitle" style="font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis"></div><div id="whereSub" style="color:var(--muted);font-size:12px"></div></div>
+  <a class="back" href="/dashboard"><span class="ic" data-i="back"></span> Back</a>
 </header>
 <section class="home" id="home" hidden>
   <div class="hero"><div class="hero-in">
@@ -151,26 +172,28 @@
       <button class="tab" role="tab" aria-selected="false" data-tab="cases">Test Cases</button>
       <button class="tab" role="tab" aria-selected="false" data-tab="result">Result</button>
       <button class="tab" role="tab" aria-selected="false" data-tab="subs">Submissions</button>
-      <button class="tab" role="tab" aria-selected="false" disabled title="Solution is locked">Solution &#128274;</button>
-      <button class="btn" id="reportBtn" style="margin:6px 0 6px auto" title="Report a problem with this question">&#9873; Report</button>
+      <button class="tab" role="tab" aria-selected="false" disabled title="Solution is locked">Solution <span class="ic" data-i="lock"></span></button>
+      <button class="btn" id="reportBtn" style="margin:6px 0 6px auto" title="Report a problem with this question"><span class="ic" data-i="flag"></span> Report</button>
     </div>
     <div class="tabpanel" id="tab-question" role="tabpanel"></div>
     <div class="tabpanel" id="tab-cases" role="tabpanel" hidden></div>
     <div class="tabpanel" id="tab-result" role="tabpanel" hidden><div class="msg">Press Run or Submit to see your results here.</div></div>
     <div class="tabpanel" id="tab-subs" role="tabpanel" hidden></div>
   </section>
-  <section class="pane" aria-label="Code">
+  <section class="pane" id="codePane" aria-label="Code">
     <div class="tabs"><button class="tab" aria-selected="true">Code</button></div>
     <div class="toolbar">
       <span class="lang" id="lang">Python3</span>
       <span class="spacer"></span>
       <button class="btn sm" id="copyBtn" title="Copy the code">COPY</button>
       <button class="btn sm" id="resetBtn" title="Restore starter code">RESET</button>
+      <button class="btn sm" id="fsBtn" title="Full screen code editor" aria-label="Full screen code editor"><span class="ic" data-i="expand"></span></button>
     </div>
     <div id="editorWrap"></div>
+    <div class="mini" id="miniResult"><span id="miniText"></span><button class="btn sm" id="miniMore" type="button">View details</button></div>
     <div class="actions">
-      <button class="btn" id="runBtn">&#9654; Run Code</button>
-      <button class="btn primary" id="submitBtn">&#10003; Submit</button>
+      <button class="btn" id="runBtn"><span class="ic" data-i="play"></span> Run Code</button>
+      <button class="btn primary" id="submitBtn"><span class="ic" data-i="check"></span> Submit</button>
     </div>
   </section>
 </main>
@@ -208,6 +231,19 @@
   function el(tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; }
   function solvedSet() { try { return JSON.parse(localStorage.getItem("ide.solved") || "[]"); } catch (e) { return []; } }
   function markSolved(id) { var a = solvedSet(); if (a.indexOf(id) < 0) { a.push(id); try { localStorage.setItem("ide.solved", JSON.stringify(a)); } catch (e) {} } }
+  var ICONS = {
+    back: '<path d="M19 12H5M12 19l-7-7 7-7"/>',
+    chevron: '<path d="m6 9 6 6 6-6"/>',
+    panel: '<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18"/>',
+    expand: '<path d="M8 3H5a2 2 0 0 0-2 2v3M21 8V5a2 2 0 0 0-2-2h-3M3 16v3a2 2 0 0 0 2 2h3M16 21h3a2 2 0 0 0 2-2v-3"/>',
+    shrink: '<path d="M8 3v3a2 2 0 0 1-2 2H3M21 8h-3a2 2 0 0 1-2-2V3M3 16h3a2 2 0 0 1 2 2v3M16 21v-3a2 2 0 0 1 2-2h3"/>',
+    flag: '<path d="M4 22V4a1 1 0 0 1 1-1h12l-2 4 2 4H5"/>',
+    play: '<polygon points="6 4 20 12 6 20 6 4"/>',
+    check: '<path d="M20 6 9 17l-5-5"/>',
+    lock: '<rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>'
+  };
+  function icon(name, size) { return '<svg width="' + (size || 14) + '" height="' + (size || 14) + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + ICONS[name] + '</svg>'; }
+  document.querySelectorAll("[data-i]").forEach(function (n) { n.innerHTML = icon(n.dataset.i); });
   function status(html) { var s = $("status"); s.hidden = false; $("app").hidden = true; $("home").hidden = true; s.textContent = ""; if (html) s.appendChild(html); }
   function api(path, opts) {
     opts = opts || {};
@@ -323,7 +359,22 @@
   }
 
   // ---- results
-  function showResult(node) { var r = $("tab-result"); r.textContent = ""; r.appendChild(node); showTab("result"); }
+  function showResult(node) {
+    var r = $("tab-result"); r.textContent = ""; r.appendChild(node); showTab("result");
+    // In full screen the left panel is hidden, so the verdict is also shown under the editor.
+    var v = node.querySelector && node.querySelector(".verdict"), mini = $("miniResult");
+    mini.classList.toggle("show", !!v); mini.classList.remove("ok", "bad");
+    if (v) { $("miniText").textContent = v.textContent; mini.classList.add(v.classList.contains("ok") ? "ok" : "bad"); }
+  }
+  // ---- full screen code editor
+  function setFs(on) {
+    $("codePane").classList.toggle("fs", on); document.body.classList.toggle("fs-on", on);
+    $("fsBtn").innerHTML = icon(on ? "shrink" : "expand"); $("fsBtn").title = on ? "Exit full screen" : "Full screen code editor";
+    if (cm) setTimeout(function () { cm.refresh(); }, 0);
+  }
+  $("fsBtn").addEventListener("click", function () { setFs(!$("codePane").classList.contains("fs")); });
+  $("miniMore").addEventListener("click", function () { setFs(false); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && $("codePane").classList.contains("fs")) setFs(false); });
   function resultList(results) {
     var wrap = el("div");
     results.forEach(function (c) {
@@ -412,12 +463,9 @@
       $("status").hidden = true; $("home").hidden = true; $("app").hidden = false; document.body.classList.remove("in-home");
       $("lang").textContent = ({ python: "Python3", java: "Java", cpp: "C++", "c++": "C++" })[current.language] || current.language;
       renderQuestion(current); buildEditor(current, initialMiddle(current));
-      $("tab-result").innerHTML = '<div class="msg">Press Run or Submit to see your results here.</div>'; showTab("question");
+      $("tab-result").innerHTML = '<div class="msg">Press Run or Submit to see your results here.</div>'; $("miniResult").classList.remove("show"); showTab("question");
       var url = new URL(location.href); url.searchParams.set("problem", id); history.replaceState(null, "", url);
       var idx = problems.findIndex(function (x) { return x.id === id; });
-      $("whereTitle").textContent = split(current).paper;
-      var pos = position(id);
-      $("whereSub").textContent = (pos.hasSections ? "Section " + pos.section + " \u00b7 " : "") + "Problem " + pos.n;
       renderSide(id);
     }).catch(function (e) { if (e.status === 401) loginPrompt(); else status(document.createTextNode(e.message)); });
   }
@@ -456,21 +504,35 @@
     return { section: sec, hasSections: sec > 0, n: inSec.indexOf(p) + 1 };
   }
   // Left sidebar: Section headings with their problems; only problems of this paper are listed.
+  var shut = {};   // section number -> collapsed
   function renderSide(activeId) {
     var side = $("side"), done = solvedSet(); side.textContent = "";
+    var top = el("div", "top");
+    var back = el("button", "back2"); back.type = "button"; back.innerHTML = icon("back") + " Back"; back.addEventListener("click", showHome);
+    var col = el("button", "collapse"); col.type = "button"; col.title = "Show or hide this panel"; col.setAttribute("aria-label", "Show or hide this panel"); col.innerHTML = icon("panel");
+    col.addEventListener("click", function () { $("app").classList.toggle("side-collapsed"); });
+    top.appendChild(back); top.appendChild(col); side.appendChild(top);
     side.appendChild(el("h4", "", split(problems[0]).paper));
     var secs = [];
-    problems.forEach(function (p) { var s = sectionOf(p); if (secs.indexOf(s) < 0) secs.push(s); });
+    problems.forEach(function (p) { var n = sectionOf(p); if (secs.indexOf(n) < 0) secs.push(n); });
     secs.forEach(function (sec) {
-      if (sec > 0) side.appendChild(el("div", "sec", "Section " + sec));
-      problems.filter(function (p) { return sectionOf(p) === sec; }).forEach(function (p, i) {
-        var b = el("button", p.id === activeId ? "on" : ""); b.type = "button";
+      var list = problems.filter(function (p) { return sectionOf(p) === sec; });
+      if (list.some(function (p) { return p.id === activeId; })) shut[sec] = false;
+      var g = el("div", "gsec s" + (sec || 1) + (shut[sec] ? " shut" : ""));
+      if (sec > 0) {
+        var h = el("button", "sechead"); h.type = "button"; h.innerHTML = "<span>Section " + sec + "</span>" + icon("chevron", 14);
+        h.addEventListener("click", function () { shut[sec] = !shut[sec]; g.classList.toggle("shut", shut[sec]); });
+        g.appendChild(h);
+      }
+      list.forEach(function (p, i) {
+        var b = el("button", "item" + (p.id === activeId ? " on" : "")); b.type = "button";
         b.appendChild(el("span", "", "Problem " + (i + 1)));
-        if (done.indexOf(p.id) >= 0) b.appendChild(el("span", "tick", "\u2713"));
+        if (done.indexOf(p.id) >= 0) { var t = el("span", "tick"); t.innerHTML = icon("check", 14); b.appendChild(t); }
         b.title = split(p).name;
         b.addEventListener("click", function () { if (p.id !== activeId) openProblem(p.id); });
-        side.appendChild(b);
+        g.appendChild(b);
       });
+      side.appendChild(g);
     });
   }
   function startPaper(paper, id) {
