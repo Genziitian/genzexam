@@ -28,3 +28,7 @@ tools/ocr
 
 # Local rendered source pages and OCR scratch files
 tmp_maths2_ocr/
+
+# Generated Python bytecode
+__pycache__/
+*.pyc
