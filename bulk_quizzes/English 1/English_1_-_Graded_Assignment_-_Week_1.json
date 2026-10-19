@@ -1,0 +1,282 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 1 · Graded Assignment · Week 1",
+  "subject": "English 1",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which among the following words carry the sound /z/ in them?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "'Xerox' begins with a /z/ sound; 'Trips' ends in an /s/ sound."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Xerox"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Trips"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both a and b"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which among the following words carry the sound 'sh'?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "'Charade', 'Special' and 'Sebaceous' all contain the /ʃ/ ('sh') sound."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Charade"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Special"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Sebaceous"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Only a and b"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "All a, b, and c"
+          }
+        ]
+      ],
+      "correct_answer": 4
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which among the following carry the short vowel /ʊ/?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "'Should' and 'Book' carry the short /ʊ/ vowel; 'Truth' has the long /uː/."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Should"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Book"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Truth"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Only a and b"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Only a and c"
+          }
+        ]
+      ],
+      "correct_answer": 3
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "/w/ and /y/ are monophthongs."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "/w/ and /y/ are semi-vowels (glides), not monophthongs."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Semi-vowels are syllabic in nature."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Semi-vowels function as consonants and are non-syllabic; they do not form the nucleus of a syllable."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Listen to the audio and answer the questions that follow."
+        },
+        {
+          "kind": "text",
+          "value": "The word 'oblivion' has ____."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "All the vowel sounds in 'oblivion' are short vowels."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "All short vowels"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "One long vowel"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Listen to the audio and answer the questions that follow."
+        },
+        {
+          "kind": "text",
+          "value": "The word 'pantaloon' has _____."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "'Pantaloon' contains only one long vowel (the /uː/ in '-loon')."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Two long vowels"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Only one long vowel"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    }
+  ]
+}

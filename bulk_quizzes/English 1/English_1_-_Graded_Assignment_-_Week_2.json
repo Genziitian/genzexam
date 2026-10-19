@@ -1,0 +1,424 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 1 · Graded Assignment · Week 2",
+  "subject": "English 1",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the part of speech of “courage”.\nShe was honoured for her courage."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "'Courage' names a quality, so it is a (abstract) noun."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Adjective"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Adverb"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Noun"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Verb"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the part of speech of “worried”.\nCatherine was worried about her work."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "'Worried' here is a past participle/verb form describing Catherine's state."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Abstract noun"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Verb"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Noun"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Adverb"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Select the correct pronoun.\nThe bus came to a halt by _________."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "'Bus' is an inanimate object, so the reflexive pronoun is 'itself'."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Himself"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Itself"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Select the appropriate option.\nGolconda Fort is the _________ site I saw in Hyderabad."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The superlative degree 'most amazing' is used to single out one site above all others."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Amazing"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "More amazing"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Most amazing"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "As amazing"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the part of speech of “red”.\nThe red balloon floated away."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "'Red' describes the noun 'balloon', so it is an adjective."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Adverb"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Adjective"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Verb"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Noun"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the adverb in the following sentence:\nShe was softly singing to the baby."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "'Softly' modifies the verb 'singing', describing how she sang."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Baby"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Singing"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Softly"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "She"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the appropriate option.\nThere is ______ book on the desk."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "A singular countable noun beginning with a consonant sound ('book') takes 'a'."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "A"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "An"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "No article"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the appropriate option.\nThe doctor gave me a prescription ________ my headache."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "'For' indicates purpose — a prescription intended to treat the headache."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "With"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "At"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "For"
+          }
+        ]
+      ],
+      "correct_answer": 3
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the appropriate option.\nBoth Ajay _______ Sanjay are intelligent."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The correlative conjunction paired with 'both' is 'and'."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Nor"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Or"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "And"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Since"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "___ coffee taster had his tongue insured for 10 million pounds."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "'Coffee' begins with a consonant sound, so the indefinite article is 'a'."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "An"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    }
+  ]
+}

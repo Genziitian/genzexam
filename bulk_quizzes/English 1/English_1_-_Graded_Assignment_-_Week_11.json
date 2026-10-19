@@ -1,0 +1,370 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 1 · Graded Assignment · Week 11",
+  "subject": "English 1",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the grammatically correct sentence from the options given."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "'In detail' is the fixed adverbial phrase; 'details' is not used in this idiom."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Raj told the story in details."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Raj told the story in detail."
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the grammatically correct sentence from the options given."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The comparative 'cleverer' is preferred for this short adjective when comparing two."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "She is the more clever of the two."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "She is the cleverer of the two."
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the grammatically correct sentence from the options given."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Meals like 'dinner' take no article when referring to the meal in general."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "We shall see her after dinner."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "We shall see her after the dinner."
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the grammatically correct sentence from the options given."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "'Suggest' takes the pattern 'suggest something to someone', not an indirect object directly."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Sushmita suggested me this."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Sushmita suggested this to me."
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the grammatically correct sentence from the options given."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "'Very' modifies the adjective 'sorry'; 'very much' is not used before such adjectives."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Deepa is very much sorry."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Deepa is very sorry."
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Fill in the blank with the most appropriate option. Many research scholars choose Noam Chomsky as the topic for -------\nresearch paper."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The plural subject 'scholars' requires the plural possessive 'their'."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Their"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "His"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Her"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Fill in the blank with the most appropriate option. The shopkeeper sold only ------ pair of socks."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Singular countable 'pair' beginning with a consonant sound takes 'a'."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "A"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "An"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of the above."
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Fill in the blank with the most appropriate option. Ramesh travelled to ------ Texas the previous month."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Names of most places/states like 'Texas' take no article."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "A"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "An"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of the above."
+          }
+        ]
+      ],
+      "correct_answer": 3
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Fill in the blank with the most appropriate option. She is not interested ------- learning how to ride a bicycle."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "'Interested in' is the fixed preposition collocation, followed by a gerund."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "To"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "For"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "In"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Fill in the blank with the most appropriate option. People prefer travelling a long distance ------ bus."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Modes of transport take 'by' (by bus, by train)."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "By"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "At"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "With"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    }
+  ]
+}

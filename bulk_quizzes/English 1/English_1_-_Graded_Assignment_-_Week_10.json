@@ -1,0 +1,442 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 1 · Graded Assignment · Week 10",
+  "subject": "English 1",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "John has a friend _____ daughter lives in the U.S."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "'Whose' is the possessive relative pronoun, showing the daughter belongs to the friend."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Who"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Whose"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "That"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Which"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "John was extremely happy __________ his new car."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "'Happy about' is the standard collocation for expressing pleasure regarding something."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Of"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "About"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "By"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "On"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "You must go through the answers _________ the end of the book."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "'At the end' is the fixed preposition phrase indicating a specific point/location."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "In"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "On"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "By"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "At"
+          }
+        ]
+      ],
+      "correct_answer": 3
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The traffic in the city was so heavy. It took us two hours to drive __________ it."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "'Through' expresses movement passing from one side of the traffic to the other."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "On"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "With"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Through"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Along"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘You are the kindest person I know.’ In place of ‘the’, which of the following should be used?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "A superlative ('kindest') requires the definite article 'the'; no other article fits."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "A"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Most"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Only 'the' can be used"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of the above"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "At Meera’s insistence, he yielded__ her and gave up his room for their guest."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "'Yield to' is the correct phrasal collocation meaning to give in to someone."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "With"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "By"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "For"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To"
+          }
+        ]
+      ],
+      "correct_answer": 3
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "When he arrived___ the station, the train had already departed."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "'Arrive at' is used for a specific point/place such as a station."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "To"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "At"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "In"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "All of the above"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Iceland is ___________ than Spain."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The comparative of the short adjective 'cold' is 'colder', used with 'than'."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Coldest"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Colder"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "More colder"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Cold"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Turn right________ the first traffic lights, then turn left."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "'At' marks the specific point (the traffic lights) at which to turn."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "At"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "On"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "In"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Into"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Tom is not sure ______ the answer."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "'Sure about' is the standard collocation for expressing (un)certainty regarding something."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "On"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "With"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "About"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    }
+  ]
+}

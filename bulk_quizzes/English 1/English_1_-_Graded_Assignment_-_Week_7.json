@@ -1,0 +1,248 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 1 · Graded Assignment · Week 7",
+  "subject": "English 1",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Listen to the audio carefully and answer the following questions. (Click the assignment link to listen to the audio.)"
+        },
+        {
+          "kind": "text",
+          "value": "Most of us would consider the end of the human race as a __________."
+        }
+      ],
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "'Catastrophe' is the correct spelling of the word meaning a great disaster."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Catastrophy"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Catastrofy"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Catastrofi"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Catastrophe"
+          }
+        ]
+      ],
+      "correct_answer": 3
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Listen to the audio carefully and answer the following questions. (Click the assignment link to listen to the audio.)"
+        },
+        {
+          "kind": "text",
+          "value": "Which word means 'to feel joy'?"
+        }
+      ],
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "'Rejoice' means to feel or show great joy."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Supersede"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Vitality"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Rejoice"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Embrace"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Listen to the audio carefully and answer the following questions. (Click the assignment link to listen to the audio.)"
+        },
+        {
+          "kind": "text",
+          "value": "The phrasal verb 'Look forward to' means _________."
+        }
+      ],
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "'Look forward to' means to anticipate or eagerly wait for something."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "To search"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To eagerly wait"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To take care of"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To admit"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Listen to the audio carefully and answer the following questions. (Click the assignment link to listen to the audio.)"
+        },
+        {
+          "kind": "text",
+          "value": "Replace 'Diminish' with a simpler word:"
+        }
+      ],
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "'Diminish' means to make or become less, i.e., to reduce."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Reduce"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Widen"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Extend"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Check"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Listen to the audio carefully and answer the following questions. (Click the assignment link to listen to the audio.)"
+        },
+        {
+          "kind": "text",
+          "value": "Replace 'Lament' with a simpler word:"
+        }
+      ],
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "'Lament' means to mourn or express grief, closest to 'cry'."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Cry"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Reject"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Approve"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Satisfaction"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    }
+  ]
+}

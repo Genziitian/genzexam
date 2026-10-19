@@ -1,0 +1,192 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 1 · Graded Assignment · Week 4",
+  "subject": "English 1",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Mark the appropriate response.\nDeepthi is not here. Could you please ______."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Since the person is unavailable, the polite suggestion is to call back later, i.e. 'Ring her later.'"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Speak up"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Hang up"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Hang on"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Ring her later"
+          }
+        ]
+      ],
+      "correct_answer": 3
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "When someone says “Your voice is echoing” it becomes evident the voice is resurfacing and hence the tele-conversation\nis not clear."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "An echo means the voice is repeating/resurfacing, making the call unclear."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The phrase ‘speak up’ means to tone down the voice."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "'Speak up' means to talk louder, not to tone down the voice."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Geetha, while speaking to Mary (on the phone) hears vibrating noise. Choose the best appropriate sentence that Geeta\nshould use to convey the problem."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "A vibrating/harsh noise on the line is best described as the voice 'jarring'."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Your voice is echoing."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Your voice is jarring."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "You have to speak up."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "You are not audible."
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The phrase ‘pick up’ (in the context of a telephonic conversation) means to answer the call."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "To 'pick up' a phone call means to answer it."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    }
+  ]
+}

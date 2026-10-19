@@ -1,0 +1,412 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 1 · Graded Assignment · Week 5",
+  "subject": "English 1",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct option.\nIt was hot, so I __________ the door."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "'Shut' is the unchanged past tense form of the verb 'shut'."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Shutted"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Am shut"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Was shut"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Shut"
+          }
+        ]
+      ],
+      "correct_answer": 3
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct option.\nMy mother _________ a book while I __________ TV."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Two simultaneous past actions take the past continuous: 'Was reading/ Was watching'."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Read/ Watched"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Were reading/ Was watching"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Was read/ Was watching"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Was reading/ Was watching"
+          }
+        ]
+      ],
+      "correct_answer": 3
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct option.\nThe girls ________ in the garden when it suddenly started to rain."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Plural subject 'girls' with an ongoing past action takes 'Were playing'."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Playing"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Played"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Was playing"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Were playing"
+          }
+        ]
+      ],
+      "correct_answer": 3
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct option.\nWill you ________ by 7:00 am?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Future perfect 'will ... have arrived' expresses completion by a future time."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Be arrive"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Have arrived"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Have arriving"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct option.\nOctober works for us. Suman will not _________ by then."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Future perfect 'will not have graduated' refers to completion by a future point."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Have graduated"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Graduating"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct option.\nRavi _______ not been to Europe."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Singular subject 'Ravi' in the present perfect takes 'has not been'."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Is"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Has"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Have"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct option.\nMridul ________ living in Italy since November."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Present perfect continuous with 'since' takes 'has been living'."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Has been"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Is been"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Has being"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "__________ the match at ten or eleven?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Singular subject 'the match' takes 'Is'."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Is"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Will"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Will not"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Are"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Your pants ___________ in the laundromat."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "'Pants' is grammatically plural, so it takes 'Were'."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Were"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Was"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Was not"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Will not"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Nitrogen atoms ___________ around the exoplanet."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Plural subject 'atoms' takes the base verb 'circle'."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Circle"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Circling"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Cycles"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    }
+  ]
+}

@@ -1,0 +1,248 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 1 · Graded Assignment · Week 6",
+  "subject": "English 1",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Read the following passage and answer the questions:\nThe victory of the small Greek democracy of Athens over the mighty Persian empire in 490 B. C. is one of the most\nfamous events in history. Darius, king of the Persian Empire, was furious because Athens had interceded for the other\nGreek city-states in revolt against Persian domination. In anger the king sent an enormous army to defeat Athens. He\nthought it would take drastic steps to pacify the rebellious part of the empire. Persia was ruled by one man. In Athens,\nhowever, all citizens helped to rule. Ennobled by this participation, Athenians were prepared to die for their city-state.\nPerhaps this was the secret of the remarkable victory at Marathon, which freed them from Persian rule. On their way to\nMarathon, the Persians tried to fool some Greek city-states by claiming to have come in peace. The frightened citizens of\nDelos refused to believe this. Not wanting to abet the conquest of Greece, they fled from their city and did not return\nuntil the Persians had left. They were wise, for the Persians next conquered the city of Etria and captured its people. Tiny\nAthens stood alone against Persia. The Athenian people went to their sanctuaries. There they prayed for deliverance. They\nasked their gods to expedite their victory. The Athenians refurbished their weapons and moved to the plain of Marathon,\nwhere their little band would meet the Persians. At the last moment, soldiers from Plataea reinforced the Athenian troops.\nThe Athenian army attacked, and Greek citizens fought bravely. The power of the mighty Persians was offset by the love\nthat the Athenians had for their city. Athenians defeated the Persians in archery and hand combat. Greek soldiers seized\nPersian ships and burned them, and the Persians fled in terror. Herodotus, a famous historian, reports that 6400 Persians\ndied, compared with only 192 Athenians."
+        },
+        {
+          "kind": "text",
+          "value": "Choose from the options the word that matches the meaning of honour."
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "To 'ennoble' is to dignify or honour."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Ennoble"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Expedite"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Intercede"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Seize"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Read the following passage and answer the questions:\nThe victory of the small Greek democracy of Athens over the mighty Persian empire in 490 B. C. is one of the most\nfamous events in history. Darius, king of the Persian Empire, was furious because Athens had interceded for the other\nGreek city-states in revolt against Persian domination. In anger the king sent an enormous army to defeat Athens. He\nthought it would take drastic steps to pacify the rebellious part of the empire. Persia was ruled by one man. In Athens,\nhowever, all citizens helped to rule. Ennobled by this participation, Athenians were prepared to die for their city-state.\nPerhaps this was the secret of the remarkable victory at Marathon, which freed them from Persian rule. On their way to\nMarathon, the Persians tried to fool some Greek city-states by claiming to have come in peace. The frightened citizens of\nDelos refused to believe this. Not wanting to abet the conquest of Greece, they fled from their city and did not return\nuntil the Persians had left. They were wise, for the Persians next conquered the city of Etria and captured its people. Tiny\nAthens stood alone against Persia. The Athenian people went to their sanctuaries. There they prayed for deliverance. They\nasked their gods to expedite their victory. The Athenians refurbished their weapons and moved to the plain of Marathon,\nwhere their little band would meet the Persians. At the last moment, soldiers from Plataea reinforced the Athenian troops.\nThe Athenian army attacked, and Greek citizens fought bravely. The power of the mighty Persians was offset by the love\nthat the Athenians had for their city. Athenians defeated the Persians in archery and hand combat. Greek soldiers seized\nPersian ships and burned them, and the Persians fled in terror. Herodotus, a famous historian, reports that 6400 Persians\ndied, compared with only 192 Athenians."
+        },
+        {
+          "kind": "text",
+          "value": "Choose from the passage the word that means ‘to make an action or process happen sooner or be accomplished more\nquickly’."
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "'Expedite' means to speed up a process."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Reinforce"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Deliverance"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Expedite"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Refurbish"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Read the following passage and answer the questions:\nThe victory of the small Greek democracy of Athens over the mighty Persian empire in 490 B. C. is one of the most\nfamous events in history. Darius, king of the Persian Empire, was furious because Athens had interceded for the other\nGreek city-states in revolt against Persian domination. In anger the king sent an enormous army to defeat Athens. He\nthought it would take drastic steps to pacify the rebellious part of the empire. Persia was ruled by one man. In Athens,\nhowever, all citizens helped to rule. Ennobled by this participation, Athenians were prepared to die for their city-state.\nPerhaps this was the secret of the remarkable victory at Marathon, which freed them from Persian rule. On their way to\nMarathon, the Persians tried to fool some Greek city-states by claiming to have come in peace. The frightened citizens of\nDelos refused to believe this. Not wanting to abet the conquest of Greece, they fled from their city and did not return\nuntil the Persians had left. They were wise, for the Persians next conquered the city of Etria and captured its people. Tiny\nAthens stood alone against Persia. The Athenian people went to their sanctuaries. There they prayed for deliverance. They\nasked their gods to expedite their victory. The Athenians refurbished their weapons and moved to the plain of Marathon,\nwhere their little band would meet the Persians. At the last moment, soldiers from Plataea reinforced the Athenian troops.\nThe Athenian army attacked, and Greek citizens fought bravely. The power of the mighty Persians was offset by the love\nthat the Athenians had for their city. Athenians defeated the Persians in archery and hand combat. Greek soldiers seized\nPersian ships and burned them, and the Persians fled in terror. Herodotus, a famous historian, reports that 6400 Persians\ndied, compared with only 192 Athenians."
+        },
+        {
+          "kind": "text",
+          "value": "The Athenians refurbished their weapons and moved to the plain of Marathon, where their little band would meet the\nPersians. The word “refurbished” means __________."
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "'Refurbish' means to renovate or give a new look."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "To give a new look"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To augment"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To intensify"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To strengthen"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Read the following passage and answer the questions:\nThe victory of the small Greek democracy of Athens over the mighty Persian empire in 490 B. C. is one of the most\nfamous events in history. Darius, king of the Persian Empire, was furious because Athens had interceded for the other\nGreek city-states in revolt against Persian domination. In anger the king sent an enormous army to defeat Athens. He\nthought it would take drastic steps to pacify the rebellious part of the empire. Persia was ruled by one man. In Athens,\nhowever, all citizens helped to rule. Ennobled by this participation, Athenians were prepared to die for their city-state.\nPerhaps this was the secret of the remarkable victory at Marathon, which freed them from Persian rule. On their way to\nMarathon, the Persians tried to fool some Greek city-states by claiming to have come in peace. The frightened citizens of\nDelos refused to believe this. Not wanting to abet the conquest of Greece, they fled from their city and did not return\nuntil the Persians had left. They were wise, for the Persians next conquered the city of Etria and captured its people. Tiny\nAthens stood alone against Persia. The Athenian people went to their sanctuaries. There they prayed for deliverance. They\nasked their gods to expedite their victory. The Athenians refurbished their weapons and moved to the plain of Marathon,\nwhere their little band would meet the Persians. At the last moment, soldiers from Plataea reinforced the Athenian troops.\nThe Athenian army attacked, and Greek citizens fought bravely. The power of the mighty Persians was offset by the love\nthat the Athenians had for their city. Athenians defeated the Persians in archery and hand combat. Greek soldiers seized\nPersian ships and burned them, and the Persians fled in terror. Herodotus, a famous historian, reports that 6400 Persians\ndied, compared with only 192 Athenians."
+        },
+        {
+          "kind": "text",
+          "value": "Which word denotes ‘doing things suddenly and without careful thought’ ?"
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "'Impulsive' describes acting suddenly without forethought."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Repulsive"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Impulsive"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Impressive"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Comprehensive"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Read the following passage and answer the questions:\nThe victory of the small Greek democracy of Athens over the mighty Persian empire in 490 B. C. is one of the most\nfamous events in history. Darius, king of the Persian Empire, was furious because Athens had interceded for the other\nGreek city-states in revolt against Persian domination. In anger the king sent an enormous army to defeat Athens. He\nthought it would take drastic steps to pacify the rebellious part of the empire. Persia was ruled by one man. In Athens,\nhowever, all citizens helped to rule. Ennobled by this participation, Athenians were prepared to die for their city-state.\nPerhaps this was the secret of the remarkable victory at Marathon, which freed them from Persian rule. On their way to\nMarathon, the Persians tried to fool some Greek city-states by claiming to have come in peace. The frightened citizens of\nDelos refused to believe this. Not wanting to abet the conquest of Greece, they fled from their city and did not return\nuntil the Persians had left. They were wise, for the Persians next conquered the city of Etria and captured its people. Tiny\nAthens stood alone against Persia. The Athenian people went to their sanctuaries. There they prayed for deliverance. They\nasked their gods to expedite their victory. The Athenians refurbished their weapons and moved to the plain of Marathon,\nwhere their little band would meet the Persians. At the last moment, soldiers from Plataea reinforced the Athenian troops.\nThe Athenian army attacked, and Greek citizens fought bravely. The power of the mighty Persians was offset by the love\nthat the Athenians had for their city. Athenians defeated the Persians in archery and hand combat. Greek soldiers seized\nPersian ships and burned them, and the Persians fled in terror. Herodotus, a famous historian, reports that 6400 Persians\ndied, compared with only 192 Athenians."
+        },
+        {
+          "kind": "text",
+          "value": "Find a suitable word to replace combat."
+        }
+      ],
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "'Combat' is synonymous with 'fight'."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Offensive"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Hospitable"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Fight"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Diverting"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    }
+  ]
+}

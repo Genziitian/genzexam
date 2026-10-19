@@ -1,0 +1,362 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 1 · Graded Assignment · Week 12",
+  "subject": "English 1",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Read the following mail and answer questions 1 to 4 that follow.\nDear Ms. Shwetha Tandon,\nI am writing to invite you to the 20th Academic Council Meeting of VSTP University, Shillong. The council would meet to\nfinalise the task sheet for the year 2022-23. The details and agenda for the meeting is attached below. I request you to\nconfirm your participation so as to reserve the flight tickets. Kindly write to me in case you need any clarification.\nSincerely,\nArun Kumar\nSecretary to the Registrar,\nVSTP University, Shillong"
+        },
+        {
+          "kind": "text",
+          "value": "The mail uses a non-objective tone."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The mail is formal and objective; it states facts and a request without emotional or subjective language."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Read the following mail and answer questions 1 to 4 that follow.\nDear Ms. Shwetha Tandon,\nI am writing to invite you to the 20th Academic Council Meeting of VSTP University, Shillong. The council would meet to\nfinalise the task sheet for the year 2022-23. The details and agenda for the meeting is attached below. I request you to\nconfirm your participation so as to reserve the flight tickets. Kindly write to me in case you need any clarification.\nSincerely,\nArun Kumar\nSecretary to the Registrar,\nVSTP University, Shillong"
+        },
+        {
+          "kind": "text",
+          "value": "In 'The council would meet to finalise the task sheet for the year 2022-23.', the word 'would' is used to express politeness."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "'Would' here softens the statement and conveys politeness/formality."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Read the following mail and answer questions 1 to 4 that follow.\nDear Ms. Shwetha Tandon,\nI am writing to invite you to the 20th Academic Council Meeting of VSTP University, Shillong. The council would meet to\nfinalise the task sheet for the year 2022-23. The details and agenda for the meeting is attached below. I request you to\nconfirm your participation so as to reserve the flight tickets. Kindly write to me in case you need any clarification.\nSincerely,\nArun Kumar\nSecretary to the Registrar,\nVSTP University, Shillong"
+        },
+        {
+          "kind": "text",
+          "value": "'The details and agenda for the meeting is attached below.' is a grammatically correct sentence."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The compound subject 'details and agenda' is plural, so it requires 'are attached', not 'is attached' (subject-verb\nagreement)."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Read the following mail and answer questions 1 to 4 that follow.\nDear Ms. Shwetha Tandon,\nI am writing to invite you to the 20th Academic Council Meeting of VSTP University, Shillong. The council would meet to\nfinalise the task sheet for the year 2022-23. The details and agenda for the meeting is attached below. I request you to\nconfirm your participation so as to reserve the flight tickets. Kindly write to me in case you need any clarification.\nSincerely,\nArun Kumar\nSecretary to the Registrar,\nVSTP University, Shillong"
+        },
+        {
+          "kind": "text",
+          "value": "The topic statement of the above mail is…"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The opening sentence stating the invitation is the topic (main) statement of the mail."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The council would meet to finalise the task sheet for the year 2022-23."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "I am writing to invite you to the 20th Academic Council meeting of VSTP University, Shillong."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "I request you to confirm your participation so as to reserve the flight tickets."
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Read the following mail and answer questions 1 to 4 that follow.\nDear Ms. Shwetha Tandon,\nI am writing to invite you to the 20th Academic Council Meeting of VSTP University, Shillong. The council would meet to\nfinalise the task sheet for the year 2022-23. The details and agenda for the meeting is attached below. I request you to\nconfirm your participation so as to reserve the flight tickets. Kindly write to me in case you need any clarification.\nSincerely,\nArun Kumar\nSecretary to the Registrar,\nVSTP University, Shillong"
+        },
+        {
+          "kind": "text",
+          "value": "Unity of a paragraph refers to ____."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Unity means every sentence in the paragraph relates to a single central theme/idea."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Logical continuity of the sentences"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Singularity of the theme"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Organizational patterns"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Read the following mail and answer questions 1 to 4 that follow.\nDear Ms. Shwetha Tandon,\nI am writing to invite you to the 20th Academic Council Meeting of VSTP University, Shillong. The council would meet to\nfinalise the task sheet for the year 2022-23. The details and agenda for the meeting is attached below. I request you to\nconfirm your participation so as to reserve the flight tickets. Kindly write to me in case you need any clarification.\nSincerely,\nArun Kumar\nSecretary to the Registrar,\nVSTP University, Shillong"
+        },
+        {
+          "kind": "text",
+          "value": "Despite, although, and nevertheless are transitional devices that are used to ____."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "These are concessive/contrast connectors that signal opposition between ideas."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Add"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Conclude"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Contrast"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Read the following mail and answer questions 1 to 4 that follow.\nDear Ms. Shwetha Tandon,\nI am writing to invite you to the 20th Academic Council Meeting of VSTP University, Shillong. The council would meet to\nfinalise the task sheet for the year 2022-23. The details and agenda for the meeting is attached below. I request you to\nconfirm your participation so as to reserve the flight tickets. Kindly write to me in case you need any clarification.\nSincerely,\nArun Kumar\nSecretary to the Registrar,\nVSTP University, Shillong"
+        },
+        {
+          "kind": "text",
+          "value": "'The manager asked for the file and the recordings of the meeting. It was unavailable.' What is the type of error in the\nsentence?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "'It' (singular) refers to 'the file and the recordings' (plural antecedent); it should be 'They were unavailable.'"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Tense inconsistency"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Subject-verb Agreement"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Pronoun-antecedent agreement"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Read the following mail and answer questions 1 to 4 that follow.\nDear Ms. Shwetha Tandon,\nI am writing to invite you to the 20th Academic Council Meeting of VSTP University, Shillong. The council would meet to\nfinalise the task sheet for the year 2022-23. The details and agenda for the meeting is attached below. I request you to\nconfirm your participation so as to reserve the flight tickets. Kindly write to me in case you need any clarification.\nSincerely,\nArun Kumar\nSecretary to the Registrar,\nVSTP University, Shillong"
+        },
+        {
+          "kind": "text",
+          "value": "Which among the following is not the function of a supporting sentence?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Supporting sentences explain, elaborate and justify the topic sentence; 'reinforce' is the role of a concluding\nsentence."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "To explain or elaborate"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To justify"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To reinforce"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Read the following mail and answer questions 1 to 4 that follow.\nDear Ms. Shwetha Tandon,\nI am writing to invite you to the 20th Academic Council Meeting of VSTP University, Shillong. The council would meet to\nfinalise the task sheet for the year 2022-23. The details and agenda for the meeting is attached below. I request you to\nconfirm your participation so as to reserve the flight tickets. Kindly write to me in case you need any clarification.\nSincerely,\nArun Kumar\nSecretary to the Registrar,\nVSTP University, Shillong"
+        },
+        {
+          "kind": "text",
+          "value": "In formal academic writing the word 'overall' can be used to express certainty."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "'Overall' is a summarising/generalising hedge, not a marker of certainty."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    }
+  ]
+}

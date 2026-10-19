@@ -1,0 +1,198 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 1 · Graded Assignment · Week 9",
+  "subject": "English 1",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What among the following is not true about presentations?"
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Presentations are time-bound; being allowed a longer period of time is not true of them."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "They have a specialized audience."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "They are allowed a longer period of time."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "They must be well researched."
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which is the right order in the development of a presentation?\ni) Brainstorm ii) research iii) outline iv) edit v) message"
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The correct development order is research, brainstorm, message, outline, edit (ii, i, v, iii, iv)."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "i, iii, ii, v, iv"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "i, ii, iii, v, iv"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "ii, i, iii, v, iv"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "ii, i, v, iii, iv"
+          }
+        ]
+      ],
+      "correct_answer": 3
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which among the following is a must in your slide deck?"
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "An overview slide is essential in a slide deck to orient the audience."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Textual slide"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Overview slide"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both a and b"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Slides in a presentation are allowed to be customized depending upon the audience."
+        }
+      ],
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Slides should be tailored to suit the specific audience of the presentation."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which among the following is not true of a GD?"
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "A GD expects interaction toward resolution, not speakers merely putting forth arguments in isolation."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "They prefer resolution of the topic being discussed."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "They expect the speakers to just put forth their arguments."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "They test the speaker's value system as deemed fit for the company or institution."
+          }
+        ]
+      ],
+      "correct_answer": 1
+    }
+  ]
+}
