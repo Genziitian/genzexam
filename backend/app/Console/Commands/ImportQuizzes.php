@@ -160,18 +160,25 @@ class ImportQuizzes extends Command
                 continue;
             }
 
-            DB::transaction(function () use ($course, $weekId, $section, $title, $rows, $importer) {
-                $quiz = Quiz::create([
-                    'course_id'       => $course->id,
-                    'week_id'         => $weekId,
-                    'section'         => $section,
-                    'title'           => $title,
-                    'is_active'       => true,
-                    'approval_status' => 'approved',
-                ]);
+            try {
+                DB::transaction(function () use ($course, $weekId, $section, $title, $rows, $importer) {
+                    $quiz = Quiz::create([
+                        'course_id'       => $course->id,
+                        'week_id'         => $weekId,
+                        'section'         => $section,
+                        'title'           => $title,
+                        'is_active'       => true,
+                        'approval_status' => 'approved',
+                    ]);
 
-                $importer->persist($quiz->id, $rows);
-            });
+                    $importer->persist($quiz->id, $rows);
+                });
+            } catch (\Throwable $e) {
+                // One bad paper must not stop the rest of the folder; the transaction already rolled it back.
+                $this->error("  [FAIL] {$baseName}: " . mb_substr($e->getMessage(), 0, 160));
+                $failed++;
+                continue;
+            }
 
             $this->info("  [OK] Created: {$title} ({$section}, " . count($rows) . " Qs)");
             $created++;
