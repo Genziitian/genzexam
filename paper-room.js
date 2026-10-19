@@ -1510,7 +1510,8 @@
       (set
         ? '<div class="pr-pt-chips"><button type="button" class="pr-pt-btn" data-action="pt-add" data-min="5">+5 min</button><button type="button" class="pr-pt-btn" data-action="pt-add" data-min="10">+10 min</button><button type="button" class="pr-pt-btn" data-action="pt-add" data-min="15">+15 min</button></div>' +
           '<div class="pr-pt-row"><button type="button" class="pr-pt-btn" data-action="pt-pause" style="flex:1">' + (st.pt.running ? "Pause" : "Resume") + '</button><button type="button" class="pr-pt-btn" data-action="pt-reset" style="flex:1">Reset</button></div>'
-        : '<div class="pr-pt-row"><input type="number" id="pt-min" min="1" max="120" inputmode="numeric" placeholder="Minutes (1-120)" aria-label="Minutes, up to 120"><button type="button" class="pr-pt-btn primary" data-action="pt-start">Start</button></div>') +
+        : '<div class="pr-pt-chips"><button type="button" class="pr-pt-btn" data-action="pt-add" data-min="15">15 min</button><button type="button" class="pr-pt-btn" data-action="pt-add" data-min="30">30 min</button><button type="button" class="pr-pt-btn" data-action="pt-add" data-min="45">45 min</button></div>' +
+          '<div class="pr-pt-row"><input type="number" id="pt-min" min="1" max="120" inputmode="numeric" placeholder="Minutes (1-120)" aria-label="Minutes, up to 120"><button type="button" class="pr-pt-btn primary" data-action="pt-start">Start</button></div>') +
       '</div><button type="button" class="pr-mode-btn on" data-action="practice-toggle">Exit practice mode</button>'
     );
   }
