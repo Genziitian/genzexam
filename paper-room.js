@@ -294,6 +294,8 @@
   function looksLikeCode(text) {
     const t = String(text || "").trim();
     if (/```|!\[[^\n]*?\]\(/.test(t)) return false;
+    if (/\$|\\\(|\\\[|\$\$|\\[a-zA-Z]+/.test(t)) return false;
+    if (/\bfor\s+(?:all|each)\b/i.test(t)) return false;
     const keyword = /\b(if|else|while|for|return|print|Procedure|End)\s*[({\s]/.test(t);
     return (/[{}]/.test(t) && keyword) || (keyword && /[<>!]=?\s*\w+\s*[({]/.test(t));
   }
