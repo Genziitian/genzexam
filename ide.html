@@ -89,7 +89,10 @@
   .group h2::after { content: ""; flex: 1; height: 1px; background: var(--line); }
   .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 14px; }
   .tile { --a: #6366f1; --b: #8b5cf6; position: relative; display: flex; flex-direction: column; gap: 10px; padding: 18px; border: 1px solid var(--line); border-radius: 16px; background: var(--panel); overflow: hidden; transition: transform .15s, border-color .15s, box-shadow .15s; }
-  .tile.o2 { --a: #0ea5e9; --b: #14b8a6; }
+  .tile.t-oppe2 { --a: #0ea5e9; --b: #14b8a6; }
+  .tile.t-grpa { --a: #16a34a; --b: #84cc16; }
+  .tile.t-quiz1 { --a: #f59e0b; --b: #f97316; }
+  .tile.t-endterm { --a: #e11d48; --b: #f472b6; }
   .tile::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 4px; background: linear-gradient(90deg, var(--a), var(--b)); }
   .tile:hover { transform: translateY(-3px); border-color: var(--a); box-shadow: 0 12px 30px -14px var(--a); }
   .tile .tag { font: 700 11px/1 ui-monospace, Menlo, monospace; letter-spacing: .1em; text-transform: uppercase; color: var(--a); }
@@ -123,8 +126,8 @@
 <section class="home" id="home" hidden>
   <div class="hero"><div class="hero-in">
     <span class="eyebrow"><i></i>Live coding practice</span>
-    <h1>Crack the <span id="heroCourse">Python</span> OPPE.<br>One paper at a time.</h1>
-    <p>Real past-year OPPE questions with a built-in editor and instant test cases. Pick a set, solve it start to finish, and track what you have cleared.</p>
+    <h1>Master <span id="heroCourse">Python</span> coding.<br>One paper at a time.</h1>
+    <p>GrPA, Quiz, OPPE and End Term coding questions with a built-in editor and instant test cases. Pick a set, solve it start to finish, and track what you have cleared.</p>
     <div class="stats" id="stats"></div>
   </div></div>
   <div class="wrap" style="padding-bottom:40px">
@@ -216,7 +219,16 @@
   }
 
   // Titles look like "<paper> · P1: <name>"; the paper part groups problems, the rest is shown as the question name.
-  function split(p) { var m = /^(.*?) · (P\d+: .*)$/.exec(p.title); return m ? { paper: m[1], name: m[2] } : { paper: p.week_number ? "Week " + p.week_number : "Practice problems", name: p.title }; }
+  // Types a programming course can have, in display order. A title starting with one of these decides the type.
+  var TYPES = [["GrPA", /^GrPA/i], ["Quiz 1", /^Quiz ?1\b/i], ["OPPE 1", /^OPPE ?1\b/i], ["OPPE 2", /^OPPE ?2\b/i], ["End Term", /^End ?Term/i]];
+  function typeOf(title) { for (var i = 0; i < TYPES.length; i++) if (TYPES[i][1].test(title)) return TYPES[i][0]; return null; }
+  function split(p) {
+    var m = /^(.*?) · (P\d+: .*)$/.exec(p.title);
+    if (m) return { paper: m[1], name: m[2] };
+    // One-question items (a whole GrPA, for example) are grouped by week under their type.
+    var t = typeOf(p.title) || "Practice";
+    return { paper: t + (p.week_number ? " · Week " + p.week_number : ""), name: p.title };
+  }
 
   // ---- tabs
   document.querySelectorAll("[data-tab]").forEach(function (b) {
@@ -436,7 +448,14 @@
     openProblem(id || problems[0].id);
   }
   var filter = "all";
-  function parsePaper(name) { var m = /^(OPPE \d) \((.+?)\) Set (\d+)$/.exec(name); return m ? { exam: m[1], session: m[2], set: m[3] } : { exam: "Practice", session: "All papers", set: "" }; }
+  function parsePaper(name) {
+    var m = /^(.+?) \((.+?)\) Set (\d+)$/.exec(name);
+    if (m) return { exam: typeOf(m[1]) || m[1], session: m[2], set: m[3] };
+    var w = /^(.+?) · (Week \d+)$/.exec(name);
+    if (w) return { exam: typeOf(w[1]) || w[1], session: w[2], set: "" };
+    return { exam: typeOf(name) || "Practice", session: "All questions", set: "" };
+  }
+  function typeClass(exam) { return "t-" + exam.toLowerCase().replace(/[^a-z0-9]/g, ""); }
   function showHome() {
     current = null; problems = [];
     $("status").hidden = true; $("app").hidden = true; $("home").hidden = false; document.body.classList.add("in-home");
@@ -447,6 +466,8 @@
       pp.done = pp.problems.filter(function (p) { return done.indexOf(p.id) >= 0; }).length; solved += pp.done;
       if (exams.indexOf(pp.info.exam) < 0) exams.push(pp.info.exam);
     });
+    // Only the course's own exam types become filters; anything else shows under "All papers".
+    exams = TYPES.map(function (t) { return t[0]; }).filter(function (t) { return exams.indexOf(t) >= 0; });
     $("stats").textContent = "";
     [[papers.length, "Papers"], [total, "Questions"], [solved, "Solved"]].forEach(function (x) { var d = el("div", "stat"); d.appendChild(el("b", "", String(x[0]))); d.appendChild(el("small", "", x[1])); $("stats").appendChild(d); });
     var chips = $("chips"); chips.textContent = "";
@@ -466,9 +487,9 @@
       var g = el("div", "group"); g.appendChild(el("h2", "", key));
       var grid = el("div", "grid");
       groups[key].forEach(function (pp) {
-        var t = el("div", "tile" + (pp.info.exam === "OPPE 2" ? " o2" : ""));
+        var t = el("div", "tile " + typeClass(pp.info.exam));
         t.appendChild(el("div", "tag", pp.info.exam + " \u00b7 " + pp.info.session));
-        var n = el("div", "num", pp.info.set ? "Set " + pp.info.set : pp.name); t.appendChild(n);
+        var n = el("div", "num", pp.info.set ? "Set " + pp.info.set : pp.info.session); t.appendChild(n);
         var dots = el("div", "dots");
         pp.problems.forEach(function (p) { dots.appendChild(el("i", done.indexOf(p.id) >= 0 ? "done" : "")); });
         t.appendChild(dots);

@@ -25,6 +25,11 @@ FOR EACH PROBLEM, DECIDE ITS TYPE
   student's part must never read input or print anything itself.
   Copy given code exactly as printed, including indentation.
 
+TITLE RULE (this decides where the question appears)
+Start every title with the exam type the PDF belongs to: "GrPA", "Quiz 1", "OPPE 1", "OPPE 2" or "End Term".
+Use "<type> (<session>) Set <n> · P<k>: <name>" for a numbered set, for example "OPPE 1 (2025 May) Set 2 · P3: Vowel count".
+For a single question that is its own item (such as one GrPA), use the plain name, for example "GrPA 1 - Variables and Assignment", and set its week.
+
 JSON FIELDS (one object per problem, in PDF order)
 {
   "position": 1,
