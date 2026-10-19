@@ -711,20 +711,30 @@
   function paperImage(value) {
     const p = String(value || "").trim();
     if (!p || /[\s"'<>\\]/.test(p)) return "";
-    const root = API.replace(/\/api$/i, "");
-    let origin = root;
+    let origin = "https://labapi.genziitian.in";
     try {
       origin = new URL(API).origin;
     } catch (_) {}
-    if (/^https:\/\//i.test(p)) return p;
+    const webOrigin =
+      typeof location !== "undefined" && location.origin
+        ? location.origin
+        : "https://quiz.genziitian.in";
+    if (/^https?:\/\//i.test(p)) return p;
     if (/^[a-z][a-z0-9+.-]*:/i.test(p)) return "";
-    if (p.startsWith("/assets/")) return (typeof location !== "undefined" && location.origin ? location.origin : "https://quiz.genziitian.in") + p;
-    if (p.startsWith("/storage/")) return root + p;
-    if (p.startsWith("/question-images/")) return root + "/storage" + p;
-    if (p.startsWith("assets/")) return (typeof location !== "undefined" && location.origin ? location.origin : "https://quiz.genziitian.in") + "/" + p;
-    if (p.startsWith("question-images/")) return root + "/storage/" + p;
+    if (p.startsWith("/assets/")) return webOrigin + p;
+    if (p.startsWith("assets/")) return webOrigin + "/" + p;
+    if (p.startsWith("/question-crops/")) return webOrigin + "/assets/exam-examples" + p;
+    if (p.startsWith("question-crops/")) return webOrigin + "/assets/exam-examples/" + p;
+    if (p === "oct2022_q1_figure1.png" || p.endsWith("/oct2022_q1_figure1.png"))
+      return webOrigin + "/assets/exam-examples/question-crops/mathematics-1/quiz1/oct2022_q1_figure1.png";
+    if (p.startsWith("/storage/")) return origin + p;
+    if (p.startsWith("storage/")) return origin + "/" + p;
+    if (p.startsWith("/question-images/") || p.startsWith("/avatars/")) return origin + "/storage" + p;
+    if (p.startsWith("question-images/") || p.startsWith("avatars/")) return origin + "/storage/" + p;
+    if (p.startsWith("/public/")) return origin + p;
+    if (p.startsWith("public/")) return origin + "/" + p;
     if (p.startsWith("/")) return origin + p;
-    return root + "/" + p;
+    return origin + "/" + p;
   }
   function extractProcedureSteps(rawText) {
     const text = String(rawText || "");
@@ -1601,6 +1611,131 @@
     short_answer: "SHORT ANSWER",
     comprehension: "PASSAGE",
   };
+
+  /* ---------------------------- passage ---------------------------- */
+  function cleanPassageHeading(text) {
+    return String(text || "").trim()
+      .replace(/^(?:📖\s*)?Passage\s*(?:\/|\:)\s*(?:Context\s*:?)?\s*/i, "")
+      .replace(/^Comprehension\s*(?:Type\s*Question)?\s*:\s*/i, "")
+      .trim();
+  }
+  function parsePassageScope(text) {
+    const m = String(text || "").match(/(?:Questions?|Q)\s*(\d+)\s*(?:to|–|-)\s*(?:Q\s*)?(\d+)/i);
+    if (m) {
+      const start = parseInt(m[1], 10);
+      const end = parseInt(m[2], 10);
+      if (end >= start) return end - start + 1;
+    }
+    return null;
+  }
+  function isPassageOnly(q) {
+    if (!q) return false;
+    if (q.type === "comprehension" || q.type === "passage") return true;
+    const noAnswers = (!q.options || !q.options.length) && q.numerical_answer == null && (!q.acceptable_answers || !q.acceptable_answers.length);
+    const stem = String(q.stem || q.question_stem || (typeof q.prompt === "string" ? q.prompt : "")).trim();
+    if (noAnswers && Number(q.marks || 0) === 0 && (/^(?:📖\s*)?passage\b/i.test(stem) || /^comprehension\b/i.test(stem))) {
+      return true;
+    }
+    return false;
+  }
+  function splitEmbeddedPassage(q) {
+    if (!q) return null;
+    if (Array.isArray(q.prompt) && q.prompt.length >= 2) {
+      const b0 = String((q.prompt[0] && (q.prompt[0].value || q.prompt[0].text)) || "").trim();
+      if (/(?:passage|context|comprehension|subquestions?)/i.test(b0) || /^(?:📖\s*)?passage\b/i.test(b0) || /Q\d+[–-]\s*Q\d+/i.test(b0)) {
+        const qIndex = q.prompt.length - 1;
+        const passBlocks = q.prompt.slice(0, qIndex).map((b, i) => {
+          if (i === 0 && b && (b.value || b.text)) {
+            const val = cleanPassageHeading(b.value || b.text);
+            return b.value != null ? { ...b, value: val } : { ...b, text: val };
+          }
+          return b;
+        });
+        const qBlocks = q.prompt.slice(qIndex);
+        return {
+          passageBlocks: passBlocks,
+          promptBlocks: qBlocks,
+        };
+      }
+    }
+    const stemText = String(
+      q.stem != null
+        ? q.stem
+        : q.question_stem != null
+          ? q.question_stem
+          : Array.isArray(q.prompt)
+            ? q.prompt.map((b) => (b && typeof b === "object" ? b.value || b.text || "" : String(b || ""))).join("\n\n")
+            : typeof q.prompt === "string"
+              ? q.prompt
+              : ""
+    ).trim();
+    if (!stemText) return null;
+    const qSplit = stemText.match(/^([\s\S]*?)\n+(?:Question|Subquestion)\s*:\s*\n*([\s\S]+)$/i);
+    if (qSplit && /passage|context|comprehension/i.test(qSplit[1])) {
+      return {
+        passageText: cleanPassageHeading(qSplit[1]),
+        promptText: qSplit[2].trim(),
+      };
+    }
+    const bSplit = stemText.match(/^([\s\S]*?(?:Based on the above [^\n]*?,?\s*answer the [^\n]*?subquestions\.?|answer the (?:given|following) subquestions\.?))\s*\n+([\s\S]+)$/i);
+    if (bSplit && /passage|context|comprehension/i.test(bSplit[1])) {
+      return {
+        passageText: cleanPassageHeading(bSplit[1]),
+        promptText: bSplit[2].trim(),
+      };
+    }
+    if (/^(?:📖\s*)?Passage\s*(?:\/|\:)\s*(?:Context\s*:?)?|^Comprehension\s*(?:Type\s*Question)?\s*:\s*/i.test(stemText)) {
+      const cleaned = cleanPassageHeading(stemText);
+      const paras = cleaned.split(/\n{2,}/);
+      if (paras.length >= 2) {
+        const last = paras[paras.length - 1].trim();
+        if (/\?$/.test(last) || /^(?:What|Find|Calculate|Which|Choose|Determine|How|If|The value of|Enter the)\b/i.test(last)) {
+          return {
+            passageText: paras.slice(0, -1).join("\n\n").trim(),
+            promptText: last,
+          };
+        }
+      }
+    }
+    return null;
+  }
+  function prepareExamQuestions(exam) {
+    if (!exam || !Array.isArray(exam.questions) || exam._prepared) return;
+    exam._prepared = true;
+    let activePassage = null;
+    const processed = [];
+    for (const q of exam.questions) {
+      if (isPassageOnly(q)) {
+        const stem = String(q.stem || q.question_stem || (typeof q.prompt === "string" ? q.prompt : (Array.isArray(q.prompt) ? q.prompt.map((b) => b.value || "").join("\n") : "")));
+        activePassage = {
+          id: q.id,
+          html: contentHtml(q.prompt || q.stem),
+          scopeCount: parsePassageScope(stem),
+        };
+        continue;
+      }
+      const split = splitEmbeddedPassage(q);
+      if (split) {
+        q._passageHtml = split.passageBlocks ? contentHtml(split.passageBlocks) : contentHtml(split.passageText);
+        q._promptHtml = split.promptBlocks ? contentHtml(split.promptBlocks) : contentHtml(split.promptText);
+        activePassage = { id: q.id, html: q._passageHtml, scopeCount: null };
+      } else if (activePassage) {
+        q._passageHtml = activePassage.html;
+        q._promptHtml = contentHtml(q.prompt);
+        if (activePassage.scopeCount != null) {
+          activePassage.scopeCount--;
+          if (activePassage.scopeCount <= 0) activePassage = null;
+        }
+      } else {
+        q._passageHtml = null;
+        q._promptHtml = contentHtml(q.prompt);
+      }
+      processed.push(q);
+    }
+    exam.rawQuestions = exam.questions;
+    exam.questions = processed;
+  }
+
   const roomKey = () => `ep_room:${app.exam?.id || ""}`;
   function roomMemory() {
     if (app.roomFor === app.exam?.id) return;
@@ -1693,6 +1828,7 @@
       sess = s.session || {};
     if (sess.status === "locked") return renderLockoutScreen(e, sess);
     roomMemory();
+    prepareExamQuestions(e);
     const list = e.questions || [];
     const total = list.length;
     app.roomIndex = Math.min(Math.max(0, app.roomIndex || 0), Math.max(0, total - 1));
@@ -1834,8 +1970,21 @@
   ` : `
     <article class="ep-question" data-question-id="${esc(q.id)}">
     <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;border-bottom:1px solid #e2e8f0;padding-bottom:12px;margin-bottom:18px;"><div style="display:flex;align-items:center;gap:10px;"><span style="font-size:17px;font-weight:800;color:#0f172a;">Question ${index + 1} of ${total}</span><span style="padding:3px 8px;border-radius:6px;background:#e0f2fe;color:#0369a1;font-size:11px;font-weight:700;">${esc(ROOM_TYPE[q.type] || String(q.type || "").toUpperCase())}</span></div>${passage ? "" : `<div style="font-size:12px;font-weight:700;color:#3a3fd8;">+${Number(q.marks || 0)} Marks${Number(q.negative) ? ` | -${Number(q.negative)} Negative` : ""}</div>`}</div>
-    <div class="pr-live-prompt" style="font-size:15px;color:#0f172a;line-height:1.6;font-weight:500;margin-bottom:14px;">${contentHtml(q.prompt)}</div>
-    <div style="margin-bottom:28px;">${roomInputs(q, locked)}</div>
+    ${q._passageHtml ? `
+      <div class="pr-passage-split-grid">
+        <div class="pr-passage-col"><div class="pr-passage-card">
+          <div class="pr-passage-header"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span>Passage</span></div>
+          <div class="pr-passage-body">${q._passageHtml}</div>
+        </div></div>
+        <div class="pr-question-col">
+          <div class="pr-live-prompt" style="font-size:15px;color:#0f172a;line-height:1.6;font-weight:500;margin-bottom:14px;">${q._promptHtml || contentHtml(q.prompt)}</div>
+          <div style="margin-bottom:28px;">${roomInputs(q, locked)}</div>
+        </div>
+      </div>
+    ` : `
+      <div class="pr-live-prompt" style="font-size:15px;color:#0f172a;line-height:1.6;font-weight:500;margin-bottom:14px;">${contentHtml(q.prompt)}</div>
+      <div style="margin-bottom:28px;">${roomInputs(q, locked)}</div>
+    `}
     </article>
     <div style="display:none;" aria-hidden="true">${list.map((item, i) => i === index ? "" : `<div class="ep-question" data-question-id="${esc(item.id)}">${contentHtml(item.prompt)}</div>`).join("")}</div>
     <div class="pr-live-actions" style="margin-top:auto;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;border-top:1px solid #e2e8f0;padding-top:18px;"><div style="display:flex;gap:8px;"><button type="button" data-action="room-prev" ${index === 0 ? "disabled" : ""} style="background:#fff;border:1px solid #cbd5e1;color:#475569;padding:9px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;">← Prev</button>${passage ? "" : `<button type="button" data-action="clear-answer" data-id="${esc(q.id)}" ${locked ? "disabled" : ""} style="background:#fff;border:1px solid #cbd5e1;color:#64748b;padding:9px 14px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;">Clear</button>`}</div><div style="display:flex;gap:8px;">${passage ? "" : `<button type="button" data-action="room-review" style="background:#f5f3ff;border:1px solid #c4b5fd;color:#6d28d9;padding:9px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;">${app.review[q.id] ? "Marked for Review" : "Review &amp; Next"}</button>`}<button type="button" data-action="room-next" style="background:#3a3fd8;color:#fff;border:none;padding:9px 20px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;">${index === total - 1 ? "Save Response" : passage ? "Next →" : "Save &amp; Next →"}</button></div></div>
