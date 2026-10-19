@@ -1,0 +1,45 @@
+/* Manager > Analytics redesign. The page is compiled React, so it is restyled from outside:
+   app-enhancements.js tags its root with [data-ql-analytics]. Hand-written with its own dark values. */
+:root{--an-card:#fff;--an-line:#e4e7f4;--an-ink:#0e1330;--an-muted:#6a7194;--an-track:#eef0fb;--an-shadow:0 16px 36px -26px rgba(14,19,48,.45);
+  --an-c1:#3a3fd8;--an-c2:#0e9f6e;--an-c3:#f59e0b;--an-c4:#0ea5e9}
+:root[data-theme=dark]{--an-card:#151a25;--an-line:#2a3446;--an-ink:#eef0f8;--an-muted:#9ea9b9;--an-track:#1d2533;--an-shadow:0 16px 36px -24px rgba(0,0,0,.7);
+  --an-c1:#7479f2;--an-c2:#34d399;--an-c3:#fbbf24;--an-c4:#38bdf8}
+
+[data-ql-analytics]{display:flex;flex-direction:column;gap:22px}
+[data-ql-analytics]>div:first-child h1{font-size:28px;font-weight:800;letter-spacing:-.02em;color:var(--an-ink)}
+[data-ql-analytics]>div:first-child p{color:var(--an-muted)}
+
+/* KPI cards */
+[data-ql-analytics]>div:nth-child(2){gap:16px}
+[data-ql-analytics]>div:nth-child(2)>div{--c:var(--an-c1);position:relative;overflow:hidden;padding:22px 22px 20px 26px;border:1px solid var(--an-line);border-radius:20px;background:var(--an-card);box-shadow:var(--an-shadow);transition:transform .15s}
+[data-ql-analytics]>div:nth-child(2)>div:hover{transform:translateY(-2px)}
+[data-ql-analytics]>div:nth-child(2)>div:nth-child(2){--c:var(--an-c2)}
+[data-ql-analytics]>div:nth-child(2)>div:nth-child(3){--c:var(--an-c3)}
+[data-ql-analytics]>div:nth-child(2)>div:nth-child(4){--c:var(--an-c4)}
+[data-ql-analytics]>div:nth-child(2)>div::before{content:"";position:absolute;left:0;top:18px;bottom:18px;width:5px;border-radius:0 5px 5px 0;background:var(--c)}
+[data-ql-analytics]>div:nth-child(2)>div::after{content:"";position:absolute;right:-26px;top:-26px;width:96px;height:96px;border-radius:50%;background:color-mix(in srgb,var(--c) 14%,transparent)}
+[data-ql-analytics]>div:nth-child(2)>div p:first-child{position:relative;z-index:1;font-size:2.5rem;font-weight:800;letter-spacing:-.03em;color:var(--an-ink);font-variant-numeric:tabular-nums}
+[data-ql-analytics]>div:nth-child(2)>div p:last-child{position:relative;z-index:1;margin-top:8px;font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--c)}
+
+/* chart cards */
+[data-ql-analytics]>div:nth-child(3){gap:18px}
+[data-ql-analytics]>div:nth-child(3)>div{padding:22px;border:1px solid var(--an-line);border-radius:22px;background:var(--an-card);box-shadow:var(--an-shadow)}
+[data-ql-analytics]>div:nth-child(3)>div h3{font-size:16px;font-weight:800;color:var(--an-ink);letter-spacing:-.01em}
+[data-ql-analytics]>div:nth-child(3)>div h3+p{color:var(--an-muted);font-size:12px}
+[data-ql-analytics] select{padding:7px 12px!important;border:1px solid var(--an-line)!important;border-radius:999px!important;background:var(--an-track)!important;color:var(--an-ink)!important;font-weight:600}
+
+/* vertical bar charts: give each column a real height so the % heights work (they collapsed to thin lines) */
+[data-ql-analytics] .flex-1.items-end{background:repeating-linear-gradient(to top,var(--an-line) 0 1px,transparent 1px 25%);border-radius:6px}
+[data-ql-analytics] .flex-1.items-end>.group{height:100%;position:relative}
+[data-ql-analytics] .flex-1.items-end>.group::before{content:"";position:absolute;bottom:0;left:22%;right:22%;height:4px;border-radius:3px;background:var(--an-track)}
+[data-ql-analytics] .flex-1.items-end>.group>div{position:relative;max-width:34px;margin:0 auto;border-radius:9px 9px 4px 4px!important;background-image:linear-gradient(180deg,rgba(255,255,255,.38),rgba(255,255,255,0) 65%)!important;transition:filter .15s}
+[data-ql-analytics] .flex-1.items-end>.group:hover>div{filter:brightness(1.08)}
+[data-ql-analytics] .flex-1.items-end>.group>span{padding:2px 7px;border-radius:999px;background:var(--an-ink);color:var(--an-card);font-weight:700}
+[data-ql-analytics] .text-slate-400{color:var(--an-muted)!important}
+
+/* attempts by course: track + rounded bars */
+[data-ql-analytics] .justify-center.overflow-y-auto{gap:12px}
+[data-ql-analytics] .justify-center.overflow-y-auto>div>div:first-child{width:9rem;text-align:left;font-weight:600;color:var(--an-ink)!important}
+[data-ql-analytics] .justify-center.overflow-y-auto>div>div:nth-child(2){height:12px;border-radius:999px;background:var(--an-track);overflow:hidden}
+[data-ql-analytics] .justify-center.overflow-y-auto>div>div:nth-child(2)>div{height:100%!important;border-radius:999px;background-image:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.28))!important}
+[data-ql-analytics] .justify-center.overflow-y-auto>div>div:last-child{width:3rem;font-weight:800;font-size:13px;color:var(--an-ink)!important}
