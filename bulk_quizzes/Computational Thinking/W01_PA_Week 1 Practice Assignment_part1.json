@@ -9,7 +9,16 @@
       "prompt": [
         {
           "kind": "text",
-          "value": "What will be the values of A, B and C after execution of the following procedure using the \"Scores\" dataset? Step 1: Arrange all cards in a single pile called Pile 1 Step 2: Maintain three variables A, B, C and initialize them to 0 Step 3: If Pile 1 is empty then stop the iteration Step 4: Read the top card in Pile 1 Step 5: If Date of Birth < \"1 May\" then increment A Step 6: If Date of Birth > \"30 April\" and Date of Birth < \"1 September\" then increment B Step 7: If Date of Birth > \"31 August\" then increment C Step 8: Move the current card to another pile called Pile 2 and repeat from step 3 The value of A is _ _ _ _ ?"
+          "value": "What will be the values of A, B and C after execution of the following procedure using the \"Scores\" dataset?"
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "Step 1: Arrange all cards in a single pile called Pile 1\nStep 2: Maintain three variables A, B, C and initialize them to 0\nStep 3: If Pile 1 is empty then stop the iteration\nStep 4: Read the top card in Pile 1\nStep 5: If Date of Birth < \"1 May\" then increment A\nStep 6: If Date of Birth > \"30 April\" and Date of Birth < \"1 September\" then increment B\nStep 7: If Date of Birth > \"31 August\" then increment C\nStep 8: Move the current card to another pile called Pile 2 and repeat from step 3"
+        },
+        {
+          "kind": "text",
+          "value": "The value of A is _ _ _ _ ?"
         }
       ],
       "numerical_answer": 10.0,
@@ -22,7 +31,16 @@
       "prompt": [
         {
           "kind": "text",
-          "value": "What will be the values of A, B and C after execution of the following procedure using the \"Scores\" dataset? Step 1: Arrange all cards in a single pile called Pile 1 Step 2: Maintain three variables A, B, C and initialize them to 0 Step 3: If Pile 1 is empty then stop the iteration Step 4: Read the top card in Pile 1 Step 5: If Date of Birth < \"1 May\" then increment A Step 6: If Date of Birth > \"30 April\" and Date of Birth < \"1 September\" then increment B Step 7: If Date of Birth > \"31 August\" then increment C Step 8: Move the current card to another pile called Pile 2 and repeat from step 3 The value of B is _ _ _ _ ?"
+          "value": "What will be the values of A, B and C after execution of the following procedure using the \"Scores\" dataset?"
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "Step 1: Arrange all cards in a single pile called Pile 1\nStep 2: Maintain three variables A, B, C and initialize them to 0\nStep 3: If Pile 1 is empty then stop the iteration\nStep 4: Read the top card in Pile 1\nStep 5: If Date of Birth < \"1 May\" then increment A\nStep 6: If Date of Birth > \"30 April\" and Date of Birth < \"1 September\" then increment B\nStep 7: If Date of Birth > \"31 August\" then increment C\nStep 8: Move the current card to another pile called Pile 2 and repeat from step 3"
+        },
+        {
+          "kind": "text",
+          "value": "The value of B is _ _ _ _ ?"
         }
       ],
       "numerical_answer": 9.0,
@@ -35,7 +53,16 @@
       "prompt": [
         {
           "kind": "text",
-          "value": "What will be the values of A, B and C after execution of the following procedure using the \"Scores\" dataset? Step 1: Arrange all cards in a single pile called Pile 1 Step 2: Maintain three variables A, B, C and initialize them to 0 Step 3: If Pile 1 is empty then stop the iteration Step 4: Read the top card in Pile 1 Step 5: If Date of Birth < \"1 May\" then increment A Step 6: If Date of Birth > \"30 April\" and Date of Birth < \"1 September\" then increment B Step 7: If Date of Birth > \"31 August\" then increment C Step 8: Move the current card to another pile called Pile 2 and repeat from step 3 The value of C is _ _ _ _ ?"
+          "value": "What will be the values of A, B and C after execution of the following procedure using the \"Scores\" dataset?"
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "Step 1: Arrange all cards in a single pile called Pile 1\nStep 2: Maintain three variables A, B, C and initialize them to 0\nStep 3: If Pile 1 is empty then stop the iteration\nStep 4: Read the top card in Pile 1\nStep 5: If Date of Birth < \"1 May\" then increment A\nStep 6: If Date of Birth > \"30 April\" and Date of Birth < \"1 September\" then increment B\nStep 7: If Date of Birth > \"31 August\" then increment C\nStep 8: Move the current card to another pile called Pile 2 and repeat from step 3"
+        },
+        {
+          "kind": "text",
+          "value": "The value of C is _ _ _ _ ?"
         }
       ],
       "numerical_answer": 11.0,
@@ -54,7 +81,12 @@
       "prompt": [
         {
           "kind": "text",
-          "value": "The following procedure is executed using the \"Shopping Bills\" dataset. What will X represent at the end of execution? Step 1: Arrange all cards in a single pile called Pile 1 Step 2: Initialize variables A, B and X to 0 Step 3: If Pile 1 is empty then stop the iteration and execute step 7 Step 4: Read the top card in Pile 1 Step 5: If the Shop name is not \"SV Stores\" then add Total bill amount to A and increment B Step 6: Move the current card to another pile called Pile 2 and repeat from step 3 Step 7: Divide A by B and store the result in X"
+          "value": "The following procedure is executed using the \"Shopping Bills\" dataset. What will X represent at the end of execution?"
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "Step 1: Arrange all cards in a single pile called Pile 1\nStep 2: Initialize variables A, B and X to 0\nStep 3: If Pile 1 is empty then stop the iteration and execute step 7\nStep 4: Read the top card in Pile 1\nStep 5: If the Shop name is not \"SV Stores\" then add Total bill amount to A and increment B\nStep 6: Move the current card to another pile called Pile 2 and repeat from step 3\nStep 7: Divide A by B and store the result in X"
         }
       ],
       "options": [
@@ -98,7 +130,12 @@
       "prompt": [
         {
           "kind": "text",
-          "value": "The following pseudocode is executed using the \"Words\" dataset. What will A represent at the end of execution? Step 1: Arrange all cards in a single pile called Pile 1 Step 2: Initialize variable A to 0 Step 3: If Pile 1 is empty then stop the iteration Step 4: Read the top card in Pile 1 Step 5: If the Word does not end with a full stop and Part of Speech is \"Noun\" then increment A Step 6: Move the current card to another pile called Pile 2 and repeat from step 3"
+          "value": "The following pseudocode is executed using the \"Words\" dataset. What will A represent at the end of execution?"
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "Step 1: Arrange all cards in a single pile called Pile 1\nStep 2: Initialize variable A to 0\nStep 3: If Pile 1 is empty then stop the iteration\nStep 4: Read the top card in Pile 1\nStep 5: If the Word does not end with a full stop and Part of Speech is \"Noun\" then increment A\nStep 6: Move the current card to another pile called Pile 2 and repeat from step 3"
         }
       ],
       "options": [
@@ -142,7 +179,16 @@
       "prompt": [
         {
           "kind": "text",
-          "value": "The following pseudocode is executed using the \"Scores\" dataset. Step 1: Arrange all cards in a single pile called Pile 1 Step 2: Initialize variables A and B to 1000 Step 3: If Pile 1 is empty then stop the iteration Step 4: Read the top card in Pile 1 Step 5: If Mathematics marks < A then store Mathematics marks in A Step 6: If Physics marks < B then store Physics marks in B Step 7: Move the current card to another pile called Pile 2 and repeat from step 3 The value of A is _ _ _ _ ?"
+          "value": "The following pseudocode is executed using the \"Scores\" dataset."
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "Step 1: Arrange all cards in a single pile called Pile 1\nStep 2: Initialize variables A and B to 1000\nStep 3: If Pile 1 is empty then stop the iteration\nStep 4: Read the top card in Pile 1\nStep 5: If Mathematics marks < A then store Mathematics marks in A\nStep 6: If Physics marks < B then store Physics marks in B\nStep 7: Move the current card to another pile called Pile 2 and repeat from step 3"
+        },
+        {
+          "kind": "text",
+          "value": "The value of A is _ _ _ _ ?"
         }
       ],
       "numerical_answer": 42.0,

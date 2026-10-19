@@ -46,6 +46,13 @@
     ticker: null,
     showReview: false,
     reviewIndex: 0,
+    practice: false,
+    key: null,
+    keyLoading: false,
+    revealed: {},
+    explained: {},
+    pt: { left: 0, endsAt: 0, running: false, finished: false },
+    ptTicker: null,
   };
 
   const $ = (s, root = document) => root.querySelector(s);
@@ -320,6 +327,9 @@
     root.addEventListener("click", onClick);
     root.addEventListener("change", onChange);
     root.addEventListener("input", onInput);
+    root.addEventListener("keydown", function (ev) {
+      if (ev.key === "Enter" && ev.target && ev.target.id === "pt-min") { ev.preventDefault(); ptStart(); }
+    });
   }
   function page(inner, narrow) {
     return '<section class="ep-page' + (narrow ? " ep-narrow" : "") + '">' + inner + "</section>";
@@ -538,7 +548,9 @@
       '<div class="pr-live-palette" style="flex:1;overflow-y:auto;padding:16px;"><div class="pr-live-palette-title" style="font-size:11px;font-weight:700;text-transform:uppercase;color:#64748b;margin-bottom:12px;">Question Palette</div><div class="ep-q-grid" id="pr-palette">' +
       paletteHtml() +
       "</div></div>" +
-      '<div class="pr-live-tools-box" style="padding:12px 16px;border-top:1px solid #e2e8f0;background:#ffffff;"><button type="button" data-calc="toggle" title="Open calculator" style="width:100%;background:#f1f2ff;border:1px solid #c9ccf5;color:#2a2fa8;padding:9px 10px;border-radius:8px;font-size:12px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px;">Calculator</button></div>' +
+      '<div class="pr-live-tools-box" style="padding:12px 16px;border-top:1px solid #e2e8f0;background:#ffffff;"><div id="pr-practice-box">' +
+      practiceBoxHtml() +
+      '</div><button type="button" data-calc="toggle" title="Open calculator" style="width:100%;background:#f1f2ff;border:1px solid #c9ccf5;color:#2a2fa8;padding:9px 10px;border-radius:8px;font-size:12px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px;">Calculator</button></div>' +
       '<div class="pr-live-legend" id="pr-legend" style="padding:12px 16px;border-top:1px solid #e2e8f0;background:#f8fafc;font-size:11px;color:#475569;">' +
       legendHtml() +
       "</div></aside>" +
@@ -570,6 +582,7 @@
       '">' +
       inputsHtml(q) +
       "</div>" +
+      explainHtml(q) +
       '<div class="pr-live-actions" style="margin-top:auto;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;border-top:1px solid #e2e8f0;background:#ffffff;"><div style="display:flex;gap:8px;">' +
       '<button type="button" id="btn-q-prev" data-action="prev"' +
       (index === 0 ? " disabled" : "") +
@@ -583,6 +596,9 @@
         : '<button type="button" id="btn-q-clear" data-action="clear" data-id="' +
           esc(q.id) +
           '" style="background:#fff;border:1px solid #cbd5e1;color:#64748b;padding:9px 14px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;">Clear</button>') +
+      (passage || !st.practice
+        ? ""
+        : '<button type="button" id="btn-q-reveal" class="pr-reveal-btn" data-action="reveal" data-id="' + esc(q.id) + '">Reveal answer</button>') +
       '</div><div style="display:flex;gap:8px;">' +
       (passage
         ? ""
@@ -846,6 +862,9 @@
     }
     const app = document.getElementById("ep-app");
     if (app) app.classList.toggle("pr-live", st.screen === "room");
+    if (st.screen !== "room") stopPt();
+    applyPractice();
+    if (st.practice) ptPaint();
     if (st.screen !== "room" && window.ExamCalculator) window.ExamCalculator.close();
     document.title = (st.quiz && st.quiz.title ? st.quiz.title + " · " : "") + "Paper room · Quiz LAB";
   }
@@ -1066,7 +1085,14 @@
     const target = ev.target.closest("[data-action]");
     if (!target) return;
     const action = target.dataset.action;
-    if (action === "start") start();
+    if (action === "practice-toggle") togglePractice();
+    else if (action === "pt-start") ptStart();
+    else if (action === "pt-add") ptAdd(Number(target.dataset.min));
+    else if (action === "pt-pause") ptPause();
+    else if (action === "pt-reset") ptReset();
+    else if (action === "reveal") revealAnswer(target.dataset.id);
+    else if (action === "explain") toggleExplain(target.dataset.id);
+    else if (action === "start") start();
     else if (action === "reload") location.reload();
     else if (action === "submit") submitModal();
     else if (action === "prev") go(st.current - 1);
@@ -1179,6 +1205,162 @@
     } else return;
     writeStore();
     refreshProgress();
+  }
+
+  /* ---------------------------- practice mode ----------------------------
+   * Practice mode adds a self-set countdown dial, a "Reveal answer" button and (when the question has one)
+   * an explanation. The answer key is fetched once from /quizzes/:id/practice-answers. */
+  const PT_MAX = 120 * 60;
+  const pad2 = (n) => String(n).padStart(2, "0");
+  function ptLeft() {
+    return st.pt.running ? Math.max(0, Math.ceil((st.pt.endsAt - Date.now()) / 1000)) : st.pt.left;
+  }
+  function ptText(left) {
+    return pad2(Math.floor(left / 3600)) + ":" + pad2(Math.floor((left % 3600) / 60)) + ":" + pad2(left % 60);
+  }
+  function dialSvg() {
+    let ticks = "";
+    for (let i = 0; i < 60; i++) {
+      const major = i % 5 === 0;
+      ticks += '<line class="pr-dial-tick' + (major ? " major" : "") + '" x1="60" y1="' + (major ? 8 : 10) + '" x2="60" y2="' + (major ? 16 : 13) + '" stroke-width="' + (major ? 2 : 1) + '" transform="rotate(' + i * 6 + ' 60 60)"/>';
+    }
+    let nums = "";
+    for (let n = 1; n <= 12; n++) {
+      const a = (n * 30 * Math.PI) / 180;
+      nums += '<text class="pr-dial-num" x="' + (60 + 34 * Math.sin(a)).toFixed(1) + '" y="' + (60 - 34 * Math.cos(a) + 3.5).toFixed(1) + '" text-anchor="middle" font-size="9" font-weight="700">' + n + "</text>";
+    }
+    return (
+      '<svg viewBox="0 0 120 120" role="img" aria-label="Countdown dial"><circle class="pr-dial-face" cx="60" cy="60" r="56"/>' +
+      ticks + nums +
+      '<line class="pr-hand-h" id="pt-hh" x1="60" y1="60" x2="60" y2="38" stroke-width="3.5" stroke-linecap="round"/>' +
+      '<line class="pr-hand-m" id="pt-mh" x1="60" y1="60" x2="60" y2="26" stroke-width="2.5" stroke-linecap="round"/>' +
+      '<line class="pr-hand-s" id="pt-sh" x1="60" y1="68" x2="60" y2="22" stroke-width="1.2" stroke-linecap="round"/>' +
+      '<circle class="pr-hand-dot" cx="60" cy="60" r="3.2"/></svg>'
+    );
+  }
+  function ptPaint() {
+    const left = ptLeft();
+    const rot = (id, deg) => { const n = document.getElementById(id); if (n) n.setAttribute("transform", "rotate(" + deg.toFixed(1) + " 60 60)"); };
+    rot("pt-hh", ((left / 3600) % 12) * 30);
+    rot("pt-mh", ((left / 60) % 60) * 6);
+    rot("pt-sh", (left % 60) * 6);
+    const d = document.getElementById("pt-digital");
+    if (d) {
+      d.textContent = st.pt.finished ? "Time is up" : ptText(left);
+      d.classList.toggle("up", st.pt.finished);
+    }
+  }
+  function practiceBoxHtml() {
+    if (!st.practice) return '<button type="button" class="pr-mode-btn" data-action="practice-toggle">Go to practice mode</button>';
+    const set = st.pt.running || st.pt.left > 0;
+    return (
+      '<div class="pr-pt-card">' + dialSvg() + '<div class="pr-pt-digital" id="pt-digital"></div>' +
+      '<div class="pr-pt-row"><input type="number" id="pt-min" min="1" max="120" inputmode="numeric" placeholder="Minutes (1-120)" aria-label="Minutes, up to 120"><button type="button" class="pr-pt-btn primary" data-action="pt-start">Start</button></div>' +
+      '<div class="pr-pt-chips"><button type="button" class="pr-pt-btn" data-action="pt-add" data-min="5">+5 min</button><button type="button" class="pr-pt-btn" data-action="pt-add" data-min="10">+10 min</button><button type="button" class="pr-pt-btn" data-action="pt-add" data-min="15">+15 min</button></div>' +
+      (set ? '<div class="pr-pt-row"><button type="button" class="pr-pt-btn" data-action="pt-pause" style="flex:1">' + (st.pt.running ? "Pause" : "Resume") + '</button><button type="button" class="pr-pt-btn" data-action="pt-reset" style="flex:1">Reset</button></div>' : "") +
+      '</div><button type="button" class="pr-mode-btn on" data-action="practice-toggle">Exit practice mode</button>'
+    );
+  }
+  function refreshPractice() {
+    const box = document.getElementById("pr-practice-box");
+    if (box) box.innerHTML = practiceBoxHtml();
+    ptPaint();
+  }
+  function startPt() {
+    stopPt();
+    st.ptTicker = setInterval(function () {
+      if (st.screen !== "room") return stopPt();
+      if (st.pt.running && ptLeft() <= 0) { st.pt.running = false; st.pt.left = 0; st.pt.finished = true; refreshPractice(); }
+      ptPaint();
+    }, 1000);
+  }
+  function stopPt() { clearInterval(st.ptTicker); st.ptTicker = null; }
+  function ptSet(seconds) {
+    st.pt.left = Math.min(PT_MAX, Math.max(0, seconds));
+    st.pt.endsAt = Date.now() + st.pt.left * 1000;
+    st.pt.running = st.pt.left > 0;
+    st.pt.finished = false;
+    refreshPractice();
+  }
+  function ptStart() {
+    const input = document.getElementById("pt-min");
+    const minutes = Math.floor(Number(input && input.value));
+    if (!minutes || minutes < 1) { if (input) input.focus(); return; }
+    ptSet(Math.min(120, minutes) * 60);
+    if (input) input.value = "";
+  }
+  function ptAdd(minutes) { ptSet(Math.min(PT_MAX, ptLeft() + minutes * 60)); }
+  function ptPause() {
+    if (st.pt.running) { st.pt.left = ptLeft(); st.pt.running = false; }
+    else if (st.pt.left > 0) { st.pt.endsAt = Date.now() + st.pt.left * 1000; st.pt.running = true; }
+    refreshPractice();
+  }
+  function ptReset() { st.pt = { left: 0, endsAt: 0, running: false, finished: false }; refreshPractice(); }
+  async function loadKey() {
+    if (st.key || st.keyLoading) return;
+    st.keyLoading = true;
+    try {
+      const data = await request("/quizzes/" + quizId + "/practice-answers");
+      st.key = data && data.answers && !Array.isArray(data.answers) ? data.answers : {};
+    } catch (e) {
+      st.submitError = "Could not load answers: " + (e.message || "try again");
+      const err = $("#pr-error");
+      if (err) { err.textContent = st.submitError; err.hidden = false; }
+    }
+    st.keyLoading = false;
+  }
+  async function togglePractice() {
+    st.practice = !st.practice;
+    if (st.practice) { startPt(); await loadKey(); } else stopPt();
+    render();
+    if (st.practice) ptPaint();
+  }
+  async function revealAnswer(id) {
+    await loadKey();
+    if (!st.key || !st.key[id]) return;
+    st.revealed[id] = true;
+    applyPractice();
+  }
+  function explainHtml(q) {
+    if (!st.practice || !st.key) return "";
+    const k = st.key[q.id];
+    const text = k && clean(k.explanation);
+    if (!text) return "";
+    const open = !!st.explained[q.id];
+    return (
+      '<div class="pr-explain"><button type="button" class="pr-explain-btn" data-action="explain" data-id="' + esc(q.id) + '">' + (open ? "Hide explanation" : "See explanation") + "</button>" +
+      (open ? '<div class="pr-explain-box">' + rich(text) + "</div>" : "") +
+      "</div>"
+    );
+  }
+  function toggleExplain(id) {
+    st.explained[id] = !st.explained[id];
+    const q = questions()[st.current];
+    const node = document.querySelector(".pr-explain");
+    if (!q || !node) return;
+    node.outerHTML = explainHtml(q);
+    const fresh = document.querySelector(".pr-explain");
+    if (fresh && window.ExamRichContent && window.ExamRichContent.typeset) window.ExamRichContent.typeset(fresh);
+  }
+  // Marks the correct option(s) green, or shows the numeric / short answer, for the question on screen.
+  function applyPractice() {
+    if (st.screen !== "room" || !st.practice || !st.key) return;
+    const q = questions()[st.current];
+    const k = q && st.key[q.id];
+    const box = q && document.getElementById("pr-q-" + q.id);
+    if (!k || !box || !st.revealed[q.id]) return;
+    box.querySelectorAll(".pr-key").forEach((n) => n.remove());
+    if (CHOICE.includes(q.type)) {
+      const correct = (k.correct_option_ids || []).map(String);
+      box.querySelectorAll("input[data-choice]").forEach((input) => {
+        if (correct.includes(input.value)) input.closest("label").classList.add("pr-correct");
+      });
+    } else if (q.type === "numerical" && k.numerical_answer != null && k.numerical_answer !== "") {
+      const tol = Number(k.numerical_tolerance || 0);
+      box.insertAdjacentHTML("beforeend", '<div class="pr-key">Correct answer: ' + esc(String(k.numerical_answer)) + (tol ? " (accepted within ±" + esc(String(tol)) + ")" : "") + "</div>");
+    } else if (q.type === "short_answer" && (k.short_answers || []).length) {
+      box.insertAdjacentHTML("beforeend", '<div class="pr-key">Correct answer: ' + k.short_answers.map((a) => esc(String(a))).join(" / ") + "</div>");
+    }
   }
 
   /* ---------------- leaving the room with the Back button ----------------

@@ -91,6 +91,7 @@ Route::middleware(['auth:sanctum', 'track.seen'])->group(function () {
 
     // Quizzes and attempts
     Route::get('/quizzes/{id}', [QuizController::class, 'show']);
+    Route::get('/quizzes/{id}/practice-answers', [QuizController::class, 'practiceAnswers'])->middleware('throttle:30,1');
     Route::get('/quizzes/{id}/offline-download', [QuizController::class, 'downloadForOffline']);
     Route::post('/quizzes/{id}/attempts', [AttemptController::class, 'start']);
     Route::post('/attempts/{id}/submit', [AttemptController::class, 'submit']);

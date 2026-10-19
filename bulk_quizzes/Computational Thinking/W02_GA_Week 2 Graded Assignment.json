@@ -9,7 +9,12 @@
       "prompt": [
         {
           "kind": "text",
-          "value": "The following procedure counts the number of students from Bengaluru whose total marks are less than the average total marks from the “Scores” dataset and stores it in variable A. Let avgT be the average total marks. The programmer may have made mistakes in one or more steps. Identify all such steps (if any). It is a Multiple Select Question (MSQ). Step 1 : Arrange all cards in a single pile called Pile 1 Step 2 : Initialize variable A to 0 Step 3 : If Pile 1 is empty then stop the iteration Step 4 : Read the top card in Pile 1 Step 5 : If X.CityTown == “Bengaluru” and X.Total > avgT then add 1 to A Step 6 : Move the current card to another pile called Pile 2 and repeat from Step 2"
+          "value": "The following procedure counts the number of students from Bengaluru whose total marks are less than the average total marks from the “Scores” dataset and stores it in variable A. Let avgT be the average total marks. The programmer may have made mistakes in one or more steps. Identify all such steps (if any). It is a Multiple Select Question (MSQ)."
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "Step 1: Arrange all cards in a single pile called Pile 1\nStep 2: Initialize variable A to 0\nStep 3: If Pile 1 is empty then stop the iteration\nStep 4: Read the top card in Pile 1\nStep 5: If X.CityTown == “Bengaluru” and X.Total > avgT then add 1 to A\nStep 6: Move the current card to another pile called Pile 2 and repeat from Step 2"
         }
       ],
       "options": [
@@ -53,7 +58,12 @@
       "prompt": [
         {
           "kind": "text",
-          "value": "At the end of the execution of the given procedure on the “Scores” dataset, what will A and B represent? (MCQ) Step 1. Arrange all cards in a single pile called Pile 1 Step 2. Maintain two variables A, B and initialize A to101 and B to 0. Step 3. If Pile 1 is empty then stop the iteration Step 4. Read the top card in Pile 1 Step 5. If A > Chemistry marks , then store Chemistry marks in A Step 6. If B < Mathematics marks, then store Mathematics marks in B Step 7. Move the current card to another pile called Pile 2 and repeat from Step 3"
+          "value": "At the end of the execution of the given procedure on the “Scores” dataset, what will A and B represent? (MCQ)"
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "Step 1: Arrange all cards in a single pile called Pile 1\nStep 2: Maintain two variables A, B and initialize A to101 and B to 0.\nStep 3: If Pile 1 is empty then stop the iteration\nStep 4: Read the top card in Pile 1\nStep 5: If A > Chemistry marks , then store Chemistry marks in A\nStep 6: If B < Mathematics marks, then store Mathematics marks in B\nStep 7: Move the current card to another pile called Pile 2 and repeat from Step 3"
         }
       ],
       "options": [
@@ -97,7 +107,12 @@
       "prompt": [
         {
           "kind": "text",
-          "value": "Assume that a, b, and c are three distinct integers. What will X represent after the execution of the following procedure? (MCQ) Step 1. Maintain variable X and Initialize it to 0 Step 2. If a < b then go to step 4 Step 3. If b < c then store b in X else store c in X and stop the procedure. Step 4. If a < c then store a in X else store c in X"
+          "value": "Assume that a, b, and c are three distinct integers. What will X represent after the execution of the following procedure? (MCQ)"
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "Step 1: Maintain variable X and Initialize it to 0\nStep 2: If a < b then go to step 4\nStep 3: If b < c then store b in X else store c in X and stop the procedure.\nStep 4: If a < c then store a in X else store c in X"
         }
       ],
       "options": [

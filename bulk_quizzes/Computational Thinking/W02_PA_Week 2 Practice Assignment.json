@@ -9,7 +9,12 @@
       "prompt": [
         {
           "kind": "text",
-          "value": "What will B represent after the execution of the following procedure using the “Scores” dataset? Step 1 : Arrange all cards in a single pile called Pile 1 Step 2 : Initialize variables A and B to 0 Step 3 : If Pile 1 is empty then stop the iteration Step 4 : Read the top card in Pile 1 Step 5 : If Physics marks is not less than Mathematics marks then store (Physics marks − Mathematics marks) in A Step 6 : If A > B then store A in B Step 7 : Move the current card to another pile called Pile 2 and repeat from step 3"
+          "value": "What will B represent after the execution of the following procedure using the “Scores” dataset?"
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "Step 1: Arrange all cards in a single pile called Pile 1\nStep 2: Initialize variables A and B to 0\nStep 3: If Pile 1 is empty then stop the iteration\nStep 4: Read the top card in Pile 1\nStep 5: If Physics marks is not less than Mathematics marks then store (Physics marks − Mathematics marks) in A\nStep 6: If A > B then store A in B\nStep 7: Move the current card to another pile called Pile 2 and repeat from step 3"
         }
       ],
       "acceptable_answers": [

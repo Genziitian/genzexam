@@ -9,7 +9,16 @@
       "prompt": [
         {
           "kind": "text",
-          "value": "What will values of A, B, and C be after the execution of the following procedure using the \"Scores\" dataset? Step 1: Arrange all cards in a single pile called Pile 1 Step 2: Initialize variables A, B, and C to 0 Step 3: If Pile 1 is empty then stop the iteration Step 4: Read the top card in Pile 1 Step 5: If Total >250 then increment A Step 6: If Total > 200 and Total < 250 then increment B Step 7: If Total < 200 then increment C Step 8: Move the current card to another pile called Pile 2 and repeat from Step 3 The value of A is _ _ _ _ ? It is a Numerical Answer Type Question (NAT)."
+          "value": "What will values of A, B, and C be after the execution of the following procedure using the \"Scores\" dataset?"
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "Step 1: Arrange all cards in a single pile called Pile 1\nStep 2: Initialize variables A, B, and C to 0\nStep 3: If Pile 1 is empty then stop the iteration\nStep 4: Read the top card in Pile 1\nStep 5: If Total >250 then increment A\nStep 6: If Total > 200 and Total < 250 then increment B\nStep 7: If Total < 200 then increment C\nStep 8: Move the current card to another pile called Pile 2 and repeat from Step 3"
+        },
+        {
+          "kind": "text",
+          "value": "The value of A is _ _ _ _ ? It is a Numerical Answer Type Question (NAT)."
         }
       ],
       "numerical_answer": 6.0,
@@ -22,7 +31,16 @@
       "prompt": [
         {
           "kind": "text",
-          "value": "What will values of A, B, and C be after the execution of the following procedure using the \"Scores\" dataset? Step 1: Arrange all cards in a single pile called Pile 1 Step 2: Initialize variables A, B, and C to 0 Step 3: If Pile 1 is empty then stop the iteration Step 4: Read the top card in Pile 1 Step 5: If Total >250 then increment A Step 6: If Total > 200 and Total < 250 then increment B Step 7: If Total < 200 then increment C Step 8: Move the current card to another pile called Pile 2 and repeat from Step 3 The value of B is _ _ _ _ ? It is a Numerical Answer Type Question (NAT)."
+          "value": "What will values of A, B, and C be after the execution of the following procedure using the \"Scores\" dataset?"
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "Step 1: Arrange all cards in a single pile called Pile 1\nStep 2: Initialize variables A, B, and C to 0\nStep 3: If Pile 1 is empty then stop the iteration\nStep 4: Read the top card in Pile 1\nStep 5: If Total >250 then increment A\nStep 6: If Total > 200 and Total < 250 then increment B\nStep 7: If Total < 200 then increment C\nStep 8: Move the current card to another pile called Pile 2 and repeat from Step 3"
+        },
+        {
+          "kind": "text",
+          "value": "The value of B is _ _ _ _ ? It is a Numerical Answer Type Question (NAT)."
         }
       ],
       "numerical_answer": 15.0,
@@ -35,7 +53,16 @@
       "prompt": [
         {
           "kind": "text",
-          "value": "What will values of A, B, and C be after the execution of the following procedure using the \"Scores\" dataset? Step 1: Arrange all cards in a single pile called Pile 1 Step 2: Initialize variables A, B, and C to 0 Step 3: If Pile 1 is empty then stop the iteration Step 4: Read the top card in Pile 1 Step 5: If Total >250 then increment A Step 6: If Total > 200 and Total < 250 then increment B Step 7: If Total < 200 then increment C Step 8: Move the current card to another pile called Pile 2 and repeat from Step 3 The value of C is _ _ _ _ ? It is a Numerical Answer Type Question (NAT)."
+          "value": "What will values of A, B, and C be after the execution of the following procedure using the \"Scores\" dataset?"
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "Step 1: Arrange all cards in a single pile called Pile 1\nStep 2: Initialize variables A, B, and C to 0\nStep 3: If Pile 1 is empty then stop the iteration\nStep 4: Read the top card in Pile 1\nStep 5: If Total >250 then increment A\nStep 6: If Total > 200 and Total < 250 then increment B\nStep 7: If Total < 200 then increment C\nStep 8: Move the current card to another pile called Pile 2 and repeat from Step 3"
+        },
+        {
+          "kind": "text",
+          "value": "The value of C is _ _ _ _ ? It is a Numerical Answer Type Question (NAT)."
         }
       ],
       "numerical_answer": 8.0,
@@ -54,7 +81,12 @@
       "prompt": [
         {
           "kind": "text",
-          "value": "The following procedure is executed using the “Shopping Bills” dataset. What will X represent at the end of execution? It is a Multiple Choice Question (MCQ). Step 1: Arrange all cards in a single pile called Pile 1 Step 2: Initialize variables A ,B and X to 0 Step 3: If Pile 1 is empty then stop the iteration and execute Step 7 Step 4: Read the top card in Pile 1 Step 5: If the Shop Name is “SV Stores” then add total bill amount to A and increment B Step 6: Move the current card to another pile called Pile 2 and repeat from Step 3 Step 7: Divide A by B and store the result in X"
+          "value": "The following procedure is executed using the “Shopping Bills” dataset. What will X represent at the end of execution? It is a Multiple Choice Question (MCQ)."
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "Step 1: Arrange all cards in a single pile called Pile 1\nStep 2: Initialize variables A ,B and X to 0\nStep 3: If Pile 1 is empty then stop the iteration and execute Step 7\nStep 4: Read the top card in Pile 1\nStep 5: If the Shop Name is “SV Stores” then add total bill amount to A and increment B\nStep 6: Move the current card to another pile called Pile 2 and repeat from Step 3\nStep 7: Divide A by B and store the result in X"
         }
       ],
       "options": [
@@ -142,7 +174,12 @@
       "prompt": [
         {
           "kind": "text",
-          "value": "The following procedure is executed using the “Scores” dataset. January to June and July to December are known as first and second half of the year respectively. When will the value of C be 1? It is a Multiple Choice Question (MCQ). Step 1: Arrange all cards in a single pile called Pile 1 Step 2: Maintain variables A, B, C and initialize them to 0 Step 3: If Pile 1 is empty then stop the iteration and go to Step 8 Step 4: Read the top card in Pile 1 Step 5: If Date of Birth is from 1st January to 30th June then increment A Step 6: If Date of Birth is from 1st July to 31st December then increment B Step 7: Move the current card to another pile called Pile 2 and repeat from Step 3 Step 8: If A < B then set C to 1"
+          "value": "The following procedure is executed using the “Scores” dataset. January to June and July to December are known as first and second half of the year respectively. When will the value of C be 1? It is a Multiple Choice Question (MCQ)."
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "Step 1: Arrange all cards in a single pile called Pile 1\nStep 2: Maintain variables A, B, C and initialize them to 0\nStep 3: If Pile 1 is empty then stop the iteration and go to Step 8\nStep 4: Read the top card in Pile 1\nStep 5: If Date of Birth is from 1st January to 30th June then increment A\nStep 6: If Date of Birth is from 1st July to 31st December then increment B\nStep 7: Move the current card to another pile called Pile 2 and repeat from Step 3\nStep 8: If A < B then set C to 1"
         }
       ],
       "options": [
@@ -186,7 +223,12 @@
       "prompt": [
         {
           "kind": "text",
-          "value": "What will the given procedure compute and store in variable X, if executed on the \"Shopping Bills\" dataset? Assume that there are total 3 shops in the dataset. It is a Multiple Choice Question (MCQ). Step 1: Arrange all cards in a single pile called Pile 1 Step 2: Maintain four variables A, B, C, X and initialize them to 0 Step 3: If Pile 1 is empty then stop the iteration and start from Step 9 Step 4: Read the top card in Pile 1 Step 5: If the Shop name is \"SV Stores\" and Customer name is \"Neeraja\" then set A equal to 1 Step 6: If the Shop name is \"Big Bazaar\" and Customer name is \"Neeraja\" then set B equal to 1 Step 7: If the Shop name is \"Sun General\" and Customer name is \"Neeraja\" then set C equal to 1 Step 8: Move the current card to another pile called Pile 2 and repeat from Step 3 Step 9: Update the value of X as X = A + B + C"
+          "value": "What will the given procedure compute and store in variable X, if executed on the \"Shopping Bills\" dataset? Assume that there are total 3 shops in the dataset. It is a Multiple Choice Question (MCQ)."
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "Step 1: Arrange all cards in a single pile called Pile 1\nStep 2: Maintain four variables A, B, C, X and initialize them to 0\nStep 3: If Pile 1 is empty then stop the iteration and start from Step 9\nStep 4: Read the top card in Pile 1\nStep 5: If the Shop name is \"SV Stores\" and Customer name is \"Neeraja\" then set A equal to 1\nStep 6: If the Shop name is \"Big Bazaar\" and Customer name is \"Neeraja\" then set B equal to 1\nStep 7: If the Shop name is \"Sun General\" and Customer name is \"Neeraja\" then set C equal to 1\nStep 8: Move the current card to another pile called Pile 2 and repeat from Step 3\nStep 9: Update the value of X as X = A + B + C"
         }
       ],
       "options": [
@@ -230,7 +272,12 @@
       "prompt": [
         {
           "kind": "text",
-          "value": "The following procedure is executed using the \"Shopping Bills\" dataset. At the end of the execution, count stores the number of bills generated from \"SV Stores\" with total bill amount more than 500. But the programmer may have made mistakes in one or more steps. Identify all such steps (if any). It is a Multiple Choice Question (MCQ). Step 1: Arrange all cards in a single pile called Pile 1 Step 2: Maintain a variable count and initialize it to 0 Step 3: If Pile 1 is empty then stop the iteration Step 4: Read the top card in Pile 1 Step 5: If Shop Name is \"SV Stores\" and Total Bill Amount > 500 then increment count Step 6: Move the current card to another pile called Pile 2 and repeat from Step 2"
+          "value": "The following procedure is executed using the \"Shopping Bills\" dataset. At the end of the execution, count stores the number of bills generated from \"SV Stores\" with total bill amount more than 500. But the programmer may have made mistakes in one or more steps. Identify all such steps (if any). It is a Multiple Choice Question (MCQ)."
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "Step 1: Arrange all cards in a single pile called Pile 1\nStep 2: Maintain a variable count and initialize it to 0\nStep 3: If Pile 1 is empty then stop the iteration\nStep 4: Read the top card in Pile 1\nStep 5: If Shop Name is \"SV Stores\" and Total Bill Amount > 500 then increment count\nStep 6: Move the current card to another pile called Pile 2 and repeat from Step 2"
         }
       ],
       "options": [
@@ -312,7 +359,12 @@
       "prompt": [
         {
           "kind": "text",
-          "value": "The following pseudocode is executed using the “Words” dataset. What will A represent at the end of execution? It is a Multiple Choice Question (MCQ). Step 1: Arrange all cards in a single pile called Pile 1 Step 2: Initialize variable A to 0 Step 3: If Pile 1 is empty then stop the iteration Step 4: Read the top card in Pile 1 Step 5: If the Word ends with a full stop and Part of Speech is “Adjective” then increment A Step 6: Move the current card to another pile called Pile 2 and repeat from Step 3"
+          "value": "The following pseudocode is executed using the “Words” dataset. What will A represent at the end of execution? It is a Multiple Choice Question (MCQ)."
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "Step 1: Arrange all cards in a single pile called Pile 1\nStep 2: Initialize variable A to 0\nStep 3: If Pile 1 is empty then stop the iteration\nStep 4: Read the top card in Pile 1\nStep 5: If the Word ends with a full stop and Part of Speech is “Adjective” then increment A\nStep 6: Move the current card to another pile called Pile 2 and repeat from Step 3"
         }
       ],
       "options": [
