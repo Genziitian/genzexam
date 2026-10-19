@@ -67,14 +67,38 @@
   .case small { color: var(--muted); font-weight: 600; }
   .sub { display: flex; justify-content: space-between; align-items: center; padding: 9px 0; border-bottom: 1px solid var(--line); gap: 8px; }
   .sub button { margin-left: auto; }
-  .home { flex: 1; overflow: auto; padding: 24px 16px; }
-  .home-inner { max-width: 760px; margin: 0 auto; }
-  .home h1 { font-size: 22px; margin: 0 0 4px; }
-  .home p.sub2 { color: var(--muted); margin: 0 0 18px; }
-  .paper-card { display: flex; align-items: center; gap: 12px; padding: 16px 18px; margin-bottom: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 12px; }
-  .paper-card .info { flex: 1; min-width: 0; }
-  .paper-card .name { font-weight: 700; }
-  .paper-card .meta { color: var(--muted); font-size: 13px; }
+  .home { flex: 1; overflow: auto; }
+  .hero { position: relative; overflow: hidden; padding: 44px 0 34px; background: radial-gradient(900px 300px at 15% -20%, rgba(139,144,255,.35), transparent 60%), radial-gradient(700px 260px at 95% 0%, rgba(45,212,191,.22), transparent 60%), linear-gradient(180deg, var(--brand-soft), transparent); border-bottom: 1px solid var(--line); }
+  .hero-in, .wrap { max-width: 1040px; margin: 0 auto; padding: 0 20px; }
+  .eyebrow { display: inline-flex; align-items: center; gap: 8px; font: 700 12px/1 ui-monospace, Menlo, monospace; letter-spacing: .12em; text-transform: uppercase; color: var(--brand); }
+  .eyebrow i { width: 8px; height: 8px; border-radius: 50%; background: var(--ok); box-shadow: 0 0 0 4px var(--ok-bg); }
+  .hero h1 { font-size: clamp(28px, 5vw, 44px); line-height: 1.08; margin: 12px 0 10px; letter-spacing: -.02em; }
+  .hero h1 span { background: linear-gradient(90deg, var(--brand), #2dd4bf); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .hero p { margin: 0; max-width: 560px; color: var(--muted); font-size: 16px; }
+  .stats { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+  .stat { padding: 10px 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--panel); }
+  .stat b { display: block; font-size: 22px; line-height: 1.1; }
+  .stat small { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .06em; }
+  .chips { display: flex; gap: 8px; margin: 26px 0 8px; flex-wrap: wrap; }
+  .chip { padding: 7px 16px; border-radius: 99px; border: 1px solid var(--line); background: var(--panel); color: var(--muted); font: 600 13px inherit; cursor: pointer; }
+  .chip.on { background: var(--brand); border-color: var(--brand); color: #fff; }
+  .group h2 { display: flex; align-items: center; gap: 12px; margin: 26px 0 12px; font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+  .group h2::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 14px; }
+  .tile { --a: #6366f1; --b: #8b5cf6; position: relative; display: flex; flex-direction: column; gap: 10px; padding: 18px; border: 1px solid var(--line); border-radius: 16px; background: var(--panel); overflow: hidden; transition: transform .15s, border-color .15s, box-shadow .15s; }
+  .tile.o2 { --a: #0ea5e9; --b: #14b8a6; }
+  .tile::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 4px; background: linear-gradient(90deg, var(--a), var(--b)); }
+  .tile:hover { transform: translateY(-3px); border-color: var(--a); box-shadow: 0 12px 30px -14px var(--a); }
+  .tile .tag { font: 700 11px/1 ui-monospace, Menlo, monospace; letter-spacing: .1em; text-transform: uppercase; color: var(--a); }
+  .tile .num { font-size: 38px; font-weight: 800; line-height: 1; letter-spacing: -.03em; }
+  .tile .num small { font-size: 14px; font-weight: 600; color: var(--muted); letter-spacing: 0; margin-left: 6px; }
+  .dots { display: flex; gap: 5px; }
+  .dots i { flex: 1; height: 6px; border-radius: 3px; background: var(--line); }
+  .dots i.done { background: linear-gradient(90deg, var(--a), var(--b)); }
+  .tile .row { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 4px; }
+  .tile .meta { color: var(--muted); font-size: 13px; }
+  .go { padding: 8px 16px; border: 0; border-radius: 10px; color: #fff; font: 700 13px inherit; cursor: pointer; background: linear-gradient(135deg, var(--a), var(--b)); }
+  .go.ghost { background: var(--bg); color: var(--ink); border: 1px solid var(--line); }
   body.in-home header select, body.in-home header .nav { display: none; }
   .msg { color: var(--muted); padding: 40px 20px; text-align: center; }
   .msg a { color: var(--brand); font-weight: 600; }
@@ -93,7 +117,18 @@
   <select id="problemSelect" aria-label="Choose problem"></select>
   <span class="nav"><button class="btn" id="prevBtn" title="Previous problem">&lsaquo;</button> <button class="btn" id="nextBtn" title="Next problem">&rsaquo;</button></span>
 </header>
-<section class="home" id="home" hidden><div class="home-inner"><h1 id="homeTitle">IDE Practice</h1><p class="sub2">Pick a paper and press Start now. You can move between its questions, not into other papers.</p><div id="paperList"></div></div></section>
+<section class="home" id="home" hidden>
+  <div class="hero"><div class="hero-in">
+    <span class="eyebrow"><i></i>Live coding practice</span>
+    <h1>Crack the <span id="heroCourse">Python</span> OPPE.<br>One paper at a time.</h1>
+    <p>Real past-year OPPE questions with a built-in editor and instant test cases. Pick a set, solve it start to finish, and track what you have cleared.</p>
+    <div class="stats" id="stats"></div>
+  </div></div>
+  <div class="wrap" style="padding-bottom:40px">
+    <div class="chips" id="chips"></div>
+    <div id="paperList"></div>
+  </div>
+</section>
 <main id="app" hidden>
   <section class="pane" aria-label="Problem">
     <div class="tabs" role="tablist">
@@ -153,6 +188,8 @@
   var busy = false;
 
   function el(tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; }
+  function solvedSet() { try { return JSON.parse(localStorage.getItem("ide.solved") || "[]"); } catch (e) { return []; } }
+  function markSolved(id) { var a = solvedSet(); if (a.indexOf(id) < 0) { a.push(id); try { localStorage.setItem("ide.solved", JSON.stringify(a)); } catch (e) {} } }
   function status(html) { var s = $("status"); s.hidden = false; $("app").hidden = true; $("home").hidden = true; s.textContent = ""; if (html) s.appendChild(html); }
   function api(path, opts) {
     opts = opts || {};
@@ -289,7 +326,7 @@
         var box = el("div"), results = res.test_results || [];
         var passed = results.filter(function (c) { return c.passed; }).length;
         if (kind === "submit") {
-          var ok = res.status === "accepted";
+          var ok = res.status === "accepted"; if (ok) markSolved(current.id);
           box.appendChild(el("div", "verdict " + (ok ? "ok" : "bad"), (ok ? "Accepted" : String(res.status || "").replace(/_/g, " ")) + " — " + res.passed_cases + "/" + res.total_cases + " cases passed"));
           loadSubmissionsSoon();
         } else {
@@ -384,23 +421,61 @@
   function startPaper(paper, id) {
     problems = paper.problems;
     var sel = $("problemSelect"); sel.textContent = "";
-    problems.forEach(function (p) { var o = document.createElement("option"); o.value = p.id; o.textContent = split(p).name; sel.appendChild(o); });
+    problems.forEach(function (p) { var o = document.createElement("option"); o.value = p.id; o.textContent = (solvedSet().indexOf(p.id) >= 0 ? "\u2713 " : "") + split(p).name; sel.appendChild(o); });
     openProblem(id || problems[0].id);
   }
+  var filter = "all";
+  function parsePaper(name) { var m = /^(OPPE \d) \((.+?)\) Set (\d+)$/.exec(name); return m ? { exam: m[1], session: m[2], set: m[3] } : { exam: "Practice", session: "All papers", set: "" }; }
   function showHome() {
     current = null; problems = [];
     $("status").hidden = true; $("app").hidden = true; $("home").hidden = false; document.body.classList.add("in-home");
     var url = new URL(location.href); url.searchParams.delete("problem"); history.replaceState(null, "", url);
+    var done = solvedSet(), total = 0, solved = 0, exams = [];
+    papers.forEach(function (pp) {
+      pp.info = parsePaper(pp.name); total += pp.problems.length;
+      pp.done = pp.problems.filter(function (p) { return done.indexOf(p.id) >= 0; }).length; solved += pp.done;
+      if (exams.indexOf(pp.info.exam) < 0) exams.push(pp.info.exam);
+    });
+    $("stats").textContent = "";
+    [[papers.length, "Papers"], [total, "Questions"], [solved, "Solved"]].forEach(function (x) { var d = el("div", "stat"); d.appendChild(el("b", "", String(x[0]))); d.appendChild(el("small", "", x[1])); $("stats").appendChild(d); });
+    var chips = $("chips"); chips.textContent = "";
+    if (exams.length > 1) ["all"].concat(exams).forEach(function (f) {
+      var c = el("button", "chip" + (f === filter ? " on" : ""), f === "all" ? "All papers" : f); c.type = "button";
+      c.addEventListener("click", function () { filter = f; showHome(); }); chips.appendChild(c);
+    });
     var list = $("paperList"); list.textContent = "";
-    papers.forEach(function (paper) {
-      var card = el("div", "paper-card"), info = el("div", "info");
-      info.appendChild(el("div", "name", paper.name));
-      info.appendChild(el("div", "meta", paper.problems.length + (paper.problems.length === 1 ? " question" : " questions")));
-      var b = el("button", "btn primary", "Start now"); b.addEventListener("click", function () { startPaper(paper); });
-      card.appendChild(info); card.appendChild(b); list.appendChild(card);
+    var groups = {}, order = [];
+    papers.forEach(function (pp) {
+      if (filter !== "all" && pp.info.exam !== filter) return;
+      var key = pp.info.exam + " \u00b7 " + pp.info.session;
+      if (!groups[key]) { groups[key] = []; order.push(key); }
+      groups[key].push(pp);
+    });
+    order.forEach(function (key) {
+      var g = el("div", "group"); g.appendChild(el("h2", "", key));
+      var grid = el("div", "grid");
+      groups[key].forEach(function (pp) {
+        var t = el("div", "tile" + (pp.info.exam === "OPPE 2" ? " o2" : ""));
+        t.appendChild(el("div", "tag", pp.info.exam + " \u00b7 " + pp.info.session));
+        var n = el("div", "num", pp.info.set ? "Set " + pp.info.set : pp.name); t.appendChild(n);
+        var dots = el("div", "dots");
+        pp.problems.forEach(function (p) { dots.appendChild(el("i", done.indexOf(p.id) >= 0 ? "done" : "")); });
+        t.appendChild(dots);
+        var row = el("div", "row");
+        row.appendChild(el("span", "meta", pp.done + "/" + pp.problems.length + " solved"));
+        var b = el("button", "go" + (pp.done === pp.problems.length ? " ghost" : ""), pp.done === 0 ? "Start now" : pp.done === pp.problems.length ? "Review" : "Continue");
+        b.type = "button";
+        b.addEventListener("click", function () {
+          var next = pp.problems.filter(function (p) { return done.indexOf(p.id) < 0; })[0] || pp.problems[0];
+          startPaper(pp, next.id);
+        });
+        row.appendChild(b); t.appendChild(row); grid.appendChild(t);
+      });
+      g.appendChild(grid); list.appendChild(g);
     });
   }
   // Back goes from a question to the papers list; from the list it leaves the IDE.
+  $("heroCourse").textContent = courseSlug.charAt(0).toUpperCase() + courseSlug.slice(1);
   document.querySelector("a.back").addEventListener("click", function (e) {
     if (current) { e.preventDefault(); showHome(); }
   });
