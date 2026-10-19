@@ -1,0 +1,342 @@
+[
+  {
+    "title": "OPPE 1 (2025 Jan) Set 2 · P1: Check if a number divides two other numbers",
+    "description": "Write a function is_both_divisible_by that takes three integers a, b and c as input and checks if both a and b are divisible by c. Assume that c is non-zero.\n\nExamples:\n>>> is_both_divisible_by(10, 15, 5)  # both 10 and 15 are divisible by 5\nTrue\n>>> is_both_divisible_by(10, 13, 5)  # 13 is not divisible by 5\nFalse\n>>> is_both_divisible_by(19, 15, 5)  # 19 is not divisible by 5\nFalse\n\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition.",
+    "input_format": null,
+    "output_format": null,
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "def is_both_divisible_by(a: int, b: int, c: int) -> bool:\n    ",
+    "suffix_code": "a = int(input())\nb = int(input())\nc = int(input())\nprint(is_both_divisible_by(a, b, c))",
+    "sample_input": "10\n15\n5",
+    "sample_output": "True",
+    "position": 1,
+    "test_cases": [
+      {
+        "input": "10\n15\n5",
+        "expected_output": "True",
+        "is_hidden": false
+      },
+      {
+        "input": "10\n13\n5",
+        "expected_output": "False",
+        "is_hidden": false
+      },
+      {
+        "input": "19\n15\n5",
+        "expected_output": "False",
+        "is_hidden": true
+      },
+      {
+        "input": "0\n0\n7",
+        "expected_output": "True",
+        "is_hidden": true
+      },
+      {
+        "input": "-6\n12\n3",
+        "expected_output": "True",
+        "is_hidden": true
+      },
+      {
+        "input": "9\n9\n2",
+        "expected_output": "False",
+        "is_hidden": true
+      },
+      {
+        "input": "8\n16\n-4",
+        "expected_output": "True",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 1 (2025 Jan) Set 2 · P2: Check String Rotation",
+    "description": "Write a function is_rotation(s1, s2) that checks if the string s2 is a rotation of the string s1.\n\nHint: all the rotations of a particular string will be present in the string formed by concatenating it with itself.\n\nExamples:\n>>> is_rotation('abcde', 'cdeab')\nTrue\n>>> is_rotation('hello', 'ehllo')\nFalse\n>>> is_rotation('hello', 'helol')\nFalse\n\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition.",
+    "input_format": null,
+    "output_format": null,
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "def is_rotation(s1: str, s2: str) -> bool:\n    ",
+    "suffix_code": "s1 = input()\ns2 = input()\nprint(is_rotation(s1, s2))",
+    "sample_input": "abcde\ncdeab",
+    "sample_output": "True",
+    "position": 2,
+    "test_cases": [
+      {
+        "input": "abcde\ncdeab",
+        "expected_output": "True",
+        "is_hidden": false
+      },
+      {
+        "input": "hello\nehllo",
+        "expected_output": "False",
+        "is_hidden": false
+      },
+      {
+        "input": "hello\nhelol",
+        "expected_output": "False",
+        "is_hidden": true
+      },
+      {
+        "input": "abc\nabc",
+        "expected_output": "True",
+        "is_hidden": true
+      },
+      {
+        "input": "abc\nabcd",
+        "expected_output": "False",
+        "is_hidden": true
+      },
+      {
+        "input": "a\na",
+        "expected_output": "True",
+        "is_hidden": true
+      },
+      {
+        "input": "lohel\nhello",
+        "expected_output": "True",
+        "is_hidden": true
+      },
+      {
+        "input": "\n",
+        "expected_output": "True",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 1 (2025 Jan) Set 2 · P3: Find missing number in a range of numbers",
+    "description": "Given a list of numbers from 1 to n (inclusive) with exactly one number from the range missing, write a function find_missing_number(nums) to find the missing number. Here n is the largest number present in the list, and the list may contain duplicate values. Assume that exactly one number smaller than n is missing.\n\nExample: for nums = [1, 4, 2, 4, 6, 5, 6] the largest number is 6 and the number 3 is missing from the range 1 to 6, so find_missing_number(nums) should return 3.\n\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition.",
+    "input_format": null,
+    "output_format": null,
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "def find_missing_number(nums: list) -> int:\n    ",
+    "suffix_code": "nums = eval(input())\nprint(find_missing_number(nums))",
+    "sample_input": "[1, 4, 2, 4, 6, 5, 6]",
+    "sample_output": "3",
+    "position": 3,
+    "test_cases": [
+      {
+        "input": "[1, 4, 2, 4, 6, 5, 6]",
+        "expected_output": "3",
+        "is_hidden": false
+      },
+      {
+        "input": "[1, 2, 4]",
+        "expected_output": "3",
+        "is_hidden": false
+      },
+      {
+        "input": "[2, 3, 4, 5]",
+        "expected_output": "1",
+        "is_hidden": true
+      },
+      {
+        "input": "[1, 3]",
+        "expected_output": "2",
+        "is_hidden": true
+      },
+      {
+        "input": "[5, 1, 2, 4, 5, 6, 7]",
+        "expected_output": "3",
+        "is_hidden": true
+      },
+      {
+        "input": "[1, 2, 3, 5, 5, 5]",
+        "expected_output": "4",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 1 (2025 Jan) Set 2 · P4: Merge two dictionaries and sum on conflicts",
+    "description": "Write a function merge_dictionaries(d1, d2) that merges two dictionaries. If a key is present in both dictionaries, sum the values. Assume the values are numbers (int or float).\n\nExample:\n>>> d1 = {'a': 1, 'b': 2}\n>>> d2 = {'b': 3, 'c': 4}\n>>> merge_dictionaries(d1, d2)\n{'a': 1, 'b': 5, 'c': 4}\n\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition.",
+    "input_format": null,
+    "output_format": null,
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "def merge_dictionaries(d1: dict, d2: dict) -> dict:\n    ",
+    "suffix_code": "d1 = eval(input())\nd2 = eval(input())\nprint(merge_dictionaries(d1, d2))",
+    "sample_input": "{'a': 1, 'b': 2}\n{'b': 3, 'c': 4}",
+    "sample_output": "{'a': 1, 'b': 5, 'c': 4}",
+    "position": 4,
+    "test_cases": [
+      {
+        "input": "{'a': 1, 'b': 2}\n{'b': 3, 'c': 4}",
+        "expected_output": "{'a': 1, 'b': 5, 'c': 4}",
+        "is_hidden": false
+      },
+      {
+        "input": "{}\n{}",
+        "expected_output": "{}",
+        "is_hidden": false
+      },
+      {
+        "input": "{'x': 1.5}\n{'x': 2.5}",
+        "expected_output": "{'x': 4.0}",
+        "is_hidden": true
+      },
+      {
+        "input": "{'a': 1}\n{'b': 2}",
+        "expected_output": "{'a': 1, 'b': 2}",
+        "is_hidden": true
+      },
+      {
+        "input": "{'a': 1, 'b': 2, 'c': 3}\n{'a': 10, 'c': 30}",
+        "expected_output": "{'a': 11, 'b': 2, 'c': 33}",
+        "is_hidden": true
+      },
+      {
+        "input": "{'k': -4}\n{'k': 4}",
+        "expected_output": "{'k': 0}",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 1 (2025 Jan) Set 2 · P5: Most Frequent Numbers from the input",
+    "description": "Write a program to find the most frequent numbers from the given numbers in the input. The most frequent values should be printed in ascending order as a list.\n\nExample: for the 10 numbers 3, 5, 3, 2, 5, 8, 3, 8, 5, 0 the numbers 3 and 5 both occur three times, so the output is [3, 5].\n\nNOTE: This is an I/O type question, you need to write the whole code for taking input and printing the output.",
+    "input_format": "The first line contains an integer n.\nThe next n lines each contain a number.",
+    "output_format": "A single list containing the most frequent numbers sorted in ascending order.",
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "",
+    "suffix_code": "",
+    "sample_input": "10\n3\n5\n3\n2\n5\n8\n3\n8\n5\n0",
+    "sample_output": "[3, 5]",
+    "position": 5,
+    "test_cases": [
+      {
+        "input": "10\n3\n5\n3\n2\n5\n8\n3\n8\n5\n0",
+        "expected_output": "[3, 5]",
+        "is_hidden": false
+      },
+      {
+        "input": "1\n7",
+        "expected_output": "[7]",
+        "is_hidden": false
+      },
+      {
+        "input": "4\n1\n2\n3\n4",
+        "expected_output": "[1, 2, 3, 4]",
+        "is_hidden": true
+      },
+      {
+        "input": "5\n-1\n-1\n2\n2\n9",
+        "expected_output": "[-1, 2]",
+        "is_hidden": true
+      },
+      {
+        "input": "6\n4\n4\n4\n1\n1\n1",
+        "expected_output": "[1, 4]",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 1 (2025 Jan) Set 2 · P6: Employee Data Analysis",
+    "description": "A list of employee records is given as a list of dictionaries with keys name, department and salary. Implement the following four functions:\n- employees_with_salary_above(employees, min_salary): returns the list of names of employees with salary >= min_salary (in the order of the records).\n- total_salary_in_department(employees, department): returns the total salary expense in the given department.\n- ceil_to_five_hundreds(num): returns the number rounded up to the next multiple of 500 (for example 1201 -> 1500, 1500 -> 1500).\n- max_salary_after_increment_in_department(employees, department, inc_percent): increases every salary in the department by inc_percent percent, takes the maximum of the increased salaries and returns it rounded up to the next multiple of 500. Return 0 if the department has no employees.\n\nExample: employees = [{\"name\": \"Asha\", \"department\": \"IT\", \"salary\": 40000}, {\"name\": \"Ravi\", \"department\": \"HR\", \"salary\": 30000}, {\"name\": \"Meena\", \"department\": \"IT\", \"salary\": 50000}]\n- employees_with_salary_above(employees, 40000) -> ['Asha', 'Meena']\n- total_salary_in_department(employees, 'IT') -> 90000\n- ceil_to_five_hundreds(1201) -> 1500\n- max_salary_after_increment_in_department(employees, 'IT', 10) -> 55000\n\nFor testing, the input gives the employees list, then the name of the function to call, then a tuple with the remaining arguments (the employees list is passed automatically except for ceil_to_five_hundreds).\n\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition. You can define helper functions if needed, but the actual solution should be in the given function template.",
+    "input_format": null,
+    "output_format": null,
+    "constraints": null,
+    "prefix_code": "import math",
+    "starter_code": "def employees_with_salary_above(employees: list, min_salary: int) -> list:\n    pass\n\ndef total_salary_in_department(employees: list, department: str) -> int:\n    pass\n\ndef ceil_to_five_hundreds(num: int) -> int:\n    pass\n\ndef max_salary_after_increment_in_department(employees: list, department: str, inc_percent: int) -> int:\n    pass",
+    "suffix_code": "employees = eval(input())\nfunc = input()\nargs = eval(input())\nif func == \"ceil_to_five_hundreds\":\n    print(ceil_to_five_hundreds(*args))\nelse:\n    print(globals()[func](employees, *args))",
+    "sample_input": "[{'name': 'Asha', 'department': 'IT', 'salary': 40000}, {'name': 'Ravi', 'department': 'HR', 'salary': 30000}, {'name': 'Meena', 'department': 'IT', 'salary': 50000}]\nemployees_with_salary_above\n(40000,)",
+    "sample_output": "['Asha', 'Meena']",
+    "position": 6,
+    "test_cases": [
+      {
+        "input": "[{'name': 'Asha', 'department': 'IT', 'salary': 40000}, {'name': 'Ravi', 'department': 'HR', 'salary': 30000}, {'name': 'Meena', 'department': 'IT', 'salary': 50000}]\nemployees_with_salary_above\n(40000,)",
+        "expected_output": "['Asha', 'Meena']",
+        "is_hidden": false
+      },
+      {
+        "input": "[{'name': 'Asha', 'department': 'IT', 'salary': 40000}, {'name': 'Ravi', 'department': 'HR', 'salary': 30000}, {'name': 'Meena', 'department': 'IT', 'salary': 50000}]\ntotal_salary_in_department\n('IT',)",
+        "expected_output": "90000",
+        "is_hidden": false
+      },
+      {
+        "input": "[]\nceil_to_five_hundreds\n(1201,)",
+        "expected_output": "1500",
+        "is_hidden": true
+      },
+      {
+        "input": "[]\nceil_to_five_hundreds\n(1500,)",
+        "expected_output": "1500",
+        "is_hidden": true
+      },
+      {
+        "input": "[]\nceil_to_five_hundreds\n(0,)",
+        "expected_output": "0",
+        "is_hidden": true
+      },
+      {
+        "input": "[{'name': 'Asha', 'department': 'IT', 'salary': 40000}, {'name': 'Ravi', 'department': 'HR', 'salary': 30000}, {'name': 'Meena', 'department': 'IT', 'salary': 50000}]\nmax_salary_after_increment_in_department\n('IT', 10)",
+        "expected_output": "55000",
+        "is_hidden": true
+      },
+      {
+        "input": "[{'name': 'Asha', 'department': 'IT', 'salary': 40000}]\nmax_salary_after_increment_in_department\n('Sales', 10)",
+        "expected_output": "0",
+        "is_hidden": true
+      },
+      {
+        "input": "[{'name': 'Asha', 'department': 'IT', 'salary': 40000}, {'name': 'Ravi', 'department': 'HR', 'salary': 30000}]\nemployees_with_salary_above\n(100000,)",
+        "expected_output": "[]",
+        "is_hidden": true
+      },
+      {
+        "input": "[{'name': 'Asha', 'department': 'IT', 'salary': 41000}, {'name': 'Ravi', 'department': 'HR', 'salary': 30500}]\nmax_salary_after_increment_in_department\n('HR', 5)",
+        "expected_output": "32500",
+        "is_hidden": true
+      },
+      {
+        "input": "[{'name': 'A', 'department': 'X', 'salary': 100}, {'name': 'B', 'department': 'X', 'salary': 250}]\ntotal_salary_in_department\n('X',)",
+        "expected_output": "350",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 1 (2025 Jan) Set 2 · P7: Z Pattern",
+    "description": "You are tasked with drawing a Z-shaped pattern using asterisks (*). The Z pattern is a figure with horizontal lines at the top and bottom, and a diagonal line from the top-right to the bottom-left. There should be no space after the last '*' in a line.\n\nExamples:\nn = 3\n***\n *\n***\n\nn = 5\n*****\n   *\n  *\n *\n*****\n\nNOTE: This is an I/O type question, you need to write the whole code for taking input and printing the output.",
+    "input_format": "A single integer n (n >= 3) representing the size of the Z pattern.",
+    "output_format": "Print the Z pattern with n rows.",
+    "constraints": "n >= 3",
+    "prefix_code": "",
+    "starter_code": "",
+    "suffix_code": "",
+    "sample_input": "3",
+    "sample_output": "***\n *\n***",
+    "position": 7,
+    "test_cases": [
+      {
+        "input": "3",
+        "expected_output": "***\n *\n***",
+        "is_hidden": false
+      },
+      {
+        "input": "5",
+        "expected_output": "*****\n   *\n  *\n *\n*****",
+        "is_hidden": false
+      },
+      {
+        "input": "4",
+        "expected_output": "****\n  *\n *\n****",
+        "is_hidden": true
+      },
+      {
+        "input": "6",
+        "expected_output": "******\n    *\n   *\n  *\n *\n******",
+        "is_hidden": true
+      },
+      {
+        "input": "7",
+        "expected_output": "*******\n     *\n    *\n   *\n  *\n *\n*******",
+        "is_hidden": true
+      }
+    ]
+  }
+]

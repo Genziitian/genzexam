@@ -1,0 +1,337 @@
+[
+  {
+    "title": "OPPE 1 (2025 Jan) Set 4 · P1: Check if a Triangle is Obtuse",
+    "description": "Given two angles of a triangle (theta_1 and theta_2) in degrees, determine if the triangle is obtuse. A triangle is obtuse if it has one angle greater than 90 degrees. The third angle is 180 - theta_1 - theta_2.\n\nWrite the function is_obtuse(theta_1, theta_2).\n\nExamples:\n>>> is_obtuse(30, 60)   # other angle is 90, so right triangle\nFalse\n>>> is_obtuse(100, 40)  # has an angle 100, so obtuse\nTrue\n>>> is_obtuse(30, 30)   # other angle is 120, so obtuse\nTrue\n>>> is_obtuse(60, 45)   # other angle is 75, so acute\nFalse\n\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition.",
+    "input_format": null,
+    "output_format": null,
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "def is_obtuse(theta_1: int, theta_2: int) -> bool:\n    ",
+    "suffix_code": "theta_1 = int(input())\ntheta_2 = int(input())\nprint(is_obtuse(theta_1, theta_2))",
+    "sample_input": "30\n60",
+    "sample_output": "False",
+    "position": 1,
+    "test_cases": [
+      {
+        "input": "30\n60",
+        "expected_output": "False",
+        "is_hidden": false
+      },
+      {
+        "input": "100\n40",
+        "expected_output": "True",
+        "is_hidden": false
+      },
+      {
+        "input": "30\n30",
+        "expected_output": "True",
+        "is_hidden": true
+      },
+      {
+        "input": "60\n45",
+        "expected_output": "False",
+        "is_hidden": true
+      },
+      {
+        "input": "91\n45",
+        "expected_output": "True",
+        "is_hidden": true
+      },
+      {
+        "input": "90\n45",
+        "expected_output": "False",
+        "is_hidden": true
+      },
+      {
+        "input": "45\n44",
+        "expected_output": "True",
+        "is_hidden": true
+      },
+      {
+        "input": "10\n80",
+        "expected_output": "False",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 1 (2025 Jan) Set 4 · P2: Markdown Image to HTML Image",
+    "description": "Given a string containing a Markdown image link of the format ![alt text](image_url), convert it to a proper HTML image tag of the format <img src=\"image_url\" alt=\"alt text\">.\n\nWrite the function markdown_to_html_image(markdown).\n\nExamples:\n>>> markdown_to_html_image(\"![awesome dog](dog.jpg)\")\n'<img src=\"dog.jpg\" alt=\"awesome dog\">'\n>>> markdown_to_html_image(\"![python logo](python.png)\")\n'<img src=\"python.png\" alt=\"python logo\">'\n\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition.",
+    "input_format": null,
+    "output_format": null,
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "def markdown_to_html_image(markdown: str) -> str:\n    ",
+    "suffix_code": "markdown = input()\nprint(markdown_to_html_image(markdown))",
+    "sample_input": "![awesome dog](dog.jpg)",
+    "sample_output": "<img src=\"dog.jpg\" alt=\"awesome dog\">",
+    "position": 2,
+    "test_cases": [
+      {
+        "input": "![awesome dog](dog.jpg)",
+        "expected_output": "<img src=\"dog.jpg\" alt=\"awesome dog\">",
+        "is_hidden": false
+      },
+      {
+        "input": "![python logo](python.png)",
+        "expected_output": "<img src=\"python.png\" alt=\"python logo\">",
+        "is_hidden": false
+      },
+      {
+        "input": "![](empty.png)",
+        "expected_output": "<img src=\"empty.png\" alt=\"\">",
+        "is_hidden": true
+      },
+      {
+        "input": "![a](https://example.com/a.png)",
+        "expected_output": "<img src=\"https://example.com/a.png\" alt=\"a\">",
+        "is_hidden": true
+      },
+      {
+        "input": "![sunset over hills](images/sunset.jpeg)",
+        "expected_output": "<img src=\"images/sunset.jpeg\" alt=\"sunset over hills\">",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 1 (2025 Jan) Set 4 · P3: Remove n Elements from the Given Index",
+    "description": "Write a function remove_n_elems_from_index that takes a tuple t, an integer n, and an index i as input. The function should return a new tuple with the n elements starting at index i removed. If the index i is out of bounds, return the original tuple.\n\nExamples:\n>>> remove_n_elems_from_index((1, 2, 3, 4, 5), 2, 1)\n(1, 4, 5)\n>>> remove_n_elems_from_index((10, 20, 30, 40, 50), 3, 2)\n(10, 20, 30)\n>>> remove_n_elems_from_index((1, 2, 3, 4, 5), 5, 0)\n()\n\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition.",
+    "input_format": null,
+    "output_format": null,
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "def remove_n_elems_from_index(t: tuple, n: int, i: int) -> tuple:\n    ",
+    "suffix_code": "t = eval(input())\nn = int(input())\ni = int(input())\nprint(remove_n_elems_from_index(t, n, i))",
+    "sample_input": "(1, 2, 3, 4, 5)\n2\n1",
+    "sample_output": "(1, 4, 5)",
+    "position": 3,
+    "test_cases": [
+      {
+        "input": "(1, 2, 3, 4, 5)\n2\n1",
+        "expected_output": "(1, 4, 5)",
+        "is_hidden": false
+      },
+      {
+        "input": "(10, 20, 30, 40, 50)\n3\n2",
+        "expected_output": "(10, 20)",
+        "is_hidden": false
+      },
+      {
+        "input": "(1, 2, 3, 4, 5)\n5\n0",
+        "expected_output": "()",
+        "is_hidden": true
+      },
+      {
+        "input": "(1, 2, 3)\n1\n7",
+        "expected_output": "(1, 2, 3)",
+        "is_hidden": true
+      },
+      {
+        "input": "(1, 2, 3)\n0\n1",
+        "expected_output": "(1, 2, 3)",
+        "is_hidden": true
+      },
+      {
+        "input": "(1, 2, 3, 4)\n10\n2",
+        "expected_output": "(1, 2)",
+        "is_hidden": true
+      },
+      {
+        "input": "(5,)\n1\n0",
+        "expected_output": "()",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 1 (2025 Jan) Set 4 · P4: First Non-Repeating Character in a String",
+    "description": "Write a function first_non_repeating_char(s) that returns the first non-repeating character in the string s. If no such character exists, return None.\n\nExamples:\n>>> first_non_repeating_char(\"abcab\")\n'c'\n>>> first_non_repeating_char(\"aabbcc\")\nNone\n>>> first_non_repeating_char(\"buzzingbee\")\n'u'\n\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition.",
+    "input_format": null,
+    "output_format": null,
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "def first_non_repeating_char(s: str):\n    ",
+    "suffix_code": "s = input()\nprint(first_non_repeating_char(s))",
+    "sample_input": "abcab",
+    "sample_output": "c",
+    "position": 4,
+    "test_cases": [
+      {
+        "input": "abcab",
+        "expected_output": "c",
+        "is_hidden": false
+      },
+      {
+        "input": "aabbcc",
+        "expected_output": "None",
+        "is_hidden": false
+      },
+      {
+        "input": "buzzingbee",
+        "expected_output": "u",
+        "is_hidden": true
+      },
+      {
+        "input": "a",
+        "expected_output": "a",
+        "is_hidden": true
+      },
+      {
+        "input": "",
+        "expected_output": "None",
+        "is_hidden": true
+      },
+      {
+        "input": "aabbc",
+        "expected_output": "c",
+        "is_hidden": true
+      },
+      {
+        "input": "xyzzy",
+        "expected_output": "x",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 1 (2025 Jan) Set 4 · P5: Compute Running Average Skipping NaN",
+    "description": "Read numbers from the input until the line END and print the running average after adding each number, as a float with one decimal place. If NaN is encountered, ignore it: do not take it into account and do not print anything for it.\n\nUse round(num, 1) for printing the average.\n\nExample: for the input 2, 4, 6, NaN, 8, END the output is 2.0, 3.0, 4.0, 5.0 (one per line).\n\nNOTE: This is an I/O type question, you need to write the whole code for taking input and printing the output.",
+    "input_format": "Numbers, one per line, followed by a line containing END. A line may also contain NaN.",
+    "output_format": "After each valid number, print the running average rounded to one decimal place.",
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "",
+    "suffix_code": "",
+    "sample_input": "2\n4\n6\nNaN\n8\nEND",
+    "sample_output": "2.0\n3.0\n4.0\n5.0",
+    "position": 5,
+    "test_cases": [
+      {
+        "input": "2\n4\n6\nNaN\n8\nEND",
+        "expected_output": "2.0\n3.0\n4.0\n5.0",
+        "is_hidden": false
+      },
+      {
+        "input": "5\nEND",
+        "expected_output": "5.0",
+        "is_hidden": false
+      },
+      {
+        "input": "NaN\n3\nNaN\n4\nEND",
+        "expected_output": "3.0\n3.5",
+        "is_hidden": true
+      },
+      {
+        "input": "1\n2\n2\n10\nEND",
+        "expected_output": "1.0\n1.5\n1.7\n3.8",
+        "is_hidden": true
+      },
+      {
+        "input": "-4\n4\n-2.5\nEND",
+        "expected_output": "-4.0\n0.0\n-0.8",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 1 (2025 Jan) Set 4 · P6: Time Series Analysis",
+    "description": "Given a list of numerical values, implement the following functions:\n- difference(data) -> list: Returns the list of differences between consecutive elements (data[i+1] - data[i]).\n- nth_order_difference(data, n) -> list: Returns the list of nth order differences (apply difference() n times).\n- has_positive_trend(data) -> bool: Returns True if every consecutive difference is positive.\n- moving_average(data, window_size) -> list: Returns the list of averages of every sliding window of the given size.\n- has_negative_average_trend(data, window_size) -> bool: Returns True if every consecutive difference of the moving average list is negative.\n\nExample: data = [1, 4, 9, 16]\n- difference(data) -> [3, 5, 7]\n- nth_order_difference(data, 2) -> [2, 2]\n- has_positive_trend(data) -> True\n- moving_average(data, 2) -> [2.5, 6.5, 12.5]\n\nFor testing, the input gives the data list, then the name of the function to call, then a tuple with the remaining arguments.\n\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition. You can define helper functions if needed, but the actual solution should be in the given function template.",
+    "input_format": null,
+    "output_format": null,
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "def difference(data: list) -> list:\n    pass\n\ndef nth_order_difference(data: list, n: int) -> list:\n    pass\n\ndef has_positive_trend(data: list) -> bool:\n    pass\n\ndef moving_average(data: list, window_size: int) -> list:\n    pass\n\ndef has_negative_average_trend(data: list, window_size: int) -> bool:\n    pass",
+    "suffix_code": "data = eval(input())\nfunc = input()\nargs = eval(input())\nprint(globals()[func](data, *args))",
+    "sample_input": "[1, 4, 9, 16]\ndifference\n()",
+    "sample_output": "[3, 5, 7]",
+    "position": 6,
+    "test_cases": [
+      {
+        "input": "[1, 4, 9, 16]\ndifference\n()",
+        "expected_output": "[3, 5, 7]",
+        "is_hidden": false
+      },
+      {
+        "input": "[1, 4, 9, 16]\nnth_order_difference\n(2,)",
+        "expected_output": "[2, 2]",
+        "is_hidden": false
+      },
+      {
+        "input": "[1, 4, 9, 16]\nhas_positive_trend\n()",
+        "expected_output": "True",
+        "is_hidden": true
+      },
+      {
+        "input": "[1, 4, 9, 16]\nmoving_average\n(2,)",
+        "expected_output": "[2.5, 6.5, 12.5]",
+        "is_hidden": true
+      },
+      {
+        "input": "[9, 7, 8, 3, 1]\nhas_negative_average_trend\n(2,)",
+        "expected_output": "True",
+        "is_hidden": true
+      },
+      {
+        "input": "[5, 4, 3, 2]\nhas_positive_trend\n()",
+        "expected_output": "False",
+        "is_hidden": true
+      },
+      {
+        "input": "[1, 2, 4, 8, 16]\nnth_order_difference\n(3,)",
+        "expected_output": "[1, 2]",
+        "is_hidden": true
+      },
+      {
+        "input": "[2, 4, 6, 8]\nmoving_average\n(4,)",
+        "expected_output": "[5.0]",
+        "is_hidden": true
+      },
+      {
+        "input": "[1, 2, 3, 4]\nhas_negative_average_trend\n(2,)",
+        "expected_output": "False",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 1 (2025 Jan) Set 4 · P7: Diamond",
+    "description": "Given an odd number n as an input, print a diamond pattern with '*' in n lines. The widest row is the middle row; each row has no spaces after the last '*'.\n\nExamples:\nn = 3\n *\n***\n *\n\nn = 5\n  *\n ***\n*****\n ***\n  *\n\nNOTE: This is an I/O type question, you need to write the whole code for taking input and printing the output.",
+    "input_format": "A single odd integer n, the number of lines.",
+    "output_format": "A diamond pattern with n lines.",
+    "constraints": "n is odd, n >= 1",
+    "prefix_code": "",
+    "starter_code": "",
+    "suffix_code": "",
+    "sample_input": "3",
+    "sample_output": " *\n***\n *",
+    "position": 7,
+    "test_cases": [
+      {
+        "input": "3",
+        "expected_output": " *\n***\n *",
+        "is_hidden": false
+      },
+      {
+        "input": "5",
+        "expected_output": "  *\n ***\n*****\n ***\n  *",
+        "is_hidden": false
+      },
+      {
+        "input": "1",
+        "expected_output": "*",
+        "is_hidden": true
+      },
+      {
+        "input": "7",
+        "expected_output": "   *\n  ***\n *****\n*******\n *****\n  ***\n   *",
+        "is_hidden": true
+      },
+      {
+        "input": "9",
+        "expected_output": "    *\n   ***\n  *****\n *******\n*********\n *******\n  *****\n   ***\n    *",
+        "is_hidden": true
+      }
+    ]
+  }
+]

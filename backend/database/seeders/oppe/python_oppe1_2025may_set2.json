@@ -1,0 +1,347 @@
+[
+  {
+    "title": "OPPE 1 (2025 May) Set 2 · P1: Make dictionary from elements at an index of lists",
+    "description": "Write a function make_dict_from_elems_in_index that returns a dictionary consisting of a single key-value pair formed as follows:\n- the key is the element at the given index from the list keys\n- the value is the element at the given index from the list values\nAssume the index is always within valid bounds for both lists.\n\nExample:\n>>> keys = ['apple', 'banana', 'cherry']\n>>> values = [10, 20, 30, 40]\n>>> make_dict_from_elems_in_index(keys, values, 1)\n{'banana': 20}\n>>> make_dict_from_elems_in_index(keys, values, -1)\n{'cherry': 40}\n\nThe elements at index 1 are banana and 20, so the dictionary is {'banana': 20}. The elements at index -1 are cherry and 40, so the dictionary is {'cherry': 40}.\n\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition.",
+    "input_format": null,
+    "output_format": null,
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "def make_dict_from_elems_in_index(keys: list, values: list, index: int) -> dict:\n    ",
+    "suffix_code": "keys = eval(input())\nvalues = eval(input())\nindex = int(input())\nprint(make_dict_from_elems_in_index(keys, values, index))",
+    "sample_input": "['apple', 'banana', 'cherry']\n[10, 20, 30, 40]\n1",
+    "sample_output": "{'banana': 20}",
+    "position": 1,
+    "test_cases": [
+      {
+        "input": "['apple', 'banana', 'cherry']\n[10, 20, 30, 40]\n1",
+        "expected_output": "{'banana': 20}",
+        "is_hidden": false
+      },
+      {
+        "input": "['apple', 'banana', 'cherry']\n[10, 20, 30, 40]\n-1",
+        "expected_output": "{'cherry': 40}",
+        "is_hidden": false
+      },
+      {
+        "input": "['a']\n[1]\n0",
+        "expected_output": "{'a': 1}",
+        "is_hidden": true
+      },
+      {
+        "input": "['x', 'y']\n[5, 6]\n0",
+        "expected_output": "{'x': 5}",
+        "is_hidden": true
+      },
+      {
+        "input": "['p', 'q', 'r']\n[1, 2, 3]\n-3",
+        "expected_output": "{'p': 1}",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 1 (2025 May) Set 2 · P2: Count unique even and odd numbers",
+    "description": "Write a function count_unique_even_odd that takes a list of integers and returns a dictionary with the count of unique even and odd numbers in the list. The dictionary has the keys \"even\" and \"odd\".\n\nExample:\n>>> l = [1, 2, 2, 3, 4, 5, 5, 6, 9]\n>>> count_unique_even_odd(l)\n{\"even\": 3, \"odd\": 4}\n\nThe unique even numbers are 2, 4 and 6 (count 3). The unique odd numbers are 1, 3, 5 and 9 (count 4).\n\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition.",
+    "input_format": null,
+    "output_format": null,
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "def count_unique_even_odd(numbers: list) -> dict:\n    ",
+    "suffix_code": "numbers = eval(input())\nprint(count_unique_even_odd(numbers))",
+    "sample_input": "[1, 2, 2, 3, 4, 5, 5, 6, 9]",
+    "sample_output": "{'even': 3, 'odd': 4}",
+    "position": 2,
+    "test_cases": [
+      {
+        "input": "[1, 2, 2, 3, 4, 5, 5, 6, 9]",
+        "expected_output": "{'even': 3, 'odd': 4}",
+        "is_hidden": false
+      },
+      {
+        "input": "[]",
+        "expected_output": "{'even': 0, 'odd': 0}",
+        "is_hidden": false
+      },
+      {
+        "input": "[2, 2, 2]",
+        "expected_output": "{'even': 1, 'odd': 0}",
+        "is_hidden": true
+      },
+      {
+        "input": "[1, 1, 3]",
+        "expected_output": "{'even': 0, 'odd': 2}",
+        "is_hidden": true
+      },
+      {
+        "input": "[0, -2, -3, -3]",
+        "expected_output": "{'even': 2, 'odd': 1}",
+        "is_hidden": true
+      },
+      {
+        "input": "[7]",
+        "expected_output": "{'even': 0, 'odd': 1}",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 1 (2025 May) Set 2 · P3: Vowel count of words",
+    "description": "Write a program that takes a string and counts the number of vowels in every word. The program should then print each word followed by the count of vowels in parentheses.\nAssume words are separated by a single space. Vowels can be uppercase or lowercase.\n\nExample:\nInput: Computer science is amazing\nOutput: Computer(3) science(3) is(1) amazing(3)\n\nNOTE: This is an I/O type question, you need to write the whole code for taking input and printing the output.",
+    "input_format": "A string in the first line.",
+    "output_format": "A string with the vowel count of each word in parentheses after each word.",
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "",
+    "suffix_code": "",
+    "sample_input": "Computer science is amazing",
+    "sample_output": "Computer(3) science(3) is(1) amazing(3)",
+    "position": 3,
+    "test_cases": [
+      {
+        "input": "Computer science is amazing",
+        "expected_output": "Computer(3) science(3) is(1) amazing(3)",
+        "is_hidden": false
+      },
+      {
+        "input": "hello",
+        "expected_output": "hello(2)",
+        "is_hidden": false
+      },
+      {
+        "input": "rhythm gym",
+        "expected_output": "rhythm(0) gym(0)",
+        "is_hidden": true
+      },
+      {
+        "input": "AEIOU aeiou",
+        "expected_output": "AEIOU(5) aeiou(5)",
+        "is_hidden": true
+      },
+      {
+        "input": "Python is fun to learn",
+        "expected_output": "Python(1) is(1) fun(1) to(1) learn(2)",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 1 (2025 May) Set 2 · P4: Student Score Filter",
+    "description": "Given the data of student scores in a dictionary where keys are student names and values are lists of scores, write a function filter_students(data, criteria) to filter student names based on the following criteria:\n- 'excellent': Students with average score >= 85.\n- 'good': Students with average score between 50 (inclusive) and 85 (exclusive).\n- 'all_pass': Students with all scores >= 50.\n- 'balanced': Students whose difference between max score and min score is <= 10.\nThe function returns a set of names (an empty set for any other criteria).\n\nExample: data = {\"Alice\": [90, 80, 85], \"Bob\": [40, 50, 60], \"Charlie\": [30, 40, 20], \"Ram\": [78, 92, 85, 79, 81], \"Babu\": [67, 70, 75], \"Kumar\": [100, 100, 100, 100, 100, 100, 40]}\n- 'excellent' -> {'Alice', 'Kumar'}\n- 'good' -> {'Babu', 'Bob', 'Ram'}\n- 'all_pass' -> {'Alice', 'Babu', 'Ram'}\n- 'balanced' -> {'Alice', 'Babu'}\n\nFor testing, the returned set is printed as a sorted list.\n\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition. You can define helper functions if needed, but the actual solution should be in the given function template.",
+    "input_format": null,
+    "output_format": null,
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "def filter_students(data: dict, criteria: str) -> set:\n    ",
+    "suffix_code": "data = eval(input())\ncriteria = input()\nprint(sorted(filter_students(data, criteria)))",
+    "sample_input": "{'Alice': [90, 80, 85], 'Bob': [40, 50, 60], 'Charlie': [30, 40, 20], 'Ram': [78, 92, 85, 79, 81], 'Babu': [67, 70, 75], 'Kumar': [100, 100, 100, 100, 100, 100, 40]}\nexcellent",
+    "sample_output": "['Alice', 'Kumar']",
+    "position": 4,
+    "test_cases": [
+      {
+        "input": "{'Alice': [90, 80, 85], 'Bob': [40, 50, 60], 'Charlie': [30, 40, 20], 'Ram': [78, 92, 85, 79, 81], 'Babu': [67, 70, 75], 'Kumar': [100, 100, 100, 100, 100, 100, 40]}\nexcellent",
+        "expected_output": "['Alice', 'Kumar']",
+        "is_hidden": false
+      },
+      {
+        "input": "{'Alice': [90, 80, 85], 'Bob': [40, 50, 60], 'Charlie': [30, 40, 20], 'Ram': [78, 92, 85, 79, 81], 'Babu': [67, 70, 75], 'Kumar': [100, 100, 100, 100, 100, 100, 40]}\ngood",
+        "expected_output": "['Babu', 'Bob', 'Ram']",
+        "is_hidden": false
+      },
+      {
+        "input": "{'Alice': [90, 80, 85], 'Bob': [40, 50, 60], 'Charlie': [30, 40, 20], 'Ram': [78, 92, 85, 79, 81], 'Babu': [67, 70, 75], 'Kumar': [100, 100, 100, 100, 100, 100, 40]}\nall_pass",
+        "expected_output": "['Alice', 'Babu', 'Ram']",
+        "is_hidden": true
+      },
+      {
+        "input": "{'Alice': [90, 80, 85], 'Bob': [40, 50, 60], 'Charlie': [30, 40, 20], 'Ram': [78, 92, 85, 79, 81], 'Babu': [67, 70, 75], 'Kumar': [100, 100, 100, 100, 100, 100, 40]}\nbalanced",
+        "expected_output": "['Alice', 'Babu']",
+        "is_hidden": true
+      },
+      {
+        "input": "{'A': [50, 50], 'B': [49, 51]}\ngood",
+        "expected_output": "['A', 'B']",
+        "is_hidden": true
+      },
+      {
+        "input": "{'A': [85]}\nexcellent",
+        "expected_output": "['A']",
+        "is_hidden": true
+      },
+      {
+        "input": "{'A': [10, 20], 'B': [1, 12]}\nbalanced",
+        "expected_output": "['A']",
+        "is_hidden": true
+      },
+      {
+        "input": "{'A': [60]}\nunknown",
+        "expected_output": "[]",
+        "is_hidden": true
+      },
+      {
+        "input": "{}\ngood",
+        "expected_output": "[]",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 1 (2025 May) Set 2 · P5: W Pattern",
+    "description": "Given an integer n (where n > 0), print a pattern with n rows made of a vertical bar (|) on the left and right sides of each row, and a forward slash (/) and a backslash (\\) in the middle. The two slashes start together at the top and move diagonally away from each other towards the bottom, forming a \"W\"-like peak. There should be no spaces to the right of the last bar.\n\nExamples:\nn = 1\n|/\\|\n\nn = 2\n| /\\ |\n|/  \\|\n\nn = 3\n|  /\\  |\n| /  \\ |\n|/    \\|\n\nNOTE: This is an I/O type question, you need to write the whole code for taking input and printing the output.",
+    "input_format": "A single integer n, representing the number of rows in the pattern.",
+    "output_format": "The pattern with n rows, as described.",
+    "constraints": "n > 0",
+    "prefix_code": "",
+    "starter_code": "",
+    "suffix_code": "",
+    "sample_input": "1",
+    "sample_output": "|/\\|",
+    "position": 5,
+    "test_cases": [
+      {
+        "input": "1",
+        "expected_output": "|/\\|",
+        "is_hidden": false
+      },
+      {
+        "input": "2",
+        "expected_output": "| /\\ |\n|/  \\|",
+        "is_hidden": false
+      },
+      {
+        "input": "3",
+        "expected_output": "|  /\\  |\n| /  \\ |\n|/    \\|",
+        "is_hidden": true
+      },
+      {
+        "input": "4",
+        "expected_output": "|   /\\   |\n|  /  \\  |\n| /    \\ |\n|/      \\|",
+        "is_hidden": true
+      },
+      {
+        "input": "6",
+        "expected_output": "|     /\\     |\n|    /  \\    |\n|   /    \\   |\n|  /      \\  |\n| /        \\ |\n|/          \\|",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 1 (2025 May) Set 2 · P6: Check If a Number is a Decreasing 4-Digit Number",
+    "description": "Write a function is_decreasing_number(n) that checks if a given 4-digit number is decreasing, meaning each digit is strictly less than the digit before it (from left to right). The function should return True if the number meets the criteria and False otherwise.\n\nConstraints: The input number will be a 4-digit number, which means it will be in the range of 1000 to 9999.\n\nExamples:\n>>> is_decreasing_number(4321)\nTrue\n>>> is_decreasing_number(4312)\nFalse\n>>> is_decreasing_number(9876)\nTrue\n>>> is_decreasing_number(1111)\nFalse\n>>> is_decreasing_number(3210)\nTrue\n\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition.",
+    "input_format": null,
+    "output_format": null,
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "def is_decreasing_number(n: int) -> bool:\n    ",
+    "suffix_code": "n = int(input())\nprint(is_decreasing_number(n))",
+    "sample_input": "4321",
+    "sample_output": "True",
+    "position": 6,
+    "test_cases": [
+      {
+        "input": "4321",
+        "expected_output": "True",
+        "is_hidden": false
+      },
+      {
+        "input": "4312",
+        "expected_output": "False",
+        "is_hidden": false
+      },
+      {
+        "input": "9876",
+        "expected_output": "True",
+        "is_hidden": true
+      },
+      {
+        "input": "1111",
+        "expected_output": "False",
+        "is_hidden": true
+      },
+      {
+        "input": "3210",
+        "expected_output": "True",
+        "is_hidden": true
+      },
+      {
+        "input": "1000",
+        "expected_output": "False",
+        "is_hidden": true
+      },
+      {
+        "input": "9999",
+        "expected_output": "False",
+        "is_hidden": true
+      },
+      {
+        "input": "5432",
+        "expected_output": "True",
+        "is_hidden": true
+      },
+      {
+        "input": "1234",
+        "expected_output": "False",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 1 (2025 May) Set 2 · P7: Parse Equation and Solve for x",
+    "description": "Write a function solve_for_x(equation) that takes a string representing a linear equation in the form ax+b=c or ax-b=c, where a, b, and c are integers. The function should return the value of x as a float.\n\nThe equation will always follow the correct format, which is:\n- a and b are integer coefficients (they can be positive or negative) and are optional.\n- x is the variable and will always be there before the =.\n- The equality sign and c will always be present.\n- If there is no coefficient for x it is assumed to be 1.\n- The equation might have spaces in between or at the end, which have to be ignored.\n\nHint: Think of x and = as separators.\n\nExamples:\n>>> solve_for_x(\"2x +3= 11\")\n4.0\n>>> solve_for_x(\"5x -2 = 13\")\n3.0\n>>> solve_for_x(\"-3x + 10=1\")\n3.0\n>>> solve_for_x(\"x + 2 = 5\")\n3.0\n>>> solve_for_x(\"2x=6\")\n3.0\n\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition.",
+    "input_format": null,
+    "output_format": null,
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "def solve_for_x(equation: str) -> float:\n    ",
+    "suffix_code": "equation = input()\nprint(solve_for_x(equation))",
+    "sample_input": "2x +3= 11",
+    "sample_output": "4.0",
+    "position": 7,
+    "test_cases": [
+      {
+        "input": "2x +3= 11",
+        "expected_output": "4.0",
+        "is_hidden": false
+      },
+      {
+        "input": "5x -2 = 13",
+        "expected_output": "3.0",
+        "is_hidden": false
+      },
+      {
+        "input": "-3x + 10=1",
+        "expected_output": "3.0",
+        "is_hidden": true
+      },
+      {
+        "input": "x + 2 = 5",
+        "expected_output": "3.0",
+        "is_hidden": true
+      },
+      {
+        "input": "2x=6",
+        "expected_output": "3.0",
+        "is_hidden": true
+      },
+      {
+        "input": "-x+1=0",
+        "expected_output": "1.0",
+        "is_hidden": true
+      },
+      {
+        "input": "3x-9=0",
+        "expected_output": "3.0",
+        "is_hidden": true
+      },
+      {
+        "input": "x=-4",
+        "expected_output": "-4.0",
+        "is_hidden": true
+      },
+      {
+        "input": "-2x - 4 = 6 ",
+        "expected_output": "-5.0",
+        "is_hidden": true
+      }
+    ]
+  }
+]

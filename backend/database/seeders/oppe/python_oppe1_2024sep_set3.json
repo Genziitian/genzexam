@@ -1,0 +1,322 @@
+[
+  {
+    "title": "OPPE 1 (2024 Sep) Set 3 · P1: Check if a Number is Divisible by Exactly One of the Given Numbers",
+    "description": "Write a function div_by_exactly_one that takes three integers num, a, and b. The function should return True if num is divisible by exactly one of the numbers a or b, and False otherwise.\n\nExamples:\n- num=20, a=5, b=6 -> True (20 is divisible by 5 only)\n- num=20, a=5, b=10 -> False (20 is divisible by both 5 and 10)\n- num=20, a=6, b=10 -> True (20 is divisible by 10 only)\n- num=20, a=6, b=7 -> False (20 is not divisible by either 6 or 7)\n\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition.",
+    "input_format": null,
+    "output_format": null,
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "def div_by_exactly_one(num: int, a: int, b: int) -> bool:\n    ",
+    "suffix_code": "num = int(input())\na = int(input())\nb = int(input())\nprint(div_by_exactly_one(num, a, b))",
+    "sample_input": "20\n5\n6",
+    "sample_output": "True",
+    "position": 1,
+    "test_cases": [
+      {
+        "input": "20\n5\n6",
+        "expected_output": "True",
+        "is_hidden": false
+      },
+      {
+        "input": "20\n5\n10",
+        "expected_output": "False",
+        "is_hidden": false
+      },
+      {
+        "input": "20\n6\n10",
+        "expected_output": "True",
+        "is_hidden": true
+      },
+      {
+        "input": "20\n6\n7",
+        "expected_output": "False",
+        "is_hidden": true
+      },
+      {
+        "input": "0\n3\n4",
+        "expected_output": "False",
+        "is_hidden": true
+      },
+      {
+        "input": "12\n3\n4",
+        "expected_output": "False",
+        "is_hidden": true
+      },
+      {
+        "input": "7\n7\n1",
+        "expected_output": "False",
+        "is_hidden": true
+      },
+      {
+        "input": "30\n2\n3",
+        "expected_output": "False",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 1 (2024 Sep) Set 3 · P2: Convert date from mm-dd-yy to yy-dd-mm",
+    "description": "Convert a date string from the format mm-dd-yy to yy-dd-mm.\n\nExample: the input \"12-25-21\" gives \"21-25-12\".\n\nWrite the function convert_date(date) that takes the date string and returns the converted string.\n\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition.",
+    "input_format": null,
+    "output_format": null,
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "def convert_date(date: str) -> str:\n    ",
+    "suffix_code": "date = input()\nprint(convert_date(date))",
+    "sample_input": "12-25-21",
+    "sample_output": "21-25-12",
+    "position": 2,
+    "test_cases": [
+      {
+        "input": "12-25-21",
+        "expected_output": "21-25-12",
+        "is_hidden": false
+      },
+      {
+        "input": "01-02-03",
+        "expected_output": "03-02-01",
+        "is_hidden": false
+      },
+      {
+        "input": "07-31-99",
+        "expected_output": "99-31-07",
+        "is_hidden": true
+      },
+      {
+        "input": "11-11-11",
+        "expected_output": "11-11-11",
+        "is_hidden": true
+      },
+      {
+        "input": "09-15-00",
+        "expected_output": "00-15-09",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 1 (2024 Sep) Set 3 · P3: Increment Value of Key in Dict with Max Limit",
+    "description": "Write a function increment_value_with_max_limit that increments the value for a specified key in a dictionary by a given increment value (inc). However, the value should not exceed a specified maximum limit (limit).\nAssume the dictionary values are integers. If the resulting value after incrementing is greater than the limit, it should be capped at the limit.\nThe function modifies the dictionary in place and returns nothing.\n\nExample:\n>>> d = {\"x\": 5, \"y\": 3, \"z\": 5}\n>>> increment_value_with_max_limit(d, \"y\", 5, 5)\n>>> d\n{\"x\": 5, \"y\": 5, \"z\": 5}   # 3+5=8 but the limit is 5\n>>> increment_value_with_max_limit(d, \"z\", 5, 11)\n>>> d\n{\"x\": 5, \"y\": 5, \"z\": 10}   # 5+5=10 is less than the limit\n\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition.",
+    "input_format": null,
+    "output_format": null,
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "def increment_value_with_max_limit(d: dict, key, inc: int, limit: int) -> None:\n    ",
+    "suffix_code": "d = eval(input())\nkey = input()\ninc = int(input())\nlimit = int(input())\nincrement_value_with_max_limit(d, key, inc, limit)\nprint(d)",
+    "sample_input": "{'x': 5, 'y': 3, 'z': 5}\ny\n5\n5",
+    "sample_output": "{'x': 5, 'y': 5, 'z': 5}",
+    "position": 3,
+    "test_cases": [
+      {
+        "input": "{'x': 5, 'y': 3, 'z': 5}\ny\n5\n5",
+        "expected_output": "{'x': 5, 'y': 5, 'z': 5}",
+        "is_hidden": false
+      },
+      {
+        "input": "{'x': 5, 'y': 5, 'z': 5}\nz\n5\n11",
+        "expected_output": "{'x': 5, 'y': 5, 'z': 10}",
+        "is_hidden": false
+      },
+      {
+        "input": "{'x': 5, 'y': 5, 'z': 10}\nx\n5\n4",
+        "expected_output": "{'x': 4, 'y': 5, 'z': 10}",
+        "is_hidden": true
+      },
+      {
+        "input": "{'a': 0}\na\n1\n10",
+        "expected_output": "{'a': 1}",
+        "is_hidden": true
+      },
+      {
+        "input": "{'a': 9}\na\n1\n10",
+        "expected_output": "{'a': 10}",
+        "is_hidden": true
+      },
+      {
+        "input": "{'a': 10}\na\n1\n10",
+        "expected_output": "{'a': 10}",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 1 (2024 Sep) Set 3 · P4: Last Word in a Given Sentence That Starts with Uppercase Letter",
+    "description": "Given a sentence, find the last word that starts with an uppercase letter. If no such word exists, return None. Words in the sentence are separated by spaces. Assume no punctuation will be present.\n\nExplanation:\n- Words are separated by spaces, so split the sentence into words.\n- Check each word to see if it starts with an uppercase letter.\n- Keep track of the last word that meets this condition.\n\nExamples:\n- \"This is a Test sentence\" -> \"Test\" (last word that starts with an uppercase letter)\n- \"no uppercase words here\" -> None\n\nWrite the function last_uppercase_word(sentence).\n\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition.",
+    "input_format": null,
+    "output_format": null,
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "def last_uppercase_word(sentence: str):\n    ",
+    "suffix_code": "sentence = input()\nprint(last_uppercase_word(sentence))",
+    "sample_input": "This is a Test sentence",
+    "sample_output": "Test",
+    "position": 4,
+    "test_cases": [
+      {
+        "input": "This is a Test sentence",
+        "expected_output": "Test",
+        "is_hidden": false
+      },
+      {
+        "input": "no uppercase words here",
+        "expected_output": "None",
+        "is_hidden": false
+      },
+      {
+        "input": "Hello World",
+        "expected_output": "World",
+        "is_hidden": true
+      },
+      {
+        "input": "hello World again",
+        "expected_output": "World",
+        "is_hidden": true
+      },
+      {
+        "input": "A",
+        "expected_output": "A",
+        "is_hidden": true
+      },
+      {
+        "input": "a b C d E f",
+        "expected_output": "E",
+        "is_hidden": true
+      },
+      {
+        "input": "",
+        "expected_output": "None",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 1 (2024 Sep) Set 3 · P5: Swap Every Alternate Line and Reverse Odd Lines",
+    "description": "Given multiple lines of input, modify the lines as follows:\n- Swap every two consecutive lines.\n- Reverse every odd-numbered line in the output sequence.\n\nExample: for the input of 5 lines (apple, orange, pineapple, mango, kiwi) the output is egnaro, apple, ognam, pineapple, iwik.\n- The first and second lines are swapped, with the first line (orange) reversed.\n- The third and fourth lines are swapped, with the third line (mango) reversed.\n- The fifth line (kiwi), being alone, is reversed.\n\nNOTE: This is an I/O type question, you need to write the whole code for taking input and printing the output.",
+    "input_format": "The first line contains the integer n, the number of lines.\nThe next n lines contain text strings.",
+    "output_format": "Print the transformed lines according to the rules specified.",
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "",
+    "suffix_code": "",
+    "sample_input": "5\napple\norange\npineapple\nmango\nkiwi",
+    "sample_output": "egnaro\napple\nognam\npineapple\niwik",
+    "position": 5,
+    "test_cases": [
+      {
+        "input": "5\napple\norange\npineapple\nmango\nkiwi",
+        "expected_output": "egnaro\napple\nognam\npineapple\niwik",
+        "is_hidden": false
+      },
+      {
+        "input": "1\nhello",
+        "expected_output": "olleh",
+        "is_hidden": false
+      },
+      {
+        "input": "2\nab\ncd",
+        "expected_output": "dc\nab",
+        "is_hidden": true
+      },
+      {
+        "input": "4\none\ntwo\nthree\nfour",
+        "expected_output": "owt\none\nruof\nthree",
+        "is_hidden": true
+      },
+      {
+        "input": "3\nx y\nmoon\nstar",
+        "expected_output": "noom\nx y\nrats",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 1 (2024 Sep) Set 3 · P6: Word Filters",
+    "description": "Given a list of words (case-insensitive), filter the words based on specific criteria and return the result as a list in the same order as the input. The criteria are as follows:\n- continuous: words that end with \"ing\" (case-insensitive)\n- vowel_rich: words that contain more than 5 vowels (not equal to 5)\n- consonant_rich: words that contain more than 5 consonants (not equal to 5)\n- sorted: words where the letters are sorted in ascending order\nIf any other criteria is given, return None.\nNote: You can use the string methods like isalpha and lower if needed.\n\nExample: for the list [\"running\", \"aeiobcdioe\", \"acc\", \"xyz\", \"BOTbot\", \"BboOTt\", \"jumpiNg\", \"SPINNING\", \"alphabetical\"]:\n- continuous -> [\"running\", \"jumpiNg\", \"SPINNING\"]\n- vowel_rich -> [\"aeiobcdioe\"]\n- consonant_rich -> [\"SPINNING\", \"alphabetical\"]\n- sorted -> [\"acc\", \"xyz\", \"BboOTt\"]\n\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition. You can define helper functions if needed, but the actual solution should be in the given function template.",
+    "input_format": null,
+    "output_format": null,
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "def word_filters(words: list, criteria: str):\n    ",
+    "suffix_code": "words = eval(input())\ncriteria = input()\nprint(word_filters(words, criteria))",
+    "sample_input": "[\"running\", \"aeiobcdioe\", \"acc\", \"xyz\", \"BOTbot\", \"BboOTt\", \"jumpiNg\", \"SPINNING\", \"alphabetical\"]\ncontinuous",
+    "sample_output": "['running', 'jumpiNg', 'SPINNING']",
+    "position": 6,
+    "test_cases": [
+      {
+        "input": "[\"running\", \"aeiobcdioe\", \"acc\", \"xyz\", \"BOTbot\", \"BboOTt\", \"jumpiNg\", \"SPINNING\", \"alphabetical\"]\ncontinuous",
+        "expected_output": "['running', 'jumpiNg', 'SPINNING']",
+        "is_hidden": false
+      },
+      {
+        "input": "[\"running\", \"aeiobcdioe\", \"acc\", \"xyz\", \"BOTbot\", \"BboOTt\", \"jumpiNg\", \"SPINNING\", \"alphabetical\"]\nvowel_rich",
+        "expected_output": "['aeiobcdioe']",
+        "is_hidden": false
+      },
+      {
+        "input": "[\"running\", \"aeiobcdioe\", \"acc\", \"xyz\", \"BOTbot\", \"BboOTt\", \"jumpiNg\", \"SPINNING\", \"alphabetical\"]\nconsonant_rich",
+        "expected_output": "['SPINNING', 'alphabetical']",
+        "is_hidden": true
+      },
+      {
+        "input": "[\"running\", \"aeiobcdioe\", \"acc\", \"xyz\", \"BOTbot\", \"BboOTt\", \"jumpiNg\", \"SPINNING\", \"alphabetical\"]\nsorted",
+        "expected_output": "['acc', 'xyz', 'BboOTt']",
+        "is_hidden": true
+      },
+      {
+        "input": "[\"abc\", \"cba\"]\nunknown",
+        "expected_output": "None",
+        "is_hidden": true
+      },
+      {
+        "input": "[]\nsorted",
+        "expected_output": "[]",
+        "is_hidden": true
+      },
+      {
+        "input": "[\"Sing\", \"THING\", \"ring\"]\ncontinuous",
+        "expected_output": "['Sing', 'THING', 'ring']",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 1 (2024 Sep) Set 3 · P7: Pattern Print - N",
+    "description": "Given an integer n (where n > 0), print an \"N\" shaped pattern with n rows. The pattern should have vertical bars (|) on the left and right sides of each row, with a backslash (\\) moving diagonally from the top-left to the bottom-right. There should be no spaces to the right of the pattern.\n\nExamples:\nn = 1\n|\\|\n\nn = 2\n|\\ |\n| \\|\n\nn = 3\n|\\  |\n| \\ |\n|  \\|\n\nNOTE: This is an I/O type question, you need to write the whole code for taking input and printing the output.",
+    "input_format": "A single integer n, representing the number of rows in the pattern.",
+    "output_format": "An \"N\" shaped pattern with n rows, as described.",
+    "constraints": "n > 0",
+    "prefix_code": "",
+    "starter_code": "",
+    "suffix_code": "",
+    "sample_input": "1",
+    "sample_output": "|\\|",
+    "position": 7,
+    "test_cases": [
+      {
+        "input": "1",
+        "expected_output": "|\\|",
+        "is_hidden": false
+      },
+      {
+        "input": "2",
+        "expected_output": "|\\ |\n| \\|",
+        "is_hidden": false
+      },
+      {
+        "input": "3",
+        "expected_output": "|\\  |\n| \\ |\n|  \\|",
+        "is_hidden": true
+      },
+      {
+        "input": "5",
+        "expected_output": "|\\    |\n| \\   |\n|  \\  |\n|   \\ |\n|    \\|",
+        "is_hidden": true
+      },
+      {
+        "input": "6",
+        "expected_output": "|\\     |\n| \\    |\n|  \\   |\n|   \\  |\n|    \\ |\n|     \\|",
+        "is_hidden": true
+      }
+    ]
+  }
+]

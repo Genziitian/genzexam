@@ -1,0 +1,377 @@
+[
+  {
+    "title": "OPPE 1 (2025 May) Set 1 · P1: Describe Number Based on Divisibility",
+    "description": "Write a function describe_number that takes an integer as input and returns:\n- \"Fizz\" if the number is divisible by 3.\n- \"Buzz\" if divisible by 5.\n- \"FizzBuzz\" if divisible by both 3 and 5.\n- \"Normal\" if it is divisible by neither.\n\nExamples:\n- describe_number(9) -> \"Fizz\"\n- describe_number(10) -> \"Buzz\"\n- describe_number(15) -> \"FizzBuzz\"\n- describe_number(7) -> \"Normal\"\n\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition.",
+    "input_format": null,
+    "output_format": null,
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "def describe_number(num: int) -> str:\n    ",
+    "suffix_code": "num = int(input())\nprint(describe_number(num))",
+    "sample_input": "9",
+    "sample_output": "Fizz",
+    "position": 1,
+    "test_cases": [
+      {
+        "input": "9",
+        "expected_output": "Fizz",
+        "is_hidden": false
+      },
+      {
+        "input": "10",
+        "expected_output": "Buzz",
+        "is_hidden": false
+      },
+      {
+        "input": "15",
+        "expected_output": "FizzBuzz",
+        "is_hidden": true
+      },
+      {
+        "input": "7",
+        "expected_output": "Normal",
+        "is_hidden": true
+      },
+      {
+        "input": "0",
+        "expected_output": "FizzBuzz",
+        "is_hidden": true
+      },
+      {
+        "input": "-3",
+        "expected_output": "Fizz",
+        "is_hidden": true
+      },
+      {
+        "input": "-10",
+        "expected_output": "Buzz",
+        "is_hidden": true
+      },
+      {
+        "input": "1",
+        "expected_output": "Normal",
+        "is_hidden": true
+      },
+      {
+        "input": "30",
+        "expected_output": "FizzBuzz",
+        "is_hidden": true
+      },
+      {
+        "input": "14",
+        "expected_output": "Normal",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 1 (2025 May) Set 1 · P2: Card to Value Tuple",
+    "description": "Write a function card_to_value_tuple that takes in a playing card as a string of format '{rank}{suit}' and returns a tuple of integers of format (suit_value, rank_value) as described below.\n\nThe suit values from low to high:\n- S (Spades) - 1\n- H (Hearts) - 2\n- D (Diamonds) - 3\n- C (Clubs) - 4\n\nThe rank values from low to high:\n- A (Ace) - 1\n- 2 through 10 - same as the number\n- J (Jack) - 11\n- Q (Queen) - 12\n- K (King) - 13\n\nExamples:\n>>> card_to_value_tuple('AH')\n(2, 1)\n>>> card_to_value_tuple('7D')\n(3, 7)\n>>> card_to_value_tuple('QS')\n(1, 12)\n>>> card_to_value_tuple('9C')\n(4, 9)\n>>> card_to_value_tuple('10D')\n(3, 10)\n\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition.",
+    "input_format": null,
+    "output_format": null,
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "def card_to_value_tuple(card: str) -> tuple:\n    ",
+    "suffix_code": "card = input()\nprint(card_to_value_tuple(card))",
+    "sample_input": "AH",
+    "sample_output": "(2, 1)",
+    "position": 2,
+    "test_cases": [
+      {
+        "input": "AH",
+        "expected_output": "(2, 1)",
+        "is_hidden": false
+      },
+      {
+        "input": "7D",
+        "expected_output": "(3, 7)",
+        "is_hidden": false
+      },
+      {
+        "input": "QS",
+        "expected_output": "(1, 12)",
+        "is_hidden": true
+      },
+      {
+        "input": "9C",
+        "expected_output": "(4, 9)",
+        "is_hidden": true
+      },
+      {
+        "input": "10D",
+        "expected_output": "(3, 10)",
+        "is_hidden": true
+      },
+      {
+        "input": "KC",
+        "expected_output": "(4, 13)",
+        "is_hidden": true
+      },
+      {
+        "input": "JS",
+        "expected_output": "(1, 11)",
+        "is_hidden": true
+      },
+      {
+        "input": "2H",
+        "expected_output": "(2, 2)",
+        "is_hidden": true
+      },
+      {
+        "input": "10S",
+        "expected_output": "(1, 10)",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 1 (2025 May) Set 1 · P3: Rotate Even Indices",
+    "description": "Write a function rotate_even(l, k), which rotates the elements at the even indices (0, 2, 4, ...) of the list l to the right by k positions among the even indices, wrapping around, and returns the new list. The elements at odd indices stay where they are.\n\nHint: This can be solved using slicing and slice update.\n\nExamples:\n>>> rotate_even([1,2,3,4,5,6], 1)\n[5, 2, 1, 4, 3, 6]\n>>> rotate_even([1,2,3,4,5,6,7,8], 3)\n[3, 2, 5, 4, 7, 6, 1, 8]\n\nEach element at an even index moves k even indices forward and cycles back. In the first example 1 (index 0) moves to index 2, 3 (index 2) moves to index 4 and 5 (index 4) moves to index 0.\n\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition.",
+    "input_format": null,
+    "output_format": null,
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "def rotate_even(l: list, k: int) -> list:\n    ",
+    "suffix_code": "l = eval(input())\nk = int(input())\nprint(rotate_even(l, k))",
+    "sample_input": "[1,2,3,4,5,6]\n1",
+    "sample_output": "[5, 2, 1, 4, 3, 6]",
+    "position": 3,
+    "test_cases": [
+      {
+        "input": "[1,2,3,4,5,6]\n1",
+        "expected_output": "[5, 2, 1, 4, 3, 6]",
+        "is_hidden": false
+      },
+      {
+        "input": "[1,2,3,4,5,6,7,8]\n3",
+        "expected_output": "[3, 2, 5, 4, 7, 6, 1, 8]",
+        "is_hidden": false
+      },
+      {
+        "input": "[1,2,3]\n0",
+        "expected_output": "[1, 2, 3]",
+        "is_hidden": true
+      },
+      {
+        "input": "[1]\n5",
+        "expected_output": "[1]",
+        "is_hidden": true
+      },
+      {
+        "input": "[1,2,3,4,5]\n2",
+        "expected_output": "[3, 2, 5, 4, 1]",
+        "is_hidden": true
+      },
+      {
+        "input": "[10,20,30,40,50,60,70]\n4",
+        "expected_output": "[10, 20, 30, 40, 50, 60, 70]",
+        "is_hidden": true
+      },
+      {
+        "input": "[]\n2",
+        "expected_output": "[]",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 1 (2025 May) Set 1 · P4: Unique Sum Pairs",
+    "description": "Write a function unique_sum_pairs(nums, k) that takes a list of integers nums and an integer k, and returns a set of unique tuples, where each tuple contains two elements from the list that sum up to k, sorted in ascending order inside the tuple.\n\nThe same number can only be used as a pair with itself if it appears at least twice in the list.\n\nExamples:\n>>> unique_sum_pairs([1, 2, 3, 2, 1], 4)\n{(1, 3), (2, 2)}\n>>> unique_sum_pairs([1, 2, 3, 1], 4)\n{(1, 3)}\n>>> unique_sum_pairs([1, 5, 7, -1, 5], 6)\n{(1, 5), (-1, 7)}\n>>> unique_sum_pairs([3, 3, 3, 3], 6)\n{(3, 3)}\n>>> unique_sum_pairs([1, 2, 3, 4, 5], 10)\nset()\n\nFor testing, the returned set is printed as a sorted list of tuples.\n\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition.",
+    "input_format": null,
+    "output_format": null,
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "def unique_sum_pairs(nums: list, k: int) -> set:\n    ",
+    "suffix_code": "nums = eval(input())\nk = int(input())\nprint(sorted(unique_sum_pairs(nums, k)))",
+    "sample_input": "[1, 2, 3, 2, 1]\n4",
+    "sample_output": "[(1, 3), (2, 2)]",
+    "position": 4,
+    "test_cases": [
+      {
+        "input": "[1, 2, 3, 2, 1]\n4",
+        "expected_output": "[(1, 3), (2, 2)]",
+        "is_hidden": false
+      },
+      {
+        "input": "[1, 2, 3, 1]\n4",
+        "expected_output": "[(1, 3)]",
+        "is_hidden": false
+      },
+      {
+        "input": "[1, 5, 7, -1, 5]\n6",
+        "expected_output": "[(-1, 7), (1, 5)]",
+        "is_hidden": true
+      },
+      {
+        "input": "[3, 3, 3, 3]\n6",
+        "expected_output": "[(3, 3)]",
+        "is_hidden": true
+      },
+      {
+        "input": "[1, 2, 3, 4, 5]\n10",
+        "expected_output": "[]",
+        "is_hidden": true
+      },
+      {
+        "input": "[2, 2]\n4",
+        "expected_output": "[(2, 2)]",
+        "is_hidden": true
+      },
+      {
+        "input": "[2]\n4",
+        "expected_output": "[]",
+        "is_hidden": true
+      },
+      {
+        "input": "[]\n0",
+        "expected_output": "[]",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 1 (2025 May) Set 1 · P5: Replace Consonants with Hash",
+    "description": "Write a program that takes a multi-line string input and prints a new string where all consonants are replaced by #, but vowels stay unchanged. Spaces and other non-letter characters also stay unchanged.\n\nHint: Use the isalpha() method to check for alphabets and string comparisons to identify vowels.\n\nExample:\nInput:\n2\nHello World\nGood Night\nOutput:\n#e##o #o###\n#oo# #i###\n\nNOTE: This is an I/O type question, you need to write the whole code for taking input and printing the output.",
+    "input_format": "The first line contains an integer n, the number of lines.\nThe next n lines contain the passage.",
+    "output_format": "Print the passage with consonants replaced by # and vowels unchanged.",
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "",
+    "suffix_code": "",
+    "sample_input": "2\nHello World\nGood Night",
+    "sample_output": "#e##o #o###\n#oo# #i###",
+    "position": 5,
+    "test_cases": [
+      {
+        "input": "2\nHello World\nGood Night",
+        "expected_output": "#e##o #o###\n#oo# #i###",
+        "is_hidden": false
+      },
+      {
+        "input": "1\nrhythm",
+        "expected_output": "######",
+        "is_hidden": false
+      },
+      {
+        "input": "1\nAEIOU aeiou",
+        "expected_output": "AEIOU aeiou",
+        "is_hidden": true
+      },
+      {
+        "input": "3\nabc 123\nXYZ!\nIIT Madras",
+        "expected_output": "a## 123\n###!\nII# #a##a#",
+        "is_hidden": true
+      },
+      {
+        "input": "1\nPython",
+        "expected_output": "####o#",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 1 (2025 May) Set 1 · P6: Check is even or divisible by 5",
+    "description": "Write a function is_even_or_divisible_by_5 that takes an integer as input and returns True if it is even or is divisible by 5, else False.\n\nExamples:\n- is_even_or_divisible_by_5(8) -> True (8 is an even number)\n- is_even_or_divisible_by_5(10) -> True (10 is even and divisible by 5)\n- is_even_or_divisible_by_5(15) -> True (15 is divisible by 5)\n- is_even_or_divisible_by_5(7) -> False (not even nor divisible by 5)\n\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition.",
+    "input_format": null,
+    "output_format": null,
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "def is_even_or_divisible_by_5(num: int) -> bool:\n    ",
+    "suffix_code": "num = int(input())\nprint(is_even_or_divisible_by_5(num))",
+    "sample_input": "8",
+    "sample_output": "True",
+    "position": 6,
+    "test_cases": [
+      {
+        "input": "8",
+        "expected_output": "True",
+        "is_hidden": false
+      },
+      {
+        "input": "15",
+        "expected_output": "True",
+        "is_hidden": false
+      },
+      {
+        "input": "7",
+        "expected_output": "False",
+        "is_hidden": true
+      },
+      {
+        "input": "10",
+        "expected_output": "True",
+        "is_hidden": true
+      },
+      {
+        "input": "0",
+        "expected_output": "True",
+        "is_hidden": true
+      },
+      {
+        "input": "-5",
+        "expected_output": "True",
+        "is_hidden": true
+      },
+      {
+        "input": "-3",
+        "expected_output": "False",
+        "is_hidden": true
+      },
+      {
+        "input": "1",
+        "expected_output": "False",
+        "is_hidden": true
+      },
+      {
+        "input": "25",
+        "expected_output": "True",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 1 (2025 May) Set 1 · P7: Deinterleave Even and Odd Indices in String",
+    "description": "Write a function deinterleave that takes a string s as input and returns a new string where the characters at even indices are placed before the characters at odd indices.\n\nExamples:\n- \"abcdef\" -> \"acebdf\"\n- \"12345\" -> \"13524\"\n\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition.",
+    "input_format": null,
+    "output_format": null,
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "def deinterleave(s: str) -> str:\n    ",
+    "suffix_code": "s = input()\nprint(deinterleave(s))",
+    "sample_input": "abcdef",
+    "sample_output": "acebdf",
+    "position": 7,
+    "test_cases": [
+      {
+        "input": "abcdef",
+        "expected_output": "acebdf",
+        "is_hidden": false
+      },
+      {
+        "input": "12345",
+        "expected_output": "13524",
+        "is_hidden": false
+      },
+      {
+        "input": "a",
+        "expected_output": "a",
+        "is_hidden": true
+      },
+      {
+        "input": "",
+        "expected_output": "",
+        "is_hidden": true
+      },
+      {
+        "input": "ab",
+        "expected_output": "ab",
+        "is_hidden": true
+      },
+      {
+        "input": "hello world",
+        "expected_output": "hlowrdel ol",
+        "is_hidden": true
+      }
+    ]
+  }
+]

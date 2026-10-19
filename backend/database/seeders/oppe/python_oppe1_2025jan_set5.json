@@ -1,0 +1,357 @@
+[
+  {
+    "title": "OPPE 1 (2025 Jan) Set 5 · P1: Check if 2D Vectors are Orthogonal",
+    "description": "Write a function are_orthogonal that takes two tuples t1 and t2 as input. Each tuple represents a 2D vector with two elements (x, y). The function should return True if the vectors are orthogonal (perpendicular), and False otherwise.\n\nHint: Two vectors are orthogonal if their dot product is zero.\n\nExamples:\n>>> are_orthogonal((1, 2), (12, -6))   # 1*12 + 2*(-6) = 0\nTrue\n>>> are_orthogonal((2, 0), (4, 1))     # 2*4 + 0*1 = 8\nFalse\n>>> are_orthogonal((0, 5), (-5, 0))    # 0*(-5) + 5*0 = 0\nTrue\n\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition.",
+    "input_format": null,
+    "output_format": null,
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "def are_orthogonal(t1: tuple, t2: tuple) -> bool:\n    ",
+    "suffix_code": "t1 = eval(input())\nt2 = eval(input())\nprint(are_orthogonal(t1, t2))",
+    "sample_input": "(1, 2)\n(12, -6)",
+    "sample_output": "True",
+    "position": 1,
+    "test_cases": [
+      {
+        "input": "(1, 2)\n(12, -6)",
+        "expected_output": "True",
+        "is_hidden": false
+      },
+      {
+        "input": "(2, 0)\n(4, 1)",
+        "expected_output": "False",
+        "is_hidden": false
+      },
+      {
+        "input": "(0, 5)\n(-5, 0)",
+        "expected_output": "True",
+        "is_hidden": true
+      },
+      {
+        "input": "(0, 0)\n(3, 4)",
+        "expected_output": "True",
+        "is_hidden": true
+      },
+      {
+        "input": "(1, 1)\n(1, 1)",
+        "expected_output": "False",
+        "is_hidden": true
+      },
+      {
+        "input": "(3, 4)\n(-4, 3)",
+        "expected_output": "True",
+        "is_hidden": true
+      },
+      {
+        "input": "(1, 0)\n(0, 1)",
+        "expected_output": "True",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 1 (2025 Jan) Set 5 · P2: Get Next Roll Number",
+    "description": "Write a function next_roll_no that takes a roll number roll_no as input and returns the next roll number in sequence within the same year and term.\n\nThe roll number format is {yy}f{t}{num}, where:\n- {yy} represents the two-digit year\n- f is a fixed character\n- {t} represents the term number (1, 2, or 3)\n- {num} is a six-digit number padded with zeros on the left\n\nAssume the num part of the roll number will be less than 999999.\n\nExamples:\n>>> next_roll_no(\"23f2000001\")\n'23f2000002'\n>>> next_roll_no(\"24f3099999\")\n'24f3100000'\n\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition.",
+    "input_format": null,
+    "output_format": null,
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "def next_roll_no(roll_no: str) -> str:\n    ",
+    "suffix_code": "roll_no = input()\nprint(next_roll_no(roll_no))",
+    "sample_input": "23f2000001",
+    "sample_output": "23f2000002",
+    "position": 2,
+    "test_cases": [
+      {
+        "input": "23f2000001",
+        "expected_output": "23f2000002",
+        "is_hidden": false
+      },
+      {
+        "input": "24f3099999",
+        "expected_output": "24f3100000",
+        "is_hidden": false
+      },
+      {
+        "input": "21f1000000",
+        "expected_output": "21f1000001",
+        "is_hidden": true
+      },
+      {
+        "input": "22f2123455",
+        "expected_output": "22f2123456",
+        "is_hidden": true
+      },
+      {
+        "input": "25f3999998",
+        "expected_output": "25f3999999",
+        "is_hidden": true
+      },
+      {
+        "input": "20f1000009",
+        "expected_output": "20f1000010",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 1 (2025 Jan) Set 5 · P3: Check If a String has No Vowels in Even Indices",
+    "description": "Write a function has_no_vowels_in_even_indices that takes a string s as input and returns True if there are no vowels in the even indices (0, 2, 4, ...) of the string, otherwise returns False. Vowels are a, e, i, o, u in lowercase or uppercase.\n\nExamples:\n>>> has_no_vowels_in_even_indices(\"babebibobu\")\nTrue    # vowels only at odd indices\n>>> has_no_vowels_in_even_indices(\"abcde\")\nFalse   # a at even index 0\n>>> has_no_vowels_in_even_indices(\"test\")\nTrue    # e at odd index 1\n>>> has_no_vowels_in_even_indices(\"why\")\nTrue    # no vowels\n\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition.",
+    "input_format": null,
+    "output_format": null,
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "def has_no_vowels_in_even_indices(s: str) -> bool:\n    ",
+    "suffix_code": "s = input()\nprint(has_no_vowels_in_even_indices(s))",
+    "sample_input": "babebibobu",
+    "sample_output": "True",
+    "position": 3,
+    "test_cases": [
+      {
+        "input": "babebibobu",
+        "expected_output": "True",
+        "is_hidden": false
+      },
+      {
+        "input": "abcde",
+        "expected_output": "False",
+        "is_hidden": false
+      },
+      {
+        "input": "test",
+        "expected_output": "True",
+        "is_hidden": true
+      },
+      {
+        "input": "why",
+        "expected_output": "True",
+        "is_hidden": true
+      },
+      {
+        "input": "",
+        "expected_output": "True",
+        "is_hidden": true
+      },
+      {
+        "input": "a",
+        "expected_output": "False",
+        "is_hidden": true
+      },
+      {
+        "input": "bA",
+        "expected_output": "True",
+        "is_hidden": true
+      },
+      {
+        "input": "Ebb",
+        "expected_output": "False",
+        "is_hidden": true
+      },
+      {
+        "input": "bcdfg",
+        "expected_output": "True",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 1 (2025 Jan) Set 5 · P4: Find Minimum Card of a Specific Suit in Hand",
+    "description": "Write a function find_min_card that takes a list of string representations of playing cards and a string representing a suit, and returns the minimum card of that suit based on the standard card ranking. If there are no cards of that suit, return None.\n\nCard format:\n- Suit: 'S' (Spades), 'H' (Hearts), 'C' (Clubs), 'D' (Diamonds)\n- Rank: '2' through '10', 'J', 'Q', 'K', 'A'\n- A card is the suit letter followed by the rank, for example 'S9' or 'H10'.\n- Ranking from lowest to highest: 2, 3, 4, 5, 6, 7, 8, 9, 10, J, Q, K, A\n\nExamples:\n>>> find_min_card(['H2', 'S9', 'DA', 'C5', 'CA'], 'S')\n'S9'\n>>> find_min_card(['H2', 'DA', 'C5', 'CA'], 'H')\n'H2'\n>>> find_min_card(['H10', 'D4'], 'S')\nNone\n\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition.",
+    "input_format": null,
+    "output_format": null,
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "def find_min_card(cards: list, suit: str):\n    ",
+    "suffix_code": "cards = eval(input())\nsuit = input()\nprint(find_min_card(cards, suit))",
+    "sample_input": "['H2', 'S9', 'DA', 'C5', 'CA']\nS",
+    "sample_output": "S9",
+    "position": 4,
+    "test_cases": [
+      {
+        "input": "['H2', 'S9', 'DA', 'C5', 'CA']\nS",
+        "expected_output": "S9",
+        "is_hidden": false
+      },
+      {
+        "input": "['H2', 'DA', 'C5', 'CA']\nH",
+        "expected_output": "H2",
+        "is_hidden": false
+      },
+      {
+        "input": "['H10', 'D4']\nS",
+        "expected_output": "None",
+        "is_hidden": true
+      },
+      {
+        "input": "['S10', 'S9', 'SJ']\nS",
+        "expected_output": "S9",
+        "is_hidden": true
+      },
+      {
+        "input": "['SA', 'SK', 'SQ']\nS",
+        "expected_output": "SQ",
+        "is_hidden": true
+      },
+      {
+        "input": "[]\nC",
+        "expected_output": "None",
+        "is_hidden": true
+      },
+      {
+        "input": "['C10', 'C2', 'C3']\nC",
+        "expected_output": "C2",
+        "is_hidden": true
+      },
+      {
+        "input": "['DJ', 'D10', 'DQ']\nD",
+        "expected_output": "D10",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 1 (2025 Jan) Set 5 · P5: Score Objective Questions",
+    "description": "Given the type of each question along with the correct answer and the student's answer, separated by spaces, over multiple lines, find the total marks and the number of correct answers.\n- Each question carries 3 marks for a correct answer.\n- A choice type question also has -1 mark for an incorrect answer.\n- A range type question has no negative marks.\n- For a range type question the correct answer is given as {low}..{high} and the student's answer is correct if it lies between low and high (both inclusive).\n\nExample:\nInput:\n3\nchoice B B\nchoice A C\nrange 3..5 4\nOutput:\n5 2\nThe first answer is correct (+3), the second is incorrect (-1), the third is within the range (+3): total 5 marks with 2 correct answers.\n\nNOTE: This is an I/O type question, you need to write the whole code for taking input and printing the output.",
+    "input_format": "The first line contains an integer n representing the number of questions.\nThe next n lines each contain the question type (choice or range), the correct answer (or range), and the student's answer, separated by spaces.",
+    "output_format": "Total marks and the number of correct answers, separated by a space.",
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "",
+    "suffix_code": "",
+    "sample_input": "3\nchoice B B\nchoice A C\nrange 3..5 4",
+    "sample_output": "5 2",
+    "position": 5,
+    "test_cases": [
+      {
+        "input": "3\nchoice B B\nchoice A C\nrange 3..5 4",
+        "expected_output": "5 2",
+        "is_hidden": false
+      },
+      {
+        "input": "1\nchoice A A",
+        "expected_output": "3 1",
+        "is_hidden": false
+      },
+      {
+        "input": "2\nchoice A B\nchoice C D",
+        "expected_output": "-2 0",
+        "is_hidden": true
+      },
+      {
+        "input": "2\nrange 1..10 11\nrange 5..5 5",
+        "expected_output": "3 1",
+        "is_hidden": true
+      },
+      {
+        "input": "4\nchoice A A\nrange 0..2 2\nrange 0..2 3\nchoice B A",
+        "expected_output": "5 2",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 1 (2025 Jan) Set 5 · P6: Key Stroke Analysis",
+    "description": "Given a list of tuples representing key press events in the format (key, press_time, release_time) in milliseconds, implement the following functions:\n- average_hold_time(data, key) -> float: Average duration a specific key is held (release_time - press_time). Return 0.0 if the key was never pressed.\n- average_transition_time(data, key1, key2) -> float: Average time to transition between two keys: the time from releasing key1 to pressing key2, counting only events where key2 is pressed immediately after key1 in the list. Return 0.0 if there is no such transition.\n- get_typed_text(data) -> str: The final text considering character keys and backspaces. SPACE types a space and BACKSPACE removes the last typed character (if any).\n- words_per_minute(data) -> float: Number of words in the typed text divided by the total time in minutes, from the first press to the last release. Return 0.0 for empty data.\n\nKeys are one of A to Z, SPACE and BACKSPACE.\n\nExample: data = [('H', 0, 100), ('I', 150, 250), ('SPACE', 300, 350), ('X', 400, 450), ('BACKSPACE', 500, 560)]\n- average_hold_time(data, 'H') -> 100.0\n- average_transition_time(data, 'H', 'I') -> 50.0\n- get_typed_text(data) -> 'HI '\n\nFor testing, the input gives the data list, then the name of the function to call, then a tuple with the remaining arguments.\n\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition. You can define helper functions if needed, but the actual solution should be in the given function template.",
+    "input_format": null,
+    "output_format": null,
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "def average_hold_time(data: list, key: str) -> float:\n    pass\n\ndef average_transition_time(data: list, key1: str, key2: str) -> float:\n    pass\n\ndef get_typed_text(data: list) -> str:\n    pass\n\ndef words_per_minute(data: list) -> float:\n    pass",
+    "suffix_code": "data = eval(input())\nfunc = input()\nargs = eval(input())\nprint(repr(globals()[func](data, *args)))",
+    "sample_input": "[('H', 0, 100), ('I', 150, 250), ('SPACE', 300, 350), ('X', 400, 450), ('BACKSPACE', 500, 560)]\naverage_hold_time\n('H',)",
+    "sample_output": "100.0",
+    "position": 6,
+    "test_cases": [
+      {
+        "input": "[('H', 0, 100), ('I', 150, 250), ('SPACE', 300, 350), ('X', 400, 450), ('BACKSPACE', 500, 560)]\naverage_hold_time\n('H',)",
+        "expected_output": "100.0",
+        "is_hidden": false
+      },
+      {
+        "input": "[('H', 0, 100), ('I', 150, 250), ('SPACE', 300, 350), ('X', 400, 450), ('BACKSPACE', 500, 560)]\naverage_transition_time\n('H', 'I')",
+        "expected_output": "50.0",
+        "is_hidden": false
+      },
+      {
+        "input": "[('H', 0, 100), ('I', 150, 250), ('SPACE', 300, 350), ('X', 400, 450), ('BACKSPACE', 500, 560)]\nget_typed_text\n()",
+        "expected_output": "'HI '",
+        "is_hidden": true
+      },
+      {
+        "input": "[('H', 0, 100), ('I', 150, 250), ('SPACE', 300, 350), ('X', 400, 450), ('BACKSPACE', 500, 560)]\nwords_per_minute\n()",
+        "expected_output": "107.14285714285714",
+        "is_hidden": true
+      },
+      {
+        "input": "[('A', 0, 50), ('A', 100, 180)]\naverage_hold_time\n('A',)",
+        "expected_output": "65.0",
+        "is_hidden": true
+      },
+      {
+        "input": "[('A', 0, 50)]\naverage_hold_time\n('B',)",
+        "expected_output": "0.0",
+        "is_hidden": true
+      },
+      {
+        "input": "[('A', 0, 50), ('B', 80, 120), ('A', 200, 240), ('B', 300, 330)]\naverage_transition_time\n('A', 'B')",
+        "expected_output": "45.0",
+        "is_hidden": true
+      },
+      {
+        "input": "[('BACKSPACE', 0, 10), ('A', 20, 30)]\nget_typed_text\n()",
+        "expected_output": "'A'",
+        "is_hidden": true
+      },
+      {
+        "input": "[]\nwords_per_minute\n()",
+        "expected_output": "0.0",
+        "is_hidden": true
+      },
+      {
+        "input": "[('G', 0, 1000), ('O', 1000, 2000), ('SPACE', 2000, 3000), ('N', 3000, 6000), ('O', 6000, 60000)]\nwords_per_minute\n()",
+        "expected_output": "2.0",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 1 (2025 Jan) Set 5 · P7: Hexagon",
+    "description": "Given an integer n as input, print a hexagon pattern with '@' having a side length of n. The pattern has 2n - 1 rows, the middle row is the widest, and there are no spaces after the last '@' in a row.\n\nExamples:\nn = 2\n @@\n@@@@\n @@\n\nn = 3\n  @@@\n @@@@@\n@@@@@@@\n @@@@@\n  @@@\n\nNOTE: This is an I/O type question, you need to write the whole code for taking input and printing the output.",
+    "input_format": "A single integer n, the side length of the hexagon.",
+    "output_format": "The hexagon pattern.",
+    "constraints": "n >= 1",
+    "prefix_code": "",
+    "starter_code": "",
+    "suffix_code": "",
+    "sample_input": "2",
+    "sample_output": " @@\n@@@@\n @@",
+    "position": 7,
+    "test_cases": [
+      {
+        "input": "2",
+        "expected_output": " @@\n@@@@\n @@",
+        "is_hidden": false
+      },
+      {
+        "input": "3",
+        "expected_output": "  @@@\n @@@@@\n@@@@@@@\n @@@@@\n  @@@",
+        "is_hidden": false
+      },
+      {
+        "input": "1",
+        "expected_output": "@",
+        "is_hidden": true
+      },
+      {
+        "input": "4",
+        "expected_output": "   @@@@\n  @@@@@@\n @@@@@@@@\n@@@@@@@@@@\n @@@@@@@@\n  @@@@@@\n   @@@@",
+        "is_hidden": true
+      },
+      {
+        "input": "5",
+        "expected_output": "    @@@@@\n   @@@@@@@\n  @@@@@@@@@\n @@@@@@@@@@@\n@@@@@@@@@@@@@\n @@@@@@@@@@@\n  @@@@@@@@@\n   @@@@@@@\n    @@@@@",
+        "is_hidden": true
+      }
+    ]
+  }
+]

@@ -325,6 +325,7 @@
   $("problemSelect").addEventListener("change", function (e) { openProblem(Number(e.target.value)); });
 
   function boot() {
+    document.querySelector("a.back").href = "/courses/" + encodeURIComponent(courseSlug);
     if (!token) return loginPrompt();
     api("/courses/" + encodeURIComponent(courseSlug) + "/ide-problems").then(function (res) {
       var sel = $("problemSelect");

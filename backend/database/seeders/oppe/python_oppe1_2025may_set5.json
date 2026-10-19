@@ -1,0 +1,252 @@
+[
+  {
+    "title": "OPPE 1 (2025 May) Set 5 · P1: Repeat Second Half of a Tuple",
+    "description": "Write a function repeat_second_half(t) that takes a tuple t and returns a new tuple where the second half of the original tuple is repeated after the whole tuple (the original tuple followed by its second half). If the tuple has an odd number of elements, the middle element should be included in the first half.\n\nConstraints:\n- The input tuple will contain at least two elements.\n- The elements in the tuple can be of any type (integers, strings, etc.).\n\nExamples:\n>>> repeat_second_half((1, 2, 3, 4, 5))\n(1, 2, 3, 4, 5, 4, 5)\n>>> repeat_second_half((10, 20, 30, 40))\n(10, 20, 30, 40, 30, 40)\n>>> repeat_second_half(('a', 'b', 'c', 'd', 'e', 'f'))\n('a', 'b', 'c', 'd', 'e', 'f', 'd', 'e', 'f')\n>>> repeat_second_half((1, 2, 3))\n(1, 2, 3, 3)\n\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition.",
+    "input_format": null,
+    "output_format": null,
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "def repeat_second_half(t: tuple) -> tuple:\n    ",
+    "suffix_code": "t = eval(input())\nprint(repeat_second_half(t))",
+    "sample_input": "(1, 2, 3, 4, 5)",
+    "sample_output": "(1, 2, 3, 4, 5, 4, 5)",
+    "position": 1,
+    "test_cases": [
+      {
+        "input": "(1, 2, 3, 4, 5)",
+        "expected_output": "(1, 2, 3, 4, 5, 4, 5)",
+        "is_hidden": false
+      },
+      {
+        "input": "(10, 20, 30, 40)",
+        "expected_output": "(10, 20, 30, 40, 30, 40)",
+        "is_hidden": false
+      },
+      {
+        "input": "('a', 'b', 'c', 'd', 'e', 'f')",
+        "expected_output": "('a', 'b', 'c', 'd', 'e', 'f', 'd', 'e', 'f')",
+        "is_hidden": true
+      },
+      {
+        "input": "(1, 2, 3)",
+        "expected_output": "(1, 2, 3, 3)",
+        "is_hidden": true
+      },
+      {
+        "input": "(7, 8)",
+        "expected_output": "(7, 8, 8)",
+        "is_hidden": true
+      },
+      {
+        "input": "('x', 1, None, 2.5, 'y', 3, 4)",
+        "expected_output": "('x', 1, None, 2.5, 'y', 3, 4, 'y', 3, 4)",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 1 (2025 May) Set 5 · P2: Convert Excel Column Name to 1-Based Index",
+    "description": "Write a function excel_index that takes an Excel column name (e.g., \"A\", \"Z\", \"AA\", \"AB\", ..., \"ZZZ\") and returns its corresponding 1-based index. The function should correctly handle column names beyond \"Z\", following the Excel column numbering system (A=1, ..., Z=26, AA=27, AB=28, ...).\n\nExamples:\n>>> excel_index(\"A\")\n1\n>>> excel_index(\"Z\")\n26\n>>> excel_index(\"AA\")\n27\n>>> excel_index(\"AB\")\n28\n>>> excel_index(\"ZZZ\")\n18278\n\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition.",
+    "input_format": null,
+    "output_format": null,
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "def excel_index(col: str) -> int:\n    ",
+    "suffix_code": "col = input()\nprint(excel_index(col))",
+    "sample_input": "A",
+    "sample_output": "1",
+    "position": 2,
+    "test_cases": [
+      {
+        "input": "A",
+        "expected_output": "1",
+        "is_hidden": false
+      },
+      {
+        "input": "Z",
+        "expected_output": "26",
+        "is_hidden": false
+      },
+      {
+        "input": "AA",
+        "expected_output": "27",
+        "is_hidden": true
+      },
+      {
+        "input": "AB",
+        "expected_output": "28",
+        "is_hidden": true
+      },
+      {
+        "input": "ZZZ",
+        "expected_output": "18278",
+        "is_hidden": true
+      },
+      {
+        "input": "AZ",
+        "expected_output": "52",
+        "is_hidden": true
+      },
+      {
+        "input": "BA",
+        "expected_output": "53",
+        "is_hidden": true
+      },
+      {
+        "input": "XFD",
+        "expected_output": "16384",
+        "is_hidden": true
+      },
+      {
+        "input": "AAA",
+        "expected_output": "703",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 1 (2025 May) Set 5 · P3: Reverse Vowel Order in a String",
+    "description": "Write a Python program that reads a multiline string and reverses only the vowels in the string while keeping all other characters in their original positions.\n\nNote:\n- Vowels are considered: a, e, i, o, u (both uppercase and lowercase).\n- Non-vowel characters remain in place.\n- Case should be preserved while reversing.\n\nExample:\nInput:\nHEllo\nOutput:\nHollE\n\nNOTE: This is an I/O type question, you need to write the whole code for taking input and printing the output.",
+    "input_format": "The first line has the number of lines (n) in the input.\nThe next n lines have the multiline string.",
+    "output_format": "The modified multiline string.",
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "",
+    "suffix_code": "",
+    "sample_input": "1\nHEllo",
+    "sample_output": "HollE",
+    "position": 3,
+    "test_cases": [
+      {
+        "input": "1\nHEllo",
+        "expected_output": "HollE",
+        "is_hidden": false
+      },
+      {
+        "input": "1\nhello world",
+        "expected_output": "hollo werld",
+        "is_hidden": false
+      },
+      {
+        "input": "2\nPython is fun\nto learn",
+        "expected_output": "Pythan es fon\ntu liorn",
+        "is_hidden": true
+      },
+      {
+        "input": "1\nrhythm",
+        "expected_output": "rhythm",
+        "is_hidden": true
+      },
+      {
+        "input": "3\nIIT Madras\nonline\nDEGREE",
+        "expected_output": "EET MEdres\ninlona\nDaGRII",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 1 (2025 May) Set 5 · P4: Chess Game Analysis",
+    "description": "You are given a record of chess moves as a string in Standard Algebraic Notation (SAN). Implement the following functions to analyze the game:\n- parse_moves(game) -> list: Parses the game string to a list of alternate white and black moves (move numbers such as '1.' and the final result are dropped).\n- get_n_moves(game) -> int: Returns the total number of moves played in the game (one move is considered as each turn of a player).\n- count_piece_moves(moves) -> dict: Takes the list returned by parse_moves and returns a dictionary with each piece name ('King', 'Queen', 'Rook', 'Bishop', 'Knight', 'Pawn') as keys and the number of times that piece is moved in the game as values. Castling is counted as a move for both the king and the rook involved.\n- most_used_piece(game, player) -> str: Returns the name of the piece that was moved the most for a specified player (\"white\" or \"black\"). Break ties with the piece with the most value. Piece values are {\"Pawn\": 1, \"Bishop\": 2, \"Knight\": 3, \"Rook\": 4, \"Queen\": 5, \"King\": 6}.\n- remaining_pieces(game, player) -> int: Returns the remaining number of pieces that a player has on the board (each side starts with 16). A piece capture is denoted by an 'x' in the moves. White captures black pieces, and vice-versa.\n- n_checks(game, player) -> int: Returns the number of times the player has put the opponent in check. A check is denoted by a '+' at the end of the move (a checkmate '#' also counts).\n\nNote: Assume that the input game string is well-formed and valid according to the rules of chess. The player will always be either \"white\" or \"black\".\n\nChess notation details:\n- Pieces are represented by their initials: K - King, Q - Queen, R - Rook, B - Bishop, N - Knight, Pawn (no initial, just represented by the move).\n- Castling is represented with: O-O (kingside castling), O-O-O (queenside castling).\n- A move in which a player captures a piece of the opponent is denoted with an 'x' in the move.\n- A move in which a player puts the opponent in check is denoted with a '+' at the end of the move.\n- A move in which a player checkmates is denoted by '#' at the end of the move.\n- The end of the game string will have the result of the game as \"1-0\", \"0-1\" or \"1/2-1/2\".\n\nExample game: \"1. d4 d5 2. c4 Nf6 3. cxd5 Nxd5 4. Nf3 Be6 5. e4 Nb6 6. Nc3 f5 7. Ng5 Qd7 8. Nb5 c6 9. Nxe6 Qxe6 10. Nc7+ Kd8 11. Nxe6+ Ke8 12. Nc7+ Kd8 13. Bf4 N8d7 14. d5 e6 15. dxe6 Bb4+ 16. Ke2 Rc8 17. exd7 Nxd7 18. Ne6+ Ke7 19. Nxg7 Rcg8 20. Bd6+ Bxd6 21. Nxf5+ Ke6 22. Qxd6+ Kf7 23. Qxd7+ Kf8 24. Qe7# 1-0\"\n>>> get_n_moves(game)\n47\n>>> count_piece_moves(parse_moves(game))\n{'King': 8, 'Queen': 5, 'Rook': 2, 'Bishop': 5, 'Knight': 16, 'Pawn': 11}\n>>> most_used_piece(game, \"black\")\n'King'\n>>> remaining_pieces(game, \"white\")\n12\n>>> n_checks(game, \"white\")\n9\n\nFor testing, the input gives the game string, then the name of the function to call, then a tuple with the remaining arguments (count_piece_moves is called with parse_moves(game)).\n\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition. You can define helper functions if needed, but the actual solution should be in the given function template.",
+    "input_format": null,
+    "output_format": null,
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "def parse_moves(game: str) -> list:\n    pass\n\ndef get_n_moves(game: str) -> int:\n    pass\n\ndef count_piece_moves(moves: list) -> dict:\n    pass\n\ndef most_used_piece(game: str, player: str) -> str:\n    pass\n\ndef remaining_pieces(game: str, player: str) -> int:\n    pass\n\ndef n_checks(game: str, player: str) -> int:\n    pass",
+    "suffix_code": "game = input()\nfunc = input()\nargs = eval(input())\nif func == \"count_piece_moves\":\n    print(count_piece_moves(parse_moves(game)))\nelse:\n    print(globals()[func](game, *args))",
+    "sample_input": "1. d4 d5 2. c4 Nf6 3. cxd5 Nxd5 4. Nf3 Be6 5. e4 Nb6 6. Nc3 f5 7. Ng5 Qd7 8. Nb5 c6 9. Nxe6 Qxe6 10. Nc7+ Kd8 11. Nxe6+ Ke8 12. Nc7+ Kd8 13. Bf4 N8d7 14. d5 e6 15. dxe6 Bb4+ 16. Ke2 Rc8 17. exd7 Nxd7 18. Ne6+ Ke7 19. Nxg7 Rcg8 20. Bd6+ Bxd6 21. Nxf5+ Ke6 22. Qxd6+ Kf7 23. Qxd7+ Kf8 24. Qe7# 1-0\nget_n_moves\n()",
+    "sample_output": "47",
+    "position": 4,
+    "test_cases": [
+      {
+        "input": "1. d4 d5 2. c4 Nf6 3. cxd5 Nxd5 4. Nf3 Be6 5. e4 Nb6 6. Nc3 f5 7. Ng5 Qd7 8. Nb5 c6 9. Nxe6 Qxe6 10. Nc7+ Kd8 11. Nxe6+ Ke8 12. Nc7+ Kd8 13. Bf4 N8d7 14. d5 e6 15. dxe6 Bb4+ 16. Ke2 Rc8 17. exd7 Nxd7 18. Ne6+ Ke7 19. Nxg7 Rcg8 20. Bd6+ Bxd6 21. Nxf5+ Ke6 22. Qxd6+ Kf7 23. Qxd7+ Kf8 24. Qe7# 1-0\nget_n_moves\n()",
+        "expected_output": "47",
+        "is_hidden": false
+      },
+      {
+        "input": "1. d4 d5 2. c4 Nf6 3. cxd5 Nxd5 4. Nf3 Be6 5. e4 Nb6 6. Nc3 f5 7. Ng5 Qd7 8. Nb5 c6 9. Nxe6 Qxe6 10. Nc7+ Kd8 11. Nxe6+ Ke8 12. Nc7+ Kd8 13. Bf4 N8d7 14. d5 e6 15. dxe6 Bb4+ 16. Ke2 Rc8 17. exd7 Nxd7 18. Ne6+ Ke7 19. Nxg7 Rcg8 20. Bd6+ Bxd6 21. Nxf5+ Ke6 22. Qxd6+ Kf7 23. Qxd7+ Kf8 24. Qe7# 1-0\ncount_piece_moves\n()",
+        "expected_output": "{'King': 8, 'Queen': 5, 'Rook': 2, 'Bishop': 5, 'Knight': 16, 'Pawn': 11}",
+        "is_hidden": false
+      },
+      {
+        "input": "1. d4 d5 2. c4 Nf6 3. cxd5 Nxd5 4. Nf3 Be6 5. e4 Nb6 6. Nc3 f5 7. Ng5 Qd7 8. Nb5 c6 9. Nxe6 Qxe6 10. Nc7+ Kd8 11. Nxe6+ Ke8 12. Nc7+ Kd8 13. Bf4 N8d7 14. d5 e6 15. dxe6 Bb4+ 16. Ke2 Rc8 17. exd7 Nxd7 18. Ne6+ Ke7 19. Nxg7 Rcg8 20. Bd6+ Bxd6 21. Nxf5+ Ke6 22. Qxd6+ Kf7 23. Qxd7+ Kf8 24. Qe7# 1-0\nmost_used_piece\n('black',)",
+        "expected_output": "King",
+        "is_hidden": true
+      },
+      {
+        "input": "1. d4 d5 2. c4 Nf6 3. cxd5 Nxd5 4. Nf3 Be6 5. e4 Nb6 6. Nc3 f5 7. Ng5 Qd7 8. Nb5 c6 9. Nxe6 Qxe6 10. Nc7+ Kd8 11. Nxe6+ Ke8 12. Nc7+ Kd8 13. Bf4 N8d7 14. d5 e6 15. dxe6 Bb4+ 16. Ke2 Rc8 17. exd7 Nxd7 18. Ne6+ Ke7 19. Nxg7 Rcg8 20. Bd6+ Bxd6 21. Nxf5+ Ke6 22. Qxd6+ Kf7 23. Qxd7+ Kf8 24. Qe7# 1-0\nremaining_pieces\n('white',)",
+        "expected_output": "12",
+        "is_hidden": true
+      },
+      {
+        "input": "1. d4 d5 2. c4 Nf6 3. cxd5 Nxd5 4. Nf3 Be6 5. e4 Nb6 6. Nc3 f5 7. Ng5 Qd7 8. Nb5 c6 9. Nxe6 Qxe6 10. Nc7+ Kd8 11. Nxe6+ Ke8 12. Nc7+ Kd8 13. Bf4 N8d7 14. d5 e6 15. dxe6 Bb4+ 16. Ke2 Rc8 17. exd7 Nxd7 18. Ne6+ Ke7 19. Nxg7 Rcg8 20. Bd6+ Bxd6 21. Nxf5+ Ke6 22. Qxd6+ Kf7 23. Qxd7+ Kf8 24. Qe7# 1-0\nn_checks\n('white',)",
+        "expected_output": "9",
+        "is_hidden": true
+      },
+      {
+        "input": "1. d4 d5 2. c4 Nf6 3. cxd5 Nxd5 4. Nf3 Be6 5. e4 Nb6 6. Nc3 f5 7. Ng5 Qd7 8. Nb5 c6 9. Nxe6 Qxe6 10. Nc7+ Kd8 11. Nxe6+ Ke8 12. Nc7+ Kd8 13. Bf4 N8d7 14. d5 e6 15. dxe6 Bb4+ 16. Ke2 Rc8 17. exd7 Nxd7 18. Ne6+ Ke7 19. Nxg7 Rcg8 20. Bd6+ Bxd6 21. Nxf5+ Ke6 22. Qxd6+ Kf7 23. Qxd7+ Kf8 24. Qe7# 1-0\nparse_moves\n()",
+        "expected_output": "['d4', 'd5', 'c4', 'Nf6', 'cxd5', 'Nxd5', 'Nf3', 'Be6', 'e4', 'Nb6', 'Nc3', 'f5', 'Ng5', 'Qd7', 'Nb5', 'c6', 'Nxe6', 'Qxe6', 'Nc7+', 'Kd8', 'Nxe6+', 'Ke8', 'Nc7+', 'Kd8', 'Bf4', 'N8d7', 'd5', 'e6', 'dxe6', 'Bb4+', 'Ke2', 'Rc8', 'exd7', 'Nxd7', 'Ne6+', 'Ke7', 'Nxg7', 'Rcg8', 'Bd6+', 'Bxd6', 'Nxf5+', 'Ke6', 'Qxd6+', 'Kf7', 'Qxd7+', 'Kf8', 'Qe7#']",
+        "is_hidden": true
+      },
+      {
+        "input": "1. e4 e5 2. Nf3 Nc6 3. Bb5 a6 4. O-O Nf6 5. Qe2 Bb4 6. Bxc6 dxc6 7. Qxe5+ Qe7 8. Qxe7+ Kxe7 1/2-1/2\nremaining_pieces\n('black',)",
+        "expected_output": "13",
+        "is_hidden": true
+      },
+      {
+        "input": "1. e4 e5 2. Nf3 Nc6 3. Bb5 a6 4. O-O Nf6 5. Qe2 Bb4 6. Bxc6 dxc6 7. Qxe5+ Qe7 8. Qxe7+ Kxe7 1/2-1/2\nmost_used_piece\n('white',)",
+        "expected_output": "Queen",
+        "is_hidden": true
+      },
+      {
+        "input": "1. e4 e5 2. Nf3 Nc6 3. Bb5 a6 4. O-O Nf6 5. Qe2 Bb4 6. Bxc6 dxc6 7. Qxe5+ Qe7 8. Qxe7+ Kxe7 1/2-1/2\nn_checks\n('white',)",
+        "expected_output": "2",
+        "is_hidden": true
+      },
+      {
+        "input": "1. e4 e5 2. Nf3 Nc6 3. Bb5 a6 4. O-O Nf6 5. Qe2 Bb4 6. Bxc6 dxc6 7. Qxe5+ Qe7 8. Qxe7+ Kxe7 1/2-1/2\ncount_piece_moves\n()",
+        "expected_output": "{'King': 2, 'Queen': 4, 'Rook': 1, 'Bishop': 3, 'Knight': 3, 'Pawn': 4}",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 1 (2025 May) Set 5 · P5: Visualize Pattern Lock",
+    "description": "Given a sequence of numbers representing the order in which dots are connected in a 3x3 pattern lock, generate a text-based visualization of the pattern. Dots should be marked in the order they were visited, with all others left blank ([ ]).\n\nDot layout and numbering, the 3x3 grid is numbered as follows:\n[1]---[2]---[3]\n|     |     |\n[4]---[5]---[6]\n|     |     |\n[7]---[8]---[9]\n\nExample:\nInput:\n2 5 7 4 1\nOutput:\n[5]---[1]---[ ]\n|     |     |\n[4]---[2]---[ ]\n|     |     |\n[3]---[ ]---[ ]\n\nThe dot 2 is visited 1st, dot 5 2nd, dot 7 3rd, dot 4 4th and dot 1 5th, so those positions show [1] to [5] and unvisited positions show [ ]. There is no space at the end of each line.\n\nNOTE: This is an I/O type question, you need to write the whole code for taking input and printing the output.",
+    "input_format": "A single line containing a space-separated sequence of integers (1-9), representing the order of dots visited. The input will be a valid pattern lock.",
+    "output_format": "A visual 3x3 grid (text format) with visited positions replaced by [n] where n is the order in which that dot was visited (starting from 1). Unvisited positions are shown as [ ].",
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "",
+    "suffix_code": "",
+    "sample_input": "2 5 7 4 1",
+    "sample_output": "[5]---[1]---[ ]\n|     |     |\n[4]---[2]---[ ]\n|     |     |\n[3]---[ ]---[ ]",
+    "position": 5,
+    "test_cases": [
+      {
+        "input": "2 5 7 4 1",
+        "expected_output": "[5]---[1]---[ ]\n|     |     |\n[4]---[2]---[ ]\n|     |     |\n[3]---[ ]---[ ]",
+        "is_hidden": false
+      },
+      {
+        "input": "1",
+        "expected_output": "[1]---[ ]---[ ]\n|     |     |\n[ ]---[ ]---[ ]\n|     |     |\n[ ]---[ ]---[ ]",
+        "is_hidden": false
+      },
+      {
+        "input": "5 1 2 3 6 9 8 7 4",
+        "expected_output": "[2]---[3]---[4]\n|     |     |\n[9]---[1]---[5]\n|     |     |\n[8]---[7]---[6]",
+        "is_hidden": true
+      },
+      {
+        "input": "9 5 1",
+        "expected_output": "[3]---[ ]---[ ]\n|     |     |\n[ ]---[2]---[ ]\n|     |     |\n[ ]---[ ]---[1]",
+        "is_hidden": true
+      },
+      {
+        "input": "1 2 3 6 5 4 7 8 9",
+        "expected_output": "[1]---[2]---[3]\n|     |     |\n[6]---[5]---[4]\n|     |     |\n[7]---[8]---[9]",
+        "is_hidden": true
+      }
+    ]
+  }
+]

@@ -1193,3 +1193,18 @@
   var lastPath = location.pathname;
   setInterval(function () { if (location.pathname !== lastPath) { lastPath = location.pathname; schedule(); } }, 500);
 })();
+
+// The course page's "IDE Practice" button opens /courses/:slug/ide-problems, which the SPA still renders as a
+// "coming soon" placeholder. Hand that route to the standalone IDE page instead.
+(function () {
+  function openIde() {
+    var m = location.pathname.match(/^\/courses\/([^\/]+)\/ide-problems\/?$/);
+    if (m) location.replace('/ide.html?course=' + encodeURIComponent(m[1]));
+  }
+  ['pushState', 'replaceState'].forEach(function (name) {
+    var original = history[name];
+    history[name] = function () { var result = original.apply(this, arguments); openIde(); return result; };
+  });
+  window.addEventListener('popstate', openIde);
+  openIde();
+})();

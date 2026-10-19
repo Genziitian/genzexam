@@ -1,0 +1,337 @@
+[
+  {
+    "title": "OPPE 2 (2024 Sep) Set 1 · P1: Check If Even Two-Digit Number",
+    "description": "Write a function is_even_two_digit_number that checks whether a given number is an even two-digit number. A number is considered a two-digit number if it has exactly two digits, excluding any negative sign.\n\nExamples:\n- 24 is an even two-digit number.\n- -36 is an even two-digit number.\n- 5 is not a two-digit number.\n- 101 is not a two-digit number.\n- -19 is not an even number.\n\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition.",
+    "input_format": null,
+    "output_format": null,
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "def is_even_two_digit_number(num: int) -> bool:\n    ",
+    "suffix_code": "num = int(input())\nprint(is_even_two_digit_number(num))",
+    "sample_input": "24",
+    "sample_output": "True",
+    "position": 1,
+    "test_cases": [
+      {
+        "input": "24",
+        "expected_output": "True",
+        "is_hidden": false
+      },
+      {
+        "input": "-36",
+        "expected_output": "True",
+        "is_hidden": false
+      },
+      {
+        "input": "5",
+        "expected_output": "False",
+        "is_hidden": true
+      },
+      {
+        "input": "101",
+        "expected_output": "False",
+        "is_hidden": true
+      },
+      {
+        "input": "-19",
+        "expected_output": "False",
+        "is_hidden": true
+      },
+      {
+        "input": "10",
+        "expected_output": "True",
+        "is_hidden": true
+      },
+      {
+        "input": "99",
+        "expected_output": "False",
+        "is_hidden": true
+      },
+      {
+        "input": "-10",
+        "expected_output": "True",
+        "is_hidden": true
+      },
+      {
+        "input": "0",
+        "expected_output": "False",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 2 (2024 Sep) Set 1 · P2: Check If the Given Domain is .com or .in",
+    "description": "Write a function is_dot_com_or_dot_in(domain) that takes a string domain and checks whether it ends with .com or .in. The function should return True if the domain has the specified suffix; otherwise, it should return False.\n\nExamples:\n- is_dot_com_or_dot_in(\"example.com\") -> True\n- is_dot_com_or_dot_in(\"website.in\") -> True\n- is_dot_com_or_dot_in(\"mydomain.org\") -> False\n- is_dot_com_or_dot_in(\"invalidcom\") -> False\n\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition.",
+    "input_format": null,
+    "output_format": null,
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "def is_dot_com_or_dot_in(domain: str) -> bool:\n    ",
+    "suffix_code": "domain = input()\nprint(is_dot_com_or_dot_in(domain))",
+    "sample_input": "example.com",
+    "sample_output": "True",
+    "position": 2,
+    "test_cases": [
+      {
+        "input": "example.com",
+        "expected_output": "True",
+        "is_hidden": false
+      },
+      {
+        "input": "website.in",
+        "expected_output": "True",
+        "is_hidden": false
+      },
+      {
+        "input": "mydomain.org",
+        "expected_output": "False",
+        "is_hidden": true
+      },
+      {
+        "input": "invalidcom",
+        "expected_output": "False",
+        "is_hidden": true
+      },
+      {
+        "input": ".com",
+        "expected_output": "True",
+        "is_hidden": true
+      },
+      {
+        "input": "x.in.org",
+        "expected_output": "False",
+        "is_hidden": true
+      },
+      {
+        "input": "a.COM",
+        "expected_output": "False",
+        "is_hidden": true
+      },
+      {
+        "input": "in",
+        "expected_output": "False",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 2 (2024 Sep) Set 1 · P3: Check if the Given Element is Present in Opposite Halves",
+    "description": "Write a function is_present_in_opposite_halves(elem, l1, l2) that checks whether the given elem is present in opposite halves of the two lists l1 and l2. The function should return True if the element exists in one half of l1 and in the opposite half of l2, and False otherwise.\n\nBoth the below cases are valid and evaluate to True:\n- elem in the first half of l1 and second half of l2\n- elem in the second half of l1 and first half of l2\nAssume both lists l1 and l2 have even lengths.\n\nExamples:\n- is_present_in_opposite_halves(3, [1, 2, 3, 4], [5, 6, 3, 8]) -> False (3 is in the second half of l1 and the second half of l2)\n- is_present_in_opposite_halves(7, [1, 2, 3, 4], [5, 6, 3, 8]) -> False (7 is not in l1 or l2)\n- is_present_in_opposite_halves(6, [5, 6, 7, 8], [1, 2, 6, 4]) -> True (6 is in the first half of l1 and the second half of l2)\n- is_present_in_opposite_halves(6, [5, 7, 6, 8], [1, 6, 2, 4]) -> True (6 is in the second half of l1 and the first half of l2)\n\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition.",
+    "input_format": null,
+    "output_format": null,
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "def is_present_in_opposite_halves(elem, l1: list, l2: list) -> bool:\n    ",
+    "suffix_code": "elem = eval(input())\nl1 = eval(input())\nl2 = eval(input())\nprint(is_present_in_opposite_halves(elem, l1, l2))",
+    "sample_input": "3\n[1, 2, 3, 4]\n[5, 6, 3, 8]",
+    "sample_output": "False",
+    "position": 3,
+    "test_cases": [
+      {
+        "input": "3\n[1, 2, 3, 4]\n[5, 6, 3, 8]",
+        "expected_output": "False",
+        "is_hidden": false
+      },
+      {
+        "input": "7\n[1, 2, 3, 4]\n[5, 6, 3, 8]",
+        "expected_output": "False",
+        "is_hidden": false
+      },
+      {
+        "input": "6\n[5, 6, 7, 8]\n[1, 2, 6, 4]",
+        "expected_output": "True",
+        "is_hidden": true
+      },
+      {
+        "input": "6\n[5, 7, 6, 8]\n[1, 6, 2, 4]",
+        "expected_output": "True",
+        "is_hidden": true
+      },
+      {
+        "input": "1\n[1, 2]\n[1, 2]",
+        "expected_output": "False",
+        "is_hidden": true
+      },
+      {
+        "input": "1\n[1, 2]\n[3, 1]",
+        "expected_output": "True",
+        "is_hidden": true
+      },
+      {
+        "input": "2\n[1, 1, 2, 2]\n[2, 2, 1, 1]",
+        "expected_output": "True",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 2 (2024 Sep) Set 1 · P4: Count Odd 3-Digit Numbers (Ignore None)",
+    "description": "Write a function count_odd_three_digit_nums(nums) that takes a list of integers nums and returns the count of numbers that are:\n- Odd.\n- Three-digit numbers (ignoring the negative sign if present).\n- Not None.\n\nExamples:\n- count_odd_three_digit_nums([101, -203, None, 99, 300]) -> 2 (101 and -203 are odd three-digit numbers, ignoring None)\n- count_odd_three_digit_nums([None, 120, 301, -401, 78]) -> 2 (301 and -401 qualify)\n- count_odd_three_digit_nums([10, 305, 507, 99]) -> 2 (305 and 507 qualify)\n\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition.",
+    "input_format": null,
+    "output_format": null,
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "def count_odd_three_digit_nums(nums: list) -> int:\n    ",
+    "suffix_code": "nums = eval(input())\nprint(count_odd_three_digit_nums(nums))",
+    "sample_input": "[101, -203, None, 99, 300]",
+    "sample_output": "2",
+    "position": 4,
+    "test_cases": [
+      {
+        "input": "[101, -203, None, 99, 300]",
+        "expected_output": "2",
+        "is_hidden": false
+      },
+      {
+        "input": "[None, 120, 301, -401, 78]",
+        "expected_output": "2",
+        "is_hidden": false
+      },
+      {
+        "input": "[10, 305, 507, 99]",
+        "expected_output": "2",
+        "is_hidden": true
+      },
+      {
+        "input": "[]",
+        "expected_output": "0",
+        "is_hidden": true
+      },
+      {
+        "input": "[None]",
+        "expected_output": "0",
+        "is_hidden": true
+      },
+      {
+        "input": "[999, 1001, -100, 100]",
+        "expected_output": "1",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 2 (2024 Sep) Set 1 · P5: Abbreviate Initials and Sort",
+    "description": "Write a program that takes a list of full names and outputs their initials (except the last name) followed by the full last name. The output should be sorted alphabetically. An initial is the first letter of each part of a name, followed by a dot. Assume that the names are given in the correct case.\n\nHint: Use sorted function or list.sort to sort the list.\n\nExample:\nInput:\n3\nJohn Doe\nAlice Johnson\nBob Alan Rickman\nOutput:\nA. Johnson\nB. A. Rickman\nJ. Doe\n\nNOTE: This is an I/O type question, you need to write the whole code for taking input and printing the output.",
+    "input_format": "First line contains the number of names, n.\nNext n lines contain one full name per line.",
+    "output_format": "Output the processed names in sorted order, one per line.",
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "",
+    "suffix_code": "",
+    "sample_input": "3\nJohn Doe\nAlice Johnson\nBob Alan Rickman",
+    "sample_output": "A. Johnson\nB. A. Rickman\nJ. Doe",
+    "position": 5,
+    "test_cases": [
+      {
+        "input": "3\nJohn Doe\nAlice Johnson\nBob Alan Rickman",
+        "expected_output": "A. Johnson\nB. A. Rickman\nJ. Doe",
+        "is_hidden": false
+      },
+      {
+        "input": "1\nMadonna",
+        "expected_output": "Madonna",
+        "is_hidden": false
+      },
+      {
+        "input": "2\nZed Adams\nAmy Zed",
+        "expected_output": "A. Zed\nZ. Adams",
+        "is_hidden": true
+      },
+      {
+        "input": "3\nMary Jane Watson\nPeter Parker\nBruce Wayne",
+        "expected_output": "B. Wayne\nM. J. Watson\nP. Parker",
+        "is_hidden": true
+      },
+      {
+        "input": "2\nA B\nA A",
+        "expected_output": "A. A\nA. B",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 2 (2024 Sep) Set 1 · P6: Shopping List",
+    "description": "Given a list of dictionaries with keys name, quantity, and price for each item in a grocery list, write a function process_grocery_list(grocery_list, task) that does the following based on the task:\n- total_bill_amount: Find the total bill amount by summing the price multiplied by the quantity for each item.\n- max_quantity_item: Find the name of the item with the maximum quantity. If there are multiple items with the same quantity, return the first one.\n- sort_by_total_amount: Sort the list by the highest total amount for an item (calculated as price * quantity). If two items have the same total amount, break the tie by sorting by name in ascending order.\n\nExample: grocery_list = [{'name': 'apple', 'quantity': 2, 'price': 3}, {'name': 'banana', 'quantity': 5, 'price': 2}, {'name': 'carrot', 'quantity': 4, 'price': 1}]\n- total_bill_amount -> 6 + 10 + 4 = 20\n- max_quantity_item -> 'banana'\n- sort_by_total_amount -> the list of dicts in the order 'banana', 'apple', 'carrot'\n\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition.",
+    "input_format": null,
+    "output_format": null,
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "def process_grocery_list(grocery_list: list, task: str):\n    ",
+    "suffix_code": "grocery_list = eval(input())\ntask = input()\nprint(process_grocery_list(grocery_list, task))",
+    "sample_input": "[{'name': 'apple', 'quantity': 2, 'price': 3}, {'name': 'banana', 'quantity': 5, 'price': 2}, {'name': 'carrot', 'quantity': 4, 'price': 1}]\ntotal_bill_amount",
+    "sample_output": "20",
+    "position": 6,
+    "test_cases": [
+      {
+        "input": "[{'name': 'apple', 'quantity': 2, 'price': 3}, {'name': 'banana', 'quantity': 5, 'price': 2}, {'name': 'carrot', 'quantity': 4, 'price': 1}]\ntotal_bill_amount",
+        "expected_output": "20",
+        "is_hidden": false
+      },
+      {
+        "input": "[{'name': 'apple', 'quantity': 2, 'price': 3}, {'name': 'banana', 'quantity': 5, 'price': 2}, {'name': 'carrot', 'quantity': 4, 'price': 1}]\nmax_quantity_item",
+        "expected_output": "banana",
+        "is_hidden": false
+      },
+      {
+        "input": "[{'name': 'apple', 'quantity': 2, 'price': 3}, {'name': 'banana', 'quantity': 5, 'price': 2}, {'name': 'carrot', 'quantity': 4, 'price': 1}]\nsort_by_total_amount",
+        "expected_output": "[{'name': 'banana', 'quantity': 5, 'price': 2}, {'name': 'apple', 'quantity': 2, 'price': 3}, {'name': 'carrot', 'quantity': 4, 'price': 1}]",
+        "is_hidden": true
+      },
+      {
+        "input": "[{'name': 'b', 'quantity': 1, 'price': 5}, {'name': 'a', 'quantity': 5, 'price': 1}]\nsort_by_total_amount",
+        "expected_output": "[{'name': 'a', 'quantity': 5, 'price': 1}, {'name': 'b', 'quantity': 1, 'price': 5}]",
+        "is_hidden": true
+      },
+      {
+        "input": "[{'name': 'x', 'quantity': 3, 'price': 1}, {'name': 'y', 'quantity': 3, 'price': 9}]\nmax_quantity_item",
+        "expected_output": "x",
+        "is_hidden": true
+      },
+      {
+        "input": "[]\ntotal_bill_amount",
+        "expected_output": "0",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 2 (2024 Sep) Set 1 · P7: Ubbi Dubbi - Add \"ub\" and \"dub\" Alternately Before Vowels",
+    "description": "Given a text (read from standard input), modify the text such that:\n- Before each vowel, add the string \"ub\" if it is the first or an odd-numbered vowel encountered.\n- Add \"dub\" before the vowel if it is the second or an even-numbered vowel encountered.\nPreserve the text's original formatting, including spaces and newlines. Assume the input text is all lowercase and may have multiple lines.\n\nNote: In the original exam the input is read from a file; here read it from standard input and print the output.\n\nExample:\nInput:\nhello world\npython is good\nOutput:\nhubelldubo wuborld\npythdubon ubis gduboubod\n\nNOTE: This is an I/O type question, you need to write the whole code for taking input and printing the output.",
+    "input_format": null,
+    "output_format": null,
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "",
+    "suffix_code": "",
+    "sample_input": "hello world\npython is good",
+    "sample_output": "hubelldubo wuborld\npythdubon ubis gduboubod",
+    "position": 7,
+    "test_cases": [
+      {
+        "input": "hello world\npython is good",
+        "expected_output": "hubelldubo wuborld\npythdubon ubis gduboubod",
+        "is_hidden": false
+      },
+      {
+        "input": "aeiou",
+        "expected_output": "ubadubeubiduboubu",
+        "is_hidden": false
+      },
+      {
+        "input": "xyz",
+        "expected_output": "xyz",
+        "is_hidden": true
+      },
+      {
+        "input": "a\nb\ne",
+        "expected_output": "uba\nb\ndube",
+        "is_hidden": true
+      },
+      {
+        "input": "banana split\n",
+        "expected_output": "bubandubanuba spldubit",
+        "is_hidden": true
+      }
+    ]
+  }
+]

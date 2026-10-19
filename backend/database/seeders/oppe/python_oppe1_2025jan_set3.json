@@ -1,0 +1,332 @@
+[
+  {
+    "title": "OPPE 1 (2025 Jan) Set 3 · P1: Check Even Number and Second Last Digit is Two",
+    "description": "Write a function is_even_and_second_last_digit_is_two that takes an integer input num and returns a boolean value. The function should check if the number is even and if the second last digit is two.\n\nExamples:\n>>> is_even_and_second_last_digit_is_two(232)\nFalse\n>>> is_even_and_second_last_digit_is_two(120)\nTrue\n>>> is_even_and_second_last_digit_is_two(25)\nFalse\n>>> is_even_and_second_last_digit_is_two(13)\nFalse\n\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition.",
+    "input_format": null,
+    "output_format": null,
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "def is_even_and_second_last_digit_is_two(num: int) -> bool:\n    ",
+    "suffix_code": "num = int(input())\nprint(is_even_and_second_last_digit_is_two(num))",
+    "sample_input": "232",
+    "sample_output": "False",
+    "position": 1,
+    "test_cases": [
+      {
+        "input": "232",
+        "expected_output": "False",
+        "is_hidden": false
+      },
+      {
+        "input": "120",
+        "expected_output": "True",
+        "is_hidden": false
+      },
+      {
+        "input": "25",
+        "expected_output": "False",
+        "is_hidden": true
+      },
+      {
+        "input": "13",
+        "expected_output": "False",
+        "is_hidden": true
+      },
+      {
+        "input": "22",
+        "expected_output": "True",
+        "is_hidden": true
+      },
+      {
+        "input": "2",
+        "expected_output": "False",
+        "is_hidden": true
+      },
+      {
+        "input": "-124",
+        "expected_output": "True",
+        "is_hidden": true
+      },
+      {
+        "input": "520",
+        "expected_output": "True",
+        "is_hidden": true
+      },
+      {
+        "input": "1024",
+        "expected_output": "True",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 1 (2025 Jan) Set 3 · P2: Capitalize nth Character",
+    "description": "You are given a string s and an integer n. Your task is to convert the character at index n (counting from 0) of the string s to uppercase. If n is not a valid index (n is greater than or equal to the length of the string), return the string unchanged.\n\nWrite the function upper_nth_index_char(s, n).\n\nExamples:\n>>> upper_nth_index_char(\"hello\", 1)\n'hEllo'\n>>> upper_nth_index_char(\"python\", 3)\n'pytHon'\n>>> upper_nth_index_char(\"python\", 9)\n'python'\n\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition.",
+    "input_format": null,
+    "output_format": null,
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "def upper_nth_index_char(s: str, n: int) -> str:\n    ",
+    "suffix_code": "s = input()\nn = int(input())\nprint(upper_nth_index_char(s, n))",
+    "sample_input": "hello\n1",
+    "sample_output": "hEllo",
+    "position": 2,
+    "test_cases": [
+      {
+        "input": "hello\n1",
+        "expected_output": "hEllo",
+        "is_hidden": false
+      },
+      {
+        "input": "python\n3",
+        "expected_output": "pytHon",
+        "is_hidden": false
+      },
+      {
+        "input": "python\n9",
+        "expected_output": "python",
+        "is_hidden": true
+      },
+      {
+        "input": "a\n0",
+        "expected_output": "A",
+        "is_hidden": true
+      },
+      {
+        "input": "abc\n3",
+        "expected_output": "abc",
+        "is_hidden": true
+      },
+      {
+        "input": "xyz\n2",
+        "expected_output": "xyZ",
+        "is_hidden": true
+      },
+      {
+        "input": "Hello world\n6",
+        "expected_output": "Hello World",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 1 (2025 Jan) Set 3 · P3: Merge and Remove Duplicates",
+    "description": "Given two lists list1 and list2, merge both lists and return a set with all the elements in list1 and list2.\n\nWrite the function merge_and_remove_duplicates(list1, list2).\n\nExamples:\n>>> merge_and_remove_duplicates([1, 2, 2], [2, 1, 1])\n{1, 2}\n>>> merge_and_remove_duplicates([\"ant\", \"bat\"], [\"bat\", \"cat\"])\n{'ant', 'bat', 'cat'}\n\nFor testing, the set returned is printed as a sorted list.\n\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition.",
+    "input_format": null,
+    "output_format": null,
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "def merge_and_remove_duplicates(list1: list, list2: list) -> set:\n    ",
+    "suffix_code": "list1 = eval(input())\nlist2 = eval(input())\nprint(sorted(merge_and_remove_duplicates(list1, list2)))",
+    "sample_input": "[1, 2, 2]\n[2, 1, 1]",
+    "sample_output": "[1, 2]",
+    "position": 3,
+    "test_cases": [
+      {
+        "input": "[1, 2, 2]\n[2, 1, 1]",
+        "expected_output": "[1, 2]",
+        "is_hidden": false
+      },
+      {
+        "input": "['ant', 'bat']\n['bat', 'cat']",
+        "expected_output": "['ant', 'bat', 'cat']",
+        "is_hidden": false
+      },
+      {
+        "input": "[]\n[]",
+        "expected_output": "[]",
+        "is_hidden": true
+      },
+      {
+        "input": "[5, 3]\n[]",
+        "expected_output": "[3, 5]",
+        "is_hidden": true
+      },
+      {
+        "input": "[1, 2, 3]\n[4, 5, 6]",
+        "expected_output": "[1, 2, 3, 4, 5, 6]",
+        "is_hidden": true
+      },
+      {
+        "input": "[7, 7, 7]\n[7]",
+        "expected_output": "[7]",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 1 (2025 Jan) Set 3 · P4: Replace Vowels with Next Alphabet",
+    "description": "You are given a string s. Your task is to replace each vowel in the string with the next letter in the alphabet while keeping the rest of the characters unchanged.\n\nNote: The function is case-sensitive. For example, a is replaced with b, and A is replaced with B.\n\nWrite the function replace_vowels(s).\n\nExample: replace_vowels(\"Hello World\") returns \"Hfllp Wprld\".\n\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition.",
+    "input_format": null,
+    "output_format": null,
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "def replace_vowels(s: str) -> str:\n    ",
+    "suffix_code": "s = input()\nprint(replace_vowels(s))",
+    "sample_input": "Hello World",
+    "sample_output": "Hfllp Wprld",
+    "position": 4,
+    "test_cases": [
+      {
+        "input": "Hello World",
+        "expected_output": "Hfllp Wprld",
+        "is_hidden": false
+      },
+      {
+        "input": "aeiou",
+        "expected_output": "bfjpv",
+        "is_hidden": false
+      },
+      {
+        "input": "AEIOU",
+        "expected_output": "BFJPV",
+        "is_hidden": true
+      },
+      {
+        "input": "rhythm",
+        "expected_output": "rhythm",
+        "is_hidden": true
+      },
+      {
+        "input": "",
+        "expected_output": "",
+        "is_hidden": true
+      },
+      {
+        "input": "Programming in Python",
+        "expected_output": "Prpgrbmmjng jn Pythpn",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 1 (2025 Jan) Set 3 · P5: Max Column Sum and Max Column Sum Index",
+    "description": "Write a program to find the column with the maximum sum of elements in a given m x n matrix. Print the 0-based index of the column that has the largest sum, and the largest column sum.\n\nIf more than one column has the same maximum sum, output the index of the first column (the one with the smallest index) among those with the maximum sum.\n\nExample: for the 3 x 4 matrix with rows (1 2 3 4), (5 6 7 8), (9 10 11 12) the column sums are 15, 18, 21 and 24, so the output is 3 and 24.\n\nNOTE: This is an I/O type question, you need to write the whole code for taking input and printing the output.",
+    "input_format": "The first line contains two integers, m and n, the number of rows and columns.\nThe next m lines each contain n space-separated integers.",
+    "output_format": "The first line: the index of the column with the maximum sum.\nThe second line: the maximum column sum.",
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "",
+    "suffix_code": "",
+    "sample_input": "3 4\n1 2 3 4\n5 6 7 8\n9 10 11 12",
+    "sample_output": "3\n24",
+    "position": 5,
+    "test_cases": [
+      {
+        "input": "3 4\n1 2 3 4\n5 6 7 8\n9 10 11 12",
+        "expected_output": "3\n24",
+        "is_hidden": false
+      },
+      {
+        "input": "2 2\n5 1\n1 5",
+        "expected_output": "0\n6",
+        "is_hidden": false
+      },
+      {
+        "input": "1 3\n4 9 2",
+        "expected_output": "1\n9",
+        "is_hidden": true
+      },
+      {
+        "input": "3 3\n-1 -2 -3\n-4 -5 -6\n-7 -8 -9",
+        "expected_output": "0\n-12",
+        "is_hidden": true
+      },
+      {
+        "input": "2 3\n1 1 1\n1 1 1",
+        "expected_output": "0\n2",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 1 (2025 Jan) Set 3 · P6: Analyze Sentences",
+    "description": "Write a function process_sentence(sentence, task) that analyzes a given sentence. The words of the sentence are separated by spaces. The task is one of:\n- count_words: Total number of words in the sentence.\n- count_palindrome_words: Total number of palindrome words.\n- count_words_with_repeated_chars: Total number of words that contain at least one repeated character.\n- words_with_max_len: A set of the longest words in the sentence.\n\nExamples:\n>>> process_sentence(\"level noon civic radar something\", \"count_words\")\n5\n>>> process_sentence(\"level noon civic radar something\", \"count_palindrome_words\")\n4\n\nFor testing, when the result is a set it is printed as a sorted list.\n\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition. You can define helper functions if needed, but the actual solution should be in the given function template.",
+    "input_format": null,
+    "output_format": null,
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "def process_sentence(sentence: str, task: str):\n    ",
+    "suffix_code": "sentence = input()\ntask = input()\nresult = process_sentence(sentence, task)\nprint(sorted(result) if isinstance(result, set) else result)",
+    "sample_input": "level noon civic radar something\ncount_words",
+    "sample_output": "5",
+    "position": 6,
+    "test_cases": [
+      {
+        "input": "level noon civic radar something\ncount_words",
+        "expected_output": "5",
+        "is_hidden": false
+      },
+      {
+        "input": "level noon civic radar something\ncount_palindrome_words",
+        "expected_output": "4",
+        "is_hidden": false
+      },
+      {
+        "input": "level noon civic radar something\ncount_words_with_repeated_chars",
+        "expected_output": "4",
+        "is_hidden": true
+      },
+      {
+        "input": "level noon civic radar something\nwords_with_max_len",
+        "expected_output": "['something']",
+        "is_hidden": true
+      },
+      {
+        "input": "cat dog bat\nwords_with_max_len",
+        "expected_output": "['bat', 'cat', 'dog']",
+        "is_hidden": true
+      },
+      {
+        "input": "a bb ccc\ncount_words_with_repeated_chars",
+        "expected_output": "2",
+        "is_hidden": true
+      },
+      {
+        "input": "hello\ncount_palindrome_words",
+        "expected_output": "0",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 1 (2025 Jan) Set 3 · P7: Centered Triangle Of Zeroes",
+    "description": "Print a centered triangle up to a given number of rows, where all elements are zeroes.\n\nThere is a space between zeroes in the same line, and no space after the last zero in a line.\n\nExamples:\nn = 3\n  0\n 0 0\n0 0 0\n\nn = 4\n   0\n  0 0\n 0 0 0\n0 0 0 0\n\nNOTE: This is an I/O type question, you need to write the whole code for taking input and printing the output.",
+    "input_format": "A single integer n, representing the number of rows.",
+    "output_format": "The centered triangle of zeroes with n rows.",
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "",
+    "suffix_code": "",
+    "sample_input": "3",
+    "sample_output": "  0\n 0 0\n0 0 0",
+    "position": 7,
+    "test_cases": [
+      {
+        "input": "3",
+        "expected_output": "  0\n 0 0\n0 0 0",
+        "is_hidden": false
+      },
+      {
+        "input": "4",
+        "expected_output": "   0\n  0 0\n 0 0 0\n0 0 0 0",
+        "is_hidden": false
+      },
+      {
+        "input": "1",
+        "expected_output": "0",
+        "is_hidden": true
+      },
+      {
+        "input": "2",
+        "expected_output": " 0\n0 0",
+        "is_hidden": true
+      },
+      {
+        "input": "6",
+        "expected_output": "     0\n    0 0\n   0 0 0\n  0 0 0 0\n 0 0 0 0 0\n0 0 0 0 0 0",
+        "is_hidden": true
+      }
+    ]
+  }
+]

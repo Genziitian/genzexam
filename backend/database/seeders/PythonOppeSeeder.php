@@ -13,12 +13,10 @@ class PythonOppeSeeder extends Seeder
         $course = Course::query()->where('slug', 'python')->firstOrFail();
         $course->update(['has_ide' => true]);
 
-        $problems = json_decode(
-            file_get_contents(database_path('seeders/oppe/python_oppe1_2024sep_set1.json')),
-            true,
-            512,
-            JSON_THROW_ON_ERROR
-        );
+        $problems = [];
+        foreach (glob(database_path('seeders/oppe/python_*.json')) as $file) {
+            $problems = array_merge($problems, json_decode(file_get_contents($file), true, 512, JSON_THROW_ON_ERROR));
+        }
 
         foreach ($problems as $data) {
             $testCases = $data['test_cases'];

@@ -1,0 +1,337 @@
+[
+  {
+    "title": "OPPE 1 (2025 May) Set 3 · P1: Divide Number Into Almost Equal Parts",
+    "description": "Write a function divide_into_almost_equal_parts(n, k) that takes two integers, n and k, and creates a list of size k where the elements are approximately equal and sum up to n. The list should contain larger numbers towards the beginning: the larger numbers are given to the earlier parts of the list, and the sum of the list must match n.\n\nConstraints:\n- The integers n (total) and k (parts) are both positive integers.\n- The output list will always be of length k.\n\nExamples:\n>>> divide_into_almost_equal_parts(5, 3)\n[2, 2, 1]\n>>> divide_into_almost_equal_parts(16, 3)\n[6, 5, 5]\n>>> divide_into_almost_equal_parts(12, 4)\n[3, 3, 3, 3]\n>>> divide_into_almost_equal_parts(10, 3)\n[4, 3, 3]\n\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition.",
+    "input_format": null,
+    "output_format": null,
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "def divide_into_almost_equal_parts(n: int, k: int) -> list:\n    ",
+    "suffix_code": "n = int(input())\nk = int(input())\nprint(divide_into_almost_equal_parts(n, k))",
+    "sample_input": "5\n3",
+    "sample_output": "[2, 2, 1]",
+    "position": 1,
+    "test_cases": [
+      {
+        "input": "5\n3",
+        "expected_output": "[2, 2, 1]",
+        "is_hidden": false
+      },
+      {
+        "input": "16\n3",
+        "expected_output": "[6, 5, 5]",
+        "is_hidden": false
+      },
+      {
+        "input": "12\n4",
+        "expected_output": "[3, 3, 3, 3]",
+        "is_hidden": true
+      },
+      {
+        "input": "10\n3",
+        "expected_output": "[4, 3, 3]",
+        "is_hidden": true
+      },
+      {
+        "input": "1\n1",
+        "expected_output": "[1]",
+        "is_hidden": true
+      },
+      {
+        "input": "3\n5",
+        "expected_output": "[1, 1, 1, 0, 0]",
+        "is_hidden": true
+      },
+      {
+        "input": "100\n7",
+        "expected_output": "[15, 15, 14, 14, 14, 14, 14]",
+        "is_hidden": true
+      },
+      {
+        "input": "7\n7",
+        "expected_output": "[1, 1, 1, 1, 1, 1, 1]",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 1 (2025 May) Set 3 · P2: Compute Polynomial Value",
+    "description": "Write a function evaluate_polynomial(coefficients, x) that computes the value of a polynomial given its coefficients and a value for x. The coefficients are provided as a list in descending order of degree, where the first element is the coefficient of the highest degree and the last element is the constant term.\n\nFor example, the polynomial 2x^3 + 3x^2 + 5x + 7 has the coefficients list [2, 3, 5, 7].\n\nConstraints:\n- The coefficients list will have at least one element.\n- The value of x will be of type int.\n\nExamples:\n>>> evaluate_polynomial([2, 3, 5, 7], 2)\n45\n>>> evaluate_polynomial([1, 0, -4], 2)\n0\n>>> evaluate_polynomial([5], 3)\n5\n\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition.",
+    "input_format": null,
+    "output_format": null,
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "def evaluate_polynomial(coefficients: list, x: int):\n    ",
+    "suffix_code": "coefficients = eval(input())\nx = int(input())\nprint(evaluate_polynomial(coefficients, x))",
+    "sample_input": "[2, 3, 5, 7]\n2",
+    "sample_output": "45",
+    "position": 2,
+    "test_cases": [
+      {
+        "input": "[2, 3, 5, 7]\n2",
+        "expected_output": "45",
+        "is_hidden": false
+      },
+      {
+        "input": "[1, 0, -4]\n2",
+        "expected_output": "0",
+        "is_hidden": false
+      },
+      {
+        "input": "[5]\n3",
+        "expected_output": "5",
+        "is_hidden": true
+      },
+      {
+        "input": "[1, 1, 1]\n0",
+        "expected_output": "1",
+        "is_hidden": true
+      },
+      {
+        "input": "[3, -2]\n-4",
+        "expected_output": "-14",
+        "is_hidden": true
+      },
+      {
+        "input": "[1, 0, 0, 0]\n10",
+        "expected_output": "1000",
+        "is_hidden": true
+      },
+      {
+        "input": "[2, 0, 1]\n-3",
+        "expected_output": "19",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 1 (2025 May) Set 3 · P3: Update Todo List Based on Given Indices",
+    "description": "Given a todo list formatted as multiple lines, where each todo item is represented as - [ ] item, mark the todo items as completed based on the indices provided in the input. The completed items should be marked with - [x].\n\nNote: If an index is out of the range of the todo list items, it should be ignored.\n\nExample:\nInput:\n3\n0 2\n- [ ] Buy groceries\n- [ ] Read a book\n- [ ] Write code\nOutput:\n- [x] Buy groceries\n- [ ] Read a book\n- [x] Write code\n\nNOTE: This is an I/O type question, you need to write the whole code for taking input and printing the output.",
+    "input_format": "The first line contains the number of items in the todo list.\nThe second line contains a space-separated list of indices (0-based) indicating which items in the todo list should be marked as completed.\nThe subsequent lines contain the todo list items.",
+    "output_format": "Print the updated todo list with the specified items marked as completed.",
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "",
+    "suffix_code": "",
+    "sample_input": "3\n0 2\n- [ ] Buy groceries\n- [ ] Read a book\n- [ ] Write code",
+    "sample_output": "- [x] Buy groceries\n- [ ] Read a book\n- [x] Write code",
+    "position": 3,
+    "test_cases": [
+      {
+        "input": "3\n0 2\n- [ ] Buy groceries\n- [ ] Read a book\n- [ ] Write code",
+        "expected_output": "- [x] Buy groceries\n- [ ] Read a book\n- [x] Write code",
+        "is_hidden": false
+      },
+      {
+        "input": "3\n1 3 4\n- [ ] Go to the gym\n- [ ] Cook dinner\n- [ ] Clean the house",
+        "expected_output": "- [ ] Go to the gym\n- [x] Cook dinner\n- [ ] Clean the house",
+        "is_hidden": false
+      },
+      {
+        "input": "1\n0\n- [ ] Only task",
+        "expected_output": "- [x] Only task",
+        "is_hidden": true
+      },
+      {
+        "input": "2\n5\n- [ ] A\n- [ ] B",
+        "expected_output": "- [ ] A\n- [ ] B",
+        "is_hidden": true
+      },
+      {
+        "input": "2\n0 1\n- [ ] one [ ] item\n- [ ] two",
+        "expected_output": "- [x] one [ ] item\n- [x] two",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 1 (2025 May) Set 3 · P4: Batsman Performance Analysis",
+    "description": "Given the runs scored in matches played by a batsman in his career as a dict with the year as key and the list of runs scored in matches in that year as values, write functions to do the following analysis on the data.\n- overall_run_stats(batsman_data): return the min, max, total and average runs considering all matches over all years as a dictionary with keys \"min\", \"max\", \"total\" and \"average\" respectively. Average is rounded to an integer.\n- century_rate(runs): the century rate is the number of centuries (scores greater than or equal to 100 runs) divided by the number of matches played, multiplied by 100 (rounded to the nearest integer). It takes the list of runs of one year.\n- average_yearly_century_rate(batsman_data): average of the yearly century rates (rounded to an integer).\n- years_with_more_than_average_yearly_century_rate(batsman_data): the set of years in which the batsman's yearly century rate is more than the average yearly century rate.\n- year_with_most_average_runs(batsman_data): the year in which the batsman scored the most average runs per match. In case of ties return the earliest year.\n\nExample: data = {2016: [88, 66, 130, 122, 117, 95, 86], 2017: [149, 66, 110], 2018: [157, 84], 2019: [148, 127, 71, 117], 2020: [91, 156, 80, 135, 152, 109]}\n>>> overall_run_stats(data)\n{'min': 66, 'max': 157, 'total': 2456, 'average': 112}\n>>> century_rate(data[2016])\n43\n>>> average_yearly_century_rate(data)\n60\n>>> years_with_more_than_average_yearly_century_rate(data)\n{2017, 2019, 2020}\n>>> year_with_most_average_runs(data)\n2018\n\nFor testing, the input gives the first argument (the data, or the runs list for century_rate), then the name of the function to call, then a tuple with the remaining arguments. Sets are printed as sorted lists.\n\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition. You can define helper functions if needed, but the actual solution should be in the given function template.",
+    "input_format": null,
+    "output_format": null,
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "def overall_run_stats(batsman_data: dict) -> dict:\n    pass\n\ndef century_rate(runs: list) -> int:\n    pass\n\ndef average_yearly_century_rate(batsman_data: dict) -> int:\n    pass\n\ndef years_with_more_than_average_yearly_century_rate(batsman_data: dict) -> set:\n    pass\n\ndef year_with_most_average_runs(batsman_data: dict) -> int:\n    pass",
+    "suffix_code": "arg = eval(input())\nfunc = input()\nargs = eval(input())\nresult = globals()[func](arg, *args)\nprint(sorted(result) if isinstance(result, set) else result)",
+    "sample_input": "{2016: [88, 66, 130, 122, 117, 95, 86], 2017: [149, 66, 110], 2018: [157, 84], 2019: [148, 127, 71, 117], 2020: [91, 156, 80, 135, 152, 109]}\noverall_run_stats\n()",
+    "sample_output": "{'min': 66, 'max': 157, 'total': 2456, 'average': 112}",
+    "position": 4,
+    "test_cases": [
+      {
+        "input": "{2016: [88, 66, 130, 122, 117, 95, 86], 2017: [149, 66, 110], 2018: [157, 84], 2019: [148, 127, 71, 117], 2020: [91, 156, 80, 135, 152, 109]}\noverall_run_stats\n()",
+        "expected_output": "{'min': 66, 'max': 157, 'total': 2456, 'average': 112}",
+        "is_hidden": false
+      },
+      {
+        "input": "[88, 66, 130, 122, 117, 95, 86]\ncentury_rate\n()",
+        "expected_output": "43",
+        "is_hidden": false
+      },
+      {
+        "input": "{2016: [88, 66, 130, 122, 117, 95, 86], 2017: [149, 66, 110], 2018: [157, 84], 2019: [148, 127, 71, 117], 2020: [91, 156, 80, 135, 152, 109]}\naverage_yearly_century_rate\n()",
+        "expected_output": "60",
+        "is_hidden": true
+      },
+      {
+        "input": "{2016: [88, 66, 130, 122, 117, 95, 86], 2017: [149, 66, 110], 2018: [157, 84], 2019: [148, 127, 71, 117], 2020: [91, 156, 80, 135, 152, 109]}\nyears_with_more_than_average_yearly_century_rate\n()",
+        "expected_output": "[2017, 2019, 2020]",
+        "is_hidden": true
+      },
+      {
+        "input": "{2016: [88, 66, 130, 122, 117, 95, 86], 2017: [149, 66, 110], 2018: [157, 84], 2019: [148, 127, 71, 117], 2020: [91, 156, 80, 135, 152, 109]}\nyear_with_most_average_runs\n()",
+        "expected_output": "2018",
+        "is_hidden": true
+      },
+      {
+        "input": "{2001: [100]}\noverall_run_stats\n()",
+        "expected_output": "{'min': 100, 'max': 100, 'total': 100, 'average': 100}",
+        "is_hidden": true
+      },
+      {
+        "input": "[50, 60]\ncentury_rate\n()",
+        "expected_output": "0",
+        "is_hidden": true
+      },
+      {
+        "input": "{2010: [50, 50], 2011: [60, 40]}\nyear_with_most_average_runs\n()",
+        "expected_output": "2010",
+        "is_hidden": true
+      },
+      {
+        "input": "{2010: [100, 0], 2011: [100, 100], 2012: [0]}\nyears_with_more_than_average_yearly_century_rate\n()",
+        "expected_output": "[2011]",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 1 (2025 May) Set 3 · P5: Horizontal Bar Chart",
+    "description": "Given a set of key-value pairs, where each key is a string (representing a category) and the value is an integer (representing a count), generate a horizontal bar chart using the # character, with the following formatting:\n- Each line contains the key, followed by a colon :, and then a number of # characters equal to the corresponding count.\n- The keys are right-aligned based on the length of the longest key, so that the colons are vertically aligned in the output.\n\nExample:\nInput:\n6\napple:10\nbanana:5\nplum:6\ncherry:3\ndates:8\nstrawberry:15\nOutput:\n     apple:##########\n    banana:#####\n      plum:######\n    cherry:###\n     dates:########\nstrawberry:###############\n\nNOTE: This is an I/O type question, you need to write the whole code for taking input and printing the output.",
+    "input_format": "An integer n, the number of key-value pairs.\nThen n lines, each containing a string key and an integer value separated by a colon (:), with no spaces.",
+    "output_format": "Print n lines where each line contains the key right-aligned to match the longest key, a colon, and a sequence of # characters equal to the corresponding value.",
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "",
+    "suffix_code": "",
+    "sample_input": "6\napple:10\nbanana:5\nplum:6\ncherry:3\ndates:8\nstrawberry:15",
+    "sample_output": "     apple:##########\n    banana:#####\n      plum:######\n    cherry:###\n     dates:########\nstrawberry:###############",
+    "position": 5,
+    "test_cases": [
+      {
+        "input": "6\napple:10\nbanana:5\nplum:6\ncherry:3\ndates:8\nstrawberry:15",
+        "expected_output": "     apple:##########\n    banana:#####\n      plum:######\n    cherry:###\n     dates:########\nstrawberry:###############",
+        "is_hidden": false
+      },
+      {
+        "input": "1\na:3",
+        "expected_output": "a:###",
+        "is_hidden": false
+      },
+      {
+        "input": "2\nab:0\nc:2",
+        "expected_output": "ab:\n c:##",
+        "is_hidden": true
+      },
+      {
+        "input": "3\nx:1\nyy:2\nzzz:3",
+        "expected_output": "  x:#\n yy:##\nzzz:###",
+        "is_hidden": true
+      },
+      {
+        "input": "2\nsame:4\nname:4",
+        "expected_output": "same:####\nname:####",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 1 (2025 May) Set 3 · P6: Double First and Last Elements in a List",
+    "description": "Write a function double_ends(l) that takes a list l (with at least two elements) and returns a new list in which the first and last elements of l are duplicated, at the beginning and end of the list respectively.\n\nThe new list should have the first element of the original list inserted once more at the beginning, and the last element of the original list inserted once more at the end. You must not modify the original list.\n\nConstraints:\n- The input list will contain at least two elements.\n- The list can contain elements of any type (integers, strings, etc.).\n\nExamples:\n>>> double_ends([10, 20, 30])\n[10, 10, 20, 30, 30]\n>>> double_ends(['a', 'b', 'c'])\n['a', 'a', 'b', 'c', 'c']\n>>> double_ends([1, 2])\n[1, 1, 2, 2]\n>>> double_ends([5, 6, 7, 8])\n[5, 5, 6, 7, 8, 8]\n\nFor testing, the returned list is printed, followed by a line that is True when the original list was left unchanged.\n\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition.",
+    "input_format": null,
+    "output_format": null,
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "def double_ends(l: list) -> list:\n    ",
+    "suffix_code": "l = eval(input())\ncopy = list(l)\nresult = double_ends(l)\nprint(result)\nprint(l == copy)",
+    "sample_input": "[10, 20, 30]",
+    "sample_output": "[10, 10, 20, 30, 30]\nTrue",
+    "position": 6,
+    "test_cases": [
+      {
+        "input": "[10, 20, 30]",
+        "expected_output": "[10, 10, 20, 30, 30]\nTrue",
+        "is_hidden": false
+      },
+      {
+        "input": "['a', 'b', 'c']",
+        "expected_output": "['a', 'a', 'b', 'c', 'c']\nTrue",
+        "is_hidden": false
+      },
+      {
+        "input": "[1, 2]",
+        "expected_output": "[1, 1, 2, 2]\nTrue",
+        "is_hidden": true
+      },
+      {
+        "input": "[5, 6, 7, 8]",
+        "expected_output": "[5, 5, 6, 7, 8, 8]\nTrue",
+        "is_hidden": true
+      },
+      {
+        "input": "[0, 0]",
+        "expected_output": "[0, 0, 0, 0]\nTrue",
+        "is_hidden": true
+      },
+      {
+        "input": "['x', 1, None, 2.5]",
+        "expected_output": "['x', 'x', 1, None, 2.5, 2.5]\nTrue",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 1 (2025 May) Set 3 · P7: Extract Email Username",
+    "description": "Write a function extract_email_username that takes an email address string of the form \"username@domain.com\" and returns just the username part, that is, everything before the @ symbol.\n\nConstraints:\n- The input will always be a valid email address containing exactly one @ symbol.\n- The username can contain letters, numbers, and symbols like dots or underscores.\n- The domain part is irrelevant and should not be returned.\n\nExamples:\n>>> extract_email_username(\"ananya.sharma@iitd.ac.in\")\n'ananya.sharma'\n>>> extract_email_username(\"rahul123@gmail.com\")\n'rahul123'\n>>> extract_email_username(\"priya_r@company.in\")\n'priya_r'\n>>> extract_email_username(\"v.kumar@institute.edu\")\n'v.kumar'\n\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition.",
+    "input_format": null,
+    "output_format": null,
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "def extract_email_username(email: str) -> str:\n    ",
+    "suffix_code": "email = input()\nprint(repr(extract_email_username(email)))",
+    "sample_input": "ananya.sharma@iitd.ac.in",
+    "sample_output": "'ananya.sharma'",
+    "position": 7,
+    "test_cases": [
+      {
+        "input": "ananya.sharma@iitd.ac.in",
+        "expected_output": "'ananya.sharma'",
+        "is_hidden": false
+      },
+      {
+        "input": "rahul123@gmail.com",
+        "expected_output": "'rahul123'",
+        "is_hidden": false
+      },
+      {
+        "input": "priya_r@company.in",
+        "expected_output": "'priya_r'",
+        "is_hidden": true
+      },
+      {
+        "input": "v.kumar@institute.edu",
+        "expected_output": "'v.kumar'",
+        "is_hidden": true
+      },
+      {
+        "input": "a@b.co",
+        "expected_output": "'a'",
+        "is_hidden": true
+      },
+      {
+        "input": "first.last_99@mail.example.org",
+        "expected_output": "'first.last_99'",
+        "is_hidden": true
+      }
+    ]
+  }
+]

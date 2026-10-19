@@ -1,0 +1,362 @@
+[
+  {
+    "title": "OPPE 1 (2024 Sep) Set 2 · P1: Check Positive Odd or Negative Even",
+    "description": "Write a function is_positive_odd_or_negative_even that checks if an integer is either a positive odd number or a negative even number. Return True if the number meets one of these conditions; otherwise, return False.\n\nExamples:\n- 0 -> False (neither positive nor negative)\n- 3 -> True (positive odd)\n- -4 -> True (negative even)\n- 4 -> False (positive but even)\n- -3 -> False (negative but odd)\n\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition.",
+    "input_format": null,
+    "output_format": null,
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "def is_positive_odd_or_negative_even(num: int) -> bool:\n    ",
+    "suffix_code": "num = int(input())\nprint(is_positive_odd_or_negative_even(num))",
+    "sample_input": "3",
+    "sample_output": "True",
+    "position": 1,
+    "test_cases": [
+      {
+        "input": "3",
+        "expected_output": "True",
+        "is_hidden": false
+      },
+      {
+        "input": "-4",
+        "expected_output": "True",
+        "is_hidden": false
+      },
+      {
+        "input": "0",
+        "expected_output": "False",
+        "is_hidden": true
+      },
+      {
+        "input": "4",
+        "expected_output": "False",
+        "is_hidden": true
+      },
+      {
+        "input": "-3",
+        "expected_output": "False",
+        "is_hidden": true
+      },
+      {
+        "input": "1",
+        "expected_output": "True",
+        "is_hidden": true
+      },
+      {
+        "input": "-1",
+        "expected_output": "False",
+        "is_hidden": true
+      },
+      {
+        "input": "-2",
+        "expected_output": "True",
+        "is_hidden": true
+      },
+      {
+        "input": "100",
+        "expected_output": "False",
+        "is_hidden": true
+      },
+      {
+        "input": "-100",
+        "expected_output": "True",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 1 (2024 Sep) Set 2 · P2: Check if the Given String is Within Quotes and Has Quotes Inside",
+    "description": "Write a function within_and_has_double_quotes that checks if a given string starts and ends with double quotes, and if there are double quotes inside the string (excluding the first and last characters). Return True if both conditions are met, and False otherwise.\n\nExamples (the quote characters are part of the string):\n- \"abcd\"efgh\" -> True (starts and ends with double quotes, and has double quotes inside)\n- 'abcd\"efgh\"' -> False (does not start with double quotes)\n- \"'abcd'efgh'\" -> False (uses single quotes)\n- \"abcdefgh\" -> False (no double quotes inside the quotes)\n\nThe string is read as one line of raw text.\n\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition.",
+    "input_format": null,
+    "output_format": null,
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "def within_and_has_double_quotes(s: str) -> bool:\n    ",
+    "suffix_code": "s = input()\nprint(within_and_has_double_quotes(s))",
+    "sample_input": "\"abcd\"efgh\"",
+    "sample_output": "True",
+    "position": 2,
+    "test_cases": [
+      {
+        "input": "\"abcd\"efgh\"",
+        "expected_output": "True",
+        "is_hidden": false
+      },
+      {
+        "input": "'abcd\"efgh\"'",
+        "expected_output": "False",
+        "is_hidden": false
+      },
+      {
+        "input": "\"'abcd'efgh'\"",
+        "expected_output": "False",
+        "is_hidden": true
+      },
+      {
+        "input": "\"abcdefgh\"",
+        "expected_output": "False",
+        "is_hidden": true
+      },
+      {
+        "input": "\"\"",
+        "expected_output": "False",
+        "is_hidden": true
+      },
+      {
+        "input": "\"",
+        "expected_output": "False",
+        "is_hidden": true
+      },
+      {
+        "input": "\"\"\"\"",
+        "expected_output": "True",
+        "is_hidden": true
+      },
+      {
+        "input": "\"a\"",
+        "expected_output": "False",
+        "is_hidden": true
+      },
+      {
+        "input": "abc",
+        "expected_output": "False",
+        "is_hidden": true
+      },
+      {
+        "input": "\"a\"\"b\"",
+        "expected_output": "True",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 1 (2024 Sep) Set 2 · P3: Replace middle with n times middle",
+    "description": "Given a tuple t of odd length, and a positive integer n, replace the middle element with n copies of itself.\n\nExamples:\n- For t = (1, 2, 3, 4, 5) and n = 5, the result should be (1, 2, 3, 3, 3, 3, 3, 4, 5).\n- For t = (1, 2, 3) and n = 4, the result should be (1, 2, 2, 2, 2, 3).\n\nWrite the function replace_middle(t, n) that returns the new tuple.\n\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition.",
+    "input_format": null,
+    "output_format": null,
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "def replace_middle(t: tuple, n: int) -> tuple:\n    ",
+    "suffix_code": "t = eval(input())\nn = int(input())\nprint(replace_middle(t, n))",
+    "sample_input": "(1, 2, 3, 4, 5)\n5",
+    "sample_output": "(1, 2, 3, 3, 3, 3, 3, 4, 5)",
+    "position": 3,
+    "test_cases": [
+      {
+        "input": "(1, 2, 3, 4, 5)\n5",
+        "expected_output": "(1, 2, 3, 3, 3, 3, 3, 4, 5)",
+        "is_hidden": false
+      },
+      {
+        "input": "(1, 2, 3)\n4",
+        "expected_output": "(1, 2, 2, 2, 2, 3)",
+        "is_hidden": false
+      },
+      {
+        "input": "(7,)\n3",
+        "expected_output": "(7, 7, 7)",
+        "is_hidden": true
+      },
+      {
+        "input": "(1, 2, 3)\n1",
+        "expected_output": "(1, 2, 3)",
+        "is_hidden": true
+      },
+      {
+        "input": "('a', 'b', 'c')\n2",
+        "expected_output": "('a', 'b', 'b', 'c')",
+        "is_hidden": true
+      },
+      {
+        "input": "(0, 0, 9, 0, 0, 0, 0)\n2",
+        "expected_output": "(0, 0, 9, 0, 0, 0, 0, 0)",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 1 (2024 Sep) Set 2 · P4: Count Positive Integers Ignoring None",
+    "description": "Given a list which contains integers and None, count the number of positive integers while ignoring None values. Zero should not be counted.\n\nExample: for the list [1, -2, 3, 0, None, 4] the result should be 3 because the positive integers are 1, 3, and 4. None values are ignored and 0 is not counted because it is not positive.\n\nWrite the function count_positives(lst) that returns the count.\n\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition.",
+    "input_format": null,
+    "output_format": null,
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "def count_positives(lst: list) -> int:\n    ",
+    "suffix_code": "lst = eval(input())\nprint(count_positives(lst))",
+    "sample_input": "[1, -2, 3, 0, None, 4]",
+    "sample_output": "3",
+    "position": 4,
+    "test_cases": [
+      {
+        "input": "[1, -2, 3, 0, None, 4]",
+        "expected_output": "3",
+        "is_hidden": false
+      },
+      {
+        "input": "[]",
+        "expected_output": "0",
+        "is_hidden": false
+      },
+      {
+        "input": "[None, None]",
+        "expected_output": "0",
+        "is_hidden": true
+      },
+      {
+        "input": "[0, -1, -5]",
+        "expected_output": "0",
+        "is_hidden": true
+      },
+      {
+        "input": "[5]",
+        "expected_output": "1",
+        "is_hidden": true
+      },
+      {
+        "input": "[None, 7, None, 8, 0]",
+        "expected_output": "2",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 1 (2024 Sep) Set 2 · P5: Find Sum and Absolute Difference Alternately",
+    "description": "Given n pairs of integers, print the sum and the absolute difference of each pair alternately, starting with the sum for the first pair.\n\nExample: for the pairs (1, 2), (3, 5), (4, 3) the output is 3 (sum of the first pair), 2 (absolute difference of the second pair) and 7 (sum of the third pair).\n\nNOTE: This is an I/O type question, you need to write the whole code for taking input and printing the output.",
+    "input_format": "The first line contains an integer n, the number of pairs.\nThe next n lines each contain two comma-separated integers.",
+    "output_format": "For each pair of integers, print the sum if it is an odd-numbered pair (starting from 1), and the absolute difference if it is an even-numbered pair.",
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "",
+    "suffix_code": "",
+    "sample_input": "3\n1,2\n3,5\n4,3",
+    "sample_output": "3\n2\n7",
+    "position": 5,
+    "test_cases": [
+      {
+        "input": "3\n1,2\n3,5\n4,3",
+        "expected_output": "3\n2\n7",
+        "is_hidden": false
+      },
+      {
+        "input": "1\n10,20",
+        "expected_output": "30",
+        "is_hidden": false
+      },
+      {
+        "input": "4\n5,5\n-3,4\n0,0\n9,2",
+        "expected_output": "10\n7\n0\n7",
+        "is_hidden": true
+      },
+      {
+        "input": "2\n100,1\n1,100",
+        "expected_output": "101\n99",
+        "is_hidden": true
+      },
+      {
+        "input": "5\n1,1\n2,2\n3,3\n4,4\n5,5",
+        "expected_output": "2\n0\n6\n0\n10",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 1 (2024 Sep) Set 2 · P6: Matrix Walk",
+    "description": "Given a square matrix, walk along the matrix according to a specified path and return a list of elements based on the path.\n\nPaths:\n- \"L\": Start from the top-left corner and traverse in an \"L\" shape (down the left column, then across the bottom row).\n- \"Z\": Start from the top-left corner and traverse the matrix in a \"Z\" shape (top row, anti-diagonal, bottom row).\n- \"O\": Start from the top-left corner and traverse the matrix clockwise in an \"O\" shape (the border).\n\nExample: for M = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]\n- L-shape: [1, 4, 7, 8, 9]\n- Z-shape: [1, 2, 3, 5, 7, 8, 9]\n- O-shape: [1, 2, 3, 6, 9, 8, 7, 4]\n\nWrite the function matrix_walk(M, path) that returns the list.\n\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition. You can define helper functions if needed, but the actual solution should be in the given function template.",
+    "input_format": null,
+    "output_format": null,
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "def matrix_walk(M: list, path: str) -> list:\n    ",
+    "suffix_code": "M = eval(input())\npath = input()\nprint(matrix_walk(M, path))",
+    "sample_input": "[[1, 2, 3], [4, 5, 6], [7, 8, 9]]\nL",
+    "sample_output": "[1, 4, 7, 8, 9]",
+    "position": 6,
+    "test_cases": [
+      {
+        "input": "[[1, 2, 3], [4, 5, 6], [7, 8, 9]]\nL",
+        "expected_output": "[1, 4, 7, 8, 9]",
+        "is_hidden": false
+      },
+      {
+        "input": "[[1, 2, 3], [4, 5, 6], [7, 8, 9]]\nZ",
+        "expected_output": "[1, 2, 3, 5, 7, 8, 9]",
+        "is_hidden": false
+      },
+      {
+        "input": "[[1, 2, 3], [4, 5, 6], [7, 8, 9]]\nO",
+        "expected_output": "[1, 2, 3, 6, 9, 8, 7, 4]",
+        "is_hidden": true
+      },
+      {
+        "input": "[[1, 2], [3, 4]]\nL",
+        "expected_output": "[1, 3, 4]",
+        "is_hidden": true
+      },
+      {
+        "input": "[[1, 2], [3, 4]]\nZ",
+        "expected_output": "[1, 2, 3, 4]",
+        "is_hidden": true
+      },
+      {
+        "input": "[[1, 2], [3, 4]]\nO",
+        "expected_output": "[1, 2, 4, 3]",
+        "is_hidden": true
+      },
+      {
+        "input": "[[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16]]\nZ",
+        "expected_output": "[1, 2, 3, 4, 7, 10, 13, 14, 15, 16]",
+        "is_hidden": true
+      },
+      {
+        "input": "[[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16]]\nO",
+        "expected_output": "[1, 2, 3, 4, 8, 12, 16, 15, 14, 13, 9, 5]",
+        "is_hidden": true
+      },
+      {
+        "input": "[[5]]\nL",
+        "expected_output": "[5]",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 1 (2024 Sep) Set 2 · P7: Print Pattern - X",
+    "description": "Given an integer n (where n >= 0), print an \"X\" shaped pattern with n rows above and below a central character x. The pattern should use backslashes (\\) and forward slashes (/) to form the \"X\" shape, with increasing spaces between them as they approach the center. There should be no spaces to the right of the pattern.\n\nExamples:\nn = 0\nx\n\nn = 1\n\\ /\n x\n/ \\\n\nn = 2\n\\   /\n \\ /\n  x\n / \\\n/   \\\n\nNOTE: This is an I/O type question, you need to write the whole code for taking input and printing the output.",
+    "input_format": "A single integer n, representing the number of rows above and below the center of the \"X\".",
+    "output_format": "An \"X\" shaped pattern with n rows above and below a central x character, as described.",
+    "constraints": "n >= 0",
+    "prefix_code": "",
+    "starter_code": "",
+    "suffix_code": "",
+    "sample_input": "0",
+    "sample_output": "x",
+    "position": 7,
+    "test_cases": [
+      {
+        "input": "0",
+        "expected_output": "x",
+        "is_hidden": false
+      },
+      {
+        "input": "1",
+        "expected_output": "\\ /\n x\n/ \\",
+        "is_hidden": false
+      },
+      {
+        "input": "2",
+        "expected_output": "\\   /\n \\ /\n  x\n / \\\n/   \\",
+        "is_hidden": true
+      },
+      {
+        "input": "3",
+        "expected_output": "\\     /\n \\   /\n  \\ /\n   x\n  / \\\n /   \\\n/     \\",
+        "is_hidden": true
+      },
+      {
+        "input": "5",
+        "expected_output": "\\         /\n \\       /\n  \\     /\n   \\   /\n    \\ /\n     x\n    / \\\n   /   \\\n  /     \\\n /       \\\n/         \\",
+        "is_hidden": true
+      }
+    ]
+  }
+]

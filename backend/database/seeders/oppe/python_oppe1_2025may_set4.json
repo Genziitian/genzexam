@@ -1,0 +1,327 @@
+[
+  {
+    "title": "OPPE 1 (2025 May) Set 4 · P1: Four Digit Shuffle",
+    "description": "Write a function shuffle_digits(num) that takes a 4-digit positive integer and shuffles the digits in the order 2413. That is:\n- The 2nd digit from the left becomes the 1st\n- The 4th digit from the left becomes the 2nd\n- The 1st digit from the left becomes the 3rd\n- The 3rd digit from the left becomes the 4th\n\nExamples:\n>>> shuffle_digits(1234)\n2413\n>>> shuffle_digits(2413)\n4321\n>>> shuffle_digits(4321)\n3142\n>>> shuffle_digits(3142)\n1234\n\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition.",
+    "input_format": null,
+    "output_format": null,
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "def shuffle_digits(num: int) -> int:\n    ",
+    "suffix_code": "num = int(input())\nprint(shuffle_digits(num))",
+    "sample_input": "1234",
+    "sample_output": "2413",
+    "position": 1,
+    "test_cases": [
+      {
+        "input": "1234",
+        "expected_output": "2413",
+        "is_hidden": false
+      },
+      {
+        "input": "2413",
+        "expected_output": "4321",
+        "is_hidden": false
+      },
+      {
+        "input": "4321",
+        "expected_output": "3142",
+        "is_hidden": true
+      },
+      {
+        "input": "3142",
+        "expected_output": "1234",
+        "is_hidden": true
+      },
+      {
+        "input": "9999",
+        "expected_output": "9999",
+        "is_hidden": true
+      },
+      {
+        "input": "1000",
+        "expected_output": "10",
+        "is_hidden": true
+      },
+      {
+        "input": "5678",
+        "expected_output": "6857",
+        "is_hidden": true
+      },
+      {
+        "input": "8051",
+        "expected_output": "185",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 1 (2025 May) Set 4 · P2: Upper Case Even Index Words",
+    "description": "Write a function upper_even_index_words(sentence) that takes a sentence and returns a list of words where the words at even indices (0-based indexing) are converted to uppercase, while the others remain unchanged.\n\nConstraints:\n- Words are separated by spaces.\n- Keep all other formatting intact.\n- Indexing starts at 0.\n\nExample: for the sentence \"india is my country\" the result is ['INDIA', 'is', 'MY', 'country'].\n\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition.",
+    "input_format": null,
+    "output_format": null,
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "def upper_even_index_words(sentence: str) -> list:\n    ",
+    "suffix_code": "sentence = input()\nprint(upper_even_index_words(sentence))",
+    "sample_input": "india is my country",
+    "sample_output": "['INDIA', 'is', 'MY', 'country']",
+    "position": 2,
+    "test_cases": [
+      {
+        "input": "india is my country",
+        "expected_output": "['INDIA', 'is', 'MY', 'country']",
+        "is_hidden": false
+      },
+      {
+        "input": "hello",
+        "expected_output": "['HELLO']",
+        "is_hidden": false
+      },
+      {
+        "input": "a b c d e",
+        "expected_output": "['A', 'b', 'C', 'd', 'E']",
+        "is_hidden": true
+      },
+      {
+        "input": "Python Is Fun",
+        "expected_output": "['PYTHON', 'Is', 'FUN']",
+        "is_hidden": true
+      },
+      {
+        "input": "one two",
+        "expected_output": "['ONE', 'two']",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 1 (2025 May) Set 4 · P3: Print Pieces Moved from Chess Notation",
+    "description": "Write a program that reads chess moves in standard algebraic notation and prints out the names of the chess pieces that have been moved. For castling moves, both the king and rook should be printed.\n\nChess notation details. Pieces are represented by their initials:\n- K - King\n- Q - Queen\n- R - Rook\n- B - Bishop\n- N - Knight\n- Pawn (no initial, just represented by the move)\nCastling is represented with:\n- O-O (kingside castling)\n- O-O-O (queenside castling)\n\nExample:\nInput:\n1. e4 e5 2. Nf3 Nc6 3. Bb5 a6 4. O-O Qc7\nOutput:\nPawn\nPawn\nKnight\nKnight\nBishop\nPawn\nKing\nRook\nQueen\n\nInput (castling):\n1. e4 e5 2. O-O O-O-O\nOutput:\nPawn\nPawn\nKing\nRook\nKing\nRook\n\nNOTE: This is an I/O type question, you need to write the whole code for taking input and printing the output.",
+    "input_format": "A single line of chess moves in the format \"{move_number} {white_move} {black_move}\" repeated, where each move is given in standard algebraic notation.",
+    "output_format": "Print the names of the pieces moved, one per line, in order. For castling, print \"King\" and \"Rook\".",
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "",
+    "suffix_code": "",
+    "sample_input": "1. e4 e5 2. Nf3 Nc6 3. Bb5 a6 4. O-O Qc7",
+    "sample_output": "Pawn\nPawn\nKnight\nKnight\nBishop\nPawn\nKing\nRook\nQueen",
+    "position": 3,
+    "test_cases": [
+      {
+        "input": "1. e4 e5 2. Nf3 Nc6 3. Bb5 a6 4. O-O Qc7",
+        "expected_output": "Pawn\nPawn\nKnight\nKnight\nBishop\nPawn\nKing\nRook\nQueen",
+        "is_hidden": false
+      },
+      {
+        "input": "1. e4 e5 2. O-O O-O-O",
+        "expected_output": "Pawn\nPawn\nKing\nRook\nKing\nRook",
+        "is_hidden": false
+      },
+      {
+        "input": "1. d4 d5 2. Bf4 Nf6 3. Qd2 e6",
+        "expected_output": "Pawn\nPawn\nBishop\nKnight\nQueen\nPawn",
+        "is_hidden": true
+      },
+      {
+        "input": "1. e4 e5 2. Qh5 Nc6 3. Bc4 Nf6 4. Qxf7+ Kxf7",
+        "expected_output": "Pawn\nPawn\nQueen\nKnight\nBishop\nKnight\nQueen\nKing",
+        "is_hidden": true
+      },
+      {
+        "input": "1. a4 b5 2. Rxa7 Bxa7 3. O-O-O Kd8",
+        "expected_output": "Pawn\nPawn\nRook\nBishop\nKing\nRook\nKing",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 1 (2025 May) Set 4 · P4: YouTube Video Engagement Analysis",
+    "description": "You are given a list of YouTube video records, where each record is a dictionary with the keys \"title\" (str), \"views\" (int), \"likes\" (int) and \"comments\" (int). Implement the following functions:\n- total_engagement(video) -> int: Returns the total engagement (likes + comments) for a given video.\n- engagement_rate(video) -> float: Returns the engagement rate for a given video using the formula Engagement Rate = (likes + comments) / views x 100. If views is 0, return 0.0. Round the result to 2 decimal places.\n- most_engaging_video(videos) -> str: Returns the title of the video with the highest engagement rate. If there is a tie, return the first one in the list.\n- videos_with_engagement_rate_above_threshold(videos, threshold) -> list: Returns a list of video titles whose engagement rate is strictly greater than the given threshold.\n- average_engagement_rate(videos) -> float: Returns the average engagement rate of all videos with non-zero views, rounded to 2 decimal places (0.0 if there are none).\n\nFor testing, the input gives the first argument (a video, or the list of videos), then the name of the function to call, then a tuple with the remaining arguments.\n\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition. You can define helper functions if needed, but the actual solution should be in the given function template.",
+    "input_format": null,
+    "output_format": null,
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "def total_engagement(video: dict) -> int:\n    pass\n\ndef engagement_rate(video: dict) -> float:\n    pass\n\ndef most_engaging_video(videos: list) -> str:\n    pass\n\ndef videos_with_engagement_rate_above_threshold(videos: list, threshold: float) -> list:\n    pass\n\ndef average_engagement_rate(videos: list) -> float:\n    pass",
+    "suffix_code": "arg = eval(input())\nfunc = input()\nargs = eval(input())\nprint(globals()[func](arg, *args))",
+    "sample_input": "{'title': 'A', 'views': 1000, 'likes': 100, 'comments': 20}\ntotal_engagement\n()",
+    "sample_output": "120",
+    "position": 4,
+    "test_cases": [
+      {
+        "input": "{'title': 'A', 'views': 1000, 'likes': 100, 'comments': 20}\ntotal_engagement\n()",
+        "expected_output": "120",
+        "is_hidden": false
+      },
+      {
+        "input": "{'title': 'B', 'views': 500, 'likes': 80, 'comments': 40}\nengagement_rate\n()",
+        "expected_output": "24.0",
+        "is_hidden": false
+      },
+      {
+        "input": "{'title': 'C', 'views': 0, 'likes': 5, 'comments': 5}\nengagement_rate\n()",
+        "expected_output": "0.0",
+        "is_hidden": true
+      },
+      {
+        "input": "[{'title': 'A', 'views': 1000, 'likes': 100, 'comments': 20}, {'title': 'B', 'views': 500, 'likes': 80, 'comments': 40}, {'title': 'C', 'views': 0, 'likes': 5, 'comments': 5}, {'title': 'D', 'views': 800, 'likes': 96, 'comments': 24}]\nmost_engaging_video\n()",
+        "expected_output": "B",
+        "is_hidden": true
+      },
+      {
+        "input": "[{'title': 'A', 'views': 1000, 'likes': 100, 'comments': 20}, {'title': 'B', 'views': 500, 'likes': 80, 'comments': 40}, {'title': 'C', 'views': 0, 'likes': 5, 'comments': 5}, {'title': 'D', 'views': 800, 'likes': 96, 'comments': 24}]\nvideos_with_engagement_rate_above_threshold\n(15,)",
+        "expected_output": "['B']",
+        "is_hidden": true
+      },
+      {
+        "input": "[{'title': 'A', 'views': 1000, 'likes': 100, 'comments': 20}, {'title': 'B', 'views': 500, 'likes': 80, 'comments': 40}, {'title': 'C', 'views': 0, 'likes': 5, 'comments': 5}, {'title': 'D', 'views': 800, 'likes': 96, 'comments': 24}]\naverage_engagement_rate\n()",
+        "expected_output": "17.0",
+        "is_hidden": true
+      },
+      {
+        "input": "[{'title': 'X', 'views': 0, 'likes': 1, 'comments': 1}]\naverage_engagement_rate\n()",
+        "expected_output": "0.0",
+        "is_hidden": true
+      },
+      {
+        "input": "[{'title': 'P', 'views': 100, 'likes': 10, 'comments': 0}, {'title': 'Q', 'views': 50, 'likes': 5, 'comments': 0}]\nmost_engaging_video\n()",
+        "expected_output": "P",
+        "is_hidden": true
+      },
+      {
+        "input": "{'title': 'Z', 'views': 3, 'likes': 1, 'comments': 0}\nengagement_rate\n()",
+        "expected_output": "33.33",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 1 (2025 May) Set 4 · P5: Format Tic-Tac-Toe Board",
+    "description": "You are given a tic-tac-toe board of size m x n containing the characters 'X' for player X, 'O' for player O and ' ' (space) for empty cells.\n\nYour task is to print this board with borders using the characters +, -, and |. The border format is:\n- Each row is wrapped in | separators for each column.\n- Horizontal lines made of + and - separate each row, including the top and bottom.\n\nA row line may have its trailing spaces missing in the input; treat missing characters as empty cells.\n\nExample:\nInput:\n3 4\nO XO\nXO\nO X\nOutput:\n+-+-+-+-+\n|O| |X|O|\n+-+-+-+-+\n|X|O| | |\n+-+-+-+-+\n|O| |X| |\n+-+-+-+-+\n\nNOTE: This is an I/O type question, you need to write the whole code for taking input and printing the output.",
+    "input_format": "The first line contains two integers, m and n, denoting the number of rows and columns of the board.\nThe next m lines each contain a string of n characters from 'X', 'O', or ' ' (space).",
+    "output_format": "The board printed with borders using +, -, and |.",
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "",
+    "suffix_code": "",
+    "sample_input": "3 4\nO XO\nXO\nO X",
+    "sample_output": "+-+-+-+-+\n|O| |X|O|\n+-+-+-+-+\n|X|O| | |\n+-+-+-+-+\n|O| |X| |\n+-+-+-+-+",
+    "position": 5,
+    "test_cases": [
+      {
+        "input": "3 4\nO XO\nXO\nO X",
+        "expected_output": "+-+-+-+-+\n|O| |X|O|\n+-+-+-+-+\n|X|O| | |\n+-+-+-+-+\n|O| |X| |\n+-+-+-+-+",
+        "is_hidden": false
+      },
+      {
+        "input": "1 1\nX",
+        "expected_output": "+-+\n|X|\n+-+",
+        "is_hidden": false
+      },
+      {
+        "input": "2 2\nXO\nOX",
+        "expected_output": "+-+-+\n|X|O|\n+-+-+\n|O|X|\n+-+-+",
+        "is_hidden": true
+      },
+      {
+        "input": "2 3\n   \nXXX",
+        "expected_output": "+-+-+-+\n| | | |\n+-+-+-+\n|X|X|X|\n+-+-+-+",
+        "is_hidden": true
+      },
+      {
+        "input": "3 3\nX O\n O \nO X",
+        "expected_output": "+-+-+-+\n|X| |O|\n+-+-+-+\n| |O| |\n+-+-+-+\n|O| |X|\n+-+-+-+",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 1 (2025 May) Set 4 · P6: Position of a Point Relative to a Line",
+    "description": "Write a function point_position_relative_to_line(a, b, c, x, y) that determines the position of a point (x, y) with respect to a line described by the equation ax + by + c = 0.\n\nThe function should return:\n- 1 if the point is above the line\n- -1 if the point is below the line\n- 0 if the point is on the line\n\nNote:\n- A point (x, y) is considered on the line if substituting x and y into the equation results in 0.\n- A point is above the line if the value of ax + by + c > 0 and below the line if ax + by + c < 0.\n\nExamples:\n>>> point_position_relative_to_line(1, -1, 0, 2, 1)\n1\n>>> point_position_relative_to_line(-1, -1, -1, 0, 0)\n-1\n>>> point_position_relative_to_line(2, -1, -4, 2, 0)\n0\n\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition.",
+    "input_format": null,
+    "output_format": null,
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "def point_position_relative_to_line(a: int, b: int, c: int, x: int, y: int) -> int:\n    ",
+    "suffix_code": "a = int(input())\nb = int(input())\nc = int(input())\nx = int(input())\ny = int(input())\nprint(point_position_relative_to_line(a, b, c, x, y))",
+    "sample_input": "1\n-1\n0\n2\n1",
+    "sample_output": "1",
+    "position": 6,
+    "test_cases": [
+      {
+        "input": "1\n-1\n0\n2\n1",
+        "expected_output": "1",
+        "is_hidden": false
+      },
+      {
+        "input": "-1\n-1\n-1\n0\n0",
+        "expected_output": "-1",
+        "is_hidden": false
+      },
+      {
+        "input": "2\n-1\n-4\n2\n0",
+        "expected_output": "0",
+        "is_hidden": true
+      },
+      {
+        "input": "0\n1\n-3\n5\n3",
+        "expected_output": "0",
+        "is_hidden": true
+      },
+      {
+        "input": "1\n1\n1\n-1\n-1",
+        "expected_output": "-1",
+        "is_hidden": true
+      },
+      {
+        "input": "3\n4\n5\n-1\n-2",
+        "expected_output": "-1",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 1 (2025 May) Set 4 · P7: Expand Sum of Products",
+    "description": "Write a function expand_sum_of_products(expr) that takes a string representation of a product of two sums in the form \"(a+b)(c+d)\" and expands it into the sum of products in the form \"a*c + a*d + b*c + b*d\". The output should be a properly formatted string of the expanded form.\n\nThe input can have spaces in between the symbols and operators. The spacing and ordering of the terms in the output should be exactly as given in the format. There will always be a + sign between the two values inside each bracket.\n\nExamples:\n>>> expand_sum_of_products(\"(a+b)(c+d)\")\n\"a*c + a*d + b*c + b*d\"\n>>> expand_sum_of_products(\"(x+y)(z+w)\")\n\"x*z + x*w + y*z + y*w\"\n>>> expand_sum_of_products(\"(1+5)(10+12)\")\n\"1*10 + 1*12 + 5*10 + 5*12\"\n\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition.",
+    "input_format": null,
+    "output_format": null,
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "def expand_sum_of_products(expr: str) -> str:\n    ",
+    "suffix_code": "expr = input()\nprint(expand_sum_of_products(expr))",
+    "sample_input": "(a+b)(c+d)",
+    "sample_output": "a*c + a*d + b*c + b*d",
+    "position": 7,
+    "test_cases": [
+      {
+        "input": "(a+b)(c+d)",
+        "expected_output": "a*c + a*d + b*c + b*d",
+        "is_hidden": false
+      },
+      {
+        "input": "(x+y)(z+w)",
+        "expected_output": "x*z + x*w + y*z + y*w",
+        "is_hidden": false
+      },
+      {
+        "input": "(1+5)(10+12)",
+        "expected_output": "1*10 + 1*12 + 5*10 + 5*12",
+        "is_hidden": true
+      },
+      {
+        "input": "( a + b ) ( c + d )",
+        "expected_output": "a*c + a*d + b*c + b*d",
+        "is_hidden": true
+      },
+      {
+        "input": "(p+q)(r+s)",
+        "expected_output": "p*r + p*s + q*r + q*s",
+        "is_hidden": true
+      },
+      {
+        "input": "(2+3)(4+5)",
+        "expected_output": "2*4 + 2*5 + 3*4 + 3*5",
+        "is_hidden": true
+      }
+    ]
+  }
+]
