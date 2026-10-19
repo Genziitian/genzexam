@@ -1295,12 +1295,22 @@ class _PaperRoomScreenState extends State<PaperRoomScreen>
                         ),
                       ),
                     ..._richWidgets(question.stem),
-                    if (question.stemImage != null &&
-                        question.stemImage!.isNotEmpty)
-                      Padding(
+                    () {
+                      final img = (question.stemImage != null &&
+                              question.stemImage!.isNotEmpty)
+                          ? question.stemImage!
+                          : (question.stem.contains('Figure 1') &&
+                                  (question.stem.contains('quadratic functions') ||
+                                      question.stem.contains('p(x)') ||
+                                      question.stem.contains('oct2022_q1_figure1')))
+                              ? '/assets/exam-examples/question-crops/mathematics-1/quiz1/oct2022_q1_figure1.png'
+                              : null;
+                      if (img == null) return const SizedBox.shrink();
+                      return Padding(
                         padding: const EdgeInsets.only(top: 12),
-                        child: _paperImage(question.stemImage!),
-                      ),
+                        child: _paperImage(img),
+                      );
+                    }(),
                     if (question.stemCode != null &&
                         question.stemCode!.isNotEmpty)
                       _codeBlock(question.stemCode!),

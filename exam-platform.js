@@ -806,7 +806,16 @@
         rows: table.rows.filter(Array.isArray).map((r) => r.map((c) => String(c ?? ""))),
         ...(table.caption ? { caption: String(table.caption) } : {}),
       });
-    const image = paperImage(q.stem_image);
+    let image = paperImage(q.stem_image);
+    if (!image) {
+      const s = String(q.stem || q.question_stem || "");
+      if (
+        (s.includes("Figure 1") || s.includes("figure 1")) &&
+        (s.includes("quadratic functions") || s.includes("p(x)") || s.includes("oct2022_q1_figure1"))
+      ) {
+        image = paperImage("/assets/exam-examples/question-crops/mathematics-1/quiz1/oct2022_q1_figure1.png");
+      }
+    }
     if (image) prompt.push({ kind: "image", url: image, alt: "Question figure" });
     const out = { id: `q${q.id}`, type, prompt, marks: Number(q.marks) || 1, negative: 0 };
     if (["easy", "medium", "hard"].includes(q.difficulty)) out.difficulty = q.difficulty;

@@ -73,25 +73,40 @@ class QuizController extends Controller
                 'name' => $quiz->course?->name,
                 'slug' => $quiz->course?->slug,
             ],
-            'questions' => $quiz->questions->map(fn ($question) => [
-                'id' => $question->id,
-                'type' => $question->type,
-                'stem' => $question->stem,
-                'stem_image' => $question->stem_image,
-                'stem_code' => $question->stem_code,
-                'stem_code_language' => $question->stem_code_language,
-                'stem_table' => $question->stem_table,
-                'marks' => (float) $question->marks,
-                'difficulty' => $question->difficulty,
-                'position' => $question->position,
-                'options' => $question->questionOptions->map(fn ($option) => [
-                    'id' => $option->id,
-                    'option_type' => $option->option_type,
-                    'option_text' => $option->option_text,
-                    'code_language' => $option->code_language,
-                    'position' => $option->position,
-                ])->values(),
-            ])->values(),
+            'questions' => $quiz->questions->map(function ($question) use ($quiz) {
+                $stem = (string) $question->stem;
+                $stemImage = $question->stem_image;
+                if (empty($stemImage)) {
+                    if (str_contains($stem, 'oct2022_q1_figure1.png')) {
+                        $stemImage = '/assets/exam-examples/question-crops/mathematics-1/quiz1/oct2022_q1_figure1.png';
+                    } elseif (
+                        (str_contains($quiz->title, 'Oct 2022') || str_contains($quiz->title, '2022_oct') || str_contains($quiz->title, 'Oct_2022') || str_contains($quiz->title, 'Mathematics 1') || str_contains($quiz->title, 'Maths1')) &&
+                        (stripos($stem, 'Figure 1') !== false || stripos($stem, 'quadratic functions') !== false)
+                    ) {
+                        $stemImage = '/assets/exam-examples/question-crops/mathematics-1/quiz1/oct2022_q1_figure1.png';
+                    }
+                }
+
+                return [
+                    'id' => $question->id,
+                    'type' => $question->type,
+                    'stem' => $stem,
+                    'stem_image' => $stemImage,
+                    'stem_code' => $question->stem_code,
+                    'stem_code_language' => $question->stem_code_language,
+                    'stem_table' => $question->stem_table,
+                    'marks' => (float) $question->marks,
+                    'difficulty' => $question->difficulty,
+                    'position' => $question->position,
+                    'options' => $question->questionOptions->map(fn ($option) => [
+                        'id' => $option->id,
+                        'option_type' => $option->option_type,
+                        'option_text' => $option->option_text,
+                        'code_language' => $option->code_language,
+                        'position' => $option->position,
+                    ])->values(),
+                ];
+            })->values(),
         ]);
     }
 

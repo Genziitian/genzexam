@@ -10,11 +10,23 @@ String? paperImageUri(
   String apiBaseUrl = ApiClient.defaultBaseUrl,
   bool allowEmbedded = false,
 }) {
-  final value = source.trim();
+  var value = source.trim();
   if (allowEmbedded &&
       RegExp(r'^data:image/(png|jpeg|webp|gif);base64,[A-Za-z0-9+/=]+$')
           .hasMatch(value)) {
     return value;
+  }
+  if (value == 'oct2022_q1_figure1.png' ||
+      value.endsWith('/oct2022_q1_figure1.png')) {
+    value =
+        '/assets/exam-examples/question-crops/mathematics-1/quiz1/oct2022_q1_figure1.png';
+  }
+  if (value.startsWith('assets/')) {
+    value = '/$value';
+  } else if (value.startsWith('question-crops/')) {
+    value = '/assets/exam-examples/$value';
+  } else if (value.startsWith('/question-crops/')) {
+    value = '/assets/exam-examples$value';
   }
   try {
     if (RegExp(r'(^|[/\\])\.\.?([/\\?#]|$)')

@@ -281,8 +281,19 @@
       outro: outro
     };
   }
+  function resolveQuestionImage(q, stemText) {
+    const img = imageUrl(q && q.stem_image);
+    if (img) return img;
+    const s = String(stemText || (q && (q.stem || q.question_stem)) || "");
+    if (
+      (s.includes("Figure 1") || s.includes("figure 1")) &&
+      (s.includes("quadratic functions") || s.includes("p(x)") || s.includes("oct2022_q1_figure1"))
+    ) {
+      return imageUrl("/assets/exam-examples/question-crops/mathematics-1/quiz1/oct2022_q1_figure1.png");
+    }
+    return "";
+  }
   function stemHtml(q) {
-    const image = imageUrl(q.stem_image);
     let stemText = q.stem != null ? q.stem : q.question_stem;
     let code = q.stem_code;
     let lang = q.stem_code_language || "pseudocode";
@@ -296,6 +307,7 @@
         outro = parsed.outro;
       }
     }
+    const image = resolveQuestionImage(q, stemText);
 
     return (
       rich(clean(stemText)) +
@@ -405,17 +417,18 @@
     ).trim();
     if (!stemText) return null;
     const qSplit = stemText.match(/^([\s\S]*?)\n+(?:Question|Subquestion)\s*:\s*\n*([\s\S]+)$/i);
+    const figHtml = questionFigureHtml(resolveQuestionImage(q, stemText));
     if (qSplit && /passage|context|comprehension/i.test(qSplit[1])) {
       return {
         passageHtml: rich(cleanPassageHeading(qSplit[1])),
-        promptHtml: rich(clean(qSplit[2].trim())) + (q.stem_code ? codeBlock(q.stem_code, q.stem_code_language) : "") + tableBlock(q.stem_table) + questionFigureHtml(imageUrl(q.stem_image)),
+        promptHtml: rich(clean(qSplit[2].trim())) + (q.stem_code ? codeBlock(q.stem_code, q.stem_code_language) : "") + tableBlock(q.stem_table) + figHtml,
       };
     }
     const bSplit = stemText.match(/^([\s\S]*?(?:Based on the above [^\n]*?,?\s*answer the [^\n]*?subquestions\.?|answer the (?:given|following) subquestions\.?))\s*\n+([\s\S]+)$/i);
     if (bSplit && /passage|context|comprehension/i.test(bSplit[1])) {
       return {
         passageHtml: rich(cleanPassageHeading(bSplit[1])),
-        promptHtml: rich(clean(bSplit[2].trim())) + (q.stem_code ? codeBlock(q.stem_code, q.stem_code_language) : "") + tableBlock(q.stem_table) + questionFigureHtml(imageUrl(q.stem_image)),
+        promptHtml: rich(clean(bSplit[2].trim())) + (q.stem_code ? codeBlock(q.stem_code, q.stem_code_language) : "") + tableBlock(q.stem_table) + figHtml,
       };
     }
     if (/^(?:📖\s*)?Passage\s*(?:\/|\:)\s*(?:Context\s*:?)?|^Comprehension\s*(?:Type\s*Question)?\s*:\s*/i.test(stemText)) {
@@ -426,7 +439,7 @@
         if (/\?$/.test(last) || /^(?:What|Find|Calculate|Which|Choose|Determine|How|If|The value of|Enter the)\b/i.test(last)) {
           return {
             passageHtml: rich(clean(paras.slice(0, -1).join("\n\n").trim())),
-            promptHtml: rich(clean(last)) + (q.stem_code ? codeBlock(q.stem_code, q.stem_code_language) : "") + tableBlock(q.stem_table) + questionFigureHtml(imageUrl(q.stem_image)),
+            promptHtml: rich(clean(last)) + (q.stem_code ? codeBlock(q.stem_code, q.stem_code_language) : "") + tableBlock(q.stem_table) + figHtml,
           };
         }
       }
