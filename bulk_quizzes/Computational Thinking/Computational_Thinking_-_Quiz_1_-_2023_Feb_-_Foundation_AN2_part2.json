@@ -1,0 +1,298 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Computational Thinking · Quiz 1 · 2023 Feb · Foundation AN2 · Part 2",
+  "subject": "Computational Thinking",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Scores\" dataset. At the end of the execution, count captures the number of pairs of students who are of the same gender or are from the same city but not both. Choose the correct code fragment(s) to complete the procedure findPair. It is a Multiple Select Question (MSQ)."
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "count = 0\nwhile(Table 1 has more rows){\n    Read the first row X in Table 1\n    Move X to Table 2\n    while(Table 1 has more rows){\n        Read the first row Y in Table 1\n        Move Y to Table 3\n        count = count + findPair(X, Y)\n    }\n    Move all rows from Table 3 to Table 1\n}\nProcedure findPair(X, Y)\n    ***** Fill the code *****\nEnd findPair"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "A = 0, B = 0\nif(X.Gender == Y.Gender or X.TownCity == Y.TownCity){\nA = A + 1\n}\nif(X.Gender == Y.Gender and X.TownCity == Y.TownCity){\nB = B + 1\n}\nreturn(A - B)"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "A = 0, B = 0\nif(X.Gender == Y.Gender and X.TownCity == Y.TownCity){\nA = A + 1\n}\nif(X.Gender == Y.Gender or X.TownCity == Y.TownCity){\nB = B + 1\n}\nreturn(A - B)"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "A = False, B = False\nif(X.Gender == Y.Gender){\nA = True\n}\nif(X.TownCity == Y.TownCity){\nB = True\n}\nif((A and not B) or (not A and B)){\nreturn(1)\n}\nreturn(0)"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "A = False, B = False\nif(X.Gender == Y.Gender){\nA = True\n}\nif(X.TownCity == Y.TownCity){\nB = True\n}\nif((A or not B) and (not A or B)){\nreturn(1)\n}\nreturn(0)"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        2
+      ],
+      "marks": 5,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "We need exclusive-or of 'same gender' and 'same city'. Option 1: A=1 if either holds, B=1 if both hold, so A−B = 1 only when exactly one holds. Option 3 directly tests (A and not B) or (not A and B). Option 2 returns −1 on XOR cases, and Option 4's condition is XNOR (true when both or neither match)."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Two words are said to be conjugate if they (i) are different words, (ii) have the same number of vowels, and (iii) have the same number of consonants. For a row X in the \"Words\" dataset, vCount(X) returns the number of vowels in X.Word. At the end of the execution, count stores the number of conjugate pairs. Choose the correct code fragment(s) for the marked block. It is a Multiple Select Question (MSQ)."
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "count = 0\nwhile(Table 1 has more rows){\n    Read the first row X in Table 1\n    Move X to Table 2\n    while(Table 1 has more rows){\n        Read the first row Y in Table 1\n        ***** Fill the code *****\n        Move Y to Table 3\n    }\n    Move all rows from Table 3 to Table 1\n}"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "if(X.Word != Y.Word){\nif(X.LetterCount == Y.LetterCount){\nif(vCount(X) == vCount(Y)){\ncount = count + 1\n}\n}\n}"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "if(X.Word == Y.Word){\nif(X.LetterCount == Y.LetterCount){\nif(vCount(X) == vCount(Y)){\ncount = count + 1\n}\n}\n}"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "if(X.Word != Y.Word){\nif(vCount(X) == vCount(Y)){\nif(X.LetterCount - vCount(X) == Y.LetterCount - vCount(Y)){\ncount = count + 1\n}\n}\n}"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "if(X.Word == Y.Word){\nexitloop\n}\nelse{\nif(X.LetterCount == Y.LetterCount){\nif(vCount(X) == vCount(Y)){\ncount = count + 1\n}\n}\n}"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        2
+      ],
+      "marks": 5,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Conjugates must be different words with the same vowels and the same consonants. Option 1 checks different words + same letter count + same vowels (same letters and same vowels ⇒  same consonants). Option 3 checks different words + same vowels + same consonants directly (LetterCount − vowels). Option 2 requires identical words, and Option 4's 'exitloop' on a matching word wrongly aborts the inner loop."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A pseudocode is executed on a dataset whose words are, in order, the words of the following paragraph: \"This is not what I selected yesterday. There was a design on the left pocket. The color is also different. I clearly remember that the color which I had chosen was slightly dark. I can not believe that the shopkeeper has sent me a different product.\" What will be the value of count at the end of the execution? Assume upper case and lower case are ignored during comparison of letters."
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "count = 0, flag = True\nwhile(Table 1 has more rows){\n    Read the first row X in Table 1\n    Move X to Table 2\n    if(flag){\n        if(1st letter of X.Word == 't'){\n            if(2nd letter of X.Word == 'h'){\n                count = count + 1\n            }\n        }\n    }\n    flag = False\n    if(X.Word ends with full stop){\n        flag = True\n    }\n}"
+        }
+      ],
+      "numerical_answer": 3,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "flag is True only for the first word of each sentence (it is reset to False each iteration and set True after a word ending with a full stop). The code counts sentence-initial words starting with 'th': 'This', 'There' and 'The' — so count = 3."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What will be the value of result at the end of the execution of the following pseudocode if the value of n is 7?"
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "i = 1\nresult1 = 1, result2 = 1, result = 1\nwhile(i < n){\n    result1 = result1 * i\n    result2 = result2 * i * (i + 1)\n    i = i + 2\n}\nresult = result2 / result1"
+        }
+      ],
+      "numerical_answer": 48,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "With n = 7 the loop runs for i = 1, 3, 5. result1 = 1·3·5 = 15 and result2 = (1·2)(3·4)(5·6) = 2·12·30 = 720. result = result2 / result1 = 720 / 15 = 48 (equivalently 2·4·6)."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let two datasets be stored in Table 1 and Table 2 corresponding to the following sentences: Table 1: \"If you are honest with your work, the money is just a compliment\" Table 2: \"If you are honest with your work, the progress is just a compliment\" What will doSomething(Table 1, Table 2) return? Assume upper case and lower case are ignored during comparison of words."
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "Procedure doSomething(Table T1, Table T2)\n    count = 0\n    while(Table T1 has more rows){\n        Read the first row Y from Table T1\n        Read the first row Z from Table T2\n        if(Y.Word == Z.Word){\n            count = count + 1\n        }\n        else{\n            return(count)\n        }\n        Move the row Y to Table T11\n        Move the row Z to Table T22\n    }\n    return(count)\nEnd doSomething"
+        }
+      ],
+      "numerical_answer": 8,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The procedure compares the two sentences word by word and returns the count at the first mismatch. The words 'If you are honest with your work, the' match (8 words), then the 9th words differ ('money' vs 'progress'), so it returns 8."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Q15–Q16 use the \"Scores\" dataset and the pseudocode below. Let F = number of female students, M = number of male students, F250 = number of female students with total marks greater than 250, and M250 = number of male students with total marks greater than 250."
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "A = 0, B = 0\nwhile(Table 1 has more rows){\n    Read the first row X from Table 1\n    flag = False\n    if(X.Gender == 'F'){\n        if(X.Total > 250){\n            flag = True\n        }\n    }\n    if(not flag){\n        A = A + 1\n        if(X.Total > 250){\n            B = B + 1\n        }\n    }\n    Move X to Table 2\n}"
+        },
+        {
+          "kind": "text",
+          "value": "What will be the value of A at the end of the execution (using the pseudocode in the passage above)?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "F + F250"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "F250"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "M + (F - F250)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "M + F250"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 3,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "flag is True only for female students with total > 250 (there are F250 of them). A increments for every student with 'not flag', i.e. all students except those F250 — that is (M + F) − F250 = M + (F − F250)."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Q15–Q16 use the \"Scores\" dataset and the pseudocode below. Let F = number of female students, M = number of male students, F250 = number of female students with total marks greater than 250, and M250 = number of male students with total marks greater than 250."
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "A = 0, B = 0\nwhile(Table 1 has more rows){\n    Read the first row X from Table 1\n    flag = False\n    if(X.Gender == 'F'){\n        if(X.Total > 250){\n            flag = True\n        }\n    }\n    if(not flag){\n        A = A + 1\n        if(X.Total > 250){\n            B = B + 1\n        }\n    }\n    Move X to Table 2\n}"
+        },
+        {
+          "kind": "text",
+          "value": "What will be the value of B at the end of the execution (using the pseudocode in the passage above)?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "M"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "F - F250"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "M250"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "M + (F - F250)"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 4,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "B increments for students with 'not flag' AND total > 250. Female students with total > 250 have flag = True (excluded), so the only such students are males with total > 250 — that is M250."
+        }
+      ]
+    }
+  ]
+}

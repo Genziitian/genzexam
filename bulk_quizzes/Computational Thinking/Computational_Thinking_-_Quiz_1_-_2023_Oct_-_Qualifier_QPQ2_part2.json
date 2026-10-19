@@ -1,0 +1,385 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Computational Thinking · Quiz 1 · 2023 Oct · Qualifier QPQ2 · Part 2",
+  "subject": "Computational Thinking",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Scores\" dataset. There is a hypothesis that if a student scores at least 180 total marks, then he/she scored at least 60 in all subjects. fracTrue stores the fraction of (high-scoring) students who satisfy this hypothesis. Choose the correct code fragment(s). It is a Multiple Select Question (MSQ)."
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "countOverall = 0, countPerSub = 0\nwhile(Table 1 has more rows){\n    Read the first row X in Table 1\n    if(X.Total >= 180){\n        ***** Fill the code *****\n    }\n    Move X to Table 2\n}\nfracTrue = countPerSub / countOverall"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "if(X.Physics >= 60 and X.Chemistry >= 60 and X.Mathematics >= 60){\ncountPerSub = countPerSub + 1\ncountOverall = countOverall + 1\n}"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "if(X.Physics >= 60 and X.Chemistry >= 60 and X.Mathematics >= 60){\ncountPerSub = countPerSub + 1\n}\ncountOverall = countOverall + 1"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "if(X.Physics >= 60 and X.Chemistry >= 60 and X.Mathematics >= 60){\ncountOverall = countOverall + 1\ncountPerSub = countPerSub + 1\n}"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "if(X.Physics >= 60 and X.Chemistry >= 60 and X.Mathematics >= 60){\ncountOverall = countOverall + 1\n}\ncountPerSub = countPerSub + 1"
+          }
+        ]
+      ],
+      "correct_answers": [
+        1
+      ],
+      "marks": 4,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "countOverall must count every student with Total >= 180, so it has to sit OUTSIDE the all-subjects if. Only Option 2 does this (countPerSub inside, countOverall after). Options 1 and 3 put countOverall inside the if (fracTrue always 1); Option 4 swaps the two counters."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Words\" dataset. At the end of execution, count stores the number of pairs of consecutive words which have an equal number of vowels. Choose the correct option(s). It is a Multiple Select Question (MSQ)."
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "count = 0\nwhile(Table 1 has at least two rows){\n    Read the first row X from Table 1\n    countVx = countSomething(X)\n    Move X to Table 2\n    Read the first row Y from Table 1\n    countVy = countSomething(Y)\n    if(countVx == countVy){\n        count = count + 1\n    }\n}\nProcedure countSomething(Z)\n    i = 1\n    A = 0\n    while(i <= Z.LetterCount){\n        if(ith letter of Z.Word is vowel){\n            A = A + 1\n        }\n        i = i + 1\n    }\n    return(A)\nEnd countSomething"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The above pseudocode will not provide the correct result because Table 2 must be restored to Table 1."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The above pseudocode will not provide the correct result because card Y is not being moved to anywhere."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The above pseudocode will not provide the correct result because the last word is not being compared."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The above pseudocode will provide the correct result."
+          }
+        ]
+      ],
+      "correct_answers": [
+        3
+      ],
+      "marks": 4,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Y is deliberately left in place so it becomes the X of the next pass — this is how consecutive pairs are formed, and every consecutive pair (including the last) is compared once, so none of the three objections is valid. (Note: in the source image countSomething is missing its 'i = i + 1'; shown corrected here, consistent with the options.)"
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Shopping Bills\" dataset. A is intended to capture the lowest Price of an item purchased from \"Big Bazaar\". The pseudocode may have mistakes; identify all such lines (if any). Assume all statements not listed in the options are free of errors. It is a Multiple Select Question (MSQ). 1   A = 0 2   while(Pile 1 has more cards){ 3       Read the top card X in Pile 1 4       if(X.ShopName == \"Big Bazaar\"){ 5           temp = findItem(X) 6           if(temp > A){ 7               A = temp 8           } 9       } 10      Move X to Pile 2 11  } 12  Procedure findItem(Y) 13      minPrice = 0 14      while(Card Y has more items){ 15          Read an item Z from ItemList of card Y 16          if(minPrice > Z.Price){ 17              minPrice = Z.Price 18          } 19          Remove Z from ItemList of card Y 20      } 21      return(minPrice) 22  End findItem"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Line 1: Incorrect initialization of A"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Line 6: Incorrect conditional statement"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Line 13: Incorrect initialization of minPrice"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "There must be a re-initialization of minPrice before the return statement"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "No error"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1,
+        2
+      ],
+      "marks": 4,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "We need the lowest price overall, so the main accumulator must start high and keep the smaller value: Line 1 (A = 0) and Line 6 (temp > A) are wrong — they find a maximum. findItem must also start minPrice high; Line 13 (minPrice = 0) makes '0 > Z.Price' never true, so it always returns 0. Line 16's 'minPrice > Z.Price' is the correct comparison for a minimum, so the errors are Lines 1, 6 and 13."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Q13–Q14 use a dataset with the same fields as \"Words\" containing the paragraph: \"IIT Madras has launched the world's first ever online degree and diploma courses in programming and data science. Anyone who has passed class 12th examination can enrol in the online course. There are three levels in the online degree program. There are total of 31 course. The completion time is between three to six years. Learners will have to complete the online courses and assignments, quizzes and exams to gain 116 credits. The online application process for next batch is open now.\" When moving rows, the increasing order of sequence number is preserved. The pseudocode below builds Table 2."
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "count = 0, i = 0\nwhile(Table 1 has more rows){\n    Read the first row X from Table 1\n    if(i == 0){\n        Move X to Table 2\n        i = 1\n    }\n    else{\n        Move X to Table 3\n    }\n    if(X.Word ends with full stop){\n        i = 0\n    }\n}"
+        },
+        {
+          "kind": "text",
+          "value": "Choose the set of correct words in Table 2 (from the passage above)."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "IIT, Anyone, There, There, The, Learners, The"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "IIT, Anyone, There, The, Learners"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "science, course, program, course, years, credits, now"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "science, course, program, years, credits, now"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "i is 0 only at the start of each sentence, so the first word of every sentence is moved to Table 2 (i resets to 0 after each full stop). The seven sentences begin with: IIT, Anyone, There, There, The, Learners, The."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Q13–Q14 use a dataset with the same fields as \"Words\" containing the paragraph: \"IIT Madras has launched the world's first ever online degree and diploma courses in programming and data science. Anyone who has passed class 12th examination can enrol in the online course. There are three levels in the online degree program. There are total of 31 course. The completion time is between three to six years. Learners will have to complete the online courses and assignments, quizzes and exams to gain 116 credits. The online application process for next batch is open now.\" When moving rows, the increasing order of sequence number is preserved. The pseudocode below builds Table 2."
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "count = 0, i = 0\nwhile(Table 1 has more rows){\n    Read the first row X from Table 1\n    if(i == 0){\n        Move X to Table 2\n        i = 1\n    }\n    else{\n        Move X to Table 3\n    }\n    if(X.Word ends with full stop){\n        i = 0\n    }\n}"
+        },
+        {
+          "kind": "text",
+          "value": "Consider Table 2 created from the previous question. At the end of execution of the pseudocode below, what will the values of countMax and occurMax be?"
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "countMax = 0, occurMax = \"None\"\nwhile(Table 2 has more rows){\n    count = 0\n    Read the first row Y from Table 2\n    Move Y to Table 4\n    while(Table 2 has more rows){\n        Read the first row Z from Table 2\n        if(Y.Word == Z.Word){\n            count = count + 1\n            Move Z to Table 4\n        }\n        else{\n            Move Z to Table 5\n        }\n    }\n    Move all the rows from Table 5 to Table 2\n    if(count >= countMax){\n        countMax = count\n        occurMax = Y.Word\n    }\n}"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "countMax = 1, occurMax = \"The\""
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "countMax = 2, occurMax = \"The\""
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "countMax = 1, occurMax = \"There\""
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "countMax = 2, occurMax = \"There\""
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 4,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Table 2 = [IIT, Anyone, There, There, The, Learners, The]. For each word, count is the number of its remaining duplicates (1 for 'There', then 1 for 'The'). Because the test is count >= countMax, the later equal value ('The') overwrites occurMax, giving countMax = 1 and occurMax = \"The\"."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Q16–Q17 use the \"Library\" dataset and the pseudocode below. Assume an author publishes at least two books, and only one in a year. doSomething is called on a table containing all books of one author."
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "Count = 0, max = 0\nwhile(Table 1 has more rows){\n    Read the first row X from Table 1\n    Move the row X to Table 2\n    while(Table 1 has more rows){\n        Read the first row Y from Table 1\n        if(X.Author == Y.Author){\n            Move the row Y to Table 2\n        }\n        else{\n            Move the row Y to Table 3\n        }\n    }\n    Diff = doSomething(Table 2)\n    if(Diff == max){\n        Count = Count + 1\n    }\n    if(Diff > max){\n        max = Diff\n        Count = 1\n    }\n    Delete all the rows from Table 2\n    Move all the rows from Table 3 to Table 1\n}\nProcedure doSomething(Table 2)\n    A = 1900, B = 1900\n    while(Table 2 has more rows){\n        Read the first row Z from Table 2\n        if(Z.Year > A){\n            B = A\n            A = Z.Year\n        }\n        if(Z.Year < A and Z.Year > B){\n            B = Z.Year\n        }\n        Move the row Z to Table 4\n    }\n    return((B - A))\nEnd doSomething"
+        },
+        {
+          "kind": "text",
+          "value": "What will the procedure doSomething return (using the pseudocode in the passage above)?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Difference between year of publication of first and second book of the same author"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Difference between year of publication of first and second book of the different author"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Difference between year of publication of latest and second latest book of the same author"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Difference between year of publication of latest and second latest book of the different author"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 4,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Here A tracks the largest (latest) Year and B the second largest, among the books of one author. So (B − A) measures the difference between the year of publication of the latest and the second latest book of the same author."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Q16–Q17 use the \"Library\" dataset and the pseudocode below. Assume an author publishes at least two books, and only one in a year. doSomething is called on a table containing all books of one author."
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "Count = 0, max = 0\nwhile(Table 1 has more rows){\n    Read the first row X from Table 1\n    Move the row X to Table 2\n    while(Table 1 has more rows){\n        Read the first row Y from Table 1\n        if(X.Author == Y.Author){\n            Move the row Y to Table 2\n        }\n        else{\n            Move the row Y to Table 3\n        }\n    }\n    Diff = doSomething(Table 2)\n    if(Diff == max){\n        Count = Count + 1\n    }\n    if(Diff > max){\n        max = Diff\n        Count = 1\n    }\n    Delete all the rows from Table 2\n    Move all the rows from Table 3 to Table 1\n}\nProcedure doSomething(Table 2)\n    A = 1900, B = 1900\n    while(Table 2 has more rows){\n        Read the first row Z from Table 2\n        if(Z.Year > A){\n            B = A\n            A = Z.Year\n        }\n        if(Z.Year < A and Z.Year > B){\n            B = Z.Year\n        }\n        Move the row Z to Table 4\n    }\n    return((B - A))\nEnd doSomething"
+        },
+        {
+          "kind": "text",
+          "value": "What will Count represent at the end of execution (using the pseudocode in the passage above)?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Number of authors with maximum gap between year of publication of first and second book"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of authors with minimum gap between year of publication of first and second book"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of authors with maximum gap between year of publication of latest and second latest book"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of authors with minimum gap between year of publication of latest and second latest book"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 4,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "doSomething measures the gap between each author's latest and second-latest book, and the max/Count logic counts the authors achieving the largest such gap — Number of authors with maximum gap between year of publication of latest and second latest book. (Note: the procedure literally returns B − A, which is negative because A is the later year; this mirrors the companion paper's 'first and second' version and the intended answer tracks the maximum gap.)"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,351 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Computational Thinking · Quiz 1 · 2022 Oct · Qualifier QPA1 · Part 1",
+  "subject": "Computational Thinking",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Select the most appropriate datatype specific to the \"Scores\" dataset for each field in the left column. Match each field to its datatype Field Data Type a. Is Bhuvanesh's total marks > 200 ? 1. String b. Gender 2. Character c. TownCity 3. Boolean d. Sequence number 4. Integer"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "a - (3), b - (2), c - (1), d - (4)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "a - (1), b - (2), c - (4), d - (3)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "a - (2), b - (3), c - (1), d - (4)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "a - (3), b - (1), c - (3), d - (4)"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "a) 'Is total marks > 200?' is a yes/no test → Boolean (3). b) Gender is a single character 'M'/'F' → Character (2). c) TownCity is text → String (1). d) Sequence number is a whole number → Integer (4)."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Words\" dataset. What will count represent at the end of the execution?"
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "count = 0, Flag = False\nwhile(Table 1 has more rows){\n    Read the first row X in Table 1\n    if(X.PartOfSpeech == \"Noun\"){\n        Flag = True\n    }\n    else{\n        if(Flag and X.PartOfSpeech == \"Verb\"){\n            count = count + 1\n        }\n    }\n    Move X to Table 2\n}"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Number of nouns before the first verb in the dataset"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of verbs before the first noun in the dataset"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of nouns after the first verb in the dataset"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of verbs after the first noun in the dataset"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Flag becomes True as soon as the first noun is read. Thereafter, every word that is a verb (handled in the else branch, with Flag already True) increments count. So count is the number of verbs occurring after the first noun."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Scores\" dataset. What will count represent at the end of the execution?"
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "count = 0, A = 0\nwhile(Table 1 has more rows){\n    Read the first row X in Table 1\n    if(X.Gender == 'M' or X.Mathematics > X.Physics){\n        A = 1\n    }\n    else{\n        count = count + 1\n    }\n    Move X to Table 2\n}"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Number of male students whose Physics marks are greater than Mathematics marks"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of male students whose Physics marks are greater than or equal to Mathematics marks"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of female students whose Physics marks are greater than or equal to Mathematics marks"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of female students whose Physics marks are less than or equal to Mathematics marks"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "count increases only in the else branch, i.e. when NOT(male OR Mathematics > Physics). By De Morgan that is (female) AND (Mathematics ≤ Physics), i.e. female students whose Physics marks are greater than or equal to Mathematics marks."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Shopping Bills\" dataset. Procedure findCommon takes a pair of cards X and Y as input and returns True if the two cards share at least one common item, otherwise False. What will count represent at the end of the execution?"
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "count = 0\nwhile(Pile 1 has more cards){\n    Read the top card X from Pile 1\n    Move card X to Pile 2\n    while(Pile 1 has more cards){\n        Read the top card Y from Pile 1\n        if(X.ShopName != Y.ShopName and findCommon(X, Y)){\n            count = count + 1\n        }\n        Move the card Y to Pile 3\n    }\n    Move all the cards from Pile 3 to Pile 1\n}"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Number of pairs of bills from the same shop with at least one common item"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of pairs of bills from different shops with at least one common item"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of pairs of bills with at least two common items"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of pairs of bills from different shops with no common items"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The nested loop forms every unordered pair (X, Y) exactly once. A pair is counted when X.ShopName != Y.ShopName (different shops) AND findCommon(X, Y) is True (at least one common item)."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Scores\" dataset. What will count represent at the end of the execution?"
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "count = 0\nwhile(Table 1 has more rows){\n    Read the first row X in Table 1\n    Move X to Table 2\n    Flag = True\n    while(Table 1 has more rows){\n        Read the first row Y in Table 1\n        if(X.Mathematics == Y.Mathematics){\n            Flag = False\n            Move Y to Table 2\n        }\n        else{\n            Move Y to Table 3\n        }\n    }\n    if(Flag){\n        count = count + 1\n    }\n    Move all rows from Table 3 to Table 1\n}"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Number of students with same Mathematics marks"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of pairs of students with same Mathematics marks"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of students with distinct Mathematics marks"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of pairs of students with distinct Mathematics marks"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 4,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "For each X, Flag stays True only if no other student Y has the same Mathematics marks (any matching Y is removed to Table 2). So count increments once for each student whose Mathematics mark is not shared by anyone else — the number of students with distinct Mathematics marks."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Words\" table. At the end of the execution, count stores the number of pairs of words with the same letter count where both are either nouns or both end with a full"
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "stop. Choose the correct fragments for Statement 1, Statement 2 and Statement 3.\ncount = 0\nwhile(Table 1 has more rows){\n    Read the first row X in Table 1\n    Move X to Table 2\n    while(Table 1 has more rows){\n        Read the first row Y in Table 1\n        Move Y to Table 3\n        if(*** Statement 1 ***){\n            if(X.PartOfSpeech == \"Noun\"){\n                if(*** Statement 2 ***){\n                    count = count + 1\n                }\n            }\n            else{\n                if(*** Statement 3 ***){\n                    count = count + 1\n                }\n            }\n        }\n    }\n    Move all rows from Table 3 to Table 1\n}"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Statement 1: X.PartOfSpeech == Y.PartOfSpeech | Statement 2: X.LetterCount == Y.LetterCount | Statement 3: X.Word and Y.Word end with a full stop"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Statement 1: X.Word and Y.Word end with a full stop | Statement 2: X.PartOfSpeech == Y.PartOfSpeech | Statement 3: X.LetterCount == Y.LetterCount"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Statement 1: X.LetterCount == Y.LetterCount | Statement 2: X.Word and Y.Word end with a full stop | Statement 3: X.PartOfSpeech == Y.PartOfSpeech"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Statement 1: X.LetterCount == Y.LetterCount | Statement 2: X.PartOfSpeech == Y.PartOfSpeech | Statement 3: X.Word and Y.Word end with a full stop"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 4,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Same letter count is required for both cases, so it is the outer filter (Statement 1). When X is a Noun, the pair counts only if Y is also a Noun, i.e. X.PartOfSpeech == Y.PartOfSpeech (Statement 2). Otherwise the pair counts when both words end with a full stop (Statement 3)."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Sripriya has used a variable min to find the minimum total score using the \"Scores\" dataset. There are many ways of initializing min. Choose the correct option(s) regarding the initialization of min. It is a Multiple Select Question (MSQ)."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Initialize min to 0"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Pick any random card X from the dataset and min = X.Total"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Pick the top card X from the dataset and min = X.Total"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Initialize min with any value greater than the possible maximum total score"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Initialize min with any value less than the possible minimum total score"
+          }
+        ]
+      ],
+      "correct_answers": [
+        1,
+        2,
+        3
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "A minimum search must start from a value that is at least as large as the true minimum. Seeding min with an actual Total (any card or the top card) works, as does any value above the maximum possible total (every real score will be smaller and update it). Initializing to 0 leaves min stuck at 0 (totals are positive), and a value below the minimum can never be beaten, so both are wrong."
+        }
+      ]
+    }
+  ]
+}

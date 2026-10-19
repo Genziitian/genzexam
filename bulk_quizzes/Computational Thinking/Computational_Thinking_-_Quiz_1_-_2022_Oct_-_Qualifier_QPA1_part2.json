@@ -1,0 +1,390 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Computational Thinking · Quiz 1 · 2022 Oct · Qualifier QPA1 · Part 2",
+  "subject": "Computational Thinking",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Scores\" dataset. At the end of the execution, count captures the number of boys who scored at least 75 marks in Chemistry. Choose the correct code fragment(s) for the marked block. It is a Multiple Select Question (MSQ)."
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "count = 0\nwhile(Table 1 has more rows){\n    Read the first row X in Table 1\n    *********Fill the code*********\n    Move X to Table 2\n}"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "if(X.Gender == 'M' or X.Chemistry >= 75){\ncount = count + 1\n}"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "if(X.Gender == 'M'){\nA = 1\n}\nif(X.Chemistry >= 75){\nB = 1\n}\nif((A + B) > 1){\ncount = count + 1\n}"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "A = 0, B = 0\nif(X.Gender == 'M'){\nA = 1\n}\nif(X.Chemistry >= 75){\nB = 1\n}\nif((A + B) > 1){\ncount = count + 1\n}"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "A = 0, B = 1\nif(X.Gender == 'M'){\nA = 1\n}\nif(X.Chemistry < 75){\nB = 0\n}\nif((A + B) > 1){\ncount = count + 1\n}"
+          }
+        ]
+      ],
+      "correct_answers": [
+        2,
+        3
+      ],
+      "marks": 4,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "We must count students who are BOTH male AND have Chemistry ≥ 75 (the (A+B) > 1 test means both flags are set). Option 3 resets A,B to 0 each iteration, sets A on male and B on Chemistry ≥ 75 — correct. Option 4 seeds A=0,B=1 and clears B only when Chemistry < 75, so B=1 means Chemistry ≥ 75 — also correct. Option 1 uses OR, and Option 2 never resets A,B so the flags stay sticky across rows."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Scores\" dataset. At the end of the execution, A captures the number of students who are male from Bengaluru OR have scored more marks in Physics than the average Physics marks. Assume Avg holds the average Physics marks. The pseudocode may have mistakes; identify all such mistakes (if any). Assume all statements not listed in the options are free of errors. It is a Multiple Select Question (MSQ). 1   A = 0 2   while(Table 1 has more rows){ 3       Read the first row X in Table 1 4       C = False, D = False 5       if(X.Gender == 'F' and X.CityTown == \"Bengaluru\"){ 6           C = True 7       } 8       if(X.Physics < Avg){ 9           D = True 10      } 11      if(C or D){ 12          A = A + 1 13      } 14      Move X to Table 2 15  }"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Line 1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Line 5"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Line 8"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Line 12"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "No error in the code"
+          }
+        ]
+      ],
+      "correct_answers": [
+        1,
+        2
+      ],
+      "marks": 4,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Line 5 should test for male students (X.Gender == 'M'), not 'F'. Line 8 should test X.Physics > Avg (more than the average), not '<'. Lines 1 and 12 correctly initialize and increment the counter."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Words\" dataset. At the end of the execution, count captures the number of pairs of words with either the same letter count or the same part of speech but NOT both. Choose the correct code fragment(s) to complete the procedure findPair. It is a Multiple Select Question (MSQ)."
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "count = 0\nwhile(Table 1 has more rows){\n    Read the first row X in Table 1\n    Move X to Table 2\n    while(Table 1 has more rows){\n        Read the first row Y in Table 1\n        Move Y to Table 3\n        count = count + findPair(X, Y)\n    }\n    Move all rows from Table 3 to Table 1\n}\nProcedure findPair(X, Y)\n    ************************\n    ***** Fill the code *****\n    ************************\nEnd findPair"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "A = 0, B = 0\nif(X.LetterCount == Y.LetterCount or X.PartOfSpeech == Y.PartOfSpeech){\nA = A + 1\n}\nif(X.LetterCount == Y.LetterCount and X.PartOfSpeech == Y.PartOfSpeech){\nB = B + 1\n}\nreturn(A - B)"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "A = 0, B = 0\nif(X.LetterCount == Y.LetterCount and X.PartOfSpeech == Y.PartOfSpeech){\nA = A + 1\n}\nif(X.LetterCount == Y.LetterCount or X.PartOfSpeech == Y.PartOfSpeech){\nB = B + 1\n}\nreturn(A - B)"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "A = False, B = False\nif(X.LetterCount == Y.LetterCount){\nA = True\n}\nif(X.PartOfSpeech == Y.PartOfSpeech){\nB = True\n}\nif((A and not B) or (not A and B)){\nreturn(1)\n}\nreturn(0)"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "A = False, B = False\nif(X.LetterCount == Y.LetterCount){\nA = True\n}\nif(X.PartOfSpeech == Y.PartOfSpeech){\nB = True\n}\nif((A or not B) and (not A or B)){\nreturn(1)\n}\nreturn(0)"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        2
+      ],
+      "marks": 4,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "We need exclusive-or (exactly one of the two conditions). Option 1: A=1 if either holds, B=1 if both hold, so A−B = 1 only when exactly one holds. Option 3 directly tests (A and not B) or (not A and B), the definition of XOR. Option 2 returns −1 on XOR cases, and Option 4's condition is XNOR (true when both or neither match)."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Library\" dataset. Assume Table 1 contains all the books authored by \"Narayan\" only, and that the \"Year\" field of each book is distinct. Which of the following statement(s) are correct at the end of execution? It is a Multiple Select Question (MSQ)."
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "Procedure groupBooks(Table 1)\n    A = 2023, B = 0\n    while(Table 1 has more rows){\n        Read the first row Z from Table 1\n        if(Z.Year < A){\n            A = Z.Year\n            B = Z.SeqNo\n        }\n        Move Z to Table 2\n    }\n    while(Table 2 has more rows){\n        Read the first row K from Table 2\n        if(K.SeqNo == B){\n            Move K to Table 3\n        }\n        else{\n            Move K to Table 4\n        }\n    }\nEnd groupBooks"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Table 2 will be empty"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Table 3 will have one record corresponding to the most recently published book of \"Narayan\"."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Table 3 will have one record corresponding to the oldest published book of \"Narayan\"."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Table 4 will have one record corresponding to the oldest published book of \"Narayan\"."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Table 4 will have one record corresponding to the most recently published book of \"Narayan\"."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        2
+      ],
+      "marks": 4,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The first loop finds the minimum Year (oldest book) and records its SeqNo in B, moving every book to Table 2. The second loop empties Table 2: the single book whose SeqNo == B (the oldest book) goes to Table 3, and all the rest go to Table 4. So Table 2 ends empty and Table 3 holds exactly the oldest published book. (Table 4 holds all the remaining books, not one.)"
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The procedure countGirls is executed using the \"Scores\" dataset and counts the number of girls who have got more than the subject-wise average marks in at least one of the three subjects. Assume the subject-wise average marks for Physics, Chemistry and Mathematics are stored in P, C and M respectively. Choose the correct code fragment(s) for the marked block. It is a Multiple Select Question (MSQ)."
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "Procedure countGirls(P, C, M)\n    count = 0\n    while(Table 1 has more rows){\n        Read the first row X from Table 1\n        **** Fill in the code ****\n        Move X to Table 2\n    }\n    return(count)\nEnd countGirls"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "if(X.Gender == 'F'){\nif(X.Mathematics > M or X.Physics > P or X.Chemistry > C){\ncount = count + 1\n}\n}"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "if(X.Gender == 'F'){\nif(not(X.Mathematics < M and X.Physics < P and X.Chemistry < C)){\ncount = count + 1\n}\n}"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "if(X.Gender == 'F' and (X.Mathematics < M or X.Physics < P or X.Chemistry < C)){\ncount = count + 1\n}"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0
+      ],
+      "marks": 4,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "A girl qualifies if she scores strictly more than the average in at least one subject: Gender == 'F' AND (Maths > M or Physics > P or Chemistry > C) — Option 1. Option 2 uses not(all strictly below average), which also counts a subject exactly equal to the average (a ≥ boundary, not >), so it is not equivalent. Option 3 checks scores below the average, which is the opposite."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Q15–Q16 use the \"Olympics\" dataset and the procedure doSomething below, which accepts a Table whose rows all belong to the same player. Assume every player has won at least two medals and only one medal in any year."
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "Procedure doSomething(Table T1)\n    A = 0, B = 0\n    while(Table T1 has more rows){\n        Read the first row Z from Table T1\n        if(Z.Year > A){\n            B = A\n            A = Z.Year\n        }\n        if(Z.Year < A and Z.Year > B){\n            B = Z.Year\n        }\n        Move the row Z to Table T2\n    }\n    return((A - B))\nEnd doSomething"
+        },
+        {
+          "kind": "text",
+          "value": "The procedure doSomething (in the passage above) is executed using the \"Olympics\" dataset on a table of rows of the same player. What will (A − B) represent at the end of the execution?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Year gap between first and second medal won by a player"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Year gap between first and latest medal won by a player"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Year gap between latest and second latest medal won by a player"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Year gap between first and second latest medal won by a player"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 4,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "A tracks the maximum (latest) Year: when a larger year is seen, the old maximum slides into B and A takes the new year. The second 'if' keeps B as the largest year still below A — the second latest year. Hence (A − B) is the year gap between the latest and the second latest medal."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Q15–Q16 use the \"Olympics\" dataset and the procedure doSomething below, which accepts a Table whose rows all belong to the same player. Assume every player has won at least two medals and only one medal in any year."
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "Procedure doSomething(Table T1)\n    A = 0, B = 0\n    while(Table T1 has more rows){\n        Read the first row Z from Table T1\n        if(Z.Year > A){\n            B = A\n            A = Z.Year\n        }\n        if(Z.Year < A and Z.Year > B){\n            B = Z.Year\n        }\n        Move the row Z to Table T2\n    }\n    return((A - B))\nEnd doSomething"
+        },
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed on the \"Olympics\" dataset, using the procedure doSomething from the passage above. What will count represent at the end of the execution? Assume every player has won at least two medals and only one medal in a year."
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "count = 0, max = 0\nwhile(Table 1 has more rows){\n    Read the first row X from Table 1\n    Move the row X to Table 2\n    while(Table 1 has more rows){\n        Read the first row Y from Table 1\n        if(X.Name == Y.Name){\n            Move the row Y to Table 2\n        }\n        else{\n            Move the row Y to Table 3\n        }\n    }\n    diff = doSomething(Table 2)\n    if(diff == max){\n        count = count + 1\n    }\n    if(diff > max){\n        max = diff\n        count = 1\n    }\n    Delete all the rows from Table 2\n    Move all the rows from Table 3 to Table 1\n}"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Number of players with maximum year gap between first and second medal"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of players with minimum year gap between first and second medal"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of players with maximum year gap between latest and second latest medal"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of players with minimum year gap between latest and second latest medal"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 4,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "For each distinct player, all their rows are grouped into Table 2 and diff = doSomething(Table 2) gives that player's gap between the latest and second latest medal. The max/count logic resets count to 1 on a new maximum and increments it on ties, so count ends as the number of players sharing the maximum such gap."
+        }
+      ]
+    }
+  ]
+}

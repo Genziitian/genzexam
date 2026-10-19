@@ -1,0 +1,385 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Computational Thinking · Quiz 1 · 2022 Jun · Foundation · Part 2",
+  "subject": "Computational Thinking",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Words\" dataset. At the end of the execution, A captures the number of sentences with at least two nouns that have at most two vowels. Choose the correct set of code fragments for Statement1–Statement4. 1   A = 0, C = 0 2   while(Table 1 has more rows){ 3       Read the first row X from Table 1 4       if(X.PartOfSpeech == \"Noun\" and countVowels(X) <= 2){ 5           C = C + 1 6       } 7       if(X.Word ends with a full stop){ 8           if(C >= 2){ 9               *** Statement1 *** 10          } 11          *** Statement2 *** 12      } 13      Move X to Table 2 14  } 15 16  Procedure countVowels(Y) 17      i = 1, B = 0 18      while(i <= Y.LetterCount){ 19          if(ith letter of Y.Word is a vowel){ 20              B = B + 1 21              *** Statement3 *** 22          } 23          *** Statement4 *** 24      } 25      return(B) 26  End countVowels"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Statement1: A = A + 1 Statement2: C = 0 Statement3: Not required Statement4: i = i + 1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Statement1: C = 0 Statement2: A = A + 1 Statement3: i = i + 1 Statement4: Not required"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Statement1: C = 0 Statement2: A = A + 1 Statement3: Not required Statement4: i = i + 1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Statement1: A = A + 1 Statement2: C = 0 Statement3: i = i + 1 Statement4: Not required"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 4,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "C counts the qualifying nouns in the current sentence. At a word ending with a full stop (end of sentence), if C >= 2 we count the sentence (Statement1: A = A + 1) and then reset the counter for the next sentence (Statement2: C = 0). In countVowels the index must advance every iteration to terminate, so Statement4: i = i + 1 (outside the if) and Statement3: Not required."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let X be a row in the \"Words\" table. Let isShortVerb be a procedure to find whether the word in row X is a verb with letter count at most five. Choose the correct code fragment to complete the procedure."
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "Procedure isShortVerb(X)\n    ******************\n    * Fill the code  *\n    ******************\nEnd isShortVerb"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "if(X.PartOfSpeech == \"Verb\"){\nreturn(True)\n}\nelse{\nreturn(False)\n}"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "if(X.PartOfSpeech == \"Verb\" and X.LetterCount <= 5){\nreturn(False)\n}\nelse{\nreturn(True)\n}"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "if(X.PartOfSpeech == \"Verb\" or X.LetterCount <= 5){\nreturn(True)\n}\nelse{\nreturn(False)\n}"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "if(X.PartOfSpeech == \"Verb\" and X.LetterCount <= 5){\nreturn(True)\n}\nelse{\nreturn(False)\n}"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "A 'short verb' must be a verb AND have at most five letters, so the test is (PartOfSpeech == \"Verb\" and LetterCount <= 5) returning True, else False. Option 1 ignores the letter count, Option 2 inverts the returns, and Option 3 uses OR instead of AND."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A long word is defined as a word having at least 6 letters. The given pseudocode is used to find the average number of letters per word for long words from the \"Words\" dataset. Choose the correct code fragment to fill the marked block."
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "letterCount = 0, wordCount = 0, avgLetPerWord = 0\nwhile(Table 1 has more rows){\n    Read the first row X in Table 1\n    ******************\n    * Fill the code  *\n    ******************\n}\navgLetPerWord = letterCount / wordCount"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "wordCount = wordCount + 1\nif(X.LetterCount >= 6){\nletterCount = letterCount + X.LetterCount\n}\nMove X to Table 2"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "if(X.LetterCount >= 6){\nwordCount = wordCount + 1\nletterCount = letterCount + X.LetterCount\n}\nMove X to Table 2"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "if(X.LetterCount >= 6){\nwordCount = wordCount + 1\nletterCount = letterCount + X.LetterCount\nMove X to Table 2\n}"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "if(X.LetterCount >= 6){\nletterCount = letterCount + X.LetterCount\nwordCount = wordCount + 1\n}"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Only long words (LetterCount >= 6) must contribute to both the letter total and the word count, so both updates go inside the if. The 'Move X to Table 2' must stay outside the if (Option 2): in Option 3 it is inside, so short words are never removed (infinite loop), and Option 4 omits it entirely. Option 1 increments wordCount for every word, giving the wrong denominator."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Scores\" dataset. What will A represent at the end of the execution?"
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "A = 0\nwhile(Table 1 has more rows){\n    Read the first row X in Table 1\n    B = True\n    if(X.Physics >= 70){\n        B = False\n    }\n    if(X.Chemistry >= 70){\n        B = False\n    }\n    if(X.Mathematics >= 70){\n        B = False\n    }\n    if(B){\n        A = A + 1\n    }\n    Move X to Table 2\n}"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Number of students with all subject marks more than 70"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of students with exactly one subject marks less than 70"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of students with all subject marks less than 70"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of students with all subject marks at least 70"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "B starts True and is set to False if ANY subject is >= 70. So B remains True only when no subject reaches 70 — i.e., Physics, Chemistry and Mathematics are all below 70. A therefore counts students with all subject marks less than 70."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The given pseudocode is executed using the \"Scores\" dataset. There is a hypothesis that if a student performs well overall (scores at least 180 total marks), then he/she must have performed well in all subjects (scored at least 60 marks in each subject). At the end of execution, fracTrue stores the fraction of students (among those scoring at least 180) who satisfy this hypothesis. Choose the correct code fragment to fill the marked block."
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "countOverall = 0, countPerSub = 0\nwhile(Table 1 has more rows){\n    Read the first row X in Table 1\n    if(X.Total >= 180){\n        ******************\n        * Fill the code  *\n        ******************\n    }\n    Move X to Table 2\n}\nfracTrue = countPerSub / countOverall"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "if(X.Physics >= 60 and X.Chemistry >= 60 and X.Mathematics >= 60){\ncountPerSub = countPerSub + 1\ncountOverall = countOverall + 1\n}"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "if(X.Physics >= 60 and X.Chemistry >= 60 and X.Mathematics >= 60){\ncountPerSub = countPerSub + 1\n}\ncountOverall = countOverall + 1"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "if(X.Physics >= 60 or X.Chemistry >= 60 or X.Mathematics >= 60){\ncountPerSub = countPerSub + 1\n}\ncountOverall = countOverall + 1"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "if(X.Physics >= 60 and X.Chemistry >= 60 and X.Mathematics >= 60){\ncountOverall = countOverall + 1\n}\ncountPerSub = countPerSub + 1"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 3,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The block runs only for students with Total >= 180. countOverall must count every such student (so it goes outside the inner if), and countPerSub must count those who also scored >= 60 in all three subjects (AND condition). Option 1 increments both together (fracTrue always 1), Option 3 uses OR, and Option 4 swaps the two counters."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Words\" dataset. A counts the number of pairs of words which have an equal number of vowels and an equal number of consonants. The pseudocode may have mistakes in one or more lines; identify all such lines (if any). Assume all statements not listed in the options are free of errors. It is a Multiple Select Question (MSQ). 1   A = 0 2   while(Pile 1 has more cards){ 3       Read the top card X from Pile 1 4       countV = 0, countC = 0 5       countV, countC = countSomething(X, countV, countC) 6       Move X to Pile 2 7       while(Pile 1 has more cards){ 8           Read the top card Y from Pile 1 9           Move Y to Pile 3 10          countV1 = 0, countC1 = 0 11          countV1, countC1 = countSomething(Y, countV1, countC1) 12          if(countV == countV1 and countC != countC1){ 13              A = A + 1 14          } 15      } 16      Move all cards from Pile 3 to Pile 2 17  } 18 19  Procedure countSomething(Z, B, C) 20      i = Z.LetterCount 21      while(i >= 1){ 22          if(ith letter of Z.Word is vowel){ 23              B = B + 1 24          } 25          else{ 26              C = C + 1 27          } 28          i = i + 1 29      } 30      return([B, C]) 31  End countSomething"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Error in Line 5"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Error in Line 11"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Error in Line 12"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Error in Line 16"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Error in Line 20"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Error in Line 22"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Error in Line 28 H Error in Line 30 I No error in the code"
+          }
+        ]
+      ],
+      "correct_answers": [
+        2,
+        3,
+        6
+      ],
+      "marks": 5,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Line 12 must require equal consonants too (countC == countC1), not countC != countC1. Line 16 should move the inner cards back to Pile 1 (not Pile 2); moving them to Pile 2 empties Pile 1 so the outer loop stops after the first card and most pairs are never formed. Line 28 sets i = i + 1 while the loop condition is i >= 1 starting from i = Z.LetterCount, which never terminates — it must decrement (i = i - 1)."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Scores\" dataset. At the end of the execution, A is intended to capture the number of female students who are above average in at least one subject. Assume the variables M, P and C hold the average marks of Mathematics, Physics and Chemistry respectively. The pseudocode may have mistakes; identify all such mistakes (if any). Assume all statements not listed in the options are free of errors. It is a Multiple Select Question (MSQ). 1   A = 0 2   while(Table 1 has more rows){ 3       Read the first row X from Table 1 4       if(checkSomething(X, M, P, C)){ 5           A = 1 6       } 7       Move X to Table 2 8   } 9 10  Procedure checkSomething(Y, C1, C2, C3) 11      if(Y.Gender == 'F'){ 12          if(Y.Mathematics > C1 and Y.Physics > C2 and Y.Chemistry > C3){ 13              return(True) 14          } 15          else{ 16              return(False) 17          } 18      } 19      else{ 20          return(False) 21      } 22  End checkSomething"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Error in Line 4"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Error in Line 5"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Error in Line 11"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Error in Line 12"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Multiple return(False) in procedure checkSomething"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "No error in the code"
+          }
+        ]
+      ],
+      "correct_answers": [
+        1,
+        3
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Line 5 sets A = 1, which only flags rather than counts; to count female students it must be A = A + 1. Line 12 uses AND across all three subjects, which means above average in every subject; for 'above average in at least one subject' it must use OR. Line 4 passes the averages correctly, Line 11 correctly checks female, and having two return(False) statements is not an error."
+        }
+      ]
+    }
+  ]
+}

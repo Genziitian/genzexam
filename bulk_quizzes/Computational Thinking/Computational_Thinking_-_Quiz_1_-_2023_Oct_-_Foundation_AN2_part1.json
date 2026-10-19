@@ -1,0 +1,346 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Computational Thinking · Quiz 1 · 2023 Oct · Foundation AN2 · Part 1",
+  "subject": "Computational Thinking",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Match the following expressions on the left with the appropriate values on the right. Match each expression to its value Expression Value a. 2 == 2 or 2 > 3 1. Invalid expression b. 2 == 2 and 2 > 3 2. True c. 2 = 3 3. False d. 2 + '2' 4. 4 e. 2 < 3 5. '22'"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "a - (2), b - (3), c - (1), d - (1), e - (2)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "a - (2), b - (3), c - (1), d - (5), e - (2)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "a - (2), b - (3), c - (1), d - (4), e - (2)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "a - (1), b - (3), c - (2), d - (1), e - (2)"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "a) True or False = True (2). b) True and False = False (3). c) '2 = 3' is an assignment to a literal — an invalid expression (1). d) 2 + '2' mixes an integer and a string, which is an invalid expression (1). e) 2 < 3 = True (2)."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The given procedure is executed using the \"Library\" dataset (Table 1). selected(\"Narayan\", \"Fiction\", 10) will"
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "return True if:\nProcedure selected(auth, gen, num)\n    countT = 0, countG = 0\n    while(Table 1 has more rows){\n        Read the first row X from Table 1\n        if(X.Author == auth){\n            countT = countT + 1\n            if(X.Genre == gen){\n                countG = countG + 1\n            }\n        }\n        Move X to Table 2\n    }\n    if(countG / countT >= num / 100){\n        return(True)\n    }\n    return(False)\nEnd selected"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "At least 10 percent of the books written by Narayan are in the genre Fiction."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "At most 10 percent of the books written by Narayan are in the genre Fiction."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "At least 10 books written by Narayan are in the genre Fiction."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "At most 10 books written by Narayan are in the genre Fiction."
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "countT counts Narayan's books and countG counts those that are Fiction. It returns True when countG / countT >= 10 / 100, i.e. when at least 10 percent of the books written by Narayan are in the genre Fiction."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "miniSum accepts three numbers as parameters and returns the sum of the two least parameters. Choose the correct code fragment to complete the procedure."
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "Procedure miniSum(A, B, C)\n    Sum = 0\n    if(A > C and A > B){\n        Sum = B + C\n    }\n    ***** Fill the code *****\n    return(Sum)\nEnd miniSum"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "else {\nif(B > C and B > A){\nSum = A + C\n}\nelse {\nSum = A + B\n}\n}"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "if(B > C and B > A){\nSum = A + C\n}\nelse {\nSum = A + B\n}"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "else {\nSum = A + B\n}\nelse {\nif(C > B and B > A){\nSum = A + C\n}\n}"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 4,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The first if handles A being the largest (sum the other two, B + C). The completion must run only when A is not the largest, so it must be an else: if B is the largest, exclude B (Sum = A + C); otherwise C is the largest, exclude C (Sum = A + B). Option 1 does exactly this. Option 2 omits the else, so it overwrites the result even when A was the largest; Option 3 is malformed (two else blocks)."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The given pseudocode is executed using a dataset with the same fields as \"Words\", containing the words of: \"she sells seashells by the seashore shells she sells are seashells I'm sure.\" Choose the correct paragraph formed from Table 2 at the end of execution."
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "while(Table 1 has more rows){\n    Read the first row X from Table 1\n    Move X to Table 2\n    while(Table 1 has more rows){\n        Read the first row Y from Table 1\n        if(X.Word == Y.Word){\n            Move Y to Table 3\n        }\n        else{\n            Move Y to Table 4\n        }\n    }\n    Move all rows from Table 4 to Table 1\n}"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "she sells seashells by the seashore shells are I'm sure."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "she sells seashells by the seashore shells she sells are seashells I'm sure."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "sells seashells by the seashore shells she sells are seashells I'm sure."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "by the seashore shells she sells are seashells I'm sure."
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 4,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "For each word X kept in Table 2, every later duplicate of X is removed (sent to Table 3); the rest cycle back via Table 4. So Table 2 keeps the first occurrence of each distinct word in order: removing the repeated 'she', 'sells' and 'seashells' leaves \"she sells seashells by the seashore shells are I'm sure.\""
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A company collected the data below (Table 1): each row gives, for a city, the number of people willing to attend a promotion on Saturday and Sunday. The procedure bestDay(Z) is used. Which of the following is correct?"
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "Procedure bestDay(Z)\n    countSat = 0, countSun = 0\n    while(Table 1 has more rows){\n        Read the first row X from Table 1\n        if(X.City == Z){\n            countSat = countSat + X.Saturday\n            countSun = countSun + X.Sunday\n        }\n        Move X to Table 2\n    }\n    if(countSun >= countSat){\n        return(\"Sunday\")\n    }\n    return(\"Saturday\")\nEnd bestDay"
+        },
+        {
+          "kind": "text",
+          "value": "Table 1 Seq. N Source City Saturday Sunday 1 Fastabook Chennai 20 30 2 Pantagram Mumbai 50 30 3 Twitter Chennai 30 20 4 Pantagram Lucknow 30 50 5 Twitter Hyderabad 30 10 6 Fastabook Lucknow 20 50"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "bestDay(\"Lucknow\") = \"Sunday\", bestDay(\"Chennai\") = \"Sunday\""
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "bestDay(\"Lucknow\") = \"Saturday\", bestDay(\"Chennai\") = \"Sunday\""
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "bestDay(\"Lucknow\") = \"Sunday\", bestDay(\"Chennai\") = \"Saturday\""
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "bestDay(\"Lucknow\") = \"Saturday\", bestDay(\"Chennai\") = \"Saturday\""
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Lucknow: Saturday = 30 + 20 = 50, Sunday = 50 + 50 = 100 → Sunday. Chennai: Saturday = 20 + 30 = 50, Sunday = 30 + 20 = 50; since countSun >= countSat, it returns Sunday. So both return Sunday."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Words\" dataset. What will Count represent at the end of execution?"
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "Count = 0\nwhile(Table 1 has more rows){\n    Read the first row X in Table 1\n    Move X to Table 2\n    letter = '1', C = 0\n    i = 1, A = False\n    while(i <= X.LetterCount){\n        if(ith letter of X.Word is a vowel){\n            if(A and letter == ith letter of X.Word){\n                C = 1\n            }\n            letter = ith letter of X.Word\n            A = True\n        }\n        else{\n            A = False\n        }\n        i = i + 1\n    }\n    if(C == 1){\n        Count = Count + 1\n    }\n}"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Number of words in which the same vowel occurs consecutively exactly once"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of words in which the same vowel occurs consecutively at least once"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of words in which the same vowel occurs consecutively exactly twice"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of words in which the same vowel occurs consecutively at least twice"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 4,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "A records whether the previous letter was a vowel and 'letter' holds it; when the current vowel equals the immediately preceding vowel, C is set to 1. C is only ever set to 1 (never counted), so it just flags whether the same vowel occurs consecutively at least once in the word; Count tallies such words."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Swara has a variable max to find the maximum total score using the \"Scores\" dataset. There are many ways to initialize max. Choose the correct option(s). It is a Multiple Select Question (MSQ)."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Pick any random card X from the dataset and max = X.Total"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Pick the top card X from the dataset and max = X.Total"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Initialize max with any value less than the possible minimum total score"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Initialize max with any value greater than the possible maximum total score"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1,
+        2
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "A maximum search must start at or below the true maximum. Seeding max with an actual Total (any card or the top card) works, as does any value below the minimum possible score (every real score will exceed it and update max). A value above the maximum can never be beaten, so that option is wrong."
+        }
+      ]
+    }
+  ]
+}

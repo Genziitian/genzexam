@@ -1,0 +1,344 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Computational Thinking · Quiz 1 · 2023 Feb · Foundation AN2 · Part 1",
+  "subject": "Computational Thinking",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let X and Y be two rows in the \"Words\" dataset. Select the most appropriate datatype for each item/expression in the left column. Match each item/expression to its datatype Field Data Type a. X.Word == Y.Word 1. String b. X.Word == \"a\" 2. Invalid c. X.PartOfSpeech 3. Boolean d. X.LetterCount 4. Integer"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "a - (3), b - (3), c - (1), d - (4)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "a - (1), b - (3), c - (4), d - (3)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "a - (3), b - (2), c - (1), d - (4)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "a - (1), b - (2), c - (3), d - (4)"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "a) X.Word == Y.Word is a comparison → Boolean (3). b) X.Word == \"a\" is also a (valid) comparison → Boolean (3). c) X.PartOfSpeech is text → String (1). d) X.LetterCount is a whole number → Integer (4)."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Words\" dataset. What will count represent at the end of the execution?"
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "count = 0\nwhile(Table 1 has more rows){\n    flag = False\n    Read the first row X in Table 1\n    if(X.PartOfSpeech == \"Noun\"){\n        flag = True\n    }\n    if(X.LetterCount >= 4){\n        flag = True\n    }\n    if(flag){\n        count = count + 1\n    }\n    Move X to Table 2\n}"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Number of words which are nouns and have at least four letters"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of words which are either nouns or have at least four letters but not both"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of words which are either nouns or have at least four letters or both"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of words which are not nouns and have at most three letters"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "flag is set to True if the word is a Noun OR if its LetterCount is at least 4 (the two ifs are independent, so it is an inclusive OR). count therefore counts words that are nouns, or have at least four letters, or both."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Scores\" dataset. What will count2 represent at the end of the execution?"
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "count1 = 0, count2 = 0\nwhile(Table 1 has more rows){\n    Read the first row X in Table 1\n    if(X.Gender == 'F' or X.Mathematics > X.Physics){\n        count1 = count1 + 1\n    }\n    else{\n        count2 = count2 + 1\n    }\n    Move X to Table 2\n}"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Number of male students whose Physics marks are greater than Mathematics marks"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of male students whose Physics marks are greater than or equal to Mathematics marks"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of female students whose Physics marks are greater than or equal to Mathematics marks"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of female students whose Physics marks are less than or equal to Mathematics marks"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "count2 increments in the else branch, i.e. when NOT(female OR Mathematics > Physics) = (male) AND (Mathematics ≤ Physics), which is the number of male students whose Physics marks are greater than or equal to their Mathematics marks."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Library\" dataset. Procedure biGenre(A) returns True if the author A has written an equal number of fictional and non-fictional books. Assume the dataset has only two possible genres. Choose the correct code fragment to complete the procedure."
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "Procedure biGenre(A)\n    count = 0\n    while(Table 1 has more rows){\n        Read the first row X in Table 1\n        Move X to Table 2\n        **** Fill the code ****\n    }\n    if(count == 0){\n        return(True)\n    }\n    return(False)\nEnd biGenre"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "if(X.Author == A){\nif(X.Genre == \"Fiction\"){\ncount = count + 1\n}\nelse{\ncount = count - 1\n}\n}"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "if(X.Author == A){\ncount = count + 1\n}\nif(X.Genre == \"Fiction\"){\ncount = count + 1\n}\nelse{\ncount = count - 1\n}"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "if(X.Author == A){\nif(X.Genre == \"Fiction\"){\nreturn(True)\n}\nelse{\nreturn(False)\n}\n}"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Only the first option restricts the genre tally to author A's books (+1 for Fiction, −1 otherwise), so count == 0 means equal fiction/non-fiction. Note: in the source image this fragment prints 'count = 1' / 'count =Ecosystem — genziitian.in/ecosystem  |  Video Solutions — exam.genziitian.in  |  YouTube — youtube.com/@Gen-ZIITian -1' (assignment) rather than 'count = count + 1' / 'count = count - 1'; that appears to be a source typo, since only the accumulating form makes the procedure correct. Option 2 tallies genre over every author, and Option 3 returns after the first book."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Olympics\" dataset. What will count represent at the end of the execution? Assume every player has a distinct name."
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "count = 0\nwhile(Table 1 has more rows){\n    Read the first row X in Table 1\n    Move X to Table 2\n    flag = False\n    while(Table 1 has more rows){\n        Read the first row Y in Table 1\n        if(X.Name == Y.Name){\n            if((X.Sport == Y.Sport) and (X.Medal != Y.Medal)){\n                flag = True\n            }\n            Move Y to Table 2\n        }\n        else{\n            Move Y to Table 3\n        }\n    }\n    if(flag){\n        count = count + 1\n    }\n    Move all rows from Table 3 to Table 1\n}"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Number of players who have won different medals in the same sport"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of players who have won the same medal in different sports"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of pairs of players who have won different medals in the same sport"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of pairs of players who have won the same medal in different sports"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 3,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "All rows of one player (same Name) are grouped together; flag is set when that player has two medal rows with the same Sport but a different Medal. count is incremented once per qualifying player, so it is the number of players who have won different medals in the same sport."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Library\" dataset. Assume there are m books with distinct names written by n authors, each book written by only one author, and every author has a distinct name. At the end of the execution, choose the correct option(s). It is a Multiple Select Question (MSQ)."
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "count1 = 0, count2 = 0\nwhile(Table 1 has more rows){\n    Read the first row X in Table 1\n    Move X to Table 2\n    count1 = count1 + 1\n    while(Table 1 has more rows){\n        Read the first row Y in Table 1\n        if(X.Author == Y.Author){\n            count2 = count2 + 1\n            Move Y to Table 2\n        }\n        else{\n            Move Y to Table 3\n        }\n    }\n    Move all rows from Table 3 to Table 1\n}"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "count1 = n"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "count1 = m"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "count2 = m - n"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "count2 = m + n"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        2
+      ],
+      "marks": 4,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Each pass of the outer loop processes exactly one author group, so count1 equals the number of authors n. Within each author's group of k books, the one chosen as X is counted by count1 and the remaining k−1 are counted by count2, so count2 = Σ(k−1) = (total books) − (authors) = m − n."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Scores\" dataset. At the end of the execution, A captures the number of students who are either male and from Bengaluru, or have scored lower marks in Physics than the average Physics marks. Assume Avg holds the average Physics marks. The pseudocode may have mistakes; identify all such mistakes (if any). Assume all statements not listed in the options are free of errors. It is a Multiple Select Question (MSQ). 1   A = 0 2   while(Table 1 has more rows){ 3       Read the first row X in Table 1 4       C = False, D = False 5       if(X.Gender == 'M' or X.TownCity == \"Bengaluru\"){ 6           C = True 7       } 8       if(X.Physics < Avg){ 9           D = True 10      } 11      if(C and D){ 12          A = A + 1 13      } 14      Move X to Table 2 15  }"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Line 1: Incorrect initialization of A"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Line 5: Condition to update C is incorrect"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Line 11: Condition to update A is incorrect"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "No error in the code"
+          }
+        ]
+      ],
+      "correct_answers": [
+        1,
+        2
+      ],
+      "marks": 4,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "'Male and from Bengaluru' requires AND, but Line 5 uses OR. The two qualifying conditions (male- from-Bengaluru, or below-average Physics) are joined by OR, but Line 11 uses 'C and D'. Line 8 correctly tests Physics below average, and Line 1 correctly initializes A."
+        }
+      ]
+    }
+  ]
+}

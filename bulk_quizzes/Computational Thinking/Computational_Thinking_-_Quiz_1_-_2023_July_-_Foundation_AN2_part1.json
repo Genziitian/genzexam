@@ -1,0 +1,364 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Computational Thinking · Quiz 1 · 2023 July · Foundation AN2 · Part 1",
+  "subject": "Computational Thinking",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Words\" dataset. What will count represent at the end of the execution?"
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "count = 0\nwhile(Table 1 has more rows){\n    flag = False\n    Read the first row X in Table 1\n    if(X.PartOfSpeech == \"Adjective\"){\n        flag = True\n    }\n    if(X.LetterCount <= 2){\n        flag = True\n    }\n    if(flag){\n        count = count + 1\n    }\n    Move X to Table 2\n}"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Number of words which are adjectives and have at least two letters"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of words which are either adjectives or have at most two letters but not both"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of words which are adjectives or have at most two letters or both"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of words which are not adjectives and have exactly two letters"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "flag is set True if the word is an Adjective OR has at most 2 letters (two independent ifs ⇒  inclusive OR). So count is the number of words that are adjectives, or have at most two letters, or both."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Library\" dataset. What will A represent at the end of the execution?"
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "A = 0\ncount = 0\nwhile(Table 1 has more rows){\n    Read the first row X in Table 1\n    count = count + 1\n    if(X.Author != \"Kalam\" and X.Language != \"English\"){\n        A = A + 1\n    }\n    Move X to Table 2\n}\nA = count - A"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Number of books written by author Kalam in English"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of books not written by author Kalam in English"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of English books written by authors other than Kalam"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of books that are written by Kalam or in English or both"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Inside the loop A counts books that are neither by Kalam nor in English. count is the total number of books, so the final A = count − A = total − (not-Kalam ∧  not-English) = the number of books written by Kalam OR in English (or both)."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The given pseudocode is executed using the \"Words\" dataset. Assume vCount(X) returns the number of vowels in X.Word. What will B represent at the end of the execution?"
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "SumT = 0, CountT = 0, B = 0\nwhile(Pile 1 has more cards){\n    Read the top card X from Pile 1\n    if(vCount(X) > 1){\n        SumT = SumT + X.LetterCount\n        CountT = CountT + 1\n    }\n    Move X to Pile 2\n}\nB = SumT / CountT"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Average letter count of words in the dataset"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Sum of words that contain at least two vowels"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Average letter count of words containing at least two vowels in the dataset"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Average letter count of words containing at most two vowels in the dataset"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Only words with vCount(X) > 1 (i.e. at least two vowels) contribute their LetterCount to SumT and increment CountT. B = SumT / CountT is therefore the average letter count of words containing at least two vowels."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the \"Scores\" dataset. What will C represent at the end of the execution?"
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "C = 0\nA = DoSomething(Table 1)\nwhile(Table 2 has more rows){\n    Read the first row X from Table 2\n    if(X.Physics > A){\n        C = C + X.Total\n    }\n    Move X to Table 1\n}\nProcedure DoSomething(Table 1)\n    sum = 0\n    n = 0\n    while(Table 1 has more rows){\n        Read the first row X in Table 1\n        sum = sum + X.Physics\n        n = n + 1\n        Move X to Table 2\n    }\n    avg = sum / n\n    return(avg)\nEnd DoSomething"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Sum of Total marks of students whose Physics marks are less than the average Physics marks"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Sum of Total marks of students whose Physics marks are more than the average Physics marks"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Sum of Physics marks of students whose Physics marks are more than the average Physics marks"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Sum of Physics marks of students whose Physics marks are less than the average Physics marks"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "DoSomething returns A, the average Physics marks. The main loop then adds X.Total (total marks) for every student whose Physics marks exceed A, so C is the sum of Total marks of students whose Physics marks are more than the average Physics marks."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Words\" dataset. What will A represent at the end of the execution?"
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "A = 0\nwhile(Table 1 has more rows){\n    Read the first row X in Table 1\n    i = 1, B = 0\n    while(i <= X.LetterCount){\n        if(ith letter of X.Word is a vowel){\n            B = B + 1\n        }\n        i = i + 1\n    }\n    if(B > 2){\n        A = A + 1\n    }\n    Move X to Table 2\n}"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Number of words with at most two vowels"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of words with at least three vowels"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of words with at least two vowels"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of words with exactly two vowels"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The inner loop counts the vowels of each word in B. A is incremented when B > 2, i.e. the word has at least three vowels."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the Player dataset below, which keeps track of the runs scored by each player. A player can join a sports club if his runs are above 75 in Trial, TestSeries and WorldCup. A, B and C store the number of players in the GoldStriker, SilverStriker and BronzeStriker clubs respectively, based on the pseudocode. Which club will be allotted to a player who scored 167, 180, 180 runs in Trial, TestSeries and WorldCup respectively? It is a Multiple Select Question."
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "A = 0, B = 0, C = 0\nwhile(Table 1 has more rows){\n    Read the first row X in Table 1\n    if(X.Trial > 75 and X.TestSeries > 75 and X.WorldCup > 75){\n        match = maxMatch(X)\n        if(match == \"WorldCup\"){\n            A = A + 1\n        }\n        if(match == \"TestSeries\"){\n            B = B + 1\n        }\n        if(match == \"Trial\"){\n            C = C + 1\n        }\n    }\n    Move X to Table 2\n}\nProcedure maxMatch(Z)\n    if(Z.Trial > Z.TestSeries){\n        if(Z.Trial > Z.WorldCup){\n            return(\"Trial\")\n        }\n        else{\n            return(\"WorldCup\")\n        }\n    }\n    else{\n        if(Z.TestSeries > Z.WorldCup){\n            return(\"TestSeries\")\n        }\n        else{\n            return(\"WorldCup\")\n        }\n    }\nEnd maxMatch\nPlayer dataset (runs scored)"
+        },
+        {
+          "kind": "text",
+          "value": "PlayerID Name Trial TestSeries WorldCup 1 Virat Kohli 167 186 104 2 MS Dhoni 177 184 123 3 Harbhajan Singh 89 74 93 4 Gautam Gambhir 100 100 100 … … … … … 99 Qureshi Ahmed 22 134 130 PlayerID Name Trial TestSeries WorldCup 100 Afzal Khan 130 130 130"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "GoldStriker"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "SilverStriker"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "BronzeStriker"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "SilverStriker and BronzeStriker"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0
+      ],
+      "marks": 4,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Runs 167, 180, 180 are all above 75, so the player is eligible. maxMatch: Trial(167) is not greater than TestSeries(180) → else branch; TestSeries(180) is not greater than WorldCup(180) → returns \"WorldCup\". match == \"WorldCup\" increments A, the GoldStriker club, so the player is allotted GoldStriker."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Scores\" dataset. At the end of the execution, A captures the lowest Chemistry marks scored by a male student from Vellore. Choose the correct code fragment(s) for the marked block. It is a Multiple Select Question."
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "A = 101\nwhile(Table 1 has more rows){\n    Read the first row X in Table 1\n    *****  Fill the code  *****\n    Move X to Table 2\n}"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "if(X.Gender != 'F' and X.CityTown == \"Vellore\"){\nif(X.Chemistry > A){\nA = X.Chemistry\n}\n}"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "if(X.Gender == 'M' and X.CityTown == \"Vellore\"){\nif(X.Chemistry < A){\nA = X.Chemistry\n}\n}"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "if(X.Gender == 'M' and X.CityTown == \"Vellore\"){\nif(X.Chemistry > A){\nA = X.Chemistry\n}\n}"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "if(X.Gender != 'F'){\nif(X.CityTown == \"Vellore\"){\nif(X.Chemistry < A){\nA = X.Chemistry\n}\n}\n}"
+          }
+        ]
+      ],
+      "correct_answers": [
+        1,
+        3
+      ],
+      "marks": 4,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "A starts at 101 (above the maximum mark) for a minimum search, so we keep the smaller Chemistry mark (X.Chemistry < A) among male students (Gender == 'M', equivalently Gender != 'F') from Vellore. Options 2 and 4 do exactly that. Options 1 and 3 use '>' and would find the maximum instead."
+        }
+      ]
+    }
+  ]
+}
