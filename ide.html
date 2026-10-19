@@ -171,6 +171,8 @@
   var current = null;         // full problem
   var cm = null, P = 0, S = 0; // codemirror, prefix line count, suffix line count
   var busy = false;
+  // The IDE is desktop-only: phones, the app's web view and narrow windows go back to the practice page.
+  function isMobileView() { return window.matchMedia("(max-width: 820px)").matches || /Android|iPhone|iPod|Mobile|; wv\)/i.test(navigator.userAgent); }
 
   function el(tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; }
   function solvedSet() { try { return JSON.parse(localStorage.getItem("ide.solved") || "[]"); } catch (e) { return []; } }
@@ -489,6 +491,7 @@
   }
 
   function boot() {
+    if (isMobileView()) return location.replace("/practice/" + encodeURIComponent(courseSlug));
     if (!token) return loginPrompt();
     api("/courses/" + encodeURIComponent(courseSlug) + "/ide-problems").then(function (res) {
       var byName = {};
@@ -506,6 +509,9 @@
       if (owner) startPaper(owner, want); else location.replace("/practice/" + encodeURIComponent(courseSlug));
     }).catch(function (e) { if (e.status === 401) loginPrompt(); else status(document.createTextNode(e.message)); });
   }
+  // Code drafts are saved as you type, so leaving at a mobile width loses nothing.
+  window.addEventListener("resize", function () { if (isMobileView()) leave(); });
+  window.matchMedia("(max-width: 820px)").addEventListener("change", function () { if (isMobileView()) leave(); });
   boot();
 })();
 </script>

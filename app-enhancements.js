@@ -2586,6 +2586,12 @@
     document.querySelectorAll("[data-ql-ide-hide]").forEach(function (n) { n.removeAttribute("data-ql-ide-hide"); });
   }
   function addIdeTabs(tabs) {
+    // Coding papers are desktop-only, so the tabs are removed on phones, the web view and narrow windows.
+    if (window.matchMedia("(max-width: 820px)").matches || /Android|iPhone|iPod|Mobile|; wv\)/i.test(navigator.userAgent)) {
+      tabs.querySelectorAll("[data-ql-ide-tab]").forEach(function (b) { b.remove(); });
+      if (ideMode) exitIdeMode(tabs);
+      return;
+    }
     var m = window.location.pathname.match(/^\/practice\/([^/]+)/i);
     var runtime = window.QLStorefront;
     if (!m || !runtime || !runtime.token()) return;

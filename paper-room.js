@@ -894,6 +894,7 @@
   function render() {
     const root = $("#ep-content");
     if (!root) return;
+    if (st.practice && isMobileView()) { st.practice = false; stopPt(); }
     root.innerHTML =
       st.screen === "intro"
         ? introView()
@@ -1261,6 +1262,13 @@
   /* ---------------------------- practice mode ----------------------------
    * Practice mode adds a self-set countdown dial, a "Reveal answer" button and (when the question has one)
    * an explanation. The answer key is fetched once from /quizzes/:id/practice-answers. */
+  // Practice mode is desktop-only: hidden on phones, in the app's web view and at narrow widths.
+  const isMobileView = () => window.matchMedia("(max-width: 820px)").matches || /Android|iPhone|iPod|Mobile|; wv\)/i.test(navigator.userAgent);
+  const leavePracticeIfMobile = function () {
+    if (st.practice && isMobileView()) { st.practice = false; stopPt(); writeStore(); render(); }
+  };
+  window.addEventListener("resize", leavePracticeIfMobile);
+  window.matchMedia("(max-width: 820px)").addEventListener("change", leavePracticeIfMobile);
   const PT_MAX = 120 * 60;
   const pad2 = (n) => String(n).padStart(2, "0");
   function ptLeft() {
@@ -1305,7 +1313,7 @@
     if (note) note.textContent = st.pt.finished ? "Time is up" : st.pt.running ? "Counting down" : st.pt.left > 0 ? "Paused" : "Set a time to begin";
   }
   function practiceBoxHtml() {
-    if (!st.practice) return '<button type="button" class="pr-mode-btn" data-action="practice-toggle">Go to practice mode</button>';
+    if (!st.practice) return isMobileView() ? "" : '<button type="button" class="pr-mode-btn" data-action="practice-toggle">Go to practice mode</button>';
     // Minutes field until a time is set; then the +5/+10/+15 buttons and pause/reset take its place.
     const set = st.pt.running || st.pt.left > 0;
     const seg = (id, label) => '<div class="pr-seg"><span id="' + id + '">00</span><small>' + label + "</small></div>";
