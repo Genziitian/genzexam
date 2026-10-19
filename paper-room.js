@@ -1638,9 +1638,9 @@
       '<div role="dialog" aria-modal="true" aria-labelledby="pr-leave-title" style="max-width:460px;width:100%;text-align:center;background:#ffffff;border-radius:20px;box-shadow:0 25px 60px -15px rgba(0,0,0,0.3);padding:30px 24px;color:#0f172a;">' +
       '<h2 id="pr-leave-title" style="font-size:20px;font-weight:800;margin:0 0 8px 0;">Leave this paper?</h2>' +
       '<p style="font-size:13.5px;color:#475569;margin:0 0 18px 0;line-height:1.55;">You have answered <b>' + answeredCount() + " of " + answerable().length + '</b> questions. Save and exit keeps your answers on this device so you can continue later.</p>' +
-      '<div style="display:flex;flex-direction:column;gap:10px;">' +
-      '<button type="button" id="pr-leave-save" style="background:#3a3fd8;color:#ffffff;border:none;padding:12px;border-radius:8px;font-size:13px;font-weight:800;cursor:pointer;">Save and exit</button>' +
-      '<button type="button" id="pr-leave-stay" style="background:#f1f5f9;color:#334155;border:1px solid #cbd5e1;padding:11px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;">Keep solving</button>' +
+      '<div style="display:flex;gap:10px;">' +
+      '<button type="button" id="pr-leave-save" style="flex:1;background:#3a3fd8;color:#ffffff;border:none;padding:12px;border-radius:8px;font-size:13px;font-weight:800;cursor:pointer;">Save and exit</button>' +
+      '<button type="button" id="pr-leave-stay" style="flex:1;background:#f1f5f9;color:#334155;border:1px solid #cbd5e1;padding:11px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;">Keep solving</button>' +
       "</div></div>";
     document.body.appendChild(modal);
     const close = () => modal.remove();
