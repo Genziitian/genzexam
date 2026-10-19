@@ -223,11 +223,62 @@
       return "";
     }
   }
+  function extractProcedureSteps(rawText) {
+    const text = String(rawText || "");
+    const matches = Array.from(text.matchAll(/\b(Step\s*\d+\s*[:.-])\s*/gi));
+    if (matches.length < 2 || !/^step\s*1\b/i.test(matches[0][1].trim())) {
+      return null;
+    }
+    const intro = text.slice(0, matches[0].index).trim();
+    const steps = [];
+    let outro = "";
+    for (let i = 0; i < matches.length; i++) {
+      const m = matches[i];
+      const stepNumMatch = m[1].match(/\d+/);
+      const stepNum = stepNumMatch ? stepNumMatch[0] : String(i + 1);
+      const header = "Step " + stepNum + ":";
+      if (i + 1 < matches.length) {
+        const nextM = matches[i + 1];
+        const body = text.slice(m.index + m[0].length, nextM.index).trim();
+        steps.push(header + " " + body);
+      } else {
+        const fullLast = text.slice(m.index + m[0].length).trim();
+        const outroM = fullLast.match(/(?:(?<=\brepeat from step \d)|(?<=\brepeat from step \d\.)|(?<=\bstop the iteration)|(?<=\.))\s+(The value of\b.*|What will\b.*|It is a\b.*)/i);
+        if (outroM && outroM.index != null) {
+          const body = fullLast.slice(0, outroM.index).trim();
+          outro = fullLast.slice(outroM.index).trim();
+          steps.push(header + " " + body);
+        } else {
+          steps.push(header + " " + fullLast);
+        }
+      }
+    }
+    return {
+      intro: intro,
+      code: steps.join("\n"),
+      outro: outro
+    };
+  }
   function stemHtml(q) {
     const image = imageUrl(q.stem_image);
+    let stemText = q.stem != null ? q.stem : q.question_stem;
+    let code = q.stem_code;
+    let lang = q.stem_code_language || "pseudocode";
+    let outro = "";
+
+    if (!code && stemText) {
+      const parsed = extractProcedureSteps(clean(stemText));
+      if (parsed) {
+        stemText = parsed.intro;
+        code = parsed.code;
+        outro = parsed.outro;
+      }
+    }
+
     return (
-      rich(clean(q.stem != null ? q.stem : q.question_stem)) +
-      (q.stem_code ? codeBlock(q.stem_code, q.stem_code_language) : "") +
+      rich(clean(stemText)) +
+      (code ? codeBlock(code, lang) : "") +
+      (outro ? rich(clean(outro)) : "") +
       tableBlock(q.stem_table) +
       (image
         ? '<figure class="exam-rich-image"><img src="' +

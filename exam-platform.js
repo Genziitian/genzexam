@@ -723,6 +723,42 @@
     if (p.startsWith("/")) return origin + p;
     return root + "/" + p;
   }
+  function extractProcedureSteps(rawText) {
+    const text = String(rawText || "");
+    const matches = Array.from(text.matchAll(/\b(Step\s*\d+\s*[:.-])\s*/gi));
+    if (matches.length < 2 || !/^step\s*1\b/i.test(matches[0][1].trim())) {
+      return null;
+    }
+    const intro = text.slice(0, matches[0].index).trim();
+    const steps = [];
+    let outro = "";
+    for (let i = 0; i < matches.length; i++) {
+      const m = matches[i];
+      const stepNumMatch = m[1].match(/\d+/);
+      const stepNum = stepNumMatch ? stepNumMatch[0] : String(i + 1);
+      const header = "Step " + stepNum + ":";
+      if (i + 1 < matches.length) {
+        const nextM = matches[i + 1];
+        const body = text.slice(m.index + m[0].length, nextM.index).trim();
+        steps.push(header + " " + body);
+      } else {
+        const fullLast = text.slice(m.index + m[0].length).trim();
+        const outroM = fullLast.match(/(?:(?<=\brepeat from step \d)|(?<=\brepeat from step \d\.)|(?<=\bstop the iteration)|(?<=\.))\s+(The value of\b.*|What will\b.*|It is a\b.*)/i);
+        if (outroM && outroM.index != null) {
+          const body = fullLast.slice(0, outroM.index).trim();
+          outro = fullLast.slice(outroM.index).trim();
+          steps.push(header + " " + body);
+        } else {
+          steps.push(header + " " + fullLast);
+        }
+      }
+    }
+    return {
+      intro: intro,
+      code: steps.join("\n"),
+      outro: outro
+    };
+  }
   function paperQuestion(q) {
     const types = {
       mcq: "mcq_single",
@@ -734,10 +770,21 @@
     };
     const type = types[q.type] || q.type;
     const prompt = [];
-    const stem = paperText(q.stem);
+    let stem = paperText(q.stem);
+    let code = q.stem_code ? String(q.stem_code) : "";
+    let lang = q.stem_code_language || "pseudocode";
+    let outro = "";
+    if (!code && stem) {
+      const parsed = extractProcedureSteps(stem);
+      if (parsed) {
+        stem = parsed.intro;
+        code = parsed.code;
+        outro = parsed.outro;
+      }
+    }
     if (stem) prompt.push({ kind: "text", value: stem });
-    if (q.stem_code)
-      prompt.push({ kind: "code", value: String(q.stem_code), language: q.stem_code_language || "text" });
+    if (code) prompt.push({ kind: "code", value: code, language: lang });
+    if (outro) prompt.push({ kind: "text", value: outro });
     const table = q.stem_table;
     if (table && Array.isArray(table.headers) && table.headers.length && Array.isArray(table.rows))
       prompt.push({
@@ -1870,21 +1917,35 @@
     };
     q.type = aliases[q.type] || q.type;
     if (q.prompt == null) {
-      q.prompt = q.passage ?? q.stem;
-      if (q.stem_code || q.stem_table) {
+      let stemVal = q.passage ?? q.stem;
+      let codeVal = q.stem_code;
+      let langVal = q.stem_code_language || "pseudocode";
+      let outroVal = "";
+      if (!codeVal && stemVal && typeof stemVal === "string") {
+        const parsed = extractProcedureSteps(stemVal);
+        if (parsed) {
+          stemVal = parsed.intro;
+          codeVal = parsed.code;
+          outroVal = parsed.outro;
+        }
+      }
+      if (codeVal || q.stem_table) {
         q.prompt = [
-          ...(q.prompt ? [{ kind: "text", value: q.prompt }] : []),
-          ...(q.stem_code
+          ...(stemVal ? [{ kind: "text", value: stemVal }] : []),
+          ...(codeVal
             ? [
                 {
                   kind: "code",
-                  value: q.stem_code,
-                  language: q.stem_code_language || "text",
+                  value: codeVal,
+                  language: langVal,
                 },
               ]
             : []),
+          ...(outroVal ? [{ kind: "text", value: outroVal }] : []),
           ...(q.stem_table ? [{ kind: "table", ...q.stem_table }] : []),
         ];
+      } else {
+        q.prompt = stemVal;
       }
     }
     if (!TYPES.includes(q.type))
