@@ -10,6 +10,8 @@ import() { # <course slug> <folder under bulk_quizzes>
 }
 
 EXTRA=("$@")
+# Diploma subjects without a course yet (Deep Learning, Tools in Data Science) are created first.
+[ "${EXTRA[0]}" = "--dry-run" ] || php artisan db:seed --class=ExtraDiplomaCoursesSeeder --force
 import computational-thinking "Computational Thinking" "${EXTRA[@]}"
 import mathematics-1 "Mathematics 1" "${EXTRA[@]}"
 import mathematics-2 "Mathematics 2" "${EXTRA[@]}"
@@ -30,4 +32,17 @@ import modern-application-development-1 "Diploma/Modern Application Development 
 import modern-application-development-2 "Diploma/Modern Application Development 2" "${EXTRA[@]}"
 import pdsa "Diploma/PDSA" "${EXTRA[@]}"
 import system-commands "Diploma/System Commands" "${EXTRA[@]}"
+# Diploma folders that belong to the same courses as the Foundation ones
+import computational-thinking "Diploma/Computational Thinking" "${EXTRA[@]}"
+import mathematics-1 "Diploma/Mathematics 1" "${EXTRA[@]}"
+import mathematics-1 "Diploma/Sem1 Maths1" "${EXTRA[@]}"
+import mathematics-2 "Diploma/Mathematics 2" "${EXTRA[@]}"
+import mathematics-2 "Diploma/Sem2 Maths2" "${EXTRA[@]}"
+import statistics-1 "Diploma/Statistics 1" "${EXTRA[@]}"
+import statistics-1 "Diploma/Sem1 Statistics1" "${EXTRA[@]}"
+import statistics-2 "Diploma/Statistics 2" "${EXTRA[@]}"
+import statistics-2 "Diploma/Sem2 Statistics2" "${EXTRA[@]}"
+import python "Diploma/Python Programming" "${EXTRA[@]}"
+import deep-learning "Diploma/Deep Learning" "${EXTRA[@]}"
+import tools-in-data-science "Diploma/Tds" "${EXTRA[@]}"
 echo "All done."
