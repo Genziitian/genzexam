@@ -18,6 +18,7 @@ import '../../state/auth_state.dart';
 import '../../state/theme_state.dart';
 import '../../widgets/app_ux_components.dart';
 import '../../widgets/confirm_sign_out.dart';
+import '../../widgets/pro_download_prompt.dart';
 import 'discussions_screen.dart';
 import 'help_screens.dart';
 import 'offline_papers_screen.dart';
@@ -3811,9 +3812,13 @@ class _MyPapersTabState extends State<_MyPapersTab> {
     if (userId == null || _downloadingIds.contains(paper.id)) return;
     AppHaptics.light();
     setState(() => _downloadingIds.add(paper.id));
+    final client = widget.courseService.client;
+    if (!await ensureProForDownload(context, client, userId)) {
+      if (mounted) setState(() => _downloadingIds.remove(paper.id));
+      return;
+    }
     final finish = AppActivity.begin('Saving your paper for offline use…');
     try {
-      final client = widget.courseService.client;
       final quiz = await QuizService(client: client).downloadQuiz(paper.id);
       await OfflinePaperStore.cacheQuiz(userId, quiz);
       unawaited(ProAccessGuard.refresh(client, userId));
@@ -3827,13 +3832,17 @@ class _MyPapersTabState extends State<_MyPapersTab> {
       }
     } catch (e) {
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(
-              e is ApiException ? e.message : 'Could not download this paper.',
+        if (e is ApiException && e.statusCode == 403) {
+          await showProDownloadPrompt(context, client);
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text(
+                'Could not download this paper right now. Please try again.',
+              ),
             ),
-          ),
-        );
+          );
+        }
       }
     } finally {
       finish();

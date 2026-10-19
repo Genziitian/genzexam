@@ -880,6 +880,8 @@
    * ------------------------------------------------------------- */
   function fillMyPapers() {
     var host = document.getElementById("ql-my-papers");
+    // If the framework wiped the page's content during navigation, render it again.
+    if (host && host.dataset.qlLoaded && !host.querySelector(".ql-spin-container")) host.dataset.qlLoaded = "";
     if (!host || host.dataset.qlLoaded) return;
     var runtime = window.QLStorefront;
     if (!runtime || !runtime.token()) return;
@@ -4831,37 +4833,42 @@
     spinBtn.addEventListener("click", startSpin);
   }
 
+  /* One failing step must never stop the page-specific steps after it. */
+  function guard(step) {
+    try { step(); } catch (error) { if (window.console) console.error("[Quiz LAB]", error); }
+  }
+
   function run() {
     var paper = paperRoomPath(window.location.pathname);
     if (paper) { window.location.replace(paper); return; }
-    syncBrandName();
-    simplifyLogin();
-    syncAdminShell();
-    syncPaperPricingLink();
-    removeStudentWeakSpotCard();
-    decorateDashboard();
-    syncPhoneTopBar();
-    decorateManagerConsole();
-    fillMyPapers();
-    fillTryPractice();
-    fillUploadPaperPage();
-    syncTryPracticeNav();
-    syncUploadPaperNav();
-    decoratePracticeCards();
-    decoratePracticeList();
-    syncConsoleNav();
-    syncHomeLink();
-    decorateCoursePage();
-    decorateCoursePapers();
-    updateExamNav();
-    renderAnnouncements();
-    syncBellNotifications();
-    lockVideoSolutions();
-    decorateLeaderboard();
-    syncQuizBackLink();
-    syncRewardsButton();
-    fillRewardsPage();
-    ensureDailySpinPrompt();
+    guard(syncBrandName);
+    guard(simplifyLogin);
+    guard(syncAdminShell);
+    guard(syncPaperPricingLink);
+    guard(removeStudentWeakSpotCard);
+    guard(decorateDashboard);
+    guard(syncPhoneTopBar);
+    guard(decorateManagerConsole);
+    guard(fillMyPapers);
+    guard(fillTryPractice);
+    guard(fillUploadPaperPage);
+    guard(syncTryPracticeNav);
+    guard(syncUploadPaperNav);
+    guard(decoratePracticeCards);
+    guard(decoratePracticeList);
+    guard(syncConsoleNav);
+    guard(syncHomeLink);
+    guard(decorateCoursePage);
+    guard(decorateCoursePapers);
+    guard(updateExamNav);
+    guard(renderAnnouncements);
+    guard(syncBellNotifications);
+    guard(lockVideoSolutions);
+    guard(decorateLeaderboard);
+    guard(syncQuizBackLink);
+    guard(syncRewardsButton);
+    guard(fillRewardsPage);
+    guard(ensureDailySpinPrompt);
     if (!/\/discussions/i.test(window.location.pathname)) return;
     injectStyles();
     ROWS.forEach(convertRow);

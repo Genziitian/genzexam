@@ -8,6 +8,7 @@ import '../../api/offline_paper_store.dart';
 import '../../api/pro_access_guard.dart';
 import '../../state/app_activity.dart';
 import '../../widgets/app_ux_components.dart';
+import '../../widgets/pro_download_prompt.dart';
 import 'native_paper_room.dart' as native;
 
 const _green = Color(0xFF16A34A);
@@ -234,9 +235,7 @@ class _PracticeTabState extends State<PracticeTab> {
           decoration: BoxDecoration(
             color: on ? _green : Colors.white,
             borderRadius: BorderRadius.circular(14),
-            border: Border.all(
-              color: on ? _green : const Color(0xFFE2E8F0),
-            ),
+            border: Border.all(color: on ? _green : const Color(0xFFE2E8F0)),
             boxShadow: on
                 ? [
                     BoxShadow(
@@ -780,6 +779,13 @@ class _CoursePapersScreenState extends State<CoursePapersScreen> {
   Future<void> _downloadPaper(CourseQuizListItem paper) async {
     final userId = widget.user?.id;
     if (userId == null) return;
+    if (!await ensureProForDownload(
+      context,
+      widget.courseService.client,
+      userId,
+    )) {
+      return;
+    }
     final finish = AppActivity.begin('Saving your paper for offline use…');
     try {
       final quiz = await QuizService(client: widget.courseService.client)
@@ -794,14 +800,19 @@ class _CoursePapersScreenState extends State<CoursePapersScreen> {
           ),
         );
     } catch (e) {
-      if (mounted)
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(
-              e is ApiException ? e.message : 'Could not download this paper.',
+      if (mounted) {
+        if (e is ApiException && e.statusCode == 403) {
+          await showProDownloadPrompt(context, widget.courseService.client);
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text(
+                'Could not download this paper right now. Please try again.',
+              ),
             ),
-          ),
-        );
+          );
+        }
+      }
     } finally {
       finish();
     }

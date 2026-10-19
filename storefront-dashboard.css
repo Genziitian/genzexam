@@ -1419,3 +1419,65 @@ body:has(#ql-try-practice) .lg\:hidden.bottom-0:not(.ql-spin-action-dock){
 #ql-web-pro-controls{margin-top:14px}
 #ql-web-pro-controls .ql-more-button{border-radius:14px;border:1px solid #c9a961;color:#5b3a00;background:#fffaf0;font-weight:800;padding:11px 18px;text-decoration:none;display:inline-block}
 #ql-web-history-panel .ql-more-row{border:1px solid #e0e7ff;border-radius:18px;padding:16px 18px!important;margin-bottom:10px;background:#fff;box-shadow:0 6px 14px rgba(30,27,75,.05)}
+
+/* ==========================================================================
+   Daily Rewards · roomier layout pass (tiles, filters, reward cards, rules)
+   ========================================================================== */
+.ql-rewards-page{max-width:860px;padding:36px 24px 80px}
+.ql-rewards-top-bar{margin-bottom:28px}
+.ql-rewards-corner-actions{gap:20px}
+.ql-corner-btn{padding:20px 24px;border-radius:22px;font-size:15px;gap:10px}
+.ql-rewards-filter-bar{gap:12px;margin:0 0 32px}
+.ql-filter-pill{padding:12px 24px;font-size:14px;font-weight:750}
+.ql-my-rewards-view{margin-top:0}
+
+.ql-reward-cards-grid{grid-template-columns:repeat(auto-fill,minmax(380px,1fr));gap:28px}
+.ql-user-reward-card{padding:30px 30px 24px 36px;gap:22px;border-radius:28px;box-shadow:0 18px 38px rgba(30,27,75,.1)}
+.ql-user-reward-card::before{width:8px}
+.ql-card-top-row{align-items:flex-start;gap:16px;flex-wrap:wrap}
+.ql-card-title-row{gap:16px;align-items:flex-start;flex:1;min-width:200px}
+.ql-card-title-row .ql-card-icon{flex:none;width:56px!important;height:56px!important;border-radius:18px!important;background:linear-gradient(135deg,#eef2ff,#e0e7ff)!important;color:#4338ca!important}
+.ql-card-title-row .ql-card-icon svg{width:26px;height:26px}
+.ql-card-title-row strong{font-size:19px;line-height:1.3;letter-spacing:-.01em}
+.ql-card-title-row small{font-size:13px;margin-top:6px}
+.ql-tag-active,.ql-tag-unscratched,.ql-tag-expired,.ql-tag-claimed{white-space:nowrap;padding:7px 14px;font-size:12px;align-self:flex-start}
+.ql-card-code-row{padding:18px 20px;border-radius:20px;gap:16px}
+.ql-card-code-text{font-size:19px;letter-spacing:.14em}
+.ql-card-copy-btn{padding:11px 20px;font-size:13px;border-radius:14px}
+.ql-card-terms-toggle{align-self:flex-start;padding:10px 18px;border:1px solid #e0e7ff;border-radius:999px;background:#f8f9ff;color:#4338ca;font:inherit;font-size:13px;font-weight:800;cursor:pointer;transition:all .15s}
+.ql-card-terms-toggle:hover{background:#eef2ff;border-color:#c7d2fe}
+.ql-card-claim-details{margin-top:-6px}
+.ql-claim-terms-box{padding:18px 20px;border-radius:18px;background:#f8f9ff;border:1px solid #eef0ff;display:flex;flex-direction:column;gap:10px}
+.ql-card-footer{padding-top:20px;font-size:13px;gap:12px}
+
+.ql-wheel-layout{gap:32px}
+.ql-rules-dropdown{max-width:none;width:100%;margin-top:36px}
+.ql-rules-summary{padding:22px 26px;font-size:16px}
+.ql-rules-body{padding:8px 28px 28px}
+@media(max-width:640px){
+  .ql-rewards-page{padding:24px 16px 60px}
+  .ql-rewards-corner-actions{gap:12px}
+  .ql-corner-btn{padding:16px 12px;font-size:13.5px}
+  .ql-reward-cards-grid{grid-template-columns:1fr}
+  .ql-user-reward-card{padding:24px 22px 20px 28px}
+}
+
+/* Rewards action buttons: compact and pushed to the right-hand side */
+.ql-rewards-top-bar{justify-content:flex-end;margin-bottom:22px}
+.ql-rewards-corner-actions{display:flex;grid-template-columns:none;width:auto;margin-left:auto;gap:10px;justify-content:flex-end}
+.ql-corner-btn{padding:10px 18px;border-radius:14px;font-size:13.5px;gap:8px;box-shadow:0 4px 12px rgba(30,27,75,.08)}
+.ql-corner-btn.primary{box-shadow:0 8px 16px rgba(55,48,163,.3)}
+.ql-corner-btn:hover,.ql-corner-btn.primary:hover{transform:none}
+.ql-corner-btn svg{width:16px;height:16px}
+@media(max-width:640px){
+  .ql-rewards-top-bar{justify-content:stretch}
+  .ql-rewards-corner-actions{width:100%}
+  .ql-corner-btn{flex:1;justify-content:center;padding:12px 10px}
+}
+
+/* Wheel sits directly on the page, no card box behind it */
+.ql-wheel-card{background:none;border:0;box-shadow:none;border-radius:0;padding:12px 0 0}
+:root[data-theme=dark] .ql-wheel-card{background:none;border:0}
+
+/* Laptop and desktop: the page has the sidebar and top bar, so no Back button */
+@media(min-width:1024px){#ql-try-practice .ql-spin-back-row{display:none}}
