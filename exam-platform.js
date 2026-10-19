@@ -718,8 +718,10 @@
     } catch (_) {}
     if (/^https:\/\//i.test(p)) return p;
     if (/^[a-z][a-z0-9+.-]*:/i.test(p)) return "";
+    if (p.startsWith("/assets/")) return (typeof location !== "undefined" && location.origin ? location.origin : "https://quiz.genziitian.in") + p;
     if (p.startsWith("/storage/")) return root + p;
     if (p.startsWith("/question-images/")) return root + "/storage" + p;
+    if (p.startsWith("assets/")) return (typeof location !== "undefined" && location.origin ? location.origin : "https://quiz.genziitian.in") + "/" + p;
     if (p.startsWith("question-images/")) return root + "/storage/" + p;
     if (p.startsWith("/")) return origin + p;
     return root + "/" + p;
