@@ -66,6 +66,15 @@
   .case small { color: var(--muted); font-weight: 600; }
   .sub { display: flex; justify-content: space-between; align-items: center; padding: 9px 0; border-bottom: 1px solid var(--line); gap: 8px; }
   .sub button { margin-left: auto; }
+  .home { flex: 1; overflow: auto; padding: 24px 16px; }
+  .home-inner { max-width: 760px; margin: 0 auto; }
+  .home h1 { font-size: 22px; margin: 0 0 4px; }
+  .home p.sub2 { color: var(--muted); margin: 0 0 18px; }
+  .paper-card { display: flex; align-items: center; gap: 12px; padding: 16px 18px; margin-bottom: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 12px; }
+  .paper-card .info { flex: 1; min-width: 0; }
+  .paper-card .name { font-weight: 700; }
+  .paper-card .meta { color: var(--muted); font-size: 13px; }
+  body.in-home header select, body.in-home header .nav { display: none; }
   .msg { color: var(--muted); padding: 40px 20px; text-align: center; }
   .msg a { color: var(--brand); font-weight: 600; }
   @media (max-width: 820px) {
@@ -83,6 +92,7 @@
   <select id="problemSelect" aria-label="Choose problem"></select>
   <span class="nav"><button class="btn" id="prevBtn" title="Previous problem">&lsaquo;</button> <button class="btn" id="nextBtn" title="Next problem">&rsaquo;</button></span>
 </header>
+<section class="home" id="home" hidden><div class="home-inner"><h1 id="homeTitle">IDE Practice</h1><p class="sub2">Pick a paper and press Start now. You can move between its questions, not into other papers.</p><div id="paperList"></div></div></section>
 <main id="app" hidden>
   <section class="pane" aria-label="Problem">
     <div class="tabs" role="tablist">
@@ -120,13 +130,14 @@
   var courseSlug = params.get("course") || "python";
   var $ = function (id) { return document.getElementById(id); };
   var token = ""; try { token = localStorage.getItem("lab_token") || ""; } catch (e) {}
-  var problems = [];          // flat list from /courses/:slug/ide-problems
+  var papers = [];            // [{name, problems:[...]}] grouped from /courses/:slug/ide-problems
+  var problems = [];          // problems of the paper being solved
   var current = null;         // full problem
   var cm = null, P = 0, S = 0; // codemirror, prefix line count, suffix line count
   var busy = false;
 
   function el(tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; }
-  function status(html) { var s = $("status"); s.hidden = false; $("app").hidden = true; s.textContent = ""; if (html) s.appendChild(html); }
+  function status(html) { var s = $("status"); s.hidden = false; $("app").hidden = true; $("home").hidden = true; s.textContent = ""; if (html) s.appendChild(html); }
   function api(path, opts) {
     opts = opts || {};
     return fetch(API + path, {
@@ -145,6 +156,9 @@
     var a = el("a", "", "Log in"); a.href = "/login"; d.appendChild(a); status(d);
   }
 
+  // Titles look like "<paper> · P1: <name>"; the paper part groups problems, the rest is shown as the question name.
+  function split(p) { var m = /^(.*?) · (P\d+: .*)$/.exec(p.title); return m ? { paper: m[1], name: m[2] } : { paper: p.week_number ? "Week " + p.week_number : "Practice problems", name: p.title }; }
+
   // ---- tabs
   document.querySelectorAll("[data-tab]").forEach(function (b) {
     b.addEventListener("click", function () {
@@ -161,8 +175,8 @@
   function ioBlock(t) { return el("pre", "io", t); }
   function renderQuestion(p) {
     var box = $("tab-question"); box.textContent = "";
-    box.appendChild(el("h1", "", p.title));
-    var meta = el("div"); meta.appendChild(el("span", "badge", p.difficulty || "medium"));
+    box.appendChild(el("h1", "", split(p).name));
+    var meta = el("div"); meta.appendChild(el("span", "badge", split(p).paper)); meta.appendChild(el("span", "badge", p.difficulty || "medium"));
     if (p.week_number) meta.appendChild(el("span", "badge", "Week " + p.week_number));
     box.appendChild(meta);
     box.appendChild(el("div", "", "")).style.height = "10px";
@@ -270,9 +284,9 @@
       .then(function () { setBusy(false); });
   }
   $("runBtn").addEventListener("click", function () { execute("run"); });
-  $("submitBtn").addEventListener("click", function () { execute("submit"); });
+  $("submitBtn").addEventListener("click", function () { if (!busy && confirm("Submit your code for this question? Your attempt will be recorded.")) execute("submit"); });
   $("resetBtn").addEventListener("click", function () {
-    if (!current || !confirm("Reset your code to the starter code?")) return;
+    if (!current || !confirm("Reset your code? Everything you wrote will be replaced by the starter code.")) return;
     try { localStorage.removeItem(draftKey(current)); } catch (e) {}
     buildEditor(current, initialMiddle(current));
   });
@@ -309,7 +323,7 @@
     status(document.createTextNode("Loading…"));
     api("/ide-problems/" + id).then(function (res) {
       current = res.problem;
-      $("status").hidden = true; $("app").hidden = false;
+      $("status").hidden = true; $("home").hidden = true; $("app").hidden = false; document.body.classList.remove("in-home");
       $("lang").textContent = ({ python: "Python3", java: "Java", cpp: "C++", "c++": "C++" })[current.language] || current.language;
       renderQuestion(current); buildEditor(current, initialMiddle(current));
       $("result").classList.remove("show"); showTab("question");
@@ -324,19 +338,47 @@
   $("nextBtn").addEventListener("click", function () { step(1); });
   $("problemSelect").addEventListener("change", function (e) { openProblem(Number(e.target.value)); });
 
+  // ---- papers list (landing) and per-paper navigation
+  function startPaper(paper, id) {
+    problems = paper.problems;
+    var sel = $("problemSelect"); sel.textContent = "";
+    problems.forEach(function (p) { var o = document.createElement("option"); o.value = p.id; o.textContent = split(p).name; sel.appendChild(o); });
+    openProblem(id || problems[0].id);
+  }
+  function showHome() {
+    current = null; problems = [];
+    $("status").hidden = true; $("app").hidden = true; $("home").hidden = false; document.body.classList.add("in-home");
+    var url = new URL(location.href); url.searchParams.delete("problem"); history.replaceState(null, "", url);
+    var list = $("paperList"); list.textContent = "";
+    papers.forEach(function (paper) {
+      var card = el("div", "paper-card"), info = el("div", "info");
+      info.appendChild(el("div", "name", paper.name));
+      info.appendChild(el("div", "meta", paper.problems.length + (paper.problems.length === 1 ? " question" : " questions")));
+      var b = el("button", "btn primary", "Start now"); b.addEventListener("click", function () { startPaper(paper); });
+      card.appendChild(info); card.appendChild(b); list.appendChild(card);
+    });
+  }
+  // Back goes from a question to the papers list; from the list it leaves the IDE.
+  document.querySelector("a.back").addEventListener("click", function (e) {
+    if (current) { e.preventDefault(); showHome(); }
+  });
+
   function boot() {
     document.querySelector("a.back").href = "/courses/" + encodeURIComponent(courseSlug);
     if (!token) return loginPrompt();
     api("/courses/" + encodeURIComponent(courseSlug) + "/ide-problems").then(function (res) {
-      var sel = $("problemSelect");
+      var byName = {};
       res.weeks.forEach(function (w) {
-        var g = document.createElement("optgroup"); g.label = w.week_number ? "Week " + w.week_number : "Practice sets";
-        w.problems.forEach(function (p) { problems.push(p); var o = document.createElement("option"); o.value = p.id; o.textContent = p.title; g.appendChild(o); });
-        sel.appendChild(g);
+        w.problems.forEach(function (p) {
+          var name = split(p).paper;
+          if (!byName[name]) { byName[name] = { name: name, problems: [] }; papers.push(byName[name]); }
+          byName[name].problems.push(p);
+        });
       });
-      if (!problems.length) return status(document.createTextNode("No IDE problems in this course yet."));
+      if (!papers.length) return status(document.createTextNode("No IDE problems in this course yet."));
       var want = Number(params.get("problem"));
-      openProblem(problems.some(function (p) { return p.id === want; }) ? want : problems[0].id);
+      var owner = papers.filter(function (pp) { return pp.problems.some(function (p) { return p.id === want; }); })[0];
+      if (owner) startPaper(owner, want); else showHome();
     }).catch(function (e) { if (e.status === 401) loginPrompt(); else status(document.createTextNode(e.message)); });
   }
   boot();
