@@ -4,13 +4,15 @@
 # Preview only:  bash tools/import_all_papers.sh --dry-run
 cd "$(dirname "$0")/../backend" || exit 1
 
+DONE="|"
 import() { # <course slug> <folder under bulk_quizzes>
+  DONE="$DONE$2|"
   echo "=== $1"
   php artisan quizzes:import "$1" "../bulk_quizzes/$2" "${@:3}" | tail -n 1
 }
 
 EXTRA=("$@")
-# Diploma subjects without a course yet (Deep Learning, Tools in Data Science, DLP, LLM, Sw Engg, Sw Testing) are created first.
+# Diploma subjects without a course yet, and the "Unknown" holding course, are created first.
 [ "${EXTRA[0]}" = "--dry-run" ] || php artisan db:seed --class=ExtraDiplomaCoursesSeeder --force
 import computational-thinking "Computational Thinking" "${EXTRA[@]}"
 import mathematics-1 "Mathematics 1" "${EXTRA[@]}"
@@ -49,4 +51,13 @@ import deep-learning-practice "Diploma/Dlp" "${EXTRA[@]}"
 import large-language-models "Diploma/Llm" "${EXTRA[@]}"
 import software-engineering "Diploma/Sw Engg" "${EXTRA[@]}"
 import software-testing "Diploma/Sw Testing" "${EXTRA[@]}"
+import managerial-economics "Diploma/Managerial Economics" "${EXTRA[@]}"
+# Any folder with paper files that is not listed above goes to the "Unknown" course for sorting later.
+while IFS= read -r dir; do
+  rel="${dir#../bulk_quizzes/}"
+  case "$DONE" in *"|$rel|"*) continue ;; esac
+  ls "$dir"/*.json >/dev/null 2>&1 || continue
+  echo "(unlisted folder: $rel)"
+  import unknown "$rel" "${EXTRA[@]}"
+done < <(find ../bulk_quizzes -mindepth 1 -maxdepth 2 -type d | sort)
 echo "All done."
