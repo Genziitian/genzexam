@@ -122,7 +122,7 @@ class IDEController extends Controller
 
             $execution = $this->executionService->execute(
                 $validated['language'],
-                $validated['code'],
+                $problem->composeCode($validated['code']),
                 $normalizedInput,
                 (int) ($problem->time_limit_seconds ?: 5)
             );
@@ -166,7 +166,7 @@ class IDEController extends Controller
 
             $execution = $this->executionService->execute(
                 $validated['language'],
-                $validated['code'],
+                $problem->composeCode($validated['code']),
                 $normalizedInput,
                 (int) ($problem->time_limit_seconds ?: 5)
             );

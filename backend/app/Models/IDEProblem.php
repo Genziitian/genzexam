@@ -22,6 +22,9 @@ class IDEProblem extends Model
         'output_format',
         'sample_input',
         'sample_output',
+        'prefix_code',
+        'starter_code',
+        'suffix_code',
         'difficulty',
         'week_number',
         'language',
@@ -30,6 +33,16 @@ class IDEProblem extends Model
         'is_active',
         'sort_order',
     ];
+
+    /** Full program the runner executes: locked prefix + student code + locked suffix. */
+    public function composeCode(string $studentCode): string
+    {
+        return implode("\n", array_filter([
+            trim((string) $this->prefix_code, "\r\n") ?: null,
+            $studentCode,
+            trim((string) $this->suffix_code, "\r\n") ?: null,
+        ], fn ($part) => $part !== null));
+    }
 
     public function course(): BelongsTo
     {

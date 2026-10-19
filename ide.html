@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Practice IDE · Quiz LAB</title>
+<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css" />
+<style>
+  :root {
+    --bg: #f4f5f8; --panel: #fff; --ink: #1f2430; --muted: #6b7280; --line: #e5e7ee;
+    --brand: #3a3fd8; --brand-soft: #eceeff; --locked: #e6e6e8; --locked-ink: #6b6f7a;
+    --ok: #15803d; --ok-bg: #dcfce7; --bad: #b91c1c; --bad-bg: #fee2e2;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #12141b; --panel: #1b1e28; --ink: #e8eaf0; --muted: #9aa1b2; --line: #2a2e3b;
+      --brand: #8b90ff; --brand-soft: #262a4a; --locked: #2c2f3a; --locked-ink: #8e94a6;
+      --ok: #4ade80; --ok-bg: #123524; --bad: #f87171; --bad-bg: #3b1a1a;
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+  body { background: var(--bg); color: var(--ink); font: 15px/1.5 -apple-system, "Segoe UI", Roboto, sans-serif; display: flex; flex-direction: column; }
+  header { display: flex; align-items: center; gap: 12px; padding: 10px 16px; background: var(--panel); border-bottom: 1px solid var(--line); }
+  header a.back { color: var(--brand); text-decoration: none; font-weight: 600; }
+  header select { flex: 1; min-width: 0; max-width: 520px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); color: var(--ink); font: inherit; }
+  header .nav button { padding: 7px 12px; }
+  main { flex: 1; min-height: 0; display: grid; grid-template-columns: minmax(300px, 1fr) minmax(320px, 1.2fr); gap: 12px; padding: 12px; }
+  .pane { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; display: flex; flex-direction: column; min-height: 0; overflow: hidden; }
+  .tabs { display: flex; gap: 4px; padding: 0 12px; border-bottom: 1px solid var(--line); overflow-x: auto; }
+  .tab { appearance: none; background: none; border: 0; border-bottom: 3px solid transparent; padding: 12px 12px 9px; color: var(--muted); font: 600 14px inherit; cursor: pointer; white-space: nowrap; }
+  .tab[aria-selected="true"] { color: var(--brand); border-bottom-color: var(--brand); }
+  .tab:disabled { opacity: .55; cursor: not-allowed; }
+  .tabpanel { flex: 1; overflow: auto; padding: 18px 20px; }
+  .tabpanel[hidden] { display: none; }
+  h1 { font-size: 19px; margin: 0 0 6px; }
+  h3 { font-size: 13px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); margin: 20px 0 6px; }
+  .badge { display: inline-block; padding: 2px 10px; border-radius: 99px; background: var(--brand-soft); color: var(--brand); font-size: 12px; font-weight: 700; text-transform: capitalize; margin-right: 6px; }
+  .text { white-space: pre-wrap; word-wrap: break-word; }
+  pre.io { background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; margin: 0; overflow: auto; font: 13px/1.5 ui-monospace, Menlo, Consolas, monospace; white-space: pre; }
+  .toolbar { display: flex; align-items: center; gap: 8px; padding: 10px 12px; border-bottom: 1px solid var(--line); }
+  .toolbar .lang { padding: 7px 14px; background: var(--bg); border-radius: 8px; font-weight: 600; font-size: 14px; }
+  .toolbar .spacer { flex: 1; }
+  button.btn { padding: 8px 16px; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); color: var(--ink); font: 600 14px inherit; cursor: pointer; }
+  button.btn.primary { background: var(--brand); border-color: var(--brand); color: #fff; }
+  button.btn:disabled { opacity: .55; cursor: wait; }
+  #editorWrap { flex: 1; min-height: 0; position: relative; }
+  .CodeMirror { height: 100%; font: 13.5px/1.55 ui-monospace, Menlo, Consolas, monospace; background: var(--panel); color: var(--ink); }
+  .CodeMirror-gutters { background: var(--panel); border-right: 1px solid var(--line); }
+  .CodeMirror-linenumber { color: var(--muted); }
+  .CodeMirror-cursor { border-left-color: var(--ink); }
+  .CodeMirror .locked-line { background: var(--locked); color: var(--locked-ink); cursor: not-allowed; }
+  .CodeMirror .locked-line span { color: var(--locked-ink) !important; }
+  .cm-s-default .cm-keyword { color: #a626a4; } .cm-s-default .cm-string { color: #50a14f; } .cm-s-default .cm-number { color: #986801; }
+  .cm-s-default .cm-comment { color: #8a8f9c; } .cm-s-default .cm-builtin { color: #0184bc; } .cm-s-default .cm-def { color: #4078f2; }
+  #result { border-top: 1px solid var(--line); max-height: 38%; overflow: auto; padding: 10px 14px; display: none; }
+  #result.show { display: block; }
+  .verdict { font-weight: 700; margin-bottom: 8px; }
+  .verdict.ok { color: var(--ok); } .verdict.bad { color: var(--bad); }
+  .case { border: 1px solid var(--line); border-radius: 8px; margin-bottom: 8px; padding: 8px 10px; }
+  .case .hd { display: flex; justify-content: space-between; font-weight: 600; font-size: 13px; margin-bottom: 4px; }
+  .pill { padding: 1px 9px; border-radius: 99px; font-size: 12px; font-weight: 700; }
+  .pill.ok { background: var(--ok-bg); color: var(--ok); } .pill.bad { background: var(--bad-bg); color: var(--bad); }
+  .case pre.io { margin-top: 4px; }
+  .case small { color: var(--muted); font-weight: 600; }
+  .sub { display: flex; justify-content: space-between; align-items: center; padding: 9px 0; border-bottom: 1px solid var(--line); gap: 8px; }
+  .sub button { margin-left: auto; }
+  .msg { color: var(--muted); padding: 40px 20px; text-align: center; }
+  .msg a { color: var(--brand); font-weight: 600; }
+  @media (max-width: 820px) {
+    body { height: auto; min-height: 100%; }
+    main { grid-template-columns: 1fr; }
+    .pane { min-height: 70vh; }
+    #editorWrap { min-height: 420px; }
+    header select { max-width: none; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <a class="back" href="/dashboard">&larr; Back</a>
+  <select id="problemSelect" aria-label="Choose problem"></select>
+  <span class="nav"><button class="btn" id="prevBtn" title="Previous problem">&lsaquo;</button> <button class="btn" id="nextBtn" title="Next problem">&rsaquo;</button></span>
+</header>
+<main id="app" hidden>
+  <section class="pane" aria-label="Problem">
+    <div class="tabs" role="tablist">
+      <button class="tab" role="tab" aria-selected="true" data-tab="question">Question</button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="cases">Test Cases</button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="subs">Submissions</button>
+      <button class="tab" role="tab" aria-selected="false" disabled title="Solution is locked">Solution &#128274;</button>
+    </div>
+    <div class="tabpanel" id="tab-question" role="tabpanel"></div>
+    <div class="tabpanel" id="tab-cases" role="tabpanel" hidden></div>
+    <div class="tabpanel" id="tab-subs" role="tabpanel" hidden></div>
+  </section>
+  <section class="pane" aria-label="Code">
+    <div class="tabs"><button class="tab" aria-selected="true">Code</button></div>
+    <div class="toolbar">
+      <span class="lang" id="lang">Python3</span>
+      <span class="spacer"></span>
+      <button class="btn" id="resetBtn" title="Restore starter code">Reset</button>
+      <button class="btn" id="runBtn">Run</button>
+      <button class="btn primary" id="submitBtn">Submit</button>
+    </div>
+    <div id="editorWrap"></div>
+    <div id="result" aria-live="polite"></div>
+  </section>
+</main>
+<div class="msg" id="status">Loading…</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/python/python.min.js"></script>
+<script>
+(function () {
+  "use strict";
+  var API = ((window.QLStorefront && window.QLStorefront.apiBase) || "https://labapi.genziitian.in/public/api").replace(/\/$/, "");
+  var params = new URLSearchParams(location.search);
+  var courseSlug = params.get("course") || "python";
+  var $ = function (id) { return document.getElementById(id); };
+  var token = ""; try { token = localStorage.getItem("lab_token") || ""; } catch (e) {}
+  var problems = [];          // flat list from /courses/:slug/ide-problems
+  var current = null;         // full problem
+  var cm = null, P = 0, S = 0; // codemirror, prefix line count, suffix line count
+  var busy = false;
+
+  function el(tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; }
+  function status(html) { var s = $("status"); s.hidden = false; $("app").hidden = true; s.textContent = ""; if (html) s.appendChild(html); }
+  function api(path, opts) {
+    opts = opts || {};
+    return fetch(API + path, {
+      method: opts.method || "GET",
+      headers: Object.assign({ Accept: "application/json", Authorization: "Bearer " + token }, opts.body ? { "Content-Type": "application/json" } : {}),
+      body: opts.body ? JSON.stringify(opts.body) : undefined
+    }).then(function (r) {
+      return r.json().catch(function () { return {}; }).then(function (j) {
+        if (!r.ok) { var e = new Error(j.message || ("Request failed (" + r.status + ")")); e.status = r.status; throw e; }
+        return j;
+      });
+    });
+  }
+  function loginPrompt() {
+    var d = el("div"); d.appendChild(document.createTextNode("Please log in to use the IDE. "));
+    var a = el("a", "", "Log in"); a.href = "/login"; d.appendChild(a); status(d);
+  }
+
+  // ---- tabs
+  document.querySelectorAll("[data-tab]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      document.querySelectorAll("[data-tab]").forEach(function (x) { x.setAttribute("aria-selected", String(x === b)); });
+      ["question", "cases", "subs"].forEach(function (t) { $("tab-" + t).hidden = t !== b.dataset.tab; });
+      if (b.dataset.tab === "subs") loadSubmissions();
+    });
+  });
+  function showTab(name) { document.querySelector('[data-tab="' + name + '"]').click(); }
+
+  // ---- question rendering
+  function section(parent, title, node) { parent.appendChild(el("h3", "", title)); parent.appendChild(node); }
+  function textBlock(t) { return el("div", "text", t); }
+  function ioBlock(t) { return el("pre", "io", t); }
+  function renderQuestion(p) {
+    var box = $("tab-question"); box.textContent = "";
+    box.appendChild(el("h1", "", p.title));
+    var meta = el("div"); meta.appendChild(el("span", "badge", p.difficulty || "medium"));
+    if (p.week_number) meta.appendChild(el("span", "badge", "Week " + p.week_number));
+    box.appendChild(meta);
+    box.appendChild(el("div", "", "")).style.height = "10px";
+    box.appendChild(textBlock(p.description));
+    if (p.input_format) section(box, "Input format", textBlock(p.input_format));
+    if (p.output_format) section(box, "Output format", textBlock(p.output_format));
+    if (p.constraints) section(box, "Constraints", textBlock(p.constraints));
+    section(box, "Sample input", ioBlock(p.sample_input));
+    section(box, "Sample output", ioBlock(p.sample_output));
+    var cases = $("tab-cases"); cases.textContent = "";
+    (p.test_cases || []).forEach(function (c, i) {
+      var d = el("div", "case"); d.appendChild(el("div", "hd", "Case " + (i + 1)));
+      d.appendChild(el("small", "", "Input")); d.appendChild(ioBlock(c.input));
+      d.appendChild(el("small", "", "Expected output")); d.appendChild(ioBlock(c.expected_output));
+      cases.appendChild(d);
+    });
+    if (!(p.test_cases || []).length) cases.appendChild(el("div", "msg", "No public test cases."));
+    var hidden = $("tab-cases");
+    hidden.appendChild(el("div", "msg", "More hidden cases are checked when you Submit."));
+  }
+
+  // ---- editor with locked grey prefix / suffix
+  function lineCount(t) { return t ? t.replace(/\r\n/g, "\n").replace(/\n+$/, "").split("\n").length : 0; }
+  function clean(t) { return (t || "").replace(/\r\n/g, "\n").replace(/^\n+|\n+$/g, ""); }
+  function draftKey(p) { return "ide.draft." + p.id; }
+  function initialMiddle(p) {
+    var saved = null; try { saved = localStorage.getItem(draftKey(p)); } catch (e) {}
+    if (saved != null) return saved;
+    return p.starter_code != null && p.starter_code !== "" ? p.starter_code.replace(/\r\n/g, "\n") : "";
+  }
+  function buildEditor(p, middle) {
+    var prefix = clean(p.prefix_code), suffix = clean(p.suffix_code);
+    P = lineCount(prefix); S = lineCount(suffix);
+    middle = (middle || "").replace(/\r\n/g, "\n");
+    var doc = [prefix, middle, suffix].filter(function (x, i) { return i === 1 || x !== ""; }).join("\n");
+    if (cm) { cm.toTextArea && 0; $("editorWrap").textContent = ""; }
+    cm = CodeMirror($("editorWrap"), { value: doc, mode: "python", lineNumbers: true, indentUnit: 4, indentWithTabs: false, lineWrapping: false,
+      extraKeys: { Tab: function (c) { c.replaceSelection("    ", "end"); }, "Shift-Tab": "indentLess" } });
+    function paintLocked() {
+      var total = cm.lineCount();
+      for (var i = 0; i < total; i++) {
+        var locked = i < P || i >= total - S;
+        cm[locked ? "addLineClass" : "removeLineClass"](i, "wrap", "locked-line");
+      }
+    }
+    cm.on("beforeChange", function (inst, ch) {
+      if (ch.origin === "setValue") return;
+      var last = inst.lineCount() - S - 1;
+      if (ch.from.line < P || ch.to.line > last) ch.cancel();
+    });
+    cm.on("change", function () {
+      paintLocked();
+      try { localStorage.setItem(draftKey(p), studentCode()); } catch (e) {}
+    });
+    paintLocked();
+    // put caret in the editable area
+    cm.setCursor({ line: P, ch: (cm.getLine(P) || "").length });
+    setTimeout(function () { cm.refresh(); }, 0);
+  }
+  function studentCode() {
+    var total = cm.lineCount(), out = [];
+    for (var i = P; i < total - S; i++) out.push(cm.getLine(i));
+    return out.join("\n");
+  }
+
+  // ---- results
+  function showResult(node) { var r = $("result"); r.textContent = ""; r.appendChild(node); r.classList.add("show"); }
+  function resultList(results) {
+    var wrap = el("div");
+    results.forEach(function (c) {
+      var d = el("div", "case"), hd = el("div", "hd");
+      hd.appendChild(el("span", "", "Case " + c.case_number + (c.is_hidden ? " (hidden)" : "")));
+      hd.appendChild(el("span", "pill " + (c.passed ? "ok" : "bad"), c.passed ? "Passed" : "Failed"));
+      d.appendChild(hd);
+      if (!c.is_hidden) {
+        d.appendChild(el("small", "", "Input")); d.appendChild(ioBlock(c.input || ""));
+        d.appendChild(el("small", "", "Expected")); d.appendChild(ioBlock(c.expected || ""));
+        d.appendChild(el("small", "", "Your output")); d.appendChild(ioBlock(c.got || ""));
+      }
+      wrap.appendChild(d);
+    });
+    return wrap;
+  }
+  function setBusy(b) { busy = b; $("runBtn").disabled = b; $("submitBtn").disabled = b; }
+  function execute(kind) {
+    if (busy || !current) return;
+    var code = studentCode();
+    if (!code.trim()) { showResult(el("div", "verdict bad", "Write some code first.")); return; }
+    setBusy(true);
+    showResult(el("div", "", kind === "run" ? "Running…" : "Submitting…"));
+    api("/ide-problems/" + current.id + "/" + kind, { method: "POST", body: { language: current.language === "c++" ? "cpp" : (current.language || "python"), code: code } })
+      .then(function (res) {
+        var box = el("div"), results = res.test_results || [];
+        var passed = results.filter(function (c) { return c.passed; }).length;
+        if (kind === "submit") {
+          var ok = res.status === "accepted";
+          box.appendChild(el("div", "verdict " + (ok ? "ok" : "bad"), (ok ? "Accepted" : String(res.status || "").replace(/_/g, " ")) + " — " + res.passed_cases + "/" + res.total_cases + " cases passed"));
+          loadSubmissionsSoon();
+        } else {
+          box.appendChild(el("div", "verdict " + (passed === results.length ? "ok" : "bad"), passed + "/" + results.length + " sample cases passed"));
+        }
+        box.appendChild(resultList(results)); showResult(box);
+      })
+      .catch(function (e) { if (e.status === 401) return loginPrompt(); showResult(el("div", "verdict bad", e.message)); })
+      .then(function () { setBusy(false); });
+  }
+  $("runBtn").addEventListener("click", function () { execute("run"); });
+  $("submitBtn").addEventListener("click", function () { execute("submit"); });
+  $("resetBtn").addEventListener("click", function () {
+    if (!current || !confirm("Reset your code to the starter code?")) return;
+    try { localStorage.removeItem(draftKey(current)); } catch (e) {}
+    buildEditor(current, initialMiddle(current));
+  });
+
+  // ---- submissions
+  var subsTimer;
+  function loadSubmissionsSoon() { clearTimeout(subsTimer); subsTimer = setTimeout(loadSubmissions, 300); }
+  function loadSubmissions() {
+    if (!current) return;
+    var box = $("tab-subs"); box.textContent = "Loading…";
+    api("/ide-problems/" + current.id + "/my-submissions").then(function (list) {
+      box.textContent = "";
+      if (!list.length) return box.appendChild(el("div", "msg", "No submissions yet."));
+      list.forEach(function (s) {
+        var row = el("div", "sub");
+        var ok = s.status === "accepted";
+        row.appendChild(el("span", "pill " + (ok ? "ok" : "bad"), String(s.status).replace(/_/g, " ")));
+        row.appendChild(el("span", "", s.submitted_at ? new Date(s.submitted_at).toLocaleString() : ""));
+        var b = el("button", "btn", "Load code");
+        b.addEventListener("click", function () {
+          api("/ide-problems/" + current.id + "?submission_id=" + s.id).then(function (r) {
+            if (r.selected_submission) buildEditor(current, middleFrom(r.selected_submission.code));
+          });
+        });
+        row.appendChild(b); box.appendChild(row);
+      });
+    }).catch(function (e) { box.textContent = e.message; });
+  }
+  // A stored submission holds only the student's part (see IDEController::submit), so it drops straight into the editable area.
+  function middleFrom(code) { return code || ""; }
+
+  // ---- problem loading
+  function openProblem(id) {
+    status(document.createTextNode("Loading…"));
+    api("/ide-problems/" + id).then(function (res) {
+      current = res.problem;
+      $("status").hidden = true; $("app").hidden = false;
+      $("lang").textContent = ({ python: "Python3", java: "Java", cpp: "C++", "c++": "C++" })[current.language] || current.language;
+      renderQuestion(current); buildEditor(current, initialMiddle(current));
+      $("result").classList.remove("show"); showTab("question");
+      $("problemSelect").value = String(id);
+      var url = new URL(location.href); url.searchParams.set("problem", id); history.replaceState(null, "", url);
+      var idx = problems.findIndex(function (x) { return x.id === id; });
+      $("prevBtn").disabled = idx <= 0; $("nextBtn").disabled = idx < 0 || idx >= problems.length - 1;
+    }).catch(function (e) { if (e.status === 401) loginPrompt(); else status(document.createTextNode(e.message)); });
+  }
+  function step(d) { var i = problems.findIndex(function (x) { return current && x.id === current.id; }); if (problems[i + d]) openProblem(problems[i + d].id); }
+  $("prevBtn").addEventListener("click", function () { step(-1); });
+  $("nextBtn").addEventListener("click", function () { step(1); });
+  $("problemSelect").addEventListener("change", function (e) { openProblem(Number(e.target.value)); });
+
+  function boot() {
+    if (!token) return loginPrompt();
+    api("/courses/" + encodeURIComponent(courseSlug) + "/ide-problems").then(function (res) {
+      var sel = $("problemSelect");
+      res.weeks.forEach(function (w) {
+        var g = document.createElement("optgroup"); g.label = w.week_number ? "Week " + w.week_number : "Practice sets";
+        w.problems.forEach(function (p) { problems.push(p); var o = document.createElement("option"); o.value = p.id; o.textContent = p.title; g.appendChild(o); });
+        sel.appendChild(g);
+      });
+      if (!problems.length) return status(document.createTextNode("No IDE problems in this course yet."));
+      var want = Number(params.get("problem"));
+      openProblem(problems.some(function (p) { return p.id === want; }) ? want : problems[0].id);
+    }).catch(function (e) { if (e.status === 401) loginPrompt(); else status(document.createTextNode(e.message)); });
+  }
+  boot();
+})();
+</script>
+</body>
+</html>
