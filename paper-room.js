@@ -202,27 +202,45 @@
       },
     ]);
   }
+  function questionFigureHtml(imgUrl, alt) {
+    if (!imgUrl) return "";
+    return (
+      '<figure class="exam-rich-image"><img src="' +
+      esc(imgUrl) +
+      '" alt="' +
+      esc(alt || "Question figure") +
+      '" loading="lazy" referrerpolicy="no-referrer" onerror="if(!this.dataset.tried){this.dataset.tried=\'1\';var s=this.getAttribute(\'src\')||\'\';if(s.indexOf(\'labapi.genziitian.in\')!==-1){this.src=s.replace(\'labapi.genziitian.in\',\'quiz.genziitian.in\')}else if(s.indexOf(\'quiz.genziitian.in\')!==-1){this.src=s.replace(\'quiz.genziitian.in\',\'labapi.genziitian.in\')}}"></figure>'
+    );
+  }
   function imageUrl(value) {
     const path = String(value || "").trim();
     if (!path || /[\s"'<>\\]/.test(path)) return "";
+    const webOrigin =
+      typeof location !== "undefined" && location.origin
+        ? location.origin
+        : "https://quiz.genziitian.in";
     let url = "";
-    if (/^https:\/\//i.test(path)) url = path;
+    if (/^https?:\/\//i.test(path)) url = path;
     else if (/^[a-z][a-z0-9+.-]*:/i.test(path)) return "";
-    else if (path.startsWith("/assets/"))
-      url = (typeof location !== "undefined" && location.origin ? location.origin : "https://quiz.genziitian.in") + path;
-    else if (path.startsWith("/public/")) url = API_ORIGIN + path;
-    else if (path.startsWith("/storage/")) url = API_ROOT + path;
+    else if (path.startsWith("/assets/")) url = webOrigin + path;
+    else if (path.startsWith("assets/")) url = webOrigin + "/" + path;
+    else if (path.startsWith("/question-crops/")) url = webOrigin + "/assets/exam-examples" + path;
+    else if (path.startsWith("question-crops/")) url = webOrigin + "/assets/exam-examples/" + path;
+    else if (path === "oct2022_q1_figure1.png" || path.endsWith("/oct2022_q1_figure1.png"))
+      url = webOrigin + "/assets/exam-examples/question-crops/mathematics-1/quiz1/oct2022_q1_figure1.png";
+    else if (path.startsWith("/storage/")) url = API_ORIGIN + path;
+    else if (path.startsWith("storage/")) url = API_ORIGIN + "/" + path;
     else if (path.startsWith("/question-images/") || path.startsWith("/avatars/"))
-      url = API_ROOT + "/storage" + path;
-    else if (path.startsWith("/")) url = API_ORIGIN + path;
-    else if (path.startsWith("assets/"))
-      url = (typeof location !== "undefined" && location.origin ? location.origin : "https://quiz.genziitian.in") + "/" + path;
+      url = API_ORIGIN + "/storage" + path;
     else if (path.startsWith("question-images/") || path.startsWith("avatars/"))
-      url = API_ROOT + "/storage/" + path;
+      url = API_ORIGIN + "/storage/" + path;
+    else if (path.startsWith("/public/")) url = API_ORIGIN + path;
     else if (path.startsWith("public/")) url = API_ORIGIN + "/" + path;
-    else url = API_ROOT + "/" + path;
+    else if (path.startsWith("/")) url = API_ORIGIN + path;
+    else url = API_ORIGIN + "/" + path;
     try {
-      return new URL(url).protocol === "https:" ? url : "";
+      const proto = new URL(url).protocol;
+      return proto === "https:" || proto === "http:" ? url : "";
     } catch (_) {
       return "";
     }
@@ -284,11 +302,7 @@
       (code ? codeBlock(code, lang) : "") +
       (outro ? rich(clean(outro)) : "") +
       tableBlock(q.stem_table) +
-      (image
-        ? '<figure class="exam-rich-image"><img src="' +
-          esc(image) +
-          '" alt="Question figure" loading="lazy" referrerpolicy="no-referrer"></figure>'
-        : "")
+      questionFigureHtml(image)
     );
   }
   function looksLikeCode(text) {
@@ -394,14 +408,14 @@
     if (qSplit && /passage|context|comprehension/i.test(qSplit[1])) {
       return {
         passageHtml: rich(cleanPassageHeading(qSplit[1])),
-        promptHtml: rich(clean(qSplit[2].trim())) + (q.stem_code ? codeBlock(q.stem_code, q.stem_code_language) : "") + tableBlock(q.stem_table) + (imageUrl(q.stem_image) ? '<figure class="exam-rich-image"><img src="' + esc(imageUrl(q.stem_image)) + '" alt="Question figure" loading="lazy" referrerpolicy="no-referrer"></figure>' : ""),
+        promptHtml: rich(clean(qSplit[2].trim())) + (q.stem_code ? codeBlock(q.stem_code, q.stem_code_language) : "") + tableBlock(q.stem_table) + questionFigureHtml(imageUrl(q.stem_image)),
       };
     }
     const bSplit = stemText.match(/^([\s\S]*?(?:Based on the above [^\n]*?,?\s*answer the [^\n]*?subquestions\.?|answer the (?:given|following) subquestions\.?))\s*\n+([\s\S]+)$/i);
     if (bSplit && /passage|context|comprehension/i.test(bSplit[1])) {
       return {
         passageHtml: rich(cleanPassageHeading(bSplit[1])),
-        promptHtml: rich(clean(bSplit[2].trim())) + (q.stem_code ? codeBlock(q.stem_code, q.stem_code_language) : "") + tableBlock(q.stem_table) + (imageUrl(q.stem_image) ? '<figure class="exam-rich-image"><img src="' + esc(imageUrl(q.stem_image)) + '" alt="Question figure" loading="lazy" referrerpolicy="no-referrer"></figure>' : ""),
+        promptHtml: rich(clean(bSplit[2].trim())) + (q.stem_code ? codeBlock(q.stem_code, q.stem_code_language) : "") + tableBlock(q.stem_table) + questionFigureHtml(imageUrl(q.stem_image)),
       };
     }
     if (/^(?:📖\s*)?Passage\s*(?:\/|\:)\s*(?:Context\s*:?)?|^Comprehension\s*(?:Type\s*Question)?\s*:\s*/i.test(stemText)) {
@@ -412,7 +426,7 @@
         if (/\?$/.test(last) || /^(?:What|Find|Calculate|Which|Choose|Determine|How|If|The value of|Enter the)\b/i.test(last)) {
           return {
             passageHtml: rich(clean(paras.slice(0, -1).join("\n\n").trim())),
-            promptHtml: rich(clean(last)) + (q.stem_code ? codeBlock(q.stem_code, q.stem_code_language) : "") + tableBlock(q.stem_table) + (imageUrl(q.stem_image) ? '<figure class="exam-rich-image"><img src="' + esc(imageUrl(q.stem_image)) + '" alt="Question figure" loading="lazy" referrerpolicy="no-referrer"></figure>' : ""),
+            promptHtml: rich(clean(last)) + (q.stem_code ? codeBlock(q.stem_code, q.stem_code_language) : "") + tableBlock(q.stem_table) + questionFigureHtml(imageUrl(q.stem_image)),
           };
         }
       }
@@ -777,16 +791,38 @@
         ? ""
         : '<div style="font-size:12px;font-weight:700;color:#3a3fd8;">+' + Number(q.marks || 0) + " Marks</div>") +
       "</div>" +
-      "</div>" +
-      '<div class="pr-live-prompt" style="font-size:15px;color:#0f172a;line-height:1.6;font-weight:500;margin-bottom:14px;">' +
-      stemHtml(q) +
-      "</div>" +
-      '<div style="margin-bottom:28px;" id="pr-q-' +
-      esc(q.id) +
-      '">' +
-      inputsHtml(q) +
-      "</div>" +
-      '<div id="pr-explain-slot">' + explainHtml(q) + "</div>" +
+      (q._passageHtml
+        ? '<div class="pr-passage-split-grid">' +
+          '<div class="pr-passage-col"><div class="pr-passage-card">' +
+          '<div class="pr-passage-header"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span>Passage</span></div>' +
+          '<div class="pr-passage-body">' +
+          q._passageHtml +
+          "</div>" +
+          "</div></div>" +
+          '<div class="pr-question-col">' +
+          '<div class="pr-live-prompt" style="font-size:15px;color:#0f172a;line-height:1.6;font-weight:500;margin-bottom:14px;">' +
+          (q._promptHtml || stemHtml(q)) +
+          "</div>" +
+          '<div style="margin-bottom:28px;" id="pr-q-' +
+          esc(q.id) +
+          '">' +
+          inputsHtml(q) +
+          "</div>" +
+          '<div id="pr-explain-slot">' +
+          explainHtml(q) +
+          "</div>" +
+          "</div></div>"
+        : '<div class="pr-live-prompt" style="font-size:15px;color:#0f172a;line-height:1.6;font-weight:500;margin-bottom:14px;">' +
+          stemHtml(q) +
+          "</div>" +
+          '<div style="margin-bottom:28px;" id="pr-q-' +
+          esc(q.id) +
+          '">' +
+          inputsHtml(q) +
+          "</div>" +
+          '<div id="pr-explain-slot">' +
+          explainHtml(q) +
+          "</div>") +
       '<div class="pr-live-actions" style="margin-top:auto;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;border-top:1px solid #e2e8f0;background:#ffffff;"><div style="display:flex;gap:8px;">' +
       '<button type="button" id="btn-q-prev" data-action="prev"' +
       (index === 0 ? " disabled" : "") +
@@ -874,12 +910,6 @@
     );
   }
   function reviewCard(a, number) {
-    if (a.question_type === "comprehension")
-      return (
-        '<article class="ep-question"><header><span>Context</span><span></span></header><div class="ep-question-prompt">' +
-        stemHtml(a) +
-        "</div></article>"
-      );
     const chosen = (Array.isArray(a.student_selected_option_ids) ? a.student_selected_option_ids : []).map(String);
     const answered =
       chosen.length > 0 ||
@@ -915,14 +945,32 @@
       Number(a.marks_awarded || 0) +
       " / " +
       Number(a.marks || 0) +
-      ' marks</span></header><div class="ep-question-prompt">' +
-      stemHtml(a) +
-      "</div>" +
-      options +
-      studentAnswerHtml(a) +
-      (a.explanation
-        ? '<div class="pr-explanation"><p class="ep-muted">Explanation</p>' + rich(clean(a.explanation)) + "</div>"
-        : "") +
+      ' marks</span></header>' +
+      (a._passageHtml
+        ? '<div class="pr-passage-split-grid">' +
+          '<div class="pr-passage-col"><div class="pr-passage-card">' +
+          '<div class="pr-passage-header"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span>Passage</span></div>' +
+          '<div class="pr-passage-body">' +
+          a._passageHtml +
+          "</div>" +
+          "</div></div>" +
+          '<div class="pr-question-col"><div class="ep-question-prompt">' +
+          (a._promptHtml || stemHtml(a)) +
+          "</div>" +
+          options +
+          studentAnswerHtml(a) +
+          (a.explanation
+            ? '<div class="pr-explanation"><p class="ep-muted">Explanation</p>' + rich(clean(a.explanation)) + "</div>"
+            : "") +
+          "</div></div>"
+        : '<div class="ep-question-prompt">' +
+          stemHtml(a) +
+          "</div>" +
+          options +
+          studentAnswerHtml(a) +
+          (a.explanation
+            ? '<div class="pr-explanation"><p class="ep-muted">Explanation</p>' + rich(clean(a.explanation)) + "</div>"
+            : "")) +
       "</article>"
     );
   }
@@ -930,11 +978,8 @@
     const r = st.result || {};
     const attempt = r.attempt || st.summary || {};
     const xp = st.summary && st.summary.xp_award && Number(st.summary.xp_award.xp_gained || 0);
-    const answers = Array.isArray(r.answers) ? r.answers : [];
-    const scored = answers.filter((a) => a.question_type !== "comprehension");
-    const correct = scored.filter((a) => a.is_correct).length;
-    let num = 0;
-    const qNums = answers.map((a) => (a.question_type === "comprehension" ? 0 : ++num));
+    const answers = prepareReviewAnswers(r.answers);
+    const correct = answers.filter((a) => a.is_correct).length;
     const idx = Math.min(Math.max(0, st.reviewIndex || 0), Math.max(0, answers.length - 1));
     const currentAnswer = answers[idx];
     return (
@@ -947,7 +992,7 @@
       " marks · " +
       Math.round(Number(attempt.percentage || 0)) +
       "%</span></div>" +
-      (scored.length ? "<p>" + correct + " of " + scored.length + " questions correct.</p>" : "") +
+      (answers.length ? "<p>" + correct + " of " + answers.length + " questions correct.</p>" : "") +
       (xp ? '<div class="ep-alert">+' + xp + " XP earned.</div>" : "") +
       (st.error ? '<div class="ep-alert error" role="alert">' + esc(st.error) + "</div>" : "") +
       '<div class="ep-actions pr-result-actions">' +
@@ -964,9 +1009,7 @@
           '<div class="pr-review-toolbar">' +
           '<h2 class="pr-review-title">Answer review</h2>' +
           '<span class="pr-review-counter">' +
-          (currentAnswer.question_type === "comprehension"
-            ? "Context passage"
-            : "Question " + (qNums[idx] || idx + 1) + " of " + (scored.length || answers.length)) +
+          "Question " + (idx + 1) + " of " + answers.length +
           "</span>" +
           "</div>" +
           (answers.length > 1
@@ -984,14 +1027,12 @@
                       String(a.student_text_answer).trim() !== "") ||
                     a.student_numerical_answer != null;
                   const state =
-                    a.question_type === "comprehension"
-                      ? "ctx"
-                      : a.is_correct
-                        ? "correct"
-                        : answered
-                          ? "wrong"
-                          : "skipped";
-                  const label = a.question_type === "comprehension" ? "P" : qNums[i];
+                    a.is_correct
+                      ? "correct"
+                      : answered
+                        ? "wrong"
+                        : "skipped";
+                  const label = i + 1;
                   return (
                     '<button type="button" class="pr-review-tab' +
                     (i === idx ? " active" : "") +
@@ -999,9 +1040,7 @@
                     state +
                     '" data-review-go="' +
                     i +
-                    '" aria-label="' +
-                    (a.question_type === "comprehension" ? "Passage" : "Question " + label) +
-                    '">' +
+                    '" aria-label="Question ' + label + '">' +
                     label +
                     "</button>"
                   );
@@ -1010,7 +1049,7 @@
               "</div>"
             : "") +
           '<div class="ep-questions">' +
-          reviewCard(currentAnswer, qNums[idx]) +
+          reviewCard(currentAnswer, idx + 1) +
           "</div>" +
           '<div class="pr-review-nav">' +
           '<button type="button" class="ep-btn" data-action="review-prev"' +
@@ -1622,6 +1661,7 @@
       const data = await request("/quizzes/" + quizId);
       st.quiz = data.quiz || data;
       if (!Array.isArray(st.quiz.questions)) st.quiz.questions = [];
+      prepareQuizQuestions(st.quiz);
       st.screen = "intro";
       render();
       // A paper already in progress in this browser opens straight back into the room.

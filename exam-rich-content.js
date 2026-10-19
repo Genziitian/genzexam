@@ -33,15 +33,25 @@
       /[\u0000-\u0020\\<>]/.test(value)
     )
       return null;
+    if (value === "oct2022_q1_figure1.png" || value.endsWith("/oct2022_q1_figure1.png")) {
+      return "/assets/exam-examples/question-crops/mathematics-1/quiz1/oct2022_q1_figure1.png";
+    }
+    if (value.startsWith("assets/") || value.startsWith("storage/") || value.startsWith("uploads/")) {
+      value = "/" + value;
+    } else if (value.startsWith("question-crops/")) {
+      value = "/assets/exam-examples/" + value;
+    } else if (value.startsWith("/question-crops/")) {
+      value = "/assets/exam-examples" + value;
+    }
     if (
       /^[A-Za-z0-9][A-Za-z0-9._-]{0,199}$/.test(value) &&
       !value.includes("..")
     )
       value = "/uploads/" + value;
-    if (/^https:\/\//i.test(value)) {
+    if (/^https?:\/\//i.test(value)) {
       try {
         const url = new URL(value);
-        return url.protocol === "https:" &&
+        return (url.protocol === "https:" || url.protocol === "http:") &&
           !url.username &&
           !url.password &&
           !/\.svg$/i.test(url.pathname)
@@ -203,7 +213,7 @@
         escapeHtml(url) +
         '" alt="' +
         escapeHtml(block.alt || "Question image") +
-        '" loading="lazy" referrerpolicy="no-referrer">' +
+        '" loading="lazy" referrerpolicy="no-referrer" onerror="if(!this.dataset.tried){this.dataset.tried=\'1\';var s=this.getAttribute(\'src\')||\'\';if(s.indexOf(\'labapi.genziitian.in\')!==-1){this.src=s.replace(\'labapi.genziitian.in\',\'quiz.genziitian.in\')}else if(s.indexOf(\'quiz.genziitian.in\')!==-1){this.src=s.replace(\'quiz.genziitian.in\',\'labapi.genziitian.in\')}}">' +
         caption +
         "</figure>"
       );
