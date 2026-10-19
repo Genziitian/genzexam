@@ -23,6 +23,18 @@ use Throwable;
 
 class AuthController extends Controller
 {
+    private const MAX_DEVICES = 3;
+
+    /** A new login keeps the newest MAX_DEVICES logins, so a second browser or the app does not log the first one out. */
+    private function issueToken(User $user): string
+    {
+        $token = $user->createToken('auth_token')->plainTextToken;
+        $keep = $user->tokens()->orderByDesc('id')->limit(self::MAX_DEVICES)->pluck('id');
+        $user->tokens()->whereNotIn('id', $keep)->delete();
+
+        return $token;
+    }
+
     public function __construct(private readonly OtpService $otpService)
     {
     }
@@ -138,8 +150,7 @@ class AuthController extends Controller
             return response()->json(['error' => 'Invalid credentials'], 401);
         }
 
-        $user->tokens()->delete();
-        $token = $user->createToken('auth_token')->plainTextToken;
+        $token = $this->issueToken($user);
 
         LoginLog::create([
             'user_id'      => $user->id,
@@ -387,8 +398,7 @@ class AuthController extends Controller
             ]);
         }
 
-        $user->tokens()->delete();
-        $token = $user->createToken('auth_token')->plainTextToken;
+        $token = $this->issueToken($user);
 
         LoginLog::create([
             'user_id'      => $user->id,
@@ -473,8 +483,7 @@ class AuthController extends Controller
                 ]);
             }
 
-            $user->tokens()->delete();
-            $token = $user->createToken('auth_token')->plainTextToken;
+            $token = $this->issueToken($user);
 
             LoginLog::create([
                 'user_id'      => $user->id,

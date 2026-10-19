@@ -118,6 +118,27 @@ class PasswordAuthenticationTest extends TestCase
         $this->assertSame('email', DB::table('login_logs')->value('auth_method'));
     }
 
+    public function test_login_keeps_only_the_three_newest_devices(): void
+    {
+        $id = DB::table('users')->insertGetId([
+            'name' => 'Test Student',
+            'email' => 'student@example.test',
+            'password' => Hash::make('correct horse battery staple'),
+            'email_verified_at' => now(),
+            'role' => 'student',
+            'is_active' => true,
+        ]);
+
+        for ($i = 0; $i < 5; $i++) {
+            $this->postJson('/public/api/auth/login', [
+                'email' => 'student@example.test',
+                'password' => 'correct horse battery staple',
+            ])->assertOk();
+        }
+
+        $this->assertSame(3, DB::table('personal_access_tokens')->where('tokenable_id', $id)->count());
+    }
+
     public function test_wrong_password_is_rejected_and_unverified_user_cannot_sign_in(): void
     {
         DB::table('users')->insert([
