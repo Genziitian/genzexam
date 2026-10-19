@@ -39,7 +39,7 @@ class OfflinePaperStore {
         );
     final images = <String, String>{};
     var totalBytes = 0;
-    Future<String> saveImage(String source) async {
+    Future<String> embedImage(String source) async {
       if (source.isEmpty || source.startsWith('data:image/')) return source;
       if (images.containsKey(source)) return images[source]!;
       final resolved = paperImageUri(source);
@@ -67,6 +67,16 @@ class OfflinePaperStore {
         throw const FormatException('Paper images could not be saved.');
       }
       return images[source] = 'data:$mime;base64,${base64Encode(bytes)}';
+    }
+
+    // A diagram that cannot be fetched must not block the whole download: keep its
+    // online URL (it just will not show offline) and save the paper anyway.
+    Future<String> saveImage(String source) async {
+      try {
+        return await embedImage(source);
+      } catch (_) {
+        return source;
+      }
     }
 
     Future<dynamic> embed(dynamic value) async {

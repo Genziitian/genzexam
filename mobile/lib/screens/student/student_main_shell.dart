@@ -3836,9 +3836,9 @@ class _MyPapersTabState extends State<_MyPapersTab> {
           await showProDownloadPrompt(context, client);
         } else {
           ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
+            SnackBar(
               content: Text(
-                'Could not download this paper right now. Please try again.',
+                'Could not download this paper right now. Please try again. (${e is ApiException ? 'error ${e.statusCode}' : e.runtimeType})',
               ),
             ),
           );
