@@ -1,0 +1,337 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 2 · Practice Assignment · Week 3",
+  "subject": "English 2",
+  "section": "practice",
+  "week": 3,
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘Fatima takes the bus to go to work.’ is a simple sentence."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "It consists of one main clause with a non-finite infinitive of purpose."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘Joe buys a cup of coffee from the canteen everyday.’ This sentence has:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "1 clause"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "2 clauses"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "3 clauses"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "4 clauses"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "There is only one finite verb phrase ('buys') with its subject and adjuncts, making it 1 clause."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘The hall of archives is a huge place.’ In this sentence, the subject complement is:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The hall"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Of archives"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Is a huge place"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A huge place"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "‘A huge place’ is the noun phrase acting as a subject complement following the linking verb ‘is’."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘The hall of archives is a huge place.’ In this sentence, there are:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "No adjuncts"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Two adjuncts"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "One adverbial adjunct"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Three adjuncts"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The sentence follows the SVC pattern (Subject: 'The hall of archives', Verb: 'is', Complement: 'a huge place') with no adjuncts."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In the sentence ‘The committee elected Dr. Sharma chairperson’, ‘chairperson’ functions as a/an:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Subject complement"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Object complement"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Direct object"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Adjunct"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "‘chairperson’ describes the result/attribute of the direct object ‘Dr. Sharma’ (Object complement)."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following sentences follows the SVOC (Subject - Verb - Object - Complement) pattern?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "She found the examination difficult."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "He gave her a valuable present."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "They arrived late in the evening."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The train stopped suddenly."
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Subject: She, Verb: found, Object: the examination, Complement: difficult."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In ‘They live in Bangalore’, ‘in Bangalore’ is an obligatory adverbial complement of the verb ‘live’."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The intransitive verb 'live' (in the sense of reside) requires a locative complement for syntactic completeness."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the sentence with an indirect object:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The professor explained the theorem clearly."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "She offered him a cup of tea."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The team played exceptionally well."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The meeting ended at noon."
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "‘him’ is the indirect object receiving the direct object ‘a cup of tea’."
+        }
+      ]
+    }
+  ]
+}

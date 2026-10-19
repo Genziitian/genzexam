@@ -1,0 +1,405 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 2 · Practice Assignment · Week 11",
+  "subject": "English 2",
+  "section": "practice",
+  "week": 11,
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Reduction of a longer word to one of its parts (e.g. 'dorm' from 'dormitory') is called:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Blending"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Clipping"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Borrowing"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Back-formation"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Clipping shortens a polysyllabic word without altering its grammatical category or core meaning."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘He has been unhappy since his cat disappeared.’ How many derivational prefixes are present in the italicized words?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "2 (un- in unhappy, dis- in disappeared)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "3"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "4"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The negative prefix 'un-' in 'unhappy' and the reversative prefix 'dis-' in 'disappeared' total 2 prefixes."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Pick the odd one out among the following words: 'Though, eventually, is, but'"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Though"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Eventually"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Is"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "But"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "‘Is’ is a finite copular verb, whereas 'though', 'eventually', and 'but' are discourse markers / conjunctions / adverbs."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following is a set of words popularized through internet culture and digital media?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Browse, collect, mend"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Browse, surf, scroll"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Cycle, steer, brake"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Harvest, plow, sow"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "‘Browse’, ‘surf’, and ‘scroll’ took on widely recognized computing and web navigation senses."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘Chic’, ‘sentiment’, and ‘royal’ are English words borrowed historically from:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Indian languages"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Celtic"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Italian"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "French"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "These words entered English from Old French and Anglo-Norman."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘The movie plot was so cliché: boy loves girl, girl loves best friend.’ Here, 'cliché' means:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Overused, stereotyped, and lacking originality"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Boring and soporific"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Melancholy and tragic"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Inspirational and fresh"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "A cliché is an expression or idea that has been overused to the point of losing its original novelty."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The word 'cliché' was borrowed into English from which language?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Latin"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "French"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Italian"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "German"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "‘Cliché’ is a direct loanword from French (originally a printing term for a stereotype plate)."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘The bullet ricocheted off the concrete wall.’ Here, 'ricocheted' means:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Buried deep"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Rebounded or bounced off a surface at an angle"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Exploded into fragments"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Melted"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "To ricochet means to bounce off a surface with glancing deflection."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The word 'ricochet' is of which linguistic origin?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "French"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Latin"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Italian"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Japanese"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "‘Ricochet’ entered English from French."
+        }
+      ]
+    }
+  ]
+}

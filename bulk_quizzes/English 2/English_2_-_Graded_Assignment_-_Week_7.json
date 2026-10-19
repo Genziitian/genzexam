@@ -1,0 +1,205 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 2 · Graded Assignment · Week 7",
+  "subject": "English 2",
+  "section": "practice_graded",
+  "week": 7,
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following is NOT appreciated in a professional group discussion?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Polite language"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Attentiveness"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Insensitivity"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Team spirit"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Insensitivity undermines collaboration and respectful dialogue in a group discussion."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Dragging on the same points repeatedly indicates vast knowledge in the discussion area."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Reiterating the same argument wastes group time and indicates a lack of fresh perspectives or active listening."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following should be taken into consideration before attending an interview?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Do mock interviews"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Arrive a little early"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Research the company/institution"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "All the above"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Comprehensive interview preparation includes institutional research, logistical punctuality, and mock rehearsals."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A warm smile denotes confidence and enthusiasm in the candidate."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Positive body language, including a natural smile, conveys approachable confidence and engagement."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The discourse marker 'To put that another way…' indicates ________."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Stating an opinion"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Expressing disagreement"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Reformulating"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Making a suggestion"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "‘To put that another way...’ is used for reformulation or paraphrasing a concept for greater clarity."
+        }
+      ]
+    }
+  ]
+}

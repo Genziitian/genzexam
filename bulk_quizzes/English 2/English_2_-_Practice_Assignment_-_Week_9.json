@@ -1,0 +1,385 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 2 · Practice Assignment · Week 9",
+  "subject": "English 2",
+  "section": "practice",
+  "week": 9,
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Context: Read the excerpt from Arundhati Roy's 'The God of Small Things':\n\n\"May in Ayemenem is a hot, brooding month. The days are long and humid. The river shrinks and black crows gorge on bright mangoes in still, dustgreen trees. But by June the southwest monsoon breaks and there are three months of wind and water with short lulls of sharp, glittering sunshine. It is a time when the countryside turns an immodest green... The rain slanted down like silver ropes, crashing onto the corrugated tin roofs like gunfire. It was during this tempestuous season that Rahel returned to Ayemenem after twenty-three long years to see her twin brother Esthappen...\""
+        },
+        {
+          "kind": "text",
+          "value": "According to the passage, during which month did the southwest monsoon break when Rahel returned to Ayemenem?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "May"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "June"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "December"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "April"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The passage states: 'by June the southwest monsoon breaks... It was during this tempestuous season that Rahel returned'."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Context: Read the excerpt from Arundhati Roy's 'The God of Small Things':\n\n\"May in Ayemenem is a hot, brooding month. The days are long and humid. The river shrinks and black crows gorge on bright mangoes in still, dustgreen trees. But by June the southwest monsoon breaks and there are three months of wind and water with short lulls of sharp, glittering sunshine. It is a time when the countryside turns an immodest green... The rain slanted down like silver ropes, crashing onto the corrugated tin roofs like gunfire. It was during this tempestuous season that Rahel returned to Ayemenem after twenty-three long years to see her twin brother Esthappen...\""
+        },
+        {
+          "kind": "text",
+          "value": "In the passage, the author vividly compares the falling rain to:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Silver ropes and gunfire"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Bright fireworks"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Whispering leaves"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Flying insects"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The text uses the similes: 'slanted down like silver ropes, crashing onto the corrugated tin roofs like gunfire'."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Context: Read the excerpt from Arundhati Roy's 'The God of Small Things':\n\n\"May in Ayemenem is a hot, brooding month. The days are long and humid. The river shrinks and black crows gorge on bright mangoes in still, dustgreen trees. But by June the southwest monsoon breaks and there are three months of wind and water with short lulls of sharp, glittering sunshine. It is a time when the countryside turns an immodest green... The rain slanted down like silver ropes, crashing onto the corrugated tin roofs like gunfire. It was during this tempestuous season that Rahel returned to Ayemenem after twenty-three long years to see her twin brother Esthappen...\""
+        },
+        {
+          "kind": "text",
+          "value": "What is the primary emotional purpose of Rahel’s return to Ayemenem?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "To buy property"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To visit her twin brother Estha after years of separation"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To escape the summer heat"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To visit a corporate office"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Rahel returns after twenty-three years to reunite with her twin brother Estha."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Context: Read the excerpt from Arundhati Roy's 'The God of Small Things':\n\n\"May in Ayemenem is a hot, brooding month. The days are long and humid. The river shrinks and black crows gorge on bright mangoes in still, dustgreen trees. But by June the southwest monsoon breaks and there are three months of wind and water with short lulls of sharp, glittering sunshine. It is a time when the countryside turns an immodest green... The rain slanted down like silver ropes, crashing onto the corrugated tin roofs like gunfire. It was during this tempestuous season that Rahel returned to Ayemenem after twenty-three long years to see her twin brother Esthappen...\""
+        },
+        {
+          "kind": "text",
+          "value": "What does the word ‘bluebottles’ refer to in descriptive nature writing?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Bottles painted blue"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A type of blowfly / insect"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A kind of vehicle"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A medicinal syrup"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Bluebottles are large blowflies with an iridescent metallic blue body common in humid environments."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Context: Read the excerpt from Arundhati Roy's 'The God of Small Things':\n\n\"May in Ayemenem is a hot, brooding month. The days are long and humid. The river shrinks and black crows gorge on bright mangoes in still, dustgreen trees. But by June the southwest monsoon breaks and there are three months of wind and water with short lulls of sharp, glittering sunshine. It is a time when the countryside turns an immodest green... The rain slanted down like silver ropes, crashing onto the corrugated tin roofs like gunfire. It was during this tempestuous season that Rahel returned to Ayemenem after twenty-three long years to see her twin brother Esthappen...\""
+        },
+        {
+          "kind": "text",
+          "value": "What figurative device is used in the phrase 'the countryside turns an immodest green'?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Personification"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Onomatopoeia"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Hyperbole"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Synecdoche"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Attributing the human trait of modesty ('immodest') to nature is personification."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Context: Read the excerpt from Arundhati Roy's 'The God of Small Things':\n\n\"May in Ayemenem is a hot, brooding month. The days are long and humid. The river shrinks and black crows gorge on bright mangoes in still, dustgreen trees. But by June the southwest monsoon breaks and there are three months of wind and water with short lulls of sharp, glittering sunshine. It is a time when the countryside turns an immodest green... The rain slanted down like silver ropes, crashing onto the corrugated tin roofs like gunfire. It was during this tempestuous season that Rahel returned to Ayemenem after twenty-three long years to see her twin brother Esthappen...\""
+        },
+        {
+          "kind": "text",
+          "value": "The sensory imagery describing crows gorging on bright mangoes appeals to which senses?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Visual and kinetic imagery"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Olfactory exclusively"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Auditory exclusively"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Tactile exclusively"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Bright mangoes, black crows, and dustgreen trees create vivid visual and kinetic imagery."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In the phrase 'hot, brooding month', the word 'brooding' conveys a mood of:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Lighthearted festivity"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Ominous, heavy, and contemplative tension"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Carefree joy"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Frigid detachment"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "‘Brooding’ conveys a sultry, oppressive, emotionally charged atmosphere preceding the tempest."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which word from the passage means 'a temporary period of calm or quiet'?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Tempestuous"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Lull"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Immodest"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Gorge"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "A ‘lull’ is a brief interval of calm or lessened activity during a storm."
+        }
+      ]
+    }
+  ]
+}

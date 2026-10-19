@@ -1,0 +1,437 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 2 · Graded Assignment · Week 5",
+  "subject": "English 2",
+  "section": "practice_graded",
+  "week": 5,
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘Preetham has been returning late every evening. He really ____ speak to his boss about leaving a little earlier.’"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Ought to"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Can"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Might"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Will"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "‘Ought to’ expresses moral obligation or advisory recommendation that something should be done."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the modal auxiliary in: 'This might be your can of water.'"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "can"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "be"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "might"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "your"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "‘Might’ is the modal auxiliary expressing epistemic possibility; ‘can’ is used here as a noun."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the modal auxiliary in: 'She could be here tomorrow.'"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "be"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "could"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "here"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "All of the above"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "‘Could’ is the modal auxiliary indicating possibility."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The modal auxiliary ‘may’ denotes number, person, and gender."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Modal auxiliaries in English are defective verbs: they do not take -s for third person and do not inflect for number, person, or gender."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘Could you shut the door while leaving the room?’ Here ‘could’ denotes:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Permission"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Ability"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Request"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Suggestion"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "‘Could you...’ in an interrogative sentence is a polite formula for making a request."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘Can you do everything on your own?’ Here ‘can’ denotes:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "possibility"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "ability"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "suggestion"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "request"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "‘Can’ inquiries about the subject's capacity or capability (ability) to perform the task alone."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘It could be a happy accident.’ Here ‘could’ denotes:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "possibility"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "ability"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "suggestion"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "request"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "‘Could’ expresses theoretical or epistemic possibility."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘------------- you join us, please?’ (formal context)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Will"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Would"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Can"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Shall"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "‘Would’ is preferred in formal polite invitations and requests."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The use of ----------------- is preferred in reported speech when converting direct future statements."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Will"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Would"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Can"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Shall"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "In backshifting for indirect speech, ‘will’ changes to its past/conditional form ‘would’."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘My friend is not picking up the call. She --------- be busy.’"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Could"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Would"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Shall"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Should to"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "‘Could’ expresses plausible possibility in the present."
+        }
+      ]
+    }
+  ]
+}

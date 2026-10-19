@@ -1,0 +1,437 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 2 · Graded Assignment · Week 11",
+  "subject": "English 2",
+  "section": "practice_graded",
+  "week": 11,
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘-s’ and ‘-ies’ in ‘dogs’ and ‘babies’ are:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Plural markers"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Morphemes"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both of the above"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of the above"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "They are inflectional morphemes that signify nominal plurality."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Reduction of a word to one of its parts without changing its meaning is called:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Blending"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Clipping"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Borrowing"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Compounding"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Clipping is the morphological process of shortening a word (e.g. ad from advertisement)."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following is an example of middle clipping?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Gym"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Flu"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Phone"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Gram"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "‘Flu’ is clipped from both ends of ‘influenza’."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘He did not break down when he heard the grave news. Rather, he became very stoic and appeared to bear it quite normally.’ The connecting discourse word is:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "And"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Became"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Rather"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "There is no connecting word/phrase"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "‘Rather’ functions as an adversative/substitutive discourse connector indicating 'instead'."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In the context above, ‘rather’ means the same as:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Instead"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Completely"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Slowly"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Because"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "‘Rather’ is used here to introduce an alternative course of action or demeanor."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Modern English contains many prefixes and suffixes borrowed from Greek and Latin."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "A large portion of formal, scientific, and academic English morphology derives from classical Greek and Latin affixes."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘Bungalow’, ‘loot’, and ‘pyjamas’ are English words borrowed from:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Latin"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "French"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Indian languages"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Spanish"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "These are historical loanwords originating from Hindi, Sanskrit, and Urdu during colonial interactions."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘The business tycoon who made billions with his hotel chain has been found dead.’ Here, 'tycoon' means:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "A headman"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A billionaire"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A CEO"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A wealthy and powerful businessperson"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "A tycoon is an influential, wealthy person in business or industry."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The word 'tycoon' was borrowed into English from which language?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Latin"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "French"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Italian"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Japanese"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "‘Tycoon’ comes from the Japanese word 'taikun' (great prince/commander)."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘The music club auditions allow candidates to have a karaoke to the song they’ll be singing.’ Here, 'karaoke' means:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Lyrics sheet"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Sheet music"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Pre-recorded instrumental backing track"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Acapella vocal"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Karaoke (from Japanese 'empty orchestra') refers to recorded backing music without the lead vocal."
+        }
+      ]
+    }
+  ]
+}

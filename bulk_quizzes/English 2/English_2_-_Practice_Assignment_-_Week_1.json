@@ -1,0 +1,381 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 2 · Practice Assignment · Week 1",
+  "subject": "English 2",
+  "section": "practice",
+  "week": 1,
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "“It was the best of times, it was the worst of times.” The figure of speech used here is:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Paradox"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Oxymoron"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Irony"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Antithesis"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Antithesis brings contrasting ideas together in balanced grammatical structures."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "“To be or not to be, that is the question” is an example of an oxymoron."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "It is a classic example of antithesis (balanced juxtaposition of opposing concepts), not an oxymoron."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "“Sit down awhile; / And let us once again assail your ears, / That are so fortified against our story / What we have two nights seen.” What poetic/rhetorical device is prominent in 'assail your ears'?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Metaphor"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Oxymoron"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Hyperbole"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Euphemism"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "‘Assail your ears’ is a vivid metaphor treating speech as an assault on the senses."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "“Denial ain’t just a river in Egypt” is an example of a/an:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Paradox"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Oxymoron"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Pun"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Irony"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "This is a well-known pun playing on the phonetic similarity between 'denial' and 'the Nile'."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the word that best expresses exactitude: 'This is ___ what I meant!'"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Truly"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Exactly"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Something"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Barely"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "‘Exactly’ is the standard adverb specifying total precision."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the appropriate exclamation: '____, this place looks amazing!'"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Wow"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Rather"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Which"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Despite"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "‘Wow’ is an emotive interjection expressing admiration or surprise."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The relative pronoun 'which' can be used as a connective discourse marker to provide supplementary comment on a whole clause."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Sentential relative clauses introduced by 'which' serve as cohesive discourse devices adding evaluative comments."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following discourse markers can be used to resume a theme after an interruption or change in subject?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Apparently"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "As I was saying / As I said"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "In addition"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Consequently"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "‘As I was saying’ or ‘As I said’ explicitly signals a return to a previously established topic."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In written English, pitch accents, emphatic stress, or intonational salience are conventionally indicated with:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Italics or quotation marks"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Semicolons"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Apostrophes"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Ampersands"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Typography uses italics, boldface, or inverted commas to signal vocal stress and tone in text."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,425 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 2 · Graded Assignment · Week 2",
+  "subject": "English 2",
+  "section": "practice_graded",
+  "week": 2,
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘This book is necessary for me to do my research.’ In this sentence, the subordinate clause is:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Is necessary"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "This book is necessary"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "For me"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "For me to do my research"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "‘For me to do my research’ is a non-finite dependent clause serving as a complement to 'necessary'."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A simple sentence has ______."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Two independent clauses"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "An independent clause and many dependent clauses"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "An independent clause"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "All of the above"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "A simple sentence consists of exactly one independent clause and no dependent clauses."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘The vegetables, which I bought only yesterday, are beginning to spoil.’ The independent clause is:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The vegetables which I bought only yesterday"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The vegetables are beginning to spoil"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Which I bought only yesterday"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Which I bought only yesterday are beginning to spoil"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "‘The vegetables are beginning to spoil’ can stand alone as a complete sentence; ‘which I bought only yesterday’ is a dependent relative clause."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘The CEO of the company along with the board members passed a new resolution yesterday’. This sentence has two adjuncts."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The prepositional phrase 'along with the board members' (or 'of the company') and the time adverbial 'yesterday' function as adjuncts."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘The book with the blue cover on the shelf in the drawing room is the one that you gave me.’ This sentence has ____ adjuncts."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "3"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "4"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The three adjunct prepositional phrases are: ‘with the blue cover’, ‘on the shelf’, and ‘in the drawing room’."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘Documentaries about animals which highlight their rapidly-changing habitats are of the utmost importance in order to be able to prevent environmental destruction.’ This sentence has 4 clauses."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The sentence has fewer than 4 clauses (the main matrix clause and the relative and purpose clauses)."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘The garba celebrations, which were held for a week, were astonishingly grand for a miniscule village which was located in the hinterlands of the state.’ This sentence has __ clauses in total."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "3"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "4"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Main clause: ‘The garba celebrations were astonishingly grand...’; Subordinate clause 1: ‘which were held for a week’; Subordinate clause 2: ‘which was located...’. Total = 3 clauses."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the type of subordinate clause in: ‘The house where we live has a lot of trees’"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Noun clause"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Adjectival clause"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Adverbial clause"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Prepositional clause"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "‘where we live’ is a relative (adjectival) clause modifying the noun ‘house’."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the type of subordinate clause in: ‘The patient had died before the doctor came’"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Noun clause"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Adjectival clause"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Adverbial clause"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Noun phrase"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "‘before the doctor came’ is an adverbial clause of time modifying the verb ‘had died’."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the type of subordinate clause in: ‘Whoever sent us this letter should have signed his or her name.’"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Noun clause"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Adjectival clause"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Adverbial clause"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Coordinate clause"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "‘Whoever sent us this letter’ is a nominal (noun) clause functioning as the grammatical subject of the sentence."
+        }
+      ]
+    }
+  ]
+}

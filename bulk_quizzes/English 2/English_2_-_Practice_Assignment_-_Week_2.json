@@ -1,0 +1,405 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 2 · Practice Assignment · Week 2",
+  "subject": "English 2",
+  "section": "practice",
+  "week": 2,
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Adverbs of time answer which of the following questions?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "How often"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "When"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Where"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Why"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Adverbs of time specify temporal location ('When?')."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In the sentence 'She checked the document thoroughly', 'thoroughly' is an adverb of:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Direction"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Manner / Degree"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Place"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Time"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "‘Thoroughly’ describes the manner and completeness (degree) of the action."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Adverbs of degree answer which question?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "What"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Why"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Where"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "How much / To what extent"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Adverbs of degree quantify intensity or extent ('How much?')."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘In four years, I will have finished college and obtained my degree.’ This sentence is in the:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Future Indefinite"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Future Continuous"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Future Perfect"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Future Perfect Continuous"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "‘will have finished’ is the future perfect tense (will + have + past participle)."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The passive form of ‘They had already informed Sarah’ is:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Sarah has already been informed"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Sarah have already been informed"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Sarah had already been informed"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Sarah had already informed them"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Past perfect active ‘had informed’ becomes past perfect passive ‘had been informed’."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In which of the following sentences is an attributive adjective used with a degree adverb?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "She was extremely happy."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "She had an absolutely wonderful day."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "She was very confused."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The house is quite large."
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "‘wonderful’ is an attributive adjective preceding the noun ‘day’, modified by the degree adverb ‘absolutely’."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Complete the sentence: ‘Ruth _______ has no idea as to what is happening.’"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Clearly"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Obviously"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both (a) and (b)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of the above"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Both ‘clearly’ and ‘obviously’ function as comment adverbs modifying the entire clause."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘Apparently, you have to submit the forms both as soft copies and as hard copies.’ This sentence uses a comment adverb indicating:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Moral judgement"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Emotional reaction"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Evidentiality / Perceived likelihood"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Temporal sequence"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "‘Apparently’ is an evidential comment adverb indicating information based on hearsay or outward appearance."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In ‘The soup was too hot to drink’, the adverb ‘too’ denotes:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "There was enough heat"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Additional heat"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "An excess beyond what is desirable or acceptable"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A pleasant degree of heat"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "‘Too’ before an adjective indicates an excessive, undesirable degree."
+        }
+      ]
+    }
+  ]
+}

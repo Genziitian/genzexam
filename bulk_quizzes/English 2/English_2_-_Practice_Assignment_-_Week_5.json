@@ -1,0 +1,349 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 2 · Practice Assignment · Week 5",
+  "subject": "English 2",
+  "section": "practice",
+  "week": 5,
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘It sounds like the rain might be stopping.’ The modal verb in this sentence is:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Be"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Might"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Like"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Sounds"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "‘Might’ is the modal auxiliary expressing possibility."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Complete the sentence expressing past possibility: ‘She _____ have won the championship if she had not injured her ankle.’"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Can"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Could"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Ought"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Shall"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "‘Could have + past participle’ expresses unfulfilled past possibility or ability."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘I will read you the text message she sent when we meet tomorrow.’ The tense/modal auxiliary indicating future reference is:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Will"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Read"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Meet"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Sent"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "‘Will’ functions as the auxiliary verb indicating future tense."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Unlike lexical verbs which describe states or actions, modal auxiliaries fundamentally express:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Factual descriptions of real-world objects"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Speaker attitude towards factuality (possibility, obligation, permission)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Physical movement"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Direct objects"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Modality expresses speaker stance on possibility, necessity, permission, or intention rather than asserting facts."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In English linguistics, 'will' and 'shall' are modal auxiliaries that also function to mark future reference."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "English lacks an inflectional future tense; future time is primarily realized via modal auxiliaries like 'will' and 'shall'."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘Lata ______ decide upon her summer plans as soon as possible so that she is able to book tickets before they sell out.’"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Should"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Must"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Ought to"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "All of the above"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Depending on the degree of urgency, all three modals can grammatically express necessity or strong advice."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which among the following is NOT a modal verb?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Can"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Could"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Is"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "May"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "‘Is’ is a primary auxiliary / copula verb, not a modal auxiliary."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘Back then, no one _______ challenge him. He was very good at boxing.’"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Can"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Could"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "May"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Shall"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "‘Could’ expresses general ability in the past."
+        }
+      ]
+    }
+  ]
+}

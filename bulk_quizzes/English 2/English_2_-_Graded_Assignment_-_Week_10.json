@@ -1,0 +1,425 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 2 · Graded Assignment · Week 10",
+  "subject": "English 2",
+  "section": "practice_graded",
+  "week": 10,
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘All assignments were submitted.’ This sentence is in the passive voice."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "‘were submitted’ is a passive construction (be + past participle) with an elided agent."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘The displayed ornaments glittered in the dazzling lights.’ The finite verb in this sentence is:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Displayed"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Glittered"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Dazzling"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "All of the above"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "‘Glittered’ is the finite verb in past tense. ‘Displayed’ and ‘dazzling’ are participial adjectives modifying nouns."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In the sentence ‘The displayed ornaments glittered in the dazzling lights’, there are ___ finite verb(s) and ___ participle(s)."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "0, 3"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "3, 0"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1, 2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "2, 1"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "1 finite verb ('glittered') and 2 participles ('displayed' past participle, 'dazzling' present participle)."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following are negative-polarity sensitive elements (NPIs)?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Anyone"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Anybody"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Anything"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "All of the above"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Indefinite pronouns with 'any-' typically occur in negative, interrogative, or conditional polarity environments."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘They did not tell anyone about their plan’ is a negative sentence."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The presence of the negative particle ‘not’ makes the clause grammatically negative."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct reported speech for: ‘Who did you see?’ Prema asked."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Prema asked me who I saw"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Prema asked me who I had seen"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Prema told me who I have seen"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Prema asked me who did I see"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Past simple questions shift to past perfect in reported speech with affirmative word order: 'who I had seen'."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Convert to indirect speech: ‘I haven’t seen him.’"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "He said he didn’t see him"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "He said that he hadn’t seen him"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "He told that he didn’t see him"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "He told that he hadn’t see him"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Present perfect 'haven't seen' backshifts to past perfect 'hadn't seen' with the reporting verb 'said that'."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Complete the sentence: 'This proposal is ___ better than the previous one.'"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "As much"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Much"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Much of"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Not many"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "‘Much’ functions as a degree adverb modifying comparative adjectives (much better)."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Complete the sentence: 'Ours is a small class. We don’t have ___ students.'"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Much"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Many"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Large"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Little"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "‘Many’ is used with plural countable nouns ('students') in negative constructions."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘If they are innocent, they will be acquitted.’ This is a ___ conditional sentence."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Zero conditional"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "First conditional"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Second conditional"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Mixed conditional"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "If + present simple ('are'), will + bare infinitive ('will be acquitted') is the canonical First Conditional."
+        }
+      ]
+    }
+  ]
+}

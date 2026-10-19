@@ -1,0 +1,405 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 2 · Practice Assignment · Week 12",
+  "subject": "English 2",
+  "section": "practice",
+  "week": 12,
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In formal business email correspondence, what is the standard professional salutation when addressing a recipient with an academic or professional title?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Title + First name only (e.g. Dr. John)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Title + Surname (e.g. Dr. Smith)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Title + First name + Surname (e.g. Dr. John Smith)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both (b) and (c) are acceptable in formal English"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Using Title + Surname or Title + Full Name is standard in polite professional correspondence."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following salutations is acceptable when sending an informal email to a close friend or peer?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Hey"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Hi"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Dear"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "All the above depending on the interpersonal closeness"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Informal communications permit various casual greetings depending on relationship closeness."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the most professional closing inquiry line from the following:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "I look forward to hearing from you at your earliest convenience."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "What is the cost of your services?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Reply quickly bro"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Bye for now"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "‘I look forward to hearing from you...’ is an established, polite professional closing line."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the single sentence that concisely encapsulates the central claim or main focus of a research report called?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Introduction"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Literature review"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Thesis statement"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Abstract footer"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The thesis statement summarizes the central proposition and roadmap of a research document."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In communication ethnography, what term refers to the physical time and place of a communicative event?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Scene"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Setting"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Act sequence"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Key"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "‘Setting’ denotes the physical time, space, and environmental circumstances of a communicative act."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "During a public presentation or formal speech, addressees and listeners constitute the:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Audience / Participants"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Cast"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Crew"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Interpreters"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "In the SPEAKING model, 'P' refers to Participants, specifically the speaker and audience/hearers."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In Dell Hymes's SPEAKING model, what does the letter 'K' stand for?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Knowledge"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Key (tone, manner, or spirit of the act)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Kinship"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Keystroke"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "‘Key’ refers to the tone, manner, or spirit (e.g. formal, playful, solemn) of the communicative act."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "External environmental noise that prevents clear hearing of a speaker is classified as a:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Organisational barrier"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Physical / Mechanical barrier"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Semantic barrier"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Personal barrier"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Acoustic noise, distance, and faulty audio equipment are physical or environmental barriers."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following are constructive steps to take when preparing for a high-stakes job interview?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Organise structured information about your experiences and achievements"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Research the organization's culture, mission, and current projects"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Prepare your documents and review common behavioral questions"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "All of the above"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Thorough interview preparation synthesizes personal evidence, company knowledge, and document readiness."
+        }
+      ]
+    }
+  ]
+}

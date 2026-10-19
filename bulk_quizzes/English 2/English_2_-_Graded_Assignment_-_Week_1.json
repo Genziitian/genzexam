@@ -1,0 +1,445 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 2 · Graded Assignment · Week 1",
+  "subject": "English 2",
+  "section": "practice_graded",
+  "week": 1,
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Presentations are greatly enhanced by varying the tone of voice to emphasize aspects of the content."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Varying the tone of voice, pitch, and volume helps retain audience engagement and highlights key points."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following is NOT true about the statement: 'Maintaining eye contact with the audience while presenting is critical to ______'?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Credibility"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Rapport"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Relaxing"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Involving the audience"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Eye contact builds credibility, rapport, and audience involvement, but does not serve to relax the presenter."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Context: Listen to the speech by Nelson Mandela:\nAudio link: https://drive.google.com/file/d/15DjnS5EOivAr3pBfSNG4YAYJn5aAJihz/view?usp=sharing\n\n\"Sport has the power to change the world. It has the power to inspire. It has the power to unite people in a way that little else does. It speaks to youth in a language they understand. Sport can create hope where once there was only despair. It is more powerful than governments in breaking down racial barriers. It laughs in the face of all types of discrimination. The heroes standing with me are examples of this power. They are valiant not only on the playing field but also in the community both local and international...\""
+        },
+        {
+          "kind": "text",
+          "value": "Identify the stressed syllable in the word 'Together':"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "'Together"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To'gether"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Toge'ther"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Tog'ether"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "In 'together', stress falls on the second syllable: /təˈɡeð.ər/."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Context: Listen to the speech by Nelson Mandela:\nAudio link: https://drive.google.com/file/d/15DjnS5EOivAr3pBfSNG4YAYJn5aAJihz/view?usp=sharing\n\n\"Sport has the power to change the world. It has the power to inspire. It has the power to unite people in a way that little else does. It speaks to youth in a language they understand. Sport can create hope where once there was only despair. It is more powerful than governments in breaking down racial barriers. It laughs in the face of all types of discrimination. The heroes standing with me are examples of this power. They are valiant not only on the playing field but also in the community both local and international...\""
+        },
+        {
+          "kind": "text",
+          "value": "Identify the stressed syllable in the word 'Represent':"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Re'present"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "'Represent"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Repre'sent"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Rep'resent"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "In 'represent' (verb), primary stress falls on the third syllable: /ˌrep.rɪˈzent/."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Context: Listen to the speech by Nelson Mandela:\nAudio link: https://drive.google.com/file/d/15DjnS5EOivAr3pBfSNG4YAYJn5aAJihz/view?usp=sharing\n\n\"Sport has the power to change the world. It has the power to inspire. It has the power to unite people in a way that little else does. It speaks to youth in a language they understand. Sport can create hope where once there was only despair. It is more powerful than governments in breaking down racial barriers. It laughs in the face of all types of discrimination. The heroes standing with me are examples of this power. They are valiant not only on the playing field but also in the community both local and international...\""
+        },
+        {
+          "kind": "text",
+          "value": "Identify the stressed syllable in the word 'Atmosphere':"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "At'mosphere"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Atmo'sphere"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A'tmosphere"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "'Atmosphere"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Nouns often take stress on the first syllable. In 'atmosphere', stress is on the first syllable: /ˈæt.məs.fɪər/."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which syllable in the word 'community' has the long vowel?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "No long vowels in the word"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "First"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Second"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Fourth"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Phonetic transcription is /kəˈmjuː.nə.ti/. The vowel in the second syllable is often classified as a glide/diphthong or tense vowel, with no pure long vowel."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many vowel sounds are there in the word 'create'?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "0"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "3"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "/kriːˈeɪt/ has two vowel sounds: /iː/ and /eɪ/."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In the word 'deserve', the second syllable has a short vowel."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "/dɪˈzɜːv/ contains the long central vowel /ɜː/ in the second syllable, so the statement is false."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Context: Listen to the audio on pause-breaks and sentence intonation:\nAudio link: https://drive.google.com/file/d/1deTtFcM62FbL-QkKiY8euI9pXy25Wudf/view?usp=sharing"
+        },
+        {
+          "kind": "text",
+          "value": "Choose the appropriate pause for the sentence: 'If you haven’t found it yet keep looking and don’t settle'"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "If you haven’t found it yet keep looking/ and don’t settle//"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "If you haven’t found it yet/ keep looking/ and don’t settle//"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "If you haven’t/ found it yet/ keep looking/ and don’t settle//"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "If you haven’t found it yet/ keep looking/ and don’t/ settle//"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Natural speech chunking places tone unit pauses after the conditional clause and between coordinated imperatives."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Context: Listen to the audio on pause-breaks and sentence intonation:\nAudio link: https://drive.google.com/file/d/1deTtFcM62FbL-QkKiY8euI9pXy25Wudf/view?usp=sharing"
+        },
+        {
+          "kind": "text",
+          "value": "Choose the appropriate pause for the sentence: 'And most important have the courage to follow your heart and intuition'"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "And most important/ have the courage to follow your heart and intuition//"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "And most important/ have the courage/ to follow your heart and intuition//"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "And most important/ have the courage/ to follow your heart/ and intuition//"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "And/ most important/ have the courage to follow your heart and intuition//"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "In spoken English, introductory adverbials like 'And most important' form their own tone unit followed by a pause."
+        }
+      ]
+    }
+  ]
+}
