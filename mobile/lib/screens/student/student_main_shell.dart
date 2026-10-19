@@ -3652,27 +3652,32 @@ class _PerformanceCardState extends State<_PerformanceCard> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 for (final f in const [0.0, 0.34, 0.67])
-                  Flexible(child: Text(
-                    labelAt(f),
+                  Flexible(
+                    child: Text(
+                      labelAt(f),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(
+                        fontSize: 10,
+                        fontFamily: 'monospace',
+                        color: Color(0xFF94A3B8),
+                      ),
+                    ),
+                  ),
+                Flexible(
+                  flex: 2,
+                  child: Text(
+                    '${labelAt(1.0)} — today',
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
+                    textAlign: TextAlign.right,
                     style: const TextStyle(
                       fontSize: 10,
                       fontFamily: 'monospace',
                       color: Color(0xFF94A3B8),
                     ),
-                  )),
-                Flexible(flex: 2, child: Text(
-                  '${labelAt(1.0)} — today',
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  textAlign: TextAlign.right,
-                  style: const TextStyle(
-                    fontSize: 10,
-                    fontFamily: 'monospace',
-                    color: Color(0xFF94A3B8),
                   ),
-                )),
+                ),
               ],
             ),
           ],
