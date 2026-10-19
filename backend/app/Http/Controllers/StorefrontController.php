@@ -27,6 +27,7 @@ class StorefrontController extends Controller
             ->where('approval_status', 'approved')
             ->when($user?->isAdmin() && ! StudentAppMode::enabled($request), fn ($query) => $query->whereIn('course_id', $user->assignedCourses()->select('courses.id')))
             ->whereHas('course', fn ($query) => $query->where('is_active', true))
+            ->has('questions', '>=', 5)
             ->with(['course:id,name,slug,level,icon', 'week:id,week_number,title'])
             ->withCount('questions')
             ->orderBy('course_id')
