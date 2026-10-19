@@ -881,7 +881,7 @@
   function fillMyPapers() {
     var host = document.getElementById("ql-my-papers");
     // If the framework wiped the page's content during navigation, render it again.
-    if (host && host.dataset.qlLoaded && !host.querySelector(".ql-spin-container")) host.dataset.qlLoaded = "";
+    if (host && host.dataset.qlLoaded && !host.querySelector(".ql-mp-grid")) host.dataset.qlLoaded = "";
     if (!host || host.dataset.qlLoaded) return;
     var runtime = window.QLStorefront;
     if (!runtime || !runtime.token()) return;
