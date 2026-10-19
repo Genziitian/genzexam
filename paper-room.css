@@ -499,3 +499,14 @@
     gap: 8px !important;
   }
 }
+
+/* Phone web: no share button, and no "Untimed" pill when the paper has no timer. */
+@media (max-width: 860px) {
+  #ep-app .pr-live-tools .ql-share-btn,
+  #ep-app .pr-live-tools .pr-untimed {
+    display: none !important;
+  }
+  #ep-app .pr-live-tools #btn-student-submit {
+    margin-left: auto;
+  }
+}
