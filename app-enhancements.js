@@ -2480,9 +2480,18 @@
    * ------------------------------------------------------------- */
   /* Coding papers are reached from the OPPE / GrPA tabs on the practice page, so the old "IDE Practice" button is hidden. */
   function hideIdePracticeLink() {
-    document.querySelectorAll("#root a[href$='/ide-problems']").forEach(function (a) {
-      if (/^\/courses\/[^/]+\/ide-problems\/?$/.test(a.getAttribute("href") || "")) a.style.display = "none";
+    // The button is a plain <button> in the compiled app, so it is found by its text.
+    document.querySelectorAll("#root main button, #root main a").forEach(function (n) {
+      if (n.textContent.trim() === "IDE Practice") n.style.display = "none";
     });
+    // Never show the old "IDE Practice Problems / Feature in development" stub: go to the practice page.
+    var stub = Array.prototype.find.call(document.querySelectorAll("#root main h1, #root main h2"), function (h) { return h.textContent.trim() === "IDE Practice Problems"; });
+    var slug = (window.location.pathname.match(/^\/(?:practice|courses)\/([^/]+)/) || [])[1];
+    if (!stub || !slug) return;
+    stub.closest("main").style.visibility = "hidden";
+    var target = "/practice/" + slug;
+    if (window.location.pathname.replace(/\/$/, "") !== target) { window.location.replace(target); return; }
+    try { if (!sessionStorage.getItem("ql_stub_reload")) { sessionStorage.setItem("ql_stub_reload", "1"); window.location.reload(); } } catch (_) {}
   }
 
   function decorateCoursePage() {
