@@ -191,26 +191,45 @@
   function icon(name, size) { return '<svg width="' + (size || 14) + '" height="' + (size || 14) + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + ICONS[name] + '</svg>'; }
   document.querySelectorAll("[data-i]").forEach(function (n) { n.innerHTML = icon(n.dataset.i); });
   function status(html) { var s = $("status"); s.hidden = false; $("app").hidden = true; s.textContent = ""; if (html) s.appendChild(html); }
+  var trace = [];  // every request this page made: shown in the technical details of an error screen
   function api(path, opts) {
     opts = opts || {};
+    var started = Date.now(), method = opts.method || "GET";
+    function note(status, msg) { trace.push(new Date().toISOString().slice(11, 19) + " " + method + " " + path + " -> " + status + (msg ? " (" + msg + ")" : "") + " " + (Date.now() - started) + "ms"); }
     return fetch(API + path, {
-      method: opts.method || "GET",
-          body: opts.body ? JSON.stringify(opts.body) : undefined
+      method: method,
+      headers: Object.assign({ Accept: "application/json", Authorization: "Bearer " + token }, opts.body ? { "Content-Type": "application/json" } : {}),
+      body: opts.body ? JSON.stringify(opts.body) : undefined
     }).then(function (r) {
       return r.json().catch(function () { return {}; }).then(function (j) {
+        note(r.status, j.message);
         if (!r.ok) { var e = new Error(j.message || ("Request failed (" + r.status + ")")); e.status = r.status; e.path = path; throw e; }
         return j;
       });
-    });
+    }, function (err) { note("network error", err.message); throw err; });
+  }
+  // "Technical details" box for error screens: what the page knows about the login and the requests it made.
+  function details() {
+    var id = token ? String(token).split("|")[0] : "none";
+    var lines = ["time: " + new Date().toISOString(), "page: " + location.pathname + location.search,
+      "login saved in this browser: " + (token ? "yes (id " + id + ", length " + token.length + ")" : "no"),
+      "api: " + API, "requests:"].concat(trace.length ? trace.map(function (t) { return "  " + t; }) : ["  none yet"]);
+    var box = el("details"); box.open = true; box.style.cssText = "margin-top:16px;text-align:left;max-width:560px;margin-left:auto;margin-right:auto";
+    var sum = el("summary", "", "Technical details (send this to support)"); sum.style.cursor = "pointer";
+    var pre = el("pre", "io", lines.join("\n")); pre.style.cssText += ";margin-top:8px;white-space:pre-wrap";
+    var copy = el("button", "btn sm", "Copy details"); copy.type = "button"; copy.style.marginTop = "8px";
+    copy.addEventListener("click", function () { if (navigator.clipboard) navigator.clipboard.writeText(lines.join("\n")).then(function () { copy.textContent = "Copied"; }); });
+    box.appendChild(sum); box.appendChild(pre); box.appendChild(copy);
+    return box;
   }
   // A 401 only logs the student out when /auth/me also says the login is gone; otherwise show what was refused.
   function authFailed(e) {
     api("/auth/me").then(function () {
-      status(document.createTextNode("The server refused " + (e.path || "a request") + " (401): " + (e.message || "no message")));
+      var d = el("div", "", "The server refused " + (e.path || "a request") + " (401): " + (e.message || "no message")); d.appendChild(details()); status(d);
     }, function (e2) {
       // Only a 401 from /auth/me means the login is really gone; anything else is a different problem, so say what it was.
       if (e2.status === 401) loginPrompt();
-      else status(document.createTextNode("Could not check your login (" + (e2.status || "network") + "): " + e2.message));
+      else { var d = el("div", "", "Could not check your login (" + (e2.status || "network") + "): " + e2.message); d.appendChild(details()); status(d); }
     });
   }
   // 401 means the saved login is no longer valid: drop it (as the main app does) so /login shows the form,
@@ -220,7 +239,7 @@
     if (expired) { try { localStorage.removeItem("lab_token"); localStorage.removeItem("lab_user"); } catch (e) {} token = ""; }
     try { sessionStorage.setItem("ql_storefront_return", JSON.stringify({ to: location.pathname + location.search, at: Date.now() })); } catch (e) {}
     var d = el("div"); d.appendChild(document.createTextNode(expired ? "Your session has expired. " : "Please log in to use the IDE. "));
-    var a = el("a", "", "Log in"); a.href = "/login"; d.appendChild(a); status(d);
+    var a = el("a", "", "Log in"); a.href = "/login"; d.appendChild(a); d.appendChild(details()); status(d);
   }
 
   // Titles look like "<paper> · P1: <name>"; the paper part groups problems, the rest is shown as the question name.
