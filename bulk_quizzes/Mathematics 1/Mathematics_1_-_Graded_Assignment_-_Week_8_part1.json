@@ -1,0 +1,285 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 1 · Graded Assignment · Week 8 · Part 1",
+  "subject": "Mathematics 1",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Match the given functions in Column A with equations of their tangents at the origin $(0, 0)$ in Column B and plotted graphs in Column C."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Option 1: ii) -> a) -> 1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Option 2: i) -> b) -> 2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Option 3: iii) -> b) -> 1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Option 4: i) -> a) -> 3"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Tangents at the origin matched with curve slopes at $(0, 0)$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the derivative of $f(x) = x^3 - 3x^2 + 2x$ at $x = 1$."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$-1$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$0$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$1$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$2$"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$f'(x) = 3x^2 - 6x + 2$. At $x = 1$: $f'(1) = 3(1) - 6(1) + 2 = -1$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "At what point on the curve $y = x^2 - 4x + 5$ is the tangent parallel to the line $2x - y + 1 = 0$?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$(3, 2)$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$(2, 1)$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$(1, 2)$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$(4, 5)$"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Slope of line is 2. $y' = 2x - 4 = 2 \\implies 2x = 6 \\implies x = 3$. At $x = 3$, $y = 9 - 12 + 5 = 2$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the slope of the normal to the curve $y = 2x^2 + 3\\sin x$ at $x = 0$."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$-1/3$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$3$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$-3$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$1/3$"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$y' = 4x + 3\\cos x$. At $x = 0$, $y'(0) = 3$. Slope of normal $= -1 / y'(0) = -1/3$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If $f(x) = |x|$, which of the following is true at $x = 0$?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$f(x)$ is continuous but not differentiable at $x = 0$."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$f(x)$ is differentiable at $x = 0$."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$f(x)$ is not continuous at $x = 0$."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$f'(0) = 0$."
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Left-hand derivative is $-1$, right-hand derivative is $+1$. Since they differ, $f$ is not differentiable at $0$, though it is continuous."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the rate of change of area of a circle with respect to its radius $r$ when $r = 5$ cm (in units of $\\pi$)."
+        }
+      ],
+      "numerical_answer": 10,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$A = \\pi r^2 \\implies \\frac{dA}{dr} = 2\\pi r$. When $r = 5$: $\\frac{dA}{dr} = 10\\pi$."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the critical point of $f(x) = 2x^3 - 9x^2 + 12x + 1$ in the interval $(0, 3)$ where $f''(x) > 0$."
+        }
+      ],
+      "numerical_answer": 2,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$f'(x) = 6x^2 - 18x + 12 = 6(x - 1)(x - 2) = 0 \\implies x = 1, 2$. $f''(x) = 12x - 18$. $f''(2) = 24 - 18 = 6 > 0$, so $x = 2$ is a local minimum."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the minimum value of $f(x) = x + \\frac{1}{x}$ for $x > 0$."
+        }
+      ],
+      "numerical_answer": 2,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "By AM-GM inequality, $x + 1/x \\ge 2\\sqrt{x \\cdot 1/x} = 2$, attained at $x = 1$."
+        }
+      ]
+    }
+  ]
+}

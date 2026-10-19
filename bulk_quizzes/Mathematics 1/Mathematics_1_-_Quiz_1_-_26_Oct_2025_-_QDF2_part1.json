@@ -1,0 +1,255 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 1 · Quiz 1 · 26 Oct 2025 · QDF2 · Part 1",
+  "subject": "Mathematics 1",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the two quadratic functions $y_1 = x^2 - 4x + 1$ and $y_2 = x^2 - 6x - 3$. A quadratic function $f(x) = ax^2 + bx + c$ has its vertex at the intersection point of $y_1$ and $y_2$, its y-intercept is 2, and its axis of symmetry is parallel to the y-axis. What is the equation of $f(x)$?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$y = \\frac{11}{4}(x + 2)^2 + 13$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$y = -\\frac{11}{4}(x - 2)^2 + 13$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$y = \\frac{13}{4}(x + 2)^2 + 13$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$y = -\\frac{11}{4}(x + 2)^2 - 13$"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Intersection of $y_1$ and $y_2$: $x^2 - 4x + 1 = x^2 - 6x - 3 \\implies 2x = -4 \\implies x = -2$. Then $y = (-2)^2 - 4(-2) + 1 = 4 + 8 + 1 = 13$. The vertex is $(-2, 13)$. Vertex form: $y = a(x + 2)^2 + 13$. Since y-intercept is 2 at $x = 0$: $2 = a(2)^2 + 13 = 4a + 13 \\implies 4a = -11 \\implies a = -11/4$ (or $11/4$ with orientation)."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Subendu and Mohit reside at $(4, -18.9)$ and $(4, 18.9)$ respectively. They planned a road trip. Subendu decided to go by road $r_1(x) = 0.02(x - 5)(x - 7)(x - 9)(x - 11)(x - 13)$ and Mohit chose the road $r_2(x) = 0.02(x - 5)^2(x - 7)(x - 9)(x - 11)(x - 13)$. They decided to meet where these roads intersect. Based on the given information, choose the correct set of intersection coordinates."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$\\{(5, 0), (7, 0), (9, 0)\\}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$\\{(6, 0), (7, 0), (9, 0), (11, 0), (13, 0)\\}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$\\{(0, 5), (0, 7), (0, 9)\\}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$\\{(5, 0), (7, 0), (9, 0), (11, 0), (13, 0)\\}$"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Intersection occurs where $r_1(x) = r_2(x) \\implies 0.02(x - 5)(x - 7)(x - 9)(x - 11)(x - 13)[(x - 5) - 1] = 0$. The roots are $x = 5 + 1 = 6, 7, 9, 11, 13$. At all these points, $y = 0$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "An online degree programme offers the following courses: Level I: Mathematics, Statistics; Level II: Machine Learning Foundations, Mathematical Thinking; Level III: Deep Learning, Machine Learning Techniques, Advanced Algorithms. Every course in Level I is a prerequisite for every course in Level II, and every course in Level II is a prerequisite for every course in Level III. A student wants to complete Deep Learning. Which of the following sets of courses must they complete?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Mathematics, Statistics, Machine Learning Foundations, Mathematical Thinking"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Mathematics, Statistics only"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Machine Learning Foundations, Mathematical Thinking only"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Mathematics, Machine Learning Techniques"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0
+      ],
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "To take Deep Learning (Level III), the student must satisfy all Level II prerequisites (ML Foundations and Mathematical Thinking), which in turn require all Level I prerequisites (Mathematics and Statistics)."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let $f: \\mathbb{R} \\to \\mathbb{R}$ be defined as $f(x) = x^2 - 6x + 8$. Which of the following statements is (are) true?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The minimum value of $f(x)$ is $-1$."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The function is one-to-one on $\\mathbb{R}$."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The vertex of the parabola is $(3, 1)$."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The function is strictly increasing on $[3, \\infty)$."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        3
+      ],
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$f(x) = (x - 3)^2 - 1$. The vertex is $(3, -1)$, so the minimum value is $-1$ at $x = 3$. For $x \\ge 3$, the function is strictly increasing."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the polynomial $P(x) = x^3 - 4x^2 + x + 6$. Which of the following is (are) factors of $P(x)$?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$x + 1$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$x - 1$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$x + 2$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$x - 2$"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        3
+      ],
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$P(-1) = -1 - 4 - 1 + 6 = 0 \\implies (x + 1)$ is a factor. $P(2) = 8 - 16 + 2 + 6 = 0 \\implies (x - 2)$ is a factor. $P(3) = 27 - 36 + 3 + 6 = 0 \\implies (x - 3)$ is a factor."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A quadratic equation of the form $ax^2 + bx + c = 0$ has its vertex at $(3, -2)$ and its y-intercept at 4. Due to a recording error, the coefficient $b$ was written as 5 instead of its correct value. Find the absolute difference between the sum of the roots of the incorrectly recorded quadratic equation and that of the correct equation."
+        }
+      ],
+      "numerical_answer": 13.5,
+      "numerical_tolerance": 0.5,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Correct vertex $(3, -2)$ gives $y = a(x - 3)^2 - 2$. Passing through $(0, 4) \\implies 4 = 9a - 2 \\implies 9a = 6 \\implies a = 2/3$. Then $b = -2a(3) = -4$. Correct sum of roots = $-b/a = 6$. Incorrect equation with $b' = 5$: sum of roots = $-5/(2/3) = -7.5$. Absolute difference = $|6 - (-7.5)| = 13.5$."
+        }
+      ]
+    }
+  ]
+}

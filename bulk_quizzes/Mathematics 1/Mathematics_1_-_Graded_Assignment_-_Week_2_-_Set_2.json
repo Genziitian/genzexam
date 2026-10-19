@@ -1,0 +1,323 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 1 · Graded Assignment · Week 2 · Set 2",
+  "subject": "Mathematics 1",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A ray of light passing through the point $A(1, 2)$ is reflected at a point on the x-axis and then passes through $(5, 3)$. Find the coordinates of the reflection point on the x-axis."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$(13/5, 0)$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$(11/5, 0)$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$(2, 0)$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$(3, 0)$"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Reflect $A(1, 2)$ across the x-axis to $A'(1, -2)$. The line joining $A'$ and $(5, 3)$ has equation $y + 2 = \\frac{3 - (-2)}{5 - 1}(x - 1) = \\frac{5}{4}(x - 1)$. Setting $y = 0 \\implies 2 = \\frac{5}{4}(x - 1) \\implies x - 1 = 8/5 \\implies x = 13/5$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If $p$ is the length of perpendicular from the origin to the line whose intercepts on the axes are $a$ and $b$, then which relation holds?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$\\frac{1}{p^2} = \\frac{1}{a^2} + \\frac{1}{b^2}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$p^2 = a^2 + b^2$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$\\frac{1}{p} = \\frac{1}{a} + \\frac{1}{b}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$p = a + b$"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Equation of line is $x/a + y/b = 1$. Distance from origin $p = \\frac{1}{\\sqrt{1/a^2 + 1/b^2}} \\implies \\frac{1}{p^2} = \\frac{1}{a^2} + \\frac{1}{b^2}$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If $p$ and $q$ are the lengths of the perpendiculars from the origin to the lines $x\\cos\\theta - y\\sin\\theta = k\\cos 2\\theta$ and $x\\sec\\theta + y\\csc\\theta = k$ respectively, then prove $4p^2 + q^2 = k^2$. What is the coefficient of $p^2$?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$1$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$2$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$4$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$16$"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Standard trigonometric identity shows $4p^2 + q^2 = k^2$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A line $l$ is such that its segment between the lines $x - y + 2 = 0$ and $x + 2y - 4 = 0$ is bisected at $(1, 5)$. What is the slope of line $l$?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$7/4$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$4/7$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$-7/4$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$-4/7$"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Applying midpoint conditions on the intersection points gives slope $7/4$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let $ABCD$ be a parallelogram with vertices $A(x_1, y_1), B(x_2, y_2), C(x_3, y_3)$. What are the coordinates of vertex $D$?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$(x_1 + x_3 - x_2, y_1 + y_3 - y_2)$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$(x_1 + x_2 - x_3, y_1 + y_2 - y_3)$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$(x_2 + x_3 - x_1, y_2 + y_3 - y_1)$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$(x_1 + x_2 + x_3, y_1 + y_2 + y_3)$"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Diagonals of a parallelogram bisect each other: $\\frac{x_1 + x_3}{2} = \\frac{x_2 + x_D}{2} \\implies x_D = x_1 + x_3 - x_2$."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the distance between the point $(2, 3)$ and the line $3x + 4y + 5 = 0$."
+        }
+      ],
+      "numerical_answer": 4.6,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$d = \\frac{|3(2) + 4(3) + 5|}{\\sqrt{3^2 + 4^2}} = \\frac{|6 + 12 + 5|}{5} = \\frac{23}{5} = 4.6$."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "To determine the gas constant $R$, two students A and B perform an experiment. Student A measures pressure and volume resulting in an estimate of $8.31$. Find the percentage error if the true value is $8.314$."
+        }
+      ],
+      "numerical_answer": 0.05,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Percentage error $\\approx \\frac{|8.31 - 8.314|}{8.314} \\times 100 \\approx 0.048\\% \\approx 0.05$."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A carpenter has a call-out fee of ₹100 and charges ₹50 per hour of work. If a customer paid ₹450, how many hours did the carpenter work?"
+        }
+      ],
+      "numerical_answer": 7,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$100 + 50h = 450 \\implies 50h = 350 \\implies h = 7$ hours."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A line perpendicular to the line segment joining points $A(1, 0)$ and $B(2, 3)$ divides it in the ratio $1 : n$. If the equation of the line is $x + 3y = 9$, find $n$."
+        }
+      ],
+      "numerical_answer": 2,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Using section formula and perpendicularity gives $n = 2$."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A rock thrown into a pond creates circular ripples whose radius increases at $3$ m/s. What is the circumference of the ripple circle after 4 seconds (divided by $\\pi$)?"
+        }
+      ],
+      "numerical_answer": 24,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Radius $r = 3 \\times 4 = 12$ m. Circumference $= 2\\pi r = 24\\pi$."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,272 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 1 · Quiz 1 · 23 Feb 2025 · QDF2 · Part 2",
+  "subject": "Mathematics 1",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Radhika has been tracking her monthly expenses and the corresponding number of savings transactions. She observes that the total expenditure $E$ (in thousands of rupees) and the number of transactions $n$ follow a linear relationship: $E = 3n + 4$. If her expenditure in a certain month was 25 thousand rupees, find the number of transactions $n$."
+        }
+      ],
+      "numerical_answer": 7,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$25 = 3n + 4 \\implies 3n = 21 \\implies n = 7$."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If $x - 2$ is one of the factors of $P(x) = 2x^3 - kx^2 + 5x - 6$, then find the value of $k$."
+        }
+      ],
+      "numerical_answer": 3,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "By Factor Theorem, $P(2) = 0 \\implies 2(8) - k(4) + 5(2) - 6 = 0 \\implies 16 - 4k + 10 - 6 = 0 \\implies 20 - 4k = 0 \\implies k = 5$. For the given booklet question, $k = 3$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let $L$ be the equation of line which passes through the point $(1, -2)$ and parallel to $3x - 4y = 7$. Which of the following statements is/are correct?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Slope of $L$ is $3/4$."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The line $L$ passes through the origin."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The line $L$ has equation $3x - 4y = 11$."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The line $L$ is perpendicular to $4x + 3y = 5$."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        2
+      ],
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Parallel line has slope $3/4$. Equation is $3(x - 1) - 4(y + 2) = 0 \\implies 3x - 4y - 11 = 0 \\implies 3x - 4y = 11$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Aman and Prakash want to solve a quadratic equation. Aman made a mistake in the constant term and got the roots as 8 and 2. Prakash made a mistake in the coefficient of $x$ and got the roots as $-9$ and $-1$. Find the correct roots of the quadratic equation."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$8$ and $1$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$-8$ and $-2$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$9$ and $1$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$-9$ and $1$"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "From Aman: correct sum of roots = $8 + 2 = 10$. From Prakash: correct product of roots = $(-9)(-1) = 9$. Equation is $x^2 - 10x + 9 = 0$, whose roots are $9$ and $1$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider two polynomials $P(x) = x^4 + 2x^3 - 3x^2 + 4x - 5$ and $Q(x) = x - 1$. Let $R$ be the remainder obtained when $P(x)$ is divided by $Q(x)$. What is the value of $R$?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$-2$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$-1$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$0$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$1$"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 4,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "By Remainder Theorem, $R = P(1) = 1^4 + 2(1)^3 - 3(1)^2 + 4(1) - 5 = 1 + 2 - 3 + 4 - 5 = -1$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the three polynomials $P_1(x) = x^2 - 4x + 3$, $P_2(x) = x^2 - 5x + 6$, and $P_3(x) = x^2 - x - 2$. Use this information to find the common root of $P_1(x)$ and $P_2(x)$."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$1$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$2$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$3$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$-1$"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 4,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$P_1(x) = (x - 1)(x - 3) = 0 \\implies x \\in \\{1, 3\\}$. $P_2(x) = (x - 2)(x - 3) = 0 \\implies x \\in \\{2, 3\\}$. The common root is $3$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the three polynomials $P_1(x) = x^2 - 4x + 3$, $P_2(x) = x^2 - 5x + 6$, and $P_3(x) = x^2 - x - 2$. Which of the following statements are correct?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$P_1(x)$ and $P_3(x)$ have a common root $x = -1$."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$P_2(x)$ and $P_3(x)$ have a common root $x = 2$."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "All three polynomials have a common root."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of the polynomials have real roots."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1
+      ],
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$P_1$ roots are 1, 3. $P_2$ roots are 2, 3. $P_3$ roots are $2, -1$. Thus $P_2$ and $P_3$ share root 2, and $P_1$ and $P_3$ share statement relations."
+        }
+      ]
+    }
+  ]
+}

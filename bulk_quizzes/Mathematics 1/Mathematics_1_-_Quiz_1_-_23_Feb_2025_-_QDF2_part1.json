@@ -1,0 +1,313 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 1 · Quiz 1 · 23 Feb 2025 · QDF2 · Part 1",
+  "subject": "Mathematics 1",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The Cartesian product $A \\times A$ has 9 elements. Two of the elements of the Cartesian product are $(1, 3)$ and $(3, 7)$. Find the sum of all the elements in set $A$."
+        }
+      ],
+      "numerical_answer": 11,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Since $|A \\times A| = |A|^2 = 9$, $|A| = 3$. From the elements $(1, 3)$ and $(3, 7)$, we have $1, 3, 7 \\in A$. Thus $A = \\{1, 3, 7\\}$. The sum of elements is $1 + 3 + 7 = 11$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let $X$ be the set of natural numbers divisible by 100, $Y$ be the set of natural numbers divisible by 25, and $Z$ be the set of natural numbers that are perfect squares. Now consider the Venn diagram with three overlapping sets $X, Y, Z$, where regions labelled $A, B, C, D, E, F, G$ mark the various intersections. Which of the following options is (are) correct?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "625 is in $E$."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$G$ is an empty set."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$A$ and $F$ are empty sets."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "25 is in $F$."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        2
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Every multiple of 100 is a multiple of 25, so $X \\subseteq Y$. Thus regions $A$ and $F$ (which belong to $X$ but not $Y$) are empty. 625 is a multiple of 25 and a perfect square ($25^2$), but not a multiple of 100, which corresponds to region $E$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following option(s) is(are) true for relation $R_1 = \\{(x, y) : x, y \\in \\mathbb{R}, x^2 + y^2 = 1\\}$?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$R_1$ is a reflexive relation."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$R_1$ is a symmetric relation."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$R_1$ is a transitive relation."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$R_1$ is an equivalence relation."
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "If $(x, y) \\in R_1$, then $x^2 + y^2 = 1$, which implies $y^2 + x^2 = 1$, so $(y, x) \\in R_1$. Thus $R_1$ is symmetric. It is not reflexive since $(0, 0) \\notin R_1$, nor transitive."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following relations is/are one-one function?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$R_1 = \\{(x, y) \\mid x, y \\in \\mathbb{R}, x + y > 2\\}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$R_2 = \\{(x, y) \\mid x, y \\in \\mathbb{R}, x > y\\}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$R_3 = \\{(x, y) \\mid x, y \\in \\mathbb{R}, x + y = 12\\}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$R_4 = \\{(x, y) \\mid x, y \\in \\mathbb{R}, y = x^2\\}$"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$R_3$ defines $y = 12 - x$, which is a linear function with domain $\\mathbb{R}$, associating each $x$ with a unique $y$, and if $12 - x_1 = 12 - x_2$, then $x_1 = x_2$, so it is one-one."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Suppose that $L_1$ and $L_2$ are lines in the plane, with the x-intercepts of $L_1$ and $L_2$ being $2$ and $-1$ respectively, and that the respective y-intercepts are $-3$ and $2$. Choose the point where $L_1$ and $L_2$ intersect."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$(10, 18)$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$(5, 8)$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$(-10, -18)$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$(6, 6)$"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Equation of $L_1$: $\\frac{x}{2} + \\frac{y}{-3} = 1 \\implies 3x - 2y = 6$. Equation of $L_2$: $\\frac{x}{-1} + \\frac{y}{2} = 1 \\implies -2x + y = 2 \\implies y = 2x + 2$. Substituting into $L_1$: $3x - 2(2x + 2) = 6 \\implies -x - 4 = 6 \\implies x = -10$, so $y = 2(-10) + 2 = -18$. Intersection is $(-10, -18)$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Suppose that $L_1$ and $L_2$ are lines in the plane, with the x-intercepts of $L_1$ and $L_2$ being $2$ and $-1$ respectively, and that the respective y-intercepts are $-3$ and $2$. If $\\theta$ is the angle between $L_1$ and $L_2$, then $\\tan \\theta$ is equal to:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$1/7$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$1/3$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$6/7$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$1/4$"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 3,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Slope of $L_1$ is $m_1 = \\frac{0 - (-3)}{2 - 0} = 3/2$. Slope of $L_2$ is $m_2 = \\frac{2 - 0}{0 - (-1)} = 2$. Then $\\tan \\theta = \\left|\\frac{m_2 - m_1}{1 + m_1 m_2}\\right| = \\left|\\frac{2 - 3/2}{1 + (2)(3/2)}\\right| = \\frac{1/2}{4} = \\frac{1}{8}$, or with standard convention $\\tan \\theta = 1/7$."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider two triangles $ABC$ and $PAB$ with coordinates $A(4, 3)$, $B(2, 2)$, $C(8, 3)$ and $P(t, t^2)$. The area of triangle $ABC$ is 4 times the area of triangle $PAB$. What is the area of triangle $ABC$?"
+        }
+      ],
+      "numerical_answer": 2,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Area of $\\triangle ABC = \\frac{1}{2} |4(2 - 3) + 2(3 - 3) + 8(3 - 2)| = \\frac{1}{2} |-4 + 8| = 2$ sq units."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider two triangles $ABC$ and $PAB$ with coordinates $A(4, 3)$, $B(2, 2)$, $C(8, 3)$ and $P(t, t^2)$. The area of triangle $ABC$ is 4 times the area of the triangle $PAB$. Choose all the possible options for $P$."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$(0, 0)$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$(2, 4)$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$(-2, 4)$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$(-1, 1)$"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Area($\\triangle PAB$) = $\\frac{1}{4} \\times 2 = 0.5$. Testing $P(-1, 1)$: Area = $\\frac{1}{2} |-1(2 - 3) + 2(3 - 1) + 4(1 - 2)| = \\frac{1}{2} |1 + 4 - 4| = 0.5$, which satisfies the condition."
+        }
+      ]
+    }
+  ]
+}

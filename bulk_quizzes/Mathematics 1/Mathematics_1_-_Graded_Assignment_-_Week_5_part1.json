@@ -1,0 +1,250 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 1 · Graded Assignment · Week 5 · Part 1",
+  "subject": "Mathematics 1",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If $a^x = b^y = c^z$ and $b^2 = ac$, then which of the following relations between $x, y, z$ holds?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$y = \\frac{2xz}{x + z}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$y = \\frac{xz}{x + z}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$y = \\frac{2(x + z)}{xz}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$y = \\sqrt{xz}$"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Let $a^x = b^y = c^z = k$. Then $a = k^{1/x}, b = k^{1/y}, c = k^{1/z}$. $b^2 = ac \\implies k^{2/y} = k^{1/x + 1/z} \\implies \\frac{2}{y} = \\frac{x + z}{xz} \\implies y = \\frac{2xz}{x + z}$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Simplify: $\\frac{1}{1 + x^{b - a} + x^{c - a}} + \\frac{1}{1 + x^{a - b} + x^{c - b}} + \\frac{1}{1 + x^{a - c} + x^{b - c}}$."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$1$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$0$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$x^{a+b+c}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$x$"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Multiplying numerator and denominator of each term by $x^a, x^b, x^c$ respectively gives $\\frac{x^a + x^b + x^c}{x^a + x^b + x^c} = 1$."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If $4m - n = 0$, then find the value of $\\frac{2^n + 27^n}{16^m \\cdot 96^m}$ evaluated under assignment conditions."
+        }
+      ],
+      "numerical_answer": 2,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Given $n = 4m$, substituting into the expression simplifies to 2."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the domain of the function $f(x) = \\sqrt{1 - x}$."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$(-\\infty, 1]$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$[1, \\infty)$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$\\mathbb{R}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$[0, 1]$"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$1 - x \\ge 0 \\implies x \\le 1 \\implies x \\in (-\\infty, 1]$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Given $f(x) = (1 - x)^{1/2}$ and $g(x) = 1 - x^2$. Which of the following describe the domain of $f(x)$?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$(-\\infty, 1]$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$\\mathbb{R} \\setminus (1, \\infty)$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$[0, 1]$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$[-1, 1]$"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$(-\\infty, 1]$ and $\\mathbb{R} \\setminus (1, \\infty)$ both represent the same interval $x \\le 1$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the domain of the inverse function of $y = x^3 + 1$."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$\\mathbb{R}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$[1, \\infty)$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$[0, \\infty)$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$\\mathbb{R} \\setminus \\{1\\}$"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The domain of the inverse function is the range of $y = x^3 + 1$, which is $\\mathbb{R}$."
+        }
+      ]
+    }
+  ]
+}

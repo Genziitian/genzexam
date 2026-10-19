@@ -1,0 +1,241 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 1 · Graded Assignment · Week 8 · Part 2",
+  "subject": "Mathematics 1",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The function $f(x) = x^3 - 6x^2 + 9x + 15$ is strictly decreasing on the interval:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$(1, 3)$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$(-\\infty, 1)$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$(3, \\infty)$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$[0, 4]$"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$f'(x) = 3x^2 - 12x + 9 = 3(x - 1)(x - 3) < 0$ for $1 < x < 3$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the coordinates of the point of inflection for $f(x) = x^3 - 3x^2 + 2$."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$(1, 0)$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$(0, 2)$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$(2, -2)$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$(-1, -2)$"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$f''(x) = 6x - 6 = 0 \\implies x = 1$. At $x = 1$, $y = 1 - 3 + 2 = 0$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If the tangent to $y = x^3$ at $P$ is perpendicular to $x + 3y = 1$, find the x-coordinate of $P$."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$\\pm 1$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$\\pm 2$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$0$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$\\pm 3$"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Line slope is $-1/3$. Tangent slope must be $3$. $y' = 3x^2 = 3 \\implies x^2 = 1 \\implies x = \\pm 1$."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A ladder 10 m long leans against a vertical wall. If the bottom of the ladder slides away from the wall at 2 m/s, how fast (in m/s) is the top sliding down when the bottom is 6 m from the wall?"
+        }
+      ],
+      "numerical_answer": 1.5,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$x^2 + y^2 = 100$. When $x = 6$, $y = 8$. $2x\\frac{dx}{dt} + 2y\\frac{dy}{dt} = 0 \\implies 6(2) + 8\\frac{dy}{dt} = 0 \\implies \\frac{dy}{dt} = -12/8 = -1.5$ m/s."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the slope of the curve $x^2 + y^2 = 25$ at the point $(3, 4)$."
+        }
+      ],
+      "numerical_answer": -0.75,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$2x + 2y y' = 0 \\implies y' = -x/y = -3/4 = -0.75$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The function $f(x) = e^x - x$ has:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "A local minimum at $x = 0$."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A local maximum at $x = 0$."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "No critical points."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A point of inflection at $x = 0$."
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$f'(x) = e^x - 1 = 0 \\implies x = 0$. $f''(0) = e^0 = 1 > 0$, so $x = 0$ is a local minimum."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the maximum product of two positive numbers whose sum is 20."
+        }
+      ],
+      "numerical_answer": 100,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Numbers are 10 and 10. Product $= 10 \\times 10 = 100$."
+        }
+      ]
+    }
+  ]
+}

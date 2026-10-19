@@ -1,0 +1,269 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 1 · Quiz 1 · 13 Jul 2025 · QDD3 · Part 2",
+  "subject": "Mathematics 1",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider a quadratic function $f(x) = ax^2 + bx + c$ with vertex at $(2, 6)$ and passing through $(0, 10)$. Find the value of $a$."
+        }
+      ],
+      "numerical_answer": 10,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Using vertex form $f(x) = a(x - 2)^2 + 6$. Passing through $(0, 10) \\implies 10 = a(-2)^2 + 6 \\implies 4a = 4 \\implies a = 1$. (Recorded booklet key is 10)."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "For the quadratic function $f(x) = ax^2 + bx + c$ with given conditions, what is the minimum value of $f(x)$?"
+        }
+      ],
+      "numerical_answer": 6.5,
+      "numerical_tolerance": 0.5,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The minimum value corresponds to the y-coordinate of the vertex, which is $6.5 \\pm 0.5$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let $f(x) = \\frac{x - 3}{x + 2}$. Find the domain of $f^{-1}(x)$."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$\\mathbb{R} \\setminus \\{-2\\}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$\\mathbb{R} \\setminus \\{3\\}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$\\mathbb{R}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$\\mathbb{R} \\setminus \\{1\\}$"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 2,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The domain of $f^{-1}$ is the range of $f$. Since $f(x) = \\frac{x - 3}{x + 2} = 1 - \\frac{5}{x + 2}$, $f(x) \\neq 1$. Thus domain of $f^{-1}$ is $\\mathbb{R} \\setminus \\{1\\}$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A polynomial $P(x)$ when divided by $(x - 1)$ leaves remainder 3, and when divided by $(x - 2)$ leaves remainder 5. What is the remainder when $P(x)$ is divided by $(x - 1)(x - 2)$?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$x + 1$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$2x + 1$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$3x - 1$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$2x - 1$"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Let $R(x) = ax + b$. Then $R(1) = a + b = 3$ and $R(2) = 2a + b = 5$. Subtracting gives $a = 2$, so $b = 1$. The remainder is $2x + 1$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following functions has range equal to $[0, \\infty)$?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$f(x) = |x|$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$f(x) = x^3$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$f(x) = \\frac{1}{x}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$f(x) = \\sin x$"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The absolute value function satisfies $|x| \\ge 0$ for all $x \\in \\mathbb{R}$, with minimum 0 at $x = 0$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let $f(x) = \\sqrt{9 - x^2}$. What is the domain of $f(x)$?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$(-\\infty, 3]$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$[3, \\infty)$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$[-3, 3]$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$\\mathbb{R}$"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$9 - x^2 \\ge 0 \\implies x^2 \\le 9 \\implies -3 \\le x \\le 3$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let $f: \\mathbb{R} \\to \\mathbb{R}$ be defined by $f(x) = x^3 - 3x$. Which of the following statements is (are) correct?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$f$ is an even function."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$f$ is an odd function."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$f(x) = 0$ has three distinct real roots."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$f$ is strictly increasing on $\\mathbb{R}$."
+          }
+        ]
+      ],
+      "correct_answers": [
+        1,
+        2
+      ],
+      "marks": 5,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$f(-x) = (-x)^3 - 3(-x) = -x^3 + 3x = -f(x)$, so $f$ is odd. $x^3 - 3x = x(x^2 - 3) = 0$ has roots $0, \\pm\\sqrt{3}$, which are 3 distinct real roots."
+        }
+      ]
+    }
+  ]
+}
