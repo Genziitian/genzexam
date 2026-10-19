@@ -53,11 +53,11 @@ import software-engineering "Diploma/Sw Engg" "${EXTRA[@]}"
 import software-testing "Diploma/Sw Testing" "${EXTRA[@]}"
 import managerial-economics "Diploma/Managerial Economics" "${EXTRA[@]}"
 # Any folder with paper files that is not listed above goes to the "Unknown" course for sorting later.
-while IFS= read -r dir; do
+find ../bulk_quizzes -mindepth 1 -maxdepth 2 -type d | sort | while IFS= read -r dir; do
   rel="${dir#../bulk_quizzes/}"
   case "$DONE" in *"|$rel|"*) continue ;; esac
   ls "$dir"/*.json >/dev/null 2>&1 || continue
   echo "(unlisted folder: $rel)"
   import unknown "$rel" "${EXTRA[@]}"
-done < <(find ../bulk_quizzes -mindepth 1 -maxdepth 2 -type d | sort)
+done
 echo "All done."
