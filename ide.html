@@ -440,7 +440,7 @@
     problems = paper.problems;
     openProblem(id || problems[0].id);
   }
-  var filter = "all";
+  var filter = params.get("type") || "all";
   function parsePaper(name) {
     var m = /^(.+?) \((.+?)\) Set (\d+)$/.exec(name);
     if (m) return { exam: typeOf(m[1]) || m[1], session: m[2], set: m[3] };
@@ -461,6 +461,7 @@
     });
     // Only the course's own exam types become filters; anything else shows under "All papers".
     exams = TYPES.map(function (t) { return t[0]; }).filter(function (t) { return exams.indexOf(t) >= 0; });
+    if (filter !== "all" && exams.indexOf(filter) < 0) filter = "all";
     $("stats").textContent = "";
     [[papers.length, "Papers"], [total, "Questions"], [solved, "Solved"]].forEach(function (x) { var d = el("div", "stat"); d.appendChild(el("b", "", String(x[0]))); d.appendChild(el("small", "", x[1])); $("stats").appendChild(d); });
     var chips = $("chips"); chips.textContent = "";

@@ -2496,6 +2496,49 @@
     var heading = document.querySelector("#root main h1");
     var card = heading && heading.closest(".rounded-2xl");
     if (card) tag(card, "data-ql-course-head", "");
+    addIdeTabs(tabs);
+  }
+
+  /* Coding questions (GrPA, OPPE 1, OPPE 2 ...) live in the IDE page. Show them as extra tabs after End Term. */
+  var ideTypes = null, ideTypesFor = "";
+  function addIdeTabs(tabs) {
+    var m = window.location.pathname.match(/^\/practice\/([^/]+)/i);
+    var runtime = window.QLStorefront;
+    if (!m || !runtime || !runtime.token()) return;
+    var slug = m[1];
+    if (ideTypesFor !== slug) {
+      ideTypesFor = slug; ideTypes = null;
+      fetch(runtime.apiBase + "/courses/" + encodeURIComponent(slug) + "/ide-problems", { headers: { Accept: "application/json", Authorization: "Bearer " + runtime.token() } })
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (d) {
+          if (!d) return;
+          var solved = []; try { solved = JSON.parse(localStorage.getItem("ide.solved") || "[]"); } catch (_) {}
+          var defs = [["GrPA", /^GrPA/i, "GrPA"], ["OPPE 1", /^OPPE ?1\b/i, "OPPE 1"], ["OPPE 2", /^OPPE ?2\b/i, "OPPE 2"], ["Quiz 1", /^Quiz ?1\b/i, "Quiz 1 Coding"], ["End Term", /^End ?Term/i, "End Term Coding"]];
+          var out = defs.map(function (t) { return { type: t[0], label: t[2], total: 0, done: 0 }; });
+          (d.weeks || []).forEach(function (w) { (w.problems || []).forEach(function (p) {
+            defs.forEach(function (t, i) { if (t[1].test(p.title)) { out[i].total++; if (solved.indexOf(p.id) >= 0) out[i].done++; } });
+          }); });
+          ideTypes = out.filter(function (t) { return t.total > 0; });
+          schedule();
+        })
+        .catch(function () {});
+      return;
+    }
+    if (!ideTypes) return;
+    var anchor = null;
+    tabs.querySelectorAll("button:not([data-ql-ide-tab])").forEach(function (b) { if (/^End Term/i.test(b.textContent.trim())) anchor = b; });
+    var last = anchor || tabs.lastElementChild;
+    ideTypes.forEach(function (t) {
+      var existing = tabs.querySelector('[data-ql-ide-tab="' + t.type + '"]');
+      if (existing) { last = existing; return; }
+      var b = document.createElement("button");
+      b.type = "button"; b.setAttribute("data-ql-ide-tab", t.type); b.setAttribute("data-empty", "false");
+      b.className = "whitespace-nowrap rounded-lg px-4 py-2 text-sm font-medium transition text-slate-600 hover:text-slate-900";
+      b.innerHTML = "<span></span><span class=\"ml-2 inline-flex items-center rounded-full px-1.5 text-[10px] font-semibold bg-slate-100 text-slate-500\"></span>";
+      b.firstChild.textContent = t.label; b.lastChild.textContent = t.done + "/" + t.total;
+      b.addEventListener("click", function () { window.location.assign("/ide.html?course=" + encodeURIComponent(slug) + "&type=" + encodeURIComponent(t.type)); });
+      last.insertAdjacentElement("afterend", b); last = b;
+    });
   }
 
   /* ---------------------------------------------------------------
