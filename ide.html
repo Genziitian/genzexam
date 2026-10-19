@@ -23,11 +23,6 @@
   [hidden] { display: none !important; }
   html, body { height: 100%; margin: 0; }
   body { background: var(--bg); color: var(--ink); font: 15px/1.5 -apple-system, "Segoe UI", Roboto, sans-serif; display: flex; flex-direction: column; }
-  body:not(.in-home) header { display: none; }
-  header { display: flex; align-items: center; gap: 12px; padding: 10px 16px; background: var(--panel); border-bottom: 1px solid var(--line); }
-  header a.back { color: var(--brand); text-decoration: none; font-weight: 600; }
-  header select { flex: 1; min-width: 0; max-width: 520px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); color: var(--ink); font: inherit; }
-  header .nav button { padding: 7px 12px; }
   main { flex: 1; min-height: 0; display: grid; grid-template-columns: 230px minmax(280px, 1fr) minmax(320px, 1.2fr); gap: 12px; padding: 12px; }
   .pane { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; display: flex; flex-direction: column; min-height: 0; overflow: hidden; }
   .tabs { display: flex; gap: 4px; padding: 0 12px; border-bottom: 1px solid var(--line); overflow-x: auto; }
@@ -71,41 +66,6 @@
   .case small { color: var(--muted); font-weight: 600; }
   .sub { display: flex; justify-content: space-between; align-items: center; padding: 9px 0; border-bottom: 1px solid var(--line); gap: 8px; }
   .sub button { margin-left: auto; }
-  .home { flex: 1; overflow: auto; }
-  .hero { position: relative; overflow: hidden; padding: 44px 0 34px; background: radial-gradient(900px 300px at 15% -20%, rgba(139,144,255,.35), transparent 60%), radial-gradient(700px 260px at 95% 0%, rgba(45,212,191,.22), transparent 60%), linear-gradient(180deg, var(--brand-soft), transparent); border-bottom: 1px solid var(--line); }
-  .hero-in, .wrap { max-width: 1040px; margin: 0 auto; padding: 0 20px; }
-  .eyebrow { display: inline-flex; align-items: center; gap: 8px; font: 700 12px/1 ui-monospace, Menlo, monospace; letter-spacing: .12em; text-transform: uppercase; color: var(--brand); }
-  .eyebrow i { width: 8px; height: 8px; border-radius: 50%; background: var(--ok); box-shadow: 0 0 0 4px var(--ok-bg); }
-  .hero h1 { font-size: clamp(28px, 5vw, 44px); line-height: 1.08; margin: 12px 0 10px; letter-spacing: -.02em; }
-  .hero h1 span { background: linear-gradient(90deg, var(--brand), #2dd4bf); -webkit-background-clip: text; background-clip: text; color: transparent; }
-  .hero p { margin: 0; max-width: 560px; color: var(--muted); font-size: 16px; }
-  .stats { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
-  .stat { padding: 10px 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--panel); }
-  .stat b { display: block; font-size: 22px; line-height: 1.1; }
-  .stat small { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .06em; }
-  .chips { display: flex; gap: 8px; margin: 26px 0 8px; flex-wrap: wrap; }
-  .chip { padding: 7px 16px; border-radius: 99px; border: 1px solid var(--line); background: var(--panel); color: var(--muted); font: 600 13px inherit; cursor: pointer; }
-  .chip.on { background: var(--brand); border-color: var(--brand); color: #fff; }
-  .group h2 { display: flex; align-items: center; gap: 12px; margin: 26px 0 12px; font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
-  .group h2::after { content: ""; flex: 1; height: 1px; background: var(--line); }
-  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 14px; }
-  .tile { --a: #6366f1; --b: #8b5cf6; position: relative; display: flex; flex-direction: column; gap: 10px; padding: 18px; border: 1px solid var(--line); border-radius: 16px; background: var(--panel); overflow: hidden; transition: transform .15s, border-color .15s, box-shadow .15s; }
-  .tile.t-oppe2 { --a: #0ea5e9; --b: #14b8a6; }
-  .tile.t-grpa { --a: #16a34a; --b: #84cc16; }
-  .tile.t-quiz1 { --a: #f59e0b; --b: #f97316; }
-  .tile.t-endterm { --a: #e11d48; --b: #f472b6; }
-  .tile::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 4px; background: linear-gradient(90deg, var(--a), var(--b)); }
-  .tile:hover { transform: translateY(-3px); border-color: var(--a); box-shadow: 0 12px 30px -14px var(--a); }
-  .tile .tag { font: 700 11px/1 ui-monospace, Menlo, monospace; letter-spacing: .1em; text-transform: uppercase; color: var(--a); }
-  .tile .num { font-size: 38px; font-weight: 800; line-height: 1; letter-spacing: -.03em; }
-  .tile .num small { font-size: 14px; font-weight: 600; color: var(--muted); letter-spacing: 0; margin-left: 6px; }
-  .dots { display: flex; gap: 5px; }
-  .dots i { flex: 1; height: 6px; border-radius: 3px; background: var(--line); }
-  .dots i.done { background: linear-gradient(90deg, var(--a), var(--b)); }
-  .tile .row { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 4px; }
-  .tile .meta { color: var(--muted); font-size: 13px; }
-  .go { padding: 8px 16px; border: 0; border-radius: 10px; color: #fff; font: 700 13px inherit; cursor: pointer; background: linear-gradient(135deg, var(--a), var(--b)); }
-  .go.ghost { background: var(--bg); color: var(--ink); border: 1px solid var(--line); }
   .msg { color: var(--muted); padding: 40px 20px; text-align: center; }
   .msg a { color: var(--brand); font-weight: 600; }
   .side { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; overflow: auto; padding: 14px 10px; }
@@ -144,26 +104,10 @@
     main { grid-template-columns: 1fr; }
     .pane { min-height: 70vh; }
     #editorWrap { min-height: 420px; }
-    header select { max-width: none; }
-  }
+    }
 </style>
 </head>
 <body>
-<header>
-  <a class="back" href="/dashboard"><span class="ic" data-i="back"></span> Back</a>
-</header>
-<section class="home" id="home" hidden>
-  <div class="hero"><div class="hero-in">
-    <span class="eyebrow"><i></i>Live coding practice</span>
-    <h1>Master <span id="heroCourse">Python</span> coding.<br>One paper at a time.</h1>
-    <p>GrPA, Quiz, OPPE and End Term coding questions with a built-in editor and instant test cases. Pick a set, solve it start to finish, and track what you have cleared.</p>
-    <div class="stats" id="stats"></div>
-  </div></div>
-  <div class="wrap" style="padding-bottom:40px">
-    <div class="chips" id="chips"></div>
-    <div id="paperList"></div>
-  </div>
-</section>
 <main id="app" hidden>
   <aside class="side" id="side" aria-label="Sections and problems"></aside>
   <section class="pane" aria-label="Problem">
@@ -244,13 +188,12 @@
   };
   function icon(name, size) { return '<svg width="' + (size || 14) + '" height="' + (size || 14) + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + ICONS[name] + '</svg>'; }
   document.querySelectorAll("[data-i]").forEach(function (n) { n.innerHTML = icon(n.dataset.i); });
-  function status(html) { var s = $("status"); s.hidden = false; $("app").hidden = true; $("home").hidden = true; s.textContent = ""; if (html) s.appendChild(html); }
+  function status(html) { var s = $("status"); s.hidden = false; $("app").hidden = true; s.textContent = ""; if (html) s.appendChild(html); }
   function api(path, opts) {
     opts = opts || {};
     return fetch(API + path, {
       method: opts.method || "GET",
-      headers: Object.assign({ Accept: "application/json", Authorization: "Bearer " + token }, opts.body ? { "Content-Type": "application/json" } : {}),
-      body: opts.body ? JSON.stringify(opts.body) : undefined
+          body: opts.body ? JSON.stringify(opts.body) : undefined
     }).then(function (r) {
       return r.json().catch(function () { return {}; }).then(function (j) {
         if (!r.ok) { var e = new Error(j.message || ("Request failed (" + r.status + ")")); e.status = r.status; throw e; }
@@ -460,7 +403,7 @@
     status(document.createTextNode("Loading…"));
     api("/ide-problems/" + id).then(function (res) {
       current = res.problem;
-      $("status").hidden = true; $("home").hidden = true; $("app").hidden = false; document.body.classList.remove("in-home");
+      $("status").hidden = true; $("app").hidden = false;
       $("lang").textContent = ({ python: "Python3", java: "Java", cpp: "C++", "c++": "C++" })[current.language] || current.language;
       renderQuestion(current); buildEditor(current, initialMiddle(current));
       $("tab-result").innerHTML = '<div class="msg">Press Run or Submit to see your results here.</div>'; $("miniResult").classList.remove("show"); showTab("question");
@@ -508,7 +451,7 @@
   function renderSide(activeId) {
     var side = $("side"), done = solvedSet(); side.textContent = "";
     var top = el("div", "top");
-    var back = el("button", "back2"); back.type = "button"; back.innerHTML = icon("back") + " Back"; back.addEventListener("click", showHome);
+    var back = el("button", "back2"); back.type = "button"; back.innerHTML = icon("back") + " Back"; back.addEventListener("click", leave);
     var col = el("button", "collapse"); col.type = "button"; col.title = "Show or hide this panel"; col.setAttribute("aria-label", "Show or hide this panel"); col.innerHTML = icon("panel");
     col.addEventListener("click", function () { $("app").classList.toggle("side-collapsed"); });
     top.appendChild(back); top.appendChild(col); side.appendChild(top);
@@ -539,74 +482,13 @@
     problems = paper.problems;
     openProblem(id || problems[0].id);
   }
-  var filter = params.get("type") || "all";
-  function parsePaper(name) {
-    var m = /^(.+?) \((.+?)\) Set (\d+)$/.exec(name);
-    if (m) return { exam: typeOf(m[1]) || m[1], session: m[2], set: m[3] };
-    var w = /^(.+?) · (Week \d+)$/.exec(name);
-    if (w) return { exam: typeOf(w[1]) || w[1], session: w[2], set: "" };
-    return { exam: typeOf(name) || "Practice", session: "All questions", set: "" };
+  // Back returns to the course practice page with the coding tab of this paper open.
+  function leave() {
+    var t = problems.length ? typeOf(split(problems[0]).paper) : null;
+    location.assign("/practice/" + encodeURIComponent(courseSlug) + (t ? "?ide=" + encodeURIComponent(t) : ""));
   }
-  function typeClass(exam) { return "t-" + exam.toLowerCase().replace(/[^a-z0-9]/g, ""); }
-  function showHome() {
-    current = null; problems = [];
-    $("status").hidden = true; $("app").hidden = true; $("home").hidden = false; document.body.classList.add("in-home");
-    var url = new URL(location.href); url.searchParams.delete("problem"); history.replaceState(null, "", url);
-    var done = solvedSet(), total = 0, solved = 0, exams = [];
-    papers.forEach(function (pp) {
-      pp.info = parsePaper(pp.name); total += pp.problems.length;
-      pp.done = pp.problems.filter(function (p) { return done.indexOf(p.id) >= 0; }).length; solved += pp.done;
-      if (exams.indexOf(pp.info.exam) < 0) exams.push(pp.info.exam);
-    });
-    // Only the course's own exam types become filters; anything else shows under "All papers".
-    exams = TYPES.map(function (t) { return t[0]; }).filter(function (t) { return exams.indexOf(t) >= 0; });
-    if (filter !== "all" && exams.indexOf(filter) < 0) filter = "all";
-    $("stats").textContent = "";
-    [[papers.length, "Papers"], [total, "Questions"], [solved, "Solved"]].forEach(function (x) { var d = el("div", "stat"); d.appendChild(el("b", "", String(x[0]))); d.appendChild(el("small", "", x[1])); $("stats").appendChild(d); });
-    var chips = $("chips"); chips.textContent = "";
-    if (exams.length > 1) ["all"].concat(exams).forEach(function (f) {
-      var c = el("button", "chip" + (f === filter ? " on" : ""), f === "all" ? "All papers" : f); c.type = "button";
-      c.addEventListener("click", function () { filter = f; showHome(); }); chips.appendChild(c);
-    });
-    var list = $("paperList"); list.textContent = "";
-    var groups = {}, order = [];
-    papers.forEach(function (pp) {
-      if (filter !== "all" && pp.info.exam !== filter) return;
-      var key = pp.info.exam + " \u00b7 " + pp.info.session;
-      if (!groups[key]) { groups[key] = []; order.push(key); }
-      groups[key].push(pp);
-    });
-    order.forEach(function (key) {
-      var g = el("div", "group"); g.appendChild(el("h2", "", key));
-      var grid = el("div", "grid");
-      groups[key].forEach(function (pp) {
-        var t = el("div", "tile " + typeClass(pp.info.exam));
-        t.appendChild(el("div", "tag", pp.info.exam + " \u00b7 " + pp.info.session));
-        var n = el("div", "num", pp.info.set ? "Set " + pp.info.set : pp.info.session); t.appendChild(n);
-        var dots = el("div", "dots");
-        pp.problems.forEach(function (p) { dots.appendChild(el("i", done.indexOf(p.id) >= 0 ? "done" : "")); });
-        t.appendChild(dots);
-        var row = el("div", "row");
-        row.appendChild(el("span", "meta", pp.done + "/" + pp.problems.length + " solved"));
-        var b = el("button", "go" + (pp.done === pp.problems.length ? " ghost" : ""), pp.done === 0 ? "Start now" : pp.done === pp.problems.length ? "Review" : "Continue");
-        b.type = "button";
-        b.addEventListener("click", function () {
-          var next = pp.problems.filter(function (p) { return done.indexOf(p.id) < 0; })[0] || pp.problems[0];
-          startPaper(pp, next.id);
-        });
-        row.appendChild(b); t.appendChild(row); grid.appendChild(t);
-      });
-      g.appendChild(grid); list.appendChild(g);
-    });
-  }
-  // Back goes from a question to the papers list; from the list it leaves the IDE.
-  $("heroCourse").textContent = courseSlug.charAt(0).toUpperCase() + courseSlug.slice(1);
-  document.querySelector("a.back").addEventListener("click", function (e) {
-    if (current) { e.preventDefault(); showHome(); }
-  });
 
   function boot() {
-    document.querySelector("a.back").href = "/courses/" + encodeURIComponent(courseSlug);
     if (!token) return loginPrompt();
     api("/courses/" + encodeURIComponent(courseSlug) + "/ide-problems").then(function (res) {
       var byName = {};
@@ -620,7 +502,8 @@
       if (!papers.length) return status(document.createTextNode("No IDE problems in this course yet."));
       var want = Number(params.get("problem"));
       var owner = papers.filter(function (pp) { return pp.problems.some(function (p) { return p.id === want; }); })[0];
-      if (owner) startPaper(owner, want); else showHome();
+      // Papers are chosen on the practice page; a link without a valid question goes back there.
+      if (owner) startPaper(owner, want); else location.replace("/practice/" + encodeURIComponent(courseSlug));
     }).catch(function (e) { if (e.status === 401) loginPrompt(); else status(document.createTextNode(e.message)); });
   }
   boot();

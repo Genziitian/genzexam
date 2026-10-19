@@ -1195,11 +1195,11 @@
 })();
 
 // The course page's "IDE Practice" button opens /courses/:slug/ide-problems, which the SPA still renders as a
-// "coming soon" placeholder. Hand that route to the standalone IDE page instead.
+// "coming soon" placeholder. Send that route to the practice page, where the coding papers now live.
 (function () {
   function openIde() {
     var m = location.pathname.match(/^\/courses\/([^\/]+)\/ide-problems\/?$/);
-    if (m) location.replace('/ide.html?course=' + encodeURIComponent(m[1]));
+    if (m) location.replace('/practice/' + encodeURIComponent(m[1]));
   }
   ['pushState', 'replaceState'].forEach(function (name) {
     var original = history[name];
