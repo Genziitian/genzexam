@@ -332,6 +332,152 @@
     });
   }
 
+  /* ---------------------------- passage ---------------------------- */
+  function cleanPassageHeading(text) {
+    return String(text || "").trim()
+      .replace(/^(?:📖\s*)?Passage\s*(?:\/|\:)\s*(?:Context\s*:?)?\s*/i, "")
+      .replace(/^Comprehension\s*(?:Type\s*Question)?\s*:\s*/i, "")
+      .trim();
+  }
+  function parsePassageScope(text) {
+    const m = String(text || "").match(/(?:Questions?|Q)\s*(\d+)\s*(?:to|–|-)\s*(?:Q\s*)?(\d+)/i);
+    if (m) {
+      const start = parseInt(m[1], 10);
+      const end = parseInt(m[2], 10);
+      if (end >= start) return end - start + 1;
+    }
+    return null;
+  }
+  function isPassageOnly(q) {
+    if (!q) return false;
+    if (q.type === "comprehension" || q.type === "passage") return true;
+    const noAnswers = (!q.options || !q.options.length) && q.numerical_answer == null && (!q.acceptable_answers || !q.acceptable_answers.length);
+    const stem = String(q.stem || q.question_stem || "").trim();
+    if (noAnswers && Number(q.marks || 0) === 0 && (/^(?:📖\s*)?passage\b/i.test(stem) || /^comprehension\b/i.test(stem))) {
+      return true;
+    }
+    return false;
+  }
+  function splitEmbeddedPassage(q) {
+    if (!q) return null;
+    if (Array.isArray(q.prompt) && q.prompt.length >= 2) {
+      const b0 = String((q.prompt[0] && (q.prompt[0].value || q.prompt[0].text)) || "").trim();
+      if (/(?:passage|context|comprehension|subquestions?)/i.test(b0) || /^(?:📖\s*)?passage\b/i.test(b0) || /Q\d+[–-]\s*Q\d+/i.test(b0)) {
+        const qIndex = q.prompt.length - 1;
+        const passBlocks = q.prompt.slice(0, qIndex).map((b, i) => {
+          if (i === 0 && b && (b.value || b.text)) {
+            const val = cleanPassageHeading(b.value || b.text);
+            return b.value != null ? { ...b, value: val } : { ...b, text: val };
+          }
+          return b;
+        });
+        const qBlocks = q.prompt.slice(qIndex);
+        return {
+          passageHtml: rich(passBlocks),
+          promptHtml: rich(qBlocks),
+        };
+      }
+    }
+    const stemText = String(
+      q.stem != null
+        ? q.stem
+        : q.question_stem != null
+          ? q.question_stem
+          : Array.isArray(q.prompt)
+            ? q.prompt.map((b) => (b && typeof b === "object" ? b.value || b.text || "" : String(b || ""))).join("\n\n")
+            : typeof q.prompt === "string"
+              ? q.prompt
+              : ""
+    ).trim();
+    if (!stemText) return null;
+    const qSplit = stemText.match(/^([\s\S]*?)\n+(?:Question|Subquestion)\s*:\s*\n*([\s\S]+)$/i);
+    if (qSplit && /passage|context|comprehension/i.test(qSplit[1])) {
+      return {
+        passageHtml: rich(cleanPassageHeading(qSplit[1])),
+        promptHtml: rich(clean(qSplit[2].trim())) + (q.stem_code ? codeBlock(q.stem_code, q.stem_code_language) : "") + tableBlock(q.stem_table) + (imageUrl(q.stem_image) ? '<figure class="exam-rich-image"><img src="' + esc(imageUrl(q.stem_image)) + '" alt="Question figure" loading="lazy" referrerpolicy="no-referrer"></figure>' : ""),
+      };
+    }
+    const bSplit = stemText.match(/^([\s\S]*?(?:Based on the above [^\n]*?,?\s*answer the [^\n]*?subquestions\.?|answer the (?:given|following) subquestions\.?))\s*\n+([\s\S]+)$/i);
+    if (bSplit && /passage|context|comprehension/i.test(bSplit[1])) {
+      return {
+        passageHtml: rich(cleanPassageHeading(bSplit[1])),
+        promptHtml: rich(clean(bSplit[2].trim())) + (q.stem_code ? codeBlock(q.stem_code, q.stem_code_language) : "") + tableBlock(q.stem_table) + (imageUrl(q.stem_image) ? '<figure class="exam-rich-image"><img src="' + esc(imageUrl(q.stem_image)) + '" alt="Question figure" loading="lazy" referrerpolicy="no-referrer"></figure>' : ""),
+      };
+    }
+    if (/^(?:📖\s*)?Passage\s*(?:\/|\:)\s*(?:Context\s*:?)?|^Comprehension\s*(?:Type\s*Question)?\s*:\s*/i.test(stemText)) {
+      const cleaned = cleanPassageHeading(stemText);
+      const paras = cleaned.split(/\n{2,}/);
+      if (paras.length >= 2) {
+        const last = paras[paras.length - 1].trim();
+        if (/\?$/.test(last) || /^(?:What|Find|Calculate|Which|Choose|Determine|How|If|The value of|Enter the)\b/i.test(last)) {
+          return {
+            passageHtml: rich(clean(paras.slice(0, -1).join("\n\n").trim())),
+            promptHtml: rich(clean(last)) + (q.stem_code ? codeBlock(q.stem_code, q.stem_code_language) : "") + tableBlock(q.stem_table) + (imageUrl(q.stem_image) ? '<figure class="exam-rich-image"><img src="' + esc(imageUrl(q.stem_image)) + '" alt="Question figure" loading="lazy" referrerpolicy="no-referrer"></figure>' : ""),
+          };
+        }
+      }
+    }
+    return null;
+  }
+  function prepareQuizQuestions(quiz) {
+    if (!quiz || !Array.isArray(quiz.questions)) return [];
+    let activePassage = null;
+    const processed = [];
+    for (const q of quiz.questions) {
+      if (isPassageOnly(q)) {
+        const stem = String(q.stem || q.question_stem || "");
+        activePassage = {
+          id: q.id,
+          html: stemHtml(q),
+          scopeCount: parsePassageScope(stem),
+        };
+        continue;
+      }
+      const split = splitEmbeddedPassage(q);
+      if (split) {
+        q._passageHtml = split.passageHtml;
+        q._promptHtml = split.promptHtml;
+        activePassage = { id: q.id, html: q._passageHtml, scopeCount: null };
+      } else if (activePassage) {
+        q._passageHtml = activePassage.html;
+        q._promptHtml = stemHtml(q);
+        if (activePassage.scopeCount != null) {
+          activePassage.scopeCount--;
+          if (activePassage.scopeCount <= 0) activePassage = null;
+        }
+      } else {
+        q._passageHtml = null;
+        q._promptHtml = stemHtml(q);
+      }
+      processed.push(q);
+    }
+    quiz.rawQuestions = quiz.questions;
+    quiz.questions = processed;
+    return processed;
+  }
+  function prepareReviewAnswers(rawAnswers) {
+    if (!Array.isArray(rawAnswers)) return [];
+    let activePassage = null;
+    const processed = [];
+    for (const a of rawAnswers) {
+      if (a.question_type === "comprehension") {
+        activePassage = { html: stemHtml(a) };
+        continue;
+      }
+      const split = splitEmbeddedPassage(a);
+      if (split) {
+        a._passageHtml = split.passageHtml;
+        a._promptHtml = split.promptHtml;
+        activePassage = { html: a._passageHtml };
+      } else if (activePassage) {
+        a._passageHtml = activePassage.html;
+        a._promptHtml = stemHtml(a);
+      }
+      processed.push(a);
+    }
+    return processed;
+  }
+
   /* ----------------------------- timer ----------------------------- */
   const limitSeconds = () => Math.max(0, Number(st.durationMinutes == null ? (st.quiz && st.quiz.time_limit_minutes) || 0 : st.durationMinutes)) * 60;
   function remaining() {
