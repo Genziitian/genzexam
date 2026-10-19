@@ -57,7 +57,8 @@
         "expected_output": "True",
         "is_hidden": true
       }
-    ]
+    ],
+    "section": 1
   },
   {
     "title": "OPPE 1 (2025 Jan) Set 3 · P2: Capitalize nth Character",
@@ -107,7 +108,8 @@
         "expected_output": "Hello World",
         "is_hidden": true
       }
-    ]
+    ],
+    "section": 1
   },
   {
     "title": "OPPE 1 (2025 Jan) Set 3 · P3: Merge and Remove Duplicates",
@@ -152,7 +154,8 @@
         "expected_output": "[7]",
         "is_hidden": true
       }
-    ]
+    ],
+    "section": 1
   },
   {
     "title": "OPPE 1 (2025 Jan) Set 3 · P4: Replace Vowels with Next Alphabet",
@@ -197,7 +200,8 @@
         "expected_output": "Prpgrbmmjng jn Pythpn",
         "is_hidden": true
       }
-    ]
+    ],
+    "section": 2
   },
   {
     "title": "OPPE 1 (2025 Jan) Set 3 · P5: Max Column Sum and Max Column Sum Index",
@@ -237,7 +241,8 @@
         "expected_output": "0\n2",
         "is_hidden": true
       }
-    ]
+    ],
+    "section": 2
   },
   {
     "title": "OPPE 1 (2025 Jan) Set 3 · P6: Analyze Sentences",
@@ -287,7 +292,8 @@
         "expected_output": "0",
         "is_hidden": true
       }
-    ]
+    ],
+    "section": 3
   },
   {
     "title": "OPPE 1 (2025 Jan) Set 3 · P7: Centered Triangle Of Zeroes",
@@ -327,6 +333,7 @@
         "expected_output": "     0\n    0 0\n   0 0 0\n  0 0 0 0\n 0 0 0 0 0\n0 0 0 0 0 0",
         "is_hidden": true
       }
-    ]
+    ],
+    "section": 3
   }
 ]

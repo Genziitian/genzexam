@@ -62,7 +62,8 @@
         "expected_output": "Normal",
         "is_hidden": true
       }
-    ]
+    ],
+    "section": 1
   },
   {
     "title": "OPPE 1 (2025 May) Set 1 · P2: Card to Value Tuple",
@@ -122,7 +123,8 @@
         "expected_output": "(1, 10)",
         "is_hidden": true
       }
-    ]
+    ],
+    "section": 1
   },
   {
     "title": "OPPE 1 (2025 May) Set 1 · P3: Rotate Even Indices",
@@ -172,7 +174,8 @@
         "expected_output": "[]",
         "is_hidden": true
       }
-    ]
+    ],
+    "section": 1
   },
   {
     "title": "OPPE 1 (2025 May) Set 1 · P4: Unique Sum Pairs",
@@ -227,7 +230,8 @@
         "expected_output": "[]",
         "is_hidden": true
       }
-    ]
+    ],
+    "section": 2
   },
   {
     "title": "OPPE 1 (2025 May) Set 1 · P5: Replace Consonants with Hash",
@@ -267,7 +271,8 @@
         "expected_output": "####o#",
         "is_hidden": true
       }
-    ]
+    ],
+    "section": 2
   },
   {
     "title": "OPPE 1 (2025 May) Set 1 · P6: Check is even or divisible by 5",
@@ -327,7 +332,8 @@
         "expected_output": "True",
         "is_hidden": true
       }
-    ]
+    ],
+    "section": 3
   },
   {
     "title": "OPPE 1 (2025 May) Set 1 · P7: Deinterleave Even and Odd Indices in String",
@@ -372,6 +378,7 @@
         "expected_output": "hlowrdel ol",
         "is_hidden": true
       }
-    ]
+    ],
+    "section": 3
   }
 ]

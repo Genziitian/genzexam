@@ -27,7 +27,7 @@
   header a.back { color: var(--brand); text-decoration: none; font-weight: 600; }
   header select { flex: 1; min-width: 0; max-width: 520px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); color: var(--ink); font: inherit; }
   header .nav button { padding: 7px 12px; }
-  main { flex: 1; min-height: 0; display: grid; grid-template-columns: minmax(300px, 1fr) minmax(320px, 1.2fr); gap: 12px; padding: 12px; }
+  main { flex: 1; min-height: 0; display: grid; grid-template-columns: 230px minmax(280px, 1fr) minmax(320px, 1.2fr); gap: 12px; padding: 12px; }
   .pane { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; display: flex; flex-direction: column; min-height: 0; overflow: hidden; }
   .tabs { display: flex; gap: 4px; padding: 0 12px; border-bottom: 1px solid var(--line); overflow-x: auto; }
   .tab { appearance: none; background: none; border: 0; border-bottom: 3px solid transparent; padding: 12px 12px 9px; color: var(--muted); font: 600 14px inherit; cursor: pointer; white-space: nowrap; }
@@ -108,7 +108,16 @@
   body.in-home #where { display: none; }
   .msg { color: var(--muted); padding: 40px 20px; text-align: center; }
   .msg a { color: var(--brand); font-weight: 600; }
+  .side { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; overflow: auto; padding: 14px 10px; }
+  .side h4 { margin: 0 8px 12px; font-size: 14px; }
+  .side .sec { margin: 14px 8px 6px; font: 700 11px/1 ui-monospace, Menlo, monospace; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+  .side button { display: flex; align-items: center; gap: 8px; width: 100%; text-align: left; padding: 9px 10px; margin-bottom: 2px; border: 0; border-radius: 8px; background: none; color: var(--ink); font: 500 13px inherit; cursor: pointer; }
+  .side button:hover { background: var(--bg); }
+  .side button.on { background: var(--brand-soft); color: var(--brand); font-weight: 700; }
+  .side button .tick { margin-left: auto; color: var(--ok); font-weight: 700; }
+  @media (max-width: 1100px) { main { grid-template-columns: 200px minmax(240px, 1fr) minmax(280px, 1.2fr); } }
   @media (max-width: 820px) {
+    .side { max-height: 190px; }
     body { height: auto; min-height: 100%; }
     main { grid-template-columns: 1fr; }
     .pane { min-height: 70vh; }
@@ -135,6 +144,7 @@
   </div>
 </section>
 <main id="app" hidden>
+  <aside class="side" id="side" aria-label="Sections and problems"></aside>
   <section class="pane" aria-label="Problem">
     <div class="tabs" role="tablist">
       <button class="tab" role="tab" aria-selected="true" data-tab="question">Question</button>
@@ -222,7 +232,7 @@
   var TYPES = [["GrPA", /^GrPA/i], ["Quiz 1", /^Quiz ?1\b/i], ["OPPE 1", /^OPPE ?1\b/i], ["OPPE 2", /^OPPE ?2\b/i], ["End Term", /^End ?Term/i]];
   function typeOf(title) { for (var i = 0; i < TYPES.length; i++) if (TYPES[i][1].test(title)) return TYPES[i][0]; return null; }
   function split(p) {
-    var m = /^(.*?) · (P\d+: .*)$/.exec(p.title);
+    var m = /^(.*?) · P\d+: (.*)$/.exec(p.title);
     if (m) return { paper: m[1], name: m[2] };
     // One-question items (a whole GrPA, for example) are grouped by week under their type.
     var t = typeOf(p.title) || "Practice";
@@ -406,7 +416,9 @@
       var url = new URL(location.href); url.searchParams.set("problem", id); history.replaceState(null, "", url);
       var idx = problems.findIndex(function (x) { return x.id === id; });
       $("whereTitle").textContent = split(current).paper;
-      $("whereSub").textContent = "Question " + (idx + 1) + " of " + problems.length;
+      var pos = position(id);
+      $("whereSub").textContent = (pos.hasSections ? "Section " + pos.section + " \u00b7 " : "") + "Problem " + pos.n;
+      renderSide(id);
     }).catch(function (e) { if (e.status === 401) loginPrompt(); else status(document.createTextNode(e.message)); });
   }
 
@@ -436,6 +448,31 @@
   });
 
   // ---- papers list (landing) and per-paper navigation
+  // sort_order = section * 100 + position (set by the seeder); admin-made problems have a small sort_order and no sections.
+  function sectionOf(p) { return p.sort_order >= 100 ? Math.floor(p.sort_order / 100) : 0; }
+  function position(id) {
+    var p = problems.filter(function (x) { return x.id === id; })[0], sec = sectionOf(p);
+    var inSec = problems.filter(function (x) { return sectionOf(x) === sec; });
+    return { section: sec, hasSections: sec > 0, n: inSec.indexOf(p) + 1 };
+  }
+  // Left sidebar: Section headings with their problems; only problems of this paper are listed.
+  function renderSide(activeId) {
+    var side = $("side"), done = solvedSet(); side.textContent = "";
+    side.appendChild(el("h4", "", split(problems[0]).paper));
+    var secs = [];
+    problems.forEach(function (p) { var s = sectionOf(p); if (secs.indexOf(s) < 0) secs.push(s); });
+    secs.forEach(function (sec) {
+      if (sec > 0) side.appendChild(el("div", "sec", "Section " + sec));
+      problems.filter(function (p) { return sectionOf(p) === sec; }).forEach(function (p, i) {
+        var b = el("button", p.id === activeId ? "on" : ""); b.type = "button";
+        b.appendChild(el("span", "", "Problem " + (i + 1)));
+        if (done.indexOf(p.id) >= 0) b.appendChild(el("span", "tick", "\u2713"));
+        b.title = split(p).name;
+        b.addEventListener("click", function () { if (p.id !== activeId) openProblem(p.id); });
+        side.appendChild(b);
+      });
+    });
+  }
   function startPaper(paper, id) {
     problems = paper.problems;
     openProblem(id || problems[0].id);

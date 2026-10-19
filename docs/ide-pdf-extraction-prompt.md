@@ -32,7 +32,8 @@ For a single question that is its own item (such as one GrPA), use the plain nam
 
 JSON FIELDS (one object per problem, in PDF order)
 {
-  "position": 1,
+  "position": 1,                       // order in the PDF, starting at 1
+  "section": 1,                        // the PDF's "Section N" this problem belongs to (omit if the PDF has none)
   "title": "<problem title>",
   "description": "full statement, plain text, \n for line breaks; keep notes, hints and examples",
   "input_format": "..." or null,

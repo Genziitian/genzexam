@@ -52,7 +52,8 @@
         "expected_output": "185",
         "is_hidden": true
       }
-    ]
+    ],
+    "section": 1
   },
   {
     "title": "OPPE 1 (2025 May) Set 4 · P2: Upper Case Even Index Words",
@@ -92,7 +93,8 @@
         "expected_output": "['ONE', 'two']",
         "is_hidden": true
       }
-    ]
+    ],
+    "section": 1
   },
   {
     "title": "OPPE 1 (2025 May) Set 4 · P3: Print Pieces Moved from Chess Notation",
@@ -132,7 +134,8 @@
         "expected_output": "Pawn\nPawn\nRook\nBishop\nKing\nRook\nKing",
         "is_hidden": true
       }
-    ]
+    ],
+    "section": 1
   },
   {
     "title": "OPPE 1 (2025 May) Set 4 · P4: YouTube Video Engagement Analysis",
@@ -192,7 +195,8 @@
         "expected_output": "33.33",
         "is_hidden": true
       }
-    ]
+    ],
+    "section": 2
   },
   {
     "title": "OPPE 1 (2025 May) Set 4 · P5: Format Tic-Tac-Toe Board",
@@ -232,7 +236,8 @@
         "expected_output": "+-+-+-+\n|X| |O|\n+-+-+-+\n| |O| |\n+-+-+-+\n|O| |X|\n+-+-+-+",
         "is_hidden": true
       }
-    ]
+    ],
+    "section": 2
   },
   {
     "title": "OPPE 1 (2025 May) Set 4 · P6: Position of a Point Relative to a Line",
@@ -277,7 +282,8 @@
         "expected_output": "-1",
         "is_hidden": true
       }
-    ]
+    ],
+    "section": 3
   },
   {
     "title": "OPPE 1 (2025 May) Set 4 · P7: Expand Sum of Products",
@@ -322,6 +328,7 @@
         "expected_output": "2*4 + 2*5 + 3*4 + 3*5",
         "is_hidden": true
       }
-    ]
+    ],
+    "section": 3
   }
 ]

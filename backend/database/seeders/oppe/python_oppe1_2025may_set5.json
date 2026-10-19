@@ -42,7 +42,8 @@
         "expected_output": "('x', 1, None, 2.5, 'y', 3, 4, 'y', 3, 4)",
         "is_hidden": true
       }
-    ]
+    ],
+    "section": 1
   },
   {
     "title": "OPPE 1 (2025 May) Set 5 · P2: Convert Excel Column Name to 1-Based Index",
@@ -102,7 +103,8 @@
         "expected_output": "703",
         "is_hidden": true
       }
-    ]
+    ],
+    "section": 1
   },
   {
     "title": "OPPE 1 (2025 May) Set 5 · P3: Reverse Vowel Order in a String",
@@ -142,7 +144,8 @@
         "expected_output": "EET MEdres\ninlona\nDaGRII",
         "is_hidden": true
       }
-    ]
+    ],
+    "section": 1
   },
   {
     "title": "OPPE 1 (2025 May) Set 5 · P4: Chess Game Analysis",
@@ -207,7 +210,8 @@
         "expected_output": "{'King': 2, 'Queen': 4, 'Rook': 1, 'Bishop': 3, 'Knight': 3, 'Pawn': 4}",
         "is_hidden": true
       }
-    ]
+    ],
+    "section": 2
   },
   {
     "title": "OPPE 1 (2025 May) Set 5 · P5: Visualize Pattern Lock",
@@ -247,6 +251,7 @@
         "expected_output": "[1]---[2]---[3]\n|     |     |\n[6]---[5]---[4]\n|     |     |\n[7]---[8]---[9]",
         "is_hidden": true
       }
-    ]
+    ],
+    "section": 2
   }
 ]

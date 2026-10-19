@@ -42,6 +42,7 @@ class IDEController extends Controller
                 'difficulty',
                 'week_number',
                 'language',
+                'sort_order',
             ]);
 
         $grouped = $problems

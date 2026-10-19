@@ -52,7 +52,8 @@
         "expected_output": "False",
         "is_hidden": true
       }
-    ]
+    ],
+    "section": 1
   },
   {
     "title": "OPPE 1 (2025 Jan) Set 4 · P2: Markdown Image to HTML Image",
@@ -92,7 +93,8 @@
         "expected_output": "<img src=\"images/sunset.jpeg\" alt=\"sunset over hills\">",
         "is_hidden": true
       }
-    ]
+    ],
+    "section": 1
   },
   {
     "title": "OPPE 1 (2025 Jan) Set 4 · P3: Remove n Elements from the Given Index",
@@ -142,7 +144,8 @@
         "expected_output": "()",
         "is_hidden": true
       }
-    ]
+    ],
+    "section": 1
   },
   {
     "title": "OPPE 1 (2025 Jan) Set 4 · P4: First Non-Repeating Character in a String",
@@ -192,7 +195,8 @@
         "expected_output": "x",
         "is_hidden": true
       }
-    ]
+    ],
+    "section": 2
   },
   {
     "title": "OPPE 1 (2025 Jan) Set 4 · P5: Compute Running Average Skipping NaN",
@@ -232,7 +236,8 @@
         "expected_output": "-4.0\n0.0\n-0.8",
         "is_hidden": true
       }
-    ]
+    ],
+    "section": 2
   },
   {
     "title": "OPPE 1 (2025 Jan) Set 4 · P6: Time Series Analysis",
@@ -292,7 +297,8 @@
         "expected_output": "False",
         "is_hidden": true
       }
-    ]
+    ],
+    "section": 3
   },
   {
     "title": "OPPE 1 (2025 Jan) Set 4 · P7: Diamond",
@@ -332,6 +338,7 @@
         "expected_output": "    *\n   ***\n  *****\n *******\n*********\n *******\n  *****\n   ***\n    *",
         "is_hidden": true
       }
-    ]
+    ],
+    "section": 3
   }
 ]

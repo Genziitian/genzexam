@@ -62,7 +62,8 @@
         "expected_output": "True",
         "is_hidden": true
       }
-    ]
+    ],
+    "section": 1
   },
   {
     "title": "OPPE 1 (2024 Sep) Set 2 · P2: Check if the Given String is Within Quotes and Has Quotes Inside",
@@ -127,7 +128,8 @@
         "expected_output": "True",
         "is_hidden": true
       }
-    ]
+    ],
+    "section": 1
   },
   {
     "title": "OPPE 1 (2024 Sep) Set 2 · P3: Replace middle with n times middle",
@@ -172,7 +174,8 @@
         "expected_output": "(0, 0, 9, 0, 0, 0, 0, 0)",
         "is_hidden": true
       }
-    ]
+    ],
+    "section": 1
   },
   {
     "title": "OPPE 1 (2024 Sep) Set 2 · P4: Count Positive Integers Ignoring None",
@@ -217,7 +220,8 @@
         "expected_output": "2",
         "is_hidden": true
       }
-    ]
+    ],
+    "section": 2
   },
   {
     "title": "OPPE 1 (2024 Sep) Set 2 · P5: Find Sum and Absolute Difference Alternately",
@@ -257,7 +261,8 @@
         "expected_output": "2\n0\n6\n0\n10",
         "is_hidden": true
       }
-    ]
+    ],
+    "section": 2
   },
   {
     "title": "OPPE 1 (2024 Sep) Set 2 · P6: Matrix Walk",
@@ -317,7 +322,8 @@
         "expected_output": "[5]",
         "is_hidden": true
       }
-    ]
+    ],
+    "section": 3
   },
   {
     "title": "OPPE 1 (2024 Sep) Set 2 · P7: Print Pattern - X",
@@ -357,6 +363,7 @@
         "expected_output": "\\         /\n \\       /\n  \\     /\n   \\   /\n    \\ /\n     x\n    / \\\n   /   \\\n  /     \\\n /       \\\n/         \\",
         "is_hidden": true
       }
-    ]
+    ],
+    "section": 3
   }
 ]
