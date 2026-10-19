@@ -14,7 +14,8 @@ class ImportQuizzes extends Command
     protected $signature = 'quizzes:import 
         {course : Course slug (e.g. english-2, maths1, ct) or numeric ID} 
         {path : Path to a JSON file or directory containing JSON files}
-        {--force : Re-create paper if a quiz with the same title already exists}';
+        {--force : Re-create paper if a quiz with the same title already exists}
+        {--dry-run : Show what would be imported or skipped without writing anything}';
 
     protected $description = 'Import quiz papers from a JSON file or folder of JSON files into a course.';
 
@@ -48,6 +49,7 @@ class ImportQuizzes extends Command
         $courseArg = (string) $this->argument('course');
         $path = (string) $this->argument('path');
         $force = (bool) $this->option('force');
+        $dry = (bool) $this->option('dry-run');
 
         $course = is_numeric($courseArg)
             ? Course::query()->find((int) $courseArg)
@@ -61,7 +63,7 @@ class ImportQuizzes extends Command
         $this->info("Target Course: {$course->name} (slug: {$course->slug}, id: {$course->id})");
 
         // Ensure weeks 1..12 exist for this course
-        for ($w = 1; $w <= 12; $w++) {
+        for ($w = 1; ! $dry && $w <= 12; $w++) {
             Week::firstOrCreate(
                 ['course_id' => $course->id, 'week_number' => $w],
                 ['title' => "Week {$w}"]
@@ -106,7 +108,7 @@ class ImportQuizzes extends Command
             $section = self::SECTION_ALIASES[$rawSection] ?? (in_array($rawSection, Quiz::SECTIONS, true) ? $rawSection : 'quiz1');
 
             $weekId = null;
-            if (in_array($section, Quiz::WEEKLY_SECTIONS, true)) {
+            if (! $dry && in_array($section, Quiz::WEEKLY_SECTIONS, true)) {
                 $wkNum = (int) ($data['week'] ?? ($data['week_number'] ?? 0));
                 if ($wkNum > 0) {
                     $week = Week::firstOrCreate(
@@ -137,8 +139,10 @@ class ImportQuizzes extends Command
                     $skipped++;
                     continue;
                 }
-                $existing->questions()->delete();
-                $existing->delete();
+                if (! $dry) {
+                    $existing->questions()->delete();
+                    $existing->delete();
+                }
             }
 
             $normalizeResult = $importer->normalizeMany($questions);
@@ -147,6 +151,12 @@ class ImportQuizzes extends Command
             if (empty($rows)) {
                 $this->error("  [FAIL] {$baseName}: No valid normalized questions");
                 $failed++;
+                continue;
+            }
+
+            if ($dry) {
+                $this->line("  [WOULD CREATE] {$title} ({$section}, " . count($rows) . " Qs)");
+                $created++;
                 continue;
             }
 
@@ -168,7 +178,7 @@ class ImportQuizzes extends Command
         }
 
         $this->newLine();
-        $this->info("Import complete: {$created} created, {$skipped} skipped, {$failed} failed.");
+        $this->info(($dry ? 'DRY RUN, nothing written. ' : '') . "Import complete: {$created} " . ($dry ? 'would be created' : 'created') . ", {$skipped} skipped, {$failed} failed.");
 
         return self::SUCCESS;
     }
