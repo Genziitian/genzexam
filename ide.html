@@ -46,6 +46,9 @@
   button.btn { padding: 8px 16px; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); color: var(--ink); font: 600 14px inherit; cursor: pointer; }
   button.btn.primary { background: var(--brand); border-color: var(--brand); color: #fff; }
   button.btn:disabled { opacity: .55; cursor: wait; }
+  .btn.sm { padding: 6px 12px; font-size: 12px; letter-spacing: .06em; }
+  .actions { display: flex; justify-content: flex-end; gap: 10px; padding: 12px; border-top: 1px solid var(--line); background: var(--panel); }
+  .actions .btn { padding: 10px 22px; }
   #editorWrap { flex: 1; min-height: 0; position: relative; }
   .CodeMirror { height: 100%; font: 13.5px/1.55 ui-monospace, Menlo, Consolas, monospace; background: var(--panel); color: var(--ink); }
   .CodeMirror-gutters { background: var(--panel); border-right: 1px solid var(--line); }
@@ -149,11 +152,14 @@
     <div class="toolbar">
       <span class="lang" id="lang">Python3</span>
       <span class="spacer"></span>
-      <button class="btn" id="resetBtn" title="Restore starter code">Reset</button>
-      <button class="btn" id="runBtn">Run</button>
-      <button class="btn primary" id="submitBtn">Submit</button>
+      <button class="btn sm" id="copyBtn" title="Copy the code">COPY</button>
+      <button class="btn sm" id="resetBtn" title="Restore starter code">RESET</button>
     </div>
     <div id="editorWrap"></div>
+    <div class="actions">
+      <button class="btn" id="runBtn">&#9654; Run Code</button>
+      <button class="btn primary" id="submitBtn">&#10003; Submit</button>
+    </div>
   </section>
 </main>
 <dialog id="reportDlg" style="border:1px solid var(--line);border-radius:12px;background:var(--panel);color:var(--ink);padding:20px;max-width:440px;width:calc(100% - 32px)">
@@ -339,6 +345,11 @@
   }
   $("runBtn").addEventListener("click", function () { execute("run"); });
   $("submitBtn").addEventListener("click", function () { if (!busy && confirm("Submit your code for this question? Your attempt will be recorded.")) execute("submit"); });
+  $("copyBtn").addEventListener("click", function () {
+    if (!cm) return;
+    var b = $("copyBtn"), done = function () { b.textContent = "COPIED"; setTimeout(function () { b.textContent = "COPY"; }, 1500); };
+    if (navigator.clipboard) navigator.clipboard.writeText(cm.getValue()).then(done, function () {});
+  });
   $("resetBtn").addEventListener("click", function () {
     if (!current || !confirm("Reset your code? Everything you wrote will be replaced by the starter code.")) return;
     try { localStorage.removeItem(draftKey(current)); } catch (e) {}
