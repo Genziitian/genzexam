@@ -1,0 +1,364 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 2 · Graded Assignment · Week 10",
+  "subject": "English 2",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "“All assignments were submitted.” This sentence is in the passive voice."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "“The displayed ornaments glittered in the dazzling lights.” The verb in this sentence is:"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Displayed"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Glittered"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Dazzling"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "All of the above"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In “The displayed ornaments glittered in the dazzling lights”, there are ___ finite verbs and ___ participles."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "0,3"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "3,0"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1,2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "2,1"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Negative sensitive elements are:"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Anyone"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Anybody"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Anything"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "All of the above"
+          }
+        ]
+      ],
+      "correct_answer": 3
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "“They did not tell anyone about their plan” is a negative sentence."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct reported speech: “Who did you see?” Prema asked."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Prema asked me who I saw"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Prema asked me who I had seen"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Prema told me who I have seen"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Prema told me who I had seen"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the indirect speech of “I haven’t seen him.”"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "He said he didn’t see him"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "He said that he hadn’t seen him"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "He told that he didn’t seen him"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "He told that he hadn’t see him"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "This proposal is ___ better than the previous one."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "As much"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Much"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Much of"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Not many"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Ours is a small class. We don’t have ___ students."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Much"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Many"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Large"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Any"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If they are innocent, they will be acquitted. This is a ___ sentence."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Zero conditional"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "First conditional"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Second conditional"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Mixed conditional"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    }
+  ]
+}

@@ -1,0 +1,251 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Python · OPPE 2 · 2024 Sep · Set 3",
+  "subject": "Python",
+  "section": "mock_test",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 1 - Problem 1: Product of Sum and Absolute Difference of Digits in a Two-Digit Number** (Function Type)\n\nGiven a two-digit number, calculate the product of:\n• The sum of its digits.\n• The absolute difference between its digits.\nAssume the input is a two-digit number.\nInput: A two-digit integer.\nOutput: An integer representing the product of the sum and absolute difference of its digits."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def product_of_sum_and_abs_diff(num: int) -> int:\n    ..."
+        }
+      ],
+      "acceptable_answers": [
+        "Product of Sum and Absolute Difference of Digits in a Two-Digit Number",
+        "product_of_sum_and_abs_diff"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Sample Test Cases / Examples:**\n\n```text\nInput\n54\nOutput\n9\nExplanation\nDigits are 5 and 4.\nSum = 5 + 4 = 9.\nAbsolute Difference = |5 - 4| = 1.\nProduct = 9 * 1 = 9.\n```"
+        },
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def product_of_sum_and_abs_diff(num: int) -> int:\n    n = abs(num)\n    tens, units = n // 10, n % 10\n    return (tens + units) * abs(tens - units)"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 1 - Problem 2: Check Divisibility by Last Two Digits** (Function Type)\n\nWrite a function that checks whether a given number is divisible by both of its last two digits.\nReturn False if any of the last two digits is zero.\nInput: A positive integer num with at least two digits.\nOutput: True if the number is divisible by both of its last two digits, otherwise False."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def is_divisible_by_last_two_digits(num: int) -> bool:\n    ..."
+        }
+      ],
+      "acceptable_answers": [
+        "Check Divisibility by Last Two Digits",
+        "is_divisible_by_last_two_digits"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Sample Test Cases / Examples:**\n\n```text\n1236 -> True, 1236 is divisible by both 3 and 6.\n345 -> False, 345 is divisible by 5 but not divisible by 4.\n748 -> False, 748 is divisible by 4 but not divisible by 8.\n740 -> False, the last digit is 0.\n```"
+        },
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def is_divisible_by_last_two_digits(num: int) -> bool:\n    last_two = abs(num) % 100\n    d1, d2 = last_two // 10, last_two % 10\n    # A zero divisor disqualifies the number immediately.\n    if d1 == 0 or d2 == 0:\n        return False\n    return num % d1 == 0 and num % d2 == 0"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 1 - Problem 3: Swap the Last Chars in Dictionary Values** (Function Type)\n\nWrite a function that swaps the last characters of the values corresponding to two specified keys in a dictionary.\nAssume that the values in the dictionary are strings.\nInput:\n• A dictionary d where the values are strings.\n• Two keys k1 and k2.\nOutput:\n• Modify the dictionary in-place by swapping the last characters of the values of the given keys.\n• The function returns None as it modifies the dictionary directly.\nAssume the values for both keys k1 and k2 are non-empty strings and the dictionary contains the keys k1 and k2."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def swap_last_chars_of_values(d: dict, k1, k2) -> None:\n    ..."
+        }
+      ],
+      "acceptable_answers": [
+        "Swap the Last Chars in Dictionary Values",
+        "swap_last_chars_of_values"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Sample Test Cases / Examples:**\n\n```text\nExample 1\n>>> d = {\"first\": \"apple\", \"second\": \"mango\", \"third\":\"banana\"}\n>>> swap_last_chars_of_values(d, \"first\", \"second\")\n>>> d\n{'first': 'applo', 'second': 'mange', \"third\": \"banana\"}\nExample 2\n>>> d = {\"key1\": \"hello\", \"key2\": \"world\"}\n>>> swap_last_chars_of_values(d, \"key1\", \"key2\")\n>>> d\n{'key1': 'helld', 'key2': 'worlo'}\n```"
+        },
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def swap_last_chars_of_values(d: dict, k1, k2) -> None:\n    v1, v2 = d[k1], d[k2]\n    d[k1] = v1[:-1] + v2[-1]\n    d[k2] = v2[:-1] + v1[-1]"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 2 - Problem 1: Get Words That Come After \"the\"** (Function Type)\n\nWrite a function to find all the words that immediately follow the word \"the\" in a given sentence. The search should be case-insensitive, and words are separated by spaces."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def words_after_the(sentence: str) -> list:\n    ..."
+        }
+      ],
+      "acceptable_answers": [
+        "Get Words That Come After \"the\"",
+        "words_after_the"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Sample Test Cases / Examples:**\n\n```text\n\"The key and the lock is there\" -> ['key', 'lock']\n\"The\" (case-insensitive) is followed by \"key\" and \"the\" is followed by \"lock\" hence, the output is ['key', 'lock'].\n\"The the and the The\" -> ['the', 'and', 'The']\n\"the\" follows \"The\", \"and\" follows \"the\" and \"The\" follows \"the\".\n```"
+        },
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def words_after_the(sentence: str) -> list:\n    words = sentence.split()\n    result = []\n    for i in range(len(words) - 1):\n        if words[i].lower() == \"the\":\n            result.append(words[i + 1])\n    return result"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 2 - Problem 2: Ceil Marks to Nearest Tens if Close** (Io Type)\n\nWrite a program to process roll numbers and marks for students. If a student's marks have a unit digit of 8 or 9, round their marks up to the nearest tens. Otherwise, keep the marks unchanged. Print only the roll number and updated marks for students whose marks were updated.\nInput Format\n• The first line contains the number of lines of student data n.\n• Next n lines contains the student data with roll number and marks separated by space.\nOutput Format\n• Student data for the roll number whose marks has been updated in the format of roll number and updated marks separated by comma."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "# Read input, process, and print the output"
+        }
+      ],
+      "acceptable_answers": [
+        "Ceil Marks to Nearest Tens if Close"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Sample Test Cases / Examples:**\n\n```text\n48 -> 50\n69 -> 70\n70 -> 70\n37 -> 37\n```"
+        },
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "n = int(input())\nfor _ in range(n):\n    roll, marks = input().split()\n    marks = int(marks)\n    # Round up only when the unit digit is 8 or 9.\n    if marks % 10 in (8, 9):\n        updated = marks + (10 - marks % 10)\n        print(f\"{roll},{updated}\")"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 3 - Problem 1: Cartesian Points Processing** (Function Type)\n\nGiven a set of tuples of ints representing points in Cartesian coordinates, write a function that performs the following tasks:\n• sort_close_to_y_axis: Returns a sorted list of the points based on the absolute value of their x-coordinate (distance from the y-axis). The point with the lower angle in polar coordinates comes first in case of ties.\n• closest_point_to_origin: Find the closest point to the origin (0,0) based on the Manhattan distance. If there are multiple points at the same distance, return the one with the lower angle in polar coordinates.\n• group_by_quadrant: Return a dictionary where the keys are quadrant numbers (1, 2, 3, 4) and the values are sets of points in those quadrants. Do not include keys for quadrants with no points.\nNote the angle is computed using math.atan2(y,x) where x and y are the cartesian coordinates. math.atan2 returns the angle in the range of -pi to pi. You can use the get_angle function from the template.\nAssume no points are on the axes or origin and the coordinates are integers.\nHint: sorted and min functions can be used with the key argument to make the code simpler.\nDefinitions:\n• Manhattan distance between two points (x_1, y_1) and (x_2, y_2) is |x_1 - x_2| + |y_1 - y_2|."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "import math\n\ndef get_angle(point):\n    x, y = point\n    return math.atan2(y, x)\n\ndef process_points(points, task):\n    ..."
+        }
+      ],
+      "acceptable_answers": [
+        "Cartesian Points Processing",
+        "get_angle"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Sample Test Cases / Examples:**\n\n```text\npoints = {\n    (2, 5), (-2, 6), (-2, 7), (-1, 3),\n    (-3, -4), (4, -6), (0, 7)\n}\ntask = \"sort_close_to_y_axis\"\noutput = [\n    (0, 7), (-1, 3), (2, 5), (-2, 7),\n    (-2, 6), (-3, -4), (4, -6)\n]\nis_equal(\n    process_points(points, task),\n    output\n)\n```"
+        },
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "import math\n\ndef get_angle(point):\n    x, y = point\n    return math.atan2(y, x)\n\ndef process_points(points, task):\n    if task == \"sort_close_to_y_axis\":\n        return sorted(points, key=lambda p: (abs(p[0]), get_angle(p)))\n    elif task == \"closest_point_to_origin\":\n        return min(points, key=lambda p: (abs(p[0]) + abs(p[1]), get_angle(p)))\n    elif task == \"group_by_quadrant\":\n        result = {}\n        for p in points:\n            x, y = p\n            if x > 0 and y > 0:\n                quad = 1\n            elif x < 0 and y > 0:\n                quad = 2\n            elif x < 0 and y < 0:\n                quad = 3\n            else:\n                quad = 4\n            result.setdefault(quad, set()).add(p)\n        return result"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 3 - Problem 2: Fill the First n Blanks with 1 to n** (File-io Type)\n\nWrite a program to fill the first n blanks (represented by underscores _) in a text with numbers from 1 to n.\n• The first line of the input contains the integer n, the number of blanks to fill.\n• Subsequent lines contain the text, with blanks represented as _.\n• Fill the blanks sequentially with numbers from 1 to n.\n• If there are more blanks than n, the remaining blanks remain unchanged."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "# Read input, process, and print the output"
+        }
+      ],
+      "acceptable_answers": [
+        "Fill the First n Blanks with 1 to n"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Sample Test Cases / Examples:**\n\n```text\nInput\n11\na_bc__d___e\nf_g__h__i__j\nk___l_m__n\nOutput\n11\na1bc23d456e\nf7g89h1011i__j\nk___l_m__n\n```"
+        },
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "import sys\n\ndef fill_blanks(text: str, n: int) -> str:\n    result = []\n    count = 0\n    for ch in text:\n        if ch == \"_\" and count < n:\n            count += 1\n            result.append(str(count))\n        else:\n            result.append(ch)\n    return \"\".join(result)\n\ndata = sys.stdin.read()\nlines = data.split(\"\\n\")\nn = int(lines[0])\nbody = \"\\n\".join(lines[1:])\n# Echo n on the first line, then the filled text.\nsys.stdout.write(str(n) + \"\\n\" + fill_blanks(body, n))"
+        }
+      ]
+    }
+  ]
+}

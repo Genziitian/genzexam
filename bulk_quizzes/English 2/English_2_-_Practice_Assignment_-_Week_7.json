@@ -1,0 +1,249 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 2 · Practice Assignment · Week 7",
+  "subject": "English 2",
+  "section": "practice",
+  "week": 7,
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In a group discussion, what is the best strategy when you disagree with another participant?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Interrupt them immediately and state they are wrong"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Politely acknowledge their perspective and state your counter-point with evidence"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Remain silent and refuse to participate further"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Mock their argument"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Constructive disagreement begins with respectful acknowledgement followed by clear evidence."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What does active listening in an interview or group discussion entail?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Focusing solely on what you plan to say next"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Maintaining eye contact, nodding, and synthesizing points made by others"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Looking out the window"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Speaking continuously without pausing"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Active listening demonstrates engagement through positive non-verbal cues and cohesive contributions."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The acronym STAR in competency-based interviews stands for:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Situation, Task, Action, Result"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Strategy, Technique, Approach, Response"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Subject, Theme, Argument, Reference"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Speaking, Tone, Attitude, Rapport"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "STAR technique structure: Situation (context), Task (challenge), Action (steps taken), Result (outcome)."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In a group discussion, taking the initiative to initiate the discussion without knowing the topic is always advantageous."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Initiating without substance or clarity can backfire; contributing meaningful, structured points is far more valuable."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following phrases is most appropriate for politely entering an ongoing group discussion?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Shut up, let me speak"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "May I add a quick point to what was just discussed?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "You are all talking nonsense"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Hey, listen to me"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "‘May I add a point...’ allows a smooth, polite intervention into the conversational floor."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Non-verbal communication such as posture, nodding, and eye contact accounts for a significant portion of an interviewer's impression."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Kinesics and non-verbal cues strongly reinforce spoken professional credibility and confidence."
+        }
+      ]
+    }
+  ]
+}

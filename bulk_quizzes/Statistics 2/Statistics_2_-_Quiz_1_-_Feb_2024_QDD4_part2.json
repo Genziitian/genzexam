@@ -1,0 +1,361 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Statistics 2 · Quiz 1 · Feb 2024 · QDD4 · Part 2",
+  "subject": "Statistics 2",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "📖 Passage / Context\nKunal and Sanskriti are playing a game. Kunal will roll a fair six-sided die, and Sanskriti will flip a fair coin as\nmany times as the number shown on the die. Let 𝑋 represent the number displayed on the die, and 𝑌\nrepresent the number of heads obtained by Sanskriti. Based on the above data, answer the given\nsubquestions."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/f391f7d39973_q9_prompt-1_p6.png",
+          "alt": "Original prompt 1 for Statistics 2 question 9."
+        }
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Explanation: Given X=5, Sanskriti flips 5 coins. Y|X=5 ~ Binomial(5, 1/2). Range is {0,1,2,3,4,5}."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/f391f7d39973_q9_option-1-1_p6.png",
+            "alt": "Original option 1 1 for Statistics 2 question 9."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/f391f7d39973_q9_option-2-1_p6.png",
+            "alt": "Original option 2 1 for Statistics 2 question 9."
+          },
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/f391f7d39973_q9_option-2-2_p6.png",
+            "alt": "Original option 2 2 for Statistics 2 question 9."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/f391f7d39973_q9_option-3-1_p6.png",
+            "alt": "Original option 3 1 for Statistics 2 question 9."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/f391f7d39973_q9_option-4-1_p6.png",
+            "alt": "Original option 4 1 for Statistics 2 question 9."
+          }
+        ]
+      ],
+      "correct_answers": [
+        1,
+        3
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "📖 Passage / Context\nKunal and Sanskriti are playing a game. Kunal will roll a fair six-sided die, and Sanskriti will flip a fair coin as\nmany times as the number shown on the die. Let 𝑋 represent the number displayed on the die, and 𝑌\nrepresent the number of heads obtained by Sanskriti. Based on the above data, answer the given\nsubquestions."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/f391f7d39973_q10_prompt-1_p6.png",
+          "alt": "Original prompt 1 for Statistics 2 question 10."
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Explanation: Y|X=5 ~ Binomial(5, 1/2). P(Y=1|X=5) = C(5,1)(1/2)^1(1/2)^4 = 5/32 ≈ 0.15625 ≈ 0.16."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/f391f7d39973_q10_solution-2_p6.png",
+          "alt": "Original solution 2 for Statistics 2 question 10."
+        }
+      ],
+      "acceptable_answers": [
+        "0.16 (±0.03)"
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/f391f7d39973_q11_context-1-1_p6.png",
+          "alt": "Original context 1 1 for Statistics 2 question 11."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/f391f7d39973_q11_prompt-1_p7.png",
+          "alt": "Original prompt 1 for Statistics 2 question 11."
+        }
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Since Z=max(X₁,X₂), independence gives P(Z≤3)=P(X₁≤3)P(X₂≤3)=(3/6)²=1/4. Therefore option A is correct."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/f391f7d39973_q11_option-1-1_p7.png",
+            "alt": "Original option 1 1 for Statistics 2 question 11."
+          },
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/f391f7d39973_q11_option-1-2_p7.png",
+            "alt": "Original option 1 2 for Statistics 2 question 11."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/f391f7d39973_q11_option-2-1_p7.png",
+            "alt": "Original option 2 1 for Statistics 2 question 11."
+          },
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/f391f7d39973_q11_option-2-2_p7.png",
+            "alt": "Original option 2 2 for Statistics 2 question 11."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/f391f7d39973_q11_option-3-1_p7.png",
+            "alt": "Original option 3 1 for Statistics 2 question 11."
+          },
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/f391f7d39973_q11_option-3-2_p7.png",
+            "alt": "Original option 3 2 for Statistics 2 question 11."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/f391f7d39973_q11_option-4-1_p7.png",
+            "alt": "Original option 4 1 for Statistics 2 question 11."
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/f391f7d39973_q12_context-1-1_p6.png",
+          "alt": "Original context 1 1 for Statistics 2 question 12."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/f391f7d39973_q12_prompt-1_p7.png",
+          "alt": "Original prompt 1 for Statistics 2 question 12."
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Explanation: P(Z=4) = P(Z≤4) - P(Z≤3) = (4/6)² - (3/6)² = 16/36 - 9/36 = 7/36. So a = 7."
+        },
+        {
+          "kind": "text",
+          "value": "📖 Passage / Context\nSuppose that a random variable 𝑋 denotes the number of items produced in a factory during a week with\nmean 50 and variance 25. Based on the above data, answer the given subquestions."
+        }
+      ],
+      "numerical_answer": 7.0,
+      "numerical_tolerance": 0.01
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "📖 Passage / Context\nSuppose that a random variable 𝑋 denotes the number of items produced in a factory during a week with\nmean 50 and variance 25. Based on the above data, answer the given subquestions."
+        },
+        {
+          "kind": "text",
+          "value": "Using Markov's inequality, find a bound on the probability that this week's production will exceed 74."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/f391f7d39973_q13_prompt-2_p8.png",
+          "alt": "Original prompt 2 for Statistics 2 question 13."
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Production is a nonnegative integer. Exceeding 74 means X≥75. Markov gives P(X≥75)≤E[X]/75=50/75=2/3. Option C is correct."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/f391f7d39973_q13_option-1-1_p8.png",
+            "alt": "Original option 1 1 for Statistics 2 question 13."
+          },
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/f391f7d39973_q13_option-1-2_p8.png",
+            "alt": "Original option 1 2 for Statistics 2 question 13."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/f391f7d39973_q13_option-2-1_p8.png",
+            "alt": "Original option 2 1 for Statistics 2 question 13."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/f391f7d39973_q13_option-3-1_p8.png",
+            "alt": "Original option 3 1 for Statistics 2 question 13."
+          },
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/f391f7d39973_q13_option-3-2_p8.png",
+            "alt": "Original option 3 2 for Statistics 2 question 13."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/f391f7d39973_q13_option-4-1_p8.png",
+            "alt": "Original option 4 1 for Statistics 2 question 13."
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "📖 Passage / Context\nSuppose that a random variable 𝑋 denotes the number of items produced in a factory during a week with\nmean 50 and variance 25. Based on the above data, answer the given subquestions."
+        },
+        {
+          "kind": "text",
+          "value": "Using Chebyshev's inequality, find a lower bound on the probability that this week's production will be\nbetween 40 and 60. Enter the answer correct to two decimal places."
+        }
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/f391f7d39973_q14_solution-1_p8.png",
+          "alt": "Original solution 1 for Statistics 2 question 14."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/f391f7d39973_q14_solution-2_p8.png",
+          "alt": "Original solution 2 for Statistics 2 question 14."
+        },
+        {
+          "kind": "text",
+          "value": "Based on the above data, answer the given subquestions."
+        }
+      ],
+      "acceptable_answers": [
+        "0.75 (±0.03)"
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/f391f7d39973_q15_context-1-1_p8.png",
+          "alt": "Original context 1 1 for Statistics 2 question 15."
+        },
+        {
+          "kind": "text",
+          "value": "Based on the above data, answer the given subquestions."
+        },
+        {
+          "kind": "text",
+          "value": "Find the value of 𝑘. Enter the answer correct to one decimal place."
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Explanation: ∫₀¹(1/10)dx + ∫₁²kx dx + ∫₂³(3/10)dx = 1. 1/10 + k(4/2-1/2) + 3/10 = 1. 1/10 + 3k/2 + 3/10 = 1.\n4/10 + 3k/2 = 1. 3k/2 = 6/10. k = 12/30 = 2/5 = 0.4."
+        }
+      ],
+      "acceptable_answers": [
+        "0.4 (±0.01)"
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/f391f7d39973_q16_context-1-1_p8.png",
+          "alt": "Original context 1 1 for Statistics 2 question 16."
+        },
+        {
+          "kind": "text",
+          "value": "Based on the above data, answer the given subquestions."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/f391f7d39973_q16_prompt-1_p9.png",
+          "alt": "Original prompt 1 for Statistics 2 question 16."
+        }
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Explanation: P(1≤X≤2.5) = ∫₁²0.4x dx + ∫₂^{2.5}(3/10)dx = 0.4(4/2-1/2) + 0.3(0.5) = 0.4(1.5) + 0.15 = 0.6 + 0.15\n= 0.75."
+        },
+        {
+          "kind": "text",
+          "value": "EXAM.GENZIITIAN.IN GENZIITIAN.IN/ECOSYSTEM YOUTUBE"
+        }
+      ],
+      "acceptable_answers": [
+        "0.75 (±0.03)"
+      ]
+    }
+  ]
+}

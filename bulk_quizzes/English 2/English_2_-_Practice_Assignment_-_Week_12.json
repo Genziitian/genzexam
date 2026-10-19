@@ -1,0 +1,359 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 2 · Practice Assignment · Week 12",
+  "subject": "English 2",
+  "section": "practice",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The correct form of salutation if there is a title before someone’s name is __"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Title + first name"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Title + surname"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Title + first name + surname"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "both (b) and (c)"
+          }
+        ]
+      ],
+      "correct_answer": 3
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which one from the following can be used as a salutation while emailing a friend?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Hey"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Hi"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Dear"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "all the above"
+          }
+        ]
+      ],
+      "correct_answer": 3
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Select all appropriate closing lines from the following."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "I look forward to receiving your response"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Thank you for your support"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "What is the cost of your services"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "none of the above"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1
+      ],
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Both looking forward to a response and thanking the reader are appropriate closing lines; asking the service cost is not a closing formula."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is a sentence that summarizes the main point of your research report called?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Introduction"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Literature review"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Thesis statement"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Observation"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "______ refers to the time and place of a speech act and, in general, to the physical circumstances."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Scene"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Setting"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Act"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Barrier"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "During a speech, addressees and other hearers are part of the ________"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "audience"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "crew"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "cast"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "writer"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What does the K in the acronym SPEAKING (model) refer to?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Keats"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Kipling"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Key"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Keystroke"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "External noise is a/an"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Organisational barrier"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Physical/Mechanical barrier"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Language/Semantic barrier"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Personal barrier"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following are useful things to do before an interview?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Organise information about yourself"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Do your research on the organisation"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Prepare your documents"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "All of the above"
+          }
+        ]
+      ],
+      "correct_answer": 3
+    }
+  ]
+}

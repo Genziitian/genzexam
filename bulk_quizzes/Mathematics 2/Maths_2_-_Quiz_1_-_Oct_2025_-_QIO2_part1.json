@@ -1,0 +1,243 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 2 · Quiz 1 · Oct 2025 · QIO2 · Part 1",
+  "subject": "Mathematics 2",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the system of linear equations with unknowns $x, y$ and $z$ given by:\n$$\\begin{pmatrix} 1 & 2 & 1 \\\\ 3 & 0 & -1 \\\\ 1 & 8 & 5 \\end{pmatrix} \\begin{pmatrix} x \\\\ y \\\\ z \\end{pmatrix} = \\begin{pmatrix} b_1 \\\\ b_2 \\\\ b_3 \\end{pmatrix}$$\nwhere $b_1, b_2, b_3 \\in \\mathbb{R}$. Choose the equation to be satisfied by $b_1, b_2$ and $b_3$ to ensure that the given system of equations has a solution."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$2b_1 + b_2 - b_3 = 0$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$2b_1 - b_2 + b_3 = 0$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$-4b_1 + b_2 - b_3 = 0$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$-4b_1 + b_2 + b_3 = 0$"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Notice $-4(1, 2, 1) + (3, 0, -1) + (1, 8, 5) = (-4+3+1, -8+0+8, -4-1+5) = (0, 0, 0)$. Thus $-4R_1 + R_2 + R_3 = 0$. For consistency, $-4b_1 + b_2 + b_3 = 0$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let $Ax = b$ be a system of linear equations with a square coefficient matrix $A$. Consider the following statements:\n$S_1$: If the RREF of $A$ is the identity matrix, then the given system has a solution.\n$S_2$: If the given system has a solution, then the RREF of $A$ is the identity matrix.\nChoose the correct option:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Both $S_1$ and $S_2$ are true."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both $S_1$ and $S_2$ are false."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$S_1$ is true and $S_2$ is false."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$S_1$ is false and $S_2$ is true."
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 6,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "If $\\text{RREF}(A) = I$, $A$ is invertible, so a solution exists for every $b$ ($S_1$ is true). However, a system can have solutions even when $A$ is singular and $\\text{RREF}(A) \\neq I$ (e.g. $Ax = 0$), so $S_2$ is false."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose all the correct statements from the following:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The set of positive real numbers is a vector subspace of $\\mathbb{R}$ with standard addition and multiplication."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "In any vector space $V$, if for some $c \\in \\mathbb{R}$ and $v \\in V$ we have $c \\cdot v = 0$, then $c = 0$ or $v$ is the zero vector."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "If a vector subspace of $\\mathbb{R}^3$ contains finitely many vectors, then it is the trivial subspace $\\{(0, 0, 0)\\}$."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Any subset of a spanning set of a vector space is a spanning set."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Any subset of a linearly independent set in a vector space is a linearly independent set."
+          }
+        ]
+      ],
+      "correct_answers": [
+        1,
+        2,
+        4
+      ],
+      "marks": 6,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Positive real numbers do not contain 0 or negatives, so not a subspace. Over $\\mathbb{R}$, any non-trivial subspace contains infinitely many scalar multiples $cv$. Subsets of independent sets remain independent."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let $A$ be a square matrix of order $n > 1$. Select all the statements which imply that $\\det(A) = 0$:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "All the entries of one of the columns of $A$ are zero."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "One of the columns of $A$ is a scalar multiple of another column."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The diagonal entries of $A$ are all zero."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The determinant of the transpose of $A$ is zero."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$A^2 = 0$."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1,
+        3,
+        4
+      ],
+      "marks": 6,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "A zero column, proportional columns, $\\det(A^T) = 0$, and nilpotent $A^2 = 0$ (which gives $(\\det A)^2 = 0$) all imply $\\det(A) = 0$. Zero diagonal does not imply $\\det = 0$ (e.g. $\\begin{pmatrix} 0 & 1 \\\\ 1 & 0 \\end{pmatrix}$ has $\\det = -1$)."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If the sum of the two vectors $(1, 2)$ and $(2, x)$ in $\\mathbb{R}^2$ is a scalar multiple of the vector $(2, 1)$, find the value of $x$."
+        }
+      ],
+      "numerical_answer": -0.5,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$(1, 2) + (2, x) = (3, 2 + x) = c(2, 1) = (2c, c)$. From $2c = 3 \\implies c = 1.5$. Then $2 + x = 1.5 \\implies x = -0.5$."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the minimum value of $\\beta$ such that the matrix:\n$$\\begin{pmatrix} \\beta - 1 & 0 & -1 \\\\ 2 & \\beta + 4 & 2 \\\\ \\beta + 1 & \\beta + 1 & \\beta + 1 \\end{pmatrix}$$\nis not invertible."
+        }
+      ],
+      "numerical_answer": -2,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Matrix is not invertible when determinant is 0. Expanding the determinant yields roots for $\\beta$. The minimum root is $\\beta = -2$."
+        }
+      ]
+    }
+  ]
+}

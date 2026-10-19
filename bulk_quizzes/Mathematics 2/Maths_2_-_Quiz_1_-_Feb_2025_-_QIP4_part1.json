@@ -1,0 +1,283 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 2 · Quiz 1 · Feb 2025 · QIP4 · Part 1",
+  "subject": "Mathematics 2",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let $v_1, v_2, v_3$ be linearly independent vectors in $\\mathbb{R}^3$. Let $A \\in M_{3\\times 3}(\\mathbb{R})$ be a matrix such that $v_1 - v_2, v_2 - v_3, v_1 + v_3$ are the columns of $A$. Let $B \\in M_{3\\times 3}(\\mathbb{R})$ be a matrix such that $v_1 + v_2 + v_3, 2v_1 + 3v_2, 2v_3 - v_2$ are the columns of $B$. Which of the following options is correct?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The $\\text{rank}(A)$ is 2."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$A$ is an invertible matrix."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$\\text{rank}(A) = \\text{rank}(B)$."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The system of linear equations $Bx = 0$ has a unique solution."
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 6,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Representing the columns of $A$ relative to the basis $\\{v_1, v_2, v_3\\}$ yields the coefficient matrix with determinant $\\det \\begin{pmatrix} 1 & 0 & 1 \\\\ -1 & 1 & 0 \\\\ 0 & -1 & 1 \\end{pmatrix} = 1(1) + 1(1) = 2 \\neq 0$. Thus $A$ has rank 3 and is invertible."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let $A$ be an $m \\times n$ matrix. Choose the operations that are valid only when $m = n$:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$A + A^T$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$A^2$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$\\det(A)$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$cA$, where $c$ is a real number"
+          }
+        ]
+      ],
+      "correct_answers": [
+        1,
+        2
+      ],
+      "marks": 4,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Matrix squaring $A^2 = AA$ requires $n = m$, and the determinant $\\det(A)$ is defined only for square matrices ($m = n$)."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the number of $2 \\times 2$ scalar matrices with determinant equal to 4."
+        }
+      ],
+      "numerical_answer": 2,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "A scalar matrix is of the form $cI_2 = \\begin{pmatrix} c & 0 \\\\ 0 & c \\end{pmatrix}$. Its determinant is $c^2 = 4 \\implies c = \\pm 2$, yielding exactly 2 scalar matrices."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the system of linear equations $Ax = b$, where:\n$$A = \\begin{bmatrix} 2 & 6 \\\\ k^2 & 12 \\end{bmatrix}, \\quad x = \\begin{bmatrix} x_1 \\\\ x_2 \\end{bmatrix}, \\quad b = \\begin{bmatrix} k \\\\ 4 \\end{bmatrix}$$\nfor some $k \\in \\mathbb{R}$. Which of the following conditions is equivalent to having NO solutions for the system?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$k^2 \\neq 4$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$k = 2$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$k = -2$"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$\\det(A) = 24 - 6k^2 = 0 \\implies k = \\pm 2$. For $k = 2$, the equations are proportional ($2x_1 + 6x_2 = 2$ and $4x_1 + 12x_2 = 4$), giving infinitely many solutions. For $k = -2$, $2x_1 + 6x_2 = -2$ and $4x_1 + 12x_2 = 4$ are contradictory, giving no solution."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the system of linear equations $Ax = b$, where:\n$$A = \\begin{bmatrix} 2 & 6 \\\\ k^2 & 12 \\end{bmatrix}, \\quad x = \\begin{bmatrix} x_1 \\\\ x_2 \\end{bmatrix}, \\quad b = \\begin{bmatrix} k \\\\ 4 \\end{bmatrix}$$\nfor some $k \\in \\mathbb{R}$. Which of the following conditions is equivalent to having a UNIQUE solution for the system?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$k^2 \\neq 4$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$k = 2$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$k = -2$"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "A square system $Ax = b$ has a unique solution if and only if $\\det(A) \\neq 0$, which requires $24 - 6k^2 \\neq 0 \\iff k^2 \\neq 4$."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let $A \\in M_{3\\times 4}(\\mathbb{R})$ be a matrix with row vectors $v_1, v_2$, and $v_3$. Suppose $v_1$ and $v_2$ are two linearly independent rows of $A$ and $v_1 + v_2 + v_3 = 0$. Find the row rank of $A$."
+        }
+      ],
+      "numerical_answer": 2,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Since $v_3 = -(v_1 + v_2)$, row 3 is linearly dependent on rows 1 and 2. Since $v_1$ and $v_2$ are linearly independent, the row rank is 2."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let $A \\in M_{3\\times 4}(\\mathbb{R})$ be a matrix with row vectors $v_1, v_2$, and $v_3$. Suppose $v_1$ and $v_2$ are two linearly independent rows of $A$ and $v_1 + v_2 + v_3 = 0$. Find the number of dependent (pivot) variables for the system $Ax = 0$."
+        }
+      ],
+      "numerical_answer": 2,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The number of dependent variables equals the rank of $A$, which is 2."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the system of equations $Ax = b$ for which the coefficient matrix is:\n$$A = \\begin{bmatrix} 1 & 0 & 3 \\\\ -2 & 4 & 0 \\end{bmatrix}$$\nStatement: There is a vector $b \\in \\mathbb{R}^2$ such that the system $Ax = b$ has a unique solution."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$A$ has 2 rows and 3 columns. Because there are more variables than equations ($n = 3 > m = 2$), any consistent system has at least $3 - 2 = 1$ free variable, so a unique solution is impossible."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the system of linear equations $Ax = b$ where:\n$$A = \\begin{bmatrix} 1 & 0 & 3 \\\\ -2 & 4 & 0 \\end{bmatrix}, \\quad b = \\begin{bmatrix} 1 \\\\ -2 \\end{bmatrix}$$\nIf $(\\alpha, \\beta, 2)$ is a solution to this system, find the value of $\\alpha$."
+        }
+      ],
+      "numerical_answer": -5,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "From the first equation: $\\alpha + 0(\\beta) + 3(2) = 1 \\implies \\alpha + 6 = 1 \\implies \\alpha = -5$."
+        }
+      ]
+    }
+  ]
+}

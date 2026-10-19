@@ -1,0 +1,215 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 1 · Quiz 1 · Oct 2022 · QPA1 · Part 1",
+  "subject": "Mathematics 1",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider two quadratic functions, 𝑝(𝑥) and 𝑞(𝑥), whose 𝑥-intercepts are shown in Figure 1. The leading coefficients of both 𝑝(𝑥) and 𝑞(𝑥) are 1 and the 𝑦-intercepts are −27. The axis of symmetry of 𝑞(𝑥) is 𝑥 = 3, which also passes through one of the zeroes of 𝑝(𝑥). The line 𝑦 = 𝑑 passes through the vertices of 𝑝(𝑥) and 𝑞(𝑥). [Figure: a parabola 𝑝(𝑥) (left, blue) and a parabola 𝑞(𝑥) (right, red) opening upward; both share the 𝑦- intercept (0, − 27); 𝑥-intercepts marked (𝑎, 0), (𝑏, 0) and (𝑐, 0) on the 𝑥-axis; dashed vertical line 𝑥 = 3 through 𝑞's vertex; horizontal line 𝑦 = 𝑑 through both vertices.] Enter the value of 𝑎 + 𝑏 + 𝑐? NOTE: Enter your answer to the nearest integer."
+        }
+      ],
+      "numerical_answer": -3,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Both quadratics are monic with 𝑝(0) = 𝑞(0) = − 27. For 𝑞: axis 𝑥 = 3 gives 𝑞(𝑥) = (𝑥 − 3)2 + 𝑘; 𝑞(0) = 9 + 𝑘 = − 27 ⇒ 𝑘 = − 36, so 𝑞(𝑥) = 𝑥2 − 6𝑥 − 27 with roots −3 and 9. Since 𝑥 = 3 is a zero of 𝑝 and 𝑝 is monic with 𝑝(0) = − 27: 𝑝(𝑥) = 𝑥2 + 𝐵𝑥 − 27, 𝑝(3) = 0 ⇒ 𝐵 = 6, so 𝑝(𝑥) = 𝑥2 + 6𝑥 − 27 with roots −9 and 3. From the figure 𝑎 = − 9,  𝑏 = − 3,  𝑐 = 9, so 𝑎 + 𝑏 + 𝑐 = − 9 − 3 + 9 = − 3."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider two quadratic functions, 𝑝(𝑥) and 𝑞(𝑥), whose 𝑥-intercepts are shown in Figure 1. The leading coefficients of both are 1 and the 𝑦-intercepts are −27. The axis of symmetry of 𝑞(𝑥) is 𝑥 = 3, which also passes through one of the zeroes of 𝑝(𝑥). The line 𝑦 = 𝑑 passes through the vertices of 𝑝(𝑥) and 𝑞(𝑥). [Figure: two upward parabolas 𝑝(𝑥) and 𝑞(𝑥) sharing 𝑦-intercept (0, − 27); horizontal line 𝑦 = 𝑑 through both vertices.] Enter the value of 𝑑? NOTE: Enter your answer to the nearest integer."
+        }
+      ],
+      "numerical_answer": -36,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "𝑝(𝑥) = 𝑥2 + 6𝑥 − 27 has vertex at 𝑥 = − 3: 𝑝( − 3) = 9 − 18 − 27 = − 36. 𝑞(𝑥) = 𝑥2 − 6𝑥 − 27 has vertex at 𝑥 = 3: 𝑞(3) = 9 − 18 − 27 = − 36. Both vertices lie on 𝑦 = − 36, so 𝑑 = − 36."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider two quadratic functions, 𝑝(𝑥) and 𝑞(𝑥), with leading coefficient 1 and 𝑦-intercepts −27; the axis of symmetry of 𝑞(𝑥) is 𝑥 = 3, passing through a zero of 𝑝(𝑥) (Figure 1). Here 𝑝(𝑥) = 𝑥2 + 6𝑥 − 27 and 𝑞(𝑥) = 𝑥2 − 6𝑥 − 27. Choose the set of correct option(s)."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The axis of symmetry of 𝑝(𝑥) is 𝑥 = − 3."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The slopes of both 𝑝(𝑥) and 𝑞(𝑥) are same at (0, − 27)."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The slope of 𝑝(𝑥) is 6 but the slope 𝑞(𝑥) is −6 at (0, − 27)."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The discriminant of both the quadratic equations 𝑝(𝑥) = 0 and 𝑞(𝑥) = 0 are same."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        2,
+        3
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "𝑝(𝑥) = 𝑥2 + 6𝑥 − 27 has vertex/axis at 𝑥 = − 3 (option 1 true). 𝑝′(𝑥) = 2𝑥 + 6 ⇒ 𝑝′(0) = 6; 𝑞′(𝑥) = 2𝑥 − 6 ⇒ 𝑞′(0) = − 6, so the slopes at (0, − 27) are 6 and −6 (option 2 false, option 3 true). Discriminants: 𝑝: 62 − 4(1)( − 27) = 144; 𝑞: ( − 6)2 − 4(1)( − 27) = 144 — equal (option 4 true)."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Ritwik wrote 12 mock tests. His score in each mock test 𝑀(𝑛) is represented as 𝑀(𝑛) = − ( 𝑛2 1000 ) ( 𝑛3 − 15𝑛2 + 50𝑛 ) + 40, where 𝑛 represents the mock test number i.e., 𝑛 ∈ {1, 2, … , 11, 12}. He should score 40 or above to pass the assignment. How many times did Ritwik score exactly 40? NOTE: Enter your answer to the nearest integer."
+        }
+      ],
+      "numerical_answer": 2,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "𝑀(𝑛) = 40 − 𝑛2 1000𝑛(𝑛 − 5)(𝑛 − 10). The deviation from 40 is zero when 𝑛(𝑛 − 5)(𝑛 − 10) = 0, i.e. 𝑛 = 5 or 𝑛 = 10 (and 𝑛 = 0 is out of range). So 𝑀(5) = 𝑀(10) = 40 exactly — 2 times."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Ritwik wrote 12 mock tests with score 𝑀(𝑛) = − ( 𝑛2 1000 ) ( 𝑛3 − 15𝑛2 + 50𝑛 ) + 40, 𝑛 ∈ {1, 2, … , 12}. He must score 40 or above to pass. In total, how many mock tests did Ritwik pass? NOTE: Enter your answer to the nearest integer."
+        }
+      ],
+      "numerical_answer": 6,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "𝑀(𝑛) ≥ 40 iff 𝑛(𝑛 − 5)(𝑛 − 10) ≤ 0. For 𝑛 ≥ 1 this holds on 5 ≤ 𝑛 ≤ 10. Computing: 𝑀(5) = 40, 𝑀(6) = 40.864, 𝑀(7) = 42.058, 𝑀(8) = 43.072, 𝑀(9) = 42.916, 𝑀(10) = 40, all ≥ 40; 𝑛 = 1..4 and 𝑛 = 11, 12 are below 40. So he passes 6 tests."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider a relation 𝑅 ⊆ 𝐴 × 𝐴, where 𝐴 = {1, 2, 3}. Table 1 lists relations in Column A and types of relation in Column B. Column A: 𝑅1 = {(1, 1)}; 𝑅2 = {(1, 1), (2, 2), (3, 3)}; 𝑅3 = {(1, 1), (1, 2)}; 𝑅4 = {(1, 3)}; 𝑅5 = {(1, 1), (2, 2), (3, 3), (1, 2)}; 𝑅6 = {(1, 1), (1, 2), (2, 1), (2, 3)}. Column B (types): Symmetric, Anti-symmetric, Identity, Transitive, Reflexive, Equivalence. State 'True' or 'False': 𝑅6 does not match with any type of relations given in Column B."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "TRUE"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "FALSE"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "𝑅6 = {(1, 1), (1, 2), (2, 1), (2, 3)}: not symmetric ((2, 3) has no (3, 2)), not anti-symmetric ((1, 2) and (2, 1) with 1 ≠ 2), not transitive ((1, 2), (2, 3) but no (1, 3)), not reflexive (missing (2, 2), (3, 3)), not identity, not equivalence. It matches none of the listed types, so the statement is TRUE."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "For 𝐴 = {1, 2, 3} with 𝑅1 = {(1, 1)}; 𝑅2 = {(1, 1), (2, 2), (3, 3)}; 𝑅3 = {(1, 1), (1, 2)}; 𝑅4 = {(1, 3)}; 𝑅5 = {(1, 1), (2, 2), (3, 3), (1, 2)}; 𝑅6 = {(1, 1), (1, 2), (2, 1), (2, 3)}, and Column B types Symmetric, Anti- symmetric, Identity, Transitive, Reflexive, Equivalence. State 'True' or 'False': 𝑅1 matches with all type of relations except anti-symmetric relation given in Column B."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "TRUE"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "FALSE"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "𝑅1 = {(1, 1)} IS anti-symmetric (and symmetric and transitive), but it is NOT reflexive, NOT identity, and NOT equivalence on 𝐴 = {1, 2, 3}. So the claim that it matches every type except anti-symmetric is FALSE — in fact anti-symmetric is one of the types it satisfies, while it fails several others."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "For 𝐴 = {1, 2, 3} with 𝑅1 = {(1, 1)}; 𝑅2 = {(1, 1), (2, 2), (3, 3)}; 𝑅3 = {(1, 1), (1, 2)}; 𝑅4 = {(1, 3)}; 𝑅5 = {(1, 1), (2, 2), (3, 3), (1, 2)}; 𝑅6 = {(1, 1), (1, 2), (2, 1), (2, 3)}. In total, how many relations given in Column A matches with transitive relation? NOTE: Enter your answer to the nearest integer."
+        }
+      ],
+      "numerical_answer": 5,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Transitivity: 𝑅1, 𝑅2, 𝑅3, 𝑅4, 𝑅5 are all transitive (no broken chains). 𝑅6 fails since (1, 2), (2, 3) ∈ 𝑅6 but (1, 3) ∉ 𝑅6. So 5 relations are transitive."
+        }
+      ]
+    }
+  ]
+}

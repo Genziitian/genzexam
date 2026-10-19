@@ -1,0 +1,251 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Python · OPPE 2 · 2024 Sep · Set 1",
+  "subject": "Python",
+  "section": "mock_test",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 1 - Problem 1: Check If Even Two-Digit Number** (Function Type)\n\nWrite a function is_even_two_digit_number that checks whether a given number is an even two-digit number.\nA number is considered a two-digit number if it has exactly two digits excluding any negative sign.\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def is_even_two_digit_number(num: int) -> bool:\n    ..."
+        }
+      ],
+      "acceptable_answers": [
+        "Check If Even Two-Digit Number",
+        "is_even_two_digit_number"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Sample Test Cases / Examples:**\n\n```text\n24 is an even two-digit number.\n-36 is an even two-digit number.\n5 is not a two-digit number.\n101 is not a two-digit number.\n-19 is not an even number.\n```"
+        },
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def is_even_two_digit_number(num: int) -> bool:\n    # exactly two digits (ignoring the sign) and even\n    return len(str(abs(num))) == 2 and num % 2 == 0\n"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 1 - Problem 2: Check If the Given Domain is .com or .in** (Function Type)\n\nWrite a function is_dot_com_or_dot_in(domain) that takes a string domain and checks whether it ends with .com or .in.\nThe function should return True if the domain has the specified suffix; otherwise, it should return False.\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def is_dot_com_or_dot_in(domain: str) -> bool:\n    ..."
+        }
+      ],
+      "acceptable_answers": [
+        "Check If the Given Domain is .com or .in",
+        "is_dot_com_or_dot_in"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Sample Test Cases / Examples:**\n\n```text\nis_dot_com_or_dot_in(\"example.com\") -> True\nExplanation: The domain ends with .com.\nis_dot_com_or_dot_in(\"website.in\") -> True\nExplanation: The domain ends with .in.\nis_dot_com_or_dot_in(\"mydomain.org\") -> False\nExplanation: The domain does not end with .com or .in.\nis_dot_com_or_dot_in(\"invalidcom\") -> False\nExplanation: The domain does not end with .com or .in.\n```"
+        },
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def is_dot_com_or_dot_in(domain: str) -> bool:\n    return domain.endswith(\".com\") or domain.endswith(\".in\")\n"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 1 - Problem 3: Check if the Given Element is Present in Opposite Halves** (Function Type)\n\nWrite a function is_present_in_opposite_halves(elem, l1: list, l2: list) that checks whether the given elem is present in opposite halves of the two lists l1 and l2.\nThe function should return True if the element exists in one half of l1 and in the opposite half of l2, and False otherwise.\nNote that both the below cases are valid and evaluate to True.\n• elem in the first half of l1 and second half of l2\n• elem in the second half of l1 and first half of l2\nAssume both lists l1 and l2 have even lengths.\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def is_present_in_opposite_halves(elem, l1: list, l2: list) -> bool:\n    ..."
+        }
+      ],
+      "acceptable_answers": [
+        "Check if the Given Element is Present in Opposite Halves",
+        "is_present_in_opposite_halves"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Sample Test Cases / Examples:**\n\n```text\nis_present_in_opposite_halves(3, [1, 2, 3, 4], [5, 6, 3, 8]) -> False\nExplanation: 3 is in the second half of l1 and the second half of l2.\nis_present_in_opposite_halves(7, [1, 2, 3, 4], [5, 6, 3, 8]) -> False\nExplanation: 7 is not in l1 or l2.\nis_present_in_opposite_halves(6, [5, 6, 7, 8], [1, 2, 6, 4]) -> True\nExplanation: 6 is in the first half of l1 and the second half of l2.\nis_present_in_opposite_halves(6, [5, 7, 6, 8], [1, 6, 2, 4]) -> True\nExplanation: 6 is in the second half of l1 and the first half of l2.\n```"
+        },
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def is_present_in_opposite_halves(elem, l1: list, l2: list) -> bool:\n    h1, h2 = len(l1) // 2, len(l2) // 2\n    l1_first, l1_second = l1[:h1], l1[h1:]\n    l2_first, l2_second = l2[:h2], l2[h2:]\n    # elem in opposite halves: (first of l1 & second of l2) or (second of l1 & first of l2)\n    case_a = elem in l1_first and elem in l2_second\n    case_b = elem in l1_second and elem in l2_first\n    return case_a or case_b\n"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 2 - Problem 1: Count Odd 3-Digit Numbers (Ignore None)** (Function Type)\n\nWrite a function count_odd_three_digit_nums(nums) that takes a list of integers nums and returns the count of numbers that are:\n• Odd.\n• Three-digit numbers (ignoring the negative sign if present).\n• Not None.\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def count_odd_three_digit_nums(nums: list) -> int:\n    ..."
+        }
+      ],
+      "acceptable_answers": [
+        "Count Odd 3-Digit Numbers (Ignore None)",
+        "count_odd_three_digit_nums"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Sample Test Cases / Examples:**\n\n```text\ncount_odd_three_digit_nums([101, -203, None, 99, 300]) -> 2\nExplanation: 101 and -203 are odd three-digit numbers, ignoring None.\ncount_odd_three_digit_nums([None, 120, 301, -401, 78]) -> 2\nExplanation: 301 and -401 qualify as odd three-digit numbers.\ncount_odd_three_digit_nums([10, 305, 507, 99]) -> 2\nExplanation: 305 and 507 qualify as odd three-digit numbers.\n```"
+        },
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def count_odd_three_digit_nums(nums: list) -> int:\n    count = 0\n    for n in nums:\n        if n is None:\n            continue\n        # odd and exactly three digits (ignoring the sign)\n        if n % 2 != 0 and len(str(abs(n))) == 3:\n            count += 1\n    return count\n"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 2 - Problem 2: Abbreviate Initials and Sort** (Io Type)\n\nWrite a program that takes a list of full names and outputs their initials (except the last name) followed by the full last name. The output should be sorted alphabetically.\nAn initial is the first letter of each part of a name.\nAssume that the names are given in the correct case.\nHint: Use sorted function or list.sort to sort the list.\nNOTE: This is an I/O type question, you need to write the whole code for taking input and printing the output.\nInput Format\nFirst line contains the number of names, n.\nNext n lines contain one full name per line.\nOutput Format\nOutput the processed names in sorted order, one per line."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "# Read input, process, and print the output"
+        }
+      ],
+      "acceptable_answers": [
+        "Abbreviate Initials and Sort"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Sample Test Cases / Examples:**\n\n```text\nInput:\n3\nJohn Doe\nAlice Johnson\nBob Alan Rickman\nOutput:\nA. Johnson\nB. A. Rickman\nJ. Doe\n```"
+        },
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "n = int(input())\nresult = []\nfor _ in range(n):\n    parts = input().split()\n    # initial 'X.' for every part except the last name, then the full last name\n    initials = [p[0] + \".\" for p in parts[:-1]]\n    result.append(\" \".join(initials + [parts[-1]]))\n\nfor name in sorted(result):\n    print(name)\n"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 3 - Problem 1: Shopping List** (Function Type)\n\nGiven a list of dictionaries with keys: name, quantity, and price for each item in a grocery list, write a function that does the following based on the request:\n• total_bill_amount: Find the total bill amount by summing the price multiplied by the quantity for each item.\n• max_quantity_item: Find the name of the item with the maximum quantity. If there are multiple items with the same quantity, return the first one.\n• sort_by_total_amount: Sort the list by the highest total amount for an item (calculated as price * quantity). If two items have the same total amount, break the tie by sorting by name in ascending order.\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def process_grocery_list(grocery_list: list, task: str):\n    ..."
+        }
+      ],
+      "acceptable_answers": [
+        "Shopping List",
+        "process_grocery_list"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Sample Test Cases / Examples:**\n\n```text\ngrocery_list = [\n    {'name': 'apple', 'quantity': 2, 'price': 3},\n    {'name': 'banana', 'quantity': 5, 'price': 2},\n    {'name': 'carrot', 'quantity': 4, 'price': 1}\n]\ntotal_bill_amount   -> 6 + 10 + 4 = 20\nmax_quantity_item   -> 'banana'\nsort_by_total_amount -> sorted list of dicts in the order 'banana', 'apple', 'carrot'\n```"
+        },
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def process_grocery_list(grocery_list: list, task: str):\n    if task == \"total_bill_amount\":\n        return sum(item[\"price\"] * item[\"quantity\"] for item in grocery_list)\n    if task == \"max_quantity_item\":\n        # max keeps the first item on ties\n        return max(grocery_list, key=lambda item: item[\"quantity\"])[\"name\"]\n    if task == \"sort_by_total_amount\":\n        # highest total first; ties broken by name ascending\n        return sorted(\n            grocery_list,\n            key=lambda item: (-item[\"price\"] * item[\"quantity\"], item[\"name\"]),\n        )\n"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 3 - Problem 2: Ubbi Dubbi - Add \"ub\" and \"dub\" Alternately Before Vowels** (File-io Type)\n\nGiven a text file containing lowercase letters, modify the text such that:\n• Before each vowel, add the string \"ub\" if it is the first or an odd-numbered vowel encountered.\n• Add \"dub\" before the vowel if it is the second or an even-numbered vowel encountered.\nPreserve the text's original formatting, including spaces and newlines.\nAssume the input text is all lowercase and may have multiple lines.\nNOTE: This is a file-in-stdout type question where the input is read from the file and the output is printed in the standard output."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "# Read input, process, and print the output"
+        }
+      ],
+      "acceptable_answers": [
+        "Ubbi Dubbi - Add \"ub\" and \"dub\" Alternately Before Vowels"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Sample Test Cases / Examples:**\n\n```text\nInput\nhello world\npython is good\nOutput\nhubelldubo wuborld\npythdubon ubis gduboubod\n```"
+        },
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "import sys\n\ntext = sys.stdin.read()\nvowels = set(\"aeiou\")\ncount = 0\nresult = []\nfor ch in text:\n    if ch in vowels:\n        count += 1\n        # 'ub' before odd-numbered vowels, 'dub' before even-numbered ones\n        result.append(\"ub\" if count % 2 == 1 else \"dub\")\n    result.append(ch)\n\nsys.stdout.write(\"\".join(result))\n"
+        }
+      ]
+    }
+  ]
+}

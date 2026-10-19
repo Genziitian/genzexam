@@ -1,0 +1,416 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Statistics 2 · Quiz 1 · Oct 2022 · QUIZ1 · Part 1",
+  "subject": "Statistics 2",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "📖 Passage / Context\nThe joint PMF of two discrete random variables 𝑋 and 𝑌 is given in the following table:\nJoint PMF of X and Y"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/0f1e54ba26e4_q1_context-1-2_p2.png",
+          "alt": "Original context 1 2 for Statistics 2 question 1."
+        },
+        {
+          "kind": "text",
+          "value": "Find the values of 𝑐 and 𝑑."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/0f1e54ba26e4_q1_prompt-2_p2.png",
+          "alt": "Original prompt 2 for Statistics 2 question 1."
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Explanation: From marginals: Row Y=0: a + 1/3 + c = 2/3, and column X=0: a + 1/9 = 1/3 so a = 2/9. Then c =\n2/3 - 2/9 - 1/3 = 1/9. Column X=2: c + d = 1/6 so d = 1/6 - 1/9 = 1/18."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/0f1e54ba26e4_q1_option-1-1_p2.png",
+            "alt": "Original option 1 1 for Statistics 2 question 1."
+          },
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/0f1e54ba26e4_q1_option-1-2_p2.png",
+            "alt": "Original option 1 2 for Statistics 2 question 1."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/0f1e54ba26e4_q1_option-2-1_p2.png",
+            "alt": "Original option 2 1 for Statistics 2 question 1."
+          },
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/0f1e54ba26e4_q1_option-2-2_p2.png",
+            "alt": "Original option 2 2 for Statistics 2 question 1."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/0f1e54ba26e4_q1_option-3-1_p2.png",
+            "alt": "Original option 3 1 for Statistics 2 question 1."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/0f1e54ba26e4_q1_option-4-1_p2.png",
+            "alt": "Original option 4 1 for Statistics 2 question 1."
+          }
+        ]
+      ],
+      "correct_answer": 3
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "📖 Passage / Context\nThe joint PMF of two discrete random variables 𝑋 and 𝑌 is given in the following table:\nJoint PMF of X and Y"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/0f1e54ba26e4_q2_context-1-2_p2.png",
+          "alt": "Original context 1 2 for Statistics 2 question 2."
+        },
+        {
+          "kind": "text",
+          "value": "Are 𝑋 and 𝑌 independent?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Explanation: Check: f(0,0) = a = 2/9 = f_X(0) × f_Y(0) = (1/3)(2/3) = 2/9. Similarly verify for all cells —\nindependence holds."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Yes"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "No"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "📖 Passage / Context\nThe joint PMF of two discrete random variables 𝑋 and 𝑌 is given in the following table:\nJoint PMF of X and Y"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/0f1e54ba26e4_q3_context-1-2_p2.png",
+          "alt": "Original context 1 2 for Statistics 2 question 3."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/0f1e54ba26e4_q3_prompt-1_p3.png",
+          "alt": "Original prompt 1 for Statistics 2 question 3."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/0f1e54ba26e4_q3_prompt-2_p3.png",
+          "alt": "Original prompt 2 for Statistics 2 question 3."
+        }
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Explanation: P(Z=0) = P(X=Y) = P(X=0,Y=0) + P(X=1,Y=1) = (2/3)(2/3) + (1/3)(1/3) = 4/9 + 1/9 = 5/9. P(Z=1) = 1\n- 5/9 = 4/9."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/0f1e54ba26e4_q3_option-1-1_p3.png",
+            "alt": "Original option 1 1 for Statistics 2 question 3."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/0f1e54ba26e4_q3_option-2-1_p3.png",
+            "alt": "Original option 2 1 for Statistics 2 question 3."
+          },
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/0f1e54ba26e4_q3_option-2-2_p3.png",
+            "alt": "Original option 2 2 for Statistics 2 question 3."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/0f1e54ba26e4_q3_option-3-1_p3.png",
+            "alt": "Original option 3 1 for Statistics 2 question 3."
+          },
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/0f1e54ba26e4_q3_option-3-2_p3.png",
+            "alt": "Original option 3 2 for Statistics 2 question 3."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/0f1e54ba26e4_q3_option-4-1_p3.png",
+            "alt": "Original option 4 1 for Statistics 2 question 3."
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "📖 Passage / Context\nThe joint PMF of two discrete random variables 𝑋 and 𝑌 is given in the following table:\nJoint PMF of X and Y"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/0f1e54ba26e4_q4_context-1-2_p2.png",
+          "alt": "Original context 1 2 for Statistics 2 question 4."
+        },
+        {
+          "kind": "text",
+          "value": "Let 𝑋 be a Poisson random variable with mean equal to 20. Which of the following bounds can be obtained\nusing Markov's inequality?"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/0f1e54ba26e4_q4_prompt-2_p4.png",
+          "alt": "Original prompt 2 for Statistics 2 question 4."
+        }
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Explanation: Markov's inequality: P(X ≥ c) ≤ μ/c. P(X > 30) = P(X ≥ 31) ≤ 20/31."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/0f1e54ba26e4_q4_option-1-1_p4.png",
+            "alt": "Original option 1 1 for Statistics 2 question 4."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/0f1e54ba26e4_q4_option-2-1_p4.png",
+            "alt": "Original option 2 1 for Statistics 2 question 4."
+          },
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/0f1e54ba26e4_q4_option-2-2_p4.png",
+            "alt": "Original option 2 2 for Statistics 2 question 4."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/0f1e54ba26e4_q4_option-3-1_p4.png",
+            "alt": "Original option 3 1 for Statistics 2 question 4."
+          },
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/0f1e54ba26e4_q4_option-3-2_p4.png",
+            "alt": "Original option 3 2 for Statistics 2 question 4."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/0f1e54ba26e4_q4_option-4-1_p4.png",
+            "alt": "Original option 4 1 for Statistics 2 question 4."
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "📖 Passage / Context\nThe joint PMF of two discrete random variables 𝑋 and 𝑌 is given in the following table:\nJoint PMF of X and Y"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/0f1e54ba26e4_q5_context-1-2_p2.png",
+          "alt": "Original context 1 2 for Statistics 2 question 5."
+        },
+        {
+          "kind": "text",
+          "value": "Which of the following statements are correct?"
+        }
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Explanation: The CDF of any continuous random variable is always continuous. The PDF can have jump\ndiscontinuities (e.g., uniform distribution). The sum of two independent binomials is binomial only if they share\nthe same p. Mean and variance can be equal (e.g., Poisson(λ) has E[X] = Var(X) = λ)."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The probability density function (PDF) of a continuous random variable 𝑋 must be continuous."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The cumulative distribution function (CDF) of a continuous random variable 𝑋 must be continuous."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The sum of two independent binomial random variables must be a binomial random variable."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "For a random variable 𝑋, mean and variance cannot be equal."
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "📖 Passage / Context\nThe joint PMF of two discrete random variables 𝑋 and 𝑌 is given in the following table:\nJoint PMF of X and Y"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/0f1e54ba26e4_q6_context-1-2_p2.png",
+          "alt": "Original context 1 2 for Statistics 2 question 6."
+        },
+        {
+          "kind": "text",
+          "value": "The joint PMF of two discrete random variables 𝑋 and 𝑌 is given in the following table:"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/0f1e54ba26e4_q6_prompt-2_p5.png",
+          "alt": "Original prompt 2 for Statistics 2 question 6."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/0f1e54ba26e4_q6_prompt-3_p5.png",
+          "alt": "Original prompt 3 for Statistics 2 question 6."
+        }
+      ],
+      "marks": 3,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Explanation: Compute E[X], E[Y], E[XY] from the joint PMF, then Cov(X,Y) = E[XY] - E[X]E[Y]. Answer range\naccepted: -0.15 to -0.05."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/0f1e54ba26e4_q6_solution-2_p5.png",
+          "alt": "Original solution 2 for Statistics 2 question 6."
+        }
+      ],
+      "acceptable_answers": [
+        "-0.1 (±0.05)"
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-2/0f1e54ba26e4_q7_context-1-1_p5.png",
+          "alt": "Original context 1 1 for Statistics 2 question 7."
+        },
+        {
+          "kind": "text",
+          "value": "Which among the following can be the joint PMF of 𝑋 and 𝑌?"
+        }
+      ],
+      "marks": 3,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Explanation: Sample space: {TT, TH, HT, HH}. TT→(X=0,Y=0), HT→(X=1,Y=1), TH→(X=1,Y=2), HH→(X=2,Y=1). So\njoint PMF: (0,0)=1/4, (1,1)=1/4, (1,2)=1/4, (2,1)=1/4."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/0f1e54ba26e4_q7_option-1-1_p6.png",
+            "alt": "Original option 1 1 for Statistics 2 question 7."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/0f1e54ba26e4_q7_option-2-1_p6.png",
+            "alt": "Original option 2 1 for Statistics 2 question 7."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/0f1e54ba26e4_q7_option-3-1_p6.png",
+            "alt": "Original option 3 1 for Statistics 2 question 7."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-2/0f1e54ba26e4_q7_option-4-1_p6.png",
+            "alt": "Original option 4 1 for Statistics 2 question 7."
+          }
+        ]
+      ],
+      "correct_answer": 2
+    }
+  ]
+}

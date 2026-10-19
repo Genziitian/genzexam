@@ -1,5 +1,24 @@
 # Proctored exam question JSON
 
+Regular Quiz LAB papers also accept `kind: "image"` blocks in schema 1.1 prompts, option arrays, and explanations. Crop complex diagrams, charts, equations, and options directly from the source PDF. Keep answer keys, correct-answer checkmarks, and worked solutions outside prompt/option crops. Preserve readable text as text and procedural steps as code blocks.
+
+```json
+{
+  "prompt": [
+    { "kind": "text", "value": "Use the original graph to select the matching equation." },
+    { "kind": "image", "url": "/assets/exam-examples/question-crops/graph.png", "alt": "Original graph with labeled axes" }
+  ],
+  "options": [
+    [{ "kind": "image", "url": "/assets/exam-examples/question-crops/option-a.png", "alt": "Equation shown in option A" }],
+    [{ "kind": "text", "value": "$y = 0$" }]
+  ]
+}
+```
+
+This fragment illustrates content blocks; complete papers still require the type, answer key, marks, difficulty, and 5–10 questions. The regular importer validates image URLs and stores the ordered content as Markdown in its existing text fields, so admin edits and the ordinary quiz API preserve it without a database migration. Web quiz attempts, reviews, paper rooms, and the updated native app render these crops. The app can enlarge an image and embeds its bytes when a paper is explicitly downloaded for offline use.
+
+JSON does not contain the image bytes. Deploy `assets/exam-examples/question-crops/` to the website alongside the updated web files before importing/publishing these papers; deploy the updated backend services and release a rebuilt app. Static `/assets/exam-examples/` paths resolve to `https://quiz.genziitian.in` in the app, while `/storage/` and `/uploads/` resolve to the API host. Existing installed app versions need the app update. Keep output/model folders and original source PDFs out of the deployment.
+
 Managers can prepare an exam as JSON and import its `questions` array. Use [`templates/proctored-exam-template.json`](../templates/proctored-exam-template.json) as a complete example. A valid payload can also include `schema_version`, `title`, `duration_minutes`, and `instructions`; the importer consumes only the question objects. Enter the title, duration and instructions in the draft setup form; importing does not change exam metadata.
 
 ## Import behavior

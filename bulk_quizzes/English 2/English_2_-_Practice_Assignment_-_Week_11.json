@@ -1,0 +1,344 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 2 · Practice Assignment · Week 11",
+  "subject": "English 2",
+  "section": "practice",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Reduction of a word to one of its parts is called ____."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Blending"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Clipping"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Borrowing"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘He has been unhappy since his cat disappeared.’ This sentence has __prefixes."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "3"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "4"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Pick the odd one out Though, eventually, is, but"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Though"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Eventually"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Is"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "But"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following is a set of words derived from new media?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Browse, collect, mend"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Browse, surf, cycle"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Browse, surf, scroll"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Surf, scroll, sight"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "'Chic', 'sentiment', and ' royal' are words probably from:"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Indian languages"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Celtic"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Italian"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "French"
+          }
+        ]
+      ],
+      "correct_answer": 3
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘The movie was so cliche: boy loves girl, girl loves his best friend. I wish something different would be made.’ Here, cliche means_______."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Overused and uninteresting"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Boring and soporific"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Irritating and sad"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Melancholy and anger-inducing"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "From which language was the English word cliché borrowed?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Latin"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "French"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Italian"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Japanese"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘The bullet ricocheted off the wall behind him and whizzed past his ear.’ Here ricocheted means______."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Buried"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Skipped"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Fell"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Rebounded"
+          }
+        ]
+      ],
+      "correct_answer": 3
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "From which language was the English word ricochet borrowed?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Latin"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "French"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Italian"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Japanese"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    }
+  ]
+}

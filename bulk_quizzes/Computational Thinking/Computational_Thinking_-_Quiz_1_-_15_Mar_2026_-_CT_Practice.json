@@ -1,0 +1,517 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Computational Thinking · Quiz 1 · 15 Mar 2026 · CT Practice",
+  "subject": "Computational Thinking",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following procedure is executed using the Scores dataset. What does the procedure Mystery(\"M\") compute?"
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "Procedure Mystery(gender)\n    count = 0\n    sum = 0\n    while(Pile 1 has more cards){\n        Pick a card X from Pile 1\n        Move X to Pile 2\n        if(X.Gender == gender){\n            count = count + 1\n            sum = sum + X.Physics\n        }\n    }\n    return(sum / count)\nEnd Mystery"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The average Physics score of all students"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The average Physics score of male students"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The total score of male students"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The total Physics score of male students"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 4,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "For students whose Gender matches the argument (\"M\"), count is incremented and their Physics score is added to sum. The procedure returns sum / count, i.e. the average Physics score of male students."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the Scores table. CountBA captures the number of students with total marks less than the average total marks AND below average in exactly one subject. AvgT, AvgP, AvgC and AvgM hold the average total, Physics, Chemistry and Mathematics marks. Choose the correct fragment for the marked block."
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "CountBA = 0\nwhile(Table 1 has more rows){\n    Read the first row X from Table 1\n    SubC = 0\n    if(X.Total < AvgT){\n        if(X.Mathematics < AvgM){\n            SubC = SubC + 1\n        }\n        if(X.Physics < AvgP){\n            SubC = SubC + 1\n        }\n        if(X.Chemistry < AvgC){\n            SubC = SubC + 1\n        }\n        ***** Fill the code *****\n    }\n    Move X to Table 2\n}"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "if(SubC <= 1){\nCountBA = CountBA + 1\n}"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "if(SubC <= 1){\nCountBA = 1\n}"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "if(SubC == 1){\nCountBA = 1\n}"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "if(SubC == 1){\nCountBA = CountBA + 1\n}"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Within the Total < AvgT block, SubC counts the subjects in which the student is below average. 'Below average in exactly one subject' means SubC == 1, and the counter must accumulate (CountBA = CountBA + 1). Option 1 uses <= 1 (at most one), and Options 2 and 3 overwrite CountBA with 1."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Based on the Scores dataset, the procedure highTotal(S) returns True if the student named 'S' has a TOTAL score greater than 180 (all students have distinct names). Choose the correct pseudocode for highTotal(S)."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "Procedure highTotal(S)\ntotal = 0\nwhile(Table 1 has more rows){\nRead row X from Table 1\nMove X to Table 2\nif(X.Name == S){\ntotal = X.Mathematics + X.Physics\n}\n}\nif(total > 180){\nreturn True\n}\nreturn False\nEnd highTotal"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "Procedure highTotal(S)\nwhile(Table 1 has more rows){\nRead row X from Table 1\nMove X to Table 2\nif(X.Name == S and X.Total > 180){\nreturn True\n}\n}\nreturn False\nEnd highTotal"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "Procedure highTotal(S)\ncount = 0\nwhile(Table 1 has more rows){\nRead row X from Table 1\nMove X to Table 2\nif(X.Total > 180){\ncount = count + 1\n}\n}\nreturn count > 0\nEnd highTotal"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "Procedure highTotal(S)\ntotal = 0\nwhile(Table 1 has more rows){\nRead row X from Table 1\nMove X to Table 2\ntotal = total + X.Total\n}\nreturn total > 180\nEnd highTotal"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 6,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "We need the student named S and their full Total compared to 180. Option 2 checks X.Name == S and X.Total > 180. Option 1 uses only Mathematics + Physics (omitting Chemistry); Options 3 and 4 ignore the name S (counting/summing across all students)."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What does the given pseudocode achieve using the Words table?"
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "while(Table 1 has more rows){\n    Read the first row X in Table 1\n    V = DoSomething(X)\n    if(V < X.LetterCount / 2){\n        Move X to T1\n    }\n    if(V == X.LetterCount / 2){\n        Move X to T2\n    }\n    if(V > X.LetterCount / 2 and V < X.LetterCount){\n        Move X to T3\n    }\n    if(V == X.LetterCount){\n        Move X to T4\n    }\n}\nProcedure DoSomething(Y)\n    i = 1\n    Count = 0\n    while(i <= Y.LetterCount){\n        if(ith letter of Y.word is a vowel){\n            Count = Count + 1\n        }\n        i = i + 1\n    }\n    return(Count)\nEnd DoSomething"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Bins the rows in the Words table into four tables based on word length"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Bins the rows in the Words table into four tables based on whether the word has more vowels or more consonants"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Bins the rows in the Words table into four tables based on the ratio of vowels to total letters"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Bins the rows in the Words table into four tables based on whether the word contains only vowels"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 6,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "DoSomething returns V, the number of vowels. The word is binned by comparing V with half its length: fewer vowels than half → T1 (more consonants), exactly half → T2 (equal), more than half but not all → T3 (more vowels), all vowels → T4. So it sorts words by whether they have more vowels or more consonants."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the Shopping Bills dataset to find the number of bills with one of the top three total bill amounts. Choose the correct code block for the marked region."
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "FirstT = 0, SecondT = 0, ThirdT = 0\nwhile(Pile 1 has more cards){\n    Read the top card X from Pile 1\n    if(X.TotalBillAmount > FirstT){\n        ThirdT = SecondT\n        SecondT = FirstT\n        FirstT = X.TotalBillAmount\n    }\n    if(X.TotalBillAmount < FirstT and X.TotalBillAmount > SecondT){\n        ThirdT = SecondT\n        SecondT = X.TotalBillAmount\n    }\n    if(X.TotalBillAmount < SecondT and X.TotalBillAmount > ThirdT){\n        ThirdT = X.TotalBillAmount\n    }\n    Move X to Pile 2\n}\nCount = 0\nwhile(Pile 2 has more cards){\n    Read the top card X from Pile 2\n    ***** fill the code *****\n    Move X to Pile 1\n}"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "if(X.TotalBillAmount < ThirdT){\nCount = Count + 1\n}"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "if(X.TotalBillAmount >= FirstT){\nCount = Count + 1\n}"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "if(X.TotalBillAmount > ThirdT){\nCount = Count + 1\n}"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "if(X.TotalBillAmount >= ThirdT){\nCount = Count + 1\n}"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 6,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The first loop computes the three largest amounts FirstT >= SecondT >= ThirdT. A bill is among the top three amounts exactly when its amount is at least ThirdT, so the condition must be X.TotalBillAmount >=Ecosystem — genziitian.in/ecosystem  |  Video Solutions — exam.genziitian.in  |  YouTube — youtube.com/@Gen-ZIITian ThirdT. Option 3 (> ThirdT) wrongly excludes bills equal to the third amount; Option 2 keeps only the largest; Option 1 keeps the rest."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following procedure is executed using the Shopping Bills dataset. Choose all the correct options."
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "sum = 0\ncount = 0\nwhile(Pile 1 has more cards){\n    Read X from Pile 1\n    if(X.ShopName == \"SV Stores\" and X.TotalBillAmount < 400){\n        sum = sum + X.TotalBillAmount\n        count = count + 1\n    }\n    Move X to Pile 2\n}"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The procedure ignores all bills from shops other than SV Stores"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Bills from SV Stores with amount >= 400 do not affect either sum or count"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The value stored in sum depends on the order of cards in Pile 1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "count represents the number of SV Stores bills whose total amount is strictly less than 400"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "At the end of execution, (sum/count) will give the average total bill amount of all bills from SV Stores"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1,
+        3
+      ],
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Only SV Stores bills with amount < 400 update sum and count, so bills from other shops are ignored (option 1) and SV Stores bills >= 400 are excluded (option 2), and count is exactly the number of SV Stores bills under 400 (option 4). sum is an ordinary total, so order does not matter (option 3 false), and sum/count is the average only of the bills under 400, not all SV Stores bills (option 5 false)."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following procedure finds the highest amount of bill generated at Sun General from the Shopping Bills dataset. The programmer may have made mistakes in one or more steps. Identify all such steps (if any)."
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "Step 1: Arrange all cards in a single pile called Pile 1\nStep 2: Maintain a variable max and initialize it to 0\nStep 3: If Pile 1 is empty then stop the iteration\nStep 4: Read the top card in Pile 1\nStep 5: If the shop name is Sun General and max > total bill amount then store total bill amount in max\nStep 6: Move the current card to another pile called Pile 2 and repeat from step 3"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Step 1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Step 2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Step 3"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Step 4"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Step 5"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Step 6"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "No mistake"
+          }
+        ]
+      ],
+      "correct_answers": [
+        4
+      ],
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "To find the highest amount, max must be updated when the current bill is LARGER than max, i.e. 'total bill amount > max'. Step 5 has the comparison reversed ('max > total bill amount'), so starting from max = 0 it never updates. All other steps are correct."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following pseudocode operating on the Scores dataset. Which of the following statements are true?"
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "Count = 0\nwhile(Table1 has more rows){\n    Read the first row X from Table1\n    Move X to Table2\n    while(Table1 has more rows){\n        Read the first row Y from Table1\n        Count = Count + DoSomething(X, Y)\n        Move Y to Table3\n    }\n    Move all rows from Table3 to Table1\n}\nProcedure DoSomething(A, B)\n    if(A.City == B.City and A.Total == B.Total){\n        return(1)\n    }\n    else{\n        return(0)\n    }\nEnd DoSomething"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The algorithm counts the number of ordered pairs of students having the same City and Total."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Each pair of students with the same City and Total is counted exactly once."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The algorithm avoids comparing a student with itself."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The final value of Count depends on the initial ordering of rows in Table1."
+          }
+        ]
+      ],
+      "correct_answers": [
+        1,
+        2
+      ],
+      "marks": 6,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "X is moved out before the inner loop, so each unordered pair {X, Y} is compared exactly once and a student is never compared with itself. It counts each matching pair once (not ordered pairs, which would double- count), and the total number of matching pairs does not depend on row order."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the Olympics dataset. The following pseudocode is executed. Which of the following must be true after execution?"
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "silver_count = 0\ngender_check = 0\nwhile(Table 1 has more rows){\n    Read X from Table 1\n    if(X.Medal == 'Silver' and X.Host_country == 'USA'){\n        silver_count = silver_count + 1\n        if(X.Gender == 'M'){\n            gender_check = gender_check + 1\n        }\n    }\n    Move X to Table 2\n}"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "silver_count equals the number of silver medals awarded to male athletes during Olympics hosted by USA."
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "If gender_check equals silver_count, then all silver medal winners during Olympics hosted by USA\nwere male"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "silver_count equals the number of silver medals awarded to athletes during Olympics hosted by USA."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "silver_count counts the total number of silver medals won by athletes who are from USA."
+          }
+        ]
+      ],
+      "correct_answers": [
+        1,
+        2
+      ],
+      "marks": 5,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "silver_count counts every Silver medal where Host_country is USA (any gender) — option 3. gender_check counts the male subset, so if gender_check == silver_count then all of those winners were male — option 2. Option 1 wrongly restricts silver_count to males, and option 4 uses the host country, not the athlete's nationality."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A pseudocode is executed on a dataset whose words are, in order, the words of: \"Patience and persistence often unlock hidden potential.\" Ignore case while comparing letters. What will be the value of Score at the"
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "end of execution?\nScore = 0\nwhile(Table 1 has more rows){\n    Read the first row X from Table 1\n    if(CountConsonants(X) > CountVowels(X)){\n        Score = Score + 3\n    }\n    else{\n        Score = Score + 1\n    }\n    Move X to Table 2\n}\nProcedure CountVowels(Y)\n    i = 1, V = 0\n    while(i <= Y.LetterCount){\n        if(ith letter of Y.Word is a vowel){\n            V = V + 1\n        }\n        i = i + 1\n    }\n    return(V)\nEnd CountVowels\nProcedure CountConsonants(Y)\n    i = 1, C = 0\n    while(i <= Y.LetterCount){\n        if(ith letter of Y.Word is not a vowel){\n            C = C + 1\n        }\n        i = i + 1\n    }\n    return(C)\nEnd CountConsonants"
+        }
+      ],
+      "numerical_answer": 19,
+      "numerical_tolerance": 0.01,
+      "marks": 5,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Each word scores +3 if it has more consonants than vowels, else +1. Patience (4 vowels, 4 consonants → equal → +1); and, persistence, often, unlock, hidden, potential all have more consonants than vowels (+3 each). Score = 1 + 6×3 = 19."
+        }
+      ]
+    }
+  ]
+}

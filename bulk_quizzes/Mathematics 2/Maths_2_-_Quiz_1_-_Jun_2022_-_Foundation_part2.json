@@ -1,0 +1,307 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 2 · Quiz 1 · Jun 2022 · Foundation · Part 2",
+  "subject": "Mathematics 2",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Suppose $W_1 = \\{(x, y, 0) : x, y \\in \\mathbb{R}\\}$ is a subspace of $\\mathbb{R}^3$. What is the dimension of $W_1$?"
+        }
+      ],
+      "numerical_answer": 2,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$W_1$ is the xy-plane in $\\mathbb{R}^3$, which has dimension 2."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the set of correct options regarding matrices and linear independence:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "If $v$ and $w$ are linearly independent, then $v + w$ and $w$ are also linearly independent."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "If $A^n = 0$ for some $2 \\times 2$ matrix $A$ and natural number $n$, then $A$ must be the zero matrix."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "If a homogeneous system $Ax = 0$ has a non-zero solution, then it must have an infinite number of solutions."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "If $A^3 = I$ for an $n \\times n$ matrix $A$, then it is not necessary that $A^2$ is invertible."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        2
+      ],
+      "marks": 4,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "If $c_1(v+w) + c_2 w = c_1 v + (c_1+c_2)w = 0 \\implies c_1 = 0, c_2 = 0$, so $v+w, w$ are independent. For homogeneous linear systems over $\\mathbb{R}$, any non-zero solution produces infinitely many solutions $c x$."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "From the given list of terms:\n1) Transpose of a matrix\n2) Determinant\n3) Closure with respect to addition\n4) Closure with respect to scalar multiplication\n5) Existence of additive inverse\n6) Commutativity of addition\n7) Associativity of addition\n8) Spanning set\n9) Linearly independent set\n10) Basis\n\n$S = \\{(1, 0, 1), (0, 1, 1), (1, 1, 0)\\}$ is a ___ of $\\mathbb{R}^3$. Enter the 3 best possible serial numbers in increasing order without spaces (e.g. 8910)."
+        }
+      ],
+      "numerical_answer": 8910,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The determinant of the vectors is non-zero, so $S$ is a spanning set (8), a linearly independent set (9), and a basis (10) for $\\mathbb{R}^3$."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "From the list above, the 2 conditions that need to be checked to identify a subspace $W$ of a vector space $V$ are: closure with respect to addition (3) and closure with respect to scalar multiplication (4). Enter the 2 serial numbers in increasing order (e.g. 34)."
+        }
+      ],
+      "numerical_answer": 34,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Subspace test requires closure under addition (3) and scalar multiplication (4)."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "From the list above, a spanning set of $\\mathbb{R}^2$ with 2 elements must be a: linearly independent set (9) and a basis (10). Enter the 2 serial numbers in increasing order (e.g. 910)."
+        }
+      ],
+      "numerical_answer": 910,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "A spanning set of size equal to the dimension 2 is necessarily linearly independent (9) and a basis (10)."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Shubham bought 2 kg of potatoes, $c$ kg of dal, and 1 kg of wheat and paid Rs. 80. Sushmitha bought 4 kg of potatoes, 1 kg of dal, and 2 kg of wheat and paid Rs. $d$. Subhasis bought 2 kg of potatoes, 1 kg of dal, and 2 kg of wheat and paid Rs. 80. If $x_1, x_2, x_3$ represent the prices per kg of potato, dal, and wheat respectively, choose the matrix representation:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$\\begin{bmatrix} 2 & c & 1 \\\\ 2 & 1 & 2 \\\\ 4 & 1 & 2 \\end{bmatrix} \\begin{bmatrix} x_1 \\\\ x_2 \\\\ x_3 \\end{bmatrix} = \\begin{bmatrix} 80 \\\\ d \\\\ 80 \\end{bmatrix}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$\\begin{bmatrix} 2 & c & 1 \\\\ 4 & 1 & 2 \\\\ 2 & 1 & 2 \\end{bmatrix} \\begin{bmatrix} x_1 \\\\ x_2 \\\\ x_3 \\end{bmatrix} = \\begin{bmatrix} 80 \\\\ 80 \\\\ d \\end{bmatrix}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$\\begin{bmatrix} 2 & c & 1 \\\\ 4 & 1 & 2 \\\\ 2 & 1 & 2 \\end{bmatrix} \\begin{bmatrix} x_1 \\\\ x_2 \\\\ x_3 \\end{bmatrix} = \\begin{bmatrix} 80 \\\\ d \\\\ 80 \\end{bmatrix}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$\\begin{bmatrix} 2 & 1 & c \\\\ 4 & 2 & 1 \\\\ 2 & 2 & 1 \\end{bmatrix} \\begin{bmatrix} x_1 \\\\ x_2 \\\\ x_3 \\end{bmatrix} = \\begin{bmatrix} 80 \\\\ d \\\\ 80 \\end{bmatrix}$"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Shubham: $2x_1 + cx_2 + x_3 = 80$; Sushmitha: $4x_1 + x_2 + 2x_3 = d$; Subhasis: $2x_1 + x_2 + 2x_3 = 80$. Thus $A = \\begin{bmatrix} 2 & c & 1 \\\\ 4 & 1 & 2 \\\\ 2 & 1 & 2 \\end{bmatrix}$ and $b = \\begin{bmatrix} 80 \\\\ d \\\\ 80 \\end{bmatrix}$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In the potato/dal/wheat system $\\begin{bmatrix} 2 & c & 1 \\\\ 4 & 1 & 2 \\\\ 2 & 1 & 2 \\end{bmatrix} \\begin{bmatrix} x_1 \\\\ x_2 \\\\ x_3 \\end{bmatrix} = \\begin{bmatrix} 80 \\\\ d \\\\ 80 \\end{bmatrix}$, if we take $c = 0.5$ and $d = 100$, what happens when finding the prices?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "We will find that the price of 1 kg potato is unique."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "We will fail to find the price (as a numerical value) of 1 kg potato."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "We will find that the price of 1 kg potato is Rs. 20."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "We will find infinitely many values as the price of 1 kg potato."
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 4,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Notice row 2 is $2 \\times$ row 1 when $c = 0.5$: $2(2x_1 + 0.5x_2 + x_3) = 4x_1 + x_2 + 2x_3$. But $2(80) = 160 \\neq 100 = d$. The system is inconsistent, so we fail to find the prices."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In the potato/dal/wheat system, if we take $c = 2$ and $d = 160$, then which of the following options is always true?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$x_1 = x_3$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$x_1 = x_2$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$x_2 = x_3$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$x_1 = x_2 = x_3$"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 4,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Subtracting Subhasis's equation ($2x_1 + x_2 + 2x_3 = 80$) from Shubham's equation ($2x_1 + 2x_2 + x_3 = 80$) gives $x_2 - x_3 = 0 \\implies x_2 = x_3$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In the potato/dal/wheat system, if we take $c = 3$ and $d = 100$, then which of the following options is always true?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$x_1 = 12, x_2 = 20, x_3 = 10$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$x_1 = x_2 = 24, x_3 = 10$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$x_1 = 10, x_2 = 12, x_3 = 24$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$x_1 = x_2 = x_3 = 10$"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 4,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Solving the $3 \\times 3$ linear system with $c = 3, d = 100$: $R_2 - R_3 \\implies 2x_1 = 20 \\implies x_1 = 10$. Then $x_2 + 2x_3 = 60$ and $3x_2 + x_3 = 60 \\implies x_2 = 12, x_3 = 24$."
+        }
+      ]
+    }
+  ]
+}

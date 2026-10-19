@@ -1,0 +1,306 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Computational Thinking · Quiz 1 · 2024 Oct27 · AN QDD2 · Part 1",
+  "subject": "Computational Thinking",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Shopping Bills\" dataset. AvgT holds the average total bill amount. What will Q represent at the end of execution?"
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "P = 0, Q = 0\nwhile(Table 1 has more rows){\n    Read the first row X in Table 1\n    if(X.TotalBillAmount >= AvgT){\n        P = P + 1\n    }\n    else{\n        if(X.ShopName == \"Big Bazaar\" or X.ShopName == \"SV Stores\"){\n            Q = Q + 1\n        }\n    }\n}"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Number of bills from \"Big Bazaar\" or \"SV Stores\" with total bill amount greater than the average total bill amount."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of bills from either \"Big Bazaar\" or \"SV Stores\" with total bill amount lesser than the average total bill amount."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of bills from either \"Big Bazaar\" or \"SV Stores\"."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of bills from either \"Big Bazaar\" or \"SV Stores\" with total bill amount lesser than or equal to the average total bill amount."
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Q is incremented only in the else branch, i.e. when TotalBillAmount < AvgT (strictly less than the average), and the shop is Big Bazaar or SV Stores."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Words\" dataset. What will Count represent at the end of execution?"
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "A = 0, Flag = True\nwhile(Table 1 has more cards){\n    Read the first row X from Table 1\n    if(X.LetterCount > A){\n        A = X.LetterCount\n    }\n    Move X to Table 2\n}\nB = 0, Count = 0\nwhile(Table 2 has more cards){\n    Read the first row X from Table 2\n    if(X.LetterCount == A){\n        B = B + 1\n    }\n    if(X.word ends with full stop and B >= 2){\n        Count = Count + 1\n        B = 0\n    }\n    Move X to Table 3\n}"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Number of sentences with at most two longest words"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of sentences with at least two longest words"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of sentences with at most two shortest words"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of sentences with at least two shortest words"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 4,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The first loop finds A, the maximum letter count (longest word length). The second loop counts, within each sentence, the words whose length equals A (the longest words); at a full stop the sentence is counted when B >= 2. So Count is the number of sentences containing at least two longest words."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Words\" dataset. A captures the maximum letter count of a word which is not a noun. Choose the correct code fragment for the marked block."
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "A = 0\nwhile(Table 1 has more rows){\n    Read the first row X in Table 1\n    ***** fill the code *****\n    Move X to Table 2\n}"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "if(X.PartOfSpeech == \"Noun\" and X.LetterCount > A){\nA = X.LetterCount\n}"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "if(X.PartOfSpeech != \"Noun\" and X.LetterCount < A){\nA = X.LetterCount\n}"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "if(X.PartOfSpeech == \"Noun\" and X.LetterCount < A){\nA = X.LetterCount\n}"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "if(X.PartOfSpeech != \"Noun\" and X.LetterCount > A){\nA = X.LetterCount\n}"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "For the maximum letter count among non-nouns, only consider words that are not nouns (PartOfSpeech != \"Noun\") and keep the larger length (X.LetterCount > A)."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Scores\" dataset. What will count represent at the end of the execution?"
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "count = 0, A = 0\nwhile(Table 1 has more rows){\n    Read the first row X in Table 1\n    if(X.Gender == 'F' or X.Mathematics > X.Physics){\n        A = A + 1\n    }\n    else{\n        count = count + 1\n    }\n    Move X to Table 2\n}"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Number of male students whose Physics marks are greater than Mathematics marks"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of male students whose Physics marks are greater than or equal to Mathematics marks"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of female students whose Physics marks are greater than or equal to Mathematics marks"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of female students whose Physics marks are less than or equal to Mathematics marks"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "count increments in the else branch = NOT(female OR Mathematics > Physics) = (male) AND (Mathematics ≤ Physics), i.e. male students whose Physics marks are greater than or equal to their Mathematics marks."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Scores\" dataset. What will count represent at the end of execution?"
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "count = 0\nwhile(Pile 1 has more cards){\n    Read the top card X from Pile 1\n    C = 0\n    if(X.Mathematics < 75){\n        C = C + 1\n    }\n    if(X.Physics < 75){\n        C = C + 1\n    }\n    if(X.Chemistry < 75){\n        C = C + 1\n    }\n    if(C == 1){\n        count = count + 1\n    }\n    Move X to Pile 2\n}"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Number of students who scored less than 75 marks in all three subjects."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of students who scored less than 75 marks in atmost one subject."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of students who scored less than 75 marks in atleast one subject."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of students who scored less than 75 marks in exactly one subject."
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "C counts the subjects in which the student scored below 75. count is incremented only when C == 1, i.e. exactly one subject is below 75."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Words\" dataset. What will Count represent at the end of execution?"
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "Count = 0, Flag = True\nwhile(Table 1 has more cards){\n    Read the first row X from Table 1\n    if(CountVowels(X) != X.LetterCount - CountVowels(X)){\n        Flag = False\n    }\n    if(X.word ends with a full stop){\n        if(Flag){\n            Count = Count + 1\n        }\n        Flag = True\n    }\n    Move X to Table 2\n}\nProcedure CountVowels(Y)\n    i = 1\n    B = 0\n    while(i <= Y.LetterCount){\n        if(ith letter of Y.word is a vowel){\n            B = B + 1\n        }\n        i = i + 1\n    }\n    return(B)\nEnd CountVowels"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Number of sentences with equal number of vowels and consonants"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of sentences with each word having equal number of vowels and consonants"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of sentences with different number of vowels and consonants"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of sentences with each word having different number of vowels and consonants"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 5,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "For a word, CountVowels(X) vs LetterCount − CountVowels(X) compares its vowels against its consonants. Flag is set False if any word in the sentence has unequal vowels and consonants; at the full stop the sentence is counted only if Flag is still True. So Count is the number of sentences in which every word has an equal number of vowels and consonants."
+        }
+      ]
+    }
+  ]
+}

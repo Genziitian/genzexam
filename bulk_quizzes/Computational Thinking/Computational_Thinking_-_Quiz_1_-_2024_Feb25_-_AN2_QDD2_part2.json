@@ -1,0 +1,351 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Computational Thinking · Quiz 1 · 2024 Feb25 · AN2 QDD2 · Part 2",
+  "subject": "Computational Thinking",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "Procedure miniSum accepts three numbers as parameters and returns the sum of the two smallest numbers."
+        },
+        {
+          "kind": "text",
+          "value": "Choose the correct code fragment to complete the procedure."
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "Procedure miniSum(A, B, C)\n    Sum = 0\n    if(A > C and A > B){\n        Sum = B + C\n    }\n    ***** Fill the code *****\n    return(Sum)\nEnd miniSum"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "else{\nif(B > C and B > A){\nSum = A + C\n}\nelse{\nSum = A + B\n}\n}"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "if(B > C and B > A){\nSum = A + C\n}\nelse{\nSum = A + B\n}"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "else{\nSum = A + B\n}\nelse if(C > B and B > A){\nSum = A + C\n}"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "else{\nSum = A + B\n}\nif(C > B and B > A){\nSum = B + C\n}"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 4,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The first if handles A being the largest (Sum = B + C). Option 1's else then handles the rest: if B is the largest (B > C and B > A) exclude B (Sum = A + C), otherwise C is the largest so exclude C (Sum = A + B). Option 2 omits the else (overwrites the A-largest case) and Options 3 and 4 are malformed or use wrong conditions."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Olympics\" dataset. Procedure doSomething accepts a table of rows of the same player (who has won at least two medals, only one per year). What will (B − A) represent at the end of the execution?"
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "Procedure doSomething(Table T1)\n    A = 2030, B = 2030\n    while(Table T1 has more rows){\n        Read the first row Z from Table T1\n        if(Z.Year < A){\n            B = A\n            A = Z.Year\n        }\n        if(Z.Year > A and Z.Year < B){\n            B = Z.Year\n        }\n        Move the row Z to Table T2\n    }\n    return((B - A))\nEnd doSomething"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Year gap between first and second medal won by a player"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Year gap between first and latest medal won by a player"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Year gap between latest and second latest medal won by a player"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Year gap between first and second latest medal won by a player"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 4,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "A tracks the smallest (earliest) Year and B the second smallest. So (B − A) is the year gap between the first and second medal won by the player."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The given pseudocode is executed using the \"Olympics\" table. What will count represent at the end of the execution? Assume all players have distinct names."
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "count = 0\nwhile(Table 1 has more rows){\n    Read the first row X in Table 1\n    Move X to Table 2\n    while(Table 1 has more rows){\n        Read the first row Y in Table 1\n        Move Y to Table 3\n        if(X.Name != Y.Name){\n            if(X.Nationality == Y.Nationality and X.Medal == Y.Medal){\n                count = count + 1\n            }\n        }\n    }\n    Move all rows from Table 3 to Table 1\n}"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The number of pairs of players having the same nationality or the same medal."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The number of pairs of players having the same nationality and same medal."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The number of players having the same nationality and same medal."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The number of players having the different name but of same nationality."
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The nested loop forms each unordered pair of players once. Names are distinct, so X.Name != Y.Name always holds, and a pair is counted when they share the same nationality AND the same medal."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The given pseudocode is executed using the \"Shopping Bills\" dataset. frac stores the ratio of the number of customers who purchased both \"Bread\" and \"Milk\" to the number of customers who purchased \"Milk\" (assume at least one customer purchased \"Milk\"). Choose the correct code fragment(s) for procedure hasItem. It is a Multiple Select Question (MSQ)."
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "mCount = 0, bCount = 0\nwhile(Pile 1 has more cards){\n    Read the top card X in Pile 1\n    if(hasItem(X, \"Milk\")){\n        mCount = mCount + 1\n        if(hasItem(X, \"Bread\")){\n            bCount = bCount + 1\n        }\n    }\n    Move X to Pile 2\n}\nfrac = bCount / mCount\nProcedure hasItem(Y, A)\n    ***** Fill the code *****\nEnd hasItem"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "C = False\nwhile(Card Y has more items){\nRead an item Z from ItemList of card Y\nif(Z.Item == A){\nC = True\n}\nelse{\nC = False\n}\nRemove Z from ItemList of Y\n}\nreturn(C)"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "C = False\nwhile(Card Y has more items){\nRead an item Z from ItemList of card Y\nif(Z.Item == A){\nC = True\n}\nRemove Z from ItemList of Y\n}\nreturn(C)"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "C = True\nwhile(Card Y has more items){\nRead an item Z from ItemList of card Y\nif(Z.Item == A){\nC = True\n}\nRemove Z from ItemList of Y\n}\nreturn(C)"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "C = True\nwhile(Card Y has more items){\nRead an item Z from ItemList of card Y\nif(Z.Item == A){\nC = False\n}\nRemove Z from ItemList of Y\n}\nreturn not(C)"
+          }
+        ]
+      ],
+      "correct_answers": [
+        1,
+        3
+      ],
+      "marks": 4,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "hasItem must return True if item A appears anywhere in card Y. Option 2 starts C = False and sets it True on a match (no reset). Option 4 starts C = True, sets it False on a match and returns not(C), which is also True exactly when A is found. Option 1's else resets C to False (so it reflects only the last item), and Option 3 starts C = True and never falsifies it (always True)."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The given information represents a \"Words\" dataset and may have mistakes with respect to the sanity of data. Identify all rows with such mistakes. It is a Multiple Select Question (MSQ). Words dataset (one field per row) Row no. Field Value Row 1 Card number \"xyz\" Row 2 Word 1 Row 3 Part of Speech \"Noun\" Row 4 Letter Count - 5"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Row 1: Incorrect data type of card number"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Row 2: Incorrect data type of Word"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Row 3: Incorrect data type of Part of Speech"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Row 3: Invalid value of Part of Speech"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Row 4: Incorrect data type of Letter Count"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Row 4: Invalid value of Letter Count"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1,
+        5
+      ],
+      "marks": 4,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Row 1: a card number should be an integer, but \"xyz\" is a string — wrong data type. Row 2: a Word should be a string, but 1 is a number — wrong data type. Row 4: Letter Count is correctly an integer, but −5 is a negative count — an invalid value. Row 3 (\"Noun\") is a valid string and a valid part of speech, so it has no mistake."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Scores\" dataset. At the end of the execution, count captures the number of pairs of students having either the same gender or being from the same city but not both. The pseudocode may have mistakes; identify all such mistakes (if any). Assume all statements not listed in the options are free of errors. It is a Multiple Select Question (MSQ). 1   count = 0 2   while(Table 1 has more rows){ 3       Read the first row X in Table 1 4       Move X to Table 2 5       while(Table 1 has more rows){ 6           Read the first row Y in Table 1 7           Move Y to Table 3 8           count = count + findPair(X, Y) 9       } 10      Move all rows from Table 3 to Table 1 11  } 12  Procedure findPair(X, Y) 13      A = False, B = True 14      if(X.Gender == Y.Gender){ 15          A = True 16      } 17      if(X.CityTown == Y.CityTown){ 18          B = True 19      } 20      if((A and not B) and (not A and B)){ 21          return(1) 22      } 23      return(0) 24  End findPair"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Line 13: Incorrect initialisation of B"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Line 18: Incorrect update of B"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Line 20: Incorrect condition"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Line 21: It should return(0)"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        2
+      ],
+      "marks": 4,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "B should start False (it is set True only when the cities match), but Line 13 initialises B = True, so B is wrongly True even for different cities. Line 20 joins the two exclusive-or terms with 'and' — ((A and not B) and (not A and B)) is always false; it must be 'or'. Lines 18 and 21 are correct."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A pseudocode is executed on a dataset whose words are, in order, the words of: \"Surrounded by nature, Susan often takes a stroll, savoring the soothing sounds of chirping birds. Such moments underline the significance of embracing simple joys in life. Rustlings in the trees suggest squirrels beginning their day, searching for sustenance. Surely, the beauty of a sunrise holds unparalleled magic.\" What will be the value of count at the end of the execution? Assume upper case and lower case are ignored during comparison of letters."
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "count = 0, flag = True\nwhile(Table 1 has more rows){\n    Read the first row X in Table 1\n    Move X to Table 2\n    if(flag){\n        if(1st letter of X.word == 's'){\n            if(2nd letter of X.word == 'u'){\n                count = count + 1\n            }\n        }\n    }\n    flag = False\n    if(X.word ends with full stop){\n        flag = True\n    }\n}"
+        }
+      ],
+      "numerical_answer": 3,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "flag is True only for the first word of each sentence, and the code counts those starting with 'su'. The four sentences begin with Surrounded, Such, Rustlings and Surely; of these, Surrounded, Such and Surely start with 'su', so count = 3."
+        }
+      ]
+    }
+  ]
+}

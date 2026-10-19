@@ -1,0 +1,394 @@
+[
+  {
+    "title": "OPPE 2 (2024 Sep) Set 2 \u00b7 P1: Sum of Floored to Tens",
+    "description": "Given two integers a and b, return the sum of the two numbers where both numbers are floored to the nearest ten.\nFlooring to the nearest ten means removing the unit digit and rounding the number down to the nearest multiple of 10.\nAssume both the numbers are positive integers.",
+    "input_format": null,
+    "output_format": null,
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "def sum_floored_to_tens(a: int, b: int) -> int:\n    ",
+    "suffix_code": "a = int(input())\nb = int(input())\nprint(sum_floored_to_tens(a, b))",
+    "sample_input": "35\n46",
+    "sample_output": "70",
+    "position": 1,
+    "section": 1,
+    "test_cases": [
+      {
+        "input": "35\n46",
+        "expected_output": "70",
+        "is_hidden": false
+      },
+      {
+        "input": "12\n19",
+        "expected_output": "20",
+        "is_hidden": false
+      },
+      {
+        "input": "5\n8",
+        "expected_output": "0",
+        "is_hidden": true
+      },
+      {
+        "input": "100\n205",
+        "expected_output": "300",
+        "is_hidden": true
+      },
+      {
+        "input": "99\n99",
+        "expected_output": "180",
+        "is_hidden": true
+      },
+      {
+        "input": "10\n10",
+        "expected_output": "20",
+        "is_hidden": true
+      },
+      {
+        "input": "44\n55",
+        "expected_output": "90",
+        "is_hidden": true
+      },
+      {
+        "input": "1\n1",
+        "expected_output": "0",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 2 (2024 Sep) Set 2 \u00b7 P2: Surround First Two and Last Two with Square Brackets",
+    "description": "Given a string s, you need to surround the first two and the last two characters of the string with square brackets [].\nAssume the string s will have at least 4 characters.",
+    "input_format": null,
+    "output_format": null,
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "def surround_first_two_last_two(s: str) -> str:\n    ",
+    "suffix_code": "s = input()\nprint(surround_first_two_last_two(s))",
+    "sample_input": "hello",
+    "sample_output": "[he]l[lo]",
+    "position": 2,
+    "section": 1,
+    "test_cases": [
+      {
+        "input": "hello",
+        "expected_output": "[he]l[lo]",
+        "is_hidden": false
+      },
+      {
+        "input": "four",
+        "expected_output": "[fo][ur]",
+        "is_hidden": false
+      },
+      {
+        "input": "python",
+        "expected_output": "[py]th[on]",
+        "is_hidden": true
+      },
+      {
+        "input": "brackets",
+        "expected_output": "[br]acke[ts]",
+        "is_hidden": true
+      },
+      {
+        "input": "testing",
+        "expected_output": "[te]sti[ng]",
+        "is_hidden": true
+      },
+      {
+        "input": "123456",
+        "expected_output": "[12]34[56]",
+        "is_hidden": true
+      },
+      {
+        "input": "code",
+        "expected_output": "[co][de]",
+        "is_hidden": true
+      },
+      {
+        "input": "programming",
+        "expected_output": "[pr]ogrammi[ng]",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 2 (2024 Sep) Set 2 \u00b7 P3: Number with More Unique Digits",
+    "description": "Given two integers n1 and n2, return the number that contains more unique digits.\nIf both numbers have the same number of unique digits, return the both as a tuple as (n1, n2).\nAssume both the integers n1 and n2 are positive integers.\nHint: Use set to find the unique digits, as sets automatically eliminate duplicates.",
+    "input_format": null,
+    "output_format": null,
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "def number_with_more_unique_digits(n1: int, n2: int):\n    ",
+    "suffix_code": "n1 = int(input())\nn2 = int(input())\nprint(number_with_more_unique_digits(n1, n2))",
+    "sample_input": "2345\n1111",
+    "sample_output": "2345",
+    "position": 3,
+    "section": 1,
+    "test_cases": [
+      {
+        "input": "2345\n1111",
+        "expected_output": "2345",
+        "is_hidden": false
+      },
+      {
+        "input": "1243\n123344",
+        "expected_output": "(1243, 123344)",
+        "is_hidden": false
+      },
+      {
+        "input": "1000\n9876",
+        "expected_output": "9876",
+        "is_hidden": true
+      },
+      {
+        "input": "123\n456",
+        "expected_output": "(123, 456)",
+        "is_hidden": true
+      },
+      {
+        "input": "9999\n10",
+        "expected_output": "10",
+        "is_hidden": true
+      },
+      {
+        "input": "56789\n1234",
+        "expected_output": "56789",
+        "is_hidden": true
+      },
+      {
+        "input": "777\n888",
+        "expected_output": "(777, 888)",
+        "is_hidden": true
+      },
+      {
+        "input": "12034\n90871",
+        "expected_output": "(12034, 90871)",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 2 (2024 Sep) Set 2 \u00b7 P4: Count Vowels and Consonants in Even Indices",
+    "description": "Given a string s, count the number of vowels and consonants that appear at even indices in the string (0-based indexing). Ignore non-alphabetical characters.\nImplement the function count_vowels_and_consonants_in_even_indices that returns the counts as described above.\nThe string s can have both upper and lower case letters.",
+    "input_format": null,
+    "output_format": null,
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "def count_vowels_and_consonants_in_even_indices(s: str) -> tuple:\n    ",
+    "suffix_code": "s = input()\nprint(count_vowels_and_consonants_in_even_indices(s))",
+    "sample_input": "abcdeaeiou",
+    "sample_output": "(4, 1)",
+    "position": 4,
+    "section": 2,
+    "test_cases": [
+      {
+        "input": "abcdeaeiou",
+        "expected_output": "(4, 1)",
+        "is_hidden": false
+      },
+      {
+        "input": "ABCDE",
+        "expected_output": "(2, 1)",
+        "is_hidden": false
+      },
+      {
+        "input": "a11bc11de11",
+        "expected_output": "(2, 1)",
+        "is_hidden": true
+      },
+      {
+        "input": "hello world",
+        "expected_output": "(1, 5)",
+        "is_hidden": true
+      },
+      {
+        "input": "python",
+        "expected_output": "(1, 2)",
+        "is_hidden": true
+      },
+      {
+        "input": "AEIOU",
+        "expected_output": "(3, 0)",
+        "is_hidden": true
+      },
+      {
+        "input": "123456",
+        "expected_output": "(0, 0)",
+        "is_hidden": true
+      },
+      {
+        "input": "xyz",
+        "expected_output": "(0, 2)",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 2 (2024 Sep) Set 2 \u00b7 P5: Append and Prepend Alternatively",
+    "description": "Given a sequence of n strings as input, create a final word by appending and prepending the strings alternately based on their order. Strings at even indices (0-based) are appended to the end, while strings at odd indices are prepended to the beginning.\nInput Format\n\u2022 The first line consists of the number of strings n.\n\u2022 Next n lines consist of the strings to append and prepend.\nOutput Format\n\u2022 The output string.",
+    "input_format": "The first line contains n. Next n lines contain strings.",
+    "output_format": "The resulting string.",
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "# Read input, process, and print the output\n",
+    "suffix_code": "",
+    "sample_input": "6\nh\nt\no\ny\nn\np",
+    "sample_output": "python",
+    "position": 5,
+    "section": 2,
+    "test_cases": [
+      {
+        "input": "6\nh\nt\no\ny\nn\np",
+        "expected_output": "python",
+        "is_hidden": false
+      },
+      {
+        "input": "6\n1\n2\n3\n4\n5\n6",
+        "expected_output": "642135",
+        "is_hidden": false
+      },
+      {
+        "input": "4\na\nb\nc\nd",
+        "expected_output": "dbac",
+        "is_hidden": true
+      },
+      {
+        "input": "1\nx",
+        "expected_output": "x",
+        "is_hidden": true
+      },
+      {
+        "input": "3\nx\ny\nz",
+        "expected_output": "yxz",
+        "is_hidden": true
+      },
+      {
+        "input": "5\n1\n2\n3\n4\n5",
+        "expected_output": "42135",
+        "is_hidden": true
+      },
+      {
+        "input": "2\nhi\nbye",
+        "expected_output": "byehi",
+        "is_hidden": true
+      },
+      {
+        "input": "4\ncat\ndog\nrat\nbat",
+        "expected_output": "batdogcatrat",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 2 (2024 Sep) Set 2 \u00b7 P6: Call Log Analysis",
+    "description": "You are provided with a call log history represented as a list of dictionaries. Each dictionary contains the following keys:\n\u2022 name (str): The name of the caller.\n\u2022 duration (int): The duration of the call in seconds.\nThere will be multiple entries with the same name in the dataset. Implement a function process_call_logs(call_logs, task) where task is one of the following:\n\u2022 get_call_counts: Returns a dictionary with caller names as keys and the count of their calls as values.\n\u2022 get_total_call_durations: Returns a dictionary with caller names as keys and the total duration of their calls as values.\n\u2022 most_frequent_caller: Returns the name of the caller with the highest number of calls. If there is a tie, the name with most call duration is returned.",
+    "input_format": null,
+    "output_format": null,
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "def process_call_logs(call_logs: list, task: str):\n    ",
+    "suffix_code": "import json\nlogs = json.loads(input())\ntask = input()\nprint(process_call_logs(logs, task))",
+    "sample_input": "[{\"name\":\"Alice\",\"duration\":300},{\"name\":\"Bob\",\"duration\":200},{\"name\":\"Alice\",\"duration\":100},{\"name\":\"Bob\",\"duration\":400},{\"name\":\"Charlie\",\"duration\":300}]\nmost_frequent_caller",
+    "sample_output": "Bob",
+    "position": 6,
+    "section": 3,
+    "test_cases": [
+      {
+        "input": "[{\"name\":\"Alice\",\"duration\":300},{\"name\":\"Bob\",\"duration\":200},{\"name\":\"Alice\",\"duration\":100},{\"name\":\"Bob\",\"duration\":400},{\"name\":\"Charlie\",\"duration\":300}]\nget_call_counts",
+        "expected_output": "{'Alice': 2, 'Bob': 2, 'Charlie': 1}",
+        "is_hidden": false
+      },
+      {
+        "input": "[{\"name\":\"Alice\",\"duration\":300},{\"name\":\"Bob\",\"duration\":200},{\"name\":\"Alice\",\"duration\":100},{\"name\":\"Bob\",\"duration\":400},{\"name\":\"Charlie\",\"duration\":300}]\nmost_frequent_caller",
+        "expected_output": "Bob",
+        "is_hidden": false
+      },
+      {
+        "input": "[{\"name\":\"Alice\",\"duration\":300},{\"name\":\"Bob\",\"duration\":200},{\"name\":\"Alice\",\"duration\":100},{\"name\":\"Bob\",\"duration\":400},{\"name\":\"Charlie\",\"duration\":300}]\nget_total_call_durations",
+        "expected_output": "{'Alice': 400, 'Bob': 600, 'Charlie': 300}",
+        "is_hidden": true
+      },
+      {
+        "input": "[{\"name\":\"Zoe\",\"duration\":50}]\nget_call_counts",
+        "expected_output": "{'Zoe': 1}",
+        "is_hidden": true
+      },
+      {
+        "input": "[{\"name\":\"A\",\"duration\":100},{\"name\":\"B\",\"duration\":200},{\"name\":\"A\",\"duration\":100}]\nmost_frequent_caller",
+        "expected_output": "A",
+        "is_hidden": true
+      },
+      {
+        "input": "[{\"name\":\"X\",\"duration\":10},{\"name\":\"Y\",\"duration\":20}]\nget_total_call_durations",
+        "expected_output": "{'X': 10, 'Y': 20}",
+        "is_hidden": true
+      },
+      {
+        "input": "[{\"name\":\"P\",\"duration\":50},{\"name\":\"Q\",\"duration\":100}]\nmost_frequent_caller",
+        "expected_output": "Q",
+        "is_hidden": true
+      },
+      {
+        "input": "[{\"name\":\"M\",\"duration\":10},{\"name\":\"M\",\"duration\":20},{\"name\":\"M\",\"duration\":30}]\nget_call_counts",
+        "expected_output": "{'M': 3}",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 2 (2024 Sep) Set 2 \u00b7 P7: Reorder the Jumbled Lines",
+    "description": "Given a text file with several lines followed by a single line containing a comma-separated list of integers, reorder the lines of the text file based on the given order and print them.\nThe integers in the last line specify the new order of the preceding lines.\nEach pair is of the form position-line, where position is the 1-based output position and line is the 1-based index of a line in the original text.\nMaintain the exact formatting and order as specified in the last line separated by comma.",
+    "input_format": "Lines of text followed by the ordering permutation line.",
+    "output_format": "Reordered text lines.",
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "# Read input, process, and print the output\n",
+    "suffix_code": "",
+    "sample_input": "first line\nsecond line\nthird line\nfourth line\n1-3,2-4,3-2,4-1",
+    "sample_output": "third line\nfourth line\nsecond line\nfirst line",
+    "position": 7,
+    "section": 3,
+    "test_cases": [
+      {
+        "input": "first line\nsecond line\nthird line\nfourth line\n1-3,2-4,3-2,4-1",
+        "expected_output": "third line\nfourth line\nsecond line\nfirst line",
+        "is_hidden": false
+      },
+      {
+        "input": "alpha\nbeta\n1-2,2-1",
+        "expected_output": "beta\nalpha",
+        "is_hidden": false
+      },
+      {
+        "input": "line A\nline B\nline C\n1-1,2-2,3-3",
+        "expected_output": "line A\nline B\nline C",
+        "is_hidden": true
+      },
+      {
+        "input": "one\ntwo\nthree\n1-3,2-2,3-1",
+        "expected_output": "three\ntwo\none",
+        "is_hidden": true
+      },
+      {
+        "input": "x\ny\nz\nw\n1-4,2-3,3-2,4-1",
+        "expected_output": "w\nz\ny\nx",
+        "is_hidden": true
+      },
+      {
+        "input": "p\nq\n1-1,2-2",
+        "expected_output": "p\nq",
+        "is_hidden": true
+      },
+      {
+        "input": "single\n1-1",
+        "expected_output": "single",
+        "is_hidden": true
+      },
+      {
+        "input": "a\nb\nc\nd\ne\n1-5,2-4,3-3,4-2,5-1",
+        "expected_output": "e\nd\nc\nb\na",
+        "is_hidden": true
+      }
+    ]
+  }
+]

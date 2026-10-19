@@ -203,8 +203,13 @@
       });
     });
   }
+  // 401 means the saved login is no longer valid: drop it (as the main app does) so /login shows the form,
+  // and remember this page so the app sends the student back here after login.
   function loginPrompt() {
-    var d = el("div"); d.appendChild(document.createTextNode("Please log in to use the IDE. "));
+    var expired = !!token;
+    if (expired) { try { localStorage.removeItem("lab_token"); localStorage.removeItem("lab_user"); } catch (e) {} token = ""; }
+    try { sessionStorage.setItem("ql_storefront_return", JSON.stringify({ to: location.pathname + location.search, at: Date.now() })); } catch (e) {}
+    var d = el("div"); d.appendChild(document.createTextNode(expired ? "Your session has expired. " : "Please log in to use the IDE. "));
     var a = el("a", "", "Log in"); a.href = "/login"; d.appendChild(a); status(d);
   }
 

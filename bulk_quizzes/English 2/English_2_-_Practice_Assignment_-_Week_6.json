@@ -1,0 +1,276 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 2 · Practice Assignment · Week 6",
+  "subject": "English 2",
+  "section": "practice",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Select the grammatically correct yes/no question corresponding to: She listens to music every day."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Did she listens to music everyday?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Did she listen to music everyday?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Does she listens to music everyday?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Does she listen to music everyday?"
+          }
+        ]
+      ],
+      "correct_answer": 3
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Select the grammatically correct yes/no question corresponding to: He has finished his homework."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Did he finished his homework?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Has he finish his homework?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Has he finished his homework?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Did he finish his homework?"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Select the present-tense embedded question corresponding to: Is he a businessman?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Do you know if he is a businessman?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Do you know if he was a businessman?"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Embedded questions are used ______."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "To be more polite"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To give more information"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To express reported speech"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "All the above"
+          }
+        ]
+      ],
+      "correct_answer": 3
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "I am worried about ______the presentation was well received."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Whether"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "If"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both whether and if"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "I am unsure _______ I will be attending the function."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Whether"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "If"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both whether and if"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "“ They want to see what all the fuss is about .” In this sentence, the clause ‘ what all the fuss is about’ is the object of the verb ______________."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Is"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "See"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Want"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Not an object"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "“ When did she return from Germany? ” is a ________ type question."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Content"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Yes/no"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    }
+  ]
+}

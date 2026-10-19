@@ -1,0 +1,306 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 2 · Graded Assignment · Week 1",
+  "subject": "English 2",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Presentations are greatly enhanced by varying the tone of voice to emphasize aspects of\nthe content."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The lecture discusses the point in detail"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following is NOT true about the statement: Maintaining eye contact with\nthe audience while presenting is critical to ______."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The lecture discusses the point in detail"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Credibility"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Rapport"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Relaxing"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Involving the audience"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the stressed syllable in the word Together."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "‘Together"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To’gether"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Toge’ther"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Tog’ether"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the stressed syllable in the word Represent."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Re’present"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "‘Represent"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Repre’sent"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Rep’resent"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the stressed syllable in the word Atmosphere."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "At’mosphere"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Atmo’sphere"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A’tmosphere"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "‘Atmosphere"
+          }
+        ]
+      ],
+      "correct_answer": 3
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which syllable in the word, community has the long vowel?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "/kəmjuːnɪtɪ/ would be the phonetic transcription of the word"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "No long vowels in the word"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "First"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Second"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Fourth"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many vowel sounds are there in the word create?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "0"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "3"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In the word deserve, the second syllable has a short vowel."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    }
+  ]
+}

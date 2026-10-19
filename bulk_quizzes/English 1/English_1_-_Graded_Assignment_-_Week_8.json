@@ -1,0 +1,338 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 1 · Graded Assignment · Week 8",
+  "subject": "English 1",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In a word with two syllables, each one of them have their independent meanings and the overall meaning of the word is\nthe combination of the separate meanings of the two syllables."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Syllables are units of pronunciation, not units of meaning; they need not carry independent meanings."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The vowel sound in a syllable plays a critical role in the syllabification of a word."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Every syllable is built around a vowel sound (its nucleus), so the vowel is central to syllabification."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the upper limit for the number of syllables in a word?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "There is no fixed upper limit on how many syllables a word may contain."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Four"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Five"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "No limit"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The word 'machine' is a _____ word."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "'Machine' (ma-chine) has two syllables, so it is disyllabic."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Monosyllabic"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Polysyllabic"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Disyllabic"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The word 'marketing' has _______ syllables."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "'Marketing' is pronounced mar-ke-ting, which is three syllables."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "3"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following has the stress correctly marked?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The noun 'product' carries stress on the first syllable: PROduct."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "proDUCT"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "PROduct"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following has an aspirated stop?\na. Spreadsheets\nb. Company\nc. Improve"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The stressed initial voiceless stops in 'Company' and 'Improve' are aspirated, so both b and c qualify."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Spreadsheets"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Company"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Improve"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both b and c"
+          }
+        ]
+      ],
+      "correct_answer": 3
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "'The output of dairy produce has suffered because of large herds of cattle being affected by the deadly flu. The dairy\nfarm owners will have to take control of the situation to produce the adequate quantity needed for profit-generation by\nthe end of April.'\nChoose the appropriate stress for the two usages of the word 'produce' in its given order in the sentence."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "First 'produce' is a noun (PROduce); second 'produce' is a verb (proDUCE), so the order is PROduce ; ProDUCE."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "ProDUCE ; PROduce"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "PROduce ; ProDUCE"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "PROduce ; PROduce"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The plural marker for the words 'stakeholders', 'stockouts', and 'networks' end in"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "After voiced /r/ the plural is /z/ (stakeholders); after voiceless /t/ and /k/ it is /s/ (stockouts, networks)."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "/s/, /s/, and /z/ respectively."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "/z/, /z/, and /s/ respectively."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "/z/, /s/, and /s/ respectively."
+          }
+        ]
+      ],
+      "correct_answer": 2
+    }
+  ]
+}

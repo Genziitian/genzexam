@@ -1,0 +1,404 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Python · Graded Assignment · Week 7 · Part 1",
+  "subject": "Python",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the below function.\nSelect all the data processing pattern(s) found in the given function."
+        },
+        {
+          "kind": "code",
+          "value": "def func(nums:list):\n   return sum(num for num in nums if len(str(num))<2)",
+          "language": "python"
+        }
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "summing to give a single result filtering the numbers with single digit. Output is the sum of single\ndigit numbers"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Aggregation"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Filtering"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Mapping"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of the above"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the below function.\nSelect all the data processing pattern(s) found in the given function."
+        },
+        {
+          "kind": "code",
+          "value": "def func(nums:list):\n   return sum(num*2 for num in nums)",
+          "language": "python"
+        }
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Summing to give single value doubling each value Output is the sum of twice the input values."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Aggregation"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Filtering"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Mapping"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of the above"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        2
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the below function.\nSelect all the data processing pattern(s) found in the given function."
+        },
+        {
+          "kind": "code",
+          "value": "def func(nums:list):\n   return\"\".join((str(num) for num in nums))",
+          "language": "python"
+        }
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "concatenating strings to give a final string. repeating and add space to each element."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Aggregation"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Filtering"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Mapping"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of the above"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        2
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the below function.\nSelect all the data processing pattern(s) found in the given function."
+        },
+        {
+          "kind": "code",
+          "value": "def func(sentence:str):\n   return next((word for word in sentence.split() if'a'in word),\nNone)",
+          "language": "python"
+        }
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Aggregation"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Filtering"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Mapping"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of the above"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1
+      ],
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The condition filters words containing a, and next reduces the matching sequence to its first element (or None)."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the below function.\nSelect all the data processing pattern(s) found in the given function."
+        },
+        {
+          "kind": "code",
+          "value": "def func(sentence:str):\n   return next((word*2 for word in sentence.split() if'a'in\nword))",
+          "language": "python"
+        }
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Aggregation"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Filtering"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Mapping"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of the above"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1,
+        2
+      ],
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The generator filters words containing a and maps each to word*2; next reduces that sequence to its first result."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the below function.\nSelect all the data processing pattern(s) found in the given function."
+        },
+        {
+          "kind": "code",
+          "value": "def func(sentence:str):\n   return [word*2 for word in sentence.split() if'a'in word]",
+          "language": "python"
+        }
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Aggregation"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Filtering"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Mapping"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of the above"
+          }
+        ]
+      ],
+      "correct_answers": [
+        1,
+        2
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the below function.\nSelect all the data processing pattern(s) found in the given function."
+        },
+        {
+          "kind": "code",
+          "value": "def func(sentence:str):\n   return [\n       chr(ord(char)+1) if char in'aeiou'else chr(ord(char)-1)\n       for char in sentence\n   ]",
+          "language": "python"
+        }
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Aggregation"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Filtering"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Mapping"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of the above"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the below function.\nSelect all the data processing pattern(s) found in the given function."
+        },
+        {
+          "kind": "code",
+          "value": "def func(sentence:str):\n   return''.join([\n       chr(ord(char)+1) if char in'aeiou'else chr(ord(char)-1)\n       for char in sentence\n   ])",
+          "language": "python"
+        }
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Aggregation"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Filtering"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Mapping"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of the above"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        2
+      ]
+    }
+  ]
+}

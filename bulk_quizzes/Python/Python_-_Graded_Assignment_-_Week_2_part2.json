@@ -1,0 +1,377 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Python · Graded Assignment · Week 2 · Part 2",
+  "subject": "Python",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Assume s is a str variable. What is the type of the expression s[:3].upper().split() ?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "int"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "str"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "float"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "list"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "bool"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Raises Error"
+          }
+        ]
+      ],
+      "correct_answer": 3
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Assume s is a str variable. What is the type of the expression s.lower().isalpha() ?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "int"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "str"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "float"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "list"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "bool"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "NoneType"
+          }
+        ]
+      ],
+      "correct_answer": 4
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Assume s is a str variable. What is the type of the expression s.islower() ?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "int"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "str"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "float"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "list"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "bool"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "NoneType"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Raises Error"
+          }
+        ]
+      ],
+      "correct_answer": 4
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Assume that \"3\" is present in s."
+        },
+        {
+          "kind": "text",
+          "value": "Assume s is a str variable. What is the type of the expression s.index(\"3\") ?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "int"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "str"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "float"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "list"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "bool"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Raises error"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Assume s is non-empty."
+        },
+        {
+          "kind": "text",
+          "value": "Assume s is a str variable. What is the type of the expression s.join(s[0]) ?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "int"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "str"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "float"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "list"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "bool"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Raises Error"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the value stored in the variable x ?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "x = bool(input())"
+        },
+        {
+          "kind": "text",
+          "value": "Input: False"
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "input returns the non-empty string \"False\". Every non-empty string has Boolean value True."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the value of the expression bool('True') ?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Raises Error"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the value of the expression bool(1 and 2 and 0) ?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Raises Error"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    }
+  ]
+}

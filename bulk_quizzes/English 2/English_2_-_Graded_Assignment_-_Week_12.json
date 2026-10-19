@@ -1,0 +1,274 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 2 · Graded Assignment · Week 12",
+  "subject": "English 2",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If the recipient is unknown, what should be the best salutation in a professional mail?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Dear Sir/Madam"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Hello"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Hey"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Dear"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If you are arguing a conclusion, what kind of research report are you writing?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "analytical"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "expository"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "prepository"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "argumentative"
+          }
+        ]
+      ],
+      "correct_answer": 3
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What are forms and styles of speech called?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Barriers"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Instrumentalities"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Scene writing"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Stage setting"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What does A in the acronym SPEAKING refer to?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Act sequence"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Arbitration"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Acceptance of the audience"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Audience"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Hierarchy is a/an:"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Organisational barrier"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Physical/Mechanical barrier"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Language/Semantic barrier"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Personal barrier"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following are challenges when you face an interview?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Anxiety"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Inadequate preparation"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Frequent distractions"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "All of the above"
+          }
+        ]
+      ],
+      "correct_answer": 3
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Bad translation is a/an:"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Organisational barrier"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Physical/Mechanical barrier"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Language/Semantic barrier"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Personal barrier"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    }
+  ]
+}

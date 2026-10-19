@@ -1,0 +1,287 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 2 · Quiz 1 · Jul 2023 · Foundation AN4 Exam 2 · Part 1",
+  "subject": "Mathematics 2",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Match the system of linear equations in Column A with their number of solutions in Column B and their geometric representation in Column C.\n\n**Column A:**\ni) $x - 2y - z = 8, \\; -x + 2y + z = 4$\nii) $x + y - z = 3, \\; x - y + z = 3$\n\n**Column B:**\na) No solution\nb) Infinitely many solutions\n\n**Column C (see diagrams):**"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/mathematics-2/quiz1/jul2023_q2_column_c.png",
+          "alt": "Geometric representations of planes in Column C"
+        },
+        {
+          "kind": "text",
+          "value": "Choose the correct matching option:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "i) $\\to$ b $\\to$ 1, ii) $\\to$ a $\\to$ 2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "i) $\\to$ a $\\to$ 1, ii) $\\to$ b $\\to$ 2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "i) $\\to$ b $\\to$ 2, ii) $\\to$ a $\\to$ 1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "i) $\\to$ a $\\to$ 2, ii) $\\to$ b $\\to$ 1"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "System (i) has parallel planes with different constants, giving no solution (a) and parallel planes diagram 2. System (ii) has intersecting planes intersecting in a line, giving infinitely many solutions (b) and intersecting planes diagram 1. Thus i $\\to$ a $\\to$ 2, ii $\\to$ b $\\to$ 1."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following matrices satisfy $A^k = 0$ for some natural number $k$ (i.e. which are nilpotent matrices)?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$\\begin{pmatrix} 4 & 4 & -4 \\\\ -4 & -4 & 4 \\\\ 0 & 0 & 0 \\end{pmatrix}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$\\begin{pmatrix} 0 & 2 & 3 \\\\ 0 & 0 & 2 \\\\ 0 & 0 & 0 \\end{pmatrix}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$\\begin{pmatrix} 1 & 1 & 1 \\\\ 1 & 1 & 1 \\\\ 1 & 1 & 1 \\end{pmatrix}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$\\begin{pmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1 \\end{pmatrix}$"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1
+      ],
+      "marks": 2,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The strictly upper triangular matrix is clearly nilpotent ($A^3 = 0$). Matrix A has square $A^2 = 0$. Matrix C has $C^2 = 3C \\neq 0$, and matrix D is the identity matrix."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following subsets of $\\mathbb{R}^2$ is/are vector spaces with respect to usual addition and usual scalar multiplication?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$V_1 = \\{(x, y) \\in \\mathbb{R}^2 : 2x + 3y = 0\\}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$V_2 = \\{(x, y) \\in \\mathbb{R}^2 : y^2 = 0, x = 2y\\}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$V_3 = \\{(x, y) \\in \\mathbb{R}^2 : x = 1\\}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$V_4 = \\{(x, y) \\in \\mathbb{R}^2 : 2x + 3y - 1 = 0, x - y = 0\\}$"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$V_1$ is a line through the origin. In $V_2$, $y^2 = 0 \\implies y = 0$, so $x = 2(0) = 0$, meaning $V_2 = \\{(0, 0)\\}$, the trivial zero subspace. $V_3$ and $V_4$ do not contain $(0, 0)$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Select the true statement(s) regarding linear independence and vector spaces:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Any subset of a linearly independent set is a linearly independent set."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Any superset of a spanning set is a spanning set."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Any subset of a basis is a basis."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Any superset of a subspace is a subspace."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Subsets of linearly independent sets are always linearly independent. Adding vectors to a spanning set retains the spanning property. Subsets of a basis generally do not span the space, and arbitrary supersets of subspaces are not subspaces."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the set $W = \\{A \\in M_n(\\mathbb{R}) : \\det(A^T) = 0\\}$ with the usual addition and scalar multiplication of matrices. Which of the following statements is/are true?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$W$ is closed under addition."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$W$ is closed under scalar multiplication."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$W$ is a vector space."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$W$ is not a vector space."
+          }
+        ]
+      ],
+      "correct_answers": [
+        1,
+        3
+      ],
+      "marks": 2,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$W$ is the set of all singular $n \\times n$ matrices. For any $c \\in \\mathbb{R}$ and $A \\in W$, $\\det((cA)^T) = c^n \\det(A^T) = 0$, so $W$ is closed under scalar multiplication. However, the sum of two singular matrices need not be singular (e.g. $\\text{diag}(1, 0) + \\text{diag}(0, 1) = I$), so $W$ is not closed under addition and not a vector space."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let $A = \\begin{pmatrix} 2022 & 2023 & 2024 \\\\ 2022 & 2021 & 2022 \\\\ 2022 & 2022 & 2022 \\end{pmatrix}$. What is the determinant of $\\frac{1}{2}A$?"
+        }
+      ],
+      "numerical_answer": 505.5,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Row operations $R_1 \\leftarrow R_1 - R_3$ and $R_2 \\leftarrow R_2 - R_3$ yield $\\det(A) = 4044$. Then $\\det(\\frac{1}{2}A) = (\\frac{1}{2})^3 \\det(A) = \\frac{4044}{8} = 505.5$."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the system of linear equations represented in the matrix form $Ax = b$, where:\n$$A = \\begin{pmatrix} 1 & 1 & 3 \\\\ 1 & 2 & 4 \\\\ 1 & 3 & \\alpha \\end{pmatrix}, \\quad b = \\begin{pmatrix} 2 \\\\ 3 \\\\ \\beta \\end{pmatrix}$$\nWhat is the value of $\\alpha + \\beta$ if the above system has infinitely many solutions?"
+        }
+      ],
+      "numerical_answer": 9,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Infinitely many solutions requires row 3 to be a linear combination of rows 1 and 2: $R_3 = 2R_2 - R_1$. Comparing elements gives $\\alpha = 2(4) - 3 = 5$ and $\\beta = 2(3) - 2 = 4$. Therefore $\\alpha + \\beta = 5 + 4 = 9$."
+        }
+      ]
+    }
+  ]
+}

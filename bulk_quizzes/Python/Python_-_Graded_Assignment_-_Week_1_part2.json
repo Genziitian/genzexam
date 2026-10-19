@@ -1,0 +1,376 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Python · Graded Assignment · Week 1 · Part 2",
+  "subject": "Python",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What will be the output type of the expression \"555\"[2] ?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "int"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "float"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "str"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "bool"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Invalid Expression (raises an error)"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What will be the output type of the expression \"555\"\"[2]\" ?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "int"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "float"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "str"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "bool"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Invalid Expression (raises an error)"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What will be the output type of the expression print('True') ?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "int"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "float"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "str"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "bool"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "NoneType"
+          }
+        ]
+      ],
+      "correct_answer": 4
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What will be the output type of the expression int(5.0) + float(\"2\") ?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "int"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "float"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "str"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "bool"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Raises an error"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What will be the output type of the expression int(\"5.0\") + float(2) ?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "int"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "float"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "str"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "bool"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Raises an error"
+          }
+        ]
+      ],
+      "correct_answer": 4
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Select the expression(s) that are equivalent to the given expression."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "10 // 2 * 5 ** 2"
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "((10 // 2) * 5) ** 2"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "(10 // 2) * (5 ** 2)"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "10 // ((2 * 5) ** 2)"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "(10 // (2 * 5)) ** 2"
+          }
+        ]
+      ],
+      "correct_answers": [
+        1
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Select the expression(s) that are equivalent to the given expression."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "(1 + 2 * 3) - 4"
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "(1 + (2 * 3)) - 4"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "(1 + 2) * 3 - 4"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "1 + (2 * 3) - 4"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "(1 + 2) * (3 - 4)"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        2
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Select the expression(s) that are equivalent to the given expression."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "4 + 3 > 2 * 1"
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "(4 + 3) > (2 * 1)"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "4 + (3 > (2 * 1))"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "(4 + 3 > 2) * 1"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "4 + (3 > 2) * 1"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0
+      ]
+    }
+  ]
+}

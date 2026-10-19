@@ -1,0 +1,180 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 2 · Graded Assignment · Week 9",
+  "subject": "English 2",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the meaning of acceptability?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Ability to like someone"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The quality of being allowed or tolerated"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Ability to accept everything"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "All of the above"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the meaning of celestial?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Relating to home"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Relating to heaven"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Relating to war"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Relating to water"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In “You have been stranded thousands of miles from home”, what does stranded mean?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Left alone"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Tortured"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Confused"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In “It became the foundation of his life’s work and legacy”, what does legacy mean?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "A set of property or values left after one’s departure."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A treat by a leader"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "An unseen treasure."
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the meaning of intrigued?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Irritated"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Interested"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Involved"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    }
+  ]
+}

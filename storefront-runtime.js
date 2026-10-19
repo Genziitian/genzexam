@@ -33,6 +33,8 @@
     // Wait for the existing login flow to finish its account checks and navigation.
     if (!token() || !/^\/(dashboard\/?|admin\/?|)$/.test(location.pathname)) return;
     sessionStorage.removeItem(pendingKey);
+    // A page that sent the student to log in (the IDE, for example) asks to come back to itself.
+    if (typeof pending.to === 'string' && /^\/(?![\/\\])/.test(pending.to)) { location.replace(pending.to); return; }
     var id = Number(pending.paperId);
     var valid = Number.isSafeInteger(id) && id > 0;
     location.replace(valid ? (pending.open === true ? '/paper/' + id : '/papers?paper=' + id) : '/papers?library=1');

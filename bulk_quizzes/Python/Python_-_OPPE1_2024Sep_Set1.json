@@ -1,0 +1,251 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Python · OPPE 1 · 2024 Sep · Set 1",
+  "subject": "Python",
+  "section": "mock_test",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 1 - Problem 1: Sum of squares and absolute difference of squares** (Function Type)\n\nWrite a function sum_squares_abs_diff_squares that takes two integer inputs, a and b, and returns a tuple with:\n• The sum of the squares of a and b.\n• The absolute difference of the squares of a and b.\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def sum_squares_abs_diff_squares(a: int, b: int) -> tuple:\n    ..."
+        }
+      ],
+      "acceptable_answers": [
+        "Sum of squares and absolute difference of squares",
+        "sum_squares_abs_diff_squares"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Sample Test Cases / Examples:**\n\n```text\nGiven the inputs a = 3 and b = 4:\n• The sum of squares would be 9 + 16 = 25.\n• The absolute difference of squares would be |9 - 16| = 7.\nSo, sum_squares_abs_diff_squares(3, 4) should return (25, 7).\n```"
+        },
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def sum_squares_abs_diff_squares(a: int, b: int) -> tuple:\n    sq_a, sq_b = a * a, b * b\n    return (sq_a + sq_b, abs(sq_a - sq_b))"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 1 - Problem 2: Is Odd-Length Palindrome** (Function Type)\n\nWrite a function is_odd_length_palindrome that takes a string s and returns True if s is a palindrome of odd length, and False otherwise.\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def is_odd_length_palindrome(s: str) -> bool:\n    ..."
+        }
+      ],
+      "acceptable_answers": [
+        "Is Odd-Length Palindrome",
+        "is_odd_length_palindrome"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Sample Test Cases / Examples:**\n\n```text\n• \"hello\" --> False (not a palindrome)\n• \"noon\" --> False (palindrome but not odd length)\n• \"nun\" --> True (palindrome and odd length)\n```"
+        },
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def is_odd_length_palindrome(s: str) -> bool:\n    # Odd length AND reads the same forwards and backwards\n    return len(s) % 2 == 1 and s == s[::-1]"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 1 - Problem 3: Remove elements at given two indices of a list** (Function Type)\n\nWrite a function remove_elements_at_two_indices that takes a list l and two indices i1 and i2. The function should remove the elements at these two indices from the list l.\nAssume the indices are non-negative and unique.\nThe function should not return anything but should modify the input list directly.\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def remove_elements_at_two_indices(l: list, i1: int, i2: int) -> None:\n    ..."
+        }
+      ],
+      "acceptable_answers": [
+        "Remove elements at given two indices of a list",
+        "remove_elements_at_two_indices"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Sample Test Cases / Examples:**\n\n```text\n>>> l = [1, 2, 3, 4, 5, 6, 7]\n>>> i1 = 5\n>>> i2 = 1\n>>> remove_elements_at_two_indices(l, i1, i2)\n>>> l\n[1, 3, 4, 5, 7]\n\nExplanation\nThe elements at indices 5 and 1 are 6 and 2, respectively. These elements are removed from the list l.\n```"
+        },
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def remove_elements_at_two_indices(l: list, i1: int, i2: int) -> None:\n    # Delete the larger index first so the smaller index stays valid\n    for idx in sorted([i1, i2], reverse=True):\n        del l[idx]"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 2 - Problem 1: Sum of Squares of Even Numbers** (Function Type)\n\nWrite a function sum_of_squares_of_even that takes a list of integers nums and returns the sum of squares of all even numbers in the list.\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def sum_of_squares_of_even(nums: list) -> int:\n    ..."
+        }
+      ],
+      "acceptable_answers": [
+        "Sum of Squares of Even Numbers",
+        "sum_of_squares_of_even"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Sample Test Cases / Examples:**\n\n```text\n>>> nums = [1, 2, 3, 4, 5, 6]\n>>> sum_of_squares_of_even(nums)\n56\n\nExplanation\nIn the list [1, 2, 3, 4, 5, 6], the even numbers are 2, 4, and 6. The sum of their squares is 4 + 16 + 36 = 56.\n```"
+        },
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def sum_of_squares_of_even(nums: list) -> int:\n    return sum(x * x for x in nums if x % 2 == 0)"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 2 - Problem 2: Upper Case Only Vowels** (Io Type)\n\nWrite a program that takes a passage with n lines of text as input. For each line, convert all vowels (a, e, i, o, u) to uppercase and all other characters to lowercase.\nNOTE: This is an I/O type question, you need to write the whole code for taking input and printing the output.\nInput Format\n• The first line contains an integer n, the number of lines.\n• The next n lines contain the passage.\nOutput Format\n• Print the passage with vowels in uppercase and all other characters in lowercase.\nHint\nUse the upper and lower methods of str to convert characters as needed."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "# Read input, process, and print the output"
+        }
+      ],
+      "acceptable_answers": [
+        "Upper Case Only Vowels"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Sample Test Cases / Examples:**\n\n```text\nInput:\n2\nHello World\nPython Programming\nOutput:\nhEllO wOrld\npythOn prOgrAmmIng\n```"
+        },
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "n = int(input())\nvowels = set(\"aeiou\")\nfor _ in range(n):\n    line = input()\n    result = \"\".join(\n        c.upper() if c.lower() in vowels else c.lower() for c in line\n    )\n    print(result)"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 3 - Problem 1: Student Marks Filter** (Function Type)\n\nGiven the data of student marks in the format of list of tuples of format (rollno:str, marks:int), write a function to filter student roll numbers based on the following criteria:\n• 'above_average': Students with marks above or equal to the average.\n• 'below_average': Students with marks below the average.\n• 'fail': Students with marks less than 40.\n• 'toppers': Students with marks 90 or above.\n• None: Return all roll numbers.\n• Any other value should return None.\nThe order of the roll numbers in the filtered roll numbers should be same as they appear in the data.\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition. You can define helper functions if needed, but the actual solution should be in the given function template."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def get_roll_nos(data: list, criteria=None) -> list:\n    ..."
+        }
+      ],
+      "acceptable_answers": [
+        "Student Marks Filter",
+        "get_roll_nos"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Sample Test Cases / Examples:**\n\n```text\ndata = [(\"101\", 85), (\"102\", 75), (\"103\", 45), (\"104\", 95), (\"105\", 35)]\nprint(get_roll_nos(data, 'above_average'))  # Output: [\"101\", \"102\", \"104\"]\nprint(get_roll_nos(data, 'fail'))           # Output: [\"105\"]\nprint(get_roll_nos(data, 'toppers'))         # Output: [\"104\"]\nprint(get_roll_nos(data))                   # Output: [\"101\", \"102\", \"103\", \"104\", \"105\"]\n```"
+        },
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def get_roll_nos(data: list, criteria=None):\n    marks = [m for _, m in data]\n    avg = sum(marks) / len(marks) if marks else 0\n    if criteria is None:\n        return [r for r, _ in data]\n    if criteria == 'above_average':\n        return [r for r, m in data if m >= avg]\n    if criteria == 'below_average':\n        return [r for r, m in data if m < avg]\n    if criteria == 'fail':\n        return [r for r, m in data if m < 40]\n    if criteria == 'toppers':\n        return [r for r, m in data if m >= 90]\n    return None"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 3 - Problem 2: Print Pattern - V** (Io Type)\n\nGiven an integer n (where n > 0), print a \"V\" shaped pattern with n rows. The pattern should use backslashes (\\) and forward slashes (/) for each row, with the v character at the bottom. There should be no spaces to the right of the pattern.\nNOTE: This is an I/O type question, you need to write the whole code for taking input and printing the output.\nInput Format\n• A single integer n, representing the number of rows in the pattern.\nOutput Format\n• A \"V\" shaped pattern with n rows, as described.\nConstraints\n• 1 <= n"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "# Read input, process, and print the output"
+        }
+      ],
+      "acceptable_answers": [
+        "Print Pattern - V"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Sample Test Cases / Examples:**\n\n```text\nInput:\n1\nOutput:\nv\n\nInput:\n2\nOutput:\n\\ /\n v\n\nInput:\n3\nOutput:\n\\   /\n \\ /\n  v\n```"
+        },
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "n = int(input())\n# Each row i has i leading spaces; the gap between \\ and / shrinks toward the center\nfor i in range(n - 1):\n    inner = 2 * (n - 1 - i) - 1\n    print(\" \" * i + \"\\\\\" + \" \" * inner + \"/\")\nprint(\" \" * (n - 1) + \"v\")"
+        }
+      ]
+    }
+  ]
+}

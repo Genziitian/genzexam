@@ -1,0 +1,2613 @@
+{
+  "source_question_count": 277,
+  "papers": [
+    {
+      "path": "/Users/tusharrrsingh/Downloads/exam genz/bulk_quizzes/Python/Python_-_Graded_Assignment_-_Week_1_part1.json",
+      "questions": 8,
+      "source_items": [
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 1 GA - genz_iitian - booklet.pdf",
+          "question_number": 1,
+          "pages": [
+            2
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 1 GA - genz_iitian - booklet.pdf",
+          "question_number": 2,
+          "pages": [
+            2
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 1 GA - genz_iitian - booklet.pdf",
+          "question_number": 3,
+          "pages": [
+            3
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 1 GA - genz_iitian - booklet.pdf",
+          "question_number": 4,
+          "pages": [
+            3
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 1 GA - genz_iitian - booklet.pdf",
+          "question_number": 5,
+          "pages": [
+            4
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 1 GA - genz_iitian - booklet.pdf",
+          "question_number": 6,
+          "pages": [
+            4
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 1 GA - genz_iitian - booklet.pdf",
+          "question_number": 7,
+          "pages": [
+            5
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 1 GA - genz_iitian - booklet.pdf",
+          "question_number": 8,
+          "pages": [
+            5
+          ],
+          "notes": []
+        }
+      ]
+    },
+    {
+      "path": "/Users/tusharrrsingh/Downloads/exam genz/bulk_quizzes/Python/Python_-_Graded_Assignment_-_Week_1_part2.json",
+      "questions": 8,
+      "source_items": [
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 1 GA - genz_iitian - booklet.pdf",
+          "question_number": 9,
+          "pages": [
+            6
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 1 GA - genz_iitian - booklet.pdf",
+          "question_number": 10,
+          "pages": [
+            6
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 1 GA - genz_iitian - booklet.pdf",
+          "question_number": 11,
+          "pages": [
+            7
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 1 GA - genz_iitian - booklet.pdf",
+          "question_number": 12,
+          "pages": [
+            7
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 1 GA - genz_iitian - booklet.pdf",
+          "question_number": 13,
+          "pages": [
+            8
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 1 GA - genz_iitian - booklet.pdf",
+          "question_number": 14,
+          "pages": [
+            8
+          ],
+          "notes": [
+            "Recovered the original embedded option boundaries and corrected the answer using Python semantics."
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 1 GA - genz_iitian - booklet.pdf",
+          "question_number": 15,
+          "pages": [
+            8
+          ],
+          "notes": [
+            "Recovered the original embedded option boundaries and corrected the answer using Python semantics."
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 1 GA - genz_iitian - booklet.pdf",
+          "question_number": 16,
+          "pages": [
+            9
+          ],
+          "notes": [
+            "Recovered the original embedded option boundaries and corrected the answer using Python semantics."
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/Users/tusharrrsingh/Downloads/exam genz/bulk_quizzes/Python/Python_-_Graded_Assignment_-_Week_1_part3.json",
+      "questions": 7,
+      "source_items": [
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 1 GA - genz_iitian - booklet.pdf",
+          "question_number": 17,
+          "pages": [
+            9
+          ],
+          "notes": [
+            "Recovered the original embedded option boundaries and corrected the answer using Python semantics."
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 1 GA - genz_iitian - booklet.pdf",
+          "question_number": 18,
+          "pages": [
+            9
+          ],
+          "notes": [
+            "Recovered the original embedded option boundaries and corrected the answer using Python semantics."
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 1 GA - genz_iitian - booklet.pdf",
+          "question_number": 19,
+          "pages": [
+            10
+          ],
+          "notes": [
+            "Recovered the original embedded option boundaries and corrected the answer using Python semantics."
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 1 GA - genz_iitian - booklet.pdf",
+          "question_number": 20,
+          "pages": [
+            10
+          ],
+          "notes": [
+            "Source key/type corrected: print is a built-in function. Its default separator between arguments is a space and its default ending is a newline. A REPL displays a string representation with quotes, whereas print displays the string contents."
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 1 GA - genz_iitian - booklet.pdf",
+          "question_number": 21,
+          "pages": [
+            10
+          ],
+          "notes": [
+            "Source key/type corrected: input is a built-in function, not a keyword. It reads one line and returns a string. It accepts at most one positional prompt argument."
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 1 GA - genz_iitian - booklet.pdf",
+          "question_number": 27,
+          "pages": [
+            12
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 1 GA - genz_iitian - booklet.pdf",
+          "question_number": 28,
+          "pages": [
+            13
+          ],
+          "notes": [
+            "Source key/type corrected: If both variables are True, division by zero raises an exception. Otherwise the expression short-circuits and print(E_2) can print True or False."
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/Users/tusharrrsingh/Downloads/exam genz/bulk_quizzes/Python/Python_-_Practice_Assignment_-_Week_1.json",
+      "questions": 7,
+      "source_items": [
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 1 PA - genz_iitian - booklet.pdf",
+          "question_number": 1,
+          "pages": [
+            2
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 1 PA - genz_iitian - booklet.pdf",
+          "question_number": 2,
+          "pages": [
+            3
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 1 PA - genz_iitian - booklet.pdf",
+          "question_number": 3,
+          "pages": [
+            3
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 1 PA - genz_iitian - booklet.pdf",
+          "question_number": 4,
+          "pages": [
+            4
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 1 PA - genz_iitian - booklet.pdf",
+          "question_number": 5,
+          "pages": [
+            5
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 1 PA - genz_iitian - booklet.pdf",
+          "question_number": 6,
+          "pages": [
+            6
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 1 PA - genz_iitian - booklet.pdf",
+          "question_number": 7,
+          "pages": [
+            7
+          ],
+          "notes": []
+        }
+      ]
+    },
+    {
+      "path": "/Users/tusharrrsingh/Downloads/exam genz/bulk_quizzes/Python/Python_-_Graded_Assignments_-_Weeks_8_and_10_-_Combined_PYQ.json",
+      "questions": 7,
+      "source_items": [
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 10 GA - genz_iitian - booklet.pdf",
+          "question_number": 7,
+          "pages": [
+            9
+          ],
+          "notes": [
+            "The source duplicates two incorrect output alternatives; both are preserved, while the correct complete output is distinct."
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 10 GA - genz_iitian - booklet.pdf",
+          "question_number": 8,
+          "pages": [
+            10
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 10 GA - genz_iitian - booklet.pdf",
+          "question_number": 9,
+          "pages": [
+            11
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 8 GA - genz_iitian - booklet.pdf",
+          "question_number": 1,
+          "pages": [
+            3
+          ],
+          "notes": [
+            "Restored Python indentation from the native source layout."
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 8 GA - genz_iitian - booklet.pdf",
+          "question_number": 2,
+          "pages": [
+            4,
+            5
+          ],
+          "notes": [
+            "Separated the complete CSV, dependent helper, and current program; removed unrelated copied helper code.",
+            "Restored Python indentation from the native source layout."
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 8 GA - genz_iitian - booklet.pdf",
+          "question_number": 3,
+          "pages": [
+            5
+          ],
+          "notes": [
+            "Separated the complete CSV, dependent helper, and current program; removed unrelated copied helper code.",
+            "Restored Python indentation from the native source layout.",
+            "Restored Python indentation from the native source layout."
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 8 GA - genz_iitian - booklet.pdf",
+          "question_number": 4,
+          "pages": [
+            6,
+            7
+          ],
+          "notes": [
+            "Separated the complete CSV, dependent helper, and current program; removed unrelated copied helper code.",
+            "Retained the original file-writing task as a short answer because the source merges all file-content alternatives.",
+            "Restored Python indentation from the native source layout."
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/Users/tusharrrsingh/Downloads/exam genz/bulk_quizzes/Python/Python_-_Practice_Assignment_-_Week_10.json",
+      "questions": 9,
+      "source_items": [
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 10 PA - genz_iitian - booklet.pdf",
+          "question_number": 14,
+          "pages": [
+            12
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 10 PA - genz_iitian - booklet.pdf",
+          "question_number": 15,
+          "pages": [
+            12
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 10 PA - genz_iitian - booklet.pdf",
+          "question_number": 16,
+          "pages": [
+            13
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 10 PA - genz_iitian - booklet.pdf",
+          "question_number": 17,
+          "pages": [
+            13
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 10 PA - genz_iitian - booklet.pdf",
+          "question_number": 18,
+          "pages": [
+            14
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 10 PA - genz_iitian - booklet.pdf",
+          "question_number": 19,
+          "pages": [
+            14
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 10 PA - genz_iitian - booklet.pdf",
+          "question_number": 20,
+          "pages": [
+            15
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 10 PA - genz_iitian - booklet.pdf",
+          "question_number": 21,
+          "pages": [
+            16
+          ],
+          "notes": [
+            "Source key/type corrected: A missing file raises FileNotFoundError. The first, second, and fourth alternatives catch it; except ValueError does not."
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 10 PA - genz_iitian - booklet.pdf",
+          "question_number": 22,
+          "pages": [
+            17,
+            18
+          ],
+          "notes": [
+            "Source key/type corrected: The first two calls print their error messages; finally prints after every call, including the successful third call, and the final print outputs 2."
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/Users/tusharrrsingh/Downloads/exam genz/bulk_quizzes/Python/Python_-_Graded_Assignment_-_Week_2_part1.json",
+      "questions": 9,
+      "source_items": [
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 2 GA - genz_iitian - booklet.pdf",
+          "question_number": 1,
+          "pages": [
+            2
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 2 GA - genz_iitian - booklet.pdf",
+          "question_number": 2,
+          "pages": [
+            3
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 2 GA - genz_iitian - booklet.pdf",
+          "question_number": 3,
+          "pages": [
+            3
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 2 GA - genz_iitian - booklet.pdf",
+          "question_number": 4,
+          "pages": [
+            4
+          ],
+          "notes": [
+            "Attached the exact shared aliasing program from source Q1–Q3."
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 2 GA - genz_iitian - booklet.pdf",
+          "question_number": 5,
+          "pages": [
+            4
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 2 GA - genz_iitian - booklet.pdf",
+          "question_number": 7,
+          "pages": [
+            6
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 2 GA - genz_iitian - booklet.pdf",
+          "question_number": 8,
+          "pages": [
+            6
+          ],
+          "notes": [
+            "Source key/type corrected: str(0.5) + \"00\", f\"{0.5}00\", and f\"{0.545:.1f}00\" each give \"0.500\". Width-only :03 formatting does not add trailing fractional zeros."
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 2 GA - genz_iitian - booklet.pdf",
+          "question_number": 10,
+          "pages": [
+            7
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 2 GA - genz_iitian - booklet.pdf",
+          "question_number": 11,
+          "pages": [
+            8
+          ],
+          "notes": []
+        }
+      ]
+    },
+    {
+      "path": "/Users/tusharrrsingh/Downloads/exam genz/bulk_quizzes/Python/Python_-_Graded_Assignment_-_Week_2_part2.json",
+      "questions": 8,
+      "source_items": [
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 2 GA - genz_iitian - booklet.pdf",
+          "question_number": 12,
+          "pages": [
+            8
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 2 GA - genz_iitian - booklet.pdf",
+          "question_number": 13,
+          "pages": [
+            9
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 2 GA - genz_iitian - booklet.pdf",
+          "question_number": 14,
+          "pages": [
+            9
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 2 GA - genz_iitian - booklet.pdf",
+          "question_number": 15,
+          "pages": [
+            10
+          ],
+          "notes": [
+            "Made the successful-index lookup precondition explicit; otherwise the source type question is ambiguous."
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 2 GA - genz_iitian - booklet.pdf",
+          "question_number": 16,
+          "pages": [
+            10
+          ],
+          "notes": [
+            "Made the indexing precondition explicit."
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 2 GA - genz_iitian - booklet.pdf",
+          "question_number": 18,
+          "pages": [
+            11
+          ],
+          "notes": [
+            "Separated the explicit source input and removed merged answer alternatives from the program."
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 2 GA - genz_iitian - booklet.pdf",
+          "question_number": 19,
+          "pages": [
+            12
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 2 GA - genz_iitian - booklet.pdf",
+          "question_number": 20,
+          "pages": [
+            12
+          ],
+          "notes": []
+        }
+      ]
+    },
+    {
+      "path": "/Users/tusharrrsingh/Downloads/exam genz/bulk_quizzes/Python/Python_-_Graded_Assignment_-_Week_2_part3.json",
+      "questions": 8,
+      "source_items": [
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 2 GA - genz_iitian - booklet.pdf",
+          "question_number": 21,
+          "pages": [
+            12
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 2 GA - genz_iitian - booklet.pdf",
+          "question_number": 22,
+          "pages": [
+            13
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 2 GA - genz_iitian - booklet.pdf",
+          "question_number": 26,
+          "pages": [
+            16
+          ],
+          "notes": [
+            "Recovered the original embedded option boundaries and corrected the answer using Python semantics."
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 2 GA - genz_iitian - booklet.pdf",
+          "question_number": 27,
+          "pages": [
+            17
+          ],
+          "notes": [
+            "Recovered the original embedded option boundaries and corrected the answer using Python semantics."
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 2 GA - genz_iitian - booklet.pdf",
+          "question_number": 28,
+          "pages": [
+            17
+          ],
+          "notes": [
+            "Recovered the original embedded option boundaries and corrected the answer using Python semantics."
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 2 GA - genz_iitian - booklet.pdf",
+          "question_number": 29,
+          "pages": [
+            18
+          ],
+          "notes": [
+            "Recovered the original embedded option boundaries and corrected the answer using Python semantics."
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 2 GA - genz_iitian - booklet.pdf",
+          "question_number": 30,
+          "pages": [
+            19,
+            20
+          ],
+          "notes": [
+            "Recovered the original embedded option boundaries and corrected the answer using Python semantics."
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 2 GA - genz_iitian - booklet.pdf",
+          "question_number": 31,
+          "pages": [
+            20
+          ],
+          "notes": [
+            "Recovered the original embedded option boundaries and corrected the answer using Python semantics."
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/Users/tusharrrsingh/Downloads/exam genz/bulk_quizzes/Python/Python_-_Practice_Assignment_-_Week_2.json",
+      "questions": 10,
+      "source_items": [
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 2 PA - genz_iitian - booklet.pdf",
+          "question_number": 1,
+          "pages": [
+            2
+          ],
+          "notes": [
+            "Source key/type corrected: a_, _a, and a_variable are valid identifiers. An identifier cannot begin with a digit or contain spaces."
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 2 PA - genz_iitian - booklet.pdf",
+          "question_number": 2,
+          "pages": [
+            3
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 2 PA - genz_iitian - booklet.pdf",
+          "question_number": 3,
+          "pages": [
+            4
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 2 PA - genz_iitian - booklet.pdf",
+          "question_number": 4,
+          "pages": [
+            5
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 2 PA - genz_iitian - booklet.pdf",
+          "question_number": 5,
+          "pages": [
+            6
+          ],
+          "notes": [
+            "Separated the two original programs into individually labelled code blocks."
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 2 PA - genz_iitian - booklet.pdf",
+          "question_number": 6,
+          "pages": [
+            7
+          ],
+          "notes": [
+            "Source key/type corrected: When E is False, blocks 1 and 2 print only bad. When E is True, blocks 2 and 3 print good followed by bad. No two blocks are equivalent for both Boolean values."
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 2 PA - genz_iitian - booklet.pdf",
+          "question_number": 7,
+          "pages": [
+            8
+          ],
+          "notes": [
+            "Source key/type corrected: If bool_var starts True, x is incremented and then decremented after the flag becomes False; otherwise x is unchanged. Thus the final x is independent of the initial flag and line 5 is never executed."
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 2 PA - genz_iitian - booklet.pdf",
+          "question_number": 9,
+          "pages": [
+            9
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 2 PA - genz_iitian - booklet.pdf",
+          "question_number": 10,
+          "pages": [
+            10
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 2 PA - genz_iitian - booklet.pdf",
+          "question_number": 11,
+          "pages": [
+            11
+          ],
+          "notes": []
+        }
+      ]
+    },
+    {
+      "path": "/Users/tusharrrsingh/Downloads/exam genz/bulk_quizzes/Python/Python_-_Graded_Assignment_-_Week_3_part1.json",
+      "questions": 8,
+      "source_items": [
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 3 GA - genz_iitian - booklet.pdf",
+          "question_number": 1,
+          "pages": [
+            2
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 3 GA - genz_iitian - booklet.pdf",
+          "question_number": 2,
+          "pages": [
+            3
+          ],
+          "notes": [
+            "Recovered the original embedded option boundaries and corrected the answer using Python semantics."
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 3 GA - genz_iitian - booklet.pdf",
+          "question_number": 3,
+          "pages": [
+            4
+          ],
+          "notes": [
+            "Recovered the original embedded option boundaries and corrected the answer using Python semantics."
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 3 GA - genz_iitian - booklet.pdf",
+          "question_number": 4,
+          "pages": [
+            4
+          ],
+          "notes": [
+            "Separated the two original programs into individually labelled code blocks."
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 3 GA - genz_iitian - booklet.pdf",
+          "question_number": 5,
+          "pages": [
+            5
+          ],
+          "notes": [
+            "Recovered the original embedded option boundaries and corrected the answer using Python semantics."
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 3 GA - genz_iitian - booklet.pdf",
+          "question_number": 6,
+          "pages": [
+            6
+          ],
+          "notes": [
+            "Source key/type corrected: String repetition can generate the output: print(\"Hello Python!\\n\" * 10, end=\"\")."
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 3 GA - genz_iitian - booklet.pdf",
+          "question_number": 7,
+          "pages": [
+            7
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 3 GA - genz_iitian - booklet.pdf",
+          "question_number": 9,
+          "pages": [
+            8
+          ],
+          "notes": [
+            "Recovered the original embedded option boundaries and corrected the answer using Python semantics."
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/Users/tusharrrsingh/Downloads/exam genz/bulk_quizzes/Python/Python_-_Graded_Assignment_-_Week_3_part2.json",
+      "questions": 7,
+      "source_items": [
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 3 GA - genz_iitian - booklet.pdf",
+          "question_number": 10,
+          "pages": [
+            8
+          ],
+          "notes": [
+            "Attached exact shared validation code and rejoined a wrapped final option."
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 3 GA - genz_iitian - booklet.pdf",
+          "question_number": 12,
+          "pages": [
+            10
+          ],
+          "notes": [
+            "Recovered the original embedded option boundaries and corrected the answer using Python semantics.",
+            "Assigned one platform mark because the original source item has zero marks."
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 3 GA - genz_iitian - booklet.pdf",
+          "question_number": 13,
+          "pages": [
+            11
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 3 GA - genz_iitian - booklet.pdf",
+          "question_number": 14,
+          "pages": [
+            12
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 3 GA - genz_iitian - booklet.pdf",
+          "question_number": 15,
+          "pages": [
+            12
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 3 GA - genz_iitian - booklet.pdf",
+          "question_number": 16,
+          "pages": [
+            13
+          ],
+          "notes": [
+            "Corrected source variable typo words → sentence; sentence is the actual input variable."
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 3 GA - genz_iitian - booklet.pdf",
+          "question_number": 17,
+          "pages": [
+            13
+          ],
+          "notes": []
+        }
+      ]
+    },
+    {
+      "path": "/Users/tusharrrsingh/Downloads/exam genz/bulk_quizzes/Python/Python_-_Graded_Assignment_-_Week_3_part3.json",
+      "questions": 7,
+      "source_items": [
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 3 GA - genz_iitian - booklet.pdf",
+          "question_number": 18,
+          "pages": [
+            14
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 3 GA - genz_iitian - booklet.pdf",
+          "question_number": 19,
+          "pages": [
+            14
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 3 GA - genz_iitian - booklet.pdf",
+          "question_number": 20,
+          "pages": [
+            15
+          ],
+          "notes": [
+            "Source key/type corrected: The condition filters single-digit inputs, and repeatedly replacing value reduces those matches to the last matching number (or None if none match)."
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 3 GA - genz_iitian - booklet.pdf",
+          "question_number": 21,
+          "pages": [
+            15
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 3 GA - genz_iitian - booklet.pdf",
+          "question_number": 22,
+          "pages": [
+            16
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 3 GA - genz_iitian - booklet.pdf",
+          "question_number": 23,
+          "pages": [
+            17
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 3 GA - genz_iitian - booklet.pdf",
+          "question_number": 24,
+          "pages": [
+            18
+          ],
+          "notes": []
+        }
+      ]
+    },
+    {
+      "path": "/Users/tusharrrsingh/Downloads/exam genz/bulk_quizzes/Python/Python_-_Practice_Assignments_-_Weeks_3_and_9_-_Combined_PYQ.json",
+      "questions": 9,
+      "source_items": [
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 3 PA - genz_iitian - booklet.pdf",
+          "question_number": 2,
+          "pages": [
+            3
+          ],
+          "notes": [
+            "Source key/type corrected: The loop prints i exactly when i divides n, so the printed values are the factors of n."
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 3 PA - genz_iitian - booklet.pdf",
+          "question_number": 3,
+          "pages": [
+            4
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 3 PA - genz_iitian - booklet.pdf",
+          "question_number": 4,
+          "pages": [
+            5
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 3 PA - genz_iitian - booklet.pdf",
+          "question_number": 7,
+          "pages": [
+            8
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 3 PA - genz_iitian - booklet.pdf",
+          "question_number": 9,
+          "pages": [
+            9
+          ],
+          "notes": [
+            "Source key/type corrected: Formatting with .2f always prints two digits after the decimal point. Both 1.29 and 1234.20 are possible; 1.2 is not."
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 9 PA - genz_iitian - booklet.pdf",
+          "question_number": 1,
+          "pages": [
+            2
+          ],
+          "notes": [
+            "Restored the variable name displaced to the end of the code panel."
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 9 PA - genz_iitian - booklet.pdf",
+          "question_number": 2,
+          "pages": [
+            3
+          ],
+          "notes": [
+            "Restored the variable name displaced to the end of the code panel."
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 9 PA - genz_iitian - booklet.pdf",
+          "question_number": 4,
+          "pages": [
+            4
+          ],
+          "notes": [
+            "Made the membership behavior explicit using the exact source explanation."
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 9 PA - genz_iitian - booklet.pdf",
+          "question_number": 5,
+          "pages": [
+            5
+          ],
+          "notes": [
+            "Source key/type corrected: Each even element contributes 1, while odd elements contribute nothing; the function counts even elements."
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/Users/tusharrrsingh/Downloads/exam genz/bulk_quizzes/Python/Python_-_Graded_Assignment_-_Week_4_part1.json",
+      "questions": 6,
+      "source_items": [
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 4 GA - genz_iitian - booklet.pdf",
+          "question_number": 3,
+          "pages": [
+            4
+          ],
+          "notes": [
+            "Source key/type corrected: flag becomes True only when y belongs to L and y × len(L) equals the sum of L; hence y is the arithmetic mean."
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 4 GA - genz_iitian - booklet.pdf",
+          "question_number": 4,
+          "pages": [
+            5
+          ],
+          "notes": [
+            "Attached the exact shared mean-test program."
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 4 GA - genz_iitian - booklet.pdf",
+          "question_number": 5,
+          "pages": [
+            6
+          ],
+          "notes": [
+            "Recovered the original embedded option boundaries and corrected the answer using Python semantics."
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 4 GA - genz_iitian - booklet.pdf",
+          "question_number": 6,
+          "pages": [
+            7
+          ],
+          "notes": [
+            "Recovered the original embedded option boundaries and corrected the answer using Python semantics."
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 4 GA - genz_iitian - booklet.pdf",
+          "question_number": 7,
+          "pages": [
+            8
+          ],
+          "notes": [
+            "Recovered the original embedded option boundaries and corrected the answer using Python semantics."
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 4 GA - genz_iitian - booklet.pdf",
+          "question_number": 8,
+          "pages": [
+            9
+          ],
+          "notes": [
+            "Recovered the original embedded option boundaries and corrected the answer using Python semantics."
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/Users/tusharrrsingh/Downloads/exam genz/bulk_quizzes/Python/Python_-_Graded_Assignment_-_Week_4_part2.json",
+      "questions": 6,
+      "source_items": [
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 4 GA - genz_iitian - booklet.pdf",
+          "question_number": 9,
+          "pages": [
+            9
+          ],
+          "notes": [
+            "Recovered the original embedded option boundaries and corrected the answer using Python semantics.",
+            "Made the indexing precondition explicit."
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 4 GA - genz_iitian - booklet.pdf",
+          "question_number": 10,
+          "pages": [
+            10
+          ],
+          "notes": [
+            "Recovered the original embedded option boundaries and corrected the answer using Python semantics."
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 4 GA - genz_iitian - booklet.pdf",
+          "question_number": 11,
+          "pages": [
+            10
+          ],
+          "notes": [
+            "Source key/type corrected: For equal real arguments, a <= b is True, so the first return executes. Returning immediately exits the function."
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 4 GA - genz_iitian - booklet.pdf",
+          "question_number": 12,
+          "pages": [
+            11
+          ],
+          "notes": [
+            "Recovered the original embedded option boundaries and corrected the answer using Python semantics.",
+            "Removed a missing sample-table reference; the full behavioral specification remains."
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 4 GA - genz_iitian - booklet.pdf",
+          "question_number": 13,
+          "pages": [
+            12
+          ],
+          "notes": [
+            "Recovered the original embedded option boundaries and corrected the answer using Python semantics."
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 4 GA - genz_iitian - booklet.pdf",
+          "question_number": 14,
+          "pages": [
+            13
+          ],
+          "notes": [
+            "Recovered the original embedded option boundaries and corrected the answer using Python semantics.",
+            "Attached the exact polynomial evaluation contract instead of an orphan reference to an earlier question."
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/Users/tusharrrsingh/Downloads/exam genz/bulk_quizzes/Python/Python_-_Practice_Assignment_-_Week_4_part1.json",
+      "questions": 9,
+      "source_items": [
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 4 PA - genz_iitian - booklet.pdf",
+          "question_number": 1,
+          "pages": [
+            2
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 4 PA - genz_iitian - booklet.pdf",
+          "question_number": 2,
+          "pages": [
+            3
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 4 PA - genz_iitian - booklet.pdf",
+          "question_number": 3,
+          "pages": [
+            4
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 4 PA - genz_iitian - booklet.pdf",
+          "question_number": 4,
+          "pages": [
+            5
+          ],
+          "notes": [
+            "Source key/type corrected: Both correct alternatives test the parity of each element and append the element itself in the original order."
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 4 PA - genz_iitian - booklet.pdf",
+          "question_number": 5,
+          "pages": [
+            6
+          ],
+          "notes": [
+            "Source key/type corrected: Negating, sorting ascending, and negating again gives the elements of P sorted in descending order. The multiset is preserved, but P need not originally have that order."
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 4 PA - genz_iitian - booklet.pdf",
+          "question_number": 6,
+          "pages": [
+            7
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 4 PA - genz_iitian - booklet.pdf",
+          "question_number": 7,
+          "pages": [
+            8
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 4 PA - genz_iitian - booklet.pdf",
+          "question_number": 8,
+          "pages": [
+            9
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 4 PA - genz_iitian - booklet.pdf",
+          "question_number": 9,
+          "pages": [
+            10
+          ],
+          "notes": []
+        }
+      ]
+    },
+    {
+      "path": "/Users/tusharrrsingh/Downloads/exam genz/bulk_quizzes/Python/Python_-_Practice_Assignment_-_Week_4_part2.json",
+      "questions": 9,
+      "source_items": [
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 4 PA - genz_iitian - booklet.pdf",
+          "question_number": 10,
+          "pages": [
+            11
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 4 PA - genz_iitian - booklet.pdf",
+          "question_number": 12,
+          "pages": [
+            13
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 4 PA - genz_iitian - booklet.pdf",
+          "question_number": 13,
+          "pages": [
+            13
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 4 PA - genz_iitian - booklet.pdf",
+          "question_number": 14,
+          "pages": [
+            14
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 4 PA - genz_iitian - booklet.pdf",
+          "question_number": 15,
+          "pages": [
+            14
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 4 PA - genz_iitian - booklet.pdf",
+          "question_number": 16,
+          "pages": [
+            15
+          ],
+          "notes": [
+            "Source key/type corrected: The filtered comprehension, nested loops with the same test, and (x, 100−x) for x = 1,…,99 all produce exactly the required positive ordered pairs."
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 4 PA - genz_iitian - booklet.pdf",
+          "question_number": 17,
+          "pages": [
+            16
+          ],
+          "notes": [
+            "Source key/type corrected: Both correct alternatives enforce x+y == 100 and x <= y. The other alternatives omit a required condition."
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 4 PA - genz_iitian - booklet.pdf",
+          "question_number": 18,
+          "pages": [
+            17
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 4 PA - genz_iitian - booklet.pdf",
+          "question_number": 19,
+          "pages": [
+            18
+          ],
+          "notes": [
+            "Source key/type corrected: The loop and the ternary list comprehension both put 1 at even indices and 0 at odd indices. The third alternative has invalid comprehension syntax."
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/Users/tusharrrsingh/Downloads/exam genz/bulk_quizzes/Python/Python_-_Practice_Assignment_-_Week_4_part3.json",
+      "questions": 8,
+      "source_items": [
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 4 PA - genz_iitian - booklet.pdf",
+          "question_number": 20,
+          "pages": [
+            18
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 4 PA - genz_iitian - booklet.pdf",
+          "question_number": 21,
+          "pages": [
+            19
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 4 PA - genz_iitian - booklet.pdf",
+          "question_number": 22,
+          "pages": [
+            19
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 4 PA - genz_iitian - booklet.pdf",
+          "question_number": 23,
+          "pages": [
+            20
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 4 PA - genz_iitian - booklet.pdf",
+          "question_number": 24,
+          "pages": [
+            21,
+            22
+          ],
+          "notes": [
+            "Restored the dropped square root and absolute-value notation from the source code and solution."
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 4 PA - genz_iitian - booklet.pdf",
+          "question_number": 25,
+          "pages": [
+            23
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 4 PA - genz_iitian - booklet.pdf",
+          "question_number": 26,
+          "pages": [
+            24
+          ],
+          "notes": [
+            "Source key/type corrected: The first line calls add before its definition has executed, so Python raises NameError."
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 4 PA - genz_iitian - booklet.pdf",
+          "question_number": 27,
+          "pages": [
+            24
+          ],
+          "notes": []
+        }
+      ]
+    },
+    {
+      "path": "/Users/tusharrrsingh/Downloads/exam genz/bulk_quizzes/Python/Python_-_Graded_Assignment_-_Week_5.json",
+      "questions": 6,
+      "source_items": [
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 5 GA - genz_iitian - booklet.pdf",
+          "question_number": 4,
+          "pages": [
+            6
+          ],
+          "notes": [
+            "Recovered the original embedded option boundaries and corrected the answer using Python semantics."
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 5 GA - genz_iitian - booklet.pdf",
+          "question_number": 5,
+          "pages": [
+            7
+          ],
+          "notes": [
+            "Recovered the original embedded option boundaries and corrected the answer using Python semantics.",
+            "Attached the exact generated-list and frequency-table context from the source questions."
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 5 GA - genz_iitian - booklet.pdf",
+          "question_number": 6,
+          "pages": [
+            8
+          ],
+          "notes": [
+            "Attached the exact generated-list and frequency-table context from the source questions.",
+            "Source key/type corrected: The sum of all frequencies in P equals the length of nums, irrespective of the order of its elements."
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 5 GA - genz_iitian - booklet.pdf",
+          "question_number": 7,
+          "pages": [
+            8
+          ],
+          "notes": [
+            "Attached the exact generated-list and frequency-table context from the source questions.",
+            "Recovered the original embedded option boundaries and corrected the answer using Python semantics."
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 5 GA - genz_iitian - booklet.pdf",
+          "question_number": 8,
+          "pages": [
+            9
+          ],
+          "notes": [
+            "Recovered the original embedded option boundaries and corrected the answer using Python semantics.",
+            "Attached the exact generated-list and frequency-table context from the source questions."
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 5 GA - genz_iitian - booklet.pdf",
+          "question_number": 9,
+          "pages": [
+            10,
+            11
+          ],
+          "notes": [
+            "Recovered the original embedded option boundaries and corrected the answer using Python semantics.",
+            "Attached the exact generated-list and frequency-table context from the source questions."
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/Users/tusharrrsingh/Downloads/exam genz/bulk_quizzes/Python/Python_-_Practice_Assignment_-_Week_5_part1.json",
+      "questions": 7,
+      "source_items": [
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 5 PA - genz_iitian - booklet.pdf",
+          "question_number": 1,
+          "pages": [
+            3
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 5 PA - genz_iitian - booklet.pdf",
+          "question_number": 2,
+          "pages": [
+            4
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 5 PA - genz_iitian - booklet.pdf",
+          "question_number": 3,
+          "pages": [
+            5
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 5 PA - genz_iitian - booklet.pdf",
+          "question_number": 5,
+          "pages": [
+            7
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 5 PA - genz_iitian - booklet.pdf",
+          "question_number": 6,
+          "pages": [
+            8
+          ],
+          "notes": [
+            "Source key/type corrected: The correct implementations assign len(word) directly. Reading D[word] before initializing that key raises KeyError in the other alternatives."
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 5 PA - genz_iitian - booklet.pdf",
+          "question_number": 8,
+          "pages": [
+            10
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 5 PA - genz_iitian - booklet.pdf",
+          "question_number": 9,
+          "pages": [
+            11
+          ],
+          "notes": []
+        }
+      ]
+    },
+    {
+      "path": "/Users/tusharrrsingh/Downloads/exam genz/bulk_quizzes/Python/Python_-_Practice_Assignment_-_Week_5_part2.json",
+      "questions": 7,
+      "source_items": [
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 5 PA - genz_iitian - booklet.pdf",
+          "question_number": 10,
+          "pages": [
+            11
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 5 PA - genz_iitian - booklet.pdf",
+          "question_number": 11,
+          "pages": [
+            12,
+            13
+          ],
+          "notes": [
+            "Source key/type corrected: Laxman scores 289+30 = 319 against AUS. Dravid scores 210+210+50 = 470 against WI. These are the only listed player/opposition totals of at least 300."
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 5 PA - genz_iitian - booklet.pdf",
+          "question_number": 12,
+          "pages": [
+            13
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 5 PA - genz_iitian - booklet.pdf",
+          "question_number": 14,
+          "pages": [
+            15
+          ],
+          "notes": [
+            "Source key/type corrected: Take the last element of each row, either directly with matrix[i][-1] or by testing j == n−1 in nested loops."
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 5 PA - genz_iitian - booklet.pdf",
+          "question_number": 15,
+          "pages": [
+            16
+          ],
+          "notes": [
+            "Source key/type corrected: Each successful iteration removes one x. With 10 iterations and no exception, the original list consists of ten copies of x and the final list is empty."
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 5 PA - genz_iitian - booklet.pdf",
+          "question_number": 16,
+          "pages": [
+            17
+          ],
+          "notes": [
+            "Source key/type corrected: Negating, sorting ascending, and negating again gives the elements of P sorted in descending order. The multiset is preserved, but P need not originally have that order."
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 5 PA - genz_iitian - booklet.pdf",
+          "question_number": 17,
+          "pages": [
+            18,
+            19
+          ],
+          "notes": [
+            "Source key/type corrected: The first and fourth alternatives accumulate row i into rsum[i]. The second discards previous rows, and the third accumulates column sums.",
+            "Made the square-matrix condition required by every source option explicit."
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/Users/tusharrrsingh/Downloads/exam genz/bulk_quizzes/Python/Python_-_Graded_Assignment_-_Week_6_part1.json",
+      "questions": 10,
+      "source_items": [
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 6 GA - genz_iitian - booklet.pdf",
+          "question_number": 1,
+          "pages": [
+            2
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 6 GA - genz_iitian - booklet.pdf",
+          "question_number": 2,
+          "pages": [
+            2
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 6 GA - genz_iitian - booklet.pdf",
+          "question_number": 3,
+          "pages": [
+            3
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 6 GA - genz_iitian - booklet.pdf",
+          "question_number": 4,
+          "pages": [
+            3
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 6 GA - genz_iitian - booklet.pdf",
+          "question_number": 5,
+          "pages": [
+            4
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 6 GA - genz_iitian - booklet.pdf",
+          "question_number": 6,
+          "pages": [
+            4
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 6 GA - genz_iitian - booklet.pdf",
+          "question_number": 7,
+          "pages": [
+            5
+          ],
+          "notes": [
+            "Clarified that the question asks the possible return types across different lists."
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 6 GA - genz_iitian - booklet.pdf",
+          "question_number": 8,
+          "pages": [
+            5
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 6 GA - genz_iitian - booklet.pdf",
+          "question_number": 9,
+          "pages": [
+            6
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 6 GA - genz_iitian - booklet.pdf",
+          "question_number": 10,
+          "pages": [
+            6
+          ],
+          "notes": []
+        }
+      ]
+    },
+    {
+      "path": "/Users/tusharrrsingh/Downloads/exam genz/bulk_quizzes/Python/Python_-_Graded_Assignment_-_Week_6_part2.json",
+      "questions": 10,
+      "source_items": [
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 6 GA - genz_iitian - booklet.pdf",
+          "question_number": 11,
+          "pages": [
+            7
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 6 GA - genz_iitian - booklet.pdf",
+          "question_number": 12,
+          "pages": [
+            7
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 6 GA - genz_iitian - booklet.pdf",
+          "question_number": 13,
+          "pages": [
+            8
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 6 GA - genz_iitian - booklet.pdf",
+          "question_number": 14,
+          "pages": [
+            8
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 6 GA - genz_iitian - booklet.pdf",
+          "question_number": 15,
+          "pages": [
+            9
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 6 GA - genz_iitian - booklet.pdf",
+          "question_number": 16,
+          "pages": [
+            9
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 6 GA - genz_iitian - booklet.pdf",
+          "question_number": 17,
+          "pages": [
+            10
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 6 GA - genz_iitian - booklet.pdf",
+          "question_number": 18,
+          "pages": [
+            10
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 6 GA - genz_iitian - booklet.pdf",
+          "question_number": 19,
+          "pages": [
+            11
+          ],
+          "notes": [
+            "Removed duplicated stem fragments."
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 6 GA - genz_iitian - booklet.pdf",
+          "question_number": 20,
+          "pages": [
+            11
+          ],
+          "notes": []
+        }
+      ]
+    },
+    {
+      "path": "/Users/tusharrrsingh/Downloads/exam genz/bulk_quizzes/Python/Python_-_Graded_Assignment_-_Week_6_part3.json",
+      "questions": 10,
+      "source_items": [
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 6 GA - genz_iitian - booklet.pdf",
+          "question_number": 21,
+          "pages": [
+            12
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 6 GA - genz_iitian - booklet.pdf",
+          "question_number": 22,
+          "pages": [
+            12
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 6 GA - genz_iitian - booklet.pdf",
+          "question_number": 23,
+          "pages": [
+            13
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 6 GA - genz_iitian - booklet.pdf",
+          "question_number": 24,
+          "pages": [
+            13
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 6 GA - genz_iitian - booklet.pdf",
+          "question_number": 25,
+          "pages": [
+            14
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 6 GA - genz_iitian - booklet.pdf",
+          "question_number": 26,
+          "pages": [
+            14
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 6 GA - genz_iitian - booklet.pdf",
+          "question_number": 27,
+          "pages": [
+            15
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 6 GA - genz_iitian - booklet.pdf",
+          "question_number": 28,
+          "pages": [
+            15
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 6 GA - genz_iitian - booklet.pdf",
+          "question_number": 29,
+          "pages": [
+            16
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 6 GA - genz_iitian - booklet.pdf",
+          "question_number": 30,
+          "pages": [
+            17
+          ],
+          "notes": []
+        }
+      ]
+    },
+    {
+      "path": "/Users/tusharrrsingh/Downloads/exam genz/bulk_quizzes/Python/Python_-_Graded_Assignment_-_Week_7_part1.json",
+      "questions": 8,
+      "source_items": [
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 7 GA - genz_iitian - booklet.pdf",
+          "question_number": 1,
+          "pages": [
+            2
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 7 GA - genz_iitian - booklet.pdf",
+          "question_number": 2,
+          "pages": [
+            3
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 7 GA - genz_iitian - booklet.pdf",
+          "question_number": 3,
+          "pages": [
+            3
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 7 GA - genz_iitian - booklet.pdf",
+          "question_number": 4,
+          "pages": [
+            4
+          ],
+          "notes": [
+            "Source key/type corrected: The condition filters words containing a, and next reduces the matching sequence to its first element (or None)."
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 7 GA - genz_iitian - booklet.pdf",
+          "question_number": 5,
+          "pages": [
+            4
+          ],
+          "notes": [
+            "Source key/type corrected: The generator filters words containing a and maps each to word*2; next reduces that sequence to its first result."
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 7 GA - genz_iitian - booklet.pdf",
+          "question_number": 6,
+          "pages": [
+            5
+          ],
+          "notes": [
+            "Corrected an unambiguous source variable/parenthesis typo: word*2 for word in words if → word*2 for word in sentence.split() if"
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 7 GA - genz_iitian - booklet.pdf",
+          "question_number": 7,
+          "pages": [
+            5
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 7 GA - genz_iitian - booklet.pdf",
+          "question_number": 8,
+          "pages": [
+            6
+          ],
+          "notes": []
+        }
+      ]
+    },
+    {
+      "path": "/Users/tusharrrsingh/Downloads/exam genz/bulk_quizzes/Python/Python_-_Graded_Assignment_-_Week_7_part2.json",
+      "questions": 7,
+      "source_items": [
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 7 GA - genz_iitian - booklet.pdf",
+          "question_number": 9,
+          "pages": [
+            6
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 7 GA - genz_iitian - booklet.pdf",
+          "question_number": 10,
+          "pages": [
+            7
+          ],
+          "notes": [
+            "Corrected an unambiguous source variable/parenthesis typo: len(str(num)<2) → len(str(num))<2"
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 7 GA - genz_iitian - booklet.pdf",
+          "question_number": 11,
+          "pages": [
+            7
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 7 GA - genz_iitian - booklet.pdf",
+          "question_number": 12,
+          "pages": [
+            8
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 7 GA - genz_iitian - booklet.pdf",
+          "question_number": 13,
+          "pages": [
+            8
+          ],
+          "notes": []
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 7 GA - genz_iitian - booklet.pdf",
+          "question_number": 14,
+          "pages": [
+            9
+          ],
+          "notes": [
+            "Corrected an unambiguous source variable/parenthesis typo: min(num) → min(nums)"
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 7 GA - genz_iitian - booklet.pdf",
+          "question_number": 15,
+          "pages": [
+            9
+          ],
+          "notes": [
+            "Corrected an unambiguous source variable/parenthesis typo: len(str(abs(x))) → len(str(abs(x))))"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/Users/tusharrrsingh/Downloads/exam genz/bulk_quizzes/Python/Python_-_Graded_Assignment_-_Week_9.json",
+      "questions": 7,
+      "source_items": [
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 9 GA - genz_iitian - booklet.pdf",
+          "question_number": 1,
+          "pages": [
+            2
+          ],
+          "notes": [
+            "Recovered truncated recursion lines from the exact f/g source explanations; h is the factorial recurrence stated in the source.",
+            "Source key/type corrected: Each recursive call removes one decimal digit and adds one, so f counts the digits of a positive integer."
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 9 GA - genz_iitian - booklet.pdf",
+          "question_number": 2,
+          "pages": [
+            3
+          ],
+          "notes": [
+            "Recovered truncated recursion lines from the exact f/g source explanations; h is the factorial recurrence stated in the source.",
+            "Source key/type corrected: The remainder n % 10 is the final digit, and g recursively sums all earlier digits."
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 9 GA - genz_iitian - booklet.pdf",
+          "question_number": 3,
+          "pages": [
+            4
+          ],
+          "notes": [
+            "Recovered truncated recursion lines from the exact f/g source explanations; h is the factorial recurrence stated in the source.",
+            "Source key/type corrected: h(100) returns 100!, and g then sums its decimal digits."
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 9 GA - genz_iitian - booklet.pdf",
+          "question_number": 4,
+          "pages": [
+            5
+          ],
+          "notes": [
+            "Recovered truncated recursion lines from the exact f/g source explanations; h is the factorial recurrence stated in the source.",
+            "Source key/type corrected: h(100) returns 100!, and f then counts its decimal digits."
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 9 GA - genz_iitian - booklet.pdf",
+          "question_number": 5,
+          "pages": [
+            6
+          ],
+          "notes": [
+            "Recovered the original embedded option boundaries and corrected the answer using Python semantics."
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 9 GA - genz_iitian - booklet.pdf",
+          "question_number": 6,
+          "pages": [
+            7
+          ],
+          "notes": [
+            "Recovered the original embedded option boundaries and corrected the answer using Python semantics."
+          ]
+        },
+        {
+          "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 9 GA - genz_iitian - booklet.pdf",
+          "question_number": 7,
+          "pages": [
+            8,
+            9
+          ],
+          "notes": [
+            "Recovered the original embedded option boundaries and corrected the answer using Python semantics."
+          ]
+        }
+      ]
+    }
+  ],
+  "excluded": [
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 1 GA - genz_iitian - booklet.pdf",
+      "question_number": 22,
+      "pages": [
+        11
+      ],
+      "reason": "The source refers to Python Tutor code but contains neither the code nor a usable Tutor URL; line-specific answers cannot be verified."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 1 GA - genz_iitian - booklet.pdf",
+      "question_number": 23,
+      "pages": [
+        11
+      ],
+      "reason": "The source refers to Python Tutor code but contains neither the code nor a usable Tutor URL; line-specific answers cannot be verified."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 1 GA - genz_iitian - booklet.pdf",
+      "question_number": 24,
+      "pages": [
+        11
+      ],
+      "reason": "The source refers to Python Tutor code but contains neither the code nor a usable Tutor URL; line-specific answers cannot be verified."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 1 GA - genz_iitian - booklet.pdf",
+      "question_number": 25,
+      "pages": [
+        11
+      ],
+      "reason": "The source refers to Python Tutor code but contains neither the code nor a usable Tutor URL; line-specific answers cannot be verified."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 1 GA - genz_iitian - booklet.pdf",
+      "question_number": 26,
+      "pages": [
+        11
+      ],
+      "reason": "The source refers to Python Tutor code but contains neither the code nor a usable Tutor URL; line-specific answers cannot be verified."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 10 GA - genz_iitian - booklet.pdf",
+      "question_number": 1,
+      "pages": [
+        2
+      ],
+      "reason": "The shared Student/Group class definitions are intrinsically truncated in the original PDF (missing signatures and statements); cannot present them as executable code."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 10 GA - genz_iitian - booklet.pdf",
+      "question_number": 2,
+      "pages": [
+        3
+      ],
+      "reason": "The shared Student/Group class definitions are intrinsically truncated in the original PDF (missing signatures and statements); cannot present them as executable code."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 10 GA - genz_iitian - booklet.pdf",
+      "question_number": 3,
+      "pages": [
+        4
+      ],
+      "reason": "The shared Student/Group class definitions are intrinsically truncated in the original PDF (missing signatures and statements); cannot present them as executable code."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 10 GA - genz_iitian - booklet.pdf",
+      "question_number": 4,
+      "pages": [
+        5
+      ],
+      "reason": "The shared Student/Group class definitions are intrinsically truncated in the original PDF (missing signatures and statements); cannot present them as executable code."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 10 GA - genz_iitian - booklet.pdf",
+      "question_number": 5,
+      "pages": [
+        6,
+        7
+      ],
+      "reason": "The shared Student/Group class definitions are intrinsically truncated in the original PDF (missing signatures and statements); cannot present them as executable code."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 10 GA - genz_iitian - booklet.pdf",
+      "question_number": 6,
+      "pages": [
+        8,
+        9
+      ],
+      "reason": "The shared Student/Group class definitions are intrinsically truncated in the original PDF (missing signatures and statements); cannot present them as executable code."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 10 PA - genz_iitian - booklet.pdf",
+      "question_number": 1,
+      "pages": [
+        2
+      ],
+      "reason": "The Employee class implementation is already truncated in the original PDF; its constructor and methods cannot be recovered exactly."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 10 PA - genz_iitian - booklet.pdf",
+      "question_number": 2,
+      "pages": [
+        3
+      ],
+      "reason": "The Employee class implementation is already truncated in the original PDF; its constructor and methods cannot be recovered exactly."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 10 PA - genz_iitian - booklet.pdf",
+      "question_number": 3,
+      "pages": [
+        4
+      ],
+      "reason": "The Employee class implementation is already truncated in the original PDF; its constructor and methods cannot be recovered exactly."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 10 PA - genz_iitian - booklet.pdf",
+      "question_number": 4,
+      "pages": [
+        5
+      ],
+      "reason": "The Employee class implementation is already truncated in the original PDF; its constructor and methods cannot be recovered exactly."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 10 PA - genz_iitian - booklet.pdf",
+      "question_number": 5,
+      "pages": [
+        6
+      ],
+      "reason": "The Employee class implementation is already truncated in the original PDF; its constructor and methods cannot be recovered exactly."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 10 PA - genz_iitian - booklet.pdf",
+      "question_number": 6,
+      "pages": [
+        7
+      ],
+      "reason": "The required Rational/Product/Book class definitions are absent from the source booklet."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 10 PA - genz_iitian - booklet.pdf",
+      "question_number": 7,
+      "pages": [
+        7
+      ],
+      "reason": "The required Rational/Product/Book class definitions are absent from the source booklet."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 10 PA - genz_iitian - booklet.pdf",
+      "question_number": 8,
+      "pages": [
+        8
+      ],
+      "reason": "The required Rational/Product/Book class definitions are absent from the source booklet."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 10 PA - genz_iitian - booklet.pdf",
+      "question_number": 9,
+      "pages": [
+        9
+      ],
+      "reason": "The required Rational/Product/Book class definitions are absent from the source booklet."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 10 PA - genz_iitian - booklet.pdf",
+      "question_number": 10,
+      "pages": [
+        9
+      ],
+      "reason": "The required Rational/Product/Book class definitions are absent from the source booklet."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 10 PA - genz_iitian - booklet.pdf",
+      "question_number": 11,
+      "pages": [
+        10
+      ],
+      "reason": "The required Rational/Product/Book class definitions are absent from the source booklet."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 10 PA - genz_iitian - booklet.pdf",
+      "question_number": 12,
+      "pages": [
+        11
+      ],
+      "reason": "The required Rational/Product/Book class definitions are absent from the source booklet."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 10 PA - genz_iitian - booklet.pdf",
+      "question_number": 13,
+      "pages": [
+        11
+      ],
+      "reason": "The required Rational/Product/Book class definitions are absent from the source booklet."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 2 GA - genz_iitian - booklet.pdf",
+      "question_number": 6,
+      "pages": [
+        5
+      ],
+      "reason": "Source multiline-string options and answer are merged/truncated; exact whitespace-sensitive option boundaries are not recoverable."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 2 GA - genz_iitian - booklet.pdf",
+      "question_number": 9,
+      "pages": [
+        7
+      ],
+      "reason": "All options include a rupee symbol absent from the required output; no option matches the source stem exactly."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 2 GA - genz_iitian - booklet.pdf",
+      "question_number": 17,
+      "pages": [
+        11
+      ],
+      "reason": "The unspecified string can be long enough for s[3] or too short; the source error key cannot be determined from the given information."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 2 GA - genz_iitian - booklet.pdf",
+      "question_number": 23,
+      "pages": [
+        13
+      ],
+      "reason": "Original PDF already merges possible output choices into one code panel and loses their boundaries; no complete recoverable option list."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 2 GA - genz_iitian - booklet.pdf",
+      "question_number": 24,
+      "pages": [
+        14
+      ],
+      "reason": "Original PDF already merges possible output choices into one code panel and loses their boundaries; no complete recoverable option list."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 2 GA - genz_iitian - booklet.pdf",
+      "question_number": 25,
+      "pages": [
+        15
+      ],
+      "reason": "Original PDF already merges possible output choices into one code panel and loses their boundaries; no complete recoverable option list."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 2 GA - genz_iitian - booklet.pdf",
+      "question_number": 32,
+      "pages": [
+        21
+      ],
+      "reason": "Source drops the Boolean connector between conditions and duplicates fragments of multiple options; cannot recover exact alternatives."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 2 PA - genz_iitian - booklet.pdf",
+      "question_number": 8,
+      "pages": [
+        9
+      ],
+      "reason": "The question refers to missing code involving three Boolean variables; only a result table remains in its explanation."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 2 PA - genz_iitian - booklet.pdf",
+      "question_number": 12,
+      "pages": [
+        12
+      ],
+      "reason": "The rendered input is only \"1\", yet the four-variable unpacking choices contain no ValueError answer; source stem/options conflict."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 3 GA - genz_iitian - booklet.pdf",
+      "question_number": 8,
+      "pages": [
+        7
+      ],
+      "reason": "Source prints placeholder format strings such as %-ns; all options are invalid and two alternatives are identical."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 3 GA - genz_iitian - booklet.pdf",
+      "question_number": 11,
+      "pages": [
+        9,
+        10
+      ],
+      "reason": "Several whitespace-sensitive while-loop options are intrinsically malformed/duplicated in the source; the complete intended choices cannot be recovered."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 3 PA - genz_iitian - booklet.pdf",
+      "question_number": 1,
+      "pages": [
+        2
+      ],
+      "reason": "The original PDF has fragmented options with missing numeric terms; crops contain the same missing information."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 3 PA - genz_iitian - booklet.pdf",
+      "question_number": 5,
+      "pages": [
+        6
+      ],
+      "reason": "The original PDF has fragmented options with missing numeric terms; crops contain the same missing information."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 3 PA - genz_iitian - booklet.pdf",
+      "question_number": 6,
+      "pages": [
+        7
+      ],
+      "reason": "The original PDF has fragmented options with missing numeric terms; crops contain the same missing information."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 3 PA - genz_iitian - booklet.pdf",
+      "question_number": 8,
+      "pages": [
+        8
+      ],
+      "reason": "No code containing the referenced break statement is present in the source."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 4 GA - genz_iitian - booklet.pdf",
+      "question_number": 1,
+      "pages": [
+        2
+      ],
+      "reason": "The dice-roll generation/counting program referenced by these questions is missing from the booklet."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 4 GA - genz_iitian - booklet.pdf",
+      "question_number": 2,
+      "pages": [
+        3
+      ],
+      "reason": "The dice-roll generation/counting program referenced by these questions is missing from the booklet."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 4 PA - genz_iitian - booklet.pdf",
+      "question_number": 11,
+      "pages": [
+        12
+      ],
+      "reason": "This source item is an ungraded subjective information-usefulness survey rather than a knowledge question."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 4 PA - genz_iitian - booklet.pdf",
+      "question_number": 28,
+      "pages": [
+        25
+      ],
+      "reason": "The welcome function definition is absent from the source booklet."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 4 PA - genz_iitian - booklet.pdf",
+      "question_number": 29,
+      "pages": [
+        26
+      ],
+      "reason": "The welcome function definition is absent from the source booklet."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 5 GA - genz_iitian - booklet.pdf",
+      "question_number": 1,
+      "pages": [
+        2
+      ],
+      "reason": "The some_function definition required by the question is absent from the source booklet."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 5 GA - genz_iitian - booklet.pdf",
+      "question_number": 2,
+      "pages": [
+        3
+      ],
+      "reason": "The some_function definition required by the question is absent from the source booklet."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 5 GA - genz_iitian - booklet.pdf",
+      "question_number": 3,
+      "pages": [
+        4,
+        5
+      ],
+      "reason": "The source overlaps a matrix-comparison option with its footer, destroying part of a whitespace-sensitive code alternative."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 5 GA - genz_iitian - booklet.pdf",
+      "question_number": 10,
+      "pages": [
+        12,
+        13
+      ],
+      "reason": "The color assignment diagram defining the intended output is missing from the source; four mappings remain without a specification."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 5 GA - genz_iitian - booklet.pdf",
+      "question_number": 11,
+      "pages": [
+        14,
+        15
+      ],
+      "reason": "The source overlaps a symmetric-matrix code alternative with a page footer and loses its assignments/indentation."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 5 PA - genz_iitian - booklet.pdf",
+      "question_number": 4,
+      "pages": [
+        6
+      ],
+      "reason": "This source item is a subjective usefulness survey rather than a knowledge question."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 5 PA - genz_iitian - booklet.pdf",
+      "question_number": 7,
+      "pages": [
+        9,
+        10
+      ],
+      "reason": "Original source fragments code loops into separate options and drops the constant after letters.index(letter)+; the full intended list of snippets cannot be recovered."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 5 PA - genz_iitian - booklet.pdf",
+      "question_number": 13,
+      "pages": [
+        14
+      ],
+      "reason": "Two dimension options are rendered blank in the source, so their alternatives cannot be recovered."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 8 GA - genz_iitian - booklet.pdf",
+      "question_number": 5,
+      "pages": [
+        8,
+        9
+      ],
+      "reason": "The source file-writing options have missing loop-body indentation, including the claimed correct option; exact executable alternatives cannot be recovered."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 9 PA - genz_iitian - booklet.pdf",
+      "question_number": 3,
+      "pages": [
+        3
+      ],
+      "reason": "The member function referred to in the question and line-count option is absent from the booklet."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Python/Python Programming - Week 9 PA - genz_iitian - booklet.pdf",
+      "question_number": 6,
+      "pages": [
+        6
+      ],
+      "reason": "The code sums odd elements but none of the three original choices describes that output."
+    }
+  ]
+}

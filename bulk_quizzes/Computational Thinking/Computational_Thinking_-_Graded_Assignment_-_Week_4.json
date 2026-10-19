@@ -1,0 +1,449 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Computational Thinking · Graded Assignment · Week 4",
+  "subject": "Computational Thinking",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/6796947ca054/q1_prompt_p2.png",
+          "alt": "Original question: The following pseudocode is executed using the \"World\" dataset. What will A represent at the end of the execution?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Number of words with at most one letter followed by a vowel"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of words with exactly one letter followed by a vowel"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of words without any letters followed by a vowel"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of words with at least one letter followed by a vowel"
+          }
+        ]
+      ],
+      "correct_answer": 3
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/6796947ca054/q2_prompt_p3.png",
+          "alt": "Original question: The following pseudocode is executed using the \"Olympics\" dataset. What will E represent at the end of the execution? Assume that none of the players have won more than one medal."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Number of players from the same country with different medals"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of players from different countries with the same medals"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of pairs of players from the same country with different medals"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of pairs of players from different countries with the same medals"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/6796947ca054/context0_p4.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/6796947ca054/q3_prompt_p4.png",
+          "alt": "Original question: What will N represent at the end of execution? (Uses the \"Library\" dataset and procedure shown above.)"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Maximum number of books published by an author"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Maximum number of books published by a pair of authors"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Maximum number of books published by an author in a year"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Maximum number of books published by a pair of authors in a year"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/6796947ca054/context0_p4.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/6796947ca054/q4_prompt_p5.png",
+          "alt": "Original question: What will count represent at the end of execution? (Uses the \"Library\" dataset and procedure shown above.)"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Total number of books"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of authors"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of books of same genre"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of authors who wrote books of same genre"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/6796947ca054/q5_prompt_p6.png",
+          "alt": "Original question: The following pseudocode is executed using the \"World\" dataset. What will count represent at the end of executing?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Number of words in which at least two vowels occur consecutively"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of words in which at least two consonants occur consecutively"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of words in which vowels do not occur consecutively"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of words in which consonants do not occur consecutively"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of words in which neither two vowels nor two consonants occur consecutively"
+          }
+        ]
+      ],
+      "correct_answer": 4
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/6796947ca054/q6_prompt_p7.png",
+          "alt": "Original question: The following pseudocode is executed using the \"World\" dataset. What will count represent at the end of executing?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Number of pairs of words with exactly two consonants"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of pairs of words with at least two consonants"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of pairs of words with exactly two consecutive consonants"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of pairs of words with at least two consecutive consonants"
+          }
+        ]
+      ],
+      "correct_answer": 3
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/6796947ca054/q7_prompt_p8.png",
+          "alt": "Original question: Two words are said to be conjugate if they fulfill the following conditions: the number of vowels are same in both the words, and the number of consonants are same in both the words. The given pseudocode is executed using the \"Words\" dataset. The variable count in the given pseudocode counts the number of conjugate pairs. But the pseudocode may have mistakes in one or more lines. Identify all such"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Line 8: Invalid parameter is used to call the procedure inside the conditional statement"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Line 8: Incorrect condition to update count as the number of consonants are not being compared"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Line 17: Incorrect initialization of vowelCount"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Line 17: Incorrect initialization of i"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "No mistake"
+          }
+        ]
+      ],
+      "correct_answers": [
+        1,
+        2
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/6796947ca054/context1_p9.png",
+          "alt": "context1"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/6796947ca054/context1_p10.png",
+          "alt": "context1"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/6796947ca054/q8_prompt_p10.png",
+          "alt": "Original question: Which club can a student join if he/she gets 92 marks in Physics and Mathematics but 84 in Chemistry? (Uses the \"Scores\" dataset and procedure shown above.)"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Physics club"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Chemistry club"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Mathematics club"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The student cannot join any club"
+          }
+        ]
+      ],
+      "correct_answer": 3
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/6796947ca054/context1_p9.png",
+          "alt": "context1"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/6796947ca054/context1_p10.png",
+          "alt": "context1"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/6796947ca054/q9_prompt_p10.png",
+          "alt": "Original question: When can a student join more than one club? (Uses the \"Scores\" dataset and procedure shown above.)"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "If the student gets more than 90 marks in at least two subjects"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "If the student gets more than 90 marks in Physics and Chemistry"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "CI If the student gets more than 90 marks and the same marks in Physics and Chemistry"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A student cannot join more than one club"
+          }
+        ]
+      ],
+      "correct_answer": 3
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/6796947ca054/q10_prompt_p11.png",
+          "alt": "Original question: The following pseudocode is executed using the \"Words\" dataset. What will A represent at the end of execution?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Number of adverbs before the first adverb in every sentence"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of words after the first adverb in every sentence"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of words before the first adverb or full stop in every sentence"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of adjectives before the first adverb in every sentence"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of words before the first adverb in every sentence"
+          }
+        ]
+      ],
+      "correct_answer": 4
+    }
+  ]
+}

@@ -1,0 +1,328 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Computational Thinking · Quiz 1 · 2023 July · Foundation AN2 · Part 2",
+  "subject": "Computational Thinking",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Olympics\" dataset. At the end of the execution, A stores the number of players who are either female from India, or have won the match hosted by Australia in the year 2006, or both. The pseudocode may have mistakes; identify all such mistakes (if any). Assume all statements not listed in the options are free of errors. It is a Multiple Select Question. 1   A = 0 2   while(Table 1 has more rows){ 3       Read the first row X in Table 1 4       C = False, D = False 5       if(X.Gender == 'F' and X.HostCountry == \"Australia\"){ 6           C = True 7       } 8       if(X.Year == 2006 and X.Nationality == \"India\"){ 9           D = True 10      } 11      if(C or D){ 12          A = A + 1 13      } 14      Move X to Table 2 15  }"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Line 1: Incorrect initialization of A"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Line 5: Condition to update C is incorrect"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Line 8: Condition to update D is incorrect"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "No error in the code"
+          }
+        ]
+      ],
+      "correct_answers": [
+        1,
+        2
+      ],
+      "marks": 4,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "C should mean 'female from India' (Gender == 'F' and Nationality == \"India\"), but Line 5 pairs 'F' with HostCountry == \"Australia\". D should mean 'won in Australia in 2006' (HostCountry == \"Australia\" and Year == 2006), but Line 8 pairs Year == 2006 with Nationality == \"India\". The two conditions are cross-mixed, so Lines 5 and 8 are both wrong."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Two words are said to be Special if they (i) are different words, (ii) do NOT have the same number of letters, and (iii) have the same number of vowels. vCount(X) returns the number of vowels in X.Word. At the end of the execution, count stores the number of Special pairs. Choose the correct code fragment(s) for the marked block. It is a Multiple Select Question."
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "count = 0\nwhile(Table 1 has more rows){\n    Read the first row X in Table 1\n    Move X to Table 2\n    while(Table 1 has more rows){\n        Read the first row Y in Table 1\n        ***** Fill the code *****\n        Move Y to Table 3\n    }\n    Move all rows from Table 3 to Table 1\n}"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "if(X.Word != Y.Word){\nif(X.LetterCount != Y.LetterCount){\nif(vCount(X) == vCount(Y)){\ncount = count + 1\n}\n}\n}"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "if(X.Word == Y.Word){\nif(X.LetterCount != Y.LetterCount){\nif(vCount(X) == vCount(Y)){\ncount = count + 1\n}\n}\n}"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "if(X.Word == Y.Word){\nif(vCount(X) == vCount(Y)){\nif(X.LetterCount - vCount(X) == Y.LetterCount - vCount(Y)){\ncount = count + 1\n}\n}\n}"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "if(X.Word != Y.Word){\nif(vCount(X) == vCount(Y)){\nif(X.LetterCount - vCount(X) != Y.LetterCount - vCount(Y)){\ncount = count + 1\n}\n}\n}"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        3
+      ],
+      "marks": 5,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Special pairs need different words, the same number of vowels, and a different number of letters. Option 1 checks exactly that. Option 4 checks different words, same vowels, and a different consonant count (LetterCount − vowels); since the vowel counts are equal, a different consonant count is equivalent to a different letter count, so it is also correct. Options 2 and 3 require identical words (X.Word == Y.Word)."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What will be the value of s at the end of the execution of the following pseudocode if the value of n is 1024? The operator '//' returns the quotient (e.g. 8 // 7 = 1, 10 // 5 = 2) and '%' returns the remainder (e.g. 8 % 7 = 1, 10 % 5 = 0)."
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "r = 0, s = 0, n = 1024\nwhile(n > 0){\n    r = n % 10\n    s = s + r\n    n = n // 10\n}"
+        }
+      ],
+      "numerical_answer": 7,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The loop repeatedly takes the last digit (n % 10) and adds it to s, then drops that digit (n // 10). So s is the sum of the digits of 1024 = 1 + 0 + 2 + 4 = 7."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let the value of X be \"aeroplane\". What is the value of A at the end of the execution of the pseudocode?"
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "i = 1\nA = 1\nwhile(i <= X.LetterCount){\n    if(ith letter of X is a vowel){\n        A = A * 2\n    }\n    i = i + 1\n}"
+        }
+      ],
+      "numerical_answer": 32,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "\"aeroplane\" has 5 vowels (a, e, o, a, e). A starts at 1 and doubles once per vowel, so A = 1 × 2^5 = 32."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The SouthCo Electricity Board charges consumers by the number of units consumed per month, as per the tariff below. For example, a consumer who used 30 units pays ₹2/unit = ₹60; one who used 60 units pays ₹2/unit for the first 50 units and ₹3/unit for the rest = ₹100 + ₹30 = ₹130. SouthCo tariff Units consumed Charges up to 50 units ₹2 / unit more than 50 units ₹3 / unit"
+        },
+        {
+          "kind": "text",
+          "value": "Let unit be the number of units consumed by the consumer and cost be the amount of the bill to be paid. Choose the correct implementation to compute the cost."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "cost = 0\nif(unit <= 50){\ncost = unit * 2\n}\nif(unit > 50){\ncost = unit * 3\n}"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "cost = 0\nif(unit <= 50){\ncost = unit * 2\n}\nif(unit > 50){\ncost = cost + (unit - 50) * 3\n}"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "cost = 0\nif(unit <= 50){\ncost = unit * 2\n}\nif(unit > 50){\ncost = 50 * 2 + (unit - 50) * 3\n}"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "cost = 0\nif(unit <= 50){\ncost = unit * 2\n}\nif(unit > 50){\ncost = 50 * 2 + unit * 3\n}"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "For up to 50 units the cost is unit × 2. Beyond 50 units, the first 50 are billed at ₹2 (= 50 × 2 = ₹100) and the remaining (unit − 50) at ₹3, giving cost = 50 × 2 + (unit − 50) × 3 — Option 3. Option 1 charges all units at ₹3, Option 2 omits the ₹100 for the first 50, and Option 4 charges all units at ₹3 on top of the ₹100."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The SouthCo Electricity Board charges consumers by the number of units consumed per month, as per the tariff below. For example, a consumer who used 30 units pays ₹2/unit = ₹60; one who used 60 units pays ₹2/unit for the first 50 units and ₹3/unit for the rest = ₹100 + ₹30 = ₹130. SouthCo tariff Units consumed Charges up to 50 units ₹2 / unit more than 50 units ₹3 / unit"
+        },
+        {
+          "kind": "text",
+          "value": "The SouthCo Electricity Board also assigns each consumer a Grade based on units consumed per annum (table below). Using the consumer dataset shown, the pseudocode counts the number of pairs of users who have scored the same Grade, reside in the same Area, but have a different YearOfRegistration. The grade buckets go to Tables 2–5. Choose the correct fragments for Statement I and Statement II."
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "A = 0, B = 0, C = 0, D = 0\nwhile(Table 1 has more rows){\n    Read the first row X in Table 1\n    if(X.Units < 200){\n        Move X to Table 2\n    }\n    if(X.Units >= 200 and X.Units <= 350){\n        Move X to Table 3\n    }\n    if(X.Units >= 351 and X.Units <= 550){\n        Move X to Table 4\n    }\n    if(***** Statement I *****){\n        Move X to Table 5\n    }\n}\nA = findMatch(Table 2)\nB = findMatch(Table 3)\nC = findMatch(Table 4)\nD = findMatch(Table 5)\nProcedure findMatch(Table T1)\n    E = 0\n    while(Table T1 has more rows){\n        Read the first row Y in Table T1\n        Move Y to Table T2\n        while(Table T1 has more rows){\n            Read the first row Z in Table T1\n            Move Z to Table T3\n            if(***** Statement II *****){\n                E = E + 1\n            }\n        }\n        Move all rows from Table T3 to Table T1\n    }\n    return(E)\nEnd findMatch"
+        },
+        {
+          "kind": "text",
+          "value": "Grade by annual units, and the consumer dataset Units (per annum) Grade less than 200 1 200 to 350 2 351 to 550 3 > 550 4"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "I : X.Units > 550 | II : Y.YearOfRegistration == Z.YearOfRegistration and Y.Area != Z.Area"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "I : X.Units < 550 | II : Y.YearOfRegistration != Z.YearOfRegistration or Y.Area == Z.Area"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "I : X.Units > 550 | II : Y.YearOfRegistration != Z.YearOfRegistration or Y.Area == Z.Area"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "I : X.Units > 550 | II : Y.YearOfRegistration != Z.YearOfRegistration and Y.Area == Z.Area"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 3,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Statement I must capture Grade 4 (units > 550) into Table 5. Within each grade table, a qualifying pair has the same Area but a different YearOfRegistration, so Statement II is (YearOfRegistration != and Area ==). Only Option 4 has both; the others either bucket the wrong grade or use the wrong/OR condition for Statement II."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The SouthCo Electricity Board charges consumers by the number of units consumed per month, as per the tariff below. For example, a consumer who used 30 units pays ₹2/unit = ₹60; one who used 60 units pays ₹2/unit for the first 50 units and ₹3/unit for the rest = ₹100 + ₹30 = ₹130. SouthCo tariff Units consumed Charges up to 50 units ₹2 / unit more than 50 units ₹3 / unit"
+        },
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Scores\" dataset. At the end of the execution, count captures the number of pairs of students who are of the same gender or are from the same city but not both. Choose the correct code fragment(s) to complete findPair. It is a Multiple Select Question."
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "count = 0\nwhile(Table 1 has more rows){\n    Read the first row X in Table 1\n    Move X to Table 2\n    while(Table 1 has more rows){\n        Read the first row Y in Table 1\n        Move Y to Table 3\n        count = count + findPair(X, Y)\n    }\n    Move all rows from Table 3 to Table 1\n}\nProcedure findPair(X, Y)\n    ***** Fill the code *****\nEnd findPair"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "A = 0, B = 0\nif(X.Gender == Y.Gender or X.TownCity == Y.TownCity){\nA = A + 1\n}\nif(X.Gender == Y.Gender and X.TownCity == Y.TownCity){\nB = B + 1\n}\nreturn(A - B)"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "A = 0, B = 0\nif(X.Gender == Y.Gender and X.TownCity == Y.TownCity){\nA = A + 1\n}\nif(X.Gender == Y.Gender or X.TownCity == Y.TownCity){\nB = B + 1\n}\nreturn(A - B)"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "A = False, B = False\nif(X.Gender == Y.Gender){\nA = True\n}\nif(X.TownCity == Y.TownCity){\nB = True\n}\nif((A and not B) or (not A and B)){\nreturn(1)\n}\nreturn(0)"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "A = False, B = False\nif(X.Gender == Y.Gender){\nA = True\n}\nif(X.TownCity == Y.TownCity){\nB = True\n}\nif((A or not B) and (not A or B)){\nreturn(1)\n}\nreturn(0)"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        2
+      ],
+      "marks": 5,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "We need exclusive-or of 'same gender' and 'same city'. Option 1: A=1 if either holds and B=1 if both hold, so A−B = 1 only when exactly one holds. Option 3 tests (A and not B) or (not A and B) directly. Option 2 returns −1 on XOR cases, and Option 4's condition is XNOR."
+        }
+      ]
+    }
+  ]
+}

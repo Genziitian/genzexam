@@ -1,0 +1,370 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 2 · Graded Assignment · Week 6",
+  "subject": "English 2",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "He can speak many languages, ______?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Can he"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Can’t he"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Does he"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Doesn’t he"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "John likes ice cream, _____?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Doesn’t he"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Does he"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Don’t he"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Did he"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In English language, which of the following does NOT participate in agreement?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Person"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Gender"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of the above"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "I am not sure when the incident happened. Identify the main statement."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "when the incident happened"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "I am not sure when"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "I am not sure"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "the incident happened"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "I am not sure when the incident happened. Identify the embedded sentence."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "when the incident happened"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "I am not sure when"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "I am not sure"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "the incident happened"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "_____ you score well in the exam, I'll buy you gifts."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Whether"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "If"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both whether and if"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the sentence with a finite subordinate clause:"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "We know that Sarah asks a lot of questions."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "He likes to sit quietly."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Sarah hoped to convince John."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "I am glad to meet you again."
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Intransitive verbs cannot be recast in passive form."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "She bought an _______ sound system."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "food"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "expensive"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "cheap"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "expenditure"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "My cat is sleeping on the _____ roof."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "think"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "thinly"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "thin"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "understanding"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    }
+  ]
+}

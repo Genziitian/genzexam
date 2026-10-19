@@ -1,0 +1,460 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Computational Thinking · Graded Assignment · Week 7",
+  "subject": "Computational Thinking",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/c42e3c485c39/q1_prompt_p2.png",
+          "alt": "Original question: Let D be a non-empty dictionary. Choose the correct option(s)."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Let a be a key of dictionary D, then a is always an integer."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/c42e3c485c39/q1_option2_p2.png",
+            "alt": "Original option 2 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/c42e3c485c39/q1_option3_p2.png",
+            "alt": "Original option 3 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/c42e3c485c39/q1_option4_p2.png",
+            "alt": "Original option 4 pseudocode or mathematical expression."
+          }
+        ]
+      ],
+      "correct_answers": [
+        2
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/c42e3c485c39/q2_prompt_p3.png",
+          "alt": "Original question: Let Z be a row in the \"Words\" table such that Z.Word = \"reluctant\". What will be the value of alphaDict['!'] at the end of the execution of the following pseudocode? (In the printed paper the index renders as alphaDict[1] where 1 is the lowercase letter l.)"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "numerical_answer": 1.0,
+      "numerical_tolerance": 0
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/c42e3c485c39/q3_prompt_p4.png",
+          "alt": "Original question: The following pseudocode is executed using the \"Library\" dataset. At the end of the execution, A stores a dictionary with the author's name as key mapped to the number of books written by him/her. But the code may have mistakes. Identify all such mistakes (if any). Assume that all statements not listed in the options below are free of errors."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Replacing the condition given in line 4 with the statement \"if(not isKey(A, X.Author))\" will provide\nthe correct result."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Interchanging Line 4 and 7 will provide the correct result."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Interchanging Line 5 and 8 will provide the correct result."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The pseudocode will provide the correct result even without getting modified."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/c42e3c485c39/q4_prompt_p5.png",
+          "alt": "Original question: The following pseudocode is executed using the \"Library\" Dataset. At the end of the execution, firstBook stores a dictionary with the author's name as key mapped to the genre of their first published book. But the code may have mistakes. Identify all such mistakes (if any). Assume that all statements not listed in the options below are free of errors. Assume that the rows are arranged in ascending"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "AI Line 1: Incorrect initialization of firstBook"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Line 4: Incorrect conditional statement"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Line 7: There should always be an \"else\" block after \"if\" block"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "No mistakes"
+          }
+        ]
+      ],
+      "correct_answers": [
+        1
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/c42e3c485c39/context0_p5.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/c42e3c485c39/context0_p6.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/c42e3c485c39/q5_prompt_p6.png",
+          "alt": "Original question: What will be the value of B at the end of the execution of the following pseudocode? (Uses the procedure doSomething shown above.)"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/c42e3c485c39/q5_option1_code0_p6.png",
+            "alt": "Original option 1 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/c42e3c485c39/q5_option2_code0_p6.png",
+            "alt": "Original option 2 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/c42e3c485c39/q5_option3_code0_p6.png",
+            "alt": "Original option 3 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/c42e3c485c39/q5_option4_code0_p6.png",
+            "alt": "Original option 4 pseudocode or mathematical expression."
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/c42e3c485c39/context0_p5.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/c42e3c485c39/context0_p6.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/c42e3c485c39/q6_prompt_p7.png",
+          "alt": "Original question: The following pseudocode is executed using the \"Words\" dataset and the procedure doSomething mentioned above. What will sList store at the end of the execution?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "AI List of words from the \"Words\" dataset."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "List of unique words from the \"Words\" dataset."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "List of lists of words of each sentence from the \"Words\" dataset."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "List of lists of unique words of each sentence from the \"Words\" dataset."
+          }
+        ]
+      ],
+      "correct_answer": 3
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/c42e3c485c39/context0_p5.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/c42e3c485c39/context0_p6.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/c42e3c485c39/q7_prompt_p8.png",
+          "alt": "Original question: The following pseudocode is executed using the \"Words\" dataset and the procedure doSomething mentioned above. Let explode(W) return a list of characters of word W in the same order as they are in the word. For example explode(\"thinking\") returns [t, h, i, n, k, i, n, g]. Ignore the punctuations like comma, full stop and so on. What will someList store at the end of the execution?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "List of alphabets from the \"Words\" dataset."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "List of unique alphabets from the \"Words\" dataset."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "List of lists of alphabets of each word from the \"Words\" dataset."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "List of lists of unique alphabets of each word from the \"Words\" dataset."
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/c42e3c485c39/context0_p5.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/c42e3c485c39/context0_p6.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/c42e3c485c39/q8_prompt_p9.png",
+          "alt": "Original question: Let M, P, and C be a list of sequence numbers of students who have scored more than the average marks in Mathematics, Physics and Chemistry respectively using the \"Scores\" dataset. Answer Question 8 and 9 after executing the following pseudocode. If seqDict[n] == 0 is a True statement, then choose the correct option(s) regarding the student with sequence number n."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The student has scored more than the average marks in any one of the three subjects."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The student has not scored more than the average marks in any subject."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The student might have scored more than the average marks either in Physics or in Chemistry."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The student has scored more than the average marks in Mathematics only."
+          }
+        ]
+      ],
+      "correct_answers": [
+        3
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/c42e3c485c39/context0_p5.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/c42e3c485c39/context0_p6.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "text",
+          "value": "Reference pseudocode used by this question:"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/c42e3c485c39/q8_code0_p9.png",
+          "alt": "q8 code0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/c42e3c485c39/q9_prompt_p10.png",
+          "alt": "Original question: If seqDict[n] == 1 is a True statement, then choose the correct option(s) regarding the student with sequence number n. (Uses the seqDict pseudocode and \"Scores\" dataset from Question 8.)"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The student has scored more than the average marks in Physics and Chemistry but not in\nMathematics."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The student has scored more than the average marks in Mathematics and might have scored more\nthan the average marks in Physics but not in Chemistry."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The student has scored more than the average marks in Mathematics and might have scored more\nthan the average marks in Chemistry but not in Physics."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The student has scored more than average marks in any two of three subjects."
+          }
+        ]
+      ],
+      "correct_answers": [
+        1,
+        2
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/c42e3c485c39/context0_p5.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/c42e3c485c39/context0_p6.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/c42e3c485c39/q10_prompt_p11.png",
+          "alt": "Original question: The following pseudocode is executed using the \"Words\" dataset. Let unique(L) return the list of unique elements of L. What will wCount represent at the end of the execution of the pseudocode? Ignore the upper and lower case, and punctuation symbols while comparing with other words."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Dictionary with words as keys mapped to the number of sentences in which the word is present."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Dictionary with words as keys mapped to the frequency count of the word in the dataset."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Dictionary with words as keys mapped to the maximum frequency of the word in a sentence."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Dictionary with words as keys mapped to the number of sentences in which the word is present\nmore than one time."
+          }
+        ]
+      ],
+      "correct_answer": 0
+    }
+  ]
+}

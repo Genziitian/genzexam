@@ -1,0 +1,258 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 1 · Quiz 1 · Jun 2022 · QUIZ1 · Part 2",
+  "subject": "Mathematics 1",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Ramesh and Kamlesh reside at (4, 10.5) and (4, − 10.5) respectively. They planned a road trip. Ramesh decided to go by road 𝑟1(𝑥) = 0.1(𝑥 − 5)(𝑥 − 7)(𝑥 − 9)(𝑥 − 11) and Kamlesh chose the road 𝑟2(𝑥) = 0.1(𝑥 − 5)2(𝑥 − 7)(𝑥 − 9)(𝑥 − 11). They decided to meet where these roads intersect. Based on this information, answer the following. Choose the set of correct option(s)."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The number of 𝑥-intercepts of 𝑟1(𝑥) and 𝑟2(𝑥) are same."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The number of intersection points of 𝑟1(𝑥) and 𝑟2(𝑥) can be found using 𝑟1(𝑥) = 𝑟2(𝑥)."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The number of intersection points of 𝑟1(𝑥) and 𝑟2(𝑥) can be found using 𝑟1(𝑥) = − 𝑟2(𝑥)."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The number of 𝑥-intercepts of 𝑟1(𝑥) and 𝑟2(𝑥) are 4."
+          }
+        ]
+      ],
+      "correct_answers": [
+        1
+      ],
+      "marks": 3,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": " "
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Ramesh and Kamlesh reside at (4, 10.5) and (4, − 10.5) respectively. They planned a road trip. Ramesh decided to go by road 𝑟1(𝑥) = 0.1(𝑥 − 5)(𝑥 − 7)(𝑥 − 9)(𝑥 − 11) and Kamlesh chose the road 𝑟2(𝑥) = 0.1(𝑥 − 5)2(𝑥 − 7)(𝑥 − 9)(𝑥 − 11). They decided to meet where these roads intersect. Based on this information, answer the following. In total how many places can they meet? NOTE: Enter your answer to the nearest integer."
+        }
+      ],
+      "numerical_answer": 4,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Sonia and Henna want to solve a quadratic equation. Sonia made a mistake in writing down the constant term and ended up in roots 3 and 4. Henna made a mistake in writing down the coefficient of 𝑥 and got the roots 2 and 3. Consider the leading coefficient to be 1 in all cases. The correct roots of the equation are:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "1 and 6"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "2 and 6"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1 and 4"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "2 and 4"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0
+      ],
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "NOTE: Enter your answer to the nearest integer. A function 𝑓(𝑥), fit for the data given in the Table-1 recorded by a student, is 𝑦 = 𝑓(𝑥) = (𝑥 − 2)(𝑥 − 4)(𝑥 − 6) + 𝑘 What will be the value of 𝑘, so that SSE (Sum Squared Error) will be minimum? Table-1 x 1 3 5 6 y -10 8 2 5"
+        }
+      ],
+      "numerical_answer": 4,
+      "numerical_tolerance": 0.01,
+      "marks": 5,
+      "difficulty": "hard"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the function 𝑓(𝑥) = 2∣𝑥∣ − 6."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Slope of the function 𝑓(𝑥) at every point is −2 for 𝑥 < 0."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The minimum value of 𝑓(𝑥) is −6."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The 𝑦-intercept of 𝑓(𝑥) is −6."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The minimum value of 𝑓(𝑥) is 0."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1,
+        2
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider a parallelogram whose sides are represented by the lines −2𝑥 + 𝑦 = 0, 𝑥 + 2𝑦 − 5 = 0 and −2𝑥 + 𝑦 − 5 = 0. Based on this information, answer the following. Recall: A parallelogram is defined as a quadrilateral in which both pairs of opposite sides are parallel. Choose the correct option(s) from the following."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The lines −2𝑥 + 𝑦 = 0 and 𝑥 + 2𝑦 = 0 passes through the origin."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The lines −2𝑥 + 𝑦 = 0 and 𝑥 + 2𝑦 = 0 are parallel to each other."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The lines −2𝑥 + 𝑦 = 0 and 𝑥 + 2𝑦 = 0 are perpendicular to each other."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The lines −2𝑥 + 𝑦 = 0 and −2𝑥 + 𝑦 − 5 = 0 are parallel to each other."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        2,
+        3
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider a parallelogram whose sides are represented by the lines −2𝑥 + 𝑦 = 0, 𝑥 + 2𝑦 − 5 = 0 and −2𝑥 + 𝑦 − 5 = 0. Based on this information, answer the following. The equation of the diagonal that does not pass through the origin is"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "−2𝑥 − 6𝑦 + 10 = 0"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "𝑥 + 3𝑦 − 5 = 0"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "−2𝑥 + 6𝑦 − 10 = 0"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "𝑥 − 3𝑦 + 5 = 0"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        2
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "[Figure: Coordinate graph showing two quadratic polynomials. 𝑝(𝑥) (lower, opening upward, drawn in green) has 𝑥-intercepts at (1, 0) and (𝑑, 0); 𝑞(𝑥) (upper, opening downward, drawn in blue) has 𝑥-intercepts at (𝑑, 0) and (13, 0).] Consider two quadratic polynomials, 𝑝(𝑥) and 𝑞(𝑥), whose roots are shown in Figure 1. The leading coefficients of 𝑝(𝑥) and 𝑞(𝑥) are +1 and −1, respectively. The 𝑦-coordinate of the vertex of 𝑝(𝑥) is 𝑐 and the 𝑦-coordinate of the vertex of 𝑞(𝑥) is ( − 𝑐). Find the value of 𝑑 (See Figure 1). NOTE: Enter your answer to the nearest integer."
+        }
+      ],
+      "numerical_answer": 7,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "hard"
+    }
+  ]
+}

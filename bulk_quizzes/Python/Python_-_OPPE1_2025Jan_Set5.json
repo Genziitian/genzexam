@@ -1,0 +1,243 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Python · OPPE 1 · 2025 Jan · Set 5",
+  "subject": "Python",
+  "section": "mock_test",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 1 - Problem 1: Check if 2D Vectors are Orthogonal** (Function Type)\n\nWrite a function are_orthogonal that takes two tuples t1 and t2 as input. Each tuple represents a 2D vector with two elements (x, y). The function should return True if the vectors are orthogonal (perpendicular), and False otherwise.\n\nHint: Two vectors are orthogonal if their dot product is zero.\n\nNOTE: This is a function type question."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def are_orthogonal(t1: tuple, t2: tuple) -> bool:\n    '''\n    Check if two 2D vectors are orthogonal (perpendicular).\n\n    Args:\n        t1 (tuple): First 2D vector (x, y).\n        t2 (tuple): Second 2D vector (x, y).\n\n    Returns:\n        bool: True if vectors are orthogonal, False otherwise.\n    '''\n    ..."
+        }
+      ],
+      "acceptable_answers": [
+        "Check if 2D Vectors are Orthogonal",
+        "are_orthogonal"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Sample Test Cases / Examples:**\n\n```text\n>>> are_orthogonal((1, 2), (12, -6)) -> True (1*12 + 2*(-6) = 0)\n>>> are_orthogonal((2, 0), (4, 1)) -> False (2*4 + 0*1 = 8)\n>>> are_orthogonal((0, 5), (-5, 0)) -> True (0*(-5) + 5*0 = 0)\n```"
+        },
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def are_orthogonal(t1: tuple, t2: tuple) -> bool:\n    '''\n    Check if two 2D vectors are orthogonal (perpendicular).\n\n    Args:\n        t1 (tuple): First 2D vector (x, y).\n        t2 (tuple): Second 2D vector (x, y).\n\n    Returns:\n        bool: True if vectors are orthogonal, False otherwise.\n    '''\n    # Vectors are orthogonal when their dot product is zero.\n    dot_product = t1[0] * t2[0] + t1[1] * t2[1]\n    return dot_product == 0"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 1 - Problem 2: Get Next Roll Number** (Function Type)\n\nWrite a function next_roll_no that takes a roll number roll_no as input and returns the next roll number in sequence within the same year and term.\n\nThe roll number format is {yy}f{t}{num}, where:\n• {yy} represents the two-digit year\n• f is a fixed character\n• {t} represents the term number (1, 2, or 3)\n• {num} is a six-digit number padded with zeros on the left\n\nAssume the num part of the roll number will be less than 999999.\n\nNOTE: This is a function type question."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def next_roll_no(roll_no: str) -> str:\n    ..."
+        }
+      ],
+      "acceptable_answers": [
+        "Get Next Roll Number",
+        "next_roll_no"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Sample Test Cases / Examples:**\n\n```text\nnext_roll_no(\"23f2000001\") -> '23f2000002'\nnext_roll_no(\"24f3099999\") -> '24f3100000'\n```"
+        },
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def next_roll_no(roll_no: str) -> str:\n    # First 4 characters are the {yy}f{t} prefix; the rest is the 6-digit number.\n    prefix = roll_no[:4]\n    num = int(roll_no[4:])\n    return f\"{prefix}{num + 1:06d}\""
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 1 - Problem 3: Check If a String has No Vowels in Even Indices** (Function Type)\n\nWrite a function has_no_vowels_in_even_indices that takes a string s as input and returns True if there are no vowels in the even indices of the string, otherwise returns False.\n\nNOTE: This is a function type question."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def has_no_vowels_in_even_indices(s: str) -> bool:\n    ..."
+        }
+      ],
+      "acceptable_answers": [
+        "Check If a String has No Vowels in Even Indices",
+        "has_no_vowels_in_even_indices"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Sample Test Cases / Examples:**\n\n```text\n>>> has_no_vowels_in_even_indices(\"babebibobu\") -> True (vowels at odd indices)\n>>> has_no_vowels_in_even_indices(\"abcde\") -> False (a at even index 0)\n>>> has_no_vowels_in_even_indices(\"test\") -> True (e at odd index 1)\n>>> has_no_vowels_in_even_indices(\"why\") -> True (no vowels)\n```"
+        },
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def has_no_vowels_in_even_indices(s: str) -> bool:\n    vowels = set(\"aeiouAEIOU\")\n    # Check every even index (0, 2, 4, ...) for a vowel.\n    return all(s[i] not in vowels for i in range(0, len(s), 2))"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 2 - Problem 1: Find Minimum Card of a Specific Suit in Hand** (Function Type)\n\nWrite a function find_min_card that takes a list of string representations of playing cards and a string representing a suit, and returns the minimum card of that suit based on the standard card ranking. If there are no cards of that suit, return None.\n\nCard format:\n• Suit: 'S' (Spades), 'H' (Hearts), 'C' (Clubs), 'D' (Diamonds)\n• Rank: '2' through '10', 'J', 'Q', 'K', 'A'\n• Ranking from lowest to highest: 2, 3, 4, 5, 6, 7, 8, 9, 10, J, Q, K, A\n\nNOTE: This is a function type question."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def find_min_card(cards: list, suit: str):\n    ..."
+        }
+      ],
+      "acceptable_answers": [
+        "Find Minimum Card of a Specific Suit in Hand",
+        "find_min_card"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Sample Test Cases / Examples:**\n\n```text\n>>> find_min_card(['H2', 'S9', 'DA', 'C5', 'CA'], 'S') -> 'S9'\n>>> find_min_card(['H2', 'DA', 'C5', 'CA'], 'H') -> 'H2'\n>>> find_min_card(['H10', 'D4'], 'S') -> None\n```"
+        },
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def find_min_card(cards: list, suit: str):\n    order = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']\n    rank = {r: i for i, r in enumerate(order)}\n\n    # Keep only the cards that belong to the requested suit (first character).\n    matches = [c for c in cards if c[0] == suit]\n    if not matches:\n        return None\n\n    # The rank is everything after the suit letter (handles '10').\n    return min(matches, key=lambda c: rank[c[1:]])"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 2 - Problem 2: Score Objective Questions** (Io Type)\n\nGiven the type of question with the correct answer and the student's answer separated by space over multiple lines, find the total marks and number of correct answers.\n• Each question has 3 marks for a correct answer.\n• choice type question also has -1 mark for an incorrect answer.\n• range type question has no negative marks.\n• The range format is {low}..{high}.\n\nNOTE: This is an I/O type question.\n\nInput Format:\nThe first line contains an integer n representing the number of questions.\nThe next n lines each contain the question type (choice or range), the correct answer (or range), and the student's answer.\n\nOutput Format: Total marks and number of correct answers."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "# Write your code here to read the input and print the output"
+        }
+      ],
+      "acceptable_answers": [
+        "Score Objective Questions"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "import sys\n\ndef main():\n    lines = sys.stdin.read().splitlines()\n    n = int(lines[0])\n    total = 0\n    correct = 0\n    for i in range(1, n + 1):\n        qtype, answer, student = lines[i].split()\n        if qtype == 'choice':\n            if student == answer:\n                total += 3\n                correct += 1\n            else:\n                total -= 1  # choice questions have negative marking\n        elif qtype == 'range':\n            low, high = map(int, answer.split('..'))\n            if low <= int(student) <= high:\n                total += 3\n                correct += 1\n            # range questions have no negative marking\n    print(total, correct)\n\nmain()"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 3 - Problem 1: Key Stroke Analysis** (Function Type)\n\nGiven a list of tuples representing key press events in the format (key, press_time, release_time) in milliseconds, implement the following functions:\n• average_hold_time(data, key) -> float: Average duration a specific key is held.\n• average_transition_time(data, key1, key2) -> float: Average time to transition between two keys.\n• get_typed_text(data) -> string: The final text considering character keys and backspaces.\n• words_per_minute(data) -> float: Words per minute based on total time.\n\nKeys are one of A to Z, SPACE and BACKSPACE.\n\nNOTE: This is a function type question."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def average_hold_time(data: list, key: str) -> float:\n    ...\n\ndef average_transition_time(data: list, key1: str, key2: str) -> float:\n    ...\n\ndef get_typed_text(data: list) -> str:\n    ...\n\ndef words_per_minute(data: list) -> float:\n    ..."
+        }
+      ],
+      "acceptable_answers": [
+        "Key Stroke Analysis",
+        "average_hold_time"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def average_hold_time(data: list, key: str) -> float:\n    # Hold time of a press is release_time - press_time.\n    holds = [release - press for k, press, release in data if k == key]\n    if not holds:\n        return 0.0\n    return sum(holds) / len(holds)\n\n\ndef average_transition_time(data: list, key1: str, key2: str) -> float:\n    # Transition: time from releasing key1 to pressing the next key2.\n    transitions = []\n    for i in range(len(data) - 1):\n        if data[i][0] == key1 and data[i + 1][0] == key2:\n            transitions.append(data[i + 1][1] - data[i][2])\n    if not transitions:\n        return 0.0\n    return sum(transitions) / len(transitions)\n\n\ndef get_typed_text(data: list) -> str:\n    text = []\n    for key, _, _ in data:\n        if key == 'BACKSPACE':\n            if text:\n                text.pop()\n        elif key == 'SPACE':\n            text.append(' ')\n        else:\n            text.append(key)\n    return ''.join(text)\n\n\ndef words_per_minute(data: list) -> float:\n    if not data:\n        return 0.0\n    # Total time spans from the first press to the last release.\n    total_ms = data[-1][2] - data[0][1]\n    if total_ms <= 0:\n        return 0.0\n    words = len(get_typed_text(data).split())\n    minutes = total_ms / 60000\n    return words / minutes"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 3 - Problem 2: Hexagon** (Io Type)\n\nGiven an integer n as input, print a hexagon pattern with '@' having a side length of n.\n\nNOTE: This is an I/O type question."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "# Write your code here to read the input and print the output"
+        }
+      ],
+      "acceptable_answers": [
+        "Hexagon"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Sample Test Cases / Examples:**\n\n```text\nInput: 2\nOutput:\n @@\n@@@@\n @@\n\nInput: 3\nOutput:\n  @@@\n @@@@@\n@@@@@@@\n @@@@@\n  @@@\n```"
+        },
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "n = int(input())\n\n# A hexagon of side n has 2n-1 rows. The middle row is widest (3n-2 '@'),\n# and each row away from the middle loses two '@' and gains one leading space.\nfor i in range(2 * n - 1):\n    d = abs(i - (n - 1))          # distance from the middle row\n    spaces = d\n    ats = n + 2 * (n - 1 - d)\n    print(' ' * spaces + '@' * ats)"
+        }
+      ]
+    }
+  ]
+}

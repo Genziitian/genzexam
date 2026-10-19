@@ -1,0 +1,174 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 2 · Graded Assignment · Week 7",
+  "subject": "English 2",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following is NOT appreciated in a group discussion?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Polite language"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Attentiveness"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Insensitivity"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Team spirit"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Dragging on same points indicates vast knowledge in the area."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following should be taken into consideration before an interview?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Do mock interviews"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Arrive a little early"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Research the company/institution"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "All the above"
+          }
+        ]
+      ],
+      "correct_answer": 3
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A warm smile denotes confidence and enthusiasm in the candidate."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The expression “To put that another way…” indicates ________."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Stating an opinion"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Expressing disagreement"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Reformulating"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Making a suggestion"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    }
+  ]
+}

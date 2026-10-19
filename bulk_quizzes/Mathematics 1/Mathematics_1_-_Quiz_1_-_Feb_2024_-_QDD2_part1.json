@@ -1,0 +1,310 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 1 · Quiz 1 · Feb 2024 · QDD2 · Part 1",
+  "subject": "Mathematics 1",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following relations defined on the set of integers: 𝑅1 = {(𝑥, 𝑦): 𝑥, 𝑦 ∈ 𝑍 and ∣𝑥 − 𝑦∣ ≤ 3} and 𝑅2 = {(𝑥, 𝑦): 𝑥, 𝑦 ∈ 𝑍 and 3 divides 𝑥 − 𝑦}. Choose the correct option(s)."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "𝑅1 is reflexive and symmetric."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "𝑅2 is symmetric but not transitive."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "𝑅1 is an equivalence relation but 𝑅2 is not an equivalence relation."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "𝑅2 is an equivalence relation but 𝑅1 is not an equivalence relation."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        3
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "𝑅1: ∣𝑥 − 𝑥∣ = 0 ≤ 3 (reflexive) and symmetric, but not transitive (e.g. ∣0 − 3∣ ≤ 3, ∣3 − 6∣ ≤ 3 but ∣0 − 6∣ = 6 > 3), so it is NOT an equivalence relation. 𝑅2 (congruence mod 3) is reflexive, symmetric and transitive, hence an equivalence relation. So option 0 (R1 reflexive & symmetric) and option 3 (R2 equivalence, R1 not) are correct; option 1 is wrong (R2 IS transitive); option 2 is wrong (it is the reverse)."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let 𝑓(𝑥) = ∣𝑥2 + 1∣ − 1. Which of the following option(s) are true for 𝑓?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "𝑓 is defined for all 𝑥 ∈ 𝑅."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "𝑓 is one-one."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The range of 𝑓 is ( − ∞, 0)."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The minimum value of 𝑓 is 0."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        3
+      ],
+      "marks": 5,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Since 𝑥2 + 1 > 0 for all 𝑥, ∣𝑥2 + 1∣ = 𝑥2 + 1, so 𝑓(𝑥) = 𝑥2. It is defined for all real 𝑥 (option 0 true). It is not one-one since 𝑓( − 𝑎) = 𝑓(𝑎) (option 1 false). Range is [0, ∞), not ( − ∞, 0) (option 2 false). Minimum value is 𝑓(0) = 0 (option 3 true)."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider two polynomials 𝑝(𝑥) = − 𝑥5 + 5𝑥4 − 7𝑥 − 2 and 𝑞(𝑥) = − 𝑥5 + 5𝑥4 − 𝑥2 − 2. Which of the following options is/are true?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "𝑝(𝑥) ⟶ ∞ as 𝑥 → ∞."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "𝑝(𝑥) ⟶ − ∞ as 𝑥 → ∞."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "𝑝(𝑥) has at most 4 turning points."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The quotient obtained while dividing 𝑞(𝑥) by 𝑝(𝑥) is a constant."
+          }
+        ]
+      ],
+      "correct_answers": [
+        1,
+        2,
+        3
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Leading term of 𝑝 is −𝑥5, so as 𝑥 → + ∞, 𝑝(𝑥) → − ∞ (option 1 true, option 0 false). A degree-5 polynomial has at most 5 − 1 = 4 turning points (option 2 true). Both have the same leading term, and 𝑞(𝑥) − 𝑝(𝑥) = − 𝑥2 + 7𝑥 has degree < 5, so 𝑞 = 1 ⋅ 𝑝 + ( − 𝑥2 + 7𝑥), giving a constant quotient 1 (option 3 true)."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider two triangles 𝐴𝐵𝐶 and 𝑃𝐴𝐵 with coordinates 𝐴(4, 3), 𝐵(2, 2), 𝐶(8, 3) and 𝑃(𝑡, 𝑡2). The area of triangle 𝐴𝐵𝐶 is 4 times the area of the triangle 𝑃𝐴𝐵. What is the area of the triangle 𝐴𝐵𝐶?"
+        }
+      ],
+      "numerical_answer": 2,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Area = 12∣𝑥𝐴(𝑦𝐵 − 𝑦𝐶) + 𝑥𝐵(𝑦𝐶 − 𝑦𝐴) + 𝑥𝐶(𝑦𝐴 − 𝑦𝐵)∣ = 12∣4(2 − 3) + 2(3 − 3) + 8(3 − 2)∣ = 12∣ − 4 + 0 + 8∣ = 2."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider two triangles 𝐴𝐵𝐶 and 𝑃𝐴𝐵 with coordinates 𝐴(4, 3), 𝐵(2, 2), 𝐶(8, 3) and 𝑃(𝑡, 𝑡2). The area of triangle 𝐴𝐵𝐶 is 4 times the area of the triangle 𝑃𝐴𝐵. Choose all the possible options for 𝑃."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "(0, 0)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "(2, 4)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "( − 2, 4)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "( − 1, 1)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "(1, 1)"
+          }
+        ]
+      ],
+      "correct_answers": [
+        3,
+        4
+      ],
+      "marks": 5,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Area 𝐴𝐵𝐶 = 2, so area 𝑃𝐴𝐵 = 0.5. Area 𝑃𝐴𝐵 = 12∣𝑡(3 − 2) + 4(2 − 𝑡2) + 2(𝑡2 − 3)∣ = 12∣ − 2𝑡2 + 𝑡 + 2∣ = 0.5, giving ∣ − 2𝑡2 + 𝑡 + 2∣ = 1. Solving: 2𝑡2 − 𝑡 − 1 = 0 ⇒ 𝑡 = 1, − 12 and 2𝑡2 − 𝑡 − 3 = 0 ⇒ 𝑡 = 32, − 1. Among the listed points only (1, 1) (𝑡 = 1) and ( − 1, 1) (𝑡 = − 1) have the form (𝑡, 𝑡2) and satisfy this."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Suppose that 𝐿1 and 𝐿2 are lines in the plane, with the 𝑥-intercepts of 𝐿1 and 𝐿2 being 2 and −1 respectively, and the respective 𝑦-intercepts being −3 and 2. Choose the point where 𝐿1 and 𝐿2 intersect."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "(10, 18)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "(5, 8)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "( − 10, − 18)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "(6, 6)"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "𝐿1: 𝑥2 + 𝑦−3 = 1 ⇒ 𝑦 = 3𝑥 − 62 . 𝐿2: 𝑥−1 + 𝑦2 = 1 ⇒ 𝑦 = 2𝑥 + 2. Setting equal:3𝑥 − 6 2 = 2𝑥 + 2 ⇒ 3𝑥 − 6 = 4𝑥 + 4 ⇒ 𝑥 = − 10, 𝑦 = 2( − 10) + 2 = − 18. Intersection ( − 10, − 18)."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Suppose that 𝐿1 and 𝐿2 are lines in the plane, with the 𝑥-intercepts of 𝐿1 and 𝐿2 being 2 and −1 respectively, and the respective 𝑦-intercepts being −3 and 2. If 𝜃 is the angle between 𝐿1 and 𝐿2, then tan 𝜃 is equal to"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "1 2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1 8"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "3 8"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1 4"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Slopes: 𝑚1 = 32, 𝑚2 = 2. tan 𝜃 = ∣ 𝑚2 − 𝑚11 + 𝑚1𝑚2 ∣ = ∣ 2 − 321 + 3 ∣ = 1/24 = 18."
+        }
+      ]
+    }
+  ]
+}

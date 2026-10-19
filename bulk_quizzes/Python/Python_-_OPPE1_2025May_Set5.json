@@ -1,0 +1,250 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Python · OPPE 1 · 2025 May · Set 5",
+  "subject": "Python",
+  "section": "mock_test",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 1 - Problem 1: Repeat Second Half of a Tuple** (Function Type)\n\nWrite a function repeat_second_half(t) that takes a tuple t and returns a new tuple where the second half of the original tuple is repeated after the first half. If the tuple has an odd number of elements, the middle element should be included in the first half.\n\nConstraints:\n• The input tuple will contain at least two elements.\n• The elements in the tuple can be of any type (integers, strings, etc.).\n\nNOTE: This is a function type question; you don't have to take input or print the output, just have to complete the required function definition."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def repeat_second_half(t):\n    ..."
+        }
+      ],
+      "acceptable_answers": [
+        "Repeat Second Half of a Tuple",
+        "repeat_second_half"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Sample Test Cases / Examples:**\n\n```text\n>>> repeat_second_half((1, 2, 3, 4, 5))\n(1, 2, 3, 4, 5, 4, 5)\n>>> repeat_second_half((10, 20, 30, 40))\n(10, 20, 30, 40, 30, 40)\n>>> repeat_second_half(('a', 'b', 'c', 'd', 'e', 'f'))\n('a', 'b', 'c', 'd', 'e', 'f', 'd', 'e', 'f')\n>>> repeat_second_half((1, 2, 3))\n(1, 2, 3, 3)\n```"
+        },
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def repeat_second_half(t):\n    # On an odd length the middle element stays in the first half,\n    # so the second half starts at the rounded-up midpoint.\n    mid = (len(t) + 1) // 2\n    return t + t[mid:]"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 1 - Problem 2: Convert Excel Column Name to 1-Based Index** (Function Type)\n\nWrite a function excel_index that takes an Excel column name (e.g., \"A\", \"Z\", \"AA\", \"AB\", ..., \"ZZZ\") and returns its corresponding 1-based index. This function should correctly handle column names beyond \"Z\", following the Excel column numbering system.\n\nNOTE: This is a function type question; you don't have to take input or print the output, just have to complete the required function definition."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def excel_index(col):\n    ..."
+        }
+      ],
+      "acceptable_answers": [
+        "Convert Excel Column Name to 1-Based Index",
+        "excel_index"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Sample Test Cases / Examples:**\n\n```text\n>>> excel_index(\"A\")\n1\n>>> excel_index(\"Z\")\n26\n>>> excel_index(\"AA\")\n27\n>>> excel_index(\"AB\")\n28\n>>> excel_index(\"ZZZ\")\n18278\n```"
+        },
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def excel_index(col):\n    # Base-26 number where 'A'..'Z' map to 1..26 (no zero digit).\n    index = 0\n    for ch in col.upper():\n        index = index * 26 + (ord(ch) - ord('A') + 1)\n    return index"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 1 - Problem 3: Reverse Vowel Order in a String** (Io Type)\n\nWrite a python program that reads a multiline string and reverses only the vowels in the string while keeping all other characters in their original positions.\n\nInput Format:\n• First line will have the number of lines (n) in the input.\n• Next n lines will have the multiline string.\n\nOutput Format: The modified multiline string.\n\nNote:\n• Vowels are considered: a, e, i, o, u (both uppercase and lowercase).\n• Non-vowel characters remain in place.\n• Case should be preserved while reversing."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "# Read input, process, and print the output"
+        }
+      ],
+      "acceptable_answers": [
+        "Reverse Vowel Order in a String"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Sample Test Cases / Examples:**\n\n```text\nInput:\nHEllo\n\nOutput:\nHollE\n```"
+        },
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "import sys\n\ndef main():\n    data = sys.stdin.read().split('\\n')\n    n = int(data[0])\n    text = '\\n'.join(data[1:1 + n])\n\n    vowels = set('aeiouAEIOU')\n    # Collect vowels and re-place them in reverse order.\n    found = [c for c in text if c in vowels]\n    found.reverse()\n    it = iter(found)\n\n    result = [next(it) if c in vowels else c for c in text]\n    print(''.join(result))\n\nmain()"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 2 - Problem 1: Chess Game Analysis** (Function Type)\n\nYou are given a record of chess moves as a string in Standard Algebraic Notation (SAN). Implement the following functions to analyze the game:\n• parse_moves(game: str) -> list: Parses the game string to a list of alternate white and black moves.\n• get_n_moves(game: str) -> int: Returns the total number of moves played in the game (one move is considered as each turn).\n• count_piece_moves(moves: list) -> dict: Returns a dictionary with each piece name ('King', 'Queen', 'Rook', 'Bishop', 'Knight', 'Pawn') as keys and the number of times that piece is moved in the game as values. Castling is counted as a move for both the king and the rook involved.\n• most_used_piece(game: str, player: str) -> str: Returns the name of the piece that was moved the most for a specified player (\"white\" or \"black\"). Break ties with the piece with most value. Piece values are {\"Pawn\": 1, \"Bishop\": 2, \"Knight\": 3, \"Rook\": 4, \"Queen\": 5, \"King\": 6}.\n• remaining_pieces(game: str, player: str) -> int: Returns the remaining number of pieces that a player has on the board. A piece capture is denoted by an 'x' in the moves. White captures black pieces, and vice-versa.\n• n_checks(game: str, player: str) -> int: Returns the number of times the player has put the opponent in check. A check is denoted by a '+' at the end of the move.\nNote: Assume that the input game string is well-formed and valid according to the rules of chess. The player will always be either \"white\" or \"black\".\n\nChess Notation Details:\n• Pieces are represented by their initials: K - King, Q - Queen, R - Rook, B - Bishop, N - Knight, Pawn (no initial, just represented by the move).\n• Castling is represented with: O-O (kingside castling), O-O-O (queenside castling).\n• A move in which a player captures a piece of the opponent is denoted with an 'x' in the move.\n• A move in which a player puts the opponent in check is denoted with a '+' at the end of the move.\n• A move in which a player checkmates is denoted by '#' at the end of the move.\n• The end of the game string will have the result of the game as \"1-0\", \"0-1\" or \"1/2-1/2\"."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def parse_moves(game: str) -> list:\n    ...\n\ndef get_n_moves(game: str) -> int:\n    ...\n\ndef count_piece_moves(moves: list) -> dict:\n    ...\n\ndef most_used_piece(game: str, player: str) -> str:\n    ...\n\ndef remaining_pieces(game: str, player: str) -> int:\n    ...\n\ndef n_checks(game: str, player: str) -> int:\n    ..."
+        }
+      ],
+      "acceptable_answers": [
+        "Chess Game Analysis",
+        "parse_moves"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Sample Test Cases / Examples:**\n\n```text\ngame = \"1. d4 d5 2. c4 Nf6 3. cxd5 Nxd5 4. Nf3 Be6 5. e4 Nb6 6. Nc3 f5 7. Ng5 Qd7 8. Nb5 c6 9. Nxe6 Qxe6 10. Nc7+ Kd8 11. Nxe6+ Ke8 12. Nc7+ Kd8 13. Bf4 N8d7 14. d5 e6 15. dxe6 Bb4+ 16. Ke2 Rc8 17. exd7 Nxd7 18. Ne6+ Ke7 19. Nxg7 Rcg8 20. Bd6+ Bxd6 21. Nxf5+ Ke6 22. Qxd6+ Kf7 23. Qxd7+ Kf8 24. Qe7# 1-0\"\n\n>>> parse_moves(game)\n['d4', 'd5', 'c4', 'Nf6', 'cxd5', 'Nxd5', 'Nf3', 'Be6', 'e4', 'Nb6', 'Nc3', 'f5', 'Ng5', 'Qd7', 'Nb5', 'c6', 'Nxe6', 'Qxe6', 'Nc7+', 'Kd8', 'Nxe6+', 'Ke8', 'Nc7+', 'Kd8', 'Bf4', 'N8d7', 'd5', 'e6', 'dxe6', 'Bb4+', 'Ke2', 'Rc8', 'exd7', 'Nxd7', 'Ne6+', 'Ke7', 'Nxg7', 'Rcg8', 'Bd6+', 'Bxd6', 'Nxf5+', 'Ke6', 'Qxd6+', 'Kf7', 'Qxd7+', 'Kf8', 'Qe7#']\n\n>>> get_n_moves(game)\n47\n\n>>> count_piece_moves(parse_moves(game))\n{'King': 8, 'Queen': 5, 'Rook': 2, 'Bishop': 5, 'Knight': 16, 'Pawn': 11}\n\n>>> most_used_piece(game, \"black\")\n'King'\n\n>>> remaining_pieces(game, \"white\")\n12\n\n>>> n_checks(game, \"white\")\n9\n```"
+        },
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "PIECE_NAMES = {\"K\": \"King\", \"Q\": \"Queen\", \"R\": \"Rook\", \"B\": \"Bishop\", \"N\": \"Knight\"}\nPIECE_VALUES = {\"Pawn\": 1, \"Bishop\": 2, \"Knight\": 3, \"Rook\": 4, \"Queen\": 5, \"King\": 6}\nRESULTS = {\"1-0\", \"0-1\", \"1/2-1/2\"}\n\n\ndef parse_moves(game: str) -> list:\n    \"\"\"Strip move numbers (e.g. '1.') and the final result; return the move list.\"\"\"\n    moves = []\n    for token in game.split():\n        if token.endswith(\".\") and token[:-1].isdigit():\n            continue\n        if token in RESULTS:\n            continue\n        moves.append(token)\n    return moves\n\n\ndef get_n_moves(game: str) -> int:\n    return len(parse_moves(game))\n\n\ndef _piece_name(move: str) -> str:\n    \"\"\"Piece moved for a single (non-castling) move.\"\"\"\n    first = move[0]\n    return PIECE_NAMES.get(first, \"Pawn\")\n\n\ndef count_piece_moves(moves: list) -> dict:\n    # Accept either the parsed move list or the raw game string.\n    if isinstance(moves, str):\n        moves = parse_moves(moves)\n    counts = {\"King\": 0, \"Queen\": 0, \"Rook\": 0, \"Bishop\": 0, \"Knight\": 0, \"Pawn\": 0}\n    for move in moves:\n        bare = move.rstrip(\"+#\")\n        if bare in (\"O-O\", \"O-O-O\"):          # castling moves both king and rook\n            counts[\"King\"] += 1\n            counts[\"Rook\"] += 1\n        else:\n            counts[_piece_name(move)] += 1\n    return counts\n\n\ndef _player_moves(game: str, player: str) -> list:\n    moves = parse_moves(game)\n    return moves[0::2] if player == \"white\" else moves[1::2]\n\n\ndef most_used_piece(game: str, player: str) -> str:\n    counts = count_piece_moves(_player_moves(game, player))\n    # Most moves; break ties by higher piece value.\n    return max(counts, key=lambda p: (counts[p], PIECE_VALUES[p]))\n\n\ndef remaining_pieces(game: str, player: str) -> int:\n    moves = parse_moves(game)\n    # The opponent's capturing moves remove this player's pieces.\n    opponent = moves[1::2] if player == \"white\" else moves[0::2]\n    captured = sum(1 for move in opponent if \"x\" in move)\n    return 16 - captured\n\n\ndef n_checks(game: str, player: str) -> int:\n    player_moves = _player_moves(game, player)\n    # A '+' (or a '#' checkmate) at the end means the opponent was put in check.\n    return sum(1 for move in player_moves if move.endswith(\"+\") or move.endswith(\"#\"))"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 2 - Problem 2: Visualize Pattern Lock** (Io Type)\n\nGiven a sequence of numbers representing the order in which dots are connected in a 3x3 pattern lock, generate a text-based visualization of the pattern. Dots should be marked in the order they were visited, with all others left blank ([ ]).\n\nDot layout and numbering — the 3x3 grid is numbered as follows:\n[1]---[2]---[3]\n|     |     |\n[4]---[5]---[6]\n|     |     |\n[7]---[8]---[9]\n\nInput Format: A single line containing a space-separated sequence of integers (1-9), representing the order of dots visited. The input will be a valid pattern lock.\n\nOutput Format: A visual 3x3 grid (text format) with visited positions replaced by [n] where n is the order in which that dot was visited (starting from 1). Unvisited positions should be shown as [ ]. The layout and spacing must match the dot layout shown above. There is no space at the end of each line while displaying the pattern."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "# Read input, process, and print the output"
+        }
+      ],
+      "acceptable_answers": [
+        "Visualize Pattern Lock"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Sample Test Cases / Examples:**\n\n```text\nSample Input:\n2 5 7 4 1\n\nSample Output:\n[5]---[1]---[ ]\n|     |     |\n[4]---[2]---[ ]\n|     |     |\n[3]---[ ]---[ ]\n```"
+        },
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def main():\n    seq = input().split()\n    # Record the visit order (1-based) for each visited dot.\n    order = {}\n    for step, num in enumerate(seq, start=1):\n        dot = int(num)\n        if dot not in order:\n            order[dot] = step\n\n    cells = []\n    for dot in range(1, 10):\n        cells.append(f\"[{order[dot]}]\" if dot in order else \"[ ]\")\n\n    rows = [cells[0:3], cells[3:6], cells[6:9]]\n    separator = \"|     |     |\"\n    lines = []\n    for i, row in enumerate(rows):\n        lines.append(\"---\".join(row))\n        if i < 2:\n            lines.append(separator)\n    print(\"\\n\".join(lines))\n\n\nmain()"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 3 - Problem 1: Chess Game Analysis** (Function Type)\n\nYou are given a record of chess moves as a string in Standard Algebraic Notation (SAN). Implement the following functions to analyze the game:\n• parse_moves(game: str) -> list: Parses the game string to a list of alternate white and black moves.\n• get_n_moves(game: str) -> int: Returns the total number of moves played in the game (one move is considered as each turn).\n• count_piece_moves(moves: list) -> dict: Returns a dictionary with each piece name ('King', 'Queen', 'Rook', 'Bishop', 'Knight', 'Pawn') as keys and the number of times that piece is moved in the game as values. Castling is counted as a move for both the king and the rook involved.\n• most_used_piece(game: str, player: str) -> str: Returns the name of the piece that was moved the most for a specified player (\"white\" or \"black\"). Break ties with the piece with most value. Piece values are {\"Pawn\": 1, \"Bishop\": 2, \"Knight\": 3, \"Rook\": 4, \"Queen\": 5, \"King\": 6}.\n• remaining_pieces(game: str, player: str) -> int: Returns the remaining number of pieces that a player has on the board. A piece capture is denoted by an 'x' in the moves. White captures black pieces, and vice-versa.\n• n_checks(game: str, player: str) -> int: Returns the number of times the player has put the opponent in check. A check is denoted by a '+' at the end of the move.\nNote: Assume that the input game string is well-formed and valid according to the rules of chess. The player will always be either \"white\" or \"black\".\n\nChess Notation Details:\n• Pieces are represented by their initials: K - King, Q - Queen, R - Rook, B - Bishop, N - Knight, Pawn (no initial, just represented by the move).\n• Castling is represented with: O-O (kingside castling), O-O-O (queenside castling).\n• A move in which a player captures a piece of the opponent is denoted with an 'x' in the move.\n• A move in which a player puts the opponent in check is denoted with a '+' at the end of the move.\n• A move in which a player checkmates is denoted by '#' at the end of the move.\n• The end of the game string will have the result of the game as \"1-0\", \"0-1\" or \"1/2-1/2\"."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def parse_moves(game: str) -> list:\n    ...\n\ndef get_n_moves(game: str) -> int:\n    ...\n\ndef count_piece_moves(moves: list) -> dict:\n    ...\n\ndef most_used_piece(game: str, player: str) -> str:\n    ...\n\ndef remaining_pieces(game: str, player: str) -> int:\n    ...\n\ndef n_checks(game: str, player: str) -> int:\n    ..."
+        }
+      ],
+      "acceptable_answers": [
+        "Chess Game Analysis",
+        "parse_moves"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Sample Test Cases / Examples:**\n\n```text\ngame = \"1. d4 d5 2. c4 Nf6 3. cxd5 Nxd5 4. Nf3 Be6 5. e4 Nb6 6. Nc3 f5 7. Ng5 Qd7 8. Nb5 c6 9. Nxe6 Qxe6 10. Nc7+ Kd8 11. Nxe6+ Ke8 12. Nc7+ Kd8 13. Bf4 N8d7 14. d5 e6 15. dxe6 Bb4+ 16. Ke2 Rc8 17. exd7 Nxd7 18. Ne6+ Ke7 19. Nxg7 Rcg8 20. Bd6+ Bxd6 21. Nxf5+ Ke6 22. Qxd6+ Kf7 23. Qxd7+ Kf8 24. Qe7# 1-0\"\n\n>>> parse_moves(game)\n['d4', 'd5', 'c4', 'Nf6', 'cxd5', 'Nxd5', 'Nf3', 'Be6', 'e4', 'Nb6', 'Nc3', 'f5', 'Ng5', 'Qd7', 'Nb5', 'c6', 'Nxe6', 'Qxe6', 'Nc7+', 'Kd8', 'Nxe6+', 'Ke8', 'Nc7+', 'Kd8', 'Bf4', 'N8d7', 'd5', 'e6', 'dxe6', 'Bb4+', 'Ke2', 'Rc8', 'exd7', 'Nxd7', 'Ne6+', 'Ke7', 'Nxg7', 'Rcg8', 'Bd6+', 'Bxd6', 'Nxf5+', 'Ke6', 'Qxd6+', 'Kf7', 'Qxd7+', 'Kf8', 'Qe7#']\n\n>>> get_n_moves(game)\n47\n\n>>> count_piece_moves(parse_moves(game))\n{'King': 8, 'Queen': 5, 'Rook': 2, 'Bishop': 5, 'Knight': 16, 'Pawn': 11}\n\n>>> most_used_piece(game, \"black\")\n'King'\n\n>>> remaining_pieces(game, \"white\")\n12\n\n>>> n_checks(game, \"white\")\n9\n```"
+        },
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "PIECE_NAMES = {\"K\": \"King\", \"Q\": \"Queen\", \"R\": \"Rook\", \"B\": \"Bishop\", \"N\": \"Knight\"}\nPIECE_VALUES = {\"Pawn\": 1, \"Bishop\": 2, \"Knight\": 3, \"Rook\": 4, \"Queen\": 5, \"King\": 6}\nRESULTS = {\"1-0\", \"0-1\", \"1/2-1/2\"}\n\n\ndef parse_moves(game: str) -> list:\n    \"\"\"Strip move numbers (e.g. '1.') and the final result; return the move list.\"\"\"\n    moves = []\n    for token in game.split():\n        if token.endswith(\".\") and token[:-1].isdigit():\n            continue\n        if token in RESULTS:\n            continue\n        moves.append(token)\n    return moves\n\n\ndef get_n_moves(game: str) -> int:\n    return len(parse_moves(game))\n\n\ndef _piece_name(move: str) -> str:\n    \"\"\"Piece moved for a single (non-castling) move.\"\"\"\n    first = move[0]\n    return PIECE_NAMES.get(first, \"Pawn\")\n\n\ndef count_piece_moves(moves: list) -> dict:\n    # Accept either the parsed move list or the raw game string.\n    if isinstance(moves, str):\n        moves = parse_moves(moves)\n    counts = {\"King\": 0, \"Queen\": 0, \"Rook\": 0, \"Bishop\": 0, \"Knight\": 0, \"Pawn\": 0}\n    for move in moves:\n        bare = move.rstrip(\"+#\")\n        if bare in (\"O-O\", \"O-O-O\"):          # castling moves both king and rook\n            counts[\"King\"] += 1\n            counts[\"Rook\"] += 1\n        else:\n            counts[_piece_name(move)] += 1\n    return counts\n\n\ndef _player_moves(game: str, player: str) -> list:\n    moves = parse_moves(game)\n    return moves[0::2] if player == \"white\" else moves[1::2]\n\n\ndef most_used_piece(game: str, player: str) -> str:\n    counts = count_piece_moves(_player_moves(game, player))\n    # Most moves; break ties by higher piece value.\n    return max(counts, key=lambda p: (counts[p], PIECE_VALUES[p]))\n\n\ndef remaining_pieces(game: str, player: str) -> int:\n    moves = parse_moves(game)\n    # The opponent's capturing moves remove this player's pieces.\n    opponent = moves[1::2] if player == \"white\" else moves[0::2]\n    captured = sum(1 for move in opponent if \"x\" in move)\n    return 16 - captured\n\n\ndef n_checks(game: str, player: str) -> int:\n    player_moves = _player_moves(game, player)\n    # A '+' (or a '#' checkmate) at the end means the opponent was put in check.\n    return sum(1 for move in player_moves if move.endswith(\"+\") or move.endswith(\"#\"))"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 3 - Problem 2: Visualize Pattern Lock** (Io Type)\n\nGiven a sequence of numbers representing the order in which dots are connected in a 3x3 pattern lock, generate a text-based visualization of the pattern. Dots should be marked in the order they were visited, with all others left blank ([ ]).\n\nDot layout and numbering — the 3x3 grid is numbered as follows:\n[1]---[2]---[3]\n|     |     |\n[4]---[5]---[6]\n|     |     |\n[7]---[8]---[9]\n\nInput Format: A single line containing a space-separated sequence of integers (1-9), representing the order of dots visited. The input will be a valid pattern lock.\n\nOutput Format: A visual 3x3 grid (text format) with visited positions replaced by [n] where n is the order in which that dot was visited (starting from 1). Unvisited positions should be shown as [ ]. The layout and spacing must match the dot layout shown above. There is no space at the end of each line while displaying the pattern."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "# Read input, process, and print the output"
+        }
+      ],
+      "acceptable_answers": [
+        "Visualize Pattern Lock"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Sample Test Cases / Examples:**\n\n```text\nSample Input:\n2 5 7 4 1\n\nSample Output:\n[5]---[1]---[ ]\n|     |     |\n[4]---[2]---[ ]\n|     |     |\n[3]---[ ]---[ ]\n```"
+        },
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def main():\n    seq = input().split()\n    # Record the visit order (1-based) for each visited dot.\n    order = {}\n    for step, num in enumerate(seq, start=1):\n        dot = int(num)\n        if dot not in order:\n            order[dot] = step\n\n    cells = []\n    for dot in range(1, 10):\n        cells.append(f\"[{order[dot]}]\" if dot in order else \"[ ]\")\n\n    rows = [cells[0:3], cells[3:6], cells[6:9]]\n    separator = \"|     |     |\"\n    lines = []\n    for i, row in enumerate(rows):\n        lines.append(\"---\".join(row))\n        if i < 2:\n            lines.append(separator)\n    print(\"\\n\".join(lines))\n\n\nmain()"
+        }
+      ]
+    }
+  ]
+}

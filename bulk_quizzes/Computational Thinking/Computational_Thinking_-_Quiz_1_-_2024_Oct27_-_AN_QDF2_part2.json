@@ -1,0 +1,290 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Computational Thinking · Quiz 1 · 2024 Oct27 · AN QDF2 · Part 2",
+  "subject": "Computational Thinking",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let X and Y be two rows in the \"Scores\" table. X and Y are partially matching if they are either from the same city or have the same total marks (or both). Choose the correct implementation(s) of the procedure partialMatch. It is a Multiple Select Question (MSQ)."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "Procedure partialMatch(X, Y)\nA = False, B = False\nif(X.CityTown == Y.CityTown){\nA = True\n}\nif(X.Total == Y.Total){\nB = True\n}\nif(A and B){\nreturn(True)\n}\nreturn(False)\nEnd partialMatch"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "Procedure partialMatch(X, Y)\nA = False, B = False\nif(X.CityTown == Y.CityTown){\nA = True\n}\nif(X.Total == Y.Total){\nB = True\n}\nif(A or B){\nreturn(True)\n}\nreturn(False)\nEnd partialMatch"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "Procedure partialMatch(X, Y)\nA = 0, B = 0\nif(X.CityTown == Y.CityTown){\nA = 1\n}\nif(X.Total == Y.Total){\nB = 1\n}\nif(A + B >= 1){\nreturn(True)\n}\nreturn(False)\nEnd partialMatch"
+          }
+        ]
+      ],
+      "correct_answers": [
+        1,
+        2
+      ],
+      "marks": 4,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Partial matching is an OR: same city OR same total. Option 2 uses (A or B), and Option 3 uses (A + B >= 1), both of which are True when at least one condition holds. Option 1 uses (A and B), which requires both, so it is wrong."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Library\" dataset. A captures the number of Fiction books which were published between 2000 and 2010 (inclusive) and are written in a language other than English. Choose the correct code for procedure doSomething. It is a Multiple Select Question (MSQ)."
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "A = 0\nwhile(Table 1 has more rows){\n    Read the first row X in Table 1\n    A = A + doSomething(X)\n    Move X to Table 2\n}"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "Procedure doSomething(X)\nB = 0\nif(X.Year >= 2000 and X.Year <= 2010){\nif(X.Genre == \"Fiction\"){\nif(X.Language != \"English\"){\nB = 1\n}\n}\n}\nreturn B\nEnd doSomething"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "Procedure doSomething(X)\nB = 0\nif(X.Year >= 2000 or X.Year <= 2010){\nif(X.Genre == \"Fiction\"){\nif(X.Language != \"English\"){\nB = 1\n}\n}\n}\nreturn B\nEnd doSomething"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "Procedure doSomething(X)\nB = 0\nif(X.Year >= 2000 or X.Year <= 2010 and X.Genre == \"Fiction\" and X.Language != \"English\"){\nB = 1\n}\nreturn B\nEnd doSomething"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "Procedure doSomething(X)\nB = 0\nif(X.Year >= 2000 and X.Year <= 2010 and X.Genre == \"Fiction\" and X.Language != \"English\"){\nB = 1\n}\nreturn B\nEnd doSomething"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        3
+      ],
+      "marks": 4,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "A book qualifies only when 2000 <= Year <= 2010 AND Genre is Fiction AND Language is not English. Option 1 (nested ifs) and Option 4 (a single AND) both express this. Option 2 uses 'Year >= 2000 or Year <= 2010' (true for every year), and Option 3 has the same flawed OR on the year, so both fail to filter the year."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The given information represents a \"Shopping Bill\" and may have mistakes with respect to the sanity of data. Identify all rows with such mistakes. It is a Multiple Select Question (MSQ). Shopping Bill Row no. Item Category Qty Price Cost Row 1 Cereal Packed/Food 2 220 220 Row 2 Milk Fruits/Food 1 24 24 Row 3 Cupcakes Packed/Food 1 25 25 Row 4 Chocolates Packed/Food 10 10 10 Row 5 Shirts Women/Apparel 1.5 1350 2025"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Row 1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Row 2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Row 3"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Row 4"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Row 5"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1,
+        3,
+        4
+      ],
+      "marks": 4,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Row 1: Cost should be Qty × Price = 2 × 220 = 440, not 220. Row 4: Cost should be 10 × 10 = 100, not 10. Row 2: Milk is categorised as 'Fruits/Food', which is the wrong category. Row 5: Qty = 1.5 is not a valid (integer) quantity of shirts. Row 3 is fully consistent (1 × 25 = 25). [If only the Cost = Qty × Price rule is intended, the answer narrows to Rows 1 and 4.]"
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Library\" dataset. A captures the number of books which are published by \"Penguin\" or written by author \"Narayan\". The pseudocode may have mistakes; identify all such mistakes (if any). It is a Multiple Select Question (MSQ). 1   A = 0 2   while(Table 1 has more rows){ 3       Read the first row X in Table 1 4       C = True 5       if(X.Publisher == \"Penguin\"){ 6           C = True 7       } 8       if(X.Author == \"Narayan\"){ 9           C = False 10      } 11      if(C){ 12          A = A + 1 13      } 14      Move X to Table 2 15  }"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Error in Line 4"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Error in Line 9"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Error in Line 12"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "No error"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1
+      ],
+      "marks": 4,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "We want C to be True for books published by Penguin OR written by Narayan. C must start False (Line 4 wrongly sets it True, so non-matching books are counted), and a Narayan book should set C = True (Line 9 wrongly sets it False). With Lines 4 and 9 fixed, Penguin sets C True and Narayan sets C True, giving the intended OR."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Scores\" dataset. At the end of the execution, A captures the lowest Chemistry marks scored by a male student from Vellore. Choose the correct code fragment(s) for the marked block. It is a Multiple Select Question (MSQ)."
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "A = 101\nwhile(Table 1 has more rows){\n    Read the first row X in Table 1\n    ***** fill the code *****\n    Move X to Table 2\n}"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "if(X.Gender != 'F' and X.CityTown == \"vellore\"){\nif(X.Chemistry > A){\nA = X.Chemistry\n}\n}"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "if(X.Gender == 'M' and X.CityTown == \"vellore\"){\nif(X.Chemistry < A){\nA = X.Chemistry\n}\n}"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "if(X.Gender == 'M' and X.CityTown == \"vellore\"){\nif(X.Chemistry > A){\nA = X.Chemistry\n}\n}"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "if(X.Gender != 'F'){\nif(X.CityTown == \"vellore\"){\nif(X.Chemistry < A){\nA = X.Chemistry\n}\n}\n}"
+          }
+        ]
+      ],
+      "correct_answers": [
+        1,
+        3
+      ],
+      "marks": 5,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "A starts at 101 (above the maximum mark) for a minimum search, so we keep the smaller Chemistry mark (Chemistry < A) among male students (Gender == 'M', equivalently Gender != 'F') from Vellore. Options 2 and 4 do this; Options 1 and 3 use '>' and would find the maximum."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A pseudocode is executed on a dataset whose words are, in order, the words of: \"Surrounded by nature, Susan often takes a stroll, savoring the soothing sounds of chirping birds. Rustlings in the trees suggest squirrels beginning their day, searching for sustenance. Surely, the beauty of a sunrise holds unparalleled magic.\" What will be the value of count at the end of the execution? Assume upper case and lower case are ignored during comparison of letters."
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "count = 0, flag = True\nwhile(Table 1 has more rows){\n    Read the first row X in Table 1\n    Move X to Table 2\n    if(1st letter of X.word == 's' and flag){\n        if(2nd letter of X.word == 'o'){\n            count = count + 1\n        }\n    }\n    if(X.word ends with full stop){\n        flag = False\n    }\n}"
+        }
+      ],
+      "numerical_answer": 2,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "flag starts True and becomes False permanently at the first full stop, so only words of the first sentence are examined. The code counts words starting with 'so' there: 'soothing' and 'sounds' — so count = 2."
+        }
+      ]
+    }
+  ]
+}

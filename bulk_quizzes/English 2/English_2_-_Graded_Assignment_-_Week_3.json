@@ -1,0 +1,280 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 2 · Graded Assignment · Week 3",
+  "subject": "English 2",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Indicative, subjunctive and imperative are types of:"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "verb aspect"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "verb mood"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "adverb"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "verb tense"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Simple, progressive, and perfect are types of"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "verb aspect"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "verb tense"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "adverb"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "verb mood"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the most polite expression for requesting additional academic support."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Can you teach me this?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "I am struggling with this and was wondering whether you would be able to support me, if\nyou have the time."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Do you have the time to take extra classes?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Are you interested in teaching outside the classroom?"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the most polite expression for clarifying a doubt."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Could you please repeat that? I did not understand it the first time."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Repeat that"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Can you repeat it?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "You are not being very clear"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the most polite expression for requesting lecture notes."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Please share notes"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "We will not be able to study without your notes"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Would it be possible for us to get lecture notes after the class? It will help us prepare\nbetter."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "I beg of you to share your lecture notes"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following is an example of middle clipping?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "gym"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "flu"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "phone"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "gram"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘-s’ and ‘-ies’ in ‘dogs’ and ‘babies’ are"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "‘-s’ and ‘-ies’ in ‘dogs’ and ‘babies’ are plural markers as they convey the plurality (number) of\nthe nouns. Plural markers such as ‘-s’ and ‘-ies’ are inflectional morphemes. Therefore, both\noptions - (a) and (b) - apply, making (c) the most appropriate answer."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Plural markers"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Morphemes"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both of the above"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of the above"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    }
+  ]
+}

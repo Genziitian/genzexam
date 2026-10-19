@@ -1,0 +1,382 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 2 · Graded Assignment · Week 2",
+  "subject": "English 2",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘This book is necessary for me to do my research.’ In this sentence, the subordinate\nclause is"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "‘For me to do my research’ is a dependent clause and subordinate to to necessary."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Is necessary"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "This book is necessary"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "For me"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "For me to do my research"
+          }
+        ]
+      ],
+      "correct_answer": 3
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A simple sentence has ______."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "A simple sentence by definition, has an independent clause and no dependent clauses."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Two independent clauses"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "An independent clause and many dependent clauses"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "An independent clause"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "All of the above"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘The vegetables, which I bought only yesterday, are beginning to spoil.’ The independent\nclause is"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The sentence ‘the vegetables are beginning to spoil.’ is a complete sentence by itself;\ngrammatically and meaning-wise. However, the clause ‘which I only bought yesterday’ is a\ndependent clause. Therefore, the independent clause is ‘the vegetables are beginning to spoil.’"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The vegetables which I bought only yesterday"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The vegetables are beginning to spoil"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Which I bought only yesterday"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Which I bought only yesterday are beginning to spoil"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘The CEO of the company along with the board members passed a new resolution\nyesterday’. This sentence has two adjuncts."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The adjuncts are ‘of the company’ and ‘yesterday’.\nHere, there are only two clauses:\nClause 1: Documentaries about animals are of the utmost importance\nClause 2: The rest of the sentence\ntherefore the correct answer is (b)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘The book with the blue cover on the shelf in the drawing room is the one that you gave\nme.’ This sentence has ____ adjuncts."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The adjuncts are ‘with the blue cover’, ‘on the shelf’, ‘in the drawing room’"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "3"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "4"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Documentaries about animals which highlight their rapidly-changing habitats are of the\nutmost importance in order to be able to prevent environmental destruction.’ This\nsentence has 4 clauses."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘The garba celebrations, which were held for a week, were astonishingly grand for a\nminiscule village which was located in the hinterlands of the state.’ This sentence has __\nclauses in total."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Main clause: ‘The garba celebrations were astonishingly grand for a miniscule village ‘\nSub clause 1: ‘which were held for a week’\nSub Clause 2: ‘which was located in the hinterlands of the state’\nThere are three clauses in total. Therefore, the correct answer is (c)\nIdentity the type of subordinate clause in the following sentences (8-10):"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "3"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "4"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In the sentence “The house where we live has a lot of trees”, classify the clause “where we live”."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Noun clause"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Adjectival clause"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Adverbial clause"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In the sentence “The patient had died before the doctor came”, classify the clause “before the doctor came”."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Noun clause"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Adjectival clause"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Adverbial clause"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In the sentence “Whoever sent us this letter should have signed his or her name.”, classify the clause “Whoever sent us this letter”."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Noun clause"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Adjectival clause"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Adverbial clause"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    }
+  ]
+}

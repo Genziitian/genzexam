@@ -1,0 +1,915 @@
+{
+  "papers": [
+    {
+      "path": "/Users/tusharrrsingh/Downloads/exam genz/bulk_quizzes/English 1/English_1_-_Graded_Assignment_-_Week_1.json",
+      "questions": 7,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng1/English 1 - Graded Assignment - Week 01 - genz_iitian - booklet.pdf",
+      "references": [
+        {
+          "source_question": 1,
+          "pages": [
+            2
+          ],
+          "notes": []
+        },
+        {
+          "source_question": 2,
+          "pages": [
+            2
+          ],
+          "notes": []
+        },
+        {
+          "source_question": 3,
+          "pages": [
+            3
+          ],
+          "notes": [
+            "Restored short-vowel IPA /ʊ/ from the source explanation."
+          ]
+        },
+        {
+          "source_question": 4,
+          "pages": [
+            3
+          ],
+          "notes": []
+        },
+        {
+          "source_question": 5,
+          "pages": [
+            3
+          ],
+          "notes": []
+        },
+        {
+          "source_question": 9,
+          "pages": [
+            3,
+            5
+          ],
+          "notes": [
+            "Attached the exact shared passage from the source"
+          ]
+        },
+        {
+          "source_question": 10,
+          "pages": [
+            3,
+            5
+          ],
+          "notes": [
+            "Attached the exact shared passage from the source"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/Users/tusharrrsingh/Downloads/exam genz/bulk_quizzes/English 1/English_1_-_Graded_Assignment_-_Week_2.json",
+      "questions": 10,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng1/English 1 - Graded Assignment - Week 02 - genz_iitian - booklet.pdf",
+      "references": [
+        {
+          "source_question": 1,
+          "pages": [
+            2
+          ],
+          "notes": [
+            "Replaced lost underline reference with the intended word courage; source sentence, key and rationale identify the term."
+          ]
+        },
+        {
+          "source_question": 2,
+          "pages": [
+            2
+          ],
+          "notes": [
+            "Replaced lost underline reference with the intended word worried; source sentence, key and rationale identify the term."
+          ]
+        },
+        {
+          "source_question": 3,
+          "pages": [
+            3
+          ],
+          "notes": []
+        },
+        {
+          "source_question": 4,
+          "pages": [
+            3
+          ],
+          "notes": []
+        },
+        {
+          "source_question": 5,
+          "pages": [
+            3
+          ],
+          "notes": [
+            "Replaced lost underline reference with the intended word red; source sentence, key and rationale identify the term."
+          ]
+        },
+        {
+          "source_question": 6,
+          "pages": [
+            4
+          ],
+          "notes": []
+        },
+        {
+          "source_question": 7,
+          "pages": [
+            4
+          ],
+          "notes": []
+        },
+        {
+          "source_question": 8,
+          "pages": [
+            5
+          ],
+          "notes": []
+        },
+        {
+          "source_question": 9,
+          "pages": [
+            5
+          ],
+          "notes": []
+        },
+        {
+          "source_question": 10,
+          "pages": [
+            5
+          ],
+          "notes": []
+        }
+      ]
+    },
+    {
+      "path": "/Users/tusharrrsingh/Downloads/exam genz/bulk_quizzes/English 1/English_1_-_Graded_Assignment_-_Week_3.json",
+      "questions": 10,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng1/English 1 - Graded Assignment - Week 03 - genz_iitian - booklet.pdf",
+      "references": [
+        {
+          "source_question": 1,
+          "pages": [
+            2
+          ],
+          "notes": [
+            "Attached the exact shared passage from the source"
+          ]
+        },
+        {
+          "source_question": 2,
+          "pages": [
+            2
+          ],
+          "notes": [
+            "Attached the exact shared passage from the source"
+          ]
+        },
+        {
+          "source_question": 3,
+          "pages": [
+            3
+          ],
+          "notes": []
+        },
+        {
+          "source_question": 4,
+          "pages": [
+            3
+          ],
+          "notes": []
+        },
+        {
+          "source_question": 5,
+          "pages": [
+            4
+          ],
+          "notes": []
+        },
+        {
+          "source_question": 6,
+          "pages": [
+            4
+          ],
+          "notes": []
+        },
+        {
+          "source_question": 7,
+          "pages": [
+            4
+          ],
+          "notes": []
+        },
+        {
+          "source_question": 8,
+          "pages": [
+            4,
+            5
+          ],
+          "notes": [
+            "Attached the exact shared passage from the source"
+          ]
+        },
+        {
+          "source_question": 9,
+          "pages": [
+            4,
+            5
+          ],
+          "notes": [
+            "Attached the exact shared passage from the source"
+          ]
+        },
+        {
+          "source_question": 10,
+          "pages": [
+            4,
+            5
+          ],
+          "notes": [
+            "Attached the exact shared passage from the source"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/Users/tusharrrsingh/Downloads/exam genz/bulk_quizzes/English 1/English_1_-_Graded_Assignment_-_Week_4.json",
+      "questions": 5,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng1/English 1 - Graded Assignment - Week 04 - genz_iitian - booklet.pdf",
+      "references": [
+        {
+          "source_question": 6,
+          "pages": [
+            4
+          ],
+          "notes": []
+        },
+        {
+          "source_question": 7,
+          "pages": [
+            4
+          ],
+          "notes": []
+        },
+        {
+          "source_question": 8,
+          "pages": [
+            5
+          ],
+          "notes": []
+        },
+        {
+          "source_question": 9,
+          "pages": [
+            5
+          ],
+          "notes": []
+        },
+        {
+          "source_question": 10,
+          "pages": [
+            5
+          ],
+          "notes": []
+        }
+      ]
+    },
+    {
+      "path": "/Users/tusharrrsingh/Downloads/exam genz/bulk_quizzes/English 1/English_1_-_Graded_Assignment_-_Week_5.json",
+      "questions": 10,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng1/English 1 - Graded Assignment - Week 05 - genz_iitian - booklet.pdf",
+      "references": [
+        {
+          "source_question": 1,
+          "pages": [
+            2
+          ],
+          "notes": []
+        },
+        {
+          "source_question": 2,
+          "pages": [
+            2
+          ],
+          "notes": []
+        },
+        {
+          "source_question": 3,
+          "pages": [
+            3
+          ],
+          "notes": []
+        },
+        {
+          "source_question": 4,
+          "pages": [
+            3
+          ],
+          "notes": []
+        },
+        {
+          "source_question": 5,
+          "pages": [
+            3
+          ],
+          "notes": []
+        },
+        {
+          "source_question": 6,
+          "pages": [
+            4
+          ],
+          "notes": []
+        },
+        {
+          "source_question": 7,
+          "pages": [
+            4
+          ],
+          "notes": []
+        },
+        {
+          "source_question": 8,
+          "pages": [
+            4
+          ],
+          "notes": []
+        },
+        {
+          "source_question": 9,
+          "pages": [
+            5
+          ],
+          "notes": []
+        },
+        {
+          "source_question": 10,
+          "pages": [
+            5
+          ],
+          "notes": []
+        }
+      ]
+    },
+    {
+      "path": "/Users/tusharrrsingh/Downloads/exam genz/bulk_quizzes/English 1/English_1_-_Graded_Assignment_-_Week_6.json",
+      "questions": 5,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng1/English 1 - Graded Assignment - Week 06 - genz_iitian - booklet.pdf",
+      "references": [
+        {
+          "source_question": 1,
+          "pages": [
+            2
+          ],
+          "notes": [
+            "Attached the exact shared passage from the source"
+          ]
+        },
+        {
+          "source_question": 2,
+          "pages": [
+            2,
+            3
+          ],
+          "notes": [
+            "Attached the exact shared passage from the source"
+          ]
+        },
+        {
+          "source_question": 3,
+          "pages": [
+            2,
+            3
+          ],
+          "notes": [
+            "Attached the exact shared passage from the source",
+            "Made the target word refurbished explicit using the source sentence and explanation."
+          ]
+        },
+        {
+          "source_question": 4,
+          "pages": [
+            2,
+            4
+          ],
+          "notes": [
+            "Attached the exact shared passage from the source"
+          ]
+        },
+        {
+          "source_question": 5,
+          "pages": [
+            2,
+            4
+          ],
+          "notes": [
+            "Attached the exact shared passage from the source"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/Users/tusharrrsingh/Downloads/exam genz/bulk_quizzes/English 1/English_1_-_Graded_Assignment_-_Week_7.json",
+      "questions": 5,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng1/English 1 - Graded Assignment - Week 07 - genz_iitian - booklet.pdf",
+      "references": [
+        {
+          "source_question": 1,
+          "pages": [
+            2
+          ],
+          "notes": [
+            "Attached the exact shared passage from the source"
+          ]
+        },
+        {
+          "source_question": 2,
+          "pages": [
+            2
+          ],
+          "notes": [
+            "Attached the exact shared passage from the source",
+            "Removed the audio reference from a self-contained vocabulary question; all original options and answer retained."
+          ]
+        },
+        {
+          "source_question": 3,
+          "pages": [
+            2,
+            3
+          ],
+          "notes": [
+            "Attached the exact shared passage from the source"
+          ]
+        },
+        {
+          "source_question": 4,
+          "pages": [
+            2,
+            3
+          ],
+          "notes": [
+            "Attached the exact shared passage from the source"
+          ]
+        },
+        {
+          "source_question": 5,
+          "pages": [
+            2,
+            3
+          ],
+          "notes": [
+            "Attached the exact shared passage from the source"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/Users/tusharrrsingh/Downloads/exam genz/bulk_quizzes/English 1/English_1_-_Graded_Assignment_-_Week_8.json",
+      "questions": 9,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng1/English 1 - Graded Assignment - Week 08 - genz_iitian - booklet.pdf",
+      "references": [
+        {
+          "source_question": 1,
+          "pages": [
+            2
+          ],
+          "notes": []
+        },
+        {
+          "source_question": 2,
+          "pages": [
+            2
+          ],
+          "notes": []
+        },
+        {
+          "source_question": 3,
+          "pages": [
+            3
+          ],
+          "notes": []
+        },
+        {
+          "source_question": 4,
+          "pages": [
+            3
+          ],
+          "notes": []
+        },
+        {
+          "source_question": 5,
+          "pages": [
+            3
+          ],
+          "notes": []
+        },
+        {
+          "source_question": 6,
+          "pages": [
+            4
+          ],
+          "notes": []
+        },
+        {
+          "source_question": 7,
+          "pages": [
+            4
+          ],
+          "notes": []
+        },
+        {
+          "source_question": 8,
+          "pages": [
+            5
+          ],
+          "notes": []
+        },
+        {
+          "source_question": 9,
+          "pages": [
+            5
+          ],
+          "notes": []
+        }
+      ]
+    },
+    {
+      "path": "/Users/tusharrrsingh/Downloads/exam genz/bulk_quizzes/English 1/English_1_-_Graded_Assignment_-_Week_9.json",
+      "questions": 5,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng1/English 1 - Graded Assignment - Week 09 - genz_iitian - booklet.pdf",
+      "references": [
+        {
+          "source_question": 1,
+          "pages": [
+            2
+          ],
+          "notes": []
+        },
+        {
+          "source_question": 2,
+          "pages": [
+            2
+          ],
+          "notes": []
+        },
+        {
+          "source_question": 3,
+          "pages": [
+            3
+          ],
+          "notes": []
+        },
+        {
+          "source_question": 4,
+          "pages": [
+            3
+          ],
+          "notes": []
+        },
+        {
+          "source_question": 5,
+          "pages": [
+            3
+          ],
+          "notes": []
+        }
+      ]
+    },
+    {
+      "path": "/Users/tusharrrsingh/Downloads/exam genz/bulk_quizzes/English 1/English_1_-_Graded_Assignment_-_Week_10.json",
+      "questions": 10,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng1/English 1 - Graded Assignment - Week 10 - genz_iitian - booklet.pdf",
+      "references": [
+        {
+          "source_question": 1,
+          "pages": [
+            2
+          ],
+          "notes": []
+        },
+        {
+          "source_question": 2,
+          "pages": [
+            2
+          ],
+          "notes": []
+        },
+        {
+          "source_question": 3,
+          "pages": [
+            3
+          ],
+          "notes": []
+        },
+        {
+          "source_question": 4,
+          "pages": [
+            3
+          ],
+          "notes": []
+        },
+        {
+          "source_question": 5,
+          "pages": [
+            3
+          ],
+          "notes": []
+        },
+        {
+          "source_question": 6,
+          "pages": [
+            4
+          ],
+          "notes": []
+        },
+        {
+          "source_question": 7,
+          "pages": [
+            4
+          ],
+          "notes": []
+        },
+        {
+          "source_question": 8,
+          "pages": [
+            4
+          ],
+          "notes": []
+        },
+        {
+          "source_question": 9,
+          "pages": [
+            5
+          ],
+          "notes": []
+        },
+        {
+          "source_question": 10,
+          "pages": [
+            5
+          ],
+          "notes": []
+        }
+      ]
+    },
+    {
+      "path": "/Users/tusharrrsingh/Downloads/exam genz/bulk_quizzes/English 1/English_1_-_Graded_Assignment_-_Week_11.json",
+      "questions": 10,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng1/English 1 - Graded Assignment - Week 11 - genz_iitian - booklet.pdf",
+      "references": [
+        {
+          "source_question": 1,
+          "pages": [
+            2
+          ],
+          "notes": []
+        },
+        {
+          "source_question": 2,
+          "pages": [
+            2
+          ],
+          "notes": []
+        },
+        {
+          "source_question": 3,
+          "pages": [
+            2
+          ],
+          "notes": []
+        },
+        {
+          "source_question": 4,
+          "pages": [
+            3
+          ],
+          "notes": []
+        },
+        {
+          "source_question": 5,
+          "pages": [
+            3
+          ],
+          "notes": []
+        },
+        {
+          "source_question": 6,
+          "pages": [
+            3
+          ],
+          "notes": []
+        },
+        {
+          "source_question": 7,
+          "pages": [
+            4
+          ],
+          "notes": []
+        },
+        {
+          "source_question": 8,
+          "pages": [
+            4
+          ],
+          "notes": []
+        },
+        {
+          "source_question": 9,
+          "pages": [
+            4
+          ],
+          "notes": []
+        },
+        {
+          "source_question": 10,
+          "pages": [
+            5
+          ],
+          "notes": []
+        }
+      ]
+    },
+    {
+      "path": "/Users/tusharrrsingh/Downloads/exam genz/bulk_quizzes/English 1/English_1_-_Graded_Assignment_-_Week_12.json",
+      "questions": 8,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng1/English 1 - Graded Assignment - Week 12 - genz_iitian - booklet.pdf",
+      "references": [
+        {
+          "source_question": 1,
+          "pages": [
+            2
+          ],
+          "notes": [
+            "Attached the exact shared passage from the source"
+          ]
+        },
+        {
+          "source_question": 2,
+          "pages": [
+            2
+          ],
+          "notes": [
+            "Attached the exact shared passage from the source"
+          ]
+        },
+        {
+          "source_question": 3,
+          "pages": [
+            2,
+            3
+          ],
+          "notes": [
+            "Attached the exact shared passage from the source"
+          ]
+        },
+        {
+          "source_question": 4,
+          "pages": [
+            2,
+            3
+          ],
+          "notes": [
+            "Attached the exact shared passage from the source"
+          ]
+        },
+        {
+          "source_question": 5,
+          "pages": [
+            2,
+            3
+          ],
+          "notes": [
+            "Attached the exact shared passage from the source"
+          ]
+        },
+        {
+          "source_question": 6,
+          "pages": [
+            2,
+            4
+          ],
+          "notes": [
+            "Attached the exact shared passage from the source"
+          ]
+        },
+        {
+          "source_question": 7,
+          "pages": [
+            2,
+            4
+          ],
+          "notes": [
+            "Attached the exact shared passage from the source"
+          ]
+        },
+        {
+          "source_question": 9,
+          "pages": [
+            2,
+            5
+          ],
+          "notes": [
+            "Attached the exact shared passage from the source"
+          ]
+        }
+      ]
+    }
+  ],
+  "excluded": [
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng1/English 1 - Graded Assignment - Week 01 - genz_iitian - booklet.pdf",
+      "question_number": 6,
+      "pages": [
+        3,
+        4
+      ],
+      "reason": "Missing source listening audio"
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng1/English 1 - Graded Assignment - Week 01 - genz_iitian - booklet.pdf",
+      "question_number": 7,
+      "pages": [
+        3,
+        4
+      ],
+      "reason": "Missing source listening audio"
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng1/English 1 - Graded Assignment - Week 01 - genz_iitian - booklet.pdf",
+      "question_number": 8,
+      "pages": [
+        3,
+        4
+      ],
+      "reason": "Missing source listening audio"
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng1/English 1 - Graded Assignment - Week 04 - genz_iitian - booklet.pdf",
+      "question_number": 1,
+      "pages": [
+        2
+      ],
+      "reason": "Missing source listening audio"
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng1/English 1 - Graded Assignment - Week 04 - genz_iitian - booklet.pdf",
+      "question_number": 2,
+      "pages": [
+        2
+      ],
+      "reason": "Missing source listening audio"
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng1/English 1 - Graded Assignment - Week 04 - genz_iitian - booklet.pdf",
+      "question_number": 3,
+      "pages": [
+        3
+      ],
+      "reason": "Missing source listening audio"
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng1/English 1 - Graded Assignment - Week 04 - genz_iitian - booklet.pdf",
+      "question_number": 4,
+      "pages": [
+        3
+      ],
+      "reason": "Missing source listening audio"
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng1/English 1 - Graded Assignment - Week 04 - genz_iitian - booklet.pdf",
+      "question_number": 5,
+      "pages": [
+        4
+      ],
+      "reason": "Missing source listening audio"
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng1/English 1 - Graded Assignment - Week 08 - genz_iitian - booklet.pdf",
+      "question_number": 10,
+      "pages": [
+        5
+      ],
+      "reason": "Source emphasis/word mismatch"
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng1/English 1 - Graded Assignment - Week 12 - genz_iitian - booklet.pdf",
+      "question_number": 10,
+      "pages": [
+        2,
+        5
+      ],
+      "reason": "Both because and owing to can express cause; source key needs clarification"
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng1/English 1 - Graded Assignment - Week 12 - genz_iitian - booklet.pdf",
+      "question_number": 8,
+      "reason": "All three offered functions can be fulfilled by supporting sentences; no uniquely incorrect original option."
+    }
+  ]
+}

@@ -1,0 +1,189 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Statistics 1 · Graded Assignment · Week 3",
+  "subject": "Statistics 1",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The numbers a, b, c, d have frequencies (x + 6), (x + 2), (x −3) and x respectively. If\ntheir mean is m, ﬁnd the value of x."
+        },
+        {
+          "kind": "text",
+          "value": "Give an expression in the stated parameters."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "type": "short_answer",
+      "acceptable_answers": [
+        "ceil((6*a+2*b-3*c-5*m)/(4*m-a-b-c-d))",
+        "ceil((6a+2b-3c-5m)/(4m-a-b-c-d))"
+      ],
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The weighted-mean equation is m(4x+5)=x(a+b+c+d)+6a+2b−3c. Solve for x and round upward as requested."
+        }
+      ]
+    },
+    {
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The mean and sample standard deviation of the dataset consisting of N observations\nis m and s respectively. Later it is noted that one observation x is wrongly noted as p.\nBased on the given information, answer questions (2) and (3).\nWhat is the mean of the original dataset?"
+        },
+        {
+          "kind": "text",
+          "value": "Give an expression in the stated parameters."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "type": "short_answer",
+      "acceptable_answers": [
+        "m+(x-p)/N"
+      ],
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Replacing the incorrectly recorded p by x changes the total by x−p, so the corrected mean is m+(x−p)/N."
+        }
+      ]
+    },
+    {
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The mean and sample standard deviation of the dataset consisting of N observations\nis m and s respectively. Later it is noted that one observation x is wrongly noted as p.\nBased on the given information, answer questions (2) and (3).\nWhat is the sample variance of the original dataset?"
+        },
+        {
+          "kind": "text",
+          "value": "Give an expression in the stated parameters."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "type": "short_answer",
+      "acceptable_answers": [
+        "s^2+(x^2-p^2-N*((m+(x-p)/N)^2-m^2))/(N-1)",
+        "s^2+(x^2-p^2-N((m+(x-p)/N)^2-m^2))/(N-1)",
+        "s**2+(x**2-p**2-N*((m+(x-p)/N)**2-m**2))/(N-1)"
+      ],
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The original sum of squared values is (N−1)s²+Nm². Replace p² by x², then subtract N times the square of the corrected mean and divide by N−1."
+        }
+      ]
+    },
+    {
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The observations x₁,x₂,…,xₙ are retail prices. How does the sample variance change if the same constant c is added to every observation?"
+        },
+        {
+          "kind": "text",
+          "value": "State how the sample variance changes."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "type": "short_answer",
+      "acceptable_answers": [
+        "unchanged",
+        "same",
+        "does not change",
+        "sample variance is unchanged"
+      ],
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Adding the same constant to all observations leaves every deviation from the mean unchanged; therefore sample variance is unchanged."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-1/c142c7c0c403_q8_prompt_p4.png",
+          "alt": "Original Statistics 1 question 8 prompt."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/c142c7c0c403_q8_option-1_p4.png",
+            "alt": "Original option 1 for Statistics 1 question 8."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/c142c7c0c403_q8_option-2_p4.png",
+            "alt": "Original option 2 for Statistics 1 question 8."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/c142c7c0c403_q8_option-3_p4.png",
+            "alt": "Original option 3 for Statistics 1 question 8."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/c142c7c0c403_q8_option-4_p4.png",
+            "alt": "Original option 4 for Statistics 1 question 8."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/c142c7c0c403_q8_option-5_p4.png",
+            "alt": "Original option 5 for Statistics 1 question 8."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A factory recorded production over10days as x,x+15,140,150,160,170,180,190,15,20. The mean is128. Find x."
+        }
+      ],
+      "numerical_answer": 120,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A factory recorded production over10days as x,x+15,140,150,160,170,180,190,15,20. The mean is128. On days5to7, each recorded value exceeds the actual value by15. The values15and20on days9and10should be150and200. Find the corrected average."
+        }
+      ],
+      "numerical_answer": 155,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ]
+}

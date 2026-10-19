@@ -694,6 +694,7 @@
   }
   function paperText(value) {
     let text = String(value == null ? "" : value);
+    if (/```|!\[[^\n]*?\]\(/.test(text)) return text.trim();
     if (/<\/?[a-z][\s\S]*>/i.test(text))
       text = text
         .replace(/<br\s*\/?>/gi, "\n")
@@ -774,7 +775,7 @@
     let code = q.stem_code ? String(q.stem_code) : "";
     let lang = q.stem_code_language || "pseudocode";
     let outro = "";
-    if (!code && stem) {
+    if (!code && stem && !/```|!\[[^\n]*?\]\(/.test(stem)) {
       const parsed = extractProcedureSteps(stem);
       if (parsed) {
         stem = parsed.intro;

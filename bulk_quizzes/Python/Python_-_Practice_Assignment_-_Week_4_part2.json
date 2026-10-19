@@ -1,0 +1,446 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Python · Practice Assignment · Week 4 · Part 2",
+  "subject": "Python",
+  "section": "practice",
+  "questions": [
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Sequence unpacking\nSelect all code snippets that run without any error. (MSQ)"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The number of variables on the left should exactly match the size of the list/tuple to the right."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "code",
+            "value": "a, b = (1, 2)\nprint(a)\nprint(b)",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "a, b, c = (1, 2, 3)\nprint(a)\nprint(b)\nprint(c)",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "a, b = (1, 2, 3)\nprint(a)\nprint(b)\nprint(c)",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "a, b, c, d = (1, 2, 3)\nprint(a)\nprint(b)\nprint(c)\nprint(d)",
+            "language": "python"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Write a program that prints True if a number is divisible by\n5\n5 and False otherwise. Select all correct implementations of this program. [MSQ]"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "code",
+            "value": "n = int(input())\nif n % 5 == 0:\n   print(True)\nelse:\n   print(False)",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "n = int(input())\nprint(n % 5 == 0)",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "n = int(input())\nprint(True if n % 5 == 0 else False)",
+            "language": "python"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The output of a certain snippet of code is given below:\nSelect all valid implementations of a piece of code that produces the above output when executed.\n[MSQ]"
+        },
+        {
+          "kind": "code",
+          "value": "[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]",
+          "language": "python"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "code",
+            "value": "L = [x for x in range(10)]\nprint(L)",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "for x in range(len(L)):\n   print(x)",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "print([x for x in range(10)])",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "L = [print(x) for x in range(10)]",
+            "language": "python"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        2
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following code-block:\nSelect the code-snippet that is equivalent to the one given above."
+        },
+        {
+          "kind": "code",
+          "value": "L = [ ]\nfor x in range(10):\n   if x % 2 == 0:\n       L.append(x)",
+          "language": "python"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Try to execute code that has list comprehension. Become familiar with the syntax. There is no new\nconcept involved here."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "code",
+            "value": "L = [if x % 2 == 0 for x in range(10)]",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "L = [x % 2 for x in range(10)]",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "L = [x for x in range(10) if x % 2 == 0]",
+            "language": "python"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If L is a list of words, write a program to create a list named P that has those words which begin and\nend with the same letter. Select all correct implementations of this program. [MSQ]"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "code",
+            "value": "P = [word for word in L if word[0] == word[-1] ]",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "P = [word if word[0] == word[-1] for word in L]",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "P = [if word[0] == word[-1] for word in L]",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "P = [ ]\nfor word in L:\n   if word[0] == word[-1]:\n       P.append(word)",
+            "language": "python"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        3
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Create a list\nL\nL of tuples. Each tuple should be of the form\n(x,y)\n( x , y ) such that\nx+y=100\nx + y =100 and both elements are positive integers. The order matters. That is,\n(99,1)\n(99,1) is different from\n(1,99)\n(1,99) . Select all correct implementations. [MSQ]"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "code",
+            "value": "L = [(x, y) for x in range(1, 100) for y in range(1, 100) if x +\ny == 100]",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "L = [ ]\nfor x in range(1, 100):\n   for y in range(1, 100):\n       if x + y == 100:\n           L.append((x, y))",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "L = [(x, y) for x in range(1, 100) for y in range(1, 100)]",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "L = [(x, 100 - x) for x in range(1, 100)]",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "L = [(x, 100 - x) for x in range(1, 101)]",
+            "language": "python"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1,
+        3
+      ],
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The filtered comprehension, nested loops with the same test, and (x, 100−x) for x = 1,…,99 all produce exactly the required positive ordered pairs."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Create a list\nL\nL of tuples. Each tuple should be of the form\n(x,y)\n( x , y ) such that\nx+y=100\nx + y =100 and\nx≤y\nx ≤ y , with both elements being positive integers. [MSQ]"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "code",
+            "value": "L = [(x, y) for x in range(1, 100) for y in range(1, 100) if x +\ny == 100]",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "L = [(x, y) for x in range(1, 100) for y in range(1, 100) if x +\ny == 100 and x <= y]",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "L = [ ]\nfor x in range(1, 100):\n   for y in range(1, 100):\n       if x + y == 100 and x <= y:\n           L.append((x, y))",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "L = [(x, y) for x in range(1, 100) for y in range(1, 100)]",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "L = [(x, 100 - x) for x in range(1, 100) for y in range(1, 100)]",
+            "language": "python"
+          }
+        ]
+      ],
+      "correct_answers": [
+        1,
+        2
+      ],
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Both correct alternatives enforce x+y == 100 and x <= y. The other alternatives omit a required condition."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following snippet of code:\nSelect the snippet of code that is equivalent to this."
+        },
+        {
+          "kind": "code",
+          "value": "M = [ [0 for j in range(3)] for i in range(3)]",
+          "language": "python"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "We are creating a zero-matrix here."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "code",
+            "value": "M = [ ]\nfor i in range(3):\n   M.append([ ])\n   for j in range(3):\n       M[-1].append(0)",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "M = [ ]\nfor i in range(6):\n   M.append(0)",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "M = [ ]\nfor i in range(3):\n   M.append(0)",
+            "language": "python"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "We wish to create a list L of size\nn\nn with the following content. It should have the number\n1\n1 at even indices and the number\n0\n0 at odd indices. Select all correct implementations that achieve this. [MSQ]"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "code",
+            "value": "n = int(input())\nL = [ ]\nfor i in range(n):\n   if i % 2 == 0:\n       L.append(1)\n   else:\n       L.append(0)",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "n = int(input())\nL = [1 if i % 2 == 0 else 0 for i in range(n)]",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "n = int(input())\nL = [1 for i in range(n) if i % 2 == 0 else 0]",
+            "language": "python"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1
+      ],
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The loop and the ternary list comprehension both put 1 at even indices and 0 at odd indices. The third alternative has invalid comprehension syntax."
+        }
+      ]
+    }
+  ]
+}

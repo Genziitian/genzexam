@@ -1,0 +1,358 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 2 · Graded Assignment · Week 11",
+  "subject": "English 2",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘-s’ and ‘-ies’ in dogs and babies are:"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Plural markers"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Morphemes"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both of the above"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of the above"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Reduction of a word to one of its parts is called:"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Blending"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Clipping"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Borrowing"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following is an example of middle clipping?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Gym"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Flu"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Phone"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Gram"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "“He did not break down when he heard the grave news. Rather, he became very stoic and appeared to bear it quite normally.” The connecting word/phrase is:"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "And"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Became"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Rather"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "There is no connecting word/phrase"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "“He did not break down when he heard the grave news. Rather, he became very stoic and appeared to bear it quite normally.” Here, rather means the same as instead."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "English has many prefixes and suffixes from Greek and Latin."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Bungalow, loot, and pyjamas are English words from:"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Latin"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "French"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Indian languages"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Spanish"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "“The business tycoon who made billions with his hotel chain Resorta, has been found dead.” Here tycoon means:"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "A headman"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A billionaire"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A CEO"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A wealthy and powerful person"
+          }
+        ]
+      ],
+      "correct_answer": 3
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Tycoon is a word borrowed from which language?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Latin"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "French"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Italian"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Japanese"
+          }
+        ]
+      ],
+      "correct_answer": 3
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "“The music club auditions allow candidates to have a karaoke to the song they’ll be singing.” Here karaoke means:"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Lyrics"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Sheet music"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Pre-recorded backing tracks"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Funny noises"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    }
+  ]
+}

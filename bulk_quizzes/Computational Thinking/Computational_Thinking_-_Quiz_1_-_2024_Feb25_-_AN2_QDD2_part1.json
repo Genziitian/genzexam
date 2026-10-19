@@ -1,0 +1,355 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Computational Thinking · Quiz 1 · 2024 Feb25 · AN2 QDD2 · Part 1",
+  "subject": "Computational Thinking",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Library\" dataset. What will B represent at the end of execution?"
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "A = 0\ncount = 0\nwhile(Table 1 has more rows){\n    Read the first row X in Table 1\n    count = count + 1\n    if(X.Author != \"Kalam\" and X.Language != \"English\"){\n        A = A + 1\n    }\n    Move X to Table 2\n}\nB = count - A"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Number of books written by author Kalam in English"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of books not written by author Kalam in English"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of English books written by authors other than Kalam"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of books that are written by author Kalam or in English or both"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "A counts books that are neither by Kalam nor in English, and count is the total number of books. So B = count − A = total − (not-Kalam ∧  not-English) = the number of books written by Kalam OR in English (or both)."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Scores\" dataset. If count2 should represent the number of male students whose Physics marks are less than or equal to Mathematics marks, select the correct code fragment for A and B."
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "count1 = 0, count2 = 0\nwhile(Table 1 has more rows){\n    Read the first row X in Table 1\n    if(....A.... or ....B....){\n        count1 = count1 + 1\n    }\n    else{\n        count2 = count2 + 1\n    }\n    Move X to Table 2\n}"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "A: X.Gender == 'F' | B: X.Mathematics > X.Physics"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A: X.Gender == 'M' | B: X.Mathematics < X.Physics"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A: X.Gender == 'F' | B: X.Mathematics < X.Physics"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A: X.Gender == 'M' | B: X.Mathematics > X.Physics"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 3,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "count2 is the else branch = NOT(A or B) = (not A) and (not B). We want that to equal (male) and (Physics ≤ Mathematics). So not A = male ⇒  A = Gender == 'F', and not B = (Physics ≤ Mathematics) ⇒  B = Mathematics < Physics."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Scores\" dataset. What will A represent at the end of the execution?"
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "A = 0\nwhile(Pile 1 has more cards){\n    Read the top card X from Pile 1\n    A = A + isInSeq(X)\n    Move X to Pile 2\n}\nProcedure isInSeq(X)\n    if(X.Mathematics > X.Physics){\n        if(X.Mathematics > X.Chemistry){\n            return(1)\n        }\n    }\n    return(0)\nEnd isInSeq"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Number of students with highest marks in Mathematics among the three subjects"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of students with highest marks in Mathematics and lowest marks in Physics"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of students with highest marks in Chemistry among the three subjects"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of students with lowest marks in Physics among the three subjects"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "isInSeq returns 1 only when Mathematics is greater than both Physics and Chemistry, i.e. Mathematics is the highest of the three subjects. So A counts students whose highest marks are in Mathematics."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Words\" dataset. What will count represent at the end of execution?"
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "count = 0\nwhile(Table 1 has more rows){\n    Read the first row X in Table 1\n    Move X to Table 2\n    i = 1, A = False, B = False\n    while(i < X.LetterCount){\n        if(ith letter of X.word is a vowel){\n            if(A){\n                B = True\n            }\n            A = True\n        }\n        else{\n            A = False\n        }\n        i = i + 1\n    }\n    if(B){\n        count = count + 1\n    }\n}"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Number of words with at least one pair of vowels occurring consecutively"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of words with at most two pairs of vowels occurring consecutively"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of words with at least two pairs of the same vowel occurring consecutively"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of words with at most two pairs of the same vowel occurring consecutively"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 3,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "A is True when the previous letter was a vowel; if the current letter is also a vowel, B is set True (two vowels in a row). B is only ever set, so it flags whether the word has at least one pair of consecutive vowels; count tallies such words."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Words\" table. At the end of the execution, count stores the number of pairs of nouns such that both nouns have either the same letter count or both end with a full"
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "stop. Choose the correct fragments for Statement 1, 2 and 3.\ncount = 0\nwhile(Table 1 has more rows){\n    Read the first row X in Table 1\n    Move X to Table 2\n    if(X.PartOfSpeech == \"Noun\"){\n        while(Table 1 has more rows){\n            Read the first row Y in Table 1\n            Move Y to Table 3\n            if(*** Statement 1 ***){\n                if(*** Statement 2 ***){\n                    count = count + 1\n                }\n                else{\n                    if(*** Statement 3 ***){\n                        count = count + 1\n                    }\n                }\n            }\n        }\n        Move all rows from Table 3 to Table 1\n    }\n}"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Statement 1: X.PartOfSpeech == Y.PartOfSpeech | Statement 2: X.LetterCount == Y.LetterCount | Statement 3: X.Word and Y.Word end with a full stop"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Statement 1: X.Word and Y.Word end with a full stop | Statement 2: X.PartOfSpeech == Y.PartOfSpeech | Statement 3: X.LetterCount == Y.LetterCount"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Statement 1: X.LetterCount == Y.LetterCount | Statement 2: X.Word and Y.Word end with a full stop | Statement 3: X.PartOfSpeech == Y.PartOfSpeech"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Statement 1: X.LetterCount == Y.LetterCount | Statement 2: X.PartOfSpeech == Y.PartOfSpeech | Statement 3: X.Word and Y.Word end with a full stop"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 4,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "X is already a Noun, so Statement 1 must ensure Y is also a Noun (X.PartOfSpeech == Y.PartOfSpeech). Then the pair counts if they share the same letter count (Statement 2), or otherwise if both end with a full stop (Statement 3)."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Scores\" dataset. Count captures the number of students whose total marks are more than the class average (AvgT) but who scored below the subject average in at least one subject (AvgP, AvgC, AvgM are the Physics, Chemistry and Mathematics averages). Choose the correct code fragment for the marked block."
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "Count = 0\nwhile(Table 1 has more rows){\n    Read the first row X in Table 1\n    A = False, B = False, C = False, D = False\n    if(X.Total > AvgT){\n        A = True\n    }\n    if(X.Mathematics < AvgM){\n        B = True\n    }\n    if(X.Physics < AvgP){\n        C = True\n    }\n    if(X.Chemistry < AvgC){\n        D = True\n    }\n    ***** Fill the code *****\n    Move X to Table 2\n}"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "if(A and (B or C or D)){\nCount = Count + 1\n}"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "if(A or (B and C and D)){\nCount = Count + 1\n}"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "if(A and not(B and C and D)){\nCount = Count + 1\n}"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "if(A or not(B or C or D)){\nCount = Count + 1\n}"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 4,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "A means total above the class average; B, C, D mean below average in Mathematics, Physics, Chemistry respectively. 'Below average in at least one subject' is (B or C or D), so the student qualifies when A and (B or C or D)."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Words\" dataset. What will A represent at the end of the execution?"
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "SumT = 0, CountT = 0, B = 0\nwhile(Table 1 has more rows){\n    Read the first row X in Table 1\n    CountT = CountT + 1\n    SumT = SumT + X.LetterCount\n    Move X to Table 2\n}\nB = SumT / CountT\nSumS = 0, CountS = 0, A = 0, C = 0\nwhile(Table 2 has more rows){\n    Read the first row X in Table 2\n    CountS = CountS + 1\n    SumS = SumS + X.LetterCount\n    if(X.word ends with a full stop){\n        C = SumS / CountS\n        if(C < B){\n            A = A + 1\n        }\n        SumS = 0, CountS = 0\n    }\n    Move X to Table 1\n}"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Number of sentences with average letter count more than the average letter count of dataset"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of sentences with average letter count less than the average letter count of dataset"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of words with average letter count more than the average letter count per word of dataset"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of words with average letter count less than the average letter count per word of dataset"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 4,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "B is the average letter count per word over the whole dataset. The second loop accumulates letters and word-count within each sentence; at a full stop it computes that sentence's average (C) and increments A when C < B. So A is the number of sentences whose average letter count is less than the dataset's average."
+        }
+      ]
+    }
+  ]
+}

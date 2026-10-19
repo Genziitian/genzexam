@@ -1,0 +1,247 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Python · OPPE 1 · 2025 Jan · Set 4",
+  "subject": "Python",
+  "section": "mock_test",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 1 - Problem 1: Check if a Triangle is Obtuse** (Function Type)\n\nGiven two angles of a triangle (theta_1 and theta_2) in degrees, determine if the triangle is obtuse. A triangle is obtuse if it has one angle greater than 90 degrees.\n\nNOTE: This is a function type question."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def is_obtuse(theta_1: int, theta_2: int) -> bool:\n    '''\n    Check if a triangle is obtuse given two angles.\n\n    Args:\n        theta_1 (int): The first angle of the triangle.\n        theta_2 (int): The second angle of the triangle.\n\n    Returns:\n        bool: True if the triangle is obtuse, False otherwise.\n    '''\n    ..."
+        }
+      ],
+      "acceptable_answers": [
+        "Check if a Triangle is Obtuse",
+        "is_obtuse"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Sample Test Cases / Examples:**\n\n```text\n>>> is_obtuse(30, 60) -> False (other angle is 90 so right triangle)\n>>> is_obtuse(100, 40) -> True (has an angle 100, so obtuse)\n>>> is_obtuse(30, 30) -> True (other angle is 120, so obtuse)\n>>> is_obtuse(60, 45) -> False (other angle is 75, so acute)\n```"
+        },
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def is_obtuse(theta_1: int, theta_2: int) -> bool:\n    '''\n    Check if a triangle is obtuse given two angles.\n\n    Args:\n        theta_1 (int): The first angle of the triangle.\n        theta_2 (int): The second angle of the triangle.\n\n    Returns:\n        bool: True if the triangle is obtuse, False otherwise.\n    '''\n    # The three angles of a triangle sum to 180 degrees.\n    theta_3 = 180 - theta_1 - theta_2\n    # Obtuse if any one angle exceeds 90 degrees.\n    return theta_1 > 90 or theta_2 > 90 or theta_3 > 90"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 1 - Problem 2: Markdown Image to HTML Image** (Function Type)\n\nGiven a string containing a Markdown image link of the format ![alt text](image_url), convert it to a proper HTML image tag of the format <img src=\"image_url\" alt=\"alt text\">.\n\nNOTE: This is a function type question."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def markdown_to_html_image(markdown: str) -> str:\n    ..."
+        }
+      ],
+      "acceptable_answers": [
+        "Markdown Image to HTML Image",
+        "markdown_to_html_image"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Sample Test Cases / Examples:**\n\n```text\n>>> markdown_to_html_image(\"![awesome dog](dog.jpg)\") -> '<img src=\"dog.jpg\" alt=\"awesome dog\">'\n>>> markdown_to_html_image(\"![python logo](python.png)\") -> '<img src=\"python.png\" alt=\"python logo\">'\n```"
+        },
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "import re\n\ndef markdown_to_html_image(markdown: str) -> str:\n    # Capture the alt text inside [...] and the url inside (...).\n    match = re.match(r'!\\[(.*?)\\]\\((.*?)\\)', markdown)\n    alt_text = match.group(1)\n    image_url = match.group(2)\n    return f'<img src=\"{image_url}\" alt=\"{alt_text}\">'"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 1 - Problem 3: Remove n Elements from the Given Index** (Function Type)\n\nWrite a function remove_n_elems_from_index that takes a tuple t, an integer n, and an index i as input. The function should return a new tuple with the n elements starting at index i removed. If the index i is out of bounds, return the original tuple.\n\nNOTE: This is a function type question."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def remove_n_elems_from_index(t: tuple, n: int, i: int) -> tuple:\n    ..."
+        }
+      ],
+      "acceptable_answers": [
+        "Remove n Elements from the Given Index",
+        "remove_n_elems_from_index"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Sample Test Cases / Examples:**\n\n```text\n>>> remove_n_elems_from_index((1, 2, 3, 4, 5), 2, 1) -> (1, 4, 5)\n>>> remove_n_elems_from_index((10, 20, 30, 40, 50), 3, 2) -> (10, 20, 30)\n>>> remove_n_elems_from_index((1, 2, 3, 4, 5), 5, 0) -> ()\n```"
+        },
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def remove_n_elems_from_index(t: tuple, n: int, i: int) -> tuple:\n    # If the start index is out of bounds, return the tuple unchanged.\n    if i < 0 or i >= len(t):\n        return t\n    # Keep everything before index i and everything from index i + n onward.\n    return t[:i] + t[i + n:]"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 2 - Problem 1: First Non-Repeating Character in a String** (Function Type)\n\nWrite a function first_non_repeating_char(s) that returns the first non-repeating character in the string s. If no such character exists, return None.\n\nNOTE: This is a function type question."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def first_non_repeating_char(s: str):\n    ..."
+        }
+      ],
+      "acceptable_answers": [
+        "First Non-Repeating Character in a String",
+        "first_non_repeating_char"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Sample Test Cases / Examples:**\n\n```text\n>>> first_non_repeating_char(\"abcab\") -> 'c'\n>>> first_non_repeating_char(\"aabbcc\") -> None\n>>> first_non_repeating_char(\"buzzingbee\") -> 'u'\n```"
+        },
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "from collections import Counter\n\ndef first_non_repeating_char(s: str):\n    # Count how many times each character appears.\n    counts = Counter(s)\n    # Return the first character whose count is exactly 1.\n    for ch in s:\n        if counts[ch] == 1:\n            return ch\n    return None"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 2 - Problem 2: Compute Running Average Skipping NaN** (Io Type)\n\nRead numbers from the input until the line END and print the running average after adding each number as float with one decimal place. If NaN is encountered, ignore it and do not take it into account or print anything for that.\n\nUse round(num, 1) for printing the average.\n\nNOTE: This is an I/O type question."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "# Read input, process, and print the output"
+        }
+      ],
+      "acceptable_answers": [
+        "Compute Running Average Skipping NaN"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Sample Test Cases / Examples:**\n\n```text\nInput:\n2\n4\n6\nNaN\n8\nEND\n\nOutput:\n2.0\n3.0\n4.0\n5.0\n```"
+        },
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "import sys\n\ntotal = 0.0\ncount = 0\nfor line in sys.stdin:\n    value = line.strip()\n    if value == \"END\":\n        break\n    # Skip NaN: it should not affect the running average.\n    if value == \"NaN\" or value == \"\":\n        continue\n    total += float(value)\n    count += 1\n    print(round(total / count, 1))"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 3 - Problem 1: Time Series Analysis** (Function Type)\n\nGiven a list of numerical values, implement the following functions:\n• difference(data: list) -> list: Returns list of differences between consecutive elements.\n• nth_order_difference(data: list, n: int) -> list: Returns list of nth order differences.\n• has_positive_trend(data: list) -> bool: Returns True if the list has a positive trend.\n• moving_average(data: list, window_size: int) -> list: Returns list of moving averages.\n• has_negative_average_trend(data: list, window_size: int) -> bool: Returns True if list has negative trend after moving average.\n\nNOTE: This is a function type question."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def difference(data: list) -> list:\n    ...\n\ndef nth_order_difference(data: list, n: int) -> list:\n    ...\n\ndef has_positive_trend(data: list) -> bool:\n    ...\n\ndef moving_average(data: list, window_size: int) -> list:\n    ...\n\ndef has_negative_average_trend(data: list, window_size: int) -> bool:\n    ..."
+        }
+      ],
+      "acceptable_answers": [
+        "Time Series Analysis",
+        "difference"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def difference(data: list) -> list:\n    # Differences between each pair of consecutive elements.\n    return [data[i + 1] - data[i] for i in range(len(data) - 1)]\n\ndef nth_order_difference(data: list, n: int) -> list:\n    # Apply difference() n times.\n    result = data\n    for _ in range(n):\n        result = difference(result)\n    return result\n\ndef has_positive_trend(data: list) -> bool:\n    # Positive trend means every consecutive difference is positive.\n    return all(d > 0 for d in difference(data))\n\ndef moving_average(data: list, window_size: int) -> list:\n    # Average of each sliding window of the given size.\n    return [sum(data[i:i + window_size]) / window_size\n            for i in range(len(data) - window_size + 1)]\n\ndef has_negative_average_trend(data: list, window_size: int) -> bool:\n    # Negative trend means every consecutive difference of the\n    # moving averages is negative.\n    ma = moving_average(data, window_size)\n    return all(d < 0 for d in difference(ma))"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 3 - Problem 2: Diamond** (Io Type)\n\nGiven an odd number n as an input print a diamond pattern with '*' in n lines.\n\nNOTE: This is an I/O type question."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "# Read input, process, and print the output"
+        }
+      ],
+      "acceptable_answers": [
+        "Diamond"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Sample Test Cases / Examples:**\n\n```text\nInput: 3\nOutput:\n *\n***\n *\n\nInput: 5\nOutput:\n  *\n ***\n*****\n ***\n  *\n```"
+        },
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "n = int(input())\nmid = n // 2\nfor i in range(n):\n    # Number of stars grows to the middle row then shrinks.\n    stars = 2 * (mid - abs(mid - i)) + 1\n    spaces = (n - stars) // 2\n    print(\" \" * spaces + \"*\" * stars)"
+        }
+      ]
+    }
+  ]
+}

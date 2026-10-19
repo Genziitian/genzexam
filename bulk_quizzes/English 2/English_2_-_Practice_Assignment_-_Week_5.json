@@ -1,0 +1,262 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 2 · Practice Assignment · Week 5",
+  "subject": "English 2",
+  "section": "practice",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘It sounds like the rain might be stopping.’ The modal verb here is"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Be"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Might"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Like"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Sounds"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "She _____ have won."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Can"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Could"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Ought"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of the above"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘I will read you the text message she sent when we meet tomorrow.’ The tense auxiliary here is"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Will"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Read"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Meet"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of the above"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Modal auxiliaries are __________."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Factual elements"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Non-factual elements"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Emphasises factuality"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of the above"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘Lata ______ decide upon her summer plans as soon as possible so that she is able to book tickets before they are sold out.’"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Should"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Must"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Ought to"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "All of the above"
+          }
+        ]
+      ],
+      "correct_answer": 3
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which among the following is not a modal verb?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Can"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Could"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Is"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "May"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Back then, no one _______ challenge him. He was very good at boxing."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Can"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Could"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    }
+  ]
+}

@@ -1,0 +1,376 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Computational Thinking · Quiz 1 · 2022 Jun · Foundation · Part 1",
+  "subject": "Computational Thinking",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Kavya used a variable minBillTotal to find the minimum total bill amount using the \"Shopping Bills\" dataset. There are many ways to initialize minBillTotal; choose the correct option(s). It is a Multiple Select Question (MSQ)."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Pick any random card X from the dataset and initialize minBillTotal = X.TotalBillAmount"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Pick the top card X from the dataset and initialize minBillTotal = X.TotalBillAmount"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Initialize minBillTotal with any random value"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Initialize minBillTotal with 0"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1
+      ],
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "To find a minimum you must seed minBillTotal with an actual value from the dataset, so picking any card (random or the top one) and using its TotalBillAmount is valid. Seeding with an arbitrary random value can be smaller than every real bill (giving a wrong answer), and seeding with 0 leaves minBillTotal stuck at 0 since every bill amount is positive."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Library\" dataset. At the end of the execution, N captures the name of a book written in a language other than English with the maximum number of pages, and A captures the number of pages in that book. Which statement(s) about the values of A and N are correct? It is a Multiple Select Question (MSQ)."
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "A = 0, N = \"None\"\nwhile(Table 1 has more rows){\n    Read the first row X in Table 1\n    if(X.Language != \"English\" and X.Pages > A){\n        A = X.Pages\n        N = X.Name\n    }\n    Move X to Table 2\n}"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "There might be some change in the values of both A and N, based on the order of rows"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "There might be a change in the value of N, based on the order of rows"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "There will be NO change in the values of both A and N, based on the order of rows"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "There might be a change in the value of A, based on the order of rows"
+          }
+        ]
+      ],
+      "correct_answers": [
+        1
+      ],
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "A ends up equal to the maximum page count among non-English books, which is the same value regardless of row order. Because the update uses a strict '>', when two non-English books tie for that maximum page count, the one encountered first is kept — so N (the name) can differ with row order, while A cannot."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Library\" dataset. At the end of execution, A is intended to capture the number of books which are published after 2010 OR have less than the average number of pages. Assume Avg holds the average number of pages of the books in the dataset. The pseudocode may have mistakes; identify all such mistakes (if any). Assume all statements not listed in the options are free of errors. It is a Multiple Select Question (MSQ). 1   A = 0 2   while(Table 1 has more rows){ 3       Read the first row X in Table 1 4       c = False 5       if(X.Year > 2010){ 6           c = True 7       } 8       if(X.Pages > Avg){ 9           c = True 10      } 11      if(c){ 12          A = A + 1 13      } 14      Move X to Table 2 15  }"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Error in Line 5"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Error in Line 8"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Error in Line 9"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Error in Line 12"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "No error in the code"
+          }
+        ]
+      ],
+      "correct_answers": [
+        1
+      ],
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The condition for 'less than the average number of pages' must be X.Pages < Avg, but Line 8 uses X.Pages > Avg, which tests the opposite. Line 5 (X.Year > 2010 = published after 2010) and the OR-style flag logic are correct, so the only mistake is in Line 8."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Shopping Bills\" dataset. At the end of execution, A is intended to capture the lowest price of an item purchased from \"Big Bazaar\". The pseudocode may have mistakes in one or more lines; identify all such lines (if any). Assume all statements not listed in the options are free of errors. It is a Multiple Select Question (MSQ). 1   A = 0 2   while(Pile 1 has more cards){ 3       Read the top card X in Pile 1 4       if(X.ShopName == \"Big Bazaar\"){ 5           temp = findItem(X) 6           if(temp > A){ 7               A = temp 8           } 9       } 10      Move X to Pile 2 11  } 12 13  Procedure findItem(Y) 14      minPrice = 0 15      while(Card Y has more items){ 16          Read an item Z from ItemList of card Y 17          if(minPrice >= Z.Price){ 18              minPrice = Z.Price 19          } 20          Remove Z from ItemList of card Y 21      } 22      return(minPrice) 23  End findItem"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Line 1: Incorrect initialization of A"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Line 6: Incorrect conditional statement"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Line 14: Incorrect initialization of minPrice"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Line 17: Incorrect conditional statement"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "There must be a re-initialization of minPrice before the return statement in procedure findItem"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "No error in the code"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1,
+        2
+      ],
+      "marks": 4,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "We need a minimum, but the main loop seeds A = 0 (Line 1) and updates with 'temp > A' (Line 6), which finds the maximum instead — both must change (e.g. A = ∞ and 'temp < A'). In findItem, minPrice = 0 (Line 14) is wrong: since prices are positive, '0 >= Z.Price' is never true, so the loop never updates and it always returns 0; it should be seeded to ∞. With that fix Line 17's '>=' works correctly, so Lines 1, 6 and 14 are the mistakes."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Words\" table. At the end of the execution, C captures the number of pairs of words where both words have the same part of speech, OR both words end with a full stop and have the same letter count. Choose the correct code fragment(s) to fill the marked block. It is a Multiple Select Question (MSQ)."
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "C = 0\nwhile(Table 1 has more rows){\n    Read the first row X in Table 1\n    Move X to Table 2\n    while(Table 1 has more rows){\n        Read the first row Y in Table 1\n        Move Y to Table 3\n        ************************\n        *    Fill the code     *\n        ************************\n    }\n    Move all rows from Table 3 to Table 1\n}"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "if((X.PartOfSpeech == Y.PartOfSpeech) or (X.Word ends with a full stop and Y.Word ends with a full stop and X.LetterCount == Y.LetterCount)){\nC = C + 1\n}"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "if(X.PartOfSpeech == Y.PartOfSpeech){\nC = C + 1\n}\nelse{\nif(X.Word ends with a full stop and Y.Word ends with a full stop and X.LetterCount == Y.LetterCount){\nC = C + 1\n}\n}"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "if(X.PartOfSpeech == Y.PartOfSpeech){\nC = C + 1\n}\nif(X.Word ends with a full stop and Y.Word ends with a full stop and X.LetterCount == Y.LetterCount){\nC = C + 1\n}"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "if(X.PartOfSpeech == Y.PartOfSpeech){\nif(X.Word ends with a full stop and Y.Word ends with a full stop and X.LetterCount == Y.LetterCount){\nC = C + 1\n}\n}"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1
+      ],
+      "marks": 4,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Each qualifying pair must be counted exactly once. Option 1 (a single OR-condition) and Option 2 (if/else, so the two conditions are mutually exclusive) both add 1 per qualifying pair. Option 3 uses two independent ifs, so a pair satisfying both conditions is counted twice. Option 4 nests the conditions (logical AND), counting only pairs that satisfy both — not the intended OR."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Scores\" dataset. What will A represent at the end of the execution?"
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "A = 0\nwhile(Table 1 has more rows){\n    Read the first row X in Table 1\n    if(X.Gender == 'M' and X.CityTown == \"Chennai\"){\n        A = A + X.Mathematics\n    }\n    Move X to Table 2\n}"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Sum of Mathematics marks of students from Chennai"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Sum of Mathematics marks of male students from Chennai"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Sum of Mathematics marks of male students"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Sum of Mathematics marks of male students not from Chennai"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Mathematics marks are added only when the student is male (Gender == 'M') AND from Chennai (CityTown == \"Chennai\"), so A is the sum of Mathematics marks of male students from Chennai."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Words\" dataset. At the end of the execution, A captures the maximum letter count among words that are not nouns. Choose the correct code fragment to fill the marked block."
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "A = 0\nwhile(Table 1 has more rows){\n    Read the first row X in Table 1\n    ******************\n    * Fill the code  *\n    ******************\n    Move X to Table 2\n}"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "if(X.PartOfSpeech == \"Noun\" and X.LetterCount > A){\nA = X.LetterCount\n}"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "if(X.PartOfSpeech != \"Noun\" and X.LetterCount < A){\nA = X.LetterCount\n}"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "if(X.PartOfSpeech == \"Noun\" and X.LetterCount < A){\nA = X.LetterCount\n}"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "pseudocode",
+            "value": "if(X.PartOfSpeech != \"Noun\" and X.LetterCount > A){\nA = X.LetterCount\n}"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "For the maximum among non-nouns we keep a running maximum: only consider words that are not nouns (PartOfSpeech != \"Noun\") and update A when the current letter count is greater than A (X.LetterCount > A)."
+        }
+      ]
+    }
+  ]
+}

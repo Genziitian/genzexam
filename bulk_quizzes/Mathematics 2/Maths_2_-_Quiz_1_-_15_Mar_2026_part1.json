@@ -1,0 +1,270 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 2 · Quiz 1 · 15 Mar 2026 · Part 1",
+  "subject": "Mathematics 2",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the system of linear equations:\n$$x + y + z = 3$$\n$$2x + 3y + kz = 6$$\n$$3x + 5y + (k+1)z = 9$$\nWhich of the following statements is true?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The system has a unique solution for $k = 1$."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The system has no solution for all $k$."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The system has infinitely many solutions for $k = 1$."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The system has infinitely many solutions for $k = 0$."
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Row reducing the augmented matrix shows that for $k = 1$, the third equation becomes redundant, yielding a free variable and infinitely many solutions."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let $A$ be a $3 \\times 3$ matrix such that $\\det(A) = 4$. What is the value of $\\det(2A^{-1})$?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "4"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1/2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$\\det(2A^{-1}) = 2^3 \\det(A^{-1}) = \\frac{8}{\\det(A)} = \\frac{8}{4} = 2$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following subsets of $\\mathbb{R}^3$ is a vector subspace of $\\mathbb{R}^3$?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$\\{(x, y, z) \\in \\mathbb{R}^3 : x + 2y - z = 0\\}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$\\{(x, y, z) \\in \\mathbb{R}^3 : x + y + z = 1\\}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$\\{(x, y, z) \\in \\mathbb{R}^3 : xy = 0\\}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$\\{(x, y, z) \\in \\mathbb{R}^3 : x^2 + y^2 + z^2 \\le 1\\}$"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Only $x + 2y - z = 0$ is a homogeneous linear equation containing the origin and closed under linear combinations."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let $a, b, c, d$ be distinct real numbers. Consider the Vandermonde matrix:\n$$A = \\begin{pmatrix} 1 & a & a^2 & a^3 \\\\ 1 & b & b^2 & b^3 \\\\ 1 & c & c^2 & c^3 \\\\ 1 & d & d^2 & d^3 \\end{pmatrix}$$\nWhich of the following statements are correct?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$\\det(A) \\neq 0$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The columns of $A$ are linearly independent."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$\\text{rank}(A) = 4$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The system $Ax = 0$ has non-trivial solutions."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1,
+        2
+      ],
+      "marks": 3,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "For distinct $a, b, c, d$, the Vandermonde determinant $\\det(A) = (b-a)(c-a)(d-a)(c-b)(d-b)(d-c) \\neq 0$. Thus $A$ is invertible, has full rank 4, linearly independent columns, and only the trivial solution $x = 0$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let $v_1 = (1, 1, 0)$, $v_2 = (0, 1, 1)$, and $v_3 = (1, 0, 1)$ be vectors in $\\mathbb{R}^3$. Which of the following statements is true?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$\\{v_1, v_2, v_3\\}$ is linearly dependent."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$\\{v_1, v_2, v_3\\}$ forms a basis of $\\mathbb{R}^3$."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$\\text{span}\\{v_1, v_2, v_3\\}$ is a plane in $\\mathbb{R}^3$."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$v_1 + v_2 + v_3 = (0, 0, 0)$"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The determinant of the matrix formed by $v_1, v_2, v_3$ is $1(1) + 1(1) = 2 \\neq 0$. Hence the vectors are linearly independent and form a basis of $\\mathbb{R}^3$."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the determinant of the upper triangular matrix:\n$$A = \\begin{pmatrix} 2 & 1 & 0 \\\\ 0 & 3 & 4 \\\\ 0 & 0 & 5 \\end{pmatrix}$$"
+        }
+      ],
+      "numerical_answer": 30,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "For a triangular matrix, determinant is the product of diagonal entries: $2 \\times 3 \\times 5 = 30$."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the matrix $A = \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}$. Find the trace of $A^2$."
+        }
+      ],
+      "numerical_answer": 29,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$A^2 = \\begin{pmatrix} 7 & 10 \\\\ 15 & 22 \\end{pmatrix}$, so $\\text{tr}(A^2) = 7 + 22 = 29$."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,166 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Statistics 1 · Graded Assignment · Week 5 · Part 1",
+  "subject": "Statistics 1",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Vinod has n registers and m cover papers of different colours. In how many ways can\nhe cover all the registers with cover papers?"
+        },
+        {
+          "kind": "text",
+          "value": "Give an expression in the stated parameters."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "type": "short_answer",
+      "acceptable_answers": [
+        "m!/(m-n)!"
+      ],
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Assign a distinct cover colour to each labelled register: m choices, then m−1, continuing for n registers."
+        }
+      ]
+    },
+    {
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "n classmates could not agree on who would stand in the group photo along with the\nteacher for the yearbook. How many possible groups can be made such that there is\nat least one student with the teacher in the photo?"
+        },
+        {
+          "kind": "text",
+          "value": "Give an expression in the stated parameters."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "type": "short_answer",
+      "acceptable_answers": [
+        "2^n-1",
+        "2**n-1"
+      ],
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Every subset of classmates is possible except the empty subset."
+        }
+      ]
+    },
+    {
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Jay bought a new car in New York where a license plate can be created with alphabets\nA, B, C, D, E, W, X, Y, Z and numbers 0 to 9. He can either select a normal license\nplate or a VIP license plate. The VIP license plate begins with m alphabets followed\nby n numbers with repetition allowed. The normal license plate begins with a num-\nbers followed by b alphabets without repetition. Based on this information, answer\nquestions (3) and (4):\nIn how many ways can he select the VIP license plate?"
+        },
+        {
+          "kind": "text",
+          "value": "Give an expression in the stated parameters."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "type": "short_answer",
+      "acceptable_answers": [
+        "9^m*10^n",
+        "9^m10^n",
+        "9**m*10**n"
+      ],
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Each of the m alphabet positions has 9 choices; each of the n digit positions has 10 choices, with repetition allowed."
+        }
+      ]
+    },
+    {
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Jay bought a new car in New York where a license plate can be created with alphabets\nA, B, C, D, E, W, X, Y, Z and numbers 0 to 9. He can either select a normal license\nplate or a VIP license plate. The VIP license plate begins with m alphabets followed\nby n numbers with repetition allowed. The normal license plate begins with a num-\nbers followed by b alphabets without repetition. Based on this information, answer\nquestions (3) and (4):\nIn how many ways can he select the license plate(normal or VIP)?"
+        },
+        {
+          "kind": "text",
+          "value": "Give an expression in the stated parameters."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "type": "short_answer",
+      "acceptable_answers": [
+        "9^m*10^n+9!/(9-b)!*10!/(10-a)!",
+        "9^m10^n+9!/(9-b)!10!/(10-a)!",
+        "9**m*10**n+9!/(9-b)!*10!/(10-a)!"
+      ],
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Add the VIP count to the normal-plate count. The normal plate has a distinct digits and b distinct letters."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-1/8dd7a39c51cf_q5_prompt_p3.png",
+          "alt": "Original Statistics 1 question 5 prompt."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "numerical_answer": 3.0,
+      "numerical_tolerance": 0.01
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-1/8dd7a39c51cf_q6_prompt_p3.png",
+          "alt": "Original Statistics 1 question 6 prompt."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/8dd7a39c51cf_q6_option-1_p3.png",
+            "alt": "Original option 1 for Statistics 1 question 6."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/8dd7a39c51cf_q6_option-2_p3.png",
+            "alt": "Original option 2 for Statistics 1 question 6."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/8dd7a39c51cf_q6_option-3_p3.png",
+            "alt": "Original option 3 for Statistics 1 question 6."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/8dd7a39c51cf_q6_option-4_p3.png",
+            "alt": "Original option 4 for Statistics 1 question 6."
+          }
+        ]
+      ],
+      "correct_answer": 1
+    }
+  ]
+}

@@ -1,0 +1,290 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 2 · Graded Assignment · Week 8",
+  "subject": "English 2",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following is NOT true about writing an SOP?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "It should be error-free"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "It should not contain redundant usages"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "It should be ambiguous"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "It should describe specific events"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "While writing an SOP, one should give evidence for the statements about oneself."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Creating a narrative and having an angle is an important part of the SOP."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Use of complex words and sentences is one of the key criteria while writing an SOP."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The construction complete dedication is considered _______"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Superfluous"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Ambiguous"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Archaic"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "All the above"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "While writing a précis, one can make it brief by"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Removing the redundant words"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Rewriting the sentences in indirect speech"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Avoiding examples, illustrations, and long lists of names"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "All the above"
+          }
+        ]
+      ],
+      "correct_answer": 3
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Coherence of the sentences can be obtained by means of discourse markers."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "While reading the paragraph before writing the précis, one must pay attention to"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The author’s purpose, arguments, and insights"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The main ideas of the passage/article"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The support for the arguments"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "All the above"
+          }
+        ]
+      ],
+      "correct_answer": 3
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A good précis must be written in one-third of all words in the original passage without losing\nthe content."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    }
+  ]
+}

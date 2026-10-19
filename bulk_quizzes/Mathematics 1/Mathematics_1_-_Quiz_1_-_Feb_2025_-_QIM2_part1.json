@@ -1,0 +1,312 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 1 · Quiz 1 · Feb 2025 · QIM2 · Part 1",
+  "subject": "Mathematics 1",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The Cartesian product 𝐴 × 𝐴 has 9 elements. Two of the elements of the Cartesian product are (1, 3) and (3, 7). Find the sum of all the elements in set 𝐴."
+        }
+      ],
+      "numerical_answer": 11,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "∣𝐴 × 𝐴∣ = ∣𝐴∣2 = 9 ⇒ ∣𝐴∣ = 3. The pairs (1, 3), (3, 7) give 1, 3, 7 ∈ 𝐴, so 𝐴 = {1, 3, 7}. Sum = 1 + 3 + 7 = 11."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let 𝑋 be the set of natural numbers divisible by 100, 𝑌 be the set of natural numbers divisible by 25, and 𝑍 be the set of natural numbers that are perfect squares. The regions 𝐴, 𝐵, 𝐶, 𝐷, 𝐸, 𝐹, 𝐺 are marked in the following Venn diagram (a region in the Venn diagram can be empty). [Figure ML-1: three overlapping circles 𝑋, 𝑌, 𝑍 with the inner regions labelled 𝐴, 𝐵, 𝐶, 𝐷, 𝐸, 𝐹, 𝐺.] Which of the following options is (are) correct?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "625 is in 𝐸."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "𝐺 is an empty set."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "𝐴 and 𝐹 are empty sets."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "25 is in 𝐹."
+          }
+        ]
+      ],
+      "correct_answers": [
+        2
+      ],
+      "marks": 3,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Key fact: every multiple of 100 is a multiple of 25, so 𝑋 ⊆ 𝑌; hence any region representing 'X but not Y' is empty. 625 = 252 is a perfect square and a multiple of 25 but not of 100, so 625 ∈ 𝑌 ∩ 𝑍 ∖ 𝑋. 25 = 52 is likewise in 𝑌 ∩ 𝑍 ∖ 𝑋 (same region as 625). The exact letter-to-region mapping in Figure ML-1 cannot be resolved unambiguously from the image, so the per-option region labels (E, F, A, G) are uncertain; flagged for review. Best computed answer uses 𝑋 ⊆ 𝑌 forcing the 'X-only' regions empty."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the relation 𝑅1 = {(𝑥, 𝑦): 𝑥, 𝑦 ∈ 𝑅, 𝑥2 + 𝑦2 = 1}. Which of the following is/are true for the relation 𝑅1?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "𝑅1 is a reflexive relation."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "𝑅1 is a symmetric relation."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "𝑅1 is a transitive relation."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "𝑅1 is an equivalence relation."
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The unit-circle relation is symmetric since 𝑥2 + 𝑦2 = 𝑦2 + 𝑥2. It is not reflexive ((𝑥, 𝑥) needs 2𝑥2 = 1, false for general 𝑥), not transitive, hence not an equivalence relation. So only 'symmetric' holds. NOTE: the second option text was partly covered by the floating 'Claude is active in this tab group' badge and is inferred to be 'R_1 is a symmetric relation'; flagged for review."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following relations is/are one-one function?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "𝑅1 = {(𝑥, 𝑦): 𝑥, 𝑦 ∈ 𝑅, 𝑥 + 𝑦 > 2}"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "𝑅2 = {(𝑥, 𝑦): 𝑥, 𝑦 ∈ 𝑅, 𝑥 > 𝑦}"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "𝑅3 = {(𝑥, 𝑦): 𝑥, 𝑦 ∈ 𝑅, 𝑥 + 𝑦 = 12}"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "𝑅4 = {(𝑥, 𝑦): 𝑥, 𝑦 ∈ 𝑅, 𝑥 = 𝑦2}"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "𝑅1 and 𝑅2 are inequalities, so each 𝑥 maps to many 𝑦 — not functions. 𝑅4: 𝑥 = 𝑦2 gives two 𝑦 for each 𝑥 > 0 — not a function. 𝑅3: 𝑦 = 12 − 𝑥 is a linear function and is one-one. Answer: 𝑅3."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Two lines 𝐿1 and 𝐿2 lie in the plane. The 𝑥-intercepts of 𝐿1 and 𝐿2 are 2 and −1 respectively, and their 𝑦- intercepts are −3 and 2 respectively (so 𝐿1: 𝑦 = 3 2𝑥 − 3 and 𝐿2: 𝑦 = 2𝑥 + 2). Choose the point that is the intersection of 𝐿1 and 𝐿2."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "(10, 18)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "(5, 8)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "( − 10, − 18)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "(6, 6)"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "From the intercepts, 𝐿1: 𝑥2 + 𝑦−3 = 1 ⇒ 𝑦 = 32𝑥 − 3 and 𝐿2: 𝑥−1 + 𝑦2 = 1 ⇒ 𝑦 = 2𝑥 + 2. Intersection:3 2𝑥 − 3 = 2𝑥 + 2 ⇒ 𝑥 = − 10, 𝑦 = − 18, giving ( − 10, − 18). The exact wording of the stem ('Choose the point ...') was obscured by the floating Claude badge; reconstructed from the L_1/L_2 comprehension context (Q7) and the option set. Flagged for review."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Two lines 𝐿1 and 𝐿2 lie in the plane, with 𝑥-intercepts 2 and −1 and 𝑦-intercepts −3 and 2 respectively (so 𝐿1: 𝑦 = 3 2𝑥 − 3, slope  3 2; 𝐿2: 𝑦 = 2𝑥 + 2, slope 2). If 𝜃 is the angle between 𝐿1 and 𝐿2, then tan 𝜃 is equal to"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "1 8"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1 6"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "3 8"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "14"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Slopes 𝑚1 = 32, 𝑚2 = 2. tan 𝜃 = ∣ 𝑚2 − 𝑚11 + 𝑚1𝑚2 ∣ = ∣ 2 − 321 + 3 ∣ = 1/24 = 18."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the triangles 𝐴𝐵𝐶 and 𝑃𝐴𝐵 with coordinates 𝐴(4, 3), 𝐵(2, 2), 𝐶(8, 3) and 𝑃(𝑎, 𝑏). What is the area of the triangle 𝐴𝐵𝐶?"
+        }
+      ],
+      "numerical_answer": 2,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Area = 12 ∣ 𝑥𝐴(𝑦𝐵 − 𝑦𝐶) + 𝑥𝐵(𝑦𝐶 − 𝑦𝐴) + 𝑥𝐶(𝑦𝐴 − 𝑦𝐵) ∣ = 12∣4(2 − 3) + 2(3 − 3) + 8(3 − 2)∣ = 12∣ − 4 + 0 + 8∣ = 2."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the triangles 𝐴𝐵𝐶 and 𝑃𝐴𝐵 with coordinates 𝐴(4, 3), 𝐵(2, 2), 𝐶(8, 3) and 𝑃(𝑎, 𝑏), where the area of triangle 𝐴𝐵𝐶 is 2 times the area of triangle 𝑃𝐴𝐵. Choose all the possible options for 𝑃."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "(0, 0)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "(2, 4)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "( − 2, 4)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "( − 1, 1)"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Area of 𝑃𝐴𝐵 with 𝐴(4, 3), 𝐵(2, 2) is 12∣𝑎 − 2𝑏 + 2∣. Values: (0, 0) → 1, (2, 4) → 2, ( − 2, 4) → 4, ( − 1, 1) → 0.5. Area(𝐴𝐵𝐶) = 2. If 'ABC is 2 times PAB' then Area(𝑃𝐴𝐵) = 1, giving 𝑃 = (0, 0). The exact multiplier in the comprehension header (Q10) was partly obscured by the Claude badge, so the value '2 times' is inferred; flagged for review (a different multiplier would change the answer)."
+        }
+      ]
+    }
+  ]
+}

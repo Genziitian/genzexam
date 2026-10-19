@@ -1,0 +1,313 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 2 · Practice Assignment · Week 8",
+  "subject": "English 2",
+  "section": "practice",
+  "week": 8,
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In concise writing, a 'simple word' typically means a:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Monosyllabic word"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Polysyllabic word"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Monosyllabic or disyllabic word with clear, well-known meaning"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Rare jargon term"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Clear writing favors widely understood short words over obscure multi-syllable terms."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In précis writing, numbers should always be spelled out in words rather than using digits to maintain style."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Standard practice is to use Arabic numerals for complex numbers to maintain brevity and clarity."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following principles must be maintained while writing a précis?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Be clear and concise"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Maintain coherence and logical flow"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Capture only the essential core arguments without extraneous examples"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "All of the above"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "A précis demands brevity, structural clarity, coherence, and fidelity to the author's primary thesis."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Précis writing is identical to paraphrasing a passage."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Paraphrasing restates text with similar length, whereas a précis significantly condenses it to approximately one-third."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A précis writer should introduce personal opinions, outside knowledge, and criticism into the summary."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "A précis must strictly reflect the ideas in the source passage without external commentary or personal opinion."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A good précis should always be written in the writer's own words rather than copying whole sentences from the original."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Expressing source ideas in fresh, concise syntax is fundamental to genuine précis writing."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What should be omitted when drafting a précis?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The author's core thesis"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Illustrative anecdotes, digressions, and redundant adjectives"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The main conclusion"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Logical linking words"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Illustrative examples, rhetorical digressions, and repetitive descriptors should be pruned."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which grammatical tense and point of view is conventionally preferred when writing a précis of a speech or narrative?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "First person ('I believe...') in the future tense"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Third person in reported past/present speech"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Second person imperative"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Passive voice exclusively"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Précis writing typically adopts an objective third-person perspective."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,384 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 1 · Graded Assignment · Week 3",
+  "subject": "English 1",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the synonym (that suits best) for the words given below. (Q1 and Q2)"
+        },
+        {
+          "kind": "text",
+          "value": "Perseverance"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "'Perseverance' (persistent effort) is closest in meaning to 'Dedication'."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Dedication"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Sloth"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the synonym (that suits best) for the words given below. (Q1 and Q2)"
+        },
+        {
+          "kind": "text",
+          "value": "Sacrosanct"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "'Sacrosanct' means sacred/inviolable, so its synonym is 'Holy'."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Earthly"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Holy"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose an appropriate prefix that gives the antonym of 'apologetic'."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "'Un-' forms the antonym 'unapologetic'."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Dis-"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Mis-"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Un-"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Non-"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the appropriate option.\nThose bright pink football boots really ___________."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "'Stand out' means to be conspicuous or noticeable."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Stand down"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Stand up"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Stand out"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Stand aside"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the appropriate option.\nLet's _______ the old toy. We don't need it."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "'Throw away' means to discard something no longer needed."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Throw in"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Throw away"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Throw up"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Throw on"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct option.\nI think I ________ have failed the exam, but I'm not sure."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "'Might' expresses uncertainty/possibility, fitting 'but I'm not sure'."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Shall"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Might"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct option.\nYou__________ help me!"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "'Have to' is grammatical; 'should to' is incorrect (modal 'should' is not followed by 'to')."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Should to"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Have to"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "State whether the given meaning of the phrases are true or false. (Q8 to Q10)"
+        },
+        {
+          "kind": "text",
+          "value": "Getting a second wind\nMeaning: Having energy again after being tired."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "'Getting a second wind' does mean regaining energy after fatigue."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "State whether the given meaning of the phrases are true or false. (Q8 to Q10)"
+        },
+        {
+          "kind": "text",
+          "value": "Going on a wild goose chase\nMeaning: Taking credit for someone else's achievements."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "'A wild goose chase' means a hopeless/futile pursuit, not taking credit for others' work."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "State whether the given meaning of the phrases are true or false. (Q8 to Q10)"
+        },
+        {
+          "kind": "text",
+          "value": "The elephant in the room\nMeaning: Everyone gets their chance to do something big."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "'The elephant in the room' means an obvious problem everyone avoids discussing."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    }
+  ]
+}

@@ -1,0 +1,340 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Computational Thinking · Graded Assignment · Week 11 · Part 1",
+  "subject": "Computational Thinking",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/357cf080c6de/q1_prompt_p2.png",
+          "alt": "Original question: reverse is a recursive procedure to reverse a list. Select the correct code fragment(s) to complete the pseudocode given below. It is a Multiple Select Question (MSQ)."
+        }
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/357cf080c6de/q1_option1_code0_p2.png",
+            "alt": "Original option 1 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/357cf080c6de/q1_option2_code0_p2.png",
+            "alt": "Original option 2 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/357cf080c6de/q1_option3_code0_p2.png",
+            "alt": "Original option 3 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/357cf080c6de/q1_option4_code0_p2.png",
+            "alt": "Original option 4 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/357cf080c6de/q1_option5_code0_p2.png",
+            "alt": "Original option 5 pseudocode or mathematical expression."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        2,
+        4
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/357cf080c6de/context0_p3.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/357cf080c6de/context0_p4.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/357cf080c6de/q2_prompt_p4.png",
+          "alt": "Original question: What is the value of submissions? (Uses the scores dataset and getSubs procedure shown above.)"
+        }
+      ],
+      "marks": 4,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/357cf080c6de/q2_option1_code0_p4.png",
+            "alt": "Original option 1 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/357cf080c6de/q2_option2_code0_p4.png",
+            "alt": "Original option 2 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/357cf080c6de/q2_option3_code0_p4.png",
+            "alt": "Original option 3 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/357cf080c6de/q2_option4_code0_p4.png",
+            "alt": "Original option 4 pseudocode or mathematical expression."
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/357cf080c6de/context0_p3.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/357cf080c6de/context0_p4.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/357cf080c6de/q3_prompt_p4.png",
+          "alt": "Original question: What does the variable submissions represent? (Uses the scores dataset and getSubs procedure shown above.)"
+        }
+      ],
+      "marks": 4,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The list of all the submissions made by the students sorted in the ascending order of time."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The list of all the submissions made by the students sorted in the descending order of time."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The list of the last submissions made by the students sorted in the ascending order of time."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The list of the last submissions made by the students sorted in the descending order of time."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The list of the first submissions made by the students sorted in the ascending order of time."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The list of the first submissions made by the students sorted in the descending order of time."
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/357cf080c6de/context0_p3.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/357cf080c6de/context0_p4.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "text",
+          "value": "Reference pseudocode used by this question:"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/357cf080c6de/q1_code0_p2.png",
+          "alt": "q1 code0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/357cf080c6de/q4_prompt_p5.png",
+          "alt": "Original question: Assume that reverse is a procedure that reverses a list. Which of the following statements returns the list of the first submissions made by the students sorted in the ascending order of time? (Uses the scores dataset and getSubs procedure shown above.)"
+        }
+      ],
+      "marks": 4,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/357cf080c6de/q4_option1_code0_p5.png",
+            "alt": "Original option 1 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/357cf080c6de/q4_option2_code0_p5.png",
+            "alt": "Original option 2 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/357cf080c6de/q4_option3_code0_p5.png",
+            "alt": "Original option 3 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/357cf080c6de/q4_option4_code0_p5.png",
+            "alt": "Original option 4 pseudocode or mathematical expression."
+          }
+        ]
+      ],
+      "correct_answer": 3
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/357cf080c6de/q5_prompt_p6.png",
+          "alt": "Original question: outcomes is a list of strings about the outcomes of cricket matches played by India in a tournament. Each element is either \"won\" or \"lost\". For example, outcomes could look like [\"won\", \"lost\", \"lost\", \"won\", \"won\"]. A list of outcomes is called a blank slate if the number of wins equals the number of losses. blankSlate accepts outcomes and returns True if it is a blank slate and False otherwise."
+        }
+      ],
+      "marks": 4,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/357cf080c6de/q5_option1_code0_p6.png",
+            "alt": "Original option 1 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/357cf080c6de/q5_option2_code0_p6.png",
+            "alt": "Original option 2 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/357cf080c6de/q5_option3_code0_p7.png",
+            "alt": "Original option 3 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/357cf080c6de/q5_option4_code0_p7.png",
+            "alt": "Original option 4 pseudocode or mathematical expression."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        2
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/357cf080c6de/context1_p7.png",
+          "alt": "context1"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/357cf080c6de/context1_p8.png",
+          "alt": "context1"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/357cf080c6de/q6_prompt_p8.png",
+          "alt": "Original question: matchThem is a recursive procedure that accepts players as argument and returns matches. Select the correct implementation(s) of the procedure. It is a Multiple Select Question (MSQ). (Uses the chess- tournament scenario above.)"
+        }
+      ],
+      "marks": 4,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/357cf080c6de/q6_option1_code0_p8.png",
+            "alt": "Original option 1 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/357cf080c6de/q6_option2_code0_p8.png",
+            "alt": "Original option 2 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/357cf080c6de/q6_option3_code0_p8.png",
+            "alt": "Original option 3 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/357cf080c6de/q6_option4_code0_p8.png",
+            "alt": "Original option 4 pseudocode or mathematical expression."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        2
+      ]
+    }
+  ]
+}

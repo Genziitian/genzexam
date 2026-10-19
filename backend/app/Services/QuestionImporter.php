@@ -49,7 +49,7 @@ class QuestionImporter
                     'quiz_id' => $quizId,
                     'type' => $row['type'],
                     'stem' => $row['stem'],
-                    'stem_image' => null,
+                    'stem_image' => $row['stem_image'] ?? null,
                     'stem_code' => $row['stem_code'],
                     'stem_code_language' => $row['stem_code_language'],
                     'stem_table' => $row['stem_table'],
@@ -98,6 +98,17 @@ class QuestionImporter
         $stemTable = $this->extractStemTable($row['stem_table'] ?? null);
         $explanation = $this->extractExplanationText($row['explanation'] ?? null);
 
+        // Preserve mixed blocks in their original order in the existing editable text fields.
+        $imagePrompt = $this->orderedContent($row['prompt'] ?? null, $index, 'prompt', $errors);
+        if ($imagePrompt !== null) {
+            $stem = $imagePrompt;
+            $stemCode = '';
+        }
+        $imageExplanation = $this->orderedContent($row['explanation'] ?? null, $index, 'explanation', $errors);
+        if ($imageExplanation !== null) {
+            $explanation = $imageExplanation;
+        }
+
         if ($stem === '' && $stemCode === '' && $stemTable === null) {
             $errors[] = $this->importError($index, 'stem', 'Question stem, prompt text, or stem_table is required.');
         }
@@ -124,7 +135,7 @@ class QuestionImporter
         $numericalTolerance = isset($row['numerical_tolerance']) ? (float) $row['numerical_tolerance'] : 0.01;
 
         if (in_array($type, ['mcq', 'multi_select'], true)) {
-            $options = $this->normalizeImportedOptions($row['options'] ?? []);
+            $options = $this->normalizeImportedOptions($row['options'] ?? [], $index, $errors);
 
             if (count($options) < 2) {
                 $errors[] = $this->importError($index, 'options', 'At least 2 options are required.');
@@ -246,7 +257,8 @@ class QuestionImporter
 
         return [[
             'type' => $type,
-            'stem' => $stem !== '' ? $stem : 'Refer to code block.',
+            'stem' => $stem !== '' ? $stem : 'Refer to image/figure.',
+            'stem_image' => $row['stem_image'] ?? $promptParts['image'] ?? null,
             'stem_code' => $stemCode !== '' ? $stemCode : null,
             'stem_code_language' => $stemCodeLanguage !== '' ? $stemCodeLanguage : 'pseudocode',
             'stem_table' => $stemTable,
@@ -260,14 +272,14 @@ class QuestionImporter
         ], []];
     }
 
-    private function normalizeImportedOptions(mixed $rawOptions): array
+    private function normalizeImportedOptions(mixed $rawOptions, int $rowIndex, array &$errors): array
     {
         if (! is_array($rawOptions)) {
             return [];
         }
 
         return collect($rawOptions)
-            ->map(function ($option, $index) {
+            ->map(function ($option, $index) use ($rowIndex, &$errors) {
                 if (is_string($option)) {
                     return [
                         'option_type' => 'text',
@@ -285,6 +297,11 @@ class QuestionImporter
                 $content = $this->extractOptionContent($option);
                 $optionType = $content['code'] !== '' && $content['text'] === '' ? 'code' : 'text';
                 $optionText = $optionType === 'code' ? $content['code'] : $content['text'];
+                $imageContent = $this->orderedContent($option, $rowIndex, 'options.'.$index, $errors);
+                if ($imageContent !== null) {
+                    $optionType = 'text';
+                    $optionText = $imageContent;
+                }
 
                 return [
                     'option_type' => $optionType,
@@ -299,6 +316,53 @@ class QuestionImporter
             ->all();
     }
 
+    private function orderedContent(mixed $content, int $row, string $field, array &$errors): ?string
+    {
+        if (! is_array($content)) {
+            return null;
+        }
+        $blocks = isset($content['kind']) ? [$content] : $content;
+        $kinds = collect($blocks)->filter(fn ($block) => is_array($block))->pluck('kind')->all();
+        if (! in_array('image', $kinds, true) && ! (in_array('text', $kinds, true) && in_array('code', $kinds, true))) {
+            return null;
+        }
+        $contentErrors = [];
+        $normalized = (new ProctoredQuestionService)->normalizeContent($blocks, $row, $field, $contentErrors);
+        foreach ($contentErrors as $messages) {
+            foreach ($messages as $message) {
+                $errors[] = $this->importError($row, $field, $message);
+            }
+        }
+        $parts = [];
+        foreach ($normalized as $block) {
+            switch ($block['kind']) {
+                case 'text':
+                    $parts[] = $block['value'];
+                    break;
+                case 'code':
+                    if (str_contains($block['value'], '```')) {
+                        $errors[] = $this->importError($row, $field, 'Code in ordered content cannot contain a triple-backtick fence.');
+                    }
+                    $parts[] = '```'.$block['language']."\n".$block['value']."\n```";
+                    break;
+                case 'image':
+                    $alt = preg_replace('/[\\\\\[\]<>\r\n]/', ' ', $block['alt'] ?? 'Source question crop');
+                    $parts[] = '!['.$alt.'](<'.$block['url'].'>)';
+                    if (! empty($block['caption'])) {
+                        $parts[] = $block['caption'];
+                    }
+                    break;
+                default:
+                    $errors[] = $this->importError($row, $field, 'Ordered content supports text, code, and image blocks.');
+            }
+        }
+        $text = trim(implode("\n\n", $parts));
+        if (strlen($text) > 20000) {
+            $errors[] = $this->importError($row, $field, 'Ordered content exceeds the 20000-byte display limit.');
+        }
+        return $text;
+    }
+
     private function extractPromptParts(mixed $prompt): array
     {
         if (! is_array($prompt)) {
@@ -306,12 +370,14 @@ class QuestionImporter
                 'text' => '',
                 'code' => '',
                 'code_language' => null,
+                'image' => null,
             ];
         }
 
         $textParts = [];
         $code = '';
         $codeLanguage = null;
+        $image = null;
 
         foreach ($prompt as $block) {
             if (! is_array($block)) {
@@ -330,12 +396,28 @@ class QuestionImporter
                 $code = trim((string) ($block['value'] ?? ''));
                 $codeLanguage = trim((string) ($block['language'] ?? 'pseudocode')) ?: 'pseudocode';
             }
+
+            if ($kind === 'image') {
+                $rawUrl = trim((string) ($block['url'] ?? $block['asset'] ?? ''));
+                if ($rawUrl !== '') {
+                    $url = $rawUrl;
+                    if (! str_starts_with($url, 'http://') && ! str_starts_with($url, 'https://') && ! str_starts_with($url, '/')) {
+                        $url = '/storage/question-images/' . $url;
+                    }
+                    if ($image === null) {
+                        $image = $url;
+                    }
+                    $alt = preg_replace('/[\\\\\[\]<>\r\n]/', ' ', (string) ($block['alt'] ?? 'Question figure'));
+                    $textParts[] = '![' . $alt . '](<' . $url . '>)';
+                }
+            }
         }
 
         return [
             'text' => trim(implode("\n\n", $textParts)),
             'code' => $code,
             'code_language' => $codeLanguage,
+            'image' => $image,
         ];
     }
 

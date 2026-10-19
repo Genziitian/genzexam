@@ -1,0 +1,389 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Python · Graded Assignment · Week 2 · Part 1",
+  "subject": "Python",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the below code.\nTry playing around in this python tutor link for answering the questions.\nWhat is the total number of objects that were referenced by the variables in the given\ncode during the execution?"
+        },
+        {
+          "kind": "code",
+          "value": "a = 4\nb = \"bye\"\nd = b * 5\ne = d[:4]\nd = e[:-1]\nf,e = d,b\nc,d = f,a\nd,f = f,d\nf,d = d,d\nd,b = e,c\nb,d = c,b\ndel c\ndel e",
+          "language": "python"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "numerical_answer": 5.0,
+      "numerical_tolerance": 0.01
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the total number of objects that were referenced by the variables in the given\ncode at the end of the execution?"
+        },
+        {
+          "kind": "code",
+          "value": "a = 4\nb = \"bye\"\nd = b * 5\ne = d[:4]\nd = e[:-1]\nf,e = d,b\nc,d = f,a\nd,f = f,d\nf,d = d,d\nd,b = e,c\nb,d = c,b\ndel c\ndel e",
+          "language": "python"
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "numerical_answer": 2.0,
+      "numerical_tolerance": 0.01
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the total number of variables refering to the same object as variable b (including\nb ) at the end of the execution of the given code?"
+        },
+        {
+          "kind": "code",
+          "value": "a = 4\nb = \"bye\"\nd = b * 5\ne = d[:4]\nd = e[:-1]\nf,e = d,b\nc,d = f,a\nd,f = f,d\nf,d = d,d\nd,b = e,c\nb,d = c,b\ndel c\ndel e",
+          "language": "python"
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "numerical_answer": 3.0,
+      "numerical_tolerance": 0.01
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "code",
+          "value": "a = 4\nb = \"bye\"\nd = b * 5\ne = d[:4]\nd = e[:-1]\nf,e = d,b\nc,d = f,a\nd,f = f,d\nf,d = d,d\nd,b = e,c\nb,d = c,b\ndel c\ndel e",
+          "language": "python"
+        },
+        {
+          "kind": "text",
+          "value": "Select the variable(s) that are refering to the same object as a at some point of time\nduring the execution of the above code."
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "b"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "c"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "d"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "e"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "f"
+          }
+        ]
+      ],
+      "correct_answers": [
+        2,
+        4
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Assume s is a str , if the output of print(s) is A slash / and a backslash \\ , then select\nthe possible the value(s) of s ."
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "code",
+            "value": "\"A slash / and a backslash \\\\\"",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "'A slash / and a backslash \\\\'",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "'A slash \\/ and a backslash \\'",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "\"A slash \\/ and a backslash \\\"",
+            "language": "python"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Select the string(s) that are equal to \"000500\" ."
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "code",
+            "value": "f\"{500:06}\"",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "f\"{500:03}\"",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "\"0\"*3+500",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "0*3+\"500\""
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "\"0\"*3+\"500\"",
+            "language": "python"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        4
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Select the string(s) that are equal to \"0.500\" ."
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "code",
+            "value": "f\"{0.5:02f}\"",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "f\"{0.5:03f}\"",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "f\"{0.5:03}\"",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "str(0.5) + \"00\"",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "f\"{0.5}00\"",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "f\"0{.5}00\"",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "f\"{0.545:.1f}00\"",
+            "language": "python"
+          }
+        ]
+      ],
+      "correct_answers": [
+        3,
+        4,
+        6
+      ],
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "str(0.5) + \"00\", f\"{0.5}00\", and f\"{0.545:.1f}00\" each give \"0.500\". Width-only :03 formatting does not add trailing fractional zeros."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Assume s is a str variable. What is the type of the expression len(s.upper().split()) ?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "int"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "str"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "float"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "list"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "bool"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "NoneType"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Assume s is a str variable. What is the type of the expression\nprint(s.upper().split())) ?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "int"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "str"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "float"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "list"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "bool"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "NoneType"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Raises Error"
+          }
+        ]
+      ],
+      "correct_answer": 6
+    }
+  ]
+}

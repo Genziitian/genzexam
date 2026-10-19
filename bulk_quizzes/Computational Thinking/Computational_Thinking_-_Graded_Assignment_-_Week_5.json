@@ -1,0 +1,404 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Computational Thinking · Graded Assignment · Week 5",
+  "subject": "Computational Thinking",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/1862855d9ca4/q1_prompt_p2.png",
+          "alt": "Original question: What will be the value of mList at the end of the execution of the given pseudocode?"
+        }
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/1862855d9ca4/q1_option1_code0_p2.png",
+            "alt": "Original option 1 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/1862855d9ca4/q1_option2_code0_p2.png",
+            "alt": "Original option 2 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/1862855d9ca4/q1_option3_code0_p2.png",
+            "alt": "Original option 3 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/1862855d9ca4/q1_option4_code0_p2.png",
+            "alt": "Original option 4 pseudocode or mathematical expression."
+          }
+        ]
+      ],
+      "correct_answer": 3
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/1862855d9ca4/q2_prompt_p3.png",
+          "alt": "Original question: What will be the value of mList at the end of the execution of the given pseudocode?"
+        }
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/1862855d9ca4/q2_option1_code0_p3.png",
+            "alt": "Original option 1 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/1862855d9ca4/q2_option2_code0_p3.png",
+            "alt": "Original option 2 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/1862855d9ca4/q2_option3_code0_p3.png",
+            "alt": "Original option 3 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/1862855d9ca4/q2_option4_code0_p3.png",
+            "alt": "Original option 4 pseudocode or mathematical expression."
+          }
+        ]
+      ],
+      "correct_answer": 3
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/1862855d9ca4/q3_prompt_p3.png",
+          "alt": "Original question: Let N be a list of first 50 positive integers (i.e., N = [1, 2, 3,...... 49, 50]). What will be the value of count at the end of the execution of the given pseudocode?"
+        }
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "numerical_answer": 0.0,
+      "numerical_tolerance": 0
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Source erratum: use the assignment Found = True in place of Found == True in the eliminate procedure below."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/1862855d9ca4/q4_prompt_p4.png",
+          "alt": "Original question: Consider the procedure given below. If L1 and L2 are two lists, and L = eliminate(L1, L2), then answer the following question. Choose the correct option(s) regarding L."
+        }
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "It will contain all the elements of L2 that are not present in L1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "It will contain all the elements of L1 that are not present in L2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "It will contain all the elements common to L1 and L2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "It will contain the elements present in L1 or L2 but not both"
+          }
+        ]
+      ],
+      "correct_answers": [
+        1
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Source erratum: use the assignment Found = True in place of Found == True in the eliminate procedure below."
+        },
+        {
+          "kind": "text",
+          "value": "Reference pseudocode used by this question:"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/1862855d9ca4/q4_code0_p4.png",
+          "alt": "q4 code0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/1862855d9ca4/q5_prompt_p5.png",
+          "alt": "Original question: Which of the following condition(s) is/are always True for the eliminate procedure from Question 4?"
+        }
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/1862855d9ca4/q5_option1_code0_p5.png",
+            "alt": "Original option 1 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/1862855d9ca4/q5_option2_code0_p5.png",
+            "alt": "Original option 2 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/1862855d9ca4/q5_option3_code0_p5.png",
+            "alt": "Original option 3 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/1862855d9ca4/q5_option4_code0_p5.png",
+            "alt": "Original option 4 pseudocode or mathematical expression."
+          }
+        ]
+      ],
+      "correct_answers": [
+        2
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/1862855d9ca4/q6_prompt_p6.png",
+          "alt": "Original question: A word is said to be perfect if no letter is repeated. Let isPerfect be a procedure that takes a row X in the \"Words\" table as input and returns True if the word in row X is a perfect word otherwise returns False. Choose the correct implementation of the procedure isPerfect."
+        }
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/1862855d9ca4/q6_option1_code0_p6.png",
+            "alt": "Original option 1 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/1862855d9ca4/q6_option2_code0_p6.png",
+            "alt": "Original option 2 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/1862855d9ca4/q6_option3_code0_p6.png",
+            "alt": "Original option 3 pseudocode or mathematical expression."
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/1862855d9ca4/q7_prompt_p7.png",
+          "alt": "Original question: The given pseudocode is executed using a dataset having the same fields as the \"Words\" dataset, and contains the following words: \"I ordered this product from Gitark. I am very happy to share my review regarding this awesome product. It is not only nice to use, but also has a very cool look. I think this is the best product which can be bought in this price range.\" Consider the following informati"
+        }
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "numerical_answer": 2.0,
+      "numerical_tolerance": 0
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/1862855d9ca4/q8_prompt_p8.png",
+          "alt": "Original question: Mona tells Sona that at least 50 percent of sentences have nouns just after an adjective. Sona writes the following pseudocode to find if Mona is right or not. At the end of the execution of the pseudocode given below, A stores True if Mona is right otherwise False. But Sona might have made mistakes in one or more lines. Identify such lines (if any). Assume that there is at least one adjective in "
+        }
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Line 4: Invalid addition operation for appending in posList"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Line 7: Invalid increment of trueCount"
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/1862855d9ca4/q8_option3_p8.png",
+            "alt": "Original option 3 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/1862855d9ca4/q8_option4_p8.png",
+            "alt": "Original option 4 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "No mistakes"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/1862855d9ca4/q9_prompt_p9.png",
+          "alt": "Original question: Let a and b be positive integers. Procedure remainder(a, b) returns remainder if a is divided by b. When will procedure doSomething(X) return True?"
+        }
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "X is a prime number"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "В Х is an even number"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "X is an odd number"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "X is more than 1"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Reference pseudocode used by this question:"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/1862855d9ca4/q9_code0_p9.png",
+          "alt": "q9 code0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/1862855d9ca4/q10_prompt_p10.png",
+          "alt": "Original question: Consider the procedure discussed above. What will be the value of M at the end of the execution of the given pseudocode below?"
+        }
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/1862855d9ca4/q10_option1_code0_p10.png",
+            "alt": "Original option 1 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/1862855d9ca4/q10_option2_code0_p10.png",
+            "alt": "Original option 2 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/1862855d9ca4/q10_option3_code0_p10.png",
+            "alt": "Original option 3 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/1862855d9ca4/q10_option4_code0_p10.png",
+            "alt": "Original option 4 pseudocode or mathematical expression."
+          }
+        ]
+      ],
+      "correct_answer": 0
+    }
+  ]
+}

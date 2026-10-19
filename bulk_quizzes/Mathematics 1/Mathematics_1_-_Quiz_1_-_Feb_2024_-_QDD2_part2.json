@@ -1,0 +1,221 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 1 · Quiz 1 · Feb 2024 · QDD2 · Part 2",
+  "subject": "Mathematics 1",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In a grocery store, 60 customers made a purchase on a specific day. 28 people bought bread, 37 people bought milk and 30 people bought fruits. All the customers bought at least one of the three items. 16 of them bought bread and fruits, 17 of them bought bread and milk and 9 of them bought all the three items. Find the number of customers who bought milk and fruits."
+        }
+      ],
+      "numerical_answer": 11,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "By inclusion-exclusion: 60 = 28 + 37 + 30 − (𝐵 ∩ 𝑀) − (𝐵 ∩ 𝐹) − (𝑀 ∩ 𝐹) + (𝐵 ∩ 𝑀 ∩ 𝐹) = 95 − 17 − 16 − (𝑀 ∩ 𝐹) + 9 = 71 − (𝑀 ∩ 𝐹). So 𝑀 ∩ 𝐹 = 11."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In a grocery store, 60 customers made a purchase on a specific day. 28 people bought bread, 37 people bought milk and 30 people bought fruits. All the customers bought at least one of the three items. 16 of them bought bread and fruits, 17 of them bought bread and milk and 9 of them bought all the three items. Find the number of customers who bought milk and fruits but not bread."
+        }
+      ],
+      "numerical_answer": 2,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Customers who bought milk and fruits = 11 (computed via inclusion-exclusion). Those who bought milk and fruits but not bread = ∣𝑀 ∩ 𝐹∣ − ∣𝐵 ∩ 𝑀 ∩ 𝐹∣ = 11 − 9 = 2."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following polynomial 𝑝(𝑥) whose graph is given below. [Figure: a degree-6 polynomial curve crossing/touching the 𝑥-axis near 𝑥 = − 2, 𝑥 = − 1, 𝑥 = 0, 𝑥 = 1 and 𝑥 = 2, with a local maximum of about 3 near 𝑥 ≈ − 1.4, small bumps near the origin, a local minimum dipping to about −4 near 𝑥 ≈ 1.7, and rising steeply for ∣𝑥∣ large on both ends.] Which of the following options is/are correct."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Multiplicity of −1 and 1 must be same."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "𝑝(𝑥) is increasing in the interval (3, ∞)."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The total number of local minima is 3."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The number of turning points is 5."
+          }
+        ]
+      ],
+      "correct_answers": [
+        1,
+        3
+      ],
+      "marks": 4,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "From the graph the curve rises steeply to +∞ on the right, so 𝑝 is increasing on (3, ∞) (option 1 true). The graph shows 5 turning points (option 3 true). The roots at −1 and 1 are touch points but their multiplicities need not be equal, so option 0 is not forced. With 5 turning points the local minima number 2 or 3 depending on exact reading, so option 2 is uncertain. Exact multiplicities/minima count from the figure is approximate."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following options is/are true?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The point at which the slope of the equation 𝑥2 + 2𝑥 − 5 equals 10 is (4, 17)."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "𝑥 = 2 is the axis of symmetry of the quadratic function 𝑓(𝑥) = 𝑥2 + 4𝑥 + 5."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "If two different quadratic equations have same discriminant then the roots of both equations can be same."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The point at which the slope of the equation 𝑥2 + 2𝑥 − 5 equals 10 is (4, 19)."
+          }
+        ]
+      ],
+      "correct_answers": [
+        3
+      ],
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Slope of 𝑦 = 𝑥2 + 2𝑥 − 5 is 𝑦′ = 2𝑥 + 2 = 10 ⇒ 𝑥 = 4, and 𝑦 = 16 + 8 − 5 = 19, so the point is (4, 19) (option 3 true, option 0 false). Axis of symmetry of 𝑥2 + 4𝑥 + 5 is 𝑥 = − 𝑏/2𝑎 = − 2, not 2 (option 1 false). Two genuinely different quadratics with the same discriminant cannot have the same roots (equal roots would force the same equation up to scaling) (option 2 false)."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If the slope of parabola 𝑦 = 𝐴𝑥2 + 𝐵𝑥 + 𝐶, where 𝐴, 𝐵, 𝐶 ∈ 𝑅, at points (3, 2) and (2, 3) are 16 and 12 respectively, calculate the value of 𝐴."
+        }
+      ],
+      "numerical_answer": 2,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Slope 𝑦′ = 2𝐴𝑥 + 𝐵. At 𝑥 = 3: 6𝐴 + 𝐵 = 16; at 𝑥 = 2: 4𝐴 + 𝐵 = 12. Subtracting gives 2𝐴 = 4, so 𝐴 = 2."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If the slope of parabola 𝑦 = 𝐴𝑥2 + 𝐵𝑥 + 𝐶, where 𝐴, 𝐵, 𝐶 ∈ 𝑅, at points (3, 2) and (2, 3) are 16 and 12 respectively, calculate the value of 𝐵."
+        }
+      ],
+      "numerical_answer": 4,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "With 𝐴 = 2 from 6𝐴 + 𝐵 = 16 and 4𝐴 + 𝐵 = 12: 𝐵 = 16 − 6(2) = 4."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Ram and Shyam want to solve a quadratic equation. Ram made a mistake in writing down the constant term and ended up in getting roots as 3 and 4. Shyam made a mistake in writing down the coefficient of 𝑥 and got the roots as 2 and 3. Consider the leading coefficient to be 1 in all cases. The correct roots of the quadratic equation are:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "1 and 5"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "2 and 6"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1 and 6"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "2 and 5"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Ram's mistake was only in the constant term, so his sum of roots is correct: 3 + 4 = 7. Shyam's mistake was only in the coefficient of 𝑥, so his product of roots is correct: 2 × 3 = 6. The correct equation is 𝑡2 − 7𝑡 + 6 = 0 = (𝑡 − 1)(𝑡 − 6), giving roots 1 and 6."
+        }
+      ]
+    }
+  ]
+}

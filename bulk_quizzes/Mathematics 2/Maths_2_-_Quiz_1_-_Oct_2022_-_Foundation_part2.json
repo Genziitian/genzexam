@@ -1,0 +1,296 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 2 · Quiz 1 · Oct 2022 · Foundation · Part 2",
+  "subject": "Mathematics 2",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the subset of $\\mathbb{R}^3$: Subset 4: $W = \\{(x, y, z) \\in \\mathbb{R}^3 : (x - 1) - y + (z + 1) = 0 \\text{ and } x + y = z\\}$. Subset 4 is a subspace of dimension ___."
+        }
+      ],
+      "numerical_answer": 1,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$(x-1) - y + (z+1) = 0 \\implies x - y + z = 0$. Combining with $x + y - z = 0$ gives two independent homogeneous linear equations in $\\mathbb{R}^3$, leaving a line of dimension $3 - 2 = 1$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Suppose $W_1$ and $W_2$ are subspaces of $\\mathbb{R}^3$ defined by:\n$$W_1 = \\{(x, y, x - 2y) : x, y \\in \\mathbb{R}\\}, \\quad W_2 = \\{(x, 0, y) : x, y \\in \\mathbb{R}\\}$$\nWhich of the following option(s) represent $W_1 \\cap W_2$?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$\\text{Span}\\{(1, 0, 1), (1, 0, -1)\\}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$\\text{Span}\\{(1, 0, 1), (-2, 0, -2)\\}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$\\text{Span}\\{(-1, 0, -1)\\}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$\\text{Span}\\{(1, 1, -1), (1, 0, 1)\\}$"
+          }
+        ]
+      ],
+      "correct_answers": [
+        1,
+        2
+      ],
+      "marks": 2,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "In $W_2$, the y-coordinate is 0. In $W_1$, when $y = 0$, $z = x - 2(0) = x$. So vectors are of the form $(x, 0, x) = x(1, 0, 1)$. This line is spanned by $\\{(-1, 0, -1)\\}$ (Option C) and also by $\\{(1, 0, 1), (-2, 0, -2)\\}$ (Option B)."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Suppose $W_1 = \\{(x, y, x - 2y) : x, y \\in \\mathbb{R}\\}$ and $W_2 = \\{(x, 0, y) : x, y \\in \\mathbb{R}\\}$. What is the dimension of $W_1 \\cap W_2$?"
+        }
+      ],
+      "numerical_answer": 1,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$W_1 \\cap W_2 = \\text{Span}\\{(1, 0, 1)\\}$, which has dimension 1."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Suppose $W_1 = \\{(x, y, x - 2y) : x, y \\in \\mathbb{R}\\}$ and $W_2 = \\{(x, 0, y) : x, y \\in \\mathbb{R}\\}$. Which of the following options is true?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$W_1 \\cup W_2$ is a vector space of dimension 3."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$W_1 \\cup W_2$ is a vector space of dimension 2."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$W_1 \\cup W_2$ is a vector space of dimension 1."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$W_1 \\cup W_2$ is not a vector space."
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Neither $W_1 \\subseteq W_2$ nor $W_2 \\subseteq W_1$, so their union is not closed under addition and not a vector space."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A system can be in one of 3 possible states at a given time. At the next instant, it changes its state as represented pictorially in the Markov transition diagram below:"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/mathematics-2/quiz1/oct2022_markov_diagram.png",
+          "alt": "Markov 3-state transition diagram M2Q1:1"
+        },
+        {
+          "kind": "text",
+          "value": "The transition matrix is $P = \\begin{bmatrix} 0 & 1/2 & 1/2 \\\\ 0 & 0 & 1 \\\\ 1/2 & 1/2 & 0 \\end{bmatrix}$, and the state distribution vector evolves as $X_n = P^T X_{n-1}$.\nSuppose at $t = 2$ the distribution vector $X_2$ is $\\begin{bmatrix} 1/3 \\\\ 1/3 \\\\ 1/3 \\end{bmatrix}$. Which of the following options are true?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$X_0 = X_2$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$X_0 = X_1$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$X_0 \\neq X_n$ for some $n \\in \\mathbb{N}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "There are infinitely many vectors which are possible candidates for $X_0$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "There are infinitely many vectors which are possible candidates for $X_1$"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1
+      ],
+      "marks": 2,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Notice that $[1/3, 1/3, 1/3]^T$ is the stationary distribution of $P^T$, satisfying $P^T X = X$. Thus $X_0 = X_1 = X_2$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the same 3-state Markov system with transition matrix $P = \\begin{bmatrix} 0 & 1/2 & 1/2 \\\\ 0 & 0 & 1 \\\\ 1/2 & 1/2 & 0 \\end{bmatrix}$ and distribution evolution $X_n = P^T X_{n-1}$."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/mathematics-2/quiz1/oct2022_markov_diagram.png",
+          "alt": "Markov 3-state transition diagram M2Q1:1"
+        },
+        {
+          "kind": "text",
+          "value": "Suppose at $t = 1$ the distribution vector is $X_1 = \\begin{bmatrix} 1/2 \\\\ 1/2 \\\\ 0 \\end{bmatrix}$. Which of the following options is true?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The system had positive initial probabilities of being in State 1 or State 2."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The system was initially in State 3."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The system was initially in State 1."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The system had positive initial probabilities of being in State 2 and State 3."
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "From state 3, transitions go to state 1 with probability 1/2 and state 2 with probability 1/2. Thus if $X_0 = [0, 0, 1]^T$ (state 3), $X_1 = P^T [0, 0, 1]^T = [1/2, 1/2, 0]^T$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "For the Markov transition matrix $P = \\begin{bmatrix} 0 & 1/2 & 1/2 \\\\ 0 & 0 & 1 \\\\ 1/2 & 1/2 & 0 \\end{bmatrix}$, choose the correct option:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Both $P$ and $P^2$ have the same reduced row echelon form."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$P$ is already in reduced row echelon form."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$P^2 = \\lambda P$ for some real number $\\lambda$."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$P^2$ is already in reduced row echelon form."
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$P$ has rank 3 (non-zero determinant), so its RREF is the identity matrix $I_3$. Since $P$ is invertible, $P^2$ is also invertible with rank 3, so its RREF is also $I_3$."
+        }
+      ]
+    }
+  ]
+}

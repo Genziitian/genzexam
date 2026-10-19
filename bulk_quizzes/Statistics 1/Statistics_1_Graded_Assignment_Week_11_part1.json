@@ -1,0 +1,296 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Statistics 1 · Graded Assignment · Week 11 · Part 1",
+  "subject": "Statistics 1",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-1/e9442f0b62d9_q1_prompt_p2.png",
+          "alt": "Original Statistics 1 question 1 prompt."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/e9442f0b62d9_q1_option-1_p2.png",
+            "alt": "Original option 1 for Statistics 1 question 1."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/e9442f0b62d9_q1_option-2_p2.png",
+            "alt": "Original option 2 for Statistics 1 question 1."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/e9442f0b62d9_q1_option-3_p2.png",
+            "alt": "Original option 3 for Statistics 1 question 1."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/e9442f0b62d9_q1_option-4_p2.png",
+            "alt": "Original option 4 for Statistics 1 question 1."
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-1/e9442f0b62d9_q2_prompt_p2.png",
+          "alt": "Original Statistics 1 question 2 prompt."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "E(X)≤Var(X)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "E(X)<Var(X)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "E(X)≥Var(X)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "E(X)>Var(X)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Var(X)≤SD(X)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Var(X)≥SD(X)"
+          }
+        ]
+      ],
+      "correct_answers": [
+        2,
+        3
+      ]
+    },
+    {
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Two friends (say ’A’ and ’B’) could not decide whether to play a racing game or a\nboxing game on Xbox. They decide to play a card-game first. If ’A’ wins at least x\nrounds out of the y rounds of the card game played, then the boxing game will be\nplayed. The chances of ’A’ winning in any round of the card game is a : b. Find the\nprobability that the boxing game will be played on Xbox? \nHint: If the chances of happening of an event is x : y then, the probability equals\nx\nx + y"
+        },
+        {
+          "kind": "text",
+          "value": "Give an expression in the stated parameters."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "type": "short_answer",
+      "acceptable_answers": [
+        "sum(i=x..y,binom(y,i)*(a/(a+b))^i*(b/(a+b))^(y-i))",
+        "sum(i=x..y,binom(y,i)(a/(a+b))^i(b/(a+b))^(y-i))",
+        "sum(i=x..y,binom(y,i)*(a/(a+b))**i*(b/(a+b))**(y-i))"
+      ],
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The number of rounds won by A is Binomial(y,a/(a+b)); sum its mass function from x wins through y wins."
+        }
+      ]
+    },
+    {
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let X ∼ Binomial(n, p). If the probabilities of x and x + 1 successes are a and, b\nrespectively, then find the parameter ’p’ of the distribution."
+        },
+        {
+          "kind": "text",
+          "value": "Give an expression in the stated parameters."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "type": "short_answer",
+      "acceptable_answers": [
+        "b*(x+1)/(a*(n-x)+b*(x+1))",
+        "b(x+1)/(a(n-x)+b(x+1))"
+      ],
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Divide the Binomial probability at x+1 by the probability at x, set the ratio to b/a, and solve for p."
+        }
+      ]
+    },
+    {
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If the expected number of sixes hit by a batsman on n balls is e and the variance for the\nsame is v, then what is the probability of him hitting at least one six on any randomly\nselected n balls?"
+        },
+        {
+          "kind": "text",
+          "value": "Give an expression in the stated parameters."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "type": "short_answer",
+      "acceptable_answers": [
+        "1-(v/e)^n",
+        "1-(v/e)**n"
+      ],
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Binomial mean np=e and variance np(1−p)=v imply 1−p=v/e. Subtract the probability of no sixes from one."
+        }
+      ]
+    },
+    {
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The probability of a student clearing a competitive exam is 1\nm. If he gives the exam\nn times, then what is the probability of him clearing the exam at least twice?"
+        },
+        {
+          "kind": "text",
+          "value": "Give an expression in the stated parameters."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "type": "short_answer",
+      "acceptable_answers": [
+        "1-(1-1/m)^n-(n/m)*(1-1/m)^(n-1)",
+        "1-(1-1/m)^n-(n/m)(1-1/m)^(n-1)",
+        "1-(1-1/m)**n-(n/m)*(1-1/m)**(n-1)"
+      ],
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "For Binomial(n,1/m), subtract the probabilities of zero and one successes from one."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-1/e9442f0b62d9_q7_prompt_p4.png",
+          "alt": "Original Statistics 1 question 7 prompt."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/e9442f0b62d9_q7_option-1_p4.png",
+            "alt": "Original option 1 for Statistics 1 question 7."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/e9442f0b62d9_q7_option-2_p4.png",
+            "alt": "Original option 2 for Statistics 1 question 7."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/e9442f0b62d9_q7_option-3_p4.png",
+            "alt": "Original option 3 for Statistics 1 question 7."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/e9442f0b62d9_q7_option-4_p4.png",
+            "alt": "Original option 4 for Statistics 1 question 7."
+          }
+        ]
+      ],
+      "correct_answers": [
+        1,
+        3
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-1/e9442f0b62d9_q9_prompt_p4.png",
+          "alt": "Original Statistics 1 question 9 prompt."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/e9442f0b62d9_q9_option-1_p4.png",
+            "alt": "Original option 1 for Statistics 1 question 9."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/e9442f0b62d9_q9_option-2_p4.png",
+            "alt": "Original option 2 for Statistics 1 question 9."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/e9442f0b62d9_q9_option-3_p4.png",
+            "alt": "Original option 3 for Statistics 1 question 9."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/e9442f0b62d9_q9_option-4_p4.png",
+            "alt": "Original option 4 for Statistics 1 question 9."
+          }
+        ]
+      ],
+      "correct_answer": 0
+    }
+  ]
+}

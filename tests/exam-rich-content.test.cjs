@@ -56,6 +56,29 @@ assert.match(html, /Image unavailable/g);
 assert.match(html, /src="\/assets\/exam-examples\/normal-curve.png"/);
 assert.match(html, /&lt;script&gt;x&lt;\/script&gt;/);
 
+const mixed = content.render(
+  'Read $x^2$ before ![Matrix A](</uploads/matrix(1).png>)\n' +
+    '```pseudocode\nStep 1: Read A\nStep 2: Stop\n```\n' +
+    'Then choose ![Graph \\[B\\]](/uploads/graph.png) after the procedure.',
+);
+const matrix = mixed.indexOf('src="/uploads/matrix(1).png"');
+const code = mixed.indexOf('language-pseudocode');
+const graph = mixed.indexOf('src="/uploads/graph.png"');
+assert.ok(matrix > mixed.indexOf('data-exam-tex="x^2"'));
+assert.ok(code > matrix && graph > code, "Mixed prompt order is preserved.");
+assert.match(mixed, /alt="Graph \[B\]"/);
+assert.match(mixed, /Step 1: Read A\nStep 2: Stop/);
+assert.match(content.render('![Option A](</uploads/choice.png>)'), /<img.*alt="Option A"/);
+const literal = content.render(
+  '`![inline code](/uploads/no.png)`\n```text\n![fenced code](/uploads/no.png)\n```\n$![math](/uploads/no.png)$',
+);
+assert.equal((literal.match(/<img /g) || []).length, 0, "Images stay literal inside code and math.");
+for (const url of ['javascript:alert', 'data:image/png;base64,AA', 'file:///tmp/a.png', '/uploads/../private.png', 'https://example.test/a.svg']) {
+  assert.match(content.render(`![unsafe](<${url}>)`), /Image unavailable/);
+}
+assert.match(content.render('![&quot; <script>](</uploads/choice.png>)'), /alt="&amp;quot; &lt;script&gt;"/);
+assert.match(content.render([{ kind: 'image', url: '/uploads/choice.png' }]), /alt="Question image"/);
+
 const root = {
   elements: [
     {

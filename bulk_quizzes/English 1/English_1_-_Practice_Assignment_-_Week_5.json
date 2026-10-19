@@ -1,0 +1,355 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 1 · Practice Assignment · Week 5",
+  "subject": "English 1",
+  "section": "practice",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct option. _______ your brother a teacher or a policeman?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Does"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Are"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Is"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct option. My mother and I are from America. _________ you from?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Where"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Where are"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Where do"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct option. My family ________ return home tomorrow."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Willing"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Will"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct option. The shop _______ not open for one month."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Can"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Will"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct option. She _________ arrive on time."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Is"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Not"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Will"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Select all grammatically valid completions: I __________ to the gym four times last week."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Did go"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Went"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Goed"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Was go"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1
+      ],
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Went is the ordinary simple past. Did go is the grammatical emphatic past. Goed and was go are invalid here."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct option. What ________ you_______ last month?"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Do/ Did"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Did/Do"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Did/Did"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Were/Do"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Two singular subjects connected by or, either/or, and neither/nor takes ______________."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "A plural verb"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A singular verb"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A plurangular verb"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of the above"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The umbrella or the coats ___________ outside."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Is not"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Is"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Are"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Was not"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Either my research guide or my supervisor ___________ attending the online viva."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Will"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Are"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Were not"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Is"
+          }
+        ]
+      ],
+      "correct_answer": 3
+    }
+  ]
+}

@@ -1,0 +1,1043 @@
+{
+  "outputs": [
+    {
+      "path": "/Users/tusharrrsingh/Downloads/exam genz/bulk_quizzes/English 2/English_2_-_Graded_Assignment_-_Week_1.json",
+      "questions": 8
+    },
+    {
+      "path": "/Users/tusharrrsingh/Downloads/exam genz/bulk_quizzes/English 2/English_2_-_Graded_Assignment_-_Week_2.json",
+      "questions": 10
+    },
+    {
+      "path": "/Users/tusharrrsingh/Downloads/exam genz/bulk_quizzes/English 2/English_2_-_Graded_Assignment_-_Week_3.json",
+      "questions": 7
+    },
+    {
+      "path": "/Users/tusharrrsingh/Downloads/exam genz/bulk_quizzes/English 2/English_2_-_Graded_Assignment_-_Week_4.json",
+      "questions": 5
+    },
+    {
+      "path": "/Users/tusharrrsingh/Downloads/exam genz/bulk_quizzes/English 2/English_2_-_Graded_Assignment_-_Week_5.json",
+      "questions": 10
+    },
+    {
+      "path": "/Users/tusharrrsingh/Downloads/exam genz/bulk_quizzes/English 2/English_2_-_Graded_Assignment_-_Week_6.json",
+      "questions": 10
+    },
+    {
+      "path": "/Users/tusharrrsingh/Downloads/exam genz/bulk_quizzes/English 2/English_2_-_Graded_Assignment_-_Week_7.json",
+      "questions": 5
+    },
+    {
+      "path": "/Users/tusharrrsingh/Downloads/exam genz/bulk_quizzes/English 2/English_2_-_Graded_Assignment_-_Week_8.json",
+      "questions": 9
+    },
+    {
+      "path": "/Users/tusharrrsingh/Downloads/exam genz/bulk_quizzes/English 2/English_2_-_Graded_Assignment_-_Week_9.json",
+      "questions": 5
+    },
+    {
+      "path": "/Users/tusharrrsingh/Downloads/exam genz/bulk_quizzes/English 2/English_2_-_Graded_Assignment_-_Week_10.json",
+      "questions": 10
+    },
+    {
+      "path": "/Users/tusharrrsingh/Downloads/exam genz/bulk_quizzes/English 2/English_2_-_Graded_Assignment_-_Week_11.json",
+      "questions": 10
+    },
+    {
+      "path": "/Users/tusharrrsingh/Downloads/exam genz/bulk_quizzes/English 2/English_2_-_Graded_Assignment_-_Week_12.json",
+      "questions": 7
+    }
+  ],
+  "source_questions": [
+    {
+      "week": 1,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 1 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 1,
+      "pages": [
+        2
+      ],
+      "note": "Original wording/options/key checked; formatting cleaned."
+    },
+    {
+      "week": 1,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 1 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 2,
+      "pages": [
+        2
+      ],
+      "note": "Original wording/options/key checked; formatting cleaned."
+    },
+    {
+      "week": 1,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 1 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 3,
+      "pages": [
+        3
+      ],
+      "note": "Retained word-stress inquiry; removed unnecessary audio instruction. Source includes the speech transcript."
+    },
+    {
+      "week": 1,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 1 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 4,
+      "pages": [
+        4
+      ],
+      "note": "Restored shared word-stress instruction from source Q3."
+    },
+    {
+      "week": 1,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 1 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 5,
+      "pages": [
+        4
+      ],
+      "note": "Restored shared word-stress instruction from source Q3."
+    },
+    {
+      "week": 1,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 1 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 6,
+      "pages": [
+        4
+      ],
+      "note": "Original wording/options/key checked; formatting cleaned."
+    },
+    {
+      "week": 1,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 1 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 7,
+      "pages": [
+        5
+      ],
+      "note": "Clarified phonetics inquiry as vowel sounds; source key is two."
+    },
+    {
+      "week": 1,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 1 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 8,
+      "pages": [
+        5
+      ],
+      "note": "Removed explanation text accidentally appended to the False option."
+    },
+    {
+      "week": 2,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 2 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 1,
+      "pages": [
+        2
+      ],
+      "note": "Original wording/options/key checked; formatting cleaned."
+    },
+    {
+      "week": 2,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 2 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 2,
+      "pages": [
+        3
+      ],
+      "note": "Original wording/options/key checked; formatting cleaned."
+    },
+    {
+      "week": 2,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 2 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 3,
+      "pages": [
+        3
+      ],
+      "note": "Original wording/options/key checked; formatting cleaned."
+    },
+    {
+      "week": 2,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 2 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 4,
+      "pages": [
+        4
+      ],
+      "note": "Original wording/options/key checked; formatting cleaned."
+    },
+    {
+      "week": 2,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 2 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 5,
+      "pages": [
+        4
+      ],
+      "note": "Original wording/options/key checked; formatting cleaned."
+    },
+    {
+      "week": 2,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 2 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 6,
+      "pages": [
+        5
+      ],
+      "note": "Original wording/options/key checked; formatting cleaned."
+    },
+    {
+      "week": 2,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 2 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 7,
+      "pages": [
+        6
+      ],
+      "note": "Original wording/options/key checked; formatting cleaned."
+    },
+    {
+      "week": 2,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 2 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 8,
+      "pages": [
+        6
+      ],
+      "note": "Restored the inquiry/target clause from the source rationale and removed rationale from options."
+    },
+    {
+      "week": 2,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 2 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 9,
+      "pages": [
+        7
+      ],
+      "note": "Restored the inquiry/target clause from the source rationale and removed rationale from options."
+    },
+    {
+      "week": 2,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 2 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 10,
+      "pages": [
+        7
+      ],
+      "note": "Restored the inquiry/target clause from the source rationale and removed rationale from options."
+    },
+    {
+      "week": 3,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 3 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 1,
+      "pages": [
+        2
+      ],
+      "note": "Removed duplicated nested question; retained the second complete source option set and key."
+    },
+    {
+      "week": 3,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 3 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 3,
+      "pages": [
+        3
+      ],
+      "note": "Original wording/options/key checked; formatting cleaned."
+    },
+    {
+      "week": 3,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 3 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 4,
+      "pages": [
+        3
+      ],
+      "note": "Made the source functional-language heading into a complete inquiry."
+    },
+    {
+      "week": 3,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 3 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 5,
+      "pages": [
+        3
+      ],
+      "note": "Separated original first question from a second question merged into the same header."
+    },
+    {
+      "week": 3,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 3 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 6,
+      "pages": [
+        4
+      ],
+      "note": "Made the source functional-language heading into a complete inquiry."
+    },
+    {
+      "week": 3,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 3 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 7,
+      "pages": [
+        4
+      ],
+      "note": "Recovered complete original Q7 and its flu/influenza rationale embedded under source Q5; Q7 header has unrelated choices."
+    },
+    {
+      "week": 3,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 3 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 9,
+      "pages": [
+        4
+      ],
+      "note": "Original wording/options/key checked; formatting cleaned."
+    },
+    {
+      "week": 4,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 4 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 1,
+      "pages": [
+        2
+      ],
+      "note": "Original wording/options/key checked; formatting cleaned."
+    },
+    {
+      "week": 4,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 4 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 2,
+      "pages": [
+        2
+      ],
+      "note": "Original wording/options/key checked; formatting cleaned."
+    },
+    {
+      "week": 4,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 4 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 3,
+      "pages": [
+        2
+      ],
+      "note": "Original wording/options/key checked; formatting cleaned."
+    },
+    {
+      "week": 4,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 4 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 4,
+      "pages": [
+        2
+      ],
+      "note": "Original wording/options/key checked; formatting cleaned."
+    },
+    {
+      "week": 4,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 4 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 5,
+      "pages": [
+        2
+      ],
+      "note": "Original wording/options/key checked; formatting cleaned."
+    },
+    {
+      "week": 5,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 5 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 1,
+      "pages": [
+        2
+      ],
+      "note": "Original wording/options/key checked; formatting cleaned."
+    },
+    {
+      "week": 5,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 5 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 2,
+      "pages": [
+        2
+      ],
+      "note": "Restored shared modal-auxiliary instruction from the end of source Q1."
+    },
+    {
+      "week": 5,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 5 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 3,
+      "pages": [
+        3
+      ],
+      "note": "Restored shared modal-auxiliary instruction from the end of source Q1."
+    },
+    {
+      "week": 5,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 5 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 4,
+      "pages": [
+        3
+      ],
+      "note": "Original wording/options/key checked; formatting cleaned."
+    },
+    {
+      "week": 5,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 5 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 5,
+      "pages": [
+        4
+      ],
+      "note": "Reassembled original option a Permission from repeated question below the source rationale."
+    },
+    {
+      "week": 5,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 5 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 6,
+      "pages": [
+        4
+      ],
+      "note": "Restored shared inquiry printed under source Q5."
+    },
+    {
+      "week": 5,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 5 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 7,
+      "pages": [
+        5
+      ],
+      "note": "Restored shared inquiry printed under source Q5."
+    },
+    {
+      "week": 5,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 5 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 9,
+      "pages": [
+        5
+      ],
+      "note": "Original wording/options/key checked; formatting cleaned."
+    },
+    {
+      "week": 5,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 5 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 10,
+      "pages": [
+        5
+      ],
+      "note": "Original wording/options/key checked; formatting cleaned."
+    },
+    {
+      "week": 5,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 5 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 8,
+      "pages": [
+        4
+      ],
+      "note": "Recovered original Q8 embedded under Q5; formal request takes Would."
+    },
+    {
+      "week": 6,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 6 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 1,
+      "pages": [
+        2
+      ],
+      "note": "Original wording/options/key checked; formatting cleaned."
+    },
+    {
+      "week": 6,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 6 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 2,
+      "pages": [
+        2
+      ],
+      "note": "Original wording/options/key checked; formatting cleaned."
+    },
+    {
+      "week": 6,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 6 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 3,
+      "pages": [
+        2
+      ],
+      "note": "Original wording/options/key checked; formatting cleaned."
+    },
+    {
+      "week": 6,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 6 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 4,
+      "pages": [
+        3,
+        4
+      ],
+      "note": "Restored full sentence from the original source clause options."
+    },
+    {
+      "week": 6,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 6 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 5,
+      "pages": [
+        4
+      ],
+      "note": "Separated source Q5 from embedded Q6 and Q7; source inline key a retained."
+    },
+    {
+      "week": 6,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 6 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 6,
+      "pages": [
+        4
+      ],
+      "note": "Recovered complete original conditional question embedded under Q5; source key b."
+    },
+    {
+      "week": 6,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 6 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 7,
+      "pages": [
+        4
+      ],
+      "note": "Recovered complete original question embedded under Q5; source key a."
+    },
+    {
+      "week": 6,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 6 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 8,
+      "pages": [
+        5
+      ],
+      "note": "Original wording/options/key checked; formatting cleaned."
+    },
+    {
+      "week": 6,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 6 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 9,
+      "pages": [
+        5
+      ],
+      "note": "Removed duplicated explanation accidentally appended to option d; article an selects expensive."
+    },
+    {
+      "week": 6,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 6 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 10,
+      "pages": [
+        5
+      ],
+      "note": "Original wording/options/key checked; formatting cleaned."
+    },
+    {
+      "week": 7,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 7 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 1,
+      "pages": [
+        2
+      ],
+      "note": "Removed unrelated fill-in blanks spliced into the original stem."
+    },
+    {
+      "week": 7,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 7 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 2,
+      "pages": [
+        2
+      ],
+      "note": "Original wording/options/key checked; formatting cleaned."
+    },
+    {
+      "week": 7,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 7 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 3,
+      "pages": [
+        3
+      ],
+      "note": "Original wording/options/key checked; formatting cleaned."
+    },
+    {
+      "week": 7,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 7 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 4,
+      "pages": [
+        3
+      ],
+      "note": "Original wording/options/key checked; formatting cleaned."
+    },
+    {
+      "week": 7,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 7 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 5,
+      "pages": [
+        3
+      ],
+      "note": "Removed unrelated quantifier exercise spliced into option d."
+    },
+    {
+      "week": 8,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 8 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 1,
+      "pages": [
+        2
+      ],
+      "note": "Original wording/options/key checked; formatting cleaned."
+    },
+    {
+      "week": 8,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 8 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 2,
+      "pages": [
+        2
+      ],
+      "note": "Original wording/options/key checked; formatting cleaned."
+    },
+    {
+      "week": 8,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 8 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 3,
+      "pages": [
+        2
+      ],
+      "note": "Original wording/options/key checked; formatting cleaned."
+    },
+    {
+      "week": 8,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 8 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 4,
+      "pages": [
+        3
+      ],
+      "note": "Original wording/options/key checked; formatting cleaned."
+    },
+    {
+      "week": 8,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 8 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 6,
+      "pages": [
+        3
+      ],
+      "note": "Original wording/options/key checked; formatting cleaned."
+    },
+    {
+      "week": 8,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 8 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 7,
+      "pages": [
+        4
+      ],
+      "note": "Original wording/options/key checked; formatting cleaned."
+    },
+    {
+      "week": 8,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 8 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 8,
+      "pages": [
+        4
+      ],
+      "note": "Original wording/options/key checked; formatting cleaned."
+    },
+    {
+      "week": 8,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 8 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 9,
+      "pages": [
+        4
+      ],
+      "note": "Original wording/options/key checked; formatting cleaned."
+    },
+    {
+      "week": 8,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 8 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 10,
+      "pages": [
+        5
+      ],
+      "note": "Original wording/options/key checked; formatting cleaned."
+    },
+    {
+      "week": 9,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 9 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 3,
+      "pages": [
+        3
+      ],
+      "note": "Recovered original options embedded in prompt; removed learner feedback. Vocabulary question is self-contained; corrected erroneous source key where necessary."
+    },
+    {
+      "week": 9,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 9 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 5,
+      "pages": [
+        3
+      ],
+      "note": "Recovered original options embedded in prompt; removed learner feedback. Vocabulary question is self-contained; corrected erroneous source key where necessary."
+    },
+    {
+      "week": 9,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 9 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 6,
+      "pages": [
+        4
+      ],
+      "note": "Recovered original options embedded in prompt; removed learner feedback. Vocabulary question is self-contained; corrected erroneous source key where necessary."
+    },
+    {
+      "week": 9,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 9 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 8,
+      "pages": [
+        5
+      ],
+      "note": "Recovered original options embedded in prompt; removed learner feedback. Vocabulary question is self-contained; corrected erroneous source key where necessary."
+    },
+    {
+      "week": 9,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 9 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 10,
+      "pages": [
+        6
+      ],
+      "note": "Recovered original options embedded in prompt; removed learner feedback. Vocabulary question is self-contained; corrected erroneous source key where necessary."
+    },
+    {
+      "week": 10,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 10 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 1,
+      "pages": [
+        2
+      ],
+      "note": "Recovered real source choices from prompt; removed feedback and corrected source key. Q3 includes its exact sentence context."
+    },
+    {
+      "week": 10,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 10 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 2,
+      "pages": [
+        2
+      ],
+      "note": "Recovered real source choices from prompt; removed feedback and corrected source key. Q3 includes its exact sentence context."
+    },
+    {
+      "week": 10,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 10 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 3,
+      "pages": [
+        3
+      ],
+      "note": "Recovered real source choices from prompt; removed feedback and corrected source key. Q3 includes its exact sentence context."
+    },
+    {
+      "week": 10,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 10 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 4,
+      "pages": [
+        3
+      ],
+      "note": "Recovered real source choices from prompt; removed feedback and corrected source key. Q3 includes its exact sentence context."
+    },
+    {
+      "week": 10,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 10 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 5,
+      "pages": [
+        3
+      ],
+      "note": "Recovered real source choices from prompt; removed feedback and corrected source key. Q3 includes its exact sentence context."
+    },
+    {
+      "week": 10,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 10 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 6,
+      "pages": [
+        4
+      ],
+      "note": "Recovered real source choices from prompt; removed feedback and corrected source key. Q3 includes its exact sentence context."
+    },
+    {
+      "week": 10,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 10 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 7,
+      "pages": [
+        4
+      ],
+      "note": "Recovered real source choices from prompt; removed feedback and corrected source key. Q3 includes its exact sentence context."
+    },
+    {
+      "week": 10,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 10 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 8,
+      "pages": [
+        4
+      ],
+      "note": "Recovered real source choices from prompt; removed feedback and corrected source key. Q3 includes its exact sentence context."
+    },
+    {
+      "week": 10,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 10 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 9,
+      "pages": [
+        5
+      ],
+      "note": "Recovered real source choices from prompt; removed feedback and corrected source key. Q3 includes its exact sentence context."
+    },
+    {
+      "week": 10,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 10 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 10,
+      "pages": [
+        5
+      ],
+      "note": "Recovered real source choices from prompt; removed feedback and corrected source key. Q3 includes its exact sentence context."
+    },
+    {
+      "week": 11,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 11 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 1,
+      "pages": [
+        2
+      ],
+      "note": "Recovered original options and removed learner feedback; corrected source keys. References to another question were made self-contained."
+    },
+    {
+      "week": 11,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 11 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 2,
+      "pages": [
+        2
+      ],
+      "note": "Recovered original options and removed learner feedback; corrected source keys. References to another question were made self-contained."
+    },
+    {
+      "week": 11,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 11 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 3,
+      "pages": [
+        3
+      ],
+      "note": "Recovered original options and removed learner feedback; corrected source keys. References to another question were made self-contained."
+    },
+    {
+      "week": 11,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 11 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 4,
+      "pages": [
+        3
+      ],
+      "note": "Recovered original options and removed learner feedback; corrected source keys. References to another question were made self-contained."
+    },
+    {
+      "week": 11,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 11 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 5,
+      "pages": [
+        4
+      ],
+      "note": "Recovered original options and removed learner feedback; corrected source keys. References to another question were made self-contained."
+    },
+    {
+      "week": 11,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 11 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 6,
+      "pages": [
+        4
+      ],
+      "note": "Recovered original options and removed learner feedback; corrected source keys. References to another question were made self-contained."
+    },
+    {
+      "week": 11,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 11 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 7,
+      "pages": [
+        4
+      ],
+      "note": "Recovered original options and removed learner feedback; corrected source keys. References to another question were made self-contained."
+    },
+    {
+      "week": 11,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 11 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 8,
+      "pages": [
+        5
+      ],
+      "note": "Recovered original options and removed learner feedback; corrected source keys. References to another question were made self-contained."
+    },
+    {
+      "week": 11,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 11 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 9,
+      "pages": [
+        5
+      ],
+      "note": "Recovered original options and removed learner feedback; corrected source keys. References to another question were made self-contained."
+    },
+    {
+      "week": 11,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 11 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 10,
+      "pages": [
+        6
+      ],
+      "note": "Recovered original options and removed learner feedback; corrected source keys. References to another question were made self-contained."
+    },
+    {
+      "week": 12,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 12 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 4,
+      "pages": [
+        3
+      ],
+      "note": "Recovered real source choices from prompt, removed feedback, and corrected source key where necessary."
+    },
+    {
+      "week": 12,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 12 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 5,
+      "pages": [
+        3
+      ],
+      "note": "Recovered real source choices from prompt, removed feedback, and corrected source key where necessary."
+    },
+    {
+      "week": 12,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 12 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 6,
+      "pages": [
+        4
+      ],
+      "note": "Recovered real source choices from prompt, removed feedback, and corrected source key where necessary."
+    },
+    {
+      "week": 12,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 12 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 7,
+      "pages": [
+        4
+      ],
+      "note": "Recovered real source choices from prompt, removed feedback, and corrected source key where necessary."
+    },
+    {
+      "week": 12,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 12 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 8,
+      "pages": [
+        4
+      ],
+      "note": "Recovered real source choices from prompt, removed feedback, and corrected source key where necessary."
+    },
+    {
+      "week": 12,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 12 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 9,
+      "pages": [
+        5
+      ],
+      "note": "Recovered real source choices from prompt, removed feedback, and corrected source key where necessary."
+    },
+    {
+      "week": 12,
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 12 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 10,
+      "pages": [
+        5
+      ],
+      "note": "Recovered real source choices from prompt, removed feedback, and corrected source key where necessary."
+    }
+  ],
+  "gaps": [
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 1 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 9,
+      "reason": "Audio-dependent pause choices; audio not bundled."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 1 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 10,
+      "reason": "Audio-dependent pause choices; audio not bundled."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 3 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 10,
+      "reason": "Source prefix classification ambiguous; not replaced with a new exercise."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 8 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 5,
+      "reason": "Source answer All of the above includes avoiding uncommon words, which does not uniquely define length limits."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 9 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 1,
+      "reason": "Referenced narrative passage absent."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 9 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 2,
+      "reason": "Referenced narrative passage absent."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 9 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 4,
+      "reason": "Referenced narrative passage absent."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 9 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 7,
+      "reason": "Listening fill-in requires absent original audio."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 9 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 9,
+      "reason": "Listening fill-in requires absent original audio."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 9 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 11,
+      "reason": "Exact duplicate of Q1–10."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 9 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 12,
+      "reason": "Exact duplicate of Q1–10."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 9 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 13,
+      "reason": "Exact duplicate of Q1–10."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 9 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 14,
+      "reason": "Exact duplicate of Q1–10."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 9 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 15,
+      "reason": "Exact duplicate of Q1–10."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 9 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 16,
+      "reason": "Exact duplicate of Q1–10."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 9 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 17,
+      "reason": "Exact duplicate of Q1–10."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 9 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 18,
+      "reason": "Exact duplicate of Q1–10."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 9 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 19,
+      "reason": "Exact duplicate of Q1–10."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 9 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 20,
+      "reason": "Exact duplicate of Q1–10."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 12 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 1,
+      "reason": "Referenced email context absent from source."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 12 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 2,
+      "reason": "Referenced email context absent from source."
+    },
+    {
+      "source": "/Users/tusharrrsingh/Downloads/all/Eng 2/GA Week 12 - English 2 - genz_iitian - booklet.pdf",
+      "source_question": 3,
+      "reason": "Referenced email context absent from source."
+    }
+  ],
+  "references": [
+    {
+      "source": "https://warwick.ac.uk/fac/soc/al/repository/staff/richardskeith/se2lecturenotesrichards_k/",
+      "used_for": "Hymes SPEAKING: Act sequence and Instrumentalities"
+    }
+  ],
+  "rules": [
+    "No invented supplements or replacement choices",
+    "Only original recoverable questions retained",
+    "Original malformed option boundaries and demonstrably wrong keys repaired with review notes",
+    "Missing source narrative/email/audio reported rather than fabricated"
+  ]
+}

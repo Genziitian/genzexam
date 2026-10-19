@@ -1,0 +1,356 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Python · Graded Assignment · Week 1 · Part 3",
+  "subject": "Python",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Select the expression(s) that are equivalent to the given expression."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "a == b > c == d"
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "(a == b) > (c == d)"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "a == (b > (c == d))"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "(a == b) and (b > c) and (c == d)"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "(a == (b > c)) and ((b > c) == d)"
+          }
+        ]
+      ],
+      "correct_answers": [
+        2
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Select the expression(s) that are equivalent to the given expression."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "not a or not b and c"
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "(not a) or (not (b and c))"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "((not a) or (not b)) and c"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "(not a) or ((not b) and c)"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "not (a or (not b) and c)"
+          }
+        ]
+      ],
+      "correct_answers": [
+        2
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How does the Python interpreter parenthesize the following expression?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "8.2 * 10 ** 4 + 19"
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Exponentiation has higher precedence than multiplication, which has higher precedence than addition: (8.2 * (10 ** 4)) + 19."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "((8.2 * 10) ** 4) + 19"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "8.2 * (10 ** (4 + 19))"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "(8.2 * (10 ** 4)) + 19"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "(8.2 * 10) ** (4 + 19)"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Select the correct statement(s) about print in python."
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "print prints space at the end of the line."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "print is a built-in function."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "print prints space between multiple values."
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "In a python REPL/Notebook print(\"hi\") will give same output as just \"hi\".",
+            "language": "python"
+          }
+        ]
+      ],
+      "correct_answers": [
+        1,
+        2
+      ],
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "print is a built-in function. Its default separator between arguments is a space and its default ending is a newline. A REPL displays a string representation with quotes, whereas print displays the string contents."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Select the correct statement(s) about input in python."
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "input is a keyword."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Single input can take multiple lines of input."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Output type of input is always str"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "input accepts atmost one argument."
+          }
+        ]
+      ],
+      "correct_answers": [
+        2,
+        3
+      ],
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "input is a built-in function, not a keyword. It reads one line and returns a string. It accepts at most one positional prompt argument."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "expr_1 and expr_2 are boolean expressions. Consider the following expression.\nWhat can you say about the value of the expression given above?"
+        },
+        {
+          "kind": "code",
+          "value": "expr_3 = not (expr_1 or expr_2)\nexpr_4 = (not expr_1) and (not expr_2)\nprint(expr_3 == expr_4)",
+          "language": "python"
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "De Morgan’s law gives not (expr_1 or expr_2) == ((not expr_1) and (not expr_2)) for all four Boolean input pairs, so the comparison always prints True."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "It is True if and only if both expr_1 and expr_2 have the same value."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "It is False if and only if both expr_1 and expr_2 have the same value."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "It is always True ."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "It is always False ."
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "E_1 and E_2 are Boolean variables. Consider the following code. Which scenarios are possible when the code executes? Treat each scenario independently."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "E_1 and E_2 and 1 / 0\nprint(E_2)"
+        }
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "If both variables are True, division by zero raises an exception. Otherwise the expression short-circuits and print(E_2) can print True or False."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The code throws an error."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "True is printed after line-2 is executed."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False is printed after line-2 is executed."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of the above."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1,
+        2
+      ]
+    }
+  ]
+}

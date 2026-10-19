@@ -1,0 +1,261 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 2 · Practice Assignment · Week 4",
+  "subject": "English 2",
+  "section": "practice",
+  "week": 4,
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The introductory paragraph of an academic essay should contain which key element?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "A thesis statement"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A comprehensive list of references"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A conclusion"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "All detailed data tables"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The thesis statement introduces the core claim or central argument of the entire essay."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In academic writing, topic sentences are typically placed at:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The middle of every paragraph"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The beginning of body paragraphs to establish the main focus"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The end of the bibliography"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Only in the title"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "A topic sentence introduces the controlling idea of that specific paragraph."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the primary function of transitional discourse markers (e.g. 'furthermore', 'on the other hand') in essay writing?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "To pad the word count"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To establish smooth logical transitions between ideas and paragraphs"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To replace verbs"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To eliminate punctuation"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Transitions guide the reader through the logical progression and contrasts of an argument."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A well-constructed academic conclusion should simply repeat the introduction word for word."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "A conclusion should synthesize the main arguments and provide broader implications, not merely repeat earlier text verbatim."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following is considered poor practice in academic essay writing?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Using evidence from peer-reviewed sources"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Incorporating counter-arguments and addressing them"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Making sweeping generalizations without empirical support"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Maintaining third-person formal register"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Unsupported sweeping generalizations undermine the academic rigor and credibility of an essay."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In an argumentative essay, what is the purpose of addressing counter-arguments (rebuttals)?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "To confuse the reader"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To demonstrate nuanced understanding and strengthen the author's own thesis"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To shorten the essay"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To avoid reaching a conclusion"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Acknowledging and refuting opposing perspectives demonstrates critical evaluation and bolsters the primary argument."
+        }
+      ]
+    }
+  ]
+}

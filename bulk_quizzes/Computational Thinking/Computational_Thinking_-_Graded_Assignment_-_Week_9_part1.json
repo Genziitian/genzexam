@@ -1,0 +1,486 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Computational Thinking · Graded Assignment · Week 9 · Part 1",
+  "subject": "Computational Thinking",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/45d2cb1f02b9/context0_p2.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/45d2cb1f02b9/context0_p3.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/45d2cb1f02b9/q1_prompt_p3.png",
+          "alt": "Original question: There is an edge between students i and j, with i != j, if and only if:"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/45d2cb1f02b9/q1_option1_p3.png",
+            "alt": "Original option 1 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "they have the same gender"
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/45d2cb1f02b9/q1_option3_p3.png",
+            "alt": "Original option 3 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/45d2cb1f02b9/q1_option4_p3.png",
+            "alt": "Original option 4 pseudocode or mathematical expression."
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/45d2cb1f02b9/context0_p2.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/45d2cb1f02b9/context0_p3.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/45d2cb1f02b9/q2_prompt_p3.png",
+          "alt": "Original question: Which of the following statements are true about this graph? It is a Multiple Select Question (MSQ)."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "There are two cliques in this graph, one for each gender"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "In every clique, there is at least a pair of students having different genders"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "All students in a given clique have the same gender"
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/45d2cb1f02b9/q2_option4_p3.png",
+            "alt": "Original option 4 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "There are no cliques in this graph"
+          }
+        ]
+      ],
+      "correct_answers": [
+        2,
+        3
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/45d2cb1f02b9/context0_p2.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/45d2cb1f02b9/context0_p3.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/45d2cb1f02b9/context1_p4.png",
+          "alt": "context1"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/45d2cb1f02b9/q3_prompt_p4.png",
+          "alt": "Original question: A graph G is generated from the books table. Each node corresponds to an author; there is an edge between authors i and j if and only if they have collaborated on a book. Given a pair of authors (i, j), with i != j, what does the value colab[i][i] represent at the end of the execution of the pseudocode shown above? Assume the number of authors, n, is given to you."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "It represents the number of books published by authors i or j"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "It represents the number of books in which authors i and j have collaborated"
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/computational-thinking/45d2cb1f02b9/q3_option3_p4.png",
+            "alt": "Original option 3 pseudocode or mathematical expression."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "It represents the number of books published by author i in which he has not collaborated with\nauthor j"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/45d2cb1f02b9/context0_p2.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/45d2cb1f02b9/context0_p3.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/45d2cb1f02b9/context1_p4.png",
+          "alt": "context1"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/45d2cb1f02b9/q4_prompt_p5.png",
+          "alt": "Original question: Using the matrix colab computed from the previous problem: What is the correct option for variable aVar? Option Description Table (for Q4-Q11) Option   Description"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Maximum number of collaborators among all authors"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "An author with the maximum number of publications"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A pair of authors who have collaborated most often"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "An author who has the maximum number of collaborators"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Maximum number of books published by any pair of authors"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The list of authors who have just one collaborator"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of authors who have exactly one collaborator"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Maximum number of books published by any author"
+          }
+        ]
+      ],
+      "correct_answer": 4
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/45d2cb1f02b9/context0_p2.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/45d2cb1f02b9/context0_p3.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/45d2cb1f02b9/context1_p4.png",
+          "alt": "context1"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/45d2cb1f02b9/q5_prompt_p6.png",
+          "alt": "Original question: Using the matrix colab computed from the previous problem: What is the correct option for variable bVar? Option Description Table (for Q4-Q11) Option   Description"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Maximum number of collaborators among all authors"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "An author with the maximum number of publications"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A pair of authors who have collaborated most often"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "An author who has the maximum number of collaborators"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Maximum number of books published by any pair of authors"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The list of authors who have just one collaborator"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of authors who have exactly one collaborator"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Maximum number of books published by any author"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/45d2cb1f02b9/context0_p2.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/45d2cb1f02b9/context0_p3.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/45d2cb1f02b9/context1_p4.png",
+          "alt": "context1"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/45d2cb1f02b9/q6_prompt_p7.png",
+          "alt": "Original question: Using the matrix colab computed from the previous problem: What is the correct option for variable aVar? Option Description Table (for Q4-Q11)| 4   An author who has the maximum number of collaborators"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Maximum number of collaborators among all authors"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "An author with the maximum number of publications"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A pair of authors who have collaborated most often"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "An author who has the maximum number of collaborators"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Maximum number of books published by any pair of authors"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The list of authors who have just one collaborator"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of authors who have exactly one collaborator"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Maximum number of books published by any author"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/45d2cb1f02b9/context0_p2.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/45d2cb1f02b9/context0_p3.png",
+          "alt": "context0"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/45d2cb1f02b9/context1_p4.png",
+          "alt": "context1"
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/computational-thinking/45d2cb1f02b9/q7_prompt_p8.png",
+          "alt": "Original question: Using the matrix colab computed from the previous problem: What is the correct option for variable bVar? Option Description Table (for Q4-Q11)| 4   An author who has the maximum number of collaborators"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Maximum number of collaborators among all authors"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "An author with the maximum number of publications"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A pair of authors who have collaborated most often"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "An author who has the maximum number of collaborators"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Maximum number of books published by any pair of authors"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The list of authors who have just one collaborator"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of authors who have exactly one collaborator"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Maximum number of books published by any author"
+          }
+        ]
+      ],
+      "correct_answer": 3
+    }
+  ]
+}

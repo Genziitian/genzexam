@@ -1,0 +1,368 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 1 · Quiz 1 · Feb 2023",
+  "subject": "Mathematics 1",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The Cartesian product 𝐴 × 𝐴 has 9 elements. Two of the elements of the Cartesian product are (2, 0) and (0, 8). Find the sum of all the elements in set 𝐴."
+        }
+      ],
+      "numerical_answer": 10,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "∣𝐴 × 𝐴∣ = ∣𝐴∣2 = 9 ⇒ ∣𝐴∣ = 3. The coordinates appearing in (2, 0) and (0, 8) must belong to 𝐴, so 2, 0, 8 ∈ 𝐴. Since ∣𝐴∣ = 3, 𝐴 = {2, 0, 8}. Sum = 2 + 0 + 8 = 10."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In a survey among 250 students in Nilgiri house of IITM BSc degree, the following data were found: 100 students have a Hotstar subscription, 110 students have a Netflix subscription, 120 students have an Amazon Prime membership, 30 students have both Hotstar and Netflix subscriptions, 30 students have both Hotstar and Amazon Prime, and 40 students subscribe to both Netflix and Amazon Prime. Assuming that all students have at least one OTT subscription, determine how many students have memberships to all 3 OTT: Hotstar, Netflix and Amazon Prime."
+        }
+      ],
+      "numerical_answer": 20,
+      "numerical_tolerance": 0.01,
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "By inclusion-exclusion with ∣𝐻 ∪ 𝑁 ∪ 𝐴∣ = 250 (everyone has at least one): ∣𝐻∣ + ∣𝑁∣ + ∣𝐴∣ − ∣𝐻 ∩ 𝑁∣ − ∣𝐻 ∩ 𝐴∣ − ∣𝑁 ∩ 𝐴∣ + ∣𝐻 ∩ 𝑁 ∩ 𝐴∣ = 250. So 100 + 110 + 120 − 30 − 30 − 40 + 𝑥 = 250 ⇒ 230 + 𝑥 = 250 ⇒ 𝑥 = 20."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Assume that a ball was thrown from the point (0, 4) on the 𝑋𝑌-plane. The ball reaches a maximum height of 6 meters and it returns to a height of 4 m after 2 seconds. Let ℎ(𝑡) = 𝑎𝑡2 + 𝑏𝑡 + 𝑐 be the quadratic function that represents the height (in metres) of the ball after 𝑡 seconds. Find the value of 𝑎 + 𝑏 + 𝑐."
+        }
+      ],
+      "numerical_answer": 6,
+      "numerical_tolerance": 0.01,
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "ℎ(0) = 4 ⇒ 𝑐 = 4. The ball returns to its launch height 4 m at 𝑡 = 2, so ℎ(2) = 4 ⇒ 4𝑎 + 2𝑏 = 0 ⇒ 𝑏 = − 2𝑎. By symmetry the maximum is at 𝑡 = 1 with ℎ(1) = 6. Then 𝑎 + 𝑏 + 𝑐 = ℎ(1) = 6. (Solving: 𝑎 + 𝑏 + 4 = 6 with 𝑏 = − 2𝑎 gives 𝑎 = − 2, 𝑏 = 4, 𝑐 = 4, i.e. ℎ(𝑡) = − 2𝑡2 + 4𝑡 + 4 , which checks out.) Thus 𝑎 + 𝑏 + 𝑐 = 6."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "You have been closely monitoring your bike's mileage recently. Consider 𝑦 as the amount paid for fuel (in ₹) and 𝑥 as the corresponding mileage in Km. You noted down the distance travelled each time the fuel meter falls back to a fixed reference mark and predicted that the equation of the best fit line is 𝑦 = 5𝑥 − 22. What will be the value of SSE (sum of squared errors) w.r.t. the best fit line? Table 1 Amount paid (in ₹) 80 50 60 100 48 Distance (in Km) 20 15 16 25 14"
+        }
+      ],
+      "numerical_answer": 26,
+      "numerical_tolerance": 0.01,
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Predicted ^𝑦 = 5𝑥 − 22. Residuals: 𝑥 = 20: 80 − 78 = 2; 𝑥 = 15: 50 − 53 = − 3; 𝑥 = 16: 60 − 58 = 2; 𝑥 = 25: 100 − 103 = − 3; 𝑥 = 14: 48 − 48 = 0. SSE = 22 + ( − 3)2 + 22 + ( − 3)2 + 02 = 4 + 9 + 4 + 9 + 0 = 26."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Suppose 𝐴 = {𝑎, 𝑏, 𝑐, 𝑑} and 𝐵 = {𝑝, 𝑞, 𝑟, 𝑠} are two sets. Consider the following relations from 𝐴 to 𝐵: 𝑅1 = {(𝑎, 𝑝), (𝑐, 𝑟), (𝑑, 𝑞)}, 𝑅2 = {(𝑎, 𝑠), (𝑏, 𝑠), (𝑐, 𝑝), (𝑑, 𝑟)}, 𝑅3 = {(𝑎, 𝑝), (𝑏, 𝑟), (𝑏, 𝑠), (𝑑, 𝑞)}, 𝑅4 = {(𝑎, 𝑟), (𝑏, 𝑝), (𝑐, 𝑞), (𝑑, 𝑠)}. Which of the following statements are correct?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "R2, R3, and R4 are functions"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "R2 and R4 are functions"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "R2 is an injective function"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "R4 is a bijective function"
+          }
+        ]
+      ],
+      "correct_answers": [
+        1,
+        3
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "𝑅1 omits 𝑏 (no image) — not a function. 𝑅2 assigns each of 𝑎, 𝑏, 𝑐, 𝑑 exactly one image — a function, but 𝑎, 𝑏 ↦ 𝑠 so not injective, and 𝑞 is unused so not surjective. 𝑅3 maps 𝑏 to both 𝑟 and 𝑠 and omits 𝑐 — not a function. 𝑅4 gives each element a distinct image covering all of 𝐵 — a bijective function. Hence 'R2 and R4 are functions' (true) and 'R4 is a bijective function' (true) are correct; the other two are false."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "[Figure: an upward-opening parabola 𝑓(𝑥) whose vertex (minimum) lies below the x-axis, crossing the x-axis at two distinct points both to the right of the y-axis (two positive real roots), with 𝑓(0) > 0.] Which of the following functions may represent the graph given in Figure 2?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "𝑓(𝑥) = 𝑥2 − 8𝑥 + 12"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "𝑓(𝑥) = 𝑥2 + 10𝑥 − 21"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "𝑓(𝑥) = 2𝑥2 + 8𝑥 + 4"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "𝑓(𝑥) = 𝑥2 − 6𝑥 + 4"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        3
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The graph needs 𝑎 > 0 (opens up), two distinct positive real roots, and 𝑓(0) > 0. 𝑥2 − 8𝑥 + 12 = (𝑥 − 2)(𝑥 − 6): roots 2,6 (both positive), 𝑓(0) = 12 > 0 ✓ . 𝑥2 + 10𝑥 − 21: roots ≈ 1.78, − 11.78 (one negative), 𝑓(0) = − 21 < 0 ✗ . 2𝑥2 + 8𝑥 + 4 = 2(𝑥2 + 4𝑥 + 2): roots −2 ± √2 (both negative) ✗ . 𝑥2 − 6𝑥 + 4 : roots 3 ± √5 ≈ 5.24, 0.76 (both positive), 𝑓(0) = 4 > 0 ✓ ."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Ankit is located at (3, 3). He called Ajay to ask his location. Ajay describes the path he had taken from home (located at the origin) as: \"I walked three units towards East and then nine units towards North. And I repeated the same pattern thrice.\" Now Ankit wants a direct path to reach Ajay; choose the correct options. (East is along the positive x-axis, North along the positive y-axis.)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Ankit should follow 4𝑥 − 𝑦 − 9 = 0."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Ankit will have to walk a distance of 6√17 units."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Ajay has walked a distance of 36 units from his home."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Ajay has walked a distance of 9√10 units from his home."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1,
+        2
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Repeating '3 East, 9 North' three times: total East = 3 × 3 = 9, total North = 9 × 3 = 27, so Ajay is at (9, 27). Line from Ankit (3, 3) to (9, 27) has slope (27 − 3)/(9 − 3) = 4, giving 𝑦 − 3 = 4(𝑥 − 3) ⇒ 4𝑥 − 𝑦 − 9 = 0 (option 1 ✓ ). Ankit's straight-line distance = √(9 − 3)2 + (27 − 3)2 = √36 + 576 = √612 = 6√17 (option 2 ✓ ). Total path Ajay actually walked = (3 + 9) × 3 = 36 units (option 3 ✓ ). Option 4 (9√10 = √810) is Ajay's straight-line displacement from home, not the distance he 'walked', so it is false under the wording. NOTE: the last line of the stem was partially hidden behind a 'Claude is active in this tab group' overlay, so the East/North axis convention is inferred."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Rubika launches her new company in the year 2010, which makes a yearly profit (in lakhs) as the polynomial function 𝑝(𝑥) = 0.1𝑥2(𝑥 − 1)(𝑥 − 2)(𝑥 − 3)2(𝑥 − 4)(𝑥 − 9) for the first 12 years since the launch, where 𝑥 is the number of years since 2010 (i.e., 𝑥 = 0 denotes 2010, 𝑥 = 1 denotes 2011, and so on). Let the loss be represented as − ve profit. Which of the following options are correct?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Including the year in which the company was launched, neither made a profit nor a loss six times in 12 years."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The company made profit in years 𝑥 ∈ {7, 8, 10, 11}."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The company made loss ( − ve profit) in years 𝑥 ∈ {5, 6, 7, 8}."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "In the year 2022 (i.e., 𝑥 = 12) the company made profit."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        2
+      ],
+      "marks": 5,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "With the leading factor read as 0.1𝑥2, the zeros (profit = 0) over 𝑥 = 0..11 occur at 𝑥 = 0, 1, 2, 3, 4, 9 — six times, and these include the launch year 𝑥 = 0 (option 1 ✓ ). Sign of 𝑝(𝑥): 𝑥 = 5, 6, 7, 8 all give negative profit = loss (option 3 ✓ ). 𝑥 = 7, 8 are losses not profit, so option 2 ✗ . The model is only valid for the first 12 years (𝑥 = 0..11), so 𝑥 = 12 (2022) is outside its domain, making option 4 ✗ . NOTE: the coefficient printed as '0.1x2' is ambiguous; reading it as 0.1𝑥2 makes option 1's 'six times incl. launch' exactly consistent, which is the intended reading."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "[Figure: graph of a polynomial 𝑝(𝑥) that oscillates across the x-axis with 9 turning points; both ends of the curve point upward. It touches the x-axis tangentially (even multiplicity) at a negative root and again at the origin, and crosses at other roots.] Figure 2 shows the graph of a polynomial 𝑝(𝑥). Choose the set of correct option(s)."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The degree of 𝑝(𝑥) is at least 10."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "𝑝(𝑥) represents an even degree polynomial."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Total number of turning points of 𝑝(𝑥) are 8."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Multiplicities of zero and one of the negative roots could be the same."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1,
+        3
+      ],
+      "marks": 5,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Both ends of the curve go to +∞, so the degree is even (option 2 ✓ ). The curve has about 9 turning points; degree ≥  (turning points) +1 = 10, and being even it is at least 10 (option 1 ✓ ). The visible turning- point count is 9, not 8, so option 3 ✗ . At the origin the curve touches the x-axis tangentially (even multiplicity), and there is a negative root that is also a tangent (even multiplicity), so their multiplicities could match (option 4 ✓ ). NOTE: turning-point/multiplicity counts are read from a hand-drawn figure, so flagged for review."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "[Figure: an 𝑋𝑌-plane showing two quartic curves 𝑓(𝑥) and 𝑔(𝑥) (degree 4) lying close together, and a downward-opening parabola ℎ(𝑥) (degree 2) that crosses the x-axis once slightly to the left of the origin and once far to the right. Figure not to scale.] Figure 3 shows the curves represented by polynomials 𝑓(𝑥), 𝑔(𝑥), and ℎ(𝑥) of degrees 4, 4, and 2 respectively. Let 𝑓(𝑥) − 𝑔(𝑥) = 𝑎𝑥(𝑥 − 2)(𝑥 − 5)(𝑥 − 10), 𝑎 ≠ 0. If 𝑏 is a negative constant, then choose the most possible expression for ℎ(𝑥) and other correct statements among the given options."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "ℎ(𝑥) = 𝑏(𝑥2 + 8𝑥 − 7)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "𝑓(𝑥) = 𝑔(𝑥) at 𝑥 = 0, − 2, − 5, − 10"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "ℎ(𝑥) = 𝑏(𝑥2 − 6𝑥 − 7)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "𝑓(𝑥) = 𝑔(𝑥) at 𝑥 = 0, 2, 5, 10"
+          }
+        ]
+      ],
+      "correct_answers": [
+        2,
+        3
+      ],
+      "marks": 6,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "𝑓(𝑥) = 𝑔(𝑥) where 𝑓 − 𝑔 = 𝑎𝑥(𝑥 − 2)(𝑥 − 5)(𝑥 − 10) = 0, i.e. at 𝑥 = 0, 2, 5, 10 (option 4 ✓ ; option 2 with negative roots ✗ ). ℎ is a downward parabola (𝑏 < 0) crossing the x-axis just left of the origin and far to the right. ℎ(𝑥) = 𝑏(𝑥2 − 6𝑥 − 7) = 𝑏(𝑥 − 7)(𝑥 + 1) has roots 𝑥 = − 1 and 𝑥 = 7, matching the figure (option 3 ✓ ). ℎ(𝑥) = 𝑏(𝑥2 + 8𝑥 − 7) has roots ≈ − 8.8 and 0.8, which do not match the figure (option 1 ✗ )."
+        }
+      ]
+    }
+  ]
+}

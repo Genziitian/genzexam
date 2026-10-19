@@ -1,0 +1,431 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Python · Practice Assignments · Weeks 3 and 9 · Combined PYQ",
+  "subject": "Python",
+  "section": "practice",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What do the printed values represent at the end of execution of the code given below?"
+        },
+        {
+          "kind": "code",
+          "value": "n = int(input())\ni = 1\nwhile (i <= n):\n   if (n % i == 0):\n       print(i)\n   i = i + 1",
+          "language": "python"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The loop prints i exactly when i divides n, so the printed values are the factors of n."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Multiples of i"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Factors of i"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Factors of n"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Multiples of n"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Select all correct implementations of a program that prints the first\n10\n10 positive even numbers to the console, one number on each line. (MSQ)"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "As you can see, there are plenty of ways to solve this problem. We leave it to you to carefully\nobserve all six options and see why three of them are correct and the other three are wrong. The best way to do\nit is to patiently sit and work through each iteration of the loop. While doing this operation, make it a point to\nkeep track of the loop variables. Since the third argument in the function may be new to you, here are some\nhints: (1) represents the sequence: . (2) represents the sequence: . Do you see why is missing in the second\nsequence?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "code",
+            "value": "for num in range(1, 11):\n   if num % 2 == 0:\n       print(num)",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "for num in range(1, 20):\n   if num % 2 == 0:\n       print(num)",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "for num in range(1, 21):\n   if num % 2 == 0:\n       print(num)",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "for num in range(2, 21, 2):\n   print(num)",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "count = 0\nnum = 2\nwhile count < 10:\n   print(num)\n   num += 2\n   count += 1",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "count = 0\nnum = 2\nwhile count <= 10:\n   print(num)\n   num += 2\n   count += 1",
+            "language": "python"
+          }
+        ]
+      ],
+      "correct_answers": [
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Select the code-snippet that produces the following output upon execution."
+        },
+        {
+          "kind": "code",
+          "value": "The square of 1 is equal to 1\nThe square of 2 is equal to 4\nThe square of 3 is equal to 9\nThe square of 4 is equal to 16\nThe square of 5 is equal to 25",
+          "language": "text"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The same suggestion as before. Patiently execute the loop line by line. f-strings is the new concept\nthat was not present in earlier questions."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "code",
+            "value": "for x in range(5):\n   print(f'The square of {x} is equal to {x ** 2}')",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "for x in range(6):\n   print(f'The square of {x} is equal to {x ** 2}')",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "for x in range(1, 6):\n   print('The square of x is equal to x ** 2')",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "for x in range(1, 6):\n   print(f'The square of x is equal to x ** 2')",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "for x in range(1, 6):\n   print('The square of {x} is equal to {x ** 2}')",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "for x in range(1, 6):\n   print(f'The square of {x} is equal to {x ** 2}')",
+            "language": "python"
+          }
+        ]
+      ],
+      "correct_answer": 5
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many asterisks (*) does the following code print?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "i = 0\nwhile (i < 100):\n   print(i * '*')\n   i = i + 1"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The iteration with index i prints i asterisks for i = 0,…,99. Their sum is 99×100/2 = 4950."
+        }
+      ],
+      "numerical_answer": 4950,
+      "numerical_tolerance": 0
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "x is a variable of type float that has already been defined. Which of the following options could be\nthe output of the following code-block? (MSQ)"
+        },
+        {
+          "kind": "code",
+          "value": "print(f'{x:.2f}')",
+          "language": "python"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "1.2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1.29"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1234.20"
+          }
+        ]
+      ],
+      "correct_answers": [
+        1,
+        2
+      ],
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Formatting with .2f always prints two digits after the decimal point. Both 1.29 and 1234.20 are possible; 1.2 is not."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following function.\nword is a non-empty string that has already been defined. Is the following statement true or false?\nIf word is a palindrome, then is_pal(word) always returns True ."
+        },
+        {
+          "kind": "code",
+          "value": "def is_pal(S):\n   if len(S) == 1:\n       return True\n   if S[0] == S[-1]:\n      return is_pal(S[1 : -1])\n   else:\n       return False",
+          "language": "python"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Doesn't work for words of even length. Base case needs to be modified to accommodate that. The\nfollowing function call will throw an error: is_pal('abba')"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following function:\nsome_list is a list of 100 random integers. We know that the integer 6 is present in the list. Is the\nfollowing statement true or false?\nbin_search(some_list, 0, 99, 6) will always return the value True."
+        },
+        {
+          "kind": "code",
+          "value": "def bin_search(L, start, end, x):\n   if start > end:\n       return False\n   mid = (start + end) // 2\n   if x == L[mid]:\n       return True\n   elif x > L[mid]:\n       start = mid + 1\n   else:\n       end = mid - 1\n   return bin_search(L, start, end, x)",
+          "language": "python"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Binary search doesn't work for unsorted lists. Try the following: L = [0] * 100 L[0] = 6\nprint(bin_search(L, 0, 99, 6))"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Select the recursive function member(L, x) that returns True if x is present in list L, and False otherwise, including when L is empty."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Let us look at the correct solution: def member(L, x): if len(L) == 0: return False if len(L) == 1: return\nL[0] == x return (L[0] == x) or member(L[1 : ], x) The basic idea of the solution is to divide the list into two parts:\nfirst element rest of the list after ignoring the first element If happens to be the first element of the list, we are\ndone. If is not present at index 0 in the list, then we have to check if it is present in the remainder of the list.\nRecursive part To check whether is present in the remainder of the list, we use a recursive call member(L[1: ], x) is\nthe list after ignoring the first element. The two conditions are joined together by . Note that it is not condition.\nWe don't need to be present in both the first position and in the rest of the list. return (L[0] == x) or member(L[1\n: ], x) # recursive call Base case There are essentially two conditions to check: Empty list Singleton list if len(L) ==\n0: return False if len(L) == 1: return L[0] == x"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "code",
+            "value": "def member(L, x):\n   if len(L) == 0:\n       return False\n   if len(L) == 1:\n       return L[0] == x\n   return member(L[1 : ], x)",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "def member(L, x):\n   if len(L) == 0:\n       return False\n   if len(L) == 1:\n       return L[0] == x\n   return member(L[: -1], x)",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "def member(L, x):\n   if len(L) == 0:\n       return False\n   if len(L) == 1:\n       return L[0] == x\n   return (L[0] == x) or member(L[1 : ], x)",
+            "language": "python"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "value": "def member(L, x):\n   if len(L) == 0:\n       return False\n   if len(L) == 1:\n       return L[0] == x\n   return (L[0] == x) and member(L[1 : ], x)",
+            "language": "python"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following snippet of code.\nIf L is a non-empty list of positive integers, which of the following statements is correct about the\nrecursive function func(L) ?"
+        },
+        {
+          "kind": "code",
+          "value": "def func(L):\n    if L == [ ]:\n        return 0\n    if L[0] % 2 == 0:\n        return 1 + func(L[1: ])\n    else:\n        return func(L[1:])",
+          "language": "python"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Each even element contributes 1, while odd elements contribute nothing; the function counts even elements."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "It returns total number of odd elements in the list L"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "It returns total number of even elements in the list L"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "It returns sum of the even elements in the list L"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "It returns sum of the odd elements in the list L"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    }
+  ]
+}

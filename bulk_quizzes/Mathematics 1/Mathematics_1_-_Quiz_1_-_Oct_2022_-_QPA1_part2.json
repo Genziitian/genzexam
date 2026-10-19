@@ -1,0 +1,323 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 1 · Quiz 1 · Oct 2022 · QPA1 · Part 2",
+  "subject": "Mathematics 1",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "For 𝐴 = {1, 2, 3} with 𝑅1 = {(1, 1)}; 𝑅2 = {(1, 1), (2, 2), (3, 3)}; 𝑅3 = {(1, 1), (1, 2)}; 𝑅4 = {(1, 3)}; 𝑅5 = {(1, 1), (2, 2), (3, 3), (1, 2)}; 𝑅6 = {(1, 1), (1, 2), (2, 1), (2, 3)}. In total, how many relations given in Column A matches with reflexive relation? NOTE: Enter your answer to the nearest integer."
+        }
+      ],
+      "numerical_answer": 2,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Reflexive requires (1, 1), (2, 2), (3, 3) all present. Only 𝑅2 and 𝑅5 contain all three. So 2 relations are reflexive."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following relations defined on the set of integers: 𝑅1 = {(𝑥, 𝑦) ∣ 𝑥, 𝑦 ∈ 𝑍,  𝑦 = 𝑥2 − 1} and 𝑅2 = {(𝑥, 𝑦) ∣ 𝑥, 𝑦 ∈ 𝑍,  ∣𝑥∣ + ∣𝑦∣ = 1}. Choose the correct option(s)."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "𝑅1 ∩ 𝑅2 represents an injective function"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "𝑅2 represents a relation but not a function."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "𝑅1 represents a function."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "𝑅2 represents a function"
+          }
+        ]
+      ],
+      "correct_answers": [
+        1,
+        2
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "𝑅1: 𝑦 = 𝑥2 − 1 assigns exactly one 𝑦 to each 𝑥, so it is a function (option 3 true). 𝑅2: ∣𝑥∣ + ∣𝑦∣ = 1 over 𝑍 gives {(1, 0), ( − 1, 0), (0, 1), (0, − 1)}; 𝑥 = 0 maps to both 1 and −1, so it is a relation but not a function (option 2 true, option 4 false). 𝑅1 ∩ 𝑅2 = {(1, 0), ( − 1, 0), (0, − 1)}; here 1 and −1 both map to 0, so it is not injective (option 1 false)."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Figure 2 shows the graph of a polynomial 𝑝(𝑥). [Figure: an oscillating curve labelled 𝑝(𝑥) crossing the 𝑥-axis several times; on the far left it rises from below the axis and on the far right it descends below the axis (both ends point downward). Reading left to right it has alternating peaks and valleys giving 9 turning points, and it passes through the origin region with a transversal crossing near 𝑥 = 0.] Choose the set of correct option(s)."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The degree of 𝑝(𝑥) is at least 10."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "𝑝(𝑥) represent an even degree polynomial"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Total number of turning point of 𝑝(𝑥) are 8."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Multiplicities of zero and one of the negative root could be the same"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1,
+        3
+      ],
+      "marks": 5,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Both ends of the graph point downward (down on the far left and far right), so 𝑝(𝑥) has even degree with negative leading coefficient (option 2 true). The curve shows 9 turning points; a polynomial with 9 turning points has degree ≥ 10 (option 1 true), so option 3 (8 turning points) is false. The graph crosses the axis transversally at 𝑥 = 0 (multiplicity 1) and crosses transversally at negative roots as well, so the multiplicity of the zero root can equal the multiplicity of a negative root (option 4 true). Turning-point count is judged from the figure."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let 𝐴 be the set of all points on the curve defined by the function 𝑓1(𝑥) = 𝑥2 − 𝑥 − 30 and let 𝐵 be the set of all points on the curve 𝑓2 defined by the reflection of the curve 𝑓1 with respect to the 𝑋-axis. If 𝐶 is the set of all points on the axes (i.e., 𝑥 and 𝑦 axis), then find the cardinality of set 𝐷 where 𝐷 = (𝐴 ∩ 𝐵) ∪ (𝐴 ∩ 𝐶) ∪ (𝐵 ∩ 𝐶). NOTE: Enter your answer to the nearest integer."
+        }
+      ],
+      "numerical_answer": 4,
+      "numerical_tolerance": 0.01,
+      "marks": 5,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "𝑓1(𝑥) = 𝑥2 − 𝑥 − 30, 𝑓2(𝑥) = − (𝑥2 − 𝑥 − 30) = − 𝑥2 + 𝑥 + 30. 𝐴 ∩ 𝐵: 𝑓1 = 𝑓2 ⇒ 𝑥2 − 𝑥 − 30 = 0 ⇒ 𝑥 = 6, − 5, giving (6, 0), ( − 5, 0). 𝐴 ∩ 𝐶: on the axes, 𝑦 = 0 ⇒ (6, 0), ( − 5, 0) and 𝑥 = 0 ⇒ (0, − 30). 𝐵 ∩ 𝐶: 𝑦 = 0 ⇒ (6, 0), ( − 5, 0) and 𝑥 = 0 ⇒ (0, 30). Union 𝐷 = {(6, 0), ( − 5, 0), (0, − 30), (0, 30)}, so ∣𝐷∣ = 4."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The polynomial 𝑝(𝑥) = 𝑎𝑛𝑥𝑛 + 𝑎𝑛 − 1𝑥𝑛 − 1 + ⋯ + 𝑎0 has the following properties: 𝑝(𝑥) is an even degree polynomial; 𝑝(𝑥) has at least one positive real root and at least one negative real root; (𝑥 + 4)2 is a factor of 𝑝(𝑥); 𝑝(0) ≠ 0. From the options given, choose the possible representations of 𝑝(𝑥). [The four answer options are graphs of 𝑝(𝑥); their figure descriptions are inlined in each option below.]"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "A graph with both ends pointing upward, a tangential bounce at root x = -4, a positive real root, and positive y-intercept"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "An even-degree graph with both ends pointing upward, a tangential bounce at root x = -4, and p(0) > 0"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A degree 4 graph touching the negative x-axis tangentially at x = -4 without crossing, crossing the positive x-axis, and p(0) != 0"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A graph with opposite end behaviors (left pointing up, right pointing down) crossing the x-axis at simple roots"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1,
+        2
+      ],
+      "marks": 4,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Requirements: even degree (both ends same direction), a positive and a negative real root, (𝑥 + 4)2 a factor (a negative root with even multiplicity, shown as a tangent TOUCH/bounce on the negative side), and 𝑝(0) ≠ 0 (graph not through the origin). Options 1, 2 and 3 each have both ends up (even degree), a tangential bounce at a negative root, a positive root, and 𝑝(0) > 0, so they qualify. Option 4 has opposite end behaviours (left up, right down), i.e. odd degree, so it fails. Graphs whose negative roots are simple crossings (no bounce) would also fail the (𝑥 + 4)2 condition. Judged from the option figures."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following statements is (are) correct?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "𝑦 − 20 = 3(𝑥 − 10)2 is an equation of a parabola whose vertex is at (10, 20)."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "𝑝(𝑥) = 𝑎𝑥10 + 𝑏𝑥5 + 2𝑥 + 8 where 𝑎 = 0 and 𝑏 ≠ 0, is a polynomial of degree 5."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "−5𝑥 + 4𝑦 − 1 = 0 and 𝑥4 − 𝑦5 = 1 are perpendicular to each other."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "2𝑥 + 7𝑦 + 9 = 0 and 6𝑥 + 21𝑦 + 9 = 0 are parallel to each other."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1,
+        3
+      ],
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Option 1: 𝑦 = 3(𝑥 − 10)2 + 20 is in vertex form with vertex (10, 20) — true. Option 2: with 𝑎 = 0, the leading term is 𝑏𝑥5 (𝑏 ≠ 0), so degree 5 — true. Option 3: slope of −5𝑥 + 4𝑦 − 1 = 0 is 5/4; 𝑥4 − 𝑦5 = 1 rearranges to 5𝑥 − 4𝑦 = 20 with slope 5/4 — same slopes mean parallel, not perpendicular — false. Option 4: slopes −2/7 and −6/21 = − 2/7 are equal (distinct lines) — parallel — true."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "You are climbing a ladder which is slanted at an angle of 45 degrees (measured in the anticlockwise direction) with respect to the ground. The ladder, leaning against a wall, is at a vertical distance of 2 metres from the ground. If you are at a location which cuts the ladder in the ratio 2: 1 from the bottom to top, what are the coordinates of your location? Assume origin (0, 0) to be at the intersection of the ladder and the ground."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "(3/2, 1/2)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "(1/3, 2/3)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "(2/3, 2/3)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "(4/3, 4/3)"
+          }
+        ]
+      ],
+      "correct_answers": [
+        3
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The ladder's bottom is at the origin (0, 0). At 45∘ the horizontal and vertical distances are equal, and the top reaches a vertical height of 2, so the top is at (2, 2). A point dividing (0, 0) to (2, 2) in ratio 2: 1 from bottom to top is ( 2 ⋅ 2 + 1 ⋅ 03 , 2 ⋅ 2 + 1 ⋅ 03 ) = ( 43, 43 )."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Sushmita was calculating SSE (sum squared error) and she found that SSE is a function of 𝑎 as follows: SSE = 𝑓(𝑎) = 𝑎2 − 8𝑎 + 30. What will be the best fit value?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "9"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "14"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "0 D -2"
+          }
+        ]
+      ],
+      "correct_answers": [
+        1
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The best fit minimises the SSE. 𝑓(𝑎) = 𝑎2 − 8𝑎 + 30 has its minimum at 𝑎 = − −82 = 4, and the minimum SSE value is 𝑓(4) = 16 − 32 + 30 = 14. So the best-fit (minimum) SSE value is 14."
+        }
+      ]
+    }
+  ]
+}

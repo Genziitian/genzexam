@@ -1,0 +1,326 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 1 · Practice Assignment · Week 10",
+  "subject": "English 1",
+  "section": "practice",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The interview ___________ live over the internet."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Broadcast"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Broadcasted"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Was broadcasted"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Was broadcast"
+          }
+        ]
+      ],
+      "correct_answer": 3
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the incorrect option:"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "A chair"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "An ostrich"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A bread"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A year"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Spot the error (if any) in the following sentence: I have a good news for you."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "I have"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A good news"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "For you"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "No error"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the grammatically correct sentence from the options given."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "His advice is valuable."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "His advice are valuable."
+          }
+        ]
+      ],
+      "correct_answer": 0
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘ Christmas is always on December .’ This sentence is grammatically correct."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘ Coming from India, July to September is always associated ___ the monsoon season for me .’"
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "In"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "With"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "For"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "He succeeded ____________ convincing his parents."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "About"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "On"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "In"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "With"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The Nile is ___________ river in the world."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Long"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The Longer"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The Longest"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Longer"
+          }
+        ]
+      ],
+      "correct_answer": 2
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "I think Cornwall is ________very beautiful part of England."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "A"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "An"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "No article"
+          }
+        ]
+      ],
+      "correct_answer": 0
+    }
+  ]
+}

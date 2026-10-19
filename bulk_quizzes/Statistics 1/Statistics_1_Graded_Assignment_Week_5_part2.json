@@ -1,0 +1,212 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Statistics 1 · Graded Assignment · Week 5 · Part 2",
+  "subject": "Statistics 1",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "N students watched a patriotic movie. An analyst wishes to ask each student whether\nthey liked the movie or not. Each student can either answer the question or refuse to\nrespond. In how many ways, can the analyst get responses from the students?"
+        },
+        {
+          "kind": "text",
+          "value": "Give an expression in the stated parameters."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "type": "short_answer",
+      "acceptable_answers": [
+        "3^N",
+        "3**N"
+      ],
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Each student has three possible responses: liked, disliked, or no response."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-1/8dd7a39c51cf_q9_prompt_p4.png",
+          "alt": "Original Statistics 1 question 9 prompt."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/8dd7a39c51cf_q9_option-1_p4.png",
+            "alt": "Original option 1 for Statistics 1 question 9."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/8dd7a39c51cf_q9_option-2_p4.png",
+            "alt": "Original option 2 for Statistics 1 question 9."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/8dd7a39c51cf_q9_option-3_p4.png",
+            "alt": "Original option 3 for Statistics 1 question 9."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/8dd7a39c51cf_q9_option-4_p4.png",
+            "alt": "Original option 4 for Statistics 1 question 9."
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-1/8dd7a39c51cf_q10_prompt_p5.png",
+          "alt": "Original Statistics 1 question 10 prompt."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/8dd7a39c51cf_q10_option-1_p5.png",
+            "alt": "Original option 1 for Statistics 1 question 10."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/8dd7a39c51cf_q10_option-2_p5.png",
+            "alt": "Original option 2 for Statistics 1 question 10."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/8dd7a39c51cf_q10_option-3_p5.png",
+            "alt": "Original option 3 for Statistics 1 question 10."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/8dd7a39c51cf_q10_option-4_p5.png",
+            "alt": "Original option 4 for Statistics 1 question 10."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/8dd7a39c51cf_q10_option-5_p5.png",
+            "alt": "Original option 5 for Statistics 1 question 10."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1,
+        4
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-1/8dd7a39c51cf_q11_prompt_p5.png",
+          "alt": "Original Statistics 1 question 11 prompt."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "numerical_answer": 3.0,
+      "numerical_tolerance": 0.01
+    },
+    {
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In a restaurant, x men and y women are seated on (x + y) chairs at a round table.\nFind the total number of possible ways such that x men are always sitting next to each\nother."
+        },
+        {
+          "kind": "text",
+          "value": "Give an expression in the stated parameters."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "type": "short_answer",
+      "acceptable_answers": [
+        "x!*y!",
+        "x!y!"
+      ],
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Treat the x men as one block; arrange this block with y women around a circle in y! ways, then arrange the men inside their block in x! ways."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-1/8dd7a39c51cf_q13_prompt_p6.png",
+          "alt": "Original Statistics 1 question 13 prompt."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/8dd7a39c51cf_q13_option-1_p6.png",
+            "alt": "Original option 1 for Statistics 1 question 13."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/8dd7a39c51cf_q13_option-2_p6.png",
+            "alt": "Original option 2 for Statistics 1 question 13."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/8dd7a39c51cf_q13_option-3_p6.png",
+            "alt": "Original option 3 for Statistics 1 question 13."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/8dd7a39c51cf_q13_option-4_p6.png",
+            "alt": "Original option 4 for Statistics 1 question 13."
+          }
+        ]
+      ],
+      "correct_answer": 0
+    }
+  ]
+}

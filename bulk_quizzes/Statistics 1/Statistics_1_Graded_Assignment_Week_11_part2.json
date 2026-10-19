@@ -1,0 +1,170 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Statistics 1 · Graded Assignment · Week 11 · Part 2",
+  "subject": "Statistics 1",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-1/e9442f0b62d9_q10_prompt_p5.png",
+          "alt": "Original Statistics 1 question 10 prompt."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/e9442f0b62d9_q10_option-1_p5.png",
+            "alt": "Original option 1 for Statistics 1 question 10."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/e9442f0b62d9_q10_option-2_p5.png",
+            "alt": "Original option 2 for Statistics 1 question 10."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/e9442f0b62d9_q10_option-3_p5.png",
+            "alt": "Original option 3 for Statistics 1 question 10."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/e9442f0b62d9_q10_option-4_p5.png",
+            "alt": "Original option 4 for Statistics 1 question 10."
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-1/e9442f0b62d9_q11_prompt_p5.png",
+          "alt": "Original Statistics 1 question 11 prompt."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "numerical_answer": 0.14,
+      "numerical_tolerance": 0.04000000000000001
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-1/e9442f0b62d9_q12_prompt_p5.png",
+          "alt": "Original Statistics 1 question 12 prompt."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "numerical_answer": 0.5,
+      "numerical_tolerance": 0.09999999999999998
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-1/e9442f0b62d9_q13_prompt_p5.png",
+          "alt": "Original Statistics 1 question 13 prompt."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "numerical_answer": 1.8,
+      "numerical_tolerance": 0.30000000000000004
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Each of five products independently passes inspection with probability0.40. Let X count the products that pass. Identify the distribution of X."
+        }
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Binomial(5,0.6)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Binomial(5,0.4)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Bernoulli(0.6)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Bernoulli(0.4)"
+          }
+        ]
+      ],
+      "correct_answer": 1
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A box contains6red and8blue balls. Four balls are drawn without replacement. What is the probability that exactly2are blue? Give two decimal places."
+        }
+      ],
+      "numerical_answer": 0.4195804195804196,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A box contains6red and8blue balls. Four balls are drawn without replacement. What is the expected number of blue balls drawn? Give two decimal places."
+        }
+      ],
+      "numerical_answer": 2.2857142857142856,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Five products each independently pass inspection with probability0.40. What is the probability that at most one passes? Give three decimal places."
+        }
+      ],
+      "numerical_answer": 0.33696,
+      "numerical_tolerance": 0.001,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ]
+}

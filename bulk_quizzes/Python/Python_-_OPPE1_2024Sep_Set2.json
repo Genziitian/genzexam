@@ -1,0 +1,251 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Python · OPPE 1 · 2024 Sep · Set 2",
+  "subject": "Python",
+  "section": "mock_test",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 1 - Problem 1: Check Positive Odd or Negative Even** (Function Type)\n\nWrite a function is_positive_odd_or_negative_even that checks if an integer is either a positive odd number or a negative even number. Return True if the number meets one of these conditions; otherwise, return False.\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def is_positive_odd_or_negative_even(num: int) -> bool:\n    ..."
+        }
+      ],
+      "acceptable_answers": [
+        "Check Positive Odd or Negative Even",
+        "is_positive_odd_or_negative_even"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Sample Test Cases / Examples:**\n\n```text\n• 0 --> False (neither positive nor negative)\n• 3 --> True (positive odd)\n• -4 --> True (negative even)\n• 4 --> False (positive but even)\n• -3 --> False (negative but odd)\n```"
+        },
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def is_positive_odd_or_negative_even(num: int) -> bool:\n    # positive and odd\n    if num > 0 and num % 2 != 0:\n        return True\n    # negative and even\n    if num < 0 and num % 2 == 0:\n        return True\n    return False"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 1 - Problem 2: Check if the Given String is Within Quotes and Has Quotes Inside** (Function Type)\n\nWrite a function within_and_has_double_quotes that checks if a given string starts and ends with double quotes, and if there are double quotes inside the string (excluding the first and last characters). Return True if both conditions are met, and False otherwise.\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def within_and_has_double_quotes(s: str) -> bool:\n    ..."
+        }
+      ],
+      "acceptable_answers": [
+        "Check if the Given String is Within Quotes and Has Quotes Inside",
+        "within_and_has_double_quotes"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Sample Test Cases / Examples:**\n\n```text\n• \"abcd\"efgh\" --> True (starts and ends with double quotes, and has double quotes inside)\n• 'abcd\"efgh\"' --> False (does not start with double quotes)\n• \"'abcd'efgh'\" --> False (uses single quotes)\n• \"abcdefgh\" --> False (no double quotes inside the quotes)\n```"
+        },
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def within_and_has_double_quotes(s: str) -> bool:\n    # must have at least the two surrounding quotes\n    if len(s) < 2:\n        return False\n    # must start and end with a double quote\n    if not (s[0] == '\"' and s[-1] == '\"'):\n        return False\n    # at least one double quote strictly inside\n    return '\"' in s[1:-1]"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 1 - Problem 3: Replace middle with n times middle** (Function Type)\n\nGiven a tuple t of odd length, and a positive integer n, replace the middle element with n copies of itself.\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def replace_middle(t: tuple, n: int) -> tuple:\n    ..."
+        }
+      ],
+      "acceptable_answers": [
+        "Replace middle with n times middle",
+        "replace_middle"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Sample Test Cases / Examples:**\n\n```text\nFor t = (1, 2, 3, 4, 5) and n = 5, the result should be (1, 2, 3, 3, 3, 3, 3, 4, 5).\nFor t = (1, 2, 3) and n = 4, the result should be (1, 2, 2, 2, 2, 3).\n```"
+        },
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def replace_middle(t: tuple, n: int) -> tuple:\n    mid = len(t) // 2                 # index of the middle element\n    return t[:mid] + (t[mid],) * n + t[mid + 1:]"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 2 - Problem 1: Count Positive Integers Ignoring None** (Function Type)\n\nGiven a list which contains integers and None, count the number of positive integers while ignoring None values. Zero should not be counted.\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def count_positives(lst: list) -> int:\n    ..."
+        }
+      ],
+      "acceptable_answers": [
+        "Count Positive Integers Ignoring None",
+        "count_positives"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Sample Test Cases / Examples:**\n\n```text\nFor the list [1, -2, 3, 0, None, 4], the result should be 3 because the positive integers are 1, 3, and 4.\nExplanation\n• We ignore None values.\n• We also ignore 0 because it is not positive.\n• The positive integers are 1, 3, and 4, so the count is 3.\n```"
+        },
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def count_positives(lst: list) -> int:\n    # keep only non-None values that are strictly positive\n    return sum(1 for x in lst if x is not None and x > 0)"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 2 - Problem 2: Find Sum and Absolute Difference Alternately** (Io Type)\n\nGiven n pairs of integers, print the sum and the absolute difference of each pair alternatively, starting with the sum for the first pair.\nNOTE: This is an I/O type question, you need to write the whole code for taking input and printing the output.\nInput Format\n• The first line contains an integer n, the number of pairs.\n• The next n lines each contain two comma-separated integers.\nOutput Format\n• For each pair of integers, print the sum if it is an odd-numbered pair (starting from 1), and the absolute difference if it is an even-numbered pair."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "# Read input, process, and print the output"
+        }
+      ],
+      "acceptable_answers": [
+        "Find Sum and Absolute Difference Alternately"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Sample Test Cases / Examples:**\n\n```text\nInput\n3\n1,2\n3,5\n4,3\nOutput\n3\n2\n7\nExplanation\n1. First pair (1, 2): Sum (1 + 2 = 3)\n2. Second pair (3, 5): Absolute difference (|3 - 5| = 2)\n3. Third pair (4, 3): Sum (4 + 3 = 7)\n```"
+        },
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "n = int(input())\nfor i in range(1, n + 1):\n    a, b = map(int, input().split(','))\n    if i % 2 == 1:                # odd-numbered pair -> sum\n        print(a + b)\n    else:                        # even-numbered pair -> absolute difference\n        print(abs(a - b))"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 3 - Problem 1: Matrix Walk** (Function Type)\n\nGiven a square matrix, walk along the matrix according to a specified path and return a list of elements based on the path.\nPaths:\n• \"L\": Start from the top-left corner and traverse in an \"L\" shape.\n• \"Z\": Start from the top-left corner and traverse the matrix in a \"Z\" shape.\n• \"O\": Start from the top-left corner and traverse the matrix clockwise in an \"O\" shape.\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition. You can define helper functions if needed, but the actual solution should be in the given function template.\nNote: \"L\" has 2 private test cases where \"Z\" and \"O\" has one private test case each."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def matrix_walk(M: list, path: str) -> list:\n    ..."
+        }
+      ],
+      "acceptable_answers": [
+        "Matrix Walk",
+        "matrix_walk"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Sample Test Cases / Examples:**\n\n```text\nFor matrix\nM = [\n    [1, 2, 3],\n    [4, 5, 6],\n    [7, 8, 9]\n]\n• L-shape: [1, 4, 7, 8, 9]\n• Z-shape: [1, 2, 3, 5, 7, 8, 9]\n• O-shape: [1, 2, 3, 6, 9, 8, 7, 4]\n```"
+        },
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def matrix_walk(M: list, path: str) -> list:\n    n = len(M)\n    if path == \"L\":\n        # down the left column, then across the bottom row\n        res = [M[i][0] for i in range(n)]\n        res += [M[n - 1][j] for j in range(1, n)]\n        return res\n    if path == \"Z\":\n        # top row, anti-diagonal (middle rows), bottom row\n        res = [M[0][j] for j in range(n)]\n        res += [M[i][n - 1 - i] for i in range(1, n - 1)]\n        res += [M[n - 1][j] for j in range(n)]\n        return res\n    if path == \"O\":\n        # clockwise border: top, right, bottom (reversed), left (reversed)\n        res = [M[0][j] for j in range(n)]\n        res += [M[i][n - 1] for i in range(1, n)]\n        res += [M[n - 1][j] for j in range(n - 2, -1, -1)]\n        res += [M[i][0] for i in range(n - 2, 0, -1)]\n        return res"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 3 - Problem 2: Print Pattern - X** (Io Type)\n\nGiven an integer n (where n >= 0), print an \"X\" shaped pattern with n rows above and below a central character x. The pattern should use backslashes (\\) and forward slashes (/) to form the \"X\" shape, with increasing spaces between them as they approach the center. There should be no spaces to the right of the pattern.\nNOTE: This is an I/O type question, you need to write the whole code for taking input and printing the output.\nInput\n• A single integer n, representing the number of rows above and below the center of the \"X\".\nOutput\n• An \"X\" shaped pattern with n rows above and below a central x character, as described."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "# Read input, process, and print the output"
+        }
+      ],
+      "acceptable_answers": [
+        "Print Pattern - X"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Sample Test Cases / Examples:**\n\n```text\nInput:\n0\nOutput:\nx\n\nInput:\n1\nOutput:\n\\ /\n x\n/ \\\n\nInput:\n2\nOutput:\n\\   /\n \\ /\n  x\n / \\\n/   \\\n```"
+        },
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "n = int(input())\nwidth = 2 * n + 1\n# top half: '\\' moves right, '/' moves left as rows go down\nfor i in range(n):\n    row = [' '] * width\n    row[i] = '\\\\'\n    row[width - 1 - i] = '/'\n    print(''.join(row).rstrip())\n# centre line with the 'x'\nrow = [' '] * width\nrow[n] = 'x'\nprint(''.join(row).rstrip())\n# bottom half: mirror of the top with the slashes swapped\nfor i in range(n - 1, -1, -1):\n    row = [' '] * width\n    row[i] = '/'\n    row[width - 1 - i] = '\\\\'\n    print(''.join(row).rstrip())"
+        }
+      ]
+    }
+  ]
+}
