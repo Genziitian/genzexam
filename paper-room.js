@@ -937,6 +937,7 @@
       render();
       window.scrollTo(0, 0);
       startTicker();
+      armBackTrap();
     } catch (e) {
       st.busy = false;
       if (e.status === 402) return showPurchase(e);
@@ -1178,6 +1179,52 @@
     } else return;
     writeStore();
     refreshProgress();
+  }
+
+  /* ---------------- leaving the room with the Back button ----------------
+   * While a paper is being attempted, Back asks whether to save and exit, exit without saving, or stay.
+   * An extra history entry is pushed so the first Back press only opens the question. */
+  let trapOn = false, leaving = false;
+  function armBackTrap() {
+    if (trapOn) return;
+    trapOn = true;
+    history.pushState({ prRoom: 1 }, "");
+  }
+  window.addEventListener("popstate", function () {
+    if (!trapOn || leaving) return;
+    if (st.screen !== "room") { trapOn = false; history.back(); return; }
+    history.pushState({ prRoom: 1 }, "");
+    leaveModal();
+  });
+  function leaveRoom(discard) {
+    leaving = true;
+    stopTicker();
+    if (discard) clearStore(); else writeStore();
+    history.go(-2);
+    setTimeout(function () { location.href = backHref(); }, 600);
+  }
+  function leaveModal() {
+    if (document.getElementById("pr-leave-modal")) return;
+    const modal = document.createElement("div");
+    modal.id = "pr-leave-modal";
+    modal.style.cssText = "display:flex;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(15,23,42,0.8);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);z-index:999999;align-items:center;justify-content:center;padding:20px;";
+    modal.innerHTML =
+      '<div role="dialog" aria-modal="true" aria-labelledby="pr-leave-title" style="max-width:460px;width:100%;text-align:center;background:#ffffff;border-radius:20px;box-shadow:0 25px 60px -15px rgba(0,0,0,0.3);padding:30px 24px;color:#0f172a;">' +
+      '<h2 id="pr-leave-title" style="font-size:20px;font-weight:800;margin:0 0 8px 0;">Leave this paper?</h2>' +
+      '<p style="font-size:13.5px;color:#475569;margin:0 0 18px 0;line-height:1.55;">You have answered <b>' + answeredCount() + " of " + answerable().length + '</b> questions. Save and exit keeps your answers on this device so you can continue later. Exit without saving removes them.</p>' +
+      '<div style="display:flex;flex-direction:column;gap:10px;">' +
+      '<button type="button" id="pr-leave-save" style="background:#3a3fd8;color:#ffffff;border:none;padding:12px;border-radius:8px;font-size:13px;font-weight:800;cursor:pointer;">Save and exit</button>' +
+      '<button type="button" id="pr-leave-discard" style="background:#fef2f2;color:#b91c1c;border:1px solid #fecaca;padding:11px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;">Exit without saving</button>' +
+      '<button type="button" id="pr-leave-stay" style="background:#f1f5f9;color:#334155;border:1px solid #cbd5e1;padding:11px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;">Keep solving</button>' +
+      "</div></div>";
+    document.body.appendChild(modal);
+    const close = () => modal.remove();
+    modal.addEventListener("click", (ev) => { if (ev.target === modal) close(); });
+    modal.addEventListener("keydown", (ev) => { if (ev.key === "Escape") close(); });
+    document.getElementById("pr-leave-stay").onclick = close;
+    document.getElementById("pr-leave-save").onclick = () => { close(); leaveRoom(false); };
+    document.getElementById("pr-leave-discard").onclick = () => { close(); leaveRoom(true); };
+    document.getElementById("pr-leave-stay").focus();
   }
 
   async function boot() {
