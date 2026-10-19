@@ -198,7 +198,7 @@
           body: opts.body ? JSON.stringify(opts.body) : undefined
     }).then(function (r) {
       return r.json().catch(function () { return {}; }).then(function (j) {
-        if (!r.ok) { var e = new Error(j.message || ("Request failed (" + r.status + ")")); e.status = r.status; throw e; }
+        if (!r.ok) { var e = new Error(j.message || ("Request failed (" + r.status + ")")); e.status = r.status; e.path = path; throw e; }
         return j;
       });
     });
@@ -206,8 +206,12 @@
   // A 401 only logs the student out when /auth/me also says the login is gone; otherwise show what was refused.
   function authFailed(e) {
     api("/auth/me").then(function () {
-      status(document.createTextNode("The server refused this request (401): " + (e.message || "no message")));
-    }, loginPrompt);
+      status(document.createTextNode("The server refused " + (e.path || "a request") + " (401): " + (e.message || "no message")));
+    }, function (e2) {
+      // Only a 401 from /auth/me means the login is really gone; anything else is a different problem, so say what it was.
+      if (e2.status === 401) loginPrompt();
+      else status(document.createTextNode("Could not check your login (" + (e2.status || "network") + "): " + e2.message));
+    });
   }
   // 401 means the saved login is no longer valid: drop it (as the main app does) so /login shows the form,
   // and remember this page so the app sends the student back here after login.
