@@ -203,6 +203,12 @@
       });
     });
   }
+  // A 401 only logs the student out when /auth/me also says the login is gone; otherwise show what was refused.
+  function authFailed(e) {
+    api("/auth/me").then(function () {
+      status(document.createTextNode("The server refused this request (401): " + (e.message || "no message")));
+    }, loginPrompt);
+  }
   // 401 means the saved login is no longer valid: drop it (as the main app does) so /login shows the form,
   // and remember this page so the app sends the student back here after login.
   function loginPrompt() {
@@ -362,7 +368,7 @@
         }
         box.appendChild(resultList(results)); showResult(box);
       })
-      .catch(function (e) { if (e.status === 401) return loginPrompt(); showResult(el("div", "verdict bad", e.message)); })
+      .catch(function (e) { if (e.status === 401) return authFailed(e); showResult(el("div", "verdict bad", e.message)); })
       .then(function () { setBusy(false); });
   }
   $("runBtn").addEventListener("click", function () { execute("run"); });
@@ -417,7 +423,7 @@
       var url = new URL(location.href); url.searchParams.set("problem", id); history.replaceState(null, "", url);
       var idx = problems.findIndex(function (x) { return x.id === id; });
       renderSide(id);
-    }).catch(function (e) { if (e.status === 401) loginPrompt(); else status(document.createTextNode(e.message)); });
+    }).catch(function (e) { if (e.status === 401) authFailed(e); else status(document.createTextNode(e.message)); });
   }
 
   // ---- report a problem with the question
@@ -512,7 +518,7 @@
       var owner = papers.filter(function (pp) { return pp.problems.some(function (p) { return p.id === want; }); })[0];
       // Papers are chosen on the practice page; a link without a valid question goes back there.
       if (owner) startPaper(owner, want); else location.replace("/practice/" + encodeURIComponent(courseSlug));
-    }).catch(function (e) { if (e.status === 401) loginPrompt(); else status(document.createTextNode(e.message)); });
+    }).catch(function (e) { if (e.status === 401) authFailed(e); else status(document.createTextNode(e.message)); });
   }
   // Code drafts are saved as you type, so leaving at a mobile width loses nothing.
   window.addEventListener("resize", function () { if (isMobileView()) leave(); });
