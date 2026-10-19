@@ -1,0 +1,348 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 1 · Graded Assignment · Week 4",
+  "subject": "Mathematics 1",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let $P(x)$ and $Q(x)$ be polynomials such that $P(x) = x^3 - 3x^2 + 4$ and $Q(x) = x - 2$. Find the degree of $P(x) \\cdot Q(x)$."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$4$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$3$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$2$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$5$"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$\\deg(P \\cdot Q) = \\deg(P) + \\deg(Q) = 3 + 1 = 4$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Given two polynomials $f(x)$ and $g(x)$, the roots of $f(x)$ are in the set $\\{3, 2, -3, -2\\}$. Choose the correct option regarding $f(x)$ and $g(x)$."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$g(x)$ cuts the X-axis at $2, -6$ and $-1$."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$f(x)$ has 4 distinct real roots."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$f(x)$ is irreducible over $\\mathbb{R}$."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of these."
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Selected option b in assignment marking corresponds to the geometric root analysis."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the value of $x$ satisfying the polynomial equation $(x - 2)(x + 3) = 0$ with $x > 0$."
+        }
+      ],
+      "numerical_answer": 2,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Roots are $2$ and $-3$. Since $x > 0$, $x = 2$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following polynomials has a root of multiplicity 2 at $x = 1$?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$(x - 1)^2(x + 2)$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$(x - 1)(x + 2)^2$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$x^2 - 1$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$x^3 - 1$"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$(x - 1)^2(x + 2)$ has factor $(x - 1)^2$, corresponding to multiplicity 2."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let $P(x) = 2x^4 - 3x^3 + x - 5$. What is the remainder when $P(x)$ is divided by $x + 1$?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$-1$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$-5$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$1$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$-7$"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$P(-1) = 2(-1)^4 - 3(-1)^3 + (-1) - 5 = 2(1) + 3 - 1 - 5 = -1$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the polynomial $P(x) + M(x)Q(x)$ where $\\deg(P) = 3, \\deg(M) = 1, \\deg(Q) = 2$. What is the maximum possible degree of the sum?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$3$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$2$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$4$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$1$"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$\\deg(M \\cdot Q) = 1 + 2 = 3$. The sum of two degree 3 polynomials has degree at most 3."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Based on Table-1 given in the assignment, for what value of $x$ is the function value minimum?"
+        }
+      ],
+      "numerical_answer": 3.4,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Interpolation of the tabulated values yields minimum at $x = 3.4$."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Two paths intersect at points representing food locations for an algorithm. Find the sum of the x-coordinates of all the food locations."
+        }
+      ],
+      "numerical_answer": 10,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Sum of the roots of the intersection equation gives 10."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "We need to find the x-coordinate of the points where two roads $r_1$ and $r_2$ intersect. Find the required positive coordinate."
+        }
+      ],
+      "numerical_answer": 16,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Solving the road intersection equation yields $x = 16$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following graphical representations best models the polynomial $r(x)$ given the turning points $(-5, 0)$ and $(2, 0)$?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Option 1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Option 2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Option 3"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Option 4"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Option 1 correctly captures the roots, signs, and asymptotic behavior of $r(x)$."
+        }
+      ]
+    }
+  ]
+}

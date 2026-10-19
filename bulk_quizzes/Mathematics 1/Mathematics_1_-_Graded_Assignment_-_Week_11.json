@@ -1,0 +1,314 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 1 · Graded Assignment · Week 11",
+  "subject": "Mathematics 1",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "An undirected weighted graph $G$ is given. Find the minimum weight of a spanning tree of graph $G$."
+        }
+      ],
+      "numerical_answer": 14,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Applying Kruskal's algorithm yields total minimum weight 14."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "An undirected graph $G$ is shown. Suppose we perform Dijkstra's algorithm to find the shortest path from vertex $v_0$ to $v_4$. Which of the following statements is (are) correct?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Dijkstra's algorithm can be used to find the shortest path from $v_0$ to $v_4$ if all edge weights are positive."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Bellman-Ford algorithm can be used when there are negative weighted edges."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The weight of the shortest path from $v_0$ to $v_4$ is positive."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Dijkstra's algorithm cannot handle graphs with negative edge weights."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1,
+        3
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Dijkstra requires non-negative edge weights; Bellman-Ford correctly handles negative weights without negative cycles."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following statements is (are) INCORRECT regarding spanning trees and shortest paths?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "In an undirected graph where all edges have distinct positive weights, the minimum spanning tree is not unique."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "If there is a negative weight cycle in a directed graph, shortest paths can be arbitrarily small."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Every tree with $n$ vertices has exactly $n - 1$ edges."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "In any graph, every edge with minimum weight is necessarily in every spanning tree."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        3
+      ],
+      "marks": 2,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Distinct weights guarantee a unique MST (statement 1 is incorrect). Not every minimum weight edge must be in every spanning tree if multiple exist (statement 4 is incorrect)."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A company has branches in six cities $C_0, C_1, ..., C_5$. The fare matrix is given. What is the minimum cost to travel from $C_0$ to $C_5$?"
+        }
+      ],
+      "numerical_answer": 7,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Shortest path evaluation on the fare matrix gives minimum cost 7."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the cost of the minimum spanning tree connecting all six cities in the communication network."
+        }
+      ],
+      "numerical_answer": 15,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "MST sum of edge weights connecting all 6 vertices is 15."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Seven computers $\\{C_0, C_1, ..., C_6\\}$ are linked in a network. What is the minimum number of links required to ensure all computers are connected?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$5$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$6$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$7$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$8$"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "A connected graph with $n$ vertices requires at least $n - 1$ edges. For 7 vertices: $7 - 1 = 6$."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the number of different ways of choosing an optimum subset of links (MCST) for the network graph."
+        }
+      ],
+      "numerical_answer": 4,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "There are 4 distinct minimum cost spanning trees due to equal weight tie-breakers."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Suppose we perform Prim's algorithm on graph $G$ starting from vertex $A$. Which of the following is the order in which vertices are added?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$A, C, F, G, B, D, E$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$A, B, D, C, E, F, G$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$A, C, B, D, F, G, E$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$A, C, F, G, E, D, B$"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Prim's greedy selection of the minimum connecting cut edge yields sequence $A, C, F, G, B, D, E$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Suppose we perform Kruskal's algorithm on graph $G$. Which of the following edges are NOT added to the minimum cost spanning tree because they form a cycle?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$(B, C)$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$(D, E)$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$(G, F)$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$(A, G)$"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        2
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Edges $(B, C)$ and $(G, F)$ connect already connected components, forming cycles, and are skipped."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,332 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 1 · Graded Assignment · Week 10",
+  "subject": "Mathematics 1",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The maximum number of non-zero entries in an adjacency matrix of a simple graph having $n$ vertices can be:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$n^2$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$\\frac{n(n - 1)}{2}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$\\frac{n(n - 1)}{4}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$n(n - 1)$"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "In a directed simple graph without self-loops, each vertex can connect to at most $n - 1$ other vertices, giving at most $n(n - 1)$ directed edges."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In an undirected graph, vertices are arranged in decreasing degree order. Which of the following is a possible listing of degrees for a simple graph?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$5, 4, 3, 2, 1$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$4, 4, 3, 2, 1$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$3, 3, 2, 2, 1, 1$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$4, 3, 2, 1, 0$"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "By the Handshaking Lemma, the sum of degrees must be even: $3 + 3 + 2 + 2 + 1 + 1 = 12$ (even)."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In exploring a graph, which data structure is used to implement Breadth-First Search (BFS)?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Stack"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Queue"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Priority Queue"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Array"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Breadth-First Search explores vertices in order of discovery using a FIFO Queue."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following representations accurately shows the adjacency list with respect to incoming edges of a directed graph?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Representation A"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Representation B"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Representation C"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Representation D"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Representation C correctly maps each vertex to the list of predecessor vertices."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following pair of vertices is connected by an edge in the graph specified in the assignment?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$(8, 11)$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$(3, 10)$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$(4, 5)$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$(6, 9)$"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Edge $(8, 11)$ is present in the assignment graph."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following graphs satisfies the chromatic property of having chromatic number equal to 3?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Graph 1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Graph 2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Graph 3"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Graph 4"
+          }
+        ]
+      ],
+      "correct_answers": [
+        2,
+        3
+      ],
+      "marks": 2,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Graphs 3 and 4 have odd cycles of length $\\ge 3$ and no $K_4$, giving chromatic number 3."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If $A$ is the cardinality of the maximum independent set of the graph $G$ given in the assignment, find $A$."
+        }
+      ],
+      "numerical_answer": 5,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Maximum independent set cardinality is 5."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In how many conflict-free warehouse partitions should the goods graph be partitioned?"
+        }
+      ],
+      "numerical_answer": 3,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The chromatic number of the conflict graph is 3, so 3 partitions are needed."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the number of vertices in a planar graph where edges intersect only at their endpoints, given 12 edges and 8 faces."
+        }
+      ],
+      "numerical_answer": 6,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "By Euler's formula $V - E + F = 2 \\implies V - 12 + 8 = 2 \\implies V - 4 = 2 \\implies V = 6$."
+        }
+      ]
+    }
+  ]
+}

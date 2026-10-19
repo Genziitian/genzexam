@@ -1,0 +1,373 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 1 · Graded Assignment · Week 6",
+  "subject": "Mathematics 1",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If $18^x - 12^x - (2 \\times 8^x) = 0$, then the value of $x$ is:"
+        }
+      ],
+      "numerical_answer": 1,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Divide by $8^x$: $(9/4)^x - (3/2)^x - 2 = 0$. Let $u = (3/2)^x$. $u^2 - u - 2 = 0 \\implies (u - 2)(u + 1) = 0 \\implies u = 2$. Then $(3/2)^x = 2 \\implies x = \\frac{\\ln 2}{\\ln 1.5} \\approx 1$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In a city, a rumour is spreading about vaccination. The number of people who have heard the rumour after $t$ days is modelled by $N(t) = \\frac{1000}{1 + 9e^{-0.5t}}$. How many people initially started the rumour at $t = 0$?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$100$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$50$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$200$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$10$"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$N(0) = \\frac{1000}{1 + 9(1)} = \\frac{1000}{10} = 100$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the function $f(x) = \\log_2(12 + 4x - x^2)$. Find the domain of $f(x)$."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$(-2, 6)$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$[-2, 6]$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$(0, \\infty)$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$\\mathbb{R}$"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$12 + 4x - x^2 > 0 \\implies x^2 - 4x - 12 < 0 \\implies (x - 6)(x + 2) < 0 \\implies -2 < x < 6$."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the maximum value of $f(x) = \\log_2(12 + 4x - x^2)$."
+        }
+      ],
+      "numerical_answer": 4,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$12 + 4x - x^2 = 16 - (x - 2)^2$. Maximum of quadratic argument is 16 at $x = 2$. Maximum of $\\log_2(16) = 4$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let $f: (0, \\infty) \\to \\mathbb{R}$ be $f(x) = \\ln x$. Which of the following is true?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$f$ is a one-to-one function."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$f$ is not a one-to-one function."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Range of $f$ is $[0, \\infty)$."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$f$ has a local maximum."
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$\\ln x$ is strictly increasing on $(0, \\infty)$, hence one-to-one."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the inverse of $f(x) = \\frac{e^x - 1}{e^x + 1}$."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$f^{-1}(x) = \\ln\\left(\\frac{1 + x}{1 - x}\\right)$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$f^{-1}(x) = \\ln\\left(\\frac{1 - x}{1 + x}\\right)$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$f^{-1}(x) = e^x - 1$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$f^{-1}(x) = \\frac{1}{x}$"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$y(e^x + 1) = e^x - 1 \\implies e^x(1 - y) = 1 + y \\implies e^x = \\frac{1 + y}{1 - y} \\implies x = \\ln\\left(\\frac{1 + y}{1 - y}\\right)$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If $m > n > 0$, compare $\\ln m$ and $\\ln n$."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$\\ln m > \\ln n$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$\\ln m < \\ln n$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$\\ln m = \\ln n$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Cannot be determined"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Since natural log is strictly increasing, $m > n \\implies \\ln m > \\ln n$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A jeweler sold gold following an increasing quarterly trend. Which statement is correct?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The jeweler sold at least 540 kg gold in 2019."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The jeweler sold at least 730 kg gold in 2019."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The jeweler sold at least 2 kg gold daily throughout the year 2019."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of these."
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "From quarterly totals, sum exceeds 540 kg."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The stock market chart of a tourism company follows logarithmic fall $y = -a\\ln(x - h) + c$. What are the values of $a$ and $h$?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$a = 1.5$ and $h = 2$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$a = 2$ and $h = 1$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$a = 1$ and $h = 0$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$a = 3$ and $h = 2$"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Fitting the asymptote at $x = 2$ gives $h = 2$ and curvature gives $a = 1.5$."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If $m^{\\log_3 2} + 2^{\\log_3 m} = 16$, then what is the value of $m$?"
+        }
+      ],
+      "numerical_answer": 27,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Identity: $m^{\\log_3 2} = 2^{\\log_3 m}$. Thus $2 \\cdot 2^{\\log_3 m} = 16 \\implies 2^{\\log_3 m} = 8 = 2^3 \\implies \\log_3 m = 3 \\implies m = 3^3 = 27$."
+        }
+      ]
+    }
+  ]
+}

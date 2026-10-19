@@ -1312,7 +1312,9 @@ class _SpinPracticeScreenState extends State<SpinPracticeScreen>
                                 alignment: Alignment.center,
                                 clipBehavior: Clip.none,
                                 children: [
-                                  if (_busy) const WheelSparks(),
+                                  // Positioned.fill keeps the sparks from changing the wheel's size or place.
+                                  if (_busy)
+                                    const Positioned.fill(child: WheelSparks()),
                                   PracticeWheel(
                                     turns: _rotation,
                                     busy: _busy,

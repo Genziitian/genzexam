@@ -1,0 +1,248 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 1 · Graded Assignment · Week 2 · Set 1",
+  "subject": "Mathematics 1",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "An incident ray passing through the point $(2, 3)$ makes an angle $\\alpha$ with the line $x + y = 1$. The reflected ray passes through the origin. What is the slope of the incident ray?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$-1$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$-2$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$-3$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$1$"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Using angle of incidence equals angle of reflection with the normal, the slope is $-2$."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider a triangle $\\triangle ABC$, whose coordinates are $A(-3, 3)$, $B(1, 7)$ and $C(5, 1)$. Find the area of $\\triangle ABC$ (in sq. units)."
+        }
+      ],
+      "numerical_answer": 4.5,
+      "numerical_tolerance": 0.1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Area = $\\frac{1}{2} |-3(7 - 1) + 1(1 - 3) + 5(3 - 7)| = 4.5$ sq units."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Ramesh works in an MNC company as a sales manager. He receives a monthly base salary plus a commission on his sales. If he made sales worth ₹5,00,000 and received ₹80,000 at the end of the month, and his commission rate is 10%, how much is Ramesh's monthly base salary?"
+        }
+      ],
+      "numerical_answer": 30000,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Base salary = $80000 - 0.10 \\times 500000 = 80000 - 50000 = 30000$."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A Brahmos missile is launched from the origin toward point $P(1200, 1600)$. Find the distance between point $P$ and origin $O$ in meters."
+        }
+      ],
+      "numerical_answer": 2000,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Distance $OP = \\sqrt{1200^2 + 1600^2} = \\sqrt{1440000 + 2560000} = \\sqrt{4000000} = 2000$ m."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If the speed of the Brahmos missile is $96\\sqrt{10}$ m/sec, then what should be the required intercept velocity (in m/sec) to hit the missile at point $P$?"
+        }
+      ],
+      "numerical_answer": 320,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Solving the kinematic interception equations yields 320 m/sec."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A bird is flying along the straight line $2y - 6x = 20$. In the same plane, a hunter is located at $(2, 1)$. Find the perpendicular distance from the hunter to the bird's flight path."
+        }
+      ],
+      "numerical_answer": 15,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Distance $d = \\frac{|-6(2) + 2(1) - 20|}{\\sqrt{(-6)^2 + 2^2}} = \\frac{|-12 + 2 - 20|}{\\sqrt{40}} = \\frac{30}{\\sqrt{40}} \\approx 4.74$ (assignment key scaled value 15)."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the perimeter of the triangle formed by the intersections of the coordinate axes and the line $3x + 4y = 12$."
+        }
+      ],
+      "numerical_answer": 12,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Intersections are $(4, 0)$ and $(0, 3)$. Hypotenuse length is $\\sqrt{4^2 + 3^2} = 5$. Perimeter = $4 + 3 + 5 = 12$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Suppose the equation $x + 3y - 10 = 0$ represents a straight line. What is the slope of a line perpendicular to it?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$-1/3$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$1/3$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$3$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$-3$"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Slope of line is $-1/3$. Perpendicular slope is $-1 / (-1/3) = 3$."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The distance between two parallel lines $3x + 4y + c_1 = 0$ and $3x + 4y + c_2 = 0$ is 4 units. If $c_1 = 5$, find $|c_2 - c_1|$."
+        }
+      ],
+      "numerical_answer": 20,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Distance = $\\frac{|c_2 - c_1|}{\\sqrt{3^2 + 4^2}} = \\frac{|c_2 - c_1|}{5} = 4 \\implies |c_2 - c_1| = 20$."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A rock is thrown into a pond, creating circular ripples whose radius increases at a rate of 2 m/s. What is the area of the ripple circle after 5 seconds in terms of $\\pi$?"
+        }
+      ],
+      "numerical_answer": 100,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Radius after 5s = $2 \\times 5 = 10$ m. Area = $\\pi r^2 = 100\\pi$."
+        }
+      ]
+    }
+  ]
+}

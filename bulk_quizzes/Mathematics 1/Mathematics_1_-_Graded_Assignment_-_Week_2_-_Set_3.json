@@ -1,0 +1,298 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 1 · Graded Assignment · Week 2 · Set 3",
+  "subject": "Mathematics 1",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the y-coordinate of the point of intersection of straight lines $2x + 3y = 12$ and $x - y = 1$."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$2$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$3$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$4$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$1$"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$x = y + 1 \\implies 2(y + 1) + 3y = 12 \\implies 5y + 2 = 12 \\implies 5y = 10 \\implies y = 2$."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A mobile company wants to launch its new model in collaboration with a retailer. The retailer requires a fixed fee of ₹20,000 plus ₹500 per unit sold. If the total payment was ₹70,000, how many units were sold?"
+        }
+      ],
+      "numerical_answer": 100,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$20000 + 500u = 70000 \\implies 500u = 50000 \\implies u = 100$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The state government wants to connect a state road to the national highway via the shortest path. If the highway is modelled by line $4x - 3y + 15 = 0$ and the town by point $(2, 1)$, what is the length of this connecting link?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$4$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$5$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$3$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$2$"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$d = \\frac{|4(2) - 3(1) + 15|}{\\sqrt{4^2 + (-3)^2}} = \\frac{|8 - 3 + 15|}{5} = \\frac{20}{5} = 4$."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The total expenses of a hostel mess consist of a fixed monthly cost of ₹15,000 and variable cost of ₹120 per student per day. For a 30-day month with 50 students, what is the total expense in thousands of rupees?"
+        }
+      ],
+      "numerical_answer": 195,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Total $= 15000 + 50 \\times 120 \\times 30 = 15000 + 180000 = 195000$ ₹, which is 195 thousand rupees."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A line perpendicular to the line segment joining $A(1, 0)$ and $B(2, 3)$ has slope equal to:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$-1/3$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$3$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$-3$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$1/3$"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Slope of $AB = \\frac{3 - 0}{2 - 1} = 3$. Perpendicular slope $= -1/3$."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A bird is flying along $2y - 6x = 20$. Find the x-intercept of the flight line."
+        }
+      ],
+      "numerical_answer": -3.33,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Setting $y = 0 \\implies -6x = 20 \\implies x = -20/6 = -10/3 \\approx -3.33$."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A surveyor needs to determine the area of a triangular plot with vertices $(0, 0), (6, 0)$ and $(4, 5)$. What is the area in sq units?"
+        }
+      ],
+      "numerical_answer": 15,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Base $= 6$, height $= 5$. Area $= \\frac{1}{2} \\times 6 \\times 5 = 15$."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A fitness trainer tracks weight loss. Over 12 weeks, a trainee lost weight from 92 kg to 80 kg at a constant rate. Find the rate of weight loss in kg/week."
+        }
+      ],
+      "numerical_answer": 1,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Rate $= \\frac{92 - 80}{12} = \\frac{12}{12} = 1$ kg/week."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The discharge coefficient $C_d$ is evaluated from a linear regression equation $Q = m \\sqrt{H}$. If $Q$ is flow rate and $H$ is head, the graph of $Q$ versus $\\sqrt{H}$ is:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "A straight line passing through origin."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A parabola."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A hyperbola."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "An exponential curve."
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$Q \\propto \\sqrt{H}$ represents a straight line passing through the origin with slope $m$."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Ripples in a pond expand with speed 4 m/s. Find the diameter (in meters) of the wave after 3 seconds."
+        }
+      ],
+      "numerical_answer": 24,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Radius $= 4 \\times 3 = 12$ m. Diameter $= 2 \\times 12 = 24$ m."
+        }
+      ]
+    }
+  ]
+}

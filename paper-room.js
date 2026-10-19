@@ -790,7 +790,7 @@
       (passage
         ? ""
         : '<div style="font-size:12px;font-weight:700;color:#3a3fd8;">+' + Number(q.marks || 0) + " Marks</div>") +
-      "</div>" +
+      "</div></div>" +
       (q._passageHtml
         ? '<div class="pr-passage-split-grid">' +
           '<div class="pr-passage-col"><div class="pr-passage-card">' +

@@ -1,0 +1,277 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Statistics 1 · Quiz 1 · 15 Mar 2026 · Part 2",
+  "subject": "Statistics 1",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-1/06ccdfd144b6_q9_shared-context_p6.png",
+          "alt": "Original Statistics 1 question 9 shared context."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-1/06ccdfd144b6_q9_prompt_p7.png",
+          "alt": "Original Statistics 1 question 9 prompt."
+        }
+      ],
+      "marks": 2.0,
+      "difficulty": "medium",
+      "numerical_answer": 8.0,
+      "numerical_tolerance": 0.01,
+      "explanation": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-1/06ccdfd144b6_q9_solution_p7.png",
+          "alt": "Original Statistics 1 question 9 solution."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-1/06ccdfd144b6_q10_shared-context_p6.png",
+          "alt": "Original Statistics 1 question 10 shared context."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-1/06ccdfd144b6_q10_prompt_p7.png",
+          "alt": "Original Statistics 1 question 10 prompt."
+        }
+      ],
+      "marks": 2.0,
+      "difficulty": "medium",
+      "numerical_answer": 0.31,
+      "numerical_tolerance": 0.01,
+      "explanation": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-1/06ccdfd144b6_q10_solution_p7.png",
+          "alt": "Original Statistics 1 question 10 solution."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-1/06ccdfd144b6_q11_shared-context_p6.png",
+          "alt": "Original Statistics 1 question 11 shared context."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-1/06ccdfd144b6_q11_prompt_p7.png",
+          "alt": "Original Statistics 1 question 11 prompt."
+        }
+      ],
+      "marks": 2.0,
+      "difficulty": "medium",
+      "numerical_answer": 0.28,
+      "numerical_tolerance": 0.01,
+      "explanation": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-1/06ccdfd144b6_q11_solution_p7.png",
+          "alt": "Original Statistics 1 question 11 solution."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-1/06ccdfd144b6_q12_shared-context_p6.png",
+          "alt": "Original Statistics 1 question 12 shared context."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-1/06ccdfd144b6_q12_prompt_p7.png",
+          "alt": "Original Statistics 1 question 12 prompt."
+        },
+        {
+          "kind": "text",
+          "value": "For percentiles, use the nearest-rank method: sort n observations and take the value at rank ceil(n·p) for percentile proportion p."
+        }
+      ],
+      "marks": 3.0,
+      "difficulty": "medium",
+      "numerical_answer": 17.0,
+      "numerical_tolerance": 0.01,
+      "explanation": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-1/06ccdfd144b6_q12_solution_p7.png",
+          "alt": "Original Statistics 1 question 12 solution."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-1/06ccdfd144b6_q13_shared-context_p6.png",
+          "alt": "Original Statistics 1 question 13 shared context."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-1/06ccdfd144b6_q13_prompt_p8.png",
+          "alt": "Original Statistics 1 question 13 prompt."
+        }
+      ],
+      "marks": 4.0,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/06ccdfd144b6_q13_option-1_p8.png",
+            "alt": "Original Statistics 1 question 13 option 1."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/06ccdfd144b6_q13_option-2_p8.png",
+            "alt": "Original Statistics 1 question 13 option 2."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/06ccdfd144b6_q13_option-3_p8.png",
+            "alt": "Original Statistics 1 question 13 option 3."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/06ccdfd144b6_q13_option-4_p8.png",
+            "alt": "Original Statistics 1 question 13 option 4."
+          }
+        ]
+      ],
+      "correct_answers": [
+        1,
+        3
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-1/06ccdfd144b6_q14_shared-context_p6.png",
+          "alt": "Original Statistics 1 question 14 shared context."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-1/06ccdfd144b6_q14_prompt_p8.png",
+          "alt": "Original Statistics 1 question 14 prompt."
+        }
+      ],
+      "marks": 5.0,
+      "difficulty": "hard",
+      "numerical_answer": 155.0,
+      "numerical_tolerance": 0.01,
+      "explanation": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-1/06ccdfd144b6_q14_solution_p8.png",
+          "alt": "Original Statistics 1 question 14 solution."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-1/06ccdfd144b6_q15_shared-context_p6.png",
+          "alt": "Original Statistics 1 question 15 shared context."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-1/06ccdfd144b6_q15_prompt_p9.png",
+          "alt": "Original Statistics 1 question 15 prompt."
+        }
+      ],
+      "marks": 2.0,
+      "difficulty": "easy",
+      "numerical_answer": 159.0,
+      "numerical_tolerance": 0.01,
+      "explanation": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-1/06ccdfd144b6_q15_solution_p9.png",
+          "alt": "Original Statistics 1 question 15 solution."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-1/06ccdfd144b6_q16_shared-context_p6.png",
+          "alt": "Original Statistics 1 question 16 shared context."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/statistics-1/06ccdfd144b6_q16_prompt_p9.png",
+          "alt": "Original Statistics 1 question 16 prompt."
+        }
+      ],
+      "marks": 3.0,
+      "difficulty": "medium",
+      "options": [
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/06ccdfd144b6_q16_option-1_p9.png",
+            "alt": "Original Statistics 1 question 16 option 1."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/06ccdfd144b6_q16_option-2_p9.png",
+            "alt": "Original Statistics 1 question 16 option 2."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/06ccdfd144b6_q16_option-3_p9.png",
+            "alt": "Original Statistics 1 question 16 option 3."
+          }
+        ],
+        [
+          {
+            "kind": "image",
+            "url": "/assets/exam-examples/question-crops/statistics-1/06ccdfd144b6_q16_option-4_p9.png",
+            "alt": "Original Statistics 1 question 16 option 4."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1,
+        3
+      ],
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "For defined correlation, −1≤r≤1, hence −2<r<2. Covariance and correlation have the same sign because their denominator is positive. Cov(2X,Y)=2Cov(X,Y), while correlation is unitless. Thus A,B,D are true."
+        }
+      ]
+    }
+  ]
+}

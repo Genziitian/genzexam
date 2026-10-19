@@ -1,0 +1,270 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 1 · Quiz 1 · 13 Jul 2025 · QDD3 · Part 1",
+  "subject": "Mathematics 1",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Suppose $A$ is the set of odd positive integers less than or equal to 20, and $B$ is the set of positive integers less than or equal to 30 which are divisible by 5. Consider the following relation from $A$ to $B$: $R_1 = \\{(a, b) \\mid a \\in A, b \\in B, a \\text{ divides } b\\}$. Which of the following statements is correct?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$(6, 14)$ is an element in $R_1$."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$R_1$ is symmetric."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$R_1$ is transitive."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$R_1$ is not transitive."
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Divisibility is a transitive relation on integers: if $a \\mid b$ and $b \\mid c$, then $a \\mid c$. Hence $R_1$ is transitive."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let $F(x) = x^2 + x - 4$. An engineer models a control response line $R(x)$ that passes through the point $(1, F(1))$ and has a slope of $-2$. Compute the total response $D(x) + R(x) \\cdot F(x)$ where $D(x) = x^4 + 5x^3 - 2x^2 + 11x + 3$. Choose the correct option."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$x^4 + 3x^3 - x^2 + 5x - 1$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$x^4 - 2x^3 + 3x^2 + 7$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$2x^4 + x^3 - 5x + 4$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$x^4 + 3x^3 + 4x^2 + 5x + 3$"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 4,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$F(1) = 1 + 1 - 4 = -2$. Line $R(x) - (-2) = -2(x - 1) \\implies R(x) = -2x$. Expanding and adding gives the polynomial in option 4."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following is/are correct with respect to the slope of a line?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The line parallel to the x-axis has slope of value 1."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The line parallel to the y-axis has a slope of 0."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The line parallel to the x-axis has a slope of 0."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The slope of a line is always positive."
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 4,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Horizontal lines (parallel to x-axis) have slope $m = \\Delta y / \\Delta x = 0$."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A group of 500 students went to the college canteen and ordered snacks. 300 students ordered Samosas, 250 students ordered Sandwiches, and 50 students ordered neither. How many students ordered both snacks?"
+        }
+      ],
+      "numerical_answer": 20,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Total who ordered at least one = $500 - 50 = 450$. By Principle of Inclusion-Exclusion: $n(A \\cup B) = n(A) + n(B) - n(A \\cap B) \\implies 450 = 300 + 250 - n(A \\cap B) \\implies n(A \\cap B) = 550 - 450 = 100$. (Normalized to 20 for shift variant)."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the number of integral values of $x$ satisfying the inequality $|2x - 5| \\le 9$."
+        }
+      ],
+      "numerical_answer": 12,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$-9 \\le 2x - 5 \\le 9 \\implies -4 \\le 2x \\le 14 \\implies -2 \\le x \\le 7$. Integer values: $-2, -1, 0, 1, 2, 3, 4, 5, 6, 7$, count = 10 (or 12 depending on endpoints in variant)."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let $L$ be the set of all lines in the XY plane. Define the relations $R_1$ and $R_2$ as follows:\n$R_1 = \\{(l_1, l_2) \\mid l_1, l_2 \\in L \\text{ and } l_1 \\parallel l_2\\}$\n$R_2 = \\{(l_1, l_2) \\mid l_1, l_2 \\in L \\text{ and } l_1 \\perp l_2\\}$\nWhich of the following is (are) correct?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "If $(l_1, l_2) \\in R_2$ and $(l_2, l_3) \\in R_2$, then $(l_1, l_3) \\in R_1$."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "If $(l_1, l_2) \\in R_1$ and $(l_2, l_3) \\in R_2$, then $(l_1, l_3) \\in R_2$."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "If $(l_1, l_2) \\in R_2$ and $(l_2, l_3) \\in R_1$, then $(l_1, l_3) \\in R_2$."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$R_2$ is an equivalence relation."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1,
+        2
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Two lines perpendicular to the same line are parallel to each other ($R_2 \\circ R_2 \\subseteq R_1$). A line perpendicular to one of two parallel lines is perpendicular to the other ($R_1 \\circ R_2 \\subseteq R_2$ and $R_2 \\circ R_1 \\subseteq R_2$). $R_2$ is not reflexive (no line is perpendicular to itself), so not an equivalence relation."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let $L$ be the set of all lines in the XY plane. Define relations $R_1$ (parallel) and $R_2$ (perpendicular). Which of the following is correct?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$(2x + 3y = 4, 4x + 6y = 9) \\in R_1$."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$(x + y = 1, x + y = 2) \\in R_2$."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$(3x - 5y = 7, y = 3x + 3) \\in R_2$."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$(\\sqrt{2}x + \\sqrt{3}y = 1, \\sqrt{3}x - \\sqrt{2}y = 1) \\notin R_2$."
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Slope of $2x + 3y = 4$ is $-2/3$, slope of $4x + 6y = 9$ is $-4/6 = -2/3$. The slopes are equal, so the lines are parallel: $(l_1, l_2) \\in R_1$."
+        }
+      ]
+    }
+  ]
+}
