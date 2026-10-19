@@ -1,0 +1,327 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 1 · Quiz 1 · Mar 2026",
+  "subject": "Mathematics 1",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let 𝑅 = {(𝑎, 𝑐), (𝑏, 𝑐), (𝑑, 𝑐), (𝑏, 𝑎)} be a relation on the set 𝐴 = {𝑎, 𝑏, 𝑐, 𝑑}. The relation 𝑅 is"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "a function"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "reflexive"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "transitive"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "symmetric"
+          }
+        ]
+      ],
+      "correct_answers": [
+        2
+      ],
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Not a function: first coordinate 𝑏 repeats and 𝑐 never appears. Not reflexive: no (𝑥, 𝑥) pairs. Not symmetric: (𝑎, 𝑐) ∈ 𝑅 but (𝑐, 𝑎) ∉ 𝑅. Transitive: the only composable chain is (𝑏, 𝑎), (𝑎, 𝑐) which requires (𝑏, 𝑐), and (𝑏, 𝑐) ∈ 𝑅; so 𝑅 is transitive."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following options is/are true?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "If 𝑚 and 𝑛 are the 𝑥-intercept and 𝑦-intercept of the line 2𝑥 + 3𝑦 = 6, respectively, then 𝑚 + 𝑛 = 6."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The 𝑦-intercept of a line is the perpendicular distance of the line from the origin."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The lines 2𝑥 + 3𝑦 = 6 and 3𝑥 − 2𝑦 = 6 are perpendicular to each other."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The distance between the two parallel lines 2𝑥 + 3𝑦 = 6 and 4𝑥 + 6𝑦 = 12 is 0."
+          }
+        ]
+      ],
+      "correct_answers": [
+        2,
+        3
+      ],
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Option 1: intercepts are 𝑚 = 3, 𝑛 = 2, so 𝑚 + 𝑛 = 5 ≠ 6 (false). Option 2: false in general. Option 3: slopes − 23 and 32 have product −1, so perpendicular (true). Option 4: 4𝑥 + 6𝑦 = 12 is the same line as 2𝑥 + 3𝑦 = 6, so the distance is 0 (true)."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the polynomial 𝑝(𝑥) = 𝑎𝑛𝑥𝑛 + ⋯ + 𝑎1𝑥 + 𝑎0, where 𝑎𝑖 ∈ 𝑅 and 𝑎𝑛 ≠ 0. Suppose 𝑥0 ∈ 𝑅 is the smallest root of 𝑝. From the options below, choose the conditions that ensure that 𝑝(𝑥) is strictly decreasing in ( − ∞, 𝑥0)."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "𝑛 is odd and 𝑎𝑛 > 0."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "𝑛 is odd and 𝑎𝑛 < 0."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "𝑛 is even and 𝑎𝑛 > 0."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "𝑛 is even and 𝑎𝑛 < 0."
+          }
+        ]
+      ],
+      "correct_answers": [
+        1,
+        2
+      ],
+      "marks": 4,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "If 𝑝 is strictly decreasing on ( − ∞, 𝑥0) and 𝑝(𝑥0) = 0, then 𝑝(𝑥) → + ∞ as 𝑥 → − ∞. As 𝑥 → − ∞, 𝑝(𝑥) → + ∞ requires: for even 𝑛, 𝑎𝑛 > 0; for odd 𝑛, 𝑎𝑛 < 0. Hence the valid conditions are 'odd and 𝑎𝑛 < 0' and 'even and 𝑎𝑛 > 0'."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider two polynomials 𝑝(𝑥) = − 𝑥5 + 5𝑥4 − 7𝑥 − 2 and 𝑞(𝑥) = − 𝑥5 + 5𝑥4 − 𝑥2 − 2. Which of the following options is/are true?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "𝑞(𝑥) ⟶ − ∞ as 𝑥 ⟶ ∞."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "𝑝(𝑥) ⟶ ∞ as 𝑥 ⟶ ∞."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "𝑝(𝑥) has at most 5 turning points."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "𝑞(𝑥) has at most 5 turning points."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        2,
+        3
+      ],
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Leading term of both is −𝑥5. As 𝑥 → ∞, 𝑞(𝑥) → − ∞ (true) and 𝑝(𝑥) → − ∞, not +∞ (option 2 false). A degree-5 polynomial has derivative of degree 4, so at most 4 turning points, which is certainly at most 5; options 3 and 4 are true. Q6 SHORT ANSWER 3 marks · medium If 𝐴 = {4, 5, … } [the definitions of sets 𝐵 and 𝐶 are obscured by a floating 'Claude is active in this tab group' badge], find the cardinality of (𝐴 − 𝐵) × (𝐵 ∩ 𝐶). The 'Claude is active in this tab group' overlay badge covers the middle of the stem, hiding the definitions of sets 𝐵 and 𝐶. Only 𝐴 = {4, 5, … } and the target expression cardinality of (𝐴 − 𝐵) × (𝐵 ∩ 𝐶) are legible, so the answer cannot be computed reliably. Needs review against an unobstructed capture."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A straight line 𝐿 passes through the point (2, 3) and cuts equal intercepts on the 𝑥-axis and the 𝑦-axis. Which of the following represents the equation of the line 𝐿?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "𝑦 = − 𝑥 + 5"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "𝑥 + 𝑦 = 6"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "𝑦 = 𝑥 + 1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "2𝑥 + 𝑦 = 7"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 4,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Equal intercepts 𝑎 give 𝑥 + 𝑦 = 𝑎. Passing through (2, 3): 𝑎 = 5, so 𝑥 + 𝑦 = 5, i.e. 𝑦 = − 𝑥 + 5. Q8 SHORT ANSWER 4 marks · medium You are monitoring your mobile data usage over time. Whenever the data usage reaches a fixed alert level, you record the data used (in GB) and the corresponding amount charged (in Rs). Let 𝑥 denote the data used and 𝑦 denote the amount charged. Based on previous observations, the best-fit linear model relating 𝑦 and 𝑥 is given by 𝑦 = 12𝑥 − 10. The observed data are given below. Compute the Sum of Squared Errors (SSE) with respect to the given best-fit line. Observed data Data used (GB) 2 3 4 5 6 Amount charged (Rs) 14 25 39 52 63 Predicted ^𝑦 = 12𝑥 − 10 gives 14, 26, 38, 50, 62. Residuals 𝑦 − ^𝑦 are 0, − 1, 1, 2, 1; squared: 0, 1, 1, 4, 1 . SSE = 0 + 1 + 1 + 4 + 1 = 7. Q9 SHORT ANSWER 4 marks · easy If the product of two consecutive positive integers is 182, find the smaller of the two of them. 13 × 14 = 182, so the smaller integer is 13 (solving 𝑛(𝑛 + 1) = 182 gives 𝑛 = 13). Q10 SHORT ANSWER 4 marks · easy Consider the quadratic function 𝑓(𝑥) = 𝑎𝑥2 + 2𝑥 + 3, where 𝑎 ∈ 𝑅. If the slope of the graph 𝑓(𝑥) at 𝑥 = 2 is equal to −2, determine the value of 𝑎. 𝑓′(𝑥) = 2𝑎𝑥 + 2, so 𝑓′(2) = 4𝑎 + 2 = − 2, giving 4𝑎 = − 4 and 𝑎 = − 1."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the two quadratic functions 𝑓(𝑥) = 𝑥2 − 4𝑥 + 𝑐, 𝑔(𝑥) = − 𝑥2 + 3𝑥 + 𝑐, where 𝑐 ∈ 𝑅. Which of the following statements are true?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The quadratic equations 𝑓(𝑥) = 0 and 𝑔(𝑥) = 0 both have two distinct real roots if and only if 𝑐 lies between − 9 4 and −4."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The vertex of 𝑓 corresponds to the maximum of the function 𝑓."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The vertex of 𝑔 corresponds to the maximum of the function 𝑔."
+          }
+        ]
+      ],
+      "correct_answers": [
+        2
+      ],
+      "marks": 5,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Option 1: 𝑓 has two distinct real roots when 16 − 4𝑐 > 0 ⇒ 𝑐 < 4; 𝑔 has two distinct real roots when 9 + 4𝑐 > 0 ⇒ 𝑐 > − 94. Both hold iff − 94 < 𝑐 < 4, not 'between − 94 and −4', so false. Option 2: 𝑓 opens upward, so its vertex is a minimum, not a maximum (false). Option 3: 𝑔 opens downward, so its vertex is a maximum (true)."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the polynomial function 𝑝(𝑥) = − (𝑥2 − 16)(𝑥 − 3)2(2 − 𝑥)2(𝑥 + 9). Choose the set of correct options."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "𝑝(𝑥) is strictly decreasing when 𝑥 ∈ (4, ∞)."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Total number of turning points of 𝑝(𝑥) are 6."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "𝑝(𝑥) is strictly increasing when 𝑥 ∈ ( − ∞, − 9)."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "There are exactly 7 points on 𝑝(𝑥) where the slope of the tangent is 0."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1
+      ],
+      "marks": 5,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "𝑝 has degree 7 with leading coefficient −1. Its largest real root is 𝑥 = 4; beyond it 𝑝 < 0 with no critical points, so 𝑝 is strictly decreasing on (4, ∞) (option 1 true). 𝑝′ has degree 6 with exactly 6 distinct real roots ( ≈ − 7.67, − 2.70, 2, 2.47, 3, 3.75), so there are 6 turning points / 6 points with zero slope: option 2 (6 turning points) is true, while option 4 (exactly 7) is false. On ( − ∞, − 9), 𝑝 → + ∞ as 𝑥 → − ∞ and 𝑝( − 9) = 0, so 𝑝 is strictly decreasing there, not increasing (option 3 false)."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,168 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 1 · Quiz 1 · Jun 2022 · QUIZ1 · Part 1",
+  "subject": "Mathematics 1",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider a relation 𝑅 defined on the set 𝐴 = {0, 2, 4, 6, 8} as 𝑅 = {(𝑥, 𝑦): 𝑦 = 𝑥 + 2}. Which among the following is(are) correct."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "R is neither reflexive, nor symmetric and nor transitive."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "R is an anti-symmetric relation."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "R is an identity relation."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "R is an equivalence relation."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1
+      ],
+      "marks": 5,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider a polynomial function 𝑝(𝑥) = − 0.01(𝑥 − 1)(𝑥 − 2)2(𝑥 − 3)2(𝑥 − 4)𝑥(𝑥 + 1)(𝑥 + 2)2. Choose the correct options from the following."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "𝑝(𝑥) is one-one function when 𝑥 ∈ ( − ∞, − 2) ∪ (4, ∞)."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The total number of turning points of 𝑝(𝑥) is 9."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "𝑝(𝑥) > 0 when 𝑥 ∈ ( − 1, 0) ∪ (1, 2) ∪ (2, 3) ∪ (3, 4)."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "There are exactly 9 points on 𝑝(𝑥) where the slope of the tangent is zero."
+          }
+        ]
+      ],
+      "correct_answers": [
+        1,
+        3
+      ],
+      "marks": 5,
+      "difficulty": "hard"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In a survey of 500 people, it was found that 49% liked to watch comedy movies, 53% liked thriller movies, and 62% liked romantic movies. Also, 27% liked to watch both comedy and thriller, 29% liked to watch both thriller and romantic, and 28% liked watching both comedy and romantic. 5% liked none of the above genres. Based on this information, answer the following. How many people like all the three movies? NOTE: Enter your answer to the nearest integer."
+        }
+      ],
+      "numerical_answer": 75,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In a survey of 500 people, it was found that 49% liked to watch comedy movies, 53% liked thriller movies, and 62% liked romantic movies. Also, 27% liked to watch both comedy and thriller, 29% liked to watch both thriller and romantic, and 28% liked watching both comedy and romantic. 5% liked none of the above genres. Based on this information, answer the following. Find the number of people who like only one of the three genres. NOTE: Enter your answer to the nearest integer."
+        }
+      ],
+      "numerical_answer": 205,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In a survey of 500 people, it was found that 49% liked to watch comedy movies, 53% liked thriller movies, and 62% liked romantic movies. Also, 27% liked to watch both comedy and thriller, 29% liked to watch both thriller and romantic, and 28% liked watching both comedy and romantic. 5% liked none of the above genres. Based on this information, answer the following. Find the number of people who like at least two of the given genres. NOTE: Enter your answer to the nearest integer."
+        }
+      ],
+      "numerical_answer": 270,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The polynomial 𝑝(𝑥) = 𝑎(𝑥 − 2)(𝑥 − 4)(𝑥 − 6)(𝑥 − 8) passes through the vertex of the quadratic function 𝑞(𝑥) = (𝑥 − 5)2 − 18. Based on this information, answer the following. Enter the x-coordinate of the vertex of 𝑞(𝑥). NOTE: Enter your answer to the nearest integer."
+        }
+      ],
+      "numerical_answer": 5,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "easy"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The polynomial 𝑝(𝑥) = 𝑎(𝑥 − 2)(𝑥 − 4)(𝑥 − 6)(𝑥 − 8) passes through the vertex of the quadratic function 𝑞(𝑥) = (𝑥 − 5)2 − 18. Based on this information, answer the following. Enter the y-coordinate of the vertex of 𝑞(𝑥). NOTE: Enter your answer to the nearest integer."
+        }
+      ],
+      "numerical_answer": -18,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "easy"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The polynomial 𝑝(𝑥) = 𝑎(𝑥 − 2)(𝑥 − 4)(𝑥 − 6)(𝑥 − 8) passes through the vertex of the quadratic function 𝑞(𝑥) = (𝑥 − 5)2 − 18. Based on this information, answer the following. Enter the value of 𝑎. NOTE: Enter your answer to the nearest integer."
+        }
+      ],
+      "numerical_answer": -2,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    }
+  ]
+}

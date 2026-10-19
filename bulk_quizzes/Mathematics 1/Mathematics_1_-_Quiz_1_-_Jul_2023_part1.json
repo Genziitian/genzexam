@@ -1,0 +1,203 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 1 · Quiz 1 · Jul 2023 · Part 1",
+  "subject": "Mathematics 1",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let 𝑆 = {Jan, Feb, March, April, May} and 𝑅2 = {(Jan, Jan), (Feb, Feb), (March, March), (April, April), (May, May)}. Find the cardinality of the set (𝑆 × 𝑆) ∖ 𝑅2."
+        }
+      ],
+      "numerical_answer": 20,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "∣𝑆 × 𝑆∣ = 5 × 5 = 25 and ∣𝑅2∣ = 5. Since 𝑅2 ⊆ 𝑆 × 𝑆, ∣(𝑆 × 𝑆) ∖ 𝑅2∣ = 25 − 5 = 20."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider a polynomial 𝑝(𝑥) = 0.3𝑥3(𝑥2 − 1)(𝑥 − 2)2(𝑥 − 3). Which of the figures represents the polynomial 𝑝(𝑥)? [Figure: four candidate plots labelled Figure 1 to Figure 4 of an 8th-degree polynomial on axes from about −1 to 3.]"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Figure 1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Figure 2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Figure 3"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Figure 4"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Roots: 𝑥 = − 1, 0, 1 (cross), 𝑥 = 2 (double, touches), 𝑥 = 3 (cross), with 𝑥 = 0 of multiplicity 3. Degree = 8, leading coefficient 0.3 > 0, so both ends go to +∞. Sign analysis: +  for 𝑥 < − 1, −  on ( − 1, 0), +  on (0, 1), −  on (1, 2), touches axis at 𝑥 = 2 from below, −  on (2, 3) (deep dip to about −5), then +  for 𝑥 > 3. Figure 3 is the only plot with both ends rising to +∞, a dip below on ( − 1, 0), a bounce-touch at 𝑥 = 2, a deep dip between 2 and 3, and an upward crossing at 3. Figure 3 corresponds to index 2."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following options is/are true?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "If 𝑚 and 𝑛 are the 𝑥-intercept and 𝑦-intercept of the line 2𝑥 + 3𝑦 = 6, respectively, then 𝑚 + 𝑛 = 6."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The 𝑦-intercept of a line is the perpendicular distance to the line from the origin."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The lines 2𝑥 + 3𝑦 = 6 and 3𝑥 − 2𝑦 = 6 are perpendicular to each other."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The distance between two parallel lines 2𝑥 + 3𝑦 = 6 and 4𝑥 + 6𝑦 = 12 is 0."
+          }
+        ]
+      ],
+      "correct_answers": [
+        2,
+        3
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "(a) For 2𝑥 + 3𝑦 = 6, 𝑥-intercept 𝑚 = 3, 𝑦-intercept 𝑛 = 2, so 𝑚 + 𝑛 = 5 ≠ 6 — false. (b) The 𝑦- intercept is not the perpendicular distance from the origin — false. (c) Slopes are −2/3 and 3/2; their product is −1, so the lines are perpendicular — true. (d) 4𝑥 + 6𝑦 = 12 is the same line as 2𝑥 + 3𝑦 = 6 (divide by 2), so the distance is 0 — true. Correct: indices 2 and 3."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider two polynomials 𝑝(𝑥) = 𝑥4 + 3𝑥3 − 9𝑥 + 8 and 𝑞(𝑥) = (𝑥2 + 𝑥)(𝑥 + 3). Let 𝑟(𝑥) be the remainder obtained when 𝑝(𝑥) is divided by 𝑞(𝑥). Let 𝑙(𝑥) be the line that passes through the 𝑦-intercept and the minimum point in the graph of 𝑟(𝑥). For reference follow Figure M1Q1-1. [Figure: M1Q1-1 shows the upward parabola 𝑟(𝑥) in blue with its labelled Minimum Point below the x-axis and its y-intercept above, and the line 𝑙(𝑥) in green passing through both.] Which of the following options is/are true?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "𝑟(𝑥) = 𝑥2 − 6𝑥 + 9"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "𝑙(𝑥) ≡ 𝑦 = − 3𝑥 + 8"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "𝑙(𝑥) ≡ 𝑦 = − 2𝑥 + 8"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The number of turning points in 𝑞(𝑥) is 2."
+          }
+        ]
+      ],
+      "correct_answers": [
+        1,
+        3
+      ],
+      "marks": 5,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Dividing 𝑝(𝑥) = 𝑥4 + 3𝑥3 − 9𝑥 + 8 by 𝑞(𝑥) = 𝑥3 + 4𝑥2 + 3𝑥 gives quotient 𝑥 − 1 and remainder 𝑟(𝑥) = 𝑥2 − 6𝑥 + 8 (not 𝑥2 − 6𝑥 + 9, so option a is false). 𝑟(𝑥) = (𝑥 − 2)(𝑥 − 4) has minimum at (3, − 1) and y- intercept (0, 8). The line through these has slope ( − 1 − 8)/(3 − 0) = − 3, so 𝑙(𝑥) = − 3𝑥 + 8 (option b true, c false). 𝑞(𝑥) is a cubic with 𝑞′(𝑥) = 3𝑥2 + 8𝑥 + 3, discriminant 28 > 0, giving 2 turning points (option d true). Correct: indices 1 and 3."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A company opened recruitment for the post of data analyst. 500 candidates have applied for the post. [Counts of candidates proficient in C, Python and Java, and the number proficient in all three, are obscured here by a UI overlay.] ... on programming, 195 candidates are [obscured] ... are proficient in Java programming, 45 candidates are proficient in Python and Java, 70 candidates are proficient in C and Python, 50 candidates are proficient in C and Java and 50 candidates don't know any of the programming languages. Find the number of candidates who are proficient in exactly one of the three programming languages."
+        }
+      ],
+      "numerical_answer": 0,
+      "numerical_tolerance": 0.01,
+      "marks": 5,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "A floating 'Claude is active in this tab group' overlay obscures two lines of this question, hiding the individual counts of candidates proficient in C, Python and Java and the all-three count, so the numeric answer cannot be computed reliably. Method: candidates in at least one language = 500 - 50 = 450; number proficient in exactly one = (sum of single-language totals) - 2*(sum of the three pairwise intersections) + 3*(all-three). Pairwise values that ARE visible: Python and Java = 45, C and Python = 70, C and Java = 50. The placeholder answer 0 is a flag, not a solution — needs_review."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the points 𝐴(0, 3), 𝐵(𝑥, 𝑦), 𝐶(4, 3), 𝐷(1, 0) and 𝐸(3, 1) in the coordinate system. Suppose the point 𝐵 divides internally the line segment 𝐴𝐶 in the ratio 𝑘: 1. If the area of triangle 𝐷𝐸𝐵 is 2, then find the positive value of 𝑘."
+        }
+      ],
+      "numerical_answer": 3,
+      "numerical_tolerance": 0.01,
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "By section formula 𝐵 = ( 4𝑘𝑘 + 1, 3 ). Area of △𝐷𝐸𝐵 with 𝐷(1, 0), 𝐸(3, 1), 𝐵(𝑏𝑥, 3) is 1 2∣1(1 − 3) + 3(3 − 0) + 𝑏𝑥(0 − 1)∣ = 12∣7 − 𝑏𝑥∣ = 2, so 𝑏𝑥 = 3 or 𝑏𝑥 = 11. 4𝑘𝑘 + 1 = 3 ⇒ 𝑘 = 3; 4𝑘 𝑘 + 1 = 11 ⇒ 𝑘 = − 11/7 (rejected). Positive value 𝑘 = 3."
+        }
+      ]
+    }
+  ]
+}

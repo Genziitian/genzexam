@@ -1,0 +1,256 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 1 · Quiz 1 · Oct 2025 · QIM2 · Part 1",
+  "subject": "Mathematics 1",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the two quadratic functions 𝑦1 = 𝑥2 − 4𝑥 + 1 and 𝑦2 = 𝑥2 − 6𝑥 − 3. A quadratic function 𝑓(𝑥) = 𝑎𝑥2 + 𝑏𝑥 + 𝑐 has its vertex at the intersection point of 𝑦1 and 𝑦2, and its axis of symmetry is parallel to the 𝑦-axis. What is the equation of 𝑓(𝑥)?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "𝑦 = −114 (𝑥 + 2)2 + 13"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "𝑦 = 114 (𝑥 + 2)2 + 13"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "𝑦 = −114 (𝑥 + 2)2 − 13"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "𝑦 = 114 (𝑥 + 2)2 − 13"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Setting 𝑦1 = 𝑦2: −4𝑥 + 1 = − 6𝑥 − 3 ⇒ 2𝑥 = − 4 ⇒ 𝑥 = − 2; then 𝑦1 = ( − 2)2 − 4( − 2) + 1 = 13 , so the vertex is ( − 2, 13). The vertex form must be 𝑎(𝑥 + 2)2 + 13, which selects the options with +13. The vertex constraint alone does not fix the sign of 𝑎, so the choice between −114  and 114  is ambiguous from the given data; option 0 is selected as the canonical form. Flagged for review due to this ambiguity."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Subendu and Mohit reside at (4, − 18.9) and (4, 18.9) respectively. They planned a road trip. Subendu decided to go by road 𝑟1(𝑥) = 0.02(𝑥 − 5)(𝑥 − 7)(𝑥 − 9)(𝑥 − 11)(𝑥 − 13) and Mohit chose the road 𝑟2(𝑥) = 0.02(𝑥 − 5)2(𝑥 − 7)(𝑥 − 9)(𝑥 − 11)(𝑥 − 13). They decided to meet where these roads intersect. Based on the given information, choose the set of correct option(s)."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The number of 𝑥-intercepts of 𝑟1(𝑥) and 𝑟2(𝑥) are 5 and 6 respectively."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The number of intersection points of 𝑟1(𝑥) and 𝑟2(𝑥) can be found using 𝑟1(𝑥) = 𝑟2(𝑥)."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The number of intersection points of 𝑟1(𝑥) and 𝑟2(𝑥) can be found using 𝑟1(𝑥) = − 𝑟2(𝑥)."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The number of 𝑥-intercepts of 𝑟1(𝑥) and 𝑟2(𝑥) are 6."
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "𝑟1 has roots 5, 7, 9, 11, 13 (5 distinct 𝑥-intercepts); 𝑟2 has the same roots with 𝑥 = 5 a double root, so it also has 5 distinct 𝑥-intercepts (a double root is still one intercept point). Hence options 0 ('5 and 6') and 3 ('6') are false. The two curves intersect where 𝑟1(𝑥) = 𝑟2(𝑥), so option 1 is true; 𝑟1(𝑥) = − 𝑟2(𝑥) would not give the intersection, so option 2 is false."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "An online degree programme offers the following courses: Level I: Mathematics, Statistics; Level II: Machine Learning Foundations, Mathematical Thinking; Level III: Deep Learning, Machine Learning Techniques, Advanced Algorithms. Every course in Level I is a prerequisite for every course in Level II, and every course in Level II is a prerequisite for every course in Level III. Let 𝑀 be the set of all these courses and define two relations on 𝑀: 𝑅 = {(𝐴, 𝐵) ∣ 𝐴 and 𝐵 are courses in the same level} and 𝑆 = {(𝐴, 𝐵) ∣ 𝐴 is a prerequisite for 𝐵}. Which of the following is/are true?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "𝑅 is an equivalence relation."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "𝑆 is an equivalence relation."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "𝑅 is not transitive."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "𝑆 is not symmetric."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        3
+      ],
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "𝑅 ('same level') is reflexive, symmetric and transitive, so it is an equivalence relation (option 0 true, option 2 false). 𝑆 ('A is a prerequisite for B') is not reflexive (a course is not its own prerequisite), so it is not an equivalence relation (option 1 false); it is also not symmetric (if A is a prerequisite for B, B is not a prerequisite for A), so option 3 is true."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following statements is(are) true?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "𝑦 − 6 = 3(𝑥 − 10)2 is an equation of a parabola whose vertex is at (10, 6)."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "𝑦 − 6 = 3(𝑥 − 10)2 is an equation of a parabola whose vertex is at (6, 10)."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "−5𝑥 + 4𝑦 − 1 = 0 and 𝑥4 − 𝑦5 = 1 are perpendicular to each other."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "−5𝑥 + 4𝑦 − 1 = 0 and 𝑥4 − 𝑦5 = 1 are parallel to each other."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        3
+      ],
+      "marks": 4,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "𝑦 − 6 = 3(𝑥 − 10)2 ⇒ 𝑦 = 3(𝑥 − 10)2 + 6 has vertex (10, 6), so option 0 is true and option 1 is false. Line −5𝑥 + 4𝑦 − 1 = 0 gives slope 5/4; 𝑥4 − 𝑦5 = 1 ⇒ 5𝑥 − 4𝑦 = 20 ⇒ 𝑦 = 54𝑥 − 5 also has slope 5/4. Equal slopes mean the lines are parallel (option 3 true), not perpendicular (option 2 false)."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider two polynomials 𝑝(𝑥) = − 𝑥5 + 5𝑥4 − 7𝑥 − 2 and 𝑞(𝑥) = − 𝑥5 + 5𝑥4 − 𝑥2 − 2. Which of the following options is/are true? [Note: option 3 ('𝑝(𝑥) has a ...') was obscured by a 'Claude is active in this tab group' overlay and could not be fully transcribed.]"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "𝑞(𝑥) ⟶ − ∞ as 𝑥 ⟶ ∞."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "𝑝(𝑥) ⟶ ∞ as 𝑥 ⟶ ∞."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "𝑝(𝑥) has a ... [obscured by overlay]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The quotient obtained while dividing 𝑞(𝑥) by 𝑝(𝑥) is a constant."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        3
+      ],
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Both polynomials have leading term −𝑥5, so as 𝑥 → ∞ both tend to −∞: option 0 (𝑞 → − ∞) is true and option 1 (𝑝 → ∞) is false. 𝑞(𝑥) − 𝑝(𝑥) = ( − 𝑥2 − 2) − ( − 7𝑥 − 2) = − 𝑥2 + 7𝑥, so 𝑞(𝑥) = 1 ⋅ 𝑝(𝑥) + ( − 𝑥2 + 7𝑥); dividing 𝑞 by 𝑝 gives quotient 1 (a constant), so option 3 is true. Option 2 is obscured by the browser overlay and cannot be evaluated; flagged for review."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A quadratic equation of the form 𝑎𝑥2 + 𝑏𝑥 + 𝑐 = 0 has its vertex at (3, − 2) and its 𝑦-intercept at 4. Due to a recording error, the coefficient 𝑏 was written as 5 instead of its correct value. Find the absolute difference between the sum of the roots of the incorrectly recorded quadratic equation and that of the correct quadratic equation."
+        }
+      ],
+      "numerical_answer": 13.5,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Vertex form 𝑦 = 𝑎(𝑥 − 3)2 − 2; 𝑦-intercept 4 gives 9𝑎 − 2 = 4 ⇒ 𝑎 = 23. Expanding: 𝑦 = 23𝑥2 − 4𝑥 + 4, so correct 𝑎 = 23, 𝑏 = − 4. Correct sum of roots = − 𝑏/𝑎 = 4/(2/3) = 6. Incorrect equation uses 𝑏 = 5: sum of roots = − 5/(2/3) = − 7.5. Absolute difference = ∣6 − ( − 7.5)∣ = 13.5."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,254 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 1 · Quiz 1 · Oct 2024 · QDF2 · Part 1",
+  "subject": "Mathematics 1",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the polynomials 𝑝(𝑥) = 2𝑥5 − 3𝑥3 + 100𝑥 − 1 and 𝑞(𝑥) = 𝑥4 + 𝑥 + 5. Which of the following statements is correct?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "𝑝(𝑥) + 𝑞(𝑥) → ∞ as 𝑥 → − ∞."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "𝑝(𝑥) − 𝑞(𝑥) → − ∞ as 𝑥 → ∞."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "5𝑝(𝑥) → ∞ as 𝑥 → − ∞."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1 2𝑞(𝑥) → ∞ as 𝑥 → − ∞."
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "𝑝 has odd degree 5 with positive leading coefficient, so 𝑝(𝑥) → − ∞ as 𝑥 → − ∞ and → + ∞ as 𝑥 → + ∞. 𝑞 has even degree 4 with positive leading coefficient, so 𝑞(𝑥) → + ∞ at both ends. (a) sum is dominated by 2𝑥5 → − ∞ (false). (b) difference dominated by 2𝑥5 → + ∞ (false). (c) 5𝑝 → − ∞ as 𝑥 → − ∞ (false). (d) 1 2𝑞 → + ∞ (true)."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider a polynomial 𝑝(𝑥) = 0.3𝑥3(𝑥2 − 1)(𝑥 − 2)2(𝑥 − 3) and four candidate graphs (Figure 1–Figure 4). [Figure: four plotted cubic-degree-8 graphs on the same axes from about 𝑥 = − 1 to 𝑥 = 3, differing in end behaviour and in whether the curve crosses or touches the x-axis at the roots.] Which of the figures represents the polynomial 𝑝(𝑥)?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Figure 1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Figure 2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Figure 3"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Figure 4"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Degree = 3 + 2 + 2 + 1 = 8 (even) with positive leading coefficient 0.3, so both ends go to +∞ (rules out Figures 1 and 2 whose tails do not both rise). Roots: 𝑥 = 0 (mult 3, crosses, flattens), 𝑥 = ± 1 (cross), 𝑥 = 2 (mult 2, touches), 𝑥 = 3 (cross). Sign test gives 𝑝 < 0 on ( − 1, 0), 𝑝 > 0 on (0, 1), 𝑝 < 0 on (1, 2) and (2, 3) with a tangency at 𝑥 = 2. Figure 3 matches this exactly: both ends up, dip on ( − 1, 0), small bump on (0, 1), dip through (1, 3) touching at 𝑥 = 2."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If 𝛼 and 𝛽 are the roots of the equation 𝑥2 + 4𝑥 + 1 = 0, then the equation whose roots are 𝛼2 and 𝛽2 is:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "𝑥2 − 14𝑥 + 1 = 0"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "𝑥2 − 18𝑥 + 16 = 0"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "𝑥2 − 10𝑥 + 2 = 0"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "𝑥2 − 8𝑥 + 5 = 0"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "From 𝑥2 + 4𝑥 + 1 = 0: 𝛼 + 𝛽 = − 4, 𝛼𝛽 = 1. Then 𝛼2 + 𝛽2 = (𝛼 + 𝛽)2 − 2𝛼𝛽 = 16 − 2 = 14 and 𝛼2𝛽2 = (𝛼𝛽)2 = 1. The required equation is 𝑥2 − 14𝑥 + 1 = 0."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Suppose 𝐴 is the set of odd positive integers less than or equal to 20, and 𝐵 is the set of positive integers less than or equal to 30 which are divisible by 5. Consider the relations from 𝐴 to 𝐵: 𝑅1 = {(𝑎, 𝑏) ∣ 𝑎 ∈ 𝐴, 𝑏 ∈ 𝐵,  𝑎 is a factor of 𝑏} and 𝑅2 = {(𝑎, 𝑏) ∣ 𝑎 ∈ 𝐴, 𝑏 ∈ 𝐵,  (𝑎 + 𝑏) mod 15 = 0}. Which of the following statements are correct?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "(6, 14) is an element in 𝑅2."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "𝑅2 is not symmetric."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "𝑅1 is transitive."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "𝑅2 is reflexive."
+          }
+        ]
+      ],
+      "correct_answers": [
+        1,
+        2
+      ],
+      "marks": 5,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "𝐴 = {1, 3, 5, 7, 9, 11, 13, 15, 17, 19}, 𝐵 = {5, 10, 15, 20, 25, 30}. (a) 6 ∉ 𝐴 and 14 ∉ 𝐵, so (6, 14) ∉ 𝑅2 — false. (b) (5, 10) ∈ 𝑅2 since 5 + 10 = 15, but (10, 5) ∉ 𝑅2 since 10 ∉ 𝐴; not symmetric — true. (c) Divisibility is transitive: if 𝑎 ∣ 𝑏 and 𝑏 ∣ 𝑐 then 𝑎 ∣ 𝑐, so 𝑅1 is transitive — true. (d) Reflexivity would need (𝑎, 𝑎) with 𝑎 ∈ 𝐴 ∩ 𝐵 and 2𝑎 ≡ 0 (mod 15), which never holds; not reflexive — false."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following options is/are true?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "If 𝑇 is the set {𝑎, 𝑏, 𝑐, 𝑑}, then cardinality of the set 𝑇 × 𝑇 is 16."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The minimum value of the quadratic expression 𝑓(𝑥) = 3𝑥2 − 18𝑥 + 20 is −20."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "For a quadratic equation 𝑎𝑥2 + 𝑏𝑥 + 𝑐 = 0 with 𝑎 ≠ 0 and 𝑎, 𝑏, 𝑐 integers, if 𝑏2 − 4𝑎𝑐 > 0 and a perfect square, then there exists a rational root of the quadratic equation."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A line with an undefined slope is parallel to the Y-axis."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        2,
+        3
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "(a) ∣𝑇∣ = 4 ⇒ ∣𝑇 × 𝑇∣ = 42 = 16 — true. (b) Minimum of 3𝑥2 − 18𝑥 + 20 is at 𝑥 = 3, giving 𝑓(3) = 27 − 54 + 20 = − 7, not −20 — false. (c) A positive perfect-square discriminant with integer coefficients gives roots −𝑏 ± √𝑏2 − 4𝑎𝑐2𝑎  that are rational — true. (d) Undefined (infinite) slope is a vertical line, parallel to the Y- axis — true."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In a college of 500 students, 285 took Mathematics, 195 took Statistics, 115 took English, 70 took Mathematics and English, 45 took Mathematics and Statistics, 50 took Statistics and English, and 30 took all three courses. What is the total number of students who took none of these three subjects?"
+        }
+      ],
+      "numerical_answer": 40,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "By inclusion–exclusion, ∣𝑀 ∪ 𝑆 ∪ 𝐸∣ = 285 + 195 + 115 − 70 − 45 − 50 + 30 = 460. Students taking none = 500 − 460 = 40."
+        }
+      ]
+    }
+  ]
+}

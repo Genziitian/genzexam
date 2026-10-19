@@ -1,0 +1,266 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 1 · Quiz 1 · Jul 2025 · QIP2 · Part 2",
+  "subject": "Mathematics 1",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A satellite dish is shaped like a parabola, and its height above the ground (in meters) at a horizontal position 𝑥 meters is given by 𝑓(𝑥) = 𝑎𝑥2 − 12𝑥 + 10,  𝑎 ∈ 𝑅 ∖ {0}. An engineer places a ladder that follows the path of a line given by 𝑦 = 8𝑥 + 3. At the point where 𝑥 = 1, the slope of the satellite dish's curve is the same as the slope of the ladder. Find the value of 𝑎."
+        }
+      ],
+      "numerical_answer": 10,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "𝑓′(𝑥) = 2𝑎𝑥 − 12. At 𝑥 = 1 this must equal the ladder's slope 8: 2𝑎 − 12 = 8 ⇒ 𝑎 = 10."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A satellite dish is shaped like a parabola with height 𝑓(𝑥) = 𝑎𝑥2 − 12𝑥 + 10,  𝑎 ∈ 𝑅 ∖ {0}. A ladder follows the line 𝑦 = 8𝑥 + 3, and at 𝑥 = 1 the slope of the dish equals the slope of the ladder (giving 𝑎 = 10). What is the minimum value of 𝑓(𝑥)?"
+        }
+      ],
+      "numerical_answer": 6.4,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "With 𝑎 = 10, 𝑓(𝑥) = 10𝑥2 − 12𝑥 + 10. Minimum at 𝑥 = 1220 = 0.6: 𝑓(0.6) = 10(0.36) − 12(0.6) + 10 = 3.6 − 7.2 + 10 = 6.4."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Suppose two boats start their journey from ferry ghat 𝐴 (taken as the origin), one towards ferry ghat 𝐵 along the straight line 𝑦 = − 2𝑥 and the other towards ferry ghat 𝐶 along the straight line perpendicular to the path followed by 𝐵. The river is 1 km wide and uniform. Rahul wants to go to the exact opposite point of 𝐴 along the river. How much distance does Rahul have to travel to reach his destination if he takes the boat towards ferry ghat 𝐵? [Figure P-3.1: 𝐴 = (0, 0) on the near bank; 𝐵 (upper-left) and 𝐶 (upper-right) lie on the far bank, with the river width of 1 km marked vertically.]"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "√5"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "√5 + 2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "√5 2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "√5 + 1 2"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The far bank is at 𝑦 = 1. Along 𝑦 = − 2𝑥, the landing point is ( − 12, 1); boat distance = √( 12)2 + 12 = √52 . The point opposite 𝐴 is (0, 1), so the walk along the bank is 12 km. Total = √52 + 12 = √5 + 12 ."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Using the same setup (boats from 𝐴 = (0, 0); 𝐵 along 𝑦 = − 2𝑥 and 𝐶 along the line through 𝐴 perpendicular to it; river 1 km wide; Rahul heading to the point opposite 𝐴): How much distance does Rahul have to travel to reach his destination if he takes the boat towards ferry ghat 𝐶? [Figure P-3.1.]"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "√5"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "√5 + 2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "√5 2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "√5 + 1 2"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The line to 𝐶 is perpendicular to 𝑦 = − 2𝑥, so it has slope 12: 𝑦 = 𝑥2. At the far bank 𝑦 = 1, the landing point is (2, 1); boat distance = √22 + 12 = √5. Walking from (2, 1) to the opposite point (0, 1) is 2 km. Total = √5 + 2."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider a quadratic function 𝑔(𝑥) = 𝑎𝑥2 + 𝑏𝑥 + 2, where 𝑎 > 0. Which of the following graphs can represent 𝑔(𝑥)? [The options are plotted parabola graphs; see figure.]"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "A parabola opening upward with a positive y-intercept (0, 2)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A parabola opening downward with a negative y-intercept"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A parabola opening downward with vertex below the x-axis"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Since 𝑎 > 0, the parabola opens upward, and 𝑔(0) = 2 gives a positive 𝑦-intercept. Only the first graph opens upward (the other two open downward), so it is the one that can represent 𝑔(𝑥)."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the quadratic function 𝑔(𝑥) = 𝑎𝑥2 + 𝑏𝑥 + 2 with 𝑎 > 0. If 𝑥 = 2 is a root of 𝑞(𝑥), then which of the following options can be the expression for 𝑞(𝑥)?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "𝑞(𝑥) = − 𝑥2 + 2𝑥 + 2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "𝑞(𝑥) = − 𝑥2 + 𝑥 + 2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "𝑞(𝑥) = 2𝑥2 − 5𝑥 + 2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "𝑞(𝑥) = 2𝑥2 − 5𝑥 + 4"
+          }
+        ]
+      ],
+      "correct_answers": [
+        1,
+        2
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Substitute 𝑥 = 2: option 1 gives −4 + 4 + 2 = 2 ≠ 0; option 2 gives −4 + 2 + 2 = 0 (root); option 3 gives 8 − 10 + 2 = 0 (root); option 4 gives 8 − 10 + 4 = 2 ≠ 0. So only options 2 and 3 have 𝑥 = 2 as a root."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider two polynomials 𝑝(𝑥) = 𝑥4 + 3𝑥3 − 9𝑥 + 8 and 𝑞(𝑥) = (𝑥2 + 𝑥)(𝑥 + 3). Let 𝑟(𝑥) and 𝑠(𝑥) be the remainder and the quotient, respectively, obtained when 𝑝(𝑥) is divided by 𝑞(𝑥). Let 𝑧(𝑥) = 𝑟(𝑥)𝑠(𝑥). Which of the following is(are) correct?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "𝑧(𝑥) is an even degree polynomial."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "𝑧(𝑥) is an odd degree polynomial."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "End behavior 𝑧(𝑥) → + ∞ as 𝑥 → + ∞."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "End behavior 𝑧(𝑥) → + ∞ as 𝑥 → − ∞."
+          }
+        ]
+      ],
+      "correct_answers": [
+        1,
+        2
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "𝑞(𝑥) = 𝑥(𝑥 + 1)(𝑥 + 3) = 𝑥3 + 4𝑥2 + 3𝑥. Dividing 𝑝(𝑥) = 𝑥4 + 3𝑥3 − 9𝑥 + 8 by 𝑞(𝑥) gives quotient 𝑠(𝑥) = 𝑥 − 1 and remainder 𝑟(𝑥) = 𝑥2 − 6𝑥 + 8. Then 𝑧(𝑥) = (𝑥2 − 6𝑥 + 8)(𝑥 − 1) is degree 3 (odd) with positive leading coefficient. So 𝑧(𝑥) → + ∞ as 𝑥 → + ∞ and 𝑧(𝑥) → − ∞ as 𝑥 → − ∞; options 2 and 3 are correct."
+        }
+      ]
+    }
+  ]
+}

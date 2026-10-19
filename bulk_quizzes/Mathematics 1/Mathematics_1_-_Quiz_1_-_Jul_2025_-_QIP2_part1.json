@@ -1,0 +1,270 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 1 · Quiz 1 · Jul 2025 · QIP2 · Part 1",
+  "subject": "Mathematics 1",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let 𝐴 be the set of positive integers less than or equal to 20 and 𝐵 be the set of positive integers less than or equal to 30 which are divisible by 5. Consider the relation 𝑅1 from 𝐴 to 𝐵 defined by 𝑅1 = {(𝑎, 𝑏) ∣ 𝑎 ∈ 𝐴,  𝑏 ∈ 𝐵,  𝑎 divides 𝑏}. Which of the following statements is correct?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "(6, 14) is an element in 𝑅1."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "𝑅1 is symmetric."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "𝑅1 is transitive."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "𝑅1 is not transitive."
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "𝐵 = {5, 10, 15, 20, 25, 30}. (a) 14 ∉ 𝐵, so (6, 14) ∉ 𝑅1 — false. (b) 𝑅1 is a relation from 𝐴 to 𝐵 and is not symmetric. (c)/(d): if (𝑎, 𝑏), (𝑏, 𝑐) ∈ 𝑅1 then 𝑎 ∣ 𝑏 and 𝑏 ∣ 𝑐, so 𝑎 ∣ 𝑐; with 𝑎 ∈ 𝐴 and 𝑐 ∈ 𝐵 we get (𝑎, 𝑐) ∈ 𝑅1. Divisibility is transitive, so 𝑅1 is transitive."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A drone's vertical displacement (in meters) over time is modelled by the polynomial 𝐷(𝑥) = 𝑥4 − 3𝑥3 + 3𝑥 + 3, where 𝑥 is time in seconds. A wind gust's force variation is modelled by 𝐹(𝑥) = 𝑥2 + 𝑥 − 4. An engineer models a control response line 𝑅(𝑥) that passes through the point (1, 𝐹(1)) and has a slope of −2. Compute the total response 𝐷(𝑥) + 𝑅(𝑥) ⋅ 𝐹(𝑥). Choose the correct option."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "𝑥4 + 5𝑥3 − 2𝑥2 + 11𝑥 + 3"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "𝑥4 + 5𝑥3 + 2𝑥2 + 11𝑥 + 3"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "𝑥4 − 5𝑥3 − 2𝑥2 + 11𝑥 + 3"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "𝑥4 − 5𝑥3 + 2𝑥2 + 11𝑥 + 3"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "𝐹(1) = 1 + 1 − 4 = − 2. Line through (1, − 2) with slope −2: 𝑅(𝑥) = − 2(𝑥 − 1) − 2 = − 2𝑥. Then 𝑅(𝑥) ⋅ 𝐹(𝑥) = − 2𝑥(𝑥2 + 𝑥 − 4) = − 2𝑥3 − 2𝑥2 + 8𝑥. Adding 𝐷(𝑥) = 𝑥4 − 3𝑥3 + 3𝑥 + 3 gives 𝑥4 − 5𝑥3 − 2𝑥2 + 11𝑥 + 3."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following is/are correct with respect to the slope of a line?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The line parallel to the 𝑋-axis has slope of value 1."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The line parallel to the 𝑌-axis has a slope of 0."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The line parallel to the 𝑋-axis has a slope of 0."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The slope of a line is always positive."
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "A line parallel to the 𝑋-axis is horizontal and has slope 0 (option 3). A line parallel to the 𝑌-axis is vertical with undefined slope (not 0). Slopes can be negative, so the last statement is false, and a horizontal line has slope 0, not 1."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A group of 500 students went to the college canteen and ordered some items. 285 students ordered ice- cream, 195 students ordered cold coffee, 115 students ordered cold drink, 45 students ordered ice-cream and cold drink, 70 students ordered cold coffee and ice-cream, 50 students ordered cold coffee and cold drink, and 50 students did not order anything. Find the number of students who ordered all three items."
+        }
+      ],
+      "numerical_answer": 20,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Students ordering at least one item = 500 − 50 = 450. By inclusion–exclusion: 450 = 285 + 195 + 115 − 70 − 45 − 50 + 𝑥 = 430 + 𝑥, so 𝑥 = 20 ordered all three."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Suppose the line 𝑦 = 2𝑥 + 5 is the best fit line using SSE for the data set given in Table 1. Find the value of SSE. Table 1 𝑥 1 2 -1 0 3 4 𝑦 6 8 1 4 10 11"
+        }
+      ],
+      "numerical_answer": 12,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Predictions ^𝑦 = 2𝑥 + 5 give 7, 9, 3, 5, 11, 13. Residuals 𝑦 − ^𝑦 = − 1, − 1, − 2, − 1, − 1, − 2. SSE = ∑ (𝑦 − ^𝑦)2 = 1 + 1 + 4 + 1 + 1 + 4 = 12. (Stem mentions 'for some 𝑘 ∈ 𝑅', but no 𝑘 appears in the printed line/table.)"
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let 𝐿 be the set of all lines in the 𝑋𝑌 plane. Define the relations 𝑅1 and 𝑅2 as follows: 𝑅1 = {(ℓ1, ℓ2) ∣ ℓ1, ℓ2 ∈ 𝐿 and ℓ1 is parallel to ℓ2} and 𝑅2 = {(ℓ1, ℓ2) ∣ ℓ1, ℓ2 ∈ 𝐿 and ℓ1 is perpendicular to ℓ2}. Which of the following is(are) correct?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "If (ℓ1, ℓ2) and (ℓ2, ℓ3) are in 𝑅2, then (ℓ1, ℓ3) ∈ 𝑅1."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "If (ℓ1, ℓ2) ∈ 𝑅1 and (ℓ2, ℓ3) ∈ 𝑅2, then (ℓ1, ℓ3) ∈ 𝑅2."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "If (ℓ1, ℓ2) ∈ 𝑅2 and (ℓ2, ℓ3) ∈ 𝑅1, then (ℓ1, ℓ3) ∈ 𝑅2."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "𝑅2 is an equivalence relation."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1,
+        2
+      ],
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "In a plane: two lines each perpendicular to ℓ2 are parallel to each other (option 1 true). A line parallel to ℓ2 is perpendicular to anything ℓ2 is perpendicular to (options 2 and 3 true). Perpendicularity is not reflexive and not transitive, so 𝑅2 is not an equivalence relation (option 4 false)."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let 𝐿 be the set of all lines in the 𝑋𝑌 plane with 𝑅1 the 'is parallel to' relation and 𝑅2 the 'is perpendicular to' relation. Which of the following is(are) correct? [Note: the second option is obscured by a browser overlay in the source and reads only '(𝑦 = − 𝑥 2, … )'.]"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "(2𝑥 + 3𝑦 = 4,  4𝑥 + 6𝑦 = 9) ∈ 𝑅1."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "(𝑦 = − 𝑥2,  … ) [obscured by overlay]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "( 3𝑥 − 5𝑦 = 7,  𝑦 = 53𝑥 + 43 ) ∈ 𝑅2."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "( √2𝑥 + √3𝑦 = 1,  √3𝑥 − √2𝑦 = 1 ) ∉ 𝑅2."
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Option 1: 2𝑥 + 3𝑦 = 4 and 4𝑥 + 6𝑦 = 9 both have slope −2/3, distinct parallel lines, so ∈ 𝑅1 — true. Option 3: slopes 3/5 and 5/3, product ≠ − 1, not perpendicular, so claiming ∈ 𝑅2 is false. Option 4: slopes −√2 /√3 and √3 /√2, product = − 1, so they ARE in 𝑅2, making ' ∉ 𝑅2' false. Option 2 is hidden by the 'Claude is active' overlay; the correct visible answer is option 1."
+        }
+      ]
+    }
+  ]
+}

@@ -24,3 +24,4 @@ _push/
 /backend/public/build
 /backend/public/hot
 output/
+tools/ocr

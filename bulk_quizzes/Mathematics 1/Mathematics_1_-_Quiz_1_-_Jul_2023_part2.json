@@ -1,0 +1,151 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 1 · Quiz 1 · Jul 2023 · Part 2",
+  "subject": "Mathematics 1",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Suppose the line 𝑦 = 2𝑥 + 𝑘 is the best fit line using SSE for the data set given in Table 1 for some 𝑘 ∈ 𝑅. Find the value of 16𝑘. Table 1 𝑥 1 2 -1 0 𝑦 2 3 -3 -1"
+        }
+      ],
+      "numerical_answer": -12,
+      "numerical_tolerance": 0.01,
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "With slope fixed at 2, the SSE-minimising intercept is 𝑘 = ‾(𝑦𝑖 − 2𝑥𝑖). The residual bases 𝑦𝑖 − 2𝑥𝑖 are 0, − 1, − 1, − 1, summing to −3, so 𝑘 = − 3/4. Hence 16𝑘 = 16 ⋅ ( − 3/4) = − 12."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider a quadratic function 𝑞(𝑥) = 𝑎𝑥2 + 𝑏𝑥 + 𝑐, where 𝑎, 𝑏, 𝑐 ∈ 𝑅 and 𝑎 ≠ 0, with the following information: the extreme value is attained at 𝑥 = − 1; the discriminant of 𝑞(𝑥) is 8; the slope of the function at 𝑥 = 1 is 8. Find the value of 𝑞(2)."
+        }
+      ],
+      "numerical_answer": 17,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Vertex at 𝑥 = − 1 gives −𝑏/(2𝑎) = − 1, so 𝑏 = 2𝑎. Slope at 𝑥 = 1: 𝑞′(1) = 2𝑎 + 𝑏 = 8, hence 4𝑎 = 8, 𝑎 = 2, 𝑏 = 4. Discriminant 𝑏2 − 4𝑎𝑐 = 8: 16 − 8𝑐 = 8 gives 𝑐 = 1. So 𝑞(𝑥) = 2𝑥2 + 4𝑥 + 1 and 𝑞(2) = 8 + 8 + 1 = 17. (Note: the printed word 'maximum' is inconsistent with 𝑎 = 2 > 0, but the three numeric conditions uniquely determine 𝑞 and give 𝑞(2) = 17.)"
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A company's profit function is given by 𝑃(𝑥) = − 2𝑥2 + 8𝑥 − 6, where 𝑥 is the quantity of the raw material used in the manufacturing process and 𝑃(𝑥) is the resulting profit. Find the quantity of the raw material such that the company has the maximum profit."
+        }
+      ],
+      "numerical_answer": 2,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "𝑃(𝑥) = − 2𝑥2 + 8𝑥 − 6 opens downward; its maximum is at the vertex 𝑥 = − 𝑏/(2𝑎) = − 8/(2 ⋅ ( − 2)) = 2. So the profit-maximising quantity is 𝑥 = 2."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A company's profit function is given by 𝑃(𝑥) = − 2𝑥2 + 8𝑥 − 6, where 𝑥 is the quantity of the raw material used in the manufacturing process and 𝑃(𝑥) is the resulting profit. Find the quantity of the raw material ( 𝑥 > 1) such that the company has no profit."
+        }
+      ],
+      "numerical_answer": 3,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "No profit means 𝑃(𝑥) = 0: −2𝑥2 + 8𝑥 − 6 = 0 ⇒ 𝑥2 − 4𝑥 + 3 = 0 ⇒ (𝑥 − 1)(𝑥 − 3) = 0, so 𝑥 = 1 or 𝑥 = 3. With 𝑥 > 1, the answer is 𝑥 = 3."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider a polynomial 𝑝(𝑥) = (𝑥2 − 1)(𝑥3 − 4𝑥2 + 4𝑥)(𝑥3 − 10𝑥2 + 33𝑥 − 36) such that: 𝑡(𝑥) = (𝑥3 − 6𝑥2 + 9𝑥) divides 𝑝(𝑥); 𝑠(𝑥) = (𝑥2 − 5𝑥 + 4) divides 𝑝(𝑥); and 𝑞(𝑥) is the quotient when 𝑝(𝑥) is divided by the polynomial 𝑧(𝑥) = (𝑥 + 1)𝑡(𝑥)𝑠(𝑥). If 𝑚 is the number of distinct roots and 𝑛 is the number of turning points of the polynomial 𝑝(𝑥), then find the value of 𝑚 + 𝑛."
+        }
+      ],
+      "numerical_answer": 13,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "𝑝(𝑥) = (𝑥 − 1)(𝑥 + 1) ⋅ 𝑥(𝑥 − 2)2 ⋅ (𝑥 − 3)2(𝑥 − 4). Distinct roots are −1, 0, 1, 2, 3, 4, so 𝑚 = 6. The degree is 8 with positive leading coefficient (both ends → + ∞); the sign pattern crosses at −1, 0, 1, touches at 2 and 3, and crosses at 4, producing the maximum 7 local extrema, so 𝑛 = 7. Hence 𝑚 + 𝑛 = 6 + 7 = 13."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider 𝑝(𝑥) = (𝑥2 − 1)(𝑥3 − 4𝑥2 + 4𝑥)(𝑥3 − 10𝑥2 + 33𝑥 − 36), and let 𝑞(𝑥) be the quotient when 𝑝(𝑥) is divided by 𝑧(𝑥) = (𝑥 + 1)𝑡(𝑥)𝑠(𝑥) where 𝑡(𝑥) = 𝑥3 − 6𝑥2 + 9𝑥 and 𝑠(𝑥) = 𝑥2 − 5𝑥 + 4. Which of the following options is/are true?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The minimum value of the quotient 𝑞(𝑥) is 0."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "𝑝(𝑥) is an odd degree polynomial."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "End behavior 𝑝(𝑥) → + ∞ as 𝑥 → + ∞."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "End behavior 𝑝(𝑥) → + ∞ as 𝑥 → − ∞."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        2,
+        3
+      ],
+      "marks": 4,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "𝑝(𝑥) = (𝑥 − 1)(𝑥 + 1)𝑥(𝑥 − 2)2(𝑥 − 3)2(𝑥 − 4) and 𝑧(𝑥) = (𝑥 + 1)𝑥(𝑥 − 3)2(𝑥 − 1)(𝑥 − 4), so 𝑞(𝑥) = 𝑝(𝑥)/𝑧(𝑥) = (𝑥 − 2)2, whose minimum value is 0 (option a true). 𝑝(𝑥) has degree 8 (even), so it is not odd degree (option b false). With positive leading coefficient and even degree, 𝑝(𝑥) → + ∞ as 𝑥 → + ∞ and as 𝑥 → − ∞ (options c and d true). Correct: indices 0, 2, 3."
+        }
+      ]
+    }
+  ]
+}

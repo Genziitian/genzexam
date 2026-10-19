@@ -1,0 +1,122 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 1 · Quiz 1 · Oct 2024 · QDF2 · Part 2",
+  "subject": "Mathematics 1",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "You have been closely monitoring your bike's mileage. Let 𝑦 be the amount paid for fuel (in currency units) and 𝑥 be the corresponding distance travelled (in Km). The best-fit line was predicted to be 𝑦 = 4𝑥 + 1. Using the data in the table, what is the value of the SSE (sum of squared errors) with respect to this best-fit line? Table: 1 Amount paid (in currency units) Distance (in Km) 80 20 60 15 60 16 100 25 58 14"
+        }
+      ],
+      "numerical_answer": 29,
+      "numerical_tolerance": 0.01,
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Predicted ^𝑦 = 4𝑥 + 1. Residuals 𝑦 − ^𝑦: (𝑥 = 20)80 − 81 = − 1; (15)60 − 61 = − 1; (16)60 − 65 = − 5; (25)100 − 101 = − 1; (14)58 − 57 = 1. SSE = 1 + 1 + 25 + 1 + 1 = 29."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A bird is flying along the straight line 2𝑦 − 6𝑥 = 6. After some time an aeroplane also follows the straight line path with a slope of 2 and passes through the point (4, 8). Let (𝛼, 𝛽) be the point where the bird and aeroplane can collide. Then find the value of 𝛼 + 𝛽."
+        }
+      ],
+      "numerical_answer": -9,
+      "numerical_tolerance": 0.01,
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Bird: 2𝑦 − 6𝑥 = 6 ⇒ 𝑦 = 3𝑥 + 3. Aeroplane: slope 2 through (4, 8) gives 𝑦 − 8 = 2(𝑥 − 4) ⇒ 𝑦 = 2𝑥. Intersection: 3𝑥 + 3 = 2𝑥 ⇒ 𝑥 = − 3, 𝑦 = 2( − 3) = − 6. So (𝛼, 𝛽) = ( − 3, − 6) and 𝛼 + 𝛽 = − 9."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider a set 𝑆 = {𝑎 ∣ 𝑎 ∈ 𝑁, 𝑎 ≤ 18} (natural numbers include 0). Let 𝑅1 and 𝑅2 be relations on 𝑆 × 𝑆 defined as 𝑅1 = {(𝑥, 𝑦) ∣ 𝑥, 𝑦 ∈ 𝑆,  𝑦 = 2𝑥} and 𝑅2 = {(𝑥, 𝑦) ∣ 𝑥, 𝑦 ∈ 𝑆,  𝑦 = 𝑥2}. Find the cardinality of 𝑅1."
+        }
+      ],
+      "numerical_answer": 10,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "𝑆 = {0, 1, … , 18}. For 𝑅1 we need 𝑦 = 2𝑥 ≤ 18, i.e. 𝑥 ∈ {0, 1, … , 9}, giving the pairs (0, 0), (1, 2), … , (9, 18). Cardinality = 10."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider a set 𝑆 = {𝑎 ∣ 𝑎 ∈ 𝑁, 𝑎 ≤ 18} (natural numbers include 0). Let 𝑅1 and 𝑅2 be relations on 𝑆 × 𝑆 defined as 𝑅1 = {(𝑥, 𝑦) ∣ 𝑥, 𝑦 ∈ 𝑆,  𝑦 = 2𝑥} and 𝑅2 = {(𝑥, 𝑦) ∣ 𝑥, 𝑦 ∈ 𝑆,  𝑦 = 𝑥2}. Find the cardinality of 𝑅1 ∖ 𝑅2."
+        }
+      ],
+      "numerical_answer": 8,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "𝑅1 = {(0, 0), (1, 2), (2, 4), (3, 6), (4, 8), (5, 10), (6, 12), (7, 14), (8, 16), (9, 18)} (∣𝑅1∣ = 10). 𝑅2 = {(0, 0), (1, 1), (2, 4), (3, 9), (4, 16)} (need 𝑥2 ≤ 18). 𝑅1 ∩ 𝑅2 = {(0, 0), (2, 4)}, so ∣𝑅1 ∖ 𝑅2∣ = 10 − 2 = 8."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the polynomial 𝑝(𝑥) = − (𝑥 + 4)8(𝑥 − 4)3(𝑥 + 12)5. What is the [obscured] of 𝑝(𝑥)?"
+        }
+      ],
+      "numerical_answer": 16,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The key part of the question stem ('What is the ___ of p(x)?') is obscured by the floating 'Claude is active in this tab group' badge in the source image, so the asked quantity cannot be read with certainty. Interpreting it as the degree of 𝑝(𝑥): degree = 8 + 3 + 5 = 16. If instead a different quantity (e.g. number of distinct roots = 3, or number of real roots counting multiplicity = 16) is intended, the answer would differ — flagged for review."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the polynomial 𝑝(𝑥) = − (𝑥 + 4)8(𝑥 − 4)3(𝑥 + 12)5. Calculate the number of turning points 𝑝(𝑥) can have?"
+        }
+      ],
+      "numerical_answer": 15,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "𝑝(𝑥) has degree 8 + 3 + 5 = 16. A polynomial of degree 𝑛 can have at most 𝑛 − 1 turning points, so the maximum number of turning points is 16 − 1 = 15."
+        }
+      ]
+    }
+  ]
+}
