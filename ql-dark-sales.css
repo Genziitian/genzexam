@@ -107,6 +107,24 @@
 :root[data-theme=dark] .pro-detail-field label{color:var(--muted)}
 :root[data-theme=dark] .pro-detail-val{color:var(--ink)}
 :root[data-theme=dark] #rewards-log-panel th{background:var(--surface-subtle, rgba(0, 0, 0, 0.02));color:var(--muted)}
+:root[data-theme=dark] .tabs{background-color:#1a2032;border-color:#292f47}
+:root[data-theme=dark] .tabs button{color:#b4bcc6}
+:root[data-theme=dark] .tabs button:hover:not([aria-current=page]){background-color:rgb(21 26 37/.75);color:#c8c7db}
+:root[data-theme=dark] .tabs button[aria-current=page]{background-image:linear-gradient(135deg,#4f46e5,#3730a3);color:#fff}
+:root[data-theme=dark] .card,:root[data-theme=dark] .panel,:root[data-theme=dark] .notice,:root[data-theme=dark] .purchase{border-color:#292f47}
+:root[data-theme=dark] .deletion-card::before{background-image:linear-gradient(180deg,#f59e0b,#fbbf24)}
+:root[data-theme=dark] .deletion-card[data-status="reviewing"]::before{background-image:linear-gradient(180deg,#4f46e5,#818cf8)}
+:root[data-theme=dark] .deletion-card[data-status="completed"]::before{background-image:linear-gradient(180deg,#16a34a,#4ade80)}
+:root[data-theme=dark] .deletion-card[data-status="rejected"]::before,:root[data-theme=dark] .deletion-card[data-status="declined"]::before{background-image:linear-gradient(180deg,#dc2626,#f87171)}
+:root[data-theme=dark] .deletion-card .toolbar.tight h3{color:#c8c7db}
+:root[data-theme=dark] .deletion-card p{background-color:#181a2a;border-color:#26293f;color:#bcc6d4}
+:root[data-theme=dark] .deletion-card p.hint{background:none}
+:root[data-theme=dark] .deletion-card label{color:#a5aab4}
+:root[data-theme=dark] .deletion-card select{border-color:#292f47;background-color:#151a25;color:#c8c7db}
+:root[data-theme=dark] .deletion-card[data-status="pending"] select{background-color:#433a1f;border-color:#76612d;color:#f1b351}
+:root[data-theme=dark] .deletion-card[data-status="reviewing"] select{background-color:#1a2032;border-color:#2d3c76;color:#9995e0}
+:root[data-theme=dark] .deletion-card[data-status="completed"] select{background-color:#1f3227;border-color:#2d7654;color:#56d787}
+:root[data-theme=dark] #deletion-request-filter{border-color:#292f47}
 /* hand-written: tools/dark-extra/ql-dark-sales.css */
 :root[data-theme=dark] {
   color-scheme: dark;

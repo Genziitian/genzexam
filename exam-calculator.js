@@ -191,11 +191,37 @@
         else if (target.dataset.calcMode) {
           mode = target.dataset.calcMode;
           draw(panel);
+          place(panel);
         } else if ("calcClose" in target.dataset) close();
       });
+      enableDrag(panel);
       document.body.appendChild(panel);
     }
     return panel;
+  }
+  // Position is remembered between openings; the first time it opens at the bottom left.
+  let pos = null;
+  const draggable = () => window.innerWidth > 480;
+  function place(panel) {
+    if (!draggable()) { panel.style.left = panel.style.top = panel.style.right = panel.style.bottom = ""; return; }
+    const w = panel.offsetWidth, h = panel.offsetHeight;
+    if (!pos) pos = { x: 24, y: Math.max(8, window.innerHeight - h - 24) };
+    pos.x = Math.min(Math.max(0, pos.x), Math.max(0, window.innerWidth - w));
+    pos.y = Math.min(Math.max(0, pos.y), Math.max(0, window.innerHeight - h));
+    panel.style.left = pos.x + "px"; panel.style.top = pos.y + "px"; panel.style.right = "auto"; panel.style.bottom = "auto";
+  }
+  function enableDrag(panel) {
+    panel.addEventListener("pointerdown", (ev) => {
+      const head = ev.target.closest(".ep-calc-header");
+      if (!head || ev.target.closest("button") || !draggable()) return;
+      const startX = ev.clientX - panel.offsetLeft, startY = ev.clientY - panel.offsetTop;
+      head.setPointerCapture(ev.pointerId);
+      const move = (e) => { pos = { x: e.clientX - startX, y: e.clientY - startY }; place(panel); };
+      const up = () => { head.removeEventListener("pointermove", move); head.removeEventListener("pointerup", up); head.removeEventListener("pointercancel", up); };
+      head.addEventListener("pointermove", move); head.addEventListener("pointerup", up); head.addEventListener("pointercancel", up);
+      ev.preventDefault();
+    });
+    window.addEventListener("resize", () => { if (open) place(panel); });
   }
   function close() {
     const panel = document.getElementById("ep-calc-widget");
@@ -209,6 +235,7 @@
     open = true;
     panel.style.display = "flex";
     draw(panel);
+    place(panel);
   }
 
   global.ExamCalculator = Object.freeze({ toggle, close, evaluate });

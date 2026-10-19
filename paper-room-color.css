@@ -65,7 +65,7 @@
 #ep-app #pr-main>div:nth-child(2){border-bottom:1px solid var(--pr-line)!important}
 #ep-app #pr-main>div:nth-child(2)>div:first-child>span:first-child{color:var(--pr-ink)!important}
 #ep-app #pr-main>div:nth-child(2)>div:first-child>span:nth-child(2){background:var(--pr-yellow-soft)!important;color:var(--pr-yellow-ink)!important;border-radius:999px!important;padding:4px 10px!important}
-#ep-app #pr-main>div:nth-child(2)>div:nth-child(2){background:var(--pr-green-soft);color:var(--pr-green)!important;padding:4px 10px;border-radius:999px}
+#ep-app #pr-main>div:nth-child(2)>div:nth-child(2)>div{color:var(--pr-green)!important}
 #ep-app .pr-live-prompt{color:var(--pr-ink)!important;background:var(--pr-surface-2);border-radius:16px;padding:18px 20px;font-size:16px!important;animation:prIn .35s ease both}
 
 /* options: lettered badges, coloured selection */
