@@ -33,6 +33,7 @@
     blocked: null,
     attemptId: null,
     startedAt: 0,
+    pauseStart: 0,
     durationMinutes: null,
     answers: {},
     review: {},
@@ -105,6 +106,7 @@
         JSON.stringify({
           attemptId: st.attemptId,
           startedAt: st.startedAt,
+          pausedAt: st.pauseStart || 0,
           durationMinutes: st.durationMinutes,
           answers: st.answers,
           review: st.review,
@@ -510,7 +512,7 @@
   function remaining() {
     const limit = limitSeconds();
     if (!limit) return null;
-    return Math.max(0, Math.ceil(limit - (Date.now() - st.startedAt) / 1000));
+    return Math.max(0, Math.ceil(limit - ((st.pauseStart || Date.now()) - st.startedAt) / 1000));
   }
   function clock(seconds) {
     const s = Math.max(0, Math.floor(seconds));
@@ -540,7 +542,7 @@
       const dot = $("#pr-timer-dot");
       if (dot) dot.style.background = low ? "#ef4444" : "#3a3fd8";
     }
-    if (left <= 0 && !st.busy) submit(true);
+    if (left <= 0 && !st.busy && !st.practice) submit(true);
   }
 
   /* ----------------------------- views ----------------------------- */
@@ -761,13 +763,15 @@
       "</div></div></div>" +
       '<div class="pr-live-tools" style="display:flex;align-items:center;gap:10px;">' +
       (quiz.can_share === false || quiz.is_personal ? '' : '<button type="button" class="ql-share-btn ql-share-icon" data-ql-share="' + esc(String(quiz.id || (location.pathname.match(/\d+/) || [""])[0])) + '" data-ql-share-title="' + esc(quiz.title || "") + '" aria-label="Share link to this paper" title="Share link"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg><span>Share</span></button>') +
+      (st.practice ? '' :
       '<div class="pr-time-pill' + (left == null ? ' pr-untimed' : '') + '" style="display:flex;align-items:center;gap:6px;background:#f1f5f9;padding:6px 12px;border-radius:8px;border:1px solid #cbd5e1;"><span id="pr-timer-dot" style="width:8px;height:8px;border-radius:9999px;background:' +
       (low ? "#ef4444" : "#3a3fd8") +
       ';animation:ep-pulse 2s infinite;"></span><span class="pr-live-time-label" style="font-size:11px;font-weight:700;color:#64748b;">Time:</span><span id="ep-countdown" style="font-size:15px;font-weight:800;color:' +
       (low ? "#ef4444" : "#0f172a") +
       ';font-family:ui-monospace,monospace;">' +
       (left == null ? "Untimed" : timeText(left)) +
-      "</span></div>" +
+      "</span></div>"
+      ) +
       '<button type="button" id="btn-student-submit" data-action="submit"' +
       (st.busy ? " disabled" : "") +
       ' style="background:#3a3fd8;border:none;color:#fff;padding:7px 18px;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:6px;box-shadow:0 1px 3px rgba(58, 63, 216,0.3);transition:background 0.15s;">' +
@@ -1099,7 +1103,7 @@
   function render() {
     const root = $("#ep-content");
     if (!root) return;
-    if (st.practice && isMobileView()) { st.practice = false; stopPt(); }
+    if (st.practice && isMobileView()) { st.practice = false; stopPt(); resumeClock(); }
     root.innerHTML =
       st.screen === "intro"
         ? introView()
@@ -1192,7 +1196,9 @@
       const saved = savedDraft;
       st.attemptId = attemptId;
       if (saved && String(saved.attemptId) === String(attemptId)) {
-        st.startedAt = Number(saved.startedAt) || Date.now();
+        // Time spent in practice mode is not counted, even if the page was reloaded during it.
+        st.startedAt = (Number(saved.startedAt) || Date.now()) + (Number(saved.pausedAt) ? Date.now() - Number(saved.pausedAt) : 0);
+        st.pauseStart = 0;
         st.answers = saved.answers && typeof saved.answers === "object" ? saved.answers : {};
         st.review = saved.review && typeof saved.review === "object" ? saved.review : {};
         st.visited = saved.visited && typeof saved.visited === "object" ? saved.visited : {};
@@ -1470,7 +1476,7 @@
   // Practice mode is desktop-only: hidden on phones, in the app's web view and at narrow widths.
   const isMobileView = () => window.matchMedia("(max-width: 820px)").matches || /Android|iPhone|iPod|Mobile|; wv\)/i.test(navigator.userAgent);
   const leavePracticeIfMobile = function () {
-    if (st.practice && isMobileView()) { st.practice = false; stopPt(); writeStore(); render(); }
+    if (st.practice && isMobileView()) { st.practice = false; stopPt(); resumeClock(); writeStore(); render(); }
   };
   window.addEventListener("resize", leavePracticeIfMobile);
   window.matchMedia("(max-width: 820px)").addEventListener("change", leavePracticeIfMobile);
@@ -1556,8 +1562,12 @@
     }
     st.keyLoading = false;
   }
+  // Practice mode pauses the paper's own timer; leaving it gives back the time that was paused.
+  function pauseClock() { if (!st.pauseStart) st.pauseStart = Date.now(); writeStore(); }
+  function resumeClock() { if (st.pauseStart) { st.startedAt += Date.now() - st.pauseStart; st.pauseStart = 0; writeStore(); } }
   async function togglePractice() {
     st.practice = !st.practice;
+    if (st.practice) pauseClock(); else resumeClock();
     if (st.practice) { startPt(); await loadKey(); } else stopPt();
     render();
     if (st.practice) ptPaint();
