@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../api/api.dart';
 import '../../state/auth_state.dart';
 import '../../widgets/app_ux_components.dart';
@@ -77,10 +78,7 @@ class _ManagerWorkspaceScreenState extends State<ManagerWorkspaceScreen> {
               ),
               Text(
                 'Sales, Paper Catalog & Platform Governance',
-                style: TextStyle(
-                  color: Color(0xFF94A3B8),
-                  fontSize: 11,
-                ),
+                style: TextStyle(color: Color(0xFF94A3B8), fontSize: 11),
               ),
             ],
           ),
@@ -91,10 +89,18 @@ class _ManagerWorkspaceScreenState extends State<ManagerWorkspaceScreen> {
                 AppHaptics.light();
                 widget.authState.togglePreviewStudentView(true);
               },
-              icon: const Icon(Icons.school_outlined, size: 16, color: Color(0xFF38BDF8)),
+              icon: const Icon(
+                Icons.school_outlined,
+                size: 16,
+                color: Color(0xFF38BDF8),
+              ),
               label: const Text(
                 'Student View',
-                style: TextStyle(color: Color(0xFF38BDF8), fontSize: 12, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                  color: Color(0xFF38BDF8),
+                  fontSize: 12,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
             IconButton(
@@ -102,7 +108,11 @@ class _ManagerWorkspaceScreenState extends State<ManagerWorkspaceScreen> {
                 AppHaptics.light();
                 _loadData();
               },
-              icon: const Icon(Icons.refresh_rounded, color: Colors.white, size: 20),
+              icon: const Icon(
+                Icons.refresh_rounded,
+                color: Colors.white,
+                size: 20,
+              ),
               tooltip: 'Refresh Analytics',
             ),
           ],
@@ -111,16 +121,16 @@ class _ManagerWorkspaceScreenState extends State<ManagerWorkspaceScreen> {
           child: _isLoading
               ? AppShimmerCard.managerWorkspace()
               : _error != null
-                  ? AppErrorCard(
-                      title: 'Analytics Offline',
-                      message: _error!,
-                      onRetry: _loadData,
-                    )
-                  : RefreshIndicator(
-                      onRefresh: _loadData,
-                      color: const Color(0xFF16A34A),
-                      child: _buildDashboard(),
-                    ),
+              ? AppErrorCard(
+                  title: 'Analytics Offline',
+                  message: _error!,
+                  onRetry: _loadData,
+                )
+              : RefreshIndicator(
+                  onRefresh: _loadData,
+                  color: const Color(0xFF16A34A),
+                  child: _buildDashboard(),
+                ),
         ),
         bottomNavigationBar: Container(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
@@ -136,7 +146,8 @@ class _ManagerWorkspaceScreenState extends State<ManagerWorkspaceScreen> {
                     AppHaptics.light();
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (_) => AdminConsoleScreen(authState: widget.authState),
+                        builder: (_) =>
+                            AdminConsoleScreen(authState: widget.authState),
                       ),
                     );
                   },
@@ -146,17 +157,22 @@ class _ManagerWorkspaceScreenState extends State<ManagerWorkspaceScreen> {
                     foregroundColor: const Color(0xFF0F172A),
                     side: const BorderSide(color: Color(0xFFCBD5E1)),
                     padding: const EdgeInsets.symmetric(vertical: 12),
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
                   ),
                 ),
               ),
               const SizedBox(width: 12),
               IconButton(
-              onPressed: () {
-                AppHaptics.medium();
-                confirmSignOut(context, widget.authState);
-              },
-                icon: const Icon(Icons.logout_rounded, color: Color(0xFFEF4444)),
+                onPressed: () {
+                  AppHaptics.medium();
+                  confirmSignOut(context, widget.authState);
+                },
+                icon: const Icon(
+                  Icons.logout_rounded,
+                  color: Color(0xFFEF4444),
+                ),
                 tooltip: 'Sign Out',
               ),
             ],
@@ -190,7 +206,6 @@ class _ManagerWorkspaceScreenState extends State<ManagerWorkspaceScreen> {
             ],
           ),
           child: Column(
-
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Row(
@@ -205,7 +220,11 @@ class _ManagerWorkspaceScreenState extends State<ManagerWorkspaceScreen> {
                       letterSpacing: 1,
                     ),
                   ),
-                  Icon(Icons.currency_rupee_rounded, color: Color(0xFF22C55E), size: 18),
+                  Icon(
+                    Icons.currency_rupee_rounded,
+                    color: Color(0xFF22C55E),
+                    size: 18,
+                  ),
                 ],
               ),
               const SizedBox(height: 6),
@@ -275,10 +294,7 @@ class _ManagerWorkspaceScreenState extends State<ManagerWorkspaceScreen> {
             ),
             Text(
               '${_orders.length} orders',
-              style: const TextStyle(
-                color: Color(0xFF64748B),
-                fontSize: 12,
-              ),
+              style: const TextStyle(color: Color(0xFF64748B), fontSize: 12),
             ),
           ],
         ),
@@ -430,7 +446,10 @@ class _ManagerWorkspaceScreenState extends State<ManagerWorkspaceScreen> {
                 ),
                 Text(
                   order.studentEmail ?? order.studentName ?? 'Student',
-                  style: const TextStyle(color: Color(0xFF64748B), fontSize: 11),
+                  style: const TextStyle(
+                    color: Color(0xFF64748B),
+                    fontSize: 11,
+                  ),
                 ),
               ],
             ),
@@ -474,7 +493,10 @@ class _ManagerWorkspaceScreenState extends State<ManagerWorkspaceScreen> {
                 ),
                 Text(
                   '${paper.courseName ?? 'General'} • ₹${paper.priceRupees}',
-                  style: const TextStyle(color: Color(0xFF64748B), fontSize: 11),
+                  style: const TextStyle(
+                    color: Color(0xFF64748B),
+                    fontSize: 11,
+                  ),
                 ),
               ],
             ),

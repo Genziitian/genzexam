@@ -14,7 +14,10 @@ class ManagerSalesService {
 
   /// Fetch customer purchases and orders.
   Future<List<ManagerPurchaseOrder>> getPurchases({int page = 1}) async {
-    final response = await _client.get('/manager/purchases', queryParameters: {'page': page});
+    final response = await _client.get(
+      '/manager/purchases',
+      queryParameters: {'page': page},
+    );
     final data = response.data;
     if (data is Map<String, dynamic> && data['data'] is List) {
       return (data['data'] as List)
@@ -26,7 +29,10 @@ class ManagerSalesService {
 
   /// Toggle publication/active state of a paper in the manager workspace.
   Future<bool> setPaperActive(int id, bool isActive) async {
-    final response = await _client.patch('/manager/papers/$id/active', data: {'is_active': isActive});
+    final response = await _client.patch(
+      '/manager/papers/$id/active',
+      data: {'is_active': isActive},
+    );
     return response.data != null;
   }
 

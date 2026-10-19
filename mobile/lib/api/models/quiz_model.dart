@@ -72,8 +72,7 @@ class QuizCourseRef {
 
 class QuestionModel {
   final int id;
-  final String
-  type; // 'mcq_single', 'mcq_multi', 'true_false', 'numerical', 'short_answer', 'comprehension'
+  final String type; // 'mcq_single', 'mcq_multi', 'true_false', 'numerical', 'short_answer', 'comprehension'
   final dynamic stem;
   final String? stemImage;
   final String? stemCode;

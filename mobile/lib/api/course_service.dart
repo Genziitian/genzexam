@@ -38,22 +38,31 @@ class CourseService {
 
   /// Fetches quizzes (practice & practice_graded) for a single week with student attempt metadata.
   /// Endpoint: GET /api/courses/{slug}/weeks/{weekNumber}/quizzes
-  Future<WeekQuizzesResponse> getWeekQuizzes(String slug, int weekNumber) async {
-    final response = await _client.get<Map<String, dynamic>>('/courses/$slug/weeks/$weekNumber/quizzes');
+  Future<WeekQuizzesResponse> getWeekQuizzes(
+    String slug,
+    int weekNumber,
+  ) async {
+    final response = await _client.get<Map<String, dynamic>>(
+      '/courses/$slug/weeks/$weekNumber/quizzes',
+    );
     return WeekQuizzesResponse.fromJson(response.data!);
   }
 
   /// Collapses all weekly practice and graded quizzes across weeks in a single call.
   /// Endpoint: GET /api/courses/{slug}/practice
   Future<CoursePracticeResponse> getPractice(String slug) async {
-    final response = await _client.get<Map<String, dynamic>>('/courses/$slug/practice');
+    final response = await _client.get<Map<String, dynamic>>(
+      '/courses/$slug/practice',
+    );
     return CoursePracticeResponse.fromJson(response.data!);
   }
 
   /// Fetches all exam-prep quizzes grouped by section: quiz1, quiz2, endterm, mock_test.
   /// Endpoint: GET /api/courses/{slug}/exam-prep
   Future<CourseExamPrepResponse> getExamPrep(String slug) async {
-    final response = await _client.get<Map<String, dynamic>>('/courses/$slug/exam-prep');
+    final response = await _client.get<Map<String, dynamic>>(
+      '/courses/$slug/exam-prep',
+    );
     return CourseExamPrepResponse.fromJson(response.data!);
   }
 }

@@ -163,18 +163,6 @@ class _ProPaywallScreenState extends State<ProPaywallScreen> {
                                 amount: 'FREE',
                                 total: true,
                               ),
-                              const SizedBox(height: 6),
-                              Text(
-                                'First charge: ${_date(DateUtils.addDaysToDate(DateTime.now(), _offer!.trialDays))} — ${_offer!.price}, then every month.',
-                              ),
-                              const SizedBox(height: 6),
-                              const Text(
-                                'Cancel before this date to avoid the subscription charge. The date assumes you start today; Google Play confirms the exact billing time at checkout.',
-                                style: TextStyle(
-                                  fontSize: 11,
-                                  color: Brand.muted,
-                                ),
-                              ),
                             ],
                           ),
                         ),
@@ -207,6 +195,62 @@ class _ProPaywallScreenState extends State<ProPaywallScreen> {
                         style: TextStyle(color: Brand.muted, fontSize: 12.5),
                       ),
                     ),
+                    const SizedBox(height: 8),
+                    Center(
+                      child: TextButton(
+                        style: TextButton.styleFrom(
+                          padding: EdgeInsets.zero,
+                          minimumSize: const Size(0, 32),
+                          tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                        ),
+                        onPressed: () => Navigator.of(context).push(
+                          MaterialPageRoute<void>(
+                            builder: (_) => Scaffold(
+                              appBar: AppBar(
+                                title: const Text('Terms & Conditions'),
+                              ),
+                              body: const SingleChildScrollView(
+                                padding: EdgeInsets.all(20),
+                                child: SelectableText(LegalDocuments.terms),
+                              ),
+                            ),
+                          ),
+                        ),
+                        child: const Text.rich(
+                          TextSpan(
+                            text: 'By continuing, you agree to our ',
+                            style: TextStyle(fontSize: 11, color: Brand.muted),
+                            children: [
+                              TextSpan(
+                                text: 'Terms & Conditions',
+                                style: TextStyle(
+                                  color: Brand.green,
+                                  decoration: TextDecoration.underline,
+                                ),
+                              ),
+                            ],
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ),
+                    if (_trial) ...[
+                      const SizedBox(height: 18),
+                      Text(
+                        'First charge: ${_date(DateUtils.addDaysToDate(DateTime.now(), _offer!.trialDays))} — ${_offer!.price}, then every month.',
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          fontSize: 13,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      const SizedBox(height: 6),
+                      const Text(
+                        'Cancel before this date to avoid the subscription charge. The date assumes you start today; Google Play confirms the exact billing time at checkout.',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(fontSize: 11, color: Brand.muted),
+                      ),
+                    ],
                   ],
                 ),
               ),
@@ -304,42 +348,6 @@ class _ProPaywallScreenState extends State<ProPaywallScreen> {
                         ),
                       ),
                     ],
-                  ),
-                  TextButton(
-                    style: TextButton.styleFrom(
-                      padding: EdgeInsets.zero,
-                      minimumSize: const Size(0, 32),
-                      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                    ),
-                    onPressed: () => Navigator.of(context).push(
-                      MaterialPageRoute<void>(
-                        builder: (_) => Scaffold(
-                          appBar: AppBar(
-                            title: const Text('Terms & Conditions'),
-                          ),
-                          body: const SingleChildScrollView(
-                            padding: EdgeInsets.all(20),
-                            child: SelectableText(LegalDocuments.terms),
-                          ),
-                        ),
-                      ),
-                    ),
-                    child: const Text.rich(
-                      TextSpan(
-                        text: 'By continuing, you agree to our ',
-                        style: TextStyle(fontSize: 11, color: Brand.muted),
-                        children: [
-                          TextSpan(
-                            text: 'Terms & Conditions',
-                            style: TextStyle(
-                              color: Brand.green,
-                              decoration: TextDecoration.underline,
-                            ),
-                          ),
-                        ],
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
                   ),
                 ],
               ),

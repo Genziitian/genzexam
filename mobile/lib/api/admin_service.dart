@@ -47,14 +47,18 @@ class AdminService {
   /// Toggles active status of an account. Admins may only toggle students.
   /// Endpoint: PATCH /api/admin/users/{userId}/toggle-active
   Future<Map<String, dynamic>> toggleActive(int userId) async {
-    final response = await _client.patch<Map<String, dynamic>>('/admin/users/$userId/toggle-active');
+    final response = await _client.patch<Map<String, dynamic>>(
+      '/admin/users/$userId/toggle-active',
+    );
     return response.data ?? {};
   }
 
   /// Toggles Pro membership of an account. Admins may only toggle students.
   /// Endpoint: PATCH /api/admin/users/{userId}/toggle-pro
   Future<Map<String, dynamic>> togglePro(int userId) async {
-    final response = await _client.patch<Map<String, dynamic>>('/admin/users/$userId/toggle-pro');
+    final response = await _client.patch<Map<String, dynamic>>(
+      '/admin/users/$userId/toggle-pro',
+    );
     return response.data ?? {};
   }
 
@@ -71,7 +75,9 @@ class AdminService {
   /// Permanently deletes a user account. Manager only.
   /// Endpoint: DELETE /api/admin/users/{userId}
   Future<bool> deleteUser(int userId) async {
-    final response = await _client.delete<Map<String, dynamic>>('/admin/users/$userId');
+    final response = await _client.delete<Map<String, dynamic>>(
+      '/admin/users/$userId',
+    );
     return response.statusCode == 200;
   }
 }

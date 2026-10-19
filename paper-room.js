@@ -377,7 +377,7 @@
           : "This paper is self-paced and untimed. Start whenever you are ready and submit when you are done.") +
         '</p>' +
         (st.error ? '<div class="ep-alert error" role="alert">' + esc(st.error) + "</div>" : "") +
-        '<div class="ep-actions"><a class="ep-btn pr-btn-link" href="/my-papers">Back</a><button class="ep-btn ep-btn-primary" data-action="start"' +
+        '<div class="ep-actions"><a class="ep-btn pr-btn-link" data-back href="' + esc(backHref()) + '">Back</a><button class="ep-btn ep-btn-primary" data-action="start"' +
         (st.busy || !count ? " disabled" : "") +
         ">" +
         (st.busy ? "Starting…" : saved ? "Resume paper" : "Start paper") +
@@ -520,11 +520,6 @@
       "</div></div></div>" +
       '<div class="pr-live-tools" style="display:flex;align-items:center;gap:10px;">' +
       (quiz.can_share === false || quiz.is_personal ? '' : '<button type="button" class="ql-share-btn ql-share-icon" data-ql-share="' + esc(String(quiz.id || (location.pathname.match(/\d+/) || [""])[0])) + '" data-ql-share-title="' + esc(quiz.title || "") + '" aria-label="Share link to this paper" title="Share link"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg><span>Share</span></button>') +
-      '<div class="ep-header-warning">Answered: <b id="pr-answered">' +
-      answeredCount() +
-      "/" +
-      answerable().length +
-      "</b></div>" +
       '<div style="display:flex;align-items:center;gap:6px;background:#f1f5f9;padding:6px 12px;border-radius:8px;border:1px solid #cbd5e1;"><span id="pr-timer-dot" style="width:8px;height:8px;border-radius:9999px;background:' +
       (low ? "#ef4444" : "#3a3fd8") +
       ';animation:ep-pulse 2s infinite;"></span><span class="pr-live-time-label" style="font-size:11px;font-weight:700;color:#64748b;">Time:</span><span id="ep-countdown" style="font-size:15px;font-weight:800;color:' +
@@ -736,7 +731,7 @@
       (xp ? '<div class="ep-alert">+' + xp + " XP earned.</div>" : "") +
       (st.error ? '<div class="ep-alert error" role="alert">' + esc(st.error) + "</div>" : "") +
       '<div class="ep-actions pr-result-actions">' +
-      '<a class="ep-btn pr-btn-link" href="/my-papers">Back</a>' +
+      '<a class="ep-btn pr-btn-link" data-back href="' + esc(backHref()) + '">Back</a>' +
       (answers.length
         ? '<button type="button" class="ep-btn" data-action="toggle-review">' +
           (st.showReview ? "Hide review" : "Review answers") +
@@ -854,6 +849,18 @@
     if (st.screen !== "room" && window.ExamCalculator) window.ExamCalculator.close();
     document.title = (st.quiz && st.quiz.title ? st.quiz.title + " · " : "") + "Paper room · Quiz LAB";
   }
+  // Back goes to the page the student came from; otherwise to the subject (or My papers).
+  function backHref() {
+    const slug = st.quiz && st.quiz.course && st.quiz.course.slug;
+    return slug ? "/practice/" + encodeURIComponent(slug) : "/my-papers";
+  }
+  document.addEventListener("click", function (ev) {
+    const link = ev.target.closest && ev.target.closest("a[data-back]");
+    if (!link || ev.metaKey || ev.ctrlKey || ev.shiftKey || ev.button) return;
+    let same = false;
+    try { same = !!document.referrer && new URL(document.referrer).origin === location.origin && !/\/paper\/\d+/.test(document.referrer); } catch (_) {}
+    if (same && history.length > 1) { ev.preventDefault(); history.back(); }
+  });
   function refreshProgress() {
     const counter = $("#pr-answered");
     if (counter) counter.textContent = answeredCount() + "/" + answerable().length;
@@ -1197,7 +1204,7 @@
             ? "It may have been removed or is not published yet."
             : e.message || "Check your connection and try again.",
         href: "/papers",
-        cta: "Back to papers",
+        cta: "Back",
         retry: e.status !== 404,
       };
       st.screen = "blocked";

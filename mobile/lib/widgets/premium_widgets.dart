@@ -55,7 +55,10 @@ class FadeSlideIn extends StatelessWidget {
         );
         return Opacity(
           opacity: p,
-          child: Transform.translate(offset: Offset(0, (1 - p) * dy), child: child),
+          child: Transform.translate(
+            offset: Offset(0, (1 - p) * dy),
+            child: child,
+          ),
         );
       },
     );
@@ -78,7 +81,8 @@ class Floating extends StatefulWidget {
   State<Floating> createState() => _FloatingState();
 }
 
-class _FloatingState extends State<Floating> with SingleTickerProviderStateMixin {
+class _FloatingState extends State<Floating>
+    with SingleTickerProviderStateMixin {
   late final AnimationController _c = AnimationController(
     vsync: this,
     duration: widget.period,
@@ -94,7 +98,10 @@ class _FloatingState extends State<Floating> with SingleTickerProviderStateMixin
   Widget build(BuildContext context) => AnimatedBuilder(
     animation: _c,
     builder: (context, child) => Transform.translate(
-      offset: Offset(0, (Curves.easeInOut.transform(_c.value) - .5) * 2 * widget.distance),
+      offset: Offset(
+        0,
+        (Curves.easeInOut.transform(_c.value) - .5) * 2 * widget.distance,
+      ),
       child: child,
     ),
     child: widget.child,
@@ -117,7 +124,8 @@ class PulseRings extends StatefulWidget {
   State<PulseRings> createState() => _PulseRingsState();
 }
 
-class _PulseRingsState extends State<PulseRings> with SingleTickerProviderStateMixin {
+class _PulseRingsState extends State<PulseRings>
+    with SingleTickerProviderStateMixin {
   late final AnimationController _c = AnimationController(
     vsync: this,
     duration: const Duration(milliseconds: 2800),
@@ -186,14 +194,19 @@ class AuroraBackground extends StatefulWidget {
     super.key,
     required this.child,
     this.base = const Color(0xFFF8FAFC),
-    this.colors = const [Color(0x3316A34A), Color(0x33FFC24B), Color(0x2616A34A)],
+    this.colors = const [
+      Color(0x3316A34A),
+      Color(0x33FFC24B),
+      Color(0x2616A34A),
+    ],
   });
 
   @override
   State<AuroraBackground> createState() => _AuroraBackgroundState();
 }
 
-class _AuroraBackgroundState extends State<AuroraBackground> with SingleTickerProviderStateMixin {
+class _AuroraBackgroundState extends State<AuroraBackground>
+    with SingleTickerProviderStateMixin {
   late final AnimationController _c = AnimationController(
     vsync: this,
     duration: const Duration(seconds: 14),
@@ -212,7 +225,8 @@ class _AuroraBackgroundState extends State<AuroraBackground> with SingleTickerPr
       ColoredBox(color: widget.base),
       AnimatedBuilder(
         animation: _c,
-        builder: (context, _) => CustomPaint(painter: _AuroraPainter(_c.value, widget.colors)),
+        builder: (context, _) =>
+            CustomPaint(painter: _AuroraPainter(_c.value, widget.colors)),
       ),
       widget.child,
     ],
@@ -237,8 +251,9 @@ class _AuroraPainter extends CustomPainter {
         c,
         r,
         Paint()
-          ..shader = RadialGradient(colors: [colors[i], colors[i].withValues(alpha: 0)])
-              .createShader(Rect.fromCircle(center: c, radius: r)),
+          ..shader = RadialGradient(
+            colors: [colors[i], colors[i].withValues(alpha: 0)],
+          ).createShader(Rect.fromCircle(center: c, radius: r)),
       );
     }
   }
@@ -267,7 +282,8 @@ class PremiumButton extends StatefulWidget {
   State<PremiumButton> createState() => _PremiumButtonState();
 }
 
-class _PremiumButtonState extends State<PremiumButton> with TickerProviderStateMixin {
+class _PremiumButtonState extends State<PremiumButton>
+    with TickerProviderStateMixin {
   late final AnimationController _sheen = AnimationController(
     vsync: this,
     duration: const Duration(milliseconds: 2400),
@@ -310,7 +326,9 @@ class _PremiumButtonState extends State<PremiumButton> with TickerProviderStateM
               borderRadius: BorderRadius.circular(16),
               boxShadow: [
                 BoxShadow(
-                  color: (widget.gold ? Brand.gold : Brand.green).withValues(alpha: .35),
+                  color: (widget.gold ? Brand.gold : Brand.green).withValues(
+                    alpha: .35,
+                  ),
                   blurRadius: 18,
                   offset: const Offset(0, 8),
                 ),
@@ -345,7 +363,10 @@ class _PremiumButtonState extends State<PremiumButton> with TickerProviderStateM
                           key: const ValueKey('busy'),
                           width: 22,
                           height: 22,
-                          child: CircularProgressIndicator(strokeWidth: 2.4, color: fg),
+                          child: CircularProgressIndicator(
+                            strokeWidth: 2.4,
+                            color: fg,
+                          ),
                         )
                       : Row(
                           key: const ValueKey('label'),
@@ -389,7 +410,13 @@ class ProEmblem extends StatelessWidget {
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(size * .24),
       boxShadow: glow
-          ? [BoxShadow(color: Brand.green.withValues(alpha: .45), blurRadius: size * .4, spreadRadius: 1)]
+          ? [
+              BoxShadow(
+                color: Brand.green.withValues(alpha: .45),
+                blurRadius: size * .4,
+                spreadRadius: 1,
+              ),
+            ]
           : null,
     ),
     child: ClipRRect(

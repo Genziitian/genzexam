@@ -74,10 +74,7 @@ class UserRankMe {
   final int xp;
   final int level;
 
-  const UserRankMe({
-    required this.xp,
-    required this.level,
-  });
+  const UserRankMe({required this.xp, required this.level});
 
   factory UserRankMe.fromJson(Map<String, dynamic> json) {
     return UserRankMe(
@@ -87,9 +84,6 @@ class UserRankMe {
   }
 
   Map<String, dynamic> toJson() {
-    return {
-      'xp': xp,
-      'level': level,
-    };
+    return {'xp': xp, 'level': level};
   }
 }

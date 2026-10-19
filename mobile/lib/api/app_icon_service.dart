@@ -3,11 +3,16 @@ import 'package:flutter/services.dart';
 
 /// Manages dynamic home-screen app icon switching between standard and Pro branding.
 class AppIconService {
-  static const MethodChannel _channel = MethodChannel('in.genziitian.quizlab/app_icon');
+  static const MethodChannel _channel = MethodChannel(
+    'in.genziitian.quizlab/app_icon',
+  );
 
   /// Synchronizes launcher app icon with the user's Pro status.
   static Future<void> syncIcon({required bool isPro}) async {
     if (kIsWeb || defaultTargetPlatform != TargetPlatform.android) return;
+    // Debug runs launch the Default alias by name; leaving it disabled makes
+    // `flutter run` fail with "Activity class ... does not exist".
+    if (kDebugMode) return;
     try {
       final current = await _channel.invokeMethod<String>('getCurrentIcon');
       final target = isPro ? 'pro' : 'default';

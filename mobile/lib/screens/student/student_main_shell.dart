@@ -4,7 +4,6 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 
-
 import '../../legal/legal_documents.dart';
 
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -1939,7 +1938,8 @@ class _HomeTabState extends State<_HomeTab>
                 )
               else
                 FeatureLoadErrorCard(
-                  error: snapshot.error ??
+                  error:
+                      snapshot.error ??
                       const ApiException(message: 'Please try again.'),
                   feature: 'Dashboard',
                   onRetry: _refresh,
@@ -2219,18 +2219,27 @@ class _HomeTabState extends State<_HomeTab>
                                   : data.rank.current;
                               final unavailable =
                                   myRank == null && rankSnapshot.hasError;
-                              final loading = myRank == null &&
-                                  !unavailable && rankSnapshot.connectionState ==
+                              final loading =
+                                  myRank == null &&
+                                  !unavailable &&
+                                  rankSnapshot.connectionState ==
                                       ConnectionState.waiting;
                               return _MetricCard(
                                 title: 'RANK',
                                 value: myRank == null
-                                    ? (unavailable ? '—' : loading ? '…' : 'New')
+                                    ? (unavailable
+                                          ? '—'
+                                          : loading
+                                          ? '…'
+                                          : 'New')
                                     : '#$myRank',
                                 unit: myRank != null
                                     ? 'XP rank'
-                                    : unavailable ? 'Unavailable'
-                                    : loading ? 'Loading' : 'unranked',
+                                    : unavailable
+                                    ? 'Unavailable'
+                                    : loading
+                                    ? 'Loading'
+                                    : 'unranked',
                                 color: const Color(0xFF8B5CF6),
                                 titleColor: const Color(0xFF6D28D9),
                                 history: [0, (myRank ?? 0).toDouble()],
@@ -3748,9 +3757,11 @@ class _MyPapersTabState extends State<_MyPapersTab> {
 
   // Filter state
   bool _filterLikedOnly = false;
-  String _filterStatus = 'all'; // 'all', 'in_progress', 'completed', 'not_started'
+  String _filterStatus =
+      'all'; // 'all', 'in_progress', 'completed', 'not_started'
   String _filterAccess = 'all'; // 'all', 'free', 'purchased', 'upload'
-  String _filterSection = 'all'; // 'all', 'quiz1', 'quiz2', 'endterm', 'mock_test', 'practice'
+  String _filterSection =
+      'all'; // 'all', 'quiz1', 'quiz2', 'endterm', 'mock_test', 'practice'
   String _filterCourse = 'all'; // 'all' or course name
   String _filterSort = 'newest'; // 'newest', 'title', 'attempts', 'score'
   String _quickFilter = 'all'; // 'all', 'liked', 'in_progress', 'completed'
@@ -3808,18 +3819,29 @@ class _MyPapersTabState extends State<_MyPapersTab> {
     final list = _papers.where((p) {
       if (_filterLikedOnly && !_likedIds.contains(p.id)) return false;
       if (_filterStatus == 'in_progress' && !p.inProgress) return false;
-      if (_filterStatus == 'completed' && (p.attemptCount == 0 || p.inProgress)) return false;
-      if (_filterStatus == 'not_started' && (p.attemptCount > 0 || p.inProgress)) return false;
-      if (_filterAccess == 'free' && (p.pricePaise > 0 || p.source == 'personal_upload')) return false;
-      if (_filterAccess == 'purchased' && !(p.purchased || p.source == 'purchase')) return false;
-      if (_filterAccess == 'upload' && p.source != 'personal_upload') return false;
+      if (_filterStatus == 'completed' && (p.attemptCount == 0 || p.inProgress))
+        return false;
+      if (_filterStatus == 'not_started' &&
+          (p.attemptCount > 0 || p.inProgress))
+        return false;
+      if (_filterAccess == 'free' &&
+          (p.pricePaise > 0 || p.source == 'personal_upload'))
+        return false;
+      if (_filterAccess == 'purchased' &&
+          !(p.purchased || p.source == 'purchase'))
+        return false;
+      if (_filterAccess == 'upload' && p.source != 'personal_upload')
+        return false;
       if (_filterSection != 'all' && p.section != _filterSection) return false;
-      if (_filterCourse != 'all' && (p.course?.name ?? '') != _filterCourse) return false;
+      if (_filterCourse != 'all' && (p.course?.name ?? '') != _filterCourse)
+        return false;
       return true;
     }).toList();
 
     if (_filterSort == 'title') {
-      list.sort((a, b) => a.title.toLowerCase().compareTo(b.title.toLowerCase()));
+      list.sort(
+        (a, b) => a.title.toLowerCase().compareTo(b.title.toLowerCase()),
+      );
     } else if (_filterSort == 'attempts') {
       list.sort((a, b) => b.attemptCount.compareTo(a.attemptCount));
     } else if (_filterSort == 'score') {
@@ -4362,10 +4384,10 @@ class _MyPapersTabState extends State<_MyPapersTab> {
       },
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 150),
-        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 7),
+        padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 11),
         decoration: BoxDecoration(
           color: isSelected ? const Color(0xFF16A34A) : Colors.white,
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(24),
           border: Border.all(
             color: isSelected
                 ? const Color(0xFF16A34A)
@@ -4387,7 +4409,7 @@ class _MyPapersTabState extends State<_MyPapersTab> {
             Text(
               text,
               style: TextStyle(
-                fontSize: 12.5,
+                fontSize: 14,
                 fontWeight: isSelected ? FontWeight.w700 : FontWeight.w600,
                 color: isSelected ? Colors.white : const Color(0xFF475569),
               ),
@@ -4427,13 +4449,14 @@ class _MyPapersTabState extends State<_MyPapersTab> {
     String draftCourse = _filterCourse;
     String draftSort = _filterSort;
 
-    final courses = _papers
-        .map((p) => p.course?.name)
-        .where((n) => n != null && n.trim().isNotEmpty)
-        .cast<String>()
-        .toSet()
-        .toList()
-      ..sort();
+    final courses =
+        _papers
+            .map((p) => p.course?.name)
+            .where((n) => n != null && n.trim().isNotEmpty)
+            .cast<String>()
+            .toSet()
+            .toList()
+          ..sort();
 
     showModalBottomSheet<void>(
       context: context,
@@ -4448,13 +4471,24 @@ class _MyPapersTabState extends State<_MyPapersTab> {
             final matchCount = _papers.where((p) {
               if (draftLikedOnly && !_likedIds.contains(p.id)) return false;
               if (draftStatus == 'in_progress' && !p.inProgress) return false;
-              if (draftStatus == 'completed' && (p.attemptCount == 0 || p.inProgress)) return false;
-              if (draftStatus == 'not_started' && (p.attemptCount > 0 || p.inProgress)) return false;
-              if (draftAccess == 'free' && (p.pricePaise > 0 || p.source == 'personal_upload')) return false;
-              if (draftAccess == 'purchased' && !(p.purchased || p.source == 'purchase')) return false;
-              if (draftAccess == 'upload' && p.source != 'personal_upload') return false;
-              if (draftSection != 'all' && p.section != draftSection) return false;
-              if (draftCourse != 'all' && (p.course?.name ?? '') != draftCourse) return false;
+              if (draftStatus == 'completed' &&
+                  (p.attemptCount == 0 || p.inProgress))
+                return false;
+              if (draftStatus == 'not_started' &&
+                  (p.attemptCount > 0 || p.inProgress))
+                return false;
+              if (draftAccess == 'free' &&
+                  (p.pricePaise > 0 || p.source == 'personal_upload'))
+                return false;
+              if (draftAccess == 'purchased' &&
+                  !(p.purchased || p.source == 'purchase'))
+                return false;
+              if (draftAccess == 'upload' && p.source != 'personal_upload')
+                return false;
+              if (draftSection != 'all' && p.section != draftSection)
+                return false;
+              if (draftCourse != 'all' && (p.course?.name ?? '') != draftCourse)
+                return false;
               return true;
             }).length;
 
@@ -4481,17 +4515,23 @@ class _MyPapersTabState extends State<_MyPapersTab> {
                 },
                 child: AnimatedContainer(
                   duration: const Duration(milliseconds: 150),
-                  padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 7),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 14,
+                    vertical: 7,
+                  ),
                   decoration: BoxDecoration(
                     color: selected ? const Color(0xFF16A34A) : Colors.white,
                     borderRadius: BorderRadius.circular(20),
                     border: Border.all(
-                      color: selected ? const Color(0xFF16A34A) : const Color(0xFFE2E8F0),
+                      color: selected
+                          ? const Color(0xFF16A34A)
+                          : const Color(0xFFE2E8F0),
                     ),
                     boxShadow: selected
                         ? [
                             BoxShadow(
-                              color: const Color(0xFF16A34A).withValues(alpha: 0.25),
+                              color: const Color(0xFF16A34A)
+                                  .withValues(alpha: 0.25),
                               blurRadius: 8,
                               offset: const Offset(0, 3),
                             ),
@@ -4550,14 +4590,21 @@ class _MyPapersTabState extends State<_MyPapersTab> {
                                 SizedBox(height: 2),
                                 Text(
                                   'Refine by favorites, status, section or course',
-                                  style: TextStyle(fontSize: 12.5, color: Color(0xFF64748B)),
+                                  style: TextStyle(
+                                    fontSize: 12.5,
+                                    color: Color(0xFF64748B),
+                                  ),
                                 ),
                               ],
                             ),
                           ),
                           IconButton(
                             onPressed: () => Navigator.of(ctx).pop(),
-                            icon: const Icon(Icons.close_rounded, size: 22, color: Color(0xFF475569)),
+                            icon: const Icon(
+                              Icons.close_rounded,
+                              size: 22,
+                              color: Color(0xFF475569),
+                            ),
                           ),
                         ],
                       ),
@@ -4577,9 +4624,13 @@ class _MyPapersTabState extends State<_MyPapersTab> {
                                 chipItem('All papers', !draftLikedOnly, () {
                                   setModalState(() => draftLikedOnly = false);
                                 }),
-                                chipItem('❤️ Liked only (${_likedIds.length})', draftLikedOnly, () {
-                                  setModalState(() => draftLikedOnly = true);
-                                }),
+                                chipItem(
+                                  '❤️ Liked only (${_likedIds.length})',
+                                  draftLikedOnly,
+                                  () {
+                                    setModalState(() => draftLikedOnly = true);
+                                  },
+                                ),
                               ],
                             ),
                             sectionTitle('Status & Progress'),
@@ -4590,15 +4641,33 @@ class _MyPapersTabState extends State<_MyPapersTab> {
                                 chipItem('All', draftStatus == 'all', () {
                                   setModalState(() => draftStatus = 'all');
                                 }),
-                                chipItem('In progress', draftStatus == 'in_progress', () {
-                                  setModalState(() => draftStatus = 'in_progress');
-                                }),
-                                chipItem('Completed', draftStatus == 'completed', () {
-                                  setModalState(() => draftStatus = 'completed');
-                                }),
-                                chipItem('Not started', draftStatus == 'not_started', () {
-                                  setModalState(() => draftStatus = 'not_started');
-                                }),
+                                chipItem(
+                                  'In progress',
+                                  draftStatus == 'in_progress',
+                                  () {
+                                    setModalState(
+                                      () => draftStatus = 'in_progress',
+                                    );
+                                  },
+                                ),
+                                chipItem(
+                                  'Completed',
+                                  draftStatus == 'completed',
+                                  () {
+                                    setModalState(
+                                      () => draftStatus = 'completed',
+                                    );
+                                  },
+                                ),
+                                chipItem(
+                                  'Not started',
+                                  draftStatus == 'not_started',
+                                  () {
+                                    setModalState(
+                                      () => draftStatus = 'not_started',
+                                    );
+                                  },
+                                ),
                               ],
                             ),
                             sectionTitle('Access & Pricing'),
@@ -4612,12 +4681,22 @@ class _MyPapersTabState extends State<_MyPapersTab> {
                                 chipItem('Free', draftAccess == 'free', () {
                                   setModalState(() => draftAccess = 'free');
                                 }),
-                                chipItem('Purchased', draftAccess == 'purchased', () {
-                                  setModalState(() => draftAccess = 'purchased');
-                                }),
-                                chipItem('Your uploads', draftAccess == 'upload', () {
-                                  setModalState(() => draftAccess = 'upload');
-                                }),
+                                chipItem(
+                                  'Purchased',
+                                  draftAccess == 'purchased',
+                                  () {
+                                    setModalState(
+                                      () => draftAccess = 'purchased',
+                                    );
+                                  },
+                                ),
+                                chipItem(
+                                  'Your uploads',
+                                  draftAccess == 'upload',
+                                  () {
+                                    setModalState(() => draftAccess = 'upload');
+                                  },
+                                ),
                               ],
                             ),
                             sectionTitle('Exam section'),
@@ -4634,15 +4713,33 @@ class _MyPapersTabState extends State<_MyPapersTab> {
                                 chipItem('Quiz 2', draftSection == 'quiz2', () {
                                   setModalState(() => draftSection = 'quiz2');
                                 }),
-                                chipItem('End Term', draftSection == 'endterm', () {
-                                  setModalState(() => draftSection = 'endterm');
-                                }),
-                                chipItem('Mock test', draftSection == 'mock_test', () {
-                                  setModalState(() => draftSection = 'mock_test');
-                                }),
-                                chipItem('Practice', draftSection == 'practice', () {
-                                  setModalState(() => draftSection = 'practice');
-                                }),
+                                chipItem(
+                                  'End Term',
+                                  draftSection == 'endterm',
+                                  () {
+                                    setModalState(
+                                      () => draftSection = 'endterm',
+                                    );
+                                  },
+                                ),
+                                chipItem(
+                                  'Mock test',
+                                  draftSection == 'mock_test',
+                                  () {
+                                    setModalState(
+                                      () => draftSection = 'mock_test',
+                                    );
+                                  },
+                                ),
+                                chipItem(
+                                  'Practice',
+                                  draftSection == 'practice',
+                                  () {
+                                    setModalState(
+                                      () => draftSection = 'practice',
+                                    );
+                                  },
+                                ),
                               ],
                             ),
                             if (courses.length > 1) ...[
@@ -4651,12 +4748,18 @@ class _MyPapersTabState extends State<_MyPapersTab> {
                                 spacing: 8,
                                 runSpacing: 8,
                                 children: [
-                                  chipItem('All courses', draftCourse == 'all', () {
-                                    setModalState(() => draftCourse = 'all');
-                                  }),
-                                  ...courses.map((c) => chipItem(c, draftCourse == c, () {
-                                    setModalState(() => draftCourse = c);
-                                  })),
+                                  chipItem(
+                                    'All courses',
+                                    draftCourse == 'all',
+                                    () {
+                                      setModalState(() => draftCourse = 'all');
+                                    },
+                                  ),
+                                  ...courses.map(
+                                    (c) => chipItem(c, draftCourse == c, () {
+                                      setModalState(() => draftCourse = c);
+                                    }),
+                                  ),
                                 ],
                               ),
                             ],
@@ -4665,18 +4768,34 @@ class _MyPapersTabState extends State<_MyPapersTab> {
                               spacing: 8,
                               runSpacing: 8,
                               children: [
-                                chipItem('Newest first', draftSort == 'newest', () {
-                                  setModalState(() => draftSort = 'newest');
-                                }),
-                                chipItem('Title (A-Z)', draftSort == 'title', () {
-                                  setModalState(() => draftSort = 'title');
-                                }),
-                                chipItem('Most attempted', draftSort == 'attempts', () {
-                                  setModalState(() => draftSort = 'attempts');
-                                }),
-                                chipItem('Highest score', draftSort == 'score', () {
-                                  setModalState(() => draftSort = 'score');
-                                }),
+                                chipItem(
+                                  'Newest first',
+                                  draftSort == 'newest',
+                                  () {
+                                    setModalState(() => draftSort = 'newest');
+                                  },
+                                ),
+                                chipItem(
+                                  'Title (A-Z)',
+                                  draftSort == 'title',
+                                  () {
+                                    setModalState(() => draftSort = 'title');
+                                  },
+                                ),
+                                chipItem(
+                                  'Most attempted',
+                                  draftSort == 'attempts',
+                                  () {
+                                    setModalState(() => draftSort = 'attempts');
+                                  },
+                                ),
+                                chipItem(
+                                  'Highest score',
+                                  draftSort == 'score',
+                                  () {
+                                    setModalState(() => draftSort = 'score');
+                                  },
+                                ),
                               ],
                             ),
                             const SizedBox(height: 16),
@@ -4688,7 +4807,9 @@ class _MyPapersTabState extends State<_MyPapersTab> {
                       padding: const EdgeInsets.fromLTRB(20, 12, 20, 16),
                       decoration: const BoxDecoration(
                         color: Color(0xFFF8FAFC),
-                        border: Border(top: BorderSide(color: Color(0xFFF1F5F9))),
+                        border: Border(
+                          top: BorderSide(color: Color(0xFFF1F5F9)),
+                        ),
                       ),
                       child: Row(
                         children: [
@@ -4732,12 +4853,19 @@ class _MyPapersTabState extends State<_MyPapersTab> {
                             style: FilledButton.styleFrom(
                               backgroundColor: const Color(0xFF16A34A),
                               foregroundColor: Colors.white,
-                              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 20,
+                                vertical: 12,
+                              ),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12),
+                              ),
                             ),
                             child: Text(
                               'Apply ($matchCount)',
-                              style: const TextStyle(fontWeight: FontWeight.bold),
+                              style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
                         ],
@@ -5013,7 +5141,7 @@ class _MyPapersTabState extends State<_MyPapersTab> {
       color: const Color(0xFF16A34A),
       child: ListView(
         controller: _scrollController,
-        padding: const EdgeInsets.fromLTRB(16, 18, 16, 16),
+        padding: const EdgeInsets.fromLTRB(20, 24, 20, 20),
         children: [
           Row(
             children: [
@@ -5021,10 +5149,10 @@ class _MyPapersTabState extends State<_MyPapersTab> {
                 child: Text(
                   'Your papers.',
                   style: TextStyle(
-                    fontSize: 30,
+                    fontSize: 34,
                     height: 1.15,
                     fontWeight: FontWeight.w800,
-                    letterSpacing: -0.8,
+                    letterSpacing: -1,
                     color: Color(0xFF0F172A),
                   ),
                 ),
@@ -5033,14 +5161,21 @@ class _MyPapersTabState extends State<_MyPapersTab> {
                 onTap: _showFilterSheet,
                 child: Container(
                   padding: const EdgeInsets.symmetric(
-                    horizontal: 12,
-                    vertical: 8,
+                    horizontal: 16,
+                    vertical: 12,
                   ),
                   decoration: BoxDecoration(
+                    boxShadow: const [
+                      BoxShadow(
+                        color: Color(0x120F172A),
+                        blurRadius: 10,
+                        offset: Offset(0, 4),
+                      ),
+                    ],
                     color: _activeFilterCount > 0
                         ? const Color(0xFFF0FDF4)
                         : Colors.white,
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(16),
                     border: Border.all(
                       color: _activeFilterCount > 0
                           ? const Color(0xFF16A34A)
@@ -5093,54 +5228,36 @@ class _MyPapersTabState extends State<_MyPapersTab> {
                   ),
                 ),
               ),
-              const SizedBox(width: 8),
-              GestureDetector(
-                onTap: () {
-                  AppHaptics.light();
-                  widget.onBrowsePractice();
-                },
-                child: Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 12,
-                    vertical: 8,
-                  ),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(12),
-                    border: Border.all(color: const Color(0xFFE2E8F0)),
-                  ),
-                  child: const Text(
-                    'Browse',
-                    style: TextStyle(
-                      fontSize: 13,
-                      fontWeight: FontWeight.w600,
-                      color: Color(0xFF334155),
-                    ),
-                  ),
-                ),
-              ),
             ],
           ),
-          const SizedBox(height: 6),
+          const SizedBox(height: 10),
           const Text(
             'Papers you bought or attempted, with your progress.',
-            style: TextStyle(fontSize: 13.5, color: Color(0xFF64748B)),
+            style: TextStyle(
+              fontSize: 14.5,
+              height: 1.4,
+              color: Color(0xFF64748B),
+            ),
           ),
-          const SizedBox(height: 12),
+          const SizedBox(height: 20),
 
           // Horizontal quick filter bar
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(
               children: [
-                _quickChip('All', isSelected: _quickFilter == 'all', onTap: () {
-                  setState(() {
-                    _quickFilter = 'all';
-                    _filterLikedOnly = false;
-                    _filterStatus = 'all';
-                  });
-                }),
-                const SizedBox(width: 8),
+                _quickChip(
+                  'All',
+                  isSelected: _quickFilter == 'all',
+                  onTap: () {
+                    setState(() {
+                      _quickFilter = 'all';
+                      _filterLikedOnly = false;
+                      _filterStatus = 'all';
+                    });
+                  },
+                ),
+                const SizedBox(width: 10),
                 _quickChip(
                   '❤️ Liked',
                   count: _likedIds.length,
@@ -5153,26 +5270,34 @@ class _MyPapersTabState extends State<_MyPapersTab> {
                     });
                   },
                 ),
-                const SizedBox(width: 8),
-                _quickChip('In progress', isSelected: _quickFilter == 'in_progress', onTap: () {
-                  setState(() {
-                    _quickFilter = 'in_progress';
-                    _filterLikedOnly = false;
-                    _filterStatus = 'in_progress';
-                  });
-                }),
-                const SizedBox(width: 8),
-                _quickChip('Completed', isSelected: _quickFilter == 'completed', onTap: () {
-                  setState(() {
-                    _quickFilter = 'completed';
-                    _filterLikedOnly = false;
-                    _filterStatus = 'completed';
-                  });
-                }),
+                const SizedBox(width: 10),
+                _quickChip(
+                  'In progress',
+                  isSelected: _quickFilter == 'in_progress',
+                  onTap: () {
+                    setState(() {
+                      _quickFilter = 'in_progress';
+                      _filterLikedOnly = false;
+                      _filterStatus = 'in_progress';
+                    });
+                  },
+                ),
+                const SizedBox(width: 10),
+                _quickChip(
+                  'Completed',
+                  isSelected: _quickFilter == 'completed',
+                  onTap: () {
+                    setState(() {
+                      _quickFilter = 'completed';
+                      _filterLikedOnly = false;
+                      _filterStatus = 'completed';
+                    });
+                  },
+                ),
               ],
             ),
           ),
-          const SizedBox(height: 14),
+          const SizedBox(height: 20),
 
           if (_error != null && _papers.isEmpty)
             Padding(
@@ -5312,13 +5437,17 @@ class _MyPapersTabState extends State<_MyPapersTab> {
                 child: Column(
                   children: [
                     Icon(
-                      _filterLikedOnly ? Icons.favorite_border_rounded : Icons.filter_alt_off_outlined,
+                      _filterLikedOnly
+                          ? Icons.favorite_border_rounded
+                          : Icons.filter_alt_off_outlined,
                       size: 46,
                       color: const Color(0xFF94A3B8),
                     ),
                     const SizedBox(height: 12),
                     Text(
-                      _filterLikedOnly ? 'No liked papers yet' : 'No papers match your filters',
+                      _filterLikedOnly
+                          ? 'No liked papers yet'
+                          : 'No papers match your filters',
                       style: const TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
@@ -5331,7 +5460,10 @@ class _MyPapersTabState extends State<_MyPapersTab> {
                           ? 'Tap the heart icon on any paper to save it to your favorites.'
                           : 'Try clearing some filters to see your papers.',
                       textAlign: TextAlign.center,
-                      style: const TextStyle(fontSize: 13, color: Color(0xFF64748B)),
+                      style: const TextStyle(
+                        fontSize: 13,
+                        color: Color(0xFF64748B),
+                      ),
                     ),
                     const SizedBox(height: 16),
                     FilledButton.tonal(
@@ -6695,13 +6827,15 @@ class _MoreTabState extends State<_MoreTab> {
                   title: 'Test yourself',
                   badge: 'PRO',
                   subtitle: 'Spin a custom practice paper',
-                  onTap: () => Navigator.of(context).push(MaterialPageRoute<void>(
-                    builder: (_) => SpinPracticeScreen(
-                      apiClient: widget.discussionService.client,
-                      user: widget.user,
-                      onOpenMyPapers: widget.onNavigateToMyPapers,
+                  onTap: () => Navigator.of(context).push(
+                    MaterialPageRoute<void>(
+                      builder: (_) => SpinPracticeScreen(
+                        apiClient: widget.discussionService.client,
+                        user: widget.user,
+                        onOpenMyPapers: widget.onNavigateToMyPapers,
+                      ),
                     ),
-                  )),
+                  ),
                 ),
                 const Divider(height: 1, color: Color(0xFFF1F5F9)),
                 _exploreTile(
@@ -6727,8 +6861,14 @@ class _MoreTabState extends State<_MoreTab> {
                   title: 'Video Solutions',
                   badge: 'PRO',
                   subtitle: 'Step-by-step video answers',
-                  onTap: () =>
-                      Navigator.of(context).push(MaterialPageRoute<void>(builder: (_) => VideoSolutionsScreen(apiClient: widget.discussionService.client, user: widget.user))),
+                  onTap: () => Navigator.of(context).push(
+                    MaterialPageRoute<void>(
+                      builder: (_) => VideoSolutionsScreen(
+                        apiClient: widget.discussionService.client,
+                        user: widget.user,
+                      ),
+                    ),
+                  ),
                 ),
               ],
             ),

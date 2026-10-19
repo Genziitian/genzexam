@@ -99,7 +99,7 @@ assert.ok(
   "index.html must reference refreshed bundle query parameter"
 );
 assert.ok(
-  /\/app-enhancements\.js\?v=20261018[d-z]/.test(indexHtml),
+  /\/app-enhancements\.js\?v=20261018[a-z0-9_-]+/.test(indexHtml),
   "index.html must reference refreshed app-enhancements.js query parameter"
 );
 

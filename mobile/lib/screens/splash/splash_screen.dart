@@ -2,6 +2,7 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+
 import '../../state/auth_state.dart';
 import '../../state/theme_state.dart';
 
@@ -27,7 +28,8 @@ class SplashScreen extends StatefulWidget {
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMixin {
+class _SplashScreenState extends State<SplashScreen>
+    with TickerProviderStateMixin {
   static const _title = 'Quiz Lab';
 
   final FlutterSecureStorage _storage = const FlutterSecureStorage();
@@ -41,8 +43,14 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
   @override
   void initState() {
     super.initState();
-    _intro = AnimationController(vsync: this, duration: const Duration(milliseconds: 1700))..forward();
-    _loop = AnimationController(vsync: this, duration: const Duration(milliseconds: 2600))..repeat();
+    _intro = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 1700),
+    )..forward();
+    _loop = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 2600),
+    )..repeat();
     _checkAppEntryState();
   }
 
@@ -55,7 +63,9 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
 
   Future<void> _checkAppEntryState() async {
     // Long enough for the intro to finish before leaving the screen.
-    final minimumShow = Future<void>.delayed(const Duration(milliseconds: 2100));
+    final minimumShow = Future<void>.delayed(
+      const Duration(milliseconds: 2100),
+    );
 
     final hasSeenOnboarding = await _storage.read(key: 'has_seen_onboarding');
     if (hasSeenOnboarding != 'true') {
@@ -71,7 +81,9 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
 
   /// 0..1 progress of the intro inside the window [start, end], eased.
   double _phase(double start, double end, [Curve curve = Curves.easeOutCubic]) {
-    final t = ((_intro.value - start) / (end - start)).clamp(0.0, 1.0).toDouble();
+    final t = ((_intro.value - start) / (end - start))
+        .clamp(0.0, 1.0)
+        .toDouble();
     return curve.transform(t);
   }
 
@@ -81,11 +93,15 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
     return Transform.scale(
       scale: 1.0 + grow * 1.1,
       child: Container(
-      width: 152,
-      height: 152,
+        width: 152,
+        height: 152,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(38),
-          border: Border.all(color: const Color(0xFF4ADE80).withValues(alpha: opacity.clamp(0.0, 1.0).toDouble()), width: 2),
+          border: Border.all(
+            color: const Color(0xFF4ADE80)
+                .withValues(alpha: opacity.clamp(0.0, 1.0).toDouble()),
+            width: 2,
+          ),
         ),
       ),
     );
@@ -118,12 +134,14 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
                     borderRadius: BorderRadius.circular(36),
                     boxShadow: [
                       BoxShadow(
-                        color: const Color(0xFF4ADE80).withValues(alpha: 0.25 + 0.25 * pulse),
+                        color: const Color(0xFF4ADE80)
+                            .withValues(alpha: 0.25 + 0.25 * pulse),
                         blurRadius: 28 + 16 * pulse,
                         spreadRadius: 2 + 3 * pulse,
                       ),
                       BoxShadow(
-                        color: const Color(0xFFFACC15).withValues(alpha: 0.8 * flash),
+                        color: const Color(0xFFFACC15)
+                            .withValues(alpha: 0.8 * flash),
                         blurRadius: 46,
                         spreadRadius: 10 * flash,
                       ),
@@ -131,7 +149,14 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
                   ),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(36),
-                    child: KeepColors(child: Image.asset('assets/logo.png', width: 144, height: 144, fit: BoxFit.cover)),
+                    child: KeepColors(
+                      child: Image.asset(
+                        'assets/logo.png',
+                        width: 144,
+                        height: 144,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
                   ),
                 ),
               ),
@@ -195,7 +220,11 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
                       width: 56,
                       decoration: const BoxDecoration(
                         gradient: LinearGradient(
-                          colors: [Color(0x004ADE80), Color(0xFF86EFAC), Color(0x004ADE80)],
+                          colors: [
+                            Color(0x004ADE80),
+                            Color(0xFF86EFAC),
+                            Color(0x004ADE80),
+                          ],
                         ),
                       ),
                     ),
@@ -207,7 +236,11 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
           const SizedBox(height: 14),
           const Text(
             'Getting your papers ready',
-            style: TextStyle(color: Color(0xFFBBF7D0), fontSize: 12, letterSpacing: 0.3),
+            style: TextStyle(
+              color: Color(0xFFBBF7D0),
+              fontSize: 12,
+              letterSpacing: 0.3,
+            ),
           ),
         ],
       ),
@@ -232,13 +265,22 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
                   gradient: RadialGradient(
                     center: const Alignment(0, -0.18),
                     radius: 1.05 + 0.06 * math.sin(drift),
-                    colors: const [Color(0xFF1B6B3A), Color(0xFF0F3D22), Color(0xFF07200F)],
+                    colors: const [
+                      Color(0xFF1B6B3A),
+                      Color(0xFF0F3D22),
+                      Color(0xFF07200F),
+                    ],
                     stops: const [0.0, 0.5, 1.0],
                   ),
                 ),
               ),
               // Rising sparks
-              CustomPaint(painter: _SparkPainter(time: _loop.value, fade: _phase(0.0, 0.5))),
+              CustomPaint(
+                painter: _SparkPainter(
+                  time: _loop.value,
+                  fade: _phase(0.0, 0.5),
+                ),
+              ),
 
               Center(
                 child: Column(
@@ -279,7 +321,11 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
                   child: const Text(
                     'v1.0.0',
                     textAlign: TextAlign.center,
-                    style: TextStyle(color: Color(0xFFA7F3D0), fontSize: 11, fontFamily: 'monospace'),
+                    style: TextStyle(
+                      color: Color(0xFFA7F3D0),
+                      fontSize: 11,
+                      fontFamily: 'monospace',
+                    ),
                   ),
                 ),
               ),
@@ -308,23 +354,33 @@ class _SparkPainter extends CustomPainter {
     for (var i = 0; i < _count; i++) {
       final x = random.nextDouble();
       final startY = random.nextDouble();
-      final laps = 1 + random.nextInt(2); // whole laps per loop keep it seamless
+      final laps =
+          1 + random.nextInt(2); // whole laps per loop keep it seamless
       final radius = 1.0 + random.nextDouble() * 2.2;
       final phase = random.nextDouble();
       final warm = random.nextInt(5) == 0;
 
       final y = (startY - time * laps) % 1.0;
       final sway = math.sin((time + phase) * 2 * math.pi) * 10;
-      final twinkle = 0.35 + 0.65 * (0.5 + 0.5 * math.sin((time * 2 + phase) * 2 * math.pi));
+      final twinkle =
+          0.35 +
+          0.65 * (0.5 + 0.5 * math.sin((time * 2 + phase) * 2 * math.pi));
       // Fade out near the top and bottom edges.
       final edge = math.sin(y * math.pi);
 
       paint.color = (warm ? const Color(0xFFFDE68A) : const Color(0xFF86EFAC))
-          .withValues(alpha: (0.5 * twinkle * edge * fade).clamp(0.0, 1.0).toDouble());
-      canvas.drawCircle(Offset(x * size.width + sway, y * size.height), radius, paint);
+          .withValues(
+            alpha: (0.5 * twinkle * edge * fade).clamp(0.0, 1.0).toDouble(),
+          );
+      canvas.drawCircle(
+        Offset(x * size.width + sway, y * size.height),
+        radius,
+        paint,
+      );
     }
   }
 
   @override
-  bool shouldRepaint(covariant _SparkPainter oldDelegate) => oldDelegate.time != time || oldDelegate.fade != fade;
+  bool shouldRepaint(covariant _SparkPainter oldDelegate) =>
+      oldDelegate.time != time || oldDelegate.fade != fade;
 }

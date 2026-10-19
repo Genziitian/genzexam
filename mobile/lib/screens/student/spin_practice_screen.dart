@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
@@ -224,90 +225,329 @@ class _SpinPracticeScreenState extends State<SpinPracticeScreen>
 
   Future<void> _showHelp() => showDialog<void>(
     context: context,
-    builder: (dialog) => AlertDialog(
-      scrollable: true,
-      title: _dialogTitle(dialog, 'How it works'),
-      content: const Text(
-        '1. Choose your course and week range.\n\n2. Pick one, several, or all paper types. Naming the paper is optional.\n\n3. Spin for up to 10 random questions from matching papers.\n\n4. Choose your time when you open it. The paper stays in My Papers.\n\n1 free spin daily, up to 7 with Pro. Resets at midnight IST. Papers auto-delete after 30 days. No upload tokens used. Papers are private and cannot be shared.',
-      ),
-      actions: [
-        FilledButton(
-          onPressed: () => Navigator.pop(dialog),
-          child: const Text('Got it'),
+    builder: (dialog) {
+      const steps = [
+        'Choose your course and week range.',
+        'Pick one, several, or all paper types. Naming the paper is optional.',
+        'Spin for up to 10 random questions from matching papers.',
+        'Choose your time when you open it. The paper stays in My Papers.',
+      ];
+      return Dialog(
+        backgroundColor: Colors.white,
+        insetPadding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(28)),
+        clipBehavior: Clip.antiAlias,
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              _sheetHeader(dialog, 'How it works'),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(20, 18, 20, 4),
+                child: Column(
+                  children: [
+                    for (var i = 0; i < steps.length; i++)
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 8),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              width: 30,
+                              height: 30,
+                              alignment: Alignment.center,
+                              decoration: BoxDecoration(
+                                color: const Color(0xFF312E81),
+                                shape: BoxShape.circle,
+                                border: Border.all(
+                                  color: const Color(0xFFC9A961),
+                                ),
+                              ),
+                              child: Text(
+                                '${i + 1}',
+                                style: const TextStyle(
+                                  color: Color(0xFFF1E1B6),
+                                  fontWeight: FontWeight.w800,
+                                  fontSize: 13,
+                                ),
+                              ),
+                            ),
+                            const SizedBox(width: 14),
+                            Expanded(
+                              child: Padding(
+                                padding: const EdgeInsets.only(top: 5),
+                                child: Text(
+                                  steps[i],
+                                  style: const TextStyle(
+                                    fontSize: 14.5,
+                                    height: 1.4,
+                                    color: Color(0xFF1E1B4B),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    const SizedBox(height: 6),
+                    Container(
+                      padding: const EdgeInsets.all(14),
+                      decoration: BoxDecoration(
+                        color: const Color(0xFFF8F4EA),
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      child: const Text(
+                        '1 free spin daily, up to 7 with Pro. Resets at midnight IST. Papers auto-delete after 30 days. No upload tokens used. Papers are private and cannot be shared.',
+                        style: TextStyle(
+                          fontSize: 13,
+                          height: 1.45,
+                          color: Color(0xFF5B4A1F),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(20, 16, 20, 20),
+                child: FilledButton(
+                  style: FilledButton.styleFrom(
+                    minimumSize: const Size.fromHeight(50),
+                    backgroundColor: const Color(0xFF312E81),
+                    foregroundColor: const Color(0xFFF1E1B6),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                  ),
+                  onPressed: () => Navigator.pop(dialog),
+                  child: const Text('Got it'),
+                ),
+              ),
+            ],
+          ),
         ),
-      ],
-    ),
+      );
+    },
   );
 
-  Widget _dialogTitle(BuildContext dialog, String title) => Row(
-    children: [
-      ClipRRect(
-        borderRadius: BorderRadius.circular(9),
-        child: Image.asset('assets/logo.png', width: 32, height: 32),
+  /// Gradient header shared by the dialogs and sheets of this screen.
+  Widget _sheetHeader(
+    BuildContext context,
+    String title, {
+    String? subtitle,
+    bool close = true,
+  }) => Container(
+    padding: const EdgeInsets.fromLTRB(20, 14, 8, 18),
+    decoration: const BoxDecoration(
+      gradient: LinearGradient(
+        begin: Alignment.topLeft,
+        end: Alignment.bottomRight,
+        colors: [Color(0xFF312E81), Color(0xFF4338CA)],
       ),
-      const SizedBox(width: 10),
-      Expanded(
-        child: Text(
-          title,
-          style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
+    ),
+    child: Row(
+      children: [
+        Container(
+          padding: const EdgeInsets.all(2),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(11),
+            border: Border.all(color: const Color(0xFFC9A961)),
+          ),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(9),
+            child: Image.asset('assets/logo.png', width: 30, height: 30),
+          ),
         ),
-      ),
-      IconButton(
-        tooltip: 'Close',
-        onPressed: () => Navigator.pop(dialog),
-        icon: const Icon(Icons.close_rounded),
-      ),
-    ],
+        const SizedBox(width: 12),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                title,
+                style: const TextStyle(
+                  fontSize: 19,
+                  fontWeight: FontWeight.w800,
+                  color: Colors.white,
+                ),
+              ),
+              if (subtitle != null)
+                Padding(
+                  padding: const EdgeInsets.only(top: 2),
+                  child: Text(
+                    subtitle,
+                    style: const TextStyle(
+                      fontSize: 12.5,
+                      color: Color(0xFFF1E1B6),
+                    ),
+                  ),
+                ),
+            ],
+          ),
+        ),
+        if (close)
+          IconButton(
+            tooltip: 'Close',
+            onPressed: () => Navigator.pop(context),
+            color: Colors.white,
+            icon: const Icon(Icons.close_rounded),
+          ),
+      ],
+    ),
   );
 
   Future<void> _showPaperReady(GeneratedPracticePaper paper) async {
     final selected = _courses.firstWhere((course) => course.id == _courseId);
     final action = await showDialog<String>(
       context: context,
-      builder: (dialog) => AlertDialog(
-        scrollable: true,
-        title: _dialogTitle(dialog, 'Your paper is ready'),
-        content: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(
-              paper.title,
-              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
-            ),
-            const SizedBox(height: 20),
-            _paperDetail('Course', selected.name),
-            _paperDetail('Questions', '${paper.questionCount}'),
-            _paperDetail(
-              'Weeks',
-              '${_weeks.start.round()}–${_weeks.end.round()}',
-            ),
-            _paperDetail(
-              'Paper types',
-              _types.contains('all')
-                  ? 'All types'
-                  : _types.map((type) => _paperTypes[type]!).join(', '),
-            ),
-            if (_remaining != null)
-              _paperDetail('Spins left today', '$_remaining'),
-            const SizedBox(height: 16),
-            const Text(
-              'Private test, saved in My Papers. Kept for 30 days. Only you can open it. Choose your time when you start.',
-            ),
-          ],
+      builder: (dialog) => Dialog(
+        backgroundColor: Colors.white,
+        insetPadding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(28)),
+        clipBehavior: Clip.antiAlias,
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Container(
+                padding: const EdgeInsets.fromLTRB(22, 14, 8, 22),
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [Color(0xFF312E81), Color(0xFF4338CA)],
+                  ),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.all(2),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(11),
+                            border: Border.all(color: const Color(0xFFC9A961)),
+                          ),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(9),
+                            child: Image.asset(
+                              'assets/logo.png',
+                              width: 28,
+                              height: 28,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 10),
+                        const Expanded(
+                          child: Text(
+                            'Your paper is ready',
+                            style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w700,
+                              color: Color(0xFFF1E1B6),
+                            ),
+                          ),
+                        ),
+                        IconButton(
+                          tooltip: 'Close',
+                          onPressed: () => Navigator.pop(dialog),
+                          color: Colors.white,
+                          icon: const Icon(Icons.close_rounded),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 10),
+                    Text(
+                      paper.title.replaceAll('-', '\u2011'),
+                      style: const TextStyle(
+                        fontSize: 21,
+                        height: 1.25,
+                        fontWeight: FontWeight.w800,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(20, 16, 20, 4),
+                child: Column(
+                  children: [
+                    _paperDetail(
+                      Icons.school_outlined,
+                      'Course',
+                      selected.name,
+                    ),
+                    _paperDetail(
+                      Icons.help_outline_rounded,
+                      'Questions',
+                      '${paper.questionCount}',
+                    ),
+                    _paperDetail(
+                      Icons.date_range_rounded,
+                      'Weeks',
+                      '${_weeks.start.round()}–${_weeks.end.round()}',
+                    ),
+                    _paperDetail(
+                      Icons.layers_outlined,
+                      'Paper types',
+                      _types.contains('all')
+                          ? 'All types'
+                          : _types.map((type) => _paperTypes[type]!).join(', '),
+                    ),
+                    if (_remaining != null)
+                      _paperDetail(
+                        Icons.rotate_right_rounded,
+                        'Spins left today',
+                        '$_remaining',
+                      ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(20, 12, 20, 20),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: OutlinedButton(
+                        style: OutlinedButton.styleFrom(
+                          minimumSize: const Size.fromHeight(50),
+                          foregroundColor: const Color(0xFF312E81),
+                          side: const BorderSide(color: Color(0xFFC9A961)),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                        ),
+                        onPressed: _remaining == null || _remaining == 0
+                            ? null
+                            : () => Navigator.pop(dialog, 'again'),
+                        child: const Text('Spin again'),
+                      ),
+                    ),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: FilledButton(
+                        style: FilledButton.styleFrom(
+                          minimumSize: const Size.fromHeight(50),
+                          backgroundColor: const Color(0xFF312E81),
+                          foregroundColor: const Color(0xFFF1E1B6),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                        ),
+                        onPressed: () => Navigator.pop(dialog, 'try'),
+                        child: const Text('Try now'),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
-        actions: [
-          OutlinedButton(
-            onPressed: _remaining == null || _remaining == 0
-                ? null
-                : () => Navigator.pop(dialog, 'again'),
-            child: const Text('Spin again'),
-          ),
-          FilledButton(
-            onPressed: () => Navigator.pop(dialog, 'try'),
-            child: const Text('Try now'),
-          ),
-        ],
       ),
     );
     if (!mounted) return;
@@ -328,18 +568,32 @@ class _SpinPracticeScreenState extends State<SpinPracticeScreen>
     }
   }
 
-  Widget _paperDetail(String label, String value) => Padding(
-    padding: const EdgeInsets.symmetric(vertical: 7),
+  Widget _paperDetail(IconData icon, String label, String value) => Padding(
+    padding: const EdgeInsets.symmetric(vertical: 8),
     child: Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Expanded(child: Text(label)),
-        const SizedBox(width: 16),
-        Flexible(
+        Container(
+          width: 34,
+          height: 34,
+          decoration: BoxDecoration(
+            color: const Color(0xFFF8F4EA),
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: Icon(icon, size: 18, color: const Color(0xFF8E7234)),
+        ),
+        const SizedBox(width: 12),
+        SizedBox(
+          width: 104,
+          child: Text(label, style: const TextStyle(color: Color(0xFF64748B))),
+        ),
+        Expanded(
           child: Text(
             value,
-            textAlign: TextAlign.right,
-            style: const TextStyle(fontWeight: FontWeight.w600),
+            style: const TextStyle(
+              fontWeight: FontWeight.w700,
+              color: Color(0xFF312E81),
+            ),
           ),
         ),
       ],
@@ -364,20 +618,30 @@ class _SpinPracticeScreenState extends State<SpinPracticeScreen>
   }) {
     final scheme = Theme.of(context).colorScheme;
     return Material(
-      color: scheme.surfaceContainerLow,
+      color: Colors.white,
+      elevation: 1.5,
+      shadowColor: const Color(0x1A312E81),
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16),
-        side: BorderSide(color: scheme.outlineVariant.withValues(alpha: 0.6)),
+        borderRadius: BorderRadius.circular(18),
+        side: BorderSide(color: scheme.outlineVariant.withValues(alpha: 0.5)),
       ),
       clipBehavior: Clip.antiAlias,
       child: InkWell(
         key: key,
         onTap: _busy ? null : onTap,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 18),
+          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
           child: Row(
             children: [
-              Icon(icon, size: 20, color: scheme.onSurfaceVariant),
+              Container(
+                width: 36,
+                height: 36,
+                decoration: BoxDecoration(
+                  color: const Color(0xFF312E81),
+                  borderRadius: BorderRadius.circular(11),
+                ),
+                child: Icon(icon, size: 18, color: const Color(0xFFF1E1B6)),
+              ),
               const SizedBox(width: 12),
               Expanded(
                 child: Text(
@@ -408,8 +672,12 @@ class _SpinPracticeScreenState extends State<SpinPracticeScreen>
     final selected = await showModalBottomSheet<int>(
       context: context,
       isScrollControlled: true,
-      showDragHandle: true,
       useSafeArea: true,
+      backgroundColor: Colors.white,
+      clipBehavior: Clip.antiAlias,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
+      ),
       builder: (sheet) {
         var query = '';
         return StatefulBuilder(
@@ -421,53 +689,82 @@ class _SpinPracticeScreenState extends State<SpinPracticeScreen>
                 )
                 .toList();
             return Padding(
-              padding: EdgeInsets.fromLTRB(
-                20,
-                0,
-                20,
-                MediaQuery.viewInsetsOf(sheet).bottom + 20,
+              padding: EdgeInsets.only(
+                bottom: MediaQuery.viewInsetsOf(sheet).bottom,
               ),
               child: SizedBox(
-                height: MediaQuery.sizeOf(sheet).height * 0.65,
+                height: MediaQuery.sizeOf(sheet).height * 0.72,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    const Text(
-                      'Choose a course',
-                      style: TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.w700,
+                    _sheetHeader(sheet, 'Choose a course'),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(16, 14, 16, 8),
+                      child: TextField(
+                        decoration: InputDecoration(
+                          hintText: 'Search courses',
+                          prefixIcon: const Icon(Icons.search_rounded),
+                          filled: true,
+                          fillColor: const Color(0xFFF8F4EA),
+                          contentPadding: const EdgeInsets.symmetric(
+                            vertical: 14,
+                          ),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(16),
+                            borderSide: BorderSide.none,
+                          ),
+                        ),
+                        onChanged: (value) => update(() => query = value),
                       ),
                     ),
-                    const SizedBox(height: 16),
-                    TextField(
-                      decoration: const InputDecoration(
-                        hintText: 'Search courses',
-                        prefixIcon: Icon(Icons.search_rounded),
-                      ),
-                      onChanged: (value) => update(() => query = value),
-                    ),
-                    const SizedBox(height: 12),
                     Expanded(
                       child: courses.isEmpty
                           ? const Center(child: Text('No matching courses'))
                           : ListView.builder(
+                              padding: const EdgeInsets.fromLTRB(16, 4, 16, 20),
                               itemCount: courses.length,
                               itemBuilder: (_, index) {
                                 final course = courses[index];
-                                return ListTile(
-                                  contentPadding: EdgeInsets.zero,
-                                  title: Text(course.name),
-                                  trailing: course.id == _courseId
-                                      ? const Icon(
-                                          Icons.check_circle_rounded,
-                                          color: Color(0xFF059669),
-                                        )
-                                      : const Icon(
-                                          Icons.circle_outlined,
-                                          color: Color(0xFFCBD5E1),
+                                final on = course.id == _courseId;
+                                return Padding(
+                                  padding: const EdgeInsets.only(bottom: 8),
+                                  child: Material(
+                                    color: on
+                                        ? const Color(0xFFEEF2FF)
+                                        : Colors.white,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(16),
+                                      side: BorderSide(
+                                        color: on
+                                            ? const Color(0xFF4338CA)
+                                            : const Color(0xFFE5E7EB),
+                                        width: on ? 1.4 : 1,
+                                      ),
+                                    ),
+                                    clipBehavior: Clip.antiAlias,
+                                    child: ListTile(
+                                      title: Text(
+                                        course.name,
+                                        style: TextStyle(
+                                          fontWeight: on
+                                              ? FontWeight.w800
+                                              : FontWeight.w600,
+                                          color: const Color(0xFF1E1B4B),
                                         ),
-                                  onTap: () => Navigator.pop(sheet, course.id),
+                                      ),
+                                      trailing: on
+                                          ? const Icon(
+                                              Icons.check_circle_rounded,
+                                              color: Color(0xFF4338CA),
+                                            )
+                                          : const Icon(
+                                              Icons.circle_outlined,
+                                              color: Color(0xFFCBD5E1),
+                                            ),
+                                      onTap: () =>
+                                          Navigator.pop(sheet, course.id),
+                                    ),
+                                  ),
                                 );
                               },
                             ),
@@ -491,51 +788,84 @@ class _SpinPracticeScreenState extends State<SpinPracticeScreen>
     final selected = Set<String>.of(_types);
     final result = await showModalBottomSheet<Set<String>>(
       context: context,
-      showDragHandle: true,
       useSafeArea: true,
       isScrollControlled: true,
+      backgroundColor: Colors.white,
+      clipBehavior: Clip.antiAlias,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
+      ),
       builder: (sheet) => StatefulBuilder(
-        builder: (sheet, update) => SafeArea(
-          top: false,
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+        builder: (sheet, update) {
+          Widget option(String key, String label, ValueChanged<bool> onTap) {
+            final on = selected.contains(key);
+            return Padding(
+              padding: const EdgeInsets.only(bottom: 8),
+              child: Material(
+                color: on ? const Color(0xFFEEF2FF) : Colors.white,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16),
+                  side: BorderSide(
+                    color: on
+                        ? const Color(0xFF4338CA)
+                        : const Color(0xFFE5E7EB),
+                    width: on ? 1.4 : 1,
+                  ),
+                ),
+                clipBehavior: Clip.antiAlias,
+                child: ListTile(
+                  title: Text(
+                    label,
+                    style: TextStyle(
+                      fontWeight: on ? FontWeight.w800 : FontWeight.w600,
+                      color: const Color(0xFF1E1B4B),
+                    ),
+                  ),
+                  trailing: Icon(
+                    on
+                        ? Icons.check_circle_rounded
+                        : Icons.radio_button_unchecked_rounded,
+                    color: on
+                        ? const Color(0xFF4338CA)
+                        : const Color(0xFFCBD5E1),
+                  ),
+                  onTap: () => onTap(!on),
+                ),
+              ),
+            );
+          }
+
+          return SafeArea(
+            top: false,
             child: Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 8),
-                  child: Text(
-                    'Paper types',
-                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.w700),
-                  ),
-                ),
-                const Padding(
-                  padding: EdgeInsets.fromLTRB(8, 6, 8, 12),
-                  child: Text('Choose more than one, or include all types.'),
+                _sheetHeader(
+                  sheet,
+                  'Paper types',
+                  subtitle: 'Choose more than one, or include all types.',
                 ),
                 Flexible(
                   child: SingleChildScrollView(
+                    padding: const EdgeInsets.fromLTRB(16, 16, 16, 4),
                     child: Column(
                       children: [
-                        CheckboxListTile(
-                          title: const Text('All types'),
-                          value: selected.contains('all'),
-                          controlAffinity: ListTileControlAffinity.trailing,
-                          onChanged: (_) => update(() {
+                        option(
+                          'all',
+                          'All types',
+                          (_) => update(() {
                             selected.clear();
                             selected.add('all');
                           }),
                         ),
-                        const Divider(height: 16),
                         for (final type in _paperTypes.entries)
-                          CheckboxListTile(
-                            title: Text(type.value),
-                            value: selected.contains(type.key),
-                            controlAffinity: ListTileControlAffinity.trailing,
-                            onChanged: (checked) => update(() {
+                          option(
+                            type.key,
+                            type.value,
+                            (checked) => update(() {
                               selected.remove('all');
-                              checked == true
+                              checked
                                   ? selected.add(type.key)
                                   : selected.remove(type.key);
                               if (selected.isEmpty) selected.add('all');
@@ -545,23 +875,26 @@ class _SpinPracticeScreenState extends State<SpinPracticeScreen>
                     ),
                   ),
                 ),
-                const SizedBox(height: 12),
-                FilledButton(
-                  onPressed: () => Navigator.pop(sheet, selected),
-                  style: FilledButton.styleFrom(
-                    backgroundColor: const Color(0xFF064E3B),
-                    foregroundColor: Colors.white,
-                    minimumSize: const Size.fromHeight(52),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(14),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(16, 8, 16, 16),
+                  child: FilledButton(
+                    onPressed: () => Navigator.pop(sheet, selected),
+                    style: FilledButton.styleFrom(
+                      backgroundColor: const Color(0xFF312E81),
+                      foregroundColor: const Color(0xFFF1E1B6),
+                      minimumSize: const Size.fromHeight(54),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(18),
+                        side: const BorderSide(color: Color(0xFFC9A961)),
+                      ),
                     ),
+                    child: const Text('Apply selection'),
                   ),
-                  child: const Text('Apply selection'),
                 ),
               ],
             ),
-          ),
-        ),
+          );
+        },
       ),
     );
     if (result != null && mounted)
@@ -636,11 +969,27 @@ class _SpinPracticeScreenState extends State<SpinPracticeScreen>
               style: FilledButton.styleFrom(
                 backgroundColor: isUpgrade
                     ? const Color(0xFFD97706)
-                    : const Color(0xFF064E3B),
-                foregroundColor: Colors.white,
-                minimumSize: const Size.fromHeight(54),
+                    : const Color(0xFF312E81),
+                foregroundColor: isUpgrade
+                    ? Colors.white
+                    : const Color(0xFFF1E1B6),
+                disabledBackgroundColor: const Color(0xFFE5E7EB),
+                minimumSize: const Size.fromHeight(58),
+                elevation: 6,
+                shadowColor: const Color(0x66312E81),
+                textStyle: const TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w700,
+                  letterSpacing: .2,
+                ),
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(16),
+                  borderRadius: BorderRadius.circular(20),
+                  side: BorderSide(
+                    color: isUpgrade
+                        ? Colors.transparent
+                        : const Color(0xFFC9A961),
+                    width: 1.2,
+                  ),
                 ),
               ),
               onPressed: isDisabled
@@ -799,10 +1148,13 @@ class _SpinPracticeScreenState extends State<SpinPracticeScreen>
                               ),
                             ),
                             const SizedBox(height: 20),
-                            PracticeWheel(
-                              turns: _rotation,
-                              busy: _busy,
-                              complete: _paper != null,
+                            Opacity(
+                              opacity: _busy ? 0 : 1,
+                              child: PracticeWheel(
+                                turns: _rotation,
+                                busy: false,
+                                complete: _paper != null,
+                              ),
                             ),
                             if (_busy) ...[
                               const SizedBox(height: 12),
@@ -852,7 +1204,8 @@ class _SpinPracticeScreenState extends State<SpinPracticeScreen>
                             SliderTheme(
                               data: SliderTheme.of(context).copyWith(
                                 trackHeight: 3,
-                                activeTrackColor: const Color(0xFF059669),
+                                activeTrackColor: const Color(0xFF312E81),
+                                thumbColor: const Color(0xFFC9A961),
                                 inactiveTrackColor: scheme.outlineVariant
                                     .withValues(alpha: 0.6),
                                 rangeThumbShape:
@@ -916,10 +1269,10 @@ class _SpinPracticeScreenState extends State<SpinPracticeScreen>
                               decoration: InputDecoration(
                                 hintText: 'My practice paper',
                                 filled: true,
-                                fillColor: scheme.surfaceContainerLow,
+                                fillColor: Colors.white,
                                 contentPadding: const EdgeInsets.all(16),
                                 border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(16),
+                                  borderRadius: BorderRadius.circular(18),
                                   borderSide: BorderSide.none,
                                 ),
                               ),
@@ -941,27 +1294,44 @@ class _SpinPracticeScreenState extends State<SpinPracticeScreen>
                 curve: Curves.easeInOut,
                 child: ExcludeSemantics(
                   excluding: !_busy,
-                  child: ColoredBox(
-                    color: scheme.surface.withValues(alpha: .25),
-                    child: Center(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          PracticeWheel(
-                            turns: _rotation,
-                            busy: _busy,
-                            complete: false,
+                  child: BackdropFilter(
+                    filter: ImageFilter.blur(sigmaX: 6, sigmaY: 6),
+                    child: ColoredBox(
+                      color: scheme.surface.withValues(alpha: .55),
+                      child: Center(
+                        child: AnimatedScale(
+                          scale: _busy ? 1 : .8,
+                          duration: MediaQuery.disableAnimationsOf(context)
+                              ? Duration.zero
+                              : const Duration(milliseconds: 450),
+                          curve: Curves.easeOutBack,
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Stack(
+                                alignment: Alignment.center,
+                                clipBehavior: Clip.none,
+                                children: [
+                                  if (_busy) const WheelSparks(),
+                                  PracticeWheel(
+                                    turns: _rotation,
+                                    busy: _busy,
+                                    complete: false,
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(height: 18),
+                              Text(
+                                'Creating your private test…',
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: scheme.onSurface,
+                                  decoration: TextDecoration.none,
+                                ),
+                              ),
+                            ],
                           ),
-                          const SizedBox(height: 18),
-                          Text(
-                            'Creating your private test…',
-                            style: TextStyle(
-                              fontSize: 14,
-                              color: scheme.onSurface,
-                              decoration: TextDecoration.none,
-                            ),
-                          ),
-                        ],
+                        ),
                       ),
                     ),
                   ),

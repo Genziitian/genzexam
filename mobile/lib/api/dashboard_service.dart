@@ -22,7 +22,9 @@ class DashboardService {
   /// Fetches the live student dashboard data.
   /// Endpoint: GET /api/student/dashboard
   Future<DashboardData> getDashboard() async {
-    final response = await _client.get<Map<String, dynamic>>('/student/dashboard');
+    final response = await _client.get<Map<String, dynamic>>(
+      '/student/dashboard',
+    );
     return DashboardData.fromJson(response.data!);
   }
 }

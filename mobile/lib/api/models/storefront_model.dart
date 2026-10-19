@@ -39,8 +39,12 @@ class StorefrontPaper {
       questionCount: json['question_count'] as int? ?? 0,
       pricePaise: json['price_paise'] as int? ?? 0,
       accessDays: json['access_days'] as int?,
-      week: json['week'] != null ? StorefrontPaperWeek.fromJson(json['week']) : null,
-      course: json['course'] != null ? StorefrontPaperCourse.fromJson(json['course']) : null,
+      week: json['week'] != null
+          ? StorefrontPaperWeek.fromJson(json['week'])
+          : null,
+      course: json['course'] != null
+          ? StorefrontPaperCourse.fromJson(json['course'])
+          : null,
     );
   }
 }
@@ -129,8 +133,12 @@ class MyPaperItem extends StorefrontPaper {
       questionCount: json['question_count'] as int? ?? 0,
       pricePaise: json['price_paise'] as int? ?? 0,
       accessDays: json['access_days'] as int?,
-      week: json['week'] != null ? StorefrontPaperWeek.fromJson(json['week']) : null,
-      course: json['course'] != null ? StorefrontPaperCourse.fromJson(json['course']) : null,
+      week: json['week'] != null
+          ? StorefrontPaperWeek.fromJson(json['week'])
+          : null,
+      course: json['course'] != null
+          ? StorefrontPaperCourse.fromJson(json['course'])
+          : null,
       source: json['source'] as String?,
       purchased: json['purchased'] as bool? ?? false,
       // Missing means usable, as on the website (only an explicit false blocks access).
@@ -140,8 +148,12 @@ class MyPaperItem extends StorefrontPaper {
       inProgress: json['in_progress'] as bool? ?? false,
       lastAttemptId: json['last_attempt_id'] as int?,
       // The API may send decimals as strings ("10.00").
-      lastScore: json['last_score'] != null ? double.tryParse(json['last_score'].toString()) : null,
-      lastTotalMarks: json['last_total_marks'] != null ? double.tryParse(json['last_total_marks'].toString()) : null,
+      lastScore: json['last_score'] != null
+          ? double.tryParse(json['last_score'].toString())
+          : null,
+      lastTotalMarks: json['last_total_marks'] != null
+          ? double.tryParse(json['last_total_marks'].toString())
+          : null,
       lastSubmittedAt: json['last_submitted_at'] as String?,
     );
   }

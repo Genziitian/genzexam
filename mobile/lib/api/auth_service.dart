@@ -37,10 +37,7 @@ class AuthService {
   }) async {
     final response = await _client.post<Map<String, dynamic>>(
       '/auth/login',
-      data: {
-        'email': email.trim(),
-        'password': password,
-      },
+      data: {'email': email.trim(), 'password': password},
     );
 
     final authResponse = AuthSuccessResponse.fromJson(response.data!);
@@ -59,9 +56,13 @@ class AuthService {
 
   /// Random one-time id (48 chars) that links the browser sign-in to this app.
   static String newGoogleHandoffId() {
-    const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const alphabet =
+        'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     final random = Random.secure();
-    return List.generate(48, (_) => alphabet[random.nextInt(alphabet.length)]).join();
+    return List.generate(
+      48,
+      (_) => alphabet[random.nextInt(alphabet.length)],
+    ).join();
   }
 
   /// Address of the backend's Google sign-in page for the given handoff id.
@@ -79,7 +80,8 @@ class AuthService {
         data: {'handoff': handoffId},
       );
       final data = response.data;
-      if (data == null || data['token'] == null || data['user'] == null) return null;
+      if (data == null || data['token'] == null || data['user'] == null)
+        return null;
       final authResponse = AuthSuccessResponse.fromJson(data);
       await _client.saveAuthToken(authResponse.token);
       return authResponse;
@@ -128,7 +130,8 @@ class AuthService {
       data: {'email': email.trim()},
     );
 
-    return (response.data?['message'] ?? 'Password reset OTP sent successfully') as String;
+    return (response.data?['message'] ?? 'Password reset OTP sent successfully')
+        as String;
   }
 
   /// Resets user password using the verified OTP.
@@ -148,7 +151,8 @@ class AuthService {
       },
     );
 
-    return (response.data?['message'] ?? 'Password reset successfully.') as String;
+    return (response.data?['message'] ?? 'Password reset successfully.')
+        as String;
   }
 
   /// Changes the authenticated student's password.
@@ -166,7 +170,8 @@ class AuthService {
       },
     );
 
-    return (response.data?['message'] ?? 'Password changed successfully') as String;
+    return (response.data?['message'] ?? 'Password changed successfully')
+        as String;
   }
 
   /// Fetches the authenticated user profile with XP, level progress, and badges.
@@ -191,7 +196,10 @@ class AuthService {
   }
 
   /// Submits an account deletion request for manager review.
-  Future<void> requestAccountDeletion({required String reason, String? details}) async {
+  Future<void> requestAccountDeletion({
+    required String reason,
+    String? details,
+  }) async {
     await _client.post<Map<String, dynamic>>(
       '/auth/account-deletion-requests',
       data: {'reason': reason, 'details': details?.trim()},

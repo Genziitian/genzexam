@@ -44,7 +44,9 @@ class UserModel {
       xp: (json['xp'] as num?)?.toInt() ?? 0,
       level: (json['level'] as num?)?.toInt(),
       levelProgress: json['level_progress'] is Map<String, dynamic>
-          ? LevelProgressModel.fromJson(json['level_progress'] as Map<String, dynamic>)
+          ? LevelProgressModel.fromJson(
+              json['level_progress'] as Map<String, dynamic>,
+            )
           : null,
       badges: (json['badges'] as List?)
           ?.whereType<Map<String, dynamic>>()
@@ -165,10 +167,7 @@ class AuthSuccessResponse {
   final String token;
   final UserModel user;
 
-  const AuthSuccessResponse({
-    required this.token,
-    required this.user,
-  });
+  const AuthSuccessResponse({required this.token, required this.user});
 
   factory AuthSuccessResponse.fromJson(Map<String, dynamic> json) {
     return AuthSuccessResponse(
@@ -183,10 +182,7 @@ class RegisterResponse {
   final String message;
   final String email;
 
-  const RegisterResponse({
-    required this.message,
-    required this.email,
-  });
+  const RegisterResponse({required this.message, required this.email});
 
   factory RegisterResponse.fromJson(Map<String, dynamic> json) {
     return RegisterResponse(

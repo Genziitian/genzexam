@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 import '../../api/api.dart';
 import '../../api/offline_paper_store.dart';
 import '../../api/pro_access_guard.dart';
@@ -73,6 +72,25 @@ class _OfflinePapersScreenState extends State<OfflinePapersScreen> {
     if (mounted) await _reload();
   }
 
+  void _showInfo() {
+    showDialog<void>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        icon: const Icon(Icons.lock_rounded, color: _green),
+        title: const Text('Private downloads'),
+        content: const Text(
+          'Saved privately inside Quiz LAB on this device. These papers are not exported as files.',
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(ctx).pop(),
+            child: const Text('Got it'),
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -81,11 +99,14 @@ class _OfflinePapersScreenState extends State<OfflinePapersScreen> {
         title: const Text('Downloads'),
         backgroundColor: const Color(0xFFF1F5F9),
         foregroundColor: _ink,
-        actions: const [
-          Padding(
-            padding: EdgeInsets.only(right: 14),
-            child: Center(child: _ProBadge()),
+        actions: [
+          const _ProBadge(),
+          IconButton(
+            tooltip: 'About downloads',
+            icon: const Icon(Icons.info_outline_rounded),
+            onPressed: _showInfo,
           ),
+          const SizedBox(width: 6),
         ],
       ),
       body: FutureBuilder<List<QuizDetail>>(
@@ -148,31 +169,6 @@ class _OfflinePapersScreenState extends State<OfflinePapersScreen> {
             child: ListView(
               padding: const EdgeInsets.fromLTRB(16, 12, 16, 28),
               children: [
-                Container(
-                  padding: const EdgeInsets.all(14),
-                  decoration: BoxDecoration(
-                    color: const Color(0xFFECFDF3),
-                    borderRadius: BorderRadius.circular(16),
-                    border: Border.all(color: const Color(0xFFBBF7D0)),
-                  ),
-                  child: const Row(
-                    children: [
-                      Icon(Icons.lock_rounded, color: _green, size: 20),
-                      SizedBox(width: 10),
-                      Expanded(
-                        child: Text(
-                          'Saved privately inside Quiz LAB on this device. These papers are not exported as files.',
-                          style: TextStyle(
-                            fontSize: 12.5,
-                            height: 1.4,
-                            color: Color(0xFF166534),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(height: 14),
                 Text(
                   '${papers.length} ${papers.length == 1 ? 'paper' : 'papers'} ready offline',
                   style: const TextStyle(
@@ -237,10 +233,23 @@ class _OfflinePapersScreenState extends State<OfflinePapersScreen> {
                                 ),
                               ),
                               const SizedBox(width: 8),
-                              const Icon(
-                                Icons.play_circle_fill_rounded,
-                                color: _green,
-                                size: 30,
+                              FilledButton(
+                                onPressed: () => _open(paper),
+                                style: FilledButton.styleFrom(
+                                  backgroundColor: _green,
+                                  foregroundColor: Colors.white,
+                                  minimumSize: const Size(0, 36),
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 16,
+                                  ),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                ),
+                                child: const Text(
+                                  'View',
+                                  style: TextStyle(fontWeight: FontWeight.w700),
+                                ),
                               ),
                             ],
                           ),

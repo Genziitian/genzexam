@@ -39,7 +39,9 @@ class StorefrontService {
   /// Create Razorpay checkout order for a paid paper.
   Future<StorefrontOrderResponse> createOrder(int quizId) async {
     final response = await _client.post('/storefront/papers/$quizId/orders');
-    return StorefrontOrderResponse.fromJson(response.data as Map<String, dynamic>);
+    return StorefrontOrderResponse.fromJson(
+      response.data as Map<String, dynamic>,
+    );
   }
 
   /// Verify Razorpay payment signature.
@@ -58,6 +60,7 @@ class StorefrontService {
         'razorpay_signature': razorpaySignature,
       },
     );
-    return response.data?['status'] == 'paid' || response.data?['success'] == true;
+    return response.data?['status'] == 'paid' ||
+        response.data?['success'] == true;
   }
 }

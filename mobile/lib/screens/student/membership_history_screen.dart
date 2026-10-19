@@ -355,7 +355,9 @@ class _MembershipHistoryScreenState extends State<MembershipHistoryScreen>
                                     ),
                               ),
                               const SizedBox(height: 12),
-                              ...subscriptions.whereType<Map>().map(_subscription),
+                              ...subscriptions.whereType<Map>().map(
+                                _subscription,
+                              ),
                             ],
                           ),
                   ),
@@ -418,13 +420,12 @@ class _MembershipHistoryScreenState extends State<MembershipHistoryScreen>
                                     TextButton(
                                       onPressed:
                                           _page <
-                                                  (ledger['last_page'] as int? ??
-                                                      1)
-                                              ? () {
-                                                  _page++;
-                                                  _load();
-                                                }
-                                              : null,
+                                              (ledger['last_page'] as int? ?? 1)
+                                          ? () {
+                                              _page++;
+                                              _load();
+                                            }
+                                          : null,
                                       child: const Text('Next'),
                                     ),
                                   ],

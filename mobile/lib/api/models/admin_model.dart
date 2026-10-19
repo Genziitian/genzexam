@@ -126,9 +126,15 @@ class AdminUserListResponse {
           .whereType<Map<String, dynamic>>()
           .map((u) => AdminUserListItem.fromJson(u))
           .toList(),
-      meta: PaginationMeta.fromJson((json['meta'] as Map<String, dynamic>?) ?? {}),
-      counts: UserCounts.fromJson((json['counts'] as Map<String, dynamic>?) ?? {}),
-      viewer: ViewerPermissions.fromJson((json['viewer'] as Map<String, dynamic>?) ?? {}),
+      meta: PaginationMeta.fromJson(
+        (json['meta'] as Map<String, dynamic>?) ?? {},
+      ),
+      counts: UserCounts.fromJson(
+        (json['counts'] as Map<String, dynamic>?) ?? {},
+      ),
+      viewer: ViewerPermissions.fromJson(
+        (json['viewer'] as Map<String, dynamic>?) ?? {},
+      ),
     );
   }
 }

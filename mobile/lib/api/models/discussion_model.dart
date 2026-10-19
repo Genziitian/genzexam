@@ -59,11 +59,7 @@ class DiscussionCourseRef {
   }
 
   Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'name': name,
-      'slug': slug,
-    };
+    return {'id': id, 'name': name, 'slug': slug};
   }
 }
 
@@ -71,10 +67,7 @@ class DiscussionQuizRef {
   final int id;
   final String title;
 
-  const DiscussionQuizRef({
-    required this.id,
-    required this.title,
-  });
+  const DiscussionQuizRef({required this.id, required this.title});
 
   factory DiscussionQuizRef.fromJson(Map<String, dynamic> json) {
     return DiscussionQuizRef(
@@ -84,10 +77,7 @@ class DiscussionQuizRef {
   }
 
   Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'title': title,
-    };
+    return {'id': id, 'title': title};
   }
 }
 
@@ -139,7 +129,9 @@ class DiscussionListItem {
           ? DiscussionCourseRef.fromJson(json['course'] as Map<String, dynamic>)
           : null,
       linkedQuiz: json['linked_quiz'] is Map<String, dynamic>
-          ? DiscussionQuizRef.fromJson(json['linked_quiz'] as Map<String, dynamic>)
+          ? DiscussionQuizRef.fromJson(
+              json['linked_quiz'] as Map<String, dynamic>,
+            )
           : null,
       isAnonymous: json['is_anonymous'] == true,
       isSolved: json['is_solved'] == true,
@@ -229,7 +221,9 @@ class DiscussionDetail {
           ? DiscussionCourseRef.fromJson(json['course'] as Map<String, dynamic>)
           : null,
       linkedQuiz: json['linked_quiz'] is Map<String, dynamic>
-          ? DiscussionQuizRef.fromJson(json['linked_quiz'] as Map<String, dynamic>)
+          ? DiscussionQuizRef.fromJson(
+              json['linked_quiz'] as Map<String, dynamic>,
+            )
           : null,
       isAnonymous: json['is_anonymous'] == true,
       isSolved: json['is_solved'] == true,
@@ -336,10 +330,7 @@ class VoteResult {
   final bool voted;
   final int count;
 
-  const VoteResult({
-    required this.voted,
-    required this.count,
-  });
+  const VoteResult({required this.voted, required this.count});
 
   factory VoteResult.fromJson(Map<String, dynamic> json) {
     return VoteResult(

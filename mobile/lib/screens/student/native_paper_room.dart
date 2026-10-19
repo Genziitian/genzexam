@@ -389,18 +389,32 @@ class _PaperRoomScreenState extends State<PaperRoomScreen>
                     size: 92,
                     child: Text(
                       '$answeredNow/$totalNow',
-                      style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w800, color: _paperInk),
+                      style: const TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w800,
+                        color: _paperInk,
+                      ),
                     ),
                   ),
                   const SizedBox(height: 16),
-                  const Text('Submit this paper?', style: TextStyle(fontSize: 21, fontWeight: FontWeight.w800, color: _paperInk)),
+                  const Text(
+                    'Submit this paper?',
+                    style: TextStyle(
+                      fontSize: 21,
+                      fontWeight: FontWeight.w800,
+                      color: _paperInk,
+                    ),
+                  ),
                   const SizedBox(height: 6),
                   Text(
                     answeredNow < totalNow
                         ? '${totalNow - answeredNow} question${totalNow - answeredNow == 1 ? '' : 's'} still unanswered. Your answers will be saved and the paper will close.'
                         : 'All questions answered. Your answers will be saved and the paper will close.',
                     textAlign: TextAlign.center,
-                    style: const TextStyle(color: Color(0xFF64748B), height: 1.45),
+                    style: const TextStyle(
+                      color: Color(0xFF64748B),
+                      height: 1.45,
+                    ),
                   ),
                   const SizedBox(height: 20),
                   PremiumButton(
@@ -410,7 +424,13 @@ class _PaperRoomScreenState extends State<PaperRoomScreen>
                   ),
                   TextButton(
                     onPressed: () => Navigator.pop(context, false),
-                    child: const Text('Keep working', style: TextStyle(fontWeight: FontWeight.w700, color: _paperGreen)),
+                    child: const Text(
+                      'Keep working',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w700,
+                        color: _paperGreen,
+                      ),
+                    ),
                   ),
                 ],
               ),
@@ -578,7 +598,10 @@ class _PaperRoomScreenState extends State<PaperRoomScreen>
                 apiClient: widget.apiClient,
                 paperCount: 1,
                 onRecheck: () async {
-                  final access = await ProAccessGuard.check(widget.apiClient, _userId);
+                  final access = await ProAccessGuard.check(
+                    widget.apiClient,
+                    _userId,
+                  );
                   if (access == ProAccess.active && mounted) {
                     setState(() {
                       _locked = null;
@@ -612,124 +635,293 @@ class _PaperRoomScreenState extends State<PaperRoomScreen>
   Widget _startView() => ListView(
     padding: const EdgeInsets.fromLTRB(18, 18, 18, 32),
     children: [
-      FadeSlideIn(child: _panel(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 11, vertical: 6),
-              decoration: BoxDecoration(
-                color: _paperGreen.withValues(alpha: .1),
-                borderRadius: BorderRadius.circular(999),
+      FadeSlideIn(
+        child: Container(
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(28),
+            border: Border.all(color: const Color(0xFFE2E8F0)),
+            boxShadow: const [
+              BoxShadow(
+                color: Color(0x1A0F172A),
+                blurRadius: 24,
+                offset: Offset(0, 10),
               ),
-              child: const Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Icon(Icons.bolt_rounded, size: 14, color: _paperGreen),
-                  SizedBox(width: 4),
-                  Flexible(child: Text(
-                    'READY WHEN YOU ARE',
-                    style: TextStyle(
-                      color: _paperGreen,
-                      letterSpacing: 1.3,
-                      fontSize: 10.5,
-                      fontWeight: FontWeight.w800,
+            ],
+          ),
+          clipBehavior: Clip.antiAlias,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Container(
+                padding: const EdgeInsets.fromLTRB(22, 22, 22, 24),
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [Color(0xFF0F5132), Color(0xFF16A34A)],
+                  ),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 12,
+                        vertical: 6,
+                      ),
+                      decoration: BoxDecoration(
+                        color: Colors.white.withValues(alpha: .18),
+                        borderRadius: BorderRadius.circular(999),
+                      ),
+                      child: const Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(
+                            Icons.bolt_rounded,
+                            size: 14,
+                            color: Color(0xFFFDE68A),
+                          ),
+                          SizedBox(width: 4),
+                          Flexible(
+                            child: Text(
+                              'READY WHEN YOU ARE',
+                              style: TextStyle(
+                                color: Colors.white,
+                                letterSpacing: 1.3,
+                                fontSize: 10.5,
+                                fontWeight: FontWeight.w800,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                  )),
-                ],
-              ),
-            ),
-            const SizedBox(height: 10),
-            Text(
-              _quiz?.title ?? widget.title,
-              style: const TextStyle(
-                fontSize: 25,
-                fontWeight: FontWeight.w800,
-                color: _paperInk,
-              ),
-            ),
-            const SizedBox(height: 8),
-            Text(
-              '${_questions.length} questions · ${_quiz?.course?.name ?? 'Practice paper'}',
-              style: const TextStyle(color: Color(0xFF64748B)),
-            ),
-            if (_offline)
-              const Padding(
-                padding: EdgeInsets.only(top: 12),
-                child: Text(
-                  'Downloaded paper. Answers will sync when you are back online.',
-                  style: TextStyle(color: _paperGreen),
+                    const SizedBox(height: 16),
+                    Text(
+                      _quiz?.title ?? widget.title,
+                      style: const TextStyle(
+                        fontSize: 26,
+                        height: 1.2,
+                        fontWeight: FontWeight.w800,
+                        letterSpacing: -.4,
+                        color: Colors.white,
+                      ),
+                    ),
+                    const SizedBox(height: 16),
+                    Wrap(
+                      spacing: 8,
+                      runSpacing: 8,
+                      children: [
+                        _metaPill(
+                          Icons.help_outline_rounded,
+                          '${_questions.length} questions',
+                        ),
+                        _metaPill(
+                          Icons.menu_book_outlined,
+                          _quiz?.course?.name ?? 'Practice paper',
+                        ),
+                      ],
+                    ),
+                    if (_offline)
+                      const Padding(
+                        padding: EdgeInsets.only(top: 14),
+                        child: Text(
+                          'Downloaded paper. Answers will sync when you are back online.',
+                          style: TextStyle(color: Color(0xFFD1FAE5)),
+                        ),
+                      ),
+                  ],
                 ),
               ),
-            const SizedBox(height: 24),
-            const Text(
-              'Choose your time',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
-            ),
-            const SizedBox(height: 6),
-            const Text(
-              'You can set a custom clock before this attempt starts.',
-              style: TextStyle(color: Color(0xFF64748B)),
-            ),
-            const SizedBox(height: 14),
-            Wrap(
-              spacing: 8,
-              runSpacing: 8,
-              children: [
-                _timeChip('Untimed', 0),
-                if ((_quiz?.timeLimitMinutes ?? 0) > 0)
-                  _timeChip(
-                    'Paper default · ${_quiz!.timeLimitMinutes} min',
-                    _quiz!.timeLimitMinutes,
-                  ),
-                for (final minutes in [15, 30])
-                  _timeChip('$minutes min', minutes),
-                _timeChip('45 min', 45),
-                _timeChip('60 min', 60),
-                OutlinedButton.icon(
-                  onPressed: _customTime,
-                  icon: const Icon(Icons.timer_outlined, size: 16),
-                  label: const Text('Custom'),
-                  style: OutlinedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(horizontal: 12),
-                    minimumSize: const Size(0, 40),
-                  ),
-                ),
-              ],
-            ),
-            if (_error != null)
               Padding(
-                padding: const EdgeInsets.only(top: 10),
-                child: Text(_error!, style: const TextStyle(color: Colors.red)),
+                padding: const EdgeInsets.fromLTRB(20, 22, 20, 22),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Row(
+                      children: [
+                        Icon(
+                          Icons.timer_outlined,
+                          size: 20,
+                          color: _paperGreen,
+                        ),
+                        SizedBox(width: 8),
+                        Text(
+                          'Choose your time',
+                          style: TextStyle(
+                            fontSize: 17,
+                            fontWeight: FontWeight.w800,
+                            color: _paperInk,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 16),
+                    LayoutBuilder(
+                      builder: (context, box) {
+                        final third = (box.maxWidth - 20) / 3;
+                        return Wrap(
+                          spacing: 10,
+                          runSpacing: 10,
+                          children: [
+                            _timeTile(
+                              'Untimed',
+                              0,
+                              third,
+                              Icons.all_inclusive_rounded,
+                            ),
+                            if ((_quiz?.timeLimitMinutes ?? 0) > 0)
+                              _timeTile(
+                                'Paper default · ${_quiz!.timeLimitMinutes} min',
+                                _quiz!.timeLimitMinutes,
+                                box.maxWidth,
+                                Icons.verified_outlined,
+                              ),
+                            for (final minutes in [15, 30, 45, 60])
+                              _timeTile('$minutes min', minutes, third, null),
+                            _customTile(third),
+                          ],
+                        );
+                      },
+                    ),
+                    if (_error != null)
+                      Padding(
+                        padding: const EdgeInsets.only(top: 12),
+                        child: Text(
+                          _error!,
+                          style: const TextStyle(color: Colors.red),
+                        ),
+                      ),
+                    const SizedBox(height: 24),
+                    PremiumButton(
+                      label: 'Start paper',
+                      icon: Icons.play_arrow_rounded,
+                      onPressed: _begin,
+                    ),
+                  ],
+                ),
               ),
-            const SizedBox(height: 20),
-            PremiumButton(
-              label: 'Start paper',
-              icon: Icons.play_arrow_rounded,
-              onPressed: _begin,
-            ),
-          ],
+            ],
+          ),
         ),
-      )),
+      ),
     ],
   );
 
-  Widget _timeChip(String label, int minutes) => ChoiceChip(
-    label: Text(label),
-    selected: _selectedMinutes == minutes,
-    selectedColor: const Color(0xFFDCFCE7),
-    showCheckmark: true,
-    checkmarkColor: _paperGreen,
-    shape: StadiumBorder(
-      side: BorderSide(
-        color: _selectedMinutes == minutes ? _paperGreen : const Color(0xFFCBD5E1),
+  Widget _metaPill(IconData icon, String text) => Container(
+    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 7),
+    decoration: BoxDecoration(
+      color: Colors.black.withValues(alpha: .18),
+      borderRadius: BorderRadius.circular(12),
+    ),
+    child: Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Icon(icon, size: 15, color: Colors.white),
+        const SizedBox(width: 6),
+        Flexible(
+          child: Text(
+            text,
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 13,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+        ),
+      ],
+    ),
+  );
+
+  Widget _tile({
+    required double width,
+    required bool selected,
+    required VoidCallback onTap,
+    required Widget child,
+  }) => SizedBox(
+    width: width,
+    height: 56,
+    child: Material(
+      color: selected ? const Color(0xFFDCFCE7) : const Color(0xFFF8FAFC),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16),
+        side: BorderSide(
+          color: selected ? _paperGreen : const Color(0xFFE2E8F0),
+          width: selected ? 1.6 : 1,
+        ),
+      ),
+      clipBehavior: Clip.antiAlias,
+      child: InkWell(
+        onTap: onTap,
+        child: Center(child: child),
       ),
     ),
-    onSelected: (_) {
-      AppHaptics.selection();
-      setState(() => _selectedMinutes = minutes);
-    },
   );
+
+  Widget _timeTile(String label, int minutes, double width, IconData? icon) {
+    final selected = _selectedMinutes == minutes;
+    return _tile(
+      width: width,
+      selected: selected,
+      onTap: () {
+        AppHaptics.selection();
+        setState(() => _selectedMinutes = minutes);
+      },
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          if (selected || icon != null) ...[
+            Icon(
+              selected ? Icons.check_circle_rounded : icon,
+              size: 17,
+              color: selected ? _paperGreen : const Color(0xFF64748B),
+            ),
+            const SizedBox(width: 6),
+          ],
+          Flexible(
+            child: Text(
+              label,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(
+                fontSize: 14,
+                fontWeight: selected ? FontWeight.w800 : FontWeight.w600,
+                color: selected ? const Color(0xFF14532D) : _paperInk,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _customTile(double width) {
+    const presets = {0, 15, 30, 45, 60};
+    final custom =
+        !presets.contains(_selectedMinutes) &&
+        _selectedMinutes != (_quiz?.timeLimitMinutes ?? -1);
+    return _tile(
+      width: width,
+      selected: custom,
+      onTap: _customTime,
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const Icon(Icons.tune_rounded, size: 17, color: _paperGreen),
+          const SizedBox(width: 6),
+          Text(
+            custom ? '$_selectedMinutes min' : 'Custom',
+            style: const TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.w700,
+              color: _paperGreen,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 
   Future<void> _customTime() async {
     final controller = TextEditingController(
@@ -795,7 +987,9 @@ class _PaperRoomScreenState extends State<PaperRoomScreen>
       backgroundColor: Colors.transparent,
       builder: (sheetContext) => StatefulBuilder(
         builder: (context, setSheet) => Padding(
-          padding: EdgeInsets.only(bottom: MediaQuery.viewInsetsOf(context).bottom),
+          padding: EdgeInsets.only(
+            bottom: MediaQuery.viewInsetsOf(context).bottom,
+          ),
           child: Container(
             padding: const EdgeInsets.fromLTRB(20, 12, 20, 22),
             decoration: const BoxDecoration(
@@ -816,24 +1010,45 @@ class _PaperRoomScreenState extends State<PaperRoomScreen>
                             tween: Tween(begin: 0, end: 1),
                             duration: const Duration(milliseconds: 600),
                             curve: Curves.elasticOut,
-                            builder: (context, v, child) => Transform.scale(scale: v, child: child),
+                            builder: (context, v, child) =>
+                                Transform.scale(scale: v, child: child),
                             child: Container(
                               width: 64,
                               height: 64,
-                              decoration: const BoxDecoration(gradient: Brand.gradient, shape: BoxShape.circle),
-                              child: const Icon(Icons.check_rounded, color: Colors.white, size: 36),
+                              decoration: const BoxDecoration(
+                                gradient: Brand.gradient,
+                                shape: BoxShape.circle,
+                              ),
+                              child: const Icon(
+                                Icons.check_rounded,
+                                color: Colors.white,
+                                size: 36,
+                              ),
                             ),
                           ),
                           const SizedBox(height: 14),
-                          const Text('Thanks, report sent', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800, color: _paperInk)),
+                          const Text(
+                            'Thanks, report sent',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.w800,
+                              color: _paperInk,
+                            ),
+                          ),
                           const SizedBox(height: 6),
                           Text(
                             'Our team will check question $number and fix it if needed.',
                             textAlign: TextAlign.center,
-                            style: const TextStyle(color: Color(0xFF64748B), height: 1.4),
+                            style: const TextStyle(
+                              color: Color(0xFF64748B),
+                              height: 1.4,
+                            ),
                           ),
                           const SizedBox(height: 18),
-                          PremiumButton(label: 'Back to the paper', onPressed: () => Navigator.pop(sheetContext)),
+                          PremiumButton(
+                            label: 'Back to the paper',
+                            onPressed: () => Navigator.pop(sheetContext),
+                          ),
                         ],
                       )
                     : Column(
@@ -844,13 +1059,26 @@ class _PaperRoomScreenState extends State<PaperRoomScreen>
                             child: Container(
                               width: 40,
                               height: 4,
-                              decoration: BoxDecoration(color: const Color(0xFFE2E8F0), borderRadius: BorderRadius.circular(4)),
+                              decoration: BoxDecoration(
+                                color: const Color(0xFFE2E8F0),
+                                borderRadius: BorderRadius.circular(4),
+                              ),
                             ),
                           ),
                           const SizedBox(height: 16),
-                          Text('Report question $number', style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w800, color: _paperInk)),
+                          Text(
+                            'Report question $number',
+                            style: const TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.w800,
+                              color: _paperInk,
+                            ),
+                          ),
                           const SizedBox(height: 4),
-                          const Text('What is wrong? Pick everything that applies.', style: TextStyle(color: Color(0xFF64748B))),
+                          const Text(
+                            'What is wrong? Pick everything that applies.',
+                            style: TextStyle(color: Color(0xFF64748B)),
+                          ),
                           const SizedBox(height: 12),
                           Flexible(
                             child: SingleChildScrollView(
@@ -861,17 +1089,26 @@ class _PaperRoomScreenState extends State<PaperRoomScreen>
                                     spacing: 8,
                                     runSpacing: 8,
                                     children: [
-                                      for (final entry in _reportReasons.entries)
+                                      for (final entry
+                                          in _reportReasons.entries)
                                         FilterChip(
                                           label: Text(entry.value),
                                           selected: picked.contains(entry.key),
                                           showCheckmark: false,
                                           avatar: picked.contains(entry.key)
-                                              ? const Icon(Icons.check_rounded, size: 16, color: _paperGreen)
+                                              ? const Icon(
+                                                  Icons.check_rounded,
+                                                  size: 16,
+                                                  color: _paperGreen,
+                                                )
                                               : null,
-                                          selectedColor: const Color(0xFFDCFCE7),
+                                          selectedColor: const Color(
+                                            0xFFDCFCE7,
+                                          ),
                                           onSelected: (on) => setSheet(() {
-                                            on ? picked.add(entry.key) : picked.remove(entry.key);
+                                            on
+                                                ? picked.add(entry.key)
+                                                : picked.remove(entry.key);
                                             error = null;
                                           }),
                                         ),
@@ -884,14 +1121,22 @@ class _PaperRoomScreenState extends State<PaperRoomScreen>
                                     maxLength: 1000,
                                     decoration: InputDecoration(
                                       labelText: 'Tell us more (optional)',
-                                      hintText: 'e.g. The answer should be 4, not 5',
-                                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(14)),
+                                      hintText:
+                                          'e.g. The answer should be 4, not 5',
+                                      border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(14),
+                                      ),
                                     ),
                                   ),
                                   if (error != null)
                                     Padding(
                                       padding: const EdgeInsets.only(bottom: 8),
-                                      child: Text(error!, style: const TextStyle(color: Color(0xFFB91C1C))),
+                                      child: Text(
+                                        error!,
+                                        style: const TextStyle(
+                                          color: Color(0xFFB91C1C),
+                                        ),
+                                      ),
                                     ),
                                 ],
                               ),
@@ -904,7 +1149,9 @@ class _PaperRoomScreenState extends State<PaperRoomScreen>
                             busy: sending,
                             onPressed: () async {
                               if (picked.isEmpty) {
-                                setSheet(() => error = 'Pick at least one reason.');
+                                setSheet(
+                                  () => error = 'Pick at least one reason.',
+                                );
                                 return;
                               }
                               setSheet(() {
@@ -912,15 +1159,18 @@ class _PaperRoomScreenState extends State<PaperRoomScreen>
                                 error = null;
                               });
                               try {
-                                await widget.apiClient.post<Map<String, dynamic>>(
-                                  '/question-reports',
-                                  data: {
-                                    'question_id': questionId,
-                                    'question_number': number,
-                                    'reasons': picked.toList(),
-                                    'comment': comment.text.trim().isEmpty ? null : comment.text.trim(),
-                                  },
-                                );
+                                await widget.apiClient
+                                    .post<Map<String, dynamic>>(
+                                      '/question-reports',
+                                      data: {
+                                        'question_id': questionId,
+                                        'question_number': number,
+                                        'reasons': picked.toList(),
+                                        'comment': comment.text.trim().isEmpty
+                                            ? null
+                                            : comment.text.trim(),
+                                      },
+                                    );
                                 setSheet(() {
                                   sending = false;
                                   sent = true;
@@ -928,9 +1178,7 @@ class _PaperRoomScreenState extends State<PaperRoomScreen>
                               } catch (e) {
                                 setSheet(() {
                                   sending = false;
-                                  error = e is ApiException
-                                      ? e.message
-                                      : 'Could not send the report. Check your connection and try again.';
+                                  error = e is ApiException ? e.message : 'Could not send the report. Check your connection and try again.';
                                 });
                               }
                             },
@@ -969,16 +1217,16 @@ class _PaperRoomScreenState extends State<PaperRoomScreen>
         _runnerHeader(answeredCount),
         Container(height: 1, color: const Color(0xFFE2E8F0)),
         SizedBox(
-          height: 76,
+          height: 60,
           child: ListView.separated(
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
             scrollDirection: Axis.horizontal,
             itemCount: _questions.length,
-            separatorBuilder: (_, _) => const SizedBox(width: 8),
+            separatorBuilder: (_, _) => const SizedBox(width: 10),
             itemBuilder: (context, index) => _questionPaletteItem(index),
           ),
         ),
-        Container(height: 3, color: const Color(0xFF1E293B)),
+        Container(height: 1, color: const Color(0xFFE2E8F0)),
         Expanded(
           child: ListView(
             padding: const EdgeInsets.fromLTRB(16, 16, 16, 20),
@@ -1229,19 +1477,22 @@ class _PaperRoomScreenState extends State<PaperRoomScreen>
                 ],
               ),
             ),
-            OutlinedButton(
-              style: OutlinedButton.styleFrom(
+            FilledButton.tonalIcon(
+              style: FilledButton.styleFrom(
+                backgroundColor: const Color(0xFFDCFCE7),
                 foregroundColor: const Color(0xFF047857),
-                side: const BorderSide(color: Color(0xFF86EFAC)),
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 10,
-                  vertical: 10,
+                minimumSize: const Size(0, 38),
+                padding: const EdgeInsets.symmetric(horizontal: 12),
+                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
                 ),
               ),
               onPressed: _showCalculator,
-              child: const Text(
+              icon: const Icon(Icons.calculate_outlined, size: 18),
+              label: const Text(
                 'Calculator',
-                style: TextStyle(fontWeight: FontWeight.w700, fontSize: 12),
+                style: TextStyle(fontWeight: FontWeight.w800, fontSize: 12),
               ),
             ),
           ],
@@ -1263,47 +1514,77 @@ class _PaperRoomScreenState extends State<PaperRoomScreen>
             ),
           ),
         const SizedBox(height: 8),
-        LayoutBuilder(builder: (context, constraints) => Row(
-          children: [
-            _headerPill(
-              constraints.maxWidth < 440 ? '$answeredCount/${_questions.length}' : 'Answered:  $answeredCount/${_questions.length}',
-              const Color(0xFFF1F5F9),
-              const Color(0xFF475569),
-            ),
-            const SizedBox(width: 8),
-            _headerPill(
-              _selectedMinutes > 0 ? _clockLabel : 'Untimed',
-              _seconds < 60 && _selectedMinutes > 0
-                  ? const Color(0xFFFEE2E2)
-                  : const Color(0xFFF1F5F9),
-              _seconds < 60 && _selectedMinutes > 0
-                  ? Colors.red
-                  : const Color(0xFF0F172A),
-              leading: _selectedMinutes == 0 ? Icons.circle : null,
-            ),
-            const Spacer(),
-            if (_current != null) _ReportButton(
-              compact: constraints.maxWidth < 340,
-              onTap: () => _reportQuestion(_current!.id, _questionIndex + 1),
-            ),
-            const SizedBox(width: 6),
-            FilledButton.icon(
-              style: FilledButton.styleFrom(
-                backgroundColor: const Color(0xFF059669),
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 8,
-                  vertical: 11,
+        LayoutBuilder(
+          builder: (context, constraints) => Row(
+            children: [
+              _headerPill(
+                constraints.maxWidth < 440
+                    ? '$answeredCount/${_questions.length}'
+                    : 'Answered:  $answeredCount/${_questions.length}',
+                const Color(0xFFF1F5F9),
+                const Color(0xFF475569),
+              ),
+              const SizedBox(width: 8),
+              _headerPill(
+                _selectedMinutes > 0 ? _clockLabel : 'Untimed',
+                _seconds < 60 && _selectedMinutes > 0
+                    ? const Color(0xFFFEE2E2)
+                    : const Color(0xFFF1F5F9),
+                _seconds < 60 && _selectedMinutes > 0
+                    ? Colors.red
+                    : const Color(0xFF0F172A),
+                leading: _selectedMinutes == 0 ? Icons.circle : null,
+              ),
+              const Spacer(),
+              if (_current != null)
+                _ReportButton(
+                  compact: constraints.maxWidth < 340,
+                  onTap: () =>
+                      _reportQuestion(_current!.id, _questionIndex + 1),
+                ),
+              const SizedBox(width: 6),
+              DecoratedBox(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                  gradient: _submitting
+                      ? null
+                      : const LinearGradient(
+                          colors: [Color(0xFF16A34A), Color(0xFF0F7A3D)],
+                        ),
+                  color: _submitting ? const Color(0xFFE5E7EB) : null,
+                  boxShadow: _submitting
+                      ? null
+                      : const [
+                          BoxShadow(
+                            color: Color(0x4016A34A),
+                            blurRadius: 10,
+                            offset: Offset(0, 4),
+                          ),
+                        ],
+                ),
+                child: FilledButton.icon(
+                  style: FilledButton.styleFrom(
+                    backgroundColor: Colors.transparent,
+                    shadowColor: Colors.transparent,
+                    foregroundColor: Colors.white,
+                    minimumSize: const Size(0, 38),
+                    padding: const EdgeInsets.symmetric(horizontal: 12),
+                    tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),
+                  onPressed: _submitting ? null : () => _submit(),
+                  icon: const Icon(Icons.check_rounded, size: 17),
+                  label: const Text(
+                    'Submit & Exit',
+                    style: TextStyle(fontWeight: FontWeight.w800, fontSize: 12),
+                  ),
                 ),
               ),
-              onPressed: _submitting ? null : () => _submit(),
-              icon: const Icon(Icons.check, size: 17),
-              label: const Text(
-                'Submit & Exit',
-                style: TextStyle(fontWeight: FontWeight.w800, fontSize: 12),
-              ),
-            ),
-          ],
-        )),
+            ],
+          ),
+        ),
       ],
     ),
   );
@@ -1314,11 +1595,11 @@ class _PaperRoomScreenState extends State<PaperRoomScreen>
     Color foreground, {
     IconData? leading,
   }) => Container(
-    padding: const EdgeInsets.symmetric(horizontal: 11, vertical: 9),
+    height: 38,
+    padding: const EdgeInsets.symmetric(horizontal: 11),
     decoration: BoxDecoration(
       color: background,
       borderRadius: BorderRadius.circular(12),
-      border: Border.all(color: const Color(0xFFCBD5E1)),
     ),
     child: Row(
       mainAxisSize: MainAxisSize.min,
@@ -1344,46 +1625,92 @@ class _PaperRoomScreenState extends State<PaperRoomScreen>
     final isCurrent = index == _questionIndex;
     final answered = _hasAnswer(question);
     final review = _markedForReview.contains(question.id);
-    final color = review
-        ? const Color(0xFF7C3AED)
-        : answered
+    const purple = Color(0xFF7C3AED);
+    final Color fill = isCurrent
         ? _paperGreen
+        : review
+        ? const Color(0xFFF3E8FF)
+        : answered
+        ? const Color(0xFFDCFCE7)
+        : Colors.white;
+    final Color text = isCurrent
+        ? Colors.white
+        : review
+        ? purple
+        : answered
+        ? const Color(0xFF166534)
         : const Color(0xFF64748B);
-    return InkWell(
-      onTap: () async {
-        setState(() => _questionIndex = index);
-        await _saveDraft();
-      },
-      borderRadius: BorderRadius.circular(12),
-      child: Container(
-        width: 54,
-        alignment: Alignment.center,
-        decoration: BoxDecoration(
-          color: answered && !review ? const Color(0xFFDCFCE7) : Colors.white,
-          borderRadius: BorderRadius.circular(12),
-          border: Border.all(
-            color: isCurrent ? _paperGreen : const Color(0xFFCBD5E1),
-            width: isCurrent ? 3 : 1.5,
-          ),
-        ),
-        child: Stack(
-          alignment: Alignment.center,
-          children: [
-            Text(
-              '${index + 1}',
-              style: TextStyle(
-                color: color,
-                fontSize: 17,
-                fontWeight: FontWeight.w800,
-              ),
+    final Color border = isCurrent
+        ? _paperGreen
+        : review
+        ? purple
+        : answered
+        ? const Color(0xFF86EFAC)
+        : const Color(0xFFCBD5E1);
+    return Semantics(
+      button: true,
+      selected: isCurrent,
+      label:
+          'Question ${index + 1}${answered ? ', answered' : ''}${review ? ', marked for review' : ''}',
+      child: GestureDetector(
+        behavior: HitTestBehavior.opaque,
+        onTap: () async {
+          AppHaptics.selection();
+          setState(() => _questionIndex = index);
+          await _saveDraft();
+        },
+        child: Center(
+          child: AnimatedContainer(
+            duration: const Duration(milliseconds: 160),
+            width: 40,
+            height: 40,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              color: fill,
+              shape: BoxShape.circle,
+              border: Border.all(color: border, width: isCurrent ? 0 : 1.4),
+              boxShadow: isCurrent
+                  ? const [
+                      BoxShadow(
+                        color: Color(0x5516A34A),
+                        blurRadius: 10,
+                        offset: Offset(0, 4),
+                      ),
+                    ]
+                  : null,
             ),
-            if (review)
-              const Positioned(
-                right: 3,
-                top: 3,
-                child: Icon(Icons.flag, size: 12, color: Color(0xFF7C3AED)),
-              ),
-          ],
+            child: Stack(
+              clipBehavior: Clip.none,
+              alignment: Alignment.center,
+              children: [
+                Text(
+                  '${index + 1}',
+                  style: TextStyle(
+                    color: text,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w800,
+                  ),
+                ),
+                if (review)
+                  Positioned(
+                    right: -4,
+                    top: -4,
+                    child: Container(
+                      padding: const EdgeInsets.all(2),
+                      decoration: const BoxDecoration(
+                        color: purple,
+                        shape: BoxShape.circle,
+                      ),
+                      child: const Icon(
+                        Icons.flag,
+                        size: 8,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+              ],
+            ),
+          ),
         ),
       ),
     );
@@ -1623,7 +1950,12 @@ class _PaperRoomScreenState extends State<PaperRoomScreen>
           return [_codeBlock(value)];
         case 'image':
           final uri = _safeImageUri(
-            (content['url'] ?? content['asset'] ?? content['src'] ?? content['value'] ?? '').toString(),
+            (content['url'] ??
+                    content['asset'] ??
+                    content['src'] ??
+                    content['value'] ??
+                    '')
+                .toString(),
           );
           return [
             if (uri != null)
@@ -1803,11 +2135,18 @@ class _PaperRoomScreenState extends State<PaperRoomScreen>
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                const SuccessTick(size: 120, label: 'Paper submitted successfully'),
+                const SuccessTick(
+                  size: 120,
+                  label: 'Paper submitted successfully',
+                ),
                 const SizedBox(height: 14),
                 const Text(
                   'Paper submitted',
-                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.w800, color: _paperInk),
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.w800,
+                    color: _paperInk,
+                  ),
                 ),
                 if (result != null) ...[
                   const SizedBox(height: 18),
@@ -1824,11 +2163,19 @@ class _PaperRoomScreenState extends State<PaperRoomScreen>
                         children: [
                           Text(
                             '${v.toStringAsFixed(0)}%',
-                            style: const TextStyle(fontSize: 30, fontWeight: FontWeight.w900, color: _paperInk),
+                            style: const TextStyle(
+                              fontSize: 30,
+                              fontWeight: FontWeight.w900,
+                              color: _paperInk,
+                            ),
                           ),
                           Text(
                             '${result.score} / ${result.totalMarks}',
-                            style: const TextStyle(fontSize: 12.5, color: Color(0xFF64748B), fontWeight: FontWeight.w700),
+                            style: const TextStyle(
+                              fontSize: 12.5,
+                              color: Color(0xFF64748B),
+                              fontWeight: FontWeight.w700,
+                            ),
                           ),
                         ],
                       ),
@@ -1933,18 +2280,47 @@ class _ReportButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Tooltip(
     message: 'Report question',
-    child: Semantics(button: true, label: 'Report question',
+    child: Semantics(
+      button: true,
+      label: 'Report question',
       child: Material(
-        color: const Color(0xFFFEF2F2), shape: const StadiumBorder(),
-        child: InkWell(customBorder: const StadiumBorder(), onTap: onTap,
-          child: Padding(padding: EdgeInsets.symmetric(horizontal: compact ? 11 : 12, vertical: 12),
-            child: Row(mainAxisSize: MainAxisSize.min, children: [
-              const Icon(Icons.flag_outlined, size: 17, color: Color(0xFFB91C1C)),
-              if (!compact) ...[
-                const SizedBox(width: 4),
-                const Text('Report', style: TextStyle(color: Color(0xFFB91C1C), fontWeight: FontWeight.w800, fontSize: 11.5)),
+        color: const Color(0xFFFEF2F2),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12),
+          side: const BorderSide(color: Color(0xFFFECACA)),
+        ),
+        child: InkWell(
+          customBorder: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+          onTap: onTap,
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: compact ? 11 : 12,
+              vertical: 10,
+            ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const Icon(
+                  Icons.flag_outlined,
+                  size: 17,
+                  color: Color(0xFFB91C1C),
+                ),
+                if (!compact) ...[
+                  const SizedBox(width: 4),
+                  const Text(
+                    'Report',
+                    style: TextStyle(
+                      color: Color(0xFFB91C1C),
+                      fontWeight: FontWeight.w800,
+                      fontSize: 11.5,
+                    ),
+                  ),
+                ],
               ],
-            ])),
+            ),
+          ),
         ),
       ),
     ),

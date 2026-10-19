@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+
 import '../../widgets/app_ux_components.dart';
 import '../../widgets/premium_widgets.dart';
 
@@ -28,22 +29,19 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       'icon': Icons.auto_stories_rounded,
       'title': 'Master Past Term Papers',
       'subtitle': 'Comprehensive Past Quizzes & Mocks',
-      'description':
-          'Access official past term papers, graded practice sets, and mock assessments for Mathematics, Python, and Statistics.',
+      'description': 'Access official past term papers, graded practice sets, and mock assessments for Mathematics, Python, and Statistics.',
     },
     {
       'icon': Icons.calculate_rounded,
       'title': 'Pro Scientific Calculators',
       'subtitle': 'Exam-Ready Arithmetic & Functions',
-      'description':
-          'Evaluate complex equations, matrix determinants, logarithms, and trigonometry on-screen with zero distractions and instant feedback.',
+      'description': 'Evaluate complex equations, matrix determinants, logarithms, and trigonometry on-screen with zero distractions and instant feedback.',
     },
     {
       'icon': Icons.cloud_sync_rounded,
       'title': 'Real-Time Cloud Progress',
       'subtitle': 'Weekly Goals & Community Help',
-      'description':
-          'Track your weekly quiz goals, earn XP milestones, and resolve doubts with verified teaching assistants in real-time forums.',
+      'description': 'Track your weekly quiz goals, earn XP milestones, and resolve doubts with verified teaching assistants in real-time forums.',
     },
   ];
 
@@ -118,8 +116,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         var delta = 0.0;
                         if (_pageController.hasClients &&
                             _pageController.position.haveDimensions) {
-                          delta = ((_pageController.page ?? _currentPage.toDouble()) - i)
-                              .clamp(-1.0, 1.0);
+                          delta =
+                              ((_pageController.page ??
+                                          _currentPage.toDouble()) -
+                                      i)
+                                  .clamp(-1.0, 1.0);
                         }
                         return Opacity(
                           opacity: (1 - delta.abs() * .8).clamp(0.0, 1.0),
@@ -147,7 +148,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                       borderRadius: BorderRadius.circular(32),
                                       boxShadow: [
                                         BoxShadow(
-                                          color: Brand.green.withValues(alpha: 0.38),
+                                          color: Brand.green.withValues(
+                                            alpha: 0.38,
+                                          ),
                                           blurRadius: 30,
                                           offset: const Offset(0, 14),
                                         ),
@@ -247,7 +250,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     const SizedBox(height: 26),
                     PremiumButton(
                       label: isLast ? 'Get Started' : 'Continue',
-                      icon: isLast ? Icons.rocket_launch_rounded : Icons.arrow_forward_rounded,
+                      icon: isLast
+                          ? Icons.rocket_launch_rounded
+                          : Icons.arrow_forward_rounded,
                       onPressed: _nextPage,
                     ),
                   ],

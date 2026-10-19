@@ -10,7 +10,7 @@ import '../../api/api_exceptions.dart';
 import '../../api/app_icon_service.dart';
 import '../../api/pro_play_offer.dart';
 import '../../widgets/premium_widgets.dart';
-import '../../widgets/success_tick.dart';
+import '../../widgets/status_screen.dart';
 import 'pro_paywall_screen.dart';
 import 'membership_history_screen.dart';
 
@@ -99,7 +99,9 @@ class _ProMembershipCardState extends State<ProMembershipCard> {
       _membership = response.data ?? {};
       membershipLoaded = true;
       if (_membership['is_pro'] is bool) {
-        unawaited(AppIconService.syncIcon(isPro: _membership['is_pro'] == true));
+        unawaited(
+          AppIconService.syncIcon(isPro: _membership['is_pro'] == true),
+        );
       }
       final paymentSetup = _membership['payment_setup'] is Map
           ? Map<String, dynamic>.from(_membership['payment_setup'] as Map)
@@ -227,35 +229,11 @@ class _ProMembershipCardState extends State<ProMembershipCard> {
               purchase.status == PurchaseStatus.purchased &&
               _membership['is_pro'] == true &&
               _celebratedPurchases.add(confirmationId)) {
-            await showDialog<void>(
-              context: context,
-              builder: (dialogContext) => AlertDialog(
-                content: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    const SuccessTick(
-                      size: 132,
-                      label: 'Pro membership activated',
-                    ),
-                    const SizedBox(height: 8),
-                    Text(
-                      'Pro activated',
-                      style: Theme.of(dialogContext).textTheme.headlineSmall,
-                    ),
-                    const SizedBox(height: 8),
-                    const Text(
-                      'Your membership is confirmed. Enjoy your Pro benefits.',
-                      textAlign: TextAlign.center,
-                    ),
-                  ],
-                ),
-                actions: [
-                  TextButton(
-                    onPressed: () => Navigator.of(dialogContext).pop(),
-                    child: const Text('Continue'),
-                  ),
-                ],
-              ),
+            await showStatusScreen(
+              context,
+              kind: StatusKind.success,
+              title: 'Pro activated',
+              message: 'Your membership is confirmed. Enjoy your Pro benefits.',
             );
           }
         } catch (error) {
@@ -263,6 +241,15 @@ class _ProMembershipCardState extends State<ProMembershipCard> {
             'Google Play received the purchase, but server verification did not finish. Tap Restore purchases or contact support before trying to buy again. $error',
             isError: true,
           );
+          if (mounted) {
+            await showStatusScreen(
+              context,
+              kind: StatusKind.failure,
+              title: 'Activation not finished',
+              message: 'Google Play received your purchase, but we could not confirm it yet. Do not buy again. Tap Restore purchases or contact us.',
+              primaryLabel: 'Close',
+            );
+          }
         } finally {
           if (mounted) setState(() => _buying = false);
         }
@@ -362,30 +349,52 @@ class _ProMembershipCardState extends State<ProMembershipCard> {
   @override
   Widget build(BuildContext context) {
     if (!widget.fullScreen)
-      return Card(
+      return Container(
         margin: const EdgeInsets.only(bottom: 18),
-        child: ListTile(
-          leading: const Icon(
-            Icons.receipt_long_outlined,
-            color: Color(0xFF16A34A),
-          ),
-          title: const Text('Membership & transactions'),
-          subtitle: const Text('Your plan, payments and subscription controls'),
-          trailing: const Icon(Icons.chevron_right),
-          onTap: () => Navigator.of(context).push(
-            MaterialPageRoute<void>(
-              builder: (_) => MembershipHistoryScreen(
-                apiClient: widget.apiClient,
-                onRestore: _restore,
-                onViewPlans: () async {
-                  await Navigator.of(context).push(
-                    MaterialPageRoute<void>(
-                      builder: (_) =>
-                          ProMembershipScreen(apiClient: widget.apiClient),
-                    ),
-                  );
-                  if (mounted) await _load();
-                },
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(16),
+          border: Border.all(color: const Color(0xFFE2E8F0)),
+        ),
+        child: Material(
+          type: MaterialType.transparency,
+          child: ListTile(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(16),
+            ),
+            leading: const Icon(
+              Icons.receipt_long_outlined,
+              color: Color(0xFF16A34A),
+              size: 20,
+            ),
+            title: const Text(
+              'Membership & transactions',
+              style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600),
+            ),
+            subtitle: const Text(
+              'Your plan and payments',
+              style: TextStyle(fontSize: 11, color: Color(0xFF94A3B8)),
+            ),
+            trailing: const Icon(
+              Icons.arrow_forward_ios_rounded,
+              size: 14,
+              color: Color(0xFF94A3B8),
+            ),
+            onTap: () => Navigator.of(context).push(
+              MaterialPageRoute<void>(
+                builder: (_) => MembershipHistoryScreen(
+                  apiClient: widget.apiClient,
+                  onRestore: _restore,
+                  onViewPlans: () async {
+                    await Navigator.of(context).push(
+                      MaterialPageRoute<void>(
+                        builder: (_) =>
+                            ProMembershipScreen(apiClient: widget.apiClient),
+                      ),
+                    );
+                    if (mounted) await _load();
+                  },
+                ),
               ),
             ),
           ),
@@ -409,143 +418,327 @@ class _ProMembershipCardState extends State<ProMembershipCard> {
         membershipError: _membershipLoadError,
       );
     final trial = subscription['status'] == 'trialing';
-    final plan = _membership['plan'] is Map
-        ? Map<String, dynamic>.from(_membership['plan'] as Map)
-        : <String, dynamic>{};
-    final price =
-        _product?.price ??
-        '₹${((plan['price_paise'] ?? 9900) / 100).toStringAsFixed(0)}';
-    return Container(
-      margin: const EdgeInsets.only(bottom: 18),
-      padding: const EdgeInsets.all(16),
+    final ending =
+        subscription['cancel_at_period_end'] == true ||
+        subscription['status'] == 'cancelled';
+    final canCancel =
+        subscription['id'] != null &&
+        ['google_play', 'razorpay'].contains(subscription['provider']) &&
+        !ending;
+    final steps = <(IconData, String, String, bool)>[
+      (
+        Icons.rocket_launch_rounded,
+        'Started',
+        _date(subscription['started_at']),
+        true,
+      ),
+      if (trial && subscription['trial_ends_at'] != null)
+        (
+          Icons.hourglass_bottom_rounded,
+          'Free trial ends',
+          _date(subscription['trial_ends_at']),
+          false,
+        ),
+      if (subscription['current_period_ends_at'] != null)
+        (
+          ending ? Icons.event_busy_rounded : Icons.autorenew_rounded,
+          ending ? 'Access ends' : 'Next charge',
+          _date(subscription['current_period_ends_at']),
+          false,
+        ),
+    ];
+    const perks = <(IconData, String)>[
+      (Icons.cloud_upload_rounded, 'Turn your own PDF or JSON into tests'),
+      (
+        Icons.download_for_offline_rounded,
+        'Download papers for offline practice',
+      ),
+      (Icons.play_circle_rounded, 'Video solutions'),
+    ];
+    const ink = Color(0xFF14251A);
+    const muted = Color(0xFF64748B);
+
+    Widget card(Widget child) => Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(22),
-        border: Border.all(color: const Color(0xFFFFD36E), width: 1.4),
-        boxShadow: [
-          BoxShadow(
-            color: Brand.gold.withValues(alpha: .22),
-            blurRadius: 24,
-            offset: const Offset(0, 10),
-          ),
-        ],
+        border: Border.all(color: const Color(0xFFE2E8F0)),
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: child,
+    );
+
+    return Container(
+      color: const Color(0xFFF1F5F9),
+      child: ListView(
+        padding: EdgeInsets.zero,
         children: [
-          const Text(
-            'MANAGE MEMBERSHIP & TRANSACTIONS',
-            style: TextStyle(
-              fontSize: 11,
-              fontWeight: FontWeight.w700,
-              letterSpacing: 1,
-              color: Color(0xFF64748B),
+          Container(
+            padding: EdgeInsets.fromLTRB(
+              8,
+              MediaQuery.paddingOf(context).top + 4,
+              20,
+              28,
             ),
-          ),
-          TextButton.icon(
-            onPressed: () => Navigator.of(context).push(
-              MaterialPageRoute<void>(
-                builder: (_) =>
-                    MembershipHistoryScreen(apiClient: widget.apiClient),
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [Color(0xFF0F3D26), Color(0xFF16A34A)],
               ),
+              borderRadius: BorderRadius.vertical(bottom: Radius.circular(32)),
             ),
-            icon: const Icon(Icons.receipt_long_outlined),
-            label: const Text('View membership & transactions'),
-          ),
-          const SizedBox(height: 8),
-          if (_loading)
-            const Text(
-              'Loading membership…',
-              style: TextStyle(color: Color(0xFF64748B)),
-            )
-          else ...[
-            Text(
-              isPro
-                  ? (trial ? 'Free trial active' : 'Pro active')
-                  : 'Unlock Pro',
-              style: const TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w700,
-                color: Color(0xFF14251A),
-              ),
-            ),
-            const SizedBox(height: 4),
-            Text(
-              subscription['started_at'] != null
-                  ? 'Started ${_date(subscription['started_at'])}${trial && subscription['trial_ends_at'] != null ? ' · Trial ends ${_date(subscription['trial_ends_at'])}' : ''}${subscription['current_period_ends_at'] != null ? '${subscription['cancel_at_period_end'] == true || subscription['status'] == 'cancelled' ? ' · Access ends ' : ' · Next charge / access end '}${_date(subscription['current_period_ends_at'])}' : ''}'
-                  : _playOffer?.terms ??
-                        (defaultTargetPlatform == TargetPlatform.android
-                            ? 'Pricing will be shown when Google Play is available.'
-                            : '$price / month · billed monthly'),
-              style: const TextStyle(fontSize: 12, color: Color(0xFF64748B)),
-            ),
-            if (!isPro &&
-                !kIsWeb &&
-                defaultTargetPlatform == TargetPlatform.android) ...[
-              const SizedBox(height: 12),
-              PremiumButton(
-                gold: true,
-                icon: Icons.workspace_premium_rounded,
-                busy: _buying,
-                onPressed: _planDisabled
-                    ? null
-                    : () => Navigator.of(context)
-                          .push(
-                            MaterialPageRoute<void>(
-                              builder: (_) => ProMembershipScreen(
-                                apiClient: widget.apiClient,
-                              ),
-                            ),
-                          )
-                          .then((_) => _load()),
-                label: _trialOfferSelected
-                    ? 'Start free trial'
-                    : 'Subscribe to Pro',
-              ),
-              TextButton(
-                onPressed: _restore,
-                child: const Text('Restore purchases'),
-              ),
-              if (_planDisabled)
-                const Text('New Pro subscriptions are unavailable right now.'),
-            ],
-            if (isPro &&
-                subscription['id'] != null &&
-                [
-                  'google_play',
-                  'razorpay',
-                ].contains(subscription['provider']) &&
-                subscription['status'] != 'cancelled' &&
-                subscription['cancel_at_period_end'] != true) ...[
-              const SizedBox(height: 12),
-              OutlinedButton.icon(
-                onPressed: _cancel,
-                icon: const Icon(Icons.cancel_outlined),
-                label: const Text('Cancel renewal'),
-              ),
-            ],
-          ],
-          if (_message != null)
-            Padding(
-              padding: const EdgeInsets.only(top: 8),
-              child: Text(
-                _message!,
-                style: TextStyle(
-                  fontSize: 12,
-                  color: _error == null
-                      ? const Color(0xFF15803D)
-                      : const Color(0xFFB91C1C),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                IconButton(
+                  onPressed: () => Navigator.of(context).maybePop(),
+                  icon: const Icon(Icons.arrow_back_rounded),
+                  color: Colors.white,
                 ),
-              ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 12),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        width: 56,
+                        height: 56,
+                        decoration: BoxDecoration(
+                          color: Brand.gold,
+                          borderRadius: BorderRadius.circular(18),
+                        ),
+                        child: const Icon(
+                          Icons.workspace_premium_rounded,
+                          color: Color(0xFF14251A),
+                          size: 30,
+                        ),
+                      ),
+                      const SizedBox(height: 16),
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 10,
+                          vertical: 4,
+                        ),
+                        decoration: BoxDecoration(
+                          color: Colors.white.withValues(alpha: .18),
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Text(
+                          ending
+                              ? 'RENEWAL OFF'
+                              : trial
+                              ? 'FREE TRIAL ACTIVE'
+                              : 'ACTIVE',
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 11,
+                            fontWeight: FontWeight.w800,
+                            letterSpacing: 1,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      const Text(
+                        'Quiz LAB Pro',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 30,
+                          fontWeight: FontWeight.w800,
+                          letterSpacing: -.6,
+                        ),
+                      ),
+                      const SizedBox(height: 4),
+                      Text(
+                        ending
+                            ? 'You keep Pro until your access ends.'
+                            : 'You have full access to every Pro feature.',
+                        style: TextStyle(
+                          color: Colors.white.withValues(alpha: .85),
+                          fontSize: 14,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
-          if (_error != null && _message == null)
-            Padding(
-              padding: const EdgeInsets.only(top: 8),
-              child: Text(
-                _error!,
-                style: const TextStyle(fontSize: 12, color: Color(0xFFB91C1C)),
-              ),
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(16, 16, 16, 28),
+            child: Column(
+              children: [
+                if (steps.isNotEmpty)
+                  card(
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          'Your plan timeline',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w800,
+                            color: ink,
+                          ),
+                        ),
+                        const SizedBox(height: 14),
+                        for (var i = 0; i < steps.length; i++)
+                          Padding(
+                            padding: EdgeInsets.only(
+                              bottom: i == steps.length - 1 ? 0 : 14,
+                            ),
+                            child: Row(
+                              children: [
+                                Container(
+                                  width: 40,
+                                  height: 40,
+                                  decoration: BoxDecoration(
+                                    color: Brand.green.withValues(alpha: .12),
+                                    borderRadius: BorderRadius.circular(12),
+                                  ),
+                                  child: Icon(
+                                    steps[i].$1,
+                                    color: Brand.green,
+                                    size: 20,
+                                  ),
+                                ),
+                                const SizedBox(width: 14),
+                                Expanded(
+                                  child: Text(
+                                    steps[i].$2,
+                                    style: const TextStyle(
+                                      fontSize: 14,
+                                      color: muted,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                ),
+                                Text(
+                                  steps[i].$3,
+                                  style: const TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w800,
+                                    color: ink,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                      ],
+                    ),
+                  ),
+                const SizedBox(height: 14),
+                card(
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        'What you get',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w800,
+                          color: ink,
+                        ),
+                      ),
+                      const SizedBox(height: 12),
+                      for (final perk in perks)
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 7),
+                          child: Row(
+                            children: [
+                              Icon(perk.$1, color: Brand.green, size: 22),
+                              const SizedBox(width: 12),
+                              Expanded(
+                                child: Text(
+                                  perk.$2,
+                                  style: const TextStyle(
+                                    fontSize: 14,
+                                    color: ink,
+                                  ),
+                                ),
+                              ),
+                              const Icon(
+                                Icons.check_circle_rounded,
+                                color: Brand.green,
+                                size: 18,
+                              ),
+                            ],
+                          ),
+                        ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 14),
+                card(
+                  Column(
+                    children: [
+                      ListTile(
+                        contentPadding: EdgeInsets.zero,
+                        leading: const Icon(
+                          Icons.receipt_long_outlined,
+                          color: Brand.green,
+                        ),
+                        title: const Text(
+                          'Membership & transactions',
+                          style: TextStyle(fontWeight: FontWeight.w700),
+                        ),
+                        subtitle: const Text('Payments and receipts'),
+                        trailing: const Icon(Icons.chevron_right),
+                        onTap: () => Navigator.of(context).push(
+                          MaterialPageRoute<void>(
+                            builder: (_) => MembershipHistoryScreen(
+                              apiClient: widget.apiClient,
+                            ),
+                          ),
+                        ),
+                      ),
+                      if (canCancel) ...[
+                        const Divider(height: 8),
+                        ListTile(
+                          contentPadding: EdgeInsets.zero,
+                          leading: const Icon(
+                            Icons.cancel_outlined,
+                            color: Color(0xFFB91C1C),
+                          ),
+                          title: const Text(
+                            'Cancel renewal',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w700,
+                              color: Color(0xFFB91C1C),
+                            ),
+                          ),
+                          subtitle: const Text(
+                            'You keep Pro until the current period ends',
+                          ),
+                          onTap: _cancel,
+                        ),
+                      ],
+                    ],
+                  ),
+                ),
+                if (_message != null || _error != null)
+                  Padding(
+                    padding: const EdgeInsets.only(top: 12),
+                    child: Text(
+                      (_message ?? _error)!,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 12.5,
+                        color: _error == null
+                            ? const Color(0xFF15803D)
+                            : const Color(0xFFB91C1C),
+                      ),
+                    ),
+                  ),
+                TextButton.icon(
+                  onPressed: () => openContactUs(context),
+                  icon: const Icon(Icons.support_agent_rounded, size: 18),
+                  label: const Text('Need help? Contact us'),
+                ),
+              ],
             ),
+          ),
         ],
       ),
     );

@@ -1,6 +1,7 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
+
 import '../../legal/legal_documents.dart';
 import '../../state/auth_state.dart';
 import '../../state/theme_state.dart';
@@ -9,16 +10,14 @@ import '../../widgets/app_ux_components.dart';
 class LoginScreen extends StatefulWidget {
   final AuthState authState;
 
-  const LoginScreen({
-    super.key,
-    required this.authState,
-  });
+  const LoginScreen({super.key, required this.authState});
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStateMixin {
+class _LoginScreenState extends State<LoginScreen>
+    with SingleTickerProviderStateMixin {
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
@@ -30,7 +29,10 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
   @override
   void initState() {
     super.initState();
-    _ambient = AnimationController(vsync: this, duration: const Duration(seconds: 10))..repeat();
+    _ambient = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 10),
+    )..repeat();
   }
 
   @override
@@ -65,7 +67,9 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
       context: context,
       isScrollControlled: true,
       backgroundColor: Colors.white,
-      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      ),
       builder: (ctx) => DraggableScrollableSheet(
         initialChildSize: 0.75,
         maxChildSize: 0.95,
@@ -79,7 +83,14 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(title, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Color(0xFF0F172A))),
+                  Text(
+                    title,
+                    style: const TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xFF0F172A),
+                    ),
+                  ),
                   IconButton(
                     icon: const Icon(Icons.close_rounded),
                     onPressed: () => Navigator.pop(ctx),
@@ -90,7 +101,11 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
               const SizedBox(height: 8),
               Text(
                 content,
-                style: const TextStyle(fontSize: 13, color: Color(0xFF475569), height: 1.6),
+                style: const TextStyle(
+                  fontSize: 13,
+                  color: Color(0xFF475569),
+                  height: 1.6,
+                ),
               ),
             ],
           ),
@@ -105,7 +120,9 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
     final isLoading = authState.status == AuthStatus.loading;
     final googlePending = authState.isGoogleSignInPending;
     final screenHeight = MediaQuery.of(context).size.height;
-    final double backdropHeight = (screenHeight * 0.48).clamp(320.0, 460.0).toDouble();
+    final double backdropHeight = (screenHeight * 0.48)
+        .clamp(320.0, 460.0)
+        .toDouble();
 
     return AppKeyboardDismiss(
       child: Scaffold(
@@ -123,7 +140,10 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
             SafeArea(
               child: Center(
                 child: SingleChildScrollView(
-                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 24,
+                  ),
                   child: ConstrainedBox(
                     constraints: const BoxConstraints(maxWidth: 440),
                     child: Form(
@@ -145,13 +165,24 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                                     AnimatedBuilder(
                                       animation: _ambient,
                                       builder: (context, child) {
-                                        final pulse = 0.5 + 0.5 * math.sin(_ambient.value * 4 * math.pi);
+                                        final pulse =
+                                            0.5 +
+                                            0.5 *
+                                                math.sin(
+                                                  _ambient.value * 4 * math.pi,
+                                                );
                                         return Container(
                                           decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.circular(20),
+                                            borderRadius: BorderRadius.circular(
+                                              20,
+                                            ),
                                             boxShadow: [
                                               BoxShadow(
-                                                color: const Color(0xFF4ADE80).withValues(alpha: 0.22 + 0.28 * pulse),
+                                                color: const Color(0xFF4ADE80)
+                                                    .withValues(
+                                                      alpha:
+                                                          0.22 + 0.28 * pulse,
+                                                    ),
                                                 blurRadius: 18 + 16 * pulse,
                                                 spreadRadius: 1 + 2 * pulse,
                                               ),
@@ -162,18 +193,21 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                                       },
                                       child: ClipRRect(
                                         borderRadius: BorderRadius.circular(20),
-                                        child: KeepColors(child: Image.asset(
-                                          'assets/logo.png',
-                                          height: 68,
-                                          width: 68,
-                                          fit: BoxFit.cover,
-                                        )),
+                                        child: KeepColors(
+                                          child: Image.asset(
+                                            'assets/logo.png',
+                                            height: 68,
+                                            width: 68,
+                                            fit: BoxFit.cover,
+                                          ),
+                                        ),
                                       ),
                                     ),
                                     const SizedBox(width: 16),
                                     const Column(
                                       mainAxisSize: MainAxisSize.min,
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Text(
                                           'Quiz Lab',
@@ -218,13 +252,19 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                             delayMs: 180,
                             offsetY: 36,
                             child: Container(
-                              padding: const EdgeInsets.fromLTRB(20, 22, 20, 20),
+                              padding: const EdgeInsets.fromLTRB(
+                                20,
+                                22,
+                                20,
+                                20,
+                              ),
                               decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(26),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: const Color(0xFF0F172A).withValues(alpha: 0.12),
+                                    color: const Color(0xFF0F172A)
+                                        .withValues(alpha: 0.12),
                                     blurRadius: 32,
                                     offset: const Offset(0, 16),
                                   ),
@@ -244,7 +284,10 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                                   const SizedBox(height: 2),
                                   const Text(
                                     'Sign in to continue your preparation',
-                                    style: TextStyle(fontSize: 13, color: Color(0xFF64748B)),
+                                    style: TextStyle(
+                                      fontSize: 13,
+                                      color: Color(0xFF64748B),
+                                    ),
                                   ),
                                   const SizedBox(height: 18),
 
@@ -252,15 +295,24 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                                   if (authState.errorMessage != null)
                                     Container(
                                       margin: const EdgeInsets.only(bottom: 16),
-                                      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: 14,
+                                        vertical: 12,
+                                      ),
                                       decoration: BoxDecoration(
                                         color: const Color(0xFFFEF2F2),
                                         borderRadius: BorderRadius.circular(12),
-                                        border: Border.all(color: const Color(0xFFFCA5A5)),
+                                        border: Border.all(
+                                          color: const Color(0xFFFCA5A5),
+                                        ),
                                       ),
                                       child: Row(
                                         children: [
-                                          const Icon(Icons.error_outline_rounded, color: Color(0xFFDC2626), size: 20),
+                                          const Icon(
+                                            Icons.error_outline_rounded,
+                                            color: Color(0xFFDC2626),
+                                            size: 20,
+                                          ),
                                           const SizedBox(width: 10),
                                           Expanded(
                                             child: Text(
@@ -280,21 +332,37 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                                   _GoogleButton(
                                     animation: _ambient,
                                     pending: googlePending,
-                                    onTap: isLoading ? null : _handleGoogleSignIn,
+                                    onTap: isLoading
+                                        ? null
+                                        : _handleGoogleSignIn,
                                   ),
 
                                   const SizedBox(height: 18),
                                   const Row(
                                     children: [
-                                      Expanded(child: Divider(color: Color(0xFFE2E8F0))),
-                                      Padding(
-                                        padding: EdgeInsets.symmetric(horizontal: 12),
-                                        child: Text(
-                                          'or sign in with email',
-                                          style: TextStyle(fontSize: 12, color: Color(0xFF94A3B8), fontWeight: FontWeight.w600),
+                                      Expanded(
+                                        child: Divider(
+                                          color: Color(0xFFE2E8F0),
                                         ),
                                       ),
-                                      Expanded(child: Divider(color: Color(0xFFE2E8F0))),
+                                      Padding(
+                                        padding: EdgeInsets.symmetric(
+                                          horizontal: 12,
+                                        ),
+                                        child: Text(
+                                          'or sign in with email',
+                                          style: TextStyle(
+                                            fontSize: 12,
+                                            color: Color(0xFF94A3B8),
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: Divider(
+                                          color: Color(0xFFE2E8F0),
+                                        ),
+                                      ),
                                     ],
                                   ),
                                   const SizedBox(height: 18),
@@ -309,8 +377,10 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                                       icon: Icons.mail_outline_rounded,
                                     ),
                                     validator: (v) {
-                                      if (v == null || v.trim().isEmpty) return 'Email is required';
-                                      if (!v.contains('@') || !v.contains('.')) return 'Enter a valid email';
+                                      if (v == null || v.trim().isEmpty)
+                                        return 'Email is required';
+                                      if (!v.contains('@') || !v.contains('.'))
+                                        return 'Enter a valid email';
                                       return null;
                                     },
                                   ),
@@ -325,18 +395,22 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                                       icon: Icons.lock_outline_rounded,
                                       suffix: IconButton(
                                         icon: Icon(
-                                          _obscurePassword ? Icons.visibility_off_rounded : Icons.visibility_rounded,
+                                          _obscurePassword
+                                              ? Icons.visibility_off_rounded
+                                              : Icons.visibility_rounded,
                                           color: const Color(0xFF64748B),
                                         ),
                                         onPressed: () {
                                           setState(() {
-                                            _obscurePassword = !_obscurePassword;
+                                            _obscurePassword =
+                                                !_obscurePassword;
                                           });
                                         },
                                       ),
                                     ),
                                     validator: (v) {
-                                      if (v == null || v.isEmpty) return 'Password is required';
+                                      if (v == null || v.isEmpty)
+                                        return 'Password is required';
                                       return null;
                                     },
                                   ),
@@ -347,11 +421,15 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(14),
                                       gradient: const LinearGradient(
-                                        colors: [Color(0xFF16A34A), Color(0xFF15803D)],
+                                        colors: [
+                                          Color(0xFF16A34A),
+                                          Color(0xFF15803D),
+                                        ],
                                       ),
                                       boxShadow: [
                                         BoxShadow(
-                                          color: const Color(0xFF16A34A).withValues(alpha: 0.35),
+                                          color: const Color(0xFF16A34A)
+                                              .withValues(alpha: 0.35),
                                           blurRadius: 16,
                                           offset: const Offset(0, 8),
                                         ),
@@ -360,15 +438,20 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                                     child: SizedBox(
                                       height: 52,
                                       child: ElevatedButton(
-                                        onPressed: isLoading ? null : _handleLogin,
+                                        onPressed: isLoading
+                                            ? null
+                                            : _handleLogin,
                                         style: ElevatedButton.styleFrom(
                                           backgroundColor: Colors.transparent,
-                                          disabledBackgroundColor: Colors.transparent,
+                                          disabledBackgroundColor:
+                                              Colors.transparent,
                                           shadowColor: Colors.transparent,
                                           foregroundColor: Colors.white,
                                           elevation: 0,
                                           shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(14),
+                                            borderRadius: BorderRadius.circular(
+                                              14,
+                                            ),
                                           ),
                                         ),
                                         child: isLoading
@@ -377,18 +460,29 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                                                 width: 22,
                                                 child: CircularProgressIndicator(
                                                   strokeWidth: 2.5,
-                                                  valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                                                  valueColor:
+                                                      AlwaysStoppedAnimation<
+                                                        Color
+                                                      >(Colors.white),
                                                 ),
                                               )
                                             : const Row(
-                                                mainAxisAlignment: MainAxisAlignment.center,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
                                                 children: [
                                                   Text(
                                                     'Sign In',
-                                                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                                                    style: TextStyle(
+                                                      fontSize: 16,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                    ),
                                                   ),
                                                   SizedBox(width: 8),
-                                                  Icon(Icons.arrow_forward_rounded, size: 18),
+                                                  Icon(
+                                                    Icons.arrow_forward_rounded,
+                                                    size: 18,
+                                                  ),
                                                 ],
                                               ),
                                       ),
@@ -409,7 +503,10 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 GestureDetector(
-                                  onTap: () => _showLegalSheet('Terms of Service', LegalDocuments.terms),
+                                  onTap: () => _showLegalSheet(
+                                    'Terms of Service',
+                                    LegalDocuments.terms,
+                                  ),
                                   child: const Text(
                                     'Terms of Service',
                                     style: TextStyle(
@@ -421,10 +518,16 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                                 ),
                                 const Text(
                                   '   ·   ',
-                                  style: TextStyle(color: Color(0xFF94A3B8), fontSize: 12),
+                                  style: TextStyle(
+                                    color: Color(0xFF94A3B8),
+                                    fontSize: 12,
+                                  ),
                                 ),
                                 GestureDetector(
-                                  onTap: () => _showLegalSheet('Privacy Policy', LegalDocuments.privacy),
+                                  onTap: () => _showLegalSheet(
+                                    'Privacy Policy',
+                                    LegalDocuments.privacy,
+                                  ),
                                   child: const Text(
                                     'Privacy Policy',
                                     style: TextStyle(
@@ -481,7 +584,12 @@ class _AnimatedBackdrop extends StatelessWidget {
 
   const _AnimatedBackdrop({required this.animation});
 
-  static Widget _glow(Alignment alignment, double size, Color color, double opacity) {
+  static Widget _glow(
+    Alignment alignment,
+    double size,
+    Color color,
+    double opacity,
+  ) {
     return Align(
       alignment: alignment,
       child: Container(
@@ -490,7 +598,10 @@ class _AnimatedBackdrop extends StatelessWidget {
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           gradient: RadialGradient(
-            colors: [color.withValues(alpha: opacity), color.withValues(alpha: 0)],
+            colors: [
+              color.withValues(alpha: opacity),
+              color.withValues(alpha: 0),
+            ],
           ),
         ),
       ),
@@ -516,9 +627,33 @@ class _AnimatedBackdrop extends StatelessWidget {
             return Stack(
               fit: StackFit.expand,
               children: [
-                _glow(Alignment(-0.9 + 0.3 * math.sin(t), -0.7 + 0.25 * math.cos(t)), 240, const Color(0xFF4ADE80), 0.30),
-                _glow(Alignment(0.95 + 0.25 * math.cos(t), -0.1 + 0.35 * math.sin(t)), 280, const Color(0xFFA3E635), 0.18),
-                _glow(Alignment(0.0 + 0.5 * math.sin(t + 2), 1.0 + 0.2 * math.cos(t)), 260, const Color(0xFF22D3EE), 0.16),
+                _glow(
+                  Alignment(
+                    -0.9 + 0.3 * math.sin(t),
+                    -0.7 + 0.25 * math.cos(t),
+                  ),
+                  240,
+                  const Color(0xFF4ADE80),
+                  0.30,
+                ),
+                _glow(
+                  Alignment(
+                    0.95 + 0.25 * math.cos(t),
+                    -0.1 + 0.35 * math.sin(t),
+                  ),
+                  280,
+                  const Color(0xFFA3E635),
+                  0.18,
+                ),
+                _glow(
+                  Alignment(
+                    0.0 + 0.5 * math.sin(t + 2),
+                    1.0 + 0.2 * math.cos(t),
+                  ),
+                  260,
+                  const Color(0xFF22D3EE),
+                  0.16,
+                ),
               ],
             );
           },
@@ -534,7 +669,11 @@ class _Entrance extends StatelessWidget {
   final double offsetY;
   final Widget child;
 
-  const _Entrance({required this.delayMs, required this.offsetY, required this.child});
+  const _Entrance({
+    required this.delayMs,
+    required this.offsetY,
+    required this.child,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -564,7 +703,11 @@ class _GoogleButton extends StatefulWidget {
   final bool pending;
   final VoidCallback? onTap;
 
-  const _GoogleButton({required this.animation, required this.pending, required this.onTap});
+  const _GoogleButton({
+    required this.animation,
+    required this.pending,
+    required this.onTap,
+  });
 
   @override
   State<_GoogleButton> createState() => _GoogleButtonState();
@@ -641,11 +784,16 @@ class _GoogleButtonState extends State<_GoogleButton> {
                       ),
                     )
                   else
-                    const CustomPaint(size: Size(22, 22), painter: _GoogleLogoPainter()),
+                    const CustomPaint(
+                      size: Size(22, 22),
+                      painter: _GoogleLogoPainter(),
+                    ),
                   const SizedBox(width: 12),
                   Flexible(
                     child: Text(
-                      widget.pending ? 'Signing in with Google…' : 'Continue with Google',
+                      widget.pending
+                          ? 'Signing in with Google…'
+                          : 'Continue with Google',
                       overflow: TextOverflow.ellipsis,
                       style: const TextStyle(
                         fontSize: 15,
@@ -692,7 +840,10 @@ class _GoogleLogoPainter extends CustomPainter {
 
     // Blue crossbar
     final bar = Paint()..color = const Color(0xFF4285F4);
-    canvas.drawRect(Rect.fromLTWH(s / 2, s / 2 - stroke / 2, s / 2 - stroke * 0.05, stroke), bar);
+    canvas.drawRect(
+      Rect.fromLTWH(s / 2, s / 2 - stroke / 2, s / 2 - stroke * 0.05, stroke),
+      bar,
+    );
   }
 
   @override

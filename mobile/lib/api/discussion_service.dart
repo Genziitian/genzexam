@@ -12,7 +12,9 @@ class DiscussionService {
   /// Fetches available discussion subjects catalog.
   /// Endpoint: GET /api/discussions/subjects
   Future<Map<String, String>> getSubjects() async {
-    final response = await _client.get<Map<String, dynamic>>('/discussions/subjects');
+    final response = await _client.get<Map<String, dynamic>>(
+      '/discussions/subjects',
+    );
     return response.data?.map((k, v) => MapEntry(k, v.toString())) ?? {};
   }
 
@@ -31,7 +33,8 @@ class DiscussionService {
     if (courseSlug != null) query['course_slug'] = courseSlug;
     if (subject != null) query['subject'] = subject;
     if (sort != null) query['sort'] = sort;
-    if (search != null && search.trim().isNotEmpty) query['search'] = search.trim();
+    if (search != null && search.trim().isNotEmpty)
+      query['search'] = search.trim();
     if (mine != null) query['mine'] = mine ? 1 : 0;
 
     final response = await _client.get<List<dynamic>>(
@@ -49,7 +52,9 @@ class DiscussionService {
   /// Automatically registers a view count on the server if viewer is not author.
   /// Endpoint: GET /api/discussions/{id}
   Future<DiscussionDetail> getDiscussion(int id) async {
-    final response = await _client.get<Map<String, dynamic>>('/discussions/$id');
+    final response = await _client.get<Map<String, dynamic>>(
+      '/discussions/$id',
+    );
     return DiscussionDetail.fromJson(response.data!);
   }
 
@@ -87,10 +92,7 @@ class DiscussionService {
   }) async {
     final response = await _client.post<Map<String, dynamic>>(
       '/discussions/$discussionId/replies',
-      data: {
-        'body': body.trim(),
-        if (isAnonymous) 'is_anonymous': true,
-      },
+      data: {'body': body.trim(), if (isAnonymous) 'is_anonymous': true},
     );
 
     return (response.data!['id'] as num).toInt();
@@ -99,14 +101,18 @@ class DiscussionService {
   /// Toggles upvote on a discussion thread.
   /// Endpoint: POST /api/discussions/{id}/vote
   Future<VoteResult> voteDiscussion(int discussionId) async {
-    final response = await _client.post<Map<String, dynamic>>('/discussions/$discussionId/vote');
+    final response = await _client.post<Map<String, dynamic>>(
+      '/discussions/$discussionId/vote',
+    );
     return VoteResult.fromJson(response.data!);
   }
 
   /// Toggles upvote on a reply.
   /// Endpoint: POST /api/discussions/replies/{id}/vote
   Future<VoteResult> voteReply(int replyId) async {
-    final response = await _client.post<Map<String, dynamic>>('/discussions/replies/$replyId/vote');
+    final response = await _client.post<Map<String, dynamic>>(
+      '/discussions/replies/$replyId/vote',
+    );
     return VoteResult.fromJson(response.data!);
   }
 
@@ -127,21 +133,27 @@ class DiscussionService {
   /// Unmarks the accepted answer (discussion author only).
   /// Endpoint: POST /api/discussions/{id}/unaccept
   Future<bool> unacceptReply(int discussionId) async {
-    final response = await _client.post<Map<String, dynamic>>('/discussions/$discussionId/unaccept');
+    final response = await _client.post<Map<String, dynamic>>(
+      '/discussions/$discussionId/unaccept',
+    );
     return response.data?['is_solved'] == true;
   }
 
   /// Deletes a discussion thread (author or admin only).
   /// Endpoint: DELETE /api/discussions/{id}
   Future<bool> deleteDiscussion(int id) async {
-    final response = await _client.delete<Map<String, dynamic>>('/discussions/$id');
+    final response = await _client.delete<Map<String, dynamic>>(
+      '/discussions/$id',
+    );
     return response.data?['ok'] == true;
   }
 
   /// Deletes a discussion reply (author or admin only).
   /// Endpoint: DELETE /api/discussions/replies/{id}
   Future<bool> deleteReply(int replyId) async {
-    final response = await _client.delete<Map<String, dynamic>>('/discussions/replies/$replyId');
+    final response = await _client.delete<Map<String, dynamic>>(
+      '/discussions/replies/$replyId',
+    );
     return response.data?['ok'] == true;
   }
 }

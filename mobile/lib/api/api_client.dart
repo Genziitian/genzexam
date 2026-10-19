@@ -123,8 +123,7 @@ class ApiClient {
             );
           }
           if (error.type != DioExceptionType.cancel) {
-            connectionUnavailable.value =
-                error.response == null;
+            connectionUnavailable.value = error.response == null;
           }
           handler.next(error);
         },

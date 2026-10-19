@@ -34,6 +34,17 @@ const _colors = [
   Color(0xFFEA580C),
 ];
 
+Color _prizeColor(String type) => switch (type) {
+  'free_pro' => const Color(0xFFD97706),
+  'coupon_pct' => const Color(0xFF7C3AED),
+  'coupon_flat' => const Color(0xFF059669),
+  'bonus_xp' => const Color(0xFF2563EB),
+  'free_spin' => const Color(0xFF0284C7),
+  'free_test' => const Color(0xFF0D9488),
+  'free_paper_upload' => const Color(0xFFEA580C),
+  _ => const Color(0xFF64748B),
+};
+
 IconData _getPrizeIcon(String type) {
   switch (type) {
     case 'free_pro':
@@ -187,11 +198,19 @@ class _DailyRewardsScreenState extends State<DailyRewardsScreen>
       pageBuilder: (ctx, anim1, anim2) => Center(
         child: Container(
           margin: const EdgeInsets.all(24),
-          padding: const EdgeInsets.all(24),
+          padding: const EdgeInsets.fromLTRB(24, 28, 24, 20),
           decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(24),
-            boxShadow: const [BoxShadow(color: Colors.black26, blurRadius: 20)],
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.center,
+              colors: [
+                _colors[result.segment].withValues(alpha: .16),
+                Colors.white,
+              ],
+            ),
+            borderRadius: BorderRadius.circular(28),
+            border: Border.all(color: _gold.withValues(alpha: .6)),
+            boxShadow: const [BoxShadow(color: Colors.black26, blurRadius: 28)],
           ),
           child: Material(
             type: MaterialType.transparency,
@@ -199,18 +218,31 @@ class _DailyRewardsScreenState extends State<DailyRewardsScreen>
               mainAxisSize: MainAxisSize.min,
               children: [
                 Container(
-                  width: 64,
-                  height: 64,
+                  width: 84,
+                  height: 84,
                   decoration: BoxDecoration(
-                    color: _colors[result.segment].withValues(alpha: .15),
                     shape: BoxShape.circle,
-                  ),
-                  child: Center(
-                    child: Icon(
-                      _getPrizeIcon(result.reward?.type ?? 'try_again'),
-                      color: _colors[result.segment],
-                      size: 34,
+                    gradient: LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: [
+                        _colors[result.segment],
+                        Color.lerp(_colors[result.segment], Colors.black, .3)!,
+                      ],
                     ),
+                    border: Border.all(color: _gold, width: 3),
+                    boxShadow: [
+                      BoxShadow(
+                        color: _colors[result.segment].withValues(alpha: .4),
+                        blurRadius: 20,
+                        offset: const Offset(0, 8),
+                      ),
+                    ],
+                  ),
+                  child: Icon(
+                    _getPrizeIcon(result.reward?.type ?? 'try_again'),
+                    color: Colors.white,
+                    size: 40,
                   ),
                 ),
                 const SizedBox(height: 16),
@@ -242,9 +274,9 @@ class _DailyRewardsScreenState extends State<DailyRewardsScreen>
                   child: FilledButton(
                     style: FilledButton.styleFrom(
                       backgroundColor: _purple,
-                      padding: const EdgeInsets.symmetric(vertical: 14),
+                      padding: const EdgeInsets.symmetric(vertical: 16),
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(14),
+                        borderRadius: BorderRadius.circular(18),
                       ),
                     ),
                     onPressed: () {
@@ -307,82 +339,109 @@ class _DailyRewardsScreenState extends State<DailyRewardsScreen>
       context: context,
       isScrollControlled: true,
       backgroundColor: Colors.white,
+      clipBehavior: Clip.antiAlias,
       shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+        borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
       ),
       builder: (ctx) => SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(20, 16, 20, 24),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Center(
-                child: Container(
-                  width: 40,
-                  height: 4,
-                  decoration: BoxDecoration(
-                    color: Colors.grey.shade300,
-                    borderRadius: BorderRadius.circular(2),
-                  ),
+        top: false,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Container(
+              padding: const EdgeInsets.fromLTRB(20, 18, 8, 18),
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [Color(0xFF312E81), Color(0xFF4F46E5)],
                 ),
               ),
-              const SizedBox(height: 16),
-              const Row(
+              child: Row(
                 children: [
-                  Icon(Icons.stars_rounded, color: _purple),
-                  SizedBox(width: 8),
-                  Text(
-                    'Wheel Prizes',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w800),
+                  const Icon(Icons.stars_rounded, color: _goldLight),
+                  const SizedBox(width: 10),
+                  const Expanded(
+                    child: Text(
+                      'Wheel Prizes',
+                      style: TextStyle(
+                        fontSize: 19,
+                        fontWeight: FontWeight.w800,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                  IconButton(
+                    onPressed: () => Navigator.pop(ctx),
+                    color: Colors.white,
+                    icon: const Icon(Icons.close_rounded),
                   ),
                 ],
               ),
-              const SizedBox(height: 14),
-              Flexible(
-                child: ListView.separated(
-                  shrinkWrap: true,
-                  itemCount: shuffledPrizes.length,
-                  separatorBuilder: (_, _) => const Divider(height: 1),
-                  itemBuilder: (ctx, i) {
-                    final p = shuffledPrizes[i];
-                    return ListTile(
-                      contentPadding: EdgeInsets.zero,
-                      leading: Container(
-                        width: 38,
-                        height: 38,
-                        decoration: BoxDecoration(
-                          color: _colors[p.segment].withValues(alpha: .15),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Center(
+            ),
+            Flexible(
+              child: ListView.separated(
+                shrinkWrap: true,
+                padding: const EdgeInsets.fromLTRB(16, 16, 16, 20),
+                itemCount: shuffledPrizes.length,
+                separatorBuilder: (_, _) => const SizedBox(height: 10),
+                itemBuilder: (ctx, i) {
+                  final p = shuffledPrizes[i];
+                  final c = _colors[p.segment];
+                  return Container(
+                    padding: const EdgeInsets.all(12),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(18),
+                      border: Border.all(color: const Color(0xFFE0E7FF)),
+                    ),
+                    child: Row(
+                      children: [
+                        Container(
+                          width: 44,
+                          height: 44,
+                          decoration: BoxDecoration(
+                            color: c.withValues(alpha: .14),
+                            borderRadius: BorderRadius.circular(14),
+                          ),
                           child: Icon(
                             _getPrizeIcon(p.type),
-                            color: _colors[p.segment],
-                            size: 20,
+                            color: c,
+                            size: 24,
                           ),
                         ),
-                      ),
-                      title: Text(
-                        p.title,
-                        style: const TextStyle(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 14,
+                        const SizedBox(width: 14),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                p.title,
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.w800,
+                                  fontSize: 14.5,
+                                  color: Color(0xFF1E1B4B),
+                                ),
+                              ),
+                              const SizedBox(height: 2),
+                              Text(
+                                p.sub,
+                                style: TextStyle(
+                                  color: Colors.grey.shade600,
+                                  fontSize: 12,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                      subtitle: Text(
-                        p.sub,
-                        style: TextStyle(
-                          color: Colors.grey.shade600,
-                          fontSize: 12,
-                        ),
-                      ),
-                    );
-                  },
-                ),
+                      ],
+                    ),
+                  );
+                },
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
@@ -448,19 +507,30 @@ class _DailyRewardsScreenState extends State<DailyRewardsScreen>
     return Container(
       margin: const EdgeInsets.only(top: 20, bottom: 20),
       child: Material(
-        color: const Color(0xFFF8FAFC),
+        color: Colors.white,
+        elevation: 1.5,
+        shadowColor: const Color(0x1A1E1B4B),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
-          side: const BorderSide(color: Color(0xFFE2E8F0)),
+          borderRadius: BorderRadius.circular(20),
+          side: const BorderSide(color: Color(0xFFE0E7FF)),
         ),
         clipBehavior: Clip.antiAlias,
         child: Theme(
           data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
           child: ExpansionTile(
-            leading: const Icon(
-              Icons.shield_outlined,
-              color: _purple,
-              size: 20,
+            iconColor: _purple,
+            leading: Container(
+              width: 38,
+              height: 38,
+              decoration: BoxDecoration(
+                color: const Color(0xFFEEF2FF),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: const Icon(
+                Icons.shield_outlined,
+                color: _purple,
+                size: 20,
+              ),
             ),
             title: const Text(
               'Rules and Conditions',
@@ -506,25 +576,41 @@ class _DailyRewardsScreenState extends State<DailyRewardsScreen>
 
   Widget _ruleItem(String title, String desc) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 8),
-      child: RichText(
-        text: TextSpan(
-          style: const TextStyle(
-            fontSize: 12,
-            color: Color(0xFF475569),
-            height: 1.45,
+      padding: const EdgeInsets.only(bottom: 10),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            margin: const EdgeInsets.only(top: 6, right: 10),
+            width: 6,
+            height: 6,
+            decoration: const BoxDecoration(
+              color: _gold,
+              shape: BoxShape.circle,
+            ),
           ),
-          children: [
-            TextSpan(
-              text: '• $title: ',
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
-                color: Color(0xFF0F172A),
+          Expanded(
+            child: RichText(
+              text: TextSpan(
+                style: const TextStyle(
+                  fontSize: 12.5,
+                  color: Color(0xFF475569),
+                  height: 1.5,
+                ),
+                children: [
+                  TextSpan(
+                    text: '$title: ',
+                    style: const TextStyle(
+                      fontWeight: FontWeight.w800,
+                      color: Color(0xFF1E1B4B),
+                    ),
+                  ),
+                  TextSpan(text: desc),
+                ],
               ),
             ),
-            TextSpan(text: desc),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
@@ -549,165 +635,240 @@ class _DailyRewardsScreenState extends State<DailyRewardsScreen>
         : reward.claimed
         ? 'Applied'
         : 'Revealed';
-    return Card(
-      margin: const EdgeInsets.only(bottom: 12),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16),
-        side: const BorderSide(color: Color(0xFFE2E8F0)),
+    final accent = expired ? const Color(0xFF9CA3AF) : _prizeColor(reward.type);
+    final actionDisabled =
+        _busy ||
+        expired ||
+        (_rewardDestination(reward) == null &&
+            reward.type != 'free_spin' &&
+            revealed &&
+            reward.code == null &&
+            (reward.type != 'free_pro' || reward.claimed));
+    return Container(
+      margin: const EdgeInsets.only(bottom: 14),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(22),
+        border: Border.all(color: const Color(0xFFE0E7FF)),
+        boxShadow: const [
+          BoxShadow(
+            color: Color(0x141E1B4B),
+            blurRadius: 16,
+            offset: Offset(0, 6),
+          ),
+        ],
       ),
-      elevation: 0,
-      color: Colors.white,
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+      clipBehavior: Clip.antiAlias,
+      child: IntrinsicHeight(
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Row(
-              children: [
-                Container(
-                  width: 36,
-                  height: 36,
-                  decoration: BoxDecoration(
-                    color: expired
-                        ? Colors.grey.shade100
-                        : const Color(0xFFEEF2FF),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Center(
-                    child: Icon(
-                      expired
-                          ? Icons.timer_off_outlined
-                          : _getPrizeIcon(reward.type),
-                      color: expired ? Colors.grey : _purple,
-                      size: 20,
-                    ),
-                  ),
+            Container(
+              width: 6,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [accent, accent.withValues(alpha: .55)],
                 ),
-                const SizedBox(width: 12),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        revealed || expired
-                            ? reward.title
-                            : 'Your reward is ready',
-                        style: const TextStyle(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 15,
-                        ),
-                      ),
-                      if (reward.expiresAt != null)
-                        Text(
-                          expired
-                              ? 'Expired after 7 days'
-                              : 'Expires in 7 days',
-                          style: TextStyle(
-                            color: Colors.grey.shade600,
-                            fontSize: 11,
+              ),
+            ),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(14, 16, 16, 12),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Container(
+                          width: 46,
+                          height: 46,
+                          decoration: BoxDecoration(
+                            color: accent.withValues(alpha: .12),
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          child: Icon(
+                            expired
+                                ? Icons.timer_off_outlined
+                                : _getPrizeIcon(reward.type),
+                            color: accent,
+                            size: 24,
                           ),
                         ),
-                    ],
-                  ),
-                ),
-                Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 8,
-                    vertical: 4,
-                  ),
-                  decoration: BoxDecoration(
-                    color: expired
-                        ? Colors.grey.shade100
-                        : const Color(0xFFDCFCE7),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: Text(
-                    expired ? 'Outdated' : 'Active',
-                    style: TextStyle(
-                      color: expired ? Colors.grey : const Color(0xFF15803D),
-                      fontSize: 11,
-                      fontWeight: FontWeight.w700,
+                        const SizedBox(width: 12),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                revealed || expired
+                                    ? reward.title
+                                    : 'Your reward is ready',
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.w800,
+                                  fontSize: 16,
+                                  color: Color(0xFF1E1B4B),
+                                ),
+                              ),
+                              if (reward.expiresAt != null)
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 3),
+                                  child: Row(
+                                    children: [
+                                      Icon(
+                                        Icons.schedule_rounded,
+                                        size: 13,
+                                        color: Colors.grey.shade600,
+                                      ),
+                                      const SizedBox(width: 4),
+                                      Text(
+                                        expired
+                                            ? 'Expired after 7 days'
+                                            : 'Expires in 7 days',
+                                        style: TextStyle(
+                                          color: Colors.grey.shade600,
+                                          fontSize: 11.5,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(width: 8),
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 10,
+                            vertical: 5,
+                          ),
+                          decoration: BoxDecoration(
+                            color: expired
+                                ? Colors.grey.shade100
+                                : const Color(0xFFDCFCE7),
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: Text(
+                            expired ? 'Outdated' : 'Active',
+                            style: TextStyle(
+                              color: expired
+                                  ? Colors.grey
+                                  : const Color(0xFF15803D),
+                              fontSize: 11,
+                              fontWeight: FontWeight.w800,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                  ),
-                ),
-              ],
-            ),
-            if (revealed && !expired && reward.code != null) ...[
-              const SizedBox(height: 12),
-              Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 14,
-                  vertical: 10,
-                ),
-                decoration: BoxDecoration(
-                  color: const Color(0xFFF8FAFC),
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(color: const Color(0xFFE2E8F0)),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Expanded(
-                      child: SelectableText(
-                        reward.code!,
-                        style: const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w800,
-                          letterSpacing: 1,
+                    if (revealed && !expired && reward.code != null) ...[
+                      const SizedBox(height: 14),
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 12,
+                        ),
+                        decoration: BoxDecoration(
+                          color: const Color(0xFFFBF7EA),
+                          borderRadius: BorderRadius.circular(14),
+                          border: Border.all(
+                            color: _gold.withValues(alpha: .7),
+                          ),
+                        ),
+                        child: Row(
+                          children: [
+                            Icon(
+                              Icons.confirmation_number_outlined,
+                              color: _goldDeep,
+                              size: 20,
+                            ),
+                            const SizedBox(width: 12),
+                            Expanded(
+                              child: SelectableText(
+                                reward.code!,
+                                style: const TextStyle(
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.w900,
+                                  letterSpacing: 1.4,
+                                  color: Color(0xFF1E1B4B),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
+                    ],
+                    const SizedBox(height: 14),
+                    Row(
+                      children: [
+                        TextButton.icon(
+                          onPressed: () => setState(() {
+                            if (!_expandedInstructions.remove(reward.id))
+                              _expandedInstructions.add(reward.id);
+                          }),
+                          style: TextButton.styleFrom(
+                            foregroundColor: const Color(0xFF475569),
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 6,
+                              vertical: 8,
+                            ),
+                          ),
+                          icon: Icon(
+                            _expandedInstructions.contains(reward.id)
+                                ? Icons.expand_less_rounded
+                                : Icons.info_outline_rounded,
+                            size: 18,
+                          ),
+                          label: Text(
+                            _expandedInstructions.contains(reward.id)
+                                ? 'Hide instructions'
+                                : 'Instructions',
+                          ),
+                        ),
+                        const Spacer(),
+                        FilledButton(
+                          onPressed: actionDisabled
+                              ? null
+                              : () => _rewardAction(reward),
+                          style: FilledButton.styleFrom(
+                            backgroundColor: _purple,
+                            foregroundColor: Colors.white,
+                            disabledBackgroundColor: const Color(0xFFE5E7EB),
+                            disabledForegroundColor: const Color(0xFF9CA3AF),
+                            minimumSize: const Size(0, 44),
+                            padding: const EdgeInsets.symmetric(horizontal: 20),
+                            textStyle: const TextStyle(
+                              fontWeight: FontWeight.w800,
+                              fontSize: 13.5,
+                            ),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(14),
+                            ),
+                          ),
+                          child: Text(label),
+                        ),
+                      ],
                     ),
+                    if (_expandedInstructions.contains(reward.id)) ...[
+                      const SizedBox(height: 8),
+                      Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.all(14),
+                        decoration: BoxDecoration(
+                          color: const Color(0xFFF8FAFC),
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: _rewardInstructions(reward),
+                        ),
+                      ),
+                    ],
                   ],
                 ),
               ),
-            ],
-            const SizedBox(height: 10),
-            Row(
-              children: [
-                Expanded(
-                  child: TextButton(
-                    onPressed: () => setState(() {
-                      if (!_expandedInstructions.remove(reward.id))
-                        _expandedInstructions.add(reward.id);
-                    }),
-                    child: Text(
-                      _expandedInstructions.contains(reward.id)
-                          ? 'Hide instructions'
-                          : 'Instructions',
-                    ),
-                  ),
-                ),
-                const SizedBox(width: 8),
-                Expanded(
-                  child: TextButton(
-                    onPressed:
-                        _busy ||
-                            expired ||
-                            (_rewardDestination(reward) == null &&
-                                reward.type != 'free_spin' &&
-                                revealed &&
-                                reward.code == null &&
-                                (reward.type != 'free_pro' || reward.claimed))
-                        ? null
-                        : () => _rewardAction(reward),
-                    style: TextButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      backgroundColor: expired
-                          ? Colors.grey.shade100
-                          : const Color(0xFFEEF2FF),
-                      foregroundColor: expired ? Colors.grey.shade500 : _purple,
-                    ),
-                    child: Text(label),
-                  ),
-                ),
-              ],
             ),
-            if (_expandedInstructions.contains(reward.id)) ...[
-              const SizedBox(height: 12),
-              ..._rewardInstructions(reward),
-            ],
           ],
         ),
       ),
@@ -820,6 +981,112 @@ class _DailyRewardsScreenState extends State<DailyRewardsScreen>
       );
   }
 
+  Widget _actionTile({
+    required IconData icon,
+    required String label,
+    required VoidCallback? onTap,
+    bool filled = false,
+  }) => Material(
+    color: filled ? _purple : Colors.white,
+    elevation: filled ? 4 : 1,
+    shadowColor: filled ? const Color(0x664F46E5) : const Color(0x1A1E1B4B),
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(18),
+      side: BorderSide(
+        color: filled ? Colors.transparent : const Color(0xFFE0E7FF),
+      ),
+    ),
+    clipBehavior: Clip.antiAlias,
+    child: InkWell(
+      onTap: onTap,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 14),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(icon, size: 19, color: filled ? _goldLight : _purple),
+            const SizedBox(width: 8),
+            Flexible(
+              child: Text(
+                label,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(
+                  fontSize: 13,
+                  fontWeight: FontWeight.w800,
+                  color: filled ? Colors.white : const Color(0xFF1E1B4B),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    ),
+  );
+
+  Widget _spinButton() {
+    final disabled = _busy || _needsRefresh || (_data?.remaining ?? 0) <= 0;
+    return Container(
+      width: double.infinity,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(22),
+        gradient: disabled
+            ? null
+            : const LinearGradient(
+                colors: [Color(0xFF4F46E5), Color(0xFF3730A3)],
+              ),
+        color: disabled ? const Color(0xFFE5E7EB) : null,
+        boxShadow: disabled
+            ? null
+            : const [
+                BoxShadow(
+                  color: Color(0x663730A3),
+                  blurRadius: 18,
+                  offset: Offset(0, 8),
+                ),
+              ],
+      ),
+      child: FilledButton.icon(
+        style: FilledButton.styleFrom(
+          backgroundColor: Colors.transparent,
+          shadowColor: Colors.transparent,
+          disabledBackgroundColor: Colors.transparent,
+          foregroundColor: _goldLight,
+          disabledForegroundColor: const Color(0xFF6B7280),
+          minimumSize: const Size.fromHeight(60),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(22),
+            side: BorderSide(
+              color: disabled ? Colors.transparent : _gold,
+              width: 1.2,
+            ),
+          ),
+        ),
+        onPressed: disabled ? null : _spin,
+        icon: _busy
+            ? const SizedBox.square(
+                dimension: 18,
+                child: CircularProgressIndicator(strokeWidth: 2),
+              )
+            : const Icon(Icons.casino_outlined, size: 22),
+        label: Text(
+          _busy
+              ? 'Spinning…'
+              : _needsRefresh
+              ? 'Rewards unavailable · Try again'
+              : (_data?.remaining ?? 0) <= 0
+              ? '✓ Spun Today · Come Back Tomorrow'
+              : 'Spin now · Free daily spin',
+          style: TextStyle(
+            fontWeight: FontWeight.w800,
+            fontSize: 15.5,
+            color: disabled ? const Color(0xFF6B7280) : Colors.white,
+          ),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) => Scaffold(
     backgroundColor: const Color(0xFFF8FAFC),
@@ -840,65 +1107,30 @@ class _DailyRewardsScreenState extends State<DailyRewardsScreen>
               physics: const AlwaysScrollableScrollPhysics(),
               padding: const EdgeInsets.all(16),
               children: [
-                // Top header bar
                 Row(
                   children: [
-                    const Expanded(
-                      child: Text(
-                        'Spin & Win',
-                        style: TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.w900,
-                          letterSpacing: -0.5,
-                        ),
+                    Expanded(
+                      child: _actionTile(
+                        icon: Icons.emoji_events_outlined,
+                        label: 'View Prizes',
+                        onTap: _showPrizesSheet,
                       ),
                     ),
-                    OutlinedButton(
-                      onPressed: _showPrizesSheet,
-                      style: OutlinedButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 8,
-                          vertical: 6,
-                        ),
-                        minimumSize: Size.zero,
-                        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                        textStyle: const TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w700,
-                        ),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                      ),
-                      child: const Text('View Prizes'),
-                    ),
-                    const SizedBox(width: 6),
-                    FilledButton(
-                      onPressed: _busy
-                          ? null
-                          : () => setState(() => _history = !_history),
-                      style: FilledButton.styleFrom(
-                        backgroundColor: _purple,
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 10,
-                          vertical: 6,
-                        ),
-                        minimumSize: Size.zero,
-                        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                      ),
-                      child: Text(
-                        _history
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: _actionTile(
+                        icon: _history
+                            ? Icons.casino_outlined
+                            : Icons.card_giftcard_rounded,
+                        label: _history
                             ? 'Back to Wheel'
                             : (_data?.rewards.isEmpty ?? true)
                             ? 'My Rewards'
                             : 'My Rewards (${_data?.rewards.length ?? 0})',
-                        style: const TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w700,
-                        ),
+                        filled: true,
+                        onTap: _busy
+                            ? null
+                            : () => setState(() => _history = !_history),
                       ),
                     ),
                   ],
@@ -951,15 +1183,25 @@ class _DailyRewardsScreenState extends State<DailyRewardsScreen>
 
                 // View 1: Lucky Wheel
                 if (!_history) ...[
-                  Card(
-                    color: Colors.white,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(24),
-                      side: const BorderSide(color: Color(0xFFE2E8F0)),
+                  Container(
+                    decoration: BoxDecoration(
+                      gradient: const LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [Color(0xFFEEF2FF), Colors.white],
+                      ),
+                      borderRadius: BorderRadius.circular(28),
+                      border: Border.all(color: const Color(0xFFE0E7FF)),
+                      boxShadow: const [
+                        BoxShadow(
+                          color: Color(0x1A4F46E5),
+                          blurRadius: 24,
+                          offset: Offset(0, 10),
+                        ),
+                      ],
                     ),
-                    elevation: 0,
                     child: Padding(
-                      padding: const EdgeInsets.all(20),
+                      padding: const EdgeInsets.fromLTRB(16, 22, 16, 18),
                       child: Column(
                         children: [
                           Semantics(
@@ -971,36 +1213,60 @@ class _DailyRewardsScreenState extends State<DailyRewardsScreen>
                                 alignment: Alignment.center,
                                 children: [
                                   Positioned.fill(
-                                    child: AnimatedBuilder(
-                                      animation: _turns,
-                                      builder: (_, _) => CustomPaint(
-                                        painter: _RewardWheelPainter(
-                                          _turns.value,
+                                    child: RepaintBoundary(
+                                      child: AnimatedBuilder(
+                                        animation: _turns,
+                                        builder: (_, _) => CustomPaint(
+                                          painter: _RewardWheelPainter(
+                                            _turns.value,
+                                            _busy,
+                                          ),
                                         ),
                                       ),
                                     ),
                                   ),
                                   Container(
-                                    width: 58,
-                                    height: 58,
-                                    decoration: BoxDecoration(
+                                    width: 66,
+                                    height: 66,
+                                    padding: const EdgeInsets.all(3),
+                                    decoration: const BoxDecoration(
                                       shape: BoxShape.circle,
-                                      color: Colors.white,
-                                      border: Border.all(
-                                        color: const Color(0xFFEAB308),
-                                        width: 4,
+                                      gradient: LinearGradient(
+                                        begin: Alignment.topLeft,
+                                        end: Alignment.bottomRight,
+                                        colors: [_goldLight, _gold, _goldDeep],
                                       ),
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Color(0x66000000),
+                                          blurRadius: 12,
+                                          offset: Offset(0, 5),
+                                        ),
+                                      ],
                                     ),
                                     child: ClipOval(
                                       child: Image.asset('assets/logo.png'),
                                     ),
                                   ),
-                                  const Positioned(
-                                    top: 0,
-                                    child: Icon(
-                                      Icons.arrow_drop_down_rounded,
-                                      color: Color(0xFFEF4444),
-                                      size: 46,
+                                  Positioned(
+                                    top: -2,
+                                    child: AnimatedBuilder(
+                                      animation: _turns,
+                                      builder: (_, child) {
+                                        final phase = (_turns.value * 10) % 1;
+                                        final flick = _busy
+                                            ? -.5 * math.max(0.0, 1 - phase * 5)
+                                            : 0.0;
+                                        return Transform.rotate(
+                                          angle: flick,
+                                          alignment: Alignment.topCenter,
+                                          child: child,
+                                        );
+                                      },
+                                      child: CustomPaint(
+                                        size: const Size(26, 36),
+                                        painter: _PinPainter(),
+                                      ),
                                     ),
                                   ),
                                 ],
@@ -1008,40 +1274,7 @@ class _DailyRewardsScreenState extends State<DailyRewardsScreen>
                             ),
                           ),
                           const SizedBox(height: 18),
-                          SizedBox(
-                            width: double.infinity,
-                            child: FilledButton.icon(
-                              style: FilledButton.styleFrom(
-                                backgroundColor: _purple,
-                                padding: const EdgeInsets.symmetric(
-                                  vertical: 14,
-                                ),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(14),
-                                ),
-                              ),
-                              onPressed:
-                                  _busy ||
-                                      _needsRefresh ||
-                                      (_data?.remaining ?? 0) <= 0
-                                  ? null
-                                  : _spin,
-                              icon: const Icon(Icons.casino_outlined, size: 20),
-                              label: Text(
-                                _busy
-                                    ? 'Spinning…'
-                                    : _needsRefresh
-                                    ? 'Rewards unavailable · Try again'
-                                    : (_data?.remaining ?? 0) <= 0
-                                    ? '✓ Spun Today · Come Back Tomorrow'
-                                    : 'Spin now · Free daily spin',
-                                style: const TextStyle(
-                                  fontWeight: FontWeight.w800,
-                                  fontSize: 15,
-                                ),
-                              ),
-                            ),
-                          ),
+                          _spinButton(),
                         ],
                       ),
                     ),
@@ -1058,16 +1291,26 @@ class _DailyRewardsScreenState extends State<DailyRewardsScreen>
                         child: Column(
                           children: [
                             Container(
-                              width: 54,
-                              height: 54,
+                              width: 84,
+                              height: 84,
                               decoration: BoxDecoration(
-                                color: const Color(0xFFEEF2FF),
-                                borderRadius: BorderRadius.circular(16),
+                                gradient: const LinearGradient(
+                                  begin: Alignment.topLeft,
+                                  end: Alignment.bottomRight,
+                                  colors: [
+                                    Color(0xFFEEF2FF),
+                                    Color(0xFFE0E7FF),
+                                  ],
+                                ),
+                                borderRadius: BorderRadius.circular(28),
+                                border: Border.all(
+                                  color: _gold.withValues(alpha: .6),
+                                ),
                               ),
                               child: const Icon(
                                 Icons.card_giftcard_rounded,
                                 color: _purple,
-                                size: 28,
+                                size: 40,
                               ),
                             ),
                             const SizedBox(height: 12),
@@ -1100,14 +1343,81 @@ class _DailyRewardsScreenState extends State<DailyRewardsScreen>
   );
 }
 
+const _gold = Color(0xFFD9B04A);
+const _goldLight = Color(0xFFF6E7B4);
+const _goldDeep = Color(0xFF9A7418);
+
 class _RewardWheelPainter extends CustomPainter {
   final double turns;
-  _RewardWheelPainter(this.turns);
+  final bool busy;
+  _RewardWheelPainter(this.turns, this.busy);
+
   @override
   void paint(Canvas canvas, Size size) {
-    final centre = size.center(Offset.zero),
-        radius = size.shortestSide / 2 - 14;
-    final rect = Rect.fromCircle(center: centre, radius: radius);
+    final centre = size.center(Offset.zero);
+    final outer = size.shortestSide / 2 - 6;
+    final discR = outer - 17;
+    final disc = Rect.fromCircle(center: centre, radius: discR);
+    final rim = Rect.fromCircle(center: centre, radius: outer);
+
+    if (busy) {
+      final pulse = .5 + .5 * math.sin(turns * math.pi * 2 * 3);
+      canvas.drawCircle(
+        centre,
+        outer + 4,
+        Paint()
+          ..color = _gold.withValues(alpha: .25 + .2 * pulse)
+          ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 14),
+      );
+    }
+    canvas.drawCircle(
+      centre + const Offset(0, 6),
+      outer,
+      Paint()
+        ..color = const Color(0x401E1B4B)
+        ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 10),
+    );
+
+    // Fixed metal rim.
+    canvas.drawCircle(
+      centre,
+      outer,
+      Paint()
+        ..shader = const SweepGradient(
+          colors: [_goldLight, _gold, _goldDeep, _gold, _goldLight],
+          stops: [0, .3, .55, .8, 1],
+        ).createShader(rim),
+    );
+    canvas.drawCircle(
+      centre,
+      outer - 3,
+      Paint()..color = const Color(0xFF2B2670),
+    );
+    // Rim bulbs; while spinning a light chases around the rim.
+    const bulbs = 24;
+    for (var i = 0; i < bulbs; i++) {
+      final a = i * math.pi * 2 / bulbs - math.pi / 2;
+      final pos = centre + Offset(math.cos(a), math.sin(a)) * (outer - 8.5);
+      var glow = .55;
+      if (busy) {
+        final d = ((i / bulbs) - (turns * 2)) % 1;
+        glow = .3 + .7 * math.pow(1 - d, 3).toDouble();
+      }
+      canvas.drawCircle(
+        pos,
+        4.5,
+        Paint()
+          ..color = _goldLight.withValues(alpha: glow * .5)
+          ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 3),
+      );
+      canvas.drawCircle(
+        pos,
+        2.2,
+        Paint()..color = _goldLight.withValues(alpha: .35 + glow * .65),
+      );
+    }
+
+    // Rotating disc.
     canvas.save();
     canvas.translate(centre.dx, centre.dy);
     canvas.rotate(turns * math.pi * 2);
@@ -1115,24 +1425,44 @@ class _RewardWheelPainter extends CustomPainter {
     const sweep = math.pi * 2 / 10;
     for (var i = 0; i < 10; i++) {
       final angle = -math.pi / 2 + i * sweep;
-      canvas.drawArc(rect, angle, sweep, true, Paint()..color = _colors[i]);
+      final base = _colors[i];
       canvas.drawArc(
-        rect,
+        disc,
         angle,
         sweep,
         true,
         Paint()
-          ..color = Colors.white.withValues(alpha: .4)
-          ..style = PaintingStyle.stroke
-          ..strokeWidth = 1,
+          ..shader = RadialGradient(
+            colors: [
+              Color.lerp(base, Colors.black, .28)!,
+              base,
+              Color.lerp(base, Colors.white, .16)!,
+            ],
+            stops: const [.12, .62, 1],
+          ).createShader(disc),
+      );
+      final edge = Offset(math.cos(angle), math.sin(angle));
+      canvas.drawLine(
+        centre + edge * 34,
+        centre + edge * discR,
+        Paint()
+          ..color = Colors.white.withValues(alpha: .55)
+          ..strokeWidth = 1.2,
+      );
+      canvas.drawCircle(
+        centre + edge * (discR - 5),
+        2.4,
+        Paint()..color = _goldLight,
       );
       final text = TextPainter(
         text: TextSpan(
           text: _labels[i],
           style: TextStyle(
             color: Colors.white,
-            fontSize: radius < 125 ? 8 : 10,
+            fontSize: discR < 125 ? 9 : 10.5,
             fontWeight: FontWeight.w800,
+            letterSpacing: .3,
+            shadows: const [Shadow(color: Color(0x66000000), blurRadius: 3)],
           ),
         ),
         textDirection: TextDirection.ltr,
@@ -1140,23 +1470,85 @@ class _RewardWheelPainter extends CustomPainter {
       canvas.save();
       canvas.translate(centre.dx, centre.dy);
       canvas.rotate(angle + sweep / 2);
-      canvas.translate(radius * .67, 0);
+      canvas.translate(discR * .66, 0);
       canvas.rotate(math.pi / 2);
       text.paint(canvas, Offset(-text.width / 2, -text.height / 2));
       canvas.restore();
     }
+    canvas.restore();
+
+    // Fixed finishing: inner rings and glass reflection.
     canvas.drawCircle(
       centre,
-      radius,
+      discR,
       Paint()
-        ..color = const Color(0xFFEAB308)
         ..style = PaintingStyle.stroke
-        ..strokeWidth = 7,
+        ..strokeWidth = 2
+        ..color = _gold,
     );
-    canvas.restore();
+    canvas.drawCircle(
+      centre,
+      40,
+      Paint()
+        ..style = PaintingStyle.stroke
+        ..strokeWidth = 1.2
+        ..color = _goldLight.withValues(alpha: .7),
+    );
+    canvas.drawCircle(
+      centre,
+      discR - 1,
+      Paint()
+        ..shader = const LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [Color(0x30FFFFFF), Color(0x00FFFFFF), Color(0x18000000)],
+          stops: [0, .45, 1],
+        ).createShader(disc),
+    );
   }
 
   @override
-  bool shouldRepaint(_RewardWheelPainter oldDelegate) =>
-      oldDelegate.turns != turns;
+  bool shouldRepaint(_RewardWheelPainter old) =>
+      old.turns != turns || old.busy != busy;
+}
+
+/// Gold-and-red pin that flicks as each segment edge passes under it.
+class _PinPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    final path = Path()
+      ..moveTo(size.width / 2, size.height)
+      ..lineTo(size.width - 1, size.height * .32)
+      ..arcToPoint(
+        Offset(1, size.height * .32),
+        radius: Radius.circular(size.width / 2),
+        clockwise: false,
+      )
+      ..close();
+    canvas.drawShadow(path, const Color(0x99000000), 3, false);
+    canvas.drawPath(
+      path,
+      Paint()
+        ..shader = const LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [Color(0xFFFF6B6B), Color(0xFFC62828)],
+        ).createShader(Offset.zero & size),
+    );
+    canvas.drawPath(
+      path,
+      Paint()
+        ..style = PaintingStyle.stroke
+        ..strokeWidth = 2
+        ..color = _goldLight,
+    );
+    canvas.drawCircle(
+      Offset(size.width / 2, size.height * .32),
+      3.2,
+      Paint()..color = _goldLight,
+    );
+  }
+
+  @override
+  bool shouldRepaint(_PinPainter old) => false;
 }

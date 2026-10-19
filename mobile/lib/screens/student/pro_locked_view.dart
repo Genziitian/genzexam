@@ -140,7 +140,10 @@ class _ProLockedViewState extends State<ProLockedView> {
                 ),
                 child: Row(
                   children: [
-                    const Icon(Icons.lock_clock_rounded, color: Color(0xFF9A5B00)),
+                    const Icon(
+                      Icons.lock_clock_rounded,
+                      color: Color(0xFF9A5B00),
+                    ),
                     const SizedBox(width: 10),
                     Expanded(
                       child: Text(

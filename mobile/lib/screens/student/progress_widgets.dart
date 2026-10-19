@@ -49,7 +49,13 @@ class _Badge {
   final int level;
   final bool earned;
 
-  const _Badge({required this.slug, required this.label, required this.description, required this.level, required this.earned});
+  const _Badge({
+    required this.slug,
+    required this.label,
+    required this.description,
+    required this.level,
+    required this.earned,
+  });
 
   factory _Badge.fromJson(Map<String, dynamic> json) {
     return _Badge(
@@ -94,13 +100,20 @@ class _ProgressData {
     required this.ideSolved,
   });
 
-  static double _d(dynamic v) => v == null ? 0 : (double.tryParse(v.toString()) ?? 0);
+  static double _d(dynamic v) =>
+      v == null ? 0 : (double.tryParse(v.toString()) ?? 0);
   static int _i(dynamic v) => _d(v).round();
 
   factory _ProgressData.fromJson(Map<String, dynamic> json) {
-    final xp = (json['xp'] as Map?)?.cast<String, dynamic>() ?? const <String, dynamic>{};
-    final progress = (xp['progress'] as Map?)?.cast<String, dynamic>() ?? const <String, dynamic>{};
-    final stats = (json['stats'] as Map?)?.cast<String, dynamic>() ?? const <String, dynamic>{};
+    final xp =
+        (json['xp'] as Map?)?.cast<String, dynamic>() ??
+        const <String, dynamic>{};
+    final progress =
+        (xp['progress'] as Map?)?.cast<String, dynamic>() ??
+        const <String, dynamic>{};
+    final stats =
+        (json['stats'] as Map?)?.cast<String, dynamic>() ??
+        const <String, dynamic>{};
     final next = (xp['next_badge'] as Map?)?.cast<String, dynamic>();
     return _ProgressData(
       xp: _i(xp['xp']),
@@ -113,7 +126,9 @@ class _ProgressData {
           .whereType<Map>()
           .map((b) => _Badge.fromJson(b.cast<String, dynamic>()))
           .toList(),
-      nextBadge: next == null ? null : _Badge.fromJson({...next, 'earned': false}),
+      nextBadge: next == null
+          ? null
+          : _Badge.fromJson({...next, 'earned': false}),
       nextBadgeLevelsAway: next == null ? null : _i(next['levels_remaining']),
       attempts: _i(stats['completed_attempts']),
       avgScore: _d(stats['avg_percentage']),
@@ -137,8 +152,12 @@ String _thousands(int n) {
 }
 
 Widget _badgeIcon(_Badge badge, double size) {
-  final look = _badgeLooks[badge.slug] ?? const _BadgeLook('⭐', Color(0xFF64748B));
-  final glyph = Text(look.glyph, style: TextStyle(fontSize: size * 0.46, height: 1.1));
+  final look =
+      _badgeLooks[badge.slug] ?? const _BadgeLook('⭐', Color(0xFF64748B));
+  final glyph = Text(
+    look.glyph,
+    style: TextStyle(fontSize: size * 0.46, height: 1.1),
+  );
   return SizedBox(
     width: size,
     height: size,
@@ -155,11 +174,19 @@ Widget _badgeIcon(_Badge badge, double size) {
                 ? LinearGradient(
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
-                    colors: [look.color.withValues(alpha: 0.30), look.color.withValues(alpha: 0.10)],
+                    colors: [
+                      look.color.withValues(alpha: 0.30),
+                      look.color.withValues(alpha: 0.10),
+                    ],
                   )
                 : null,
             color: badge.earned ? null : const Color(0xFFF8FAFC),
-            border: Border.all(color: badge.earned ? look.color.withValues(alpha: 0.45) : const Color(0xFFE2E8F0), width: 2),
+            border: Border.all(
+              color: badge.earned
+                  ? look.color.withValues(alpha: 0.45)
+                  : const Color(0xFFE2E8F0),
+              width: 2,
+            ),
           ),
           // Emoji keep their real colours in dark mode; locked ones are greyed out.
           child: KeepColors(
@@ -169,10 +196,26 @@ Widget _badgeIcon(_Badge badge, double size) {
                     opacity: 0.45,
                     child: ColorFiltered(
                       colorFilter: const ColorFilter.matrix(<double>[
-                        0.2126, 0.7152, 0.0722, 0, 0,
-                        0.2126, 0.7152, 0.0722, 0, 0,
-                        0.2126, 0.7152, 0.0722, 0, 0,
-                        0, 0, 0, 1, 0,
+                        0.2126,
+                        0.7152,
+                        0.0722,
+                        0,
+                        0,
+                        0.2126,
+                        0.7152,
+                        0.0722,
+                        0,
+                        0,
+                        0.2126,
+                        0.7152,
+                        0.0722,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        1,
+                        0,
                       ]),
                       child: glyph,
                     ),
@@ -191,7 +234,11 @@ Widget _badgeIcon(_Badge badge, double size) {
                 shape: BoxShape.circle,
                 border: Border.all(color: Colors.white, width: 2),
               ),
-              child: Icon(Icons.lock_rounded, size: size * 0.16, color: Colors.white),
+              child: Icon(
+                Icons.lock_rounded,
+                size: size * 0.16,
+                color: Colors.white,
+              ),
             ),
           ),
       ],
@@ -204,11 +251,22 @@ BoxDecoration _cardDecoration() {
     color: Colors.white,
     borderRadius: BorderRadius.circular(22),
     border: Border.all(color: const Color(0xFFE2E8F0)),
-    boxShadow: [BoxShadow(color: _ink.withValues(alpha: 0.05), blurRadius: 20, offset: const Offset(0, 10))],
+    boxShadow: [
+      BoxShadow(
+        color: _ink.withValues(alpha: 0.05),
+        blurRadius: 20,
+        offset: const Offset(0, 10),
+      ),
+    ],
   );
 }
 
-const _labelStyle = TextStyle(fontSize: 10, fontWeight: FontWeight.w700, letterSpacing: 1.6, color: Color(0xFF94A3B8));
+const _labelStyle = TextStyle(
+  fontSize: 10,
+  fontWeight: FontWeight.w700,
+  letterSpacing: 1.6,
+  color: Color(0xFF94A3B8),
+);
 
 // -----------------------------------------------------------------------------
 // LEVEL, BADGES AND STATS (shown on the More tab, same content as the web profile)
@@ -234,7 +292,9 @@ class ProgressSectionState extends State<ProgressSection> {
 
   Future<void> reload() async {
     try {
-      final res = await widget.apiClient.get<Map<String, dynamic>>('/student/profile');
+      final res = await widget.apiClient.get<Map<String, dynamic>>(
+        '/student/profile',
+      );
       if (!mounted) return;
       setState(() {
         _data = _ProgressData.fromJson(res.data ?? const <String, dynamic>{});
@@ -248,7 +308,13 @@ class ProgressSectionState extends State<ProgressSection> {
   void _openRuleBook() {
     AppHaptics.light();
     Navigator.of(context).push(
-      MaterialPageRoute<void>(builder: (_) => RuleBookScreen(badges: _data?.badges ?? const [], level: _data?.level ?? 1, xp: _data?.xp ?? 0)),
+      MaterialPageRoute<void>(
+        builder: (_) => RuleBookScreen(
+          badges: _data?.badges ?? const [],
+          level: _data?.level ?? 1,
+          xp: _data?.xp ?? 0,
+        ),
+      ),
     );
   }
 
@@ -258,7 +324,9 @@ class ProgressSectionState extends State<ProgressSection> {
     showModalBottomSheet<void>(
       context: context,
       backgroundColor: Colors.white,
-      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(26))),
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(26)),
+      ),
       builder: (ctx) => SafeArea(
         child: Padding(
           padding: const EdgeInsets.fromLTRB(24, 22, 24, 22),
@@ -267,10 +335,19 @@ class ProgressSectionState extends State<ProgressSection> {
             children: [
               _badgeIcon(badge, 92),
               const SizedBox(height: 14),
-              Text(badge.label, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w800, color: _ink)),
+              Text(
+                badge.label,
+                style: const TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w800,
+                  color: _ink,
+                ),
+              ),
               const SizedBox(height: 4),
               Text(
-                badge.earned ? 'Earned · ${badge.description}' : 'Locked · reach Level ${badge.level} (${_thousands(need)} XP)',
+                badge.earned
+                    ? 'Earned · ${badge.description}'
+                    : 'Locked · reach Level ${badge.level} (${_thousands(need)} XP)',
                 textAlign: TextAlign.center,
                 style: const TextStyle(fontSize: 13.5, color: _muted),
               ),
@@ -287,7 +364,11 @@ class ProgressSectionState extends State<ProgressSection> {
         padding: const EdgeInsets.fromLTRB(14, 10, 12, 10),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(18),
-          gradient: const LinearGradient(begin: Alignment.topLeft, end: Alignment.bottomRight, colors: [Colors.white, Color(0xFFF3FAF5)]),
+          gradient: const LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [Colors.white, Color(0xFFF3FAF5)],
+          ),
           border: Border.all(color: const Color(0xFFE2E8F0)),
         ),
         child: Column(
@@ -295,7 +376,15 @@ class ProgressSectionState extends State<ProgressSection> {
           children: [
             Text(label, style: _labelStyle),
             const SizedBox(height: 6),
-            Text(value, style: const TextStyle(fontSize: 24, fontWeight: FontWeight.w800, letterSpacing: -0.6, color: _ink)),
+            Text(
+              value,
+              style: const TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.w800,
+                letterSpacing: -0.6,
+                color: _ink,
+              ),
+            ),
           ],
         ),
       ),
@@ -312,8 +401,19 @@ class ProgressSectionState extends State<ProgressSection> {
           decoration: _cardDecoration(),
           child: Row(
             children: [
-              const Expanded(child: Text('Could not load your level and badges.', style: TextStyle(fontSize: 13, color: _muted))),
-              TextButton(onPressed: reload, child: const Text('Retry', style: TextStyle(color: _green, fontWeight: FontWeight.bold))),
+              const Expanded(
+                child: Text(
+                  'Could not load your level and badges.',
+                  style: TextStyle(fontSize: 13, color: _muted),
+                ),
+              ),
+              TextButton(
+                onPressed: reload,
+                child: const Text(
+                  'Retry',
+                  style: TextStyle(color: _green, fontWeight: FontWeight.bold),
+                ),
+              ),
             ],
           ),
         );
@@ -322,7 +422,9 @@ class ProgressSectionState extends State<ProgressSection> {
     }
 
     final span = d.nextLevelTotal - d.thisLevelTotal;
-    final fraction = d.isMax || span <= 0 ? 1.0 : ((d.xp - d.thisLevelTotal) / span).clamp(0.0, 1.0).toDouble();
+    final fraction = d.isMax || span <= 0
+        ? 1.0
+        : ((d.xp - d.thisLevelTotal) / span).clamp(0.0, 1.0).toDouble();
     final earned = d.badges.where((b) => b.earned).length;
 
     return Column(
@@ -340,14 +442,27 @@ class ProgressSectionState extends State<ProgressSection> {
                   const Text('LEVEL', style: _labelStyle),
                   const SizedBox(width: 10),
                   Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-                    decoration: BoxDecoration(color: const Color(0xFFDCFCE7), borderRadius: BorderRadius.circular(20)),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 10,
+                      vertical: 4,
+                    ),
+                    decoration: BoxDecoration(
+                      color: const Color(0xFFDCFCE7),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         const Icon(Icons.bolt_rounded, size: 14, color: _green),
                         const SizedBox(width: 2),
-                        Text('LVL ${d.level}', style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w800, color: Color(0xFF15803D))),
+                        Text(
+                          'LVL ${d.level}',
+                          style: const TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w800,
+                            color: Color(0xFF15803D),
+                          ),
+                        ),
                       ],
                     ),
                   ),
@@ -359,7 +474,14 @@ class ProgressSectionState extends State<ProgressSection> {
                       children: [
                         Icon(Icons.menu_book_outlined, size: 15, color: _green),
                         SizedBox(width: 4),
-                        Text('Rule book', style: TextStyle(fontSize: 12.5, fontWeight: FontWeight.w700, color: _green)),
+                        Text(
+                          'Rule book',
+                          style: TextStyle(
+                            fontSize: 12.5,
+                            fontWeight: FontWeight.w700,
+                            color: _green,
+                          ),
+                        ),
                       ],
                     ),
                   ),
@@ -375,13 +497,26 @@ class ProgressSectionState extends State<ProgressSection> {
                     curve: Curves.easeOutCubic,
                     builder: (context, v, _) => Text(
                       _thousands(v.round()),
-                      style: const TextStyle(fontSize: 40, height: 1.0, fontWeight: FontWeight.w800, letterSpacing: -1.4, color: _ink),
+                      style: const TextStyle(
+                        fontSize: 40,
+                        height: 1.0,
+                        fontWeight: FontWeight.w800,
+                        letterSpacing: -1.4,
+                        color: _ink,
+                      ),
                     ),
                   ),
                   const SizedBox(width: 6),
                   const Padding(
                     padding: EdgeInsets.only(bottom: 5),
-                    child: Text('XP', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Color(0xFF94A3B8))),
+                    child: Text(
+                      'XP',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                        color: Color(0xFF94A3B8),
+                      ),
+                    ),
                   ),
                 ],
               ),
@@ -389,9 +524,19 @@ class ProgressSectionState extends State<ProgressSection> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text('XP', style: TextStyle(fontSize: 12, fontWeight: FontWeight.w700, letterSpacing: 1, color: _muted)),
+                  const Text(
+                    'XP',
+                    style: TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w700,
+                      letterSpacing: 1,
+                      color: _muted,
+                    ),
+                  ),
                   Text(
-                    d.isMax ? 'Max level' : '${_thousands(d.xp)} / ${_thousands(d.nextLevelTotal)} XP',
+                    d.isMax
+                        ? 'Max level'
+                        : '${_thousands(d.xp)} / ${_thousands(d.nextLevelTotal)} XP',
                     style: const TextStyle(fontSize: 12.5, color: _muted),
                   ),
                 ],
@@ -407,14 +552,21 @@ class ProgressSectionState extends State<ProgressSection> {
                     value: t,
                     minHeight: 8,
                     backgroundColor: const Color(0xFFE2E8F0),
-                    valueColor: const AlwaysStoppedAnimation<Color>(Color(0xFF22C55E)),
+                    valueColor: const AlwaysStoppedAnimation<Color>(
+                      Color(0xFF22C55E),
+                    ),
                   ),
                 ),
               ),
               const SizedBox(height: 7),
               Text(
-                d.isMax ? 'You have reached the top level.' : '${_thousands(d.xpToNext)} XP to Level ${d.level + 1}',
-                style: const TextStyle(fontSize: 12.5, color: Color(0xFF94A3B8)),
+                d.isMax
+                    ? 'You have reached the top level.'
+                    : '${_thousands(d.xpToNext)} XP to Level ${d.level + 1}',
+                style: const TextStyle(
+                  fontSize: 12.5,
+                  color: Color(0xFF94A3B8),
+                ),
               ),
               if (d.nextBadge != null) ...[
                 const SizedBox(height: 14),
@@ -435,10 +587,20 @@ class ProgressSectionState extends State<ProgressSection> {
                           children: [
                             const Text('NEXT BADGE', style: _labelStyle),
                             const SizedBox(height: 3),
-                            Text(d.nextBadge!.label, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w800, color: _ink)),
+                            Text(
+                              d.nextBadge!.label,
+                              style: const TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w800,
+                                color: _ink,
+                              ),
+                            ),
                             Text(
                               '${d.nextBadgeLevelsAway ?? 0} level${d.nextBadgeLevelsAway == 1 ? '' : 's'} away · L${d.nextBadge!.level}',
-                              style: const TextStyle(fontSize: 12.5, color: _muted),
+                              style: const TextStyle(
+                                fontSize: 12.5,
+                                color: _muted,
+                              ),
                             ),
                           ],
                         ),
@@ -462,23 +624,50 @@ class ProgressSectionState extends State<ProgressSection> {
                 onTap: _openRuleBook,
                 borderRadius: BorderRadius.circular(10),
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 4,
+                    vertical: 2,
+                  ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Text('Badges', style: TextStyle(fontSize: 19, fontWeight: FontWeight.w800, color: _ink)),
+                      const Text(
+                        'Badges',
+                        style: TextStyle(
+                          fontSize: 19,
+                          fontWeight: FontWeight.w800,
+                          color: _ink,
+                        ),
+                      ),
                       Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
-                              Text('$earned of ${d.badges.length} earned', style: const TextStyle(fontSize: 12.5, color: _muted)),
-                              const Text('View all', style: TextStyle(fontSize: 11, fontWeight: FontWeight.w700, color: _green)),
+                              Text(
+                                '$earned of ${d.badges.length} earned',
+                                style: const TextStyle(
+                                  fontSize: 12.5,
+                                  color: _muted,
+                                ),
+                              ),
+                              const Text(
+                                'View all',
+                                style: TextStyle(
+                                  fontSize: 11,
+                                  fontWeight: FontWeight.w700,
+                                  color: _green,
+                                ),
+                              ),
                             ],
                           ),
                           const SizedBox(width: 4),
-                          const Icon(Icons.chevron_right_rounded, size: 18, color: _green),
+                          const Icon(
+                            Icons.chevron_right_rounded,
+                            size: 18,
+                            color: _green,
+                          ),
                         ],
                       ),
                     ],
@@ -506,10 +695,18 @@ class ProgressSectionState extends State<ProgressSection> {
                               style: TextStyle(
                                 fontSize: 12,
                                 fontWeight: FontWeight.w700,
-                                color: badge.earned ? _ink : const Color(0xFF94A3B8),
+                                color: badge.earned
+                                    ? _ink
+                                    : const Color(0xFF94A3B8),
                               ),
                             ),
-                            Text('L${badge.level}', style: const TextStyle(fontSize: 10.5, color: Color(0xFF94A3B8))),
+                            Text(
+                              'L${badge.level}',
+                              style: const TextStyle(
+                                fontSize: 10.5,
+                                color: Color(0xFF94A3B8),
+                              ),
+                            ),
                           ],
                         ),
                       ),
@@ -523,8 +720,19 @@ class ProgressSectionState extends State<ProgressSection> {
                   width: double.infinity,
                   padding: const EdgeInsets.symmetric(vertical: 11),
                   alignment: Alignment.center,
-                  decoration: BoxDecoration(color: const Color(0xFFF0FDF4), borderRadius: BorderRadius.circular(12), border: Border.all(color: const Color(0xFFBBF7D0))),
-                  child: const Text('How do XP, levels and badges work?', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w700, color: Color(0xFF15803D))),
+                  decoration: BoxDecoration(
+                    color: const Color(0xFFF0FDF4),
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(color: const Color(0xFFBBF7D0)),
+                  ),
+                  child: const Text(
+                    'How do XP, levels and badges work?',
+                    style: TextStyle(
+                      fontSize: 13,
+                      fontWeight: FontWeight.w700,
+                      color: Color(0xFF15803D),
+                    ),
+                  ),
                 ),
               ),
               const Padding(
@@ -568,7 +776,12 @@ class RuleBookScreen extends StatelessWidget {
   final int level;
   final int xp;
 
-  const RuleBookScreen({super.key, required this.badges, required this.level, required this.xp});
+  const RuleBookScreen({
+    super.key,
+    required this.badges,
+    required this.level,
+    required this.xp,
+  });
 
   Widget _section(String title, IconData icon, List<Widget> children) {
     return Container(
@@ -582,11 +795,23 @@ class RuleBookScreen extends StatelessWidget {
             children: [
               Container(
                 padding: const EdgeInsets.all(7),
-                decoration: BoxDecoration(color: const Color(0xFFDCFCE7), borderRadius: BorderRadius.circular(10)),
+                decoration: BoxDecoration(
+                  color: const Color(0xFFDCFCE7),
+                  borderRadius: BorderRadius.circular(10),
+                ),
                 child: Icon(icon, size: 17, color: _green),
               ),
               const SizedBox(width: 10),
-              Expanded(child: Text(title, style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w800, color: _ink))),
+              Expanded(
+                child: Text(
+                  title,
+                  style: const TextStyle(
+                    fontSize: 17,
+                    fontWeight: FontWeight.w800,
+                    color: _ink,
+                  ),
+                ),
+              ),
             ],
           ),
           const SizedBox(height: 12),
@@ -597,9 +822,16 @@ class RuleBookScreen extends StatelessWidget {
   }
 
   Widget _para(String text) => Padding(
-        padding: const EdgeInsets.only(bottom: 8),
-        child: Text(text, style: const TextStyle(fontSize: 13.5, height: 1.5, color: Color(0xFF334155))),
-      );
+    padding: const EdgeInsets.only(bottom: 8),
+    child: Text(
+      text,
+      style: const TextStyle(
+        fontSize: 13.5,
+        height: 1.5,
+        color: Color(0xFF334155),
+      ),
+    ),
+  );
 
   Widget _rule(String what, String points, {String? note}) {
     return Padding(
@@ -611,16 +843,41 @@ class RuleBookScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(what, style: const TextStyle(fontSize: 13.5, fontWeight: FontWeight.w700, color: _ink)),
-                if (note != null) Text(note, style: const TextStyle(fontSize: 12, height: 1.4, color: _muted)),
+                Text(
+                  what,
+                  style: const TextStyle(
+                    fontSize: 13.5,
+                    fontWeight: FontWeight.w700,
+                    color: _ink,
+                  ),
+                ),
+                if (note != null)
+                  Text(
+                    note,
+                    style: const TextStyle(
+                      fontSize: 12,
+                      height: 1.4,
+                      color: _muted,
+                    ),
+                  ),
               ],
             ),
           ),
           const SizedBox(width: 10),
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 4),
-            decoration: BoxDecoration(color: const Color(0xFFDCFCE7), borderRadius: BorderRadius.circular(10)),
-            child: Text(points, style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w800, color: Color(0xFF15803D))),
+            decoration: BoxDecoration(
+              color: const Color(0xFFDCFCE7),
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Text(
+              points,
+              style: const TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.w800,
+                color: Color(0xFF15803D),
+              ),
+            ),
           ),
         ],
       ),
@@ -635,10 +892,23 @@ class RuleBookScreen extends StatelessWidget {
         children: [
           SizedBox(
             width: 78,
-            child: Text('Level $lvl', style: TextStyle(fontSize: 13.5, fontWeight: FontWeight.w700, color: reached ? _green : _ink)),
+            child: Text(
+              'Level $lvl',
+              style: TextStyle(
+                fontSize: 13.5,
+                fontWeight: FontWeight.w700,
+                color: reached ? _green : _ink,
+              ),
+            ),
           ),
-          Expanded(child: Text('${_thousands(_xpForLevel(lvl))} XP', style: const TextStyle(fontSize: 13.5, color: Color(0xFF334155)))),
-          if (reached) const Icon(Icons.check_circle_rounded, size: 16, color: _green),
+          Expanded(
+            child: Text(
+              '${_thousands(_xpForLevel(lvl))} XP',
+              style: const TextStyle(fontSize: 13.5, color: Color(0xFF334155)),
+            ),
+          ),
+          if (reached)
+            const Icon(Icons.check_circle_rounded, size: 16, color: _green),
         ],
       ),
     );
@@ -654,7 +924,14 @@ class RuleBookScreen extends StatelessWidget {
         foregroundColor: _ink,
         elevation: 0,
         titleSpacing: 0,
-        title: const Text('Rule book', style: TextStyle(fontSize: 17, fontWeight: FontWeight.w800, color: _ink)),
+        title: const Text(
+          'Rule book',
+          style: TextStyle(
+            fontSize: 17,
+            fontWeight: FontWeight.w800,
+            color: _ink,
+          ),
+        ),
       ),
       body: SafeArea(
         child: ListView(
@@ -663,9 +940,20 @@ class RuleBookScreen extends StatelessWidget {
             const Text.rich(
               TextSpan(
                 text: 'How XP, levels and ',
-                children: [TextSpan(text: 'badges work.', style: TextStyle(color: _green))],
+                children: [
+                  TextSpan(
+                    text: 'badges work.',
+                    style: TextStyle(color: _green),
+                  ),
+                ],
               ),
-              style: TextStyle(fontSize: 26, height: 1.2, fontWeight: FontWeight.w800, letterSpacing: -0.6, color: _ink),
+              style: TextStyle(
+                fontSize: 26,
+                height: 1.2,
+                fontWeight: FontWeight.w800,
+                letterSpacing: -0.6,
+                color: _ink,
+              ),
             ),
             const SizedBox(height: 6),
             Text(
@@ -675,41 +963,101 @@ class RuleBookScreen extends StatelessWidget {
             const SizedBox(height: 16),
 
             _section('The short version', Icons.flash_on_rounded, [
-              _para('Everything you do earns XP (experience points). XP only ever adds up into one total.'),
-              _para('Your total XP decides your level. Your level decides your badges. Nobody hands out badges by hand, and you cannot buy them.'),
+              _para(
+                'Everything you do earns XP (experience points). XP only ever adds up into one total.',
+              ),
+              _para(
+                'Your total XP decides your level. Your level decides your badges. Nobody hands out badges by hand, and you cannot buy them.',
+              ),
             ]),
 
             _section('How you earn XP', Icons.add_circle_outline_rounded, [
-              _rule('Finish a paper for the first time', '5 to 25 XP', note: '5 XP for finishing, plus 1 XP for every 5% you score. 0% gives 5, 50% gives 15, 100% gives 25.'),
+              _rule(
+                'Finish a paper for the first time',
+                '5 to 25 XP',
+                note: '5 XP for finishing, plus 1 XP for every 5% you score. 0% gives 5, 50% gives 15, 100% gives 25.',
+              ),
               const Divider(height: 1, color: Color(0xFFF1F5F9)),
-              _rule('Attempt the same paper again', 'Half', note: 'A repeat attempt earns half of what that score would earn the first time (at least 1 XP).'),
+              _rule(
+                'Attempt the same paper again',
+                'Half',
+                note: 'A repeat attempt earns half of what that score would earn the first time (at least 1 XP).',
+              ),
               const Divider(height: 1, color: Color(0xFFF1F5F9)),
-              _rule('Daily bonus', '+10 XP', note: 'Once a day, on your first finished paper or solved coding problem of the day.'),
+              _rule(
+                'Daily bonus',
+                '+10 XP',
+                note: 'Once a day, on your first finished paper or solved coding problem of the day.',
+              ),
               const Divider(height: 1, color: Color(0xFFF1F5F9)),
-              _rule('Solve a coding (IDE) problem', '20 / 40 / 80', note: 'Easy 20, Medium 40, Hard 80. Counted the first time your solution is accepted.'),
+              _rule(
+                'Solve a coding (IDE) problem',
+                '20 / 40 / 80',
+                note: 'Easy 20, Medium 40, Hard 80. Counted the first time your solution is accepted.',
+              ),
               const Divider(height: 1, color: Color(0xFFF1F5F9)),
-              _rule('Your reply is accepted as the answer', '+50 XP', note: 'In Discussions, when the person who asked marks your reply as the answer.'),
+              _rule(
+                'Your reply is accepted as the answer',
+                '+50 XP',
+                note: 'In Discussions, when the person who asked marks your reply as the answer.',
+              ),
               const Divider(height: 1, color: Color(0xFFF1F5F9)),
-              _rule('Someone upvotes your doubt or reply', '+2 XP', note: 'Each upvote you receive in Discussions.'),
+              _rule(
+                'Someone upvotes your doubt or reply',
+                '+2 XP',
+                note: 'Each upvote you receive in Discussions.',
+              ),
             ]),
 
-            _section('When XP is taken back', Icons.remove_circle_outline_rounded, [
-              _para('If someone removes their upvote, the 2 XP goes with it.'),
-              _para('If the asker picks a different accepted answer, or un-accepts yours, the 50 XP moves away from you.'),
-              _para('XP from papers and coding problems is never taken back.'),
-            ]),
+            _section(
+              'When XP is taken back',
+              Icons.remove_circle_outline_rounded,
+              [
+                _para(
+                  'If someone removes their upvote, the 2 XP goes with it.',
+                ),
+                _para(
+                  'If the asker picks a different accepted answer, or un-accepts yours, the 50 XP moves away from you.',
+                ),
+                _para(
+                  'XP from papers and coding problems is never taken back.',
+                ),
+              ],
+            ),
 
             _section('How levels work', Icons.trending_up_rounded, [
-              _para('There are 50 levels. To reach a level you need 50 x level x level XP in total. So each level is a bigger step than the one before.'),
-              for (final lvl in const [2, 3, 4, 5, 7, 10, 15, 20, 25, 30, 40, 50]) _levelRow(lvl),
+              _para(
+                'There are 50 levels. To reach a level you need 50 x level x level XP in total. So each level is a bigger step than the one before.',
+              ),
+              for (final lvl in const [
+                2,
+                3,
+                4,
+                5,
+                7,
+                10,
+                15,
+                20,
+                25,
+                30,
+                40,
+                50,
+              ])
+                _levelRow(lvl),
               const SizedBox(height: 6),
-              _para('Level 50 is the top. XP stops counting once you reach it.'),
+              _para(
+                'Level 50 is the top. XP stops counting once you reach it.',
+              ),
             ]),
 
             _section('Badges: who gets what', Icons.military_tech_rounded, [
-              _para('A badge unlocks the moment you reach its level, and it is yours for good. Everyone starts with Newcomer.'),
+              _para(
+                'A badge unlocks the moment you reach its level, and it is yours for good. Everyone starts with Newcomer.',
+              ),
               if (badges.isEmpty)
-                _para('Open this page again when you are online to see the full badge list.')
+                _para(
+                  'Open this page again when you are online to see the full badge list.',
+                )
               else
                 for (final badge in badges)
                   Padding(
@@ -722,17 +1070,35 @@ class RuleBookScreen extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(badge.label, style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: badge.earned ? _ink : const Color(0xFF64748B))),
+                              Text(
+                                badge.label,
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w700,
+                                  color: badge.earned
+                                      ? _ink
+                                      : const Color(0xFF64748B),
+                                ),
+                              ),
                               Text(
                                 'Level ${badge.level} · ${_thousands(_xpForLevel(badge.level))} XP',
-                                style: const TextStyle(fontSize: 12, color: _muted),
+                                style: const TextStyle(
+                                  fontSize: 12,
+                                  color: _muted,
+                                ),
                               ),
                             ],
                           ),
                         ),
                         Text(
                           badge.earned ? 'Earned' : 'Locked',
-                          style: TextStyle(fontSize: 12, fontWeight: FontWeight.w700, color: badge.earned ? _green : const Color(0xFF94A3B8)),
+                          style: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w700,
+                            color: badge.earned
+                                ? _green
+                                : const Color(0xFF94A3B8),
+                          ),
                         ),
                       ],
                     ),
@@ -740,7 +1106,9 @@ class RuleBookScreen extends StatelessWidget {
             ]),
 
             _section('Leaderboard', Icons.emoji_events_outlined, [
-              _para('The Ranks tab orders students by total XP. More XP means a higher place. The top three stand on the podium.'),
+              _para(
+                'The Ranks tab orders students by total XP. More XP means a higher place. The top three stand on the podium.',
+              ),
             ]),
           ],
         ),

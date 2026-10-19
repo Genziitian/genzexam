@@ -11,7 +11,9 @@ class ManagerSalesSummary {
 
   factory ManagerSalesSummary.fromJson(Map<String, dynamic> json) {
     return ManagerSalesSummary(
-      totals: ManagerSalesTotals.fromJson(json['totals'] as Map<String, dynamic>? ?? {}),
+      totals: ManagerSalesTotals.fromJson(
+        json['totals'] as Map<String, dynamic>? ?? {},
+      ),
       days: (json['days'] as List? ?? [])
           .map((e) => ManagerSalesDay.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -157,9 +159,15 @@ class ManagerPurchaseOrder {
   factory ManagerPurchaseOrder.fromJson(Map<String, dynamic> json) {
     return ManagerPurchaseOrder(
       id: json['id'] as int,
-      studentName: json['user'] != null ? json['user']['name'] as String? : null,
-      studentEmail: json['user'] != null ? json['user']['email'] as String? : null,
-      paperTitle: json['quiz'] != null ? json['quiz']['title'] as String? ?? 'Quiz Paper' : 'Quiz Paper',
+      studentName: json['user'] != null
+          ? json['user']['name'] as String?
+          : null,
+      studentEmail: json['user'] != null
+          ? json['user']['email'] as String?
+          : null,
+      paperTitle: json['quiz'] != null
+          ? json['quiz']['title'] as String? ?? 'Quiz Paper'
+          : 'Quiz Paper',
       amountPaise: json['amount_paise'] as int? ?? 0,
       status: json['status'] as String? ?? 'created',
       paidAt: json['paid_at'] as String?,

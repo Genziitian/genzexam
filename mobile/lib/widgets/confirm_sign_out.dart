@@ -8,10 +8,18 @@ Future<void> confirmSignOut(BuildContext context, AuthState authState) async {
     context: context,
     builder: (dialogContext) => AlertDialog(
       title: const Text('Sign out?'),
-      content: const Text('You will need to sign in again to use your account.'),
+      content: const Text(
+        'You will need to sign in again to use your account.',
+      ),
       actions: [
-        TextButton(onPressed: () => Navigator.pop(dialogContext, false), child: const Text('Stay signed in')),
-        FilledButton(onPressed: () => Navigator.pop(dialogContext, true), child: const Text('Continue')),
+        TextButton(
+          onPressed: () => Navigator.pop(dialogContext, false),
+          child: const Text('Stay signed in'),
+        ),
+        FilledButton(
+          onPressed: () => Navigator.pop(dialogContext, true),
+          child: const Text('Continue'),
+        ),
       ],
     ),
   );
@@ -23,9 +31,14 @@ Future<void> confirmSignOut(BuildContext context, AuthState authState) async {
       title: const Text('Confirm sign out'),
       content: const Text('Are you sure you want to sign out now?'),
       actions: [
-        TextButton(onPressed: () => Navigator.pop(dialogContext, false), child: const Text('Cancel')),
+        TextButton(
+          onPressed: () => Navigator.pop(dialogContext, false),
+          child: const Text('Cancel'),
+        ),
         FilledButton(
-          style: FilledButton.styleFrom(backgroundColor: const Color(0xFFDC2626)),
+          style: FilledButton.styleFrom(
+            backgroundColor: const Color(0xFFDC2626),
+          ),
           onPressed: () => Navigator.pop(dialogContext, true),
           child: const Text('Sign out'),
         ),

@@ -22,7 +22,11 @@ String _timeAgo(DateTime? time) {
 }
 
 String _initialsOf(String name) {
-  final parts = name.trim().split(RegExp(r'\s+')).where((p) => p.isNotEmpty).toList();
+  final parts = name
+      .trim()
+      .split(RegExp(r'\s+'))
+      .where((p) => p.isNotEmpty)
+      .toList();
   if (parts.isEmpty) return '?';
   if (parts.length == 1) return parts.first[0].toUpperCase();
   return (parts.first[0] + parts.last[0]).toUpperCase();
@@ -38,7 +42,9 @@ const _avatarColors = [
 ];
 
 Widget _authorAvatar(DiscussionAuthor author, double size) {
-  final color = author.isAnonymous ? const Color(0xFF64748B) : _avatarColors[author.name.hashCode.abs() % _avatarColors.length];
+  final color = author.isAnonymous
+      ? const Color(0xFF64748B)
+      : _avatarColors[author.name.hashCode.abs() % _avatarColors.length];
   return Container(
     width: size,
     height: size,
@@ -50,19 +56,39 @@ Widget _authorAvatar(DiscussionAuthor author, double size) {
     ),
     child: author.isAnonymous
         ? Icon(Icons.person_outline_rounded, size: size * 0.55, color: color)
-        : Text(_initialsOf(author.name), style: TextStyle(fontSize: size * 0.36, fontWeight: FontWeight.w800, color: color)),
+        : Text(
+            _initialsOf(author.name),
+            style: TextStyle(
+              fontSize: size * 0.36,
+              fontWeight: FontWeight.w800,
+              color: color,
+            ),
+          ),
   );
 }
 
 Widget _pill(String text, Color color, {IconData? icon}) {
   return Container(
     padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
-    decoration: BoxDecoration(color: color.withValues(alpha: 0.12), borderRadius: BorderRadius.circular(8)),
+    decoration: BoxDecoration(
+      color: color.withValues(alpha: 0.12),
+      borderRadius: BorderRadius.circular(8),
+    ),
     child: Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        if (icon != null) ...[Icon(icon, size: 12, color: color), const SizedBox(width: 3)],
-        Text(text, style: TextStyle(fontSize: 10.5, fontWeight: FontWeight.w700, color: color)),
+        if (icon != null) ...[
+          Icon(icon, size: 12, color: color),
+          const SizedBox(width: 3),
+        ],
+        Text(
+          text,
+          style: TextStyle(
+            fontSize: 10.5,
+            fontWeight: FontWeight.w700,
+            color: color,
+          ),
+        ),
       ],
     ),
   );
@@ -82,7 +108,13 @@ class DiscussionsScreen extends StatefulWidget {
 
 class _DiscussionsScreenState extends State<DiscussionsScreen> {
   // label -> (sort, mine)
-  static const _filters = ['Newest', 'Trending', 'Unsolved', 'Solved', 'My doubts'];
+  static const _filters = [
+    'Newest',
+    'Trending',
+    'Unsolved',
+    'Solved',
+    'My doubts',
+  ];
 
   bool _loading = true;
   String? _error;
@@ -113,7 +145,13 @@ class _DiscussionsScreenState extends State<DiscussionsScreen> {
       });
     }
     try {
-      final sort = const ['newest', 'trending', 'unsolved', 'solved', 'newest'][_filter];
+      final sort = const [
+        'newest',
+        'trending',
+        'unsolved',
+        'solved',
+        'newest',
+      ][_filter];
       final items = await widget.discussionService.getDiscussions(
         sort: sort,
         search: _search,
@@ -128,7 +166,9 @@ class _DiscussionsScreenState extends State<DiscussionsScreen> {
     } catch (e) {
       if (!mounted || request != _request) return;
       setState(() {
-        _error = e is ApiException ? e.message : 'Could not load discussions. Check your connection.';
+        _error = e is ApiException
+            ? e.message
+            : 'Could not load discussions. Check your connection.';
         _loading = false;
       });
     }
@@ -144,7 +184,11 @@ class _DiscussionsScreenState extends State<DiscussionsScreen> {
     AppHaptics.light();
     await Navigator.of(context).push(
       MaterialPageRoute<void>(
-        builder: (_) => DiscussionThreadScreen(discussionService: widget.discussionService, discussionId: item.id, title: item.title),
+        builder: (_) => DiscussionThreadScreen(
+          discussionService: widget.discussionService,
+          discussionId: item.id,
+          title: item.title,
+        ),
       ),
     );
     if (mounted) _load(quiet: true);
@@ -156,11 +200,15 @@ class _DiscussionsScreenState extends State<DiscussionsScreen> {
       context: context,
       isScrollControlled: true,
       backgroundColor: Colors.white,
-      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(26))),
-      builder: (_) => _AskDoubtSheet(discussionService: widget.discussionService),
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(26)),
+      ),
+      builder: (_) =>
+          _AskDoubtSheet(discussionService: widget.discussionService),
     );
     if (createdId == null || !mounted) return;
-    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Your doubt is posted.')));
+    ScaffoldMessenger.of(context)
+        .showSnackBar(const SnackBar(content: Text('Your doubt is posted.')));
     setState(() => _filter = 0);
     _load();
   }
@@ -173,9 +221,17 @@ class _DiscussionsScreenState extends State<DiscussionsScreen> {
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(18),
-          border: Border.all(color: d.isSolved ? const Color(0xFFBBF7D0) : const Color(0xFFE2E8F0)),
+          border: Border.all(
+            color: d.isSolved
+                ? const Color(0xFFBBF7D0)
+                : const Color(0xFFE2E8F0),
+          ),
           boxShadow: [
-            BoxShadow(color: _ink.withValues(alpha: 0.04), blurRadius: 14, offset: const Offset(0, 6)),
+            BoxShadow(
+              color: _ink.withValues(alpha: 0.04),
+              blurRadius: 14,
+              offset: const Offset(0, 6),
+            ),
           ],
         ),
         child: Column(
@@ -189,12 +245,26 @@ class _DiscussionsScreenState extends State<DiscussionsScreen> {
                   child: Text.rich(
                     TextSpan(
                       text: d.author.isAnonymous ? 'Anonymous' : d.author.name,
-                      style: const TextStyle(fontSize: 12.5, fontWeight: FontWeight.w700, color: _ink),
+                      style: const TextStyle(
+                        fontSize: 12.5,
+                        fontWeight: FontWeight.w700,
+                        color: _ink,
+                      ),
                       children: [
-                        if (d.isMine) const TextSpan(text: '  (you)', style: TextStyle(fontWeight: FontWeight.w500, color: _green)),
+                        if (d.isMine)
+                          const TextSpan(
+                            text: '  (you)',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              color: _green,
+                            ),
+                          ),
                         TextSpan(
                           text: '  ·  ${_timeAgo(d.createdAt)}',
-                          style: const TextStyle(fontWeight: FontWeight.w400, color: Color(0xFF94A3B8)),
+                          style: const TextStyle(
+                            fontWeight: FontWeight.w400,
+                            color: Color(0xFF94A3B8),
+                          ),
                         ),
                       ],
                     ),
@@ -202,7 +272,8 @@ class _DiscussionsScreenState extends State<DiscussionsScreen> {
                     overflow: TextOverflow.ellipsis,
                   ),
                 ),
-                if (d.isSolved) _pill('Solved', _green, icon: Icons.check_circle_rounded),
+                if (d.isSolved)
+                  _pill('Solved', _green, icon: Icons.check_circle_rounded),
               ],
             ),
             const SizedBox(height: 10),
@@ -210,7 +281,12 @@ class _DiscussionsScreenState extends State<DiscussionsScreen> {
               d.title,
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
-              style: const TextStyle(fontSize: 15, height: 1.3, fontWeight: FontWeight.w700, color: _ink),
+              style: const TextStyle(
+                fontSize: 15,
+                height: 1.3,
+                fontWeight: FontWeight.w700,
+                color: _ink,
+              ),
             ),
             if (d.bodyPreview.trim().isNotEmpty) ...[
               const SizedBox(height: 4),
@@ -218,31 +294,70 @@ class _DiscussionsScreenState extends State<DiscussionsScreen> {
                 d.bodyPreview,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
-                style: const TextStyle(fontSize: 13, height: 1.4, color: _muted),
+                style: const TextStyle(
+                  fontSize: 13,
+                  height: 1.4,
+                  color: _muted,
+                ),
               ),
             ],
             const SizedBox(height: 10),
             Row(
               children: [
                 if (d.subjectLabel != null && d.subjectLabel!.isNotEmpty) ...[
-                  Flexible(child: _pill(d.subjectLabel!, const Color(0xFF2563EB))),
+                  Flexible(
+                    child: _pill(d.subjectLabel!, const Color(0xFF2563EB)),
+                  ),
                   const SizedBox(width: 6),
                 ] else if (d.course != null) ...[
-                  Flexible(child: _pill(d.course!.name, const Color(0xFF2563EB))),
+                  Flexible(
+                    child: _pill(d.course!.name, const Color(0xFF2563EB)),
+                  ),
                   const SizedBox(width: 6),
                 ],
                 const Spacer(),
-                Icon(d.myVote ? Icons.thumb_up_alt_rounded : Icons.thumb_up_alt_outlined, size: 14, color: d.myVote ? _green : _muted),
+                Icon(
+                  d.myVote
+                      ? Icons.thumb_up_alt_rounded
+                      : Icons.thumb_up_alt_outlined,
+                  size: 14,
+                  color: d.myVote ? _green : _muted,
+                ),
                 const SizedBox(width: 4),
-                Text('${d.voteCount}', style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: _muted)),
+                Text(
+                  '${d.voteCount}',
+                  style: const TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.w600,
+                    color: _muted,
+                  ),
+                ),
                 const SizedBox(width: 12),
-                const Icon(Icons.chat_bubble_outline_rounded, size: 14, color: _muted),
+                const Icon(
+                  Icons.chat_bubble_outline_rounded,
+                  size: 14,
+                  color: _muted,
+                ),
                 const SizedBox(width: 4),
-                Text('${d.replyCount}', style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: _muted)),
+                Text(
+                  '${d.replyCount}',
+                  style: const TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.w600,
+                    color: _muted,
+                  ),
+                ),
                 const SizedBox(width: 12),
                 const Icon(Icons.visibility_outlined, size: 14, color: _muted),
                 const SizedBox(width: 4),
-                Text('${d.viewCount}', style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: _muted)),
+                Text(
+                  '${d.viewCount}',
+                  style: const TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.w600,
+                    color: _muted,
+                  ),
+                ),
               ],
             ),
           ],
@@ -262,7 +377,11 @@ class _DiscussionsScreenState extends State<DiscussionsScreen> {
             height: 84,
             decoration: const BoxDecoration(
               shape: BoxShape.circle,
-              gradient: LinearGradient(begin: Alignment.topLeft, end: Alignment.bottomRight, colors: [Color(0xFFDCFCE7), Color(0xFFBBF7D0)]),
+              gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [Color(0xFFDCFCE7), Color(0xFFBBF7D0)],
+              ),
             ),
             child: const Icon(Icons.forum_rounded, size: 38, color: _green),
           ),
@@ -271,10 +390,14 @@ class _DiscussionsScreenState extends State<DiscussionsScreen> {
             searching
                 ? 'Nothing matches your search'
                 : _filter == 4
-                    ? 'You have not asked anything yet'
-                    : 'No discussions here yet',
+                ? 'You have not asked anything yet'
+                : 'No discussions here yet',
             textAlign: TextAlign.center,
-            style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w800, color: _ink),
+            style: const TextStyle(
+              fontSize: 17,
+              fontWeight: FontWeight.w800,
+              color: _ink,
+            ),
           ),
           const SizedBox(height: 6),
           Text(
@@ -289,10 +412,25 @@ class _DiscussionsScreenState extends State<DiscussionsScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(14),
-                gradient: const LinearGradient(colors: [Color(0xFF22C55E), Color(0xFF15803D)]),
-                boxShadow: [BoxShadow(color: _green.withValues(alpha: 0.35), blurRadius: 14, offset: const Offset(0, 7))],
+                gradient: const LinearGradient(
+                  colors: [Color(0xFF22C55E), Color(0xFF15803D)],
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    color: _green.withValues(alpha: 0.35),
+                    blurRadius: 14,
+                    offset: const Offset(0, 7),
+                  ),
+                ],
               ),
-              child: const Text('Ask the first doubt', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: Colors.white)),
+              child: const Text(
+                'Ask the first doubt',
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w700,
+                  color: Colors.white,
+                ),
+              ),
             ),
           ),
         ],
@@ -309,7 +447,10 @@ class _DiscussionsScreenState extends State<DiscussionsScreen> {
         backgroundColor: _green,
         foregroundColor: Colors.white,
         icon: const Icon(Icons.edit_rounded, size: 18),
-        label: const Text('Ask doubt', style: TextStyle(fontWeight: FontWeight.w700)),
+        label: const Text(
+          'Ask doubt',
+          style: TextStyle(fontWeight: FontWeight.w700),
+        ),
       ),
       body: SafeArea(
         child: RefreshIndicator(
@@ -325,19 +466,41 @@ class _DiscussionsScreenState extends State<DiscussionsScreen> {
                     onPressed: () => Navigator.of(context).maybePop(),
                     icon: const Icon(Icons.arrow_back_rounded, color: _ink),
                     padding: EdgeInsets.zero,
-                    constraints: const BoxConstraints(minWidth: 36, minHeight: 36),
+                    constraints: const BoxConstraints(
+                      minWidth: 36,
+                      minHeight: 36,
+                    ),
                   ),
                   const SizedBox(width: 4),
-                  const Text('DISCUSSIONS', style: TextStyle(fontSize: 11, fontWeight: FontWeight.w700, letterSpacing: 2.2, color: _muted)),
+                  const Text(
+                    'DISCUSSIONS',
+                    style: TextStyle(
+                      fontSize: 11,
+                      fontWeight: FontWeight.w700,
+                      letterSpacing: 2.2,
+                      color: _muted,
+                    ),
+                  ),
                 ],
               ),
               const SizedBox(height: 6),
               const Text.rich(
                 TextSpan(
                   text: 'Ask, answer, ',
-                  children: [TextSpan(text: 'learn together.', style: TextStyle(color: _green))],
+                  children: [
+                    TextSpan(
+                      text: 'learn together.',
+                      style: TextStyle(color: _green),
+                    ),
+                  ],
                 ),
-                style: TextStyle(fontSize: 28, height: 1.15, fontWeight: FontWeight.w800, letterSpacing: -0.8, color: _ink),
+                style: TextStyle(
+                  fontSize: 28,
+                  height: 1.15,
+                  fontWeight: FontWeight.w800,
+                  letterSpacing: -0.8,
+                  color: _ink,
+                ),
               ),
               const SizedBox(height: 14),
 
@@ -353,10 +516,16 @@ class _DiscussionsScreenState extends State<DiscussionsScreen> {
                   textInputAction: TextInputAction.search,
                   decoration: const InputDecoration(
                     hintText: 'Search doubts',
-                    hintStyle: TextStyle(color: Color(0xFF94A3B8), fontSize: 15),
+                    hintStyle: TextStyle(
+                      color: Color(0xFF94A3B8),
+                      fontSize: 15,
+                    ),
                     prefixIcon: Icon(Icons.search_rounded, color: _muted),
                     border: InputBorder.none,
-                    contentPadding: EdgeInsets.symmetric(horizontal: 14, vertical: 13),
+                    contentPadding: EdgeInsets.symmetric(
+                      horizontal: 14,
+                      vertical: 13,
+                    ),
                   ),
                 ),
               ),
@@ -378,15 +547,28 @@ class _DiscussionsScreenState extends State<DiscussionsScreen> {
                         child: AnimatedContainer(
                           duration: const Duration(milliseconds: 160),
                           margin: const EdgeInsets.only(right: 8),
-                          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 14,
+                            vertical: 8,
+                          ),
                           decoration: BoxDecoration(
                             color: _filter == i ? _green : Colors.white,
                             borderRadius: BorderRadius.circular(20),
-                            border: Border.all(color: _filter == i ? _green : const Color(0xFFE2E8F0)),
+                            border: Border.all(
+                              color: _filter == i
+                                  ? _green
+                                  : const Color(0xFFE2E8F0),
+                            ),
                           ),
                           child: Text(
                             _filters[i],
-                            style: TextStyle(fontSize: 13, fontWeight: FontWeight.w700, color: _filter == i ? Colors.white : const Color(0xFF475569)),
+                            style: TextStyle(
+                              fontSize: 13,
+                              fontWeight: FontWeight.w700,
+                              color: _filter == i
+                                  ? Colors.white
+                                  : const Color(0xFF475569),
+                            ),
                           ),
                         ),
                       ),
@@ -402,16 +584,33 @@ class _DiscussionsScreenState extends State<DiscussionsScreen> {
                   padding: const EdgeInsets.symmetric(vertical: 40),
                   child: Column(
                     children: [
-                      Text(_error!, textAlign: TextAlign.center, style: const TextStyle(color: _muted, fontSize: 14)),
+                      Text(
+                        _error!,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(color: _muted, fontSize: 14),
+                      ),
                       const SizedBox(height: 10),
-                      TextButton(onPressed: _load, child: const Text('Try again', style: TextStyle(color: _green, fontWeight: FontWeight.bold))),
+                      TextButton(
+                        onPressed: _load,
+                        child: const Text(
+                          'Try again',
+                          style: TextStyle(
+                            color: _green,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 )
               else if (_items.isEmpty)
                 _emptyState()
               else
-                for (final d in _items) Padding(padding: const EdgeInsets.only(bottom: 10), child: _card(d)),
+                for (final d in _items)
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 10),
+                    child: _card(d),
+                  ),
             ],
           ),
         ),
@@ -444,9 +643,12 @@ class _AskDoubtSheetState extends State<_AskDoubtSheet> {
   @override
   void initState() {
     super.initState();
-    widget.discussionService.getSubjects().then((subjects) {
-      if (mounted) setState(() => _subjects = subjects);
-    }).catchError((_) {});
+    widget.discussionService
+        .getSubjects()
+        .then((subjects) {
+          if (mounted) setState(() => _subjects = subjects);
+        })
+        .catchError((_) {});
   }
 
   @override
@@ -460,7 +662,9 @@ class _AskDoubtSheetState extends State<_AskDoubtSheet> {
     final title = _title.text.trim();
     final body = _body.text.trim();
     if (title.length < 5) {
-      setState(() => _error = 'Give your doubt a short title (at least 5 letters).');
+      setState(
+        () => _error = 'Give your doubt a short title (at least 5 letters).',
+      );
       return;
     }
     if (body.isEmpty) {
@@ -472,20 +676,29 @@ class _AskDoubtSheetState extends State<_AskDoubtSheet> {
       _error = null;
     });
     try {
-      final id = await widget.discussionService.createDiscussion(title: title, body: body, subject: _subject, isAnonymous: _anonymous);
+      final id = await widget.discussionService.createDiscussion(
+        title: title,
+        body: body,
+        subject: _subject,
+        isAnonymous: _anonymous,
+      );
       if (mounted) Navigator.of(context).pop(id);
     } catch (e) {
       if (!mounted) return;
       setState(() {
         _posting = false;
-        _error = e is ApiException ? e.message : 'Could not post your doubt. Please try again.';
+        _error = e is ApiException
+            ? e.message
+            : 'Could not post your doubt. Please try again.';
       });
     }
   }
 
   InputDecoration _field(String hint) {
-    OutlineInputBorder border(Color c, [double w = 1]) =>
-        OutlineInputBorder(borderRadius: BorderRadius.circular(14), borderSide: BorderSide(color: c, width: w));
+    OutlineInputBorder border(Color c, [double w = 1]) => OutlineInputBorder(
+      borderRadius: BorderRadius.circular(14),
+      borderSide: BorderSide(color: c, width: w),
+    );
     return InputDecoration(
       hintText: hint,
       hintStyle: const TextStyle(color: Color(0xFF94A3B8)),
@@ -502,7 +715,9 @@ class _AskDoubtSheetState extends State<_AskDoubtSheet> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+      padding: EdgeInsets.only(
+        bottom: MediaQuery.of(context).viewInsets.bottom,
+      ),
       child: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.fromLTRB(20, 10, 20, 18),
@@ -514,15 +729,33 @@ class _AskDoubtSheetState extends State<_AskDoubtSheet> {
                 child: Container(
                   width: 40,
                   height: 4,
-                  decoration: BoxDecoration(color: const Color(0xFFE2E8F0), borderRadius: BorderRadius.circular(4)),
+                  decoration: BoxDecoration(
+                    color: const Color(0xFFE2E8F0),
+                    borderRadius: BorderRadius.circular(4),
+                  ),
                 ),
               ),
               const SizedBox(height: 16),
-              const Text('Ask a doubt', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800, color: _ink)),
+              const Text(
+                'Ask a doubt',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w800,
+                  color: _ink,
+                ),
+              ),
               const SizedBox(height: 2),
-              const Text('A clear title gets faster answers.', style: TextStyle(fontSize: 13, color: _muted)),
+              const Text(
+                'A clear title gets faster answers.',
+                style: TextStyle(fontSize: 13, color: _muted),
+              ),
               const SizedBox(height: 16),
-              TextField(controller: _title, maxLength: 200, textCapitalization: TextCapitalization.sentences, decoration: _field('Title, e.g. How do I find the vertex?')),
+              TextField(
+                controller: _title,
+                maxLength: 200,
+                textCapitalization: TextCapitalization.sentences,
+                decoration: _field('Title, e.g. How do I find the vertex?'),
+              ),
               const SizedBox(height: 10),
               TextField(
                 controller: _body,
@@ -530,11 +763,21 @@ class _AskDoubtSheetState extends State<_AskDoubtSheet> {
                 minLines: 4,
                 maxLines: 8,
                 textCapitalization: TextCapitalization.sentences,
-                decoration: _field('Explain what you tried and where you got stuck'),
+                decoration: _field(
+                  'Explain what you tried and where you got stuck',
+                ),
               ),
               if (_subjects.isNotEmpty) ...[
                 const SizedBox(height: 14),
-                const Text('SUBJECT', style: TextStyle(fontSize: 10, fontWeight: FontWeight.w700, letterSpacing: 1.4, color: Color(0xFF94A3B8))),
+                const Text(
+                  'SUBJECT',
+                  style: TextStyle(
+                    fontSize: 10,
+                    fontWeight: FontWeight.w700,
+                    letterSpacing: 1.4,
+                    color: Color(0xFF94A3B8),
+                  ),
+                ),
                 const SizedBox(height: 8),
                 Wrap(
                   spacing: 8,
@@ -544,19 +787,38 @@ class _AskDoubtSheetState extends State<_AskDoubtSheet> {
                       GestureDetector(
                         onTap: () {
                           AppHaptics.selection();
-                          setState(() => _subject = _subject == entry.key ? null : entry.key);
+                          setState(
+                            () => _subject = _subject == entry.key
+                                ? null
+                                : entry.key,
+                          );
                         },
                         child: AnimatedContainer(
                           duration: const Duration(milliseconds: 150),
-                          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 7),
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 12,
+                            vertical: 7,
+                          ),
                           decoration: BoxDecoration(
-                            color: _subject == entry.key ? _green : Colors.white,
+                            color: _subject == entry.key
+                                ? _green
+                                : Colors.white,
                             borderRadius: BorderRadius.circular(18),
-                            border: Border.all(color: _subject == entry.key ? _green : const Color(0xFFE2E8F0)),
+                            border: Border.all(
+                              color: _subject == entry.key
+                                  ? _green
+                                  : const Color(0xFFE2E8F0),
+                            ),
                           ),
                           child: Text(
                             entry.value,
-                            style: TextStyle(fontSize: 12.5, fontWeight: FontWeight.w600, color: _subject == entry.key ? Colors.white : const Color(0xFF475569)),
+                            style: TextStyle(
+                              fontSize: 12.5,
+                              fontWeight: FontWeight.w600,
+                              color: _subject == entry.key
+                                  ? Colors.white
+                                  : const Color(0xFF475569),
+                            ),
                           ),
                         ),
                       ),
@@ -566,15 +828,39 @@ class _AskDoubtSheetState extends State<_AskDoubtSheet> {
               const SizedBox(height: 10),
               Row(
                 children: [
-                  const Icon(Icons.visibility_off_outlined, size: 18, color: _muted),
+                  const Icon(
+                    Icons.visibility_off_outlined,
+                    size: 18,
+                    color: _muted,
+                  ),
                   const SizedBox(width: 8),
-                  const Expanded(child: Text('Post anonymously', style: TextStyle(fontSize: 13.5, fontWeight: FontWeight.w600, color: Color(0xFF334155)))),
-                  Switch(value: _anonymous, activeTrackColor: _green, onChanged: (v) => setState(() => _anonymous = v)),
+                  const Expanded(
+                    child: Text(
+                      'Post anonymously',
+                      style: TextStyle(
+                        fontSize: 13.5,
+                        fontWeight: FontWeight.w600,
+                        color: Color(0xFF334155),
+                      ),
+                    ),
+                  ),
+                  Switch(
+                    value: _anonymous,
+                    activeTrackColor: _green,
+                    onChanged: (v) => setState(() => _anonymous = v),
+                  ),
                 ],
               ),
               if (_error != null) ...[
                 const SizedBox(height: 4),
-                Text(_error!, style: const TextStyle(fontSize: 12.5, fontWeight: FontWeight.w600, color: Color(0xFFDC2626))),
+                Text(
+                  _error!,
+                  style: const TextStyle(
+                    fontSize: 12.5,
+                    fontWeight: FontWeight.w600,
+                    color: Color(0xFFDC2626),
+                  ),
+                ),
               ],
               const SizedBox(height: 12),
               SizedBox(
@@ -586,11 +872,28 @@ class _AskDoubtSheetState extends State<_AskDoubtSheet> {
                     backgroundColor: _green,
                     foregroundColor: Colors.white,
                     elevation: 0,
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(14),
+                    ),
                   ),
                   child: _posting
-                      ? const SizedBox(width: 22, height: 22, child: CircularProgressIndicator(strokeWidth: 2.5, valueColor: AlwaysStoppedAnimation<Color>(Colors.white)))
-                      : const Text('Post doubt', style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
+                      ? const SizedBox(
+                          width: 22,
+                          height: 22,
+                          child: CircularProgressIndicator(
+                            strokeWidth: 2.5,
+                            valueColor: AlwaysStoppedAnimation<Color>(
+                              Colors.white,
+                            ),
+                          ),
+                        )
+                      : const Text(
+                          'Post doubt',
+                          style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                 ),
               ),
             ],
@@ -609,7 +912,12 @@ class DiscussionThreadScreen extends StatefulWidget {
   final int discussionId;
   final String title;
 
-  const DiscussionThreadScreen({super.key, required this.discussionService, required this.discussionId, required this.title});
+  const DiscussionThreadScreen({
+    super.key,
+    required this.discussionService,
+    required this.discussionId,
+    required this.title,
+  });
 
   @override
   State<DiscussionThreadScreen> createState() => _DiscussionThreadScreenState();
@@ -639,7 +947,9 @@ class _DiscussionThreadScreenState extends State<DiscussionThreadScreen> {
 
   Future<void> _load() async {
     try {
-      final thread = await widget.discussionService.getDiscussion(widget.discussionId);
+      final thread = await widget.discussionService.getDiscussion(
+        widget.discussionId,
+      );
       if (!mounted) return;
       setState(() {
         _thread = thread;
@@ -650,7 +960,11 @@ class _DiscussionThreadScreenState extends State<DiscussionThreadScreen> {
       });
     } catch (e) {
       if (!mounted) return;
-      setState(() => _error = e is ApiException ? e.message : 'Could not load this discussion.');
+      setState(
+        () => _error = e is ApiException
+            ? e.message
+            : 'Could not load this discussion.',
+      );
     }
   }
 
@@ -662,7 +976,9 @@ class _DiscussionThreadScreenState extends State<DiscussionThreadScreen> {
   Future<void> _voteThread() async {
     AppHaptics.selection();
     try {
-      final result = await widget.discussionService.voteDiscussion(widget.discussionId);
+      final result = await widget.discussionService.voteDiscussion(
+        widget.discussionId,
+      );
       if (mounted) {
         setState(() {
           _myVote = result.voted;
@@ -690,7 +1006,10 @@ class _DiscussionThreadScreenState extends State<DiscussionThreadScreen> {
     FocusScope.of(context).unfocus();
     setState(() => _sending = true);
     try {
-      await widget.discussionService.replyToDiscussion(discussionId: widget.discussionId, body: body);
+      await widget.discussionService.replyToDiscussion(
+        discussionId: widget.discussionId,
+        body: body,
+      );
       _reply.clear();
       await _load();
     } catch (e) {
@@ -700,30 +1019,53 @@ class _DiscussionThreadScreenState extends State<DiscussionThreadScreen> {
     }
   }
 
-  Widget _voteButton({required bool voted, required int count, required VoidCallback onTap}) {
+  Widget _voteButton({
+    required bool voted,
+    required int count,
+    required VoidCallback onTap,
+  }) {
     return GestureDetector(
       onTap: onTap,
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 160),
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
         decoration: BoxDecoration(
-          color: voted ? _green.withValues(alpha: 0.12) : const Color(0xFFF1F5F9),
+          color: voted
+              ? _green.withValues(alpha: 0.12)
+              : const Color(0xFFF1F5F9),
           borderRadius: BorderRadius.circular(18),
-          border: Border.all(color: voted ? _green.withValues(alpha: 0.45) : Colors.transparent),
+          border: Border.all(
+            color: voted ? _green.withValues(alpha: 0.45) : Colors.transparent,
+          ),
         ),
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(voted ? Icons.thumb_up_alt_rounded : Icons.thumb_up_alt_outlined, size: 15, color: voted ? _green : _muted),
+            Icon(
+              voted ? Icons.thumb_up_alt_rounded : Icons.thumb_up_alt_outlined,
+              size: 15,
+              color: voted ? _green : _muted,
+            ),
             const SizedBox(width: 5),
-            Text('$count', style: TextStyle(fontSize: 12.5, fontWeight: FontWeight.w700, color: voted ? _green : _muted)),
+            Text(
+              '$count',
+              style: TextStyle(
+                fontSize: 12.5,
+                fontWeight: FontWeight.w700,
+                color: voted ? _green : _muted,
+              ),
+            ),
           ],
         ),
       ),
     );
   }
 
-  Widget _authorLine(DiscussionAuthor author, DateTime? time, {bool mine = false}) {
+  Widget _authorLine(
+    DiscussionAuthor author,
+    DateTime? time, {
+    bool mine = false,
+  }) {
     return Row(
       children: [
         _authorAvatar(author, 32),
@@ -739,14 +1081,24 @@ class _DiscussionThreadScreenState extends State<DiscussionThreadScreen> {
                       author.isAnonymous ? 'Anonymous' : author.name,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w700, color: _ink),
+                      style: const TextStyle(
+                        fontSize: 13,
+                        fontWeight: FontWeight.w700,
+                        color: _ink,
+                      ),
                     ),
                   ),
-                  if (author.isAdmin) ...[const SizedBox(width: 6), _pill('Team', const Color(0xFF7C3AED))],
+                  if (author.isAdmin) ...[
+                    const SizedBox(width: 6),
+                    _pill('Team', const Color(0xFF7C3AED)),
+                  ],
                   if (mine) ...[const SizedBox(width: 6), _pill('You', _green)],
                 ],
               ),
-              Text(_timeAgo(time), style: const TextStyle(fontSize: 11, color: Color(0xFF94A3B8))),
+              Text(
+                _timeAgo(time),
+                style: const TextStyle(fontSize: 11, color: Color(0xFF94A3B8)),
+              ),
             ],
           ),
         ),
@@ -763,7 +1115,11 @@ class _DiscussionThreadScreenState extends State<DiscussionThreadScreen> {
       decoration: BoxDecoration(
         color: reply.isAccepted ? const Color(0xFFF0FDF4) : Colors.white,
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: highlighted ? const Color(0xFF86EFAC) : const Color(0xFFE2E8F0)),
+        border: Border.all(
+          color: highlighted
+              ? const Color(0xFF86EFAC)
+              : const Color(0xFFE2E8F0),
+        ),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -771,18 +1127,40 @@ class _DiscussionThreadScreenState extends State<DiscussionThreadScreen> {
           if (highlighted) ...[
             Row(
               children: [
-                if (reply.isAccepted) _pill('Accepted answer', _green, icon: Icons.check_circle_rounded),
-                if (reply.isAccepted && reply.isEndorsed) const SizedBox(width: 6),
-                if (reply.isEndorsed) _pill('Endorsed', const Color(0xFF7C3AED), icon: Icons.verified_rounded),
+                if (reply.isAccepted)
+                  _pill(
+                    'Accepted answer',
+                    _green,
+                    icon: Icons.check_circle_rounded,
+                  ),
+                if (reply.isAccepted && reply.isEndorsed)
+                  const SizedBox(width: 6),
+                if (reply.isEndorsed)
+                  _pill(
+                    'Endorsed',
+                    const Color(0xFF7C3AED),
+                    icon: Icons.verified_rounded,
+                  ),
               ],
             ),
             const SizedBox(height: 10),
           ],
           _authorLine(reply.author, reply.createdAt, mine: reply.isMine),
           const SizedBox(height: 10),
-          SelectableText(reply.body, style: const TextStyle(fontSize: 14, height: 1.5, color: Color(0xFF1E293B))),
+          SelectableText(
+            reply.body,
+            style: const TextStyle(
+              fontSize: 14,
+              height: 1.5,
+              color: Color(0xFF1E293B),
+            ),
+          ),
           const SizedBox(height: 10),
-          _voteButton(voted: vote?.voted ?? reply.myVote, count: vote?.count ?? reply.voteCount, onTap: () => _voteReply(reply)),
+          _voteButton(
+            voted: vote?.voted ?? reply.myVote,
+            count: vote?.count ?? reply.voteCount,
+            onTap: () => _voteReply(reply),
+          ),
         ],
       ),
     );
@@ -799,12 +1177,23 @@ class _DiscussionThreadScreenState extends State<DiscussionThreadScreen> {
         foregroundColor: _ink,
         elevation: 0,
         titleSpacing: 0,
-        title: const Text('Discussion', style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600, color: Color(0xFF475569))),
+        title: const Text(
+          'Discussion',
+          style: TextStyle(
+            fontSize: 15,
+            fontWeight: FontWeight.w600,
+            color: Color(0xFF475569),
+          ),
+        ),
       ),
       body: thread == null
           ? (_error != null
-              ? AppErrorCard(title: 'Unable to Load Discussion', message: _error!, onRetry: _load)
-              : AppShimmerCard.list(count: 3))
+                ? AppErrorCard(
+                    title: 'Unable to Load Discussion',
+                    message: _error!,
+                    onRetry: _load,
+                  )
+                : AppShimmerCard.list(count: 3))
           : Column(
               children: [
                 Expanded(
@@ -821,7 +1210,13 @@ class _DiscussionThreadScreenState extends State<DiscussionThreadScreen> {
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(18),
                             border: Border.all(color: const Color(0xFFE2E8F0)),
-                            boxShadow: [BoxShadow(color: _ink.withValues(alpha: 0.05), blurRadius: 16, offset: const Offset(0, 8))],
+                            boxShadow: [
+                              BoxShadow(
+                                color: _ink.withValues(alpha: 0.05),
+                                blurRadius: 16,
+                                offset: const Offset(0, 8),
+                              ),
+                            ],
                           ),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -830,26 +1225,78 @@ class _DiscussionThreadScreenState extends State<DiscussionThreadScreen> {
                                 spacing: 6,
                                 runSpacing: 6,
                                 children: [
-                                  if (thread.isSolved) _pill('Solved', _green, icon: Icons.check_circle_rounded),
-                                  if (thread.subjectLabel != null && thread.subjectLabel!.isNotEmpty) _pill(thread.subjectLabel!, const Color(0xFF2563EB)),
-                                  if (thread.course != null) _pill(thread.course!.name, const Color(0xFF0284C7)),
-                                  if (thread.linkedQuiz != null) _pill(thread.linkedQuiz!.title, const Color(0xFFD97706), icon: Icons.description_outlined),
+                                  if (thread.isSolved)
+                                    _pill(
+                                      'Solved',
+                                      _green,
+                                      icon: Icons.check_circle_rounded,
+                                    ),
+                                  if (thread.subjectLabel != null &&
+                                      thread.subjectLabel!.isNotEmpty)
+                                    _pill(
+                                      thread.subjectLabel!,
+                                      const Color(0xFF2563EB),
+                                    ),
+                                  if (thread.course != null)
+                                    _pill(
+                                      thread.course!.name,
+                                      const Color(0xFF0284C7),
+                                    ),
+                                  if (thread.linkedQuiz != null)
+                                    _pill(
+                                      thread.linkedQuiz!.title,
+                                      const Color(0xFFD97706),
+                                      icon: Icons.description_outlined,
+                                    ),
                                 ],
                               ),
                               const SizedBox(height: 10),
-                              Text(thread.title, style: const TextStyle(fontSize: 19, height: 1.3, fontWeight: FontWeight.w800, color: _ink)),
+                              Text(
+                                thread.title,
+                                style: const TextStyle(
+                                  fontSize: 19,
+                                  height: 1.3,
+                                  fontWeight: FontWeight.w800,
+                                  color: _ink,
+                                ),
+                              ),
                               const SizedBox(height: 12),
-                              _authorLine(thread.author, thread.createdAt, mine: thread.isMine),
+                              _authorLine(
+                                thread.author,
+                                thread.createdAt,
+                                mine: thread.isMine,
+                              ),
                               const SizedBox(height: 12),
-                              SelectableText(thread.body, style: const TextStyle(fontSize: 14.5, height: 1.55, color: Color(0xFF1E293B))),
+                              SelectableText(
+                                thread.body,
+                                style: const TextStyle(
+                                  fontSize: 14.5,
+                                  height: 1.55,
+                                  color: Color(0xFF1E293B),
+                                ),
+                              ),
                               const SizedBox(height: 14),
                               Row(
                                 children: [
-                                  _voteButton(voted: _myVote ?? thread.myVote, count: _voteCount ?? thread.voteCount, onTap: _voteThread),
+                                  _voteButton(
+                                    voted: _myVote ?? thread.myVote,
+                                    count: _voteCount ?? thread.voteCount,
+                                    onTap: _voteThread,
+                                  ),
                                   const Spacer(),
-                                  const Icon(Icons.visibility_outlined, size: 14, color: _muted),
+                                  const Icon(
+                                    Icons.visibility_outlined,
+                                    size: 14,
+                                    color: _muted,
+                                  ),
                                   const SizedBox(width: 4),
-                                  Text('${thread.viewCount} views', style: const TextStyle(fontSize: 12, color: _muted)),
+                                  Text(
+                                    '${thread.viewCount} views',
+                                    style: const TextStyle(
+                                      fontSize: 12,
+                                      color: _muted,
+                                    ),
+                                  ),
                                 ],
                               ),
                             ],
@@ -860,14 +1307,22 @@ class _DiscussionThreadScreenState extends State<DiscussionThreadScreen> {
                           thread.replies.isEmpty
                               ? 'NO REPLIES YET'
                               : '${thread.replies.length} ${thread.replies.length == 1 ? 'REPLY' : 'REPLIES'}',
-                          style: const TextStyle(fontSize: 10.5, fontWeight: FontWeight.w700, letterSpacing: 1.6, color: Color(0xFF94A3B8)),
+                          style: const TextStyle(
+                            fontSize: 10.5,
+                            fontWeight: FontWeight.w700,
+                            letterSpacing: 1.6,
+                            color: Color(0xFF94A3B8),
+                          ),
                         ),
                         const SizedBox(height: 10),
                         if (thread.replies.isEmpty)
                           const Padding(
                             padding: EdgeInsets.symmetric(vertical: 22),
                             child: Center(
-                              child: Text('Be the first to help. Write a reply below.', style: TextStyle(fontSize: 13.5, color: _muted)),
+                              child: Text(
+                                'Be the first to help. Write a reply below.',
+                                style: TextStyle(fontSize: 13.5, color: _muted),
+                              ),
                             ),
                           )
                         else
@@ -879,7 +1334,12 @@ class _DiscussionThreadScreenState extends State<DiscussionThreadScreen> {
 
                 // Reply box
                 Container(
-                  padding: EdgeInsets.fromLTRB(12, 8, 8, 8 + MediaQuery.of(context).viewPadding.bottom),
+                  padding: EdgeInsets.fromLTRB(
+                    12,
+                    8,
+                    8,
+                    8 + MediaQuery.of(context).viewPadding.bottom,
+                  ),
                   decoration: const BoxDecoration(
                     color: Colors.white,
                     border: Border(top: BorderSide(color: Color(0xFFE2E8F0))),
@@ -895,11 +1355,19 @@ class _DiscussionThreadScreenState extends State<DiscussionThreadScreen> {
                           textCapitalization: TextCapitalization.sentences,
                           decoration: InputDecoration(
                             hintText: 'Write a reply',
-                            hintStyle: const TextStyle(color: Color(0xFF94A3B8)),
+                            hintStyle: const TextStyle(
+                              color: Color(0xFF94A3B8),
+                            ),
                             filled: true,
                             fillColor: const Color(0xFFF1F5F9),
-                            contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
-                            border: OutlineInputBorder(borderRadius: BorderRadius.circular(20), borderSide: BorderSide.none),
+                            contentPadding: const EdgeInsets.symmetric(
+                              horizontal: 14,
+                              vertical: 10,
+                            ),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20),
+                              borderSide: BorderSide.none,
+                            ),
                           ),
                         ),
                       ),
@@ -909,13 +1377,25 @@ class _DiscussionThreadScreenState extends State<DiscussionThreadScreen> {
                         child: Container(
                           width: 42,
                           height: 42,
-                          decoration: const BoxDecoration(color: _green, shape: BoxShape.circle),
+                          decoration: const BoxDecoration(
+                            color: _green,
+                            shape: BoxShape.circle,
+                          ),
                           child: _sending
                               ? const Padding(
                                   padding: EdgeInsets.all(11),
-                                  child: CircularProgressIndicator(strokeWidth: 2.4, valueColor: AlwaysStoppedAnimation<Color>(Colors.white)),
+                                  child: CircularProgressIndicator(
+                                    strokeWidth: 2.4,
+                                    valueColor: AlwaysStoppedAnimation<Color>(
+                                      Colors.white,
+                                    ),
+                                  ),
                                 )
-                              : const Icon(Icons.send_rounded, size: 19, color: Colors.white),
+                              : const Icon(
+                                  Icons.send_rounded,
+                                  size: 19,
+                                  color: Colors.white,
+                                ),
                         ),
                       ),
                     ],

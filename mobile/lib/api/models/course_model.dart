@@ -74,11 +74,7 @@ class WeekModel {
   }
 
   Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'week_number': weekNumber,
-      'title': title,
-    };
+    return {'id': id, 'week_number': weekNumber, 'title': title};
   }
 }
 
@@ -149,10 +145,7 @@ class WeekQuizzesResponse {
   final List<CourseQuizListItem> practice;
   final List<CourseQuizListItem> graded;
 
-  const WeekQuizzesResponse({
-    required this.practice,
-    required this.graded,
-  });
+  const WeekQuizzesResponse({required this.practice, required this.graded});
 
   factory WeekQuizzesResponse.fromJson(Map<String, dynamic> json) {
     return WeekQuizzesResponse(

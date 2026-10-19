@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../state/auth_state.dart';
 import '../screens/splash/splash_screen.dart';
 import '../screens/onboarding/onboarding_screen.dart';
@@ -102,8 +103,7 @@ class _AppRouterState extends State<AppRouter> {
                       ),
                       const SizedBox(height: 8),
                       Text(
-                        widget.authState.errorMessage ??
-                            'We could not connect to check your account. Your saved sign-in has not been removed.',
+                        widget.authState.errorMessage ?? 'We could not connect to check your account. Your saved sign-in has not been removed.',
                         textAlign: TextAlign.center,
                         style: const TextStyle(
                           color: Color(0xFF64748B),

@@ -79,7 +79,10 @@ class ProAccessGuard {
     if (now < lastSeen - _clockSlack.inMilliseconds) {
       return ProAccess.unverified;
     }
-    await _write(userId, {...saved, 'last_seen': now > lastSeen ? now : lastSeen});
+    await _write(userId, {
+      ...saved,
+      'last_seen': now > lastSeen ? now : lastSeen,
+    });
     if (saved['is_pro'] != true) return ProAccess.expired;
     final until = (saved['until'] as num?)?.toInt();
     if (until != null && now > until) return ProAccess.expired;
@@ -91,8 +94,10 @@ class ProAccessGuard {
 
   /// Online answers win; offline falls back to the stored state.
   static Future<ProAccess> check(ApiClient client, int userId) async {
-    final live = await refresh(client, userId)
-        .timeout(const Duration(seconds: 6), onTimeout: () => null);
+    final live = await refresh(
+      client,
+      userId,
+    ).timeout(const Duration(seconds: 6), onTimeout: () => null);
     return live ?? await cached(userId);
   }
 }

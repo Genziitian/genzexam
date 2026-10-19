@@ -27,14 +27,18 @@ class DashboardData {
       greeting: GreetingInfo.fromJson(json['greeting'] as Map<String, dynamic>),
       streak: StreakInfo.fromJson(json['streak'] as Map<String, dynamic>),
       accuracy: MetricWidget.fromJson(json['accuracy'] as Map<String, dynamic>),
-      hoursThisWeek: MetricWidget.fromJson(json['hours_this_week'] as Map<String, dynamic>),
+      hoursThisWeek: MetricWidget.fromJson(
+        json['hours_this_week'] as Map<String, dynamic>,
+      ),
       rank: RankWidget.fromJson(json['rank'] as Map<String, dynamic>),
       performance: (json['performance'] as List? ?? [])
           .whereType<Map<String, dynamic>>()
           .map((p) => PerformanceDataPoint.fromJson(p))
           .toList(),
       todaysChallenge: json['todays_challenge'] != null
-          ? TodaysChallenge.fromJson(json['todays_challenge'] as Map<String, dynamic>)
+          ? TodaysChallenge.fromJson(
+              json['todays_challenge'] as Map<String, dynamic>,
+            )
           : null,
       activeNow: (json['active_now'] as num?)?.toInt() ?? 0,
       communityFeed: (json['community_feed'] as List? ?? [])
@@ -79,11 +83,7 @@ class GreetingInfo {
   }
 
   Map<String, dynamic> toJson() {
-    return {
-      'time_of_day': timeOfDay,
-      'weekday': weekday,
-      'date': date,
-    };
+    return {'time_of_day': timeOfDay, 'weekday': weekday, 'date': date};
   }
 }
 
@@ -91,10 +91,7 @@ class StreakInfo {
   final int days;
   final List<int> history;
 
-  const StreakInfo({
-    required this.days,
-    required this.history,
-  });
+  const StreakInfo({required this.days, required this.history});
 
   factory StreakInfo.fromJson(Map<String, dynamic> json) {
     return StreakInfo(
@@ -106,10 +103,7 @@ class StreakInfo {
   }
 
   Map<String, dynamic> toJson() {
-    return {
-      'days': days,
-      'history': history,
-    };
+    return {'days': days, 'history': history};
   }
 }
 
@@ -135,11 +129,7 @@ class MetricWidget {
   }
 
   Map<String, dynamic> toJson() {
-    return {
-      'value': value,
-      'delta': delta,
-      'history': history,
-    };
+    return {'value': value, 'delta': delta, 'history': history};
   }
 }
 

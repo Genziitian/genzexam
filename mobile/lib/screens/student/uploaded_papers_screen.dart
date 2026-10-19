@@ -460,16 +460,84 @@ class _QuotaCardState extends State<_QuotaCard> {
         : available
         ? '${q.remaining} free upload available'
         : 'Free upload used';
+    final bannerOnly = !q.isPro && available;
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      padding: bannerOnly
+          ? EdgeInsets.zero
+          : const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: bannerOnly ? Colors.transparent : Colors.white,
         borderRadius: BorderRadius.circular(18),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          if (q.isPro || !available)
+          if (q.isPro && available)
+            Row(
+              children: [
+                Container(
+                  width: 38,
+                  height: 38,
+                  decoration: BoxDecoration(
+                    color: Brand.green.withValues(alpha: .12),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: const Icon(
+                    Icons.workspace_premium_rounded,
+                    color: Brand.green,
+                    size: 20,
+                  ),
+                ),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        'Pro uploads available',
+                        style: TextStyle(
+                          fontSize: 13,
+                          fontWeight: FontWeight.w600,
+                          color: Brand.muted,
+                        ),
+                      ),
+                      const SizedBox(height: 6),
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(4),
+                        child: LinearProgressIndicator(
+                          value: q.limit > 0 ? q.remaining / q.limit : 0,
+                          minHeight: 6,
+                          color: Brand.green,
+                          backgroundColor: Brand.green.withValues(alpha: .15),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(width: 12),
+                Text.rich(
+                  TextSpan(
+                    text: '${q.remaining}',
+                    style: const TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.w800,
+                      color: _ink,
+                    ),
+                    children: [
+                      TextSpan(
+                        text: ' / ${q.limit}',
+                        style: const TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w700,
+                          color: Brand.muted,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          if (q.isPro && !available || !q.isPro && !available)
             Text(
               headline,
               style: const TextStyle(
@@ -489,31 +557,78 @@ class _QuotaCardState extends State<_QuotaCard> {
               ),
             ),
           if (!q.isPro)
-            Row(
-              children: [
-                Expanded(
-                  child: Text(
-                    '${q.proLimit} uploads every ${q.windowDays} days with Pro',
-                    style: const TextStyle(color: Brand.muted, fontSize: 13),
-                  ),
+            Container(
+              margin: EdgeInsets.only(top: available ? 0 : 12),
+              padding: const EdgeInsets.fromLTRB(14, 14, 14, 14),
+              decoration: BoxDecoration(
+                gradient: const LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [Color(0xFFFFF7DD), Color(0xFFFFE7A8)],
                 ),
-                const SizedBox(width: 12),
-                FilledButton(
-                  style: FilledButton.styleFrom(
-                    backgroundColor: Brand.gold,
-                    foregroundColor: Brand.deep,
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 16,
-                      vertical: 10,
+                borderRadius: BorderRadius.circular(20),
+                border: Border.all(color: const Color(0xFFF2C75B)),
+                boxShadow: const [
+                  BoxShadow(
+                    color: Color(0x33D4A017),
+                    blurRadius: 16,
+                    offset: Offset(0, 6),
+                  ),
+                ],
+              ),
+              child: Row(
+                children: [
+                  Container(
+                    width: 44,
+                    height: 44,
+                    decoration: BoxDecoration(
+                      color: Brand.deep,
+                      borderRadius: BorderRadius.circular(14),
+                    ),
+                    child: const Icon(
+                      Icons.workspace_premium_rounded,
+                      color: Color(0xFFFFD36E),
+                      size: 24,
                     ),
                   ),
-                  onPressed: widget.onGetPro,
-                  child: const Text(
-                    'Get Pro',
-                    style: TextStyle(fontWeight: FontWeight.w800),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Text(
+                      '${q.proLimit} uploads every ${q.windowDays} days with Pro',
+                      style: const TextStyle(
+                        color: Color(0xFF5B3A00),
+                        fontSize: 13.5,
+                        height: 1.35,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
                   ),
-                ),
-              ],
+                  const SizedBox(width: 10),
+                  FilledButton(
+                    style: FilledButton.styleFrom(
+                      backgroundColor: Brand.deep,
+                      foregroundColor: const Color(0xFFFFD36E),
+                      minimumSize: const Size(0, 42),
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(14),
+                      ),
+                    ),
+                    onPressed: widget.onGetPro,
+                    child: const Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          'Get Pro',
+                          style: TextStyle(fontWeight: FontWeight.w800),
+                        ),
+                        SizedBox(width: 4),
+                        Icon(Icons.arrow_forward_rounded, size: 16),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
         ],
       ),
@@ -608,25 +723,30 @@ class _RulesState extends State<_Rules> with WidgetsBindingObserver {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            'Upload rules',
-            style: TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.w800,
-              color: _ink,
-            ),
-          ),
-          Align(
-            alignment: Alignment.centerLeft,
-            child: TextButton.icon(
-              onPressed: _toggle,
-              style: TextButton.styleFrom(
-                padding: EdgeInsets.zero,
-                alignment: Alignment.centerLeft,
+          Row(
+            children: [
+              const Expanded(
+                child: Text(
+                  'Upload rules',
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w800,
+                    color: _ink,
+                  ),
+                ),
               ),
-              icon: Icon(_expanded ? Icons.expand_less : Icons.expand_more),
-              label: Text(_expanded ? 'See less' : 'See all'),
-            ),
+              TextButton.icon(
+                onPressed: _toggle,
+                style: TextButton.styleFrom(
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                  minimumSize: const Size(0, 32),
+                  tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                ),
+                iconAlignment: IconAlignment.end,
+                icon: Icon(_expanded ? Icons.expand_less : Icons.expand_more),
+                label: Text(_expanded ? 'See less' : 'See all'),
+              ),
+            ],
           ),
           if (_expanded) const SizedBox(height: 12),
           for (var i = 0; i < (_expanded ? rules.length : 0); i++)

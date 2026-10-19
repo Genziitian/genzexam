@@ -214,6 +214,55 @@ class _PracticeTabState extends State<PracticeTab> {
     'java': ['programming in java'],
   };
 
+  String _level = 'all';
+
+  bool _levelMatches(CourseModel c) =>
+      _level == 'all' || (c.level ?? '').toLowerCase().contains(_level);
+
+  Widget _levelChip(String label, String value) {
+    final on = _level == value;
+    return Expanded(
+      child: GestureDetector(
+        onTap: () {
+          AppHaptics.selection();
+          setState(() => _level = value);
+        },
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 160),
+          padding: const EdgeInsets.symmetric(vertical: 11),
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
+            color: on ? _green : Colors.white,
+            borderRadius: BorderRadius.circular(14),
+            border: Border.all(
+              color: on ? _green : const Color(0xFFE2E8F0),
+            ),
+            boxShadow: on
+                ? [
+                    BoxShadow(
+                      color: _green.withValues(alpha: 0.28),
+                      blurRadius: 10,
+                      offset: const Offset(0, 4),
+                    ),
+                  ]
+                : null,
+          ),
+          child: FittedBox(
+            fit: BoxFit.scaleDown,
+            child: Text(
+              label,
+              style: TextStyle(
+                fontSize: 13,
+                fontWeight: on ? FontWeight.w800 : FontWeight.w600,
+                color: on ? Colors.white : const Color(0xFF475569),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
   bool _courseMatches(CourseModel c, String query) {
     if (query.isEmpty) return true;
     final name = c.name.toLowerCase();
@@ -238,8 +287,8 @@ class _PracticeTabState extends State<PracticeTab> {
 
     final query = _query.trim().toLowerCase();
     final shown = _courses.where((c) {
-      if (query.isNotEmpty && !_courseMatches(c, query))
-        return false;
+      if (!_levelMatches(c)) return false;
+      if (query.isNotEmpty && !_courseMatches(c, query)) return false;
       return true;
     }).toList();
 
@@ -327,7 +376,19 @@ class _PracticeTabState extends State<PracticeTab> {
               ),
             ),
           ),
-          const SizedBox(height: 12),
+          const SizedBox(height: 14),
+          Row(
+            children: [
+              _levelChip('All', 'all'),
+              const SizedBox(width: 8),
+              _levelChip('Foundation', 'foundation'),
+              const SizedBox(width: 8),
+              _levelChip('Diploma', 'diploma'),
+              const SizedBox(width: 8),
+              _levelChip('Degree', 'degree'),
+            ],
+          ),
+          const SizedBox(height: 16),
 
           if (shown.isEmpty)
             Padding(
