@@ -223,11 +223,62 @@
       return "";
     }
   }
+  function extractProcedureSteps(rawText) {
+    const text = String(rawText || "");
+    const matches = Array.from(text.matchAll(/\b(Step\s*\d+\s*[:.-])\s*/gi));
+    if (matches.length < 2 || !/^step\s*1\b/i.test(matches[0][1].trim())) {
+      return null;
+    }
+    const intro = text.slice(0, matches[0].index).trim();
+    const steps = [];
+    let outro = "";
+    for (let i = 0; i < matches.length; i++) {
+      const m = matches[i];
+      const stepNumMatch = m[1].match(/\d+/);
+      const stepNum = stepNumMatch ? stepNumMatch[0] : String(i + 1);
+      const header = "Step " + stepNum + ":";
+      if (i + 1 < matches.length) {
+        const nextM = matches[i + 1];
+        const body = text.slice(m.index + m[0].length, nextM.index).trim();
+        steps.push(header + " " + body);
+      } else {
+        const fullLast = text.slice(m.index + m[0].length).trim();
+        const outroM = fullLast.match(/(?:(?<=\brepeat from step \d)|(?<=\brepeat from step \d\.)|(?<=\bstop the iteration)|(?<=\.))\s+(The value of\b.*|What will\b.*|It is a\b.*)/i);
+        if (outroM && outroM.index != null) {
+          const body = fullLast.slice(0, outroM.index).trim();
+          outro = fullLast.slice(outroM.index).trim();
+          steps.push(header + " " + body);
+        } else {
+          steps.push(header + " " + fullLast);
+        }
+      }
+    }
+    return {
+      intro: intro,
+      code: steps.join("\n"),
+      outro: outro
+    };
+  }
   function stemHtml(q) {
     const image = imageUrl(q.stem_image);
+    let stemText = q.stem != null ? q.stem : q.question_stem;
+    let code = q.stem_code;
+    let lang = q.stem_code_language || "pseudocode";
+    let outro = "";
+
+    if (!code && stemText) {
+      const parsed = extractProcedureSteps(clean(stemText));
+      if (parsed) {
+        stemText = parsed.intro;
+        code = parsed.code;
+        outro = parsed.outro;
+      }
+    }
+
     return (
-      rich(clean(q.stem != null ? q.stem : q.question_stem)) +
-      (q.stem_code ? codeBlock(q.stem_code, q.stem_code_language) : "") +
+      rich(clean(stemText)) +
+      (code ? codeBlock(code, lang) : "") +
+      (outro ? rich(clean(outro)) : "") +
       tableBlock(q.stem_table) +
       (image
         ? '<figure class="exam-rich-image"><img src="' +
@@ -598,7 +649,7 @@
           '" style="background:#fff;border:1px solid #cbd5e1;color:#64748b;padding:9px 14px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;">Clear</button>') +
       (passage || !st.practice
         ? ""
-        : '<button type="button" id="btn-q-reveal" class="pr-reveal-btn" data-action="reveal" data-id="' + esc(q.id) + '">Reveal answer</button>') +
+        : '<button type="button" id="btn-q-reveal" class="pr-reveal-btn" data-action="reveal" data-id="' + esc(q.id) + '">' + (st.revealed[q.id] ? "Hide answer" : "Reveal answer") + "</button>") +
       '</div><div style="display:flex;gap:8px;">' +
       (passage
         ? ""
@@ -1244,20 +1295,28 @@
     rot("pt-hh", ((left / 3600) % 12) * 30);
     rot("pt-mh", ((left / 60) % 60) * 6);
     rot("pt-sh", (left % 60) * 6);
+    const part = (id, v) => { const n = document.getElementById(id); if (n) n.textContent = pad2(v); };
+    part("pt-d-h", Math.floor(left / 3600));
+    part("pt-d-m", Math.floor((left % 3600) / 60));
+    part("pt-d-s", left % 60);
     const d = document.getElementById("pt-digital");
-    if (d) {
-      d.textContent = st.pt.finished ? "Time is up" : ptText(left);
-      d.classList.toggle("up", st.pt.finished);
-    }
+    if (d) d.classList.toggle("up", st.pt.finished);
+    const note = document.getElementById("pt-note");
+    if (note) note.textContent = st.pt.finished ? "Time is up" : st.pt.running ? "Counting down" : st.pt.left > 0 ? "Paused" : "Set a time to begin";
   }
   function practiceBoxHtml() {
     if (!st.practice) return '<button type="button" class="pr-mode-btn" data-action="practice-toggle">Go to practice mode</button>';
+    // Minutes field until a time is set; then the +5/+10/+15 buttons and pause/reset take its place.
     const set = st.pt.running || st.pt.left > 0;
+    const seg = (id, label) => '<div class="pr-seg"><span id="' + id + '">00</span><small>' + label + "</small></div>";
     return (
-      '<div class="pr-pt-card">' + dialSvg() + '<div class="pr-pt-digital" id="pt-digital"></div>' +
-      '<div class="pr-pt-row"><input type="number" id="pt-min" min="1" max="120" inputmode="numeric" placeholder="Minutes (1-120)" aria-label="Minutes, up to 120"><button type="button" class="pr-pt-btn primary" data-action="pt-start">Start</button></div>' +
-      '<div class="pr-pt-chips"><button type="button" class="pr-pt-btn" data-action="pt-add" data-min="5">+5 min</button><button type="button" class="pr-pt-btn" data-action="pt-add" data-min="10">+10 min</button><button type="button" class="pr-pt-btn" data-action="pt-add" data-min="15">+15 min</button></div>' +
-      (set ? '<div class="pr-pt-row"><button type="button" class="pr-pt-btn" data-action="pt-pause" style="flex:1">' + (st.pt.running ? "Pause" : "Resume") + '</button><button type="button" class="pr-pt-btn" data-action="pt-reset" style="flex:1">Reset</button></div>' : "") +
+      '<div class="pr-pt-card">' + dialSvg() +
+      '<div class="pr-digital" id="pt-digital">' + seg("pt-d-h", "HR") + "<i>:</i>" + seg("pt-d-m", "MIN") + "<i>:</i>" + seg("pt-d-s", "SEC") + "</div>" +
+      '<div class="pr-pt-note" id="pt-note"></div>' +
+      (set
+        ? '<div class="pr-pt-chips"><button type="button" class="pr-pt-btn" data-action="pt-add" data-min="5">+5 min</button><button type="button" class="pr-pt-btn" data-action="pt-add" data-min="10">+10 min</button><button type="button" class="pr-pt-btn" data-action="pt-add" data-min="15">+15 min</button></div>' +
+          '<div class="pr-pt-row"><button type="button" class="pr-pt-btn" data-action="pt-pause" style="flex:1">' + (st.pt.running ? "Pause" : "Resume") + '</button><button type="button" class="pr-pt-btn" data-action="pt-reset" style="flex:1">Reset</button></div>'
+        : '<div class="pr-pt-row"><input type="number" id="pt-min" min="1" max="120" inputmode="numeric" placeholder="Minutes (1-120)" aria-label="Minutes, up to 120"><button type="button" class="pr-pt-btn primary" data-action="pt-start">Start</button></div>') +
       '</div><button type="button" class="pr-mode-btn on" data-action="practice-toggle">Exit practice mode</button>'
     );
   }
@@ -1318,7 +1377,9 @@
   async function revealAnswer(id) {
     await loadKey();
     if (!st.key || !st.key[id]) return;
-    st.revealed[id] = true;
+    st.revealed[id] = !st.revealed[id];
+    const btn = document.getElementById("btn-q-reveal");
+    if (btn) btn.textContent = st.revealed[id] ? "Hide answer" : "Reveal answer";
     applyPractice();
   }
   function explainHtml(q) {
@@ -1348,8 +1409,10 @@
     const q = questions()[st.current];
     const k = q && st.key[q.id];
     const box = q && document.getElementById("pr-q-" + q.id);
-    if (!k || !box || !st.revealed[q.id]) return;
+    if (!k || !box) return;
     box.querySelectorAll(".pr-key").forEach((n) => n.remove());
+    box.querySelectorAll(".pr-correct").forEach((n) => n.classList.remove("pr-correct"));
+    if (!st.revealed[q.id]) return;
     if (CHOICE.includes(q.type)) {
       const correct = (k.correct_option_ids || []).map(String);
       box.querySelectorAll("input[data-choice]").forEach((input) => {
@@ -1364,7 +1427,7 @@
   }
 
   /* ---------------- leaving the room with the Back button ----------------
-   * While a paper is being attempted, Back asks whether to save and exit, exit without saving, or stay.
+   * While a paper is being attempted, Back asks whether to save and exit or keep solving.
    * An extra history entry is pushed so the first Back press only opens the question. */
   let trapOn = false, leaving = false;
   function armBackTrap() {
@@ -1378,10 +1441,10 @@
     history.pushState({ prRoom: 1 }, "");
     leaveModal();
   });
-  function leaveRoom(discard) {
+  function leaveRoom() {
     leaving = true;
     stopTicker();
-    if (discard) clearStore(); else writeStore();
+    writeStore();
     history.go(-2);
     setTimeout(function () { location.href = backHref(); }, 600);
   }
@@ -1393,10 +1456,9 @@
     modal.innerHTML =
       '<div role="dialog" aria-modal="true" aria-labelledby="pr-leave-title" style="max-width:460px;width:100%;text-align:center;background:#ffffff;border-radius:20px;box-shadow:0 25px 60px -15px rgba(0,0,0,0.3);padding:30px 24px;color:#0f172a;">' +
       '<h2 id="pr-leave-title" style="font-size:20px;font-weight:800;margin:0 0 8px 0;">Leave this paper?</h2>' +
-      '<p style="font-size:13.5px;color:#475569;margin:0 0 18px 0;line-height:1.55;">You have answered <b>' + answeredCount() + " of " + answerable().length + '</b> questions. Save and exit keeps your answers on this device so you can continue later. Exit without saving removes them.</p>' +
+      '<p style="font-size:13.5px;color:#475569;margin:0 0 18px 0;line-height:1.55;">You have answered <b>' + answeredCount() + " of " + answerable().length + '</b> questions. Save and exit keeps your answers on this device so you can continue later.</p>' +
       '<div style="display:flex;flex-direction:column;gap:10px;">' +
       '<button type="button" id="pr-leave-save" style="background:#3a3fd8;color:#ffffff;border:none;padding:12px;border-radius:8px;font-size:13px;font-weight:800;cursor:pointer;">Save and exit</button>' +
-      '<button type="button" id="pr-leave-discard" style="background:#fef2f2;color:#b91c1c;border:1px solid #fecaca;padding:11px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;">Exit without saving</button>' +
       '<button type="button" id="pr-leave-stay" style="background:#f1f5f9;color:#334155;border:1px solid #cbd5e1;padding:11px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;">Keep solving</button>' +
       "</div></div>";
     document.body.appendChild(modal);
@@ -1404,8 +1466,7 @@
     modal.addEventListener("click", (ev) => { if (ev.target === modal) close(); });
     modal.addEventListener("keydown", (ev) => { if (ev.key === "Escape") close(); });
     document.getElementById("pr-leave-stay").onclick = close;
-    document.getElementById("pr-leave-save").onclick = () => { close(); leaveRoom(false); };
-    document.getElementById("pr-leave-discard").onclick = () => { close(); leaveRoom(true); };
+    document.getElementById("pr-leave-save").onclick = () => { close(); leaveRoom(); };
     document.getElementById("pr-leave-stay").focus();
   }
 
