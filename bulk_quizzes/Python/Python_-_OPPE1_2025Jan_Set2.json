@@ -1,0 +1,247 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Python · OPPE 1 · 2025 Jan · Set 2",
+  "subject": "Python",
+  "section": "mock_test",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 1 - Problem 1: Check if a number divides two other numbers** (Function Type)\n\nWrite a function is_both_divisible_by that takes three integers a, b and c as input and checks if a and b numbers are divisible by c. Assume that c number is non-zero.\n\nNOTE: This is a function type question."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def is_both_divisible_by(a: int, b: int, c: int) -> bool:\n    \"\"\"\n    Checks if the integer c divides both integers a and b.\n\n    Args:\n        a (int): The first integer.\n        b (int): The second integer.\n        c (int): The divisor (assumed to be non-zero).\n\n    Returns:\n        bool: True if c divides both a and b, False otherwise.\n    \"\"\"\n    ..."
+        }
+      ],
+      "acceptable_answers": [
+        "Check if a number divides two other numbers",
+        "is_both_divisible_by"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Sample Test Cases / Examples:**\n\n```text\n>>> is_both_divisible_by(10, 15, 5)  # both 10 and 15 are divisible by 5\nTrue\n>>> is_both_divisible_by(10, 13, 5)  # 13 is not divisible by 5\nFalse\n>>> is_both_divisible_by(19, 15, 5)  # 19 is not divisible by 5\nFalse\n```"
+        },
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def is_both_divisible_by(a: int, b: int, c: int) -> bool:\n    \"\"\"\n    Checks if the integer c divides both integers a and b.\n\n    Args:\n        a (int): The first integer.\n        b (int): The second integer.\n        c (int): The divisor (assumed to be non-zero).\n\n    Returns:\n        bool: True if c divides both a and b, False otherwise.\n    \"\"\"\n    return a % c == 0 and b % c == 0"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 1 - Problem 2: Check String Rotation** (Function Type)\n\nWrite a function that checks if one string is a rotation of another.\n\nHint: all the rotations of a particular string will be present in the string formed by concatenating it with itself.\n\nNOTE: This is a function type question."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def is_rotation(s1: str, s2: str) -> bool:\n    ..."
+        }
+      ],
+      "acceptable_answers": [
+        "Check String Rotation",
+        "is_rotation"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Sample Test Cases / Examples:**\n\n```text\n>>> is_rotation('abcde', 'cdeab')\nTrue\n>>> is_rotation('hello', 'ehllo')\nFalse\n>>> is_rotation('hello', 'helol')\nFalse\n```"
+        },
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def is_rotation(s1: str, s2: str) -> bool:\n    # A rotation must have the same length and appear within s1 + s1.\n    return len(s1) == len(s2) and s2 in (s1 + s1)"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 1 - Problem 3: Find missing number in a range of numbers** (Function Type)\n\nGiven a list with numbers from 1 to n (inclusive) except one number in the range, write a function to find the missing number.\n\nAssume that only one number from the range will be missing in the given list.\n\nNOTE: This is a function type question."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def find_missing_number(nums: list) -> int:\n    ..."
+        }
+      ],
+      "acceptable_answers": [
+        "Find missing number in a range of numbers",
+        "find_missing_number"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Sample Test Cases / Examples:**\n\n```text\nGiven the inputs nums = [1, 4, 2, 4, 6, 5, 6] and n is 6.\nThe number 3 is missing from the range. So, find_missing_number(nums) should return 3.\n```"
+        },
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def find_missing_number(nums: list) -> int:\n    # The range is 1..n where n is the largest value present in the list.\n    # Using a set makes this robust to any duplicate values in nums.\n    n = max(nums)\n    present = set(nums)\n    for num in range(1, n + 1):\n        if num not in present:\n            return num"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 2 - Problem 1: Merge two dictionaries and sum on conflicts** (Function Type)\n\nWrite a program to merge two dictionaries. If a key is present in both dictionaries, sum the values.\n\nAssume the values are numbers (int or float).\n\nNOTE: This is a function type question."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def merge_dictionaries(d1: dict, d2: dict) -> dict:\n    ..."
+        }
+      ],
+      "acceptable_answers": [
+        "Merge two dictionaries and sum on conflicts",
+        "merge_dictionaries"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Sample Test Cases / Examples:**\n\n```text\n>>> d1 = {'a': 1, 'b': 2}\n>>> d2 = {'b': 3, 'c': 4}\n>>> merge_dictionaries(d1, d2)\n{'a': 1, 'b': 5, 'c': 4}\n```"
+        },
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def merge_dictionaries(d1: dict, d2: dict) -> dict:\n    result = dict(d1)\n    for key, value in d2.items():\n        result[key] = result.get(key, 0) + value\n    return result"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 2 - Problem 2: Most Frequent Numbers from the input** (Io Type)\n\nWrite a program to find the most frequent numbers from the given numbers in the input. The most frequent values should be printed in ascending order.\n\nNOTE: This is an I/O type question.\n\nInput Format:\n• The first line contains an integer n.\n• The next n lines each contain a number.\n\nOutput Format:\nA single list containing the most frequent numbers sorted in ascending order."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "# Read input, process, and print the output"
+        }
+      ],
+      "acceptable_answers": [
+        "Most Frequent Numbers from the input"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Sample Test Cases / Examples:**\n\n```text\nInput:\n10\n3\n5\n3\n2\n5\n8\n3\n8\n5\n0\n\nOutput:\n[3, 5]\n```"
+        },
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "import sys\nfrom collections import Counter\n\ndata = sys.stdin.read().split()\nn = int(data[0])\nnumbers = [int(x) for x in data[1:1 + n]]\n\ncounts = Counter(numbers)\nmax_freq = max(counts.values())\nresult = sorted(num for num, freq in counts.items() if freq == max_freq)\nprint(result)"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 3 - Problem 1: Employee Data Analysis** (Function Type)\n\nA list of employee records is given as a list of dictionaries with keys name, department and salary. Implement the following functions:\n• employees_with_salary_above(employees, min_salary) -> Returns list of names of employees with salary >= min_salary.\n• total_salary_in_department(employees, department) -> Returns total salary expense in the given department.\n• ceil_to_five_hundreds(num) -> Returns a number ceiled to the next five hundreds.\n• max_salary_after_increment_in_department(employees, department, inc_percent) -> Returns max salary in department after increment, ceiled to next five hundreds.\n\nNOTE: This is a function type question."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def employees_with_salary_above(employees: list, min_salary: int) -> list:\n    ...\n\ndef total_salary_in_department(employees: list, department: str) -> int:\n    ...\n\ndef ceil_to_five_hundreds(num: int) -> int:\n    ...\n\ndef max_salary_after_increment_in_department(employees: list, department: str, inc_percent: int) -> int:\n    ..."
+        }
+      ],
+      "acceptable_answers": [
+        "Employee Data Analysis",
+        "employees_with_salary_above"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "import math\n\ndef employees_with_salary_above(employees: list, min_salary: int) -> list:\n    return [e[\"name\"] for e in employees if e[\"salary\"] >= min_salary]\n\ndef total_salary_in_department(employees: list, department: str) -> int:\n    return sum(e[\"salary\"] for e in employees if e[\"department\"] == department)\n\ndef ceil_to_five_hundreds(num: int) -> int:\n    return math.ceil(num / 500) * 500\n\ndef max_salary_after_increment_in_department(employees: list, department: str, inc_percent: int) -> int:\n    salaries = [e[\"salary\"] for e in employees if e[\"department\"] == department]\n    if not salaries:\n        return 0\n    best = max(s * (1 + inc_percent / 100) for s in salaries)\n    return ceil_to_five_hundreds(best)"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 3 - Problem 2: Z Pattern** (Io Type)\n\nYou are tasked with drawing a Z-shaped pattern using asterisks (*). The Z pattern is a right-angled figure with horizontal lines at the top and bottom, and a diagonal line from the top-right to the bottom-left.\n\nNote that there should be no space after the last '*' in a line.\n\nNOTE: This is an I/O type question.\n\nInput Format: A single integer n (n >= 3) representing the size of the Z pattern.\n\nOutput Format: Print the Z pattern with n rows."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "# Read input, process, and print the output"
+        }
+      ],
+      "acceptable_answers": [
+        "Z Pattern"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Sample Test Cases / Examples:**\n\n```text\nInput: 3\nOutput:\n***\n *\n***\n\nInput: 5\nOutput:\n*****\n   *\n  *\n *\n*****\n```"
+        },
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "n = int(input())\n\nprint(\"*\" * n)              # top line\nfor i in range(1, n - 1):   # diagonal: top-right to bottom-left\n    pos = n - 1 - i\n    line = [\" \"] * n\n    line[pos] = \"*\"\n    print(\"\".join(line).rstrip())   # no trailing spaces\nprint(\"*\" * n)              # bottom line"
+        }
+      ]
+    }
+  ]
+}

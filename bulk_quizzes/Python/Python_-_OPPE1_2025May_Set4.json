@@ -1,0 +1,247 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Python · OPPE 1 · 2025 May · Set 4",
+  "subject": "Python",
+  "section": "mock_test",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 1 - Problem 1: Four Digit Shuffle** (Function Type)\n\nWrite a function shuffle_digits(num) that takes a 4-digit positive integer and shuffles the digits in the order 2413. That is:\n• The 2nd digit from left becomes the 1st\n• The 4th digit from left becomes the 2nd\n• The 1st digit from left becomes the 3rd\n• The 3rd digit from left becomes the 4th\n\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def shuffle_digits(num):\n    ..."
+        }
+      ],
+      "acceptable_answers": [
+        "Four Digit Shuffle",
+        "shuffle_digits"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Sample Test Cases / Examples:**\n\n```text\n>>> shuffle_digits(1234)\n2413\n>>> shuffle_digits(2413)\n4321\n>>> shuffle_digits(4321)\n3142\n>>> shuffle_digits(3142)\n1234\n```"
+        },
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def shuffle_digits(num):\n    d = str(num)\n    # Reorder the digits as 2nd, 4th, 1st, 3rd\n    return int(d[1] + d[3] + d[0] + d[2])\n"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 1 - Problem 2: Upper Case Even Index Words** (Function Type)\n\nWrite a program that takes a sentence as input and returns a list of words where the words at even indices (0-based indexing) are converted to uppercase, while the others remain unchanged. The output must be printed as a list.\n\nConstraints:\n• Words are separated by spaces.\n• Keep all other formatting intact.\n• Indexing starts at 0.\n\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def upper_even_index_words(sentence: str) -> list:\n    ..."
+        }
+      ],
+      "acceptable_answers": [
+        "Upper Case Even Index Words",
+        "upper_even_index_words"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Sample Test Cases / Examples:**\n\n```text\nInput\nindia is my country\n\nOutput\n['INDIA', 'is', 'MY', 'country']\n```"
+        },
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def upper_even_index_words(sentence: str) -> list:\n    words = sentence.split(' ')\n    # Upper-case words at even indices, keep the rest unchanged\n    return [w.upper() if i % 2 == 0 else w for i, w in enumerate(words)]\n"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 1 - Problem 3: Print Pieces Moved from Chess Notation** (Io Type)\n\nWrite a program that reads chess moves in standard algebraic notation and prints out the names of the chess pieces that have been moved. For castling moves, both the king and rook should be printed.\n\nNOTE: This is an I/O type question. You need to write the complete code to read the input and print the output.\n\nInput Format\nThe input will be a string of chess moves in format \"{move_number} {white_move} {black_move}\", where each move is given in standard algebraic notation.\n\nOutput Format\nPrint the names of the pieces moved in each move. The output should be each piece's name in separate lines. For castling, print \"King\" and \"Rook\".\n\nChess Notation Details\nPieces are represented by their initials:\n• K - King\n• Q - Queen\n• R - Rook\n• B - Bishop\n• N - Knight\n• Pawn (no initial, just represented by move)\nCastling is represented with:\n• O-O (kingside castling)\n• O-O-O (queenside castling)"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "# Read input, process, and print the output"
+        }
+      ],
+      "acceptable_answers": [
+        "Print Pieces Moved from Chess Notation"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Sample Test Cases / Examples:**\n\n```text\nInput\n1. e4 e5 2. Nf3 Nc6 3. Bb5 a6 4. O-O Qc7\nOutput\nPawn\nPawn\nKnight\nKnight\nBishop\nPawn\nKing\nRook\nQueen\n\nInput (Castling)\n1. e4 e5 2. O-O O-O-O\nOutput\nPawn\nPawn\nKing\nRook\nKing\nRook\n```"
+        },
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "import sys\n\nPIECES = {\"K\": \"King\", \"Q\": \"Queen\", \"R\": \"Rook\",\n          \"B\": \"Bishop\", \"N\": \"Knight\"}\n\n\ndef piece_names(move):\n    move = move.rstrip(\"+#\")  # drop check / checkmate markers\n    if move in (\"O-O\", \"O-O-O\", \"0-0\", \"0-0-0\"):\n        return [\"King\", \"Rook\"]\n    if move[0] in PIECES:\n        return [PIECES[move[0]]]\n    return [\"Pawn\"]  # no initial -> pawn move\n\n\ntokens = sys.stdin.read().split()\nfor tok in tokens:\n    t = tok.rstrip(\".\")\n    if t.isdigit():  # skip move-number tokens like '1.'\n        continue\n    for name in piece_names(tok):\n        print(name)\n"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 2 - Problem 1: YouTube Video Engagement Analysis** (Function Type)\n\nYou are given a list of YouTube video records, where each record is a dictionary with the following keys:\n• \"title\" (str)\n• \"views\" (int)\n• \"likes\" (int)\n• \"comments\" (int)\n\nImplement the following functions:\n\ntotal_engagement(video: dict) -> int\nReturns the total engagement (likes + comments) for a given video.\n\nengagement_rate(video: dict) -> float\nReturns the engagement rate for a given video, using the formula:\nEngagement Rate = (likes + comments) / views x 100\nIf views is 0, return 0.0. Round the result to 2 decimal places.\n\nmost_engaging_video(videos: list[dict]) -> str\nReturns the title of the video with the highest engagement rate. If there is a tie, return the first one in the list.\n\nvideos_with_engagement_rate_above_threshold(videos: list[dict], threshold: float) -> list[str]\nReturns a list of video titles whose engagement rate is strictly greater than the given threshold.\n\naverage_engagement_rate(videos: list[dict]) -> float\nReturns the average engagement rate of all videos with non-zero views, rounded to 2 decimal places."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def total_engagement(video: dict) -> int:\n    ...\n\ndef engagement_rate(video: dict) -> float:\n    ...\n\ndef most_engaging_video(videos: list[dict]) -> str:\n    ...\n\ndef videos_with_engagement_rate_above_threshold(videos: list[dict], threshold: float) -> list[str]:\n    ...\n\ndef average_engagement_rate(videos: list[dict]) -> float:\n    ..."
+        }
+      ],
+      "acceptable_answers": [
+        "YouTube Video Engagement Analysis",
+        "total_engagement"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def total_engagement(video: dict) -> int:\n    return video[\"likes\"] + video[\"comments\"]\n\n\ndef engagement_rate(video: dict) -> float:\n    if video[\"views\"] == 0:\n        return 0.0\n    rate = (video[\"likes\"] + video[\"comments\"]) / video[\"views\"] * 100\n    return round(rate, 2)\n\n\ndef most_engaging_video(videos: list[dict]) -> str:\n    best_title = None\n    best_rate = None\n    for v in videos:\n        r = engagement_rate(v)\n        if best_rate is None or r > best_rate:\n            best_rate = r\n            best_title = v[\"title\"]\n    return best_title\n\n\ndef videos_with_engagement_rate_above_threshold(videos: list[dict], threshold: float) -> list[str]:\n    return [v[\"title\"] for v in videos if engagement_rate(v) > threshold]\n\n\ndef average_engagement_rate(videos: list[dict]) -> float:\n    rates = [engagement_rate(v) for v in videos if v[\"views\"] != 0]\n    if not rates:\n        return 0.0\n    return round(sum(rates) / len(rates), 2)\n"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 2 - Problem 2: Format Tic-Tac-Toe Board** (Io Type)\n\nYou are given a tic-tac-toe board of size m x n containing characters:\n• 'X' for player X\n• 'O' for player O\n• ' ' (space) for empty cells\n\nYour task is to print this board with borders using the characters +, -, and |.\nThe border format must be as follows:\n• Each row is wrapped in | separators for each column.\n• Horizontal lines made of + and - separate each row, including the top and bottom.\n\nNOTE: This is an I/O type problem. You must write the complete code for taking input and printing the output.\n\nInput Format\nThe first line contains two integers, m and n, denoting the number of rows and columns of the board.\nThe next m lines each contain a string of n characters from 'X', 'O', or ' ' (space).\n\nOutput Format\nThe board printed with borders using +, -, and |."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "# Read input, process, and print the output"
+        }
+      ],
+      "acceptable_answers": [
+        "Format Tic-Tac-Toe Board"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Sample Test Cases / Examples:**\n\n```text\nInput\n3 4\nO XO\nXO\nO X\n\nOutput\n+-+-+-+-+\n|O| |X|O|\n+-+-+-+-+\n|X|O| | |\n+-+-+-+-+\n|O| |X| |\n+-+-+-+-+\n```"
+        },
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "import sys\n\ndata = sys.stdin.read().split(\"\\n\")\nm, n = map(int, data[0].split())\n\nrows = []\nfor i in range(1, m + 1):\n    # rows may be stored without trailing spaces, so pad to n columns\n    row = data[i] if i < len(data) else \"\"\n    row = row.ljust(n)[:n]\n    rows.append(row)\n\nsep = \"+\" + \"+\".join(\"-\" for _ in range(n)) + \"+\"\nprint(sep)\nfor row in rows:\n    print(\"|\" + \"|\".join(row) + \"|\")\n    print(sep)\n"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 3 - Problem 1: Position of a Point Relative to a Line** (Function Type)\n\nWrite a function point_position_relative_to_line(a, b, c, x, y) -> int that determines the position of a point (x, y) with respect to a line described by the equation ax + by + c = 0.\n\nThe function should return:\n• +1 if the point is above the line\n• -1 if the point is below the line\n• 0 if the point is on the line\n\nNote:\n• A point (x, y) is considered on the line if substituting x and y into the equation results in 0.\n• A point is above the line if the value of ax + by + c > 0 and below the line if ax + by + c < 0."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def point_position_relative_to_line(a, b, c, x, y) -> int:\n    ..."
+        }
+      ],
+      "acceptable_answers": [
+        "Position of a Point Relative to a Line",
+        "point_position_relative_to_line"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Sample Test Cases / Examples:**\n\n```text\n>>> point_position_relative_to_line(1, -1, 0, 2, 1)\n1\n>>> point_position_relative_to_line(-1, -1, -1, 0, 0)\n-1\n>>> point_position_relative_to_line(2, -1, -4, 2, 0)\n0\n```"
+        },
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def point_position_relative_to_line(a, b, c, x, y) -> int:\n    value = a * x + b * y + c\n    if value > 0:\n        return 1\n    if value < 0:\n        return -1\n    return 0\n"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 3 - Problem 2: Expand Sum of Products** (Function Type)\n\nWrite a function expand_sum_of_products(expr: str) -> str that takes a string representation of a product of sum of two terms in the form \"(a+b)(c+d)\", and expands it into the sum of products in the form \"a*c + a*d + b*c + b*d\". The output should be a properly formatted string of the expanded form.\n\nThe input can have spaces in between the symbols and operators. The spacing and ordering of the terms should be exactly as given in the format.\nThere will always be a + sign between the values in a term."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def expand_sum_of_products(expr: str) -> str:\n    ..."
+        }
+      ],
+      "acceptable_answers": [
+        "Expand Sum of Products",
+        "expand_sum_of_products"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Sample Test Cases / Examples:**\n\n```text\n>>> expand_sum_of_products(\"(a+b)(c+d)\")\n\"a*c + a*d + b*c + b*d\"\n>>> expand_sum_of_products(\"(x+y)(z+w)\")\n\"x*z + x*w + y*z + y*w\"\n>>> expand_sum_of_products(\"(1+5)(10+12)\")\n\"1*10 + 1*12 + 5*10 + 5*12\"\n```"
+        },
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "import re\n\n\ndef expand_sum_of_products(expr: str) -> str:\n    # Pull out the two bracketed groups, then their two terms each\n    groups = re.findall(r\"\\(([^)]*)\\)\", expr)\n    a, b = [t.strip() for t in groups[0].split(\"+\")]\n    c, d = [t.strip() for t in groups[1].split(\"+\")]\n    return f\"{a}*{c} + {a}*{d} + {b}*{c} + {b}*{d}\"\n"
+        }
+      ]
+    }
+  ]
+}

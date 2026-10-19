@@ -1,0 +1,251 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Python · OPPE 1 · 2025 May · Set 3",
+  "subject": "Python",
+  "section": "mock_test",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 1 - Problem 1: Divide Number Into Almost Equal Parts** (Function Type)\n\nWrite a function divide_into_almost_equal_parts(n: int, k: int) -> list that takes two integers, n and k, and creates a list of size k where the elements are approximately equal and sum up to n. The list should contain larger numbers towards the beginning.\nThe larger numbers should be prioritized for the earlier parts of the list, and you should ensure that the sum of the list matches n.\n\nConstraints:\n• The integers n (total) and k (parts) are both positive integers.\n• The output list will always be of length k.\n\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def divide_into_almost_equal_parts(n: int, k: int) -> list:\n    ..."
+        }
+      ],
+      "acceptable_answers": [
+        "Divide Number Into Almost Equal Parts",
+        "divide_into_almost_equal_parts"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Sample Test Cases / Examples:**\n\n```text\n>>> divide_into_almost_equal_parts(5, 3)\n[2, 2, 1]\n>>> divide_into_almost_equal_parts(16, 3)\n[6, 5, 5]\n>>> divide_into_almost_equal_parts(12, 4)\n[3, 3, 3, 3]\n>>> divide_into_almost_equal_parts(10, 3)\n[4, 3, 3]\n```"
+        },
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def divide_into_almost_equal_parts(n: int, k: int) -> list:\n    base = n // k          # the smallest value every part gets\n    remainder = n % k      # this many parts get one extra\n    # The earlier parts (lower index) receive the extra unit first.\n    return [base + 1 if i < remainder else base for i in range(k)]"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 1 - Problem 2: Compute Polynomial Value** (Function Type)\n\nWrite a function evaluate_polynomial(coefficients: list, x: float) -> float that computes the value of a polynomial given its coefficients and a value for x. The coefficients will be provided as a list in descending order, where:\n• The first element is the coefficient for the highest degree,\n• The last element is the constant term.\n\nFor example, if the polynomial is represented as 2x^3 + 3x^2 + 5x + 7, the coefficients list would be [2, 3, 5, 7].\n\nConstraints:\n• The coefficients list will have at least one element.\n• The value of x will be of type int.\n\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def evaluate_polynomial(coefficients: list, x: float) -> float:\n    ..."
+        }
+      ],
+      "acceptable_answers": [
+        "Compute Polynomial Value",
+        "evaluate_polynomial"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Sample Test Cases / Examples:**\n\n```text\n>>> evaluate_polynomial([2, 3, 5, 7], 2)\n45\n>>> evaluate_polynomial([1, 0, -4], 2)\n0\n>>> evaluate_polynomial([5], 3)\n5\n```"
+        },
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def evaluate_polynomial(coefficients: list, x: float) -> float:\n    # Horner's method: coefficients are in descending order of degree.\n    result = 0\n    for c in coefficients:\n        result = result * x + c\n    return result"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 1 - Problem 3: Update Todo List Based on Given Indices** (Io Type)\n\nGiven a todo list formatted as multiple lines, where each todo item is represented as - [ ] item. Your task is to mark the todo items as completed based on the indices provided in the input. The completed items should be marked with - [x].\n\nInput Format:\n• The first line contains the number of items in the todo list.\n• The second line contains a space-separated list of indices (0-based) indicating which items in the todo list should be marked as completed.\n• The subsequent lines contain the todo list items.\n\nOutput Format:\n• Print the updated todo list with the specified items marked as completed.\n\nNote: If an index is out of the range of the todo list items, it should be ignored."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "# Read input, process, and print the output"
+        }
+      ],
+      "acceptable_answers": [
+        "Update Todo List Based on Given Indices"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Sample Test Cases / Examples:**\n\n```text\nInput\n3\n0 2\n- [ ] Buy groceries\n- [ ] Read a book\n- [ ] Write code\nOutput\n- [x] Buy groceries\n- [ ] Read a book\n- [x] Write code\n\nInput\n3\n1 3 4\n- [ ] Go to the gym\n- [ ] Cook dinner\n- [ ] Clean the house\nOutput\n- [ ] Go to the gym\n- [x] Cook dinner\n- [ ] Clean the house\n```"
+        },
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "n = int(input())\n# 0-based indices to mark as completed; out-of-range ones simply never match.\nindices = {int(i) for i in input().split()}\nitems = [input() for _ in range(n)]\nfor i, item in enumerate(items):\n    if i in indices:\n        item = item.replace(\"- [ ]\", \"- [x]\", 1)\n    print(item)"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 2 - Problem 1: Batsman Performance Analysis** (Function Type)\n\nGiven the runs scored in matches played by a batsman in his career as a dict with the year as key and the list of runs scored on matches in that year as values, write functions to do the following analysis on the data.\n\n• overall_run_stats(batsman_data: dict): return the min, max, total and average runs considering all matches over all years as a dictionary with keys \"min\", \"max\", \"total\" and \"average\" respectively. Average is rounded to an integer.\n• century_rate(runs: list): Century rate is the number of centuries (greater than or equal to 100 runs) divided by the number of matches played multiplied by 100 (rounded to nearest integer).\n• average_yearly_century_rate(batsman_data: dict): average of the 'yearly century rate'.\n• years_with_more_than_average_yearly_century_rate(batsman_data: dict): the years in which the batsman's yearly century rate is more than the \"average yearly century rate\".\n• year_with_most_average_runs(batsman_data: dict): the year in which the batsman has scored the most average runs. In case of ties return the earliest year.\n\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definitions."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def overall_run_stats(batsman_data: dict):\n    ...\n\ndef century_rate(runs: list):\n    ...\n\ndef average_yearly_century_rate(batsman_data: dict):\n    ...\n\ndef years_with_more_than_average_yearly_century_rate(batsman_data: dict):\n    ...\n\ndef year_with_most_average_runs(batsman_data: dict):\n    ..."
+        }
+      ],
+      "acceptable_answers": [
+        "Batsman Performance Analysis",
+        "overall_run_stats"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Sample Test Cases / Examples:**\n\n```text\n>>> data = {\n        2016: [88, 66, 130, 122, 117, 95, 86],\n        2017: [149, 66, 110],\n        2018: [157, 84],\n        2019: [148, 127, 71, 117],\n        2020: [91, 156, 80, 135, 152, 109]\n    }\n>>> overall_run_stats(data)\n{'min': 66, 'max': 157, 'total': 2456, 'average': 112}\n>>> century_rate(data[2016])\n43\n>>> average_yearly_century_rate(data)\n60\n>>> years_with_more_than_average_yearly_century_rate(data)\n{2017, 2019, 2020}\n>>> year_with_most_average_runs(data)\n2018\n```"
+        },
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def overall_run_stats(batsman_data: dict):\n    all_runs = [r for runs in batsman_data.values() for r in runs]\n    total = sum(all_runs)\n    return {\n        \"min\": min(all_runs),\n        \"max\": max(all_runs),\n        \"total\": total,\n        \"average\": round(total / len(all_runs)),\n    }\n\ndef century_rate(runs: list):\n    centuries = sum(1 for r in runs if r >= 100)\n    return round(centuries / len(runs) * 100)\n\ndef average_yearly_century_rate(batsman_data: dict):\n    rates = [century_rate(runs) for runs in batsman_data.values()]\n    return round(sum(rates) / len(rates))\n\ndef years_with_more_than_average_yearly_century_rate(batsman_data: dict):\n    avg = average_yearly_century_rate(batsman_data)\n    return {year for year, runs in batsman_data.items() if century_rate(runs) > avg}\n\ndef year_with_most_average_runs(batsman_data: dict):\n    best_year = None\n    best_avg = None\n    # Iterate years in ascending order so ties keep the earliest year.\n    for year in sorted(batsman_data):\n        avg = sum(batsman_data[year]) / len(batsman_data[year])\n        if best_avg is None or avg > best_avg:\n            best_avg = avg\n            best_year = year\n    return best_year"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 2 - Problem 2: Horizontal Bar Chart** (Io Type)\n\nGiven a set of key-value pairs, where each key is a string (representing a category) and the value is an integer (representing a count). Your task is to generate a horizontal bar chart using the # character, with the following formatting:\n• Each line should contain the key, followed by a colon :, and then a number of # characters equal to the corresponding count.\n• The keys should be right-aligned based on the length of the longest key, so that the colons : are vertically aligned in the output.\n\nInput Format:\n• An integer n — the number of key-value pairs.\n• Followed by n lines, each containing a string key and an integer value separated by a colon (:), with no spaces.\n\nOutput Format:\nPrint n lines where each line contains:\n• The key, right-aligned to match the longest key.\n• A colon :\n• A sequence of # characters equal to the corresponding value."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "# Read input, process, and print the output"
+        }
+      ],
+      "acceptable_answers": [
+        "Horizontal Bar Chart"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Sample Test Cases / Examples:**\n\n```text\nInput\n6\napple:10\nbanana:5\nplum:6\ncherry:3\ndates:8\nstrawberry:15\nOutput\n     apple:##########\n    banana:#####\n      plum:######\n    cherry:###\n     dates:########\nstrawberry:###############\n```"
+        },
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "n = int(input())\npairs = []\nfor _ in range(n):\n    # Split on the last colon so keys could safely contain one (defensive).\n    key, value = input().rsplit(\":\", 1)\n    pairs.append((key, int(value)))\n\nwidth = max(len(key) for key, _ in pairs)\nfor key, value in pairs:\n    print(f\"{key:>{width}}:\" + \"#\" * value)"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 3 - Problem 1: Double First and Last Elements in a List** (Function Type)\n\nWrite a function double_ends(l) that takes a list l (with at least two elements) and returns a new list where the first and last elements of l are duplicated at the beginning and end of the list, respectively.\n\nThe new list should have:\n• The first element of the original list inserted once at the beginning.\n• The last element of the original list inserted once at the end.\n\nYou must not modify the original list.\n\nConstraints:\n• The input list will contain at least two elements.\n• The list can contain elements of any type (integers, strings, etc.).\n\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def double_ends(l):\n    ..."
+        }
+      ],
+      "acceptable_answers": [
+        "Double First and Last Elements in a List",
+        "double_ends"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Sample Test Cases / Examples:**\n\n```text\n>>> double_ends([10, 20, 30])\n[10, 10, 20, 30, 30]\n>>> double_ends(['a', 'b', 'c'])\n['a', 'a', 'b', 'c', 'c']\n>>> double_ends([1, 2])\n[1, 1, 2, 2]\n>>> double_ends([5, 6, 7, 8])\n[5, 5, 6, 7, 8, 8]\n```"
+        },
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def double_ends(l):\n    # Build a brand-new list so the original stays untouched.\n    return [l[0]] + list(l) + [l[-1]]"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 3 - Problem 2: Extract Email Username** (Function Type)\n\nWrite a function extract_email_username that takes an email address string of the form \"username@domain.com\" and returns just the username part — that is, everything before the @ symbol.\n\nConstraints:\n• The input will always be a valid email address containing exactly one @ symbol.\n• The username can contain letters, numbers, and symbols like dots or underscores.\n• The domain part is irrelevant and should not be returned.\n\nNOTE: This is a function type question, you don't have to take input or print the output, just have to complete the required function definition."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def extract_email_username(email):\n    ..."
+        }
+      ],
+      "acceptable_answers": [
+        "Extract Email Username",
+        "extract_email_username"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Sample Test Cases / Examples:**\n\n```text\n>>> extract_email_username(\"ananya.sharma@iitd.ac.in\")\n'ananya.sharma'\n>>> extract_email_username(\"rahul123@gmail.com\")\n'rahul123'\n>>> extract_email_username(\"priya_r@company.in\")\n'priya_r'\n>>> extract_email_username(\"v.kumar@institute.edu\")\n'v.kumar'\n```"
+        },
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def extract_email_username(email):\n    # Everything before the single '@' is the username.\n    return email.split(\"@\")[0]"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,394 @@
+[
+  {
+    "title": "OPPE 2 (2024 Sep) Set 3 \u00b7 P1: Product of Sum and Absolute Difference",
+    "description": "Given a two-digit number, calculate the product of:\n\u2022 The sum of its digits.\n\u2022 The absolute difference between its digits.\nAssume the input is a two-digit number.\nInput: A two-digit integer.\nOutput: An integer representing the product of the sum and absolute difference of its digits.",
+    "input_format": null,
+    "output_format": null,
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "def product_of_sum_and_abs_diff(num: int) -> int:\n    ",
+    "suffix_code": "num = int(input())\nprint(product_of_sum_and_abs_diff(num))",
+    "sample_input": "54",
+    "sample_output": "9",
+    "position": 1,
+    "section": 1,
+    "test_cases": [
+      {
+        "input": "54",
+        "expected_output": "9",
+        "is_hidden": false
+      },
+      {
+        "input": "62",
+        "expected_output": "32",
+        "is_hidden": false
+      },
+      {
+        "input": "10",
+        "expected_output": "1",
+        "is_hidden": true
+      },
+      {
+        "input": "99",
+        "expected_output": "0",
+        "is_hidden": true
+      },
+      {
+        "input": "83",
+        "expected_output": "55",
+        "is_hidden": true
+      },
+      {
+        "input": "44",
+        "expected_output": "0",
+        "is_hidden": true
+      },
+      {
+        "input": "71",
+        "expected_output": "48",
+        "is_hidden": true
+      },
+      {
+        "input": "25",
+        "expected_output": "21",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 2 (2024 Sep) Set 3 \u00b7 P2: Check Divisibility by Last Two Digits",
+    "description": "Write a function that checks whether a given number is divisible by both of its last two digits.\nReturn False if any of the last two digits is zero.\nInput: A positive integer num with at least two digits.\nOutput: True if the number is divisible by both of its last two digits, otherwise False.",
+    "input_format": null,
+    "output_format": null,
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "def is_divisible_by_last_two_digits(num: int) -> bool:\n    ",
+    "suffix_code": "num = int(input())\nprint(is_divisible_by_last_two_digits(num))",
+    "sample_input": "1236",
+    "sample_output": "True",
+    "position": 2,
+    "section": 1,
+    "test_cases": [
+      {
+        "input": "1236",
+        "expected_output": "True",
+        "is_hidden": false
+      },
+      {
+        "input": "345",
+        "expected_output": "False",
+        "is_hidden": false
+      },
+      {
+        "input": "748",
+        "expected_output": "False",
+        "is_hidden": true
+      },
+      {
+        "input": "740",
+        "expected_output": "False",
+        "is_hidden": true
+      },
+      {
+        "input": "12",
+        "expected_output": "True",
+        "is_hidden": true
+      },
+      {
+        "input": "24",
+        "expected_output": "True",
+        "is_hidden": true
+      },
+      {
+        "input": "105",
+        "expected_output": "False",
+        "is_hidden": true
+      },
+      {
+        "input": "224",
+        "expected_output": "True",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 2 (2024 Sep) Set 3 \u00b7 P3: Swap the Last Chars in Dictionary Values",
+    "description": "Write a function that swaps the last characters of the values corresponding to two specified keys in a dictionary.\nAssume that the values in the dictionary are strings.\nInput:\n\u2022 A dictionary d where the values are strings.\n\u2022 Two keys k1 and k2.\nOutput:\n\u2022 Modify the dictionary in-place by swapping the last characters of the values of the given keys.\n\u2022 The function returns None as it modifies the dictionary directly.\nAssume the values for both keys k1 and k2 are non-empty strings and the dictionary contains the keys k1 and k2.",
+    "input_format": null,
+    "output_format": null,
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "def swap_last_chars_of_values(d: dict, k1, k2) -> None:\n    ",
+    "suffix_code": "import json\nd = json.loads(input())\nk1 = input()\nk2 = input()\nswap_last_chars_of_values(d, k1, k2)\nprint(json.dumps(d, sort_keys=True))",
+    "sample_input": "{\"first\": \"apple\", \"second\": \"mango\"}\nfirst\nsecond",
+    "sample_output": "{\"first\": \"applo\", \"second\": \"mange\"}",
+    "position": 3,
+    "section": 1,
+    "test_cases": [
+      {
+        "input": "{\"first\": \"apple\", \"second\": \"mango\"}\nfirst\nsecond",
+        "expected_output": "{\"first\": \"applo\", \"second\": \"mange\"}",
+        "is_hidden": false
+      },
+      {
+        "input": "{\"key1\": \"hello\", \"key2\": \"world\"}\nkey1\nkey2",
+        "expected_output": "{\"key1\": \"helld\", \"key2\": \"worlo\"}",
+        "is_hidden": false
+      },
+      {
+        "input": "{\"a\": \"cat\", \"b\": \"dog\"}\na\nb",
+        "expected_output": "{\"a\": \"cag\", \"b\": \"dot\"}",
+        "is_hidden": true
+      },
+      {
+        "input": "{\"x\": \"123\", \"y\": \"456\"}\nx\ny",
+        "expected_output": "{\"x\": \"126\", \"y\": \"453\"}",
+        "is_hidden": true
+      },
+      {
+        "input": "{\"k1\": \"a\", \"k2\": \"b\"}\nk1\nk2",
+        "expected_output": "{\"k1\": \"b\", \"k2\": \"a\"}",
+        "is_hidden": true
+      },
+      {
+        "input": "{\"m\": \"sun\", \"n\": \"moon\"}\nm\nn",
+        "expected_output": "{\"m\": \"sun\", \"n\": \"moon\"}",
+        "is_hidden": true
+      },
+      {
+        "input": "{\"p\": \"test\", \"q\": \"code\"}\np\nq",
+        "expected_output": "{\"p\": \"tese\", \"q\": \"codt\"}",
+        "is_hidden": true
+      },
+      {
+        "input": "{\"first\": \"red\", \"second\": \"blue\"}\nfirst\nsecond",
+        "expected_output": "{\"first\": \"ree\", \"second\": \"blud\"}",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 2 (2024 Sep) Set 3 \u00b7 P4: Get Words That Come After \"the\"",
+    "description": "Write a function to find all the words that immediately follow the word \"the\" in a given sentence. The search should be case-insensitive, and words are separated by spaces.",
+    "input_format": null,
+    "output_format": null,
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "def words_after_the(sentence: str) -> list:\n    ",
+    "suffix_code": "sentence = input()\nprint(words_after_the(sentence))",
+    "sample_input": "The key and the lock is there",
+    "sample_output": "['key', 'lock']",
+    "position": 4,
+    "section": 2,
+    "test_cases": [
+      {
+        "input": "The key and the lock is there",
+        "expected_output": "['key', 'lock']",
+        "is_hidden": false
+      },
+      {
+        "input": "The the and the The",
+        "expected_output": "['the', 'and', 'The']",
+        "is_hidden": false
+      },
+      {
+        "input": "No articles here",
+        "expected_output": "[]",
+        "is_hidden": true
+      },
+      {
+        "input": "The dog chased the cat into the garden",
+        "expected_output": "['dog', 'cat', 'garden']",
+        "is_hidden": true
+      },
+      {
+        "input": "THE sun AND THE MOON",
+        "expected_output": "['sun', 'MOON']",
+        "is_hidden": true
+      },
+      {
+        "input": "Where is the ball",
+        "expected_output": "['ball']",
+        "is_hidden": true
+      },
+      {
+        "input": "the end",
+        "expected_output": "['end']",
+        "is_hidden": true
+      },
+      {
+        "input": "In the morning and at the night",
+        "expected_output": "['morning', 'night']",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 2 (2024 Sep) Set 3 \u00b7 P5: Ceil Marks to Nearest Tens if Close",
+    "description": "Write a program to process roll numbers and marks for students. If a student's marks have a unit digit of 8 or 9, round their marks up to the nearest tens. Otherwise, keep the marks unchanged. Print only the roll number and updated marks for students whose marks were updated.\nInput Format\n\u2022 The first line contains the number of lines of student data n.\n\u2022 Next n lines contains the student data with roll number and marks separated by space.\nOutput Format\n\u2022 Student data for the roll number whose marks has been updated in the format of roll number and updated marks separated by comma.",
+    "input_format": "Number of students n, followed by roll and marks.",
+    "output_format": "Updated roll and marks separated by comma.",
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "# Read input, process, and print the output\n",
+    "suffix_code": "",
+    "sample_input": "4\n48 48\n69 69\n70 70\n37 37",
+    "sample_output": "48,50\n69,70",
+    "position": 5,
+    "section": 2,
+    "test_cases": [
+      {
+        "input": "4\n48 48\n69 69\n70 70\n37 37",
+        "expected_output": "48,50\n69,70",
+        "is_hidden": false
+      },
+      {
+        "input": "2\n10 18\n20 29",
+        "expected_output": "10,20\n20,30",
+        "is_hidden": false
+      },
+      {
+        "input": "3\n1 55\n2 58\n3 59",
+        "expected_output": "2,60\n3,60",
+        "is_hidden": true
+      },
+      {
+        "input": "1\n101 88",
+        "expected_output": "101,90",
+        "is_hidden": true
+      },
+      {
+        "input": "2\n5 80\n6 81",
+        "expected_output": "",
+        "is_hidden": true
+      },
+      {
+        "input": "3\n7 78\n8 79\n9 80",
+        "expected_output": "7,80\n8,80",
+        "is_hidden": true
+      },
+      {
+        "input": "2\n11 38\n12 37",
+        "expected_output": "11,40",
+        "is_hidden": true
+      },
+      {
+        "input": "1\n99 9",
+        "expected_output": "99,10",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 2 (2024 Sep) Set 3 \u00b7 P6: Cartesian Points Processing",
+    "description": "Given a set of tuples of ints representing points in Cartesian coordinates, write a function that performs the following tasks:\n\u2022 sort_close_to_y_axis: Returns a sorted list of the points based on the absolute value of their x-coordinate (distance from the y-axis). The point with the lower angle in polar coordinates comes first in case of ties.\n\u2022 closest_point_to_origin: Find the closest point to the origin (0,0) based on the Manhattan distance. If there are multiple points at the same distance, return the one with the lower angle in polar coordinates.\n\u2022 group_by_quadrant: Return a dictionary where the keys are quadrant numbers (1, 2, 3, 4) and the values are sets of points in those quadrants. Do not include keys for quadrants with no points.\nNote the angle is computed using math.atan2(y,x) where x and y are the cartesian coordinates. math.atan2 returns the angle in the range of -pi to pi. You can use the get_angle function from the template.\nAssume no points are on the axes or origin and the coordinates are integers.\nHint: sorted and min functions can be used with the key argument to make the code simpler.\nDefinitions:\n\u2022 Manhattan distance between two points (x_1, y_1) and (x_2, y_2) is |x_1 - x_2| + |y_1 - y_2|.",
+    "input_format": null,
+    "output_format": null,
+    "constraints": null,
+    "prefix_code": "import math\n\ndef get_angle(point):\n    x, y = point\n    return math.atan2(y, x)\n",
+    "starter_code": "def process_points(points, task):\n    ",
+    "suffix_code": "import json\npts = set(tuple(p) for p in json.loads(input()))\ntask = input()\nres = process_points(pts, task)\nif isinstance(res, dict):\n    print({k: sorted(list(v)) for k, v in res.items()})\nelse:\n    print(res)",
+    "sample_input": "[[2,5],[-2,6],[-2,7],[-1,3],[-3,-4],[4,-6],[0,7]]\nclosest_point_to_origin",
+    "sample_output": "(-1, 3)",
+    "position": 6,
+    "section": 3,
+    "test_cases": [
+      {
+        "input": "[[2,5],[-2,6],[-2,7],[-1,3],[-3,-4],[4,-6],[0,7]]\nsort_close_to_y_axis",
+        "expected_output": "[(0, 7), (-1, 3), (2, 5), (-2, 7), (-2, 6), (-3, -4), (4, -6)]",
+        "is_hidden": false
+      },
+      {
+        "input": "[[2,5],[-2,6],[-2,7],[-1,3],[-3,-4],[4,-6],[0,7]]\nclosest_point_to_origin",
+        "expected_output": "(-1, 3)",
+        "is_hidden": false
+      },
+      {
+        "input": "[[2,5],[-2,6],[-2,7],[-1,3],[-3,-4],[4,-6],[0,7]]\ngroup_by_quadrant",
+        "expected_output": "{4: [(0, 7), (4, -6)], 2: [(-2, 6), (-2, 7), (-1, 3)], 3: [(-3, -4)], 1: [(2, 5)]}",
+        "is_hidden": true
+      },
+      {
+        "input": "[[1,1],[-1,-1]]\nsort_close_to_y_axis",
+        "expected_output": "[(-1, -1), (1, 1)]",
+        "is_hidden": true
+      },
+      {
+        "input": "[[3,4],[1,1]]\nclosest_point_to_origin",
+        "expected_output": "(1, 1)",
+        "is_hidden": true
+      },
+      {
+        "input": "[[5,5],[-5,5],[-5,-5],[5,-5]]\ngroup_by_quadrant",
+        "expected_output": "{3: [(-5, -5)], 1: [(5, 5)], 4: [(5, -5)], 2: [(-5, 5)]}",
+        "is_hidden": true
+      },
+      {
+        "input": "[[1,2],[-1,2],[1,-2]]\nsort_close_to_y_axis",
+        "expected_output": "[(1, -2), (1, 2), (-1, 2)]",
+        "is_hidden": true
+      },
+      {
+        "input": "[[10,10],[2,2]]\nclosest_point_to_origin",
+        "expected_output": "(2, 2)",
+        "is_hidden": true
+      }
+    ]
+  },
+  {
+    "title": "OPPE 2 (2024 Sep) Set 3 \u00b7 P7: Fill the First n Blanks with 1 to n",
+    "description": "Write a program to fill the first n blanks (represented by underscores _) in a text with numbers from 1 to n.\n\u2022 The first line of the input contains the integer n, the number of blanks to fill.\n\u2022 Subsequent lines contain the text, with blanks represented as _.\n\u2022 Fill the blanks sequentially with numbers from 1 to n.\n\u2022 If there are more blanks than n, the remaining blanks remain unchanged.",
+    "input_format": "Integer n followed by multiline text with blanks.",
+    "output_format": "The text with first n blanks filled sequentially.",
+    "constraints": null,
+    "prefix_code": "",
+    "starter_code": "# Read input, process, and print the output\n",
+    "suffix_code": "",
+    "sample_input": "11\na_bc__d___e\nf_g__h__i__j\nk___l_m__n",
+    "sample_output": "11\na1bc23d456e\nf7g89h1011i__j\nk___l_m__n",
+    "position": 7,
+    "section": 3,
+    "test_cases": [
+      {
+        "input": "11\na_bc__d___e\nf_g__h__i__j\nk___l_m__n",
+        "expected_output": "11\na1bc23d456e\nf7g89h1011i__j\nk___l_m__n",
+        "is_hidden": false
+      },
+      {
+        "input": "3\na_b_c_",
+        "expected_output": "3\na1b2c3",
+        "is_hidden": false
+      },
+      {
+        "input": "2\n__\n__",
+        "expected_output": "2\n12\n__",
+        "is_hidden": true
+      },
+      {
+        "input": "5\nhello_world_test_",
+        "expected_output": "5\nhello1world2test3",
+        "is_hidden": true
+      },
+      {
+        "input": "1\n_a_",
+        "expected_output": "1\n1a_",
+        "is_hidden": true
+      },
+      {
+        "input": "4\n1_2_3_4_5_",
+        "expected_output": "4\n112233445_",
+        "is_hidden": true
+      },
+      {
+        "input": "0\na_b_c",
+        "expected_output": "0\na_b_c",
+        "is_hidden": true
+      },
+      {
+        "input": "6\n___a___b",
+        "expected_output": "6\n123a456b",
+        "is_hidden": true
+      }
+    ]
+  }
+]

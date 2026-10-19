@@ -1,0 +1,247 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Python · OPPE 1 · 2025 Jan · Set 3",
+  "subject": "Python",
+  "section": "mock_test",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 1 - Problem 1: Check Even Number and Second Last Digit is Two** (Function Type)\n\nWrite a function is_even_and_second_last_digit_is_two that takes an integer input num and returns a boolean value. The function should check if the number is even and if the second last digit is two."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def is_even_and_second_last_digit_is_two(num: int) -> bool:\n    '''\n    Check if a number is even and if the second last digit is two.\n\n    Args:\n        num (int): The integer to check.\n\n    Returns:\n        bool: Returns True if the number is even and the second last digit is 2, False otherwise.\n    '''\n    ..."
+        }
+      ],
+      "acceptable_answers": [
+        "Check Even Number and Second Last Digit is Two",
+        "is_even_and_second_last_digit_is_two"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Sample Test Cases / Examples:**\n\n```text\n>>> is_even_and_second_last_digit_is_two(232) -> False\n>>> is_even_and_second_last_digit_is_two(120) -> True\n>>> is_even_and_second_last_digit_is_two(25) -> False\n>>> is_even_and_second_last_digit_is_two(13) -> False\n```"
+        },
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def is_even_and_second_last_digit_is_two(num: int) -> bool:\n    '''\n    Check if a number is even and if the second last digit is two.\n\n    Args:\n        num (int): The integer to check.\n\n    Returns:\n        bool: Returns True if the number is even and the second last digit is 2, False otherwise.\n    '''\n    digits = str(abs(num))\n    # Must be even\n    if int(digits) % 2 != 0:\n        return False\n    # Must have a second last digit, and it must be '2'\n    return len(digits) >= 2 and digits[-2] == '2'"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 1 - Problem 2: Capitalize nth Character** (Function Type)\n\nYou are given a string s and an integer n. Your task is to capitalize the nth character in the string s. If n is greater than the length of the string, return the string unchanged."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def upper_nth_index_char(s: str, n: int) -> str:\n    ..."
+        }
+      ],
+      "acceptable_answers": [
+        "Capitalize nth Character",
+        "upper_nth_index_char"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Sample Test Cases / Examples:**\n\n```text\n>>> upper_nth_index_char(\"hello\", 1) -> 'hEllo'\n>>> upper_nth_index_char(\"python\", 3) -> 'pytHon'\n>>> upper_nth_index_char(\"python\", 9) -> 'python'\n```"
+        },
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def upper_nth_index_char(s: str, n: int) -> str:\n    # If n is out of range, return the string unchanged\n    if n >= len(s):\n        return s\n    return s[:n] + s[n].upper() + s[n + 1:]"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 1 - Problem 3: Merge and Remove Duplicates** (Function Type)\n\nGiven two lists list1 and list2, merge both lists and return a set with all the elements in the list1 and list2."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def merge_and_remove_duplicates(list1: list, list2: list) -> set:\n    ..."
+        }
+      ],
+      "acceptable_answers": [
+        "Merge and Remove Duplicates",
+        "merge_and_remove_duplicates"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Sample Test Cases / Examples:**\n\n```text\n>>> merge_and_remove_duplicates([1, 2, 2], [2, 1, 1]) -> {1, 2}\n>>> merge_and_remove_duplicates([\"ant\", \"bat\"], [\"bat\", \"cat\"]) -> {'ant', 'bat', 'cat'}\n```"
+        },
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def merge_and_remove_duplicates(list1: list, list2: list) -> set:\n    # Combining into a set removes duplicates automatically\n    return set(list1 + list2)"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 2 - Problem 1 (Data Processing - Function Type): Replace Vowels with Next Alphabet** (Function Type)\n\nYou are given a string s. Your task is to replace each vowel in the string with the next letter in the alphabet while keeping the rest of the characters unchanged.\n\nNote: The function is case-sensitive. For example, a is replaced with b, and A is replaced with B."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def replace_vowels(s: str) -> str:\n    ..."
+        }
+      ],
+      "acceptable_answers": [
+        "Replace Vowels with Next Alphabet",
+        "replace_vowels"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def replace_vowels(s: str) -> str:\n    vowels = \"aeiouAEIOU\"\n    # Shift each vowel to the next character in the alphabet\n    return ''.join(chr(ord(c) + 1) if c in vowels else c for c in s)"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 2 - Problem 2 (Data Processing - I/O Type): Max Column Sum and Max Column Sum Index** (Io Type)\n\nWrite a program to find the index of the column with the maximum sum of elements in a given m x n matrix. Find the 0-based index of the column that has the largest sum and the largest column sum.\n\nIf more than two columns have the same sum, output the index of the first column (with the smallest index) among those with the maximum sum.\n\nInput Format:\n• The first line contains two integers, m and n, the number of rows and columns.\n• The next m lines each contain n space-separated integers.\n\nOutput Format:\n• The first line: the index of the column with the maximum sum.\n• The second line: the maximum column sum."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "# Write your code here to read the input and print the output"
+        }
+      ],
+      "acceptable_answers": [
+        "Max Column Sum and Max Column Sum Index"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Sample Test Cases / Examples:**\n\n```text\nInput:\n3 4\n1 2 3 4\n5 6 7 8\n9 10 11 12\n\nOutput:\n3\n24\n```"
+        },
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "m, n = map(int, input().split())\nmatrix = [list(map(int, input().split())) for _ in range(m)]\n\n# Sum each column across all rows\ncol_sums = [sum(matrix[i][j] for i in range(m)) for j in range(n)]\n\nmax_sum = max(col_sums)\nmax_idx = col_sums.index(max_sum)  # index() returns the first (smallest) index\n\nprint(max_idx)\nprint(max_sum)"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 3 - Problem 1 (Data Analysis): Analyze Sentences** (Function Type)\n\nWrite a function process_sentence(sentence, task) that analyzes a given sentence:\n• count_words: Total number of words in the sentence.\n• count_palindrome_words: Total number of palindrome words.\n• count_words_with_repeated_chars: Total number of words that contain at least one repeated character.\n• words_with_max_len: A set of longest words in the sentence."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def process_sentence(sentence: str, task: str):\n    ..."
+        }
+      ],
+      "acceptable_answers": [
+        "Analyze Sentences",
+        "process_sentence"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Sample Test Cases / Examples:**\n\n```text\n>>> process_sentence(\"level noon civic radar something\", \"count_words\") -> 5\n>>> process_sentence(\"level noon civic radar something\", \"count_palindrome_words\") -> 4\n```"
+        },
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def process_sentence(sentence: str, task: str):\n    words = sentence.split()\n\n    if task == \"count_words\":\n        return len(words)\n\n    elif task == \"count_palindrome_words\":\n        return sum(1 for w in words if w == w[::-1])\n\n    elif task == \"count_words_with_repeated_chars\":\n        # A repeated char means unique-char count is less than total length\n        return sum(1 for w in words if len(set(w)) < len(w))\n\n    elif task == \"words_with_max_len\":\n        max_len = max(len(w) for w in words)\n        return set(w for w in words if len(w) == max_len)"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "**Section 3 - Problem 2 (Pattern Printing): Centered Triangle Of Zeroes** (Io Type)\n\nPrint a centered triangle up to a given number of rows, where all elements are zeroes.\n\nThere is space between zeros in a same line and also no space after the last zero in a line.\n\nInput Format: A single integer n, representing the number of rows."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "# Write your code here to read the input and print the output"
+        }
+      ],
+      "acceptable_answers": [
+        "Centered Triangle Of Zeroes"
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "**Sample Test Cases / Examples:**\n\n```text\nInput: 3\nOutput:\n  0\n 0 0\n0 0 0\n\nInput: 4\nOutput:\n   0\n  0 0\n 0 0 0\n0 0 0 0\n```"
+        },
+        {
+          "kind": "text",
+          "value": "**Verified Reference Solution:**"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "n = int(input())\nfor i in range(1, n + 1):\n    # Leading spaces center the triangle, zeros separated by single spaces\n    spaces = \" \" * (n - i)\n    zeros = \" \".join(\"0\" for _ in range(i))\n    print(spaces + zeros)"
+        }
+      ]
+    }
+  ]
+}
