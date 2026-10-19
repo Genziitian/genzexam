@@ -1,0 +1,104 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Jan 2025 Endterm · Part 1",
+  "subject": "Deep Learning",
+  "section": "endterm",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The input volume to a convolutional layer is 100×100×5. If ten kernels, each of size 9 × 9, with unit stride are applied over this volume, what should be the padding so that the output volume has dimensions 100 × 100 × 10? Note that you should enter the value of P as per the convention we have been following. Question Id : 6406531252656 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "numerical_answer": 4.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the value of x at which the tower attains its maximum value."
+        }
+      ],
+      "numerical_answer": 0.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the maximum value that the tower attains. Consider the multi-head self-attention mechanism in the encoder of a transformer with 8 heads. The word embedding dimension is 32. In a given head, the query, key and value vectors have the same dimension and each of them is 4. The sequence length is 5. Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "0.6 Question Id : 6406531252659 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "32 Question Id : 6406531252663 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the value y at the end of the forward pass."
+        }
+      ],
+      "numerical_answer": 9.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "6 Question Id : 6406531252667 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find a."
+        }
+      ],
+      "acceptable_answers": [
+        "-0.70 to -0.64"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "Jan 2025 Endterm · Part 1"
+}

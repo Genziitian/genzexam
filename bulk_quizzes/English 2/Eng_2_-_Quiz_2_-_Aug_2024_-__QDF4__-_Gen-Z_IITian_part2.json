@@ -1,0 +1,267 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 2 · Quiz 2 · Aug 2024 · Part 2",
+  "subject": "English 2",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "When requesting a day off from work for personal reasons, which sentence is the most appropriate? I'm taking a day off. Could I have a day off next week for personal reasons?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "I won't be able to come to work next week."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "I'll be absent next week"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "MCO marks Imagine that you are in a formal meeting with a client. In such a context, you are asking her whether she would like to review a file. From the options below, which would be the most appropriate way to ask this question?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Will you like to take a look at the file?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "You will like to take a look at the file? Would you like to take a look at the file?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Do you want this file?"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "marks See the hint or context provided and choose only the most appropriate option to fill the blank. There be no appeal to caste or communal feelings for securing votes. Hint: To denote a strong, socially-oriented and legally-binding obligation on those contesting in elections Gan"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Should Shall"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Will"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Fill in the blank with the most appropriate modal verb. _ Arnav perform this last task instead of me? (Clue: Seeking permission, informal)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Should marks can"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both Should and Can"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Neither Should nor Can"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Fill in the blank with the most appropriate modal verb. It be a man with wings. (Clue: hypothetical) May Might Both May and Might May I borrow your laptop to send an email please? email?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Can I borrow your laptop to send an email?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both May I borrow your laptop to send an email please? and Can I borrow your laptop to send an"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "I might borrow your laptop to send an email."
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Complete the given sentence with the most fitting question tag. Now you are together again,? Are you? Aren't you?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Were vou?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Weren't you?"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Complete the given sentence with the most fitting question tag. Yesterday was not a great day. - Was it"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Were it Wasn't it"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Is it"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the complementizer in the given sentence. One can't tell whether one is talking to a dummy or to a living woman."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "One Tell c Or"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Whether"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct subordinate conjunction that can complete the sentence. Black Beauty did not know _ to eat the grass or to have a gallop across the meadow."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Only if"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Either if or whether Only whether"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Only that"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 2 · Quiz 2 · Aug 2024 · Part 2"
+}

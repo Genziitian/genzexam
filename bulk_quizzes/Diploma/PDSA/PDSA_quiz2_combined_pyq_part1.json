@@ -1,0 +1,87 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "PDSA · Quiz 2 · Combined PYQ · Part 1",
+  "title": "PDSA · Quiz 2 · Combined PYQ · Part 1",
+  "subject": "PDSA",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the maximum possible height of an AVL tree containing 15 nodes? Consider that an AVL tree with a single node has a height of 1."
+        }
+      ],
+      "numerical_answer": 5.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following 4 items (one unit for each) with their weights and value."
+        }
+      ],
+      "numerical_answer": 4.0,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A networking company uses Huffman coding compression technique to encode the message before transmitting it over the network. An entire message is created using characters from the set S = {A, B, C, D, E, F}. The probability of occurrence of each character is given in the table below."
+        }
+      ],
+      "numerical_answer": 16.0,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider a binary tree with 21 nodes. The maximum number of leaves possible in tree is ___________."
+        }
+      ],
+      "numerical_answer": 11.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Question Id : 6406531173987 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "numerical_answer": 9.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Create an AVL tree by inserting the following elements in the given order (one at a time): 4, 7, 1, 3, 5, 6, 2, 8 What would be the sum of elements stored in leaf nodes of the resultant AVL tree?"
+        }
+      ],
+      "numerical_answer": 17.0,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium"
+    }
+  ]
+}

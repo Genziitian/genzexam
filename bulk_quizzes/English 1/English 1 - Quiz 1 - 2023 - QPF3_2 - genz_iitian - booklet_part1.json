@@ -1,0 +1,371 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 1 · Quiz 1 · 16 JULY 2023 · QPF3 · Part 1",
+  "subject": "English 1",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following passage and answer the given subquestions. We all seek happiness but few, very few, indeed, get it. We are unhappy partly because we desire much more than what we can hope to attain. Our countless desires are hard to satisfy. And that is what makes us so sad in life. The secret of happiness lies in the simplification of life. Simple living encourages high thinking. It leads to contentment. Contentment gives us inner wealth, the wealth of the mind and of the soul. A contented man devotes himself to virtues like truth, beauty, love, goodness, kindness, and charity. By pursuing and inculcating their virtues, a man can feel true happiness. I do not mean that for simplification of life, a man should become an ascetic. The happiness of sadhu is of a negative kind. I want a positive kind of happiness. For this, I must live in the midst of life, faithfully carrying out my responsibilities to my home and my country. But all of this should be done in the spirit of selfless service. A man who wants to lead a happy life, should also make others happy. In making others happy, he will taste real and lasting happiness. There is a kind of joy in serving others with virtuous motives, in sacrificing what one has for the good of others. An act of goodness is in itself an act of happiness. The secret of perfect happiness lies in renunciation. Wealth may give us joy for a while and fame may provide us with fleeting excitement. But they cannot give us permanent happiness. Kings have everything to make them happy and yet they feel unhappy. It is because they do not practice renunciation. There is a sense of joy in doing one’s work honestly and efficiently. A research-worker feels joy in conducting research while a journalist in writing. In doing one’s duty sincerely, one feels a peace of mind, which is an important essence of happiness. It is only by cultivating a spirit of renunciation, self-sacrifice, contentment, and sincere work that one can really be happy. The strings of misfortune spare none, but they will not cow such a person.\n\nQuestion:\nWhat does a contented man do?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "He encounters the strings of misfortunes."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "He gives up bad habits effortlessly."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "He boldly faces the adversities of life."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "He pursues and assimilates the basic virtues of life."
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following passage and answer the given subquestions. We all seek happiness but few, very few, indeed, get it. We are unhappy partly because we desire much more than what we can hope to attain. Our countless desires are hard to satisfy. And that is what makes us so sad in life. The secret of happiness lies in the simplification of life. Simple living encourages high thinking. It leads to contentment. Contentment gives us inner wealth, the wealth of the mind and of the soul. A contented man devotes himself to virtues like truth, beauty, love, goodness, kindness, and charity. By pursuing and inculcating their virtues, a man can feel true happiness. I do not mean that for simplification of life, a man should become an ascetic. The happiness of sadhu is of a negative kind. I want a positive kind of happiness. For this, I must live in the midst of life, faithfully carrying out my responsibilities to my home and my country. But all of this should be done in the spirit of selfless service. A man who wants to lead a happy life, should also make others happy. In making others happy, he will taste real and lasting happiness. There is a kind of joy in serving others with virtuous motives, in sacrificing what one has for the good of others. An act of goodness is in itself an act of happiness. The secret of perfect happiness lies in renunciation. Wealth may give us joy for a while and fame may provide us with fleeting excitement. But they cannot give us permanent happiness. Kings have everything to make them happy and yet they feel unhappy. It is because they do not practice renunciation. There is a sense of joy in doing one’s work honestly and efficiently. A research-worker feels joy in conducting research while a journalist in writing. In doing one’s duty sincerely, one feels a peace of mind, which is an important essence of happiness. It is only by cultivating a spirit of renunciation, self-sacrifice, contentment, and sincere work that one can really be happy. The strings of misfortune spare none, but they will not cow such a person.\n\nQuestion:\nWhich of the following is the correct chain of things, as mentioned in the passage, leading to happiness?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "High thinking, simple living, inner wealth, contentment"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Inner wealth, simple living, contentment, high thinking"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Simple living, high thinking, inner wealth, contentment"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Simple living, high thinking, contentment, inner wealth"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following passage and answer the given subquestions. We all seek happiness but few, very few, indeed, get it. We are unhappy partly because we desire much more than what we can hope to attain. Our countless desires are hard to satisfy. And that is what makes us so sad in life. The secret of happiness lies in the simplification of life. Simple living encourages high thinking. It leads to contentment. Contentment gives us inner wealth, the wealth of the mind and of the soul. A contented man devotes himself to virtues like truth, beauty, love, goodness, kindness, and charity. By pursuing and inculcating their virtues, a man can feel true happiness. I do not mean that for simplification of life, a man should become an ascetic. The happiness of sadhu is of a negative kind. I want a positive kind of happiness. For this, I must live in the midst of life, faithfully carrying out my responsibilities to my home and my country. But all of this should be done in the spirit of selfless service. A man who wants to lead a happy life, should also make others happy. In making others happy, he will taste real and lasting happiness. There is a kind of joy in serving others with virtuous motives, in sacrificing what one has for the good of others. An act of goodness is in itself an act of happiness. The secret of perfect happiness lies in renunciation. Wealth may give us joy for a while and fame may provide us with fleeting excitement. But they cannot give us permanent happiness. Kings have everything to make them happy and yet they feel unhappy. It is because they do not practice renunciation. There is a sense of joy in doing one’s work honestly and efficiently. A research-worker feels joy in conducting research while a journalist in writing. In doing one’s duty sincerely, one feels a peace of mind, which is an important essence of happiness. It is only by cultivating a spirit of renunciation, self-sacrifice, contentment, and sincere work that one can really be happy. The strings of misfortune spare none, but they will not cow such a person.\n\nQuestion:\nAccording to the passage, the essence of happiness lies in ______"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Avoiding all unfortunate events."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Adopting a simple lifestyle."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Matching one’s abilities with the work undertaken."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Worldly desires."
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following passage and answer the given subquestions. We all seek happiness but few, very few, indeed, get it. We are unhappy partly because we desire much more than what we can hope to attain. Our countless desires are hard to satisfy. And that is what makes us so sad in life. The secret of happiness lies in the simplification of life. Simple living encourages high thinking. It leads to contentment. Contentment gives us inner wealth, the wealth of the mind and of the soul. A contented man devotes himself to virtues like truth, beauty, love, goodness, kindness, and charity. By pursuing and inculcating their virtues, a man can feel true happiness. I do not mean that for simplification of life, a man should become an ascetic. The happiness of sadhu is of a negative kind. I want a positive kind of happiness. For this, I must live in the midst of life, faithfully carrying out my responsibilities to my home and my country. But all of this should be done in the spirit of selfless service. A man who wants to lead a happy life, should also make others happy. In making others happy, he will taste real and lasting happiness. There is a kind of joy in serving others with virtuous motives, in sacrificing what one has for the good of others. An act of goodness is in itself an act of happiness. The secret of perfect happiness lies in renunciation. Wealth may give us joy for a while and fame may provide us with fleeting excitement. But they cannot give us permanent happiness. Kings have everything to make them happy and yet they feel unhappy. It is because they do not practice renunciation. There is a sense of joy in doing one’s work honestly and efficiently. A research-worker feels joy in conducting research while a journalist in writing. In doing one’s duty sincerely, one feels a peace of mind, which is an important essence of happiness. It is only by cultivating a spirit of renunciation, self-sacrifice, contentment, and sincere work that one can really be happy. The strings of misfortune spare none, but they will not cow such a person.\n\nQuestion:\nWe are unhappy partly because ______"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "We have countless unfulfilled desires."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Our lives have become extremely complicated."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "We have lost moral and spiritual values."
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nListen to the audio sample and answer the given subquestions:\n\nQuestion:\nWhich of the following statements is NOT TRUE in the context of the passage?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Multiplicity of desires makes us unhappy."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Making others happy makes one happy."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Renunciation is the result of perfect happiness."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "One feels peace of mind in doing one’s duty sincerely."
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nListen to the audio sample and answer the given subquestions:\n\nQuestion:\nWhich year did Natalie Portman’s first film release?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "1993"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1994"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1995"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1996"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nListen to the audio sample and answer the given subquestions:\n\nQuestion:\nWhat role did Natalie Portman portray in the ‘Black Swan’?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "A doctor"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A ballet dancer"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A mechanic"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A writer"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nListen to the audio sample and answer the given subquestions:\n\nQuestion:\nHow old was Natalie Portman upon her first film’s release?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "11 years"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "12 years"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "13 years"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "14 years"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nListen to the audio sample and answer the given subquestions:\n\nQuestion:\nNatalie Portman’s first film was a box office success."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "TRUE"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "FALSE"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "While choosing films, what did Natalie Portman aim for?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Creating meaningful experiences"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Box office success"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Prestige"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Critical success"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 1 · Quiz 1 · 16 JULY 2023 · QPF3 · Part 1"
+}

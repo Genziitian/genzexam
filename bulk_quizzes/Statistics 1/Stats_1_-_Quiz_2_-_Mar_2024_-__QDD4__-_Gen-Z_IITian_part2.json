@@ -1,0 +1,211 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Statistics 1 · Quiz 2 · Mar 2024 · QOD4 · Part 2",
+  "subject": "Statistics 1",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A family has two children. Assume being a male or female of a child is equally likely. Based on the above data, answer the given subquestions. What is the probability that co-education will be introduced in the college?"
+        }
+      ],
+      "acceptable_answers": [
+        "D"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A family has two children. Assume being a male or female of a child is equally likely. Based on the above data, answer the given subquestions. If co-education has been introduced in the college, then what is the probability that X is principal? Enter the"
+        }
+      ],
+      "numerical_answer": 0.44,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In a school function, there are 2 violinists, 3 pianists, and 1 flutist. They have to sit in a circular order for a performance. Based on the information, answer the given subquestions. Choose the correct options from the following: Selection of performers will occur simultaneously. 8 Selection of performers will not occur simultaneously. With replacement. / Without replacement."
+        }
+      ],
+      "acceptable_answers": [
+        "A, D"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In a school function, there are 2 violinists, 3 pianists, and 1 flutist. They have to sit in a circular order for a performance. Based on the information, answer the given subquestions. Choose the correct options from the following: / Order matters."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Order does not matter."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Permutation is used."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Combination is used."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        2
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In a school function, there are 2 violinists, 3 pianists, and 1 flutist. They have to sit in a circular order for a performance. Based on the information, answer the given subquestions. Find the number of ways in which performers can be arranged in a circular order such that no two violinists will sit together."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "120"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "96 72"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "672"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In a class, there are 5 students who like Statistics and 4 students who like Mathematics. A committee of three students is to be formed. Based on the above data, answer the given subquestions. Choose the correct options from the following: Selection of students will occur simultaneously."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Selection of students will not occur simultaneously. With replacement."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Without replacement."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In a class, there are 5 students who like Statistics and 4 students who like Mathematics. A committee of three students is to be formed. Based on the above data, answer the given subquestions. Choose the correct options from the following:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Order matters. Order does not matter."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Permutation is used."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Combination is used."
+          }
+        ]
+      ],
+      "correct_answers": [
+        1
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In a class, there are 5 students who like Statistics and 4 students who like Mathematics. A committee of three students is to be formed. Based on the above data, answer the given subquestions. Find the number of ways in which the students can be selected such that at least one student likes Statistics."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "70"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "80 c 90"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "85"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 3,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "Statistics 1 · Quiz 2 · Mar 2024 · QOD4 · Part 2"
+}

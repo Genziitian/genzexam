@@ -1,0 +1,145 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Jan 2023 Endterm · Part 2",
+  "subject": "Business Analytics",
+  "section": "endterm",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the value for “A1”? NOTE: Enter your answer to the nearest integer."
+        }
+      ],
+      "numerical_answer": 2.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the value for “A2”? NOTE: Enter your answer to the nearest integer."
+        }
+      ],
+      "numerical_answer": 17.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the value for “A3”? NOTE: Enter your answer to the nearest integer."
+        }
+      ],
+      "numerical_answer": 19.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the value for “A4”? NOTE: If your answer is in decimal, enter it rounded to two decimal places. For example, if your answer is “10.256”, enter it as “10.26”"
+        }
+      ],
+      "acceptable_answers": [
+        "36.00 to 40.00"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the value for “A5”? NOTE: If your answer is in decimal, enter it rounded to two decimal places. For example, if your answer is “10.256”, enter it as “10.26”"
+        }
+      ],
+      "acceptable_answers": [
+        "0.10 to 0.30"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the value for “A6”? NOTE: If your answer is in decimal, enter it rounded to two decimal places. For example, if your answer is “10.256”, enter it as “10.26”"
+        }
+      ],
+      "acceptable_answers": [
+        "672 to 673"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Based on the given table, you think the data is normally distributed such that the buckets split the distribution into areas that have equal probability. Then what is the probability of selling a cycle in any given bucket? NOTE: If your answer is in decimal, enter it rounded to two decimal places. For example, if your answer is “10.256”, enter it as “10.26”"
+        }
+      ],
+      "acceptable_answers": [
+        "0.13 to 0.15"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Based on the given table, you think the data is normally distributed such that the buckets split the distribution into areas that have equal probability. Then what is the expected number of cycles that will be sold to the age group of “25 to 30 years”? NOTE: If your answer is in decimal, enter it rounded to two decimal places. For example, if your answer is “10.256”, enter it as “10.26”"
+        }
+      ],
+      "acceptable_answers": [
+        "36 to 38"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the value of the computed test statistic? NOTE: If your answer is in decimal, enter it rounded to two decimal places. For example, if your answer is “10.256”, enter it as “10.26”"
+        }
+      ],
+      "acceptable_answers": [
+        "144 to 148"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many degrees of freedom does the test have? NOTE: Enter your answer to the nearest integer."
+        }
+      ],
+      "numerical_answer": 7.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "Jan 2023 Endterm · Part 2"
+}

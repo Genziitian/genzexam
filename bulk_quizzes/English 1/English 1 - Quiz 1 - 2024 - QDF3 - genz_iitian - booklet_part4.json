@@ -1,0 +1,354 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 1 · Quiz 1 · 25 Feb 2024 · QDF3 · Part 4",
+  "subject": "English 1",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the appropriate option. Sushma is worried _________ the exam."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "In"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "About"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "On"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Of"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the conjunction in the following sentence: ‘He may be poor but his character is faultless.’"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "He"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Maybe"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "But"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Character"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct option: There is _________ emergency exit to your left."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "A"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "An"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of these"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct option: This is ______ best chocolate cake I’ve ever had."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "A"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "An"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of these"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct option: The storm _______ the coast badly."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Effected"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Affected"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both Effected and Affected"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of these"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘The new iPhone seems to cost everyone not just an arm and a leg, but also a kidney.’ What does ‘to cost an arm and a leg’ mean?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "To be very expensive"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To be very short-lived"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To be very cheap"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To be afraid of surgery"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the separable phrasal verb out of the following options."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Live on"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "See about"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Take after"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Sum up"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Fill in the blank with the appropriate option. The kids were well __________."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Got off"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Gave up"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Brought up"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Pick up"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Select the option which identifies the noun in the sentence: Shraddha is a brilliant student."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Brilliant"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Is"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Student"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Shraddha"
+          }
+        ]
+      ],
+      "correct_answers": [
+        2,
+        3
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 1 · Quiz 1 · 25 Feb 2024 · QDF3 · Part 4"
+}

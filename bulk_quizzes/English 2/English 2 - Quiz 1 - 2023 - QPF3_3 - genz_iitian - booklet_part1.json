@@ -1,0 +1,389 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 2 · Quiz 1 · 16 JULY 2023 · QPF3 · Part 1",
+  "subject": "English 2",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nFill in the blanks with the correct discourse markers and answer the given subquestions. 1)_______________, pickles can be made out of anything. There might just be no fruit or vegetable that has been untouched by the magic of pickles. (2)_____________, there might also not be a single taste that pickles don't cater to. There (3)_______ is a pickle for every occasion. (4)_________, pickles are not universally popular. There are a great many people who keep pickles at an arm's length (5)_________ they have no real choice.\n\nQuestion:\nChoose the correct answer for blank (1)."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "In addition"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "As well"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "As a matter of fact"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Unsee"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nFill in the blanks with the correct discourse markers and answer the given subquestions. 1)_______________, pickles can be made out of anything. There might just be no fruit or vegetable that has been untouched by the magic of pickles. (2)_____________, there might also not be a single taste that pickles don't cater to. There (3)_______ is a pickle for every occasion. (4)_________, pickles are not universally popular. There are a great many people who keep pickles at an arm's length (5)_________ they have no real choice.\n\nQuestion:\nChoose the correct answer for blank (2)."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Nevertheless"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Furthermore"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Nevermore"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Ever"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nFill in the blanks with the correct discourse markers and answer the given subquestions. 1)_______________, pickles can be made out of anything. There might just be no fruit or vegetable that has been untouched by the magic of pickles. (2)_____________, there might also not be a single taste that pickles don't cater to. There (3)_______ is a pickle for every occasion. (4)_________, pickles are not universally popular. There are a great many people who keep pickles at an arm's length (5)_________ they have no real choice.\n\nQuestion:\nChoose the correct answer for blank (3)."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Truly"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Emotionally"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Consequently"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Disparagingly"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nFill in the blanks with the correct discourse markers and answer the given subquestions. 1)_______________, pickles can be made out of anything. There might just be no fruit or vegetable that has been untouched by the magic of pickles. (2)_____________, there might also not be a single taste that pickles don't cater to. There (3)_______ is a pickle for every occasion. (4)_________, pickles are not universally popular. There are a great many people who keep pickles at an arm's length (5)_________ they have no real choice.\n\nQuestion:\nChoose the correct answer for blank (4)."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "As ever"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "In consequence"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Explicitly"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "However"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nGiven below is a paragraph that argues against manual scavenging. Read the paragraph and answer the given subquestions. Manual scavenging refers to the act of cleaning untreated human waste from sewers and latrines without any protective equipment. The Prohibition of Employment as Manual Scavengers and Their Rehabilitation Act, 2013 not only places a legal ban on manual scavenging, but also identifies the measures to be taken to rehabilitate manual scavengers and warrants a monthly pension to the legal heirs of manual scavengers who died on the job. Gudla Mangamma and her husband Gudla Kotaiah migrated to Hyderabad from Mahbubnagar hoping to give their daughter a good education. When they could not find work in the city, Kotaiah took to cleaning the sewers. Manual scavenging is closely associated with the caste system in India. Kotaiah, who came from a family of washermen, took to manual scavenging when he could not make a living out of his traditional occupation. Although he tried finding work at construction sites, the sites were always far from home and the travel costs left him with very little. Kotaiah died in a manhole in Sultan Bazaar. He was trying to save his friend who had collapsed in the manhole. Neither of them had on any protective gear. Mangamma not only did not know that manual scavenging was illegal, but she was also unaware of any provision for financial compensation. The Telugu word for a manual scavenger is a derogatory slur. Mangamma and her children were ostracised by their relatives after Kotaiah’s death while cleaning the drains. While the lack of equipment and protection contributes to the physical hazards of manual scavenging, the stench of stigma surrounding it contributes to its social hazard. The Manual Scavenging Act is thus in bad need of proper enforcement. If the rehabilitation measures prescribed by the 2013 Act, which include a scholarship allowance for the children of manual scavengers, the allotment of a residential plot, and training in an alternate livelihood skill with a monthly stipend, were implemented in the case of Kotaiah, his death may well have been prevented.\n\nQuestion:\nChoose the correct answer for blank (5)."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Unexpectedly"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Ultimately"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Unless"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Universally"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nGiven below is a paragraph that argues against manual scavenging. Read the paragraph and answer the given subquestions. Manual scavenging refers to the act of cleaning untreated human waste from sewers and latrines without any protective equipment. The Prohibition of Employment as Manual Scavengers and Their Rehabilitation Act, 2013 not only places a legal ban on manual scavenging, but also identifies the measures to be taken to rehabilitate manual scavengers and warrants a monthly pension to the legal heirs of manual scavengers who died on the job. Gudla Mangamma and her husband Gudla Kotaiah migrated to Hyderabad from Mahbubnagar hoping to give their daughter a good education. When they could not find work in the city, Kotaiah took to cleaning the sewers. Manual scavenging is closely associated with the caste system in India. Kotaiah, who came from a family of washermen, took to manual scavenging when he could not make a living out of his traditional occupation. Although he tried finding work at construction sites, the sites were always far from home and the travel costs left him with very little. Kotaiah died in a manhole in Sultan Bazaar. He was trying to save his friend who had collapsed in the manhole. Neither of them had on any protective gear. Mangamma not only did not know that manual scavenging was illegal, but she was also unaware of any provision for financial compensation. The Telugu word for a manual scavenger is a derogatory slur. Mangamma and her children were ostracised by their relatives after Kotaiah’s death while cleaning the drains. While the lack of equipment and protection contributes to the physical hazards of manual scavenging, the stench of stigma surrounding it contributes to its social hazard. The Manual Scavenging Act is thus in bad need of proper enforcement. If the rehabilitation measures prescribed by the 2013 Act, which include a scholarship allowance for the children of manual scavengers, the allotment of a residential plot, and training in an alternate livelihood skill with a monthly stipend, were implemented in the case of Kotaiah, his death may well have been prevented.\n\nQuestion:\nWhat is the relevance of Kotaiah’s story in this paragraph?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "There is no relevance"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "It is anecdotal evidence that argues against manual scavenging"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "It shows that manual scavenging is an urban phenomenon"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "It links manual scavenging with caste"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nGiven below is a paragraph that argues against manual scavenging. Read the paragraph and answer the given subquestions. Manual scavenging refers to the act of cleaning untreated human waste from sewers and latrines without any protective equipment. The Prohibition of Employment as Manual Scavengers and Their Rehabilitation Act, 2013 not only places a legal ban on manual scavenging, but also identifies the measures to be taken to rehabilitate manual scavengers and warrants a monthly pension to the legal heirs of manual scavengers who died on the job. Gudla Mangamma and her husband Gudla Kotaiah migrated to Hyderabad from Mahbubnagar hoping to give their daughter a good education. When they could not find work in the city, Kotaiah took to cleaning the sewers. Manual scavenging is closely associated with the caste system in India. Kotaiah, who came from a family of washermen, took to manual scavenging when he could not make a living out of his traditional occupation. Although he tried finding work at construction sites, the sites were always far from home and the travel costs left him with very little. Kotaiah died in a manhole in Sultan Bazaar. He was trying to save his friend who had collapsed in the manhole. Neither of them had on any protective gear. Mangamma not only did not know that manual scavenging was illegal, but she was also unaware of any provision for financial compensation. The Telugu word for a manual scavenger is a derogatory slur. Mangamma and her children were ostracised by their relatives after Kotaiah’s death while cleaning the drains. While the lack of equipment and protection contributes to the physical hazards of manual scavenging, the stench of stigma surrounding it contributes to its social hazard. The Manual Scavenging Act is thus in bad need of proper enforcement. If the rehabilitation measures prescribed by the 2013 Act, which include a scholarship allowance for the children of manual scavengers, the allotment of a residential plot, and training in an alternate livelihood skill with a monthly stipend, were implemented in the case of Kotaiah, his death may well have been prevented.\n\nQuestion:\n'Although he tried finding work at construction sites, the sites were always far from home and the travel costs left him with very little.' What does the dependent clause in this sentence talk about? i. It offers a comparison between the options available to a person who takes up manual scavenging and makes the argument stronger ii. It shows that there are employment opportunities other than manual scavenging available to the migrants and makes the argument stronger iii. It shows that dire economic need pushes people to manual scavenging and makes the argument stronger"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "i and ii only"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "ii and iii only"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "i and iii only"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "iii only"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nGiven below is a paragraph that argues against manual scavenging. Read the paragraph and answer the given subquestions. Manual scavenging refers to the act of cleaning untreated human waste from sewers and latrines without any protective equipment. The Prohibition of Employment as Manual Scavengers and Their Rehabilitation Act, 2013 not only places a legal ban on manual scavenging, but also identifies the measures to be taken to rehabilitate manual scavengers and warrants a monthly pension to the legal heirs of manual scavengers who died on the job. Gudla Mangamma and her husband Gudla Kotaiah migrated to Hyderabad from Mahbubnagar hoping to give their daughter a good education. When they could not find work in the city, Kotaiah took to cleaning the sewers. Manual scavenging is closely associated with the caste system in India. Kotaiah, who came from a family of washermen, took to manual scavenging when he could not make a living out of his traditional occupation. Although he tried finding work at construction sites, the sites were always far from home and the travel costs left him with very little. Kotaiah died in a manhole in Sultan Bazaar. He was trying to save his friend who had collapsed in the manhole. Neither of them had on any protective gear. Mangamma not only did not know that manual scavenging was illegal, but she was also unaware of any provision for financial compensation. The Telugu word for a manual scavenger is a derogatory slur. Mangamma and her children were ostracised by their relatives after Kotaiah’s death while cleaning the drains. While the lack of equipment and protection contributes to the physical hazards of manual scavenging, the stench of stigma surrounding it contributes to its social hazard. The Manual Scavenging Act is thus in bad need of proper enforcement. If the rehabilitation measures prescribed by the 2013 Act, which include a scholarship allowance for the children of manual scavengers, the allotment of a residential plot, and training in an alternate livelihood skill with a monthly stipend, were implemented in the case of Kotaiah, his death may well have been prevented.\n\nQuestion:\nManual scavenging refers to the act of cleaning untreated human waste from sewers and latrines without any protective equipment.' This line is important because— i. It states the case and sets the tone of the paragraph. ii. It shows that one can argue in favour of manual scavenging. iii. It indicates that Kotaiah did not have any protective equipment."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "i and ii only"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "i and iii only"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "ii and iii only"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "i only"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nGiven below is a paragraph that argues against manual scavenging. Read the paragraph and answer the given subquestions. Manual scavenging refers to the act of cleaning untreated human waste from sewers and latrines without any protective equipment. The Prohibition of Employment as Manual Scavengers and Their Rehabilitation Act, 2013 not only places a legal ban on manual scavenging, but also identifies the measures to be taken to rehabilitate manual scavengers and warrants a monthly pension to the legal heirs of manual scavengers who died on the job. Gudla Mangamma and her husband Gudla Kotaiah migrated to Hyderabad from Mahbubnagar hoping to give their daughter a good education. When they could not find work in the city, Kotaiah took to cleaning the sewers. Manual scavenging is closely associated with the caste system in India. Kotaiah, who came from a family of washermen, took to manual scavenging when he could not make a living out of his traditional occupation. Although he tried finding work at construction sites, the sites were always far from home and the travel costs left him with very little. Kotaiah died in a manhole in Sultan Bazaar. He was trying to save his friend who had collapsed in the manhole. Neither of them had on any protective gear. Mangamma not only did not know that manual scavenging was illegal, but she was also unaware of any provision for financial compensation. The Telugu word for a manual scavenger is a derogatory slur. Mangamma and her children were ostracised by their relatives after Kotaiah’s death while cleaning the drains. While the lack of equipment and protection contributes to the physical hazards of manual scavenging, the stench of stigma surrounding it contributes to its social hazard. The Manual Scavenging Act is thus in bad need of proper enforcement. If the rehabilitation measures prescribed by the 2013 Act, which include a scholarship allowance for the children of manual scavengers, the allotment of a residential plot, and training in an alternate livelihood skill with a monthly stipend, were implemented in the case of Kotaiah, his death may well have been prevented.\n\nQuestion:\nWhich of the following does this paragraph NOT do?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Uses an example to argue the case"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Presents more than one side of the situation"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Connects the example with the supporting information using complexsentences"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Supplies information to support the argument"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If the rehabilitation measures (a.) prescribed by the 2013 Act, which include a scholarship allowance for the children of manual scavengers, the allotment of a residential plot, and training in an alternate livelihood skill with a monthly stipend, were (b.) implemented in the case of Kotaiah, his death may well have been (c.) prevented.' Study the given concluding statement and replace the italicised words with the most fitting substitutes."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "(a.)-Specified, (b.)-Executed, (c.)-Avoided"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "(a.)-Stipulated, (b.)-Precluded, (c.)-Observed"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "(a.)-Fabricated, (b.)-Forbidden, (c.)-Forestalled"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "(a.)-Speculated, (b.)-Observed, (c.)-Precluded"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 2 · Quiz 1 · 16 JULY 2023 · QPF3 · Part 1"
+}

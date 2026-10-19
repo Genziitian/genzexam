@@ -1,0 +1,198 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 2 · Quiz 2 · Jul 2022 · Part 1",
+  "subject": "Mathematics 2",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "This is the question paper for the subject Foundation Level: Semester 2, Mathematics for Data Science 2 (computer-based exam). Answer the following questions. Choose the correct options. The row reduced echelon form of an n x n orthogonal matrix is the identity matrix of order n. / Suppose A is a non-zero n x n matrix such that the vectors in R\" corresponding to the columns of A are mutually orthonormal with respect to the usual inner product of R\". Then AT A = I, where I is the identity matrix of order n. c The trace of an n x n orthogonal matrix is 0."
+        }
+      ],
+      "acceptable_answers": [
+        "A, B, D"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "This is the question paper for the subject Foundation Level: Semester 2, Mathematics for Data Science 2 (computer-based exam). Answer the following questions. An inner product on a vector space V is a function (,) : V × V → R satisfying the following conditions: Condition 1: (v, v) > 0 for all v € V \\ {0); (v, v) = 0 if and only if v = 0. Condition 2: (21 + V2, 03) = (21, 23) + (22, 23). Condition 3: (21, V2) = (22, V1)- Condition 4: (cU1, 22) = c(V1, 22). Let"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "= R? and consider the function defined as ((21, 22), (31, 32)) = 2131 - 2132 - 221 + 2192. Which of the following are satisfied by the above function?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Condition 1 is satisfied. Condition 2 is satisfied."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Condition 3 is satisfied."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Condition 4 is satisfied."
+          }
+        ]
+      ],
+      "correct_answers": [
+        1,
+        2,
+        3
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "This is the question paper for the subject Foundation Level: Semester 2, Mathematics for Data Science 2 (computer-based exam). Answer the following questions. Let U be a subspace of the vector space R3 and suppose {(1, 0, 1), (0, 1, 2)] is a basis of U. Then which of the following subsets of IR? are affine subspaces of R3 such that the corresponding vector subspace is U?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "{(x,y,z) | = + 2y + z= 2, x,y, zER} в {(x,y, z) | + 2y + z= 1, x,y, z€ R} c {(x, y, ½) | x - 2y -z= 0, x, y,×€R}"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "{(x,y,z) | = - 2y -z= 1, x,y,= € R} / {(x,y, z) | x + 2y -z= 2, x,y,zE R}"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "{(z, y, z) | x + 2y - z= 1, x,y, zER}"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "This is the question paper for the subject Foundation Level: Semester 2, Mathematics for Data Science 2 (computer-based exam). Answer the following questions. Let us consider the following matrices: A = 1 1 B = 0 1 C = 0 1 Consider the following pairs of matrices: Pair I: A, B; Pair II: A, C; Pair III: B, C. Choose the correct option from the following. Only the matrices in Pair I are similar matrices."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "All the pairs consist of similar matrices. c Only the matrices in Pair Ill are similar matrices."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of these pairs consist of similar matrices."
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "This is the question paper for the subject Foundation Level: Semester 2, Mathematics for Data Science 2 (computer-based exam). Answer the following questions."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "norm on a vector space V is a function || • || : V → R, x → ||x|| satisfying the following conditions: Condition 1: ||2 + y|| ≤ ||2|| + ||y|| for all x, y € V. Condition 2: ||ex|| = |c| ||=|| for all c € R and for all| × € V. Condition 3: ||≥|| ≥ 0 for all x € V; ||=|| = 0 if and only if x = 0. Consider a function || - || : R3 → R defined as ||(21, 22, 23)|| = |21 + 22 + 23| on the vector space R3. Which of the following are satisfied by the above function?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Condition 1 is satisfied."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Condition 2 is satisfied."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Condition 3 is satisfied."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of these conditions are satisfied."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let T be a linear transformation from Ra to R° defined as T(z, y, z) = (* + y - z, y + z). Let A be the matrix representation of I with respect to the basis 8 = 1, 1, 0), (0, 1, 1), (1, 0, 1)) for the domain and the basis = 1(1, 1) (1,0) for the codomain A - d e \" Answer the sub-questons using the above information. What is the value of d — a ?"
+        }
+      ],
+      "numerical_answer": 0.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let T be a linear transformation from Ra to R° defined as T(z, y, z) = (* + y - z, y + z). Let A be the matrix representation of I with respect to the basis 8 = 1, 1, 0), (0, 1, 1), (1, 0, 1)) for the domain and the basis = 1(1, 1) (1,0) for the codomain A - d e \" Answer the sub-questons using the above information. What is the value of e — b?"
+        }
+      ],
+      "numerical_answer": -4.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "Mathematics 2 · Quiz 2 · Jul 2022 · Part 1"
+}

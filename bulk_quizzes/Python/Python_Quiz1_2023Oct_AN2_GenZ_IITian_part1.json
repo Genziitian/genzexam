@@ -1,0 +1,376 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Python Programming · Quiz 1 · Oct 2023 · AN2 · Part 1",
+  "subject": "Python Programming",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the output of the following snippet of code?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "L = ['four', 'one', 'ninety', 'three']\nout = []\nwhile L != []:\n    mini = len(L[0])\n    word = L[0]\n    for number in L:\n        if len(number) < mini:\n            mini = len(number)\n            word = number\n    out.append(word)\n    # L.remove(word) removes word from the list L\n    L.remove(word)\nprint(out)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "['one', 'four', 'three', 'ninety']"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "['ninety', 'three', 'four', 'one']"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "['four', 'ninety', 'one', 'three']"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "['one', 'three', 'four', 'ninety']"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Each pass selects the shortest remaining word and removes it. Lengths: one(3), four(4), three(5), ninety(6). So out = ['one', 'four', 'three', 'ninety']."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "l1 is a non-empty list of integers. What is the output of the following snippet of code, i.e. what does len(l2) represent? (Note: the index starts from 0 in lists.)"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "# Hint: str(3) is '3'\nl2 = []\nfor i in range(len(l1)):\n    condition_1 = not (i % 2 == 0)\n    condition_2 = not (len(str(l1[i])) != 3)\n    if condition_1 and condition_2:\n        l2.append(l1[i])\nprint(len(l2))"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The number of 3-digit numbers that are found at even indices of l1."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The number of non-3-digit numbers that are found at even indices of l1."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The number of 3-digit numbers that are found at odd indices of l1."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The number of non-3-digit numbers that are found at odd indices of l1."
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "condition_1 = not(i % 2 == 0) is True for ODD i. condition_2 = not(len(str(l1[i])) != 3) is True when the number has exactly 3 digits. So l2 collects 3-digit numbers at odd indices, and len(l2) counts them."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Three of the following codes print the same output. Which of the following code prints a different output from the other three? (Hint: str(x) converts x into a string, '3' * 2 evaluates to '33'.)"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "# Option 1\nprint(3211 % 32)\n# Option 2\nprint(\"1324\"[0] + \"2310\"[-2])\n# Option 3\nprint(str(31 % 10) + str(9 - 8))\n# Option 4\nprint(int((str(3 * 7) * 2)[2] * 2))"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "print(3211 % 32)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "print(\"1324\"[0] + \"2310\"[-2])"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "print(str(31 % 10) + str(9 - 8))"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "print(int((str(3 * 7) * 2)[2] * 2))"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Options 1, 2 and 3 all print '11' (3211 % 32 = 11; '1' + '1' = '11'; '1' + '1' = '11'). Option 4: str(21)*2 = '2121', index [2] = '2', '2'*2 = '22', int('22') = 22, which differs."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the output of the following snippet of code?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "P = [[1, 2], [4, 3]]\nQ = [[4, 1], [9, 3]]\nR = []\nfor i in range(2):\n    row = []\n    for j in range(2):\n        if P[i][j] - Q[i][j] > 0:\n            row.append(1)\n        elif P[i][j] == Q[i][j]:\n            row.append(0)\n        else:\n            row.append(-1)\n    R.append(row)\nprint(R)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "[[-1, 1], [-1, 0]]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[[1, -1], [1, 0]]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[[1, 1], [0, 1]]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[[1, 1], [0, 0]]"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Compare element-wise: 1-4<0 -> -1, 2-1>0 -> 1, 4-9<0 -> -1, 3==3 -> 0. R = [[-1, 1], [-1, 0]]."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "string is a non-empty string. What does the following code print?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "# Hint: char.isalpha() returns True if char is an alphabet,\n#       it returns False otherwise\ncount = 0\nfor char in string:\n    if char in \"aeiou\":\n        count += 1\n    elif char.isalpha():\n        count -= 1\nprint(count)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The number of vowels in string"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The number of alphabets in string"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The difference between number of vowels and consonants in string"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The number of characters in string"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Each vowel adds 1 and each non-vowel alphabet (consonant) subtracts 1; non-alphabet characters are ignored. So count = (number of vowels) - (number of consonants)."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the output of the following snippet of code?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "x = '1' + '2' + '3'\nprint(x)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "123"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "6"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "321"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1, 2, 3"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 3,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The + operator concatenates strings, so '1' + '2' + '3' = '123'."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following snippet. Select all inputs for which the output is exactly the single line 'floor is four'. (Multiple Select Question)"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "num = float(input())\nif num >= 1 and num < 2:\n    print('floor is one')\nif num >= 2 and num < 3:\n    print('floor is two')\nif num >= 3 and num < 4:\n    print('floor is three')"
+        },
+        {
+          "kind": "text",
+          "value": "else:"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "print('floor is four')"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "0.5"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "4.4"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1.8"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "2.4"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "3.6"
+          }
+        ]
+      ],
+      "correct_answers": [
+        1,
+        2
+      ],
+      "marks": 3,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Only the last if has an else, so 'floor is four' prints whenever NOT(3 <= num < 4). For the output to be EXACTLY that one line, num must also miss [1,2) and [2,3). That holds only for num < 1 or num >= 4: i.e. 0.5 and 4.4. (1 and 1.8 also print 'floor is one'; 2.4 also prints 'floor is two'; 3.6 prints only 'floor is three'.)"
+        }
+      ]
+    }
+  ],
+  "title": "Python Programming · Quiz 1 · Oct 2023 · AN2 · Part 1"
+}

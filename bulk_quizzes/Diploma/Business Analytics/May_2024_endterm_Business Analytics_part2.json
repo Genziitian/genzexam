@@ -1,0 +1,132 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "May 2024 Endterm · Part 2",
+  "subject": "Business Analytics",
+  "section": "endterm",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If the standard form of the primal is converted to a dual, then how many constraints (excluding the non-negativity constraints) are present in the dual? (Note: Specify the count of constraints. Not the count of constrains in notation format)"
+        }
+      ],
+      "numerical_answer": 3.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "For the sake of argument, assume that Dr. Milo is an operations expert (irrespective of your answer to the previous question). Then, for the solution (Rs. 1,05,000 in TV and Rs. 31,500 in Social Media and Rs. 45,200 in Radio are made) how many (count) decision variables in the dual (which is formulated based on the standard form of the primal) will have a non-zero value?"
+        }
+      ],
+      "numerical_answer": 0.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "For the sake of argument, assume that Dr. Milo is an operations expert (irrespective of your answer to the previous question). Then, for the solution (where an investment of Rs. 1,05,000 in TV and Rs. 31,500 in Social Media and Rs. 45,200 in Radio are made) what is the objective function value for the standard form of the primal? Question Id : 640653905415 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix A travel company wants to understand its model performance of a classification problem where the task is to classify if its customer will be granted with a tourist visa or not (assume granted = Class 1 and Not Granted as Class 0). Using the table given below, answer the given subquestions Sub questions"
+        }
+      ],
+      "numerical_answer": -791400.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the accuracy of the model? Hint: Round your answer to two decimal places and answer them in terms of percentage. Example: If your answers is 0.735, write it as 73.50."
+        }
+      ],
+      "acceptable_answers": [
+        "63.8 to 64.6"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the precision of class 1? Hint: Round your answer to two decimal places and answer them in terms of percentage. Example: If your answers is 0.735, write it as 73.50."
+        }
+      ],
+      "acceptable_answers": [
+        "62.3 to 62.8"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the recall of class 1? Hint: Round your answer to two decimal places and answer them in terms of percentage.Example: If your answers is 0.735, write it as 73.50."
+        }
+      ],
+      "acceptable_answers": [
+        "71.0 to 71.6"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the precision of class 0? Hint: Round your answer to two decimal places and answer them in terms of percentage. Example: If your answers is 0.735, write it as 73.50."
+        }
+      ],
+      "acceptable_answers": [
+        "66.4 to 66.85"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the recall of class 0? Hint: Round your answer to two decimal places and answer them in terms of percentage. Example: If your answers is 0.735, write it as 73.50."
+        }
+      ],
+      "acceptable_answers": [
+        "56.9 to 57.5"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the Sensitivity for the model? Hint: Round your answer to two decimal places and answer them in terms of percentage. Example: If your answers is 0.735, write it as 73.50."
+        }
+      ],
+      "acceptable_answers": [
+        "71.0 to 71.6"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "May 2024 Endterm · Part 2"
+}

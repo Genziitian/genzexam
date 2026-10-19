@@ -1,0 +1,103 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "May 2024 Quiz2 · Part 3",
+  "subject": "Business Analytics",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If FM has suggested the below distribution of investments, then how much money (total money) is projected to be in hand at the end of the first year? (Note: Enter the answer in “Rs.” rounded to two decimal places without the “Rs.” symbol. For example, if the answer is “Rs. 1.234”, then enter it as “1.23”)"
+        }
+      ],
+      "numerical_answer": 108000.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If FM has suggested the below distribution of investments, then how many decision variables in the dual will have a non-zero value? A multiple linear regression model, as specified below is fit on a data set with 50 data points. Then answer the given subquestions Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "5 Question Id : 640653853095 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many degrees of freedom are present for the “Residuals” in the ANOVA Table?"
+        }
+      ],
+      "numerical_answer": 46.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many degrees of freedom are present for the “Regression” in the ANOVA Table?"
+        }
+      ],
+      "numerical_answer": 3.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many total degrees of freedom are present for the fitted model in the ANOVA Table?"
+        }
+      ],
+      "numerical_answer": 49.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If the SSE and SST for the model are 900 and 1400 respectively, then what is the value for the model’s F-statistic? (Note: Enter the answer rounded to two decimal places. For example, if the answer is “1.234”, then enter it as “1.23”)"
+        }
+      ],
+      "acceptable_answers": [
+        "8.4 to 8.8"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If the SSE and SST for the model are 900 and 1400 respectively, then what is the Adjusted R-square value for model? (Note: Enter the answer in “%” rounded to two decimal places without the “%” symbol. For example, if the answer is “1.234%”, then enter it as “1.23”)"
+        }
+      ],
+      "acceptable_answers": [
+        "31 to 32"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "May 2024 Quiz2 · Part 3"
+}

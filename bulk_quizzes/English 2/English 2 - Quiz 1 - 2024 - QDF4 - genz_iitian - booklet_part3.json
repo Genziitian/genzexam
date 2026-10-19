@@ -1,0 +1,383 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 2 · Quiz 1 · 25 Feb 2024 · QDF4 · Part 3",
+  "subject": "English 2",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the adverb in the following sentence. Rani is playing soulfully."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Playing"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Is playing"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Soulfully"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Is playing soulfully"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the adverb in the following sentence. My child is not sleeping."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Is not"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Is not sleeping"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Not"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "My"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the degree adverb/adverbs in the given sentence. ‘She must really be made to tell.’"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Be"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Made"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Must"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Really"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A: ‘Very’ cannot be used before verbs B: ‘Very’ can be used before some verbs"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "A is true and B is false"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A is false and B is true"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both A and B are true"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both A and B are false"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Fill in the blank. What he said was ___ incorrect."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Logically"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Scientifically"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Technically"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "All of these"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In the following lists of words, identify the words most likely to be adjectives based on word endings. Music, musical, musician, muse"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Muse"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Musical"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Music"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Musician"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘Sajal takes the medal.’ In this sentence, the verb 'take' will change to _______ when converted to passive voice."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Will take"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Is taken"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Was taken"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Were taken"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "\"Although it was late, she decided to finish her work\" is a _____ sentence."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Simple"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Compound"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Complex"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the adverbial clause in the sentence: \"Although she was tired, she continued to work on her project.\""
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Although she was tired"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "She continued"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To work on her project"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "On her project"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The articles that I bought yesterday are already damaged. The relative pronoun here is ____."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "That"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "I"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Are"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "No relative pronoun"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 2 · Quiz 1 · 25 Feb 2024 · QDF4 · Part 3"
+}

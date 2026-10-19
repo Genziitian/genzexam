@@ -1,0 +1,113 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "DBMS · Quiz 2 · Combined PYQ · Part 1",
+  "title": "DBMS · Quiz 2 · Combined PYQ · Part 1",
+  "subject": "DBMS",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider a string of pending block references in the order given: 4, 6, 4, 1, 3, 2, 4, 1, 4, 2. The system has a buffer with 4 slots. Assume that initially, the buffer is empty. If LRU buffer replacement policy is used, then what will be the value of the following expression? Number of misses − Number of hits"
+        }
+      ],
+      "numerical_answer": 0.0,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider a binary search tree consisting of 15 elements. Let m be the maximum height possible for a given binary search tree, and n be the minimum height possible for a given binary search tree. What will be the value of m − n ?"
+        }
+      ],
+      "numerical_answer": 11.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider a complete binary search tree that consists of 31 elements. What is the minimum height of the given binary search tree? Question Id : 640653521039 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "numerical_answer": 4.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the minimum number of bits required for addressing all the tracks?"
+        }
+      ],
+      "numerical_answer": 18.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the tree as shown in Figure 1. What is the arity of the given tree?"
+        }
+      ],
+      "numerical_answer": 3.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider a disk having 128 tracks per surface, 512 sectors per track and 256 bytes/sector. If the minimum number of bits required to access a sector is 22, then find out the number of platters required?"
+        }
+      ],
+      "numerical_answer": 32.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider a string of pending block references in the given order: 4, 5, 2, 5, 3, 4, 2, 5, 3, 4. The system has a buffer with 3 slots. Assume that initially the buffer is empty. If LRU buffer replacement policy is used, then how many misses will occur while referencing all the requested blocks ?"
+        }
+      ],
+      "numerical_answer": 9.0,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Question Id : 640653771104 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Sub questions"
+        }
+      ],
+      "numerical_answer": 10.0,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium"
+    }
+  ]
+}

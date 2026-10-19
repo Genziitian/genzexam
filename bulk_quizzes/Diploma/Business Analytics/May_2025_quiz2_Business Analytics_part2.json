@@ -1,0 +1,116 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "May 2025 Quiz2 · Part 2",
+  "subject": "Business Analytics",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "At a threshold of 0.8, how many “True Negatives” is the model predicting?"
+        }
+      ],
+      "numerical_answer": 1.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "At a threshold of 0.8, how many “False Positives” is the model predicting?"
+        }
+      ],
+      "numerical_answer": 1.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "At a threshold of 0.8, how many “False Negatives” is the model predicting?"
+        }
+      ],
+      "numerical_answer": 1.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "At a threshold of 0.8, what is the ACCURACY of the model? (Note: Enter the answer in “%” rounded to two decimal places without the “%” symbol. For example, if the answer is “1.234%”, then enter it as “1.23”)"
+        }
+      ],
+      "numerical_answer": 60.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "At a threshold of 0.8, what is the PRECISION of the model for predicting the Negative Class? (Note: Enter the answer in “%” rounded to two decimal places without the “%” symbol. For example, if the answer is “1.234%”, then enter it as “1.23”)"
+        }
+      ],
+      "numerical_answer": 50.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "At a threshold of 0.8, what is the RECALL of the model for predicting the Positive Class? (Note: Enter the answer in “%” rounded to two decimal places without the “%” symbol. For example, if the answer is “1.234%”, then enter it as “1.23”) Question Id : 6406531325384 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix A demand response curve has a constant price elasticity of +0.6. If the price of the product is 100 and the corresponding demand is 200, then answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "66.00 to 67.00"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the value of “Constant” (“C”) for the constant elasticity model? (Note: Enter the answer rounded to two decimal places. For example, if the answer is “1.234”, then enter it as “1.23”)"
+        }
+      ],
+      "acceptable_answers": [
+        "3169 to 3170"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What should be the price to achieve a demand of 300? (Note: Enter the answer rounded to two decimal places. For example, if the answer is “1.234”, then enter it as “1.23”)"
+        }
+      ],
+      "acceptable_answers": [
+        "50 to 60"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "May 2025 Quiz2 · Part 2"
+}

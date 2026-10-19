@@ -1,0 +1,116 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "May 2023 Endterm · Part 1",
+  "subject": "Business Analytics",
+  "section": "endterm",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If the aim is to determine if the defect occurrence is independent of location, then how many cars would you expect to have “4” defects in Location A? (Round your answer to two decimal places. Eg: If your answer is 10.256, then round it to 10.26)"
+        }
+      ],
+      "acceptable_answers": [
+        "2 to 3"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If the aim is to determine if the defect occurrence is independent of location, then how many cars would you expect to have “1” defect in Location B? (Round your answer to two decimal places. Eg: If your answer is 10.256, then round it to 10.26)"
+        }
+      ],
+      "numerical_answer": 3.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If the aim is to find if the number of defects is independent of location, then what is the value for the test statistic? (Round your answer to two decimal places. Eg: If your answer is 10.256, then round it to 10.26)"
+        }
+      ],
+      "acceptable_answers": [
+        "5.40 to 5.80"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "For the hypothesis test in the previous question, what (count) is the degrees of freedom? Question Id : 640653612611 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Chef Jeff is curious to see about his LPG gas connection. He is of the opinion that gas consumption depends on the type of food (“baked items” or “fried items”) he prepares. Hence, over the past month, he has monitored his gas consumption for various items he has prepared (please do not worry about how the data is generated, it is not in the scope of the question). Using this data, Chef Jeff has built several regression models (Model-1, Model-2 and Model-3) which are specified below. He is happy with a 95% Confidence level. Given this information, answer the given subquestions. ( Note: For all the sub-questions, round your answer to two decimal places. Eg: If your answer is 10.256, then round it to 10.26) Sub questions"
+        }
+      ],
+      "numerical_answer": 4.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the direct effect of cooking “baked items” on gas consumption?"
+        }
+      ],
+      "acceptable_answers": [
+        "1.18 to 1.20"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the value of X1?"
+        }
+      ],
+      "numerical_answer": 1.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the value of X2?"
+        }
+      ],
+      "numerical_answer": 13.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the value of X3?"
+        }
+      ],
+      "numerical_answer": 14.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "May 2023 Endterm · Part 1"
+}

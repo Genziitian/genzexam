@@ -1,0 +1,419 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 1 · Quiz 1 · 26 Oct 2025 · QID4 · Part 3",
+  "subject": "English 1",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the appropriate option: “I couldn’t reach Chennai on time; my car fell ____ a ditch.”"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Onto"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Above"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Into"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "About"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which one of the following words is a preposition?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Tile"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Teal"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Until"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Hunting"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the conjunction in the following sentence: “The food at the canteen was neither tasty nor nutritious.”"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Food"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Canteen"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Tasty"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Neither/nor"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the appropriate option: ____! Stop pulling my hair!"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Wow"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Oops"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Ouch"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Hi"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nFill in the blanks in List A using appropriate idioms from List B\n\nQuestion:\nChoose the correct option: Can you get me _____ cup of curd when you go to the supermarket?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "An"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of these"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nFill in the blanks in List A using appropriate idioms from List B\n\nQuestion:\n“Kathy Stevens.” Does the name _____?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Threw in the towel"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Face the music"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Through thick and thin"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Ring a bell"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Blow off some steam"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nFill in the blanks in List A using appropriate idioms from List B\n\nQuestion:\nFor several years, he was trying unsuccessfully to emigrate to the UAE, but eventually he _____."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Threw in the towel"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Face the music"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Through thick and thin"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Ring a bell"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Blow off some steam"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nFill in the blanks in List A using appropriate idioms from List B\n\nQuestion:\nAfter a long day, he goes cycling to _____."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Threw in the towel"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Face the music"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Through thick and thin"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Ring a bell"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Blow off some steam"
+          }
+        ]
+      ],
+      "correct_answer": 4,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nFill in the blanks in List A using appropriate idioms from List B\n\nQuestion:\nShe has suffered a great deal of personal loss, but her husband stayed with her _____."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Threw in the towel"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Face the music"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Through thick and thin"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Ring a bell"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Blow off some steam"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Make sure that you have sufficient attendance in your courses, or you will have to _____."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Threw in the towel"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Face the music"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Through thick and thin"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Ring a bell"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Blow off some steam"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 1 · Quiz 1 · 26 Oct 2025 · QID4 · Part 3"
+}

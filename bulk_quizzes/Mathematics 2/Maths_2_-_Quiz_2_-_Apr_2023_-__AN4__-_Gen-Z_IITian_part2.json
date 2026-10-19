@@ -1,0 +1,74 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 2 · Quiz 2 · Apr 2023 · AN4 · Part 2",
+  "subject": "Mathematics 2",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let T : R2 → Ra be a linear transformation defined by T(x, y) = (x + y, x - y, 3x + y). If A = denotes the matrix of T with respect to {(1, 1), (1, -1)} for R? and {(1, 1,1), (1, 1, 0), (1, 0,0)} for R, then what is a + d + e + f?"
+        }
+      ],
+      "numerical_answer": 2.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let L denote the set of all solutions of the above system. Clearly, L forms an affine space. Let W denote the subspace corresponding to L. Answer the given sub questions. What is the nullity of A?"
+        }
+      ],
+      "numerical_answer": 1.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let L denote the set of all solutions of the above system. Clearly, L forms an affine space. Let W denote the subspace corresponding to L. Answer the given sub questions. What is the dimension of L?"
+        }
+      ],
+      "numerical_answer": 1.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let L denote the set of all solutions of the above system. Clearly, L forms an affine space. Let W denote the subspace corresponding to L. Answer the given sub questions. Define T : W → R? by T(z, y, z) = (0, z - z). What is the rank of 1?"
+        }
+      ],
+      "numerical_answer": 1.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let L denote the set of all solutions of the above system. Clearly, L forms an affine space. Let W denote the subspace corresponding to L. Answer the given sub questions. If the m x n matrix B is the matrix of T with respect to some basis for W and the standard ordered basis. for R', then what is m + n?"
+        }
+      ],
+      "numerical_answer": 3.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "Mathematics 2 · Quiz 2 · Apr 2023 · AN4 · Part 2"
+}

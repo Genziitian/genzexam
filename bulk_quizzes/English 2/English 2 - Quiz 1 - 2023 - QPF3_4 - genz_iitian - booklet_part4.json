@@ -1,0 +1,353 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 2 · Quiz 1 · 29 Oct 2023 · QPF3 · Part 4",
+  "subject": "English 2",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Bergman, who made several acclaimed films, was felicitated in the event. The relative pronoun here is ___________ ."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Was"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Who"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Bergman"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "No relative pronoun"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In the following sentence, identify the relative pronoun. “I love the city where I was born.”"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Was"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "I"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Where"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose an appropriate coordinating conjunction that can convert the following simple sentence into a compound sentence. Mary’s story is very long. It is thrilling."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "But"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Or"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "For"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In the following sentence, identify the noun the adjectival clause modifies. “Those people whose names are on the roster will have to report early.”"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Names"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Roster"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Those people"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Report"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "'The competition, which was postponed earlier, was held successfully'. Here the relative clause has ________ function."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Nominal"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Adjectival"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Adverbial"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Object"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "'Even though I arrived very early, the train was late'. Here the subordinate clause is _____________ in nature."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Nominal"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Adjectival"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Adverbial"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "No subordinate clause"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Reena wrote a letter. Here the complement is __________ ."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Wrote a letter"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A letter"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Reena wrote a letter"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "State whether the following statement is true or false: There can be many adjuncts in a sentence."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "TRUE"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "FALSE"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "State whether the underlined phrase is an adjunct or a complement: Mary helped her mother with the dishes."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Adjunct"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Complement"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "love/loves/Derek/Kate/very/much. Arrange these words into a meaningful sentence."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Derek loves Kate very much"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Kate love Derek very much"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Derek very much love Kate"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Derek very much Kate love"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 2 · Quiz 1 · 29 Oct 2023 · QPF3 · Part 4"
+}

@@ -1,0 +1,305 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Statistics 1 · Quiz 1 · Combined PYQ",
+  "title": "Statistics 1 · Quiz 1 · Combined PYQ",
+  "subject": "Statistics 1",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the value of 10x."
+        }
+      ],
+      "numerical_answer": 357.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "10!5! × 110 Kanika goes to a gift shop to get 5 unique gifts wrapped with gift-wrappers. The shopkeeper shows her 10 gift-wrappers of different designs. Assume that one gift wrapper can be used to wrap only one gift. On the basis of given information, answer questions (1) and (2). 1 (1). From the given list of options, select the step(s) applicable for selection of gift-wrapper for the gifts."
+        }
+      ],
+      "numerical_answer": 2.0,
+      "numerical_tolerance": 0,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The gift-wrappers will be chosen simultaneously and without replacement, as it is men- tioned that one gift-wrapper can be used to wrap only one gift. Since, all gifts and gift-wrappers are different, the order of selection do matter. Hence, options (1), (4) and (5) are correct. (2). In how many ways can she get all the gifts wrapped with gift-wrappers?(Enter the op- tion number(s) from the given list of options) For the first gift to get gift-wrapped, there are 10 ways. For the second gift to get gift-wrapped, there are 9 ways because 1 wrapper is already used to wrap the first gift. Similarly, for the third, fourth and fifth gift to get gift wrapped there are 7, 6 and 5 ways respectively. Since, events are occurring simultaneously, number of ways to get all gifts wrapped with gift-wrapper = 10×9×8×7×6 = 10!5! , which is same as option number (7). In a data-analysis competition, there are 10 analytic teams. The first 5 teams to draw meaningful insights from data will be awarded. On the basis of given information, answer questions (3) and (4). (3). From the given list of options, select the step(s) applicable for the distribution of awards to the 5 teams. The distribution of awards will occur simultaneously and without replacement, as only first 5 teams are awarded. Since, we are awarding only first 5 teams and there is not any difference in the award given to 1 st team and 5 th team. Hence, the order of distri- bution of awards does not matter. Thus, options (1), (4) and (6) are correct. (4). What are the possible number of ways the teams will be awarded?(Enter the option number(s) from the given list of options) The first award can be distributed in 10 ways. For the second award, there are 9 ways because 1 team is already awarded. Similarly, for the third, fourth and fifth award there are 7, 6 and 5 ways respectively. Since, events are occurring simultaneously and order does not matter, number of ways the team will be awarded 2 = (10 × 9 × 8 × 7 × 6)5! = (10 × 9 × 8 × 7 × 6 × 5!)5! × 5! = 10!5! × 5! ways, which is same as option number (9). Ishaan needs to enter his employee ID number to get access to the company desktop. Of the 10-digit employee ID number, he remembers only the last 5 digits. If the repetition of digits is allowed, then based on the given information, answer the questions (5) and (6). (5). From the given list of options, select the step(s) applicable for the selection of the digits to complete the employee ID number. The selection of digits will be simultaneous and with replacement, as repetition of dig- its is allowed. Also, order of digits do matter as employee ID number 123 is not same as 321. Hence, options (1), (3) and (5) are correct. (6). In how many possible ways can he complete his employee ID number?(Enter the option number(s) from the given list of options) For each missing digit to be filled, there are 10 ways, as 0 can also be at the first place because, employee ID number is a categorical variable. Since, events are oc- curring simultaneously. Hence, number of ways to complete employee ID number is 10 × 10 × 10 × 10 × 10, which is same as option number (12). Priyank needs a special code for his bank locker, which can be created with numbers 0 to 9 and the alphabets A, B, C, D, E, I, W, X, Y, Z. He can either select a code of the type pattern-A or pattern-B. The pattern- A code begins with 3 numbers followed by 2 alphabets with repetition allowed. The pattern- B code begins with 2 alphabets followed by 3 numbers without repetition. Based on the given information, answer questions (7) to (11). (7). From the given list of options, select the step(s) applicable for the selection of alphanu- meric digits for pattern- A code. The selection of alphanumeric digits for pattern- A code will be simultaneous and with replacement, as repetition of digits is allowed. Also, order of digits do matter as code 123AX is not same as 321 XA. Hence, options (1), (3) and (5) are correct. (8). In how many ways can he select the code of type pattern- A?(Enter the option num- ber(s) from the given list of options) 3 Number of ways to select 2 alphabets with repetition = 10 × 10. Number of ways to select 3 numbers with repetition = 10 × 10 × 10. Hence, number of ways he can select pattern-A code = 10 × 10 × 10 × 10 × 10, which is same as option number (12). (9). From the given list of options, select the step(s) applicable for the selection of alphanu- meric digits for pattern- B code. The selection of alphanumeric digits for pattern-B code will be simultaneous and with- out replacement, as repetition of digits is not allowed. Also, order of digits do matter as code BW 123 is not same as W B321. Hence, options (1), (4) and (5) are correct. (10). In how many ways can he select the code of type pattern- B, if the code shouldn’t contain the alphabet A?(Enter the option number(s) from the given list of options) Number of ways to select 2 alphabets (except ”A”) without repetition = 9×8. Number of ways to select 3 numbers without repetition = 10 × 9 × 8. Hence, number of ways he can select pattern- B code without using the alphabet ” A” = 9 × 8 × 10 × 9 × 8 = (9 × 8 × 7!) × (10 × 9 × 8 × 7!)7! × 7! = 10!7! × 9!7! , which is same as option number (10). (11). From the given list of options, select the step(s) applicable for the selection of a code type (either pattern- A or pattern-B). The selection can be either of pattern- A code or pattern-B code. Hence, the event will not occur simultaneously. Hence, option (2) is correct. 4"
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let $X$ be a random variable with mean $\\mu = 10$ and variance $\\sigma^2 = 4$. What is the variance of $Y = 3X + 5$?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "36"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "12"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "17"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "4"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$\\text{Var}(aX + b) = a^2 \\text{Var}(X) = 3^2 \\times 4 = 36$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If events $A$ and $B$ are mutually exclusive with $P(A) = 0.3$ and $P(B) = 0.4$, what is $P(A \\cup B)$?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "0.7"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "0.12"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "0.58"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "0.1"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "For mutually exclusive events, $P(A \\cup B) = P(A) + P(B) = 0.3 + 0.4 = 0.7$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If $X \\sim \\text{Binomial}(n = 20, p = 0.3)$, what is the variance of $X$?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "4.2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "6.0"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1.8"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "14.0"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$\\text{Var}(X) = np(1-p) = 20 \\times 0.3 \\times 0.7 = 4.2$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If $X \\sim \\text{Poisson}(\\lambda = 3)$, what is $P(X = 0)$?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$e^{-3}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$3e^{-3}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$1 - e^{-3}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "0"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "For Poisson distribution, $P(X = k) = \\frac{\\lambda^k e^{-\\lambda}}{k!}$. For $k = 0$, $P(X=0) = e^{-3}$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If $P(A) = 0.5$, $P(B) = 0.4$, and events $A$ and $B$ are independent, what is $P(A \\cap B)$?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "0.20"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "0.90"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "0.10"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "0.70"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "For independent events, $P(A \\cap B) = P(A) \\times P(B) = 0.5 \\times 0.4 = 0.20$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let $X \\sim \\text{Uniform}(2, 8)$. What is $P(3 < X < 6)$?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "0.5"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "0.3"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "0.6"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "0.25"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "For $X \\sim U(a, b)$, $P(c < X < d) = \\frac{d - c}{b - a} = \\frac{6 - 3}{8 - 2} = \\frac{3}{6} = 0.5$."
+        }
+      ]
+    }
+  ]
+}

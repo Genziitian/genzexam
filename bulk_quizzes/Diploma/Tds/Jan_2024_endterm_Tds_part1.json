@@ -1,0 +1,120 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Jan 2024 Endterm · Part 1",
+  "subject": "Tds",
+  "section": "endterm",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the path found by the Best First Search algorithm? Enter the path as a comma separated list of node labels. NO SPACES, TABS, DOTS, BRACKETS OR EXTRANEOUS CHARACTERS. Answer format: S,X,Y,Z Answers Case Sensitive : No"
+        }
+      ],
+      "acceptable_answers": [
+        "S,D,E,C,G"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the path found by A* search algorithm? Enter the path as a comma separated list of node labels. NO SPACES, TABS, DOTS, BRACKETS OR EXTRANEOUS CHARACTERS. Answer format: S,X,Y,Z Answers Case Sensitive : No"
+        }
+      ],
+      "acceptable_answers": [
+        "S,D,H,F,G"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the path found by Branch-and-Bound search algorithm? Enter the path as a comma separated list of node labels. Use the Branch-and-Bound variation that avoids cyclic expansions like S,A,S,A,S,A,… NO SPACES, TABS, DOTS, BRACKETS OR EXTRANEOUS CHARACTERS. Answer format:S,X,Y,Z Answers Case Sensitive : No"
+        }
+      ],
+      "acceptable_answers": [
+        "S,A,B,G"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let S0 (ref. no. a1) be the first node to be refined, identify the next 4 nodes (2nd to 5th node) that are refined by the TSP Branch-and-Bound algorithm. Enter the nodes (node reference numbers) in the order they are refined. Enter a comma separated list of node reference numbers. NO SPACES, TABS, DOTS, BRACKETS OR EXTRANEOUS CHARACTERS. Answer format: a9,b9,c9,d9 Answers Case Sensitive : No"
+        }
+      ],
+      "acceptable_answers": [
+        "b1,c1,d1,d2"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which node represents the optimal tour and what is the cost of the optimal tour? Enter the node reference number and the tour cost in the text box, or enter NIL if it is not possible to determine the optimal tour. Enter a node reference number followed by tour cost, separated by comma. NO SPACES, TABS, DOTS, BRACKETS OR EXTRANEOUS CHARACTERS. Answer format: a9,42 Answers Case Sensitive : No"
+        }
+      ],
+      "acceptable_answers": [
+        "e2,402"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Determine the number of cities in the TSP instance. Enter the number of cities in the text box, or enter NIL if it is not possible to determine the number of cities. Enter an integer. NO SPACES, TABS, DOTS, BRACKETS OR EXTRANEOUS CHARACTERS. Answer format: 42"
+        }
+      ],
+      "numerical_answer": 6.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Start from city A, what is the path representation of the optimal tour? Enter the path representation in the text box, or enter NIL if it is not possible to determine the optimal tour. Enter a comma separated list of cities (city labels). NO SPACES, TABS, DOTS, BRACKETS OR EXTRANEOUS CHARACTERS. Answer format: A,B,C Answers Case Sensitive : No Question Id : 640653815679 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix GAMES The figure shows a game tree with evaluation function values at the leaf nodes. The leaf nodes are labeled from A to J. Use these labels to enter a leaf node or a list of leaf nodes in short answers (textbox). Tie-breaker: when several nodes carry the same best cost then select the deepest node, if tie persists then select the leftmost of the deepest nodes. Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "A,C,B,E,D,F A,F,D,E,B,C"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "List the leaf nodes in the best strategy for MAX. Enter the node labels in alphabetical order. Enter a comma separated list of node labels in alphabetical order. NO SPACES, TABS, DOTS, BRACKETS OR EXTRANEOUS CHARACTERS. Answer format: X,Y,Z Answers Case Sensitive : No"
+        }
+      ],
+      "acceptable_answers": [
+        "D,E"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "Jan 2024 Endterm · Part 1"
+}

@@ -1,0 +1,235 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 2 · Quiz 2 · 06 Apr 2026 · Part 2",
+  "subject": "English 2",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "encose ine correct answer for 3) .U marks"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "brighter brightened"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "brighted"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "bright"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct modal verb to fill in the blank. See the hint or context provided and choose only the most appropriate option to fill the blank. Edison films initially featured material such as circus or vaudeville acts that be taken into a small studio to pertorm before an inert camera, while early Lumiere films were mainly documentary views, or \"actualities,\" shot outdoors on location. Context: To denote a real and unimagined ability in past time"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Shed Could"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Must"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Shall"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct modal verb to fill in the blank. See the hint or context provided and choose only the most appropriate option to fill the blank. You now see the Director. Hint: To give formal permission to see someone in a position of authority"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Should May c Could"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of these"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct modal verb to fill in the blank. See the hint or context provided and choose only the most appropriate option to fill the blank. Coleridge could see the red door of the then new church from his last residence across the green, where he lived with a doctor he had hoped_ cure him. Hint: To convey a weak possibility that leans more towards uncertainty than towards the likelihood of an event's happening."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "May v Might c Will"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Should"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the modal auxiliary in the following sentence: This might be your can of water."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Can в Ве / Might"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Your"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What does the modal auxiliary in the following sentence denote? Can you do everything on your own?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Possibility Ability"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Suggestion"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Request"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct modal verb to fill in the blank. See the hint or context provided and choose only the most appropriate option to fill the blank. We are not all born gifted, but we develop our abilities through constant practice. Hint: To indicate a general possibility"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "May"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Will c Must Can"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Fill in the blank with the most appropriate modal verb. They have not opened the gates yet. The play. be starting late. Hint: To express a specific possibility."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Can Could"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Can and could"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 2 · Quiz 2 · 06 Apr 2026 · Part 2"
+}

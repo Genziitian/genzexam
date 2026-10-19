@@ -1,0 +1,480 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Week 3 Practice Assignment · Part 1",
+  "subject": "Mathematics 1",
+  "section": "practice",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What will be the equation of the tangent to the curve f (x) = 2 x2 +9x+20 at point (-3,11)?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "y = 3x"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "y =−3x + 2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "y =−3x + 20"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "y =− x3 + 2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "y = x3 + 20"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "y =− x3 Solution: A rough diagram is given in the Figure PS-4.1 . (-3, 11) Figure PS-4.1 Let the equation of the tangent be y = mx + c, where m is the slope of the tangent line. Note that m is also the slope of f at (-3, 11). /T_he slope of any quadratic function g(x) = ax2 + bx + c, where a⁄= 0 at x will be 2ax + b. /T_herefore, at x =−3, m = 2ax + b =⇒ m = 2× 2× (−3) + 9 =⇒ m =−3 1 Since the tangent passes through the point (-3, 11), it should satisfy the equation of the tangent. y = mx + c =⇒ 11 =−3× (−3) + c =⇒ c = 2. So, the equation of the tangent will be y =−3x + 2. 2"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the length of the line segment on the straight line y = 2 bounded by the curvey = 4x2."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "1√2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "√ 2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1 + √ 2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1 + 1√2 Solution: Given y = 4 x2. Observe that, on comparing the above with the the general form of a quadratic function f (x) = ax2 + bx + c, we have b = 0 which means Y-axis is the axis of symmetry. Also c = 0 =⇒ the curve represented by this function will pass through the origin. −b/2a = 0 and at x = 0 = ⇒ y = 0 which means the vertex is at the origin and a > 0 =⇒ the parabola is upward opened. y = 2 is a constant function and it will pass through the point (0, 2). A rough diagram is given in the Figure PS-4.2 y = 2 y = 4x2 x y (0, 2) (−1√2 , 2) ( 1√2 , 2) Figure PS-4.2 At the intersection points, 4x2 = 2 =⇒ x =± 1√2 which means the intersection points will be (−1√2 , 2) and ( 1√2 , 2).Observe that these intersecting points will be the end points of the required line segment on the straight line y = 2. /T_herefore, the length of the line segment on the straight line y = 2 bounded by the curve y = 4x2 will be √(2− 2)2 + ( 1√2− (−1√2 )2 = √0 + ( 2√2 )2 = √0 + (√2)2 =√2. 3"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Mr. Mehta has two sons. Both sons send money to their father each month separately as M1(x) = ( x− 2)2 and M2(x) = ( x + 2)2 respectively. If x denotes the month, then choose the curve which best represents the total amount (P(x)) received by Mr. Mehta every month."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "1 2 3 4 1 2 3 4 x P (x)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1 2 3 4 10 20 30 x P (x)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1 2 3 4 20 40 60 x P (x)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1 2 3 4 10 20 30 40 x P (x) Solution: Given, M1(x) = ( x− 2)2 M2(x) = ( x + 2)2. So, the total amount received by Mr. Mehta is: P (x) = M1(x) + M2(x) = ( x− 2)2 + (x + 2)2 = x2− 4x + 4 + x2 + 4x + 4 ⇒ P (x) = 2 x2 + 8. 4 In P (x), b = 0 which means Y-axis will be the axis of symmetry of the curve p(x). Now, the curve shown in the /f_irst option is not symmetric about the line x = 0. So, option 1 is incorrect. /T_he curve in the second option, passes through the origin but that is not the case for P (x) as x = 0 =⇒ P (x) = 8 . So, option 2 is incorrect. /T_he curve in the third option, does not pass through (4, 40). So, option 3 is also incorrect. Now, the curve in the last option will pass through the points (0, 8), (1, 10), and (4,40). So, the curve in the fourth option will be the best curve that represents the total amount received by Mr.Mehta every month. 5"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let A be the set of all points on the curve de/f_ined by the function f1(x) = x2− x− 42 and let B be the set of all points on the curve f2 de/f_ined by the re/f_lection of the curve f1 with respect to X axis. If C is the set of all points on the axes then choose the correct option regarding the cardinality of set D where D = (A∩ B)∪ (A∩ C)∪ (B∩ C)."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "in/f_inite."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "8"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "4"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "6"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "zero. Solution: For the function f1(x) = x2− x− 42, a > 0 =⇒ opening upward,− b2a = 12 =⇒ x = 12 is the axis of symmetry. x = 0 =⇒ f1(0) =−42 so, it will pass through the point (0, -42). /T_he re/f_lection of f1(x) with respect to X− axis i.e. f2(x) will pass through the point (0, 42). For intersection points of both curves: Both the curves will be intersecting on same place on X− axis as they are mirror image of each other around X− axis. A rough diagram is given in the Figure PS-4.3 f2(x) = 42 + x− x2 f1(x) = x2− x− 42 x y p1 (0, 42) p2 (0,-42) p3 p4 Figure PS-4.3 Since A is the set of all points on the curve f1, B will be the set of all points on the curve f2 and C will be the set of all points on the X-axis or Y-axis. 7 From Figure PS-4.3, A∩ B is the set of all points which are on f1 and f2. /T_herefore, A∩ B ={p3, p4}. A∩ C is the set of all points which are on the curvef1 and on the X-axis or Y-axis. /T_herefore, A∩ C ={p3, p4, p2}. B∩ C is the set of all points which are on the curve f2 and on the X−axis or Y−axis. /T_herefore, B∩ C ={p3, p1, p4}. Now, D = (A∩ B)∪ (A∩ C)∪ (B∩ C) ={p1, p1, p1, p4} and therefore, the cardinality of D is 4. 8"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let f1(x) = x2− 25. Let A be the set of all points inside the region by the curves represent- ing f1(x) and its re/f_lection f2(x) with respect to X− axis (excluding the points on curve). Choose the correct option."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "/T_he cardinality of A is 2."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "/T_he cardinality of A is 4."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Y− coordinates of the points in set A belong to the interval (−25, 25)."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Y− coordinates of the points in set A belong to the interval [−25, 25]."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "X− coordinates of the points in set A belong to the interval [−5, 5]."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "X− coordinates of the points in set A will be all real numbers because f1 is a quadratic function. Solution: A rough diagram is shown in the Figure PS-4.4 f2(x) = 25− x2 f1(x) = x2− 25 x y (5,0) (0,25) (-5, 0) (0,-25) Figure PS-4.4 From the Figure PS-4.4, observe that the set A is in/f_inite, because the region between the two curves f1 and f2 has in/f_initely many points. /T_herefore, the cardinality of A is not /f_inite. So, options 1 and 2 are wrong. Also, the region is in between the lines y = +25 and y = -25. /T_herefore, Y-coordinates of all the points in set A lie between -25 and +25 (-25 and +25 are excluded because they are points on the curves). So, option 3 is correct and option 4 is incorrect because -25 and +25 are included. 9 Also, the points in A are in between the lines x = -5 and x = +5 (-5 and +5 are excluded because they are points on the curves). /T_herefore, the X-coordinates of the points in set A belong to the interval (-5, 5). So, options 5 and 6 are incorrect. 10"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct set of options regarding the function f (x) = x2 + 6x + 8"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "y =−3 is the axis of symmetry."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "−2 and−4 are the zeroes of the above function ."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "/T_he maximum value of the above function is -1."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Slope of the function at (−3,−1) is zero."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "2x + 6 is the slope of this curve at any given x."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "/T_he function is symmetric around x = 3. Solution: Given, f (x) = x2 + 6x + 8. /T_he axis of symmetry of f (x) is x = −b2a = −62 =−3. /T_herefore, x =−3 is the axis of symmetry of curve f (x). So, options 1 and 6 are incorrect. For zeros: f (−2) = (−2)2 + 6(−2) + 8 = 4− 12 + 8 = 0 f (−4) = (−4)2 + 6(−4) + 8 = 16− 24 + 8 = 0 Hence, -2 and -4 are the zeros of the given function. So, option 2 is correct. As f (x) is an upward parabola, the maximum value of the function is + ∞ at x = +∞. So, option 3 is incorrect. Now, at x =−3, f (x) = f (−3) = (−3)2 + 6(−3) + 8 = 9− 18 + 8 =−1. /T_herefore, the point (-3, -1) is the vertex of the given function. Also, the slope of the func- tion at vertex is always 0. So, option 4 is correct. We know that the slope of any given quadratic function g(x) = ax2 + bx + c; a, b, c∈ R at point (x, g(x)) is 2ax + b. Here, a = 1, b = 6 and c = 8 /T_herefore, the slope of f (x) is 2x + 6 at any given x. So, option 5 is correct. 11"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A quadratic function f is such that its value decreases over the interval (−∞,−2) and increases over the interval (−2,∞), and f (0) = f (−4) = 23 . /T_hen, f can be"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "−3x2− 12x + 23"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "3x2 + 12x + 23"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "5(x− 2)2 + 3"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "5(x + 2)2 + 3"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "ax2 + 4ax + 23, a > 0"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "ax2 + 4ax + 23, a < 0 Solution: Given, the values of f decreases over (−∞,−2) and increases over interval (−2,∞). Also, f (0) = f (−4) = 23 . /T_he curve f is roughly shown in the Figure PS-4.5. f x y (0,23) Figure PS-4.5 Suppose f (x) = ax2 + bx + c, for any a, b, c∈ R. We have f (0) = 23 = a(0)2 + b(0) + c = c⇒ c = 23. Now, f (−4) = 23 = a(−4)2 + b(−4) + 23⇒ 16a− 4b = 0⇒ b = 4a. As the curve f which is shown in the Figure PS-4.5 is an upward parabola, the value of a should be positive. /T_herefore, the quadratic function that satis/f_ies the given conditions will be of the form f (x) = ax2 + 4ax + 23, for all a > 0. So, option 5 is correct and option 6 is incorrect. 12 If a = 3, then f can be 3x2 + 12x + 23. So, option 2 is correct. If a = 5, then f can be 5x2 + 20x + 23 = 5( x + 2)2 + 3. So, option 4 is correct. In option 1, the leading coeﬃcient of the given function is −3 = a < 0. So, it is incorrect. 13"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "/T_hen choose the correct set of options."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "/T_here can be in/f_initely many such quadratic equations."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "/T_here is no such quadratic equation."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "/T_here is a unique quadratic equation satisfying the properties."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "x2− 4x + 1 = 0 is one such quadratic equation ."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "x2− 2x− 3 = 0 is one such quadratic equation. Solution: Given, 2 + √ 3 is a root of ax2 + bx + c = 0. One root of the quadratic equation is known. /T_he other root can be any real number k. For each value of k we will have a diﬀerent quadratic equation. /T_herefore, there can be in/f_initely many quadratic equations that have 2 + √ 3 as a root. So, option 1 is correct and options 2,3 are incorrect. Now, option 4 is correct because the function value (at x = 2 + √ 3) is (2 + √ 3)2− 4(2 +√3) + 1 = 4 + 4√3 + 3− 8− 4√3 + 1 = 0 ⇒ 2 + √ 3 is a root of x2− 4x + 1 = 0 . Option 5 is incorrect because the function value (at x = 2 + √ 3) is (2 + √ 3)2− 2(2 +√3)− 3 = 4 + 4√3 + 3− 4− 2√3− 3 = 2√3⁄= 0 ⇒ 2 + √ 3 is not a root of x2− 2x− 3 = 0 . 14"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A company’s pro/f_its are known to be dependent on the months of a year. /T_he pro/f_it pa/t_tern (in lakhs of Rupees) from January to December is P (x) =−2x2 + 25x. Here, x represents the month number, starting from 1 (for January) and ending at 12 (for December). On this basis, choose the correct option."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "/T_he maximum pro/f_it in a month is Rs.78 lakhs."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "/T_he maximum pro/f_it in a month is Rs.78.125 lakhs."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "/T_he maximum pro/f_it in a month is Rs.77 lakhs."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "/T_he maximum pro/f_it is recorded in June."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "/T_he pro/f_it in December is 144 lakhs."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of the above. Solution: /T_he pro/f_it of the company is given as P (x) = −2x2 + 25x. Observe P (x) is downward open. So, the maximum pro/f_it will be recorded at vertex. /T_he X-Coordinate of the vertex is x = −b2a = −252(−2) = 6.25 So, the vertex lies between the lines x = 6 and x = 7 /T_herefore, the maximum pro/f_it will be recorded in the month of June(x = 6) or July(x = 7). /T_he pro/f_it(in lakhs of Rupees) in June is P (6) =−2(6)2 + 25(6) =−72 + 150 = 78 and pro/f_it(in lakhs of Rupees) in July is P (7) =−2(7)2 + 25(7) =−98 + 175 = 77 /T_herefore, the maximum pro/f_it of Rs.78 lakhs is recorded in the month of June. So, options 1 and 4 are correct. /T_he pro/f_it (in lakhs of Rupees) in December is P (12) =−2(12)2 + 25(12) =−288 + 300 = 12 So, option 5 is incorrect. 15"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Raghav sells 2000 packets of bread for Rs. 20000 each day, and makes a pro/f_it of Rs. 4,000 per day. He /f_inds that if the cost price increases by Rs. x per packet, he can increase the selling price by Rs. 2 x per packet. However, when this price increase happens, he loses 200x of his customers. Choose the correct options."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "For the maximum pro/f_it per day, cost price is Rs. 12 per packet ."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "For the maximum pro/f_it per day, cost price is Rs. 4 per packet."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "For the maximum pro/f_it per day, the sale price increases by Rs. 4 per packet."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "For the maximum pro/f_it per day, Raghav will lose 400 customers."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "/T_he maximum diﬀerence in pro/f_it per day could be Rs. 3200 ."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "/T_he maximum diﬀerence in pro/f_it per day could be Rs. 7200. Solution: /T_he selling price of bread 200002000 = 10 Rupees per packet. We know that, selling price - cost price = pro/f_it ⇒ 20000 - cost price = 4000 ⇒ cost price per day= 16000. /T_herefore, the cost price is = 160002000 = 8 Rupees per packet. Now, if the cost price of each packet increases to 8 + x and the selling price of each packet is increased to 10 + 2x, then the customers le/f_t will be 2000− 200x. So, the total pro/f_it (say P) in terms of x: pro/f_it = (selling price of each packet- cost price of each packet) x (number of customers) =⇒ P (x) ={(10 + 2x)− (8 + x)}× (2000− 200x) =⇒ P (x) = (2 + x)(2000− 200x) =⇒ P (x) = 4000 + 1600 x− 200x2. /T_he maximum pro/f_it occurs at x =− b2a =− 16002(−200) = 4. Hence, for the maximum pro/f_it per day: cost price per packet = 8 + x = 8 + 4 = 12. sale price per packet = 10 + 2x = 10 + 8 = 18 /T_he customers he loses = 200x = 200(4) = 800. Maximum pro/f_it = 4000 + 1600x− 200x2 = 4000 + 1600(4)− 200(4)2 = 7200 /T_herefore, maximum diﬀerence in pro/f_it = 7200 - 4000 = 3200 Rupees. So, the options 1 and 5 are correct. 16"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ],
+  "week": 3,
+  "title": "Week 3 Practice Assignment · Part 1"
+}

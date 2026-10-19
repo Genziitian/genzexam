@@ -1,0 +1,347 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 1 · Quiz 1 · 16 Oct 2022 · QUIZ · Part 2",
+  "subject": "English 1",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following telephonic conversation and fill in the blank with appropriate responses: John: Good morning. Is this Abe publishers? Mary: Yes, this is Abe publishers. (i)_______ John: I am John and I ordered a book last week. Mary: (ii)_________ John: My order was for ‘The Oldman and the Sea.’ Mary: (iii)_____, we have exhausted its stock here. John: Then, could you send me ‘The Tale of Two Cities’ instead? Mary: Sure sir. (iv)______ John: (v) _____. It is 2B, Red Heights, London. Mary: Thank you sir. We will dispatch it soon. Based on the above data, answer the given subquestions\n\nQuestion:\nComplete blank (i) with an appropriate response."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Welcome sir"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "May I know who is speaking"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "What do you want"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "For all your needs of books"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following telephonic conversation and fill in the blank with appropriate responses: John: Good morning. Is this Abe publishers? Mary: Yes, this is Abe publishers. (i)_______ John: I am John and I ordered a book last week. Mary: (ii)_________ John: My order was for ‘The Oldman and the Sea.’ Mary: (iii)_____, we have exhausted its stock here. John: Then, could you send me ‘The Tale of Two Cities’ instead? Mary: Sure sir. (iv)______ John: (v) _____. It is 2B, Red Heights, London. Mary: Thank you sir. We will dispatch it soon. Based on the above data, answer the given subquestions\n\nQuestion:\nComplete blank (ii) with an appropriate response."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Could you please tell me about your order"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "What did you order"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Where did you order"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Could you please tell me what did you order"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following telephonic conversation and fill in the blank with appropriate responses: John: Good morning. Is this Abe publishers? Mary: Yes, this is Abe publishers. (i)_______ John: I am John and I ordered a book last week. Mary: (ii)_________ John: My order was for ‘The Oldman and the Sea.’ Mary: (iii)_____, we have exhausted its stock here. John: Then, could you send me ‘The Tale of Two Cities’ instead? Mary: Sure sir. (iv)______ John: (v) _____. It is 2B, Red Heights, London. Mary: Thank you sir. We will dispatch it soon. Based on the above data, answer the given subquestions\n\nQuestion:\nComplete blank (iii) with an appropriate response"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Sorry sir"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Good"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Thanks sir"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "We are disappointed"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following telephonic conversation and fill in the blank with appropriate responses: John: Good morning. Is this Abe publishers? Mary: Yes, this is Abe publishers. (i)_______ John: I am John and I ordered a book last week. Mary: (ii)_________ John: My order was for ‘The Oldman and the Sea.’ Mary: (iii)_____, we have exhausted its stock here. John: Then, could you send me ‘The Tale of Two Cities’ instead? Mary: Sure sir. (iv)______ John: (v) _____. It is 2B, Red Heights, London. Mary: Thank you sir. We will dispatch it soon. Based on the above data, answer the given subquestions\n\nQuestion:\nComplete blank (iv) with an appropriate response"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Could you please share your address again"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "We don’t have it"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "When do you want it"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Share your name please"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nBased on the above data, answer the given subquestions\n\nQuestion:\nComplete blank (v) with an appropriate response"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Definitely"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Sure"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Sure, please note it down"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Okay"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nBased on the above data, answer the given subquestions\n\nQuestion:\nProud ________"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "In"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "At"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nBased on the above data, answer the given subquestions\n\nQuestion:\nBelief ________"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "In"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "At"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nBased on the above data, answer the given subquestions\n\nQuestion:\nSurprised ________"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "In"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "At"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nBased on the above data, answer the given subquestions\n\nQuestion:\n‘I love hunting/ good wine/ and good food//’ has the same meaning as ‘I love hunting good wine and good food//’."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "TRUE"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "FALSE"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Pause is like a punctuation mark to spoken language."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "TRUE"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "FALSE"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 1 · Quiz 1 · 16 Oct 2022 · QUIZ · Part 2"
+}

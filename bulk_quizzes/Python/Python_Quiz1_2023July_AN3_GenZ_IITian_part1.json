@@ -1,0 +1,419 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Python Programming · Quiz 1 · Jul 2023 · AN3 · Part 1",
+  "subject": "Python Programming",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following code snippet. For what values as input, after execution, does the above code snippet NOT produce any output but run without any error?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "x = int(input())\ny = int(input())\nif x > 5:\n    if y > 15:\n        print(\"A\")"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "x = 10 and y = 25"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "x = 6 and y = 20"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "x = 12 and y = 15"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "x = 15 and y = 16"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Output 'A' is printed only when x > 5 AND y > 15. For x=12, y=15: x>5 is True but y>15 is False (15 is not > 15), so nothing is printed and no error occurs. All other options satisfy both conditions and print 'A'."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the output of the following code? (There is a single space in between quotes.)"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "str1 = \"Python\"\nstr2 = \"Programming\"\nstr3 = str1 + \" \" + str2[:8]\nprint(len(str3))"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "15"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "14"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "11"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "12"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "str2[:8] is 'Programm' (8 chars). str3 = 'Python' + ' ' + 'Programm' = 'Python Programm', which has 6 + 1 + 8 = 15 characters."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following code snippet. What will be the output if the input days is 437?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "days = int(input())\nyears = days // 365\nweeks = (days % 365) // 7\nremaining_days = (days % 365) % 7\nprint(\"Years:\", years)\nprint(\"Weeks:\", weeks)\nprint(\"Days:\", remaining_days)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Years: 1, Weeks: 10, Days: 2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Years: 2, Weeks: 10, Days: 3"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Years: 1, Weeks: 62, Days: 2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Years: 2, Weeks: 22, Days: 2"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "437 // 365 = 1 year. 437 % 365 = 72 days; 72 // 7 = 10 weeks; 72 % 7 = 2 days. So Years: 1, Weeks: 10, Days: 2."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following Python code snippet. What will be the output when you run the above snippet of code?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "x = 15\ny = 20\nif x > y:\n    result = x - y\nelif x < y:\n    result = y - x"
+        },
+        {
+          "kind": "text",
+          "value": "else:"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "result = x + y\nprint(result)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "5"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "20"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "35"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "15"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "x (15) < y (20), so the elif branch runs: result = y - x = 20 - 15 = 5."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following code snippet. Based on the above snippet of code, which of the following options is correct?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "a = 4\nb = 7\nc = int(input())\nif a > b:\n    if b > c:\n        print(\"A\")\n    elif a > c:\n        print(\"B\")\n    else:\n        print(\"C\")"
+        },
+        {
+          "kind": "text",
+          "value": "else:"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "if b < c:\n        print(\"D\")\n    else:\n        print(\"E\")"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "If c = 5, then the output generated is \"D\""
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "If c = 10, then the output generated is \"E\""
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "If c >= 8, then the output is always \"D\""
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "If c < 7, then the output generated is always \"D\""
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "a (4) > b (7) is False, so the else branch always runs: print 'D' if b < c (i.e. 7 < c) else 'E'. For c >= 8, 7 < c is always True, so the output is always 'D'. (c=5 gives 'E'; c=10 gives 'D'; c<7 gives 'E'.)"
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What will be the output of the code snippet given below?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "a = 5\nb = 5\nfor x in range(0, a):\n    for y in range(b - x, 1, -1):\n        print(y, end=' ')\n    print(1)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "1 2 1 3 2 1 4 3 2 1 5 4 3 2 1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "5 4 3 2 1 4 3 2 1 3 2 1 2 1 1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1 2 3 4 5 1 2 3 4 1 2 4 1 2 1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1 1 2 1 2 3 1 2 3 4"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "For x=0..4 the inner loop counts down from (5-x) to 2, then print(1) appends a trailing 1, giving rows '5 4 3 2 1', '4 3 2 1', '3 2 1', '2 1', '1'."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Select an appropriate code snippet that can shift the given key 'zamzamsayzam' by two places along the alphabet and generates the encrypted key 'bcobcoucabco'."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "# Option A\nalphabet = 'abcdefghijklmnopqrstuvwxyz'\nkey = 'zamzamsayzam'\nencrypt_key = ''\nfor i in key:\n    encrypt_key = encrypt_key + (alphabet[((alphabet.index(i)*2)%26)])\nprint(encrypt_key)\n# Option B\nencrypt_key = encrypt_key + (alphabet[((alphabet.index(i)+2)%25)])\n# Option C\nencrypt_key = encrypt_key + (alphabet[((alphabet.index(i)+2)//26)])\n# Option D\nencrypt_key = encrypt_key + (alphabet[((alphabet.index(i)+2)%26)])"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "encrypt_key = encrypt_key + (alphabet[((alphabet.index(i)*2)%26)])"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "encrypt_key = encrypt_key + (alphabet[((alphabet.index(i)+2)%25)])"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "encrypt_key = encrypt_key + (alphabet[((alphabet.index(i)+2)//26)])"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "encrypt_key = encrypt_key + (alphabet[((alphabet.index(i)+2)%26)])"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Shifting by two with wrap-around is (index + 2) % 26. This maps 'zamzamsayzam' to 'bcobcoucabco'. The other options use *2, %25, or //26 and do not give the required output."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Select an appropriate code snippet that calculates the sum of a series up to n terms. The series defined here for n = 5 is given in the below example: 1 + 12 + 123 + 1234 + 12345 = 13715."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "# Option A\nnum_terms = 5\nstart_num = 1\nsum_of_seq = 0\nfor i in range(1, num_terms+1):\n    start_num = start_num * 10 + (i+1)\n    sum_of_seq += start_num\nprint(sum_of_seq)\n# Option B\nfor i in range(1, num_terms):\n    start_num = start_num * 10 + (i+1)\n    sum_of_seq += start_num\n# Option C\nfor i in range(1, num_terms+1):\n    sum_of_seq += start_num\n    start_num = start_num * 10 + (i+1)\n# Option D\nfor i in range(1, num_terms):\n    sum_of_seq += start_num\n    start_num = start_num * 10 + (i+1)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "range(1, num_terms+1) with start_num updated before adding to sum_of_seq"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "range(1, num_terms) with start_num updated before adding to sum_of_seq"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "range(1, num_terms+1) with sum_of_seq += start_num before updating start_num"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "range(1, num_terms) with sum_of_seq += start_num before updating start_num"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Adding the current start_num to the running sum BEFORE updating it, over range(1, num_terms+1), accumulates 1+12+123+1234+12345 = 13715. The other options either miss a term, double-count, or add the wrong values."
+        }
+      ]
+    }
+  ],
+  "title": "Python Programming · Quiz 1 · Jul 2023 · AN3 · Part 1"
+}

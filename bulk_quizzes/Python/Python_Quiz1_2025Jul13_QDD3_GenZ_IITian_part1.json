@@ -1,0 +1,334 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Python Programming · Quiz 1 · 13 Jul 2025 · QDD3 · Part 1",
+  "subject": "Python Programming",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following code. Which of the following is the correct output?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "text = \">>> Hello, Python! <<< \"\nto_strip = \" <>\"\nA = text.strip(to_strip)\nB = text.lstrip(to_strip)\nC = text.rstrip(to_strip)\nD = text.strip()\nprint(A)\nprint(B)\nprint(C)\nprint(D)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "`Hello, Python!` `Hello, Python! <<<` `>>> Hello, Python!` `>>> Hello, Python! <<<`"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "`Hello, Python!` `Hello, Python! <<<` `>>> Hello, Python!` `>>> Hello, Python! <<<`"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "`Hello, Python!.` `>>> Hello, Python!` `Hello, Python! <<<` `>>> Hello, Python! <<<`"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "`>>> Hello, Python! <<<` `Hello, Python! <<<` `>>> Hello, Python!` `Hello, Python!`"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "strip(' <>') removes leading/trailing spaces, '<' and '>' from both ends -> 'Hello, Python!'. lstrip strips only the left -> 'Hello, Python! <<< '. rstrip strips only the right -> '>>> Hello, Python!'. strip() with no args removes only whitespace -> '>>> Hello, Python! <<<'."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider a Python program that takes a sentence (which may contain both uppercase and lowercase letters, spaces, and punctuation) and prints the number of vowels present. Which of these two snippets is correct?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "# Snippet-1\nsentence = input()\ncount = 0\nvowels = set(\"aeiouAEIOU\")\nfor char in sentence:\n    if char in vowels:\n        count += 1\nprint(count)\n# Snippet-2\nsentence = input()\ncount = 0\nfor char in sentence.lower():\n    if char in ['a', 'e', 'i', 'o', 'u']:\n        count += 1\nprint(count)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Only snippet-1 is correct"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Only snippet-2 is correct"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both snippets are correct"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both snippets are wrong"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 3,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Snippet-1 checks each character against a set of both-case vowels. Snippet-2 lowercases the sentence first and checks against lowercase vowels. Both count exactly the vowels in the sentence, so both are correct."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the output of the following Python code?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "data = [\"alpha\", \"beta\", \"gamma\"]\ndata[1] = data[1].replace(\"e\", data[0][1])\ndata[2] = data[2][::-1].replace(\"a\", data[0][3])\nprint(data)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "['alpha', 'blta', 'ammag']"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "['alpha', 'blta', 'ghmmh']"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "['alpha', 'blta', 'htlb']"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "['alpha', 'blta', 'hmmh']"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 3,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "data[0][1]='l' so 'beta'->'blta'. data[0][3]='h'. 'gamma'[::-1]='ammag', and replacing every 'a' with 'h' literally produces 'hmmhg' — which is NOT among the options. The closest (and presumably intended) option is 'ghmmh', the result of replacing 'a' with 'h' in 'gamma' WITHOUT the reversal. The question appears mis-set; selecting option 2 ('ghmmh') as the intended key. Verify against the official answer."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "We want to print the following pattern: 1111 1001 1011 1111 Which of these two snippets is correct?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "# Snippet-1\nn = 4\nfor i in range(n):\n    for j in range(n):\n        if i == 0 or i == n-1 or j == 0 or j == n-1:\n            print('1', end='')\n        elif i == j:\n            print('1', end='')\n        else:\n            print('0', end='')\n    print()\n# Snippet-2\nn = 4\nfor i in range(n):\n    row = ''\n    for j in range(n):\n        if i in [0, n-1] or j in [0, n-1]:\n            row += '1'\n        elif i == j:\n            row += '0'\n        else:\n            row += '1'\n    print(row)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Only Snippet-1 prints the pattern correctly"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Only Snippet-2 prints the pattern correctly"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both snippets print the pattern correctly"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both snippets print incorrect patterns"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Target rows are 1111 / 1001 / 1011 / 1111. Snippet-1 prints 1111 / 1101 / 1011 / 1111 (row 2 wrong). Snippet-2 prints 1111 / 1011 / 1101 / 1111 (rows 2 and 3 wrong). Neither reproduces the target, so both are incorrect."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "P is a non-empty list of distinct integers that has already been defined. Which of the following statements are true at the end of execution of the code given below?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "Q, R = [], []\nfor x in P:\n    Q.append(-x)\nQ.sort()\nfor x in Q:\n    R.append(-x)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "P is always equal to R, i.e., P == R returns the value True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Every element in P is present in R, but not necessarily in the same sequence."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "R is a list of integers sorted in descending order."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Q is a list of integers sorted in ascending order."
+          }
+        ]
+      ],
+      "correct_answers": [
+        1,
+        2,
+        3
+      ],
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Q holds the negatives of P then is sorted ascending (option 4 true). R negates each element of the sorted Q, recovering P's values but in descending order (option 3 true); R contains exactly P's elements (option 2 true). P == R only if P was already in descending order, which is not guaranteed, so option 1 is false."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following Python code. Which of the following statements is/are true?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def process(x, y):\n    if x > y:\n        return x - y\n    elif x < y:\n        return y - x\n    else:\n        return x + y\ndef compute(a, b):\n    result = process(a, b)\n    if result % 2 == 0:\n        return \"Even\"\n    else:\n        return \"Odd\""
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "If x = 5 and y = 2, then output will be Odd"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "If x = 4 and y = 8, then output will be Even"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "If x = 3 and y = 3, then output will be Odd"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "If x = 10 and y = 5, then output will be Even"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1
+      ],
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "process(5,2)=3 -> Odd (option 1 true). process(4,8)=4 -> Even (option 2 true). process(3,3)=6 -> Even, not Odd (option 3 false). process(10,5)=5 -> Odd, not Even (option 4 false)."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following snippet of code. What will the output be?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "result = 0\nfor i in range(1, 4):\n    for j in range(1, 4):\n        if i == j:\n            continue\n        if i + j > 4:\n            break\n        result += i + j\nprint(result)"
+        }
+      ],
+      "numerical_answer": 14,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "i=1: j=2 -> result=3, j=3 -> result=7 (i+j=4, not >4). i=2: j=1 -> result=10, j=3 -> i+j=5>4 break. i=3: j=1 -> result=14, j=2 -> i+j=5>4 break. Total = 14."
+        }
+      ]
+    }
+  ],
+  "title": "Python Programming · Quiz 1 · 13 Jul 2025 · QDD3 · Part 1"
+}

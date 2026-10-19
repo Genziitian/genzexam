@@ -1,0 +1,103 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Dec 2024 Endterm · Part 1",
+  "subject": "Business Analytics",
+  "section": "endterm",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Two factories “A” and “B” produce radios. Each radio produced at factory-A is defective with probability 0.05, whereas each radio produced at factory-B is defective with probability 0.1. You purchase two radios that were produced in the same factory (which is equally likely to have been either factory-A or factory-B). If the first radio that you check is defective, what is the conditional probability that the second radio is also defective? (Note: Enter your answer in decimals rounded to two decimal places. For example, if your answer is “0.456” then enter it as “0.46”) Question Id : 6406531043964 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Milo’s Survey Services (MSS) specializes in evaluating the reaction of customers to new products. A client has hired MSS to ascertain customer reaction to a recently launched product (Frying Pan). During meeting with the client, MSS agreed to conduct door-to-door personal interviews to obtain responses from households with children and without children. In addition, MSS agreed to conduct both “Daytime” and “Evening time” interviews. Specifically, the client’s contract called for MSS to conduct 1000 interviews under the following quota guidelines i. Interview at least 400 households with children ii. Interview at least 400 households without children iii. The total number of households interviewed during evening must be at least as great as the number of households interviewed during the day iv. At least 40% of the interviews for households with children must be conducted during the evening v. At least 60% of the interviews for households without children must be conducted during evening Because the interviews for households with children take additional interview time and because evening interviewers are paid more than daytime, the cost varies with type of interview. Based on previous surveys conducted, MSS estimates the interview costs as given in Table-1 MSS wanted to conduct the interviews so that the overall cost for conducting the survey is minimized. Given this information, answer the subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "0.04 to 0.05"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many (count of) decision variables are present in the standard form of the primal?"
+        }
+      ],
+      "numerical_answer": 4.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Excluding the non-negativity constraint, how many (count of) constraints are present in the standard form of the primal?"
+        }
+      ],
+      "numerical_answer": 7.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "MSS has decided to conduct 400 interviews for Households with children and 600 interviews for households without children. Moreover, of the 400, 240 are to be conducted in the daytime. Similarly, of the 600 interviews, 360 are going to be conducted in the evening. Then, what is the total cost that would be incurred by MSS? (Note: enter your answer in “Rupees” rounded to two decimal places without the “₹” symbol. For example, if your answer is “₹123.456” then enter it as “123.46”)"
+        }
+      ],
+      "acceptable_answers": [
+        "20320 -20320"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "MSS has decided to conduct 400 interviews for Households with children and 600 interviews for households without children. Moreover, of the 400, 240 are to be conducted in the daytime. Similarly, of the 600 interviews, 360 are going to be conducted in the evening. Then, how many (count of) decision variables will have a NON-ZERO VALUE in dual formulation which is obtained based on the standard form of the primal? Question Id : 6406531043969 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix The BS program coordinators wanted to understand the difficulty level of the BA course. Hence, past learners of the BA course were asked to give a rating (on a scale of 1 to 5, 1 meaning “least difficult” and 5 implying “most difficult”). A total of 200 students (100 male and 100 female) were approached for the survey and the result of the same is provided in Table-2. Given this data, answer the sub-questions. Sub questions"
+        }
+      ],
+      "numerical_answer": 2.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If the aim is to determine if the difficulty level is independent of gender, then how many male responses would you expect to choose the rating value of “3”? (Note: Enter your answer in decimal value rounded to two decimal places. For example, if your answer is “123.456” then enter it as “123.46”)"
+        }
+      ],
+      "acceptable_answers": [
+        "17.00 to 18.00"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If the aim is to determine if the difficulty level is independent of gender, then how many female responses would you expect to choose the rating value of “5”? (Note: Enter your answer in decimal value rounded to two decimal places. For example, if your answer is “123.456” then enter it as “123.46”)"
+        }
+      ],
+      "numerical_answer": 20.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "Dec 2024 Endterm · Part 1"
+}

@@ -1,0 +1,330 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 1 · Quiz 1 · 29 Oct 2023 · QPQ1 · Part 4",
+  "subject": "English 1",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The phrase ‘to get out of hand’ means ___________."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "To become difficult to control"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To calm down"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "He told me that he will stay for a ___."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Weak"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Week"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Wick"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Wake"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The ___ was unsold in the auction."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Whether"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Wether"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Weather"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Wither"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the word with an “aa” sound from the following."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Hoard"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Board"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Hard"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Teeth"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Pick the odd one out on the basis of the similarity of sounds: knit, pit, kit, neat"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Knit"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Pit"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Kit"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Neat"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which semi-vowel occurs in the transition between the words “go” and “out” in the sentence “go out”?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "/w/"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "/y/"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which among the following is a word without a diphthong?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Snout"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Stout"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Sport"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Shout"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which among the following is the correct way to read the following phone number: 8637681134?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "8637/6811/34"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "863/768/113/4"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "86/37/68/11/34"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "All of these"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘Rinku reads quite clearly’. In this sentence which of the following is an adverb?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Reads"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Quite"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Clearly"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Rinku"
+          }
+        ]
+      ],
+      "correct_answers": [
+        1,
+        2
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 1 · Quiz 1 · 29 Oct 2023 · QPQ1 · Part 4"
+}

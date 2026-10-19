@@ -1,0 +1,134 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Statistics 2 · Quiz 2 · MAM 2025 · Part 2",
+  "subject": "Statistics 2",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Wires produced from a factory have a mean breaking strength of 50 kilograms with a standard deviation of 4 kilograms. In a statistical study of breaking strength of these wires, suppose the sample size is increased from 81 to 144. Based on the above data, answer the given subquestions. How does the variance of the sample mean change?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Variance is reduced from 0.049 to 0.027."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Variance is reduced from 0.198 to 0.111."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Variance is increased from 0.111 to 0.198."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Variance remains the same."
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let X be a continuous random variable with the probability density function fx (z) = ] - 2, 0 < z < 1; 0 otherwise. Based on the above data, answer the Find the value of E[X]. Enter the answer correct to two decimal places."
+        }
+      ],
+      "numerical_answer": 0.42,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let X be a continuous random variable with the probability density function fx (z) = ] - 2, 0 < z < 1; 0 otherwise. Based on the above data, answer the Find the value of k"
+        }
+      ],
+      "numerical_answer": 4.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let X be a continuous random variable with the probability density function fx (z) = ] - 2, 0 < z < 1; 0 otherwise. Based on the above data, answer the Which of the following option(s) is/are correct?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "EY = 0.5"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "EY] = 0.05 с Var(Y) = t"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Var(Y) - 1S"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let X be a continuous random variable with the probability density function fx (z) = ] - 2, 0 < z < 1; 0 otherwise. Based on the above data, answer the Using Chebyshev's inequality, find a lower bound for P(IY - O.5) ≤ 0.6). Enter the answer correct to three decimal places. Let X, Y ~ Lid. Uniform (1,2) (discrete random variables). Define a new random variable 2 = X + Y. Based on the above data, answer the given"
+        }
+      ],
+      "acceptable_answers": [
+        "0.977"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let X be a continuous random variable with the probability density function fx (z) = ] - 2, 0 < z < 1; 0 otherwise. Based on the above data, answer the Calculate the value of PIZ < 3 2 = 4)"
+        }
+      ],
+      "numerical_answer": 0.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "Statistics 2 · Quiz 2 · MAM 2025 · Part 2"
+}

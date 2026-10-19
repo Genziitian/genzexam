@@ -1,0 +1,351 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 1 · Quiz 1 · 2024 · QDF4 · Part 2",
+  "subject": "English 1",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The word “curative” is closest in meaning to ___."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Therapeutic"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Selective"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Causative"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Derivative"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Look at the word given below and study the sound that is underlined in it. Choose the option which has the same sound. Thoroughfare"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Path"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Wrath"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both Path and Wrath"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Neither Path nor Wrath"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The word ‘thermometer’ begins with a __________ sound."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Palatal"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Velar"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Dental"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Labial"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The vowel sound between b and n in the word born is the same as:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "That which occurs between w and n in the word win"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "That which occurs between b and n in the word bone"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "That which occurs between w and n in the word wean"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "That which occurs between th and n in the word thorn"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the word with a “ng” sound from the following."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Neat"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Fin"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Thing"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Sound"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which among the following words has the same sound as underlined in “pour”?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Score"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Scour"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Crowd"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both Score and Scour"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the sequence of consonant and vowel sounds in the word succumb."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "CVCVC"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "CVCCVCC"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "CVCVCC"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "CVCCVC"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the part of speech of the underlined word. They laughed at my idea."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Material Noun"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Abstract Noun"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Proper Noun"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Class Noun"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the part of speech of the underlined word. The teacher is here."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Noun"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Pronoun"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Adjective"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Preposition"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 1 · Quiz 1 · 2024 · QDF4 · Part 2"
+}

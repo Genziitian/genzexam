@@ -1,0 +1,407 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 1 · Quiz 1 · 29 Oct 2023 · QPQ2 · Part 2",
+  "subject": "English 1",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following telephonic conversation and fill in the blank with appropriate responses and answer the given subquestions: Rohit: Hello, (i)_____________ Mahesh: I’m fine. What about you? Rohit: Good. (ii)______________________ Mahesh: Not great. Rohit: Why? (iii)_______________________ Mahesh: I can’t cope with my manager. He was fine to begin with, but not anymore. But that’s not the only reason. Rohit: Then? Mahesh: Also, the commute time to the office is just too much at the moment, and I don’t foresee a shift to a closer location in this organisation. Too much time on the road is taking a toll on me.\n\nQuestion:\nFill in the blank (i) with an appropriate response?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Where are you going?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "What are you wearing?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "How’re you?"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following telephonic conversation and fill in the blank with appropriate responses and answer the given subquestions: Rohit: Hello, (i)_____________ Mahesh: I’m fine. What about you? Rohit: Good. (ii)______________________ Mahesh: Not great. Rohit: Why? (iii)_______________________ Mahesh: I can’t cope with my manager. He was fine to begin with, but not anymore. But that’s not the only reason. Rohit: Then? Mahesh: Also, the commute time to the office is just too much at the moment, and I don’t foresee a shift to a closer location in this organisation. Too much time on the road is taking a toll on me.\n\nQuestion:\nFill in the blank (ii) with an appropriate response?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "How’s your work going on?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Where is your family staying?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Where is your friend staying?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Where are you from?"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following telephonic conversation and fill in the blank with appropriate responses and answer the given subquestions: Rohit: Hello, (i)_____________ Mahesh: I’m fine. What about you? Rohit: Good. (ii)______________________ Mahesh: Not great. Rohit: Why? (iii)_______________________ Mahesh: I can’t cope with my manager. He was fine to begin with, but not anymore. But that’s not the only reason. Rohit: Then? Mahesh: Also, the commute time to the office is just too much at the moment, and I don’t foresee a shift to a closer location in this organisation. Too much time on the road is taking a toll on me.\n\nQuestion:\nFill in the blank (iii) with an appropriate response?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "What happened?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "How are you?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Which company are you working at?"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following telephonic conversation and fill in the blank with appropriate responses and answer the given subquestions: Rohit: Hello, (i)_____________ Mahesh: I’m fine. What about you? Rohit: Good. (ii)______________________ Mahesh: Not great. Rohit: Why? (iii)_______________________ Mahesh: I can’t cope with my manager. He was fine to begin with, but not anymore. But that’s not the only reason. Rohit: Then? Mahesh: Also, the commute time to the office is just too much at the moment, and I don’t foresee a shift to a closer location in this organisation. Too much time on the road is taking a toll on me.\n\nQuestion:\nWhat is the meaning of ‘cope with’?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "To ask for information"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To start something"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To deal with a difficult situation"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To accompany someone"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nMatch Column A with suitable options in Column B. (Hint: Word collocation)\n\nQuestion:\nIn this conversation between Rohit and Mahesh, what is the meaning of “taking a toll” ?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "To have an adverse effect"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To fetch something"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To choose someone"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To ask for advice"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nMatch Column A with suitable options in Column B. (Hint: Word collocation)\n\nQuestion:\nHeavy ___________"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Poll"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Flow"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Vision"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Rain"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Analysis"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nMatch Column A with suitable options in Column B. (Hint: Word collocation)\n\nQuestion:\nOpinion __________"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Poll"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Flow"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Vision"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Rain"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Analysis"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nMatch Column A with suitable options in Column B. (Hint: Word collocation)\n\nQuestion:\nCash _____________"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Poll"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Flow"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Vision"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Rain"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Analysis"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nMatch Column A with suitable options in Column B. (Hint: Word collocation)\n\nQuestion:\nCritical ____________"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Poll"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Flow"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Vision"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Rain"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Analysis"
+          }
+        ]
+      ],
+      "correct_answer": 4,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Blurred ___________"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Poll"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Flow"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Vision"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Rain"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Analysis"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 1 · Quiz 1 · 29 Oct 2023 · QPQ2 · Part 2"
+}

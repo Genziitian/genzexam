@@ -1,0 +1,309 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 1 · Quiz 2 · Aug 2025 · Part 2",
+  "subject": "English 1",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many syllables are there in the word Repentance?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "3"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "4"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The word limitation is stressed as"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "'Limitation Limitation Limitation"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Limita'tion"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The word constraint is stressed as... Con'straint"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "'Constraint cons traint"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Co'nstraint"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In the plural noun factories, the plural marker sounds as"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "[s]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[2]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[iz]"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The sheep in their farm of a breed called Barbados Black Belly, they love to graze."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Gets"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Are c Get"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Was"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "IS"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The deer _ _ a herbivore."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Gets Be Are c Get Was"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "IS"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Unless they talk, and very loudly at that, no one __ any attention in this world."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Gets"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Are"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Get"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Was"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "IS"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Do these scissors __ rusty?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Gets"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Are Get"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Was"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "IS"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The officer said that the most disturbing fact about the murder last week _ the dismembering of the victim's body."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Gets"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Are c Get"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "was"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "IS"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 1 · Quiz 2 · Aug 2025 · Part 2"
+}

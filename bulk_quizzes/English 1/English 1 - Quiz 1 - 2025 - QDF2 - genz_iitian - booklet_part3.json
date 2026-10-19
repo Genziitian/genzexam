@@ -1,0 +1,365 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 1 · Quiz 1 · 23 Feb 2025 · QDF2 · Part 3",
+  "subject": "English 1",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the adverb: \"She sang beautifully at the concert\""
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "She"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Sang"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Beautifully"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Concert"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "\"She spoke very quietly\" Which word modifies the adverb?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "She"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Spoke"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Very"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Quietly"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "\"The happy dog wagged its tail excitedly\" Identify the adjective and adverb:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Happy (adj.), wagged (adv.)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Happy (adj.), excitedly (adv.)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Dog (adj.), excitedly (adv.)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Tail (adj.), happy (adv.)"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "She's allergic _____ dust. Choose the correct preposition"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Of"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "From"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "With"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the interjection expressing relief:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Phew!"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Yay!"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Oops!"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Brrr!"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct option. When referring to a specific day of the month numerically, which article is used?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "A"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "An"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "No article"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Select the most appropriate idiom of the given meaning. To exaggerate a minor difficulty."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Turn a deaf ear to"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Tooth and nail"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "On cloud nine"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Make a mountain out of a molehill"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct option. The phrase ‘it takes two to tango’ means ___________."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "A situation or argument involving two people, both of them are responsiblefor it."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To play a subordinate role to someone."
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In primary school, the older kids would often ______________the younger ones during the lunch break."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Pick out"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Pick on"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Pick at"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Pick through"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nFill in the blanks in List A with the most contextually appropriate modal verbs in List B.\n\nQuestion:\n“Bring up” is an example of a separable phrasal verb."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "TRUE"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "FALSE"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 1 · Quiz 1 · 23 Feb 2025 · QDF2 · Part 3"
+}

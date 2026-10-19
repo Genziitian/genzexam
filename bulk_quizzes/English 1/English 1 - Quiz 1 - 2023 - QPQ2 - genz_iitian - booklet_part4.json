@@ -1,0 +1,347 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 1 · Quiz 1 · 29 Oct 2023 · QPQ2 · Part 4",
+  "subject": "English 1",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Fill in the blank with the appropriate option. The phrasal verb ‘see about’ means ___________."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "To say goodbye to someone"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To deal with or organize something"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following sentence: This outfit is really nice, but it cost me an arm and a leg. In this sentence, what does the phrase ‘cost an arm and a leg’ mean?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "To be very cheap"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To be very expensive"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose an appropriate prefix that gives the antonym of ‘tolerant’."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Mis-"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Un-"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Dis-"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "In-"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "There are ______________ grains of sand in the box."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Few"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Little"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Some"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The storm ___________ the coast badly."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Effected"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Affected"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both Effected and Affected"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of these"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the word with an ‘oo’ sound from the following."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Court"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Loot"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Cat"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Feat"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Pick the odd one out based on the initial sound: par, bar, car, bear."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Par"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Bar"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Car"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Bear"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which semi-vowel occurs in the transition between the words “he” and “arranged” in the sentence “he arranged his books”?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "/w/"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "/y/"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which among the following is a word without a diphthong?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Spray"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Pray"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Spree"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Soil"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correctly paused sentence."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Ms. Ursula carry/ your umbrella//"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Ms. Ursula carry your/ umbrella//"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Ms. Ursula/ carry your umbrella//"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Ms./ Ursula carry/ your umbrella//"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 1 · Quiz 1 · 29 Oct 2023 · QPQ2 · Part 4"
+}

@@ -1,0 +1,365 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 2 · Quiz 1 · 23 Feb 2025 · QDF3 · Part 4",
+  "subject": "English 2",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct active form of the following sentence. ‘A ticket was booked for me by my father.’"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "My father booked me a ticket"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "My father booked a ticket for me"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "My ticket was booked by my father"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A ticket booked by my father was for me"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct passive form of the following sentence. ‘My friends saved an apple for me.’"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The apple my friends saved is for me"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "An apple saved by my friends was for me"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "An apple was saved for me by my friends"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "My friends saved me an apple"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "“The Capisi home would have sat on the edge of the low-rent section on the far east of town if Mr. Capisi had not won the lottery.” This sentence is in _____ tense."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Future continuous"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Future perfect"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Future perfect continuous"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of these"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What type of sentence is this? The dog barks loudly."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Simple"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Compound"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Complex"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What John did surprised everyone. Here the phrase ‘What John did’ functions as ___."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Subject"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Apposition"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Object"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following sentences contains an adverbial clause?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The dog barked loudly."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "After the storm passed, we went outside to play."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "She is a talented musician."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The cake tastes delicious."
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Our last destination is Kolkata which is the capital of West Bengal. The adjectival clause here is ____."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Our last destination is"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Which is the capital of West Bengal"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Kolkata which is the capital"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "No adjectival clause"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the adjectival clause in the following sentence and the noun it modifies. The restaurant, known for its delicious seafood, is always crowded, and the bar next door, which serves craft cocktails, is a popular hangout spot."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Adjectival clause: known for its delicious seafood, Noun: restaurant"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Adjectival clause: which serves craft cocktails, Noun: bar"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both adjectival clause: known for its delicious seafood, Noun: restaurant andadjectival clause: which serves craft cocktails, Noun: bar"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of these"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the adjunct in the following sentence. He kept the bottle on the table."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "He"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The bottle"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "On the table"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "No adjunct"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "State whether the underlined is an adjunct or a complement. Mary helped her mother with the dishes."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Adjunct"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Complement"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 2 · Quiz 1 · 23 Feb 2025 · QDF3 · Part 4"
+}

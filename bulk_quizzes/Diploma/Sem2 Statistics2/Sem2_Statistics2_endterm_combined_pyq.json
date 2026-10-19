@@ -1,0 +1,151 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Sem2 Statistics2 · End Term · Combined PYQ",
+  "title": "Sem2 Statistics2 · End Term · Combined PYQ",
+  "subject": "Sem2 Statistics2",
+  "section": "endterm",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider a random sample (1, 0, 1, 2, 2, 0, 1). Find the method of moments estimate of θ for the given sample. Enter the answer correct to two decimal places."
+        }
+      ],
+      "acceptable_answers": [
+        "0.40 to 0.46"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider a random sample (2, 0, 1, 1, 2, 2, 1, 1, 0, 0). Find the maximum likelihood estimate of θ for the given sample. Enter the answer correct to one decimal place. A company is testing a new AI-based chatbot for customer service and wants to know if it is liked by its users. Let p be the true proportion of users who would find the chatbot helpful. The team selected 30 customers randomly and asked if they found the chatbot useful. Out of these, 12 responded ‘yes’. Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "0.27 to 0.33 Question Id : 6406531040041 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the posterior mean using the correct prior from the previous question. Enter the answer correct to two decimal places. The average battery life of smartphones for a certain model is 15 hours, with a standard deviation of 3 hours. An analyst suspects that the true average battery life is greater than 15 hours. To test this, he takes a random sample of 100 smartphones and finds that the sample mean battery life is 17 hours. Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "0.40 to 0.46 Question Id : 6406531040044 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Reference: Distributions of common discrete and continuous random variables (PMF/PDF, CDF, E[X], Var(X)). Distribution PMF / PDF Discrete random variables COF Unlsores(.A), A - (o,a + 1,....8) p, z-k, n-8-a + 1; k-a,a + 1,...,d 15258118-22716-18 z<0 BernoalS(p) 13-8 2-0 Binomial (n, p) Gecesstric(p) (1 - 8) p k= 1,...,∞ I - (1-p) *S z<*+1,*= 1,....00 E(X]"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "ar00 =(1 - P) пр(1 - p) Continuous random variables Uniformia, b) Exp(X) Act, = >0 Normal (p, 0*) Gammalo, 8) No closed form Bets (a, 9) For 1(1-2)*3, 0 <2<1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Markov's inequality: Let X be a discrete random variable taking non-negative values with a finite mean f. Then, P(X 2 c) ≤ 4. (Useful Data has been mentioned above.) 8 Chetvshev's inequality. Let A be a random variable with a finite mean i and a finite variance d'. (his data attachment is just for a reference &"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let X and be two continuous random variables with joint PDF SXy SXy 8) = 3 + cy?, ifter wis 1 modO ≤ I S I, Find the value of c. Enter the Suppose X and Y are two independent random variables with probability density functions as gle) - (ar 3 erwise. and h(3) = 0 < y < 1, Calculate the value of E[XY]"
+        }
+      ],
+      "acceptable_answers": [
+        "C"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let X1, X2,..., X10 be lid samples with mean 150 and variance 100. Find the mean and variance of 8, where & - 31+ ..+s is the sample"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "E[X] = 150, Var(X) = 100 8 EX] - 150, Var(X) = 10"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "E[X] = 150, Var(X) = 1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "E(X] = 1500, Var (X) = 10"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the marginal density of X. otherwise. otherwise."
+        }
+      ],
+      "acceptable_answers": [
+        "C"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the value of E[X]? Enter the answer correct to one decimal place. In a large town, it is estimated that 20% of students own a laptop. A random sample of 400 students is selected from the town. Based on the above data,"
+        }
+      ],
+      "acceptable_answers": [
+        "the given subquestions."
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ]
+}

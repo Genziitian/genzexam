@@ -1,0 +1,357 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 1 · Quiz 1 · 25 Feb 2024 · QDF4 · Part 2",
+  "subject": "English 1",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nMatch the words in List A with the correct synonyms in List B.\n\nQuestion:\nFill in the blanks. Sanjeev was a __________."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Doctor"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Student"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Professor"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Policeman"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nMatch the words in List A with the correct synonyms in List B.\n\nQuestion:\nMaladroit"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Wearied"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Counsel"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Gravelly"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Establish"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Clumsy"
+          }
+        ]
+      ],
+      "correct_answer": 4,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following telephonic conversation and answer the given subquestions with appropriate responses: Samrat: Hello, Priya! How are you? Priya:(i)_______________, and you? Samrat: I am also fine. By the way, (ii)________________________ Priya: A very good idea indeed. Let us fix up a date and a venue. Samrat: (iii)___________________________ Priya: Oh, fine! Darjeeling is a very beautiful and historical place. Samrat: (iv)____________________ Priya: Only your brothers and sisters and mine. When shall we start? Samrat: We shall start at 6 o'clock from our residence. Priya:(v)_____________________ Samrat: Biriyani. Don't you like it? Priya: Of course, but we will cook our food ourselves.\n\nQuestion:\nFill in the blank (i) with an appropriate response?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "I am fine"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "My sister is fine"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "My brother is fine"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "My aunt is fine"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following telephonic conversation and answer the given subquestions with appropriate responses: Samrat: Hello, Priya! How are you? Priya:(i)_______________, and you? Samrat: I am also fine. By the way, (ii)________________________ Priya: A very good idea indeed. Let us fix up a date and a venue. Samrat: (iii)___________________________ Priya: Oh, fine! Darjeeling is a very beautiful and historical place. Samrat: (iv)____________________ Priya: Only your brothers and sisters and mine. When shall we start? Samrat: We shall start at 6 o'clock from our residence. Priya:(v)_____________________ Samrat: Biriyani. Don't you like it? Priya: Of course, but we will cook our food ourselves.\n\nQuestion:\nFill in the blank (ii) with an appropriate response?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Do you want to go out for a picnic?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Where are you staying currently?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "When are you going to the party?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Which place are you from?"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following telephonic conversation and answer the given subquestions with appropriate responses: Samrat: Hello, Priya! How are you? Priya:(i)_______________, and you? Samrat: I am also fine. By the way, (ii)________________________ Priya: A very good idea indeed. Let us fix up a date and a venue. Samrat: (iii)___________________________ Priya: Oh, fine! Darjeeling is a very beautiful and historical place. Samrat: (iv)____________________ Priya: Only your brothers and sisters and mine. When shall we start? Samrat: We shall start at 6 o'clock from our residence. Priya:(v)_____________________ Samrat: Biriyani. Don't you like it? Priya: Of course, but we will cook our food ourselves.\n\nQuestion:\nFill in the blank (iii) with an appropriate response?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Can you give me your number?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "What about going to Darjeeling next Friday?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Could you drop me at the bus stand?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Can you come home this week?"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following telephonic conversation and answer the given subquestions with appropriate responses: Samrat: Hello, Priya! How are you? Priya:(i)_______________, and you? Samrat: I am also fine. By the way, (ii)________________________ Priya: A very good idea indeed. Let us fix up a date and a venue. Samrat: (iii)___________________________ Priya: Oh, fine! Darjeeling is a very beautiful and historical place. Samrat: (iv)____________________ Priya: Only your brothers and sisters and mine. When shall we start? Samrat: We shall start at 6 o'clock from our residence. Priya:(v)_____________________ Samrat: Biriyani. Don't you like it? Priya: Of course, but we will cook our food ourselves.\n\nQuestion:\nFill in the blank (iv) with an appropriate response?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "How much time will it take?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "What plans have you made?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Who will be with us?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "How’re you doing?"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following telephonic conversation and answer the given subquestions with appropriate responses: Samrat: Hello, Priya! How are you? Priya:(i)_______________, and you? Samrat: I am also fine. By the way, (ii)________________________ Priya: A very good idea indeed. Let us fix up a date and a venue. Samrat: (iii)___________________________ Priya: Oh, fine! Darjeeling is a very beautiful and historical place. Samrat: (iv)____________________ Priya: Only your brothers and sisters and mine. When shall we start? Samrat: We shall start at 6 o'clock from our residence. Priya:(v)_____________________ Samrat: Biriyani. Don't you like it? Priya: Of course, but we will cook our food ourselves.\n\nQuestion:\nFill in the blank (v) with an appropriate response?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "What have you been up to?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "What are you doing?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "What about the party?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "What about the menu?"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which among the following words have a vowel sound similar to that of ‘pack’?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Cat"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Bleat"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Shear"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Boat"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the word with an “u” sound from the following."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Root"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Foot"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Court"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both Root and Foot"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 1 · Quiz 1 · 25 Feb 2024 · QDF4 · Part 2"
+}

@@ -1,0 +1,277 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 2 · Quiz 2 · Jul 2022 · Part 1",
+  "subject": "English 2",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is Isha going to spend the evening doing? Catching up on her maths homework"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Having dinner with the man"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Seeing a tutor about one of her classes Helping high school students with their studies"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "MCO Why has the city started the tutoring program? It wants to raise the maths level of the students. What does the education department like about the tutors? 8 The tutors are available in the afternoon."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "It has received extra funding. •The high school building could be used at night."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Some university students suggested it."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Most of them have taught students before."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Most of them went to the city high school."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The department doesn't have to pay them."
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What does the woman think tutoring will prepare her for? ¿ marks"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Her upcoming math tests Her duties as a PhD student"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Her next job as a protessor"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Her job at the City Department of Education"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is Mahesh going to do that night? L Passage / Context Fill in the blanks with correct expressions of numbers/values/quantity for the given subquestions. In 2012, it was estimated that there were more than 100,000 Africans living in Guangzhou, but 1) of them stayed for a very short time. According to official figures, 2) _ 430,000 (plus or minus 1000) arrivals and exits by nationals from African countries were recorded at the city's checkpoints in the first nine months of 2014. Guangzhou officials released official population figures for residents in 2014 due to popular fears of an Ebola outbreak in the city by way of the African community. According to the city, there were 16,000 Africans including North Africans residing in Guangzhou. Of these residents, 3) _ _ 4,000 (or twenty- five 4) were long-term residents, which is defined by city officials as living for longer than 6 months in the city. A 2014 article in the magazine This Is Africa noted a decrease in population, blaming increased immigration enforcement and foreign exchange difficulties. A September 2016 CNN article on the community claimed that upwards to thousands of African residents had left the city. 5). in the previous 18 months. From 2014, the African population significantly declined, dropping to 10,344 residents by February 2017."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "He is tutoring"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "He is going out dancing He is going out with friends for dinner"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "He is going to sleep"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct answer for blank (2). Above Approximately"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Mostly"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Most"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Percent"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct answer for blank (3)."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "About в Approximately c Mostly"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Most"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Percent"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct answer for blank (5)."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "About 8 Approximately"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Mostly"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Most"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Percent"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "You are politely seeking permission to borrow a file from a workplace colleague. She is of the same level as"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Car"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Must Will"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Could"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 2 · Quiz 2 · Jul 2022 · Part 1"
+}

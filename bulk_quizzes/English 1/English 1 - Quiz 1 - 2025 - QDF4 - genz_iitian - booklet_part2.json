@@ -1,0 +1,359 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 1 · Quiz 1 · 23 Feb 2025 · QDF4 · Part 2",
+  "subject": "English 1",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Look at the word given below and study the sound that is underlined in it. Choose the option which has the same sound. Zoo"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Clause"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Loss"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Nice"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Spy"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Pick the odd one out based on the initial sound: pare, bare, mare, stare."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Pare"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Bare"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Mare"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Stare"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which semi-vowel occurs in the transition between the words “he” and “advised” in the sentence “he advised me to carry an umbrella”?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "/w/"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "/y/"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which among the following is a word without a diphthong?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Ply"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Clay"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Buy"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Clue"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which semi-vowel does the word “huge” contain?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "/w/"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "/y/"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the word with the “ii” sound from the following."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Meat"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Week"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Light"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both Meat and Week"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the vowel sound that is the same as that which is underlined in the word given below: Tongue"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Shot"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Shut"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Gone"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Shout"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the sequence of consonant and vowel sounds in the word succeed."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "CVVCCV"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "CVCVV"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "CVCVC"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "CVCCVC"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which among the following is not a collective noun?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Army"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Sheeps"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Scissors"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct past form of the verb ‘<b>Choose’</b>:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Chosen"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Chose"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Choosed"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Choose"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 1 · Quiz 1 · 23 Feb 2025 · QDF4 · Part 2"
+}

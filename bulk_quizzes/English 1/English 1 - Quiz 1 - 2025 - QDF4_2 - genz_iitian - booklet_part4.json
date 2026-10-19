@@ -1,0 +1,377 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 1 · Quiz 1 · 26 Oct 2025 · QDF4 · Part 4",
+  "subject": "English 1",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Replace the bold word in the sentence with one of the phrasal verbs given below to convey the same meaning. He promised to contribute towards the fund but later <b>withdrew</b>."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Backed out"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Backed on"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Backed away"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Backed off"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "“Run into” is an example of an inseparable phrasal verb."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "TRUE"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "FALSE"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Fill in the blank with the most suitable phrasal verb. The old man _____ his beliefs."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Held up"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Held onto"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Held off"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Held out"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "There are ___ grains of sand in the box."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Few"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A few"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Little"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Some"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nComplete the telephonic conversation given below with the most polite and correct <b>responses in the given subquestions.</b> Ravi: Hello, Sneha. It’s Ravi. Are you free? (1)_________________________________ Sneha: Yes, Ravi. I’m free now, please tell me. Ravi: I need to reschedule our project meeting. Something urgent has come up. Sneha: I understand. (2) _______________________________ Ravi: Instead of tomorrow morning, how about we have the meeting on Thursday at 2 PM? Sneha: Let me check... Yes, I’m available then. But we need to make sure everyone else can make it too. Ravi: (3) _________________ I’ll send an email to confirm with the rest of the team. Sneha: Sounds good. I’ll tentatively block my calendar for Thursday at 2 PM. Ravi: Yes, Sneha. (4) ______________________________ Sneha: No problem, Ravi. Just let me know if the time works for everyone. Ravi: (5) ______________________________\n\nQuestion:\nThe customer complained that the vegetables are ___."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Overcooked"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Undercooked"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both Overcooked and Undercooked"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Enough cooked"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nComplete the telephonic conversation given below with the most polite and correct <b>responses in the given subquestions.</b> Ravi: Hello, Sneha. It’s Ravi. Are you free? (1)_________________________________ Sneha: Yes, Ravi. I’m free now, please tell me. Ravi: I need to reschedule our project meeting. Something urgent has come up. Sneha: I understand. (2) _______________________________ Ravi: Instead of tomorrow morning, how about we have the meeting on Thursday at 2 PM? Sneha: Let me check... Yes, I’m available then. But we need to make sure everyone else can make it too. Ravi: (3) _________________ I’ll send an email to confirm with the rest of the team. Sneha: Sounds good. I’ll tentatively block my calendar for Thursday at 2 PM. Ravi: Yes, Sneha. (4) ______________________________ Sneha: No problem, Ravi. Just let me know if the time works for everyone. Ravi: (5) ______________________________\n\nQuestion:\nFill in blank [1] with the appropriate option."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Could we discuss the upcoming meeting now?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Wanna talk about the upcoming meeting?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Would you care enough to discuss the upcoming meeting?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The upcoming meeting has been rescheduled"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nComplete the telephonic conversation given below with the most polite and correct <b>responses in the given subquestions.</b> Ravi: Hello, Sneha. It’s Ravi. Are you free? (1)_________________________________ Sneha: Yes, Ravi. I’m free now, please tell me. Ravi: I need to reschedule our project meeting. Something urgent has come up. Sneha: I understand. (2) _______________________________ Ravi: Instead of tomorrow morning, how about we have the meeting on Thursday at 2 PM? Sneha: Let me check... Yes, I’m available then. But we need to make sure everyone else can make it too. Ravi: (3) _________________ I’ll send an email to confirm with the rest of the team. Sneha: Sounds good. I’ll tentatively block my calendar for Thursday at 2 PM. Ravi: Yes, Sneha. (4) ______________________________ Sneha: No problem, Ravi. Just let me know if the time works for everyone. Ravi: (5) ______________________________\n\nQuestion:\nFill in blank [2] with the appropriate option."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "When do you want to send the reports?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "When are you available for the meeting?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "When do you want to meet the officer?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "When do you want to take leave?"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nComplete the telephonic conversation given below with the most polite and correct <b>responses in the given subquestions.</b> Ravi: Hello, Sneha. It’s Ravi. Are you free? (1)_________________________________ Sneha: Yes, Ravi. I’m free now, please tell me. Ravi: I need to reschedule our project meeting. Something urgent has come up. Sneha: I understand. (2) _______________________________ Ravi: Instead of tomorrow morning, how about we have the meeting on Thursday at 2 PM? Sneha: Let me check... Yes, I’m available then. But we need to make sure everyone else can make it too. Ravi: (3) _________________ I’ll send an email to confirm with the rest of the team. Sneha: Sounds good. I’ll tentatively block my calendar for Thursday at 2 PM. Ravi: Yes, Sneha. (4) ______________________________ Sneha: No problem, Ravi. Just let me know if the time works for everyone. Ravi: (5) ______________________________\n\nQuestion:\nFill in blank [3] with the appropriate option."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Sure, whatever!"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Yeah, whatever!"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Yes, definitely."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Ok!"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nComplete the telephonic conversation given below with the most polite and correct <b>responses in the given subquestions.</b> Ravi: Hello, Sneha. It’s Ravi. Are you free? (1)_________________________________ Sneha: Yes, Ravi. I’m free now, please tell me. Ravi: I need to reschedule our project meeting. Something urgent has come up. Sneha: I understand. (2) _______________________________ Ravi: Instead of tomorrow morning, how about we have the meeting on Thursday at 2 PM? Sneha: Let me check... Yes, I’m available then. But we need to make sure everyone else can make it too. Ravi: (3) _________________ I’ll send an email to confirm with the rest of the team. Sneha: Sounds good. I’ll tentatively block my calendar for Thursday at 2 PM. Ravi: Yes, Sneha. (4) ______________________________ Sneha: No problem, Ravi. Just let me know if the time works for everyone. Ravi: (5) ______________________________\n\nQuestion:\nFill in blank [4] with the appropriate option."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Thank you for understanding"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "I will attend the team dinner tonight"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "I will meet the team head"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Fine!"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Fill in blank [5] with the appropriate option."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Wow!"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Yeah, whatever!"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "No!"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Sure, Sneha"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 1 · Quiz 1 · 26 Oct 2025 · QDF4 · Part 4"
+}

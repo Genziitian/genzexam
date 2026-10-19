@@ -1,0 +1,365 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 2 · Quiz 1 · 26 Oct 2025 · QDF4 · Part 3",
+  "subject": "English 2",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Sekhar slept early yesterday. Here, the adverb appears in the ____."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Subject"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Predicate"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "No adverb"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both Subject and Predicate"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the degree adverb in the given sentence. “The cellar is nearly filled up, never having been either wide or deep, and the fruit of a few mossy apple−trees drops ungathered to the ground.”"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Few"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Filled"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Mossy"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Nearly"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘Very’ and ‘very much’ can be used interchangeably. This statement is ___."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In the following sentences, which one has the word \"care\" in the role of an adjective?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "She says we are part of the care economy."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "They care for their family."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "He does not care."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Ram won't care for his child."
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In the following sentence, identify the nature of the adjective. The adjectives are underlined. Racewalking is faster than normal walking."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Adjunctive, imaginative"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Innovative, attributive"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Predicative, attributive"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Predicative, indicative"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the adjectival clause in the following sentence and the noun it modifies. After finishing her homework, which took several hours, she rewarded herself with a relaxing bubble bath."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Adjectival clause: she rewarded herself with a relaxing bubble bath, Noun:bath"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Adjectival clause: which took several hours, Noun: homework"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Adjectival clause: she rewarded herself with a relaxing bubble bath, Noun:bubble"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of these"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In the sentence The dress looks expensive, ‘expensive’ is a predicative adjective."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "They are playing football. The passive form will be ___."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Football is being played by them"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Football was played by them"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Football has been playing by them"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Football will be played by them"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the agent in the sentence “Adult mantises eat more or less everything that breathes and is small enough to capture.”"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Everything that breathes"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Is small enough to capture"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Adult mantises"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of these"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct passive form of the following sentence. “My friends saved an apple for me.”"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The apple my friends saved is for me"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "An apple saved by my friends was for me"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "An apple was saved for me by my friends"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "My friends saved me an apple"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 2 · Quiz 1 · 26 Oct 2025 · QDF4 · Part 3"
+}

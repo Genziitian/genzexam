@@ -1,0 +1,247 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 1 · Quiz 2 · Dec 2024 · Part 2",
+  "subject": "English 1",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "мса The children __ that it was their mother's birthday. L Passage / Context Read the excerpt given below and fill in the blanks for the given subquestions with the verb forms that best tit the passage trom the options provided. Your chosen answer should maintain the tense consistency and une narratve patter or the excerpt of working for the good of others, and especially did she busy herself at her loom; indeed, she came to be called the Weaving Princess. The Sun [ii] him that if he could give his daughter in marriage, all would be well; her dormant love would be kindled into a flame that IlI] iner wnole Deino and anve out the pensive spirit wnicn oppressed her. Kingen was a right honest herdsman who iv _his cows on the borders of the Heavenly Stream. The Sun-King proposed to bestow his daughter on Kingen. The love that bound Shokujo and Kingen to one anther was a great love. With its awakening, Shokujo [v] _ her former occupations, nor did she any longer labor industriously at the loom, but laughed, and danced, and sang, and made merry from morning till night. Excerpted from: Old-World Japan: Legends of the Land of the Gods. Retold by Frank Rinder, The Project Gutenberg Literary Archive Foundation, 2014, p. 67. Project Gutenberg."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Are hosting"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Had forgotten c Would not recognize"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Would have been"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Will have escaped"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "soft melancholy seemed to brood over Shokujo, the daughter of the Sun, but she never (i]."
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Anirban Instruction MCO Select true/false for the following statement. The sentence, 'Ritu watches cartoons every day is an example of present continuous tense. marks True False"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Instruct"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Instructing Instructs _ his secretary to bring the files up."
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "MCO Choose the future pertect continuous tense sentence from the following options: •genzitian.in/ecosystem video solutions - exam.genzitan.in roulube -youtube.com/coen-ziltan"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "We are going to meet our friend at the railway station"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Lucy will travel around the world in June"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "He will have joqqed two miles berore reaching the main road. She will have been driving for an hour by the time she gets to the office."
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The word cowardice is stressed as 'Cowardice"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Co'wardice Cowar dice"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Coward'ice"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In the plural noun gloves, the plural marker sounds as [s]"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "(z]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[iz]"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The plural markers for the words 'dates\", 'days and months are"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "/s/. /s/, and /z/ respectively"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "/z/. /z/, and /s/ respectively V /s/. /z/, and /z/ respectively"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many syllables are there in the word inauguration?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "3 •"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "6"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many syllables are there in the word dilute?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "3"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "4"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 1 · Quiz 2 · Dec 2024 · Part 2"
+}

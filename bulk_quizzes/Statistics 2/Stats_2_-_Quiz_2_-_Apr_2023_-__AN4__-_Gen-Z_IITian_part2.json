@@ -1,0 +1,113 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Statistics 2 · Quiz 2 · Exam · Part 2",
+  "subject": "Statistics 2",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Kunal throws a dart onto a circular board. Let a random variable X denote the distance from the center to the point where the dart hits the board. Suppose the PDF of X is f(2) = 1a1 - 8) of ewed Based on the above data, answer the given subquestions. otherwise Find the PDF of the marks of a candidate chosen uniformly at random."
+        }
+      ],
+      "acceptable_answers": [
+        "A"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Kunal throws a dart onto a circular board. Let a random variable X denote the distance from the center to the point where the dart hits the board. Suppose the PDF of X is f(2) = 1a1 - 8) of ewed Based on the above data, answer the given subquestions. otherwise"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "31092)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "3+01]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1120g()"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "At a particular petrol pump, petrol is stocked in a bulk tank each week. Let a random variable X denote the proportion of the tank's capacity that is stocked in a civen week and let y denote the proportion of the tank's capacey that is sold in the same week. The petrol pump cannot sell more than what was stocked in a given week Assume the joint density function of X and Y is given by far (2, a) = a DewS * S 2. Bused on the above data. answer the given subquestions. Pand the value of c. Enter the answer correct to one decimal place."
+        }
+      ],
+      "numerical_answer": 0.5,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "At a particular petrol pump, petrol is stocked in a bulk tank each week. Let a random variable X denote the proportion of the tank's capacity that is stocked in a civen week and let y denote the proportion of the tank's capacey that is sold in the same week. The petrol pump cannot sell more than what was stocked in a given week Assume the joint density function of X and Y is given by far (2, a) = a DewS * S 2. Bused on the above data. answer the given subquestions. Find the probability that the amount of petrol sold in a given week is less than half the amount stocked in that week. Enter the answer correct to two decimal places"
+        }
+      ],
+      "numerical_answer": 0.25,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In a manufacturing company, each machine produces 600 bottles daily. If a bottle is selected uniformly at random, then the probability that the bottle is of good quality is 60%. Based on the above data, answer the given subquestions. Suppose a sample of 20 bottles is selected for a cuality inspection. Let a random vanable A denote the total number of bottles that are of bad quality in the selected sample. Which of the following is true? X ~ Binomial (600, 0.6)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "X ~ Binomial (20, 0.6)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "a X ~ Binomial(20, 0.4)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "X ~ Binomial 600,0.41"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "Statistics 2 · Quiz 2 · Exam · Part 2"
+}

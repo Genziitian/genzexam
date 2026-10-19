@@ -1,0 +1,101 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "May 2025 Endterm · Part 3",
+  "subject": "Managerial Economics",
+  "section": "endterm",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What should be the socially efficient number of hives that the beekeeper should maintain ____________"
+        }
+      ],
+      "numerical_answer": 6.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many beehives will the beekeeper maintain if we ignore the apple orchard ____________ Question Id : 6406531424425 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Imagine that you have been working after college and now face the decision of whether or not to get an MBA at a prestigious institution. The cost of getting the MBA is 10. (Again, you can decide on the denomination, but rest assured that this sum includes the income lost over the course of the two years you will be studying!) Your future value is your stream of income, which depends on the strength of the labor market for the next decade. If the labor market is strong then your income value from having an MBA is 32, while your income value from your current status is 12. If the labor market is average then your income value from having an MBA is 16, while your income value from your current status is 8. If the labor market is weak then your income value from having an MBA is 12, while your income value from your current status is 4. Further assume that the probability of a strong labor market is p, of an average labor market is 0.5 and of a weak labor market is 0.5− p. Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "numerical_answer": 4.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If P=0.4, what is the highest price the university can charge for you to be willing to go ahead and get an MBA? ____________ Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "2.8 Question Id : 6406531424428 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What price would this monopolist will set? ____________"
+        }
+      ],
+      "numerical_answer": 25.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many apartments will he offer for rent?____________"
+        }
+      ],
+      "numerical_answer": 50.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What price would he set if he had 40 apartments? ____________"
+        }
+      ],
+      "numerical_answer": 30.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many would he rent if he had 40 apartments?____________"
+        }
+      ],
+      "numerical_answer": 40.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "May 2025 Endterm · Part 3"
+}

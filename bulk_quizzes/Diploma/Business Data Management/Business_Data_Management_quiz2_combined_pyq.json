@@ -1,0 +1,104 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Business Data Management · Quiz 2 · Combined PYQ",
+  "title": "Business Data Management · Quiz 2 · Combined PYQ",
+  "subject": "Business Data Management",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A firm has annual sales turnover of INR 95,00,000/-. Its total current liabilities sum up to INR 3,00,00,000/-. It has INR 15,00,000/- as accounts receivable. Calculate the firm’s debtor days (round the answer to 2 decimal places)."
+        }
+      ],
+      "acceptable_answers": [
+        "57.00 to 58.00"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Calculate the Overall Equipment Effectiveness (OEE) of the Assembly Line Equipment for the month of July. (Round the OEE to two decimal places) Parameters: Question Id : 6406531174241 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix You oversee the inventory management of gear assemblies in a manufacturing facility. The particulars of the inventory are as follows: Starting Inventory: 100 units Daily Usage: 5 units Lead Time: 10 days Safety Stock: 20 units Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "0.77 to 0.81"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "After how many days should you trigger a re-order Question Id : 6406531174244 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Based on the data provided, answer the given subquestions. Sub questions"
+        }
+      ],
+      "numerical_answer": 6.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Determine the percentage change in total revenue when income increases from Rs 15000 to Rs 25000. (upto 3 decimals, hint : if your ans is 98% then enter 0.98 as your answer). Income level 1 1) Income = Rs 15,000 2) Qty demanded = 60 units 3) Price per qty = Rs 40 Income level 2 1) Income = Rs 25,000 2) Qty demanded = 90 units 3) Price per qty = Rs 38"
+        }
+      ],
+      "numerical_answer": 0.425,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Question Id : 6406531325323 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "0.77 to 0.81"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "After how many days should you trigger a re-order Question Id : 6406531325326 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Sub questions"
+        }
+      ],
+      "numerical_answer": 6.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If they could make 20 more components per hour, what would have been the OEE? (ignore the case of other sub-question)"
+        }
+      ],
+      "acceptable_answers": [
+        "0.640 to 0.650"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ]
+}

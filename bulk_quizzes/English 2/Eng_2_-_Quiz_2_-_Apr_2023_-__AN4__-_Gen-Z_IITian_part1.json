@@ -1,0 +1,291 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 2 · Quiz 2 · Apr 2023 · Part 1",
+  "subject": "English 2",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "MCO What does Shrinidhi do, as soon as she enters the interview room? She sits down on the chair. She greets the interviewer."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "She waits for the interviewer to greet her. ¿ marks"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "She stands at the doorway, silently."
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What does the phrase \"gain a firm grounding\" mean? Gaining a foundational knowledge in a particular subject"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Understanding how to be rooted and humble"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Gaining confidence and selt-esteem"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Pursuing an new degree"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "¿ marks In what chronological order does Shrinidhi respond to the question \"Tell me about yourself\"? Past-present-future"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Present-past-future"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Future-present-past"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Past-future-present"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "L Passage / Context Fill in the blanks with correct expressions of numbers/values/quantity. In 2012, it was estimated that there were more than 100,000 Africans living in Guangzhou, but 1) of them stayed for a very short time. According to official figures, 2) _ 430,000 (plus or minus 1000) arrivals and exits by nationals from African countries were recorded at the city's checkpoints in the first nine months of 2014. Guangzhou officials released official population figures for residents in 2014 due to popular fears of an Ebola outbreak in the city by way of the African community. According to the city, there were 16,000 Africans including North Africans residing in Guangzhou. Of these residents, 3) 4,000, that is twenty-five 4) _ were long-term residents, which is defined by city officials as living for longer than 6 months in the city. A 2014 article in the magazine This Is Africa noted a decrease in population, blaming increased immigration enforcement and foreign exchange difficulties. A September 2016 CNN article on the community claimed that upwards to thousands of African residents had left the city, 5) in the previous 18 months. From 2014, the African population significantly declined, dropping to 10,344 residents by February 2017. Based on the above data, answer the given subquestions."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Because he feels that Shrinidhi is not qualified."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Because Shrinidhi's profile does not show experience in the field of law. c Because he thinks Shrinidhi is too timid."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Because he feels that there are no connections between the field of human rights and law."
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct answer for blank(1)."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Minor"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Few"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Major"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Most"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Mostly"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct answer for blank(2). Above Approximately"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Mostly"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Majorly"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Minorly"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct answer for blank(3)."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "About в Approximately c Mostly"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Out of"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Mainly"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct answer for blank(4). A Penny Shilling Percent"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Percentile"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Cent"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct answer for blank(5). Minorly Approximately Mostly"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Most"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Fewly"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 2 · Quiz 2 · Apr 2023 · Part 1"
+}

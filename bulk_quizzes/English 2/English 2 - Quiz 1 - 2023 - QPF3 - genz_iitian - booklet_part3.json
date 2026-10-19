@@ -1,0 +1,377 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 2 · Quiz 1 · 26 Feb 2023 · QPF3 · Part 3",
+  "subject": "English 2",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "\"Sajal takes the medal.\" In this sentence, the verb 'take' will change to _______ when converted to passive voice."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Will take"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Is taken"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Was taken"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Were taken"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "From the following sentences, identify one carrying a predicative adjective."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "That girl Isabella looks rather dedicated."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "These shallow shores stretch through to eternity."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "These fellows with bad grades must up their game."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "That corroded tap was cleaned by Praveen."
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In the following sentence, identify the nature of the adjective. The adjectives are underlined. “The Jewish community in Kochi is ancient.”"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Attributive, predicative"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Predicative, attributive"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Indicative, attributive"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Imaginative, predicative"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the adjective(s) in the following sentence. Siva had quite a bad day yesterday."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Day"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Quite a bad"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Yesterday"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Quite"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Degree adverbs are used to indicate the degree of something. This statement is"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "TRUE"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "FALSE"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "I ___ appreciate your efforts in the growth of this company."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Very"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Very much"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both Very and Very much"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of these"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A: He was very much frustrated about the results. B: He was very frustrated about the results."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "A is true and B is false"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "B is true and A is false"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both are true"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both are false"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Comment adverbs can occur at the ___ of a sentence."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Front"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Middle"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "End"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "All of these"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In the following sentence, identify the role of the embedded clause. “She knows where to find it.”"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Adjective"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Subject"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Adjunct"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Object"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the type of clause embedded in the following sentence. “The dog which has been chasing us has now disappeared.”"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Relative clause"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Adverbial clause"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Subject clause"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Object clause"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 2 · Quiz 1 · 26 Feb 2023 · QPF3 · Part 3"
+}

@@ -1,0 +1,187 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 1 · Quiz 2 · Apr 2023 · AN4 · Part 1",
+  "subject": "Mathematics 1",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "THIS IS QUESTION PAPER FOR THE SUBJECT MATHEMATICS FOR DATA SCIENCE 1. Do you wish to continue? / YES 8 NO"
+        }
+      ],
+      "acceptable_answers": [
+        "A"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Read the instructions carefully before answering. Are you ready to begin? YES"
+        }
+      ],
+      "acceptable_answers": [
+        "A"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let f(z) = 2*8, * and g(x) = 2x in their respective domains. Let h(x) = (f o g)(z). Use this information to answer the given subquestions. Which of the following options is/are true? Domain of f(x) is (0, 1) U (1, ∞)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "h(x) = (V2z) $108,»VZz"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Domain of = is (0, ∞0)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "9(x)"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        2
+      ],
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let f(z) = 2*8, * and g(x) = 2x in their respective domains. Let h(x) = (f o g)(z). Use this information to answer the given subquestions. For what value of x does k(z) have the value 64?"
+        }
+      ],
+      "numerical_answer": 4.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let f(z) = 2*8, * and g(x) = 2x in their respective domains. Let h(x) = (f o g)(z). Use this information to answer the given subquestions. Which of the following options is/are true? / log3 2 < 1 8 3 < 10832< = log, 2 is irrational S marks •"
+        }
+      ],
+      "acceptable_answers": [
+        "A, C"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the function f(x) = e. Use this information to answer the given subquestions. MSQ Which of the following options is/are true? f(x) is increasing in its domain 8 f(z) is one-one f(x) is not invertible f(x) is an even function Answer: C, D 4 marks • Which of the following options is/are true? А f(x) is differentiable at 2 = 0 S marks •"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "lim, a f(x) exists"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "f(x) is continuous in its domain"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "lim,-+0 f(x) = 0"
+          }
+        ]
+      ],
+      "correct_answers": [
+        1,
+        2
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the function f(x) = e. Use this information to answer the given subquestions. MSQ Which of the following options is/are true? f(x) is increasing in its domain 8 f(z) is one-one f(x) is not invertible f(x) is an even function Answer: C, D 4 marks • MCO Which of the following is the graph of the function f(z) = ell? Which of the following is the graph of the function f(x) = ell? Figure (a) Figure (b) Figure (c) Figure (d) Figure (a)"
+        }
+      ],
+      "acceptable_answers": [
+        "A"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the function f(x) = e. Use this information to answer the given subquestions. MSQ Which of the following options is/are true? f(x) is increasing in its domain 8 f(z) is one-one f(x) is not invertible f(x) is an even function Answer: C, D 4 marks • Find the number of solutions of the equation 22° = 2z ecosystem genzitian.in/ecosystem video solutions - exam.genzian.in foulube - youtube.com/@gen-Litan"
+        }
+      ],
+      "numerical_answer": 2.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the function f(x) = e. Use this information to answer the given subquestions. MSQ Which of the following options is/are true? f(x) is increasing in its domain 8 f(z) is one-one f(x) is not invertible f(x) is an even function Answer: C, D 4 marks • 2022 + 8 × 2023\" Find the limit of the sequence (an} where an = 2024 + 4 × 2023\"*"
+        }
+      ],
+      "numerical_answer": 2.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the function f(x) = e. Use this information to answer the given subquestions. MSQ Which of the following options is/are true? f(x) is increasing in its domain 8 f(z) is one-one f(x) is not invertible f(x) is an even function Answer: C, D 4 marks • 8n? + 10n Find the limit of the sequence (an} where an = 2n7 + 6n - 7"
+        }
+      ],
+      "numerical_answer": 4.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "Mathematics 1 · Quiz 2 · Apr 2023 · AN4 · Part 1"
+}

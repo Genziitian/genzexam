@@ -1,0 +1,102 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 2 · Quiz 2 · Jul 2022 · Part 2",
+  "subject": "Mathematics 2",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let T be a linear transformation from Ra to R° defined as T(z, y, z) = (* + y - z, y + z). Let A be the matrix representation of I with respect to the basis 8 = 1, 1, 0), (0, 1, 1), (1, 0, 1)) for the domain and the basis = 1(1, 1) (1,0) for the codomain A - d e \" Answer the sub-questons using the above information. What is the value of f — c?"
+        }
+      ],
+      "numerical_answer": -2.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let T be a linear transformation from Ra to R° defined as T(z, y, z) = (* + y - z, y + z). Let A be the matrix representation of I with respect to the basis 8 = 1, 1, 0), (0, 1, 1), (1, 0, 1)) for the domain and the basis = 1(1, 1) (1,0) for the codomain A - d e \" Answer the sub-questons using the above information. What is the value of m?"
+        }
+      ],
+      "numerical_answer": 2.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let T be a linear transformation from Ra to R° defined as T(z, y, z) = (* + y - z, y + z). Let A be the matrix representation of I with respect to the basis 8 = 1, 1, 0), (0, 1, 1), (1, 0, 1)) for the domain and the basis = 1(1, 1) (1,0) for the codomain A - d e \" Answer the sub-questons using the above information. What is the value of n?"
+        }
+      ],
+      "numerical_answer": -1.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let T be a linear transformation from Ra to R° defined as T(z, y, z) = (* + y - z, y + z). Let A be the matrix representation of I with respect to the basis 8 = 1, 1, 0), (0, 1, 1), (1, 0, 1)) for the domain and the basis = 1(1, 1) (1,0) for the codomain A - d e \" Answer the sub-questons using the above information. Find out the nullity of T."
+        }
+      ],
+      "numerical_answer": 1.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Suppose two publication houses (publication house A and publication house B) have organized a sale of their books. Both of them publish three types of books: novels, poetry collections and collections of short stories. The selling price (in hundreds of rupees) of these three types of books in publication houses A and B Novels Poetry collections Collections of short stories are given as follows: House A The House B publication houses announced that in order to avail these special sale prices, customers have to buy equal number of novels, equal number of poetry collection, and equal number of collection of short stories from each of the publication houses (i.e., if a customer buys a number of novels, y number of poetry collections and z number of collection of short stories from Publication house A; then they have to buy exactly x number of novels, y number of poetry collections and z number of collection of short stories from Publication house B, to avail the benefit of the sale). So there is a map taking the tuple consisting of the number of books of each type bought (Novels, Poetry collections, Collection of short stories) to the prices paid by customers who availed the sale to each of the publication houses, which yields a linear transformation (P) from Ra to IR? (where the first and second co-ordinates of the image denotes the prices paid to publication house A and publication house B, respectively). Answer the sub-questions using the above information. If A is the matrix representation of T with respect to the basis {(1, 0,0), (0, 1, 0), (0,0, 1)} for Ra and to the basis {(1, 0), (0, 1)} for R2, then A is 15 3"
+        }
+      ],
+      "acceptable_answers": [
+        "B"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Suppose two publication houses (publication house A and publication house B) have organized a sale of their books. Both of them publish three types of books: novels, poetry collections and collections of short stories. The selling price (in hundreds of rupees) of these three types of books in publication houses A and B Novels Poetry collections Collections of short stories are given as follows: House A The House B publication houses announced that in order to avail these special sale prices, customers have to buy equal number of novels, equal number of poetry collection, and equal number of collection of short stories from each of the publication houses (i.e., if a customer buys a number of novels, y number of poetry collections and z number of collection of short stories from Publication house A; then they have to buy exactly x number of novels, y number of poetry collections and z number of collection of short stories from Publication house B, to avail the benefit of the sale). So there is a map taking the tuple consisting of the number of books of each type bought (Novels, Poetry collections, Collection of short stories) to the prices paid by customers who availed the sale to each of the publication houses, which yields a linear transformation (P) from Ra to IR? (where the first and second co-ordinates of the image denotes the prices paid to publication house A and publication house B, respectively). Answer the sub-questions using the above information."
+        }
+      ],
+      "acceptable_answers": [
+        "1"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Suppose two publication houses (publication house A and publication house B) have organized a sale of their books. Both of them publish three types of books: novels, poetry collections and collections of short stories. The selling price (in hundreds of rupees) of these three types of books in publication houses A and B Novels Poetry collections Collections of short stories are given as follows: House A The House B publication houses announced that in order to avail these special sale prices, customers have to buy equal number of novels, equal number of poetry collection, and equal number of collection of short stories from each of the publication houses (i.e., if a customer buys a number of novels, y number of poetry collections and z number of collection of short stories from Publication house A; then they have to buy exactly x number of novels, y number of poetry collections and z number of collection of short stories from Publication house B, to avail the benefit of the sale). So there is a map taking the tuple consisting of the number of books of each type bought (Novels, Poetry collections, Collection of short stories) to the prices paid by customers who availed the sale to each of the publication houses, which yields a linear transformation (P) from Ra to IR? (where the first and second co-ordinates of the image denotes the prices paid to publication house A and publication house B, respectively). Answer the sub-questions using the above information. We apply the sequence of row operations on A as follows: Step 1: Rz - 3R1; Step 2: - 3 Rz; Step 3: R1 - 2Rz. Applying these row operations in the given order, the matrix B is derived. Let B = What is the value of d?"
+        }
+      ],
+      "numerical_answer": 0.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "Mathematics 2 · Quiz 2 · Jul 2022 · Part 2"
+}

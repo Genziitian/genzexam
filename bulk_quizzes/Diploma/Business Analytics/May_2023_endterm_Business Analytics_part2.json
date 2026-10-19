@@ -1,0 +1,118 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "May 2023 Endterm · Part 2",
+  "subject": "Business Analytics",
+  "section": "endterm",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the value of X4?"
+        }
+      ],
+      "acceptable_answers": [
+        "2.10 to 2.30"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the elasticity of the demand-response curve?"
+        }
+      ],
+      "acceptable_answers": [
+        "0.71 to 0.75"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the maximum possible demand for cool drinks at IITM? Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "105 to 109 Question Id : 640653612622 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many decision variables are present in the dual formulation?"
+        }
+      ],
+      "numerical_answer": 6.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many decision variables in the optimal solution of the dual will have a value of “0”?"
+        }
+      ],
+      "numerical_answer": 1.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let us assume 5 DMUs in a DEA problem. Also, assume this as a two inputs and one output problem. Output of all DMUs are 5,00,000 and the reference units for DMU 1 are 2 and 5. The inputs of DMU 2 are (1,00,000 and 8). Similarly, the inputs of DMU 5 are (75,000 and 10). We are solving the problem for DMU 1, and dual variables for DMU 2 is 0.65 and DMU 5 is 0.35. Calculate the required level of input 1 for HCU 1."
+        }
+      ],
+      "acceptable_answers": [
+        "91248 to 91252"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let us assume 5 DMUs in a DEA problem. Also, assume this as two inputs and one output problem. Output of all DMUs are 5,00,000 and the reference units for DMU 1 are the DMUs 2 and 5. The inputs of DMU 2 are (1,00,000 and 8). Similarly, the inputs of DMU 5 are (75,000 and 10). We are solving the problem for DMU 1, and dual variables for DMU 2 is 0.65 and DMU 5 is 0.35. Calculate the required level of input 2 for HCU 1."
+        }
+      ],
+      "acceptable_answers": [
+        "8.6 to 8.8"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In a conjoint problem with 4 products and 2 attributes, how many pair-wise preferences are possible? Question Id : 640653612635 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Using the below confusion matrix answer the given subquestions. Sub questions"
+        }
+      ],
+      "numerical_answer": 6.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "May 2023 Endterm · Part 2"
+}

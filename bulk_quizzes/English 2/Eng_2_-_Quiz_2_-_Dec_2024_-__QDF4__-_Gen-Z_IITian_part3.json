@@ -1,0 +1,215 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 2 · Quiz 2 · Dec 2024 · Part 3",
+  "subject": "English 2",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "MCO What does the modal auxiliary in the following sentence denote? Perhaps she could ask for another serving or Dinvani."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Possibility Ability Suggestion"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Request"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Complete the given sentence with the most fitting question tag. No one picked up the dry-cleaning. Did they?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Didn't they? .U marks"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Would they?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Won't they?"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "\"They want to see what all the fuss is about.\" In this sentence, the clause 'what all the fuss is about' is the object of the verb"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Is See c Want"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Not an object Answer. B"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "From the tollowing options, identity the content type question."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Will they finish the job?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Can he lift deadweights? What is the time now in Bohemia?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Is this an art exhibition?"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "\"Akbar created a new religion.\" The interrogative form of this sentence is . Did Akbar create a new religion?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Does he create a religion? Will he create a new religion?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Is Akbar creating a new religion?"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Fill in the box (_) in the following sentence with the appropriate punctuation mark. \"India may have lost this match but there will be brighter times.\" Colon Comma"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Full stop"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Apostrophe"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Fill in the box (_ ) in the following sentence with the appropriate punctuation marks. \"Wimbledon which happens annually _ is a tennis grand slam.\" Comma, comma 041 cO Check whether the following sentence is correct with regard to the use of punctuation marks. All Martin wrote. \"This match will decide the fate of the series i .U marks"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Colon, full stop Full stop, comma"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Comma, colon"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Correct"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Incorrect"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 2 · Quiz 2 · Dec 2024 · Part 3"
+}

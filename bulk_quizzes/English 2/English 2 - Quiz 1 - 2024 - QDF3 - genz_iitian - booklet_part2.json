@@ -1,0 +1,365 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 2 · Quiz 1 · 25 Feb 2024 · QDF3 · Part 2",
+  "subject": "English 2",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the implied meaning of the sentences below: (Note that the word with stress is marked in bold). John used to go to <b>church </b>on Sundays"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "John used to go to church on Sundays, not to restaurants"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "It is John who used to go to church on Sundays, not Mary"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "John used to go to church on Sundays, not Mondays"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of these"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct statements from the following (i) Intonation helps in expressing emotions (ii) Intonation is responsible for pitch variation (iii) Intonation is responsible for correct tense (iv) Intonation denotes agreement"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "(i), (ii) and (iii) only"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "(i) and (ii) only"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "(ii), (iii) and (iv) only"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "All of these"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘We shall not flag or fail. We shall go on to the end. We shall fight in France, we shall fight on the seas and oceans, we shall fight with growing confidence and growing strength in the air…’ is an example of ______."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Assonance"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Anaphora"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Sibilance"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Hyperbole"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "“A heart of stone” is an example of?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Personification"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Alliteration"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Metaphor"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Simile"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘Life is much too important to be taken seriously.’ The figure of speech used here is"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Personification"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Simile"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Metaphor"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Paradox"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘Old Marley was as dead as a doornail ’ is an example of simile. This statement is _____."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Discourse marker ‘overall ’ occurs in the ____ position."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Initial"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Middle"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Final"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both Initial and Middle"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘He did not clear the exam and, as a result, he could not apply for that job.’ Here the discourse marker is ____."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Did not clear"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "As a result"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Could not"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "No discourse marker"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following sentences uses discourse markers to begin a conversation?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "So, I wanted to talk to you about something"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "I bought a car yesterday. I mean, I’m paying for it in instalments"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "There was an accident on ECR yesterday and he was there apparently"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "It was hands down one of the worst performances I’ve seen in my life"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In everyday conversation, it would be very difficult to guess the emotions of a person if there were no modulations such as intonation and stress."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 2 · Quiz 1 · 25 Feb 2024 · QDF3 · Part 2"
+}

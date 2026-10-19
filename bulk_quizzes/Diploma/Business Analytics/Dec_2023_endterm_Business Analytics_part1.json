@@ -1,0 +1,118 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Dec 2023 Endterm · Part 1",
+  "subject": "Business Analytics",
+  "section": "endterm",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the expected number of ice-creams that will be sold in any given bin? (Note: Enter the answer rounded to two decimal places. For example, if the answer is “1.234”, then enter it as “1.23”)"
+        }
+      ],
+      "numerical_answer": 3.5,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the “Degrees of Freedom” for the statistical test that will be performed? (Note: Enter the answer rounded to two decimal places. For example, if the answer is “1.234”, then enter it as “1.23”)"
+        }
+      ],
+      "numerical_answer": 1.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the value of the computed test statistic? (Note: Enter the answer rounded to two decimal places. For example, if the answer is “1.234”, then enter it as “1.23”)"
+        }
+      ],
+      "acceptable_answers": [
+        "2.3 to 2.7"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many degrees of freedom is present for the test used to determine if the sales in “Street-A” and “Street-B” are not-dependent on each other across days? (Note: Enter the answer rounded to two decimal places. For example, if the answer is “1.234”, then enter it as “1.23”)"
+        }
+      ],
+      "numerical_answer": 14.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If the aim is to find if the sales in “Street-A” and “Street-B” are independent on each other across days, then what is the expected sales on “Day-10” for “Street-A”? (Note: Enter the answer rounded to two decimal places. For example, if the answer is “1.234”, then enter it as “1.23”)"
+        }
+      ],
+      "acceptable_answers": [
+        "121 to 122"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If the aim is to find if the sales in “Street-A” and “Street-B” are independent on each other across days, then what is the expected sales on “Day-4” for “Street-B”? (Note: Enter the answer rounded to two decimal places. For example, if the answer is “1.234”, then enter it as “1.23”) The three figures below (Picture-1, Picture-2, Picture-3) provide the partial regression output from excel for three models (Model-1, Model-2 and Model-3) which were built on the same data (Hint: same number of rows, different number of columns). Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "112 to 114 Question Id : 640653696444 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the value of “A1”? (Note: Enter the answer rounded to two decimal places. For example, if the answer is “1.234”, then enter it as “1.23”)"
+        }
+      ],
+      "acceptable_answers": [
+        "1683 to 1688"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the value of “A2”? (Note: Enter the answer rounded to two decimal places. For example, if the answer is “1.234”, then enter it as “1.23”)"
+        }
+      ],
+      "acceptable_answers": [
+        "1302 to 1306"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "Dec 2023 Endterm · Part 1"
+}

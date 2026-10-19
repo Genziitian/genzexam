@@ -1,0 +1,197 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 1 · Quiz 2 · 06 Apr 2026 · Part 3",
+  "subject": "English 1",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The output of dairy produce has suffered because of large herds of cattle being affected by the deadly flu. The dairy farm owners will have to take control of the situation to produce the adequate quantity needed for profit-generation by the end of April.' Choose the appropriate stress for the two usages of the word 'produce' in its given order in the sentence."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "ProDUCE; PROduce PROduce; ProDUCE"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "PROduce; PROduce"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In the plural noun landscapes, the plural marker sounds as v [s]"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "(z]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[iz]"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The plural marker for the words 'stakeholders', 'stockouts', and 'networks' end in"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "/s/. /s/, and /z/ respectively."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "/z/. /z/, and /s/ respectively. V /z/, /s/, and /s/ respectively."
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The plural marker for the words 'mistakes', 'misconceptions', and 'oversights' end in /s/, /z/, and /s/ sound respectively."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which /p/ sound in the word people is aspirated? /p/ in the first syllable"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "/p/ in the second syllable c Both /p/ sounds are aspirated"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "No /p/ sounds are aspirated"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The word 'aversion' has _ syllables. в 2"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "3"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "4"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The word 'performance has _ syllables."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "1 в 2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "3"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "4"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 1 · Quiz 2 · 06 Apr 2026 · Part 3"
+}

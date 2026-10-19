@@ -1,0 +1,389 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Python Programming · Quiz 1 · 27 Oct 2024 · QDD3 · Part 1",
+  "subject": "Python Programming",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the input for the first line of the following code snippet to be \"abcd\", and select the correct option from the choices below."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "word = input()\nnew_word = word[0::2] + \"-\"\nnew_word += word[1::2]\nprint(new_word)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "ab-cd"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "ac - bd"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "ac-bd"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "All snippets are wrong."
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "word=\"abcd\". word[0::2]='ac', then + '-' = 'ac-'. word[1::2]='bd'. Result 'ac-bd'."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "When will the following code snippet output True?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "word_1 = input()\nword_2 = input()\nflag = True\nif(len(word_1) < len(word_2)):\n    for ch in word_1:\n        if ch not in word_2:\n            flag = False"
+        },
+        {
+          "kind": "text",
+          "value": "else:"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "for ch in word_2:\n        if ch not in word_1:\n            flag = False\nprint(flag)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Only when word_1 and word_2 are same."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "When the number of characters in word_1 is less than number of characters in word_2."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "It will always print True."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Only when either set of characters in word_1 is subset of set of characters in word_2 or set of characters in word_2 is subset of set of characters in word_1."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "It will always print False."
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "If word_1 is shorter it checks every char of word_1 is in word_2 (set(word_1) subset of set(word_2)); otherwise it checks set(word_2) subset of set(word_1). flag stays True exactly when one character-set is a subset of the other."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Four snippets are intended to count the number of vowels in each word of an input sentence. Which of the snippets are correct (produce the same correct vowel counts)?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "# Snippet-1\nsentence = input()\nvowels = 'aeiouAEIOU'\nwords = sentence.split()\nvowel_counts = []\nfor word in words:\n    count = 0\n    for char in word:\n        if char in vowels:\n            count += 1\n    vowel_counts.append(count)\nprint(vowel_counts)\n# Snippet-2\nsentence = input()\nvowels = set('aeiouAEIOU')\nwords = sentence.split()\nvowel_counts = []\nfor word in words:\n    count = len(set(word).intersection(vowels))\n    vowel_counts.append(count)\nprint(vowel_counts)\n# Snippet-3\nsentence = input()\nvowels = 'aeiou'\nwords = sentence.split()\nvowel_counts = []\nfor word in words:\n    word = word.lower()\n    count = 0\n    for char in word:\n        count += 1 if char in vowels else 0\n    vowel_counts.append(count)\nprint(vowel_counts)\n# Snippet-4\nsentence = input().split()\nvowel_counts = []\nfor word in sentence:\n    word = word.upper()\n    count = 0\n    for char in word:\n        if char in 'AEIOU':\n            count += 1\n    vowel_counts.append(count)\nprint(vowel_counts)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Only snippet-1 and snippet-2 is correct"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Only snippet-2 and snippet-4 is correct"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "All snippets are wrong"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Only snippet-1, snippet-3 and snippet-4 is correct"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Snippet-2 uses set(word).intersection, counting DISTINCT vowels (e.g. 'banana' -> 1 instead of 3). Snippets 1, 3 and 4 each count every vowel occurrence and agree."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following code. Which of the following statement(s) is/are correct? (Select all that apply)"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "num = int(input())\nif num < 0:\n    num = num + 100"
+        },
+        {
+          "kind": "text",
+          "value": "else:"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "num = abs(num - 100)\nprint(num)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "It prints different values based on the magnitude of the input number."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "It always adds 100 and prints the final value."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "If the input is either +num or -num, the output is same."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "An equivalent code segment is: num = float(input()); num = abs(num) + 100; print(num)"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The output depends on the input value, so (a) is true. It does not always add 100 (else branch computes abs(num- 100)). +num and -num do not always give the same result (e.g. 150 -> 50 but -150 -> -50). abs(num)+100 is not equivalent (5 - > 95 vs 105)."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the below code snippets produce(s) the following output? (Select all that apply) [[], [0], [0, 1], [0, 1, 2], [0, 1, 2, 3]]"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "values = [] for i in range(5): temp = [] for item in range(i): temp.append(item) values.append(temp) print(values)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "values = [] for i in range(4): for item in range(i): values.append(item) print(values)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "values = [[item for item in range(i)] for i in range(5)] print(values)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "values = [] for i in range(4): temp = [] for item in range(i): temp.append(item) values.append(temp) print(values)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "values = [[item for item in range(i)] for i in range(4)] print(values)"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        2
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The target has 5 nested lists, so range(5) is needed. Snippet-1 (range(5) building temp lists) and snippet-3 (nested comprehension over range(5)) both produce it. The range(4) versions stop at 4 lists, and snippet-2 produces a flat list."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the given program. What is the output of the above code for the input \"the extraordinary performance\"? Enter an integer as your answer."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "words = input().split()\nvalue = 0\nfor word in words:\n    value += max(min(len(word), 12), 9)\nprint(value)"
+        }
+      ],
+      "numerical_answer": 32,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Words: 'the'(3->min 3, max(3,9)=9), 'extraordinary'(13->min 12, max=12), 'performance'(11->min 11, max=11). 9+12+11 = 32."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Two integers are entered as strings for the following code snippet. For instance, input \"15\" for number_1 and \"7\" for number_2. What will be the output for the specified input?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "number_1 = int(input())\nnumber_2 = int(input())\nif number_1 == number_2:\n    if number_1 % 2 == 0:\n        print(number_1)\n    else:\n        print(number_2)\nelif number_2 < number_1:\n    print(number_1 // number_2)"
+        },
+        {
+          "kind": "text",
+          "value": "else:"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "print(number_2 // number_1)"
+        }
+      ],
+      "numerical_answer": 2,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "number_1=15, number_2=7. Not equal; number_2 < number_1, so print(15 // 7) = 2."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What will be the output of the following code snippet? Enter an integer as your answer."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "words = ['Learning', 'Python', 'is', 'fun']\nfinal_str = ' '  # single space\nfinal_str = final_str.join(words)\nfinal_str = final_str.strip(\"oslo\")\nprint(len(final_str))"
+        }
+      ],
+      "numerical_answer": 22,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "join gives 'Learning Python is fun' (22 chars). strip('oslo') removes leading/trailing o,s,l characters; the string starts with 'L' and ends with 'n', so nothing is removed. Length stays 22."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What will be the output of the following code snippet? Enter an integer as your answer."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "result = 0\nfor i in range(1, 15):\n    if i % 2 == 0:\n        continue\n    elif i % 5 == 0:\n        break\n    result += i\nprint(result)"
+        }
+      ],
+      "numerical_answer": 4,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "i=1 (odd, not mult of 5) result=1; i=2 even continue; i=3 result=4; i=4 even continue; i=5 odd and 5%5==0 -> break. result=4."
+        }
+      ]
+    }
+  ],
+  "title": "Python Programming · Quiz 1 · 27 Oct 2024 · QDD3 · Part 1"
+}

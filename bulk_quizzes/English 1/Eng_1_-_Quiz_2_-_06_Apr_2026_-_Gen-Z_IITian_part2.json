@@ -1,0 +1,239 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 1 · Quiz 2 · 06 Apr 2026 · Part 2",
+  "subject": "English 1",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "MCO tach ot these questions _ to be answered separately. Needs"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Have"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Is"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Yen _ MCQ the currency in Japan."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Has"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Needs c Have"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "IS"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Are"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The spotted flycatcher _ a thin, sibilant call."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Has"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Needs"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Have"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Is"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Are"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The nuns in that convent under an oath of silence."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Has"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Needs c Have"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Is"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Are"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The children _ to be accompanied on their excursion."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Has"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Needs Have"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Is Are"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the future perfect continuous tense sentence from the following options: a tou will win tne exam"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Your mother will love you forever V She will have been learning to drive a car for three hours"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Will she do it again?"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following words has three syllables?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Pencil Mountain Banana"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "School"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 1 · Quiz 2 · 06 Apr 2026 · Part 2"
+}

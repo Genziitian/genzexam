@@ -1,0 +1,104 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "May 24 Quiz1 · Part 1",
+  "subject": "Business Analytics",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If the life of the RO Filter is expected to follow a uniform distribution, then what is the expected frequency in any given bin? (Note: If your answer is in decimal, enter it rounded to two decimal places. For example, if your answer is “10.256”, enter it as “10.26”)"
+        }
+      ],
+      "acceptable_answers": [
+        "21 to 23"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If the life of the RO filter is expected to follow a uniform distribution, then what is the value of the computed test statistic? (Note: If your answer is in decimal, enter it rounded to two decimal places. For example, if your answer is “10.256”, enter it as “10.26”)"
+        }
+      ],
+      "numerical_answer": 22.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If the life of the RO filter is expected to follow a uniform distribution, then what is the degrees of freedom for the corresponding statistical test to verify the same? (Note: If your answer is in decimal, enter it rounded to two decimal places. For example, if your answer is “10.256”, enter it as “10.26”)"
+        }
+      ],
+      "numerical_answer": 1.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If the life of the RO filter is expected to follow a normal distribution with a mean of 60 and standard deviation of 24, then what is the expected frequency in the “Medium Life” bin? (Note-1: The bins DO NOT SPILT the sample space into equal areas) (Note-2: If your answer is in decimal, enter it rounded to two decimal places. For example, if your answer is “10.256”, enter it as “10.26”)"
+        }
+      ],
+      "acceptable_answers": [
+        "2.40 to 2.80"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If the life of the RO filter is expected to follow a normal distribution with a mean of 60 and standard deviation of 24, then what is the expected frequency in the “Excellent Life” bin? (Note-1: The bins DO NOT SPILT the sample space into equal areas) (Note-2: If your answer is in decimal, enter it rounded to two decimal places. For example, if your answer is “10.256”, enter it as “10.26”)"
+        }
+      ],
+      "acceptable_answers": [
+        "4.10 to 4.30"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If the life of the RO filter is expected to follow a normal distribution with a mean of 60 and standard deviation of 24, then what is the value of the computed test statistic? (Note-1: The bins DO NOT SPILT the sample space into equal areas) (Note-2: If your answer is in decimal, enter it rounded to two decimal places. For example, if your answer is “10.256”, enter it as “10.26”)"
+        }
+      ],
+      "acceptable_answers": [
+        "1.5 to 2.5"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If the life of the RO filter is expected to follow a normal distribution with a mean of 60 and standard deviation of 24, then what is the degrees of freedom for the corresponding statistical test to verify the same? (Note-1: The bins DO NOT SPILT the sample space into equal areas) (Note-2: If your answer is in decimal, enter it rounded to two decimal places. For example, if your answer is “10.256”, enter it as “10.26”)"
+        }
+      ],
+      "numerical_answer": 3.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "May 24 Quiz1 · Part 1"
+}

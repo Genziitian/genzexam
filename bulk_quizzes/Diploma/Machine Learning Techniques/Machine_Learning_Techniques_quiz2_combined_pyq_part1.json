@@ -1,0 +1,142 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Machine Learning Techniques · Quiz 2 · Combined PYQ · Part 1",
+  "title": "Machine Learning Techniques · Quiz 2 · Combined PYQ · Part 1",
+  "subject": "Machine Learning Techniques",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "You are working on a decision tree algorithm to classify whether a bank loan applicant will default on their loan based on several financial factors. The dataset includes Credit Score, Annual Income, Loan Amount, Loan Term as features. The target variable is binary: 1 for ”Default” and 0 for ”No Default.” You have a dataset of 500 loan applicants, and you want to construct a decision tree to predict loan default. To determine the first split (root node), you'll use the information gain as the criterion. Here’s the distribution of loan default in the dataset: Default: 150 applicants No Default: 350 applicants Calculate the Entropy for the initial dataset."
+        }
+      ],
+      "acceptable_answers": [
+        "0.83 to 0.92"
+      ],
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Given a training dataset with 100 data points, how many distances would we have to compute in the process of predicting the label of test-point in the k-NN algorithm with k = 5"
+        }
+      ],
+      "numerical_answer": 100.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If the proportion of points belonging to class 1 in a node is p, for what value of p is the node’s entropy maximum? Question Id : 640653690185 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Sub questions"
+        }
+      ],
+      "numerical_answer": 0.5,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What will be the predicted label according to the Naive Bayes decision rule?"
+        }
+      ],
+      "numerical_answer": 1.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Question Id : 640653771197 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Consider a regression problem where you are tasked with predicting the sale prices of houses based on their square footage. You decide to experiment with two different models: The training dataset consists of information on 200 houses, and you use the models to make predictions on a test dataset of 50 houses. The Mean Squared Error (MSE) is chosen as the evaluation metric. Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "numerical_answer": 1.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Question Id : 640653771202 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "0.30 to 0.35"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Question Id : 6406531174065 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "numerical_answer": 1.0,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Question Id : 6406531174070 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "numerical_answer": 35.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Compute the Leave-one-out cross validation (LOOCV) error for the 3- nearest neighbour (3-NN) algorithm on this dataset. Enter the answer correct to two decimal places."
+        }
+      ],
+      "acceptable_answers": [
+        "0.41 to 0.45"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Question Id : 640653587603 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Consider a binary classification problem and a decision tree that is being trained to classify the points. In one of the internal nodes in this tree, 75% of the data-points belong to one of the two classes and the rest belong to the other class. You are not given the information about which class is more numerous in this node. Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "numerical_answer": 0.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ]
+}

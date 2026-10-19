@@ -1,0 +1,127 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Statistics 2 · Quiz 2 · Jul 2022 · Part 2",
+  "subject": "Statistics 2",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let the random variables X and Y have the following joint density function: fxy (z,y) = 10 otherwise 1 0 5 2≤1, 0 5 5 1. Based on the above data, answer the given subquestions. Find P(X < 2Y). Enter the answer correct to two decimal places."
+        }
+      ],
+      "numerical_answer": 0.75,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Compute the expected value and variance of the sample mean X = Xit..+.X."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "E[X] = 0 and Var[X] = 0"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "E[X] = 0 and Var[X] = 1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "c E[X] = ‡ and Var[X] = 1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "E[X] = 0 and Var[X] = 12n"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider a sample of i.i.d. random variables (X1, X2,..., X..). where each of the X,'s follows Uniform(-0.5, 0.5) distribution. Based on the above data, answer the given subquestions. Find the minimum value of n such that the probability that the sample mean X is within 0.2 of the distribution mean is at least 0.9, using the Weak Law of Large Numbers."
+        }
+      ],
+      "numerical_answer": 21.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let X be a continuous uniform random variable on [0, 1] and Y = ]. Based on the above data, answer the given subquestions. Find the probability density function of Y. fy (1) = 1 - 7, for 0 ≤ y < 00 fr (y) = 1 - y, for 1 ≤ y < 00 c fr (y) = →, for 0 ≤ y < ∞0"
+        }
+      ],
+      "acceptable_answers": [
+        "D"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let X be a continuous uniform random variable on [0, 1] and Y = ]. Based on the above data, answer the given subquestions. Find the value of P(Y ≤ 2). Enter the answer correct to one decimal place."
+        }
+      ],
+      "numerical_answer": 0.5,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "30% of the total players in IPL 2022 are uncapped (i.e., they have not played any international games) and 70% are capped (i.e., they have played at least 1 international game). Suppose the runs scored by the capped players is Normal(60, 25) and the runs scored by the uncapped players is Normal(55, 36). Based on the above data, answer the given subquestions. Find the distribution of runs of a randomly chosen player. 35 exp (\"012) + 153 exp (-52) 5/2 exp (012) + 30/2 exp (-502)"
+        }
+      ],
+      "acceptable_answers": [
+        "B"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "30% of the total players in IPL 2022 are uncapped (i.e., they have not played any international games) and 70% are capped (i.e., they have played at least 1 international game). Suppose the runs scored by the capped players is Normal(60, 25) and the runs scored by the uncapped players is Normal(55, 36). Based on the above data, answer the given subquestions. If a randomly selected player scored 60 runs, what is the probability tnat the selected candidate is a capped player Enter the answer correct to two decimal places"
+        }
+      ],
+      "numerical_answer": 0.8,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "Statistics 2 · Quiz 2 · Jul 2022 · Part 2"
+}

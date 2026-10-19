@@ -1,0 +1,122 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 1 · Quiz 2 · Aug 2025 · Q104 · Part 2",
+  "subject": "Mathematics 1",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the value of x that satisfies the equation log, (2 + 1) - log, (2 - 3) = 2. Ш Passage / Context Consider the functions f(z) = v2 + 5 and g(z) = 23 - 5. Answer the given subquestions."
+        }
+      ],
+      "numerical_answer": 7.0,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the domain of go f."
+        }
+      ],
+      "acceptable_answers": [
+        "C"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the value of (go f o go f)(2)."
+        }
+      ],
+      "numerical_answer": 2.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the function f(x) = log, |x + 1|. Answer the given subquestions. Choose the correct option."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The domain of function f is [-1, ∞)."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The domain of function f is (-1, 0). The domain of function f is R - {-1}."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The domain of function f is R."
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the function f(x) = log, |x + 1|. Answer the given subquestions. Suppose m, n are two solutions of the equation f(x) = 3 such that m < n then find the value of n - m."
+        }
+      ],
+      "numerical_answer": 54.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the function f(x) = xv 25 - x3. Answer the given subquestions. If y = mx + c is the equation of the tangent of f at x = 3 then choose the correct options. m =1 8 m= 1 27 -27 C= 4"
+        }
+      ],
+      "acceptable_answers": [
+        "A, C"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the function f(x) = xv 25 - x3. Answer the given subquestions. Find the number of points where | f(z)?| is not differentiable."
+        }
+      ],
+      "acceptable_answers": [
+        "za"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "Mathematics 1 · Quiz 2 · Aug 2025 · Q104 · Part 2"
+}

@@ -1,0 +1,244 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Python Programming · Quiz 1 · Jun 2022 · QUIZ1 · Part 2",
+  "subject": "Python Programming",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let n be some positive integer. word is some string. Both n and word are already defined. The following is a code snippet and the output produced by it. The output produced is 'kindkindkindkindkindkind'. Select all possible values that the string word can take. Note that each option is associated with a different value of n."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "# n and word are already defined\nout = ''  # there is no space between the quotes\nfor i in range(n):\n    out = out + word\nprint(out)\n# Output:\n# kindkindkindkindkindkind"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "kind"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "kindkind"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "kindkindkind"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "kindkindkindkind"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "kindkindkindkindkind"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "kindkindkindkindkindkind"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1,
+        2,
+        5
+      ],
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "out is word repeated n times = 'kind' * 6. word * n must equal 'kind'*6, so word can be 'kind' (n=6), 'kindkind' (n=3), 'kindkindkind' (n=2) or the whole string (n=1). 'kindkindkindkind' (4 copies) and 5 copies do not divide 6 copies evenly."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "M is a matrix (list of lists) that has already been defined. The dimension of M is m x n. Assume that both m and n are greater than or equal to 2. All the elements of M are integers. Select all correct options about the code given above."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "# M is a matrix (list of lists) that has already been defined\nn = len(M[0])\nflag = True\nfor i in range(n):\n    if M[0][i] - M[-1][i] != 1:\n        flag = False\nprint(flag)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "This code will print True if each element in the last row of the matrix is one more than the corresponding element in the first row of the matrix."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "This code will print True if each element in the first row of the matrix is one more than the corresponding element in the last row of the matrix."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "This code will print True if each element in the last column of the matrix is one more than the corresponding element in the first column of the matrix."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "This code will print True if each element in the first column of the matrix is one more than the corresponding element in the last column of the matrix."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "This code will throw an error if the matrix is rectangular (m ≠ n)."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "This code will NOT throw an error if the matrix is rectangular (m ≠ n)."
+          }
+        ]
+      ],
+      "correct_answers": [
+        1,
+        5
+      ],
+      "marks": 4,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "flag stays True only when M[0][i] - M[-1][i] == 1 for every column i, i.e. each first-row element is one more than the last-row element (option 2). n = len(M[0]) iterates over valid column indices, so no error occurs even for rectangular matrices (option 6)."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "L is a non-empty list of distinct positive integers (L has at least one element; no two elements of L are the same). The following snippet of code terminates without any error after a finite number of iterations of the while loop. What is the output produced by it? Hint: L.remove(x) removes the leftmost occurrence of x in L."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "# L is a non-empty list of distinct positive integers\n# L has already been defined\nval = 0\nfor x in L:\n    val += x\nwhile L != []:\n    for y in range(1, 11):\n        if y in L:\n            L.remove(y)\n        else:\n            L.append(y)\nprint(val)"
+        }
+      ],
+      "numerical_answer": 55,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The while loop empties L only when L is exactly {1,2,...,10}; in that single pass every y is present and removed, leaving L empty. val is the sum of the original list = 1+2+...+10 = 55."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "L is a list of years. What is the output of the following snippet of code?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "L = [1943, 2013, 2012, 1920,\n     1957, 2010, 1985, 2018,\n     1945, 1978, 2019, 1958,\n     2009, 1909, 1939, 2021]\nyear_1 = 1900\nyear_2 = 2022\nfor year in L:\n    if year < 2000:\n        if year > year_1:\n            year_1 = year\n    else:\n        if year < year_2:\n            year_2 = year\nprint(year_2 - year_1)"
+        }
+      ],
+      "numerical_answer": 24,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "year_1 becomes the largest year < 2000 (1985); year_2 becomes the smallest year >= 2000 (2009). 2009 - 1985 = 24."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following code always accepts a positive even integer as input. What is the output produced by the code if the input is 199999978? Hint: 99999989 is a prime number."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "n = int(input())\nf = n - 2\nwhile (f > 0) and (n % f != 0):\n    f = f - 2\nprint(f)"
+        }
+      ],
+      "numerical_answer": 2,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "f steps down by 2 from n-2 until it divides n. 199999978 = 2 * 99999989, and 99999989 is prime, so the only even divisors are 2 and 199999978; the largest even proper divisor found is 2."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the output of the following snippet of code?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "a, b = 8, 28\nif a < b:\n    start = b"
+        },
+        {
+          "kind": "text",
+          "value": "else:"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "start = a\nend = a * b\nfor x in range(start, end + 1):\n    if (x % a == 0) and (x % b == 0):\n        print(x)\n        break"
+        }
+      ],
+      "numerical_answer": 56,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The loop finds the first number from 28 to 224 divisible by both 8 and 28, i.e. their LCM = 56."
+        }
+      ]
+    }
+  ],
+  "title": "Python Programming · Quiz 1 · Jun 2022 · QUIZ1 · Part 2"
+}

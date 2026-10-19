@@ -1,0 +1,315 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 1 · Quiz 1 · 2024 · QDF2 · Part 3",
+  "subject": "English 1",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Select the correct pronoun. What did ____ say about the work?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "She"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Me"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Fill in the blank with the appropriate option. The phrasal verb ‘see about’ means ___________."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "To say goodbye to someone"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To deal with or organize something"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the part of speech of the underlined word: They ran after the bus."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Noun"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Pronoun"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Verb"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Conjunction"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Select the appropriate option: The rooms in this hotel are _______ than the ones that we stayed in earlier."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Clean"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Cleaner"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Cleanest"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of these"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following is NOT an adjective?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Sharp"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Dull"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Deep"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Doubt"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the appropriate option: The professor did not reply to my email, she is away __ holiday."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "At"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "On"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "For"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "In"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the preposition in the following sentence: As soon as I reached, I jumped into the pool."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "I"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Reached"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Jumped"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Into"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct option: There is __ cup of coffee on the table."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "A"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "An"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "none of these"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following sentence: The new building has become an expensive white elephant. In this sentence, what does the phrase ‘white elephant’ mean?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Something that has cost a lot of money but has no useful purpose"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Something that is quite different"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 1 · Quiz 1 · 2024 · QDF2 · Part 3"
+}

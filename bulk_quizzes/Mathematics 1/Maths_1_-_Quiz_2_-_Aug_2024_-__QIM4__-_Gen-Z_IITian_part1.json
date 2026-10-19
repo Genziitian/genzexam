@@ -1,0 +1,128 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 1 · Quiz 2 · Aug 2024 · QIM4 · Part 1",
+  "subject": "Mathematics 1",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following statements is/are true about the function f(x) = |x? - 4x + 3] + 17?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Jis defined only for all z € N."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "f is a bijective function."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "c The range of f is (0, 0)."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The minimum value of f is 17."
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the graphs given below. Choose the set of correct options. ~N D There are at least two points between -4 and 4, where the derivatives of the function corresponding to Curve 1 are equal. At the origin the derivative of the function corresponding to Curve 2 does not exist. The derivative of the function corresponding to Curve 3, at the origin and point (-2, 0), are equal. The derivative of the function corresponding to Curve 4 does not exist at any point."
+        }
+      ],
+      "acceptable_answers": [
+        "A. B"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "f(z) - f(2) If f(x) = v9 - x7, then find out the value of v5 × limz-2 -"
+        }
+      ],
+      "numerical_answer": -2.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the function defined by f(z) = {∞+1 Hint: [.] is the greatest integer function {x+1} 0<x≤3 (floor function), e.g. [-1.32] = -2, [1.32] = 1, [5] = 5. Similarly {.} is the fractional part function, e.g. {1.32] = 0.32, {5} = 0. TRUE-FALSE Is the statement True or False: The left-hand limit (LHL) and right-hand limit (RHL) of the function f(x) exist at x = 0 and are equal to each other."
+        }
+      ],
+      "acceptable_answers": [
+        "True"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the function defined by f(z) = {∞+1 Hint: [.] is the greatest integer function {x+1} 0<x≤3 (floor function), e.g. [-1.32] = -2, [1.32] = 1, [5] = 5. Similarly {.} is the fractional part function, e.g. {1.32] = 0.32, {5} = 0. TRUE-FALSE Is the statement True or False: The function f(x) is continuous at x = 0."
+        }
+      ],
+      "acceptable_answers": [
+        "True"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the function defined by f(z) = {∞+1 Hint: [.] is the greatest integer function {x+1} 0<x≤3 (floor function), e.g. [-1.32] = -2, [1.32] = 1, [5] = 5. Similarly {.} is the fractional part function, e.g. {1.32] = 0.32, {5} = 0. Find the total number of points in [-3, 3] at which f(x) is not continuous."
+        }
+      ],
+      "numerical_answer": 5.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the function f(x) = 42° + 2%|z + 1| + 2 + 5. TRUE-FALSE Is the statement True or False: The left-hand derivative (LHD) and right-hand derivative (RHD) of the function f(x) exist and are equal to each other at x = -1."
+        }
+      ],
+      "numerical_answer": 5.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "Mathematics 1 · Quiz 2 · Aug 2024 · QIM4 · Part 1"
+}

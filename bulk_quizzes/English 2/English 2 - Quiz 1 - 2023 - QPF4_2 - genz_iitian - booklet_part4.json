@@ -1,0 +1,383 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 2 · Quiz 1 · 16 JULY 2023 · QPF4 · Part 4",
+  "subject": "English 2",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following and select the correct option. A: He was very much frustrated about the results. B: He was very frustrated about the results."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "A is true and B is false"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "B is true and A is false"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both are true"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both are false"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The magic show that mesmerized people will be staged here next week. Here the relative pronoun is"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "That"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Will"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Here"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "People"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "'Day after tomorrow is a holiday.' This is an example of a ___________."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Compound sentence"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Complex sentence"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Simple sentence"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Complicated sentence"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the coordinating conjunction in the following sentence. 'He was feeling mighty thirsty, so we went to the bar.'"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Was"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "So"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Rohan/drive car/fastly/on highways. Choose the erroneous part from this sentence."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Rohan"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Drive car"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Fastly"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "On highways"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The object in the sentence Meena likes to watch movies is ______."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Meena"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Likes"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Movies"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To watch movies"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In the following sentence, identify the noun the adjectival clause modifies. “Gary spins the ball, which turns like an eagle in mid-flight.”"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The ball"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Eagle"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Mid-flight"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Gary"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "I sent a letter which arrived a few weeks later. Here the subordinate clause functions as __________."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Adverb"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Preposition"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Noun"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Adjective"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "love/loves/Derek/Kate/very/much. Arrange these words into a meaningful sentence."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Derek loves Kate very much"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Kate love Derek very much"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Derek very much love Kate"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Derek very much Kate love"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Reena wrote a letter. Here the complement is ________."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Wrote a letter"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A letter"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Reena wrote a letter"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 2 · Quiz 1 · 16 JULY 2023 · QPF4 · Part 4"
+}

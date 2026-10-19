@@ -1,0 +1,174 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Computational Thinking · Quiz 2 · Apr 2023 · Part 2",
+  "subject": "Computational Thinking",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following pseudocode where Y is a row in the \"Words\" table. At the end of the execution, what will be the value of length(keys(alphaDict)) if Y.Word is \"think\"? alphaDict = ('t':2, 'e':1} alphaDict = updateDict(Y, alphaDict) Procedure updateDict (Z, Dict) 1 = 1 while(i ‹= Z.LetterCount){ × = ith letter of Z.Word 1f(not isKey(Dict, x))( Dict[x] = 1 Dict(x] = Dict[x] + 1 = 1 + 1 return(Dict) End updateDict"
+        }
+      ],
+      "numerical_answer": 6.0,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Words\" dataset. What will count represent at the end of the execution if the missing code (the \"Fill the code\" block) is filled by the fragment shown below? count = 0. flag = Truel while(Table 1 has more rows)f Read the first row X in Table 1 ** Fill the code ** *********************************** Move X to Table - # fill the code: if(X.word ends with full stop)f if(x.Word == \"Noun\"){ count = count + i"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "total number of nouns in the dataser"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of sentences which start with a noun"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of sentences having at least one noun / Number of sentences which end with a noun"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Words\" dataset. What will count represent at the end of the execution if the missing code (the \"Fill the code\" block) is filled by the fragment shown below? count = 0. flag = Truel while(Table 1 has more rows)f Read the tirst row X in Table l ** Fill the code ** ********************************* Move X to Table - # fill the code: if(flag and X.PartOfSpeech == \"Noun\"){ count = count + i flag a raise it(x.word ends with tull stop i flag • Truc"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Total number of nouns in the dataset / Number of sentences which start with a noun"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of sentences having at least one noun"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of sentences which end with a noun"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Shopping Bills\" dataset. What will each value DU][k] represent at the end of the execution?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "= 0} while(Pile 1 has more cards){ Read the top card X in Pile 1 foreach Y in X.ItemList{ 1f(isKey(D, Y.Category)){ 1f(isKey(D[Y.Category], Y.ItemName)){ D[Y.Category][Y.ItenNane] = D[Y.Category][Y.ItemNane] +* [Y.Price] elsefy. Category][Y. ItemNane] - [Y.Price] elsef D[Y.Category] = {Y.ItenName : [Y.Price]} Move card X to Pile 2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Price of item j of category k across all bills"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Price of item k of category j across all bills c List of prices of item j of category k across all bills"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "List of prices of item k of category j across all bills"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the dictionary D created in the previous question, what will the value of L represent at the end of the execution of the following pseudocode?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "= 0, L = (] foreach 1 in keys(D){ foreach j in keys(D[i]){"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "= findRange(D[i][j]) 1f(B == A) { L = L + (3) 1f(B > A)C"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "• B L = (3] Procedure findRange(Y) p \" first(Y), q \" first(Y) foreach k in Yf 1f(k > p){ 1F(k < 9)% return(p - q) End findRange"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "List of items for which the difference between the highest and lowest price is the same V List of items for which the difference between the highest and lowest price is maximum"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "List of items for which the difference between the highest and lowest price is minimum"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "List of items with same price in all shops"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 5,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "Computational Thinking · Quiz 2 · Apr 2023 · Part 2"
+}

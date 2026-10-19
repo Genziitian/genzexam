@@ -1,0 +1,377 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 1 · Quiz 1 · 16 Oct 2022 · QUIZ · Part 3",
+  "subject": "English 1",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the meaning of the phrasal verb ‘dig in’?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "To become extinct"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To want something a lot"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To become quieter or inaudible"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To start eating greedily"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct option. ________ we leave now or do you want to wait?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Will"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Shall"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘Rocky was furious about the results’. Here the word ‘furious’ can be replaced appropriately with _____________."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Fuming"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Sad"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Angry"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Disappointed"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the odd one out from the following: Flood, Delusion, Inundation, Downpour"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Flood"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Delusion"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Inundation"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Downpour"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "I have _____ interest in sports."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Some"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Little"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Few"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A few"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The officer showed ___ sentiments towards the grievances."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Cold"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Dark"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Active"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of these"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the conjunction in the following sentence. The shop specializes in exotic vegetables, such as cherry tomatoes, baby corn, and parsley."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Specializes"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Exotic"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Such as"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Vegetables"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the appropriate option. I can’t live on _________600 dollars a month."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "A"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "An"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "No article"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the preposition in the following sentence: Thirty years have passed away since they met."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Thirty"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Years"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Since"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "They"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the part of speech of the underlined word. The movie is starting now."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Preposition"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Conjunction"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Adverb"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Adjective"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 1 · Quiz 1 · 16 Oct 2022 · QUIZ · Part 3"
+}

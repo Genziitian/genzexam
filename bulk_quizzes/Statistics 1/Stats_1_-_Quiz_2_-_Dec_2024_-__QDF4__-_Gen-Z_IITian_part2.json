@@ -1,0 +1,91 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Statistics 1 · Quiz 2 · Dec 2024 · QDF4 · Part 2",
+  "subject": "Statistics 1",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In a school with 120 students, 90 students are enrolled in Math, 50 students are enrolled in Science, and 30 students are enrolled in both Math and Science. If a student is randomly selected, what is the probability that he/she is enrolled in Science given that he/she is enrolled in Math?"
+        }
+      ],
+      "acceptable_answers": [
+        "C"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A box contains three black balls, four blue balls, and three grey balls. Two balls are chosen at random without replacement. Based on the given information, answer the given subquestions."
+        }
+      ],
+      "numerical_answer": 0.07,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A box contains three black balls, four blue balls, and three grey balls. Two balls are chosen at random without replacement. Based on the given information, answer the given subquestions. What is the probability that they are of same colour? (Enter the answer correct to two decimal places.)"
+        }
+      ],
+      "numerical_answer": 0.27,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Two fair dice are rolled together. If A be the event that outcome on the 1\" die is smaller than the outcome on the 2 die and B be the event that outcomes on both the die are even. Based on the above data, answer the given subquestions. What is the value of P(A)?"
+        }
+      ],
+      "acceptable_answers": [
+        "B"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Two fair dice are rolled together. If A be the event that outcome on the 1\" die is smaller than the outcome on the 2 die and B be the event that outcomes on both the die are even. Based on the above data, answer the given subquestions. What is the value of P(B)?"
+        }
+      ],
+      "acceptable_answers": [
+        "C"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Two fair dice are rolled together. If A be the event that outcome on the 1\" die is smaller than the outcome on the 2 die and B be the event that outcomes on both the die are even. Based on the above data, answer the given subquestions. What is the value of P(A UB)E? A"
+        }
+      ],
+      "acceptable_answers": [
+        "D"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "Statistics 1 · Quiz 2 · Dec 2024 · QDF4 · Part 2"
+}

@@ -1,0 +1,361 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Python Programming · Quiz 1 · 07 Jul 2024 · QDD2 · Part 2",
+  "subject": "Python Programming",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following snippet of code and answer the sub-questions that follow."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "L = [\"apple\", \"banana\", \"cherry\", \"date\", \"fig\", \"grape\"]\nmax_L = []\nmaxlen = 0\nfor s in L:\n    if len(s) > maxlen:\n        maxlen = len(s)\n        max_L = [s]\n    elif len(s) == maxlen:\n        max_L.append(s)\nprint(max_L)\nprint(len(max_L))"
+        },
+        {
+          "kind": "text",
+          "value": "What is the first line of output?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "['banana']"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "['cherry']"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "['banana', 'cherry']"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "['cherry', 'banana']"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "'banana' and 'cherry' both have length 6, the maximum. 'banana' is found first (sets max_L=['banana']); 'cherry' has equal length and is appended, giving ['banana', 'cherry']."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following snippet of code and answer the sub-questions that follow."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "L = [\"apple\", \"banana\", \"cherry\", \"date\", \"fig\", \"grape\"]\nmax_L = []\nmaxlen = 0\nfor s in L:\n    if len(s) > maxlen:\n        maxlen = len(s)\n        max_L = [s]\n    elif len(s) == maxlen:\n        max_L.append(s)\nprint(max_L)\nprint(len(max_L))"
+        },
+        {
+          "kind": "text",
+          "value": "What is the second line of the output? Enter an integer as your answer."
+        }
+      ],
+      "numerical_answer": 2,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "max_L = ['banana', 'cherry'] has 2 elements, so len(max_L) = 2."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following snippet of code and answer the sub-questions that follow."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "my_list = [1, 2, 3, 4, 5]\nnew_list = my_list\nnew_list[0] = 10\nprint(my_list)"
+        },
+        {
+          "kind": "text",
+          "value": "What will be the output?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "[10, 2, 3, 4, 5]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[1, 10, 2, 3, 4, 5]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[1, 2, 3, 4, 5]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[10]"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "new_list = my_list makes both names refer to the same list. Setting new_list[0] = 10 mutates that list, so my_list prints [10, 2, 3, 4, 5]."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following snippet of code and answer the sub-questions that follow."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "my_list = [1, 2, 3, 4, 5]\nnew_list = my_list\nnew_list[0] = 10\nprint(my_list)"
+        },
+        {
+          "kind": "text",
+          "value": "Choose the correct option(s) regarding the given code."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "List is a mutable object."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "List is an immutable object."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both my_list and new_list are referring to the same list."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "my_list and new_list are referring to different lists."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        2
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Lists are mutable, and the assignment new_list = my_list binds both names to the same list object (no copy is made), so options 1 and 3 are correct."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following snippet of code. The output of this code is `Foundation`. Answer the sub-questions."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "a = int(input())\nb = int(input())\nstring = 'IAmInFoundationLevel'\nprint(string[a:b])"
+        },
+        {
+          "kind": "text",
+          "value": "What is the value of a, the first input entered by the user, if it is given that the user entered a positive integer?"
+        }
+      ],
+      "numerical_answer": 5,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "In 'IAmInFoundationLevel', the substring 'Foundation' begins at index 5, so a = 5 gives string[5:b] starting at 'Foundation'."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following snippet of code. The output of this code is `Foundation`. Answer the sub-questions."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "a = int(input())\nb = int(input())\nstring = 'IAmInFoundationLevel'\nprint(string[a:b])"
+        },
+        {
+          "kind": "text",
+          "value": "What is the value of b, the second input entered by the user, if it is given that the user entered a negative integer?"
+        }
+      ],
+      "numerical_answer": -5,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The string has length 20 and 'Foundation' ends at index 15. As a negative index, 15 corresponds to -5 (20 - 5 = 15), so string[5:-5] = 'Foundation'. Hence b = -5."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following snippet of code and answer all the sub-questions that follow."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "P = [[1, 2, 3], [2, 4, 6], [3, 6, 9]]\ns = 0\np = 1\nfor i in range(len(P)):\n    for j in range(len(P)):\n        if i == j:\n            s = s + P[i][j]\n        if j == len(P) - 1:\n            p = p * P[i][j]\nprint(s)\nprint(p)"
+        },
+        {
+          "kind": "text",
+          "value": "What is the first line of the output?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "10"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "14"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "6"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "18"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "s sums the diagonal elements P[i][i]: 1 + 4 + 9 = 14."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following snippet of code and answer all the sub-questions that follow."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "P = [[1, 2, 3], [2, 4, 6], [3, 6, 9]]\ns = 0\np = 1\nfor i in range(len(P)):\n    for j in range(len(P)):\n        if i == j:\n            s = s + P[i][j]\n        if j == len(P) - 1:\n            p = p * P[i][j]\nprint(s)\nprint(p)"
+        },
+        {
+          "kind": "text",
+          "value": "What is the second line of the output?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "6"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "162"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "36"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "48"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "p multiplies the last column elements P[i][2]: 3 * 6 * 9 = 162."
+        }
+      ]
+    }
+  ],
+  "title": "Python Programming · Quiz 1 · 07 Jul 2024 · QDD2 · Part 2"
+}

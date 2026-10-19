@@ -1,0 +1,106 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "May 2025 Endterm · Part 2",
+  "subject": "Sw Testing",
+  "section": "endterm",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "List the leaf nodes in the best strategy for MAX. Enter the node labels in alphabetical order. Enter a comma separated list of node labels in alphabetical order. NO SPACES, TABS, DOTS, BRACKETS OR EXTRANEOUS CHARACTERS. Answer format: X,Y,Z Answers Case Sensitive : No"
+        }
+      ],
+      "acceptable_answers": [
+        "A,C,D"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "List the leaf nodes inspected by Alpha-Beta algorithm. Enter a comma separated list of node labels in alphabetical order. NO SPACES, TABS, DOTS, BRACKETS OR EXTRANEOUS CHARACTERS. Answer format: X,Y,Z Answers Case Sensitive : No"
+        }
+      ],
+      "acceptable_answers": [
+        "A,B,E,I"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Answers Case Sensitive : No Question Id : 6406531424243 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix PROBLEM DECOMPOSITION The figure shows an AND-OR graph that depicts how a problem S can be decomposed into one or more smaller problems. Nodes are uniquely identified by labels (S, A, B, …). The number in each node is the heuristic estimate of the cost of solving that node. Nodes shown in double lines are primitive nodes and their values are actual costs. Observe that a primitive node is added to the graph by its parent when the parent is expanded, and the primitive node is labeled as SOLVED and it will not be expanded subsequently. The cost of each edge is 2 units. Tie-breaker 1: If several nodes have the same cost then break the tie using node labels. Tie-breaker 2: For AND nodes, expand the unsolved branch with the highest cost. Use AO* algorithm to solve S, then answer the subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "A,B,E,I A,E,I,B I,E,A,B"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Answers Case Sensitive : No"
+        }
+      ],
+      "acceptable_answers": [
+        "S,B,A B,A"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Determine the value of the start node S after each node is expanded. Enter the value of S after each node is expanded. Enter a comma separated list of numbers. NO SPACES, TABS, DOTS, BRACKETS OR EXTRANEOUS CHARACTERS. Answer format: 12,42,17 Answers Case Sensitive : No"
+        }
+      ],
+      "acceptable_answers": [
+        "34,37,56 37,56"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Question Id : 6406531424247 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix RULE BASED EXPERT SYSTEMS A Rete Net for a rule based system to identify engines, turbines and motors is shown in the figure. Here, BoM refers to Bill-of-Materials, which is a list of parts and their quantities needed for assembling a machine. The nodes in the network are uniquely identified by labels: A1,A2,... for Alpha nodes; B1,B2,... for beta nodes; R1,R2,... for rules. The Working Memory contains the following WMEs uniquely identified by timestamps (sequence numbers). Assume that WMEs reside in the appropriate Alpha node, and Beta nodes simply point to elements in the ancestor Alpha nodes. The sub-questions are based on the first Match-Resolve-Execute cycle. Determine the locations of the WMEs and compute the conflict set, then answer the given sub-questions. Sub questions"
+        }
+      ],
+      "numerical_answer": 56.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Does the given CSP have a solution? Enter the solution for regions A,B,C as a comma separated list of colours. Enter NIL if there is no solution. NO SPACES, TABS, DOTS, BRACKETS OR EXTRANEOUS CHARACTERS. Answer format: r,b,r Answers Case Sensitive : No"
+        }
+      ],
+      "acceptable_answers": [
+        "g,r,b g,b,r"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "May 2025 Endterm · Part 2"
+}

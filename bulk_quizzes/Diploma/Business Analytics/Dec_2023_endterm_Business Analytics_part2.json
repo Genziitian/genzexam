@@ -1,0 +1,119 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Dec 2023 Endterm · Part 2",
+  "subject": "Business Analytics",
+  "section": "endterm",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the value of “A2”? (Note: Enter the answer rounded to two decimal places. For example, if the answer is “1.234”, then enter it as “1.23”)"
+        }
+      ],
+      "acceptable_answers": [
+        "513 to 517"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the value of “A4”? (Note: Enter the answer rounded to two decimal places. For example, if the answer is “1.234”, then enter it as “1.23”)"
+        }
+      ],
+      "acceptable_answers": [
+        "1820 to 1821"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the value of R-Squared for Model-1? (Note: Enter the answer rounded to two decimal places. For example, if the answer is “1.234”, then enter it as “1.23”. DO NOT CONVERT THE ANSWER TO PERCENTAGE)"
+        }
+      ],
+      "acceptable_answers": [
+        "0.86 to 0.90"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the value of Adjusted R-Square for Model-2? (Note: Enter the answer in rounded to two decimal places. For example, if the answer is “1.234”, then enter it as “1.23”. DO NOT CONVERT THE ANSWER TO PERCENTAGE)"
+        }
+      ],
+      "acceptable_answers": [
+        "0.66 to 0.70"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If the demand response curve for “The Mango Delight” is modelled assuming it as “Linear Demand Response” then what is the maximum possible demand? (Note: Enter the answer rounded to two decimal places. For example, if the answer is “1.234”, then enter it as “1.23”)"
+        }
+      ],
+      "numerical_answer": 2500.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If the demand response curve for “The Mango Delight” is modelled assuming it as “Linear Demand Response” then what is the satiating price? (Note: Enter the answer rounded to two decimal places. For example, if the answer is “1.234”, then enter it as “1.23”)"
+        }
+      ],
+      "numerical_answer": 125.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the difference in elasticity (at a price of Rs. 130/ glass) when modelling the curve as a “Linear Demand Response” as compared to a “Constant Elasticity Curve” (Note: Enter the answer as an absolute number (only magnitude) rounded to two decimal places. For example if the answer is “- 1.2345” then enter it as “1.23”) Question Id : 640653696458 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "7.00 to 19.00"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the accuracy of the model?(in %) Hint: Round your answer to two decimal places."
+        }
+      ],
+      "acceptable_answers": [
+        "58.1 to 58.6"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "Dec 2023 Endterm · Part 2"
+}

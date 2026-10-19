@@ -1,0 +1,229 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 2 · Quiz 2 · Jul 2022 · Part 3",
+  "subject": "English 2",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the modal auxiliary in this sentence. This could be your can of water."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Can"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Could"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Your"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which among these is an affirmative sentence? India has a parliamentary style of democracy."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "What is a nation-state? marks"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "You cannot swim faster than your brother."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "He will not park our car."
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "\"Raja travelled to Delhi.\" The interrogative form of this sentence is Where does Raja travel to?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Who did Raja travel with? Where did Raja travel to?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "When did Raja travel?"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Convert the following sentence to active voice. The defender was tackled by Ronaldo."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The defender was tackling Ronaldo. 8 Ronaldo was tackled by the defender."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Ronaldo is tackling the defender. Ronaldo tackled the defender."
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "India is a large country. — Aren't they • Isn't it"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Didn't it"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Don't you"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In the following sentence, fill in the blank with if or whether. _ selected. they outrun you, they will be"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Whether"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Either if or whether can be used"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In the following sentence, fill in the blank with if or 'whether. The task was tough, but _ impossible or not is anybody's guess."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Whether"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "If I marks • it was Either if or whether can be used"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Fill in the blank with correct expression of numbers/values: The allocation of education expenditure is quite uneven in countries. Many"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Seldom"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Innumerable"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 2 · Quiz 2 · Jul 2022 · Part 3"
+}

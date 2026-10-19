@@ -1,0 +1,156 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Week 1 Practice Assignment · Part 1",
+  "subject": "Computational Thinking",
+  "section": "practice",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What will be the values of A, B and C after execution of the following procedure using the \"Scores\" dataset? Step 1: Arrange all cards in a single pile called Pile 1 Step 2: Maintain three variables A, B, C and initialize them to 0 Step 3: If Pile 1 is empty then stop the iteration Step 4: Read the top card in Pile 1 Step 5: If Date of Birth < \"1 May\" then increment A Step 6: If Date of Birth > \"30 April\" and Date of Birth < \"1 September\" then increment B Step 7: If Date of Birth > \"31 August\" then increment C Step 8: Move the current card to another pile called Pile 2 and repeat from step 3 The value of A is _ _ _ _ ?"
+        }
+      ],
+      "numerical_answer": 10.0,
+      "numerical_tolerance": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What will be the values of A, B and C after execution of the following procedure using the \"Scores\" dataset? Step 1: Arrange all cards in a single pile called Pile 1 Step 2: Maintain three variables A, B, C and initialize them to 0 Step 3: If Pile 1 is empty then stop the iteration Step 4: Read the top card in Pile 1 Step 5: If Date of Birth < \"1 May\" then increment A Step 6: If Date of Birth > \"30 April\" and Date of Birth < \"1 September\" then increment B Step 7: If Date of Birth > \"31 August\" then increment C Step 8: Move the current card to another pile called Pile 2 and repeat from step 3 The value of B is _ _ _ _ ?"
+        }
+      ],
+      "numerical_answer": 9.0,
+      "numerical_tolerance": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What will be the values of A, B and C after execution of the following procedure using the \"Scores\" dataset? Step 1: Arrange all cards in a single pile called Pile 1 Step 2: Maintain three variables A, B, C and initialize them to 0 Step 3: If Pile 1 is empty then stop the iteration Step 4: Read the top card in Pile 1 Step 5: If Date of Birth < \"1 May\" then increment A Step 6: If Date of Birth > \"30 April\" and Date of Birth < \"1 September\" then increment B Step 7: If Date of Birth > \"31 August\" then increment C Step 8: Move the current card to another pile called Pile 2 and repeat from step 3 The value of C is _ _ _ _ ?"
+        }
+      ],
+      "numerical_answer": 11.0,
+      "numerical_tolerance": 0,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "In this question we have to find exact values of three variables A, B and C. So, let us start with the procedure. Here in step 2 we have declared three variables A, B, C and also initialized them to 0. In step 5, variable A is getting incremented if date of birth is less than 1st May which means we are counting the number of students born on or before 30th April. In this step variable B is getting incremented if date of birth is greater than 30th April and less than 1st September. Which Cards counted under variable Card numbers A 2, 5, 6, 7, 8, 10, 11, 12, 21, 27 B 1, 3, 13, 14, 19, 22, 23, 25, 26 C 0, 4, 9, 15, 16, 17, 18, 20, 24, 28, 29 indicated that variable B is counting the number of students born between 1st may and 31st August inclusive. In step 7 we are checking for date of birth greater than 31st August which means variable C is counting the number of students born after 31st August as in starting from 1st September onwards. It is a repeat step which indicates that this procedure is getting executed on all the cards available in the dataset. Therefore, if we compile all the date of births from the dataset then we will get following categorization:"
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following procedure is executed using the \"Shopping Bills\" dataset. What will X represent at the end of execution? Step 1: Arrange all cards in a single pile called Pile 1 Step 2: Initialize variables A, B and X to 0 Step 3: If Pile 1 is empty then stop the iteration and execute step 7 Step 4: Read the top card in Pile 1 Step 5: If the Shop name is not \"SV Stores\" then add Total bill amount to A and increment B Step 6: Move the current card to another pile called Pile 2 and repeat from step 3 Step 7: Divide A by B and store the result in X"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Total bill amount from \"SV Stores\""
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of bills from \"SV Stores\""
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Average of total bill amount from \"SV Stores\""
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Average of total bill amount from all shops other than \"BSV Stores\""
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "In Step 1 cards are arranged in to a single pile and which is called as Pile 1. In Step 2 we are creating 3 new variables called A, B, and X and assigning the value 0 to them. Step 3 checks whether the iteration has to be continued or not. If the pile 1 is empty then the iteration has to be stopped. In Step 4, the top card of the Pile 1 is taken and read. Total bill amount is added to A, and B is incremented for all other Shop name other than \"SV Stores\". That is A is storing the sum of Total bill amount from all other shops other than SV Stores, B is counting the number of shops apart from \"SV Stores\". Finally, in Step 6, the current card is moved to another pile called Pile 2 and the procedure is repeated from Step 3. This step will be executed only if Pile 1 has become empty. The result of A / B is stored in X. Hence, X represents the average of total bill amount from all shops other than \"SV Stores\"."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Words\" dataset. What will A represent at the end of execution? Step 1: Arrange all cards in a single pile called Pile 1 Step 2: Initialize variable A to 0 Step 3: If Pile 1 is empty then stop the iteration Step 4: Read the top card in Pile 1 Step 5: If the Word does not end with a full stop and Part of Speech is \"Noun\" then increment A Step 6: Move the current card to another pile called Pile 2 and repeat from step 3"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Total number of nouns"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Total number of words"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of nouns which are not at the end of a sentence"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of nouns which are at the end of a sentence"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "In Step 1 cards are arranged in to a single pile and which is called as Pile 1. In Step 2 we are creating a new variables called A and assigning the value 0 to it. Step 3 checks whether the iteration has to be continued or not. If the pile 1 is empty then the iteration has to be stopped. In Step 4, the top card of the Pile 1 is taken and read. A is incremented for all nouns except which appear at the end of a sentence. So it is clear that A is counting all “Nouns” except which are at the end of a sentence. Finally, in Step 6, the current card is moved to another pile called Pile 2 and the procedure is repeated from Step 3."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Scores\" dataset. Step 1: Arrange all cards in a single pile called Pile 1 Step 2: Initialize variables A and B to 1000 Step 3: If Pile 1 is empty then stop the iteration Step 4: Read the top card in Pile 1 Step 5: If Mathematics marks < A then store Mathematics marks in A Step 6: If Physics marks < B then store Physics marks in B Step 7: Move the current card to another pile called Pile 2 and repeat from step 3 The value of A is _ _ _ _ ?"
+        }
+      ],
+      "numerical_answer": 42.0,
+      "numerical_tolerance": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ],
+  "week": 1,
+  "title": "Week 1 Practice Assignment · Part 1"
+}

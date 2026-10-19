@@ -1,0 +1,365 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 2 · Quiz 1 · 26 Feb 2023 · QPF4 · Part 4",
+  "subject": "English 2",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Bergman, who made several acclaimed films, was felicitated in the event. The relative pronoun here is __."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Was"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Who"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Bergman"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "No relative pronoun"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Rohan resigned and joined a new company. This sentence is a ___."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Simple sentence"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Compound sentence"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Complex sentence"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Embedded sentence"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose an appropriate coordinating conjunction that can convert the following simple sentence into a compound sentence. Jack went to the showroom. He bought a new car."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "But"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "And"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "For"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Or"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In the following sentence, identify the noun the adjectival clause modifies. “Gary spins the ball, which turns like an eagle in mid-flight.”"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The ball"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Eagle"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Mid-flight"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Gary"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The competition, which was postponed earlier, was held successfully. Here the relative clause has ___ function."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Nominal"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Adjectival"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Adverbial"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Object"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "I don’t understand what you are talking about. Here the subordinate clause is ___ in nature."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Nominal"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Adjectival"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Adverbial"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "No subordinate clause"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the adjunct in the following sentence. I’ll come after I have had my breakfast."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "I’ll come"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "After I have had my breakfast"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "I have had"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "No adjunct"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "State whether the following statement is true or false: Complement is not necessary to complete the meaning of a given sentence."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "TRUE"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "FALSE"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "State whether the underlined is an adjunct or a complement: I find him intelligent."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Adjunct"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Complement"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "love/loves/Derek/Kate/very/much. Arrange these words into a meaningful sentence."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Derek loves Kate very much"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Kate love Derek very much"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Derek very much love Kate"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Derek very much Kate love"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 2 · Quiz 1 · 26 Feb 2023 · QPF4 · Part 4"
+}

@@ -1,0 +1,303 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 1 · Quiz 1 · 26 Feb 2023 · QPF4 · Part 4",
+  "subject": "English 1",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Select the correct pronoun. Did she see____?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "We"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Us"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Complete the sentence by choosing the correct form of the verb given in bracket. She was ______ (bite) by a shark."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Bite"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Biting"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Bit"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Bitten"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which one of the following words is a preposition?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Silly"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Thankful"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Underneath"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Gratefully"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the appropriate option. Sorry I am late. My vehicle ________ petrol."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Ran out on"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Ran out of"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Ran out"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Ran into"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following sounds are non-aspirated and non-voiced"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "/ch/"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "/d/"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "/p/"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "/b/"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the word with /u/ sound from the following"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Hook"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Soon"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Boon"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both soon and boon"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which semi-vowel occurs in the transition between the words She and advised in the sentence ‘She advised him to stay home.’?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "/y/"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "/w/"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Vowel sounds are produced due to the free flow of air without constriction. This statement is:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "TRUE"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "FALSE"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Answer whether true or false. /w/ and /y/ are monophthongs."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "TRUE"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "FALSE"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 1 · Quiz 1 · 26 Feb 2023 · QPF4 · Part 4"
+}

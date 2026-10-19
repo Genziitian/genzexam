@@ -1,0 +1,198 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Dlgenai · Quiz 2 · Combined PYQ",
+  "title": "Dlgenai · Quiz 2 · Combined PYQ",
+  "subject": "Dlgenai",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A deep learning model contains a stack of three consecutive 3x3 convolutional layers, each with a stride of 1and sufficient padding to preserve spatial dimensions. What is the side length of the effective receptive field of a neuron in the third layer with respect to the input?"
+        }
+      ],
+      "numerical_answer": 7.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In Low-Rank Adaptation (LoRA) for fine-tuning Large Language Models, what is the weight update decomposition for a weight matrix $W_0 \\in \\mathbb{R}^{d \\times k}$ with rank $r \\ll \\min(d, k)$?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$\\Delta W = B \\times A$, where $B \\in \\mathbb{R}^{d \\times r}$ and $A \\in \\mathbb{R}^{r \\times k}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$\\Delta W = B + A$, where $B, A \\in \\mathbb{R}^{d \\times k}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$\\Delta W = W_0^{-1} \\cdot r$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$\\Delta W = \\text{diag}(r) \\cdot W_0$"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "LoRA freezes $W_0$ and trains low-rank matrices $A$ and $B$, drastically reducing trainable parameters."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In autoregressive text generation from an LLM, what does a temperature setting $T \\to 0$ produce?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Greedy decoding, selecting the token with the highest logit at every step"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Completely uniform random token selection"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Higher diversity with elevated hallucinations"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Zero probability for all vocabulary items"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "As temperature approaches zero, softmax approaches an argmax (greedy sampling)."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the primary objective of Rotary Position Embedding (RoPE) in modern LLM architectures like LLaMA?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Encoding absolute and relative positional information by rotating query and key vectors in complex space"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Compressing vocabulary embeddings into 8-bit integers"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Replacing multi-head attention with causal convolutions"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Removing positional dependence entirely for permutation invariance"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "RoPE applies an orthogonal rotation to queries and keys such that their inner product naturally captures relative token distance."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In Retrieval-Augmented Generation (RAG), which metric is standard for comparing the semantic similarity between query and passage dense vector embeddings?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Cosine similarity: $\\frac{u \\cdot v}{\\|u\\| \\|v\\|}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Levenshtein edit distance"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Hamming distance on one-hot vectors"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Jaccard coefficient on character n-grams"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Dense embeddings encode semantic similarity as the cosine of the angle between normalized vector representations."
+        }
+      ]
+    }
+  ]
+}

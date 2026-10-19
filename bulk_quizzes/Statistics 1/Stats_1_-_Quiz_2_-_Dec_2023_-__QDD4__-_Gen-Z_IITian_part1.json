@@ -1,0 +1,142 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Statistics 1 · Quiz 2 · Dec 2023 · QDD4 · Part 1",
+  "subject": "Statistics 1",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Manoj and his brother Nitin have five friends each. Manoj's friends circle has 2 boys and 3 girls while Nitin's friends circle has 3 boys and 2 girls. For their parents' wedding anniversary, they decide to invite 4 of their friends. To ensure equal representation, it was decided that both of them will invite two of their friends and also ensure that there are a total of 2 boys and 2 girls getting invited. Based on the given information, answer the subquestions. Choose the correct options from the following: Selection of boys and girls will occur simultaneously. 8 Selection of boys and girls will not occur simultaneously. c Selection will happen with replacement. Selection will happen without replacement."
+        }
+      ],
+      "acceptable_answers": [
+        "A, D"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Manoj and his brother Nitin have five friends each. Manoj's friends circle has 2 boys and 3 girls while Nitin's friends circle has 3 boys and 2 girls. For their parents' wedding anniversary, they decide to invite 4 of their friends. To ensure equal representation, it was decided that both of them will invite two of their friends and also ensure that there are a total of 2 boys and 2 girls getting invited. Based on the given information, answer the subquestions. Choose the correct options from the following:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Order matters. Order does not matter."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Permutation is used. Combination is used."
+          }
+        ]
+      ],
+      "correct_answers": [
+        1
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A group of 5 employees and 3 leaders want to do a group meeting. They have decided to sit around a circular table such that all leaders will sit together. Based on the given information, answer the subquestions. MSQ Choose the correct options from the following: Selection of people will occur simultaneously. 8 Selection of people will not occur simultaneously. With replacement. Without replacement. 1 marks • Answer: A, D Choose the correct options from the following: Order matters. 8 Order does not matter. Permutation is used."
+        }
+      ],
+      "acceptable_answers": [
+        "A, C"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A group of 5 employees and 3 leaders want to do a group meeting. They have decided to sit around a circular table such that all leaders will sit together. Based on the given information, answer the subquestions. MSQ Choose the correct options from the following: Selection of people will occur simultaneously. 8 Selection of people will not occur simultaneously. With replacement. Without replacement. 1 marks • Answer: A, D Kanika has to choose a t-shirt for her outfit from a collection of 6 yellow t-shirts, 2 black t-shirts and 4 blue t- shirts. If a t-shirt is chosen randomly, then what is the chance that a black or a blue t-shirt is chosen by Kanika for her outfit? Enter the answer correct to one decimal place."
+        }
+      ],
+      "numerical_answer": 0.5,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A group of 5 employees and 3 leaders want to do a group meeting. They have decided to sit around a circular table such that all leaders will sit together. Based on the given information, answer the subquestions. MSQ Choose the correct options from the following: Selection of people will occur simultaneously. 8 Selection of people will not occur simultaneously. With replacement. Without replacement. 1 marks • Answer: A, D"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "fair die is rolled twice and a fair coin is tossed twice. Define events"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": ": A three appear on the die twice. B: A head appear on the coin twice. Find the value of P(An B). 72 12 144"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the probability that Suman will win the colour TV? 33"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "11"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "13"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "33"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 4,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "Statistics 1 · Quiz 2 · Dec 2023 · QDD4 · Part 1"
+}

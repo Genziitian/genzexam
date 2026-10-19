@@ -1,0 +1,289 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 1 · Quiz 1 · 05 Jun 2022 · QPB1 · Part 3",
+  "subject": "English 1",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nMatch Column A with suitable options in Column B. (Hint: word collocation).\n\nQuestion:\nWhich among the following words carry the sound ‘sh’?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Curvaceous"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Obnoxious"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Fraction"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "All Curvaceous, Obnoxious, and Fraction"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Only Curvaceous and Obnoxious"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The long vowel sound /ii/ is realized in ________."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Deceive"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Energy"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Concede"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Relief"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Visa"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "All of these"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose from the following sentences where ‘claim’ functions as a VERB."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "I will enquire at the office about the insurance claim."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "How can we verify his claims?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "She claims that she is the child’s mother."
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose from the following sentences where ‘cover’ functions as a NOUN."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "I covered these topics last week"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "She covered the basket with an organza cloth."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "As the police approached the thugs, they ran for cover."
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the synonym (that suits best) for the word given below. unravel"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Entangle"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Straighten out"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The word ‘maintenance’ is _________."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Trisyllabic"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Polysyllabic"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Disyllabic"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The word ‘trial’ is _____."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Trisyllabic"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Polysyllabic"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Disyllabic"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The word ‘negotiation’ has _____ syllables."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "5"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "4"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "3"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 1 · Quiz 1 · 05 Jun 2022 · QPB1 · Part 3"
+}

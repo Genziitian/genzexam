@@ -1,0 +1,103 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Jan 2023 Quiz2 · Part 2",
+  "subject": "Business Analytics",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many “True Positives” is ADS predicting?"
+        }
+      ],
+      "numerical_answer": 27.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many “False Positives” is ADS predicting?"
+        }
+      ],
+      "numerical_answer": 14.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many “True Negatives” is ADS predicting?"
+        }
+      ],
+      "numerical_answer": 56.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many “False Negatives” is ADS predicting?"
+        }
+      ],
+      "numerical_answer": 3.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the accuracy of the ADS? (Note: Enter the answer as a numeric percentage value rounded to two decimal places without the % symbol. For example, if your answer is “10.256 %”, enter it as “10.26”)"
+        }
+      ],
+      "acceptable_answers": [
+        "82.00 to 84.00"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the precision of the ADS when predicting defective products? (Note: Enter the answer as a numeric percentage value rounded to two decimal places without the % symbol. For example, if your answer is “10.256 %”, enter it as “10.26”)"
+        }
+      ],
+      "acceptable_answers": [
+        "65.00 to 67.00"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the recall of the ADS when predicting non-defective products? (Note: Enter the answer as a numeric percentage value rounded to two decimal places without the % symbol. For example, if your answer is “10.256 %”, enter it as “10.26”)"
+        }
+      ],
+      "acceptable_answers": [
+        "79.00 to 81.00"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "Jan 2023 Quiz2 · Part 2"
+}

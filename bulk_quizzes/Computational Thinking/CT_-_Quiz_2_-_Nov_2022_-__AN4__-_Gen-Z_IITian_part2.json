@@ -1,0 +1,152 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Computational Thinking · Quiz 2 · Nov 2022 · Part 2",
+  "subject": "Computational Thinking",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let medalDict be a dictionary with player's name as a key mapped to the list of medals associated with the player from the \"Olympics\" dataset. For example medalDict = (\"xyz\" : [\"Silver\", \"Gold\", \"Gold\"].....]. In this example, the player xyz has won one Silver and two Gold medals. At the end of the execution, repeatMedals(medalDict) returns the list of players who have won at least one type of medal more than one time. But the code may have mistakes. Identify all such mistakes (if any). Assume that all statements not listed in the options below are free of errors. It is a Multiple Select Question (MSQ) procedure repeatMedalsimedalbicts repeatPlayers = fi foreach player in keys(medalDict){ tempDict = ‹› foreach medal in medalDict player]! tempDict medal = True if(length(keys(tempDict)) == length(medalDict[player])){ rpopatplavers - reppatplavers ++ folaverl return(repeatPlayers) End reocatMeda13"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Line 2: Incorrect initialization of repeatPlayers"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Line 4: Incorrect initialization of tempDict"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Line 8: Incorrect conditional statement to update repeatPlayers"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "No mistakes"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Olympics\" dataset. At the end of the execution, medalDict stores a dictionary with player's name as key mapped to another dictionary. The nested dictionary stores the medal type as key mapped to a list of years in which the player won that medal. For example if player Xyz has won a silver medal in 2006, a gold medal in 2008, and another silver medal in 2011, then medalDict = (\"Xyz\": (\"Silver\": (2006, 2011], \"Gold\": (2008])...). Assume that every player has a distinct name. But the pseudocode may have mistakes. Identify all such mistakes (if any). Assume that all statements not listed in the options below are free of errors. It is a Multiple Select Question (MSQ). medalDict = (} while(Table 1 has more rows){ Read the first row X in Table 1 1f(iskey(medalDict, X.Name)){ if(iskey(medalDict[X.Nane], X.Medal)){ medalDict[x.Name][x.Medal] = [X.Year] elsef medalDict[x.Name][x.Medal] = [X.Year] elsef medalDict[x.Name][X.Medal] = [x.Year] Move X to Table 2 - exam.genziitian.in | YouTube - youtube.com/@Gen-ZIITian |"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Line 1: Incorrect initialization of medalDict Line 6: The current statement should be replaced by medalDict[X.Name][X.Medal] = medalDict[X.Name][X.Medal] ++ [X.Year] Line 9: The current statement should be replaced by medalDict[X.Name][X.Medal] = medalDict[X.Name][X.Medal] ++ [X.Year] Line 13: The current statement should be replaced by medalDict[X.Name] = (x.Medal : [X.Year])"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "No Mistakes"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 5,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Scores\" dataset. At the end of the execution, medalList should store the list of sequence numbers of the students who have scored at least 200 total marks and have pseudocode. Which of the following statements) is(are) true about nSub based on the pseudocode mentioned in the main question? It is a Multiple Select Question (MSQ). medalList = [], A = 0, scount = False while Table 1 has more rows) Read the first row X in Table 1"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "= X. Total scount • nsub(x.seqNo. if((A > 200) and scount)( medalList = medalList +* [X.SeqNo] Move X to Table 2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "nSub is a procedure which accepts the sequence number of a student and returns True if the"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "nSub is a procedure which accepts the sequence number of a student and returns the number of c nSub is a dictionary with sequence numbers of students mapped to the number of subjects in"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "nSub is a dictionary with sequence numbers of students mapped to True if the student has scored"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0
+      ],
+      "marks": 80,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let Z be a row in the \"Words\" table and D be a dictionary. Use the procedure updateDict given above. Let x.Word be \"thinking\". At the end of the execution of the following pseudocode, what will be the value of length(keys(alphaDict))? alphaDict = (t:2, 'c: 1, 'e':1) alphaDict = updateDict(X, alphaDict) Procedure updateDict(Z, Dict) 1 = 1, x = \" while(i ‹= Z.LetterCount){ x = ith letter of Z.Word 1f(not iskey(Dict, x))( Dict [x] = 1 elsef 1.... Dict[x] = Dict[x] + 1 return(Dict) End updateDict"
+        }
+      ],
+      "numerical_answer": 8.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let Z be a row in the \"Words\" table and D be a dictionary. Use the procedure updateDict given above. Let X.Word and Y.Word be \"computational\" and \"thinking\" respectively. The following pseudocode is executed using the \"Words\" dataset and the procedure updateDict. firstDict = D, secondDict = 0, commonDict = 0 firstDict = updateDict(X, commonDict) secondDict = updateDict(Y, commonDict) foreach key in keys(firstDict)! if(iskey(secondDict, key))( ¡f(firstDict[key] > secondDict[key]) commonDict[key] = firstDict[key] elsel commonDict[key] = secondDict[key] At the end of the execution of above pseudocode, what would be the value of length(keys(commonDict))? Procedure updateDict (Z, Dict) while(i ‹ Z.LetterCount){ x = ith letter of Z.Word 1f(not iskey(Dict, x)) Dict (x] = 1 elsef Dict[x] = Dict[x] * 1 =1+1 return(Dict) End updateDict - genziitian.in/ecosystem | Video Solutions - exam.genziitian.in | YouTube - youtube.com/@Gen-ZIITian"
+        }
+      ],
+      "numerical_answer": 3.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let Z be a row in the \"Words\" table and D be a dictionary. Use the procedure updateDict given above. Consider the dictionary commonDict created in the previous question. What would be the value of commonDict[?)? Procedure updatedict(Z, Dict) 1 = 1, x = ** while(i ‹ Z.LetterCount){ × = ith letter of Z.Word if(not iskey(Dict, x)) Dict (x] = 1 else{ Dict(x] = Dict[x] + 1 return(Dict) End updateDict"
+        }
+      ],
+      "numerical_answer": 2.0,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "Computational Thinking · Quiz 2 · Nov 2022 · Part 2"
+}

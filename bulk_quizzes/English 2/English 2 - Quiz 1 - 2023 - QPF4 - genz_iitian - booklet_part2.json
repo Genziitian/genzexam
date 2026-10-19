@@ -1,0 +1,389 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 2 · Quiz 1 · 26 Feb 2023 · QPF4 · Part 2",
+  "subject": "English 2",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "“He is a pilot who’s afraid of heights” is an example of"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Irony"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Paradox"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Oxymoron"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Pun"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "“The buzz saw snarled and rattled in the yard And made dust and dropped stove-length sticks of wood, Sweet-scented stuff when the breeze drew across it.” The figure of speech used here is"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Consonance"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Assonance"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both Consonance and Assonance"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of these"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Priya often visits her grandparents. Here the adverb is ___."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Often"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "No adverb"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Her"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Visit"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Jeeva drifts his car very fastly. Here adverbs modify ___."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Verb only"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Verb and adverb"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Adverb only"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Noun and verb"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Rahul is ___ talkative. Fill in the blank with an appropriate adverb."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Too"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Very"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Fully"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "So"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "They __ finished the work."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Has"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Have"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Had"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both Have and Had"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Fill in the blank. Come, Came, ___"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Come"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Came"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Comed"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Camed"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct statements. i) I read books. ii) She cook food. iii)You sit there. iv) I drives car."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "(i) and (iii) only"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "(i) and (iv) only"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "(ii) and (iii) only"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "(iii) and (iv) only"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "By next week, I will have finished this painting. This sentence is in ___ tense."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Future perfect"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Future perfect continuous"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Future continuous"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Simple Future"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In the following sentence, identify the logical/semantic role of the underlined word. Vasu felt really cold."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Agent"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Experiencer"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Instrument"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Theme"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 2 · Quiz 1 · 26 Feb 2023 · QPF4 · Part 2"
+}

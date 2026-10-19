@@ -1,0 +1,199 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Statistics 2 · Quiz 2 · MAM 2025 · Part 1",
+  "subject": "Statistics 2",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "This is the question paper for the subject roundation Lever san ester states for cata sence computer based exam, are you sure you nave to wnte the exam for this subject? Cross-check your hall ticket to confirm the subjects to be written. If it is not the correct subject, please check the section at the top for the subjects registered by you.)"
+        }
+      ],
+      "acceptable_answers": [
+        "A"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Formula file (reference card): probability distributions for discrete and continuous random variables. PMF / POF Unitorm(A). 1, 2 - k; n-8-a+ 1, k-a,a+ 1,....b"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "= {0,0 + 1,..., b} Bernoulli(p) Binomial (m, p) Geometric (p) p, z- 1; 1 - p, z-0 (p° (1 - p) *, 4 - 0,1,....n (1 - 8) * - 1,....∞ Poisson (A) Unitormla, B) Exp(X) Normal (4, o°) 1(1), -0<< Gamma(a, 3) Beta(a, S) 1(1 - 2)*"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Distribution reference card (above). Correct."
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "No closed form O marks - COF 0, 2<0, La, A ≤z<k+ 1, k-0,...,0-1,8, 1, 2 2 n 0, z<0, 1-p, 0≤ z < 1; 1, z≥1 0, = <0; [io - p)*, * ≤ = < <k+1, k -0,1,...,r; = 2 n 1...,00"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "ar(X) p(1 - 2) пр(1 - р) O marks - Useful data: 1. Use the following values of Pz if required: Fz(1) = 0.84, Fz(1.92) = 0.97, Fz(0) = 0.5, Fz(2) = 0.98, Fz (0.4) = 0.6551, Fz(-0.4) = 0.3466.2. /x° dz = 57• Useful data has been mentioned above."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "This data attachment is just for a reference and not for an evaluation."
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let X ~ Uniform (1, 2) (discrete random variable). Let (Y | X = 1) ~ Exp(1) and (Y | X = 2) ~ Exp(2). Find the distribution of Y."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "367 + 20 Let (X, Y) ~ Uniform (D) (jointly continuous random variables), where D = {(z, y) : a + y < 2, z > 0, y > 0). What is the marginal density function of"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "fx(z) - $ (2 - z), 0 < z < 2; 0 otherwise."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "/x(z) = 1(1 - z), 0 < z < 2; 0 otherwise."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "fr(z) = (2 - 7). 0 < z < 2: 0 otherwise"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "fxz) = 5, 0 < z < 2; 0 otherwise"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let X ~ Bernoalli (0 3) Find the MGE (Moment Generatina Fusction) of the centraised versico of X."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "0.3c^ + 0.7 8 0.36 74 4 0.7692"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "0.3022 + 0.7-032"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "isfare truen The joint PMF table of two discrete random variables X, (columns: values 1, 2) and X2 (rows: vaues 1, 2) is qiven below, Weich of the following option(s)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Ix, (1) * Ix, (1) CAn and no are independent"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "aXu and Xo are not iedacendenti"
+          }
+        ]
+      ],
+      "correct_answers": [
+        1
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Wires produced from a factory have a mean breaking strength of 50 kilograms with a standard deviation of 4 kilograms. In a statistical study of breaking strength of these wires, suppose the sample size is increased from 81 to 144. Based on the above data, answer the given subquestions. How does the expected value of the sample mean change?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The expected value decreases. & The expected value incresses"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The expected value remains the same. o The expected value fluctuates randomly."
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "Statistics 2 · Quiz 2 · MAM 2025 · Part 1"
+}

@@ -1,0 +1,104 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Sept 2024 Quiz1 · Part 1",
+  "subject": "Machine Learning Practice",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The aim is to explore if the total box-office collection during the weekends (Friday, Saturday and Sunday) and the total box-office collection during the weekdays (Monday to Thursday) are independent across the two heroes. Then how many DOFs does the test have? (Note: If your answer is in decimal, enter it rounded to two decimal places. For example, if your answer is “10.256”, enter it as “10.26”)"
+        }
+      ],
+      "numerical_answer": 1.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The aim is to explore if the total box-office collection during the weekends (Friday, Saturday and Sunday) and the total box-office collection during the weekdays (Monday to Thursday) are independent across the two heroes. Then what is the expected box-office collection for MK ON WEEKENDS? (Note: If your answer is in decimal, enter it rounded to two decimal places. For example, if your answer is “10.256”, enter it as “10.26”)"
+        }
+      ],
+      "acceptable_answers": [
+        "103.00 to 105.00"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The aim is to explore if the total box-office collection during the weekends (Friday, Saturday and Sunday) and the total box-office collection during the weekdays (Monday to Thursday) are independent across the two heroes. Then what is the expected box-office collection for YV ON WEEKDAYS? (Note: If your answer is in decimal, enter it rounded to two decimal places. For example, if your answer is “10.256”, enter it as “10.26”)"
+        }
+      ],
+      "acceptable_answers": [
+        "46.00 to 48.00"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The aim is to explore if the total box-office collection during the weekends (Friday, Saturday and Sunday) and the total box-office collection during the weekdays (Monday to Thursday) are independent across the two heroes. Then what is value for the computed test statistic? (Note: If your answer is in decimal, enter it rounded to two decimal places. For example, if your answer is “10.256”, enter it as “10.26”)"
+        }
+      ],
+      "acceptable_answers": [
+        "0.85 to 0.92"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "There is a presumption that total box-office collection (of both actors) in Million INR on DIFFERENT DATES, follows a uniform distribution with a minimum value of 11 Million INR and maximum value of 30 Million INR. A statistical test is performed to check this presumption. The bins considered for the test are [11 to 15], [16 to 20], [21 to 25] and [26 to 30]. Then, for performing the statistical test, what is the expected frequency in any given bin? (Note: If your answer is in decimal, enter it rounded to two decimal places. For example, if your answer is “10.256”, enter it as “10.26”)"
+        }
+      ],
+      "numerical_answer": 3.75,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "There is a presumption that total box-office collection (of both actors) in Million INR on DIFFERENT DATES, follows a uniform distribution with a minimum value of 11 Million INR and maximum value of 30 Million INR. A statistical test is performed to check this presumption. The bins considered for the test are [11 to 15], [16 to 20], [21 to 25] and [26 to 30]. Then, for performing the statistical test, what is the DOF? (Note: If your answer is in decimal, enter it rounded to two decimal places. For example, if your answer is “10.256”, enter it as “10.26”)"
+        }
+      ],
+      "numerical_answer": 3.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "There is a presumption that total box-office collection (for both actors) in Million INR on DIFFERENT DATES, follows a uniform distribution with a minimum value of 11 Million INR and maximum value of 30 Million INR. A statistical test is performed to check this presumption. The bins considered for the test are [11 to 15], [16 to 20], [21 to 25] and [26 to 30]. Then, for performing the statistical test, what is the value of the computed test statistic? (Note: If your answer is in decimal, enter it rounded to two decimal places. For example, if your answer is “10.256”, enter it as “10.26”) Question Id : 640653996052 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix The linear demand response for product-A is modelled as a simple linear regression represented as D(P) = 4500 – 30*P, where D(P) is the demand at price-P. Then, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "1.7 to 1.9"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "Sept 2024 Quiz1 · Part 1"
+}

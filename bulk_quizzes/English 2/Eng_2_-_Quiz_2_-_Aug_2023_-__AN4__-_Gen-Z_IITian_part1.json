@@ -1,0 +1,239 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 2 · Quiz 2 · Aug 2023 · Part 1",
+  "subject": "English 2",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "MCO Why does Abeer continue to show interest in the new opportunity suggested, despite it being unpaid? It would give him valuable work experience"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "It would help him fulfill a graduation requirement It would look good on his resume"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "It would help him work with archives ¿ marks"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Where is the job description for the new opportunity posted? on the library's website L Passage / Context Fill in the blanks with correct expressions of numbers/values/quantity and answer the given subquestions. Recent growth is much (1)_ , in protessional colleges (especially engineering, management and medicine), as well as in private vocational training courses catering especially to the IT sector. In the Indian system, higher (tertiary) education starts after the 10+2 Stage (i.e. ten years of primary and secondary education followed by two vears of senior secondary education). Student enrollment nas grown (2). five percent annually over the past two decades. This growth is about two-and-a-half (3). the population growth, and results from both a population bulge in lower age cohorts as well as increased demand for higher education overall. Yet (4) number (5)_ _ than developing country averages, but lower than the Asian average (11 percent) and much lower than developed countries which average 40 percent. Enrollment ratios vary across Indian States, with the Southern and Western States having higher numbers than their Eastern counterparts."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "on the university's notice board"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "in Geeta Raj's office"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "at the front office notice board"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "ten percent onthe ade cohort is enrolled tocav. ai"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct answer for blank (2). McQ Encose ne correct answer for blank (S), Numbers Mimes"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Most Percent About Bigger"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Meters"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Huncreds"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the direct object of the verb 'ask' in the given sentence? Joe asked himself whether he would take the nandsome sum."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Only himsel"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Only whether The clause whether he would take the handsome sum"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "reoth nimselt and wnethen"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "- squer 2Ù neighbours talked Whether the neighbours talked"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Sometimes c Uneasily"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Wondered uneasily"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "MCO inside. The clause in italics is: MCO Choose the grammatically correct sentence from the given options. The landlady quickly told us that the apartment was safe The landlady told quickly that the apartment was safe"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The direct obiect of the verb visiti The direct object of the verb hope"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "An adjunct"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The indirect obiect of the vers visit"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The landlady quickly told that the apartment was sate to us"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The landlady told that the apartment was safe quickly"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "MCO. Choose the grammatically correct sentence from the given options."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The Little Red Riding Hood curtly informed that she had no time for small-talk to the wolf The Little Red Riding Hood curtly informed the wolf that she had no time for small-talk"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The Little Red Riding Hood informed curtly that she had no time for small-talk to the wolf ¿ marks"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The Little Red Riding Hood informed that she had curtly no time for small-talk"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 2 · Quiz 2 · Aug 2023 · Part 1"
+}

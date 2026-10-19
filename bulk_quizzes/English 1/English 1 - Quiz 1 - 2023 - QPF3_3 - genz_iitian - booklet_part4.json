@@ -1,0 +1,389 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 1 · Quiz 1 · 16 JULY 2023 · QPF3 · Part 4",
+  "subject": "English 1",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nMatch Column A with suitable options in Column B. (Hint: Word collocation)\n\nQuestion:\nLand ___"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Forecast"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Decision"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Acquisition"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Blow"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Decay"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nMatch Column A with suitable options in Column B. (Hint: Word collocation)\n\nQuestion:\nMoral ___"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Forecast"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Decision"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Acquisition"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Blow"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Decay"
+          }
+        ]
+      ],
+      "correct_answer": 4,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nMatch Column A with suitable options in Column B. (Hint: Word collocation)\n\nQuestion:\nFinal ___"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Forecast"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Decision"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Acquisition"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Blow"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Decay"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nMatch Column A with suitable options in Column B. (Hint: Word collocation)\n\nQuestion:\nWeather ___"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Forecast"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Decision"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Acquisition"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Blow"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Decay"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following telephonic conversation and fill in the blank with appropriate responses: Harilal: Hello! Is this Nirjeevani Hospital? Receptionist: Yes. (i) ______________ Harilal: I wanted to know if Dr. Arundhati will be available for consultation. Receptionist: Yes Ma’am. (ii) ____________ book an appointment? Harilal: Yes, I want to book an appointment Receptionist: Please tell me your name and age. Hello! (iii) _____________ (The call gets disconnected) Harilal: Hello! Receptionist: Hello! Nirjeevani Hospital. Harilal: The call got (iv) _____________. My name is Harilal Khan and I am 35 years old. Receptionist: Could you please (v) ____________ Harilal: Harilal Khan, 35 years. Receptionist: Alright. Please be here by 10: 00 a.m. Thank you! Based on the above data, answer the given subquestions.\n\nQuestion:\nUnanimous ____"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Forecast"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Decision"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Acquisition"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Blow"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Decay"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following telephonic conversation and fill in the blank with appropriate responses: Harilal: Hello! Is this Nirjeevani Hospital? Receptionist: Yes. (i) ______________ Harilal: I wanted to know if Dr. Arundhati will be available for consultation. Receptionist: Yes Ma’am. (ii) ____________ book an appointment? Harilal: Yes, I want to book an appointment Receptionist: Please tell me your name and age. Hello! (iii) _____________ (The call gets disconnected) Harilal: Hello! Receptionist: Hello! Nirjeevani Hospital. Harilal: The call got (iv) _____________. My name is Harilal Khan and I am 35 years old. Receptionist: Could you please (v) ____________ Harilal: Harilal Khan, 35 years. Receptionist: Alright. Please be here by 10: 00 a.m. Thank you! Based on the above data, answer the given subquestions.\n\nQuestion:\nComplete blank (i) with an appropriate response."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "How may I help you today?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Who’s calling, please?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Hello! Are you Narsimh?"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following telephonic conversation and fill in the blank with appropriate responses: Harilal: Hello! Is this Nirjeevani Hospital? Receptionist: Yes. (i) ______________ Harilal: I wanted to know if Dr. Arundhati will be available for consultation. Receptionist: Yes Ma’am. (ii) ____________ book an appointment? Harilal: Yes, I want to book an appointment Receptionist: Please tell me your name and age. Hello! (iii) _____________ (The call gets disconnected) Harilal: Hello! Receptionist: Hello! Nirjeevani Hospital. Harilal: The call got (iv) _____________. My name is Harilal Khan and I am 35 years old. Receptionist: Could you please (v) ____________ Harilal: Harilal Khan, 35 years. Receptionist: Alright. Please be here by 10: 00 a.m. Thank you! Based on the above data, answer the given subquestions.\n\nQuestion:\nComplete blank (ii) with an appropriate response."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Are we to"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Would you like to"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Will you"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following telephonic conversation and fill in the blank with appropriate responses: Harilal: Hello! Is this Nirjeevani Hospital? Receptionist: Yes. (i) ______________ Harilal: I wanted to know if Dr. Arundhati will be available for consultation. Receptionist: Yes Ma’am. (ii) ____________ book an appointment? Harilal: Yes, I want to book an appointment Receptionist: Please tell me your name and age. Hello! (iii) _____________ (The call gets disconnected) Harilal: Hello! Receptionist: Hello! Nirjeevani Hospital. Harilal: The call got (iv) _____________. My name is Harilal Khan and I am 35 years old. Receptionist: Could you please (v) ____________ Harilal: Harilal Khan, 35 years. Receptionist: Alright. Please be here by 10: 00 a.m. Thank you! Based on the above data, answer the given subquestions.\n\nQuestion:\nComplete blank (iii) with an appropriate response."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Please ring me later."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Are you there?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "I will talk to you later."
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following telephonic conversation and fill in the blank with appropriate responses: Harilal: Hello! Is this Nirjeevani Hospital? Receptionist: Yes. (i) ______________ Harilal: I wanted to know if Dr. Arundhati will be available for consultation. Receptionist: Yes Ma’am. (ii) ____________ book an appointment? Harilal: Yes, I want to book an appointment Receptionist: Please tell me your name and age. Hello! (iii) _____________ (The call gets disconnected) Harilal: Hello! Receptionist: Hello! Nirjeevani Hospital. Harilal: The call got (iv) _____________. My name is Harilal Khan and I am 35 years old. Receptionist: Could you please (v) ____________ Harilal: Harilal Khan, 35 years. Receptionist: Alright. Please be here by 10: 00 a.m. Thank you! Based on the above data, answer the given subquestions.\n\nQuestion:\nWhich among the following expressions can complete blank (iv)?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Put off"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Called off"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Cut off"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which among the following expressions would complete blank (v)?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Speak up"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Speak out"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Call back"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 1 · Quiz 1 · 16 JULY 2023 · QPF3 · Part 4"
+}

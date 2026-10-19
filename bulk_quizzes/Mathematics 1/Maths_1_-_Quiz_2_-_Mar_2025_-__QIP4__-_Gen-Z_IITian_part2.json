@@ -1,0 +1,102 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 1 · Quiz 2 · Mar 2025 · QIP4 · Part 2",
+  "subject": "Mathematics 1",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let f be a differentiable function at x = 2. The tangent line to the curve represented by the function f at the point (2, 6) passes through the point (6, - 18). What will be the value of f (2)?"
+        }
+      ],
+      "numerical_answer": 6.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let f be a function whose domain is -5, 7). If g(x) = |2x + 5] and a, ⅞) denotes the largest interval which can be a domain for the composition function (f ° g)(x), then the value of a + 6 is"
+        }
+      ],
+      "numerical_answer": -5.0,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Suppose three distinct persons A. B and Care standing on the X-axis of the XY -plane (as shown in the figure M1-1) and the distance between B and A is same as the distance between C and B. The coordinates of A. B and Care (logs 3, 0). (log; (3= - 9), 0) and (log; (3* - 4), 0) respectively. What is the distance between C and B? B=(log: (3 - g) , 0)"
+        }
+      ],
+      "acceptable_answers": [
+        "0.25"
+      ],
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "1t 4m - n = 0 then find the value of (2 + gem)."
+        }
+      ],
+      "numerical_answer": 2.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider a function f(x) defined as f(x) = 22 + 4, If ø(z) is the inverse function of f(x), then which of the following option(s) is(are) true? 9(x) = 2x-3 g(x) = 3x - 2 g (1) = -12 -1 g'(7) = 12"
+        }
+      ],
+      "acceptable_answers": [
+        "B, C"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "35+2 - 7n3 Find lim, ∞ an for the given sequence {an} such that an = 35 + 615"
+        }
+      ],
+      "numerical_answer": 9.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "2n + 5(—1)\" Find lim, ∞ an for the given sequence {an} such that an = In - 3(-1)"
+        }
+      ],
+      "numerical_answer": 0.5,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "Mathematics 1 · Quiz 2 · Mar 2025 · QIP4 · Part 2"
+}

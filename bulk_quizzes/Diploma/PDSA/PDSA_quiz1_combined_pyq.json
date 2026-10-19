@@ -1,0 +1,74 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "PDSA · Quiz 1 · Combined PYQ",
+  "title": "PDSA · Quiz 1 · Combined PYQ",
+  "subject": "PDSA",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "NOTE: Enter your answer to the nearest integer."
+        }
+      ],
+      "numerical_answer": 2.0,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider an undirected graph G with 55 edges with the least number of vertices possible. What will be the number of vertices in graph G?"
+        }
+      ],
+      "numerical_answer": 11.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A connected, simple, undirected graph G has 1225 edges. The minimum number of vertices in G is ________."
+        }
+      ],
+      "numerical_answer": 50.0,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "An undirected connected graph G has 46 edges. The minimum number of vertices in G is ___."
+        }
+      ],
+      "numerical_answer": 11.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following Directed Acyclic Graph(DAG): The number of possible topological order(s) for the given graph is_____________."
+        }
+      ],
+      "numerical_answer": 2.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    }
+  ]
+}

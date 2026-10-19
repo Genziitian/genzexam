@@ -1,0 +1,351 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 1 · Quiz 1 · 2024 · QDF3 · Part 4",
+  "subject": "English 1",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the suitable phrasal verb for the following meaning. To accept something unpleasant."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Live by"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Live down"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Line up"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Live with"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "They had to ______ the outdoor concert due to the heavy rain"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Calls off"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Call out"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Call off"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Call up"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nBased on the above data, answer the given subquestions.\n\nQuestion:\nFill in the blank with the most suitable modal verb. Let me see what I _____ find in the pantry. Hint: To talk about general possibilities."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Shall"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Would"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Can"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nBased on the above data, answer the given subquestions.\n\nQuestion:\nRepudiate"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Commence"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Evade"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Obscure"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Confirm"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Resist"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nComplete the telephonic conversation given below with most polite and correct responses. Receptionist: Good afternoon, Verma Enterprises. (i) _______________________ Caller: Hello, this is Usha Patel from Vision Tech. Can I speak with Raghu Nath in IT? Receptionist: Sure, ma’am. What's the purpose of your call? Caller: I need to discuss the new software integration. Receptionist: (ii) ___________________________________ Raghu: Hi, this is Raghu Nath in IT. How can I help? Caller: Hello, Raghu. This is Usha from Bright Tech. I want to go over the new software integration details. Raghu: Sure, we plan to start next Monday and finish in two weeks. Does that work? Caller: Yes, will there be any downtime? Raghu: About an hour during setup, scheduled off-peak. Caller: Great. (iii) ___________________________ Raghu: I'll email it by the end of the day. Caller: (iv) __________________. I look forward to working with you. Raghu: No problem, Usha. Reach out if you need anything. Caller: Will do. Thanks. Bye. Raghu: (v) _________________ Based on the above data, answer the given subquestions.\n\nQuestion:\nComplete blank (i) with an appropriate response."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "What’s your problem?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "How may I help you?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "What do you expect me to do?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "What’s the matter with you?"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nComplete the telephonic conversation given below with most polite and correct responses. Receptionist: Good afternoon, Verma Enterprises. (i) _______________________ Caller: Hello, this is Usha Patel from Vision Tech. Can I speak with Raghu Nath in IT? Receptionist: Sure, ma’am. What's the purpose of your call? Caller: I need to discuss the new software integration. Receptionist: (ii) ___________________________________ Raghu: Hi, this is Raghu Nath in IT. How can I help? Caller: Hello, Raghu. This is Usha from Bright Tech. I want to go over the new software integration details. Raghu: Sure, we plan to start next Monday and finish in two weeks. Does that work? Caller: Yes, will there be any downtime? Raghu: About an hour during setup, scheduled off-peak. Caller: Great. (iii) ___________________________ Raghu: I'll email it by the end of the day. Caller: (iv) __________________. I look forward to working with you. Raghu: No problem, Usha. Reach out if you need anything. Caller: Will do. Thanks. Bye. Raghu: (v) _________________ Based on the above data, answer the given subquestions.\n\nQuestion:\nComplete blank (ii) with an appropriate response."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Please hold while I transfer your call"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Stay on hold for a moment, and don’t speak"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Keep quiet!"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Be on hold, buddy!"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nComplete the telephonic conversation given below with most polite and correct responses. Receptionist: Good afternoon, Verma Enterprises. (i) _______________________ Caller: Hello, this is Usha Patel from Vision Tech. Can I speak with Raghu Nath in IT? Receptionist: Sure, ma’am. What's the purpose of your call? Caller: I need to discuss the new software integration. Receptionist: (ii) ___________________________________ Raghu: Hi, this is Raghu Nath in IT. How can I help? Caller: Hello, Raghu. This is Usha from Bright Tech. I want to go over the new software integration details. Raghu: Sure, we plan to start next Monday and finish in two weeks. Does that work? Caller: Yes, will there be any downtime? Raghu: About an hour during setup, scheduled off-peak. Caller: Great. (iii) ___________________________ Raghu: I'll email it by the end of the day. Caller: (iv) __________________. I look forward to working with you. Raghu: No problem, Usha. Reach out if you need anything. Caller: Will do. Thanks. Bye. Raghu: (v) _________________ Based on the above data, answer the given subquestions.\n\nQuestion:\nComplete blank (iii) with an appropriate response."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "I want to meet the manager"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Send the schedule if you like!"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Can we plan the meeting for this week?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Can you send me a detailed schedule?"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nComplete the telephonic conversation given below with most polite and correct responses. Receptionist: Good afternoon, Verma Enterprises. (i) _______________________ Caller: Hello, this is Usha Patel from Vision Tech. Can I speak with Raghu Nath in IT? Receptionist: Sure, ma’am. What's the purpose of your call? Caller: I need to discuss the new software integration. Receptionist: (ii) ___________________________________ Raghu: Hi, this is Raghu Nath in IT. How can I help? Caller: Hello, Raghu. This is Usha from Bright Tech. I want to go over the new software integration details. Raghu: Sure, we plan to start next Monday and finish in two weeks. Does that work? Caller: Yes, will there be any downtime? Raghu: About an hour during setup, scheduled off-peak. Caller: Great. (iii) ___________________________ Raghu: I'll email it by the end of the day. Caller: (iv) __________________. I look forward to working with you. Raghu: No problem, Usha. Reach out if you need anything. Caller: Will do. Thanks. Bye. Raghu: (v) _________________ Based on the above data, answer the given subquestions.\n\nQuestion:\nComplete blank (iv) with an appropriate response."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "I am not working on the project, Raghu"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "How can I help you, Raghu?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Thanks, Raghu"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "I will not be attending the meeting, Raghu"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nComplete the telephonic conversation given below with most polite and correct responses. Receptionist: Good afternoon, Verma Enterprises. (i) _______________________ Caller: Hello, this is Usha Patel from Vision Tech. Can I speak with Raghu Nath in IT? Receptionist: Sure, ma’am. What's the purpose of your call? Caller: I need to discuss the new software integration. Receptionist: (ii) ___________________________________ Raghu: Hi, this is Raghu Nath in IT. How can I help? Caller: Hello, Raghu. This is Usha from Bright Tech. I want to go over the new software integration details. Raghu: Sure, we plan to start next Monday and finish in two weeks. Does that work? Caller: Yes, will there be any downtime? Raghu: About an hour during setup, scheduled off-peak. Caller: Great. (iii) ___________________________ Raghu: I'll email it by the end of the day. Caller: (iv) __________________. I look forward to working with you. Raghu: No problem, Usha. Reach out if you need anything. Caller: Will do. Thanks. Bye. Raghu: (v) _________________ Based on the above data, answer the given subquestions.\n\nQuestion:\nComplete blank (v) with an appropriate response."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "I am on a conference call"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Bye, Usha"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "I will be speaking with the manager"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "I will handle the project, Usha"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 1 · Quiz 1 · 2024 · QDF3 · Part 4"
+}

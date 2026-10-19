@@ -1,0 +1,116 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Machine Learning Techniques · End Term · Combined PYQ · Part 2",
+  "title": "Machine Learning Techniques · End Term · Combined PYQ · Part 2",
+  "subject": "Machine Learning Techniques",
+  "section": "endterm",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What will be the misclassification error incurred by the first decision stump?"
+        }
+      ],
+      "numerical_answer": 0.2,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following decision tree for a classification problem in which all the data-points are constrained to lie in the unit square in the first quadrant. That is 0 ≥ x1, x2 ≤ 1. If a point is picked uniformly at random from the unit square, what is the probability that the decision tree predicts this point as belonging to class 1?"
+        }
+      ],
+      "numerical_answer": 0.75,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Based on the above data, what will be the updated weight for point x2?"
+        }
+      ],
+      "numerical_answer": 0.25,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider a simple neural network with one hidden layer. The network has the following architecture: Input layer with 3 neurons. Hidden layer with 2 neurons, using the sigmoid activation function. Output layer with 1 neuron, using the linear activation function. The weights and biases for the network are as follows: Hidden Layer: Neuron 1: Weights: [0.5, -0.2, 0.8] Bias: 0.1 Neuron 2: Weights: [0.4, 0, 0.2] Bias: -0.4 Output Layer: Neuron 1: Weights: [0.2, 0.4] Bias: -0.3 Assume that the input values are [0.6, 0.3, 0.8]. Calculate output of Neuron 1 in hidden layer"
+        }
+      ],
+      "acceptable_answers": [
+        "0.70 to 0.80"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "For a decision tree, each node has exactly two child nodes (balanced tree). If the tree has a depth of 3, how many leaf nodes are there?"
+        }
+      ],
+      "numerical_answer": 8.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Question Id : 6406531231417 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "numerical_answer": 11.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Hint: Assume that these are only two possible words (that is there are only two features)"
+        }
+      ],
+      "acceptable_answers": [
+        "0.98 to 1"
+      ],
+      "marks": 6,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Calculate the information gain for the \"Age Group\" feature."
+        }
+      ],
+      "acceptable_answers": [
+        "0.20 to 0.60"
+      ],
+      "marks": 4,
+      "difficulty": "medium"
+    }
+  ]
+}

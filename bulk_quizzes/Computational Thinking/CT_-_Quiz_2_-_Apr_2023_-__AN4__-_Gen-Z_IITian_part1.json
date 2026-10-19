@@ -1,0 +1,191 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Computational Thinking · Quiz 2 · Apr 2023 · Part 1",
+  "subject": "Computational Thinking",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following pseudocode. At the end of the execution of the following pseudocode, if flag has value True, then choose the possible value of L from the given choices. flag = False position - e foreach element in L{ if((position «= 1) and (element «= 'y\")){ flag = True position = position + 1 ['z\", \"y\"] ['y\", \"×\", 'z\"] ['У'] ['z\", \"x', \"y\"] Consider the following procedure, where L1 and L2 are two non-empty lists. findSomething(L1, L2) will return Tie when Procedure findSomething li. 120 if(length(L1) I- length(L2)){ return (False) while(length(L1 > 0)){ if(first(L1) != last(L2)){ return(False) L1 • rest (L1) L2 = init(L2) return(True) End findSomething all the elements of both lists L1 and L2 are same but arranged in the reverse order. c all the elements of list L1 are present in L2 where length(L2) > length(L1). Answer. A"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "both lists L1 and L2 are same."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "all the elements of list L2 are present in L1 where length(L1) > length(L2)."
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Words\" dataset. Assume that the rows in Table 1 are arranged in increasing order of sequence number from top to bottom. What will L store at the end of the execution?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "- \"None\" Read the first row X in Table 1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "= X.PartOfSpeech Move X to Table 2 while(Table 1 has more rows){ Read the first row Y in Table 1 1f(Y.PartOfSpeech \"= \"Noun\">{ 1f(A == \"Adjective\")( L = L ++ [Y.Word]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "= Y. PartOfSpeech Move Y to Table 2 Number of nouns that appear immediately after an adjective"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of adjectives that appear immediately after a noun"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of sentences in which at least one noun appears immediately after an adjective"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of sentences in which at least one adjective appears immediately after a noun"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "MSO Let X be a row from the \"Words\" dataset. Procedure isRich(X) should return True if the number of distinct vowels is less than the number of distinct consonants in X.Word. But the code may have mistakes. Identify all such mistakes (if any). Assume that all statements not listed in the options below are free of errors. It is a Multiple Select Question (MSQ). Procedure isRich(X) vDict = (}, wOict = () while(i‹= X.LetterCount)/"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "= ith letter in X.Word if(A is a vowel){ voict [A] = True wict[A] = True 1-1+1 if(length(keys(vDict)) ‹ length(keys(wDict))){ return (True) roturn (True) End isRich"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Line 2: vDict is initialized incorrectly"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Line 10: i is updated incorrectly. Line 12: Incorrect conditional statement to return True. / Line 15: return(True) should be replaced by return(False)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "No error"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the procedure given below, where aList is a non-empty list of real numbers. At the end of the execution, which of the following option(s) would be correct? It is a Multiple Select Question (MSQ). procedure cumulative(alist) sum = 0, cumulist = [] foreach element in aList{ sum = sum * element cumuList = cumuList ++ [sum] return(cumulist) end cumulative / The first element of both the lists, cumuList and aList, will be same."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Number of elements in cumuList will be one lesser than that of aList. cumuList is a list of numbers in increasing order."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of elements in both lists, cumuList and aList, will be same."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        3
+      ],
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Olympics\" dataset. At the end of the execution, medalDict stores a dictionary with player's name as key mapped to another dictionary. The nested dictionary stores the medal type as key mapped to a list of years in which the player won that medal. For example if player Xyz has won a silver medal in 2006, a gold medal in 2008, and another silver medal in 2011, then medalDict = (\"Xyz\": (\"Silver\": [2006, 2011], \"Gold\": (2008])...) Assume that every player has a distinct name. But the pseudocode may have mistakes. Identify all such mistakes (if any). Assume that all statements not listed in the options below are free of errors. It is a Multiple Select Question (MSQ). medalDict = (} while(Table 1 has more rows){ Read the first row X in Table 1 1f(isKey(medalDict, X.Name)){ if(isKey(medalDict[X.Nane], X.Medal)){ medalDict[x.Name][x.Medal] = [X.Year] elsef medalDict[x.Name][x.Medal] = [X.Year] elsef medalDict[x.Name][X.Medal] = [x.Year] Move X to Table 2 - exam.genziitian.in | YouTube - youtube.com/@Gen-ZIITian |"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Line 1: Incorrect initialization of medalDict Line 6: The current statement should be replaced by medalDict[X.Name][X.Medal] = medalDict[X.Name][X.Medal] ++ [X.Year] Line 9: The current statement should be replaced by medalDict[X.Name][X.Medal] = medalDict[X.Name][X.Medal] ++ [X.Year] Line 13: The current statement should be replaced by medalDict[X.Name] = (x.Medal : [X.Year])"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "No Mistakes"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 5,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the procedure doSomething given below. If C = [3, 4, 1, 9, 5, 3, 1, 9] and B = doSomething(C), what would be the value of first(B)? Procedure doSomething(A) outList - [last(A)] foreach X in A( if(x != last(outList)){ outList = [X] ++ outList return(outList) End doSomething"
+        }
+      ],
+      "numerical_answer": 1.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "Computational Thinking · Quiz 2 · Apr 2023 · Part 1"
+}

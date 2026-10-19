@@ -1,0 +1,210 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Computational Thinking · Quiz 2 · Nov 2022 · Part 1",
+  "subject": "Computational Thinking",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What will be the value of D at the end of the execution of following pseudocode? Let dict be a dictionary, then which of the following is not a valid value of dict? dict = { \"a' : (\"a\" : 5, \"b' : 4}, \"b\" : ('a\" : 2}} dict - ( \"a\" : (\"a\" : \"a\", \"b\" : \"b'), \"b\" : ('a\" : 2}} dict - ( \"a\" : ('a\" : 5, \"a\" : 4), \"b\" : (\"a\" : 2)} dict \" ( \"a' : (\"a\" : 5, \"b' : 4}, \"b' : ('b\" : 2)}"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "= ( 'a' : ('a\" : 5, \"b' : 4), 'b\" : 1)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "= { \"a\" : ('a' : 5, \"b' : 4), \"b' : 1}"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "= ( \"a\" : ('a' : 5, \"b' : 4), \"b' : 2} 0 = ( \"a\" : ('a\" : 10, \"b\" : 8), \"b' : 2}"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "= { \"a\" : ('a' : 5, \"b' : 8), \"b' : 1}"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let x. y, and 'z\" be the only keys of dictionary D and L = keys(D). At the end of the execution of the following pseudocode, flag stores True. Choose the possible value of L from the given choices. flag = False position - e foreach key in Lf if((position == 1) and (key == \"y\")){ flag = True position = position + 1 ['z\", \"y\", \"x\"] ['y\", \"×\", 'z\"] [\"x\", \"z\", \"y\"] ['z\", \"x', \"y\"] MCQ Let timeList be a list of pairs containing information about trains associated with a station stn. Specifically. each element in this list is a pair: [Arrival, Departure] (pair of arrival and departure time). If the arrival or departure time is empty, it is represented as \"None\". What does count represent at the end of the execution of the following pseudocode? count = e foreach x in timeList if(first(x) I- \"None\" and last(x) I= \"None\")( count • count + 1 Number of trains for which sto is either a starting or an ending station"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Number of trains for which stn is a starting station"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of trains for which stn is an ending station"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of trains for which stn is neither a starting nor an ending station"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following pseudocode, where D is a dictionary. Choose a statement regarding D from the given choices such that sum will always store a value greater than 0 at the end of the execution of the above code. foreach key in keys (D)( sum = sum * first(D[key])"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Each key of the dictionary D should be mapped to a positive integer."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Each key of the dictionary D should be mapped to a dictionary with each key mapped to a positive integer."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Each key of the dictionary D should be mapped to a non-empty list of integers."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Each key of the dictionary D should be mapped to a non-empty list of positive integers."
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let explode(W) returns the list of letters in the word W. For example explode(\"common\") will return ['c', 'o\", 'm', 'm', 'o', 'n']. What will count store at the end of the execution of the following pseudocode? count = 0, letterList = [] wordlist = [\"keep\", \"exploring\", \"and\", \"keep\", \"learning'] foreach word in wordList letterlist = explode(word) lastLetter = , flag = False foreach letter in letterList{ if(letter is a vowel and letter == lastLetter)( flag = True lastietter = letter 1f(flag) { count = count + 1"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "3"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "4"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Words\" dataset. Assume that the rows in Table 1 are arranged in the increasing order of sequence numbers from top to bottom. At the end of the execution of the following pseudocode, L stores the list of nouns that appear immediately after an adjective. Choose the correct code fragment to complete the pseudocode."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "= \"None\" Read the first row X in Table 1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "= X. PartOfSpeech Move X to Table 2 while(Table 1 has more rows)! Read the first row Y in Table 1 ** Fill the code **"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "= Y. PartOfSpeech Move Y to Table 2 1f(Y.PartofSpeech == \"Noun\")( 1f(A == \"Adjective\"){ L = L ** [Y.Word] if((A == \"Adjective\") or (Y.PartOfSpeech == \"Noun\")){ L = L ++ [Y.Word] 1f((A == \"Noun) and (Y.PartOfSpeech == \"Adjective\")){ L = L ** [Y.Word] 1f(Y.PartofSpeech == \"Adjective\")( if(A == \"Noun\"){ L = L ++ [Y. Word]"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the procedure given below, where aList is a list of integers. At the end of the execution, which of the following option(s) would be correct? It is a Multiple Select Question (MSQ). procedure cumulative(aList) sum - e, cunuLast - u foreach element in aList{ sum = sum * element return(cumuList) end cumulative The first element of both the lists, cumuList and aList, will be same."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Number of elements in cumuList will be one lesser than that of aList cumuList is a list of numbers in increasing order."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of elements in both lists, cumuList and aList, will be same"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        3
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "Computational Thinking · Quiz 2 · Nov 2022 · Part 1"
+}

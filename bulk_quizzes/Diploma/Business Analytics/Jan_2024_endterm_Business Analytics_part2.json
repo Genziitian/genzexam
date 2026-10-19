@@ -1,0 +1,105 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Jan 2024 Endterm · Part 2",
+  "subject": "Business Analytics",
+  "section": "endterm",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the expected frequency in “Bin-2” of Dr. Milo’s analysis?"
+        }
+      ],
+      "numerical_answer": 2.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many degrees of freedom is present for the hypothesis test used to check if Dr. Milo’s assumption that all learners in the “followed the instructions” category are Normally distributed? Question Id : 640653816730 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix An automotive company wants to understand its model performance of a classification problem where the task is to classify loyal customers and those Not Loyal. Using the table given below, answer the given subquestions Sub questions"
+        }
+      ],
+      "numerical_answer": 2.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the accuracy of the model? (in percentage) Hint: Round your answer to two decimal places and answer them in terms of percentage. Example: If your answers is 0.735, write it as 73.50."
+        }
+      ],
+      "acceptable_answers": [
+        "58.1 to 58.6"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the precision of class 1? (in percentage) Hint: Round your answer to two decimal places and answer them in terms of percentage. Example: If your answers is 0.735, write it as 73.50."
+        }
+      ],
+      "acceptable_answers": [
+        "62.2 to 66.7"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the recall of class 1? (in percentage) Hint: Round your answer to two decimal places and answer them in terms of percentage. Example: If your answers is 0.735, write it as 73.50."
+        }
+      ],
+      "acceptable_answers": [
+        "71.1 to 71.7"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the precision of class 0? (in percentage) Hint: Round your answer to two decimal places and answer them in terms of percentage. Example: If your answers is 0.735, write it as 73.50."
+        }
+      ],
+      "acceptable_answers": [
+        "49.9 to 50.1"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the recall of class 0? (in percentage) Hint: Round your answer to two decimal places and answer them in terms of percentage. Example: If your answers is 0.735, write it as 73.50."
+        }
+      ],
+      "acceptable_answers": [
+        "39.9 to 40.1"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "Jan 2024 Endterm · Part 2"
+}

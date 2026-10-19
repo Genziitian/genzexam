@@ -1,0 +1,141 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 2 · Quiz 2 · Mar 2025 · QIM4 · Part 2",
+  "subject": "Mathematics 2",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the linear transformation T: R3 → R? defined by T(x, y, z) = (x - 3y - (k + 1)z, 2x + ky + 10z) for all (x, y, z) € R, where k € R For the value of & obtained in the previous question, which of the following vectors belong to the range of T Ш Passage / Context Let T be an orthogonal transformation defined on Ra with the usual inner product."
+        }
+      ],
+      "acceptable_answers": [
+        "A, B"
+      ],
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the linear transformation T: R3 → R? defined by T(x, y, z) = (x - 3y - (k + 1)z, 2x + ky + 10z) for all (x, y, z) € R, where k € R Find ||Т(4, 0, —3)||-"
+        }
+      ],
+      "numerical_answer": 5.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the linear transformation T: R3 → R? defined by T(x, y, z) = (x - 3y - (k + 1)z, 2x + ky + 10z) for all (x, y, z) € R, where k € R Suppose Q is the matrix representation of T with respect to some ordered basis, then find det (Q?)."
+        }
+      ],
+      "numerical_answer": 1.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the linear transformation T: R3 → R? defined by T(x, y, z) = (x - 3y - (k + 1)z, 2x + ky + 10z) for all (x, y, z) € R, where k € R Find the angle between T(1, 1, 1) and T(1, -2, 1)."
+        }
+      ],
+      "acceptable_answers": [
+        "D"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let u1 = (1, 0, 1), u½ = (1,1, 1) and W = span{u1, 42}. If (a, b, c) is the projection of 42 on 11, find a + 6 + c."
+        }
+      ],
+      "numerical_answer": 2.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let u1 = (1, 0, 1), u½ = (1,1, 1) and W = span{u1, 42}. Let {21, 22} be the orthonormal set of vectors obtained from {u1, u½} by applying the Gram-Schmidt process. Choose the correct option."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "V1 = ½(1,0,1), 22 = ⅓ (-1,1,1)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "01 = - (1,0,1), 22 = (0,1,0)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "v1 = → (1,0,1), 2z = + (-1,0,1)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "V1 = 2(1,0,1), 22 = v2 (1,0, -1)"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let u1 = (1, 0, 1), u½ = (1,1, 1) and W = span{u1, 42}. Choose the correct option for W."
+        }
+      ],
+      "acceptable_answers": [
+        "D"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let u1 = (1, 0, 1), u½ = (1,1, 1) and W = span{u1, 42}. Let (a, b, c) be the vector obtained by projecting the vector (1, 2, 3) on W. Find a + & + c."
+        }
+      ],
+      "numerical_answer": 6.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "Mathematics 2 · Quiz 2 · Mar 2025 · QIM4 · Part 2"
+}

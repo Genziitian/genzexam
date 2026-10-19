@@ -1,0 +1,374 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Python Programming · Quiz 1 · 25 Feb 2024 · QDF2 · Part 1",
+  "subject": "Python Programming",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider a program that accepts a word as input from the user and prints the number of vowels in it. You can assume that the input will be given in lower case. Which of these two snippets is correct?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "# Snippet-1\nword = input()\ncount = 0\nfor char in ['a', 'e', 'i', 'o', 'u']:\n    if char in word:\n        count = count + 1\nprint(count)\n# Snippet-2\nword = input()\ncount = 0\nfor char in 'aeiou':\n    if char in word:\n        count = count + 1\nprint(count)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Only snippet-1 is correct"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Only snippet-2 is correct"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both snippets 1 and 2 are correct"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both snippets 1 and 2 are incorrect"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Both snippets count how many distinct vowel letters appear in the word (using `in`), not the total number of vowel occurrences. For a word like 'banana' (3 vowels) both print 2, so neither correctly counts the number of vowels — both snippets are incorrect. (The exact wording of the two snippets is rendered as an image in the source; verify against the official key.)"
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "We wish to print the following pattern: 11111 10001 10001 10001 11111 Which of these two snippets is correct?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "# Snippet-1\nn = 5\none = '1'    # len(one) == 1\nzero = '0'    # len(zero) == 1\nfor i in range(n):\n    if i == 0 or i == n - 1:\n        print(one * n)\n    else:\n        print(one + zero * (n - 2) + one)\n# Snippet-2\nn = 5\none = '1'    # len(one) == 1\nzero = '0'    # len(zero) == 1\nfor i in range(n):\n    for j in range(n):\n        if j == 0 or j == n - 1:\n            print(zero, end = '')  # an empty string is passed to end\n        else:\n            print(one, end = '')   # an empty string is passed to end\n    print()"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Only snippet-1 is correct"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Only snippet-2 is correct"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both snippets 1 and 2 are correct"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both snippets 1 and 2 are incorrect"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Snippet-1 prints the border rows as '11111' and interior rows as '1'+'000'+'1' = '10001', matching the required pattern. Snippet-2 prints '0' at the edges and '1' in the middle, producing '01110' on every row — incorrect."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the code snippets given below computes the minimum of three integers, not necessarily distinct from each other? Note that the correct code snippet should have exactly one line in the output, which displays the minimum of a, b and c."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "# Snippet-1\na, b, c = int(input()), int(input()), int(input())\nif (a <= b <= c) or (a <= c <= b):\n    print(a)\nif (b <= a <= c) or (b <= c <= a):\n    print(b)"
+        },
+        {
+          "kind": "text",
+          "value": "else:"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "print(c)\n# Snippet-2\na, b, c = int(input()), int(input()), int(input())\nif (a < b < c) or (a < c < b):\n    print(a)\nif (b < a < c) or (b < c < a):\n    print(b)\nif (c < a < b) or (c < b < a):\n    print(c)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Only snippet-1 is correct"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Only snippet-2 is correct"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both snippets 1 and 2 are correct"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both snippets 1 and 2 are incorrect"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 4,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Snippet-1 uses two independent if-blocks (the second has an else), so it can print more than one line, e.g. for (1, 2, 3) it prints both 1 and 3. Snippet-2 uses strict '<' comparisons, so when any two values are equal (e.g. 2, 2, 2 or 5, 1, 1 → ties) none of the conditions hold and nothing is printed. Neither prints the minimum exactly once in all cases, so both are incorrect."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "M is a list of lists. Select all values of M for which the following snippet of code prints the value True."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "# M is a list of lists\nn = len(M)\nflag = True\nfor i in range(n):\n    for j in range(i):\n        if M[i][j] != 0:\n            flag = False\nif flag:\n    print('True')"
+        },
+        {
+          "kind": "text",
+          "value": "else:"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "print('False')"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "[[1, 3, 0, 5], [0, 2, -2, 5], [0, 0, 3, 1], [0, 0, 0, 5]]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[[10, 20, 30], [0, 3, 4], [0, 0, -3]]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[[1, 0, 0, 0], [4, 10, 0, 0], [3, -1, -2, 0], [10, -3, 4, 5]]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[[0, 1, -1], [-2, 0, 4], [-1, -4, 0]]"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1
+      ],
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The code prints True only when every element strictly below the main diagonal (M[i][j] for j < i) is 0, i.e. M is upper-triangular. Options 1 and 2 are upper-triangular; options 3 and 4 have non-zero entries below the diagonal."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Select all inputs for which the code below prints the value True. Each input is a sentence with a space between consecutive words, all of which are in lower case."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "sentence = input()\n# all letters in alpha are in lower case\nalpha = 'abcdefghijklmnopqrstuvwxyz'\nsurprise = True\nfor char in alpha:\n    if char not in sentence:\n        surprise = False\n        break\nprint(surprise)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "the quick brown fox jumps over the lazy dog"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "how vexingly quick daft zebras jump"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "this is a remarkable property"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "pack my box with five dozen chips packets"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1
+      ],
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "surprise stays True only if every letter of the alphabet appears in the sentence (a pangram). 'the quick brown fox jumps over the lazy dog' and 'how vexingly quick daft zebras jump' contain all 26 letters; the other two are missing several letters."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the output of the following snippet of code? Enter an integer as your answer."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "first = 3\nsecond = 9\ni = 2\nwhile i <= 5:\n    next_term = first + second\n    first = second\n    second = next_term\n    i += 1\nprint(second)"
+        }
+      ],
+      "numerical_answer": 54,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Loop runs for i = 2,3,4,5 (4 iterations). Sequence of second: start 9 → 12 → 21 → 33 → 54. Output is 54."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the output of the following snippet of code? Enter an integer as your answer."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "word = '12794'\nout = ''  # this is an empty string\ni = len(word) - 1\nwhile i >= 0:\n    out += word[i]\n    i -= 1\nprint(int(out))"
+        }
+      ],
+      "numerical_answer": 49721,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The loop builds out as the reverse of '12794' → '49721', and int('49721') = 49721."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following snippet of code, run on four sets of inputs. If a, b, c, d are the outputs produced for each of these four inputs respectively, form the four digit number abcd and enter that as your answer. For example, if a = 1, b = 2, c = 3, d = 4, your answer should be 1234. Inputs (word_1, word_2, word_3, word_4): a: be, abel, abeliangroup, group b: abc, abc, abc, abc c: group, gro, ro, r d: phenomenon, phenomenons, non, on"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "word_1 = input()\nword_2 = input()\nword_3 = input()\nword_4 = input()\nlevel = 0\nif word_1 in word_2:\n    level = level + 1\n    if word_2 in word_3:\n        level = level + 1\n        if word_3 in word_4:\n            level = level + 1\nprint(level)"
+        }
+      ],
+      "numerical_answer": 2301,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "a: 'be' in 'abel' (yes), 'abel' in 'abeliangroup' (yes), 'abeliangroup' in 'group' (no) → 2. b: 'abc' in 'abc' (yes) thrice → 3. c: 'group' in 'gro' (no) → 0. d: 'phenomenon' in 'phenomenons' (yes), 'phenomenons' in 'non' (no) → 1. abcd = 2301."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the output of the following snippet of code?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "L = ['2', '370', '1234', '1634', '38', '100']\ncount = 0\nfor num in L:\n    val = 0\n    for x in num:\n        val = val + (int(x) ** len(num))\n    if val == int(num):\n        count = count + 1\nprint(count)"
+        }
+      ],
+      "numerical_answer": 3,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "For each number, sum each digit raised to the number of digits and compare to the number itself (narcissistic numbers). '2' (2^1=2 ✓ ), '370' (3^3+7^3+0=370 ✓ ), '1234' (no), '1634' (1+1296+81+256=1634 ✓ ), '38' (no), '100' (no). count = 3."
+        }
+      ]
+    }
+  ],
+  "title": "Python Programming · Quiz 1 · 25 Feb 2024 · QDF2 · Part 1"
+}

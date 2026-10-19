@@ -1,0 +1,189 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 1 · Quiz 2 · Mar 2025 · Part 2",
+  "subject": "English 1",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "these glasses yours? Does Are"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Have"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Is"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "DO"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Pragya, along with Archish, _ coming to Chandigarh."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Does c Have"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "IS"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "DO"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the future perfect continuous tense sentence from the following options: You will win the exam"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Your mother will love you forever By noon, she will have been learning to drive a car for three hours"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Will she do it again?"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Fill in the blank with future perfect continuous tense form. At the end of this term, I about 10 years. In another 10 years, I might be fluent!"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Have study"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Had been studied c Will have studied"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Will have been studying .U marks French for"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In the plural noun prizes, the plural marker sounds as —"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "(S]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "(iz]"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many syllables are there in the word ideology!"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "4"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "5 Answer DI"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 1 · Quiz 2 · Mar 2025 · Part 2"
+}

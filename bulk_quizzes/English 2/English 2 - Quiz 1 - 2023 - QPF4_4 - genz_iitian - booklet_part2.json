@@ -1,0 +1,371 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 2 · Quiz 1 · 29 Oct 2023 · QPF4 · Part 2",
+  "subject": "English 2",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "“Float like a butterfly, sting like a bee.” The figure of speech used here is ____________ ."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Paradox"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Oxymoron"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Irony"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Antithesis"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Dunkin’ Donuts, Best Buy, and Blackberry are examples of assonance. This statement is"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "TRUE"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "FALSE"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Ravi waited impatiently for the results. Here the adverb is _____________ ."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Waited"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Impatiently"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "For"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Unfortunately, the team was knocked out from the tournament. Here the adverb modifies _____________ ."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The team"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Knocked out"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The whole sentence"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "No adverb"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Rahul is _______ talkative. Fill the blank with appropriate adverb."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Too"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Very"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Fully"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct statements i) I read books ii) She cook food iii)You sit there iv) I drives car"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "(i) and (iii) only"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "(i) and (iv) only"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "(ii) and (iii) only"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "(iii) and (iv) only"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The participle form of ‘cut’ is ___."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Cut"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Cutted"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Cutten"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of these"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Fill in the blank. Rise, Rose, ___"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Rosen"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Rosed"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Rised"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Risen"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "By next week, I will have finished this painting. This sentence is in ___ tense."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Future perfect"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Future perfect continuous"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Future continuous"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Simple future"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In the following sentence, identify the logical/semantic roles of the underlined word/phrase. The worker oiled the machines."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Instrument"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Recipient"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Theme"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Agent"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 2 · Quiz 1 · 29 Oct 2023 · QPF4 · Part 2"
+}

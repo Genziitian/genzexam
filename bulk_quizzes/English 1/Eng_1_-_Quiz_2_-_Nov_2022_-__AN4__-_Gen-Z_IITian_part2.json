@@ -1,0 +1,255 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 1 · Quiz 2 · Nov 2022 · Part 2",
+  "subject": "English 1",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct option. The professor tried to explain but they"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Listened"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Have listened Weren't listening"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Were listening"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct option. Neither my mother nor her friends ever — carrom."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Plays"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Play"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Fill in the blank with future perfect progressive tense form. By the time we get there we_ seven hours."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Will be driving Will have been driving c Will have drived"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of these for over"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Fill in the blank with a verb form that is in the past perfect tense. Eshwaranna peacefully. Rested"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Rest Had rested"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Have rested"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The word Revive is stressed on J"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "First syllable Second syllable"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Either on the first or second syllable depending on the context"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "No stress"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following has an aspirated stop? A Skating"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Perfect"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Implode Both Perfect and Implode"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many syllables are there in the word scorch? J 1 18 2"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "3"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "4"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many syllables are there in the word delimit?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "3"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "4"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "5"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The compound word swimming pool is stressed on the • First word Be Second word"
+        }
+      ],
+      "acceptable_answers": [
+        "A"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 1 · Quiz 2 · Nov 2022 · Part 2"
+}

@@ -1,0 +1,259 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 2 · Quiz 2 · 06 Apr 2026 · Part 3",
+  "subject": "English 2",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct modal verb to fill in the blank. See the hint or context provided and choose only the most appropriate option to fill the blank. I go to class. Hint: An obligation that is self-imposed and weak in nature Must Shall"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Would"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Could"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct modal verb to fill in the blank. See the hint or context provided and choose only the most appropriate option to fill the blank. Criticism of other political parties, when made, be confined to their policies and programme, past record and work. Hint: To denote a strong, socially-oriented, and legally- binding obligation on those contesting in elections"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Should"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Could"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Might"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Shall"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Siva was asking Abdul__ the road was bumpy or not."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Whether Either if or whether can be used"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "If"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the sentence that tits the given question tag. _ did it? It didn't rain last night"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "It hasn't moved to a different location"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "It was dark when you walked home"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "It doesn't matter"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the object of the verb 'say' in the given sentence. It was impossible to say yet whether the lion would attark or noti"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Only yet c Only whether"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both yet and whether"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In the given sentence, what function does the that-clause serve? The experience taught him that he had tol watch his words in public. It is the indirect object of the verb taught Identify the embedded question for the following direct question. Where is the house? I don't remember where the house is."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "It qualifies the pronoun him / It is the direct object of the verb taught"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of these"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "I don't remember where is the house."
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The verb laugh takes __ objects as its complements."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "°"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "3"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "MCO The interrogative form of the given sentence iS А Does John laugh loudlv?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Do John laugh loudly?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Did john lauqhed loudly?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Did John laugh loudly?"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 2 · Quiz 2 · 06 Apr 2026 · Part 3"
+}

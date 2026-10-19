@@ -1,0 +1,144 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "May 2025 Endterm · Part 1",
+  "subject": "Business Analytics",
+  "section": "endterm",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many decision variables are present in the standard form of the primal, if the given problem is formulated as a Linear Programming Problem?"
+        }
+      ],
+      "numerical_answer": 4.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many decision variables are present in the Dual form (which is formulated based on the standard form of the primal) if the given problem is formulated as Linear Programming Problem?"
+        }
+      ],
+      "numerical_answer": 2.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If the restaurant decides to make 450 DCVs and 450 CVs, then what is the value of the objective function for the linear program which is in the standard form of the primal? [Note: Enter your answer in decimal rounded to two decimal places. For example, if your answer is 1.235 then enter the answer as “1.24”]"
+        }
+      ],
+      "numerical_answer": 78125.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If the restaurant decides to make 450 DCVs and 450 CVs, then how many decision variables in the Dual form (which is formulated based on the standard form of the primal) will have a value of “0”, if the given problem is formulated as Linear Programming Problem?"
+        }
+      ],
+      "numerical_answer": 0.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the total variability in the dependent variable? [Note: Enter your answer in decimal rounded to two decimal places. For example, if your answer is 1.235 then enter the answer as “1.24”]"
+        }
+      ],
+      "acceptable_answers": [
+        "3900.00 to 3904.00"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the expected percentage inflation (increase) in the standard error of the beta value corresponding to “Average Number of Employees who have Worked” due to “Total Number of Working Days” if a model with only these two variables is built for predicting “Average Electricity Consumed”? [Note: Enter your answer in “PERCENTAGE” rounded to two decimal places without the percentage symbol. For example, if your answer is 1.235% then enter the answer as “1.24”]"
+        }
+      ],
+      "acceptable_answers": [
+        "11.00 to 11.50"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What would be the mean of the distribution, if you want to check the hypothesis “The number of scratches on a produced lens follows a Poisson Distribution”? [Note: Enter your answer rounded to two decimal places. For example, if your answer is 1.235 then enter the answer as “1.24”]"
+        }
+      ],
+      "acceptable_answers": [
+        "1.3 to 1.5"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many (count) of degrees of freedom will be presented for the computed test statistic for this problem if you want to check the hypothesis “The number of scratches on a produced lens follows a Poisson Distribution”?"
+        }
+      ],
+      "numerical_answer": 2.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the value of the computed test statistic for the test to be performed if you want to check the hypothesis “The number of scratches on a produced lens follows a Poisson Distribution”? [Note: Enter your answer rounded to two decimal places. For example, if your answer is 1.235 then enter the answer as “1.24”]"
+        }
+      ],
+      "acceptable_answers": [
+        "5.2 to 5.5"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the accuracy of the logistic regression model? [Note: Enter your answer in decimal rounded to four decimal places. For example, if your answer is 0.635450, then enter the answer as “63.5450”]"
+        }
+      ],
+      "acceptable_answers": [
+        "57.1 to 57.2"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "May 2025 Endterm · Part 1"
+}

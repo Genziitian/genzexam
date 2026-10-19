@@ -1,0 +1,129 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Machine Learning Techniques · Quiz 2 · Combined PYQ · Part 2",
+  "title": "Machine Learning Techniques · Quiz 2 · Combined PYQ · Part 2",
+  "subject": "Machine Learning Techniques",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If the answer to the previous questions is \"Yes\", find the entropy of the node. Use log2 and enter your answer correct to three decimal places. If the answer to the previous question is \"No\", enter -1 as your answer. Question Id : 640653587606 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "0.79 to 0.83"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If p = P ( y = 1 ) is estimated to be 0.4, what will be the prediction for the point x = 3 using the Bayes classifier? Enter 1 or -1."
+        }
+      ],
+      "numerical_answer": -1.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If p = P (y = 1) is estimated to be 0.5 using MLE on a given training dataset, what will be the training error of the Bayes classifier for this problem? Question Id : 640653587610 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "numerical_answer": 0.5,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "2.31 to 2.35 Question Id : 6406531021358 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix"
+      ],
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Suppose you want to use a Naive Bayes classifier to predict whether a student will pass or fail an exam based on two features: the number of hours they studied and whether they attended review sessions. Assume that the features are conditionally independent given the exam outcome and that the variances of the study hours distributions are equal for both pass and fail categories. How many parameters are required to classify a new student using this Naive Bayes classifier?"
+        }
+      ],
+      "numerical_answer": 6.0,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the minimum number of misclassifications that can occur in the training dataset when using this k-NN algorithm?"
+        }
+      ],
+      "numerical_answer": 0.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If the answer to the previous question is ”Yes,” calculate the entropy of this node to three decimal places. If the answer to the previous question is ”No,” enter -1 as your answer."
+        }
+      ],
+      "acceptable_answers": [
+        "0.94 to 1.01"
+      ],
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What class would belong to? Assume that no Laplacian smoothing has been done."
+        }
+      ],
+      "numerical_answer": 0.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following trained decision tree learned for the dataset in Figure 1. Find the training error of the decision tree for the given dataset. Enter the answer correct to one decimal place."
+        }
+      ],
+      "numerical_answer": 0.4,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    }
+  ]
+}

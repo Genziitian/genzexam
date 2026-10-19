@@ -1,0 +1,88 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 1 · Quiz 2 · Dec 2024 · QDF4 · Part 2",
+  "subject": "Mathematics 1",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let f(z) = V2 and g(x) = V3 - x. From the above table, answer the given subquestions. (Match each composition of functions with its correct simplified function form and domain.) Table: M1T1 Composition of functions fog Function V3 - VE g° f b) SoS iv) g° g V3 - V3-2 $3 - 2 Domain (0,00) 2) [-6,3] 3) (-∞0, 3] (0, 9] If mka? + 21083™ = 8, then what is the value of m?"
+        }
+      ],
+      "numerical_answer": 9.0,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let f(z) = V2 and g(x) = V3 - x. From the above table, answer the given subquestions. (Match each composition of functions with its correct simplified function form and domain.) Table: M1T1 Composition of functions fog Function V3 - VE g° f b) SoS iv) g° g V3 - V3-2 $3 - 2 Domain (0,00) 2) [-6,3] 3) (-∞0, 3] (0, 9] If the function f(x) = | Az - B if x < -1, 2z? + 3Az + B if - 1 < x ≤ 1, is continuous for all x € R. then find the value if x > 1 of 6(4 + B)."
+        }
+      ],
+      "numerical_answer": 3.0,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let f(z) = V2 and g(x) = V3 - x. From the above table, answer the given subquestions. (Match each composition of functions with its correct simplified function form and domain.) Table: M1T1 Composition of functions fog Function V3 - VE g° f b) SoS iv) g° g V3 - V3-2 $3 - 2 Domain (0,00) 2) [-6,3] 3) (-∞0, 3] (0, 9] Let f be a differentiable function such that f'(9) = 4 and f(9) = -14. If y = ax + b denotes the tangent of the function f at x = 9, then find the value of a - b."
+        }
+      ],
+      "numerical_answer": 54.0,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let f(z) = V2 and g(x) = V3 - x. From the above table, answer the given subquestions. (Match each composition of functions with its correct simplified function form and domain.) Table: M1T1 Composition of functions fog Function V3 - VE g° f b) SoS iv) g° g V3 - V3-2 $3 - 2 Domain (0,00) 2) [-6,3] 3) (-∞0, 3] (0, 9] If f(x) = x? and h(x) = × - 1, then which of the following options is (are) correct? fo h is a one-one function. f(f(h(x))) × h(z) = (z - 1)s. There are three distinct solutions for h(h(f(x))) = 0."
+        }
+      ],
+      "acceptable_answers": [
+        "B"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find lim,›∞ a for the given sequences in the subquestions. n° - 3n≥ + sin(n) (an} such that an = 2ns + In(n) + n7"
+        }
+      ],
+      "numerical_answer": 0.5,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find lim,›∞ a for the given sequences in the subquestions. (an} such that an = can + n° esn + no"
+        }
+      ],
+      "numerical_answer": 0.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "Mathematics 1 · Quiz 2 · Dec 2024 · QDF4 · Part 2"
+}

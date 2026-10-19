@@ -1,0 +1,413 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 1 · Quiz 1 · 29 Oct 2023 · QPF3 · Part 2",
+  "subject": "English 1",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following telephonic conversation and fill in the blanks with appropriate responses and answer the given subquestions: Sister: Hi bro, how are you doing? Brother: Hey sis, (i)_____________________. How about you? Sister: (ii)_________________. How is your preparation for exams going on? Brother: Good, but I am really scared for my exams. Sister:(iii)_______________ Brother: Because I think I am still lacking somewhere. Sister: Don’t worry dear. You still have a month. You will do a better job! Brother: (iv)_______________________. But I think I need more guidance. Sister: For that, you can take coaching from the best institute which will help and guide you. Brother: Yeah, this seems like the perfect idea. (v)______________________ Sister: There is a good coaching institute. It is called Genius Plus. Try to contact them. Brother: Thank you, I will contact them immediately.\n\nQuestion:\nFill in the blank (i) with an appropriate response?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "My friend is playing a video game with children"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "My wife is cooking in the kitchen"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "I am cool"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "My father is working in the corporate sector"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following telephonic conversation and fill in the blanks with appropriate responses and answer the given subquestions: Sister: Hi bro, how are you doing? Brother: Hey sis, (i)_____________________. How about you? Sister: (ii)_________________. How is your preparation for exams going on? Brother: Good, but I am really scared for my exams. Sister:(iii)_______________ Brother: Because I think I am still lacking somewhere. Sister: Don’t worry dear. You still have a month. You will do a better job! Brother: (iv)_______________________. But I think I need more guidance. Sister: For that, you can take coaching from the best institute which will help and guide you. Brother: Yeah, this seems like the perfect idea. (v)______________________ Sister: There is a good coaching institute. It is called Genius Plus. Try to contact them. Brother: Thank you, I will contact them immediately.\n\nQuestion:\nFill in the blank (ii) with an appropriate response?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "I am perfectly fine"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The dog is playing in the room"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The cats are alright"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Mom is out for shopping"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following telephonic conversation and fill in the blanks with appropriate responses and answer the given subquestions: Sister: Hi bro, how are you doing? Brother: Hey sis, (i)_____________________. How about you? Sister: (ii)_________________. How is your preparation for exams going on? Brother: Good, but I am really scared for my exams. Sister:(iii)_______________ Brother: Because I think I am still lacking somewhere. Sister: Don’t worry dear. You still have a month. You will do a better job! Brother: (iv)_______________________. But I think I need more guidance. Sister: For that, you can take coaching from the best institute which will help and guide you. Brother: Yeah, this seems like the perfect idea. (v)______________________ Sister: There is a good coaching institute. It is called Genius Plus. Try to contact them. Brother: Thank you, I will contact them immediately.\n\nQuestion:\nFill in the blank (iii) with an appropriate response?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "When is your exam?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Why so?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "When are you coming home?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Why are you going to Chennai?"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following telephonic conversation and fill in the blanks with appropriate responses and answer the given subquestions: Sister: Hi bro, how are you doing? Brother: Hey sis, (i)_____________________. How about you? Sister: (ii)_________________. How is your preparation for exams going on? Brother: Good, but I am really scared for my exams. Sister:(iii)_______________ Brother: Because I think I am still lacking somewhere. Sister: Don’t worry dear. You still have a month. You will do a better job! Brother: (iv)_______________________. But I think I need more guidance. Sister: For that, you can take coaching from the best institute which will help and guide you. Brother: Yeah, this seems like the perfect idea. (v)______________________ Sister: There is a good coaching institute. It is called Genius Plus. Try to contact them. Brother: Thank you, I will contact them immediately.\n\nQuestion:\nFill in the blank (iv) with an appropriate response?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Good Morning sis"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Bye sis"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Thank you, sis, for your support."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Good night sis"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nMatch Column A with suitable options in Column B. (Hint: Word collocation)\n\nQuestion:\nFill in the blank (v) with an appropriate response?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "How long will you go to the coaching institute?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Do you have any good coaching institutes in mind?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "How long will you stay there in Chennai?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "When will you come home?"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nMatch Column A with suitable options in Column B. (Hint: Word collocation)\n\nQuestion:\nSports___________"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Card"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Offer"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Equipment"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Rod"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Hose"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nMatch Column A with suitable options in Column B. (Hint: Word collocation)\n\nQuestion:\nLibrary __________"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Card"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Offer"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Equipment"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Rod"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Hose"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nMatch Column A with suitable options in Column B. (Hint: Word collocation)\n\nQuestion:\nGarden ___________"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Card"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Offer"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Equipment"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Rod"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Hose"
+          }
+        ]
+      ],
+      "correct_answer": 4,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nMatch Column A with suitable options in Column B. (Hint: Word collocation)\n\nQuestion:\nJob __________"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Card"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Offer"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Equipment"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Rod"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Hose"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the type of noun that is highlighted in the sentence. The <b>swimming pool</b> is drained and cleaned every winter."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Collective"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Abstract"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Proper"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Compound"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 1 · Quiz 1 · 29 Oct 2023 · QPF3 · Part 2"
+}

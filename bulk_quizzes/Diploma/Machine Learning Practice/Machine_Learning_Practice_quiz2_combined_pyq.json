@@ -1,0 +1,325 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Machine Learning Practice · Quiz 2 · Combined PYQ",
+  "title": "Machine Learning Practice · Quiz 2 · Combined PYQ",
+  "subject": "Machine Learning Practice",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "After training a multi-class classifier, you obtain the following confusion matrix. What will be the weighted average of the recall score for each class?"
+        }
+      ],
+      "acceptable_answers": [
+        "0.295 to 0.315"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "When evaluating a classifier on an imbalanced dataset where false negatives are critically dangerous (such as cancer detection), which metric should be prioritized?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Recall (Sensitivity): $\\frac{TP}{TP + FN}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Precision: $\\frac{TP}{TP + FP}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Accuracy: $\\frac{TP + TN}{TP + TN + FP + FN}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Specificity: $\\frac{TN}{TN + FP}$"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Recall penalizes false negatives, ensuring that the model captures as many actual positive cases as possible."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In scikit-learn, why must `fit_transform()` be called ONLY on training data, while test data is processed using `transform()` alone?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "To prevent data leakage by computing statistics (mean, variance) strictly from the training distribution"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Because `fit_transform()` always shuffles rows randomly"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To accelerate matrix multiplication during inference"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Because `fit_transform()` discards categorical column headers"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Fitting scalers on test data leaks test distribution information into model preprocessing."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which regularization technique adds an L1 penalty proportional to the absolute values of the coefficients, thereby inducing feature sparsity?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Lasso Regression (L1)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Ridge Regression (L2)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Ordinary Least Squares"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Polynomial Regression"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Lasso (L1) drives uninformative feature weights strictly to zero, effectively acting as embedded feature selection."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the primary role of the ROC-AUC score in binary classification?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Measures the model's ability to rank positive instances above negative instances across all decision thresholds"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Measures calibrated probability error at a fixed threshold of 0.5"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Computes the exact fraction of correctly predicted test labels"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Calculates the ratio of true negatives to false positives at 95% confidence"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "ROC-AUC computes the area under the True Positive Rate vs False Positive Rate curve, evaluating threshold-independent ranking."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What will P represent at the end of the execution?(MCQ)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Number of words with an even letter count"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of words with an odd letter count"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of adverbs with an even letter count"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of adverbs with an odd letter count"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What will Q represent at the end of execution?(MCQ)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Number of adverbs with an even letter count"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of adverbs with an odd letter count"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of words with any letter count"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of adverbs with any letter count"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The given pseudocode is executed on \"Words\" dataset. Variables P, and Q are initialized with 0. Line 4: Condition checks if the word in current row has letter count divisible by 2. If so then P will be incremented. This refers that P represents the number of words with an even letter count. Line 7: else is being used, this means if the condition in line 4 is not satisfied then else block will be executed. Which refers that the letter count of the word is not divisible by 2. If the condition in line 8 is True, this means the word is an adverb. If so then Q gets incremented. Therefore, Q stores the number of adverbs with an odd letter count."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the “Scores” dataset.(MCQ) At the end of the execution, E will be True if"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "All female students have scores greater than or equal to 60 in either Physics, Chemistry or Maths"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "All female students have scores less than 60 in either Physics, Chemistry or Maths"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "There is at least one female student with scores less than 60 in Physics, Chemistry or Maths"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "All female students have scores greater than or equal to 60 in Physics, Chemistry and Maths"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "E is initialized with True. It will be updated to False when both the if conditions are True. So if any one of the conditions is False, then the value of E will remain True. For a row there are two possibilities: 1. If the row belongs to a male, then E will remain True. But as we can see in the question, all the options given to us are regarding female students so we can assume that we are talking about female students here. E = True while(Table 1 has more rows){ Read the first row X in Table 1 if(X.Gender == 'F'){ if(X.Physics < 60 or X.Chemistry < 60 or X.Maths < 60){ E = False } } Move X to Table 2 } 1 2 3 4 5 6 7 8 9 10 2. If the row belongs to a female, to keep E True, the condition in nested \"if\" should be False. For a female student, if the condition in nested \"if\" is False always, then it means there does not exist even a single female student who is having scores less than 60 in either Physics,Chemistry or Maths. Therefore, to keep E True, all the female students must have scores greater than or equal to 60 in all subjects. Thus the correct option is (d)."
+        }
+      ]
+    }
+  ]
+}

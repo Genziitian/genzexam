@@ -1,0 +1,359 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 1 · Quiz 1 · 2024 · QDF2 · Part 1",
+  "subject": "English 1",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following passage and answer the given subquestions. User traffic on Twitter has slowed since the launch of Meta’s text-based platform Threads, which has already surpassed 100 million sign- ups since its debut last week. Threads launched in the U.S. on Wednesday and is being touted by Meta executives like Instagram chief Adam Mosseri as a more positive “public square” for communities “that never really embraced Twitter.” So far, users seem to be on board. “Threads reached 100 million sign ups over the weekend. That’s mostly organic demand and we haven’t even turned on many promotions yet. Can’t believe it’s only been 5 days!” Meta CEO Mark Zuckerberg said in a post Monday. Twitter appears to have taken a hit. Matthew Prince, CEO of Cloudflare, shared a screenshot to Twitter Sunday showing that traffic on the platform was “tanking.” According to Similarweb, a data company that specializes in web analytics, web traffic to Twitter was down 5% for the first two full days. Threads was generally available compared with the previous week. The company said Twitter’s web traffic is down 11% compared with the same days in 2022. Twitter responded to CNBC’s request for comment with an automated response. Meta didn’t offer additional comment beyond Zuckerberg’s post. Source: cnbc.com - Twitter traffic is ‘tanking’ as Meta’s Threads hits 100 million users - Ashley Capoot\n\nQuestion:\nWhat is the synonym of the word surpassed?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Exceed"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Pass through"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Go under"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Come second to"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following passage and answer the given subquestions. User traffic on Twitter has slowed since the launch of Meta’s text-based platform Threads, which has already surpassed 100 million sign- ups since its debut last week. Threads launched in the U.S. on Wednesday and is being touted by Meta executives like Instagram chief Adam Mosseri as a more positive “public square” for communities “that never really embraced Twitter.” So far, users seem to be on board. “Threads reached 100 million sign ups over the weekend. That’s mostly organic demand and we haven’t even turned on many promotions yet. Can’t believe it’s only been 5 days!” Meta CEO Mark Zuckerberg said in a post Monday. Twitter appears to have taken a hit. Matthew Prince, CEO of Cloudflare, shared a screenshot to Twitter Sunday showing that traffic on the platform was “tanking.” According to Similarweb, a data company that specializes in web analytics, web traffic to Twitter was down 5% for the first two full days. Threads was generally available compared with the previous week. The company said Twitter’s web traffic is down 11% compared with the same days in 2022. Twitter responded to CNBC’s request for comment with an automated response. Meta didn’t offer additional comment beyond Zuckerberg’s post. Source: cnbc.com - Twitter traffic is ‘tanking’ as Meta’s Threads hits 100 million users - Ashley Capoot\n\nQuestion:\nChoose an appropriate option to replace the word touted."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Changed paths"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Promoted"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Criticized"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Edited"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following passage and answer the given subquestions. User traffic on Twitter has slowed since the launch of Meta’s text-based platform Threads, which has already surpassed 100 million sign- ups since its debut last week. Threads launched in the U.S. on Wednesday and is being touted by Meta executives like Instagram chief Adam Mosseri as a more positive “public square” for communities “that never really embraced Twitter.” So far, users seem to be on board. “Threads reached 100 million sign ups over the weekend. That’s mostly organic demand and we haven’t even turned on many promotions yet. Can’t believe it’s only been 5 days!” Meta CEO Mark Zuckerberg said in a post Monday. Twitter appears to have taken a hit. Matthew Prince, CEO of Cloudflare, shared a screenshot to Twitter Sunday showing that traffic on the platform was “tanking.” According to Similarweb, a data company that specializes in web analytics, web traffic to Twitter was down 5% for the first two full days. Threads was generally available compared with the previous week. The company said Twitter’s web traffic is down 11% compared with the same days in 2022. Twitter responded to CNBC’s request for comment with an automated response. Meta didn’t offer additional comment beyond Zuckerberg’s post. Source: cnbc.com - Twitter traffic is ‘tanking’ as Meta’s Threads hits 100 million users - Ashley Capoot\n\nQuestion:\nThat’s mostly organic demand and we haven’t even turned on many promotions yet. What meaning do the phrases organic demand and [not many] promotions convey here?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Meta has been mindful of climate change in meeting demands."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The company Meta hasn’t tried many marketing tactics to popularize Threads."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Meta has withheld any promotions to employees in its company."
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following passage and answer the given subquestions. User traffic on Twitter has slowed since the launch of Meta’s text-based platform Threads, which has already surpassed 100 million sign- ups since its debut last week. Threads launched in the U.S. on Wednesday and is being touted by Meta executives like Instagram chief Adam Mosseri as a more positive “public square” for communities “that never really embraced Twitter.” So far, users seem to be on board. “Threads reached 100 million sign ups over the weekend. That’s mostly organic demand and we haven’t even turned on many promotions yet. Can’t believe it’s only been 5 days!” Meta CEO Mark Zuckerberg said in a post Monday. Twitter appears to have taken a hit. Matthew Prince, CEO of Cloudflare, shared a screenshot to Twitter Sunday showing that traffic on the platform was “tanking.” According to Similarweb, a data company that specializes in web analytics, web traffic to Twitter was down 5% for the first two full days. Threads was generally available compared with the previous week. The company said Twitter’s web traffic is down 11% compared with the same days in 2022. Twitter responded to CNBC’s request for comment with an automated response. Meta didn’t offer additional comment beyond Zuckerberg’s post. Source: cnbc.com - Twitter traffic is ‘tanking’ as Meta’s Threads hits 100 million users - Ashley Capoot\n\nQuestion:\nTwitter appears to have taken a hit. What is the meaning of the phrase taken a hit?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Be affected badly"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Be popular among its users"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Has made a huge profit"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following passage and answer the given subquestions. User traffic on Twitter has slowed since the launch of Meta’s text-based platform Threads, which has already surpassed 100 million sign- ups since its debut last week. Threads launched in the U.S. on Wednesday and is being touted by Meta executives like Instagram chief Adam Mosseri as a more positive “public square” for communities “that never really embraced Twitter.” So far, users seem to be on board. “Threads reached 100 million sign ups over the weekend. That’s mostly organic demand and we haven’t even turned on many promotions yet. Can’t believe it’s only been 5 days!” Meta CEO Mark Zuckerberg said in a post Monday. Twitter appears to have taken a hit. Matthew Prince, CEO of Cloudflare, shared a screenshot to Twitter Sunday showing that traffic on the platform was “tanking.” According to Similarweb, a data company that specializes in web analytics, web traffic to Twitter was down 5% for the first two full days. Threads was generally available compared with the previous week. The company said Twitter’s web traffic is down 11% compared with the same days in 2022. Twitter responded to CNBC’s request for comment with an automated response. Meta didn’t offer additional comment beyond Zuckerberg’s post. Source: cnbc.com - Twitter traffic is ‘tanking’ as Meta’s Threads hits 100 million users - Ashley Capoot\n\nQuestion:\nWhat is the synonym of the word tanking?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Shooting"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Weighing"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Grateful"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Failing"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The company said Twitter’s web traffic is down 11% compared with the same days in 2022 What is the meaning of the phrase down 11%?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The traffic has reduced to 11%"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The traffic has reduced from 11%"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The traffic has reduced by 11%"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the meaning of the phrase automated response?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Predetermined reply"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Responsible driving of automobiles"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Highly private message"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Meta didn’t offer additional comment beyond Zuckerberg’s post. What part of speech is the word beyond here?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Adjective"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Interjection"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Preposition"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Adverb"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "…users seem to be on board. What is the meaning of the phrase on board here?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Enter a vehicle"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Be available"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Agree with"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the meaning of the word debut?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Reply in opposite"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "First appearance"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Alternative"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Momentum"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 1 · Quiz 1 · 2024 · QDF2 · Part 1"
+}

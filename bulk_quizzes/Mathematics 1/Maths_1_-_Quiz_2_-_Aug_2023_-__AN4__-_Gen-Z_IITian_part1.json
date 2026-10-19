@@ -1,0 +1,132 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 1 · Quiz 2 · Aug 2023 · AN4 · Part 1",
+  "subject": "Mathematics 1",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If n is the number of solutions of the equation 22+3 - 6 - 2% + 1 = 0, then find the value of 4n."
+        }
+      ],
+      "numerical_answer": 8.0,
+      "numerical_tolerance": 0.01,
+      "marks": 5,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the equation log, (log, (x? + 1)% + logs 8x3) = 0. Then find the value of x(x? + 1) + 7."
+        }
+      ],
+      "numerical_answer": 8.0,
+      "numerical_tolerance": 0.01,
+      "marks": 5,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following functions f1: D1 → R, f2 : D2 → R, f3 : D3 → R and g: D → R, defined as: /(x) = sin 2x, f2(x) = In(x2 - 6x + 8), f(x) = e3 + 5, g(x) = f1(x) + f2(z) + f(x). Let D1, D2, D3 and D be the (largest) domains of the functions f(x), f2(x), f(x) and g(x), respectively. Use this information to answer the subquestions. Which of the following options is/are true? D1 = D3 and D = D2."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "D = (-∞,2) U (4, ∞)."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "D= (-00, 2] U [4,00)."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following functions f1: D1 → R, f2 : D2 → R, f3 : D3 → R and g: D → R, defined as: /(x) = sin 2x, f2(x) = In(x2 - 6x + 8), f(x) = e3 + 5, g(x) = f1(x) + f2(z) + f(x). Let D1, D2, D3 and D be the (largest) domains of the functions f(x), f2(x), f(x) and g(x), respectively. Use this information to answer the subquestions. Which of the following options is/are true? Function g(x) is not differentiable in its domain. If function q(2) is differentiable in its domain, then derivative of the function is g/(x) = 2 cos 2x + 282+8 + 3e*."
+        }
+      ],
+      "acceptable_answers": [
+        "B, C"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following functions f1: D1 → R, f2 : D2 → R, f3 : D3 → R and g: D → R, defined as: /(x) = sin 2x, f2(x) = In(x2 - 6x + 8), f(x) = e3 + 5, g(x) = f1(x) + f2(z) + f(x). Let D1, D2, D3 and D be the (largest) domains of the functions f(x), f2(x), f(x) and g(x), respectively. Use this information to answer the subquestions. Which of the following options is/are true?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "If a function is continuous at a particular point, then the function is differentiable at that point. If a function is differentiable at a particular point, then the function must be continuous at that point. If a function is continuous at a particular point, then the limit of the function exists at that point."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "If the limit of a function exists at a particular point, then the function is continuous at that point."
+          }
+        ]
+      ],
+      "correct_answers": [
+        1
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let {an} be a sequence defined as an = 24]. Consider the sequence {bn} defined by b. = 4(3a\" + 2a, + 5). Use this information to answer the subquestions. What is the limit of the sequence {an}?"
+        }
+      ],
+      "numerical_answer": 0.5,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let {an} be a sequence defined as an = 24]. Consider the sequence {bn} defined by b. = 4(3a\" + 2a, + 5). Use this information to answer the subquestions. What is the limit of the sequence {bn}?"
+        }
+      ],
+      "numerical_answer": 27.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "Mathematics 1 · Quiz 2 · Aug 2023 · AN4 · Part 1"
+}

@@ -1,0 +1,204 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Week 2 Graded Assignment · Part 1",
+  "subject": "Statistics 1",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following statements is/are incorrect?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "To represent the share of a particular category, bar chart is the most appropriate graphical representation."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The multiplication of the total number of observations and relative frequency of a particular observation should be equal to the frequency of that observation."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Mean can be defined for a categorical variable."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Mode of a categorical variable is the widest slice in a pie chart."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        2
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "To show the share of a particular category, pie chart is a most appropriate graphical representation. Thus, the statement of option (a) is incorrect. Suppose we have n observations and their corresponding frequencies are f1, f2, . . . fn respectively. By the definition, Relative frequency for ith observation can be defined as Rfi = fiN ;i = 1, 2..., n Thus, fi = Rfi × N which implies that the multiplication of the total number of observations and relative frequency of a particular( ith) observation is equal to the frequency of that observation. Thus, the statement of option (b) is correct. Since we cannot perform any meaningful mathematical operations on categorical data. And, it is required to perform mathematical operation while computing mean of a dataset which is not possible in the case of categorical data. Thus, the statement of option(c) is incorrect. In a pie chart, the widest pie/slice will always have the highest frequency. Thus, mode will be the widest slice in a pie chart. Thus, the statement of option(d) is correct. Therefore, options (a) and (c) are correct. 1 Figure 2.1.G shows the pie chart representation of the weightage distribution of 5 different subjects in an exam. Based on this information, answer questions (2) and (3). Figure 2.1.G: Weightage distribution of 5 different subjects"
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If the exam is for a total of 500 marks, then what is the aggregate distribution of marks in Physics, Maths and Biology?"
+        }
+      ],
+      "numerical_answer": 315.0,
+      "numerical_tolerance": 0,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Since, the exam is for a total of 500 marks and Weightage of Physics is 35%. Therefore, marks in Physics = 500 × 35100 = 175. Similarly, as weightage of Maths is 18%. Therefore, marks in Maths = 500 × 18100 = 90. And, weightage of Biology is 10%. Therefore, marks in Biology = 500 × 10100 = 50. Hence, aggregate distribution of marks in Physics, Maths and Biology is 175+90+50 = 315."
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct statement(s):"
+        }
+      ],
+      "acceptable_answers": [
+        "questions (4), (5), (6) and (7)."
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "From the figure 2.1.G., it is clear that pie chart obeys the area principle as area occu- pied by a part of the chart is correspond to the amount of the data it represents. Also, the slices of pie chart adds up to 100% as 12% + 35% + 25% + 10% + 18% = 100%. Thus, option(c) and (d) are correct. Table 2.1.G represents the distribution of 200 cricket players trained by different cricket academies in Chennai. Academy Number of Players A a B b C 50 D d E 75 Table 2.1.G If each academy has trained at least one player, then based on the given information,"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the combined relative frequency of the academy A, B and D? (Enter the"
+        }
+      ],
+      "acceptable_answers": [
+        "0.375, Range: 0.370,0.380"
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "It is given that total number of cricket players is 200, i.e., N = 200. Relative frequencies corresponding to academy C and academy D will be 50200 = 0.25 and 75200 = 0.375. Let relative frequencies corresponding to academy A, B and D are RfA, RfB and RfD respectively. Since, sum of all relative frequencies is equal to 1. Therefore, RfA + RfB + 0.25 + RfD + 0.375 = 1 RfA + RfB + RfD = 1 − (0.375 + 0.25) = 0.375 Hence, combined relative frequency of the academy A, B and D is 0.375 3"
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Median of the given data is:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Academy C"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Academy E"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Academy D"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Median is not defined for the given data (e) Insufficient data"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The given dataset has nominal scale of measurement and can not be ordered or ranked in an order. Hence, we can not compute median for it (as the first step in computation of median, i.e. arrange the dataset in ascending order, can not be performed). Hence, option ( d) is correct."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Mode of the given data is:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Academy C"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Academy E"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Academy D"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Mode is not defined for the given data (e) Insufficient data"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "There are a total of 200 cricket players, i.e. total frequency = 200. This implies that a + b + d = 75. Also, we know that each academy has trained at least one player, i.e. a >1, b >1 and d >1. Therefore, the value of a, band d will always be less than 75, which implies that Academy E will have the highest frequency for the given dataset. Hence, option ( b) is correct."
+        }
+      ]
+    }
+  ],
+  "week": 2,
+  "title": "Week 2 Graded Assignment · Part 1"
+}

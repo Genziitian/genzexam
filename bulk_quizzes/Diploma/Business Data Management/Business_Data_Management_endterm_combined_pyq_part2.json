@@ -1,0 +1,119 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Business Data Management · End Term · Combined PYQ · Part 2",
+  "title": "Business Data Management · End Term · Combined PYQ · Part 2",
+  "subject": "Business Data Management",
+  "section": "endterm",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "X4 (in%): Question Id : 6406531231627 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Match the following Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "65 to 65.75"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A company is testing two different display features (A and B) on their website's homepage to determine which one leads to a higher conversion rate. During the experiment, they tracked the number of visitors who clicked on the \"Sign Up\" button and calculated the conversion rate for each version. The results are as follows: ● Version A: 500 visitors, 25 conversions ● Version B: 550 visitors, 40 conversions Calculate the conversion rates for both Version A and Version B. Based on the results, which version had a higher conversion rate, and what is the approx percentage difference between the two conversion rates (in %)? Question Id : 640653612486 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Consider the following data set and answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "-2 2"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Calculate the Overall Equipment Effectiveness (OEE) of the Assembly Line Equipment for the month of July."
+        }
+      ],
+      "acceptable_answers": [
+        "0.81 to 0.83"
+      ],
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A reduction in the price of a product from $20 to $16 leads to a 15% increase in demand for the product. Calculate the price elasticity of demand for this product."
+        }
+      ],
+      "acceptable_answers": [
+        "0.75 -0.75"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the OEE for the Friday shifts? (express in terms of %, e.g., if answer is 0.7359, express it as 73.59)"
+        }
+      ],
+      "acceptable_answers": [
+        "92.5 to 93.5"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the total monthly revenue?"
+        }
+      ],
+      "numerical_answer": 1088000.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Calculate Availability (in %)"
+        }
+      ],
+      "numerical_answer": 90.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Calculate Overall Equipment Effectiveness (OEE) (in %)"
+        }
+      ],
+      "acceptable_answers": [
+        "77 to 78"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ]
+}

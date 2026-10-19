@@ -1,0 +1,380 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Python Programming · Quiz 1 · Oct 2022 · DAD · Part 1",
+  "subject": "Python Programming",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "E1 and E2 are Boolean expressions. Consider the following expression. What can you say about the value of the expression given above?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "not(E1 and E2) == (not E1 and not E2)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "It is True if and only if E1 and E2 have same values"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "It is False if and only if E1 and E2 have the same value"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "It is always True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "It is always False"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "not(E1 and E2) = not E1 or not E2 (De Morgan). This equals (not E1 and not E2) only when E1 and E2 have the same truth value (both True or both False)."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following code snippet. What will be the output of the code given above for the input 1234?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "a, b, c, d = input()\nprint((a + b + c) * int(d))"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "123123123123"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "18"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "24"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "492"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "123412341234"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Unpacking '1234' gives a='1', b='2', c='3', d='4'. (a+b+c) = '123' (string), and '123' * int('4') = '123' * 4 = '123123123123'."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If n is a positive integer, then what will be the value of count at the end of execution of the code given below?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "n = int(input())\ncount = 0\nfor x in range(1, n + 1):\n    for y in range(x + 1, n + 1):\n        count = count + 1"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "n²"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "n(n + 1)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "n(n + 1)/2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "n(n - 1)/2"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The nested loop counts every pair (x, y) with x < y in 1..n, i.e. C(n,2) = n(n-1)/2."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What will be the output of the code snippet given below?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "L = [0]\nfor i in range(1, 10):\n    size = len(L)\n    value = i + L[size - 1]\n    L.append(value)\nprint(L)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[0, 1, 3, 6, 10, 15, 21, 28, 36, 45]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[1, 3, 6, 10, 15, 21, 28, 36, 45]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[0, 1, 3, 6, 10, 15, 21, 28, 36, 45, 55]"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Each new value is i plus the previous last element, building the triangular numbers: [0, 1, 3, 6, 10, 15, 21, 28, 36, 45]."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If n is a positive integer, what is the output of the following code? Assume that natural numbers start from 1, that is, 0 is"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "not a natural number.\na = n\nfor i in range(1, n):\n    a = a + i\nb = a\nfor j in range(1, a):\n    b = b * j\nprint(b)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Sum of the factorial of the first n-1 natural numbers"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Factorial of the sum of the first n-1 natural numbers"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Sum of the factorial of the first n natural numbers"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Factorial of the sum of the first n natural numbers"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "a = n + (1+2+...+(n-1)) = 1+2+...+n = sum of the first n natural numbers. b = a! (product of 1..a-1 times a, i.e. a factorial). So b is the factorial of the sum of the first n natural numbers."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What will be the output of the code for L = [394, 289, 120, 719, 50, 27, 15]?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "L = [394, 289, 120, 719, 50, 27, 15]\nflag1, flag2 = True, True\nfor i in range(1, len(L)):\n    if L[i] > L[i - 1]:\n        flag2 = False\n    elif L[i] < L[i - 1]:\n        flag1 = False\nif flag1:\n    print('one')\nelif flag2:\n    print('two')"
+        },
+        {
+          "kind": "text",
+          "value": "else:"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "print('three')"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "one"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "two"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "three"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "four"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The list is neither fully non-increasing nor fully non-decreasing, so both flag1 and flag2 become False, printing 'three'."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A is a positive integer that represents the age. Consider the snippet of code given above. Two snippets of code are equivalent if they produce the same output for any given input. Select all snippets of code that are equivalent to the code given above."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "# Reference code\nif 0 < A <= 14:\n    print('child')\nelif 14 < A <= 24:\n    print('youth')\nelif 24 < A <= 64:\n    print('adult')"
+        },
+        {
+          "kind": "text",
+          "value": "else:"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "print('senior')"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "if 0 < A <= 14: print('child') if 14 < A <= 24: print('youth') if 24 < A <= 64: print('adult') if A > 64: print('senior')"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "if 0 < A <= 14: print('child') if 14 < A <= 24: print('youth') elif 24 < A <= 64: print('adult') else: print('senior')"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "if 0 < A <= 14: print('child') if 14 < A <= 24: print('youth') elif 24 < A <= 64: print('adult') elif A > 64:\nprint('senior')"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "if 0 < A <= 14: print('child') if 14 < A <= 24: print('youth') if 24 < A <= 64: print('adult') else: print('senior')"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        2
+      ],
+      "marks": 3,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The age bands are mutually exclusive, so the first option's independent ifs (with 'if A > 64') and the third option (if/if-elif-elif A > 64) each print exactly one matching label, equivalent to the reference. Options 2 and 4 attach the else to the second if, so they wrongly print 'senior' for children/youth."
+        }
+      ]
+    }
+  ],
+  "title": "Python Programming · Quiz 1 · Oct 2022 · DAD · Part 1"
+}

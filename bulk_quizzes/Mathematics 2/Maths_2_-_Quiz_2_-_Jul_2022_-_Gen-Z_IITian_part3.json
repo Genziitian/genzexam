@@ -1,0 +1,104 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 2 · Quiz 2 · Jul 2022 · Part 3",
+  "subject": "Mathematics 2",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Suppose two publication houses (publication house A and publication house B) have organized a sale of their books. Both of them publish three types of books: novels, poetry collections and collections of short stories. The selling price (in hundreds of rupees) of these three types of books in publication houses A and B Novels Poetry collections Collections of short stories are given as follows: House A The House B publication houses announced that in order to avail these special sale prices, customers have to buy equal number of novels, equal number of poetry collection, and equal number of collection of short stories from each of the publication houses (i.e., if a customer buys a number of novels, y number of poetry collections and z number of collection of short stories from Publication house A; then they have to buy exactly x number of novels, y number of poetry collections and z number of collection of short stories from Publication house B, to avail the benefit of the sale). So there is a map taking the tuple consisting of the number of books of each type bought (Novels, Poetry collections, Collection of short stories) to the prices paid by customers who availed the sale to each of the publication houses, which yields a linear transformation (P) from Ra to IR? (where the first and second co-ordinates of the image denotes the prices paid to publication house A and publication house B, respectively). Answer the sub-questions using the above information. We apply the sequence of row operations on A as follows: Step 1: R2 - 3R1; Step 2: - $ Rz; Step 3: R1 - 2P2 Applying these row operations in the given order, the matrix B is derived. Let 13 = a be f What is the value of c?"
+        }
+      ],
+      "numerical_answer": -3.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Suppose two publication houses (publication house A and publication house B) have organized a sale of their books. Both of them publish three types of books: novels, poetry collections and collections of short stories. The selling price (in hundreds of rupees) of these three types of books in publication houses A and B Novels Poetry collections Collections of short stories are given as follows: House A The House B publication houses announced that in order to avail these special sale prices, customers have to buy equal number of novels, equal number of poetry collection, and equal number of collection of short stories from each of the publication houses (i.e., if a customer buys a number of novels, y number of poetry collections and z number of collection of short stories from Publication house A; then they have to buy exactly x number of novels, y number of poetry collections and z number of collection of short stories from Publication house B, to avail the benefit of the sale). So there is a map taking the tuple consisting of the number of books of each type bought (Novels, Poetry collections, Collection of short stories) to the prices paid by customers who availed the sale to each of the publication houses, which yields a linear transformation (P) from Ra to IR? (where the first and second co-ordinates of the image denotes the prices paid to publication house A and publication house B, respectively). Answer the sub-questions using the above information. If {(I, m, n)} is a basis of ker (T), then find the value of l if n is 1."
+        }
+      ],
+      "numerical_answer": 3.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Suppose two publication houses (publication house A and publication house B) have organized a sale of their books. Both of them publish three types of books: novels, poetry collections and collections of short stories. The selling price (in hundreds of rupees) of these three types of books in publication houses A and B Novels Poetry collections Collections of short stories are given as follows: House A The House B publication houses announced that in order to avail these special sale prices, customers have to buy equal number of novels, equal number of poetry collection, and equal number of collection of short stories from each of the publication houses (i.e., if a customer buys a number of novels, y number of poetry collections and z number of collection of short stories from Publication house A; then they have to buy exactly x number of novels, y number of poetry collections and z number of collection of short stories from Publication house B, to avail the benefit of the sale). So there is a map taking the tuple consisting of the number of books of each type bought (Novels, Poetry collections, Collection of short stories) to the prices paid by customers who availed the sale to each of the publication houses, which yields a linear transformation (P) from Ra to IR? (where the first and second co-ordinates of the image denotes the prices paid to publication house A and publication house B, respectively). Answer the sub-questions using the above information. If {(l, m, n)) is a basis of ker (T), then find the value of m if n is 1. genzitan.in/ecosystem video solutions exam.genzitan.in roulube-youtube.com/coen-clan"
+        }
+      ],
+      "numerical_answer": -4.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Suppose two publication houses (publication house A and publication house B) have organized a sale of their books. Both of them publish three types of books: novels, poetry collections and collections of short stories. The selling price (in hundreds of rupees) of these three types of books in publication houses A and B Novels Poetry collections Collections of short stories are given as follows: House A The House B publication houses announced that in order to avail these special sale prices, customers have to buy equal number of novels, equal number of poetry collection, and equal number of collection of short stories from each of the publication houses (i.e., if a customer buys a number of novels, y number of poetry collections and z number of collection of short stories from Publication house A; then they have to buy exactly x number of novels, y number of poetry collections and z number of collection of short stories from Publication house B, to avail the benefit of the sale). So there is a map taking the tuple consisting of the number of books of each type bought (Novels, Poetry collections, Collection of short stories) to the prices paid by customers who availed the sale to each of the publication houses, which yields a linear transformation (P) from Ra to IR? (where the first and second co-ordinates of the image denotes the prices paid to publication house A and publication house B, respectively). Answer the sub-questions using the above information. Let ß = {21, 0½} be the orthonormal basis of the row space obtained by using the Gram-Schmidt process (with respect to the usual inner product) applied on the ordered basis of the row space given by the first row and the second row of the matrix A. If vy = (b, c, d). What is the value of | 30v1|| ?"
+        }
+      ],
+      "acceptable_answers": [
+        "30"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Suppose two publication houses (publication house A and publication house B) have organized a sale of their books. Both of them publish three types of books: novels, poetry collections and collections of short stories. The selling price (in hundreds of rupees) of these three types of books in publication houses A and B Novels Poetry collections Collections of short stories are given as follows: House A The House B publication houses announced that in order to avail these special sale prices, customers have to buy equal number of novels, equal number of poetry collection, and equal number of collection of short stories from each of the publication houses (i.e., if a customer buys a number of novels, y number of poetry collections and z number of collection of short stories from Publication house A; then they have to buy exactly x number of novels, y number of poetry collections and z number of collection of short stories from Publication house B, to avail the benefit of the sale). So there is a map taking the tuple consisting of the number of books of each type bought (Novels, Poetry collections, Collection of short stories) to the prices paid by customers who availed the sale to each of the publication houses, which yields a linear transformation (P) from Ra to IR? (where the first and second co-ordinates of the image denotes the prices paid to publication house A and publication house B, respectively). Answer the sub-questions using the above information. Let ß = {21, 0½} be the orthonormal basis of the row space obtained by using the Gram-Schmidt process (with respect to the usual inner product) applied on the ordered basis of the row space given by the first row and the second row of the matrix A. If u2 = (b, c, d). What is the value of b ?"
+        }
+      ],
+      "acceptable_answers": [
+        "11"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Suppose two publication houses (publication house A and publication house B) have organized a sale of their books. Both of them publish three types of books: novels, poetry collections and collections of short stories. The selling price (in hundreds of rupees) of these three types of books in publication houses A and B Novels Poetry collections Collections of short stories are given as follows: House A The House B publication houses announced that in order to avail these special sale prices, customers have to buy equal number of novels, equal number of poetry collection, and equal number of collection of short stories from each of the publication houses (i.e., if a customer buys a number of novels, y number of poetry collections and z number of collection of short stories from Publication house A; then they have to buy exactly x number of novels, y number of poetry collections and z number of collection of short stories from Publication house B, to avail the benefit of the sale). So there is a map taking the tuple consisting of the number of books of each type bought (Novels, Poetry collections, Collection of short stories) to the prices paid by customers who availed the sale to each of the publication houses, which yields a linear transformation (P) from Ra to IR? (where the first and second co-ordinates of the image denotes the prices paid to publication house A and publication house B, respectively). Answer the sub-questions using the above information. Let B = (v1, t½} be the orthonormal basis of the row space obtained by using the Gram-Schmidt process (with respect to the usual inner product) applied on the ordered basis of the row space given by the first row 1 and the second row of the matrix A. If t½ = •"
+        }
+      ],
+      "acceptable_answers": [
+        "7"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Suppose two publication houses (publication house A and publication house B) have organized a sale of their books. Both of them publish three types of books: novels, poetry collections and collections of short stories. The selling price (in hundreds of rupees) of these three types of books in publication houses A and B Novels Poetry collections Collections of short stories are given as follows: House A The House B publication houses announced that in order to avail these special sale prices, customers have to buy equal number of novels, equal number of poetry collection, and equal number of collection of short stories from each of the publication houses (i.e., if a customer buys a number of novels, y number of poetry collections and z number of collection of short stories from Publication house A; then they have to buy exactly x number of novels, y number of poetry collections and z number of collection of short stories from Publication house B, to avail the benefit of the sale). So there is a map taking the tuple consisting of the number of books of each type bought (Novels, Poetry collections, Collection of short stories) to the prices paid by customers who availed the sale to each of the publication houses, which yields a linear transformation (P) from Ra to IR? (where the first and second co-ordinates of the image denotes the prices paid to publication house A and publication house B, respectively). Answer the sub-questions using the above information. Let B = {v1, ½} be the orthonormal basis of the row space obtained by using the Gram-Schmidt process (with respect to the usual inner product) applied on the ordered basis of the row space given by the first row and the second row of the matrix A. If uy = - (b, c, d). What is the value of d ? genziitan.in/ecosystem video solutions-exam.genzitan.in roulube-youtube.com/coen-zitan"
+        }
+      ],
+      "acceptable_answers": [
+        "-5"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "Mathematics 2 · Quiz 2 · Jul 2022 · Part 3"
+}

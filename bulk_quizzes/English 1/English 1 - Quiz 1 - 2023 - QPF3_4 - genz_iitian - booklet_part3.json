@@ -1,0 +1,353 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 1 · Quiz 1 · 29 Oct 2023 · QPF3 · Part 3",
+  "subject": "English 1",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Select the correct pronoun. This is my letter and that is ________."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Your"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Yours"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Our"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Ours"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which one of the following words is a verb?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Usually"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Slowly"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Poorly"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Solve"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct option. My new bike is __________ than my old one."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Faster"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Fast"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the part of speech of the underlined word. Amy bought ripe tomatoes at the store."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Noun"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Adjective"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Pronoun"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Verb"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the appropriate option. ________ my opinion, she is a very clever girl."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "For"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Of"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "In"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "With"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the appropriate option. Tomorrow will be ________ cold day."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "An"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "No article"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the appropriate option. She behaves _______she was the captain of the team."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "As"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "As if"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "That"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "No word needed"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "They usually spend their holidays in _____mountains."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "A"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "No article"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "An"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Select true or false for the following statement. The phrasal verb ‘lay off (something)’ means to ‘to stop doing something.’"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following sentence: The party was a little slow at first but Kate broke the ice by offering everyone wine and beer. The phrase ‘broke the ice’ means ___."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "To remove the tension at a first meeting"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To tell the truth about something that was kept a secret"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 1 · Quiz 1 · 29 Oct 2023 · QPF3 · Part 3"
+}

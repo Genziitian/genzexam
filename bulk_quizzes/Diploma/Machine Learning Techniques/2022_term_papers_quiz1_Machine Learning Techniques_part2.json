@@ -1,0 +1,116 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "2022 term papers Quiz1 · Part 2",
+  "subject": "Machine Learning Techniques",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the accuracy for the given test data-set. Write your answer correct to two decimal places. Question Id : 640653345313 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Calculator : None Response Time : N.A Consider the following code snippet Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "0.73 to 0.77"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the output of following code snippet?"
+        }
+      ],
+      "numerical_answer": 5.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the output of following code snippet? Abhishek trains a polynomial regression model on a dataset. He tries with different degree of polynomial transformation and gets following learning curve: Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "58 Question Id : 640653345326 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Calculator : None Response Time : N.A"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What value of degree of polynomial transformation should Abhishek choose for the given dataset? NOTE: Enter your answer to the nearest integer."
+        }
+      ],
+      "numerical_answer": 5.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Ankita had a feature vector x and she wanted to apply polynomial transformation on x. She had written a code snippet as follows: What is the output of the code snippet?"
+        }
+      ],
+      "numerical_answer": 90.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A classification model was trained on some training examples with two features and three classes (0, 1 and 2) using least square algorithm. The learnt weight matrix is (Remember for k class classification problem with m features, shape of weight matrix is (m + 1) × k) Which class will the sample (-1, 1) be classified to? NOTE: Enter your answer to the nearest integer."
+        }
+      ],
+      "numerical_answer": 2.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the decision boundary learnt using a perceptron algorithm as shown in the figure. Find the loss associated with this model. Note: Since, perceptron model doesn’t converge for non linearly separable data, we have terminated the learning process after a fixed numbers of iterations. NOTE: Enter your answer to the nearest integer."
+        }
+      ],
+      "numerical_answer": 5.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "NOTE: Enter your answer in two decimal places."
+        }
+      ],
+      "acceptable_answers": [
+        "1.00 to 1.05"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "2022 term papers Quiz1 · Part 2"
+}

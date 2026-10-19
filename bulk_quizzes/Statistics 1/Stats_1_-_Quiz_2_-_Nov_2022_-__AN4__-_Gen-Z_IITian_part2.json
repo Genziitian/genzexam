@@ -1,0 +1,111 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Statistics 1 · Quiz 2 · Nov 2022 · AN4 · Part 2",
+  "subject": "Statistics 1",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Answer the given subquestions about a basketball coach drafting a team."
+        }
+      ],
+      "acceptable_answers": [
+        "720"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Answer the given subquestions about a basketball coach drafting a team. Select the steps from the following options that you will use for the selection of players to draft a team. Note: This question is optional. Your answer to this question will be checked if you make a mistake in the previous one. Selection of players will occur simultaneously."
+        }
+      ],
+      "acceptable_answers": [
+        "A, D, F, H"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Answer the given subquestions about arranging the letters of a word. + marks In how many ways can the letters of the word 'REMAIN' be arranged such that the vowels either occupy only odd or only even positions?"
+        }
+      ],
+      "numerical_answer": 72.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Answer the given subquestions about arranging the letters of a word. O marks - Select the steps from the following options that you will use to arrange the letters of the given word. Note: This question is optional. Your answer to this question will be checked if you make a mistake in the previous"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Selection of letters will not occur simultaneously"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "With replacement. / Without replacement."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Order matters. F Order does not matter. Permutation is useci H Combination is used."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "An engineer made a software to filter the spam mails before mails reach the inbox. The probability that an email is spam is 30%. The software claims that it can detect 99% of spam emails, and the probability for al non-spam email being detected as spam is 5%. Based on the information, answer the given subquestions What is the probability that an email is detected as spam? (Enter the answer correct to 2 decimal accuracy.)"
+        }
+      ],
+      "numerical_answer": 0.33,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "An engineer made a software to filter the spam mails before mails reach the inbox. The probability that an email is spam is 30%. The software claims that it can detect 99% of spam emails, and the probability for al non-spam email being detected as spam is 5%. Based on the information, answer the given subquestions"
+        }
+      ],
+      "acceptable_answers": [
+        "0,11"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "Statistics 1 · Quiz 2 · Nov 2022 · AN4 · Part 2"
+}

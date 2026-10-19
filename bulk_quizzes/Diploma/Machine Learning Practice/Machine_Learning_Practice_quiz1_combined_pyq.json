@@ -1,0 +1,277 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Machine Learning Practice · Quiz 1 · Combined PYQ",
+  "title": "Machine Learning Practice · Quiz 1 · Combined PYQ",
+  "subject": "Machine Learning Practice",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "NOTE: Enter your answer to the nearest integer."
+        }
+      ],
+      "numerical_answer": 3.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "[String Matching] Enter the sequence of steps to be followed, in general, in end to end machine learning project. Enter the answer as a 6-character string. For example, entering the answer as (without quotes) ‘BADCFE’ implies that the first step is B, followed by the second step A and so on. A. Select suitable model B. Train the model C. Pre-process the data D. Collect data E. Fine tune model F. Present your solution Answers Case Sensitive : No"
+        }
+      ],
+      "acceptable_answers": [
+        "DCABEF"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Question Id : 6406531114194 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Consider the given Table 1: Banking data for the given subquestions stored as pandas dataframe in variable df Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "numerical_answer": 0.4,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Question Id : 640653669259 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Go through the code snippet given below and answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "0.327 to 0.333"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "When evaluating a classifier on an imbalanced dataset where false negatives are critically dangerous (such as cancer detection), which metric should be prioritized?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Recall (Sensitivity): $\\frac{TP}{TP + FN}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Precision: $\\frac{TP}{TP + FP}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Accuracy: $\\frac{TP + TN}{TP + TN + FP + FN}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Specificity: $\\frac{TN}{TN + FP}$"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Recall penalizes false negatives, ensuring that the model captures as many actual positive cases as possible."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In scikit-learn, why must `fit_transform()` be called ONLY on training data, while test data is processed using `transform()` alone?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "To prevent data leakage by computing statistics (mean, variance) strictly from the training distribution"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Because `fit_transform()` always shuffles rows randomly"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To accelerate matrix multiplication during inference"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Because `fit_transform()` discards categorical column headers"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Fitting scalers on test data leaks test distribution information into model preprocessing."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which regularization technique adds an L1 penalty proportional to the absolute values of the coefficients, thereby inducing feature sparsity?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Lasso Regression (L1)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Ridge Regression (L2)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Ordinary Least Squares"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Polynomial Regression"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Lasso (L1) drives uninformative feature weights strictly to zero, effectively acting as embedded feature selection."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the primary role of the ROC-AUC score in binary classification?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Measures the model's ability to rank positive instances above negative instances across all decision thresholds"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Measures calibrated probability error at a fixed threshold of 0.5"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Computes the exact fraction of correctly predicted test labels"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Calculates the ratio of true negatives to false positives at 95% confidence"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "ROC-AUC computes the area under the True Positive Rate vs False Positive Rate curve, evaluating threshold-independent ranking."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What will P represent at the end of the execution?(MCQ)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Number of words with an even letter count"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of words with an odd letter count"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of adverbs with an even letter count"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of adverbs with an odd letter count"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 4,
+      "difficulty": "medium"
+    }
+  ]
+}

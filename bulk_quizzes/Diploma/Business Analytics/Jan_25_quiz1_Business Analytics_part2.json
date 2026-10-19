@@ -1,0 +1,88 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Jan 25 Quiz1 · Part 2",
+  "subject": "Business Analytics",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the number of degrees of freedom for the statistical test to be performed? (Note: give only a numerical value rounded to 2 decimal places. For example, if your answer is 10.1253, then input the answer as “10.13”)"
+        }
+      ],
+      "numerical_answer": 3.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the elasticity of the linear demand response curve? (Note: give only a numerical value rounded to 2 decimal places. For example, if your answer is 10.1253, then input the answer as “10.13”)"
+        }
+      ],
+      "numerical_answer": 40.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the market size for milk? (Note: give only a numerical value rounded to 2 decimal places. For example, if your answer is 10.1253, then input the answer as “10.13”)"
+        }
+      ],
+      "numerical_answer": 1900.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the satiating price for the Milk’s demand response curve? (Note: give only a numerical value rounded to 2 decimal places. For example, if your answer is 10.1253, then input the answer as “10.13”)"
+        }
+      ],
+      "numerical_answer": 47.5,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "From the given contingency table, find the expected frequency of Chennai people preferring brand B? (Note: give only a numerical value rounded to 2 decimal places. For example, if your answer is 10.1253, then input the answer as “10.13”)"
+        }
+      ],
+      "numerical_answer": 115.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the calculated value of chi-squared? (Note: give only a numerical value rounded to 2 decimal places. For example, if your answer is 10.1253, then input the answer as “10.13”)"
+        }
+      ],
+      "acceptable_answers": [
+        "65.4 to 65.8"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "Jan 25 Quiz1 · Part 2"
+}

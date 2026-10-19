@@ -1,0 +1,100 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Statistics 2 · Quiz 2 · Exam · QIT3 · Part 2",
+  "subject": "Statistics 2",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let X ~ Uniform (1,2) be a discrete random variable. Let Y | X = 1 ~ Exponential(1) and Y | X = 2 ~ Exponential(2). Find the value of fxiY-o.s (1). Enter the answer correct to two decimal places."
+        }
+      ],
+      "numerical_answer": 0.45,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let X be a discrete random variable with PMF as follows: /x (0) = 1. /x(1) = ‡. /x (2) = ]. Suppose X1, X2,..., Xa» ~ li.d. X. Define a random variable Y = Ei. Xi Which of the following options is an acceptable approximate model for Y' as per the Central Limit Theorem? Y ~ Normal (1, 0.5*) Y ~ Normal (200, 0.57) Y ~ Normal (200, 102)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The distribution of Y' is approximately the same as X, with mean 1 and variance 0.5, due to the iid. nature of the variables."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The distribution of Y' is approximately the same as X., with mean 200 and variance 0.5, due to the iid. nature of the"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let X be a discrete random variable with PMF as follows: /x (0) = 1. /x(1) = ‡. /x (2) = ]. Suppose X1, X2,..., Xa» ~ li.d. X. Define a random variable Y = Ei. Xi Using the Central Limit Theorem, it is calculated that the approximate value of P(Y > a) is 0.023. What is the value of a? (See the \"Useful Data\" given in Question 2.)"
+        }
+      ],
+      "numerical_answer": 220.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A researcher collects two independent random samples of size 100 each from the same population (with mean i and variance a?). Let Xy and X2 be the sample means of these two samples. It is given that Var (X) - X2) = 72. Find the value of population standard deviation a."
+        }
+      ],
+      "numerical_answer": 60.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Muskan throws a dart onto a circular board. Let a random variable X denote the distance from the center to the point where the dart hits the board Suppose the POF of X is x (a) - 18z(1 - 2*) Otherwise. otherwise. Find the value of k."
+        }
+      ],
+      "numerical_answer": 4.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Muskan throws a dart onto a circular board. Let a random variable X denote the distance from the center to the point where the dart hits the board Suppose the POF of X is x (a) - 18z(1 - 2*) Otherwise. otherwise. Find the value of P (0 ≤ X≤g). Enter the answer correct to two decimal places."
+        }
+      ],
+      "numerical_answer": 0.44,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "Statistics 2 · Quiz 2 · Exam · QIT3 · Part 2"
+}

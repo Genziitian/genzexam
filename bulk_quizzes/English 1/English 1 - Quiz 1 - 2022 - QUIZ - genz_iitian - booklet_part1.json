@@ -1,0 +1,389 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 1 · Quiz 1 · 16 Oct 2022 · QUIZ · Part 1",
+  "subject": "English 1",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nNature is an infinite source of beauty. Sunrise and sunset, mountains and rivers, lakes and glaciers, forests and fields provide joy and bliss to the human mind and heart for hours together. Everything in nature is splendid and divine. Every day and every season of the year has a peculiar beauty to unfold. Only one should have eyes to behold it and heart to feel it like the English poet William Wordsworth who after seeing daffodils said; “And then my heart with pleasure fills and dances with the daffodils”. Nature is a great teacher. The early man was thrilled with beauty and wonders of nature. The Aryans worshipped nature. One can learn the lessons in the vast school of nature. Unfortunately, the strife, the stress and the tension of modern life have made people immune to beauties of nature. Their life is so full of care that they have no time to stand and stare. They cannot enjoy the beauty of flowing rivers, swinging trees, flying birds and majestic mountains and hills. There is however, a cry to go back to village from the concrete and artificial jungle of cities. Hence the town planners of today pay special attention to provide enough number of natural scenic spots in town planning. To develop a balanced personality, one needs to have a healthy attitude which can make us appreciate and enjoy the beauty of nature. There is other balm to soothe our tired soul and listless mind than the infinite nature all around us. We should enjoy it fully to lead a balanced and harmonious life, full of peace and tranquillity. Based on the above data, answer the given subquestions\n\nQuestion:\nWhich of the following words has the SAME meaning as the word 'care' as used in the passage?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Pleasure"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Needs"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Want"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Grief"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nNature is an infinite source of beauty. Sunrise and sunset, mountains and rivers, lakes and glaciers, forests and fields provide joy and bliss to the human mind and heart for hours together. Everything in nature is splendid and divine. Every day and every season of the year has a peculiar beauty to unfold. Only one should have eyes to behold it and heart to feel it like the English poet William Wordsworth who after seeing daffodils said; “And then my heart with pleasure fills and dances with the daffodils”. Nature is a great teacher. The early man was thrilled with beauty and wonders of nature. The Aryans worshipped nature. One can learn the lessons in the vast school of nature. Unfortunately, the strife, the stress and the tension of modern life have made people immune to beauties of nature. Their life is so full of care that they have no time to stand and stare. They cannot enjoy the beauty of flowing rivers, swinging trees, flying birds and majestic mountains and hills. There is however, a cry to go back to village from the concrete and artificial jungle of cities. Hence the town planners of today pay special attention to provide enough number of natural scenic spots in town planning. To develop a balanced personality, one needs to have a healthy attitude which can make us appreciate and enjoy the beauty of nature. There is other balm to soothe our tired soul and listless mind than the infinite nature all around us. We should enjoy it fully to lead a balanced and harmonious life, full of peace and tranquillity. Based on the above data, answer the given subquestions\n\nQuestion:\nWhich of the following statements is not made in the passage about Nature?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The early man was scared of Nature."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Nature is a great teacher."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Everything in nature is splendid and divine."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Nature is an infinite source of beauty."
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nNature is an infinite source of beauty. Sunrise and sunset, mountains and rivers, lakes and glaciers, forests and fields provide joy and bliss to the human mind and heart for hours together. Everything in nature is splendid and divine. Every day and every season of the year has a peculiar beauty to unfold. Only one should have eyes to behold it and heart to feel it like the English poet William Wordsworth who after seeing daffodils said; “And then my heart with pleasure fills and dances with the daffodils”. Nature is a great teacher. The early man was thrilled with beauty and wonders of nature. The Aryans worshipped nature. One can learn the lessons in the vast school of nature. Unfortunately, the strife, the stress and the tension of modern life have made people immune to beauties of nature. Their life is so full of care that they have no time to stand and stare. They cannot enjoy the beauty of flowing rivers, swinging trees, flying birds and majestic mountains and hills. There is however, a cry to go back to village from the concrete and artificial jungle of cities. Hence the town planners of today pay special attention to provide enough number of natural scenic spots in town planning. To develop a balanced personality, one needs to have a healthy attitude which can make us appreciate and enjoy the beauty of nature. There is other balm to soothe our tired soul and listless mind than the infinite nature all around us. We should enjoy it fully to lead a balanced and harmonious life, full of peace and tranquillity. Based on the above data, answer the given subquestions\n\nQuestion:\nWhy do people not enjoy the beauty of Nature?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "They are afraid of nature."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Their life is full of worries and tensions."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "They do not consider nature as balm to soothe their fired minds."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "They are running after material pleasures."
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nNature is an infinite source of beauty. Sunrise and sunset, mountains and rivers, lakes and glaciers, forests and fields provide joy and bliss to the human mind and heart for hours together. Everything in nature is splendid and divine. Every day and every season of the year has a peculiar beauty to unfold. Only one should have eyes to behold it and heart to feel it like the English poet William Wordsworth who after seeing daffodils said; “And then my heart with pleasure fills and dances with the daffodils”. Nature is a great teacher. The early man was thrilled with beauty and wonders of nature. The Aryans worshipped nature. One can learn the lessons in the vast school of nature. Unfortunately, the strife, the stress and the tension of modern life have made people immune to beauties of nature. Their life is so full of care that they have no time to stand and stare. They cannot enjoy the beauty of flowing rivers, swinging trees, flying birds and majestic mountains and hills. There is however, a cry to go back to village from the concrete and artificial jungle of cities. Hence the town planners of today pay special attention to provide enough number of natural scenic spots in town planning. To develop a balanced personality, one needs to have a healthy attitude which can make us appreciate and enjoy the beauty of nature. There is other balm to soothe our tired soul and listless mind than the infinite nature all around us. We should enjoy it fully to lead a balanced and harmonious life, full of peace and tranquillity. Based on the above data, answer the given subquestions\n\nQuestion:\nWhat are the town planners doing today?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Making efforts to inculcate healthy attitude among people."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Supporting the cry to go back to villages."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Establishing balance between concrete and artificial jungle of cities."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Providing facilities for enjoying nature."
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nListen to the audio sample and answer the subquestions.\n\nQuestion:\nAccording to the author of the passage, Nature:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Is abundantly glorious and divine."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Brings uniformity in all seasons."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Is the creator of this universe."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Is the ultimate salvation of man."
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nListen to the audio sample and answer the subquestions.\n\nQuestion:\nWho designed the first Macintosh computer?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Mark Zuckerberg"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Steve Jobs"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Jeff Bezos"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Elon Musk"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nListen to the audio sample and answer the subquestions.\n\nQuestion:\nWhat is the meaning of 'Typography' ?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The art of making maps."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The art of arranging typed words."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The art of writing a dictionary."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The art of writing in shorthand."
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nListen to the audio sample and answer the subquestions.\n\nQuestion:\nWhat is the meaning of the phrase 'connect the dots' ?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "To do something pointless."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To make a bad situation worse."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Better to show than tell."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Bring together information from different places."
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nListen to the audio sample and answer the subquestions.\n\nQuestion:\nAfter leaving Apple, which company did Steve Jobs start?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "IBM"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Intel"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "NeXT"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Samsung"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following telephonic conversation and fill in the blank with appropriate responses: John: Good morning. Is this Abe publishers? Mary: Yes, this is Abe publishers. (i)_______ John: I am John and I ordered a book last week. Mary: (ii)_________ John: My order was for ‘The Oldman and the Sea.’ Mary: (iii)_____, we have exhausted its stock here. John: Then, could you send me ‘The Tale of Two Cities’ instead? Mary: Sure sir. (iv)______ John: (v) _____. It is 2B, Red Heights, London. Mary: Thank you sir. We will dispatch it soon. Based on the above data, answer the given subquestions\n\nQuestion:\nWhich is the world's first computer animated feature film?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Toy Story"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Soul"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Finding Nemo"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Luca"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 1 · Quiz 1 · 16 Oct 2022 · QUIZ · Part 1"
+}

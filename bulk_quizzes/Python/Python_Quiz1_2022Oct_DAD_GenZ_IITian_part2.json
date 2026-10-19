@@ -1,0 +1,293 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Python Programming · Quiz 1 · Oct 2022 · DAD · Part 2",
+  "subject": "Python Programming",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following options print the pair of \"Welcome to Python Quiz!\" and \"All the best!!\" alternatively on separate lines n times? There should be one line space between two pairs and there should not be any space after the last pair. Here, n is a positive integer that has already been defined. Your answer should be applicable for any positive integer. (Sample output shown for n = 3.)"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "# Sample output for n = 3:\n# welcome to Python Quiz!\n# All the best!!\n#\n# welcome to Python Quiz!\n# All the best!!\n#\n# welcome to Python Quiz!\n# All the best!!"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "for i in range(n): print('welcome to Python Quiz!') print('All the best!!') print()"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "print('welcome to Python Quiz!') print('All the best!!') for i in range(n - 1): print() print('welcome to Python Quiz!')\nprint('All the best!!')"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "for i in range(n): print('welcome to Python Quiz!') print('All the best!!') if i != n - 1: print()"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "for i in range(n - 1): print('welcome to Python Quiz!') print('All the best!!') if i != n - 1: print()"
+          }
+        ]
+      ],
+      "correct_answers": [
+        1,
+        2
+      ],
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The pairs must be separated by exactly one blank line with no trailing blank. Option 2 prints the first pair then n-1 (blank + pair) blocks; option 3 prints n pairs with a blank only when i != n-1. Option 1 adds a trailing blank; option 4 only prints n-1 pairs."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Reverse a sentence based on words. The i-th word from the left in the input sentence is the i-th word from the end in the output sentence. Example: sentence = \"i know how to code in python\" gives modified_sentence = \"python in code to how know i\". Choose all the options that accept a sentence as input and print the modified sentence."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "# Example\n# sentence = \"i know how to code in python\"\n# modified_sentence = \"python in code to how know i\""
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "sentence = input() words = sentence.split(' ') n = len(words) for i in range(n - 1, 0, -1): print(words[i] + ' ', end='')\nprint(words[0])"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "sentence = input() words = sentence.split(' ') n = len(words) for i in range(n - 1, -2, -1): print(words[i] + ' ',\nend='')"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "sentence = input() words = sentence.split(' ') n = len(words) for i in range(n - 1, -1, -1): print(words[i] + ' ',\nend='') print(words[0])"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "words = sentence.split(' ') n = len(words) for i in range(n - 1): print(words[n - i - 1], end=' ') print(words[0])"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        3
+      ],
+      "marks": 4,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Options 1 and 4 print the words in reverse order ending with words[0], giving the correct reversed sentence. Option 2 wraps to words[-1] (last word) printing it again; option 3 prints words[0] and then again, duplicating the first word."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Select all matrices M for which the following code prints True to the console."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "n = len(M)\nflag = True\nfor i in range(n):\n    for j in range(n):\n        if (i != j) and (M[i][j] + M[j][i] != 0):\n            flag = False\nprint(flag)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "[[1, 2, 3], [2, 5, 4], [3, 4, 6]]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[[1, 5, 3, 4], [5, 1, 4, 6], [3, 4, 2, 8], [4, 6, 8, 3]]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[[1, 2, -3], [-2, 5, 4], [3, -4, 6]]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[[-1, 5, -3, 4], [-5, 1, -4, 6], [-3, 4, 2, 8], [-4, -6, -8, 3]]"
+          }
+        ]
+      ],
+      "correct_answers": [
+        2
+      ],
+      "marks": 4,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The code prints True only when M[i][j] + M[j][i] == 0 for every off-diagonal pair (skew-symmetric off-diagonal). Only option 3 satisfies this; the others have at least one pair whose sum is non-zero."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "For what values of a, b and c does the code given below print a sequence which has 0 as one of the elements?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "for i in range(a, b, c):\n    print(i)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "a = 10, b = -1, c = -1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "a = -10, b = 1, c = 1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "a = 10, b = -2, c = 0"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "a = -5, b = 5, c = 5"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1,
+        3
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "range(10,-1,-1) -> 10..0 (has 0); range(-10,1,1) -> -10..0 (has 0); range(-5,5,5) -> [-5, 0] (has 0). range(10,-2,0) raises ValueError because the step cannot be 0."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "n is a positive integer that has already been defined. Select all snippets of code that print the following sequence of n lines, where in line i the output corresponds to the first i Fibonacci numbers (0 and 1 are the first two Fibonacci numbers). There should be a single space after every number, and a single space after the last number in any given line. (Sample output shown for n = 7.)"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "# Sample output for n = 7:\n# 0\n# 0 1\n# 0 1 1\n# 0 1 1 2\n# 0 1 1 2 3\n# 0 1 1 2 3 5\n# 0 1 1 2 3 5 8"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "L = [0, 1] for i in range(n - 2): L.append(L[-1] + L[-2]) for i in range(1, n + 1): for j in range(i): print(L[j], end=' ')\nprint()"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "i = 0 L = [] while i < n: if i == 0: L.append(0) elif i == 1: L.append(1) else: L.append(L[-1] + L[-2]) i += 1 for j in\nrange(i): print(L[j], end=' ') print()"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "L = [0, 1] for i in range(n): L.append(L[-1] + L[-2]) for j in range(i): print(L[j], end=' ') print()"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1
+      ],
+      "marks": 5,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Options 1 and 2 build the Fibonacci list and print the first i numbers on line i. Option 3 is off by one: it prints range(i) (so the first line is empty) and never prints the full 7th line, so its output is wrong."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "NOTE: Enter your answer to the nearest integer. R is a zero-matrix (all entries are zeros) of size 3 x 3. P = [[1, 2, 3], [4, 5, 6], [7, 8, 9]] and Q = [[1, 1, -1], [1, 1, -1], [1, 1, -1]]. What is the output of the following snippet of code?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "val = 0\nfor i in range(3):\n    for j in range(3):\n        R[i][j] = P[i][j] * Q[i][j]\n        val = val + R[i][j]\nprint(val)"
+        }
+      ],
+      "numerical_answer": 9,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "R[i][j] = P[i][j]*Q[i][j], summed: row sums are (1+2-3)=0, (4+5-6)=3, (7+8-9)=6. Total = 0+3+6 = 9."
+        }
+      ]
+    }
+  ],
+  "title": "Python Programming · Quiz 1 · Oct 2022 · DAD · Part 2"
+}

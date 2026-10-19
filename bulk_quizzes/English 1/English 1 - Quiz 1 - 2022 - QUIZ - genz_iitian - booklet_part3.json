@@ -1,0 +1,377 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 1 · Quiz 1 · 16 Oct 2022 · QUIZ · Part 3",
+  "subject": "English 1",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the meaning of the phrasal verb ‘black out’?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "To explode"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To become unconscious"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To telephone"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To continue"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct option. To join this sports academy, students __________ be 17 years old."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Has to"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Must"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The messenger is from a foreign land. Choose an appropriate word to replace ‘foreign’."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Alien"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Abroad"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Outside"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Distant"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the odd one out from the following. Different, contrast, contract, distinct"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Different"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Contrast"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Contract"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Distinct"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the appropriate option. The customer complained that the vegetables are ___ cooked."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Over"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Under"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both Over and Under"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Enough"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the appropriate option. Can you give me __ money?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Few"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Some"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Little"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "All of these"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the conjunction in the following sentence. The weather was alright; furthermore, the sun was shining."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Weather"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Alright"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Furthermore"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Shining"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the appropriate option. ___________ dish you cooked tasted good."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "A"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "An"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "No article"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the preposition in the following sentence: The children were gossiping during the lecture."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Gossiping"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Children"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Lecture"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "During"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which one of the following words is an adverb?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Enthralling"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Ideal"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Classy"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Beautifully"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 1 · Quiz 1 · 16 Oct 2022 · QUIZ · Part 3"
+}

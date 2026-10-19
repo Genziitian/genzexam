@@ -1,0 +1,139 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 2 · Quiz 2 · Dec 2023 · QOD4 · Part 2",
+  "subject": "Mathematics 2",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let W = {(x, y, z) : x + 2y - z = 0}. Which of the following is a basis & for W?"
+        }
+      ],
+      "acceptable_answers": [
+        "B"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let W = {(x, y, z) : x + 2y - z = 0}. If y is the orthonormal basis of W obtained from the basis B by using the Gram-Schmidt process with respect to the usual inner product and (a, 6, c) is the projection of (1, 3, 1) onto W, then what is a + b + c?"
+        }
+      ],
+      "numerical_answer": 3.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following system of linear equations: x + 3y - 2z = 0, y - z = 0, x + y = 0. Let A be the coefficient matrix corresponding to this system. Which of the following is the nullspace of A? / span{(-1, 1, 1)}"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "span{(1, 1, 0)} span{(1, 0, 1), (0, 1, -1)}"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "span{(1, 1,0), (0,1, -1)}"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following system of linear equations: x + 3y - 2z = 0, y - z = 0, x + y = 0. Let A be the coefficient matrix corresponding to this system. Let B be a square matrix of order 3. What is the smallest value that the nullity of BA could take?"
+        }
+      ],
+      "numerical_answer": 1.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the matrix corresponding to T if y is used as the basis for both the domain and co-domain."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "-1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "| 1.5"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "0.5"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "-0.5 1.5]"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider a vector space V with bases 8 = {01, 12} and y = {11 + 12, 01 - 0½}. Tis a linear transformation from V to itself such that T(v1) = 01 + 203 and T(02) = 201 - 02 Is T an isomorphism?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Yes"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "No"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "Mathematics 2 · Quiz 2 · Dec 2023 · QOD4 · Part 2"
+}

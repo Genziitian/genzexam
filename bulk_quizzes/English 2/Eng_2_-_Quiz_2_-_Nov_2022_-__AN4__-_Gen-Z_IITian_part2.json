@@ -1,0 +1,241 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 2 · Quiz 2 · Nov 2022 · Part 2",
+  "subject": "English 2",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Fill in the blank with the most appropriate modal verb. The new team _ obligation) will do it. (Not so strong"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Might Should"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "May"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In the following sentence, fill in the blank with 'if or 'whether. I was consulting with him their proposal."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "T to consider"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Either if or whether can be used Whether"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the non-finite clause in the following sentence. George made Swami walk."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "George Swami walk c Made Swami"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "George made Swami"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "For the direct question \"Who is that man in the pink shirt?\", identify a possible embedded question from the options given below."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "I wonder who is that man in the pink shirt. I wonder who that man in the pink shirt is. c I wonder who was that man in the pink shirt were."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "I wonder who will be that man in the pink shirt."
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What does the modal auxiliary in the following sentence denote? You may question his haughty behaviour. Permission"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Ability"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Request"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "\"I bought a teapoy.\" A possible interrogative form for this sentence is _"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "What have you found?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Why did you buy it? What did you buy?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "When will you buy it?"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the adjective(s) in the following sentence: Abhinya was brilliant in yesterday's competitive exam."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Was, yesterday"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Brilliant, test Brilliant, competitive"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Yesterday, competitive"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "i marks In the following lists of words, identify the word most likely to be adjective based on word endings. Intent, India, irredeemable, integration"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Integration"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Intent"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Irredeemable"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "India"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 2 · Quiz 2 · Nov 2022 · Part 2"
+}
