@@ -1,0 +1,377 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 2 · Quiz 1 · 23 Feb 2025 · QDF4 · Part 3",
+  "subject": "English 2",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the adverb in the following sentence. Rahul and his friends ate quickly."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Ate quickly"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Quickly"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The adverb is unclear"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "This sentence does not have an adverb"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "“Very” is used ____."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "To say there is more than what is wanted of something"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To denote a high degree of something"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To say that there is just enough of something"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of these"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the degree adverb/adverbs in the given sentence. “He is so well worth making happy.”"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Happy"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "So"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "So, well"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Well, worth"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following sentences and spot the ones in which degree adverbs are used correctly. i. The snake was fairly dead ii. He sank into his chair quite spent iii. Your concern is very much appreciated by the children"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "i only"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "i and ii only"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "ii and iii only"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "i and iii only"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "He ___ regretted it after the incident."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Much"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Very much"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Very"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both much and very much"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Complete the following sentence with the appropriate degree verb. The soup is ________hot to eat right away; let it cool down a bit."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Too"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Very"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In the phrase ‘velvet chair’, the noun ‘velvet’ functions as a(n) _______."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Noun"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Verb"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Adjective"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Adverb"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In the following sentence, identify the nature of the adjective. The adjectives are underlined. ‘I want to buy a large dog, which is also furry, as a pet.’"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Attributive, adjunctive"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Indicative, predicative"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Adjunctive, adverbial"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Attributive, predicative"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the adjective from the following sentence. Arjun is a fast driver."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Arjun"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Is"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Fast"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Driver"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Spot the adjective from the following options."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Interest"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Harmless"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Journey"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Knowledge"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 2 · Quiz 1 · 23 Feb 2025 · QDF4 · Part 3"
+}

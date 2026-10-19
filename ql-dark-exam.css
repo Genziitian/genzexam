@@ -183,6 +183,27 @@
 :root[data-theme=dark] .saas-badge-danger{background-color:rgba(244, 63, 94, 0.12);color:#fb7185;border-color:rgba(244, 63, 94, 0.25)}
 :root[data-theme=dark] .saas-badge-warning{background-color:rgba(245, 158, 11, 0.12);color:#fbbf24;border-color:rgba(245, 158, 11, 0.25)}
 :root[data-theme=dark] .saas-badge-muted{background-color:#3d3d3d;color:#9ca3af;border-color:#222222}
+:root[data-theme=dark] .ep-calc-panel{background-color:#333948;border-color:#2a2f3a}
+:root[data-theme=dark] .ep-calc-header{background-color:#333948;border-bottom-color:#2a2f3a}
+:root[data-theme=dark] .ep-calc-header>div:first-child{color:#f2f4fa!important}
+:root[data-theme=dark] .ep-calc-header [data-calc-close]{color:#9aa3b2!important}
+:root[data-theme=dark] .ep-calc-tabs{background-color:#333948}
+:root[data-theme=dark] .ep-calc-tab-btn{color:#9aa3b2}
+:root[data-theme=dark] .ep-calc-tab-btn.active{background-color:#3a3fd8;color:#fff}
+:root[data-theme=dark] .ep-calc-screen{background-color:#2e374c;border-bottom-color:#2a2f3a}
+:root[data-theme=dark] .ep-calc-history{color:#8b93a3}
+:root[data-theme=dark] .ep-calc-display{color:#f2f4fa}
+:root[data-theme=dark] .ep-calc-key{background-color:#323949;border-color:#323847;color:#e8ebf3}
+:root[data-theme=dark] .ep-calc-key:hover{background-color:#323948}
+:root[data-theme=dark] .ep-calc-key.op{background-color:#283f52;border-color:#2d5f76;color:#7cc8f0}
+:root[data-theme=dark] .ep-calc-key.op:hover{background-color:#223648;color:#9bd8f7}
+:root[data-theme=dark] .ep-calc-key.fn{background-color:#292c52;border-color:#343a8a;color:#a3a8ff}
+:root[data-theme=dark] .ep-calc-key.fn:hover{background-color:#25284a;color:#c0c3ff}
+:root[data-theme=dark] .ep-calc-key.action-clear{background-color:#4b2f33;border-color:#6e2b2b;color:#f08a8a}
+:root[data-theme=dark] .ep-calc-key.action-clear:hover{background-color:#4f2c2e;color:#f5a3a3}
+:root[data-theme=dark] .ep-calc-key.action-equals{background-color:#3a3fd8;border-color:#2b30b8;color:#fff}
+:root[data-theme=dark] .ep-calc-key.action-equals:hover{background-color:#2b30b8}
+:root[data-theme=dark] .ep-calc-header svg[stroke="#2b30b8"]{stroke:#a3a8ff}
 /* from paper-room.css */
 :root[data-theme=dark] #ep-app .ep-card h1{color:#d4dae4}
 :root[data-theme=dark] #ep-app .pr-time-choice{color:#c5ceda}
@@ -337,3 +358,26 @@
 /* hand-written: tools/dark-extra/ql-dark-exam.css */
 :root[data-theme=dark]{color-scheme:dark}
 :root[data-theme=dark] #ep-app ::placeholder{color:#7a8699}
+
+/* Calculator in dark mode: white (inverse of the black light-mode calculator). Added after the generated rules. */
+:root[data-theme=dark] .ep-calc-panel{background-color:#ffffff;border-color:#cbd5e1;box-shadow:0 24px 60px -18px rgba(0,0,0,.6)}
+:root[data-theme=dark] .ep-calc-header{background-color:#f8fafc;border-bottom-color:#e2e8f0}
+:root[data-theme=dark] .ep-calc-header>div:first-child{color:#0f172a!important}
+:root[data-theme=dark] .ep-calc-header [data-calc-close]{color:#64748b!important}
+:root[data-theme=dark] .ep-calc-tabs{background-color:#e2e8f0}
+:root[data-theme=dark] .ep-calc-tab-btn{background:transparent;color:#64748b}
+:root[data-theme=dark] .ep-calc-tab-btn.active{background-color:#3a3fd8;color:#ffffff}
+:root[data-theme=dark] .ep-calc-screen{background-color:#f1f2ff;border-bottom-color:#c9ccf5}
+:root[data-theme=dark] .ep-calc-history{color:#64748b}
+:root[data-theme=dark] .ep-calc-display{color:#1b1f7a}
+:root[data-theme=dark] .ep-calc-key{background-color:#f8fafc;border-color:#cbd5e1;color:#0f172a}
+:root[data-theme=dark] .ep-calc-key:hover{background-color:#e2e8f0}
+:root[data-theme=dark] .ep-calc-key.op{background-color:#e0f2fe;border-color:#7dd3fc;color:#0369a1}
+:root[data-theme=dark] .ep-calc-key.op:hover{background-color:#bae6fd;color:#075985}
+:root[data-theme=dark] .ep-calc-key.fn{background-color:#f1f2ff;border-color:#c9ccf5;color:#2a2fa8}
+:root[data-theme=dark] .ep-calc-key.fn:hover{background-color:#f1f2ff;color:#1b1f7a}
+:root[data-theme=dark] .ep-calc-key.action-clear{background-color:#fef2f2;border-color:#fecaca;color:#dc2626}
+:root[data-theme=dark] .ep-calc-key.action-clear:hover{background-color:#fee2e2;color:#b91c1c}
+:root[data-theme=dark] .ep-calc-key.action-equals{background-color:#3a3fd8;border-color:#2b30b8;color:#ffffff}
+:root[data-theme=dark] .ep-calc-key.action-equals:hover{background-color:#2b30b8}
+:root[data-theme=dark] .ep-calc-header svg[stroke="#2b30b8"]{stroke:#2b30b8}

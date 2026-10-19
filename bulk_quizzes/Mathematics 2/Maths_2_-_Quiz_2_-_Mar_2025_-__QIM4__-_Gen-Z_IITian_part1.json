@@ -1,0 +1,166 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 2 · Quiz 2 · Mar 2025 · QIM4 · Part 1",
+  "subject": "Mathematics 2",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let A = Choose the correct option for A-1. A~1 ="
+        }
+      ],
+      "acceptable_answers": [
+        "C"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "-I 2 Which of the matrices below are equivalent to A? 4 06"
+        }
+      ],
+      "acceptable_answers": [
+        "A, C, D"
+      ],
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the maximum possible nullity of a 3 × 4 matrix."
+        }
+      ],
+      "numerical_answer": 4.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let A = I 3 and B = (8) is a matrix similar to A. If 11 = 7, find by."
+        }
+      ],
+      "numerical_answer": -3.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the matrix A = 1 1 2 If (a, 8, 2, -1) is a vector in the nullspace of A, then find the value of a - B."
+        }
+      ],
+      "numerical_answer": -4.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the matrix A = 1 1 2 Find the nullity of the matrix A."
+        }
+      ],
+      "numerical_answer": 2.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct definition for the linear transformation T."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Т(х, у, z) = (х - 2y + z, Зу + z, 4x - 3у - z)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "T(x, у, z) = (х - Зу + ×, Зу + z, 4z - 3у + 2)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "с T(x, y,z) = (x - 2y + z, 3y - 2, 4x + y + 2)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1 T(x, y, z) = (x - 3y + z, 3y - z, 4x - 3y + z)"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let T : R3 → R3 be the linear transformation determined by T(1, 0, 0) = (1, 0, 4), T(1, 1,0) = (-2,3, 1). and T (0, 0, 1) = (1, -1, 1). Which of the following statements is true? / T is neither one-to-one nor onto."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "T is one-to-one, but not onto. T' is onto, but not one-to-one."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "T is a linear isomorphism."
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the linear transformation T: R3 → R? defined by T(x, y, z) = (x - 3y - (k + 1)z, 2x + ky + 10z) for all (x, y, z) € R, where k € R Find the value of & for which the nullity of the transformation T equals 2."
+        }
+      ],
+      "numerical_answer": -6.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "Mathematics 2 · Quiz 2 · Mar 2025 · QIM4 · Part 1"
+}

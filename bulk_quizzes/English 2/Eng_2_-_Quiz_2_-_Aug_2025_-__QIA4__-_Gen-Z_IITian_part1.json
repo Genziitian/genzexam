@@ -1,0 +1,303 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 2 · Quiz 2 · Aug 2025 · Part 1",
+  "subject": "English 2",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Opened to the public in January, it has reduced the distance between Sewri on the island city and Chirle near the Jawaharlal Nehru Port Trust (JNPT) in Raigad district_ - from 60 km to 22 km."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "an estimated 323 square kilometre"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "the multi-fold increase"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "two and halt times more than to almost a third more than an hour"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "\"The seismic strength of the bridge is __ the normal seismic activity of that region.\" an estimated 323 square kilometre MCQ It currently takes А an estimated 323 square kilometre more than an hour"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "the multi-fold increase two and half times more than"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "to almost a third"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "more than an hour"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "the multi-fold increase"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "two and half times more than"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "to almost a third"
+          }
+        ]
+      ],
+      "correct_answer": 4,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The NTDA is expected to oversee _ area in the Panvel-Ulwe-Uran region where the new airport and the MTHL will offer connectivity. MCQ The lifeline of commuters, the local trains have been running well over their capacity owing to _ in the number of travellers over the years, especially during peak hours. an estimated 323 square kilometre the multi-fold increase c two and half times more than more than an hour"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "an estimated 323 square kilometre"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "the multi-fold increase c two and half times more than"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "to almost a third"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "more than an hour"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "to almost a third"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Mumbai Metro's Line 3, which connects the northern suburbs at Aarey to Colaba, the city's southernmost area, is probably _ project in the city."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "35 percent"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "to the tune of 2.95 lakh litres / the most crucial infrastructure"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Rs.30,000 crore, 33.5 km line"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "17 lakh passengers daily"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Around _ of road traffic is expected to reduce. 35 percent"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "to the tune of 2.95 lakh litres the most crucial infrastructure Rs.30,000 crore, 33.5 km line"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "17 lakh passengers daily"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct answer for (1). / Light"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Lightness Lighter"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Bright"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct answer for (2)."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Lit Light Lighter"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Bright"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct answer for (4)."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Light Brighter Lightness"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Lighter"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct answer for (5). L Passage / Context Exercise: Identify the most appropriate sentence to use in the following social setting. Setting: Communicating with employer in an office. Based on the above data, answer the given subquestions."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Light 8 Lightened c Lighter"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Lit"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 2 · Quiz 2 · Aug 2025 · Part 1"
+}

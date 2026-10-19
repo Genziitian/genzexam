@@ -1,0 +1,107 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "May 2025 Endterm · Part 2",
+  "subject": "Managerial Economics",
+  "section": "endterm",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consumer surplus in this case will be CS = ____________"
+        }
+      ],
+      "acceptable_answers": [
+        "1250 1250000"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Producer surplus in this case will be PS = ____________"
+        }
+      ],
+      "acceptable_answers": [
+        "1250 1250000"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In case of import without tariff, how many total units of ball pens will be imported _______________"
+        }
+      ],
+      "acceptable_answers": [
+        "60 60000"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In case of import without tariff, how many units of ball pens are being supplied by domestic firms ____________"
+        }
+      ],
+      "acceptable_answers": [
+        "20 20000"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "With the tariff, how many units would be imported? ____________"
+        }
+      ],
+      "acceptable_answers": [
+        "40 40000"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How much would domestic producer surplus change compared to the case with imports without tariffs if the government introduces a ₹10 import duty per ball pen?____________"
+        }
+      ],
+      "acceptable_answers": [
+        "250000 250"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How much revenue would the domestic government collect from the imports of ball pens due to this import duty of ₹10? ____________ Question Id : 6406531424411 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix The market demand curve for pizzas is P=300-Q and the market supply curve is P=60+2Q. A tax of t=15 INR is imposed on one unit of pizza sold. Answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "400 400000"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "May 2025 Endterm · Part 2"
+}

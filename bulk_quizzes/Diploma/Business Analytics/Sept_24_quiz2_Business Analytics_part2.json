@@ -1,0 +1,89 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Sept 24 Quiz2 · Part 2",
+  "subject": "Business Analytics",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the recall of the model for predicting the positive class? Question Id : 6406531021519 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix You are solving a regression problem with 8 explanatory variables. The data has 150 observations, and the R-square value was found to be 0.75. You are adding one more explanatory variable to the dataset (a total of 9 explanatory variables). The new R-square value is 0.8. Then answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "0.13 to 0.15"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the new adjusted R-square value?(Note: If your answer is in decimal, enter it rounded to two decimal places. For example, if your answer is “10.256”, enter it as “10.26”)"
+        }
+      ],
+      "acceptable_answers": [
+        "0.77 to 0.80"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many constraints will be present in the dual formulation?"
+        }
+      ],
+      "numerical_answer": 6.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many decision variables will be required to formulate the dual?"
+        }
+      ],
+      "numerical_answer": 7.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the objective function “co-efficient” for the dual decision variable corresponding to the “Constraint-4” in the primal?"
+        }
+      ],
+      "numerical_answer": 20.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "For the following solution of the primal, how many decision variables in the dual will have a NON- ZERO value ? Y1= 4 Y2= 5 Y3= 2 Y4 = 6 Y5= 10 Y6= 5"
+        }
+      ],
+      "numerical_answer": 4.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "Sept 24 Quiz2 · Part 2"
+}

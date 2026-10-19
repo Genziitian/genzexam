@@ -1,0 +1,365 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 1 · Quiz 1 · 26 Oct 2025 · QID3 · Part 2",
+  "subject": "English 1",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the given consonant-vowel sequences correctly illustrates the consonant cluster/clusters in the word exhibit?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "VCCCVCVC"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "VCCVCVC"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "VCCVCCVC"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "VCVCVC"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In which word does the underlined part have a different sound?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Vision"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Azure"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Measure"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Prison"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which semi-vowel does the word “quiet” contain?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "/w/"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "/y/"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which among the following words has the same sound as underlined in “foe”?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Gown"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Flow"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Brow"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Brown"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which among the following is a word without a diphthong?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Ply"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Clay"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Buy"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Clue"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the part of speech of the underlined word: “The dog ran into the glass door.”"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Noun"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Pronoun"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Verb"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Conjunction"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the part of speech of the underlined word: “The bread was stale; it had been left outside overnight.”"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Noun"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Pronoun"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Verb"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Conjunction"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct option: “Out of all the girls in the basketball team, Tina was the _______.”"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Taller"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Tallest"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the adjective in the following sentence: “Stop at the house with the yellow scooter parked outside.”"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Stop"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "House"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Yellow"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Scooter"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "“I reached Chennai yesterday.” The word “yesterday” is an adverb of ____."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Time"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Place"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Frequency"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of these"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 1 · Quiz 1 · 26 Oct 2025 · QID3 · Part 2"
+}

@@ -1,0 +1,185 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Statistics 1 · Quiz 2 · 06 Apr 2026",
+  "subject": "Statistics 1",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "There are two stores, A and B, which sell t-shirts on the market. The store A has stock of n red and 2 black t-shirts and the store B has a stock of 2 red and n black t-shirts. One of the stores is selected at random and two t-shirts are purchased without replacement from that store. Given that both the t-shirts purchased are red, the probability that they were purchased from store A is f, find the value of n."
+        }
+      ],
+      "numerical_answer": 4.0,
+      "numerical_tolerance": 0.01,
+      "marks": 5,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Three independent draws are made from a standard deck of 52 playing cards, with replacement and reshuffling between each draw. Which of the following statements is/are correct?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The probability that the first card drawn is the king of Hearts is 32-"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The probability that both the first and second cards drawn are red is g"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The probability that the third card drawn is the Ace of Spades is to • The events \"the first card drawn is a Queen\" and \"the second card drawn is a Queen\" are independent events."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Nine friends are to be seated around a round table. Among them, Amit and Rohit insist on sitting next to each other. In how many ways can the friends be seated around a circular table?"
+        }
+      ],
+      "numerical_answer": 10080.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Amit wants to create a 4-digit numerical PIN for his ATM card. In how many ways can he create a 4-digit number between 5000 and 9000 using the digits 1, 3, 5, 6, 8, 9, if repetition of digits is allowed?"
+        }
+      ],
+      "numerical_answer": 648.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many 5's are there between 1 and 1000?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "271"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "300"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "299"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "301"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "From a group of 5 students, a team of 3 students is to be selected. From this selected team, one student is chosen as the leader. In how many different ways can this be done?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "15 20 30"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "60"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A committee of 3 students is to be formed from a class of 7 boys and 5 girls. Based on the given information, answer the given sub-questions. 2 marks • In how many ways can a committee be formed if at least one girl must be included? A 140 в 165 • 185 D 220 Answer: C Find the probability that it contains exactly one girl, given that it contains at least one boy."
+        }
+      ],
+      "acceptable_answers": [
+        "B"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let A, B and C be three events of a random experiment such that P(A) = 0.6, P(B) = 0.5, P(C) = 0.4. P(An B) = 0.3, P(BOC) = 0.2, and P(AnC) = 0.25. places. Assuming P(An BC) = 0, find the value of P(AU BUC). Enter the answer correct to two decimal"
+        }
+      ],
+      "numerical_answer": 0.75,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let A, B and C be three events of a random experiment such that P(A) = 0.6, P(B) = 0.5, P(C) = 0.4. P(An B) = 0.3, P(BOC) = 0.2, and P(AnC) = 0.25. Find the value of P(B | (AUC)). Enter the answer correct to two decimal places."
+        }
+      ],
+      "numerical_answer": 0.67,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ]
+}

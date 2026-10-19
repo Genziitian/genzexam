@@ -1,0 +1,395 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 1 · Quiz 1 · 2024 · QEF2 · Part 3",
+  "subject": "English 1",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the adverb in the following sentence: Joseph ran faster than everyone else in the relay team."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Joseph"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Ran"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Faster"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Relay"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the appropriate option: The fruits are __ the fridge."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "At"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "For"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "In"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of these"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the conjunction in the following sentence: ‘He was an excellent orator and an even better salesman.’"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "He"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Was"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Excellent"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "And"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct option: He gave me __ book on my birthday."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "An"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of these"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct option: ___ Sun rises in the east."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "A"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "An"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of these"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct option: There were __ many people in the auditorium."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "To"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Two"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Too"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Large"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the separable phrasal verb out of the following options."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Hit on"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Keep at"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Stand for"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Call by"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Fill in the blank with the appropriate option. The meeting __________ just before dinner."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Brought out"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Broke up"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Broke into"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Broke out"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nBased on the above data, answer the given subquestions.\n\nQuestion:\nChoose the correct option. ___________ I ask a question? (Context: permission and formal) Yes, of course."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Must"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "May"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Should"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Will"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nBased on the above data, answer the given subquestions.\n\nQuestion:\nBank___________"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Temper"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Account"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Ruins"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Afternoon"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Coffee"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 1 · Quiz 1 · 2024 · QEF2 · Part 3"
+}

@@ -1,0 +1,293 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 1 · Quiz 2 · Aug 2024 · Part 2",
+  "subject": "English 1",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "CIVICS Bibeesh's favourite discipline, while Mathematics _ _ Ambattan's favourite subject."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "s. are Is, is c Was, were"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Are. are Answer. B"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "MCO. Mobile phones Reduce"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Reduces our attention span. Ce Redacts"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Reduction"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the right answer. My friend T.U marks coffee when I entered the room. Unnking Had been drinking Choose the future nerfect continuous tense sentence from the followina Options. He will have jogged two miles before reaching the main road. She will have been driving for an hour by the time she gets to the office."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Has been drinking"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "We are going to meet our friend at the railway station"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Lucy will travel around the world in June"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "1.U marks Fill in the blank with future pertect continuous tense form. I expect Nisha will be tired when she arrives. She for over 18 hours."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Will travel"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Will be travelling Will have been travelling"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the tense in the following sentence. They have arrived on time. Present perfect 8 Present perfect continuous"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Past perfect"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Past perfect continuous"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many syllables are there in the word control?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "½"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "3"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "4"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many syllables are there in the word tremendous?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "3 nU marks"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "6"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The word popularity is stressed as _ POPularity"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "popUlarity popuLArity"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "popularITy _ (Stress is indicated by capitals)."
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Will you do the work yourself? If you need help with the solution, you may ask Sheetal. She is a very friendly person.' Which among the following rightly represent the stress pattern in the underlined words in the given sentence? (Stress is indicated by capitals.)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "YOURself, SOlution, friendLY"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "YourSELF, SOlution, friendLY YourSELF, soLUtion, FRIENDly"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The consonant cluster in the word spill is an instance of _ Initial CC"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Final CC"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Initial CCC"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Final CCC"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 1 · Quiz 2 · Aug 2024 · Part 2"
+}

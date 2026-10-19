@@ -1,0 +1,259 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 2 · Quiz 2 · 06 Apr 2026 · Part 1",
+  "subject": "English 2",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "- sew or were declared, and was since 2008."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "declining 19.7 percent c steepest fall in five years"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "lower the Vix the 12th biggest single-day fall for the index"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "(4] In 2014 and 2019, it dropped and 30 percent respectively on the day of results."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "declining 19.7 percent / by almost 34 percent c steepest fall in five years"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "lower the Vix & the 12th biggest single-day fall for the index"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "MCO [5] The _ the more confident traders are about the upswing. declining 19.7 percent Passage / Context Fill in the blanks with correct expressions of numbers/values/quantity. It is well known that smoking is harmful to health, serving as a (i] _ - preventable cause of disease. disability and premature death. But what impact does smoking have on lifespan? According to an editorial published in the journal Addiction, among long-term smokers, a single cigarette reduces life expectancy [ii] _ for men, and 22 minutes for women. Overall, men can lose about 10 years [ii]. and women, about 11 years. The damage caused by smoking is cumulative, but [iv] they will live. For example, if a person who smokes 10 cigarettes a day quits on January 1, he could prevent losing an entire day by January 8th, a week by February 20th, and a month by August 5th. They could avoid losing 50 days of life (v] _ Excerpted from: \"One Cigarette Could Slash 17 Minutes off Your Life.\" Contributed by Shyla Jovitha Abraham, The Week, 02 Feb. 2025. Based on the above data, answer the given subquestions."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "by almost 34 percent"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "steepest fall in five years lower the Vix"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "the 12th biggest single-day fall for the index"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Fill in blank [iii] with the most appropriate option. of life expectancy"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "around life expectancy"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "for life expectancy"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Fill in blank [v] with the most appropriate option. about the end of the year by the end of the year I Passage / Context Identity the most appropriate sentence to use in the given social setting in the subquestions. Context: A boss to his employee/s. 011 MCOI Intormal chat in the break room. Answer. P"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "from the end of the year"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "How's the day coming along, Aysha?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "I have to order you to come to my office for a quick recap of the presentation documents."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Aysha, stop being lazy, and get out of this room."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Why are you taking a break when you have not yet turned in your report?"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Approving a leave request for holidays."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "While we are short of people right now, I am granting you this leave in my infinite magnanimity. You should thank me."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "You don't deserve any leave, but I am giving it anyway. I have approved your leave request. You should, however, catch up on your work as soon as you are back. Enjoy your holidays."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "In this firm, a leave is a privilege and not a right"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Calling for a conference hall meeting. .U marks"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "All of you, come here and sit here. Attend this meeting and get out."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "There is a big meeting in the conference hall right now, and you wouldn't want to miss it."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Come on all of you, come to the conference hall. I would like to request all of you to please come into the conference hall for an urgent meeting."
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "When an employee asks for a raise. L Passage / Context Fill in the blanks with appropriate options. The (1)_ _ yellow saree she wore for the wedding looked spectacular. The vivid colours were overpowering even the (2) of the sun. As she smiled for the cameras, she (3) _ up the whole arena. The other women in the group hesitated to stand next to her on stage for fear of appearing (4)_ _. She certainly was the (5). woman at that wedding. Based on the above data, answer the given subquestions."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "No, this firm does not offer opportunities for advancement. Prospects for career progression were not listed in your job description, were they?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Sure, but I don't see what results you have produced since the last appraisal. We cannot give a raise without any reason. We shall certainly take that into consideration during your next performance review, which will be in another four months. In the meantime, let's discuss your accomplishments since the last review and identify some short-term goals to work towards."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Yes, absolutely! You can have a raise immediately. I know you have been working at a starting salary for the past two years. It's not like anyone wants a stagnant career!"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 2 · Quiz 2 · 06 Apr 2026 · Part 1"
+}

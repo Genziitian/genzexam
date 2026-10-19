@@ -1,0 +1,185 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 2 · Quiz 2 · Aug 2023 · Part 2",
+  "subject": "English 2",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the most appropriate sentence to use in the following social setting. Setting: Communicating with al salesperson while shopping in a supermarket. When asking for a different size or quantity of a product Get me a bigger one Could I have a larger size, please?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "want a dillerent size"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Find me a larger one"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "¿ marks Identify the most appropriate sentence to use in the following social setting. Setting: Communicating with a salesperson while shopping in a supermarket. When approaching the cashier to pay A When will my purchase be billed? Can someone bill my purchase? May I pay for this please?"
+        }
+      ],
+      "acceptable_answers": [
+        "C"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the most appropriate sentence to use in the following social setting. Setting: Communicating with a salesperson while shopping in a supermarket. When expressing gratitude to the shop assistant Thank you so much for your help."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "See you around"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Thanks, I suppose."
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the most appropriate sentence to use in the following social setting. Setting: Communicating with a salesperson while shopping in a supermarket. When asking for help in finding a specific brand of cereal Hey, were can I find that cereal brandy"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Do you have the cereal I'm looking for? Could you help me find this particular cereal brand please?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "I need to know where that cereal is."
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "marks Fill in the blank with the most appropriate modal verb. — you check if the package has arrived? (Context- less formal can"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Could"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both Can and Could"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "marks • Intention) Will Fill in the blank with the most appropriate modal verb. The cate — ce open attms nour Both May and Might"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Would May Could"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "MaY"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Might"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Complete the given sentence with the most fitting question tag. She never had an advantage, _? / Did she? Didn't she? O31 TRUE-FALSE bacheera told Mowa once or twice in so manv words that Shere khan would kill him some day. Ine that clause in the given statement is the direct object of the verb tell. The given statement is"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Had she?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Hadn't she?"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 2 · Quiz 2 · Aug 2023 · Part 2"
+}

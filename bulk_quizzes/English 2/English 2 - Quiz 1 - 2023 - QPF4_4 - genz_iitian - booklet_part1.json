@@ -1,0 +1,389 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 2 · Quiz 1 · 29 Oct 2023 · QPF4 · Part 1",
+  "subject": "English 2",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nFill in the blanks with appropriate options. (1)_______, the city of Mumbai is known as the birthplace and namesake of “Bollywood” in India. (2)_______, it is India’s commercial capital and is always buzzing with constant activity. (3)____________, Mumbai might seem too much for first-timers, being the ‘maximum city’ that it is, but on the other hand, the city also grows on one, creating its own love affair. (4)_________, a city does not get large simply because of its big buildings, but because of its people, more (5)__________. Based on the above data, answer the given subquestions.\n\nQuestion:\nChoose the correct answer for blank (1)."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Secondly"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Irreplaceably"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Intentionally"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Firstly"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nFill in the blanks with appropriate options. (1)_______, the city of Mumbai is known as the birthplace and namesake of “Bollywood” in India. (2)_______, it is India’s commercial capital and is always buzzing with constant activity. (3)____________, Mumbai might seem too much for first-timers, being the ‘maximum city’ that it is, but on the other hand, the city also grows on one, creating its own love affair. (4)_________, a city does not get large simply because of its big buildings, but because of its people, more (5)__________. Based on the above data, answer the given subquestions.\n\nQuestion:\nChoose the correct answer for blank (2)."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Always"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Well"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Moreover"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Wow"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nFill in the blanks with appropriate options. (1)_______, the city of Mumbai is known as the birthplace and namesake of “Bollywood” in India. (2)_______, it is India’s commercial capital and is always buzzing with constant activity. (3)____________, Mumbai might seem too much for first-timers, being the ‘maximum city’ that it is, but on the other hand, the city also grows on one, creating its own love affair. (4)_________, a city does not get large simply because of its big buildings, but because of its people, more (5)__________. Based on the above data, answer the given subquestions.\n\nQuestion:\nChoose the correct answer for blank (3)."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "On every hand"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "On one hand"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Additionally"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Expectantly"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nFill in the blanks with appropriate options. (1)_______, the city of Mumbai is known as the birthplace and namesake of “Bollywood” in India. (2)_______, it is India’s commercial capital and is always buzzing with constant activity. (3)____________, Mumbai might seem too much for first-timers, being the ‘maximum city’ that it is, but on the other hand, the city also grows on one, creating its own love affair. (4)_________, a city does not get large simply because of its big buildings, but because of its people, more (5)__________. Based on the above data, answer the given subquestions.\n\nQuestion:\nChoose the correct answer for blank (4)."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "After all"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "After a while"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Whereas"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Right"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nFill in the blanks with appropriate options. (1)_______, the city of Mumbai is known as the birthplace and namesake of “Bollywood” in India. (2)_______, it is India’s commercial capital and is always buzzing with constant activity. (3)____________, Mumbai might seem too much for first-timers, being the ‘maximum city’ that it is, but on the other hand, the city also grows on one, creating its own love affair. (4)_________, a city does not get large simply because of its big buildings, but because of its people, more (5)__________. Based on the above data, answer the given subquestions.\n\nQuestion:\nChoose the correct answer for blank (5)."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Triumphantly"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Important"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Importance"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Importantly"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘Did you know that Alex and John are moving to Bombay?’ If the emphasis is on ‘you’, then the meaning is that:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The speaker believes that the person they are talking to would not know thatAlex and John are moving to Bombay"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The speaker is amazed that Alex and John are moving to a city like Bombay"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The speaker is amazed that Alex and John, of all people, are moving to Bombay"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of these"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘Did you know that Alex and John are moving to Bombay?’ If the emphasis is on ‘know’, then the meaning is that:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The speaker believes that the person they are talking to would not know thatAlex and John are moving to Bombay"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The speaker is amazed that Alex and John are moving to a city like Bombay"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The speaker believes that the person they are talking to would react if theyknew that Alex and John were moving to Bombay."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The speaker is amazed that Alex and John, of all people, are moving toBombay."
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘Did you know that Alex and John are moving to Bombay?’ If the emphasis is on ‘Alex and John’, then the meaning is that:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The speaker believes that the person they are talking to would not know thatAlex and John are moving to Bombay"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The speaker is amazed that Alex and John are moving to a city like Bombay"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The speaker believes that the person they are talking to would react if theyknew that Alex and John were moving to Bombay."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The speaker is amazed that Alex and John, of all people, are moving toBombay."
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘Did you know that Alex and John are moving to Bombay?’ If the emphasis is on ‘moving’, then the meaning is that:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The speaker believes that it is unbelievable that Alex and John are moving toBombay"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The speaker is amazed that Alex and John are moving to a city like Bombay"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The speaker believes that the person they are talking to would react if theyknew that Alex and John were moving to Bombay."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The speaker is amazed that Alex and John, whom he thought would never quittheir home cities/towns, and moving to another city"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘Did you know that Alex and John are moving to Bombay?’ If the emphasis is on ‘to’, then the meaning is that:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The speaker believes that it is unbelievable that Alex and John are moving toBombay"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The speaker is amazed that Alex and John are moving to a city like Bombay"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The speaker believes that the person they are talking to would react if theyknew that Alex and John were moving to Bombay."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of these"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 2 · Quiz 1 · 29 Oct 2023 · QPF4 · Part 1"
+}

@@ -1,0 +1,223 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 2 · Quiz 2 · Aug 2025 · Part 3",
+  "subject": "English 2",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Fill in the blank with the correct option. I am worried about. the presentation was well received. Whether"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "If"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both whether and if"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Fill in the blank with the correct option. I am unsure I will be attending the function."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Whether"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "If Both whether and if"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In the given sentence, what function does the that-clause serve? Reddy fox did not have the least idea that they would have a chance to catch Quacker."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "It is the direct object of the verb have"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "It is the indirect object of the verb have / It qualifies the noun idea marks"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "\"They want to see what all the fuss is about.\" In this sentence, the clause 'what all the fuss is about' is the object of the verb"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "IS See c Want"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Not an object"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "\"When did she return from Germany! Is a - type question. B Yes/no"
+        }
+      ],
+      "acceptable_answers": [
+        "A"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "When the sentence She opens the window is converted to passive voice, the verb will change to Opened"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Was opened Is opened"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Were opened"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the modal auxiliary in the given sentence. I can hold my breath for several minutes. Hold в Му"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Can"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Several"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "She may come tomorrow. Which of the following statements is true about the given sentence? i. The auxiliary verb may carries tense ii. The auxiliary verb may is inflected iii. The auxiliary verb may does not carry tense 041 MCQ Fill in the blank with the most appropnate modal verb. For all we know, the new Matox movie a interesting. (general possibility) marks _ be / Could c Will Answer B"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "i only"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "ii only ili only"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "ii and iii only"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Can"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Might"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 2 · Quiz 2 · Aug 2025 · Part 3"
+}

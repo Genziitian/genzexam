@@ -1,0 +1,371 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 2 · Quiz 1 · 16 JULY 2023 · QPF4 · Part 2",
+  "subject": "English 2",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "'Ask for me tomorrow and you shall find me a grave man' is an example of ____________."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Irony"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Pun"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Oxymoron"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Paradox"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "'Blind as a bat' is an example of ______________."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Simile"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Metonymy"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Synecdoche"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Metaphor"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "'The city never sleeps' is an example of personification. This statement is ____________."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "'Pretty ugly.' What is the figure of speech used here?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Personification"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Metaphor"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Oxymoron"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Simile"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "__________ we cannot reject their proposal for the merger."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Apparently"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Firstly"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "At the same time"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "All of these"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "'The Capisi home will have sat on the edge of the low-rent section on the far east of town if Mr. Capisi had not won the lottery.' This sentence is in _____ tense."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Future continuous"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Future perfect"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Future perfect continuous"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of these"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the (verb) mood in the following sentence. If I were the Prime Minister, I would ensure equality for all."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Subjunctive"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Indicative"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Interrogative"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Imperative"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Fill in the blank with a verb that is in the present continuous tense. She ______ this land."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Is"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Is ruling"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Was"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Will rule"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the tense and aspect from the following sentence. They were playing football."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Present continuous"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Past perfect continuous"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Past continuous"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Past perfect"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct option and fill in the blank. Raju and I _____ studying Mathematics during the holidays."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Were"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Is"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Was"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 2 · Quiz 1 · 16 JULY 2023 · QPF4 · Part 2"
+}

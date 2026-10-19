@@ -1,0 +1,104 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Dec 2023 Endterm · Part 3",
+  "subject": "Business Analytics",
+  "section": "endterm",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the precision of class 1?(in %) Hint: Round your answer to two decimal places."
+        }
+      ],
+      "acceptable_answers": [
+        "66.5 to 66.8"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the recall of class 1?(in %) Hint: Round your answer to two decimal places."
+        }
+      ],
+      "acceptable_answers": [
+        "57.0 to 57.4"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the precision of class 0?(in %) Hint: Round your answer to two decimal places."
+        }
+      ],
+      "acceptable_answers": [
+        "49.9 to 50.1"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the recall of class 0?(in %) Hint: Round your answer to two decimal places. Question Id : 640653696467 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "59.9 to 60.1"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If a linear demand-response curve is fit for the data, what is the satiating price?"
+        }
+      ],
+      "numerical_answer": 240.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If a linear demand-response curve is fit for the data, what is the market size?"
+        }
+      ],
+      "numerical_answer": 600.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the elasticity of the linear demand-response curve, when the price is Rs. 140?"
+        }
+      ],
+      "numerical_answer": 1.4,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "Dec 2023 Endterm · Part 3"
+}

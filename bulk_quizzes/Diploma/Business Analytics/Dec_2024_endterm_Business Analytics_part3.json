@@ -1,0 +1,103 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Dec 2024 Endterm · Part 3",
+  "subject": "Business Analytics",
+  "section": "endterm",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How much will the Output 1 in HCU 3? NOTE: For every step performed round off 4 decimal places."
+        }
+      ],
+      "acceptable_answers": [
+        "7541 to 7542"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How much will the Output 2 in HCU 3? NOTE: For every step performed round off 4 decimal places. As a Business Analyst, we are trying to find the DMUs that are efficient, where there are 2 inputs (Team Size & Budget) and one constant output. Based on the graph given below, answer the subquestions Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "11.13 to 11.23 Question Id : 6406531043988 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the accuracy of the logistic regression model? Hint: Round off your answer to two decimal places and if your answer is 0.5543, please enter it as 55.43"
+        }
+      ],
+      "acceptable_answers": [
+        "33.3 to 33.4"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the precision of class 1? Hint: Round off your answer to two decimal places and if your answer is 0.5543, please enter it as 55.43"
+        }
+      ],
+      "numerical_answer": 25.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the sensitivity? Hint: Round off your answer to two decimal places and if your answer is 0.5543, please enter it as 55.43"
+        }
+      ],
+      "numerical_answer": 50.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the precision of class 0? Hint: Round off your answer to two decimal places and if your answer is 0.5543, please enter it as 55.43"
+        }
+      ],
+      "numerical_answer": 50.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the specificity? Hint: Round off your answer to two decimal places and if your answer is 0.5543, please enter it as 55.43"
+        }
+      ],
+      "numerical_answer": 25.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "Dec 2024 Endterm · Part 3"
+}

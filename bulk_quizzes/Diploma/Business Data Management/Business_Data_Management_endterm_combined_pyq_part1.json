@@ -1,0 +1,131 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Business Data Management · End Term · Combined PYQ · Part 1",
+  "title": "Business Data Management · End Term · Combined PYQ · Part 1",
+  "subject": "Business Data Management",
+  "section": "endterm",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Question Id : 640653696417 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Based on the following data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "75.80 to 77.00"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Enter the value X1 _________"
+        }
+      ],
+      "numerical_answer": 1.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Enter the value X2 __________"
+        }
+      ],
+      "numerical_answer": 180.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Enter the value X3 __________"
+        }
+      ],
+      "acceptable_answers": [
+        "83 to 83.5"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Enter the value X4 __________"
+        }
+      ],
+      "acceptable_answers": [
+        "65 to 65.75"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Imagine, you are an efficiency consultant hired by ABC Corp, a company that manufactures automotive parts. Your first assignment is to evaluate the performance of their primary production line. The provided data includes: ● The planned production time for last quarter was 700 hours. ● Unexpectedly, the line experienced 60 hours of lost time. ● The expected assembly rate of the line was 200 units per hour. ● However, the actual rate achieved was 180 units per hour. ● Over the quarter, 14,000 units were assembled. ● Out of these, 700 units were found to be defective. Calculate the OEE for ABC Corp's production line and provide the result. Question Id : 640653816695 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "77 to 79"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "X1:"
+        }
+      ],
+      "numerical_answer": 1.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "X2:"
+        }
+      ],
+      "numerical_answer": 180.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "X3 (in%):"
+        }
+      ],
+      "acceptable_answers": [
+        "83 to 83.5"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ]
+}

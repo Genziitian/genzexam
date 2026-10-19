@@ -1,0 +1,178 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Week 11 Graded Assignment · Part 2",
+  "subject": "Statistics 1",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Rithika wants to test whether the coin she has is a fair coin or not. To test this, she conducted an experiment of tossing the coin 5 times. Binomial random variable X is deﬁned as the total number of heads(i) after 5 tosses. The probability distribution of the binomial random variable is given in Table 11.1.G. 6 X =i P (X =i) 0 5C 0p0(1−p)5 1 5C 1p1(1−p)4 2 5C 2p2(1−p)3 3 5C 3p3(1−p)2 4 5C 4p4(1−p)1 5 5C 5p5(1−p)0 Table 11.1.G What is the approximate probability of getting a head in tossing the given coin?(Enter the answer correct to one decimal place)"
+        }
+      ],
+      "acceptable_answers": [
+        "p"
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Given the coin is tossed 5 times, n = 5 GivenP (X = 5) = 0.0009765625 =⇒ P (X = 5) = 5C 5×p5×(1−p)0 = 0.0009765625 =⇒ p5 = 0.0009765625 =⇒ p = 0.25 Thus, probability of head: p = 0.25 or 14"
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "At a school function, It is noticed thata% of the students are not wearing polished shoes andb% of students are not wearing school ties. It is announced that the students who have committed any of the infractions will be punished, and that these two infractions are independent of one another. If a teacher selects 5 students at random, then ﬁnd the probability that exactly three of the students will be punished for any of the infractions?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "5C 3 (100× (a +b)− (a×b) 10000 )3(10000− 100× (a +b) + (a×b) 10000 )2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "5C 3 (a×b 10000 )3(10000−a×b 10000 )2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "5C 3 (a +b 100 )3(100− (a +b) 100 )2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "5C 3 ( a 100 )3(100−a 100 )2 + 5C 3 ( b 100 )3(100−b 100 )2"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "LetX be a random variable representing the number of students punished for any one of the infractions. Deﬁne events as follows: A: Student is not wearing polished shoes. 7 B: Student is not wearing a school tie. Given,P (A) = a100, P (B) = b100 P (A∪B) =P (A) +P (B)−P (A∩B) P (A∪B) = a100 + b100−( a100× b100) = a +b100 −( a100× b100) X∼Binomial(5,p ) Where, p = a +b100 −( a100× b100) and 1−p = 1−(a +b100 ) +( a100× b100) Now, P (X = 3) = 5C 3(p)3(1−p)2 = 5C 3 [a +b 100 − ( a 100× b100)]3[1−(a +b100 ) +( a100× b100)]2 For example: a =5 and b=10 LetX be a random variable representing the number of students punished for any one of the infractions. Deﬁne events as follows: A: Student is not wearing polished shoes. B: Student is not wearing a school tie. Given,P (A) = 5100, P (B) = 10100 P (A∪B) =P (A) +P (B)−P (A∩B) P (A∪B) = 5100 + 10100−( 5100× 10100) = 5 + 10100 −( 5100× 10100) =⇒ 0.15− 0.005 = 0.145 X∼Binomial(5, 0.145) Where,p = 5 + 10100 −( 5100× 10100) = 0.15−0.005 = 0.145 and 1−p = 1−0.145 = 0.855 Now, P (X = 3) = 5C 3(0.145)3(0.855)2 = 0.0223"
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "There are x black and y blue pens in a box. A pen is chosen at random, and its colour is noted. If the process repeats independently, n times with replacement, then calculate the expected number of black pens chosen."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "n× (x y ) 8"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "n× ( x x +y )"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "n× ( 1− xy)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "n× ( y x +y )"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Let X be deﬁned as number of black pens in n independent trials. p is the probability of success. p = xx +y , 1−p = 1− xx +y = yx +y Given, process is repeats n times with replacement. E(X) =np =n× xx +y For example: x=10, y=20 and n=10 Let X be deﬁned as number of black pens in 10 independent trials. p is the probability of success. p = 1010 + 20 = 13, 1−p = 1− 13 = 23 Given, process is repeats 10 times with replacement. n = 10 E(X) = 10× 13 = 103"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Number of calls received at an oﬃce follows a Poisson distribution with an average of 1 call per minute. Find the probability that no call will be received in two minutes at the oﬃce. (Enter the answer correct to 2 decimal accuracy.)"
+        }
+      ],
+      "acceptable_answers": [
+        "0.14 Range: 0.10 to 0.16"
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Let random variable X represents the number of calls received at an oﬃce and it is given that X∼ Poisson (λ). According to the question, λ gives the average number of calls per minute. Therefore, there will be 2 calls on an average in two minutes. So, λ = 2. Thus, Probability that no calls will be received in two minutes at the oﬃce is given as: P (X = 0) = e−2× 20 0! =e−2 = 0.14 9 A quiz team is to be chosen randomly from 6 boys and 4 girls. The team has 3 slots which are to be ﬁlled randomly. If X denotes the number of boys in the quiz team, then using the given information, answer questions (12) and (13)."
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Calculate P (X = 2). (Enter the answer correct to 1 decimal place)"
+        }
+      ],
+      "acceptable_answers": [
+        "0.5, Range: 0.4 to 0.6"
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Here, random variable X represents the number of boys in the quiz team. And, we have total 10 members out of which 6 are boys and 4 are girls. Also, we have to select a sample of 3 members randomly to ﬁlled the slots. Clearly,X follows hypergeometric distribution, where, N = total number of members = 10. m = number of boys = 6. n = number of randomly selected members = 3. Now, pmf of hypergeometric distribution is given as: P (X =i) = mC i× N −mC n−i NC n ;i = 0, 1, 2, 3 Thus, required probability will be: P (X = 2) = 6C 2× 4C 1 10C 3 = 15× 4120 = 60120 = 0.5"
+        }
+      ]
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Calculate the value of E(X). (Enter the answer correct to 1 decimal place)"
+        }
+      ],
+      "acceptable_answers": [
+        "1.8, Range: 1.5 to 2.1"
+      ],
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "As we know that if X∼ Hypergeometic distribution, then E(X) = mnN . Thus,E(X) = 6× 310 = 1810 = 1.8 10"
+        }
+      ]
+    }
+  ],
+  "week": 11,
+  "title": "Week 11 Graded Assignment · Part 2"
+}

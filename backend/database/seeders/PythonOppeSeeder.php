@@ -20,8 +20,9 @@ class PythonOppeSeeder extends Seeder
 
         foreach ($problems as $data) {
             $testCases = $data['test_cases'];
-            $position = $data['position'];
-            unset($data['test_cases'], $data['position']);
+            // sort_order = section * 100 + position, so the IDE can show Section 1 / 2 / 3 groups.
+            $sortOrder = ((int) ($data['section'] ?? 0)) * 100 + (int) $data['position'];
+            unset($data['test_cases'], $data['position'], $data['section']);
 
             $problem = IDEProblem::query()->updateOrCreate(
                 ['course_id' => $course->id, 'title' => $data['title']],
@@ -31,7 +32,7 @@ class PythonOppeSeeder extends Seeder
                     'time_limit_seconds' => 5,
                     'memory_limit_mb' => 256,
                     'is_active' => true,
-                    'sort_order' => $position,
+                    'sort_order' => $sortOrder,
                 ]
             );
 

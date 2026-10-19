@@ -1,0 +1,375 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Python Programming · Quiz 1 · Jul 2023 · AN2 · Part 2",
+  "subject": "Python Programming",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following Python snippet. Assume that 2345 is passed as input to the code. Which of the following options is the correct output for the given input?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "num = int(input(\"Enter a number\"))\nr_num = 1\nwhile num != 0:\n    digit = num % 10\n    r_num = r_num * 10 + digit\n    num //= 10\nprint(r_num)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "5432"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "15432"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "2345"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "12345"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "r_num starts at 1 (not 0). Building the reverse: 1->15->154->1543->15432. So the output is 15432."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Select all the code snippets that print 'Magic Number' if n leaves remainder 0 when divided by 7 but leaves remainder 1 when the number is divided by 2, 3, 4, 5, and 6. Otherwise print 'Not Magic Number'. (Only one snippet is correct.)"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "# Option A\nn = int(input())\nflag = 0\nfor i in range(2, 7):\n    if n % i == 0:\n        flag = 1\n        break\nif flag == 1 and n % 7 == 0:\n    print(\"Magic Number\")"
+        },
+        {
+          "kind": "text",
+          "value": "else:"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "print(\"Not Magic Number\")\n# Option B\nflag = 0\nfor i in range(2, 7):\n    if n % i != 1:\n        flag = 1\n        break\nif flag == 1 or n % 7 == 0:\n    print(\"Magic Number\")"
+        },
+        {
+          "kind": "text",
+          "value": "else:"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "print(\"Not Magic Number\")\n# Option C  (same logic as Option A)\nfor i in range(2, 7):\n    if n % i == 0:\n        flag = 1\n        break\nif flag == 1 and n % 7 == 0:\n    print(\"Magic Number\")"
+        },
+        {
+          "kind": "text",
+          "value": "else:"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "print(\"Not Magic Number\")\n# Option D\nflag = 0\nfor i in range(2, 7):\n    if n % i != 1:\n        flag = 1\n        break\nif flag == 0 and n % 7 == 0:\n    print(\"Magic Number\")"
+        },
+        {
+          "kind": "text",
+          "value": "else:"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "print(\"Not Magic Number\")"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "for i in range(2,7): if n%i==0: flag=1; break -> if flag==1 and n%7==0: Magic"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "for i in range(2,7): if n%i!=1: flag=1; break -> if flag==1 or n%7==0: Magic"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "for i in range(2,7): if n%i==0: flag=1; break -> if flag==1 and n%7==0: Magic"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "for i in range(2,7): if n%i!=1: flag=1; break -> if flag==0 and n%7==0: Magic"
+          }
+        ]
+      ],
+      "correct_answers": [
+        3
+      ],
+      "marks": 4,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "A Magic Number needs remainder 1 for every divisor 2..6. Option D sets flag=1 the moment any divisor does NOT give remainder 1, so flag stays 0 only when all of 2..6 give remainder 1; combined with n%7==0 this exactly matches the definition. Tested over n in 1..5000, only Option D agrees with the reference (e.g. 301, 721, 1141 are Magic Numbers)."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What will be the output of the code snippet given below?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "L = [-1, 1]\nfor i in range(8):\n    size = len(L)\n    value = (L[size - 2] + L[size - 1]) * 2\n    L.append(value)\nprint(L)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "[-1, 1, 0, 2, 4, 12, 32, 88, 240, 656]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[-1, 1, 0, -2, -4, -12, -32, -88, -240, -656]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[-1, 1, 0, -1, -1, -2, -3, -5, -8, -13]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[-1, 1, 0, 1, 1, 2, 3, 5, 8, 13]"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Each new value is twice the sum of the last two: (-1+1)*2=0, (1+0)*2=2, (0+2)*2=4, (2+4)*2=12, (4+12)*2=32, (12+32)*2=88, (32+88)*2=240, (88+240)*2=656."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Select all correct implementations of a program that prints the first 10 prime numbers to the console, one number on each line. (The first 10 prime numbers are less than 30 and the 11th prime number is more than 30.) (Multiple Select Question)"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "# Option A\nfor i in range(2, 30):\n    flag = False\n    for j in range(2, int(i/2)+1):\n        if i % j == 0:\n            flag = True\n            break\n    if flag == False:\n        print(i)\n# Option B\nfor i in range(2, 30):\n    flag = False\n    for j in range(2, i):\n        if i % j == 0:\n            flag = True\n            break\n    if flag == False:\n        print(i)\n# Option C\ncount = 0\ni = 2\nwhile count < 10:\n    flag = True\n    for j in range(2, i//2+1):\n        if i % j == 0:\n            flag = False\n            break\n    if flag:\n        print(i)\n        count += 1\n    i += 1\n# Option D\ncount = 0\ni = 2\nwhile count < 10:\n    flag = True\n    for j in range(2, i//2+1):\n        if i % j != 0:\n            break\n        else:\n            flag = False\n    if flag:\n        print(i)\n        count += 1\n    i += 1"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "for i in range(2,30): trial division up to int(i/2)+1, print primes"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "for i in range(2,30): trial division up to i, print primes"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "while count < 10: trial division up to i//2+1, flag=False on a divisor"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "while count < 10: breaks when i%j != 0 and sets flag=False otherwise"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1,
+        2
+      ],
+      "marks": 4,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Options A, B and C all correctly print 2,3,5,7,11,13,17,19,23,29. Option D's primality test is broken (it breaks on the first non-divisor), so it prints non-primes such as 9 and 15."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Select all matrices (list of lists) M for which the following snippet of code prints True to the console. (Multiple Select Question)"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "n = len(M)\nflag = True\nfor i in range(n):\n    for j in range(n):\n        if (i != j) and (M[i][j] != 0):\n            flag = False\n            break\n        elif (i == j) and M[i][j] != 1:\n            flag = False\n            break\n    if flag == False:\n        break\nprint(flag)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "[[1, 0, 0], [0, 1, 0], [0, 0, 1]]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[[0, 1, 0, 0], [1, 0, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[[1, 1, 1], [1, 1, 1], [1, 1, 1]]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]]"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        3
+      ],
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The code prints True only for an identity matrix (diagonal entries 1, off-diagonal entries 0). Options 1 and 4 are the 3x3 and 4x4 identity matrices. Option 2 has M[0][0]=0 and option 3 has non-zero off-diagonals, so both print False."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Reverse a sentence based on words: the i-th word from the left in the input sentence becomes the i-th word from the end in the output sentence. Example: sentence = 'i know how to code in python' -> modified_sentence = 'python in code to know how i'. Choose all the options that accept a sentence as input and print the modified (word-reversed) sentence. (Multiple Select Question)"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "# Option A\nsentence = input()\nwords = sentence.split(' ')\nn = len(words)\nfor i in range(n - 1, 0, -1):\n    print(words[i] + ' ', end='')\nprint(words[0])\n# Option B\nfor i in range(n - 1, -2, -1):\n    print(words[i] + ' ', end='')\n# Option C\nfor i in range(n - 1, -1, -1):\n    print(words[i] + ' ', end='')\nprint(words[0])\n# Option D\nfor i in range(n - 1):\n    print(words[n - i - 1], end=' ')\nprint(words[0])"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "for i in range(n-1, 0, -1): print(words[i]+' ', end=''); then print(words[0])"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "for i in range(n-1, -2, -1): print(words[i]+' ', end='')"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "for i in range(n-1, -1, -1): print(words[i]+' ', end=''); then print(words[0])"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "for i in range(n-1): print(words[n-i-1], end=' '); then print(words[0])"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        3
+      ],
+      "marks": 5,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Options A and D each print every word exactly once in reverse order (words[n-1] ... words[0]). Option B's range goes down to -1, re-printing the last word; Option C reverses all n words and then prints words[0] again, both producing a duplicated word."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "L is a non-empty list of distinct positive integers (it has at least one element, and no two elements are the same). If the following snippet of code terminates without any error after a finite number of iterations of the while loop, what is the output produced by it? (Hint: L.remove(x) removes the leftmost occurrence of x in L.)"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "# L is a non-empty list of distinct positive integers\n# L has already been defined\nval = 0\nfor x in L:\n    val += x\nwhile L != []:\n    for y in range(1, 11, 2):\n        if y in L:\n            L.remove(y)\n        else:\n            L.append(y)\nprint(val)"
+        }
+      ],
+      "numerical_answer": 25,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "val is the sum of L, computed before the while loop. The while loop toggles each of 1,3,5,7,9 in/out of L. It can only ever empty L (terminate) if L contains exactly {1,3,5,7,9} and nothing else (any other element is never removed -> infinite loop). For that L, val = 1+3+5+7+9 = 25. Verified by simulating all subsets of {1,3,5,7,9}: only the full set terminates."
+        }
+      ]
+    }
+  ],
+  "title": "Python Programming · Quiz 1 · Jul 2023 · AN2 · Part 2"
+}

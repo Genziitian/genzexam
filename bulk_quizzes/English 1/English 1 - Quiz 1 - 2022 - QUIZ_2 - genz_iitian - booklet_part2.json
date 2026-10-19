@@ -1,0 +1,347 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 1 · Quiz 1 · 16 Oct 2022 · QUIZ · Part 2",
+  "subject": "English 1",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following telephonic conversation and fill in the blank with appropriate responses: Tina: Hello. Good morning. Is this Meridian hotel? Receptionist: Good morning. Yes. (i) ______ Tina: I would like to book a suite for New Year’s eve. Receptionist: (ii) _____. Let me check the availability. Tina: Sure. Please let me know about other services on that day. Receptionist: (iii)____ that we have no suite rooms available on that day. Tine: Could you please (iv) ____ me to the manager Receptionist: Sure, (v) _____ for a second. I am connecting to the manager. Tina: Thank you. Based on the above data, answer the given subquestions.\n\nQuestion:\nComplete blank (i) with an appropriate response."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "What can I do for you?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "How may I help you?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "What do you want to know?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "This is hotel Meridian"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following telephonic conversation and fill in the blank with appropriate responses: Tina: Hello. Good morning. Is this Meridian hotel? Receptionist: Good morning. Yes. (i) ______ Tina: I would like to book a suite for New Year’s eve. Receptionist: (ii) _____. Let me check the availability. Tina: Sure. Please let me know about other services on that day. Receptionist: (iii)____ that we have no suite rooms available on that day. Tine: Could you please (iv) ____ me to the manager Receptionist: Sure, (v) _____ for a second. I am connecting to the manager. Tina: Thank you. Based on the above data, answer the given subquestions.\n\nQuestion:\nComplete blank (ii) with an appropriate response."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Wait for a second"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Could you call after sometime"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Please hold down for a second"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Wait"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following telephonic conversation and fill in the blank with appropriate responses: Tina: Hello. Good morning. Is this Meridian hotel? Receptionist: Good morning. Yes. (i) ______ Tina: I would like to book a suite for New Year’s eve. Receptionist: (ii) _____. Let me check the availability. Tina: Sure. Please let me know about other services on that day. Receptionist: (iii)____ that we have no suite rooms available on that day. Tine: Could you please (iv) ____ me to the manager Receptionist: Sure, (v) _____ for a second. I am connecting to the manager. Tina: Thank you. Based on the above data, answer the given subquestions.\n\nQuestion:\nComplete blank (iii) with an appropriate response."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Sorry to inform you"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Sorry"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "We are sorry"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "I apologise"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following telephonic conversation and fill in the blank with appropriate responses: Tina: Hello. Good morning. Is this Meridian hotel? Receptionist: Good morning. Yes. (i) ______ Tina: I would like to book a suite for New Year’s eve. Receptionist: (ii) _____. Let me check the availability. Tina: Sure. Please let me know about other services on that day. Receptionist: (iii)____ that we have no suite rooms available on that day. Tine: Could you please (iv) ____ me to the manager Receptionist: Sure, (v) _____ for a second. I am connecting to the manager. Tina: Thank you. Based on the above data, answer the given subquestions.\n\nQuestion:\nComplete blank (iv) with an appropriate response."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Connect"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Call"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Message"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Ask"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nMatch Column A with suitable options in Column B. (Hint: Word collocation)\n\nQuestion:\nComplete blank (v) with an appropriate response."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Wait"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Please hold down"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Hold"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Please wait"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nMatch Column A with suitable options in Column B. (Hint: Word collocation)\n\nQuestion:\nSurprised _______"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "With"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "At"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "On"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nMatch Column A with suitable options in Column B. (Hint: Word collocation)\n\nQuestion:\nRely _______"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "With"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "At"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "On"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nMatch Column A with suitable options in Column B. (Hint: Word collocation)\n\nQuestion:\nBlessed _______"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "With"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "At"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "On"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nMatch Column A with suitable options in Column B. (Hint: Word collocation)\n\nQuestion:\n‘She hates her mother having to suffer so badly// she moved out//’ has the same meaning as ‘She hates her mother// having to suffer so badly/ she moved out////’."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "TRUE"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "FALSE"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Pause is like a punctuation mark to spoken language."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "TRUE"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "FALSE"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 1 · Quiz 1 · 16 Oct 2022 · QUIZ · Part 2"
+}

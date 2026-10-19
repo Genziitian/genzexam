@@ -1,0 +1,113 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "May 2024 Quiz2 · Part 1",
+  "subject": "Business Analytics",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "At a threshold of 0.8, how many “True Positives” is the model predicting?"
+        }
+      ],
+      "numerical_answer": 1.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "At a threshold of 0.8, how many “True Negatives” is the model predicting?"
+        }
+      ],
+      "numerical_answer": 0.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "At a threshold of 0.8, how many “False Positives” is the model predicting?"
+        }
+      ],
+      "numerical_answer": 3.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "At a threshold of 0.8, how many “False Negatives” is the model predicting?"
+        }
+      ],
+      "numerical_answer": 1.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "At a threshold of 0.5, what is the ACCURACY of the model? (Note: Enter the answer in “%” rounded to two decimal places without the “%” symbol. For example, if the answer is “1.234%”, then enter it as “1.23”)"
+        }
+      ],
+      "numerical_answer": 20.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "At a threshold of 0.5, what is the PRECISION of the model for predicting the Negative Class? (Note: Enter the answer in “%” rounded to two decimal places without the “%” symbol. For example, if the answer is “1.234%”, then enter it as “1.23”)"
+        }
+      ],
+      "numerical_answer": 0.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "At a threshold of 0.5, what is the RECALL of the model for predicting the Positive Class? (Note: Enter the answer in “%” rounded to two decimal places without the “%” symbol. For example, if the answer is “1.234%”, then enter it as “1.23”)"
+        }
+      ],
+      "numerical_answer": 50.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "At a threshold of 0.5, what is the SENSITIVITY of the model? (Note: Enter the answer in “%” rounded to two decimal places without the “%” symbol. For example, if the answer is “1.234%”, then enter it as “1.23”) Question Id : 640653853086 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix A demand response curve has a constant elasticity of +0.4. If the price of the product is 100 and the corresponding demand is 200, then answer the given subquestions. Sub questions"
+        }
+      ],
+      "numerical_answer": 25.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "May 2024 Quiz2 · Part 1"
+}

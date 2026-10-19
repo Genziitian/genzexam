@@ -1,0 +1,377 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 2 · Quiz 1 · 25 Feb 2024 · QDF3 · Part 4",
+  "subject": "English 2",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In the following sentence, identify the role of the embedded clause. ‘<b>Whatever Arif has been telling us</b> is all true.’"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Object"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Subject"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Adjunct"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Adjective"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many dependent clauses are there in the sentence given below: The student missed the lecture"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "0"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "3"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "State whether the underlined is an adjunct or a complement: I kept a copy of the document on my shelf."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Adjunct"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Complement"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘Joe plays the guitar beautifully.’ Here the adjunct is _____."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "the guitar"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "beautifully"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "plays"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "no adjunct"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\n(1)_______, what one remembers in life are those moments that have impacted us the most. In the end, most of our memories get distilled into a few strong and condensed images, smells, sounds, and sensations. (2)_______, only the most memorable ones remain. A beautiful scene at a city vista, a melodious tune from a gifted street musician, the smell of spring’s first blossoms, or the warmth you felt when you first held your baby. (3)____________, one should concentrate one’s efforts to create core memories that last. Beautiful moments that cannot be taken away from us, even by disease or senility. (4)_________ we spend our lives trying to create such lasting memories and impressions for ourselves, we can claim to have led a fruitful life. We must lead our lives fully, (5)__________ we only have one life to spare. Based on the above data, answer the given subquestions.\n\nQuestion:\n“The tree stumps had been worn smooth and comfortable by years of use.” The underlined phrase acts like an _____."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Adverb of frequency"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Adverb of degree"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Adverb of manner"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Adverb of direction"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\n(1)_______, what one remembers in life are those moments that have impacted us the most. In the end, most of our memories get distilled into a few strong and condensed images, smells, sounds, and sensations. (2)_______, only the most memorable ones remain. A beautiful scene at a city vista, a melodious tune from a gifted street musician, the smell of spring’s first blossoms, or the warmth you felt when you first held your baby. (3)____________, one should concentrate one’s efforts to create core memories that last. Beautiful moments that cannot be taken away from us, even by disease or senility. (4)_________ we spend our lives trying to create such lasting memories and impressions for ourselves, we can claim to have led a fruitful life. We must lead our lives fully, (5)__________ we only have one life to spare. Based on the above data, answer the given subquestions.\n\nQuestion:\nChoose the correct answer for blank (1)."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Ultimately"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Because"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "After all"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of these"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\n(1)_______, what one remembers in life are those moments that have impacted us the most. In the end, most of our memories get distilled into a few strong and condensed images, smells, sounds, and sensations. (2)_______, only the most memorable ones remain. A beautiful scene at a city vista, a melodious tune from a gifted street musician, the smell of spring’s first blossoms, or the warmth you felt when you first held your baby. (3)____________, one should concentrate one’s efforts to create core memories that last. Beautiful moments that cannot be taken away from us, even by disease or senility. (4)_________ we spend our lives trying to create such lasting memories and impressions for ourselves, we can claim to have led a fruitful life. We must lead our lives fully, (5)__________ we only have one life to spare. Based on the above data, answer the given subquestions.\n\nQuestion:\nChoose the correct answer for blank (2)."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "In contrast"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "And"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Even though"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Insofar as"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\n(1)_______, what one remembers in life are those moments that have impacted us the most. In the end, most of our memories get distilled into a few strong and condensed images, smells, sounds, and sensations. (2)_______, only the most memorable ones remain. A beautiful scene at a city vista, a melodious tune from a gifted street musician, the smell of spring’s first blossoms, or the warmth you felt when you first held your baby. (3)____________, one should concentrate one’s efforts to create core memories that last. Beautiful moments that cannot be taken away from us, even by disease or senility. (4)_________ we spend our lives trying to create such lasting memories and impressions for ourselves, we can claim to have led a fruitful life. We must lead our lives fully, (5)__________ we only have one life to spare. Based on the above data, answer the given subquestions.\n\nQuestion:\nChoose the correct answer for blank (3)."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Nevertheless"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "However"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Therefore"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "But"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\n(1)_______, what one remembers in life are those moments that have impacted us the most. In the end, most of our memories get distilled into a few strong and condensed images, smells, sounds, and sensations. (2)_______, only the most memorable ones remain. A beautiful scene at a city vista, a melodious tune from a gifted street musician, the smell of spring’s first blossoms, or the warmth you felt when you first held your baby. (3)____________, one should concentrate one’s efforts to create core memories that last. Beautiful moments that cannot be taken away from us, even by disease or senility. (4)_________ we spend our lives trying to create such lasting memories and impressions for ourselves, we can claim to have led a fruitful life. We must lead our lives fully, (5)__________ we only have one life to spare. Based on the above data, answer the given subquestions.\n\nQuestion:\nChoose the correct answer for blank (4)."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Ultimately"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Nevertheless"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Secondly"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "As long as"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct answer for blank (5)."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Because"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "But"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "As ever"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "After all"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 2 · Quiz 1 · 25 Feb 2024 · QDF3 · Part 4"
+}

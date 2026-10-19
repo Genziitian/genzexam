@@ -1,0 +1,283 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Dlp · End Term · Combined PYQ",
+  "title": "Dlp · End Term · Combined PYQ",
+  "subject": "Dlp",
+  "section": "endterm",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Question Id : 6406531424326 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "numerical_answer": 25.0,
+      "numerical_tolerance": 0.01,
+      "marks": 5,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Compute the PSNR for Model 1 (in dB) (rounded to 2 decimal places):"
+        }
+      ],
+      "acceptable_answers": [
+        "26.33 to 26.37"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Compute the PSNR for Model 2 (in dB) (rounded to 2 decimal places):"
+        }
+      ],
+      "acceptable_answers": [
+        "24.86 to 24.90"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which model produces an image more similar to the ground truth?"
+        }
+      ],
+      "numerical_answer": 1.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In PyTorch, why is `optimizer.zero_grad()` invoked before `loss.backward()` during training iterations?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Because PyTorch accumulates gradients in `.grad` buffers across backwards passes by default"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To reset layer weights to zero"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To clear GPU cache memory"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To initialize the loss computation"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Gradients accumulate by default in PyTorch, so zeroing them ensures each iteration computes gradients strictly for the current batch."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "For image reconstruction and super-resolution, how is Peak Signal-to-Noise Ratio (PSNR) calculated from Mean Squared Error (MSE) for an 8-bit image with $MAX_I = 255$?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$\\text{PSNR} = 10 \\cdot \\log_{10}\\left(\\frac{255^2}{\\text{MSE}}\\right)$ dB"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$\\text{PSNR} = 20 \\cdot \\log_{10}(\\text{MSE})$ dB"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$\\text{PSNR} = \\frac{255}{\\text{MSE}}$ dB"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$\\text{PSNR} = 100 \\times (1 - \\text{MSE})$ dB"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "PSNR is defined as 10 * log10(MAX_I^2 / MSE)."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What does the Structural Similarity Index Measure (SSIM) evaluate in computer vision compared to pixel-wise MSE?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Luminance, contrast, and structural degradation matching human visual perception"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The exact number of floating point operations per second"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The compressed file size in kilobytes"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The training time per epoch on CUDA devices"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "SSIM captures perceived quality changes in structural information, luminance, and contrast."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In PyTorch `DataLoader`, what configuration accelerates CPU-to-GPU memory transfer when running on CUDA?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "`pin_memory=True` with `num_workers > 0`"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "`batch_size=1` with `shuffle=False`"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "`drop_last=True` with `num_workers=0`"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "`sampler=None` and `pin_memory=False`"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Pinned page-locked host memory enables fast DMA copies directly to GPU memory."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the primary role of `torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm)`?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Prevents exploding gradients by proportionally scaling down gradient vectors when their norm exceeds `max_norm`"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Rounds all gradient values to nearest integer"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Sets negative gradients to zero like a ReLU"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Doubles the learning rate when gradients become small"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Gradient clipping stabilizes recurrent and deep networks by capping the total gradient norm."
+        }
+      ]
+    }
+  ]
+}

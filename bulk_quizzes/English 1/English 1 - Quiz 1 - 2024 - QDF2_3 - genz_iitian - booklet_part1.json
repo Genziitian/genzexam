@@ -1,0 +1,339 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 1 · Quiz 1 · 2024 · QDF2 · Part 1",
+  "subject": "English 1",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following passage and answer the given subquestions. What Emoji Tell Us about the History of Tea When searching for a tea emoji on most text messaging apps, a range of options appear. One shows what looks like green liquid in a white bowl. Another features a saucer and a cup filled with a darker liquid that doubles as coffee. These emoji’s designs allude to the long history of tea, tracing how this centerpiece of a cherished Asian tradition grew into a global beverage. For most of recorded history, the word “tea” referred to green tea from China and later Japan—illustrated by the emoji officially called “teacup without handle.” Black tea is represented by the second, more generically named “hot beverage” emoji. The tea plant, Camellia sinensis, is indigenous to a region spanning present-day China, India, Myanmar and Cambodia. All types of tea are derived from the same plant. But different methods of processing the plant’s leaves produce different types of teas, with the level of oxidation affecting the color and flavor of the resulting beverage. To make green tea, manufacturers dehydrate, heat and shape the leaves, preventing oxidation and preserving the plant’s original color. At the other end of the spectrum, black tea leaves are fully oxidized, changing hue from green to a darker brown. Oolong tea, which can appear green or black in color, is a distinct variation that falls somewhere in the middle, with leaves undergoing partial oxidation. Initially a medicinal beverage, tea became a daily drink by the third century C.E., with elite members of Chinese society viewing tea drinking as a leisurely pastime. By the eighth century, during the Tang dynasty, China’s tea culture was flourishing, giving rise to tea ceremonies and social events, as well as art and literature inspired by the drink. To the east of China, in Japan, elite citizens started drinking tea in the eighth century. But wider domestic cultivation and appreciation of tea only came to the country in the late 12th century, when Buddhist monk Eisai popularized the drink. While studying Zen Buddhism at a monastery in China, Eisai learned of a beverage the other monks drank to help stay alert for meditation: green tea. “Tea is the most wonderful medicine for nourishing one’s health,” Eisai wrote in a treatise on tea. “It is the secret of long life.” Today, its enduring popularity is reflected in the “teacup without handle” emoji. The “hot beverage” emoji, meanwhile, takes its cue from another tea tradition: black tea, which gained a foothold in the West through trade between Europe and Asia. In the early 17th century, Portuguese and Dutch traders returning from Asia brought green tea back home, where it quickly gained traction as a curative beverage. Tea enjoyed similar prominence in the Americas following its introduction by colonial powers and their trading companies, including the British East India Company (EIC) and the Dutch East India Company (VOC). By the 18th century, Europeans and Americans were primarily drinking green or oolong teas known by colonial trading names like hyson, singlo, bohea, congou and souchong. The U.S.’s founders were no strangers to tea. George Washington enjoyed drinking Chinese green teas out of porcelain tea bowls. All 342 chests of tea dumped overboard during the Boston Tea Party in 1773 were imported from China by the EIC. The three tea ships targeted by the Patriots held 265 chests of oolong tea and 75 chests of green tea. When tea was first introduced to Europe and North America, its appearance mirrored the “teacup without handle” emoji, much as the drink is still enjoyed in Asia today. As the global tea trade ramped up in the following centuries, tea in Europe and the U.S. came to look more like the “hot beverage” emoji. Excerpted from: Wang de Chen, Charlene. “What Emoji Tell Us about the History of Tea.” Smithsonian Magazine.\n\nQuestion:\nThe word “emoji” used in the title of this article is:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "A singular noun"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A plural noun"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following passage and answer the given subquestions. What Emoji Tell Us about the History of Tea When searching for a tea emoji on most text messaging apps, a range of options appear. One shows what looks like green liquid in a white bowl. Another features a saucer and a cup filled with a darker liquid that doubles as coffee. These emoji’s designs allude to the long history of tea, tracing how this centerpiece of a cherished Asian tradition grew into a global beverage. For most of recorded history, the word “tea” referred to green tea from China and later Japan—illustrated by the emoji officially called “teacup without handle.” Black tea is represented by the second, more generically named “hot beverage” emoji. The tea plant, Camellia sinensis, is indigenous to a region spanning present-day China, India, Myanmar and Cambodia. All types of tea are derived from the same plant. But different methods of processing the plant’s leaves produce different types of teas, with the level of oxidation affecting the color and flavor of the resulting beverage. To make green tea, manufacturers dehydrate, heat and shape the leaves, preventing oxidation and preserving the plant’s original color. At the other end of the spectrum, black tea leaves are fully oxidized, changing hue from green to a darker brown. Oolong tea, which can appear green or black in color, is a distinct variation that falls somewhere in the middle, with leaves undergoing partial oxidation. Initially a medicinal beverage, tea became a daily drink by the third century C.E., with elite members of Chinese society viewing tea drinking as a leisurely pastime. By the eighth century, during the Tang dynasty, China’s tea culture was flourishing, giving rise to tea ceremonies and social events, as well as art and literature inspired by the drink. To the east of China, in Japan, elite citizens started drinking tea in the eighth century. But wider domestic cultivation and appreciation of tea only came to the country in the late 12th century, when Buddhist monk Eisai popularized the drink. While studying Zen Buddhism at a monastery in China, Eisai learned of a beverage the other monks drank to help stay alert for meditation: green tea. “Tea is the most wonderful medicine for nourishing one’s health,” Eisai wrote in a treatise on tea. “It is the secret of long life.” Today, its enduring popularity is reflected in the “teacup without handle” emoji. The “hot beverage” emoji, meanwhile, takes its cue from another tea tradition: black tea, which gained a foothold in the West through trade between Europe and Asia. In the early 17th century, Portuguese and Dutch traders returning from Asia brought green tea back home, where it quickly gained traction as a curative beverage. Tea enjoyed similar prominence in the Americas following its introduction by colonial powers and their trading companies, including the British East India Company (EIC) and the Dutch East India Company (VOC). By the 18th century, Europeans and Americans were primarily drinking green or oolong teas known by colonial trading names like hyson, singlo, bohea, congou and souchong. The U.S.’s founders were no strangers to tea. George Washington enjoyed drinking Chinese green teas out of porcelain tea bowls. All 342 chests of tea dumped overboard during the Boston Tea Party in 1773 were imported from China by the EIC. The three tea ships targeted by the Patriots held 265 chests of oolong tea and 75 chests of green tea. When tea was first introduced to Europe and North America, its appearance mirrored the “teacup without handle” emoji, much as the drink is still enjoyed in Asia today. As the global tea trade ramped up in the following centuries, tea in Europe and the U.S. came to look more like the “hot beverage” emoji. Excerpted from: Wang de Chen, Charlene. “What Emoji Tell Us about the History of Tea.” Smithsonian Magazine.\n\nQuestion:\nAccording to the passage, the tea plant is NOT indigenous to ______."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "India"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Myanmar"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Japan"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Cambodia"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following passage and answer the given subquestions. What Emoji Tell Us about the History of Tea When searching for a tea emoji on most text messaging apps, a range of options appear. One shows what looks like green liquid in a white bowl. Another features a saucer and a cup filled with a darker liquid that doubles as coffee. These emoji’s designs allude to the long history of tea, tracing how this centerpiece of a cherished Asian tradition grew into a global beverage. For most of recorded history, the word “tea” referred to green tea from China and later Japan—illustrated by the emoji officially called “teacup without handle.” Black tea is represented by the second, more generically named “hot beverage” emoji. The tea plant, Camellia sinensis, is indigenous to a region spanning present-day China, India, Myanmar and Cambodia. All types of tea are derived from the same plant. But different methods of processing the plant’s leaves produce different types of teas, with the level of oxidation affecting the color and flavor of the resulting beverage. To make green tea, manufacturers dehydrate, heat and shape the leaves, preventing oxidation and preserving the plant’s original color. At the other end of the spectrum, black tea leaves are fully oxidized, changing hue from green to a darker brown. Oolong tea, which can appear green or black in color, is a distinct variation that falls somewhere in the middle, with leaves undergoing partial oxidation. Initially a medicinal beverage, tea became a daily drink by the third century C.E., with elite members of Chinese society viewing tea drinking as a leisurely pastime. By the eighth century, during the Tang dynasty, China’s tea culture was flourishing, giving rise to tea ceremonies and social events, as well as art and literature inspired by the drink. To the east of China, in Japan, elite citizens started drinking tea in the eighth century. But wider domestic cultivation and appreciation of tea only came to the country in the late 12th century, when Buddhist monk Eisai popularized the drink. While studying Zen Buddhism at a monastery in China, Eisai learned of a beverage the other monks drank to help stay alert for meditation: green tea. “Tea is the most wonderful medicine for nourishing one’s health,” Eisai wrote in a treatise on tea. “It is the secret of long life.” Today, its enduring popularity is reflected in the “teacup without handle” emoji. The “hot beverage” emoji, meanwhile, takes its cue from another tea tradition: black tea, which gained a foothold in the West through trade between Europe and Asia. In the early 17th century, Portuguese and Dutch traders returning from Asia brought green tea back home, where it quickly gained traction as a curative beverage. Tea enjoyed similar prominence in the Americas following its introduction by colonial powers and their trading companies, including the British East India Company (EIC) and the Dutch East India Company (VOC). By the 18th century, Europeans and Americans were primarily drinking green or oolong teas known by colonial trading names like hyson, singlo, bohea, congou and souchong. The U.S.’s founders were no strangers to tea. George Washington enjoyed drinking Chinese green teas out of porcelain tea bowls. All 342 chests of tea dumped overboard during the Boston Tea Party in 1773 were imported from China by the EIC. The three tea ships targeted by the Patriots held 265 chests of oolong tea and 75 chests of green tea. When tea was first introduced to Europe and North America, its appearance mirrored the “teacup without handle” emoji, much as the drink is still enjoyed in Asia today. As the global tea trade ramped up in the following centuries, tea in Europe and the U.S. came to look more like the “hot beverage” emoji. Excerpted from: Wang de Chen, Charlene. “What Emoji Tell Us about the History of Tea.” Smithsonian Magazine.\n\nQuestion:\nWhich of the following rightly describes the role played by tea in China through the course of history?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "A medicinal drink"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A leisurely pastime drink of the elite"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A beverage that helped monks stay alert for meditation"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "All of these"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following passage and answer the given subquestions. What Emoji Tell Us about the History of Tea When searching for a tea emoji on most text messaging apps, a range of options appear. One shows what looks like green liquid in a white bowl. Another features a saucer and a cup filled with a darker liquid that doubles as coffee. These emoji’s designs allude to the long history of tea, tracing how this centerpiece of a cherished Asian tradition grew into a global beverage. For most of recorded history, the word “tea” referred to green tea from China and later Japan—illustrated by the emoji officially called “teacup without handle.” Black tea is represented by the second, more generically named “hot beverage” emoji. The tea plant, Camellia sinensis, is indigenous to a region spanning present-day China, India, Myanmar and Cambodia. All types of tea are derived from the same plant. But different methods of processing the plant’s leaves produce different types of teas, with the level of oxidation affecting the color and flavor of the resulting beverage. To make green tea, manufacturers dehydrate, heat and shape the leaves, preventing oxidation and preserving the plant’s original color. At the other end of the spectrum, black tea leaves are fully oxidized, changing hue from green to a darker brown. Oolong tea, which can appear green or black in color, is a distinct variation that falls somewhere in the middle, with leaves undergoing partial oxidation. Initially a medicinal beverage, tea became a daily drink by the third century C.E., with elite members of Chinese society viewing tea drinking as a leisurely pastime. By the eighth century, during the Tang dynasty, China’s tea culture was flourishing, giving rise to tea ceremonies and social events, as well as art and literature inspired by the drink. To the east of China, in Japan, elite citizens started drinking tea in the eighth century. But wider domestic cultivation and appreciation of tea only came to the country in the late 12th century, when Buddhist monk Eisai popularized the drink. While studying Zen Buddhism at a monastery in China, Eisai learned of a beverage the other monks drank to help stay alert for meditation: green tea. “Tea is the most wonderful medicine for nourishing one’s health,” Eisai wrote in a treatise on tea. “It is the secret of long life.” Today, its enduring popularity is reflected in the “teacup without handle” emoji. The “hot beverage” emoji, meanwhile, takes its cue from another tea tradition: black tea, which gained a foothold in the West through trade between Europe and Asia. In the early 17th century, Portuguese and Dutch traders returning from Asia brought green tea back home, where it quickly gained traction as a curative beverage. Tea enjoyed similar prominence in the Americas following its introduction by colonial powers and their trading companies, including the British East India Company (EIC) and the Dutch East India Company (VOC). By the 18th century, Europeans and Americans were primarily drinking green or oolong teas known by colonial trading names like hyson, singlo, bohea, congou and souchong. The U.S.’s founders were no strangers to tea. George Washington enjoyed drinking Chinese green teas out of porcelain tea bowls. All 342 chests of tea dumped overboard during the Boston Tea Party in 1773 were imported from China by the EIC. The three tea ships targeted by the Patriots held 265 chests of oolong tea and 75 chests of green tea. When tea was first introduced to Europe and North America, its appearance mirrored the “teacup without handle” emoji, much as the drink is still enjoyed in Asia today. As the global tea trade ramped up in the following centuries, tea in Europe and the U.S. came to look more like the “hot beverage” emoji. Excerpted from: Wang de Chen, Charlene. “What Emoji Tell Us about the History of Tea.” Smithsonian Magazine.\n\nQuestion:\nWhich of the following did not occur during the rule of the Tang dynasty in China?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The origin of congou tea"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The flourishing of China’s tea culture"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The advent of tea ceremonies and social events"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The emergence of art and literature inspired by the drink"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following passage and answer the given subquestions. What Emoji Tell Us about the History of Tea When searching for a tea emoji on most text messaging apps, a range of options appear. One shows what looks like green liquid in a white bowl. Another features a saucer and a cup filled with a darker liquid that doubles as coffee. These emoji’s designs allude to the long history of tea, tracing how this centerpiece of a cherished Asian tradition grew into a global beverage. For most of recorded history, the word “tea” referred to green tea from China and later Japan—illustrated by the emoji officially called “teacup without handle.” Black tea is represented by the second, more generically named “hot beverage” emoji. The tea plant, Camellia sinensis, is indigenous to a region spanning present-day China, India, Myanmar and Cambodia. All types of tea are derived from the same plant. But different methods of processing the plant’s leaves produce different types of teas, with the level of oxidation affecting the color and flavor of the resulting beverage. To make green tea, manufacturers dehydrate, heat and shape the leaves, preventing oxidation and preserving the plant’s original color. At the other end of the spectrum, black tea leaves are fully oxidized, changing hue from green to a darker brown. Oolong tea, which can appear green or black in color, is a distinct variation that falls somewhere in the middle, with leaves undergoing partial oxidation. Initially a medicinal beverage, tea became a daily drink by the third century C.E., with elite members of Chinese society viewing tea drinking as a leisurely pastime. By the eighth century, during the Tang dynasty, China’s tea culture was flourishing, giving rise to tea ceremonies and social events, as well as art and literature inspired by the drink. To the east of China, in Japan, elite citizens started drinking tea in the eighth century. But wider domestic cultivation and appreciation of tea only came to the country in the late 12th century, when Buddhist monk Eisai popularized the drink. While studying Zen Buddhism at a monastery in China, Eisai learned of a beverage the other monks drank to help stay alert for meditation: green tea. “Tea is the most wonderful medicine for nourishing one’s health,” Eisai wrote in a treatise on tea. “It is the secret of long life.” Today, its enduring popularity is reflected in the “teacup without handle” emoji. The “hot beverage” emoji, meanwhile, takes its cue from another tea tradition: black tea, which gained a foothold in the West through trade between Europe and Asia. In the early 17th century, Portuguese and Dutch traders returning from Asia brought green tea back home, where it quickly gained traction as a curative beverage. Tea enjoyed similar prominence in the Americas following its introduction by colonial powers and their trading companies, including the British East India Company (EIC) and the Dutch East India Company (VOC). By the 18th century, Europeans and Americans were primarily drinking green or oolong teas known by colonial trading names like hyson, singlo, bohea, congou and souchong. The U.S.’s founders were no strangers to tea. George Washington enjoyed drinking Chinese green teas out of porcelain tea bowls. All 342 chests of tea dumped overboard during the Boston Tea Party in 1773 were imported from China by the EIC. The three tea ships targeted by the Patriots held 265 chests of oolong tea and 75 chests of green tea. When tea was first introduced to Europe and North America, its appearance mirrored the “teacup without handle” emoji, much as the drink is still enjoyed in Asia today. As the global tea trade ramped up in the following centuries, tea in Europe and the U.S. came to look more like the “hot beverage” emoji. Excerpted from: Wang de Chen, Charlene. “What Emoji Tell Us about the History of Tea.” Smithsonian Magazine.\n\nQuestion:\nWhat is the difference between green tea and black tea?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Tea leaves are fully oxidized to make green tea; tea leaves are partiallyoxidized to make black tea."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Oxidation of tea leaves is prevented to make green tea; tea leaves are partiallyoxidized to make black tea."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Oxidation of tea leaves is prevented to make green tea; tea leaves are fullyoxidized to make black tea."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Tea leaves are partially oxidized to make green tea; oxidation of tea leaves isprevented to make black tea."
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Select the odd one out."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Oolong"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Singlo"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Bohea"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Souchong"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following is true about the Boston Tea Party?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "George Washington drank Chinese green tea out of a porcelain bowl for thefirst time during the Boston Tea Party."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The Patriots threw 342 chests of tea imported by the East India Companyoverboard into the Boston harbor."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A Chinese tea ceremony was held in Boston for the first time in 1773."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of these"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Buddhist monk Eisai is credited with the popularization of tea in ____________."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "China"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Portugal"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The Netherlands"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Japan"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "“Cue” rhymes with ____."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Segue"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Sew"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Queue"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Beau"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 1 · Quiz 1 · 2024 · QDF2 · Part 1"
+}

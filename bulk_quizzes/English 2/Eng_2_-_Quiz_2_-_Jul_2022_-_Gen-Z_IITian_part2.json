@@ -1,0 +1,247 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 2 · Quiz 2 · Jul 2022 · Part 2",
+  "subject": "English 2",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "IMCO In the following sentence, fill in the blank with the most appropriate modal verb. _— - you please do a recap for me? MCO In the tollowing sentence, fill in the blank with the most appropriate modal verb. The secretary told the manager. \"I think we _ book the tickets now\" Are Will"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Could"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Would Either could or would"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of these"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Would"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Could"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "MCO Fill in the blank with the most appropriate modal verb. The caravan _ _ be allowed to leave. (Stating obligation)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Can't"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Mustn't"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Fill in the blank with the most appropriate modal verb. - seekina permission, May"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Might"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Should Answers Al"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Imagine that you are in a formal meeting with a client. In such a context, you are asking her whether she would like to review a file. From the options below, which would be the most appropriate way to ask this question?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Will you like to take a look at the file?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "You will like to take a look at the file? Would you like to take a look at the file?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Do you want this file?"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "\"If you multiply negative numbers, you get positive numbers.\" Which modal verb must be added to this sentence to make it complete? Will"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Would / Neither, this sentence is already complete marks"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both, they should be usea togetner"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What does the modal auxiliary in the following sentence denote? It could be a challenging lifestyle. / Possibility"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Ability c Suggestion"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Request"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What does the modal auxiliary in the following sentence denote? You might have forgotten about the pain in my shoulder. Possibility"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Ability c Suggestion"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Request"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Fill in the blank with the most appropriate modal verb according to the context. If she had said yes, it _ have empowered more people in power to follow."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Ouchti marks"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Not Would"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Will"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 2 · Quiz 2 · Jul 2022 · Part 2"
+}

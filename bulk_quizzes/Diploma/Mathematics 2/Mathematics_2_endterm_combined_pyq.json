@@ -1,0 +1,155 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 2 · End Term · Combined PYQ",
+  "title": "Mathematics 2 · End Term · Combined PYQ",
+  "subject": "Mathematics 2",
+  "section": "endterm",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "4 Question Id : 640653612254 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Question Id : 640653612265 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "numerical_answer": 1.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following functions are linear transformations? T: R → R, T(z) = 2x + 1 T: R* → R2, T(x, y, y, w) = (I+ Y, z+ W) T: R3 → R3, T(x, y, 2) = (-y, - x, 0)"
+        }
+      ],
+      "acceptable_answers": [
+        "B, C"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let T be a linear transformation from Ra to R3. S CR is a line passing through the origin. Which of the following are possible? T(S) could be the origin in R3. T(S) could be a line passing through the origin in Ra."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "I (S) could be a plane passing through the origin in R"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "T(S) could be R3."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "genzitian.in/ecosystem video solutions - exam.genzitan.in roulube -youtube.com/coen-ziltan"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let A and B be n x n matrices. Which of the following statement(s) is/are true? If A and B are similar, then nullity of A and nullity of B are equal. Let A and B be similar matrices. Then the homogeneous system of linear equations Ax = 0 has a unique solution it and only if the homogeneous system of linear equations Be = O has a unique soluton If A and B* are similar for some positive integer k, then A and B are similar. If A and B are similar matrices where A is a scalar matrix. then A = Bi"
+        }
+      ],
+      "acceptable_answers": [
+        "A, B, D"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let A be a n × n orthogonal matrix. Then which of the following statements) is/are true? The rows of A form an orthonormal basis for R\"."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Suppose I' is the linear transformation corresponding to A, then |[Tu|| = ||•|| for any v € R\". The system of linear equations Ax = & has a unique solution for every & € IR\"."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The rows of A form an orthogonal basis but not an orthonormal basis for R\"."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let L = {(x, y) : y = x + 1} and L' = {(x, x + 2 - 2, ½) : x, z € R}. Choose the correct option(s) from the following. The subspace associated with the affine space L is the line y = x + 1 The subspace associated with the affine space L is given by {(x, x) : x € R]. The subspace associated with the affine space L' is given by {(z, y, z) : 2 - y + z = 0}."
+        }
+      ],
+      "acceptable_answers": [
+        "B, C"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let L = {(x, y) : y = x + 1} and L' = {(x, x + 2 - 2, ½) : x, z € R}. If the dimension of I is m and the dimension of L' is n, then m + n is"
+        }
+      ],
+      "numerical_answer": 3.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ]
+}

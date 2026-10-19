@@ -881,7 +881,7 @@
   function fillMyPapers() {
     var host = document.getElementById("ql-my-papers");
     // If the framework wiped the page's content during navigation, render it again.
-    if (host && host.dataset.qlLoaded && !host.querySelector(".ql-spin-container")) host.dataset.qlLoaded = "";
+    if (host && host.dataset.qlLoaded && !host.querySelector(".ql-mp-grid")) host.dataset.qlLoaded = "";
     if (!host || host.dataset.qlLoaded) return;
     var runtime = window.QLStorefront;
     if (!runtime || !runtime.token()) return;
@@ -2470,6 +2470,13 @@
    * Practice course page: tag the header and the paper-type tabs so
    * storefront-dashboard.css can lay them out as tiles.
    * ------------------------------------------------------------- */
+  /* Coding papers are reached from the OPPE / GrPA tabs on the practice page, so the old "IDE Practice" button is hidden. */
+  function hideIdePracticeLink() {
+    document.querySelectorAll("#root a[href$='/ide-problems']").forEach(function (a) {
+      if (/^\/courses\/[^/]+\/ide-problems\/?$/.test(a.getAttribute("href") || "")) a.style.display = "none";
+    });
+  }
+
   function decorateCoursePage() {
     if (!/^\/practice\/[^/]+(\/papers)?\/?$/i.test(window.location.pathname)) return;
     var first = null;
@@ -2496,6 +2503,154 @@
     var heading = document.querySelector("#root main h1");
     var card = heading && heading.closest(".rounded-2xl");
     if (card) tag(card, "data-ql-course-head", "");
+    addIdeTabs(tabs);
+  }
+
+  /* Coding papers (GrPA, OPPE 1, OPPE 2 ...) come from the IDE API. They get their own tabs after End Term
+   * and, when opened, show paper cards on this page in the same style as the quiz cards. Start opens the IDE. */
+  var ideTypes = null, ideTypesFor = "", ideMode = null;
+  var IDE_DEFS = [["GrPA", /^GrPA/i, "GrPA"], ["OPPE 1", /^OPPE ?1\b/i, "OPPE 1"], ["OPPE 2", /^OPPE ?2\b/i, "OPPE 2"], ["Quiz 1", /^Quiz ?1\b/i, "Quiz 1 Coding"], ["End Term", /^End ?Term/i, "End Term Coding"]];
+  function ideSolved() { try { return JSON.parse(localStorage.getItem("ide.solved") || "[]"); } catch (_) { return []; } }
+  function ideStats(t) {
+    var solved = ideSolved(), done = 0;
+    t.papers.forEach(function (pp) {
+      pp.done = pp.ids.filter(function (id) { return solved.indexOf(id) >= 0; }).length;
+      if (pp.done === pp.ids.length) done++;
+    });
+    return done;
+  }
+  function buildIdeTypes(d) {
+    var out = IDE_DEFS.map(function (t) { return { type: t[0], label: t[2], papers: [], byName: {} }; });
+    (d.weeks || []).forEach(function (w) { (w.problems || []).forEach(function (p) {
+      IDE_DEFS.forEach(function (t, i) {
+        if (!t[1].test(p.title)) return;
+        var m = /^(.*?) · P\d+: /.exec(p.title), name = m ? m[1] : p.title.replace(/ - .*$/, "") + (p.week_number ? " · Week " + p.week_number : "");
+        var o = out[i];
+        if (!o.byName[name]) { o.byName[name] = { name: name, ids: [] }; o.papers.push(o.byName[name]); }
+        o.byName[name].ids.push(p.id);
+      });
+    }); });
+    return out.filter(function (t) { return t.papers.length > 0; });
+  }
+  function ideCard(slug, t, pp) {
+    var total = pp.ids.length, full = pp.done === total;
+    var solved = ideSolved();
+    var next = pp.ids.filter(function (id) { return solved.indexOf(id) < 0; })[0] || pp.ids[0];
+    var a = document.createElement("a");
+    a.className = "block"; a.href = "/ide.html?course=" + encodeURIComponent(slug) + "&problem=" + next;
+    a.setAttribute("data-ql-paper", full ? "done" : "todo");
+    var info = /^(.+?) \((.+?)\) Set (\d+)$/.exec(pp.name);
+    var title = info ? slug.charAt(0).toUpperCase() + slug.slice(1) + " — " + info[2] + " Set " + info[3] : pp.name;
+    a.innerHTML = '<div class="group flex h-full flex-col rounded-xl border border-surface-border bg-white p-4 transition hover:-translate-y-0.5 hover:border-brand/40 hover:shadow-[0_8px_22px_-12px_rgba(0,0,0,0.12)]" data-ql-paper-card="' + (full ? "done" : "todo") + '">' +
+      '<div class="mb-2 flex items-center justify-between"><span class="rounded-md bg-amber-50 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-amber-700"></span><span class="inline-flex items-center gap-1 rounded-md bg-emerald-50 px-1.5 py-0.5 text-[10px] font-semibold text-emerald-600" style="display:none"></span></div>' +
+      '<p class="line-clamp-2 text-[14px] font-semibold leading-snug text-slate-900"></p>' +
+      '<div class="mt-auto pt-3"><div class="mb-2.5 flex flex-wrap items-center gap-1.5 text-[11px] text-slate-500"><span class="font-medium text-slate-600"></span><span class="text-slate-300">·</span><span>Coding</span></div>' +
+      '<div class="flex items-center justify-between text-[12px] font-semibold text-brand group-hover:text-brand-light" data-ql-paper-go><span></span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition group-hover:translate-x-0.5"><path d="M5 12h14M13 5l7 7-7 7"></path></svg></div></div></div>';
+    var q = function (sel) { return a.querySelector(sel); };
+    q("span.bg-amber-50").textContent = t.type;
+    var badge = q("span.bg-emerald-50"); if (pp.done) { badge.style.display = ""; badge.textContent = "✓ " + pp.done + "/" + total; }
+    q("p").textContent = title;
+    q(".font-medium.text-slate-600").textContent = total + " Q";
+    q("[data-ql-paper-go] span").textContent = full ? "Review" : pp.done ? "Continue" : "Start";
+    return a;
+  }
+  function renderIdePanel(slug, row, t) {
+    var panel = document.getElementById("ql-ide-panel");
+    if (!panel) { panel = document.createElement("div"); panel.id = "ql-ide-panel"; panel.className = "space-y-6"; }
+    var anchor = row.nextElementSibling && row.nextElementSibling.classList.contains("ql-paper-filter") ? row.nextElementSibling : row;
+    if (panel.previousElementSibling !== anchor) anchor.insertAdjacentElement("afterend", panel);
+    var sig = t.type + "|" + ideSolved().join(",");
+    if (panel.getAttribute("data-sig") === sig) return;
+    panel.setAttribute("data-sig", sig); panel.textContent = "";
+    var groups = [], by = {};
+    t.papers.forEach(function (pp) {
+      var m = /\((.+?)\)/.exec(pp.name), key = m ? m[1] : "All";
+      if (!by[key]) { by[key] = []; groups.push(key); }
+      by[key].push(pp);
+    });
+    groups.forEach(function (key) {
+      var box = document.createElement("div");
+      box.innerHTML = '<div class="mb-2.5 flex items-center gap-2"><h3 class="text-sm font-semibold text-slate-700"></h3><span class="rounded-full bg-slate-100 px-2 py-0.5 text-[11px] text-slate-500"></span></div><div class="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"></div>';
+      box.querySelector("h3").textContent = key; box.querySelector("span.rounded-full").textContent = by[key].length;
+      var grid = box.querySelector(".grid");
+      by[key].forEach(function (pp) { grid.appendChild(ideCard(slug, t, pp)); });
+      panel.appendChild(box);
+    });
+  }
+  function exitIdeMode(tabs) {
+    ideMode = null;
+    tabs.removeAttribute("data-ql-ide-mode");
+    tabs.querySelectorAll("[data-ql-ide-tab]").forEach(function (x) { x.classList.remove("bg-brand", "text-white"); });
+    tabs.querySelectorAll("[data-ql-was-active]").forEach(function (x) { x.classList.add("bg-brand", "text-white"); x.removeAttribute("data-ql-was-active"); });
+    var panel = document.getElementById("ql-ide-panel"); if (panel) panel.remove();
+    document.querySelectorAll("[data-ql-ide-hide]").forEach(function (n) { n.removeAttribute("data-ql-ide-hide"); });
+  }
+  function addIdeTabs(tabs) {
+    var m = window.location.pathname.match(/^\/practice\/([^/]+)/i);
+    var runtime = window.QLStorefront;
+    if (!m || !runtime || !runtime.token()) return;
+    var slug = m[1];
+    if (ideTypesFor !== slug) {
+      ideTypesFor = slug; ideTypes = null; ideMode = null;
+      fetch(runtime.apiBase + "/courses/" + encodeURIComponent(slug) + "/ide-problems", { headers: { Accept: "application/json", Authorization: "Bearer " + runtime.token() } })
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (d) { if (d) { ideTypes = buildIdeTypes(d); schedule(); } })
+        .catch(function () {});
+      return;
+    }
+    if (!ideTypes) return;
+    // Coming back from the IDE: ?ide=OPPE%201 reopens that tab.
+    var want = new URLSearchParams(window.location.search).get("ide");
+    if (want && !tabs.hasAttribute("data-ql-ide-asked")) {
+      tabs.setAttribute("data-ql-ide-asked", "");
+      if (ideTypes.some(function (t) { return t.type === want; })) ideMode = want;
+    }
+    if (!document.getElementById("ql-ide-style")) {
+      var st = document.createElement("style"); st.id = "ql-ide-style";
+      st.textContent = '[data-ql-ide-hide]{display:none!important}';
+      document.head.appendChild(st);
+    }
+    if (!tabs.hasAttribute("data-ql-ide-bound")) {
+      tabs.setAttribute("data-ql-ide-bound", "");
+      // Picking one of the app's own tabs leaves coding mode.
+      tabs.addEventListener("click", function (e) {
+        var b = e.target.closest("button");
+        if (b && !b.hasAttribute("data-ql-ide-tab") && ideMode) { exitIdeMode(tabs); schedule(); }
+      }, true);
+    }
+    var anchor = null;
+    tabs.querySelectorAll("button:not([data-ql-ide-tab])").forEach(function (b) { if (/^End Term/i.test(b.textContent.trim())) anchor = b; });
+    var last = anchor || tabs.lastElementChild;
+    ideTypes.forEach(function (t) {
+      var done = ideStats(t), b = tabs.querySelector('[data-ql-ide-tab="' + t.type + '"]');
+      if (!b) {
+        b = document.createElement("button");
+        b.type = "button"; b.setAttribute("data-ql-ide-tab", t.type); b.setAttribute("data-empty", "false");
+        b.className = "whitespace-nowrap rounded-lg px-4 py-2 text-sm font-medium transition text-slate-600 hover:text-slate-900";
+        b.innerHTML = '<span></span><span class="ml-2 inline-flex items-center rounded-full px-1.5 text-[10px] font-semibold bg-slate-100 text-slate-500"></span>';
+        b.firstChild.textContent = t.label;
+        b.addEventListener("click", function () { ideMode = t.type; schedule(); });
+        last.insertAdjacentElement("afterend", b);
+      }
+      b.lastChild.textContent = done + "/" + t.papers.length;
+      b.classList.toggle("bg-brand", ideMode === t.type);
+      b.classList.toggle("text-white", ideMode === t.type);
+      last = b;
+    });
+    var cur = ideTypes.filter(function (t) { return t.type === ideMode; })[0];
+    if (!cur) { if (ideMode) exitIdeMode(tabs); return; }
+    tabs.setAttribute("data-ql-ide-mode", "");
+    // The app's own active tab (Quiz 1 ...) steps back while a coding tab is selected.
+    tabs.querySelectorAll("button.bg-brand:not([data-ql-ide-tab])").forEach(function (x) { x.classList.remove("bg-brand", "text-white"); x.setAttribute("data-ql-was-active", ""); });
+    var row = tabs.parentElement;
+    if (!row) return;
+    // Hide the app's own quiz content (and the "27 quizzes" hint) while coding papers are shown.
+    for (var n = row.nextElementSibling; n; n = n.nextElementSibling) {
+      if (n.id === "ql-ide-panel" || n.classList.contains("ql-paper-filter")) continue;
+      n.setAttribute("data-ql-ide-hide", "");
+    }
+    var hint = row.querySelector("p.ml-auto"); if (hint) hint.setAttribute("data-ql-ide-hide", "");
+    renderIdePanel(slug, row, cur);
   }
 
   /* ---------------------------------------------------------------
@@ -4859,6 +5014,7 @@
     guard(syncConsoleNav);
     guard(syncHomeLink);
     guard(decorateCoursePage);
+    guard(hideIdePracticeLink);
     guard(decorateCoursePapers);
     guard(updateExamNav);
     guard(renderAnnouncements);

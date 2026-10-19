@@ -1,0 +1,400 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Python Programming · Quiz 1 · 26 Oct 2025 · QDF2 · Part 1",
+  "subject": "Python Programming",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following Python code. What will be the output?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "s = \"programming\"\nprint(s[::-1].replace(\"g\", \"#\"))"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "#nimmarrop#"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "#nimmar#orp"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "programmin#"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "gni#marropg"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "s[::-1] reverses to 'gnimmargorp'; replacing every 'g' with '#' gives '#nimmar#orp'."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following Python code. What will be the output?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "x, y, z = \"\", \"python\", 0\nprint((x or y) and (z or len(y)))"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "6"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "\"\""
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "\"python\""
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "0"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "x is '' (falsy) so (x or y) is 'python'; z is 0 (falsy) so (z or len(y)) is 6; 'python' and 6 returns 6."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following Python code. What value will be stored in x at the end of the program execution?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "x = 5\nx = x + 2.0\nx = str(x) + \"3\"\nx = x * 2\nx = [x]\nx = x + [10]"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "['7.03', '7.03', 10]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "['7.03', 10]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "['7.037.03']"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "['7.037.03', 10]"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "5 -> 7.0 -> '7.0'+'3' = '7.03' -> '7.03'*2 = '7.037.03' -> ['7.037.03'] -> ['7.037.03', 10]."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "You have a list of lists and want to compute the sum of all even numbers greater than 3. Consider the two code snippets below (with the condition left blank). Which of the following conditions, when filled in the blanks in both snippets, will give the correct result?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "# Snippet-1\ns = 0\nfor row in data:\n    for val in row:\n        __________:\n            s += val\nprint(s)\n# Snippet-2\ns = 0\ni = 0\nwhile i < len(data):\n    j = 0\n    while _________:\n        if data[i][j] % 2 == 0 and data[i][j] > 3:\n            s += data[i][j]\n        j += 1\n    i += 1\nprint(s)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Snippet 1: if element % 2 == 0 and element > 3: | Snippet 2: i > len(data[j])"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Snippet 1: if element % 2 != 0 and element > 3: | Snippet 2: i < len(data[j])"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Snippet 1: if element % 2 == 0 and element > 3: | Snippet 2: j < len(data[i]):"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Snippet 1: if element % 2 == 0 and element < 3: | Snippet 2: j > len(data[i]):"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Snippet 1 needs an even-and->3 test; Snippet 2's inner while must iterate the columns of the current row: j < len(data[i])."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Assume s is a str variable. What is the type of the following expression? \"\".join(sorted(set(s.lower())))"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "int"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "set"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "list"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "bool"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "str"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "NoneType G The code raises an error."
+          }
+        ]
+      ],
+      "correct_answer": 4,
+      "marks": 4,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "set(...) -> set, sorted(...) -> list, \"\".join(list) -> str."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following Python code. Which of the following statements are valid? (Select all that apply)"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "t = (5, [10, 20], (30, [40, 50], (30,)))"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "t[1].append(25)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "t[2] += (60,)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "t[2][0] = 35"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "t[2][2].append(60)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "t[2][1][0] = 45"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        4
+      ],
+      "marks": 4,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "t[1] is a list (append valid) and t[2][1] is a list (index assignment valid). The others target tuple elements and raise TypeError/AttributeError."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the code below. Select the possible output(s) of the given code, assuming any possible values for x, y, and z."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "if x:\n    print('x')"
+        },
+        {
+          "kind": "text",
+          "value": "else:"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "if y:\n        if z:\n            print('z')\n        print('y')\n    else:\n        print('none')"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "x"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "z y"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "x y"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "none"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "x z"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "y"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1,
+        3,
+        5
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "x truthy -> 'x'; x falsy, y truthy, z truthy -> 'z' then 'y'; x falsy, y truthy, z falsy -> 'y'; x falsy, y falsy -> 'none'. 'x y' and 'x z' are impossible."
+        }
+      ]
+    }
+  ],
+  "title": "Python Programming · Quiz 1 · 26 Oct 2025 · QDF2 · Part 1"
+}

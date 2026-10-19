@@ -1,0 +1,113 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "May 2025 Endterm · Part 1",
+  "subject": "Managerial Economics",
+  "section": "endterm",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If the price elasticity of demand for the product is –2, find the marginal cost (in ₹) of the last unit produced ____________"
+        }
+      ],
+      "numerical_answer": 20.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the firm’s percentage markup of price over marginal cost (as a % of the price)? ___________"
+        }
+      ],
+      "numerical_answer": 50.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Suppose that the average cost of the last unit produced is ₹15 and the firm’s fixed cost is ₹2000. Find the firm’s profit (in ₹)___________ Question Id : 6406531424394 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "numerical_answer": 20000.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is Latif’s profit (per car in $) if he does not offer a one-year warranty?______________"
+        }
+      ],
+      "numerical_answer": 2000.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is Latif’s profit (per car in $) if he offers a one-year warranty?______________"
+        }
+      ],
+      "numerical_answer": 2500.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is Hamid’s profit (per car in $) if Latif’s does not offer a one-year warranty? ___________"
+        }
+      ],
+      "numerical_answer": 1500.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is Hamid’s profit (per car in $) if Latif’s offers a one-year warranty? _____________"
+        }
+      ],
+      "numerical_answer": 0.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The equilibrium price of ball pens in the domestic market without any imports will be P*= _______"
+        }
+      ],
+      "numerical_answer": 50.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "May 2025 Endterm · Part 1"
+}

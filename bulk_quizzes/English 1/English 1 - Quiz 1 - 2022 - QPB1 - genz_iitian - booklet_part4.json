@@ -1,0 +1,277 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 1 · Quiz 1 · 05 Jun 2022 · QPB1 · Part 4",
+  "subject": "English 1",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The word ‘firmographic’ has _____ syllables."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "3"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "4"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In the plural noun students, the plural marker sounds as ________."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "[s]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[z]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[iz]"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The plural of 'deer' is 'deers'."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "TRUE"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "FALSE"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which among the following is the correct way to read the following phone number: 8637681134?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "8637/6811/34"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "863/768/113/4"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "86/37/68/11/34"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "All of these"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correctly paused sentence."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The postal/ code of my village is 698125//"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The postal code/ of my/ village is 698125//"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The postal code of my village is/ 698/125//"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The postal code of/ my village is 698125//"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the number of vowel alphabets (written vowels) and the number of spoken vowel sounds in the following word. Design"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "1, 2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "2, 1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "3, 5"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "2, 2"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the number of vowel alphabets (written vowels) and the number of spoken vowel sounds in the following word. Eliminate"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "3, 3"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "5, 4"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "7, 8"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "3, 2"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Pauses are like punctuation marks in speech."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "TRUE"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "FALSE"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 1 · Quiz 1 · 05 Jun 2022 · QPB1 · Part 4"
+}

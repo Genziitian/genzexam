@@ -1,0 +1,88 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 1 · Quiz 1 · Combined PYQ",
+  "title": "Mathematics 1 · Quiz 1 · Combined PYQ",
+  "subject": "Mathematics 1",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The Cartesian product A x A has 9 elements. Two of the elements of the Cartesian product are (1, 3) and (3, 7). Find the sum of all the elements in set A."
+        }
+      ],
+      "numerical_answer": 11.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the area of the triangle ABC?"
+        }
+      ],
+      "numerical_answer": 2.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A group of 500 students went to the college canteen and ordered some items. 285 students ordered ice-cream, 195 students ordered cold coffee, 115 students ordered cold drink, 45 students ordered ice-cream and cold drink, 70 students ordered cold coffee and ice-cream, 50 students ordered cold coffee and cold drink, and 50 students did not ordered anything. Find the number of students who ordered all three items."
+        }
+      ],
+      "numerical_answer": 20.0,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Question Id : 6406531298527 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Sub questions"
+        }
+      ],
+      "numerical_answer": 12.0,
+      "numerical_tolerance": 0.01,
+      "marks": 5,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the value of a."
+        }
+      ],
+      "numerical_answer": 10.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the minimum value of f (x)? Question Id : 6406531298530 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Suppose two boats are starting their journey form the ferry ghat A considered as the origin, one towards ferry ghat B along the straight line y = −2x and the other towards the ferry ghat C along the straight line perpendicular to the path followed by B. The river is 1 km. wide uniformly. Suppose Rahul wants to go to the exact opposite point of A along the river. Then answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "6 to 7"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    }
+  ]
+}

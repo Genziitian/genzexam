@@ -1,0 +1,394 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Week 3 Practice Assignment · Part 2",
+  "subject": "Mathematics 1",
+  "section": "practice",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the quadratic function f (x) = x2− 2x− 8. Two points P and Q are chosen on this curve such that they are 2 units away from the axis of symmetry. R is the point of intersection of axis of symmetry and the X− axis. And S is the vertex of the curve. Based on this information, answer the following: (a) What is the height of ∆P QR taking PQ as the base? (b) What is the height of ∆P QS taking PQ as the base? /T_he axis of symmetry of f (x) is x = −b2a = −(−2)2(1) = 1 and two units away points will be x = 1 + 2 = 3 and x = 1− 2 =−1. At x = 3⇒ f (x) =−5 and at x =−1⇒ f (x) =−5. Also, the vertex of the curve is (1, -9). A rough diagram can be drawn with this information as shown in Figure PS-4.6. f (x) = x2− 2x− 8 x f (x) S (1, -9) P (-1, -5) Q (3, -5) R (1, 0) Figure PS-4.6 (a) From the above /f_igure, the height of∆P QR taking P Q as the base will be the distance between lines y = 0 and y =−5 and that is equal to 0 - (-5) = 5 units. (b) From the above /f_igure, the height of ∆P QS taking P Q as the base will be the distance between lines y =−5 and y =−9 and that is equal to (-5) - (-9) = 4 units. 18 Week - 5 Practice Assignment Solution Quadratic Equations Mathematics for Data Science - 1 NOTE: • There are some questions which have functions with discrete-valued domains (such as month or year). For simplicity, we treat them as continuous functions. • For a given quadratic equation ax2 +bx +c = 0, a⁄= 0:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Sum of roots = − ba."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Product of roots = ca. 1 Multiple Choice Questions (MCQ):"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What will be the value of parameter k, if the discriminant of equation 4x2 +9x+10k = 0 is 1?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "8280"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "4180"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "12"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "41160"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of the above. Solutions: Comparing the given equation 4x2 + 9x + 10k = 0 with the standard quadratic equation ax2 +bx +c = 0: a = 4, b= 9, and c = 10k Discriminant (d) = b2− 4ac d = 92− 4× 4× 10k 1 = 81− 160k k = 12 1"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A boat has a speed of 30 km/hr in still water. In ﬂowing water, it covers a distance of 50 km in the direction of ﬂow and comes back in the opposite direction. If it covers this total of 100 km in 10 hours, then what is the speed of ﬂow of the water (in km/hr)?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "5− 5 √ 37"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "−10 √ 6"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "10 √ 6"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "20 √ 3"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "−20 √ 3"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "2 Solutions: Total time taken by the boat = time taken by the boat in the direction of ﬂow + time taken by the boat in the opposite direction of ﬂow. We know that: time(t) = distancenet speed Considering the direction of ﬂow of water to be positive: The net speed in the direction of ﬂow ( vf) = speed of the boat in still water + speed of ﬂow. The net speed in the opposite direction of ﬂow ( vb) = speed of the boat in still water - speed of ﬂow. Let the speed of ﬂow be x then, 10 = 50vf + 50vb 10 = 5030 +x + 5030−x 1 = 530 +x + 530−x 1 = 5(30−x + 30 +x)(30 +x)(30−x) (30 +x)(30−x) = 300 302−x2 = 300 x2 = 600x =±10√6 Speed of ﬂow can not be negative therefore, the correct answer is 10 √ 6. 2"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A stunt man performs a bike stunt between two houses of the same height as shown in Figure 1. His bike (lowest part of the bike) makes an angle of θ at house A with the horizontal at the beginning of the stunt, follows a parabolic path and lands at house B with an angle of (180−θ) with the horizontal. θ (180−θ) 10 ft A B Figure PA-5.1 If the maximum height achieved by the bike is 12.5 ft from the ground and tan θ= 1, then ﬁnd the distance between the two houses."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "1 ft"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "2.5 ft"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "5 ft"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "10 ft"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "15 ft"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "20 ft Solution: Assuming the top of the house A to be origin, the horizontal direction as X− axis, and the vertical direction as Y− axis. 3 X Y (0,0) θ (180−θ) 10 ft A B Figure M1W5PAS-3.1 Let the quadratic function representing the above curve be f(x) =ax2 +bx +c. Since the curve passes through the origin, we have c = 0. The curve is making an angle θ with respect to positive X− axis which means the slope of the tangent at the curve is tan θ. We also know that the slope of the curve represented by quadratic function at x =x is 2ax +b. Therefore, 2ax +b = tanθ 2a× 0 +b = 1 b = 1 The maximum height achieved by the bike is 12.5 ft which means the y− coordinate of the vertex is 12.5− 10 = 2.5. The x− coordinate of the vertex for a curve represented by function ax2 +bx +c is − b2a =− 12a 4 Therefore, f(x) =ax2 +bx +c f(− 12a) = 2.5 a× (− 12a)2 + 1× (− 12a) + 0 = 2.5 1 4a− 12a = 2.5 − 14a = 2.5 a =− 110 Axis of symmetry, x =− b2a =− 12× (−1/10) = 5 Because of symmetricity, the coordinate of landing point will be (10, 0). Therefore two houses A and B are 10 ft apart. 5 2 Multiple Select Question (MSQ):"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Given that f1(x) =−x2− 6x and f2(x) = x2 + 6x + 10. Let f(x) be a function such that the domain of f(x) is [α, β], where f1(α) = f2(α) and f1(β) = f2(β), then choose the set of correct options."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Range of f(x) is [−1, 3]."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Range of f(x) is [0, 5]."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Domain of f(x) is [−5, 5]."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Domain of f(x) is [−5,−1]."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Inadequate information provided for ﬁnding the range of f(x)."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Inadequate information provided for ﬁnding the domain of f(x). Solution: Sincef1(α) =f2(α) and f1(β) =f2(β), we haveα andβ are the abscissa of intersection points of both the curves. To ﬁnd the intersection points of the curves represented by f1(x) and f2(x): f1(x) =f2(x) −x2− 6x =x2 + 6x + 10 2x2 + 12x + 10 = 0 Here, a = 2,b = 12, and c = 10 x =−b± √ b2− 4ac 2a x =−12± √ 122− 4× 2× 10 2× 2 x =−12± 84 =−1,−5 Therefore, α =−5 and β =−1. Since the Domain of f(x) is [α,β ] domain of f(x) is [−5,−1]. 6 The ﬁgure below gives a rough pictorial representation of f1(x) and f2(x) (drawn with smooth lines). f(x) can have any shape. An example is shown in the ﬁgure (drawn with dashed lines) for f(x). f1(x) f2(x) (β,f (β)) (α,f (α)) f(x) Figure M1W5PAS-4.1 As it is clear from ﬁgure that we do not know the minimum and maximum value off(x), we do not have proper data to comment on the range. 7"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If f(x) = 2x2 + (5 +k)x + 7, g(x) = 5x2 + (3 +k)x + 1, h1(x) = f(x)−g(x), and h2(x) =g(x)−f(x), then choose the set of correct options."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Roots for h1(x) = 0 and roots for h2(x) = 0 are real, distinct, and the roots are the same for h1(x) = 0 andh2(x) = 0."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Roots for h1(x) = 0 and roots for h2(x) = 0 are real and distinct but the roots are not the same for h1(x) = 0 and h2(x) = 0."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Sum of roots of quadratic equation h1(x) = 0 will be 23."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Product of roots of quadratic equation h2(x) = 0 will be -2."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Axis of symmetry for both the functions h1(x) andh2(x) will be the same."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Vertex for both the functions h1(x) and h2(x) will be the same. Solution: Given that, h1(x) =f(x)−g(x) h1(x) =−(g(x)−f(x)) h1(x) =−h2(x) Negative sign before any function does not make any changes on zeros of the function. Therefore, roots of h1(x) = 0 and roots of h2(x) = 0 will be same. Now, for the properties of h1(x): h1(x) =f(x)−g(x) = 2x2 + (5 +k)x + 7− (5x2 + (3 +k)x + 1) h1(x) =−3x2 + 2x + 6 d = 22− 4(−3)× 6> 0 It means the roots of h1(x) are real and distinct. The roots of h1(x) = 0 has the same as the roots of h2(x) = 0, which means the roots for h2(x) = 0 will also be real and distinct. Sum of the roots of h1(x) =−3x2 + 2x + 6 will be− ba =− 2(−3) = 23. Product of the roots of h1(x) =−3x2 + 2x + 6 will be ca = 6(−3) =−2. Multiplying a quadratic function by the minus sign does not make any changes in the 8 axis of symmetry. The answer to all the above questions can be seen in the given ﬁgure. h1(x) h2(x) Axis of symmetry Figure M1W5PAS-5.1 9 Use following information for questions 6-8. Vaishali wants to set up a small plate making machine in her village. Table P-5.1 shows the diﬀerent costs involved in making the plates. Figure 5 shows her survey regarding the demand (number of packets of the plate) versus selling price of plate per packet (in |) per day. Cost type Cost Electricity |1.5 per packet Miscellaneous |6.5 per packet Raw material |10 per packet Table P-5.1 Selling price per packet Demand (15, 90) (25, 70) Figure PA-5.2"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct option which shows the proﬁt obtained by Vaishali per day. Here, x is the selling price per packet."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "2(60−x)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "x(x− 18)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "2(x− 18)(60−x)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "2(x + 18)(60−x)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Inadequate information. 10 Solution: From the ﬁgure, it is clear that the demand is dependent on the selling price of plates. Let y be the demand of the numbers of packets, then from two-points form of a line, y− 90 = 70− 9025− 15(x− 15) y− 90 =−2(x− 15) y =−2x + 120 From the table, total cost per packet (in |)= 1.5 + 6.5 + 10 = 18 Per day proﬁt = Demand per day×(Selling price per packet - Cost per packet) Profit =y(x− 18) Profit = (−2x + 120)(x− 18) Profit = 2(x− 18)(60−x) 11"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the set of correct options."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Vaishali should sell a packet with a minimum price of |18 so as not to incur any loss."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Vaishali should sell a packet with a minimum price of |12 so as not to incur any loss."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To make maximum proﬁt per day, the selling price per packet should be |39."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To make maximum proﬁt per day, the selling price per packet should be |25."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Vaishali should sell a packet with maximum price of |60 so as not to incur any loss."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Vaishali should sell a packet with a maximum price of |25 so as not to incur any loss. Solution: From question 6, Profit = 2(x− 18)(60−x) Profit =−2x2 + 156x− 2160 (1) To get minimum selling price with no loss, proﬁt should be zero. Therefore, 2(x− 18)(60−x) = 0 x = 18 or 60 From the graph given in question, it is clear that we can not sell a packet at|60, because the demand will be zero. Therefore, the minimum selling price will be |18 per packet. Since the proﬁt is a quadratic function of the selling price ( x) in equation (1) with negative coeﬃcient of x2. Therefore, the maximum proﬁt will occur at x =− b2a =− 1562× (−2) = 39 A rough pictorial representation is shown in Figure below, 12 Selling price per packet Proﬁt (18,0) (60,0) Minimum selling price for no loss (39, 882) (25, 490) Maximum possible proﬁt point Figure M1W5PAS-7.1 The increase in selling price will result in proﬁt increment till 39. But the maximum acceptable selling price is |25, therefore the maximum proﬁt will occur at a selling price of |25. So, from the ﬁgure it is clear that the maximum selling price for no loss is |60 but we can not increase the price beyond |25. Therefore, the maximum proﬁt to incur any loss will be |25. 13 3 Numerical Answer type (NAT):"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What should be the price of plate per packet ( |) to make a proﬁt of |490 per day? From equation (1) Profit =−2x2 + 156x− 2160 −2x2 + 156x− 2160 = 490 −2x2 + 156x− 2650 = 0 2(−x2 + 78x− 1325) = 0 It is given that (x−53) a factor of 2(−x2 +78x−1325). So dividing 2(−x2 +78x−1325) by (x− 53) we will get−2x + 50. Therefore, 2(−x2 + 78x− 1325) = 0 (x− 53)(2x− 50) = 0 If x− 53 = 0 x = 53 But selling price can not go beyond 25. Now if, 2x− 50 = 0 x = 502 x = 25 Therefore, the selling price of plate should be |25 . 14"
+        }
+      ],
+      "acceptable_answers": [
+        "25]"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ],
+  "week": 3,
+  "title": "Week 3 Practice Assignment · Part 2"
+}

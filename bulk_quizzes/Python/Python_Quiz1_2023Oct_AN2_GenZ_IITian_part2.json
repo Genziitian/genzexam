@@ -1,0 +1,202 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Python Programming · Quiz 1 · Oct 2023 · AN2 · Part 2",
+  "subject": "Python Programming",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the output of the following snippet of code?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "word = 'claustrophobic'\nsize = len(word)\ncount = 0\nfor x in range(size):\n    if word[x] in 'aeiou':\n        if x % 2 == 0:\n            count = count + 1\nprint(count)"
+        }
+      ],
+      "numerical_answer": 3,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Vowels in 'claustrophobic' at even indices: a(2), o(8), o(10) and i appears at index 12. Counting vowels at even indices gives 3."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the output of the following snippet of code?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "p = 1\nM = [[1, 3, 4], [2, -1, 3], [-2, 1, 2]]\nm = len(M)\nn = len(M[0])\nfor i in range(m):\n    for j in range(n):\n        p = p * M[i][j]\nprint(p)"
+        }
+      ],
+      "numerical_answer": 288,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Product of all elements: 1*3*4*2*(-1)*3*(-2)*1*2 = 288."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the output of the following snippet of code?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "# Hint: negative indexing in lists works\n# in the same way as negative indexing in strings\n# so L[-1] is 5 and L[-2] is 4 and so on\nL = [1, 2, 3, 4, 5]\nstop = -len(L) - 1\nx = 0\ni = -1\nwhile i > stop:\n    x = x * 10 + L[i]\n    i = i - 1\nprint(x)"
+        }
+      ],
+      "numerical_answer": 54321,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "i goes -1, -2, ..., -5, reading L from the end: 5, 4, 3, 2, 1, building x = 54321."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Given integers x, y, we call (x, y) a 'point'. Order matters, that is (2, 3) is a different point from (3, 2). Find the total number of points for which this code will output the value 'positive'."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "x = int(input())\ny = int(input())\nlabel = 'negative'\nif x >= 0 and x <= 5:\n    if y >= 0 and y <= 5:\n        label = 'positive'\nprint(label)"
+        }
+      ],
+      "numerical_answer": 36,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "'positive' is printed only when x is in {0,1,2,3,4,5} (6 values) AND y is in {0,1,2,3,4,5} (6 values). 6 * 6 = 36 points."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the output of the following snippet of code?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "c1 = 0\nc2 = 0\nfor x in range(1, 101):\n    for y in range(1, 101):\n        if x + y == 199:\n            c1 = c1 + 1\n            c2 = c2 + 1\nprint(c2 // c1)"
+        }
+      ],
+      "numerical_answer": 1,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "c1 and c2 are always incremented together, so they are equal (both 2, from x+y=199 with x,y in 1..100). c2 // c1 = 1."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Select the correct code block (the one that prints the first 100 powers of 2, one per line, starting from 2)."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "# Option 1\nn = 1\nwhile n < 100:\n    print(2 ** n)\n# Option 2\nn = 1\nwhile n < 100:\n    print(2 ** n)\n    n = n + 1\n# Option 3\nn = 1\nwhile n <= 100:\n    print(2 ** n)\n    n = n + 1\n# Option 4\nn = 1\nwhile n < 100:\n    n = n + 1\n    print(2 ** n)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "n = 1; while n < 100: print(2 ** n)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "n = 1; while n < 100: print(2 ** n); n = n + 1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "n = 1; while n <= 100: print(2 ** n); n = n + 1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "n = 1; while n < 100: n = n + 1; print(2 ** n)"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Option 3 runs for n = 1..100, printing 2^1 through 2^100 = exactly 100 lines starting at 2. Option 1 loops forever (n never changes), option 2 prints only 99 lines (n = 1..99), and option 4 increments before printing so it starts at 4 and misses 2^1."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the value of n after executing the previous code (the correct code block)? That is, once we get out of the while loop, what is the value of n?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "n = 1\nwhile n <= 100:\n    print(2 ** n)\n    n = n + 1\n# loop exits here"
+        }
+      ],
+      "numerical_answer": 101,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The loop runs while n <= 100. After printing for n = 100, n becomes 101, the condition 101 <= 100 is False, and the loop exits with n = 101."
+        }
+      ]
+    }
+  ],
+  "title": "Python Programming · Quiz 1 · Oct 2023 · AN2 · Part 2"
+}

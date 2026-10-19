@@ -1,0 +1,353 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 2 · Quiz 1 · 29 Oct 2023 · QPF4 · Part 3",
+  "subject": "English 2",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "\"The contract will be issued by the government.\" In this sentence, the verb 'will be issued ' will change to ________ when converted to active voice."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Was issued"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Is issued"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Will issue"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Was issuing"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "From the following sentences, identify the one carrying a predicative adjective."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "That girl Isabella looks rather dedicated."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "These shallow shores stretch through to eternity."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "These fellows with bad grades must up their game."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "That corroded tap was cleaned by Praveen."
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In the following sentence, identify the nature of the adjective. The adjectives are underlined. “I want to buy a large dog, which is also furry, as a pet.”"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Predicative, attributive"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Attributive, predicative"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the adjective(s) in the following sentence. Ameya was brilliant in today's class test."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Was, today"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Brilliant, test"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Brilliant"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Today"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Degree adverbs are used before verbs. This statement is"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "TRUE"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "FALSE"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "I ___ enjoyed your performance in that movie."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Very"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Very much"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both Very and Very much"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following statements and select the correct option. A: He was very much frustrated about the results. B: He was very frustrated about the results."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "A is true and B is false"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "B is true and A is false"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both are true"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both are false"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Adverbs that indicate judgement of someone’s action is called ___"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Viewpoint adverbs"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Comment adverbs"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Focus adverbs"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both Viewpoint adverbs and Comment adverbs"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In the sentence ‘Siva performs his dance to mesmerise the world.’, “to mesmerise the world” is ________."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "A verb"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "An adjective"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "An adjunct"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A nominal clause"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the type of clause embedded in the following sentence. “He is sure that Hari will walk in any time soon.”"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Adjectival clause"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Adverbial clause"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Complement clause"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 2 · Quiz 1 · 29 Oct 2023 · QPF4 · Part 3"
+}

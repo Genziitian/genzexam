@@ -1,0 +1,188 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Statistics 2 · Quiz 2 · 05 Apr 2026 · Part 1",
+  "subject": "Statistics 2",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Formula file. Reference material for the quiz: common discrete and continuous distributions, plus useful inequalities and limit theorems. Markov's inequality: for X a non-negative random variable with finite mean p. P(X ≥ r) ≤ F. Chebyshev's inequality: for X with finite mean and variance o, P(IX - | ≥ ko) ≤ p. Weak Law of Large Numbers: for X1, X2,..., X, lid. with 8[X] = p, Var (X) = a, the sample mean X = 1++X. satisfies P(|X - p] ≥ 8) ≤ , Using the CLT to approximate probability for X1,..., X, ld with E[X] = p. Var (X) = 0.S = X; + ... + X, has ve - & Normal (0, 1). Useful data F2(2) = 0.9772, F2 (0.2) = 0.579; 2\" dz = 271: the circumference of a cirele of radius is 29r, the area of a circle of radius r is mr. Distribution Discrete random"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "ariables PMF / PDF CDF Ex(x) E[X]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "ar(X) Uniform (A)."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "- {a, a + 1,...,b} Bernoulli (p) 2<0"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "21 p(1 - p) Binomial (n, p) Geometric (p) Poisson (3)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "ariables Uniformía, 8] Exp(X) Normal (j, d*) Gamma(a, 8) Bets(a, P)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "p* (1 - p)\"-*, k = 0,1,..., n (1 - p)* p, k = 1,...,∞"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": ", k-0,1,...,∞ пр nр(1 - p) 2<0 = 28 Ae*, 2 > 0 No closed form"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Y independent? The joint of two comtimes random variables and is live by far x, 8) - it. NO S ≤ 17, 0 5 ≤ 1F Are X and"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "No"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Yes"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let X1, X2, X3, X, ~ li.d. Normal (1, 18). Find the value of P(3X; + X2 + 2X3 + 2X1 ≤ 12)."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "1 - Fz(3)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Fz(g)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1-Fz()"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let X ~ Exponential (2) with PDF fx (x) = 2e-2, 2 > 0. Define a random variable Y = 3X + 1. Find the value of fy (4). Enter the answer correct to two decimal places."
+        }
+      ],
+      "numerical_answer": 0.09,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The joint probability mass function of two discrete random variables X and is given by fix. (2, y) - f 38, 2, 1, 2,3) What is the value of P(X + Y = 4)? Enter the answer correct to two decimal places."
+        }
+      ],
+      "numerical_answer": 0.28,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let (X, Y) ~ Uniform (R), where R - {(2, y) : 2ª + y? < 9, 2 > 0, y > 0). The joint distribution of X and Y is defined as fry (2, 2) - 4. where the value of A will be B. The marginal density function f/x (z) can be calculated as fx (2) = JoC- D. giving f(z) = By C-2), Consider the following options for the blanks: (1) 24; (2) g: (3) Area of R: (4) fry (z, y) dz; (5) tra crR: (6) (Area of R): (7) /xy (z. y) dy: (8) fy (a) dy. (9) 9; (10) 4; (11) 3; (12) 47. NUMERICAL Enter the correct option number for A (in fry (27, y) = $). Answer: 3 0.5 marks - Enter the correct option number for B (the value of A)."
+        }
+      ],
+      "numerical_answer": 1.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let (X, Y) ~ Uniform (R), where R - {(2, y) : 2ª + y? < 9, 2 > 0, y > 0). The joint distribution of X and Y is defined as fry (2, 2) - 4. where the value of A will be B. The marginal density function f/x (z) can be calculated as fx (2) = JoC- D. giving f(z) = By C-2), Consider the following options for the blanks: (1) 24; (2) g: (3) Area of R: (4) fry (z, y) dz; (5) tra crR: (6) (Area of R): (7) /xy (z. y) dy: (8) fy (a) dy. (9) 9; (10) 4; (11) 3; (12) 47. NUMERICAL Enter the correct option number for A (in fry (27, y) = $). Answer: 3 0.5 marks - Enter the correct option number for C (in VC - 27)."
+        }
+      ],
+      "numerical_answer": 9.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let (X, Y) ~ Uniform (R), where R - {(2, y) : 2ª + y? < 9, 2 > 0, y > 0). The joint distribution of X and Y is defined as fry (2, 2) - 4. where the value of A will be B. The marginal density function f/x (z) can be calculated as fx (2) = JoC- D. giving f(z) = By C-2), Consider the following options for the blanks: (1) 24; (2) g: (3) Area of R: (4) fry (z, y) dz; (5) tra crR: (6) (Area of R): (7) /xy (z. y) dy: (8) fy (a) dy. (9) 9; (10) 4; (11) 3; (12) 47. NUMERICAL Enter the correct option number for A (in fry (27, y) = $). Answer: 3 0.5 marks - Enter the correct option number for E (in f x (2) = 5VC-22)."
+        }
+      ],
+      "numerical_answer": 10.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "Statistics 2 · Quiz 2 · 05 Apr 2026 · Part 1"
+}

@@ -1,0 +1,130 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 1 · Quiz 2 · Apr 2023 · AN4 · Part 2",
+  "subject": "Mathematics 1",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the function f(x) = e. Use this information to answer the given subquestions. MSQ Which of the following options is/are true? f(x) is increasing in its domain 8 f(z) is one-one f(x) is not invertible f(x) is an even function Answer: C, D 4 marks • Find limo"
+        }
+      ],
+      "acceptable_answers": [
+        "2"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the function f(x) = e. Use this information to answer the given subquestions. MSQ Which of the following options is/are true? f(x) is increasing in its domain 8 f(z) is one-one f(x) is not invertible f(x) is an even function Answer: C, D 4 marks • Find limz-0* sin 2x"
+        }
+      ],
+      "acceptable_answers": [
+        "O"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The graph of a function f defined on [-2, 6] is given in the figure below. Use this information to answer the given subquestions. (4, 1) (4, 0.8) (-2, 0.4)• (1,0.4) ;(1.5, 0.4) (3, 0) (2, -1) • (6, -1) Figure: 3 Find the value of f'(1)."
+        }
+      ],
+      "numerical_answer": 0.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The graph of a function f defined on [-2, 6] is given in the figure below. Use this information to answer the given subquestions. (4, 1) (4, 0.8) (-2, 0.4)• (1,0.4) ;(1.5, 0.4) (3, 0) (2, -1) • (6, -1) Figure: 3 If f' (3) = 1, what is the linear approximation Ly(z) of f at z = 3? = - 3 = + 3 -= — 3"
+        }
+      ],
+      "acceptable_answers": [
+        "A"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The graph of a function f defined on [-2, 6] is given in the figure below. Use this information to answer the given subquestion. (1,0.4) (4, 1) (1, 0.8) (-2,0.4• (1.5, 0.4) (3, 0) (2, -1) • (6, -1) Figure: 1 Which of the following options is/are true? А f is one-one on [-2, 6][ 8 f is increasing on [1.5,2] / f is invertible on 2, 4)"
+        }
+      ],
+      "acceptable_answers": [
+        "C, D"
+      ],
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The graph of a function f defined on [-2, 6] is given in the figure below. Use this information to answer the given subquestions. (-2,0.1) (1,0.4) (4,1) (4, 0.8) • (1.5, 0.4) (3, 0) • (6, - 1) (2, -1) Figure: 2 Find the number of points at which f is not differentiable."
+        }
+      ],
+      "numerical_answer": 3.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The graph of a function f defined on [-2, 6] is given in the figure below. Use this information to answer the given subquestions. (-2,0.1) (1,0.4) (4,1) (4, 0.8) • (1.5, 0.4) (3, 0) • (6, - 1) (2, -1) Figure: 2 Find the number of points at which f is not continuous."
+        }
+      ],
+      "numerical_answer": 1.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The graph of a function f defined on [-2, 6] is given in the figure below. Use this information to answer the given subquestions. (-2,0.1) (1,0.4) (4,1) (4, 0.8) • (1.5, 0.4) (3, 0) • (6, - 1) (2, -1) Figure: 2 Find lim,+- f(x)."
+        }
+      ],
+      "numerical_answer": 1.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The graph of a function f defined on [-2, 6] is given in the figure below. Use this information to answer the given subquestions. (-2,0.1) (1,0.4) (4,1) (4, 0.8) • (1.5, 0.4) (3, 0) • (6, - 1) (2, -1) Figure: 2 Find lim→+ 10 f(x). < marks"
+        }
+      ],
+      "numerical_answer": 8.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "Mathematics 1 · Quiz 2 · Apr 2023 · AN4 · Part 2"
+}

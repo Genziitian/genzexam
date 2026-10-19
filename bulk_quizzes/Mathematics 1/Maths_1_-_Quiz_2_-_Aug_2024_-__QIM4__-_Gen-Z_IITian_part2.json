@@ -1,0 +1,90 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 1 · Quiz 2 · Aug 2024 · QIM4 · Part 2",
+  "subject": "Mathematics 1",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the function f(x) = 42° + 2%|z + 1| + 2 + 5. TRUE-FALSE Is the statement True or False: The function |2 + 1| f(x) is continuous at x = -1"
+        }
+      ],
+      "acceptable_answers": [
+        "True"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the function f(x) = 42° + 2%|z + 1| + 2 + 5. TRUE-FALSE Is the statement True or False: The derivative of the function f at x = 0 is 1."
+        }
+      ],
+      "acceptable_answers": [
+        "True"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the function f(x) = 42° + 2%|z + 1| + 2 + 5. Calculate the limit of the following function at 2 = 0. f(a) - [83 - 22 + 1 *20"
+        }
+      ],
+      "numerical_answer": 4.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the function f(x) = 42° + 2%|z + 1| + 2 + 5. # - 3x3 +2 Calculate the limit of the following function: f(x) = 2 - 5x3 + 3z2 + 1 at x = 1."
+        }
+      ],
+      "numerical_answer": 1.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the function f(x) = 42° + 2%|z + 1| + 2 + 5. Find the limit of the following sequence {an} such that an = 6 + 6 • 2% + 6 - 33 + ... + 6 • n?"
+        }
+      ],
+      "acceptable_answers": [
+        "1"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the function f(x) = 42° + 2%|z + 1| + 2 + 5. Find the limit of the following sequence {an) such that an = 100n° - 11 _ 100nª + 7"
+        }
+      ],
+      "numerical_answer": 0.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "Mathematics 1 · Quiz 2 · Aug 2024 · QIM4 · Part 2"
+}

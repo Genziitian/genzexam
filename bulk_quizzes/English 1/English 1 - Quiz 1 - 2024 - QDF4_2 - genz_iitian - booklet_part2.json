@@ -1,0 +1,371 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 1 · Quiz 1 · 2024 · QDF4 · Part 2",
+  "subject": "English 1",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the word without an “ii” sound from the following."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Meet"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Lead"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Wet"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Wheat"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the word with an “oo” sound from the following."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Court"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Loot"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Cat"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Feat"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which semi-vowel occurs in the transition between the words ‘me’ and ‘off’ in the sentence ‘he pushed me off the chair’?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "/w/"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "/y/"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which among the following is a word without a diphthong?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Mouth"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "South"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Pout"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Moot"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Pick the odd one out based on the initial sound: near, dear, tear, gear."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Near"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Dear"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Tear"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Gear"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Pick the odd one out based on the initial sound: peat, beat, clear, pear."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Peat"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Beat"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Clear"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Pear"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Select the option which identifies the noun in the sentence: Raghav is going for a walk."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Raghav"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Going"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "For"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the part of speech of the underlined word: They were quick to throw up their hands in surrender."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Noun"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Pronoun"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Verb"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Conjunction"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Complete sentence by choosing the correct form of the verb given in brackets: They ______ (buy) the house last year."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Buy"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Bought"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Will buy"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Buying"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the part of speech of the underlined word: The house at the end of the street was painted yellow."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Adjective"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Adverb"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Verb"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Conjunction"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 1 · Quiz 1 · 2024 · QDF4 · Part 2"
+}

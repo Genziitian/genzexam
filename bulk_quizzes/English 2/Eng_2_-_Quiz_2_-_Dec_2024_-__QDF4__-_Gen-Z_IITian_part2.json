@@ -1,0 +1,203 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 2 · Quiz 2 · Dec 2024 · Part 2",
+  "subject": "English 2",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "(ncose the correct answer tor (5). L Passage / Context Study the conversation given below and answer the subquestions that follow by filling in the blanks with the most contextually appropriate expressions. Judge: Mr. Foreperson, is it correct that the jury has reached a verdict? Foreperson: (i) _ Judge: Will the Clerk of the Court please take the verdict? (il) clerk, as to G.S.TSA-zuvu murcer in me nrst decree, wnau is the jury's verdict? Foreperson (reads): We, the jury, find the defendant, Catherine Danielle Clark, not guilty of first-degree murder of Mr. Chase Andrews. Clerk: Members of the jury, your foreperson has annoncec the following verdict: G.S.15A-2000, murder in the first degree, not guilty. (ili) _ _ Jurors (collectively): Yes Judge: If anyone said no, please raise their hand. (Nobody raises their hand.) Judge: Do you wish the jury to be polled? (No party makes an application for a poll.) Judge: (iv) _ Ms. Clark, you are free to go, and I apologize on behalf of the State for the time that vou have served. The jury is hereby discharged from the case. vi"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Fine Finesse"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Finest"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Finer"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Fill in blank (iv) with the most fitting response from the options given below. Keep in mind the setting, the tone and the subject of the conversation, and the capacities within which the speakers are interacting."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The jury seems to be of one mind here."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The jury does not uphold its verdict. / The jury upholds its verdict."
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct modal verb to fill in the blank. See the hint or context provided and choose only the most appropriate option to fill the blank. I _ collect her from the airport. Hint: Expression of Promise"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Would"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Will c May Could"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Fill in the blank with the most appropriate modal verb. The rocket._ clock a supersonic speed comfortably. (ability)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Will 8 Sha"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Might Can"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Fill in the blank with the most appropriate modal verb. _ permission, polite and formal) v May"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Will c Should"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Must _ I come in, Mr. Woodrock? (Seeking"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Fill in the blank with the most appropriate modal verb. The new team _"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "WIll _ do it. (Suggestion) Might"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Should"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "May"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the modal auxiliary in the following sentence. This might be his last gamble."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "His Might Gamble"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Last"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 2 · Quiz 2 · Dec 2024 · Part 2"
+}

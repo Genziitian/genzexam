@@ -23,6 +23,314 @@
           "value": "Required proportion = da +b +c +d"
         }
       ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let $X$ be a random variable with mean $\\mu = 10$ and variance $\\sigma^2 = 4$. What is the variance of $Y = 3X + 5$?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "36"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "12"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "17"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "4"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$\\text{Var}(aX + b) = a^2 \\text{Var}(X) = 3^2 \\times 4 = 36$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If events $A$ and $B$ are mutually exclusive with $P(A) = 0.3$ and $P(B) = 0.4$, what is $P(A \\cup B)$?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "0.7"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "0.12"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "0.58"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "0.1"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "For mutually exclusive events, $P(A \\cup B) = P(A) + P(B) = 0.3 + 0.4 = 0.7$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If $X \\sim \\text{Binomial}(n = 20, p = 0.3)$, what is the variance of $X$?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "4.2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "6.0"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1.8"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "14.0"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$\\text{Var}(X) = np(1-p) = 20 \\times 0.3 \\times 0.7 = 4.2$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If $X \\sim \\text{Poisson}(\\lambda = 3)$, what is $P(X = 0)$?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$e^{-3}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$3e^{-3}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$1 - e^{-3}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "0"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "For Poisson distribution, $P(X = k) = \\frac{\\lambda^k e^{-\\lambda}}{k!}$. For $k = 0$, $P(X=0) = e^{-3}$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If $P(A) = 0.5$, $P(B) = 0.4$, and events $A$ and $B$ are independent, what is $P(A \\cap B)$?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "0.20"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "0.90"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "0.10"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "0.70"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "For independent events, $P(A \\cap B) = P(A) \\times P(B) = 0.5 \\times 0.4 = 0.20$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let $X \\sim \\text{Uniform}(2, 8)$. What is $P(3 < X < 6)$?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "0.5"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "0.3"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "0.6"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "0.25"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "For $X \\sim U(a, b)$, $P(c < X < d) = \\frac{d - c}{b - a} = \\frac{6 - 3}{8 - 2} = \\frac{3}{6} = 0.5$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let $X$ and $Y$ be any two random variables with $E[X] = 4$ and $E[Y] = 5$. What is $E[3X - 2Y + 7]$?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "9"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "7"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "11"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "29"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "By linearity of expectation, $E[3X - 2Y + 7] = 3(4) - 2(5) + 7 = 12 - 10 + 7 = 9$."
+        }
+      ]
     }
   ],
   "week": 4

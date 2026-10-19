@@ -1,0 +1,321 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 1 · Quiz 1 · 05 Jun 2022 · QPB1 · Part 2",
+  "subject": "English 1",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following telephone conversation and answer the given subquestions: A: Hello! I am from SMACK. I have an order to deliver at your place. B: Hello! (i) ____________. A: Hello! Am I audible now? B: No. I can (ii) ____________. A: I am getting a call from another number. (iii) ________. B: Alright. Please (iv) ____________.\n\nQuestion:\nWhat is the meaning of “savvy”?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Having a surface-level understanding of something"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Having a good, practical understanding of something"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Having a theoretical understanding of something"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Having great expertise, both theoretical and practical, in a particular field"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following telephone conversation and answer the given subquestions: A: Hello! I am from SMACK. I have an order to deliver at your place. B: Hello! (i) ____________. A: Hello! Am I audible now? B: No. I can (ii) ____________. A: I am getting a call from another number. (iii) ________. B: Alright. Please (iv) ____________.\n\nQuestion:\nComplete blank (i) with an appropriate response."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "How may I help you?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Your voice is breaking."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "I will talk to you later."
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following telephone conversation and answer the given subquestions: A: Hello! I am from SMACK. I have an order to deliver at your place. B: Hello! (i) ____________. A: Hello! Am I audible now? B: No. I can (ii) ____________. A: I am getting a call from another number. (iii) ________. B: Alright. Please (iv) ____________.\n\nQuestion:\nComplete blank (ii) with an appropriate response."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Hear you on and off"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Pass on the message"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Continue the conversation"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following telephone conversation and answer the given subquestions: A: Hello! I am from SMACK. I have an order to deliver at your place. B: Hello! (i) ____________. A: Hello! Am I audible now? B: No. I can (ii) ____________. A: I am getting a call from another number. (iii) ________. B: Alright. Please (iv) ____________.\n\nQuestion:\nComplete blank (iii) with an appropriate response."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Thanks for calling."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "How may I help you?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Could you hold for a second?"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following telephone conversation and answer the given subquestions: A: Hello! I am from SMACK. I have an order to deliver at your place. B: Hello! (i) ____________. A: Hello! Am I audible now? B: No. I can (ii) ____________. A: I am getting a call from another number. (iii) ________. B: Alright. Please (iv) ____________.\n\nQuestion:\nComplete blank (iv) with an appropriate response."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Call me back"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Cut off the call"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Hang on for a moment"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nMatch Column A with suitable options in Column B. (Hint: word collocation).\n\nQuestion:\nWhich among the following expressions in telephone conversation refer to ‘inaudibility’?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Break up"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Cut off"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Hear out"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "All Break up, Cut off, and Hear out"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Only Break up and Cut off"
+          }
+        ]
+      ],
+      "correct_answer": 4,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nMatch Column A with suitable options in Column B. (Hint: word collocation).\n\nQuestion:\nReliable"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "a"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "b"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "c"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "d"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "e"
+          }
+        ]
+      ],
+      "correct_answer": 4,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nMatch Column A with suitable options in Column B. (Hint: word collocation).\n\nQuestion:\nAnuradha is ________ excellent singer."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "A"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "An"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "No article"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nMatch Column A with suitable options in Column B. (Hint: word collocation).\n\nQuestion:\nMichelangelo hated painting the Sistine Chapel and wrote ___ poem about it."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "An"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 1 · Quiz 1 · 05 Jun 2022 · QPB1 · Part 2"
+}

@@ -42,6 +42,7 @@ class IDEController extends Controller
                 'difficulty',
                 'week_number',
                 'language',
+                'sort_order',
             ]);
 
         $grouped = $problems
@@ -135,6 +136,7 @@ class IDEController extends Controller
                 'input' => $normalizedInput,
                 'expected' => $normalizedExpected,
                 'got' => $got,
+                'error' => trim((string) ($execution['stderr'] ?? '')),
                 'passed' => $got === $expected,
             ];
         }
@@ -205,6 +207,7 @@ class IDEController extends Controller
                     'input' => $normalizedInput,
                     'expected' => $normalizedExpected,
                     'got' => $got,
+                    'error' => $stderr,
                     'passed' => $passed,
                     'is_hidden' => false,
                 ];

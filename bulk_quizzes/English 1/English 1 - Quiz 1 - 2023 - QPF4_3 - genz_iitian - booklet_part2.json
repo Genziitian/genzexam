@@ -1,0 +1,377 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 1 · Quiz 1 · 16 JULY 2023 · QPF4 · Part 2",
+  "subject": "English 1",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which among the following words has a diphthong?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Bottle"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Boycott"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Bail"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both Boycott and Bail"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which among the following carry the long vowel /uu/?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Through"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Blue"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Too"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Flew"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "All of these"
+          }
+        ]
+      ],
+      "correct_answer": 4,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Two consonants next to one another within a syllable make a cluster."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "TRUE"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "FALSE"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which among the following is a word without a diphthong?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Loiter"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Stew"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Maiden"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following is <b>NOT</b> an Abstract Noun?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Goodness"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Youth"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Poverty"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Parliament"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the noun in the following sentence: Working hard can bring you success."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Working"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Hard"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Bring"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Success"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Fill in the blank with the most appropriate interrogative pronoun. ______ wrote ‘The Canterbury Tales’ ?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Whose"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "How"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Who"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Which"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Don’t ________me you’ve lost your keys again."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Say"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Tell"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Speak"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Inform"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Fill in the blank with an appropriate verb. The teacher, as well as the students, _______responsible for the agitation in the school campus."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Are"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Is"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Shall"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Were"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the part of speech the underlined word belongs to. She yelled when she hit her toe."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Verb"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Noun"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Conjunction"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Adverb"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 1 · Quiz 1 · 16 JULY 2023 · QPF4 · Part 2"
+}

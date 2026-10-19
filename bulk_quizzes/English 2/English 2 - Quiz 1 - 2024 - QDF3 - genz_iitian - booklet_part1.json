@@ -1,0 +1,389 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 2 · Quiz 1 · 25 Feb 2024 · QDF3 · Part 1",
+  "subject": "English 2",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nShara Hughes Interview [i] _____, I grew up with three older brothers, and they always left me out. [ii] _____ I was always kind of independent playing [sic] (laughs). I quickly learned to be alone a lot in a place that was chaotic in a lot of ways. Not to say that we didn’t get along; we did. I had a great family. But I think that I took a class in high school and it was a sculpture class and I remember…[my] having some kind of ideas and that was to make a sculpture in metals and wire and everyone else had [iii] _____ these paper sculptures, but the teacher didn’t let me know that I was thinking differently until the end [when] we had our final project-do and mine was this huge like clock that had numbers coming off into the air [iv] _____ and everyone else had cardboard and paper and I was like… felt really embarrassed, and then they told me “Actually, this is great. Let’s encourage it. You think differently, so embrace that.” So I think that I kind of have a natural tendency towards visual kind of…inventions (laughs). But, [v] _____ in high school I kind of really decided I wanted to pursue going to art school. And from there, I kind of felt like it was no turning back [sic], which I think was stubborn, but that is sort of how you have to be an artist. Transcribed from: “Shara Hughes Interview: Changing the Way We See.” Based on the above data, answer the given subquestions.\n\nQuestion:\nFill in blank [i] with the most fitting discourse marker among the options given below."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Wow"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Overall"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Well"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Absolutely"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nShara Hughes Interview [i] _____, I grew up with three older brothers, and they always left me out. [ii] _____ I was always kind of independent playing [sic] (laughs). I quickly learned to be alone a lot in a place that was chaotic in a lot of ways. Not to say that we didn’t get along; we did. I had a great family. But I think that I took a class in high school and it was a sculpture class and I remember…[my] having some kind of ideas and that was to make a sculpture in metals and wire and everyone else had [iii] _____ these paper sculptures, but the teacher didn’t let me know that I was thinking differently until the end [when] we had our final project-do and mine was this huge like clock that had numbers coming off into the air [iv] _____ and everyone else had cardboard and paper and I was like… felt really embarrassed, and then they told me “Actually, this is great. Let’s encourage it. You think differently, so embrace that.” So I think that I kind of have a natural tendency towards visual kind of…inventions (laughs). But, [v] _____ in high school I kind of really decided I wanted to pursue going to art school. And from there, I kind of felt like it was no turning back [sic], which I think was stubborn, but that is sort of how you have to be an artist. Transcribed from: “Shara Hughes Interview: Changing the Way We See.” Based on the above data, answer the given subquestions.\n\nQuestion:\nFill in blank [ii] with the most fitting discourse marker among the options given below."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Okay"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "So I feel like"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "In other words"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "I see"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nShara Hughes Interview [i] _____, I grew up with three older brothers, and they always left me out. [ii] _____ I was always kind of independent playing [sic] (laughs). I quickly learned to be alone a lot in a place that was chaotic in a lot of ways. Not to say that we didn’t get along; we did. I had a great family. But I think that I took a class in high school and it was a sculpture class and I remember…[my] having some kind of ideas and that was to make a sculpture in metals and wire and everyone else had [iii] _____ these paper sculptures, but the teacher didn’t let me know that I was thinking differently until the end [when] we had our final project-do and mine was this huge like clock that had numbers coming off into the air [iv] _____ and everyone else had cardboard and paper and I was like… felt really embarrassed, and then they told me “Actually, this is great. Let’s encourage it. You think differently, so embrace that.” So I think that I kind of have a natural tendency towards visual kind of…inventions (laughs). But, [v] _____ in high school I kind of really decided I wanted to pursue going to art school. And from there, I kind of felt like it was no turning back [sic], which I think was stubborn, but that is sort of how you have to be an artist. Transcribed from: “Shara Hughes Interview: Changing the Way We See.” Based on the above data, answer the given subquestions.\n\nQuestion:\nFill in blank [iii] with the most fitting discourse marker among the options given below."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Sort of like"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Hands down"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "All in all"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Overall"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nShara Hughes Interview [i] _____, I grew up with three older brothers, and they always left me out. [ii] _____ I was always kind of independent playing [sic] (laughs). I quickly learned to be alone a lot in a place that was chaotic in a lot of ways. Not to say that we didn’t get along; we did. I had a great family. But I think that I took a class in high school and it was a sculpture class and I remember…[my] having some kind of ideas and that was to make a sculpture in metals and wire and everyone else had [iii] _____ these paper sculptures, but the teacher didn’t let me know that I was thinking differently until the end [when] we had our final project-do and mine was this huge like clock that had numbers coming off into the air [iv] _____ and everyone else had cardboard and paper and I was like… felt really embarrassed, and then they told me “Actually, this is great. Let’s encourage it. You think differently, so embrace that.” So I think that I kind of have a natural tendency towards visual kind of…inventions (laughs). But, [v] _____ in high school I kind of really decided I wanted to pursue going to art school. And from there, I kind of felt like it was no turning back [sic], which I think was stubborn, but that is sort of how you have to be an artist. Transcribed from: “Shara Hughes Interview: Changing the Way We See.” Based on the above data, answer the given subquestions.\n\nQuestion:\nFill in blank [iv] with the most fitting discourse marker among the options given below."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "In a nutshell"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "So I guess"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To my knowledge"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "And everything"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nShara Hughes Interview [i] _____, I grew up with three older brothers, and they always left me out. [ii] _____ I was always kind of independent playing [sic] (laughs). I quickly learned to be alone a lot in a place that was chaotic in a lot of ways. Not to say that we didn’t get along; we did. I had a great family. But I think that I took a class in high school and it was a sculpture class and I remember…[my] having some kind of ideas and that was to make a sculpture in metals and wire and everyone else had [iii] _____ these paper sculptures, but the teacher didn’t let me know that I was thinking differently until the end [when] we had our final project-do and mine was this huge like clock that had numbers coming off into the air [iv] _____ and everyone else had cardboard and paper and I was like… felt really embarrassed, and then they told me “Actually, this is great. Let’s encourage it. You think differently, so embrace that.” So I think that I kind of have a natural tendency towards visual kind of…inventions (laughs). But, [v] _____ in high school I kind of really decided I wanted to pursue going to art school. And from there, I kind of felt like it was no turning back [sic], which I think was stubborn, but that is sort of how you have to be an artist. Transcribed from: “Shara Hughes Interview: Changing the Way We See.” Based on the above data, answer the given subquestions.\n\nQuestion:\nFill in blank [v] with the most fitting discourse marker among the options given below."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Amazing"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "I don’t think"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "I think maybe like later on"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "I don’t suppose"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "He assigned me an incomplete task. The number of complements in this sentence is/are"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "One"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Two"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Three"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Zero"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘Richard sits on his couch and broods.’ This sentence is in:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Present perfect tense"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Simple past tense"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Past perfect tense"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Simple present tense"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In the sentence ‘The wind was touching the surface of the Thames and carrying the cold water into the sky in a fine and driving spray’, the suffix -ing added to the verb ‘touch’ indicates:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The indefiniteness of the action of touching"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The continuity of the action of touching in past time"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The continuity of the action of touching in future time"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The indefiniteness of the action of touching in past time"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the adjectival clause in the following sentence and the noun it modifies. The book, which was written by a famous author, became a bestseller."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Adjectival clause: which was written by a famous author, Noun: book"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Adjectival clause: became a bestseller, Noun: book"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Adjectival clause: which was written by a famous author, Noun: author"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of these"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In the following sentence, identify the nature of the adjective. The adjective is underlined. ‘Racewalking is faster than normal walking.’"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Adjunctive, imaginative"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Innovative, attributive"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Predicative, attributive"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Predicative, indicative"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 2 · Quiz 1 · 25 Feb 2024 · QDF3 · Part 1"
+}

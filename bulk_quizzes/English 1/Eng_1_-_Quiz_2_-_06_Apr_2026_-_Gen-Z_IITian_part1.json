@@ -1,0 +1,233 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 1 · Quiz 2 · 06 Apr 2026 · Part 1",
+  "subject": "English 1",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What happens when another company invents a better product? Both companies share profits equally"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The old company continues to dominate The new company replaces the old one and earns profits"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The government benefits, not the companies"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "According to the passage, what is the purpose of a patent? To prevent consumers from buying competing products To grant monopoly rights to a company for its innovation"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "To stop technological advancement"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To increase government control over companies"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the main goal of the Aghion-Howitt model?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "To discourage monopolies in technology"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To identify which countries innovate the fastest"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To promote government control over innovation V To understand the measures which can determine the optimum R&D level"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Why should R&D be subsidised, according to the first trend? Because society benefits even from outdated technologies MCO The phrase \"rises to the top of the chain\" refers to As per the second trend, when can an R&D investment be considered too high? It companies stop making profit It governments overregulate research It new innovations give very little benefit to society"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Because politicians give handouts"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "because aovernments control innovationi"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Because R&D is harmful to the economy"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "company that becomes the industry leader"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "company that stops investing in R&D"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "An innovation which is old"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "If patents last too long"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "MCO What does the term creative destruction mean in the passage? Innovation that strengthens old companies Innovation that replaces old technologies cu marks"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Destruction caused by natural disasters"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Reduction of company profits due to taxes"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which statement best summarises the two trends in the passage? L Passage / Context Read the excerpt given below and fill in the blanks with those forms of the verbs which best fit the passage from the options provided. Your chosen answer should maintain the tense consistency of the excerpt. In an evil hour, my father had received my letter, containing my eloquent and detailed apology for declining a place in the firm, and I (i. summoned home in all haste, his chief ambition being that I should succeed, not merely to his fortune, but to the views and plans by which he (ii) he could extend and perpetuate that wealthy inheritance. I (iii) _ how deeply my father's happiness was involved, and with something of his own pertinacity, had formed a determination precisely contrary, not conceiving that I should increase my own happiness by augmenting a fortune which I (iv) _ _ was already sufficient. My father cut the matter short: when he was my age, his father (v) him out and settled his legal inheritance on his younger brother, and one of that brother's sons would take my place if I crossed him any further. Extracted from: Mee, Arthur, and J. A. Hammerton, editors. The World's Greatest Books: Vol. VIll - Fiction. Based on the above data, answer the given subquestions."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Both trends discourage R&D investment One supports R&D subsidies, the other questions them"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both suggest that R&D should be taxed"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Neither trend affects economic growth"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the appropriate verb form to fill blank (iv). Am believing Believed"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Was believing"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Will have been believing"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 1 · Quiz 2 · 06 Apr 2026 · Part 1"
+}

@@ -1,0 +1,130 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Sept 25 Quiz2 · Part 2",
+  "subject": "Business Analytics",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the sensitivity of the ADDS? (Note: Enter the answer as a numeric percentage value rounded to two decimal places without the % symbol. For example, if your answer is “10.256 %”, enter it as “10.26”)"
+        }
+      ],
+      "numerical_answer": 90.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many decision variables are present in the standard form of the primal for the given problem? (Note: Enter the answer rounded to two decimal places. For example, if the answer is “1.234”, then enter it as “1.23”)"
+        }
+      ],
+      "numerical_answer": 5.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Based on the standard form of the primal, how many decision variables will be present in the dual formulation? (Note: Enter the answer rounded to two decimal places. For example, if the answer is “1.234”, then enter it as “1.23”)"
+        }
+      ],
+      "numerical_answer": 11.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Say the owner purchases 700 Apples, 800 Bananas, 500 Oranges, 500 Mangoes and 600 Guavas. Then how many constraints in the standard form of the primal will be binding? (Note: Enter the answer rounded to two decimal places. For example, if the answer is “1.234”, then enter it as “1.23”)"
+        }
+      ],
+      "numerical_answer": 2.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Say the owner purchases 700 Apples, 800 Bananas, 500 Oranges, 500 Mangoes and 600 Guavas. Then what is the value of the objective function? (Note: Enter the answer rounded to two decimal places. For example, if the answer is “1.234”, then enter it as “1.23”) Question Id : 6406531828406 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix You perform a Chi-square Test of Independence on a contingency table with 6 rows and 7 columns. The value of the computed test statistic is 30.24. Given this information and the Figure-1 below. Answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "36388 to 36402"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "At a 5% confidence level, what is the value of the tabulated test statistic? (Note: If your answer is in decimal, enter it rounded to two decimal places. For example, if your answer is “10.256”, enter it as “10.26”)"
+        }
+      ],
+      "acceptable_answers": [
+        "18.48 to 18.50"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Based on Figure-1, up to what (maximum) level of significance will the null hypothesis be rejected? (Note: Enter the answer as a numeric percentage value rounded to two decimal places without the % symbol. For example, if your answer is “10.256 %”, enter it as “10.26”)"
+        }
+      ],
+      "numerical_answer": 50.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the elasticity of the curve? (Note: If your answer is in decimal, enter it rounded to two decimal places. For example, if your answer is “10.256”, enter it as “10.26”)"
+        }
+      ],
+      "acceptable_answers": [
+        "0.33 to 0.37"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the value of the “constant” in the non-linear demand response curve function? (Note: If your answer is in decimal, enter it rounded to two decimal places. For example, if your answer is “10.256”, enter it as “10.26”)"
+        }
+      ],
+      "acceptable_answers": [
+        "17298 to 17304"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "Sept 25 Quiz2 · Part 2"
+}

@@ -1,0 +1,101 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Statistics 2 · Quiz 2 · Nov 2022 · ANS · Part 2",
+  "subject": "Statistics 2",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let X be a random variable denoting the survival time (in years) of patients after the treatment of a certain disease. It is known that Y is exponentially distributed with a mean of 2 years. Ecosystem What is the probability that a patient selected at random (who went through the treatment) will survive for more than 2 years? fern"
+        }
+      ],
+      "acceptable_answers": [
+        "B"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let X be a random variable denoting the survival time (in years) of patients after the treatment of a certain disease. It is known that Y is exponentially distributed with a mean of 2 years. Ecosystem Find P(X > 6 | X > 4)."
+        }
+      ],
+      "numerical_answer": 0.365,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In a telecom system, each data file consists of 400 bits. Due to noise, each data bit received may have an error with probability 0.1. It is assumed that bit errors occur independently. Suppose Y represents the total number of bits without an error in a certain data file. Which of the following is true?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Y ~ Bernoulli (0.9) 8 Y ~ Bernoulli(0.1) Y ~ Binomial (400, 0.9)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Y ~ Binomial (400, 0.1)"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In a telecom system, each data file consists of 400 bits. Due to noise, each data bit received may have an error with probability 0.1. It is assumed that bit errors occur independently. Using Central limit theorem, find the approximate probability that there are more than 45 errors in a certain data file. Enter the"
+        }
+      ],
+      "numerical_answer": 0.2,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let X denote the stock price (in units of hundred rupees) of a company A and let Y denote the stock price (in units of hundred rupees) of company 8. The joint density function of X and Y is given below. xy (2. 9) = 10 otherwise Find the value of 8c."
+        }
+      ],
+      "numerical_answer": 2.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let X denote the stock price (in units of hundred rupees) of a company A and let Y denote the stock price (in units of hundred rupees) of company 8. The joint density function of X and Y is given below. xy (2. 9) = 10 otherwise Find the probability that the stock price of A will be higher than that of 8. Enter the answer correct to two decimal places."
+        }
+      ],
+      "numerical_answer": 0.33,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "Statistics 2 · Quiz 2 · Nov 2022 · ANS · Part 2"
+}

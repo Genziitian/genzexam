@@ -1,0 +1,247 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 1 · Quiz 2 · Dec 2024 · Part 1",
+  "subject": "English 1",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the meaning of chuckle? To laugh quietly"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "To laugh loudly c To grimace"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To cry loudly"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the meaning of collaboration? Working with someone"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Working alone c Working at the same lab"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Being left alone"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "MCO How many years had the author spent in El Salvador? One vear ¿ marks"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Three months Almost three years"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Twelve months"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What were the large buses on the highway used as earlier?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "As laundry vehicles in the United States"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "As mail vehicles in the United States As school buses in the United States"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of these"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The thief by the time you reach the spot."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Are hosting"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Had forgotten"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Would not recognize"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Would have been Will have escaped"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "She me even if she were to see me. Are hosting"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Had forgotten Would not recognize"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Would have been"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Will have escaped"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The students __ ready for the class if attendance was made compulsory."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Are hosting"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Had forgotten c Would not recognize Would have been"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Will have escaped"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "They their friends and family for Christmas. Are hosting"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Had forgotten Would not recognize Would have been"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Will have escaped"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 1 · Quiz 2 · Dec 2024 · Part 1"
+}

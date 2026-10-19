@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Attempt;
+use App\Models\Question;
 use App\Models\Quiz;
 use App\Support\StudentAppMode;
 use Illuminate\Http\JsonResponse;
@@ -91,6 +92,35 @@ class QuizController extends Controller
                     'position' => $option->position,
                 ])->values(),
             ])->values(),
+        ]);
+    }
+
+    /**
+     * Answer key for the paper room's practice mode (reveal answer / explanation).
+     * Uses show() for the same access rules (course, approval, purchase) before anything is returned.
+     */
+    public function practiceAnswers(Request $request, int $id): JsonResponse
+    {
+        $gate = $this->show($request, $id);
+        if ($gate->getStatusCode() !== 200) {
+            return $gate;
+        }
+
+        $questions = Question::query()
+            ->where('quiz_id', $id)
+            ->with(['questionOptions', 'shortAnswerAcceptables'])
+            ->get();
+
+        return response()->json([
+            'answers' => $questions->mapWithKeys(fn (Question $q) => [
+                $q->id => [
+                    'correct_option_ids' => $q->questionOptions->where('is_correct', true)->pluck('id')->values(),
+                    'numerical_answer' => $q->numerical_answer,
+                    'numerical_tolerance' => $q->numerical_tolerance,
+                    'short_answers' => $q->shortAnswerAcceptables->pluck('acceptable_text')->values(),
+                    'explanation' => $q->explanation,
+                ],
+            ]),
         ]);
     }
 

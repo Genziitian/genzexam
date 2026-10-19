@@ -47,7 +47,8 @@
         "expected_output": "True",
         "is_hidden": true
       }
-    ]
+    ],
+    "section": 1
   },
   {
     "title": "OPPE 1 (2025 Jan) Set 5 · P2: Get Next Roll Number",
@@ -92,7 +93,8 @@
         "expected_output": "20f1000010",
         "is_hidden": true
       }
-    ]
+    ],
+    "section": 1
   },
   {
     "title": "OPPE 1 (2025 Jan) Set 5 · P3: Check If a String has No Vowels in Even Indices",
@@ -152,7 +154,8 @@
         "expected_output": "True",
         "is_hidden": true
       }
-    ]
+    ],
+    "section": 1
   },
   {
     "title": "OPPE 1 (2025 Jan) Set 5 · P4: Find Minimum Card of a Specific Suit in Hand",
@@ -207,7 +210,8 @@
         "expected_output": "D10",
         "is_hidden": true
       }
-    ]
+    ],
+    "section": 2
   },
   {
     "title": "OPPE 1 (2025 Jan) Set 5 · P5: Score Objective Questions",
@@ -247,7 +251,8 @@
         "expected_output": "5 2",
         "is_hidden": true
       }
-    ]
+    ],
+    "section": 2
   },
   {
     "title": "OPPE 1 (2025 Jan) Set 5 · P6: Key Stroke Analysis",
@@ -312,7 +317,8 @@
         "expected_output": "2.0",
         "is_hidden": true
       }
-    ]
+    ],
+    "section": 3
   },
   {
     "title": "OPPE 1 (2025 Jan) Set 5 · P7: Hexagon",
@@ -352,6 +358,7 @@
         "expected_output": "    @@@@@\n   @@@@@@@\n  @@@@@@@@@\n @@@@@@@@@@@\n@@@@@@@@@@@@@\n @@@@@@@@@@@\n  @@@@@@@@@\n   @@@@@@@\n    @@@@@",
         "is_hidden": true
       }
-    ]
+    ],
+    "section": 3
   }
 ]

@@ -1,0 +1,333 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Python Programming · Quiz 1 · 25 Feb 2024 · QDF2 · Part 2",
+  "subject": "Python Programming",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following snippet of code. The output of this code is `Indian`. Answer the given subquestions."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "a = int(input())\nb = int(input())\nstring = 'IAmAnIndianCitizen'\nprint(string[a:b])"
+        },
+        {
+          "kind": "text",
+          "value": "What is the value of a, the first input entered by the user, if it is given that the user entered a positive integer?"
+        }
+      ],
+      "numerical_answer": 5,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "In 'IAmAnIndianCitizen', the substring 'Indian' begins at index 5, so a = 5 gives string[5:11] = 'Indian'."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following snippet of code. The output of this code is `Indian`. Answer the given subquestions."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "a = int(input())\nb = int(input())\nstring = 'IAmAnIndianCitizen'\nprint(string[a:b])"
+        },
+        {
+          "kind": "text",
+          "value": "What is the value of b, the second input entered by the user, if it is given that the user entered a positive integer?"
+        }
+      ],
+      "numerical_answer": 11,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "'Indian' has 6 characters starting at index 5, so it ends just before index 11; string[5:11] = 'Indian'. Hence b = 11."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following snippet of code and answer the subquestions."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "L = [4, 1, 3, 2, 4, 0, 4, 3, 1, 3, 4]\nn = max(L)  # finds the maximum element in L\nP = []\nfor x in range(n + 1):\n    P.append(0)\nfor x in L:\n    P[x] += 1\nprint(P)\n#######################################\n#######################################\nmnum, mval = 0, P[0]\nfor i in range(len(P)):\n    if P[i] > mval:\n        mval = P[i]\n        mnum = i\nprint(mnum)"
+        },
+        {
+          "kind": "text",
+          "value": "What is the first line of output?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "[4, 1, 3, 2, 4, 0, 4, 3, 1, 3, 4]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[0, 1, 2, 3, 4]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[0, 0, 0, 0, 0]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[1, 2, 1, 3, 4]"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "P counts occurrences of each value 0..4 in L. 0 appears once, 1 twice, 2 once, 3 three times, 4 four times → P = [1, 2, 1, 3, 4]."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following snippet of code and answer the subquestions."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "L = [4, 1, 3, 2, 4, 0, 4, 3, 1, 3, 4]\nn = max(L)  # finds the maximum element in L\nP = []\nfor x in range(n + 1):\n    P.append(0)\nfor x in L:\n    P[x] += 1\nprint(P)\n#######################################\n#######################################\nmnum, mval = 0, P[0]\nfor i in range(len(P)):\n    if P[i] > mval:\n        mval = P[i]\n        mnum = i\nprint(mnum)"
+        },
+        {
+          "kind": "text",
+          "value": "What is the second line of the output? Enter an integer as your answer."
+        }
+      ],
+      "numerical_answer": 4,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "mnum is the index of the largest count in P = [1, 2, 1, 3, 4]; the maximum count 4 is at index 4, so mnum = 4."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Execute the following snippet of code and answer the subquestions that follow."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "num = '1263.871945'\nstart = False\nout = ''  # empty string\nloop_counter = 0\nfor x in num:\n    loop_counter = loop_counter + 1\n    if x == '.':\n        start = True\n        trunc = -1\n    if start:\n        trunc += 1\n        if trunc == 3:\n            break\n    out = out + x\nprint(loop_counter)\nprint(float(out))"
+        },
+        {
+          "kind": "text",
+          "value": "What is the first line of the output?"
+        }
+      ],
+      "numerical_answer": 8,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "loop_counter increments once per character processed. Characters: '1','2','6','3','.','8','7','1' — at the 8th character trunc reaches 3 and the loop breaks. loop_counter = 8."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Execute the following snippet of code and answer the subquestions that follow."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "num = '1263.871945'\nstart = False\nout = ''  # empty string\nloop_counter = 0\nfor x in num:\n    loop_counter = loop_counter + 1\n    if x == '.':\n        start = True\n        trunc = -1\n    if start:\n        trunc += 1\n        if trunc == 3:\n            break\n    out = out + x\nprint(loop_counter)\nprint(float(out))"
+        },
+        {
+          "kind": "text",
+          "value": "What is the second line of the output?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "1263.87"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1263"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1263.871"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1263.8719"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "out accumulates characters until two digits after the decimal point are kept ('1263.87'); float('1263.87') = 1263.87."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Execute the following snippet of code and answer all the subquestions that follow."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "P = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]\nQ = []\nR = []\nfor i in range(len(P)):\n    x = 0\n    y = 0\n    for j in range(len(P)):\n        x = x + P[i][j]\n        y = y + P[j][i]\n    Q.append(x)\n    R.append(y)\nprint(Q)\nprint(R)"
+        },
+        {
+          "kind": "text",
+          "value": "What is the first line of the output?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "[6, 15, 24]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[12, 15, 18]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[1, 5, 9]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[3, 5, 7]"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Q holds row sums of P: 1+2+3=6, 4+5+6=15, 7+8+9=24 → [6, 15, 24]."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Execute the following snippet of code and answer all the subquestions that follow."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "P = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]\nQ = []\nR = []\nfor i in range(len(P)):\n    x = 0\n    y = 0\n    for j in range(len(P)):\n        x = x + P[i][j]\n        y = y + P[j][i]\n    Q.append(x)\n    R.append(y)\nprint(Q)\nprint(R)"
+        },
+        {
+          "kind": "text",
+          "value": "What is the second line of the output?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "[6, 15, 24]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[12, 15, 18]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[1, 5, 9]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[3, 5, 7]"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "R holds column sums of P: 1+4+7=12, 2+5+8=15, 3+6+9=18 → [12, 15, 18]."
+        }
+      ]
+    }
+  ],
+  "title": "Python Programming · Quiz 1 · 25 Feb 2024 · QDF2 · Part 2"
+}

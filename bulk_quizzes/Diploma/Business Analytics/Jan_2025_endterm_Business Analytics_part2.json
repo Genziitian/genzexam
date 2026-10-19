@@ -1,0 +1,134 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Jan 2025 Endterm · Part 2",
+  "subject": "Business Analytics",
+  "section": "endterm",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the value of the computed test statistic for the statistical test that is to be performed by Ms. Teddy to very her claim? (Note: Enter the answer rounded to two decimal places. For example, if the answer is “1.234”, then enter it as “1.23”)"
+        }
+      ],
+      "acceptable_answers": [
+        "589.00 to 592.00"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many degrees of freedom is present for the test statistic that is to be conducted by Ms. Teddy? (Note: Enter an INTEGER answer) Question Id : 6406531231518 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix (The following is a purely imaginary scenario) The relationship between Demand “D” and Selling Price “P” is given by the equation D(p) = 780 – 9*P. Then answer the given sub-questions. Sub questions"
+        }
+      ],
+      "numerical_answer": 4.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If the intention is to maximize the profit, then what is the optimal selling price if the item is going to be made at Rs. 30 per unit? (Note: Enter the answer rounded to two decimal places. For example, if the answer is “1.234”, then enter it as “1.23”)"
+        }
+      ],
+      "acceptable_answers": [
+        "58.00 to 59.00"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the maximum profit that can be generated? (Note: Enter the answer rounded to two decimal places. For example, if the answer is “1.234”, then enter it as “1.23”) As a Business Analyst, we are trying to find the DMUs that are efficient, where there are 2 outputs (Number of Leads & Sales) and one constant input. Based on the graph given in Figure-4 below, answer the given sub-questions Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "20424.00 to 20425.00 Question Id : 6406531231537 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the probability that a new policyholder will have an accident within a year of purchasing a policy? (Note: Enter the answer rounded to two decimal places. For example, if the answer is “1.234”, then enter it as “1.23”)"
+        }
+      ],
+      "acceptable_answers": [
+        "0.25 to 0.27"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Suppose a new policyholder has an accident within a year of purchasing a policy. Then, what is the probability that the person is accident prone? (Note: Enter the answer rounded to two decimal places. For example, if the answer is “1.234”, then enter it as “1.23”) Question Id : 6406531231528 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix A fintech company wants to assess the performance of its classification model, which predicts loan approval (positive class) or rejection (negative class). Table 3 presents the data used for model development, while Table 4 provides the estimated coefficients from the logistic regression model. To validate the model, the actual loan decisions made by the fintech company are shown in Table 5. Based on the provided data, answer the given sub-questions Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "0.44 to 0.48"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the precision of class 1? (Note: Enter the answer in percentage rounded to two decimal places. For example, if the answer is “10.235%”, then enter it as “10.24”)"
+        }
+      ],
+      "acceptable_answers": [
+        "33.32 to 33.34"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the sensitivity of the model? (Note: Enter the answer in percentage rounded to two decimal places. For example, if the answer is “10.235%”, then enter it as “10.24”)"
+        }
+      ],
+      "acceptable_answers": [
+        "49.95 to 50.05"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the specificity of the model? (Note: Enter the answer in percentage rounded to two decimal places. For example, if the answer is “10.235%”, then enter it as “10.24”)"
+        }
+      ],
+      "acceptable_answers": [
+        "49.95 to 50.05"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "Jan 2025 Endterm · Part 2"
+}

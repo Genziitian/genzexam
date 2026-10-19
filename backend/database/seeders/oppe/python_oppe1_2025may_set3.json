@@ -52,7 +52,8 @@
         "expected_output": "[1, 1, 1, 1, 1, 1, 1]",
         "is_hidden": true
       }
-    ]
+    ],
+    "section": 1
   },
   {
     "title": "OPPE 1 (2025 May) Set 3 · P2: Compute Polynomial Value",
@@ -102,7 +103,8 @@
         "expected_output": "19",
         "is_hidden": true
       }
-    ]
+    ],
+    "section": 1
   },
   {
     "title": "OPPE 1 (2025 May) Set 3 · P3: Update Todo List Based on Given Indices",
@@ -142,7 +144,8 @@
         "expected_output": "- [x] one [ ] item\n- [x] two",
         "is_hidden": true
       }
-    ]
+    ],
+    "section": 1
   },
   {
     "title": "OPPE 1 (2025 May) Set 3 · P4: Batsman Performance Analysis",
@@ -202,7 +205,8 @@
         "expected_output": "[2011]",
         "is_hidden": true
       }
-    ]
+    ],
+    "section": 2
   },
   {
     "title": "OPPE 1 (2025 May) Set 3 · P5: Horizontal Bar Chart",
@@ -242,7 +246,8 @@
         "expected_output": "same:####\nname:####",
         "is_hidden": true
       }
-    ]
+    ],
+    "section": 2
   },
   {
     "title": "OPPE 1 (2025 May) Set 3 · P6: Double First and Last Elements in a List",
@@ -287,7 +292,8 @@
         "expected_output": "['x', 'x', 1, None, 2.5, 2.5]\nTrue",
         "is_hidden": true
       }
-    ]
+    ],
+    "section": 3
   },
   {
     "title": "OPPE 1 (2025 May) Set 3 · P7: Extract Email Username",
@@ -332,6 +338,7 @@
         "expected_output": "'first.last_99'",
         "is_hidden": true
       }
-    ]
+    ],
+    "section": 3
   }
 ]

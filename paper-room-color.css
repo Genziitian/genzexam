@@ -38,9 +38,11 @@
 #ep-app #pr-timer-dot:not([style*="#ef4444"]){background:var(--pr-brand)!important}
 #ep-app #ep-countdown:not([style*="#ef4444"]):not(.pr-low){color:var(--pr-ink)!important}
 #ep-app .pr-live-tools>div:has(#ep-countdown.pr-low),#ep-app .pr-live-tools>div:has(#ep-countdown[style*="#ef4444"]){background:var(--pr-red-soft)!important}
-#ep-app #btn-student-submit{background:var(--pr-brand)!important;border-radius:999px!important;padding:9px 20px!important;box-shadow:0 8px 20px -10px var(--pr-brand)!important;transition:background .15s,transform .12s!important}
-#ep-app #btn-student-submit:hover{background:var(--pr-brand-hover)!important}
-#ep-app #btn-student-submit:active{transform:translateY(1px)}
+#ep-app #btn-student-submit{background:linear-gradient(135deg,var(--pr-brand) 0%,#6b6ff5 100%)!important;border-radius:12px!important;padding:8px 20px 8px 10px!important;gap:10px!important;font-size:13px!important;font-weight:800!important;letter-spacing:.01em;box-shadow:0 10px 24px -12px var(--pr-brand),inset 0 1px 0 rgba(255,255,255,.28)!important;transition:transform .14s,box-shadow .14s,filter .14s!important}
+#ep-app #btn-student-submit svg{box-sizing:content-box;width:14px;height:14px;padding:5px;border-radius:50%;background:rgba(255,255,255,.22)}
+#ep-app #btn-student-submit:hover{transform:translateY(-1px);filter:brightness(1.07);box-shadow:0 14px 28px -12px var(--pr-brand),inset 0 1px 0 rgba(255,255,255,.28)!important}
+#ep-app #btn-student-submit:active{transform:translateY(1px);filter:brightness(.97)}
+#ep-app #btn-student-submit:focus-visible{outline:3px solid rgba(107,111,245,.45);outline-offset:2px}
 
 /* ---------- sidebar ---------- */
 #ep-app .pr-live-aside{background:var(--pr-surface)!important;border-right:1px solid var(--pr-line)!important}
@@ -65,7 +67,7 @@
 #ep-app #pr-main>div:nth-child(2){border-bottom:1px solid var(--pr-line)!important}
 #ep-app #pr-main>div:nth-child(2)>div:first-child>span:first-child{color:var(--pr-ink)!important}
 #ep-app #pr-main>div:nth-child(2)>div:first-child>span:nth-child(2){background:var(--pr-yellow-soft)!important;color:var(--pr-yellow-ink)!important;border-radius:999px!important;padding:4px 10px!important}
-#ep-app #pr-main>div:nth-child(2)>div:nth-child(2){background:var(--pr-green-soft);color:var(--pr-green)!important;padding:4px 10px;border-radius:999px}
+#ep-app #pr-main>div:nth-child(2)>div:nth-child(2)>div{color:var(--pr-green)!important}
 #ep-app .pr-live-prompt{color:var(--pr-ink)!important;background:var(--pr-surface-2);border-radius:16px;padding:18px 20px;font-size:16px!important;animation:prIn .35s ease both}
 
 /* options: lettered badges, coloured selection */
@@ -117,3 +119,27 @@
 @media (max-width:860px){
   #ep-app .pr-live-aside{border-bottom:1px solid var(--pr-line)!important}
 }
+
+/* ---------- practice mode: dial, reveal, explanation ---------- */
+#ep-app .pr-mode-btn{width:100%;margin-bottom:10px;padding:9px 10px;border-radius:8px;border:1px solid var(--pr-line-2);background:var(--pr-surface);color:var(--pr-brand-text);font:800 12px inherit;cursor:pointer}
+#ep-app .pr-mode-btn:hover{background:var(--pr-brand-soft)}
+#ep-app .pr-mode-btn.on{background:var(--pr-yellow-soft);border-color:var(--pr-yellow);color:var(--pr-yellow-ink)}
+#ep-app .pr-pt-card{border:1px solid var(--pr-line);background:var(--pr-surface-2);border-radius:14px;padding:12px;text-align:center;margin-bottom:10px}
+#ep-app .pr-pt-card svg{width:132px;height:132px;display:block;margin:0 auto 6px}
+#ep-app .pr-dial-face{fill:var(--pr-surface);stroke:var(--pr-brand);stroke-width:3}
+#ep-app .pr-dial-tick{stroke:var(--pr-muted)} #ep-app .pr-dial-tick.major{stroke:var(--pr-ink)}
+#ep-app .pr-dial-num{fill:var(--pr-text)}
+#ep-app .pr-hand-h,#ep-app .pr-hand-m{stroke:var(--pr-ink)} #ep-app .pr-hand-s{stroke:var(--pr-red)} #ep-app .pr-hand-dot{fill:var(--pr-red)}
+#ep-app .pr-pt-digital{font:800 18px ui-monospace,Menlo,monospace;color:var(--pr-ink);letter-spacing:.03em} #ep-app .pr-pt-digital.up{color:var(--pr-red)}
+#ep-app .pr-pt-row,#ep-app .pr-pt-chips{display:flex;gap:6px;margin-top:8px}
+#ep-app .pr-pt-row input{flex:1;min-width:0;padding:8px 10px;border:1.5px solid var(--pr-line-2);border-radius:8px;background:var(--pr-surface);color:var(--pr-ink);font:600 13px inherit}
+#ep-app .pr-pt-btn{padding:8px 10px;border-radius:8px;border:1px solid var(--pr-line-2);background:var(--pr-surface);color:var(--pr-text);font:700 12px inherit;cursor:pointer}
+#ep-app .pr-pt-chips .pr-pt-btn{flex:1;padding:8px 4px}
+#ep-app .pr-pt-btn:hover{border-color:var(--pr-brand)}
+#ep-app .pr-pt-btn.primary{background:var(--pr-brand);border-color:var(--pr-brand);color:#fff}
+#ep-app .pr-reveal-btn{background:var(--pr-green-soft);border:1px solid var(--pr-green);color:var(--pr-green);padding:9px 14px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer}
+#ep-app .pr-correct{border-color:var(--pr-green)!important;background:var(--pr-green-soft)!important;box-shadow:0 0 0 3px color-mix(in srgb,var(--pr-green) 22%,transparent)}
+#ep-app .pr-key{margin-top:12px;padding:10px 14px;border-radius:10px;border:1.5px solid var(--pr-green);background:var(--pr-green-soft);color:var(--pr-green);font-weight:700;font-size:14px}
+#ep-app .pr-explain{margin:-10px 0 22px}
+#ep-app .pr-explain-btn{padding:8px 14px;border-radius:8px;border:1px solid var(--pr-brand);background:var(--pr-brand-soft);color:var(--pr-brand-text);font:700 13px inherit;cursor:pointer}
+#ep-app .pr-explain-box{margin-top:10px;padding:14px 16px;border-radius:12px;border:1px solid var(--pr-line-2);background:var(--pr-surface-2);color:var(--pr-text);font-size:14px;line-height:1.6}

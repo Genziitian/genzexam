@@ -1,0 +1,127 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Statistics 2 · Quiz 2 · Dec 2023 · QDD4 · Part 1",
+  "subject": "Statistics 2",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let (X, Y) ~ Uniform (D), where D := {(z, y) : 2 + y < 3, 2 > 0, y > 0}. What is the marginal density function of fx (2)?"
+        }
+      ],
+      "acceptable_answers": [
+        "A"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Suppose the moment generating function of a random variable X is given by Mx (X) = e2. Let X1, X2, X3, X, be lid samples with distribution X and Y be a random variable defined as Y = X1 + X2 + Xs + X1. Which of the following option is true? suppose mano owns a ligntoulo manulactunng company and determines that s out or every rs bulbs are derecuve. wnat is the probability that he will find the first faulty bulb on the 6th one that he tested? Enter the answer correct to two decimal places."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Y ~ Normal(0,8)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Y ~ Normal(0,4) € Y ~ Normal (0,32)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Y ~ Normal (0, 16)"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The probably mass unction of a random variable give a px= a t 2 $ 49 353 Find the value of k. Enter the answer correct to two decimal places."
+        }
+      ],
+      "numerical_answer": 0.25,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The probably mass unction of a random variable give a px= a t 2 $ 49 353 What is the value of P(1 < X < 4 | X > 2)? Let X ~ Uniform (0, 5) and g(z) = (2 - 2)?. Define a new random variable Y = g(X)."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "to"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "‡"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Passage / Context"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The probably mass unction of a random variable give a px= a t 2 $ 49 353 Find P(1 ≤ Y ≤ 6.25). Enter the answer correct to one decimal place."
+        }
+      ],
+      "numerical_answer": 0.5,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The joint density of two continuous random variables and is given as fAx 2, 9) - [a-t, a ferve co, 0 ≤ 9 < 0o, Are X and Y independent?"
+        }
+      ],
+      "acceptable_answers": [
+        "A"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "Statistics 2 · Quiz 2 · Dec 2023 · QDD4 · Part 1"
+}

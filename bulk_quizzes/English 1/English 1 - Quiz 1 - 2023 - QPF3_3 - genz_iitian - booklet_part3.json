@@ -1,0 +1,359 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 1 · Quiz 1 · 16 JULY 2023 · QPF3 · Part 3",
+  "subject": "English 1",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "She has not read anything______ Monday."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "For"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Since"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "From"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Over"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What will be the adverb form of ‘suitable’?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Suitabely"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Sitablly"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Suitably"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Suited"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Please look_______ the matter carefully to investigate it properly."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "On"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Into"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Under"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Against"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "I want to buy _____ laptop computer next week."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "A"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "An"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "No article"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The culprit was _____ fined and punished."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Also"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "And"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "But"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the underlined part of the sentence. I came across some old books while tidying my room."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Separable phrasal verb"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "In-separable phrasal verb"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Fill in the blank with the appropriate option. The meaning of the phrasal verb ‘wait on’ is _____________."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "To return a phone call"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To save money"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To serve somebody"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To communicate successfully"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Pick the right meaning of the following idiom: A dark horse"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "A person who is slightly eccentric"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A person who seems to be stupid"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "An unexpected winner"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Select true or false for the following statement: The idiom ‘cut corners’ means ‘to do something in the fastest and the cheapest way’."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "TRUE"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "FALSE"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nMatch Column A with suitable options in Column B. (Hint: Word collocation)\n\nQuestion:\nChoose the correct option. Sudha ________ speak Telugu."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Would"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Is"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "May"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Can"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 1 · Quiz 1 · 16 JULY 2023 · QPF3 · Part 3"
+}

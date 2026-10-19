@@ -1,0 +1,144 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 1 · Quiz 2 · Jul 2022 · QPA1",
+  "subject": "Mathematics 1",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "THIS IS QUESTION PAPER FOR THE SUBJECT \"QUALIFIER: MATHEMATICS FOR DATA SCIENCE 1\". MANDATORILY YOU HAVE TO ATTEND ALL THE SECTIONS. Yes"
+        }
+      ],
+      "acceptable_answers": [
+        "A"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Instructions: There are some questions which have functions with discrete valued domains (such as day, month, year etc). For simplicity, we treat them as continuous functions. For NAT type question, enter only one right answer even if you get multiple answers for that particular question. Notations: R = set of real numbers, Q = set of rational numbers, Z = set of integers, N = set of natural numbers. The set of natural numbers includes 0. Consider a relation R defined on the set A = {10, 12, 14, 16, 18} as R = {(x, y) : y = x + 2}. Which among the following is(are) correct? R is neither reflexive, nor symmetric and nor transitive. R is an anti-symmetric relation. c R is an identity relation. DR is an equivalence relation."
+        }
+      ],
+      "acceptable_answers": [
+        "A, B"
+      ],
+      "marks": 5,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Instructions: There are some questions which have functions with discrete valued domains (such as day, month, year etc). For simplicity, we treat them as continuous functions. For NAT type question, enter only one right answer even if you get multiple answers for that particular question. Notations: R = set of real numbers, Q = set of rational numbers, Z = set of integers, N = set of natural numbers. The set of natural numbers includes 0. Sandhya launches her new company in the year 2010, which makes yearly profit in lakhs as the polynomial function p(x) = 0.1x?(x - 1)(x - 2)(x - 3)(x - 4)(x - 9) for the first 12 years since the launch, where x is the number of years since 2010 (i.e., x = 0 denotes the year 2010, x = 1 denotes the year 2011, and so on). Let the loss be represented as -ve of profit. Which of the following options are correct? Including the year in which the company was launched, it neither made profit nor loss six times in 12 years. The company made profit in years x € {7, 8, 10, 11}. The company made loss (-ve profit) in years x € {5, 6, 7,8). In the year 2022 (i.e., x = 12) the company made profit."
+        }
+      ],
+      "acceptable_answers": [
+        "A, C, D"
+      ],
+      "marks": 5,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Instructions: There are some questions which have functions with discrete valued domains (such as day, month, year etc). For simplicity, we treat them as continuous functions. For NAT type question, enter only one right answer even if you get multiple answers for that particular question. Notations: R = set of real numbers, Q = set of rational numbers, Z = set of integers, N = set of natural numbers. The set of natural numbers includes 0. Which of the following functions is (are) onto (surjective)? if n is even otherwise otherwise / f: R → R. f(n) =n -2"
+        }
+      ],
+      "acceptable_answers": [
+        "A, B, D"
+      ],
+      "marks": 6,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Instructions: There are some questions which have functions with discrete valued domains (such as day, month, year etc). For simplicity, we treat them as continuous functions. For NAT type question, enter only one right answer even if you get multiple answers for that particular question. Notations: R = set of real numbers, Q = set of rational numbers, Z = set of integers, N = set of natural numbers. The set of natural numbers includes 0. Consider two quadratic polynomials p(x) and q(x) whose roots are shown in the Figure 2. The leading coefficient of p(x) and q(x) is +1 and the y-coordinate of the vertex point of p(x) is equal to the y- coordinate of the vertex point of q(x). Find the value of d (See Figure 2). Enter your answer to the nearest integer. (d. 0) (17,0) Figure 2"
+        }
+      ],
+      "numerical_answer": 9.0,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Instructions: There are some questions which have functions with discrete valued domains (such as day, month, year etc). For simplicity, we treat them as continuous functions. For NAT type question, enter only one right answer even if you get multiple answers for that particular question. Notations: R = set of real numbers, Q = set of rational numbers, Z = set of integers, N = set of natural numbers. The set of natural numbers includes 0."
+        }
+      ],
+      "acceptable_answers": [
+        "455"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Instructions: There are some questions which have functions with discrete valued domains (such as day, month, year etc). For simplicity, we treat them as continuous functions. For NAT type question, enter only one right answer even if you get multiple answers for that particular question. Notations: R = set of real numbers, Q = set of rational numbers, Z = set of integers, N = set of natural numbers. The set of natural numbers includes 0. Two highways perpendicular to each other are considered as the coordinate axes. Arpita's house is at the point (-3, a) and her friend Puja's house is at the point (-3, 10). The distance between their houses is 6 km. Sofi's house is at (6, 10). The distance between Puja's and Sofi's houses is 8 km. If a and & are real numbers, then what is the distance between Arpita's and Sofi's house? (Consider the unit length to be 1 km on both the axes.) Enter your answer to the nearest integer."
+        }
+      ],
+      "numerical_answer": 10.0,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Instructions: There are some questions which have functions with discrete valued domains (such as day, month, year etc). For simplicity, we treat them as continuous functions. For NAT type question, enter only one right answer even if you get multiple answers for that particular question. Notations: R = set of real numbers, Q = set of rational numbers, Z = set of integers, N = set of natural numbers. The set of natural numbers includes 0. o marks Consider the following sets: A = {x € N | x mod 3 = 0 and 1 ≤ x ≤ 25}."
+        }
+      ],
+      "acceptable_answers": [
+        "S"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Rizwan wants to cross the river represented by r(z) = 0.05(z - 1)(z - 5)(z - 10) + k; where k is an integer constant (Refer Figure 2). He chooses to cross the river r(x) using the bridge. In order to cross the river he has to identify the coordinates of the point A. He realises that the coordinates of the point A can be identified in such a way that the curve r(x) can be best fitted according to the data given in the table (refer Table 1). Consider the river and the bridge to be of negligible thickness. Based on these information answer the given subquestions. Table 1 - 150 -30 1 15 10 15 15 50 • (0, 20) Bridge T(x) River •(0, 10) Figure 2: River and bridge Using the given information, find the value of k. Enter your answer to the nearest integer."
+        }
+      ],
+      "numerical_answer": 15.0,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Rizwan wants to cross the river represented by r(z) = 0.05(z - 1)(z - 5)(z - 10) + k; where k is an integer constant (Refer Figure 2). He chooses to cross the river r(x) using the bridge. In order to cross the river he has to identify the coordinates of the point A. He realises that the coordinates of the point A can be identified in such a way that the curve r(x) can be best fitted according to the data given in the table (refer Table 1). Consider the river and the bridge to be of negligible thickness. Based on these information answer the given subquestions. Table 1 - 150 -30 1 15 10 15 15 50 • (0, 20) Bridge T(x) River •(0, 10) Figure 2: River and bridge Using the given information, what will be the y-coordinate of the point A? Enter your answer in one decimal place."
+        }
+      ],
+      "numerical_answer": 12.5,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    }
+  ]
+}

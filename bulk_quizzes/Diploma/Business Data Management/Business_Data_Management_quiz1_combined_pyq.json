@@ -1,0 +1,256 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Business Data Management · Quiz 1 · Combined PYQ",
+  "title": "Business Data Management · Quiz 1 · Combined PYQ",
+  "subject": "Business Data Management",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Given all this data, calculate the price elasticity of demand of the local baker’s bread loaf (round the answer to 2 decimal places and DO NOT use mid-point method). Give the absolute value of the answer."
+        }
+      ],
+      "acceptable_answers": [
+        "4.29 to 4.40"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Enter the correct answer for Blank (2)"
+        }
+      ],
+      "numerical_answer": 62.5,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In relational database design, which normal form eliminates transitive functional dependencies on the primary key?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Third Normal Form (3NF)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "First Normal Form (1NF)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Second Normal Form (2NF)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Boyce-Codd Normal Form (BCNF)"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "3NF requires the relation to be in 2NF and have no non-prime attribute transitively dependent on any candidate key."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which schema design in data warehousing contains a centralized fact table connected directly to non-normalized dimension tables?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Star schema"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Snowflake schema"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Galaxy schema"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "3NF relational schema"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "In a star schema, dimension tables are completely denormalized and directly reference a central fact table."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In an OLAP environment, which operation reduces the dimensionality of data by aggregating data along a specific dimension (e.g., from days to months)?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Roll-up (Drill-up)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Drill-down"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Slice and Dice"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Pivot"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Roll-up aggregates data along dimension hierarchies, moving from fine-grained to coarser granularity."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which SQL clause is used to filter aggregated records produced by a `GROUP BY` statement?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "HAVING"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "WHERE"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "QUALIFY"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "ORDER BY"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "HAVING filters groups after aggregation, whereas WHERE filters individual rows before grouping."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In a transactional database (OLTP) versus an analytical database (OLAP), which characteristic is typical of OLTP systems?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Frequent, short, atomic read-write operations (high concurrency)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Heavy multi-table aggregation across historical decades"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Batch ETL loads conducted once per week with no updates"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Denormalized star schemas optimized for columnar storage"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "OLTP is designed for day-to-day transactional throughput with ACID guarantees and high concurrency."
+        }
+      ]
+    }
+  ]
+}

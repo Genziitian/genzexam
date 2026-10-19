@@ -37,7 +37,8 @@
         "expected_output": "{'p': 1}",
         "is_hidden": true
       }
-    ]
+    ],
+    "section": 1
   },
   {
     "title": "OPPE 1 (2025 May) Set 2 · P2: Count unique even and odd numbers",
@@ -82,7 +83,8 @@
         "expected_output": "{'even': 0, 'odd': 1}",
         "is_hidden": true
       }
-    ]
+    ],
+    "section": 1
   },
   {
     "title": "OPPE 1 (2025 May) Set 2 · P3: Vowel count of words",
@@ -122,7 +124,8 @@
         "expected_output": "Python(1) is(1) fun(1) to(1) learn(2)",
         "is_hidden": true
       }
-    ]
+    ],
+    "section": 1
   },
   {
     "title": "OPPE 1 (2025 May) Set 2 · P4: Student Score Filter",
@@ -182,7 +185,8 @@
         "expected_output": "[]",
         "is_hidden": true
       }
-    ]
+    ],
+    "section": 2
   },
   {
     "title": "OPPE 1 (2025 May) Set 2 · P5: W Pattern",
@@ -222,7 +226,8 @@
         "expected_output": "|     /\\     |\n|    /  \\    |\n|   /    \\   |\n|  /      \\  |\n| /        \\ |\n|/          \\|",
         "is_hidden": true
       }
-    ]
+    ],
+    "section": 2
   },
   {
     "title": "OPPE 1 (2025 May) Set 2 · P6: Check If a Number is a Decreasing 4-Digit Number",
@@ -282,7 +287,8 @@
         "expected_output": "False",
         "is_hidden": true
       }
-    ]
+    ],
+    "section": 3
   },
   {
     "title": "OPPE 1 (2025 May) Set 2 · P7: Parse Equation and Solve for x",
@@ -342,6 +348,7 @@
         "expected_output": "-5.0",
         "is_hidden": true
       }
-    ]
+    ],
+    "section": 3
   }
 ]

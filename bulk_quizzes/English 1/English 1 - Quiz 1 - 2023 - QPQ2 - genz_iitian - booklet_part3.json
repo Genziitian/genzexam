@@ -1,0 +1,365 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 1 · Quiz 1 · 29 Oct 2023 · QPQ2 · Part 3",
+  "subject": "English 1",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the type of noun that is highlighted in the sentence. Riya’s imagination ran wild as she daydreamed about her trip to London."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Abstract"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Possessive"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Proper"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Compound"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Select the correct pronoun. Ritu and Mitu are my friends. I know _______ very well."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "You"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Them"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Her"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "His"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Some of the children ________ angry because they did not pass."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Was"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Were"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct option. Tinku is as ________ as Somu."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Naughty"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Naughtiest"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the part of speech of the underlined word. The shirt is too loose."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Adverb"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Verb"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Adjective"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Noun"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the adverb in the following sentence: Reenu was driving fast."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Driving"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Was"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Reenu"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Fast"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the appropriate option. Ravi was born ________ Coimbatore."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "In"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "On"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "At"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "From"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the appropriate option. I love _____ colour pink."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "A"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "An"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "No article"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the appropriate option. He saw a tiger ______ he awoke."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "When"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Then"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Than"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Because"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "We're having fish for _______dinner."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "A"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "No article"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "An"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 1 · Quiz 1 · 29 Oct 2023 · QPQ2 · Part 3"
+}

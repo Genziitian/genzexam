@@ -1,0 +1,120 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "2022 term papers Quiz1 · Part 1",
+  "subject": "Machine Learning Techniques",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Question Id : 640653345308 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Calculator : None Response Time : N.A Consider the following confusion matrix. Positive class is represented by ‘True’ and negative class is represented by ‘False’. Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "1.38 to 1.42"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the value of the accuracy. Write your answer correct upto 2 decimal places, do not round up or off."
+        }
+      ],
+      "acceptable_answers": [
+        "0.55 to 0.57"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the value of the precision. Write your answer correct upto 2 decimal places, do not round up or off."
+        }
+      ],
+      "acceptable_answers": [
+        "0.43 to 0.45"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the value of the recall. Write your answer correct upto 2 decimal places, do not round up or off."
+        }
+      ],
+      "acceptable_answers": [
+        "0.515 to 0.535"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the value of the F-1 score. Write your answer correct upto 2 decimal places, do not round up or off. Ajay has a dataset that has a non-linear relationship between the features and the label. The dimension of training samples is 4×2 (excluding the additional all-ones feature for the bias term, which you should add), label vector is 4 × 1 and weight vector is 3 × 1. Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "0.460 to 0.485 Question Id : 640653345323 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Calculator : None Response Time : N.A"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Suppose Ajay has to compute the ridge loss value for this data with regularization parameter value as 0.2 for performing ridge regression. What will be the value of ridge loss correct up to 2 decimal places?"
+        }
+      ],
+      "acceptable_answers": [
+        "0.35 to 0.37"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "For the same dataset, suppose Ajay has to compute the lasso loss value with regularization parameter value as 0.2 for performing lasso regression. What will be the value of lasso loss correct up to 2 decimal places? Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "0.39 to 0.43 Question Id : 640653345331 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Calculator : None Response Time : N.A"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What will be the prediction for an example having the features vector as (2, 1)? Assume the classes are 1 and −1. NOTE: Enter your answer to the nearest integer."
+        }
+      ],
+      "numerical_answer": -1.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "2022 term papers Quiz1 · Part 1"
+}

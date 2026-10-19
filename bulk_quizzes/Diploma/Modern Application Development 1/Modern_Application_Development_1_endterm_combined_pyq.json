@@ -1,0 +1,211 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Modern Application Development 1 · End Term · Combined PYQ",
+  "title": "Modern Application Development 1 · End Term · Combined PYQ",
+  "subject": "Modern Application Development 1",
+  "section": "endterm",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Question Id : 6406531040116 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "numerical_answer": 150000.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following flask application."
+        }
+      ],
+      "numerical_answer": 343343.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In RESTful API conventions, which HTTP verb and status code represent a successful update that modifies an existing resource completely?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "PUT with HTTP 200 OK (or 204 No Content)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "GET with HTTP 201 Created"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "POST with HTTP 304 Not Modified"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "DELETE with HTTP 405 Method Not Allowed"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "PUT is idempotent and replaces an existing target resource with the requested payload, returning 200 OK or 204 No Content."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In Flask / Jinja2 web applications, what mechanism prevents Cross-Site Request Forgery (CSRF) on form submissions?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Embedding a cryptographically signed, session-tied CSRF token in the form verified server-side"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Storing all passwords in client-side localStorage"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Allowing wildcard `Access-Control-Allow-Origin: *` headers on POST endpoints"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Encrypting the database connection string with MD5"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "CSRF tokens ensure that state-changing requests originate from an authentic user session inside the web application."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In SQLite / SQLAlchemy, what command or constraint ensures that deleting a parent record automatically removes all associated child records?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "`ON DELETE CASCADE` on the foreign key constraint"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "`ON DELETE SET NULL` on the primary key"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "`CHECK (child_id IS NULL)`"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "`UNIQUE INDEX` on the parent primary key"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "CASCADE triggers automatic deletion of dependent foreign key rows when the referenced parent row is deleted."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In client-server web architecture, what is the key difference between Server-Side Rendering (SSR) and Single Page Applications (SPA)?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "In SSR, full HTML is rendered on the server per request; in SPAs, the browser dynamically updates the DOM using JSON from an API"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "In SSR, no database is required; in SPAs, all data must reside in browser cookies"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "SSR cannot use CSS; SPAs cannot use JavaScript"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "SPAs execute SQL queries directly from client-side JavaScript"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "SSR builds complete HTML on the backend, while SPAs load a static shell and fetch data via REST APIs."
+        }
+      ]
+    }
+  ]
+}

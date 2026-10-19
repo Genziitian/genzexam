@@ -1,0 +1,279 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Computational Thinking · Quiz 2 · Dec 2024",
+  "subject": "Computational Thinking",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What will the value of B be at the end of the execution of the following pseudocode? Procedure doSomething(aList) bDict = () blist = [] foreach a in alist{ if(not iskey(bDict, a)){ boict(a] = True bList = bList ++ (a] return(bList) End doSomething"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "= [2, 6, 7, 2, 8, 7, 6, 2, 3]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "= doSomething(A) [2, 2, 6, 6, 7, 7] [2, 6, 7] (2, 6, 7, 8, 3] [2, 3, 6, 7, 8]"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed on the \"Words\" dataset. Which of the following statements is/are true at the end of the execution? (MSQ) A=[] B-[] while(Table 1 has more rows){ Read the top row X from Table 1 1f(X. LetterCount ‹ 5 )f"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "= A ++ x.SerialNumber. 1f(x.PartofSpeech == \"Noun\"){"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "= B +* [X.SerialNumber] Length(A) > = Length(B) will always be true."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "represent the serial numbers of words having letter count less than 5."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "B represent the serial numbers of all nouns with letter counts less than 5."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "B represent the serial numbers of all nouns."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1,
+        2
+      ],
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "We have a non-empty list, Publisher that stores the publisher name in each card from the \"Library\" dataset, sorted in alphabetical order. This results in many duplicates. The following procedure attempts to extract the unique list of publishers, while preserving the sorted order. The pseudocode may have mistakes. Identify all such mistakes (if any). It is a Multiple Select Question. (MSQ) uniqueList = [first(Publisher)] prev = last (Publisher) for each x in rest (Publisher){ 1f(x 1- prev){ uniquelist • uniqueList ** x prev = x"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Error in line 2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Error in line 4"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Error in line 5"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Error in line 7"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "No error"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        2
+      ],
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Words\" dataset. What will count represent at the end of the execution if the missing code is filled by the code below? count = 0, flag = True while(Table 1 has more rows){ Read the first row X in Table 1 ' F111 the code ** Move X to Table 2 # Missing code: if(X.Word ends with full stop)( if(X.Word != \"Noun\"){"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Total number of nouns in the dataset"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of sentences which do not end with a noun c Number of sentences having at least one noun"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of sentences which end with a noun"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Words\" dataset. What will count represent at the end of the execution if the missing code is filled by the code below? count = 0. flas = Truel while(Table 1 has more rows)f Read the first row X in Table 1 ** Fill the code * Move X to Table 2 # Missing code: if(flag and X.PartOfSpeech != \"Verb\"){ count = count + i flag • False it(x.word ends with tull stop‹ flap - True As total numher of verbs in the dataset"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Number of sentences which start with a verbl Number of sentences which do not start with a verb"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of sentences which end with a verb"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Olympics\" dataset. What will Dict store at the end of execution of the given pseudocode? Dict = (), list = [] while(Table 1 has more rows){ Read the first row X in Table 1 if(isKey(Dict, X.Nane)){ 1f(not(isKey(Dict[x.Name], X.Medal)))( Dict[X.Name] [X.Medal] = 1 else{ Dict[x.Name][X.Medal] = Dict[x.Name][x.Medal] + 1 else{ Dict[X.Name] = (X.Medal: 1} Move X to Table 2 list = findSomething(Dict) Procedure findSomething(D)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "- e lis = [] foreach player in keys(D)! foreach medal in keys(D[player]){ 1f(D[player] [medal] › A){"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "- D[player][medal] foreach player in keys(D){ foreach medal in keys(D[player]){ 1f(D[player] [medal] == A){ lis = lis *+ [player] return lis End findSomething Number of medals of each type Number of each type of medal won by each player c Number of medals won by each player"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of players who have won the medal"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Olympics\" dataset. What will list store at the end of execution of the pseudocode? Dict = (), list = [] while(Table 1 has more rows){ Read the first row X in Table 1 if(isKey(Dict, X.Nane)){ 1f(not(isKey(Dict[x.Name], X.Medal))){ Dict[X.Name] [X.Medal] = 1 else{ Dict[x.Name][X.Medal] = Dict[x.Name][x.Medal] + 1 else{ Dict[X.Name] = (X.Medal: 1} Move X to Table 2 list = findSomething(Dict) Procedure findSomething(D)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "- e lis = [] foreach player in keys(D){ foreach medal in keys(D[player]){ 1f(D[player] [medal] › A){"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "- D[player][medal] foreach player in keys(D){ foreach medal in keys(D[player]){ 1f(D[player] [medal] == A){ lis = lis *+ [player] return lis End findSomething Names of all the players who have won least number of medals. Name of a player who has won the highest number of medals. Name of a player who has won the least number of medals. Names of all the players who have won highest number of medals."
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following two pseudocodes which are executed using the \"Words\" dataset. Pseudocode 1: count = 0 L = 0 while(Table 1 has more rows){ Read the first row X in Table 1 L = addSomething(L, X) if(X word ends with a full stop) if(length(L) > = 10)( count = count + 1 L = 0 Move X to Table 2 Procedure addSomething(M, Y) ¡= 1 while(i <= Y.LetterCount){ p = ith letter of Y.Word if(not(member(M, p)))X M = M + + [p] ¡=i+1 retum(M) End addSomething Pseudocode 2: while(Table 1 has more rows) Read the first row X in Table 1 L = addSomething(L, X) ¡f(X word ends with a full stop and length(L) > = 10X count = count + 1 L = 0 Move X to Table 2 Procedure addSomething(M, Y) ¡ = 1 while(i < = Y.LetterCount)[ P = ith letter of Y.Word ifcosysmem-geti:.Pan.in/ecosystem | Video Solutions-exam.genziltian.in | YouTube- youtube.com/@Gen-ZiTian return(M) End addSomething Which of the following statements is are correct! MSO"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "In Pseudocode 2, count represents the number of sentences containing atleast 10 distinct letters. / In Pseudocode 1, count represents the number of sentences containing atleast 10 distinct letters."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "In Pseudocode 1, count represents the number of sentences containing atleast 10 letters"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "In Pseudocode 2, count represents the number of sentences containing atleast 10 letters."
+          }
+        ]
+      ],
+      "correct_answers": [
+        1
+      ],
+      "marks": 5,
+      "difficulty": "medium"
+    }
+  ]
+}

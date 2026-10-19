@@ -1,0 +1,375 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 1 · Quiz 1 · 2024 · QEF4 · Part 4",
+  "subject": "English 1",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nBased on the above data, answer the given subquestions.\n\nQuestion:\nStrong __________"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Temper"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Account"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Ruins"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Afternoon"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Coffee"
+          }
+        ]
+      ],
+      "correct_answer": 4,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nBased on the above data, answer the given subquestions.\n\nQuestion:\nLazy__________"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Temper"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Account"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Ruins"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Afternoon"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Coffee"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nBased on the above data, answer the given subquestions.\n\nQuestion:\nShort________"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Temper"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Account"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Ruins"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Afternoon"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Coffee"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following telephonic conversation and fill in the blanks with appropriate responses: Jay – Hello? (i)__________________ Prateek – Hello. Yes, I am Prateek Agarwal. (ii)__________________ Jay – Prateek, it’s me Jay Roy from college. Remember? Prateek – Hey Jay, (iii)_______________It has been such a long time. Jay – I am doing good. Yes, four long years after college. I got your contact number from Piyush. (iv)________________ Prateek – Yes, yes, I do remember him. Wasn’t he the one who topped our engineering batch last year? Jay – Yes, that’s him! He’s in Boston working for a big MNC now. Prateek- (v)_____________ Based on the above data, answer the given subquestions.\n\nQuestion:\nAncient _____________"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Temper"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Account"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Ruins"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Afternoon"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Coffee"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following telephonic conversation and fill in the blanks with appropriate responses: Jay – Hello? (i)__________________ Prateek – Hello. Yes, I am Prateek Agarwal. (ii)__________________ Jay – Prateek, it’s me Jay Roy from college. Remember? Prateek – Hey Jay, (iii)_______________It has been such a long time. Jay – I am doing good. Yes, four long years after college. I got your contact number from Piyush. (iv)________________ Prateek – Yes, yes, I do remember him. Wasn’t he the one who topped our engineering batch last year? Jay – Yes, that’s him! He’s in Boston working for a big MNC now. Prateek- (v)_____________ Based on the above data, answer the given subquestions.\n\nQuestion:\nComplete blank (i) with an appropriate response."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Is this Prateek Agarwal’s house?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Is this Prateek Agarwal’s family?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Am I talking to Prateek Agarwal?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Is this Prateek Agarwal’s son?"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following telephonic conversation and fill in the blanks with appropriate responses: Jay – Hello? (i)__________________ Prateek – Hello. Yes, I am Prateek Agarwal. (ii)__________________ Jay – Prateek, it’s me Jay Roy from college. Remember? Prateek – Hey Jay, (iii)_______________It has been such a long time. Jay – I am doing good. Yes, four long years after college. I got your contact number from Piyush. (iv)________________ Prateek – Yes, yes, I do remember him. Wasn’t he the one who topped our engineering batch last year? Jay – Yes, that’s him! He’s in Boston working for a big MNC now. Prateek- (v)_____________ Based on the above data, answer the given subquestions.\n\nQuestion:\nComplete blank (ii) with an appropriate response."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "May I come in?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "May I drop you home?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "May I ask who is speaking?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "May I know why you are here?"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following telephonic conversation and fill in the blanks with appropriate responses: Jay – Hello? (i)__________________ Prateek – Hello. Yes, I am Prateek Agarwal. (ii)__________________ Jay – Prateek, it’s me Jay Roy from college. Remember? Prateek – Hey Jay, (iii)_______________It has been such a long time. Jay – I am doing good. Yes, four long years after college. I got your contact number from Piyush. (iv)________________ Prateek – Yes, yes, I do remember him. Wasn’t he the one who topped our engineering batch last year? Jay – Yes, that’s him! He’s in Boston working for a big MNC now. Prateek- (v)_____________ Based on the above data, answer the given subquestions.\n\nQuestion:\nComplete blank (iii) with an appropriate response."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Could you bring me the office file?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Is it a new project?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Where are you going?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "How are you?"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following telephonic conversation and fill in the blanks with appropriate responses: Jay – Hello? (i)__________________ Prateek – Hello. Yes, I am Prateek Agarwal. (ii)__________________ Jay – Prateek, it’s me Jay Roy from college. Remember? Prateek – Hey Jay, (iii)_______________It has been such a long time. Jay – I am doing good. Yes, four long years after college. I got your contact number from Piyush. (iv)________________ Prateek – Yes, yes, I do remember him. Wasn’t he the one who topped our engineering batch last year? Jay – Yes, that’s him! He’s in Boston working for a big MNC now. Prateek- (v)_____________ Based on the above data, answer the given subquestions.\n\nQuestion:\nComplete blank (iv) with an appropriate response."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "When will you come home?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Do you remember him?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Did you have dinner?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Did you meet him?"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Complete blank (v) with an appropriate response."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "That is amazing news!"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Thank you!"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "You are welcome!"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "I am sorry!"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 1 · Quiz 1 · 2024 · QEF4 · Part 4"
+}

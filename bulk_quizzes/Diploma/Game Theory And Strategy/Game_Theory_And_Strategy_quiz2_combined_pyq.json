@@ -1,0 +1,211 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Game Theory And Strategy · Quiz 2 · Combined PYQ",
+  "title": "Game Theory And Strategy · Quiz 2 · Combined PYQ",
+  "subject": "Game Theory And Strategy",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If the parties could sign a binding agreement on how much to campaign, what levels would they choose? a1 = _____________"
+        }
+      ],
+      "numerical_answer": 0.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If the parties could sign a binding agreement on how much to campaign, what levels would they choose? a2 = _____________"
+        }
+      ],
+      "numerical_answer": 0.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In game theory, what is a Nash Equilibrium?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "A profile of strategies where no player can strictly benefit by unilaterally deviating"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "An outcome where the sum of payoffs across all players is maximized"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A strategy profile where every player receives identical payoff"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The outcome reached only when players coordinate through binding contracts"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "At a Nash Equilibrium, each player's chosen strategy is a best response to the strategies chosen by all other players."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In the classical Prisoner's Dilemma, what is the dominant strategy for each prisoner?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Defect (Confess), regardless of what the other prisoner chooses"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Cooperate (Stay Silent), provided the other prisoner stays silent"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Randomize 50-50 between Cooperating and Defecting"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Alternate between Cooperating and Defecting across rounds"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Defection strictly dominates Cooperation because it yields a better individual payoff whether the opponent confesses or remains silent."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "According to the Minimax Theorem for two-player zero-sum games with finite strategies, what is guaranteed to exist?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "A unique game value $V$ achievable in mixed (or pure) strategies where $\\max \\min = \\min \\max$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A strictly positive total payoff for both players combined"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "At least one pure strategy Nash equilibrium with no randomization"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A Pareto-optimal cooperative agreement"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Von Neumann's Minimax theorem establishes that every finite zero-sum game has a minimax value in mixed strategies."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In a sequential game represented in extensive form, what backward-induction equilibrium concept refines Nash equilibria by eliminating non-credible threats?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Subgame Perfect Nash Equilibrium (SPNE)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Correlated Equilibrium"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Weakly Dominated Equilibrium"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Evolutionary Stable Strategy (ESS)"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "An SPNE induces a Nash equilibrium in every proper subgame, ruling out incredible threats off the equilibrium path."
+        }
+      ]
+    }
+  ]
+}

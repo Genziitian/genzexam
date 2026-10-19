@@ -1,0 +1,296 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Python Programming · Quiz 1 · 13 Jul 2025 · QDD3 · Part 2",
+  "subject": "Python Programming",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the output of the following snippet of code? Enter an integer as your answer."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "lst = ['IIT', ['Madras', '2025'], 'exam']\nprint(len(lst[0]) + len(lst[1][1]) + len(lst[2]))"
+        }
+      ],
+      "numerical_answer": 11,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "len('IIT')=3, lst[1][1]='2025' so len=4, len('exam')=4. 3 + 4 + 4 = 11."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the output of the following snippet of code? Enter an integer as your answer."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "lst = [x for x in [1, 0, -2]]\nresult = 0\nfor val in lst:\n    if val == 0:\n        result += 10\n    elif val < 0:\n        result += 5\n    elif val % 2 == 1:\n        result += 3\n    else:\n        result += 1\nprint(result)"
+        }
+      ],
+      "numerical_answer": 18,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "lst = [1, 0, -2]. val=1 -> odd, +3. val=0 -> +10. val=-2 -> negative, +5. Total = 3 + 10 + 5 = 18."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following snippet of code. What will the output be?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "names = [\"alice\", \"bob\", \"charlie\", \"david\", \"eve\"]\nresult = 0\nshort = []\nfor name in names:\n    if len(name) < 4:\n        short.append(name)\n    elif len(name) == 5:\n        result += 1\n    elif 'a' in name:\n        result += 2\nprint(len(short) + result)"
+        }
+      ],
+      "numerical_answer": 6,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "'alice' len 5 -> result+=1. 'bob' len 3 -> short. 'charlie' len 7, 'a' in it -> result+=2. 'david' len 5 -> result+=1. 'eve' len 3 -> short. len(short)=2, result=4, total = 6."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following snippet of code and answer the given sub-questions. (Note: the built-in function isinstance(object, type) is used to check if an object is of a specified type.)"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def transform(data):\n    result = []\n    for item in data:\n        if isinstance(item, str) and len(item) % 2 == 0:\n            result.append(item.upper())\n        elif isinstance(item, int) and item % 2 == 1:\n            result.append(item * item)\n        else:\n            continue\n    return result\nsample = ['ai', 5, 'sql', 4, 'ml', 8, 9]\noutput = transform(sample)"
+        },
+        {
+          "kind": "text",
+          "value": "What is the value of output after executing the given code?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "['AI', 25, 'ML']"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "['AI', 25, 'ML', 64]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "['AI', 25, 'ML', 81]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "['AI', 16, 'ML', 64]"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "'ai' (len 2, even) -> 'AI'. 5 (odd int) -> 25. 'sql' (len 3, odd) skipped. 4 (even int) skipped. 'ml' (len 2, even) -> 'ML'. 8 (even int) skipped. 9 (odd int) -> 81. output = ['AI', 25, 'ML', 81]."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following snippet of code and answer the given sub-questions. (Note: the built-in function isinstance(object, type) is used to check if an object is of a specified type.)"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def transform(data):\n    result = []\n    for item in data:\n        if isinstance(item, str) and len(item) % 2 == 0:\n            result.append(item.upper())\n        elif isinstance(item, int) and item % 2 == 1:\n            result.append(item * item)\n        else:\n            continue\n    return result\nsample = ['ai', 5, 'sql', 4, 'ml', 8, 9]\noutput = transform(sample)"
+        },
+        {
+          "kind": "text",
+          "value": "Which of the following changes would also include SQL in the final result?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Make the length condition len(item) % 2 == 1 instead of == 0."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Remove the condition len(item) % 2 == 0."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Ensure 'sql' is written as 'SQL' in the original list."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Remove the condition isinstance(item, str)."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "'sql' has length 3 (odd). Changing the test to len%2==1 lets it through -> 'SQL'. Removing the length condition entirely also lets every string through -> 'SQL'. Writing 'SQL' originally keeps length 3, still failing len%2==0. Removing isinstance(str) does not help because len%2==0 still fails for length 3. So only options 1 and 2 include SQL."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following snippet of code and answer the given sub-questions."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def matrix_transform(matrix):\n    result = []\n    i = 0\n    while i < len(matrix):\n        row = matrix[i]\n        for element in row:\n            if element % 2 == 1:\n                result.append(element * 2)\n        i += 1\n    return result\nmatrix = [[1, 2, 3], [4, 5], [6]]\noutput = matrix_transform(matrix)\nprint(output)"
+        },
+        {
+          "kind": "text",
+          "value": "What is the value of output after executing the given code snippet?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "[2, 6, 10, 14]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[2, 6, 10]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[2, 8, 10]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[2, 6, 14]"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Odd elements are doubled. Row [1,2,3]: 1->2, 3->6. Row [4,5]: 5->10. Row [6]: none. output = [2, 6, 10]."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following snippet of code and answer the given sub-questions."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def matrix_transform(matrix):\n    result = []\n    i = 0\n    while i < len(matrix):\n        row = matrix[i]\n        for element in row:\n            if element % 2 == 1:\n                result.append(element * 2)\n        i += 1\n    return result\nmatrix = [[1, 2, 3], [4, 5], [6]]\noutput = matrix_transform(matrix)\nprint(output)"
+        },
+        {
+          "kind": "text",
+          "value": "In the given code, if we change the condition to if element % 2 == 0 at line 7, then what is the value of output after executing it?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "[4, 8, 12]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[4, 8, 10]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[9, 10]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[6, 8, 12]"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Now even elements are doubled. Row [1,2,3]: 2->4. Row [4,5]: 4->8. Row [6]: 6->12. output = [4, 8, 12]."
+        }
+      ]
+    }
+  ],
+  "title": "Python Programming · Quiz 1 · 13 Jul 2025 · QDD3 · Part 2"
+}

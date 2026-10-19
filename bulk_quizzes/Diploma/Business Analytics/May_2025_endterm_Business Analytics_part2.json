@@ -1,0 +1,147 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "May 2025 Endterm · Part 2",
+  "subject": "Business Analytics",
+  "section": "endterm",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the precision of class 1? [Note: Enter your answer in decimal rounded to four decimal places. For example, if your answer is 0.635450, then enter the answer as “63.5450”]"
+        }
+      ],
+      "acceptable_answers": [
+        "66.65 to 66.71"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the recall of class 1? [Note: Enter your answer in decimal rounded to four decimal places. For example, if your answer is 0.635450, then enter the answer as “63.5450”]"
+        }
+      ],
+      "numerical_answer": 50.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the precision of class 0? [Note: Enter your answer in decimal rounded to four decimal places. For example, if your answer is 0.635450, then enter the answer as “63.5450”]"
+        }
+      ],
+      "numerical_answer": 50.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the recall of class 0? [Note: Enter your answer in decimal rounded to four decimal places. For example, if your answer is 0.635450, then enter the answer as “63.5450”]"
+        }
+      ],
+      "acceptable_answers": [
+        "66.65 to 66.71"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How much will the Output 1 in HCU 3? [Note: Enter your answer in decimal rounded to four decimal places. For example, if your answer is 1000.63545, then enter the answer as “1000.6355”]"
+        }
+      ],
+      "acceptable_answers": [
+        "6915 to 6918"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How much will the Output 2 in HCU 3? [Note: Enter your answer in decimal rounded to four decimal places. For example, if your answer is 1000.63545, then enter the answer as “1000.6355”] Question Id : 6406531405370 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix We are interested in understanding the efficiency of 5 Sales Offices. Each of the Sales Offices has an approved budget and a team size for achieving a fixed target of 10,00,000. As a Business Analyst, you must formulate a DEA problem using Linear programming for the Sales Office 2. Answer the given subquestions using the Table below. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "27.5 to 27.9"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the part worth to customers if he/she upgrades from Maruti to Volkswagen? [Note: Enter your answer in decimal rounded to four decimal places. For example, if your answer is 1000.63545, then enter the answer as “1000.6355”]"
+        }
+      ],
+      "acceptable_answers": [
+        "1.832 to 1.834"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How much is the weightage provided by the customer for the Brand? [Note: Enter your answer in decimal rounded to four decimal places. For example, if your answer is 0.635450, then enter the answer as “63.5450”]"
+        }
+      ],
+      "acceptable_answers": [
+        "20.35 to 20.39"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How much is the weightage provided by the customer for the Engine? [Note: Enter your answer in decimal rounded to four decimal places. For example, if your answer is 0.635450, then enter the answer as “63.5450”]"
+        }
+      ],
+      "acceptable_answers": [
+        "25.90 to 25.96"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How much is the weightage provided by the customer for the Gearbox? [Note: Enter your answer in decimal rounded to four decimal places. For example, if your answer is 0.635450, then enter the answer as “63.5450”]"
+        }
+      ],
+      "acceptable_answers": [
+        "53.65 to 53.75"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "May 2025 Endterm · Part 2"
+}

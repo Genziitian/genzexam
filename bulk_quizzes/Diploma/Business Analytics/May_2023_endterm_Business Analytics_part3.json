@@ -1,0 +1,103 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "May 2023 Endterm · Part 3",
+  "subject": "Business Analytics",
+  "section": "endterm",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many “True Positives” is the model predicting?"
+        }
+      ],
+      "numerical_answer": 560.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many “True Negatives” is the model predicting?"
+        }
+      ],
+      "numerical_answer": 330.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many “False Positives” is the model predicting?"
+        }
+      ],
+      "numerical_answer": 50.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many “False Negatives” is the model predicting?"
+        }
+      ],
+      "numerical_answer": 60.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the accuracy of the model? (Note: Give your answer in DECIMAL Values rounded to two digits. For example, if your answer is “0.256”, then enter it as “0.26”)"
+        }
+      ],
+      "acceptable_answers": [
+        "0.88 to 0.90"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the precision of the model in predicting the “Negative class”? (Note: Give your answer in DECIMAL Values rounded to two digits. For example, if your answer is “0.256”, then enter it as “0.26”)"
+        }
+      ],
+      "acceptable_answers": [
+        "0.84 to 0.86"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the recall of the model in predicting the “Positive class”? (Note: Give your answer in DECIMAL Values rounded to two digits. For example, if your answer is “0.256”, then enter it as “0.26”)"
+        }
+      ],
+      "acceptable_answers": [
+        "0.89 to 0.91"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "May 2023 Endterm · Part 3"
+}

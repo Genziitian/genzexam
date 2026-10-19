@@ -1,0 +1,144 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Jan 2023 Endterm · Part 1",
+  "subject": "Business Analytics",
+  "section": "endterm",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A multiple linear regression model that uses Price, quantity and rating score is built to predict the sales in a company. In the multiple linear regression, it is found that the direct effect of price on sales is 0.3, the direct effect of quantity on sales is 0.2 and the direct effect of rating score on sales is 0.4. Moreover, it is known that the effect of price on quantity is 0.2, and the effect of price on rating score is 0.1. Then what is the total effect of price on sales?"
+        }
+      ],
+      "acceptable_answers": [
+        "0.4 to 0.44"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "There are 6 business units. There are two outputs and one input under consideration. You are solving the optimization problem for business unit 4 and find that the efficiency is 0.8. You find that the dual variables corresponding to the constraints of business units 3 and 5 are non-zero and the dual variables corresponding to the constraints of other units are zero. The dual variables corresponding to the constraints of business units 3 and 5 are 0.3 and 0.5 respectively. You are given the following table where sales and number of leads are the two outputs. What is the No. of leads in HCU 4? Question Id : 640653564530 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix For the figure given below, answer the subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "13 to 14"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Say the curve in the figure is modelled as a constant elasticity curve. If Q1 is 2400, Q3 is 1500, P1 is 100 and P3 is 200, then what is the elasticity of the curve? NOTE: If your answer is in decimal, enter it rounded to two decimal places. For example, if your answer is “10.256”, enter it as “10.26” Question Id : 640653564549 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix A logistic regression model is fit to predict if a student will fail the BA course (Y=0 pass, Y=1 fail). The results of the fitted model are given in the table below. Then answer the given subquestions. (Note: For all questions in this comprehension, enter the answer as a numeric percentage value rounded to two decimal places without the % symbol. For example, if your answer is “10.256 %”, enter it as “10.26”) Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "2.28 to 2.36"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Considering a threshold of 0.7, how many “True Positives” are present in the confusion matrix if the aim is to predict if a student will pass the course? NOTE: Enter the answer as a numeric percentage value rounded to the nearest integer without the % symbol."
+        }
+      ],
+      "numerical_answer": 2.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Considering a threshold of 0.7, how many “False Positives” are present in the confusion matrix if the aim is to predict if a student will fail the course? NOTE: Enter the answer as a numeric percentage value rounded to the nearest integer without the % symbol."
+        }
+      ],
+      "numerical_answer": 2.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Considering a threshold of 0.7, how many “False Negatives” are present in the confusion matrix if the aim is to predict if a student will fail the course? NOTE: Enter the answer as a numeric percentage value rounded to the nearest integer without the % symbol."
+        }
+      ],
+      "numerical_answer": 2.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Considering a threshold of 0.7, how many “True Negatives” are present in the confusion matrix if the aim is to predict if a student will pass the course? NOTE: Enter the answer as a numeric percentage value rounded to the nearest integer without the % symbol."
+        }
+      ],
+      "numerical_answer": 0.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the accuracy of the built logistic model for predicting if a student will fail the course if a threshold of 0.7 is taken? NOTE: Enter the answer as a numeric percentage value rounded to two decimal places without the % symbol. For example, if your answer is “10.256 %”, enter it as “10.26”"
+        }
+      ],
+      "acceptable_answers": [
+        "33.00 to 34.00"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the precision of the built logistic model for predicting if a student will pass the course if a threshold of 0.7 is taken? NOTE: Enter the answer as a numeric percentage value rounded to the nearest integer without the % symbol."
+        }
+      ],
+      "numerical_answer": 0.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the recall of the built logistic model for predicting if a student will fail the course if a threshold of 0.7 is taken? NOTE: Enter the answer as a numeric percentage value rounded to two decimal places without the % symbol. For example, if your answer is “10.256 %”, enter it as “10.26” Question Id : 640653564534 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Given the regression model (from excel) for predicting sales given price and income, answer the given subquestions Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "50.00 to 50.50"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "Jan 2023 Endterm · Part 1"
+}

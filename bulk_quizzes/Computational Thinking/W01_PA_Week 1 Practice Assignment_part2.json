@@ -1,0 +1,242 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Week 1 Practice Assignment · Part 2",
+  "subject": "Computational Thinking",
+  "section": "practice",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Scores\" dataset."
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "Step 1: Arrange all cards in a single pile called Pile 1\nStep 2: Initialize variables A and B to 1000\nStep 3: If Pile 1 is empty then stop the iteration\nStep 4: Read the top card in Pile 1\nStep 5: If Mathematics marks < A then store Mathematics marks in A\nStep 6: If Physics marks < B then store Physics marks in B\nStep 7: Move the current card to another pile called Pile 2 and repeat from step 3"
+        },
+        {
+          "kind": "text",
+          "value": "The value of B is _ _ _ _ ?"
+        }
+      ],
+      "numerical_answer": 45.0,
+      "numerical_tolerance": 0,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "In Step 1 cards are arranged in to a single pile and which is called as Pile 1. In Step 2 we are creating two new variables called A, B and assigning the value 1000 to it. Step 3 checks whether the iteration has to be continued or not. If the pile 1 is empty then the iteration has to be stopped. In Step 4, the top card of the Pile 1 is taken and read. A is updated only if the card's Mathematics marks are less than the existing value of A. A is initialized with 1000 and will be updated with the less Mathematics marks at the end of iteration. Hence, A stores the minimum Mathematics marks B is updated only if the card’s Physics marks are less than the existing value of B. B is initialized to 1000 and will be updated with the less B marks at the end of iteration. Hence, B stores the minimum Physics marks Finally, in Step 7, the current card is moved to another pile called Pile 2 and the procedure is repeated from Step 3."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Words\" dataset. What will count represent at the end of execution?"
+        },
+        {
+          "kind": "code",
+          "language": "pseudocode",
+          "value": "Step 1: Arrange all cards in a single pile called Pile 1\nStep 2: Initialize variables A and count to 0\nStep 3: If Pile 1 is empty then stop the iteration\nStep 4: Read the top card in Pile 1\nStep 5: If the Word is \"Monday\" and A = 0 then increment A\nStep 6: If the Word ends with a full stop and A > 0 then increment count\nStep 7: If the Word ends with a full stop then reinitialize A to 0\nStep 8: Move the current card to another pile called Pile 2 and repeat from step 3"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Number of times the word \"Monday\" has occurred"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of sentences that have the word \"Monday\" only once in it"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of sentences that have at least one occurrence of the word \"Monday\""
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of sentences that have at most one occurrence of the word \"Monday\""
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "In Step 1 cards are arranged in to a single pile and which is called as Pile 1. In Step 2 we are creating two new variables called A, count and assigning the value 0 to it. Step 3 checks whether the iteration has to be continued or not. If the pile 1 is empty then the iteration has to be stopped. In Step 4, the top card of the Pile 1 is taken and read. A is incremented only if the Word is \"Monday\" and A is equal to 0. At the end of each sentence count is incremented only if A is greater than zero. A is reinitialized to zero. So at the beginning of every sentence A will be zero always. Finally, in Step 8, the current card is moved to another called Pile 2 and the procedure is repeated from Step 3. Hence, count represents the number of sentences that have at least one occurrence of the word ”Monday”. Row no. Item Category Qty Price Cost Row 1 Onions Vegetables/Food 4 98 392 Row 2 Maggi Vegetables/Food 2 85 85 Row 3 Face Wash Toiletries 1 100 100 Row 4 Dustpan Household 1.5 60 90 Row 5 Milk Dairy/Food 2 50 100 Field Datatype a. Sequence number of Card i. Integer b. The word \"Yellow\" ii. Boolean c. Letter Count iii. String d. Part of Speech iv. Character e. Is first letter of the word a vowel?"
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The given information represents a \"Shopping Bill\" and it may have some mistakes with respect to the sanity of data. Identify all rows with such mistakes. It is a Multiple Select Question (MSQ)."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Row 1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Row 2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Row 3"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Row 4 (e) Row 5"
+          }
+        ]
+      ],
+      "correct_answers": [
+        1,
+        0,
+        3
+      ],
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "There is a mistake either in Qty or in Price or in Cost. So there is sanity of data in Line 4. Dustpan given Qty as 1.5 but must be an integer"
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Select the most appropriate datatype specific to \"Words\" dataset for the left column."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "a - (i), b - (iii), c - (ii), d - (iii), e - (ii)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "a - (i), b - (iii), c - (i), d - (iii), e - (ii)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "a - (i), b - (iii), c - (ii), d - (iii), e - (i)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "a - (i), b - (ii), c - (i), d - (iv), e - (ii) (e) a - (iii), b - (i), c - (ii), d - (ii), e - (iv) (f) a - (iii), b - (iii), c - (i), d - (i), e - (i)"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Sequence number of Card is a number. Hence, it is an integer. The word \"Yellow\" is a sequence of character in double quotes, it is a string. Letter Count is a number. Hence, it is an integer. Part of Speech is a sequence of character in double quotes, it is a string. Is first letter of the word a vowel? will give a Boolean value since we are checking whether first letter of word is vowel or not."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Interpret the following flowchart and answer the following question. Let A, B and C be three distinct integers of given as input. What will X represent at the end of flowchart?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Largest number among A, B and C"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Smallest number among A, B and C"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Mean of A, B and C"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Second largest number among A, B and C"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Three distinct integers A, B and C are given as input. Integers A and B are compared first. If A is greater than B then flow of code moves to next conditional block where A is again compared with C. If C is greater than A then A is stored in X. If C is not greater than A then C is compared with B. If C is greater than B then C is stored in X otherwise B is stored in X. When A is not greater than B then flow of code moves to next conditional block where B is compared to C. If C is greater than B then B is stored in X. If C is less than A then A is stored in X otherwise C is stored in X. So we can conclude that X stores second largest number among A, B and C."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following flow chart is executed using the \"Shopping Bills\" dataset. Interpret the flowchart and answer the given question. The value of count is _ _ _ _ ?"
+        }
+      ],
+      "numerical_answer": 2.0,
+      "numerical_tolerance": 0,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The variable count is initialized to zero. In the fist decision box we are checking whether there are more cards in Pile 1 or not, If the condition is not satisfied the flowchart is terminated. If the condition is satisfied card X is picked from Pile 1. And in the second decision box the condition whether the ShopName is \"Big Bazaar\" and if Total bill amount is less than 1000 is checked. If this condition is satisfied then count is incremented and the card to moved to another Pile called pile 2. If this condition is not satisfied count is not incremented but the card to moved to another Pile called pile 2. From here the flow goes to the first decision box that is checking whether there are more cards in Pile 1 and the whole process continues till the Pile 1 becomes empty. The variable count represents the number of cards from \"Big Bazaar\" with total bill amount less than 1000."
+        }
+      ]
+    }
+  ],
+  "week": 1,
+  "title": "Week 1 Practice Assignment · Part 2"
+}

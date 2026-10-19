@@ -1,0 +1,389 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 2 · Quiz 1 · 23 Feb 2025 · QDF4 · Part 2",
+  "subject": "English 2",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "“Are you going tomorrow?” Intonation in this sentence when the speaker seeks confirmation from the listener is _____."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "At the beginning"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "At the end"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Anywhere in the sentence"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "There is no intonation"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct statements from the following (i) Intonation helps in expressing emotions (ii) Intonation causes pitch variation (iii) Intonation is responsible for correct tense (iv) Intonation denotes agreement"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "(i), (ii) and (iii) only"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "(i) and (ii) only"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "(ii), (iii) and (iv) only"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "all of these"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘Cool as a cucumber’ is an example of _____."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Metaphor"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Simile"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Personification"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Paradox"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘Biting cold.’ What is the figure of speech used here?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Metaphor"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Synecdoche"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Personification"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Oxymoron"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘Technically speaking, the upcoming nuclear treatment plant will certainly invite only criticisms.’ The adverbs used in this sentence are"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Focus"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Comment"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Viewpoint"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "All of these"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘The hostess ostentatiously took up her knitting-work because Mrs. Fosdick was busy with hers.’ The word in italics in the given sentence is:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Comment adverb"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Focus adverb"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Degree adverb"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Viewpoint adverb"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "____adverbs are used to make our perspectives clearer."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Comment"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Viewpoint"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Focus"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both viewpoint and focus"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Read the following sentence and identify the adverbial phrase in it. “The other clerk, whose name I have now forgotten, nodded and apologized while chewing on a pink lobe of kola nut.”"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Whose name I have now forgotten"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "While chewing on a pink lobe of kola nut"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Nodded and apologized"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The other clerk"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Read the following sentence and identify how many adverbial phrases of place are in it. “Finally, I walked toward my car, parked near the whistling pine trees.”"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "One: “Finally”"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Two: “Finally” and “Toward my car”"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Two: “Toward my car” and “Near the whistling pine trees”"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "One: “Parked near the whistling pine trees”"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the adverb in the following sentence. My chair is never in usable condition."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Usable condition"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Never"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Condition"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "My"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 2 · Quiz 1 · 23 Feb 2025 · QDF4 · Part 2"
+}

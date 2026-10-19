@@ -1,0 +1,419 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 1 · Quiz 1 · 23 Feb 2025 · QDF4 · Part 4",
+  "subject": "English 1",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nFill in the blanks in List A with the most contextually appropriate modal verbs in List B.\n\nQuestion:\n“You don’t suppose he _____ give us one, do you?” Hint: To express someone’s willingness to do something."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Ought to"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Should not"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Will"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Could"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "May"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nFill in the blanks in List A with the most contextually appropriate modal verbs in List B.\n\nQuestion:\n“You _____ know that you cannot walk barefoot in the snow.” Hint: To indicate what is ideally expected of someone."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Ought to"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Should not"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Will"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Could"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "May"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nFill in the blanks in List A with the most contextually appropriate modal verbs in List B.\n\nQuestion:\n“You _____ join the music club.” Hint: To make a suggestion."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Ought to"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Should not"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Will"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Could"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "May"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nFill in the blanks in List A with the most contextually appropriate modal verbs in List B.\n\nQuestion:\n“You _____ leave.” Hint: To formally give permission."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Ought to"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Should not"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Will"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Could"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "May"
+          }
+        ]
+      ],
+      "correct_answer": 4,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nComplete the telephonic conversation given below with most polite and correct responses. Sharanya: Hello, is this Golden Dragon restaurant? Host: Yes, ma’am. (1)____________________________ Sharanya: Hello, I’d like to make a reservation for two. Host: (2) ______________________For which date and time? Customer: This Saturday at 7 PM. Host: Ma’am, (3)___________________________ I will check for the availability. Customer: Sure. [A few moments later] Host: Ma’am, we have a table available. (4) _________________________ Sharanya: Sure, it’s Sharanya Kumar. Host: (5) ______________________________ Customer: Great, thanks a lot. Based on the above data, answer the given subquestions.\n\nQuestion:\n“They _____ suspect an innocent man.” Hint: To advise or instruct what is correctly required of someone."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Ought to"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Should not"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Will"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Could"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "May"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nComplete the telephonic conversation given below with most polite and correct responses. Sharanya: Hello, is this Golden Dragon restaurant? Host: Yes, ma’am. (1)____________________________ Sharanya: Hello, I’d like to make a reservation for two. Host: (2) ______________________For which date and time? Customer: This Saturday at 7 PM. Host: Ma’am, (3)___________________________ I will check for the availability. Customer: Sure. [A few moments later] Host: Ma’am, we have a table available. (4) _________________________ Sharanya: Sure, it’s Sharanya Kumar. Host: (5) ______________________________ Customer: Great, thanks a lot. Based on the above data, answer the given subquestions.\n\nQuestion:\nComplete blank (1) with an appropriate response."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "What’s the matter with you?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "How may I help you?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "What do you want?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Want some help?"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nComplete the telephonic conversation given below with most polite and correct responses. Sharanya: Hello, is this Golden Dragon restaurant? Host: Yes, ma’am. (1)____________________________ Sharanya: Hello, I’d like to make a reservation for two. Host: (2) ______________________For which date and time? Customer: This Saturday at 7 PM. Host: Ma’am, (3)___________________________ I will check for the availability. Customer: Sure. [A few moments later] Host: Ma’am, we have a table available. (4) _________________________ Sharanya: Sure, it’s Sharanya Kumar. Host: (5) ______________________________ Customer: Great, thanks a lot. Based on the above data, answer the given subquestions.\n\nQuestion:\nComplete blank (2) with an appropriate response."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Certainly, ma’am"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Yeah, buddy"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Whatever!"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Okay!"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nComplete the telephonic conversation given below with most polite and correct responses. Sharanya: Hello, is this Golden Dragon restaurant? Host: Yes, ma’am. (1)____________________________ Sharanya: Hello, I’d like to make a reservation for two. Host: (2) ______________________For which date and time? Customer: This Saturday at 7 PM. Host: Ma’am, (3)___________________________ I will check for the availability. Customer: Sure. [A few moments later] Host: Ma’am, we have a table available. (4) _________________________ Sharanya: Sure, it’s Sharanya Kumar. Host: (5) ______________________________ Customer: Great, thanks a lot. Based on the above data, answer the given subquestions.\n\nQuestion:\nComplete blank (3) with an appropriate response."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Wait!"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Hang on!"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Could you please hang on?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Don’t wait!"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nComplete the telephonic conversation given below with most polite and correct responses. Sharanya: Hello, is this Golden Dragon restaurant? Host: Yes, ma’am. (1)____________________________ Sharanya: Hello, I’d like to make a reservation for two. Host: (2) ______________________For which date and time? Customer: This Saturday at 7 PM. Host: Ma’am, (3)___________________________ I will check for the availability. Customer: Sure. [A few moments later] Host: Ma’am, we have a table available. (4) _________________________ Sharanya: Sure, it’s Sharanya Kumar. Host: (5) ______________________________ Customer: Great, thanks a lot. Based on the above data, answer the given subquestions.\n\nQuestion:\nComplete blank (4) with an appropriate response."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Name?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Your name?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Can I have your name, please?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Who are you?"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Complete blank (5) with an appropriate response."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Thank you, ma’am. Your reservation is confirmed"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Hey, your reservation is confirmed"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Hi, buddy. Your reservation is confirmed"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Hey, sir. Your reservation is confirmed"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 1 · Quiz 1 · 23 Feb 2025 · QDF4 · Part 4"
+}

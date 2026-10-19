@@ -1,0 +1,239 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Deep Learning · End Term · Combined PYQ",
+  "title": "Deep Learning · End Term · Combined PYQ",
+  "subject": "Deep Learning",
+  "section": "endterm",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Question Id : 6406531424265 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "1 to 2"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Question Id : 6406531424269 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "1.32 to 1.40"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Question Id : 6406531424273 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Consider a CBOW model for learning word embeddings. The vocabulary is made up of three words, {good, bad, ugly}. W and C are the matrices that contain the word and context embeddings respectively. The columns in each matrix correspond to the embeddings. Both matrices are of shape 2 x 3: The context window is 1, meaning, the next word is predicted using just the current word as context. Recall that we use softmax to make predictions at the output. Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "numerical_answer": 33088.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Question Id : 6406531424282 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "numerical_answer": 0.125,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which activation function is most susceptible to the 'dying neuron' problem where neurons become permanently inactive during backpropagation?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Standard ReLU: $f(x) = \\max(0, x)$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Leaky ReLU: $f(x) = \\max(0.01x, x)$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Parametric ReLU (PReLU)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Exponential Linear Unit (ELU)"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "For $x < 0$, ReLU has gradient 0. If a large gradient updates weights such that the neuron is negative for all inputs, it never fires again."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In a Convolutional Neural Network, what is the spatial output dimension given an input of size $W \\times W$, filter size $F$, padding $P$, and stride $S$?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$\\lfloor \\frac{W - F + 2P}{S} \\rfloor + 1$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$\\lfloor \\frac{W - F + P}{S} \\rfloor + 1$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$\\lfloor \\frac{W + F - 2P}{S} \\rfloor$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$\\frac{W \\times F}{S} + P$"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The formula for output dimension with padding P and stride S is ((W - F + 2P) / S) + 1."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the primary benefit of Batch Normalization during deep neural network training?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Reduces internal covariate shift and allows higher learning rates with stable gradient flow"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Guarantees that the global minimum of non-convex loss is always reached"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Replaces backpropagation with closed-form matrix inversion"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Eliminates the need for any non-linear activation functions"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Batch Normalization stabilizes layer inputs across mini-batches, smoothing the loss landscape."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In the scaled dot-product attention formula $\\text{Attention}(Q, K, V) = \\text{softmax}\\left(\\frac{QK^T}{\\sqrt{d_k}}\\right)V$, why is the division by $\\sqrt{d_k}$ crucial?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "To prevent large dot products that push the softmax function into regions with extremely small gradients"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To enforce that the attention weights sum to zero"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To convert queries and keys into orthogonal coordinate spaces"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To invert the dimensionality of the sequence length"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "For large $d_k$, dot products grow large, causing softmax to yield near-one-hot distributions with vanishing gradients."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "May 2023 Quiz2 · Part 2",
+  "subject": "Business Analytics",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the recall of the model for predicting the positive class? Question Id : 640653587665 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix You are given the below regression output. Then answer the given subquestions (Note: If your answer is in decimal, enter it rounded to two decimal places. For example if your answer is “10.256”, enter it as “10.26”) Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "0.79 to 0.80"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the value of X1?"
+        }
+      ],
+      "numerical_answer": 1.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the value of X2?"
+        }
+      ],
+      "numerical_answer": 18.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the value of X3?"
+        }
+      ],
+      "acceptable_answers": [
+        "3267.10 to 3267.30"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the value of X4?"
+        }
+      ],
+      "acceptable_answers": [
+        "746.40 to 746.65"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the value of X5?"
+        }
+      ],
+      "acceptable_answers": [
+        "4.25 to 4.45"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the p-value for the regression model?"
+        }
+      ],
+      "acceptable_answers": [
+        "0.05 to 0.06"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "May 2023 Quiz2 · Part 2"
+}

@@ -42,7 +42,8 @@
         "is_hidden": true
       }
     ],
-    "position": 1
+    "position": 1,
+    "section": 1
   },
   {
     "title": "OPPE 1 (2024 Sep) Set 1 · P2: Is Odd-Length Palindrome",
@@ -97,7 +98,8 @@
         "is_hidden": true
       }
     ],
-    "position": 2
+    "position": 2,
+    "section": 1
   },
   {
     "title": "OPPE 1 (2024 Sep) Set 1 · P3: Remove elements at given two indices of a list",
@@ -137,7 +139,8 @@
         "is_hidden": true
       }
     ],
-    "position": 3
+    "position": 3,
+    "section": 1
   },
   {
     "title": "OPPE 1 (2024 Sep) Set 1 · P4: Sum of Squares of Even Numbers",
@@ -182,7 +185,8 @@
         "is_hidden": true
       }
     ],
-    "position": 4
+    "position": 4,
+    "section": 2
   },
   {
     "title": "OPPE 1 (2024 Sep) Set 1 · P5: Upper Case Only Vowels",
@@ -222,7 +226,8 @@
         "is_hidden": true
       }
     ],
-    "position": 5
+    "position": 5,
+    "section": 2
   },
   {
     "title": "OPPE 1 (2024 Sep) Set 1 · P6: Student Marks Filter",
@@ -272,7 +277,8 @@
         "is_hidden": true
       }
     ],
-    "position": 6
+    "position": 6,
+    "section": 3
   },
   {
     "title": "OPPE 1 (2024 Sep) Set 1 · P7: Print Pattern - V",
@@ -312,6 +318,7 @@
         "is_hidden": true
       }
     ],
-    "position": 7
+    "position": 7,
+    "section": 3
   }
 ]

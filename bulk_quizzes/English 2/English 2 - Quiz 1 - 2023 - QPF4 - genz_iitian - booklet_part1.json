@@ -1,0 +1,389 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 2 · Quiz 1 · 26 Feb 2023 · QPF4 · Part 1",
+  "subject": "English 2",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nFill in the blanks with the correct discourse markers and answer the given subquestions. (1)_______________, pickles can be made out of anything. There might just be no fruit or vegetable that has been untouched by the magic of pickles. (2)_____________, there might also not be a single taste that pickles don't cater to. There (3)_______ is a pickle for every occasion. (4)_________, pickles are not universally popular. There are a great many people who keep pickles at an arm's length (5)_________ they have no real choice.\n\nQuestion:\nChoose the correct answer for blank (1)."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "In addition"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "As well"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "As a matter of fact"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "However"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nFill in the blanks with the correct discourse markers and answer the given subquestions. (1)_______________, pickles can be made out of anything. There might just be no fruit or vegetable that has been untouched by the magic of pickles. (2)_____________, there might also not be a single taste that pickles don't cater to. There (3)_______ is a pickle for every occasion. (4)_________, pickles are not universally popular. There are a great many people who keep pickles at an arm's length (5)_________ they have no real choice.\n\nQuestion:\nChoose the correct answer for blank (2)."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Nevertheless"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Furthermore"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Nevermore"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Ever"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nFill in the blanks with the correct discourse markers and answer the given subquestions. (1)_______________, pickles can be made out of anything. There might just be no fruit or vegetable that has been untouched by the magic of pickles. (2)_____________, there might also not be a single taste that pickles don't cater to. There (3)_______ is a pickle for every occasion. (4)_________, pickles are not universally popular. There are a great many people who keep pickles at an arm's length (5)_________ they have no real choice.\n\nQuestion:\nChoose the correct answer for blank (3)."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Truly"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Emotionally"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Consequently"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Disparagingly"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nFill in the blanks with the correct discourse markers and answer the given subquestions. (1)_______________, pickles can be made out of anything. There might just be no fruit or vegetable that has been untouched by the magic of pickles. (2)_____________, there might also not be a single taste that pickles don't cater to. There (3)_______ is a pickle for every occasion. (4)_________, pickles are not universally popular. There are a great many people who keep pickles at an arm's length (5)_________ they have no real choice.\n\nQuestion:\nChoose the correct answer for blank (4)."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "As ever"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "In consequence"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Explicitly"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "However"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nFill in the blanks with the correct discourse markers and answer the given subquestions. (1)_______________, pickles can be made out of anything. There might just be no fruit or vegetable that has been untouched by the magic of pickles. (2)_____________, there might also not be a single taste that pickles don't cater to. There (3)_______ is a pickle for every occasion. (4)_________, pickles are not universally popular. There are a great many people who keep pickles at an arm's length (5)_________ they have no real choice.\n\nQuestion:\nChoose the correct answer for blank (5)."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Unexpectedly"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Ultimately"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Unless"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Universally"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘Did you know that Alex and John are moving to Bombay?’ If the emphasis is on ‘you’, then the meaning is that:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The speaker believes that the person they are talking to would not know thatAlex and John are moving to Bombay."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The speaker is amazed that Alex and John are moving to a city like Bombay."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The speaker is amazed that Alex and John, of all people, are moving toBombay."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of these"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘Did you know that Alex and John are moving to Bombay?’ If the emphasis is on ‘Alex and John’, then the meaning is that:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The speaker believes that the person they are talking to would not know thatAlex and John are moving to Bombay."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The speaker is amazed that Alex and John are moving to a city like Bombay."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The speaker believes that the person they are talking to would react if theyknew that Alex and John were moving to Bombay."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The speaker is amazed that Alex and John, of all people, are moving toBombay."
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘Did you know that Alex and John are moving to Bombay?’ If the emphasis is on ‘moving’, then the meaning is that:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The speaker believes that it is unbelievable that Alex and John are moving toBombay."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The speaker is amazed that Alex and John are moving to a city like Bombay."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The speaker believes that the person they are talking to would react if theyknew that Alex and John were moving to Bombay."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The speaker is amazed that Alex and John, whom he thought would never quittheir home cities/towns, and moving to another city."
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘Did you know that Alex and John are moving to Bombay?’ If the emphasis is on ‘to’, then the meaning is that:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The speaker believes that it is unbelievable that Alex and John are moving toBombay."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The speaker is amazed that Alex and John are moving to a city like Bombay."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The speaker believes that the person they are talking to would react if theyknew that Alex and John were moving to Bombay."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of these"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘Did you know that Alex and John are moving to Bombay?’ If the emphasis is on ‘Bombay’, then the meaning is that:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The speaker believes that everyone will be shocked by the news that Alex andJohn are moving."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The speaker is amazed that Alex and John are moving at all."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The speaker is amazed that Alex and John are moving to Bombay, of all places."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of these"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 2 · Quiz 1 · 26 Feb 2023 · QPF4 · Part 1"
+}

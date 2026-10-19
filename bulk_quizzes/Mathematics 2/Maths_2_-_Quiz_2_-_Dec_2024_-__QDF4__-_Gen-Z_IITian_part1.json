@@ -1,0 +1,114 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 2 · Quiz 2 · Dec 2024 · QOF4 · Part 1",
+  "subject": "Mathematics 2",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let T : R3 → R2 be a linear transformation such that T(1, 1, 0) = (1, -1) and T(0, 1, 1) = (1, 1). If T(3, -1,4) = (a, b). Find a."
+        }
+      ],
+      "numerical_answer": 3.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let T : R3 → R2 be a linear transformation such that T(1, 1, 0) = (1, -1) and T(0, 1, 1) = (1, 1). If T(3, -1,4) = (a, b). Find o."
+        }
+      ],
+      "numerical_answer": 5.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let 1 = 1 2- k} - 3] where k is a positive real number. Let Is denote the identity matrix of order 2. If A is equivalent to Is, then find the rank of 4."
+        }
+      ],
+      "numerical_answer": 2.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let 1 = 1 2- k} - 3] where k is a positive real number. Let Is denote the identity matrix of order 2. Find the value of & for which A is not equivalent to Iz."
+        }
+      ],
+      "numerical_answer": 3.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let 1 = 1 2- k} - 3] where k is a positive real number. Let Is denote the identity matrix of order 2. Find the number of values of & for which A is similar to Iz."
+        }
+      ],
+      "numerical_answer": 1.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following vectors in Ru = (31 - 3) ½ = (7,0, - 2) us = (Ve Ve, *6). where & € R. Answer the given subquestions using the standard inner product on R3. Find the number of values of & for which the vector us is a unit vector."
+        }
+      ],
+      "numerical_answer": 2.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following vectors in Ru = (31 - 3) ½ = (7,0, - 2) us = (Ve Ve, *6). where & € R. Answer the given subquestions using the standard inner product on R3. Find the value of & for which {11, 12, us} is an orthonormal basis of IR3."
+        }
+      ],
+      "acceptable_answers": [
+        "T"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following vectors in Ru = (31 - 3) ½ = (7,0, - 2) us = (Ve Ve, *6). where & € R. Answer the given subquestions using the standard inner product on R3. For k = 0, find the angle (in degrees) between up and u3-"
+        }
+      ],
+      "numerical_answer": 45.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "Mathematics 2 · Quiz 2 · Dec 2024 · QOF4 · Part 1"
+}

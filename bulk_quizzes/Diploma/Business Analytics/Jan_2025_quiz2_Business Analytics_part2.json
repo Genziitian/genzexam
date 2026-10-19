@@ -1,0 +1,135 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Jan 2025 Quiz2 · Part 2",
+  "subject": "Business Analytics",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the recall for predicting the “Spades” class? (Note: Enter the answer in percentage rounded to two decimal places. For example, if the answer is “10.235%”, then enter it as “10.24”)"
+        }
+      ],
+      "acceptable_answers": [
+        "39.90 to 40.10"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the sensitivity for predicting “Diamonds” class? (Note: Enter the answer in percentage rounded to two decimal places. For example, if the answer is “10.235%”, then enter it as “10.24”)"
+        }
+      ],
+      "acceptable_answers": [
+        "81.00 to 82.00"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the specificity for predicting “Clubs” class? (Note: Enter the answer in percentage rounded to two decimal places. For example, if the answer is “10.235%”, then enter it as “10.24”)"
+        }
+      ],
+      "acceptable_answers": [
+        "85.00 to 86.00"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the accuracy for the model? (Note: Enter the answer in percentage rounded to two decimal places. For example, if the answer is “10.235%”, then enter it as “10.24”) Question Id : 6406531174223 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix The three figures below (Picture-1, Picture-2, Picture-3) provide the partial regression output from excel for three models (Model-1, Model-2 and Model-3) which were built on the same data (Hint: same dependent variable with same number of rows. However, the number of independent variable in each model is different). Given this information, answer the subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "63.20 to 63.40"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the value of “A1”? (Note: Enter the answer rounded to two decimal places. For example, if the answer is “1.234”, then enter it as “1.23”)"
+        }
+      ],
+      "acceptable_answers": [
+        "178720 to 178726"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the value of “A2”? (Note: Enter the answer rounded to two decimal places. For example, if the answer is “1.234”, then enter it as “1.23”)"
+        }
+      ],
+      "acceptable_answers": [
+        "-103.00 to -101.00"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the value of “A3”? (Note: Enter the answer rounded to two decimal places. For example, if the answer is “1.234”, then enter it as “1.23”)"
+        }
+      ],
+      "acceptable_answers": [
+        "178373.00 to 178383.00"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the value of “A4”? (Note: Enter the answer rounded to two decimal places. For example, if the answer is “1.234”, then enter it as “1.23”)"
+        }
+      ],
+      "acceptable_answers": [
+        "455.00 to 459.00"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the value of “A5”? (Note: Enter the answer rounded to two decimal places. For example, if the answer is “1.234”, then enter it as “1.23”)"
+        }
+      ],
+      "acceptable_answers": [
+        "178831.00 to 178841.00"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "Jan 2025 Quiz2 · Part 2"
+}

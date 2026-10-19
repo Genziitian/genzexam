@@ -1,0 +1,129 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 1 · Quiz 2 · Mar 2024 · QDD4 · Part 1",
+  "subject": "Mathematics 1",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Instructions: There are some questions which have functions with discrete valued domains (such as day, month, year etc.). For simplicity, we treat them as continuous functions. For NAT type questions, enter only one right answer even if you get multiple answers for that particular question. Notations: IR = Set of real numbers, Q = Set of rational numbers, 2 = Set of integers, N = Set of natural numbers. The set of natural numbers includes 0. Instructions has been mentioned above."
+        }
+      ],
+      "acceptable_answers": [
+        "A"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Chcose the set of correct options."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "If a function is continuous at a particular point, then the function is differentiable at that point. If a function is differentiable at a particular point, then the function must be continuous at that point. If f(x) is differentiable at the point a, then ef(x) is differentiable at the point a, for all c € R, and (cf) '(a) = ef' (a)."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "If f(z) and g(z) are differentiable functions, then |(f + 9)(z) | is also a differentiable function."
+          }
+        ]
+      ],
+      "correct_answers": [
+        1
+      ],
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If f(x) = V9 - 27, then find out the value of 8v8 × lim,.., f(x) - J(1)"
+        }
+      ],
+      "numerical_answer": -8.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the function f(x) = g] • Then lim,-o f(x) is"
+        }
+      ],
+      "numerical_answer": 0.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the function f(x) = (2 + 2)= 2x - 5 —5 × + 1 x≤-] x>1 -1 < x ≤ 1 Find the total number of points in (-2,2) at which f(x) is not continuous."
+        }
+      ],
+      "numerical_answer": 2.0,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let f be a differentiable function such that f'(4) = 1 and f(4) = -3. If y = ax + 6 denotes the tangent of the function f at x = 4 then find the value of b."
+        }
+      ],
+      "numerical_answer": -7.0,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the number of solution(s) of the equation 9ª + 3* - 6 = 0."
+        }
+      ],
+      "numerical_answer": 1.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the number of solution(s) of the equation In (7) + In(2 - 422) = In(14)."
+        }
+      ],
+      "numerical_answer": 1.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "Mathematics 1 · Quiz 2 · Mar 2024 · QDD4 · Part 1"
+}

@@ -1,0 +1,74 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Statistics 1 · Quiz 2 · Apr 2023 · AN4 · Part 2",
+  "subject": "Statistics 1",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Tickets numbered from 1 to 100 are mixed up, and then a ticket is drawn at random. What is the probability that the ticket drawn has a number multiple of 3 or 5 or 7? (Enter the answer correct to 2 decimal accuracy)"
+        }
+      ],
+      "numerical_answer": 0.55,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following table shows the interest of the engineering students on Core and software skills. Find the probability that a student is interested in Software skills, given that the student is male. (Enter the answer correct to ¿ decimal accuracy) Interest or engineenng students on core and Male 39 ¡Femalel Core Skills Sottware lotal 47 45 S3 Total 47 53 100"
+        }
+      ],
+      "numerical_answer": 0.1,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Parcels from Sender \"S\" to receiver \"R\" pass sequentially through two post offices. First post office has probability of losing an incoming parcel, and second post office has probability f of losing an incoming parcel, independently of all the other parcels. Given that the parcel is lost, find the probability that it was lost by the second post office? (Enter the answer correct to 2 decimal accuracy)"
+        }
+      ],
+      "numerical_answer": 0.58,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If the probability of rain in rainy season on any given day in Cherrapunji is 50 percent independent of other day, what is the probability that it rains on exactly 3 days in a 6-day period? (Enter the answer correct to 2 decima accuracv."
+        }
+      ],
+      "numerical_answer": 0.31,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Mean and population variance of the dataset 21, 22, ..., 28 are 19 and 49 respectively. what is the value or sample variancen"
+        }
+      ],
+      "numerical_answer": 5.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "Statistics 1 · Quiz 2 · Apr 2023 · AN4 · Part 2"
+}

@@ -1,0 +1,315 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 1 · Quiz 1 · 26 Feb 2023 · QPF2 · Part 3",
+  "subject": "English 1",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nContext: A new development project is going to come up in your area that involves a lot of displacement of people. Different stakeholders with the project are stating their opinion on the various impacts, and the pros and cons of the project. Answer the given subquestions.\n\nQuestion:\nThe project engineer is giving her opinion. Her perspective would be:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The loss of open spaces for the community"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The air pollution that will follow the construction"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The human cost of the development project"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The primary, secondary, and tertiary benefits of the project for the community"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nContext: A new development project is going to come up in your area that involves a lot of displacement of people. Different stakeholders with the project are stating their opinion on the various impacts, and the pros and cons of the project. Answer the given subquestions.\n\nQuestion:\nAn unemployed young man from the area is stating his opinion. His perspective would be:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Hope for employment opportunities with the project"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Concern for displacement of his friends and family"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both Hope for employment opportunities with the project and Concern fordisplacement of his friends and family"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Neither Hope for employment opportunities with the project nor Concern fordisplacement of his friends and family"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nContext: A new development project is going to come up in your area that involves a lot of displacement of people. Different stakeholders with the project are stating their opinion on the various impacts, and the pros and cons of the project. Answer the given subquestions.\n\nQuestion:\nSelect true or false for the following statement. ‘Sum up’ is an in-separable phrasal verb."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "TRUE"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "FALSE"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nContext: A new development project is going to come up in your area that involves a lot of displacement of people. Different stakeholders with the project are stating their opinion on the various impacts, and the pros and cons of the project. Answer the given subquestions.\n\nQuestion:\nFill in the blank with the appropriate option. The meaning of the phrasal verb ‘take after’ is ______________."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Begin a new hobby"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Resemble somebody in appearance"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Accept the job"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Write on a paper"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Select true or false for the following statement. The phrase ‘once in a blue moon’ means ‘something that happens very frequently’."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "TRUE"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "FALSE"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct option. “_________ you please open the door?” - he asked politely."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Can"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Must"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Shall"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Could"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct option. To join this sports academy, students __________ be 17 years old."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Has to"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Must"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Fill in the blank with an appropriate article: Why weren’t you carrying ______ umbrella?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "A"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "An"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "No article"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the part of speech of the underlined word. The teacher is here."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Noun"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Pronoun"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Adjective"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Preposition"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 1 · Quiz 1 · 26 Feb 2023 · QPF2 · Part 3"
+}

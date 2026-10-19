@@ -1,0 +1,214 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Statistics 2 · Quiz 2 · Exam",
+  "subject": "Statistics 2",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Reference: Distributions of common discrete and continuous random variables (PMF/PDF, CDF, E[X], Var(X)). Distribution PMF / PDF Discrete random variables COF Unlsores(.A), A - (o,a + 1,....8) p, z-k, n-8-a + 1; k-a,a + 1,...,d 15258118-22716-18 z<0 BernoalS(p) 13-8 2-0 Binomial (n, p) Gecesstric(p) (1 - 8) p k= 1,...,∞ I - (1-p) *S z<*+1,*= 1,....00 E(X]"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "ar00 =(1 - P) пр(1 - p) Continuous random variables Uniformia, b) Exp(X) Act, = >0 Normal (p, 0*) Gammalo, 8) No closed form Bets (a, 9) For 1(1-2)*3, 0 <2<1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Markov's inequality: Let X be a discrete random variable taking non-negative values with a finite mean f. Then, P(X 2 c) ≤ 4. (Useful Data has been mentioned above.) 8 Chetvshev's inequality. Let A be a random variable with a finite mean i and a finite variance d'. (his data attachment is just for a reference &"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let X and be two continuous random variables with joint PDF SXy SXy 8) = 3 + cy?, ifter wis 1 modO ≤ I S I, Find the value of c. Enter the Suppose X and Y are two independent random variables with probability density functions as gle) - (ar 3 erwise. and h(3) = 0 < y < 1, Calculate the value of E[XY]"
+        }
+      ],
+      "acceptable_answers": [
+        "C"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let X1, X2,..., X10 be lid samples with mean 150 and variance 100. Find the mean and variance of 8, where & - 31+ ..+s is the sample"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "E[X] = 150, Var(X) = 100 8 EX] - 150, Var(X) = 10"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "E[X] = 150, Var(X) = 1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "E(X] = 1500, Var (X) = 10"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the marginal density of X. otherwise. otherwise."
+        }
+      ],
+      "acceptable_answers": [
+        "C"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the value of E[X]? Enter the answer correct to one decimal place. In a large town, it is estimated that 20% of students own a laptop. A random sample of 400 students is selected from the town. Based on the above data,"
+        }
+      ],
+      "acceptable_answers": [
+        "the given subquestions."
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let a random varable a denote the total number of students without laptops in the selected samole. Which of the following options is a apod model for"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "X ~ Bernoull: 0.6 8 X ~ Bernoulli (0.2) / X ~ Binomial (400,0.8)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "X ~ Binomial (400, 0.2) ONE NUMESAR Using the Central Limit Theorem, find an approximate probability that at least 80 students in the selected random sample own a laptop. Enter the answer correct to one decimal place."
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A random sample of size n is taken from a population with mean as and standard deviation 25. The sample mean is X = 31+X...+X.. Based on the apove data, answer the given subquestions which of the tolowing inequalibes result from chebyshev's inequality? 8 P(18-1≤5) 21-1"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "P(18-M25) ≤3"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "P(18-#125) ≤ :"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The jaint dersity of two continuas random variables It and 1\" is given by fay (2, a = (, 0 ca 1, 0 cy < A Based on the above data, answer the given subquestons. What is the value of P (X < f. Y < $)?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "⅗"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "‡"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The joint PMF table of two discrete random variables X and Y is given as: with X € (0, 1) and Y € (0,1,2). P(X-0, Y =0) = f- P(X=1, Y=0) = }. P(X=0, Y=1) = f. P(X=1, Y=1) = j. P(X=0, Y=2) = †j. P(X=1, Y=2) = j. Based on the above data, answer the given subquestions. What conclusion would you make based on the obtained value in the given part?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "There is a positive linear relationship between the variables X and Y. 8 There is a negative linear relationship between the variables X and Y. There is no linear relationship between the variables X and Y."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "We cannot conclude anything."
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ]
+}

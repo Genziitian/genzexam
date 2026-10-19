@@ -1,0 +1,353 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 2 · Quiz 1 · 2025 · QEF4 · Part 2",
+  "subject": "English 2",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "“Waking dream” is an example of oxymoron. This statement is ____."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "“Cool as a cucumber” is an example of ____."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Metaphor"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Simile"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Personification"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Paradox"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "“Time is money” is an example of a metaphor. This statement is _____."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following discourse markers is used to emphasis a stronger ‘yes’?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Absolutely"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Truly"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Honestly"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Actually"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "'The city never sleeps' is an example of personification. This statement is"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Spot the viewpoint adverb in the given sentence. “Historically, the great Indian patriarchy, or the paradigm of gendered labour woven into the country’s socio-cultural DNA, has demanded women’s unpaid domestic labour and caregiving duties.”"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Unpaid"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Woven"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Historically"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Caregiving"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "“He is definitely a peculiar character.” The word in italics in the given sentence is:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Focus adverb"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Comment adverb"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Degree adverb"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Viewpoint adverb"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the italicised phrases in the following sentences: i. Put the book there. ii. Order the carriage around. iii. She often talks to me. They are adverbs of _____, _____, and _____ respectively."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Manner, manner, frequency"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Manner, time, degree"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Degree, place, time"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Place, place, frequency"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the adverbs/adverbial phrases in the given sentence. Ram’s daughter is never early to class in the morning."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "To class"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "In the morning"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Early"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "All of these"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the adverbs/adverbial phrases in the given sentence. My cousin has been my friend since childhood."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Since childhood"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "My cousin"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "My"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "All of these"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 2 · Quiz 1 · 2025 · QEF4 · Part 2"
+}

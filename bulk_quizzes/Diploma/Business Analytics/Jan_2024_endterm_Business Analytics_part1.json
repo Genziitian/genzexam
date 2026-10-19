@@ -1,0 +1,104 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Jan 2024 Endterm · Part 1",
+  "subject": "Business Analytics",
+  "section": "endterm",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If the aim is to maximize revenue, then what should be the value of P1? NOTE: Enter your answer to the nearest integer."
+        }
+      ],
+      "numerical_answer": 1150.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The cost of printing a book is Rs. 420. If the aim is to maximize profit, then what should be P1? NOTE: Enter your answer to the nearest integer. Question Id : 640653816717 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Suppose a factory manufactures products on four machines A, B, C and D. Suppose 60% of total output comes from machine A, 22% of total output comes from machine B, 7% of total output comes from machine C and rest are from machine D. From the past data, it is known that 12% of products by machine A are defectives, 17% of products by machine B are defectives, 8% of products by machine C are defectives and 10% of products by machine D are defective. With this information, answer the given subquestions Sub questions"
+        }
+      ],
+      "numerical_answer": 440.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "There are 6 business units where we measure the efficiency based on two outputs and one input. You are solving the optimization problem for business unit 6 and find that the efficiency is 0.75. You find that the dual variables corresponding to the constraints of business units 4 and 5 are non-zero and the dual variables corresponding to the constraints of other units are zero. The dual variables corresponding to the constraints of business units 4 and 5 are 0.35 and 0.4 respectively. You are given the following table where sales and loyal customers are the two outputs. Based on the above data answer the given subquestion. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "1255 to 1257 Question Id : 640653816727 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How much is the sales in BU 4? Hint: Round-off up to 2 decimal places"
+        }
+      ],
+      "acceptable_answers": [
+        "9933 to 9934"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many loyal customers in BU 4? Hint: Round-off up to 2 decimal places Question Id : 640653816703 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix A demand response curve is built using linear regression. The partial regression output is given in Figure-1 below. Given this information, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "139 to 140"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Question Id : 640653816710 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix The BA discourse is often cluttered with queries / requests related to solutions for Past Year Question Papers (PYQP). The course instructor, Dr. Milo, had been informing that students need to put in effort to find solutions by searching the discourse. However, the results seem to disappointing. Therefore, Dr. Milo wanted to do a few basic analytics on discourse behaviour of students. Past student data was collected for the analysis. Past data was collected for the BA terms in Jan-2022, May-2022, Sep-2022, Jan-2023, May-2023 and Sep-2023. For each term, 100 randomly selected unique student IDs were sampled. Of the 100 student IDs, 50 were “Male” and the remaining were “Female”. The learners in the discourse have either “followed the instructions” or “not followed the instructions” or “have not accessed the discourse at all” (these three are referred to as access categories). Specifically, for the sample data in the different terms (in sequence of earliest term to later term i.e. Jan-2022 to Sep-2023) it was observed that 1. For the Male sample: 20, 30, 25, 45, 25 and 35 had not followed the instructions (respectively in each term i.e 20 male learners had followed the instructions in Jan-2022 term and so on) 2. For the Male sample: 2, 10, 5, 4, 5 and 3 had not accessed discourse at all (respectively in each term i.e 2 male learners had not accessed discourse at all in Jan-2022 term and so on) 3. For the female sample: 15, 22, 32, 25, 20 and 20 had followed the instructions (respectively in each term i.e 15 female learners had followed the instructions in Jan-2022 term and so on) and the rest of the learners in the respective samples had not followed the instructions Moreover, Dr. Milo assumes that all learners in the “followed the instructions” category are Normally distributed with a mean of 18 and standard deviation of 4. Each BA term is taken as a sample point to identify the required counts (for this specific analysis). A binning of data is performed with the following three bins (which capture the number of learners who follow the instructions in a sample). These bins, divide the solution space into equal areas. Bin-1: [less than or equal to 35] Bin-2: [36 to less than or equal to 50] Bin-3: [51 to less than or equal to 100] Given this information, answer the given subquestions Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "89 to 90"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the observed frequency in “Bin-1” of Dr. Milo’s analysis?"
+        }
+      ],
+      "numerical_answer": 3.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "Jan 2024 Endterm · Part 1"
+}

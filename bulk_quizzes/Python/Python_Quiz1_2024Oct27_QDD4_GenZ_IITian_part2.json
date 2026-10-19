@@ -1,0 +1,333 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Python Programming · Quiz 1 · 27 Oct 2024 · QDD4 · Part 2",
+  "subject": "Python Programming",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following code snippet and answer the given subquestions. The first line reads an integer n (with n > 2; use"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "n = 5).\nn = int(input())   # value of n is more than 2 (n = 5)\nP = [0, 1]\nfor i in range(n - 2):\n    P.append(P[-1] + P[-2])\nn = len(P)\nfor j in range(n):\n    P.append(P[-(2 * j + 1)] ** 2)\nprint(P)\n###################################\nmnum, mval = 0, P[0]\nfor i in range(len(P)):\n    if P[i] > mval:\n        mval = P[i]\n        mnum = i\nprint(mnum + mval)"
+        },
+        {
+          "kind": "text",
+          "value": "What is the first line of output for n = 5?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "[0, 1, 1, 2, 3, 9, 4, 1, 1, 0]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[0, 1, 2, 3, 0, 1, 4, 9]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[0, 1, 1, 2, 3, 0, 0, 0, 0, 0]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of these"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 3,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "After the first loop P=[0,1,1,2,3]. n=5. Second loop appends P[-1]^2=9, P[-3]^2 (=2^2=4), P[-5]^2 (=1), P[-7]^2 (=1), P[-9]^2 (=0). Final P=[0,1,1,2,3,9,4,1,1,0]."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following code snippet and answer the given subquestions. The first line reads an integer n (with n > 2; use"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "n = 5).\nn = int(input())   # value of n is more than 2 (n = 5)\nP = [0, 1]\nfor i in range(n - 2):\n    P.append(P[-1] + P[-2])\nn = len(P)\nfor j in range(n):\n    P.append(P[-(2 * j + 1)] ** 2)\nprint(P)\n###################################\nmnum, mval = 0, P[0]\nfor i in range(len(P)):\n    if P[i] > mval:\n        mval = P[i]\n        mnum = i\nprint(mnum + mval)"
+        },
+        {
+          "kind": "text",
+          "value": "What is the second line of output for n = 5? Enter an integer as your answer."
+        }
+      ],
+      "numerical_answer": 14,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "P=[0,1,1,2,3,9,4,1,1,0]. The maximum value 9 occurs at index 5, so mval=9, mnum=5; mnum+mval = 14."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following code snippet and answer the given subquestions."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "M = [5, 8, 2, 4, 6, 9]\nnew_array = [M[i] + M[-(i % 3)] for i in range(len(M))]\nprint(new_array)\ncolumn_sum = 0\nfor i in range(len(new_array)):\n    column_sum += new_array[i]\nprint(column_sum)"
+        },
+        {
+          "kind": "text",
+          "value": "What is the first line of output?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "[10, 16, 4, 9, 14, 11]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[10, 17, 8, 9, 15, 15]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[10, 17, 8, 8, 8, 17]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[10, 16, 4, 8, 12, 18]"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "M[-(i%3)]: i=0->M[0]=5 (5+5=10); i=1->M[-1]=9 (8+9=17); i=2->M[-2]=6 (2+6=8); i=3->M[0]=5 (4+5=9); i=4- >M[-1]=9 (6+9=15); i=5->M[-2]=6 (9+6=15). [10,17,8,9,15,15]."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following code snippet and answer the given subquestions."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "M = [5, 8, 2, 4, 6, 9]\nnew_array = [M[i] + M[-(i % 3)] for i in range(len(M))]\nprint(new_array)\ncolumn_sum = 0\nfor i in range(len(new_array)):\n    column_sum += new_array[i]\nprint(column_sum)"
+        },
+        {
+          "kind": "text",
+          "value": "What is the second line of the output? Enter an integer as your answer."
+        }
+      ],
+      "numerical_answer": 74,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Sum of [10, 17, 8, 9, 15, 15] = 74."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Based on the above data, answer the given subquestions. The input in the first line is: Hello everyone, \\n welcome to the world of Python. \\nlets explore Python."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "str1 = input()\nn = len(str1)\nline = \"\"\ni = 0\nwhile (str1[i] != r'\\\\' and str1[i + 1] != 'n') and i < n - 1:\n    line += str1[i]\n    i += 1\nprint(line)\nprint(len(line))"
+        },
+        {
+          "kind": "text",
+          "value": "What is the first line of output?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Hello everyone,"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Hello every"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Hello everyone, \\n welcome to the world of Python. \\nlets explore Python"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Empty string"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 3,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "r'\\' is a two-character string, so str1[i] != r'\\' is always True; the loop stops when str1[i+1]=='n', i.e. just before the 'n' in 'everyone'. line accumulates 'Hello every'."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Based on the above data, answer the given subquestions. The input in the first line is: Hello everyone, \\n welcome to the world of Python. \\nlets explore Python."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "str1 = input()\nn = len(str1)\nline = \"\"\ni = 0\nwhile (str1[i] != r'\\\\' and str1[i + 1] != 'n') and i < n - 1:\n    line += str1[i]\n    i += 1\nprint(line)\nprint(len(line))"
+        },
+        {
+          "kind": "text",
+          "value": "What is the second line of the output? Enter an integer as your answer."
+        }
+      ],
+      "numerical_answer": 11,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "len('Hello every') = 11."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following code snippet and answer the given subquestions."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "animals = [\"tiger\", \"elephant\", \"cat\", \"giraffe\", \"wolf\", \"dolphin\"]\nlist_animals = []\nmax_length = 0\nfor animal in animals:\n    if len(animal) >= max_length:\n        max_length = len(animal)\n        list_animals = [animal]\n    else:\n        list_animals.append(animal)\nprint(list_animals)\nprint(len(list_animals))"
+        },
+        {
+          "kind": "text",
+          "value": "What is the first line of output?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "['dolphin']"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "['elephant']"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "['elephant', 'cat', 'giraffe', 'wolf', 'dolphin']"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "['tiger', 'elephant', 'cat', 'giraffe', 'wolf', 'dolphin']"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "'elephant' (len 8) resets list_animals=['elephant'] and sets max_length=8. 'cat','giraffe','wolf','dolphin' all have len <= 8 so go to the else branch and are appended. Result ['elephant', 'cat', 'giraffe', 'wolf', 'dolphin']."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following code snippet and answer the given subquestions."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "animals = [\"tiger\", \"elephant\", \"cat\", \"giraffe\", \"wolf\", \"dolphin\"]\nlist_animals = []\nmax_length = 0\nfor animal in animals:\n    if len(animal) >= max_length:\n        max_length = len(animal)\n        list_animals = [animal]\n    else:\n        list_animals.append(animal)\nprint(list_animals)\nprint(len(list_animals))"
+        },
+        {
+          "kind": "text",
+          "value": "What is the second line of the output? Enter an integer as your answer."
+        }
+      ],
+      "numerical_answer": 5,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "len(['elephant', 'cat', 'giraffe', 'wolf', 'dolphin']) = 5."
+        }
+      ]
+    }
+  ],
+  "title": "Python Programming · Quiz 1 · 27 Oct 2024 · QDD4 · Part 2"
+}

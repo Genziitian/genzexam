@@ -1,0 +1,209 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 1 · Quiz 2 · Aug 2023 · Part 2",
+  "subject": "English 1",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many syllables are there in the word 'interactions\"?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "3 в 2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many syllables are there in the word 'disturb'?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "½"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "3"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "4"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many syllables are there in the word 'cloudy'?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "2"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The word 'evaluation' is"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Trisyllabic"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Polysyllabic c Disyllabic"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Five kilometres"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Are _ such a long distance."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "were Are not"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "IS"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "MCO In the plural noun 'photos', the plural marker sounds as"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "[s]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[z] c (iz]"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The plural markers for the words \"friends\", 'romans\", and 'citizens\" are"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "/s/, /s/, and /s/ respectively в /z/, /s/, and /z/ respectively"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "/z/. /z/, and /z/ respectively"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 1 · Quiz 2 · Aug 2023 · Part 2"
+}

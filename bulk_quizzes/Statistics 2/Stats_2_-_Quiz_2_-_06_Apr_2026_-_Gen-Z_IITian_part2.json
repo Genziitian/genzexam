@@ -1,0 +1,187 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Statistics 2 · Quiz 2 · 05 Apr 2026 · Part 2",
+  "subject": "Statistics 2",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let (X, Y) ~ Uniform (R), where R - {(2, y) : 2ª + y? < 9, 2 > 0, y > 0). The joint distribution of X and Y is defined as fry (2, 2) - 4. where the value of A will be B. The marginal density function f/x (z) can be calculated as fx (2) = JoC- D. giving f(z) = By C-2), Consider the following options for the blanks: (1) 24; (2) g: (3) Area of R: (4) fry (z, y) dz; (5) tra crR: (6) (Area of R): (7) /xy (z. y) dy: (8) fy (a) dy. (9) 9; (10) 4; (11) 3; (12) 47. NUMERICAL Enter the correct option number for A (in fry (27, y) = $). Answer: 3 0.5 marks - Let (X, Y) ~ Uniform (R), where R = {(2, 3) : 2ª + y < 9, 2 > 0, y > 0). Find the value of P(X < 1, Y < 2). Enter the"
+        }
+      ],
+      "numerical_answer": 0.28,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let the random variable X represent the time (in hours) that a student spends studying for a short quiz. Suppose the PDF of X is 8x (x) = 1% (23-+}) 0 ≤ z≤1 Based on the above data, answer the given subquestons OSIM TOO Find the value of k"
+        }
+      ],
+      "numerical_answer": 3.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let the random variable X represent the time (in hours) that a student spends studying for a short quiz. Suppose the PDF of X is 8x (x) = 1% (23-+}) 0 ≤ z≤1 Based on the above data, answer the given subquestons OSIM TOO Let X1, X2,..., X, be l.l.d. samples with mean & and finite variance a?. Let X be the sample mean. Which of the following statements is/are correct?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The variance of the sample mean X, is equal to o? and does not depend on n. The sample mean X, is a random variable whose value depends on the particular sampling instance."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "As n increases, the variance of the sample mean decreases, causing the values of X to cluster closer to j"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The mean u = EX is a constant real number and is not a random variable."
+          }
+        ]
+      ],
+      "correct_answers": [
+        1,
+        2
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let the random variable X represent the time (in hours) that a student spends studying for a short quiz. Suppose the PDF of X is 8x (x) = 1% (23-+}) 0 ≤ z≤1 Based on the above data, answer the given subquestons OSIM TOO Let X1, X3,..., An be i.i.d. samples with mean and finite variance d\". Let X be the sample mean. Using Chebyshev's inequality, find the smallest integer value n such that P(X, - u ≥ 0.2) < 0.05, where a = 1"
+        }
+      ],
+      "numerical_answer": 500.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let the random variable X represent the time (in hours) that a student spends studying for a short quiz. Suppose the PDF of X is 8x (x) = 1% (23-+}) 0 ≤ z≤1 Based on the above data, answer the given subquestons OSIM TOO"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "hospital is conducting a study on enzyme levels (in units per liter, U/L) in blood in adults aged 30-40. Based on historical data 60% of the participants are healthy and 40% have a mild metabolic disorder. Enzyme levels (X) in healthy individuals follow Normal(50,36) and for those with the disorder is Normal (60, 25). What is the marginal PDF of X at z = 50?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "VEr (8 + 8€*)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "72(803+8)"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let the random variable X represent the time (in hours) that a student spends studying for a short quiz. Suppose the PDF of X is 8x (x) = 1% (23-+}) 0 ≤ z≤1 Based on the above data, answer the given subquestons OSIM TOO"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "hospital is conducting a study on enzyme levels (in units per liter, U/L) in blood in adults aged 30-40. Based on historical data 60% of the participants are healthy and 40% have a mild metabolic disorder. Enzyme levels (X) in healthy individuals follow Normal (50, 36) and for those with the disorder is Normal (60, 25). A randomly selected patient from this age group is found to have an enzyme level of 50 U/L What is the probability that the patient is healthy?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "# (t+‡7)'"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "(1 + 7)"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let the random variable X represent the time (in hours) that a student spends studying for a short quiz. Suppose the PDF of X is 8x (x) = 1% (23-+}) 0 ≤ z≤1 Based on the above data, answer the given subquestons OSIM TOO a ractory produces lion bulbs wnose eumes nave mean u = suu nours and stancaro deviation o s su nours, a qualiy inspector randomly selects 100 bulbs and computes the sample mean lifetime. Which of the following statements is correct about the distribution of the sample mean? The distribution of the sample mean is approximately normal with mean 800 and standard deviation 4. 8 The distribution of the sample mean is approximately normal with mean 800 and standard deviation 40."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The distribution of the sample mean is approximately uniform between 760 and 840."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The Central Limit Theorem cannot be applied since the original distribution is not normal."
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let the random variable X represent the time (in hours) that a student spends studying for a short quiz. Suppose the PDF of X is 8x (x) = 1% (23-+}) 0 ≤ z≤1 Based on the above data, answer the given subquestons OSIM TOO"
+        }
+      ],
+      "acceptable_answers": [
+        "0.02"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "Statistics 2 · Quiz 2 · 05 Apr 2026 · Part 2"
+}

@@ -1,0 +1,198 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Modern Application Development 2 · End Term · Combined PYQ",
+  "title": "Modern Application Development 2 · End Term · Combined PYQ",
+  "subject": "Modern Application Development 2",
+  "section": "endterm",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Question Id : 6406531231455 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "numerical_answer": 3.0,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In Vue 3 Composition API, what is the fundamental difference between `ref()` and `reactive()`?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "`ref()` wraps primitives or objects and requires `.value` access in script; `reactive()` takes only objects and provides direct property access"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "`ref()` is immutable; `reactive()` is mutable"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "`reactive()` cannot be used inside template expressions"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "`ref()` only works for integers and booleans, not arrays"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "`ref()` creates a reactive reference with a `.value` getter/setter, while `reactive()` returns a deep reactive Proxy of an object."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In JSON Web Token (JWT) authentication, what prevents a client from tampering with the payload claims (e.g. changing `user_id` or `role`)?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The cryptographic signature verified by the server using its secret key"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The base64url encoding of the payload"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Storing the token in a cookie with the `SameSite=None` flag"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The expiration timestamp (exp) claim"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The signature is computed over header and payload with a server secret; altering the payload invalidates the signature."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What asynchronous background task queue is standard in modern Python web architectures (such as Flask or Django) for running long jobs without blocking HTTP responses?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Celery with Redis or RabbitMQ as the message broker"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Synchronous `time.sleep()` in the request handler"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "In-memory global dictionaries in the WSGI worker"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Direct client-side setTimeout loops"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Celery offloads CPU-bound or I/O-heavy tasks to distributed worker processes backed by a message broker."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the primary role of an API Gateway in a microservices deployment?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Routing client requests, handling SSL termination, rate limiting, and centralized authentication"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Executing raw SQL statements across all microservice databases"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Compiling Vue single-file components into WebAssembly"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Replacing database foreign key constraints"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "API Gateways serve as a reverse proxy, decoupling client entrypoints from internal microservices."
+        }
+      ]
+    }
+  ]
+}

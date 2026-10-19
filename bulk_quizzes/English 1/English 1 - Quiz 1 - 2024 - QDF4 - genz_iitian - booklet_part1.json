@@ -1,0 +1,303 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 1 · Quiz 1 · 25 Feb 2024 · QDF4 · Part 1",
+  "subject": "English 1",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following passage and answer the given subquestions. These stories are all from the Andaman and Nicobar archipelago. Ignesious was the manager of a cooperative society in Katchall. His wife woke him up at 6 a.m. because she felt an earthquake. Ignesious carefully took his television set off its table and put it down on the ground so that it would not fall and break. Then the family rushed out of the house. When the tremors stopped, they saw the sea rising. In the chaos and confusion, two of his children caught hold of the hands of their mother’s father and mother’s brother, and rushed in the opposite direction. He never saw them again. His wife was also swept away. Only the three other children who came with him were saved. Sanjeev was a policeman, serving in the Katchall island of the Nicobar group of islands. He somehow managed to save himself, his wife and his baby daughter from the waves. But then he heard cries for help from the wife of John, the guesthouse cook. Sanjeev jumped into the water to rescue her, but they were both swept away. Thirteen year-old Meghna was swept away along with her parents and seventy-seven other people. She spent two days floating in the sea, holding on to a wooden door. Eleven times she saw relief helicopters overhead, but they did not see her. She was brought to the shore by a wave, and was found walking on the seashore in a daze. Almas Javed was ten years old. She was a student of Carmel Convent in Port Blair where her father had a petrol pump. Her mother Rahila’s home was in Nancowry island. The family had gone there to celebrate Christmas. When the tremors came early in the morning, the family was sleeping. Almas’s father saw the sea water recede. He understood that the water would come rushing back with great force. He woke everyone up and tried to rush them to a safer place. As they ran, her grandfather was hit on the head by something and he fell down. Her father rushed to help him. Then came the first giant wave that swept both of them away. Almas’s mother and aunts stood clinging to the leaves of a coconut tree, calling out to her. A wave uprooted the tree, and they too were washed away. Almas saw a log of wood floating. She climbed on to it. Then she fainted. When she woke up, she was in a hospital in Kamorta. From there she was brought to Port Blair. The little girl does not want to talk about the incident with anyone. She is still traumatised. The Tsunami - Sonali Deraniyagala\n\nQuestion:\nWhat is the meaning of ‘archipelago’ ?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "A collection of jewellery"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A collection of Islands"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A collection of stamps"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A collection of coins"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following passage and answer the given subquestions. These stories are all from the Andaman and Nicobar archipelago. Ignesious was the manager of a cooperative society in Katchall. His wife woke him up at 6 a.m. because she felt an earthquake. Ignesious carefully took his television set off its table and put it down on the ground so that it would not fall and break. Then the family rushed out of the house. When the tremors stopped, they saw the sea rising. In the chaos and confusion, two of his children caught hold of the hands of their mother’s father and mother’s brother, and rushed in the opposite direction. He never saw them again. His wife was also swept away. Only the three other children who came with him were saved. Sanjeev was a policeman, serving in the Katchall island of the Nicobar group of islands. He somehow managed to save himself, his wife and his baby daughter from the waves. But then he heard cries for help from the wife of John, the guesthouse cook. Sanjeev jumped into the water to rescue her, but they were both swept away. Thirteen year-old Meghna was swept away along with her parents and seventy-seven other people. She spent two days floating in the sea, holding on to a wooden door. Eleven times she saw relief helicopters overhead, but they did not see her. She was brought to the shore by a wave, and was found walking on the seashore in a daze. Almas Javed was ten years old. She was a student of Carmel Convent in Port Blair where her father had a petrol pump. Her mother Rahila’s home was in Nancowry island. The family had gone there to celebrate Christmas. When the tremors came early in the morning, the family was sleeping. Almas’s father saw the sea water recede. He understood that the water would come rushing back with great force. He woke everyone up and tried to rush them to a safer place. As they ran, her grandfather was hit on the head by something and he fell down. Her father rushed to help him. Then came the first giant wave that swept both of them away. Almas’s mother and aunts stood clinging to the leaves of a coconut tree, calling out to her. A wave uprooted the tree, and they too were washed away. Almas saw a log of wood floating. She climbed on to it. Then she fainted. When she woke up, she was in a hospital in Kamorta. From there she was brought to Port Blair. The little girl does not want to talk about the incident with anyone. She is still traumatised. The Tsunami - Sonali Deraniyagala\n\nQuestion:\nFill in the blank with the appropriate option. Ignesious was the manager of a cooperative society in ______________."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Lucknow"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Katchall"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Coimbatore"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Kanpur"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following passage and answer the given subquestions. These stories are all from the Andaman and Nicobar archipelago. Ignesious was the manager of a cooperative society in Katchall. His wife woke him up at 6 a.m. because she felt an earthquake. Ignesious carefully took his television set off its table and put it down on the ground so that it would not fall and break. Then the family rushed out of the house. When the tremors stopped, they saw the sea rising. In the chaos and confusion, two of his children caught hold of the hands of their mother’s father and mother’s brother, and rushed in the opposite direction. He never saw them again. His wife was also swept away. Only the three other children who came with him were saved. Sanjeev was a policeman, serving in the Katchall island of the Nicobar group of islands. He somehow managed to save himself, his wife and his baby daughter from the waves. But then he heard cries for help from the wife of John, the guesthouse cook. Sanjeev jumped into the water to rescue her, but they were both swept away. Thirteen year-old Meghna was swept away along with her parents and seventy-seven other people. She spent two days floating in the sea, holding on to a wooden door. Eleven times she saw relief helicopters overhead, but they did not see her. She was brought to the shore by a wave, and was found walking on the seashore in a daze. Almas Javed was ten years old. She was a student of Carmel Convent in Port Blair where her father had a petrol pump. Her mother Rahila’s home was in Nancowry island. The family had gone there to celebrate Christmas. When the tremors came early in the morning, the family was sleeping. Almas’s father saw the sea water recede. He understood that the water would come rushing back with great force. He woke everyone up and tried to rush them to a safer place. As they ran, her grandfather was hit on the head by something and he fell down. Her father rushed to help him. Then came the first giant wave that swept both of them away. Almas’s mother and aunts stood clinging to the leaves of a coconut tree, calling out to her. A wave uprooted the tree, and they too were washed away. Almas saw a log of wood floating. She climbed on to it. Then she fainted. When she woke up, she was in a hospital in Kamorta. From there she was brought to Port Blair. The little girl does not want to talk about the incident with anyone. She is still traumatised. The Tsunami - Sonali Deraniyagala\n\nQuestion:\nWhich among the following words is the antonym of ‘order’ ?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Chaos"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Structure"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Arrangement"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "System"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following passage and answer the given subquestions. These stories are all from the Andaman and Nicobar archipelago. Ignesious was the manager of a cooperative society in Katchall. His wife woke him up at 6 a.m. because she felt an earthquake. Ignesious carefully took his television set off its table and put it down on the ground so that it would not fall and break. Then the family rushed out of the house. When the tremors stopped, they saw the sea rising. In the chaos and confusion, two of his children caught hold of the hands of their mother’s father and mother’s brother, and rushed in the opposite direction. He never saw them again. His wife was also swept away. Only the three other children who came with him were saved. Sanjeev was a policeman, serving in the Katchall island of the Nicobar group of islands. He somehow managed to save himself, his wife and his baby daughter from the waves. But then he heard cries for help from the wife of John, the guesthouse cook. Sanjeev jumped into the water to rescue her, but they were both swept away. Thirteen year-old Meghna was swept away along with her parents and seventy-seven other people. She spent two days floating in the sea, holding on to a wooden door. Eleven times she saw relief helicopters overhead, but they did not see her. She was brought to the shore by a wave, and was found walking on the seashore in a daze. Almas Javed was ten years old. She was a student of Carmel Convent in Port Blair where her father had a petrol pump. Her mother Rahila’s home was in Nancowry island. The family had gone there to celebrate Christmas. When the tremors came early in the morning, the family was sleeping. Almas’s father saw the sea water recede. He understood that the water would come rushing back with great force. He woke everyone up and tried to rush them to a safer place. As they ran, her grandfather was hit on the head by something and he fell down. Her father rushed to help him. Then came the first giant wave that swept both of them away. Almas’s mother and aunts stood clinging to the leaves of a coconut tree, calling out to her. A wave uprooted the tree, and they too were washed away. Almas saw a log of wood floating. She climbed on to it. Then she fainted. When she woke up, she was in a hospital in Kamorta. From there she was brought to Port Blair. The little girl does not want to talk about the incident with anyone. She is still traumatised. The Tsunami - Sonali Deraniyagala\n\nQuestion:\nSelect true or false for the following statement. Sanjeev made it to safety after the tsunami."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following passage and answer the given subquestions. These stories are all from the Andaman and Nicobar archipelago. Ignesious was the manager of a cooperative society in Katchall. His wife woke him up at 6 a.m. because she felt an earthquake. Ignesious carefully took his television set off its table and put it down on the ground so that it would not fall and break. Then the family rushed out of the house. When the tremors stopped, they saw the sea rising. In the chaos and confusion, two of his children caught hold of the hands of their mother’s father and mother’s brother, and rushed in the opposite direction. He never saw them again. His wife was also swept away. Only the three other children who came with him were saved. Sanjeev was a policeman, serving in the Katchall island of the Nicobar group of islands. He somehow managed to save himself, his wife and his baby daughter from the waves. But then he heard cries for help from the wife of John, the guesthouse cook. Sanjeev jumped into the water to rescue her, but they were both swept away. Thirteen year-old Meghna was swept away along with her parents and seventy-seven other people. She spent two days floating in the sea, holding on to a wooden door. Eleven times she saw relief helicopters overhead, but they did not see her. She was brought to the shore by a wave, and was found walking on the seashore in a daze. Almas Javed was ten years old. She was a student of Carmel Convent in Port Blair where her father had a petrol pump. Her mother Rahila’s home was in Nancowry island. The family had gone there to celebrate Christmas. When the tremors came early in the morning, the family was sleeping. Almas’s father saw the sea water recede. He understood that the water would come rushing back with great force. He woke everyone up and tried to rush them to a safer place. As they ran, her grandfather was hit on the head by something and he fell down. Her father rushed to help him. Then came the first giant wave that swept both of them away. Almas’s mother and aunts stood clinging to the leaves of a coconut tree, calling out to her. A wave uprooted the tree, and they too were washed away. Almas saw a log of wood floating. She climbed on to it. Then she fainted. When she woke up, she was in a hospital in Kamorta. From there she was brought to Port Blair. The little girl does not want to talk about the incident with anyone. She is still traumatised. The Tsunami - Sonali Deraniyagala\n\nQuestion:\nFill in the blanks with the correct option. “________________ she saw relief helicopters overhead, but they did not see her.”"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Eleven times"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Twelve times"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Fourteen times"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Ten times"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Select true or false for the following statement. Almas’s father realised that a tsunami was going to hit the Island."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Select true or false for the following statement. “Meghna was saved by a relief helicopter.”"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Fill in the blanks. Almas Javed was a _______ old girl."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Ten year"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Eleven year"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Five year"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Seven year"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Select true or false for the following statement. Ignesious lost his wife, two children, his father-in-law, and his brother-in-law in the tsunami."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 1 · Quiz 1 · 25 Feb 2024 · QDF4 · Part 1"
+}

@@ -1,0 +1,336 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Computational Thinking · Quiz 2 · Dec 2023",
+  "subject": "Computational Thinking",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "the end of the execution of the below pseudocode? A=[] B=[] while Table 1 has more rows) Read the top row X tron Table 1 (if(X.PartOfSpeech == Verb (f(X LetterCount > 5)/"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "= B ++ [X.SerialNumber) Move Y to Table 2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "contains senal numbers or all verbs, wile b contains senal numbers or otner worcs"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "contains serial numbers of all verbs, while B contains serial numbers for other words with letter count greater than 5 Ve A contains serial numbers of all verbs, while B contains serial numbers of all verbs with letter count greater than 5"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A contains serial numbers of all verbs and B contains serial numbers of words other than verbs"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed on the \"Shopping Bills\" dataset. What will d represent at the end of the execution of the below pseudocode? d={) while(Table 1 has more rows){ Read the first row X in Table 1 d = doSomething(X, d, \"SV Stores\") d = doSomething(X, d, \"Big Bazaar\") d = doSomething(X, d, \"Sun General\") Move X to Table 2 Procedure doSomething(Y, D, S) if(isKey(D, S)){ D[S] = D[S] ++ [Y.TotalBi11Amount] elsef D[S] - [Y.TotalBi11Amount] return D End doSomething"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The dictionary d represents the sum of all total bill amounts with respect to the shop name parameter. The dictionary d represents a list of total bill amounts with respect to the shop name parameter. c The dictionary d represents the count of bills with respect to the shop name parameter."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The dictionary d represents a list of shop names with respect to the total bill amount."
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed on the \"Words\" dataset. What will be the values of B and C represent at the end of the execution of the below pseudocode? A= () while(Table 1 has more rows){ Read the first row X in Table 1"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "= doSomething(A, X.PartOfSpeech) Move X to Table 2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "= None foreach k in keys(A)1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "= A[k] Procedure doSomething(Y, P) if(isKey(Y, P)){ Y[P] = Y[P] + 1 elsef Y[P] = 1 return Y End doSomething"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "B contains the minimum frequency count of part of speech and C contains the corresponding part of speech"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "C contains the minimum frequency count of part of speech and B contains the corresponding part of speech"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "C contains the maximum frequency count of part of speech and B contains the corresponding part of speech"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "contains the maximum frequency count of part of speech and C contains the corresponding part of speech"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let Z be a row in the \"Words\" table such that Z.Word = \"reluctant\". What will be the value of alphaDict\"t\"] at the end of the execution of the following pseudocode? alphabict = ('t':2, 'c':1, \"a\":1, \"s':0) alphaDict = updateDict(Z, alphabict) Procedure updateDict (Z, Dict) 1 = 1 while(i ‹= Z. LetterCount){ x = ith letter of Z.Word 1f(not isKey(Dict, x))( Dict [x] = 1 elsef Diet[x] = Dict[x] + 1 = 1 + 1 return(Dict) End updateDict"
+        }
+      ],
+      "numerical_answer": 4.0,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let explode(W) return the list of letters in the word W. For example explode(\"common\") will return ['c\", 'o\". 'm', 'm', 'o', 'n']. What will be the value of count at the end of the execution of the following pseudocode? count = 0, letterList = (] wordList = [\"beekeeper\", \"inspects\", \"hives\", \"choose\"] foreach word in wordList lastLetter = \", flag = False foreach letter in letterList{ if(letter is a vowel and letter == lastletter){ lastletter = letter 1f(flag){ count = count + 1"
+        }
+      ],
+      "numerical_answer": 2.0,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The topChem and topPhy are lists of cards having Chemistry marks greater than 75 and Physics marks greater than 75 respectively. Each entry in both lists has the same fields as the \"Scores\" table. What will the value of the list someList represent at the end of the execution of the below pseudocode? someList = [] foreach x in topchen{ foreach Y in topPhy{ if(x.SeqNo == Y.SeqNo and x.Mathematics > 75)( someList = someList ** [X.Name]"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "It stores the names of students who have scored above 75 in Mathematics It stores the names of students who have scored above 75 in both Chemistry and Physics"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "It stores the names of students who have scored above 75 in at least one subject It stores the names of students who have scored above 75 in all three subjects"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The given pseudocode is executed on the \"Words\" dataset. C stores the number of nouns which have at least one verb adjacent to it. Choose the correct code fragment to complete the pseudocode."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "= [], B = (], C = 0 while(Table 1 has more rows) Read the first row X in Table 1 ....."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Fill the code * *************************************** Move X to Table 2 foreach Y in Bf 1f(member(A, Y - 1) or member(A, Y + 1)){"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "= C + 1 if(X.PartOfSpeech == \"Verb\" or X.PartOfSpeech == \"Noun\"){"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "= B ++ [X.SeQNo] 1f(x.PartofSpeech == Verb\" or X.PartOfSpeech == \"Noun\")("
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "= A ** [X. SegNo] if(X.PartofSpeech == \"Verb\" or X.PartofSpeech == \"Noun\"){"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "= A ++ [X. SeqNo] 1f(x.PartOfSpeech =* \"Noun\"){"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "= B ++ [X.SeqNo] 1f(X.PartofSpeech == \"Verb\")("
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "= B *+ [X.SeqNo] 1f(X.PartofSpeech == \"Noun\"){"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "= A ++ [X.SeQNo] 1f(X.PartofSpeech == \"Verb\">{"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "= A ** [x. SeqNo] 1f(X. PartOfSpeech == \"Noun\"){"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "= B ++ [X. SeqNo]"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The below procedure is to build a list of serial numbers of specific parts of speech in the Words dataset. But the procedure may have mistakes. Identify all such mistakes (if any). 1: Procedure Buildlist(field) 2: ( while(Table 1 has more rows){ Read the first row X in Table 1 1f(X.PartofSpeech == field){ L = L ++ [[X.SerialNumber, field]] Move X to Table 2 10: return(field) 11: End BuildList 12: L1 = BuildList(\"Pronoun\") 13: L2 = BuildList(\"Verb\") Line 2 8 Line 3"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Line 4"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Line 5"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Line 10 F Line 12"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "MSO Let X be a row from the \"Words\" table. Consider the following procedure. The return value of CheckVowels(Y) will be False if: Procedure CheckVowels(X) voict = (} 1 = 1 while(i ‹ x.LetterCount){"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "= ith letter in X.Word 1f(A is a vowel){ Voict [A] = True if(length(keys(vDict)) > 3){ return(True) return(False) End CheckVowels"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Y.Word = \"perseverance\""
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "V.Word = \"determination\""
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Y.Word = \"diligence\""
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Y.Word = \"online\""
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 3,
+      "difficulty": "medium"
+    }
+  ]
+}

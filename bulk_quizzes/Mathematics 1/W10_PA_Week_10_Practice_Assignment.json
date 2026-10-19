@@ -87,6 +87,94 @@
       ],
       "marks": 2,
       "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let $f: \\mathbb{R} \\to \\mathbb{R}$ be defined by $f(x) = 2x + 3$. Which of the following statements about $f$ is correct?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$f$ is both one-to-one (injective) and onto (surjective)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$f$ is injective but not surjective"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$f$ is surjective but not injective"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$f$ is neither injective nor surjective"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "A linear polynomial $ax + b$ with $a \\neq 0$ is a bijection from $\\mathbb{R}$ to $\\mathbb{R}$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the value of $\\lim_{x \\to 0} \\frac{\\sin(3x)}{x}$?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "3"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "0"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Undefined"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$\\lim_{x \\to 0} \\frac{\\sin(kx)}{x} = k$. Here $k = 3$."
+        }
+      ]
     }
   ],
   "week": 10

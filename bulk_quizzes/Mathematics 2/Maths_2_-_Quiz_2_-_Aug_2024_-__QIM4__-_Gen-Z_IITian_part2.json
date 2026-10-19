@@ -1,0 +1,148 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 2 · Quiz 2 · Aug 2024 · QIMA · Part 2",
+  "subject": "Mathematics 2",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let W = span {(1, 1,0), (-1,1,0)}. The projection of (1, 2, 3) on W is (a, b, c). Find the value of b."
+        }
+      ],
+      "numerical_answer": 2.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let W = span {(1, 1,0), (-1,1,0)}. The projection of (1, 2, 3) on W is (a, b, c). Find the value of c."
+        }
+      ],
+      "numerical_answer": 0.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let W = span {(1, 1,0), (-1,1,0)}. The projection of (1, 2, 3) on W is (a, b, c). If the dimension of W is p and that of W- is q, find the value of p? + g?."
+        }
+      ],
+      "numerical_answer": 5.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the value of a."
+        }
+      ],
+      "numerical_answer": 3.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the value of b."
+        }
+      ],
+      "numerical_answer": 2.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the value of c."
+        }
+      ],
+      "numerical_answer": 1.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If AT A + AAT = kI, where k is a scalar and I is the identity matrix, find the value of k. Ш Passage / Context Let S be the set of all solutions to the system Ax = b, where A and & are given below: A ="
+        }
+      ],
+      "numerical_answer": 2.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Select all true statements. S is a vector subspace of R3 5 is an affine subspace of Ra S is a line in Ra"
+        }
+      ],
+      "acceptable_answers": [
+        "B, C"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Select all true statements."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "S is the empty set. 8 S is a singleton set containing the zero vector."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "S = (1,1,0) + span {(1, 0, 1)}"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "S = (0,1, -1) + span{(1, 0, 1)}"
+          }
+        ]
+      ],
+      "correct_answers": [
+        2
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "Mathematics 2 · Quiz 2 · Aug 2024 · QIMA · Part 2"
+}

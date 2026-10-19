@@ -1,0 +1,173 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Statistics 1 · Quiz 2 · Mar 2025 · QDF4",
+  "subject": "Statistics 1",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following events: genzitan.in/ecosystem video solutions exam.genzitan.in roulube-youtube.com/coen-clan"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Drawing a red card from a standard deck of 52 cards. (B) Rolling a sum of 10 with two independent rolls of an unbiased die. Which of these events has the maximum probability? в В"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both have the same probability"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "MCO In how many ways can 6 people be arranged in a line such that two specific people, A and B, must never be next to pach others 480 в 720 c 240"
+        }
+      ],
+      "acceptable_answers": [
+        "A"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In how many different ways can the letters of the word \"AMERICA\" be arranged such that the consonants always come together! MCO Out of 6 boys and 4 girls, how many queues of 3 boys and 2 girls can be formed? 120 14400 252"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "720I 360 120"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "5040"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1440"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following option(s) is(are) correct?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Probability values can be negative. 8 The probability of an event and its complement always add up to 0. The probability of two independent events occurring simultaneously is the product of their individual probabilities."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The set of all possible outcomes of a random experiment is called sample space."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If P(C) = 0.5, P(A U B) = 0.7 and P(AU BUC) = 0.9, then what is the value of P((A U B) nC)? Enter the answer correct to one decimal place."
+        }
+      ],
+      "numerical_answer": 0.3,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The number of ways to arrange n + 1 objects in a line is equal to 6 times the number of ways to arrange n objects in a line. Find the value of n"
+        }
+      ],
+      "numerical_answer": 5.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In how many ways can 7 people be arranged around a circular table if one specific person must always Occupy a fixed seat, which cannot be channed?"
+        }
+      ],
+      "numerical_answer": 120.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "There are 6 dark chocolates and 5 milk chocolates in a fridge. A person selects 3 chocolates from the fridge at random. Find the probability that among the chocolates drawn there is at least one chocolate of each type. Enter the answer correct to two decimal places."
+        }
+      ],
+      "numerical_answer": 0.82,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "At a school, 30% of students are members of the Science Club, while 70% are members of the Art Club. Data indicates that the probability of passing a specific test, given that a student is in the Science Club, is 0.8, whereas the probability of passing the same test, given membership in the Art Club, is 0.4. Based on the above data, answer the given subquestions. NUMERICAL What is the probability that a randomly selected student passes the test? Enter the answer correct to two decimal places. 3 marks • Answer: 0.52l If a randomly selected student is known to have passed the test, what is the probability that this student is a member of the Science Club? Enter the answer correct to two decimal places"
+        }
+      ],
+      "numerical_answer": 0.46,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ]
+}

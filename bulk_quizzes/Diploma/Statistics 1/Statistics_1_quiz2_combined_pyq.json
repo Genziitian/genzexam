@@ -1,0 +1,147 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Statistics 1 · Quiz 2 · Combined PYQ",
+  "title": "Statistics 1 · Quiz 2 · Combined PYQ",
+  "subject": "Statistics 1",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Kanika has to choose a t-shirt for her outfit from a collection of 6 yellow t-shirts, 2 black t-shirts and 4 blue t-shirts. If a t-shirt is chosen randomly, then what is the chance that a black or a blue t- shirt is chosen by Kanika for her outfit? Enter the answer correct to one decimal place."
+        }
+      ],
+      "acceptable_answers": [
+        "0.4 to 0.6"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If she wins a colour TV, then what is the probability that candy was from bag B1? (Enter the answer correct to two decimal places)."
+        }
+      ],
+      "acceptable_answers": [
+        "0.51 to 0.57"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A person is randomly picked from this group, then what is the probability that the person is a female, given that the person’s reaction is favourable to the new gadget? Enter the answer correct to two decimal places."
+        }
+      ],
+      "acceptable_answers": [
+        "0.30 to 0.36"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the probability that a randomly chosen passenger gets a taxi with engine issues? Enter the answer correct to three decimal places."
+        }
+      ],
+      "acceptable_answers": [
+        "0.051 to 0.057"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Given that a passenger gets a taxi with engine issues, then find the probability that the passenger took a ride with the Green taxi company? Enter the answer correct to two decimal places. Question Id : 640653853238 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix There are 200 employees in a company. There are 40 employees who know Python language and 50 employees who know SQL. Out of these, there are 10 who know both Python and SQL. Let E1 be the event that a randomly selected employee knows Python and E2 be the event that a selected employee knows SQL. Based on the given information, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "0.41 to 0.47"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Question Id : 640653853243 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix A committee of 7 members has to be formed from 9 Men and 4 Women. Based on the given information, answer the given subquestions. Sub questions"
+        }
+      ],
+      "numerical_answer": 0.4,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Pramod goes to a shop to buy some clothes. Shopkeeper shows him 7 shirts, 4 pants and 12 t- shirts. If he selects three clothes at random, then find the probability that the randomly chosen clothes are of different type. (Enter the answer correct to two decimal places)"
+        }
+      ],
+      "acceptable_answers": [
+        "0.16 to 0.22"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In a school, there are 3 students in section-A, 4 students in section-B and 5 students in section-C. Find the number of ways, in which 8 students can be selected such that it includes at least 2 students from each section and at most 5 students from the total 7 students in section-A and section-B."
+        }
+      ],
+      "numerical_answer": 270.0,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the probability that a black pair of balls is chosen? (Enter the answer correct to two decimal places.)"
+        }
+      ],
+      "acceptable_answers": [
+        "0.04 to 0.10"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the probability that they are of same colour? (Enter the answer correct to two decimal places.) Question Id : 6406531021454 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "0.24 to 0.30"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    }
+  ]
+}

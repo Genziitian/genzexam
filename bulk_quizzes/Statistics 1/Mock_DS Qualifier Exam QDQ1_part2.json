@@ -1,0 +1,102 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "DS Qualifier Exam QDQ1 · Part 2",
+  "subject": "Statistics 1",
+  "section": "mock_test",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the median of the data set represented by the stem- and-leaf plot?"
+        }
+      ],
+      "numerical_answer": 28.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Calculate the range of the data set. Question Id : 640653990847 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Please answer the subquestions based on the given frequency distribution table for different types of cusines preferred by 150 people: Sub questions"
+        }
+      ],
+      "numerical_answer": 34.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the value of y (frequency of Thai cuisine)?"
+        }
+      ],
+      "numerical_answer": 15.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the value of x (relative frequency of Mexican cuisine)?(write correct upto 2 decimal places) Please answer the subquestions based on the given dataset: Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "0.15 to 0.17 Question Id : 640653990854 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the sample covariance between X and Y for the dataset given in Table 2."
+        }
+      ],
+      "numerical_answer": 48.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the sample correlation coefficient(r) between X and Y for the dataset given in Table 2. (Write correct upto 3 digits after the decimal)"
+        }
+      ],
+      "acceptable_answers": [
+        "0.921 to 0.925"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In an exam, students' scores have an interquartile range (IQR) of 20. The teacher decides to first add 5 marks to each student's score and then multiply each adjusted score by 2. What will be the interquartile range now?"
+        }
+      ],
+      "numerical_answer": 40.0,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "DS Qualifier Exam QDQ1 · Part 2"
+}

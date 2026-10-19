@@ -1,0 +1,103 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Qualifier Exam QDQ2 · Part 1",
+  "subject": "English 1",
+  "section": "mock_test",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In a college of 500 students, 285 took Mathematics, 195 took Statistics, 115 took English, 70 took Mathematics and Statistics, 45 took Mathematics and English, 50 took Statistics and English, and 10 took all three courses. What is the total number of students who took none of these three subjects?"
+        }
+      ],
+      "numerical_answer": 60.0,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Question Id : 640653990859 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Sub questions"
+        }
+      ],
+      "numerical_answer": -1.0,
+      "numerical_tolerance": 0.01,
+      "marks": 5,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "R1 \\ R2"
+        }
+      ],
+      "numerical_answer": 6.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "R2 Question Id : 640653990870 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Sub questions"
+        }
+      ],
+      "numerical_answer": 4.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Mandatory or Optional : Mandatory Number of Questions : 24 Number of Questions to be attempted : 24 Display Number Panel : Yes Enable Mark as Answered Mark for Review and Clear Response : No Maximum Instruction Time : 0"
+        }
+      ],
+      "acceptable_answers": [
+        "3 English 1"
+      ],
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using a dataset similar to the \"Words\" dataset, based on the following paragraph. \"Surrounded by nature, Susan often takes a stroll, savoring the soothing sounds of chirping birds. Rustlings in the trees suggest squirrels beginning their day, searching for sustenance. Surely, the beauty of a sunrise holds unparalleled magic.\" What would be the value of count at the end of the execution of the above pseudocode? Assume that upper case and lower case are ignored during comparison of letters. Mandatory or Optional : Mandatory Number of Questions : 10 Number of Questions to be attempted : 10 Display Number Panel : Yes Enable Mark as Answered Mark for Review and Clear Response : No Maximum Instruction Time : 0"
+        }
+      ],
+      "acceptable_answers": [
+        "4 Stats-1"
+      ],
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the sample standard deviation of salary (in thousand rupees)? (Enter the answer correct to 2 decimal accuracy) Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "12.22 to 12.28 Question Id : 640653990936 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "Qualifier Exam QDQ2 · Part 1"
+}

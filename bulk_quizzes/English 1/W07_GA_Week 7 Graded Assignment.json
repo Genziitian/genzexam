@@ -159,6 +159,94 @@
       ],
       "marks": 1,
       "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the sentence with the correct subject-verb agreement."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Neither the teacher nor the students were aware of the change in schedule."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Neither the teacher nor the students was aware of the change in schedule."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Neither the teachers nor the student were aware of the change in schedule."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Neither the teacher nor the student were aware of the change in schedule."
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "When subjects are joined by 'neither... nor', the verb agrees with the closer subject ('students' -> 'were')."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the word that is an antonym of 'Ephemeral'."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Permanent"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Transient"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Fleeting"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Momentary"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "'Ephemeral' means lasting for a very short time. Its opposite is 'Permanent'."
+        }
+      ]
     }
   ],
   "week": 7

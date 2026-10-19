@@ -1,0 +1,104 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Jan 2024 Quiz2 · Part 2",
+  "subject": "Business Analytics",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is F-statistic for Model-10? (Note: Enter the answer rounded to two decimal places. For example, if the answer is “1.234”, then enter it as “1.23”)"
+        }
+      ],
+      "acceptable_answers": [
+        "351 to 352"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "At a threshold of 0.7, what is the accuracy of the AI engine? (Note: Enter the answer in “%” rounded to two decimal places without the “%” symbol. For example, if the answer is “1.234%”, then enter it as “1.23”)"
+        }
+      ],
+      "acceptable_answers": [
+        "37 to 39"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "At a threshold of 0.7, what is the precision for “Not Selected” category for the AI engine? (Note: Enter the answer in “%” rounded to two decimal places without the “%” symbol. For example, if the answer is “1.234%”, then enter it as “1.23”)"
+        }
+      ],
+      "acceptable_answers": [
+        "24 to 26"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "At a threshold of 0.7, what is the recall for “Selected” category for the AI engine? (Note: Enter the answer in “%” rounded to two decimal places without the “%” symbol. For example, if the answer is “1.234%”, then enter it as “1.23”)"
+        }
+      ],
+      "acceptable_answers": [
+        "39 to 41"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "At a threshold of 0.4, how many “False Positives” is the AI engine predicting? (Note: Enter the answer rounded to two decimal places. For example, if the answer is “1.234”, then enter it as “1.23”)"
+        }
+      ],
+      "numerical_answer": 2.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "At a threshold of 0.4, how many “False Negatives” is the AI engine predicting? (Note: Enter the answer rounded to two decimal places. For example, if the answer is “1.234”, then enter it as “1.23”)"
+        }
+      ],
+      "numerical_answer": 0.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "At a threshold of 0.4, how many “True Negatives” is the AI engine predicting? (Note: Enter the answer rounded to two decimal places. For example, if the answer is “1.234”, then enter it as “1.23”)"
+        }
+      ],
+      "numerical_answer": 1.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "Jan 2024 Quiz2 · Part 2"
+}

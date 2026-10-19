@@ -1,0 +1,105 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "May 2024 Quiz2 · Part 2",
+  "subject": "Business Analytics",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the intercept for the curve? (Note: Enter the answer rounded to two decimal places. For example, if the answer is “1.234”, then enter it as “1.23”)"
+        }
+      ],
+      "acceptable_answers": [
+        "1261 to 1262"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What should be the price to achieve a demand of 300? (Note: Enter the answer rounded to two decimal places. For example, if the answer is “1.234”, then enter it as “1.23”) The demand of a product is estimated to follow the relationship: D(p) = 1444 – 3(p^2). Here, “p” is the selling price for the product. The product is made at Rs. 50 per unit. Given this information, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "35 to 38 Question Id : 640653853101 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If you intend to maximize the revenue, then what is optimal value for “p”? (Note: Enter the answer rounded to two decimal places. For example, if the answer is “1.234”, then enter it as “1.23”)"
+        }
+      ],
+      "acceptable_answers": [
+        "12.50 to 12.70"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If you intend to maximize the profits, then what is optimal value for “p”? (Note: Enter the answer rounded to two decimal places. For example, if the answer is “1.234”, then enter it as “1.23”) Question Id : 640653853089 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix “Fake Money (FM)” is an investment consulting firm. Dr. Milo has approached FM with Rs. 1,00,000 for guidance on investment opportunities. Dr. Milo wants to invest the entire Rs. 1,00,000. FM’s top financial analyst recommends that all new investments be made in oil industry, steel industry or government bonds. Specifically, the analyst identified five investment opportunities and projected their annual rates of returns (which are specified in Table-1). Dr. Milo, is a guy who likes to distribute his investments. Hence, he has specified the following requirements to the analyst 1. Neither industry (oil or steel) should receive more than Rs. 50,000 2. Government bonds should be at least 25% of the steel industry investments 3. The investments in Bongu Oil, the high-return but high-risk investment, cannot be more than 60% of total oil industry investment Given this information, answer the subquestions Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "37 to 38"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many decision variable(s) is/are present in the standard form of the primal?"
+        }
+      ],
+      "acceptable_answers": [
+        "1 5"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many constraints (excluding the non-negativity constraints) is/are present in the standard form of the primal?"
+        }
+      ],
+      "numerical_answer": 6.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many constraints (excluding the non-negativity constraints) are present in the dual (which is based on the standard form of the primal)?"
+        }
+      ],
+      "numerical_answer": 5.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "May 2024 Quiz2 · Part 2"
+}

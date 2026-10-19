@@ -1,0 +1,229 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 2 · Quiz 2 · Apr 2023 · Part 2",
+  "subject": "English 2",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the mood of the sentence given below. The rains during this time of the year are not very intense."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Impera ve Subjunctive Indicative"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Interrogative"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "MCO. Fill in the blank with the most appropriate modal verb. For all we know, the new Matrix movie _ interesting. (Strong possibility)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Can Could c Will"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Might"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "MCO. In the following sentence, fill in the blank with if or 'whether. Catch me you can"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Whether"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Either if or whether can be used"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the non-finite clause in the following sentence. Maria wanted the student to jump high. ¿ marks be"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Maria wanted"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The student to To jump high"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Wanted the student"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Convert the following sentence into passive voice. Ali gave Siraj a look. Ali is giving Siraj a look."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Ali will be giving Siraj a look. c A look was given to Siraj by Ali."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Siraj was given a look by Ali."
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "State whether the following is true or false \"You were prepared: \"Were' in this sentence is a modal auxiliary. FALSE 024 мсо What does the modal auxiliary in the following sentences denote? Perhaps he could ask for the ban to bel lifted. Suggestion"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Ability"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Request"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In the following sentence, identify the nature of the adjective. The adjective is underlined. This soup is not edible.'"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "inbuave: indicativel"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Innovative"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Predicative Answers Di"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Yesterday was not a great day._?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Was it marks"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Is it"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 2 · Quiz 2 · Apr 2023 · Part 2"
+}

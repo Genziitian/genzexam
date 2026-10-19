@@ -1,0 +1,341 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 1 · Quiz 1 · 29 Oct 2023 · QPF4 · Part 1",
+  "subject": "English 1",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following passage and answer the given subquestions. When I first visited Gandhi in 1942 at his ashram in Sevagram, in central India, he said, “I will tell you how it happened that I decided to urge the departure of the British. It was in 1917.” He had gone to the December 1916 annual convention of the Indian National Congress party in Lucknow. There were 2,301 delegates and many visitors. \"During the proceedings,\" Gandhi recounted, “a peasant came up to me looking like any other peasant in India, poor and emaciated, and said, ‘I am Rajkumar Shukla. I am from Champaran, and I want you to come to my district’!’’ Gandhi had never heard of the place. It was in the foothills of the towering Himalayas, near the kingdom of Nepal. Under an ancient arrangement, the Champaran peasants were sharecroppers. Rajkumar Shukla was one of them. He was illiterate but resolute. He had come to the Congress session to complain about the injustice of the landlord system in Bihar, and somebody had probably said, “Speak to Gandhi.” Gandhi told Shukla he had an appointment in Cawnpore and was also committed to go to other parts of India. Shukla accompanied him everywhere. Then Gandhi returned to his ashram near Ahmedabad. Shukla followed him to the ashram. For weeks he never left Gandhi’s side. “Fix a date,” he begged. Impressed by the sharecropper’s tenacity and story Gandhi said, ‘‘I have to be in Calcutta on such-and-such a date. Come and meet me and take me from there.” Months passed. Shukla was sitting on his haunches at the appointed spot in Calcutta when Gandhi arrived; he waited till Gandhi was free. Then the two of them boarded a train for the city of Patna in Bihar. There Shukla led him to the house of a lawyer named Rajendra Prasad who later became President of the Congress party and of India. Rajendra Prasad was out of town, but the servants knew Shukla as a poor yeoman who pestered their master to help the indigo sharecroppers. So they let him stay on the grounds with his companion, Gandhi, whom they took to be another peasant. But Gandhi was not permitted to draw water from the well lest some drops from his bucket pollute the entire source; how did they know that he was not an untouchable? Gandhi decided to go first to Muzzafarpur, which was en route to Champaran, to obtain more complete information about conditions than Shukla was capable of imparting. He accordingly sent a telegram to Professor J.B. Kripalani, of the Arts College in Muzzafarpur, whom he had seen at Tagore’s Shantiniketan school. The train arrived at midnight, 15 April 1917. Kripalani was waiting at the station with a large body of students. Gandhi stayed there for two days in the home of Professor Malkani, a teacher in a government school. - Indigo - Louis Fischer\n\nQuestion:\nAmong the following words, choose the antonym for the word ‘tenacity’."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Persistence"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Determination"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Firmness"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Timidity"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following passage and answer the given subquestions. When I first visited Gandhi in 1942 at his ashram in Sevagram, in central India, he said, “I will tell you how it happened that I decided to urge the departure of the British. It was in 1917.” He had gone to the December 1916 annual convention of the Indian National Congress party in Lucknow. There were 2,301 delegates and many visitors. \"During the proceedings,\" Gandhi recounted, “a peasant came up to me looking like any other peasant in India, poor and emaciated, and said, ‘I am Rajkumar Shukla. I am from Champaran, and I want you to come to my district’!’’ Gandhi had never heard of the place. It was in the foothills of the towering Himalayas, near the kingdom of Nepal. Under an ancient arrangement, the Champaran peasants were sharecroppers. Rajkumar Shukla was one of them. He was illiterate but resolute. He had come to the Congress session to complain about the injustice of the landlord system in Bihar, and somebody had probably said, “Speak to Gandhi.” Gandhi told Shukla he had an appointment in Cawnpore and was also committed to go to other parts of India. Shukla accompanied him everywhere. Then Gandhi returned to his ashram near Ahmedabad. Shukla followed him to the ashram. For weeks he never left Gandhi’s side. “Fix a date,” he begged. Impressed by the sharecropper’s tenacity and story Gandhi said, ‘‘I have to be in Calcutta on such-and-such a date. Come and meet me and take me from there.” Months passed. Shukla was sitting on his haunches at the appointed spot in Calcutta when Gandhi arrived; he waited till Gandhi was free. Then the two of them boarded a train for the city of Patna in Bihar. There Shukla led him to the house of a lawyer named Rajendra Prasad who later became President of the Congress party and of India. Rajendra Prasad was out of town, but the servants knew Shukla as a poor yeoman who pestered their master to help the indigo sharecroppers. So they let him stay on the grounds with his companion, Gandhi, whom they took to be another peasant. But Gandhi was not permitted to draw water from the well lest some drops from his bucket pollute the entire source; how did they know that he was not an untouchable? Gandhi decided to go first to Muzzafarpur, which was en route to Champaran, to obtain more complete information about conditions than Shukla was capable of imparting. He accordingly sent a telegram to Professor J.B. Kripalani, of the Arts College in Muzzafarpur, whom he had seen at Tagore’s Shantiniketan school. The train arrived at midnight, 15 April 1917. Kripalani was waiting at the station with a large body of students. Gandhi stayed there for two days in the home of Professor Malkani, a teacher in a government school. - Indigo - Louis Fischer\n\nQuestion:\nWhat is the meaning of ‘yeoman’ ?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "A farmer who owned and worked on his own land"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A person who is the owner of a house"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A person who lends money as a business"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A person who fits and repairs the pipes"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following passage and answer the given subquestions. When I first visited Gandhi in 1942 at his ashram in Sevagram, in central India, he said, “I will tell you how it happened that I decided to urge the departure of the British. It was in 1917.” He had gone to the December 1916 annual convention of the Indian National Congress party in Lucknow. There were 2,301 delegates and many visitors. \"During the proceedings,\" Gandhi recounted, “a peasant came up to me looking like any other peasant in India, poor and emaciated, and said, ‘I am Rajkumar Shukla. I am from Champaran, and I want you to come to my district’!’’ Gandhi had never heard of the place. It was in the foothills of the towering Himalayas, near the kingdom of Nepal. Under an ancient arrangement, the Champaran peasants were sharecroppers. Rajkumar Shukla was one of them. He was illiterate but resolute. He had come to the Congress session to complain about the injustice of the landlord system in Bihar, and somebody had probably said, “Speak to Gandhi.” Gandhi told Shukla he had an appointment in Cawnpore and was also committed to go to other parts of India. Shukla accompanied him everywhere. Then Gandhi returned to his ashram near Ahmedabad. Shukla followed him to the ashram. For weeks he never left Gandhi’s side. “Fix a date,” he begged. Impressed by the sharecropper’s tenacity and story Gandhi said, ‘‘I have to be in Calcutta on such-and-such a date. Come and meet me and take me from there.” Months passed. Shukla was sitting on his haunches at the appointed spot in Calcutta when Gandhi arrived; he waited till Gandhi was free. Then the two of them boarded a train for the city of Patna in Bihar. There Shukla led him to the house of a lawyer named Rajendra Prasad who later became President of the Congress party and of India. Rajendra Prasad was out of town, but the servants knew Shukla as a poor yeoman who pestered their master to help the indigo sharecroppers. So they let him stay on the grounds with his companion, Gandhi, whom they took to be another peasant. But Gandhi was not permitted to draw water from the well lest some drops from his bucket pollute the entire source; how did they know that he was not an untouchable? Gandhi decided to go first to Muzzafarpur, which was en route to Champaran, to obtain more complete information about conditions than Shukla was capable of imparting. He accordingly sent a telegram to Professor J.B. Kripalani, of the Arts College in Muzzafarpur, whom he had seen at Tagore’s Shantiniketan school. The train arrived at midnight, 15 April 1917. Kripalani was waiting at the station with a large body of students. Gandhi stayed there for two days in the home of Professor Malkani, a teacher in a government school. - Indigo - Louis Fischer\n\nQuestion:\nSelect true or false for the following statement. Gandhi decided to go first to Muzzafarpur, which was en route to Champaran."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "TRUE"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "FALSE"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following passage and answer the given subquestions. When I first visited Gandhi in 1942 at his ashram in Sevagram, in central India, he said, “I will tell you how it happened that I decided to urge the departure of the British. It was in 1917.” He had gone to the December 1916 annual convention of the Indian National Congress party in Lucknow. There were 2,301 delegates and many visitors. \"During the proceedings,\" Gandhi recounted, “a peasant came up to me looking like any other peasant in India, poor and emaciated, and said, ‘I am Rajkumar Shukla. I am from Champaran, and I want you to come to my district’!’’ Gandhi had never heard of the place. It was in the foothills of the towering Himalayas, near the kingdom of Nepal. Under an ancient arrangement, the Champaran peasants were sharecroppers. Rajkumar Shukla was one of them. He was illiterate but resolute. He had come to the Congress session to complain about the injustice of the landlord system in Bihar, and somebody had probably said, “Speak to Gandhi.” Gandhi told Shukla he had an appointment in Cawnpore and was also committed to go to other parts of India. Shukla accompanied him everywhere. Then Gandhi returned to his ashram near Ahmedabad. Shukla followed him to the ashram. For weeks he never left Gandhi’s side. “Fix a date,” he begged. Impressed by the sharecropper’s tenacity and story Gandhi said, ‘‘I have to be in Calcutta on such-and-such a date. Come and meet me and take me from there.” Months passed. Shukla was sitting on his haunches at the appointed spot in Calcutta when Gandhi arrived; he waited till Gandhi was free. Then the two of them boarded a train for the city of Patna in Bihar. There Shukla led him to the house of a lawyer named Rajendra Prasad who later became President of the Congress party and of India. Rajendra Prasad was out of town, but the servants knew Shukla as a poor yeoman who pestered their master to help the indigo sharecroppers. So they let him stay on the grounds with his companion, Gandhi, whom they took to be another peasant. But Gandhi was not permitted to draw water from the well lest some drops from his bucket pollute the entire source; how did they know that he was not an untouchable? Gandhi decided to go first to Muzzafarpur, which was en route to Champaran, to obtain more complete information about conditions than Shukla was capable of imparting. He accordingly sent a telegram to Professor J.B. Kripalani, of the Arts College in Muzzafarpur, whom he had seen at Tagore’s Shantiniketan school. The train arrived at midnight, 15 April 1917. Kripalani was waiting at the station with a large body of students. Gandhi stayed there for two days in the home of Professor Malkani, a teacher in a government school. - Indigo - Louis Fischer\n\nQuestion:\nTo whom did Gandhi send a telegram?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Rajendra Prasad"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "J.B. Kripalani"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Romesh Chunder Dutt"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "N. R Malkani"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nListen to the audio sample and answer the given subquestions:\n\nQuestion:\nAt whose house did Gandhi stay for two days?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Professor Dutt"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Professor Malkani"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Professor Chowdhury"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Professor Sharma"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nListen to the audio sample and answer the given subquestions:\n\nQuestion:\nWhat do you hear at 0:13?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Sneer"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Snare"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nListen to the audio sample and answer the given subquestions:\n\nQuestion:\nWhat do you hear at 1.53?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Clause"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Cause"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nListen to the audio sample and answer the given subquestions:\n\nQuestion:\nSelect the antonym for the word ‘lofty’."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Tall"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "High"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Towering"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Low"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nListen to the audio sample and answer the given subquestions:\n\nQuestion:\nFill in the blank with the correct option. The poorest way to face life is to face it with a _____________."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Smile"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Sneer"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following telephonic conversation and fill in the blanks with appropriate responses and answer the given subquestions: Sister: Hi bro, how are you doing? Brother: Hey sis, (i)_____________________. How about you? Sister: (ii)_________________. How is your preparation for exams going on? Brother: Good, but I am really scared for my exams. Sister:(iii)_______________ Brother: Because I think I am still lacking somewhere. Sister: Don’t worry dear. You still have a month. You will do a better job! Brother: (iv)_______________________. But I think I need more guidance. Sister: For that, you can take coaching from the best institute which will help and guide you. Brother: Yeah, this seems like the perfect idea. (v)______________________ Sister: There is a good coaching institute. It is called Genius Plus. Try to contact them. Brother: Thank you, I will contact them immediately.\n\nQuestion:\nSelect the antonym for the word ‘disbelief’."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Doubt"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Scepticism"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Incredulity"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Faith"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 1 · Quiz 1 · 29 Oct 2023 · QPF4 · Part 1"
+}

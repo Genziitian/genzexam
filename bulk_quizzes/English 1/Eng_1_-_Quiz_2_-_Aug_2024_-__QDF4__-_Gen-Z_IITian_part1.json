@@ -1,0 +1,311 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 1 · Quiz 2 · Aug 2024 · Part 1",
+  "subject": "English 1",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the meaning of outfit? Set of clothes usually worn together"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Clothes rarely worn together"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A bad combination of clothes"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of these"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the meaning of austere? Very simple, without decoration 8 Decorated gansniy Cr Decorated in an outdated mannen Decorated very fashionably MCQ What is the meaning of dome? Round roof on a building"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Flat-roofed building"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "An open air arena"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of these"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The passage suggests that the men who emerged from the dark-shingled flat-roofed building across the street jamming caps on their heads and banging lunch buckets against their thighs were most likely - Acquaintances of the stationmaster"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Workers headed to the long white wooden building in front of the lake / Workers at a sawmill in the bush"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Officials responding to the stationmaster's call"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What did the narrator think the stationmaster had called out?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "\"Tram\" \"Pam\" \"Sam\""
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "\"Fan\""
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "some kind of small untidy evergreens rolled up like v Sleepy bears Excited hares L Passage Context Fill in the blanks in List A using the most appropriate verb forms in List B. List B (word bank): A. Had ruled B. Will take away C. Came D. Has become E. Seized"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Christmas trees"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Bright stars"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Do you know that journalism very profitable?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Had rulen"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Will take away Ce Camel Has become"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Seized"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Hardly had Joseph stepped outside than a man him by the shoulders."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Had ruled"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Will take away Cr Camer"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Has become Seized"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "years The parish was small, moderately honest, prosperous, and was used to the old priest, who _ it for thirty THad ruled."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Will take away c Came"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Has become"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "He found the shop closed, and knocked again and again, not without astonishment and apprehension, for it was not a holiday; but nobody —"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Had ruled"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Will take away"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Came"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Has Decome & Seized"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "MCO \"Can't you get down?\" asked Dorothy. \"No, for this pole is stuck up my back. If you _ shall be greatly obliged to you,\" said the Scarecrow 1.U marks • the pole, I MCQ Choose the correct option. Ramya thought she _ _ to that park before. / Had been"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Had ruled Will take away c Came"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "D Has become"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Has been"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 1 · Quiz 2 · Aug 2024 · Part 1"
+}

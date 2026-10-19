@@ -1100,6 +1100,8 @@ body:has(#ep-app) {
 }
 
 .ep-calc-header {
+  cursor: move;
+  touch-action: none;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -2027,3 +2029,26 @@ img.ep-mark {
     html, body { overflow-x: clip; }
   }
 }
+
+/* Calculator colours: black in light mode (white in dark mode, see tools/dark-extra/ql-dark-exam.css). */
+.ep-calc-panel{background:#111318;border-color:#2a2f3a;box-shadow:0 24px 60px -18px rgba(0,0,0,.55)}
+.ep-calc-header{background:#181b22;border-bottom-color:#2a2f3a}
+.ep-calc-header>div:first-child{color:#f2f4fa!important}
+.ep-calc-header [data-calc-close]{color:#9aa3b2!important}
+.ep-calc-tabs{background:#262b36}
+.ep-calc-tab-btn{color:#9aa3b2}
+.ep-calc-tab-btn.active{background:#3a3fd8;color:#fff}
+.ep-calc-screen{background:#0b0d12;border-bottom-color:#2a2f3a}
+.ep-calc-history{color:#8b93a3}
+.ep-calc-display{color:#f2f4fa}
+.ep-calc-key{background:#1c2029;border-color:#323847;color:#e8ebf3}
+.ep-calc-key:hover{background:#272c38}
+.ep-calc-key.op{background:#1a2a38;border-color:#2d5f76;color:#7cc8f0}
+.ep-calc-key.op:hover{background:#223648;color:#9bd8f7}
+.ep-calc-key.fn{background:#1d1f3a;border-color:#343a8a;color:#a3a8ff}
+.ep-calc-key.fn:hover{background:#25284a;color:#c0c3ff}
+.ep-calc-key.action-clear{background:#2b1b1d;border-color:#6e2b2b;color:#f08a8a}
+.ep-calc-key.action-clear:hover{background:#3a2022;color:#f5a3a3}
+.ep-calc-key.action-equals{background:#3a3fd8;border-color:#2b30b8;color:#fff}
+.ep-calc-key.action-equals:hover{background:#2b30b8}
+.ep-calc-header svg[stroke="#2b30b8"]{stroke:#a3a8ff}

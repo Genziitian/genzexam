@@ -1,0 +1,174 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Week 2 Graded Assignment · Part 2",
+  "subject": "Statistics 1",
+  "section": "practice_graded",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following graphical representations is appropriate for the number of play- ers in each academy for the given data in Table 2.1.G?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Bar chart"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Pie chart"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Pareto chart"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both bar chart and pareto chart 4"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Since, we are interested in the count/number of players, a bar chart would be a appro- priate representation for the given dataset. Also, the given data is nominal, which implies that we can arrange the bars in a specific order while plotting and it would be still appropriate for the representation of number of players. But, a pie chart is used when we are interested in representation of proportion or per- centage of players in each of the academy. Hence, option ( d) is correct."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The data of number of students sharing the same rank is collected. Which of the following is/are suitable to represent the collected data?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": ""
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "5"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": ""
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "In option ( a), there’s a missing baseline resulting in a misleading plot. In option ( c), the order of categories is not retained. Therefore, it’s not a suitable representation for the collected data because, in case of ordinal data we preserve the order of categories while plotting. The option ( b) is a good representation of the collected dataset as it is neither mis- leading nor order of categories is violated. Hence, option ( b) is correct."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct statement about categorical data:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Categorical data have measurement units."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Categorical data can take numerical values, but no meaningful mathematical op- erations can be performed on it."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Categorical data is quantitative in nature."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "All of the above"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Categorical data are also called qualitative variables and it identifies the group mem- bership. Also, we cannot perform any meaningful mathematical operations on it. Suppose, we have a categorical variable “Gender” with two categories “F” and “M” and we have coded “F” as 1 and “M” as 0. Here, categorical data have taken numerical values, but we cannot perform any meaningful mathematical operation on it. Also, categorical data does not have any measurement units as it represents only cat- egories or labels. 6 Hence, from above explanation it is clear that option (b) is correct. The distribution of grades in a Statistics class consisting of 80 students is shown by a pie chart in Figure 2.2.G. Based on the information given, answer the questions (10) and (11) Figure 2.2.G: Distribution of grades in a Statistics class"
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many students have secured B grade?"
+        }
+      ],
+      "numerical_answer": 26.0,
+      "numerical_tolerance": 0,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Total number of students in the statistics class is 80 and distribution for grade B is 32.5%. So, number of students secured B grade is 80 × 32.5100 = 2600100 = 26."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the ratio of the students secured C grade to the students secured A grade?"
+        }
+      ],
+      "numerical_answer": 0.9,
+      "numerical_tolerance": 0,
+      "marks": 1,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Total number of students in the statistics class is 80. Number of students secured C grade is 80 × 22.5100 = 18 Number of students secured A grade is 80 × 25100 = 20 Thus, required ratio 1820 = 0.9 7"
+        }
+      ]
+    }
+  ],
+  "week": 2,
+  "title": "Week 2 Graded Assignment · Part 2"
+}

@@ -1,0 +1,383 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 2 · Quiz 1 · 16 JULY 2023 · QPF4 · Part 3",
+  "subject": "English 2",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the adverbial clause of time in the given sentence.        'They had called him the Runt since he was a baby.'"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Since"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The Runt"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Called him the Runt"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Since he was a baby"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the sentence adverb in the following sentence. 'They didn’t say much as they walked up to the meadow'"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "As they walked up"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To the meadow"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "There is no sentence adverb"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Much"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘I slept well.’ In the given sentence,‘well’ is _____."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Adverb of degree"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Adverb of frequency"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Adverb of manner"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Adverb of place"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the adjective(s) in the following sentence. A sick Sharmila had to be provided intensive care."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Had, intensive"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Sick, care"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Sharmila, provided"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Sick, intensive"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the nature of the following sentence. “The children who ran fast will have the best chance to return before breakfast.”"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Complex"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Compound"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Simple"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the most grammatically correct sentence."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "They were a bunch of hopeful rather."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "They were rather a bunch hopeful ."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "They were a rather hopeful bunch."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "They were rather a hopefully bunch."
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In the following sentence, identify the logical/semantic role of the underlined phrase. Sethu cut the bread with a new knife."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Source"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Agent"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Experiencer"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Instrument"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "'Sajal takes the medal.' In this sentence, the verb 'take' will change to _______ when converted to passive voice."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Will take"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Is taken"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Was taken"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Were taken"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "______ Raju learned to play guitar."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Even"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Only"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both Even and Only"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "If"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Outwardly, they appeared suspicious. The adverb here is _________"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Comment adverb"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Viewpoint adverb"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Focus adverb"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of these"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 2 · Quiz 1 · 16 JULY 2023 · QPF4 · Part 3"
+}

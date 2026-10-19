@@ -1,0 +1,366 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Week 4 Practice Assignment · Part 1",
+  "subject": "Mathematics 1",
+  "section": "practice",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following polynomial functions represents the profit from selling Tamil books?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "2x3 + 4x2 − 2x − 4"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "x3 − 2x2 − x + 2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "x3 + 2x2 − x − 2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "2x3 − 4x2 − 2x + 4"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In which year was the profit from Hindi books zero?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "2001"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "2002"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "2004"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "2010 Solution: (a) The total profit from selling English and Bengali books is= E(x) + B(x) = (3x3 − 5x2 +x)+( x2 +4x+5) = 3x3 −4x2 +5x+5. Hence the total profit from selling Hindi and Tamil books is= T (x)−(3x3 −4x2 +5x+5) = 5x3 +3x+1 −3x3 +4x2 −5x−5 = 2x3 + 4x2 − 2x − 4. As the profit from selling Hindi and Tamil books are found to be the same, the profit from selling Tamil books is= 12 (2x3 + 4x2 − 2x − 4) = x3 + 2x2 − x − 2 (b) Profit from selling Hindi books (which is same as the profit from selling Tamil books) is x3 + 2x2 − x − 2. x3 + 2x2 − x − 2 = x2(x + 2) − 1(x + 2) = (x + 2)(x2 − 1) = (x + 2)(x + 1)(x − 1) 1 So the profit will be zero if ( x + 2)(x + 1)(x − 1) = 0, i.e., at x = −2, −1, 1 the profit can be 0. But in this context, x cannot be negative. So x = 1 is the only possibility. Hence in the year 2001 the profit from Hindi books was zero. 2"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the quadratic polynomial which when divided by x, x − 1, and x + 1 gives the remainders 7, 14, and 8 respectively."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "4x2 − 3x + 7"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "x2 + 7x + 7"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "7x2 + x + 7"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "4x2 + 3x + 7 Solution: Let the quadratic polynomial which is satisfying the given condition bep(x) = ax2 + bx + c. When it is divided by x the remainder is 7. It implies that if we substitute x = 0 in p(x) we will get 7, i.e., p(0) = 7. Similarly we have p(1) = 14 and p(−1) = 8. Hence we have the following equations: p(0) = a(0)2 + b(0) + c = c = 7 p(1) = a.(1)2 + b.1 + c = a + b + c = 14 p(−1) = a(−1)2 + b(−1) + c = a − b + c = 8 So, we have c = 7, and substituting c in the second and third equation we get, a + b = 7, and a − b = 1. By solving these two equations we get a = 4 and b = 3. Hence the quadratic polynomial is 4 x2 + 3x + 7. 3"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Box A has length x unit, breadth (x + 1) unit, and height (x + 2) unit. Box B has length (x + 1) unit, breadth ( x + 1) unit, and height ( x + 2) unit. There are two more boxes C and D of cubic shape with side x unit. The total volume of A and B is y cubic unit more than the total volume of C and D. Find y in terms of x."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "x3 + 7x2 + 7x + 2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "7x2 + 7x + 2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "7x2 − 7x − 2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "x3 + 7x2 − 7x − 2 Solution: The volume of box A is x(x + 1)(x + 2) = x3 + 3x2 + 2x cubic unit. The volume of box B is (x + 1)(x + 1)(x + 2) = (x2 + 2x + 1)(x + 2) = x3 + 4x2 + 5x + 2 cubic unit. The volume of box C and D is x3 cubic unit each. So the total volume of A and B is 2x3 + 7x2 + 7x + 2 and the total volume of C and D is 2x3. Hence y = (2x3 + 7x2 + 7x + 2) − 2x3 = 7x2 + 7x + 2. 4"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The population of a bacteria culture in laboratory conditions is known to be a function of time of the form p(t) = at5 + bt2 + c, where p represents the population (in lakhs) and t represents the time (in minutes). Suppose a student conducts an experiment to determine the coefficients a, b, and c in the formula and obtains the following data: • p(0) = 3 • p(1) = 5 • p(2) = 39 Which of the following options is correct?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "p(t) = 3t5 − t2 + 3"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "p(t) = 4t5 − 2t2 + 3"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "p(t) = t5 + t2 + 3"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "p(t) = 39t5 + 5t2 + 3 Solution: Given that, p(t) = at5 + bt2 + c. p(0) = c = 3 p(1) = a + b + c = 5, putting c = 3, we get a + b = 2. p(2) = a(2)5 + b(2)2 + c = 32a + 4b + c = 39, substituting c = 3, we get 32 a + 4b = 36, implies, 8a + b = 9 (cancelling 4 from both sides) By solving these two equations we get a = 1, and b = 1. Hence, p(t) = t5 + t2 + 3. 5"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If the polynomials x3 + ax2 + 5x + 7 and x3 + 2x2 + 3x + 2a leave the same remainder when divided by ( x − 2), then the value of a is:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "32"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "− 32"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "52"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "−52 Solution: Given that both the polynomials leave same remainder when divided by (x − 2). By substituting x = 2 both the polynomial should have same value. By substituting x = 2 in x3 + ax2 + 5x + 7, we get 8 + 4a + 10 + 7 = 4a + 25. By substituting x = 2 in x3 + 2x2 + 3x + 2a, we get 8 + 8 + 6 + 2a = 2a + 22. So we have, 4a + 25 = 2a + 22 2a = −3 a = − 32 6"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let r(x) be a polynomial function which is obtained as the remainder after dividing the polynomial 2 x3 + x2 − 5 by the polynomial 2 x − 3. Choose the correct option which represents the polynomial r(x) most appropriately."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Option A x r(x) •2 •4 •−2 •−4 Fig P-6.2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Option B x r(x) •2 •4 •−2 •−4 Fig P-6.3"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Option C x r(x) •2 •4 •−2 •−4 Fig P-6.4"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Option D x r(x) •2 •4 •−2 •−4 Fig P-6.5 7 Solution We get 4 as the remainder if 2 x3 + x2 − 5 is divided by the polynomial 2 x − 3. 2x3 + x2 − 5 = (2x − 3)(x2 + 2x + 3) + 4 Hence r(x) = 4, which is a constant polynomial. Hence, the first option is the correct. 8 2 Multiple Select Questions (MSQ): (Use the following data for the Question 8 and Question 9 only) . By dividing a polynomial p(x) with another polynomial q(x) we get h(x) as the quotient and r(x) as the remainder."
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The maximum degree of r(x) can be,"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "deg p(x)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "deg (p(x)) − 1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "deg q(x)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "deg (q(x)) − 1"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If deg p(x) < deg q(x), then choose the set of correct answers:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "h(x) = 0"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "deg h(x) = deg q(x)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "deg r(x) = deg q(x)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "deg r(x) = deg p(x) Solution: (a) The degree of the remainder r(x) should be strictly less than the degree of the polynomial q(x). So the maximum degree of r(x) is deg (q(x)) − 1. (b) If deg p(x) < deg q(x), then quotient will be zero polynomial, hence deg h(x) = 0. The remainder will be p(x) itself. So deg r(x) = deg p(x). 9 3 Numerical Answer Type (NAT): (Use the following data for the Question 10 and Question 11 only). An open box can be made from a piece of cardboard of length 7 x unit and breadth 5 x unit, by cutting squares of side x unit out of the corners of the rectangular cardboard, then folding up the sides as shown in the Figure P-6.1. 7x 5x x Figure P-6.1"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What will be the coefficient of x3 in the polynomial representing the volume of the box?"
+        }
+      ],
+      "acceptable_answers": [
+        "15]"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ],
+  "week": 4,
+  "title": "Week 4 Practice Assignment · Part 1"
+}

@@ -1,0 +1,268 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Python Programming · Quiz 1 · 26 Oct 2025 · QDF2 · Part 2",
+  "subject": "Python Programming",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following Python code. How many lines will be printed when this code is executed?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "for i in range(1, 6):\n    for j in range(1, 6):\n        for k in range(1, 2):\n            if i == j:\n                print(\"-\")\n            else:\n                print(\"*\", end=\" \")\n    print(\"+\")"
+        }
+      ],
+      "numerical_answer": 10,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Indentation of print(\"+\") was lost in the source PDF. Assuming it sits at the i-loop level, each i emits one '-' line and one '+' line = 10 lines. If print(\"+\") is inside the j-loop instead, the answer is 30. Confirmed = official answer key (new- format QIM/QIA4 export, 2025 Oct26)."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following Python code. How many lines will be printed when this code is executed?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "for i in range(1, 5):\n    for j in range(1, 5):\n        if j == 3:\n            break\n        if i == 2:\n            continue\n        print(i, j)"
+        }
+      ],
+      "numerical_answer": 6,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "j runs 1,2 before break at j==3. i==2 is skipped via continue. i=1,3,4 each print 2 lines -> 6 lines."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following Python code. How many elements will be present in result?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "P = {1, 2, 3, 4}\nQ = {3, 4, 5, 6}\nR = {4, 5, 6, 7}\nS = {2, 4, 6, 8}\nresult = ((P | Q) - R) & S\nprint(result)"
+        }
+      ],
+      "numerical_answer": 1,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "(P|Q)={1,2,3,4,5,6}; minus R = {1,2,3}; & S = {2}. One element."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following snippet of code and answer the given sub-questions."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def analyze(data):\n    result = []\n    for item in data:\n        if isinstance(item, tuple):\n            total = 0\n            for x in item:\n                if x % 2 == 0:\n                    total += x\n            result.append(total)\n        elif isinstance(item, int) and item % 2 == 1:\n            result.append(item * 3)\n        else:\n            continue\n    return result\nsample = [(2, 5, 6), 7, (1, 3), 4, (8, 2, 1)]\noutput = analyze(sample)"
+        },
+        {
+          "kind": "text",
+          "value": "What is the value of output after executing the given code?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "[8, 21, 0, 4, 10]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[8, 21, 4, 2, 10]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[8, 21, 0, 10]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[8, 7, 0, 10]"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "(2,5,6)->2+6=8; 7 odd->21; (1,3)->0; 4 even int->skipped; (8,2,1)->8+2=10. output=[8,21,0,10]."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following snippet of code and answer the given sub-questions."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def analyze(data):\n    result = []\n    for item in data:\n        if isinstance(item, tuple):\n            total = 0\n            for x in item:\n                if x % 2 == 0:\n                    total += x\n            result.append(total)\n        elif isinstance(item, int) and item % 2 == 1:\n            result.append(item * 3)\n        else:\n            continue\n    return result\nsample = [(2, 5, 6), 7, (1, 3), 4, (8, 2, 1)]\noutput = analyze(sample)"
+        },
+        {
+          "kind": "text",
+          "value": "How many times is the inner `for x in item:` loop executed in total when running analyze(sample)?"
+        }
+      ],
+      "numerical_answer": 8,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Tuples (2,5,6), (1,3), (8,2,1) contribute 3+2+3 = 8 inner iterations; the int items 7 and 4 do not enter the inner loop."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following code and answer the subquestions based on the given data."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def flipper(matrix):\n    transformed = []\n    for row in matrix:\n        new_row = []\n        for element in row:\n            if element < 0:\n                new_row.append(0)\n            elif element % 2 == 0:\n                new_row.append(element * 2)\n            else:\n                new_row.append(element * 3)\n        transformed.append(new_row)\n    result = [val for sub in transformed for val in sub if val > 5]\n    return transformed, result\nmatrix = [[1, -2, 3], [4, 5, -6], [7, 8]]\nout1, out2 = flipper(matrix)\nprint(out1)\nprint(out2)"
+        },
+        {
+          "kind": "text",
+          "value": "What is the value of out1 after executing the code?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "[[1, -4, 9], [8, 15, -12], [21, 16]]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[[3, 0, 9], [8, 15, 0], [21, 16]]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[[3, 0, 9], [4, 15, 0], [21, 16]]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[[1, 0, 3], [8, 15, 0], [21, 16]]"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Negatives->0, evens*2, odds*3. [1,-2,3]->[3,0,9]; [4,5,-6]->[8,15,0]; [7,8]->[21,16]."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following code and answer the subquestions based on the given data."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def flipper(matrix):\n    transformed = []\n    for row in matrix:\n        new_row = []\n        for element in row:\n            if element < 0:\n                new_row.append(0)\n            elif element % 2 == 0:\n                new_row.append(element * 2)\n            else:\n                new_row.append(element * 3)\n        transformed.append(new_row)\n    result = [val for sub in transformed for val in sub if val > 5]\n    return transformed, result\nmatrix = [[1, -2, 3], [4, 5, -6], [7, 8]]\nout1, out2 = flipper(matrix)\nprint(out1)\nprint(out2)"
+        },
+        {
+          "kind": "text",
+          "value": "What is the value of out2 after executing the code?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "[3, 9, 8, 15, 21, 16]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[9, 8, 15, 21, 16]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[8, 15, 21, 16]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[3, 0, 9, 8, 15, 0, 21, 16]"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Flatten transformed and keep values > 5: from 3,0,9,8,15,0,21,16 -> [9, 8, 15, 21, 16]."
+        }
+      ]
+    }
+  ],
+  "title": "Python Programming · Quiz 1 · 26 Oct 2025 · QDF2 · Part 2"
+}

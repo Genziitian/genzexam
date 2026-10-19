@@ -1,0 +1,413 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Python Programming · Quiz 1 · Feb 2023 · AN2 · Part 2",
+  "subject": "Python Programming",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the output of the following snippet of code? Each entry in the matrix M has one of these two characters: 'x' or 'o'."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "M = [['x', 'x', 'o', 'x'],\n     ['o', 'x', 'o', 'o'],\n     ['o', 'x', 'o', 'o'],\n     ['o', 'o', 'o', 'o']]\nn = len(M)\nfor i in range(n):\n    index = i\n    for j in range(1, n):\n        if M[i][j] != M[i][j - 1]:\n            index = -1\n            break\n        if M[j][i] != M[j - 1][i]:\n            index = -1\n            break\n    if index >= 0:\n        break\nprint(index)"
+        }
+      ],
+      "numerical_answer": -1,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "For a row i to survive, every element in row i must be equal AND every element in column i must be equal. Row 3 ('o','o','o','o') is uniform but column 3 ('x','o','o','o') is not, so index is reset to -1 in every outer iteration; the printed value is -1."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the output of the following snippet of code?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "p = 3\nn = 25\ncount = 0\nanswer = 0\nwhile p <= n:\n    flag = True\n    for i in range(2, p):\n        if p % i == 0:\n            flag = False\n    if flag:\n        count += 1\n    if flag and (count % 2 == 0):\n        answer += p\n    p += 1\nprint(answer)"
+        }
+      ],
+      "numerical_answer": 56,
+      "numerical_tolerance": 0.01,
+      "marks": 5,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The loop finds primes from 3 to 25: 3, 5, 7, 11, 13, 17, 19, 23. answer adds those at even count positions (2nd, 4th, 6th, 8th): 5 + 11 + 17 + 23 = 56."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What will be the type of the following expression? 20 % 5 // 2 * 50 ** 3"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "float"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "int"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "str"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "bool"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "All operands are integers and only integer operators (%, //, *, **) are used, so the result is of type int (value 0)."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What will be the type of the following expression? '#Python'"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "str"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "char"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "bool"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Syntax error"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "A quoted literal is a string; Python has no separate char type, so the type is str."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What will be the type of the following expression? 100 ** 3 / 300 + 10 - 25"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "float"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "int"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "str"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "bool"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The true-division operator / always produces a float, so the whole expression is a float."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A and B are Boolean variables. Based on the above data, answer the given subquestions, where for each subquestion the corresponding values of A and B are substituted into the code."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "if A:\n    print(A or B)\nelif B:\n    print(not(A or not B))"
+        },
+        {
+          "kind": "text",
+          "value": "else:"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "print(not(A and B))"
+        },
+        {
+          "kind": "text",
+          "value": "Which of the following output is correct for A = True and B = True ?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Cannot be determined"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "A is True, so the first branch runs and prints (A or B) = True."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A and B are Boolean variables. Based on the above data, answer the given subquestions, where for each subquestion the corresponding values of A and B are substituted into the code."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "if A:\n    print(A or B)\nelif B:\n    print(not(A or not B))"
+        },
+        {
+          "kind": "text",
+          "value": "else:"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "print(not(A and B))"
+        },
+        {
+          "kind": "text",
+          "value": "Which of the following output is correct for A = True and B = False ?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Cannot be determined"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "A is True, so the first branch runs and prints (A or B) = True or False = True."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A and B are Boolean variables. Based on the above data, answer the given subquestions, where for each subquestion the corresponding values of A and B are substituted into the code."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "if A:\n    print(A or B)\nelif B:\n    print(not(A or not B))"
+        },
+        {
+          "kind": "text",
+          "value": "else:"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "print(not(A and B))"
+        },
+        {
+          "kind": "text",
+          "value": "Which of the following output is correct for A = False and B = True ?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Cannot be determined"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "A is False and B is True, so the elif branch runs: not(A or not B) = not(False or False) = not False = True."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A and B are Boolean variables. Based on the above data, answer the given subquestions, where for each subquestion the corresponding values of A and B are substituted into the code."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "if A:\n    print(A or B)\nelif B:\n    print(not(A or not B))"
+        },
+        {
+          "kind": "text",
+          "value": "else:"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "print(not(A and B))"
+        },
+        {
+          "kind": "text",
+          "value": "Which of the following output is correct for A = False and B = False ?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Cannot be determined"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "A and B are both False, so the else branch runs: not(A and B) = not(False) = True."
+        }
+      ]
+    }
+  ],
+  "title": "Python Programming · Quiz 1 · Feb 2023 · AN2 · Part 2"
+}

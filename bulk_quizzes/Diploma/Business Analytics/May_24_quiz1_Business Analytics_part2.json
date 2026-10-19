@@ -1,0 +1,89 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "May 24 Quiz1 · Part 2",
+  "subject": "Business Analytics",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the elasticity of the demand response curve when the price is Rs.50? (Note: If your answer is in decimal, enter it rounded to two decimal places. For example, if your answer is “10.256”, enter it as “10.26”)"
+        }
+      ],
+      "numerical_answer": 2.5,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the satiating price for the demand response curve? (Note: If your answer is in decimal, enter it rounded to two decimal places. For example, if your answer is “10.256”, enter it as “10.26”) Question Id : 640653827824 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix “Bro” has always had a passion for data and the science behind it. Hence, to gain a formal education, Bro has explored and identified three different certificate programme provides: “The IITM BSc Program”, “IITM NPTEL Analytics Certification” and “A Random Dude Certification”. Before, opting for one, Bro has decided to identify the success of the program providers in terms of job opportunities after completion. The success is measured in three levels, “Level-1: Placement with High Package”, “Level-2: Placement with Low Package” and “Level-3: No placement”. From past data, it is seen that of all students who completed the “The IITM BSc Program” 30% of past students are in Level-1 and 45% are in Level-2. Similarly, of all students who completed the “IITM NPTEL Analytics Certification”, 45% are in Level-1 and 30% are in Level-2. Finally, of all students who completed the “A Random Dude Certification”, 25% are in the Level-1 and the rest are in Level- 3. Based on past admission trends, it is seen that 40% of the student population are in the “The IITM BSc Program”, 30% are in the “IITM NPTEL Analytics Certification” and the remaining have opted for “A Random Dude Certification”. Assuming the necessary mutual exclusiveness criteria, answer the given sub questions. Sub questions"
+        }
+      ],
+      "numerical_answer": 70.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If a total of 1000 students are taken (across all three programmes) then how many will be in “Level-2”? (Note: If your answer is in decimal, enter it rounded to two decimal places. For example, if your answer is “10.256”, enter it as “10.26”)"
+        }
+      ],
+      "numerical_answer": 770.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many participants with a waist size of “L” are expected to complete the Family Dosa with “Medium” speed? (Note: If your answer is in decimal, enter it rounded to two decimal places. For example, if your answer is “10.256”, enter it as “10.26”)"
+        }
+      ],
+      "acceptable_answers": [
+        "17 to 18"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the value of the computed test statistic used to perform the desired hypothesis test? (Note: If your answer is in decimal, enter it rounded to two decimal places. For example, if your answer is “10.256”, enter it as “10.26”)"
+        }
+      ],
+      "acceptable_answers": [
+        "0.5 to 1.5"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many degrees of freedom is present for the test statistic, used to perform the desired hypothesis test"
+        }
+      ],
+      "numerical_answer": 8.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "May 24 Quiz1 · Part 2"
+}

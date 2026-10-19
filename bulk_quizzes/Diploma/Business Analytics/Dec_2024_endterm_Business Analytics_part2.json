@@ -1,0 +1,106 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Dec 2024 Endterm · Part 2",
+  "subject": "Business Analytics",
+  "section": "endterm",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If the aim is to find if the difficulty level is independent of gender, then what is the value for the test statistic? (Enter your answer in decimals rounded to two decimal places. Eg: If your answer is 10.256, then enter it as 10.26)"
+        }
+      ],
+      "acceptable_answers": [
+        "14.50 to 15.00"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Assuming that each difficulty level splits the probability space into equal areas, the general belief is that the level of difficulty across all learners follows a normal distribution. To validate this belief, what is the value of the computed test statistic? (Enter your answer in decimals rounded to two decimal places. Eg: If your answer is 10.256, then enter it as 10.26)"
+        }
+      ],
+      "acceptable_answers": [
+        "21.00 to 22.00"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "For the hypothesis test focusing on whether the data is distributed normally, how many (count of) degrees of freedoms is present? Question Id : 6406531043975 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix A doctor is of the opinion that “Blood Pressure (BP)” is affected by “Age” and “Weight”. Based on past data, the correlation between these three variables is identified and provided in Table-3. Then answer the given subquestions. Sub questions"
+        }
+      ],
+      "numerical_answer": 2.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If a linear regression model is built between “BP” and “Age”, then how much percentage of variability in BP can be explained by Age? (Note: Enter your answer in percentage rounded to two decimal places. Eg: If your answer is “10.256%”, then enter the answer as “10.26”)"
+        }
+      ],
+      "acceptable_answers": [
+        "48.30 to 48.32"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the VIF for “Weight” with respect to “Age”? (Note: Enter your answer in decimal rounded to two decimal places. Eg: If your answer is “10.256”, then enter it as “10.26”) Question Id : 6406531043978 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix A logistic model is built to classify three types of animals: “Cat”, “Dog” and “Pig”. The confusion matrix for the model based on 30 samples is presented in Table-4. Based on the above data, answer the given subquestions Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "1.30 to 1.40"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the accuracy of the model? (Note: Enter your answer in percentage rounded to two decimal places. Eg: If your answer is “10.256%”, then enter the answer as “10.26”)"
+        }
+      ],
+      "acceptable_answers": [
+        "46 to 47"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the precision of the model for predicting “Dog”? (Note: Enter your answer in percentage rounded to two decimal places. Eg: If your answer is “10.256%”, then enter the answer as “10.26”) We are interested in understanding the efficiency of 5 Sales Offices. Each of the Sales Offices has an approved budget and a team size for achieving a fixed target of 20,00,000. As a Business Analyst, you must formulate a DEA problem using Linear programming for the Sales Office 3. Answer subquestions using the Table below. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "55 to 56 Question Id : 6406531043981 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "Dec 2024 Endterm · Part 2"
+}

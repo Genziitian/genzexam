@@ -1,0 +1,365 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 2 · Quiz 1 · 2025 · QEF3 · Part 4",
+  "subject": "English 2",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the adjunct in the following sentence. In the afternoons, we have a tea break."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Tea break"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "We have a tea break"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "In the afternoons"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "No adjunct"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "John’s teacher is the person whom we spoke to at the PTA meeting. Here the subordinate clause is ___ in nature."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Nominal"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Adjectival"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Adverbial"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "No Subordinate Clause"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The magic show that mesmerized people will be staged here next week. Here the relative pronoun is ____."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "That"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Will"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Here"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "People"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "\"He studied hard for the test, so he scored well.\" This sentence is of the type:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Simple"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Compound"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Complex"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The sky, which is generally blue, is grey now. The independent clause is _______."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The sky, which is"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Which is generally blue"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Is grey now"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The sky is grey now"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "State true or false. There is no dependent clause in the sentence “Since the cat is meowing, the dog is barking.”"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct modal verb to fill in the blank. See the hint or context provided and choose only the most appropriate option to fill the blank. Why _____ I concede my seat to her? Hint: A wh-question that denies the relevance of a social requirement"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Would"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Could"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Should"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In the following sentence, fill in the blank with the most appropriate modal verb. The land is so dry, there _________ have been a drought."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Must"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Must not"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Shall"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Should"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct modal verb to fill in the blank. See the hint or context provided and choose only the most appropriate option to fill the blank. If the candidates or their agents have any specific complaint or problem regarding the conduct of elections they _____ bring the same to the notice of the Observer appointed by the Election Commission at the polling booth. Hint: To show that an authoritative body is granting formal permission to someone to do something"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Should"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Must"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Will"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "May"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the most appropriate form of asking for permission in a formal situation from the following."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "May I borrow your pen please?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Can I borrow your pen?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both May I borrow your pen please? and Can I borrow your pen?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "I might borrow your pen"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 2 · Quiz 1 · 2025 · QEF3 · Part 4"
+}

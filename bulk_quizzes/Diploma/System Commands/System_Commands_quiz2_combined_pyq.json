@@ -1,0 +1,213 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "System Commands · Quiz 2 · Combined PYQ",
+  "title": "System Commands · Quiz 2 · Combined PYQ",
+  "subject": "System Commands",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Answers Case Sensitive : Yes Question Id : 640653690239 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "/home/pinky"
+      ],
+      "marks": 7,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Answers Case Sensitive : Yes Question Id : 640653587674 Question Type : COMPREHENSION Sub Question Shuffling Allowed : No Group Comprehension Questions : No Question Pattern Type : NonMatrix Based on the above data, answer the given subquestions. Sub questions"
+        }
+      ],
+      "acceptable_answers": [
+        "/var"
+      ],
+      "marks": 7,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In Linux bash, what does the syntax `command > output.txt 2>&1` accomplish?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Redirects both standard output (stdout) and standard error (stderr) to `output.txt`"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Appends output to `output.txt` twice"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Sends standard input from file descriptor 2 to file descriptor 1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Runs the command in background mode with process ID 2"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "`> output.txt` redirects fd 1 (stdout) to the file, and `2>&1` redirects fd 2 (stderr) to the same destination as fd 1."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which octal permission mode gives the file owner read, write, and execute permissions, while group and others receive only read and execute permissions?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "755 (`rwxr-xr-x`)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "644 (`rw-r--r--`)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "777 (`rwxrwxrwx`)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "700 (`rwx------`)"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Owner: 4+2+1=7; Group: 4+0+1=5; Others: 4+0+1=5. Result: 755."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which signal number is sent by default when running `kill <PID>` in Linux?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "SIGTERM (signal 15) allowing clean termination"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "SIGKILL (signal 9) forcing immediate termination"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "SIGHUP (signal 1) indicating terminal hangup"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "SIGINT (signal 2) from Ctrl+C"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Default kill signal is 15 (SIGTERM), which requests graceful cleanup. Signal 9 (SIGKILL) cannot be caught or ignored."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In bash, what does the special variable `$?` hold?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The exit status code of the most recently executed foreground command (0 for success)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The process ID (PID) of the current shell"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The number of arguments passed to the script"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The PID of the last background command"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "`$?` evaluates to the numeric exit code of the last command; 0 means successful completion."
+        }
+      ]
+    }
+  ]
+}

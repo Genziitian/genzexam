@@ -1,0 +1,401 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 1 · Quiz 1 · 26 Feb 2023 · QPF3 · Part 2",
+  "subject": "English 1",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following telephonic conversation and fill in the blank with appropriate responses for the given subquestions: Arun: Good morning Ms.Girija! Class Teacher: Good morning! (i)_________________ Arun: I am Arun Srinivasan. I am the class monitor of the class of which you are the class teacher, 6E. Class Teacher: Oh yes, Arun! I could not recognise your voice. The audio (ii) ____________ Arun: Is the audio better now, ma’am? Class Teacher: Yes yes, tell me. (iii) _________________ Arun: Ma’am, I wanted to check your availability for scheduling the PTA meeting. (iv) __________ the slot from 2 PM, on the 28th of this month? Class Teacher: Let me check my schedule… Yes, I am free in that slot. You can confirm it. Arun: Thanks a lot, ma’am. I will schedule the meeting for that slot and send out an email to the class. Class Teacher: Sure, go ahead. (v) ______________ Arun? Arun: No ma’am. Thanks for your time! Class Teacher: You are welcome, Arun. See you on Monday.\n\nQuestion:\nFill in the blank (i) with an appropriate response."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Hello! Is that?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Who is calling, please?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "What’s up?"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following telephonic conversation and fill in the blank with appropriate responses for the given subquestions: Arun: Good morning Ms.Girija! Class Teacher: Good morning! (i)_________________ Arun: I am Arun Srinivasan. I am the class monitor of the class of which you are the class teacher, 6E. Class Teacher: Oh yes, Arun! I could not recognise your voice. The audio (ii) ____________ Arun: Is the audio better now, ma’am? Class Teacher: Yes yes, tell me. (iii) _________________ Arun: Ma’am, I wanted to check your availability for scheduling the PTA meeting. (iv) __________ the slot from 2 PM, on the 28th of this month? Class Teacher: Let me check my schedule… Yes, I am free in that slot. You can confirm it. Arun: Thanks a lot, ma’am. I will schedule the meeting for that slot and send out an email to the class. Class Teacher: Sure, go ahead. (v) ______________ Arun? Arun: No ma’am. Thanks for your time! Class Teacher: You are welcome, Arun. See you on Monday.\n\nQuestion:\nFill in the blank (ii) with an appropriate response."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Was not clear."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Will end soon."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Launch would be rather musical."
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following telephonic conversation and fill in the blank with appropriate responses for the given subquestions: Arun: Good morning Ms.Girija! Class Teacher: Good morning! (i)_________________ Arun: I am Arun Srinivasan. I am the class monitor of the class of which you are the class teacher, 6E. Class Teacher: Oh yes, Arun! I could not recognise your voice. The audio (ii) ____________ Arun: Is the audio better now, ma’am? Class Teacher: Yes yes, tell me. (iii) _________________ Arun: Ma’am, I wanted to check your availability for scheduling the PTA meeting. (iv) __________ the slot from 2 PM, on the 28th of this month? Class Teacher: Let me check my schedule… Yes, I am free in that slot. You can confirm it. Arun: Thanks a lot, ma’am. I will schedule the meeting for that slot and send out an email to the class. Class Teacher: Sure, go ahead. (v) ______________ Arun? Arun: No ma’am. Thanks for your time! Class Teacher: You are welcome, Arun. See you on Monday.\n\nQuestion:\nFill in the blank (iii) with an appropriate response."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Where is the party tonight?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Will you just stop calling?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "How may I help you?"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following telephonic conversation and fill in the blank with appropriate responses for the given subquestions: Arun: Good morning Ms.Girija! Class Teacher: Good morning! (i)_________________ Arun: I am Arun Srinivasan. I am the class monitor of the class of which you are the class teacher, 6E. Class Teacher: Oh yes, Arun! I could not recognise your voice. The audio (ii) ____________ Arun: Is the audio better now, ma’am? Class Teacher: Yes yes, tell me. (iii) _________________ Arun: Ma’am, I wanted to check your availability for scheduling the PTA meeting. (iv) __________ the slot from 2 PM, on the 28th of this month? Class Teacher: Let me check my schedule… Yes, I am free in that slot. You can confirm it. Arun: Thanks a lot, ma’am. I will schedule the meeting for that slot and send out an email to the class. Class Teacher: Sure, go ahead. (v) ______________ Arun? Arun: No ma’am. Thanks for your time! Class Teacher: You are welcome, Arun. See you on Monday.\n\nQuestion:\nFill in the blank (iv) with an appropriate response."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Will you be free in"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Can we tour"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Is it possible to have a feast in"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "All of these"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nMatch Column A with suitable options in Column B. (Hint: Word collocation)\n\nQuestion:\nFill in the blank (v) with an appropriate response."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Bye."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "I am through."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Don’t call back."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Is there anything else?"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nMatch Column A with suitable options in Column B. (Hint: Word collocation)\n\nQuestion:\nDeeply ___"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Price"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Wind"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Attention"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Accusation"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Rooted"
+          }
+        ]
+      ],
+      "correct_answer": 4,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nMatch Column A with suitable options in Column B. (Hint: Word collocation)\n\nQuestion:\nLoud ___"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Price"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Wind"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Attention"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Accusation"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Rooted"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nMatch Column A with suitable options in Column B. (Hint: Word collocation)\n\nQuestion:\nHefty __"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Price"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Wind"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Attention"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Accusation"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Rooted"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nMatch Column A with suitable options in Column B. (Hint: Word collocation)\n\nQuestion:\nMedia ___"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Price"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Wind"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Attention"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Accusation"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Rooted"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nContext: A new development project is going to come up in your area that involves a lot of displacement of people. Different stakeholders with the project are stating their opinion on the various impacts, and the pros and cons of the project. Answer the given subquestions.\n\nQuestion:\nBlowing __"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Price"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Wind"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Attention"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Accusation"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Rooted"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 1 · Quiz 1 · 26 Feb 2023 · QPF3 · Part 2"
+}

@@ -1,0 +1,389 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 2 · Quiz 1 · 23 Feb 2025 · QDF3 · Part 1",
+  "subject": "English 2",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the speech segment given below and fill in the blanks with the appropriate discourse markers. Observe the tone and the punctuation of the passage and choose only the most fitting answer for every blank. Stephen King, on the Huge Turnout at His Book Signing Events: Uh…I’m scared. [i] _____, I don’t understand why this is happening. They come out and it’s wonderful and [ii] _____ I’d be worried about my future– my livelihood– if they didn’t, but you wonder [iii] _____ what is driving them or motivating them and I feel terrible because they stand in line and I can only be one person and move about [only] so fast. Around Christmas time, [iv] _____, I come out to do it because it’s a way of saying thanks to the people who bought the books, [and] [v] _____, allowed me to do what I want to do, which is to write. Transcribed from: “Stephen King Book Signing.” YouTube, uploaded by Donald Seavey, 14 Oct. 2008. Based on the above data, answer the given subquestions.\n\nQuestion:\nFill in blank [i] with the most fitting discourse marker among the options given below."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "You mean"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "I mean"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Such as"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Absolutely"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the speech segment given below and fill in the blanks with the appropriate discourse markers. Observe the tone and the punctuation of the passage and choose only the most fitting answer for every blank. Stephen King, on the Huge Turnout at His Book Signing Events: Uh…I’m scared. [i] _____, I don’t understand why this is happening. They come out and it’s wonderful and [ii] _____ I’d be worried about my future– my livelihood– if they didn’t, but you wonder [iii] _____ what is driving them or motivating them and I feel terrible because they stand in line and I can only be one person and move about [only] so fast. Around Christmas time, [iv] _____, I come out to do it because it’s a way of saying thanks to the people who bought the books, [and] [v] _____, allowed me to do what I want to do, which is to write. Transcribed from: “Stephen King Book Signing.” YouTube, uploaded by Donald Seavey, 14 Oct. 2008. Based on the above data, answer the given subquestions.\n\nQuestion:\nFill in blank [ii] with the most fitting discourse marker among the options given below."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "I suppose"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Whatnot"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Fine"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Ouch!"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the speech segment given below and fill in the blanks with the appropriate discourse markers. Observe the tone and the punctuation of the passage and choose only the most fitting answer for every blank. Stephen King, on the Huge Turnout at His Book Signing Events: Uh…I’m scared. [i] _____, I don’t understand why this is happening. They come out and it’s wonderful and [ii] _____ I’d be worried about my future– my livelihood– if they didn’t, but you wonder [iii] _____ what is driving them or motivating them and I feel terrible because they stand in line and I can only be one person and move about [only] so fast. Around Christmas time, [iv] _____, I come out to do it because it’s a way of saying thanks to the people who bought the books, [and] [v] _____, allowed me to do what I want to do, which is to write. Transcribed from: “Stephen King Book Signing.” YouTube, uploaded by Donald Seavey, 14 Oct. 2008. Based on the above data, answer the given subquestions.\n\nQuestion:\nFill in blank [iii] with the most fitting discourse marker among the options given below."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "As I say"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Great"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Exactly"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "In sum"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the speech segment given below and fill in the blanks with the appropriate discourse markers. Observe the tone and the punctuation of the passage and choose only the most fitting answer for every blank. Stephen King, on the Huge Turnout at His Book Signing Events: Uh…I’m scared. [i] _____, I don’t understand why this is happening. They come out and it’s wonderful and [ii] _____ I’d be worried about my future– my livelihood– if they didn’t, but you wonder [iii] _____ what is driving them or motivating them and I feel terrible because they stand in line and I can only be one person and move about [only] so fast. Around Christmas time, [iv] _____, I come out to do it because it’s a way of saying thanks to the people who bought the books, [and] [v] _____, allowed me to do what I want to do, which is to write. Transcribed from: “Stephen King Book Signing.” YouTube, uploaded by Donald Seavey, 14 Oct. 2008. Based on the above data, answer the given subquestions.\n\nQuestion:\nFill in blank [iv] with the most fitting discourse marker among the options given below."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Right"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To begin with"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Admittedly"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "In particular"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nGiven below is a short essay excerpted from The Statesman. Read the essay and answer the given subquestions that follow. Peace Is Getting More Costly Everywhere In the current global climate, the expense associated with maintaining peace is increasing at a rapid pace. Peace has become a valuable commodity in various regions across the globe, ranging from the simmering borders of Eastern Europe to the volatile pockets of the Middle East, and from the tumultuous corners of Sub-Saharan Africa to the rising tensions in the South China Sea. The escalation of global conflicts is not necessarily a recent occurrence. Throughout history, humanity has experienced prolonged periods of conflicts and strife. The evolving nature of these conflicts is characterized by an increasing level of intricacy and breadth. The nature of contemporary conflicts has become more transnational, characterized by the rise of non-state entities, cyber warfare, and the expansion of asymmetric warfare. These factors (1)_____ the expenses associated with peace-building. The protracted conflict in Syria is an example. After 12 years, the situation in Syria serves as a poignant example of the high cost of achieving peace. The initial civil unrest against the regime of Bashar-al- Assad has evolved into a complex crisis that involves multiple international stakeholders. The significant impact on both human life and infrastructure is profound; however, it represents only a single aspect of the actual expense. The subsequent refugee crisis has placed a significant burden on the resources of neighboring nations and has caused political instability that extends well beyond the borders of Syria. The international community has allocated significant financial resources towards humanitarian aid, refugee resettlement, and military interventions, with no clear resolution in sight. The dispute in the South China Sea presents a distinct, but equally concerning example of the increasing cost of maintaining peace. Several nations (2.a.) _____ their ownership over this crucial maritime area, resulting in a progressively growing military presence in the (2.b.) _____. In addition to the substantial defense expenditures, there exists an intangible expense associated with the (3) _____ tension. The possibility of a significant conflict in one of the most heavily trafficked sea lanes worldwide presents a potential disturbance to international trade routes, which could result in far- reaching economic implications. The ongoing conflict in the Sahel region of Africa presents a clear depiction of the increasing expenses associated with maintaining peace. The (4.a.) _____ of violent extremism, intercommunal conflicts, and food insecurity has resulted in a significant (4.b.) _____ in displacement, with millions compelled to abandon their residences. The financial expense required to reestablish harmony and reconstruct these communities is significant. The allocation of resources towards the international community’s response, which includes peacekeeping missions, humanitarian aid, and development assistance, is perceived as a burden on the global economy. Contemporary disputes frequently entail multiple stakeholders, each with distinct objectives, thereby rendering diplomatic resolution more intricate and expensive. Furthermore, the widespread incorporation of technology in military operations, ranging from cyber warfare to unmanned aerial vehicles, has escalated the economic costs linked with peacekeeping efforts.\n\nQuestion:\nFill in blank [v] with the most fitting discourse marker among the options given below."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "I see"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "you know"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "mind you"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "right"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nGiven below is a short essay excerpted from The Statesman. Read the essay and answer the given subquestions that follow. Peace Is Getting More Costly Everywhere In the current global climate, the expense associated with maintaining peace is increasing at a rapid pace. Peace has become a valuable commodity in various regions across the globe, ranging from the simmering borders of Eastern Europe to the volatile pockets of the Middle East, and from the tumultuous corners of Sub-Saharan Africa to the rising tensions in the South China Sea. The escalation of global conflicts is not necessarily a recent occurrence. Throughout history, humanity has experienced prolonged periods of conflicts and strife. The evolving nature of these conflicts is characterized by an increasing level of intricacy and breadth. The nature of contemporary conflicts has become more transnational, characterized by the rise of non-state entities, cyber warfare, and the expansion of asymmetric warfare. These factors (1)_____ the expenses associated with peace-building. The protracted conflict in Syria is an example. After 12 years, the situation in Syria serves as a poignant example of the high cost of achieving peace. The initial civil unrest against the regime of Bashar-al- Assad has evolved into a complex crisis that involves multiple international stakeholders. The significant impact on both human life and infrastructure is profound; however, it represents only a single aspect of the actual expense. The subsequent refugee crisis has placed a significant burden on the resources of neighboring nations and has caused political instability that extends well beyond the borders of Syria. The international community has allocated significant financial resources towards humanitarian aid, refugee resettlement, and military interventions, with no clear resolution in sight. The dispute in the South China Sea presents a distinct, but equally concerning example of the increasing cost of maintaining peace. Several nations (2.a.) _____ their ownership over this crucial maritime area, resulting in a progressively growing military presence in the (2.b.) _____. In addition to the substantial defense expenditures, there exists an intangible expense associated with the (3) _____ tension. The possibility of a significant conflict in one of the most heavily trafficked sea lanes worldwide presents a potential disturbance to international trade routes, which could result in far- reaching economic implications. The ongoing conflict in the Sahel region of Africa presents a clear depiction of the increasing expenses associated with maintaining peace. The (4.a.) _____ of violent extremism, intercommunal conflicts, and food insecurity has resulted in a significant (4.b.) _____ in displacement, with millions compelled to abandon their residences. The financial expense required to reestablish harmony and reconstruct these communities is significant. The allocation of resources towards the international community’s response, which includes peacekeeping missions, humanitarian aid, and development assistance, is perceived as a burden on the global economy. Contemporary disputes frequently entail multiple stakeholders, each with distinct objectives, thereby rendering diplomatic resolution more intricate and expensive. Furthermore, the widespread incorporation of technology in military operations, ranging from cyber warfare to unmanned aerial vehicles, has escalated the economic costs linked with peacekeeping efforts.\n\nQuestion:\nFill in the blank with the appropriate verb. These factors (1)_____ the expenses associated with peace- building."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Motivate"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Elongate"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Exacerbate"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Reciprocate"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nGiven below is a short essay excerpted from The Statesman. Read the essay and answer the given subquestions that follow. Peace Is Getting More Costly Everywhere In the current global climate, the expense associated with maintaining peace is increasing at a rapid pace. Peace has become a valuable commodity in various regions across the globe, ranging from the simmering borders of Eastern Europe to the volatile pockets of the Middle East, and from the tumultuous corners of Sub-Saharan Africa to the rising tensions in the South China Sea. The escalation of global conflicts is not necessarily a recent occurrence. Throughout history, humanity has experienced prolonged periods of conflicts and strife. The evolving nature of these conflicts is characterized by an increasing level of intricacy and breadth. The nature of contemporary conflicts has become more transnational, characterized by the rise of non-state entities, cyber warfare, and the expansion of asymmetric warfare. These factors (1)_____ the expenses associated with peace-building. The protracted conflict in Syria is an example. After 12 years, the situation in Syria serves as a poignant example of the high cost of achieving peace. The initial civil unrest against the regime of Bashar-al- Assad has evolved into a complex crisis that involves multiple international stakeholders. The significant impact on both human life and infrastructure is profound; however, it represents only a single aspect of the actual expense. The subsequent refugee crisis has placed a significant burden on the resources of neighboring nations and has caused political instability that extends well beyond the borders of Syria. The international community has allocated significant financial resources towards humanitarian aid, refugee resettlement, and military interventions, with no clear resolution in sight. The dispute in the South China Sea presents a distinct, but equally concerning example of the increasing cost of maintaining peace. Several nations (2.a.) _____ their ownership over this crucial maritime area, resulting in a progressively growing military presence in the (2.b.) _____. In addition to the substantial defense expenditures, there exists an intangible expense associated with the (3) _____ tension. The possibility of a significant conflict in one of the most heavily trafficked sea lanes worldwide presents a potential disturbance to international trade routes, which could result in far- reaching economic implications. The ongoing conflict in the Sahel region of Africa presents a clear depiction of the increasing expenses associated with maintaining peace. The (4.a.) _____ of violent extremism, intercommunal conflicts, and food insecurity has resulted in a significant (4.b.) _____ in displacement, with millions compelled to abandon their residences. The financial expense required to reestablish harmony and reconstruct these communities is significant. The allocation of resources towards the international community’s response, which includes peacekeeping missions, humanitarian aid, and development assistance, is perceived as a burden on the global economy. Contemporary disputes frequently entail multiple stakeholders, each with distinct objectives, thereby rendering diplomatic resolution more intricate and expensive. Furthermore, the widespread incorporation of technology in military operations, ranging from cyber warfare to unmanned aerial vehicles, has escalated the economic costs linked with peacekeeping efforts.\n\nQuestion:\nFill in the blanks with the appropriate verb-noun pair. Several nations (2.a.) _____ their ownership over this crucial maritime area, resulting in a progressively growing military presence in the (2.b.) _____."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Abandon and suburbs"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Assert and vicinity"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Archive and area"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Attenuate and property"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nGiven below is a short essay excerpted from The Statesman. Read the essay and answer the given subquestions that follow. Peace Is Getting More Costly Everywhere In the current global climate, the expense associated with maintaining peace is increasing at a rapid pace. Peace has become a valuable commodity in various regions across the globe, ranging from the simmering borders of Eastern Europe to the volatile pockets of the Middle East, and from the tumultuous corners of Sub-Saharan Africa to the rising tensions in the South China Sea. The escalation of global conflicts is not necessarily a recent occurrence. Throughout history, humanity has experienced prolonged periods of conflicts and strife. The evolving nature of these conflicts is characterized by an increasing level of intricacy and breadth. The nature of contemporary conflicts has become more transnational, characterized by the rise of non-state entities, cyber warfare, and the expansion of asymmetric warfare. These factors (1)_____ the expenses associated with peace-building. The protracted conflict in Syria is an example. After 12 years, the situation in Syria serves as a poignant example of the high cost of achieving peace. The initial civil unrest against the regime of Bashar-al- Assad has evolved into a complex crisis that involves multiple international stakeholders. The significant impact on both human life and infrastructure is profound; however, it represents only a single aspect of the actual expense. The subsequent refugee crisis has placed a significant burden on the resources of neighboring nations and has caused political instability that extends well beyond the borders of Syria. The international community has allocated significant financial resources towards humanitarian aid, refugee resettlement, and military interventions, with no clear resolution in sight. The dispute in the South China Sea presents a distinct, but equally concerning example of the increasing cost of maintaining peace. Several nations (2.a.) _____ their ownership over this crucial maritime area, resulting in a progressively growing military presence in the (2.b.) _____. In addition to the substantial defense expenditures, there exists an intangible expense associated with the (3) _____ tension. The possibility of a significant conflict in one of the most heavily trafficked sea lanes worldwide presents a potential disturbance to international trade routes, which could result in far- reaching economic implications. The ongoing conflict in the Sahel region of Africa presents a clear depiction of the increasing expenses associated with maintaining peace. The (4.a.) _____ of violent extremism, intercommunal conflicts, and food insecurity has resulted in a significant (4.b.) _____ in displacement, with millions compelled to abandon their residences. The financial expense required to reestablish harmony and reconstruct these communities is significant. The allocation of resources towards the international community’s response, which includes peacekeeping missions, humanitarian aid, and development assistance, is perceived as a burden on the global economy. Contemporary disputes frequently entail multiple stakeholders, each with distinct objectives, thereby rendering diplomatic resolution more intricate and expensive. Furthermore, the widespread incorporation of technology in military operations, ranging from cyber warfare to unmanned aerial vehicles, has escalated the economic costs linked with peacekeeping efforts.\n\nQuestion:\nFill in the blank with the appropriate participle. In addition to the substantial defense expenditures, there exists an intangible expense associated with the (3) _____ tension."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Pronounced"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Acclimated"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Debilitating"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Escalating"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nGiven below is a short essay excerpted from The Statesman. Read the essay and answer the given subquestions that follow. Peace Is Getting More Costly Everywhere In the current global climate, the expense associated with maintaining peace is increasing at a rapid pace. Peace has become a valuable commodity in various regions across the globe, ranging from the simmering borders of Eastern Europe to the volatile pockets of the Middle East, and from the tumultuous corners of Sub-Saharan Africa to the rising tensions in the South China Sea. The escalation of global conflicts is not necessarily a recent occurrence. Throughout history, humanity has experienced prolonged periods of conflicts and strife. The evolving nature of these conflicts is characterized by an increasing level of intricacy and breadth. The nature of contemporary conflicts has become more transnational, characterized by the rise of non-state entities, cyber warfare, and the expansion of asymmetric warfare. These factors (1)_____ the expenses associated with peace-building. The protracted conflict in Syria is an example. After 12 years, the situation in Syria serves as a poignant example of the high cost of achieving peace. The initial civil unrest against the regime of Bashar-al- Assad has evolved into a complex crisis that involves multiple international stakeholders. The significant impact on both human life and infrastructure is profound; however, it represents only a single aspect of the actual expense. The subsequent refugee crisis has placed a significant burden on the resources of neighboring nations and has caused political instability that extends well beyond the borders of Syria. The international community has allocated significant financial resources towards humanitarian aid, refugee resettlement, and military interventions, with no clear resolution in sight. The dispute in the South China Sea presents a distinct, but equally concerning example of the increasing cost of maintaining peace. Several nations (2.a.) _____ their ownership over this crucial maritime area, resulting in a progressively growing military presence in the (2.b.) _____. In addition to the substantial defense expenditures, there exists an intangible expense associated with the (3) _____ tension. The possibility of a significant conflict in one of the most heavily trafficked sea lanes worldwide presents a potential disturbance to international trade routes, which could result in far- reaching economic implications. The ongoing conflict in the Sahel region of Africa presents a clear depiction of the increasing expenses associated with maintaining peace. The (4.a.) _____ of violent extremism, intercommunal conflicts, and food insecurity has resulted in a significant (4.b.) _____ in displacement, with millions compelled to abandon their residences. The financial expense required to reestablish harmony and reconstruct these communities is significant. The allocation of resources towards the international community’s response, which includes peacekeeping missions, humanitarian aid, and development assistance, is perceived as a burden on the global economy. Contemporary disputes frequently entail multiple stakeholders, each with distinct objectives, thereby rendering diplomatic resolution more intricate and expensive. Furthermore, the widespread incorporation of technology in military operations, ranging from cyber warfare to unmanned aerial vehicles, has escalated the economic costs linked with peacekeeping efforts.\n\nQuestion:\nFill in the blanks with the appropriate nouns. The (4.a.) _____ of violent extremism, intercommunal conflicts, and food insecurity has resulted in a significant (4.b.) _____ in displacement, with millions compelled to abandon their residences."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Influence and dip"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Confluence and surge"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Redolence and crest"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Flamboyance and fall"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Arrange the given hints in the correct order to form a synopsis of the essay. i. Example of Sahel region of Africa-extremism, communal conflict, food shortage, displacement ii. Contemporary international disputes- many stakeholders and objectives- diplomatic resolution not easy iii. Other reasons for high peacekeeping expenses- highly technological warfare iv. Current global issues-complex, intricate, transnational- illustrations to follow v. There is a steep rise in the expense of maintaining global peace vi. Example of Syria- aid, refugee resettlement, military interventions vii. Example of South China Sea- possible military conflict disrupting international trade routes viii. Allocation of resources towards the international community’s response- financial burden of peacekeeping on global economy"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "v-iv-vi-vii-i-viii-ii-iii"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "iii-ii-v-viii-iv-i-vii-vi"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "iv-vi-viii-i-iii-ii-v-vii"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "viii-i-iii-iv-v-ii-vii-vi"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ],
+  "title": "English 2 · Quiz 1 · 23 Feb 2025 · QDF3 · Part 1"
+}
