@@ -1,0 +1,553 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Python Programming · Quiz 1 · Oct 2023 · AN3",
+  "subject": "Python Programming",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the output of the following snippet of code?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "L = ['four', 'one', 'ninety', 'three']\nout = []\nwhile L != []:\n    mini = len(L[0])\n    word = L[0]\n    for number in L:\n        if len(number) < mini:\n            mini = len(number)\n            word = number\n    out.append(word)\n    # L.remove(word) removes word from the list L\n    L.remove(word)\nprint(out)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "['one', 'four', 'three', 'ninety']"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "['ninety', 'three', 'four', 'one']"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "['four', 'ninety', 'one', 'three']"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "['one', 'three', 'four', 'ninety']"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The loop repeatedly picks the shortest remaining word (ties keep the first found) and removes it: 'one' (3), then 'four' (4), then 'three' (5), then 'ninety' (6) -> ['one', 'four', 'three', 'ninety']."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "l1 is a non-empty list of integers. What is the output of the following snippet of code?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "# Hint: str(3) is '3'\nl2 = []\nfor i in range(len(l1)):\n    condition_1 = not (i % 2 == 0)\n    condition_2 = not (len(str(l1[i])) != 3)\n    if condition_1 and condition_2:\n        l2.append(l1[i])\nprint(len(l2))"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The number of 3-digit numbers that are found at even indices of l1."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The number of non-3-digit numbers that are found at even indices of l1."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The number of 3-digit numbers that are found at odd indices of l1."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The number of non-3-digit numbers that are found at odd indices of l1."
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "condition_1 is True for odd i (odd indices); condition_2 is True when len(str(l1[i])) == 3 (a 3-digit number). So l2 collects the 3-digit numbers at odd indices, and len(l2) counts them."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Three of the following codes print the same output, while one prints a different output. Which of the following codes prints a different output than the other three? (Hint: str(x) converts x into a string, '3' * 2 evaluates to '33'.)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "print(3211 % 32)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "print(\"1324\"[0] + \"2310\"[-2])"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "print(str(31 % 10) + str(9 - 8))"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "print(int((str(3 * 7) * 2)[2] * 2))"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "3211 % 32 -> 11; '1324'[0]+'2310'[-2] -> '1'+'1' = '11'; str(31%10)+str(9-8) -> '1'+'1' = '11'. The last one: str(21)*2 = '2121', [2] -> '2', '2'*2 -> '22', int -> 22, which differs."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the output of the following snippet of code?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "P = [[1, 2], [4, 3]]\nQ = [[4, 1], [9, 3]]\nR = []\nfor i in range(2):\n    row = []\n    for j in range(2):\n        if P[i][j] - Q[i][j] > 0:\n            row.append(1)\n        elif P[i][j] != Q[i][j]:\n            row.append(-1)\n        else:\n            row.append(0)\n    R.append(row)\nprint(R)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "[[-1, 1], [-1, 0]]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[[1, -1], [1, 0]]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[[1, 1], [0, 1]]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[[1, 1], [0, 0]]"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Element by element: 1-4<0 and != -> -1; 2-1>0 -> 1; 4-9<0 and != -> -1; 3-3==0 -> 0. Result [[-1, 1], [-1, 0]]."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "string is a non-empty string. What does the following code print?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "# Hint: char.isalpha() returns True if char is an alphabet,\n#       it returns False otherwise\ncount = 0\nfor char in string:\n    if char.isalpha():\n        count += 1\n    elif char.isalpha():\n        count -= 1\nprint(count)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The number of vowels in string"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The number of alphabets in string"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The difference between number of vowels and consonants in string"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The number of characters in string"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 3,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The elif can never trigger (it repeats the same test). count is incremented once for every alphabetic character, so it counts the number of alphabets in string."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the output of the following snippet of code?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "x = '1' + '2' + '3'\nprint(x)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "123"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "6"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "321"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1, 2, 3"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 3,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "String concatenation: '1' + '2' + '3' = '123'."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following snippet. Select all inputs for which the output is exactly the following line: floor is four"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "num = float(input())\nif num >= 1 and num < 2:\n    print('floor is one')\nif num >= 2 and num < 3:\n    print('floor is two')\nif num >= 3 and num < 4:\n    print('floor is three')"
+        },
+        {
+          "kind": "text",
+          "value": "else:"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "print('floor is four')"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "0.5"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "4.4"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1.8"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "2.4"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "3.6"
+          }
+        ]
+      ],
+      "correct_answers": [
+        1,
+        2
+      ],
+      "marks": 3,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The first three ifs are independent; the else attaches only to the third if (num>=3 and num<4). For exactly 'floor is four' to print alone, none of the first two ifs may fire AND the third must be false. 0.5 and 4.4 print only 'floor is four'. 1 and 1.8 also print 'floor is one'; 2.4 also prints 'floor is two'; 3.6 prints 'floor is three' (not four)."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the output of the following snippet of code?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "word = 'claustrophobic'\nsize = len(word)\ncount = 0\nfor x in range(size):\n    if word[x] in 'aeiou':\n        if x % 2 == 0:\n            count = count + 1\nprint(count)"
+        }
+      ],
+      "numerical_answer": 3,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Vowels in 'claustrophobic' at even indices: 'a' (idx 2), 'o' (idx 6), 'o' (idx 10) -> count = 3."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the output of the following snippet of code?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "p = 1\nM = [[1, 3, 4], [2, -1, 3], [-2, 1, 2]]\nn = len(M)\nm = len(M[0])\nfor i in range(n):\n    for j in range(m):\n        p = p * M[i][j]\nprint(p)"
+        }
+      ],
+      "numerical_answer": 288,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Product of all entries: 1*3*4*2*(-1)*3*(-2)*1*2 = 288."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the output of the following snippet of code?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "# Hint: negative indexing in lists works\n# in the same way as negative indexing in strings\n# so L[-1] is 5 and L[-2] is 4 and so on\nL = [1, 2, 3, 4, 5]\nstop = -len(L) - 1\nx = 0\ni = -1\nwhile i > stop:\n    x = x * 10 + L[i]\n    i = i - 1\nprint(x)"
+        }
+      ],
+      "numerical_answer": 54321,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Reads L from the back (5,4,3,2,1) building the number 54321."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Given integers x, y, we call (x, y) a 'point'. Order matters. That is, (2, 3) is a different point from (3, 2). Find the total number of points for which this code will output the value positive."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "x = int(input())\ny = int(input())\nlabel = 'negative'\nif x >= 0 and x <= 5:\n    if y >= 0 and y <= 5:\n        label = 'positive'\nprint(label)"
+        }
+      ],
+      "numerical_answer": 36,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "label becomes 'positive' only when x is in 0..5 (6 values) and y is in 0..5 (6 values): 6 * 6 = 36 points."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the output of the following snippet of code?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "c1 = 0\nc2 = 0\nfor x in range(1, 101):\n    for y in range(1, 101):\n        if x + y == 100:\n            c1 = c1 + 1\n    c2 = c2 + 1\nprint(c2 // c1)"
+        }
+      ],
+      "numerical_answer": 1,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "For x in 1..99 there is exactly one y in 1..99 with x+y==100, so c1 = 99; the outer loop runs 100 times, so c2 = 100. 100 // 99 = 1."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Select the correct code block."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "n = 1 while n < 100: print(2 ** n)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "n = 1 while n < 100: print(2 ** n) n = n + 1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "n = 1 while n <= 100: print(2 ** n) n = n + 1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "n = 1 while n < 100: n = n + 1 print(2 ** n)"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Option C prints 2**n for n = 1..100 (100 lines), giving 2, 4, 8, 16, 32, ... Option A never increments n (infinite loop); B prints only 99 lines; D skips 2**1 and prints 2**2 first."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the value of n after executing the previous code? That is, once we get out of the while loop, what is the value of n?"
+        }
+      ],
+      "numerical_answer": 101,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "In the correct block (while n <= 100), n increments from 1 to 101; the loop exits when n becomes 101."
+        }
+      ]
+    }
+  ]
+}

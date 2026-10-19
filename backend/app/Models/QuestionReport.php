@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class QuestionReport extends Model
 {
     protected $fillable = [
-        'question_id', 'quiz_id', 'user_id', 'question_number', 'reasons', 'comment',
+        'question_id', 'quiz_id', 'ide_problem_id', 'user_id', 'question_number', 'reasons', 'comment',
         'status', 'manager_note', 'resolved_by', 'resolved_at',
     ];
 
@@ -18,6 +18,7 @@ class QuestionReport extends Model
     }
 
     public function question(): BelongsTo { return $this->belongsTo(Question::class); }
+    public function ideProblem(): BelongsTo { return $this->belongsTo(IDEProblem::class, 'ide_problem_id'); }
     public function quiz(): BelongsTo { return $this->belongsTo(Quiz::class); }
     public function user(): BelongsTo { return $this->belongsTo(User::class); }
     public function resolver(): BelongsTo { return $this->belongsTo(User::class, 'resolved_by'); }

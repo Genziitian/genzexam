@@ -1,0 +1,276 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Computational Thinking · Quiz 2 · Aug 2024",
+  "subject": "Computational Thinking",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the procedure given below. If L1 and L2 are two lists, and L = eliminate(L1, L2). Choose the correct option regarding L Procedure eliminate(L1, L2) L3 = [], Found = False foreach 1 in L1( foreach j in L2( 1f(1 == 1)( Found == Tele 1f(not Found) € L3 = L3 + [1] Found = False return(L3)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "It will contain all the elements of L2 that are not present in L1 It will contain all the elements of L1 that are not present in L2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "It will contain all the elements common to L1 and L2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "It will contain the elements present in L1 or L2 but not both"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "squew s The following pseudocode is executed using the \"Library\" dataset. What will D represent at the end of the execution?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "= (> while(Table 1 has more rows){ Read the first row X in Table 1 if(isKey(D, X.Author))( if(D[X.Author] > X.Year){ D[X.Author] = X.Year elsef D[X.Author] = X.Year Move X to Table 2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Dictionary with authors as keys mapped to the year of publication of their latest book"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Dictionary with authors as keys mapped to the year of publication of their first book c Dictionary with authors as keys mapped to the year of publication of their second book"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Dictionary with authors as keys mapped to the year of publication of their second latest book"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Words\" dataset. Let X.Word and Y.Word be \"engineering\" and \"analysis\" respectively. At the end of the execution of the pseudocode, which of the following statements is/are correct? It is a Multiple Select Question (MSQ). firstDict = (), secondDict = (), commonDict = () firstDict = createDict(x) secondDict = createDict(Y) foreach key in keys(firstDict)[ if(iskey(secondDict, key))[ if(firstDict[key] › secondDict[key]){ commonDict[key] = firstDict[key] else{ commonDict[key] = secondDict[key] Procedure createDict (Z) 1 = 1, x = \", Dict = () while(i ‹= Z.LetterCount){ x = ith letter of Z.word if(not isKey(Dict, x))( Dict [x] - 1 elsef Dict(x] = Dict(x] + 1 = 1 + 1 return(Dict) End updateDict The value of commonDict will be ('n': 3, 'T: 2)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The value of commonDict will be ('n': 1, 'ï: 1) In the Line 6, if we replace the conditional statement by firstDict[key] « secondDict [key], then the value of commonDict will be ('n': 1, \"i: 1)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "In the Line 6, if we replace the conditional statement by firstDict[key] < secondDict[key], then the ‹ value of commonDict will be ('n°: 3, '\": 2)"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        2
+      ],
+      "marks": 5,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Olympics\" dataset. At the end of the execution of above pseudocode, which of the following statements is/are correct? It is a Multiple Select Question (MSQ). P = ( while(Table 1 has more rows){ Read the first row X in Table 1 P = UpdateMedalCounts(P, X.Sport, X.Medal) Move X to Table 2 Procedure UpdateMedalCounts(Q, Sport, Medal) if(isKey(Q, Sport)){ Q[Sport] [Medal] = Q[Sport] [Medal] * 1 elsef Q[Sport] = (\"Gold\":0, \"Silver\":0, \"Bronze\":0} Q[Sport] [Medal] = 1 return (Q) End UpdateMedalCounts Procedure doSomething(R) for each sport in keys(R) ( ¡f(R[sport][\"Gold\"] › max){ max = R[sport] [\"Gold\"] return (max) End doSomething In procedure UpdateMedalCounts, if the sport is in Q, the medal count for that sport is initialized 1."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "represents the maximum number of gold medals among all the sports. Procedure doSomething iterates over each sport in the dictionary R and checks if the number of gold medals for the current sport is greater than the current maximum."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "B represents the total number of gold medals in all the sports."
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 5,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "+ marks At the end of the execution of the pseudocode, wordCount represents the number of words in which the number of distinct consonants is greater than or equal to 3. But the code may have mistakes. Identify all such mistakes (if any). Assume that all statements not listed in the options below are free of errors. It is a Multiple Select Question (MSQ). wordcount = a while(Table 1 has more rows){ Read the first row X in Table 1 wordCount • wordCount * 1 Move X to Table 2 Procedure doSomething(Y) whiledi < Y.LetterCountok 1 - Ith letter of Y.word it (1 is consonant 1 A[1] = True return(length(keys(A))) End doSomething"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Line 4: Incorrect conditional statement / Line 10: A must be initialize to D V Line 11: Incorrect conditional statement"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "No mistakes"
+          }
+        ]
+      ],
+      "correct_answers": [
+        1,
+        2
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following pseudocode (shared context). If A = [4, 3, 1, 3, 4, 5, 1, 2, 7], then what will the value of"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "be at the end of the execution of the pseudocode? Procedure doSomething(aList) 00ict • 13 CList • foreach a in aliste 1f(a % 2 == 0)( 1f(not isKey(bDict, a)){ boict(a] - True blist = bList ** [9] else{ cList = cList ++ [a] if(length(cList) › length(bList)){ return(cList) elset return(bList) End doSomething"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "= doSomething(A) [3, 1, 3, 5, 1, 7] (3, 1, 5, 7] [4, 2] [4, 4, 2]"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In an algorithmic procedure executing over a dataset, what is the purpose of maintaining a separate pile when iterating through cards?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "To prevent processing the same card more than once during an iteration"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To delete the cards permanently from memory"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To sort the original pile alphabetically automatically"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To double the count of total cards"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Moving processed cards to a secondary pile ensures each element is inspected exactly once without losing elements."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider a nested loop where the outer loop runs $n$ times and the inner loop runs $m$ times for each outer iteration. What is the total number of inner loop executions?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$n + m$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$n \\times m$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$n^m$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$m^n$"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "For each of the $n$ steps, the inner loop executes $m$ times, giving $n \\times m$ total executions."
+        }
+      ]
+    }
+  ]
+}

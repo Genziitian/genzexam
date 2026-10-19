@@ -1,0 +1,329 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Statistics 1 · Quiz 2 · Mar 2024 · QOD4",
+  "subject": "Statistics 1",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Distance covered by a runner in the first five days of training are 3 km, 5 km, 3 km, 6 km, and 7 km. If the runner covers a distance of 4 km on the sixth day, then how does it affect his overall performance? The mean of the distances will increase."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The mode of the distances will decrease. The median of the distances will decrease."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The range of the distances will decrease."
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following statements) is(are) correct? Point-biserial method is appropriate to find the association between two categorical variables. Scatter plot is more appropriate to represent the relationship between two numerical variables."
+        }
+      ],
+      "acceptable_answers": [
+        "B, D"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In how many different ways can the letters of the word 'ENGLISH' be arranged such that the vowels always come together?"
+        }
+      ],
+      "numerical_answer": 1440.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider a given dataset of weights (in kg) of persons such as 50, 55, 40, 60, 99, 90, 95, 60, 80, 75. Based on the above data, answer the given subquestions. MCQ Five number summary (min, Q1, Q2, Q3, max) of the given data is: 40, 60, 75, 90, 99 40, 55, 67.5, 90, 99 50, 60, 94.5, 95, 99 D 50, 60,90,95,99 Answer: B 3 marks Find the IQR (inter-quartile range) of the given dataset."
+        }
+      ],
+      "numerical_answer": 35.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A drawer of socks contains three black socks, four blue socks, and three green socks. Two socks are chosen at random without replacement. Based on the information, answer the given subquestions."
+        }
+      ],
+      "numerical_answer": 0.07,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A drawer of socks contains three black socks, four blue socks, and three green socks. Two socks are chosen at random without replacement. Based on the information, answer the given subquestions. What is the probability that they are of same colour? Enter the answer correct to two decimal places."
+        }
+      ],
+      "numerical_answer": 0.27,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A family has two children. Assume being a male or female of a child is equally likely. Based on the above data, answer the given subquestions. Find the probability that at least one child is a boy."
+        }
+      ],
+      "acceptable_answers": [
+        "D"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A family has two children. Assume being a male or female of a child is equally likely. Based on the above data, answer the given subquestions. What is the probability that both are boys given that at least one is a boy? Enter the answer correct to two decimal places. Ш Passage / Context The probabilities of X and Y becoming principals in a college are 4/5 and 1/5 respectively. The probabilities that X and Y if selected would introduce co-education in the college are 1/6 and 5/6 respectively."
+        }
+      ],
+      "numerical_answer": 0.33,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A family has two children. Assume being a male or female of a child is equally likely. Based on the above data, answer the given subquestions. What is the probability that co-education will be introduced in the college?"
+        }
+      ],
+      "acceptable_answers": [
+        "D"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A family has two children. Assume being a male or female of a child is equally likely. Based on the above data, answer the given subquestions. If co-education has been introduced in the college, then what is the probability that X is principal? Enter the"
+        }
+      ],
+      "numerical_answer": 0.44,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In a school function, there are 2 violinists, 3 pianists, and 1 flutist. They have to sit in a circular order for a performance. Based on the information, answer the given subquestions. Choose the correct options from the following: Selection of performers will occur simultaneously. 8 Selection of performers will not occur simultaneously. With replacement. / Without replacement."
+        }
+      ],
+      "acceptable_answers": [
+        "A, D"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In a school function, there are 2 violinists, 3 pianists, and 1 flutist. They have to sit in a circular order for a performance. Based on the information, answer the given subquestions. Choose the correct options from the following: / Order matters."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Order does not matter."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Permutation is used."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Combination is used."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        2
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In a school function, there are 2 violinists, 3 pianists, and 1 flutist. They have to sit in a circular order for a performance. Based on the information, answer the given subquestions. Find the number of ways in which performers can be arranged in a circular order such that no two violinists will sit together."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "120"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "96 72"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "672"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In a class, there are 5 students who like Statistics and 4 students who like Mathematics. A committee of three students is to be formed. Based on the above data, answer the given subquestions. Choose the correct options from the following: Selection of students will occur simultaneously."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Selection of students will not occur simultaneously. With replacement."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Without replacement."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In a class, there are 5 students who like Statistics and 4 students who like Mathematics. A committee of three students is to be formed. Based on the above data, answer the given subquestions. Choose the correct options from the following:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Order matters. Order does not matter."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Permutation is used."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Combination is used."
+          }
+        ]
+      ],
+      "correct_answers": [
+        1
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In a class, there are 5 students who like Statistics and 4 students who like Mathematics. A committee of three students is to be formed. Based on the above data, answer the given subquestions. Find the number of ways in which the students can be selected such that at least one student likes Statistics."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "70"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "80 c 90"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "85"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 3,
+      "difficulty": "medium"
+    }
+  ]
+}

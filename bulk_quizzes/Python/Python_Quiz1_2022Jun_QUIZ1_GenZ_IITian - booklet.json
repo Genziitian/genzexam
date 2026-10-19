@@ -1,0 +1,635 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Python Programming · Quiz 1 · Jun 2022 · QUIZ1",
+  "subject": "Python Programming",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If n is a positive integer, then what is the value of count at the end of execution of the code given below?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "n = int(input())\ncount = 0\nfor x in range(1, n + 1):\n    for y in range(x + 1, n + 1):\n        count = count + 1"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "n²"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "n(n + 1)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "n(n + 1) / 2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "n(n - 1) / 2"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The nested loop counts every pair (x, y) with x < y in range 1..n, i.e. C(n,2) = n(n-1)/2."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the output of the following snippet of code? All words in the list L are in lower case. (L[0][-1] is the last letter of the first word.)"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "L = ['good', 'done', 'eat', 'trim',\n     'make', 'fake', 'ease', 'epic',\n     'cage', 'list', 'top', 'pot']\ncounts = []\ncount = 1\nfor i in range(1, len(L)):\n    if L[i - 1][-1] == L[i][0]:\n        count += 1\n    else:\n        counts.append(count)\n        count = 1\ncounts.append(count)\nprint(counts)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "[3, 2]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[5, 4]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[5, 4, 3]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[5, 3, 2, 3]"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Chains where each word's last letter equals the next word's first letter: good-done-eat-trim-make-fake-ease (5), epic-cage-eat...wait counts the run lengths -> [5, 4, 3]."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A programmer wishes to write a code that accepts a string word as input and computes a list V, where each element V[i] corresponds to the frequency of one of the vowels in the string: V[0]=frequency of 'a', V[1]='e', V[2]='i', V[3]='o', V[4]='u'. Study the two codes given below and determine their correctness for any given input. You can assume the input to the code will have only lower case letters."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "# Code-1\nword = input()\nV = []\nfor i in range(5):\n    V[i] = 0\nvowels = 'aeiou'\nfor char in word:\n    if char in vowels:\n        index = vowels.index(char)\n        V[index] += 1\n# Code-2\nword = input()\nV = []\nfor i in range(5):\n    V.append(0)\nvowels = 'aeiou'\nfor char in word:\n    if char in vowels:\n        index = vowels.index(char)\n        V[index] += 1"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Code-1 is correct and code-2 is incorrect"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Code-1 is incorrect and code-2 is correct"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both codes are correct"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both are incorrect"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Code-1 does V[i] = 0 on an empty list, raising IndexError. Code-2 uses V.append(0) to build the list of zeros first, so it works correctly."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the output of the following snippet of code? (There is a single space between the middle quotes of '#' + ' ' + line.)"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "code = ['# this is a python code',\n        'x = 0',\n        'print(x)',\n        'for i in range(x):',\n        '    x = x + i',\n        'print(x)']\nmod_code = []\nfor line in code:\n    if 'print' in line:\n        # there is a single space between the middle quotes\n        line = '#' + ' ' + line\n    mod_code.append(line)\nfor line in mod_code:\n    print(line)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "# this is a python code x = 0 # print(x) for i in range(x): x = x + i # print(x)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "# this is a python code x = 0 #print(x) for i in range(x): x = x + i #print(x)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "# this is a python code x = 0 print(x) for i in range(x): x = x + i print(x)"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Only the lines containing 'print' get the prefix '# ' (hash + space). So 'print(x)' becomes '# print(x)'; the other lines are unchanged."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following statements about the code's execution are true? The options are independent of each other; assume each option corresponds to a separate execution of the code. Hint: The Python interpreter processes the code"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "from top to bottom.\n1  weather = input()\n2  time = input()"
+        },
+        {
+          "kind": "text",
+          "value": "3"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "4  if weather == 'sunny':\n5      if time == 'morning':\n6          activity = 'read'\n7      else:\n8          activity = 'walk'"
+        },
+        {
+          "kind": "text",
+          "value": "9"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "10 if weather == 'rainy':\n11     activity = 'sleep'"
+        },
+        {
+          "kind": "text",
+          "value": "12"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "13 if weather == 'cold':\n14     if time == 'morning':\n15         activity = 'read'\n16     else:\n17         activity = 'watch'"
+        },
+        {
+          "kind": "text",
+          "value": "18"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "19 print(activity)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "If line-6 is executed, then line-8 will not be executed."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "If line-11 is executed, then lines 14 to 17 will not be executed."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "If line-8 is executed, the interpreter will directly jump to line-19 without even reading the remaining lines."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The interpreter evaluates at least three if conditions for any combinations of inputs."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1,
+        3
+      ],
+      "marks": 4,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Line-6 runs only in the if-branch, so its else (line-8) is skipped (true). If line-11 runs, weather is 'rainy', so the 'cold' block (14-17) is skipped (true). After line-8 the interpreter still evaluates the rainy and cold if-conditions, so it does NOT jump to line-19 (false). The three top-level ifs (lines 4, 10, 13) are always evaluated (true)."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Select all inputs for which this code will print the value True to the console. The input will only contain letters."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "word = input()\nx = 0\ny = 0\nfor char in word:\n    # z is in lower case in the if-block given below\n    if 'a' <= char <= 'z':\n        x += 1\n    # z is in upper case in the if-block given below\n    if 'A' <= char <= 'Z':\n        y += 1\nif x > y:\n    print(True)"
+        },
+        {
+          "kind": "text",
+          "value": "else:"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "print(False)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "agaiN"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "giVEN"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "goodSHOW"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "erasE"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        3
+      ],
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "x counts lowercase letters, y counts uppercase; prints True when x > y. agaiN -> 4>1 True; giVEN -> 2<3 False; goodSHOW -> 4 not > 4 False; erasE -> 4>1 True."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Select all matrices M for which the following code prints True to the console."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "# Look at the options for the value of M\nn = len(M)\nflag = True\nfor i in range(n):\n    for j in range(n):\n        if (i != j) and (M[i][j] != M[j][i]):\n            flag = False\nprint(flag)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "[[1, 2, 3], [2, 5, 4], [3, 4, 6]]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[[1, 5, 3, 4], [5, 1, 4, 6], [3, 4, 2, 8], [4, 6, 8, 3]]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[[1, 2, 3], [0, 5, 4], [3, 4, 6]]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[[1, 5, 3, 6], [5, 1, 4, 6], [3, 4, 2, 8], [4, 6, 8, 3]]"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1
+      ],
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The code prints True only for symmetric matrices (M[i][j] == M[j][i]). Options 1 and 2 are symmetric; option 3 has M[0][1]=2 vs M[1][0]=0 and option 4 has M[0][3]=6 vs M[3][0]=4, so they are not symmetric."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let n be some positive integer. word is some string. Both n and word are already defined. The following is a code snippet and the output produced by it. The output produced is 'kindkindkindkindkindkind'. Select all possible values that the string word can take. Note that each option is associated with a different value of n."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "# n and word are already defined\nout = ''  # there is no space between the quotes\nfor i in range(n):\n    out = out + word\nprint(out)\n# Output:\n# kindkindkindkindkindkind"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "kind"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "kindkind"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "kindkindkind"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "kindkindkindkind"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "kindkindkindkindkind"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "kindkindkindkindkindkind"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1,
+        2,
+        5
+      ],
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "out is word repeated n times = 'kind' * 6. word * n must equal 'kind'*6, so word can be 'kind' (n=6), 'kindkind' (n=3), 'kindkindkind' (n=2) or the whole string (n=1). 'kindkindkindkind' (4 copies) and 5 copies do not divide 6 copies evenly."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "M is a matrix (list of lists) that has already been defined. The dimension of M is m x n. Assume that both m and n are greater than or equal to 2. All the elements of M are integers. Select all correct options about the code given above."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "# M is a matrix (list of lists) that has already been defined\nn = len(M[0])\nflag = True\nfor i in range(n):\n    if M[0][i] - M[-1][i] != 1:\n        flag = False\nprint(flag)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "This code will print True if each element in the last row of the matrix is one more than the corresponding element in the first row of the matrix."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "This code will print True if each element in the first row of the matrix is one more than the corresponding element in the last row of the matrix."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "This code will print True if each element in the last column of the matrix is one more than the corresponding element in the first column of the matrix."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "This code will print True if each element in the first column of the matrix is one more than the corresponding element in the last column of the matrix."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "This code will throw an error if the matrix is rectangular (m ≠ n)."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "This code will NOT throw an error if the matrix is rectangular (m ≠ n)."
+          }
+        ]
+      ],
+      "correct_answers": [
+        1,
+        5
+      ],
+      "marks": 4,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "flag stays True only when M[0][i] - M[-1][i] == 1 for every column i, i.e. each first-row element is one more than the last-row element (option 2). n = len(M[0]) iterates over valid column indices, so no error occurs even for rectangular matrices (option 6)."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "L is a non-empty list of distinct positive integers (L has at least one element; no two elements of L are the same). The following snippet of code terminates without any error after a finite number of iterations of the while loop. What is the output produced by it? Hint: L.remove(x) removes the leftmost occurrence of x in L."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "# L is a non-empty list of distinct positive integers\n# L has already been defined\nval = 0\nfor x in L:\n    val += x\nwhile L != []:\n    for y in range(1, 11):\n        if y in L:\n            L.remove(y)\n        else:\n            L.append(y)\nprint(val)"
+        }
+      ],
+      "numerical_answer": 55,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The while loop empties L only when L is exactly {1,2,...,10}; in that single pass every y is present and removed, leaving L empty. val is the sum of the original list = 1+2+...+10 = 55."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "L is a list of years. What is the output of the following snippet of code?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "L = [1943, 2013, 2012, 1920,\n     1957, 2010, 1985, 2018,\n     1945, 1978, 2019, 1958,\n     2009, 1909, 1939, 2021]\nyear_1 = 1900\nyear_2 = 2022\nfor year in L:\n    if year < 2000:\n        if year > year_1:\n            year_1 = year\n    else:\n        if year < year_2:\n            year_2 = year\nprint(year_2 - year_1)"
+        }
+      ],
+      "numerical_answer": 24,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "year_1 becomes the largest year < 2000 (1985); year_2 becomes the smallest year >= 2000 (2009). 2009 - 1985 = 24."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following code always accepts a positive even integer as input. What is the output produced by the code if the input is 199999978? Hint: 99999989 is a prime number."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "n = int(input())\nf = n - 2\nwhile (f > 0) and (n % f != 0):\n    f = f - 2\nprint(f)"
+        }
+      ],
+      "numerical_answer": 2,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "f steps down by 2 from n-2 until it divides n. 199999978 = 2 * 99999989, and 99999989 is prime, so the only even divisors are 2 and 199999978; the largest even proper divisor found is 2."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the output of the following snippet of code?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "a, b = 8, 28\nif a < b:\n    start = b"
+        },
+        {
+          "kind": "text",
+          "value": "else:"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "start = a\nend = a * b\nfor x in range(start, end + 1):\n    if (x % a == 0) and (x % b == 0):\n        print(x)\n        break"
+        }
+      ],
+      "numerical_answer": 56,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The loop finds the first number from 28 to 224 divisible by both 8 and 28, i.e. their LCM = 56."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,730 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Python Programming · Quiz 1 · 07 Jul 2024 · QDD4",
+  "subject": "Python Programming",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider a program that accepts a word as input from the user and prints the number of punctuation marks in it. You can assume that the input will be given in lower case. Here we are considering only the given punctuation marks ('.', ',', ':', ';', '!', '?'). Which of these two snippets is correct?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "# Snippet-1\nword = input()\ncount = 0\npunctuation_marks = ['.', ',', ':', ';', '!', '?']\nfor char in word:\n    if char in punctuation_marks:\n        count = count + 1\nprint(count)\n# Snippet-2\nword = input()\ncount = 0\nfor char in word:\n    if char in '.,:;!?':\n        count = count + 1\nprint(count)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Only snippet-1 is correct"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Only snippet-2 is correct"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both snippets are correct"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both snippets are wrong"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 3,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Both snippets test each character for membership in the same set of punctuation marks (a list in snippet-1, a string in snippet-2) and increment the count identically, so both produce the correct result."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "We wish to print the following pattern: 00000 01110 01110 01110 00000 Which of these two snippets is correct?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "# Snippet-1\nn = 5\nzero = '0' * len(zero)   # zero is the all-zeros border row\none = '1' * len(one)\nfor i in range(n):\n    if i == 0 or i == n - 1:\n        print(zero * n)\n    else:\n        print(zero + one * (n - 2) + zero)\n# Snippet-2\nn = 5\nzero = '0' * len(zero)\none = '1' * len(one)\nfor i in range(n):\n    for j in range(n):\n        if j == 0 or j == n - 1:\n            print(zero, end='')   # and argument is an empty string\n        else:\n            print(zero, end='')   # and argument is an empty string\n    print()"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Only snippet-1 is correct"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Only snippet-2 is correct"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both snippets are correct"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both snippets are wrong"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Both snippets, using the helper strings (zeros for borders, ones for the interior), produce the same 5x5 frame pattern with a 3x3 block of 1s inside a border of 0s."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the output of following snippet of code?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "s = 3 >= 2 >= 1\nprint(type(s))"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "<class 'bool'>"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "<class 'int'>"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "<class 'str'>"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "<class 'list'>"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 3,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The chained comparison 3 >= 2 >= 1 evaluates to True, so type(s) is <class 'bool'>."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following snippet. Select all inputs for which the output is 'Luxury range'. (Select all that apply)"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "price = float(input())\nif price <= 100:\n    print(\"Affordable range\")\nelif price <= 500:\n    print(\"Mid-range\")\nelif price <= 1000:\n    print(\"Higher range\")"
+        },
+        {
+          "kind": "text",
+          "value": "else:"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "print(\"Luxury range\")"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "777"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1111"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "3333"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "999"
+          }
+        ]
+      ],
+      "correct_answers": [
+        1,
+        2
+      ],
+      "marks": 3,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "'Luxury range' is printed only when price > 1000. 1111 and 3333 exceed 1000; 777 and 999 fall in the 'Higher range' (<= 1000)."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Select all inputs for which the code below prints the value True. Each input is a sentence with a space between consecutive words, all of which are in lower case."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "sentence = ' '   # the input sentence\nspace = ' '   # a single space between the quotes\nn = len(sentence)\n# all letters or vowels are in lower case\nvowels = 'aeiou'\nsurprise = True\nfor char in vowels:\n    if char not in sentence:\n        surprise = False\n        break\nprint(surprise)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "happy life"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "learn python"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "auto industries"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "quaint house"
+          }
+        ]
+      ],
+      "correct_answers": [
+        2,
+        3
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The code prints True only when every vowel a, e, i, o, u appears in the sentence. 'auto industries' and 'quaint house' contain all five vowels; 'happy life' and 'learn python' do not."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the output of the following snippet of code? Enter an integer as your answer."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "str1 = \"Parados\"\nstr2 = \"Celebration\"\nstr3 = str1 + \" \" + str2[:6]   # there is a single space between quotes\nprint(len(str3))"
+        }
+      ],
+      "numerical_answer": 14,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "str2[:6] is 'Celebr'. str3 = 'Parados' (7) + ' ' (1) + 'Celebr' (6) = 'Parados Celebr', length 14."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the output of the following snippet of code? Enter an integer as your answer."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "x = 15\ny = 20\nif x > y:\n    result = abs(x - y)"
+        },
+        {
+          "kind": "text",
+          "value": "else:"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "result = x + y\nprint(result)"
+        }
+      ],
+      "numerical_answer": 35,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "x (15) is not greater than y (20), so the else branch runs: result = 15 + 20 = 35."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following snippet of code. What will the output be?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "val1 = 0\nL = [7, 1, 6, 3, 10]\ntemp = []\nfor num in L:\n    if num % 2 == 0:\n        temp.append(num)\n    else:\n        val1 += num\nprint(len(temp) * val1)"
+        }
+      ],
+      "numerical_answer": 22,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Evens 6 and 10 go to temp (len 2); odds 7+1+3 sum to val1 = 11. Output is 2 * 11 = 22."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following snippet of code. Assume that 1234 is passed as input to the code. What will be the output?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "num = int(input(\"Enter a number\"))\ns_num = 1\nwhile num != 0:\n    digit = num % 10\n    s_num = s_num + digit\n    num //= 10\nprint(s_num)"
+        }
+      ],
+      "numerical_answer": 11,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "s_num starts at 1 and adds each digit of 1234: 1 + 4 + 3 + 2 + 1 = 11."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following snippet of code and answer the sub-questions that follow."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "L = [\"apple\", \"banana\", \"cherry\", \"date\", \"fig\", \"grape\"]\nmax_L = []\nmaxlen = 0\nfor s in L:\n    if len(s) > maxlen:\n        maxlen = len(s)\n        max_L = [s]\n    elif len(s) == maxlen:\n        max_L.append(s)\nprint(max_L)\nprint(len(max_L))"
+        },
+        {
+          "kind": "text",
+          "value": "What is the first line of output?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "['banana']"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "['cherry']"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "['banana', 'cherry']"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "['cherry', 'banana']"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "'banana' (6) sets maxlen to 6 and max_L to ['banana']; 'cherry' (6) equals maxlen so it is appended, giving ['banana', 'cherry']."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following snippet of code and answer the sub-questions that follow."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "L = [\"apple\", \"banana\", \"cherry\", \"date\", \"fig\", \"grape\"]\nmax_L = []\nmaxlen = 0\nfor s in L:\n    if len(s) > maxlen:\n        maxlen = len(s)\n        max_L = [s]\n    elif len(s) == maxlen:\n        max_L.append(s)\nprint(max_L)\nprint(len(max_L))"
+        },
+        {
+          "kind": "text",
+          "value": "What is the second line of the output? Enter an integer as your answer."
+        }
+      ],
+      "numerical_answer": 2,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "max_L is ['banana', 'cherry'], so len(max_L) is 2."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following snippet of code and answer the subquestions that follow."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "my_list = [1, 2, 3, 4, 5]\nnew_list = my_list\nnew_list[0] = 10\nprint(my_list)"
+        },
+        {
+          "kind": "text",
+          "value": "What will be the output?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "[10, 2, 3, 4, 5]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[1, 10, 2, 3, 4, 5]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[1, 2, 3, 4, 5]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[10]"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 3,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "new_list = my_list makes both names refer to the same list, so new_list[0] = 10 changes my_list too, giving [10, 2, 3, 4, 5]."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following snippet of code and answer the subquestions that follow."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "my_list = [1, 2, 3, 4, 5]\nnew_list = my_list\nnew_list[0] = 10\nprint(my_list)"
+        },
+        {
+          "kind": "text",
+          "value": "Choose the correct option(s) regarding the given code. (Select all that apply)"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "my_list = [1, 2, 3, 4, 5]\nnew_list = my_list\nnew_list[0] = 10\nprint(my_list)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "List is a mutable object."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "List is an immutable object."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both my_list and new_list are referring to the same list."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "my_list and new_list are referring to different lists."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        2
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Lists are mutable, and assignment new_list = my_list binds both names to the same list object, so mutating one is visible through the other."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following snippet of code and answer the subquestions that follow."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "a = int(input())\nb = int(input())\nstring = 'IAmInFoundationLevel'\nprint(string[a:b])\n# The output of this code is Foundation."
+        },
+        {
+          "kind": "text",
+          "value": "What is the value of a, the first input entered by the user, if it is given that the user entered a positive integer?"
+        }
+      ],
+      "numerical_answer": 5,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "'Foundation' starts at index 5 of 'IAmInFoundationLevel' (string[5:15] == 'Foundation'), so a = 5."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following snippet of code and answer the subquestions that follow."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "a = int(input())\nb = int(input())\nstring = 'IAmInFoundationLevel'\nprint(string[a:b])\n# The output of this code is Foundation."
+        },
+        {
+          "kind": "text",
+          "value": "What is the value of b, the second input entered by the user, if it is given that the user entered a negative integer?"
+        }
+      ],
+      "numerical_answer": -5,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The string has length 20 and 'Foundation' ends at index 15, so a negative stop index of -5 (i.e. 20 - 5 = 15) gives string[5:-5] == 'Foundation'. b = -5."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following snippet of code and answer all the subquestions that follow."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "P = [[1, 2, 3], [2, 4, 6], [8, 6, 9]]\ns = 0\np = 1\nfor i in range(len(P)):\n    for j in range(len(P)):\n        if i == j:\n            s = s + P[i][j]\n        if j == len(P) - 1:\n            p = p * P[i][j]\nprint(s)\nprint(p)"
+        },
+        {
+          "kind": "text",
+          "value": "What is the first line of the output?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "10"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "14"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "6"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "18"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "s sums the diagonal elements P[0][0]+P[1][1]+P[2][2] = 1 + 4 + 9 = 14, printed first."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following snippet of code and answer all the subquestions that follow."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "P = [[1, 2, 3], [2, 4, 6], [8, 6, 9]]\ns = 0\np = 1\nfor i in range(len(P)):\n    for j in range(len(P)):\n        if i == j:\n            s = s + P[i][j]\n        if j == len(P) - 1:\n            p = p * P[i][j]\nprint(s)\nprint(p)"
+        },
+        {
+          "kind": "text",
+          "value": "What is the second line of the output?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "6"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "162"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "36"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "48"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "p multiplies the last element of each row (j == len(P)-1): 3 * 6 * 9 = 162, printed second."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,207 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Statistics 1 · Quiz 2 · Aug 2023 · AN4",
+  "subject": "Statistics 1",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Out of 8 boys and 5 girls, how many queues of 3 boys and 2 girls can be formed?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "560"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1200"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "67200"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "6720"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "An analyst wants to conduct a survey for testing the maintenance of hospitals in a particular district in Madhya Pradesh, for which he selects 15 hospitals randomly from that district. Identify the sample and population."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The population is all the hospitals in Madhya Pradesh and the sample is all the hospitals in the district."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The population is all the hospitals in Madhya Pradesh and the sample is 15 selected hospitals in Madhya Pradesh. The population is all hospitals in the district of Madhya Pradesh and the sample is 15 selected hospitals in the district. None of these"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Ajay speaks truth in 50% cases, while Vijay speaks truth in 90% cases. What is the probability that Ajay and"
+        }
+      ],
+      "acceptable_answers": [
+        "0.5"
+      ],
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In how many ways can letters in the word \"ADAMANT\" be arranged such that no two A's are adjacent to each other?"
+        }
+      ],
+      "numerical_answer": 240.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In a gaming room, 2 brothers and 4 other boys are playing together. In a particular game, how many ways can all the boys be seated in a circular order so that the two brothers are not seated together?"
+        }
+      ],
+      "numerical_answer": 72.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The sum of three natural numbers (starting from 1) is 9. How many ordered triplets (a, b, c) exist? (Note: a = b or b = c, also, a = b = c is allowed. For example, ordered triplets (4,3,2) and (2, 4,3) are different.) A"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "24"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "28"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "22"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "31"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The dataset consists of three distinct observations, say 2, y and *, and the sum of their frequencies is 100 Relative frequencies corresponding to x and ≥ are 35% and 45% respectively. Find the cumulative frequency (in %) of y and z."
+        }
+      ],
+      "numerical_answer": 65.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let $X$ be a random variable with mean $\\mu = 10$ and variance $\\sigma^2 = 4$. What is the variance of $Y = 3X + 5$?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "36"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "12"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "17"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "4"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$\\text{Var}(aX + b) = a^2 \\text{Var}(X) = 3^2 \\times 4 = 36$."
+        }
+      ]
+    }
+  ]
+}

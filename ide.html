@@ -98,11 +98,14 @@
     <div class="tabs" role="tablist">
       <button class="tab" role="tab" aria-selected="true" data-tab="question">Question</button>
       <button class="tab" role="tab" aria-selected="false" data-tab="cases">Test Cases</button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="result">Result</button>
       <button class="tab" role="tab" aria-selected="false" data-tab="subs">Submissions</button>
       <button class="tab" role="tab" aria-selected="false" disabled title="Solution is locked">Solution &#128274;</button>
+      <button class="btn" id="reportBtn" style="margin:6px 0 6px auto" title="Report a problem with this question">&#9873; Report</button>
     </div>
     <div class="tabpanel" id="tab-question" role="tabpanel"></div>
     <div class="tabpanel" id="tab-cases" role="tabpanel" hidden></div>
+    <div class="tabpanel" id="tab-result" role="tabpanel" hidden><div class="msg">Press Run or Submit to see your results here.</div></div>
     <div class="tabpanel" id="tab-subs" role="tabpanel" hidden></div>
   </section>
   <section class="pane" aria-label="Code">
@@ -115,9 +118,21 @@
       <button class="btn primary" id="submitBtn">Submit</button>
     </div>
     <div id="editorWrap"></div>
-    <div id="result" aria-live="polite"></div>
   </section>
 </main>
+<dialog id="reportDlg" style="border:1px solid var(--line);border-radius:12px;background:var(--panel);color:var(--ink);padding:20px;max-width:440px;width:calc(100% - 32px)">
+  <form method="dialog" id="reportForm">
+    <h2 style="margin:0 0 4px;font-size:18px">Report this question</h2>
+    <p style="margin:0 0 12px;color:var(--muted);font-size:13px">What is wrong? Pick all that apply.</p>
+    <div id="reportReasons"></div>
+    <textarea id="reportComment" maxlength="1000" rows="3" placeholder="Tell us more (optional)" style="width:100%;margin-top:10px;padding:8px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);font:inherit"></textarea>
+    <p id="reportMsg" style="min-height:18px;margin:8px 0 0;font-size:13px"></p>
+    <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:8px">
+      <button type="button" class="btn" id="reportCancel">Cancel</button>
+      <button type="submit" class="btn primary" id="reportSend">Send report</button>
+    </div>
+  </form>
+</dialog>
 <div class="msg" id="status">Loading…</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
@@ -163,7 +178,7 @@
   document.querySelectorAll("[data-tab]").forEach(function (b) {
     b.addEventListener("click", function () {
       document.querySelectorAll("[data-tab]").forEach(function (x) { x.setAttribute("aria-selected", String(x === b)); });
-      ["question", "cases", "subs"].forEach(function (t) { $("tab-" + t).hidden = t !== b.dataset.tab; });
+      ["question", "cases", "result", "subs"].forEach(function (t) { $("tab-" + t).hidden = t !== b.dataset.tab; });
       if (b.dataset.tab === "subs") loadSubmissions();
     });
   });
@@ -243,7 +258,7 @@
   }
 
   // ---- results
-  function showResult(node) { var r = $("result"); r.textContent = ""; r.appendChild(node); r.classList.add("show"); }
+  function showResult(node) { var r = $("tab-result"); r.textContent = ""; r.appendChild(node); showTab("result"); }
   function resultList(results) {
     var wrap = el("div");
     results.forEach(function (c) {
@@ -255,6 +270,7 @@
         d.appendChild(el("small", "", "Input")); d.appendChild(ioBlock(c.input || ""));
         d.appendChild(el("small", "", "Expected")); d.appendChild(ioBlock(c.expected || ""));
         d.appendChild(el("small", "", "Your output")); d.appendChild(ioBlock(c.got || ""));
+        if (c.error) { d.appendChild(el("small", "", "Error")); var er = ioBlock(c.error); er.style.color = "var(--bad)"; d.appendChild(er); }
       }
       wrap.appendChild(d);
     });
@@ -326,7 +342,7 @@
       $("status").hidden = true; $("home").hidden = true; $("app").hidden = false; document.body.classList.remove("in-home");
       $("lang").textContent = ({ python: "Python3", java: "Java", cpp: "C++", "c++": "C++" })[current.language] || current.language;
       renderQuestion(current); buildEditor(current, initialMiddle(current));
-      $("result").classList.remove("show"); showTab("question");
+      $("tab-result").innerHTML = '<div class="msg">Press Run or Submit to see your results here.</div>'; showTab("question");
       $("problemSelect").value = String(id);
       var url = new URL(location.href); url.searchParams.set("problem", id); history.replaceState(null, "", url);
       var idx = problems.findIndex(function (x) { return x.id === id; });
@@ -337,6 +353,31 @@
   $("prevBtn").addEventListener("click", function () { step(-1); });
   $("nextBtn").addEventListener("click", function () { step(1); });
   $("problemSelect").addEventListener("change", function (e) { openProblem(Number(e.target.value)); });
+
+  // ---- report a problem with the question
+  var REPORT_REASONS = [["ide_statement", "The problem statement is wrong or unclear"], ["ide_testcase", "A test case or expected output is wrong"], ["ide_sample", "The sample input or output is wrong"], ["ide_template", "The given (locked) code or function template is wrong"], ["ide_format", "The input or output format is wrong or missing"], ["typo", "Typo or unclear wording"], ["other", "Something else is wrong"]];
+  var rList = $("reportReasons");
+  REPORT_REASONS.forEach(function (r) {
+    var lab = el("label"); lab.style.cssText = "display:flex;gap:8px;align-items:center;padding:4px 0;cursor:pointer";
+    var cb = document.createElement("input"); cb.type = "checkbox"; cb.value = r[0];
+    lab.appendChild(cb); lab.appendChild(document.createTextNode(r[1])); rList.appendChild(lab);
+  });
+  $("reportBtn").addEventListener("click", function () {
+    rList.querySelectorAll("input").forEach(function (c) { c.checked = false; });
+    $("reportComment").value = ""; $("reportMsg").textContent = ""; $("reportSend").disabled = false;
+    $("reportDlg").showModal();
+  });
+  $("reportCancel").addEventListener("click", function () { $("reportDlg").close(); });
+  $("reportForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var reasons = Array.prototype.map.call(rList.querySelectorAll("input:checked"), function (c) { return c.value; });
+    var msg = $("reportMsg");
+    if (!reasons.length) { msg.style.color = "var(--bad)"; msg.textContent = "Pick at least one reason."; return; }
+    $("reportSend").disabled = true; msg.style.color = "var(--muted)"; msg.textContent = "Sending…";
+    api("/ide-problems/" + current.id + "/report", { method: "POST", body: { reasons: reasons, comment: $("reportComment").value.trim() || null } })
+      .then(function () { msg.style.color = "var(--ok)"; msg.textContent = "Thanks! We will check this question."; setTimeout(function () { $("reportDlg").close(); }, 1200); })
+      .catch(function (err) { $("reportSend").disabled = false; msg.style.color = "var(--bad)"; msg.textContent = err.message; });
+  });
 
   // ---- papers list (landing) and per-paper navigation
   function startPaper(paper, id) {

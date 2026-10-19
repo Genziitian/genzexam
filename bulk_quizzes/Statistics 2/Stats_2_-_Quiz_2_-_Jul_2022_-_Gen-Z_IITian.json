@@ -1,0 +1,244 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Statistics 2 · Quiz 2 · Jul 2022",
+  "subject": "Statistics 2",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Formula reference (provided in the exam; for reference only, not for evaluation). Common probability distributions and useful inequalities. Markov's inequality: Let X be a non-negative random variable with finite mean j4. Then P(X ≥ c) ≤ g Chebyshe's inequality: Let X be a random variable with finite mean i and finite variance a?. Then Weak Law of Large Numbers: For lid. X1...., X, with mean and variance a?, the sample mean X = ...X. satisfies E[X] = u, Var(X) - Distribution PMF / PDF CDF Fx(z) EIX] Var(X) Uniform(A). A = {a, a + 1,..., b} Bernoulli (P) n =b-a+1, k = a,a + 1,..., b 1-p 0≤=< 1 * ≥1 p(1 - p) Binomial (n, p) Geometric (p) Poisson (X) Continuous random variables Uniform(a, 8] Exp(X) Normal (H, a?) Gamma(a, 8) Beta(a, 8) \"Cxp* (1 - p)\"-*. k = 0,1,..., n пр пр(1 - p) *, k = 0,1,...,∞ exp(\"). -00<<00 li-ex 830 No closed form ‡ *+22 1(1 - 2)* ,0<z<1 (a+S) (a+311) Consider a random variable X with the following PMF: |X|0|1|2|3|| 1---------------1 Find the moment generating function of X."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Mx(1) = fe > + fe-» + fe -I Mx (x) = f + fe> + fe? + feas Mx(x) = 1+ fe+ fe-™ + fe-"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Mx(X) = fe + fe? + fel"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider a sample 0, 1, 0, 1, 1, 1, 0, 1, 0, 1 from a Bernoulli(0.5) distribution. Based on the above data, answer the given subquestions. MCO compute the empirical distribution or the sample. p(0) = 0.3, p(1) = 0.7 p(0) = 0.4, p(1) = 0.6 с p(0) = 0.6, p(1) = 0.4"
+        }
+      ],
+      "acceptable_answers": [
+        "B"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider a sample 0, 1, 0, 1, 1, 1, 0, 1, 0, 1 from a Bernoulli(0.5) distribution. Based on the above data, answer the given subquestions. compute the distrbution mean. Enter the answer correct to one decimal place. ObE NUMERICAL Compute the sample mean. Enter the answer correct to one decimal place."
+        }
+      ],
+      "numerical_answer": 0.6,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "13 0<z<1 Let X be a continuous random variable with POF /x (2) otherwise A <z ces. based on the above data, answertner given subquestions. Which among the following represents the cumulative distribution function (CDF) of A? (Each option is a plot of F(X) vs X) F(X)|"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "straight line: / • U tor a S U, nising lineary from U at = U to 1 at z = 3 (no flat region), then F • 1 for z 2 3 F(X) F = 0 for 2 ≤ 0, rises linearly to 3 at z = 1, stays flat at § on [1, 2], rises linearly to 1 at z = 3, then F = 1 for z ≥ 3."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "step function: F = 0 for z < 0. jumps to f on [0, 2). then jumps to 1 for x ≥ 2"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "13 0<z<1 Let X be a continuous random variable with POF /x (2) otherwise A <z ces. based on the above data, answertner given subquestions. Find the value of P(X ≤ 2.5). Enter the answer correct to two decimal places."
+        }
+      ],
+      "numerical_answer": 0.83,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let the random variables X and Y have the following joint density function: fxy (z,y) = 10 otherwise 1 0 5 2≤1, 0 5 5 1. Based on the above data, answer the given subquestions. Calculate P (0 < X < g, g < Y < g). Enter the answer correct to three decimal places."
+        }
+      ],
+      "numerical_answer": 0.125,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let the random variables X and Y have the following joint density function: fxy (z,y) = 10 otherwise 1 0 5 2≤1, 0 5 5 1. Based on the above data, answer the given subquestions. Find P (0 < X < -). Enter the answer correct to one decimal place."
+        }
+      ],
+      "numerical_answer": 0.5,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let the random variables X and Y have the following joint density function: fxy (z,y) = 10 otherwise 1 0 5 2≤1, 0 5 5 1. Based on the above data, answer the given subquestions. Find P(X < 2Y). Enter the answer correct to two decimal places."
+        }
+      ],
+      "numerical_answer": 0.75,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Compute the expected value and variance of the sample mean X = Xit..+.X."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "E[X] = 0 and Var[X] = 0"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "E[X] = 0 and Var[X] = 1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "c E[X] = ‡ and Var[X] = 1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "E[X] = 0 and Var[X] = 12n"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider a sample of i.i.d. random variables (X1, X2,..., X..). where each of the X,'s follows Uniform(-0.5, 0.5) distribution. Based on the above data, answer the given subquestions. Find the minimum value of n such that the probability that the sample mean X is within 0.2 of the distribution mean is at least 0.9, using the Weak Law of Large Numbers."
+        }
+      ],
+      "numerical_answer": 21.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let X be a continuous uniform random variable on [0, 1] and Y = ]. Based on the above data, answer the given subquestions. Find the probability density function of Y. fy (1) = 1 - 7, for 0 ≤ y < 00 fr (y) = 1 - y, for 1 ≤ y < 00 c fr (y) = →, for 0 ≤ y < ∞0"
+        }
+      ],
+      "acceptable_answers": [
+        "D"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let X be a continuous uniform random variable on [0, 1] and Y = ]. Based on the above data, answer the given subquestions. Find the value of P(Y ≤ 2). Enter the answer correct to one decimal place."
+        }
+      ],
+      "numerical_answer": 0.5,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "30% of the total players in IPL 2022 are uncapped (i.e., they have not played any international games) and 70% are capped (i.e., they have played at least 1 international game). Suppose the runs scored by the capped players is Normal(60, 25) and the runs scored by the uncapped players is Normal(55, 36). Based on the above data, answer the given subquestions. Find the distribution of runs of a randomly chosen player. 35 exp (\"012) + 153 exp (-52) 5/2 exp (012) + 30/2 exp (-502)"
+        }
+      ],
+      "acceptable_answers": [
+        "B"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "30% of the total players in IPL 2022 are uncapped (i.e., they have not played any international games) and 70% are capped (i.e., they have played at least 1 international game). Suppose the runs scored by the capped players is Normal(60, 25) and the runs scored by the uncapped players is Normal(55, 36). Based on the above data, answer the given subquestions. If a randomly selected player scored 60 runs, what is the probability tnat the selected candidate is a capped player Enter the answer correct to two decimal places"
+        }
+      ],
+      "numerical_answer": 0.8,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    }
+  ]
+}

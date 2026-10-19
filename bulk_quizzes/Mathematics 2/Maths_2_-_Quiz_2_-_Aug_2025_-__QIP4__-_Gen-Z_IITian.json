@@ -1,0 +1,285 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 2 · Quiz 2 · Aug 2025 · QIP4",
+  "subject": "Mathematics 2",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "the correct options from the following. The nullity of A is independent of the value of k."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The nullity of A depends on the value of k, and the set of all possible values for the nullity of A is {1, 2)."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The nullity of A depends on the value of k, and the set of all possible values for the nullity of A is {0, 1, 2, 3, 4, 5}. The nullity of A depends on the value of k, and the set of all possible values for the nullity of A is {2, 3}."
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following table. Set of vectors (Column A): a) {(3, -2, 4), (2,1, -1)}; b) { ] (3,1, 1), g (-1,1,2)}; c) {(1,2, -1), (5, -2, 1), (0, 1,2)}. Properties (Column B): i) Orthonormal, but does not form a basis of IR3; ii) Forms an orthogonal basis of R3; iii) Orthogonal but not orthonormal, and does not form a basis of R3. Choose the correct option which matches the given set of vectors with the appropriate properties."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "a) → iii), b) → i), c) → ii)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "a) → ii), b) → i), c) → iii) c a) → iii), b) → ii), c) → i)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "a) → ii), b) → iii), c) → i)"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let u = (-1,2, -3) be a vector from the inner product space Rª with the usual inner product. Which of the following options is/are true? There exist infinitely many vectors v € R3 such that ||u|| = ||u||."
+        }
+      ],
+      "acceptable_answers": [
+        "A, C, D"
+      ],
+      "marks": 6,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider W = {(z,y) € R° : x + y = 0} as a subspace of Rª with the usual inner product. Let (o, 3) be the projection of the vector (4, -2) on W. Find a - B."
+        }
+      ],
+      "numerical_answer": 6.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let u = (1,1) and v = (v1, t½) be vectors in R? with the usual inner product. Suppose |v| = 2 and the angle between u and wis 45°, find 11 + V½."
+        }
+      ],
+      "numerical_answer": 2.0,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider R? with the usual inner product. Let T: R? → R? be an orthogonal transformation given by I (x, y) = (ax + by, cz + dy) for all x, y € R and A be the matrix representation of T with respect to the standard ordered basis. If a = 1 and det (A) < 0, find & + c + d."
+        }
+      ],
+      "numerical_answer": 1.0,
+      "numerical_tolerance": 0.01,
+      "marks": 5,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let T : R? → R? be the linear transformation determined by T(1, 0) = (a - 6, -4), T(0, 1) = (3, a + 1). where a € R. Let a and a2 be the minimum and maximum values, respectively, of a for which I fails to be injective. Find ag - af"
+        }
+      ],
+      "numerical_answer": 5.0,
+      "numerical_tolerance": 0.01,
+      "marks": 5,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider a linear transformation T: IRa → Ra defined as: 1(2, 3, 2) = (z + 2y, 2z - y + oz, 3z + y + Bz), for all z, y, z € R, where a, 8 € R. Let A be the matrix representation of T with respect to the standard bases for both the domain and the codomain. Suppose A is similar to the matrix B given by -5 -6 . Based on the above information, answer the given subquestions. Choose all the correct statements from the following. The rank of the linear transformation I is 2."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The nullity of the linear transformation I' is 2. The transformation T is invertible."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "T cannot be an isomorphism."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0
+      ],
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider a linear transformation T: IRa → Ra defined as: 1(2, 3, 2) = (z + 2y, 2z - y + oz, 3z + y + Bz), for all z, y, z € R, where a, 8 € R. Let A be the matrix representation of T with respect to the standard bases for both the domain and the codomain. Suppose A is similar to the matrix B given by -5 -6 . Based on the above information, answer the given subquestions. If a = -2, find 3."
+        }
+      ],
+      "numerical_answer": -2.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let T : R$ → R2 be the linear transformation defined by T(21, 22, 23, 21) = (21 + 22, 22 - 23 + 21). for all (21, 22, 23, 24) € Rª. Based on the above data, answer the given subquestions. Find the number of columns in the matrix (with respect to any bases) of the linear transformation T."
+        }
+      ],
+      "numerical_answer": 4.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let T : R$ → R2 be the linear transformation defined by T(21, 22, 23, 21) = (21 + 22, 22 - 23 + 21). for all (21, 22, 23, 24) € Rª. Based on the above data, answer the given subquestions. Let A denote the matrix of the linear transformation T with respect to standard bases for both the domain and the codomain. Choose the correct statement from the following. (In the options below, REF is used for row echelon form, and RREF is used for reduced row echelon form.)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "is in REF and RREF."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "is neither in RREF nor in REF."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "is in RREF, but not in REF."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "is in REF, but not in RREF."
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let T : R$ → R2 be the linear transformation defined by T(21, 22, 23, 21) = (21 + 22, 22 - 23 + 21). for all (21, 22, 23, 24) € Rª. Based on the above data, answer the given subquestions. Find the value of k for which the set {(-1, 1, k?, k - 1), (1, -1, 0, 1)} is a basis for the kernel of T."
+        }
+      ],
+      "numerical_answer": 1.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let T: R3 → R3 be the linear transformation defined by T(x, y, 2) = (2 + 2, 3, 2 + y + 2), for all (2, y, z) € Ra. Based on the above data, answer the given subquestions. 1 1 1"
+        }
+      ],
+      "acceptable_answers": [
+        "B"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let T: R3 → R3 be the linear transformation defined by T(x, y, 2) = (2 + 2, 3, 2 + y + 2), for all (2, y, z) € Ra. Based on the above data, answer the given subquestions. Which of the following spaces are isomorphic to the kernel of T? The trivial vector space (0}. → marks"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The vector space of 2 × 2 diagonal matrices. c The yz-plane in R$, i.e., {(0, y, z) | y, = € R}. The vector space of 2 × 2 scalar matrices."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The space of solutions to Az = O, where A is an invertible matrix. The x-axis in R$, ie., {(x, 0, 0) | x € R}."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "genzitian.in/ecosystem video solutions - exam.genzitan.in roulube -youtube.com/coen-ziltan"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ]
+}

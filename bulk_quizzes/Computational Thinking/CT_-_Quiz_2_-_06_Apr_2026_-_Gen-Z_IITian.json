@@ -1,0 +1,262 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Computational Thinking · Quiz 2 · 06 Apr 2026",
+  "subject": "Computational Thinking",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Refer to the datasets shown above (Scores, Words, Library, Olympics, and the Shopping Bills sample cards). These datasets are used in the questions that follow. Scores Words Seqlio Word Par Olvmnics 4) Michar Three sample cards out of so tor Shoppind Bils dataset"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Useful Data has been mentioned above."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "This data attachment is iust for a reference & not for an evaluation. - exam.genziman.in roulube - youtube.com/@Gen-zilian"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What will be the value of outlist at the end of execution of the given pseudocode? L = [[10, 20, 'Z'], [30, 40, \"Y'], [50, 60, \"x']]] outList = [] foreach element in Li z = process (element) outList = [z] +* outList procedure process(ka val • last (K) End process ['Z', \"X', \"Y'] The following pseudocode is executed using the \"Words\" dataset and explode(X) returns the list of letters in the word X. For example explode(\"apple\") will return ['a', 'p', 'p', T, 'e']. What will cnt represent at the end of the execution? Note: isVowel(c) returns True if c is a vowel, False otherwise. isConsonant(c) returns True if c is a consonant, False otherwise. while(Table 1 has more rows){ Read the first row X in Table 1 letters • explode(X.word) ¡ f(checkPattern(letters)){ cot = cnt + i Move X to Table 2 Procedure checkPattern(S) (f(1eneth(5) < 2)4 (ratuco(False). foreach cure in rest afeisvowelcprev and isconsonant(curriori return(True) prev - curr return(False) Number of words with at least one vowel followed immediately by another vowel. Number of words with at least one vowel followed immediately by a consonant. genzitan.in/ecosystem video solutions exam.genzitan.in roulube-youtube.com/coen-clan + marks The following pseudocode is executed using the \"Scores\" dataset. What will the values of A and B represent at the end of the execution while(Table 1 has more rows)f Read the first row X in Table 1 it(iskeyD. X.Town/City) < if(D[X.Town/City] › X.Mathematics){ D[X.Town/Cityl = X.Mathematics elsef D[X.Town/City] = X.Mathematics Move X to Table 2 toreach Y in keys(DR 1f(B == D[Y]){ 1F(B > D[Y]){ Mathematics marks in Mathematics in Mathematics"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Number of words with at least one consonant followed immediately by a vowel."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of words where the first letter is a vowel and the last is a consonant."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "= 0}"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "= 8, B = 166"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "= DIY]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A = Cities where students score the highest marks in Mathematics; B = The highest marks in"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A = Number of cities where students score the highest marks in Mathematics; B = The highest"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "= Number of cities where students score the lowest marks in Mathematics; B = The lowest marks"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A = Always more than one; B = The highest marks in Mathematics"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Use the procedure doSomething given below. The following pseudocode is executed using the Words dataset and the procedure doSomething mentioned above. What will sList store at the end of the execution? Procedure doSomething(aList) 00ict • 13 bList = [] foreach a in aList{ 1f(not isKey(bDict, a)){ boict [a] = True bList = bList ++ [a] return(bList) End doSomething SList = [], wList = [] while(Table 1 has more rows){ Read the first row X from Table 1 wist = wList +* [x.Word] if(X.Word ends with a full stop){ wlist = doSomething(wList) sList = sList ++ [wList] wist = []"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "List of words from the \"Words\" dataset. 8 List of unique words from the \"Words\" dataset."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "List of lists of words of each sentence from the \"Words\" dataset. List of lists of unique words of each sentence from the \"Words\" dataset."
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 5,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let Z be a row in the Words table such that Z.Word = \"reluctant\". What will be the value of alphaDict[\"t] at the end of the execution of the following pseudocode? alphabict = ('t\":2, \"c':1, \"a\":1, \"s':0) alphaDict = updateDict(z, alphaDict) Procedure updateDict (Z, Dict) while(i ‹= Z.LetterCount){ * = ith letter of Z.Word if(not iskey(Dict, x))( Dict[x] = 1 elsef 1 - 1+3 Dict(x] = Dict(x] + 1 return(Dict) End updateDict"
+        }
+      ],
+      "numerical_answer": 4.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "+ marks The following procedure is executed on dictionary D: D = ('A: 10, 'B\": 25, °C: 30, 'D': 40, 'E: 18). What is the final value of val? va1 = 0 keysList = keys(D) toreach k in keysListi 1f(D[k] % 10 == 0)( val = val + D[k] D[k] = D(k] / 2 elsef val = val - D[k] D[k] = D[k] + S val = val + 10 elsef val - val - S"
+        }
+      ],
+      "numerical_answer": 72.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Olympics\" dataset. TeamDict is a dictionary accumulating player names for each country. What does the variable count represent at the end of execution? TeamDict = (› while Table 1 has more rows)‹ Read the tirst row X in Table 1 country = X.Countrv player = X.PlayerNane if(not isKey(TeanDict, country)){ TeamDict country. = i if(not member(TeamDict[country], player)){ TearDict countevl = TeanDict countrvi ++ Iplaverl count • count + 1 Move X to Table 2"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Total number of rows processed. / Total number of unique country-player pairs."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Total number of unique countries."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Total number of medals won. Answer Re"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Olympics\" dataset. TeamDict is a dictionary accumulating player names for each country. If we modify the code to remove this membership check: if(not member(TeamDict[country], player)) and always append the player instead, what would TeamDict[country] contain? TeamDict = () while(Table 1 has more rows) f Read the first row X in Table 1 country - x.Country player = X.PlayerName 1f(not isKey(TeanDict, country)){ TeamDict [country] = [] 1f(not member(TeamDict [country], player)){ TeamDict[country] = TeanDict[country] +* [player] count - count + 1 Move X to Table 2"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "A list of unique players for that country."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A list of all players for that country, including duplicates for multiple medals/years. c A single player name (the last one read)."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The count of players for that country."
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In an algorithmic procedure executing over a dataset, what is the purpose of maintaining a separate pile when iterating through cards?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "To prevent processing the same card more than once during an iteration"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To delete the cards permanently from memory"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To sort the original pile alphabetically automatically"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To double the count of total cards"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Moving processed cards to a secondary pile ensures each element is inspected exactly once without losing elements."
+        }
+      ]
+    }
+  ]
+}

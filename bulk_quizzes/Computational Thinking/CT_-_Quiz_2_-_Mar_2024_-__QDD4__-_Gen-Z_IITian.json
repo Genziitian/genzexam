@@ -1,0 +1,425 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Computational Thinking · Quiz 2 · Mar 2024",
+  "subject": "Computational Thinking",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following pseudocode. What will the value of B be at the end of the execution? А = [3, 8, 15, 6, 10, 5] в = [] foreach number in Af if(checkCondition (number)){"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "= B ++ [number] Procedure checkCondition(X) if(x == 1)( return(False) flag = True while(j < x)C if(remainder(X, j) == 0)( flag = False 3 - 3+1 return(flag) End checkCondition"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "= (3, 15, 5] в = (3] 8 = (5]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "= [3, 5]"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed on the \"Words\" table. Assume that the rows in Table 1 are sorted in increasing order of sequence number. What does the list L contain at the end of execution? - = 01 MCQ The given pseudocode is executed using \"Words\" dataset. What does wordCount represent at the end of execution? wordcount = 0 while(Table 1 has more rows){ Read the first row X in Table 1 if(doSomething(x) › 3){ wordCount = wordCount + 1 Move X to Table 2 Procedure doSomething(Y) while(i ‹ Y.LetterCount){ 1 = ith letter of Y.word 1f(1 is consonant)( A[1] = True 1 1*1 return(length(keys(A))) End doSomething particular sentence."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "= \"None\" Read the first row X in Table l"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "• X.PartotSpeech Move X to Table 2 while(Table 1 has more rows)! Read the first ro% X in Table 1 if(X.PartofSpeech == \"Noun ‹ if(A == \"Article\"){ L ++ [X.Word]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "= X.PartofSpeech Move X to Table 2 / The list of nouns that come immediately after an article"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The list of articles that come immediately after a noun"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The list of nouns that come immediately before an article"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The list of articles that come immediately before a noun"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "= (). i = 1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of words in which the number of distinct consonants is greater thanor equal to 3 in a"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of words in which the number of distinct consonants is greater thanor equal to 3"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of words in which the number of distinct consonants is less than 3"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of consonants in a word"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What will the value of B be at the end of the execution of the following pseudocode? Procedure doSomething(aList) bdict = () blist = [] foreach a in alist{ if(not iskey(bdict, a)){ bdict(a] = True blist = blist ++ [a] return(blist) End doSomething"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "= [4, 3, 1, 3, 4, 5, 1, 2, 7]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "= doSomething(A) [4, 3, 1, 3, 4, 5, 1, 2, 7] • [4, 3, 1, S, 2, 7] (5, 2, 7] [1, 2, 3, 4, 5, 7]"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Scores\" dataset. What will the values of A and B represent at the end of the execution? MCQ The following pseudocode is executed using the \"Words\" dataset and explode(X) returns the letters in the word X as a list. For example explode(\"mood\") returns ['m', 'o', 'o', 'd']. What will count represent at the end of the execution? count = 0, letterlist = [ while(Table 1 has more rows){ Read the first row X in Table 1 letterlist = explode/X.wordy count = count + processLetters(letterlist) Procedure processLetters(L) prevLetter • first(L) restList = rest(L) foreach letter in restListf if(letter == prevletter){ return(B) prevLetter = letter return(1) End processLetters 8 Number of words with at least two consecutive identical letters"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "= ( while(Table 1 has more rows){ Read the fist row X in Table 1 if(iskey(D, X. Town/City)){ if(D[X.Town/City] › X.Physics){ D[X.Town/City] = X.Physics elsef D[X.Town/City] = X.Physics Move X to Table 2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "= 8, B = 166 foreach Y in keys(D){ 1f(B == D[Y]){"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "= A + 1 1F(B > D[Y]){"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "= D[Y] / A = Number of cities where students score the lowest marks in Physics, B = The lowest marks in Physics"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A = Number of cities where students score the highest marks in Physics, B = The lowest marks in Physics"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A = Cities where students score the highest marks in Physics, B = The highest marks in Physics"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A = Number of cities where students score the lowest marks in Physics, B = The highest marks in Physics"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of words with at most two consecutive identical letters"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of words with consecutive identical letters"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of words with no consecutive identical letters"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "execution? The following pseudocode is executed using the \"Olympics\" dataset. What will B represent at the end of P = 0) while(Table 1 has more rows){ Read the first row X in Table 1 P = UpdateMedalCounts(P, X.Sport, X.Medal) Move X to Table 2 genzitan.in/ecosystem video solutions exam.genzitan.in roulube-youtube.com/coen-clan"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "= doSomething(P) Procedure UpdateMedalCounts(Q, Sport, Medal) 1f(iskey(Q, Sport)) ( Q[Sport] [Medal] = Q[Sport] [Medal] + 1 elsef Q[Sport] = {\"Gold\":0, \"Silver\":0, \"Bronze*:e} Q[Sport] [Medal] = 1 return (Q) End UpdateMedalCounts Procedure doSomething(R) for each sport in keys(R) ( 1f(R[sport] [\"Gold\"] > max){ max = R[sport] [\"Gold\"] return (max) End doSonething Minimum number of gold medals among all the sports Maximum number of gold medals among all the sports"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Maximum number of medals among all the sports"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Total number of gold medals in all the sports"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Shopping bill\" dataset. What will AA represent at the end of execution? BB = (), AA = \"None\" while(Pile 1 has more caros)1 Read the top card X in Pile 1 if(x.ShopName == \"SV Stores\")( BB = UpdateDictionary(BB, X) Move X to Pile 2 AA - GetKeyByKey(B8) Procedure UpdateDictionary(D, Y) foreach A in Y.ItemList{ if(iskey(D, A.Category)){ D[A.Category] = D[A.Category] * 1 elsef D[A.Category] = 1 return(D) End UpdateDictionary Procedure GetKeyByKey(D)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "= \"None\", B - 0 foreach Y in keys(D){"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "= Y"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "= D[Y] return(A) End GetKeyByKey"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Finds the least frequent item category from SV Stores Finds the list of item categories from SV Stores Finds the most frequent item category from SV Stores"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Finds the number of items from SV Stores"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"station wise\" cards of the \"Train\" dataset. At the end of the execution, STN should capture the following information: for each station X, and a day of a week A, STN[X] [A] should store the number of trains running through X on day A. Choose the correct code fragment to complete the pseudocode. [Note: Assume that for each station, the train list is given in a single card.] STN = () while(Pile 1 has more cards)f Read the top card X in Pile 1 STN[X.StationNane] = getInfo(STN, x) Move X to Pile 2 Procedure getInfo(STN, X) ....."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Fill the code return(D) End getInfo"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "- () foreach A in X.TrainList{ foreach 8 in A.Daysf D(8] = 1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "= (\"M\": 0, \"Tu\": e, \"W\": e, \"Th*: e, \"F*: e, \"Sa\": e, \"Su\": e) foreach A in X.TrainList{ foreach 8 in A.Days{ D[B] = 1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "= ( foreach A in X.TrainList( foreach B in A.Days{ 0[B] = 0[8] + 1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "= (\"M\": 0, \"Tu\": e, \"W\": e, \"Th\": e, \"F*: e, \"Sa\": 0, \"Su\": e} foreach A in X.TrainList{ foreach B in A.Days{ D[B] - D[8] + 1"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "We have a non-empty list, Publisher that stores the publisher name in each card from the \"Library\" dataset, sorted in alphabetical order. This results in many duplicates. The following procedure attempts to extract the unique list of publishers, while preserving the sorted order. The pseudocode may have mistakes. Identify all such mistakes (if any). It is a Multiple Select Question. uniqueList = [first(Publisher)] prev = last (Publisher) for each x in rest (Publisher){ 1f(x 1- prev){ uniqueList • uniqueList ** x prev = x Error in line 3"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Error in line 4"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Error in line 5"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Error in line 6 € Error in line 8 F The pseudocode is error free"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        3
+      ],
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Library\" dataset. Let p be a list of authors, and after the execution of pseudocode below, dict[X] stores the number of books having at least 200 pages and written on or after 2000 by author X. Choose the correct code fragment(s) to complete the pseudocode. It is a Multiple Select Question (MSQ). dict = ( ) foreach author in pf dict [author] = e while(Table 1 has more rows){ Read the first row X from Table 1 Fill the Code Move X to Table 2 1f(iskey(dict, X.Author) and (X.Pages ›= 200 and X.Year ›= 2000)){ dict [author] = dict[author] + 1 if(iskey(dict, X.Author) or (X.Pages › 200 and X.Year › 2000)){ dict [author] = dict [author] + 1"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "= False, D = False 1f(iskey(dict, X.Author) and (X.Pages >= 200)){"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "= True 1f(iskey (dict, .Author) and (X.Year > 2888))("
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "= True if (C and D){ dict [author] = dict(author] + 1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "= False, D = False if(iskey(dict, X.Author) and (x.Pages › 200)){"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "= True 1f(iskey(dict, X.Author) and (X.Year ›= 2000)){"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "• True 1f(C or D)( dict [author] = dict [author] * 1"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 4,
+      "difficulty": "medium"
+    }
+  ]
+}

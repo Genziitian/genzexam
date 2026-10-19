@@ -1,0 +1,470 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 1 · Quiz 2 · Aug 2023",
+  "subject": "English 1",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "MCO Choose the odd one from the following options. What is the meaning of longing? 8 The state of being nappy"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The longing for love"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The search for knowledge The desire for beauty"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The unbearable pity for the suffering of mankind"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "strong desire especially for something unattainable"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "high degree of trust in something"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "feeling of expectation for a particular thing to happen"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the meaning of 'abyss'? v A deep bottomless chasm"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The abode of angels"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The abode of the just"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The abode of fairies"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the meaning of 'consciousness'? MCQ Which one of the following words from the passage means the opposite of 'giant? Tiny Miniature Pygmy"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "feeling of intense anger"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "feeling of satisfaction The state of being annoyed The state of being aware"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Dwarf"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the meaning of 'pity?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "feeling of sadness for someone else's difficult situation"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "feeling of revulsion aroused by something highly distasteful"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "feeling of unhappiness and anger"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "feeling of satisfaction and bliss"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The brain's executive control centre is _ Prefrontal cortex"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Cerebellum Cerebral cortex"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of these"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which among the following is the scientific institution for the study of child development that is mentioned in the audio?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Harvard Medical School Harvard Center on the Developing Child"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Harvard Center for Population and Development Studies"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The prefrontal cortex in the brain _"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Manages emotions"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Solves problems c Makes plans V All of these"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many syllables are there in the word 'cortex?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "4"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "2 с 3"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many syllables are there in the word 'interactions\"?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "3 в 2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many syllables are there in the word 'disturb'?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "½"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "3"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "4"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many syllables are there in the word 'cloudy'?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "2"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The word 'evaluation' is"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Trisyllabic"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Polysyllabic c Disyllabic"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Five kilometres"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Are _ such a long distance."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "were Are not"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "IS"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "MCO In the plural noun 'photos', the plural marker sounds as"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "[s]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[z] c (iz]"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The plural markers for the words \"friends\", 'romans\", and 'citizens\" are"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "/s/, /s/, and /s/ respectively в /z/, /s/, and /z/ respectively"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "/z/. /z/, and /z/ respectively"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ]
+}

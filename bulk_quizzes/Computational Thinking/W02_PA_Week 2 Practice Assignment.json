@@ -23,6 +23,314 @@
           "value": "The given procedure is executed on the “Scores” dataset and we need to find the value stored in the variable B at the end of the execution. The value of B depends on the variable A. So first, we will check that what variable A store at the end of the execution. In step 5, (Physics marks − Mathematics marks) is stored in variable A when Physics marks is not less than Mathematics marks i.e. Physics marks is greater than or equal to Mathematics marks. In expression form: if (Physics marks >= Mathematics marks), then A = (Physics marks − Mathematics marks). Then in Step 6, A is being stored in B when A is greater than B. In expression form: if (A > B), then B = A. Hence, B stores the maximum value of (Physics marks − Mathematics marks) among all cards of the ”Scores” dataset. For the card No.24, (Physics marks − Mathematics marks) = 28 which is the maximum among all cards of the ”Scores” dataset. Therefore the value of B will be 28. Question-6 [3 Marks] The given procedure is executed on the “Scores” dataset. What will min represent after execution of the procedure? Step 1 : Arrange all cards in a single pile called Pile 1 Step 2 : Initialize variables A, B, C, and min to 1000 Step 3 : If Pile 1 is empty then stop the iteration and go to step 9 Step 4 : Read the top card in Pile 1 Step 5 : If Mathematics marks < A then store Mathematics marks in A Step 6 : If Physics marks < B then store Physics marks in B Step 7 : If Chemistry marks < C then store Chemistry marks in C Step 8 : Move the current card to another pile called Pile 2 and repeat from step 3 Step 9 : If A < B then store A in min otherwise store B in min Step 10 : If C < min then store C in min (a) Lowest Mathematics marks (b) Lowest Physics marks (c) Lowest Chemistry marks (d) Lowest marks across all subjects The above pseudocode is executed on the ”Scores” dataset and we need to find what min represents at the end of the execution From the pseudocode, till step 8, we we can conclude that variables A, B and C store the lowest marks in Mathematics, Physics and Chemistry respectively. In steps 9, variable min stores the lowest between A and B. In steps 10, variable min stores the lowest between min and C. Hence, min stores the lowest marks across all subjects. Question-7 [3 Marks] The following pseudocode is executed using the “Scores” dataset. What will count represent at the end of the execution of pseudocode? (a) Number of students who scored more than 75 marks in at least two subjects (b) Number of students who scored more than 75 marks in two subjects (c) Number of students who scored more than 75 marks in at most two subjects (d) Number of students who scored more than 75 marks in all three subjects The above pseudocode is executed on the “Scores” dataset. In the pseudocode variable C is reinitialized with zero for every card and it is being incremented when any subject marks are greater than 75. There for every card C stores the number of subjects in which the student X has scored more than 75. Finally, count is incremented whenever value stored in C is less than or count = 0 while(Table 1 has more rows){ Read the first row X from Table 1 C = 0 if(X.Mathematics > 75){ C = C + 1 } if(X.Physics > 75){ C = C + 1 } if(X.Chemistry > 75){ C = C + 1 } if(C <= 2){ count = count + 1 } Move X to Table 2 } 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 equal to 2. Therefore, variable count counts the number of students who scored more than 75 marks in at most two subjects. Question (8 - 9) [6 Marks] The following pseudocode is executed using the “Scores” dataset? Question-8 [3 Marks] What will the value of (C–A) represent? It is a Multiple Select Question (MSQ). (a) a. Number of students whose Mathematics marks are at least as much as Physics marks (b) Number of students whose Mathematics marks are at most as much as Physics marks (c) Number of students whose Physics marks are at least as much as Mathematics marks (d) Number of students whose Physics marks are at most as much as Mathematics marks To find the value of (C–A), we need to check what variables C and A represent. When we look at the pseudocode, we found that A counts the number of students whose Mathematics marks are less than Physics marks. it can be seen that there are three filtering conditions and at a time only one condition would be True. It is also clear that C is being incremented for every case therefore, whenever a card is picked up any of the three conditions would be True. Hence C will be incremented. This means it counts the total number of students in the dataset. So when A is being subtracted from C, i.e. (C–A), will give the number of students whose Mathematics marks are not less than Physics marks OR whose Physics marks are less than or equal to Mathematics marks. When we look at the options, (a) and (c) are correct. Question-9 [2 Marks] What will the value of (C–B) represent? (a) Number of students whose Mathematics marks are equal to Physics marks (b) Number of students whose Mathematics marks are more than Physics marks (c) Number of students whose Mathematics marks are less than Physics marks (d) Number of students whose Physics marks are less than or equal to Mathematics marks From the pseudocode, B is incremented when any of the two condition is valid. Condition 1: Mathematics mark is greater than Physics Marks. Condition 2: Mathematics mark is less than Physics Marks. We also know that both the condition can not be True for a single card. Which means either B counts the number of students whose Mathematics marks are either greater than or less than the Physics marks. In other word B counts the number of students whose Mathematics mark is not equal to Physics mark. So when we subtract B from C, (C - B) will give the the number of students whose Mathematics marks are equal to Physics marks. Question-10 [4 Marks] The following pseudocode is executed using the “Scores” dataset. When will C be True? (a) If there are more male students from Bangalore than female students from Chennai (b) If there are more female students from Chennai than female students from Bangalore (c) If there are more female students from Chennai than male students from Bangalore (d) If there are more students from Chennai than students from Bangalore A = 0, B = 0, C = False while(Pile 1 has more cards){ Read the top card X from Pile 1 if(X.Gender == 'F'){ if(X.CityTown == \"Chennai\"){ A = A + 1 } } Move card X to Pile 2 } while(Pile 2 has more cards){ Read the top card X from Pile 2 if(X.CityTown == \"Bangalore\"){ if(X.Gender != 'F'){ B = B + 1 } } Move card X to Pile 1 } if(A > B){ C = True } 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 The following pseudocode is executed over the “Scores” dataset and the question is to check when C will be True. The given pseudocode can be divided into three parts: first part in which A is being updated, second part in which B is being updated and in the third part both A and B are compared to each other. In the first part of the pseudocode, A counts the number of female students from Chennai. And in the second part B counts the number of male (not female) students from Bangalore. Finally in the last part of the pseudocode, C will be updated to True only when A is greater than B. In other words C will be True when there are more female students from Chennai than male students from Bangalore. Question-11 [4 Marks] A principal wants to send students of her college to participate in an annual inter-collegiate sports festival. She created a dataset of students’ interest in sports in the form of cards, as shown below. Using the created dataset, Rehana created a procedure to count the number of students who possess the following conditions: 1. The student plays at least three games. 2. The student plays either Cricket or Football but not both. But she may have made mistakes in one or more steps. Identify all such steps (if any). Assume that all steps not listed in the options below are free of errors. It is a Multiple Select Question (MSQ). Step 1 : Arrange all cards in a single pile called Pile 1 Step 2 : Initialize variables C, F, and X to 0 Step 3 : If Pile 1 is empty then stop the iteration Step 4 : Read the top card in Pile 1 Step 5 : If the student plays at least three games, then go to step 10 Step 6 : If the student plays “Cricket”, Increment C Step 7 : If the student plays “Football”, Increment F Step 8 : If C + F == 2 , Increment X Step 9 : Re-initialize variables C and F to 0 Step 10 : Move the current card to another pile called Pile 2 and repeat from step 3 (a) Step 2: X should be initialized with 1 (b) Step 5: Rather than going to step 10, the iterator should go to step 6 (c) Step 8: Incorrect conditional statement (d) There is no mistake in any step In this question Rehana has created procedure to count the number of students who posses the conditions given in the question. Step 2: Three variables are initialized to 0. One to track if student plays Cricket. Second to track if student plays Football. And third which counts the number of students passing the conditions mentioned. Step 5: In this step, a filter is applied to screen that if a student plays at least 3 games, which is the requirement of question. Therefore, if the condition given in step 5 is True, then step 6 should be executed not then step 10. But the iterator is moving to step 10 even if the condition is true, which is incorrect. Step 6: C is being incremented if student plays Cricket. Step 6: F is being incremented if student plays Football. Step 8: If the student plays only one of the Cricket and Football, then C + F should be equal to 1 not 2. Therefore step 8 is incorrect. Step 9: Variables C and F should be initialized for every new card which is fine here."
         }
       ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following computational processes best exemplifies an iteration abstraction?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "A loop that repeats a sequence of steps until a condition is met"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A function call with no return value"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A single conditional branch"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Declaring a global variable"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Iteration repeatedly executes a block of statements while a condition is satisfied."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider a dataset where each card represents a student with marks in Physics, Chemistry, and Maths. What algorithm can find the student with the highest total score in a single pass?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Linear scan maintaining a variable for current maximum total and corresponding student"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Binary search on unsorted cards"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Bubble sort requiring O(N^2) comparisons"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Random sampling without replacement"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Finding the maximum over N unsorted elements requires scanning each element once (O(N) time) and keeping track of the running maximum."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In pseudocode, if variable `count` is incremented inside a loop that runs for each word containing at least one vowel, what does `count` represent after processing all cards?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The total number of words that contain at least one vowel"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The total count of all vowels across all words"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The length of the longest word"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The number of consonants in the dataset"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Since count is incremented once per word matching the filter, it counts the qualifying words."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Suppose Table 1 has $N$ cards. If we move cards satisfying condition $C_1$ to Pile A and cards satisfying condition $C_2$ (mutually exclusive with $C_1$) to Pile B, what is the relationship between the card counts $|A|$, $|B|$, and $|\\text{remaining}|$?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$|A| + |B| + |\\text{remaining}| = N$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$|A| \\times |B| = N$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$|A| + |B| = |\\text{remaining}| + N$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$|A| - |B| = N$"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Since the partition is mutually exclusive and exhaustive of moved cards, the sum equals total cards N."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the primary purpose of a sentinel value in an iteration over an unsorted sequence of unknown length?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "To signal the termination of the input or loop"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To reset the accumulator to zero"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To sort the elements in ascending order"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To compute the average of previous elements"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "A sentinel value is a special value whose presence indicates the end of data or sequence."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In flowchart notation, which geometric shape is standard for representing a decision or conditional branch?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Diamond"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Rectangle"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Oval / Rounded rectangle"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Parallelogram"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "In standard flowchart syntax, diamonds indicate decision branches, rectangles represent processes, and parallelograms represent input/output."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If a procedure filters rows where `Gender == 'Female'` and `CityTown == 'Chennai'`, which logical operator combines these two conditions?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Logical AND (both conditions must be True)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Logical OR (at least one condition must be True)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Logical NOT (neither condition may be True)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Logical XOR (exactly one condition must be True)"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Both predicates must simultaneously hold, so the conjunction AND is used."
+        }
+      ]
     }
   ],
   "week": 2

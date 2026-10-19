@@ -1,0 +1,1468 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 1 · Quiz 1 · 16 JULY 2023 · QPF4",
+  "subject": "English 1",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following passage and answer the given subquestions. We all seek happiness but few, very few, indeed, get it. We are unhappy partly because we desire much more than what we can hope to attain. Our countless desires are hard to satisfy. And that is what makes us so sad in life. The secret of happiness lies in the simplification of life. Simple living encourages high thinking. It leads to contentment. Contentment gives us inner wealth, the wealth of the mind and of the soul. A contented man devotes himself to virtues like truth, beauty, love, goodness, kindness, and charity. By pursuing and inculcating their virtues, a man can feel true happiness. I do not mean that for simplification of life, a man should become an ascetic. The happiness of sadhu is of a negative kind. I want a positive kind of happiness. For this, I must live in the midst of life, faithfully carrying out my responsibilities to my home and my country. But all of this should be done in the spirit of selfless service. A man who wants to lead a happy life, should also make others happy. In making others happy, he will taste real and lasting happiness. There is a kind of joy in serving others with virtuous motives, in sacrificing what one has for the good of others. An act of goodness is in itself an act of happiness. The secret of perfect happiness lies in renunciation. Wealth may give us joy for a while and fame may provide us with fleeting excitement. But they cannot give us permanent happiness. Kings have everything to make them happy and yet they feel unhappy. It is because they do not practice renunciation. There is a sense of joy in doing one’s work honestly and efficiently. A research-worker feels joy in conducting research while a journalist in writing. In doing one’s duty sincerely, one feels a peace of mind, which is an important essence of happiness. It is only by cultivating a spirit of renunciation, self-sacrifice, contentment, and sincere work that one can really be happy. The strings of misfortune spare none, but they will not cow such a person.\n\nQuestion:\nWhat does a contented man do?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "He encounters the strings of misfortunes."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "He gives up bad habits effortlessly."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "He boldly faces the adversities of life."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "He pursues and assimilates the basic virtues of life."
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following passage and answer the given subquestions. We all seek happiness but few, very few, indeed, get it. We are unhappy partly because we desire much more than what we can hope to attain. Our countless desires are hard to satisfy. And that is what makes us so sad in life. The secret of happiness lies in the simplification of life. Simple living encourages high thinking. It leads to contentment. Contentment gives us inner wealth, the wealth of the mind and of the soul. A contented man devotes himself to virtues like truth, beauty, love, goodness, kindness, and charity. By pursuing and inculcating their virtues, a man can feel true happiness. I do not mean that for simplification of life, a man should become an ascetic. The happiness of sadhu is of a negative kind. I want a positive kind of happiness. For this, I must live in the midst of life, faithfully carrying out my responsibilities to my home and my country. But all of this should be done in the spirit of selfless service. A man who wants to lead a happy life, should also make others happy. In making others happy, he will taste real and lasting happiness. There is a kind of joy in serving others with virtuous motives, in sacrificing what one has for the good of others. An act of goodness is in itself an act of happiness. The secret of perfect happiness lies in renunciation. Wealth may give us joy for a while and fame may provide us with fleeting excitement. But they cannot give us permanent happiness. Kings have everything to make them happy and yet they feel unhappy. It is because they do not practice renunciation. There is a sense of joy in doing one’s work honestly and efficiently. A research-worker feels joy in conducting research while a journalist in writing. In doing one’s duty sincerely, one feels a peace of mind, which is an important essence of happiness. It is only by cultivating a spirit of renunciation, self-sacrifice, contentment, and sincere work that one can really be happy. The strings of misfortune spare none, but they will not cow such a person.\n\nQuestion:\nWhich of the following is the correct chain of things, as mentioned in the passage, leading to happiness?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "High thinking, simple living, inner wealth, contentment"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Inner wealth, simple living, contentment, high thinking"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Simple living, high thinking, inner wealth, contentment"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Simple living, high thinking, contentment, inner wealth"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following passage and answer the given subquestions. We all seek happiness but few, very few, indeed, get it. We are unhappy partly because we desire much more than what we can hope to attain. Our countless desires are hard to satisfy. And that is what makes us so sad in life. The secret of happiness lies in the simplification of life. Simple living encourages high thinking. It leads to contentment. Contentment gives us inner wealth, the wealth of the mind and of the soul. A contented man devotes himself to virtues like truth, beauty, love, goodness, kindness, and charity. By pursuing and inculcating their virtues, a man can feel true happiness. I do not mean that for simplification of life, a man should become an ascetic. The happiness of sadhu is of a negative kind. I want a positive kind of happiness. For this, I must live in the midst of life, faithfully carrying out my responsibilities to my home and my country. But all of this should be done in the spirit of selfless service. A man who wants to lead a happy life, should also make others happy. In making others happy, he will taste real and lasting happiness. There is a kind of joy in serving others with virtuous motives, in sacrificing what one has for the good of others. An act of goodness is in itself an act of happiness. The secret of perfect happiness lies in renunciation. Wealth may give us joy for a while and fame may provide us with fleeting excitement. But they cannot give us permanent happiness. Kings have everything to make them happy and yet they feel unhappy. It is because they do not practice renunciation. There is a sense of joy in doing one’s work honestly and efficiently. A research-worker feels joy in conducting research while a journalist in writing. In doing one’s duty sincerely, one feels a peace of mind, which is an important essence of happiness. It is only by cultivating a spirit of renunciation, self-sacrifice, contentment, and sincere work that one can really be happy. The strings of misfortune spare none, but they will not cow such a person.\n\nQuestion:\nAccording to the passage, the essence of happiness lies in ______"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Avoiding all unfortunate events."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Adopting a simple lifestyle."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Matching one’s abilities with the work undertaken."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Worldly desires."
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following passage and answer the given subquestions. We all seek happiness but few, very few, indeed, get it. We are unhappy partly because we desire much more than what we can hope to attain. Our countless desires are hard to satisfy. And that is what makes us so sad in life. The secret of happiness lies in the simplification of life. Simple living encourages high thinking. It leads to contentment. Contentment gives us inner wealth, the wealth of the mind and of the soul. A contented man devotes himself to virtues like truth, beauty, love, goodness, kindness, and charity. By pursuing and inculcating their virtues, a man can feel true happiness. I do not mean that for simplification of life, a man should become an ascetic. The happiness of sadhu is of a negative kind. I want a positive kind of happiness. For this, I must live in the midst of life, faithfully carrying out my responsibilities to my home and my country. But all of this should be done in the spirit of selfless service. A man who wants to lead a happy life, should also make others happy. In making others happy, he will taste real and lasting happiness. There is a kind of joy in serving others with virtuous motives, in sacrificing what one has for the good of others. An act of goodness is in itself an act of happiness. The secret of perfect happiness lies in renunciation. Wealth may give us joy for a while and fame may provide us with fleeting excitement. But they cannot give us permanent happiness. Kings have everything to make them happy and yet they feel unhappy. It is because they do not practice renunciation. There is a sense of joy in doing one’s work honestly and efficiently. A research-worker feels joy in conducting research while a journalist in writing. In doing one’s duty sincerely, one feels a peace of mind, which is an important essence of happiness. It is only by cultivating a spirit of renunciation, self-sacrifice, contentment, and sincere work that one can really be happy. The strings of misfortune spare none, but they will not cow such a person.\n\nQuestion:\nWe are unhappy partly because ______"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "We have countless unfulfilled desires."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Our lives have become extremely complicated."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "We have lost moral and spiritual values."
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nListen to the audio sample and answer the given subquestions:\n\nQuestion:\nWhich of the following statements is NOT TRUE in the context of the passage?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Multiplicity of desires makes us unhappy."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Making others happy makes one happy."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Renunciation is the result of perfect happiness."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "One feels peace of mind in doing one’s duty sincerely."
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nListen to the audio sample and answer the given subquestions:\n\nQuestion:\nWhich year did Natalie Portman’s first film release?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "1993"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1994"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1995"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1996"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nListen to the audio sample and answer the given subquestions:\n\nQuestion:\nWhat role did Natalie Portman portray in the ‘Black Swan’?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "A doctor"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A ballet dancer"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A mechanic"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A writer"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nListen to the audio sample and answer the given subquestions:\n\nQuestion:\nHow old was Natalie Portman upon her first film’s release?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "11 years"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "12 years"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "13 years"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "14 years"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nListen to the audio sample and answer the given subquestions:\n\nQuestion:\nNatalie Portman’s first film was a box office success."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "TRUE"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "FALSE"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "While choosing films, what did Natalie Portman aim for?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Creating meaningful experiences"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Box office success"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Prestige"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Critical success"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which among the following words has a diphthong?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Bottle"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Boycott"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Bail"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both Boycott and Bail"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which among the following carry the long vowel /uu/?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Through"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Blue"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Too"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Flew"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "All of these"
+          }
+        ]
+      ],
+      "correct_answer": 4,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Two consonants next to one another within a syllable make a cluster."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "TRUE"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "FALSE"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which among the following is a word without a diphthong?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Loiter"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Stew"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Maiden"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following is NOT an Abstract Noun?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Goodness"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Youth"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Poverty"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Parliament"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the noun in the following sentence: Working hard can bring you success."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Working"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Hard"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Bring"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Success"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Fill in the blank with the most appropriate interrogative pronoun. ______ wrote ‘The Canterbury Tales’ ?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Whose"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "How"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Who"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Which"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Don’t ________me you’ve lost your keys again."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Say"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Tell"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Speak"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Inform"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Fill in the blank with an appropriate verb. The teacher, as well as the students, _______responsible for the agitation in the school campus."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Are"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Is"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Shall"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Were"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the part of speech the underlined word belongs to. She yelled when she hit her toe."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Verb"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Noun"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Conjunction"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Adverb"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "She has not read anything______ Monday."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "For"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Since"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "From"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Over"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What will be the adverb form of ‘suitable’?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Suitabely"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Sitablly"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Suitably"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Suited"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Please look_______ the matter carefully to investigate it properly."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "On"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Into"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Under"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Against"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "I want to buy _____ laptop computer next week."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "A"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "An"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "No article"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The culprit was _____ fined and punished."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Also"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "And"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "But"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the underlined part of the sentence. I came across some old books while tidying my room."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Separable phrasal verb"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "In-separable phrasal verb"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Fill in the blank with the appropriate option. The meaning of the phrasal verb ‘wait on’ is _____________."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "To return a phone call"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To save money"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To serve somebody"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To communicate successfully"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Pick the right meaning of the following idiom: A dark horse"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "A person who is slightly eccentric"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A person who seems to be stupid"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "An unexpected winner"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Select true or false for the following statement: The idiom ‘cut corners’ means ‘to do something in the fastest and the cheapest way’."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "TRUE"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "FALSE"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nMatch Column A with suitable options in Column B. (Hint: Word collocation)\n\nQuestion:\nChoose the correct option. Sudha ________ speak Telugu."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Would"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Is"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "May"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Can"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nMatch Column A with suitable options in Column B. (Hint: Word collocation)\n\nQuestion:\nLand ___"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Forecast"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Decision"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Acquisition"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Blow"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Decay"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nMatch Column A with suitable options in Column B. (Hint: Word collocation)\n\nQuestion:\nMoral ___"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Forecast"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Decision"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Acquisition"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Blow"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Decay"
+          }
+        ]
+      ],
+      "correct_answer": 4,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nMatch Column A with suitable options in Column B. (Hint: Word collocation)\n\nQuestion:\nFinal ___"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Forecast"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Decision"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Acquisition"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Blow"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Decay"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nMatch Column A with suitable options in Column B. (Hint: Word collocation)\n\nQuestion:\nWeather ___"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Forecast"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Decision"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Acquisition"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Blow"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Decay"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following telephonic conversation and fill in the blank with appropriate responses: Harilal: Hello! Is this Nirjeevani Hospital? Receptionist: Yes. (i) ______________ Harilal: I wanted to know if Dr. Arundhati will be available for consultation. Receptionist: Yes Ma’am. (ii) ____________ book an appointment? Harilal: Yes, I want to book an appointment Receptionist: Please tell me your name and age. Hello! (iii) _____________ (The call gets disconnected) Harilal: Hello! Receptionist: Hello! Nirjeevani Hospital. Harilal: The call got (iv) _____________. My name is Harilal Khan and I am 35 years old. Receptionist: Could you please (v) ____________ Harilal: Harilal Khan, 35 years. Receptionist: Alright. Please be here by 10: 00 a.m. Thank you! Based on the above data, answer the given subquestions.\n\nQuestion:\nUnanimous ____"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Forecast"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Decision"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Acquisition"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Blow"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Decay"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following telephonic conversation and fill in the blank with appropriate responses: Harilal: Hello! Is this Nirjeevani Hospital? Receptionist: Yes. (i) ______________ Harilal: I wanted to know if Dr. Arundhati will be available for consultation. Receptionist: Yes Ma’am. (ii) ____________ book an appointment? Harilal: Yes, I want to book an appointment Receptionist: Please tell me your name and age. Hello! (iii) _____________ (The call gets disconnected) Harilal: Hello! Receptionist: Hello! Nirjeevani Hospital. Harilal: The call got (iv) _____________. My name is Harilal Khan and I am 35 years old. Receptionist: Could you please (v) ____________ Harilal: Harilal Khan, 35 years. Receptionist: Alright. Please be here by 10: 00 a.m. Thank you! Based on the above data, answer the given subquestions.\n\nQuestion:\nComplete blank (i) with an appropriate response."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "How may I help you today?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Who’s calling, please?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Hello! Are you Narsimh?"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following telephonic conversation and fill in the blank with appropriate responses: Harilal: Hello! Is this Nirjeevani Hospital? Receptionist: Yes. (i) ______________ Harilal: I wanted to know if Dr. Arundhati will be available for consultation. Receptionist: Yes Ma’am. (ii) ____________ book an appointment? Harilal: Yes, I want to book an appointment Receptionist: Please tell me your name and age. Hello! (iii) _____________ (The call gets disconnected) Harilal: Hello! Receptionist: Hello! Nirjeevani Hospital. Harilal: The call got (iv) _____________. My name is Harilal Khan and I am 35 years old. Receptionist: Could you please (v) ____________ Harilal: Harilal Khan, 35 years. Receptionist: Alright. Please be here by 10: 00 a.m. Thank you! Based on the above data, answer the given subquestions.\n\nQuestion:\nComplete blank (ii) with an appropriate response."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Are we to"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Would you like to"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Will you"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following telephonic conversation and fill in the blank with appropriate responses: Harilal: Hello! Is this Nirjeevani Hospital? Receptionist: Yes. (i) ______________ Harilal: I wanted to know if Dr. Arundhati will be available for consultation. Receptionist: Yes Ma’am. (ii) ____________ book an appointment? Harilal: Yes, I want to book an appointment Receptionist: Please tell me your name and age. Hello! (iii) _____________ (The call gets disconnected) Harilal: Hello! Receptionist: Hello! Nirjeevani Hospital. Harilal: The call got (iv) _____________. My name is Harilal Khan and I am 35 years old. Receptionist: Could you please (v) ____________ Harilal: Harilal Khan, 35 years. Receptionist: Alright. Please be here by 10: 00 a.m. Thank you! Based on the above data, answer the given subquestions.\n\nQuestion:\nComplete blank (iii) with an appropriate response."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Please ring me later."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Are you there?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "I will talk to you later."
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following telephonic conversation and fill in the blank with appropriate responses: Harilal: Hello! Is this Nirjeevani Hospital? Receptionist: Yes. (i) ______________ Harilal: I wanted to know if Dr. Arundhati will be available for consultation. Receptionist: Yes Ma’am. (ii) ____________ book an appointment? Harilal: Yes, I want to book an appointment Receptionist: Please tell me your name and age. Hello! (iii) _____________ (The call gets disconnected) Harilal: Hello! Receptionist: Hello! Nirjeevani Hospital. Harilal: The call got (iv) _____________. My name is Harilal Khan and I am 35 years old. Receptionist: Could you please (v) ____________ Harilal: Harilal Khan, 35 years. Receptionist: Alright. Please be here by 10: 00 a.m. Thank you! Based on the above data, answer the given subquestions.\n\nQuestion:\nWhich among the following expressions can complete blank (iv)?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Put off"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Called off"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Cut off"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which among the following expressions would complete blank (v)?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Speak up"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Speak out"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Call back"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ]
+}

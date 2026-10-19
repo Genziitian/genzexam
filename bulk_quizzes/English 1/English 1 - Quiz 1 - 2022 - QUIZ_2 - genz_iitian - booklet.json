@@ -1,0 +1,1426 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 1 · Quiz 1 · 16 Oct 2022 · QUIZ",
+  "subject": "English 1",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nNature is an infinite source of beauty. Sunrise and sunset, mountains and rivers, lakes and glaciers, forests and fields provide joy and bliss to the human mind and heart for hours together. Everything in nature is splendid and divine. Every day and every season of the year has a peculiar beauty to unfold. Only one should have eyes to behold it and heart to feel it like the English poet William Wordsworth who after seeing daffodils said; “And then my heart with pleasure fills and dances with the daffodils”. Nature is a great teacher. The early man was thrilled with beauty and wonders of nature. The Aryans worshipped nature. One can learn the lessons in the vast school of nature. Unfortunately, the strife, the stress and the tension of modern life have made people immune to beauties of nature. Their life is so full of care that they have no time to stand and stare. They cannot enjoy the beauty of flowing rivers, swinging trees, flying birds and majestic mountains and hills. There is however, a cry to go back to village from the concrete and artificial jungle of cities. Hence the town planners of today pay special attention to provide enough number of natural scenic spots in town planning. To develop a balanced personality, one needs to have a healthy attitude which can make us appreciate and enjoy the beauty of nature. There is other balm to soothe our tired soul and listless mind than the infinite nature all around us. We should enjoy it fully to lead a balanced and harmonious life, full of peace and tranquillity. Based on the above data, answer the given subquestions\n\nQuestion:\nChoose the word which is most OPPOSITE in meaning of the word 'unfold' as used in the passage?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Perpetuate"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Describe"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Conceal"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Declare"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nNature is an infinite source of beauty. Sunrise and sunset, mountains and rivers, lakes and glaciers, forests and fields provide joy and bliss to the human mind and heart for hours together. Everything in nature is splendid and divine. Every day and every season of the year has a peculiar beauty to unfold. Only one should have eyes to behold it and heart to feel it like the English poet William Wordsworth who after seeing daffodils said; “And then my heart with pleasure fills and dances with the daffodils”. Nature is a great teacher. The early man was thrilled with beauty and wonders of nature. The Aryans worshipped nature. One can learn the lessons in the vast school of nature. Unfortunately, the strife, the stress and the tension of modern life have made people immune to beauties of nature. Their life is so full of care that they have no time to stand and stare. They cannot enjoy the beauty of flowing rivers, swinging trees, flying birds and majestic mountains and hills. There is however, a cry to go back to village from the concrete and artificial jungle of cities. Hence the town planners of today pay special attention to provide enough number of natural scenic spots in town planning. To develop a balanced personality, one needs to have a healthy attitude which can make us appreciate and enjoy the beauty of nature. There is other balm to soothe our tired soul and listless mind than the infinite nature all around us. We should enjoy it fully to lead a balanced and harmonious life, full of peace and tranquillity. Based on the above data, answer the given subquestions\n\nQuestion:\nWhat is needed to develop a balanced personality?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Going back to villages"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Healthy attitude"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Reading poetry"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Interpersonal skills"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nNature is an infinite source of beauty. Sunrise and sunset, mountains and rivers, lakes and glaciers, forests and fields provide joy and bliss to the human mind and heart for hours together. Everything in nature is splendid and divine. Every day and every season of the year has a peculiar beauty to unfold. Only one should have eyes to behold it and heart to feel it like the English poet William Wordsworth who after seeing daffodils said; “And then my heart with pleasure fills and dances with the daffodils”. Nature is a great teacher. The early man was thrilled with beauty and wonders of nature. The Aryans worshipped nature. One can learn the lessons in the vast school of nature. Unfortunately, the strife, the stress and the tension of modern life have made people immune to beauties of nature. Their life is so full of care that they have no time to stand and stare. They cannot enjoy the beauty of flowing rivers, swinging trees, flying birds and majestic mountains and hills. There is however, a cry to go back to village from the concrete and artificial jungle of cities. Hence the town planners of today pay special attention to provide enough number of natural scenic spots in town planning. To develop a balanced personality, one needs to have a healthy attitude which can make us appreciate and enjoy the beauty of nature. There is other balm to soothe our tired soul and listless mind than the infinite nature all around us. We should enjoy it fully to lead a balanced and harmonious life, full of peace and tranquillity. Based on the above data, answer the given subquestions\n\nQuestion:\nWhat should we do to enjoy tranquil life?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Enjoy the nature around us."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Lead a disciplined and dedicated life."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Believe that nature is infinite source of beauty."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Get totally immersed in our daily routine."
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nNature is an infinite source of beauty. Sunrise and sunset, mountains and rivers, lakes and glaciers, forests and fields provide joy and bliss to the human mind and heart for hours together. Everything in nature is splendid and divine. Every day and every season of the year has a peculiar beauty to unfold. Only one should have eyes to behold it and heart to feel it like the English poet William Wordsworth who after seeing daffodils said; “And then my heart with pleasure fills and dances with the daffodils”. Nature is a great teacher. The early man was thrilled with beauty and wonders of nature. The Aryans worshipped nature. One can learn the lessons in the vast school of nature. Unfortunately, the strife, the stress and the tension of modern life have made people immune to beauties of nature. Their life is so full of care that they have no time to stand and stare. They cannot enjoy the beauty of flowing rivers, swinging trees, flying birds and majestic mountains and hills. There is however, a cry to go back to village from the concrete and artificial jungle of cities. Hence the town planners of today pay special attention to provide enough number of natural scenic spots in town planning. To develop a balanced personality, one needs to have a healthy attitude which can make us appreciate and enjoy the beauty of nature. There is other balm to soothe our tired soul and listless mind than the infinite nature all around us. We should enjoy it fully to lead a balanced and harmonious life, full of peace and tranquillity. Based on the above data, answer the given subquestions\n\nQuestion:\nAccording to the author of the passage, Nature:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Is abundantly glorious and divine"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Brings uniformity in all seasons"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Is the creator of this universe"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Is the ultimate salvation of man"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nListen to the audio sample and answer the subquestions.\n\nQuestion:\nWhat are the town planners doing today?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Making efforts to inculcate healthy attitude among people"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Supporting the cry to go back to villages"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Establishing balance between concrete and artificial jungle of cities"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Providing facilities for enjoying nature"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nListen to the audio sample and answer the subquestions.\n\nQuestion:\nApple acquired NeXT"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "TRUE"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "FALSE"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nListen to the audio sample and answer the subquestions.\n\nQuestion:\nAccording to Steve Jobs, ‘the only way to do great work’ is _____."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "To remain focused"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To love what you do"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To be disciplined"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To remain calm"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nListen to the audio sample and answer the subquestions.\n\nQuestion:\nAt what age did Steve Jobs read the quote 'if you live each day as if it was your last, someday you’ll most certainly be right'."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "14 years"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "15 years"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "16 years"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "17 years"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nListen to the audio sample and answer the subquestions.\n\nQuestion:\nWhat does the phrase ‘to get one’s affairs in order’ mean?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Prepare for one’s death"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Criticize someone repeatedly"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Throw away something"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Have a good relationship"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following telephonic conversation and fill in the blank with appropriate responses: Tina: Hello. Good morning. Is this Meridian hotel? Receptionist: Good morning. Yes. (i) ______ Tina: I would like to book a suite for New Year’s eve. Receptionist: (ii) _____. Let me check the availability. Tina: Sure. Please let me know about other services on that day. Receptionist: (iii)____ that we have no suite rooms available on that day. Tine: Could you please (iv) ____ me to the manager Receptionist: Sure, (v) _____ for a second. I am connecting to the manager. Tina: Thank you. Based on the above data, answer the given subquestions.\n\nQuestion:\nIdentify the word that means ‘instrument used to view internal body parts’."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Telescope"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Stethoscope"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Horoscope"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Endoscope"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following telephonic conversation and fill in the blank with appropriate responses: Tina: Hello. Good morning. Is this Meridian hotel? Receptionist: Good morning. Yes. (i) ______ Tina: I would like to book a suite for New Year’s eve. Receptionist: (ii) _____. Let me check the availability. Tina: Sure. Please let me know about other services on that day. Receptionist: (iii)____ that we have no suite rooms available on that day. Tine: Could you please (iv) ____ me to the manager Receptionist: Sure, (v) _____ for a second. I am connecting to the manager. Tina: Thank you. Based on the above data, answer the given subquestions.\n\nQuestion:\nComplete blank (i) with an appropriate response."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "What can I do for you?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "How may I help you?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "What do you want to know?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "This is hotel Meridian"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following telephonic conversation and fill in the blank with appropriate responses: Tina: Hello. Good morning. Is this Meridian hotel? Receptionist: Good morning. Yes. (i) ______ Tina: I would like to book a suite for New Year’s eve. Receptionist: (ii) _____. Let me check the availability. Tina: Sure. Please let me know about other services on that day. Receptionist: (iii)____ that we have no suite rooms available on that day. Tine: Could you please (iv) ____ me to the manager Receptionist: Sure, (v) _____ for a second. I am connecting to the manager. Tina: Thank you. Based on the above data, answer the given subquestions.\n\nQuestion:\nComplete blank (ii) with an appropriate response."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Wait for a second"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Could you call after sometime"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Please hold down for a second"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Wait"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following telephonic conversation and fill in the blank with appropriate responses: Tina: Hello. Good morning. Is this Meridian hotel? Receptionist: Good morning. Yes. (i) ______ Tina: I would like to book a suite for New Year’s eve. Receptionist: (ii) _____. Let me check the availability. Tina: Sure. Please let me know about other services on that day. Receptionist: (iii)____ that we have no suite rooms available on that day. Tine: Could you please (iv) ____ me to the manager Receptionist: Sure, (v) _____ for a second. I am connecting to the manager. Tina: Thank you. Based on the above data, answer the given subquestions.\n\nQuestion:\nComplete blank (iii) with an appropriate response."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Sorry to inform you"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Sorry"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "We are sorry"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "I apologise"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following telephonic conversation and fill in the blank with appropriate responses: Tina: Hello. Good morning. Is this Meridian hotel? Receptionist: Good morning. Yes. (i) ______ Tina: I would like to book a suite for New Year’s eve. Receptionist: (ii) _____. Let me check the availability. Tina: Sure. Please let me know about other services on that day. Receptionist: (iii)____ that we have no suite rooms available on that day. Tine: Could you please (iv) ____ me to the manager Receptionist: Sure, (v) _____ for a second. I am connecting to the manager. Tina: Thank you. Based on the above data, answer the given subquestions.\n\nQuestion:\nComplete blank (iv) with an appropriate response."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Connect"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Call"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Message"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Ask"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nMatch Column A with suitable options in Column B. (Hint: Word collocation)\n\nQuestion:\nComplete blank (v) with an appropriate response."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Wait"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Please hold down"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Hold"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Please wait"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nMatch Column A with suitable options in Column B. (Hint: Word collocation)\n\nQuestion:\nSurprised _______"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "With"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "At"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "On"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nMatch Column A with suitable options in Column B. (Hint: Word collocation)\n\nQuestion:\nRely _______"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "With"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "At"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "On"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nMatch Column A with suitable options in Column B. (Hint: Word collocation)\n\nQuestion:\nBlessed _______"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "With"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "At"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "On"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nMatch Column A with suitable options in Column B. (Hint: Word collocation)\n\nQuestion:\n‘She hates her mother having to suffer so badly// she moved out//’ has the same meaning as ‘She hates her mother// having to suffer so badly/ she moved out////’."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "TRUE"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "FALSE"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Pause is like a punctuation mark to spoken language."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "TRUE"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "FALSE"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the meaning of the phrasal verb ‘dig in’?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "To become extinct"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To want something a lot"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To become quieter or inaudible"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To start eating greedily"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct option. ________ we leave now or do you want to wait?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Will"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Shall"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘Rocky was furious about the results’. Here the word ‘furious’ can be replaced appropriately with _____________."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Fuming"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Sad"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Angry"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Disappointed"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the odd one out from the following: Flood, Delusion, Inundation, Downpour"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Flood"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Delusion"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Inundation"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Downpour"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "I have _____ interest in sports."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Some"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Little"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Few"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A few"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The officer showed ___ sentiments towards the grievances."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Cold"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Dark"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Active"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of these"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the conjunction in the following sentence. The shop specializes in exotic vegetables, such as cherry tomatoes, baby corn, and parsley."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Specializes"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Exotic"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Such as"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Vegetables"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the appropriate option. I can’t live on _________600 dollars a month."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "A"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "An"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "No article"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the preposition in the following sentence: Thirty years have passed away since they met."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Thirty"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Years"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Since"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "They"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the part of speech of the underlined word. The movie is starting now."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Preposition"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Conjunction"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Adverb"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Adjective"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Select the appropriate option. The adjective formed from the word 'hope' is ____."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Hopefully"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Hopeful"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct answer. Much of the information found online ______ often misleading."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Has"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Have"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Are"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Is"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the part of speech of the underlined word. He is the best football player in the team."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Noun"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Adjective"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Pronoun"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Adverb"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Fill in the blanks with an appropriate article: We were not in _____ hurry to go to school"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "A"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "An"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of these"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Fill in the blanks with an appropriate article: Alisha knows how to play _____ Guitar."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "A"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "An"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of these"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which among the following is a word without a diphthong?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Loiter"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Stew"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Maiden"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of these"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which among the following has /k/ sound ?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Cathartic"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Kitten"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both Cathartic and Kitten"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the word with /i:/ sound from the following:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Mean"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Jane"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Mare"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both Jane and Mare"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "There isn’t any word without vowel sound. This statement is"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "TRUE"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "FALSE"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which among the following words has the same sound as underlined in strain?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Naïve"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Buy"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Rail"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ]
+}

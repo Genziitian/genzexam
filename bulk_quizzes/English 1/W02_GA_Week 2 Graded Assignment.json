@@ -17,6 +17,314 @@
       ],
       "marks": 1,
       "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the sentence with the correct subject-verb agreement."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Neither the teacher nor the students were aware of the change in schedule."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Neither the teacher nor the students was aware of the change in schedule."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Neither the teachers nor the student were aware of the change in schedule."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Neither the teacher nor the student were aware of the change in schedule."
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "When subjects are joined by 'neither... nor', the verb agrees with the closer subject ('students' -> 'were')."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the word that is an antonym of 'Ephemeral'."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Permanent"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Transient"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Fleeting"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Momentary"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "'Ephemeral' means lasting for a very short time. Its opposite is 'Permanent'."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Fill in the blank with the appropriate preposition: 'She has been working on this project _____ three months.'"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "for"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "since"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "from"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "during"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "'For' is used with a duration or period of time ('three months'), whereas 'since' refers to a specific starting point."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following sentences is written in the passive voice?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The novel was written by George Orwell in 1948."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "George Orwell wrote the novel in 1948."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The author completed the manuscript quickly."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Readers around the world admire the classic."
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The subject receives the action: 'was written by...'."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the most appropriate discourse marker to complete the blank: 'He studied diligently; _____, he passed the examination with distinction.'"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "consequently"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "nevertheless"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "on the contrary"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "whereas"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "'Consequently' introduces a natural result or logical outcome of a preceding clause."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which word is correctly spelled?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Accommodate"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Acommodate"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Accomodate"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Acomodate"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The correct spelling is 'Accommodate' with double 'c' and double 'm'."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the type of clause underlined in the sentence: '*Although it was raining heavily*, they decided to continue the football match.'"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Adverbial clause of concession"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Noun clause acting as subject"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Relative adjective clause"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Independent coordinate clause"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Clauses introduced by 'although' express a contrast or concession to the main clause."
+        }
+      ]
     }
   ],
   "week": 2

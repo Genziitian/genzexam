@@ -1,0 +1,253 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 2 · Quiz 2 · 06 Apr 2026",
+  "subject": "Mathematics 2",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the system of linear equations Ax = 6 given by -x + y - z = 1, × - y + z = -1, = + z = 0. Suppose L represents the affine space of solutions of Ax = b, and let W be the subspace in R corresponding to the affine space L. Choose the correct option from the following. W = span {(1, 0, -1), (1, 1, 0)}"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "W = span{(1,0, -1)} c W = span{(1, 0, 1), (1,0, -1)}"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "W = span{(1, 0, 1)}"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let T : R3 → Ra be a linear transformation such that T? = T, and rank (T) = 2. Which of the following statements is correct? T is the identity transformation. I maps every vector in Ra to a vector with at least one zero component. T is not injective."
+        }
+      ],
+      "acceptable_answers": [
+        "C"
+      ],
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let (,•) denote the standard inner product on R3, i.e.. ((21, 22), (31,32)) = 2131 + 2232 for (21, 22) and (31, 32) in Rª. For a vector v € Rº, consider a linear transformation T, : R2 → R defined as Tu (u) = (u, v) where w E R?. Which of the following options is (are) true for T,? T, is one-one for all u · 0 € R2. T, is onto for all u · 0 € R2. 1, is not one-one for every u · 0 € R2."
+        }
+      ],
+      "acceptable_answers": [
+        "B, C"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let T : R3 → R3 be a linear transformation such that T(1, 0,1) = (1,2, 1), T(0, 1,1) = (0, 1, 1), and T(1, 1, 0) = (1, 1, 0). Let U = span((1, 0, 1), (0, 1, 1)). Choose all the correct options. T(U) is a two-dimensional subspace of IRa."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The vector (1, -1,0) lies in T(U). Un ker (T) = {(0, 0, 0)}."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The restriction Tu : U → Ra is not injective."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0
+      ],
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let T : R3 → R be defined by T(z, y, z) = (x + y, y + z, = + z + ky), & € R. Which of the following statements are true? T is injective if and only if & # -1."
+        }
+      ],
+      "acceptable_answers": [
+        "D, E"
+      ],
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Suppose that T : R3 → R? is a linear transformation given by T(x, y, z) = (z - 2y, y + z). Let A be the matrix representation of T with respect to the ordered standard bases for both domain and co-domain. If B is equivalent to A, find the rank of B."
+        }
+      ],
+      "numerical_answer": 2.0,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let T: R3 → Ra be a linear transformation defined by T(z, y, 2) = (z + 2y - z, 3z + y + z). Based on the above data, answer the given subquestions. Let v = (a, b, c) € R3 be a vector in the kernel of T such that a + 6 + c = 1. Find the value of a + 26 + 3c up to two decimal places."
+        }
+      ],
+      "numerical_answer": 3.33,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let T: R3 → Ra be a linear transformation defined by T(z, y, 2) = (z + 2y - z, 3z + y + z). Based on the above data, answer the given subquestions. Consider the set L = {(x, y, ½) € R3 | x + y + z = 1, = - y = 0}. Find the y-coordinate of the point of intersection of the image of L under T, that is, the set {T(x, y, z) | (z, y, z) € L}, and the y-axis in R?. Let T: R3 → Ra be a linear transformation defined by T(x, y, z) = (x + y + z, x + 2y + 3z, 2x + 3y + 4z). Let U = {(z, y, z) € Rª | 2 + y + z = 0}. Define the linear transformation S = T|u : U → R\". Based on the above data, answer the given subquestions."
+        }
+      ],
+      "acceptable_answers": [
+        "1.4"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let T: R3 → Ra be a linear transformation defined by T(z, y, 2) = (z + 2y - z, 3z + y + z). Based on the above data, answer the given subquestions. Find the dimension of the image of S."
+        }
+      ],
+      "numerical_answer": 1.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let T: R3 → Ra be a linear transformation defined by T(z, y, 2) = (z + 2y - z, 3z + y + z). Based on the above data, answer the given subquestions. Consider a vector v € U such that S(v) € span {(1, 1, 1)}, and ||•||? = 6, where |||| is the norm with respect to the standard inner product on R. Which of the following options are the possible choices for the"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "ector v? J (1,-2, 1) в (1,2,1)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "(-1,2, -1)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "(-1, -2, -1)"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        2
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let W = {(x, y, ½) € R$: x + y = 0, 2 = 0}. Based on the above data, answer the given subquestions. Find the dimension of W-."
+        }
+      ],
+      "numerical_answer": 2.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let W = {(x, y, ½) € R$: x + y = 0, 2 = 0}. Based on the above data, answer the given subquestions. Which of the following sets form an orthonormal basis for W? Choose all correct options."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "(· (1,-1,0)}"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "{· (-1,1,0)} c {(1, -1,0)}"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "{$ (1,1,0)}"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let W = {(x, y, ½) € R$: x + y = 0, 2 = 0}. Based on the above data, answer the given subquestions. a+b+c Suppose Pw : R3 → R represents the projection transformation onto W. If Pw = (a, b, c), find"
+        }
+      ],
+      "numerical_answer": 0.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    }
+  ]
+}

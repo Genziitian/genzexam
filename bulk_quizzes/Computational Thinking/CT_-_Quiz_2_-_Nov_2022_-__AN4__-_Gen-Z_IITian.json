@@ -1,0 +1,352 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Computational Thinking · Quiz 2 · Nov 2022",
+  "subject": "Computational Thinking",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What will be the value of D at the end of the execution of following pseudocode? Let dict be a dictionary, then which of the following is not a valid value of dict? dict = { \"a' : (\"a\" : 5, \"b' : 4}, \"b\" : ('a\" : 2}} dict - ( \"a\" : (\"a\" : \"a\", \"b\" : \"b'), \"b\" : ('a\" : 2}} dict - ( \"a\" : ('a\" : 5, \"a\" : 4), \"b\" : (\"a\" : 2)} dict \" ( \"a' : (\"a\" : 5, \"b' : 4}, \"b' : ('b\" : 2)}"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "= ( 'a' : ('a\" : 5, \"b' : 4), 'b\" : 1)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "= { \"a\" : ('a' : 5, \"b' : 4), \"b' : 1}"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "= ( \"a\" : ('a' : 5, \"b' : 4), \"b' : 2} 0 = ( \"a\" : ('a\" : 10, \"b\" : 8), \"b' : 2}"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "= { \"a\" : ('a' : 5, \"b' : 8), \"b' : 1}"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let x. y, and 'z\" be the only keys of dictionary D and L = keys(D). At the end of the execution of the following pseudocode, flag stores True. Choose the possible value of L from the given choices. flag = False position - e foreach key in Lf if((position == 1) and (key == \"y\")){ flag = True position = position + 1 ['z\", \"y\", \"x\"] ['y\", \"×\", 'z\"] [\"x\", \"z\", \"y\"] ['z\", \"x', \"y\"] MCQ Let timeList be a list of pairs containing information about trains associated with a station stn. Specifically. each element in this list is a pair: [Arrival, Departure] (pair of arrival and departure time). If the arrival or departure time is empty, it is represented as \"None\". What does count represent at the end of the execution of the following pseudocode? count = e foreach x in timeList if(first(x) I- \"None\" and last(x) I= \"None\")( count • count + 1 Number of trains for which sto is either a starting or an ending station"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Number of trains for which stn is a starting station"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of trains for which stn is an ending station"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of trains for which stn is neither a starting nor an ending station"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following pseudocode, where D is a dictionary. Choose a statement regarding D from the given choices such that sum will always store a value greater than 0 at the end of the execution of the above code. foreach key in keys (D)( sum = sum * first(D[key])"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Each key of the dictionary D should be mapped to a positive integer."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Each key of the dictionary D should be mapped to a dictionary with each key mapped to a positive integer."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Each key of the dictionary D should be mapped to a non-empty list of integers."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Each key of the dictionary D should be mapped to a non-empty list of positive integers."
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let explode(W) returns the list of letters in the word W. For example explode(\"common\") will return ['c', 'o\", 'm', 'm', 'o', 'n']. What will count store at the end of the execution of the following pseudocode? count = 0, letterList = [] wordlist = [\"keep\", \"exploring\", \"and\", \"keep\", \"learning'] foreach word in wordList letterlist = explode(word) lastLetter = , flag = False foreach letter in letterList{ if(letter is a vowel and letter == lastLetter)( flag = True lastietter = letter 1f(flag) { count = count + 1"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "3"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "4"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Words\" dataset. Assume that the rows in Table 1 are arranged in the increasing order of sequence numbers from top to bottom. At the end of the execution of the following pseudocode, L stores the list of nouns that appear immediately after an adjective. Choose the correct code fragment to complete the pseudocode."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "= \"None\" Read the first row X in Table 1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "= X. PartOfSpeech Move X to Table 2 while(Table 1 has more rows)! Read the first row Y in Table 1 ** Fill the code **"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "= Y. PartOfSpeech Move Y to Table 2 1f(Y.PartofSpeech == \"Noun\")( 1f(A == \"Adjective\"){ L = L ** [Y.Word] if((A == \"Adjective\") or (Y.PartOfSpeech == \"Noun\")){ L = L ++ [Y.Word] 1f((A == \"Noun) and (Y.PartOfSpeech == \"Adjective\")){ L = L ** [Y.Word] 1f(Y.PartofSpeech == \"Adjective\")( if(A == \"Noun\"){ L = L ++ [Y. Word]"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the procedure given below, where aList is a list of integers. At the end of the execution, which of the following option(s) would be correct? It is a Multiple Select Question (MSQ). procedure cumulative(aList) sum - e, cunuLast - u foreach element in aList{ sum = sum * element return(cumuList) end cumulative The first element of both the lists, cumuList and aList, will be same."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Number of elements in cumuList will be one lesser than that of aList cumuList is a list of numbers in increasing order."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of elements in both lists, cumuList and aList, will be same"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        3
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let medalDict be a dictionary with player's name as a key mapped to the list of medals associated with the player from the \"Olympics\" dataset. For example medalDict = (\"xyz\" : [\"Silver\", \"Gold\", \"Gold\"].....]. In this example, the player xyz has won one Silver and two Gold medals. At the end of the execution, repeatMedals(medalDict) returns the list of players who have won at least one type of medal more than one time. But the code may have mistakes. Identify all such mistakes (if any). Assume that all statements not listed in the options below are free of errors. It is a Multiple Select Question (MSQ) procedure repeatMedalsimedalbicts repeatPlayers = fi foreach player in keys(medalDict){ tempDict = ‹› foreach medal in medalDict player]! tempDict medal = True if(length(keys(tempDict)) == length(medalDict[player])){ rpopatplavers - reppatplavers ++ folaverl return(repeatPlayers) End reocatMeda13"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Line 2: Incorrect initialization of repeatPlayers"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Line 4: Incorrect initialization of tempDict"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Line 8: Incorrect conditional statement to update repeatPlayers"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "No mistakes"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Olympics\" dataset. At the end of the execution, medalDict stores a dictionary with player's name as key mapped to another dictionary. The nested dictionary stores the medal type as key mapped to a list of years in which the player won that medal. For example if player Xyz has won a silver medal in 2006, a gold medal in 2008, and another silver medal in 2011, then medalDict = (\"Xyz\": (\"Silver\": (2006, 2011], \"Gold\": (2008])...). Assume that every player has a distinct name. But the pseudocode may have mistakes. Identify all such mistakes (if any). Assume that all statements not listed in the options below are free of errors. It is a Multiple Select Question (MSQ). medalDict = (} while(Table 1 has more rows){ Read the first row X in Table 1 1f(iskey(medalDict, X.Name)){ if(iskey(medalDict[X.Nane], X.Medal)){ medalDict[x.Name][x.Medal] = [X.Year] elsef medalDict[x.Name][x.Medal] = [X.Year] elsef medalDict[x.Name][X.Medal] = [x.Year] Move X to Table 2 - exam.genziitian.in | YouTube - youtube.com/@Gen-ZIITian |"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Line 1: Incorrect initialization of medalDict Line 6: The current statement should be replaced by medalDict[X.Name][X.Medal] = medalDict[X.Name][X.Medal] ++ [X.Year] Line 9: The current statement should be replaced by medalDict[X.Name][X.Medal] = medalDict[X.Name][X.Medal] ++ [X.Year] Line 13: The current statement should be replaced by medalDict[X.Name] = (x.Medal : [X.Year])"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "No Mistakes"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 5,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Scores\" dataset. At the end of the execution, medalList should store the list of sequence numbers of the students who have scored at least 200 total marks and have pseudocode. Which of the following statements) is(are) true about nSub based on the pseudocode mentioned in the main question? It is a Multiple Select Question (MSQ). medalList = [], A = 0, scount = False while Table 1 has more rows) Read the first row X in Table 1"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "= X. Total scount • nsub(x.seqNo. if((A > 200) and scount)( medalList = medalList +* [X.SeqNo] Move X to Table 2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "nSub is a procedure which accepts the sequence number of a student and returns True if the"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "nSub is a procedure which accepts the sequence number of a student and returns the number of c nSub is a dictionary with sequence numbers of students mapped to the number of subjects in"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "nSub is a dictionary with sequence numbers of students mapped to True if the student has scored"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0
+      ],
+      "marks": 80,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let Z be a row in the \"Words\" table and D be a dictionary. Use the procedure updateDict given above. Let x.Word be \"thinking\". At the end of the execution of the following pseudocode, what will be the value of length(keys(alphaDict))? alphaDict = (t:2, 'c: 1, 'e':1) alphaDict = updateDict(X, alphaDict) Procedure updateDict(Z, Dict) 1 = 1, x = \" while(i ‹= Z.LetterCount){ x = ith letter of Z.Word 1f(not iskey(Dict, x))( Dict [x] = 1 elsef 1.... Dict[x] = Dict[x] + 1 return(Dict) End updateDict"
+        }
+      ],
+      "numerical_answer": 8.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let Z be a row in the \"Words\" table and D be a dictionary. Use the procedure updateDict given above. Let X.Word and Y.Word be \"computational\" and \"thinking\" respectively. The following pseudocode is executed using the \"Words\" dataset and the procedure updateDict. firstDict = D, secondDict = 0, commonDict = 0 firstDict = updateDict(X, commonDict) secondDict = updateDict(Y, commonDict) foreach key in keys(firstDict)! if(iskey(secondDict, key))( ¡f(firstDict[key] > secondDict[key]) commonDict[key] = firstDict[key] elsel commonDict[key] = secondDict[key] At the end of the execution of above pseudocode, what would be the value of length(keys(commonDict))? Procedure updateDict (Z, Dict) while(i ‹ Z.LetterCount){ x = ith letter of Z.Word 1f(not iskey(Dict, x)) Dict (x] = 1 elsef Dict[x] = Dict[x] * 1 =1+1 return(Dict) End updateDict - genziitian.in/ecosystem | Video Solutions - exam.genziitian.in | YouTube - youtube.com/@Gen-ZIITian"
+        }
+      ],
+      "numerical_answer": 3.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let Z be a row in the \"Words\" table and D be a dictionary. Use the procedure updateDict given above. Consider the dictionary commonDict created in the previous question. What would be the value of commonDict[?)? Procedure updatedict(Z, Dict) 1 = 1, x = ** while(i ‹ Z.LetterCount){ × = ith letter of Z.Word if(not iskey(Dict, x)) Dict (x] = 1 else{ Dict(x] = Dict[x] + 1 return(Dict) End updateDict"
+        }
+      ],
+      "numerical_answer": 2.0,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium"
+    }
+  ]
+}

@@ -1,0 +1,1486 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 2 · Quiz 1 · 25 Feb 2024 · QDF4",
+  "subject": "English 2",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nShara Hughes Interview [i] _____, I grew up with three older brothers, and they always left me out. [ii] _____ I was always kind of independent playing [sic] (laughs). I quickly learned to be alone a lot in a place that was chaotic in a lot of ways. Not to say that we didn’t get along; we did. I had a great family. But I think that I took a class in high school and it was a sculpture class and I remember…[my] having some kind of ideas and that was to make a sculpture in metals and wire and everyone else had [iii] _____ these paper sculptures, but the teacher didn’t let me know that I was thinking differently until the end [when] we had our final project-do and mine was this huge like clock that had numbers coming off into the air [iv] _____ and everyone else had cardboard and paper and I was like… felt really embarrassed, and then they told me “Actually, this is great. Let’s encourage it. You think differently, so embrace that.” So I think that I kind of have a natural tendency towards visual kind of…inventions (laughs). But, [v] _____ in high school I kind of really decided I wanted to pursue going to art school. And from there, I kind of felt like it was no turning back [sic], which I think was stubborn, but that is sort of how you have to be an artist. Transcribed from: “Shara Hughes Interview: Changing the Way We See.” Based on the above data, answer the given subquestions.\n\nQuestion:\nFill in blank [i] with the most fitting discourse marker among the options given below."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Wow"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Overall"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Well"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Absolutely"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nShara Hughes Interview [i] _____, I grew up with three older brothers, and they always left me out. [ii] _____ I was always kind of independent playing [sic] (laughs). I quickly learned to be alone a lot in a place that was chaotic in a lot of ways. Not to say that we didn’t get along; we did. I had a great family. But I think that I took a class in high school and it was a sculpture class and I remember…[my] having some kind of ideas and that was to make a sculpture in metals and wire and everyone else had [iii] _____ these paper sculptures, but the teacher didn’t let me know that I was thinking differently until the end [when] we had our final project-do and mine was this huge like clock that had numbers coming off into the air [iv] _____ and everyone else had cardboard and paper and I was like… felt really embarrassed, and then they told me “Actually, this is great. Let’s encourage it. You think differently, so embrace that.” So I think that I kind of have a natural tendency towards visual kind of…inventions (laughs). But, [v] _____ in high school I kind of really decided I wanted to pursue going to art school. And from there, I kind of felt like it was no turning back [sic], which I think was stubborn, but that is sort of how you have to be an artist. Transcribed from: “Shara Hughes Interview: Changing the Way We See.” Based on the above data, answer the given subquestions.\n\nQuestion:\nFill in blank [ii] with the most fitting discourse marker among the options given below."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Okay"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "So I feel like"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "In other words"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "I see"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nShara Hughes Interview [i] _____, I grew up with three older brothers, and they always left me out. [ii] _____ I was always kind of independent playing [sic] (laughs). I quickly learned to be alone a lot in a place that was chaotic in a lot of ways. Not to say that we didn’t get along; we did. I had a great family. But I think that I took a class in high school and it was a sculpture class and I remember…[my] having some kind of ideas and that was to make a sculpture in metals and wire and everyone else had [iii] _____ these paper sculptures, but the teacher didn’t let me know that I was thinking differently until the end [when] we had our final project-do and mine was this huge like clock that had numbers coming off into the air [iv] _____ and everyone else had cardboard and paper and I was like… felt really embarrassed, and then they told me “Actually, this is great. Let’s encourage it. You think differently, so embrace that.” So I think that I kind of have a natural tendency towards visual kind of…inventions (laughs). But, [v] _____ in high school I kind of really decided I wanted to pursue going to art school. And from there, I kind of felt like it was no turning back [sic], which I think was stubborn, but that is sort of how you have to be an artist. Transcribed from: “Shara Hughes Interview: Changing the Way We See.” Based on the above data, answer the given subquestions.\n\nQuestion:\nFill in blank [iii] with the most fitting discourse marker among the options given below."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Sort of like"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Hands down"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "All in all"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Overall"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nShara Hughes Interview [i] _____, I grew up with three older brothers, and they always left me out. [ii] _____ I was always kind of independent playing [sic] (laughs). I quickly learned to be alone a lot in a place that was chaotic in a lot of ways. Not to say that we didn’t get along; we did. I had a great family. But I think that I took a class in high school and it was a sculpture class and I remember…[my] having some kind of ideas and that was to make a sculpture in metals and wire and everyone else had [iii] _____ these paper sculptures, but the teacher didn’t let me know that I was thinking differently until the end [when] we had our final project-do and mine was this huge like clock that had numbers coming off into the air [iv] _____ and everyone else had cardboard and paper and I was like… felt really embarrassed, and then they told me “Actually, this is great. Let’s encourage it. You think differently, so embrace that.” So I think that I kind of have a natural tendency towards visual kind of…inventions (laughs). But, [v] _____ in high school I kind of really decided I wanted to pursue going to art school. And from there, I kind of felt like it was no turning back [sic], which I think was stubborn, but that is sort of how you have to be an artist. Transcribed from: “Shara Hughes Interview: Changing the Way We See.” Based on the above data, answer the given subquestions.\n\nQuestion:\nFill in blank [iv] with the most fitting discourse marker among the options given below."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "In a nutshell"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "So I guess"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To my knowledge"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "And everything"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nShara Hughes Interview [i] _____, I grew up with three older brothers, and they always left me out. [ii] _____ I was always kind of independent playing [sic] (laughs). I quickly learned to be alone a lot in a place that was chaotic in a lot of ways. Not to say that we didn’t get along; we did. I had a great family. But I think that I took a class in high school and it was a sculpture class and I remember…[my] having some kind of ideas and that was to make a sculpture in metals and wire and everyone else had [iii] _____ these paper sculptures, but the teacher didn’t let me know that I was thinking differently until the end [when] we had our final project-do and mine was this huge like clock that had numbers coming off into the air [iv] _____ and everyone else had cardboard and paper and I was like… felt really embarrassed, and then they told me “Actually, this is great. Let’s encourage it. You think differently, so embrace that.” So I think that I kind of have a natural tendency towards visual kind of…inventions (laughs). But, [v] _____ in high school I kind of really decided I wanted to pursue going to art school. And from there, I kind of felt like it was no turning back [sic], which I think was stubborn, but that is sort of how you have to be an artist. Transcribed from: “Shara Hughes Interview: Changing the Way We See.” Based on the above data, answer the given subquestions.\n\nQuestion:\nFill in blank [v] with the most fitting discourse marker among the options given below."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Amazing"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "I don’t think"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "I think maybe like later on"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "I don’t suppose"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "He assigned me an incomplete task. The number of complements in this sentence is/are"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "One"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Two"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Three"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Zero"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘Richard sits on his couch and broods.’ This sentence is in:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Present perfect tense"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Simple past tense"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Past perfect tense"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Simple present tense"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In the sentence ‘The wind was touching the surface of the Thames and carrying the cold water into the sky in a fine and driving spray’, the suffix -ing added to the verb ‘touch’ indicates:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The indefiniteness of the action of touching"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The continuity of the action of touching in past time"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The continuity of the action of touching in future time"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The indefiniteness of the action of touching in past time"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the adjectival clause in the following sentence and the noun it modifies. The book, which was written by a famous author, became a bestseller."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Adjectival clause: which was written by a famous author, Noun: book"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Adjectival clause: became a bestseller, Noun: book"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Adjectival clause: which was written by a famous author, Noun: author"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of these"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In the following sentence, identify the nature of the adjective. The adjective is underlined. ‘Racewalking is faster than normal walking.’"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Adjunctive, imaginative"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Innovative, attributive"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Predicative, attributive"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Predicative, indicative"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the implied meaning of the sentences below: (Note that the word with stress is marked in bold). John used to go to <b>church </b>on Sundays"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "John used to go to church on Sundays, not to restaurants"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "It is John who used to go to church on Sundays, not Mary"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "John used to go to church on Sundays, not Mondays"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of these"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct statements from the following (i) Intonation helps in expressing emotions (ii) Intonation is responsible for pitch variation (iii) Intonation is responsible for correct tense (iv) Intonation denotes agreement"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "(i), (ii) and (iii) only"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "(i) and (ii) only"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "(ii), (iii) and (iv) only"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "All of these"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘We shall not flag or fail. We shall go on to the end. We shall fight in France, we shall fight on the seas and oceans, we shall fight with growing confidence and growing strength in the air…’ is an example of ______."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Assonance"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Anaphora"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Sibilance"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Hyperbole"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "“A heart of stone” is an example of?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Personification"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Alliteration"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Metaphor"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Simile"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘Life is much too important to be taken seriously.’ The figure of speech used here is"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Personification"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Simile"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Metaphor"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Paradox"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘Old Marley was as dead as a doornail ’ is an example of simile. This statement is _____."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Discourse marker ‘overall ’ occurs in the ____ position."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Initial"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Middle"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Final"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both Initial and Middle"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘He did not clear the exam and, as a result, he could not apply for that job.’ Here the discourse marker is ____."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Did not clear"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "As a result"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Could not"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "No discourse marker"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following sentences uses discourse markers to begin a conversation?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "So, I wanted to talk to you about something"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "I bought a car yesterday. I mean, I’m paying for it in instalments"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "There was an accident on ECR yesterday and he was there apparently"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "It was hands down one of the worst performances I’ve seen in my life"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In everyday conversation, it would be very difficult to guess the emotions of a person if there were no modulations such as intonation and stress."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "False"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the adverb in the following sentence. Rani is playing soulfully."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Playing"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Is playing"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Soulfully"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Is playing soulfully"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the adverb in the following sentence. My child is not sleeping."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Is not"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Is not sleeping"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Not"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "My"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the degree adverb/adverbs in the given sentence. ‘She must really be made to tell.’"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Be"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Made"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Must"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Really"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A: ‘Very’ cannot be used before verbs B: ‘Very’ can be used before some verbs"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "A is true and B is false"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "A is false and B is true"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both A and B are true"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both A and B are false"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Fill in the blank. What he said was ___ incorrect."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Logically"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Scientifically"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Technically"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "All of these"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In the following lists of words, identify the words most likely to be adjectives based on word endings. Music, musical, musician, muse"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Muse"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Musical"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Music"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Musician"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘Sajal takes the medal.’ In this sentence, the verb 'take' will change to _______ when converted to passive voice."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Will take"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Is taken"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Was taken"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Were taken"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "\"Although it was late, she decided to finish her work\" is a _____ sentence."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Simple"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Compound"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Complex"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the adverbial clause in the sentence: \"Although she was tired, she continued to work on her project.\""
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Although she was tired"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "She continued"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To work on her project"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "On her project"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The articles that I bought yesterday are already damaged. The relative pronoun here is ____."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "That"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "I"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Are"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "No relative pronoun"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In the following sentence, identify the role of the embedded clause. ‘<b>Whatever Arif has been telling us</b> is all true.’"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Object"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Subject"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Adjunct"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Adjective"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many dependent clauses are there in the sentence given below: The student missed the lecture"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "0"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "3"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "State whether the underlined is an adjunct or a complement: I kept a copy of the document on my shelf."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Adjunct"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Complement"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "‘Joe plays the guitar beautifully.’ Here the adjunct is _____."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "the guitar"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "beautifully"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "plays"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "no adjunct"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\n(1)_______, what one remembers in life are those moments that have impacted us the most. In the end, most of our memories get distilled into a few strong and condensed images, smells, sounds, and sensations. (2)_______, only the most memorable ones remain. A beautiful scene at a city vista, a melodious tune from a gifted street musician, the smell of spring’s first blossoms, or the warmth you felt when you first held your baby. (3)____________, one should concentrate one’s efforts to create core memories that last. Beautiful moments that cannot be taken away from us, even by disease or senility. (4)_________ we spend our lives trying to create such lasting memories and impressions for ourselves, we can claim to have led a fruitful life. We must lead our lives fully, (5)__________ we only have one life to spare. Based on the above data, answer the given subquestions.\n\nQuestion:\n“The tree stumps had been worn smooth and comfortable by years of use.” The underlined phrase acts like an _____."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Adverb of frequency"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Adverb of degree"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Adverb of manner"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Adverb of direction"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\n(1)_______, what one remembers in life are those moments that have impacted us the most. In the end, most of our memories get distilled into a few strong and condensed images, smells, sounds, and sensations. (2)_______, only the most memorable ones remain. A beautiful scene at a city vista, a melodious tune from a gifted street musician, the smell of spring’s first blossoms, or the warmth you felt when you first held your baby. (3)____________, one should concentrate one’s efforts to create core memories that last. Beautiful moments that cannot be taken away from us, even by disease or senility. (4)_________ we spend our lives trying to create such lasting memories and impressions for ourselves, we can claim to have led a fruitful life. We must lead our lives fully, (5)__________ we only have one life to spare. Based on the above data, answer the given subquestions.\n\nQuestion:\nChoose the correct answer for blank (1)."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Ultimately"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Because"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "After all"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of these"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\n(1)_______, what one remembers in life are those moments that have impacted us the most. In the end, most of our memories get distilled into a few strong and condensed images, smells, sounds, and sensations. (2)_______, only the most memorable ones remain. A beautiful scene at a city vista, a melodious tune from a gifted street musician, the smell of spring’s first blossoms, or the warmth you felt when you first held your baby. (3)____________, one should concentrate one’s efforts to create core memories that last. Beautiful moments that cannot be taken away from us, even by disease or senility. (4)_________ we spend our lives trying to create such lasting memories and impressions for ourselves, we can claim to have led a fruitful life. We must lead our lives fully, (5)__________ we only have one life to spare. Based on the above data, answer the given subquestions.\n\nQuestion:\nChoose the correct answer for blank (2)."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "In contrast"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "And"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Even though"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Insofar as"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\n(1)_______, what one remembers in life are those moments that have impacted us the most. In the end, most of our memories get distilled into a few strong and condensed images, smells, sounds, and sensations. (2)_______, only the most memorable ones remain. A beautiful scene at a city vista, a melodious tune from a gifted street musician, the smell of spring’s first blossoms, or the warmth you felt when you first held your baby. (3)____________, one should concentrate one’s efforts to create core memories that last. Beautiful moments that cannot be taken away from us, even by disease or senility. (4)_________ we spend our lives trying to create such lasting memories and impressions for ourselves, we can claim to have led a fruitful life. We must lead our lives fully, (5)__________ we only have one life to spare. Based on the above data, answer the given subquestions.\n\nQuestion:\nChoose the correct answer for blank (3)."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Nevertheless"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "However"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Therefore"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "But"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\n(1)_______, what one remembers in life are those moments that have impacted us the most. In the end, most of our memories get distilled into a few strong and condensed images, smells, sounds, and sensations. (2)_______, only the most memorable ones remain. A beautiful scene at a city vista, a melodious tune from a gifted street musician, the smell of spring’s first blossoms, or the warmth you felt when you first held your baby. (3)____________, one should concentrate one’s efforts to create core memories that last. Beautiful moments that cannot be taken away from us, even by disease or senility. (4)_________ we spend our lives trying to create such lasting memories and impressions for ourselves, we can claim to have led a fruitful life. We must lead our lives fully, (5)__________ we only have one life to spare. Based on the above data, answer the given subquestions.\n\nQuestion:\nChoose the correct answer for blank (4)."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Ultimately"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Nevertheless"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Secondly"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "As long as"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct answer for blank (5)."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Because"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "But"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "As ever"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "After all"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ]
+}

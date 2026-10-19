@@ -1,0 +1,198 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Statistics 1 · Quiz 2 · Aug 2025 · QIA4",
+  "subject": "Statistics 1",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If P(C) = 0.3, P(A UB) = 0.6 and P(AU BUC) = 0.8, what is the value of P((AU B) n C)?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "0.2 / 0.1 c 1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "0.3"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "in how many ways can the balls be selected such that at least one green ball is included?"
+        }
+      ],
+      "numerical_answer": 74.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many 5-digit numbers can be formed using the digits 0, 2, 3, 4, and 7 where digits may be repeated such that the number is divisible by 2? is randomly selected from box C and transferred to box D. After the transfer, one ball is drawn at random from box D. What is the probability that the ball drawn from box D is black? Enter the answer correct to three decimal places."
+        }
+      ],
+      "acceptable_answers": [
+        "0.425"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "21C3 11Cs 12C2 × °C 21C3"
+        }
+      ],
+      "acceptable_answers": [
+        "C"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Given that the first draw results in 2 gold coins and 1 silver coin, what is the probability that the second draw results in exactly 2 silver coins and at least 1 gold coin? SC2 × 1°C1"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "8C2 × 1°C2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "18 CA"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "18CA"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "18C4"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A college is forming a 3-member student panel by randomly selecting students from a group of 6 students. The group consists of 3 Mathematics students and 3 Statistics students. Every possible selection of 3 students is equally likely. Let the events be defined as follows: Event E1: The selected panel includes at least one Mathematics student. Event Eg: The selected panel includes only Statistics students. IMSQI Which of the following option(s) is / are correct? Events E1 and E2 are mutually exclusive."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Events B; and E2 are independent. There is only 1 favorable outcome for event Ea"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "All of these"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A college is forming a 3-member student panel by randomly selecting students from a group of 6 students. The group consists of 3 Mathematics students and 3 Statistics students. Every possible selection of 3 students is equally likely. Let the events be defined as follows: Event E1: The selected panel includes at least one Mathematics student. Event Eg: The selected panel includes only Statistics students. How many panels include at least one Mathematics student?"
+        }
+      ],
+      "numerical_answer": 19.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If events $A$ and $B$ are mutually exclusive with $P(A) = 0.3$ and $P(B) = 0.4$, what is $P(A \\cup B)$?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "0.7"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "0.12"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "0.58"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "0.1"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "For mutually exclusive events, $P(A \\cup B) = P(A) + P(B) = 0.3 + 0.4 = 0.7$."
+        }
+      ]
+    }
+  ]
+}

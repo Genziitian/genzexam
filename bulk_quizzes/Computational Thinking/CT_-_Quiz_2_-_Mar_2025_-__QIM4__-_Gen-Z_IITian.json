@@ -1,0 +1,365 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Computational Thinking · Quiz 2 · Mar 2025",
+  "subject": "Computational Thinking",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the value of B at the end of the execution of the following pseudocode? Procedure doSomething(aList) bDict = () blist = [] foreach a in alist{ if(not iskey(blict, a)){ boict(a] = True bList = [a] ** bList return(bList) End doSomething"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "- [2, 6, 7, 2, 8, 7, 6, 2, 3]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "= doSomething(A) [3, 2, 6, 7, 8] [3, 8, 7, 6, 2] [2, 6, 7, 8, 3] [2, 3, 6, 7, 8]"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed on the \"Scores\" dataset. Which of the following statements is/are true at the end of the execution? Let SeqNo in \"Scores\" dataset represents the CardNo of respective student. while (Table 1 has more rows)( Read the top row X from Table 1 if(X.Total > 200){"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "= A ++ [X.CardNo] if(x.CityTown == \"Chennai\"){"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "= B ++ [X.CardNo]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "represents the card numbers of students with a total score greater than 200."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Length(B) > = Length(A) will always be true."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "B represents the card numbers of all students from Chennai in the dataset."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Length(A) > = Length(B) will always be true."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        3
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let X be a row from the \"Words\" table. Consider the following procedure: The return value of isRich(Y) will be True if Procedure isRich(x) cDict = () 1 = 1 while(i ‹ x.LetterCount){"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "= ith letter in X.Word 1f(A is a consonant){ cDict [A] = True S - 1*3 if(length(keys(cDict)) > 4){ return(True) return(False) End isRich"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Y.Word = \"complexity\""
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "V.Word = \"science\""
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Y.Word = \"building\""
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Y.Word = \"study\""
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        2
+      ],
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Shopping Bills\" dataset. At the end of the execution, the variable D captures the following information: for each customer Z, D[Z] [\"Shop\"] stores the shops visited by Z, and DIZ) [\"Category\"] stores the categories of the items purchased by Z. But the pseudocode may have mistakes. Identify all such mistakes (if any). It is a Multiple Select Question (MSQ)."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "= (} while(Pile 1 has more cards)f Read the top card X in Pile 1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "= updateDictionary(D, X) Move X to Pile 2 Procedure updateDictionary(D, Y) if(not iskey(D, Y.CustonerName)){ D[Y.CustomerName] = {\"Shop\": [], \"Category\": []} D[Y. CustomerName] [\"Shop\" ][Y. ShopName] = True foreach A in Y.ItemList{ D[Y.CustomerName ][\"Shop\" ][A. Category] = True return(D) End updateDictionary"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Error in Line 1 Error in Line 10"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Error in Line 13 V Error in Line 14"
+          }
+        ]
+      ],
+      "correct_answers": [
+        1,
+        3
+      ],
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "MCO Let M, P, and C be a list of sequence numbers of students who have scored more than the average marks in Mathematics, Physics and Chemistry respectively using the \"Scores\" dataset. Answer the given subquestions If seqDict n •= O is a True statement, then choose the correct option regarding the student with sequence number n. SeqDict = n foreach index in M{ seqDict index = 0 foreach index in P( if(iskey(seqDict, index)){ seqDict[index] = seqDict[index] + 1 foreach index in C if(iskey(seqDict, index)){ seqDict index = seqDict (index + 1"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The student has scored more than the average marks in any one of the three subjects."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The student has not scored more than the average marks in any subject."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The student might have scored more than the average marks either in Physics or in Chemistry"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The student has scored more than the average marks in Mathematics only"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let M, P, and C be a list of sequence numbers of students who have scored more than the average marks in Mathematics, Physics and Chemistry respectively using the \"Scores\" dataset. Answer the given subquestions If seqDict n = 1 is a True statement, then choose the correct option (s) regarding the student with sequence number n. It is a Multiple Select Question (MSQ). SeqDict = n foreach index in Mi seqDict index = 0 foreach index in P( if(iskey(seqDict, index)){ seqDict[index] = seqDict[index] + 1 foreach index in C if(iskey(seqDict, index)){ seqDict index = seqDict (index + 1"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The student has scored more than the average marks in Physics and Chemistry but not in Mathematics. The student has scored more than the average marks in Mathematics and might have scored more than the average marks in Physics but not in Chemistry."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The student has scored more than the average marks in Mathematics and might have scored more than the average marks in Chemistry but not in Physics."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The student has scored more than the average marks in any two of three subjects."
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "given supquestons. What will B represent at the end of the execution? The following pseudocode is executed using the \"Words\" dataset. Based on the above data, answer the genzitan.in/ecosystem video solutions exam.genzitan.in roulube-youtube.com/coen-clan"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "= 0 sList = [], wList = [] Read the first row X in Table WList = WList ++ [X.PartOfSpeech if (X.Word ends with a full stop) ("
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "= doSomething(wlist) If (A > B) ("
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "= A SList = slist ++ wlist] wList = [] Procedure doSomething(L) count = e foreach p in L f if (p == \"Noun\") ( count • count + 1 return(count) and cosonetning Maximum number of nouns in a sentence across all sentences. 8 Total number of nouns across all sentences."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Minimum number of nouns in a sentence across all sentences."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of sentences having maximum number of nouns."
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Words\" dataset. Based on the above data, answer the given subquestions. What will length(sList) represent at the end of the execution? •genzitian.in/ecosystem video solutions - exam.genzitan.in roulube -youtube.com/coen-ziltan"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "= 0 sList = [], wList = [] while (Table 1 has more rows) Read the first row X in Table a wList = wList ++ [x.PartofSpeech] if (X.Word ends with a full stop) ("
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "= doSomething(wList) 1f (A > B) €"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "= A sList = sList *+ [wList] wList = [] Procedure doSomething(L) count = 8 foreach p in L f if (p == \"Noun\") ( count • count + 1 return(count) End doSomething"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Total number of words in the \"Words\" dataset. Total number of sentences in the \"Words\" dataset. Total number of words with the same part of speech in the \"Words\" dataset."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Total number of words with different parts of speech in the \"Words\" dataset."
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocodes executed on the \"Words\" dataset and answer the given subquestions. Pseudocode 1: count = 0 L =0 while (Table 1 has more rows) f Read the first row X in Table 1 L = processWord(L, X) if (X.Word ends with a full stop) I if (length(L) > = 10) ( count = count + 1 L = D Move X to Table 2 Procedure processWord(M, Y) ¡= 1 while(i < = Y.LetterCount)( P = ith letter of Y.Word if(p is a consonant and not(member(M, p))) M = M + + [p] ¡=i+1 retum(M) End processWord Pseudocode 2: count = 0 L = 0 while (Table 1 has more rows) I Read the first row X in Table 1 L = processWord(L, X) if (X.Word ends with a full stop and length(L) > = 10) ( count = count + 1 L = 0 Move X to Table 2 Procedure processWord(M, Y) ¡= 1 while(i < = Y.LetterCount){ p = ith letter of Y.Word if(p is a consonant and not(member(M, p))) M = M ++ [p] return MaN End processWord Which of the following statements is/are correct?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "In Pseudocode 2, count represents the number of sentences containing atleast 10 consonants."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "In Pseudocode 1, count represents the number of sentences containing atleast 10 consonants / In Pseudocode 1, count represents the number of sentences containing atleast 10 distinct consonants"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "In Pseudocode 2, count represents the number of sentences containing atleast 10 distinct consonants. Answers d"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 5,
+      "difficulty": "medium"
+    }
+  ]
+}

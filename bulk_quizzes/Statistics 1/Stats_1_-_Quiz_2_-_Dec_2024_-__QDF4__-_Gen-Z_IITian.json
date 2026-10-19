@@ -1,0 +1,242 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Statistics 1 · Quiz 2 · Dec 2024 · QDF4",
+  "subject": "Statistics 1",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Administration section of a university has started to create roll numbers for the students, following the format '23Z174' using the digits 1, 2, 3, 4, 5, 6, 7 and a capital letter at the third position. Assume no digits are repeated. Find the number of ways in which the administration section can create a unique roll number."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "65,520"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "52,920"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "56,160"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "46,800"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In a school, there are 3 students in section-A, 4 students in section-B and 5 students in section-C. Find the number of ways, in which 8 students can be selected such that it includes at least 2 students from each section and at most 5 students from the total 7 students in section-A and section-B."
+        }
+      ],
+      "numerical_answer": 270.0,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "An urn By contains 2 white and 3 black chips and another urn By contains 3 white and 4 black chips. One urn is selected at random and a chip is drawn from it. If the chip drawn is found black, find the probability that the urn chosen was B1. (Enter the answer correct upto 2 decimal places"
+        }
+      ],
+      "numerical_answer": 0.51,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following option(s) is/are correct for selecting and arranging r objects from a total of n distinct objects without replacement?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "\"C, в пР,"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "\"C, × \"P,"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "\"C, × n!"
+          }
+        ]
+      ],
+      "correct_answers": [
+        2
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "MCO If \"C, = 56 and \" P, = 336. Find the value of r."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "6 С 3!"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "6!"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many four letter words, with or without meaning, can be formed using the letters of the word 'ENGLISH' without repetition such that 'E' is one of the alphabet in each of the word formed? в 4× Рз"
+        }
+      ],
+      "acceptable_answers": [
+        "A"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Two dice are rolled once. What is the probability of getting an odd number at the first die or a total of 7?"
+        }
+      ],
+      "acceptable_answers": [
+        "B"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In a school with 120 students, 90 students are enrolled in Math, 50 students are enrolled in Science, and 30 students are enrolled in both Math and Science. If a student is randomly selected, what is the probability that he/she is enrolled in Science given that he/she is enrolled in Math?"
+        }
+      ],
+      "acceptable_answers": [
+        "C"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A box contains three black balls, four blue balls, and three grey balls. Two balls are chosen at random without replacement. Based on the given information, answer the given subquestions."
+        }
+      ],
+      "numerical_answer": 0.07,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A box contains three black balls, four blue balls, and three grey balls. Two balls are chosen at random without replacement. Based on the given information, answer the given subquestions. What is the probability that they are of same colour? (Enter the answer correct to two decimal places.)"
+        }
+      ],
+      "numerical_answer": 0.27,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Two fair dice are rolled together. If A be the event that outcome on the 1\" die is smaller than the outcome on the 2 die and B be the event that outcomes on both the die are even. Based on the above data, answer the given subquestions. What is the value of P(A)?"
+        }
+      ],
+      "acceptable_answers": [
+        "B"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Two fair dice are rolled together. If A be the event that outcome on the 1\" die is smaller than the outcome on the 2 die and B be the event that outcomes on both the die are even. Based on the above data, answer the given subquestions. What is the value of P(B)?"
+        }
+      ],
+      "acceptable_answers": [
+        "C"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Two fair dice are rolled together. If A be the event that outcome on the 1\" die is smaller than the outcome on the 2 die and B be the event that outcomes on both the die are even. Based on the above data, answer the given subquestions. What is the value of P(A UB)E? A"
+        }
+      ],
+      "acceptable_answers": [
+        "D"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ]
+}

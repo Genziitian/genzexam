@@ -1,0 +1,1438 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 1 · Quiz 1 · 16 Oct 2022 · QUIZ",
+  "subject": "English 1",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nNature is an infinite source of beauty. Sunrise and sunset, mountains and rivers, lakes and glaciers, forests and fields provide joy and bliss to the human mind and heart for hours together. Everything in nature is splendid and divine. Every day and every season of the year has a peculiar beauty to unfold. Only one should have eyes to behold it and heart to feel it like the English poet William Wordsworth who after seeing daffodils said; “And then my heart with pleasure fills and dances with the daffodils”. Nature is a great teacher. The early man was thrilled with beauty and wonders of nature. The Aryans worshipped nature. One can learn the lessons in the vast school of nature. Unfortunately, the strife, the stress and the tension of modern life have made people immune to beauties of nature. Their life is so full of care that they have no time to stand and stare. They cannot enjoy the beauty of flowing rivers, swinging trees, flying birds and majestic mountains and hills. There is however, a cry to go back to village from the concrete and artificial jungle of cities. Hence the town planners of today pay special attention to provide enough number of natural scenic spots in town planning. To develop a balanced personality, one needs to have a healthy attitude which can make us appreciate and enjoy the beauty of nature. There is other balm to soothe our tired soul and listless mind than the infinite nature all around us. We should enjoy it fully to lead a balanced and harmonious life, full of peace and tranquillity. Based on the above data, answer the given subquestions\n\nQuestion:\nWhich of the following words has the SAME meaning as the word 'care' as used in the passage?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Pleasure"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Needs"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Want"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Grief"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nNature is an infinite source of beauty. Sunrise and sunset, mountains and rivers, lakes and glaciers, forests and fields provide joy and bliss to the human mind and heart for hours together. Everything in nature is splendid and divine. Every day and every season of the year has a peculiar beauty to unfold. Only one should have eyes to behold it and heart to feel it like the English poet William Wordsworth who after seeing daffodils said; “And then my heart with pleasure fills and dances with the daffodils”. Nature is a great teacher. The early man was thrilled with beauty and wonders of nature. The Aryans worshipped nature. One can learn the lessons in the vast school of nature. Unfortunately, the strife, the stress and the tension of modern life have made people immune to beauties of nature. Their life is so full of care that they have no time to stand and stare. They cannot enjoy the beauty of flowing rivers, swinging trees, flying birds and majestic mountains and hills. There is however, a cry to go back to village from the concrete and artificial jungle of cities. Hence the town planners of today pay special attention to provide enough number of natural scenic spots in town planning. To develop a balanced personality, one needs to have a healthy attitude which can make us appreciate and enjoy the beauty of nature. There is other balm to soothe our tired soul and listless mind than the infinite nature all around us. We should enjoy it fully to lead a balanced and harmonious life, full of peace and tranquillity. Based on the above data, answer the given subquestions\n\nQuestion:\nWhich of the following statements is not made in the passage about Nature?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The early man was scared of Nature."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Nature is a great teacher."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Everything in nature is splendid and divine."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Nature is an infinite source of beauty."
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nNature is an infinite source of beauty. Sunrise and sunset, mountains and rivers, lakes and glaciers, forests and fields provide joy and bliss to the human mind and heart for hours together. Everything in nature is splendid and divine. Every day and every season of the year has a peculiar beauty to unfold. Only one should have eyes to behold it and heart to feel it like the English poet William Wordsworth who after seeing daffodils said; “And then my heart with pleasure fills and dances with the daffodils”. Nature is a great teacher. The early man was thrilled with beauty and wonders of nature. The Aryans worshipped nature. One can learn the lessons in the vast school of nature. Unfortunately, the strife, the stress and the tension of modern life have made people immune to beauties of nature. Their life is so full of care that they have no time to stand and stare. They cannot enjoy the beauty of flowing rivers, swinging trees, flying birds and majestic mountains and hills. There is however, a cry to go back to village from the concrete and artificial jungle of cities. Hence the town planners of today pay special attention to provide enough number of natural scenic spots in town planning. To develop a balanced personality, one needs to have a healthy attitude which can make us appreciate and enjoy the beauty of nature. There is other balm to soothe our tired soul and listless mind than the infinite nature all around us. We should enjoy it fully to lead a balanced and harmonious life, full of peace and tranquillity. Based on the above data, answer the given subquestions\n\nQuestion:\nWhy do people not enjoy the beauty of Nature?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "They are afraid of nature."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Their life is full of worries and tensions."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "They do not consider nature as balm to soothe their fired minds."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "They are running after material pleasures."
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nNature is an infinite source of beauty. Sunrise and sunset, mountains and rivers, lakes and glaciers, forests and fields provide joy and bliss to the human mind and heart for hours together. Everything in nature is splendid and divine. Every day and every season of the year has a peculiar beauty to unfold. Only one should have eyes to behold it and heart to feel it like the English poet William Wordsworth who after seeing daffodils said; “And then my heart with pleasure fills and dances with the daffodils”. Nature is a great teacher. The early man was thrilled with beauty and wonders of nature. The Aryans worshipped nature. One can learn the lessons in the vast school of nature. Unfortunately, the strife, the stress and the tension of modern life have made people immune to beauties of nature. Their life is so full of care that they have no time to stand and stare. They cannot enjoy the beauty of flowing rivers, swinging trees, flying birds and majestic mountains and hills. There is however, a cry to go back to village from the concrete and artificial jungle of cities. Hence the town planners of today pay special attention to provide enough number of natural scenic spots in town planning. To develop a balanced personality, one needs to have a healthy attitude which can make us appreciate and enjoy the beauty of nature. There is other balm to soothe our tired soul and listless mind than the infinite nature all around us. We should enjoy it fully to lead a balanced and harmonious life, full of peace and tranquillity. Based on the above data, answer the given subquestions\n\nQuestion:\nWhat are the town planners doing today?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Making efforts to inculcate healthy attitude among people."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Supporting the cry to go back to villages."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Establishing balance between concrete and artificial jungle of cities."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Providing facilities for enjoying nature."
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nListen to the audio sample and answer the subquestions.\n\nQuestion:\nAccording to the author of the passage, Nature:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Is abundantly glorious and divine."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Brings uniformity in all seasons."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Is the creator of this universe."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Is the ultimate salvation of man."
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nListen to the audio sample and answer the subquestions.\n\nQuestion:\nWho designed the first Macintosh computer?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Mark Zuckerberg"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Steve Jobs"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Jeff Bezos"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Elon Musk"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nListen to the audio sample and answer the subquestions.\n\nQuestion:\nWhat is the meaning of 'Typography' ?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The art of making maps."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The art of arranging typed words."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The art of writing a dictionary."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The art of writing in shorthand."
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nListen to the audio sample and answer the subquestions.\n\nQuestion:\nWhat is the meaning of the phrase 'connect the dots' ?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "To do something pointless."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To make a bad situation worse."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Better to show than tell."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Bring together information from different places."
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nListen to the audio sample and answer the subquestions.\n\nQuestion:\nAfter leaving Apple, which company did Steve Jobs start?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "IBM"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Intel"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "NeXT"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Samsung"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following telephonic conversation and fill in the blank with appropriate responses: John: Good morning. Is this Abe publishers? Mary: Yes, this is Abe publishers. (i)_______ John: I am John and I ordered a book last week. Mary: (ii)_________ John: My order was for ‘The Oldman and the Sea.’ Mary: (iii)_____, we have exhausted its stock here. John: Then, could you send me ‘The Tale of Two Cities’ instead? Mary: Sure sir. (iv)______ John: (v) _____. It is 2B, Red Heights, London. Mary: Thank you sir. We will dispatch it soon. Based on the above data, answer the given subquestions\n\nQuestion:\nWhich is the world's first computer animated feature film?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Toy Story"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Soul"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Finding Nemo"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Luca"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following telephonic conversation and fill in the blank with appropriate responses: John: Good morning. Is this Abe publishers? Mary: Yes, this is Abe publishers. (i)_______ John: I am John and I ordered a book last week. Mary: (ii)_________ John: My order was for ‘The Oldman and the Sea.’ Mary: (iii)_____, we have exhausted its stock here. John: Then, could you send me ‘The Tale of Two Cities’ instead? Mary: Sure sir. (iv)______ John: (v) _____. It is 2B, Red Heights, London. Mary: Thank you sir. We will dispatch it soon. Based on the above data, answer the given subquestions\n\nQuestion:\nComplete blank (i) with an appropriate response."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Welcome sir"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "May I know who is speaking"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "What do you want"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "For all your needs of books"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following telephonic conversation and fill in the blank with appropriate responses: John: Good morning. Is this Abe publishers? Mary: Yes, this is Abe publishers. (i)_______ John: I am John and I ordered a book last week. Mary: (ii)_________ John: My order was for ‘The Oldman and the Sea.’ Mary: (iii)_____, we have exhausted its stock here. John: Then, could you send me ‘The Tale of Two Cities’ instead? Mary: Sure sir. (iv)______ John: (v) _____. It is 2B, Red Heights, London. Mary: Thank you sir. We will dispatch it soon. Based on the above data, answer the given subquestions\n\nQuestion:\nComplete blank (ii) with an appropriate response."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Could you please tell me about your order"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "What did you order"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Where did you order"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Could you please tell me what did you order"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following telephonic conversation and fill in the blank with appropriate responses: John: Good morning. Is this Abe publishers? Mary: Yes, this is Abe publishers. (i)_______ John: I am John and I ordered a book last week. Mary: (ii)_________ John: My order was for ‘The Oldman and the Sea.’ Mary: (iii)_____, we have exhausted its stock here. John: Then, could you send me ‘The Tale of Two Cities’ instead? Mary: Sure sir. (iv)______ John: (v) _____. It is 2B, Red Heights, London. Mary: Thank you sir. We will dispatch it soon. Based on the above data, answer the given subquestions\n\nQuestion:\nComplete blank (iii) with an appropriate response"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Sorry sir"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Good"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Thanks sir"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "We are disappointed"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nRead the following telephonic conversation and fill in the blank with appropriate responses: John: Good morning. Is this Abe publishers? Mary: Yes, this is Abe publishers. (i)_______ John: I am John and I ordered a book last week. Mary: (ii)_________ John: My order was for ‘The Oldman and the Sea.’ Mary: (iii)_____, we have exhausted its stock here. John: Then, could you send me ‘The Tale of Two Cities’ instead? Mary: Sure sir. (iv)______ John: (v) _____. It is 2B, Red Heights, London. Mary: Thank you sir. We will dispatch it soon. Based on the above data, answer the given subquestions\n\nQuestion:\nComplete blank (iv) with an appropriate response"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Could you please share your address again"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "We don’t have it"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "When do you want it"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Share your name please"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nBased on the above data, answer the given subquestions\n\nQuestion:\nComplete blank (v) with an appropriate response"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Definitely"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Sure"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Sure, please note it down"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Okay"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nBased on the above data, answer the given subquestions\n\nQuestion:\nProud ________"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "In"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "At"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nBased on the above data, answer the given subquestions\n\nQuestion:\nBelief ________"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "In"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "At"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nBased on the above data, answer the given subquestions\n\nQuestion:\nSurprised ________"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "In"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "At"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Passage / Context:\nBased on the above data, answer the given subquestions\n\nQuestion:\n‘I love hunting/ good wine/ and good food//’ has the same meaning as ‘I love hunting good wine and good food//’."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "TRUE"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "FALSE"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Pause is like a punctuation mark to spoken language."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "TRUE"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "FALSE"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the meaning of the phrasal verb ‘black out’?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "To explode"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To become unconscious"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To telephone"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "To continue"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct option. To join this sports academy, students __________ be 17 years old."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Has to"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Must"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The messenger is from a foreign land. Choose an appropriate word to replace ‘foreign’."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Alien"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Abroad"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Outside"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Distant"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the odd one out from the following. Different, contrast, contract, distinct"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Different"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Contrast"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Contract"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Distinct"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the appropriate option. The customer complained that the vegetables are ___ cooked."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Over"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Under"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both Over and Under"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Enough"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the appropriate option. Can you give me __ money?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Few"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Some"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Little"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "All of these"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the conjunction in the following sentence. The weather was alright; furthermore, the sun was shining."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Weather"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Alright"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Furthermore"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Shining"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the appropriate option. ___________ dish you cooked tasted good."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "A"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "An"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "No article"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the preposition in the following sentence: The children were gossiping during the lecture."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Gossiping"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Children"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Lecture"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "During"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which one of the following words is an adverb?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Enthralling"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Ideal"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Classy"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Beautifully"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Select true/false for the following statement. The word ‘cheerfully’ is an adjective."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "TRUE"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "FALSE"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct answer. Neither the man nor his son _______convinced of the idea."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Has"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Was"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Have"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Were"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Identify the part of speech of the underlined word. I lost my wallet yesterday."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Pronoun"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Noun"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Preposition"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Verb"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Fill in the blanks with an appropriate article: Hamida knows how to play _____ Guitar."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "A"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "An"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of these"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Fill in the blanks with an appropriate article: He has got _______ Job."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "A"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "An"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of these"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which among the following words has a diphthong?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Tear"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Share"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Liter"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both Tear and Share"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which among the following has /ei/ sound."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Kate"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Cat"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Weight"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both Kate and Weight"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the word with /u/ sound from the following"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Hook"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Soon"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Boon"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both Soon and Boon"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Vowels are produced due to the free flow of air. This statement is :"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "TRUE"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "FALSE"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Answer whether true or false. /w/ and /y/ are monophthongs"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "TRUE"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "FALSE"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ]
+}

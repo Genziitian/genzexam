@@ -23,6 +23,314 @@
           "value": "Let the piece that is bent into a circle have length y and the remaining piece of wire that bent into a square have length 31−y. Then the radius of the circle is r = y2π and side of the square is a = 31−y4 . A = Total area = Area of the circle + Area of the square =πr2 +a2 =π× ( y 2π )2 + (31−y 4 )2 = y2 4π + (31−y)216 To get the minima we can equate dAdy to 0. dA dy = y2π− (31−y)8 = 0 =⇒ y2π = (31−y)8 =⇒ y = 31π4 +π The second derivative d2Ady2 = 12π + 18 is always greater than 0. Hence, y = 31π4 +π is a point of minimum, that is, the combined area is minimum when y = 31π4 +π . 11 Then the minimum value of the combined area is x =πr2 +a2 =π ( y 2π )2 + (31−y 4 )2 = (31π)2 4π(4 +π)2 + (4× 31 + 31π− 31π)216(4 +π)2 = (31π)2 4π(4 +π)2 + (4× 31)216(4 +π)2 = (31π)2 4π(4 +π)2 + 312(4 +π)2 = 312π4(4 +π)2 + 312(4 +π)2 = 312π + 4× 312 4(4 +π)2 = 312(π + 4)4(4 +π)2 = 312 4(4 +π) The value of 4x(π + 4) is 312 = 961. 12 3 Comprehension Type Question: A car manufacturer determines that in order to sell x number of cars, the price per car(in lakh) must be f(x) = 1000−x, if x≤ 800, and the manufacturer also determines that the total cost(in lakh) of producing x number of cars is g(x) = { 30000 + 300x if x≤ 400, 100x + 110000 if 400 <x ≤ 800 Although in the above context,x can take only integer values, assume thatx is a continuous variable in the interval [0, 800] and that the functions f(x) and g(x) are deﬁned as above on this entire interval."
         }
       ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let $f: \\mathbb{R} \\to \\mathbb{R}$ be defined by $f(x) = 2x + 3$. Which of the following statements about $f$ is correct?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$f$ is both one-to-one (injective) and onto (surjective)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$f$ is injective but not surjective"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$f$ is surjective but not injective"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$f$ is neither injective nor surjective"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "A linear polynomial $ax + b$ with $a \\neq 0$ is a bijection from $\\mathbb{R}$ to $\\mathbb{R}$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the value of $\\lim_{x \\to 0} \\frac{\\sin(3x)}{x}$?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "3"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "0"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Undefined"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$\\lim_{x \\to 0} \\frac{\\sin(kx)}{x} = k$. Here $k = 3$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Evaluate the limit $\\lim_{x \\to 0} \\frac{e^{2x} - 1}{x}$."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "0"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$e^2$"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "By standard limit or L'Hôpital's rule: $\\lim_{x \\to 0} \\frac{2e^{2x}}{1} = 2$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let $f(x) = \\frac{x^2 - 4}{x - 2}$ for $x \\neq 2$. What value must $f(2)$ take so that $f(x)$ is continuous at $x = 2$?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "4"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "0"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Undefined"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$\\lim_{x \\to 2} \\frac{(x-2)(x+2)}{x-2} = \\lim_{x \\to 2} (x + 2) = 4$. For continuity, $f(2) = 4$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following functions is continuous everywhere on $\\mathbb{R}$ but NOT differentiable at $x = 0$?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$f(x) = |x|$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$f(x) = x^2$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$f(x) = e^x$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$f(x) = \\sin x$"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$|x|$ is continuous everywhere, but has left derivative $-1$ and right derivative $+1$ at $x=0$, so not differentiable at 0."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the critical points of the function $f(x) = x^3 - 3x^2 + 2$ on $\\mathbb{R}$."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$x = 0$ and $x = 2$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$x = 1$ and $x = 3$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$x = -1$ and $x = 2$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$x = 0$ only"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$f'(x) = 3x^2 - 6x = 3x(x - 2) = 0 \\implies x = 0, 2$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the coefficient of $x^2$ in the Taylor series expansion of $f(x) = \\cos x$ centered at $x = 0$?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$-\\frac{1}{2}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$\\frac{1}{2}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$-1$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "0"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$\\cos x = 1 - \\frac{x^2}{2!} + \\frac{x^4}{4!} - \\dots$, so the coefficient of $x^2$ is $-\\frac{1}{2}$."
+        }
+      ]
     }
   ],
   "week": 9

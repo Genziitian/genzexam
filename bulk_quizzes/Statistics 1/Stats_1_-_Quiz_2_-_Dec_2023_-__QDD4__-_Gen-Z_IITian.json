@@ -1,0 +1,264 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Statistics 1 · Quiz 2 · Dec 2023 · QDD4",
+  "subject": "Statistics 1",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Manoj and his brother Nitin have five friends each. Manoj's friends circle has 2 boys and 3 girls while Nitin's friends circle has 3 boys and 2 girls. For their parents' wedding anniversary, they decide to invite 4 of their friends. To ensure equal representation, it was decided that both of them will invite two of their friends and also ensure that there are a total of 2 boys and 2 girls getting invited. Based on the given information, answer the subquestions. Choose the correct options from the following: Selection of boys and girls will occur simultaneously. 8 Selection of boys and girls will not occur simultaneously. c Selection will happen with replacement. Selection will happen without replacement."
+        }
+      ],
+      "acceptable_answers": [
+        "A, D"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Manoj and his brother Nitin have five friends each. Manoj's friends circle has 2 boys and 3 girls while Nitin's friends circle has 3 boys and 2 girls. For their parents' wedding anniversary, they decide to invite 4 of their friends. To ensure equal representation, it was decided that both of them will invite two of their friends and also ensure that there are a total of 2 boys and 2 girls getting invited. Based on the given information, answer the subquestions. Choose the correct options from the following:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Order matters. Order does not matter."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Permutation is used. Combination is used."
+          }
+        ]
+      ],
+      "correct_answers": [
+        1
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A group of 5 employees and 3 leaders want to do a group meeting. They have decided to sit around a circular table such that all leaders will sit together. Based on the given information, answer the subquestions. MSQ Choose the correct options from the following: Selection of people will occur simultaneously. 8 Selection of people will not occur simultaneously. With replacement. Without replacement. 1 marks • Answer: A, D Choose the correct options from the following: Order matters. 8 Order does not matter. Permutation is used."
+        }
+      ],
+      "acceptable_answers": [
+        "A, C"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A group of 5 employees and 3 leaders want to do a group meeting. They have decided to sit around a circular table such that all leaders will sit together. Based on the given information, answer the subquestions. MSQ Choose the correct options from the following: Selection of people will occur simultaneously. 8 Selection of people will not occur simultaneously. With replacement. Without replacement. 1 marks • Answer: A, D Kanika has to choose a t-shirt for her outfit from a collection of 6 yellow t-shirts, 2 black t-shirts and 4 blue t- shirts. If a t-shirt is chosen randomly, then what is the chance that a black or a blue t-shirt is chosen by Kanika for her outfit? Enter the answer correct to one decimal place."
+        }
+      ],
+      "numerical_answer": 0.5,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A group of 5 employees and 3 leaders want to do a group meeting. They have decided to sit around a circular table such that all leaders will sit together. Based on the given information, answer the subquestions. MSQ Choose the correct options from the following: Selection of people will occur simultaneously. 8 Selection of people will not occur simultaneously. With replacement. Without replacement. 1 marks • Answer: A, D"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "fair die is rolled twice and a fair coin is tossed twice. Define events"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": ": A three appear on the die twice. B: A head appear on the coin twice. Find the value of P(An B). 72 12 144"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the probability that Suman will win the colour TV? 33"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "11"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "13"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "33"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Two bags (B1 and B2) containing candies are placed on a table. Bag B1 contains 7 cinnamon candies and 4 ginger candies. Bag B2 contains 3 cinnamon candies and 8 pepper candies. The bags are arranged such that the probability of selecting bag B1 is 1/3 and the probability of selecting bag B2 is 2/3. Suman is blindfolded and asked to select a candy. She will win a colour TV if she selects a cinnamon candy. Based on the given information, answer the subquestions. If she wins a colour TV, then what is the probability that candy was from bag B1? (Enter the answer correct to two decimal places.)"
+        }
+      ],
+      "numerical_answer": 0.54,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Administration section of a university has started to create roll numbers for the students, following the format '232170' using the digits 0, 1, 2, 3, 4, 5, 6, and a capital letter at the third position. Assume no digits are repeated. Find the number of ways in which the administration section can create a unique roll number."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "65,520"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "52,920"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "56,160"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "46,800"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The manufacturer of a new fitness gadget showcased the product at a high-traffic fitness expo. The following table summarizes the results for the customers who stopped to look at the innovative fitness gadget (Table Q.1): Table Q.1 Reaction Favourable Ambivalent Female 20 Unfavourable 10 Male 40 35 30 What can be said about the association between the two variables \"Reaction\" and \"Gender\"? The reaction to the new fitness gadget is associated with the gender of the customer."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The reaction to the new fitness gadget is not associated with the gender of the customer."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Scatter plot is the most appropriate graphical representation for the given data."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The correlation coefficient is close to 1."
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The manufacturer of a new fitness gadget showcased the product at a high-traffic fitness expo. The following table summarizes the results for the customers who stopped to look at the innovative fitness gadget (Table Q.1): Table Q.1 Reaction Favourable Ambivalent Female 20 Unfavourable 10 Male 40 35 30"
+        }
+      ],
+      "acceptable_answers": [
+        "0.33"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The manufacturer of a new fitness gadget showcased the product at a high-traffic fitness expo. The following table summarizes the results for the customers who stopped to look at the innovative fitness gadget (Table Q.1): Table Q.1 Reaction Favourable Ambivalent Female 20 Unfavourable 10 Male 40 35 30 Which among the following statements is/are true for a variable X? Mean and median will be same if the SD(X) = 0."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Var (X) will always increase by multiplying each observation of X by a constant c."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Range(X) will always remain the same with the increase in the number of observations of x. Range(X) will always increase with the increase in the number of observations of X."
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 3,
+      "difficulty": "medium"
+    }
+  ]
+}

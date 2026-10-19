@@ -1,0 +1,784 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Python Programming · Quiz 1 · Jul 2023 · AN2",
+  "subject": "Python Programming",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following code snippet. For what values as input, after execution, does the above code snippet NOT produce any output but run without any error?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "x = int(input())\ny = int(input())\nif x > 5:\n    if y > 15:\n        print(\"A\")"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "x = 10 and y = 25"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "x = 6 and y = 20"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "x = 12 and y = 15"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "x = 15 and y = 16"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Output 'A' is printed only when x > 5 AND y > 15. For x=12, y=15: x>5 is True but y>15 is False (15 is not > 15), so nothing is printed and no error occurs. All other options satisfy both conditions and print 'A'."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the output of the following code? (There is a single space in between quotes.)"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "str1 = \"Python\"\nstr2 = \"Programming\"\nstr3 = str1 + \" \" + str2[:8]\nprint(len(str3))"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "15"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "14"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "11"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "12"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "str2[:8] is 'Programm' (8 chars). str3 = 'Python' + ' ' + 'Programm' = 'Python Programm', which has 6 + 1 + 8 = 15 characters."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following code snippet. What will be the output if the input days is 437?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "days = int(input())\nyears = days // 365\nweeks = (days % 365) // 7\nremaining_days = (days % 365) % 7\nprint(\"Years:\", years)\nprint(\"Weeks:\", weeks)\nprint(\"Days:\", remaining_days)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Years: 1, Weeks: 10, Days: 2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Years: 2, Weeks: 10, Days: 3"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Years: 1, Weeks: 62, Days: 2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Years: 2, Weeks: 22, Days: 2"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "437 // 365 = 1 year. 437 % 365 = 72 days; 72 // 7 = 10 weeks; 72 % 7 = 2 days. So Years: 1, Weeks: 10, Days: 2."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following Python code snippet. What will be the output when you run the above snippet of code?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "x = 15\ny = 20\nif x > y:\n    result = x - y\nelif x < y:\n    result = y - x"
+        },
+        {
+          "kind": "text",
+          "value": "else:"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "result = x + y\nprint(result)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "5"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "20"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "35"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "15"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "x (15) < y (20), so the elif branch runs: result = y - x = 20 - 15 = 5."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following code snippet. Based on the above snippet of code, which of the following options is correct?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "a = 4\nb = 7\nc = int(input())\nif a > b:\n    if b > c:\n        print(\"A\")\n    elif a > c:\n        print(\"B\")\n    else:\n        print(\"C\")"
+        },
+        {
+          "kind": "text",
+          "value": "else:"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "if b < c:\n        print(\"D\")\n    else:\n        print(\"E\")"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "If c = 5, then the output generated is \"D\""
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "If c = 10, then the output generated is \"E\""
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "If c >= 8, then the output is always \"D\""
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "If c < 7, then the output generated is always \"D\""
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "a (4) > b (7) is False, so the else branch always runs: print 'D' if b < c (i.e. 7 < c) else 'E'. For c >= 8, 7 < c is always True, so the output is always 'D'. (c=5 gives 'E'; c=10 gives 'D'; c<7 gives 'E'.)"
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What will be the output of the code snippet given below?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "a = 5\nb = 5\nfor x in range(0, a):\n    for y in range(b - x, 1, -1):\n        print(y, end=' ')\n    print(1)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "1 2 1 3 2 1 4 3 2 1 5 4 3 2 1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "5 4 3 2 1 4 3 2 1 3 2 1 2 1 1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1 2 3 4 5 1 2 3 4 1 2 4 1 2 1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1 1 2 1 2 3 1 2 3 4"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "For x=0..4 the inner loop counts down from (5-x) to 2, then print(1) appends a trailing 1, giving rows '5 4 3 2 1', '4 3 2 1', '3 2 1', '2 1', '1'."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Select an appropriate code snippet that can shift the given key 'zamzamsayzam' by two places along the alphabet and generates the encrypted key 'bcobcoucabco'."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "# Option A\nalphabet = 'abcdefghijklmnopqrstuvwxyz'\nkey = 'zamzamsayzam'\nencrypt_key = ''\nfor i in key:\n    encrypt_key = encrypt_key + (alphabet[((alphabet.index(i)*2)%26)])\nprint(encrypt_key)\n# Option B\nencrypt_key = encrypt_key + (alphabet[((alphabet.index(i)+2)%25)])\n# Option C\nencrypt_key = encrypt_key + (alphabet[((alphabet.index(i)+2)//26)])\n# Option D\nencrypt_key = encrypt_key + (alphabet[((alphabet.index(i)+2)%26)])"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "encrypt_key = encrypt_key + (alphabet[((alphabet.index(i)*2)%26)])"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "encrypt_key = encrypt_key + (alphabet[((alphabet.index(i)+2)%25)])"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "encrypt_key = encrypt_key + (alphabet[((alphabet.index(i)+2)//26)])"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "encrypt_key = encrypt_key + (alphabet[((alphabet.index(i)+2)%26)])"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Shifting by two with wrap-around is (index + 2) % 26. This maps 'zamzamsayzam' to 'bcobcoucabco'. The other options use *2, %25, or //26 and do not give the required output."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Select an appropriate code snippet that calculates the sum of a series up to n terms. The series defined here for n = 5 is given in the below example: 1 + 12 + 123 + 1234 + 12345 = 13715."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "# Option A\nnum_terms = 5\nstart_num = 1\nsum_of_seq = 0\nfor i in range(1, num_terms+1):\n    start_num = start_num * 10 + (i+1)\n    sum_of_seq += start_num\nprint(sum_of_seq)\n# Option B\nfor i in range(1, num_terms):\n    start_num = start_num * 10 + (i+1)\n    sum_of_seq += start_num\n# Option C\nfor i in range(1, num_terms+1):\n    sum_of_seq += start_num\n    start_num = start_num * 10 + (i+1)\n# Option D\nfor i in range(1, num_terms):\n    sum_of_seq += start_num\n    start_num = start_num * 10 + (i+1)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "range(1, num_terms+1) with start_num updated before adding to sum_of_seq"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "range(1, num_terms) with start_num updated before adding to sum_of_seq"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "range(1, num_terms+1) with sum_of_seq += start_num before updating start_num"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "range(1, num_terms) with sum_of_seq += start_num before updating start_num"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Adding the current start_num to the running sum BEFORE updating it, over range(1, num_terms+1), accumulates 1+12+123+1234+12345 = 13715. The other options either miss a term, double-count, or add the wrong values."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following Python snippet. Assume that 2345 is passed as input to the code. Which of the following options is the correct output for the given input?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "num = int(input(\"Enter a number\"))\nr_num = 1\nwhile num != 0:\n    digit = num % 10\n    r_num = r_num * 10 + digit\n    num //= 10\nprint(r_num)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "5432"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "15432"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "2345"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "12345"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "r_num starts at 1 (not 0). Building the reverse: 1->15->154->1543->15432. So the output is 15432."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Select all the code snippets that print 'Magic Number' if n leaves remainder 0 when divided by 7 but leaves remainder 1 when the number is divided by 2, 3, 4, 5, and 6. Otherwise print 'Not Magic Number'. (Only one snippet is correct.)"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "# Option A\nn = int(input())\nflag = 0\nfor i in range(2, 7):\n    if n % i == 0:\n        flag = 1\n        break\nif flag == 1 and n % 7 == 0:\n    print(\"Magic Number\")"
+        },
+        {
+          "kind": "text",
+          "value": "else:"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "print(\"Not Magic Number\")\n# Option B\nflag = 0\nfor i in range(2, 7):\n    if n % i != 1:\n        flag = 1\n        break\nif flag == 1 or n % 7 == 0:\n    print(\"Magic Number\")"
+        },
+        {
+          "kind": "text",
+          "value": "else:"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "print(\"Not Magic Number\")\n# Option C  (same logic as Option A)\nfor i in range(2, 7):\n    if n % i == 0:\n        flag = 1\n        break\nif flag == 1 and n % 7 == 0:\n    print(\"Magic Number\")"
+        },
+        {
+          "kind": "text",
+          "value": "else:"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "print(\"Not Magic Number\")\n# Option D\nflag = 0\nfor i in range(2, 7):\n    if n % i != 1:\n        flag = 1\n        break\nif flag == 0 and n % 7 == 0:\n    print(\"Magic Number\")"
+        },
+        {
+          "kind": "text",
+          "value": "else:"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "print(\"Not Magic Number\")"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "for i in range(2,7): if n%i==0: flag=1; break -> if flag==1 and n%7==0: Magic"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "for i in range(2,7): if n%i!=1: flag=1; break -> if flag==1 or n%7==0: Magic"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "for i in range(2,7): if n%i==0: flag=1; break -> if flag==1 and n%7==0: Magic"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "for i in range(2,7): if n%i!=1: flag=1; break -> if flag==0 and n%7==0: Magic"
+          }
+        ]
+      ],
+      "correct_answers": [
+        3
+      ],
+      "marks": 4,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "A Magic Number needs remainder 1 for every divisor 2..6. Option D sets flag=1 the moment any divisor does NOT give remainder 1, so flag stays 0 only when all of 2..6 give remainder 1; combined with n%7==0 this exactly matches the definition. Tested over n in 1..5000, only Option D agrees with the reference (e.g. 301, 721, 1141 are Magic Numbers)."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What will be the output of the code snippet given below?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "L = [-1, 1]\nfor i in range(8):\n    size = len(L)\n    value = (L[size - 2] + L[size - 1]) * 2\n    L.append(value)\nprint(L)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "[-1, 1, 0, 2, 4, 12, 32, 88, 240, 656]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[-1, 1, 0, -2, -4, -12, -32, -88, -240, -656]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[-1, 1, 0, -1, -1, -2, -3, -5, -8, -13]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[-1, 1, 0, 1, 1, 2, 3, 5, 8, 13]"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Each new value is twice the sum of the last two: (-1+1)*2=0, (1+0)*2=2, (0+2)*2=4, (2+4)*2=12, (4+12)*2=32, (12+32)*2=88, (32+88)*2=240, (88+240)*2=656."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Select all correct implementations of a program that prints the first 10 prime numbers to the console, one number on each line. (The first 10 prime numbers are less than 30 and the 11th prime number is more than 30.) (Multiple Select Question)"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "# Option A\nfor i in range(2, 30):\n    flag = False\n    for j in range(2, int(i/2)+1):\n        if i % j == 0:\n            flag = True\n            break\n    if flag == False:\n        print(i)\n# Option B\nfor i in range(2, 30):\n    flag = False\n    for j in range(2, i):\n        if i % j == 0:\n            flag = True\n            break\n    if flag == False:\n        print(i)\n# Option C\ncount = 0\ni = 2\nwhile count < 10:\n    flag = True\n    for j in range(2, i//2+1):\n        if i % j == 0:\n            flag = False\n            break\n    if flag:\n        print(i)\n        count += 1\n    i += 1\n# Option D\ncount = 0\ni = 2\nwhile count < 10:\n    flag = True\n    for j in range(2, i//2+1):\n        if i % j != 0:\n            break\n        else:\n            flag = False\n    if flag:\n        print(i)\n        count += 1\n    i += 1"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "for i in range(2,30): trial division up to int(i/2)+1, print primes"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "for i in range(2,30): trial division up to i, print primes"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "while count < 10: trial division up to i//2+1, flag=False on a divisor"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "while count < 10: breaks when i%j != 0 and sets flag=False otherwise"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1,
+        2
+      ],
+      "marks": 4,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Options A, B and C all correctly print 2,3,5,7,11,13,17,19,23,29. Option D's primality test is broken (it breaks on the first non-divisor), so it prints non-primes such as 9 and 15."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Select all matrices (list of lists) M for which the following snippet of code prints True to the console. (Multiple Select Question)"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "n = len(M)\nflag = True\nfor i in range(n):\n    for j in range(n):\n        if (i != j) and (M[i][j] != 0):\n            flag = False\n            break\n        elif (i == j) and M[i][j] != 1:\n            flag = False\n            break\n    if flag == False:\n        break\nprint(flag)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "[[1, 0, 0], [0, 1, 0], [0, 0, 1]]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[[0, 1, 0, 0], [1, 0, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[[1, 1, 1], [1, 1, 1], [1, 1, 1]]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]]"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        3
+      ],
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The code prints True only for an identity matrix (diagonal entries 1, off-diagonal entries 0). Options 1 and 4 are the 3x3 and 4x4 identity matrices. Option 2 has M[0][0]=0 and option 3 has non-zero off-diagonals, so both print False."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Reverse a sentence based on words: the i-th word from the left in the input sentence becomes the i-th word from the end in the output sentence. Example: sentence = 'i know how to code in python' -> modified_sentence = 'python in code to know how i'. Choose all the options that accept a sentence as input and print the modified (word-reversed) sentence. (Multiple Select Question)"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "# Option A\nsentence = input()\nwords = sentence.split(' ')\nn = len(words)\nfor i in range(n - 1, 0, -1):\n    print(words[i] + ' ', end='')\nprint(words[0])\n# Option B\nfor i in range(n - 1, -2, -1):\n    print(words[i] + ' ', end='')\n# Option C\nfor i in range(n - 1, -1, -1):\n    print(words[i] + ' ', end='')\nprint(words[0])\n# Option D\nfor i in range(n - 1):\n    print(words[n - i - 1], end=' ')\nprint(words[0])"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "for i in range(n-1, 0, -1): print(words[i]+' ', end=''); then print(words[0])"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "for i in range(n-1, -2, -1): print(words[i]+' ', end='')"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "for i in range(n-1, -1, -1): print(words[i]+' ', end=''); then print(words[0])"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "for i in range(n-1): print(words[n-i-1], end=' '); then print(words[0])"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        3
+      ],
+      "marks": 5,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Options A and D each print every word exactly once in reverse order (words[n-1] ... words[0]). Option B's range goes down to -1, re-printing the last word; Option C reverses all n words and then prints words[0] again, both producing a duplicated word."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "L is a non-empty list of distinct positive integers (it has at least one element, and no two elements are the same). If the following snippet of code terminates without any error after a finite number of iterations of the while loop, what is the output produced by it? (Hint: L.remove(x) removes the leftmost occurrence of x in L.)"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "# L is a non-empty list of distinct positive integers\n# L has already been defined\nval = 0\nfor x in L:\n    val += x\nwhile L != []:\n    for y in range(1, 11, 2):\n        if y in L:\n            L.remove(y)\n        else:\n            L.append(y)\nprint(val)"
+        }
+      ],
+      "numerical_answer": 25,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "val is the sum of L, computed before the while loop. The while loop toggles each of 1,3,5,7,9 in/out of L. It can only ever empty L (terminate) if L contains exactly {1,3,5,7,9} and nothing else (any other element is never removed -> infinite loop). For that L, val = 1+3+5+7+9 = 25. Verified by simulating all subsets of {1,3,5,7,9}: only the full set terminates."
+        }
+      ]
+    }
+  ]
+}

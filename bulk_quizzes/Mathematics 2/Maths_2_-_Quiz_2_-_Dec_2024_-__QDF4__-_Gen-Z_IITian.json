@@ -1,0 +1,272 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 2 · Quiz 2 · Dec 2024 · QOF4",
+  "subject": "Mathematics 2",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let T : R3 → R2 be a linear transformation such that T(1, 1, 0) = (1, -1) and T(0, 1, 1) = (1, 1). If T(3, -1,4) = (a, b). Find a."
+        }
+      ],
+      "numerical_answer": 3.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let T : R3 → R2 be a linear transformation such that T(1, 1, 0) = (1, -1) and T(0, 1, 1) = (1, 1). If T(3, -1,4) = (a, b). Find o."
+        }
+      ],
+      "numerical_answer": 5.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let 1 = 1 2- k} - 3] where k is a positive real number. Let Is denote the identity matrix of order 2. If A is equivalent to Is, then find the rank of 4."
+        }
+      ],
+      "numerical_answer": 2.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let 1 = 1 2- k} - 3] where k is a positive real number. Let Is denote the identity matrix of order 2. Find the value of & for which A is not equivalent to Iz."
+        }
+      ],
+      "numerical_answer": 3.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let 1 = 1 2- k} - 3] where k is a positive real number. Let Is denote the identity matrix of order 2. Find the number of values of & for which A is similar to Iz."
+        }
+      ],
+      "numerical_answer": 1.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following vectors in Ru = (31 - 3) ½ = (7,0, - 2) us = (Ve Ve, *6). where & € R. Answer the given subquestions using the standard inner product on R3. Find the number of values of & for which the vector us is a unit vector."
+        }
+      ],
+      "numerical_answer": 2.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following vectors in Ru = (31 - 3) ½ = (7,0, - 2) us = (Ve Ve, *6). where & € R. Answer the given subquestions using the standard inner product on R3. Find the value of & for which {11, 12, us} is an orthonormal basis of IR3."
+        }
+      ],
+      "acceptable_answers": [
+        "T"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following vectors in Ru = (31 - 3) ½ = (7,0, - 2) us = (Ve Ve, *6). where & € R. Answer the given subquestions using the standard inner product on R3. For k = 0, find the angle (in degrees) between up and u3-"
+        }
+      ],
+      "numerical_answer": 45.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following vectors in Ru = (31 - 3) ½ = (7,0, - 2) us = (Ve Ve, *6). where & € R. Answer the given subquestions using the standard inner product on R3. m = n The matrix representation of I with respect to any ordered basis is square and invertible."
+        }
+      ],
+      "acceptable_answers": [
+        "C"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let T : R? → Ra be a linear transformation given by T(z, y) = (2z - 3y, -* + 5y, x + y). Let S be any straight line in R? passing through the origin. If T (S) represents the image of S under T in Ra , what is the dimension of the subspace T(S)?"
+        }
+      ],
+      "numerical_answer": 1.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let T : R? → Ra be a linear transformation given by T(z, y) = (2z - 3y, -* + 5y, x + y). Let B; = {(1, -1), (0, 2)} and B½ = {(1, 0, 0), (0, 1, 0), (0, 0, 1)}. Which of the following matrices is the matrix representation of I with respect to the basis B, for domain and By for co-domain? -6 0 -6 10 2 -1"
+        }
+      ],
+      "acceptable_answers": [
+        "C"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let T : R? → Ra be a linear transformation given by T(z, y) = (2z - 3y, -* + 5y, x + y). What is the rank of T?"
+        }
+      ],
+      "numerical_answer": 2.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let T : R? → Ra be a linear transformation given by T(z, y) = (2z - 3y, -* + 5y, x + y). wnat is the nuility of 1a"
+        }
+      ],
+      "numerical_answer": 0.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let T : R? → Ra be a linear transformation given by T(z, y) = (2z - 3y, -* + 5y, x + y). Let V = span{(3, 0, 0), (0, -2,2), (-1, 1, -1)). Let T : V → R? be a linear transformation defined by T(z, y, z) = (z - cy, y + z). Choose all the correct options from the following: T is not one-one for any value of c."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "T is one-one when c = 0. rank (7) = 1 for all values of c."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "nullity (T) = 2 for some c. There exist non-zero real numbers a and 6 such that a (3, 0, 0) + 8(0, -2, 2) is in ker(T)."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let T : R? → Ra be a linear transformation given by T(z, y) = (2z - 3y, -* + 5y, x + y). IMSO. Consider the system of equations given by Az = b, where A is an m x n matrix and & is a vector in R™. Choose all the correct options that guarantee that the set of solutions to the given system of equations is an affine subspace of IR\"."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "b = 0. & is in the column space of A. c rank(A) = n."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "m = n and A is an invertible matrix."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let T : R? → Ra be a linear transformation given by T(z, y) = (2z - 3y, -* + 5y, x + y). Let W denote the subspace of Ra spanned by the vectors u1 = (1,1,0) and u½ = (0,0, 1). Let Pw : R3 → Ra denote the linear transformation which maps every vector to its projection (with respect to the standard inner product on R3) on to the subspace W. Choose all the correct statements from the following."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The Gram-Schmidt process starting with the set {u1, 4½} yields the orthonormal basis {J (1,1,0), a (0,0, 1); or W. © Pw(0,1,1)= (‡›‡‚1)."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The nullity of Pw is 1."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Pw is an orthogonal transformation."
+          }
+        ]
+      ],
+      "correct_answers": [
+        1,
+        2
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    }
+  ]
+}

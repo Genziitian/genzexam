@@ -1,0 +1,303 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 1 · Quiz 2 · Aug 2025 · Q104",
+  "subject": "Mathematics 1",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "f(x) = a sin [x] + bell is differentiable at x = 0, if and only if a =b =0"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": " a +b = 0"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "6 = 0"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The value of lim,-+o"
+        }
+      ],
+      "acceptable_answers": [
+        "C"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let the figure represent the graph of a function f. The solid points denote the value of the function at the points, and the values denoted by the hollow points are not taken by the function. Choose the set of correct options. 10 2 Figure: M2W2P1 / lim,2- f(t) = 10"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "lim,-,6+ f(t) = 10 / f is continuous at x = 4."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "f is differentiable at x = 2."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following two functions: f(x) = 12 - 2, 2 < 6"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "≥6 of the following statements is (are) correct? and (e) = 1(8 - 7)?, $ 28.5 Which"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "f is not continuous."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "f is continuous."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "g is not continuous."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "g is continuous."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        3
+      ],
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following functions are one-one?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "f(x) = 5x + 1 8 f(x) = 2x? + 2x + 3"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "f(x) = 1og 5x"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0
+      ],
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "(10z - 1)(2 + 3)(= + 2)(2 + 1)z. Find the value of lim› (5z - 1)(2 + 9)(x + 4) (x + 8)2"
+        }
+      ],
+      "numerical_answer": 2.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "27n' + 25nº + 2n° + n Let {an} be a sequence defined as an = 4n2 + 2n + 10n3 + 5n8 + n Consider a sequence (bn} defined as b, = 25». Find the limit of the sequence {b}."
+        }
+      ],
+      "numerical_answer": 4.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the number of solutions of the equation e** - 9e* = -18."
+        }
+      ],
+      "numerical_answer": 2.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the value of x that satisfies the equation log, (2 + 1) - log, (2 - 3) = 2. Ш Passage / Context Consider the functions f(z) = v2 + 5 and g(z) = 23 - 5. Answer the given subquestions."
+        }
+      ],
+      "numerical_answer": 7.0,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the domain of go f."
+        }
+      ],
+      "acceptable_answers": [
+        "C"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the value of (go f o go f)(2)."
+        }
+      ],
+      "numerical_answer": 2.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the function f(x) = log, |x + 1|. Answer the given subquestions. Choose the correct option."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The domain of function f is [-1, ∞)."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The domain of function f is (-1, 0). The domain of function f is R - {-1}."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The domain of function f is R."
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the function f(x) = log, |x + 1|. Answer the given subquestions. Suppose m, n are two solutions of the equation f(x) = 3 such that m < n then find the value of n - m."
+        }
+      ],
+      "numerical_answer": 54.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the function f(x) = xv 25 - x3. Answer the given subquestions. If y = mx + c is the equation of the tangent of f at x = 3 then choose the correct options. m =1 8 m= 1 27 -27 C= 4"
+        }
+      ],
+      "acceptable_answers": [
+        "A, C"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the function f(x) = xv 25 - x3. Answer the given subquestions. Find the number of points where | f(z)?| is not differentiable."
+        }
+      ],
+      "acceptable_answers": [
+        "za"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    }
+  ]
+}

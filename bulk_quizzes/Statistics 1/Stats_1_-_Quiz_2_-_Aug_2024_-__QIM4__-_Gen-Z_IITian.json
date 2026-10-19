@@ -1,0 +1,264 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Statistics 1 · Quiz 2 · Aug 2024 · QIM4",
+  "subject": "Statistics 1",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following option(s) is (are) true? An event A is said to be independent of another event B, if P(A | B) # P(A). For two events A and B, P(An B) = P(B) × P(A | B), where P(B) > 0. For two events A and B, P(An B) = P(A) × P(BA), where P(A) > 0."
+        }
+      ],
+      "acceptable_answers": [
+        "B, C"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A city has three main taxi companies: Red Taxi, Blue Taxi, and Green Taxi. Historical data shows that 20% of the passengers use Red Taxi, 50% use Blue Taxi, and 30% use Green Taxi. If 5% of the cars from Red Taxi, 4% from Blue Taxi, and 8% from Green Taxi have engine issues. Based on the given information, answer the given subquestions. Find the probability that a randomly chosen passenger gets a taxi with engine issues? Enter the answer correct to three decimal places."
+        }
+      ],
+      "numerical_answer": 0.054,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A city has three main taxi companies: Red Taxi, Blue Taxi, and Green Taxi. Historical data shows that 20% of the passengers use Red Taxi, 50% use Blue Taxi, and 30% use Green Taxi. If 5% of the cars from Red Taxi, 4% from Blue Taxi, and 8% from Green Taxi have engine issues. Based on the given information, answer the given subquestions. Given that a passenger gets a taxi with engine issues, then find the probability that the passenger took a ride with the Green taxi company? Enter the answer correct to two decimal places."
+        }
+      ],
+      "numerical_answer": 0.44,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "There are 200 employees in a company. There are 40 employees who know Python language and 50 employees who know SQL. Out of these, there are 10 who know both Python and SQL. Let Ey be the event that a randomly selected employee knows Python and Eg be the event that a selected employee knows SQL. Based on the given information, answer the given subquestions. McQ Are the events E1 and Ez independent? Yes 8 No C Cannot say anything. Answer: A 2 marks - Find the value of P(E, U E2). Enter the answer correct up to one decimal place."
+        }
+      ],
+      "numerical_answer": 0.4,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In how many ways can this be done when the committee consists of at least 3 Women?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "544"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "588"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "504"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Cannot determine."
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In a hockey team consisting of 11 players, each player shakes hands with every other player exactly once before the match begins. How many handshakes occur among the teammates?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "121"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "55"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "c 110"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "22"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A committee of 7 members has to be formed from 9 Men and 4 Women. Based on the given information, answer the given subquestions. MCQ In how many ways can this be done when the committee consists of exactly 3 Women? 276 2 marks • 8 36 715 504 Answer: D MCO"
+        }
+      ],
+      "acceptable_answers": [
+        "B"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A committee of 7 members has to be formed from 9 Men and 4 Women. Based on the given information, answer the given subquestions. MCQ In how many ways can this be done when the committee consists of exactly 3 Women? 276 2 marks • 8 36 715 504 Answer: D IMCO randomly, then find the number of ways in which he can attempt the entire paper. MCO In a dinner party, there are 2 males and 5 temales who need to be seated around a round table. In how many ways can they be seated so that no two males are seated next to each other? 4201 480 c 600"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "48 8 SA 412"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "124"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A committee of 7 members has to be formed from 9 Men and 4 Women. Based on the given information, answer the given subquestions. MCQ In how many ways can this be done when the committee consists of exactly 3 Women? 276 2 marks • 8 36 715 504 Answer: D 1° Pr+3 = 90, then what is the value of * Pz?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "7 21 42"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Insufficient information."
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A committee of 7 members has to be formed from 9 Men and 4 Women. Based on the given information, answer the given subquestions. MCQ In how many ways can this be done when the committee consists of exactly 3 Women? 276 2 marks • 8 36 715 504 Answer: D Pramod goes to a shop to buy some clothes. Shopkeeper shows him 7 shirts, 4 pants and 12 t-shirts. If he selects three clothes at random, then find the probability that the randomly chosen clothes are of different type. (Enter the answer correct to two decimal places)"
+        }
+      ],
+      "numerical_answer": 0.19,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A committee of 7 members has to be formed from 9 Men and 4 Women. Based on the given information, answer the given subquestions. MCQ In how many ways can this be done when the committee consists of exactly 3 Women? 276 2 marks • 8 36 715 504 Answer: D A, B and C are three mutually exclusive and exhaustive events associated with a random experiment. If P(4) = p. P(B) = P(A) and P(C) = P(B), then find the value of p. Enter the answer correct to two decimal places."
+        }
+      ],
+      "numerical_answer": 0.31,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A committee of 7 members has to be formed from 9 Men and 4 Women. Based on the given information, answer the given subquestions. MCQ In how many ways can this be done when the committee consists of exactly 3 Women? 276 2 marks • 8 36 715 504 Answer: D Let a sample space S = {1,2,3, 4, 5, 6, 7, 8). Consider the following three events: E = {1, 2, 5}. F = {4, 6, 7) and G = {1, 3, 8). Which of the following option(s) is(are) correct?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "EUF = {1,2,5,6,7}"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "EnG = {1} 1 (FUG) = {2,5}"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "EnF = {8}"
+          }
+        ]
+      ],
+      "correct_answers": [
+        1,
+        2
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    }
+  ]
+}

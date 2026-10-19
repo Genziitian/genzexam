@@ -42,6 +42,270 @@
           "value": "For deﬁnitions of types of relations, please refer to solution of Question 8. Every month has the same last four letters as itself (except May which has only three letters). In Table 1, the months whose name has been shown in red color have the same last four letters as each other. Similarly, the months whose name has been shown in blue color also have the same last four letters as each other. Name of the months (Elements of S) January February March April May June July August September October November December Table 1: Question 12 : R1 relation Page 13 Hence R1 ={(Jan, Jan), (Jan, Feb), (Feb, Jan), (Feb, Feb), (Mar, Mar), (April, April), (June, June), (July, July), (Aug, Aug), (Oct, Oct), (Sept, Sept), (Sept, Nov), (Sept, Dec), (Nov, Sept), (Nov, Nov), (Nov, Dec), (Dec, Sept), (Dec, Nov), (Dec, Dec)} The relation R2 consists of the pairs of months with the same number of days. In Table 2, the months whose name has been shown in red color have 31 days each. The months whose name has been shown in black color have 30 days each. Name of the months January February March April May June July August September October November December Table 2: Question 12: R2 relation Observe that it is a equivalence relation. The partition formed by this equivalence relation is as follows: Class 1: Jan, Mar, May, July, Aug, Oct, Dec [Months with 31 days each] Class 2: April, June, Sept, Nov [Months with 30 days each] Class 3: Feb [Month with 28 or 29 days] Now, R3 is deﬁned as follows: R3 ={(a, c)| a, c∈ S, for some b∈ S, (a, b)∈ R1, (b, c)∈ R2} If (a, c)∈ R3, then there must exist some pair ( a, b)∈ R1. Let us list out the number of elements of R3 by listing out pairs starting with as shown below : Page 14 January: (Jan, Jan) ∈ R1, Now we assume three partitions in the set S, formed by the relation R2. These partitions are class 1, class 2, class 3. Hence from these classes, 7 pairs will be there in R3 starting with January. These are{(Jan, Jan), (Jan, Mar), (Jan, May), (Jan, July), (Jan, Aug), (Jan, Oct), (Jan, Dec) }. Moreover, (Jan, Feb) is in R1, and Feb is in another partition in S due to R2. So there are total 8 pairs (adding (Jan, Feb) with previous 7 elements) in R3 starting with Jan. February: Since (Feb, Jan) is in R1, then due to class 1 there will be 7 pairs : {(Feb, Jan), (Feb, Mar), (Feb, May), (Feb, July), (Feb, Aug), (Feb, Oct), (Feb, Dec) }. The element (Feb, Feb) will be in R3 due to class 3. Hence 8 pairs are there in R3 starting with Feb. March: Due to class 1, seven pairs {(Mar, Jan), (Mar, Mar), (Mar, May), (Mar, July), (Mar, Aug), (Mar, Oct), (Mar, Dec)}. April: Due to class 2, four pairs {(April, April), (April, June), (April, Sept), (April, Nov)}. May: No pair will start with May as there is no pair in R1 starting with May. June: Due to class 2, 4 pairs: {(June, April), (June, June), (June, Sept), (June, Nov)} July: Due to class 1, 7 pairs. {(July, Jan), (July, March), (July, July), (July, Aug), (July, Oct), (July, Dec)} August: Due to class 1, 7 pairs. {(Aug, Jan), (Aug, Mar), (Aug, May), (Aug, July), (Aug, Aug), (Aug, Oct), (Aug, Dec)} September: As (Sept, Dec) is a pair in R1, it will pair up will all months in class 1, and as (Sept, Sept) is in R1, it will pair up with all months with class 2. Hence there are total 11 pairs in R3 starting with Sept : {(Sept, Jan), (Sept, Mar), (Sept, May), (Sept, July), (Sept, Aug), (Sept, Oct), (Sept, Dec), (Sept, April), (Sept, June), (Sept, Sept), (Sept, Nov)} October: Due to class 1, 7 pairs are there : {(Oct, Jan), (Oct, Mar), (Oct, May), (Oct, July), (Oct, Aug), (Oct, Oct), (Oct, Dec)} November: Due to both class 1 and class 2, 11 pairs : {(Nov, Jan), (Nov, Mar), (Nov, May), (Nov, July), (Nov, Aug), (Nov, Oct), (Nov, Dec), (Nov, April), (Nov, June), (Nov, Sept), (Nov, Nov)} December: Due to both class 1 and class 2, 11 pairs: {(Dec, Jan), (Dec, Mar), (Dec, May), (Dec, July), (Dec, Aug), (Dec, Oct), (Dec, Dec), (Dec, April), (Dec, June), (Dec, Sept), (Dec, Nov)} 12. (b) Hence cardinality of R3 is 8 + 8 + 7 + 4 + 4 + 7 + 7 + 11 + 7 + 11 + 11 = 85. 12. (a) • (May, May) is not in R3, hence R3 is not reﬂexive. • (Jan, May) is in R3, but (May, Jan) is not in R3, hence R3 is not symmetric. • (Mar, Dec) is in R3, (Dec, Sept) is in R3, but (Mar, Sept) is not in R3. Hence R3 is not transitive. Page 15"
         }
       ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let $f: \\mathbb{R} \\to \\mathbb{R}$ be defined by $f(x) = 2x + 3$. Which of the following statements about $f$ is correct?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$f$ is both one-to-one (injective) and onto (surjective)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$f$ is injective but not surjective"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$f$ is surjective but not injective"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$f$ is neither injective nor surjective"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "A linear polynomial $ax + b$ with $a \\neq 0$ is a bijection from $\\mathbb{R}$ to $\\mathbb{R}$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the value of $\\lim_{x \\to 0} \\frac{\\sin(3x)}{x}$?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "3"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "0"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Undefined"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$\\lim_{x \\to 0} \\frac{\\sin(kx)}{x} = k$. Here $k = 3$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Evaluate the limit $\\lim_{x \\to 0} \\frac{e^{2x} - 1}{x}$."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "0"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$e^2$"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "By standard limit or L'Hôpital's rule: $\\lim_{x \\to 0} \\frac{2e^{2x}}{1} = 2$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let $f(x) = \\frac{x^2 - 4}{x - 2}$ for $x \\neq 2$. What value must $f(2)$ take so that $f(x)$ is continuous at $x = 2$?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "4"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "0"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Undefined"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$\\lim_{x \\to 2} \\frac{(x-2)(x+2)}{x-2} = \\lim_{x \\to 2} (x + 2) = 4$. For continuity, $f(2) = 4$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following functions is continuous everywhere on $\\mathbb{R}$ but NOT differentiable at $x = 0$?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$f(x) = |x|$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$f(x) = x^2$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$f(x) = e^x$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$f(x) = \\sin x$"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$|x|$ is continuous everywhere, but has left derivative $-1$ and right derivative $+1$ at $x=0$, so not differentiable at 0."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the critical points of the function $f(x) = x^3 - 3x^2 + 2$ on $\\mathbb{R}$."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$x = 0$ and $x = 2$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$x = 1$ and $x = 3$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$x = -1$ and $x = 2$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$x = 0$ only"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$f'(x) = 3x^2 - 6x = 3x(x - 2) = 0 \\implies x = 0, 2$."
+        }
+      ]
     }
   ],
   "week": 1

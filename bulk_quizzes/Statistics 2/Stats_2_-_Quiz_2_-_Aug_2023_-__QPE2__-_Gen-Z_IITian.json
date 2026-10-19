@@ -1,0 +1,206 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Statistics 2 · Quiz 2 · Exam · OPEZ",
+  "subject": "Statistics 2",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "This is the question paper for the subject \"FOUNDATION LEVEL: SEMESTER 2: STATISTICS FOR DATA SCIENCE II (COMPUTER BASED EXAM)\". Are you sure you nave to wnte the exam tor the subjecte cross check your nai boxet to comam the sco ecs to be when prit a not une correct supect, prase cneck the section at the top for the subjects registered by you.)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "YES"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "NO"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let X, Y, Z ~ lid Goometric (⅓). Definc a new random variable U = min(X, Y, Z). What is the value of FUs?"
+        }
+      ],
+      "numerical_answer": 64.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let (X, Y) ~ Uniform (D). Which of the following may represent a region D such that X and Y are independent? (Each option is a shaded region in the zy plane; see figures.)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Region A: a diamond (square rotated 45) with vertices at (1,0), (0, 1), (1,2), (2, 1)."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Region B: an L-shaped staircase of unit squares: [0, 1] × [0, 1]. [1,2] × [1, 2] and [2, 3] × [0, 2]."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Region C: two separate unit squares |0, 1] × [0, 1] and [2, 3] × [0, 1] (support = ([0, 1] U (2,3]) × |0, 1])."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Region D: a right triangle with vertices (0, 0), (0, 2), (2, 0)."
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Suppose X is a discrete random variable and has moment generating function Mx (X) = $ + fe? + fe\" + fe\". What is the PMF of X?"
+        }
+      ],
+      "acceptable_answers": [
+        "B"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "option(s) from below."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "E(S) = 20 Suppose X1, X2, X3, X, ~ li.d. X such that E[X] = 10 and Var(X) = 4. Define a random variable S - 3.X, - 2.X; - X3 + 2.X,. Choose the correct"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Var(5] = 32"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Var|S - 72"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "BS] = 180"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        2
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "a mans Find the value of k such that f(z) is a valid PDF. A 20 € 1 • Cannot be determined. Answer: B What is the probability that rainfall in the local area will be at most 10 inches? (Enter the answer correct to 3 decimal places.)"
+        }
+      ],
+      "numerical_answer": 5.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let (X, Y) ~ Uniform(D), where D:= [1,2] × (1,3). Hind the joint density tunchon xy (2, y 2, 1<z<2,1<g<3 otherwise otherwise € Axy (7.3) - 10, oberwise"
+        }
+      ],
+      "acceptable_answers": [
+        "0.75"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let (X, Y) ~ Uniform(D), where D:= [1,2] × (1,3). Find the value of c. Enter the answer correct to two decimal places."
+        }
+      ],
+      "numerical_answer": 0.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let (X, Y) ~ Uniform(D), where D:= [1,2] × (1,3). What is the probability that the pressure change during the chemical process is more than D.5, given that the temperature change is equal to 0,53 Enten the answer correct to two deomal places. IL Passage / Context Let X;, X2,..., X> ~ lid. Uniform 8, 12]"
+        }
+      ],
+      "numerical_answer": 300.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let (X, Y) ~ Uniform(D), where D:= [1,2] × (1,3). Using the Central Limit Theorem, find the approximate probablity that in a random sample of 30U selected children at least 3U will have detective eye signs, enter the answer correct to i decimal place. Écosystem - genzlltlan.In/ecosystem | Video Solutions - exam.genzlltlan.in | YouTube - ysutube.cem/@Gen-ZilTian"
+        }
+      ],
+      "numerical_answer": 0.5,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ]
+}

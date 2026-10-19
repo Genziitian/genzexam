@@ -1,0 +1,290 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 1 · Quiz 2 · Mar 2024 · QDD4",
+  "subject": "Mathematics 1",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Instructions: There are some questions which have functions with discrete valued domains (such as day, month, year etc.). For simplicity, we treat them as continuous functions. For NAT type questions, enter only one right answer even if you get multiple answers for that particular question. Notations: IR = Set of real numbers, Q = Set of rational numbers, 2 = Set of integers, N = Set of natural numbers. The set of natural numbers includes 0. Instructions has been mentioned above."
+        }
+      ],
+      "acceptable_answers": [
+        "A"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Chcose the set of correct options."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "If a function is continuous at a particular point, then the function is differentiable at that point. If a function is differentiable at a particular point, then the function must be continuous at that point. If f(x) is differentiable at the point a, then ef(x) is differentiable at the point a, for all c € R, and (cf) '(a) = ef' (a)."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "If f(z) and g(z) are differentiable functions, then |(f + 9)(z) | is also a differentiable function."
+          }
+        ]
+      ],
+      "correct_answers": [
+        1
+      ],
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If f(x) = V9 - 27, then find out the value of 8v8 × lim,.., f(x) - J(1)"
+        }
+      ],
+      "numerical_answer": -8.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the function f(x) = g] • Then lim,-o f(x) is"
+        }
+      ],
+      "numerical_answer": 0.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the function f(x) = (2 + 2)= 2x - 5 —5 × + 1 x≤-] x>1 -1 < x ≤ 1 Find the total number of points in (-2,2) at which f(x) is not continuous."
+        }
+      ],
+      "numerical_answer": 2.0,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let f be a differentiable function such that f'(4) = 1 and f(4) = -3. If y = ax + 6 denotes the tangent of the function f at x = 4 then find the value of b."
+        }
+      ],
+      "numerical_answer": -7.0,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the number of solution(s) of the equation 9ª + 3* - 6 = 0."
+        }
+      ],
+      "numerical_answer": 1.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the number of solution(s) of the equation In (7) + In(2 - 422) = In(14)."
+        }
+      ],
+      "numerical_answer": 1.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let f(e) = a - 2 < a find the smallest value of such that the function f is defined for ll real"
+        }
+      ],
+      "numerical_answer": -2.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let f(e) = (/29 - 1/ a « \" Find the largest value of a such that the function f is defined for all eal numbers and satisfies the horizontal line test."
+        }
+      ],
+      "numerical_answer": -1.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "For row i) of Table M1T1, choose the correct option from the following:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "А i) -6) -3)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "в i) -с) -1)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "c i) -d) - 2)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "/ i) - d) -3)"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let f(x) = Væ and g(x) = V3 - x. From the table below, match each composition of functions with its correct Function and Domain. Table: M1T1 Composition of functions fog V3 - V= go f V3 - V3-2 [0, ∞0) -6,3 (-∞0, 3] 90 g d) For row ii) of Table M1T1, choose the correct option from the following:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "il) -a) -4) в ії) -b) - 3) c ii) -c) - 2)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "i) - a) - 3)|"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let f(x) = Væ and g(x) = V3 - x. From the table below, match each composition of functions with its correct Function and Domain. Table: M1T1 Composition of functions fog V3 - V= go f V3 - V3-2 [0, ∞0) -6,3 (-∞0, 3] 90 g d) For row iii) of Table M1T1, choose the correct option from the following: А (i) - 6) - 3) (i) - 6) - 1) c iii) - d) -3)"
+        }
+      ],
+      "acceptable_answers": [
+        "B"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let f(x) = Væ and g(x) = V3 - x. From the table below, match each composition of functions with its correct Function and Domain. Table: M1T1 Composition of functions fog V3 - V= go f V3 - V3-2 [0, ∞0) -6,3 (-∞0, 3] 90 g d) For row iu) of Table M1T1, choose the correct option from the following:"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "iv -c) - 3)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "iv) - a) - 1) iv) - c) - 2)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "(v) -6) -2)"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let f(x) = Væ and g(x) = V3 - x. From the table below, match each composition of functions with its correct Function and Domain. Table: M1T1 Composition of functions fog V3 - V= go f V3 - V3-2 [0, ∞0) -6,3 (-∞0, 3] 90 g d) 100n? - 11 Find the limit of the sequence (an} such that an = 100n» + 7"
+        }
+      ],
+      "numerical_answer": 0.0,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let f(x) = Væ and g(x) = V3 - x. From the table below, match each composition of functions with its correct Function and Domain. Table: M1T1 Composition of functions fog V3 - V= go f V3 - V3-2 [0, ∞0) -6,3 (-∞0, 3] 90 g d) z6 - 24z - 16 Evaluate the following limit: limz-2 \"g8 + 2x - 12 \""
+        }
+      ],
+      "numerical_answer": 12.0,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium"
+    }
+  ]
+}

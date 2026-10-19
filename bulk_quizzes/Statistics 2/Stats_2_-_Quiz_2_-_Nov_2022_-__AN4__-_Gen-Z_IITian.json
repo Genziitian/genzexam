@@ -1,0 +1,234 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Statistics 2 · Quiz 2 · Nov 2022 · ANS",
+  "subject": "Statistics 2",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Suppose a fair die is thrown twice. Let the random variable X denote the number obtained on the first die. Let the random variable Y denote the number obtained on the second die. Define Z = |X - Y]. Find the range of Z. Tz = {0, 1,2,3,4,5} в Tz = {1,2,3,4,5} Tz = {1,2,3,4,5,6}"
+        }
+      ],
+      "acceptable_answers": [
+        "A"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Suppose a fair die is thrown twice. Let the random variable X denote the number obtained on the first die. Let the random variable Y denote the number obtained on the second die. Define Z = |X - Y]. Find the probability mass function (PMF) of Z."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": ": 1,2,3,4,5; /2(2) : 1 61 61 561 =: 0,1,2,3,4,5; /z(2) : 361 36 61 36 36, 36"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "z: 1,2,3,4,5,6; fz(z) : 3, 38, $, 38, 38, * =: 0, 1,2,3,4,5; fz(=) : 0, $ $ 3, 3, 3| € 2: 0,1,2,3,4,5, 6; /z(2) : $ * $ * $ $, $"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let the random variables X and Y have the following Joint PDF: x, (2, g) - 122 Oterwise, 0 ≤ U ≤ 1 Which of the following statements are true?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Marginal density of X is 2ar, for 0 ≤ z ≤ 1. 8 Marginal density of X is f, for 0 ≤ x ≤ 1. Marginal density of Y is 2y, for 0 ≤ y ≤ 1."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Marginal density of Y is 1, for 0 ≤ y ≤ 1."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let the random variables X and Y have the following Joint PDF: x, (2, g) - 122 Oterwise, 0 ≤ U ≤ 1 Are A and Y independent? 8 NO"
+        }
+      ],
+      "acceptable_answers": [
+        "A"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let the random variables X and Y have the following Joint PDF: x, (2, g) - 122 Oterwise, 0 ≤ U ≤ 1 The probability density function of a continuous random variable X is given by f(z) = {2r otherwise. Find the value of EIX]. Enter the answer correct to two decimal places."
+        }
+      ],
+      "numerical_answer": 0.665,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let the random variables X and Y have the following Joint PDF: x, (2, g) - 122 Oterwise, 0 ≤ U ≤ 1 Let a o...a be i.d. Posson(9). Using Chebyshevs inedualitv. what should be the minimum value of a such that the probability that the sample mean X lies in between 8.6 and 9.4 is at least 0.951"
+        }
+      ],
+      "numerical_answer": 1125.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let the random variables X and Y have the following Joint PDF: x, (2, g) - 122 Oterwise, 0 ≤ U ≤ 1 Suppose iron rods are manufactured with a mean weight of 10 kg and a standard deviation of 0.4 kg. How does the variance of the sample mean change when the sample size is increased from 25 to 64?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Variance is increased from 0.00625 to 0.016. 8 Variance is increased from 0.0025 to 0.0064."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "ariance is reduced from 0.0064 to 0.0025. ID Variance is reduced from D.016 to D.00625"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let X be a random variable denoting the survival time (in years) of patients after the treatment of a certain disease. It is known that Y is exponentially distributed with a mean of 2 years. Ecosystem What is the probability that a patient selected at random (who went through the treatment) will survive for more than 2 years? fern"
+        }
+      ],
+      "acceptable_answers": [
+        "B"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let X be a random variable denoting the survival time (in years) of patients after the treatment of a certain disease. It is known that Y is exponentially distributed with a mean of 2 years. Ecosystem Find P(X > 6 | X > 4)."
+        }
+      ],
+      "numerical_answer": 0.365,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In a telecom system, each data file consists of 400 bits. Due to noise, each data bit received may have an error with probability 0.1. It is assumed that bit errors occur independently. Suppose Y represents the total number of bits without an error in a certain data file. Which of the following is true?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Y ~ Bernoulli (0.9) 8 Y ~ Bernoulli(0.1) Y ~ Binomial (400, 0.9)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Y ~ Binomial (400, 0.1)"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In a telecom system, each data file consists of 400 bits. Due to noise, each data bit received may have an error with probability 0.1. It is assumed that bit errors occur independently. Using Central limit theorem, find the approximate probability that there are more than 45 errors in a certain data file. Enter the"
+        }
+      ],
+      "numerical_answer": 0.2,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let X denote the stock price (in units of hundred rupees) of a company A and let Y denote the stock price (in units of hundred rupees) of company 8. The joint density function of X and Y is given below. xy (2. 9) = 10 otherwise Find the value of 8c."
+        }
+      ],
+      "numerical_answer": 2.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let X denote the stock price (in units of hundred rupees) of a company A and let Y denote the stock price (in units of hundred rupees) of company 8. The joint density function of X and Y is given below. xy (2. 9) = 10 otherwise Find the probability that the stock price of A will be higher than that of 8. Enter the answer correct to two decimal places."
+        }
+      ],
+      "numerical_answer": 0.33,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    }
+  ]
+}

@@ -1,0 +1,397 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Computational Thinking · Quiz 2 · Aug 2023",
+  "subject": "Computational Thinking",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Words\" dataset and explode(X) returns the list of letters in the word X. For example explode(\"sweet\") will return ['s', 'w', 'e', 'e', t]. What will count represent at the end of the execution? count = 0, letterlist = [ while(Table 1 has more rows){ Read the first row X in Table 1 letterlist = explode(X.Wordy count = count + checkSomething(letterlist) Move X to Table 2 Procedure checkSomething(L) lastletter = first(L) restList = rest(L) foreach letter in restListf if(letter == lastletter){ return(1) lastLetter = letter return(ø) End checkSomething"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Number of words with at most two consecutive occurrences of the same letter / Number of words with at least two consecutive occurrences of the same letter"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of words with exactly two consecutive occurrences of the same letter"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of words with no consecutive occurrences of the same letter"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "MCO The following pseudocode is executed using the \"Words\" dataset. What will count represent at the end of"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "= 18000. count = 8 while (Table 1 has more rows)i Read the first row X in Table 1 L = addSomething(L. XX if(X.word ends with a full stop){ if(length(L) == A)( count = count + 1 if(length(L) < A){"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "= length(L) count = i Move X to Table 2 Procedure addSomething(M, Y) 1. 1 phile d<= Y-LetterCount){ p = ith letter of Y.Word 1f(not (member(M, P))) M = M + fol return (8) End addSomething"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of sentences which have minimum number of letters"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of sentences which have minimum number of words Number of sentences which have minimum number of distinct letters"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of sentences which have minimum number of distinct wordsi genzitan.in/ecosystem video solutions exam.genzitan.in roulube-youtube.com/coen-clan MSO The following pseudocode is executed using the \"Olympics\" dataset. The template of \"Olympics\" dataset is attached in the beginning of this paper. At the end of the execution, medalDict stores a dictionary with plaver's name as key mapped to another dictionary. The nested dictionary stores the medal type as key mapped to a list of years in which the player won that medal. For example if player Xyz has won a silver medal in 2006, a gold medal in 2008, and another silver medal in 2011, then medalDict = (\"Xyz\" : (\"Silver\" : [2006, 2011], \"Gold\": 2008]), ...). Assume that every player has a distinct name. But the pseudocode may have mistakes. Identify all such mistakes (if any). Assume that all statements not listed in the options below are free of errors. It is a Multiple Select Question (MSQ). medalDict = () while(Table 1 has more rows)f Read the first cow Y in Table 1l it(iskey(medaiDict, x.Name) )‹ 1f(not (iskey(medalDict[X.Name], X.Medal))){ medalDict X.Name [X.Medal] = medalDict X.Namel [X.Medal] ++ [X.Year] elsef medalDict[x.Name][X.Medal] = [X.Year] elsef medalDict[x.Name][x.Medal] = [X.Year] Move X to Table 2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Line 1: Incorrect initialization of medalDict Line 6: The current statement should be replaced by medalDict[X.Name [X.Medal] = [X.Year] Line 9: The current statement should be replaced by medalDict[X.Name][X.Medal] = medalDict[X.Name][X.Medal] ++ [X.Year] 1ane 1a: The cucrent statement should be replaced by. medalDict X.Name = (X.Medal : [X.Year]]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "NO MIStaKeS"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "exam.genzian.in toulube -youtube.com/@Gen-Lian"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "MSO Let LA be a sorted list of integers in ascending order, and X be an integer. The procedure insert(LA, X) returns a list LB where X is added to LA such that the LB remains sorted. But the procedure may have mistakes. Identify all such mistakes (if any). Assume that all statements not listed in the options below are free of errors. It is a Multiple Select Question (MSQ). Procedure insert (LA, X) LB = () flap - True foreach A in LA if(flag)( 1f(X <= A)( LB = LB ++ TA1 flag • raise 18 - LB +* [A) 1f(not flag)( LB = LB + [X) return(LB) Line 2: LB should be initiated as an empty list"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Line 5: Conditional expression should use \"not\" operator"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Line 7: X should be appended to the list LB"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Line 11: X should be appended to the list LB"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Line 13: Incorrect Conditional expression F Line 16: LA should be retumed"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Olympics\" dataset. The template of \"Olympics\" dataset is attached in the beginning of this paper. What will B represent at the end of execution?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "= (} while (Table 1 has more rows) ( Read the first row X in Table 1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "= updateDict(D, X.Sport) Move X to Table 2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "= findAValue(D) Procedure updateDict (D, a) if(isKey(D, a)) f D[a] = D[a] + 1 else f D[a] = 1 return (D) End updateDict Procedure findAValue(D) v - e foreach a in keys(D) { ¡f(D[a] > v) { v = D[a] return (v) End findAValue"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of players in each Sport Total count of players in the Olympics dataset Number of the players in the most frequent sport"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of frequent sports"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "execution? The following pseudocode is executed on the \"Words\" dataset. What will Count1 represent at the end of the"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "= ("
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "= 8, Total = 0, Count = ° while(Table 1 has more rows)f Read the first row X in Table 1 Total = Total + X. LetterCount Count = Count + 1 1f(isKey(D, X.Word)){ D[x.Word][\"Freq\"] = D[x.Word] [\"Frea\"] + 1 elsef D[X.Word] = {} D[X.Word] [\"Freq\"] = 1 D[X.Word][\"LC\"] = X.LetterCount if(D[X.Word] [\"Freq\"] › A){"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "= D[X.Word][\"Freq\"] Move row X to Table 2 Avg = Total / Count Count1 = 0, Count2 = e foreach k in Keys(D){ 1f(D[k] [\"Freq\"] == A){ 1f(D[k] [\"LC\"] > Avg){ Counti = Count1 + 1 elsef Count2 = Count2 + 1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of maximum frequency words with letter count less than average letter count Number of maximum frequency words with letter count greater than average letter count"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of minimum frequency words with letter count less than average letter count"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 5,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "We have a non-empty list, Location that stores the city name in each card from the \"Scores\" dataset, sorted in alphabetical order. This results in many duplicates. The following procedure attempts to extract the unique list of cities, while preserving the sorted order. The pseudocode may have mistakes. Identify all such mistakes (if any). It is a Multiple Select Question (MSQ). uniqueList = [] uniquelist = uniqueList +* [first(Location)] prev = last(Location) foreach x in rest (Location){ if(x != prev) { uniquelist = uniqueList ** x prev = x Error in line 3"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Error in line 4"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Error in line 5"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Error in line 6 € Error in line 8 F The pseudocode is error free"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        3
+      ],
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Library\" dataset. The template of \"Library\" dataset is attached in the beginning of this paper. p is a list of authors who have written books in English. dict[X] stores the number of books having at least 100 pages and written on or before 2000 by author X. Choose the correct code fragments) to complete the pseudocode. It is a Multiple Select Question (MSQ). dict = { } foreach author in pf dict [author] = 0 while(Table 1 has more rows){ Read the first row X from Table 1 Fill the Code Move X to Table 2 1f(isKey(dict, X.Author) and (X.Pages ›= 100 and X.Year ‹= 2000)){ dict[author] = dict [author] + 1 if(isKey(dict, X.Author) or (x.Pages › 100 and X.Year ‹ 2000)){ dict [author] = dict [author] + 1"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "= False, D = False 1f(isKey(dict, X.Author) and (X.Pages >= 100)){"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "= True 1fiskey (dict, X.Author) and (X.Year <= 2888))("
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "= True 1f(C and D){ dict [author] = dict[author] + 1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "= False, D = False if(isKey(dict, X.Author) and (x.Pages › 100)){"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "= True 1f(isKey(dict, X.Author) and (X.Year ‹= 2000)){"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "• True 1f(C or D)( dict [author] = dict [author] * 1"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Words\" dataset. What will flag represent at the end of each sentence? sList = [ ], wist = [ ], flag = 0, count = e while(Table 1 has more rows){ Read the first row X from Table 1 1f(X.PartofSpeech == \"Adjective\">{ count = count + 1 wList = WList ++ [X.Word] if(X.Word ends with a full stop){ tiaR = count sList = sList ++ [wList] wist = [ ] count - e Move row X to Table 2"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Number of words in each sentence Number of adjective(s) in each sentence"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of non-adjective(s) in each sentence"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Number of adjective(s) that are not repeated in each sentence"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Words\" dataset. wList will contain all words of last sentence of \"Words\" dataset at the end of execution of given pseudocode. sList = [ ], WList = [ ], flag = 0, count = 0 whije labie i nas more rows i Read the first row X from Table 1 if(x.PartOfSpeech == \"Adjective\")( count = count + 1 wList = wList ++ [x.Word] if(X.Word ends with a full stop){ flag - count sList = sList ++ [wList] wist = [ ] count = 8 Move row X to Table 2"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "TRUE"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "FALSE"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The following pseudocode is executed using the \"Words\" dataset. The value of length(sList) will be same as the number of sentences in the \"Words\" dataset at the end of execution of given pseudocode. sList = [ ], wist = [ ], flag = 0, count = e] while(Table 1 has more rows) Read the first row X from Table 1 if(x.PartOfSpeech == \"Adjective\")( count = count + 1 wList = wList ++ [x.Word] if(x.Word ends with a full stop){ flag - count sList = sList ++ [wList] wtist = [ ] count = ฿ Move row X to Table 2"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "TRUE"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "FALSE"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ]
+}

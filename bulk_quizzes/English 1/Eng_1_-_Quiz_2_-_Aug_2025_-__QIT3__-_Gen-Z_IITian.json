@@ -1,0 +1,604 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "English 1 · Quiz 2 · Aug 2025",
+  "subject": "English 1",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Woes reter to . SorrowS 8 Joys Retributions Which of the following is NOT a part of the cacophony created by the rain? consumptive croaks Pompous priests"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Dilemmes"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Hacking coughs"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Bronchial rattles"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The rain drove the residents of Limerick into. which acted as their only dry place."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The pub"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The outdoor jakes"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The Atlantic Ocean / The church"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "MCO ¿ marks On the basis of your reading of the passage, which of the following is NOT true? i. To prepare a home remedy for clearing congested passages, a paste is made out of boiled flour and nettles. ii. The paste is wrapped in a raq while still hot. ili. The raq with the paste is slapped on the chest after It has cooled down"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "i only"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "i only ili only"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both i and ii"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "MCO What, according to the narrator, figuratively settles forever in Limerick? Great sheets of rain"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The twins, Oliver and Eugene"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "the sweetness of incense"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Cigarette and pipe smoke"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "MCO In the phrase the stale fumes of spilled stout, the word stout is used as: L Passage / Context Read the excerpt given below and fill in the blanks with those forms of the verbs which best fit the passage from the options provided. Your chosen answer should maintain the tense consistency of the excerpt. Wasobiowe [i] . _ in the neighbourhood of Nagasaki. He loved nothing better than to spend his days far out at sea, fishing from a little boat. Once, when the eighth full moon [ii] - which in Japan is called the \"bean moon\" and is the most beautiful of all-Wasobiowe started on a long voyage. Leisurely he [iii] . the coast, and rejoiced in the bold outlines of the rocks seen by the light of the moon. But, without warning. black clouds gathered overhead. The storm [iv]_ _ the rain poured down, and darkness fell. The waves were lashed into fury, and the little boat was driven swift as an arrow before the wind. For three days and nights the hurricane raged. As dawn [v] _ - on the fourth morning, the wind was stilled, and the sea grew calm. Excerpted from: Old-World Japan: Legends of the Land of the Gods. Retold by Frank Rinder, The Project Gutenberg Literary Archive Foundation, 2014, p. 77."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "An adjective ve A noun Ce A vera"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "An adverb"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the appropriate verb form to fill in blank [iv]. Bursti bursted"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "will bursti"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Is burstinal"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct option."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "majority of the city _ / Is"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Will _ unaware of the events. Were not"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Were"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "At the end of this term, I _ French for about 10 years. In another 10 years, I might be fluent!"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Have study"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Had been studied"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Will have studied Will have been studying"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the future perfect continuous tense sentence from the following options: You will win the exam"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Your mother will love you forever / She will have been learning to drive a car for three hours"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Will she do it again?"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Encose ine correct opaon. There _a hundred people gathered here today."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Will nO Be was not V Are"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "IS"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "How many syllables are there in the word Repentance?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "3"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "4"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The word limitation is stressed as"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "'Limitation Limitation Limitation"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Limita'tion"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The word constraint is stressed as... Con'straint"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "'Constraint cons traint"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Co'nstraint"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "In the plural noun factories, the plural marker sounds as"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "[s]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[2]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[iz]"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The sheep in their farm of a breed called Barbados Black Belly, they love to graze."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Gets"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Are c Get"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Was"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "IS"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The deer _ _ a herbivore."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Gets Be Are c Get Was"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "IS"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Unless they talk, and very loudly at that, no one __ any attention in this world."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Gets"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Are"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Get"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Was"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "IS"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Do these scissors __ rusty?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Gets"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Are Get"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Was"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "IS"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The officer said that the most disturbing fact about the murder last week _ the dismembering of the victim's body."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Gets"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Are c Get"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "was"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "IS"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    }
+  ]
+}

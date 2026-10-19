@@ -179,6 +179,182 @@
           "value": "Let us deﬁne the following events: E1: Shop A is selected. E2: Shop B is selected. E: Two t-shirts purchased are of red color. Now, P (E1) = P (E2) = 12 P (E|E1) = nC2 n+2C2 = n(n− 1)(n + 2)(n + 1) and, P (E|E2) = 2C2 n+2C2 = 2(n + 2)(n + 1) Using Bayes’ Theorem, we get: P (E1|E) = P (E1)P (E|E1)P (E1)P (E|E1) + P (E2)P (E|E2) = 67 (Given) =⇒ 1 2× n(n− 1)(n + 2)(n + 1) 1 2× n(n− 1)(n + 2)(n + 1) + 12× 2(n + 2)(n + 1) = 67 =⇒ n(n− 1)n(n− 1) + 2 = 67 7n(n− 1) = 6n(n− 1) + 12 =⇒ n2− n− 12 = 0 Therefore, n = 4,−3. Since, n cannot be negative. So, n = 4 Hence, option ( b) is correct. 9"
         }
       ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let $X$ be a random variable with mean $\\mu = 10$ and variance $\\sigma^2 = 4$. What is the variance of $Y = 3X + 5$?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "36"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "12"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "17"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "4"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$\\text{Var}(aX + b) = a^2 \\text{Var}(X) = 3^2 \\times 4 = 36$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If events $A$ and $B$ are mutually exclusive with $P(A) = 0.3$ and $P(B) = 0.4$, what is $P(A \\cup B)$?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "0.7"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "0.12"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "0.58"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "0.1"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "For mutually exclusive events, $P(A \\cup B) = P(A) + P(B) = 0.3 + 0.4 = 0.7$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If $X \\sim \\text{Binomial}(n = 20, p = 0.3)$, what is the variance of $X$?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "4.2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "6.0"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1.8"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "14.0"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$\\text{Var}(X) = np(1-p) = 20 \\times 0.3 \\times 0.7 = 4.2$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If $X \\sim \\text{Poisson}(\\lambda = 3)$, what is $P(X = 0)$?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$e^{-3}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$3e^{-3}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$1 - e^{-3}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "0"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "For Poisson distribution, $P(X = k) = \\frac{\\lambda^k e^{-\\lambda}}{k!}$. For $k = 0$, $P(X=0) = e^{-3}$."
+        }
+      ]
     }
   ],
   "week": 8

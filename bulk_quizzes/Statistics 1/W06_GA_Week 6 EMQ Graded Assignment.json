@@ -22,6 +22,314 @@
           "value": "The selection of designer wrappers to get all bottles wrapped will be simultaneous and without replacement, as it is mentioned that one designer wrapper can be used to wrap only one bottle. All the designer wrappers are diﬀerent, the order of selection do matter, as green wrapper 1 for ﬁrst bottle and red wrapper for second bottle is diﬀerent from red wrapper for ﬁrst bottle and green wrapper for second bottle. In other words, we can consider it as an arrangement of designer wrappers at ﬁve places. Hence, permutation is used. (2). In how many ways can the organizing team get all bottles wrapped by the designer wrappers? (Enter the option number(s) from the given list of options) For the ﬁrst bottle to get wrapped by the designer-wrapper, there are 10 ways. For the second bottle to get designer-wrapped, there are 9 ways because 1 designer-wrapper is already used to wrap the ﬁrst bottle. Similarly, for the third, fourth and ﬁfth bottle to get designer wrapped there are 7, 6 and 5 ways respectively. Since, events are occurring simultaneously, the number of ways to get all bottles wrapped with designer wrapper = 10 × 9 × 8 × 7 × 6, which is the same as option number (9).’ A company has 10 diﬀerent laptops. A manager needs to give one laptop each to 5 employees. He picks 5 laptops randomly and give them to 5 employees. On the basis of given information, The distribution of laptops will occur simultaneously and without replacement, as the same laptop cannot be given to multiple employees. Here, the order of distribution of laptops do matter as giving HP laptop to ﬁrst em- ployee and DELL laptop to second employee is diﬀerent from giving DELL laptop to the ﬁrst employee and HP laptop to the second employee. In other words, we can consider it as an arrangement of laptops at ﬁve places. Hence, permutation is used. (4). Find the number of ways in which the manager can give laptop to the 5 employees. (Enter the option number(s) from the given list of options) The ﬁrst employee can get any of the 10 laptops, which implies that there are 10 ways to give laptop to the ﬁrst employee. To give laptop to the second employee, there are 9 ways because 1 laptop is already given to the ﬁrst employee. Similarly, for the third, fourth and ﬁfth employee there are 7, 6 and 5 ways respectively to give the laptop. Since, events are occurring simultaneously, the number of ways in which the manager can give laptop to the 5 employees = 10 × 9 × 8 × 7 × 6, which is the same as option number (9). 2 In a data-analysis competition, there are 10 analytic teams. The 5 teams are shortlisted randomly for the award. Assume that any team can be shortlisted for the award. On the basis of given information, answer questions (5) and (6). (5). From the given list of options, select the step(s) applicable for shortlisting the 5 teams for award. The teams will be shortlisted for the award simultaneously and without replacement, as the same team can not be shortlisted again and again. Since, we are shortlisting only 5 teams and there is not any diﬀerence if a team is shortlisted ﬁrst, second or last. Hence, the order does not matter. In other words, we can consider it as a selection of 5 teams out of 10 teams. Hence, combination is used. (6). What are the possible number of ways the teams will be shortlisted for the award?(Enter the option number(s) from the given list of options) The ﬁrst shortlisted team can be any one of the 10 teams, as anyone can be shortlisted. For the second shortlisted team, there are 9 ways because 1 team is already shortlisted. Similarly, for the third, fourth and ﬁfth shortlisted teams there are 7, 6 and 5 ways respectively. Since, events are occurring simultaneously and order does not matter, the number of ways the team will be shortlisted for the award = (10 × 9 × 8 × 7 × 6)(5!) ways, which is the same as option number (10). In IPL 2022 tournament, there are 10 teams. In the ﬁrst round of the tournament, each team will play two matches each against every other team. The top 5 teams, at the end of the ﬁrst round, will be qualiﬁed for the next round. On the basis of given information, The teams will be qualiﬁed for the next round simultaneously and without replacement, as the same team can not be qualiﬁed again and again. Since, only top 5 teams are qualifying for the next round and there is not any diﬀerence if a team ﬁnishes ﬁrst, second or ﬁfth in the ﬁrst round. Hence, the order does not matter. In other words, we can consider it as a selection of 5 teams out of 10 teams. Hence, combination is used. 3 (8). What are the possible number of ways to get the top 5 teams that can qualify for the next round? (Enter the option number(s) from the given list of options) The ﬁrst qualiﬁed team can be any one of the 10 teams, as any team can be qualiﬁed. For the second qualiﬁed team, there are 9 ways because 1 team is already qualiﬁed for the next round. Similarly, for the third, fourth and ﬁfth qualiﬁed teams there are 7, 6 and 5 ways respectively. Since, events are occurring simultaneously and order does not matter, the number of ways the team will be qualiﬁed for the next round = (10 × 9 × 8 × 7 × 6)(5!) ways, which is the same as option number (10). 4"
         }
       ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let $X$ be a random variable with mean $\\mu = 10$ and variance $\\sigma^2 = 4$. What is the variance of $Y = 3X + 5$?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "36"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "12"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "17"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "4"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$\\text{Var}(aX + b) = a^2 \\text{Var}(X) = 3^2 \\times 4 = 36$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If events $A$ and $B$ are mutually exclusive with $P(A) = 0.3$ and $P(B) = 0.4$, what is $P(A \\cup B)$?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "0.7"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "0.12"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "0.58"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "0.1"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "For mutually exclusive events, $P(A \\cup B) = P(A) + P(B) = 0.3 + 0.4 = 0.7$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If $X \\sim \\text{Binomial}(n = 20, p = 0.3)$, what is the variance of $X$?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "4.2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "6.0"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "1.8"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "14.0"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "$\\text{Var}(X) = np(1-p) = 20 \\times 0.3 \\times 0.7 = 4.2$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If $X \\sim \\text{Poisson}(\\lambda = 3)$, what is $P(X = 0)$?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "$e^{-3}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$3e^{-3}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "$1 - e^{-3}$"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "0"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "For Poisson distribution, $P(X = k) = \\frac{\\lambda^k e^{-\\lambda}}{k!}$. For $k = 0$, $P(X=0) = e^{-3}$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If $P(A) = 0.5$, $P(B) = 0.4$, and events $A$ and $B$ are independent, what is $P(A \\cap B)$?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "0.20"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "0.90"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "0.10"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "0.70"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "For independent events, $P(A \\cap B) = P(A) \\times P(B) = 0.5 \\times 0.4 = 0.20$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let $X \\sim \\text{Uniform}(2, 8)$. What is $P(3 < X < 6)$?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "0.5"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "0.3"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "0.6"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "0.25"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "For $X \\sim U(a, b)$, $P(c < X < d) = \\frac{d - c}{b - a} = \\frac{6 - 3}{8 - 2} = \\frac{3}{6} = 0.5$."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let $X$ and $Y$ be any two random variables with $E[X] = 4$ and $E[Y] = 5$. What is $E[3X - 2Y + 7]$?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "9"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "7"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "11"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "29"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 2,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "By linearity of expectation, $E[3X - 2Y + 7] = 3(4) - 2(5) + 7 = 12 - 10 + 7 = 9$."
+        }
+      ]
     }
   ],
   "week": 6

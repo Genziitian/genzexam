@@ -1,0 +1,671 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Python Programming · Quiz 1 · Oct 2022 · F2022",
+  "subject": "Python Programming",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "E1 and E2 are Boolean expressions. Consider the following expression. What can you say about the value of the expression given above?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "not(E1 and E2) != (not E1 or not E2)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "It is True if and only if E1 and E2 have different values"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "It is False if and only if E1 and E2 have the same value"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "It is always True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "It is always False"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "By De Morgan's law, not(E1 and E2) is always equal to (not E1 or not E2), so the != comparison is always False."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following code snippet. What will be the output of the code given above for the input 1234?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "a, b, c, d = input()\nd = 3\nprint((a + b + c) * int(d))"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "123123123"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "18"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "24"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "492"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "123412341234"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Unpacking '1234' gives a='1', b='2', c='3'. d is then reassigned to 3, so (a+b+c) = '123' and '123' * int(3) = '123123123'."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If n is a positive integer, then what will be the value of count at the end of execution of the code given below?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "n = int(input())\ncount = 0\nfor x in range(1, n + 1):\n    for y in range(x + 1, n + 1):\n        count = count + 1"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "n²"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "n(n + 1)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "n(n + 1)/2"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "n(n - 1)/2"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The nested loop counts every pair (x, y) with x < y in 1..n, i.e. C(n,2) = n(n-1)/2."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What will be the output of the code snippet given below?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "L = [-1, 1]\nfor i in range(8):\n    size = len(L)\n    value = L[size - 2] + L[size - 1]\n    L.append(value)\nprint(L)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "[-1, 1, 0, 1, 1, 2, 3, 5, 8, 13]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[0, 1, 1, 2, 3, 5, 8, 13, 21, 34]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[1, 1, 2, 3, 5, 8, 13, 21, 34, 55]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[-1, -1, -2, -3, -5, -8, -13, -21, -34, -55]"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Each new value is the sum of the previous two elements (Fibonacci-style starting from -1, 1): [-1, 1, 0, 1, 1, 2, 3, 5, 8, 13]."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If n is a positive integer, what is the output of the following code? Assume that natural numbers start from 1, that is, 0 is"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "not a natural number.\na = 0\nfor i in range(1, n + 1):\n    b = 1\n    for j in range(1, i + 1):\n        b = b * j\n    a = a + b\nprint(a)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Sum of the first n natural numbers"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Product of the first n natural numbers"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Sum of the factorial of the first n natural numbers"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Factorial of the sum of the first n natural numbers"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "For each i, b becomes i * (1*2*...*i) ... the inner loop multiplies i by 1..i, and these are accumulated, giving the sum of the factorials of the first n natural numbers."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What will be the output of the code for L = [394, 289, 120, 719, 50, 27, 15]?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "L = [394, 289, 120, 719, 50, 27, 15]\nflag1, flag2 = True, True\nfor i in range(1, len(L)):\n    if L[i] > L[i - 1]:\n        flag2 = False\n    elif L[i] < L[i - 1]:\n        flag1 = False\nif flag1:\n    print('one')\nelif flag2:\n    print('two')"
+        },
+        {
+          "kind": "text",
+          "value": "else:"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "print('three')"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "one"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "two"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "three"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "four"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The list is neither fully non-increasing nor fully non-decreasing, so both flags become False, printing 'three'."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "T is a positive integer that represents the temperature in degree Celsius. Consider the snippet of code given above. Two snippets of code are equivalent if they produce the same output for any given input. Select all snippets of code that are equivalent to the code given above."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "# Reference code\nif 0 < T <= 15:\n    print('freezing')\nelif 15 < T <= 25:\n    print('cold')\nelif 25 < T <= 30:\n    print('warm')"
+        },
+        {
+          "kind": "text",
+          "value": "else:"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "print('hot')"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "if 0 < T <= 15: print('freezing') if 15 < T <= 25: print('cold') if 25 < T <= 30: print('warm') if T > 30: print('hot')"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "if 0 < T <= 15: print('freezing') if 15 < T <= 25: print('cold') if 25 < T <= 30: print('warm') else: print('hot')"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "if 0 < T <= 15: print('freezing') elif 15 < T <= 25: print('cold') elif 25 < T <= 30: print('warm') elif T > 30:\nprint('hot')"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "if 0 < T <= 15: print('freezing') if 15 < T <= 25: print('cold') if 25 < T <= 30: print('warm') else T > 30: print('hot')"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        2
+      ],
+      "marks": 3,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The temperature bands are mutually exclusive. Option 1 (independent ifs ending with 'if T > 30') and option 3 (if/elif/elif/elif T > 30) print exactly one matching label, equivalent to the reference. Option 2 attaches the else to the third if, wrongly printing 'hot' for many temperatures; option 4 ('else T > 30:') is a syntax error."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following options print \"Welcome to Python Quiz!\" on n separate lines? Here, n is a positive integer that has already been defined. Your answer should be applicable for any positive integer. (Sample output shown for n = 5.)"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "# Sample output for n = 5:\n# welcome to Python Quiz!\n# welcome to Python Quiz!\n# welcome to Python Quiz!\n# welcome to Python Quiz!\n# welcome to Python Quiz!"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "print('Welcome to Python Quiz!') print('Welcome to Python Quiz!') print('Welcome to Python Quiz!')\nprint('Welcome to Python Quiz!') print('Welcome to Python Quiz!')"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "for i in range(n, 2 * n): print('Welcome to Python Quiz!')"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "for i in range(1, n): print('Welcome to Python Quiz!')"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "for i in range(n): print('Welcome to Python Quiz!')"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1,
+        3
+      ],
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Option 1 has 5 literal prints (works for n=5); option 2 range(n, 2*n) runs n times; option 4 range(n) runs n times. Option 3 range(1, n) runs only n-1 times."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Reverse a sentence based on words. The i-th word from the left in the input sentence is the i-th word from the end in the output sentence. Example: sentence = \"i know how to code in python\" gives modified_sentence = \"python in code to how know i\". Choose all the options that accept a sentence as input and print the modified sentence."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "# Example\n# sentence = \"i know how to code in python\"\n# modified_sentence = \"python in code to how know i\""
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "sentence = input() words = sentence.split(' ') n = len(words) for i in range(n - 1, 0, -1): print(words[i] + ' ', end='')\nprint(words[0])"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "sentence = input() words = sentence.split(' ') n = len(words) for i in range(n - 1, -2, -1): print(words[i] + ' ',\nend='')"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "sentence = input() words = sentence.split(' ') n = len(words) for i in range(n - 1, -1, -1): print(words[i] + ' ',\nend='') print(words[0])"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "words = sentence.split(' ') n = len(words) for i in range(n - 1): print(words[n - i - 1], end=' ') print(words[0])"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        3
+      ],
+      "marks": 4,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Options 1 and 4 print the words in reverse order ending with words[0]. Option 2 wraps to the last word and prints it twice; option 3 prints words[0] then again, duplicating the first word."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Select all matrices M for which the following code prints True to the console."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "n = len(M)\nflag = True\nfor i in range(n):\n    for j in range(n):\n        if (i != j) and (M[i][j] != M[j][i]):\n            flag = False\nprint(flag)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "[[1, 2, 3], [2, 5, 4], [3, 4, 6]]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[[1, 5, 3, 4], [5, 1, 4, 6], [3, 4, 2, 8], [4, 6, 8, 3]]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[[1, 2, 3], [0, 5, 4], [3, 4, 6]]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[[1, 5, 3, 6], [5, 1, 4, 6], [3, 4, 2, 8], [4, 6, 8, 3]]"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1
+      ],
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "The code prints True only for symmetric matrices (M[i][j] == M[j][i]). Options 1 and 2 are symmetric; option 3 has M[0][1]=2 vs M[1][0]=0 and option 4 has M[0][3]=6 vs M[3][0]=4."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "For what values of a, b and c does the code given below print a sequence which has 0 as one of the elements?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "for i in range(a, b, c):\n    print(i)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "a = 10, b = -1, c = -1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "a = -10, b = 1, c = 1"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "a = 10, b = -2, c = 0"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "a = 10, b = -2, c = 1"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1
+      ],
+      "marks": 5,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "range(10,-1,-1) -> 10..0 (has 0); range(-10,1,1) -> -10..0 (has 0). range(10,-2,0) raises ValueError (step 0); range(10,-2,1) is empty (positive step but start > stop)."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "n is a positive integer that has already been defined. Select all snippets of code that print the following sequence of n lines, where in line i the output corresponds to the first i Fibonacci numbers (0 and 1 are the first two Fibonacci numbers). There should be a single space after every number, and a single space after the last number in any given line. (Sample output shown for n = 7.)"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "# Sample output for n = 7:\n# 0\n# 0 1\n# 0 1 1\n# 0 1 1 2\n# 0 1 1 2 3\n# 0 1 1 2 3 5\n# 0 1 1 2 3 5 8"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "L = [0, 1] for i in range(n - 2): L.append(L[-1] + L[-2]) for i in range(1, n + 1): for j in range(i): print(L[j], end=' ')\nprint()"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "i = 0 L = [] while i < n: if i == 0: L.append(0) elif i == 1: L.append(1) else: L.append(L[-1] + L[-2]) i += 1 for j in\nrange(i): print(L[j], end=' ') print()"
+          }
+        ],
+        [
+          {
+            "kind": "code",
+            "language": "python",
+            "value": "i = 0 L = [] while i <= n: if i == 0: L.append(0) elif i == 1: L.append(1) else: L.append(L[-1] + L[-2]) i += 1 for j in\nrange(i): print(L[j], end=' ') print()"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "L = [0, 1] for i in range(n): L.append(L[-1] + L[-2]) for j in range(i): print(L[j], end=' ') print()"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1
+      ],
+      "marks": 5,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Options 1 and 2 build the Fibonacci list and print the first i numbers on line i. Option 3 (while i <= n) prints one extra line; option 4 is off by one (prints range(i), so the first line is empty and the last line is incomplete)."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "NOTE: Enter your answer to the nearest integer. R is a zero-matrix (all entries are zeros) of size 3 x 3. P = [[1, 2, 3], [4, 5, 6], [7, 8, 9]] and Q = [[1, -1, 1], [1, -1, 1], [1, -1, 1]]. What is the output of the following snippet of code?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "val = 0\nfor i in range(3):\n    for j in range(3):\n        R[i][j] = P[i][j] * Q[i][j]\n        val = val + R[i][j]\nprint(val)"
+        }
+      ],
+      "numerical_answer": 15,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "R[i][j] = P[i][j]*Q[i][j], summed: row sums are (1-2+3)=2, (4-5+6)=5, (7-8+9)=8. Total = 2+5+8 = 15."
+        }
+      ]
+    }
+  ]
+}

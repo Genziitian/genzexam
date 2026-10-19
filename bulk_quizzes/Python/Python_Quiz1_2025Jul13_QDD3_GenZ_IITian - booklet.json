@@ -1,0 +1,620 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Python Programming · Quiz 1 · 13 Jul 2025 · QDD3",
+  "subject": "Python Programming",
+  "section": "quiz1",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following code. Which of the following is the correct output?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "text = \">>> Hello, Python! <<< \"\nto_strip = \" <>\"\nA = text.strip(to_strip)\nB = text.lstrip(to_strip)\nC = text.rstrip(to_strip)\nD = text.strip()\nprint(A)\nprint(B)\nprint(C)\nprint(D)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "`Hello, Python!` `Hello, Python! <<<` `>>> Hello, Python!` `>>> Hello, Python! <<<`"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "`Hello, Python!` `Hello, Python! <<<` `>>> Hello, Python!` `>>> Hello, Python! <<<`"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "`Hello, Python!.` `>>> Hello, Python!` `Hello, Python! <<<` `>>> Hello, Python! <<<`"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "`>>> Hello, Python! <<<` `Hello, Python! <<<` `>>> Hello, Python!` `Hello, Python!`"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "strip(' <>') removes leading/trailing spaces, '<' and '>' from both ends -> 'Hello, Python!'. lstrip strips only the left -> 'Hello, Python! <<< '. rstrip strips only the right -> '>>> Hello, Python!'. strip() with no args removes only whitespace -> '>>> Hello, Python! <<<'."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider a Python program that takes a sentence (which may contain both uppercase and lowercase letters, spaces, and punctuation) and prints the number of vowels present. Which of these two snippets is correct?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "# Snippet-1\nsentence = input()\ncount = 0\nvowels = set(\"aeiouAEIOU\")\nfor char in sentence:\n    if char in vowels:\n        count += 1\nprint(count)\n# Snippet-2\nsentence = input()\ncount = 0\nfor char in sentence.lower():\n    if char in ['a', 'e', 'i', 'o', 'u']:\n        count += 1\nprint(count)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Only snippet-1 is correct"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Only snippet-2 is correct"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both snippets are correct"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both snippets are wrong"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 3,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Snippet-1 checks each character against a set of both-case vowels. Snippet-2 lowercases the sentence first and checks against lowercase vowels. Both count exactly the vowels in the sentence, so both are correct."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the output of the following Python code?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "data = [\"alpha\", \"beta\", \"gamma\"]\ndata[1] = data[1].replace(\"e\", data[0][1])\ndata[2] = data[2][::-1].replace(\"a\", data[0][3])\nprint(data)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "['alpha', 'blta', 'ammag']"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "['alpha', 'blta', 'ghmmh']"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "['alpha', 'blta', 'htlb']"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "['alpha', 'blta', 'hmmh']"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 3,
+      "difficulty": "hard",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "data[0][1]='l' so 'beta'->'blta'. data[0][3]='h'. 'gamma'[::-1]='ammag', and replacing every 'a' with 'h' literally produces 'hmmhg' — which is NOT among the options. The closest (and presumably intended) option is 'ghmmh', the result of replacing 'a' with 'h' in 'gamma' WITHOUT the reversal. The question appears mis-set; selecting option 2 ('ghmmh') as the intended key. Verify against the official answer."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "We want to print the following pattern: 1111 1001 1011 1111 Which of these two snippets is correct?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "# Snippet-1\nn = 4\nfor i in range(n):\n    for j in range(n):\n        if i == 0 or i == n-1 or j == 0 or j == n-1:\n            print('1', end='')\n        elif i == j:\n            print('1', end='')\n        else:\n            print('0', end='')\n    print()\n# Snippet-2\nn = 4\nfor i in range(n):\n    row = ''\n    for j in range(n):\n        if i in [0, n-1] or j in [0, n-1]:\n            row += '1'\n        elif i == j:\n            row += '0'\n        else:\n            row += '1'\n    print(row)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Only Snippet-1 prints the pattern correctly"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Only Snippet-2 prints the pattern correctly"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both snippets print the pattern correctly"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Both snippets print incorrect patterns"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Target rows are 1111 / 1001 / 1011 / 1111. Snippet-1 prints 1111 / 1101 / 1011 / 1111 (row 2 wrong). Snippet-2 prints 1111 / 1011 / 1101 / 1111 (rows 2 and 3 wrong). Neither reproduces the target, so both are incorrect."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "P is a non-empty list of distinct integers that has already been defined. Which of the following statements are true at the end of execution of the code given below?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "Q, R = [], []\nfor x in P:\n    Q.append(-x)\nQ.sort()\nfor x in Q:\n    R.append(-x)"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "P is always equal to R, i.e., P == R returns the value True"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Every element in P is present in R, but not necessarily in the same sequence."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "R is a list of integers sorted in descending order."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Q is a list of integers sorted in ascending order."
+          }
+        ]
+      ],
+      "correct_answers": [
+        1,
+        2,
+        3
+      ],
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Q holds the negatives of P then is sorted ascending (option 4 true). R negates each element of the sorted Q, recovering P's values but in descending order (option 3 true); R contains exactly P's elements (option 2 true). P == R only if P was already in descending order, which is not guaranteed, so option 1 is false."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following Python code. Which of the following statements is/are true?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def process(x, y):\n    if x > y:\n        return x - y\n    elif x < y:\n        return y - x\n    else:\n        return x + y\ndef compute(a, b):\n    result = process(a, b)\n    if result % 2 == 0:\n        return \"Even\"\n    else:\n        return \"Odd\""
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "If x = 5 and y = 2, then output will be Odd"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "If x = 4 and y = 8, then output will be Even"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "If x = 3 and y = 3, then output will be Odd"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "If x = 10 and y = 5, then output will be Even"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1
+      ],
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "process(5,2)=3 -> Odd (option 1 true). process(4,8)=4 -> Even (option 2 true). process(3,3)=6 -> Even, not Odd (option 3 false). process(10,5)=5 -> Odd, not Even (option 4 false)."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following snippet of code. What will the output be?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "result = 0\nfor i in range(1, 4):\n    for j in range(1, 4):\n        if i == j:\n            continue\n        if i + j > 4:\n            break\n        result += i + j\nprint(result)"
+        }
+      ],
+      "numerical_answer": 14,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "i=1: j=2 -> result=3, j=3 -> result=7 (i+j=4, not >4). i=2: j=1 -> result=10, j=3 -> i+j=5>4 break. i=3: j=1 -> result=14, j=2 -> i+j=5>4 break. Total = 14."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the output of the following snippet of code? Enter an integer as your answer."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "lst = ['IIT', ['Madras', '2025'], 'exam']\nprint(len(lst[0]) + len(lst[1][1]) + len(lst[2]))"
+        }
+      ],
+      "numerical_answer": 11,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "easy",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "len('IIT')=3, lst[1][1]='2025' so len=4, len('exam')=4. 3 + 4 + 4 = 11."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "What is the output of the following snippet of code? Enter an integer as your answer."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "lst = [x for x in [1, 0, -2]]\nresult = 0\nfor val in lst:\n    if val == 0:\n        result += 10\n    elif val < 0:\n        result += 5\n    elif val % 2 == 1:\n        result += 3\n    else:\n        result += 1\nprint(result)"
+        }
+      ],
+      "numerical_answer": 18,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "lst = [1, 0, -2]. val=1 -> odd, +3. val=0 -> +10. val=-2 -> negative, +5. Total = 3 + 10 + 5 = 18."
+        }
+      ]
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following snippet of code. What will the output be?"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "names = [\"alice\", \"bob\", \"charlie\", \"david\", \"eve\"]\nresult = 0\nshort = []\nfor name in names:\n    if len(name) < 4:\n        short.append(name)\n    elif len(name) == 5:\n        result += 1\n    elif 'a' in name:\n        result += 2\nprint(len(short) + result)"
+        }
+      ],
+      "numerical_answer": 6,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "'alice' len 5 -> result+=1. 'bob' len 3 -> short. 'charlie' len 7, 'a' in it -> result+=2. 'david' len 5 -> result+=1. 'eve' len 3 -> short. len(short)=2, result=4, total = 6."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following snippet of code and answer the given sub-questions. (Note: the built-in function isinstance(object, type) is used to check if an object is of a specified type.)"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def transform(data):\n    result = []\n    for item in data:\n        if isinstance(item, str) and len(item) % 2 == 0:\n            result.append(item.upper())\n        elif isinstance(item, int) and item % 2 == 1:\n            result.append(item * item)\n        else:\n            continue\n    return result\nsample = ['ai', 5, 'sql', 4, 'ml', 8, 9]\noutput = transform(sample)"
+        },
+        {
+          "kind": "text",
+          "value": "What is the value of output after executing the given code?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "['AI', 25, 'ML']"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "['AI', 25, 'ML', 64]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "['AI', 25, 'ML', 81]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "['AI', 16, 'ML', 64]"
+          }
+        ]
+      ],
+      "correct_answer": 2,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "'ai' (len 2, even) -> 'AI'. 5 (odd int) -> 25. 'sql' (len 3, odd) skipped. 4 (even int) skipped. 'ml' (len 2, even) -> 'ML'. 8 (even int) skipped. 9 (odd int) -> 81. output = ['AI', 25, 'ML', 81]."
+        }
+      ]
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following snippet of code and answer the given sub-questions. (Note: the built-in function isinstance(object, type) is used to check if an object is of a specified type.)"
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def transform(data):\n    result = []\n    for item in data:\n        if isinstance(item, str) and len(item) % 2 == 0:\n            result.append(item.upper())\n        elif isinstance(item, int) and item % 2 == 1:\n            result.append(item * item)\n        else:\n            continue\n    return result\nsample = ['ai', 5, 'sql', 4, 'ml', 8, 9]\noutput = transform(sample)"
+        },
+        {
+          "kind": "text",
+          "value": "Which of the following changes would also include SQL in the final result?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "Make the length condition len(item) % 2 == 1 instead of == 0."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Remove the condition len(item) % 2 == 0."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Ensure 'sql' is written as 'SQL' in the original list."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Remove the condition isinstance(item, str)."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1
+      ],
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "'sql' has length 3 (odd). Changing the test to len%2==1 lets it through -> 'SQL'. Removing the length condition entirely also lets every string through -> 'SQL'. Writing 'SQL' originally keeps length 3, still failing len%2==0. Removing isinstance(str) does not help because len%2==0 still fails for length 3. So only options 1 and 2 include SQL."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following snippet of code and answer the given sub-questions."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def matrix_transform(matrix):\n    result = []\n    i = 0\n    while i < len(matrix):\n        row = matrix[i]\n        for element in row:\n            if element % 2 == 1:\n                result.append(element * 2)\n        i += 1\n    return result\nmatrix = [[1, 2, 3], [4, 5], [6]]\noutput = matrix_transform(matrix)\nprint(output)"
+        },
+        {
+          "kind": "text",
+          "value": "What is the value of output after executing the given code snippet?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "[2, 6, 10, 14]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[2, 6, 10]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[2, 8, 10]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[2, 6, 14]"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 4,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Odd elements are doubled. Row [1,2,3]: 1->2, 3->6. Row [4,5]: 5->10. Row [6]: none. output = [2, 6, 10]."
+        }
+      ]
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider the following snippet of code and answer the given sub-questions."
+        },
+        {
+          "kind": "code",
+          "language": "python",
+          "value": "def matrix_transform(matrix):\n    result = []\n    i = 0\n    while i < len(matrix):\n        row = matrix[i]\n        for element in row:\n            if element % 2 == 1:\n                result.append(element * 2)\n        i += 1\n    return result\nmatrix = [[1, 2, 3], [4, 5], [6]]\noutput = matrix_transform(matrix)\nprint(output)"
+        },
+        {
+          "kind": "text",
+          "value": "In the given code, if we change the condition to if element % 2 == 0 at line 7, then what is the value of output after executing it?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "[4, 8, 12]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[4, 8, 10]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[9, 10]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "[6, 8, 12]"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 3,
+      "difficulty": "medium",
+      "explanation": [
+        {
+          "kind": "text",
+          "value": "Now even elements are doubled. Row [1,2,3]: 2->4. Row [4,5]: 4->8. Row [6]: 6->12. output = [4, 8, 12]."
+        }
+      ]
+    }
+  ]
+}

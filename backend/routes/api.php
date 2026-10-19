@@ -67,6 +67,7 @@ Route::post('/membership/google-play/notifications', GooglePlayNotificationContr
 // Authenticated student routes
 Route::middleware(['auth:sanctum', 'track.seen'])->group(function () {
     Route::post('/question-reports', [QuestionReportController::class, 'store'])->middleware('throttle:20,1');
+    Route::post('/ide-problems/{id}/report', [QuestionReportController::class, 'storeIde'])->whereNumber('id')->middleware('throttle:20,1');
     Route::post('/auth/logout', [AuthController::class, 'logout']);
     Route::delete('/auth/account', [AuthController::class, 'deleteAccount']);
     Route::post('/auth/account-deletion-requests', [AccountDeletionRequestController::class, 'store'])->middleware('throttle:5,60');

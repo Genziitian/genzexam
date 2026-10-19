@@ -1,0 +1,220 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Statistics 2 · Quiz 2 · Aug 2024 · QDF4",
+  "subject": "Statistics 2",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Formula file / reference card. Distribution, PMF/PDF, CDF, E[X] and Var (X) for the common discrete and continuous distributions. Also: Markov's inequality: for a discrete random variable X taking non-negative values with finite mean ju, P(X 2 c) ≤ &- Chebyshev's inequality: for a random variable X with mean 4 and finite variance o?, P(IX - 14l ≥ c) ≤ g Distribution COF Fx(z) 5[X] Discrete random"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "ariables"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "<0 Uniform (4)."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "= {a, a + 1,..., 6}"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "= a,a + 1,.....o Bemoulli(p)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "ar(X) p(1 - p) пр(1 - р) Binomia' (n, p) Geometric (P) Poisson(X) Continuous random"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "ariables Uniform|a, b Exp(X) Normal (s, 0*) Gamms(a, 8) Bets (a, 3) \"Cop\" (1 - p)\"-*, k = 0,1,..., n (1 - p)* p.k = 1,...,∞"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "- 0,1,....∞ Faze 4, 2>0 / Useful Data has been mentioned above."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "<0 -› =50"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "This data attachment is just for a reference & not for an evaluation."
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider a random variable X that satisfies the following: E[X] = 1, E[Xª] = 0, E[X\"] = 2. Define a new random variable Y = 4 + X + 3X%. Find Cov(X, Y)."
+        }
+      ],
+      "numerical_answer": 5.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "X and Y'). Suppose random variables X and Y are uniformly distributed over the shaded region D, as illustrated in Figure 1 (Joint PDF region of D 7 Figure 1: Joint PDF region of X and Y Which among the following options are true? fr (y) - 3/9 3<y≤4 otherwise 5/9 fr (y) - 1/9 1<y≤2 2 <y≤3 otherwise (X |· = a) ~ Uniform[1,6}, for 1 < a < 2]"
+        }
+      ],
+      "acceptable_answers": [
+        "B, C"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let X and Y have the flowing joint density function (r, g) - (18% 5, herd, a + y ≤ 1 Find the conditional distribution /x|y (2 | 3)."
+        }
+      ],
+      "acceptable_answers": [
+        "B"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let X and Y have the flowing joint density function (r, g) - (18% 5, herd, a + y ≤ 1 Find the value of P(X < Y = 4)."
+        }
+      ],
+      "numerical_answer": 1.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A survey reports that the average time spent on social media per day by teenagers is 3 hours, with a standard deviation of 1 hour. A researcher selects a random sample of 64 teenagers. whats the expected value or the sample mean time spent on social media? Using Chebyshev's inequality, find the least upper bound on the probability that the sample mean time deviates from the population mean ume by more than 0.5 hours / 0.0625 8 09375"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "0.031"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "0015"
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Suppose a random vanable X is modelled as X • W + 2V, where W is discrete and uniformly distributed in -1, 1, and N ~ Normal (0, 1), independent of W. Find the conditional probability P(W = 1 | X = -1). Enter the answer correct to two decimal places."
+        }
+      ],
+      "numerical_answer": 0.12,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let X ~ Uniform (0, 1] be a continuous random variable. Define a new random variable Y = VX. Find E[Y]. Enter the answer correct to two decimal places."
+        }
+      ],
+      "numerical_answer": 0.67,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let X ~ Uniform (0, 1] be a continuous random variable. Define a new random variable Y = VX. Find the probability density function of Y. ecosystem genztenin/ecosystem vico soutions exam genzitianin routube -youtubecom/cuen zinen"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "fy (y) = y, for y € [0,1]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "fy (y) = 2}, for y € [0,1]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "fr (s) - Vs for y € (0,1]"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Jy (y) = f. for y € [0, 1/2]"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 3,
+      "difficulty": "medium"
+    }
+  ]
+}

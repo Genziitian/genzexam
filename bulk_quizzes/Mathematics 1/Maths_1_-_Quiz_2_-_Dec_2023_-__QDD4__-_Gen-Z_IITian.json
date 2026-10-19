@@ -1,0 +1,304 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 1 · Quiz 2 · Dec 2023 · QDD4",
+  "subject": "Mathematics 1",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Instructions: - There are some questions which have functions with discrete valued domains (such as day, month, year etc.). For simplicity, we treat them as continuous functions. - For NAT type question, enter only one right answer even if you get multiple answers for that particular question. Useful Data has been mentioned above."
+        }
+      ],
+      "acceptable_answers": [
+        "A"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider two functions f(x) = log, (log2(log, x)) and g(x) = -x? + 4x + 77. Let h(x) be a function defined as h(x) := (f o g)(x) in its domain. Find the maximum value of g(x)."
+        }
+      ],
+      "numerical_answer": 81.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider two functions f(x) = log, (log2(log, x)) and g(x) = -x? + 4x + 77. Let h(x) be a function defined as h(x) := (f o g)(x) in its domain. Find the maximum value of h(x)."
+        }
+      ],
+      "numerical_answer": 1.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider two functions f(x) = log, (log2(log, x)) and g(x) = -x? + 4x + 77. Let h(x) be a function defined as h(x) := (f o g)(x) in its domain. Let f(2) = 10 and f'(2) = 4. Then, calculate the value of lim, 2 2f(2) - 2f(x)"
+        }
+      ],
+      "numerical_answer": 2.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider two functions f(x) = log, (log2(log, x)) and g(x) = -x? + 4x + 77. Let h(x) be a function defined as h(x) := (f o g)(x) in its domain. Calculate limz-+9 2(v f(z) - 3) -, given that f(9) = 9 and f'(9) = 4."
+        }
+      ],
+      "acceptable_answers": [
+        "8"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Choose the correct option for f(x) ="
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The function (f o f)(x) in its domain is discontinuous only at the point/points x = 1."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The function (f o f)(z) in its domain is discontinuous only at the point/points x = 1 and x = 2."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The function (f o f)(z) in its domain is discontinuous only at the point/points x = 2."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The function (f o f)(x) in its domain is discontinuous only at the point/points x = 1, x = 2 and"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider two functions f(x) = log, (log2(log, x)) and g(x) = -x? + 4x + 77. Let h(x) be a function defined as h(x) := (f o g)(x) in its domain. Choose the set of INCORRECT options. c If f(x) and g(x) are bijective functions, then go f(x) is also a bijective function."
+        }
+      ],
+      "acceptable_answers": [
+        "A"
+      ],
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider two functions f(x) = log, (log2(log, x)) and g(x) = -x? + 4x + 77. Let h(x) be a function defined as h(x) := (f o g)(x) in its domain."
+        }
+      ],
+      "numerical_answer": 2.0,
+      "numerical_tolerance": 0.01,
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider two functions f(x) = log, (log2(log, x)) and g(x) = -x? + 4x + 77. Let h(x) be a function defined as h(x) := (f o g)(x) in its domain. Find the value of x that satisfies the equation 9* - 2 × 3=+1 - 27 = 0."
+        }
+      ],
+      "numerical_answer": 2.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider two functions f(x) = log, (log2(log, x)) and g(x) = -x? + 4x + 77. Let h(x) be a function defined as h(x) := (f o g)(x) in its domain. Find the limit of the following sequence {an) such that a, = - n° + 2n? - 1 n½ + 3n + 1"
+        }
+      ],
+      "numerical_answer": 1.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider two functions f(x) = log, (log2(log, x)) and g(x) = -x? + 4x + 77. Let h(x) be a function defined as h(x) := (f o g)(x) in its domain. n3 + 2\" Find the limit of the following sequence {an} such that an = 3\" + n?"
+        }
+      ],
+      "numerical_answer": 0.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider two functions f(x) = log, (log2(log, x)) and g(x) = -x? + 4x + 77. Let h(x) be a function defined as h(x) := (f o g)(x) in its domain. Given a function f(x) = 1\" if x 4 0. Which of the following options is/are true? if × = 0"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "limz-o+ f(x) = f(0)."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "limo- f(x) does not exist. f is not continuous at x = 0."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "f is differentiable at x = 0."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        2
+      ],
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider two functions f(x) = log, (log2(log, x)) and g(x) = -x? + 4x + 77. Let h(x) be a function defined as h(x) := (f o g)(x) in its domain. Consider the functions f(x) = vx + 2 and g(x) = log(1 + x?). Which of the following options is/are true?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "(f 0g)(x) = log(2x + 1)."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The domain of the function (go f)(x) is [-2, -1]. / (go f)(x) = log(x + 3)."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The domain of the function (go f)(x) is (-2, ∞)."
+          }
+        ]
+      ],
+      "correct_answers": [
+        2
+      ],
+      "marks": 4,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider two functions f(x) = log, (log2(log, x)) and g(x) = -x? + 4x + 77. Let h(x) be a function defined as h(x) := (f o g)(x) in its domain. Consider the graphs given below. Choose the set of correct options: Figure: Curve 1 Figure: Curve 2 5,5 10 4,5 Figure: Curve 3 Choose the set of correct options: Figure: Curve 4 There are at least two points on Curve 1, where the derivatives of the function corresponding to Curve 1, are equal. At the origin the derivative of the function corresponding to Curve 2 does not exist."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "The derivative of the function corresponding to Curve 3, at the origin and at the point (-2,0) are the same."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "The derivative of the function corresponding to Curve 4 does not exist at any point."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider two functions f(x) = log, (log2(log, x)) and g(x) = -x? + 4x + 77. Let h(x) be a function defined as h(x) := (f o g)(x) in its domain. ( 3тх + п 2 < 1 Consider a function f defined as f(x) = 15m - 2n 2 > 1 = = 1. If f is continuous at x = 1, then the value of m + n is"
+        }
+      ],
+      "numerical_answer": 5.0,
+      "numerical_tolerance": 0.01,
+      "marks": 5,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider two functions f(x) = log, (log2(log, x)) and g(x) = -x? + 4x + 77. Let h(x) be a function defined as h(x) := (f o g)(x) in its domain. Let f be a differentiable function such that f(4) = 6 and f'(4) = -2. What is the approximated value of f(4.2) using the linear approximation of frat x = 4? A 5.3 5.4 5.5"
+        }
+      ],
+      "acceptable_answers": [
+        "D"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    }
+  ]
+}

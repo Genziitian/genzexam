@@ -1,0 +1,345 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 2 · Quiz 2 · Aug 2024 · QIMA",
+  "subject": "Mathematics 2",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "This is the question paper for the subject \\\"Foundation Level: Mathematics for Data Science II (Computer Based Exam)\\\". Make sure you are registered for this subject before attempting. Let A ="
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "and T : R' → R be a linear transformation given by T(z, y) = trace(A). Recall that the trace of a matrix is the sum of its diagonal elements (the one going from top-left to bottom right). Which of the following statements is true?"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "T' is injective but not surjective."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "T is surjective but not injective. c T is an isomorphism."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "T' is neither injective nor surjective."
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "This is the question paper for the subject \\\"Foundation Level: Mathematics for Data Science II (Computer Based Exam)\\\". Make sure you are registered for this subject before attempting. Note: Two vector spaces are said to be isomorphic if we can define an isomorphism from one to the other. Which of the following vector spaces is/are isomorphic to R??"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "V = {(z, y,z) € R |x+y+z= 0} 8 V½ = span{(1, 0, 1), (1,1,0), (0, 1,1)}"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Vs= {le d la+b=0, c+d = 0; a,b,c, dER}"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "= 18€B° 10 - O where A ="
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Vs is the column space of the matrix 2 - do"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        2
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let T: R? → R? be a linear transformation such that A - o 2 is the matrix representation of ' with respect to the ordered basis {(1, 1), (1, -1)} for the domain and the standard ordered basis {(1,0), (0, 1)} for the co-domain. Which of the following matrices represent the matrix representation of I with respect to the standard ordered basis { (1, 0), (0, 1)] for both the domain and co-domain? ^ 2 =1]"
+        }
+      ],
+      "acceptable_answers": [
+        "C"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following defines the transformation T?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "T (z, y) = (x + 2y, × + y)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Т(x, y) = (2x + Y, × + y)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "( T(x, y) = (2x - y, × - y)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "/ T (x, y) = (2x + y, × - 3)"
+          }
+        ]
+      ],
+      "correct_answer": 3,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let T: R? → R? be a linear transformation such that A - o 2 is the matrix representation of ' with respect to the ordered basis {(1, 1), (1, -1)} for the domain and the standard ordered basis {(1,0), (0, 1)} for the co-domain. What is the rank of T?"
+        }
+      ],
+      "numerical_answer": 2.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let T: R? → R? be a linear transformation such that A - o 2 is the matrix representation of ' with respect to the ordered basis {(1, 1), (1, -1)} for the domain and the standard ordered basis {(1,0), (0, 1)} for the co-domain. What is the nullity of T?"
+        }
+      ],
+      "numerical_answer": 0.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A and B are square matrices of order n. Determine whether the given statements are true or false. The given sub-questions are independent of each other. They have been grouped together because both are related to the concept of similar matrices. If A and B are similar matrices, then AT and BT are similar matrices. TRUE"
+        }
+      ],
+      "acceptable_answers": [
+        "A"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "A and B are square matrices of order n. Determine whether the given statements are true or false. The given sub-questions are independent of each other. They have been grouped together because both are related to the concept of similar matrices. If A and B have the same rank, then they are similar. TRUE FALSE"
+        }
+      ],
+      "acceptable_answers": [
+        "B"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let W = span {(1, 1,0), (-1,1,0)}. The projection of (1, 2, 3) on W is (a, b, c). Find the value of a."
+        }
+      ],
+      "numerical_answer": 1.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let W = span {(1, 1,0), (-1,1,0)}. The projection of (1, 2, 3) on W is (a, b, c). Find the value of b."
+        }
+      ],
+      "numerical_answer": 2.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let W = span {(1, 1,0), (-1,1,0)}. The projection of (1, 2, 3) on W is (a, b, c). Find the value of c."
+        }
+      ],
+      "numerical_answer": 0.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let W = span {(1, 1,0), (-1,1,0)}. The projection of (1, 2, 3) on W is (a, b, c). If the dimension of W is p and that of W- is q, find the value of p? + g?."
+        }
+      ],
+      "numerical_answer": 5.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the value of a."
+        }
+      ],
+      "numerical_answer": 3.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the value of b."
+        }
+      ],
+      "numerical_answer": 2.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Find the value of c."
+        }
+      ],
+      "numerical_answer": 1.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "If AT A + AAT = kI, where k is a scalar and I is the identity matrix, find the value of k. Ш Passage / Context Let S be the set of all solutions to the system Ax = b, where A and & are given below: A ="
+        }
+      ],
+      "numerical_answer": 2.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Select all true statements. S is a vector subspace of R3 5 is an affine subspace of Ra S is a line in Ra"
+        }
+      ],
+      "acceptable_answers": [
+        "B, C"
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Select all true statements."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "S is the empty set. 8 S is a singleton set containing the zero vector."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "S = (1,1,0) + span {(1, 0, 1)}"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "S = (0,1, -1) + span{(1, 0, 1)}"
+          }
+        ]
+      ],
+      "correct_answers": [
+        2
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    }
+  ]
+}

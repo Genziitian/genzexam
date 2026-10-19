@@ -1,0 +1,303 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 2 · Quiz 2 · Nov 2022 · ANA",
+  "subject": "Mathematics 2",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following options is/are true? Every matrix is similar to itself. If A is similar to B, then A-' is similar to B-1."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "o 2 is similar to 0 21"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "If A is similar to B + C, then rank (A) = rank (B) + rank (C)."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Which of the following options is/are true?"
+        }
+      ],
+      "acceptable_answers": [
+        "B, C, D"
+      ],
+      "marks": 3,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let W be a proper subspace of an inner product space V, where dim(V) = 3 and Pw be the projection of Von W. Answer the subquestion based on the given data. If v € V is vector of norm 5, the maximum possible norm of the vector Pw(v) is"
+        }
+      ],
+      "numerical_answer": 5.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let W be a proper subspace of an inner product space V, where dim(V) = 3 and Pw be the projection of Von W. Answer the subquestion based on the given data. Which of the following option is/are true? Let v € V, then v - Pw(v) is orthogonal to W."
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "If dimension of W is 2, then dimension of the null space of Pw may not be 1."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "Zero vector is orthogonal to every vector of V. / If v € W, then Pw(v) = v."
+          }
+        ]
+      ],
+      "correct_answers": [
+        0
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider V = Ra with respect to the inner product defined as (21, 22), (31, 32)) = 2191 - (2132 + 2291) + 22292, for all (21, 22), (31, 92) € R. Answer the subquestions based on the given data. Find ||(1, 3)||?."
+        }
+      ],
+      "numerical_answer": 13.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider V = Ra with respect to the inner product defined as (21, 22), (31, 32)) = 2191 - (2132 + 2291) + 22292, for all (21, 22), (31, 92) € R. Answer the subquestions based on the given data. Which of the following is/are unit vectors in V?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "(1,1) $ (2,2) € V13 (2, 3)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "(0,1)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "None of these"
+          }
+        ]
+      ],
+      "correct_answers": [
+        0,
+        1
+      ],
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider two linear transformations T: Ra → R? such that T T(z, y, z) = (2 + y, y + z) and S : R? → Ra such that S(z, y) = (2, 3, 2 + y). Let B = {(1, 0, 0), (0, 1, 0), (0, 0, 1)} be an ordered basis for R and Y = {(1,0), (0, 1)} be an ordered basis for R?. Answer the subquestions based on the given data. If A is the matrix representation of So T (the transformation defined by (S • T)(2, y, z) = S(T(2, y, z)) with respect to the ordered basis 3 for both the domain and codomain) and order of A is m x n, then find the value of m + n."
+        }
+      ],
+      "numerical_answer": 6.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider two linear transformations T: Ra → R? such that T T(z, y, z) = (2 + y, y + z) and S : R? → Ra such that S(z, y) = (2, 3, 2 + y). Let B = {(1, 0, 0), (0, 1, 0), (0, 0, 1)} be an ordered basis for R and Y = {(1,0), (0, 1)} be an ordered basis for R?. Answer the subquestions based on the given data. If K = {(x, y, 2) | ax + by = 0, cy + dz = 0} is the null space of So T, then find the value of § - 2½-"
+        }
+      ],
+      "numerical_answer": -1.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider two linear transformations T: Ra → R? such that T T(z, y, z) = (2 + y, y + z) and S : R? → Ra such that S(z, y) = (2, 3, 2 + y). Let B = {(1, 0, 0), (0, 1, 0), (0, 0, 1)} be an ordered basis for R and Y = {(1,0), (0, 1)} be an ordered basis for R?. Answer the subquestions based on the given data. Rank of So T is"
+        }
+      ],
+      "numerical_answer": 2.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider a linear transformation T: R3 → Ra such that the matrix representation of T is A = 0 2 3 with respect to the ordered bases B = {(1, 0, 0), (0, 1, 0), (1, 1, 1)} and Y = {(1, 0), (1, 1)] for the domain and codomain, respectively. Answer the subquestions based on the given data. Nullity of the matrix A is"
+        }
+      ],
+      "numerical_answer": 1.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider a linear transformation T: R3 → Ra such that the matrix representation of T is A = 0 2 3 with respect to the ordered bases B = {(1, 0, 0), (0, 1, 0), (1, 1, 1)} and Y = {(1, 0), (1, 1)] for the domain and codomain, respectively. Answer the subquestions based on the given data. Which of the following option is true?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "I is one-one. T is onto. c T is an isomorphism."
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "I' is neither one-one nor onto."
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Consider a linear transformation T: R3 → Ra such that the matrix representation of T is A = 0 2 3 with respect to the ordered bases B = {(1, 0, 0), (0, 1, 0), (1, 1, 1)} and Y = {(1, 0), (1, 1)] for the domain and codomain, respectively. Answer the subquestions based on the given data. If T (x, y, z) = (mx + ny + sz, px + qy + rz), then find the value of (m + n + s) - 3(p + q + r)."
+        }
+      ],
+      "numerical_answer": -6.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "short_answer",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The teacher asked Soumya and Sohini to consider an affine space each. Soumya considered the affine subspace L and Sohini considered the affine subspace L' of IR, where L = U and L' = (2,0, 1) + U', for some vector subspaces U = Span{(2, 0, 1), (1, 1, 0), (0, 1, 0)} and U' = Span {(1, 0, 1), (0, 1, 1)} of R3. Suppose there is a linear transformation T : U → U' such that (0, 1, 0) € ker (T), T(2, 0, 1) = (0, 1, 1) and T(1, 1,0) = (1,0, 1). An affine mapping f : L → L' is obtained by defining f(u) = (2, 0, 1) + T(u). for all u € U. By using the above information answer the given subquestions. Which of the following affine subspaces was considered by Soumya?"
+        }
+      ],
+      "acceptable_answers": [
+        "D"
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The teacher asked Soumya and Sohini to consider an affine space each. Soumya considered the affine subspace L and Sohini considered the affine subspace L' of IR, where L = U and L' = (2,0, 1) + U', for some vector subspaces U = Span{(2, 0, 1), (1, 1, 0), (0, 1, 0)} and U' = Span {(1, 0, 1), (0, 1, 1)} of R3. Suppose there is a linear transformation T : U → U' such that (0, 1, 0) € ker (T), T(2, 0, 1) = (0, 1, 1) and T(1, 1,0) = (1,0, 1). An affine mapping f : L → L' is obtained by defining f(u) = (2, 0, 1) + T(u). for all u € U. By using the above information answer the given subquestions. Which of the following affine subspaces was considered by Sohini?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "L' = {(x,y, z) | x - y - 2z = 0}"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "L' = {(x,y, ½) | x+y-z= 1} с L' = {(z,y,z) |x+y-z=0}"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "L' = R3"
+          }
+        ]
+      ],
+      "correct_answer": 1,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_single",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "The teacher asked Soumya and Sohini to consider an affine space each. Soumya considered the affine subspace L and Sohini considered the affine subspace L' of IR, where L = U and L' = (2,0, 1) + U', for some vector subspaces U = Span{(2, 0, 1), (1, 1, 0), (0, 1, 0)} and U' = Span {(1, 0, 1), (0, 1, 1)} of R3. Suppose there is a linear transformation T : U → U' such that (0, 1, 0) € ker (T), T(2, 0, 1) = (0, 1, 1) and T(1, 1,0) = (1,0, 1). An affine mapping f : L → L' is obtained by defining f(u) = (2, 0, 1) + T(u). for all u € U. By using the above information answer the given subquestions. Which of the following functions represents f correctly?"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "f(x, y, 2) = (x - 2z + 2, z, x - =+ 1) 8 f(x, z) 2) = (x - 22 + 2, $, x- 2+ 1) c f(x, y, z) = (x - 2z, z, x - z)"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "It cannot be determined from the given information."
+          }
+        ]
+      ],
+      "correct_answer": 0,
+      "marks": 3,
+      "difficulty": "medium"
+    }
+  ]
+}

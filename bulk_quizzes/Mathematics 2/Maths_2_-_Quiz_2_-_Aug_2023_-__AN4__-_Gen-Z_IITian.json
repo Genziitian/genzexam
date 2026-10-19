@@ -1,0 +1,127 @@
+{
+  "schema_version": "1.1",
+  "quiz_title": "Mathematics 2 · Quiz 2 · Aug 2023 · AN4",
+  "subject": "Mathematics 2",
+  "section": "quiz2",
+  "questions": [
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let Vi denot the vector space o solutions of AX - 0, where A - 1 0) and X = . Let - Answer the given subquestions. What is the nullity of A?"
+        }
+      ],
+      "numerical_answer": 1.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let Vi denot the vector space o solutions of AX - 0, where A - 1 0) and X = . Let - Answer the given subquestions. What is the rank of B?"
+        }
+      ],
+      "numerical_answer": 2.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "mcq_multi",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let Vi denot the vector space o solutions of AX - 0, where A - 1 0) and X = . Let - Answer the given subquestions. Which of the following forms a basis B for V¿? {(1,5,2)}"
+        }
+      ],
+      "options": [
+        [
+          {
+            "kind": "text",
+            "value": "{(3,1,g)}"
+          }
+        ],
+        [
+          {
+            "kind": "text",
+            "value": "{(-4, -4,3)}"
+          }
+        ]
+      ],
+      "correct_answers": [
+        1
+      ],
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let Vi denot the vector space o solutions of AX - 0, where A - 1 0) and X = . Let - Answer the given subquestions. Define a linear transformation T : V½ → R? by T(x, y, 2) = (x, x + y + z). What is the rank of T?"
+        }
+      ],
+      "numerical_answer": 1.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let Vi denot the vector space o solutions of AX - 0, where A - 1 0) and X = . Let - Answer the given subquestions. Let S: V1 → V½ be a linear transformation. If m × n is the order of the matrix D of the linear transformation S with respect to some ordered basis o1 for V; and an ordered basis og for V½, what is 2m - 3n?"
+        }
+      ],
+      "numerical_answer": -1.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let T: R3 → Ra be the linear transformation defined by T(z, y, 2) = (z + y + 2, 2 - y - z, x). Based on the above data, answer the given subquestions. If A = co-domain, then what is 2b + 2e + 2h? denotes the matrix of T with respect to ((1, 1, 1), (1, 1,0), (1,0, 0)} for domain and Ecosystem —"
+        }
+      ],
+      "numerical_answer": 4.0,
+      "numerical_tolerance": 0.01,
+      "marks": 2,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let W be the subspace of Ra with the standard inner product, spanned by the ordered set 3 = {(1, -1,0, 0), (0, 1, 1, 0)}. Let {11, 0½} denote the orthonormal basis of W obtained by applying the Gram-Schmidt process on B. Let Pw : R' → W denote the projection map. What is the nullity of Pw?"
+        }
+      ],
+      "numerical_answer": 2.0,
+      "numerical_tolerance": 0.01,
+      "marks": 1,
+      "difficulty": "medium"
+    },
+    {
+      "type": "numerical",
+      "prompt": [
+        {
+          "kind": "text",
+          "value": "Let W be the subspace of Ra with the standard inner product, spanned by the ordered set 3 = {(1, -1,0, 0), (0, 1, 1, 0)}. Let {11, 0½} denote the orthonormal basis of W obtained by applying the Gram-Schmidt process on B. If Pw 1, 0, 1) = (a, b, c, d), what is 3(a + b + c + d)?"
+        }
+      ],
+      "numerical_answer": 2.0,
+      "numerical_tolerance": 0.01,
+      "marks": 3,
+      "difficulty": "medium"
+    }
+  ]
+}
