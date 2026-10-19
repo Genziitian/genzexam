@@ -804,6 +804,14 @@
     if (heading) tag(heading, "data-count", shown === rows.length ? String(rows.length) : shown + " of " + rows.length);
   }
 
+  /* Manager > Analytics: tag the page root so ql-analytics.css can restyle it. */
+  function decorateAnalytics() {
+    if (!/^\/(manager|admin)\/analytics\/?$/i.test(window.location.pathname)) return;
+    var h1 = document.querySelector("#root main h1");
+    var root = h1 && /^analytics$/i.test(h1.textContent.trim()) && h1.closest(".space-y-5");
+    if (root) tag(root, "data-ql-analytics", "");
+  }
+
   function decorateManagerConsole() {
     var page = /^\/(?:admin|manager)\/(quizzes|courses)\/?$/i.exec(window.location.pathname);
     if (!page) return;
@@ -5010,6 +5018,7 @@
     guard(decorateDashboard);
     guard(syncPhoneTopBar);
     guard(decorateManagerConsole);
+    guard(decorateAnalytics);
     guard(fillMyPapers);
     guard(fillTryPractice);
     guard(fillUploadPaperPage);

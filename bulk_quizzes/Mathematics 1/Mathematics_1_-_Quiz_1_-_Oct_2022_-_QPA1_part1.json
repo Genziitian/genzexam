@@ -9,7 +9,12 @@
       "prompt": [
         {
           "kind": "text",
-          "value": "Consider two quadratic functions, 𝑝(𝑥) and 𝑞(𝑥), whose 𝑥-intercepts are shown in Figure 1. The leading coefficients of both 𝑝(𝑥) and 𝑞(𝑥) are 1 and the 𝑦-intercepts are −27. The axis of symmetry of 𝑞(𝑥) is 𝑥 = 3, which also passes through one of the zeroes of 𝑝(𝑥). The line 𝑦 = 𝑑 passes through the vertices of 𝑝(𝑥) and 𝑞(𝑥). [Figure: a parabola 𝑝(𝑥) (left, blue) and a parabola 𝑞(𝑥) (right, red) opening upward; both share the 𝑦- intercept (0, − 27); 𝑥-intercepts marked (𝑎, 0), (𝑏, 0) and (𝑐, 0) on the 𝑥-axis; dashed vertical line 𝑥 = 3 through 𝑞's vertex; horizontal line 𝑦 = 𝑑 through both vertices.] Enter the value of 𝑎 + 𝑏 + 𝑐? NOTE: Enter your answer to the nearest integer."
+          "value": "Consider two quadratic functions, $p(x)$ and $q(x)$, whose $x$-intercepts are shown in Figure 1. The leading coefficients of both $p(x)$ and $q(x)$ are 1 and the $y$-intercepts are -27. The axis of symmetry of $q(x)$ is $x = 3$, which also passes through one of the zeroes of $p(x)$. The line $y = d$ passes through the vertices of $p(x)$ and $q(x)$. Enter the value of $a + b + c$? NOTE: Enter your answer to the nearest integer."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/mathematics-1/quiz1/oct2022_q1_figure1.png",
+          "alt": "Figure 1 showing upward parabolas p(x) and q(x) with intercepts and symmetry line"
         }
       ],
       "numerical_answer": -3,
@@ -28,7 +33,12 @@
       "prompt": [
         {
           "kind": "text",
-          "value": "Consider two quadratic functions, 𝑝(𝑥) and 𝑞(𝑥), whose 𝑥-intercepts are shown in Figure 1. The leading coefficients of both are 1 and the 𝑦-intercepts are −27. The axis of symmetry of 𝑞(𝑥) is 𝑥 = 3, which also passes through one of the zeroes of 𝑝(𝑥). The line 𝑦 = 𝑑 passes through the vertices of 𝑝(𝑥) and 𝑞(𝑥). [Figure: two upward parabolas 𝑝(𝑥) and 𝑞(𝑥) sharing 𝑦-intercept (0, − 27); horizontal line 𝑦 = 𝑑 through both vertices.] Enter the value of 𝑑? NOTE: Enter your answer to the nearest integer."
+          "value": "Consider two quadratic functions, $p(x)$ and $q(x)$, whose $x$-intercepts are shown in Figure 1. The leading coefficients of both are 1 and the $y$-intercepts are -27. The axis of symmetry of $q(x)$ is $x = 3$, which also passes through one of the zeroes of $p(x)$. The line $y = d$ passes through the vertices of $p(x)$ and $q(x)$. Enter the value of $d$? NOTE: Enter your answer to the nearest integer."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/mathematics-1/quiz1/oct2022_q1_figure1.png",
+          "alt": "Figure 1 showing upward parabolas p(x) and q(x) with intercepts and symmetry line"
         }
       ],
       "numerical_answer": -36,
@@ -47,7 +57,12 @@
       "prompt": [
         {
           "kind": "text",
-          "value": "Consider two quadratic functions, 𝑝(𝑥) and 𝑞(𝑥), with leading coefficient 1 and 𝑦-intercepts −27; the axis of symmetry of 𝑞(𝑥) is 𝑥 = 3, passing through a zero of 𝑝(𝑥) (Figure 1). Here 𝑝(𝑥) = 𝑥2 + 6𝑥 − 27 and 𝑞(𝑥) = 𝑥2 − 6𝑥 − 27. Choose the set of correct option(s)."
+          "value": "Consider two quadratic functions, $p(x)$ and $q(x)$, with leading coefficient 1 and $y$-intercepts -27; the axis of symmetry of $q(x)$ is $x = 3$, passing through a zero of $p(x)$ (Figure 1). Here $p(x) = x^2 + 6x - 27$ and $q(x) = x^2 - 6x - 27$. Choose the set of correct option(s)."
+        },
+        {
+          "kind": "image",
+          "url": "/assets/exam-examples/question-crops/mathematics-1/quiz1/oct2022_q1_figure1.png",
+          "alt": "Figure 1 showing upward parabolas p(x) and q(x) with intercepts and symmetry line"
         }
       ],
       "options": [

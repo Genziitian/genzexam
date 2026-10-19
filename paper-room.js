@@ -208,11 +208,15 @@
     let url = "";
     if (/^https:\/\//i.test(path)) url = path;
     else if (/^[a-z][a-z0-9+.-]*:/i.test(path)) return "";
+    else if (path.startsWith("/assets/"))
+      url = (typeof location !== "undefined" && location.origin ? location.origin : "https://quiz.genziitian.in") + path;
     else if (path.startsWith("/public/")) url = API_ORIGIN + path;
     else if (path.startsWith("/storage/")) url = API_ROOT + path;
     else if (path.startsWith("/question-images/") || path.startsWith("/avatars/"))
       url = API_ROOT + "/storage" + path;
     else if (path.startsWith("/")) url = API_ORIGIN + path;
+    else if (path.startsWith("assets/"))
+      url = (typeof location !== "undefined" && location.origin ? location.origin : "https://quiz.genziitian.in") + "/" + path;
     else if (path.startsWith("question-images/") || path.startsWith("avatars/"))
       url = API_ROOT + "/storage/" + path;
     else if (path.startsWith("public/")) url = API_ORIGIN + "/" + path;
