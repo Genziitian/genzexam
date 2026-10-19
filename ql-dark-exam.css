@@ -381,3 +381,22 @@
 :root[data-theme=dark] .ep-calc-key.action-equals{background-color:#3a3fd8;border-color:#2b30b8;color:#ffffff}
 :root[data-theme=dark] .ep-calc-key.action-equals:hover{background-color:#2b30b8}
 :root[data-theme=dark] .ep-calc-header svg[stroke="#2b30b8"]{stroke:#2b30b8}
+
+/* Split Passage Dark Theme */
+:root[data-theme=dark] .pr-passage-card {
+  background-color: #1e293b;
+  border-color: #334155;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+:root[data-theme=dark] .pr-passage-header {
+  background-color: #0f172a;
+  border-bottom-color: #334155;
+  color: #f1f5f9;
+}
+:root[data-theme=dark] .pr-passage-header svg {
+  color: #818cf8;
+}
+:root[data-theme=dark] .pr-passage-body {
+  color: #cbd5e1;
+}
+
