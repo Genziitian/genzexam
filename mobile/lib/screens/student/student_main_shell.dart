@@ -429,7 +429,8 @@ class _StudentMainShellState extends State<StudentMainShell> {
                           dashboardService: _dashboardService,
                           leaderboardService: _leaderboardService,
                           user: widget.authState.user,
-                          isActive: _currentIndex == 0 &&
+                          isActive:
+                              _currentIndex == 0 &&
                               (ModalRoute.isCurrentOf(context) ?? true),
                           onNavigateToQuizzes: () => _selectTab(1),
                           onOpenProfile: () => _selectTab(4),
@@ -4162,23 +4163,61 @@ class _MyPapersTabState extends State<_MyPapersTab> {
                       ),
                     ),
                     const SizedBox(width: 8),
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 10,
-                        vertical: 4,
-                      ),
-                      decoration: BoxDecoration(
-                        color: const Color(0xFFDCFCE7),
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: Text(
-                        state,
-                        style: const TextStyle(
-                          fontSize: 11,
-                          fontWeight: FontWeight.w700,
-                          color: Color(0xFF15803D),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 10,
+                            vertical: 4,
+                          ),
+                          decoration: BoxDecoration(
+                            color: const Color(0xFFDCFCE7),
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: Text(
+                            state,
+                            style: const TextStyle(
+                              fontSize: 11,
+                              fontWeight: FontWeight.w700,
+                              color: Color(0xFF15803D),
+                            ),
+                          ),
                         ),
-                      ),
+                        if (paper.available && paper.hasAccess && !kIsWeb)
+                          StatefulBuilder(
+                            builder: (_, setLocal) => IconButton(
+                              tooltip: 'Download for offline practice',
+                              visualDensity: VisualDensity.compact,
+                              onPressed: _downloadingIds.contains(paper.id)
+                                  ? null
+                                  : () async {
+                                      setLocal(() {});
+                                      final saving = _downloadPaper(paper);
+                                      setLocal(() {});
+                                      await saving;
+                                      if (ctx.mounted) setLocal(() {});
+                                    },
+                              icon: _downloadingIds.contains(paper.id)
+                                  ? const SizedBox.square(
+                                      dimension: 20,
+                                      child: CircularProgressIndicator(
+                                        strokeWidth: 2,
+                                        color: Color(0xFF16A34A),
+                                      ),
+                                    )
+                                  : Icon(
+                                      _downloadedIds.contains(paper.id)
+                                          ? Icons.download_done_rounded
+                                          : Icons.download_for_offline_outlined,
+                                      size: 24,
+                                      color: _downloadedIds.contains(paper.id)
+                                          ? const Color(0xFF16A34A)
+                                          : const Color(0xFF64748B),
+                                    ),
+                            ),
+                          ),
+                      ],
                     ),
                   ],
                 ),
