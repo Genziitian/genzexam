@@ -28,6 +28,26 @@ function nodes(tree,predicate) {
   return found;
 }
 (async()=>{
+  const requestStart=bundle.indexOf('P.interceptors.request.use(');
+  const requestEnd=bundle.indexOf(',P.interceptors.response.use',requestStart);
+  let prepareRequest;
+  class FormData {}
+  vm.runInNewContext(bundle.slice(requestStart,requestEnd),{
+    P:{interceptors:{request:{use(handler){prepareRequest=handler;}}}},
+    localStorage:{getItem(){return 'fixture-token';}},FormData
+  });
+  for(const url of ['/student/dashboard','/student/progress','/leaderboard']) {
+    const config=prepareRequest({url,headers:{Accept:'application/json'}});
+    assert.equal(config.headers['X-QuizLab-Client'],'web','Student metrics must use the same web mode as the server diagnostic');
+    assert.equal(config.headers.Authorization,'Bearer fixture-token');
+  }
+  for(const url of ['/courses','/admin/users','/manager/sales','/quizzes/3']) {
+    const config=prepareRequest({url,headers:{}});
+    assert.equal(config.headers['X-QuizLab-Client'],undefined,'Shared content and staff requests must retain their existing role behaviour');
+  }
+  const upload=prepareRequest({url:'/student/profile',data:new FormData(),headers:{'Content-Type':'multipart/form-data'}});
+  assert.equal(upload.headers['Content-Type'],undefined,'Form uploads must keep automatic boundary handling');
+
   let coursesFail=true;
   const app=mount([()=>dashboard,()=>{if(coursesFail)throw Error('Load failed');return [{id:3}];},()=>({course_progress:[]}),()=>{throw Error('Optional leaderboard failure');}]);
   app.render();app.start();await flush();
@@ -66,5 +86,5 @@ function nodes(tree,predicate) {
   ])await assert.rejects(rejectHandler(error));
   assert.equal(retried.length,3,'Writes, cancellation, authorization denial and exhausted retries must never repeat');
   assert.deepEqual(removed,['lab_token','lab_user']);
-  console.log('PASS: independent dashboard data, visible retry, no fake zero metrics, unmount cleanup, bounded mobile read retries and unchanged write/auth handling.');
+  console.log('PASS: student web headers, unchanged staff/content requests and uploads, independent dashboard data, visible retry, no fake zero metrics, unmount cleanup, bounded read retries and unchanged write/auth handling.');
 })().catch(error=>{console.error(error);process.exitCode=1;});
