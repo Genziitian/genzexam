@@ -634,7 +634,7 @@
       '">' +
       inputsHtml(q) +
       "</div>" +
-      explainHtml(q) +
+      '<div id="pr-explain-slot">' + explainHtml(q) + "</div>" +
       '<div class="pr-live-actions" style="margin-top:auto;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;border-top:1px solid #e2e8f0;background:#ffffff;"><div style="display:flex;gap:8px;">' +
       '<button type="button" id="btn-q-prev" data-action="prev"' +
       (index === 0 ? " disabled" : "") +
@@ -1278,35 +1278,10 @@
   function ptText(left) {
     return pad2(Math.floor(left / 3600)) + ":" + pad2(Math.floor((left % 3600) / 60)) + ":" + pad2(left % 60);
   }
-  function dialSvg() {
-    let ticks = "";
-    for (let i = 0; i < 60; i++) {
-      const major = i % 5 === 0;
-      ticks += '<line class="pr-dial-tick' + (major ? " major" : "") + '" x1="60" y1="' + (major ? 8 : 10) + '" x2="60" y2="' + (major ? 16 : 13) + '" stroke-width="' + (major ? 2 : 1) + '" transform="rotate(' + i * 6 + ' 60 60)"/>';
-    }
-    let nums = "";
-    for (let n = 1; n <= 12; n++) {
-      const a = (n * 30 * Math.PI) / 180;
-      nums += '<text class="pr-dial-num" x="' + (60 + 34 * Math.sin(a)).toFixed(1) + '" y="' + (60 - 34 * Math.cos(a) + 3.5).toFixed(1) + '" text-anchor="middle" font-size="9" font-weight="700">' + n + "</text>";
-    }
-    return (
-      '<svg viewBox="0 0 120 120" role="img" aria-label="Countdown dial"><circle class="pr-dial-face" cx="60" cy="60" r="56"/>' +
-      ticks + nums +
-      '<line class="pr-hand-h" id="pt-hh" x1="60" y1="60" x2="60" y2="38" stroke-width="3.5" stroke-linecap="round"/>' +
-      '<line class="pr-hand-m" id="pt-mh" x1="60" y1="60" x2="60" y2="26" stroke-width="2.5" stroke-linecap="round"/>' +
-      '<line class="pr-hand-s" id="pt-sh" x1="60" y1="68" x2="60" y2="22" stroke-width="1.2" stroke-linecap="round"/>' +
-      '<circle class="pr-hand-dot" cx="60" cy="60" r="3.2"/></svg>'
-    );
-  }
   function ptPaint() {
     const left = ptLeft();
-    const rot = (id, deg) => { const n = document.getElementById(id); if (n) n.setAttribute("transform", "rotate(" + deg.toFixed(1) + " 60 60)"); };
-    rot("pt-hh", ((left / 3600) % 12) * 30);
-    rot("pt-mh", ((left / 60) % 60) * 6);
-    rot("pt-sh", (left % 60) * 6);
     const part = (id, v) => { const n = document.getElementById(id); if (n) n.textContent = pad2(v); };
-    part("pt-d-h", Math.floor(left / 3600));
-    part("pt-d-m", Math.floor((left % 3600) / 60));
+    part("pt-d-m", Math.floor(left / 60)); // minutes go up to 120, so no hour box
     part("pt-d-s", left % 60);
     const d = document.getElementById("pt-digital");
     if (d) d.classList.toggle("up", st.pt.finished);
@@ -1319,8 +1294,8 @@
     const set = st.pt.running || st.pt.left > 0;
     const seg = (id, label) => '<div class="pr-seg"><span id="' + id + '">00</span><small>' + label + "</small></div>";
     return (
-      '<div class="pr-pt-card">' + dialSvg() +
-      '<div class="pr-digital" id="pt-digital">' + seg("pt-d-h", "HR") + "<i>:</i>" + seg("pt-d-m", "MIN") + "<i>:</i>" + seg("pt-d-s", "SEC") + "</div>" +
+      '<div class="pr-pt-card">' +
+      '<div class="pr-digital" id="pt-digital">' + seg("pt-d-m", "MIN") + "<i>:</i>" + seg("pt-d-s", "SEC") + "</div>" +
       '<div class="pr-pt-note" id="pt-note"></div>' +
       (set
         ? '<div class="pr-pt-chips"><button type="button" class="pr-pt-btn" data-action="pt-add" data-min="5">+5 min</button><button type="button" class="pr-pt-btn" data-action="pt-add" data-min="10">+10 min</button><button type="button" class="pr-pt-btn" data-action="pt-add" data-min="15">+15 min</button></div>' +
@@ -1387,12 +1362,15 @@
     await loadKey();
     if (!st.key || !st.key[id]) return;
     st.revealed[id] = !st.revealed[id];
+    if (!st.revealed[id]) st.explained[id] = false;
+    const q0 = questions()[st.current];
+    if (q0 && String(q0.id) === String(id)) syncExplain(q0);
     const btn = document.getElementById("btn-q-reveal");
     if (btn) btn.textContent = st.revealed[id] ? "Hide answer" : "Reveal answer";
     applyPractice();
   }
   function explainHtml(q) {
-    if (!st.practice || !st.key) return "";
+    if (!st.practice || !st.key || !st.revealed[q.id]) return "";
     const k = st.key[q.id];
     const text = k && clean(k.explanation);
     if (!text) return "";
@@ -1406,11 +1384,14 @@
   function toggleExplain(id) {
     st.explained[id] = !st.explained[id];
     const q = questions()[st.current];
-    const node = document.querySelector(".pr-explain");
-    if (!q || !node) return;
-    node.outerHTML = explainHtml(q);
-    const fresh = document.querySelector(".pr-explain");
-    if (fresh && window.ExamRichContent && window.ExamRichContent.typeset) window.ExamRichContent.typeset(fresh);
+    if (q) syncExplain(q);
+  }
+  // The explanation area is re-drawn on its own so the page does not jump.
+  function syncExplain(q) {
+    const slot = document.getElementById("pr-explain-slot");
+    if (!slot) return;
+    slot.innerHTML = explainHtml(q);
+    if (window.ExamRichContent && window.ExamRichContent.typeset) window.ExamRichContent.typeset(slot);
   }
   // Marks the correct option(s) green, or shows the numeric / short answer, for the question on screen.
   function applyPractice() {
